@@ -1,0 +1,4973 @@
+{
+ "course": "eng_for_kor",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:04.136Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 3,
+   "id": "S0003L02U06",
+   "lego": "S0003L02",
+   "known": "가능한 한 자주 말하는 방법을",
+   "target": "how to speak as often as possible",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0003L02U06",
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "가능한 한 자주 말하는 방법을",
+      "target_text": "how to speak as often as possible",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 3,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0003L02U06",
+     "slot": "known",
+     "audio_id": "c6947179-a8cd-496a-96be-7294f6f36929"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0003L02U06",
+     "slot": "target1",
+     "audio_id": "6a769abe-69bd-43ff-a5ae-b79fa5d1f10c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0003L02U06",
+     "slot": "target2",
+     "audio_id": "e83254ee-2feb-4eb1-a486-3338067645aa"
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "id": "S0004L03U06",
+   "lego": "S0004L03",
+   "known": "영어로 무언가를 말하는 방법",
+   "target": "how to say something in English",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0004L03U06",
+      "seed_number": 4,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "영어로 무언가를 말하는 방법",
+      "target_text": "how to say something in English",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 4,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 4,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0004L03U06",
+     "slot": "known",
+     "audio_id": "94c017d8-d801-401c-b2d5-bada76a99d3c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0004L03U06",
+     "slot": "target1",
+     "audio_id": "93d56ff4-9fcf-496a-82b0-d54172ff1ddf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0004L03U06",
+     "slot": "target2",
+     "audio_id": "9ca4dbe8-3104-455e-8a42-09a9401c10ca"
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "id": "S0009L02U06",
+   "lego": "S0009L02",
+   "known": "저는 지금 영어를 조금 해요",
+   "target": "I speak a little English now",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0009L02U06",
+      "seed_number": 9,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "저는 지금 영어를 조금 해요",
+      "target_text": "I speak a little English now",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 9,
+       "canon": "P26"
+      },
+      "word_count": 28,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0009L02U06",
+     "slot": "known",
+     "audio_id": "e593ef97-faa1-4cbf-b860-70bdfaf54aea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0009L02U06",
+     "slot": "target1",
+     "audio_id": "51764d42-34a4-40ca-8139-9bb6163dcad1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0009L02U06",
+     "slot": "target2",
+     "audio_id": "e91e17a1-75eb-4553-a3a5-ac9f257f6ff6"
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "id": "S0011L03U08",
+   "lego": "S0011L03",
+   "known": "당신이 끝난 후에 말할 수 있으면 좋겠어요",
+   "target": "I'd like to be able to speak after you finish",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0011L03U08",
+      "seed_number": 11,
+      "lego_index": 3,
+      "position": 14,
+      "known_text": "당신이 끝난 후에 말할 수 있으면 좋겠어요",
+      "target_text": "I'd like to be able to speak after you finish",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 11,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0011L03U08",
+     "slot": "known",
+     "audio_id": "a93102d2-d449-4979-b5c9-d20c9994e2e6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0011L03U08",
+     "slot": "target1",
+     "audio_id": "a783ef06-2154-4f62-8215-a268868b5bfc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0011L03U08",
+     "slot": "target2",
+     "audio_id": "8b9825a2-c633-445f-8041-1f08733375df"
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "id": "S0016L04U08",
+   "lego": "S0016L04",
+   "known": "그는 나중에 다른 모든 사람들과 함께 돌아오고 싶어해요",
+   "target": "He wants to come back with everyone else later on",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0016L04U08",
+      "seed_number": 16,
+      "lego_index": 4,
+      "position": 14,
+      "known_text": "그는 나중에 다른 모든 사람들과 함께 돌아오고 싶어해요",
+      "target_text": "He wants to come back with everyone else later on",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 16,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0016L04U08",
+     "slot": "known",
+     "audio_id": "7a8a05e7-0af0-4dc1-bbe2-e973863f947b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0016L04U08",
+     "slot": "target1",
+     "audio_id": "c5583b9a-1825-4ac5-8ed6-ccbdd29cbaf2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0016L04U08",
+     "slot": "target2",
+     "audio_id": "595acfb8-c2ec-462a-ab44-da6d5175cd69"
+    }
+   ]
+  },
+  {
+   "seed": 28,
+   "id": "S0028L01U06",
+   "lego": "S0028L01",
+   "known": "가능한 한 빨리 말하기 시작하는 것이 유용해요",
+   "target": "It's useful to start talking as soon as you can",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "가능한 한 빨리 말하기 시작하는 것이 유용해요",
+      "target_text": "It's useful to start talking as soon as you can",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 28,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0028L01U06",
+     "slot": "known",
+     "audio_id": "65e05ba4-5c04-4812-9703-36ee662d065c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0028L01U06",
+     "slot": "target1",
+     "audio_id": "4ca2a590-e8a9-466d-8bed-54fef7a1b9b2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0028L01U06",
+     "slot": "target2",
+     "audio_id": "1c9546ea-bee4-43c4-8878-ef162ab6aaef"
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "id": "S0029L02U06",
+   "lego": "S0029L02",
+   "known": "저는 가능한 한 빨리 더 잘 말하게 되기를 기대하고 있어요",
+   "target": "I'm looking forward to speaking better as soon as I can",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0029L02U06",
+      "seed_number": 29,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "저는 가능한 한 빨리 더 잘 말하게 되기를 기대하고 있어요",
+      "target_text": "I'm looking forward to speaking better as soon as I can",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 29,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0029L02U06",
+     "slot": "known",
+     "audio_id": "d22b2c3c-8b9b-45a2-ae33-d04502808f60"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0029L02U06",
+     "slot": "target1",
+     "audio_id": "40dd4f7f-7cc6-45ea-a268-d6b2a2222a25"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0029L02U06",
+     "slot": "target2",
+     "audio_id": "bae7a3b0-b6ac-4583-8de4-16080598dd2b"
+    }
+   ]
+  },
+  {
+   "seed": 35,
+   "id": "S0035L03U06",
+   "lego": "S0035L03",
+   "known": "그녀는 오늘 오후에 아무것도 읽고 싶어하지 않아요",
+   "target": "She doesn't want to read anything this afternoon",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0035L03U06",
+      "seed_number": 35,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "그녀는 오늘 오후에 아무것도 읽고 싶어하지 않아요",
+      "target_text": "She doesn't want to read anything this afternoon",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 35,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0035L03U06",
+     "slot": "known",
+     "audio_id": "09fc8aed-b76b-4d03-89e4-b6faee17d38e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0035L03U06",
+     "slot": "target1",
+     "audio_id": "f5f424c9-3ea3-439a-a16f-2df4153b51fd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0035L03U06",
+     "slot": "target2",
+     "audio_id": "f292bd02-8a7e-4a94-9e24-9479f4e122c8"
+    }
+   ]
+  },
+  {
+   "seed": 41,
+   "id": "S0041L02U06",
+   "lego": "S0041L02",
+   "known": "괜찮아요, 하지만 피곤해지기 시작하고 있어요",
+   "target": "I feel okay, but I'm starting to feel tired",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0041L02U06",
+      "seed_number": 41,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "괜찮아요, 하지만 피곤해지기 시작하고 있어요",
+      "target_text": "I feel okay, but I'm starting to feel tired",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 41,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0041L02U06",
+     "slot": "known",
+     "audio_id": "7ec3ac7c-1a01-4542-be0a-735cd138f8f2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0041L02U06",
+     "slot": "target1",
+     "audio_id": "af8dcb4b-50d6-4eee-9fcd-b784536249ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0041L02U06",
+     "slot": "target2",
+     "audio_id": "2f7d94d1-877b-49cb-9760-6a114b5636ee"
+    }
+   ]
+  },
+  {
+   "seed": 42,
+   "id": "S0042L02U06",
+   "lego": "S0042L02",
+   "known": "저는 어젯밤보다 더 나아지기 시작하고 있었어요",
+   "target": "I was starting to feel better than last night",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0042L02U06",
+      "seed_number": 42,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "저는 어젯밤보다 더 나아지기 시작하고 있었어요",
+      "target_text": "I was starting to feel better than last night",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 42,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0042L02U06",
+     "slot": "known",
+     "audio_id": "1178abe2-7c42-47e9-99cc-1b24fa96d357"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0042L02U06",
+     "slot": "target1",
+     "audio_id": "1c08bf87-16fd-4c38-aa23-e6656e54b219"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0042L02U06",
+     "slot": "target2",
+     "audio_id": "cac2e3c1-1992-4a3d-9c24-985a3349bc72"
+    }
+   ]
+  },
+  {
+   "seed": 73,
+   "id": "S0073L02U11",
+   "lego": "S0073L02",
+   "known": "정말 감사해요, 하지만 저는 더 배울 것이 있어요",
+   "target": "Thank you very much, but I've got more to learn",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0073L02U11",
+      "seed_number": 73,
+      "lego_index": 2,
+      "position": 18,
+      "known_text": "정말 감사해요, 하지만 저는 더 배울 것이 있어요",
+      "target_text": "Thank you very much, but I've got more to learn",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 73,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0073L02U11",
+     "slot": "known",
+     "audio_id": "25b271c6-b265-4dae-bdf8-abc20ece42a2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0073L02U11",
+     "slot": "target1",
+     "audio_id": "e4fbbd40-5fad-4bf9-be93-d64bcd6ba1a3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0073L02U11",
+     "slot": "target2",
+     "audio_id": "4810169c-a81a-4ade-ab20-c59684ef0730"
+    }
+   ]
+  },
+  {
+   "seed": 82,
+   "id": "S0082L02U06",
+   "lego": "S0082L02",
+   "known": "저는 당신을 기다리지 않을 거예요. 왜요?",
+   "target": "I'm not going to wait for you. Why not?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0082L02U06",
+      "seed_number": 82,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "저는 당신을 기다리지 않을 거예요. 왜요?",
+      "target_text": "I'm not going to wait for you. Why not?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 82,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0082L02U06",
+     "slot": "known",
+     "audio_id": "a50d0edc-d31e-4d28-943c-754fe279314c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0082L02U06",
+     "slot": "target1",
+     "audio_id": "9c9da10d-6f77-4fd4-8272-d50ef49c986d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0082L02U06",
+     "slot": "target2",
+     "audio_id": "bbc40aa2-cbed-46b5-882f-cfc0d8a61ea1"
+    }
+   ]
+  },
+  {
+   "seed": 84,
+   "id": "S0084L01U06",
+   "lego": "S0084L01",
+   "known": "저는 그가 제 친구에 대해 말한 것에 동의하지 않아요",
+   "target": "I don't agree with what he said about my friend",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0084L01U06",
+      "seed_number": 84,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 그가 제 친구에 대해 말한 것에 동의하지 않아요",
+      "target_text": "I don't agree with what he said about my friend",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 84,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0084L01U06",
+     "slot": "known",
+     "audio_id": "328fc4cd-a9c9-4c06-869e-bd8b5b6846c3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0084L01U06",
+     "slot": "target1",
+     "audio_id": "b67cf390-907a-4437-ae46-5d2353ea5bf8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0084L01U06",
+     "slot": "target2",
+     "audio_id": "cc16e752-3931-4985-a557-e1684d11cf43"
+    }
+   ]
+  },
+  {
+   "seed": 96,
+   "id": "S0096L02U06",
+   "lego": "S0096L02",
+   "known": "아니요, 아직 준비가 안 됐어요, 조금 더 시간이 필요해요",
+   "target": "No I'm not ready yet, I need a little more time",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0096L02U06",
+      "seed_number": 96,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "아니요, 아직 준비가 안 됐어요, 조금 더 시간이 필요해요",
+      "target_text": "No I'm not ready yet, I need a little more time",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 96,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 9,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0096L02U06",
+     "slot": "known",
+     "audio_id": "9c30ebbc-27bf-4f65-ba3a-0506c6f33b9c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0096L02U06",
+     "slot": "target1",
+     "audio_id": "20c64f80-6260-4c11-9bfe-9dbe1b3d55ec"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0096L02U06",
+     "slot": "target2",
+     "audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+    }
+   ]
+  },
+  {
+   "seed": 97,
+   "id": "S0097L02U06",
+   "lego": "S0097L02",
+   "known": "네, 당신이 원할 때 언제든지 갈 준비가 됐어요",
+   "target": "Yes I'm ready to go as soon as you want",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0097L02U06",
+      "seed_number": 97,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "네, 당신이 원할 때 언제든지 갈 준비가 됐어요",
+      "target_text": "Yes I'm ready to go as soon as you want",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 97,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0097L02U06",
+     "slot": "known",
+     "audio_id": "51c504c9-4ce4-4fee-a651-61b08742be53"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0097L02U06",
+     "slot": "target1",
+     "audio_id": "00013a97-e26d-4800-9ee6-0b3764d99be3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0097L02U06",
+     "slot": "target2",
+     "audio_id": "743a8d67-9608-4062-b272-e504c9c516f2"
+    }
+   ]
+  },
+  {
+   "seed": 104,
+   "id": "S0104L01U06",
+   "lego": "S0104L01",
+   "known": "우리는 우리가 하고 있는 것을 바꿔야 해요",
+   "target": "We need to change what we're doing",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0104L01U06",
+      "seed_number": 104,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "우리는 우리가 하고 있는 것을 바꿔야 해요",
+      "target_text": "We need to change what we're doing",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 104,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0104L01U06",
+     "slot": "known",
+     "audio_id": "891d9257-4170-4c90-ac49-4985a32000d1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0104L01U06",
+     "slot": "target1",
+     "audio_id": "e50c5598-e4f5-4aee-b596-318020c8551f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0104L01U06",
+     "slot": "target2",
+     "audio_id": "4806fc10-1ba2-4284-a2fa-05618922d7ea"
+    }
+   ]
+  },
+  {
+   "seed": 109,
+   "id": "S0109L02U06",
+   "lego": "S0109L02",
+   "known": "우리는 많은 새 단어를 배우기 위해 열심히 일해야 해요",
+   "target": "We must work hard to learn a lot of new words",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0109L02U06",
+      "seed_number": 109,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "우리는 많은 새 단어를 배우기 위해 열심히 일해야 해요",
+      "target_text": "We must work hard to learn a lot of new words",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 109,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 9,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0109L02U06",
+     "slot": "known",
+     "audio_id": "0c881639-9856-41df-9930-aaaa97c0ae2c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0109L02U06",
+     "slot": "target1",
+     "audio_id": "603bf1be-379c-461d-a465-4b31044363e4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0109L02U06",
+     "slot": "target2",
+     "audio_id": "d65894ef-7f7c-4e9e-afd2-7a723cfed66c"
+    }
+   ]
+  },
+  {
+   "seed": 110,
+   "id": "S0110L02U06",
+   "lego": "S0110L02",
+   "known": "우리는 친구예요, 그리고 끝난 후에 저는 쉬고 싶어요",
+   "target": "We're friends, and after we finish I'd like to relax",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0110L02U06",
+      "seed_number": 110,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "우리는 친구예요, 그리고 끝난 후에 저는 쉬고 싶어요",
+      "target_text": "We're friends, and after we finish I'd like to relax",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 110,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0110L02U06",
+     "slot": "known",
+     "audio_id": "ce59616e-5d23-41f0-bf68-8dbbb6264ebc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0110L02U06",
+     "slot": "target1",
+     "audio_id": "5e82091e-00db-4c4a-86e4-1a81e28aa0ab"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0110L02U06",
+     "slot": "target2",
+     "audio_id": "1e46f2a9-8bdf-4677-a016-d9376716be4c"
+    }
+   ]
+  },
+  {
+   "seed": 116,
+   "id": "S0116L02U06",
+   "lego": "S0116L02",
+   "known": "이것은 제가 할 수 있는 최선의 선택이 아니에요",
+   "target": "This isn't the best choice I could make",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0116L02U06",
+      "seed_number": 116,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "이것은 제가 할 수 있는 최선의 선택이 아니에요",
+      "target_text": "This isn't the best choice I could make",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 116,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0116L02U06",
+     "slot": "known",
+     "audio_id": "2558b6bd-2874-4aad-956a-ba56f36e3209"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0116L02U06",
+     "slot": "target1",
+     "audio_id": "39a0d698-4c17-45ec-a35c-613ffa517b77"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0116L02U06",
+     "slot": "target2",
+     "audio_id": "04d5e083-1b19-4b2d-b8fd-7c012e5286e4"
+    }
+   ]
+  },
+  {
+   "seed": 123,
+   "id": "S0123L01U06",
+   "lego": "S0123L01",
+   "known": "저는 그것이 좋은 생각이라고 생각해요",
+   "target": "I think that's a good idea",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0123L01U06",
+      "seed_number": 123,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 그것이 좋은 생각이라고 생각해요",
+      "target_text": "I think that's a good idea",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 123,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0123L01U06",
+     "slot": "known",
+     "audio_id": "9f425304-23a7-4800-9086-8b5265e38dc2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0123L01U06",
+     "slot": "target1",
+     "audio_id": "d0faeff1-2c76-4b71-a57e-73f1781c8e7f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0123L01U06",
+     "slot": "target2",
+     "audio_id": "3e8275a4-bd83-4c5a-834b-346c669f19a3"
+    }
+   ]
+  },
+  {
+   "seed": 124,
+   "id": "S0124L01U06",
+   "lego": "S0124L01",
+   "known": "저는 그것이 좋은 생각이라고 생각했어요",
+   "target": "I thought that was a good idea",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0124L01U06",
+      "seed_number": 124,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 그것이 좋은 생각이라고 생각했어요",
+      "target_text": "I thought that was a good idea",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 124,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0124L01U06",
+     "slot": "known",
+     "audio_id": "87a980c1-d7d2-4a3a-92d0-bc00f1f6c516"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0124L01U06",
+     "slot": "target1",
+     "audio_id": "b0a02eb8-77a7-4912-8822-5704d48173c5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0124L01U06",
+     "slot": "target2",
+     "audio_id": "36831321-51b4-4779-83c7-82d1c2946a8d"
+    }
+   ]
+  },
+  {
+   "seed": 141,
+   "id": "S0141L02U06",
+   "lego": "S0141L02",
+   "known": "괜찮아요. 모든 것이 좋아요",
+   "target": "No problem. Everything is okay",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0141L02U06",
+      "seed_number": 141,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "괜찮아요. 모든 것이 좋아요",
+      "target_text": "No problem. Everything is okay",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 141,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0141L02U06",
+     "slot": "known",
+     "audio_id": "69e5686b-7892-4237-9dce-2e10cd3c0cb2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0141L02U06",
+     "slot": "target1",
+     "audio_id": "43ec6faa-f1c2-41ec-beb4-71b9d158409e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0141L02U06",
+     "slot": "target2",
+     "audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace"
+    }
+   ]
+  },
+  {
+   "seed": 163,
+   "id": "S0163L01U06",
+   "lego": "S0163L01",
+   "known": "저는 그것이 흥미롭다고 생각해요",
+   "target": "I think that it's interesting",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0163L01U06",
+      "seed_number": 163,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 그것이 흥미롭다고 생각해요",
+      "target_text": "I think that it's interesting",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 163,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0163L01U06",
+     "slot": "known",
+     "audio_id": "22c92d18-63a7-47ae-bd10-25d74eadf314"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0163L01U06",
+     "slot": "target1",
+     "audio_id": "d7df949b-e633-4846-949d-b9fe85db4273"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0163L01U06",
+     "slot": "target2",
+     "audio_id": "9f524b51-3ead-4ff8-b648-7b279d7b2dc1"
+    }
+   ]
+  },
+  {
+   "seed": 165,
+   "id": "S0165L01U06",
+   "lego": "S0165L01",
+   "known": "하지만 저는 그것이 사실인지 모르겠어요",
+   "target": "But I'm not sure if it's true",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0165L01U06",
+      "seed_number": 165,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "하지만 저는 그것이 사실인지 모르겠어요",
+      "target_text": "But I'm not sure if it's true",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 165,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0165L01U06",
+     "slot": "known",
+     "audio_id": "7a87d35d-7e90-469f-900a-3453f34a4585"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0165L01U06",
+     "slot": "target1",
+     "audio_id": "36ff7456-fcaa-4b32-9bc3-f50fe3e3eb01"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0165L01U06",
+     "slot": "target2",
+     "audio_id": "7a05ae32-14f2-4a4c-9714-42fce79b6b9e"
+    }
+   ]
+  },
+  {
+   "seed": 169,
+   "id": "S0169L01U06",
+   "lego": "S0169L01",
+   "known": "당신은 제가 무엇을 하기를 원해요?",
+   "target": "What do you want me to do?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0169L01U06",
+      "seed_number": 169,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "당신은 제가 무엇을 하기를 원해요?",
+      "target_text": "What do you want me to do?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 169,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0169L01U06",
+     "slot": "known",
+     "audio_id": "ba0982cb-8333-44de-adca-90cb9bc50ecf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0169L01U06",
+     "slot": "target1",
+     "audio_id": "1d2e3a41-6ef1-4abc-b59c-3b5888ab6f0f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0169L01U06",
+     "slot": "target2",
+     "audio_id": "e1679e6b-9589-4c4a-bfd5-8524ab10c378"
+    }
+   ]
+  },
+  {
+   "seed": 170,
+   "id": "S0170L02U05",
+   "lego": "S0170L02",
+   "known": "당신이 필요한 것을 말해주기를 바라요",
+   "target": "I'd like you to tell me what you need",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0170L02U05",
+      "seed_number": 170,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "당신이 필요한 것을 말해주기를 바라요",
+      "target_text": "I'd like you to tell me what you need",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 170,
+       "canon": "P26"
+      },
+      "word_count": 37,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0170L02U05",
+     "slot": "known",
+     "audio_id": "77452739-3fd0-4a4d-9dba-314e28de7743"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0170L02U05",
+     "slot": "target1",
+     "audio_id": "0c669e7b-5a4a-4816-9049-727a3b5f1b49"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0170L02U05",
+     "slot": "target2",
+     "audio_id": "ab4a3dde-ec52-4d57-bdfa-9aa7944d736b"
+    }
+   ]
+  },
+  {
+   "seed": 177,
+   "id": "S0177L02U06",
+   "lego": "S0177L02",
+   "known": "그녀에게 어디 가고 싶은지 물어볼게요",
+   "target": "I'll ask her where she wants to go",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0177L02U06",
+      "seed_number": 177,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "그녀에게 어디 가고 싶은지 물어볼게요",
+      "target_text": "I'll ask her where she wants to go",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 177,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 5,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0177L02U06",
+     "slot": "known",
+     "audio_id": "6a5776a2-49a2-4e9c-8978-d73ee117ff00"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0177L02U06",
+     "slot": "target1",
+     "audio_id": "d362436c-4c16-432a-8e64-c6a43a942170"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0177L02U06",
+     "slot": "target2",
+     "audio_id": "d5bfc25b-bebe-443e-9aa9-c424277487ca"
+    }
+   ]
+  },
+  {
+   "seed": 178,
+   "id": "S0178L02U02",
+   "lego": "S0178L02",
+   "known": "시간이 없었어요, 당신을 만나고 싶었는데도",
+   "target": "I didn't have time, although I wanted to see you",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0178L02U02",
+      "seed_number": 178,
+      "lego_index": 2,
+      "position": 7,
+      "known_text": "시간이 없었어요, 당신을 만나고 싶었는데도",
+      "target_text": "I didn't have time, although I wanted to see you",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 178,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0178L02U02",
+     "slot": "known",
+     "audio_id": "cd4690e6-3dea-414b-9216-e6ce721d2991"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0178L02U02",
+     "slot": "target1",
+     "audio_id": "3973de41-f004-48ef-be8b-cccd98362edb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0178L02U02",
+     "slot": "target2",
+     "audio_id": "c07d61f8-8839-484c-b0c3-3be3dfdb765b"
+    }
+   ]
+  },
+  {
+   "seed": 180,
+   "id": "S0180L01U06",
+   "lego": "S0180L01",
+   "known": "저는 잠시 책을 읽고 싶어요",
+   "target": "I'd like to read my book for a while",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0180L01U06",
+      "seed_number": 180,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 잠시 책을 읽고 싶어요",
+      "target_text": "I'd like to read my book for a while",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 180,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 5,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0180L01U06",
+     "slot": "known",
+     "audio_id": "1ef4e373-2a2f-4339-9bc1-933c6470a2d5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0180L01U06",
+     "slot": "target1",
+     "audio_id": "2dc519b4-2680-476c-943b-5a6de5b31450"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0180L01U06",
+     "slot": "target2",
+     "audio_id": "09468477-573a-4872-b598-803fd705749b"
+    }
+   ]
+  },
+  {
+   "seed": 181,
+   "id": "S0181L03U06",
+   "lego": "S0181L03",
+   "known": "하지만 저는 어머니를 병원에 데려가야 해요",
+   "target": "But I have to take my mother to the doctor",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0181L03U06",
+      "seed_number": 181,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "하지만 저는 어머니를 병원에 데려가야 해요",
+      "target_text": "But I have to take my mother to the doctor",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 181,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0181L03U06",
+     "slot": "known",
+     "audio_id": "5c94c41a-c2c6-4f94-9a0a-447af6c18f67"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0181L03U06",
+     "slot": "target1",
+     "audio_id": "59dd2815-36ae-41cb-9f6e-2a7ae982b211"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0181L03U06",
+     "slot": "target2",
+     "audio_id": "f553830c-e4d1-4cf6-9b7c-a38cdc469912"
+    }
+   ]
+  },
+  {
+   "seed": 184,
+   "id": "S0184L02U05",
+   "lego": "S0184L02",
+   "known": "네, 조금 전에 사무실에서 봤어요",
+   "target": "Yes I saw them in the office a while ago",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0184L02U05",
+      "seed_number": 184,
+      "lego_index": 2,
+      "position": 10,
+      "known_text": "네, 조금 전에 사무실에서 봤어요",
+      "target_text": "Yes I saw them in the office a while ago",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 184,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0184L02U05",
+     "slot": "known",
+     "audio_id": "9c928647-9913-47f5-83c3-24742d6198fc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0184L02U05",
+     "slot": "target1",
+     "audio_id": "f1581f6a-16b9-4c9f-b237-8e1a0aeb39a6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0184L02U05",
+     "slot": "target2",
+     "audio_id": "f8f820e1-4315-4f2e-ab6e-00bbc8199951"
+    }
+   ]
+  },
+  {
+   "seed": 187,
+   "id": "S0187L01U07",
+   "lego": "S0187L01",
+   "known": "저는 지금까지 행복해요",
+   "target": "I'm happy so far",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0187L01U07",
+      "seed_number": 187,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "저는 지금까지 행복해요",
+      "target_text": "I'm happy so far",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 187,
+       "canon": "P26"
+      },
+      "word_count": 16,
+      "lego_count": 3,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0187L01U07",
+     "slot": "known",
+     "audio_id": "947d291c-536c-490d-8cd4-86942faa0ede"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0187L01U07",
+     "slot": "target1",
+     "audio_id": "795181e8-8f5f-4d21-b255-d643283235b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0187L01U07",
+     "slot": "target2",
+     "audio_id": "8a19c13f-2ffc-47a2-9772-719299dd6922"
+    }
+   ]
+  },
+  {
+   "seed": 188,
+   "id": "S0188L01U06",
+   "lego": "S0188L01",
+   "known": "그래서 저는 바꿀 필요가 없어요",
+   "target": "So I don't need to change",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0188L01U06",
+      "seed_number": 188,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "그래서 저는 바꿀 필요가 없어요",
+      "target_text": "So I don't need to change",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 188,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0188L01U06",
+     "slot": "known",
+     "audio_id": "05665678-85b9-4609-a6e4-d0d30f23a379"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0188L01U06",
+     "slot": "target1",
+     "audio_id": "6f711534-7e7e-4660-96e2-0187ad882cd8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0188L01U06",
+     "slot": "target2",
+     "audio_id": "3056d971-f935-492f-8456-2acf31685afa"
+    }
+   ]
+  },
+  {
+   "seed": 195,
+   "id": "S0195L04U06",
+   "lego": "S0195L04",
+   "known": "저는 테이블에 두고 온 돈을 찾으려고 해요",
+   "target": "I'm trying to find the money I left on the table",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0195L04U06",
+      "seed_number": 195,
+      "lego_index": 4,
+      "position": 11,
+      "known_text": "저는 테이블에 두고 온 돈을 찾으려고 해요",
+      "target_text": "I'm trying to find the money I left on the table",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 195,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0195L04U06",
+     "slot": "known",
+     "audio_id": "5316f7ab-303f-4beb-a86f-58dd5f36d69d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0195L04U06",
+     "slot": "target1",
+     "audio_id": "414c0f41-e949-45ce-9086-3f820e035937"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0195L04U06",
+     "slot": "target2",
+     "audio_id": "a5a108a5-d788-4017-942c-9d55a224f495"
+    }
+   ]
+  },
+  {
+   "seed": 200,
+   "id": "S0200L03U03",
+   "lego": "S0200L03",
+   "known": "그들은 우리가 모든 것을 제때 끝내기를 원한다고 해요",
+   "target": "They say they want to make sure that we finish everything in time",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0200L03U03",
+      "seed_number": 200,
+      "lego_index": 3,
+      "position": 8,
+      "known_text": "그들은 우리가 모든 것을 제때 끝내기를 원한다고 해요",
+      "target_text": "They say they want to make sure that we finish everything in time",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 200,
+       "canon": "P26"
+      },
+      "word_count": 65,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0200L03U03",
+     "slot": "known",
+     "audio_id": "f12f2644-4a77-46f3-b09c-5c3f62e4daa7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0200L03U03",
+     "slot": "target1",
+     "audio_id": "3b0eb805-1bcc-4586-bd0a-4b77012e67cc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0200L03U03",
+     "slot": "target2",
+     "audio_id": "4739b4a6-27ec-4aa7-927c-b7bdc429bba8"
+    }
+   ]
+  },
+  {
+   "seed": 204,
+   "id": "S0204L03U06",
+   "lego": "S0204L03",
+   "known": "저는 그녀가 준비를 처리하는 데 당신을 도와주기를 원했어요",
+   "target": "I wanted her to help you to deal with the arrangements",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0204L03U06",
+      "seed_number": 204,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "저는 그녀가 준비를 처리하는 데 당신을 도와주기를 원했어요",
+      "target_text": "I wanted her to help you to deal with the arrangements",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 204,
+       "canon": "P26"
+      },
+      "word_count": 54,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0204L03U06",
+     "slot": "known",
+     "audio_id": "3769afc6-9fe3-4812-a640-dbd378acccab"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0204L03U06",
+     "slot": "target1",
+     "audio_id": "fed51b8a-991b-4677-9096-e17c0c1516ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0204L03U06",
+     "slot": "target2",
+     "audio_id": "9ef1fda7-af0b-4ff4-a17c-3655c65fcbf5"
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "id": "S0209L03U05",
+   "lego": "S0209L03",
+   "known": "그들은 그룹으로 만나는 데 더 많은 시간을 쓰고 싶어해요",
+   "target": "They want to spend more time meeting as a group",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0209L03U05",
+      "seed_number": 209,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "그들은 그룹으로 만나는 데 더 많은 시간을 쓰고 싶어해요",
+      "target_text": "They want to spend more time meeting as a group",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 209,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0209L03U05",
+     "slot": "known",
+     "audio_id": "612b10b6-9909-40a1-801f-d6b72666dac6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0209L03U05",
+     "slot": "target1",
+     "audio_id": "1a21b0b9-4ec3-4779-8239-b5ea7368a67b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0209L03U05",
+     "slot": "target2",
+     "audio_id": "55476cc7-29a4-4c8e-8374-dae862669855"
+    }
+   ]
+  },
+  {
+   "seed": 212,
+   "id": "S0212L01U06",
+   "lego": "S0212L01",
+   "known": "그들은 도움을 요청하고 싶었어요",
+   "target": "They wanted to ask for help",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0212L01U06",
+      "seed_number": 212,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "그들은 도움을 요청하고 싶었어요",
+      "target_text": "They wanted to ask for help",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 212,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0212L01U06",
+     "slot": "known",
+     "audio_id": "53c634c5-70fc-436d-862c-1b2db0ff2b85"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0212L01U06",
+     "slot": "target1",
+     "audio_id": "987cf31e-641a-407f-80ec-a3d250571e37"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0212L01U06",
+     "slot": "target2",
+     "audio_id": "99c8cddb-54c6-4b87-9208-377d18006aa9"
+    }
+   ]
+  },
+  {
+   "seed": 213,
+   "id": "S0213L01U06",
+   "lego": "S0213L01",
+   "known": "우리는 그들이 무엇을 달성하려는지 몰라요",
+   "target": "We don't know what they're trying to achieve",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0213L01U06",
+      "seed_number": 213,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "우리는 그들이 무엇을 달성하려는지 몰라요",
+      "target_text": "We don't know what they're trying to achieve",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 213,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0213L01U06",
+     "slot": "known",
+     "audio_id": "ba08a74c-795e-44ec-9806-8c77b846eb41"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0213L01U06",
+     "slot": "target1",
+     "audio_id": "5b0e9bed-eb4e-4776-8cdf-7d027e012baf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0213L01U06",
+     "slot": "target2",
+     "audio_id": "9d037a28-c3da-4d46-862f-b36eb8ab3dcf"
+    }
+   ]
+  },
+  {
+   "seed": 222,
+   "id": "S0222L02U06",
+   "lego": "S0222L02",
+   "known": "그는 저에게 원하는 것을 말하려고 해요",
+   "target": "He's trying to tell me what he wants",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0222L02U06",
+      "seed_number": 222,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "그는 저에게 원하는 것을 말하려고 해요",
+      "target_text": "He's trying to tell me what he wants",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 222,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0222L02U06",
+     "slot": "known",
+     "audio_id": "77e87e59-8005-40a6-a5da-40399c624143"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0222L02U06",
+     "slot": "target1",
+     "audio_id": "efd723ec-7754-441d-b0a0-82a93e92cc7f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0222L02U06",
+     "slot": "target2",
+     "audio_id": "1e2b42a7-a8ab-42a3-b4ea-1e4711595c3b"
+    }
+   ]
+  },
+  {
+   "seed": 223,
+   "id": "S0223L01U06",
+   "lego": "S0223L01",
+   "known": "그는 내일 당신에게 물어볼 거예요",
+   "target": "He's going to ask you tomorrow",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0223L01U06",
+      "seed_number": 223,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "그는 내일 당신에게 물어볼 거예요",
+      "target_text": "He's going to ask you tomorrow",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 223,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0223L01U06",
+     "slot": "known",
+     "audio_id": "0184923b-da42-49a9-b35d-104f7509f8bc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0223L01U06",
+     "slot": "target1",
+     "audio_id": "193fe010-c4e0-44e7-98d1-6bd186fe6353"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0223L01U06",
+     "slot": "target2",
+     "audio_id": "e4fb87d5-e3c2-4741-a801-7f8bb04d9938"
+    }
+   ]
+  },
+  {
+   "seed": 225,
+   "id": "S0225L02U06",
+   "lego": "S0225L02",
+   "known": "그는 할 수 있으면 당신에게 답을 줄 거예요",
+   "target": "He would give you an answer if he could",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0225L02U06",
+      "seed_number": 225,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "그는 할 수 있으면 당신에게 답을 줄 거예요",
+      "target_text": "He would give you an answer if he could",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 225,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0225L02U06",
+     "slot": "known",
+     "audio_id": "036801f4-c9ff-4e4c-ac72-227556c16bd1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0225L02U06",
+     "slot": "target1",
+     "audio_id": "e1b1f901-c0d2-48b1-9f8c-84903c325ce7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0225L02U06",
+     "slot": "target2",
+     "audio_id": "d6944056-6dcd-4f8a-b60e-c03f15e14442"
+    }
+   ]
+  },
+  {
+   "seed": 234,
+   "id": "S0234L03U06",
+   "lego": "S0234L03",
+   "known": "저는 어젯밤 당신의 남동생과 함께 일하는 사람을 만났어요",
+   "target": "I met someone last night who works with your brother",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0234L03U06",
+      "seed_number": 234,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "저는 어젯밤 당신의 남동생과 함께 일하는 사람을 만났어요",
+      "target_text": "I met someone last night who works with your brother",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 234,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0234L03U06",
+     "slot": "known",
+     "audio_id": "77a3e65b-59ae-4630-a456-dcc586200f1d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0234L03U06",
+     "slot": "target1",
+     "audio_id": "1b678672-4c5a-469d-8599-8e935bbab45e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0234L03U06",
+     "slot": "target2",
+     "audio_id": "19ad3519-0688-4591-9d8f-d5032562b18e"
+    }
+   ]
+  },
+  {
+   "seed": 236,
+   "id": "S0236L01U06",
+   "lego": "S0236L01",
+   "known": "저는 도우려고 할 거라고 말한 사람을 알아요",
+   "target": "I know someone who said that she was going to try to help",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0236L01U06",
+      "seed_number": 236,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 도우려고 할 거라고 말한 사람을 알아요",
+      "target_text": "I know someone who said that she was going to try to help",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 236,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0236L01U06",
+     "slot": "known",
+     "audio_id": "59590f61-327e-44fd-b446-6326251a0800"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0236L01U06",
+     "slot": "target1",
+     "audio_id": "e7dd7519-fb4f-4682-b197-56d21896849f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0236L01U06",
+     "slot": "target2",
+     "audio_id": "5f7a5f15-b1b6-43f6-abe3-0fa757fcd8d6"
+    }
+   ]
+  },
+  {
+   "seed": 237,
+   "id": "S0237L01U06",
+   "lego": "S0237L01",
+   "known": "그는 주말 전에 당신에게 말해달라고 했어요",
+   "target": "He wanted me to tell you before the weekend",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0237L01U06",
+      "seed_number": 237,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "그는 주말 전에 당신에게 말해달라고 했어요",
+      "target_text": "He wanted me to tell you before the weekend",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 237,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0237L01U06",
+     "slot": "known",
+     "audio_id": "b37e924e-6498-4703-8d36-117005681708"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0237L01U06",
+     "slot": "target1",
+     "audio_id": "7ddf28cb-884b-4cd0-adce-bfb545a39778"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0237L01U06",
+     "slot": "target2",
+     "audio_id": "f4e86136-7fe3-4fb3-a85a-06382e5c3e15"
+    }
+   ]
+  },
+  {
+   "seed": 241,
+   "id": "S0241L01U06",
+   "lego": "S0241L01",
+   "known": "저는 그에게 그것을 주고 싶지 않아요",
+   "target": "I don't want to give it to him",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0241L01U06",
+      "seed_number": 241,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "저는 그에게 그것을 주고 싶지 않아요",
+      "target_text": "I don't want to give it to him",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 241,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0241L01U06",
+     "slot": "known",
+     "audio_id": "d5452909-e7e9-4377-b66e-c411d0d46d10"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0241L01U06",
+     "slot": "target1",
+     "audio_id": "6d0ccec8-ab07-4298-9595-90c279db6966"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0241L01U06",
+     "slot": "target2",
+     "audio_id": "34c0ed50-0372-467a-8f71-1758263fa8da"
+    }
+   ]
+  },
+  {
+   "seed": 245,
+   "id": "S0245L01U06",
+   "lego": "S0245L01",
+   "known": "저는 짧은 시간에 많이 한 것에 만족해요",
+   "target": "I'm happy with how much I've done in a short time",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0245L01U06",
+      "seed_number": 245,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 짧은 시간에 많이 한 것에 만족해요",
+      "target_text": "I'm happy with how much I've done in a short time",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 245,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0245L01U06",
+     "slot": "known",
+     "audio_id": "7f67e2cd-856c-41c9-b3c0-00da4bf18f8c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0245L01U06",
+     "slot": "target1",
+     "audio_id": "cb5804e4-3563-4ec9-b3fa-43ee6f1dff8f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0245L01U06",
+     "slot": "target2",
+     "audio_id": "74b71363-6f83-47ff-a5c7-e699855e45fc"
+    }
+   ]
+  },
+  {
+   "seed": 256,
+   "id": "S0256L01U05",
+   "lego": "S0256L01",
+   "known": "한 시간 안에 준비가 될 것 같아요",
+   "target": "I think I'll be ready in less than an hour",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0256L01U05",
+      "seed_number": 256,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "한 시간 안에 준비가 될 것 같아요",
+      "target_text": "I think I'll be ready in less than an hour",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 256,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0256L01U05",
+     "slot": "known",
+     "audio_id": "a3d041e2-8887-46f5-b091-5f99548048c1"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0256L01U05",
+     "slot": "target1",
+     "audio_id": "c166fbd7-317d-41e2-b84a-259b1a7861aa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0256L01U05",
+     "slot": "target2",
+     "audio_id": "9413a076-e080-438c-8934-87c08e9ea159"
+    }
+   ]
+  },
+  {
+   "seed": 276,
+   "id": "S0276L01U06",
+   "lego": "S0276L01",
+   "known": "아니요, 조금 더 오래 있을 수 있어요",
+   "target": "No I can stay here for a little longer",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0276L01U06",
+      "seed_number": 276,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "아니요, 조금 더 오래 있을 수 있어요",
+      "target_text": "No I can stay here for a little longer",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 276,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0276L01U06",
+     "slot": "known",
+     "audio_id": "2e02b503-44ac-49b2-acb5-6edf3a502d62"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0276L01U06",
+     "slot": "target1",
+     "audio_id": "31b130f5-a4fb-42eb-8af9-db0bbf8409b0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0276L01U06",
+     "slot": "target2",
+     "audio_id": "dcfb50c8-6160-4e80-9726-ea2e82a93978"
+    }
+   ]
+  },
+  {
+   "seed": 279,
+   "id": "S0279L01U06",
+   "lego": "S0279L01",
+   "known": "네, 시간이 많지 않았기 때문이에요",
+   "target": "Yes because there wasn't much time left",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0279L01U06",
+      "seed_number": 279,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "네, 시간이 많지 않았기 때문이에요",
+      "target_text": "Yes because there wasn't much time left",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 279,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0279L01U06",
+     "slot": "known",
+     "audio_id": "8d98edf5-6fa3-499d-8ef2-70e37fc590f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0279L01U06",
+     "slot": "target1",
+     "audio_id": "9bd3e3b0-ed6f-4900-98fa-76306f4e4cfe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0279L01U06",
+     "slot": "target2",
+     "audio_id": "08e5dedf-920d-4baf-9a3f-529c4ab20f74"
+    }
+   ]
+  },
+  {
+   "seed": 280,
+   "id": "S0280L03U08",
+   "lego": "S0280L03",
+   "known": "아니요, 가장 중요한 일만 했어요",
+   "target": "No I only had to do the most important job",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0280L03U08",
+      "seed_number": 280,
+      "lego_index": 3,
+      "position": 14,
+      "known_text": "아니요, 가장 중요한 일만 했어요",
+      "target_text": "No I only had to do the most important job",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 280,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0280L03U08",
+     "slot": "known",
+     "audio_id": "b58c072a-004d-4f20-bf2d-e0c565ae868b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0280L03U08",
+     "slot": "target1",
+     "audio_id": "874e5fba-9e4f-4a90-91d9-def562ad6164"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0280L03U08",
+     "slot": "target2",
+     "audio_id": "888f4aaf-b587-43a9-92f5-160b75a39bb9"
+    }
+   ]
+  },
+  {
+   "seed": 281,
+   "id": "S0281L01U06",
+   "lego": "S0281L01",
+   "known": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+   "target": "Do you mind if I finish my coffee before you start?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0281L01U06",
+      "seed_number": 281,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+      "target_text": "Do you mind if I finish my coffee before you start?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 281,
+       "canon": "P26"
+      },
+      "word_count": 51,
+      "lego_count": 6,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0281L01U06",
+     "slot": "known",
+     "audio_id": "0f6e01d6-7680-4649-ac43-354cdec63864"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0281L01U06",
+     "slot": "target1",
+     "audio_id": "873bf45b-4a40-49a9-b2ee-e51bde8ebdc7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0281L01U06",
+     "slot": "target2",
+     "audio_id": "93b60170-31ac-4146-b338-74e941d6599b"
+    }
+   ]
+  },
+  {
+   "seed": 283,
+   "id": "S0283L01U06",
+   "lego": "S0283L01",
+   "known": "당신 친구들 중 누가 영어를 해요?",
+   "target": "Which of your friends speak English?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0283L01U06",
+      "seed_number": 283,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "당신 친구들 중 누가 영어를 해요?",
+      "target_text": "Which of your friends speak English?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 283,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0283L01U06",
+     "slot": "known",
+     "audio_id": "7d3fb67d-8ba8-43cc-8c40-71d6b551c5cb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0283L01U06",
+     "slot": "target1",
+     "audio_id": "389ee070-b04f-4184-8898-901367a346cf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0283L01U06",
+     "slot": "target2",
+     "audio_id": "9a084b94-4b42-4dd3-a45c-47ad18fd9705"
+    }
+   ]
+  },
+  {
+   "seed": 297,
+   "id": "S0297L01U06",
+   "lego": "S0297L01",
+   "known": "저는 영어를 하는 사람을 많이 알지 못해요",
+   "target": "I don't know many people who speak English",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_kor:S0297L01U06",
+      "seed_number": 297,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "저는 영어를 하는 사람을 많이 알지 못해요",
+      "target_text": "I don't know many people who speak English",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 297,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0297L01U06",
+     "slot": "known",
+     "audio_id": "365b79a9-d397-47eb-8cd5-d8192092bce7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0297L01U06",
+     "slot": "target1",
+     "audio_id": "2bcba9a0-1455-420f-97ad-d8319af6911f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_kor:S0297L01U06",
+     "slot": "target2",
+     "audio_id": "68c0a594-5e24-4b82-84bf-bc83203ee840"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_zut": [
+   {
+    "seed": 40,
+    "known": "지금 기분이 어때요?",
+    "target": "How do you feel at the moment?",
+    "row": "S0040L01B02",
+    "row_known": "지금 기분이 어때요?",
+    "row_target": "how do you feel at the moment now?"
+   },
+   {
+    "seed": 49,
+    "known": "이런 거예요, 제 말이 무슨 뜻인지 알면",
+    "target": "It's like this, if you know what I mean",
+    "row": "S0049L02U01",
+    "row_known": "이런 거예요, 제 말이 무슨 뜻인지 알면",
+    "row_target": "that's the sort of thing, if you know what I mean"
+   },
+   {
+    "seed": 58,
+    "known": "충분한 단어를 이해할 때 흥미로워요",
+    "target": "It's interesting when you understand enough words",
+    "row": "S0058L02U01",
+    "row_known": "충분한 단어를 이해할 때 흥미로워요",
+    "row_target": "it's interesting when I understand enough words"
+   },
+   {
+    "seed": 59,
+    "known": "저는 다음 주에 해야 할 일을 어떻게 하는지 알아요",
+    "target": "I know how to do what I need to do next week",
+    "row": "S0059L02U01",
+    "row_known": "저는 다음 주에 해야 할 일을 어떻게 하는지 알아요",
+    "row_target": "I know how to do what I have to do next week"
+   },
+   {
+    "seed": 80,
+    "known": "저는 언제 준비가 될지 모르겠어요",
+    "target": "I'm not sure when I'll be ready",
+    "row": "S0080L01U01",
+    "row_known": "저는 언제 준비가 될지 모르겠어요",
+    "row_target": "I'm not sure when I'll be ready to start"
+   },
+   {
+    "seed": 81,
+    "known": "언제 시작하고 싶어요?",
+    "target": "When do you want to start?",
+    "row": "S0081L01B03",
+    "row_known": "언제 시작하고 싶어요?",
+    "row_target": "when do you want to start learning?"
+   },
+   {
+    "seed": 99,
+    "known": "당신은 왜 작동하지 않는지 자신에게 물어봐야 해요",
+    "target": "You should ask yourself why it's not working",
+    "row": "S0099L02U02",
+    "row_known": "당신은 왜 작동하지 않는지 자신에게 물어봐야 해요",
+    "row_target": "you need to ask yourself why it's not working"
+   },
+   {
+    "seed": 132,
+    "known": "그것은 그녀가 말하고 있던 것보다 덜 흥미로워요",
+    "target": "That's less exciting than what she was saying",
+    "row": "S0132L02U01",
+    "row_known": "그것은 그녀가 말하고 있던 것보다 덜 흥미로워요",
+    "row_target": "it's less exciting than what she was saying"
+   },
+   {
+    "seed": 190,
+    "known": "몇 가지 질문을 해도 괜찮아요?",
+    "target": "Do you mind if I ask you some questions?",
+    "row": "S0190L02U01",
+    "row_known": "몇 가지 질문을 해도 괜찮아요?",
+    "row_target": "do you mind if I ask some questions?"
+   },
+   {
+    "seed": 249,
+    "known": "가기 전에 저를 도와주세요",
+    "target": "I want you to help me before you go",
+    "row": "S0249L01B03",
+    "row_known": "가기 전에 저를 도와주세요",
+    "row_target": "help me before you go"
+   },
+   {
+    "seed": 253,
+    "known": "몇 분 후에 준비가 될 거예요",
+    "target": "I should be ready in a few minutes",
+    "row": "S0253L01B02",
+    "row_known": "몇 분 후에 준비가 될 거예요",
+    "row_target": "I will be ready in a few minutes"
+   },
+   {
+    "seed": 259,
+    "known": "아이디어",
+    "target": "An idea",
+    "row": "S0259L01B01",
+    "row_known": "아이디어",
+    "row_target": "idea"
+   },
+   {
+    "seed": 265,
+    "known": "친구",
+    "target": "A friend",
+    "row": "S0052L02B01",
+    "row_known": "친구",
+    "row_target": "friend"
+   },
+   {
+    "seed": 321,
+    "known": "책",
+    "target": "A book",
+    "row": "S0161L01B01",
+    "row_known": "책",
+    "row_target": "book"
+   },
+   {
+    "seed": 329,
+    "known": "중요해요",
+    "target": "It's important",
+    "row": "S0065L01B01",
+    "row_known": "중요해요",
+    "row_target": "it's important to"
+   },
+   {
+    "seed": 422,
+    "known": "질문",
+    "target": "A question",
+    "row": "S0190L01B01",
+    "row_known": "질문",
+    "row_target": "questions"
+   },
+   {
+    "seed": 607,
+    "known": "알았다면 다르게 했을 거예요",
+    "target": "If I'd known I'd have done things differently",
+    "row": "S0152L02U01",
+    "row_known": "알았다면 다르게 했을 거예요",
+    "row_target": "if I had known I would have done it differently"
+   },
+   {
+    "seed": 628,
+    "known": "차를 좋아해요?",
+    "target": "Do you like tea?",
+    "row": "S0121L01B02",
+    "row_known": "차를 좋아해요",
+    "row_target": "like a car"
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 166,
+    "known": "제 이름은 별로 특이하지 않아요",
+    "target": "My name is not very unusual"
+   },
+   {
+    "seed": 305,
+    "known": "여자",
+    "target": "Woman"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 173,
+    "known": "아니요, 괜찮아요, 혼자 할 수 있어요",
+    "target": "No thank you I can manage on my own",
+    "legos": [
+     "S0173L01 혼자서 할 수 있어요 | I can manage on my own"
+    ]
+   },
+   {
+    "seed": 207,
+    "known": "당신은 해야 할 일을 했어요",
+    "target": "You've done what you needed to do",
+    "legos": [
+     "S0207L01(old) 해야 할 일을 했어요 | you've done what you needed to do"
+    ]
+   },
+   {
+    "seed": 208,
+    "known": "저는 어떻게 말하는지 물어보고 싶지 않았어요",
+    "target": "I didn't want to ask you how to say it",
+    "legos": [
+     "S0208L01 당신에게 물어보고 싶지 않았어요 | I didn't want to ask you"
+    ]
+   },
+   {
+    "seed": 228,
+    "known": "저 남자는 말하기 연습을 막 시작했어요",
+    "target": "That man has just started to practise speaking",
+    "legos": [
+     "S0228L01 는 | has"
+    ]
+   },
+   {
+    "seed": 243,
+    "known": "저는 같은 것을 먹겠다고 할 거예요",
+    "target": "I'm going to ask for the same thing to eat",
+    "legos": [
+     "S0243L01 먹겠다 | eat"
+    ]
+   },
+   {
+    "seed": 257,
+    "known": "저는 저 파란 것이 마음에 들어요",
+    "target": "I like that blue thing",
+    "legos": [
+     "S0257L01(old) 파란 | blue"
+    ]
+   },
+   {
+    "seed": 299,
+    "known": "그는 절반을 내고 싶어해요",
+    "target": "He wants to pay half",
+    "legos": [
+     "S0299L01 내다 | pay",
+     "S0299L02 절반 | half"
+    ]
+   }
+  ],
+  "variant_form": [
+   {
+    "seed": 182,
+    "known": "어디선가 제 열쇠를 봤어요?",
+    "target": "Have you seen my keys anywhere?",
+    "row": "S0182L02B02",
+    "row_known": "어디선가 제 열쇠를 봤나요?",
+    "row_target": "have you seen my keys anywhere?"
+   }
+  ],
+  "not_built": [
+   {
+    "seed": 301,
+    "known": "그는 당신에게 무언가 보여주고 싶다고 했어요",
+    "target": "He said that he wants to show you something"
+   },
+   {
+    "seed": 302,
+    "known": "그녀는 도시에서 살고 싶지 않다고 했어요",
+    "target": "She said that she doesn't want to live in a city"
+   },
+   {
+    "seed": 303,
+    "known": "저는 그가 앉고 싶어한다고 생각해요",
+    "target": "I think that he wants to sit down"
+   },
+   {
+    "seed": 304,
+    "known": "저는 그녀가 재택근무를 하고 싶어하지 않는다고 생각해요",
+    "target": "I think that she doesn't want to work from home"
+   },
+   {
+    "seed": 306,
+    "known": "저는 당신 친구와 이야기하고 있는 저 젊은 여자를 알아요",
+    "target": "I know that young woman who's talking to your friend"
+   },
+   {
+    "seed": 307,
+    "known": "저는 저기 앉아 있는 저 젊은 남자를 알아요",
+    "target": "I know that young man who's sitting over there"
+   },
+   {
+    "seed": 308,
+    "known": "네, 그녀는 어머니 친구예요",
+    "target": "Yes she's a friend of my mother"
+   },
+   {
+    "seed": 309,
+    "known": "아니요, 전에 본 적이 없어요",
+    "target": "No I've never seen her before"
+   },
+   {
+    "seed": 310,
+    "known": "그녀는 저 남자에 대한 이야기를 쓸 수 있어요",
+    "target": "She could write a story about that man"
+   },
+   {
+    "seed": 311,
+    "known": "그는 세 가지 가장 중요한 사실을 믿을 수 없었어요",
+    "target": "He couldn't believe the three most important facts"
+   },
+   {
+    "seed": 312,
+    "known": "그녀는 내일 밤 다른 방을 쓸 수 있다고 했어요",
+    "target": "She said that she could use the other room tomorrow night"
+   },
+   {
+    "seed": 313,
+    "known": "그는 다섯 경기를 모두 볼 수 없다고 했어요",
+    "target": "He said that he couldn't watch all five games"
+   },
+   {
+    "seed": 314,
+    "known": "저는 그녀가 테이블 위에 놓을 수 있다고 생각해요",
+    "target": "I think that she could put it on the table"
+   },
+   {
+    "seed": 315,
+    "known": "저는 그가 원했던 차를 살 여유가 없었다고 생각해요",
+    "target": "I think that he couldn't afford the car that he wanted"
+   },
+   {
+    "seed": 316,
+    "known": "그녀가 월요일에 남동생을 데려올 수 있다고 생각해요?",
+    "target": "Do you think that she could bring her brother on Monday?"
+   },
+   {
+    "seed": 317,
+    "known": "네, 원한다면 할 수 있을 것 같아요",
+    "target": "Yes I think she could if she wanted to"
+   },
+   {
+    "seed": 318,
+    "known": "아니요, 이번에는 할 수 없을 것 같아요",
+    "target": "No I don't think she could this time"
+   },
+   {
+    "seed": 319,
+    "known": "그녀는 다른 나라로 이사할 필요가 있어요",
+    "target": "She needs to move to a different country"
+   },
+   {
+    "seed": 320,
+    "known": "그는 올해 또 다른 텔레비전을 살 필요가 없어요",
+    "target": "He doesn't need to buy another television this year"
+   },
+   {
+    "seed": 322,
+    "known": "그녀는 같은 책을 읽어야 한다고 했어요",
+    "target": "She said that she needs to read the same book"
+   },
+   {
+    "seed": 323,
+    "known": "그는 학교까지 걸어갈 필요가 없다고 했어요",
+    "target": "He said that he doesn't need to walk to school"
+   },
+   {
+    "seed": 324,
+    "known": "그 학생은 두 손을 들고 있어요",
+    "target": "That student has both of her hands up"
+   },
+   {
+    "seed": 325,
+    "known": "저는 그가 열 가지 가능한 문제를 고려해야 한다고 생각해요",
+    "target": "I think that he needs to consider ten possible problems"
+   },
+   {
+    "seed": 326,
+    "known": "저는 그녀가 회사를 팔 필요가 없다고 생각해요",
+    "target": "I don't think that she needs to sell the company"
+   },
+   {
+    "seed": 327,
+    "known": "그녀가 다른 방법을 제시해야 한다고 생각해요?",
+    "target": "Do you think that she needs to offer another way?"
+   },
+   {
+    "seed": 328,
+    "known": "네, 그렇게 해야 할 것 같아요",
+    "target": "Yes I think she ought to"
+   },
+   {
+    "seed": 330,
+    "known": "아니요, 별로 중요하지 않은 것 같아요",
+    "target": "No I don't think it's very important"
+   },
+   {
+    "seed": 331,
+    "known": "그녀는 모든 답을 제공할 수 없어요",
+    "target": "She can't provide all the answers"
+   },
+   {
+    "seed": 332,
+    "known": "그는 여동생을 위해 새로운 삶을 만들 수 있어요",
+    "target": "He can build a new life for his sister"
+   },
+   {
+    "seed": 333,
+    "known": "그녀는 그룹과 많은 시간을 보낼 수 없다고 했어요",
+    "target": "She said that she can't spend much time with the group"
+   },
+   {
+    "seed": 334,
+    "known": "그는 새끼 고양이를 안게 해줄 수 있다고 했어요",
+    "target": "He said that he can let you hold the kitten"
+   },
+   {
+    "seed": 335,
+    "known": "저는 그가 가치 있는 아이디어를 추가할 수 있다고 생각해요",
+    "target": "I think that he can add some valuable ideas"
+   },
+   {
+    "seed": 336,
+    "known": "저는 그녀가 문을 열 수 없다고 생각해요",
+    "target": "I don't think that she can open the door"
+   },
+   {
+    "seed": 337,
+    "known": "그가 계속 뛸 수 있다고 생각해요?",
+    "target": "Do you think that he can continue to play?"
+   },
+   {
+    "seed": 338,
+    "known": "심하게",
+    "target": "Badly"
+   },
+   {
+    "seed": 339,
+    "known": "아니요, 꽤 심하게 다친 것 같아요",
+    "target": "No I think he's hurt himself quite badly"
+   },
+   {
+    "seed": 340,
+    "known": "네, 괜찮아질 것 같아요",
+    "target": "Yes I'm sure he's going to be okay"
+   },
+   {
+    "seed": 341,
+    "known": "저는 며칠 전에 누군가를 만났어요",
+    "target": "I met someone a few days ago"
+   },
+   {
+    "seed": 342,
+    "known": "저는 무언가를 말한 사람을 만났어요",
+    "target": "I met someone who said something"
+   },
+   {
+    "seed": 343,
+    "known": "경제에 대해 걱정된다고 말한 사람을요",
+    "target": "Who said that she's worried about the economy"
+   },
+   {
+    "seed": 344,
+    "known": "당신을 기꺼이 도와주겠다고 말한 사람을요",
+    "target": "Who said that he's happy to help you"
+   },
+   {
+    "seed": 345,
+    "known": "아직 떠날 준비가 안 됐다고 말한 사람을요",
+    "target": "Who said that he's not ready to leave yet"
+   },
+   {
+    "seed": 346,
+    "known": "저는 그녀가 제 책을 좋아했다는 것을 알기를 원했어요",
+    "target": "I wanted her to know that I liked her book"
+   },
+   {
+    "seed": 347,
+    "known": "그는 일주일 전에 무슨 일이 일어나고 있었는지 알고 싶었어요",
+    "target": "He wanted to know what was happening a week ago"
+   },
+   {
+    "seed": 348,
+    "known": "그녀는 무슨 일이 일어날지 알고 싶어하지 않았어요",
+    "target": "She didn't want to know what was going to happen"
+   },
+   {
+    "seed": 349,
+    "known": "그는 금요일 밤에 외출하고 싶었어요?",
+    "target": "Did he want to go out on Friday night?"
+   },
+   {
+    "seed": 350,
+    "known": "네, 그는 오래된 친구들을 만나고 싶었어요",
+    "target": "Yes he wanted to see some old friends"
+   },
+   {
+    "seed": 351,
+    "known": "아니요, 그는 저를 혼자 두고 싶어하지 않았어요",
+    "target": "No he didn't want to leave me on my own"
+   },
+   {
+    "seed": 352,
+    "known": "원한다고 해도 할 수 없을 거예요",
+    "target": "Even if he wanted to he wouldn't be able to"
+   },
+   {
+    "seed": 353,
+    "known": "그녀는 운동장을 뛰어다닐 필요가 있었어요",
+    "target": "She needed to run around the field"
+   },
+   {
+    "seed": 354,
+    "known": "그는 화난 것처럼 보일 필요가 없었어요",
+    "target": "He didn't need to appear angry"
+   },
+   {
+    "seed": 355,
+    "known": "그녀는 당신이 아는 저 여자와 이야기할 필요가 있었어요?",
+    "target": "Did she need to talk to that woman you know?"
+   },
+   {
+    "seed": 356,
+    "known": "네, 그들은 논의해야 할 중요한 것이 있었어요",
+    "target": "Yes they had something important to discuss"
+   },
+   {
+    "seed": 357,
+    "known": "아니요, 그녀는 그냥 메시지를 보내고 싶었어요",
+    "target": "No she just wanted to send her a message"
+   },
+   {
+    "seed": 358,
+    "known": "당신 친구가 꼭대기에 닿을 수 없다고 했어요",
+    "target": "Your friend said that she couldn't reach the top"
+   },
+   {
+    "seed": 359,
+    "known": "당신 친구가 왼쪽으로 돌 수 있다고 했어요",
+    "target": "Your friend said that he could turn left"
+   },
+   {
+    "seed": 360,
+    "known": "친구가 다른 말을 했어요?",
+    "target": "Did your friend say anything else?"
+   },
+   {
+    "seed": 361,
+    "known": "그는 조용했어요",
+    "target": "He was quiet"
+   },
+   {
+    "seed": 362,
+    "known": "아니요, 당신이 떠난 후에 꽤 조용했어요",
+    "target": "No he was rather quiet after you left"
+   },
+   {
+    "seed": 363,
+    "known": "네, 그는 많이 이야기하고 싶어했어요",
+    "target": "Yes he felt like talking a lot"
+   },
+   {
+    "seed": 364,
+    "known": "저는 그가 그 장소를 좋아하지 않는다고 들었어요",
+    "target": "I heard that he didn't like that place"
+   },
+   {
+    "seed": 365,
+    "known": "저는 그녀가 그에게 한 말을 듣지 못했어요",
+    "target": "I didn't hear what she said to him"
+   },
+   {
+    "seed": 366,
+    "known": "그가 무엇을 키우고 싶었는지 들었어요?",
+    "target": "Did you hear what he wanted to grow?"
+   },
+   {
+    "seed": 367,
+    "known": "아니요, 아무도 저에게 말해주지 않았어요",
+    "target": "No nobody told me"
+   },
+   {
+    "seed": 368,
+    "known": "네, 그가 토마토를 키우고 싶다고 들었어요",
+    "target": "Yes I heard that he wanted to grow tomatoes"
+   },
+   {
+    "seed": 369,
+    "known": "저는 길에서 말 몇 마리를 봤어요",
+    "target": "I saw several horses on the road"
+   },
+   {
+    "seed": 370,
+    "known": "저는 아는 사람을 아무도 보지 못했어요",
+    "target": "I didn't see anyone that I knew"
+   },
+   {
+    "seed": 371,
+    "known": "저는 수요일에 영화를 보러 갔어요",
+    "target": "I went to see a film on Wednesday"
+   },
+   {
+    "seed": 372,
+    "known": "그녀가 만들려고 하는 것을 봤어요?",
+    "target": "Did you see what she was trying to create?"
+   },
+   {
+    "seed": 373,
+    "known": "아름다웠어요",
+    "target": "It was beautiful"
+   },
+   {
+    "seed": 374,
+    "known": "네, 아주 아름다웠다고 생각했어요",
+    "target": "Yes I thought it was very beautiful"
+   },
+   {
+    "seed": 375,
+    "known": "아니요, 그녀가 무엇을 하고 있는지 몰랐어요",
+    "target": "No I didn't know what she was doing"
+   },
+   {
+    "seed": 376,
+    "known": "저는 지난달에 어디에도 가지 않았어요",
+    "target": "I didn't go anywhere last month"
+   },
+   {
+    "seed": 377,
+    "known": "작년에 세계 어딘가에 가봤어요?",
+    "target": "Did you go anywhere in the world last year?"
+   },
+   {
+    "seed": 378,
+    "known": "아니요, 휴가를 위한 돈이 충분하지 않았어요",
+    "target": "No I didn't have enough money for holidays"
+   },
+   {
+    "seed": 379,
+    "known": "네, 아프리카를 여행할 만큼 운이 좋았어요",
+    "target": "Yes I was lucky enough to travel to Africa"
+   },
+   {
+    "seed": 380,
+    "known": "저는 그녀가 무엇을 포함하고 싶은지 물었어요",
+    "target": "I asked what she wanted to include"
+   },
+   {
+    "seed": 381,
+    "known": "저는 그가 우리를 따라가고 싶은지 묻지 않았어요",
+    "target": "I didn't ask if he wanted to follow us"
+   },
+   {
+    "seed": 382,
+    "known": "그가 어디에 두고 싶은지 물었어요?",
+    "target": "Did you ask where he wanted to put it?"
+   },
+   {
+    "seed": 383,
+    "known": "네, 그는 정원에 두고 싶다고 했어요",
+    "target": "Yes he said he wanted to put it in the garden"
+   },
+   {
+    "seed": 384,
+    "known": "저는 그가 조금 전에 한 말에 동의할 수 없었어요",
+    "target": "I couldn't agree with what he said a moment ago"
+   },
+   {
+    "seed": 385,
+    "known": "그녀에게 동의했어요?",
+    "target": "Did you agree with her?"
+   },
+   {
+    "seed": 386,
+    "known": "네, 저는 그녀에게 동의했어요",
+    "target": "Yes I agreed with her"
+   },
+   {
+    "seed": 387,
+    "known": "아니요, 그녀가 옳다고 생각하지 않았어요",
+    "target": "No I didn't think she was right"
+   },
+   {
+    "seed": 388,
+    "known": "당신이 함께 일하는 그 사람",
+    "target": "That person you work with"
+   },
+   {
+    "seed": 389,
+    "known": "저기 있는 그 사람",
+    "target": "That person over there"
+   },
+   {
+    "seed": 390,
+    "known": "입구 근처에 서 있는 사람",
+    "target": "The one who is standing near the entrance"
+   },
+   {
+    "seed": 391,
+    "known": "버스 쪽으로 걸어가고 있는 사람",
+    "target": "The one who is walking towards the bus"
+   },
+   {
+    "seed": 392,
+    "known": "우체국 맞은편에 검은 머리를 한 저 아이",
+    "target": "That child with the black hair opposite the post office"
+   },
+   {
+    "seed": 393,
+    "known": "초록색 셔츠를 입은 저 소년",
+    "target": "That boy with the green shirt"
+   },
+   {
+    "seed": 394,
+    "known": "노란색 드레스를 입은 저 소녀",
+    "target": "That girl with the yellow dress"
+   },
+   {
+    "seed": 395,
+    "known": "우리는 다음 모퉁이에서 왼쪽으로 돌아야 해요",
+    "target": "We need to turn left at the next corner"
+   },
+   {
+    "seed": 396,
+    "known": "우리는 모두가 준비될 때까지 서 있을 필요가 없어요",
+    "target": "We don't need to stand until everybody else is ready"
+   },
+   {
+    "seed": 397,
+    "known": "우리가 곧 준비해야 해요?",
+    "target": "Do we need to get ready soon?"
+   },
+   {
+    "seed": 398,
+    "known": "우리는 아이들에게 더 인내심을 갖고 싶어요",
+    "target": "We want to become more patient with our children"
+   },
+   {
+    "seed": 399,
+    "known": "우리는 희망을 잃고 싶지 않아요",
+    "target": "We don't want to lose hope"
+   },
+   {
+    "seed": 400,
+    "known": "우리는 나중에 무언가 먹고 싶어요?",
+    "target": "Do we want to eat something later on?"
+   },
+   {
+    "seed": 401,
+    "known": "아니요, 바로 집에 가는 것이 더 좋을 거예요",
+    "target": "No it would be better to go straight home"
+   },
+   {
+    "seed": 402,
+    "known": "네, 음식을 먹으러 어딘가 들르면 좋겠어요",
+    "target": "Yes it would be nice to stop somewhere for food"
+   },
+   {
+    "seed": 403,
+    "known": "우리는 가능한 한 오래 조용히 있어야 해요",
+    "target": "We should remain quiet for as long as possible"
+   },
+   {
+    "seed": 404,
+    "known": "우리는 목요일 전에 끝날 것을 기대하면 안 돼요",
+    "target": "We shouldn't expect to finish before Thursday"
+   },
+   {
+    "seed": 405,
+    "known": "예약해야 하는지 물어봐야 해요?",
+    "target": "Should we ask if we have to book?"
+   },
+   {
+    "seed": 406,
+    "known": "아니요, 괜찮을 거예요",
+    "target": "No I'm sure it will be okay"
+   },
+   {
+    "seed": 407,
+    "known": "좋은 본보기를 보이려고 노력해야 하지 않아요?",
+    "target": "Shouldn't we try to set a good example?"
+   },
+   {
+    "seed": 408,
+    "known": "네, 행복한 가족을 만드는 가장 좋은 방법이에요",
+    "target": "Yes that's the best way to make a happy family"
+   },
+   {
+    "seed": 409,
+    "known": "아니요, 우리가 무엇을 하든 상관없어요",
+    "target": "No it doesn't matter what we do"
+   },
+   {
+    "seed": 410,
+    "known": "그들은 여전히 서로 싸워요",
+    "target": "They still fight with each other"
+   },
+   {
+    "seed": 411,
+    "known": "저희는 오늘 밤 4명 자리를 예약하고 싶어요",
+    "target": "We would like to reserve a table for four tonight"
+   },
+   {
+    "seed": 412,
+    "known": "우리는 그들이 모든 것을 이기도록 허용할 수 없었어요",
+    "target": "We couldn't allow them to win everything"
+   },
+   {
+    "seed": 413,
+    "known": "가장자리에 너무 가까이 가면 넘어질 수 있어요",
+    "target": "We could fall if we go too close to the edge"
+   },
+   {
+    "seed": 414,
+    "known": "레드 와인 한 병 주실 수 있어요?",
+    "target": "Could we have a bottle of red wine please?"
+   },
+   {
+    "seed": 415,
+    "known": "제가 보기엔 문제가 되지 않을 거예요",
+    "target": "That wouldn't be a problem if you ask me"
+   },
+   {
+    "seed": 416,
+    "known": "그들은 내년에 앞장서고 싶어해요",
+    "target": "They want to lead the way next year"
+   },
+   {
+    "seed": 417,
+    "known": "그들은 저 개미들을 죽이고 싶어해요?",
+    "target": "Do they want to kill those ants?"
+   },
+   {
+    "seed": 418,
+    "known": "그들은 지역 사회를 위해 일해야 해요",
+    "target": "They need to serve the community"
+   },
+   {
+    "seed": 419,
+    "known": "사람들이 그들을 좋아하기를 원한다면",
+    "target": "If they want people to like them"
+   },
+   {
+    "seed": 420,
+    "known": "그들은 그가 몇 살인지 물어볼 필요가 없어요",
+    "target": "They don't need to ask how old he is"
+   },
+   {
+    "seed": 421,
+    "known": "왜냐하면 그들은 이미 그가 약해지고 있다는 것을 알기 때문이에요",
+    "target": "Because they already know he's getting weak"
+   },
+   {
+    "seed": 423,
+    "known": "그들은 그렇게 뻔한 질문을 해야 해요?",
+    "target": "Do they need to ask such an obvious question?"
+   },
+   {
+    "seed": 424,
+    "known": "아니요, 그들은 모두의 시간을 낭비하고 있어요",
+    "target": "No they're wasting everybody's time"
+   },
+   {
+    "seed": 425,
+    "known": "네, 그들은 이해했는지 확인해야 해요",
+    "target": "Yes they need to make sure they understand"
+   },
+   {
+    "seed": 426,
+    "known": "그들은 서로 사랑하고 싶지만 행복하지 않아요",
+    "target": "They would like to love each other but they're unhappy"
+   },
+   {
+    "seed": 427,
+    "known": "그들은 당신이 그들이 지루하다고 생각하기를 원하지 않아요",
+    "target": "They wouldn't like you to think that they're bored"
+   },
+   {
+    "seed": 428,
+    "known": "그들은 화요일에 우리를 방문하고 싶어해요?",
+    "target": "Would they like to visit us on Tuesday?"
+   },
+   {
+    "seed": 429,
+    "known": "네, 그들에게 완벽할 거예요",
+    "target": "Yes that would be perfect for them"
+   },
+   {
+    "seed": 430,
+    "known": "아니요, 그것은 가능하지 않을 거예요",
+    "target": "No that wouldn't be possible"
+   },
+   {
+    "seed": 431,
+    "known": "그들은 아직 준비가 안 됐지만 곧 준비가 될 거예요",
+    "target": "They're not ready yet but they'll be ready soon"
+   },
+   {
+    "seed": 432,
+    "known": "그들은 당신이 물어보기를 원한다는 것을 의미할 수도 있어요",
+    "target": "They could mean that they want you to ask"
+   },
+   {
+    "seed": 433,
+    "known": "그들은 영화가 언제 시작하는지 알 수 없었어요",
+    "target": "They couldn't find out when the film started"
+   },
+   {
+    "seed": 434,
+    "known": "그들이 받는 학생 수를 줄일 수 있어요?",
+    "target": "Could they cut the number of students they take?"
+   },
+   {
+    "seed": 435,
+    "known": "네, 원한다면 할 수 있어요",
+    "target": "Yes they could if they wanted to"
+   },
+   {
+    "seed": 436,
+    "known": "아니요, 그들이 필요로 하는 최소 인원이 있어요",
+    "target": "No there's a minimum number they need"
+   },
+   {
+    "seed": 437,
+    "known": "그들은 자선을 위해 가능한 한 많이 모금하고 싶었어요",
+    "target": "They wanted to raise as much as possible for charity"
+   },
+   {
+    "seed": 438,
+    "known": "그들은 그가 무엇을 해야 하는지 결정하고 싶지 않았어요",
+    "target": "They didn't want to decide what he should do"
+   },
+   {
+    "seed": 439,
+    "known": "그들은 죽고 싶지 않아요",
+    "target": "They don't want to die"
+   },
+   {
+    "seed": 440,
+    "known": "그들은 아직 젊을 때 여행하고 싶어해요",
+    "target": "They want to travel while they're still young"
+   },
+   {
+    "seed": 441,
+    "known": "접근 방식",
+    "target": "An approach"
+   },
+   {
+    "seed": 442,
+    "known": "그들은 새로운 접근 방식을 개발하고 싶었어요?",
+    "target": "Did they want to develop a new approach?"
+   },
+   {
+    "seed": 443,
+    "known": "아니요, 그들은 같은 방식으로 계속하고 싶었어요",
+    "target": "No they wanted to keep doing it the same way"
+   },
+   {
+    "seed": 444,
+    "known": "네, 그들은 더 효율적으로 할 수 있다고 생각했어요",
+    "target": "Yes they thought it could be done more efficiently"
+   },
+   {
+    "seed": 445,
+    "known": "그들은 저 여행 가방을 옮길 수 있을 거예요",
+    "target": "They will be able to carry that suitcase"
+   },
+   {
+    "seed": 446,
+    "known": "그들은 저 창문을 깰 수 없을 거예요",
+    "target": "They won't be able to break that window"
+   },
+   {
+    "seed": 447,
+    "known": "식사 후에 집까지 데려다줄 수 있을까요?",
+    "target": "Will they be able to drive us home after the meal?"
+   },
+   {
+    "seed": 448,
+    "known": "네, 그들은 기꺼이 도와줄 거예요",
+    "target": "Yes they'll be happy to help"
+   },
+   {
+    "seed": 449,
+    "known": "그들은 거의 준비가 됐다고 했어요",
+    "target": "They said that they were almost ready"
+   },
+   {
+    "seed": 450,
+    "known": "아니요, 그들은 직접 기차를 잡아야 해요",
+    "target": "No they have to catch the train themselves"
+   },
+   {
+    "seed": 451,
+    "known": "그들은 하고 싶은 것을 말했어요",
+    "target": "They said what they wanted to do"
+   },
+   {
+    "seed": 452,
+    "known": "그들은 하고 싶은 것을 말하지 않았어요",
+    "target": "They didn't say what they wanted to do"
+   },
+   {
+    "seed": 453,
+    "known": "그들이 어젯밤에 누구를 봤는지 말했어요?",
+    "target": "Did they say who they saw last night?"
+   },
+   {
+    "seed": 454,
+    "known": "우리 친구들이 6시쯤 왔어요",
+    "target": "Our friends came round at about six o'clock"
+   },
+   {
+    "seed": 455,
+    "known": "아이들이 피곤해서 떠나야 했어요",
+    "target": "We had to leave because the children were tired"
+   },
+   {
+    "seed": 456,
+    "known": "그가 거기 있을 수도 있지만 가능성이 높지 않아요",
+    "target": "He might be there but it's not very likely"
+   },
+   {
+    "seed": 457,
+    "known": "문제의 일부는 다양한 분야의 수예요",
+    "target": "Part of the problem is the number of different areas"
+   },
+   {
+    "seed": 458,
+    "known": "과거에는 모든 것이 훨씬 더 쉬웠어요",
+    "target": "It was all much easier in the past"
+   },
+   {
+    "seed": 459,
+    "known": "파란 표지판 앞에 있지 않았어요",
+    "target": "It wasn't in front of the blue sign"
+   },
+   {
+    "seed": 460,
+    "known": "저는 호텔 근처에 가게를 찾고 싶어요",
+    "target": "I want to find a shop near the hotel"
+   },
+   {
+    "seed": 461,
+    "known": "엽서를 살 수 있는 가게요",
+    "target": "A shop where I can buy some postcards"
+   },
+   {
+    "seed": 462,
+    "known": "할아버지는 전쟁 중에 이탈리아에서 싸우셨어요",
+    "target": "My grandfather fought in Italy during the war"
+   },
+   {
+    "seed": 463,
+    "known": "제 방 번호",
+    "target": "My room number"
+   },
+   {
+    "seed": 464,
+    "known": "저는 방 번호를 한 번 말해줬지만 그녀는 잊어버렸어요",
+    "target": "I told her my room number once but she forgot it"
+   },
+   {
+    "seed": 465,
+    "known": "다음에는 이름이 뭔지 물어볼 거예요",
+    "target": "Next time I will ask her what her name is"
+   },
+   {
+    "seed": 466,
+    "known": "제가 벽 너머로 던지게 해주세요",
+    "target": "Let me throw it over the wall"
+   },
+   {
+    "seed": 467,
+    "known": "주차장 옆에 있어요",
+    "target": "It's next to the car park"
+   },
+   {
+    "seed": 468,
+    "known": "세상은 넓어요",
+    "target": "It's a big world"
+   },
+   {
+    "seed": 469,
+    "known": "하지만 그것이 우리가 바꿀 수 없다는 것을 의미하지는 않아요",
+    "target": "But that doesn't mean we can't change it"
+   },
+   {
+    "seed": 470,
+    "known": "멈추기 전에 얼마나 높이 올라가고 싶어요?",
+    "target": "How high do you want to climb before we stop?"
+   },
+   {
+    "seed": 471,
+    "known": "잠깐 쉬러 멈추고 싶어요?",
+    "target": "Do you want to stop for a rest?"
+   },
+   {
+    "seed": 472,
+    "known": "문제의 일부는 우리가 사실을 모른다는 것이에요",
+    "target": "Part of the problem is that we don't know the facts"
+   },
+   {
+    "seed": 473,
+    "known": "저는 그것을 원하지 않아요",
+    "target": "I don't want it"
+   },
+   {
+    "seed": 474,
+    "known": "저는 무료로 줘도 원하지 않아요",
+    "target": "I don't even want it as a free offer"
+   },
+   {
+    "seed": 475,
+    "known": "기다리는 것을 고려할 이유가 많아요",
+    "target": "There are many reasons to consider waiting"
+   },
+   {
+    "seed": 476,
+    "known": "저는 후반전이 끝나기를 기다리고 있어요",
+    "target": "I'm waiting for the end of the second half"
+   },
+   {
+    "seed": 477,
+    "known": "그는 방학 둘째 날부터 아팠어요",
+    "target": "He's been sick since the second day of the holidays"
+   },
+   {
+    "seed": 478,
+    "known": "그녀는 정말 마음씨가 따뜻해요",
+    "target": "She has such a kind heart"
+   },
+   {
+    "seed": 479,
+    "known": "그것이 제가 할 수 있는 최소한이에요",
+    "target": "It's the least I could do"
+   },
+   {
+    "seed": 480,
+    "known": "그가 뭐라고 해도 이제 멀지 않아요",
+    "target": "Whatever he says it's not far ahead now"
+   },
+   {
+    "seed": 481,
+    "known": "그것이 우리에게 남은 유일한 진짜 희망이에요",
+    "target": "It's the only real hope we have left"
+   },
+   {
+    "seed": 482,
+    "known": "유일한 진짜 희망은 그들이 진심이 아니라는 거예요",
+    "target": "The only real hope is that they're not serious"
+   },
+   {
+    "seed": 483,
+    "known": "인생은 쉽지 않지만 쉬워야 한다는 것을 의미하지는 않아요",
+    "target": "Life isn't easy but it's not meant to be easy"
+   },
+   {
+    "seed": 484,
+    "known": "그것은 도전이 되도록 의도된 거예요",
+    "target": "It's meant to be a challenge"
+   },
+   {
+    "seed": 485,
+    "known": "떠나는 것만큼 저를 행복하게 만드는 것은 없어요",
+    "target": "Nothing would make me happier than to get away"
+   },
+   {
+    "seed": 486,
+    "known": "저는 당신의 눈이 아름답다고 생각해요",
+    "target": "I think your eyes are beautiful"
+   },
+   {
+    "seed": 487,
+    "known": "다리 아래에 있어요",
+    "target": "It's under the bridge"
+   },
+   {
+    "seed": 488,
+    "known": "저 노란 선 반대편에 있어요",
+    "target": "It's on the other side of that yellow line"
+   },
+   {
+    "seed": 489,
+    "known": "지금 당장 진한 커피 한 잔을 만들어 주지 않으면",
+    "target": "If you don't make me a strong cup of coffee right now"
+   },
+   {
+    "seed": 490,
+    "known": "저는 다시는 아무도 믿지 않을 거예요",
+    "target": "Then I will never trust anyone ever again"
+   },
+   {
+    "seed": 491,
+    "known": "저는 당신이 도우려는 방식이 좋아요",
+    "target": "I love the way you try to help"
+   },
+   {
+    "seed": 492,
+    "known": "그 장소들 중 어느 것이 가장 흥미롭다고 생각해요?",
+    "target": "Which of those places do you think is the most interesting?"
+   },
+   {
+    "seed": 493,
+    "known": "다음에는 무엇이 올까요?",
+    "target": "What's going to come next?"
+   },
+   {
+    "seed": 494,
+    "known": "쇼의 첫 번째 부분이 끝난 후에는 어떻게 되나요?",
+    "target": "What happens after the first part of the show?"
+   },
+   {
+    "seed": 495,
+    "known": "중요할 때",
+    "target": "When it matters"
+   },
+   {
+    "seed": 496,
+    "known": "저는 정말 중요할 때 질 계획이 없어요",
+    "target": "I'm not planning to lose when it really matters"
+   },
+   {
+    "seed": 497,
+    "known": "잠을 좀 자야 할 것 같네요",
+    "target": "That sounds as though you need to get some sleep"
+   },
+   {
+    "seed": 498,
+    "known": "그는 입구 안쪽 저기 혼자 서 있어요",
+    "target": "He's standing alone over there inside the entrance"
+   },
+   {
+    "seed": 499,
+    "known": "문을 열고 창문을 닫아야 할 것 같아요",
+    "target": "Maybe we should open the door and close the window"
+   },
+   {
+    "seed": 500,
+    "known": "왜 두 소녀 사이에 앉기 싫어요?",
+    "target": "Why don't you want to sit between the two girls?"
+   },
+   {
+    "seed": 501,
+    "known": "다투지 않고 함께 놀 것을 믿을 수만 있다면",
+    "target": "If only I could trust you to play together without arguing"
+   },
+   {
+    "seed": 502,
+    "known": "그녀는 오른쪽 대신 왼쪽으로 돌아서 거의 길을 잃었어요",
+    "target": "She almost got lost because she turned left instead of right"
+   },
+   {
+    "seed": 503,
+    "known": "저는 문제를 일으키기 싫지만 그건 제 것이에요",
+    "target": "I hate making trouble but that one's mine"
+   },
+   {
+    "seed": 504,
+    "known": "저는 잔디를 가로질러 달릴 거예요",
+    "target": "I'm going to run across the grass"
+   },
+   {
+    "seed": 505,
+    "known": "뒤처지지 않기 위해서요",
+    "target": "So that I don't get left behind"
+   },
+   {
+    "seed": 506,
+    "known": "저는 몇 년 전 이사하기 전에 이 근처에서 살았어요",
+    "target": "I used to live around here years ago before we moved"
+   },
+   {
+    "seed": 507,
+    "known": "우리는 도시로 이사했어요",
+    "target": "We moved to the city"
+   },
+   {
+    "seed": 508,
+    "known": "어떻게 낼지 걱정해봤자 소용없어요",
+    "target": "There's no point worrying about how you're going to pay"
+   },
+   {
+    "seed": 509,
+    "known": "새 침대를 살 거라고 들었어요",
+    "target": "I heard that you're going to pay for a new bed"
+   },
+   {
+    "seed": 510,
+    "known": "그녀는 차를 주차할 안전한 곳을 찾으러 갔어요",
+    "target": "She's gone to look for somewhere safe to park the car"
+   },
+   {
+    "seed": 511,
+    "known": "그 소식이 사무실의 모든 사람에게 전달되는 데 몇 시간이 걸렸어요",
+    "target": "The news took several hours to reach everyone in the office"
+   },
+   {
+    "seed": 512,
+    "known": "제가 열쇠를 가져오는 동안 문을 열어 둘 수 있어요?",
+    "target": "Can you hold the door open while I fetch the keys?"
+   },
+   {
+    "seed": 513,
+    "known": "머리를 위아래로 움직일 때 가장 아파요",
+    "target": "It hurts most when I move my head up and down"
+   },
+   {
+    "seed": 514,
+    "known": "저는 첫날에 완벽한 집을 찾았어요",
+    "target": "I found the perfect house on the first day"
+   },
+   {
+    "seed": 515,
+    "known": "새해 첫날에",
+    "target": "On the first day of the new year"
+   },
+   {
+    "seed": 516,
+    "known": "그들은 둘 다 혼자 왔어요",
+    "target": "They both came on their own"
+   },
+   {
+    "seed": 517,
+    "known": "하지만 그들은 함께 떠났어요",
+    "target": "But they left with each other"
+   },
+   {
+    "seed": 518,
+    "known": "저는 제가 똑같은 문제를 겪는다고 상상할 수 없었어요",
+    "target": "I couldn't imagine myself having exactly the same problem"
+   },
+   {
+    "seed": 519,
+    "known": "저는 아직 그들의 새 아기를 보지 못했어요",
+    "target": "I haven't seen their new baby yet"
+   },
+   {
+    "seed": 520,
+    "known": "가족 전체에게 일어났을 수도 있어요",
+    "target": "It might have happened to the whole family"
+   },
+   {
+    "seed": 521,
+    "known": "저는 당신이 왜 여기 있어야 했는지 잊을까봐 걱정돼요",
+    "target": "I'm afraid that you'll forget why we needed to stay here"
+   },
+   {
+    "seed": 522,
+    "known": "진실을 말한 것이 어리석었다고 인정해요",
+    "target": "Let's agree that it was stupid to tell the truth"
+   },
+   {
+    "seed": 523,
+    "known": "변명을 대신해서요",
+    "target": "Instead of giving an excuse"
+   },
+   {
+    "seed": 524,
+    "known": "3~4분 후에 다시 전화할게요",
+    "target": "I'll call you back in three or four minutes"
+   },
+   {
+    "seed": 525,
+    "known": "끝낼 수 있었는지 확인하기 위해서요",
+    "target": "To check if you've been able to finish"
+   },
+   {
+    "seed": 526,
+    "known": "당신이 추측할 수 없다는 것을 믿기 어려워요",
+    "target": "I'm finding it hard to believe that you can't guess"
+   },
+   {
+    "seed": 527,
+    "known": "그 재미있는 이야기를 누가 저에게 말해줬는지 맞춰봐요",
+    "target": "Guess who told me that funny story"
+   },
+   {
+    "seed": 528,
+    "known": "저는 그것들을 다른 방에 보관해야 할 것 같아요",
+    "target": "I'm probably supposed to keep those things in another room"
+   },
+   {
+    "seed": 529,
+    "known": "모두 손을 들어줄 수 있어요?",
+    "target": "Can you all put your hands up?"
+   },
+   {
+    "seed": 530,
+    "known": "셀 수 있도록요",
+    "target": "So I can count them"
+   },
+   {
+    "seed": 531,
+    "known": "누구나 게임에서 이길 수 있다는 것은 사실이 아니에요",
+    "target": "It isn't true that anyone can win the game"
+   },
+   {
+    "seed": 532,
+    "known": "운이 좋지 않으면요",
+    "target": "Unless they're lucky"
+   },
+   {
+    "seed": 533,
+    "known": "그녀는 당신이 하는 모든 말을 듣지 않을 거예요",
+    "target": "She won't listen to every word you say"
+   },
+   {
+    "seed": 534,
+    "known": "이 끔찍한 날씨에 밖에 나가지 말아요",
+    "target": "Let's not go outside in this dreadful weather"
+   },
+   {
+    "seed": 535,
+    "known": "그는 잘못된 직업을 선택하지 않겠다고 약속했어요",
+    "target": "He made a promise that he wouldn't choose the wrong job"
+   },
+   {
+    "seed": 536,
+    "known": "저는 예전에 미치는 것이 나쁘다고 생각했어요",
+    "target": "I used to think that being crazy was bad"
+   },
+   {
+    "seed": 537,
+    "known": "하지만 저는 틀렸어요",
+    "target": "But I was wrong"
+   },
+   {
+    "seed": 538,
+    "known": "저는 신경 쓰지 않는 것처럼 보이고 싶지 않아요",
+    "target": "I don't want to seem as though I don't care"
+   },
+   {
+    "seed": 539,
+    "known": "하지만 시간이 늦어지고 있어요",
+    "target": "But it's getting late"
+   },
+   {
+    "seed": 540,
+    "known": "차 없이 떠나고 싶으면 괜찮아요",
+    "target": "I don't mind if you want to leave without the car"
+   },
+   {
+    "seed": 541,
+    "known": "천천히 숨을 쉬려고 노력하는 것이 좋아요",
+    "target": "It's a good idea to try and breathe slowly"
+   },
+   {
+    "seed": 542,
+    "known": "화가 날 때마다요",
+    "target": "Whenever you feel angry"
+   },
+   {
+    "seed": 543,
+    "known": "그녀가 맞았어요",
+    "target": "She was right"
+   },
+   {
+    "seed": 544,
+    "known": "어려울 거라고 말한 사람이 누구든 완전히 맞았어요",
+    "target": "Whoever said it would be difficult was absolutely right"
+   },
+   {
+    "seed": 545,
+    "known": "이제 깨끗한 옷을 위층으로 가져갈 차례예요",
+    "target": "It's your turn to take the clean clothes upstairs"
+   },
+   {
+    "seed": 546,
+    "known": "개가 더럽고 젖었어요",
+    "target": "The dog is dirty and wet"
+   },
+   {
+    "seed": 547,
+    "known": "진흙 속에서 놀았기 때문이에요",
+    "target": "Because he has been playing in the mud"
+   },
+   {
+    "seed": 548,
+    "known": "저는 지금 슬퍼요",
+    "target": "I am feeling sad at the moment"
+   },
+   {
+    "seed": 549,
+    "known": "조용히 해야 하기 때문이에요",
+    "target": "Because I have got to be quiet"
+   },
+   {
+    "seed": 550,
+    "known": "마을 끝",
+    "target": "The end of the village"
+   },
+   {
+    "seed": 551,
+    "known": "그 교회는 못생겼어요",
+    "target": "The church is ugly"
+   },
+   {
+    "seed": 552,
+    "known": "마을 반대편 끝에 있는 교회는 못생겼어요",
+    "target": "The church at the other end of the village is ugly"
+   },
+   {
+    "seed": 553,
+    "known": "저는 작은 교회가 아주 못생겼다고 생각해요",
+    "target": "I think the small church is very ugly"
+   },
+   {
+    "seed": 554,
+    "known": "이 수건은 말라 있지 않아요",
+    "target": "This towel isn't dry"
+   },
+   {
+    "seed": 555,
+    "known": "그리고 저는 새것을 가져오기엔 너무 피곤해요",
+    "target": "And I'm too tired to fetch a new one"
+   },
+   {
+    "seed": 556,
+    "known": "그들은 밤늦게 음악을 틀어요",
+    "target": "They play music late at night"
+   },
+   {
+    "seed": 557,
+    "known": "저는 그들이 그렇게 큰 음악을 틀지 않으면 좋겠어요",
+    "target": "I wish they wouldn't play such loud music"
+   },
+   {
+    "seed": 558,
+    "known": "밤이 너무 늦었어요",
+    "target": "It's so late at night"
+   },
+   {
+    "seed": 559,
+    "known": "숲 속 길을 찾았어요?",
+    "target": "Have you found the path through the wood?"
+   },
+   {
+    "seed": 560,
+    "known": "해변으로 내려가요",
+    "target": "It goes down to the beach"
+   },
+   {
+    "seed": 561,
+    "known": "저는 빠른 차라도 상관없어요",
+    "target": "I don't care if it's a fast car"
+   },
+   {
+    "seed": 562,
+    "known": "그냥 안전하게 도착하고 싶어요",
+    "target": "I just want to get there safely"
+   },
+   {
+    "seed": 563,
+    "known": "저는 더 이상 계속할 수 없었을 거예요",
+    "target": "I wouldn't have been able to keep going any longer"
+   },
+   {
+    "seed": 564,
+    "known": "당신의 도움 없이는 할 수 없었을 거예요",
+    "target": "I wouldn't have been able to without your help"
+   },
+   {
+    "seed": 565,
+    "known": "저는 더 신중하게 생각했을 거예요",
+    "target": "I'd have thought about it more carefully"
+   },
+   {
+    "seed": 566,
+    "known": "제 선택이었다면 더 많이 생각했을 거예요",
+    "target": "I'd have thought more if it had been my choice"
+   },
+   {
+    "seed": 567,
+    "known": "아이들이 노는 것을 보며 야외에서 시간을 보내는 것이 즐거웠어요",
+    "target": "It's been lovely spending time outdoors watching the children play"
+   },
+   {
+    "seed": 568,
+    "known": "다음에 만날 때 개선을 볼 것을 기대하고 있어요",
+    "target": "I'm expecting to see an improvement next time we meet"
+   },
+   {
+    "seed": 569,
+    "known": "얼마를 낼 의사가 있는지 결정했어요?",
+    "target": "Have you decided how much you are willing to pay?"
+   },
+   {
+    "seed": 570,
+    "known": "티켓에 얼마를 낼 의사가 있어요?",
+    "target": "How much are you willing to pay for your ticket?"
+   },
+   {
+    "seed": 571,
+    "known": "그것이 아주 좋은 생각일 거라고 확신하지 못해요",
+    "target": "I'm not convinced that would be a very good idea"
+   },
+   {
+    "seed": 572,
+    "known": "그들이 마지막으로 방문했을 때 무슨 일이 있었는지 잊어버렸어요?",
+    "target": "Have you forgotten what happened the last time they visited us?"
+   },
+   {
+    "seed": 573,
+    "known": "그것이 휴일을 아주 특별하게 만드는 종류의 것이에요",
+    "target": "It's the kind of thing that makes the holidays very special"
+   },
+   {
+    "seed": 574,
+    "known": "휴일은 모든 사람에게 아주 특별해요",
+    "target": "The holidays are very special for everyone"
+   },
+   {
+    "seed": 575,
+    "known": "힘들었어요",
+    "target": "It's been upsetting"
+   },
+   {
+    "seed": 576,
+    "known": "기다리는 것이 아주 힘들었어요",
+    "target": "It has been very upsetting waiting"
+   },
+   {
+    "seed": 577,
+    "known": "우리는 병원에서 소식을 기다리고 있었어요",
+    "target": "We've been waiting for the news from the hospital"
+   },
+   {
+    "seed": 578,
+    "known": "더 따뜻한 곳으로",
+    "target": "Somewhere warmer"
+   },
+   {
+    "seed": 579,
+    "known": "우리는 자주 노력했어요",
+    "target": "We've often tried"
+   },
+   {
+    "seed": 580,
+    "known": "우리는 자주 아이들을 조금 더 따뜻한 곳에 데려가고 싶었어요",
+    "target": "We've often wanted to take the children somewhere a little warmer"
+   },
+   {
+    "seed": 581,
+    "known": "그는 그것이 어떤지 조금 더 알고 싶어해요",
+    "target": "He'd like to know a little more about what it's like"
+   },
+   {
+    "seed": 582,
+    "known": "여기서 자라는 것이 어때요?",
+    "target": "What's it like to grow up here?"
+   },
+   {
+    "seed": 583,
+    "known": "세계 이 지역은 어때요?",
+    "target": "What's it like in this part of the world?"
+   },
+   {
+    "seed": 584,
+    "known": "매일 아침 일어나서 산을 보는 것이 어때요?",
+    "target": "What's it like to wake up every morning and see the mountains?"
+   },
+   {
+    "seed": 585,
+    "known": "침실 창문으로 산이 보여요",
+    "target": "I can see the mountains out of my bedroom window"
+   },
+   {
+    "seed": 586,
+    "known": "저는 삶은 달걀 스무 개를 원해요",
+    "target": "I want twenty boiled eggs"
+   },
+   {
+    "seed": 587,
+    "known": "그녀는 저녁 식사로 달걀을 먹어야 한다고 고집했어요",
+    "target": "She used to insist that we had eggs for supper"
+   },
+   {
+    "seed": 588,
+    "known": "그래서 저는 자라서 집을 떠나고 싶었어요",
+    "target": "So I wanted to grow up and leave home"
+   },
+   {
+    "seed": 589,
+    "known": "그녀는 방금 마지막 버스를 봤다고 말했어요",
+    "target": "She told me she'd just seen the last bus"
+   },
+   {
+    "seed": 590,
+    "known": "저는 마지막 버스가 역을 떠나는 것을 봤어요",
+    "target": "I saw the last bus leaving the station"
+   },
+   {
+    "seed": 591,
+    "known": "그녀는 저를 따라 가게까지 왔어요",
+    "target": "She followed me down to the shops"
+   },
+   {
+    "seed": 592,
+    "known": "그리고 큰 길을 따라서도요",
+    "target": "And along the main road"
+   },
+   {
+    "seed": 593,
+    "known": "아무리 다퉈도 나눠야 했어요",
+    "target": "However much I argued I still had to share"
+   },
+   {
+    "seed": 594,
+    "known": "저는 여동생과 장난감을 나눠야 했어요",
+    "target": "I had to share my toys with my sister"
+   },
+   {
+    "seed": 595,
+    "known": "저는 정원에 누울 필요가 있어요",
+    "target": "I need to lie down in the garden"
+   },
+   {
+    "seed": 596,
+    "known": "그리고 잠시 눈을 감을 필요가 있어요",
+    "target": "And I need to close my eyes for a while"
+   },
+   {
+    "seed": 597,
+    "known": "저는 그가 그것에 대한 이야기를 수백 가지 들었을 거라고 생각해요",
+    "target": "I suspect that he's heard a hundred stories about it"
+   },
+   {
+    "seed": 598,
+    "known": "그는 그들이 무엇을 하고 있었는지에 대한 이야기를 수천 가지 들었어요",
+    "target": "He's heard a thousand stories about what they were doing"
+   },
+   {
+    "seed": 599,
+    "known": "말해줬다면 기꺼이 운전했을 거예요",
+    "target": "I'd have been happy to drive if you'd told me"
+   },
+   {
+    "seed": 600,
+    "known": "얼마나 피곤한지 말해줬다면 운전했을 거예요",
+    "target": "I'd have driven if you'd told me how tired you were"
+   },
+   {
+    "seed": 601,
+    "known": "우리는 모든 것이 어떻게 시작됐는지 이야기하고 있었어요",
+    "target": "We were talking about how it all started"
+   },
+   {
+    "seed": 602,
+    "known": "애초에 어떻게 시작됐는지요",
+    "target": "How it started in the first place"
+   },
+   {
+    "seed": 603,
+    "known": "그때 우리는 살 곳이 없었어요",
+    "target": "We didn't have anywhere to live at the time"
+   },
+   {
+    "seed": 604,
+    "known": "그녀는 우리를 자신의 집에 머물게 해주겠다고 제안했어요",
+    "target": "She offered to let us stay with her"
+   },
+   {
+    "seed": 605,
+    "known": "우리에게 도움이 필요했기 때문이에요",
+    "target": "Because we needed help"
+   },
+   {
+    "seed": 606,
+    "known": "그때 지금 아는 것을 알았다면 기다렸을 거예요",
+    "target": "If I'd known then what I know now I'd have waited"
+   },
+   {
+    "seed": 608,
+    "known": "그것이 현명한 일이었을 거예요",
+    "target": "It would have been the sensible thing to do"
+   },
+   {
+    "seed": 609,
+    "known": "현명한 것은 물어보는 것이었을 거예요",
+    "target": "The sensible thing to do would have been to ask"
+   },
+   {
+    "seed": 610,
+    "known": "그는 일자리를 찾아야 해요",
+    "target": "He needs to look for work"
+   },
+   {
+    "seed": 611,
+    "known": "저는 다른 곳을 찾을 준비가 됐을 거예요",
+    "target": "I would have been ready to look somewhere else"
+   },
+   {
+    "seed": 612,
+    "known": "우리는 무언가를 샀을 거예요",
+    "target": "We would have bought something"
+   },
+   {
+    "seed": 613,
+    "known": "우리는 거기에서 집을 샀을 거예요",
+    "target": "We probably would have bought a house there"
+   },
+   {
+    "seed": 614,
+    "known": "당신 가족이 사는 곳 근처예요",
+    "target": "It's near where your family live"
+   },
+   {
+    "seed": 615,
+    "known": "저는 당신이 그것을 말하는 것이 아주 용감하다고 생각했어요",
+    "target": "I thought you were very brave to say that"
+   },
+   {
+    "seed": 616,
+    "known": "당신이 그렇게 생각한다고 말하는 것이 아주 용감했어요",
+    "target": "You were very brave to say you thought that"
+   },
+   {
+    "seed": 617,
+    "known": "당신은 그것이 실수라고 생각했어요",
+    "target": "You thought that it was a mistake"
+   },
+   {
+    "seed": 618,
+    "known": "오랜 시간이 지난 것 같지 않아요",
+    "target": "It doesn't feel like a long time"
+   },
+   {
+    "seed": 619,
+    "known": "우리가 서로를 본 지 오래됐어요",
+    "target": "It's a long time since we saw each other"
+   },
+   {
+    "seed": 620,
+    "known": "우리가 마지막으로 서로를 본 지 아주 오래됐어요",
+    "target": "It's a very long time since we last saw each other"
+   },
+   {
+    "seed": 621,
+    "known": "저는 감히 그녀에게 고장났다고 말할 수 없었을 거예요",
+    "target": "I wouldn't have dared to tell her that it was broken"
+   },
+   {
+    "seed": 622,
+    "known": "저는 아이들이 그것을 부쉈다는 것을 알았어요",
+    "target": "I knew that the children had broken it"
+   },
+   {
+    "seed": 623,
+    "known": "커피나 차 드시겠어요?",
+    "target": "Do you want a cup of coffee or tea?"
+   },
+   {
+    "seed": 624,
+    "known": "네, 좋겠어요, 감사해요",
+    "target": "Yes, that would be great, please"
+   },
+   {
+    "seed": 625,
+    "known": "마실 것을 원하세요?",
+    "target": "Do you want something to drink?"
+   },
+   {
+    "seed": 626,
+    "known": "아니요, 목이 마르지 않아요, 감사해요",
+    "target": "No, I'm not thirsty, thank you"
+   },
+   {
+    "seed": 627,
+    "known": "커피가 준비됐어요",
+    "target": "Your coffee is ready"
+   },
+   {
+    "seed": 629,
+    "known": "저는 설탕 없이 우유와 함께 마시는 것을 좋아해요",
+    "target": "I like it with milk but without sugar"
+   },
+   {
+    "seed": 630,
+    "known": "마실 것 좀 주시겠어요?",
+    "target": "Can I have something to drink please?"
+   },
+   {
+    "seed": 631,
+    "known": "무엇을 원하세요?",
+    "target": "What would you like?"
+   },
+   {
+    "seed": 632,
+    "known": "물 한 잔",
+    "target": "A glass of water"
+   },
+   {
+    "seed": 633,
+    "known": "큰 물 한 잔이면 좋겠어요",
+    "target": "A large glass of water would be fine"
+   },
+   {
+    "seed": 634,
+    "known": "저것 중 하나를 주세요",
+    "target": "I'd like one of those"
+   },
+   {
+    "seed": 635,
+    "known": "그것은 제인의 가방이에요",
+    "target": "That is Jane's bag"
+   },
+   {
+    "seed": 636,
+    "known": "저는 그것이 제인의 가방이라고 생각해요",
+    "target": "I think that that is Jane's bag"
+   },
+   {
+    "seed": 637,
+    "known": "그녀의 가방은 어디에 있어요?",
+    "target": "Where is her bag?"
+   },
+   {
+    "seed": 638,
+    "known": "저는 생각하려고 해요",
+    "target": "I'm trying to think"
+   },
+   {
+    "seed": 639,
+    "known": "선생님과 함께요",
+    "target": "with you sir"
+   },
+   {
+    "seed": 640,
+    "known": "빨간 것이에요",
+    "target": "It's the red one"
+   },
+   {
+    "seed": 641,
+    "known": "저는 저 의자 위의 빨간 것이라고 생각해요",
+    "target": "I think that it's the red one on that chair"
+   },
+   {
+    "seed": 642,
+    "known": "기분이 어때요, 선생님?",
+    "target": "how do you feel madam?"
+   },
+   {
+    "seed": 643,
+    "known": "원하세요, 선생님?",
+    "target": "Do you want sir"
+   },
+   {
+    "seed": 644,
+    "known": "그것을 말할 수 있어요, 선생님?",
+    "target": "Could you say that sir?"
+   },
+   {
+    "seed": 645,
+    "known": "도와드릴 수 있어요, 선생님",
+    "target": "I can help you madam"
+   },
+   {
+    "seed": 646,
+    "known": "무언가 하고 계세요, 선생님",
+    "target": "You're doing something sir"
+   },
+   {
+    "seed": 647,
+    "known": "그것을 말하세요, 선생님",
+    "target": "You speak it madam"
+   },
+   {
+    "seed": 648,
+    "known": "선생님이 말한 것",
+    "target": "what you said madam"
+   },
+   {
+    "seed": 649,
+    "known": "준비됐어요, 선생님?",
+    "target": "Are you ready sir?"
+   },
+   {
+    "seed": 650,
+    "known": "가고 싶어요, 선생님?",
+    "target": "Do you want to go madam?"
+   },
+   {
+    "seed": 651,
+    "known": "어떻게 생각하세요, 선생님?",
+    "target": "What do you think madam?"
+   },
+   {
+    "seed": 652,
+    "known": "무엇이 필요하세요, 선생님?",
+    "target": "What do you need sir?"
+   },
+   {
+    "seed": 653,
+    "known": "괜찮으세요, 선생님?",
+    "target": "Do you mind madam?"
+   },
+   {
+    "seed": 654,
+    "known": "도와드릴 수 있을지 모르겠어요, 선생님",
+    "target": "I'm not sure if I can help you, sir"
+   },
+   {
+    "seed": 655,
+    "known": "아주 잘 하고 계신다고 생각해요, 선생님",
+    "target": "I think that you're doing very well, madam"
+   },
+   {
+    "seed": 656,
+    "known": "여러분 모두와 함께요",
+    "target": "with you all"
+   },
+   {
+    "seed": 657,
+    "known": "여러분 모두 기분이 어때요?",
+    "target": "how do you all feel?"
+   },
+   {
+    "seed": 658,
+    "known": "여러분 모두 원하세요?",
+    "target": "Do you all want?"
+   },
+   {
+    "seed": 659,
+    "known": "여러분 모두 그것을 말할 수 있어요?",
+    "target": "Could you all say that"
+   },
+   {
+    "seed": 660,
+    "known": "여러분 모두를 도와드릴 수 있어요",
+    "target": "I can help you all"
+   },
+   {
+    "seed": 661,
+    "known": "여러분 모두 무언가 하고 있어요",
+    "target": "you're all doing something"
+   },
+   {
+    "seed": 662,
+    "known": "여러분 모두 그것을 말해요",
+    "target": "you all speak it"
+   },
+   {
+    "seed": 663,
+    "known": "여러분 모두 말한 것",
+    "target": "what you all said"
+   },
+   {
+    "seed": 664,
+    "known": "여러분 모두 준비됐어요?",
+    "target": "Are you all ready?"
+   },
+   {
+    "seed": 665,
+    "known": "여러분 모두 가고 싶어요?",
+    "target": "Do you all want to go?"
+   },
+   {
+    "seed": 666,
+    "known": "여러분 모두 어떻게 생각해요?",
+    "target": "What do you all think?"
+   },
+   {
+    "seed": 667,
+    "known": "여러분 모두 괜찮아요?",
+    "target": "Do you all mind?"
+   },
+   {
+    "seed": 668,
+    "known": "여러분 모두 갈 수 있기를 바라요",
+    "target": "I hope you'll all be able to go"
+   }
+  ]
+ },
+ "counts": {
+  "planned": 54,
+  "variant_zut": 18,
+  "lego_is_seed": 2,
+  "no_home": 7,
+  "variant_form": 1,
+  "not_built": 362
+ }
+}

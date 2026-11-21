@@ -1,0 +1,40 @@
+{
+ "seed": 10,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला खात्री नाही काहीतरी कसं म्हणायचं",
+     "I'm not sure how to say something",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला खात्री नाही की मला आत्ता आठवेल का",
+     "I'm not sure if I can remember now",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "इंग्रजीत पूर्ण वाक्य",
+     "the whole sentence in English",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0010L02B01": "का|the seed's own wording (आठवेल का)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

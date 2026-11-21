@@ -1,0 +1,66 @@
+{
+ "seed": 2,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਹੁਣ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+     "I'm trying to speak now",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+     "I'm trying to speak with you",
+     null,
+     "m",
+     null
+    ],
+    [
+     "build",
+     "ਮੈਂ ਹੁਣ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+     "I'm trying to speak English now",
+     null,
+     "m",
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਹੁਣ ਸਿੱਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+     "I'm trying to learn now",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਮੈਂ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੀ ਹਾਂ",
+     "I'm trying to learn English",
+     null,
+     "f",
+     null
+    ],
+    [
+     "build",
+     "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+     "I want to learn English with you",
+     null,
+     "m",
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0002L02B01": "ਸਿੱਖਣ|oblique form of the taught ਸਿੱਖਣਾ"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

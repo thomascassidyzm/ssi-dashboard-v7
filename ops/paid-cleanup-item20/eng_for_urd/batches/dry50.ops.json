@@ -1,0 +1,656 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0175L01B04",
+    "seed_number": 175,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "آپ آج شام کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do this evening?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs718-item20-thin-baskets"
+    },
+    "word_count": 36,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0111L01B01",
+   "expect": {
+    "known_text": "ہمارا",
+    "target_text": "our"
+   },
+   "set": {
+    "known_text": "ہماری کہانی یاد رکھنا",
+    "target_text": "to remember our story",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0111L02B01",
+   "expect": {
+    "known_text": "دماغ",
+    "target_text": "brain"
+   },
+   "set": {
+    "known_text": "ہمارا دماغ سیکھنا چاہتا ہے",
+    "target_text": "our brain wants to learn",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0111L03B01",
+   "expect": {
+    "known_text": "بدلتا ہے",
+    "target_text": "changes"
+   },
+   "set": {
+    "known_text": "یہ آج ہمارے دماغ کو بدلتا ہے",
+    "target_text": "it changes our brain today",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0122L03B01",
+   "expect": {
+    "known_text": "یہ کیسے جا رہا ہے؟",
+    "target_text": "how it's going?"
+   },
+   "set": {
+    "known_text": "آج یہ کیسے جا رہا ہے",
+    "target_text": "how it's going today",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0123L01B01",
+   "expect": {
+    "known_text": "یہ ایک اچھا خیال",
+    "target_text": "that's a good idea"
+   },
+   "set": {
+    "known_text": "آج یہ ایک اچھا خیال ہے",
+    "target_text": "that's a good idea today",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0127L01B01",
+   "expect": {
+    "known_text": "یہ وجہ نہیں",
+    "target_text": "that isn't why"
+   },
+   "set": {
+    "known_text": "یہ وجہ نہیں کہ مجھے بہتر محسوس ہو رہا ہے",
+    "target_text": "that isn't why I feel better",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0132L03B01",
+   "expect": {
+    "known_text": "وہ کہہ رہی تھی",
+    "target_text": "what she was saying"
+   },
+   "set": {
+    "known_text": "یہ آج اس سے کم دلچسپ ہے جو وہ کہہ رہی تھی",
+    "target_text": "that's less exciting today than what she was saying",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0137L03B01",
+   "expect": {
+    "known_text": "زیادہ ضروری",
+    "target_text": "more important"
+   },
+   "set": {
+    "known_text": "سیکھنا زیادہ ضروری ہے",
+    "target_text": "it's more important to learn",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0162L01B01",
+   "expect": {
+    "known_text": "کیا سوچتے ہیں؟",
+    "target_text": "what do you think?"
+   },
+   "set": {
+    "known_text": "تو آپ کیا سوچتے ہیں؟",
+    "target_text": "so what do you think?",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0163L01B01",
+   "expect": {
+    "known_text": "مجھے لگتا ہے دلچسپ",
+    "target_text": "I think that it's interesting"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ آج یہ دلچسپ ہے",
+    "target_text": "I think that it's interesting today",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0169L01B01",
+   "expect": {
+    "known_text": "آپ مجھ سے کیا کروانا چاہتے ہیں؟",
+    "target_text": "what do you want me to do?"
+   },
+   "set": {
+    "known_text": "آپ آج مجھ سے کیا کروانا چاہتے ہیں؟",
+    "target_text": "what do you want me to do today?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0174L02B01",
+   "expect": {
+    "known_text": "جو میں کہہ رہا ہوں",
+    "target_text": "what I'm saying"
+   },
+   "set": {
+    "known_text": "مجھے معلوم ہے کہ میں کیا کہہ رہا ہوں",
+    "target_text": "I know what I'm saying",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0175L01B01",
+   "expect": {
+    "known_text": "آپ کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do?"
+   },
+   "set": {
+    "known_text": "آپ بعد میں کیا کرنا چاہتے ہیں؟",
+    "target_text": "what do you want to do later on?",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0176L01B01",
+   "expect": {
+    "known_text": "میں اس سے پوچھوں گا",
+    "target_text": "I'll ask him"
+   },
+   "set": {
+    "known_text": "میں آج اس سے پوچھوں گا",
+    "target_text": "I'll ask him today",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0176L02B01",
+   "expect": {
+    "known_text": "کیا وہ مدد کر پائے گا",
+    "target_text": "if he'll be able to help"
+   },
+   "set": {
+    "known_text": "میں اس سے پوچھوں گا کہ کیا وہ ابھی مدد کر پائے گا",
+    "target_text": "I'll ask him if he'll be able to help now",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0176L03B01",
+   "expect": {
+    "known_text": "اگلے سال",
+    "target_text": "next year"
+   },
+   "set": {
+    "known_text": "اگلے سال آپ سے ملنا",
+    "target_text": "to meet you next year",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0177L01B01",
+   "expect": {
+    "known_text": "میں اس سے پوچھوں گی",
+    "target_text": "I'll ask her"
+   },
+   "set": {
+    "known_text": "میں اس سے بعد میں پوچھوں گی",
+    "target_text": "I'll ask her later on",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0177L02B01",
+   "expect": {
+    "known_text": "وہ کہاں جانا چاہتی ہے",
+    "target_text": "where she wants to go"
+   },
+   "set": {
+    "known_text": "آج وہ کہاں جانا چاہتی ہے",
+    "target_text": "where she wants to go today",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0178L01B01",
+   "expect": {
+    "known_text": "میرے پاس وقت نہیں تھا",
+    "target_text": "I didn't have time"
+   },
+   "set": {
+    "known_text": "مجھے لگتا ہے میرے پاس وقت نہیں تھا",
+    "target_text": "I think I didn't have time",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0179L01B01",
+   "expect": {
+    "known_text": "آپ کیا کرنے والے ہیں؟",
+    "target_text": "what are you going to do?"
+   },
+   "set": {
+    "known_text": "آپ آج کیا کرنے والے ہیں؟",
+    "target_text": "what are you going to do today?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0179L02B01",
+   "expect": {
+    "known_text": "اتوار کی دوپہر",
+    "target_text": "on Sunday afternoon"
+   },
+   "set": {
+    "known_text": "اتوار کی دوپہر ملنا",
+    "target_text": "to meet on Sunday afternoon",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0180L01B01",
+   "expect": {
+    "known_text": "میں پڑھنا چاہوں گا",
+    "target_text": "I'd like to read"
+   },
+   "set": {
+    "known_text": "میں خود اپنی کتاب پڑھنا چاہوں گا",
+    "target_text": "I'd like to read my book on my own",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0180L02B01",
+   "expect": {
+    "known_text": "اپنی کتاب",
+    "target_text": "my book"
+   },
+   "set": {
+    "known_text": "میں اپنی کتاب پڑھنا چاہتا ہوں",
+    "target_text": "I want to read my book",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0181L02B01",
+   "expect": {
+    "known_text": "اپنی ماں",
+    "target_text": "my mother"
+   },
+   "set": {
+    "known_text": "اپنی ماں کو دیکھنا",
+    "target_text": "to see my mother",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0181L03B01",
+   "expect": {
+    "known_text": "ڈاکٹر کے پاس",
+    "target_text": "to the doctor"
+   },
+   "set": {
+    "known_text": "ڈاکٹر کے پاس جانا",
+    "target_text": "to go to the doctor",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0182L02B01",
+   "expect": {
+    "known_text": "میری چابیاں",
+    "target_text": "my keys"
+   },
+   "set": {
+    "known_text": "میری چابیاں دیکھنا",
+    "target_text": "to see my keys",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0183L01B01",
+   "expect": {
+    "known_text": "مجھے ڈر ہے",
+    "target_text": "I'm afraid"
+   },
+   "set": {
+    "known_text": "مجھے ڈر ہے کہ یہ کام نہیں کر رہا",
+    "target_text": "I'm afraid it's not working",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0183L02B01",
+   "expect": {
+    "known_text": "میں نے انہیں نہیں دیکھا",
+    "target_text": "I haven't seen them"
+   },
+   "set": {
+    "known_text": "نہیں میں نے انہیں نہیں دیکھا",
+    "target_text": "no I haven't seen them",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0184L01B01",
+   "expect": {
+    "known_text": "دفتر میں",
+    "target_text": "in the office"
+   },
+   "set": {
+    "known_text": "دفتر میں ملنا",
+    "target_text": "to meet in the office",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0184L02B01",
+   "expect": {
+    "known_text": "تھوڑی دیر پہلے",
+    "target_text": "a while ago"
+   },
+   "set": {
+    "known_text": "میں نے اپنی ماں کو تھوڑی دیر پہلے دیکھا",
+    "target_text": "I saw my mother a while ago",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0185L01B01",
+   "expect": {
+    "known_text": "کام پر",
+    "target_text": "at work"
+   },
+   "set": {
+    "known_text": "کام پر ملنا",
+    "target_text": "to meet at work",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0185L02B01",
+   "expect": {
+    "known_text": "آپ نے چھوڑ آئے",
+    "target_text": "you left"
+   },
+   "set": {
+    "known_text": "آپ انہیں پب میں چھوڑ آئے",
+    "target_text": "you left them in the pub",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0186L01B01",
+   "expect": {
+    "known_text": "کسی مختلف چیز کے بارے میں",
+    "target_text": "about something different"
+   },
+   "set": {
+    "known_text": "کسی مختلف چیز کے بارے میں سوچنا",
+    "target_text": "to think about something different",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0187L01B01",
+   "expect": {
+    "known_text": "ابھی تک خوش",
+    "target_text": "happy so far"
+   },
+   "set": {
+    "known_text": "ہاں میں ابھی تک خوش ہوں",
+    "target_text": "yes I'm happy so far",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0188L01B01",
+   "expect": {
+    "known_text": "ضرورت نہیں بدلنے کی",
+    "target_text": "need to change"
+   },
+   "set": {
+    "known_text": "مجھے آج بدلنے کی ضرورت نہیں",
+    "target_text": "I don't need to change today",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0189L01B01",
+   "expect": {
+    "known_text": "یہ ایک اچھا خیال ہے",
+    "target_text": "that's a good idea"
+   },
+   "set": {
+    "known_text": "بالکل مجھے لگتا ہے کہ یہ ایک اچھا خیال ہے",
+    "target_text": "of course I think that's a good idea",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0190L01B01",
+   "expect": {
+    "known_text": "کیا آپ کو اعتراض ہے اگر میں",
+    "target_text": "do you mind if I"
+   },
+   "set": {
+    "known_text": "کیا آپ کو اعتراض ہے اگر میں آج آپ سے پوچھوں؟",
+    "target_text": "do you mind if I ask you today?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0190L02B01",
+   "expect": {
+    "known_text": "کچھ سوال",
+    "target_text": "some questions"
+   },
+   "set": {
+    "known_text": "اگر میں آپ سے کچھ سوال پوچھوں",
+    "target_text": "if I ask you some questions",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0191L01B01",
+   "expect": {
+    "known_text": "مجھے اعتراض نہیں",
+    "target_text": "I don't mind"
+   },
+   "set": {
+    "known_text": "تو مجھے بالکل اعتراض نہیں",
+    "target_text": "so I don't mind at all",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0193L01B01",
+   "expect": {
+    "known_text": "میں بہت مصروف ہوں",
+    "target_text": "I'm too busy"
+   },
+   "set": {
+    "known_text": "تو میں بہت مصروف ہوں",
+    "target_text": "so I'm too busy",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0195L02B01",
+   "expect": {
+    "known_text": "وہ پیسے",
+    "target_text": "the money"
+   },
+   "set": {
+    "known_text": "وہ پیسے دیکھنا",
+    "target_text": "to see the money",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0195L03B01",
+   "expect": {
+    "known_text": "میز پر",
+    "target_text": "on the table"
+   },
+   "set": {
+    "known_text": "میں نے اپنی چابیاں میز پر چھوڑیں",
+    "target_text": "I left my keys on the table",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

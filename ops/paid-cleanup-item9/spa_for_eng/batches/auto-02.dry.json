@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-18T14:47:50.808Z",
+ "status": 200,
+ "ms": 9855,
+ "ok": true,
+ "applied": false,
+ "ops": 49,
+ "error": null,
+ "code": null,
+ "index": null,
+ "failed_op": null,
+ "dropped": [
+  {
+   "op": {
+    "op": "phrase.delete",
+    "phrase_id": "spa_for_eng:S0189L01U03",
+    "expect": {
+     "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
+     "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar"
+    }
+   },
+   "code": "NOT_FOUND",
+   "error": "op 10: phrase.delete: no row {\"course_code\":\"spa_for_eng\",\"id\":\"spa_for_eng:S0189L01U03\"}"
+  }
+ ]
+}

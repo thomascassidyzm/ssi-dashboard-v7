@@ -59,9 +59,12 @@ function staleBlocks(decomposition, legoById) {
  * @param {Array}  a.legos     course_legos rows: seed_number, lego_index, target_text, known_text
  * @param {Array}  a.phrases   course_practice_phrases rows: id, seed_number, lego_index, target_text, decomposition
  * @param {number|null} a.courseVersion  stamped into decomposition_course_version
+ * @param {Set<string>} [a.forceIds]  phrase ids to recompute even when no gloss has drifted: the
+ *   LEGO in a slot they name was just edited, deleted or re-inserted, so a tile can carry the right
+ *   gloss and the wrong word (a target-only edit). Recomputed, and written unless unchanged.
  * @returns {{ops: Array, rows: Array, summary: Object}}
  */
-function planRecompute({ courseCode, legos, phrases, courseVersion = null }) {
+function planRecompute({ courseCode, legos, phrases, courseVersion = null, forceIds = null }) {
   const vocabulary = legos.map((l) => ({
     lego_id: legoIdOf(l.seed_number, l.lego_index),
     target_text: l.target_text,
@@ -75,7 +78,8 @@ function planRecompute({ courseCode, legos, phrases, courseVersion = null }) {
 
   for (const p of phrases) {
     const stale = staleBlocks(p.decomposition, legoById);
-    if (stale.length === 0) { summary.fresh++; continue; }
+    const forced = !!(forceIds && forceIds.has(p.id));
+    if (stale.length === 0 && !forced) { summary.fresh++; continue; }
 
     const parentId = legoIdOf(p.seed_number, p.lego_index);
     const parentLego = legoById.get(parentId) || null;
@@ -98,7 +102,7 @@ function planRecompute({ courseCode, legos, phrases, courseVersion = null }) {
     }
     const residual = staleBlocks(result.blocks, legoById);
     const unchanged = canon(result.blocks) === canon(p.decomposition);
-    if (residual.length > 0 || unchanged) {
+    if ((residual.length > 0 && !forced) || unchanged) {
       summary.skipped_no_improvement++;
       rows.push({ id: p.id, status: 'SKIP_NO_IMPROVEMENT', target_text: p.target_text, stale, residual, unchanged });
       continue;
@@ -116,4 +120,68 @@ function planRecompute({ courseCode, legos, phrases, courseVersion = null }) {
   return { ops, rows, summary };
 }
 
-module.exports = { planRecompute, staleBlocks, canon, legoIdOf };
+/**
+ * TILES FOLLOW THE LEGO (cs #937, Kai's Watson finding #930, /d/c4220fd2). A tile names a SLOT
+ * (S0519L01), not a word. When the LEGO in a slot is edited in place, deleted, or deleted and
+ * re-inserted, every tile anywhere in the course naming that slot shows the new word ("ancora"
+ * drawn as "bambino"). lego.reorder already relabels tiles; this covers the other LEGO-changing
+ * ops, inside the SAME transaction as the edit, so the dry run previews it and the undo carries it.
+ *
+ * Reads the phrases whose tiles name any of `slotIds`, recomputes them content-keyed against the
+ * course's LEGOs as they stand inside the transaction, and writes decomposition +
+ * decomposition_course_version. Phrases in `skipPhraseIds` (deleted in this batch, or whose
+ * decomposition the caller set explicitly — e.g. an undo restoring it) are left alone. A phrase
+ * that does not cleanly contain its own LEGO is not rewritten (that needs a person) and is reported.
+ *
+ * @returns {Promise<{rewritten: Array<{id, before, beforeVersion, after}>, unlocatable: string[], considered: number}>}
+ */
+async function refreshTilesForSlots(client, courseCode, slotIds, { skipPhraseIds = new Set(), eventId = null } = {}) {
+  const ids = [...new Set(slotIds)].filter(Boolean);
+  const out = { rewritten: [], unlocatable: [], considered: 0 };
+  if (!ids.length) return out;
+  // THREE STATEMENTS, WHATEVER THE SIZE (cs #945). Every statement this process sends to the live DB
+  // passes the load gate (shared/db-load-gate.cjs), which on a busy DB allows one in flight at one per
+  // 5 s. #937's first cut sent one UPDATE per rewritten phrase after an unnesting EXISTS scan, so one
+  // 10-op batch crawled for many minutes while holding the only slot. Now:
+  // (1) the phrases naming a slot, by jsonb CONTAINMENT (decomposition @> '[{"legoId":"S0100L01"}]'),
+  //     the exact form a GIN jsonb_path_ops index on decomposition serves, so adding that index (a
+  //     migration, Tom's go) makes this lookup indexed with no code change;
+  // (2) the course version plus only the LEGOs taught up to the latest candidate's seed (all that
+  //     planRecompute's seed_number <= phrase vocabulary filter can ever use), in one statement;
+  // (3) every rewrite in ONE UPDATE … FROM jsonb_to_recordset.
+  const probes = ids.map((id) => JSON.stringify([{ legoId: id }]));
+  const { rows: phrases } = await client.query(
+    `SELECT id, seed_number, lego_index, target_text, decomposition, decomposition_course_version FROM course_practice_phrases
+      WHERE course_code = $1 AND decomposition @> ANY($2::jsonb[])`,
+    [courseCode, probes]);
+  const candidates = phrases.filter((p) => !skipPhraseIds.has(p.id));
+  out.considered = candidates.length;
+  if (!candidates.length) return out;
+  const maxSeed = Math.max(...candidates.map((p) => Number(p.seed_number) || 0));
+  const { rows: [ctx] } = await client.query(
+    `SELECT (SELECT version FROM courses WHERE course_code = $1) AS version,
+            COALESCE((SELECT json_agg(json_build_object('seed_number', seed_number, 'lego_index', lego_index,
+                                                        'target_text', target_text, 'known_text', known_text))
+                        FROM course_legos WHERE course_code = $1 AND seed_number <= $2), '[]'::json) AS legos`,
+    [courseCode, maxSeed]);
+  const plan = planRecompute({ courseCode, legos: ctx.legos, phrases: candidates, courseVersion: ctx.version ?? null,
+    forceIds: new Set(candidates.map((p) => p.id)) });
+  out.unlocatable = plan.rows
+    .filter((r) => r.status === 'SKIP_PARENT_UNLOCATABLE' || r.status === 'SKIP_RECOMPUTE_THREW').map((r) => r.id);
+  if (!plan.ops.length) return out;
+  const byId = new Map(candidates.map((p) => [p.id, p]));
+  const rows = plan.ops.map((op) => ({ id: op.phrase_id, decomposition: op.set.decomposition, version: op.set.decomposition_course_version }));
+  const params = [JSON.stringify(rows)];
+  if (eventId) params.push(eventId);
+  await client.query(
+    `UPDATE "course_practice_phrases" AS p SET "decomposition" = v.decomposition, "decomposition_course_version" = v.version${eventId ? ', "last_edit_event_id" = $2' : ''}
+       FROM jsonb_to_recordset($1::jsonb) AS v(id text, decomposition jsonb, version integer) WHERE p.id = v.id`,
+    params);
+  for (const op of plan.ops) {
+    const was = byId.get(op.phrase_id);
+    out.rewritten.push({ id: op.phrase_id, before: was.decomposition, beforeVersion: was.decomposition_course_version ?? null, after: op.set.decomposition });
+  }
+  return out;
+}
+
+module.exports = { planRecompute, refreshTilesForSlots, staleBlocks, canon, legoIdOf };

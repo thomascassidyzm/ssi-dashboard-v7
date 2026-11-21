@@ -1,0 +1,126 @@
+{
+ "at": "2026-11-19T17:50:45.141Z",
+ "qa_copy": "ssi_copy_20261118t033000z",
+ "per_course": {
+  "eng_for_urd": {
+   "rows": 390,
+   "en_free": 336,
+   "en_new": 54,
+   "known_free": 0,
+   "known_new": 390,
+   "cartesia": 3036,
+   "azure": 12058
+  },
+  "eng_for_pan": {
+   "rows": 555,
+   "en_free": 512,
+   "en_new": 43,
+   "known_free": 0,
+   "known_new": 555,
+   "cartesia": 20566,
+   "azure": 0
+  },
+  "eng_for_ben": {
+   "rows": 702,
+   "en_free": 611,
+   "en_new": 91,
+   "known_free": 1,
+   "known_new": 701,
+   "cartesia": 26486,
+   "azure": 0
+  },
+  "eng_for_mar": {
+   "rows": 667,
+   "en_free": 587,
+   "en_new": 80,
+   "known_free": 0,
+   "known_new": 667,
+   "cartesia": 26415,
+   "azure": 0
+  },
+  "eng_for_guj": {
+   "rows": 1125,
+   "en_free": 1023,
+   "en_new": 102,
+   "known_free": 0,
+   "known_new": 1125,
+   "cartesia": 39304,
+   "azure": 0
+  }
+ },
+ "total": {
+  "cartesia": 115807,
+  "azure": 12058
+ },
+ "cast_voice": {
+  "per_course": {
+   "eng_for_urd": {
+    "en_slots_free": 104,
+    "en_slots_paid": 676,
+    "en_chars": 19669,
+    "known_chars": 12058
+   },
+   "eng_for_pan": {
+    "en_slots_free": 309,
+    "en_slots_paid": 801,
+    "en_chars": 23913,
+    "known_chars": 18048
+   },
+   "eng_for_ben": {
+    "en_slots_free": 534,
+    "en_slots_paid": 870,
+    "en_chars": 26412,
+    "known_chars": 20994
+   },
+   "eng_for_mar": {
+    "en_slots_free": 620,
+    "en_slots_paid": 714,
+    "en_chars": 21625,
+    "known_chars": 21509
+   },
+   "eng_for_guj": {
+    "en_slots_free": 1184,
+    "en_slots_paid": 1066,
+    "en_chars": 30615,
+    "known_chars": 33156
+   }
+  },
+  "total": {
+   "cartesia": 215941,
+   "azure": 12058
+  }
+ },
+ "self_check": {
+  "checked": 97,
+  "disagree": [
+   {
+    "c": "eng_for_urd",
+    "role": "target1",
+    "t": "want to speak with you",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   },
+   {
+    "c": "eng_for_urd",
+    "role": "target2",
+    "t": "want to speak with you",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   },
+   {
+    "c": "eng_for_urd",
+    "role": "target1",
+    "t": "want to speak now",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   },
+   {
+    "c": "eng_for_urd",
+    "role": "target2",
+    "t": "want to speak now",
+    "live": "EXISTS_IN_LANGUAGE",
+    "offline": "render"
+   }
+  ]
+ }
+}

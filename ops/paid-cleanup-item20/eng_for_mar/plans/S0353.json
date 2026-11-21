@@ -1,0 +1,40 @@
+{
+ "seed": 353,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला धावायचं नाही",
+     "I don't want to run",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मैदानाभोवती चालणे",
+     "to walk around the field",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "तिला इथे धावायची गरज होती",
+     "she needed to run here",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0353L02B01": "चालणे|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

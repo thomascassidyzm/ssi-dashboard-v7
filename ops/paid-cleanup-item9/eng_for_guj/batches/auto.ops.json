@@ -1,0 +1,20 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_guj:S0040L02B02",
+   "expect": {
+    "known_text": "અત્યારે કેવું લાગે છે?",
+    "target_text": "how does it feel at the moment?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_guj:S0138L01B03",
+   "expect": {
+    "known_text": "આ જ્યાં હતું હું તમને મળ્યો",
+    "target_text": "this was where I met you"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2982 @@
+{
+ "course": "zho_for_tam",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0003L03U04": {
+   "seed": {
+    "seed_number": 3,
+    "known_text": "முடிந்தவரை அடிக்கடி எப்படிப் பேசுவது",
+    "target_text": "怎么尽可能经常说。",
+    "known_audio_id": "b518eaf7-16ff-49ca-b840-f2a7b436e541",
+    "target1_audio_id": "8d18b6d3-d675-41ef-a0cb-72c57dce12dd",
+    "target2_audio_id": "b241da66-7b15-4a44-990a-f115c273230f"
+   },
+   "lego": {
+    "lego_id": "S0003L03",
+    "known_text": "முடிந்தவரை",
+    "target_text": "尽可能",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0004L02U06": {
+   "seed": {
+    "seed_number": 4,
+    "known_text": "சீன மொழியில் எதையாவது எப்படிச் சொல்வது",
+    "target_text": "怎么用中文说点什么。",
+    "known_audio_id": "91247f45-49f9-4e6c-8a0d-59722ba7cc80",
+    "target1_audio_id": "f9b995f6-2bb7-4391-9dc2-73ea82f786f0",
+    "target2_audio_id": "c96fb2e4-fda5-4e2c-93d8-df03c7fab751"
+   },
+   "lego": {
+    "lego_id": "S0004L02",
+    "known_text": "எதையாவது",
+    "target_text": "点什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0005L03U06": {
+   "seed": {
+    "seed_number": 5,
+    "known_text": "நான் வேறு ஒருவருடன் பேசப் பயிற்சி செய்யப் போகிறேன்.",
+    "target_text": "我要和别人练习说。",
+    "known_audio_id": "ede5f200-de76-4a14-81df-1d25e1513236",
+    "target1_audio_id": "fba85967-be92-453d-a11b-b48a95005960",
+    "target2_audio_id": "61a94ed7-482b-44bb-913a-7eab0a2b6402"
+   },
+   "lego": {
+    "lego_id": "S0005L03",
+    "known_text": "வேறு ஒருவருடன்",
+    "target_text": "和别人",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0006L02U06": {
+   "seed": {
+    "seed_number": 6,
+    "known_text": "நான் ஒரு சொல்லை நினைவில் கொள்ள முயற்சிக்கிறேன்.",
+    "target_text": "我试试想起一个词。",
+    "known_audio_id": "9851376f-f1a5-4b00-858a-30079c3aa78c",
+    "target1_audio_id": "035965ff-2906-4f6f-b2b9-a9a3e7164c44",
+    "target2_audio_id": "3932e336-3371-42d5-b9fa-419095a4a3da"
+   },
+   "lego": {
+    "lego_id": "S0006L02",
+    "known_text": "ஒரு சொல்லை",
+    "target_text": "一个词",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0007L02U06": {
+   "seed": {
+    "seed_number": 7,
+    "known_text": "நான் இன்று என்னால் முடிந்தவரை கடினமாக முயற்சிக்க விரும்புகிறேன்.",
+    "target_text": "今天我想尽可能努力。",
+    "known_audio_id": "9fd11156-a774-45e6-ad6f-8538d116b828",
+    "target1_audio_id": "32f93f53-7719-4b2f-b8ae-faa902d9cb37",
+    "target2_audio_id": "8ce971b0-2cd7-4b29-9538-9ffda80689ef"
+   },
+   "lego": {
+    "lego_id": "S0007L02",
+    "known_text": "கடினமாக",
+    "target_text": "努力",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0008L03U06": {
+   "seed": {
+    "seed_number": 8,
+    "known_text": "நான் சொல்ல வருவதை விளக்க முயற்சிக்கப் போகிறேன்.",
+    "target_text": "我要试试解释我的意思。",
+    "known_audio_id": "471b4255-7335-4616-b9bc-2ee9f1a41c12",
+    "target1_audio_id": "1cd0aac1-d09f-4010-aae8-604915d692fd",
+    "target2_audio_id": "3d3dbab6-bb61-48ef-a98d-15fd18eda5d4"
+   },
+   "lego": {
+    "lego_id": "S0008L03",
+    "known_text": "சொல்ல வருவதை",
+    "target_text": "意思",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0009L02U06": {
+   "seed": {
+    "seed_number": 9,
+    "known_text": "நான் இப்போது கொஞ்சம் சீன மொழி பேசுகிறேன்.",
+    "target_text": "我现在会说一点中文。",
+    "known_audio_id": "0ddc23e9-9275-4d99-b349-319defc3cbf5",
+    "target1_audio_id": "5879ef01-d625-4c9b-a1a2-8e4b058707e6",
+    "target2_audio_id": "57159a31-54ab-4af4-b780-70b3db565688"
+   },
+   "lego": {
+    "lego_id": "S0009L02",
+    "known_text": "கொஞ்சம்",
+    "target_text": "一点",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0010L01U06": {
+   "seed": {
+    "seed_number": 10,
+    "known_text": "முழு வாக்கியத்தையும் என்னால் நினைவில் கொள்ள முடியுமா என்று எனக்கு நிச்சயமாகத் தெரியவில்லை.",
+    "target_text": "我不确定我能不能记住整个句子。",
+    "known_audio_id": "7cd96bfc-5641-440d-98e4-e6dbd19da5ac",
+    "target1_audio_id": "f2c0da52-b112-4a70-a1ef-47f8a9ee72cb",
+    "target2_audio_id": "ee9d481f-a33b-47d6-b226-07ceeda94819"
+   },
+   "lego": {
+    "lego_id": "S0010L01",
+    "known_text": "நிச்சயமாகத் தெரியவில்லை",
+    "target_text": "不确定",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0011L02U06": {
+   "seed": {
+    "seed_number": 11,
+    "known_text": "நீங்கள் முடித்த பிறகு நான் பேச முடிய வேண்டும் என்று விரும்புகிறேன்.",
+    "target_text": "我想在你说完之后能开口说话。",
+    "known_audio_id": "64b2dfa5-dae9-4153-a9d4-840a5fd67104",
+    "target1_audio_id": "7031b96f-c533-4d1c-9c9c-126bded9c622",
+    "target2_audio_id": "ba2d817d-1efd-45cf-9930-7697dec712dc"
+   },
+   "lego": {
+    "lego_id": "S0011L02",
+    "known_text": "பிறகு",
+    "target_text": "之后",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0012L04U06": {
+   "seed": {
+    "seed_number": 12,
+    "known_text": "நாளைக்கு என்ன நடக்கப்போகிறது என்று யூகிக்க நான் விரும்பமாட்டேன்.",
+    "target_text": "我不想猜明天会发生什么。",
+    "known_audio_id": "ae05e3db-6c29-442d-9eec-af72bf09d14a",
+    "target1_audio_id": "bc772302-4e63-48e6-ba1a-c447ed864f18",
+    "target2_audio_id": "a380d95f-582a-49f4-8ec6-d0fa338ce32d"
+   },
+   "lego": {
+    "lego_id": "S0012L04",
+    "known_text": "யூகிக்க",
+    "target_text": "猜",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0015L02U06": {
+   "seed": {
+    "seed_number": 15,
+    "known_text": "மேலும் நீங்கள் நாளைக்கு என்னோடு சீன மொழி பேச வேண்டும் என்று நான் விரும்புகிறேன்.",
+    "target_text": "我想让你明天跟我说中文。",
+    "known_audio_id": "cd912579-9186-466e-b2c6-fb73d553946b",
+    "target1_audio_id": "20b7c260-23cc-43be-bd2b-884e1dfb5bf6",
+    "target2_audio_id": "9e342672-55a0-4029-82c1-1d07df18f814"
+   },
+   "lego": {
+    "lego_id": "S0015L02",
+    "known_text": "என்னோடு",
+    "target_text": "跟我",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0016L05U06": {
+   "seed": {
+    "seed_number": 16,
+    "known_text": "அவன் கொஞ்ச நேரம் கழித்து மற்ற எல்லோரோடும் சேர்ந்து திரும்பி வர விரும்புகிறான்.",
+    "target_text": "他想稍后跟大家一起回来。",
+    "known_audio_id": "da1fad08-494e-4cc4-88f0-62a79489f853",
+    "target1_audio_id": "5b9059f8-ed49-459c-9d57-8f2ab5c0bc79",
+    "target2_audio_id": "e6192ed8-c822-4bf3-b0d5-b1d0da1d1c7c"
+   },
+   "lego": {
+    "lego_id": "S0016L05",
+    "known_text": "எல்லோரோடும்",
+    "target_text": "跟大家",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0017L04U06": {
+   "seed": {
+    "seed_number": 17,
+    "known_text": "பதில் என்னவென்று கண்டுபிடிக்க அவள் விரும்புகிறாள்.",
+    "target_text": "她想知道答案是什么。",
+    "known_audio_id": "31e6c4cf-6332-4760-a548-a01ce5a68f9c",
+    "target1_audio_id": "d0ead540-5fa2-4118-9d06-015d65c078d2",
+    "target2_audio_id": "71d20ea2-adce-4f04-b61b-5f916d11edac"
+   },
+   "lego": {
+    "lego_id": "S0017L04",
+    "known_text": "பதில்",
+    "target_text": "答案",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0018L03U06": {
+   "seed": {
+    "seed_number": 18,
+    "known_text": "இன்று மாலை ஆறு மணிக்கு சந்திக்க நாங்கள் விரும்புகிறோம்.",
+    "target_text": "我们想今晚六点见面。",
+    "known_audio_id": "3d523633-fe97-4c45-9f80-f79ba49868ac",
+    "target1_audio_id": "a0b95455-3575-4fe8-ab36-8110eed04620",
+    "target2_audio_id": "3e1e88d9-1b23-4722-8bc0-62c5c1f2d12d"
+   },
+   "lego": {
+    "lego_id": "S0018L03",
+    "known_text": "இன்று மாலை",
+    "target_text": "今晚",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0020L01U06": {
+   "seed": {
+    "seed_number": 20,
+    "known_text": "நீங்கள் அவனுடைய பெயரை வேகமாகக் கத்துக்கொள்ள விரும்புகிறீர்கள்.",
+    "target_text": "你想快点学会他的名字。",
+    "known_audio_id": "91c9cb41-3c03-46a1-9d2f-3b027ef203c1",
+    "target1_audio_id": "ec749f83-0b1c-49e8-b898-8c9044f791de",
+    "target2_audio_id": "c70a925e-c22e-4e24-837c-8979da756319"
+   },
+   "lego": {
+    "lego_id": "S0020L01",
+    "known_text": "அவனுடைய",
+    "target_text": "他的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0021L01U06": {
+   "seed": {
+    "seed_number": 21,
+    "known_text": "நீங்கள் ஏன் அவளுடைய பெயரைக் கத்துக்கொள்கிறீர்கள்?",
+    "target_text": "你为什么在学她的名字？",
+    "known_audio_id": "ad8fab8b-5afd-4c16-aebc-8293b6bdb911",
+    "target1_audio_id": "be7b7ca5-c860-4e6e-af9f-950c2e1645eb",
+    "target2_audio_id": "57ff5da7-9a0c-4f8f-b894-144c7a59e7b9"
+   },
+   "lego": {
+    "lego_id": "S0021L01",
+    "known_text": "ஏன்",
+    "target_text": "为什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0022L01U06": {
+   "seed": {
+    "seed_number": 22,
+    "known_text": "ஏனென்றால் சீன மொழி பேசுகிற ஆட்களை நான் சந்திக்க விரும்புகிறேன்.",
+    "target_text": "因为我想认识说中文的人。",
+    "known_audio_id": "b104f17c-32eb-46aa-8fd6-04e0f6106810",
+    "target1_audio_id": "64f33ecd-1276-4bfd-ba61-1bedcd8a2287",
+    "target2_audio_id": "553b7257-d83d-49ab-a8cd-3f8b4abf5d59"
+   },
+   "lego": {
+    "lego_id": "S0022L01",
+    "known_text": "ஏனென்றால்",
+    "target_text": "因为",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0023L03U06": {
+   "seed": {
+    "seed_number": 23,
+    "known_text": "நான் சீக்கிரம் இன்னும் அதிகமாகப் பேச ஆரம்பிக்கப்போகிறேன்.",
+    "target_text": "我很快就会开始多说话。",
+    "known_audio_id": "0251d162-2cc0-40f3-ab47-214d945b3792",
+    "target1_audio_id": "29cca564-bc51-43da-9131-254299a67588",
+    "target2_audio_id": "befc19bb-638e-4674-b22b-9c8e31566170"
+   },
+   "lego": {
+    "lego_id": "S0023L03",
+    "known_text": "சீக்கிரம்",
+    "target_text": "很快",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0027L03U06": {
+   "seed": {
+    "seed_number": 27,
+    "known_text": "பதில் சொல்ல ரொம்ப நேரம் எடுத்துக்கொள்வது எனக்குப் பிடிக்காது.",
+    "target_text": "我不喜欢花太多时间回答。",
+    "known_audio_id": "5ffa3ad2-5da1-44ef-94d3-f120c243c165",
+    "target1_audio_id": "c0121bc4-7e19-469b-a392-6ce62fd2e419",
+    "target2_audio_id": "4580c1dc-4bab-457d-89e7-253b226e1bc4"
+   },
+   "lego": {
+    "lego_id": "S0027L03",
+    "known_text": "பதில் சொல்ல",
+    "target_text": "回答",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0028L01U06": {
+   "seed": {
+    "seed_number": 28,
+    "known_text": "முடிந்தவரை சீக்கிரம் பேச ஆரம்பிப்பது பயனுள்ளது.",
+    "target_text": "尽快开始说话是很有用的。",
+    "known_audio_id": "0fa27783-baa2-448b-bd43-2107dea11f52",
+    "target1_audio_id": "958c429d-8c5c-48a9-9041-322a8193da48",
+    "target2_audio_id": "c910aa6e-3e51-4ac0-bfea-cb863dc3124d"
+   },
+   "lego": {
+    "lego_id": "S0028L01",
+    "known_text": "முடிந்தவரை சீக்கிரம்",
+    "target_text": "尽快",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0030L03U06": {
+   "seed": {
+    "seed_number": 30,
+    "known_text": "நேத்து நான் உங்களிடம் ஒரு விஷயம் கேட்க விரும்பினேன்.",
+    "target_text": "我昨天想问你一件事。",
+    "known_audio_id": "01dc43aa-e0a2-4b71-9766-fdf250b75941",
+    "target1_audio_id": "17d6064f-7b5c-45ae-b2d4-607ca8cbd3d8",
+    "target2_audio_id": "d216d80c-3db8-4284-95eb-ae1da7bb5100"
+   },
+   "lego": {
+    "lego_id": "S0030L03",
+    "known_text": "ஒரு விஷயம்",
+    "target_text": "一件事",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0041L02U06": {
+   "seed": {
+    "seed_number": 41,
+    "known_text": "நான் பரவாயில்லை, ஆனால் சோர்வாக உணர ஆரம்பிக்கிறேன்.",
+    "target_text": "我感觉还好，但开始觉得累了。",
+    "known_audio_id": "36abb503-92e7-4bb3-9e19-031b323c01cc",
+    "target1_audio_id": "62c3bf3c-7da2-4c27-8d9f-9a8973b0d2cd",
+    "target2_audio_id": "cebdc308-f131-4213-a929-bba00e400c53"
+   },
+   "lego": {
+    "lego_id": "S0041L02",
+    "known_text": "சோர்வாக உணர",
+    "target_text": "觉得累了",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0042L03U06": {
+   "seed": {
+    "seed_number": 42,
+    "known_text": "நேத்து இரவை விட நான் நன்றாக உணர ஆரம்பித்தேன்.",
+    "target_text": "我开始感觉比昨晚好一点。",
+    "known_audio_id": "1e8ffe2c-f32e-49a7-a24e-08508110a92c",
+    "target1_audio_id": "4b0bafe0-3be1-4a2a-b152-57d482dfd9f6",
+    "target2_audio_id": "0ccf2e09-5f71-47ef-9b7a-ab7d5650ec1e"
+   },
+   "lego": {
+    "lego_id": "S0042L03",
+    "known_text": "நன்றாக",
+    "target_text": "好一点",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0043L01U06": {
+   "seed": {
+    "seed_number": 43,
+    "known_text": "எப்படிப் பதில் சொல்வது என்று நான் யோசிக்கவில்லை.",
+    "target_text": "我没想到怎么回答。",
+    "known_audio_id": "c2205efa-e5c8-4413-8a02-a1bfd40ae5c0",
+    "target1_audio_id": "c08db1c2-0515-4991-a200-8f92d48d75f4",
+    "target2_audio_id": "d246cfac-a988-45bf-93d8-05878c982739"
+   },
+   "lego": {
+    "lego_id": "S0043L01",
+    "known_text": "யோசிக்கவில்லை",
+    "target_text": "没想到",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0044L03U06": {
+   "seed": {
+    "seed_number": 44,
+    "known_text": "அல்லது நான் முன்னேற வேண்டுமா என்று.",
+    "target_text": "或者我是否需要进步。",
+    "known_audio_id": "432deab1-eeae-4ac1-9ced-8db887a0e3fd",
+    "target1_audio_id": "ee3c85b6-db71-4348-b180-9ea7e0b9adac",
+    "target2_audio_id": "90de65e6-54ba-4216-8de6-e433c069fec2"
+   },
+   "lego": {
+    "lego_id": "S0044L03",
+    "known_text": "வேண்டுமா என்று",
+    "target_text": "是否需要",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0045L02U06": {
+   "seed": {
+    "seed_number": 45,
+    "known_text": "எனக்கு எல்லாமே தெரிய வேண்டிய அவசியம் இல்லை.",
+    "target_text": "我不需要什么都知道。",
+    "known_audio_id": "73693425-61e6-4324-91bb-8e24c60ab4eb",
+    "target1_audio_id": "4e79c72f-3baf-498c-95d8-ba4fb1b14055",
+    "target2_audio_id": "b57bba81-c987-4809-a669-becf333c35c7"
+   },
+   "lego": {
+    "lego_id": "S0045L02",
+    "known_text": "எல்லாமே",
+    "target_text": "什么都",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0047L02U06": {
+   "seed": {
+    "seed_number": 47,
+    "known_text": "ஏனென்றால் தப்பு செய்வது நல்ல விஷயம் என்று நான் நினைக்கிறேன்.",
+    "target_text": "因为我认为犯错误是好事。",
+    "known_audio_id": "aed5fec2-c13e-4c92-b430-10c4d3aa7368",
+    "target1_audio_id": "998c44ea-645c-4a9c-ac2b-0540267600f8",
+    "target2_audio_id": "3974f72d-9b1d-49f6-a153-bfbb9a92f999"
+   },
+   "lego": {
+    "lego_id": "S0047L02",
+    "known_text": "நல்ல விஷயம்",
+    "target_text": "好事",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0049L03U06": {
+   "seed": {
+    "seed_number": 49,
+    "known_text": "நான் சொல்வது உங்களுக்குப் புரிஞ்சா, அது இப்படித்தான் இருக்கு.",
+    "target_text": "就是这样，如果你明白我的意思。",
+    "known_audio_id": "abd907ad-a878-4b7d-b05f-6c21602d3b4a",
+    "target1_audio_id": "d433b341-09ba-46d7-9b8c-833623c62029",
+    "target2_audio_id": "f8ddeb8c-e7ec-4c2f-8e1c-5ac4b3b34161"
+   },
+   "lego": {
+    "lego_id": "S0049L03",
+    "known_text": "இப்படித்தான் இருக்கு",
+    "target_text": "就是这样",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0051L03U06": {
+   "seed": {
+    "seed_number": 51,
+    "known_text": "என் நண்பர்களோடு சுவாரஸ்யமான விஷயங்களைச் செய்வது எனக்குப் பிடிக்கும்.",
+    "target_text": "我喜欢跟朋友做有趣的事情。",
+    "known_audio_id": "19b68177-6266-4f70-905f-39d853c71a70",
+    "target1_audio_id": "01ffe20f-f8b6-49d0-a56a-894e7d801a5b",
+    "target2_audio_id": "91518853-3a80-4f6b-a15d-4666cab4fea7"
+   },
+   "lego": {
+    "lego_id": "S0051L03",
+    "known_text": "சுவாரஸ்யமான",
+    "target_text": "有趣",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0056L02U06": {
+   "seed": {
+    "seed_number": 56,
+    "known_text": "அதனால் சில வார்த்தைகள் எப்படிச் சொல்வது என்று நான் நினைவில் வைத்துக்கொள்ள முடிகிறது.",
+    "target_text": "所以我能记住怎么说几个词。",
+    "known_audio_id": "4c3c4d36-b83d-4104-9c2c-e843a0fa8ed5",
+    "target1_audio_id": "543e8185-b838-4a9b-a253-3b99a3a479dd",
+    "target2_audio_id": "585b6732-e8aa-4eff-af08-3ced7f7ec698"
+   },
+   "lego": {
+    "lego_id": "S0056L02",
+    "known_text": "சில வார்த்தைகள்",
+    "target_text": "几个词",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0058L01U06": {
+   "seed": {
+    "seed_number": 58,
+    "known_text": "போதுமான வார்த்தைகளை நீங்கள் புரிஞ்சுக்கும்போது அது சுவாரஸ்யமாக இருக்கிறது.",
+    "target_text": "当你明白足够多的词，这很有趣。",
+    "known_audio_id": "d44a2778-7d19-45da-9d7b-1eeb0c15d073",
+    "target1_audio_id": "3814dbd3-6b60-48c8-b333-83b52a12f1dc",
+    "target2_audio_id": "c6fdee75-e323-4418-8c47-714f22418387"
+   },
+   "lego": {
+    "lego_id": "S0058L01",
+    "known_text": "போதுமான",
+    "target_text": "足够",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0059L01U06": {
+   "seed": {
+    "seed_number": 59,
+    "known_text": "அடுத்த வாரம் நான் செய்ய வேண்டியதை எப்படிச் செய்வது என்று எனக்குத் தெரியும்.",
+    "target_text": "我知道下周要做的事怎么做。",
+    "known_audio_id": "958a3454-8ef2-4818-8502-92602dc91e4f",
+    "target1_audio_id": "dbb0b073-19c4-427a-a5d0-13c626232760",
+    "target2_audio_id": "2a37464e-ec02-46c0-9e11-3c0c2551971f"
+   },
+   "lego": {
+    "lego_id": "S0059L01",
+    "known_text": "அடுத்த வாரம்",
+    "target_text": "下周",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0060L02U07": {
+   "seed": {
+    "seed_number": 60,
+    "known_text": "போதுமான அளவு வெவ்வேறு வார்த்தைகளை எப்படிச் சொல்வது என்று எனக்கு இன்னும் தெரியாது.",
+    "target_text": "我还不知道怎么说足够多的不同词。",
+    "known_audio_id": "0ea33552-c59f-4f15-a01c-b9dd883b4dda",
+    "target1_audio_id": "4a9c30b1-bb9c-4d7c-870a-0f6901f87aa4",
+    "target2_audio_id": "ee4abf5e-b5a5-451a-9329-7c03423c3983"
+   },
+   "lego": {
+    "lego_id": "S0060L02",
+    "known_text": "வெவ்வேறு",
+    "target_text": "不同",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0062L02U06": {
+   "seed": {
+    "seed_number": 62,
+    "known_text": "ஒரே நேரத்தில் உங்களுக்கு உதவ முடியுமா என்று எனக்கு நிச்சயமில்லை.",
+    "target_text": "我不确定能不能同时帮你。",
+    "known_audio_id": "79ebca23-e72e-439b-96b4-9ee94ba10277",
+    "target1_audio_id": "9143c48f-dd34-482e-9fab-112cf872567f",
+    "target2_audio_id": "bef72de9-f734-46bb-a224-68cd88049c43"
+   },
+   "lego": {
+    "lego_id": "S0062L02",
+    "known_text": "உங்களுக்கு உதவ",
+    "target_text": "帮你",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0065L02U07": {
+   "seed": {
+    "seed_number": 65,
+    "known_text": "உங்களை நீங்களே சோதித்துப் பார்க்க நேரம் எடுத்துக்கொள்வது முக்கியம்.",
+    "target_text": "花时间测试自己很重要。",
+    "known_audio_id": "ef580e84-7a03-4cc5-acfd-49d94dd7d2ea",
+    "target1_audio_id": "06efae50-2eb6-4526-8017-d3c77bce68ca",
+    "target2_audio_id": "c7b2b0ad-f74d-4288-befa-71964b658b74"
+   },
+   "lego": {
+    "lego_id": "S0065L02",
+    "known_text": "முக்கியம்",
+    "target_text": "重要",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0070L02U06": {
+   "seed": {
+    "seed_number": 70,
+    "known_text": "அது எங்கே இருந்தது என்று எனக்குச் சொல்ல அவள் விரும்பவில்லை.",
+    "target_text": "她不想告诉我在哪里。",
+    "known_audio_id": "c50c633b-e07e-4526-bcca-cce74e99a544",
+    "target1_audio_id": "2f4c6124-9ab2-4fe5-9ee4-03c9aa9cb96e",
+    "target2_audio_id": "984c50ab-4f18-4a18-acc4-128f55252114"
+   },
+   "lego": {
+    "lego_id": "S0070L02",
+    "known_text": "எங்கே",
+    "target_text": "哪里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0075L01U06": {
+   "seed": {
+    "seed_number": 75,
+    "known_text": "உங்களுக்கு இன்னும் கத்துக்கொள்ள நிறைய இருக்கிறதா?",
+    "target_text": "你还有更多要学吗？",
+    "known_audio_id": "1ba0e6c3-7659-461c-84da-93cab04e9eba",
+    "target1_audio_id": "5cff4749-5812-4628-899b-628b4129dd6d",
+    "target2_audio_id": "5dd6ba16-6a83-485d-b7ef-47a4e344c3e5"
+   },
+   "lego": {
+    "lego_id": "S0075L01",
+    "known_text": "இன்னும் கத்துக்கொள்ள",
+    "target_text": "更多要学",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0076L01U06": {
+   "seed": {
+    "seed_number": 76,
+    "known_text": "நான் ஏற்கனவே எவ்வளவு கத்துக்கொண்டிருக்கிறேன் என்பதில் மிகவும் சந்தோஷமாக இருக்கிறேன்.",
+    "target_text": "我对已经学到的很满意。",
+    "known_audio_id": "04b7befb-c809-438e-b281-6cc6e8a8cf8f",
+    "target1_audio_id": "5d232664-b413-4691-98f5-176769b4663f",
+    "target2_audio_id": "c55a4b91-1f25-4192-921d-926a93c9b6ce"
+   },
+   "lego": {
+    "lego_id": "S0076L01",
+    "known_text": "ஏற்கனவே",
+    "target_text": "已经",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0081L01U07": {
+   "seed": {
+    "seed_number": 81,
+    "known_text": "நீங்கள் எப்போது ஆரம்பிக்க விரும்புகிறீர்கள்?",
+    "target_text": "你想什么时候开始？",
+    "known_audio_id": "501b9841-b45c-4fb4-8db8-d76343bd2d8c",
+    "target1_audio_id": "9c4ac79b-d3b8-42b2-9697-0101f44187fe",
+    "target2_audio_id": "392a2513-b63f-44a6-8fa9-51d65e4e2469"
+   },
+   "lego": {
+    "lego_id": "S0081L01",
+    "known_text": "நீங்கள் விரும்புகிறீர்கள்",
+    "target_text": "你想",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0088L03U06": {
+   "seed": {
+    "seed_number": 88,
+    "known_text": "எனக்குத் தெரியாத ஆட்களோடு பேச நான் இன்னும் தயாராக இல்லை.",
+    "target_text": "我还没准备好跟陌生人说话。",
+    "known_audio_id": "0a705d6b-c00b-4f8e-862b-703d83f2bb46",
+    "target1_audio_id": "e85e842e-2d34-4479-a389-97e8b2234aa5",
+    "target2_audio_id": "2d2b2e81-545d-4a89-b5d0-4677ae64f186"
+   },
+   "lego": {
+    "lego_id": "S0088L03",
+    "known_text": "எனக்குத் தெரியாத ஆட்களோடு பேச",
+    "target_text": "跟陌生人说话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0089L04U06": {
+   "seed": {
+    "seed_number": 89,
+    "known_text": "குறைந்த நேரத்தில் நான் நிறைய செய்திருக்கிறேன் என்று நினைக்கிறேன்.",
+    "target_text": "我觉得我在短时间内做了很多。",
+    "known_audio_id": "25bb940d-4b18-4fe3-bb80-dad3fea8cc18",
+    "target1_audio_id": "eda53728-c6fa-4187-a660-26fcf5322dfc",
+    "target2_audio_id": "8c8363c1-dcfe-45d0-86a5-7dcdb712cab5"
+   },
+   "lego": {
+    "lego_id": "S0089L04",
+    "known_text": "என்று நினைக்கிறேன்",
+    "target_text": "我觉得",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0090L02U06": {
+   "seed": {
+    "seed_number": 90,
+    "known_text": "நீங்கள் இன்னும் மெதுவாகப் பேச முடிந்தால் அது ரொம்ப நல்லது.",
+    "target_text": "如果你能说慢一点就太好了。",
+    "known_audio_id": "898d1bad-9f0b-4227-9a7b-bdbe39503b34",
+    "target1_audio_id": "70f15dd2-e5bf-4a3c-a4ca-cd013027587c",
+    "target2_audio_id": "280592d6-9ccf-4824-bbf8-3484b7ccd616"
+   },
+   "lego": {
+    "lego_id": "S0090L02",
+    "known_text": "ரொம்ப நல்லது",
+    "target_text": "就太好了",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0091L02U06": {
+   "seed": {
+    "seed_number": 91,
+    "known_text": "சரியான நேரத்தில் பதில் சொல்ல போதுமான வேகமாக யோசிப்பது கடினம்.",
+    "target_text": "要及时回答，思考得够快是很难的。",
+    "known_audio_id": "e9488589-2ece-4475-82cd-1eba67d33c4b",
+    "target1_audio_id": "59d30ccf-bc76-4db7-a998-479ec44aae66",
+    "target2_audio_id": "1121fbfd-8414-4e9c-bf26-0630c842fa12"
+   },
+   "lego": {
+    "lego_id": "S0091L02",
+    "known_text": "போதுமான வேகமாக யோசிப்பது",
+    "target_text": "思考得够快",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0092L02U06": {
+   "seed": {
+    "seed_number": 92,
+    "known_text": "இதை நான் கொஞ்ச நேரம் தொடர்ந்து செய்ய விரும்புகிறேன்.",
+    "target_text": "我想继续做这件事一会儿。",
+    "known_audio_id": "0f2da47c-f558-4761-8070-8adcb4b77489",
+    "target1_audio_id": "716e1ab8-1eaf-4208-9beb-7fe452946f77",
+    "target2_audio_id": "f3a93980-4999-4a24-bd0e-7e112b6cf5be"
+   },
+   "lego": {
+    "lego_id": "S0092L02",
+    "known_text": "கொஞ்ச நேரம்",
+    "target_text": "一会儿",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0094L02U06": {
+   "seed": {
+    "seed_number": 94,
+    "known_text": "இது வேலை செய்ய இதுதான் ஒரே வழி.",
+    "target_text": "这是唯一能行的方法。",
+    "known_audio_id": "85345b36-bf71-4c3d-a266-04a85815dcc9",
+    "target1_audio_id": "ec5672aa-d8fd-477d-acf3-3d625cdcebd9",
+    "target2_audio_id": "e2e33116-c584-4f99-b831-76c6cd66a75b"
+   },
+   "lego": {
+    "lego_id": "S0094L02",
+    "known_text": "ஒரே",
+    "target_text": "唯一",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0096L01U06": {
+   "seed": {
+    "seed_number": 96,
+    "known_text": "இல்லை, நான் இன்னும் தயாரில்லை, எனக்குக் கொஞ்சம் இன்னும் நேரம் வேண்டும்.",
+    "target_text": "还没，我需要再多一点时间。",
+    "known_audio_id": "f856bff0-7229-43e7-a79a-30d1a919ca32",
+    "target1_audio_id": "5ec744fd-5b5a-4125-a084-ff04e0005555",
+    "target2_audio_id": "f7a55818-f46e-4be0-b7eb-80369f797344"
+   },
+   "lego": {
+    "lego_id": "S0096L01",
+    "known_text": "இன்னும் கொஞ்சம்",
+    "target_text": "多一点",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0098L04U06": {
+   "seed": {
+    "seed_number": 98,
+    "known_text": "வேறு எதையாவது விளையாடுவதைப் பத்தி நான் யோசிக்க வேண்டும்.",
+    "target_text": "我应该考虑玩别的东西。",
+    "known_audio_id": "5696e6b7-7fff-4670-ba6a-b1367d2d76c3",
+    "target1_audio_id": "2308fe9f-7ce3-4c8b-90c5-0e5f029c2bad",
+    "target2_audio_id": "24343cd9-1eb1-4e9e-ad6c-f1a37328e7e3"
+   },
+   "lego": {
+    "lego_id": "S0098L04",
+    "known_text": "வேறு எதையாவது",
+    "target_text": "别的东西",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0099L02U06": {
+   "seed": {
+    "seed_number": 99,
+    "known_text": "அது ஏன் வேலை செய்யவில்லை என்று நீங்கள் உங்களையே கேட்டுக்கொள்ள வேண்டும்.",
+    "target_text": "你应该问问自己为什么不起作用。",
+    "known_audio_id": "590af62f-1246-4523-ae33-d84b305867e1",
+    "target1_audio_id": "2f0df156-e8eb-4571-9e5c-86aeb6f8625e",
+    "target2_audio_id": "c03e42ab-190a-4f64-953f-3a0ffa087093"
+   },
+   "lego": {
+    "lego_id": "S0099L02",
+    "known_text": "வேலை செய்யவில்லை",
+    "target_text": "不起作用",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0106L02U06": {
+   "seed": {
+    "seed_number": 106,
+    "known_text": "நாங்கள் சந்தோஷமாக உணர வேண்டிய அவசியம் இல்லை, நாங்கள் கடினமாக உழைத்தால் போதும்.",
+    "target_text": "我们不需要感到高兴，我们只需要努力工作。",
+    "known_audio_id": "bf3bf625-9fcc-4efc-bf0a-e64486b77583",
+    "target1_audio_id": "a48d3b0d-cde2-4691-b36b-087fc7aa0bea",
+    "target2_audio_id": "d26a5624-0d36-4941-a667-67308c69ff86"
+   },
+   "lego": {
+    "lego_id": "S0106L02",
+    "known_text": "சந்தோஷமாக உணர",
+    "target_text": "感到高兴",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0108L01U06": {
+   "seed": {
+    "seed_number": 108,
+    "known_text": "நள்ளிரவில் விழித்தெழ நாங்கள் நம்பவில்லை.",
+    "target_text": "我们没希望半夜醒来。",
+    "known_audio_id": "8d88dc8a-eae0-46dd-9798-5376f247e47f",
+    "target1_audio_id": "90a12d6c-46de-4606-8092-5eeadd19a713",
+    "target2_audio_id": "ebd9e9f3-5a08-4b5d-ad2c-bedf8961ee3e"
+   },
+   "lego": {
+    "lego_id": "S0108L01",
+    "known_text": "நம்பவில்லை",
+    "target_text": "没希望",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0109L01U06": {
+   "seed": {
+    "seed_number": 109,
+    "known_text": "நிறைய புதிய வார்த்தைகளைக் கத்துக்கொள்ள நாங்கள் கடினமாக உழைக்க வேண்டும்.",
+    "target_text": "我们必须努力学很多新词。",
+    "known_audio_id": "86436742-4b0b-47e4-b191-f9510f8b849f",
+    "target1_audio_id": "4322acc7-88d2-4e7c-a0ee-265d37f51c34",
+    "target2_audio_id": "b8c562f8-7dc9-40aa-8554-5d8955693313"
+   },
+   "lego": {
+    "lego_id": "S0109L01",
+    "known_text": "புதிய",
+    "target_text": "新",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0110L02U06": {
+   "seed": {
+    "seed_number": 110,
+    "known_text": "நாங்கள் நண்பர்கள், முடித்த பிறகு நான் ஓய்வெடுக்க விரும்புகிறேன்.",
+    "target_text": "我们是朋友，完成之后我想放松。",
+    "known_audio_id": "37f2fefd-f74c-4c76-8798-bdc60482e334",
+    "target1_audio_id": "9ad01e89-c86a-4650-ab3d-c30b01a313a6",
+    "target2_audio_id": "bb935aa8-1487-47c0-a8ab-3ff625fd30a5"
+   },
+   "lego": {
+    "lego_id": "S0110L02",
+    "known_text": "முடித்த பிறகு",
+    "target_text": "完成之后",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0111L01U06": {
+   "seed": {
+    "seed_number": 111,
+    "known_text": "நாம் புதிய ஒன்றைக் கத்துக்கொள்ளும்போது அது நம் மூளையை மாற்றுகிறது.",
+    "target_text": "当我们学新的东西，它改变我们的大脑。",
+    "known_audio_id": "8280922f-a120-4364-a32e-f732a98d76d4",
+    "target1_audio_id": "8550adf2-7f7e-46dc-ae1b-0139314bbd22",
+    "target2_audio_id": "ea5eefa4-5097-4e9f-b469-210170582371"
+   },
+   "lego": {
+    "lego_id": "S0111L01",
+    "known_text": "அது",
+    "target_text": "它",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0114L02U06": {
+   "seed": {
+    "seed_number": 114,
+    "known_text": "நேத்தை விட இன்னைக்கு நான் மோசமாகச் செய்கிற மாதிரி உணர்கிறேன்.",
+    "target_text": "我感觉今天比昨天差。",
+    "known_audio_id": "9c63ce0b-9517-4e07-ba00-02219e16e4d4",
+    "target1_audio_id": "102c8ded-32b5-4abf-a9ec-2013701dac0d",
+    "target2_audio_id": "77a89004-5d25-4e0e-9a6a-819308169f54"
+   },
+   "lego": {
+    "lego_id": "S0114L02",
+    "known_text": "நான் உணர்கிறேன்",
+    "target_text": "我感觉",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0117L01U07": {
+   "seed": {
+    "seed_number": 117,
+    "known_text": "நாம் கடைசியா ஒருத்தரோடு ஒருத்தர் பேசினதை விட நான் நிச்சயமாக நன்றாகச் செய்கிறேன்.",
+    "target_text": "我肯定比上次我们谈话时做得更好了。",
+    "known_audio_id": "2410897c-9bc2-4c84-b97f-9a601eaa2265",
+    "target1_audio_id": "c60dcf14-a9c2-4c8a-82d6-d75f12ae508b",
+    "target2_audio_id": "db157a06-6ec9-4a74-988d-26d461e81be1"
+   },
+   "lego": {
+    "lego_id": "S0117L01",
+    "known_text": "நிச்சயமாக",
+    "target_text": "肯定",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0119L01U07": {
+   "seed": {
+    "seed_number": 119,
+    "known_text": "நீங்கள் கிளம்புவதற்கு முன்னால் நான் ஒரு விஷயம் கேட்கலாமா?",
+    "target_text": "你走之前我能问你一件事吗？",
+    "known_audio_id": "b1610702-d8f3-412a-8910-838cc8e888f2",
+    "target1_audio_id": "b66b51db-f76c-4617-9309-65b9952f178c",
+    "target2_audio_id": "d0a05898-9e50-46a6-a17d-4ebf7cfe20a8"
+   },
+   "lego": {
+    "lego_id": "S0119L01",
+    "known_text": "நீங்கள் கிளம்புவதற்கு முன்னால்",
+    "target_text": "你走之前",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0128L02U06": {
+   "seed": {
+    "seed_number": 128,
+    "known_text": "நான் முன்பு தெரிந்த ஒருவரைப் போல நீங்கள் இருக்கிறீர்கள்.",
+    "target_text": "你像一个我以前认识的人。",
+    "known_audio_id": "1aa0c97a-9648-4fc8-a9c3-f9cbf6115c8e",
+    "target1_audio_id": "a8f8ced7-233b-4c35-8c12-46f319d62f22",
+    "target2_audio_id": "4fed8b2a-587d-41bf-9968-77026e00fdf7"
+   },
+   "lego": {
+    "lego_id": "S0128L02",
+    "known_text": "போல",
+    "target_text": "像",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0131L02U07": {
+   "seed": {
+    "seed_number": 131,
+    "known_text": "என் தலையில் ரொம்ப அதிகமான யோசனைகள் சுற்றிக்கொண்டிருக்கின்றன.",
+    "target_text": "我脑子里有太多想法在转。",
+    "known_audio_id": "afa8bd76-9053-4b3c-9b2d-8b59e20ff2fa",
+    "target1_audio_id": "a15ad952-fb6a-4adb-8efe-ad51018e7e26",
+    "target2_audio_id": "6bf78a75-30b5-4752-a0f9-c9e1b9bececb"
+   },
+   "lego": {
+    "lego_id": "S0131L02",
+    "known_text": "யோசனைகள்",
+    "target_text": "想法",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0132L02U06": {
+   "seed": {
+    "seed_number": 132,
+    "known_text": "அவள் சொல்லிக்கொண்டிருந்ததை விட அது குறைவாக உற்சாகமானது.",
+    "target_text": "那比她说的没那么让人兴奋。",
+    "known_audio_id": "82c417e4-007a-4314-99a9-659a0ec36114",
+    "target1_audio_id": "dab58ca4-4c97-4ecd-b9df-b52f8d611adb",
+    "target2_audio_id": "af80b5a7-651f-4d53-9cfa-97d4ff28da47"
+   },
+   "lego": {
+    "lego_id": "S0132L02",
+    "known_text": "உற்சாகமானது",
+    "target_text": "让人兴奋",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0134L01U06": {
+   "seed": {
+    "seed_number": 134,
+    "known_text": "அவர்களோடு சேர்ந்து கடினமான ஒன்றில் வேலை செய்யும்போது அது ஒரு பிரச்சினையில்லை.",
+    "target_text": "和他们一起做困难的事情不是问题。",
+    "known_audio_id": "8c5b21ae-d425-46c9-a9ea-6a48df0c8f5b",
+    "target1_audio_id": "872716fb-2bc7-472c-87e4-336357725c4b",
+    "target2_audio_id": "ae6bf543-74c0-41c5-bbdf-7122a5397b0d"
+   },
+   "lego": {
+    "lego_id": "S0134L01",
+    "known_text": "கடினமான",
+    "target_text": "困难",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0137L02U06": {
+   "seed": {
+    "seed_number": 137,
+    "known_text": "பரிபூரணமாக இருப்பதை விட அடிக்கடி பேசுவது இன்னும் முக்கியம்.",
+    "target_text": "经常说话比完美更重要。",
+    "known_audio_id": "b4a04150-1e71-4bfb-b2cf-c4f57a87362c",
+    "target1_audio_id": "c462991f-b729-4d89-8386-5593958a1c22",
+    "target2_audio_id": "49dc9e5c-e666-492a-a15e-3170f088aeb0"
+   },
+   "lego": {
+    "lego_id": "S0137L02",
+    "known_text": "இன்னும் முக்கியம்",
+    "target_text": "更重要",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0139L03U06": {
+   "seed": {
+    "seed_number": 139,
+    "known_text": "நான் இவ்வளவு சீக்கிரம் கிளம்ப வேண்டியிருப்பதற்காக மன்னிக்கவும்.",
+    "target_text": "很抱歉我需要这么早离开。",
+    "known_audio_id": "a833f61d-9066-4d72-9767-e9652803b52e",
+    "target1_audio_id": "51208421-3a75-489a-89e1-873478afccb1",
+    "target2_audio_id": "f4f6d8bc-3bf0-4f4b-8fdb-ab503f67fd4c"
+   },
+   "lego": {
+    "lego_id": "S0139L03",
+    "known_text": "மன்னிக்கவும்",
+    "target_text": "很抱歉",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0151L01U06": {
+   "seed": {
+    "seed_number": 151,
+    "known_text": "அது நடக்கும் என்று நான் நம்பிய விஷயம் இல்லை.",
+    "target_text": "那不是我希望发生的事。",
+    "known_audio_id": "ac95e819-1ad1-4d55-aab2-58d17972e394",
+    "target1_audio_id": "cd84a914-ea32-490a-9780-7cab3c8060cd",
+    "target2_audio_id": "1859c9fc-4126-4de7-8b90-67f86a7a869a"
+   },
+   "lego": {
+    "lego_id": "S0151L01",
+    "known_text": "நடக்கும் என்று நம்பிய",
+    "target_text": "希望发生的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0169L01U06": {
+   "seed": {
+    "seed_number": 169,
+    "known_text": "நான் என்ன செய்ய வேண்டும் என்று நீங்கள் விரும்புகிறீர்கள்?",
+    "target_text": "你想让我做什么？",
+    "known_audio_id": "cd5021d8-51c7-4329-b452-ded2b24dd429",
+    "target1_audio_id": "ef5b133d-5a7d-4813-ae0d-c85545f41c51",
+    "target2_audio_id": "15a1118c-884d-46be-ab4f-a720c17a200b"
+   },
+   "lego": {
+    "lego_id": "S0169L01",
+    "known_text": "நான் என்ன செய்ய வேண்டும் என்று",
+    "target_text": "让我做什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0170L02U06": {
+   "seed": {
+    "seed_number": 170,
+    "known_text": "உங்களுக்கு என்ன வேண்டும் என்று நீங்கள் எனக்குச் சொல்ல வேண்டும் என்று நான் விரும்புகிறேன்.",
+    "target_text": "我想让你告诉我你需要什么。",
+    "known_audio_id": "2b484163-de1a-4e3c-a4a3-ad342e6e6f47",
+    "target1_audio_id": "13d5f04a-7b39-41da-87ad-225ee19fb61b",
+    "target2_audio_id": "c5d46d8b-d731-44ac-87db-3beed279b89a"
+   },
+   "lego": {
+    "lego_id": "S0170L02",
+    "known_text": "நீங்கள் எனக்குச் சொல்ல வேண்டும் என்று",
+    "target_text": "让你告诉我",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0175L02U06": {
+   "seed": {
+    "seed_number": 175,
+    "known_text": "ஞாயிற்றுக்கிழமை காலையில் நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target_text": "你周日早上想做什么？",
+    "known_audio_id": "9669b4d3-f069-458e-9167-3cdf485c283c",
+    "target1_audio_id": "bc57079a-a357-44c5-b137-fbdecea551ae",
+    "target2_audio_id": "99fafc4a-269a-4b68-8c92-b99b88e16e5c"
+   },
+   "lego": {
+    "lego_id": "S0175L02",
+    "known_text": "என்ன செய்ய விரும்புகிறீர்கள்",
+    "target_text": "想做什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0176L03U06": {
+   "seed": {
+    "seed_number": 176,
+    "known_text": "அடுத்த வருஷம் அவனால் உதவ முடியுமா என்று நான் அவனைக் கேட்பேன்.",
+    "target_text": "我会问他明年是否能帮忙。",
+    "known_audio_id": "629c6919-af99-41a1-af7d-0c9c81f18268",
+    "target1_audio_id": "5bf44cc6-53aa-4568-a224-6aaa344b3c30",
+    "target2_audio_id": "281cffa0-3433-41a3-9ed5-68ba61ef3a1b"
+   },
+   "lego": {
+    "lego_id": "S0176L03",
+    "known_text": "அவனால் உதவ முடியுமா என்று",
+    "target_text": "是否能帮忙",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0177L02U06": {
+   "seed": {
+    "seed_number": 177,
+    "known_text": "அவள் எங்கே போக விரும்புகிறாள் என்று நான் அவளைக் கேட்பேன்.",
+    "target_text": "我会问她想去哪里。",
+    "known_audio_id": "ddb95838-5fef-4bfb-8ccf-4daea59dcf04",
+    "target1_audio_id": "51570b3a-63d0-4341-b357-bc58aa0e426f",
+    "target2_audio_id": "ce230a62-e562-4d28-a06a-665bde9d61a9"
+   },
+   "lego": {
+    "lego_id": "S0177L02",
+    "known_text": "அவள் எங்கே போக விரும்புகிறாள் என்று",
+    "target_text": "想去哪里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0179L02U06": {
+   "seed": {
+    "seed_number": 179,
+    "known_text": "ஞாயிற்றுக்கிழமை மதியம் நீங்கள் என்ன செய்யப்போகிறீர்கள்?",
+    "target_text": "你周日下午打算做什么？",
+    "known_audio_id": "cb27aa8b-725e-423f-9fde-5b653164214d",
+    "target1_audio_id": "6b69b2f3-9cc0-4a46-8732-b6f0b2ed2d77",
+    "target2_audio_id": "75cf94ce-5e49-495c-9959-a79404529fa1"
+   },
+   "lego": {
+    "lego_id": "S0179L02",
+    "known_text": "என்ன செய்யப்போகிறீர்கள்",
+    "target_text": "打算做什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0182L03U06": {
+   "seed": {
+    "seed_number": 182,
+    "known_text": "என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+    "target_text": "你有没有在哪里看到我的钥匙？",
+    "known_audio_id": "ee95bc79-f0aa-4480-9861-c410f07be878",
+    "target1_audio_id": "f2457490-ed7e-4ecb-99a1-8ddaa040fb00",
+    "target2_audio_id": "742a804a-4621-4a66-b4f7-df3a494fe913"
+   },
+   "lego": {
+    "lego_id": "S0182L03",
+    "known_text": "எங்காவது",
+    "target_text": "你有没有在哪里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0183L03U06": {
+   "seed": {
+    "seed_number": 183,
+    "known_text": "இல்லை, துரதிர்ஷ்டவசமாக நான் அவற்றைப் பார்க்கவில்லை.",
+    "target_text": "没有，我没看到它们，很遗憾。",
+    "known_audio_id": "ee53712d-bda3-4d1e-8d92-a42e9d27e698",
+    "target1_audio_id": "851dc763-fe0b-4311-a12f-881c82dbf953",
+    "target2_audio_id": "87394488-25dd-4be9-87d3-66b14daab232"
+   },
+   "lego": {
+    "lego_id": "S0183L03",
+    "known_text": "பார்க்கவில்லை",
+    "target_text": "没看到",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0184L03U06": {
+   "seed": {
+    "seed_number": 184,
+    "known_text": "ஆமாம், கொஞ்ச நேரம் முன்னால் நான் அவற்றை அலுவலகத்தில் பார்த்தேன்.",
+    "target_text": "有，我刚才在办公室看到它们了。",
+    "known_audio_id": "0fb19250-73f5-4f10-8161-3372e80361a9",
+    "target1_audio_id": "b1c417d8-f134-4b17-b4e3-45d7a9b33cb8",
+    "target2_audio_id": "d9be8e81-9d96-493a-8787-7120f6fb7c78"
+   },
+   "lego": {
+    "lego_id": "S0184L03",
+    "known_text": "ஆமாம் நான்",
+    "target_text": "有我",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0186L02U06": {
+   "seed": {
+    "seed_number": 186,
+    "known_text": "அடுத்த வாரம் வேறு ஏதாவது பத்திப் பேச விரும்புகிறீர்களா?",
+    "target_text": "你下周想聊不同的话题吗？",
+    "known_audio_id": "8fc904fa-f21d-4f16-90de-fd965435f1a6",
+    "target1_audio_id": "1f6c54f6-b480-4f22-b9a8-b191aca3f176",
+    "target2_audio_id": "3e2a1f15-d140-496b-8d58-ead38d54bd76"
+   },
+   "lego": {
+    "lego_id": "S0186L02",
+    "known_text": "வேறு ஏதாவது",
+    "target_text": "不同的话题",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0192L02U06": {
+   "seed": {
+    "seed_number": 192,
+    "known_text": "நாளைக்கு இரவு நான் ரொம்ப பிஸியாக இருக்கிறேன்.",
+    "target_text": "我明天晚上很忙。",
+    "known_audio_id": "9fec951c-8b9b-4671-825c-bf54572b13ee",
+    "target1_audio_id": "859003f1-21ae-4092-8981-99d509e5fc40",
+    "target2_audio_id": "27af9504-69a5-4bc1-befe-1df601667334"
+   },
+   "lego": {
+    "lego_id": "S0192L02",
+    "known_text": "ரொம்ப பிஸியாக இருக்கிறேன்",
+    "target_text": "很忙",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0193L02U06": {
+   "seed": {
+    "seed_number": 193,
+    "known_text": "மன்னிக்கவும், ஆனால் நான் இன்னைக்கு ரொம்ப பிஸியாக இருக்கிறேன்.",
+    "target_text": "对不起，我今天太忙了。",
+    "known_audio_id": "887b8442-a316-4d59-8380-66d660356681",
+    "target1_audio_id": "ef615b5a-9d12-4505-8426-de638b2a1de5",
+    "target2_audio_id": "8b50aa2f-4580-4e79-9a7b-ead8fa308651"
+   },
+   "lego": {
+    "lego_id": "S0193L02",
+    "known_text": "நான் இன்னைக்கு ரொம்ப பிஸியாக இருக்கிறேன்",
+    "target_text": "我今天太忙了",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0195L02U06": {
+   "seed": {
+    "seed_number": 195,
+    "known_text": "மேஜையில் விட்டுவைத்த பணத்தை நான் தேடுகிறேன்.",
+    "target_text": "我在找我放在桌上的钱。",
+    "known_audio_id": "2de16573-a527-4dfd-9881-5f7e675dc7be",
+    "target1_audio_id": "0e9b6e5e-659b-4640-b06b-ab0c4b58dfbf",
+    "target2_audio_id": "3b15758c-db77-444e-8d5f-c0be4f9cd6a4"
+   },
+   "lego": {
+    "lego_id": "S0195L02",
+    "known_text": "நான் தேடுகிறேன்",
+    "target_text": "我在找",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0196L02U06": {
+   "seed": {
+    "seed_number": 196,
+    "known_text": "சமீபத்திய யோசனையைக் கேள்விப்பட்டீர்களா?",
+    "target_text": "你听说最新的主意了吗？",
+    "known_audio_id": "830225b0-020f-4136-9ecd-a7c085b06e75",
+    "target1_audio_id": "195dc6ce-710f-4def-8538-13833c1cf599",
+    "target2_audio_id": "af23db10-8d4d-40e2-8e52-989ec9aa67b7"
+   },
+   "lego": {
+    "lego_id": "S0196L02",
+    "known_text": "கேள்விப்பட்டீர்களா",
+    "target_text": "你听说",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0204L02U06": {
+   "seed": {
+    "seed_number": 204,
+    "known_text": "ஏற்பாடுகளைச் சமாளிக்க உங்களுக்கு அவள் உதவ வேண்டும் என்று நான் விரும்பினேன்.",
+    "target_text": "我想让她帮你处理安排。",
+    "known_audio_id": "ef9b044d-2a3e-4926-b42d-8395d0ae9b46",
+    "target1_audio_id": "fc387714-5a45-4842-8270-621398d4da78",
+    "target2_audio_id": "4210ea52-c8d3-4a08-ab73-dfdfb24fb29c"
+   },
+   "lego": {
+    "lego_id": "S0204L02",
+    "known_text": "சமாளிக்க",
+    "target_text": "处理",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0208L02U06": {
+   "seed": {
+    "seed_number": 208,
+    "known_text": "அதை எப்படிச் சொல்வது என்று உங்களைக் கேட்க நான் விரும்பவில்லை.",
+    "target_text": "我不想问你怎么说。",
+    "known_audio_id": "2cec6536-2769-4e0e-83d8-3cbc23862b67",
+    "target1_audio_id": "ff1bcdf3-7c47-47a4-ab76-7426f4933d9b",
+    "target2_audio_id": "a2a937d0-481d-4dd9-afa6-f182c525ba3a"
+   },
+   "lego": {
+    "lego_id": "S0208L02",
+    "known_text": "எப்படிச் சொல்வது",
+    "target_text": "怎么说",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0210L03U06": {
+   "seed": {
+    "seed_number": 210,
+    "known_text": "நாங்கள் இந்தப் பிரச்சினையை விவாதிக்க வேண்டும் என்று அவர்கள் நினைக்கிறார்கள்.",
+    "target_text": "他们认为我们需要讨论这个问题。",
+    "known_audio_id": "080955f4-d6ca-4f72-b83b-a07e3e1d1bbb",
+    "target1_audio_id": "ebea306e-a344-4e86-a9b4-09f1dd80158e",
+    "target2_audio_id": "ab1bc0ef-d61d-4982-86eb-3f33b8bece1f"
+   },
+   "lego": {
+    "lego_id": "S0210L03",
+    "known_text": "விவாதிக்க வேண்டும்",
+    "target_text": "需要讨论",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0211L02U06": {
+   "seed": {
+    "seed_number": 211,
+    "known_text": "அவர்கள் விளக்க விரும்பவில்லை என்று எங்களிடம் சொன்னார்கள்.",
+    "target_text": "他们告诉我们他们不想解释。",
+    "known_audio_id": "27af33b5-ec19-4710-a63f-aa5cae987d64",
+    "target1_audio_id": "66f360f2-f304-4af1-953a-b50e018f5924",
+    "target2_audio_id": "c337b578-a052-460d-8abc-773e20a6f2db"
+   },
+   "lego": {
+    "lego_id": "S0211L02",
+    "known_text": "அவர்கள் விரும்பவில்லை",
+    "target_text": "他们不想",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0218L01U06": {
+   "seed": {
+    "seed_number": 218,
+    "known_text": "ஞாயிற்றுக்கிழமை நான் அதிகம் எதுவும் செய்யவில்லை.",
+    "target_text": "我周日没做什么。",
+    "known_audio_id": "e1725600-0da4-4b02-a6a7-f3ed66bc69e4",
+    "target1_audio_id": "9d96f4d2-72ff-43fd-87c2-9a3171222c37",
+    "target2_audio_id": "db98a574-bf56-4d55-92a3-cb1997499b94"
+   },
+   "lego": {
+    "lego_id": "S0218L01",
+    "known_text": "அதிகம் எதுவும் செய்யவில்லை",
+    "target_text": "没做什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0222L02U06": {
+   "seed": {
+    "seed_number": 222,
+    "known_text": "அவன் என்ன விரும்புகிறான் என்று எனக்குச் சொல்ல முயற்சி செய்கிறான்",
+    "target_text": "他在告诉我他想要什么",
+    "known_audio_id": "6df32ab7-90ec-49a7-b01a-48fe85c21aae",
+    "target1_audio_id": "c4a05334-8a68-435e-b4e7-e35e4cbb1dce",
+    "target2_audio_id": "a95813f7-b8a4-4edb-8baf-d4028e9451b4"
+   },
+   "lego": {
+    "lego_id": "S0222L02",
+    "known_text": "என்ன விரும்புகிறான்",
+    "target_text": "想要什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0223L01U06": {
+   "seed": {
+    "seed_number": 223,
+    "known_text": "அவன் நாளைக்கு உங்களைக் கேட்பான்.",
+    "target_text": "他明天会问你的。",
+    "known_audio_id": "bafdb8b5-dba0-4543-ad56-a5f6d0cbe211",
+    "target1_audio_id": "fedc7f65-797d-443b-831d-d5fdfcb79643",
+    "target2_audio_id": "1656061a-7154-4998-a8dd-6e481ab6f8fc"
+   },
+   "lego": {
+    "lego_id": "S0223L01",
+    "known_text": "உங்களைக் கேட்பான்",
+    "target_text": "会问你",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0225L01U06": {
+   "seed": {
+    "seed_number": 225,
+    "known_text": "அவனால் முடிந்தால் அவன் உங்களுக்கு ஒரு பதில் கொடுப்பான்.",
+    "target_text": "如果可以，他会给你一个答案。",
+    "known_audio_id": "9c71e0e0-dc03-4022-98e3-59e4734d6f35",
+    "target1_audio_id": "68d5d345-8811-42a8-820a-909acbade090",
+    "target2_audio_id": "1aa8eb92-f477-4545-beae-303446e93ee6"
+   },
+   "lego": {
+    "lego_id": "S0225L01",
+    "known_text": "முடிந்தால்",
+    "target_text": "如果可以",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0226L01U06": {
+   "seed": {
+    "seed_number": 226,
+    "known_text": "அந்த ஆள் எனக்கு உதவ முயற்சி செய்கிறான்.",
+    "target_text": "那个人在试图帮我。",
+    "known_audio_id": "6a923a5f-1143-4c49-80bb-29555dbafbbb",
+    "target1_audio_id": "52c619ea-d070-45ab-a9e5-f53ed9a2b22d",
+    "target2_audio_id": "f5175a9f-7295-4819-8768-5b802d3f080d"
+   },
+   "lego": {
+    "lego_id": "S0226L01",
+    "known_text": "அந்த ஆள்",
+    "target_text": "那个人",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0229L02U07": {
+   "seed": {
+    "seed_number": 229,
+    "known_text": "அந்த பெண்ணால் முடிந்தால் அவள் உங்களுக்கு உதவுவாள்.",
+    "target_text": "如果可以，那个女人会帮你。",
+    "known_audio_id": "8c7027cb-cc56-4132-84ea-c7d2704f9e5d",
+    "target1_audio_id": "c3a3b9ee-add0-49ef-9223-ac69958cf33c",
+    "target2_audio_id": "e064bf09-9c2b-40b9-accf-bc5b3bda3400"
+   },
+   "lego": {
+    "lego_id": "S0229L02",
+    "known_text": "உங்களுக்கு உதவுவாள்",
+    "target_text": "会帮你",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0234L02U06": {
+   "seed": {
+    "seed_number": 234,
+    "known_text": "உங்கள் அண்ணனோடு வேலை செய்கிற ஒருவரை நேத்து இரவு சந்தித்தேன்.",
+    "target_text": "我昨晚遇到一个和你哥哥一起工作的人。",
+    "known_audio_id": "fa9eda00-7892-403d-b8c4-6bb930cd31d5",
+    "target1_audio_id": "1034594f-c4ce-47a6-9a49-ee968c974cf7",
+    "target2_audio_id": "8c54dc1c-f978-4914-a3ae-de7315e47fd7"
+   },
+   "lego": {
+    "lego_id": "S0234L02",
+    "known_text": "சந்தித்தேன்",
+    "target_text": "遇到",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0235L01U07": {
+   "seed": {
+    "seed_number": 235,
+    "known_text": "உங்களிடம் ஒரு விஷயம் சொல்ல விரும்புவதாகச் சொன்ன ஒருவரை நான் சந்தித்தேன்.",
+    "target_text": "我遇到一个说他想告诉你一件事的人。",
+    "known_audio_id": "56305bf6-fb86-49eb-b81f-ef2883c7fbfd",
+    "target1_audio_id": "39b06c48-99c6-4a3b-b245-3593b17975ab",
+    "target2_audio_id": "017b9dba-e0ec-4954-802e-bbcdeb0ac98c"
+   },
+   "lego": {
+    "lego_id": "S0235L01",
+    "known_text": "உங்களிடம் சொல்ல",
+    "target_text": "告诉你",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0247L02U06": {
+   "seed": {
+    "seed_number": 247,
+    "known_text": "அந்தப் புத்தகம் ஓரளவு நல்லா இருந்தது என்று நினைத்தேன்.",
+    "target_text": "我觉得那本书还不错。",
+    "known_audio_id": "1e453a4e-5959-4b6c-8987-dea4bdff061c",
+    "target1_audio_id": "e333489c-1577-4f32-8cce-0eb8598544d9",
+    "target2_audio_id": "5ac98e86-3968-45a9-934c-7bfdebdc6156"
+   },
+   "lego": {
+    "lego_id": "S0247L02",
+    "known_text": "ஓரளவு நல்லா",
+    "target_text": "还不错",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0248L02U06": {
+   "seed": {
+    "seed_number": 248,
+    "known_text": "அந்தப் படம் முழுக்க குப்பை என்று நினைத்தேன், எனக்கு என் பணம் திரும்பி வேண்டும்.",
+    "target_text": "我觉得那部电影完全是垃圾，我想退钱。",
+    "known_audio_id": "e181f382-1088-44b9-b49e-655781c2bf31",
+    "target1_audio_id": "7e7af129-da56-4607-a526-454f8da491bb",
+    "target2_audio_id": "124594e6-d6f2-4b16-b54e-a0119d978b46"
+   },
+   "lego": {
+    "lego_id": "S0248L02",
+    "known_text": "குப்பை",
+    "target_text": "垃圾",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0250L01U06": {
+   "seed": {
+    "seed_number": 250,
+    "known_text": "நான் பதில் சொல்வதற்கு முன்னால் வேறு ஏதாவது எனக்குச் சொல்ல முடியுமா?",
+    "target_text": "你能在我回答之前再告诉我别的吗？",
+    "known_audio_id": "dd386a1c-6018-4e05-bbfc-af196920cf8f",
+    "target1_audio_id": "390fbf99-df22-471d-aa04-5f04b9469d49",
+    "target2_audio_id": "1c4ea6ef-e5f3-45c3-b1a7-a775d26d4493"
+   },
+   "lego": {
+    "lego_id": "S0250L01",
+    "known_text": "நான் பதில் சொல்வதற்கு முன்னால்",
+    "target_text": "在我回答之前",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0267L01U06": {
+   "seed": {
+    "seed_number": 267,
+    "known_text": "உங்கள் நண்பரிடம் இருந்து செய்தி வந்ததா?",
+    "target_text": "你有没有收到朋友的消息？",
+    "known_audio_id": "43bdc86e-aa9e-4005-964c-75c0dbdc274c",
+    "target1_audio_id": "93b42e1d-2656-46e7-afb2-002e25393a65",
+    "target2_audio_id": "f58ab6d2-41f2-4cfb-ac35-2dfc04b992e9"
+   },
+   "lego": {
+    "lego_id": "S0267L01",
+    "known_text": "செய்தி",
+    "target_text": "消息",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L01U06": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "ஆமாம், அவள் போன வாரம் எனக்கு இரண்டு மின்னஞ்சல்கள் அனுப்பினாள்.",
+    "target_text": "有，她上周给我发了两封电子邮件。",
+    "known_audio_id": "537ae704-9410-48df-b76e-449fe84f531a",
+    "target1_audio_id": "1e249d6f-084b-4c1e-aad1-abf248e5dd09",
+    "target2_audio_id": "213ae165-ea66-470f-8b4a-38de1899b4c9"
+   },
+   "lego": {
+    "lego_id": "S0268L01",
+    "known_text": "போன வாரம்",
+    "target_text": "上周",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0269L01U06": {
+   "seed": {
+    "seed_number": 269,
+    "known_text": "உங்கள் அப்பாவுக்காக ஏன் காத்திருக்க விரும்பவில்லை?",
+    "target_text": "你为什么不想等你父亲？",
+    "known_audio_id": "03a4e761-03d7-4c65-a115-cb5db70db214",
+    "target1_audio_id": "e069156e-a570-40ac-b78a-587488ccc706",
+    "target2_audio_id": "e0082868-ca23-4f62-8ca8-a7b6912257ec"
+   },
+   "lego": {
+    "lego_id": "S0269L01",
+    "known_text": "ஏன் விரும்பவில்லை",
+    "target_text": "为什么不想",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0276L01U06": {
+   "seed": {
+    "seed_number": 276,
+    "known_text": "இல்லை, நான் இங்கே இன்னும் கொஞ்ச நேரம் இருக்க முடியும்.",
+    "target_text": "不，我可以在这里再待一会儿。",
+    "known_audio_id": "423a80d0-5fbf-4194-b89d-66ab84cc19c7",
+    "target1_audio_id": "6712d232-24c1-4823-9f20-73b3adaf687d",
+    "target2_audio_id": "2e900820-c02d-4269-b0ba-706ee2ade7b7"
+   },
+   "lego": {
+    "lego_id": "S0276L01",
+    "known_text": "இங்கே",
+    "target_text": "在这里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0277L02U06": {
+   "seed": {
+    "seed_number": 277,
+    "known_text": "ஆமாம், அடுத்த வாரம் ஆரம்பத்தில் எனக்கு ஒரு முக்கியமான கூட்டம் இருக்கிறது.",
+    "target_text": "有，我下周初有个重要会议。",
+    "known_audio_id": "fdc7d6f4-1da0-4690-94da-642584bda7ca",
+    "target1_audio_id": "370b1ba0-5a73-46e4-8a7d-c2b31c896e0c",
+    "target2_audio_id": "268fdfd3-9e4b-45f4-99a4-14054ff24fcc"
+   },
+   "lego": {
+    "lego_id": "S0277L02",
+    "known_text": "அடுத்த வாரம் ஆரம்பத்தில்",
+    "target_text": "下周初",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0301L03U06": {
+   "seed": {
+    "seed_number": 301,
+    "known_text": "உங்களுக்கு ஒரு விஷயம் காட்ட விரும்புவதாக அவன் சொன்னான்.",
+    "target_text": "他说他想给你看一样东西。",
+    "known_audio_id": "664ca867-bd73-4447-bb24-bf440cc306b0",
+    "target1_audio_id": "15e612dd-3b19-4e3b-b6fc-5039188e2a4b",
+    "target2_audio_id": "13577fe2-47c0-431b-af16-03cd93d379d6"
+   },
+   "lego": {
+    "lego_id": "S0301L03",
+    "known_text": "காட்ட",
+    "target_text": "给你看",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0302L03U06": {
+   "seed": {
+    "seed_number": 302,
+    "known_text": "அவள் ஒரு நகரத்தில் வாழ விரும்பவில்லை என்று சொன்னாள்.",
+    "target_text": "她说她不想住在城市里。",
+    "known_audio_id": "29393bf8-3cf5-48f2-b44d-98d50612ea97",
+    "target1_audio_id": "60054992-346b-4ff6-b706-a761f1b0a314",
+    "target2_audio_id": "2e9c4308-d75c-4ef4-909e-0714ffcbed73"
+   },
+   "lego": {
+    "lego_id": "S0302L03",
+    "known_text": "ஒரு நகரத்தில்",
+    "target_text": "在城市里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0308L01U06": {
+   "seed": {
+    "seed_number": 308,
+    "known_text": "ஆமாம், அவள் என் அம்மாவின் ஒரு நண்பி.",
+    "target_text": "对，她是我妈妈的一个朋友。",
+    "known_audio_id": "b286092b-9321-48f0-9350-8253e0a16293",
+    "target1_audio_id": "bda26d27-f7fc-44bd-aeeb-9ea0cf3acee9",
+    "target2_audio_id": "d3c4c32e-ad92-40c8-93b9-b10c5b134570"
+   },
+   "lego": {
+    "lego_id": "S0308L01",
+    "known_text": "என் அம்மாவின் ஒரு நண்பி",
+    "target_text": "我妈妈的一个朋友",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0311L03U06": {
+   "seed": {
+    "seed_number": 311,
+    "known_text": "மிக முக்கியமான மூன்று உண்மைகளை அவன் நம்பவில்லை.",
+    "target_text": "他不相信三个最重要的事实。",
+    "known_audio_id": "7adc3458-3188-480e-93aa-32fc19d5e949",
+    "target1_audio_id": "8991d844-5c20-4d24-95b5-a3b17c7368a0",
+    "target2_audio_id": "d3a189f9-92ae-4b8a-ac5c-718806b7a9f5"
+   },
+   "lego": {
+    "lego_id": "S0311L03",
+    "known_text": "மிக முக்கியமான",
+    "target_text": "最重要的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0317L01U06": {
+   "seed": {
+    "seed_number": 317,
+    "known_text": "ஆமாம், அவள் விரும்பினால் முடியும் என்று நினைக்கிறேன்.",
+    "target_text": "是的，我觉得如果她想的话可以。",
+    "known_audio_id": "74b01a6a-0f73-4b98-b0d9-614d1e9d7ce6",
+    "target1_audio_id": "676ac8d4-043d-4634-9bd2-fca6e1b7ce4b",
+    "target2_audio_id": "0a5d9bdd-4b8a-4863-8ef7-3dc967835fb3"
+   },
+   "lego": {
+    "lego_id": "S0317L01",
+    "known_text": "அவள் விரும்பினால்",
+    "target_text": "如果她想的话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0318L01U06": {
+   "seed": {
+    "seed_number": 318,
+    "known_text": "இல்லை, இந்த தடவை அவளால் முடியாது என்று நினைக்கிறேன்.",
+    "target_text": "不，我觉得她这次不行。",
+    "known_audio_id": "104b9590-1106-4aac-8de8-dc20ed4e1696",
+    "target1_audio_id": "3f91e1d4-70a0-4aca-9c28-5902906db719",
+    "target2_audio_id": "26308423-0776-473c-a6f1-1025168cec00"
+   },
+   "lego": {
+    "lego_id": "S0318L01",
+    "known_text": "இந்த தடவை",
+    "target_text": "这次",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0324L01U06": {
+   "seed": {
+    "seed_number": 324,
+    "known_text": "அந்த மாணவி தன் இரண்டு கைகளையும் தூக்கியிருக்கிறாள்.",
+    "target_text": "那个学生举起了双手。",
+    "known_audio_id": "55fc2a64-21c4-4823-8491-3cdfde096c52",
+    "target1_audio_id": "d06a25e9-e0bd-49b1-b153-490f66668cb0",
+    "target2_audio_id": "ec27d2eb-d16f-4f19-9a37-8fc72dbf6beb"
+   },
+   "lego": {
+    "lego_id": "S0324L01",
+    "known_text": "மாணவி",
+    "target_text": "学生",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0325L01U06": {
+   "seed": {
+    "seed_number": 325,
+    "known_text": "அவன் சாத்தியமான பத்து பிரச்சினைகளைப் பத்தி யோசிக்க வேண்டும் என்று நினைக்கிறேன்.",
+    "target_text": "我认为他需要考虑十个可能的问题。",
+    "known_audio_id": "99924c4b-9244-47b9-b378-062bac64a245",
+    "target1_audio_id": "25303fcb-3f6f-467e-b6f8-9a5cfd681703",
+    "target2_audio_id": "6786dff6-bdfc-42f4-a866-d150d10b5454"
+   },
+   "lego": {
+    "lego_id": "S0325L01",
+    "known_text": "பத்து",
+    "target_text": "十个",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0326L02U06": {
+   "seed": {
+    "seed_number": 326,
+    "known_text": "அவள் கம்பெனியை விற்க வேண்டும் என்று நான் நினைக்கவில்லை.",
+    "target_text": "我不认为她需要出售公司。",
+    "known_audio_id": "4e7b470d-ae4e-47e0-a8a4-829adf40c17c",
+    "target1_audio_id": "17dae22a-756e-4be8-9cf1-7785f131218b",
+    "target2_audio_id": "db4f5779-ea03-4edc-8236-3c972737fb58"
+   },
+   "lego": {
+    "lego_id": "S0326L02",
+    "known_text": "விற்க",
+    "target_text": "出售",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0327L01U06": {
+   "seed": {
+    "seed_number": 327,
+    "known_text": "அவள் இன்னொரு வழியை வழங்க வேண்டும் என்று நினைக்கிறீர்களா?",
+    "target_text": "你认为她需要提供另一种方式吗？",
+    "known_audio_id": "2fe71c7d-3579-405f-89de-bb1196d9d8fe",
+    "target1_audio_id": "b3a36937-2461-4301-b7e8-b0bd34ba4488",
+    "target2_audio_id": "06b046da-8242-4271-b02d-a1db3c869414"
+   },
+   "lego": {
+    "lego_id": "S0327L01",
+    "known_text": "வழங்க",
+    "target_text": "提供",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0335L01U06": {
+   "seed": {
+    "seed_number": 335,
+    "known_text": "அவன் சில மதிப்புள்ள யோசனைகளைச் சேர்க்க முடியும் என்று நினைக்கிறேன்.",
+    "target_text": "我认为他能提出一些有价值的想法。",
+    "known_audio_id": "65f6f0b7-9ce7-4f1f-90e0-4afc3f8185d3",
+    "target1_audio_id": "3847e74c-07ad-4e4c-83e7-5c76152aa66d",
+    "target2_audio_id": "85b8a3cb-c6f6-4517-b3d6-99b6465fc84e"
+   },
+   "lego": {
+    "lego_id": "S0335L01",
+    "known_text": "சேர்க்க",
+    "target_text": "提出",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0337L01U06": {
+   "seed": {
+    "seed_number": 337,
+    "known_text": "அவனால் தொடர்ந்து விளையாட முடியும் என்று நினைக்கிறீர்களா?",
+    "target_text": "你认为他能继续比赛吗？",
+    "known_audio_id": "68f67e5f-94c4-491c-8c94-5710b51cbe13",
+    "target1_audio_id": "45b2589f-5595-40d7-ad4f-b050f38b6fbc",
+    "target2_audio_id": "1874a802-dfbb-42de-9ea5-299b696ed037"
+   },
+   "lego": {
+    "lego_id": "S0337L01",
+    "known_text": "தொடர்ந்து விளையாட",
+    "target_text": "继续比赛",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0340L01U06": {
+   "seed": {
+    "seed_number": 340,
+    "known_text": "ஆமாம், அவன் நல்லா இருப்பான் என்று நிச்சயமாக நினைக்கிறேன்.",
+    "target_text": "是的，我确定他会没事的。",
+    "known_audio_id": "d63a42af-122b-435e-bcaf-98dd545123d8",
+    "target1_audio_id": "4e60db56-1217-4096-85cc-3a788a2e4856",
+    "target2_audio_id": "3dcd6ff3-9acf-422b-91af-b0531e0b760e"
+   },
+   "lego": {
+    "lego_id": "S0340L01",
+    "known_text": "நல்லா இருப்பான்",
+    "target_text": "会没事的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0346L02U06": {
+   "seed": {
+    "seed_number": 346,
+    "known_text": "அவளுடைய புத்தகம் எனக்குப் பிடித்திருந்தது என்று அவளுக்குத் தெரிய வேண்டும் என்று விரும்பினேன்.",
+    "target_text": "我想让她知道我喜欢她的书。",
+    "known_audio_id": "7959dbee-6950-440a-9882-acb75d9c02eb",
+    "target1_audio_id": "182f83d2-671e-4db8-95f9-a36ab6c9cba1",
+    "target2_audio_id": "79d620e9-3c57-4676-a7bd-17e019a07d35"
+   },
+   "lego": {
+    "lego_id": "S0346L02",
+    "known_text": "அவளுடைய புத்தகம்",
+    "target_text": "她的书",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0347L02U06": {
+   "seed": {
+    "seed_number": 347,
+    "known_text": "ஒரு வாரம் முன்னால் என்ன நடந்தது என்று அவன் தெரிஞ்சுக்க விரும்பினான்.",
+    "target_text": "他想知道一周前发生了什么。",
+    "known_audio_id": "9b339ad9-22f5-4483-b7fe-e31de22d1680",
+    "target1_audio_id": "bbdc8b89-a456-4b78-a30e-20c6a19de320",
+    "target2_audio_id": "aea0c587-cc6b-4d72-84b3-f5aefb9a6348"
+   },
+   "lego": {
+    "lego_id": "S0347L02",
+    "known_text": "என்ன நடந்தது",
+    "target_text": "发生了什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0348L01U06": {
+   "seed": {
+    "seed_number": 348,
+    "known_text": "என்ன நடக்கப்போகிறது என்று அவள் தெரிஞ்சுக்க விரும்பவில்லை.",
+    "target_text": "她不想知道会发生什么。",
+    "known_audio_id": "870f1b57-44af-46d6-8682-dc73d5abd27a",
+    "target1_audio_id": "91c131a4-f2bb-4bf0-8474-621de3179a07",
+    "target2_audio_id": "142c35c8-e558-4b19-aebc-155257b154b7"
+   },
+   "lego": {
+    "lego_id": "S0348L01",
+    "known_text": "என்ன நடக்கப்போகிறது",
+    "target_text": "会发生什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0362L01U06": {
+   "seed": {
+    "seed_number": 362,
+    "known_text": "இல்லை, நீங்கள் போன பிறகு அவன் கொஞ்சம் அமைதியாக இருந்தான்.",
+    "target_text": "不，你走后他很安静。",
+    "known_audio_id": "818451d7-218e-459a-a86a-d54d3ab12eef",
+    "target1_audio_id": "eb5e9a3e-720d-4469-a23a-60364f05abfd",
+    "target2_audio_id": "2bb0d6aa-9d15-4ee2-9a1d-49defa4aad20"
+   },
+   "lego": {
+    "lego_id": "S0362L01",
+    "known_text": "நீங்கள் போன பிறகு",
+    "target_text": "你走后",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0364L02U07": {
+   "seed": {
+    "seed_number": 364,
+    "known_text": "அவனுக்கு அந்த இடம் பிடிக்கவில்லை என்று கேள்விப்பட்டேன்.",
+    "target_text": "我听说他不喜欢那个地方。",
+    "known_audio_id": "4b0c2919-c550-47ab-8df1-42cea989d76f",
+    "target1_audio_id": "baa40ff9-0ba2-420b-a16a-00b587c40069",
+    "target2_audio_id": "6082e90d-105b-4865-955b-a8538a708270"
+   },
+   "lego": {
+    "lego_id": "S0364L02",
+    "known_text": "பிடிக்கவில்லை",
+    "target_text": "不喜欢",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0368L01U07": {
+   "seed": {
+    "seed_number": 368,
+    "known_text": "ஆமாம், அவன் தக்காளி வளர்க்க விரும்பினான் என்று கேள்விப்பட்டேன்.",
+    "target_text": "有，我听说他想种西红柿。",
+    "known_audio_id": "0a12ece6-3eec-43b5-b568-47911b8fdfc1",
+    "target1_audio_id": "bb47e102-be2a-4056-b523-eaccacd547a9",
+    "target2_audio_id": "11702c76-592d-46a5-9b82-2ef7d6bc319c"
+   },
+   "lego": {
+    "lego_id": "S0368L01",
+    "known_text": "தக்காளி",
+    "target_text": "西红柿",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0369L01U06": {
+   "seed": {
+    "seed_number": 369,
+    "known_text": "சாலையில் சில குதிரைகளைப் பார்த்தேன்.",
+    "target_text": "我在路上看到几匹马。",
+    "known_audio_id": "51bd02c0-e514-48ae-aa8f-0b0af4ed87be",
+    "target1_audio_id": "84954c45-9c81-46ff-b1d6-4ffbe3d91e97",
+    "target2_audio_id": "d0d3ce35-a82c-405a-920d-68b503d23c28"
+   },
+   "lego": {
+    "lego_id": "S0369L01",
+    "known_text": "சாலையில்",
+    "target_text": "在路上",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0371L01U06": {
+   "seed": {
+    "seed_number": 371,
+    "known_text": "புதன்கிழமை நான் ஒரு படம் பார்க்கப் போனேன்.",
+    "target_text": "我周三去看了一部电影。",
+    "known_audio_id": "aa229483-a215-49d8-a6c8-dd93a7fb54bb",
+    "target1_audio_id": "c2519ba2-be3f-437a-9ae6-caea7e359bd7",
+    "target2_audio_id": "8e82addf-5476-4f5f-9a12-0ef9df6e4382"
+   },
+   "lego": {
+    "lego_id": "S0371L01",
+    "known_text": "புதன்கிழமை",
+    "target_text": "周三",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0375L01U06": {
+   "seed": {
+    "seed_number": 375,
+    "known_text": "இல்லை, அவள் என்ன செய்கிறாள் என்று எனக்குத் தெரியவில்லை.",
+    "target_text": "不，我不知道她在做什么。",
+    "known_audio_id": "b6bddb62-15cf-4adf-9386-a8db8d4c6f60",
+    "target1_audio_id": "3adb282a-2eb1-4711-a9eb-64ed5b27163e",
+    "target2_audio_id": "40677485-a1db-4932-9185-8a1c31213f61"
+   },
+   "lego": {
+    "lego_id": "S0375L01",
+    "known_text": "என்ன செய்கிறாள்",
+    "target_text": "在做什么",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0377L02U06": {
+   "seed": {
+    "seed_number": 377,
+    "known_text": "போன வருஷம் உலகத்தில் எங்காவது போனீர்களா?",
+    "target_text": "你去年去世界上哪里了？",
+    "known_audio_id": "e3049010-ab91-4bfc-b668-eb35473c7293",
+    "target1_audio_id": "d73cd014-ee42-4038-bc69-6b9eb9bcb5da",
+    "target2_audio_id": "d1ea8924-032d-45af-a591-6d1023154e6f"
+   },
+   "lego": {
+    "lego_id": "S0377L02",
+    "known_text": "உலகத்தில்",
+    "target_text": "世界上",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0378L01U06": {
+   "seed": {
+    "seed_number": 378,
+    "known_text": "இல்லை, விடுமுறைக்கு எனக்குப் போதுமான பணம் இல்லை.",
+    "target_text": "不，我没有足够的钱度假。",
+    "known_audio_id": "2510df60-38b6-4c70-ad42-2e3108cd2a43",
+    "target1_audio_id": "4e525e6e-8b44-48a4-bafc-41812a062fe5",
+    "target2_audio_id": "af724936-5dd6-4a5b-851d-62bfe932eddc"
+   },
+   "lego": {
+    "lego_id": "S0378L01",
+    "known_text": "போதுமான பணம்",
+    "target_text": "足够的钱",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0379L03U06": {
+   "seed": {
+    "seed_number": 379,
+    "known_text": "ஆமாம், ஆப்பிரிக்காவுக்குப் பயணம் செய்யும் அளவுக்கு நான் அதிர்ஷ்டசாலியாக இருந்தேன்.",
+    "target_text": "是的，我很幸运能去非洲旅行。",
+    "known_audio_id": "1dac4873-d4bf-44a2-8c54-39da9767d14e",
+    "target1_audio_id": "6033145b-a5df-433a-91ac-b25d66667375",
+    "target2_audio_id": "99c315ad-ed56-4e90-8f0e-ccab4981d0de"
+   },
+   "lego": {
+    "lego_id": "S0379L03",
+    "known_text": "பயணம்",
+    "target_text": "旅行",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0383L01U06": {
+   "seed": {
+    "seed_number": 383,
+    "known_text": "ஆமாம், அதைத் தோட்டத்தில் வைக்க விரும்புவதாக அவன் சொன்னான்.",
+    "target_text": "是的，他说他想把它放在花园里。",
+    "known_audio_id": "90bace63-053f-4629-8737-12d1e7a7ba2e",
+    "target1_audio_id": "e0fe9f45-8fbf-4487-8fc5-c450d4a98a52",
+    "target2_audio_id": "be3f6d97-fe6c-4ca4-bfbc-2a21c090bed3"
+   },
+   "lego": {
+    "lego_id": "S0383L01",
+    "known_text": "அதைத் தோட்டத்தில் வைக்க",
+    "target_text": "把它放在花园里",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0398L02U06": {
+   "seed": {
+    "seed_number": 398,
+    "known_text": "நாம் நம் குழந்தைகளிடம் இன்னும் பொறுமையாக மாற விரும்புகிறோம்.",
+    "target_text": "我们想对孩子更有耐心。",
+    "known_audio_id": "0e6e3e6d-c142-4355-8d8a-e81317ef4de0",
+    "target1_audio_id": "a2c57071-524c-4b76-a20c-176358fb8e7e",
+    "target2_audio_id": "c729928c-0b7e-49c0-8113-b64ef2210c3b"
+   },
+   "lego": {
+    "lego_id": "S0398L02",
+    "known_text": "இன்னும் பொறுமையாக",
+    "target_text": "更有耐心",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0401L01U07": {
+   "seed": {
+    "seed_number": 401,
+    "known_text": "இல்லை, நேராக வீட்டுக்குப் போவது இன்னும் நல்லது.",
+    "target_text": "不，最好直接回家。",
+    "known_audio_id": "823dab5a-a5d0-4ec2-ac41-329717dca5d1",
+    "target1_audio_id": "9da81d9e-23e2-4885-813d-10aa5090ef07",
+    "target2_audio_id": "4d5332cc-4e87-489a-8a3c-7f8b8dfcbe27"
+   },
+   "lego": {
+    "lego_id": "S0401L01",
+    "known_text": "நேராக",
+    "target_text": "直接",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0402L02U06": {
+   "seed": {
+    "seed_number": 402,
+    "known_text": "ஆமாம், எங்காவது நின்று சாப்பிடுவது நல்லாயிருக்கும்.",
+    "target_text": "是的，在某个地方停下来吃东西会很好。",
+    "known_audio_id": "427b2a21-0767-41f1-9302-35a5647b62c9",
+    "target1_audio_id": "09d60916-3204-4723-b550-c4331f375e28",
+    "target2_audio_id": "21e0925e-cdd6-4c25-bde7-cfdb9eaeaf86"
+   },
+   "lego": {
+    "lego_id": "S0402L02",
+    "known_text": "நின்று",
+    "target_text": "停下来",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0409L01U06": {
+   "seed": {
+    "seed_number": 409,
+    "known_text": "இல்லை, நாம் என்ன செய்தாலும் அது முக்கியமில்லை.",
+    "target_text": "不，我们做什么都无所谓。",
+    "known_audio_id": "65a4160f-2a42-4b26-93e6-d45edd428a51",
+    "target1_audio_id": "7fe60041-0c1a-4040-984b-a03d9584a168",
+    "target2_audio_id": "865d22d8-51a2-43b4-930f-73db0c4d42f4"
+   },
+   "lego": {
+    "lego_id": "S0409L01",
+    "known_text": "முக்கியமில்லை",
+    "target_text": "无所谓",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0412L02U06": {
+   "seed": {
+    "seed_number": 412,
+    "known_text": "அவர்கள் எல்லாவற்றையும் வெல்ல நாம் அனுமதிக்க முடியாது.",
+    "target_text": "我们不能允许他们赢得一切。",
+    "known_audio_id": "8a5d1496-a19c-4758-98be-d03659acd502",
+    "target1_audio_id": "6071c037-b809-4250-81c7-31d0e07dbb1f",
+    "target2_audio_id": "dd6a5dff-552f-47e2-ab5c-8462dc2b379f"
+   },
+   "lego": {
+    "lego_id": "S0412L02",
+    "known_text": "வெல்ல",
+    "target_text": "赢得",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0420L01U06": {
+   "seed": {
+    "seed_number": 420,
+    "known_text": "அவன் எத்தனை வயது என்று அவர்கள் கேட்க வேண்டிய அவசியம் இல்லை.",
+    "target_text": "他们不需要问他多大了。",
+    "known_audio_id": "3e809ae3-7999-4d15-8d3c-0b793d11d52f",
+    "target1_audio_id": "6188e2b1-d829-44a4-bc5f-52d63ad2c5cd",
+    "target2_audio_id": "fbbfd26d-09aa-4b70-b665-3e2e64c66ac8"
+   },
+   "lego": {
+    "lego_id": "S0420L01",
+    "known_text": "எத்தனை வயது",
+    "target_text": "多大",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0423L01U06": {
+   "seed": {
+    "seed_number": 423,
+    "known_text": "இவ்வளவு வெளிப்படையான ஒரு கேள்வியை அவர்கள் கேட்க வேண்டுமா?",
+    "target_text": "他们需要问这么显而易见的问题吗？",
+    "known_audio_id": "09207e34-5110-4264-9051-d66fb37aa2d1",
+    "target1_audio_id": "d0e0825d-4ac8-4a15-a36f-2ddd6ad053de",
+    "target2_audio_id": "0db14e18-ffac-4a01-a8cf-bdce90dc2d13"
+   },
+   "lego": {
+    "lego_id": "S0423L01",
+    "known_text": "வெளிப்படையான",
+    "target_text": "显而易见",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0426L03U06": {
+   "seed": {
+    "seed_number": 426,
+    "known_text": "அவர்கள் ஒருத்தரை ஒருத்தர் நேசிக்க விரும்புகிறார்கள், ஆனால் அவர்கள் சந்தோஷமில்லாமல் இருக்கிறார்கள்.",
+    "target_text": "他们想彼此相爱，但他们不快乐。",
+    "known_audio_id": "b0e5e293-770d-48fa-a7b0-188291b83218",
+    "target1_audio_id": "fecbcad8-d678-4d95-a6d0-0c28ac541490",
+    "target2_audio_id": "e86102bb-97ef-4ab5-8b5d-6e7def29504a"
+   },
+   "lego": {
+    "lego_id": "S0426L03",
+    "known_text": "நேசிக்க",
+    "target_text": "相爱",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0428L01U06": {
+   "seed": {
+    "seed_number": 428,
+    "known_text": "அவர்கள் செவ்வாய்க்கிழமை எங்களைப் பார்க்க வர விரும்புகிறார்களா?",
+    "target_text": "他们想周二来拜访我们吗？",
+    "known_audio_id": "b5b5171c-765e-455e-8da4-8013e116f30f",
+    "target1_audio_id": "bbf46a71-efde-44cf-abb3-84f83a4966bd",
+    "target2_audio_id": "d3118265-56fb-4418-a20e-8c0f69628a23"
+   },
+   "lego": {
+    "lego_id": "S0428L01",
+    "known_text": "செவ்வாய்க்கிழமை",
+    "target_text": "周二",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0435L01U06": {
+   "seed": {
+    "seed_number": 435,
+    "known_text": "ஆமாம், அவர்கள் விரும்பினால் முடியும்.",
+    "target_text": "是的，如果他们想的话可以。",
+    "known_audio_id": "d51d97be-602b-4e3e-9dc6-4a2a9aff3d49",
+    "target1_audio_id": "7e812502-c758-4826-b200-d84b5aef2ffb",
+    "target2_audio_id": "debb4cf3-9458-4daf-ae9f-60212d0b8868"
+   },
+   "lego": {
+    "lego_id": "S0435L01",
+    "known_text": "விரும்பினால்",
+    "target_text": "想的话",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0436L01U06": {
+   "seed": {
+    "seed_number": 436,
+    "known_text": "இல்லை, அவர்களுக்குத் தேவையான குறைந்தபட்ச எண்ணிக்கை ஒன்று இருக்கிறது.",
+    "target_text": "不，他们有最低人数要求。",
+    "known_audio_id": "14283fe0-5419-4d0a-be75-265e7a5f00d5",
+    "target1_audio_id": "19592d0c-1162-4331-8108-4e9e21841cd3",
+    "target2_audio_id": "4803dca0-2e07-4dfc-a808-ee78e3f4a9f7"
+   },
+   "lego": {
+    "lego_id": "S0436L01",
+    "known_text": "குறைந்தபட்ச",
+    "target_text": "最低",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0438L01U06": {
+   "seed": {
+    "seed_number": 438,
+    "known_text": "அவன் என்ன செய்ய வேண்டும் என்று முடிவு செய்ய அவர்கள் விரும்பவில்லை.",
+    "target_text": "他们不想决定他应该做什么。",
+    "known_audio_id": "b65a5723-a95f-4ba5-bae7-f97c5e194a32",
+    "target1_audio_id": "cf7120db-ab74-4a6d-899f-67503da32d39",
+    "target2_audio_id": "5e8c1799-8b4d-4087-9e8b-2a78f91db196"
+   },
+   "lego": {
+    "lego_id": "S0438L01",
+    "known_text": "முடிவு செய்ய",
+    "target_text": "决定",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0443L01U06": {
+   "seed": {
+    "seed_number": 443,
+    "known_text": "இல்லை, அவர்கள் அதே வழியில் அதைத் தொடர்ந்து செய்ய விரும்பினார்கள்.",
+    "target_text": "不，他们想继续按原来的方式做。",
+    "known_audio_id": "f8b81748-b758-4196-945d-2108b1d83e38",
+    "target1_audio_id": "9916d7c4-b374-413e-890b-c88c372b5956",
+    "target2_audio_id": "fc99a511-caea-4504-b489-7a5c4ecbaaec"
+   },
+   "lego": {
+    "lego_id": "S0443L01",
+    "known_text": "அதே வழியில்",
+    "target_text": "按原来的方式",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0450L01U06": {
+   "seed": {
+    "seed_number": 450,
+    "known_text": "இல்லை, அவர்கள் தாங்களே ரயிலைப் பிடிக்க வேண்டும்.",
+    "target_text": "不，他们必须自己赶火车。",
+    "known_audio_id": "e2633f98-9453-41a1-a13c-3df0a75d4dc3",
+    "target1_audio_id": "3538a271-f291-440b-8658-cbb3eacdc104",
+    "target2_audio_id": "0a3df41a-9210-45d9-8a9e-d8cde8105c22"
+   },
+   "lego": {
+    "lego_id": "S0450L01",
+    "known_text": "ரயிலைப் பிடிக்க",
+    "target_text": "赶火车",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0460L03U06": {
+   "seed": {
+    "seed_number": 460,
+    "known_text": "ஹோட்டலுக்கு அருகே ஒரு கடையைக் கண்டுபிடிக்க விரும்புகிறேன்.",
+    "target_text": "我想在酒店附近找一家商店。",
+    "known_audio_id": "e51a05ae-e878-4281-a5d4-f942c4503468",
+    "target1_audio_id": "22f2d346-05b5-47e7-b6ae-075cfc9bf631",
+    "target2_audio_id": "22e01b3d-5afe-41b3-8cba-e5627814bff2"
+   },
+   "lego": {
+    "lego_id": "S0460L03",
+    "known_text": "ஹோட்டலுக்கு அருகே",
+    "target_text": "在酒店附近",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0461L02U07": {
+   "seed": {
+    "seed_number": 461,
+    "known_text": "சில அஞ்சல் அட்டைகள் வாங்கக்கூடிய ஒரு கடை.",
+    "target_text": "一家我可以买明信片的商店。",
+    "known_audio_id": "1dfa605e-4e5d-4673-8319-48d666f2cd2e",
+    "target1_audio_id": "0ec6fda7-a967-43ad-8236-71e84b6fcd0c",
+    "target2_audio_id": "4e10d8ea-6cdf-419f-8f5f-2e89b26f2986"
+   },
+   "lego": {
+    "lego_id": "S0461L02",
+    "known_text": "அஞ்சல் அட்டைகள்",
+    "target_text": "明信片",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0468L01U07": {
+   "seed": {
+    "seed_number": 468,
+    "known_text": "உலகம் பெரியது.",
+    "target_text": "世界很大。",
+    "known_audio_id": "5eac3b97-d93a-4c4b-9a06-aa484832c155",
+    "target1_audio_id": "759e30d0-1441-4040-9834-755211316ade",
+    "target2_audio_id": "0d2fa316-d526-44fd-b110-241c4e0c16e8"
+   },
+   "lego": {
+    "lego_id": "S0468L01",
+    "known_text": "பெரியது",
+    "target_text": "大",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0480L02U06": {
+   "seed": {
+    "seed_number": 480,
+    "known_text": "அவன் என்ன சொன்னாலும், இப்போது முன்னால் அதிக தூரமில்லை.",
+    "target_text": "不管他说什么，现在前面已经不远了。",
+    "known_audio_id": "742b7ddc-7997-473d-8190-fc41f5cdeacf",
+    "target1_audio_id": "3fb037a4-1f8c-4278-8575-c78d349c14fb",
+    "target2_audio_id": "30f331d4-661b-4da3-b430-aff530eb70d6"
+   },
+   "lego": {
+    "lego_id": "S0480L02",
+    "known_text": "தூரமில்லை",
+    "target_text": "不远",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0481L01U07": {
+   "seed": {
+    "seed_number": 481,
+    "known_text": "அது நமக்கு மிச்சமிருக்கிற ஒரே உண்மையான நம்பிக்கை.",
+    "target_text": "这是我们剩下的唯一真正希望。",
+    "known_audio_id": "cd93c7a7-2893-47b5-baf9-341bc58e9f9b",
+    "target1_audio_id": "0c57894b-0697-4e49-821c-c9052b695c62",
+    "target2_audio_id": "17b9441f-da58-4190-bf67-09907337e09d"
+   },
+   "lego": {
+    "lego_id": "S0481L01",
+    "known_text": "மிச்சமிருக்கிற",
+    "target_text": "剩下的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0482L01U07": {
+   "seed": {
+    "seed_number": 482,
+    "known_text": "ஒரே உண்மையான நம்பிக்கை அவர்கள் தீவிரமாக இல்லை என்பதுதான்.",
+    "target_text": "唯一真正的希望是他们不是认真的。",
+    "known_audio_id": "86140477-2121-445a-9e63-48bfd759b92b",
+    "target1_audio_id": "24866ea6-afbf-481c-8f18-05d3ac1f0131",
+    "target2_audio_id": "76551425-b260-495f-b78f-c4814c883834"
+   },
+   "lego": {
+    "lego_id": "S0482L01",
+    "known_text": "தீவிரமாக",
+    "target_text": "认真",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0492L01U07": {
+   "seed": {
+    "seed_number": 492,
+    "known_text": "அந்த இடங்களில் எது மிகவும் சுவாரஸ்யமானது என்று நினைக்கிறீர்கள்?",
+    "target_text": "你认为哪个地方最有趣？",
+    "known_audio_id": "658ab10e-f289-4734-aa14-aabae811b65b",
+    "target1_audio_id": "0e061b0c-b136-4382-a0c7-faccff5b6930",
+    "target2_audio_id": "8a5330fc-0ce0-4414-bcf8-c8354cdf21e9"
+   },
+   "lego": {
+    "lego_id": "S0492L01",
+    "known_text": "எது",
+    "target_text": "哪个",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0493L01U06": {
+   "seed": {
+    "seed_number": 493,
+    "known_text": "அடுத்து என்ன வரப்போகிறது?",
+    "target_text": "接下来会发生什么？",
+    "known_audio_id": "cfe9e173-2a11-413e-ba65-7dc7bb591c6f",
+    "target1_audio_id": "5eb5511d-86bb-477a-bee2-bea48315fb51",
+    "target2_audio_id": "226bffb6-d150-4ee8-a170-395a8f98a71e"
+   },
+   "lego": {
+    "lego_id": "S0493L01",
+    "known_text": "அடுத்து",
+    "target_text": "接下来",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0496L02U07": {
+   "seed": {
+    "seed_number": 496,
+    "known_text": "உண்மையில் முக்கியமான நேரத்தில் தோற்க நான் திட்டமிடவில்லை.",
+    "target_text": "当真正重要的时候，我不打算输。",
+    "known_audio_id": "3f3b1342-9ec2-4e65-8d8f-daf3d1b2e7ec",
+    "target1_audio_id": "b6e39787-f220-490f-9b44-5751b7ee9a8b",
+    "target2_audio_id": "04aa9672-ee89-4341-a90d-9ef6efc33135"
+   },
+   "lego": {
+    "lego_id": "S0496L02",
+    "known_text": "தோற்க",
+    "target_text": "输",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0497L01U07": {
+   "seed": {
+    "seed_number": 497,
+    "known_text": "நீங்கள் கொஞ்சம் தூங்க வேண்டும் என்று அது தோன்றுகிறது.",
+    "target_text": "听起来你需要睡一觉了。",
+    "known_audio_id": "21f36b48-9287-4067-80f2-b276d392901a",
+    "target1_audio_id": "6275a376-6633-4e7b-8a59-24e91b4c54cb",
+    "target2_audio_id": "f7023d03-311f-4a54-a754-0c9a10848751"
+   },
+   "lego": {
+    "lego_id": "S0497L01",
+    "known_text": "கொஞ்சம் தூங்க",
+    "target_text": "睡一觉",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0500L01U07": {
+   "seed": {
+    "seed_number": 500,
+    "known_text": "இரண்டு சிறுமிகளுக்கு நடுவில் நீங்கள் ஏன் உட்கார விரும்பவில்லை?",
+    "target_text": "你为什么不想坐在两个女孩中间？",
+    "known_audio_id": "6cb06f73-3193-4c91-ba4d-c9414866b0d3",
+    "target1_audio_id": "23ef8ce2-d9bc-4dbc-88ce-84c060a2b653",
+    "target2_audio_id": "7b820db0-6bb2-4e46-9675-080deb0dd0fb"
+   },
+   "lego": {
+    "lego_id": "S0500L01",
+    "known_text": "இரண்டு சிறுமிகளுக்கு நடுவில்",
+    "target_text": "在两个女孩中间",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0502L06U07": {
+   "seed": {
+    "seed_number": 502,
+    "known_text": "அவள் வலதுபக்கம் திரும்புவதற்குப் பதிலா இடதுபக்கம் திரும்பியதால் கிட்டத்தட்ட வழி தவறிவிட்டாள்.",
+    "target_text": "她差点迷路因为她向左拐了而不是向右。",
+    "known_audio_id": "d566ba77-d39b-4acf-a16e-bfa741f37cd3",
+    "target1_audio_id": "a1b0a44d-f009-4b85-b6f4-74d71c8c12c7",
+    "target2_audio_id": "f862f670-8d5d-4c59-9780-210c90f56ac9"
+   },
+   "lego": {
+    "lego_id": "S0502L06",
+    "known_text": "வலதுபக்கம்",
+    "target_text": "向右",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0510L02U07": {
+   "seed": {
+    "seed_number": 510,
+    "known_text": "காரை நிறுத்த ஒரு பாதுகாப்பான இடத்தைத் தேட அவள் போயிருக்கிறாள்.",
+    "target_text": "她去找了一个安全的地方停车。",
+    "known_audio_id": "eea3b447-58c2-42f1-87a7-d4c8125c059f",
+    "target1_audio_id": "7a005aa4-ca60-4bbd-bf88-798d1dcedd3e",
+    "target2_audio_id": "087e9902-2683-4fd8-b451-5e3571f90fb1"
+   },
+   "lego": {
+    "lego_id": "S0510L02",
+    "known_text": "காரை நிறுத்த",
+    "target_text": "停车",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0511L04U07": {
+   "seed": {
+    "seed_number": 511,
+    "known_text": "செய்தி அலுவலகத்தில் எல்லோரையும் சென்றடைய பல மணி நேரம் ஆனது.",
+    "target_text": "这个消息花了好几个小时才传到办公室里所有人。",
+    "known_audio_id": "4607311b-74f4-4645-8de0-f1cc27319d92",
+    "target1_audio_id": "30697f5d-ea94-4a7d-b7a0-b69af7af418d",
+    "target2_audio_id": "6644acec-38e7-4386-b28a-ef0909878ddd"
+   },
+   "lego": {
+    "lego_id": "S0511L04",
+    "known_text": "சென்றடைய",
+    "target_text": "传到",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0512L02U07": {
+   "seed": {
+    "seed_number": 512,
+    "known_text": "நான் சாவிகளை எடுத்துவரும்போது நீங்கள் கதவைத் திறந்து வைத்திருக்க முடியுமா?",
+    "target_text": "我去拿钥匙的时候你能帮我把门开着吗？",
+    "known_audio_id": "c8407bc0-8800-42a2-9573-4cdbd6314b86",
+    "target1_audio_id": "723bacb4-4e92-4bcf-b762-c283d6cdaa8d",
+    "target2_audio_id": "b89e1955-ccd4-49f0-a8af-4511c5dc7ba4"
+   },
+   "lego": {
+    "lego_id": "S0512L02",
+    "known_text": "கதவைத் திறந்து வைத்திருக்க",
+    "target_text": "把门开着",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0522L02U07": {
+   "seed": {
+    "seed_number": 522,
+    "known_text": "உண்மையைச் சொல்வது முட்டாள்தனம் என்று நாம் ஒத்துக்கொள்வோம்.",
+    "target_text": "我们都同意说实话是愚蠢的。",
+    "known_audio_id": "162bda6f-9c7e-46c4-b058-8027b3288416",
+    "target1_audio_id": "4e900c60-e49a-4e36-b444-0a8165dcc8f7",
+    "target2_audio_id": "35668e1a-da38-41e5-9417-70c098b29201"
+   },
+   "lego": {
+    "lego_id": "S0522L02",
+    "known_text": "முட்டாள்தனம்",
+    "target_text": "愚蠢",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0526L02U07": {
+   "seed": {
+    "seed_number": 526,
+    "known_text": "உங்களால் யூகிக்க முடியவில்லை என்பதை நம்புவது எனக்குக் கடினமாக இருக்கிறது.",
+    "target_text": "我发现很难相信你猜不出来。",
+    "known_audio_id": "7ba574b4-366e-4efc-8991-382d0235c61d",
+    "target1_audio_id": "853cba2c-1bdc-4b03-b60d-56f6e4e6de0a",
+    "target2_audio_id": "d71b9f9f-dd66-4ad4-8896-5d86240d4008"
+   },
+   "lego": {
+    "lego_id": "S0526L02",
+    "known_text": "யூகிக்க முடியவில்லை",
+    "target_text": "猜不出来",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0528L02U07": {
+   "seed": {
+    "seed_number": 528,
+    "known_text": "அந்த விஷயங்களை நான் இன்னொரு அறையில் வைக்க வேண்டும் என்று நினைக்கிறேன்.",
+    "target_text": "我大概应该把那些东西放在另一个房间。",
+    "known_audio_id": "020f3e86-6823-4495-9cc0-440597ac1cdb",
+    "target1_audio_id": "01df8997-5a5e-48f6-b64a-90c8e2256793",
+    "target2_audio_id": "8a824f1c-5a35-445c-b692-ae42a8f2113d"
+   },
+   "lego": {
+    "lego_id": "S0528L02",
+    "known_text": "இன்னொரு அறையில் வைக்க",
+    "target_text": "放在另一个房间",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0532L01U07": {
+   "seed": {
+    "seed_number": 532,
+    "known_text": "அவர்கள் அதிர்ஷ்டசாலியாக இருந்தால் தவிர.",
+    "target_text": "除非他们很幸运。",
+    "known_audio_id": "fe878190-c2b5-49f4-bbee-6417f24f3a5f",
+    "target1_audio_id": "32aa498b-343c-45d1-978c-6379e3e8ad9f",
+    "target2_audio_id": "61022d1d-7556-4556-ab9c-b888fae422ef"
+   },
+   "lego": {
+    "lego_id": "S0532L01",
+    "known_text": "தவிர",
+    "target_text": "除非",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0533L01U07": {
+   "seed": {
+    "seed_number": 533,
+    "known_text": "நீங்கள் சொல்கிற ஒவ்வொரு வார்த்தையையும் அவள் கேட்கமாட்டாள்.",
+    "target_text": "她不会听你说的每一个字。",
+    "known_audio_id": "cbfe96bb-31b8-4ccb-9b5c-078d9f1ef69c",
+    "target1_audio_id": "f55296cf-7e38-4e3a-a748-0522f2db0905",
+    "target2_audio_id": "109129bf-c935-40b6-848b-5821dbf7a40b"
+   },
+   "lego": {
+    "lego_id": "S0533L01",
+    "known_text": "ஒவ்வொரு வார்த்தையையும்",
+    "target_text": "每一个字",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0541L01U07": {
+   "seed": {
+    "seed_number": 541,
+    "known_text": "மெதுவாக சுவாசிக்க முயற்சி செய்வது ஒரு நல்ல யோசனை.",
+    "target_text": "尝试慢慢呼吸是个好主意。",
+    "known_audio_id": "2aa96cc9-0c01-42fe-9685-f590005ef600",
+    "target1_audio_id": "6dc678bb-507f-45aa-99fe-a747c0fd63ab",
+    "target2_audio_id": "0c96af48-b4a5-42c9-bb5c-8dc6868af448"
+   },
+   "lego": {
+    "lego_id": "S0541L01",
+    "known_text": "சுவாசிக்க",
+    "target_text": "呼吸",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0545L03U07": {
+   "seed": {
+    "seed_number": 545,
+    "known_text": "சுத்தமான துணிகளை மேலே கொண்டுபோக இப்போது உங்கள் முறை.",
+    "target_text": "轮到你把干净的衣服拿上楼了。",
+    "known_audio_id": "f28bfff1-be47-4eb1-b1c4-5780309c0f42",
+    "target1_audio_id": "5840a406-2a92-4c35-a207-03942016f2e6",
+    "target2_audio_id": "e714d494-4c84-4eaf-a590-ada7c5fa50e4"
+   },
+   "lego": {
+    "lego_id": "S0545L03",
+    "known_text": "சுத்தமான துணிகளை",
+    "target_text": "把干净的衣服",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0551L01U07": {
+   "seed": {
+    "seed_number": 551,
+    "known_text": "இந்தக் கோயில் அசிங்கமாக இருக்கிறது.",
+    "target_text": "这座教堂很丑。",
+    "known_audio_id": "0be350a3-67f4-440d-b9b3-a30d22b1ace1",
+    "target1_audio_id": "61292976-83f2-41ae-b69a-c5851ffcdbc7",
+    "target2_audio_id": "0cd8855d-aa3f-43cb-b428-cec23d8a8416"
+   },
+   "lego": {
+    "lego_id": "S0551L01",
+    "known_text": "இந்தக் கோயில்",
+    "target_text": "这座教堂",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0552L02U07": {
+   "seed": {
+    "seed_number": 552,
+    "known_text": "கிராமத்தின் மறுமுனையில் இருக்கிற அந்தக் கோயில் அசிங்கமாக இருக்கிறது.",
+    "target_text": "村子另一端的那座教堂很丑。",
+    "known_audio_id": "f0cb3a64-fca1-4b36-aa49-eb7037751371",
+    "target1_audio_id": "7f7774de-ac92-4bfb-85de-6c1bf1d1af1f",
+    "target2_audio_id": "a4fd63d4-0861-4f24-92e0-9d3548692a61"
+   },
+   "lego": {
+    "lego_id": "S0552L02",
+    "known_text": "அந்தக் கோயில்",
+    "target_text": "那座教堂",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0555L01U07": {
+   "seed": {
+    "seed_number": 555,
+    "known_text": "நான் ரொம்பச் சோர்வாக இருக்கிறேன், புதிய துண்டை எடுத்துவர முடியாது.",
+    "target_text": "我太累了，拿不动新的了。",
+    "known_audio_id": "84174a80-e068-4a73-83d4-97be03f31d61",
+    "target1_audio_id": "4aaeca5c-1b3b-4860-a85d-17a6723ab06b",
+    "target2_audio_id": "ad9008aa-d112-475a-a710-ec191229af62"
+   },
+   "lego": {
+    "lego_id": "S0555L01",
+    "known_text": "எடுத்துவர முடியாது",
+    "target_text": "拿不动",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0556L01U07": {
+   "seed": {
+    "seed_number": 556,
+    "known_text": "அவர்கள் இரவு தாமதமாக இசை வாசிக்கிறார்கள்.",
+    "target_text": "他们深夜演奏音乐。",
+    "known_audio_id": "88cb5873-db47-481b-adfa-24f333813dd9",
+    "target1_audio_id": "19dcbaa5-d1ad-4b8a-921a-8cdb7d392711",
+    "target2_audio_id": "add1ab90-e8e0-439b-b84d-1087f97a9614"
+   },
+   "lego": {
+    "lego_id": "S0556L01",
+    "known_text": "இசை",
+    "target_text": "音乐",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0561L01U07": {
+   "seed": {
+    "seed_number": 561,
+    "known_text": "அது வேகமான கார் என்றால் எனக்குக் கவலையில்லை.",
+    "target_text": "我不在乎它是否是一辆快车。",
+    "known_audio_id": "12c38a83-5827-483f-93e7-1b2f8780e409",
+    "target1_audio_id": "2b49a014-d779-4f6e-aa5b-804aea95e92d",
+    "target2_audio_id": "55655285-a05e-4447-acc5-ccbc56fd1e53"
+   },
+   "lego": {
+    "lego_id": "S0561L01",
+    "known_text": "கவலையில்லை",
+    "target_text": "不在乎",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0567L03U07": {
+   "seed": {
+    "seed_number": 567,
+    "known_text": "வெளியில் நேரத்தைச் செலவழித்து குழந்தைகள் விளையாடுவதைப் பார்த்தது அழகாக இருந்தது.",
+    "target_text": "在户外度过时间看孩子们玩耍真是美好。",
+    "known_audio_id": "88343765-081b-424f-af0e-4c9ed53c2210",
+    "target1_audio_id": "b2af9ea9-e8ae-4c1b-9b58-7ed857837e7f",
+    "target2_audio_id": "506e1564-dd57-4192-ad02-4bcd8ae0e354"
+   },
+   "lego": {
+    "lego_id": "S0567L03",
+    "known_text": "வெளியில்",
+    "target_text": "在户外",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0570L01U07": {
+   "seed": {
+    "seed_number": 570,
+    "known_text": "உங்கள் டிக்கெட்டுக்கு நீங்கள் எவ்வளவு கட்டத் தயாராக இருக்கிறீர்கள்?",
+    "target_text": "你愿意为你的票付多少钱？",
+    "known_audio_id": "01d0faa8-dc59-4473-bac6-e3a4950216c5",
+    "target1_audio_id": "f586a6f2-a764-41cd-9f59-e37f2ca20cf6",
+    "target2_audio_id": "8e53d17a-58d5-4858-8bf3-e9c31d33b5b0"
+   },
+   "lego": {
+    "lego_id": "S0570L01",
+    "known_text": "உங்கள் டிக்கெட்டுக்கு",
+    "target_text": "为你的票",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0573L02U07": {
+   "seed": {
+    "seed_number": 573,
+    "known_text": "விடுமுறையை ரொம்ப விசேஷமாக்குகிற அந்த மாதிரி விஷயம் இது.",
+    "target_text": "这是让假期非常特别的那种事情。",
+    "known_audio_id": "7f431de7-dcc0-420c-8660-6b8b05d19653",
+    "target1_audio_id": "e64a6fd3-bb7c-4676-9ad2-0a346eef3f15",
+    "target2_audio_id": "4766524e-6fcd-4f8d-b5ac-dfce32d31aa2"
+   },
+   "lego": {
+    "lego_id": "S0573L02",
+    "known_text": "அந்த மாதிரி விஷயம்",
+    "target_text": "那种事情",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0574L01U07": {
+   "seed": {
+    "seed_number": 574,
+    "known_text": "விடுமுறை எல்லோருக்கும் ரொம்ப விசேஷமானது.",
+    "target_text": "假期对所有人来说都非常特别。",
+    "known_audio_id": "75b21e70-aca9-41b9-b184-438e5b114152",
+    "target1_audio_id": "1cb026ee-db5b-48f5-85c5-31a8ad0253bf",
+    "target2_audio_id": "effaab0f-14fd-4a08-ba27-461c69f31f18"
+   },
+   "lego": {
+    "lego_id": "S0574L01",
+    "known_text": "எல்லோருக்கும்",
+    "target_text": "对所有人来说",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0575L01U07": {
+   "seed": {
+    "seed_number": 575,
+    "known_text": "அது வருத்தமாக இருந்திருக்கிறது.",
+    "target_text": "这很让人难过。",
+    "known_audio_id": "be003722-3235-44f1-95d2-17fe392f4939",
+    "target1_audio_id": "1ce40a31-2253-4aec-84e2-b3d1160973ee",
+    "target2_audio_id": "31dc5d75-8f55-4ff8-b976-ea49811783cd"
+   },
+   "lego": {
+    "lego_id": "S0575L01",
+    "known_text": "வருத்தமாக",
+    "target_text": "难过",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0584L01U07": {
+   "seed": {
+    "seed_number": 584,
+    "known_text": "தினமும் காலையில் எழுந்து மலைகளைப் பார்ப்பது எப்படி இருக்கும்?",
+    "target_text": "每天早上醒来看到山是什么感觉？",
+    "known_audio_id": "d54cc378-a9d4-4f96-8836-bc606aa832db",
+    "target1_audio_id": "5d1d88eb-677a-440a-8f95-95bba175228f",
+    "target2_audio_id": "45afac46-6fce-41fa-bd48-2fd042ffbb78"
+   },
+   "lego": {
+    "lego_id": "S0584L01",
+    "known_text": "தினமும்",
+    "target_text": "每天",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0585L01U07": {
+   "seed": {
+    "seed_number": 585,
+    "known_text": "என் படுக்கையறை ஜன்னலிலிருந்து மலைகளை என்னால் பார்க்க முடிகிறது.",
+    "target_text": "我可以从卧室窗户看到山。",
+    "known_audio_id": "2e0c7bdd-a88d-43d7-bea7-9da922f3b867",
+    "target1_audio_id": "eef9a113-7c71-4c2d-ba74-69bb9af16acd",
+    "target2_audio_id": "1fb10f78-d728-484b-9e8b-14e6707a52bb"
+   },
+   "lego": {
+    "lego_id": "S0585L01",
+    "known_text": "படுக்கையறை",
+    "target_text": "卧室",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0596L01U07": {
+   "seed": {
+    "seed_number": 596,
+    "known_text": "மேலும் நான் கொஞ்ச நேரம் என் கண்களை மூட வேண்டும்.",
+    "target_text": "我需要闭上眼睛一会儿。",
+    "known_audio_id": "d497a9a5-d931-41a2-9629-8d98ba77a8a9",
+    "target1_audio_id": "3ce01ec6-5bc8-4e8e-8aa8-ef89a98036fd",
+    "target2_audio_id": "2421d9ea-5ca7-441c-a638-ffb58aab13d1"
+   },
+   "lego": {
+    "lego_id": "S0596L01",
+    "known_text": "மூட",
+    "target_text": "闭上",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0608L01U07": {
+   "seed": {
+    "seed_number": 608,
+    "known_text": "அதுதான் செய்திருக்க வேண்டிய புத்திசாலித்தனமான விஷயம்.",
+    "target_text": "那本来是明智的做法。",
+    "known_audio_id": "a05c2203-8fb3-4819-9f4a-7cfefa3625d0",
+    "target1_audio_id": "9dbd2e91-328e-49ef-8964-75ccb999eaa6",
+    "target2_audio_id": "c0b34c66-c76c-4d2e-91f0-ff4a40997861"
+   },
+   "lego": {
+    "lego_id": "S0608L01",
+    "known_text": "புத்திசாலித்தனமான",
+    "target_text": "明智",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0611L01U07": {
+   "seed": {
+    "seed_number": 611,
+    "known_text": "நான் வேறு எங்காவது தேடத் தயாராக இருந்திருப்பேன்.",
+    "target_text": "我本来会愿意在别处找找。",
+    "known_audio_id": "72c0bb0d-255b-480e-9769-00603102f9b9",
+    "target1_audio_id": "9074fa7b-7a77-42ff-a9dd-de15b0f42b32",
+    "target2_audio_id": "935f25c3-21c1-41a3-9d91-0ce7d9d45bca"
+   },
+   "lego": {
+    "lego_id": "S0611L01",
+    "known_text": "வேறு எங்காவது",
+    "target_text": "在别处",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0641L01U07": {
+   "seed": {
+    "seed_number": 641,
+    "known_text": "அது அந்த நாற்காலியில் இருக்கிற சிவப்பு நிறமானது என்று நினைக்கிறேன்.",
+    "target_text": "我觉得是那把椅子上的红色那个。",
+    "known_audio_id": "94b5857d-c9fa-456b-8bb1-42aa50a7ec8d",
+    "target1_audio_id": "1be5467d-ed5f-4e97-99ff-67549ab7d29e",
+    "target2_audio_id": "930b7f55-67ac-49f2-90c5-40963bdc8d60"
+   },
+   "lego": {
+    "lego_id": "S0641L01",
+    "known_text": "அந்த நாற்காலியில் இருக்கிற",
+    "target_text": "那把椅子上的",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{"format":"ssi-changeset/1","id":"item9-spa_for_eng-5-thin","course":"spa_for_eng","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:30:07.992Z","ops":50,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02B02","expect":{"known_text":"To take the next bus","target_text":"Tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02B03","expect":{"known_text":"I want to take the next bus","target_text":"Quiero tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02B04","expect":{"known_text":"I can take the next bus","target_text":"Puedo tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02B05","expect":{"known_text":"I need to take the next bus","target_text":"Necesito tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U01","expect":{"known_text":"I want to take the next bus","target_text":"Quiero tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U02","expect":{"known_text":"I need to take the next bus","target_text":"Necesito tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U03","expect":{"known_text":"I need to take the next bus now","target_text":"Necesito tomar el próximo autobús ahora"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U04","expect":{"known_text":"I would like to take the next bus","target_text":"Me gustaría tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U05","expect":{"known_text":"I can take the next bus now","target_text":"Puedo tomar el próximo autobús ahora"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U06","expect":{"known_text":"I want to take the next bus home","target_text":"Quiero tomar el próximo autobús para ir a casa"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U07","expect":{"known_text":"I need to take the next bus home tonight","target_text":"Necesito tomar el próximo autobús para ir a casa esta noche"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U08","expect":{"known_text":"You can take the next bus","target_text":"Puedes tomar el próximo autobús"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U09","expect":{"known_text":"You can take the next bus this afternoon","target_text":"Puedes tomar el próximo autobús esta tarde"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U10","expect":{"known_text":"I think I can take the next bus home","target_text":"Creo que puedo tomar el próximo autobús para ir a casa"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U11","expect":{"known_text":"I'm going to take the next bus now","target_text":"Voy a tomar el próximo autobús ahora"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U12","expect":{"known_text":"I'm going to take the next bus home tonight","target_text":"Voy a tomar el próximo autobús para ir a casa esta noche"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U13","expect":{"known_text":"I would like to take the next bus home this evening","target_text":"Me gustaría tomar el próximo autobús para ir a casa esta tarde"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0095L02U14","expect":{"known_text":"I need to take the next bus home as soon as possible","target_text":"Necesito tomar el próximo autobús para ir a casa lo antes posible"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0112L04B06","expect":{"known_text":"I thought that was very interesting","target_text":"Pensé que eso fue muy interesante"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0121L01U01","expect":{"known_text":"It is very unusual that you do not want to speak with us now","target_text":"Es muy raro que no quieras hablar con nosotros ahora"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0121L01U02","expect":{"known_text":"It is unusual that you do not want to start to speak with us","target_text":"Es raro que no quieras empezar a hablar con nosotros"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0121L01U05","expect":{"known_text":"I think it is a bit unusual when you do not want to speak Spanish with us","target_text":"Creo que es un poco raro cuando no quieres hablar español con nosotros"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0128L02B04","expect":{"known_text":"Like you","target_text":"Como tú"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0128L02U02","expect":{"known_text":"He wants to practise like you, because you are very good","target_text":"Él quiere practicar como tú, porque eres muy bueno"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0128L02U04","expect":{"known_text":"I know there is no one like you for explaining this","target_text":"Sé que no hay nadie como tú para explicar esto"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0128L03B03","expect":{"known_text":"Someone like you","target_text":"Alguien como tú"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0128L03U03","expect":{"known_text":"He wants to find someone like you to practise with","target_text":"Él quiere encontrar a alguien como tú para practicar"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0129L04U02","expect":{"known_text":"I want you to be here with us tomorrow","target_text":"Quiero que estés aquí con nosotros mañana"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0129L04U05","expect":{"known_text":"How good that you are here with us","target_text":"Qué bueno que estés aquí con nosotros"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0133L01B06","expect":{"known_text":"She said you get to know someone when you work hard with another person","target_text":"Ella dijo que llegas a conocer a alguien cuando trabajas mucho con otra persona"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0200L03B03","expect":{"known_text":"To make sure that it is going to work","target_text":"Asegurarse de que vaya a funcionar"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0200L03U06","expect":{"known_text":"They say we need to make sure that everything is ready before we start","target_text":"Dicen que necesitamos asegurarnos de que todo esté listo antes de empezar"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0200L03U08","expect":{"known_text":"they want to make sure that everything is ready","target_text":"quieren asegurarse de que todo esté listo"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0203L01B03","expect":{"known_text":"What would you do?","target_text":"¿Qué harías tú?"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0252L02B03","expect":{"known_text":"I need to know when you will be ready to start so I can organise things","target_text":"Necesito saber cuándo estarás listo para empezar para poder arreglar las cosas"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0253L01B06","expect":{"known_text":"Just give me a little time and I should be ready in a few minutes","target_text":"Dame un poco de tiempo y debería estar listo en unos minutos"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0253L01U05","expect":{"known_text":"Give me a moment and I should be ready in a few minutes to go","target_text":"Dame un momento y debería estar listo en unos minutos para irme"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0283L02U01","expect":{"known_text":"I would like to talk about your friends and what they think about learning Spanish","target_text":"Me gustaría hablar sobre tus amigos y lo que piensan sobre aprender español"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0283L02U08","expect":{"known_text":"I want to talk about your friends and what they think about this","target_text":"Quiero hablar sobre tus amigos y lo que piensan sobre esto"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0440L03U07","expect":{"known_text":"they should do it while they're still young","target_text":"deberían hacerlo mientras todavía son jóvenes"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0462L03U05","expect":{"known_text":"I want to know about what happened during the war","target_text":"quiero saber lo que pasó durante la guerra"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0491L03U06","expect":{"known_text":"you always try to help","target_text":"siempre intentas ayudar"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0518L02U03","expect":{"known_text":"having exactly this much","target_text":"teniendo exactamente esta cantidad"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0521L01U04","expect":{"known_text":"I'm afraid that it happened before","target_text":"me temo que pasó antes"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0521L01U05","expect":{"known_text":"I'm afraid that it happened yesterday","target_text":"me temo que pasó ayer"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0530L01B02","expect":{"known_text":"we need to look so I can count them","target_text":"necesitamos mirar para que pueda contarlas"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0532L01B02","expect":{"known_text":"unless you say yes","target_text":"a menos que digas que sí"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0532L01B04","expect":{"known_text":"unless he speaks before you","target_text":"a menos que él hable antes que tú"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0538L01U03","expect":{"known_text":"I don't want to seem older than I am","target_text":"no quiero parecer mayor de lo que soy"}}
+{"op":"phrase.delete","phrase_id":"spa_for_eng:S0573L04U06","expect":{"known_text":"my friends are very special to me","target_text":"mis amigos son muy especiales para mí"}}

@@ -1,0 +1,24 @@
+{"format":"ssi-changeset/1","id":"item9-eng_for_deu-5-thin","course":"eng_for_deu","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:30:15.619Z","ops":23,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0020L01U03","expect":{"known_text":"du möchtest morgen mit uns sprechen","target_text":"you want to speak with us tomorrow"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0020L01U04","expect":{"known_text":"du möchtest uns heute Abend um sechs Uhr treffen","target_text":"you want to meet us at six o'clock this evening"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0026L03U02","expect":{"known_text":"sie sagt, sie ist fast bereit zu gehen","target_text":"she says she is nearly ready to go"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0026L03U03","expect":{"known_text":"er sagt, er ist fast bereit zu gehen","target_text":"he says he is nearly ready to go"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0026L03U06","expect":{"known_text":"ich denke, sie ist fast bereit zu gehen","target_text":"I think she is nearly ready to go"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0032L02U02","expect":{"known_text":"er wollte uns etwas zeigen","target_text":"he wanted to show us something"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0035L01U04","expect":{"known_text":"ich wollte nichts fragen","target_text":"I didn't want to ask anything"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0038L02U06","expect":{"known_text":"ich denke, dass ich seit ungefähr einer Woche lerne","target_text":"I think that I've been learning for about a week"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0038L03U06","expect":{"known_text":"ich lerne seit ungefähr einer Woche, und es macht Spaß","target_text":"I've been learning for about a week, and it is fun"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0043L01U06","expect":{"known_text":"es tut mir leid, ich habe nicht darüber nachgedacht","target_text":"I'm sorry, I wasn't thinking about it"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0043L02U04","expect":{"known_text":"ich habe angefangen zu verstehen, wie ich antworten soll","target_text":"I started to understand how to answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0046L02B02","expect":{"known_text":"ich mache mir keine Sorgen darüber","target_text":"I don't worry about that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0046L03U06","expect":{"known_text":"ich denke, es ist gut, sich keine Sorgen darum zu machen, Fehler zu machen","target_text":"I think it's a good thing to not worry about making mistakes"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0047L02U06","expect":{"known_text":"ich denke, es ist wichtig, sich Zeit zu nehmen","target_text":"I think it's important to take time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0048L01U06","expect":{"known_text":"es ist mir egal, ob ich mich verbessern muss","target_text":"I don't care about whether I need to improve"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0071L01U05","expect":{"known_text":"wir wollten nicht, dass jemand mit uns spricht","target_text":"we didn't want to let anyone speak with us"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0084L01U06","expect":{"known_text":"es tut mir leid, ich stimme nicht dem zu, was du gesagt hast","target_text":"I'm sorry, I don't agree with what you said"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0116L01U04","expect":{"known_text":"ich denke, das ist die beste Wahl für uns","target_text":"I think this is the best choice for us"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0207L02U02","expect":{"known_text":"niemand wusste, was du tun musstest","target_text":"nobody knew what you needed to do"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0208L02U04","expect":{"known_text":"ich wollte dich nicht fragen, weil ich es selbst versuchen wollte","target_text":"I didn't want to ask you because I wanted to try it myself"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0211L02U05","expect":{"known_text":"niemand wusste, dass sie nicht mit uns sprechen wollten","target_text":"nobody knew that they didn't want to speak with us"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0263L01U02","expect":{"known_text":"ich fand, dass niemand wusste, wen du meinst","target_text":"I thought that nobody knew who you mean"}}
+{"op":"phrase.delete","phrase_id":"eng_for_deu:S0266L01B03","expect":{"known_text":"ich kannte einen alten Freund meines Vaters","target_text":"I knew an old friend of my father"}}

@@ -1,0 +1,21 @@
+{
+ "seed": 40,
+ "legos": {
+  "L02": {
+   "update": {
+    "B02": [
+     "અત્યારે થાકેલો",
+     "tired at the moment"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "અત્યારે થોડો થાકેલો",
+     "a little tired at the moment"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #813: B02 ('how does it feel at the moment?', untaught 'does it') rewritten in place as a BUILD from S0039L01 'tired'; keeps BUILD at 3. Plus one new BUILD so the basket reaches 3 counted BUILDs (it was under floor before: the bare row does not count)."
+}

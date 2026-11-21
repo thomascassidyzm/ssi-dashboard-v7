@@ -1,0 +1,727 @@
+{
+ "course": "eng_for_spa",
+ "legos": [
+  {
+   "id": "S0024L02",
+   "verdict": "recut",
+   "known": "no voy a",
+   "target": "I'm not going to",
+   "type": "M",
+   "components": [
+    [
+     "no",
+     "I'm not"
+    ],
+    [
+     "voy a",
+     "going to"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "poder",
+      "target_text": "to be able to",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. English table cut: \"I'm not going to\" + \"to be able to\" (the two share the word \"to\": overlap between LEGOs is normal). All 10 rows keep: each still contains \"no voy a\" / \"I'm not going to\". Pieces: “I'm not going to” = “no voy a” [S0024L02 (in place), NEW]; “to be able to” = “poder” [S0024L03 (appended), not new: taught at S0011L01]",
+   "closes": []
+  },
+  {
+   "id": "S0115L02",
+   "verdict": "recut",
+   "known": "no me siento",
+   "target": "I don't feel as if I'm",
+   "type": "M",
+   "components": [
+    [
+     "no me",
+     "I don't feel"
+    ],
+    [
+     "siento",
+     "as if I'm"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para",
+      "target_text": "ready to",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "lista",
+        "target": "ready"
+       },
+       {
+        "known": "para",
+        "target": "to"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para practicar",
+      "target_text": "ready to practise",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para hablar",
+      "target_text": "ready to speak",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para aprender más",
+      "target_text": "ready to learn more",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para practicar",
+      "target_text": "I don't feel as if I'm ready to practise",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para hablar inglés hoy",
+      "target_text": "I don't feel as if I'm ready to speak English today",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para aprender más ahora",
+      "target_text": "I don't feel as if I'm ready to learn more now",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para tener una conversación todavía",
+      "target_text": "I don't feel as if I'm ready to have a conversation yet",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para practicar inglés ahora",
+      "target_text": "I don't feel as if I'm ready to practise English now",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. Sister course precedent: eng_for_ita S0115L01 \"non mi sento come se fossi | I don't feel as if I'm\". \"ready | listo\" is taught at seed 26; \"ready to | lista para\" is new and gets its own basket. (The LEGO says \"lista\" where the seed says \"listo\": left as it is, not this family.) Pieces: “I don't feel as if I'm” = “no me siento” [S0115L02 (in place), NEW]; “ready to” = “lista para” [S0115L03 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0122L02",
+   "verdict": "recut",
+   "known": "me alegra mucho",
+   "target": "I'm excited about",
+   "type": "M",
+   "components": [
+    [
+     "me alegra",
+     "I'm excited"
+    ],
+    [
+     "mucho",
+     "about"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va",
+      "target_text": "how it's going",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "cómo",
+        "target": "how"
+       },
+       {
+        "known": "va",
+        "target": "it's going"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va ahora",
+      "target_text": "how it's going now",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va hoy",
+      "target_text": "how it's going today",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va esto",
+      "target_text": "how it's going with this",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va hoy",
+      "target_text": "I'm excited about how it's going today",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va ahora",
+      "target_text": "I'm excited about how it's going now",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va el inglés",
+      "target_text": "I'm excited about how it's going with English",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va la conversación",
+      "target_text": "I'm excited about how it's going in the conversation",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va esto hoy",
+      "target_text": "I'm excited about how it's going with this today",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 10 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. English table cut: \"I'm excited about\" + \"how it's going\". Pieces: “I'm excited about” = “me alegra mucho” [S0122L02 (in place), NEW]; “how it's going” = “cómo va” [S0122L04 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0131L03",
+   "verdict": "recut",
+   "known": "demasiadas ideas",
+   "target": "too many ideas",
+   "type": "M",
+   "components": [
+    [
+     "demasiadas",
+     "too many"
+    ],
+    [
+     "ideas",
+     "ideas"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "dando vueltas",
+      "target_text": "going around",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "dando",
+        "target": "going"
+       },
+       {
+        "known": "vueltas",
+        "target": "around"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "ideas dando vueltas en mi cabeza",
+      "target_text": "ideas going around in my head",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "ideas dando vueltas",
+      "target_text": "ideas going around",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "dando vueltas en mi cabeza",
+      "target_text": "going around in my head",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay demasiadas ideas dando vueltas hoy",
+      "target_text": "there are too many ideas going around today",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay ideas dando vueltas en mi cabeza",
+      "target_text": "there are ideas going around in my head",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "no quiero ideas dando vueltas en mi cabeza",
+      "target_text": "I don't want ideas going around in my head",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay demasiadas ideas dando vueltas ahora",
+      "target_text": "there are too many ideas going around now",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay ideas dando vueltas en mi cabeza cuando hablo inglés",
+      "target_text": "there are ideas going around in my head when I speak English",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 10 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. too-ma-ny-i-de-as-go-ing-a-round. English table cut: \"too many ideas\" + \"going around\". Pieces: “too many ideas” = “demasiadas ideas” [S0131L03 (in place), NEW]; “going around” = “dando vueltas” [S0131L04 (appended), NEW]",
+   "closes": []
+  },
+  {
+   "id": "S0295L01",
+   "verdict": "recut",
+   "known": "no dije",
+   "target": "I didn't say",
+   "type": "M",
+   "components": [
+    [
+     "no",
+     "I didn't"
+    ],
+    [
+     "dije",
+     "say"
+    ]
+   ],
+   "basket": {},
+   "add": [],
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera",
+      "target_text": "that I wanted to",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "que",
+        "target": "that I"
+       },
+       {
+        "known": "quisiera",
+        "target": "wanted to"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera hacerlo",
+      "target_text": "that I wanted to do it",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera terminar",
+      "target_text": "that I wanted to finish",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera empezar hoy",
+      "target_text": "that I wanted to start today",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera terminar hoy",
+      "target_text": "I didn't say that I wanted to finish today",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera empezar mañana",
+      "target_text": "I didn't say that I wanted to start tomorrow",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera hablar con él ahora",
+      "target_text": "I didn't say that I wanted to speak to him now",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera hacerlo en un día",
+      "target_text": "I didn't say that I wanted to do it in a day",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera irme hoy",
+      "target_text": "I didn't say that I wanted to leave today",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. English table cut: \"I didn't say\" + \"that I wanted to\". Pieces: “I didn't say” = “no dije” [S0295L01 (in place), NEW]; “that I wanted to” = “que quisiera” [S0295L02 (appended), NEW]",
+   "closes": []
+  }
+ ]
+}

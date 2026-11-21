@@ -1,0 +1,58 @@
+{
+ "seed": 510,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "તેણી પૈસા શોધવા ગઈ છે",
+     "she's gone to look for the money",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "મને ગાડી ન દેખાય",
+     "I can't see the car",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ગાડી ત્યાં દૂર છે",
+     "the car is over there",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "તેણી ગાડી પાર્ક કરવા ગઈ છે",
+     "she's gone to park the car",
+     null,
+     null
+    ]
+   }
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "હું સુરક્ષિત જગ્યા ઈચ્છું છું",
+     "I want somewhere safe",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

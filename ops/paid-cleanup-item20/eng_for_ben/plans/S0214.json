@@ -1,0 +1,38 @@
+{
+ "seed": 214,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি সপ্তাহান্তে ব্যস্ত",
+     "I'm busy at the weekend",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "তুমি কি আজ ভালো সময় কাটিয়েছ?",
+     "did you have a good time today?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "তুমি কি সারাদিন ভালো সময় কাটিয়েছ?",
+     "did you have a good time all day?",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

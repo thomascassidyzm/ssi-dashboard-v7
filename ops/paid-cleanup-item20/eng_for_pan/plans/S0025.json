@@ -1,0 +1,40 @@
+{
+ "seed": 25,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਕੀ ਤੁਸੀਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਜਾ ਰਹੇ ਹੋ?",
+     "are you going to speak English?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਕੀ ਤੁਸੀਂ ਛੇਤੀ ਮੇਰੀ ਮਦਦ ਕਰੋਗੇ?",
+     "are you going to help me soon",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ਮੈਨੂੰ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਮਿਲਣਾ",
+     "to meet before I have to go",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0025L02B01": "ਮੇਰੀ ਕਰੋਗੇ|feminine form of the taught ਮੇਰੇ/ਮੇਰਾ; seed 25's own sentence uses ਕਰੋਗੇ (form of ਕਰਨਾ)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

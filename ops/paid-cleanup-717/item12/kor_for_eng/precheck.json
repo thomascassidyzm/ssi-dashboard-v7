@@ -1,0 +1,1979 @@
+{
+ "course": "kor_for_eng",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0001L04U06": {
+   "seed": {
+    "seed_number": 1,
+    "known_text": "I want to speak Korean with you now",
+    "target_text": "지금 같이 한국어로 말하고 싶어요",
+    "known_audio_id": "009608dd-3aa2-4988-a2b7-69ccdad7b487",
+    "target1_audio_id": "6921d9f3-322f-46a7-ac12-0065c0b2a1a4",
+    "target2_audio_id": "f9f265c8-55a3-48df-93cd-ff6458489797"
+   },
+   "lego": {
+    "lego_id": "S0001L04",
+    "known_text": "Korean",
+    "target_text": "한국어로",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0009L02U06": {
+   "seed": {
+    "seed_number": 9,
+    "known_text": "I speak a little Korean now",
+    "target_text": "지금 한국어를 조금 말해요",
+    "known_audio_id": "2bd58eb5-81fb-4cd0-80c7-4af22ba0ac6a",
+    "target1_audio_id": "ae2dd459-aa8d-48f6-b9cc-b704551c3444",
+    "target2_audio_id": "e3166b4d-b831-457a-bd35-4a5982c3727a"
+   },
+   "lego": {
+    "lego_id": "S0009L02",
+    "known_text": "a little",
+    "target_text": "조금",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0026L02U09": {
+   "seed": {
+    "seed_number": 26,
+    "known_text": "I like feeling as if I'm nearly ready to go",
+    "target_text": "갈 준비가 거의 된 것 같은 느낌이 좋아요",
+    "known_audio_id": "269db71a-a82a-4b9b-bce5-7388e5d562c9",
+    "target1_audio_id": "9945b9db-15eb-4a56-8ca3-83869c7587ad",
+    "target2_audio_id": "d59e07ec-efe8-4b09-8bb6-1a8aa78743b3"
+   },
+   "lego": {
+    "lego_id": "S0026L02",
+    "known_text": "nearly ready to go",
+    "target_text": "갈 준비가 거의 된",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0027L03U06": {
+   "seed": {
+    "seed_number": 27,
+    "known_text": "I don't like taking too much time to answer",
+    "target_text": "대답하는 데 너무 오래 걸리는 게 싫어요",
+    "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+    "target1_audio_id": "cb99c673-8a4e-48a6-95a2-6b0964dde078",
+    "target2_audio_id": "ed493d48-38fe-44a2-8965-16c82bc739b2"
+   },
+   "lego": {
+    "lego_id": "S0027L03",
+    "known_text": "to answer",
+    "target_text": "대답하는 데",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0039L03U09": {
+   "seed": {
+    "seed_number": 39,
+    "known_text": "but I'm a little tired this morning",
+    "target_text": "하지만 오늘 아침에 좀 피곤해요",
+    "known_audio_id": "2833c233-9ef5-4f02-b4f3-65fdddffbf63",
+    "target1_audio_id": "7367ffc8-d35b-4b0f-be3a-5a990cdf96bc",
+    "target2_audio_id": "1f485dff-ff0a-414c-bde3-055cef6bdecf"
+   },
+   "lego": {
+    "lego_id": "S0039L03",
+    "known_text": "tired",
+    "target_text": "피곤해요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0054L02U09": {
+   "seed": {
+    "seed_number": 54,
+    "known_text": "we wanted to give you a little more time",
+    "target_text": "우리는 시간을 조금 더 주고 싶었어요",
+    "known_audio_id": "6a3068c7-3fc1-4f61-a975-d2d55a366aa2",
+    "target1_audio_id": "6f07c277-6bcc-46a4-9b68-aea3bb74b586",
+    "target2_audio_id": "cc828fe9-42b1-4c1f-be0e-115ca69124a3"
+   },
+   "lego": {
+    "lego_id": "S0054L02",
+    "known_text": "time",
+    "target_text": "시간을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0066L02U09": {
+   "seed": {
+    "seed_number": 66,
+    "known_text": "it's not difficult to find the answer",
+    "target_text": "답을 찾는 건 어렵지 않아요",
+    "known_audio_id": "46a07aa3-516a-4ddb-aaaf-d0800f13a4b6",
+    "target1_audio_id": "050f255b-18d9-4d66-aab6-e39433865a69",
+    "target2_audio_id": "6473b745-7457-4352-ba25-4684d401af3b"
+   },
+   "lego": {
+    "lego_id": "S0066L02",
+    "known_text": "to find the answer",
+    "target_text": "답을 찾는 건",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L02U03": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "I'm not going to wait for you. Why not?",
+    "target_text": "기다리지 않을 거예요. 왜요?",
+    "known_audio_id": "199fc8fc-87b1-43f3-8002-8c8948711cfc",
+    "target1_audio_id": "1f2555f9-3f83-4e4d-aa98-c17a79e88d00",
+    "target2_audio_id": "9d164fa0-4df4-4388-b80d-f3af4bab091b"
+   },
+   "lego": {
+    "lego_id": "S0082L02",
+    "known_text": "why not",
+    "target_text": "왜요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0086L02U09": {
+   "seed": {
+    "seed_number": 86,
+    "known_text": "it wasn't possible, unfortunately",
+    "target_text": "안타깝게도 가능하지 않았어요",
+    "known_audio_id": "7d77cbf8-cc32-4455-9cd9-fc10fa91811d",
+    "target1_audio_id": "fe0f1f80-2752-40c7-8f5a-5b8c70ccea30",
+    "target2_audio_id": "6af7766b-4904-4d16-abac-9f2bdaddb057"
+   },
+   "lego": {
+    "lego_id": "S0086L02",
+    "known_text": "it wasn't possible",
+    "target_text": "가능하지 않았어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0089L02U09": {
+   "seed": {
+    "seed_number": 89,
+    "known_text": "I think that I've done a lot in a short time",
+    "target_text": "짧은 시간에 많이 했다고 생각해요",
+    "known_audio_id": "594ddd3f-0f7c-44e4-a472-5a0ccb2dddb4",
+    "target1_audio_id": "3d3b6b19-ed94-4109-870b-dca4614973ff",
+    "target2_audio_id": "0f44eeb4-2d78-4b7e-bc29-2078def04a2a"
+   },
+   "lego": {
+    "lego_id": "S0089L02",
+    "known_text": "in a short time",
+    "target_text": "짧은 시간에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0117L02U09": {
+   "seed": {
+    "seed_number": 117,
+    "known_text": "I'm definitely doing better than I was last time we talked to each other",
+    "target_text": "저번에 서로 말했을 때보다 확실히 더 잘하고 있어요",
+    "known_audio_id": "1e91876c-cd0e-4db8-99a6-a7b037c0997e",
+    "target1_audio_id": "481c0c23-a63c-4cd2-9b57-5ae901166201",
+    "target2_audio_id": "f59e010e-ca11-4633-98e8-9d0e97445949"
+   },
+   "lego": {
+    "lego_id": "S0117L02",
+    "known_text": "than last time we talked to each other",
+    "target_text": "저번에 서로 말했을 때보다",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0125L03U09": {
+   "seed": {
+    "seed_number": 125,
+    "known_text": "I believe that your idea was very good",
+    "target_text": "그 생각이 아주 좋았다고 믿어요",
+    "known_audio_id": "bd08f489-0ecc-4549-a6db-c96785655675",
+    "target1_audio_id": "bfb197ba-ceec-4a71-b24f-8230cfad93ba",
+    "target2_audio_id": "a876a9e9-2993-49a4-bbc6-e7cbcf35797e"
+   },
+   "lego": {
+    "lego_id": "S0125L03",
+    "known_text": "that idea",
+    "target_text": "그 생각이",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0136L03U09": {
+   "seed": {
+    "seed_number": 136,
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "물론 그녀한테 물어봐도 돼요, 제 친구니까요",
+    "known_audio_id": "e1c432a1-cc51-459a-99c0-0d8f9840e83d",
+    "target1_audio_id": "5812b7ad-2069-4712-a1a3-c62802617eb0",
+    "target2_audio_id": "3109ac72-cb14-479e-b7ee-be5e2d37dacc"
+   },
+   "lego": {
+    "lego_id": "S0136L03",
+    "known_text": "because she's my friend",
+    "target_text": "제 친구니까요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0204L03U06": {
+   "seed": {
+    "seed_number": 204,
+    "known_text": "I wanted her to help you to deal with the arrangements",
+    "target_text": "그녀가 준비를 도와주길 바랐어요",
+    "known_audio_id": "e5f13539-3682-4494-a341-448c75e19b98",
+    "target1_audio_id": "6094a5c8-bad5-4144-af6f-390a5387eaf6",
+    "target2_audio_id": "6b6c7773-ccb1-4c8e-ae60-f5cc0eadada0"
+   },
+   "lego": {
+    "lego_id": "S0204L03",
+    "known_text": "to help you",
+    "target_text": "도와주길",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0235L01U09": {
+   "seed": {
+    "seed_number": 235,
+    "known_text": "I met someone who said that he wanted to tell you something",
+    "target_text": "뭔가 말하고 싶다고 한 사람을 만났어요",
+    "known_audio_id": "04591d84-3f5b-4255-bf56-cb7d0fa3e60e",
+    "target1_audio_id": "1be189ab-35fc-4aba-9759-9c6cf90e235b",
+    "target2_audio_id": "2993a3c9-4154-46d5-babb-5482cf14e44a"
+   },
+   "lego": {
+    "lego_id": "S0235L01",
+    "known_text": "I met someone who said he wanted to tell you something",
+    "target_text": "뭔가 말하고 싶다고 한 사람을 만났어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0236L01U10": {
+   "seed": {
+    "seed_number": 236,
+    "known_text": "I know someone who said that she was going to try to help",
+    "target_text": "도와주려고 할 거라고 한 사람을 알아요",
+    "known_audio_id": "5f7a5f15-b1b6-43f6-abe3-0fa757fcd8d6",
+    "target1_audio_id": "8e2c828a-ff0d-48d8-8fde-77a820858f6c",
+    "target2_audio_id": "ff484986-fc09-45bf-8ab8-0e6ccb8a346b"
+   },
+   "lego": {
+    "lego_id": "S0236L01",
+    "known_text": "I know someone who said she was going to try to help",
+    "target_text": "도와주려고 할 거라고 한 사람을 알아요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0237L02U06": {
+   "seed": {
+    "seed_number": 237,
+    "known_text": "he wanted me to tell you before the weekend",
+    "target_text": "그는 주말 전에 제가 말해 주길 바랐어요",
+    "known_audio_id": "f4e86136-7fe3-4fb3-a85a-06382e5c3e15",
+    "target1_audio_id": "fbbb2a70-ebe3-4e3c-8033-e7e042332f0f",
+    "target2_audio_id": "ce9741d8-a940-4628-b8a2-6b4815d46b47"
+   },
+   "lego": {
+    "lego_id": "S0237L02",
+    "known_text": "to tell you",
+    "target_text": "말해 주길",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0301L02U12": {
+   "seed": {
+    "seed_number": 301,
+    "known_text": "he said that he wants to show you something",
+    "target_text": "그는 뭔가 보여 주고 싶다고 했어요",
+    "known_audio_id": "41e27acd-034f-448f-9c35-7d3790442f7d",
+    "target1_audio_id": "afdc22a0-8b2f-445c-9d01-7301ffd856f4",
+    "target2_audio_id": "6108d387-4141-467a-a4a1-87c7474abc2c"
+   },
+   "lego": {
+    "lego_id": "S0301L02",
+    "known_text": "said that he wants to",
+    "target_text": "싶다고 했어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0302L03U12": {
+   "seed": {
+    "seed_number": 302,
+    "known_text": "she said that she doesn't want to live in a city",
+    "target_text": "그녀는 도시에서 살고 싶지 않다고 했어요",
+    "known_audio_id": "c9ad5cb2-6262-4c2b-95ae-090725ff8d78",
+    "target1_audio_id": "5759bfe9-d8bd-4459-a500-631f846da6ee",
+    "target2_audio_id": "339c6a0a-14b2-437e-b540-cdac8b2c8d55"
+   },
+   "lego": {
+    "lego_id": "S0302L03",
+    "known_text": "said that she doesn't want to",
+    "target_text": "싶지 않다고 했어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0303L02U12": {
+   "seed": {
+    "seed_number": 303,
+    "known_text": "I think that he wants to sit down",
+    "target_text": "그가 앉고 싶어하는 것 같아요",
+    "known_audio_id": "0d0e425e-2dad-4bda-bebd-bc88fe5e69be",
+    "target1_audio_id": "fcefc477-1772-4291-97a9-b469b71bf6b5",
+    "target2_audio_id": "7f3561d8-7b9b-4ff7-8edf-f569fa7f583a"
+   },
+   "lego": {
+    "lego_id": "S0303L02",
+    "known_text": "wants to",
+    "target_text": "싶어하는",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0304L02U12": {
+   "seed": {
+    "seed_number": 304,
+    "known_text": "I think that she doesn't want to work from home",
+    "target_text": "그녀가 집에서 일하고 싶어하지 않는 것 같아요",
+    "known_audio_id": "d53577a5-5ad1-411c-b07c-01fe3019fb33",
+    "target1_audio_id": "1a8bdede-f32d-4ddc-98d8-a57447d404a0",
+    "target2_audio_id": "c3180fd0-48f7-4f59-890d-22670064167a"
+   },
+   "lego": {
+    "lego_id": "S0304L02",
+    "known_text": "work",
+    "target_text": "일하고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0306L02U12": {
+   "seed": {
+    "seed_number": 306,
+    "known_text": "I know that young woman who's talking to your friend",
+    "target_text": "친구와 이야기하고 있는 그 젊은 여자를 알아요",
+    "known_audio_id": "f7bf4841-3143-4fdd-98e4-622f33e06971",
+    "target1_audio_id": "39ab038c-5777-4def-95ae-d52ecf37a3e6",
+    "target2_audio_id": "599209c0-888f-45e6-821f-ed15d6cef2c1"
+   },
+   "lego": {
+    "lego_id": "S0306L02",
+    "known_text": "who's talking",
+    "target_text": "이야기하고 있는",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0307L02U12": {
+   "seed": {
+    "seed_number": 307,
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "저기 앉아 있는 그 젊은 남자를 알아요",
+    "known_audio_id": "f203f0f9-aba8-4517-8ec3-e653cf17a42e",
+    "target1_audio_id": "d1fb41ea-21bc-4598-88b3-04006cf8c3d6",
+    "target2_audio_id": "123a5387-6ed5-40c7-b018-1e6c1560fd3f"
+   },
+   "lego": {
+    "lego_id": "S0307L02",
+    "known_text": "who's sitting",
+    "target_text": "앉아 있는",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0309L01U13": {
+   "seed": {
+    "seed_number": 309,
+    "known_text": "no I've never seen her before",
+    "target_text": "아니요 전에 한 번도 본 적 없어요",
+    "known_audio_id": "54c05b0b-1c7b-4f0a-b699-29fd56b7beb9",
+    "target1_audio_id": "97906bf9-eb86-4f56-993e-f6f09d7572e0",
+    "target2_audio_id": "7f22a3f1-7438-425c-bb16-090e15b5df5d"
+   },
+   "lego": {
+    "lego_id": "S0309L01",
+    "known_text": "before",
+    "target_text": "전에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0310L02U11": {
+   "seed": {
+    "seed_number": 310,
+    "known_text": "she could write a story about that man",
+    "target_text": "그녀는 그 남자에 대해 이야기를 쓸 수 있어요",
+    "known_audio_id": "becfa6f2-22aa-4f8a-a675-450bc71d3e5c",
+    "target1_audio_id": "9cf795fc-d53c-4e0a-8b93-f947f0a9a92d",
+    "target2_audio_id": "24864098-12f0-4d24-938d-fe191d9e623c"
+   },
+   "lego": {
+    "lego_id": "S0310L02",
+    "known_text": "a story",
+    "target_text": "이야기를",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0312L03U12": {
+   "seed": {
+    "seed_number": 312,
+    "known_text": "she said that she could use the other room tomorrow night",
+    "target_text": "그녀는 내일 밤에 다른 방을 쓸 수 있다고 했어요",
+    "known_audio_id": "ed23a0b2-2d9b-45a3-bd82-c9b1273467b0",
+    "target1_audio_id": "ebdf4b4f-8ca9-4c61-b035-b821898b9e6d",
+    "target2_audio_id": "b5f7bedf-f9f3-4db0-82bb-41a68b1a755d"
+   },
+   "lego": {
+    "lego_id": "S0312L03",
+    "known_text": "could use",
+    "target_text": "쓸 수 있다고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0313L04U13": {
+   "seed": {
+    "seed_number": 313,
+    "known_text": "he said that he couldn't watch all five games",
+    "target_text": "그는 다섯 경기를 다 볼 수 없다고 했어요",
+    "known_audio_id": "f03e7e8d-7088-4ec4-bccd-edcec3dc20a1",
+    "target1_audio_id": "e7eebf0d-4c32-4ab7-a550-d17af0744bc8",
+    "target2_audio_id": "e71c4582-08dd-4053-9c7b-fc3aea2e9209"
+   },
+   "lego": {
+    "lego_id": "S0313L04",
+    "known_text": "couldn't watch",
+    "target_text": "볼 수 없다고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0314L01U22": {
+   "seed": {
+    "seed_number": 314,
+    "known_text": "I think that she could put it on the table",
+    "target_text": "그녀가 그걸 탁자 위에 놓을 수 있을 것 같아요",
+    "known_audio_id": "c6ebf03a-e5ee-47d1-9626-b94a187723a3",
+    "target1_audio_id": "a053e460-8d6c-43e5-830e-742733ddcbdb",
+    "target2_audio_id": "5681e9ae-6d9e-412e-8a1a-2e7b6b6583f8"
+   },
+   "lego": {
+    "lego_id": "S0314L01",
+    "known_text": "it",
+    "target_text": "그걸",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0315L04U13": {
+   "seed": {
+    "seed_number": 315,
+    "known_text": "I think that he couldn't afford the car that he wanted",
+    "target_text": "그가 원했던 차를 살 여유가 없었던 것 같아요",
+    "known_audio_id": "05fb9723-9a20-4fbb-a601-b5a51e26ee3f",
+    "target1_audio_id": "a5724bf8-0006-4606-b694-f03127f5023e",
+    "target2_audio_id": "30d08576-1164-4353-89d3-76bfc2c9756e"
+   },
+   "lego": {
+    "lego_id": "S0315L04",
+    "known_text": "couldn't afford",
+    "target_text": "여유가 없었던",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0316L02U12": {
+   "seed": {
+    "seed_number": 316,
+    "known_text": "do you think that she could bring her brother on Monday?",
+    "target_text": "그녀가 월요일에 남동생을 데려올 수 있을 것 같아요?",
+    "known_audio_id": "146ad304-d908-400a-8a8d-4e402352461d",
+    "target1_audio_id": "28cf6b71-b181-4610-9f7d-ca057da94a08",
+    "target2_audio_id": "b11c9086-6663-457c-830e-d84adbfa96d6"
+   },
+   "lego": {
+    "lego_id": "S0316L02",
+    "known_text": "brother",
+    "target_text": "남동생을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0317L01U11": {
+   "seed": {
+    "seed_number": 317,
+    "known_text": "yes I think she could if she wanted to",
+    "target_text": "네 원하면 할 수 있을 것 같아요",
+    "known_audio_id": "bcf900d5-602f-40a6-924f-f3c5482f1885",
+    "target1_audio_id": "3ac132c1-082e-485a-9fa0-c456bb224d05",
+    "target2_audio_id": "21bb0dcb-0845-4b84-89d4-054bd22fc59a"
+   },
+   "lego": {
+    "lego_id": "S0317L01",
+    "known_text": "if she wanted to",
+    "target_text": "원하면",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0318L01U20": {
+   "seed": {
+    "seed_number": 318,
+    "known_text": "no I don't think she could this time",
+    "target_text": "아니요 이번에는 할 수 없을 것 같아요",
+    "known_audio_id": "6f1a4fa6-db2c-4b43-93c8-ff1f9b6d23b9",
+    "target1_audio_id": "8e38da17-ac8a-4d88-9ef2-48ab4eabc181",
+    "target2_audio_id": "af89a8a1-1e8f-4148-b436-c86f9595d542"
+   },
+   "lego": {
+    "lego_id": "S0318L01",
+    "known_text": "this time",
+    "target_text": "이번에는",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0319L02U12": {
+   "seed": {
+    "seed_number": 319,
+    "known_text": "she needs to move to a different country",
+    "target_text": "그녀는 다른 나라로 이사해야 해요",
+    "known_audio_id": "cecde518-dad1-4112-9257-f626d652ae41",
+    "target1_audio_id": "10f2684a-02da-48d3-ae62-5421a5af3ee9",
+    "target2_audio_id": "8fafa848-5efc-4ea7-af88-20c5bda92314"
+   },
+   "lego": {
+    "lego_id": "S0319L02",
+    "known_text": "needs to move",
+    "target_text": "이사해야 해요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0320L03U09": {
+   "seed": {
+    "seed_number": 320,
+    "known_text": "he doesn't need to buy another television this year",
+    "target_text": "그는 올해 TV를 또 살 필요가 없어요",
+    "known_audio_id": "6a7a7e27-839d-4156-82df-cd1eb32fd4be",
+    "target1_audio_id": "8557d825-559f-422d-902e-aedb9bc976d0",
+    "target2_audio_id": "8f3a4e3f-151d-41d8-8838-efcaf5457c3b"
+   },
+   "lego": {
+    "lego_id": "S0320L03",
+    "known_text": "another",
+    "target_text": "또",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0321L01U14": {
+   "seed": {
+    "seed_number": 321,
+    "known_text": "a book",
+    "target_text": "책",
+    "known_audio_id": "d0cf281d-ab65-4e6a-bf16-01b183992b73",
+    "target1_audio_id": "86b9624c-6157-4ccc-91ea-99118a7e92ca",
+    "target2_audio_id": "c70ffbb3-2cf6-4be3-9039-b64913395ce8"
+   },
+   "lego": {
+    "lego_id": "S0321L01",
+    "known_text": "book",
+    "target_text": "책",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0322L02U13": {
+   "seed": {
+    "seed_number": 322,
+    "known_text": "she said that she needs to read the same book",
+    "target_text": "그녀는 같은 책을 읽어야 한다고 했어요",
+    "known_audio_id": "af714295-4f0b-4606-89af-a9cb8383a49f",
+    "target1_audio_id": "a42d84e0-617e-4274-9c5c-1350ea637d9b",
+    "target2_audio_id": "1ec33367-5d56-4a50-8150-1f54e52bc054"
+   },
+   "lego": {
+    "lego_id": "S0322L02",
+    "known_text": "needs to read",
+    "target_text": "읽어야",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0323L02U13": {
+   "seed": {
+    "seed_number": 323,
+    "known_text": "he said that he doesn't need to walk to school",
+    "target_text": "그는 학교까지 걸어갈 필요가 없다고 했어요",
+    "known_audio_id": "90e734d7-cae8-4eeb-bc95-711618812ecf",
+    "target1_audio_id": "725a6422-00b2-49e2-aa81-01fec729a672",
+    "target2_audio_id": "96680ef6-6456-4232-a733-3fc28af87932"
+   },
+   "lego": {
+    "lego_id": "S0323L02",
+    "known_text": "walk to",
+    "target_text": "걸어갈",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0325L05U12": {
+   "seed": {
+    "seed_number": 325,
+    "known_text": "I think that he needs to consider ten possible problems",
+    "target_text": "그가 열 가지 가능한 문제를 생각해 봐야 하는 것 같아요",
+    "known_audio_id": "5ed0f3e8-cdbc-4c6f-846f-3ba788cb8cde",
+    "target1_audio_id": "04528647-8947-4ea3-a483-c9fdc2047578",
+    "target2_audio_id": "8732715c-bd43-48e1-9db5-4c72d4788cfc"
+   },
+   "lego": {
+    "lego_id": "S0325L05",
+    "known_text": "needs to consider",
+    "target_text": "생각해 봐야",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0326L02U13": {
+   "seed": {
+    "seed_number": 326,
+    "known_text": "I don't think that she needs to sell the company",
+    "target_text": "그녀가 회사를 팔 필요가 없는 것 같아요",
+    "known_audio_id": "43c2ff61-5889-466b-802d-bdd90a1e1635",
+    "target1_audio_id": "900ec3bd-96ec-4398-8faf-bcbe0fe50ac8",
+    "target2_audio_id": "978afc6e-cbd5-4eb2-958d-634ed2569144"
+   },
+   "lego": {
+    "lego_id": "S0326L02",
+    "known_text": "sell",
+    "target_text": "팔",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0327L03U12": {
+   "seed": {
+    "seed_number": 327,
+    "known_text": "do you think that she needs to offer another way?",
+    "target_text": "그녀가 다른 방법을 제안해야 한다고 생각해요?",
+    "known_audio_id": "ce8f112f-fe5b-4bf8-a72a-993ea28d9963",
+    "target1_audio_id": "21689190-d934-4b1f-be27-2df41b0ca2b5",
+    "target2_audio_id": "aca1b1cd-c9f6-4d5f-a50d-6bb261ef8fa1"
+   },
+   "lego": {
+    "lego_id": "S0327L03",
+    "known_text": "do you think",
+    "target_text": "한다고 생각해요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0328L01U12": {
+   "seed": {
+    "seed_number": 328,
+    "known_text": "yes I think she ought to",
+    "target_text": "네 그래야 하는 것 같아요",
+    "known_audio_id": "15834690-322f-4cc7-8ca5-972897e5bd39",
+    "target1_audio_id": "eb1cc5a3-d544-4f59-a70c-8acd7d6d7090",
+    "target2_audio_id": "d374e711-0b7b-403f-81f1-c92435c470ba"
+   },
+   "lego": {
+    "lego_id": "S0328L01",
+    "known_text": "ought to",
+    "target_text": "그래야 하는",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0331L04U12": {
+   "seed": {
+    "seed_number": 331,
+    "known_text": "she can't provide all the answers",
+    "target_text": "그녀는 모든 답을 줄 수 없어요",
+    "known_audio_id": "f46b6ed1-e291-48d8-a4b2-dfe6f861b63b",
+    "target1_audio_id": "a84338b3-1aeb-4412-8357-0d7435fe8b24",
+    "target2_audio_id": "30c4bc21-deff-4c8c-990a-18156c3e1d9a"
+   },
+   "lego": {
+    "lego_id": "S0331L04",
+    "known_text": "can't",
+    "target_text": "수 없어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0332L04U13": {
+   "seed": {
+    "seed_number": 332,
+    "known_text": "he can build a new life for his sister",
+    "target_text": "그는 여동생을 위해 새로운 삶을 만들 수 있어요",
+    "known_audio_id": "89c9ddae-6b18-4e41-bc1f-36e201ac4f27",
+    "target1_audio_id": "953392d4-1c30-4264-89f5-844ad48b3335",
+    "target2_audio_id": "b0d08794-bd82-46da-8c1c-e357abce1b3c"
+   },
+   "lego": {
+    "lego_id": "S0332L04",
+    "known_text": "build",
+    "target_text": "만들",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0333L02U11": {
+   "seed": {
+    "seed_number": 333,
+    "known_text": "she said that she can't spend much time with the group",
+    "target_text": "그녀는 그 모임과 많은 시간을 보낼 수 없다고 했어요",
+    "known_audio_id": "e7183b6a-d0cb-4588-9d6f-f26243f17cb4",
+    "target1_audio_id": "46f3020e-14f5-437a-8350-29f4524ecc8f",
+    "target2_audio_id": "00eb40f1-3e04-400a-8a64-f050394e77e9"
+   },
+   "lego": {
+    "lego_id": "S0333L02",
+    "known_text": "spend",
+    "target_text": "보낼",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0334L01U06": {
+   "seed": {
+    "seed_number": 334,
+    "known_text": "he said that he can let you hold the kitten",
+    "target_text": "그는 새끼 고양이를 안게 해 줄 수 있다고 했어요",
+    "known_audio_id": "209e48ec-0b17-46bd-aa98-e3b7fe3fa07c",
+    "target1_audio_id": "24f1087d-bf07-410d-9812-bd3a911c029e",
+    "target2_audio_id": "bbff9e90-f617-4063-9de3-77465a3803e0"
+   },
+   "lego": {
+    "lego_id": "S0334L01",
+    "known_text": "kitten",
+    "target_text": "새끼",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0335L03U11": {
+   "seed": {
+    "seed_number": 335,
+    "known_text": "I think that he can add some valuable ideas",
+    "target_text": "그가 귀중한 생각을 추가할 수 있는 것 같아요",
+    "known_audio_id": "62efdde7-e915-4b53-9784-754a614b1c07",
+    "target1_audio_id": "f302f6f4-2974-491d-b9f0-f901b80815ff",
+    "target2_audio_id": "930da6a2-0f2b-4db6-aed3-33cbc8bc4861"
+   },
+   "lego": {
+    "lego_id": "S0335L03",
+    "known_text": "can",
+    "target_text": "수 있는",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0336L01U13": {
+   "seed": {
+    "seed_number": 336,
+    "known_text": "I don't think that she can open the door",
+    "target_text": "그녀가 문을 열 수 없는 것 같아요",
+    "known_audio_id": "c0f259c7-83e9-4bb3-88d7-bacd4caefec7",
+    "target1_audio_id": "85df0966-776b-4841-bb7c-6a1912d55157",
+    "target2_audio_id": "412ee737-c669-4c0e-a4db-a857f0b1a3a1"
+   },
+   "lego": {
+    "lego_id": "S0336L01",
+    "known_text": "door",
+    "target_text": "문을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0337L01U12": {
+   "seed": {
+    "seed_number": 337,
+    "known_text": "do you think that he can continue to play?",
+    "target_text": "그가 계속 할 수 있다고 생각해요?",
+    "known_audio_id": "0be569c2-fcd1-4525-bc64-60d9e007b26e",
+    "target1_audio_id": "5f172d13-8dea-4500-9bf4-6c0958a31f6f",
+    "target2_audio_id": "49270ef4-50a3-4cea-ab47-43f31ded3ce0"
+   },
+   "lego": {
+    "lego_id": "S0337L01",
+    "known_text": "continue",
+    "target_text": "계속",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0339L01U11": {
+   "seed": {
+    "seed_number": 339,
+    "known_text": "no I think he's hurt himself quite badly",
+    "target_text": "아니요 꽤 심하게 다친 것 같아요",
+    "known_audio_id": "3d4b05f8-aa4b-4d7a-8d37-23b1e57b0909",
+    "target1_audio_id": "84837dc2-cbc2-4a51-99a1-31712822958a",
+    "target2_audio_id": "d013359a-09db-4d54-9370-204a364ed8eb"
+   },
+   "lego": {
+    "lego_id": "S0339L01",
+    "known_text": "hurt",
+    "target_text": "다친",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0340L01U12": {
+   "seed": {
+    "seed_number": 340,
+    "known_text": "yes I'm sure he's going to be okay",
+    "target_text": "네 확실히 괜찮을 거예요",
+    "known_audio_id": "6cd048a4-8adf-40ca-9eb2-aa2e0038f3ee",
+    "target1_audio_id": "d16b65f8-c68e-45a2-b382-6bca74c746fd",
+    "target2_audio_id": "2fbd6a44-10f2-4822-b2c7-bbcd6997055d"
+   },
+   "lego": {
+    "lego_id": "S0340L01",
+    "known_text": "going to be okay",
+    "target_text": "괜찮을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0341L01U12": {
+   "seed": {
+    "seed_number": 341,
+    "known_text": "I met someone a few days ago",
+    "target_text": "며칠 전에 누군가를 만났어요",
+    "known_audio_id": "927aad94-8b3b-406e-bf58-210f2890d517",
+    "target1_audio_id": "94ed86c5-cb1c-48ef-9a75-99b4097b0115",
+    "target2_audio_id": "937e68f3-6cdc-4228-8d92-86916975efdd"
+   },
+   "lego": {
+    "lego_id": "S0341L01",
+    "known_text": "a few days",
+    "target_text": "며칠",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0342L01U12": {
+   "seed": {
+    "seed_number": 342,
+    "known_text": "I met someone who said something",
+    "target_text": "뭔가 말한 사람을 만났어요",
+    "known_audio_id": "da93a15e-55db-4a73-a7d7-fbdb3530cc97",
+    "target1_audio_id": "16c8d039-045f-4008-8e81-82dc42cab38a",
+    "target2_audio_id": "ff800f56-2eae-45cd-a487-36dd04298902"
+   },
+   "lego": {
+    "lego_id": "S0342L01",
+    "known_text": "who said",
+    "target_text": "말한",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0345L03U11": {
+   "seed": {
+    "seed_number": 345,
+    "known_text": "who said that he's not ready to leave yet",
+    "target_text": "아직 떠날 준비가 안 됐다고 했어요",
+    "known_audio_id": "61c35a58-09fa-425b-8ea1-520330643d9a",
+    "target1_audio_id": "dc45c95d-8c25-410d-a427-640a7527c64d",
+    "target2_audio_id": "51b07f74-67da-4b67-8f85-757415304d65"
+   },
+   "lego": {
+    "lego_id": "S0345L03",
+    "known_text": "not ready",
+    "target_text": "안 됐다고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0346L01U12": {
+   "seed": {
+    "seed_number": 346,
+    "known_text": "I wanted her to know that I liked her book",
+    "target_text": "그녀의 책이 좋았다는 걸 알려 주고 싶었어요",
+    "known_audio_id": "8118d934-b55c-4642-a275-22c81af974b5",
+    "target1_audio_id": "b34d389b-0a35-4d7f-a39c-b0a540acc615",
+    "target2_audio_id": "378d0d26-0385-43bd-a8bc-41ad507cc8a7"
+   },
+   "lego": {
+    "lego_id": "S0346L01",
+    "known_text": "her book",
+    "target_text": "그녀의 책이",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0348L01U10": {
+   "seed": {
+    "seed_number": 348,
+    "known_text": "she didn't want to know what was going to happen",
+    "target_text": "그녀는 무슨 일이 일어날지 알고 싶어하지 않았어요",
+    "known_audio_id": "3bb67301-b4c3-4e4c-af69-9e137e020154",
+    "target1_audio_id": "8eb209b9-f06d-4f5d-8fdd-284e9b323812",
+    "target2_audio_id": "a9bc4602-543d-4d61-9f3a-3bc07920688c"
+   },
+   "lego": {
+    "lego_id": "S0348L01",
+    "known_text": "didn't",
+    "target_text": "않았어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0349L02U11": {
+   "seed": {
+    "seed_number": 349,
+    "known_text": "did he want to go out on Friday night?",
+    "target_text": "그는 금요일 밤에 나가고 싶어했어요?",
+    "known_audio_id": "189db3d9-0e28-4293-abdd-fb589eea6225",
+    "target1_audio_id": "be510704-790a-40cb-947e-dccf58f918b0",
+    "target2_audio_id": "57f45f79-38cc-4602-887b-abbc15f373f0"
+   },
+   "lego": {
+    "lego_id": "S0349L02",
+    "known_text": "go out",
+    "target_text": "나가고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0350L01U13": {
+   "seed": {
+    "seed_number": 350,
+    "known_text": "yes he wanted to see some old friends",
+    "target_text": "네 오래된 친구들을 만나고 싶어했어요",
+    "known_audio_id": "5a69d18c-79e7-402b-b4ef-7b520429396e",
+    "target1_audio_id": "700b095c-e0c4-436e-a0ca-2e59a47f745e",
+    "target2_audio_id": "285df3a3-b8a0-4b9a-a82a-84fb8c46ac99"
+   },
+   "lego": {
+    "lego_id": "S0350L01",
+    "known_text": "some old friends",
+    "target_text": "오래된 친구들을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0353L02U10": {
+   "seed": {
+    "seed_number": 353,
+    "known_text": "she needed to run around the field",
+    "target_text": "그녀는 운동장 주위를 뛰어야 했어요",
+    "known_audio_id": "82a93390-530c-446f-96fd-ba783d650b95",
+    "target1_audio_id": "db7e51ed-7354-4637-bef2-d3bd239b6adb",
+    "target2_audio_id": "97bededa-9d1b-49d9-9587-fda372686dab"
+   },
+   "lego": {
+    "lego_id": "S0353L02",
+    "known_text": "around",
+    "target_text": "주위를",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0354L02U12": {
+   "seed": {
+    "seed_number": 354,
+    "known_text": "he didn't need to appear angry",
+    "target_text": "그는 화나 보일 필요가 없었어요",
+    "known_audio_id": "6baa2433-6229-4952-8b0f-a3b40d02b185",
+    "target1_audio_id": "834dd648-efeb-42aa-9245-0fe30221ba2f",
+    "target2_audio_id": "0881b61f-e8ec-4fe5-8586-edb56c62c304"
+   },
+   "lego": {
+    "lego_id": "S0354L02",
+    "known_text": "appear",
+    "target_text": "보일",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0355L02U12": {
+   "seed": {
+    "seed_number": 355,
+    "known_text": "did she need to talk to that woman you know?",
+    "target_text": "아는 그 여자와 이야기해야 했어요?",
+    "known_audio_id": "e0538a08-0b7b-4e7e-bf5c-ed61bce3da23",
+    "target1_audio_id": "cffb86f4-3018-4022-b97b-6f4afb0965b5",
+    "target2_audio_id": "4e1b5b12-781b-41cd-b816-a7e19a7e2b97"
+   },
+   "lego": {
+    "lego_id": "S0355L02",
+    "known_text": "need to talk",
+    "target_text": "이야기해야",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0356L01U10": {
+   "seed": {
+    "seed_number": 356,
+    "known_text": "yes they had something important to discuss",
+    "target_text": "네 그들은 논의할 중요한 게 있었어요",
+    "known_audio_id": "392692bc-14fb-494d-b75b-dfa1bf0a27f9",
+    "target1_audio_id": "e48df3a5-9c05-4527-b41c-2b044c311f58",
+    "target2_audio_id": "2f667953-df1f-4383-a43b-5f56f4081297"
+   },
+   "lego": {
+    "lego_id": "S0356L01",
+    "known_text": "to discuss",
+    "target_text": "논의할",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0357L02U13": {
+   "seed": {
+    "seed_number": 357,
+    "known_text": "no she just wanted to send her a message",
+    "target_text": "아니요 그녀는 그냥 메시지를 보내고 싶었어요",
+    "known_audio_id": "b953ab8d-409f-49ed-bb04-ea7e93ce06d1",
+    "target1_audio_id": "d6016ecb-ddfa-4c0c-b203-c12c32d9c446",
+    "target2_audio_id": "e1a2014b-c979-4390-bb6a-41bfced201c6"
+   },
+   "lego": {
+    "lego_id": "S0357L02",
+    "known_text": "send",
+    "target_text": "보내고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0358L02U12": {
+   "seed": {
+    "seed_number": 358,
+    "known_text": "your friend said that she couldn't reach the top",
+    "target_text": "친구가 꼭대기에 닿을 수 없다고 했어요",
+    "known_audio_id": "28337762-3244-4c39-8841-f8a1901d705f",
+    "target1_audio_id": "74eb6253-e76d-42e7-a35c-179965a1a5b1",
+    "target2_audio_id": "d12475e8-5ea6-42d4-8309-90d7d89f7e85"
+   },
+   "lego": {
+    "lego_id": "S0358L02",
+    "known_text": "reach",
+    "target_text": "닿을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0359L02U13": {
+   "seed": {
+    "seed_number": 359,
+    "known_text": "your friend said that he could turn left",
+    "target_text": "친구가 왼쪽으로 돌 수 있다고 했어요",
+    "known_audio_id": "8990ba55-f1cf-4514-8886-af2b9a3b4503",
+    "target1_audio_id": "95605fb3-4ce8-4d34-a480-7bbeb8bda20f",
+    "target2_audio_id": "7cbcf316-be3e-4b8f-afaf-a8c9b4529bb4"
+   },
+   "lego": {
+    "lego_id": "S0359L02",
+    "known_text": "turn",
+    "target_text": "돌",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0360L01U12": {
+   "seed": {
+    "seed_number": 360,
+    "known_text": "did your friend say anything else?",
+    "target_text": "친구가 다른 말도 했어요?",
+    "known_audio_id": "0e927c87-dd11-4ab4-a4f4-213b90c8ac8e",
+    "target1_audio_id": "e3c43d5e-a0b8-4a18-8b46-b3d25b57f6c4",
+    "target2_audio_id": "184ccc30-9adf-4889-a0df-e67439f60c02"
+   },
+   "lego": {
+    "lego_id": "S0360L01",
+    "known_text": "anything else",
+    "target_text": "다른 말도",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0361L01U12": {
+   "seed": {
+    "seed_number": 361,
+    "known_text": "he was quiet",
+    "target_text": "그는 조용했어요",
+    "known_audio_id": "0e06acf6-8bda-4628-82b5-ab8fbee531c8",
+    "target1_audio_id": "16346bf6-9695-4e5a-8e13-320b1e79a48a",
+    "target2_audio_id": "e0d45c42-9ba3-4208-9f07-a4c7f89ff5f3"
+   },
+   "lego": {
+    "lego_id": "S0361L01",
+    "known_text": "was quiet",
+    "target_text": "조용했어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0363L01U19": {
+   "seed": {
+    "seed_number": 363,
+    "known_text": "yes he felt like talking a lot",
+    "target_text": "네 그는 많이 이야기하고 싶어했어요",
+    "known_audio_id": "bb9a89a1-f250-47f9-afb5-c287d139c152",
+    "target1_audio_id": "5f52df16-7efd-492b-95f1-5cd04f8ce422",
+    "target2_audio_id": "a1dc8a46-a1c0-4180-9969-bc7762c723da"
+   },
+   "lego": {
+    "lego_id": "S0363L01",
+    "known_text": "a lot",
+    "target_text": "많이",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0364L01U14": {
+   "seed": {
+    "seed_number": 364,
+    "known_text": "I heard that he didn't like that place",
+    "target_text": "그가 그곳을 안 좋아한다고 들었어요",
+    "known_audio_id": "937a6fee-46c8-4b83-af15-4db99fc468a3",
+    "target1_audio_id": "90d4fa07-9642-4b18-8adc-9d59932e04a5",
+    "target2_audio_id": "4aff66d5-9ee0-48e2-b5a2-2edd231d8a11"
+   },
+   "lego": {
+    "lego_id": "S0364L01",
+    "known_text": "that place",
+    "target_text": "그곳을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0366L01U13": {
+   "seed": {
+    "seed_number": 366,
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "그가 뭘 키우고 싶어하는지 들었어요?",
+    "known_audio_id": "7191f89e-fa53-44e2-ab38-9f957459c8dc",
+    "target1_audio_id": "025431cd-7914-4903-84cf-ec17c0f00aeb",
+    "target2_audio_id": "739ff144-8e1d-4228-870c-aab22818b451"
+   },
+   "lego": {
+    "lego_id": "S0366L01",
+    "known_text": "grow",
+    "target_text": "키우고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0367L01U13": {
+   "seed": {
+    "seed_number": 367,
+    "known_text": "no nobody told me",
+    "target_text": "아니요 아무도 저한테 말 안 했어요",
+    "known_audio_id": "70112e76-b432-44ff-9f8d-74294b337eff",
+    "target1_audio_id": "6b60c805-c505-44f4-a51c-5e83ca7f509d",
+    "target2_audio_id": "8599e2f5-538a-41d2-b31e-383de14637e3"
+   },
+   "lego": {
+    "lego_id": "S0367L01",
+    "known_text": "nobody told me",
+    "target_text": "아무도 저한테 말 안 했어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0368L01U13": {
+   "seed": {
+    "seed_number": 368,
+    "known_text": "yes I heard that he wanted to grow tomatoes",
+    "target_text": "네 토마토를 키우고 싶어한다고 들었어요",
+    "known_audio_id": "f0c015ce-ac7e-4f1f-89c7-5c76059ff012",
+    "target1_audio_id": "2535638b-c451-4a8c-8363-a0e7dbe12c07",
+    "target2_audio_id": "10928ba0-8528-4454-9336-95fe61408ec4"
+   },
+   "lego": {
+    "lego_id": "S0368L01",
+    "known_text": "tomatoes",
+    "target_text": "토마토를",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0371L02U14": {
+   "seed": {
+    "seed_number": 371,
+    "known_text": "I went to see a film on Wednesday",
+    "target_text": "수요일에 영화를 보러 갔어요",
+    "known_audio_id": "d0744d9a-a3de-466e-ae70-24b1dbe620b7",
+    "target1_audio_id": "f1944b53-ffb0-43c6-82b8-7e87bc981ab6",
+    "target2_audio_id": "549a6c5e-a885-4cd8-b434-3ebb543db422"
+   },
+   "lego": {
+    "lego_id": "S0371L02",
+    "known_text": "went",
+    "target_text": "갔어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0372L01U12": {
+   "seed": {
+    "seed_number": 372,
+    "known_text": "did you see what she was trying to create?",
+    "target_text": "그녀가 뭘 만들려고 하는지 봤어요?",
+    "known_audio_id": "33367bab-769f-40f3-b9a2-1ebf32d1149b",
+    "target1_audio_id": "0673757f-37e3-4c4e-9e7d-090d814b21d8",
+    "target2_audio_id": "cf10ca47-5e64-4059-b365-881c2a674ceb"
+   },
+   "lego": {
+    "lego_id": "S0372L01",
+    "known_text": "trying to create",
+    "target_text": "만들려고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0373L01U11": {
+   "seed": {
+    "seed_number": 373,
+    "known_text": "it was beautiful",
+    "target_text": "아름다웠어요",
+    "known_audio_id": "c0460cd3-03d7-4cfa-9fb7-2ac3fcec1d3c",
+    "target1_audio_id": "56f26c85-3592-4d7b-b503-42802fdda871",
+    "target2_audio_id": "65317073-838f-4ad2-a579-d5d4fe1f76ad"
+   },
+   "lego": {
+    "lego_id": "S0373L01",
+    "known_text": "was beautiful",
+    "target_text": "아름다웠어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0375L01U12": {
+   "seed": {
+    "seed_number": 375,
+    "known_text": "no I didn't know what she was doing",
+    "target_text": "아니요 그녀가 뭘 하고 있었는지 몰랐어요",
+    "known_audio_id": "e66a8e30-56a1-4caf-8daa-cefff5da65a4",
+    "target1_audio_id": "59068bbb-e2ad-4662-9e61-daa425ad5001",
+    "target2_audio_id": "8f27bd43-fc8a-4da3-8ce8-555303a7dc77"
+   },
+   "lego": {
+    "lego_id": "S0375L01",
+    "known_text": "was doing",
+    "target_text": "하고 있었는지",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0376L01U12": {
+   "seed": {
+    "seed_number": 376,
+    "known_text": "I didn't go anywhere last month",
+    "target_text": "지난달에 아무 데도 안 갔어요",
+    "known_audio_id": "01ad1d22-f7b1-4b22-aa28-59c44a6dfa5e",
+    "target1_audio_id": "799bed44-345d-42b0-bfe9-f6b945bf10ff",
+    "target2_audio_id": "c17e4471-8d98-425f-b944-d950047f0646"
+   },
+   "lego": {
+    "lego_id": "S0376L01",
+    "known_text": "anywhere",
+    "target_text": "아무 데도",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0379L03U09": {
+   "seed": {
+    "seed_number": 379,
+    "known_text": "yes I was lucky enough to travel to Africa",
+    "target_text": "네 운 좋게도 아프리카에 여행 갔어요",
+    "known_audio_id": "17058213-4f61-43ab-8838-e6ad0d3b8055",
+    "target1_audio_id": "ad3b8645-6211-459f-bc8d-e711efbc1cfb",
+    "target2_audio_id": "86a9753c-7227-4837-8328-019cbae237df"
+   },
+   "lego": {
+    "lego_id": "S0379L03",
+    "known_text": "lucky enough",
+    "target_text": "운 좋게도",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0380L03U13": {
+   "seed": {
+    "seed_number": 380,
+    "known_text": "I asked what she wanted to include",
+    "target_text": "그녀가 뭘 포함하고 싶어하는지 물어봤어요",
+    "known_audio_id": "628610c9-77c7-4ce7-a53f-0568e32a2ada",
+    "target1_audio_id": "989cbccd-18c4-43e3-981a-3475d509d1f2",
+    "target2_audio_id": "c17babe3-157e-4f8c-9007-a7f8b6ef564d"
+   },
+   "lego": {
+    "lego_id": "S0380L03",
+    "known_text": "asked",
+    "target_text": "물어봤어요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0381L03U12": {
+   "seed": {
+    "seed_number": 381,
+    "known_text": "I didn't ask if he wanted to follow us",
+    "target_text": "그가 우리를 따라오고 싶어하는지 물어보지 않았어요",
+    "known_audio_id": "7a2991b8-5cb2-4bf5-b659-316c2c3ce61b",
+    "target1_audio_id": "47fb50c1-400a-4262-b912-4b3b51442ffd",
+    "target2_audio_id": "b0253d8f-418d-4af4-a26a-338a76071068"
+   },
+   "lego": {
+    "lego_id": "S0381L03",
+    "known_text": "didn't ask",
+    "target_text": "물어보지",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0382L01U16": {
+   "seed": {
+    "seed_number": 382,
+    "known_text": "did you ask where he wanted to put it?",
+    "target_text": "그가 그걸 어디에 놓고 싶어하는지 물어봤어요?",
+    "known_audio_id": "f284cbf4-d10b-4908-889a-4ba92763dae0",
+    "target1_audio_id": "68035684-490c-4d6a-b87f-938afe44ec4d",
+    "target2_audio_id": "f52c1461-2991-4fb3-a424-96bb2a591d03"
+   },
+   "lego": {
+    "lego_id": "S0382L01",
+    "known_text": "put",
+    "target_text": "놓고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0383L01U12": {
+   "seed": {
+    "seed_number": 383,
+    "known_text": "yes he said he wanted to put it in the garden",
+    "target_text": "네 정원에 놓고 싶다고 했어요",
+    "known_audio_id": "5d601db8-60a8-4939-b574-6487b992a205",
+    "target1_audio_id": "5c1329b2-9d62-44a5-9473-d8b93241e6b5",
+    "target2_audio_id": "86faa886-f9c5-4c4b-ba95-d9a2c545dc87"
+   },
+   "lego": {
+    "lego_id": "S0383L01",
+    "known_text": "put it in the garden",
+    "target_text": "정원에 놓고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0384L01U16": {
+   "seed": {
+    "seed_number": 384,
+    "known_text": "I couldn't agree with what he said a moment ago",
+    "target_text": "방금 그가 한 말에 동의할 수 없었어요",
+    "known_audio_id": "a1fbf03f-7752-4d1b-8f5a-0b2ffd084691",
+    "target1_audio_id": "398ceae3-86ff-4b10-ab56-0b6a63de2546",
+    "target2_audio_id": "9c0aea89-9e59-41de-ba3e-3bd2f043afc2"
+   },
+   "lego": {
+    "lego_id": "S0384L01",
+    "known_text": "a moment ago",
+    "target_text": "방금",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0385L01U09": {
+   "seed": {
+    "seed_number": 385,
+    "known_text": "did you agree with her?",
+    "target_text": "그녀에게 동의했어요?",
+    "known_audio_id": "cc9b6032-1bd0-4c5f-9a79-393b7289c7f2",
+    "target1_audio_id": "45b993c0-2bba-4500-967b-ffedfe59db69",
+    "target2_audio_id": "eb947895-2d72-4c5e-9bb9-6b49f665d600"
+   },
+   "lego": {
+    "lego_id": "S0385L01",
+    "known_text": "with her",
+    "target_text": "그녀에게",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0388L01U13": {
+   "seed": {
+    "seed_number": 388,
+    "known_text": "that person you work with",
+    "target_text": "같이 일하는 그 사람",
+    "known_audio_id": "06f219e8-8a9f-45ef-a78d-65ed69c0292b",
+    "target1_audio_id": "30f89126-5e75-4a34-9bc8-8a32448c3f40",
+    "target2_audio_id": "0ccd7bcf-31d6-4641-b54a-3fa7b1003bd8"
+   },
+   "lego": {
+    "lego_id": "S0388L01",
+    "known_text": "person",
+    "target_text": "사람",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0390L03U13": {
+   "seed": {
+    "seed_number": 390,
+    "known_text": "the one who is standing near the entrance",
+    "target_text": "입구 근처에 서 있는 사람",
+    "known_audio_id": "35ba1be7-0e14-4c22-9bc9-c763844f4bbe",
+    "target1_audio_id": "ae6f1eca-4539-4d08-81c6-8a051f8e4183",
+    "target2_audio_id": "215ba326-df67-458f-b1a0-939187e4a87d"
+   },
+   "lego": {
+    "lego_id": "S0390L03",
+    "known_text": "near the entrance",
+    "target_text": "입구 근처에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0391L02U11": {
+   "seed": {
+    "seed_number": 391,
+    "known_text": "the one who is walking towards the bus",
+    "target_text": "버스 쪽으로 걷고 있는 사람",
+    "known_audio_id": "9139cd5b-4f9c-4cc8-b1ba-4bc7abfcee2e",
+    "target1_audio_id": "bd1e9807-b53b-4939-a08c-28184b78b1fc",
+    "target2_audio_id": "eb97739f-075a-475d-a406-2c7e6038cdd5"
+   },
+   "lego": {
+    "lego_id": "S0391L02",
+    "known_text": "towards",
+    "target_text": "쪽으로",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0392L05U11": {
+   "seed": {
+    "seed_number": 392,
+    "known_text": "that child with the black hair opposite the post office",
+    "target_text": "우체국 맞은편에 있는 검은 머리 아이",
+    "known_audio_id": "28a04339-6100-4325-8019-106c761f11e1",
+    "target1_audio_id": "c318dedc-d319-4c56-862c-f85ab850fb93",
+    "target2_audio_id": "ac014541-85a8-4145-a6b9-f06dce813b4b"
+   },
+   "lego": {
+    "lego_id": "S0392L05",
+    "known_text": "opposite",
+    "target_text": "맞은편에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0393L04U14": {
+   "seed": {
+    "seed_number": 393,
+    "known_text": "that boy with the green shirt",
+    "target_text": "초록색 셔츠를 입은 그 남자아이",
+    "known_audio_id": "438ab837-69ac-4ceb-a887-0d87f7847ddc",
+    "target1_audio_id": "d143599f-7196-4985-9bc2-e465eca674b4",
+    "target2_audio_id": "c64a778a-2b73-45ee-ab94-415df079eea6"
+   },
+   "lego": {
+    "lego_id": "S0393L04",
+    "known_text": "boy",
+    "target_text": "남자아이",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0394L03U13": {
+   "seed": {
+    "seed_number": 394,
+    "known_text": "that girl with the yellow dress",
+    "target_text": "노란 원피스를 입은 그 여자아이",
+    "known_audio_id": "3f7f139b-461a-4404-9de5-07dc09ac22fc",
+    "target1_audio_id": "7fe23c20-16b1-4f7d-9c00-4033c1acac4f",
+    "target2_audio_id": "dbc1ddd6-5c66-4ccf-b6c4-a2b7ffe989bc"
+   },
+   "lego": {
+    "lego_id": "S0394L03",
+    "known_text": "girl",
+    "target_text": "여자아이",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0395L02U12": {
+   "seed": {
+    "seed_number": 395,
+    "known_text": "we need to turn left at the next corner",
+    "target_text": "다음 모퉁이에서 왼쪽으로 돌아야 해요",
+    "known_audio_id": "07e1822b-9ecb-4763-8a30-6b23c4cb488f",
+    "target1_audio_id": "647cd26f-abd1-45e2-a05f-775b7735905f",
+    "target2_audio_id": "3944fadf-9d7e-4bac-8d77-29d4829d272d"
+   },
+   "lego": {
+    "lego_id": "S0395L02",
+    "known_text": "at the corner",
+    "target_text": "모퉁이에서",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0396L02U10": {
+   "seed": {
+    "seed_number": 396,
+    "known_text": "we don't need to stand until everybody else is ready",
+    "target_text": "다른 사람들이 다 준비될 때까지 서 있을 필요 없어요",
+    "known_audio_id": "29ef530b-edfe-4ebc-aa1b-a8c16decb93f",
+    "target1_audio_id": "741839ff-a2c3-4281-9fc8-bf05b7658745",
+    "target2_audio_id": "f0575b19-212a-4593-ac58-5d8447881fd5"
+   },
+   "lego": {
+    "lego_id": "S0396L02",
+    "known_text": "until",
+    "target_text": "때까지",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0397L01U16": {
+   "seed": {
+    "seed_number": 397,
+    "known_text": "do we need to get ready soon?",
+    "target_text": "곧 준비해야 해요?",
+    "known_audio_id": "7dcd075a-b2f8-4b21-9e26-b1b9f4642781",
+    "target1_audio_id": "f5fcfdc2-fcee-4376-8d46-e4e9413e2985",
+    "target2_audio_id": "38f6625e-3c6d-4b21-a1c8-ab1a094bcf7c"
+   },
+   "lego": {
+    "lego_id": "S0397L01",
+    "known_text": "need to get ready",
+    "target_text": "준비해야",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0398L04U13": {
+   "seed": {
+    "seed_number": 398,
+    "known_text": "we want to become more patient with our children",
+    "target_text": "아이들에게 더 참을성 있게 되고 싶어요",
+    "known_audio_id": "0c076ca2-46b4-42e2-a559-3a7e7254f197",
+    "target1_audio_id": "5aa85b5c-5c79-4907-94d5-8976481dfde9",
+    "target2_audio_id": "b1f7d21a-b9fc-40e9-b4ac-4ca85a794560"
+   },
+   "lego": {
+    "lego_id": "S0398L04",
+    "known_text": "to children",
+    "target_text": "아이들에게",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0400L01U15": {
+   "seed": {
+    "seed_number": 400,
+    "known_text": "do we want to eat something later on?",
+    "target_text": "나중에 뭔가 먹고 싶어요?",
+    "known_audio_id": "3cacd090-107f-4fc7-b46e-d430b210741e",
+    "target1_audio_id": "82bfee68-e99f-435a-921d-28456a0b4e1b",
+    "target2_audio_id": "3f191ec3-151e-4c28-b4bb-a31414c98013"
+   },
+   "lego": {
+    "lego_id": "S0400L01",
+    "known_text": "to eat",
+    "target_text": "먹고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0401L01U12": {
+   "seed": {
+    "seed_number": 401,
+    "known_text": "no it would be better to go straight home",
+    "target_text": "아니요 바로 집에 가는 게 나을 거예요",
+    "known_audio_id": "decaaa65-b5ac-4075-a777-3acc0915d6c1",
+    "target1_audio_id": "d0528041-192f-493e-a2ad-39dd032a79ba",
+    "target2_audio_id": "7049631f-21f8-43f2-a01d-f29c912e42a3"
+   },
+   "lego": {
+    "lego_id": "S0401L01",
+    "known_text": "would be better",
+    "target_text": "나을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0402L04U11": {
+   "seed": {
+    "seed_number": 402,
+    "known_text": "yes it would be nice to stop somewhere for food",
+    "target_text": "네 어딘가에 들러서 음식을 먹으면 좋을 것 같아요",
+    "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+    "target1_audio_id": "7a2f16d4-0807-4f07-a22a-7b9cf8339f36",
+    "target2_audio_id": "57419683-2937-4ae5-9257-cd740b2de3c2"
+   },
+   "lego": {
+    "lego_id": "S0402L04",
+    "known_text": "somewhere",
+    "target_text": "어딘가에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0404L02U14": {
+   "seed": {
+    "seed_number": 404,
+    "known_text": "we shouldn't expect to finish before Thursday",
+    "target_text": "목요일 전에 끝낼 거라고 기대하면 안 돼요",
+    "known_audio_id": "3c9a6d06-bfdf-46e5-a4a9-43f92916866d",
+    "target1_audio_id": "cd8c9383-f107-44c0-b57d-8a384bd106d4",
+    "target2_audio_id": "bfe172a0-9260-44b7-b654-7272dd203692"
+   },
+   "lego": {
+    "lego_id": "S0404L02",
+    "known_text": "thursday",
+    "target_text": "목요일",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0405L03U12": {
+   "seed": {
+    "seed_number": 405,
+    "known_text": "should we ask if we have to book?",
+    "target_text": "예약해야 하는지 물어봐야 할까요?",
+    "known_audio_id": "659fe734-9dae-4671-963a-558c40a81e3a",
+    "target1_audio_id": "657328c7-575a-4216-9cb9-aa2d21475d91",
+    "target2_audio_id": "f0bd8372-da55-4876-873c-3d2da939946e"
+   },
+   "lego": {
+    "lego_id": "S0405L03",
+    "known_text": "should we?",
+    "target_text": "할까요",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0407L02U09": {
+   "seed": {
+    "seed_number": 407,
+    "known_text": "shouldn't we try to set a good example?",
+    "target_text": "좋은 모범을 보여야 하지 않아요?",
+    "known_audio_id": "902dde8e-52bf-4791-8407-98ba4f5c636e",
+    "target1_audio_id": "3911cfb3-8266-4532-bbd7-22e0645c39b6",
+    "target2_audio_id": "f10eb309-6a5f-44ef-a45a-62ec4d6b51b6"
+   },
+   "lego": {
+    "lego_id": "S0407L02",
+    "known_text": "a good example",
+    "target_text": "모범을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0408L03U12": {
+   "seed": {
+    "seed_number": 408,
+    "known_text": "yes that's the best way to make a happy family",
+    "target_text": "네 그게 행복한 가족을 만드는 가장 좋은 방법이에요",
+    "known_audio_id": "b6dcb668-de49-49f9-ad0a-8b96d1c2cc19",
+    "target1_audio_id": "4fa3e9dd-b97e-4c9c-bd7f-29ce503ce3f1",
+    "target2_audio_id": "79151015-8583-4885-92b6-b46b078af4fe"
+   },
+   "lego": {
+    "lego_id": "S0408L03",
+    "known_text": "a happy family",
+    "target_text": "행복한 가족을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0411L03U12": {
+   "seed": {
+    "seed_number": 411,
+    "known_text": "we would like to reserve a table for four tonight",
+    "target_text": "오늘 밤에 네 명 자리를 예약하고 싶어요",
+    "known_audio_id": "784e3502-6c50-4cdb-a2ba-48bdbfd92855",
+    "target1_audio_id": "d6d007b5-e0c2-4a16-857e-4d0d38d5f4d3",
+    "target2_audio_id": "e1f4a68a-5e41-431d-85d5-2b2561fb8d1a"
+   },
+   "lego": {
+    "lego_id": "S0411L03",
+    "known_text": "reserve",
+    "target_text": "예약하고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0412L01U12": {
+   "seed": {
+    "seed_number": 412,
+    "known_text": "we couldn't allow them to win everything",
+    "target_text": "그들이 다 이기게 할 수 없었어요",
+    "known_audio_id": "38da1eb1-000e-496a-b493-39facc16c868",
+    "target1_audio_id": "7f993511-bb6d-49cb-b5cf-b688e29899c0",
+    "target2_audio_id": "0bdc614d-7963-4d81-8215-6608729393e1"
+   },
+   "lego": {
+    "lego_id": "S0412L01",
+    "known_text": "allow them to win",
+    "target_text": "이기게 할",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0413L04U13": {
+   "seed": {
+    "seed_number": 413,
+    "known_text": "we could fall if we go too close to the edge",
+    "target_text": "가장자리에 너무 가까이 가면 넘어질 수 있어요",
+    "known_audio_id": "85148a5a-70f8-4cbf-9925-a79f528062a1",
+    "target1_audio_id": "d3866492-8bc3-4334-b847-38379f53a28d",
+    "target2_audio_id": "3988d421-c4e3-4a07-a5c9-af6943c4d1ac"
+   },
+   "lego": {
+    "lego_id": "S0413L04",
+    "known_text": "to the edge",
+    "target_text": "가장자리에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0414L03U11": {
+   "seed": {
+    "seed_number": 414,
+    "known_text": "could we have a bottle of red wine please?",
+    "target_text": "레드 와인 한 병 주실 수 있어요?",
+    "known_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863",
+    "target1_audio_id": "f207df0f-c432-48aa-8f56-21f49c68f060",
+    "target2_audio_id": "50c4b2bd-b275-41ed-9783-a34b2aa05a4f"
+   },
+   "lego": {
+    "lego_id": "S0414L03",
+    "known_text": "wine",
+    "target_text": "와인",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0416L01U12": {
+   "seed": {
+    "seed_number": 416,
+    "known_text": "they want to lead the way next year",
+    "target_text": "그들은 내년에 앞장서고 싶어해요",
+    "known_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512",
+    "target1_audio_id": "b8cc8a5c-f758-49ed-8737-4b0c89a8a8ef",
+    "target2_audio_id": "1d4ef6ba-d213-4aae-9a04-02707c9118df"
+   },
+   "lego": {
+    "lego_id": "S0416L01",
+    "known_text": "to lead the way",
+    "target_text": "앞장서고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0417L02U13": {
+   "seed": {
+    "seed_number": 417,
+    "known_text": "do they want to kill those ants?",
+    "target_text": "그들은 그 개미들을 죽이고 싶어해요?",
+    "known_audio_id": "f291eb24-4233-4583-80b8-711d323c4501",
+    "target1_audio_id": "d58efbdb-d694-48a7-80f5-c82c8a04520d",
+    "target2_audio_id": "856bf6a1-b134-4ebd-ba78-39ff11fc9233"
+   },
+   "lego": {
+    "lego_id": "S0417L02",
+    "known_text": "ants",
+    "target_text": "개미들을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0418L03U14": {
+   "seed": {
+    "seed_number": 418,
+    "known_text": "they need to serve the community",
+    "target_text": "그들은 지역 사회에 봉사해야 해요",
+    "known_audio_id": "c4094acf-ac42-45a2-b802-627a426ebfa1",
+    "target1_audio_id": "91ca0eb1-ab15-48b8-ad3f-12c15f85e3f8",
+    "target2_audio_id": "e773b038-a754-4ef7-9269-3236c06820f4"
+   },
+   "lego": {
+    "lego_id": "S0418L03",
+    "known_text": "need to serve",
+    "target_text": "봉사해야",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0419L02U11": {
+   "seed": {
+    "seed_number": 419,
+    "known_text": "if they want people to like them",
+    "target_text": "사람들이 자기들을 좋아하길 원하면",
+    "known_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3",
+    "target1_audio_id": "7d57f6f9-4067-45dd-8205-d3d7f6d9e8cc",
+    "target2_audio_id": "2a0f298c-5b42-453c-b4c4-ba65701dbe3e"
+   },
+   "lego": {
+    "lego_id": "S0419L02",
+    "known_text": "to like",
+    "target_text": "좋아하길",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0420L02U16": {
+   "seed": {
+    "seed_number": 420,
+    "known_text": "they don't need to ask how old he is",
+    "target_text": "그들은 그가 몇 살인지 물어볼 필요 없어요",
+    "known_audio_id": "fa21f604-5332-4307-98c4-3b3ecb96b231",
+    "target1_audio_id": "d8807de5-4a1f-4515-ba75-ea5ed16213d9",
+    "target2_audio_id": "69a6c099-013b-40f2-b008-336f7051280c"
+   },
+   "lego": {
+    "lego_id": "S0420L02",
+    "known_text": "how old",
+    "target_text": "살인지",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0422L01U12": {
+   "seed": {
+    "seed_number": 422,
+    "known_text": "a question",
+    "target_text": "질문",
+    "known_audio_id": "16307316-061e-4823-ae2c-26112413b19f",
+    "target1_audio_id": "aef685b9-0345-4a1a-a522-aaf79672aaf0",
+    "target2_audio_id": "ff7e865b-4896-4dd6-82fe-ed107079fba6"
+   },
+   "lego": {
+    "lego_id": "S0422L01",
+    "known_text": "question",
+    "target_text": "질문",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0423L03U12": {
+   "seed": {
+    "seed_number": 423,
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "그런 뻔한 질문을 해야 해요?",
+    "known_audio_id": "818ae955-ac76-4a3c-80a9-47611c782e2f",
+    "target1_audio_id": "ea55749d-2f7e-4dfe-a897-dfccc260cfa9",
+    "target2_audio_id": "38448bb3-bef4-4501-9b56-2f151ba47123"
+   },
+   "lego": {
+    "lego_id": "S0423L03",
+    "known_text": "such an obvious question",
+    "target_text": "그런 뻔한 질문을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0424L02U12": {
+   "seed": {
+    "seed_number": 424,
+    "known_text": "no they're wasting everybody's time",
+    "target_text": "아니요 모두의 시간을 낭비하고 있어요",
+    "known_audio_id": "290dc5e0-ce95-4da8-944d-12fca8d4a189",
+    "target1_audio_id": "26941276-4626-4ad1-82a5-bce90c1b5416",
+    "target2_audio_id": "ed354eec-a380-4fd5-b662-2c68bd4f2055"
+   },
+   "lego": {
+    "lego_id": "S0424L02",
+    "known_text": "wasting",
+    "target_text": "낭비하고",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0428L02U18": {
+   "seed": {
+    "seed_number": 428,
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "그들은 화요일에 우리를 방문하고 싶어할까요?",
+    "known_audio_id": "95f914aa-3be6-4358-8622-deb4a1e36133",
+    "target1_audio_id": "b6407b9e-7f50-47bb-8507-d40ee6cb2f3b",
+    "target2_audio_id": "3f80851b-f0f8-4efe-b90b-4786fc75f339"
+   },
+   "lego": {
+    "lego_id": "S0428L02",
+    "known_text": "on Tuesday",
+    "target_text": "화요일에",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0429L02U11": {
+   "seed": {
+    "seed_number": 429,
+    "known_text": "yes that would be perfect for them",
+    "target_text": "네 그러면 그들에게 완벽할 거예요",
+    "known_audio_id": "c4329229-ea29-409c-b176-5d306c351f8d",
+    "target1_audio_id": "2472ed07-20d3-4594-bd6f-97ac7804bd55",
+    "target2_audio_id": "857950b7-89d3-4f8f-9a59-78de18578498"
+   },
+   "lego": {
+    "lego_id": "S0429L02",
+    "known_text": "for them",
+    "target_text": "그들에게",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0430L01U11": {
+   "seed": {
+    "seed_number": 430,
+    "known_text": "no that wouldn't be possible",
+    "target_text": "아니요 그건 가능하지 않을 거예요",
+    "known_audio_id": "78286993-4a71-4510-86a3-605d2f5cd58a",
+    "target1_audio_id": "320850a4-d384-4354-9a05-d774b9bfe5c7",
+    "target2_audio_id": "2d75630c-c603-42d8-8397-7cd39b7fe7b8"
+   },
+   "lego": {
+    "lego_id": "S0430L01",
+    "known_text": "wouldn't be possible",
+    "target_text": "가능하지 않을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0559L02U07": {
+   "seed": {
+    "seed_number": 559,
+    "known_text": "have you found the path through the wood?",
+    "target_text": "숲을 지나는 길을 찾았어요?",
+    "known_audio_id": "8be50bb8-be74-4be0-b7a9-9c0aba7db646",
+    "target1_audio_id": "95a29fef-7181-47c8-8b3f-bf4adf3dbc50",
+    "target2_audio_id": "f1e519a2-c1b0-4a7f-afa9-28c3d20a1a6d"
+   },
+   "lego": {
+    "lego_id": "S0559L02",
+    "known_text": "through the path",
+    "target_text": "지나는 길을",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

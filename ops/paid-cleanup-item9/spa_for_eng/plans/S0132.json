@@ -1,0 +1,18 @@
+{
+ "seed": 132,
+ "legos": {
+  "L03": {
+   "delete": [
+    "B07",
+    "U14"
+   ]
+  },
+  "L04": {
+   "delete": [
+    "U01"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"eso es menos emocionante de lo que ella estaba diciendo\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

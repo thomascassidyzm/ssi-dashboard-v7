@@ -1,0 +1,241 @@
+{
+"644": {
+"at": "2026-11-19T11:06:03Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "could you say that sir?",
+"legos": [
+{
+"id": "S0644L01",
+"idx": 1,
+"is_new": true,
+"known": "could you say that sir?",
+"phrases": [
+{
+"id": "58723ed0-8ae4-42c3-af22-6524addfbf5b",
+"ka": "c365c7a5-56b3-4f7c-a5f6-c7b9083c43a3",
+"known": "could you say that sir?",
+"pos": 0,
+"t1": "619a0cc9-7cc7-4859-acb1-7599eba6c45d",
+"t2": "ae78cb86-01e8-4fd5-82e3-b650fe226b26",
+"target": "pourriez-vous dire cela monsieur ?",
+"type": "lego_debut"
+},
+{
+"id": "fra_for_eng:S0644L01B01",
+"ka": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"known": "that",
+"pos": 1,
+"t1": "e5efe334-7641-4401-ab1c-d0ab493294d2",
+"t2": "3c911a01-c543-4db0-8650-f694900214f0",
+"target": "cela",
+"type": "build"
+},
+{
+"id": "fra_for_eng:S0644L01B02",
+"ka": "c0da04b7-c1b8-4d6c-9fb0-51aa845af3af",
+"known": "I think that is right",
+"pos": 2,
+"t1": "7aeac129-449f-43dc-b820-c1eb8f766aab",
+"t2": "6fe2338e-8181-4c46-9697-88efd4fe88f1",
+"target": "je pense que cela est bien",
+"type": "build"
+},
+{
+"id": "fra_for_eng:S0644L01B03",
+"ka": "c081a607-5621-4d43-afe2-de24012d4694",
+"known": "yes that is what I want",
+"pos": 3,
+"t1": "d3fbef8c-5a3a-4607-8dc3-b0f3295e8d75",
+"t2": "53f75b88-6874-4a93-852b-e07aa3368daa",
+"target": "oui cela c'est ce que je veux",
+"type": "build"
+},
+{
+"id": "fra_for_eng:S0644L01U01",
+"ka": "09570e55-fd98-4b1e-a58f-d71a8668ecbd",
+"known": "I know that",
+"pos": 4,
+"t1": "caeead96-894b-481b-aac5-fba38a56b055",
+"t2": "d537f3b1-7a5c-4222-8335-d7e6e26be220",
+"target": "je sais cela",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L01U02",
+"ka": "886bc6d7-4ddc-487d-874e-bde8deec2098",
+"known": "I understand that",
+"pos": 5,
+"t1": "2b00749a-f185-45de-a71f-8083c2bb5945",
+"t2": "35e4daea-c16c-4b36-bb64-ad62f76d8b22",
+"target": "je comprends cela",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L01U03",
+"ka": "c7f089a3-16a1-4d0c-a93d-cd4f5e68a1c6",
+"known": "she said that",
+"pos": 6,
+"t1": "6333241c-0546-4fe5-bcbc-28ee4b008dd9",
+"t2": "604c0202-fb18-49b2-ad6b-8df596cebfc1",
+"target": "elle a dit cela",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L01U04",
+"ka": "da5c6f6d-f579-41f5-aa24-64eb8037e71b",
+"known": "I want to say that",
+"pos": 7,
+"t1": "f3d31ff4-1bf1-4479-bc2a-a9c9a5eedb81",
+"t2": "7e1c0df4-3769-499b-a67c-76bc7ad6a777",
+"target": "je veux dire cela",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L01U05",
+"ka": "e888e7a8-857f-42be-b6a8-1ce44bc80e00",
+"known": "we all know that",
+"pos": 8,
+"t1": "de241115-ced0-4121-9126-50df38ef0624",
+"t2": "fab39f6a-7cb3-4e2c-9ce6-da359187eb2f",
+"target": "nous savons tous cela",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L01U06",
+"ka": "c365c7a5-56b3-4f7c-a5f6-c7b9083c43a3",
+"known": "could you say that sir?",
+"pos": 9,
+"t1": "619a0cc9-7cc7-4859-acb1-7599eba6c45d",
+"t2": "ae78cb86-01e8-4fd5-82e3-b650fe226b26",
+"target": "pourriez-vous dire cela monsieur ?",
+"type": "use"
+}
+],
+"target": "pourriez-vous dire cela monsieur ?",
+"type": "M"
+},
+{
+"id": "S0644L02",
+"idx": 2,
+"is_new": false,
+"known": "could you sir?",
+"phrases": [
+{
+"id": "77d3eed8-1af9-42b0-8cbe-81b7fa08a40a",
+"ka": "72ef1bd6-a008-429c-bafb-4792134d1e59",
+"known": "could you sir?",
+"pos": 0,
+"t1": "34d77024-6ceb-42b4-b947-c044b9073035",
+"t2": "25abae30-aa8c-4e23-a21f-423920726d3d",
+"target": "pourriez-vous monsieur ?",
+"type": "lego_debut"
+},
+{
+"id": "fra_for_eng:S0644L02C01",
+"ka": "f105b2a2-eaab-4880-affc-edfb009bf5e0",
+"known": "could",
+"pos": 1,
+"t1": "1e8f54c1-4245-4cb0-8f8a-2e0d49beac77",
+"t2": "bbe4e143-3f25-412b-aa21-58ccf4099bec",
+"target": "pourriez",
+"type": "component"
+},
+{
+"id": "fra_for_eng:S0644L02C02",
+"ka": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"known": "you",
+"pos": 2,
+"t1": "01e7f8a3-7737-4a59-933d-b4ed8f46d45e",
+"t2": "1a454083-68ad-4254-8eb5-e65149f210b5",
+"target": "vous",
+"type": "component"
+},
+{
+"id": "fra_for_eng:S0644L02B01",
+"ka": "72ef1bd6-a008-429c-bafb-4792134d1e59",
+"known": "could you sir?",
+"pos": 3,
+"t1": "34d77024-6ceb-42b4-b947-c044b9073035",
+"t2": "25abae30-aa8c-4e23-a21f-423920726d3d",
+"target": "pourriez-vous monsieur ?",
+"type": "build"
+},
+{
+"id": "fra_for_eng:S0644L02B02",
+"ka": "575d4a7d-3898-4b51-ac6d-c1d750d80522",
+"known": "could you please do that sir?",
+"pos": 4,
+"t1": "c11025ea-71e6-4e41-b0c1-a00718768582",
+"t2": "1d18502a-1b61-4a44-8802-68c9a608b892",
+"target": "pourriez-vous faire cela s'il vous plaît monsieur ?",
+"type": "build"
+},
+{
+"id": "fra_for_eng:S0644L02B03",
+"ka": "bb77a83d-5a1a-42df-93ee-806cb682e138",
+"known": "could you help right now sir?",
+"pos": 5,
+"t1": "79049698-fd5c-4379-a354-541fdb9ea9ba",
+"t2": "adbdefda-4a9b-4174-be4b-e86b21fc85b2",
+"target": "pourriez-vous aider maintenant monsieur ?",
+"type": "build"
+},
+{
+"id": "fra_for_eng:S0644L02U01",
+"ka": "c365c7a5-56b3-4f7c-a5f6-c7b9083c43a3",
+"known": "could you say that sir?",
+"pos": 6,
+"t1": "619a0cc9-7cc7-4859-acb1-7599eba6c45d",
+"t2": "ae78cb86-01e8-4fd5-82e3-b650fe226b26",
+"target": "pourriez-vous dire cela monsieur ?",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L02U02",
+"ka": "0ca79590-a12d-47c9-b48e-b3e18d03e501",
+"known": "could you do that sir?",
+"pos": 7,
+"t1": "57885d90-4a18-4c74-b794-c91c933ad0b4",
+"t2": "c9993944-f988-44df-a395-3e6c5f26f836",
+"target": "pourriez-vous faire cela monsieur ?",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L02U03",
+"ka": "b68512e4-2330-4b8d-9023-4cb858fe3232",
+"known": "could you help me sir?",
+"pos": 8,
+"t1": "2b99aafb-fe79-420d-8566-a2099d35158b",
+"t2": "3abcc3e5-81bc-4d02-b2bb-247f3c4bf093",
+"target": "pourriez-vous m'aider monsieur ?",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L02U04",
+"ka": "9fae08cf-6751-4985-abfc-e40e2dea546d",
+"known": "could you wait sir?",
+"pos": 9,
+"t1": "568bac7e-f306-4113-b65c-db7830de8f17",
+"t2": "ee1c5a8b-b9db-45bc-805f-3da1fa8040a5",
+"target": "pourriez-vous attendre monsieur ?",
+"type": "use"
+},
+{
+"id": "fra_for_eng:S0644L02U05",
+"ka": "f0f15e67-ad66-4a69-b33c-41e8c956b674",
+"known": "could you come sir?",
+"pos": 10,
+"t1": "584177f7-0a4a-47f5-ae74-56a573565c6d",
+"t2": "95cbd5c1-e75d-4610-b9a9-91b919a8d6c3",
+"target": "pourriez-vous venir monsieur ?",
+"type": "use"
+}
+],
+"target": "pourriez-vous monsieur ?",
+"type": "M"
+}
+],
+"status": "released",
+"target": "pourriez-vous dire cela monsieur ?"
+}
+}

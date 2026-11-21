@@ -13,6 +13,10 @@
  * @version 2.0.0 - New schema (Jan 2026)
  */
 
+// The live DB load gate (cs #835) before the client below captures globalThis.fetch: a Popty CLI or unit that
+// reaches the DB through this file is governed even if its entrypoint forgot. A worker process is already
+// governed by command-surface's db-worker-guard (its marker is checked so the two never stack).
+if (!globalThis[Symbol.for('cs.dbWorkerGuard')]) require('./shared/db-load-gate.cjs').install()
 const { createClient } = require('@supabase/supabase-js')
 const { vaultFetch } = require('./shared/recordist-email-vault.cjs')
 const createLogger = require('./shared/logger.cjs')

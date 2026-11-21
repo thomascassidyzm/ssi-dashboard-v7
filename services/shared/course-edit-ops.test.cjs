@@ -18,7 +18,7 @@ function fakeDb(seed) {
   const cols = {
     course_seeds: ['id', 'course_code', 'seed_number', 'known_text', 'target_text', 'status', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'last_edit_event_id', 'version'],
     course_legos: ['id', 'course_code', 'seed_number', 'lego_index', 'lego_id', 'type', 'known_text', 'target_text', 'components', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id', 'last_edit_event_id'],
-    course_practice_phrases: ['id', 'course_code', 'seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role', 'position', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'last_edit_event_id'],
+    course_practice_phrases: ['id', 'course_code', 'seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role', 'position', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'last_edit_event_id', 'decomposition', 'decomposition_course_version'],
     course_audio: ['id', 'course_code', 'text', 'role', 'voice_id'],
     course_gender_expansions: ['id', 'course_code', 'original_text', 'expanded_f', 'expanded_m'],
     course_qa_flags: ['phrase_id'],
@@ -37,10 +37,19 @@ function fakeDb(seed) {
       if (sql === 'ROLLBACK') { for (const k of Object.keys(tables)) tables[k] = snapshot[k]; return { rows: [] } }
       if (sql === 'COMMIT' || sql.startsWith('SET LOCAL')) return { rows: [] }
       if (sql.includes('information_schema')) {
-        return { rows: cols[params[0]].map(c => ({ column_name: c, data_type: c === 'components' ? 'jsonb' : 'text' })) }
+        return { rows: cols[params[0]].map(c => ({ column_name: c, data_type: ['components', 'decomposition'].includes(c) ? 'jsonb' : 'text' })) }
       }
       if (sql.startsWith('SELECT normalize_text')) return { rows: [{ ok: norm(params[0]) === norm(params[1]) }] }
       if (sql.startsWith('SELECT id, course_code, text')) return { rows: tables.course_audio.filter(r => r.id === params[0]) }
+      // the tile refresh (cs #937): phrases whose tiles name a changed slot, the course's LEGOs, its version
+      if (sql.includes('jsonb_array_elements(decomposition)')) {
+        return { rows: tables.course_practice_phrases.filter(r => r.course_code === params[0] && Array.isArray(r.decomposition)
+          && r.decomposition.some(b => b && params[1].includes(b.legoId))).map(r => ({ ...r })) }
+      }
+      if (sql.startsWith('SELECT seed_number, lego_index, target_text, known_text FROM course_legos')) {
+        return { rows: tables.course_legos.filter(r => r.course_code === params[0]).map(r => ({ ...r })) }
+      }
+      if (sql.startsWith('SELECT version FROM courses')) return { rows: [{ version: 7 }] }
       let m
       if ((m = /^SELECT \* FROM "(\w+)" WHERE (.*?)( FOR UPDATE)?$/.exec(sql))) {
         return { rows: tables[m[1]].filter(r => match(r, parseWhere(m[2], params))).map(r => ({ ...r })) }
@@ -49,7 +58,7 @@ function fakeDb(seed) {
         const sets = m[2].split(', ').map(p => { const k = /"(\w+)" = \$(\d+)/.exec(p); return [k[1], params[+k[2] - 1]] })
         for (const r of tables[m[1]].filter(r => match(r, parseWhere(m[3], params)))) {
           const textChanged = sets.some(([c, v]) => (c === 'target_text') && v !== r.target_text)
-          for (const [c, v] of sets) r[c] = typeof v === 'string' && c === 'components' ? JSON.parse(v) : v
+          for (const [c, v] of sets) r[c] = typeof v === 'string' && ['components', 'decomposition'].includes(c) ? JSON.parse(v) : v
           // the text-change trigger: a target edit drops the target clips
           if (textChanged && m[1] !== 'course_audio') { r.target1_audio_id = null; r.target2_audio_id = null }
         }
@@ -250,5 +259,48 @@ describe('legacy phrase-id prefix alias (ticket 9abad0ac): el_for_eng: names ell
 
   it('the alias is per course: el_for_eng: is still refused for any other course', () => {
     expect(() => planOps([{ op: 'phrase.delete', phrase_id: 'el_for_eng:S0017L04U05' }], C)).toThrow(EditOpError)
+  })
+})
+
+// Tiles follow the LEGO (cs #937, Kai's Watson finding #930): "ancora" was drawn as "bambino" for weeks
+// because seed 519 was re-cut and nothing re-derived the tiles naming slot S0519L01 elsewhere.
+describe('a LEGO text edit refreshes every tile naming its slot, in the same transaction (cs #937)', () => {
+  const I = 'ita_for_eng'
+  const L1 = '55555555-5555-4555-8555-555555555551'
+  const L2 = '55555555-5555-4555-8555-555555555552'
+  const db = () => fakeDb({
+    course_seeds: [], course_audio: [], course_gender_expansions: [], course_qa_flags: [],
+    course_legos: [
+      { id: L1, course_code: I, seed_number: 60, lego_index: 2, lego_id: 'S0060L02', known_text: 'yet', target_text: 'ancora', components: [] },
+      { id: L2, course_code: I, seed_number: 519, lego_index: 1, lego_id: 'S0519L01', known_text: 'yet', target_text: 'ancora', components: [] },
+      { id: 'pr', course_code: I, seed_number: 520, lego_index: 1, lego_id: 'S0520L01', known_text: 'ready', target_text: 'pronto', components: [] },
+    ],
+    course_practice_phrases: [{ id: `${I}:S0520L01U01`, course_code: I, seed_number: 520, lego_index: 1, known_text: 'not yet ready', target_text: 'ancora pronto', phrase_role: 'use',
+      decomposition: [{ legoId: 'S0519L01', target: 'ancora', known: 'yet', isGhost: false }, { legoId: 'S0520L01', target: ' pronto', known: 'ready', isGhost: false, isSalient: true }],
+      decomposition_course_version: 3 }],
+  })
+  const runI = (d, ops, apply = true) => runPlans({ connect: async () => d, courseCode: I, plans: planOps(ops, I), apply, eventId: async () => 'ev-t' })
+
+  it('re-points the stale tile to the slot that now teaches the word, and the undo puts it back', async () => {
+    const d = db()
+    const out = await runI(d, [{ op: 'lego.update', lego_id: 'S0519L01', set: { known_text: 'baby', target_text: 'bambino' } }])
+    const tiles = d.tables.course_practice_phrases[0].decomposition
+    expect(tiles[0]).toMatchObject({ legoId: 'S0060L02', known: 'yet' })
+    expect(out.results.find(r => r.op === 'tiles.refresh').rewritten.map(r => r.phrase_id)).toEqual([`${I}:S0520L01U01`])
+    expect(out.undo_ops[0]).toMatchObject({ op: 'phrase.update', phrase_id: `${I}:S0520L01U01`, set: { decomposition_course_version: 3 } })
+    expect(out.undo_ops[0].set.decomposition[0].legoId).toBe('S0519L01')
+  })
+
+  it('a dry run previews the refresh and writes nothing', async () => {
+    const d = db()
+    const out = await runI(d, [{ op: 'lego.update', lego_id: 'S0519L01', set: { known_text: 'baby', target_text: 'bambino' } }], false)
+    expect(out.results.find(r => r.op === 'tiles.refresh').changed).toBe(true)
+    expect(d.tables.course_practice_phrases[0].decomposition[0].legoId).toBe('S0519L01')
+  })
+
+  it('leaves tiles alone when only an audio link changes', async () => {
+    const d = db()
+    const out = await runI(d, [{ op: 'lego.update', lego_id: 'S0519L01', set: { known_audio_id: null } }])
+    expect(out.results.some(r => r.op === 'tiles.refresh')).toBe(false)
   })
 })

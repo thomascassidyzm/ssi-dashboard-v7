@@ -30,6 +30,7 @@ const { hasNonExampleText } = require('../course-builder/lib/validation.cjs');
 const { romanGoesStale, ROMAN_STALE_MESSAGE } = require('./roman-sync.cjs');
 const spokenWords = require('./clip-spoken-words.cjs');
 const legoReorder = require('./lego-reorder.cjs');
+const decompositionRefresh = require('./decomposition-refresh.cjs');
 
 const MAX_OPS = 2000;
 
@@ -86,7 +87,8 @@ class EditOpError extends Error {
 /** The op vocabulary, served by GET /api/production/:courseCode/edit-ops. */
 const OP_HELP = {
   'seed.update':   { key: 'seed_number', set: UPDATABLE.course_seeds },
-  'lego.update':   { key: 'lego_id (S0001L02) or id (uuid)', set: UPDATABLE.course_legos },
+  'lego.update':   { key: 'lego_id (S0001L02) or id (uuid)', set: UPDATABLE.course_legos,
+                     tiles: 'when known_text or target_text changes, every phrase tile in the course naming this slot is recomputed in the same transaction (results[] op "tiles.refresh"; the undo restores them). Same for lego.insert and lego.delete. A DRY RUN SKIPS the refresh (tiles.refresh skipped:true) unless the body carries "previewTiles": true; an apply always refreshes.' },
   'phrase.update': { key: 'phrase_id', set: UPDATABLE.course_practice_phrases },
   'phrase.insert': { row: 'full course_practice_phrases row; id must start "<course>:"',
                      copy_of: 'optional {course, id}: a verbatim copy of that course\'s phrase; may carry its empty side, refused unless seed_number/lego_index/role/texts match it' },
@@ -411,15 +413,20 @@ function undoFor(plan, before, after, opName) {
  * @param {string}  args.courseCode
  * @param {Array}   args.plans       from planOps()
  * @param {boolean} args.apply       false → roll back (dry run)
+ * @param {boolean} [args.previewTiles]  dry run only: also run the tile refresh (cs #945). An apply always refreshes.
  * @param {() => Promise<string>} [args.eventId]  called once, only when applying; its id is stamped on content rows
  * @returns {Promise<{applied, results, undo_ops, touched}>}
  */
-async function runPlans({ connect, courseCode, plans, apply, eventId, approval = null }) {
+async function runPlans({ connect, courseCode, plans, apply, eventId, approval = null, previewTiles = false }) {
   const trigApproval = triggerApprovalFor(approval); // throws BAD_APPROVAL before any connection is opened
   const client = await connect();
   const results = [];
   const undo = [];
   const touched = { seed_numbers: new Set(), lego_ids: new Set(), phrase_ids: new Set(), audio_ids: new Set(), legos: false, audio_slots: false };
+  // Tiles follow the LEGO (cs #937): slots whose LEGO this batch changed (text edit, delete, insert),
+  // and phrases whose decomposition the batch set itself or deleted (never second-guessed).
+  const changedSlots = new Set();
+  const decompositionDecided = new Set();
   let committed = false;
   try {
     await client.query('BEGIN');
@@ -571,6 +578,12 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
       }
 
       const row = after || before;
+      if (plan.table === 'course_legos') {
+        const slot = row.lego_id || legoIdOf(row.seed_number, row.lego_index);
+        const textMoved = !before || !after || !same(before.target_text, after.target_text) || !same(before.known_text, after.known_text);
+        if (textMoved) changedSlots.add(slot);
+      }
+      if (plan.table === 'course_practice_phrases' && (!after || (plan.set && 'decomposition' in plan.set))) decompositionDecided.add(row.id);
       if (row.seed_number) touched.seed_numbers.add(row.seed_number);
       if (plan.table === 'course_legos') { touched.legos = true; if (row.lego_id) touched.lego_ids.add(row.lego_id); }
       if (plan.table === 'course_practice_phrases') touched.phrase_ids.add(row.id);
@@ -582,6 +595,27 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
       if (cascadeUndo) undo.unshift(...cascadeUndo);
       else if (u) undo.unshift(u);
       results.push({ index: plan.index, op: plan.name, key: plan.where || plan.key, before: summarise(before, plan), after: summarise(after, plan), changed: !!u });
+    }
+
+    // TILES FOLLOW THE LEGO (cs #937, Kai's Watson finding #930): a tile names a slot, so when this
+    // batch changed the LEGO in a slot, every tile in the course naming it is recomputed here, in the
+    // same transaction — carried by the undo. lego.reorder relabels its own.
+    // A DRY RUN SKIPS IT unless the caller sends "previewTiles": true (cs #945): the refresh is the
+    // heaviest part of a LEGO edit and a dry run throws it away, so previewing it is opt-in. An apply
+    // always refreshes. The skip is reported as a tiles.refresh result with skipped:true and the slots.
+    if (changedSlots.size && !apply && !previewTiles) {
+      results.push({ index: null, op: 'tiles.refresh', key: { lego_ids: [...changedSlots] }, skipped: true,
+        note: 'dry run: tile refresh not previewed; send "previewTiles": true to preview it. An apply always refreshes.', changed: false });
+    } else if (changedSlots.size) {
+      const r = await decompositionRefresh.refreshTilesForSlots(client, courseCode, [...changedSlots],
+        { skipPhraseIds: decompositionDecided, eventId: evId });
+      for (const w of r.rewritten) {
+        touched.phrase_ids.add(w.id);
+        undo.unshift({ op: 'phrase.update', phrase_id: w.id, set: { decomposition: w.before, decomposition_course_version: w.beforeVersion } });
+      }
+      results.push({ index: null, op: 'tiles.refresh', key: { lego_ids: [...changedSlots] }, considered: r.considered,
+        rewritten: r.rewritten.map(w => ({ phrase_id: w.id, before: w.before, after: w.after })),
+        needs_a_person: r.unlocatable, changed: r.rewritten.length > 0 });
     }
 
     if (apply) { await client.query('COMMIT'); committed = true; }

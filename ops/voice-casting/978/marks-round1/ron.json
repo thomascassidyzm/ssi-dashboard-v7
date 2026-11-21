@@ -1,0 +1,55 @@
+{
+ "ok": true,
+ "title": "Voices round 1 · Romanian (ron): like or no",
+ "items": [
+  {
+   "id": "ron.m.03292898",
+   "source": "Romanian (ron) · male target voice (target 1 / 2) · now: cast voice Andrei is GONE (Cartesia withdrew it)",
+   "proposed": "Vlad — Cartesia · male · romanian (ro-RO) · Pragmatic Coordinator — Combines a practical, conversational cadence with focused listening, ideal for order tracking, workflow updates, and frontline assistance.",
+   "note": "Every voice reads the same line: «O să încep să vorbesc mai mult în curând.» (ron_for_eng seed 23)",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/246cd71c/file"
+  },
+  {
+   "id": "ron.m.a98af725",
+   "source": "Romanian (ron) · male target voice (target 1 / 2) · now: cast voice Andrei is GONE (Cartesia withdrew it)",
+   "proposed": "Bogdan — Cartesia · male · romanian (ro-RO) · Attentive Advocate — An attentive and natural conversational tone that effortlessly clarifies complex details for customer service interactions and order tracking.",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/2c989f1c/file"
+  },
+  {
+   "id": "ron.f.26aa0590",
+   "source": "Romanian (ron) · female target voice (target 1 / 2) · now: cast voice Andrada is GONE (Cartesia withdrew it)",
+   "proposed": "Miruna — Cartesia · female · romanian (ro-RO) · Attentive Representative — Delivers an engaged, inquiring cadence ideal for troubleshooting workflows, ticketing inquiries, and step-by-step customer assistance.",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/855988e9/file"
+  }
+ ],
+ "answers": {
+  "ron.m.03292898": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "ron.m.a98af725": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "ron.f.26aa0590": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  }
+ },
+ "submitted_ts": 1795095127144
+}

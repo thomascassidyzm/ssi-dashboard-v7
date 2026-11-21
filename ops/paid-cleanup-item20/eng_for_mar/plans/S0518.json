@@ -1,0 +1,41 @@
+{
+ "seed": 518,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "आमच्यापुढे अगदी तीच समस्या आहे",
+     "we have exactly the same problem",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी नवीन आयुष्याची कल्पनाही करू शकत नव्हतो",
+     "I couldn't imagine a new life",
+     null,
+     "m"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "मला खात्री आहे की माझ्यापुढे अगदी तीच समस्या असेल अशी मी कल्पनाही करू शकत नव्हतो",
+     "I'm sure I couldn't imagine myself having exactly the same problem",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0518L01B01": "आमच्यापुढे|reviewed by the planner: a form of a taught word or the seed's own wording (K6)",
+  "S0518L02B01": "आयुष्याची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

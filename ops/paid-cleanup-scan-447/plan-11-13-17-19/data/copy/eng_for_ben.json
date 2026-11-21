@@ -1,0 +1,2881 @@
+{
+"534": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "চলো এই ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই।",
+"legos": [
+{
+"id": "S0534L01",
+"idx": 1,
+"is_new": true,
+"known": "ভয়ঙ্কর আবহাওয়ায়",
+"phrases": [
+{
+"id": "50c9ec97-9fcb-4dda-bc4d-0953e2bac213",
+"ka": "6ed76eb5-9aae-45c2-a404-8cb1e6e63359",
+"known": "ভয়ঙ্কর আবহাওয়ায়",
+"pos": 0,
+"t1": "6cc03f74-fd5a-4837-9916-7ba7e4cb0cf6",
+"t2": "fbc4fe73-349b-477b-ab3a-c4f7d4a8107d",
+"target": "dreadful weather",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0534L01C01",
+"ka": "14535c4b-6862-46c9-b83f-3a3165595a2e",
+"known": "ভয়ঙ্কর",
+"pos": 1,
+"t1": "12357af3-b7e3-4159-b54f-4f038bf50034",
+"t2": "4f02a5f7-0e92-4461-a81f-5b35cefc9977",
+"target": "dreadful",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0534L01C02",
+"ka": "95e820d0-f6d1-49fb-a0a9-f1dc0e44a7e7",
+"known": "আবহাওয়া",
+"pos": 2,
+"t1": "06aa5a3e-645c-4ac6-af87-c453c0ab79a3",
+"t2": "d79c73f4-0167-47ea-8f18-e2ba3fa79512",
+"target": "weather",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0534L01B01",
+"ka": "6ed76eb5-9aae-45c2-a404-8cb1e6e63359",
+"known": "ভয়ঙ্কর আবহাওয়ায়",
+"pos": 3,
+"t1": "6cc03f74-fd5a-4837-9916-7ba7e4cb0cf6",
+"t2": "fbc4fe73-349b-477b-ab3a-c4f7d4a8107d",
+"target": "dreadful weather",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L01B02",
+"ka": "167167fc-f85c-4e5b-9d98-4569bdc1f6f2",
+"known": "এখন ভয়ঙ্কর আবহাওয়ায়",
+"pos": 4,
+"t1": "e8069ba8-787c-472c-85d1-de5f11236a60",
+"t2": "8b1f064d-b620-471c-97de-ad98c1d10455",
+"target": "dreadful weather now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L01B03",
+"ka": "51226844-8c90-4b33-86bb-a3a49708752d",
+"known": "আজ ভয়ঙ্কর আবহাওয়ায়",
+"pos": 5,
+"t1": "4efe4269-6576-4f24-a964-6bbe4fe3f2f6",
+"t2": "658711cd-43b2-479b-befe-bc9d94e7802b",
+"target": "dreadful weather today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L01U01",
+"ka": "e62ea603-c9d4-40bf-8cdd-0ae38d325338",
+"known": "আমরা ভয়ঙ্কর আবহাওয়ায় ছিলাম।",
+"pos": 6,
+"t1": "f8e78155-8f27-4c41-abd1-4b0d0c2af695",
+"t2": "fc36cdaa-94de-4da6-9157-ae4556fd68a8",
+"target": "we were in dreadful weather",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L01U02",
+"ka": "af14bd68-19d7-4182-9520-233920575112",
+"known": "সে বলেছিল আমরা ভয়ঙ্কর আবহাওয়ায় ছিলাম।",
+"pos": 7,
+"t1": "60af10fe-0709-4ddf-9d0b-de708bcc7dd8",
+"t2": "bfc3066d-d2d6-4724-adfa-d83d9af2b16f",
+"target": "she said we were in dreadful weather",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L01U03",
+"ka": "7c86bc20-d228-46e6-acd8-5c05ef53b41e",
+"known": "আমার বাবা ভয়ঙ্কর আবহাওয়ায় ছিলেন।",
+"pos": 8,
+"t1": "3104d263-f92f-4da3-8ce8-107f9ec5b20c",
+"t2": "93dc6a71-1872-48e7-8dfb-4fcc841bc0e9",
+"target": "my father was in dreadful weather",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L01U04",
+"ka": "d6a37823-fa99-4e4a-b477-cb6952aa8537",
+"known": "আমি জানি আমরা ভয়ঙ্কর আবহাওয়ায় ছিলাম।",
+"pos": 9,
+"t1": "5ad712b4-9963-42ce-b368-76c0d9a9c643",
+"t2": "c581172a-1329-459d-88e5-a892c07d28de",
+"target": "I know we were in dreadful weather",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L01U05",
+"ka": "5e7b8939-2024-48cb-8819-0108fc898fc3",
+"known": "আমি এই ভয়ঙ্কর আবহাওয়ায় থাকতে চাই না।",
+"pos": 10,
+"t1": "2b5d2313-4d34-4c8f-87e9-e777dd5095ee",
+"t2": "c3b69e2d-13f5-42cc-86d5-ad7ff005e4b2",
+"target": "I don't want to stay in this dreadful weather",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L01U06",
+"ka": "f1df9814-d42f-469f-bd22-bba8da5cc80b",
+"known": "এই ভয়ঙ্কর আবহাওয়ায় আমাদের বাইরে যাওয়া উচিত নয়।",
+"pos": 11,
+"t1": "bb86f61d-7741-448a-8ed7-6cb06cc9eecc",
+"t2": "6fc7df2a-1220-4e9e-abaa-4fae66588b23",
+"target": "We shouldn't go out in this dreadful weather.",
+"type": "use"
+}
+],
+"target": "dreadful weather",
+"type": "M"
+},
+{
+"id": "S0534L02",
+"idx": 2,
+"is_new": true,
+"known": "চলো ... বাইরে না যাই",
+"phrases": [
+{
+"id": "7ff62182-dbd9-4485-b654-21208bd54e97",
+"ka": "c9632374-fc29-4181-86f5-6166bc331ea2",
+"known": "চলো ... বাইরে না যাই",
+"pos": 0,
+"t1": "d7454bd3-e8e6-47e4-806d-223850475032",
+"t2": "f20e2eac-07ff-4a3d-a5ad-f00c1f87e50f",
+"target": "let's not go outside",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0534L02C01",
+"ka": "2caa42d0-3bf6-4010-83e9-f94038d566af",
+"known": "চলো",
+"pos": 1,
+"t1": "773d1fea-2575-4b84-91e7-f8e311ffe746",
+"t2": "1c982592-a9ae-4c3c-8edd-72352304c983",
+"target": "let's",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0534L02C02",
+"ka": "71ba0721-154b-481d-a9dd-4351041a15c0",
+"known": "বাইরে",
+"pos": 2,
+"t1": "c36a1fcc-659b-4d98-a78f-b6b72e3bc9a1",
+"t2": "89d49909-3ae9-4d55-bedc-8e732b39bd7e",
+"target": "outside",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0534L02C03",
+"ka": "f1e0ecb2-0c2d-4067-a7a7-f1250233419d",
+"known": "না যাই",
+"pos": 3,
+"t1": "cc741b3c-bdeb-4e05-aee5-4e9d9ade9260",
+"t2": "6935a402-3cc1-4565-914d-67b720a11921",
+"target": "not go",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0534L02B01",
+"ka": "c9632374-fc29-4181-86f5-6166bc331ea2",
+"known": "চলো ... বাইরে না যাই",
+"pos": 4,
+"t1": "d7454bd3-e8e6-47e4-806d-223850475032",
+"t2": "f20e2eac-07ff-4a3d-a5ad-f00c1f87e50f",
+"target": "let's not go outside",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L02B02",
+"ka": "0d482fce-c2a5-4c6b-ab85-42d6262ced7d",
+"known": "চলো ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই",
+"pos": 5,
+"t1": "b2d13568-6b1f-4c7a-8652-4e9d42647ac1",
+"t2": "48214c06-ee3d-467d-9170-d661208bc564",
+"target": "let's not go outside in dreadful weather",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L02B03",
+"ka": "152e70ce-62ed-468e-82a6-830fad8284c3",
+"known": "চলো এখন বাইরে না যাই",
+"pos": 6,
+"t1": "7e7c8f08-7a27-42ac-a14b-58fbb90da841",
+"t2": "328bbf4d-1bde-49f4-b2e7-2ea6f44d3329",
+"target": "let's not go outside now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L02B04",
+"ka": "1f7af0da-f4c5-4057-9ee0-9d110698ed5d",
+"known": "চলো আজ বাইরে না যাই",
+"pos": 7,
+"t1": "b6e2048d-61b7-4749-b026-546994f2ef5d",
+"t2": "962b9f90-b848-4593-b472-30b04a10ef77",
+"target": "let's not go outside today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0534L02U01",
+"ka": "0eb504c9-6a4f-441c-9766-e9633b45d009",
+"known": "চলো এই ভয়ঙ্কর আবহাওয়ায় বাইরে না যাই।",
+"pos": 8,
+"t1": "7a56c604-f4a8-47ef-b0c4-139587b63a02",
+"t2": "945d06ae-642b-4409-b179-2af4477438ee",
+"target": "let's not go outside in this dreadful weather",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L02U02",
+"ka": "beb1ea1b-2d5d-4feb-b863-9a877c992e3b",
+"known": "সে বলেছিল চলো বাইরে না যাই।",
+"pos": 9,
+"t1": "2fad8eb2-c8c0-4baa-9ffc-49c397885eec",
+"t2": "e881a7cc-58a3-4edc-aff0-8a664d1a2cec",
+"target": "she said let's not go outside",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L02U03",
+"ka": "37d112c9-fcb1-455b-83bd-3b41e846c920",
+"known": "আমার বাবা বলেছিলেন চলো বাইরে না যাই।",
+"pos": 10,
+"t1": "87fdffe3-9755-45de-87e4-d3fddd58bc32",
+"t2": "c5cbd9b7-c362-44d2-8b7d-fa1b6014acaf",
+"target": "my father said let's not go outside",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0534L02U05",
+"ka": "8f3f0cb5-994c-4128-80a3-3a7ae7bba69f",
+"known": "চলো বাইরে না যাই কারণ আমি ক্লান্ত।",
+"pos": 12,
+"t1": "10baf88a-c820-42fa-a101-666d410ffc65",
+"t2": "5ccb3fd6-e61f-449a-8c4d-2ff4607dd005",
+"target": "Let's not go outside because I'm tired.",
+"type": "use"
+}
+],
+"target": "let's not go outside",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Let's not go outside in this dreadful weather."
+},
+"547": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "কারণ সে কাদায় খেলছিল।",
+"legos": [
+{
+"id": "S0547L01",
+"idx": 1,
+"is_new": true,
+"known": "কাদায়",
+"phrases": [
+{
+"id": "c38671e6-4049-4c29-a893-ff2c52c7fc4c",
+"ka": "eff0db87-c6b3-4448-8b1e-dbc4a7a38fe2",
+"known": "কাদায়",
+"pos": 0,
+"t1": "6ea4850b-bddc-427e-99b2-4edda2cb06f9",
+"t2": "760d4f47-1064-4a95-9768-c8279b43613a",
+"target": "in the mud",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0547L01B01",
+"ka": "eff0db87-c6b3-4448-8b1e-dbc4a7a38fe2",
+"known": "কাদায়",
+"pos": 1,
+"t1": "6ea4850b-bddc-427e-99b2-4edda2cb06f9",
+"t2": "760d4f47-1064-4a95-9768-c8279b43613a",
+"target": "in the mud",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0547L01B02",
+"ka": "912762d6-f28a-46b7-b8c8-6fc415e05a93",
+"known": "কাদায় খেলছিল",
+"pos": 2,
+"t1": "1747eaae-8aa6-4d6d-a8b2-6754ab71e6c1",
+"t2": "2102db1d-743e-48df-aee7-b7b497aba3aa",
+"target": "was playing in the mud",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0547L01B03",
+"ka": "927b5f37-2a30-46db-bd58-efb61b561c8d",
+"known": "এখন কাদায়",
+"pos": 3,
+"t1": "6b52da62-e211-4a7a-81dc-2c24e74103e2",
+"t2": "be9267bb-81fe-45a6-95c5-f29d8f3a7921",
+"target": "in the mud now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0547L01U01",
+"ka": "85459391-863e-4867-89c9-0efca2ccce40",
+"known": "আমরা কাদায় ছিলাম।",
+"pos": 4,
+"t1": "85f57da5-8546-4782-8eb5-3330586f3a7e",
+"t2": "d4e21227-b8e4-4df4-93b2-9833dc0fc463",
+"target": "we were in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U02",
+"ka": "67a9a28b-3106-4508-98c2-512777673a48",
+"known": "আমি কাদায় ছিলাম।",
+"pos": 5,
+"t1": "f35e59cc-e030-4dc0-b6a8-a8726d0aa5d0",
+"t2": "13031f79-1cfd-4fa2-bbb6-ca549399b624",
+"target": "I was in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U03",
+"ka": "54cf0a20-cacf-4f89-8158-c2904f956ab7",
+"known": "সে বলেছিল আমরা কাদায় ছিলাম।",
+"pos": 6,
+"t1": "a1e3c414-05da-4c57-9cde-d34cc442fb28",
+"t2": "a9d9cc83-0eaa-4915-9b40-5d834fcbcaa8",
+"target": "she said we were in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U04",
+"ka": "2fb1461e-721f-41f9-ae65-3e43a714665e",
+"known": "আমার বাবা কাদায় ছিলেন।",
+"pos": 7,
+"t1": "db7b36df-309c-4b08-bbe5-a9c59d963585",
+"t2": "4fb01b81-3456-44a1-af80-b629eaad005e",
+"target": "my father was in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U05",
+"ka": "cdf5f8ba-ad2c-4fac-a575-d6c86de55c9f",
+"known": "আমি জানি আমরা কাদায় ছিলাম।",
+"pos": 8,
+"t1": "b1aea8d8-6f66-4e30-b1c1-b649dfb285a2",
+"t2": "ad988e90-799d-4f7a-bb80-1b12945e6bb0",
+"target": "I know we were in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U06",
+"ka": "b87855ed-fbc3-4702-8e58-1fbd370c22aa",
+"known": "আমি ভুলে গেছি যে আমরা কাদায় ছিলাম",
+"pos": 9,
+"t1": "4502f8e8-2094-4e23-ad2e-429cef58fa16",
+"t2": "6db5a1b7-47f4-491a-8721-49bbc78d9f46",
+"target": "I've forgotten that we were in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U07",
+"ka": "4b0adcbd-95f0-4626-bea1-3c75650d9f42",
+"known": "কুকুরটার কাদায় থাকা উচিত নয়।",
+"pos": 10,
+"t1": "ea92d18e-1cb9-433a-bb3d-28280931f02b",
+"t2": "bf55e9f7-91c2-41d3-9bfb-82f0e7fa6a57",
+"target": "The dog shouldn't be in the mud.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L01U08",
+"ka": "1b5ed2b5-39df-4ad4-b9f6-d575c709f152",
+"known": "কাদায় একটা কুকুর আছে।",
+"pos": 11,
+"t1": "25b5c7f8-492f-4753-9d0e-d6030159b339",
+"t2": "8db46859-ad2e-46ba-853e-f6c104a1e4bf",
+"target": "There's a dog in the mud.",
+"type": "use"
+}
+],
+"target": "in the mud",
+"type": "A"
+},
+{
+"id": "S0547L02",
+"idx": 2,
+"is_new": true,
+"known": "কারণ সে ... খেলছিল",
+"phrases": [
+{
+"id": "9c784041-4cbd-4c5a-b5a3-5a86798528dd",
+"ka": "921f64a5-ad27-425f-b564-34450f7134a5",
+"known": "কারণ সে ... খেলছিল",
+"pos": 0,
+"t1": "23799ad8-c716-4429-89f0-a27043193f46",
+"t2": "ba89052b-2d9a-4f14-815d-8bff516324bb",
+"target": "because he has been playing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0547L02C01",
+"ka": "915b37d5-b36f-485e-afda-d3a9cbc49953",
+"known": "কারণ",
+"pos": 1,
+"t1": "c646d787-d262-4100-bded-5eac950ea1d0",
+"t2": "0de48ffc-47aa-4207-b264-067b0f47f789",
+"target": "because",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0547L02C02",
+"ka": "5fb45077-e286-4deb-9399-b5b098b7bcaf",
+"known": "সে",
+"pos": 2,
+"t1": "419583c7-d1ab-4842-9900-1623c4bef0cd",
+"t2": "4a4082de-9bba-4b4b-bde7-5320c4a3034a",
+"target": "he",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0547L02C04",
+"ka": "48fbf313-93e8-484e-aaae-44f804e71ddc",
+"known": "খেলছিল",
+"pos": 4,
+"t1": "d9e12202-22df-47a5-9904-65c04915f68a",
+"t2": "9293d5b1-ff52-4ba2-a75e-d3f78ba84026",
+"target": "has been playing",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0547L02B01",
+"ka": "921f64a5-ad27-425f-b564-34450f7134a5",
+"known": "কারণ সে ... খেলছিল",
+"pos": 5,
+"t1": "23799ad8-c716-4429-89f0-a27043193f46",
+"t2": "ba89052b-2d9a-4f14-815d-8bff516324bb",
+"target": "because he has been playing",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0547L02B02",
+"ka": "6f381e8b-524b-44d1-83d3-eab9bab841ac",
+"known": "এখন কারণ সে খেলছিল",
+"pos": 6,
+"t1": "8c00e341-ecb4-4a7b-9973-e51d25a837c7",
+"t2": "c0ec3980-42ef-4644-8675-edd685d05d5b",
+"target": "because he has been playing now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0547L02B03",
+"ka": "75ab7446-2cef-4804-b848-711d0bf0dae7",
+"known": "আজ কারণ সে খেলছিল",
+"pos": 7,
+"t1": "d16c4208-13f6-4870-a642-65b70cb34eef",
+"t2": "6f046814-9012-4f49-97d0-cac7cb788eb1",
+"target": "because he has been playing today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0547L02U01",
+"ka": "6069deff-e37e-48d6-b981-b4c0ba037a72",
+"known": "কারণ সে কাদায় খেলছিল।",
+"pos": 8,
+"t1": "1f6a4da3-4244-4746-a347-798afd3cc266",
+"t2": "350bd412-15a1-4cc7-8f8a-7cf77d710b70",
+"target": "because he has been playing in the mud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L02U02",
+"ka": "1d04cc46-d6f2-47fb-96ab-c00ab1726dd9",
+"known": "আমরা জানি কারণ সে খেলছিল।",
+"pos": 9,
+"t1": "e8d50971-4f13-4e0d-8bd2-784e6914a0a6",
+"t2": "160c3590-048b-4712-95eb-1c0238161f3a",
+"target": "we know because he has been playing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L02U03",
+"ka": "cf7c6f14-cb8c-415a-b129-58123829f071",
+"known": "সে বলেছিল কারণ সে খেলছিল।",
+"pos": 10,
+"t1": "9037eeab-2e93-4705-8989-b99c7dfa88bc",
+"t2": "a77ed900-0c25-4a01-b4f2-75e202113567",
+"target": "she said because he has been playing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L02U04",
+"ka": "26dbf426-c1c1-42e2-b10e-c2175e6ae655",
+"known": "আমার বাবা জানেন কারণ সে খেলছিল।",
+"pos": 11,
+"t1": "925e4d40-6a26-4528-96ba-a164067490e4",
+"t2": "1838bb68-624f-4918-bb94-20f53f03f900",
+"target": "my father knows because he has been playing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0547L02U05",
+"ka": "a65274de-7ffa-4269-ba04-1b1ec270f535",
+"known": "আমি জানি কারণ সে খেলছিল।",
+"pos": 12,
+"t1": "66b2b79e-27e0-4905-97d3-20b159f5fb8d",
+"t2": "7c8b989d-8ced-40b0-be90-c15487c0d254",
+"target": "I know because he has been playing",
+"type": "use"
+}
+],
+"target": "because he has been playing",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Because he has been playing in the mud."
+},
+"549": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "কারণ আমাকে চুপ থাকতে হবে।",
+"legos": [
+{
+"id": "S0549L01",
+"idx": 1,
+"is_new": true,
+"known": "চুপ",
+"phrases": [
+{
+"id": "97eca656-0709-44ea-b4d6-62494322bc5b",
+"ka": "e1316532-e94c-4dfc-9f1e-ea9b46da908e",
+"known": "চুপ",
+"pos": 0,
+"t1": "599e107f-6fc0-4e2b-bae7-57577f842d39",
+"t2": "ce29c3c5-72c0-421e-a26e-1f48c1e572ec",
+"target": "quiet",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0549L01B01",
+"ka": "e1316532-e94c-4dfc-9f1e-ea9b46da908e",
+"known": "চুপ",
+"pos": 1,
+"t1": "599e107f-6fc0-4e2b-bae7-57577f842d39",
+"t2": "ce29c3c5-72c0-421e-a26e-1f48c1e572ec",
+"target": "quiet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L01B02",
+"ka": "b92494dd-bf2c-411c-acb3-273d95ddb804",
+"known": "চুপ থাকতে",
+"pos": 2,
+"t1": "5bb933d9-09bd-4cd4-bdc1-210113ae8d9e",
+"t2": "6c35b4fd-be77-4ba6-969e-7bbcb443d83f",
+"target": "to be quiet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L01B03",
+"ka": "df019102-24b1-4f50-9e07-508f74ba51cf",
+"known": "এখন চুপ",
+"pos": 3,
+"t1": "efc615f9-3dc2-40c5-8f21-1cff46fb613d",
+"t2": "e20bed35-ad2c-4d16-8a42-9f5757cc46b9",
+"target": "quiet now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L01U01",
+"ka": "5d3497c0-fa9c-4495-9024-c8cd831dc044",
+"known": "আমরা চুপ থাকতে চাই।",
+"pos": 4,
+"t1": "561c9c25-c226-4c63-84a9-193bbab35ccd",
+"t2": "0bebe644-8cc2-4b6e-b2e3-0b011389f09b",
+"target": "we want to be quiet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U02",
+"ka": "0b51527e-30fd-4561-b234-661f944ba9be",
+"known": "আমি চুপ থাকতে চাই।",
+"pos": 5,
+"t1": "3f19d1d6-b418-4a3f-a78d-205b46ccf65f",
+"t2": "7aeaff3e-debc-4bcf-a826-b13091380432",
+"target": "I want to be quiet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U03",
+"ka": "748a635a-a56b-408c-901b-621232f6f1c7",
+"known": "সে বলেছিল আমরা চুপ থাকতে চাই।",
+"pos": 6,
+"t1": "9c00c0d8-4756-47aa-aa2c-4f6045baac90",
+"t2": "907f2337-bb72-4490-a41a-68304abb1bea",
+"target": "she said we want to be quiet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U04",
+"ka": "782c74c3-f4e3-4bb6-a45f-af8b1d23b5b9",
+"known": "আমার বাবা চুপ থাকতে চান।",
+"pos": 7,
+"t1": "20ff2528-a57b-4ba5-b8bd-e908543bd9ba",
+"t2": "cb7e533e-383c-45c5-9141-62e139635529",
+"target": "my father wants to be quiet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U05",
+"ka": "23e26d3e-5a68-4219-a1bd-e792599ebcac",
+"known": "আমি জানি আমরা চুপ থাকতে চাই।",
+"pos": 8,
+"t1": "73bdae6b-2371-4cee-a189-d5519cb8403d",
+"t2": "c695873d-1231-467a-bd25-8ff19667a3ec",
+"target": "I know we want to be quiet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U06",
+"ka": "4eeef3a1-efbd-43e4-84b0-972aaf528d33",
+"known": "কুকুরটা চুপ থাকতে পারে না।",
+"pos": 9,
+"t1": "c8835523-601b-4818-a921-68851ddf0923",
+"t2": "5df5e9ec-22e1-4d19-b016-102f2aa7d777",
+"target": "The dog can't be quiet.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01B04",
+"ka": "fedd3c4d-d59a-46a3-8f0b-10cf68ad4e80",
+"known": "চুপ থাকতে পারি না",
+"pos": 10,
+"t1": "c085b369-5fa4-4515-897d-cbb4ca8bdcab",
+"t2": "70b87b46-74c9-4c12-aa42-9145d8547cc6",
+"target": "can't be quiet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L01U07",
+"ka": "fe50cc99-5966-4aff-974d-b439fb8ff8e3",
+"known": "তোমার চুপ থাকা উচিত।",
+"pos": 11,
+"t1": "b1164219-43c0-4c89-8d26-dcf5825e2f17",
+"t2": "78dda0ba-d989-486f-b5b8-058c56d27e4d",
+"target": "You should be quiet.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U08",
+"ka": "d9caf20c-495a-42d4-b09f-fd6e70c3b9a8",
+"known": "তোমাকে অবশ্যই চুপ থাকতে হবে।",
+"pos": 12,
+"t1": "0b087bb3-dc9d-47eb-82f8-751f0f021358",
+"t2": "5a381c86-9982-4a83-8283-73a087aa3f7a",
+"target": "You must be quiet.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01U09",
+"ka": "e6d67699-43b5-4add-b330-4d23f21f4101",
+"known": "আশা করি তুমি চুপ থাকবে।",
+"pos": 13,
+"t1": "f5740ddf-0993-48bb-af0c-e0446b39f2f6",
+"t2": "8257079f-bb13-4eb8-ab16-82115429b759",
+"target": "I hope you'll be quiet.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L01B05",
+"ka": "759bd47e-c289-4175-bb9f-ac8400a95b7d",
+"known": "চুপ থাকতে পারব না",
+"pos": 14,
+"t1": "357891d9-f481-4e70-8fa8-7bc7d2794ae4",
+"t2": "bfc57839-af2d-46cc-a810-dcb87860d5bd",
+"target": "won't be able to be quiet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L01U10",
+"ka": "75f80b01-e6ca-426e-b7c4-fced7120e89f",
+"known": "আমি আজ রাতে চুপ থাকতে পারব না।",
+"pos": 15,
+"t1": "008f797d-b8ad-429b-881b-45bca689ec21",
+"t2": "e40abb2b-64dc-499b-af8c-55dc6d03894d",
+"target": "I won't be able to be quiet tonight.",
+"type": "use"
+}
+],
+"target": "quiet",
+"type": "A"
+},
+{
+"id": "S0549L02",
+"idx": 2,
+"is_new": true,
+"known": "আমাকে ... থাকতে হবে",
+"phrases": [
+{
+"id": "f570d8a6-28b3-49d1-b89c-0d7bfc7d5382",
+"ka": "bfd53516-57c1-4c9b-ae5d-8e911330aa18",
+"known": "আমাকে ... থাকতে হবে",
+"pos": 0,
+"t1": "1995bc30-0133-4db1-aec5-b72d118781fe",
+"t2": "ea766150-9dcb-4767-b1c2-e99b85a4bb3c",
+"target": "I have got to be",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0549L02C01",
+"ka": "9b818fd8-3512-4a7a-9752-058b26ec8512",
+"known": "আমাকে",
+"pos": 1,
+"t1": "bcce081d-c5b3-496b-90e8-238203b8b64d",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0549L02C03",
+"ka": "184a7e11-f02d-48ab-a8c6-7816ee0ef157",
+"known": "হবে",
+"pos": 3,
+"t1": "9942f380-df74-4332-ba16-56b66ce70fdd",
+"t2": "a4321c14-ae1d-4d0f-85cc-8b6898b28277",
+"target": "have got to",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0549L02B01",
+"ka": "bfd53516-57c1-4c9b-ae5d-8e911330aa18",
+"known": "আমাকে ... থাকতে হবে",
+"pos": 4,
+"t1": "1995bc30-0133-4db1-aec5-b72d118781fe",
+"t2": "ea766150-9dcb-4767-b1c2-e99b85a4bb3c",
+"target": "I have got to be",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L02B02",
+"ka": "31290bf8-f776-4463-ade6-b256ba43cf4f",
+"known": "আমাকে চুপ থাকতে হবে",
+"pos": 5,
+"t1": "cd83c0f2-dcdf-4e72-af52-6a878d22bbe5",
+"t2": "690fca49-1c03-4652-9e0e-2251e7344cba",
+"target": "I have got to be quiet",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L02B03",
+"ka": "3cde32b5-95c0-48d8-9127-9f874efda217",
+"known": "এখন আমাকে থাকতে হবে",
+"pos": 6,
+"t1": "8b27277c-65a6-4029-9f2f-4e88fcda150e",
+"t2": "04f84379-2ee6-4b41-ab4a-3f6251dd8507",
+"target": "I have got to be now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L02B04",
+"ka": "13004bf2-1717-451d-85d7-9cb9da8d8e23",
+"known": "এখানে আমাকে থাকতে হবে",
+"pos": 7,
+"t1": "0bb02e70-362e-44c1-b988-c46a5555712d",
+"t2": "7dd9494b-25c0-4941-87c7-3d0d8ce422a1",
+"target": "I have got to be here",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0549L02U01",
+"ka": "e545f047-e809-47d0-9f85-6d5dbed0eb27",
+"known": "কারণ আমাকে চুপ থাকতে হবে।",
+"pos": 8,
+"t1": "7d30f743-c6c5-4c5a-b7c2-53e7c75849c4",
+"t2": "a95c87dc-7a11-48a6-a42e-974924079f60",
+"target": "because I have got to be quiet",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L02U02",
+"ka": "c594e84c-0ee4-4d23-b108-7eff45667211",
+"known": "আমাকে আজ থাকতে হবে।",
+"pos": 9,
+"t1": "2bb87045-c7db-45b4-904e-a02b8ae314b4",
+"t2": "a633155a-1083-4605-96a7-23a9a1dd2604",
+"target": "I have got to be today",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L02U03",
+"ka": "884316c1-12a3-4cb7-bbc1-8703a9c77cf6",
+"known": "সে বলেছিল আমাকে থাকতে হবে।",
+"pos": 10,
+"t1": "031b483e-a4e2-460e-b6dc-6ed92c653900",
+"t2": "22e59141-297b-468c-928a-a3ae9b3daf3f",
+"target": "she said I have got to be",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L02U04",
+"ka": "352f392a-c3c4-4d12-9457-870e33154059",
+"known": "আমার বাবা জানেন আমাকে থাকতে হবে।",
+"pos": 11,
+"t1": "c5531203-b508-491d-a770-1e4b7df0a5c7",
+"t2": "551c2042-28b0-43f8-ad3e-46b2be021e87",
+"target": "my father knows I have got to be",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0549L02U05",
+"ka": "f4a0b3a2-88dc-4099-b487-b5f01aaa504c",
+"known": "আমি জানি আমাকে থাকতে হবে।",
+"pos": 12,
+"t1": "1f74280c-a753-4a53-98a9-bb8fde3c550b",
+"t2": "fa427808-29c1-4bd8-b01b-ce959e4e3d37",
+"target": "I know I have got to be",
+"type": "use"
+}
+],
+"target": "I have got to be",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Because I have got to be quiet."
+},
+"557": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "আমি চাই তারা এত জোরে সংগীত না বাজাক।",
+"legos": [
+{
+"id": "S0557L01",
+"idx": 1,
+"is_new": true,
+"known": "জোরে",
+"phrases": [
+{
+"id": "68290df3-80ab-40c8-828a-f165694a5678",
+"ka": "6cb73dae-9520-44c7-a9dc-933b5b3652b4",
+"known": "জোরে",
+"pos": 0,
+"t1": "0818d11a-5337-45df-b324-1f15b54d71aa",
+"t2": "e4d02db8-93ea-43fd-ba75-ceb05f3d65ee",
+"target": "loud",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0557L01B01",
+"ka": "6cb73dae-9520-44c7-a9dc-933b5b3652b4",
+"known": "জোরে",
+"pos": 1,
+"t1": "0818d11a-5337-45df-b324-1f15b54d71aa",
+"t2": "e4d02db8-93ea-43fd-ba75-ceb05f3d65ee",
+"target": "loud",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0557L01B02",
+"ka": "4cb9ca8f-3700-4b70-b628-e8cbbf695b3a",
+"known": "এত জোরে",
+"pos": 2,
+"t1": "3b260998-8931-4622-a39d-cfa136b79cf0",
+"t2": "9f82a08f-d2dd-4cc4-83b3-2986e7e595e0",
+"target": "so loud",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0557L01B03",
+"ka": "ff94b5d3-1701-42cf-a64f-9b1ae5f4fb9e",
+"known": "এখন জোরে",
+"pos": 3,
+"t1": "d35b286f-5646-4c37-b162-948e214133bd",
+"t2": "cad5d38c-3911-455a-b6a9-9f93cdea391b",
+"target": "loud now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0557L01U02",
+"ka": "c640e855-a178-442b-b400-5606cd526e68",
+"known": "এটা এত জোরে।",
+"pos": 5,
+"t1": "bcafda75-cdfd-4773-a92e-be6d537fda15",
+"t2": "5728eb37-d7f3-4764-afa6-4d82ca47d9e2",
+"target": "it's so loud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L01U03",
+"ka": "69e24c0d-cd3d-456b-a21f-6d06644382ad",
+"known": "সে বলেছিল এটা এত জোরে।",
+"pos": 6,
+"t1": "a2a8178a-98ef-4e99-8082-45c664919774",
+"t2": "320abc0f-d4d9-481d-8674-9fba60c10efb",
+"target": "she said it's so loud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L01U04",
+"ka": "ecd0d81a-31a1-4858-81fb-f9a9f007d3a7",
+"known": "আমরা জানি এটা এত জোরে।",
+"pos": 7,
+"t1": "94537427-e350-4f48-969e-14db6eaf75b8",
+"t2": "d42de892-7b49-4875-9f4c-fb3c5a182aa6",
+"target": "we know it's so loud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L01U05",
+"ka": "20f14ccd-f8df-4530-bd97-b9141fb0bf18",
+"known": "আমি জানি এটা এত জোরে।",
+"pos": 8,
+"t1": "05bdaa98-60e8-4723-b8cc-1c610885181a",
+"t2": "8af3eec3-0b2e-4cae-ac9f-f37a0118f9a5",
+"target": "I know it's so loud",
+"type": "use"
+}
+],
+"target": "loud",
+"type": "A"
+},
+{
+"id": "S0557L02",
+"idx": 2,
+"is_new": true,
+"known": "চাই তারা ... না বাজাক",
+"phrases": [
+{
+"id": "6519406d-c355-4729-a1d4-9c4355ed2eb9",
+"ka": "cea82c08-e36d-423f-8d97-8201622cd859",
+"known": "চাই তারা ... না বাজাক",
+"pos": 0,
+"t1": "5b7fa58e-5566-4c33-a9e8-0d124adfe8f3",
+"t2": "87c40fee-0cd6-46ee-b09a-778b438e76ac",
+"target": "wish they wouldn't play",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0557L02C01",
+"ka": "53dc7b72-9162-4b11-95b0-d3c305ef0cc6",
+"known": "চাই",
+"pos": 1,
+"t1": "2beb897e-d050-4d13-95c3-630e73dfdffc",
+"t2": "b5a97b0f-6965-461a-8740-d3a240135f51",
+"target": "wish",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0557L02C02",
+"ka": "6905d8a6-8573-4ad4-886c-3a7868c66e09",
+"known": "তারা",
+"pos": 2,
+"t1": "b07c3941-92c0-475a-8c8d-5af106391677",
+"t2": "9fa7e997-974b-4bfa-80cb-1d1f1292c643",
+"target": "they",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0557L02C04",
+"ka": "eaf7cd52-1a35-49e2-9ce8-c363009a93de",
+"known": "না বাজাক",
+"pos": 4,
+"t1": "790ee9b9-278c-4894-b088-a49d5e45a41f",
+"t2": "6d610218-3447-4a6e-a469-3b29d2c9c24e",
+"target": "wouldn't play",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0557L02B01",
+"ka": "cea82c08-e36d-423f-8d97-8201622cd859",
+"known": "চাই তারা ... না বাজাক",
+"pos": 5,
+"t1": "5b7fa58e-5566-4c33-a9e8-0d124adfe8f3",
+"t2": "87c40fee-0cd6-46ee-b09a-778b438e76ac",
+"target": "wish they wouldn't play",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0557L02B02",
+"ka": "bfa541aa-4359-44f7-800f-5dc4049e4469",
+"known": "এখন চাই তারা না বাজাক",
+"pos": 6,
+"t1": "5ad5c885-d334-4c6e-a2fd-55bd6ccec7f1",
+"t2": "51a9af49-a03f-4481-abd7-0c899f9e9f55",
+"target": "wish they wouldn't play now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0557L02B03",
+"ka": "bd880c72-7c6d-44c9-89e2-b254193953c4",
+"known": "আজ চাই তারা না বাজাক",
+"pos": 7,
+"t1": "e9d68125-ae2d-42ea-b424-9cb9edceb899",
+"t2": "4263777e-1284-4471-a189-3a9a25fa5069",
+"target": "wish they wouldn't play today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0557L02U01",
+"ka": "7e45a8c9-a943-4947-8a82-87793c76d64b",
+"known": "আমি চাই তারা এত জোরে না বাজাক।",
+"pos": 8,
+"t1": "e9c2bd97-caa4-4665-83f7-61783d6cd4da",
+"t2": "3908287f-00be-4392-b2af-866c78aac40c",
+"target": "I wish they wouldn't play so loud",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L02U02",
+"ka": "22ed9383-162d-4ad6-8269-53952d6a0c4a",
+"known": "আমরা চাই তারা না বাজাক।",
+"pos": 9,
+"t1": "be3ca532-86d8-4a67-82a5-e6858bb7e334",
+"t2": "7484c944-df10-42d0-a0ec-7340dac3f3c2",
+"target": "we wish they wouldn't play",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L02U03",
+"ka": "5df4e108-4bea-4422-9ec6-89c34e17c0b5",
+"known": "সে বলেছিল আমরা চাই তারা না বাজাক।",
+"pos": 10,
+"t1": "4ccabe6f-0bf0-4dcc-bbdf-b7af6cfa9fda",
+"t2": "927abdb4-8091-44d4-946c-20e92be258dd",
+"target": "she said we wish they wouldn't play",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L02U04",
+"ka": "fcc3c1f7-d311-421d-b94c-fadbaf617ebb",
+"known": "আমার বাবা জানেন আমরা চাই তারা না বাজাক।",
+"pos": 11,
+"t1": "d1cc7921-4b00-4e87-8bf7-881826bb8b62",
+"t2": "3b2fc2ca-9f51-4ce4-ae6d-c78eddbd0a43",
+"target": "my father knows we wish they wouldn't play",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0557L02U05",
+"ka": "45785af0-3379-4f30-a0ce-83efc493cf2e",
+"known": "আমি জানি আমরা চাই তারা না বাজাক।",
+"pos": 12,
+"t1": "2f3a354e-8bf5-4cd0-93b9-d689ee2960e6",
+"t2": "ebe1dd14-ef5f-4083-9ce7-c6def0767516",
+"target": "I know we wish they wouldn't play",
+"type": "use"
+}
+],
+"target": "wish they wouldn't play",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I wish they wouldn't play such loud music."
+},
+"589": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "সে আমাকে বলল সে এইমাত্র শেষ বাসটা দেখেছে।",
+"legos": [
+{
+"id": "S0589L01",
+"idx": 1,
+"is_new": true,
+"known": "বাসটা",
+"phrases": [
+{
+"id": "abadeeb6-27f1-4e85-83a7-301553bfadfd",
+"ka": "edb2ca14-cd5a-4986-81c8-a0d49cd9ee2a",
+"known": "বাসটা",
+"pos": 0,
+"t1": "19bff90a-dfc5-471d-9409-e6f3e8f1f3a6",
+"t2": "8b015f65-d6c2-4894-92e9-7e06f0b94f78",
+"target": "the bus",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0589L01B01",
+"ka": "edb2ca14-cd5a-4986-81c8-a0d49cd9ee2a",
+"known": "বাসটা",
+"pos": 1,
+"t1": "19bff90a-dfc5-471d-9409-e6f3e8f1f3a6",
+"t2": "8b015f65-d6c2-4894-92e9-7e06f0b94f78",
+"target": "the bus",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0589L01B02",
+"ka": "a44197f1-8e57-4066-a53a-4d2953803d42",
+"known": "শেষ বাসটা",
+"pos": 2,
+"t1": "7744fe94-e1f8-433e-be01-de2ad7ee5449",
+"t2": "bf7a3ee3-e81a-4b65-b102-9b7f12f174e0",
+"target": "the last bus",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0589L01U01",
+"ka": "561c4c10-7452-4b31-87d9-3edf592d3545",
+"known": "বাসটা এখানে।",
+"pos": 4,
+"t1": "e4d68e04-0361-4d92-8637-457be52eea3b",
+"t2": "afed787b-244a-498c-bc2f-a6e59287c287",
+"target": "the bus is here",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0589L01U02",
+"ka": "a50643b2-0731-4158-beea-14c2c5032651",
+"known": "আমরা বাসটা এখন দেখেছি।",
+"pos": 5,
+"t1": "38bb03d6-38ba-4a68-9d53-f9ef4b6f0d7e",
+"t2": "f46366a0-515d-4c27-b1c1-8dde2eed4952",
+"target": "we've seen the bus now",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0589L01U03",
+"ka": "532d0e69-050f-468f-8a7f-9bc1ffe68a2f",
+"known": "সে বলেছিল বাসটা এখানে।",
+"pos": 6,
+"t1": "b003bd6b-7555-415e-92af-b8e5ea820155",
+"t2": "6f6fe9fb-7149-418c-bc7b-27113044b444",
+"target": "she said the bus is here",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0589L01U04",
+"ka": "3f6f0105-05db-4978-8462-3f55694d449b",
+"known": "আমরা জানি বাসটা এখানে।",
+"pos": 7,
+"t1": "1df3b334-c068-4d78-b67c-0b91386b9838",
+"t2": "4f06493e-77fe-4f39-a831-d2e745b3d819",
+"target": "we know the bus is here",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0589L01U05",
+"ka": "9478bb24-ebde-4e97-b6ac-87e6a69cb1f1",
+"known": "আমি জানি বাসটা এখানে।",
+"pos": 8,
+"t1": "0e031543-3ec1-48c7-bdc5-58a68119ed2d",
+"t2": "3b3cbc11-d548-4eb8-abca-55969be7163b",
+"target": "I know the bus is here",
+"type": "use"
+}
+],
+"target": "the bus",
+"type": "A"
+},
+{
+"id": "S0589L02",
+"idx": 2,
+"is_new": true,
+"known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+"phrases": [
+{
+"id": "e2dd2823-8ac3-4649-bc9f-8305d6157de8",
+"ka": "1c940ec7-0aa8-4f9d-bd88-33afb9615b0f",
+"known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+"pos": 0,
+"t1": "ad8c219f-bbe0-4978-83e0-8c4d57d1df97",
+"t2": "eec3f6a2-40ce-4998-8dfd-8312846928ac",
+"target": "told me she'd just seen",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0589L02C01",
+"ka": "7a7677df-ee0a-42d5-902d-3629e7a363c0",
+"known": "আমাকে বলল",
+"pos": 1,
+"t1": "657f706d-8fa5-4c0b-981a-ebeaa01edbad",
+"t2": "b564163b-5ce9-4a39-8a96-1451a5ba6bb4",
+"target": "told me",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0589L02C02",
+"ka": "5fb45077-e286-4deb-9399-b5b098b7bcaf",
+"known": "সে",
+"pos": 2,
+"t1": "606eb7bf-7730-4b92-9104-f9332de8b436",
+"t2": "b4a05999-d7e4-44c7-b8d8-77ceb052c8a4",
+"target": "she'd",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0589L02C04",
+"ka": "5acbb283-6d2f-4a67-90e1-3419b47460df",
+"known": "এইমাত্র দেখেছে",
+"pos": 4,
+"t1": "76e7c4ae-5de6-4861-84cf-c2bddea0960b",
+"t2": "468a6065-fb39-49ff-be7f-ccb24b2ae033",
+"target": "just seen",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0589L02B01",
+"ka": "1c940ec7-0aa8-4f9d-bd88-33afb9615b0f",
+"known": "আমাকে বলল সে এইমাত্র ... দেখেছে",
+"pos": 5,
+"t1": "ad8c219f-bbe0-4978-83e0-8c4d57d1df97",
+"t2": "eec3f6a2-40ce-4998-8dfd-8312846928ac",
+"target": "told me she'd just seen",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0589L02B02",
+"ka": "880a3a7d-2f42-4072-bb2b-3960d552ff69",
+"known": "এখন আমাকে বলল সে এইমাত্র দেখেছে",
+"pos": 6,
+"t1": "cfe7d337-6303-49ee-ac2f-8c0a8db6b6ac",
+"t2": "2995ad2c-bf16-4b09-ac79-4f2872cb949d",
+"target": "told me she'd just seen now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0589L02B03",
+"ka": "9c2867ce-f4a4-4162-9607-526539edc4b8",
+"known": "আজ আমাকে বলল সে এইমাত্র দেখেছে",
+"pos": 7,
+"t1": "a5dffe5e-1741-486c-b73b-f7f317788b05",
+"t2": "94a8a535-498c-4d22-8736-3370eb797371",
+"target": "told me she'd just seen today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0589L02U01",
+"ka": "28283651-6fab-4ee3-9cd4-3aeee3284672",
+"known": "সে আমাকে বলল সে এইমাত্র শেষ বাসটা দেখেছে।",
+"pos": 8,
+"t1": "a63633e3-4c14-43a4-99f8-31b74ec55ea7",
+"t2": "5df72485-d339-4ea5-b762-1a02497fe54f",
+"target": "she told me she'd just seen the last bus",
+"type": "use"
+}
+],
+"target": "told me she'd just seen",
+"type": "M"
+}
+],
+"status": "released",
+"target": "She told me she'd just seen the last bus."
+},
+"599": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "তুমি আমাকে বললে আমি খুশিমনে গাড়ি চালাতাম।",
+"legos": [
+{
+"id": "S0599L01",
+"idx": 1,
+"is_new": true,
+"known": "গাড়ি চালাতাম",
+"phrases": [
+{
+"id": "483628fe-9b8d-4c8d-a518-368e36b12234",
+"ka": "05dcefc3-a691-4308-9171-43aa7769ac72",
+"known": "গাড়ি চালাতাম",
+"pos": 0,
+"t1": "fad097e5-2653-4b34-b247-df8ecff55fef",
+"t2": "5c6b93c5-6ed1-410f-a9ac-a7e2aebf0426",
+"target": "to drive",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0599L01B01",
+"ka": "05dcefc3-a691-4308-9171-43aa7769ac72",
+"known": "গাড়ি চালাতাম",
+"pos": 1,
+"t1": "fad097e5-2653-4b34-b247-df8ecff55fef",
+"t2": "5c6b93c5-6ed1-410f-a9ac-a7e2aebf0426",
+"target": "to drive",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L01B02",
+"ka": "fc86d36e-c323-4abb-a7ed-824924237ebe",
+"known": "গাড়ি চালাতে চাই",
+"pos": 2,
+"t1": "446ab5b8-af94-4521-8fac-ee5f83b25094",
+"t2": "147f6eca-8116-423b-9fcf-5def407da783",
+"target": "want to drive",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L01B03",
+"ka": "ebd9c0a0-cd68-43d1-8b20-f2d11c269845",
+"known": "এখন গাড়ি চালাতাম",
+"pos": 3,
+"t1": "7acb0520-c112-4df2-a1b8-12b194769790",
+"t2": "1348b29f-c112-4367-8e00-320bee28daf3",
+"target": "to drive now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L01U01",
+"ka": "0ef9f2a1-a096-4d78-bd98-5f6a8b3494fd",
+"known": "আমি গাড়ি চালাতে চাই।",
+"pos": 4,
+"t1": "4961172a-7b2c-46eb-9475-4a05d6471b10",
+"t2": "3f932acb-bd2c-4d6b-b479-93415845f8ca",
+"target": "I want to drive",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L01U02",
+"ka": "74036c9e-2ebb-4883-90bd-979023c89f64",
+"known": "আমরা গাড়ি চালাতে চাই।",
+"pos": 5,
+"t1": "23f9f54b-c621-4106-9240-b6d9c05085f3",
+"t2": "54cc09a3-d480-49ed-8ece-a1047549026b",
+"target": "we want to drive",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L01U03",
+"ka": "c85949b8-9182-459b-b59d-66d729ee3a10",
+"known": "সে বলেছিল আমি গাড়ি চালাতে চাই।",
+"pos": 6,
+"t1": "5cf21652-862a-4dd2-8293-12ed84109c4d",
+"t2": "d496cdfd-f8e1-42f5-b58b-876c165a4073",
+"target": "she said I want to drive",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L01U04",
+"ka": "342933e7-436e-4bfe-b2d9-77fcbac39538",
+"known": "আমার বাবা গাড়ি চালাতে চান।",
+"pos": 7,
+"t1": "3ab25448-06e8-45b4-91ef-09e499c71a0c",
+"t2": "27d4e72e-da29-42ab-8a8a-abc5ffa0517a",
+"target": "my father wants to drive",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L01U05",
+"ka": "e12808fe-c2c3-46a9-8bc9-c15a2e37c9f0",
+"known": "আমি জানি আমরা গাড়ি চালাতে চাই।",
+"pos": 8,
+"t1": "0fa53257-9131-4d67-b4d4-50eb5eef9efe",
+"t2": "76f25fbd-d419-44a3-8ff2-d72624b1a8fc",
+"target": "I know we want to drive",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L01U06",
+"ka": "06dd7d5e-b025-483e-a2b4-f154048864d2",
+"known": "আমি আশা করেছিলাম গাড়ি চালাতে",
+"pos": 9,
+"t1": "8dd2f6b2-8a34-452b-b380-bd567bb107d2",
+"t2": "f322548d-258c-4a30-b042-22fdac352150",
+"target": "I hoped to drive",
+"type": "use"
+}
+],
+"target": "to drive",
+"type": "M"
+},
+{
+"id": "S0599L02",
+"idx": 2,
+"is_new": true,
+"known": "খুশিমনে ... চালাতাম",
+"phrases": [
+{
+"id": "e1dbb2b3-06f7-4fa9-8f61-bfdc9ebc91c8",
+"ka": "4fe448e1-e324-46ff-8cde-f05544b86d77",
+"known": "খুশিমনে ... চালাতাম",
+"pos": 0,
+"t1": "7db975cc-106f-4107-a731-9309304541af",
+"t2": "8e5ac0b0-a136-4bad-a65b-c942f08bc7f4",
+"target": "I'd have been happy to",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0599L02C01",
+"ka": "bc6d620c-a218-4e2d-baa0-e236ec6e0d81",
+"known": "খুশিমনে",
+"pos": 1,
+"t1": "73b0a247-3ada-46ab-8803-7018d0e0e05d",
+"t2": "47f87401-67a4-4802-9217-0fae795eccef",
+"target": "happy",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0599L02C02",
+"ka": "e68477a8-a4b8-419a-a661-6e5c0af44d26",
+"known": "চালাতাম",
+"pos": 2,
+"t1": "fff80f7b-c88f-4a5b-b95f-8c0c7ed21dfe",
+"t2": "b57bc4c7-0568-4ec7-9e90-f1c3584c03e1",
+"target": "I'd have been",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0599L02B01",
+"ka": "4fe448e1-e324-46ff-8cde-f05544b86d77",
+"known": "খুশিমনে ... চালাতাম",
+"pos": 3,
+"t1": "7db975cc-106f-4107-a731-9309304541af",
+"t2": "8e5ac0b0-a136-4bad-a65b-c942f08bc7f4",
+"target": "I'd have been happy to",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L02B02",
+"ka": "831f04c8-8af6-4eb7-ae52-c627c65c0e1d",
+"known": "এখন খুশিমনে চালাতাম",
+"pos": 4,
+"t1": "7d761847-f5b9-4d3b-b38a-581d98d06916",
+"t2": "b4fde626-0792-421a-8701-1537938eda71",
+"target": "I'd have been happy to now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L02B03",
+"ka": "ba95d15a-d07d-4214-82eb-ffe4fccbaebf",
+"known": "আজ খুশিমনে চালাতাম",
+"pos": 5,
+"t1": "eae60d75-340d-407d-b7f5-ee19febf1808",
+"t2": "0d2a4fd2-8ab5-49ed-8e1e-d92f09bee6d2",
+"target": "I'd have been happy to today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L02U01",
+"ka": "a203815e-9081-407d-ae0b-338363c71aae",
+"known": "আমি খুশিমনে গাড়ি চালাতাম।",
+"pos": 6,
+"t1": "6187a53e-cb9e-46a1-8abc-cf8f425bbad6",
+"t2": "74b8b7d9-3a74-4d63-8ce8-e4107722ecae",
+"target": "I'd have been happy to drive",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L02U02",
+"ka": "77feaca3-0cc7-4ae4-9129-b3e5e3ee39c9",
+"known": "আমরা জানি খুশিমনে চালাতাম।",
+"pos": 7,
+"t1": "3ffd096c-a8a7-47bb-b471-2e9c7d440e76",
+"t2": "fbb6f5ff-06e7-410b-a817-db7a90145241",
+"target": "we know I'd have been happy to",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L02U03",
+"ka": "a0f42a22-377b-4f12-87cd-1329384bc35d",
+"known": "সে বলেছিল খুশিমনে চালাতাম।",
+"pos": 8,
+"t1": "1677ac0d-5db1-41c2-bfd6-f41a64e0b1f8",
+"t2": "32baf940-716f-4a7a-b116-edb7fb7f1c19",
+"target": "she said I'd have been happy to",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L02U04",
+"ka": "085060a0-cf95-4f05-b6c8-229cb0c96fde",
+"known": "আমার বাবা জানেন খুশিমনে চালাতাম।",
+"pos": 9,
+"t1": "aeeef017-14d7-4302-a067-7010e9ab1e43",
+"t2": "0df88c9e-cae5-4fe5-9835-c46981099788",
+"target": "my father knows I'd have been happy to",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L02U05",
+"ka": "de9e9a65-92e6-47ff-a718-5f20f7f93791",
+"known": "আমি জানি খুশিমনে চালাতাম।",
+"pos": 10,
+"t1": "80bd6939-6cf5-4bf0-b294-6667d586f63d",
+"t2": "bc01f309-706a-4891-ae90-5f70dac75b30",
+"target": "I know I'd have been happy to",
+"type": "use"
+}
+],
+"target": "I'd have been happy to",
+"type": "M"
+},
+{
+"id": "S0599L03",
+"idx": 3,
+"is_new": true,
+"known": "তুমি আমাকে বললে",
+"phrases": [
+{
+"id": "3fdd0341-45bf-433e-87b7-e8c4045ca2ec",
+"ka": "d4aca2a7-4b87-480f-86e1-85e1670c6d48",
+"known": "তুমি আমাকে বললে",
+"pos": 0,
+"t1": "300eb78f-8c78-49ba-9c13-bd07782c2483",
+"t2": "d4ed8cef-4478-4d00-9716-8b82c3d74464",
+"target": "if you'd told me",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0599L03C01",
+"ka": "5ef7ec07-d5e2-4353-ab4b-de7f9c9d5506",
+"known": "তুমি",
+"pos": 1,
+"t1": "8aeb1a0b-2e86-435a-a069-c4daba0ab94e",
+"t2": "74f1f8d6-8dc1-4144-bf43-90b13cfec8d5",
+"target": "you'd",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0599L03C02",
+"ka": "8975127a-f000-4276-a610-c0f17fb852e3",
+"known": "আমাকে বললে",
+"pos": 2,
+"t1": "657f706d-8fa5-4c0b-981a-ebeaa01edbad",
+"t2": "b564163b-5ce9-4a39-8a96-1451a5ba6bb4",
+"target": "told me",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0599L03B01",
+"ka": "d4aca2a7-4b87-480f-86e1-85e1670c6d48",
+"known": "তুমি আমাকে বললে",
+"pos": 3,
+"t1": "300eb78f-8c78-49ba-9c13-bd07782c2483",
+"t2": "d4ed8cef-4478-4d00-9716-8b82c3d74464",
+"target": "if you'd told me",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L03B02",
+"ka": "3a0f36ea-7deb-46cf-b645-76a39f117738",
+"known": "এখন তুমি আমাকে বললে",
+"pos": 4,
+"t1": "7f341381-07b2-4b4a-b120-af9e561802fe",
+"t2": "a88f1833-d5ed-45f0-b5bf-8da845d31d46",
+"target": "if you'd told me now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L03B03",
+"ka": "0b9e3e5e-65e9-4394-95f4-cae5c52713b6",
+"known": "আজ তুমি আমাকে বললে",
+"pos": 5,
+"t1": "2139d20e-8559-431d-a84f-e84ba5d57f16",
+"t2": "40a55a92-f102-4d0f-8329-ae848171412f",
+"target": "if you'd told me today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0599L03U01",
+"ka": "d74085c0-d012-45f8-bbb7-eb0f0a5d9d5d",
+"known": "তুমি আমাকে বললে আমি খুশিমনে গাড়ি চালাতাম।",
+"pos": 6,
+"t1": "a9872983-eea9-44dd-bd6e-cd6fe4eb3c4d",
+"t2": "e593430a-7480-40ba-a0ce-a033455e13d0",
+"target": "I'd have been happy to drive if you'd told me",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L03U02",
+"ka": "bdad4c72-9165-41ed-b12b-8c2a7cc8af5f",
+"known": "আমরা জানি তুমি আমাকে বললে।",
+"pos": 7,
+"t1": "395e91f0-e0d0-4e55-8abf-eb220ca86f7d",
+"t2": "15755298-f219-4000-b291-6ee4e31b5a00",
+"target": "we know if you'd told me",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L03U03",
+"ka": "8efb1723-1690-4e90-82b8-5861796720b6",
+"known": "সে বলেছিল তুমি আমাকে বললে।",
+"pos": 8,
+"t1": "4ba2fec1-92e6-457d-a57f-6566a19cadfa",
+"t2": "8d99ba18-36a5-4a7c-8fa7-c607e154d0f5",
+"target": "she said if you'd told me",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L03U04",
+"ka": "5fdef577-3fdc-4c58-bf97-8c8dab58f54e",
+"known": "আমার বাবা জানেন তুমি আমাকে বললে।",
+"pos": 9,
+"t1": "2477f549-3035-48e0-a442-c12720b8372f",
+"t2": "7534ea37-0176-4fbc-b2b9-98425d820463",
+"target": "my father knows if you'd told me",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0599L03U05",
+"ka": "8c7c1741-0a9f-4771-bd40-e26c3972b4f3",
+"known": "আমি জানি তুমি আমাকে বললে।",
+"pos": 10,
+"t1": "108e8c7d-f103-4860-9b26-ae2b7d077da4",
+"t2": "d73b625c-8de4-4cd6-9f9c-e71921e88dc4",
+"target": "I know if you'd told me",
+"type": "use"
+}
+],
+"target": "if you'd told me",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I'd have been happy to drive if you'd told me."
+},
+"608": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "এটাই করার বুদ্ধিমানের কাজ হত।",
+"legos": [
+{
+"id": "S0608L01",
+"idx": 1,
+"is_new": true,
+"known": "করার",
+"phrases": [
+{
+"id": "43980f3d-b5dd-4c68-9440-355a56b6cbd1",
+"ka": "1686428a-d2cc-487f-b386-b29ccbba6bf9",
+"known": "করার",
+"pos": 0,
+"t1": "716dac95-7888-41b5-a8d3-1c40c20f3c2c",
+"t2": "9cea3545-549c-4f38-bd16-5893271dcc15",
+"target": "to do",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0608L01B01",
+"ka": "1686428a-d2cc-487f-b386-b29ccbba6bf9",
+"known": "করার",
+"pos": 1,
+"t1": "716dac95-7888-41b5-a8d3-1c40c20f3c2c",
+"t2": "9cea3545-549c-4f38-bd16-5893271dcc15",
+"target": "to do",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L01B02",
+"ka": "5a793154-5c84-44b7-8a11-20ad94b1f39c",
+"known": "এটাই করার",
+"pos": 2,
+"t1": "a69f33ef-c1fc-444d-9f11-bb8c32d6884e",
+"t2": "6e34993a-370f-4022-b724-0f65ec555647",
+"target": "to do it",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L01B03",
+"ka": "a12d755c-37c5-458e-9e7b-1da999120e2f",
+"known": "এখন করার",
+"pos": 3,
+"t1": "c9934b5b-3c29-42ca-989f-314c62fb84b3",
+"t2": "e35c4653-64ed-4eb6-aac0-298091e12bd3",
+"target": "to do now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L01U01",
+"ka": "a486c6c9-de15-4309-bb23-b672f253c51d",
+"known": "আমরা এটা করার চেষ্টা করছি।",
+"pos": 4,
+"t1": "7a97d151-5eee-4bdc-9c0d-a5698f97b7d6",
+"t2": "b96a35d0-a595-4d59-82df-86ba354555f1",
+"target": "we're trying to do it",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L01U02",
+"ka": "21bda789-ac8a-43b7-b6e8-63cf8b7a1ab5",
+"known": "আমি এটা করার চেষ্টা করছি।",
+"pos": 5,
+"t1": "4017ab82-004b-430e-81d1-6d24583ee6c0",
+"t2": "a36aabfb-411d-46ce-a353-7c54660b741b",
+"target": "I'm trying to do it",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L01U03",
+"ka": "e585ea42-13ae-42cf-8bcf-fe3f2520a1ff",
+"known": "সে বলেছিল আমি এটা করার চেষ্টা করছি।",
+"pos": 6,
+"t1": "81d17383-928a-40aa-963b-affc7236f697",
+"t2": "6c649d2f-904a-4f99-9a05-9468ca000619",
+"target": "she said I'm trying to do it",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L01U04",
+"ka": "55db2138-816b-46a5-97f2-015f25ceee61",
+"known": "আমার বাবা এটা করার চেষ্টা করছেন।",
+"pos": 7,
+"t1": "3e707b13-756c-4846-9d1a-58d920846579",
+"t2": "81c65c24-0468-417d-86de-1181b0a9db26",
+"target": "my father is trying to do it",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L01U05",
+"ka": "2ef77c4d-1430-42b1-8312-ee2326a7594a",
+"known": "আমি জানি আমরা এটা করার চেষ্টা করছি।",
+"pos": 8,
+"t1": "e60a9341-116f-4f69-8770-46c76c3da030",
+"t2": "d585a891-0333-463e-b283-58467d0b8bd3",
+"target": "I know we're trying to do it",
+"type": "use"
+}
+],
+"target": "to do",
+"type": "A"
+},
+{
+"id": "S0608L02",
+"idx": 2,
+"is_new": true,
+"known": "বুদ্ধিমানের কাজ",
+"phrases": [
+{
+"id": "984df7f6-503a-4ce7-9045-b326ad2cd9e6",
+"ka": "0f8d6cbe-6aac-4a05-86ff-0b8434f72c59",
+"known": "বুদ্ধিমানের কাজ",
+"pos": 0,
+"t1": "74b0638c-8c0f-4ccf-b2fe-d912f6a823aa",
+"t2": "88f16ace-a6c9-4f44-8046-cebdbb010fa5",
+"target": "the sensible thing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0608L02C01",
+"ka": "a4048472-ae9a-4cc5-a303-ab0b5eb4d945",
+"known": "বুদ্ধিমানের",
+"pos": 1,
+"t1": "0d312e42-baa3-4d64-a036-2adcf0c09582",
+"t2": "ac451149-3398-4498-b9da-7bbf39b8bbe4",
+"target": "sensible",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0608L02C02",
+"ka": "5933dc05-6601-4e0f-a9f1-04272d6db9ea",
+"known": "কাজ",
+"pos": 2,
+"t1": "e6200c63-45b4-4d02-b9ff-4fed2494af2d",
+"t2": "699e4780-a768-4477-a7a0-8ca273570c5a",
+"target": "thing",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0608L02B01",
+"ka": "0f8d6cbe-6aac-4a05-86ff-0b8434f72c59",
+"known": "বুদ্ধিমানের কাজ",
+"pos": 4,
+"t1": "74b0638c-8c0f-4ccf-b2fe-d912f6a823aa",
+"t2": "88f16ace-a6c9-4f44-8046-cebdbb010fa5",
+"target": "the sensible thing",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L02B02",
+"ka": "27e27c1d-be07-4937-85c6-4c9fc826cb88",
+"known": "এখন বুদ্ধিমানের কাজ",
+"pos": 5,
+"t1": "45abcaa6-da48-43d6-8bbc-d648513c1963",
+"t2": "2cf2ae64-6293-4059-9c43-4e0150f92d52",
+"target": "the sensible thing now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L02B03",
+"ka": "696da888-fbd0-49a4-8061-47a55d8edc87",
+"known": "আজ বুদ্ধিমানের কাজ",
+"pos": 6,
+"t1": "586e553a-f166-4fc2-a85f-a01992a29a68",
+"t2": "29605a57-e53f-4759-af53-ae0770d08de2",
+"target": "the sensible thing today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L02U01",
+"ka": "a21d97aa-3005-4f1e-a71c-918da84be068",
+"known": "আমরা জানি বুদ্ধিমানের কাজ কী।",
+"pos": 7,
+"t1": "79826d80-be1d-4cbd-b18c-54db8d0f93a4",
+"t2": "69af8227-5309-4e3f-88d6-d15f58e32c9e",
+"target": "we know what the sensible thing is",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L02U02",
+"ka": "99dceb68-3037-4ad5-aa9a-da6780c0eae7",
+"known": "সে বলেছিল এটা বুদ্ধিমানের কাজ।",
+"pos": 8,
+"t1": "424ac4b5-44a6-41a6-8eca-757717420bce",
+"t2": "7ead2752-965b-4864-a42b-36f0a4c01e32",
+"target": "she said it's the sensible thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L02U03",
+"ka": "f06f947b-3266-49a9-86cc-6df309073910",
+"known": "আমার বাবা জানেন এটা বুদ্ধিমানের কাজ।",
+"pos": 9,
+"t1": "82b46f38-fd7d-48df-8e9a-f67181e68340",
+"t2": "f88df5cb-9c91-47f9-8414-269e0566dada",
+"target": "my father knows it's the sensible thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L02U04",
+"ka": "325feeb0-1930-4a93-b975-fc5e96765e6d",
+"known": "আমি জানি এটা বুদ্ধিমানের কাজ।",
+"pos": 10,
+"t1": "77985ccf-9c29-4d4d-8f52-413504599f2b",
+"t2": "784af522-7d7d-49e6-8e32-f212b8dbf738",
+"target": "I know it's the sensible thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L02U05",
+"ka": "aeb42c72-177f-48b7-9c97-d4d09f3cd595",
+"known": "আমরা মনে করি এটা বুদ্ধিমানের কাজ।",
+"pos": 11,
+"t1": "4ce9981d-c81b-4787-96a6-30aeea1bc660",
+"t2": "8128dd27-2d3a-4a8f-ac81-c6c025a2f261",
+"target": "we think it's the sensible thing",
+"type": "use"
+}
+],
+"target": "the sensible thing",
+"type": "M"
+},
+{
+"id": "S0608L03",
+"idx": 3,
+"is_new": true,
+"known": "এটাই ... কাজ হত",
+"phrases": [
+{
+"id": "d74a2c16-a3bc-44aa-92b8-614dd2d9ee7e",
+"ka": "d7db763e-cd06-48d9-815e-78f3ec9e8827",
+"known": "এটাই ... কাজ হত",
+"pos": 0,
+"t1": "da71c222-e376-40c5-9370-0132f37f5641",
+"t2": "a960791b-de4f-49e4-a268-2ad7157c67e2",
+"target": "would have been the thing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0608L03C01",
+"ka": "8a6dd19a-bd8b-4dff-90ac-dd8f1edfe35d",
+"known": "এটাই",
+"pos": 1,
+"t1": "a41c356c-e147-475c-9055-de9cc3f3208a",
+"t2": "11b9f532-1f84-485d-b343-4927f34df7ff",
+"target": "it",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0608L03C03",
+"ka": "e081a171-e016-4479-94b0-2dbe3c8ab0dd",
+"known": "হত",
+"pos": 3,
+"t1": "2992b333-128f-4ed8-a9c6-df528812ab20",
+"t2": "ca1b1ac1-e14e-42de-97e3-d61c8236ebb2",
+"target": "would have been",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0608L03B01",
+"ka": "d7db763e-cd06-48d9-815e-78f3ec9e8827",
+"known": "এটাই ... কাজ হত",
+"pos": 4,
+"t1": "da71c222-e376-40c5-9370-0132f37f5641",
+"t2": "a960791b-de4f-49e4-a268-2ad7157c67e2",
+"target": "would have been the thing",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L03B02",
+"ka": "99f45be1-6cd3-4e6f-9cdd-6d5a96ad50b1",
+"known": "এখন এটাই কাজ হত",
+"pos": 5,
+"t1": "2c860ed6-4955-49a6-9a13-0c766d20dad6",
+"t2": "eba1a423-c901-463d-a673-93b458d7b220",
+"target": "would have been the thing now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L03B03",
+"ka": "8ad6605d-e0c7-4a2c-bb13-c7c2a55362b0",
+"known": "আজ এটাই কাজ হত",
+"pos": 6,
+"t1": "dd80448a-ca3d-469f-970a-523e61e9abbb",
+"t2": "fa7c5e88-5a90-4f2d-9130-5418d9d226bf",
+"target": "would have been the thing today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0608L03U01",
+"ka": "6b19102e-6a5b-4fb7-8b90-3729196dc28e",
+"known": "এটাই করার বুদ্ধিমানের কাজ হত।",
+"pos": 7,
+"t1": "26d1dbb7-ab5c-45b6-8e74-49d1e3449fca",
+"t2": "99e2de18-8497-4eb9-a004-0c9a2ae9d1e5",
+"target": "it would have been the sensible thing to do",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L03U04",
+"ka": "b132d6de-48b9-4cb5-b2d1-2eff869b67c5",
+"known": "আমার বাবা জানেন এটাই কাজ হত।",
+"pos": 10,
+"t1": "b663b829-8aba-43fd-98b3-5d4b8ce75f19",
+"t2": "686c5407-6350-40c6-a3ea-16980d0a08e6",
+"target": "my father knows would have been the thing",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0608L03U05",
+"ka": "4d128c3e-8264-4138-963c-1ea7eadffb14",
+"known": "আমি জানি এটাই কাজ হত।",
+"pos": 11,
+"t1": "82ac4e81-f427-4372-9796-a372996d8ad3",
+"t2": "e2a4ed16-92bb-4ffa-aa8d-590991f2e98d",
+"target": "I know would have been the thing",
+"type": "use"
+}
+],
+"target": "would have been the thing",
+"type": "M"
+}
+],
+"status": "released",
+"target": "It would have been the sensible thing to do."
+},
+"615": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+"legos": [
+{
+"id": "S0615L01",
+"idx": 1,
+"is_new": true,
+"known": "সাহসী",
+"phrases": [
+{
+"id": "207856fc-a00d-4206-8449-2336f81ff0c3",
+"ka": "aa080d8d-7c05-4d41-9b39-2a5a7b093399",
+"known": "সাহসী",
+"pos": 0,
+"t1": "09d51d89-5f4a-4626-9955-f51113953e1d",
+"t2": "3e4dbaf4-c7ea-4042-95d9-08543da7b403",
+"target": "brave",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0615L01B01",
+"ka": "aa080d8d-7c05-4d41-9b39-2a5a7b093399",
+"known": "সাহসী",
+"pos": 1,
+"t1": "09d51d89-5f4a-4626-9955-f51113953e1d",
+"t2": "3e4dbaf4-c7ea-4042-95d9-08543da7b403",
+"target": "brave",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0615L01B02",
+"ka": "969ee42f-09b3-4d67-97f2-ad4bff236dcf",
+"known": "খুব সাহসী",
+"pos": 2,
+"t1": "0c2c2479-8510-4a35-8bb0-165a1cfc145e",
+"t2": "9963761e-6a79-474a-8699-0aa64362a3ff",
+"target": "very brave",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0615L01B03",
+"ka": "22c1e3f3-140c-498b-a197-1ce3ddee4375",
+"known": "এখন সাহসী",
+"pos": 3,
+"t1": "d69c007d-6c94-44e6-8be0-c5f7696919a3",
+"t2": "d910e99e-7bac-455a-bfff-bb330bd8eecb",
+"target": "brave now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0615L01U01",
+"ka": "f0d28c58-0810-4c49-ae16-3a69bcae0de9",
+"known": "তুমি খুব সাহসী।",
+"pos": 4,
+"t1": "06648671-cd5c-4631-b390-bcd769a4eb99",
+"t2": "ca02e6ac-1f18-4f7f-a840-cdfacc23702f",
+"target": "you're very brave",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U02",
+"ka": "b725e22a-20e0-4d24-b5f2-8a87acca3079",
+"known": "আমার বাবা খুব সাহসী।",
+"pos": 5,
+"t1": "8d66551e-9b98-442c-930d-858f7d7de2ef",
+"t2": "b64dfbb4-cc25-4b59-8aa7-fe5b9fe842b7",
+"target": "my father is very brave",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U03",
+"ka": "451f8815-31f2-49af-b487-865de546eded",
+"known": "সে বলেছিল তুমি খুব সাহসী।",
+"pos": 6,
+"t1": "ced8c654-cc8a-4004-8f4d-02972641dfd1",
+"t2": "58f8ce60-8c36-47a3-b2d1-d3a9761fe1c9",
+"target": "she said you're very brave",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U04",
+"ka": "e2e1222c-3a6c-4b93-9790-ae2bcf04a859",
+"known": "আমি জানি তুমি খুব সাহসী।",
+"pos": 7,
+"t1": "f4bf5a47-ac4d-4a88-9bd0-4bd4c022b5f8",
+"t2": "593db580-9634-480c-9479-5cb464994b71",
+"target": "I know you're very brave",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U05",
+"ka": "b16885f2-0772-4b19-984f-34506b188763",
+"known": "আমরা জানি তুমি খুব সাহসী।",
+"pos": 8,
+"t1": "0ed6371e-6ef4-4c0e-a82d-02e2f48ed17a",
+"t2": "41024e3f-9b35-4aaf-8d76-0ff1298ccdd2",
+"target": "we know you're very brave",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U06",
+"ka": "6f210fbc-3925-45e7-b0ea-0d79b379675b",
+"known": "তোমার সাহসী হওয়ার দরকার নেই।",
+"pos": 9,
+"t1": "22056eb0-ac6d-4f6a-bdc3-ef8bca4debd2",
+"t2": "50b4293e-e4cc-4653-a7ff-b889bad6415c",
+"target": "You don't need to be brave.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U07",
+"ka": "48605446-ffee-45e4-b011-26c4ba03048d",
+"known": "তোমার সাহসী হওয়া উচিত।",
+"pos": 10,
+"t1": "07c00b2a-f6eb-4dcb-8066-4c82316997ae",
+"t2": "67acd5a0-36ed-4d91-94f5-7cc375e6944e",
+"target": "You should be brave.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U08",
+"ka": "dd794996-1cee-44b2-8ac3-336493df0388",
+"known": "তোমাকে অবশ্যই সাহসী হতে হবে।",
+"pos": 11,
+"t1": "7a7ede11-9ef3-447b-8e06-70bad477ac77",
+"t2": "42b3bde6-f447-425a-b2f7-b8286532e341",
+"target": "You must be brave.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U09",
+"ka": "a2867bd3-1ec0-463a-a4bf-946d61dc4d09",
+"known": "আশা করি তুমি সাহসী হবে।",
+"pos": 12,
+"t1": "6f723eda-fed7-43ba-aa38-307ca31e7c7d",
+"t2": "c515959c-6548-4f2e-9556-da5fdbf3cefa",
+"target": "I hope you'll be brave.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01U10",
+"ka": "e40f4207-dc94-4472-b5d8-9c93fc9b39b8",
+"known": "সবচেয়ে গুরুত্বপূর্ণ জিনিস হলো সাহসী হওয়া।",
+"pos": 13,
+"t1": "24c9ad9b-4c82-46c7-8c5a-2530eca07e02",
+"t2": "39f4ef3d-7211-428b-9076-c027f7b152d7",
+"target": "The most important thing is to be brave.",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L01B04",
+"ka": "92efe48c-7d0e-4b45-a08a-344bfa5835da",
+"known": "যতটা সম্ভব সাহসী",
+"pos": 14,
+"t1": "21260437-114e-41c0-afa8-897ff34ab86d",
+"t2": "600afdc4-f6e1-4f26-b1e0-8dd4d07964d7",
+"target": "as brave as possible",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0615L01U11",
+"ka": "d2e31488-5f33-4707-9a43-8e34915044e5",
+"known": "আমার সাহসী মানুষ ভালো লাগে।",
+"pos": 15,
+"t1": "e52b2220-9550-438b-8c74-8265d9f73095",
+"t2": "bdd8976a-7b65-4ad1-b7ec-f06bd7ebefab",
+"target": "I like brave people.",
+"type": "use"
+}
+],
+"target": "brave",
+"type": "A"
+},
+{
+"id": "S0615L02",
+"idx": 2,
+"is_new": true,
+"known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+"phrases": [
+{
+"id": "9e1e5c83-e29d-4968-943b-954816c7b7dd",
+"ka": "6801177c-b3c1-42b6-9ec3-2f1beeb8bf34",
+"known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+"pos": 0,
+"t1": "b5f6d6b3-47bc-4923-ac95-e5389e3ea9a5",
+"t2": "c3c31628-662b-458d-ba25-2c25195d8cde",
+"target": "I thought you were to say that",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0615L02C01",
+"ka": "77910d52-555a-48bb-a5f8-12ae3c451574",
+"known": "মনে করতাম",
+"pos": 1,
+"t1": "bbdf7b3b-0152-44ea-abbf-4a2c69648022",
+"t2": "0f9709a1-b0d5-4145-9830-b0932922783c",
+"target": "I thought",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0615L02C02",
+"ka": "5ef7ec07-d5e2-4353-ab4b-de7f9c9d5506",
+"known": "তুমি",
+"pos": 2,
+"t1": "9bbd9900-f55b-4fa4-a17e-1d7d86ce2127",
+"t2": "3770887b-6416-4a1e-87c9-490e0c70ea8d",
+"target": "you were",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0615L02C04",
+"ka": "d088a41e-0e2a-4a90-a425-73e0b9384e11",
+"known": "এটা বলতে",
+"pos": 4,
+"t1": "57e2bfbe-5797-4769-8e92-d9d02e020f84",
+"t2": "f2ecf3a7-78f4-45b5-b076-e1b42c7916ea",
+"target": "to say that",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0615L02B01",
+"ka": "6801177c-b3c1-42b6-9ec3-2f1beeb8bf34",
+"known": "মনে করতাম তুমি এটা বলতে ... ছিলে",
+"pos": 5,
+"t1": "b5f6d6b3-47bc-4923-ac95-e5389e3ea9a5",
+"t2": "c3c31628-662b-458d-ba25-2c25195d8cde",
+"target": "I thought you were to say that",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0615L02B03",
+"ka": "cda959c2-58f4-42e3-99bb-d6fa35fd1a4a",
+"known": "আজ মনে করতাম তুমি এটা বলতে",
+"pos": 7,
+"t1": "51c32c87-b4eb-44ab-8daa-812a0766ddf0",
+"t2": "ccd34fbf-7823-4c84-ba62-e06449299b60",
+"target": "I thought you were to say that today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0615L02U01",
+"ka": "92fa6c5d-6652-43cf-8d9a-9df3c411f01d",
+"known": "আমি মনে করতাম তুমি এটা বলতে খুব সাহসী ছিলে।",
+"pos": 8,
+"t1": "46a4f91c-312c-40bb-8cca-88a4ae19a29e",
+"t2": "bc62ee64-5fc4-4544-b012-73d75d138669",
+"target": "I thought you were very brave to say that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L02U02",
+"ka": "05509699-7399-49f1-917e-4e53cd242781",
+"known": "আমরা জানি মনে করতাম তুমি এটা বলতে।",
+"pos": 9,
+"t1": "b7ccc0b9-fb00-4dc4-a328-d8ca145b0fc0",
+"t2": "745ff018-bfdc-4a85-8140-c1213aba11c3",
+"target": "we know I thought you were to say that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L02U03",
+"ka": "6915c7be-d473-41cd-9052-87c34b5642e0",
+"known": "সে বলেছিল মনে করতাম তুমি এটা বলতে।",
+"pos": 10,
+"t1": "b9a9042e-2ba5-4e7d-a54f-4d8c7a55f636",
+"t2": "506deea5-1bd2-4380-a726-e118c7c834fa",
+"target": "she said I thought you were to say that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L02U04",
+"ka": "a4066c0a-89c3-4c8b-95e6-36e4b3590f1d",
+"known": "আমার বাবা জানেন মনে করতাম তুমি এটা বলতে।",
+"pos": 11,
+"t1": "82017ebd-dd7b-4d2b-b596-5c218956188e",
+"t2": "0b894aad-1464-4700-a648-2baa074eff05",
+"target": "my father knows I thought you were to say that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0615L02U05",
+"ka": "ff73e0c7-0f24-4ed1-ac3a-965c4b9e53de",
+"known": "আমি জানি মনে করতাম তুমি এটা বলতে।",
+"pos": 12,
+"t1": "94e35aeb-30f3-454e-9668-f48ccf8e43a6",
+"t2": "21b49d4f-3f73-4423-9ba0-fe410fd4392a",
+"target": "I know I thought you were to say that",
+"type": "use"
+}
+],
+"target": "I thought you were to say that",
+"type": "M"
+}
+],
+"status": "released",
+"target": "I thought you were very brave to say that."
+},
+"616": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "তুমি এটা বলতে খুব সাহসী ছিলে যে তুমি তা মনে করেছিলে।",
+"legos": [
+{
+"id": "S0616L01",
+"idx": 1,
+"is_new": true,
+"known": "তুমি ... মনে করেছিলে",
+"phrases": [
+{
+"id": "fd7e999a-54dd-404d-a616-565ab9c84834",
+"ka": "5260e7a6-63aa-49a0-88dd-718e9d5b7e3d",
+"known": "তুমি ... মনে করেছিলে",
+"pos": 0,
+"t1": "293e6f81-f228-4eba-8b20-ad17d4156276",
+"t2": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+"target": "you thought",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0616L01C01",
+"ka": "5ef7ec07-d5e2-4353-ab4b-de7f9c9d5506",
+"known": "তুমি",
+"pos": 1,
+"t1": "786d497d-e3c8-4b84-b13e-e4021271eb5a",
+"t2": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0616L01C03",
+"ka": "7481c510-039c-40ca-b77b-6f19a7bdac4b",
+"known": "মনে করেছিলে",
+"pos": 3,
+"t1": "917ef988-0f13-4c23-972f-1e04459c6cdc",
+"t2": "17612809-bd34-4990-a13e-380c0a39b634",
+"target": "thought",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0616L01B01",
+"ka": "5260e7a6-63aa-49a0-88dd-718e9d5b7e3d",
+"known": "তুমি ... মনে করেছিলে",
+"pos": 4,
+"t1": "293e6f81-f228-4eba-8b20-ad17d4156276",
+"t2": "42c9a6db-9c72-47dc-9906-eb6ddc361edf",
+"target": "you thought",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0616L01B02",
+"ka": "811cb5c9-6047-4ebb-b497-c02fe42f4ad8",
+"known": "তুমি তা মনে করেছিলে",
+"pos": 5,
+"t1": "df703840-ae28-4d1e-85d3-6e95e461fd7b",
+"t2": "ece965a6-c57c-490c-8cad-f00a1d36d5f8",
+"target": "you thought that",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0616L01B03",
+"ka": "f187ec68-7843-46e4-a0ae-a885568f0124",
+"known": "এখন তুমি মনে করেছিলে",
+"pos": 6,
+"t1": "4b88f5e5-eff2-4474-b18d-1867583760ac",
+"t2": "eb85b0cb-9685-4b92-bbba-6e366b962b2c",
+"target": "you thought now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0616L01U01",
+"ka": "15106393-f558-4547-a52b-6a1ab05167fd",
+"known": "তুমি এটা আগে মনে করেছিলে।",
+"pos": 7,
+"t1": "c4693b3f-b068-468a-abf9-7b5c01852825",
+"t2": "bcd7b609-3320-4c1d-87ad-2340f3e01408",
+"target": "you thought that before",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L01U02",
+"ka": "dabc5590-76f2-4882-a3b0-534afa433f93",
+"known": "তুমি এটা এখন মনে করেছিলে।",
+"pos": 8,
+"t1": "d2b5529a-dbcd-4344-9024-2f44dff37d72",
+"t2": "d5b680e2-df82-4f8a-a3a3-b6285ea6324d",
+"target": "you thought that now",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L01U03",
+"ka": "bd762898-85d3-4c2f-b449-e9405ff488cd",
+"known": "সে বলেছিল তুমি এটা মনে করেছিলে।",
+"pos": 9,
+"t1": "1288a2cc-83db-4150-96bf-023b593ed3ca",
+"t2": "0483ed04-27d0-49de-9ce0-8c3df81b4a2c",
+"target": "she said you thought that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L01U04",
+"ka": "f8368843-0b56-4196-b7ec-ae97b8a22eac",
+"known": "আমার বাবা জানেন তুমি এটা মনে করেছিলে।",
+"pos": 10,
+"t1": "e7cc1b49-5656-4006-ae67-439216bd1a28",
+"t2": "3f0d0153-8934-4f1b-a79b-da2a6b62baf5",
+"target": "my father knows you thought that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L01U05",
+"ka": "3c119a20-0f14-45bc-a57c-2c245a4d95c3",
+"known": "আমি জানি তুমি এটা মনে করেছিলে।",
+"pos": 11,
+"t1": "b818198d-991d-4e8c-990b-de95a0cff0e3",
+"t2": "e4ad3d2e-ad32-4e0c-9acf-8233bf644250",
+"target": "I know you thought that",
+"type": "use"
+}
+],
+"target": "you thought",
+"type": "M"
+},
+{
+"id": "S0616L02",
+"idx": 2,
+"is_new": true,
+"known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+"phrases": [
+{
+"id": "8e40321c-7cad-4047-92a9-cf83c0291e4c",
+"ka": "58a7fb9f-d5ec-4b34-a7ff-70efbd2440f6",
+"known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+"pos": 0,
+"t1": "d272d07a-0d21-4993-bae2-737b58db5bdf",
+"t2": "08e58dc1-41b7-4c2f-be5f-bc2c01c3685a",
+"target": "you were very brave to say",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0616L02C01",
+"ka": "f1c02d6c-574f-4741-af72-fdd8f17ba1ab",
+"known": "তুমি এটা বলতে",
+"pos": 1,
+"t1": "57e2bfbe-5797-4769-8e92-d9d02e020f84",
+"t2": "f2ecf3a7-78f4-45b5-b076-e1b42c7916ea",
+"target": "to say that",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0616L02C03",
+"ka": "4d6d039e-38de-4947-ae1a-8a1ffb4caff4",
+"known": "খুব সাহসী ছিলে",
+"pos": 3,
+"t1": "28428e6e-a25f-43a9-a738-27522615e55b",
+"t2": "fe666638-dac3-430f-af43-c56bd05cb46d",
+"target": "you were very brave",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0616L02C04",
+"ka": "92a7cdce-7e7d-4017-b082-e25f973fe042",
+"known": "যে",
+"pos": 4,
+"t1": "735b04f2-b36e-4841-90bb-2bcb51887032",
+"t2": "4652e371-50ea-49b6-9bcf-57c26da9b60e",
+"target": "that",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0616L02B01",
+"ka": "58a7fb9f-d5ec-4b34-a7ff-70efbd2440f6",
+"known": "তুমি এটা বলতে খুব সাহসী ছিলে যে",
+"pos": 6,
+"t1": "d272d07a-0d21-4993-bae2-737b58db5bdf",
+"t2": "08e58dc1-41b7-4c2f-be5f-bc2c01c3685a",
+"target": "you were very brave to say",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0616L02B02",
+"ka": "968c0bdb-9c05-41ed-9efa-dea83d3180b2",
+"known": "এখন তুমি এটা বলতে খুব সাহসী ছিলে যে",
+"pos": 7,
+"t1": "578f642d-8089-46ab-9753-8e302545c995",
+"t2": "cf3abc86-0437-432b-8291-11f3a753def6",
+"target": "you were very brave to say now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0616L02B03",
+"ka": "08659374-c3e2-46d6-9572-d21a8925db83",
+"known": "আজ তুমি এটা বলতে খুব সাহসী ছিলে যে",
+"pos": 8,
+"t1": "aa0371a6-bb14-451c-8538-794532f8b774",
+"t2": "0786a6f4-811f-46e2-8562-68aff31931aa",
+"target": "you were very brave to say today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0616L02U01",
+"ka": "cd2c64db-6f78-47d5-903a-3a44c9393e5b",
+"known": "তুমি এটা বলতে খুব সাহসী ছিলে যে তুমি তা মনে করেছিলে।",
+"pos": 9,
+"t1": "b4043ba4-d71a-4613-8639-493974692559",
+"t2": "6b3a7105-11aa-42ac-b785-c6cee8174856",
+"target": "you were very brave to say you thought that",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L02U02",
+"ka": "e5dcae29-4303-41a8-ae91-7474d3f2bc06",
+"known": "আমরা জানি তুমি এটা বলতে খুব সাহসী ছিলে যে।",
+"pos": 10,
+"t1": "a4250006-aa1d-4554-a2ad-2a2c63727926",
+"t2": "f4a55fb1-f8fa-4677-a322-379d23117f2d",
+"target": "we know you were very brave to say",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L02U03",
+"ka": "fe00d698-62d7-4aef-bdc8-7584da2568b8",
+"known": "সে বলেছিল তুমি এটা বলতে খুব সাহসী ছিলে যে।",
+"pos": 11,
+"t1": "a96911b0-d3a3-48ea-9bd5-9344e697c533",
+"t2": "c7462814-51fd-4537-aecb-7af8e3d77a16",
+"target": "she said you were very brave to say",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L02U04",
+"ka": "166bdb14-418f-4d4c-a981-9bfcea15e37b",
+"known": "আমার বাবা জানেন তুমি এটা বলতে খুব সাহসী ছিলে যে।",
+"pos": 12,
+"t1": "0732563c-a70b-43c2-9274-39ecddd0d20c",
+"t2": "97c06784-ae90-431e-b0ab-817b32cf0ddc",
+"target": "my father knows you were very brave to say",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0616L02U05",
+"ka": "f4f466ae-dbd4-4271-b778-7c8ea00f44de",
+"known": "আমি জানি তুমি এটা বলতে খুব সাহসী ছিলে যে।",
+"pos": 13,
+"t1": "46012c7c-4fe0-418b-9f4b-38aa3b5e1887",
+"t2": "1fc145f2-a2a8-400d-983f-c1749e5960d9",
+"target": "I know you were very brave to say",
+"type": "use"
+}
+],
+"target": "you were very brave to say",
+"type": "M"
+}
+],
+"status": "released",
+"target": "You were very brave to say you thought that."
+},
+"626": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+"legos": [
+{
+"id": "S0626L01",
+"idx": 1,
+"is_new": true,
+"known": "তৃষ্ণা নেই",
+"phrases": [
+{
+"id": "4dcc9647-01c5-43f0-a927-b21e51ede313",
+"ka": "409921dd-137d-4176-b338-b12da637a852",
+"known": "তৃষ্ণা নেই",
+"pos": 0,
+"t1": "7ea8c8a8-f1ec-4ed7-ba87-dba50d467128",
+"t2": "2336ec03-8e50-43d1-bf34-c5746de694d0",
+"target": "not thirsty",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0626L01B01",
+"ka": "409921dd-137d-4176-b338-b12da637a852",
+"known": "তৃষ্ণা নেই",
+"pos": 1,
+"t1": "7ea8c8a8-f1ec-4ed7-ba87-dba50d467128",
+"t2": "2336ec03-8e50-43d1-bf34-c5746de694d0",
+"target": "not thirsty",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0626L01B02",
+"ka": "a0c5855b-9f97-4347-b46d-4cadf8f99d46",
+"known": "আমার তৃষ্ণা নেই",
+"pos": 2,
+"t1": "1fda9308-c269-4425-b516-edbcbfc7f72e",
+"t2": "35f717d3-06f5-49e0-a459-d886d3c7f375",
+"target": "I'm not thirsty",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0626L01B03",
+"ka": "deced1b3-217f-4889-a93d-3049529e6738",
+"known": "এখন তৃষ্ণা নেই",
+"pos": 3,
+"t1": "64a75652-cba0-4150-a40f-65feb146e95c",
+"t2": "4a69802e-23db-4f58-bca5-1c6413d6ee8a",
+"target": "not thirsty now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0626L01U01",
+"ka": "260efb92-7aec-41d7-a87f-74b7eb374059",
+"known": "আমার এখন তৃষ্ণা নেই।",
+"pos": 4,
+"t1": "b9003592-84bb-4206-979f-80860f0c0768",
+"t2": "29496c28-b551-46dd-b07e-5c2951a9bf0e",
+"target": "I'm not thirsty now",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0626L01U02",
+"ka": "521d691a-1e5e-4425-a467-a6ae67a9fec4",
+"known": "আমাদের আজ তৃষ্ণা নেই।",
+"pos": 5,
+"t1": "ee30b84d-4abb-4a99-8a6e-8b1e58489355",
+"t2": "713696aa-e62f-426e-b205-7f4b85e07fd9",
+"target": "we're not thirsty today",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0626L01U03",
+"ka": "29c44b3c-c282-49a9-a191-a7350bf08dff",
+"known": "সে বলেছিল আমার তৃষ্ণা নেই।",
+"pos": 6,
+"t1": "222fdeea-9a1d-4c90-a5bb-c15322ab1a91",
+"t2": "11ccde31-073f-45de-bdbf-2da8e0f39d36",
+"target": "she said I'm not thirsty",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0626L01U04",
+"ka": "401d95e4-a489-42ef-98af-44d505055951",
+"known": "আমরা জানি আমার তৃষ্ণা নেই।",
+"pos": 7,
+"t1": "324ef33e-1a44-4000-9e32-2da89fa95e0d",
+"t2": "cd765c34-2b07-419c-8112-6d29dbb27d5f",
+"target": "we know I'm not thirsty",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0626L01U05",
+"ka": "df0ffd15-ef6a-44a2-9be3-2aad76f577f7",
+"known": "আমি জানি আমার তৃষ্ণা নেই।",
+"pos": 8,
+"t1": "88a46d33-22a8-433e-be49-0bb53f1c7970",
+"t2": "667cd8cd-438b-4eee-8e57-81e3c1646d72",
+"target": "I know I'm not thirsty",
+"type": "use"
+}
+],
+"target": "not thirsty",
+"type": "M"
+},
+{
+"id": "S0626L02",
+"idx": 2,
+"is_new": true,
+"known": "না, ... ধন্যবাদ",
+"phrases": [
+{
+"id": "455d2cf3-4ba3-493c-804b-c418ce6a2bfe",
+"ka": "924fa644-b0a9-4150-b82c-4f94a2830407",
+"known": "না, ... ধন্যবাদ",
+"pos": 0,
+"t1": "9bc2b00e-f007-4d9b-9713-af5377c71657",
+"t2": "b0425644-96b9-445c-91d8-3b549fe8236f",
+"target": "no thank you",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0626L02C01",
+"ka": "e7584862-6c35-4387-a8d4-c8f9b2061e05",
+"known": "না",
+"pos": 1,
+"t1": "b63771cb-5f31-4a8e-aa75-818d6f1a5cbf",
+"t2": "1193ebf8-74ec-40c4-b526-d5f9a4b808a6",
+"target": "no",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0626L02C02",
+"ka": "15110247-207a-4011-8264-4e82c236e03c",
+"known": "ধন্যবাদ",
+"pos": 2,
+"t1": "8f70129b-d6f1-4442-865b-0ff7fc00cd63",
+"t2": "0d562d39-4bfa-4e53-a037-0ae6ca18b10b",
+"target": "thank you",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0626L02B01",
+"ka": "924fa644-b0a9-4150-b82c-4f94a2830407",
+"known": "না, ... ধন্যবাদ",
+"pos": 3,
+"t1": "9bc2b00e-f007-4d9b-9713-af5377c71657",
+"t2": "b0425644-96b9-445c-91d8-3b549fe8236f",
+"target": "no thank you",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0626L02B02",
+"ka": "33dab01c-ac79-4a2d-a90b-e3bd0774cdac",
+"known": "এখন না, ধন্যবাদ",
+"pos": 4,
+"t1": "c753d861-25af-45c5-9fb9-6a4e13e02ea4",
+"t2": "3a88e32b-b72c-481e-9efa-772ac596f422",
+"target": "no thank you now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0626L02B03",
+"ka": "4f81f6a6-3022-4ef5-83d5-39aabed984cb",
+"known": "আজ না, ধন্যবাদ",
+"pos": 5,
+"t1": "bda41a44-7c21-4304-8e3d-dfb44c61724a",
+"t2": "54bb9644-cfe3-4c5e-848a-08141042d0ac",
+"target": "no thank you today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0626L02U01",
+"ka": "103f933a-0a04-4a37-b5a3-a268bffba0d2",
+"known": "না, আমার তৃষ্ণা নেই, ধন্যবাদ।",
+"pos": 6,
+"t1": "20771d47-c63d-47d6-a514-be92b7a9e1dc",
+"t2": "04836b8d-a5f4-44f3-a5ff-357feadc1d3b",
+"target": "no I'm not thirsty thank you",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0626L02U03",
+"ka": "44ff45d8-67bd-463c-9306-3770c9a37296",
+"known": "সে বলেছিল না, ধন্যবাদ।",
+"pos": 8,
+"t1": "0f566aea-d65d-4480-89e4-a63eff80abc0",
+"t2": "c3ed06bf-6f02-4537-a5b3-991f11c9a419",
+"target": "she said no thank you",
+"type": "use"
+},
+{
+"id": "eng_for_ben:S0626L02U04",
+"ka": "111086d3-a9fe-4215-8f4a-fee0a1208a73",
+"known": "আমার বাবা বলেছিলেন না, ধন্যবাদ।",
+"pos": 9,
+"t1": "c79b67e2-1fe7-4117-876f-f327cb7495f0",
+"t2": "cb0e2a27-8cf5-4213-b4bd-c1428a4834f2",
+"target": "my father said no thank you",
+"type": "use"
+}
+],
+"target": "no thank you",
+"type": "M"
+}
+],
+"status": "released",
+"target": "No, I'm not thirsty, thank you."
+},
+"630": {
+"at": "2026-11-19T11:05:39Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "আমি কি দয়া করে কিছু পান করতে পারি?",
+"legos": [
+{
+"id": "S0630L01",
+"idx": 1,
+"is_new": true,
+"known": "আমি কি ... পারি",
+"phrases": [
+{
+"id": "e674d6a1-c8c1-4b8e-99f7-4b3abb6ba251",
+"ka": "004f84b9-4bc0-44cf-b2b8-346528f9b15d",
+"known": "আমি কি ... পারি",
+"pos": 0,
+"t1": "a09926ba-7e08-40cf-beb1-125583ea0764",
+"t2": "e77bff4c-d137-4648-933a-86f5fc615e30",
+"target": "could I have",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0630L01C01",
+"ka": "1cbcbf9a-ff3c-445d-a41f-c55f5723734f",
+"known": "আমি",
+"pos": 1,
+"t1": "bcce081d-c5b3-496b-90e8-238203b8b64d",
+"t2": "33185df6-d563-41af-853f-a55201fea3ab",
+"target": "I",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0630L01C03",
+"ka": "d307dc53-6112-4083-8c07-4eccd4eee59a",
+"known": "কি ... পারি",
+"pos": 3,
+"t1": "af33739d-6fd6-4a29-aef6-e8412e4e1a4a",
+"t2": "cc091d49-d698-4729-b86b-dfa2660810ce",
+"target": "could have",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0630L01B01",
+"ka": "004f84b9-4bc0-44cf-b2b8-346528f9b15d",
+"known": "আমি কি ... পারি?",
+"pos": 4,
+"t1": "a09926ba-7e08-40cf-beb1-125583ea0764",
+"t2": "e77bff4c-d137-4648-933a-86f5fc615e30",
+"target": "could I have?",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0630L01B02",
+"ka": "ad13bf54-5932-49e5-88b8-2c0db534f372",
+"known": "এখন আমি কি পারি?",
+"pos": 5,
+"t1": "bf2e5292-e5f3-4c56-a21f-2bbe1352a4de",
+"t2": "5623f2ff-4bd3-4e8e-9f35-10793f5fce91",
+"target": "could I have now?",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0630L01B03",
+"ka": "b0e4c2a2-7f5e-4d9c-a3b3-a9559bb1a0b7",
+"known": "আজ আমি কি পারি?",
+"pos": 6,
+"t1": "c6c42d94-153d-4356-8ca7-261819e6fca2",
+"t2": "6b895833-52e1-4aea-8e75-afc09c9ed2ea",
+"target": "could I have today?",
+"type": "build"
+}
+],
+"target": "could I have",
+"type": "M"
+},
+{
+"id": "S0630L02",
+"idx": 2,
+"is_new": true,
+"known": "দয়া করে কিছু পান করতে",
+"phrases": [
+{
+"id": "52de44b9-2889-4e58-a6d5-3100ebf93fab",
+"ka": "bbca6c34-1313-4685-a154-e0e9045569ff",
+"known": "দয়া করে কিছু পান করতে",
+"pos": 0,
+"t1": "56bcf39c-7ac3-4f3b-b7eb-e353ecd8041e",
+"t2": "effb5b2e-9e38-4842-823c-ab43b2d56d6c",
+"target": "something to drink please",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_ben:S0630L02C01",
+"ka": "caedd387-2a82-45cf-b84c-4892719070c7",
+"known": "দয়া করে",
+"pos": 1,
+"t1": "c08bcaf5-f9a9-4e0f-9dfd-2727418e5200",
+"t2": "d1f6aff7-1665-46a5-af20-cf6071e88bdd",
+"target": "please",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0630L02C03",
+"ka": "b93ad6a4-6910-4890-91b2-eef60fc458f5",
+"known": "কিছু পান করতে",
+"pos": 3,
+"t1": "d3c4ac56-f174-4a28-86a1-e287b9bd8aa8",
+"t2": "0f338d17-49f7-4a5a-b3bb-ed499a92514e",
+"target": "something to drink",
+"type": "component"
+},
+{
+"id": "eng_for_ben:S0630L02B01",
+"ka": "bbca6c34-1313-4685-a154-e0e9045569ff",
+"known": "দয়া করে কিছু পান করতে",
+"pos": 5,
+"t1": "56bcf39c-7ac3-4f3b-b7eb-e353ecd8041e",
+"t2": "effb5b2e-9e38-4842-823c-ab43b2d56d6c",
+"target": "something to drink please",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0630L02B02",
+"ka": "3cefb7b9-4470-42ea-a772-615890a6f6b2",
+"known": "এখন দয়া করে কিছু পান করতে",
+"pos": 6,
+"t1": "c7913f90-dfb9-4a34-a7be-1c61bef7eca9",
+"t2": "183e4fc9-27f7-451c-b773-b72ce803550b",
+"target": "something to drink please now",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0630L02B03",
+"ka": "286ba8e6-0445-45c5-a53a-13ec8362988a",
+"known": "আজ দয়া করে কিছু পান করতে",
+"pos": 7,
+"t1": "3183836d-2978-4cb1-9202-c94f174512a0",
+"t2": "e200d206-2599-494e-921f-5331d7d1cc60",
+"target": "something to drink please today",
+"type": "build"
+},
+{
+"id": "eng_for_ben:S0630L02U01",
+"ka": "15369701-1b34-4812-813f-5de25ab1e959",
+"known": "আমি কি দয়া করে কিছু পান করতে পারি?",
+"pos": 8,
+"t1": "4f881326-3e87-4fda-872f-7caae9cf853b",
+"t2": "4ec18cf7-aba3-465f-b6f3-53a64662d4ea",
+"target": "could I have something to drink please?",
+"type": "use"
+}
+],
+"target": "something to drink please",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Can I have something to drink please?"
+}
+}

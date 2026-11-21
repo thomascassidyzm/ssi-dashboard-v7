@@ -1,0 +1,843 @@
+{
+ "at": "2026-11-19T18:43:40.681Z",
+ "seeds": 419,
+ "blocking": [],
+ "use_unmasked": 49,
+ "new_not_blocking": [
+  {
+   "seed": 64,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 1 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4",
+    "L3: 1 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 199,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 201,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 207,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 225,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 229,
+   "before": [
+    "L2: 4 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: 4 phrase(s) fail containment",
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 230,
+   "before": [
+    "L2: 6 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: 6 phrase(s) fail containment",
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 231,
+   "before": [
+    "L2: 6 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: 6 phrase(s) fail containment",
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 237,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 238,
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 239,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 246,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 248,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2",
+    "L4: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L4: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L4: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L4: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 263,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 272,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 296,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 308,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 374,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 379,
+   "before": [
+    "L2: USE: need 5+, got 4",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4",
+    "L3: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L3: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 470,
+   "before": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L3: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L3: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 474,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 481,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 505,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 525,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 527,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 528,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 530,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 2"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 2"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 538,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 2"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 2"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 557,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 563,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: USE: need 5+, got 2",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 2"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 566,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 572,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 590,
+   "before": [
+    "L1: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: 1 phrase(s) fail containment",
+    "L2: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 594,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 595,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 596,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 600,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L3: USE: need 5+, got 4"
+   ],
+   "new": [
+    "L3: USE: need 5+, got 4"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 609,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 621,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 624,
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 630,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L2: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L2: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 639,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "seed": 644,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 649,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 651,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 3"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 652,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 1"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 1"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 664,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "seed": 666,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "seed": 667,
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "new": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "blocking": [],
+   "use_unmasked": [
+    "L1: USE: need 5+, got 0"
+   ]
+  }
+ ]
+}

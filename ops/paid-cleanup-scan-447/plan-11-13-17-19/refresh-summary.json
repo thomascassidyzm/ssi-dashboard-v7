@@ -1,0 +1,13 @@
+{
+ "at": "2026-11-18T18:36:55Z",
+ "qa_copy": "ssi_copy_20261118t033000z (built 2026-11-18T03:41Z, before today's applies)",
+ "live_reads": "per touched seed through Popty script-view (tools/live_seeds.py), cached in data/live/",
+ "scan_rows": {
+  "GAPPED": 44,
+  "ZUT": 102,
+  "FLAGS": 138,
+  "P17": 1062,
+  "LONG": 467
+ },
+ "note": "whole-course live dumps were NOT taken: the item-10 shard lock was 13 deep at 16:12Z, so whole-course reads use the nightly QA copy and every seed a proposal touches is re-read live"
+}

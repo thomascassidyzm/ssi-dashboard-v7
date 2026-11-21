@@ -1,0 +1,77 @@
+{"format":"ssi-changeset/1","id":"item9-kor_for_eng-5-thin","course":"kor_for_eng","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:30:00.015Z","ops":76,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0007L02U01","expect":{"known_text":"I want to work hard today","target_text":"오늘 열심히 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0007L03U01","expect":{"known_text":"I want to work as hard as I can today","target_text":"오늘 최대한 열심히 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0007L03U04","expect":{"known_text":"I want to work as hard as I can with someone else","target_text":"다른 사람과 최대한 열심히 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0007L04B03","expect":{"known_text":"want to try speaking","target_text":"말해 보고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0007L04U02","expect":{"known_text":"I want to try speaking Korean","target_text":"한국어로 말해 보고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0007L04U04","expect":{"known_text":"I want to try speaking with someone else","target_text":"다른 사람과 말해 보고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0008L01U02","expect":{"known_text":"I want to learn what it means","target_text":"무슨 뜻인지 배우고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0009L03U01","expect":{"known_text":"I want to learn the Korean language","target_text":"한국어를 배우고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0009L03U02","expect":{"known_text":"I'm going to practice the Korean language","target_text":"한국어를 연습할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0010L01U01","expect":{"known_text":"I want to learn the whole sentence","target_text":"문장 전체를 배우고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0010L01U04","expect":{"known_text":"I'm going to practice the whole sentence today","target_text":"오늘 문장 전체를 연습할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0010L02U01","expect":{"known_text":"I want to remember the Korean language","target_text":"한국어를 기억하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0010L03U02","expect":{"known_text":"I'm not sure if I can explain in Korean","target_text":"한국어로 설명할 수 있을지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0010L03U03","expect":{"known_text":"I'm not sure if I can speak Korean","target_text":"한국어로 말할 수 있을지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0010L03U04","expect":{"known_text":"I'm not sure if I can explain what I mean","target_text":"무슨 뜻인지 설명할 수 있을지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0012L01B02","expect":{"known_text":"practice tomorrow","target_text":"내일 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0012L02U04","expect":{"known_text":"I can explain what's going to happen","target_text":"무슨 일이 일어날지 설명할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0012L02U05","expect":{"known_text":"it would be nice to remember what's going to happen","target_text":"무슨 일이 일어날지 기억하면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0012L02U07","expect":{"known_text":"I can remember what's going to happen tomorrow","target_text":"내일 무슨 일이 일어날지 기억할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0012L02U08","expect":{"known_text":"I'd like to be able to explain what's going to happen","target_text":"무슨 일이 일어날지 설명할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0014L01B04","expect":{"known_text":"practice all day","target_text":"하루 종일 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0015L02B03","expect":{"known_text":"practice with me","target_text":"저와 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0015L02U08","expect":{"known_text":"practice hard with me","target_text":"저와 열심히 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0016L02B03","expect":{"known_text":"practice later on","target_text":"나중에 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0016L03B04","expect":{"known_text":"practice with everyone else","target_text":"다른 사람들과 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0018L02B04","expect":{"known_text":"practice this evening","target_text":"오늘 저녁 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0020L02U03","expect":{"known_text":"I can explain quickly","target_text":"빨리 설명할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0020L02U06","expect":{"known_text":"but I can remember quickly","target_text":"하지만 빨리 기억할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0020L02U08","expect":{"known_text":"it would be nice to learn quickly","target_text":"빨리 배우면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0023L01U03","expect":{"known_text":"I can explain soon","target_text":"곧 설명할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0023L02B04","expect":{"known_text":"practice more","target_text":"더 많이 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0023L02U02","expect":{"known_text":"he practices more all day","target_text":"그는 하루 종일 더 많이 연습해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01B03","expect":{"known_text":"speaking well is good","target_text":"잘 말하면 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01U02","expect":{"known_text":"practicing more is good","target_text":"더 많이 연습하면 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01U03","expect":{"known_text":"meeting soon is good","target_text":"곧 만나면 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01U05","expect":{"known_text":"helping is good","target_text":"도와주면 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01U07","expect":{"known_text":"learning quickly is good","target_text":"빨리 배우면 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01U08","expect":{"known_text":"remembering easily is good","target_text":"쉽게 기억하면 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L03B03","expect":{"known_text":"I like the feeling as if I'm learning","target_text":"배우고 있는 것 같은 느낌이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L03U02","expect":{"known_text":"I like the feeling as if I can speak Korean","target_text":"한국어를 말할 수 있는 것 같은 느낌이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L03U03","expect":{"known_text":"I like the feeling as if I'm learning","target_text":"배우고 있는 것 같은 느낌이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L03U04","expect":{"known_text":"I like the feeling as if I can remember easily","target_text":"쉽게 기억할 수 있는 것 같은 느낌이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L03U06","expect":{"known_text":"I like the feeling as if I can help","target_text":"도와줄 수 있는 것 같은 느낌이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L01B02","expect":{"known_text":"don't like stopping","target_text":"멈추는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L01B03","expect":{"known_text":"don't like guessing","target_text":"추측하는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L01U01","expect":{"known_text":"I don't like stopping","target_text":"멈추는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L01U02","expect":{"known_text":"I don't like guessing","target_text":"추측하는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L02B04","expect":{"known_text":"taking too long is not good","target_text":"너무 오래 걸리는 게 좋지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L02U02","expect":{"known_text":"taking too long is not good","target_text":"너무 오래 걸리는 게 좋지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L03U05","expect":{"known_text":"taking too long to answer is not good","target_text":"대답하는 데 너무 오래 걸리는 게 좋지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L01B03","expect":{"known_text":"speaking is useful","target_text":"말하면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L01B04","expect":{"known_text":"learning is useful","target_text":"배우면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L01U01","expect":{"known_text":"speaking Korean is useful","target_text":"한국어로 말하면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L01U02","expect":{"known_text":"learning more is useful","target_text":"더 많이 배우면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L01U06","expect":{"known_text":"speaking quickly is useful","target_text":"빨리 말하면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L02B03","expect":{"known_text":"go as soon as you can","target_text":"가능한 한 빨리 가요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L02U01","expect":{"known_text":"he is going as soon as he can","target_text":"그는 가능한 한 빨리 가요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L02U05","expect":{"known_text":"learning as soon as you can is useful","target_text":"가능한 한 빨리 배우면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L02U06","expect":{"known_text":"speaking as soon as you can is useful","target_text":"가능한 한 빨리 말하면 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L02U07","expect":{"known_text":"she is going as soon as she can","target_text":"그녀는 가능한 한 빨리 가요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0031L01B03","expect":{"known_text":"meeting tonight","target_text":"오늘 밤에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0031L01U01","expect":{"known_text":"we are meeting tonight","target_text":"우리는 오늘 밤에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0031L01U08","expect":{"known_text":"but we are meeting tonight","target_text":"하지만 우리는 오늘 밤에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0034L02U07","expect":{"known_text":"when other people are here we meet","target_text":"다른 사람들이 여기 있을 때 우리는 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0035L01B03","expect":{"known_text":"meeting this afternoon","target_text":"오늘 오후에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0035L01U01","expect":{"known_text":"we are meeting this afternoon","target_text":"우리는 오늘 오후에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0035L01U07","expect":{"known_text":"but we are meeting this afternoon","target_text":"하지만 우리는 오늘 오후에 만나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0046L01B03","expect":{"known_text":"don't like making mistakes","target_text":"실수를 싫어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0046L01U02","expect":{"known_text":"she doesn't like making mistakes","target_text":"그녀는 실수를 싫어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L01B03","expect":{"known_text":"learning is not enjoyable","target_text":"배우는 게 즐겁지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L01U02","expect":{"known_text":"learning Korean is not enjoyable","target_text":"한국어를 배우는 게 즐겁지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0064L01B04","expect":{"known_text":"writing isn't easy but","target_text":"쓰는 건 쉽지 않지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0064L01U08","expect":{"known_text":"writing isn't easy but it's fun","target_text":"쓰는 건 쉽지 않지만 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0122L01U03","expect":{"known_text":"it's starting to feel easier and it's exciting","target_text":"더 쉬워지기 시작하고 있고 기대돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0200L02B03","expect":{"known_text":"they say it's okay","target_text":"괜찮다고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0200L02U02","expect":{"known_text":"they say it's okay","target_text":"괜찮다고 해요"}}

@@ -1,0 +1,48 @@
+{
+ "seed": 527,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला ती गमतीशीर गोष्ट आवडली",
+     "I liked that funny story",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला कोणी सांगितलं हे तुम्हाला माहित आहे का?",
+     "do you know who told me?",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "काय घडतं ओळखा बघू",
+     "guess what happens",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तो काय म्हणाला ओळखा बघू",
+     "guess what he said",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,316 @@
+{
+ "course": "eng_for_kor",
+ "at": "2026-11-18T18:40:50.431Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0004L01": {
+   "lego": "무언가를 | something",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 31,
+   "avg_known_chars": 17,
+   "rows": [
+    {
+     "row": "S0004L01B04",
+     "role": "build",
+     "known": "무언가를 기억하려고",
+     "target": "trying to remember something",
+     "untaught": [
+      "remember"
+     ]
+    }
+   ]
+  },
+  "S0012L01": {
+   "lego": "싶지 않아요 | I wouldn't like to",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 27,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0012L01B02",
+     "role": "build",
+     "known": "말하고 싶지 않아요",
+     "target": "I don't want to speak",
+     "untaught": [
+      "don't"
+     ]
+    },
+    {
+     "row": "S0012L01U01",
+     "role": "use",
+     "known": "저는 영어로 말하고 싶지 않아요",
+     "target": "I don't want to speak English",
+     "untaught": [
+      "don't"
+     ]
+    },
+    {
+     "row": "S0012L01U02",
+     "role": "use",
+     "known": "저는 지금 말하고 싶지 않아요",
+     "target": "I don't want to speak now",
+     "untaught": [
+      "don't"
+     ]
+    }
+   ]
+  },
+  "S0023L02": {
+   "lego": "더 많이 | more",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 16,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0023L02B02",
+     "role": "build",
+     "known": "더 많이 말하기",
+     "target": "talk more",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0026L03": {
+   "lego": "거의 | nearly",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 2,
+   "author_use": 0,
+   "avg_target_chars": 24,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0026L03B02",
+     "role": "build",
+     "known": "거의 피곤해요",
+     "target": "nearly tired",
+     "untaught": [
+      "tired"
+     ]
+    },
+    {
+     "row": "S0026L03B03",
+     "role": "build",
+     "known": "거의 끝났어요",
+     "target": "nearly finished",
+     "untaught": [
+      "finished"
+     ]
+    }
+   ]
+  },
+  "S0032L01": {
+   "lego": "보여주고 싶었어요? | did you want to show",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 15,
+   "rows": [
+    {
+     "row": "S0032L01U06",
+     "role": "use",
+     "known": "당신은 어제 저에게 그것을 보여주고 싶었어요?",
+     "target": "did you want to show me that yesterday?",
+     "untaught": [
+      "that"
+     ]
+    }
+   ]
+  },
+  "S0051L01": {
+   "lego": "하는 것을 즐겨요 | I enjoy doing",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 20,
+   "avg_known_chars": 11,
+   "rows": [
+    {
+     "row": "S0051L01U01",
+     "role": "use",
+     "known": "저는 이것을 하는 것을 즐겨요",
+     "target": "I enjoy doing this a lot",
+     "untaught": [
+      "lot"
+     ]
+    }
+   ]
+  },
+  "S0051L02": {
+   "lego": "흥미로운 일을 | interesting things",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 31,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0051L02U03",
+     "role": "use",
+     "known": "저는 흥미로운 일에 대해 이야기하고 싶어요",
+     "target": "I want to talk about interesting things",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0051L03": {
+   "lego": "친구들 | my friends",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 12,
+   "rows": [
+    {
+     "row": "S0051L03U02",
+     "role": "use",
+     "known": "저는 친구들과 이야기하고 싶어요",
+     "target": "I want to talk with my friends about it",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0052L02": {
+   "lego": "친구 | friend",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0052L02U05",
+     "role": "use",
+     "known": "그는 친구와 이야기하고 싶었어요",
+     "target": "he wanted to talk with a friend about it",
+     "untaught": [
+      "talk"
+     ]
+    }
+   ]
+  },
+  "S0284L01": {
+   "lego": "여동생 친구 | my sister's friend",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 14,
+   "rows": [
+    {
+     "row": "S0284L01U07",
+     "role": "use",
+     "known": "제 여동생 친구는 영어를 해요",
+     "target": "my sister's friend speaks English",
+     "untaught": [
+      "speaks"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

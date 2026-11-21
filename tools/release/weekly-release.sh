@@ -24,6 +24,15 @@ main() {
     if [ -n "$last" ] && [ "$last" = "$head" ]; then
       echo "popty-release: main unchanged since the last release ($(git rev-parse --short HEAD)) — no build"; exit 0
     fi
+    # cs #476·AJ: main moving is not enough. In the week before the gate, 85 of 117 builds shipped nothing (ops/,
+    # docs/, watson-1-only services and tools). Release only when a file popty.app actually ships changed; exit 2
+    # from the checker (could not tell) releases, so a broken check never silently freezes production.
+    if [ -n "$last" ]; then
+      rc=0; node tools/release/deployed-changed.cjs "$last" HEAD >/dev/null || rc=$?
+      if [ "$rc" = 1 ]; then
+        echo "popty-release: main moved since $(git rev-parse --short "$last") but nothing popty.app ships changed — no build"; exit 0
+      fi
+    fi
     if [ -n "$last" ]; then since="$(git rev-list --count "$last..HEAD") commits since $(git rev-parse --short "$last")"; else since="first release under the cs #948 gate"; fi
     git commit -q --allow-empty -m "[release] Popty weekly release: $since (cs #948)" -m "Vercel builds popty.app production from [release]/[hotfix] commits only (r-2026-11-14-build-cadence-production-builds-only-when)."
     if git push -q origin HEAD:main; then echo "popty-release: pushed $(git rev-parse --short HEAD) ($since); Vercel builds production from it"; exit 0; fi

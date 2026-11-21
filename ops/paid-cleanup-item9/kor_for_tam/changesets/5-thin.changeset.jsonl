@@ -1,0 +1,7 @@
+{"format":"ssi-changeset/1","id":"item9-kor_for_tam-5-thin","course":"kor_for_tam","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:29:36.096Z","ops":6,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0040L01U04","expect":{"known_text":"நாளை மனநிலை நன்றாக இருக்கும்","target_text":"내일 기분이 좋을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0041L01U04","expect":{"known_text":"சரியாக உணர்கிறேன், ஆனால் அதைப் பற்றி கவலைப்படுவதில்லை","target_text":"괜찮은데, 그것에 대해 걱정하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0041L01U05","expect":{"known_text":"சரியாக உணர்கிறேன், ஆனால் இன்னும் நன்றாக உணரத் தொடங்கியிருந்தேன்","target_text":"괜찮은데, 더 나아지기 시작하고 있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0042L01U05","expect":{"known_text":"நாளை இரவை விட நன்றாக இருக்கும்","target_text":"내일 저녁보다 좋을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0074L01U03","expect":{"known_text":"புரிந்துகொள்ள உதவுகிறது","target_text":"이해하는 데 도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0076L01U03","expect":{"known_text":"ஏற்கனவே உதவுகிறது","target_text":"이미 도움이 돼요"}}

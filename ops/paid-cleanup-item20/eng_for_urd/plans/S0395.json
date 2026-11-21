@@ -1,0 +1,40 @@
+{
+ "seed": 395,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ہمیں آج مڑنا ہے",
+     "we need to turn today",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ہمیں کل بائیں مڑنا ہے",
+     "we need to turn left tomorrow",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "میں اگلے کونے پر رہ سکتا ہوں",
+     "I can stay at the next corner",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0395L01B01": "مڑنا|infinitive of the taught مڑ (turn), taught as a LEGO later in this seed"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

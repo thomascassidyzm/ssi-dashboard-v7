@@ -1,0 +1,26 @@
+{
+ "seed": 55,
+ "legos": {
+  "L01": {
+   "delete": [
+    "U09"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"I don't enjoy\"); deletes do not lower its counted rows"
+  },
+  "L02": {
+   "delete": [
+    "B04",
+    "U03",
+    "U10"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"waking up\"); deletes do not lower its counted rows"
+  },
+  "L04": {
+   "delete": [
+    "U06"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"I didn't sleep\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

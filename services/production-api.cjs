@@ -1,5 +1,8 @@
 // services/production-api.cjs
 require('dotenv').config()
+// Every live DB call from this process goes through the adaptive load governor (cs #835; Tom's ruling
+// r-2026-11-18-no-watson-or-worker-any-owner). Must stay above anything that builds a Supabase or pg client.
+require('./shared/db-load-gate.cjs').install('popty-production-api')
 const express = require('express')
 const { buildCourseConfigsId } = require('./shared/legacy-manifest-id.cjs')
 const { isStageEventLine, parseStageEventLine } = require('./shared/stage-event-line.cjs')
@@ -654,6 +657,10 @@ const boothKeyGate = boothLinks.createBoothKeyGate({
   logger,
 })
 logger.info(`[BoothKey] private booth links: grace ${boothKeyGate.graceOn() ? 'ON (id-only links served and logged)' : 'OFF (id-only links refused)'}`)
+
+// The booth is a person waiting: its DB statements bypass the load gate (cs #965). Agent-identified callers
+// (x-agent-id / x-agent-role / x-service-name) on these paths stay governed. Mounted before every /api/recording router.
+app.use('/api/recording', require('./shared/db-load-gate.cjs').interactiveHumans)
 
 // "Edit this line" in the booth (Aran, 2026-10-15, job #709): God admins only, relaunch courses
 // only, and every write goes through Popty's course-edit door with the caller's own session.
@@ -1906,6 +1913,8 @@ app.get('/health', (req, res) => {
     port: PORT || 3470,
     timestamp: new Date().toISOString(),
     supabase: supabaseClient.isInitialized() ? 'connected' : 'not initialized',
+    // The live DB load gate (cs #835): governed?, the level it reads (green/amber/red), its current rate.
+    dbLoadGate: require('./shared/db-load-gate.cjs').status(),
     // Which commit is THIS PROCESS running? Frozen at start, never re-read —
     // see services/shared/build-identity.cjs. This is what the staleness
     // watchdog compares against origin/main.
@@ -8318,6 +8327,15 @@ async function courseEditConnect() {
   return client
 }
 
+// WHO AND WHEN ON EVERY course-edit LOG LINE (cs #888): this service's log carries no timestamps, and a
+// dry run or a refused batch writes no content_edit_events row (its transaction rolls back) — so on
+// 2026-11-18 23:06-23:12Z a batch that ran real UPDATE/INSERTs on live and rolled back left no record of
+// who sent it. Every line now names the caller, the time, the size and whether it was a dry run.
+function courseEditTag(req, ops, apply) {
+  const who = req.editorIdentity?.id || req.get?.('x-agent-id') || 'unidentified'
+  return `at ${new Date().toISOString()} by ${who} (${Array.isArray(ops) ? ops.length : 0} op(s), ${apply ? 'apply' : 'dry run'})`
+}
+
 async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {}, onApplied = null, eventDetail = {} }) {
   let plans
   try {
@@ -8346,6 +8364,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       plans,
       apply,
       approval: req.body?.approval || null,
+      previewTiles: req.body?.previewTiles === true,
       eventId: () => req.contentEdit.record({
         scope: {
           seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],
@@ -8382,7 +8401,9 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
           fs.chmodSync(undoFile, 0o664)
         } catch (e) { undoFileError = e.message; undoFile = null }
       }
-      logger.info(`[course-edit] ${courseCode}: ${ops.length} op(s) applied by ${req.editorIdentity?.id} (event ${req.contentEdit?.eventId})`)
+      logger.info(`[course-edit] ${courseCode}: ${ops.length} op(s) applied by ${req.editorIdentity?.id} (event ${req.contentEdit?.eventId}) ${courseEditTag(req, ops, true)}`)
+    } else {
+      logger.info(`[course-edit] ${courseCode}: dry run rolled back ${courseEditTag(req, ops, false)}`)
     }
     res.json({
       ok: true,
@@ -8402,7 +8423,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
     const refusedByDb = !!err.severity && /^[0-9A-Z]{5}$/.test(String(err.code || ''))
     const status = err.code === 'BAD_APPROVAL' ? 400 : err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
     if (status !== 500) req.contentEdit?.wroteNothing()
-    logger.warn(`[course-edit] ${courseCode}: refused/failed — ${err.message}`)
+    logger.warn(`[course-edit] ${courseCode}: refused/failed ${courseEditTag(req, ops, apply)} — ${err.message}`)
     res.status(status).json({ error: err.message, code: err.code || 'EDIT_FAILED', index: err.index, applied: false })
   }
 }
@@ -8416,7 +8437,7 @@ app.get('/api/production/:courseCode/edit-ops', (req, res) => {
 
 // ONE op, applied unless it says dryRun:true.
 app.post('/api/production/:courseCode/edit', async (req, res) => {
-  const { dryRun, ...op } = req.body || {}
+  const { dryRun, previewTiles, ...op } = req.body || {}
   return runCourseEdit(req, res, [op], { apply: dryRun !== true })
 })
 
@@ -8434,8 +8455,19 @@ async function editBatch(req, res) {
       return res.status(404).json({ error: `undo_file ${name}: ${e.message}`, code: 'NO_UNDO_FILE' })
     }
   }
-  return runCourseEdit(req, res, ops, { apply: body.apply === true })
+  // NO HEAVY WRITES THROUGH THIS DOOR (cs #835; Tom 2026-11-18: "There should be no need to write to the live
+  // database in a heavy way"). More than EDIT_BATCH_MAX_OPS ops in one request is refused before any DB work:
+  // compute on the nightly copy, emit a changeset (services/shared/changeset.cjs), and let
+  // tools/changeset/apply-changeset.cjs push it in small governed batches at night. Replaying an undo is exempt,
+  // because an undo must always be able to run whole.
+  if (!body.undo_file && Array.isArray(ops) && ops.length > EDIT_BATCH_MAX_OPS) {
+    req.contentEdit?.wroteNothing()
+    return res.status(413).json({ error: `${ops.length} ops in one request (max ${EDIT_BATCH_MAX_OPS}): a heavy write to the live DB. Compute on the nightly copy, write a changeset (services/shared/changeset.cjs) and apply it with tools/changeset/apply-changeset.cjs (small governed batches, quiet hours). Design: https://watson-1.tail4968cb.ts.net/d/973c9f34`, code: 'BULK_EDIT', applied: false })
+  }
+  const eventDetail = body.changeset && typeof body.changeset === 'object' ? { changeset: { id: String(body.changeset.id || '').slice(0, 120), batch: Number(body.changeset.batch) || null } } : {}
+  return runCourseEdit(req, res, ops, { apply: body.apply === true, eventDetail })
 }
+const EDIT_BATCH_MAX_OPS = 100
 app.post('/api/production/:courseCode/edit-batch', editBatch)
 // The same door for a SIGNED agent (tools/agent-admin/call.cjs): /api/admin is the prefix the
 // agent front door verifies, so the content-edit event names the agent, not "undeclared-loopback".
@@ -8612,6 +8644,7 @@ app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
   const set = {}
   for (const [k, v] of Object.entries(req.body || {})) set[k.replace(/[A-Z]/g, c => '_' + c.toLowerCase())] = v
   delete set.dry_run
+  delete set.preview_tiles
   const key = /^[0-9a-f-]{36}$/i.test(req.params.legoId) ? { id: req.params.legoId } : { lego_id: req.params.legoId }
   return runCourseEdit(req, res, [{ op: 'lego.update', ...key, set }], { apply: req.body?.dryRun !== true })
 })

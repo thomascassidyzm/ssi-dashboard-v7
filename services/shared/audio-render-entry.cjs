@@ -38,6 +38,7 @@ const paidWrite = require('./paid-write.cjs')
 const standIn = require('./aran-clone-standin.cjs')
 const pronunciation = require('./pronunciation-overrides.cjs')
 const { sameVoice } = require('./resolve-voice.cjs')
+const genderPrep = require('./render-gender-prep.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
 
@@ -232,6 +233,14 @@ function standInPace(req, r) {
   return tempo === 1 ? { speed: 1 } : { speed: 1, paceTempo: tempo }
 }
 
+/** render-gender-prep's speakerForm, its refusal raised as the route's own RenderRequestError (503 GENDER_PREP_MISSING). */
+async function speakerFormOrRefuse(req, where, deps) {
+  try { return await genderPrep.speakerForm(req, where, deps) } catch (e) {
+    if (e instanceof genderPrep.GenderPrepError) throw new RenderRequestError(e.message, e.status, e.code)
+    throw e
+  }
+}
+
 async function renderClip(input, deps) {
   const req = validate(input)
   return chain.run(`render:${req.requestedBy}`, async () => {
@@ -254,9 +263,16 @@ async function renderClip(input, deps) {
     const r = await deps.resolve(req)
     const ident = { ...req, language: r.language, voiceId: r.voiceId }
 
+    // SPEAKER-GENDER PREP (cs #989·AI, services/shared/render-gender-prep.cjs): a target seat SPEAKS its seat's form
+    // (target1 expanded_f, target2 expanded_m), as every phase8 render does; the clip is still filed and looked up under
+    // the row text (ident.text), so library-first and the caller's link-clip see the same label phase8 clips carry.
+    const prep = await speakerFormOrRefuse(req, r, deps)
+    const said = prep ? prep.spoken : req.text
+    const prepEcho = genderPrep.echo(prep)
+
     // 1. library first
     const linked = await deps.link(ident)
-    if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
+    if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, ...prepEcho, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
 
     // DRILL IS CUT (job #338, Tom 2026-10-24): one sentence of a served pod turn, in the voice that turn was recorded in,
     // is cut from that take — never paid for twice. Library first already linked any cut that exists; this stops the
@@ -292,16 +308,18 @@ async function renderClip(input, deps) {
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
     const cfg = { ...r.providerConfig, ...standInPace(req, r), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, legoId: req.legoId || null, job: req.job, approval: req.approval, podLine: !!req.podSentenceId } }
     // 2 + 3. the door → guard → one provider attempt
-    const out = await deps.speak(req.text, r.provider, cfg, 1)
-    if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
+    // The door is handed the words to SAY (`said`); a gender-prepped line the door finds already recorded in this voice
+    // (a clip filed as the female form, or one carrying that verdict) comes back as bytes and is filed under the row text.
+    const out = await deps.speak(said, r.provider, cfg, 1)
+    if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...prepEcho, purpose: req.purpose, requestedBy: req.requestedBy }
     if (out.existingClip) {
       // A clip appeared between our lookup and the door's own: link it, spend nothing.
       const again = await deps.link(ident)
-      if (again) return bindPresentation(req, { ok: true, source: 'library', charsSpent: 0, ...again, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
+      if (again) return bindPresentation(req, { ok: true, source: 'library', charsSpent: 0, ...again, ...prepEcho, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
     }
     // 4. write back
     const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}) })
-    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}), purpose: req.purpose, requestedBy: req.requestedBy }, deps)
+    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, ...(cfg.paceTempo ? { tempo: cfg.paceTempo } : {}), ...prepEcho, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
 }
 
@@ -463,6 +481,10 @@ async function rerecord(req, deps) {
   if (row.origin === 'human') throw new RenderRequestError(`${req.replaceAudioId} is a human recording — never re-rendered over`, 409, 'HUMAN_CLIP')
   if (req.role !== row.role) throw new RenderRequestError(`${req.replaceAudioId} is a ${row.role} clip, request said ${req.role}`, 409, 'WRONG_ROLE')
   if (req.voiceId && req.voiceId !== row.voice_id) throw new RenderRequestError(`a re-record keeps the clip's own voice (${row.voice_id}); voiceId ${req.voiceId} differs`, 409, 'VOICE_MISMATCH')
+  // SPEAKER-GENDER PREP (cs #989·AI): a target-seat re-record that names no spokenText says its seat's form — as if the
+  // caller had sent it as spokenText (the #984/#142 method), so it leaves the same clip_spoken_text verdict below.
+  const prep = await speakerFormOrRefuse(req, { language: row.language }, deps)
+  if (prep && prep.spoken !== req.text) req.spokenText = prep.spoken
   // A line on the course's pronunciation-override list (shared/pronunciation-overrides.cjs) is re-recorded in its spoken
   // form: sent as the words, the door cannot answer with another (misread) clip of the same characters in its place.
   const overrideSpoken = pronunciation.spokenFor({ courseCode: req.courseCode, text: req.text }) || null

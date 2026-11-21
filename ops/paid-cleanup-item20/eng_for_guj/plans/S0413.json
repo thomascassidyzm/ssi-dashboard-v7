@@ -1,0 +1,48 @@
+{
+ "seed": 413,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "આપણે આજે પડી શકીએ",
+     "we could fall today",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "આપણે પડી શકીએ જો આપણે જઈએ",
+     "we could fall if we go",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "તે કિનારાની ઘણી નજીક છે",
+     "that's too close to the edge",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "એ કિનારાની ઘણી નજીક છે",
+     "it's too close to the edge",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

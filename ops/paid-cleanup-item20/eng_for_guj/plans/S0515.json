@@ -1,0 +1,40 @@
+{
+ "seed": 515,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "હું નવા વર્ષ ના પ્રથમ દિવસ પર તૈયાર થઈ જઈશ",
+     "I'll be ready on the first day of the new year",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "હું નવા વર્ષ ના પ્રથમ દિવસ પર તમને ફોન કરીશ",
+     "I'll call you on the first day of the new year",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "હું નવા વર્ષ ના પ્રથમ દિવસ પર એક મિત્રની રાહ જોઈ રહ્યો છું",
+     "I'm waiting for a friend on the first day of the new year",
+     null,
+     "m"
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0515L02B01": "મિત્રની|genitive of taught મિત્ર"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

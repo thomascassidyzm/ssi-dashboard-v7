@@ -1,0 +1,56 @@
+{
+ "seed": 2,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मला आत्ता शिकायचं आहे",
+     "I want to learn now",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "इंग्रजी शिकणे",
+     "to learn English",
+     null,
+     null,
+     null
+    ],
+    [
+     "build",
+     "मला इंग्रजी शिकायचं आहे",
+     "I want to learn English",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मी आत्ता शिकण्याचा प्रयत्न करतोय",
+     "I'm trying to learn now",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मी तुमच्याशी इंग्रजी बोलण्याचा प्रयत्न करतोय",
+     "I'm trying to speak English with you",
+     null,
+     "m",
+     "बोलण्याचा|form of taught बोलणे"
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

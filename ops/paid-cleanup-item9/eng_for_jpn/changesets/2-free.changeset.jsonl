@@ -1,0 +1,20 @@
+{"format":"ssi-changeset/1","id":"item9-eng_for_jpn-2-free","course":"eng_for_jpn","job":"#960·AI","why":"paid cleanup item 9 (untaught words): deletes of rows using an untaught target word, LEGO keeps its floor without back-fill","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:24:22.820Z","ops":19,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) in full except the 19 make-new LEGOs, 18 Nov 15:41Z"}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02B07","expect":{"known_text":"さっき職場に置いてきたと思います","target_text":"I think you left them at work a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02U03","expect":{"known_text":"さっき職場に置いてきたと思います","target_text":"I think you left them at work a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02U15","expect":{"known_text":"さっきオフィスに何か置いてきたと思います","target_text":"I think you left something in the office a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0193L01U12","expect":{"known_text":"すみませんが、今日は忙しすぎますと言うのは残念です","target_text":"It's unfortunate that I have to say I'm sorry but I'm too busy today"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0208L01U14","expect":{"known_text":"どう言うかを覚えるのが難しいです","target_text":"it's difficult to remember how to say it every time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0210L03U12","expect":{"known_text":"もし私たちがグループとしてこれを話し合えれば、良い解決策が見つかると思います","target_text":"if we can discuss this as a group, I think we'll find a good answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0211L01U07","expect":{"known_text":"彼らは私たちに英語を毎日練習することが大切だと言いました","target_text":"they told us that it's important to practise speaking English every day"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0219L03B03","expect":{"known_text":"本当にしばらくリラックスするのは良かったです","target_text":"it was really nice to relax for a while"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L01U02","expect":{"known_text":"昨夜あなたの姉と働く人に会いました","target_text":"I met someone last night who works with your sister"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L03B03","expect":{"known_text":"若い女性が来ました","target_text":"a young woman came"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L03B04","expect":{"known_text":"若い女性に会いました","target_text":"I met a young woman"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L03U02","expect":{"known_text":"昨夜あなたのお兄さんと働く若い女性に会いました","target_text":"I met a young woman last night who works with your brother"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L03U05","expect":{"known_text":"私の友達と一緒に来た若い女性はとても親切でした","target_text":"she was a young woman who came with my friend and was very kind"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L05U06","expect":{"known_text":"何が本当かを知っている人に会いました","target_text":"I met someone who knows what is true"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0246L01B03","expect":{"known_text":"本当に彼女にあなたを手伝ってほしかった","target_text":"I really wanted her to help you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0257L03B01","expect":{"known_text":"あそこにある青いものは何ですか？","target_text":"what's that blue thing over there?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0275L01B04","expect":{"known_text":"もっと長くいられますか？","target_text":"are you going to stay longer?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0278L03U08","expect":{"known_text":"彼女が来る前に全部終わらせなければなりませんでしたか","target_text":"did you have to finish everything before she came?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0285L01B03","expect":{"known_text":"彼女は英語を話します、毎日","target_text":"she speaks English every day"}}

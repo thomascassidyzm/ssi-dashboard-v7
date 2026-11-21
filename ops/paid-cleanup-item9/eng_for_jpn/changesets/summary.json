@@ -1,0 +1,560 @@
+{
+ "course": "eng_for_jpn",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {
+  "1-backfill": 213,
+  "2-free": 19,
+  "3-filled": 11
+ },
+ "backfill": {
+  "insert": 0,
+  "rewrite": 213
+ },
+ "deletes": {
+  "free": 19,
+  "filled": 11
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [],
+  "drift": [
+   {
+    "row": "S0051L04B05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0054L02B04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0055L01U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0055L02B04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0055L02U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0055L02U10",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0055L04U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0062L01U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0062L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0062L01U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0062L01U08",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0062L01U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0068L01U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0069L02U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0069L05B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0069L05U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0069L06B07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0070L02U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0070L03B02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0071L04B03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0079L01B07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0079L01U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0083L02U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0085L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0085L01U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0086L02U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0086L02U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0086L02U08",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0086L02U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0088L02B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0088L02U12",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0088L02U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0088L02U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0089L01U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0089L03U08",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0089L03U10",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0091L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0091L01U08",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0091L01U10",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0092L01B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0092L02U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0092L04B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L02U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L02U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03B05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03B07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03U10",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L03U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L04B05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L04U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L04U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L04U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L04U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0095L04U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0096L06U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0097L02U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0098L02U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0099L01U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0099L02U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0114L01B03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0114L01U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0123L01B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0123L01U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0123L01U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0123L01U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0123L02B07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0123L02U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0124L01U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0124L02B04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0124L02B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0124L02U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0124L02U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0125L02U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0125L02U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0125L02U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0126L01U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0126L02U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0126L02U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0126L03U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0127L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L01B03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L01U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L01U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L02U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L02U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L02U10",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L03B02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L03B05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L03U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L03U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L03U12",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L04U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L04U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L04U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L04U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0131L05U12",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0136L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0137L01U08",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0137L02U12",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0137L02U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0138L01U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0138L01U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01B05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01B07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01U12",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L01U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0139L02U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0141L01B06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0141L01U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0141L01U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0152L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0152L03B02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0152L03U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0157L04U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0157L04U13",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0166L02U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0166L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0168L02U10",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0168L03U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0168L03U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0168L04U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0169L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0170L04U08",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 143
+}

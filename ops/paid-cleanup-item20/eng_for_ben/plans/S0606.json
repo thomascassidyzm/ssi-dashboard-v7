@@ -1,0 +1,48 @@
+{
+ "seed": 606,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি নিশ্চিত আমি অপেক্ষা করতাম",
+     "I'm sure I'd have waited",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "যদি আমি তখন জানতাম আমি গাড়ি চালাতাম",
+     "I'd have driven if I'd known then",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "এখন যা জানি তা নিয়ে আমি খুশি",
+     "I'm happy with what I know now",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "এখন যা জানি তা আমি জানতাম না",
+     "I didn't know what I know now",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

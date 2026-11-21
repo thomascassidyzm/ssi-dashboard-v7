@@ -1,0 +1,58 @@
+{
+ "course": "spa_for_eng",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0138L01U09": {
+   "seed": {
+    "seed_number": 138,
+    "known_text": "this is where my friend wanted to meet us",
+    "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+    "known_audio_id": "e1fb9081-ab9d-4ae0-b655-fd208530204d",
+    "target1_audio_id": "46addb28-4445-48f2-8c4a-2a5ebab49a7d",
+    "target2_audio_id": "9c4d1ea7-92bc-4c7b-8948-d095614b5588"
+   },
+   "lego": {
+    "lego_id": "S0138L01",
+    "known_text": "is where",
+    "target_text": "es donde",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0450L03U06": {
+   "seed": {
+    "seed_number": 450,
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "no, ellos tienen que coger el tren",
+    "known_audio_id": "2b5937d3-4ceb-4232-b6bf-5e7c74e86b83",
+    "target1_audio_id": "0d84c770-8d66-4f47-8289-58a098be1bd8",
+    "target2_audio_id": "2cb96265-0ba6-4c1d-99a3-78ae45a0a70f"
+   },
+   "lego": {
+    "lego_id": "S0450L03",
+    "known_text": "to catch",
+    "target_text": "coger",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0532L02U07": {
+   "seed": {
+    "seed_number": 532,
+    "known_text": "unless they're lucky",
+    "target_text": "a menos que tengan suerte",
+    "known_audio_id": "452d3c3f-c423-4f8f-994e-3ae344842f31",
+    "target1_audio_id": "9fd28b07-6754-4b7b-bf68-8b841272f160",
+    "target2_audio_id": "3933e35c-3d82-41de-81bd-4fee0d392435"
+   },
+   "lego": {
+    "lego_id": "S0532L02",
+    "known_text": "they're lucky",
+    "target_text": "tengan suerte",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

@@ -1,0 +1,115 @@
+{"format":"ssi-changeset/1","id":"item9-por_for_eng-5-thin","course":"por_for_eng","job":"#972·AI","why":"paid cleanup item 9 (untaught words): delete-only, back-fill never authored; basket left thin, never empty (P30); runs after #960's files","computed_from":"nightly copy ssi_copy_20261119t033000z built 2026-11-19T03:41:21Z","created_at":"2026-11-19T12:30:04.897Z","ops":114,"kai_go":"Kai approved paid-cleanup item 9 (untaught words) 18 Nov 15:41Z; 19 Nov 12:25Z: delete the bad rows now, baskets temporarily thin, back-fill later"}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0074L01B01","expect":{"known_text":"for me","target_text":"por mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0074L01U02","expect":{"known_text":"I want to learn for me","target_text":"quero aprender por mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0074L01U07","expect":{"known_text":"I'm learning for me","target_text":"estou a aprender por mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0077L02U02","expect":{"known_text":"I'm surprised by how quickly you learn","target_text":"estou surpreendido com a rapidez com que aprendes"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0116L02B04","expect":{"known_text":"the best choice for me","target_text":"a melhor escolha para mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0121L03U03","expect":{"known_text":"this is very unusual for me","target_text":"isto é muito invulgar para mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0121L03U04","expect":{"known_text":"that's very unusual to me","target_text":"isso é muito invulgar para mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0141L01B01","expect":{"known_text":"without me","target_text":"sem mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0141L01U01","expect":{"known_text":"can you finish this without me?","target_text":"podes acabar isto sem mim?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0143L02U03","expect":{"known_text":"it's the same thing you think","target_text":"é a mesma coisa de que pensas"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0143L02U04","expect":{"known_text":"it's the same thing I talked about","target_text":"é a mesma coisa de que eu falei"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0147L03U08","expect":{"known_text":"I think she was very kind to me","target_text":"acho que ela foi muito simpática para mim"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0162L01U03","expect":{"known_text":"I don't remember that","target_text":"não me lembro disso"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0162L01U04","expect":{"known_text":"what do you know about that?","target_text":"o que é que sabes disso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0204L01U02","expect":{"known_text":"I don't remember the names","target_text":"não me lembro dos nomes"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0409L01B03","expect":{"known_text":"for me it doesn't matter","target_text":"para mim não importa"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0485L01U05","expect":{"known_text":"he said nothing could help","target_text":"ele disse que nada ajudaria"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L01U03","expect":{"known_text":"they asked which of those is best","target_text":"perguntaram qual desses é o melhor"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L01U04","expect":{"known_text":"she asked which of those is important","target_text":"ela perguntou qual desses é importante"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L01U05","expect":{"known_text":"he asked which of those is good","target_text":"ele perguntou qual desses é bom"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L02U03","expect":{"known_text":"they asked which of those places is best","target_text":"perguntaram qual desses lugares é o melhor"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L02U04","expect":{"known_text":"she asked which of those places is interesting","target_text":"ela perguntou qual desses lugares é interessante"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L02U05","expect":{"known_text":"he asked which of those places is good","target_text":"ele perguntou qual desses lugares é bom"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L04U04","expect":{"known_text":"they asked which of those places do you think is the most interesting","target_text":"perguntaram qual desses lugares achas que é o mais interessante"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0492L04U05","expect":{"known_text":"she asked which of those places you think is the most interesting","target_text":"ela perguntou qual desses lugares achas que é o mais interessante hoje"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0493L01U03","expect":{"known_text":"they asked what is it that comes","target_text":"perguntaram o que é que vem"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0493L02U04","expect":{"known_text":"they asked what's going to come next","target_text":"perguntaram o que é que vem a seguir"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0493L02U05","expect":{"known_text":"she asked what's going to come next in the story","target_text":"ela perguntou o que é que vem a seguir na história"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0494L02U03","expect":{"known_text":"they asked what happens","target_text":"perguntaram o que acontece"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0494L02U04","expect":{"known_text":"she asked what happens after","target_text":"ela perguntou o que acontece depois"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0494L02U05","expect":{"known_text":"he asked what happens after the show","target_text":"ele perguntou o que acontece depois do espetáculo"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0494L03U01","expect":{"known_text":"she asked what happens after the first part of the show?","target_text":"ela perguntou o que acontece depois da primeira parte do espetáculo?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0559L03U05","expect":{"known_text":"she asked if you found the path through the wood","target_text":"ela perguntou se encontraste o caminho pelo bosque"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0582L01U01","expect":{"known_text":"she asked what it's like to grow up here","target_text":"ela perguntou como é crescer aqui"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0582L01U02","expect":{"known_text":"he asked what it's like to grow up here","target_text":"ele perguntou como é crescer aqui"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0582L01U03","expect":{"known_text":"they asked what it's like to grow up here","target_text":"perguntaram como é crescer aqui"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0582L01U04","expect":{"known_text":"she asked what it's like to grow up here today","target_text":"ela perguntou como é crescer aqui hoje"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0583L02U01","expect":{"known_text":"she asked what it's like in this part of the world","target_text":"ela perguntou como é nesta parte do mundo"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0583L02U02","expect":{"known_text":"he asked what it's like in this part of the world","target_text":"ele perguntou como é nesta parte do mundo"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0583L02U03","expect":{"known_text":"they asked what it's like in this part of the world","target_text":"perguntaram como é nesta parte do mundo"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0583L02U04","expect":{"known_text":"she asked what it's like in this part of the world today","target_text":"ela perguntou como é nesta parte do mundo hoje"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0584L03U02","expect":{"known_text":"she asked what it's like to wake up every morning and see the mountains","target_text":"ela perguntou como é acordar todas as manhãs e ver as montanhas"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0584L03U03","expect":{"known_text":"he asked what it's like to wake up every morning and see the mountains","target_text":"ele perguntou como é acordar todas as manhãs e ver as montanhas"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0584L03U04","expect":{"known_text":"they asked what it's like to wake up every morning and see the mountains","target_text":"perguntaram como é acordar todas as manhãs e ver as montanhas"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0584L03U05","expect":{"known_text":"she asked what it's like to wake up every morning and see the mountains today","target_text":"ela perguntou como é acordar todas as manhãs e ver as montanhas hoje"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0628L02U01","expect":{"known_text":"she asked do you like tea?","target_text":"ela perguntou se gostas de chá?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0628L02U02","expect":{"known_text":"he asked do you like tea?","target_text":"ele perguntou se gostas de chá?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0628L02U03","expect":{"known_text":"they asked do you like tea?","target_text":"perguntaram se gostas de chá?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0628L02U04","expect":{"known_text":"she asked do you like tea here?","target_text":"ela perguntou se gostas de chá aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0630L01U01","expect":{"known_text":"she asked can I have something to drink please?","target_text":"ela perguntou se posso beber algo, por favor?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0630L01U02","expect":{"known_text":"he asked can I have something to drink please?","target_text":"ele perguntou se posso beber algo, por favor?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0630L01U03","expect":{"known_text":"they asked can I have something to drink please?","target_text":"perguntaram se posso beber algo, por favor?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0630L01U04","expect":{"known_text":"she asked can I have something to drink please here?","target_text":"ela perguntou se posso beber algo, por favor aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0631L01U01","expect":{"known_text":"she asked what would you like?","target_text":"ela perguntou o que gostavas?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0631L01U02","expect":{"known_text":"he asked what would you like?","target_text":"ele perguntou o que gostavas?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0631L01U03","expect":{"known_text":"they asked what would you like?","target_text":"perguntaram o que gostavas?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0631L01U04","expect":{"known_text":"she asked what would you like here?","target_text":"ela perguntou o que gostavas aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0635L02U05","expect":{"known_text":"she asked if that is Jane's","target_text":"ela perguntou se aquele é da Jane"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0637L01U01","expect":{"known_text":"she asked where is her bag?","target_text":"ela perguntou onde está o saco dela?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0637L01U02","expect":{"known_text":"he asked where is her bag?","target_text":"ele perguntou onde está o saco dela?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0637L01U03","expect":{"known_text":"they asked where is her bag?","target_text":"perguntaram onde está o saco dela?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0637L01U04","expect":{"known_text":"she asked where is her bag here?","target_text":"ela perguntou onde está o saco dela aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0642L02U01","expect":{"known_text":"she asked how do you feel madam?","target_text":"ela perguntou como é que se sente, senhora?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0642L02U02","expect":{"known_text":"he asked how do you feel madam?","target_text":"ele perguntou como é que se sente, senhora?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0642L02U03","expect":{"known_text":"they asked how do you feel madam?","target_text":"perguntaram como é que se sente, senhora?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0642L02U04","expect":{"known_text":"she asked how do you feel madam here?","target_text":"ela perguntou como é que se sente, senhora aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0643L01U01","expect":{"known_text":"she asked do you want sir?","target_text":"ela perguntou se o senhor quer?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0643L01U02","expect":{"known_text":"he asked do you want sir?","target_text":"ele perguntou se o senhor quer?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0643L01U03","expect":{"known_text":"they asked do you want sir?","target_text":"perguntaram se o senhor quer?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0643L01U04","expect":{"known_text":"she asked do you want sir here?","target_text":"ela perguntou se o senhor quer aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0644L01U01","expect":{"known_text":"she asked could you say that sir?","target_text":"ela perguntou se o senhor podia dizer isso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0644L01U02","expect":{"known_text":"he asked could you say that sir?","target_text":"ele perguntou se o senhor podia dizer isso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0644L01U03","expect":{"known_text":"they asked could you say that sir?","target_text":"perguntaram se o senhor podia dizer isso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0644L01U04","expect":{"known_text":"she asked could you say that sir here?","target_text":"ela perguntou se o senhor podia dizer isso aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0649L01U01","expect":{"known_text":"she asked are you ready sir?","target_text":"ela perguntou se o senhor está pronto?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0649L01U02","expect":{"known_text":"he asked are you ready sir?","target_text":"ele perguntou se o senhor está pronto?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0649L01U03","expect":{"known_text":"they asked are you ready sir?","target_text":"perguntaram se o senhor está pronto?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0649L01U04","expect":{"known_text":"she asked are you ready sir here?","target_text":"ela perguntou se o senhor está pronto aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0650L01U01","expect":{"known_text":"she asked do you want to go madam?","target_text":"ela perguntou se a senhora quer ir?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0650L01U02","expect":{"known_text":"he asked do you want to go madam?","target_text":"ele perguntou se a senhora quer ir?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0650L01U03","expect":{"known_text":"they asked do you want to go madam?","target_text":"perguntaram se a senhora quer ir?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0650L01U04","expect":{"known_text":"she asked do you want to go madam here?","target_text":"ela perguntou se a senhora quer ir aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0651L01U01","expect":{"known_text":"she asked what do you think madam?","target_text":"ela perguntou o que é que a senhora acha?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0651L01U02","expect":{"known_text":"he asked what do you think madam?","target_text":"ele perguntou o que é que a senhora acha?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0651L01U03","expect":{"known_text":"they asked what do you think madam?","target_text":"perguntaram o que é que a senhora acha?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0651L01U04","expect":{"known_text":"she asked what do you think madam here?","target_text":"ela perguntou o que é que a senhora acha aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0652L01U01","expect":{"known_text":"she asked what do you need sir?","target_text":"ela perguntou o que é que o senhor precisa?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0652L01U02","expect":{"known_text":"he asked what do you need sir?","target_text":"ele perguntou o que é que o senhor precisa?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0652L01U03","expect":{"known_text":"they asked what do you need sir?","target_text":"perguntaram o que é que o senhor precisa?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0652L01U04","expect":{"known_text":"she asked what do you need sir here?","target_text":"ela perguntou o que é que o senhor precisa aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0657L02U01","expect":{"known_text":"she asked how do you all feel?","target_text":"ela perguntou como é que vocês se sentem?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0657L02U02","expect":{"known_text":"he asked how do you all feel?","target_text":"ele perguntou como é que vocês se sentem?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0657L02U03","expect":{"known_text":"they asked how do you all feel?","target_text":"perguntaram como é que vocês se sentem?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0657L02U04","expect":{"known_text":"she asked how do you all feel here?","target_text":"ela perguntou como é que vocês se sentem aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0658L01U01","expect":{"known_text":"she asked do you all want?","target_text":"ela perguntou se vocês querem?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0658L01U02","expect":{"known_text":"he asked do you all want?","target_text":"ele perguntou se vocês querem?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0658L01U03","expect":{"known_text":"they asked do you all want?","target_text":"perguntaram se vocês querem?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0658L01U04","expect":{"known_text":"she asked do you all want here?","target_text":"ela perguntou se vocês querem aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0659L01U01","expect":{"known_text":"she asked could you all say that?","target_text":"ela perguntou se vocês podiam dizer isso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0659L01U02","expect":{"known_text":"he asked could you all say that?","target_text":"ele perguntou se vocês podiam dizer isso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0659L01U03","expect":{"known_text":"they asked could you all say that?","target_text":"perguntaram se vocês podiam dizer isso?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0659L01U04","expect":{"known_text":"she asked could you all say that here?","target_text":"ela perguntou se vocês podiam dizer isso aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0664L01U01","expect":{"known_text":"she asked are you all ready?","target_text":"ela perguntou se vocês estão prontos?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0664L01U02","expect":{"known_text":"he asked are you all ready?","target_text":"ele perguntou se vocês estão prontos?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0664L01U03","expect":{"known_text":"they asked are you all ready?","target_text":"perguntaram se vocês estão prontos?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0664L01U04","expect":{"known_text":"she asked are you all ready here?","target_text":"ela perguntou se vocês estão prontos aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0665L01U01","expect":{"known_text":"she asked do you all want to go?","target_text":"ela perguntou se vocês querem ir?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0665L01U02","expect":{"known_text":"he asked do you all want to go?","target_text":"ele perguntou se vocês querem ir?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0665L01U03","expect":{"known_text":"they asked do you all want to go?","target_text":"perguntaram se vocês querem ir?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0665L01U04","expect":{"known_text":"she asked do you all want to go here?","target_text":"ela perguntou se vocês querem ir aqui?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0666L01U01","expect":{"known_text":"she asked what do you all think?","target_text":"ela perguntou o que é que vocês acham?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0666L01U02","expect":{"known_text":"he asked what do you all think?","target_text":"ele perguntou o que é que vocês acham?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0666L01U03","expect":{"known_text":"they asked what do you all think?","target_text":"perguntaram o que é que vocês acham?"}}
+{"op":"phrase.delete","phrase_id":"por_for_eng:S0666L01U04","expect":{"known_text":"she asked what do you all think here?","target_text":"ela perguntou o que é que vocês acham aqui?"}}

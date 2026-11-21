@@ -1,0 +1,3463 @@
+{
+ "course": "eng_for_spa",
+ "roman_flags": [],
+ "dumped": "2026-11-19T11:05:55Z",
+ "decisions": 5,
+ "verdicts": {
+  "recut": 5
+ },
+ "touched_seeds": [
+  24,
+  115,
+  122,
+  131,
+  295
+ ],
+ "problems": [],
+ "auto_substitutions": [],
+ "zut_after_changed": {},
+ "later_duplicates": [],
+ "legos": [
+  {
+   "id": "S0024L02",
+   "verdict": "recut",
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. English table cut: \"I'm not going to\" + \"to be able to\" (the two share the word \"to\": overlap between LEGOs is normal). All 10 rows keep: each still contains \"no voy a\" / \"I'm not going to\". Pieces: “I'm not going to” = “no voy a” [S0024L02 (in place), NEW]; “to be able to” = “poder” [S0024L03 (appended), not new: taught at S0011L01]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 24,
+    "known": "no voy a poder recordarlo sin esfuerzo",
+    "target": "I'm not going to be able to remember easily"
+   },
+   "before": {
+    "known": "no voy a poder",
+    "target": "I'm not going to be able to",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "no voy a",
+    "target": "I'm not going to",
+    "type": "M",
+    "components": [
+     [
+      "no",
+      "I'm not"
+     ],
+     [
+      "voy a",
+      "going to"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 4
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0024L02B01",
+     "role": "build",
+     "before": [
+      "no voy a poder recordarlo sin esfuerzo pronto",
+      "I'm not going to be able to remember easily soon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02B02",
+     "role": "build",
+     "before": [
+      "no voy a poder hablar inglés sin esfuerzo",
+      "I'm not going to be able to speak English easily"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02B03",
+     "role": "build",
+     "before": [
+      "no voy a poder aprender más sin esfuerzo mañana",
+      "I'm not going to be able to learn more easily tomorrow"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02B04",
+     "role": "build",
+     "before": [
+      "no voy a poder recordar cómo decir algo sin esfuerzo",
+      "I'm not going to be able to remember how to say something easily"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02U01",
+     "role": "use",
+     "before": [
+      "no voy a poder hablar inglés pronto",
+      "I'm not going to be able to speak English soon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02U02",
+     "role": "use",
+     "before": [
+      "no voy a poder recordar cómo decir algo en inglés",
+      "I'm not going to be able to remember how to say something in English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02U03",
+     "role": "use",
+     "before": [
+      "no voy a poder aprender inglés sin esfuerzo",
+      "I'm not going to be able to learn English easily"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02U04",
+     "role": "use",
+     "before": [
+      "no voy a poder aprender más sin esfuerzo",
+      "I'm not going to be able to learn more easily"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02U05",
+     "role": "use",
+     "before": [
+      "no voy a poder recordar su nombre sin esfuerzo",
+      "I'm not going to be able to remember his name easily"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0024L02U06",
+     "role": "use",
+     "before": [
+      "no voy a poder recordarlo sin esfuerzo",
+      "I'm not going to be able to remember easily"
+     ],
+     "action": "keep"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 6
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 24,
+      "lego_index": 3,
+      "known_text": "poder",
+      "target_text": "to be able to",
+      "type": "A",
+      "is_new": false
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0115L02",
+   "verdict": "recut",
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. Sister course precedent: eng_for_ita S0115L01 \"non mi sento come se fossi | I don't feel as if I'm\". \"ready | listo\" is taught at seed 26; \"ready to | lista para\" is new and gets its own basket. (The LEGO says \"lista\" where the seed says \"listo\": left as it is, not this family.) Pieces: “I don't feel as if I'm” = “no me siento” [S0115L02 (in place), NEW]; “ready to” = “lista para” [S0115L03 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 115,
+    "known": "no me siento listo para hablar con alguien",
+    "target": "I don't feel as if I'm ready to have a conversation"
+   },
+   "before": {
+    "known": "no me siento lista para",
+    "target": "I don't feel as if I'm ready to",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "no me siento",
+    "target": "I don't feel as if I'm",
+    "type": "M",
+    "components": [
+     [
+      "no me",
+      "I don't feel"
+     ],
+     [
+      "siento",
+      "as if I'm"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0115L02B01",
+     "role": "build",
+     "before": [
+      "no me siento lista para",
+      "I don't feel as if I'm ready to"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02B02",
+     "role": "build",
+     "before": [
+      "no me siento lista para hablar",
+      "I don't feel as if I'm ready to speak"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02B03",
+     "role": "build",
+     "before": [
+      "no me siento lista para tener una conversación",
+      "I don't feel as if I'm ready to have a conversation"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02B04",
+     "role": "build",
+     "before": [
+      "no me siento lista para aprender más",
+      "I don't feel as if I'm ready to learn more"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02U01",
+     "role": "use",
+     "before": [
+      "no me siento lista para hablar inglés todavía",
+      "I don't feel as if I'm ready to speak English yet"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02U02",
+     "role": "use",
+     "before": [
+      "no me siento lista para tener una conversación ahora",
+      "I don't feel as if I'm ready to have a conversation now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02U03",
+     "role": "use",
+     "before": [
+      "no me siento lista para aprender algo nuevo hoy",
+      "I don't feel as if I'm ready to learn something new today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02U04",
+     "role": "use",
+     "before": [
+      "no me siento lista para hablar con personas que no conozco",
+      "I don't feel as if I'm ready to speak with people I don't know"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02U05",
+     "role": "use",
+     "before": [
+      "no me siento lista para practicar inglés hoy",
+      "I don't feel as if I'm ready to practise English today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0115L02C01",
+     "role": "component",
+     "before": [
+      "no me siento",
+      "I don't feel as if"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_spa:S0115L02C02",
+     "role": "component",
+     "before": [
+      "listo para",
+      "I'm ready to"
+     ],
+     "action": "component"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 4,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para",
+      "target_text": "ready to",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "lista",
+        "target": "ready"
+       },
+       {
+        "known": "para",
+        "target": "to"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para practicar",
+      "target_text": "ready to practise",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para hablar",
+      "target_text": "ready to speak",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "lista para aprender más",
+      "target_text": "ready to learn more",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para practicar",
+      "target_text": "I don't feel as if I'm ready to practise",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para hablar inglés hoy",
+      "target_text": "I don't feel as if I'm ready to speak English today",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para aprender más ahora",
+      "target_text": "I don't feel as if I'm ready to learn more now",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para tener una conversación todavía",
+      "target_text": "I don't feel as if I'm ready to have a conversation yet",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0115L03U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 115,
+      "lego_index": 3,
+      "known_text": "no me siento lista para practicar inglés ahora",
+      "target_text": "I don't feel as if I'm ready to practise English now",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0122L02",
+   "verdict": "recut",
+   "why": "Re-count: 10 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. English table cut: \"I'm excited about\" + \"how it's going\". Pieces: “I'm excited about” = “me alegra mucho” [S0122L02 (in place), NEW]; “how it's going” = “cómo va” [S0122L04 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 122,
+    "known": "está empezando a parecer más fácil y me alegra mucho cómo va",
+    "target": "It's starting to feel easier and I'm excited about how it's going"
+   },
+   "before": {
+    "known": "me alegra mucho cómo va",
+    "target": "I'm excited about how it's going",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "me alegra mucho",
+    "target": "I'm excited about",
+    "type": "M",
+    "components": [
+     [
+      "me alegra",
+      "I'm excited"
+     ],
+     [
+      "mucho",
+      "about"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 6
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0122L02B01",
+     "role": "build",
+     "before": [
+      "me alegra mucho cómo va",
+      "I'm excited about how it's going"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02B02",
+     "role": "build",
+     "before": [
+      "me alegra mucho cómo va hoy",
+      "I'm excited about how it's going today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02B03",
+     "role": "build",
+     "before": [
+      "me alegra mucho cómo va ahora",
+      "I'm excited about how it's going now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02U01",
+     "role": "use",
+     "before": [
+      "me alegra mucho cómo va el inglés ahora",
+      "I'm excited about how it's going with English now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02U02",
+     "role": "use",
+     "before": [
+      "me alegra mucho cómo va esta tarde",
+      "I'm excited about how it's going this afternoon"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02U03",
+     "role": "use",
+     "before": [
+      "me alegra mucho cómo va aprendiendo inglés",
+      "I'm excited about how it's going learning English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02U04",
+     "role": "use",
+     "before": [
+      "me alegra mucho cómo va la conversación hoy",
+      "I'm excited about how it's going in the conversation today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02U05",
+     "role": "use",
+     "before": [
+      "me alegra mucho cómo va esto",
+      "I'm excited about how it's going with this"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0122L02C01",
+     "role": "component",
+     "before": [
+      "me alegra mucho",
+      "I'm excited about"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_spa:S0122L02C02",
+     "role": "component",
+     "before": [
+      "cómo va",
+      "how it's going"
+     ],
+     "action": "component"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va",
+      "target_text": "how it's going",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "cómo",
+        "target": "how"
+       },
+       {
+        "known": "va",
+        "target": "it's going"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va ahora",
+      "target_text": "how it's going now",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va hoy",
+      "target_text": "how it's going today",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 4,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "cómo va esto",
+      "target_text": "how it's going with this",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va hoy",
+      "target_text": "I'm excited about how it's going today",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va ahora",
+      "target_text": "I'm excited about how it's going now",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 7,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va el inglés",
+      "target_text": "I'm excited about how it's going with English",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va la conversación",
+      "target_text": "I'm excited about how it's going in the conversation",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0122L04U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 122,
+      "lego_index": 4,
+      "known_text": "me alegra mucho cómo va esto hoy",
+      "target_text": "I'm excited about how it's going with this today",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0131L03",
+   "verdict": "recut",
+   "why": "Re-count: 10 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. too-ma-ny-i-de-as-go-ing-a-round. English table cut: \"too many ideas\" + \"going around\". Pieces: “too many ideas” = “demasiadas ideas” [S0131L03 (in place), NEW]; “going around” = “dando vueltas” [S0131L04 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 131,
+    "known": "hay demasiadas ideas dando vueltas en mi cabeza",
+    "target": "there are too many ideas going around in my head"
+   },
+   "before": {
+    "known": "demasiadas ideas dando vueltas",
+    "target": "too many ideas going around",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "demasiadas ideas",
+    "target": "too many ideas",
+    "type": "M",
+    "components": [
+     [
+      "demasiadas",
+      "too many"
+     ],
+     [
+      "ideas",
+      "ideas"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 5
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0131L03B01",
+     "role": "build",
+     "before": [
+      "demasiadas ideas dando vueltas",
+      "too many ideas going around"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03B02",
+     "role": "build",
+     "before": [
+      "hay demasiadas ideas dando vueltas",
+      "there are too many ideas going around"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03B03",
+     "role": "build",
+     "before": [
+      "demasiadas ideas dando vueltas en mi cabeza",
+      "too many ideas going around in my head"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03U01",
+     "role": "use",
+     "before": [
+      "hay demasiadas ideas dando vueltas en mi cabeza",
+      "there are too many ideas going around in my head"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03U02",
+     "role": "use",
+     "before": [
+      "hay demasiadas ideas dando vueltas cuando aprendo inglés",
+      "there are too many ideas going around when I learn English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03U03",
+     "role": "use",
+     "before": [
+      "no quiero demasiadas ideas dando vueltas ahora",
+      "I don't want too many ideas going around now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03U04",
+     "role": "use",
+     "before": [
+      "hay demasiadas ideas dando vueltas en mi cabeza hoy",
+      "there are too many ideas going around in my head today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03U05",
+     "role": "use",
+     "before": [
+      "hay demasiadas ideas dando vueltas cuando hablo inglés",
+      "there are too many ideas going around when I speak English"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0131L03C01",
+     "role": "component",
+     "before": [
+      "demasiadas",
+      "too many"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_spa:S0131L03C02",
+     "role": "component",
+     "before": [
+      "ideas dando vueltas",
+      "ideas going around"
+     ],
+     "action": "component"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "dando vueltas",
+      "target_text": "going around",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "dando",
+        "target": "going"
+       },
+       {
+        "known": "vueltas",
+        "target": "around"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "ideas dando vueltas en mi cabeza",
+      "target_text": "ideas going around in my head",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "ideas dando vueltas",
+      "target_text": "ideas going around",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 3,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "dando vueltas en mi cabeza",
+      "target_text": "going around in my head",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay demasiadas ideas dando vueltas hoy",
+      "target_text": "there are too many ideas going around today",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay ideas dando vueltas en mi cabeza",
+      "target_text": "there are ideas going around in my head",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "no quiero ideas dando vueltas en mi cabeza",
+      "target_text": "I don't want ideas going around in my head",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay demasiadas ideas dando vueltas ahora",
+      "target_text": "there are too many ideas going around now",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 8,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0131L04U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 131,
+      "lego_index": 4,
+      "known_text": "hay ideas dando vueltas en mi cabeza cuando hablo inglés",
+      "target_text": "there are ideas going around in my head when I speak English",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 0,
+    "sample": []
+   }
+  },
+  {
+   "id": "S0295L01",
+   "verdict": "recut",
+   "why": "Re-count: 9 syllables. Shortest cut (Kai 17 Nov): the over-long LEGO is cut at the join its own component rows already mark; each piece is the seed's own words. English table cut: \"I didn't say\" + \"that I wanted to\". Pieces: “I didn't say” = “no dije” [S0295L01 (in place), NEW]; “that I wanted to” = “que quisiera” [S0295L02 (appended), NEW]",
+   "closes": [
+    "19"
+   ],
+   "knock": null,
+   "seed": {
+    "n": 295,
+    "known": "no dije que quisiera terminar en un día",
+    "target": "I didn't say that I wanted to finish in a day"
+   },
+   "before": {
+    "known": "no dije que quisiera",
+    "target": "I didn't say that I wanted to",
+    "type": "M",
+    "is_new": true
+   },
+   "after": {
+    "known": "no dije",
+    "target": "I didn't say",
+    "type": "M",
+    "components": [
+     [
+      "no",
+      "I didn't"
+     ],
+     [
+      "dije",
+      "say"
+     ]
+    ],
+    "is_new": true
+   },
+   "checks": {
+    "known_in_seed": true,
+    "target_in_seed": true,
+    "syllables": 3
+   },
+   "basket": [
+    {
+     "id": "eng_for_spa:S0295L01B01",
+     "role": "build",
+     "before": [
+      "no dije que quisiera",
+      "I didn't say that I wanted to"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01B02",
+     "role": "build",
+     "before": [
+      "también no dije que quisiera",
+      "I didn't say that I wanted to too"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01B03",
+     "role": "build",
+     "before": [
+      "si no dije que quisiera",
+      "if I didn't say that I wanted to"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01U01",
+     "role": "use",
+     "before": [
+      "no dije que quisiera terminar en un día",
+      "I didn't say that I wanted to finish in a day"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01U02",
+     "role": "use",
+     "before": [
+      "no dije que quisiera irme mañana",
+      "I didn't say that I wanted to leave tomorrow"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01U03",
+     "role": "use",
+     "before": [
+      "no dije que quisiera empezar hoy",
+      "I didn't say that I wanted to start today"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01U04",
+     "role": "use",
+     "before": [
+      "no dije que quisiera hablar con él",
+      "I didn't say that I wanted to speak to him"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01U05",
+     "role": "use",
+     "before": [
+      "no dije que quisiera hacerlo ahora",
+      "I didn't say that I wanted to do it now"
+     ],
+     "action": "keep"
+    },
+    {
+     "id": "eng_for_spa:S0295L01C01",
+     "role": "component",
+     "before": [
+      "no dije",
+      "I didn't say"
+     ],
+     "action": "component"
+    },
+    {
+     "id": "eng_for_spa:S0295L01C02",
+     "role": "component",
+     "before": [
+      "que quisiera",
+      "that I wanted to"
+     ],
+     "action": "component"
+    }
+   ],
+   "add": [],
+   "basket_after": {
+    "build": 3,
+    "use": 5
+   },
+   "extra": [
+    {
+     "op": "lego.insert",
+     "row": {
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera",
+      "target_text": "that I wanted to",
+      "type": "M",
+      "is_new": true,
+      "components": [
+       {
+        "known": "que",
+        "target": "that I"
+       },
+       {
+        "known": "quisiera",
+        "target": "wanted to"
+       }
+      ]
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02B01",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera hacerlo",
+      "target_text": "that I wanted to do it",
+      "phrase_role": "build",
+      "position": 1,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02B02",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera terminar",
+      "target_text": "that I wanted to finish",
+      "phrase_role": "build",
+      "position": 2,
+      "word_count": 5,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02B03",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "que quisiera empezar hoy",
+      "target_text": "that I wanted to start today",
+      "phrase_role": "build",
+      "position": 3,
+      "word_count": 6,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U01",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera terminar hoy",
+      "target_text": "I didn't say that I wanted to finish today",
+      "phrase_role": "use",
+      "position": 4,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U02",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera empezar mañana",
+      "target_text": "I didn't say that I wanted to start tomorrow",
+      "phrase_role": "use",
+      "position": 5,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U03",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera hablar con él ahora",
+      "target_text": "I didn't say that I wanted to speak to him now",
+      "phrase_role": "use",
+      "position": 6,
+      "word_count": 11,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U04",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera hacerlo en un día",
+      "target_text": "I didn't say that I wanted to do it in a day",
+      "phrase_role": "use",
+      "position": 7,
+      "word_count": 12,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    },
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_spa:S0295L02U05",
+      "course_code": "eng_for_spa",
+      "seed_number": 295,
+      "lego_index": 2,
+      "known_text": "no dije que quisiera irme hoy",
+      "target_text": "I didn't say that I wanted to leave today",
+      "phrase_role": "use",
+      "position": 8,
+      "word_count": 9,
+      "lego_position": "middle",
+      "lego_count": 1
+     }
+    }
+   ],
+   "knock_census": {
+    "rows_pairing_old_gloss": 4,
+    "sample": [
+     {
+      "id": "eng_for_spa:S0312L02U01",
+      "known": "no dije que quisiera usar tu habitación",
+      "target": "I didn't say that I wanted to use your room",
+      "seed": 312
+     },
+     {
+      "id": "eng_for_spa:S0314L01U06",
+      "known": "no dije que quisiera ponerlo en la mesa",
+      "target": "I didn't say that I wanted to put it on the table",
+      "seed": 314
+     },
+     {
+      "id": "eng_for_spa:S0316L02U06",
+      "known": "no dije que quisiera quedar con su hermano",
+      "target": "I didn't say that I wanted to meet her brother",
+      "seed": 316
+     },
+     {
+      "id": "eng_for_spa:S0323L02U01",
+      "known": "no dije que quisiera caminar desde casa",
+      "target": "I didn't say that I wanted to walk from home",
+      "seed": 323
+     }
+    ]
+   }
+  }
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0024L02",
+   "set": {
+    "known_text": "no voy a",
+    "target_text": "I'm not going to",
+    "components": [
+     {
+      "known": "no",
+      "target": "I'm not"
+     },
+     {
+      "known": "voy a",
+      "target": "going to"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "no voy a poder",
+    "target_text": "I'm not going to be able to"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 24,
+    "lego_index": 3,
+    "known_text": "poder",
+    "target_text": "to be able to",
+    "type": "A",
+    "is_new": false
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0115L02",
+   "set": {
+    "known_text": "no me siento",
+    "target_text": "I don't feel as if I'm",
+    "components": [
+     {
+      "known": "no me",
+      "target": "I don't feel"
+     },
+     {
+      "known": "siento",
+      "target": "as if I'm"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "no me siento lista para",
+    "target_text": "I don't feel as if I'm ready to"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "lista para",
+    "target_text": "ready to",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "lista",
+      "target": "ready"
+     },
+     {
+      "known": "para",
+      "target": "to"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03B01",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "lista para practicar",
+    "target_text": "ready to practise",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03B02",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "lista para hablar",
+    "target_text": "ready to speak",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03B03",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "lista para aprender más",
+    "target_text": "ready to learn more",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03U01",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "no me siento lista para practicar",
+    "target_text": "I don't feel as if I'm ready to practise",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03U02",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "no me siento lista para hablar inglés hoy",
+    "target_text": "I don't feel as if I'm ready to speak English today",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03U03",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "no me siento lista para aprender más ahora",
+    "target_text": "I don't feel as if I'm ready to learn more now",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03U04",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "no me siento lista para tener una conversación todavía",
+    "target_text": "I don't feel as if I'm ready to have a conversation yet",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 12,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0115L03U05",
+    "course_code": "eng_for_spa",
+    "seed_number": 115,
+    "lego_index": 3,
+    "known_text": "no me siento lista para practicar inglés ahora",
+    "target_text": "I don't feel as if I'm ready to practise English now",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0122L02",
+   "set": {
+    "known_text": "me alegra mucho",
+    "target_text": "I'm excited about",
+    "components": [
+     {
+      "known": "me alegra",
+      "target": "I'm excited"
+     },
+     {
+      "known": "mucho",
+      "target": "about"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "me alegra mucho cómo va",
+    "target_text": "I'm excited about how it's going"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "cómo va",
+    "target_text": "how it's going",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "cómo",
+      "target": "how"
+     },
+     {
+      "known": "va",
+      "target": "it's going"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04B01",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "cómo va ahora",
+    "target_text": "how it's going now",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04B02",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "cómo va hoy",
+    "target_text": "how it's going today",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 4,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04B03",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "cómo va esto",
+    "target_text": "how it's going with this",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04U01",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "me alegra mucho cómo va hoy",
+    "target_text": "I'm excited about how it's going today",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 7,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04U02",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "me alegra mucho cómo va ahora",
+    "target_text": "I'm excited about how it's going now",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 7,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04U03",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "me alegra mucho cómo va el inglés",
+    "target_text": "I'm excited about how it's going with English",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 8,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04U04",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "me alegra mucho cómo va la conversación",
+    "target_text": "I'm excited about how it's going in the conversation",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0122L04U05",
+    "course_code": "eng_for_spa",
+    "seed_number": 122,
+    "lego_index": 4,
+    "known_text": "me alegra mucho cómo va esto hoy",
+    "target_text": "I'm excited about how it's going with this today",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0131L03",
+   "set": {
+    "known_text": "demasiadas ideas",
+    "target_text": "too many ideas",
+    "components": [
+     {
+      "known": "demasiadas",
+      "target": "too many"
+     },
+     {
+      "known": "ideas",
+      "target": "ideas"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "demasiadas ideas dando vueltas",
+    "target_text": "too many ideas going around"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "dando vueltas",
+    "target_text": "going around",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "dando",
+      "target": "going"
+     },
+     {
+      "known": "vueltas",
+      "target": "around"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04B01",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "ideas dando vueltas en mi cabeza",
+    "target_text": "ideas going around in my head",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04B02",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "ideas dando vueltas",
+    "target_text": "ideas going around",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 3,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04B03",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "dando vueltas en mi cabeza",
+    "target_text": "going around in my head",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04U01",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "hay demasiadas ideas dando vueltas hoy",
+    "target_text": "there are too many ideas going around today",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 8,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04U02",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "hay ideas dando vueltas en mi cabeza",
+    "target_text": "there are ideas going around in my head",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 8,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04U03",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "no quiero ideas dando vueltas en mi cabeza",
+    "target_text": "I don't want ideas going around in my head",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04U04",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "hay demasiadas ideas dando vueltas ahora",
+    "target_text": "there are too many ideas going around now",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 8,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0131L04U05",
+    "course_code": "eng_for_spa",
+    "seed_number": 131,
+    "lego_index": 4,
+    "known_text": "hay ideas dando vueltas en mi cabeza cuando hablo inglés",
+    "target_text": "there are ideas going around in my head when I speak English",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 12,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0295L01",
+   "set": {
+    "known_text": "no dije",
+    "target_text": "I didn't say",
+    "components": [
+     {
+      "known": "no",
+      "target": "I didn't"
+     },
+     {
+      "known": "dije",
+      "target": "say"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "no dije que quisiera",
+    "target_text": "I didn't say that I wanted to"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "que quisiera",
+    "target_text": "that I wanted to",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "known": "que",
+      "target": "that I"
+     },
+     {
+      "known": "quisiera",
+      "target": "wanted to"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02B01",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "que quisiera hacerlo",
+    "target_text": "that I wanted to do it",
+    "phrase_role": "build",
+    "position": 1,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02B02",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "que quisiera terminar",
+    "target_text": "that I wanted to finish",
+    "phrase_role": "build",
+    "position": 2,
+    "word_count": 5,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02B03",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "que quisiera empezar hoy",
+    "target_text": "that I wanted to start today",
+    "phrase_role": "build",
+    "position": 3,
+    "word_count": 6,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02U01",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "no dije que quisiera terminar hoy",
+    "target_text": "I didn't say that I wanted to finish today",
+    "phrase_role": "use",
+    "position": 4,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02U02",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "no dije que quisiera empezar mañana",
+    "target_text": "I didn't say that I wanted to start tomorrow",
+    "phrase_role": "use",
+    "position": 5,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02U03",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "no dije que quisiera hablar con él ahora",
+    "target_text": "I didn't say that I wanted to speak to him now",
+    "phrase_role": "use",
+    "position": 6,
+    "word_count": 11,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02U04",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "no dije que quisiera hacerlo en un día",
+    "target_text": "I didn't say that I wanted to do it in a day",
+    "phrase_role": "use",
+    "position": 7,
+    "word_count": 12,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_spa:S0295L02U05",
+    "course_code": "eng_for_spa",
+    "seed_number": 295,
+    "lego_index": 2,
+    "known_text": "no dije que quisiera irme hoy",
+    "target_text": "I didn't say that I wanted to leave today",
+    "phrase_role": "use",
+    "position": 8,
+    "word_count": 9,
+    "lego_position": "middle",
+    "lego_count": 1
+   }
+  }
+ ],
+ "source": "qa-copy",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "validator": {
+  "at": "2026-11-19T11:20:33Z",
+  "on": "nightly copy ssi_copy_20261119t033000z",
+  "baseline_failing_seeds": 246,
+  "per_seed": {
+   "24": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "115": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "122": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "131": {
+    "seed_issues_planned": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "seed_issues_live": [
+     "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+     "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   },
+   "295": {
+    "seed_issues_planned": [],
+    "seed_issues_live": [
+     "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+    ],
+    "new_issues_anywhere": {},
+    "error": null
+   }
+  },
+  "seeds_with_new_issues": []
+ },
+ "dryRun": {
+  "at": "2026-11-18T18:49:58Z",
+  "chunks": [
+   {
+    "from": 0,
+    "n": 42,
+    "status": 200,
+    "secs": 5.9,
+    "answer": {
+     "ok": true,
+     "dryRun": true,
+     "applied": false,
+     "event_id": null,
+     "results": [
+      {
+       "index": 0,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0024L02"
+       },
+       "before": {
+        "id": "4c5d2712-be0d-4655-b4c2-64ad35b7cb90",
+        "seed_number": 24,
+        "lego_index": 2,
+        "lego_id": "S0024L02",
+        "known_text": "no voy a poder",
+        "target_text": "I'm not going to be able to",
+        "components": [],
+        "known_audio_id": "df7aa354-d238-4cf6-aa7e-94f19bc98bcc",
+        "target1_audio_id": "384babe1-f788-4f58-9b5e-bddd9b3e18c2",
+        "target2_audio_id": "9ede40b2-44e0-476e-b496-8cb4cc157c92",
+        "presentation_audio_id": "747f4a91-4dd7-4588-8fc7-10a3d01c3660"
+       },
+       "after": {
+        "id": "4c5d2712-be0d-4655-b4c2-64ad35b7cb90",
+        "seed_number": 24,
+        "lego_index": 2,
+        "lego_id": "S0024L02",
+        "known_text": "no voy a",
+        "target_text": "I'm not going to",
+        "components": [
+         {
+          "known": "no",
+          "target": "I'm not"
+         },
+         {
+          "known": "voy a",
+          "target": "going to"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 1,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 24,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "3a4bce8b-7f58-4717-a247-2fb892a6e7b7",
+        "seed_number": 24,
+        "lego_index": 3,
+        "lego_id": "S0024L03",
+        "known_text": "poder",
+        "target_text": "to be able to",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 2,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0115L02"
+       },
+       "before": {
+        "id": "5f89d801-14b6-4f3a-843a-1e397d165c84",
+        "seed_number": 115,
+        "lego_index": 2,
+        "lego_id": "S0115L02",
+        "known_text": "no me siento lista para",
+        "target_text": "I don't feel as if I'm ready to",
+        "components": [
+         {
+          "known": "no me siento",
+          "target": "I don't feel as if"
+         },
+         {
+          "known": "listo para",
+          "target": "I'm ready to"
+         }
+        ],
+        "known_audio_id": "5375df06-fda2-4fe9-ac59-0621848fbc1d",
+        "target1_audio_id": "23053525-f0b1-4e5a-9b3b-d6ad4ff8fc14",
+        "target2_audio_id": "19cb3011-a1f4-47c5-af1a-e98ffe5c4d91",
+        "presentation_audio_id": "30a134fd-24bb-4b58-ae51-3d13389d90ec"
+       },
+       "after": {
+        "id": "5f89d801-14b6-4f3a-843a-1e397d165c84",
+        "seed_number": 115,
+        "lego_index": 2,
+        "lego_id": "S0115L02",
+        "known_text": "no me siento",
+        "target_text": "I don't feel as if I'm",
+        "components": [
+         {
+          "known": "no me",
+          "target": "I don't feel"
+         },
+         {
+          "known": "siento",
+          "target": "as if I'm"
+         }
+        ],
+        "known_audio_id": "89465047-88d0-47ca-9fce-b1575cb95a14",
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 3,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 115,
+        "lego_index": 3
+       },
+       "before": null,
+       "after": {
+        "id": "a107a912-cc63-4cb6-b2c6-26f90482085b",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": "S0115L03",
+        "known_text": "lista para",
+        "target_text": "ready to",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 4,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03B01",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "lista para practicar",
+        "target_text": "ready to practise",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 5,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03B02",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "lista para hablar",
+        "target_text": "ready to speak",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 6,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03B03",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "lista para aprender más",
+        "target_text": "ready to learn more",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 7,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03U01",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "no me siento lista para practicar",
+        "target_text": "I don't feel as if I'm ready to practise",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 8,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03U02",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "no me siento lista para hablar inglés hoy",
+        "target_text": "I don't feel as if I'm ready to speak English today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 9,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03U03",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "no me siento lista para aprender más ahora",
+        "target_text": "I don't feel as if I'm ready to learn more now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 10,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03U04",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "no me siento lista para tener una conversación todavía",
+        "target_text": "I don't feel as if I'm ready to have a conversation yet",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 11,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0115L03U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0115L03U05",
+        "seed_number": 115,
+        "lego_index": 3,
+        "lego_id": null,
+        "known_text": "no me siento lista para practicar inglés ahora",
+        "target_text": "I don't feel as if I'm ready to practise English now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 12,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0122L02"
+       },
+       "before": {
+        "id": "e9cc1b34-1fc6-44ac-bba7-5ff755a3ea8d",
+        "seed_number": 122,
+        "lego_index": 2,
+        "lego_id": "S0122L02",
+        "known_text": "me alegra mucho cómo va",
+        "target_text": "I'm excited about how it's going",
+        "components": [
+         {
+          "known": "me alegra mucho",
+          "target": "I'm excited about"
+         },
+         {
+          "known": "cómo va",
+          "target": "how it's going"
+         }
+        ],
+        "known_audio_id": "a8d4c3e2-8731-445f-8bf1-7a265acca567",
+        "target1_audio_id": "9c79acc1-622d-4b06-9345-212465765d78",
+        "target2_audio_id": "f2915504-6c14-43d0-8582-efb2a3d00f7b",
+        "presentation_audio_id": "faeac8fe-9949-4181-a846-813084c65d72"
+       },
+       "after": {
+        "id": "e9cc1b34-1fc6-44ac-bba7-5ff755a3ea8d",
+        "seed_number": 122,
+        "lego_index": 2,
+        "lego_id": "S0122L02",
+        "known_text": "me alegra mucho",
+        "target_text": "I'm excited about",
+        "components": [
+         {
+          "known": "me alegra",
+          "target": "I'm excited"
+         },
+         {
+          "known": "mucho",
+          "target": "about"
+         }
+        ],
+        "known_audio_id": "cd61e7f8-738f-4a2b-b491-f950bf85e047",
+        "target1_audio_id": "2fb4b224-975f-4f8d-be25-e81417819d32",
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 13,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 122,
+        "lego_index": 4
+       },
+       "before": null,
+       "after": {
+        "id": "47fe51a8-26b8-4ac8-81ce-fe6f58c468dd",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": "S0122L04",
+        "known_text": "cómo va",
+        "target_text": "how it's going",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 14,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04B01",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "cómo va ahora",
+        "target_text": "how it's going now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 15,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04B02",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "cómo va hoy",
+        "target_text": "how it's going today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 16,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04B03",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "cómo va esto",
+        "target_text": "how it's going with this",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 17,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04U01",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "me alegra mucho cómo va hoy",
+        "target_text": "I'm excited about how it's going today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 18,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04U02",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "me alegra mucho cómo va ahora",
+        "target_text": "I'm excited about how it's going now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 19,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04U03",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "me alegra mucho cómo va el inglés",
+        "target_text": "I'm excited about how it's going with English",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 20,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04U04",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "me alegra mucho cómo va la conversación",
+        "target_text": "I'm excited about how it's going in the conversation",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 21,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0122L04U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0122L04U05",
+        "seed_number": 122,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "me alegra mucho cómo va esto hoy",
+        "target_text": "I'm excited about how it's going with this today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 22,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0131L03"
+       },
+       "before": {
+        "id": "12076953-5d3e-44e2-b0e4-1409201f2aff",
+        "seed_number": 131,
+        "lego_index": 3,
+        "lego_id": "S0131L03",
+        "known_text": "demasiadas ideas dando vueltas",
+        "target_text": "too many ideas going around",
+        "components": [
+         {
+          "known": "demasiadas",
+          "target": "too many"
+         },
+         {
+          "known": "ideas dando vueltas",
+          "target": "ideas going around"
+         }
+        ],
+        "known_audio_id": "e259d6ac-24d2-4545-91e8-054f5ac86631",
+        "target1_audio_id": "a21172f4-dd96-4cb8-a6ed-9392a8202c82",
+        "target2_audio_id": "a6506eb5-73c8-4abf-9c0f-f22b8d7d29cc",
+        "presentation_audio_id": "22dc64a8-b2da-4a2f-9893-e2e46058a2ee"
+       },
+       "after": {
+        "id": "12076953-5d3e-44e2-b0e4-1409201f2aff",
+        "seed_number": 131,
+        "lego_index": 3,
+        "lego_id": "S0131L03",
+        "known_text": "demasiadas ideas",
+        "target_text": "too many ideas",
+        "components": [
+         {
+          "known": "demasiadas",
+          "target": "too many"
+         },
+         {
+          "known": "ideas",
+          "target": "ideas"
+         }
+        ],
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 23,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 131,
+        "lego_index": 4
+       },
+       "before": null,
+       "after": {
+        "id": "79484431-c5a4-4386-b659-6e9f501ca353",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": "S0131L04",
+        "known_text": "dando vueltas",
+        "target_text": "going around",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 24,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04B01",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "ideas dando vueltas en mi cabeza",
+        "target_text": "ideas going around in my head",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 25,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04B02",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "ideas dando vueltas",
+        "target_text": "ideas going around",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 26,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04B03",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "dando vueltas en mi cabeza",
+        "target_text": "going around in my head",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 27,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04U01",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "hay demasiadas ideas dando vueltas hoy",
+        "target_text": "there are too many ideas going around today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 28,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04U02",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "hay ideas dando vueltas en mi cabeza",
+        "target_text": "there are ideas going around in my head",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 29,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04U03",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "no quiero ideas dando vueltas en mi cabeza",
+        "target_text": "I don't want ideas going around in my head",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 30,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04U04",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "hay demasiadas ideas dando vueltas ahora",
+        "target_text": "there are too many ideas going around now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 31,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0131L04U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0131L04U05",
+        "seed_number": 131,
+        "lego_index": 4,
+        "lego_id": null,
+        "known_text": "hay ideas dando vueltas en mi cabeza cuando hablo inglés",
+        "target_text": "there are ideas going around in my head when I speak English",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 32,
+       "op": "lego.update",
+       "key": {
+        "course_code": "eng_for_spa",
+        "lego_id": "S0295L01"
+       },
+       "before": {
+        "id": "a36bf904-003b-4baa-99f4-bb11714348f9",
+        "seed_number": 295,
+        "lego_index": 1,
+        "lego_id": "S0295L01",
+        "known_text": "no dije que quisiera",
+        "target_text": "I didn't say that I wanted to",
+        "components": [
+         {
+          "known": "no dije",
+          "target": "I didn't say"
+         },
+         {
+          "known": "que quisiera",
+          "target": "that I wanted to"
+         }
+        ],
+        "known_audio_id": "d6a2be2b-40c7-4a2f-b7fb-8c09f6a7d4c9",
+        "target1_audio_id": "563833c4-8a0c-467d-a3cb-bb28474fb042",
+        "target2_audio_id": "f01b0e42-00ec-4759-841d-c3dc1e42c148",
+        "presentation_audio_id": "db2a86b6-4586-4e1d-bfa8-0fb0d28686a3"
+       },
+       "after": {
+        "id": "a36bf904-003b-4baa-99f4-bb11714348f9",
+        "seed_number": 295,
+        "lego_index": 1,
+        "lego_id": "S0295L01",
+        "known_text": "no dije",
+        "target_text": "I didn't say",
+        "components": [
+         {
+          "known": "no",
+          "target": "I didn't"
+         },
+         {
+          "known": "dije",
+          "target": "say"
+         }
+        ],
+        "known_audio_id": "24878977-e9e7-41a2-a320-be89cb3639f0",
+        "target1_audio_id": "a9fff732-ac92-4b78-b330-96c652665286",
+        "target2_audio_id": "9fbdc335-8a6d-4681-90da-b0d5a9e19d17",
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 33,
+       "op": "lego.insert",
+       "key": {
+        "seed_number": 295,
+        "lego_index": 2
+       },
+       "before": null,
+       "after": {
+        "id": "f29ee1fa-8e98-4204-8426-3dfa85f71a6c",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": "S0295L02",
+        "known_text": "que quisiera",
+        "target_text": "that I wanted to",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 34,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02B01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02B01",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "que quisiera hacerlo",
+        "target_text": "that I wanted to do it",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 35,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02B02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02B02",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "que quisiera terminar",
+        "target_text": "that I wanted to finish",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 36,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02B03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02B03",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "que quisiera empezar hoy",
+        "target_text": "that I wanted to start today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 37,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02U01"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02U01",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "no dije que quisiera terminar hoy",
+        "target_text": "I didn't say that I wanted to finish today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 38,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02U02"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02U02",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "no dije que quisiera empezar mañana",
+        "target_text": "I didn't say that I wanted to start tomorrow",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 39,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02U03"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02U03",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "no dije que quisiera hablar con él ahora",
+        "target_text": "I didn't say that I wanted to speak to him now",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 40,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02U04"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02U04",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "no dije que quisiera hacerlo en un día",
+        "target_text": "I didn't say that I wanted to do it in a day",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      },
+      {
+       "index": 41,
+       "op": "phrase.insert",
+       "key": {
+        "id": "eng_for_spa:S0295L02U05"
+       },
+       "before": null,
+       "after": {
+        "id": "eng_for_spa:S0295L02U05",
+        "seed_number": 295,
+        "lego_index": 2,
+        "lego_id": null,
+        "known_text": "no dije que quisiera irme hoy",
+        "target_text": "I didn't say that I wanted to leave today",
+        "known_audio_id": null,
+        "target1_audio_id": null,
+        "target2_audio_id": null,
+        "presentation_audio_id": null
+       },
+       "changed": true
+      }
+     ],
+     "undo_ops": [
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0295L02B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "f29ee1fa-8e98-4204-8426-3dfa85f71a6c"
+      },
+      {
+       "op": "lego.update",
+       "id": "a36bf904-003b-4baa-99f4-bb11714348f9",
+       "set": {
+        "known_text": "no dije que quisiera",
+        "target_text": "I didn't say that I wanted to",
+        "components": [
+         {
+          "known": "no dije",
+          "target": "I didn't say"
+         },
+         {
+          "known": "que quisiera",
+          "target": "that I wanted to"
+         }
+        ],
+        "known_audio_id": "d6a2be2b-40c7-4a2f-b7fb-8c09f6a7d4c9",
+        "target1_audio_id": "563833c4-8a0c-467d-a3cb-bb28474fb042",
+        "target2_audio_id": "f01b0e42-00ec-4759-841d-c3dc1e42c148",
+        "presentation_audio_id": "db2a86b6-4586-4e1d-bfa8-0fb0d28686a3"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0131L04B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "79484431-c5a4-4386-b659-6e9f501ca353"
+      },
+      {
+       "op": "lego.update",
+       "id": "12076953-5d3e-44e2-b0e4-1409201f2aff",
+       "set": {
+        "known_text": "demasiadas ideas dando vueltas",
+        "target_text": "too many ideas going around",
+        "components": [
+         {
+          "known": "demasiadas",
+          "target": "too many"
+         },
+         {
+          "known": "ideas dando vueltas",
+          "target": "ideas going around"
+         }
+        ],
+        "known_audio_id": "e259d6ac-24d2-4545-91e8-054f5ac86631",
+        "target1_audio_id": "a21172f4-dd96-4cb8-a6ed-9392a8202c82",
+        "target2_audio_id": "a6506eb5-73c8-4abf-9c0f-f22b8d7d29cc",
+        "presentation_audio_id": "22dc64a8-b2da-4a2f-9893-e2e46058a2ee"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0122L04B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "47fe51a8-26b8-4ac8-81ce-fe6f58c468dd"
+      },
+      {
+       "op": "lego.update",
+       "id": "e9cc1b34-1fc6-44ac-bba7-5ff755a3ea8d",
+       "set": {
+        "known_text": "me alegra mucho cómo va",
+        "target_text": "I'm excited about how it's going",
+        "components": [
+         {
+          "known": "me alegra mucho",
+          "target": "I'm excited about"
+         },
+         {
+          "known": "cómo va",
+          "target": "how it's going"
+         }
+        ],
+        "known_audio_id": "a8d4c3e2-8731-445f-8bf1-7a265acca567",
+        "target1_audio_id": "9c79acc1-622d-4b06-9345-212465765d78",
+        "target2_audio_id": "f2915504-6c14-43d0-8582-efb2a3d00f7b",
+        "presentation_audio_id": "faeac8fe-9949-4181-a846-813084c65d72"
+       }
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03U05"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03U04"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03U03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03U02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03U01"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03B03"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03B02"
+      },
+      {
+       "op": "phrase.delete",
+       "phrase_id": "eng_for_spa:S0115L03B01"
+      },
+      {
+       "op": "lego.delete",
+       "id": "a107a912-cc63-4cb6-b2c6-26f90482085b"
+      },
+      {
+       "op": "lego.update",
+       "id": "5f89d801-14b6-4f3a-843a-1e397d165c84",
+       "set": {
+        "known_text": "no me siento lista para",
+        "target_text": "I don't feel as if I'm ready to",
+        "components": [
+         {
+          "known": "no me siento",
+          "target": "I don't feel as if"
+         },
+         {
+          "known": "listo para",
+          "target": "I'm ready to"
+         }
+        ],
+        "known_audio_id": "5375df06-fda2-4fe9-ac59-0621848fbc1d",
+        "target1_audio_id": "23053525-f0b1-4e5a-9b3b-d6ad4ff8fc14",
+        "target2_audio_id": "19cb3011-a1f4-47c5-af1a-e98ffe5c4d91",
+        "presentation_audio_id": "30a134fd-24bb-4b58-ae51-3d13389d90ec"
+       }
+      },
+      {
+       "op": "lego.delete",
+       "id": "3a4bce8b-7f58-4717-a247-2fb892a6e7b7"
+      },
+      {
+       "op": "lego.update",
+       "id": "4c5d2712-be0d-4655-b4c2-64ad35b7cb90",
+       "set": {
+        "known_text": "no voy a poder",
+        "target_text": "I'm not going to be able to",
+        "components": [],
+        "known_audio_id": "df7aa354-d238-4cf6-aa7e-94f19bc98bcc",
+        "target1_audio_id": "384babe1-f788-4f58-9b5e-bddd9b3e18c2",
+        "target2_audio_id": "9ede40b2-44e0-476e-b496-8cb4cc157c92",
+        "presentation_audio_id": "747f4a91-4dd7-4588-8fc7-10a3d01c3660"
+       }
+      }
+     ],
+     "undo_file": null,
+     "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+    }
+   }
+  ],
+  "note": "carried from #807·AI (live edit door, before cs #937 tile refresh); ops byte-identical to this copy-based plan"
+ }
+}

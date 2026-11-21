@@ -1,0 +1,355 @@
+{
+ "spa_mx_for_eng|known|no they have to catch the train": {
+  "dry": {
+   "ok": true,
+   "source": "library",
+   "dryRun": true,
+   "charsSpent": 0,
+   "audioId": "5e421eef-d169-4201-9c15-695886d972f2",
+   "s3Key": "mastered/752B9D5F-25BF-46E9-AEF1-653696519DE6.mp3",
+   "durationMs": 2280,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "library",
+   "charsSpent": 0,
+   "audioId": "98894b64-bb6d-4ae1-b131-6132f50789b6",
+   "s3Key": "mastered/752B9D5F-25BF-46E9-AEF1-653696519DE6.mp3",
+   "durationMs": 2280,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "2d110bcf-d556-431f-b14a-f6c22efc9212"
+  }
+ },
+ "deu_for_jpn|known|とても一生懸命": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 7,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 7,
+   "audioId": "7133fddb-cb0b-4127-831a-7c1e10b3e723",
+   "s3Key": "mastered/80D57E9C-EE68-4394-9E8A-CFFB17690B82.mp3",
+   "durationMs": 1360,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "8d17449d-0d77-405b-bfc5-e5eecc3b0fa5"
+  }
+ },
+ "deu_for_jpn|target1|sehr hart": {
+  "dry": {
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"sehr hart\" is already recorded in deu — 1 clip(s): 83b7087d-4ece-4aa9-afc2-7b01fbb30180 (voice azure_de-DE-KatjaNeural, deu_for_jpn target1). Recordings are per language: link an existing clip (POST /api/production/deu_for_jpn/link-clip), or take the voice question to a person. A second performance in cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a needs a re-record grant for deu_for_jpn target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+   "existing": [
+    {
+     "audioId": "83b7087d-4ece-4aa9-afc2-7b01fbb30180",
+     "voiceId": "azure_de-DE-KatjaNeural",
+     "courseCode": "deu_for_jpn",
+     "side": "target1"
+    }
+   ]
+  },
+  "dry_status": 409
+ },
+ "deu_for_jpn|target2|sehr hart": {
+  "dry": {
+   "ok": false,
+   "code": "EXISTS_IN_LANGUAGE",
+   "error": "\"sehr hart\" is already recorded in deu — 1 clip(s): 64f1d2d7-1c41-47bf-b6e9-99df6baedd6a (voice azure_de-DE-ChristophNeural, deu_for_jpn target2). Recordings are per language: link an existing clip (POST /api/production/deu_for_jpn/link-clip), or take the voice question to a person. A second performance in cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d needs a re-record grant for deu_for_jpn target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+   "existing": [
+    {
+     "audioId": "64f1d2d7-1c41-47bf-b6e9-99df6baedd6a",
+     "voiceId": "azure_de-DE-ChristophNeural",
+     "courseCode": "deu_for_jpn",
+     "side": "target2"
+    }
+   ]
+  },
+  "dry_status": 409
+ },
+ "deu_for_jpn|known|とても一生懸命練習する": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 11,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 11,
+   "audioId": "b9d3d9d8-2464-410f-bd4e-ad253a0aa7ba",
+   "s3Key": "mastered/D164923B-86D0-4886-9C2B-18A0EB93D7F4.mp3",
+   "durationMs": 2000,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "9d1bb251-776f-473e-adc3-c806ef622661"
+  }
+ },
+ "deu_for_jpn|target1|sehr hart üben": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 14,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 14,
+   "audioId": "9963b741-a2b0-4d5c-a20f-ca1a3fdc2072",
+   "s3Key": "mastered/CFB07076-8A98-42B2-956E-CC6BEB148C09.mp3",
+   "durationMs": 1280,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "084dcc80-4150-4ece-8419-dd2652f170b0"
+  }
+ },
+ "deu_for_jpn|target2|sehr hart üben": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 14,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 14,
+   "audioId": "ad041ae7-d8d3-40f5-8a85-fb8f175ce7b3",
+   "s3Key": "mastered/93967F48-0429-4EF6-BC78-A38C560D958E.mp3",
+   "durationMs": 1280,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "7446b09a-0f18-4e2c-ae61-151fd844db80"
+  }
+ },
+ "deu_for_jpn|known|とても一生懸命練習するつもりです": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 16,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 16,
+   "audioId": "08bc2a30-d4ab-42e8-8f5b-a8e1568b4084",
+   "s3Key": "mastered/054F3EA8-0246-408B-B70A-B873733ED1F8.mp3",
+   "durationMs": 2560,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "c0b77c38-8564-4412-bb2a-f3d9c4353385"
+  }
+ },
+ "deu_for_jpn|target1|ich werde sehr hart üben": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 24,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 24,
+   "audioId": "e6859495-59fc-4164-9ded-22bfacd90590",
+   "s3Key": "mastered/6201EAB6-9C08-40D3-97D7-D2EA914E8F7F.mp3",
+   "durationMs": 1680,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "40e3abf4-da0d-40d7-850c-7b74100ef07f"
+  }
+ },
+ "deu_for_jpn|target2|ich werde sehr hart üben": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 24,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 24,
+   "audioId": "f2737275-5105-4922-9505-7118b28a0be6",
+   "s3Key": "mastered/A15D133B-F9BF-4963-B81B-98812356E63F.mp3",
+   "durationMs": 1680,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "b202f6ce-11a1-4926-be5c-cb3b307479dd"
+  }
+ },
+ "deu_for_jpn|known|今日とても一生懸命練習したいです": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 16,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 16,
+   "audioId": "52d183dc-9258-41b0-b018-ee2d6ea77ac3",
+   "s3Key": "mastered/04F0E028-AE54-4C48-8CF1-45FF6611B270.mp3",
+   "durationMs": 2560,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "848910a5-6aa2-453d-b13d-7e8c9cf62720"
+  }
+ },
+ "deu_for_jpn|target1|ich möchte heute sehr hart üben": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 31,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 31,
+   "audioId": "fbae9379-724c-4665-87c6-afef7654982c",
+   "s3Key": "mastered/652AE0AC-E016-4B4F-9891-1FBB2A498BBB.mp3",
+   "durationMs": 2080,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "5f4fc657-aae9-4631-a3d7-80011aac8cfc"
+  }
+ },
+ "deu_for_jpn|target2|ich möchte heute sehr hart üben": {
+  "dry": {
+   "ok": true,
+   "source": "would-render",
+   "dryRun": true,
+   "wouldSpendChars": 31,
+   "charsSpent": 0,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976"
+  },
+  "dry_status": 200,
+  "real": {
+   "ok": true,
+   "source": "rendered",
+   "charsSpent": 31,
+   "audioId": "f1503c1e-eab0-437e-b84b-ea823e8fb86f",
+   "s3Key": "mastered/8235D094-D366-40F7-8031-B113F28CF370.mp3",
+   "durationMs": 2080,
+   "revision": null,
+   "purpose": "cs #976·AI item 12 held-seed follow-up (Kai 19 Nov)",
+   "requestedBy": "kai-976",
+   "editEventId": "63d85ac7-c370-421a-884c-fe61127c1816"
+  }
+ },
+ "eng_for_tam|known|பலவற்றை கேட்க முயற்சிக்கவில்லை": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ },
+ "eng_for_tam|known|நாங்கள் பலவற்றை கேட்க முயற்சிக்கவில்லை": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ },
+ "eng_for_tam|known|பல வார்த்தைகளை கேட்க முயற்சிக்கவில்லை": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ },
+ "eng_for_tam|known|நான் இப்போது பலவற்றை கேட்க முயற்சிக்கவில்லை": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2 refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ },
+ "deu_for_jpn|presentation|頑張る、「頑張るつもりです」のように、をドイツ語で言うと：": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for jpn (403): azure_ja-JP-ShioriNeural is not a Cartesia voice and this course's jpn voices are not all Azure; the jpn cast is cartesia_33658a29-5982-44c5-9114-0b2c31e100b4, cartesia_cb21b4af-0e46-44f7-9128-51be7f898311 (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ },
+ "deu_for_jpn|presentation|一生懸命、「今日一生懸命練習する」のように、をドイツ語で言うと：": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for jpn (403): azure_ja-JP-ShioriNeural is not a Cartesia voice and this course's jpn voices are not all Azure; the jpn cast is cartesia_33658a29-5982-44c5-9114-0b2c31e100b4, cartesia_cb21b4af-0e46-44f7-9128-51be7f898311 (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ },
+ "eng_for_tam|presentation|ஆங்கிலம்-ல். 'பலவற்றை கேட்க முயற்சிக்கவில்லை'. 'நான் இப்போது பலவற்றை கேட்க முயற்சிக்கவில்லை' போல். :": {
+  "dry": {
+   "ok": false,
+   "code": "VOICE_NOT_CAST",
+   "error": "Voice not cast for tam (403): tam has only the 2026-09-04 draft casting, which Tom never chose, so no tam clip is rendered (azure_ta-LK-KumarNeural refused) (Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)."
+  },
+  "dry_status": 500
+ }
+}

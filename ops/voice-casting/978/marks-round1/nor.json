@@ -1,0 +1,40 @@
+{
+ "ok": true,
+ "title": "Voices round 1 · Norwegian (nor): like or no",
+ "items": [
+  {
+   "id": "nor.m.311174e8",
+   "source": "Norwegian (nor) · male target voice (target 1 / 2) · now: cast voice Lars is GONE (Cartesia withdrew it)",
+   "proposed": "Erlend — Cartesia · male · oslo (no-NO) · Cordial Dispatcher — A natural, conversational cadence suited for logistical updates, account troubleshooting, and friendly frontline service assistance.",
+   "note": "Every voice reads the same line: «Hun ville legge brevet hans i vesken sin.» (nor_for_eng seed 53)",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/c29ef391/file"
+  },
+  {
+   "id": "nor.f.4f7b1820",
+   "source": "Norwegian (nor) · female target voice (target 1 / 2) · now: cast Kari is the 2026-09-04 mechanical draft",
+   "proposed": "Kari · female · oslo (no-NO) · Crisp Coordinator — Polished Norwegian voice for efficient transactional assistance.",
+   "options": [
+    "like",
+    "no"
+   ],
+   "audio": "/d/29d28b47/file"
+  }
+ ],
+ "answers": {
+  "nor.m.311174e8": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  },
+  "nor.f.4f7b1820": {
+   "choice": "option",
+   "option": 0,
+   "text": "like"
+  }
+ },
+ "submitted_ts": 1795095059805
+}

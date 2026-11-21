@@ -1,0 +1,5942 @@
+{
+ "course": "eng_for_guj",
+ "db": "ssi_copy_20261119t033000z",
+ "at": "2026-11-19T10:49:03.154Z",
+ "ops": [],
+ "rows": [
+  {
+   "seed": 2,
+   "id": "S0002L01U04",
+   "lego": "S0002L01",
+   "known": "હું શીખવાની કોશિશ કરી રહ્યો છું.",
+   "target": "I'm trying to learn.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0002L01U04",
+      "seed_number": 2,
+      "lego_index": 1,
+      "position": 8,
+      "known_text": "હું શીખવાની કોશિશ કરી રહ્યો છું.",
+      "target_text": "I'm trying to learn.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 2,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 6,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0002L01U04",
+     "slot": "known",
+     "audio_id": "3f553476-2165-474f-a299-d26ae6eb876e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0002L01U04",
+     "slot": "target1",
+     "audio_id": "211fad00-64de-403e-b1d0-b7e45e2b76ef"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0002L01U04",
+     "slot": "target2",
+     "audio_id": "fabe7e9e-fa45-4b5e-b736-06a887b80738"
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "id": "S0003L02U04",
+   "lego": "S0003L02",
+   "known": "જેટલું વધારે શક્ય હોય તેટલું વાત કેવી રીતે કરવી.",
+   "target": "how to speak as often as possible.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0003L02U04",
+      "seed_number": 3,
+      "lego_index": 2,
+      "position": 8,
+      "known_text": "જેટલું વધારે શક્ય હોય તેટલું વાત કેવી રીતે કરવી.",
+      "target_text": "how to speak as often as possible.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 3,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0003L02U04",
+     "slot": "known",
+     "audio_id": "e07c7ec3-39ea-4bfb-bd77-7f51a0de8da3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0003L02U04",
+     "slot": "target1",
+     "audio_id": "faae5cee-84ec-4722-beba-e15e0cf78ecc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0003L02U04",
+     "slot": "target2",
+     "audio_id": "4e524398-c096-43a9-a8d6-2b0ab63a0de3"
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "id": "S0004L03U06",
+   "lego": "S0004L03",
+   "known": "અંગ્રેજીમાં કઈ રીતે કંઈક કહેવું",
+   "target": "how to say something in English",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0004L03U06",
+      "seed_number": 4,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "અંગ્રેજીમાં કઈ રીતે કંઈક કહેવું",
+      "target_text": "how to say something in English",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 4,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0004L03U06",
+     "slot": "known",
+     "audio_id": "6f5791ba-3ad3-44a8-bd60-4b170f74286e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0004L03U06",
+     "slot": "target1",
+     "audio_id": "562d0142-ba82-4129-b212-552db59bafc5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0004L03U06",
+     "slot": "target2",
+     "audio_id": "88c103c3-ec1a-445d-ae14-ce953365e06e"
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "id": "S0008L02U06",
+   "lego": "S0008L02",
+   "known": "હું મારો અર્થ સમજાવવાની કોશિશ કરવા જઈ રહ્યો છું.",
+   "target": "I'm going to try to explain what I mean.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0008L02U06",
+      "seed_number": 8,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "હું મારો અર્થ સમજાવવાની કોશિશ કરવા જઈ રહ્યો છું.",
+      "target_text": "I'm going to try to explain what I mean.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 8,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0008L02U06",
+     "slot": "known",
+     "audio_id": "ff2d9fcf-8679-4010-b24b-f252de3f372d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0008L02U06",
+     "slot": "target1",
+     "audio_id": "5824a1a4-3a7f-41c3-84e6-e59f5aad41d2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0008L02U06",
+     "slot": "target2",
+     "audio_id": "0bc7b510-c3f2-474f-92f8-49c9f6b0be7d"
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "id": "S0012L04U06",
+   "lego": "S0012L04",
+   "known": "કાલે શું થવાનું છે તેનો અંદાજ લગાવવો મને ગમશે નહીં.",
+   "target": "I wouldn't like to guess what's going to happen tomorrow.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0012L04U06",
+      "seed_number": 12,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "કાલે શું થવાનું છે તેનો અંદાજ લગાવવો મને ગમશે નહીં.",
+      "target_text": "I wouldn't like to guess what's going to happen tomorrow.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 12,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0012L04U06",
+     "slot": "known",
+     "audio_id": "856cc054-3277-4f41-9a48-f057e00e7f2d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0012L04U06",
+     "slot": "target1",
+     "audio_id": "e6ebd626-1066-4d4b-924e-f68455736c2b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0012L04U06",
+     "slot": "target2",
+     "audio_id": "bda2369a-274f-491c-8429-cd3dd1980620"
+    }
+   ]
+  },
+  {
+   "seed": 17,
+   "id": "S0017L03U06",
+   "lego": "S0017L03",
+   "known": "એ જાણવા માગે છે કે જવાબ શું છે.",
+   "target": "She wants to find out what the answer is.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0017L03U06",
+      "seed_number": 17,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "એ જાણવા માગે છે કે જવાબ શું છે.",
+      "target_text": "She wants to find out what the answer is.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 17,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0017L03U06",
+     "slot": "known",
+     "audio_id": "2fc56565-037c-400b-8ae5-e6382bf2e328"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0017L03U06",
+     "slot": "target1",
+     "audio_id": "f4789476-e07c-4665-93e1-e9f49b5cd0f9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0017L03U06",
+     "slot": "target2",
+     "audio_id": "de3f3976-e437-43ec-823b-8428cad99020"
+    }
+   ]
+  },
+  {
+   "seed": 21,
+   "id": "S0021L02U06",
+   "lego": "S0021L02",
+   "known": "તમે એનું નામ કેમ શીખી રહ્યા છો?",
+   "target": "Why are you learning her name?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0021L02U06",
+      "seed_number": 21,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "તમે એનું નામ કેમ શીખી રહ્યા છો?",
+      "target_text": "Why are you learning her name?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 21,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0021L02U06",
+     "slot": "known",
+     "audio_id": "060ac184-82a3-478e-bcfc-26b1d538322a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0021L02U06",
+     "slot": "target1",
+     "audio_id": "9b0cc924-554d-4b67-af5a-e01bfd67f38b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0021L02U06",
+     "slot": "target2",
+     "audio_id": "d7bb24f4-6d81-47a0-8785-4ac9aa4c7658"
+    }
+   ]
+  },
+  {
+   "seed": 49,
+   "id": "S0049L02U07",
+   "lego": "S0049L02",
+   "known": "આ રીતે છે, જો તમે સમજો તો.",
+   "target": "It's like this, if you know what I mean.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0049L02U07",
+      "seed_number": 49,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "આ રીતે છે, જો તમે સમજો તો.",
+      "target_text": "It's like this, if you know what I mean.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 49,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0049L02U07",
+     "slot": "known",
+     "audio_id": "c825b435-e811-4ac9-ad03-55ed61849997"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0049L02U07",
+     "slot": "target1",
+     "audio_id": "0f8e15f5-9ca9-4133-a1aa-d564ac8cf820"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0049L02U07",
+     "slot": "target2",
+     "audio_id": "29bbf685-e0f4-47ab-9fd9-5f3d35a8785c"
+    }
+   ]
+  },
+  {
+   "seed": 50,
+   "id": "S0050L03U06",
+   "lego": "S0050L03",
+   "known": "હું જેટલું ઝડપથી શક્ય હોય તેટલું ઝડપથી પૂરું કરવાની કોશિશ નથી કરી રહ્યો",
+   "target": "I'm not trying to finish as quickly as possible.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0050L03U06",
+      "seed_number": 50,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "હું જેટલું ઝડપથી શક્ય હોય તેટલું ઝડપથી પૂરું કરવાની કોશિશ નથી કરી રહ્યો",
+      "target_text": "I'm not trying to finish as quickly as possible.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 50,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 13,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0050L03U06",
+     "slot": "known",
+     "audio_id": "d1562b53-0714-4ec4-bd3c-4b1c87d9c607"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0050L03U06",
+     "slot": "target1",
+     "audio_id": "4a651ad4-164c-4245-86bb-f5f948f97c58"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0050L03U06",
+     "slot": "target2",
+     "audio_id": "a2d7337d-3c23-4ef7-8dad-c846d2de3399"
+    }
+   ]
+  },
+  {
+   "seed": 75,
+   "id": "S0075L01U06",
+   "lego": "S0075L01",
+   "known": "શું તમારે હજી ઘણું શીખવાનું છે?",
+   "target": "Have you got more to learn?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0075L01U06",
+      "seed_number": 75,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "શું તમારે હજી ઘણું શીખવાનું છે?",
+      "target_text": "Have you got more to learn?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 75,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0075L01U06",
+     "slot": "known",
+     "audio_id": "3f0836dd-34f7-44ed-b7a1-86ff3d8715b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0075L01U06",
+     "slot": "target1",
+     "audio_id": "e83659b9-fd31-4668-ab52-30c45dc7bfc5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0075L01U06",
+     "slot": "target2",
+     "audio_id": "288beae7-fa66-4827-b94d-a1b01b71e951"
+    }
+   ]
+  },
+  {
+   "seed": 81,
+   "id": "S0081L01U06",
+   "lego": "S0081L01",
+   "known": "તમે ક્યારે શરૂ કરવા માગો છો?",
+   "target": "When do you want to start?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0081L01U06",
+      "seed_number": 81,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "તમે ક્યારે શરૂ કરવા માગો છો?",
+      "target_text": "When do you want to start?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 81,
+       "canon": "P26"
+      },
+      "word_count": 26,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0081L01U06",
+     "slot": "known",
+     "audio_id": "22c685c9-7573-423a-8d9a-d6f50d9c0de3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0081L01U06",
+     "slot": "target1",
+     "audio_id": "d106c3e3-3bbc-4517-acc3-0553ff723fca"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0081L01U06",
+     "slot": "target2",
+     "audio_id": "166d7d1c-1d89-49c7-be25-3502312f635d"
+    }
+   ]
+  },
+  {
+   "seed": 88,
+   "id": "S0088L02U06",
+   "lego": "S0088L02",
+   "known": "હું હજી એ લોકો સાથે વાત કરવા તૈયાર નથી જેમને હું ઓળખતો નથી.",
+   "target": "I'm not ready to talk to people I don't know yet.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0088L02U06",
+      "seed_number": 88,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "હું હજી એ લોકો સાથે વાત કરવા તૈયાર નથી જેમને હું ઓળખતો નથી.",
+      "target_text": "I'm not ready to talk to people I don't know yet.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 88,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 13,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0088L02U06",
+     "slot": "known",
+     "audio_id": "83a5e648-1439-45b0-94d0-f79457189542"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0088L02U06",
+     "slot": "target1",
+     "audio_id": "ae4a04ba-f302-4f91-aac8-84f47fb88b0f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0088L02U06",
+     "slot": "target2",
+     "audio_id": "1d1970d4-35de-4fa2-8662-1cabef6d3707"
+    }
+   ]
+  },
+  {
+   "seed": 94,
+   "id": "S0094L03U06",
+   "lego": "S0094L03",
+   "known": "આ જ એ એક રસ્તો છે જે કામ કરશે.",
+   "target": "This is the only way it will work.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0094L03U06",
+      "seed_number": 94,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "આ જ એ એક રસ્તો છે જે કામ કરશે.",
+      "target_text": "This is the only way it will work.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 94,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0094L03U06",
+     "slot": "known",
+     "audio_id": "b010e79a-44e4-4290-b9df-4db4f2d1a12f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0094L03U06",
+     "slot": "target1",
+     "audio_id": "6246f656-65d9-4dac-ac71-2838d80abecc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0094L03U06",
+     "slot": "target2",
+     "audio_id": "79c26201-88a6-4b05-a066-fe8b9c61b994"
+    }
+   ]
+  },
+  {
+   "seed": 96,
+   "id": "S0096L02U06",
+   "lego": "S0096L02",
+   "known": "ના, હું હજી તૈયાર નથી, મારે થોડો વધારે સમય જોઈએ.",
+   "target": "No I'm not ready yet, I need a little more time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0096L02U06",
+      "seed_number": 96,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "ના, હું હજી તૈયાર નથી, મારે થોડો વધારે સમય જોઈએ.",
+      "target_text": "No I'm not ready yet, I need a little more time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 96,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0096L02U06",
+     "slot": "known",
+     "audio_id": "82a297cc-141b-452e-97a6-1245e1ce14b3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0096L02U06",
+     "slot": "target1",
+     "audio_id": "e4d02fd9-ee35-4d28-8015-53f8481f5fd4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0096L02U06",
+     "slot": "target2",
+     "audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+    }
+   ]
+  },
+  {
+   "seed": 97,
+   "id": "S0097L03U06",
+   "lego": "S0097L03",
+   "known": "હા, હું ત્યારે જ જવા તૈયાર છું જ્યારે તમે ઈચ્છો.",
+   "target": "Yes I'm ready to go as soon as you want.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0097L03U06",
+      "seed_number": 97,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "હા, હું ત્યારે જ જવા તૈયાર છું જ્યારે તમે ઈચ્છો.",
+      "target_text": "Yes I'm ready to go as soon as you want.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 97,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0097L03U06",
+     "slot": "known",
+     "audio_id": "bd139226-dfb7-4a66-b521-cc0815881845"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0097L03U06",
+     "slot": "target1",
+     "audio_id": "ead86e6f-97a0-46f1-9609-081df7259da9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0097L03U06",
+     "slot": "target2",
+     "audio_id": "65f6cb51-e547-4f2b-88bf-fdd6eac4dc21"
+    }
+   ]
+  },
+  {
+   "seed": 100,
+   "id": "S0100L03U06",
+   "lego": "S0100L03",
+   "known": "તમારે આ જ જેવું કંઈ કરવા વિષે ચિંતા ન કરવી જોઈએ.",
+   "target": "You shouldn't worry about doing something similar.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0100L03U06",
+      "seed_number": 100,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "તમારે આ જ જેવું કંઈ કરવા વિષે ચિંતા ન કરવી જોઈએ.",
+      "target_text": "You shouldn't worry about doing something similar.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 100,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0100L03U06",
+     "slot": "known",
+     "audio_id": "824dc3e8-2033-4d02-a619-e9f5847b6532"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0100L03U06",
+     "slot": "target1",
+     "audio_id": "308b7d26-4abe-4daf-838f-e7f03c6060ed"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0100L03U06",
+     "slot": "target2",
+     "audio_id": "880af92e-6376-46d4-819f-d0191d0b6812"
+    }
+   ]
+  },
+  {
+   "seed": 110,
+   "id": "S0110L03U06",
+   "lego": "S0110L03",
+   "known": "અમે મિત્રો છીએ, અને પૂરું કર્યા પછી મને આરામ કરવો ગમશે.",
+   "target": "We're friends, and after we finish I'd like to relax.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0110L03U06",
+      "seed_number": 110,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "અમે મિત્રો છીએ, અને પૂરું કર્યા પછી મને આરામ કરવો ગમશે.",
+      "target_text": "We're friends, and after we finish I'd like to relax.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 110,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0110L03U06",
+     "slot": "known",
+     "audio_id": "461e7d40-9546-45ba-b0b4-08665e9bf9e4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0110L03U06",
+     "slot": "target1",
+     "audio_id": "d95179ce-dc1c-4f7c-8839-31bce5e83b2d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0110L03U06",
+     "slot": "target2",
+     "audio_id": "1e46f2a9-8bdf-4677-a016-d9376716be4c"
+    }
+   ]
+  },
+  {
+   "seed": 133,
+   "id": "S0133L02U06",
+   "lego": "S0133L02",
+   "known": "જ્યારે તમે સાથે કામ કરો ત્યારે કોઈ વ્યક્તિને ઘણું સારી રીતે ઓળખી જાઓ.",
+   "target": "You get to know someone very well when you work together.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0133L02U06",
+      "seed_number": 133,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "જ્યારે તમે સાથે કામ કરો ત્યારે કોઈ વ્યક્તિને ઘણું સારી રીતે ઓળખી જાઓ.",
+      "target_text": "You get to know someone very well when you work together.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 133,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 13,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0133L02U06",
+     "slot": "known",
+     "audio_id": "a201de59-06d3-4cc3-a428-71495aa08505"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0133L02U06",
+     "slot": "target1",
+     "audio_id": "202056ec-1ec1-4463-92e2-899ec3f38e88"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0133L02U06",
+     "slot": "target2",
+     "audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd"
+    }
+   ]
+  },
+  {
+   "seed": 135,
+   "id": "S0135L02U06",
+   "lego": "S0135L02",
+   "known": "હું જાણતો નથી કે શા માટે તમે આ ઘણું સારું માનો છો.",
+   "target": "I don't know why you think that it's so good.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0135L02U06",
+      "seed_number": 135,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "હું જાણતો નથી કે શા માટે તમે આ ઘણું સારું માનો છો.",
+      "target_text": "I don't know why you think that it's so good.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 135,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 12,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0135L02U06",
+     "slot": "known",
+     "audio_id": "022f967b-e6cf-438a-bfe7-04aac8d7d850"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0135L02U06",
+     "slot": "target1",
+     "audio_id": "3863ba5a-1e8b-478a-b271-373e9aebdabd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0135L02U06",
+     "slot": "target2",
+     "audio_id": "66312221-3b15-42b8-97e2-cd3d016890ac"
+    }
+   ]
+  },
+  {
+   "seed": 138,
+   "id": "S0138L02U06",
+   "lego": "S0138L02",
+   "known": "અહીં જ મારા મિત્ર અમને મળવા માગતા હતા.",
+   "target": "This was where my friend wanted to meet us.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0138L02U06",
+      "seed_number": 138,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "અહીં જ મારા મિત્ર અમને મળવા માગતા હતા.",
+      "target_text": "This was where my friend wanted to meet us.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 138,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0138L02U06",
+     "slot": "known",
+     "audio_id": "f985bb1a-6c41-4dd1-bd4f-f422739cd8e8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0138L02U06",
+     "slot": "target1",
+     "audio_id": "be294416-de3d-4593-94c8-070a2a599ae9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0138L02U06",
+     "slot": "target2",
+     "audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+    }
+   ]
+  },
+  {
+   "seed": 139,
+   "id": "S0139L03U06",
+   "lego": "S0139L03",
+   "known": "ખૂબ વહેલા નીકળવું પડે છે, ક્ષમા કરો.",
+   "target": "I'm sorry that I need to leave so early.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0139L03U06",
+      "seed_number": 139,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "ખૂબ વહેલા નીકળવું પડે છે, ક્ષમા કરો.",
+      "target_text": "I'm sorry that I need to leave so early.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 139,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0139L03U06",
+     "slot": "known",
+     "audio_id": "299e979f-1bb3-4d47-b811-92dcf60dcb95"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0139L03U06",
+     "slot": "target1",
+     "audio_id": "8efbc407-d99c-4beb-a74d-7666763f67a6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0139L03U06",
+     "slot": "target2",
+     "audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1"
+    }
+   ]
+  },
+  {
+   "seed": 140,
+   "id": "S0140L02U06",
+   "lego": "S0140L02",
+   "known": "ક્ષમા કરો, તમે જે બતાવવાની કોશિશ કરો છો તે મને ન દેખાય.",
+   "target": "I'm sorry that I can't see what you're trying to show me.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0140L02U06",
+      "seed_number": 140,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "ક્ષમા કરો, તમે જે બતાવવાની કોશિશ કરો છો તે મને ન દેખાય.",
+      "target_text": "I'm sorry that I can't see what you're trying to show me.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 140,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0140L02U06",
+     "slot": "known",
+     "audio_id": "b2b98e66-2b22-44f8-998e-8e8d60cf6906"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0140L02U06",
+     "slot": "target1",
+     "audio_id": "722cae0c-18b1-4848-8c89-1885d2a49a90"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0140L02U06",
+     "slot": "target2",
+     "audio_id": "3999047a-1ed0-418a-9c05-338e0d7a9922"
+    }
+   ]
+  },
+  {
+   "seed": 141,
+   "id": "S0141L02U06",
+   "lego": "S0141L02",
+   "known": "કોઈ વાંધો નહીં. બધું ઠીક છે.",
+   "target": "No problem. Everything is okay.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0141L02U06",
+      "seed_number": 141,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "કોઈ વાંધો નહીં. બધું ઠીક છે.",
+      "target_text": "No problem. Everything is okay.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 141,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0141L02U06",
+     "slot": "known",
+     "audio_id": "fe734f0e-f5a9-4136-bd7a-8c437ff85cc6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0141L02U06",
+     "slot": "target1",
+     "audio_id": "752ab236-18bb-41f0-9ff3-8e9bd8a9decc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0141L02U06",
+     "slot": "target2",
+     "audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace"
+    }
+   ]
+  },
+  {
+   "seed": 143,
+   "id": "S0143L03U06",
+   "lego": "S0143L03",
+   "known": "આ એ જ વાત છે જે વિષે અગાઉ વાત થઈ હતી.",
+   "target": "It's the same thing as we were talking about earlier.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0143L03U06",
+      "seed_number": 143,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "આ એ જ વાત છે જે વિષે અગાઉ વાત થઈ હતી.",
+      "target_text": "It's the same thing as we were talking about earlier.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 143,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0143L03U06",
+     "slot": "known",
+     "audio_id": "f2f0da8f-59ca-4414-ab88-1f8db4cffebf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0143L03U06",
+     "slot": "target1",
+     "audio_id": "0b74d990-e7fe-4a01-baa3-671768aad50f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0143L03U06",
+     "slot": "target2",
+     "audio_id": "6485338d-a807-4a60-bde0-5d3ab55cde70"
+    }
+   ]
+  },
+  {
+   "seed": 144,
+   "id": "S0144L01U06",
+   "lego": "S0144L01",
+   "known": "આ સવારે હું ઈચ્છ્યા કરતાં વહેલો ઊઠ્યો",
+   "target": "I woke earlier than I wanted to this morning.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0144L01U06",
+      "seed_number": 144,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "આ સવારે હું ઈચ્છ્યા કરતાં વહેલો ઊઠ્યો",
+      "target_text": "I woke earlier than I wanted to this morning.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 144,
+       "canon": "P26"
+      },
+      "word_count": 45,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0144L01U06",
+     "slot": "known",
+     "audio_id": "0d68fd5a-5942-4be4-8a62-5394ba09e3b2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0144L01U06",
+     "slot": "target1",
+     "audio_id": "b6d9973c-c515-4e52-9d2e-b0ab0b768006"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0144L01U06",
+     "slot": "target2",
+     "audio_id": "6cdbae69-48c8-4836-b1d2-acdc7ac46644"
+    }
+   ]
+  },
+  {
+   "seed": 145,
+   "id": "S0145L01U06",
+   "lego": "S0145L01",
+   "known": "તમે હવે કેમ ખુશ નથી?",
+   "target": "Why are you not happy any more?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0145L01U06",
+      "seed_number": 145,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "તમે હવે કેમ ખુશ નથી?",
+      "target_text": "Why are you not happy any more?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 145,
+       "canon": "P26"
+      },
+      "word_count": 31,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0145L01U06",
+     "slot": "known",
+     "audio_id": "21795430-a9e1-4fc9-b33f-8eae2cafe318"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0145L01U06",
+     "slot": "target1",
+     "audio_id": "3f2b9222-f713-4f14-9980-4404b9a10c1a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0145L01U06",
+     "slot": "target2",
+     "audio_id": "32755c4d-ad2c-478a-a29d-14939d9cd81d"
+    }
+   ]
+  },
+  {
+   "seed": 147,
+   "id": "S0147L03U06",
+   "lego": "S0147L03",
+   "known": "જ્યારે એ મને ગભરાયેલો જોઈ ત્યારે ઘણી દયાળુ હતી.",
+   "target": "She was very kind when she saw me feeling nervous.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0147L03U06",
+      "seed_number": 147,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "જ્યારે એ મને ગભરાયેલો જોઈ ત્યારે ઘણી દયાળુ હતી.",
+      "target_text": "She was very kind when she saw me feeling nervous.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 147,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0147L03U06",
+     "slot": "known",
+     "audio_id": "0bd20b4f-10bb-405f-8d00-e7490559fca3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0147L03U06",
+     "slot": "target1",
+     "audio_id": "80bb1c44-724e-43db-8cae-eae3844075b9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0147L03U06",
+     "slot": "target2",
+     "audio_id": "564e7b71-6774-44a0-804a-35d3dbbe8908"
+    }
+   ]
+  },
+  {
+   "seed": 148,
+   "id": "S0148L02U06",
+   "lego": "S0148L02",
+   "known": "જ્યારે હું જવાબ ન આપી શક્યો ત્યારે તે ઘણું ધૈર્ય ન રાખી શક્યો.",
+   "target": "He wasn't very patient when I couldn't answer.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0148L02U06",
+      "seed_number": 148,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "જ્યારે હું જવાબ ન આપી શક્યો ત્યારે તે ઘણું ધૈર્ય ન રાખી શક્યો.",
+      "target_text": "He wasn't very patient when I couldn't answer.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 148,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 13,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0148L02U06",
+     "slot": "known",
+     "audio_id": "6ba088c9-2bea-41a5-a92c-f8bf7a84ae83"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0148L02U06",
+     "slot": "target1",
+     "audio_id": "1c66bef3-bf40-4c70-b847-0fb289977a9f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0148L02U06",
+     "slot": "target2",
+     "audio_id": "11df6998-50cb-49a7-b899-d71262a688f8"
+    }
+   ]
+  },
+  {
+   "seed": 150,
+   "id": "S0150L01U06",
+   "lego": "S0150L01",
+   "known": "શું તમે મને તમારું નામ કહી શકો?",
+   "target": "Can you tell me what your name is?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0150L01U06",
+      "seed_number": 150,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "શું તમે મને તમારું નામ કહી શકો?",
+      "target_text": "Can you tell me what your name is?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 150,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0150L01U06",
+     "slot": "known",
+     "audio_id": "25de14b5-ca3b-4db9-9f81-98aec9a1f35a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0150L01U06",
+     "slot": "target1",
+     "audio_id": "ec5c0a83-3c97-4ae9-b423-7f2518dca0ae"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0150L01U06",
+     "slot": "target2",
+     "audio_id": "cb2c714d-7ee5-4151-8bd2-c32a38d76186"
+    }
+   ]
+  },
+  {
+   "seed": 159,
+   "id": "S0159L01U06",
+   "lego": "S0159L01",
+   "known": "હું જે કહેવાની કોશિશ કરી રહ્યો છું એ નથી.",
+   "target": "That isn't what I'm trying to say.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0159L01U06",
+      "seed_number": 159,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "હું જે કહેવાની કોશિશ કરી રહ્યો છું એ નથી.",
+      "target_text": "That isn't what I'm trying to say.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 159,
+       "canon": "P26"
+      },
+      "word_count": 34,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0159L01U06",
+     "slot": "known",
+     "audio_id": "1213777b-6c03-40c4-b11e-90277d9ef177"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0159L01U06",
+     "slot": "target1",
+     "audio_id": "7a1f8df1-2f74-4c70-8824-1400e34b4350"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0159L01U06",
+     "slot": "target2",
+     "audio_id": "ce6d9e9f-492f-44c7-9251-aeda7167daa0"
+    }
+   ]
+  },
+  {
+   "seed": 167,
+   "id": "S0167L02U06",
+   "lego": "S0167L02",
+   "known": "કાલ બપોરે તમારે શું કરવું છે?",
+   "target": "What do you need to do tomorrow afternoon?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0167L02U06",
+      "seed_number": 167,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "કાલ બપોરે તમારે શું કરવું છે?",
+      "target_text": "What do you need to do tomorrow afternoon?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 167,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0167L02U06",
+     "slot": "known",
+     "audio_id": "7c594594-33da-47f0-aeef-7cb5e686b297"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0167L02U06",
+     "slot": "target1",
+     "audio_id": "3af03534-e7ba-442f-9c34-40ced7d03c32"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0167L02U06",
+     "slot": "target2",
+     "audio_id": "24f3fca4-3630-43dc-acf7-844fb48b4012"
+    }
+   ]
+  },
+  {
+   "seed": 178,
+   "id": "S0178L02U06",
+   "lego": "S0178L02",
+   "known": "જો કે હું તમને મળવા ઈચ્છતો હતો, પણ સમય ન હતો.",
+   "target": "I didn't have time, although I wanted to see you.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0178L02U06",
+      "seed_number": 178,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "જો કે હું તમને મળવા ઈચ્છતો હતો, પણ સમય ન હતો.",
+      "target_text": "I didn't have time, although I wanted to see you.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 178,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0178L02U06",
+     "slot": "known",
+     "audio_id": "906f7e20-bc39-4eeb-a067-e7c9a8e72e7d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0178L02U06",
+     "slot": "target1",
+     "audio_id": "f2be8e56-96fe-4eff-8d7b-a12bc8e21469"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0178L02U06",
+     "slot": "target2",
+     "audio_id": "c07d61f8-8839-484c-b0c3-3be3dfdb765b"
+    }
+   ]
+  },
+  {
+   "seed": 184,
+   "id": "S0184L03U06",
+   "lego": "S0184L03",
+   "known": "હા, થોડા સમય પહેલાં ઑફિસ માં જોઈ.",
+   "target": "Yes I saw them in the office a while ago.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0184L03U06",
+      "seed_number": 184,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "હા, થોડા સમય પહેલાં ઑફિસ માં જોઈ.",
+      "target_text": "Yes I saw them in the office a while ago.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 184,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0184L03U06",
+     "slot": "known",
+     "audio_id": "bfd07f5b-64a5-41f0-8e32-aa602b418a2e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0184L03U06",
+     "slot": "target1",
+     "audio_id": "f720c425-887f-4def-885b-7b829dadbcf8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0184L03U06",
+     "slot": "target2",
+     "audio_id": "f8f820e1-4315-4f2e-ab6e-00bbc8199951"
+    }
+   ]
+  },
+  {
+   "seed": 185,
+   "id": "S0185L02U06",
+   "lego": "S0185L02",
+   "known": "મને લાગે છે કે તમે તે કામ પર ભૂલી ગયા.",
+   "target": "I think you left them at work.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0185L02U06",
+      "seed_number": 185,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "મને લાગે છે કે તમે તે કામ પર ભૂલી ગયા.",
+      "target_text": "I think you left them at work.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 185,
+       "canon": "P26"
+      },
+      "word_count": 30,
+      "lego_count": 10,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0185L02U06",
+     "slot": "known",
+     "audio_id": "d7eed944-a07b-409a-bdf2-d1de68acd1e3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0185L02U06",
+     "slot": "target1",
+     "audio_id": "91d0bd04-5fb3-4358-93e4-1ab46b519219"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0185L02U06",
+     "slot": "target2",
+     "audio_id": "ef34e53b-a9b2-4cc8-94ab-62b3c1a0b69a"
+    }
+   ]
+  },
+  {
+   "seed": 186,
+   "id": "S0186L01U06",
+   "lego": "S0186L01",
+   "known": "શું તમે આવતા અઠવાડિયે કંઈક અલગ વિષે વાત કરવા ઈચ્છો?",
+   "target": "Do you want to talk about something different next week?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0186L01U06",
+      "seed_number": 186,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "શું તમે આવતા અઠવાડિયે કંઈક અલગ વિષે વાત કરવા ઈચ્છો?",
+      "target_text": "Do you want to talk about something different next week?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 186,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0186L01U06",
+     "slot": "known",
+     "audio_id": "a859c640-d19c-4d3b-810e-5399a3532000"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0186L01U06",
+     "slot": "target1",
+     "audio_id": "5ff432c3-940a-409f-9a25-b4a8021476dc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0186L01U06",
+     "slot": "target2",
+     "audio_id": "88c36369-9683-48df-b411-bd3498de437a"
+    }
+   ]
+  },
+  {
+   "seed": 199,
+   "id": "S0199L01U06",
+   "lego": "S0199L01",
+   "known": "મારો મિત્ર ઑફિસ માં કામ કરતો હતો.",
+   "target": "My friend used to work in an office.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0199L01U06",
+      "seed_number": 199,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "મારો મિત્ર ઑફિસ માં કામ કરતો હતો.",
+      "target_text": "My friend used to work in an office.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 199,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0199L01U06",
+     "slot": "known",
+     "audio_id": "84e809ce-e46f-4c06-8d8a-dcf6c97cfb4f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0199L01U06",
+     "slot": "target1",
+     "audio_id": "adb90ea7-e0ea-493b-be4d-d96b780a0ace"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0199L01U06",
+     "slot": "target2",
+     "audio_id": "ff93f505-e073-4825-8acc-7ab2cd24aa03"
+    }
+   ]
+  },
+  {
+   "seed": 203,
+   "id": "S0203L02U07",
+   "lego": "S0203L02",
+   "known": "જો હું તમને મદદ કરવા કહું, તો શું કરશો?",
+   "target": "What would you do if I asked you to help me?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0203L02U07",
+      "seed_number": 203,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "જો હું તમને મદદ કરવા કહું, તો શું કરશો?",
+      "target_text": "What would you do if I asked you to help me?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 203,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0203L02U07",
+     "slot": "known",
+     "audio_id": "ccf17c67-19f8-4a07-b3f7-2868a68b176c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0203L02U07",
+     "slot": "target1",
+     "audio_id": "14e72d00-8244-4df7-98f8-c8af73e04fbe"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0203L02U07",
+     "slot": "target2",
+     "audio_id": "f8b2c6fa-d7c2-4205-aa18-99e57cdbfd2a"
+    }
+   ]
+  },
+  {
+   "seed": 204,
+   "id": "S0204L02U06",
+   "lego": "S0204L02",
+   "known": "હું ઇચ્છતો હતો કે તે તમને ગોઠવણો સંભાળવામાં મદદ કરે.",
+   "target": "I wanted her to help you to deal with the arrangements.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0204L02U06",
+      "seed_number": 204,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "હું ઇચ્છતો હતો કે તે તમને ગોઠવણો સંભાળવામાં મદદ કરે.",
+      "target_text": "I wanted her to help you to deal with the arrangements.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 204,
+       "canon": "P26"
+      },
+      "word_count": 55,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0204L02U06",
+     "slot": "known",
+     "audio_id": "74b962f8-d762-49b8-97b4-6940889f81fb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0204L02U06",
+     "slot": "target1",
+     "audio_id": "966ef7b9-c9f7-4566-bf02-fb9519f677a6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0204L02U06",
+     "slot": "target2",
+     "audio_id": "e5f13539-3682-4494-a341-448c75e19b98"
+    }
+   ]
+  },
+  {
+   "seed": 205,
+   "id": "S0205L03U06",
+   "lego": "S0205L03",
+   "known": "જે શબ્દ કહેવાની કોશિશ કરી રહ્યો હતો, ભૂલી ગયો.",
+   "target": "I've forgotten the word I was trying to say.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0205L03U06",
+      "seed_number": 205,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "જે શબ્દ કહેવાની કોશિશ કરી રહ્યો હતો, ભૂલી ગયો.",
+      "target_text": "I've forgotten the word I was trying to say.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 205,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0205L03U06",
+     "slot": "known",
+     "audio_id": "10e90181-6dcb-4d45-9f2f-02a6f36b20e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0205L03U06",
+     "slot": "target1",
+     "audio_id": "af1d748e-18db-4d71-b2ed-b208f47c4707"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0205L03U06",
+     "slot": "target2",
+     "audio_id": "7f0811cc-4eed-4df8-9003-495c8f2354cd"
+    }
+   ]
+  },
+  {
+   "seed": 206,
+   "id": "S0206L01U06",
+   "lego": "S0206L01",
+   "known": "તમારી સાથે બોલવાની પ્રેક્ટિસ કરવાની તક ગમે છે.",
+   "target": "I enjoy the chance to practise speaking with you.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0206L01U06",
+      "seed_number": 206,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "તમારી સાથે બોલવાની પ્રેક્ટિસ કરવાની તક ગમે છે.",
+      "target_text": "I enjoy the chance to practise speaking with you.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 206,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0206L01U06",
+     "slot": "known",
+     "audio_id": "825dddda-646c-464f-9598-84fecb7428e0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0206L01U06",
+     "slot": "target1",
+     "audio_id": "9b183a91-201a-494f-8317-73945d9bca50"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0206L01U06",
+     "slot": "target2",
+     "audio_id": "ecd5cecc-7f3d-49c5-8ff0-072d98508bdf"
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "id": "S0210L02U06",
+   "lego": "S0210L02",
+   "known": "તેઓ સમજે છે કે અમારે સમસ્યા ચર્ચા કરવી જ જોઈએ.",
+   "target": "They think that we need to discuss the problem.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0210L02U06",
+      "seed_number": 210,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "તેઓ સમજે છે કે અમારે સમસ્યા ચર્ચા કરવી જ જોઈએ.",
+      "target_text": "They think that we need to discuss the problem.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 210,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0210L02U06",
+     "slot": "known",
+     "audio_id": "cca22d62-3126-42ee-9a04-3e50dd24fecd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0210L02U06",
+     "slot": "target1",
+     "audio_id": "35071e34-a723-47f5-9247-d0a5210fdd6c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0210L02U06",
+     "slot": "target2",
+     "audio_id": "c307be71-6783-42f3-b060-2d88adf54fac"
+    }
+   ]
+  },
+  {
+   "seed": 221,
+   "id": "S0221L03U06",
+   "lego": "S0221L03",
+   "known": "મેં ફૂટબોલ જોયો અને પછી મેં એક ફિલ્મ જોઈ.",
+   "target": "I watched the football and then I watched a film.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0221L03U06",
+      "seed_number": 221,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "મેં ફૂટબોલ જોયો અને પછી મેં એક ફિલ્મ જોઈ.",
+      "target_text": "I watched the football and then I watched a film.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 221,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0221L03U06",
+     "slot": "known",
+     "audio_id": "7ce7f65f-4960-4782-b22a-131f19c415a2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0221L03U06",
+     "slot": "target1",
+     "audio_id": "f8d018bf-26b8-4a28-93a3-4b9e91a8bfbb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0221L03U06",
+     "slot": "target2",
+     "audio_id": "09468a89-8052-4ef8-b98d-9a737ac9f6d4"
+    }
+   ]
+  },
+  {
+   "seed": 227,
+   "id": "S0227L02U06",
+   "lego": "S0227L02",
+   "known": "પેલો માણસ મને કંઈ નવી વાત કહેવા જઈ રહ્યો છે.",
+   "target": "That man is going to tell me something new.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0227L02U06",
+      "seed_number": 227,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "પેલો માણસ મને કંઈ નવી વાત કહેવા જઈ રહ્યો છે.",
+      "target_text": "That man is going to tell me something new.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 227,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0227L02U06",
+     "slot": "known",
+     "audio_id": "68c19e62-f626-4b14-98c9-3ccd011b19df"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0227L02U06",
+     "slot": "target1",
+     "audio_id": "df016d7a-dc04-4e64-98ca-7c5740aec721"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0227L02U06",
+     "slot": "target2",
+     "audio_id": "f527f1f1-d976-45f6-8d68-82416c084f8e"
+    }
+   ]
+  },
+  {
+   "seed": 228,
+   "id": "S0228L01U02",
+   "lego": "S0228L01",
+   "known": "પેલા માણસે હમણાં જ બોલવાની પ્રેક્ટિસ શરૂ કરી.",
+   "target": "That man has just started to practise speaking.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0228L01U02",
+      "seed_number": 228,
+      "lego_index": 1,
+      "position": 7,
+      "known_text": "પેલા માણસે હમણાં જ બોલવાની પ્રેક્ટિસ શરૂ કરી.",
+      "target_text": "That man has just started to practise speaking.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 228,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 8,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0228L01U02",
+     "slot": "known",
+     "audio_id": "5e3dfefe-13ad-4c5c-9641-277604d59e08"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0228L01U02",
+     "slot": "target1",
+     "audio_id": "94d501ba-16fd-4e30-b14a-030d91f112b0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0228L01U02",
+     "slot": "target2",
+     "audio_id": "fb678bf5-44b3-491f-aa5d-9e8731ee05d3"
+    }
+   ]
+  },
+  {
+   "seed": 229,
+   "id": "S0229L02U06",
+   "lego": "S0229L02",
+   "known": "જો શક્ય હોત, તો પેલી સ્ત્રી તમારી મદદ કરત.",
+   "target": "That woman would help you if she could.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0229L02U06",
+      "seed_number": 229,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "જો શક્ય હોત, તો પેલી સ્ત્રી તમારી મદદ કરત.",
+      "target_text": "That woman would help you if she could.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 229,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 9,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0229L02U06",
+     "slot": "known",
+     "audio_id": "7886c658-fe8f-47a0-bd4b-877e9cb334dc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0229L02U06",
+     "slot": "target1",
+     "audio_id": "04793e1f-5b18-41d3-a1df-1a4cba79e57f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0229L02U06",
+     "slot": "target2",
+     "audio_id": "c3341a8f-95c1-4548-adf6-5b5a4e03d170"
+    }
+   ]
+  },
+  {
+   "seed": 244,
+   "id": "S0244L01U06",
+   "lego": "S0244L01",
+   "known": "હું પહેલેથી ઘણું શીખ્યો છું.",
+   "target": "I've learnt a lot already",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0244L01U06",
+      "seed_number": 244,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "હું પહેલેથી ઘણું શીખ્યો છું.",
+      "target_text": "I've learnt a lot already",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 244,
+       "canon": "P26"
+      },
+      "word_count": 25,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0244L01U06",
+     "slot": "known",
+     "audio_id": "f67b9aa6-09e7-4e63-ab13-04c81abf5552"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0244L01U06",
+     "slot": "target1",
+     "audio_id": "2ce41fb8-5d1b-4a53-872b-c6a01671a16b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0244L01U06",
+     "slot": "target2",
+     "audio_id": "baaa72d1-d156-48f7-97db-328df0ae758d"
+    }
+   ]
+  },
+  {
+   "seed": 245,
+   "id": "S0245L02U06",
+   "lego": "S0245L02",
+   "known": "ટૂંક સમયમાં મેં જેટલું કર્યું છે એ જોઈ મને ખુશી છે.",
+   "target": "I'm happy with how much I've done in a short time",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0245L02U06",
+      "seed_number": 245,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "ટૂંક સમયમાં મેં જેટલું કર્યું છે એ જોઈ મને ખુશી છે.",
+      "target_text": "I'm happy with how much I've done in a short time",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 245,
+       "canon": "P26"
+      },
+      "word_count": 49,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0245L02U06",
+     "slot": "known",
+     "audio_id": "86b2eaa8-6c0c-46c9-9fdb-083082da11b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0245L02U06",
+     "slot": "target1",
+     "audio_id": "f9b579cd-5841-470a-a1fc-0f6f3f629bbc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0245L02U06",
+     "slot": "target2",
+     "audio_id": "05c75410-85cf-4386-b771-21c0e4e875d2"
+    }
+   ]
+  },
+  {
+   "seed": 247,
+   "id": "S0247L01U06",
+   "lego": "S0247L01",
+   "known": "મને લાગ્યું કે એ પુસ્તક ઠીક ઠીક સારું હતું.",
+   "target": "I thought that book was fairly good.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0247L01U06",
+      "seed_number": 247,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "મને લાગ્યું કે એ પુસ્તક ઠીક ઠીક સારું હતું.",
+      "target_text": "I thought that book was fairly good.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 247,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0247L01U06",
+     "slot": "known",
+     "audio_id": "add0e09c-f874-47e6-96ee-6f8dda60ab7a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0247L01U06",
+     "slot": "target1",
+     "audio_id": "df8636bc-88fa-4cd2-8cc4-9eaf0caa60e6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0247L01U06",
+     "slot": "target2",
+     "audio_id": "61df9ede-ee39-4ce0-96f1-785bc07c31b6"
+    }
+   ]
+  },
+  {
+   "seed": 267,
+   "id": "S0267L01U06",
+   "lego": "S0267L01",
+   "known": "તમારા મિત્ર પાસેથી કંઈ સાંભળ્યું?",
+   "target": "Have you heard from your friend?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0267L01U06",
+      "seed_number": 267,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "તમારા મિત્ર પાસેથી કંઈ સાંભળ્યું?",
+      "target_text": "Have you heard from your friend?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 267,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0267L01U06",
+     "slot": "known",
+     "audio_id": "cacd3ded-af21-4d17-a424-111a81d52e4f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0267L01U06",
+     "slot": "target1",
+     "audio_id": "0f23ba2a-22b3-4b02-bf96-10edf7244d3d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0267L01U06",
+     "slot": "target2",
+     "audio_id": "e0c91550-d4e5-4560-b03c-aefe704826e1"
+    }
+   ]
+  },
+  {
+   "seed": 271,
+   "id": "S0271L01U11",
+   "lego": "S0271L01",
+   "known": "શું તમે આવતા મહિને અમારી સાથે આવવા ઈચ્છો?",
+   "target": "Would you like to come with us next month?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0271L01U11",
+      "seed_number": 271,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "શું તમે આવતા મહિને અમારી સાથે આવવા ઈચ્છો?",
+      "target_text": "Would you like to come with us next month?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 271,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0271L01U11",
+     "slot": "known",
+     "audio_id": "af5b64e3-a4cc-4cbc-8aba-6c9611c3fd2f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0271L01U11",
+     "slot": "target1",
+     "audio_id": "e1bb7ca0-cf19-4ac0-b2b6-e5c98b66037f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0271L01U11",
+     "slot": "target2",
+     "audio_id": "b743b32d-0379-4233-b471-f95c4c2ae432"
+    }
+   ]
+  },
+  {
+   "seed": 276,
+   "id": "S0276L01U07",
+   "lego": "S0276L01",
+   "known": "ના, હું અહીં થોડો વધારે સમય રહી શકું.",
+   "target": "No I can stay here for a little longer.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0276L01U07",
+      "seed_number": 276,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "ના, હું અહીં થોડો વધારે સમય રહી શકું.",
+      "target_text": "No I can stay here for a little longer.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 276,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0276L01U07",
+     "slot": "known",
+     "audio_id": "67ce569c-82b2-4da0-8ff6-ee79489b9006"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0276L01U07",
+     "slot": "target1",
+     "audio_id": "5762836b-d66a-4944-9444-24b6e9067606"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0276L01U07",
+     "slot": "target2",
+     "audio_id": "dcfb50c8-6160-4e80-9726-ea2e82a93978"
+    }
+   ]
+  },
+  {
+   "seed": 282,
+   "id": "S0282L01U06",
+   "lego": "S0282L01",
+   "known": "ના, એ કોઈ સમસ્યા નથી.",
+   "target": "No that's not a problem.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0282L01U06",
+      "seed_number": 282,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "ના, એ કોઈ સમસ્યા નથી.",
+      "target_text": "No that's not a problem.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 282,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0282L01U06",
+     "slot": "known",
+     "audio_id": "6435b116-38b2-4eba-b4a5-58b2d59a8939"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0282L01U06",
+     "slot": "target1",
+     "audio_id": "37c7edb4-984a-4c8a-9ff8-3432fe558287"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0282L01U06",
+     "slot": "target2",
+     "audio_id": "a065e577-7d7d-4c75-9db4-7fec8211b4c8"
+    }
+   ]
+  },
+  {
+   "seed": 296,
+   "id": "S0296L01U06",
+   "lego": "S0296L01",
+   "known": "મેં કહ્યું કે મારે થોડો વધુ સમય જોઈએ.",
+   "target": "I said that I needed a little more time.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0296L01U06",
+      "seed_number": 296,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "મેં કહ્યું કે મારે થોડો વધુ સમય જોઈએ.",
+      "target_text": "I said that I needed a little more time.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 296,
+       "canon": "P26"
+      },
+      "word_count": 40,
+      "lego_count": 8,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0296L01U06",
+     "slot": "known",
+     "audio_id": "dc97561f-c70b-44da-b1aa-7bd6a801b8bd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0296L01U06",
+     "slot": "target1",
+     "audio_id": "d33f53a2-05ce-4f35-adbd-fcf1551f15b6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0296L01U06",
+     "slot": "target2",
+     "audio_id": "4bfe6b50-a115-4016-a9e4-74a1d9c668af"
+    }
+   ]
+  },
+  {
+   "seed": 301,
+   "id": "S0301L01U08",
+   "lego": "S0301L01",
+   "known": "એણે કહ્યું કે એ તમને કંઈક બતાવવા ઈચ્છે.",
+   "target": "He said that he wants to show you something.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0301L01U08",
+      "seed_number": 301,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "એણે કહ્યું કે એ તમને કંઈક બતાવવા ઈચ્છે.",
+      "target_text": "He said that he wants to show you something.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 301,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 8,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0301L01U08",
+     "slot": "known",
+     "audio_id": "f55d6893-77d9-4c74-b10e-2aa1d8ceac07"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0301L01U08",
+     "slot": "target1",
+     "audio_id": "0a9f09d9-94b7-418c-beb5-9e300a577a24"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0301L01U08",
+     "slot": "target2",
+     "audio_id": "41e27acd-034f-448f-9c35-7d3790442f7d"
+    }
+   ]
+  },
+  {
+   "seed": 325,
+   "id": "S0325L01U06",
+   "lego": "S0325L01",
+   "known": "મને લાગે છે કે એને દસ શક્ય સમસ્યાઓ ઉપર વિચાર કરવો જરૂરી છે.",
+   "target": "I think that he needs to consider ten possible problems.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0325L01U06",
+      "seed_number": 325,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "મને લાગે છે કે એને દસ શક્ય સમસ્યાઓ ઉપર વિચાર કરવો જરૂરી છે.",
+      "target_text": "I think that he needs to consider ten possible problems.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 325,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 13,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0325L01U06",
+     "slot": "known",
+     "audio_id": "3d643cf0-fa4d-4985-a816-b9aace81a30c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0325L01U06",
+     "slot": "target1",
+     "audio_id": "b062884d-ada4-43fa-8342-3b51760211a5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0325L01U06",
+     "slot": "target2",
+     "audio_id": "5ed0f3e8-cdbc-4c6f-846f-3ba788cb8cde"
+    }
+   ]
+  },
+  {
+   "seed": 338,
+   "id": "S0338L01U07",
+   "lego": "S0338L01",
+   "known": "ખૂબ ખરાબ રીતે.",
+   "target": "Badly.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0338L01U07",
+      "seed_number": 338,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "ખૂબ ખરાબ રીતે.",
+      "target_text": "Badly.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 338,
+       "canon": "P26"
+      },
+      "word_count": 6,
+      "lego_count": 3,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0338L01U07",
+     "slot": "known",
+     "audio_id": "0e166a9f-c911-4157-8f41-311e71ed0c6e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0338L01U07",
+     "slot": "target1",
+     "audio_id": "295c8697-1c04-4971-88b4-4aa285328a0d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0338L01U07",
+     "slot": "target2",
+     "audio_id": "21e5b337-4210-434c-aaf3-88b5d17bab59"
+    }
+   ]
+  },
+  {
+   "seed": 341,
+   "id": "S0341L01U08",
+   "lego": "S0341L01",
+   "known": "થોડા દિવસ પહેલાં મને કોઈ મળ્યું.",
+   "target": "I met someone a few days ago.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0341L01U08",
+      "seed_number": 341,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "થોડા દિવસ પહેલાં મને કોઈ મળ્યું.",
+      "target_text": "I met someone a few days ago.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 341,
+       "canon": "P26"
+      },
+      "word_count": 29,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0341L01U08",
+     "slot": "known",
+     "audio_id": "98ee21fb-9fe5-4db0-b051-2ea3c07b164d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0341L01U08",
+     "slot": "target1",
+     "audio_id": "ca20a73a-8db9-4b80-a24c-d2417e296061"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0341L01U08",
+     "slot": "target2",
+     "audio_id": "927aad94-8b3b-406e-bf58-210f2890d517"
+    }
+   ]
+  },
+  {
+   "seed": 384,
+   "id": "S0384L02U06",
+   "lego": "S0384L02",
+   "known": "એ થોડી વાર પહેલાં એણે જે કહ્યું એ સાથે હું સહમત ન થઈ શક્યો.",
+   "target": "I couldn't agree with what he said a moment ago.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0384L02U06",
+      "seed_number": 384,
+      "lego_index": 2,
+      "position": 12,
+      "known_text": "એ થોડી વાર પહેલાં એણે જે કહ્યું એ સાથે હું સહમત ન થઈ શક્યો.",
+      "target_text": "I couldn't agree with what he said a moment ago.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 384,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 14,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0384L02U06",
+     "slot": "known",
+     "audio_id": "a575d296-dce6-4f12-8289-9878533b8af6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0384L02U06",
+     "slot": "target1",
+     "audio_id": "d1b49adf-c95c-471d-8aac-c60215f49f19"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0384L02U06",
+     "slot": "target2",
+     "audio_id": "a1fbf03f-7752-4d1b-8f5a-0b2ffd084691"
+    }
+   ]
+  },
+  {
+   "seed": 402,
+   "id": "S0402L02U06",
+   "lego": "S0402L02",
+   "known": "હા, ખાવા માટે ક્યાંક ઊભા રહેવું સારું રહેશે.",
+   "target": "Yes it would be nice to stop somewhere for food.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0402L02U06",
+      "seed_number": 402,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "હા, ખાવા માટે ક્યાંક ઊભા રહેવું સારું રહેશે.",
+      "target_text": "Yes it would be nice to stop somewhere for food.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 402,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0402L02U06",
+     "slot": "known",
+     "audio_id": "8d24a29b-aa43-4e25-ad62-50b6a14cd7e8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0402L02U06",
+     "slot": "target1",
+     "audio_id": "b303318d-184e-4a75-8b5d-a61996db9e48"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0402L02U06",
+     "slot": "target2",
+     "audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e"
+    }
+   ]
+  },
+  {
+   "seed": 404,
+   "id": "S0404L03U06",
+   "lego": "S0404L03",
+   "known": "આપણે ગુરુવાર પહેલાં પૂરું કરવાની આશા ન રાખવી જોઇએ.",
+   "target": "We shouldn't expect to finish before Thursday.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0404L03U06",
+      "seed_number": 404,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "આપણે ગુરુવાર પહેલાં પૂરું કરવાની આશા ન રાખવી જોઇએ.",
+      "target_text": "We shouldn't expect to finish before Thursday.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 404,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0404L03U06",
+     "slot": "known",
+     "audio_id": "d1bc88a6-508b-48d7-884a-a6ea259b6a70"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0404L03U06",
+     "slot": "target1",
+     "audio_id": "d75d0cff-2b2f-4147-9ffc-c2814ce5b1be"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0404L03U06",
+     "slot": "target2",
+     "audio_id": "3c9a6d06-bfdf-46e5-a4a9-43f92916866d"
+    }
+   ]
+  },
+  {
+   "seed": 410,
+   "id": "S0410L03U06",
+   "lego": "S0410L03",
+   "known": "એઓ હજી એકબીજા સાથે લડ્યા જ કરે.",
+   "target": "They still fight with each other.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0410L03U06",
+      "seed_number": 410,
+      "lego_index": 3,
+      "position": 13,
+      "known_text": "એઓ હજી એકબીજા સાથે લડ્યા જ કરે.",
+      "target_text": "They still fight with each other.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 410,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0410L03U06",
+     "slot": "known",
+     "audio_id": "3b018f7e-c384-442c-9b38-6ed98503b8ad"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0410L03U06",
+     "slot": "target1",
+     "audio_id": "b7ad58d2-064b-4a23-a7e7-87a7e14e9641"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0410L03U06",
+     "slot": "target2",
+     "audio_id": "0764b8d4-c272-4ce6-8fde-fb235942bd39"
+    }
+   ]
+  },
+  {
+   "seed": 411,
+   "id": "S0411L03U06",
+   "lego": "S0411L03",
+   "known": "અમે આજે રાત્રે ચાર જણ માટે એક ટેબલ રિઝર્વ કરવા માગીએ છીએ.",
+   "target": "We would like to reserve a table for four tonight.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0411L03U06",
+      "seed_number": 411,
+      "lego_index": 3,
+      "position": 11,
+      "known_text": "અમે આજે રાત્રે ચાર જણ માટે એક ટેબલ રિઝર્વ કરવા માગીએ છીએ.",
+      "target_text": "We would like to reserve a table for four tonight.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 411,
+       "canon": "P26"
+      },
+      "word_count": 50,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0411L03U06",
+     "slot": "known",
+     "audio_id": "3ff6eb84-4911-402c-b6b5-93a1a240ee8c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0411L03U06",
+     "slot": "target1",
+     "audio_id": "75a9dd71-8001-45db-b744-7088808832dd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0411L03U06",
+     "slot": "target2",
+     "audio_id": "784e3502-6c50-4cdb-a2ba-48bdbfd92855"
+    }
+   ]
+  },
+  {
+   "seed": 435,
+   "id": "S0435L01U06",
+   "lego": "S0435L01",
+   "known": "હા, જો તેઓ ઇચ્છતા તો તેઓ શકે.",
+   "target": "Yes they could if they wanted to.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0435L01U06",
+      "seed_number": 435,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "હા, જો તેઓ ઇચ્છતા તો તેઓ શકે.",
+      "target_text": "Yes they could if they wanted to.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 435,
+       "canon": "P26"
+      },
+      "word_count": 33,
+      "lego_count": 7,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0435L01U06",
+     "slot": "known",
+     "audio_id": "2b9c7d05-c722-4cb8-920c-aba20160d636"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0435L01U06",
+     "slot": "target1",
+     "audio_id": "d93f88dc-4f00-45a7-b2b2-a0efd7fbe4d8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0435L01U06",
+     "slot": "target2",
+     "audio_id": "49a3e4e0-23ef-4be7-8b02-775933c6de28"
+    }
+   ]
+  },
+  {
+   "seed": 440,
+   "id": "S0440L01U03",
+   "lego": "S0440L01",
+   "known": "તેઓ હજી યુવાન હોય ત્યારે પ્રવાસ કરવા ઇચ્છે.",
+   "target": "They want to travel while they're still young.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0440L01U03",
+      "seed_number": 440,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "તેઓ હજી યુવાન હોય ત્યારે પ્રવાસ કરવા ઇચ્છે.",
+      "target_text": "They want to travel while they're still young.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 440,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 8,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0440L01U03",
+     "slot": "known",
+     "audio_id": "f9521a76-2736-4728-98d4-cb5a659e682a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0440L01U03",
+     "slot": "target1",
+     "audio_id": "693165e5-c7e5-4a2e-938c-3bd2da0a6ac4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0440L01U03",
+     "slot": "target2",
+     "audio_id": "8cabfe39-af17-4338-ae6e-91f46cd035dd"
+    }
+   ]
+  },
+  {
+   "seed": 458,
+   "id": "S0458L02U06",
+   "lego": "S0458L02",
+   "known": "એ બધું ભૂતકાળમાં ઘણું વધારે સરળ હતું.",
+   "target": "It was all much easier in the past.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0458L02U06",
+      "seed_number": 458,
+      "lego_index": 2,
+      "position": 11,
+      "known_text": "એ બધું ભૂતકાળમાં ઘણું વધારે સરળ હતું.",
+      "target_text": "It was all much easier in the past.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 458,
+       "canon": "P26"
+      },
+      "word_count": 35,
+      "lego_count": 7,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0458L02U06",
+     "slot": "known",
+     "audio_id": "96a34e94-919d-4f6e-aec4-52cad1304d51"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0458L02U06",
+     "slot": "target1",
+     "audio_id": "b55e7ad5-7534-4f54-9ee0-9c249a08f346"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0458L02U06",
+     "slot": "target2",
+     "audio_id": "062728f9-39cc-4638-b18c-9bd00ecdb537"
+    }
+   ]
+  },
+  {
+   "seed": 486,
+   "id": "S0486L01U07",
+   "lego": "S0486L01",
+   "known": "મને લાગે છે કે તમારી આંખો સુંદર છે.",
+   "target": "I think your eyes are beautiful.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0486L01U07",
+      "seed_number": 486,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "મને લાગે છે કે તમારી આંખો સુંદર છે.",
+      "target_text": "I think your eyes are beautiful.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 486,
+       "canon": "P26"
+      },
+      "word_count": 32,
+      "lego_count": 8,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0486L01U07",
+     "slot": "known",
+     "audio_id": "314ccc5b-e822-4d77-9b06-ac9e2efdb026"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0486L01U07",
+     "slot": "target1",
+     "audio_id": "d2a1099a-8f17-40ae-a724-4097f09771d6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0486L01U07",
+     "slot": "target2",
+     "audio_id": "a770d41d-f5eb-44fd-86be-438ceab43d74"
+    }
+   ]
+  },
+  {
+   "seed": 508,
+   "id": "S0508L04U06",
+   "lego": "S0508L04",
+   "known": "તમે કેવી રીતે ચૂકવણી કરશો તે વિશે ચિંતા કરવાનો કોઈ અર્થ નથી.",
+   "target": "There's no point worrying about how you're going to pay.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0508L04U06",
+      "seed_number": 508,
+      "lego_index": 4,
+      "position": 12,
+      "known_text": "તમે કેવી રીતે ચૂકવણી કરશો તે વિશે ચિંતા કરવાનો કોઈ અર્થ નથી.",
+      "target_text": "There's no point worrying about how you're going to pay.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 508,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0508L04U06",
+     "slot": "known",
+     "audio_id": "311dea1c-8cbd-43fd-8eb5-0cbaed493317"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0508L04U06",
+     "slot": "target1",
+     "audio_id": "365a87d8-efcc-4d59-a039-d303406ce9e5"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0508L04U06",
+     "slot": "target2",
+     "audio_id": "e6cffc6f-7bf1-4683-8790-257bf5467c64"
+    }
+   ]
+  },
+  {
+   "seed": 521,
+   "id": "S0521L04U06",
+   "lego": "S0521L04",
+   "known": "મને બીક છે કે આપણને અહીં શા માટે રહેવું પડ્યું તે તમે ભૂલી જશો.",
+   "target": "I'm afraid that you'll forget why we needed to stay here.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0521L04U06",
+      "seed_number": 521,
+      "lego_index": 4,
+      "position": 13,
+      "known_text": "મને બીક છે કે આપણને અહીં શા માટે રહેવું પડ્યું તે તમે ભૂલી જશો.",
+      "target_text": "I'm afraid that you'll forget why we needed to stay here.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 521,
+       "canon": "P26"
+      },
+      "word_count": 57,
+      "lego_count": 14,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0521L04U06",
+     "slot": "known",
+     "audio_id": "1ceb1bfe-d73c-45d0-a666-c2c3b6cb3902"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0521L04U06",
+     "slot": "target1",
+     "audio_id": "f96e23f4-eee5-42ad-94c6-6425497b1d25"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0521L04U06",
+     "slot": "target2",
+     "audio_id": "f2b218ce-8e17-468a-91b1-56b293b4d793"
+    }
+   ]
+  },
+  {
+   "seed": 543,
+   "id": "S0543L01U08",
+   "lego": "S0543L01",
+   "known": "તેણી સાચી હતી.",
+   "target": "She was right.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0543L01U08",
+      "seed_number": 543,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "તેણી સાચી હતી.",
+      "target_text": "She was right.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 543,
+       "canon": "P26"
+      },
+      "word_count": 14,
+      "lego_count": 3,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0543L01U08",
+     "slot": "known",
+     "audio_id": "d3d06967-94ea-4bd2-87b6-2e80686b6454"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0543L01U08",
+     "slot": "target1",
+     "audio_id": "d2daa766-f3f9-4795-a909-6c0ed447999a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0543L01U08",
+     "slot": "target2",
+     "audio_id": "7d77a05a-6c33-4d51-a5a8-10da580a0c01"
+    }
+   ]
+  },
+  {
+   "seed": 544,
+   "id": "S0544L03U06",
+   "lego": "S0544L03",
+   "known": "જેણે પણ કહ્યું કે તે મુશ્કેલ હશે તે બિલકુલ સાચું હતું.",
+   "target": "Whoever said it would be difficult was absolutely right.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0544L03U06",
+      "seed_number": 544,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "જેણે પણ કહ્યું કે તે મુશ્કેલ હશે તે બિલકુલ સાચું હતું.",
+      "target_text": "Whoever said it would be difficult was absolutely right.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 544,
+       "canon": "P26"
+      },
+      "word_count": 56,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0544L03U06",
+     "slot": "known",
+     "audio_id": "24aeb80a-d597-487b-9551-bfa9a8052cbd"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0544L03U06",
+     "slot": "target1",
+     "audio_id": "429f7e3c-4ef2-4d7b-bc36-d24c403d80ea"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0544L03U06",
+     "slot": "target2",
+     "audio_id": "55890126-710b-4547-a4ce-8767d5d532c6"
+    }
+   ]
+  },
+  {
+   "seed": 553,
+   "id": "S0553L03U06",
+   "lego": "S0553L03",
+   "known": "મને લાગે છે કે નાનું દેવળ બહુ કદરૂપું છે.",
+   "target": "I think the small church is very ugly.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0553L03U06",
+      "seed_number": 553,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "મને લાગે છે કે નાનું દેવળ બહુ કદરૂપું છે.",
+      "target_text": "I think the small church is very ugly.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 553,
+       "canon": "P26"
+      },
+      "word_count": 38,
+      "lego_count": 9,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0553L03U06",
+     "slot": "known",
+     "audio_id": "97fd7d4a-7ea3-4db8-9fb9-5b6d4d4a6da2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0553L03U06",
+     "slot": "target1",
+     "audio_id": "304fb33a-8055-4d2e-8cde-5d9fc4e399d0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0553L03U06",
+     "slot": "target2",
+     "audio_id": "9094179c-5f57-4b0a-bc69-9e2215d00c07"
+    }
+   ]
+  },
+  {
+   "seed": 557,
+   "id": "S0557L03U06",
+   "lego": "S0557L03",
+   "known": "કાશ તેઓ આટલું મોટેથી સંગીત ન વગાડે.",
+   "target": "I wish they wouldn't play such loud music.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0557L03U06",
+      "seed_number": 557,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "કાશ તેઓ આટલું મોટેથી સંગીત ન વગાડે.",
+      "target_text": "I wish they wouldn't play such loud music.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 557,
+       "canon": "P26"
+      },
+      "word_count": 42,
+      "lego_count": 7,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0557L03U06",
+     "slot": "known",
+     "audio_id": "91d2d292-c432-45c9-a96a-6d6c072c3b7c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0557L03U06",
+     "slot": "target1",
+     "audio_id": "d23aee1e-7b79-41aa-81fd-8b2e2a23819c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0557L03U06",
+     "slot": "target2",
+     "audio_id": "69759cda-a997-41a4-b176-a351df006fed"
+    }
+   ]
+  },
+  {
+   "seed": 570,
+   "id": "S0570L02U05",
+   "lego": "S0570L02",
+   "known": "તમે તમારી ટિકિટ માટે કેટલું ચૂકવવા તૈયાર છો?",
+   "target": "How much are you willing to pay for your ticket?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0570L02U05",
+      "seed_number": 570,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "તમે તમારી ટિકિટ માટે કેટલું ચૂકવવા તૈયાર છો?",
+      "target_text": "How much are you willing to pay for your ticket?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 570,
+       "canon": "P26"
+      },
+      "word_count": 48,
+      "lego_count": 8,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0570L02U05",
+     "slot": "known",
+     "audio_id": "61006449-e751-4698-bf0f-8baafb2b03f2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0570L02U05",
+     "slot": "target1",
+     "audio_id": "7fc0127d-8066-41bb-bc06-c87180f7472a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0570L02U05",
+     "slot": "target2",
+     "audio_id": "1f10354a-f883-4d2a-9174-cf36618a7773"
+    }
+   ]
+  },
+  {
+   "seed": 573,
+   "id": "S0573L03U06",
+   "lego": "S0573L03",
+   "known": "આ એવી વસ્તુ છે જે રજાઓને બહુ ખાસ બનાવે છે.",
+   "target": "It's the kind of thing that makes the holidays very special.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0573L03U06",
+      "seed_number": 573,
+      "lego_index": 3,
+      "position": 12,
+      "known_text": "આ એવી વસ્તુ છે જે રજાઓને બહુ ખાસ બનાવે છે.",
+      "target_text": "It's the kind of thing that makes the holidays very special.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 573,
+       "canon": "P26"
+      },
+      "word_count": 60,
+      "lego_count": 10,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0573L03U06",
+     "slot": "known",
+     "audio_id": "accf867a-72f2-46b3-9d8f-7af37ffec9a8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0573L03U06",
+     "slot": "target1",
+     "audio_id": "b438af7a-3dbd-4044-a518-49b2e93a27e3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0573L03U06",
+     "slot": "target2",
+     "audio_id": "c09091d0-f5e4-4062-89ce-3717542ba57f"
+    }
+   ]
+  },
+  {
+   "seed": 574,
+   "id": "S0574L03U06",
+   "lego": "S0574L03",
+   "known": "રજાઓ દરેક માટે બહુ ખાસ હોય છે.",
+   "target": "The holidays are very special for everyone.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0574L03U06",
+      "seed_number": 574,
+      "lego_index": 3,
+      "position": 9,
+      "known_text": "રજાઓ દરેક માટે બહુ ખાસ હોય છે.",
+      "target_text": "The holidays are very special for everyone.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 574,
+       "canon": "P26"
+      },
+      "word_count": 43,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0574L03U06",
+     "slot": "known",
+     "audio_id": "42f4a1e0-0f0a-43fd-b943-d8a00c203ce2"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0574L03U06",
+     "slot": "target1",
+     "audio_id": "fca70efd-c127-4576-b536-a15adad621ee"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0574L03U06",
+     "slot": "target2",
+     "audio_id": "0b336178-efe9-4553-8c17-bc97080d5b7a"
+    }
+   ]
+  },
+  {
+   "seed": 581,
+   "id": "S0581L04U06",
+   "lego": "S0581L04",
+   "known": "તે એ વિશે થોડું વધારે જાણવા માગે છે કે એ કેવું છે.",
+   "target": "He'd like to know a little more about what it's like.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0581L04U06",
+      "seed_number": 581,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "તે એ વિશે થોડું વધારે જાણવા માગે છે કે એ કેવું છે.",
+      "target_text": "He'd like to know a little more about what it's like.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 581,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 12,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0581L04U06",
+     "slot": "known",
+     "audio_id": "4b429ad0-7850-48bc-8465-1a24d5cbade6"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0581L04U06",
+     "slot": "target1",
+     "audio_id": "e88c4b3f-12a4-43fe-85cf-3e15fedf10a9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0581L04U06",
+     "slot": "target2",
+     "audio_id": "63150080-2efe-4c76-9b2f-1035ce8e4b6e"
+    }
+   ]
+  },
+  {
+   "seed": 583,
+   "id": "S0583L01U06",
+   "lego": "S0583L01",
+   "known": "દુનિયાના આ ભાગમાં કેવું છે?",
+   "target": "What's it like in this part of the world?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0583L01U06",
+      "seed_number": 583,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "દુનિયાના આ ભાગમાં કેવું છે?",
+      "target_text": "What's it like in this part of the world?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 583,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0583L01U06",
+     "slot": "known",
+     "audio_id": "13de286e-027c-49c7-aff8-109f14a1c2a4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0583L01U06",
+     "slot": "target1",
+     "audio_id": "b419a577-e163-44b9-911f-e57904edb921"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0583L01U06",
+     "slot": "target2",
+     "audio_id": "0114ad4d-e6d0-439f-806a-032dc398052f"
+    }
+   ]
+  },
+  {
+   "seed": 587,
+   "id": "S0587L04U06",
+   "lego": "S0587L04",
+   "known": "તે હંમેશા આગ્રહ રાખતી કે અમે રાતના ભોજનમાં ઈંડા ખાઈએ.",
+   "target": "She used to insist that we had eggs for supper.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0587L04U06",
+      "seed_number": 587,
+      "lego_index": 4,
+      "position": 13,
+      "known_text": "તે હંમેશા આગ્રહ રાખતી કે અમે રાતના ભોજનમાં ઈંડા ખાઈએ.",
+      "target_text": "She used to insist that we had eggs for supper.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 587,
+       "canon": "P26"
+      },
+      "word_count": 47,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0587L04U06",
+     "slot": "known",
+     "audio_id": "ed28e9a4-5ea0-4a14-acd4-52c9393af3ec"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0587L04U06",
+     "slot": "target1",
+     "audio_id": "ad021afc-4d12-4a72-a510-512dde42194d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0587L04U06",
+     "slot": "target2",
+     "audio_id": "b4ec2b70-7e59-4ede-906d-233e658ebf5c"
+    }
+   ]
+  },
+  {
+   "seed": 589,
+   "id": "S0589L03U06",
+   "lego": "S0589L03",
+   "known": "તેણે મને કહ્યું કે તેણે હમણાં જ છેલ્લી બસ જોઈ હતી.",
+   "target": "She told me she'd just seen the last bus.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0589L03U06",
+      "seed_number": 589,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "તેણે મને કહ્યું કે તેણે હમણાં જ છેલ્લી બસ જોઈ હતી.",
+      "target_text": "She told me she'd just seen the last bus.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 589,
+       "canon": "P26"
+      },
+      "word_count": 41,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0589L03U06",
+     "slot": "known",
+     "audio_id": "f7837b42-f53d-4096-94c2-26358d494559"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0589L03U06",
+     "slot": "target1",
+     "audio_id": "b3d57e6a-3da2-4388-97c7-78d4b3314ae9"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0589L03U06",
+     "slot": "target2",
+     "audio_id": "5df72485-d339-4ea5-b762-1a02497fe54f"
+    }
+   ]
+  },
+  {
+   "seed": 590,
+   "id": "S0590L01U06",
+   "lego": "S0590L01",
+   "known": "મેં છેલ્લી બસને સ્ટેશન છોડતી જોઈ.",
+   "target": "I saw the last bus leaving the station.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0590L01U06",
+      "seed_number": 590,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "મેં છેલ્લી બસને સ્ટેશન છોડતી જોઈ.",
+      "target_text": "I saw the last bus leaving the station.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 590,
+       "canon": "P26"
+      },
+      "word_count": 39,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0590L01U06",
+     "slot": "known",
+     "audio_id": "9804308c-beec-4ed4-b8da-8383fa341d24"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0590L01U06",
+     "slot": "target1",
+     "audio_id": "92c3c46e-4d21-4303-a4e9-1372173a392b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0590L01U06",
+     "slot": "target2",
+     "audio_id": "3bbfb142-e5f9-492f-b3ad-7d38d415acca"
+    }
+   ]
+  },
+  {
+   "seed": 592,
+   "id": "S0592L01U06",
+   "lego": "S0592L01",
+   "known": "અને મુખ્ય રસ્તા પર.",
+   "target": "And along the main road.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0592L01U06",
+      "seed_number": 592,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "અને મુખ્ય રસ્તા પર.",
+      "target_text": "And along the main road.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 592,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0592L01U06",
+     "slot": "known",
+     "audio_id": "a0f3de4d-e9c4-4d72-a330-55991088a0f4"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0592L01U06",
+     "slot": "target1",
+     "audio_id": "c9f9723f-ae6a-44ed-9c26-8b7463dea014"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0592L01U06",
+     "slot": "target2",
+     "audio_id": "ea70a0e1-6915-4f71-9c79-10aece10fd5b"
+    }
+   ]
+  },
+  {
+   "seed": 597,
+   "id": "S0597L03U06",
+   "lego": "S0597L03",
+   "known": "મને શંકા છે કે તેણે તેના વિશે સો વાર્તાઓ સાંભળી છે.",
+   "target": "I suspect that he's heard a hundred stories about it.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0597L03U06",
+      "seed_number": 597,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "મને શંકા છે કે તેણે તેના વિશે સો વાર્તાઓ સાંભળી છે.",
+      "target_text": "I suspect that he's heard a hundred stories about it.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 597,
+       "canon": "P26"
+      },
+      "word_count": 53,
+      "lego_count": 11,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0597L03U06",
+     "slot": "known",
+     "audio_id": "413830a3-2989-4408-a9e0-9224d241191b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0597L03U06",
+     "slot": "target1",
+     "audio_id": "9900063b-79b7-440a-a070-570a02ace80e"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0597L03U06",
+     "slot": "target2",
+     "audio_id": "35f57986-e735-475a-b675-83816553199a"
+    }
+   ]
+  },
+  {
+   "seed": 599,
+   "id": "S0599L03U06",
+   "lego": "S0599L03",
+   "known": "જો તમે મને કહ્યું હોત તો હું ખુશીથી ગાડી ચલાવી હોત.",
+   "target": "I'd have been happy to drive if you'd told me.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0599L03U06",
+      "seed_number": 599,
+      "lego_index": 3,
+      "position": 10,
+      "known_text": "જો તમે મને કહ્યું હોત તો હું ખુશીથી ગાડી ચલાવી હોત.",
+      "target_text": "I'd have been happy to drive if you'd told me.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 599,
+       "canon": "P26"
+      },
+      "word_count": 46,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0599L03U06",
+     "slot": "known",
+     "audio_id": "4b2cf14f-7910-4018-97db-15bd6d1b5892"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0599L03U06",
+     "slot": "target1",
+     "audio_id": "065ebb2d-c201-4e3f-914e-bae107a580ef"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0599L03U06",
+     "slot": "target2",
+     "audio_id": "e593430a-7480-40ba-a0ce-a033455e13d0"
+    }
+   ]
+  },
+  {
+   "seed": 600,
+   "id": "S0600L01U07",
+   "lego": "S0600L01",
+   "known": "જો તમે મને કહ્યું હોત કે તમે કેટલા થાકેલા છો તો હું ગાડી ચલાવી હોત.",
+   "target": "I'd have driven if you'd told me how tired you were.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0600L01U07",
+      "seed_number": 600,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "જો તમે મને કહ્યું હોત કે તમે કેટલા થાકેલા છો તો હું ગાડી ચલાવી હોત.",
+      "target_text": "I'd have driven if you'd told me how tired you were.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 600,
+       "canon": "P26"
+      },
+      "word_count": 52,
+      "lego_count": 15,
+      "lego_position": "start"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0600L01U07",
+     "slot": "known",
+     "audio_id": "eef61268-7e4a-4450-94a5-f8639a91d6b8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0600L01U07",
+     "slot": "target1",
+     "audio_id": "0ca0efed-4d1e-480e-97bb-5ffc2cdd4acc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0600L01U07",
+     "slot": "target2",
+     "audio_id": "3218020c-abc2-402b-ac96-fdea1b7c0c7d"
+    }
+   ]
+  },
+  {
+   "seed": 631,
+   "id": "S0631L01U06",
+   "lego": "S0631L01",
+   "known": "તમને શું ગમશે?",
+   "target": "What would you like?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0631L01U06",
+      "seed_number": 631,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "તમને શું ગમશે?",
+      "target_text": "What would you like?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 631,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 3,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0631L01U06",
+     "slot": "known",
+     "audio_id": "a41ad959-e3c1-4081-8117-dbb50e2eccdc"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0631L01U06",
+     "slot": "target1",
+     "audio_id": "f780f543-eca3-408c-bc58-cf212eb6455f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0631L01U06",
+     "slot": "target2",
+     "audio_id": "742e7211-e242-4ba2-9db3-2870d4a0f42b"
+    }
+   ]
+  },
+  {
+   "seed": 638,
+   "id": "S0638L01U06",
+   "lego": "S0638L01",
+   "known": "હું વિચારવાની કોશિશ કરી રહ્યો છું.",
+   "target": "I'm trying to think.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0638L01U06",
+      "seed_number": 638,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "હું વિચારવાની કોશિશ કરી રહ્યો છું.",
+      "target_text": "I'm trying to think.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 638,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 6,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0638L01U06",
+     "slot": "known",
+     "audio_id": "ff6dbf2c-37bb-4c23-9788-6601c6043024"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0638L01U06",
+     "slot": "target1",
+     "audio_id": "e0c3fbcf-264d-4107-b88f-4bfd49880b93"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0638L01U06",
+     "slot": "target2",
+     "audio_id": "168996b4-6583-495e-84a6-35e26b55a4f4"
+    }
+   ]
+  },
+  {
+   "seed": 641,
+   "id": "S0641L01U08",
+   "lego": "S0641L01",
+   "known": "મને લાગે છે કે તે પેલી ખુરશી પર લાલ વાળું છે.",
+   "target": "I think that it's the red one on that chair.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0641L01U08",
+      "seed_number": 641,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "મને લાગે છે કે તે પેલી ખુરશી પર લાલ વાળું છે.",
+      "target_text": "I think that it's the red one on that chair.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 641,
+       "canon": "P26"
+      },
+      "word_count": 44,
+      "lego_count": 11,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0641L01U08",
+     "slot": "known",
+     "audio_id": "01937b8a-20b2-452f-a56a-236bfac51ec7"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0641L01U08",
+     "slot": "target1",
+     "audio_id": "110a8700-945e-4a7f-ac26-80ca9499113b"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0641L01U08",
+     "slot": "target2",
+     "audio_id": "53b1a774-7c49-4f7c-a6fb-b01c4e8cab37"
+    }
+   ]
+  },
+  {
+   "seed": 642,
+   "id": "S0642L01U06",
+   "lego": "S0642L01",
+   "known": "મેડમ, તમે કેવું અનુભવો છો?",
+   "target": "how do you feel madam?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0642L01U06",
+      "seed_number": 642,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "મેડમ, તમે કેવું અનુભવો છો?",
+      "target_text": "how do you feel madam?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 642,
+       "canon": "P26"
+      },
+      "word_count": 22,
+      "lego_count": 5,
+      "lego_position": "end"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0642L01U06",
+     "slot": "known",
+     "audio_id": "0cc7de27-9d0c-4252-a770-9d47d9c076aa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0642L01U06",
+     "slot": "target1",
+     "audio_id": "81ef20b8-fd2d-452a-99a5-67bbd1f4fdc8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0642L01U06",
+     "slot": "target2",
+     "audio_id": "60053ec1-f919-49fe-af97-da1b155bb2ce"
+    }
+   ]
+  },
+  {
+   "seed": 643,
+   "id": "S0643L01U06",
+   "lego": "S0643L01",
+   "known": "સાહેબ, શું તમે ઇચ્છો છો?",
+   "target": "Do you want sir",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0643L01U06",
+      "seed_number": 643,
+      "lego_index": 1,
+      "position": 13,
+      "known_text": "સાહેબ, શું તમે ઇચ્છો છો?",
+      "target_text": "Do you want sir",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 643,
+       "canon": "P26"
+      },
+      "word_count": 15,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0643L01U06",
+     "slot": "known",
+     "audio_id": "b19999f8-90cf-4cec-b2d4-f8a9369b4494"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0643L01U06",
+     "slot": "target1",
+     "audio_id": "3e0a1140-3dc5-4ef0-b4a8-e0bd77c6e739"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0643L01U06",
+     "slot": "target2",
+     "audio_id": "fb163442-960f-40ec-9747-1b20c44f06a8"
+    }
+   ]
+  },
+  {
+   "seed": 644,
+   "id": "S0644L01U06",
+   "lego": "S0644L01",
+   "known": "સાહેબ, શું તમે તે કહી શકો?",
+   "target": "Could you say that sir?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0644L01U06",
+      "seed_number": 644,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "સાહેબ, શું તમે તે કહી શકો?",
+      "target_text": "Could you say that sir?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 644,
+       "canon": "P26"
+      },
+      "word_count": 23,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0644L01U06",
+     "slot": "known",
+     "audio_id": "6823602b-2435-40d7-8ab5-f22c9c6039bf"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0644L01U06",
+     "slot": "target1",
+     "audio_id": "72c892b7-174c-42f7-85ea-d9695937140f"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0644L01U06",
+     "slot": "target2",
+     "audio_id": "c365c7a5-56b3-4f7c-a5f6-c7b9083c43a3"
+    }
+   ]
+  },
+  {
+   "seed": 645,
+   "id": "S0645L01U10",
+   "lego": "S0645L01",
+   "known": "મેડમ, હું તમને મદદ કરી શકું છું",
+   "target": "I can help you madam",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0645L01U10",
+      "seed_number": 645,
+      "lego_index": 1,
+      "position": 18,
+      "known_text": "મેડમ, હું તમને મદદ કરી શકું છું",
+      "target_text": "I can help you madam",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 645,
+       "canon": "P26"
+      },
+      "word_count": 20,
+      "lego_count": 7,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0645L01U10",
+     "slot": "known",
+     "audio_id": "d8d751d7-b2dd-4143-ad6f-c027a912482c"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0645L01U10",
+     "slot": "target1",
+     "audio_id": "3799d4d8-0779-4028-af47-2b317e7cc71d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0645L01U10",
+     "slot": "target2",
+     "audio_id": "934fbf85-784a-4d37-8473-060c712f7deb"
+    }
+   ]
+  },
+  {
+   "seed": 646,
+   "id": "S0646L01U07",
+   "lego": "S0646L01",
+   "known": "સાહેબ, તમે કંઈક કરી રહ્યા છો.",
+   "target": "You're doing something sir.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0646L01U07",
+      "seed_number": 646,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "સાહેબ, તમે કંઈક કરી રહ્યા છો.",
+      "target_text": "You're doing something sir.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 646,
+       "canon": "P26"
+      },
+      "word_count": 27,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0646L01U07",
+     "slot": "known",
+     "audio_id": "7a7d9531-1c29-4d8e-a80b-8a715e62dcb3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0646L01U07",
+     "slot": "target1",
+     "audio_id": "abe3a7dd-6c36-461c-9e8e-04906ae87059"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0646L01U07",
+     "slot": "target2",
+     "audio_id": "8da3f440-e55d-4581-86d4-2cfdab09cea0"
+    }
+   ]
+  },
+  {
+   "seed": 647,
+   "id": "S0647L01U08",
+   "lego": "S0647L01",
+   "known": "મેડમ, તમે તે બોલો છો",
+   "target": "You speak it madam",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0647L01U08",
+      "seed_number": 647,
+      "lego_index": 1,
+      "position": 15,
+      "known_text": "મેડમ, તમે તે બોલો છો",
+      "target_text": "You speak it madam",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 647,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0647L01U08",
+     "slot": "known",
+     "audio_id": "0260e399-11b0-427a-a6bf-6d1a2a9ee5f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0647L01U08",
+     "slot": "target1",
+     "audio_id": "32299757-9f9a-48d6-9e41-1dd7cb1e7770"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0647L01U08",
+     "slot": "target2",
+     "audio_id": "d86e7044-d248-4940-9559-7531e2bb6acf"
+    }
+   ]
+  },
+  {
+   "seed": 648,
+   "id": "S0648L01U05",
+   "lego": "S0648L01",
+   "known": "મેડમ, તમે જે કહ્યું",
+   "target": "what you said madam",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0648L01U05",
+      "seed_number": 648,
+      "lego_index": 1,
+      "position": 12,
+      "known_text": "મેડમ, તમે જે કહ્યું",
+      "target_text": "what you said madam",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 648,
+       "canon": "P26"
+      },
+      "word_count": 19,
+      "lego_count": 4,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0648L01U05",
+     "slot": "known",
+     "audio_id": "3bf7ce94-45cf-40fa-9a83-52d4935824bb"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0648L01U05",
+     "slot": "target1",
+     "audio_id": "78e5dd1e-4cc1-47cf-b673-59eb17eb91f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0648L01U05",
+     "slot": "target2",
+     "audio_id": "61d4aa0b-f320-422c-b201-3d9d292b080d"
+    }
+   ]
+  },
+  {
+   "seed": 649,
+   "id": "S0649L01U12",
+   "lego": "S0649L01",
+   "known": "સાહેબ, શું તમે તૈયાર છો?",
+   "target": "Are you ready sir?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0649L01U12",
+      "seed_number": 649,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "સાહેબ, શું તમે તૈયાર છો?",
+      "target_text": "Are you ready sir?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 649,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0649L01U12",
+     "slot": "known",
+     "audio_id": "234d466e-470e-4a7a-855d-55608d3093ac"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0649L01U12",
+     "slot": "target1",
+     "audio_id": "7658232b-07e0-44d1-9fdd-69ac07cb74f8"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0649L01U12",
+     "slot": "target2",
+     "audio_id": "2b266b79-469a-4525-8167-098989cda96f"
+    }
+   ]
+  },
+  {
+   "seed": 650,
+   "id": "S0650L01U06",
+   "lego": "S0650L01",
+   "known": "મેડમ, શું તમે જવા માગો છો?",
+   "target": "Do you want to go madam?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0650L01U06",
+      "seed_number": 650,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "મેડમ, શું તમે જવા માગો છો?",
+      "target_text": "Do you want to go madam?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 650,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 6,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0650L01U06",
+     "slot": "known",
+     "audio_id": "778aa0d2-69a3-473c-9418-91a62fd34ee3"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0650L01U06",
+     "slot": "target1",
+     "audio_id": "f8204378-1488-445a-9c59-8557767631db"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0650L01U06",
+     "slot": "target2",
+     "audio_id": "c6f133ed-af4e-46a2-87b6-b68fb8225a28"
+    }
+   ]
+  },
+  {
+   "seed": 651,
+   "id": "S0651L01U07",
+   "lego": "S0651L01",
+   "known": "મેડમ, તમે શું વિચારો છો?",
+   "target": "What do you think madam?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0651L01U07",
+      "seed_number": 651,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "મેડમ, તમે શું વિચારો છો?",
+      "target_text": "What do you think madam?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 651,
+       "canon": "P26"
+      },
+      "word_count": 24,
+      "lego_count": 5,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0651L01U07",
+     "slot": "known",
+     "audio_id": "5d138a33-98ef-494b-b1ac-20f0a0057eff"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0651L01U07",
+     "slot": "target1",
+     "audio_id": "ef3eab67-5f12-4700-8703-025f94464354"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0651L01U07",
+     "slot": "target2",
+     "audio_id": "defa59df-053b-4e0c-acac-9000ad2bee3e"
+    }
+   ]
+  },
+  {
+   "seed": 652,
+   "id": "S0652L01U07",
+   "lego": "S0652L01",
+   "known": "સાહેબ, તમને શું જોઈએ છે?",
+   "target": "What do you need sir?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0652L01U07",
+      "seed_number": 652,
+      "lego_index": 1,
+      "position": 14,
+      "known_text": "સાહેબ, તમને શું જોઈએ છે?",
+      "target_text": "What do you need sir?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 652,
+       "canon": "P26"
+      },
+      "word_count": 21,
+      "lego_count": 5,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0652L01U07",
+     "slot": "known",
+     "audio_id": "3f25f08c-be8b-45d1-9a7c-fe28ed3b6457"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0652L01U07",
+     "slot": "target1",
+     "audio_id": "ad9c877f-a2f7-4710-b445-724b1182d4aa"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0652L01U07",
+     "slot": "target2",
+     "audio_id": "90d75f5d-7bb2-488a-8749-ed45611e11bc"
+    }
+   ]
+  },
+  {
+   "seed": 653,
+   "id": "S0653L01U05",
+   "lego": "S0653L01",
+   "known": "મેડમ, તમને વાંધો છે?",
+   "target": "Do you mind madam?",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0653L01U05",
+      "seed_number": 653,
+      "lego_index": 1,
+      "position": 11,
+      "known_text": "મેડમ, તમને વાંધો છે?",
+      "target_text": "Do you mind madam?",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 653,
+       "canon": "P26"
+      },
+      "word_count": 18,
+      "lego_count": 4,
+      "lego_position": null
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0653L01U05",
+     "slot": "known",
+     "audio_id": "7c082828-4012-433d-aa88-203ea5357a6a"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0653L01U05",
+     "slot": "target1",
+     "audio_id": "ed91b380-8f7d-4293-8863-d5a8097993c0"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0653L01U05",
+     "slot": "target2",
+     "audio_id": "0f579195-6ebf-4e53-bd91-4826a2a42e08"
+    }
+   ]
+  },
+  {
+   "seed": 654,
+   "id": "S0654L01U07",
+   "lego": "S0654L01",
+   "known": "સાહેબ, મને ખાતરી નથી કે હું તમને મદદ કરી શકું.",
+   "target": "I'm not sure if I can help you, sir.",
+   "ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "eng_for_guj:S0654L01U07",
+      "seed_number": 654,
+      "lego_index": 1,
+      "position": 16,
+      "known_text": "સાહેબ, મને ખાતરી નથી કે હું તમને મદદ કરી શકું.",
+      "target_text": "I'm not sure if I can help you, sir.",
+      "phrase_role": "use",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "status": "draft",
+      "metadata": {
+       "format": "build_use",
+       "pipeline": "cs717-item12-seed-sentence",
+       "seed_sentence_of": 654,
+       "canon": "P26"
+      },
+      "word_count": 36,
+      "lego_count": 10,
+      "lego_position": "middle"
+     }
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0654L01U07",
+     "slot": "known",
+     "audio_id": "8a7c72ff-3cc2-4ace-8d40-1d4c91e30904"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0654L01U07",
+     "slot": "target1",
+     "audio_id": "8953e076-515f-4456-9774-73aba4071b4d"
+    },
+    {
+     "op": "audio.link",
+     "target": "phrase",
+     "phrase_id": "eng_for_guj:S0654L01U07",
+     "slot": "target2",
+     "audio_id": "8c889f84-8c29-44bb-b0d5-d61a7aca8f6b"
+    }
+   ]
+  }
+ ],
+ "listed": {
+  "variant_form": [
+   {
+    "seed": 90,
+    "known": "જો તમે ધીરે ધીરે બોલી શકો તો ઘણું સારું.",
+    "target": "If you can speak more slowly that would be great.",
+    "row": "S0090L03U01",
+    "row_known": "જો તમે વધારે ધીરે બોલી શકો તો ઘણું સારું",
+    "row_target": "if you can speak more slowly that would be great"
+   },
+   {
+    "seed": 127,
+    "known": "એ કારણ નથી જેના માટે હું તમને મળવા માગતો હતો",
+    "target": "That isn't why I wanted to see you.",
+    "row": "S0127L01U01",
+    "row_known": "એ કારણ નથી જેના માટે હું તમને જોવા માગતો હતો",
+    "row_target": "that isn't why I wanted to see you"
+   },
+   {
+    "seed": 137,
+    "known": "સંપૂર્ણ હોવા કરતાં વારંવાર વાત કરવી વધારે મહત્ત્વનું છે.",
+    "target": "It's more important to talk often than to be perfect.",
+    "row": "S0137L03U01",
+    "row_known": "સંપૂર્ણ હોવા કરતાં વારંવાર વાત કરવી વધારે મહત્વનું છે",
+    "row_target": "it's more important to talk often than to be perfect"
+   },
+   {
+    "seed": 177,
+    "known": "હું તેને પૂછીશ કે તે ક્યાં જવા માગે છે.",
+    "target": "I'll ask her where she wants to go.",
+    "row": "S0177L02U01",
+    "row_known": "હું તેણીને પૂછીશ કે તે ક્યાં જવા માગે છે",
+    "row_target": "I'll ask her where she wants to go"
+   },
+   {
+    "seed": 202,
+    "known": "કોઈને ખાતરી ન હતી કે સવાલનો જવાબ કેવી રીતે આપવો.",
+    "target": "Nobody was sure how to answer the question.",
+    "row": "S0202L02U01",
+    "row_known": "કોઈને ખાતરી ન હતી કે એ સવાલનો જવાબ કેવી રીતે આપવો",
+    "row_target": "nobody was sure how to answer the question"
+   },
+   {
+    "seed": 209,
+    "known": "તેઓ ગ્રૂપ માં મળવામાં વધારે સમય ગાળવા ઈચ્છે છે.",
+    "target": "They want to spend more time meeting as a group.",
+    "row": "S0209L03U01",
+    "row_known": "તેઓ ગ્રૂપમાં મળવામાં વધારે સમય ગાળવા ઈચ્છે છે",
+    "row_target": "they want to spend more time meeting as a group"
+   },
+   {
+    "seed": 212,
+    "known": "તેઓ મદદ માગવા ઇચ્છતા હતા.",
+    "target": "They wanted to ask for help.",
+    "row": "S0212L02U01",
+    "row_known": "તેઓ મદદ માગવા ઈચ્છતા હતા",
+    "row_target": "they wanted to ask for help"
+   },
+   {
+    "seed": 217,
+    "known": "મેં એક-બે ગ્લાસ પાણી પીધું.",
+    "target": "I had a glass or two of water.",
+    "row": "S0217L03U01",
+    "row_known": "મેં એક-બે ગ્લાસ પાણી લીધું",
+    "row_target": "I had a glass or two of water"
+   },
+   {
+    "seed": 231,
+    "known": "હું એક વૃદ્ધ માણસને ઓળખું છું જે મદદ માગવા ઈચ્છતો હતો.",
+    "target": "I know an old man who wanted to ask for help.",
+    "row": "S0231L02U01",
+    "row_known": "હું એક વૃદ્ધ માણસ ઓળખું છું જે મદદ માગવા ઈચ્છતો હતો",
+    "row_target": "I know an old man who wanted to ask for help"
+   },
+   {
+    "seed": 232,
+    "known": "હું એક વૃદ્ધ સ્ત્રીને ઓળખું છું જે જવાબ યાદ કરી શકે.",
+    "target": "I know an old woman who can remember the answer.",
+    "row": "S0232L02U01",
+    "row_known": "હું એક વૃદ્ધ સ્ત્રી ઓળખું છું જે જવાબ યાદ કરી શકે",
+    "row_target": "I know an old woman who can remember the answer"
+   },
+   {
+    "seed": 233,
+    "known": "હું એક નાની ઉંમરની સ્ત્રીને ઓળખું છું જે તમારી બહેનને ઓળખે.",
+    "target": "I know a young woman who knows your sister.",
+    "row": "S0233L03U01",
+    "row_known": "હું એક નાની ઉંમરની સ્ત્રી ઓળખું છું જે તમારી બહેનને ઓળખે",
+    "row_target": "I know a young woman who knows your sister"
+   },
+   {
+    "seed": 261,
+    "known": "મને લાગે છે કે કદાચ એ કંઈ મહત્ત્વનું છે.",
+    "target": "I think it might be something important.",
+    "row": "S0261L02U01",
+    "row_known": "મને લાગે છે કે કદાચ એ કંઈ મહત્વનું છે",
+    "row_target": "I think it might be something important"
+   },
+   {
+    "seed": 292,
+    "known": "મને આશા છે કે તમે પાર્ટીમાં આવી શકશો.",
+    "target": "I hope you'll be able to come to the party.",
+    "row": "S0292L01U01",
+    "row_known": "મને આશા છે કે તમે એ પાર્ટીમાં આવી શકશો",
+    "row_target": "I hope you'll be able to come to the party"
+   },
+   {
+    "seed": 297,
+    "known": "હું ઘણા એ લોકોને ઓળખતો નથી જે અંગ્રેજી બોલે.",
+    "target": "I don't know many people who speak English.",
+    "row": "S0297L01U01",
+    "row_known": "હું ઘણા લોકોને ઓળખતો નથી જે અંગ્રેજી બોલે",
+    "row_target": "I don't know many people who speak English"
+   },
+   {
+    "seed": 318,
+    "known": "ના, મને નથી લાગતું કે એ આ વખત કરી શકે.",
+    "target": "No I don't think she could this time.",
+    "row": "S0318L02U01",
+    "row_known": "ના, મને નથી લાગતું કે એ આ વખતે કરી શકે",
+    "row_target": "no I don't think she could this time"
+   },
+   {
+    "seed": 331,
+    "known": "એ બધા જવાબ આપી શક્તી નથી.",
+    "target": "She can't provide all the answers.",
+    "row": "S0331L03U01",
+    "row_known": "એ બધા જવાબ આપી શકતી નથી",
+    "row_target": "she can't provide all the answers"
+   },
+   {
+    "seed": 333,
+    "known": "એણે કહ્યું કે એ ગ્રૂપ સાથે ઘણો સમય વિતાવી શક્તી નથી.",
+    "target": "She said that she can't spend much time with the group.",
+    "row": "S0333L02U01",
+    "row_known": "એણે કહ્યું કે એ ગ્રૂપ સાથે ઘણો સમય વિતાવી શકતી નથી",
+    "row_target": "she said that she can't spend much time with the group"
+   },
+   {
+    "seed": 385,
+    "known": "શું તમે એ સાથે સહમત થયા?",
+    "target": "Did you agree with her?",
+    "row": "S0385L01U01",
+    "row_known": "શું તમે એની સાથે સહમત થયા?",
+    "row_target": "did you agree with her?"
+   },
+   {
+    "seed": 386,
+    "known": "હા, હું એ સાથે સહમત થયો.",
+    "target": "Yes I agreed with her.",
+    "row": "S0386L01U01",
+    "row_known": "હા, હું એની સાથે સહમત થયો",
+    "row_target": "yes I agreed with her"
+   },
+   {
+    "seed": 637,
+    "known": "તે ની બેગ ક્યાં છે?",
+    "target": "Where is her bag?",
+    "row": "S0637L01B04",
+    "row_known": "તેની બેગ ક્યાં છે?",
+    "row_target": "where is her bag?"
+   },
+   {
+    "seed": 660,
+    "known": "હું તમે બધા ને મદદ કરી શકું છું",
+    "target": "I can help you all",
+    "row": "S0660L01B01",
+    "row_known": "હું તમને બધાને મદદ કરી શકું છું",
+    "row_target": "I can help you all"
+   }
+  ],
+  "variant_zut": [
+   {
+    "seed": 153,
+    "known": "મેં એ જ રીતે ન કહ્યું હોત.",
+    "target": "I wouldn't have said it in exactly the same way.",
+    "row": "S0153L02U05",
+    "row_known": "મેં એ જ રીતે ન કહ્યું હોત",
+    "row_target": "I wouldn't have said it the same way"
+   },
+   {
+    "seed": 162,
+    "known": "તમે તેના વિષે શું વિચારો છો?",
+    "target": "What do you think about that?",
+    "row": "S0162L01U01",
+    "row_known": "તમે તેના વિષે શું વિચારો છો?",
+    "row_target": "what do you think about it?"
+   },
+   {
+    "seed": 170,
+    "known": "હું ઈચ્છું છું કે તમે મને કહો કે તમારે શું જોઈએ.",
+    "target": "I'd like you to tell me what you need.",
+    "row": "S0170L01U01",
+    "row_known": "હું ઈચ્છું છું કે તમે મને કહો કે તમારે શું જોઈએ",
+    "row_target": "I want you to tell me what you need"
+   },
+   {
+    "seed": 171,
+    "known": "શું તમે ઈચ્છો છો કે હું તે શોધવામાં મદદ કરું?",
+    "target": "Do you want me to help you look for it?",
+    "row": "S0171L02U01",
+    "row_known": "શું તમે ઈચ્છો છો કે હું તે શોધવામાં મદદ કરું?",
+    "row_target": "do you want me to help you find it?"
+   },
+   {
+    "seed": 181,
+    "known": "પણ મારે મારી માને ડૉક્ટર પાસે લઈ જવાની છે.",
+    "target": "But I have to take my mother to the doctor.",
+    "row": "S0181L02U01",
+    "row_known": "પણ મારે મારી માને ડૉક્ટર પાસે લઈ જવાની છે",
+    "row_target": "but I need to take my mother to the doctor"
+   },
+   {
+    "seed": 235,
+    "known": "મને કોઈ મળ્યું જેણે કહ્યું કે એ તમને કંઈક કહેવા ઈચ્છતો હતો.",
+    "target": "I met someone who said that he wanted to tell you something.",
+    "row": "S0235L02U01",
+    "row_known": "મને કોઈ મળ્યું જેણે કહ્યું કે એ તમને કંઈક કહેવા ઈચ્છતો હતો",
+    "row_target": "I met someone who said he wanted to tell you something"
+   },
+   {
+    "seed": 263,
+    "known": "તમે કોની વાત કરો છો એ હું જાણતો નથી.",
+    "target": "I don't know who you mean.",
+    "row": "S0263L01U01",
+    "row_known": "તમે કોની વાત કરો છો એ હું જાણતો નથી",
+    "row_target": "I don't know who you're talking about"
+   },
+   {
+    "seed": 266,
+    "known": "એ મારા પિતાનો એક જૂનો મિત્ર હતો.",
+    "target": "He was an old friend of my father.",
+    "row": "S0266L03U01",
+    "row_known": "એ મારા પિતાનો એક જૂનો મિત્ર હતો",
+    "row_target": "he was an old friend of my father's"
+   },
+   {
+    "seed": 270,
+    "known": "કારણ કે મને ચિંતા છે કે હું મોડો પડી જઈશ.",
+    "target": "Because I'm worried that I'm going to be late.",
+    "row": "S0270L02U01",
+    "row_known": "કારણ કે મને ચિંતા છે કે હું મોડો પડી જઈશ",
+    "row_target": "because I'm worried that I'll be late"
+   },
+   {
+    "seed": 275,
+    "known": "વધારે.",
+    "target": "Longer.",
+    "row": "S0023L02B01",
+    "row_known": "વધારે",
+    "row_target": "more"
+   },
+   {
+    "seed": 277,
+    "known": "હા, આવતા અઠવાડિયાની શરૂઆતમાં મારી એક અગત્યની બેઠક છે.",
+    "target": "Yes I've got an important meeting early next week.",
+    "row": "S0277L02U01",
+    "row_known": "હા, આવતા અઠવાડિયાની શરૂઆતમાં મારી એક અગત્યની બેઠક છે",
+    "row_target": "yes, I have an important meeting early next week"
+   },
+   {
+    "seed": 286,
+    "known": "અંગ્રેજી બોલવું ગમે એ લોકો.",
+    "target": "People who like speaking English.",
+    "row": "S0286L01U01",
+    "row_known": "અંગ્રેજી બોલવું ગમે એ લોકો",
+    "row_target": "people who like to speak English"
+   },
+   {
+    "seed": 288,
+    "known": "મારા ઓળખીતા મોટાભાગના લોકોને ટેલિવિઝન જોવું ગમે છે.",
+    "target": "Most people I know like watching television.",
+    "row": "S0288L02U01",
+    "row_known": "મારા ઓળખીતા મોટાભાગના લોકોને ટેલિવિઝન જોવું ગમે છે",
+    "row_target": "most of the people I know like watching television"
+   },
+   {
+    "seed": 289,
+    "known": "મને થાય છે કે એ આજે બપોરે ત્યાં હશે કે નહીં.",
+    "target": "I wonder if she's going to be there this afternoon.",
+    "row": "S0289L02U01",
+    "row_known": "મને થાય છે કે એ આજે બપોરે ત્યાં હશે કે નહીં",
+    "row_target": "I wonder if he'll be there this afternoon"
+   },
+   {
+    "seed": 290,
+    "known": "મને થાય છે કે એને જવાબ ખબર છે કે નહીં.",
+    "target": "I wonder if he knows the answer.",
+    "row": "S0290L01U01",
+    "row_known": "મને થાય છે કે એને જવાબ ખબર છે કે નહીં",
+    "row_target": "I wonder if she knows the answer"
+   },
+   {
+    "seed": 293,
+    "known": "એ ક્યાં મળવાનો છે એ મારે શોધવું પડશે.",
+    "target": "I have to find out where he's going to meet me.",
+    "row": "S0293L02U01",
+    "row_known": "એ ક્યાં મળવાનો છે એ મારે શોધવું પડશે",
+    "row_target": "I'll have to find out where it's being held"
+   },
+   {
+    "seed": 295,
+    "known": "મેં એ ન કહ્યું કે હું એક દિવસમાં પૂરું કરવા ઈચ્છું.",
+    "target": "I didn't say that I wanted to finish in a day.",
+    "row": "S0295L02U01",
+    "row_known": "મેં એ ન કહ્યું કે હું એક દિવસમાં પૂરું કરવા ઈચ્છું",
+    "row_target": "I didn't say that I wanted to finish in one day"
+   },
+   {
+    "seed": 298,
+    "known": "મારી પાસે કહેવા માટે કંઈ બચ્યું નથી.",
+    "target": "I've got nothing left to say.",
+    "row": "S0298L01U01",
+    "row_known": "મારી પાસે કહેવા માટે કંઈ બચ્યું નથી",
+    "row_target": "I don't have anything left to say"
+   },
+   {
+    "seed": 414,
+    "known": "શું અમને એક બોટલ લાલ વાઇન મળી શકે?",
+    "target": "Could we have a bottle of red wine please?",
+    "row": "S0414L02B02",
+    "row_known": "શું અમને એક બોટલ લાલ વાઇન મળી શકે?",
+    "row_target": "could we have a bottle of red wine?"
+   },
+   {
+    "seed": 474,
+    "known": "મફત ઑફર તરીકે પણ મને તે જોઈતું નથી.",
+    "target": "I don't even want it as a free offer.",
+    "row": "S0474L02U04",
+    "row_known": "મફત ઑફર તરીકે પણ મને તે જોઈતું નથી",
+    "row_target": "I don't want it even as a free offer"
+   },
+   {
+    "seed": 498,
+    "known": "તે ત્યાં પ્રવેશદ્વારની અંદર એકલો ઊભો છે.",
+    "target": "He's standing alone over there inside the entrance.",
+    "row": "S0498L04U04",
+    "row_known": "તે ત્યાં પ્રવેશદ્વારની અંદર એકલો ઊભો છે",
+    "row_target": "he is standing alone there inside the entrance"
+   },
+   {
+    "seed": 512,
+    "known": "શું તમે બારણું ખુલ્લું રાખી શકો જ્યારે હું ચાવી લઈ આવું?",
+    "target": "Can you hold the door open while I fetch the keys?",
+    "row": "S0512L05U01",
+    "row_known": "શું તમે બારણું ખુલ્લું રાખી શકો જ્યારે હું ચાવી લઈ આવું?",
+    "row_target": "can you hold the door open while I fetch keys?"
+   },
+   {
+    "seed": 520,
+    "known": "તે આખા પરિવાર સાથે થઈ ગયું હોઈ શકે.",
+    "target": "It might have happened to the whole family.",
+    "row": "S0520L02U01",
+    "row_known": "તે આખા પરિવાર સાથે થઈ ગયું હોઈ શકે",
+    "row_target": "it might have happened with the whole family"
+   },
+   {
+    "seed": 530,
+    "known": "જેથી હું તેમને ગણી શકું.",
+    "target": "So I can count them",
+    "row": "S0530L02U01",
+    "row_known": "જેથી હું તેમને ગણી શકું",
+    "row_target": "so that I can count them"
+   },
+   {
+    "seed": 541,
+    "known": "ધીમે ધીમે શ્વાસ લેવાનો પ્રયત્ન કરવો એ સારો વિચાર છે.",
+    "target": "It's a good idea to try and breathe slowly.",
+    "row": "S0541L03U01",
+    "row_known": "ધીમે ધીમે શ્વાસ લેવાનો પ્રયત્ન કરવો એ સારો વિચાર છે",
+    "row_target": "to try and breathe slowly is a good idea"
+   },
+   {
+    "seed": 564,
+    "known": "તમારી મદદ વિના હું એ કરી શક્યો ન હોત.",
+    "target": "I wouldn't have been able to without your help.",
+    "row": "S0564L02U01",
+    "row_known": "તમારી મદદ વિના હું એ કરી શક્યો ન હોત",
+    "row_target": "I couldn't have done it without your help"
+   },
+   {
+    "seed": 585,
+    "known": "હું મારા બેડરૂમની બારીમાંથી પહાડો જોઈ શકું છું.",
+    "target": "I can see the mountains out of my bedroom window.",
+    "row": "S0585L03U03",
+    "row_known": "હું મારા બેડરૂમની બારીમાંથી પહાડો જોઈ શકું છું",
+    "row_target": "I can see the mountains from my bedroom window"
+   }
+  ],
+  "no_home": [
+   {
+    "seed": 214,
+    "known": "શું તમારો સપ્તાહ-અંત સારો ગયો?",
+    "target": "Did you have a good time at the weekend?",
+    "legos": [
+     "S0214L01 સારો સમય ગયો | have a good time",
+     "S0214L02 સપ્તાહ-અંતે | at the weekend"
+    ]
+   },
+   {
+    "seed": 223,
+    "known": "તે કાલે તમને પૂછશે.",
+    "target": "He's going to ask you tomorrow.",
+    "legos": [
+     "S0223L01 તે જવાનો છે | he's going to"
+    ]
+   },
+   {
+    "seed": 242,
+    "known": "હું એને વધુ સમય આપવા ઈચ્છું છું.",
+    "target": "I want to give her more time.",
+    "legos": [
+     "S0242L01 તેણીને આપવા | to give her"
+    ]
+   },
+   {
+    "seed": 249,
+    "known": "હું ઈચ્છું છું કે તમે જાઓ એ પહેલાં મને મદદ કરો.",
+    "target": "I want you to help me before you go.",
+    "legos": [
+     "S0249L01 જતા પહેલાં | before you go"
+    ]
+   },
+   {
+    "seed": 273,
+    "known": "ના, કમ-નસીબ, મારે ઘણું કામ છે.",
+    "target": "No unfortunately I've got too much work.",
+    "legos": [
+     "S0273L01 મારે ઘણું કામ છે | I have a lot of work"
+    ]
+   },
+   {
+    "seed": 284,
+    "known": "શું તમે મારી બહેનના મિત્રને ઓળખો?",
+    "target": "Do you know my sister's friend?",
+    "legos": [
+     "S0284L01 મારી બહેનનો મિત્ર | my sister's friend"
+    ]
+   },
+   {
+    "seed": 285,
+    "known": "એ અંગ્રેજી બોલે.",
+    "target": "She speaks English.",
+    "legos": [
+     "S0285L01 એ બોલે | he speaks"
+    ]
+   },
+   {
+    "seed": 291,
+    "known": "મને આશા છે કે ટૂંક સમયમાં હું વધુ સારી રીતે બોલી શકીશ.",
+    "target": "I hope I'll be able to speak better soon.",
+    "legos": [
+     "S0291L01 વધુ સારી રીતે બોલવા | speak better"
+    ]
+   },
+   {
+    "seed": 319,
+    "known": "એને અલગ દેશમાં જવું પડશે.",
+    "target": "She needs to move to a different country.",
+    "legos": [
+     "S0319L01 ને જરૂર છે | needs to",
+     "S0319L02 અલગ દેશમાં જવા | move to a different country"
+    ]
+   },
+   {
+    "seed": 323,
+    "known": "એણે કહ્યું કે એને શાળા સુધી ચાલીને જવાની જરૂર નથી.",
+    "target": "He said that he doesn't need to walk to school.",
+    "legos": [
+     "S0323L01 શાળા સુધી ચાલવા | walk to school"
+    ]
+   },
+   {
+    "seed": 595,
+    "known": "મારે બગીચામાં સૂઈ જવાની જરૂર છે.",
+    "target": "I need to lie down in the garden.",
+    "legos": [
+     "S0595L01 સૂઈ જવું | lie down"
+    ]
+   },
+   {
+    "seed": 596,
+    "known": "અને મારે થોડી વાર માટે મારી આંખો બંધ કરવાની જરૂર છે.",
+    "target": "And I need to close my eyes for a while.",
+    "legos": [
+     "S0596L01 મારી આંખો બંધ કરવી | close my eyes"
+    ]
+   },
+   {
+    "seed": 608,
+    "known": "કરવાની વાત સમજદારી હોત.",
+    "target": "It would have been the sensible thing to do.",
+    "legos": [
+     "S0608L01 એ હોત | it would have been",
+     "S0608L02 સમજદારીભરી વાત | the sensible thing"
+    ]
+   }
+  ],
+  "lego_is_seed": [
+   {
+    "seed": 305,
+    "known": "સ્ત્રી.",
+    "target": "Woman."
+   },
+   {
+    "seed": 321,
+    "known": "એક પુસ્તક.",
+    "target": "A book."
+   }
+  ],
+  "sibling": [
+   {
+    "seed": 339,
+    "known": "ના, મને લાગે છે કે એ ઘણી ખરાબ રીતે ઘવાયો છે.",
+    "target": "No I think he's hurt himself quite badly."
+   }
+  ],
+  "covered": [
+   {
+    "seed": 555,
+    "known": "અને હું એક નવો લાવવા માટે બહુ થાકી ગયો છું.",
+    "target": "And I'm too tired to fetch a new one."
+   }
+  ]
+ },
+ "counts": {
+  "planned": 100,
+  "variant_form": 21,
+  "variant_zut": 27,
+  "no_home": 13,
+  "lego_is_seed": 2,
+  "sibling": 1,
+  "covered": 1
+ }
+}

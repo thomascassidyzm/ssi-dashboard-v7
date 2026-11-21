@@ -1,0 +1,85 @@
+{
+ "course": "kor_for_tam",
+ "batch": "auto",
+ "seeds": [
+  40,
+  41,
+  42,
+  74,
+  76
+ ],
+ "counts": {
+  "lego_insert": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "update": 0,
+  "delete": 6
+ },
+ "structural": false,
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [
+  "S0040L01: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0041L01: after the edit: USE: need 5+, got 3 (accepted: back-fill 0 BUILD + 2 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0042L01: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0074L01: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))",
+  "S0076L01: after the edit: USE: need 5+, got 4 (accepted: back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json))"
+ ],
+ "checks": [
+  {
+   "lego": "S0040L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 4",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0041L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 3",
+   "real_builds_after": 3,
+   "deleted": 2,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 2 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0042L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 4",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0074L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 4",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
+  },
+  {
+   "lego": "S0076L01",
+   "is_new": true,
+   "before": "ok",
+   "after": "USE: need 5+, got 4",
+   "real_builds_after": 3,
+   "deleted": 1,
+   "rewritten": 0,
+   "inserted": 0,
+   "accept_gap": "back-fill 0 BUILD + 1 USE authored from taught chunks before these deletes apply (backfill.json)"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+diff --git a/ops/paid-cleanup-scan-447/item10/tools/plan.py b/ops/paid-cleanup-scan-447/item10/tools/plan.py
+index e77389964..61a1cb9ec 100644
+--- a/ops/paid-cleanup-scan-447/item10/tools/plan.py
++++ b/ops/paid-cleanup-scan-447/item10/tools/plan.py
+@@ -45,8 +45,10 @@ def has(phrase, lego):
+ def stem(w):
+     w = w.replace("'s", '')
+     for suf in ('ing', 'ed', 'es', 's'):
+-        if len(w) > 4 and w.endswith(suf):
++        if len(w) > (3 if suf == 's' else 4) and w.endswith(suf) and not w.endswith('ss'):
+             w = w[:-len(suf)]
++            if suf in ('ing', 'ed') and len(w) > 2 and w[-1] == w[-2]:  # putting -> put
++                w = w[:-1]
+             break
+     return w.rstrip('e')
+ 

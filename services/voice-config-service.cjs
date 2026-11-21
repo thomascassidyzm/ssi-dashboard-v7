@@ -696,13 +696,20 @@ async function updateVoiceRole(courseCode, role, voiceSettings) {
     throw new Error(`Invalid role: ${role}`);
   }
 
-  // Deep merge the voice settings
-  config.voices[role] = {
-    ...config.voices[role],
-    ...voiceSettings,
-    settings: {
-      ...config.voices[role].settings,
-      ...(voiceSettings.settings || {})
+  // Deep merge the voice settings — into a NEW voices object. loadStoredVoiceConfig
+  // spreads DEFAULT_VOICE_CONFIG shallowly, so for a course with no stored config
+  // `config.voices` IS the module-level default; assigning a role on it rewrote the
+  // default for every unconfigured course in the running process (cs #998·AI,
+  // 2026-11-19: a presentation PATCH on por_for_lit showed up on por_for_aze).
+  config.voices = {
+    ...config.voices,
+    [role]: {
+      ...config.voices[role],
+      ...voiceSettings,
+      settings: {
+        ...config.voices[role].settings,
+        ...(voiceSettings.settings || {})
+      }
     }
   };
 

@@ -1,0 +1,80 @@
+{
+ "seed": 1,
+ "generated": true,
+ "legos": {
+  "L02": {
+   "update": {
+    "B01": [
+     "બોલવા માગું છું",
+     "want to speak",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "insert": [
+    [
+     "build",
+     "અંગ્રેજી બોલવું",
+     "to speak English",
+     null,
+     null,
+     "બોલવું|verbal-noun/infinitive form of a taught verb (K6)"
+    ],
+    [
+     "build",
+     "અંગ્રેજી બોલવા માગું છું",
+     "want to speak English",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B01": [
+     "તમારી સાથે બોલવું",
+     "to speak with you",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "તમારી સાથે અંગ્રેજી બોલવા",
+     "speak English with you",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L05": {
+   "insert": [
+    [
+     "build",
+     "હવે બોલવું",
+     "to speak now",
+     null,
+     null,
+     "બોલવું|verbal-noun/infinitive form of a taught verb (K6)"
+    ],
+    [
+     "build",
+     "હવે તમારી સાથે",
+     "with you now",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0001L04B01": "બોલવું|verbal-noun/infinitive form of a taught verb (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

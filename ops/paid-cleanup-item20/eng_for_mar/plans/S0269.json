@@ -1,0 +1,51 @@
+{
+ "seed": 269,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "तुम्हाला आज तुमच्या वडिलांची वाट का पाहायची नाही?",
+     "why don't you want to wait for your father today?",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्हाला वीकेंडला तुमच्या वडिलांची वाट का पाहायची नाही?",
+     "why don't you want to wait for your father at the weekend?",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला एका मित्राची वाट पाहायची आहे",
+     "I want to wait for a friend",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मला सिनेमाची वाट पाहायची आहे",
+     "I want to wait for the film",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0269L01B01": "पाहायची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)",
+  "S0269L02B01": "मित्राची|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

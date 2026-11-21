@@ -1,0 +1,40 @@
+{
+ "seed": 585,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "હું મારા બેડરૂમની બારીમાંથી એક મિત્રને જોઈ શકું છું",
+     "I can see a friend out of my bedroom window",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "મને ખાતરી છે કે હું પહાડો જોઈ શકું છું",
+     "I'm sure I can see the mountains",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "મને લાગે છે કે હું પહાડો જોઈ શકું છું",
+     "I think that I can see the mountains",
+     null,
+     null,
+     null
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0585L01B01": "બારીમાંથી|the known wording of this seed's own later LEGO, which the English row already uses"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

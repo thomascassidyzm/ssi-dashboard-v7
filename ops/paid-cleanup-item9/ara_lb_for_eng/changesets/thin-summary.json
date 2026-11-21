@@ -1,0 +1,289 @@
+{
+ "course": "ara_lb_for_eng",
+ "job": "#972·AI",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "planned_deletes": 31,
+ "planned_legos": 21,
+ "queued": {
+  "deletes": 27,
+  "legos": 20
+ },
+ "drift": [],
+ "held_p30": [
+  {
+   "lego": "S0018L01",
+   "known": "we want",
+   "target": "بدنا",
+   "deletes": [
+    {
+     "row": "S0018L01U01",
+     "role": "use",
+     "known": "we want to speak Arabic",
+     "target": "بدنا نحكي عربي"
+    },
+    {
+     "row": "S0018L01U02",
+     "role": "use",
+     "known": "we want to try",
+     "target": "بدنا نحاول"
+    },
+    {
+     "row": "S0018L01U03",
+     "role": "use",
+     "known": "we want to learn",
+     "target": "بدنا نتعلم"
+    },
+    {
+     "row": "S0018L01U04",
+     "role": "use",
+     "known": "we want to speak with you now",
+     "target": "بدنا نحكي معك هلق"
+    }
+   ]
+  }
+ ],
+ "error": [],
+ "floor": [
+  {
+   "lego": "S0030L01",
+   "is_new": true,
+   "known": "I wanted to",
+   "target": "كنت بدي",
+   "deletes": 1,
+   "build": 2,
+   "use": 4,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0031L01",
+   "is_new": true,
+   "known": "you wanted to",
+   "target": "كنت بدك",
+   "deletes": 1,
+   "build": 2,
+   "use": 4,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0044L01",
+   "is_new": true,
+   "known": "or",
+   "target": "أو",
+   "deletes": 1,
+   "build": 2,
+   "use": 4,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0047L02",
+   "is_new": true,
+   "known": "I believe that",
+   "target": "بعتقد إن",
+   "deletes": 1,
+   "build": 2,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0053L03",
+   "is_new": true,
+   "known": "his letter",
+   "target": "رسالتو",
+   "deletes": 1,
+   "build": 1,
+   "use": 4,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0057L01",
+   "is_new": true,
+   "known": "say it",
+   "target": "قولو",
+   "deletes": 2,
+   "build": 1,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0061L03",
+   "is_new": true,
+   "known": "can you",
+   "target": "فيك",
+   "deletes": 3,
+   "build": 1,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0071L01",
+   "is_new": true,
+   "known": "any",
+   "target": "أي",
+   "deletes": 1,
+   "build": 2,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0071L03",
+   "is_new": true,
+   "known": "the truth",
+   "target": "الحقيقة",
+   "deletes": 1,
+   "build": 2,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0087L01",
+   "is_new": true,
+   "known": "they",
+   "target": "هودي",
+   "deletes": 1,
+   "build": 1,
+   "use": 5,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0106L01",
+   "is_new": true,
+   "known": "keen",
+   "target": "بجد",
+   "deletes": 1,
+   "build": 3,
+   "use": 4,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0106L03",
+   "is_new": true,
+   "known": "with joy",
+   "target": "بانبساط",
+   "deletes": 1,
+   "build": 2,
+   "use": 5,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0108L02",
+   "is_new": true,
+   "known": "in the middle",
+   "target": "بنص",
+   "deletes": 1,
+   "build": 3,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0117L01",
+   "is_new": true,
+   "known": "once",
+   "target": "مرة",
+   "deletes": 3,
+   "build": 1,
+   "use": 2,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0121L01",
+   "is_new": true,
+   "known": "your car",
+   "target": "سيارتك",
+   "deletes": 1,
+   "build": 1,
+   "use": 4,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0124L01",
+   "is_new": true,
+   "known": "that it",
+   "target": "إنها",
+   "deletes": 1,
+   "build": 2,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0202L02",
+   "is_new": true,
+   "known": "how to answer the question",
+   "target": "كيف يجاوب على السؤال",
+   "deletes": 1,
+   "build": 2,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0262L02",
+   "is_new": true,
+   "known": "that man who",
+   "target": "هالرجل اللي",
+   "deletes": 1,
+   "build": 3,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0267L01",
+   "is_new": true,
+   "known": "have you heard from your friend",
+   "target": "سمعت من صاحبك",
+   "deletes": 3,
+   "build": 3,
+   "use": 1,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  },
+  {
+   "lego": "S0287L03",
+   "is_new": true,
+   "known": "you know who like watching",
+   "target": "بتعرف بيحبوا يتفرجوا",
+   "deletes": 1,
+   "build": 2,
+   "use": 3,
+   "min_build": 3,
+   "min_use": 5,
+   "below_floor": true
+  }
+ ]
+}

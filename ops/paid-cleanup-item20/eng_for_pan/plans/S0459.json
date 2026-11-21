@@ -1,0 +1,48 @@
+{
+ "seed": 459,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "ਇਹ ਕੰਮ ਵਾਲੀ ਜਗ੍ਹਾ ਤੇ ਨਹੀਂ ਸੀ",
+     "it wasn't at work",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਉਸ ਖਿੜਕੀ ਦੇ ਸਾਹਮਣੇ ਰਹਿ ਸਕਦਾ ਹਾਂ",
+     "I can stay in front of that window",
+     null,
+     "m"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "ਇਹ ਦਰਵਾਜ਼ੇ ਦੇ ਸਾਹਮਣੇ ਸੀ",
+     "it was in front of the door",
+     null,
+     null,
+     null
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ਮੈਂ ਨੀਲੇ ਸਾਈਨ ਦੇ ਸਾਹਮਣੇ ਰਹਿ ਸਕਦੀ ਹਾਂ",
+     "I can stay in front of the blue sign",
+     null,
+     "f"
+    ]
+   }
+  }
+ },
+ "known_ok": {},
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

@@ -1,0 +1,162 @@
+{
+ "course": "kor_for_eng",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {
+  "2-free": 14
+ },
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 14,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0007L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0007L03",
+    "deletes": 2
+   },
+   {
+    "lego": "S0007L04",
+    "deletes": 3
+   },
+   {
+    "lego": "S0008L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0009L03",
+    "deletes": 2
+   },
+   {
+    "lego": "S0010L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0010L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0010L03",
+    "deletes": 3
+   },
+   {
+    "lego": "S0012L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0012L02",
+    "deletes": 4
+   },
+   {
+    "lego": "S0014L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0015L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0016L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0016L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0018L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0020L02",
+    "deletes": 3
+   },
+   {
+    "lego": "S0023L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0023L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0026L01",
+    "deletes": 6
+   },
+   {
+    "lego": "S0026L03",
+    "deletes": 5
+   },
+   {
+    "lego": "S0027L01",
+    "deletes": 4
+   },
+   {
+    "lego": "S0027L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0027L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0028L01",
+    "deletes": 5
+   },
+   {
+    "lego": "S0028L02",
+    "deletes": 5
+   },
+   {
+    "lego": "S0031L01",
+    "deletes": 3
+   },
+   {
+    "lego": "S0034L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0035L01",
+    "deletes": 3
+   },
+   {
+    "lego": "S0046L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0055L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0064L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0122L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0200L02",
+    "deletes": 2
+   }
+  ],
+  "drift": [],
+  "error": []
+ },
+ "warnings": 28
+}

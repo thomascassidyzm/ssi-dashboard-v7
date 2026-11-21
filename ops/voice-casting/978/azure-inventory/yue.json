@@ -1,0 +1,46 @@
+{
+"success": true,
+"provider": "azure",
+"voices": [
+{
+"id": "zh-HK-HiuMaanNeural",
+"name": "\u66c9\u66fc",
+"displayName": "HiuMaan",
+"gender": "Female",
+"locale": "zh-HK",
+"localeName": "Chinese (Cantonese, Traditional)",
+"voiceType": "Neural",
+"styles": [],
+"secondaryLocales": [],
+"provider": "azure",
+"quality": 100
+},
+{
+"id": "zh-HK-WanLungNeural",
+"name": "\u96f2\u9f8d",
+"displayName": "WanLung",
+"gender": "Male",
+"locale": "zh-HK",
+"localeName": "Chinese (Cantonese, Traditional)",
+"voiceType": "Neural",
+"styles": [],
+"secondaryLocales": [],
+"provider": "azure",
+"quality": 100
+},
+{
+"id": "zh-HK-HiuGaaiNeural",
+"name": "\u66c9\u4f73",
+"displayName": "HiuGaai",
+"gender": "Female",
+"locale": "zh-HK",
+"localeName": "Chinese (Cantonese, Traditional)",
+"voiceType": "Neural",
+"styles": [],
+"secondaryLocales": [],
+"provider": "azure",
+"quality": 100
+}
+],
+"note": "GET /api/voices/discover/zho filtered to locale zh-HK: discover/yue refuses (no azure_locale for yue in language_codes.csv)"
+}

@@ -1,0 +1,7468 @@
+{
+"builtAt": "2026-11-19T14:17:36.295Z",
+"source": "GET /api/voicelab/languages (call.cjs --key kai)",
+"languages": {
+"eng": {
+"code": "eng",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 92,
+"courses": 20,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"voiceName": "Tom-006",
+"engine": "cartesia",
+"notes": "Tom 2026-10-12 (r-2026-10-12-tom-006-cartesia-d293d509-is-cast): Tom-006 (Cartesia d293d509) is the English MALE voice; replaces tom_001 (8fef4d59) at rank 0. Written via Watson. Forward-only: no existing clip is re-rendered. Undo: ~/ssi-evidence/ssi-dashboard-v7/voice/tom006-cast-undo-2026-10-12.json (put cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 back at rank 0)."
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_33890587-a29f-4416-ba61-2615c74f92fe",
+"voiceName": "aran_english_003",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
+"voiceName": "Charlotte",
+"engine": "cartesia",
+"notes": "Kai, 2026-09-23 14:16Z (job #863): English is Charlotte EVERYWHERE, known and target alike, no Gemma. Supersedes the Gemma half of the Deborah + Kai 12:30Z ruling (job #847). Tom: the app controls playback speed and gaps, so one clip per text can serve both roles. Written by tools/voice/set-english-charlotte-everywhere.cjs. Nothing rendered."
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9",
+"voiceName": "Tom-006",
+"engine": "cartesia",
+"notes": "Tom 2026-10-25 r-2026-10-25-tom-006: Tom-006 is the default voice for all English known languages (job #950; was Charlotte cartesia_71a7ad14-091c-4e8e-a314-022ece01c121)"
+}
+}
+},
+"kor": {
+"code": "kor",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 6,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d6d687b4-5d1e-4eb7-8c5a-1eb608532772",
+"voiceName": "Junho",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_537a82ae-4926-4bfb-9aec-aff0b80a12a5",
+"voiceName": "Minho",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9",
+"voiceName": "Jihyun",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_4dd4630e-19e0-4243-bca0-676ff85119b7",
+"voiceName": "Haeun",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"por": {
+"code": "por",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 6,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_b1d18488-4aaa-47e7-9e4b-483c90a67968",
+"voiceName": "Matias",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_250fdc17-cc1b-4ff1-8538-63988791cd3e",
+"voiceName": "Paulo",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d9300964-8269-4ca8-9e8e-4ae714fcdc09",
+"voiceName": "Mariana",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_9904416a-0831-44ea-b8ee-5f145e8f9bbf",
+"voiceName": "Alice - Informative Speaker",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"zho": {
+"code": "zho",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 14,
+"courses": 6,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1",
+"voiceName": "Hao",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_653b9445-ae0c-4312-a3ce-375504cff31e",
+"voiceName": "Liu",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
+"voiceName": "Shuwen",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_7a5d4663-88ae-47b7-808e-8f9b9ee4127b",
+"voiceName": "Hua",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"fra": {
+"code": "fra",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 2,
+"courses": 5,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745",
+"voiceName": "Erwan",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_996ec149-0dca-4389-ad08-e2d6f906b4bf",
+"voiceName": "Mathis - Analytical Explanator",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9",
+"voiceName": "Inaya",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_92579402-6868-412e-b845-3efed0be7a9e",
+"voiceName": "Jade",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ita": {
+"code": "ita",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 5,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+"voiceName": "Lorenzo",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_e019ed7e-6079-4467-bc7f-b599a5dccf6f",
+"voiceName": "Luca",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_0e21713a-5e9a-428a-bed4-90d410b87f13",
+"voiceName": "Alessandra",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"spa": {
+"code": "spa",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 3,
+"courses": 4,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_21c2f7ab-dacb-4847-a593-3cd20668c4b3",
+"voiceName": "Thiago",
+"engine": "cartesia",
+"notes": "Thiago replaces Marcos as main male — Tom 2026-10-11 (A/B: cleaner, voices not very different). Second male: Tom is choosing."
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_cbb6fdf0-30dd-49f6-af7d-bbb1185c1fa5",
+"voiceName": "Rafael",
+"engine": "cartesia",
+"notes": "Make Rafael the second male in Spanish (Tom 2026-10-11 14:48Z)"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_b738fa95-b787-4529-9170-34be41e95b95",
+"voiceName": "Maite",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_1cc00672-e9d4-455e-b3fb-31dfb7aad231",
+"voiceName": "Laura",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"cym_north": {
+"code": "cym_north",
+"status": "human",
+"human": true,
+"knownOnly": false,
+"knownCourses": 9,
+"courses": 3,
+"castKeySource": "dialect",
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"jpn": {
+"code": "jpn",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 15,
+"courses": 3,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_33658a29-5982-44c5-9114-0b2c31e100b4",
+"voiceName": "Kyo",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_aa3ccc4a-cfd8-405c-acf5-1873a527b006",
+"voiceName": "Naoki",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+"voiceName": "Yuzuki - Composed Explainer",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_31c55968-a9f4-4115-8831-3a16952179c8",
+"voiceName": "Ayumi",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"cym": {
+"code": "cym",
+"status": "human",
+"human": true,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 2,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"cym_south": {
+"code": "cym_south",
+"status": "human",
+"human": true,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 2,
+"castKeySource": "dialect",
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ben": {
+"code": "ben",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_2ba861ea-7cdc-43d1-8608-4045b5a41de5",
+"voiceName": "Rubel",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_59ba7dee-8f9a-432f-a6c0-ffb33666b654",
+"voiceName": "Pooja",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_48b9e1de-e2fa-4914-8b32-31c437813548",
+"voiceName": "Ananya",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"fin": {
+"code": "fin",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_8ccd7fcd-846a-4594-bde2-5feec2cba73a",
+"voiceName": "Jari",
+"engine": "cartesia",
+"notes": "Kai 2026-10-28 job 202: Jari"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_2835e382-643b-4ac6-8f6c-74df549a7ad0",
+"voiceName": "Milla",
+"engine": "cartesia",
+"notes": "Kai 2026-10-28 job 202: Milla"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"glg": {
+"code": "glg",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"hrv": {
+"code": "hrv",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_a1a16724-b1f3-4b27-9e47-8a175115e93c",
+"voiceName": "Ivan",
+"engine": "cartesia",
+"notes": "Kai 2026-11-16: Sanja (f) + Ivan (m), Zagreb, chosen from audition d/10815e7e; existing Azure clips stay (cs #148·AI)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_e81f3031-d855-4b5d-93db-beedfa00804e",
+"voiceName": "Sanja",
+"engine": "cartesia",
+"notes": "Kai 2026-11-16: Sanja (f) + Ivan (m), Zagreb, chosen from audition d/10815e7e; existing Azure clips stay (cs #148·AI)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"deu": {
+"code": "deu",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 5,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
+"voiceName": "Nico",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+"voiceName": "Sebastian",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_b9de4a89-2257-424b-94c2-db18ba68c81a",
+"voiceName": "Viktoria",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_40e0f496-a220-46bb-975a-7ef465b3d92b",
+"voiceName": "Vreni",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ara": {
+"code": "ara",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 4,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_664aec8a-64a4-4437-8a0b-a61aa4f51fe6",
+"voiceName": "Hassan",
+"engine": "cartesia",
+"notes": "Kai pick from blind audition #158 (2026-10-27); cast by Kai under r-2026-10-15-kai-can-do-anything-in-popty (Kai's go satisfies tom_go on Popty); jobs 172/174"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_9cbad5f7-fbf6-4416-a22f-1ecc75ad40a2",
+"voiceName": "Youssef",
+"engine": "cartesia",
+"notes": "Kai pick from blind audition #158 (2026-10-27); cast by Kai under r-2026-10-15-kai-can-do-anything-in-popty (Kai's go satisfies tom_go on Popty); jobs 172/174"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_9825cf5f-6aff-412a-80c5-bc58a8d55bc4",
+"voiceName": "Maryam",
+"engine": "cartesia",
+"notes": "Kai pick from blind audition #158 (2026-10-27); cast by Kai under r-2026-10-15-kai-can-do-anything-in-popty (Kai's go satisfies tom_go on Popty); jobs 172/174"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_002622d8-19d0-4567-a16a-f99c7397c062",
+"voiceName": "Huda",
+"engine": "cartesia",
+"notes": "Kai pick from blind audition #158 (2026-10-27); cast by Kai under r-2026-10-15-kai-can-do-anything-in-popty (Kai's go satisfies tom_go on Popty); jobs 172/174"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ara_eg": {
+"code": "ara_eg",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "ar-EG-ShakirNeural",
+"voiceName": "Shakir",
+"engine": "azure",
+"notes": "Kai 27 Oct: restore Azure dialect voice (stored course config before Cartesia override), job #417; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+"voiceName": "Zain\t- Dynamic Presenter",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "ar-EG-SalmaNeural",
+"voiceName": "Salma",
+"engine": "azure",
+"notes": "Kai 27 Oct: restore Azure dialect voice (stored course config before Cartesia override), job #417; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+"voiceName": "Nour",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ara_sy": {
+"code": "ara_sy",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "ar-SY-LaithNeural",
+"voiceName": "Laith",
+"engine": "azure",
+"notes": "Kai 27 Oct: restore Azure dialect voice (stored course config before Cartesia override), job #417; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+"voiceName": "Zain\t- Dynamic Presenter",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "ar-SY-AmanyNeural",
+"voiceName": "Amany",
+"engine": "azure",
+"notes": "Kai 27 Oct: restore Azure dialect voice (stored course config before Cartesia override), job #417; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+"voiceName": "Nour",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"bre": {
+"code": "bre",
+"status": "human",
+"human": true,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"cat": {
+"code": "cat",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "azure_ca-ES-EnricNeural",
+"voiceName": "azure_ca-ES-EnricNeural",
+"engine": "azure",
+"notes": "Tom 2026-10-14: Catalan cast = existing cat_for_eng Azure voices (job 445)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "azure_ca-ES-AlbaNeural",
+"voiceName": "azure_ca-ES-AlbaNeural",
+"engine": "azure",
+"notes": "Tom 2026-10-14: Catalan cast = existing cat_for_eng Azure voices (job 445)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"deu_at": {
+"code": "deu_at",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_57a3a9e0-a91c-4c94-a2bb-e6cbab3ae649",
+"voiceName": "Clemens - Precise Instructor",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+"voiceName": "Sebastian",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "elevenlabs_Zq8xdM7UEWBINjdZQdBE",
+"voiceName": "elevenlabs_Zq8xdM7UEWBINjdZQdBE",
+"engine": "elevenlabs",
+"notes": "Kai 2026-10-28 17:30Z: Tamara (ElevenLabs) is the deu_at target1 voice; job #57·AA, cast gate exemption agreed by Tom's Watson (ww-03084ac1)"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_40e0f496-a220-46bb-975a-7ef465b3d92b",
+"voiceName": "Vreni",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"por_br": {
+"code": "por_br",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+"voiceName": "Rafael",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_616c64d7-f541-436b-9b8d-e79cfbe19ef9",
+"voiceName": "Felipe",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_1cf751f6-8749-43ab-98bd-230dd633abdb",
+"voiceName": "Ana Paula",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_9904416a-0831-44ea-b8ee-5f145e8f9bbf",
+"voiceName": "Alice - Informative Speaker",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"spa_mx": {
+"code": "spa_mx",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 3,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_3a35daa1-ba81-451c-9b21-59332e9db2f3",
+"voiceName": "Alejandro",
+"engine": "cartesia",
+"notes": "Kai pick by ear, pick page d/7fd928c9 (job #417); r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_4b5112be-c461-44a2-a66b-0dd7f98db4a0",
+"voiceName": "Cesar",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_5c5ad5e7-1020-476b-8b91-fdcbe9cc313c",
+"voiceName": "Daniela",
+"engine": "cartesia",
+"notes": "Kai pick by ear, pick page d/7fd928c9 (job #417); r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_1cc00672-e9d4-455e-b3fb-31dfb7aad231",
+"voiceName": "Laura",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"eus": {
+"code": "eus",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 2,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"gle": {
+"code": "gle",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 2,
+"courses": 2,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"afr": {
+"code": "afr",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "af-ZA-WillemNeural",
+"voiceName": "Willem",
+"engine": "azure",
+"notes": "Tom ruling 2026-10-13: Afrikaans cast = the voices already in the afr_for_eng course audio (Azure Willem; target2)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "af-ZA-AdriNeural",
+"voiceName": "Adri",
+"engine": "azure",
+"notes": "Tom ruling 2026-10-13: Afrikaans cast = the voices already in the afr_for_eng course audio (Azure Adri; target1)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ara_lb": {
+"code": "ara_lb",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "ar-LB-RamiNeural",
+"voiceName": "Rami",
+"engine": "azure",
+"notes": "Kai 27 Oct: restore Azure dialect voice (stored course config before Cartesia override), job #417; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+"voiceName": "Zain\t- Dynamic Presenter",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "ar-LB-LaylaNeural",
+"voiceName": "Layla",
+"engine": "azure",
+"notes": "Kai 27 Oct: restore Azure dialect voice (stored course config before Cartesia override), job #417; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+"voiceName": "Nour",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"bul": {
+"code": "bul",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d132064c-b931-4a80-bf0d-02a331ec4572",
+"voiceName": "Georgi",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_fcbecbcc-0cef-4615-8b5a-712fe1b39dd0",
+"voiceName": "Ivana",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ceb": {
+"code": "ceb",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ces": {
+"code": "ces",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_82db1f84-5b96-4364-b04a-4c7ff80e2f8a",
+"voiceName": "Jan",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_0b6d3ccb-f421-4e49-80f7-4bfa39f6eb8e",
+"voiceName": "Marek",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_b66b3a19-31b3-401f-8b08-40d46a61e4f1",
+"voiceName": "Milena\t- Composed Clarifier",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_f8685385-96f6-4c12-8520-49e4914bcbfe",
+"voiceName": "Tereza\t- Decisive Agent",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"cor": {
+"code": "cor",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"dan": {
+"code": "dan",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_a466f9e2-28eb-4bb7-925c-8e8984950700",
+"voiceName": "Søren",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_926e0766-f380-4d77-aeb0-9aa4ebb16b38",
+"voiceName": "Soren",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_eb929394-68e7-4e08-bd2f-e7055728a5e1",
+"voiceName": "Mette",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_c323c793-41f9-47b8-99dc-9b44b0440b84",
+"voiceName": "Katrine",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"deu_ch": {
+"code": "deu_ch",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "elevenlabs_vTifwvQGTZT1q7epCu2b",
+"voiceName": "elevenlabs_vTifwvQGTZT1q7epCu2b",
+"engine": "elevenlabs",
+"notes": "Kai 2026-11-02: Swiss German male, ElevenLabs eleven_v4_turbo at stability 1.0 (settings carried on deu_ch_for_eng voice_config target2); replaces draft Clemens. Job #998·AB"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+"voiceName": "Sebastian",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_40e0f496-a220-46bb-975a-7ef465b3d92b",
+"voiceName": "Vreni",
+"engine": "cartesia",
+"notes": "Kai 2026-11-02: Vreni (Cartesia) is the deu_ch female target voice, replacing Eleni. Existing Eleni clips stay. Job #16·AC."
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_c0c52199-e35f-4681-b68a-949ee499617e",
+"voiceName": "Eleni",
+"engine": "cartesia",
+"notes": "Kai pick by ear, pick page d/7fd928c9 (job #417); r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ell": {
+"code": "ell",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "azure_el-GR-NestorasNeural",
+"voiceName": "azure_el-GR-NestorasNeural",
+"engine": "azure",
+"notes": "Tom 2026-10-20 (via his Watson): Greek casting is Kai's call. Kai ruled 2026-10-20 (job #910): cast ell to the voices its live clips already use. REPLACES Tom's 2026-09-04 draft (assigned_by e2e-pod-recording-test@ssi-test.invalid, note \"draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied\"): phrase/m/rank0 = cartesia_b45eba5b-2215-4da7-9c7c-121c95ed7b81 (Nikos)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "azure_el-GR-AthinaNeural",
+"voiceName": "azure_el-GR-AthinaNeural",
+"engine": "azure",
+"notes": "Tom 2026-10-20 (via his Watson): Greek casting is Kai's call. Kai ruled 2026-10-20 (job #910): cast ell to the voices its live clips already use. REPLACES Tom's 2026-09-04 draft (assigned_by e2e-pod-recording-test@ssi-test.invalid, note \"draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied\"): phrase/f/rank0 = cartesia_50849023-76e9-46c7-af52-9ec39888a165 (Despina)"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"est": {
+"code": "est",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"fas": {
+"code": "fas",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"fra_ca": {
+"code": "fra_ca",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "voice_pool_key",
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_f5e6c270-2aa9-463f-b48b-579a39284ce2",
+"voiceName": "Félix",
+"engine": "cartesia",
+"notes": "Kai pick by ear, pick page d/7fd928c9 (job #417); r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_996ec149-0dca-4389-ad08-e2d6f906b4bf",
+"voiceName": "Mathis - Analytical Explanator",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_63fdecc2-4e1d-4aa3-a442-27204e3cd3b5",
+"voiceName": "Léonie",
+"engine": "cartesia",
+"notes": "Kai accepted keep-Léonie by ear, pick page d/7fd928c9 (fra_ca woman, 2026-10-27); cast as Kai's by job #424; r-2026-10-15-kai-can-do-anything-in-popty"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_92579402-6868-412e-b845-3efed0be7a9e",
+"voiceName": "Jade",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"fry": {
+"code": "fry",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"fur": {
+"code": "fur",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"gla": {
+"code": "gla",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"gle_connemara": {
+"code": "gle_connemara",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "dialect",
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"gle_munster": {
+"code": "gle_munster",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "dialect",
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"gle_ulster": {
+"code": "gle_ulster",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "dialect",
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"hak": {
+"code": "hak",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"heb": {
+"code": "heb",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_3e32f3c5-9ac0-4192-9994-87fdb277120f",
+"voiceName": "Noam",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_84b969ad-19c7-428d-b742-48d387f7f138",
+"voiceName": "Gil",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_ebc02c0d-61fd-48f2-a6c9-0d6683b7d466",
+"voiceName": "Ayala",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_ff857c8e-e7f9-4afd-af42-dce9f3c5ab02",
+"voiceName": "Yarden",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"hin": {
+"code": "hin",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 3,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
+"voiceName": "Rehan",
+"engine": "cartesia",
+"notes": "Kai 2026-11-03 (job #552, Kai's grant under r-2026-10-30-kai-can-authorise-any-audio-work, relayed by Kai's Watson): Kriti (f) and Rehan (m) become the main Hindi target voices on hin_for_eng, replacing Aarti/Kunal"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_4877b818-c7fe-4c89-b1cf-eadf8e23da72",
+"voiceName": "Rohan",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_5283efe8-07d1-4e3a-b615-2ae4a81c1b73",
+"voiceName": "Kriti",
+"engine": "cartesia",
+"notes": "Kai 2026-11-03 (job #552, Kai's grant under r-2026-10-30-kai-can-authorise-any-audio-work, relayed by Kai's Watson): Kriti (f) and Rehan (m) become the main Hindi target voices on hin_for_eng, replacing Aarti/Kunal"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_6b02ffe5-e3cb-48c0-a023-c72f85953375",
+"voiceName": "Sneha",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_205fc552-2cce-4307-baa1-598b9dc3dd01",
+"voiceName": "Rehan",
+"engine": "cartesia",
+"notes": "Kai 2026-10-29 (job #563): the voices of record — hin_for_eng's live clips are Aarti/Kunal, eng_for_hin's known clips are Kriti/Rehan (Kai 2026-09-23 ruling), confirmed against live clips"
+},
+"f": {
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_5283efe8-07d1-4e3a-b615-2ae4a81c1b73",
+"voiceName": "Kriti",
+"engine": "cartesia",
+"notes": "Kai 2026-10-29 (job #563): the voices of record — hin_for_eng's live clips are Aarti/Kunal, eng_for_hin's known clips are Kriti/Rehan (Kai 2026-09-23 ruling), confirmed against live clips"
+}
+}
+},
+"hun": {
+"code": "hun",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_4c5c7be8-6b3b-4c62-b915-c54d049c198f",
+"voiceName": "Bence",
+"engine": "cartesia",
+"notes": "Kai 2026-11-09 14:54Z: cast Bence as hun target2 (audition d/b5edaaa8, #599); accepts voice change partway through course"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_36e0c00b-1bfd-4ad7-a0e8-928d4cadca00",
+"voiceName": "Gabor",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_e97c3b37-1aa5-46af-afb7-9545086aaa92",
+"voiceName": "Eszter",
+"engine": "cartesia",
+"notes": "Kai 2026-11-09 14:54Z: cast Eszter as hun target1 (audition d/b5edaaa8, #599); accepts voice change partway through course"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"hye": {
+"code": "hye",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"hyw": {
+"code": "hyw",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ind": {
+"code": "ind",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_a053f6bc-7df4-40de-96d4-de026bc47ce8",
+"voiceName": "Andi",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_b441c4fd-4910-4c55-ae56-f0291057e2cc",
+"voiceName": "Siti",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"isl": {
+"code": "isl",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"kan": {
+"code": "kan",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_6baae46d-1226-45b5-a976-c7f9b797aae2",
+"voiceName": "Prakash",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_7c6219d2-e8d2-462c-89d8-7ecba7c75d65",
+"voiceName": "Divya",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"lav": {
+"code": "lav",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"lit": {
+"code": "lit",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"lmo": {
+"code": "lmo",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"mar": {
+"code": "mar",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_f227bc18-3704-47fe-b759-8c78a450fdfa",
+"voiceName": "Suresh",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_5c32dce6-936a-4892-b131-bafe474afe5f",
+"voiceName": "Anika",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_mr-IN-ManoharNeural",
+"voiceName": "azure_mr-IN-ManoharNeural",
+"engine": "azure",
+"notes": "PROVISIONAL — Kai 2026-11-18 12:52Z (\"for now we can just fill whatever needs filling, doesn't matter if it doesn't match the voice already there\"): known-side voice of record, cast so the 856 silent prompts can be filled (cs #705·AI). Replace when Kai picks from the all-languages casting page."
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"mkd": {
+"code": "mkd",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"mlt": {
+"code": "mlt",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"nan": {
+"code": "nan",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"nap": {
+"code": "nap",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"nep": {
+"code": "nep",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"nld": {
+"code": "nld",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_da743a82-ddf2-4d9b-8eb8-ff67ca0b138e",
+"voiceName": "Stijn",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+"voiceName": "Thijs",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_96355f3d-0179-4c9a-a8d8-11ef0779a9b8",
+"voiceName": "Noa",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_de075c71-b2dd-4723-848d-ea9aa9cd010b",
+"voiceName": "Fleur",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"nor": {
+"code": "nor",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d6dca1b6-cdd8-4e9c-823c-e03979261740",
+"voiceName": "Lars",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_4f7b1820-6263-4615-87a7-b105768d8f64",
+"voiceName": "Kari",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"pdc": {
+"code": "pdc",
+"status": "human",
+"human": true,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"pol": {
+"code": "pol",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_d358377a-cd1d-45c5-abd0-701314e36cbe",
+"voiceName": "Marcin",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_43e52207-96fc-4e01-aaf8-cae317e43fdb",
+"voiceName": "Kacper",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_dcf62f33-7cff-4f20-85b2-2efaa68cbc32",
+"voiceName": "Zofia",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_575a5d29-1fdc-4d4e-9afa-5a9a71759864",
+"voiceName": "Katarzyna",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"rgn": {
+"code": "rgn",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"roh": {
+"code": "roh",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ron": {
+"code": "ron",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_3f64ef99-d87b-4b51-b217-df7351f7886a",
+"voiceName": "Andrei",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_34acfaee-c556-41ee-a5f6-c687fb20357c",
+"voiceName": "Andrada",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"rus": {
+"code": "rus",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_1e4176b1-3db9-44d6-a601-4fe68b041942",
+"voiceName": "Sergei",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_069ff31a-5524-4945-a403-f746ee617507",
+"voiceName": "Alexei\t- Articulate Analyst",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_064b17af-d36b-4bfb-b003-be07dba1b649",
+"voiceName": "Tatiana",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_642014de-c0e3-4133-adc0-36b5309c23e6",
+"voiceName": "Irina",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"scn": {
+"code": "scn",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"sme": {
+"code": "sme",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"srp": {
+"code": "srp",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"swa": {
+"code": "swa",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"swe": {
+"code": "swe",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_ebe0038b-1790-40bd-98cd-924313e58d3b",
+"voiceName": "Vidar - Supportive Voice",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+"voiceName": "Nils",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_bcdcad6d-4eb6-4a71-89fd-1ae2ce9f95d8",
+"voiceName": "Freja - Informative Host",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_f852eb8d-a177-48cd-bf63-7e4dcab61a36",
+"voiceName": "Ingrid",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"tel": {
+"code": "tel",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b",
+"voiceName": "Charan",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_ebecd063-10f4-422e-a8ff-556ce5c4d4e4",
+"voiceName": "Pavan",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_4418bb06-8329-49a1-bb11-53bb64ca0547",
+"voiceName": "Shanti",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_3a8e6fea-81e5-4d4d-8755-86093146cdb8",
+"voiceName": "Vidya",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_te-IN-ShrutiNeural",
+"voiceName": "azure_te-IN-ShrutiNeural",
+"engine": "azure",
+"notes": "PROVISIONAL — Kai 2026-11-18 12:52Z (\"for now we can just fill whatever needs filling, doesn't matter if it doesn't match the voice already there\"): known-side voice of record, cast so the 856 silent prompts can be filled (cs #705·AI). Replace when Kai picks from the all-languages casting page."
+}
+}
+},
+"tha": {
+"code": "tha",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_5de076e9-7b28-4442-b279-e7d80d573505",
+"voiceName": "Somchai",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+"voiceName": "Chakrit",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_4ff0f045-c140-4aa3-9210-529083f86fca",
+"voiceName": "Supannee - Support Concierge",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_d051b675-6863-44cc-b7ba-356858ed7df8",
+"voiceName": "Nisa - System Navigator",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"tur": {
+"code": "tur",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_39f753ef-b0eb-41cd-aa53-2f3c284f948f",
+"voiceName": "Emre",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+"voiceName": "Taylan",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_fa7bfcdc-603c-4bf1-a600-a371400d2f8c",
+"voiceName": "Leyla",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_bb2347fe-69e9-4810-873f-ffd759fe8420",
+"voiceName": "Aylin",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"ukr": {
+"code": "ukr",
+"status": "complete",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_bb4ddf2f-96e1-403b-976d-1361258545d0",
+"voiceName": "Mykhailo",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_7246935f-0668-4490-a403-309608178d8d",
+"voiceName": "Yaryna",
+"engine": "cartesia",
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"vec": {
+"code": "vec",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"yid": {
+"code": "yid",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"yor": {
+"code": "yor",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 1,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"yue": {
+"code": "yue",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"zzz": {
+"code": "zzz",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"zzz_e2e": {
+"code": "zzz_e2e",
+"status": "nocover",
+"human": false,
+"knownOnly": false,
+"knownCourses": 0,
+"courses": 1,
+"castKeySource": "dialect",
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"aze": {
+"code": "aze",
+"status": "knownonly",
+"human": false,
+"knownOnly": true,
+"knownCourses": 1,
+"courses": 0,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"guj": {
+"code": "guj",
+"status": "knownonly",
+"human": false,
+"knownOnly": true,
+"knownCourses": 1,
+"courses": 0,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+"voiceName": "Amit",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+"voiceName": "Isha",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_gu-IN-NiranjanNeural",
+"voiceName": "azure_gu-IN-NiranjanNeural",
+"engine": "azure",
+"notes": "PROVISIONAL (Kai 2026-11-18, paid cleanup item 8B, cs #710·AI): eng_for_guj/urd/pan known side two voices, Azure until Kai casts"
+},
+"f": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_gu-IN-DhwaniNeural",
+"voiceName": "azure_gu-IN-DhwaniNeural",
+"engine": "azure",
+"notes": "PROVISIONAL (Kai 2026-11-18, paid cleanup item 8B, cs #710·AI): eng_for_guj/urd/pan known side two voices, Azure until Kai casts"
+}
+}
+},
+"pan": {
+"code": "pan",
+"status": "knownonly",
+"human": false,
+"knownOnly": true,
+"knownCourses": 1,
+"courses": 0,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+"voiceName": "Gurpreet",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_991c62ce-631f-48b0-8060-2a0ebecbd15b",
+"voiceName": "Jaspreet",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_pa-IN-OjasNeural",
+"voiceName": "azure_pa-IN-OjasNeural",
+"engine": "azure",
+"notes": "PROVISIONAL (Kai 2026-11-18, paid cleanup item 8B, cs #710·AI): eng_for_guj/urd/pan known side two voices, Azure until Kai casts"
+},
+"f": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_pa-IN-VaaniNeural",
+"voiceName": "azure_pa-IN-VaaniNeural",
+"engine": "azure",
+"notes": "PROVISIONAL (Kai 2026-11-18, paid cleanup item 8B, cs #710·AI): eng_for_guj/urd/pan known side two voices, Azure until Kai casts"
+}
+}
+},
+"sin": {
+"code": "sin",
+"status": "knownonly",
+"human": false,
+"knownOnly": true,
+"knownCourses": 1,
+"courses": 0,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"tam": {
+"code": "tam",
+"status": "knownonly",
+"human": false,
+"knownOnly": true,
+"knownCourses": 3,
+"courses": 0,
+"castKeySource": null,
+"cartesiaCovers": true,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+"voiceName": "Karthik",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_d2870b91-1b4c-47ab-81a8-3718d8e9c222",
+"voiceName": "Arun",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": true,
+"voiceId": "cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2",
+"voiceName": "Janani",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 1,
+"filled": true,
+"voiceId": "cartesia_96e6974d-57a9-4325-89c8-43f065f8bd95",
+"voiceName": "Akshara",
+"engine": "cartesia",
+"notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied"
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+"f": {
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+}
+},
+"urd": {
+"code": "urd",
+"status": "knownonly",
+"human": false,
+"knownOnly": true,
+"knownCourses": 1,
+"courses": 0,
+"castKeySource": null,
+"cartesiaCovers": false,
+"slots": {
+"m": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+],
+"f": [
+{
+"rank": 0,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 1,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+},
+{
+"rank": 2,
+"filled": false,
+"voiceId": null,
+"voiceName": null,
+"engine": null,
+"notes": null
+}
+]
+},
+"known": {
+"m": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_ur-PK-AsadNeural",
+"voiceName": "azure_ur-PK-AsadNeural",
+"engine": "azure",
+"notes": "PROVISIONAL (Kai 2026-11-18, paid cleanup item 8B, cs #710·AI): eng_for_guj/urd/pan known side two voices, Azure until Kai casts"
+},
+"f": {
+"rank": 0,
+"filled": true,
+"voiceId": "azure_ur-PK-UzmaNeural",
+"voiceName": "azure_ur-PK-UzmaNeural",
+"engine": "azure",
+"notes": "PROVISIONAL (Kai 2026-11-18, paid cleanup item 8B, cs #710·AI): eng_for_guj/urd/pan known side two voices, Azure until Kai casts"
+}
+}
+}
+}
+}

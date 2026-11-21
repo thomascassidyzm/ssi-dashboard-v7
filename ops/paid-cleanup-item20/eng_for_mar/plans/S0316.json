@@ -1,0 +1,40 @@
+{
+ "seed": 316,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "मी तयार असेन असं तुम्हाला वाटतं का?",
+     "do you think that I'll be ready?",
+     null,
+     null
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B01": [
+     "मला वाटतं ती तिच्या भावाला आणू शकेल",
+     "I think she could bring her brother",
+     null,
+     null
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B01": [
+     "ती उद्या तिच्या भावाला आणू शकेल",
+     "she could bring her brother tomorrow",
+     null,
+     null
+    ]
+   }
+  }
+ },
+ "known_ok": {
+  "S0316L02B01": "भावाला|reviewed by the planner: a form of a taught word or the seed's own wording (K6)"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

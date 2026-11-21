@@ -1,0 +1,411 @@
+#!/usr/bin/env python3
+"""zho_for_jpn item-10 decisions, seeds 1-150 (cs #743·AI), hand-authored per LEGO. Writes zho_for_jpn.json for tools/plan.py.
+60 candidates (all L26 "dictionary-style glosses": a gap marker 〜 or a two-form gloss A・B / A／B on the Japanese known side),
+plus ONE neighbour planned because a candidate's fix needs it (S0134L01, ZUT with S0083L03).
+
+Conventions used throughout (each LEGO's `why` says which applies):
+ * SEED SPAN  — the known gloss becomes the seed's own Japanese chunk, one form, no 〜 (L26).
+ * K6         — where the seed carries the word inflected (眠れなかった), the gloss is that same word's plain form (眠る);
+                marked ack=['known'] because it is not a literal span of the seed.
+ * STAND-IN   — a Chinese word whose Japanese counterpart is a bound ending fused into the seed's verb (覚えられます → 能)
+                is glossed with する standing in for the verb, in the seed's own inflection (できます). This is Kai's 17 Nov
+                stand-in frame (rows swap the stand-in for real verbs) and the shortest cut; ack=['known'].
+ * GROW       — a Chinese particle/coverb that is never a unit of meaning alone (吗 了 把 里 对, purposive 来) or a word
+                with no Japanese counterpart chunk in the seed grows to the span of ITS OWN seed (L7, L22, L25); rows that
+                use it with other words are edited to the taught combination or deleted (L22 step 2) and back-filled.
+ * SEED EDIT  — L25 rung 3, KAI'S CALL: seed_known on the LEGO. Three seeds (44, 69, 76).
+Basket: 'k' keep, 'd' delete, (known, target) rebuild; rows not listed were read by hand and are kept (they contain the new
+LEGO on the target side and an inflection of its gloss on the known side, K6). add: ('b'|'u', known, target) back-fill.
+Run: CS_SCRATCH=... python3 -I decisions/zho_for_jpn.py   (reads the dump only to expand "kept" rows and sanity-check them)."""
+import json, os, re
+OUT = []
+HERE = os.path.dirname(os.path.abspath(__file__))
+DUMP = os.path.join(os.environ.get('CS_SCRATCH', '/tmp'), 'dumps', 'zho_for_jpn.json')
+L = {}
+if os.path.exists(DUMP):
+    for s in json.load(open(DUMP))['seeds']:
+        for l in s['legos']:
+            L[l['id']] = l
+
+
+def D(id, verdict, **kw):
+    kw['id'] = id
+    kw['verdict'] = verdict
+    b = kw.pop('b', None) or {}
+    if verdict in ('regloss', 'grow'):
+        bk = {k: ('keep' if v == 'k' else 'del' if v == 'd' else list(v)) for k, v in b.items()}
+        nt = kw.get('target', L[id]['target'] if id in L else None)
+        for p in (L.get(id) or {}).get('phrases', []):
+            if p['type'] in ('lego_debut', 'component') or ':' not in p['id']:
+                continue
+            sid = p['id'].split(':')[1][8:]
+            if sid not in bk:
+                bk[sid] = 'keep'
+            if bk[sid] == 'keep':
+                assert nt.replace(' ', '') in p['target'].replace(' ', ''), (id, sid, 'kept row lacks the new LEGO', p['target'])
+        kw['basket'] = bk
+    if 'comps' in kw:
+        kw['components'] = kw.pop('comps')
+    OUT.append(kw)
+
+
+K = ['known']
+
+# ---- seed 1 今あなたと中国語を話したいです。 | 我现在想和你说中文。
+D('S0001L01', 'regloss', known='したい', comps=[['私', '我'], ['したい', '想']], ack=['known', 'target'],
+  why='STAND-IN: gap marker dropped. 想 is the たい fused into 話したい; したい is する standing in for the verb. Target 我想 is left as it is: Japanese drops the subject, so 我 can only be carried inside a chunk, and 现在 sits between 我 and 想 in the seed (split, K49) — re-cutting to 想 alone would leave 我 untaught in the very first seed.',
+  b={'B01': ('したい', '我想')})
+
+# ---- seed 2 学ぼうとしています。 | 我在试着学。
+D('S0002L01', 'regloss', known='しようとしています', comps=[['している', '在'], ['しようとする', '试着']], ack=K,
+  why='STAND-IN: 在试着 is the ending うとしています fused into 学ぼうとしています; する stands in for the verb, in the seed\'s own inflection. Gap markers dropped from the gloss and both components.',
+  b={'B01': ('しようとしています', '在试着')}, add=[('u', '今学ぼうとしています', '我现在在试着学')])
+
+# ---- seed 5 他の人と話す練習をするつもりです。 | 我要和别人练习说话。
+D('S0005L01', 'regloss', known='するつもり',
+  why='SEED SPAN: するつもり is in the seed as it stands (練習をするつもりです); only the gap marker goes. All 8 rows already say …つもりです.')
+
+# ---- seed 10 文全体を覚えられるかどうかわかりません。 | 我不确定我能不能记住整个句子。
+D('S0010L02', 'regloss', known='できるかどうか', comps=[['できる', '能'], ['ない', '不']], ack=K,
+  why='STAND-IN: the potential is fused into 覚えられる; できる (する\'s potential) stands in, かどうか is the seed\'s own. Gap markers dropped from gloss and components.',
+  b={'B01': ('できるかどうか', '能不能')})
+
+# ---- seed 11 あなたが終わったら話せるようになりたいです。 | 我想在你说完以后能说。
+D('S0011L02', 'grow', known='終わったら', target='说完以后', type='M', comps=[['言い終える', '说完'], ['後に', '以后']],
+  why='GROW: the seed has no の後に; its 終わったら is 说完以后 as one chunk (4 syllables). L01 说完 is taught first (L13). Rows that said 話し終わった後に are re-worded to the seed\'s 終わったら; rows with other verbs go.',
+  b={'B01': ('あなたが終わったら', '你说完以后'), 'B02': 'd', 'B03': 'd',
+     'U01': ('あなたが終わったら話したいです', '我想在你说完以后说话'), 'U02': ('あなたが終わったら練習するつもりです', '我要在你说完以后练习'),
+     'U03': ('あなたが終わったら中国語で何か言いたいです', '我想在你说完以后用中文说一些东西'),
+     'U04': ('あなたが終わったら中国語を話せるようになりたいです', '我想在你说完以后能说中文'), 'U05': 'd'},
+  add=[('b', '終わったら', '说完以后'), ('b', '終わったら話す', '说完以后说'), ('b', 'あなたが終わったら話す', '你说完以后说'), ('u', 'あなたが終わったら中国語を学びたいです', '我想在你说完以后学中文'),
+       ('u', 'あなたが終わったら話せるようになりたいです', '我想在你说完以后能说')])
+
+# ---- seed 14 一日中中国語を話しますか？ | 你整天说中文吗？
+D('S0014L02', 'grow', known='中国語を話しますか', target='说中文吗', type='M', comps=[['話す', '说'], ['中国語', '中文'], ['か', '吗']],
+  why='GROW (L7, L22): 吗 is a particle, never a LEGO alone; it grows to the verb phrase of its own seed, 说中文吗 = 中国語を話しますか (4 syllables). 吗 stays a component. Rows with other verbs are edited to 说中文吗 or deleted (L22 step 2).',
+  b={'B02': ('中国語を話そうとしていますか', '你在试着说中文吗'), 'U01': 'd', 'U03': ('今日中国語を話したいですか', '你今天想说中文吗'),
+     'U04': ('明日私と中国語を話せますか', '你明天能和我说中文吗'), 'U05': 'd'},
+  add=[('b', '中国語を話しますか', '说中文吗'), ('u', '今中国語を話しますか', '你现在说中文吗'),
+       ('u', '明日中国語を話しますか', '你明天说中文吗')])
+
+# ---- seed 15 そして明日私と中国語を話してほしいです。 | 而且我想让你明天和我说中文。
+D('S0015L02', 'grow', known='してほしい', target='想让你', type='M', comps=[['したい', '想'], ['させる', '让'], ['あなた', '你']], ack=K,
+  why='GROW + STAND-IN: してほしい is "want (you) to", i.e. 想让你, which is contiguous in the seed (我想让你明天…); 让你 alone drops the wanting that ほしい carries. する stands in for 話して. Gap markers dropped.',
+  b={'B01': ('してほしい', '想让你'), 'B02': ('話してほしい', '想让你说'), 'B03': ('練習してほしい', '想让你练习'),
+     'B04': ('私と中国語を話してほしい', '想让你和我说中文'), 'U03': ('今日話す練習をしてほしいです', '我想让你今天练习说话')})
+
+# ---- seed 22 中国語を話す人に会いたいからです。 | 因为我想见说中文的人。
+D('S0022L01', 'regloss', known='からです',
+  why='SEED SPAN: the seed ends …会いたいからです; だ is not in it. からです rather than bare から keeps the prompt unambiguous, and 〜だから would have clashed with S0056L01 "だから | 所以" once both lose their marks.',
+  b={'B01': ('したいからです', '因为我想')})
+
+# ---- seed 23 もうすぐもっと話し始めるつもりです。 | 我很快要开始多说话了。
+D('S0023L03', 'grow', known='もっと話し始める', target='开始多说话了', type='M',
+  comps=[['始める', '开始'], ['もっと', '多'], ['話をする', '说话'], ['になった', '了']],
+  why='GROW (L7, L22): sentence-final 了 is a particle with no Japanese counterpart in the seed (nothing "became"). It grows to the span it closes in its own seed, 开始多说话了 = もっと話し始める (6 syllables); L02 开始 is taught first. All rows used 了 with other verbs → rebuilt on the taught combination.',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', 'もっと話し始める', '开始多说话了'), ('b', 'もっと話し始めるつもりです', '我要开始多说话了'),
+       ('b', 'もうすぐもっと話し始める', '很快开始多说话了'), ('b', '今もっと話し始める', '现在开始多说话了'), ('u', '今日もっと話し始めるつもりです', '我今天要开始多说话了'),
+       ('u', '今もっと話し始めるつもりです', '我现在要开始多说话了'), ('u', '彼女はもうすぐもっと話し始めるつもりです', '她很快要开始多说话了'),
+       ('u', '彼はもっと話し始めるつもりです', '他要开始多说话了'), ('u', '私たちは今日もっと話し始めるつもりです', '我们今天要开始多说话了')])
+
+# ---- seed 25 私が行かなければならない前に手伝ってくれますか？ | 你会在我要走之前帮我吗?
+D('S0025L02', 'regloss', known='前に',
+  why='SEED SPAN: the seed says …ならない前に, no の. All rows already say …前に.')
+
+# ---- seed 26 もうすぐ行ける準備ができているように感じるのが好きです。 | 我喜欢感觉好像我快要走了。
+D('S0026L03', 'regloss', known='ように',
+  why='SEED SPAN: the seed says …ているように感じる; まるで is not in it and the gapped frame is not sayable (L32). Rows that carried まるで or a そう form are re-worded to よう.',
+  b={'B01': ('ように感じる', '感觉好像'), 'B02': ('行くようです', '好像要走了'), 'B03': ('好きなようです', '好像喜欢'),
+     'U01': ('もうすぐ行くように感じます', '我感觉好像很快要走了'), 'U02': ('彼女は中国語を話すのが好きなようです', '她好像喜欢说中文'),
+     'U03': ('彼は始めるようです', '他好像要开始了'), 'U04': ('中国語が話せるように感じるのが好きです', '我喜欢感觉好像能说中文'),
+     'U05': ('行きたいようですね', '你好像想走了')})
+D('S0026L04', 'grow', known='もうすぐ行ける準備ができている', target='快要走了', type='M',
+  comps=[['すぐ', '快'], ['しようとする', '要'], ['行く', '走'], ['になった', '了']],
+  why='GROW: the gapped gloss is not sayable (L32), and もうすぐ alone would clash with S0023L01 "もうすぐ | 很快" (ZUT). The seed\'s own chunk is もうすぐ行ける準備ができている = 快要走了 (4 syllables). Rows about other verbs go; the rest take the seed\'s wording.',
+  b={'B01': ('もうすぐ行ける準備ができている', '快要走了'), 'B02': 'd', 'B03': 'd',
+     'B04': ('もうすぐ行ける準備ができているように', '好像快要走了'), 'U01': ('もうすぐ行ける準備ができています', '我快要走了'),
+     'U02': ('もうすぐ行ける準備ができているように感じます', '感觉好像我快要走了'), 'U03': 'd',
+     'U04': ('もうすぐ行ける準備ができているように感じるのが好きです', '我喜欢感觉好像我快要走了'), 'U06': 'd'},
+  add=[('b', 'もうすぐ行ける準備ができていますか', '你快要走了吗'), ('b', '彼はもうすぐ行ける準備ができている', '他快要走了'),
+       ('u', '彼女はもうすぐ行ける準備ができています', '她快要走了'), ('u', '私たちはもうすぐ行ける準備ができています', '我们快要走了')])
+
+# ---- seed 27 答えるのに時間がかかりすぎるのは好きじゃありません。 | 我不喜欢花太多时间来回答。
+D('S0027L03', 'regloss', known='すぎる', comps=[['すぎ', '太'], ['多い', '多']],
+  why='SEED SPAN: すぎる is in the seed as it stands (かかりすぎる); only the gap markers go.',
+  b={'B01': ('すぎる', '太多')})
+
+# ---- seed 32 何か見せたかったですか？ | 你想给我看一些东西吗?
+D('S0032L01', 'grow', known='見せる', target='给我看', type='M', comps=[['にあげる', '给'], ['私', '我'], ['見る', '看']], ack=K,
+  why='GROW + K6: the seed never says あげる ("give"); its 見せたかった is 给我看 "show (me)" (3 syllables), glossed with the plain form of the seed\'s own verb. Every row drilled 给 = give, which this seed does not teach → rebuilt. L13 note: L02 "見る | 看" is taught after this chunk (S4 overlap).',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05', 'U06']},
+  add=[('b', '見せる', '给我看'), ('b', '何か見せる', '给我看一些东西'), ('b', '見せたい', '想给我看'), ('b', '答えを見せる', '给我看答案'),
+       ('u', '何か見せたいですか', '你想给我看一些东西吗'), ('u', '今日何か見せたかったですか', '你今天想给我看一些东西吗'),
+       ('u', '彼は何か見せたいです', '他想给我看一些东西'), ('u', '彼女は明日何か見せたいです', '她明天想给我看一些东西'),
+       ('u', 'なぜ見せたくないのですか', '你为什么不想给我看'), ('u', '答えを見せてくれますか', '你会给我看答案吗')],
+  knock='给 = "give" is no longer drilled at seed 32; S0054 (もう少し時間をあげたかった | 给你多一点时间) is the first seed that says it. 给 stays a component here (K29).')
+
+# ---- seed 34 彼は他の人がいる時に静かにしたくありません。 | 他不想在别人在场的时候保持安静。
+D('S0034L01', 'regloss', known='時に',
+  why='SEED SPAN: the seed says …いる時に, no の.',
+  b={'B01': ('時に', '的时候')})
+
+# ---- seed 38 約一週間学んでいます。 | 我学了大概一个星期。
+D('S0038L01', 'regloss', known='約',
+  why='SEED SPAN: the seed says 約. たぶん ("probably") is a second known word the seed never says, and every たぶん row prompts a sense this seed does not teach; 約少し / 約今日 are not Japanese. Basket rebuilt on 約 + a quantity.',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05']},
+  add=[('b', '約6時', '大概六点'), ('b', '約一週間', '大概一个星期'), ('b', '今晩約6時', '今天晚上大概六点'), ('u', '約6時に会いたいです', '我们想大概六点见面'),
+       ('u', '約一週間学んでいます', '我学了大概一个星期'), ('u', '約一週間練習するつもりです', '我要练习大概一个星期'),
+       ('u', '今晩約6時に会いたいです', '我们想今天晚上大概六点见面'), ('u', '彼女は約一週間学んでいます', '她学了大概一个星期'),
+       ('u', '彼は約6時に戻りたいです', '他想大概六点回来')])
+
+# ---- seed 40 今どんな気分ですか？ | 你现在感觉怎么样?
+D('S0040L01', 'grow', known='どんな気分', target='感觉怎么样', type='M', comps=[['感じる', '感觉'], ['どう', '怎么样']],
+  why='GROW: neither どんな感じ nor どう is in the seed; its どんな気分 is 感觉怎么样 as one chunk (5 syllables; 感觉 taught at S0026L02). Rows asking 怎么样 without 感觉 go.',
+  b={'B01': ('どんな気分', '感觉怎么样'), 'B02': ('今どんな気分', '现在感觉怎么样'), 'B03': 'd', 'B04': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', '今日どんな気分', '今天感觉怎么样'), ('b', '今朝どんな気分', '今天早上感觉怎么样'), ('u', '今日どんな気分ですか', '你今天感觉怎么样'), ('u', '今日の午後どんな気分ですか', '你今天下午感觉怎么样'),
+       ('u', '彼は今どんな気分ですか', '他现在感觉怎么样'), ('u', '彼女は今朝どんな気分ですか', '她今天早上感觉怎么样'),
+       ('u', '昨日どんな気分でしたか', '你昨天感觉怎么样')])
+
+# ---- seed 42 昨夜より良く感じ始めていました。 | 我开始感觉比昨天晚上好了。
+D('S0042L01', 'regloss', known='より',
+  why='SEED SPAN: より is in the seed as it stands; only the gap marker goes. 比 is a coverb that takes any noun, so it stays an A-LEGO.')
+D('S0042L02', 'regloss', known='良い', ack=K,
+  why='K6: the seed says 良く (良い inflected); 上手 is not in it. Plain 良い rather than 良く, which sounds the same as よく "often" (S0137L01). The two 上手 rows are re-worded or replaced.',
+  b={'B02': ('昨夜より良い', '比昨天晚上好'), 'U02': 'd'},
+  add=[('u', '今日は良く感じます', '我今天感觉好'), ('u', '彼女は昨日より良く感じます', '她感觉比昨天好')])
+
+# ---- seed 43 答え方について考えていませんでした。 | 我没想怎么回答。
+D('S0043L01', 'regloss', known='していませんでした', ack=K,
+  why='STAND-IN: 没 is the negative past fused into 考えていませんでした; する stands in for the verb, in the seed\'s own inflection. Rows keep their own verbs (K6).')
+
+# ---- seed 44 または改善する必要があるかどうか。 | 或者如果我需要改进。
+D('S0044L02', 'regloss', known='もし', seed_known='またはもし改善する必要があるなら。',
+  why='SEED EDIT + SEED SPAN. KAI: the Japanese seed says かどうか ("whether") where the Chinese says 如果 ("if", conditional); all 7 rows already prompt もし…なら. Editing the Japanese seed to またはもし改善する必要があるなら makes もし the seed\'s own word for 如果 (the gapped frame もし〜なら is not sayable, L32; なら rides in the rows). Without the edit the only seed-true gloss is かどうか, which would teach 如果 as "whether".')
+
+# ---- seed 45 すべてを知る必要はありません。 | 我不需要知道一切。
+D('S0045L02', 'regloss', known='すべて', why='SEED SPAN: one form, the seed\'s own すべて. Rows already say すべて.',
+  knock='S0278L03 "すべて | 一切" (new, seeds 151-300 shard) becomes an exact duplicate of this LEGO and should go not-new.')
+
+# ---- seed 47 間違えることは良いことだと思うからです。 | 因为我觉得犯错是好事。
+D('S0047L01', 'regloss', known='と思う', why='SEED SPAN: と思う is in the seed as it stands; only the gap marker goes.')
+
+# ---- seed 49 こんな感じです、私が言いたいことがわかれば。 | 就是这样,如果你知道我的意思。
+D('S0049L01', 'grow', known='こんな感じです', target='就是这样', type='M', comps=[['ということです', '就是'], ['こう', '这样']],
+  why='GROW: the seed never says ということです; its こんな感じです is 就是这样 as one chunk (4 syllables). No row said 就是这样 → rebuilt. L13 note: L02 "そう | 这样" follows and overlaps (S4); its own gloss is not the seed\'s word either (not a candidate here).',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05']},
+  add=[('b', 'こんな感じです', '就是这样'), ('b', 'こんな感じだと思う', '我觉得就是这样'),
+       ('u', 'こんな感じだと思うからです', '因为我觉得就是这样'), ('b', 'でもこんな感じです', '但是就是这样'), ('b', 'そしてこんな感じです', '而且就是这样'),
+       ('u', 'こんな感じです、私が言いたいことがわかれば', '就是这样，如果你知道我的意思'), ('u', '彼女はこんな感じだと思っています', '她觉得就是这样'),
+       ('u', 'こんな感じだと思いますか', '你觉得就是这样吗'), ('u', '答えはこんな感じです', '答案就是这样')])
+
+# ---- seed 51 友達と面白いことをするのを楽しんでいます。 | 我喜欢和朋友做有趣的事。
+D('S0051L02', 'regloss', known='する',
+  why='SEED SPAN: the seed says …ことをする; やる is a second word it never says. The four やる rows are re-worded to する.',
+  b={'B03': ('友達とする', '和朋友做'), 'U01': ('私は友達と一緒にしたい', '我想和朋友一起做'),
+     'U03': ('もししたいなら、手伝う', '如果你想做我帮你'), 'U05': ('彼は今日それをする必要がある', '他今天需要做')})
+
+# ---- seed 52 彼は先週友達に手紙を書きたかったです。 | 他上星期想给他的朋友写信。
+D('S0052L01', 'grow', known='友達に', target='给他的朋友', type='M', comps=[['に', '给'], ['彼の', '他的'], ['友達', '朋友']],
+  why='GROW: the particle に alone is not something a learner can be prompted with; the seed\'s chunk is 友達に = 给他的朋友 (5 syllables; 他的 S0020L02, 朋友 S0051L01). Four of the seven rows had ENGLISH on the known side; none said 给他的朋友 → rebuilt.',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04']},
+  add=[('b', '友達に', '给他的朋友'), ('b', '友達に手紙を書く', '给他的朋友写信'), ('b', '友達に見せる', '给他的朋友看'), ('b', '友達に手紙を書きたい', '想给他的朋友写信'),
+       ('u', '彼は友達に手紙を書きたいです', '他想给他的朋友写信'), ('u', '彼は先週友達に手紙を書きたかったです', '他上星期想给他的朋友写信'),
+       ('u', '彼は友達に何か見せたいです', '他想给他的朋友看一些东西'), ('u', '彼は明日友達に手紙を書くつもりです', '他明天要给他的朋友写信'),
+       ('u', '彼は友達に答えを見せたくありません', '他不想给他的朋友看答案'), ('u', 'なぜ彼は友達に手紙を書きたいのですか', '他为什么想给他的朋友写信'),
+       ('u', '彼は今日の午後友達に手紙を書きたいです', '他今天下午想给他的朋友写信')])
+
+# ---- seed 53 彼女は彼の手紙を自分のかばんに入れたかったです。 | 她想把他的信放在她的包里。
+D('S0053L02', 'grow', known='かばんに', target='包里', type='M', comps=[['かばん', '包'], ['の中', '里']],
+  why='GROW: 里 is a bound localiser and the seed has no の中; its かばんに is 包里 (2 syllables). All rows had ENGLISH on the known side → Japanese; the two 故事里 rows go.',
+  b={'B01': ('かばんに', '包里'), 'B02': ('かばんにある', '在包里'), 'B03': 'd', 'U01': ('手紙はかばんにあります', '信在包里'),
+     'U02': ('彼女の手紙はかばんにあります', '她的信在包里'), 'U03': ('手紙は彼女のかばんにあります', '信在她的包里'), 'U05': 'd'},
+  add=[('b', 'かばんに入れる', '放在包里'), ('b', '彼女のかばんに', '她的包里'), ('u', '彼の手紙はかばんにあります', '他的信在包里'), ('u', '手紙はかばんにありますか', '信在包里吗'),
+       ('u', '彼女は手紙をかばんに入れたかったです', '她想把信放在包里')])
+D('S0053L04', 'grow', known='彼の手紙を', target='把他的信', type='M', comps=[['を', '把'], ['彼の', '他的'], ['手紙', '信']],
+  why='GROW (L7, L22): 把 is a particle-like coverb, never a LEGO alone, and を alone cannot be prompted; it grows to its object in its own seed, 把他的信 = 彼の手紙を (4 syllables). All rows had ENGLISH on the known side; rows with other objects go.',
+  b={'B01': 'd', 'B02': 'd', 'B03': ('彼の手紙をかばんに入れる', '把他的信放在包里'), 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U04': 'd',
+     'U05': ('彼女は彼の手紙を自分のかばんに入れたかったです', '她想把他的信放在她的包里')},
+  add=[('b', '彼の手紙を', '把他的信'), ('b', '彼の手紙をかばんに入れたい', '想把他的信放在包里'), ('b', '彼の手紙を彼女のかばんに入れる', '把他的信放在她的包里'),
+       ('u', '彼女は彼の手紙をかばんに入れたいです', '她想把他的信放在包里'), ('u', '私は彼の手紙をかばんに入れるつもりです', '我要把他的信放在包里'),
+       ('u', '彼の手紙をかばんに入れてくれますか', '你会把他的信放在包里吗'), ('u', '彼女は彼の手紙をかばんに入れたくありません', '她不想把他的信放在包里'),
+       ('u', 'なぜ彼の手紙をかばんに入れたいのですか', '你为什么想把他的信放在包里'),
+       ('u', '私たちは彼の手紙を彼女のかばんに入れたいです', '我们想把他的信放在她的包里')])
+
+# ---- seed 55 よく眠れなかった時に起きるのは楽しくありません。 | 我睡不好的时候不喜欢醒来。
+D('S0055L01', 'regloss', known='眠る', ack=K,
+  why='K6: the seed says 眠れなかった (眠る inflected); 寝る is a second word it never says. The five 寝る rows are re-worded to 眠る.',
+  b={'B01': ('私は眠らない', '我不睡'), 'B02': ('彼女は眠った', '她睡了'), 'B03': ('あなたは何時間眠りましたか', '你睡了多久'),
+     'U02': ('昨夜私は眠った', '我昨天晚上睡了'), 'U04': ('彼は何時間眠ったか', '他睡了多久了')})
+D('S0055L02', 'regloss', known='起きる',
+  why='SEED SPAN: 起きる is in the seed as it stands; 目が覚める is not. U03 carried the Chinese word 下午 on the Japanese side → 午後.',
+  b={'U03': ('午後起きるのが好きじゃない', '我不喜欢下午醒来')})
+
+# ---- seed 56 だからいくつかの言葉の言い方を覚えられます。 | 所以我能记住怎么说几个词。
+D('S0056L01', 'regloss', known='だから', why='SEED SPAN: one form, the seed\'s own だから. Rows already say だから.')
+D('S0056L02', 'regloss', known='できます', ack=K,
+  why='STAND-IN: 能 is the potential fused into 覚えられます; できます (する\'s potential, in the seed\'s own inflection) stands in. Rows keep their own verbs (K6).')
+
+# ---- seed 58 十分な言葉がわかると面白いです。 | 你懂够多词的时候很有趣。
+D('S0058L02', 'regloss', known='十分な', why='SEED SPAN: one form, the seed\'s own 十分な.')
+
+# ---- seed 60 まだ十分な違う言葉の言い方を知りません。 | 我还不知道怎么说够多不同的词。
+D('S0060L01', 'regloss', known='まだ', why='SEED SPAN: one form, the seed\'s own まだ; the gapped second form goes.')
+D('S0060L02', 'regloss', known='違う', why='SEED SPAN: one form, the seed\'s own 違う. Rows already say 違う.')
+
+# ---- seed 63 手伝っても構いませんか？ | 你确定你不介意帮我吗？
+D('S0063L01', 'regloss', known='構う', ack=K,
+  why='K6: the seed says 構いません (構う inflected). 気にする is not in it and is S0048L01\'s gloss for 在乎, so the rows here were prompting 気にしない → 不介意 against 気にしません → 不在乎 (ZUT at row level). Rows re-worded to 構う.',
+  b={'B01': ('構いません', '我不介意'), 'B02': ('構いますか', '你介意吗'), 'B03': ('彼は手伝っても構いません', '他不介意帮'),
+     'U02': ('間違えても構いません', '我不介意犯错'), 'U03': ('中国語を話しても構いませんか', '你确定你不介意说中文吗'),
+     'U04': ('もし構わなければ手伝いたい', '如果你不介意我想帮你'), 'U05': ('彼女は時間をかけても構いません', '她不介意花时间')})
+
+# ---- seed 64 中国語を学ぶのは簡単ではありませんが楽しいです。 | 学中文不容易但是很有趣。
+D('S0064L01', 'regloss', known='簡単ではありません',
+  why='SEED SPAN: the seed says 簡単ではありません; 難しい is not in it and is S0066L01\'s gloss for 难. Two rows fixed on the way: B03 carried the Chinese word 別人, U05 lacked 友達.',
+  b={'B03': ('他の人を手伝うのは簡単ではない', '帮别人不容易'), 'U05': ('同時に友達を手伝うのは簡単ではない', '同时帮朋友不容易')})
+
+# ---- seed 67 なぜ止まりたいのですか？ | 你为什么想停止？
+D('S0067L01', 'regloss', known='止まる', ack=K,
+  why='K6: the seed says 止まりたい (止まる inflected); 止める is not in it. U04 used 止める (and S0019L02 teaches やめる for 停止说话) → replaced.',
+  b={'U04': 'd'}, add=[('u', '彼は止まりたくありません', '他不想停止')])
+
+# ---- seed 69 彼は午後ずっと若い犬の世話をしたくありませんでした。 | 他不想整个下午照顾小狗。
+D('S0069L02', 'regloss', known='子犬', seed_known='彼は午後ずっと子犬の世話をしたくありませんでした。',
+  why='SEED EDIT + SEED SPAN. KAI: the Japanese seed says 若い犬 ("young dog"), which nobody says for 小狗; all 8 rows already say 子犬. Editing the seed to 子犬 makes the LEGO the seed\'s own word and costs one seed line, against re-wording 8 rows to 若い犬. U03 said 難しくない ("not hard") for 不容易 ("not easy") → 簡単ではない.',
+  b={'U03': ('子犬の世話は簡単ではない', '照顾小狗不容易')})
+
+# ---- seed 70 彼女はそれがどこにあるか教えたくありませんでした。 | 她不想告诉我它在哪里。
+D('S0070L01', 'regloss', known='教える', ack=K,
+  why='K6: the seed says 教えたく (教える inflected); 伝える is not in it. Rows already say 教え….')
+
+# ---- seed 71 誰にも本当のことを聞かせたくありませんでした。 | 我们不想让任何人听到真相。
+D('S0071L01', 'regloss', known='誰にも', why='SEED SPAN: one form, the seed\'s own 誰にも. The two 誰でも rows are the same word with another particle (K6).')
+D('S0071L02', 'regloss', known='聴く', ack=K,
+  why='K6, with a spelling choice: the seed says 聞かせ (きく, causative); 聞こえる is not in it. Written 聞く the gloss would be one known → three targets (S0030L02 聞く | 问, S0103L01 聞く | 听), so the single form kept is 聴く — the same word in its "listen" spelling, which all 8 rows already use. The spoken prompt きく is shared with 问 today and stays so (K23: sense from context); no new clash is made.')
+D('S0071L03', 'regloss', known='本当のこと', why='SEED SPAN: one form, the seed\'s own 本当のこと. Rows already say it.')
+
+# ---- seed 76 もう学んだことにとても満足しています。 | 我很高兴我已经学了这么多。
+D('S0076L01', 'regloss', known='嬉しい', seed_known='すでにこんなに多く学んだことがとても嬉しいです。',
+  why='SEED EDIT + SEED SPAN. KAI: the Japanese seed (もう学んだことにとても満足しています) says "satisfied with what I already learnt"; the Chinese says 很高兴…已经学了这么多. All 24 rows of the three LEGOs already say 嬉しい / すでに / こんなに多く. Editing the seed to すでにこんなに多く学んだことがとても嬉しいです makes all three glosses the seed\'s own words for one seed line. Without it: 8 rows re-worded to 満足, もう would clash with S0090L01 "もう | 就" (ZUT), and 这么多 has no Japanese counterpart at all.')
+D('S0076L02', 'regloss', known='すでに',
+  why='SEED SPAN after the seed edit above (すでに). The gapped second form goes. U05 lacked すでに.',
+  b={'U05': ('すでにどれくらい学びましたか', '你已经学了多久了')})
+D('S0076L03', 'regloss', known='こんなに多く', why='SEED SPAN after the seed edit above (こんなに多く). Rows already say it.')
+
+# ---- seed 77 こんなに早く理解し始めていることに驚いています。 | 我很惊讶我开始懂得这么快。
+D('S0077L03', 'regloss', known='こんなに',
+  why='SEED SPAN: the seed says こんなに; これほど is a second word it never says. これほど rows re-worded; U04\'s 学了这么快 is not Chinese → 学得这么快.',
+  b={'B01': ('こんなに早い', '这么快'), 'B02': ('こんなに良い', '这么好'), 'B03': ('こんなに多く理解した', '懂得这么多'),
+     'U04': ('こんなに早く学んで非常に良い', '学得这么快非常好')})
+
+# ---- seed 80 いつ準備ができるかわかりません。 | 我不确定我什么时候准备好。
+D('S0080L01', 'regloss', known='準備ができる', why='SEED SPAN: the seed says 準備ができる; 準備が整う is not in it. Rows say 準備できる (same words, K6).',
+  knock='S0255L01 "準備ができる | 准备好" (new, seeds 151-300 shard) becomes an exact duplicate of this LEGO and should go not-new.')
+
+# ---- seed 83 あなたの友達について言ったことに同意します。 | 我同意你说的关于你朋友的事。
+D('S0083L03', 'regloss', known='こと',
+  why='SEED SPAN: the seed says こと; もの and 事 are not in it. こと alone would clash with S0134L01 "こと | 事情" (one known → two targets), so that LEGO grows to its own seed\'s 難しいこと in this plan (below). B03 (何か用がある) has no こと → deleted; basket back-filled.',
+  b={'B03': 'd'},
+  add=[('b', '言ったこと', '你说的事'), ('u', 'あなたが言ったことに同意します', '我同意你说的事'),
+       ('u', '彼は友達について言ったことに同意しません', '他不同意你说的关于你朋友的事'), ('u', '友達についてのことを知りたいです', '我想知道关于你朋友的事')])
+
+# ---- seed 91 間に合うように答えるほど早く考えるのは難しいです。 | 很难想得够快来及时回答。
+D('S0091L01', 'grow', known='間に合うように答える', target='来及时回答', type='M',
+  comps=[['するために', '来'], ['間に合うように', '及时'], ['答える', '回答']],
+  why='GROW (L22): 来 here is the purpose linker, with no Japanese word of its own in the seed, and the seed never says 来る ("come") — which is what all 8 rows drilled. It grows to what it links in its own seed, 来及时回答 = 間に合うように答える (5 syllables). L13 note: L02 "間に合うように | 及时" follows and overlaps (S4).',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05']},
+  add=[('b', '間に合うように答える', '来及时回答'), ('b', '間に合うように答えるよう頑張る', '努力来及时回答'),
+       ('b', '間に合うように答えるよう頑張りたい', '想努力来及时回答'), ('b', '間に合うように答えるよう頑張る必要がある', '需要努力来及时回答'),
+       ('u', '間に合うように答えるほど早く考えるのは難しいです。', '很难想得够快来及时回答。'),
+       ('u', '私たちは間に合うように答えるよう頑張る必要があります。', '我们需要努力来及时回答。'),
+       ('u', '彼は間に合うように答えるよう頑張りたくありません。', '他不想努力来及时回答。'),
+       ('u', '間に合うように答えるよう頑張ろうとしています。', '我在试着努力来及时回答。'),
+       ('u', '彼女は間に合うように答えるよう頑張るつもりです。', '她要努力来及时回答。'),
+       ('u', '間に合うように答えるよう頑張りたいです。', '我想努力来及时回答。')],
+  knock='来 = "come" is no longer drilled at seed 91 (no seed in 1-150 teaches it as a LEGO); 来 stays a component here, so later rows may use it (K29).')
+
+# ---- seed 93 もう行く時間です。 | 现在该走了。
+D('S0093L01', 'regloss', known='する時間です', ack=K,
+  why='STAND-IN: the seed says 行く時間です; する stands in for 行く. すべき is not in the seed. 该 is a modal that stands alone, so it stays an A-LEGO and the rows keep their own verbs.')
+
+# ---- seed 95 次のバスで家に帰る準備はできていますか？ | 你准备好坐下一班车回家了吗？
+D('S0095L01', 'grow', known='次のバスで', target='坐下一班车', type='M', comps=[['乗る', '坐'], ['次の', '下一'], ['バス', '班车']],
+  why='GROW: the seed says neither 座る nor 乗る; its 次のバスで is 坐下一班车 (5 syllables). Every row drilled 坐 = sit, which this seed does not say → rebuilt. L13 note: L02 次の and L03 バス follow and overlap (S4).',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05']},
+  add=[('b', '次のバスで', '坐下一班车'), ('b', '次のバスで家に帰る', '坐下一班车回家'), ('b', '次のバスで行く', '坐下一班车走'),
+       ('u', '次のバスで家に帰りたいです。', '我想坐下一班车回家。'), ('u', '次のバスで家に帰る準備はできていますか？', '你准备好坐下一班车回家了吗？'),
+       ('u', '彼は次のバスで家に帰る必要があります。', '他需要坐下一班车回家。'), ('u', '次のバスで行ってもいいですか？', '我可以坐下一班车走吗？'),
+       ('u', '私たちは次のバスで戻るつもりです。', '我们要坐下一班车回来。'), ('u', '彼女は次のバスで家に帰りたくありません。', '她不想坐下一班车回家。')])
+
+# ---- seed 99 なぜうまくいかないのか自分に聞いた方がいいです。 | 你该问自己为什么不行。
+D('S0099L02', 'regloss', known='うまくいく', ack=K,
+  why='K6: the seed says うまくいかない (うまくいく inflected); 大丈夫 is not in it and is S0041L01\'s gloss for 还可以. The four 大丈夫 rows are re-worded.',
+  b={'B01': ('うまくいく。', '行。'), 'B02': ('うまくいかない。', '不行。'), 'B03': ('彼はうまくいかないと言いました。', '他说不行。'),
+     'U03': ('うまくいくと思いますか？', '你觉得行吗？')})
+
+# ---- seed 102 そうではないと言おうとしています。 | 我们试着说不是那样的。
+D('S0102L01', 'grow', known='そうではない', target='不是那样', type='M', comps=[['ではない', '不是'], ['そう', '那样']],
+  why='GROW: そのように is not in the seed, and そう alone would clash with S0049L02 "そう | 这样" (one known → two targets). The seed\'s own chunk is そうではない = 不是那样 (4 syllables). そのように rows go.',
+  b={'B01': 'd', 'U01': 'd', 'U02': 'd', 'U03': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', 'そうではないと言う。', '说不是那样。'), ('u', '彼女はそうではないと言いました。', '她说不是那样。'),
+       ('u', 'そうではないと思います。', '我觉得不是那样。'), ('u', 'そうではないと言おうとしています。', '我们试着说不是那样的。'),
+       ('u', 'でもそうではないです。', '但是不是那样。'), ('u', '彼はそうではないと言いたいです。', '他想说不是那样。')])
+
+# ---- seed 107 あなたがやっていることを見たいと思いました。 | 我们希望看你在做什么。
+D('S0107L01', 'regloss', known='したいと思いました', ack=K,
+  why='STAND-IN: the seed says 見たいと思いました, never 望む or 願う; する stands in for 見. Same-subject rows are re-worded to …たいと思いました; rows hoping something of someone else (which たいと思う cannot say) go and are replaced.',
+  b={'B01': ('したいと思いました。', '希望。'), 'B02': ('見たいと思いました。', '希望看。'), 'B03': 'd',
+     'U01': ('彼女は家に帰りたいと思いました。', '她希望能回家。'), 'U02': 'd', 'U03': 'd', 'U05': 'd'},
+  add=[('b', '話したいと思いました。', '希望说话。'), ('b', '理解したいと思いました。', '希望理解。'), ('u', '私たちは話したいと思いました。', '我们希望说话。'), ('u', '彼は私を手伝いたいと思いました。', '他希望帮我。'),
+       ('u', '私たちは理解したいと思いました。', '我们希望理解。'), ('u', '彼女は続けたいと思いました。', '她希望继续。'),
+       ('u', 'あなたがやっていることを見たいと思いました。', '我们希望看你在做什么。')])
+
+# ---- seed 109 たくさんの新しい言葉を学ぶために一生懸命働かなければなりません。 | 我们必须努力学很多新词。
+D('S0109L01', 'regloss', known='しなければなりません', ack=K,
+  why='STAND-IN: 必须 is the ending fused into 働かなければなりません; する stands in, in the seed\'s own inflection. Gap marker dropped.',
+  b={'B01': ('しなければなりません。', '必须。')})
+
+# ---- seed 122 簡単に感じ始めていて、どう進んでいるかにワクワクしています。 | 开始觉得更容易，我对进展很兴奋。
+D('S0122L01', 'grow', known='どう進んでいるかに', target='对进展', type='M', comps=[['に対して', '对'], ['進展', '进展']],
+  why='GROW: に対して is not in the seed; 对 is its particle に, which cannot be prompted alone. It grows to its object in its own seed, 对进展 = どう進んでいるかに (3 syllables). No row said 对进展 → rebuilt (mostly on 很惊讶, a taught chunk: 很兴奋 is the seed\'s own but 很 is not covered by any LEGO of seed 122, so the validator counts each 很兴奋 row as untaught vocabulary — 2 kept). L13 note: L02 进展 follows and overlaps (S4).',
+  b={k: 'd' for k in ['B01', 'B02', 'B03', 'U02', 'U03', 'U04', 'U05']},
+  add=[('b', 'どう進んでいるかに', '对进展'), ('b', 'どう進んでいるかにワクワクしています。', '对进展很兴奋。'), ('b', 'どう進んでいるかに驚いています。', '对进展很惊讶。'),
+       ('b', '彼はどう進んでいるかに驚いています。', '他对进展很惊讶。'),
+       ('u', '私はどう進んでいるかにワクワクしています。', '我对进展很兴奋。'), ('u', '私たちはどう進んでいるかに驚いています。', '我们对进展很惊讶。'), ('u', 'どう進んでいるかに驚いていますか？', '你对进展很惊讶吗？'),
+       ('u', '彼らはどう進んでいるかに驚いています。', '他们对进展很惊讶。'), ('u', '私はどう進んでいるかに驚いています。', '我对进展很惊讶。'),
+       ('u', '彼女はどう進んでいるかに驚いています。', '她对进展很惊讶。')])
+
+# ---- seed 124 それはいい考えだと思いました。 | 我以为那是个好主意。
+D('S0124L01', 'regloss', known='と思いました',
+  why='SEED SPAN: the seed says …だと思いました; 思い込む is not in it. Against S0047L01 "と思う | 觉得" the past tense carries the sense (K23), and the seed pair 123/124 is built on exactly that contrast. Rows say と思っていた (K6).')
+
+# ---- seed 133 一緒に働くと誰かをとてもよく知るようになります。 | 一起工作的时候你会很好地认识一个人。
+D('S0133L01', 'regloss', known='とてもよく',
+  why='SEED SPAN: the seed says とてもよく (= 很好地, 很 included); うまく is not in it, and よく alone would clash with S0137L01 "よく | 经常". Rows re-worded to とてもよく.',
+  b={'B02': ('とてもよく知る', '很好地认识'), 'B03': ('とてもよく始めたい。', '我想很好地开始。'), 'U01': ('これをとてもよくやれる。', '我能很好地做这个。'),
+     'U02': ('彼女をとてもよく知りたい。', '我想很好地认识她。'), 'U03': ('とてもよく理解したと思う。', '我觉得我很好地理解了。'),
+     'U04': ('とてもよくやれると信じている。', '我相信我能很好地做这个。')})
+
+# ---- seed 134 (NOT a scan candidate — planned because S0083L03's fix needs it) 彼らと難しいことに取り組んでも問題ありません。 | 跟他们一起做难的事情的时候没有问题。
+D('S0134L01', 'grow', known='難しいこと', target='难的事情', type='M', comps=[['難しい', '难'], ['の', '的'], ['こと', '事情']],
+  why='NEIGHBOUR of S0083L03: "こと | 事情" would make こと one known → two targets once S0083L03 is "こと | 事". The seed\'s own chunk is 難しいこと = 难的事情 (4 syllables; 难 S0066L01). Rows that say 这个事情 / 什么事情 go.',
+  b={'U01': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd', 'U06': 'd'},
+  add=[('b', '彼らと難しいことをする', '跟他们一起做难的事情'), ('u', '難しいことをするのが好きです。', '我喜欢做难的事情。'), ('u', '彼らと難しいことをしたいです。', '我想跟他们一起做难的事情。'),
+       ('u', '難しいことをする必要があります。', '我们需要做难的事情。'), ('u', '彼は難しいことをしたくありません。', '他不想做难的事情。'),
+       ('u', '難しいことをしても問題ありません。', '做难的事情的时候没有问题。')])
+
+# ---- seed 150 お名前を教えていただけますか？ | 你可以告诉我你叫什么名字吗？
+D('S0150L01', 'grow', known='お名前', target='你叫什么名字', type='M', comps=[['あなた', '你'], ['という名前だ', '叫'], ['何', '什么'], ['名前', '名字']],
+  why='GROW: という名前だ is not in the seed; its お名前 is 你叫什么名字 as one chunk (6 syllables; 名字 S0020L03). Rows asking 叫什么 of other people or without 名字 are edited to the taught chunk or deleted.',
+  b={'B01': 'd', 'B02': 'd', 'B03': 'd', 'U01': ('お名前を知りたいです', '我想知道你叫什么名字'),
+     'U02': 'd', 'U03': 'd', 'U04': 'd', 'U05': 'd'},
+  add=[('b', 'お名前', '你叫什么名字'), ('b', 'お名前を知る', '知道你叫什么名字'), ('b', 'お名前を聞く', '问你叫什么名字'),
+       ('b', 'お名前を覚える', '记住你叫什么名字'), ('u', 'お名前を教えていただけますか？', '你可以告诉我你叫什么名字吗？'),
+       ('u', 'お名前を教えてもらえますか？', '你能告诉我你叫什么名字吗？'), ('u', 'お名前を聞いてもいいですか？', '我可以问你叫什么名字吗？'),
+       ('u', 'お名前を知りません', '我不知道你叫什么名字'), ('u', 'すみません、お名前は？', '对不起，你叫什么名字？'),
+       ('u', 'お名前を覚えたいです', '我想记住你叫什么名字')])
+
+json.dump({'course': 'zho_for_jpn', 'shard': 'seeds 1-150 (cs #743·AI)', 'legos': OUT},
+          open(os.path.join(HERE, 'zho_for_jpn.json'), 'w'), ensure_ascii=False, indent=1)
+print(len(OUT), 'decisions')

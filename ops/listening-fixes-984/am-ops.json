@@ -1,0 +1,6 @@
+{"ops":[
+ {"op":"lego.update","lego_id":"S0626L02","expect":{"known_text":"am","target_text":"bin","known_audio_id":"0ecd95f4-4333-4d8b-9bc6-06f95f9362a8","presentation_audio_id":"56b848f9-6cbd-41fd-989e-5efb9bea6d1a"},
+  "set":{"known_text":"I'm","target_text":"ich bin","known_audio_id":"ebc84298-a90f-4b49-9b52-db32ca20bbec","target1_audio_id":"343a5435-8ac1-40a2-a805-66af5a863299","target2_audio_id":"fbf85cdf-9f72-497d-b208-552716ffb892","presentation_audio_id":"ae7a3832-c3d6-47b1-a7a2-d451beefcc55"}},
+ {"op":"phrase.update","phrase_id":"deu_for_eng:S0626L02B01","expect":{"known_text":"am","target_text":"bin"},
+  "set":{"known_text":"I'm","target_text":"ich bin","known_audio_id":"ebc84298-a90f-4b49-9b52-db32ca20bbec","target1_audio_id":"343a5435-8ac1-40a2-a805-66af5a863299","target2_audio_id":"fbf85cdf-9f72-497d-b208-552716ffb892"}}
+],"reason":"cs #984: Kai 19 Nov 13:19Z 'what is am supposed to be?' - bare 'am' over person-marked bin breaks K26/L2 and leaves ich uncovered (L27); shortest cut re-gloss to I'm | ich bin"}

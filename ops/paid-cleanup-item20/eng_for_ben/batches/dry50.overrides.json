@@ -1,0 +1,3701 @@
+[
+ {
+  "seed_number": 100,
+  "phrases": {
+   "100:1": [
+    {
+     "known_text": "আজ একই রকম কিছু করা",
+     "target_text": "doing something similar today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একই রকম কিছু",
+     "target_text": "something similar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একই রকম জিনিস",
+     "target_text": "similar things",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা একই রকম",
+     "target_text": "it's similar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি একই রকম কিছু করতে চাই",
+     "target_text": "I want to do something similar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা একই রকম জিনিস",
+     "target_text": "it's something similar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি একই রকম কিছু করতে চাও?",
+     "target_text": "do you want to do something similar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি একই রকম কিছু জানি",
+     "target_text": "I know something similar",
+     "phrase_role": "use"
+    }
+   ],
+   "100:2": [
+    {
+     "known_text": "উচিত",
+     "target_text": "should",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "নয়",
+     "target_text": "n't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তোমার গল্পটা নিয়ে চিন্তা করা উচিত নয়",
+     "target_text": "you shouldn't worry about the story",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "চিন্তা করা উচিত নয়",
+     "target_text": "shouldn't worry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "করা উচিত নয়",
+     "target_text": "shouldn't do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তোমার চিন্তা করা উচিত নয়",
+     "target_text": "you shouldn't worry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তোমার ভুল করা নিয়ে চিন্তা করা উচিত নয়",
+     "target_text": "you shouldn't worry about making mistakes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তোমার একই রকম কিছু করা নিয়ে চিন্তা করা উচিত নয়",
+     "target_text": "you shouldn't worry about doing something similar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি মনে করো আমার চিন্তা করা উচিত নয়?",
+     "target_text": "do you think I shouldn't worry?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার এটা নিয়ে চিন্তা করা উচিত নয়",
+     "target_text": "I shouldn't worry about this",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 101,
+  "phrases": {
+   "101:1": [
+    {
+     "known_text": "এই ভাষা সম্পর্কে জানা",
+     "target_text": "to find out about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ইংরেজি ভাষা",
+     "target_text": "English language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এই ভাষা",
+     "target_text": "this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি একটা ভাষা শিখছি",
+     "target_text": "I'm learning a language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি একটা ভাষা শিখতে চাও?",
+     "target_text": "do you want to learn a language?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এই ভাষা মজার",
+     "target_text": "it's fun, this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এই ভাষা সম্পর্কে আরো জানতে চাই",
+     "target_text": "I want to know more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এই ভাষা, আমি মনে করি এটা আকর্ষণীয়",
+     "target_text": "this language, I think it's interesting",
+     "phrase_role": "use"
+    }
+   ],
+   "101:2": [
+    {
+     "known_text": "খুঁজে",
+     "target_text": "finding",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বের করছি",
+     "target_text": "out",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আজ আরও খুঁজে বের করা",
+     "target_text": "finding out more today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আরো খুঁজে বের করছি",
+     "target_text": "finding out more",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ভাষা সম্পর্কে খুঁজে বের করছি",
+     "target_text": "finding out about a language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি আরো খুঁজে বের করছি",
+     "target_text": "I'm finding out more",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এই ভাষা সম্পর্কে খুঁজে বের করছি",
+     "target_text": "I'm finding out about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সত্য খুঁজে বের করছি",
+     "target_text": "I'm finding out the truth",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সব কিছু খুঁজে বের করছি",
+     "target_text": "I'm finding out everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি আরো ভাষা সম্পর্কে খুঁজে বের করছি",
+     "target_text": "I'm finding out more about language",
+     "phrase_role": "use"
+    }
+   ],
+   "101:3": [
+    {
+     "known_text": "উপভোগ",
+     "target_text": "enjoy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "করছি",
+     "target_text": "I'm",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি মনে করি যে আমি এটা উপভোগ করছি",
+     "target_text": "I think that I'm enjoying this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "ভাষা শেখা উপভোগ করছি",
+     "target_text": "I'm enjoying learning a language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এই ভাষা সম্পর্কে খুঁজে বের করা উপভোগ করছি",
+     "target_text": "I'm enjoying finding out about this language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি ভাষা সম্পর্কে আরো জানতে উপভোগ করছি",
+     "target_text": "I'm enjoying finding out more about this language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এটা উপভোগ করছি",
+     "target_text": "I'm enjoying doing this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি ইংরেজি শেখা উপভোগ করছি",
+     "target_text": "I'm enjoying learning English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি আরো ভাষা সম্পর্কে খুঁজে বের করা উপভোগ করছি",
+     "target_text": "I'm enjoying finding out more about language",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এই ভাষা শেখা উপভোগ করছি",
+     "target_text": "I'm enjoying learning this language",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 109,
+  "phrases": {
+   "109:1": [
+    {
+     "known_text": "নতুন কিছু",
+     "target_text": "something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নতুন শব্দ",
+     "target_text": "new words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নতুন ভাষা",
+     "target_text": "new language",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি নতুন শব্দ শিখতে চাই",
+     "target_text": "I want to learn new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি নতুন ভাষা শিখতে চাও?",
+     "target_text": "do you want to learn a new language?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কিছু নতুন শেখার দরকার",
+     "target_text": "you need to learn something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের নতুন শব্দ দরকার",
+     "target_text": "we need new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি নতুন শব্দ শিখতে চাও?",
+     "target_text": "do you want to learn new words?",
+     "phrase_role": "use"
+    }
+   ],
+   "109:2": [
+    {
+     "known_text": "অবশ্যই কথা বলো",
+     "target_text": "you must speak",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অবশ্যই শুরু করো",
+     "target_text": "you must start",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অবশ্যই দেখতে যাও",
+     "target_text": "you must go to see",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি অবশ্যই কথা বলতে শুরু করো",
+     "target_text": "you must start speaking",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের অবশ্যই এখন শুরু করতে হবে",
+     "target_text": "we must start now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি অবশ্যই ইংরেজিতে কথা বলতে হবে",
+     "target_text": "you must speak in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের অবশ্যই কথা বলতে হবে",
+     "target_text": "we must speak",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আজ তুমি অবশ্যই কথা বলতে হবে",
+     "target_text": "today you must speak",
+     "phrase_role": "use"
+    }
+   ],
+   "109:3": [
+    {
+     "known_text": "অবশ্যই",
+     "target_text": "must",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কঠিন",
+     "target_text": "hard",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "পরিশ্রম",
+     "target_text": "work",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমাদের আজ অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "we must work hard today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "we must work hard",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "শেখার জন্য অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "must work hard to learn",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের অবশ্যই কঠিন পরিশ্রম করতে হবে ইংরেজি শেখার জন্য",
+     "target_text": "we must work hard to learn English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমাদের অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "that is why we must work hard",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নতুন শব্দ শেখার জন্য অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "you must work hard to learn new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সবসময় অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "you must work hard all the time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা অবশ্যই কঠিন পরিশ্রম করার চেষ্টা করছি",
+     "target_text": "we must work hard and keep trying",
+     "phrase_role": "use"
+    }
+   ],
+   "109:4": [
+    {
+     "known_text": "অনেক",
+     "target_text": "a lot of",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "নতুন",
+     "target_text": "new",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "শব্দ",
+     "target_text": "words",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "অনেক নতুন শব্দ",
+     "target_text": "a lot of new words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অনেক নতুন শব্দ শিখতে",
+     "target_text": "to learn a lot of new words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অনেক নতুন শব্দ মনে রাখতে",
+     "target_text": "to remember a lot of new words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অনেক নতুন শব্দ জানা দরকার",
+     "target_text": "need to know a lot of new words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের অনেক নতুন শব্দ শেখার জন্য কঠিন পরিশ্রম করতে হবে",
+     "target_text": "we must work hard to learn a lot of new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি অনেক নতুন শব্দ শিখতে চাই",
+     "target_text": "I want to learn a lot of new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি অনেক নতুন শব্দ জান?",
+     "target_text": "do you know a lot of new words?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের অবশ্যই কঠিন পরিশ্রম করতে হবে অনেক নতুন শব্দ মনে রাখতে",
+     "target_text": "we must work hard to remember a lot of new words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অনেক নতুন শব্দ শিখতে হলে অবশ্যই কঠিন পরিশ্রম করতে হবে",
+     "target_text": "you must work hard to learn a lot of new words",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 110,
+  "phrases": {
+   "110:1": [
+    {
+     "known_text": "বিশ্রাম নিতে চাই",
+     "target_text": "I'd like to relax",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "বিশ্রাম নিতে যাচ্ছি",
+     "target_text": "I'm going to relax",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আজ বিশ্রাম নেওয়া দরকার",
+     "target_text": "need to relax today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "শেষ করার পরে বিশ্রাম নেওয়া দরকার",
+     "target_text": "you need to relax after you finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি বিশ্রাম নিতে চাও?",
+     "target_text": "do you want to relax?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের শেষ করার পরে বিশ্রাম নেওয়া দরকার",
+     "target_text": "we need to relax after we finish",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আজ বিশ্রাম নিতে যাচ্ছি",
+     "target_text": "I'm going to relax today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এখন বিশ্রাম নেওয়া সম্ভব",
+     "target_text": "it's possible to relax now",
+     "phrase_role": "use"
+    }
+   ],
+   "110:2": [
+    {
+     "known_text": "আমরা",
+     "target_text": "we're",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বন্ধুরা",
+     "target_text": "friends",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি জানো আমরা বন্ধু",
+     "target_text": "you know we're friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা এবং",
+     "target_text": "we're friends and",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা তাই",
+     "target_text": "we're friends so",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা এবং আমরা সাহায্য করতে চাই",
+     "target_text": "we're friends and we want to help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা সেইজন্যই আমি তোমার সাথে কথা বলতে চাই",
+     "target_text": "we're friends that is why I want to speak with you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা তাই এটা কঠিন না",
+     "target_text": "we're friends so it's not difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা এবং শেষ করার পরে বিশ্রাম নেওয়া দরকার",
+     "target_text": "we're friends and after we finish we need to relax",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা বন্ধুরা, এবং আমি তোমাকে শুনতে চাই",
+     "target_text": "we're friends, and I want to hear you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 111,
+  "phrases": {
+   "111:1": [
+    {
+     "known_text": "আমাদের",
+     "target_text": "our",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "মস্তিষ্ক",
+     "target_text": "brain",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমাদের মস্তিষ্ক",
+     "target_text": "our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের মস্তিষ্ক পরিবর্তন করা দরকার",
+     "target_text": "need to change our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের মস্তিষ্ক পরিবর্তন করতে চাই",
+     "target_text": "I want to change our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের মস্তিষ্ক পরিবর্তন করতে চাই",
+     "target_text": "I want to change our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমাদের মস্তিষ্ক পরিবর্তন করতে হবে",
+     "target_text": "that is why we need to change our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের মস্তিষ্ক পরিবর্তন করা সম্ভব",
+     "target_text": "it's possible to change our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা আমাদের মস্তিষ্ক পরিবর্তন করার চেষ্টা করছি",
+     "target_text": "we're trying to change our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমাদের মস্তিষ্ক আজ ভালো কাজ করবে",
+     "target_text": "our brain will work well today",
+     "phrase_role": "use"
+    }
+   ],
+   "111:2": [
+    {
+     "known_text": "এটা",
+     "target_text": "it",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "পরিবর্তন করে",
+     "target_text": "changes",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "এটা পরিবর্তন করে",
+     "target_text": "it changes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা মস্তিষ্ক পরিবর্তন করে",
+     "target_text": "it changes the brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা আমাদের মস্তিষ্ক পরিবর্তন করে",
+     "target_text": "it changes our brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেইজন্যই এটা পরিবর্তন করে",
+     "target_text": "that is why it changes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেইজন্যই এটা আমাদের মস্তিষ্ক পরিবর্তন করে",
+     "target_text": "that is why it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "শুধু এটা পরিবর্তন করে",
+     "target_text": "only it changes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা আমাদের মস্তিষ্ক পরিবর্তন করে সব সময়",
+     "target_text": "it changes our brain all the time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা সব পরিবর্তন করে",
+     "target_text": "it changes everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা আমাদের মস্তিষ্ক পরিবর্তন করে কারণ",
+     "target_text": "it changes our brain because",
+     "phrase_role": "use"
+    }
+   ],
+   "111:3": [
+    {
+     "known_text": "যখন",
+     "target_text": "when",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "শিখি",
+     "target_text": "we learn",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "যখন আমরা ইংরেজি শিখি",
+     "target_text": "when we learn English",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "যখন আমরা কিছু নতুন শিখি",
+     "target_text": "when we learn something new",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "যখন আমরা শিখি এটা পরিবর্তন করে",
+     "target_text": "when we learn it changes",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "যখন আমরা কিছু নতুন শিখি তখন এটা আমাদের মস্তিষ্ক পরিবর্তন করে",
+     "target_text": "when we learn something new it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "যখন আমরা শিখি তখন এটা আমাদের মস্তিষ্ক পরিবর্তন করে",
+     "target_text": "when we learn it changes our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "যখন আমরা কিছু নতুন শিখি তখন এটা পরিবর্তন করে",
+     "target_text": "when we learn something new it changes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "যখন আমরা শিখি তখন আমাদের ভালো লাগে",
+     "target_text": "when we learn we feel good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "যখন আমরা শিখি তখন এটা পরিবর্তন করে সব",
+     "target_text": "when we learn it changes everything",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 113,
+  "phrases": {
+   "113:1": [
+    {
+     "known_text": "তুমি কী বলেছিলে",
+     "target_text": "what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি যা বলেছিলে তার সাথে আমি একমত নই",
+     "target_text": "I don't agree with what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি কী বলেছিলে তা মনে রাখা",
+     "target_text": "remember what you said",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি কী বলেছিলে আমি মনে রাখতে চাই",
+     "target_text": "I want to remember what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কী বলেছিলে তা আমি জানি",
+     "target_text": "I know what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি বলেছিলে এটা সহজ",
+     "target_text": "you said it was easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি মনে রাখতে চাই তুমি কী বলেছিলে",
+     "target_text": "that is why I want to remember what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কী বলেছিলে আমি বুঝি না",
+     "target_text": "I don't understand what you said",
+     "phrase_role": "use"
+    }
+   ],
+   "113:2": [
+    {
+     "known_text": "মনে রাখতে",
+     "target_text": "remember",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "পারি না",
+     "target_text": "can't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি এটা প্রত্যাশা করিনি আর আমি মনে রাখতে পারি না",
+     "target_text": "I wasn't expecting it and I can't remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি মনে রাখতে পারি না",
+     "target_text": "I can't remember",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা মনে রাখতে পারি না",
+     "target_text": "I can't remember it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কেন আমি মনে রাখতে পারি না তুমি কী বলেছিলে?",
+     "target_text": "why can't I remember what you said?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এখন মনে রাখতে পারি না",
+     "target_text": "I can't remember now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কেন আমি মনে রাখতে পারি না?",
+     "target_text": "why can't I remember?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কী বলেছিলে তা আমি মনে রাখতে পারি না",
+     "target_text": "I can't remember what you said",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এখন কিছু মনে রাখতে পারি না",
+     "target_text": "I can't remember anything now",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 114,
+  "phrases": {
+   "114:1": [
+    {
+     "known_text": "খারাপ করছি",
+     "target_text": "doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেইজন্যই আমি আরও খারাপ করছি",
+     "target_text": "that is why I'm doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আজ খারাপ",
+     "target_text": "worse today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি আজ খারাপ করছি",
+     "target_text": "I'm doing worse today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "গতকালের চেয়ে খারাপ",
+     "target_text": "worse than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি আরও খারাপ করছি",
+     "target_text": "I'm doing worse",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি আরও খারাপ করছ?",
+     "target_text": "are you doing worse?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আজ আরও খারাপ করছ কেন?",
+     "target_text": "why are you doing worse today?",
+     "phrase_role": "use"
+    }
+   ],
+   "114:2": [
+    {
+     "known_text": "মনে",
+     "target_text": "feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "হচ্ছে",
+     "target_text": "it seems",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "মনে হচ্ছে",
+     "target_text": "I feel as if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে হচ্ছে ভালো",
+     "target_text": "I feel as if it's good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে হচ্ছে খারাপ",
+     "target_text": "I feel as if it's worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে হচ্ছে আমি করছি",
+     "target_text": "I feel as if I'm doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার মনে হচ্ছে আমি গতকালের চেয়ে আজ আরও খারাপ করছি",
+     "target_text": "I feel as if I'm doing worse today than yesterday",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে আমি ভালো করছি",
+     "target_text": "I feel as if I'm doing well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে আমি আজ ভালো করছি",
+     "target_text": "I feel as if I'm doing well today",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে গতকাল ভালো ছিল",
+     "target_text": "I feel as if yesterday was better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে আমি আরও খারাপ করছি",
+     "target_text": "I feel as if I'm doing worse",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 115,
+  "phrases": {
+   "115:1": [
+    {
+     "known_text": "কথোপকথন",
+     "target_text": "conversation",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "করতে",
+     "target_text": "to have",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি আজ কথোপকথন করতে তৈরি",
+     "target_text": "I'm ready to have a conversation today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কথোপকথন করতে তৈরি",
+     "target_text": "ready to have a conversation",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি কথোপকথন করতে চাই",
+     "target_text": "I want to have a conversation",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি কি কথোপকথন করতে তৈরি?",
+     "target_text": "are you ready to have a conversation?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা একটা কথোপকথন করতে চাই",
+     "target_text": "we want to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কথোপকথন করতে শেখা দরকার",
+     "target_text": "you need to learn to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "একটা কথোপকথন করতে চেষ্টা করছি",
+     "target_text": "I'm trying to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আজ একটা কথোপকথন করতে যাচ্ছি",
+     "target_text": "I'm going to have a conversation today",
+     "phrase_role": "use"
+    }
+   ],
+   "115:2": [
+    {
+     "known_text": "মনে",
+     "target_text": "feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "হচ্ছে না",
+     "target_text": "doesn't seem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "মনে হচ্ছে না",
+     "target_text": "I don't feel as if",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে হচ্ছে না আমি তৈরি",
+     "target_text": "I don't feel as if I'm ready",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে হচ্ছে না এটা সহজ",
+     "target_text": "I don't feel as if it's easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে হচ্ছে না আমি করতে পারব",
+     "target_text": "I don't feel as if I can",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার মনে হচ্ছে না আমি কথোপকথন করতে তৈরি",
+     "target_text": "I don't feel as if I'm ready to have a conversation",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে না আমি শুরু করতে তৈরি",
+     "target_text": "I don't feel as if I'm ready to start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে না এটা কাজ করবে",
+     "target_text": "I don't feel as if it will work",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে না আমি এখন করতে পারব",
+     "target_text": "I don't feel as if I can do it now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "মনে হচ্ছে না আমি যথেষ্ট শিখেছি",
+     "target_text": "I don't feel as if I've learnt enough",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 116,
+  "phrases": {
+   "116:1": [
+    {
+     "known_text": "একটা পছন্দ করা",
+     "target_text": "to make a choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার পছন্দ",
+     "target_text": "my choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এই পছন্দ",
+     "target_text": "this choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা আমার পছন্দ না",
+     "target_text": "this isn't my choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি একটা ভালো পছন্দ করতে চাই",
+     "target_text": "I want to make a good choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার পছন্দ ভালো না",
+     "target_text": "my choice isn't good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "একটা পছন্দ করতে হবে",
+     "target_text": "I need to make a choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি একটা ভালো পছন্দ করেছ?",
+     "target_text": "did you make a good choice?",
+     "phrase_role": "use"
+    }
+   ],
+   "116:2": [
+    {
+     "known_text": "সেরা পছন্দ",
+     "target_text": "best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেরা উপায়",
+     "target_text": "best way",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেরা কিছু",
+     "target_text": "best thing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সেরা উপায় না",
+     "target_text": "this isn't the best way",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সেরা করার চেষ্টা করছি",
+     "target_text": "I'm trying to do my best",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেরা কিছু করতে চাই",
+     "target_text": "I want to do the best thing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেরা শুরু করার উপায়",
+     "target_text": "the best way to start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি সেরা পছন্দ করতে চাও?",
+     "target_text": "do you want to make the best choice?",
+     "phrase_role": "use"
+    }
+   ],
+   "116:3": [
+    {
+     "known_text": "পার",
+     "target_text": "could",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তাম",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "এটা সেরা পছন্দ না যা আমি আজ করতে পারতাম",
+     "target_text": "this isn't the best choice I could make today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি করতে পারতাম",
+     "target_text": "I could do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি বলতে পারতাম",
+     "target_text": "I could say",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি আরও ভালো করতে পারতাম",
+     "target_text": "I could do better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তোমাকে সাহায্য করতে পারতাম",
+     "target_text": "I could help you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সেরা পছন্দ করতে পারতাম",
+     "target_text": "I could make the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি পারতাম",
+     "target_text": "that is why I could",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তোমার সাথে কথা বলতে পারতাম",
+     "target_text": "I could speak with you",
+     "phrase_role": "use"
+    }
+   ],
+   "116:4": [
+    {
+     "known_text": "সেরা",
+     "target_text": "best",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "পছন্দ না",
+     "target_text": "isn't the choice",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "সেরা পছন্দ না",
+     "target_text": "isn't the best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সেরা পছন্দ না",
+     "target_text": "this isn't the best choice",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সেরা পছন্দ না যা",
+     "target_text": "this isn't the best choice that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা আমার সেরা পছন্দ না",
+     "target_text": "isn't the best choice for me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সেরা পছন্দ না যা আমি করতে পারতাম",
+     "target_text": "this isn't the best choice I could make",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা সেরা পছন্দ না",
+     "target_text": "that is why this isn't the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি মনে করি এটা সেরা পছন্দ না",
+     "target_text": "I think this isn't the best choice",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা সেরা পছন্দ না, আমি মনে করি",
+     "target_text": "this isn't the best choice, I think",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি নিশ্চিত না এটা সেরা পছন্দ না",
+     "target_text": "I'm not sure this isn't the best choice",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 117,
+  "phrases": {
+   "117:1": [
+    {
+     "known_text": "নিশ্চিতভাবে ভালো",
+     "target_text": "definitely better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে করছি",
+     "target_text": "definitely doing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে ভালো করছি",
+     "target_text": "definitely doing better",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি নিশ্চিতভাবে আরও ভালো করছি",
+     "target_text": "I'm definitely doing better",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে শুরু করব",
+     "target_text": "I'll definitely start",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি নিশ্চিতভাবে এটা করব",
+     "target_text": "I'll definitely do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা নিশ্চিতভাবে এটা করতে পারব",
+     "target_text": "we can definitely do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই নিশ্চিতভাবে ভালো হবে",
+     "target_text": "that is why it will definitely be better",
+     "phrase_role": "use"
+    }
+   ],
+   "117:2": [
+    {
+     "known_text": "একে অপরের সাথে",
+     "target_text": "with each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একে অপরকে সাহায্য করা",
+     "target_text": "help each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একে অপরের সাথে কথা বলা",
+     "target_text": "speak with each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা একে অপরের সাথে কথা বলতে চাই",
+     "target_text": "we want to speak with each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "একে অপরকে সাহায্য করা দরকার",
+     "target_text": "you need to help each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা একে অপরকে জানি",
+     "target_text": "we know each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "একে অপরের সাথে কাজ করা",
+     "target_text": "working with each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি একে অপরের সাথে কাজ করতে পারবে?",
+     "target_text": "can you work with each other?",
+     "phrase_role": "use"
+    }
+   ],
+   "117:3": [
+    {
+     "known_text": "কথা",
+     "target_text": "talk",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বলেছিলাম",
+     "target_text": "we said",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমরা গতকাল একে অপরের সাথে কথা বলেছিলাম",
+     "target_text": "we talked to each other yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একে অপরের সাথে কথা বলেছিলাম",
+     "target_text": "we talked to each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আগে কথা বলেছিলাম",
+     "target_text": "we talked before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা একে অপরের সাথে কথা বলেছিলাম",
+     "target_text": "we talked with each other",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা কথা বলেছিলাম কারণ",
+     "target_text": "we talked because",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমরা কথা বলেছিলাম",
+     "target_text": "that is why we talked",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা একে অপরের সাথে কথা বলেছিলাম আগে",
+     "target_text": "we talked to each other before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা কথা বলেছিলাম সেইজন্যই আমি জানি",
+     "target_text": "we talked that is why I know",
+     "phrase_role": "use"
+    }
+   ],
+   "117:4": [
+    {
+     "known_text": "শেষ",
+     "target_text": "last",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বার",
+     "target_text": "time",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "শেষবার আমি ক্লান্ত ছিলাম",
+     "target_text": "last time I was tired",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "শেষবার একে অপরের সাথে",
+     "target_text": "last time with each other",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "শেষবার আমরা কথা বলেছিলাম",
+     "target_text": "last time we talked",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "শেষবার আমি ভালো করিনি",
+     "target_text": "last time I didn't do well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "শেষবার তুমি কী করেছিলে?",
+     "target_text": "what did you do last time?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "শেষবার আমি নিশ্চিত ছিলাম না",
+     "target_text": "last time I wasn't sure",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি নিশ্চিতভাবে শেষবারের চেয়ে ভালো করছি",
+     "target_text": "I'm definitely doing better than last time",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "শেষবার আমরা একে অপরের সাথে কথা বলেছিলাম",
+     "target_text": "last time we talked to each other",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 122,
+  "phrases": {
+   "122:1": [
+    {
+     "known_text": "উত্তেজিত অনুভব করছি",
+     "target_text": "feeling excited",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি উত্তেজিত",
+     "target_text": "I'm excited",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "খুব উত্তেজিত",
+     "target_text": "very excited",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "শেখা নিয়ে উত্তেজিত",
+     "target_text": "excited about learning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি খুব উত্তেজিত",
+     "target_text": "I'm very excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি উত্তেজিত",
+     "target_text": "that is why I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নতুন কিছু নিয়ে উত্তেজিত",
+     "target_text": "excited about something new",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি ইংরেজি নিয়ে উত্তেজিত",
+     "target_text": "I'm excited about English",
+     "phrase_role": "use"
+    }
+   ],
+   "122:2": [
+    {
+     "known_text": "সহজ",
+     "target_text": "easier",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "হতে শুরু করছে",
+     "target_text": "starting to feel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি জানো এটা সহজ হতে শুরু করছে",
+     "target_text": "you know it's starting to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সহজ হতে শুরু করছে",
+     "target_text": "it's starting to feel easier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সহজ হতে শুরু করছে এবং আমি উত্তেজিত",
+     "target_text": "it's starting to feel easier and I'm excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা সহজ হতে শুরু করছে",
+     "target_text": "that is why it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে এটা সহজ হতে শুরু করছে",
+     "target_text": "it's definitely starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার মনে হচ্ছে এটা সহজ হতে শুরু করছে",
+     "target_text": "I feel as if it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা সহজ হতে শুরু করছে, নিশ্চিতভাবে",
+     "target_text": "it's starting to feel easier, definitely",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ইংরেজি সহজ হতে শুরু করছে",
+     "target_text": "English is starting to feel easier",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 124,
+  "phrases": {
+   "124:1": [
+    {
+     "known_text": "মনে",
+     "target_text": "thought",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "করেছিলাম",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি মনে করেছিলাম আমরা দেখা করার আশা করেছিলাম",
+     "target_text": "I thought we hoped to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে করেছিলাম ভালো",
+     "target_text": "I thought it was good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মনে করেছিলাম এটা",
+     "target_text": "I thought that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি মনে করেছিলাম এটা একটা ভালো ধারণা",
+     "target_text": "I thought that was a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি মনে করেছিলাম এটা সহজ",
+     "target_text": "I thought that was easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি মনে করেছিলাম সেটা সম্ভব",
+     "target_text": "I thought that was possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি মনে করেছিলাম",
+     "target_text": "that is why I thought",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি মনে করেছিলাম এটা সেরা পছন্দ",
+     "target_text": "I thought that was the best choice",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 125,
+  "phrases": {
+   "125:1": [
+    {
+     "known_text": "বিশ্বাস করি",
+     "target_text": "I believe",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "বিশ্বাস করি যে",
+     "target_text": "I believe that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি বিশ্বাস করি যে আমরা বন্ধু",
+     "target_text": "I believe that we're friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি বিশ্বাস করি এটা সম্ভব",
+     "target_text": "I believe it's possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি বিশ্বাস করি তুমি ভালো করছ",
+     "target_text": "I believe you're doing well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি বিশ্বাস করি",
+     "target_text": "that is why I believe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি বিশ্বাস করি এটা একটা ভালো ধারণা",
+     "target_text": "I believe it's a good idea",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি বিশ্বাস করি তুমি",
+     "target_text": "I believe you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 126,
+  "phrases": {
+   "126:1": [
+    {
+     "known_text": "পরিবর্তন",
+     "target_text": "changing",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "করছে",
+     "target_text": "is",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "পরিবর্তন করছে",
+     "target_text": "is changing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা পরিবর্তন করছে",
+     "target_text": "it is changing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কাজ পরিবর্তন করছে",
+     "target_text": "work is changing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সব পরিবর্তন করছে",
+     "target_text": "everything is changing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এই কাজ পরিবর্তন করছে",
+     "target_text": "this work is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা আমাদের মস্তিষ্ক পরিবর্তন করছে",
+     "target_text": "it is changing our brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা পরিবর্তন করছে",
+     "target_text": "that is why it is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা সব পরিবর্তন করছে",
+     "target_text": "it is changing everything",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে এটা পরিবর্তন করছে",
+     "target_text": "it is definitely changing",
+     "phrase_role": "use"
+    }
+   ],
+   "126:2": [
+    {
+     "known_text": "আকৃতি",
+     "target_text": "shape",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমার",
+     "target_text": "of my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "মস্তিষ্কের",
+     "target_text": "brain",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আজ আমার মস্তিষ্কের আকৃতি",
+     "target_text": "the shape of my brain today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার মস্তিষ্কের আকৃতি পরিবর্তন করছে",
+     "target_text": "the shape of my brain is changing",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার মস্তিষ্কের আকৃতি পরিবর্তন করতে",
+     "target_text": "to change the shape of my brain",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এই কাজ আমার মস্তিষ্কের আকৃতি পরিবর্তন করছে",
+     "target_text": "this work is changing the shape of my brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার মস্তিষ্কের আকৃতি পরিবর্তন করা সম্ভব",
+     "target_text": "it's possible to change the shape of my brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার মস্তিষ্কের আকৃতি পরিবর্তন করতে চাই",
+     "target_text": "I want to change the shape of my brain",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমার মস্তিষ্কের আকৃতি পরিবর্তন করছে",
+     "target_text": "that is why the shape of my brain is changing",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কীভাবে আমার মস্তিষ্কের আকৃতি পরিবর্তন করা সম্ভব?",
+     "target_text": "how to change the shape of my brain?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 128,
+  "phrases": {
+   "128:1": [
+    {
+     "known_text": "চিনতাম",
+     "target_text": "used to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "জানতাম",
+     "target_text": "know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "চিনতাম",
+     "target_text": "used to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি চিনতাম",
+     "target_text": "I used to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি যাকে চিনতাম",
+     "target_text": "someone I used to know",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আগে চিনতাম",
+     "target_text": "used to know before",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি তাকে চিনতাম",
+     "target_text": "I used to know her",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি চিনতাম",
+     "target_text": "that is why I used to know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এমন কাউকে চিনতাম",
+     "target_text": "I used to know someone like that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তোমাকে চিনতাম আগে",
+     "target_text": "I used to know you before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি ইংরেজি বলা মানুষদের চিনতাম",
+     "target_text": "I used to know people who speak English",
+     "phrase_role": "use"
+    }
+   ],
+   "128:2": [
+    {
+     "known_text": "তুমি",
+     "target_text": "you're",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "এমন",
+     "target_text": "like",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কারো মতো",
+     "target_text": "someone",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যার সাথে আমি দেখা করতে চাই",
+     "target_text": "you're like someone I want to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যে",
+     "target_text": "you're like someone who",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যাকে",
+     "target_text": "you're like someone I",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যাকে আমি আগে চিনতাম",
+     "target_text": "you're like someone I used to know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যে আমাকে সাহায্য করতে পারে",
+     "target_text": "you're like someone who can help me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যে ইংরেজি বলতে পারে",
+     "target_text": "you're like someone who can speak English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই তুমি এমন কারো মতো",
+     "target_text": "that is why you're like someone",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি এমন কারো মতো যে আমি পছন্দ করি",
+     "target_text": "you're like someone I like",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 129,
+  "phrases": {
+   "129:1": [
+    {
+     "known_text": "এত ভালো",
+     "target_text": "so well",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এত খুশি",
+     "target_text": "so happy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এত সহজ",
+     "target_text": "so easy",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি এত খুশি",
+     "target_text": "I'm so happy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা এত সহজ না",
+     "target_text": "it's not so easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি এত উত্তেজিত",
+     "target_text": "that is why I'm so excited",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি এত ভালো করছ",
+     "target_text": "you're doing so well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এত উত্তেজিত যে শিখছি।",
+     "target_text": "I'm so excited that I'm learning",
+     "phrase_role": "use"
+    }
+   ],
+   "129:2": [
+    {
+     "known_text": "আমি",
+     "target_text": "I'm",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "খুব খুশি",
+     "target_text": "so happy",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "যে",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে আমরা বন্ধু",
+     "target_text": "I'm so happy that we're friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে তুমি",
+     "target_text": "I'm so happy that you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে এটা",
+     "target_text": "I'm so happy that it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে তুমি এত ভালো করছ",
+     "target_text": "I'm so happy that you're doing so well",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে এটা সহজ হতে শুরু করছে",
+     "target_text": "I'm so happy that it's starting to feel easier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে তুমি শিখছ",
+     "target_text": "I'm so happy that you're learning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি খুব খুশি যে",
+     "target_text": "that is why I'm so happy that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি খুব খুশি যে তুমি ভালো করছ",
+     "target_text": "I'm so happy that you're doing well",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 130,
+  "phrases": {
+   "130:1": [
+    {
+     "known_text": "অবাক করা ছিল",
+     "target_text": "was a surprise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কি অবাক করা",
+     "target_text": "what a surprise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একটা অবাক করা",
+     "target_text": "a surprise",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা অবাক করা ছিল",
+     "target_text": "that was a surprise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা অবাক করা ছিল",
+     "target_text": "that is why it was a surprise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা নিশ্চিতভাবে একটা অবাক করা ছিল",
+     "target_text": "that was definitely a surprise",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা অবাক করা ছিল কারণ",
+     "target_text": "that was a surprise because",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি অবাক করা প্রত্যাশা করিনি",
+     "target_text": "I wasn't expecting that surprise",
+     "phrase_role": "use"
+    }
+   ],
+   "130:2": [
+    {
+     "known_text": "সে",
+     "target_text": "he's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমার",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বন্ধু",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি মনে করি সে আমার বন্ধু",
+     "target_text": "I think he's my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সে আমার বন্ধু কারণ",
+     "target_text": "he's my friend because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা অবাক করা কারণ সে আমার বন্ধু",
+     "target_text": "it's a surprise because he's my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা অবাক করা ছিল কারণ সে আমার বন্ধু",
+     "target_text": "that was a surprise because he's my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই সে আমার বন্ধু",
+     "target_text": "that is why he's my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার বন্ধু এবং সেইজন্যই",
+     "target_text": "he's my friend and that is why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার বন্ধু তাই আমি বিশ্বাস করি",
+     "target_text": "he's my friend so I believe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার বন্ধু এবং আমি খুব খুশি",
+     "target_text": "he's my friend and I'm so happy",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 131,
+  "phrases": {
+   "131:1": [
+    {
+     "known_text": "আমার মাথা",
+     "target_text": "my head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তোমার মাথা",
+     "target_text": "your head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কিছু মাথায়",
+     "target_text": "in my head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তোমার মাথায় কী আছে?",
+     "target_text": "what is in your head?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার মাথার মধ্যে অনেক কিছু",
+     "target_text": "a lot in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা আমার মাথার মধ্যে",
+     "target_text": "that is why it's in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তোমার মাথায় কী চলছে?",
+     "target_text": "what is going on in your head?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার মাথার মধ্যে",
+     "target_text": "it's in my head",
+     "phrase_role": "use"
+    }
+   ],
+   "131:2": [
+    {
+     "known_text": "ধারণাগুলো",
+     "target_text": "ideas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ঘুরছে",
+     "target_text": "going around",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আজ ধারণা ঘুরছে",
+     "target_text": "ideas going around today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "মাথায় ধারণা ঘুরছে",
+     "target_text": "ideas going around in my head",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নতুন ধারণা ঘুরছে",
+     "target_text": "new ideas going around",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নতুন ধারণা ঘুরছে আমার মাথায়",
+     "target_text": "new ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সব ধারণা ঘুরছে মাথায়",
+     "target_text": "all ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তোমার মাথায় ধারণা ঘুরছে",
+     "target_text": "ideas going around in your head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "ধারণা ঘুরছে এখন",
+     "target_text": "ideas going around now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার মাথায় অনেক বেশি ধারণা ঘুরছে।",
+     "target_text": "there are too many ideas going around in my head",
+     "phrase_role": "use"
+    }
+   ],
+   "131:3": [
+    {
+     "known_text": "অনেক বেশি শব্দ",
+     "target_text": "too many words",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অনেক বেশি কিছু",
+     "target_text": "too many things",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অনেক বেশি ধারণা ঘুরছে",
+     "target_text": "too many ideas going around",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা অনেক বেশি",
+     "target_text": "this is too many",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অনেক বেশি কিছু শেখার আছে",
+     "target_text": "too many things to learn",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমার মাথায় অনেক বেশি আছে",
+     "target_text": "too many in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অনেক বেশি করতে পারব না",
+     "target_text": "I can't do too many",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অনেক বেশি ধারণা ঘুরছে আমার মাথায়",
+     "target_text": "too many ideas going around in my head",
+     "phrase_role": "use"
+    }
+   ],
+   "131:4": [
+    {
+     "known_text": "সেখানে",
+     "target_text": "there",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আছে",
+     "target_text": "are",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আজ অনেক বেশি ধারণা ঘুরছে",
+     "target_text": "there are too many ideas going around today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেখানে আছে অনেক বেশি কিছু",
+     "target_text": "there are too many things",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেখানে আছে ধারণা ঘুরছে",
+     "target_text": "there are ideas going around",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার মাথায় অনেক বেশি ধারণা ঘুরছে",
+     "target_text": "there are too many ideas going around in my head",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেখানে আছে অনেক বেশি শব্দ",
+     "target_text": "there are too many words",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেখানে আছে অনেক বেশি নতুন কিছু",
+     "target_text": "there are too many new things",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেখানে আছে অনেক বেশি ধারণা ঘুরছে",
+     "target_text": "there are too many ideas going around",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেখানে আছে নতুন ধারণা ঘুরছে মাথায়",
+     "target_text": "there are new ideas going around in my head",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 132,
+  "phrases": {
+   "132:1": [
+    {
+     "known_text": "উত্তেজনাপূর্ণ কিছু",
+     "target_text": "something exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "খুব উত্তেজনাপূর্ণ",
+     "target_text": "very exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "উত্তেজনাপূর্ণ ধারণা",
+     "target_text": "exciting idea",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা উত্তেজনাপূর্ণ",
+     "target_text": "it's exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নতুন কিছু উত্তেজনাপূর্ণ হতে পারে",
+     "target_text": "something new can be exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "শেখা উত্তেজনাপূর্ণ",
+     "target_text": "learning is exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা উত্তেজনাপূর্ণ",
+     "target_text": "that is why it's exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে এটা উত্তেজনাপূর্ণ",
+     "target_text": "it's definitely exciting",
+     "phrase_role": "use"
+    }
+   ],
+   "132:2": [
+    {
+     "known_text": "বলছিল",
+     "target_text": "saying",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "সে",
+     "target_text": "she was",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি জানি না সে কী বলছিল",
+     "target_text": "I don't know what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সে যা বলছিল",
+     "target_text": "what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সে বলছিল এটা",
+     "target_text": "she was saying this",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সে যা বলছিল তা মজার ছিল",
+     "target_text": "what she was saying was interesting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে বলছিল এটা সহজ",
+     "target_text": "she was saying it was easy",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই সে যা বলছিল",
+     "target_text": "that is why she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সে যা বলছিল তা শুনতে চেয়েছিলাম",
+     "target_text": "I wanted to hear what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে বলছিল এটা অস্বাভাবিক",
+     "target_text": "she was saying it was unusual",
+     "phrase_role": "use"
+    }
+   ],
+   "132:3": [
+    {
+     "known_text": "কম",
+     "target_text": "less",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "উত্তেজনাপূর্ণ",
+     "target_text": "exciting",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কম উত্তেজনাপূর্ণ",
+     "target_text": "less exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা কম উত্তেজনাপূর্ণ",
+     "target_text": "it's less exciting",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সে যা বলছিল তার চেয়ে কম উত্তেজনাপূর্ণ",
+     "target_text": "less exciting than what she was saying",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা সে যা বলছিল তার চেয়ে কম উত্তেজনাপূর্ণ",
+     "target_text": "that's less exciting than what she was saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা কম উত্তেজনাপূর্ণ",
+     "target_text": "it's less exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা কম উত্তেজনাপূর্ণ",
+     "target_text": "that is why it's less exciting",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা আগের চেয়ে কম উত্তেজনাপূর্ণ",
+     "target_text": "it's less exciting than before",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা শেষবারের চেয়ে কম উত্তেজনাপূর্ণ",
+     "target_text": "it's less exciting than last time",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 134,
+  "phrases": {
+   "134:1": [
+    {
+     "known_text": "কোনো সমস্যা না",
+     "target_text": "not a problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "একটা সমস্যা",
+     "target_text": "a problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কঠিন সমস্যা",
+     "target_text": "difficult problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা কোনো সমস্যা না",
+     "target_text": "it's not a problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা একটা সমস্যা",
+     "target_text": "that is why it's a problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা আমার জন্য কোনো সমস্যা না",
+     "target_text": "it's not a problem for me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা একটা কঠিন সমস্যা",
+     "target_text": "it's a difficult problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি মনে করো এটা একটা সমস্যা?",
+     "target_text": "do you think it's a problem?",
+     "phrase_role": "use"
+    }
+   ],
+   "134:3": [
+    {
+     "known_text": "তাদের",
+     "target_text": "them",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "সাথে",
+     "target_text": "with",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তাদের সাথে দেখা করা",
+     "target_text": "to meet with them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তাদের সাথে কাজ করা",
+     "target_text": "work with them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তাদের সাথে একসাথে",
+     "target_text": "together with them",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা কোনো সমস্যা না যখন তুমি তাদের সাথে কঠিন কিছুতে কাজ কর",
+     "target_text": "it's not a problem when you work at something difficult with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তাদের সাথে কাজ করতে চাই",
+     "target_text": "I want to work with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমরা তাদের সাথে কাজ করছি",
+     "target_text": "that is why we're working with them",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তাদের সাথে কাজ করা ভালো",
+     "target_text": "working with them is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি তাদের সাথে একসাথে কাজ করতে পারবে?",
+     "target_text": "can you work together with them?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 135,
+  "phrases": {
+   "135:1": [
+    {
+     "known_text": "জানি না",
+     "target_text": "don't know",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কেন",
+     "target_text": "why",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি জানি না কেন এটা এত ভালো",
+     "target_text": "I don't know why it's so good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি জানি না কেন",
+     "target_text": "I don't know why",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "জানি না কেন এটা",
+     "target_text": "don't know why it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি জানি না কেন এটা কঠিন",
+     "target_text": "I don't know why it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি জানি না কেন তুমি চলে যেতে চাও",
+     "target_text": "I don't know why you want to leave",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি জানি না কেন এটা সম্ভব না",
+     "target_text": "I don't know why it's not possible",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি জানি না কেন",
+     "target_text": "that is why I don't know why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি জানি না কেন তুমি মনে করছ",
+     "target_text": "I don't know why you think so",
+     "phrase_role": "use"
+    }
+   ],
+   "135:2": [
+    {
+     "known_text": "তুমি",
+     "target_text": "you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "মনে কর",
+     "target_text": "think",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি মনে কর যে এটা এত ভালো",
+     "target_text": "you think that it's so good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি মনে কর এটা",
+     "target_text": "you think that it",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি মনে কর এটা ভালো",
+     "target_text": "you think it's good",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি জানি না কেন তুমি মনে কর এটা এত ভালো",
+     "target_text": "I don't know why you think that it's so good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি মনে কর এটা সম্ভব?",
+     "target_text": "do you think it's possible?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কেন তুমি মনে কর এটা কঠিন?",
+     "target_text": "why do you think it's difficult?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই তুমি মনে কর",
+     "target_text": "that is why you think",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি মনে কর এটা সেরা পছন্দ",
+     "target_text": "you think that's the best choice",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 136,
+  "phrases": {
+   "136:1": [
+    {
+     "known_text": "অবশ্যই",
+     "target_text": "of course",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি পারবে",
+     "target_text": "you can",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "অবশ্যই তুমি যাওয়ার আগে জিজ্ঞেস করতে পারবে",
+     "target_text": "of course you can ask before I have to go",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অবশ্যই তুমি পারবে জিজ্ঞেস করতে",
+     "target_text": "of course you can ask",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অবশ্যই তুমি পারবে কারণ",
+     "target_text": "of course you can because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অবশ্যই তুমি পারবে সাহায্য করতে",
+     "target_text": "of course you can help",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অবশ্যই তুমি পারবে তাকে জিজ্ঞেস করতে",
+     "target_text": "of course you can ask her",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই অবশ্যই তুমি পারবে",
+     "target_text": "that is why of course you can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অবশ্যই তুমি পারবে ইংরেজিতে কথা বলতে",
+     "target_text": "of course you can speak in English",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "অবশ্যই তুমি পারবে এটা করতে",
+     "target_text": "of course you can do it",
+     "phrase_role": "use"
+    }
+   ],
+   "136:2": [
+    {
+     "known_text": "সে",
+     "target_text": "she's",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমার",
+     "target_text": "my",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বান্ধবী",
+     "target_text": "friend",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কারণ সে এখন আমার বান্ধবী",
+     "target_text": "because she's my friend now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সে আমার বান্ধবী কারণ",
+     "target_text": "she's my friend because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কারণ সে আমার বান্ধবী",
+     "target_text": "because she's my friend",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "অবশ্যই তুমি তাকে জিজ্ঞেস করতে পার কারণ সে আমার বান্ধবী",
+     "target_text": "of course you can ask her because she's my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার বান্ধবী এবং সেইজন্যই",
+     "target_text": "she's my friend and that is why",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার বান্ধবী তাই অবশ্যই তুমি পারবে",
+     "target_text": "she's my friend so of course you can",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি খুব খুশি সে আমার বান্ধবী",
+     "target_text": "I'm so happy she's my friend",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার বান্ধবী বলেই আমি জানতাম",
+     "target_text": "I used to know she's my friend",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 137,
+  "phrases": {
+   "137:1": [
+    {
+     "known_text": "নিখুঁত হওয়া",
+     "target_text": "to be perfect",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নিখুঁত কিছু",
+     "target_text": "something perfect",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নিখুঁত উত্তর",
+     "target_text": "perfect answer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নিখুঁত হওয়া কঠিন",
+     "target_text": "it's difficult to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি নিখুঁত না",
+     "target_text": "I'm not perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই নিখুঁত হওয়া দরকার নেই",
+     "target_text": "that is why you don't need to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিখুঁত হওয়ার চেষ্টা করছি",
+     "target_text": "I'm trying to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিখুঁত কিছু করা কঠিন",
+     "target_text": "doing something perfect is difficult",
+     "phrase_role": "use"
+    }
+   ],
+   "137:3": [
+    {
+     "known_text": "কথা",
+     "target_text": "talk",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "বলতে হয়",
+     "target_text": "to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি প্রায়ই কথা বলতে চাই",
+     "target_text": "I want to talk often",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কথা বলতে হয় এখন",
+     "target_text": "to talk now",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কথা বলতে হয় তোমার সাথে",
+     "target_text": "to talk with you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের কথা বলতে হয়",
+     "target_text": "we need to talk",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই কথা বলতে হয়",
+     "target_text": "that is why we need to talk",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কথা বলতে হয় এবং নিখুঁত হওয়া দরকার নেই",
+     "target_text": "to talk you don't need to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কথা বলতে হয় বেশি গুরুত্বপূর্ণ",
+     "target_text": "to talk is more important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি মনে করি একে অপরের সাথে কথা বলতে হয়।",
+     "target_text": "I think we need to talk to each other",
+     "phrase_role": "use"
+    }
+   ],
+   "137:4": [
+    {
+     "known_text": "প্রায়ই কথা বলতে হয়",
+     "target_text": "to talk often",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "প্রায়ই করতে হবে",
+     "target_text": "need to do often",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "প্রায়ই শুরু করা",
+     "target_text": "start often",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "প্রায়ই কথা বলতে হয় গুরুত্বপূর্ণ",
+     "target_text": "to talk often is important",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই প্রায়ই কথা বলতে হয়",
+     "target_text": "that is why you need to talk often",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিখুঁত হওয়ার চেয়ে প্রায়ই কথা বলা বেশি গুরুত্বপূর্ণ",
+     "target_text": "it's more important to talk often than to be perfect",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "প্রায়ই কথা বলতে চেষ্টা করা ভালো",
+     "target_text": "trying to talk often is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা বেশি গুরুত্বপূর্ণ প্রায়ই কথা বলা",
+     "target_text": "it's more important to talk often",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 138,
+  "phrases": {
+   "138:1": [
+    {
+     "known_text": "এখানে দেখা করা",
+     "target_text": "meet here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এখানে কথা বলা",
+     "target_text": "speak here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এখানে থাকা",
+     "target_text": "stay here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা এখানে দেখা করতে চাই",
+     "target_text": "we want to meet here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমরা এখানে আছি",
+     "target_text": "that is why we're here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি এখানে আছ?",
+     "target_text": "are you here?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এখানে থাকা ভালো",
+     "target_text": "it's good to be here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এখানে শুরু করা ভালো",
+     "target_text": "starting here is good",
+     "phrase_role": "use"
+    }
+   ],
+   "138:2": [
+    {
+     "known_text": "আমাদের",
+     "target_text": "us",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "সাথে",
+     "target_text": "with",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমাদের সাথে",
+     "target_text": "with us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের সাথে দেখা করা",
+     "target_text": "meet with us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের সাথে কথা বলা",
+     "target_text": "speak with us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি কি আমাদের সাথে দেখা করতে চাও?",
+     "target_text": "do you want to meet with us?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমাদের সাথে কথা বলতে চেয়েছিল",
+     "target_text": "she wanted to speak with us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমাদের সাথে দেখা করো",
+     "target_text": "that is why meet with us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা চাই তুমি আমাদের সাথে কাজ করো",
+     "target_text": "we want you to work with us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি এখানে আমাদের সাথে আছ?",
+     "target_text": "are you here with us?",
+     "phrase_role": "use"
+    }
+   ],
+   "138:3": [
+    {
+     "known_text": "দেখা করতে",
+     "target_text": "meet",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "চেয়েছিল",
+     "target_text": "wanted to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমার বন্ধু দেখা করতে চেয়েছিল",
+     "target_text": "my friend wanted to meet",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাদের সাথে দেখা করতে চেয়েছিল",
+     "target_text": "wanted to meet us",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এখানে দেখা করতে চেয়েছিল",
+     "target_text": "wanted to meet here",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এখানেই আমার বন্ধু আমাদের সাথে দেখা করতে চেয়েছিল",
+     "target_text": "this was where my friend wanted to meet us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সে আমার সাথে দেখা করতে চেয়েছিল",
+     "target_text": "she wanted to meet me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা এখানে দেখা করতে চেয়েছিলাম",
+     "target_text": "we wanted to meet here",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই সে আমাদের সাথে দেখা করতে চেয়েছিল",
+     "target_text": "that is why he wanted to meet with us",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তোমার সাথে দেখা করতে চেয়েছিলাম",
+     "target_text": "I wanted to meet you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 139,
+  "phrases": {
+   "139:1": [
+    {
+     "known_text": "আমি দুঃখিত",
+     "target_text": "I'm sorry",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "দুঃখিত যে",
+     "target_text": "sorry that",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দুঃখিত কারণ",
+     "target_text": "I'm sorry because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেইজন্যই আমি দুঃখিত",
+     "target_text": "that is why I'm sorry",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত এটা শুনে",
+     "target_text": "I'm sorry to hear that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে",
+     "target_text": "I'm sorry that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে এটা কঠিন",
+     "target_text": "I'm sorry that it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত কিন্তু আমাকে চলে যেতে হবে",
+     "target_text": "I'm sorry but I need to leave",
+     "phrase_role": "use"
+    }
+   ],
+   "139:2": [
+    {
+     "known_text": "তাড়াতাড়ি চলে যাওয়া",
+     "target_text": "leave early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তাড়াতাড়ি শুরু করা",
+     "target_text": "start early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এত তাড়াতাড়ি",
+     "target_text": "so early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাকে তাড়াতাড়ি চলে যেতে হবে",
+     "target_text": "I need to leave early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই তাড়াতাড়ি শুরু করা দরকার",
+     "target_text": "that is why you need to start early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এত তাড়াতাড়ি কেন চলে যাচ্ছ?",
+     "target_text": "why are you going so early?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তাড়াতাড়ি শেষ করতে চাই",
+     "target_text": "I want to finish early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তাড়াতাড়ি দেখা করা ভালো",
+     "target_text": "it's good to meet early",
+     "phrase_role": "use"
+    }
+   ],
+   "139:3": [
+    {
+     "known_text": "দুঃখিত",
+     "target_text": "sorry",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "যে",
+     "target_text": "that",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে আমি আরও খারাপ করছি",
+     "target_text": "I'm sorry that I'm doing worse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে আমাকে চলে যেতে হবে",
+     "target_text": "I'm sorry that I need to leave",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে এত তাড়াতাড়ি",
+     "target_text": "I'm sorry that so early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে আমাকে এত তাড়াতাড়ি চলে যেতে হবে",
+     "target_text": "I'm sorry that I need to leave so early",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে এটা কঠিন",
+     "target_text": "I'm sorry that it's difficult",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি দুঃখিত যে",
+     "target_text": "that is why I'm sorry that",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে আমরা একসাথে কাজ করতে পারব না",
+     "target_text": "I'm sorry that we can't work together",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে এত তাড়াতাড়ি যেতে হচ্ছে",
+     "target_text": "I'm sorry that I need to go so early",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 140,
+  "phrases": {
+   "140:1": [
+    {
+     "known_text": "দেখাতে",
+     "target_text": "show",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "চেষ্টা করছ",
+     "target_text": "trying to",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি আমাকে কী দেখাতে চেষ্টা করছ",
+     "target_text": "what you're trying to show me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি দেখাতে চেষ্টা করছ",
+     "target_text": "you're trying to show",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমাকে দেখাতে চেষ্টা করছ",
+     "target_text": "trying to show me",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তুমি কী দেখাতে চেষ্টা করছ?",
+     "target_text": "what are you trying to show?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি আমাকে দেখাতে চেষ্টা করছ",
+     "target_text": "you're trying to show me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই দেখাতে চেষ্টা করছি",
+     "target_text": "that is why I'm trying to show",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তোমাকে কিছু দেখাতে চেষ্টা করছি",
+     "target_text": "I'm trying to show you something",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি দেখাতে চেষ্টা করছ?",
+     "target_text": "are you trying to show?",
+     "phrase_role": "use"
+    }
+   ],
+   "140:2": [
+    {
+     "known_text": "দেখতে",
+     "target_text": "see",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "পাচ্ছি না",
+     "target_text": "can't",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "দেখতে পাচ্ছি না",
+     "target_text": "can't see",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দেখতে পাচ্ছি না",
+     "target_text": "I can't see",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "দেখতে পাচ্ছি না কী",
+     "target_text": "can't see what",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দেখতে পাচ্ছি না তুমি",
+     "target_text": "I can't see what you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি দেখতে পাচ্ছি না তুমি আমাকে কী দেখাতে চেষ্টা করছ",
+     "target_text": "I can't see what you're trying to show me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি দেখতে পাচ্ছি না",
+     "target_text": "that is why I can't see",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এখন দেখতে পাচ্ছি না",
+     "target_text": "I can't see now",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দেখতে পাচ্ছি না তুমি কী বলছ",
+     "target_text": "I can't see what you're saying",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি দুঃখিত যে আমি দেখতে পাচ্ছি না",
+     "target_text": "I'm sorry that I can't see",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 141,
+  "phrases": {
+   "141:1": [
+    {
+     "known_text": "কোনো",
+     "target_text": "no",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "সমস্যা নেই",
+     "target_text": "problem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কোনো সমস্যা নেই, আমরা বন্ধু",
+     "target_text": "no problem we're friends",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা কোনো সমস্যা নেই",
+     "target_text": "that's no problem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "তোমার জন্য কোনো সমস্যা নেই",
+     "target_text": "no problem for you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমার জন্য কোনো সমস্যা নেই",
+     "target_text": "no problem for me",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা করা কোনো সমস্যা নেই",
+     "target_text": "no problem doing this",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা কোনো সমস্যা নেই",
+     "target_text": "that is why it's no problem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "কোনো সমস্যা নেই, আমরা করতে পারব",
+     "target_text": "no problem, we can do it",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তোমার জন্য এটা কোনো সমস্যা নেই",
+     "target_text": "it's no problem for you",
+     "phrase_role": "use"
+    }
+   ],
+   "141:2": [
+    {
+     "known_text": "সব",
+     "target_text": "everything",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ঠিক আছে",
+     "target_text": "is okay",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "তুমি জানো সব ঠিক আছে",
+     "target_text": "you know everything is okay",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আজ সব ঠিক আছে",
+     "target_text": "everything is okay today",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সব ঠিক আছে কারণ",
+     "target_text": "everything is okay because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "কোনো সমস্যা নেই, সব ঠিক আছে",
+     "target_text": "no problem, everything is okay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই সব ঠিক আছে",
+     "target_text": "that is why everything is okay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি মনে করি সব ঠিক আছে",
+     "target_text": "I think everything is okay",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এখন সব ঠিক আছে কারণ",
+     "target_text": "everything is okay now because",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সব ঠিক আছে তোমার জন্য",
+     "target_text": "everything is okay for you",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 142,
+  "phrases": {
+   "142:1": [
+    {
+     "known_text": "কৃতজ্ঞ তোমার কাছে",
+     "target_text": "grateful to you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সাহায্যের জন্য কৃতজ্ঞ",
+     "target_text": "grateful for helping",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি কৃতজ্ঞ কারণ",
+     "target_text": "I'm grateful because",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সেইজন্যই আমি কৃতজ্ঞ",
+     "target_text": "that is why I'm grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তোমার কাছে কৃতজ্ঞ",
+     "target_text": "I'm grateful to you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সাহায্যের জন্য কৃতজ্ঞ",
+     "target_text": "I'm grateful for helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি এত কৃতজ্ঞ",
+     "target_text": "I'm so grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি কৃতজ্ঞ কারণ তুমি সাহায্য করছ",
+     "target_text": "I'm grateful because you're helping",
+     "phrase_role": "use"
+    }
+   ],
+   "142:2": [
+    {
+     "known_text": "তোমার",
+     "target_text": "of you",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "কাছ থেকে খুব ভালো",
+     "target_text": "very kind",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি মনে করি সেটা তোমার কাছ থেকে খুব ভালো",
+     "target_text": "I think that's very kind of you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে তোমার কাছ থেকে খুব ভালো",
+     "target_text": "definitely very kind of you",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা তোমার কাছ থেকে খুব ভালো এবং আমি কৃতজ্ঞ",
+     "target_text": "that's very kind of you and I'm grateful",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই এটা তোমার কাছ থেকে খুব ভালো",
+     "target_text": "that is why it's very kind of you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা তোমার কাছ থেকে খুব ভালো, আমি জানি",
+     "target_text": "it's very kind of you, I know",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা তোমার কাছ থেকে খুব ভালো এবং সাহায্য করার জন্য আমি কৃতজ্ঞ",
+     "target_text": "that's very kind of you and I'm grateful for helping",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "নিশ্চিতভাবে এটা তোমার কাছ থেকে খুব ভালো",
+     "target_text": "it's definitely very kind of you",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "এটা তোমার কাছ থেকে খুব ভালো",
+     "target_text": "that's very kind of you",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 143,
+  "phrases": {
+   "143:1": [
+    {
+     "known_text": "আগে জেগে উঠতে",
+     "target_text": "to wake earlier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আগে কথা বলছিলাম",
+     "target_text": "were talking about earlier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আগে বলেছিলাম",
+     "target_text": "said earlier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা আগে কথা বলেছিলাম",
+     "target_text": "we talked about this earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আগে",
+     "target_text": "that is why earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি আগে বলেছিলাম",
+     "target_text": "I said it earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা আগে শুরু করেছিলাম",
+     "target_text": "we started earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আগে তুমি এটা বলেছিলে",
+     "target_text": "you said this earlier",
+     "phrase_role": "use"
+    }
+   ],
+   "143:2": [
+    {
+     "known_text": "কথা বলছিলাম",
+     "target_text": "talking about",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমরা",
+     "target_text": "were",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমরা গতকাল কথা বলছিলাম",
+     "target_text": "we were talking about yesterday",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা কথা বলছিলাম",
+     "target_text": "we were talking about",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমরা আগে কথা বলছিলাম",
+     "target_text": "we were talking about earlier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "এটা একই রকম বিষয় যা আমরা আগে কথা বলছিলাম",
+     "target_text": "it's the same thing as we were talking about earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা যা কথা বলছিলাম",
+     "target_text": "what we were talking about",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমরা কথা বলছিলাম",
+     "target_text": "that is why we were talking about",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমরা আগে কথা বলছিলাম এটা নিয়ে",
+     "target_text": "we were talking about this earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "তুমি কি জান আমরা কথা বলছিলাম কী নিয়ে?",
+     "target_text": "do you know what we were talking about?",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 144,
+  "phrases": {
+   "144:1": [
+    {
+     "known_text": "এই সকালে",
+     "target_text": "this morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সকালে কথা বলা",
+     "target_text": "speak in the morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সকালে শুরু করা",
+     "target_text": "start in the morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "সকালে আমি উত্তেজিত",
+     "target_text": "I'm excited in the morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি সকালে শুরু করি",
+     "target_text": "that is why I start in the morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সকালে শেখা ভালো",
+     "target_text": "learning in the morning is good",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি সকালে কথা বলতে চাই",
+     "target_text": "I want to speak in the morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আজ সকালে সব ঠিক আছে",
+     "target_text": "everything is okay this morning",
+     "phrase_role": "use"
+    }
+   ],
+   "144:2": [
+    {
+     "known_text": "জেগে",
+     "target_text": "woke",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ছিলাম",
+     "target_text": "I",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "আমি এত তাড়াতাড়ি জেগেছিলাম",
+     "target_text": "I woke so early",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি আগে জেগেছিলাম",
+     "target_text": "I woke earlier",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি সকালে জেগেছিলাম",
+     "target_text": "I woke in the morning",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "আমি আজ সকালে জেগেছিলাম",
+     "target_text": "I woke this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "সেইজন্যই আমি আগে জেগেছিলাম",
+     "target_text": "that is why I woke earlier",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি যেতে চেয়েছিলাম তার চেয়ে আগে জেগেছিলাম",
+     "target_text": "I woke earlier than I wanted to",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আজ সকালে আমি যেতে চেয়েছিলাম তার চেয়ে আগে জেগেছিলাম",
+     "target_text": "I woke earlier than I wanted to this morning",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "আমি তাড়াতাড়ি জেগেছিলাম",
+     "target_text": "I woke up early",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

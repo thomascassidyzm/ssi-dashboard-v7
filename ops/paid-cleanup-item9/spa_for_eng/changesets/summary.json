@@ -1,0 +1,215 @@
+{
+ "course": "spa_for_eng",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {
+  "2-free": 50
+ },
+ "backfill": {
+  "insert": 0,
+  "rewrite": 0
+ },
+ "deletes": {
+  "free": 50,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 0,
+  "lego_update": 0,
+  "insert": 0,
+  "rewrite": 0,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [
+   {
+    "lego": "S0095L02",
+    "deletes": 18
+   },
+   {
+    "lego": "S0112L04",
+    "deletes": 1
+   },
+   {
+    "lego": "S0121L01",
+    "deletes": 3
+   },
+   {
+    "lego": "S0128L02",
+    "deletes": 3
+   },
+   {
+    "lego": "S0128L03",
+    "deletes": 2
+   },
+   {
+    "lego": "S0129L04",
+    "deletes": 2
+   },
+   {
+    "lego": "S0133L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0200L03",
+    "deletes": 3
+   },
+   {
+    "lego": "S0203L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0252L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0253L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0283L02",
+    "deletes": 2
+   },
+   {
+    "lego": "S0440L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0462L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0491L03",
+    "deletes": 1
+   },
+   {
+    "lego": "S0518L02",
+    "deletes": 1
+   },
+   {
+    "lego": "S0521L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0530L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0532L01",
+    "deletes": 2
+   },
+   {
+    "lego": "S0538L01",
+    "deletes": 1
+   },
+   {
+    "lego": "S0573L04",
+    "deletes": 1
+   }
+  ],
+  "drift": [
+   {
+    "row": "S0262L03U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0272L02U14",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0272L03U12",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0273L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0277L01U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0277L03U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0281L01B04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0281L02U01",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0282L02U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0283L03U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L01B03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L01U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L01U07",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L01U15",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L02U02",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L02U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L02U09",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0291L02U11",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0299L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0300L02U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0403L01U05",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0406L02U06",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0410L01U04",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0428L01U03",
+    "why": "row not in the live basket"
+   },
+   {
+    "row": "S0545L01U02",
+    "why": "row not in the live basket"
+   }
+  ],
+  "error": []
+ },
+ "warnings": 34
+}

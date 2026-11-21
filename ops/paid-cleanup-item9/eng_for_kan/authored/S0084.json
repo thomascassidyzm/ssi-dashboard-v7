@@ -1,0 +1,38 @@
+{
+ "seed": 84,
+ "legos": {
+  "L01": {
+   "insert": [],
+   "update": {
+    "U01": [
+     "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನಾನು ಚಿಂತಿಸಲ್ಲ",
+     "I don't worry about my friend"
+    ],
+    "U03": [
+     "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನಿಮಗೆ ಏನು ಗೊತ್ತು?",
+     "what do you know about my friend?"
+    ],
+    "U04": [
+     "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನೀವು ಹೇಳಿದ್ದು ನನಗೆ ಅರ್ಥ ಆಗ್ತಿಲ್ಲ",
+     "I don't understand what you said about my friend"
+    ],
+    "U05": [
+     "ನನ್ನ ಸ್ನೇಹಿತನ ಬಗ್ಗೆ ನಿಮಗೆ ಯಾಕೆ ತಿಳಿಯಬೇಕು?",
+     "why do you want to know about my friend?"
+    ]
+   },
+   "keep": []
+  },
+  "L03": {
+   "insert": [],
+   "update": {
+    "U03": [
+     "ನೀವು ಹೇಳಿದ್ದಕ್ಕೆ ನಾವು ಒಪ್ಪಲ್ಲ",
+     "we don't agree with what you said"
+    ]
+   },
+   "keep": []
+  }
+ },
+ "notes": "item 9 back-fill: planned-delete rows rewritten in place from taught words"
+}

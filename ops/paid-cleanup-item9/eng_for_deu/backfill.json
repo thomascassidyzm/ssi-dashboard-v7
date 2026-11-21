@@ -1,0 +1,711 @@
+{
+ "course": "eng_for_deu",
+ "at": "2026-11-18T18:40:47.450Z",
+ "note": "Rows NOT in the delete plan. why=floor: deleting them drops a NEW LEGO below the BUILD/USE floor, so each needs an authored reword from taught chunks (K15 \"edit\"); other reasons: held as stated.",
+ "shortfall": {
+  "S0020L01": {
+   "lego": "du möchtest | you want",
+   "before": "ok",
+   "delete": 2,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 2,
+   "avg_target_chars": 25,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0020L01U03",
+     "role": "use",
+     "known": "du möchtest morgen mit uns sprechen",
+     "target": "you want to speak with us tomorrow",
+     "untaught": [
+      "us"
+     ]
+    },
+    {
+     "row": "S0020L01U04",
+     "role": "use",
+     "known": "du möchtest uns heute Abend um sechs Uhr treffen",
+     "target": "you want to meet us at six o'clock this evening",
+     "untaught": [
+      "us"
+     ]
+    }
+   ]
+  },
+  "S0025L02": {
+   "lego": "helfen | to help",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 11
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 10
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 20,
+   "avg_known_chars": 21,
+   "rows": [
+    {
+     "row": "S0025L02U02",
+     "role": "use",
+     "known": "er möchte uns helfen",
+     "target": "he wants to help us",
+     "untaught": [
+      "us"
+     ]
+    }
+   ]
+  },
+  "S0026L03": {
+   "lego": "fast bereit zu gehen | nearly ready to go",
+   "before": "already under floor",
+   "delete": 3,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 1
+   },
+   "author_build": 0,
+   "author_use": 3,
+   "avg_target_chars": 24,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0026L03U02",
+     "role": "use",
+     "known": "sie sagt, sie ist fast bereit zu gehen",
+     "target": "she says she is nearly ready to go",
+     "untaught": [
+      "says"
+     ]
+    },
+    {
+     "row": "S0026L03U03",
+     "role": "use",
+     "known": "er sagt, er ist fast bereit zu gehen",
+     "target": "he says he is nearly ready to go",
+     "untaught": [
+      "says"
+     ]
+    },
+    {
+     "row": "S0026L03U06",
+     "role": "use",
+     "known": "ich denke, sie ist fast bereit zu gehen",
+     "target": "I think she is nearly ready to go",
+     "untaught": [
+      "think"
+     ]
+    }
+   ]
+  },
+  "S0027L01": {
+   "lego": "ich mag es nicht | I don't like it",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 0,
+    "u": 0
+   },
+   "counted_after": {
+    "b": 0,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 25,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0027L01U05",
+     "role": "use",
+     "known": "ich mag es nicht, mit Leuten zu sprechen, die mich nicht verstehen",
+     "target": "I don't like to speak with people who don't understand me",
+     "untaught": [
+      "understand"
+     ]
+    }
+   ]
+  },
+  "S0032L02": {
+   "lego": "zeigen | to show",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 24,
+   "rows": [
+    {
+     "row": "S0032L02U02",
+     "role": "use",
+     "known": "er wollte uns etwas zeigen",
+     "target": "he wanted to show us something",
+     "untaught": [
+      "us"
+     ]
+    }
+   ]
+  },
+  "S0035L01": {
+   "lego": "nichts | anything",
+   "before": "ok",
+   "delete": 1,
+   "counted_before": {
+    "b": 3,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 3,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 33,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0035L01U04",
+     "role": "use",
+     "known": "ich wollte nichts fragen",
+     "target": "I didn't want to ask anything",
+     "untaught": [
+      "didn't"
+     ]
+    }
+   ]
+  },
+  "S0038L02": {
+   "lego": "ungefähr | about",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 35,
+   "avg_known_chars": 38,
+   "rows": [
+    {
+     "row": "S0038L02U06",
+     "role": "use",
+     "known": "ich denke, dass ich seit ungefähr einer Woche lerne",
+     "target": "I think that I've been learning for about a week",
+     "untaught": [
+      "that",
+      "week"
+     ]
+    }
+   ]
+  },
+  "S0038L03": {
+   "lego": "einer Woche | a week",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0038L03U06",
+     "role": "use",
+     "known": "ich lerne seit ungefähr einer Woche, und es macht Spaß",
+     "target": "I've been learning for about a week, and it is fun",
+     "untaught": [
+      "fun"
+     ]
+    }
+   ]
+  },
+  "S0043L01": {
+   "lego": "ich habe nicht darüber nachgedacht | I wasn't thinking about it",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 1,
+    "u": 1
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 0
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 29,
+   "avg_known_chars": 37,
+   "rows": [
+    {
+     "row": "S0043L01U06",
+     "role": "use",
+     "known": "es tut mir leid, ich habe nicht darüber nachgedacht",
+     "target": "I'm sorry, I wasn't thinking about it",
+     "untaught": [
+      "sorry"
+     ]
+    }
+   ]
+  },
+  "S0043L02": {
+   "lego": "wie ich antworten soll | how to answer",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 26,
+   "avg_known_chars": 40,
+   "rows": [
+    {
+     "row": "S0043L02U04",
+     "role": "use",
+     "known": "ich habe angefangen zu verstehen, wie ich antworten soll",
+     "target": "I started to understand how to answer",
+     "untaught": [
+      "understand"
+     ]
+    }
+   ]
+  },
+  "S0046L02": {
+   "lego": "ich mache mir keine Sorgen | I don't worry",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 30,
+   "avg_known_chars": 45,
+   "rows": [
+    {
+     "row": "S0046L02B02",
+     "role": "build",
+     "known": "ich mache mir keine Sorgen darüber",
+     "target": "I don't worry about that",
+     "untaught": [
+      "that"
+     ]
+    }
+   ]
+  },
+  "S0046L03": {
+   "lego": "darum, Fehler zu machen | about making mistakes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 39,
+   "avg_known_chars": 53,
+   "rows": [
+    {
+     "row": "S0046L03U06",
+     "role": "use",
+     "known": "ich denke, es ist gut, sich keine Sorgen darum zu machen, Fehler zu machen",
+     "target": "I think it's a good thing to not worry about making mistakes",
+     "untaught": [
+      "good",
+      "thing"
+     ]
+    }
+   ]
+  },
+  "S0047L02": {
+   "lego": "ich denke | I think",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0047L02U06",
+     "role": "use",
+     "known": "ich denke, es ist wichtig, sich Zeit zu nehmen",
+     "target": "I think it's important to take time",
+     "untaught": [
+      "important",
+      "take"
+     ]
+    }
+   ]
+  },
+  "S0047L04": {
+   "lego": "Fehler zu machen | to make mistakes",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 37,
+   "avg_known_chars": 39,
+   "rows": [
+    {
+     "row": "S0047L04U06",
+     "role": "use",
+     "known": "es ist mir egal, Fehler zu machen",
+     "target": "I don't care about making mistakes",
+     "untaught": [
+      "care"
+     ]
+    }
+   ]
+  },
+  "S0048L01": {
+   "lego": "es ist mir egal | I don't care about",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 40,
+   "avg_known_chars": 41,
+   "rows": [
+    {
+     "row": "S0048L01U06",
+     "role": "use",
+     "known": "es ist mir egal, ob ich mich verbessern muss",
+     "target": "I don't care about whether I need to improve",
+     "untaught": [
+      "whether"
+     ]
+    }
+   ]
+  },
+  "S0050L03": {
+   "lego": "so schnell wie möglich fertig zu werden | to finish as quickly as possible",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 0,
+   "avg_target_chars": 43,
+   "avg_known_chars": 53,
+   "rows": [
+    {
+     "row": "S0050L03U05",
+     "role": "use",
+     "known": "es ist mir egal, so schnell wie möglich fertig zu werden",
+     "target": "I don't care about finishing as quickly as possible",
+     "untaught": [
+      "finishing"
+     ]
+    }
+   ]
+  },
+  "S0071L01": {
+   "lego": "wir wollten nicht, dass jemand | we didn't want to let anyone",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 30,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0071L01U05",
+     "role": "use",
+     "known": "wir wollten nicht, dass jemand mit uns spricht",
+     "target": "we didn't want to let anyone speak with us",
+     "untaught": [
+      "us"
+     ]
+    }
+   ]
+  },
+  "S0084L01": {
+   "lego": "ich stimme nicht dem zu | I don't agree with",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 4
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 3
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 34,
+   "rows": [
+    {
+     "row": "S0084L01U06",
+     "role": "use",
+     "known": "es tut mir leid, ich stimme nicht dem zu, was du gesagt hast",
+     "target": "I'm sorry, I don't agree with what you said",
+     "untaught": [
+      "sorry"
+     ]
+    }
+   ]
+  },
+  "S0116L01": {
+   "lego": "die beste Wahl | the best choice",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 29,
+   "rows": [
+    {
+     "row": "S0116L01U04",
+     "role": "use",
+     "known": "ich denke, das ist die beste Wahl für uns",
+     "target": "I think this is the best choice for us",
+     "untaught": [
+      "us"
+     ]
+    }
+   ]
+  },
+  "S0207L02": {
+   "lego": "was du tun musstest | what you needed to do",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 25,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0207L02U02",
+     "role": "use",
+     "known": "niemand wusste, was du tun musstest",
+     "target": "nobody knew what you needed to do",
+     "untaught": [
+      "knew"
+     ]
+    }
+   ]
+  },
+  "S0208L02": {
+   "lego": "ich wollte dich nicht fragen | I didn't want to ask you",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 27,
+   "avg_known_chars": 32,
+   "rows": [
+    {
+     "row": "S0208L02U04",
+     "role": "use",
+     "known": "ich wollte dich nicht fragen, weil ich es selbst versuchen wollte",
+     "target": "I didn't want to ask you because I wanted to try it myself",
+     "untaught": [
+      "myself"
+     ]
+    }
+   ]
+  },
+  "S0211L02": {
+   "lego": "dass sie nicht wollten | that they didn't want to",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 28,
+   "avg_known_chars": 30,
+   "rows": [
+    {
+     "row": "S0211L02U05",
+     "role": "use",
+     "known": "niemand wusste, dass sie nicht mit uns sprechen wollten",
+     "target": "nobody knew that they didn't want to speak with us",
+     "untaught": [
+      "knew"
+     ]
+    }
+   ]
+  },
+  "S0263L01": {
+   "lego": "wen du meinst | who you mean",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 2,
+    "u": 4
+   },
+   "author_build": 0,
+   "author_use": 1,
+   "avg_target_chars": 24,
+   "avg_known_chars": 27,
+   "rows": [
+    {
+     "row": "S0263L01U02",
+     "role": "use",
+     "known": "ich fand, dass niemand wusste, wen du meinst",
+     "target": "I thought that nobody knew who you mean",
+     "untaught": [
+      "knew"
+     ]
+    }
+   ]
+  },
+  "S0266L01": {
+   "lego": "ein alter Freund meines Vaters | an old friend of my father",
+   "before": "already under floor",
+   "delete": 1,
+   "counted_before": {
+    "b": 2,
+    "u": 5
+   },
+   "counted_after": {
+    "b": 1,
+    "u": 5
+   },
+   "author_build": 1,
+   "author_use": 0,
+   "avg_target_chars": 36,
+   "avg_known_chars": 41,
+   "rows": [
+    {
+     "row": "S0266L01B03",
+     "role": "build",
+     "known": "ich kannte einen alten Freund meines Vaters",
+     "target": "I knew an old friend of my father",
+     "untaught": [
+      "knew"
+     ]
+    }
+   ]
+  }
+ },
+ "held": [],
+ "errors": []
+}

@@ -1,0 +1,680 @@
+{
+"14": {
+"at": "2026-11-19T11:05:51Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "तुम्ही दिवसभर इंग्रजी बोलता का?",
+"legos": [
+{
+"id": "S0014L01",
+"idx": 1,
+"is_new": true,
+"known": "दिवसभर",
+"phrases": [
+{
+"id": "6e3f2955-d23a-4317-b438-cfe083e9f120",
+"ka": "3665a66f-1296-47f4-8731-e95a5dfe4d43",
+"known": "दिवसभर",
+"pos": 0,
+"t1": "55b5931b-3f31-4835-9344-8d358ebdee73",
+"t2": "fa6b35ad-e56b-47ce-afef-2e51f09d3129",
+"target": "all day",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0014L01B01",
+"ka": "3665a66f-1296-47f4-8731-e95a5dfe4d43",
+"known": "दिवसभर",
+"pos": 1,
+"t1": "55b5931b-3f31-4835-9344-8d358ebdee73",
+"t2": "fa6b35ad-e56b-47ce-afef-2e51f09d3129",
+"target": "all day",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0014L01B02",
+"ka": "7f628139-7f66-4bea-93dd-07e97c25c72f",
+"known": "दिवसभर इंग्रजी बोलतो",
+"pos": 2,
+"t1": "eea038d8-e234-48e2-a93d-dbda290d4184",
+"t2": "ac4da1f8-5f92-4aeb-957d-43e8dfcb2e1c",
+"target": "speak English all day",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0014L01B03",
+"ka": "ea09dbde-a655-4f24-badf-64b0e0c2f073",
+"known": "दिवसभर सराव करायचं",
+"pos": 3,
+"t1": "67044277-cd03-4cdb-8cb7-6b95d8862ec8",
+"t2": "f555ead4-d093-4031-b137-68ff8a77fef7",
+"target": "to practise all day",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0014L01U01",
+"ka": "59fa8e74-842b-4d58-a8d1-2f2d04d82c38",
+"known": "मला दिवसभर इंग्रजी बोलायचं आहे",
+"pos": 4,
+"t1": "4fd0a42b-0f42-472a-9d81-41f1114cabcd",
+"t2": "f630f86e-794e-4857-80ea-17c9a95ed4f9",
+"target": "I want to speak English all day",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L01U02",
+"ka": "911ce73d-6c82-41b9-8d63-48d87b364843",
+"known": "मी दिवसभर खूप छान बोलण्याचा प्रयत्न करतोय",
+"pos": 5,
+"t1": "f6f61ef0-5a45-48ad-a903-5f62aacebffc",
+"t2": "2fa0b97b-3df8-4bc8-9f8b-4e3963c8f7b9",
+"target": "I'm trying to speak very well all day",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L01U03",
+"ka": "757cfef9-99c0-422d-b937-ed9355b942a9",
+"known": "मला दिवसभर जमेल तितका प्रयत्न करायचा आहे",
+"pos": 6,
+"t1": "013e9822-f1d5-4d13-b3fd-721305b1e357",
+"t2": "1a416694-d23e-4876-b2eb-cd1ccbcbfb69",
+"target": "I want to try as hard as I can all day",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L01U04",
+"ka": "eafa22f7-ab6f-40b9-96ef-79316248f18b",
+"known": "मला खात्री नाही की मी दिवसभर बोलू शकतो",
+"pos": 7,
+"t1": "6704cef8-0f98-4f35-96f4-3c7b8fa53ee5",
+"t2": "dca1aca1-626d-429c-a449-82db9cb82be1",
+"target": "I'm not sure if I can speak all day",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L01U05",
+"ka": "fae18931-ab5f-433b-93a0-0f414eae1bda",
+"known": "मी दिवसभर थोडं इंग्रजी बोलण्याचा प्रयत्न करणार आहे",
+"pos": 8,
+"t1": "9cc40c22-8f5e-4865-b60d-7679ac2f9905",
+"t2": "8e94dfc4-d28c-4ab5-9f1b-38f818978599",
+"target": "I'm going to try to speak a little English all day",
+"type": "use"
+}
+],
+"target": "all day",
+"type": "A"
+},
+{
+"id": "S0014L02",
+"idx": 2,
+"is_new": true,
+"known": "तुम्ही ... का",
+"phrases": [
+{
+"id": "ac392f2e-420f-4722-91da-432e381530fb",
+"ka": "bd3712e9-b932-47d2-bfe7-8488a3b17672",
+"known": "तुम्ही ... का",
+"pos": 0,
+"t1": "e0959625-6ecb-4c8e-9b26-c222702c3376",
+"t2": "78f8474c-83c6-43d0-994a-a3ee76e06daf",
+"target": "do you",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0014L02C01",
+"ka": "9c159024-18ff-429d-9d4c-211ce205f4c5",
+"known": "तुम्ही",
+"pos": 1,
+"t1": "7dc0ca4a-6487-49d2-a850-256d358c2632",
+"t2": "5be565e7-cdb4-45c0-b239-cddae9d8109c",
+"target": "you",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0014L02C02",
+"ka": "2c69c201-bc7f-4670-b13f-cf71aaa98853",
+"known": "का",
+"pos": 2,
+"t1": "e1f47145-8426-4b52-9a9c-5b29f82980da",
+"t2": "3012d4e3-39b6-43f6-bbe0-1141032fa0a1",
+"target": "do",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0014L02B01",
+"ka": "bd3712e9-b932-47d2-bfe7-8488a3b17672",
+"known": "तुम्ही ... का",
+"pos": 3,
+"t1": "e0959625-6ecb-4c8e-9b26-c222702c3376",
+"t2": "78f8474c-83c6-43d0-994a-a3ee76e06daf",
+"target": "do you",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0014L02B02",
+"ka": "c25fa142-ab05-40f5-b32b-b6efabeac7e6",
+"known": "तुम्ही दिवसभर बोलता का?",
+"pos": 4,
+"t1": "a36afcb9-0e9b-4887-8d93-67298cfdec6e",
+"t2": "98fe38bf-dc60-417e-9c72-ee72f0fec236",
+"target": "do you speak all day?",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0014L02B03",
+"ka": "6ea1b878-ff77-40bc-a0ad-ceb03e770fcd",
+"known": "तुम्ही इंग्रजी बोलता का?",
+"pos": 5,
+"t1": "3a7fe938-bacd-4fd7-ad7a-c53ad42d6d06",
+"t2": "518b0544-7e63-4438-9ea2-4841e5aa63ee",
+"target": "do you speak English?",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0014L02U01",
+"ka": "e5de6fc1-a530-4860-82c8-d9bd65db8412",
+"known": "तुम्ही दिवसभर इंग्रजी बोलता का",
+"pos": 6,
+"t1": "bfe30c32-99c2-416f-88f1-874c8dacd575",
+"t2": "57051e32-a15e-4356-9eec-6e2dc69a03a3",
+"target": "do you speak English all day?",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L02U02",
+"ka": "5e06dd5a-b53a-45b7-9d76-18a8b5f47b9c",
+"known": "तुम्ही शक्य तितक्या वेळा इंग्रजी बोलता का",
+"pos": 7,
+"t1": "2c9c553c-01aa-42e0-a6ba-6865b4e280d8",
+"t2": "a8c3bccb-08ac-48a9-a28a-1d9be9a2fdad",
+"target": "do you speak English as often as possible?",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L02U03",
+"ka": "fd9746a7-9669-4ae8-9a82-305d61644f3a",
+"known": "तुम्ही आज इंग्रजी बोलता का",
+"pos": 8,
+"t1": "4b43bcab-c485-46af-9190-c0dd6b98a6fb",
+"t2": "84c779b8-63cf-4e4f-9451-3288e6c2836a",
+"target": "do you speak English today?",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0014L02U05",
+"ka": "00e37d52-1efc-49fc-84c9-e1df88b6f0ab",
+"known": "तुम्ही थोडं इंग्रजी बोलता का",
+"pos": 10,
+"t1": "034d1e4c-8fce-4b74-9b81-6b49789f9622",
+"t2": "55ade212-157f-4029-a186-51446dd2e5ee",
+"target": "do you speak a little English?",
+"type": "use"
+}
+],
+"target": "do you",
+"type": "M"
+}
+],
+"status": "released",
+"target": "Do you speak English all day?"
+},
+"485": {
+"at": "2026-11-19T11:05:51Z",
+"copy_db": "ssi_copy_20261119t033000z",
+"known": "दूर निघून जाण्यापेक्षा मला जास्त आनंद दुसऱ्या कशानेच होणार नाही.",
+"legos": [
+{
+"id": "S0485L01",
+"idx": 1,
+"is_new": true,
+"known": "दूर निघून जाणे",
+"phrases": [
+{
+"id": "b9bf0a16-c3cd-4bc7-a2b7-d3bcb5d8b09d",
+"ka": "dd6ba3f6-ad66-4a3a-adf0-f57e0dfa0f7c",
+"known": "दूर निघून जाणे",
+"pos": 0,
+"t1": "e0649e9f-e8af-4e35-992b-d6dc7aab23a5",
+"t2": "a50c1f36-c67a-4d7b-ba86-77de1302fd46",
+"target": "to get away",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0485L01B01",
+"ka": "dd6ba3f6-ad66-4a3a-adf0-f57e0dfa0f7c",
+"known": "दूर निघून जाणे",
+"pos": 1,
+"t1": "e0649e9f-e8af-4e35-992b-d6dc7aab23a5",
+"t2": "a50c1f36-c67a-4d7b-ba86-77de1302fd46",
+"target": "to get away",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L01B02",
+"ka": "33370ff4-8405-41ac-a316-907a2671172e",
+"known": "इथून दूर निघून जाणे",
+"pos": 2,
+"t1": "c176ec3c-cca5-4fa8-954b-e34b1f71a4e7",
+"t2": "865b43de-4e6d-40a2-8bf2-5b691a9f749b",
+"target": "to get away from here",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L01B03",
+"ka": "00a6435d-a87a-43b5-bb3d-50d433fd90bb",
+"known": "आज दूर निघून जाणे",
+"pos": 3,
+"t1": "14f6754a-8059-4528-b8ab-37d9a091305e",
+"t2": "4875bad3-5e6a-4c07-8bf1-9ee13f2a2b22",
+"target": "to get away today",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L01U01",
+"ka": "4faf89f9-1d23-4124-b729-126687e7b8bf",
+"known": "मला दूर निघून जायचं आहे",
+"pos": 4,
+"t1": "25de460b-ae24-48fa-8950-7aed249aac34",
+"t2": "c13a2c19-24e4-4bb4-9ee5-67cb71d7cc0d",
+"target": "I want to get away",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L01U02",
+"ka": "f1febb23-4d82-4d0a-86b0-9977c2a1c743",
+"known": "मला इथून दूर निघून जायचं आहे",
+"pos": 5,
+"t1": "60a481e7-57c4-4573-9fef-b0504fd8eff2",
+"t2": "b5f921cc-c158-4fcf-bc38-4c651db3e9ff",
+"target": "I want to get away from here",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L01U03",
+"ka": "88b8b507-7c41-4ab2-b4d6-13ba82e80be0",
+"known": "मला आज दूर निघून जायचं आहे",
+"pos": 6,
+"t1": "372d0470-390c-4987-8f8b-b7e99ca0ce43",
+"t2": "ccf2c75b-ab24-4954-8efd-a9d5516b6be2",
+"target": "I want to get away today",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L01U04",
+"ka": "1897b6a0-f9f1-41e8-b68a-bd94bb134490",
+"known": "मला दूर निघून जाण्याचा प्रयत्न करायचा आहे",
+"pos": 7,
+"t1": "1580386b-4112-4d30-9a11-f7f96e2cb688",
+"t2": "be51c3c4-0521-4e38-a92d-d367501a8c3a",
+"target": "I want to try to get away",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L01U05",
+"ka": "12088e21-35de-4191-a085-cf15cd44baed",
+"known": "मला तुमच्याबरोबर दूर निघून जायचं आहे",
+"pos": 8,
+"t1": "b6dd59f7-e486-4596-aea1-a233b22e4583",
+"t2": "83c255fe-0960-4e56-849b-846752113417",
+"target": "I want to get away with you",
+"type": "use"
+}
+],
+"target": "to get away",
+"type": "M"
+},
+{
+"id": "S0485L02",
+"idx": 2,
+"is_new": true,
+"known": "मला आनंदी करेल",
+"phrases": [
+{
+"id": "bfa335cd-2036-4282-8366-36c1ed2519ff",
+"ka": "293c4bda-6943-4185-88bc-e232aba05979",
+"known": "मला आनंदी करेल",
+"pos": 0,
+"t1": "ee3275f9-1d84-4098-b35d-8d047d58bb70",
+"t2": "fcf864ef-1303-4382-8060-830602b13346",
+"target": "would make me",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0485L02C01",
+"ka": "1fdeadc9-8e53-442b-aef4-709876e9f401",
+"known": "मला",
+"pos": 1,
+"t1": "465dceaa-34e5-4761-99bb-d26bb8da3065",
+"t2": "92725048-211d-46d4-97b9-60bfcdb5d3c7",
+"target": "me",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0485L02C02",
+"ka": "41983676-0b38-4d55-8302-09ef0db29afb",
+"known": "आनंदी करेल",
+"pos": 2,
+"t1": "d5f566bd-9583-4dc1-a4f0-ac3b401200d0",
+"t2": "07b6d726-293f-48aa-8580-55902167706a",
+"target": "would make",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0485L02B02",
+"ka": "293c4bda-6943-4185-88bc-e232aba05979",
+"known": "मला आनंदी करेल",
+"pos": 4,
+"t1": "6ea89f07-34f8-4e00-aa24-fed2948338a5",
+"t2": "469e8fa7-7515-47fa-a138-5ba77999bf57",
+"target": "would make me happy",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L02B03",
+"ka": "c78cce0c-d15a-4c48-90b5-779478d3406c",
+"known": "हे मला आनंदी करेल",
+"pos": 5,
+"t1": "0621bf6c-94ba-4c5a-bc9d-1efd07ee79a0",
+"t2": "93f01569-15e9-426e-a236-8377ed60355f",
+"target": "this would make me happy",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L02B04",
+"ka": "12ca557a-6a41-4905-a304-81b54d75e58a",
+"known": "मला आज आनंदी करेल",
+"pos": 6,
+"t1": "b9d0ddf6-e384-43ae-9e82-3246bc19c876",
+"t2": "57c52b02-d0a3-4ae8-a4ec-be108cff81c6",
+"target": "would make me happy today",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L02U01",
+"ka": "cf11904d-fa93-4633-98b0-e68a215f9230",
+"known": "हे मला खूप आनंदी करेल",
+"pos": 7,
+"t1": "4951e8db-f427-41a8-82d8-e7fdfeda4c64",
+"t2": "facd5ad6-c63a-40c1-a589-761e1cb40bfa",
+"target": "this would make me very happy",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L02U02",
+"ka": "c50f7c2b-2c05-48b5-859e-98b917562012",
+"known": "मला वाटतं हे मला आनंदी करेल",
+"pos": 8,
+"t1": "817e3bf0-7fd1-4910-a490-c2e464f802da",
+"t2": "2b952349-1c78-43cd-ad5d-e7132e73bb6f",
+"target": "I think this would make me happy",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L02U03",
+"ka": "a97595da-4449-43d2-b078-6628420531c9",
+"known": "इंग्रजी बोलणं मला आनंदी करेल",
+"pos": 9,
+"t1": "b27db3e0-0d4d-4ee7-8880-32af487868b2",
+"t2": "56a06967-90f6-4d79-95ff-6b5ec9f78c14",
+"target": "speaking English would make me happy",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L02U04",
+"ka": "b54e22f9-6734-4177-b518-4fc12ebb9d52",
+"known": "हे मला आज आनंदी करेल",
+"pos": 10,
+"t1": "1c1658d5-2ff0-44c2-9d5d-cc51dff212b3",
+"t2": "3b076799-d24e-4b49-ad50-ebeb10b8f2b2",
+"target": "this would make me happy today",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L02U05",
+"ka": "11d3248c-95e1-4b5c-8af4-d6b0043deee8",
+"known": "तुमच्याशी बोलणं मला आनंदी करेल",
+"pos": 11,
+"t1": "6bd8b2cd-8e82-4ab9-bffe-cba39d41f57b",
+"t2": "42480312-d3d6-485e-9bb6-cdfcf958ab27",
+"target": "speaking with you would make me happy",
+"type": "use"
+}
+],
+"target": "would make me",
+"type": "M"
+},
+{
+"id": "S0485L03",
+"idx": 3,
+"is_new": true,
+"known": "जास्त आनंदी ... पेक्षा",
+"phrases": [
+{
+"id": "6194d063-faaf-446a-818d-fe578fe39149",
+"ka": "9a757f07-0650-4575-bf59-dde2f762e4ad",
+"known": "जास्त आनंदी ... पेक्षा",
+"pos": 0,
+"t1": "418d4c01-f3ea-4084-a3ef-f8056aea60e1",
+"t2": "a536c18f-5979-4f6f-ade6-72036c4ea0b5",
+"target": "happier than",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0485L03C01",
+"ka": "dbb3334d-1cfd-4526-8db4-94b2465399ef",
+"known": "जास्त आनंदी",
+"pos": 1,
+"t1": "9cec3705-6086-47b4-bbf3-a6bc7aa4930c",
+"t2": "61e5a235-8ba4-4518-9659-ff43a2ca4547",
+"target": "happier",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0485L03C02",
+"ka": "a5b3ad87-2679-4d3d-9dfd-1775de8d71f7",
+"known": "पेक्षा",
+"pos": 2,
+"t1": "d0ed6d11-cf98-45c3-8ce8-9f87fd6ddcaa",
+"t2": "2f606862-747d-4d21-b3c6-788bc41fd68e",
+"target": "than",
+"type": "component"
+},
+{
+"id": "eng_for_mar:S0485L03B01",
+"ka": "9a757f07-0650-4575-bf59-dde2f762e4ad",
+"known": "जास्त आनंदी ... पेक्षा",
+"pos": 3,
+"t1": "418d4c01-f3ea-4084-a3ef-f8056aea60e1",
+"t2": "a536c18f-5979-4f6f-ade6-72036c4ea0b5",
+"target": "happier than",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L03B02",
+"ka": "84c2424d-7066-4883-8d61-df970ef773df",
+"known": "यापेक्षा जास्त आनंदी",
+"pos": 4,
+"t1": "796b169f-1366-47e0-a95c-dcfbec29d880",
+"t2": "1da6c75f-2705-4f97-a838-2ac771c29bee",
+"target": "happier than this",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L03B03",
+"ka": "4f0dadc5-dd1d-4e19-8f25-6f437273b4f6",
+"known": "त्यापेक्षा जास्त आनंदी",
+"pos": 5,
+"t1": "5b8da5a7-30c9-4f24-abcf-77af77d970d9",
+"t2": "d793eb2d-6999-4e8b-8775-a9e5f94c0786",
+"target": "happier than it",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L03B04",
+"ka": "95df10f1-4803-4031-8e9a-6b2ab4209fae",
+"known": "दूर निघून जाण्यापेक्षा जास्त आनंदी",
+"pos": 6,
+"t1": "72a2cf12-d4d0-435f-88d7-56feca5364e7",
+"t2": "6f5578ca-b1f9-41d6-8060-cbc695923902",
+"target": "happier than to get away",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L03U01",
+"ka": "5d55b0a7-a17a-4fe3-a254-307464ab3549",
+"known": "हे मला यापेक्षा जास्त आनंदी करेल",
+"pos": 7,
+"t1": "a4faa48c-94ab-4989-8f11-8272f0c2bc14",
+"t2": "877ed668-6ab4-4608-8d8a-fe2203296398",
+"target": "this would make me happier than this",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L03U02",
+"ka": "7f905dff-23f1-4933-9c09-5f95672dc2db",
+"known": "हे मला त्यापेक्षा जास्त आनंदी करेल",
+"pos": 8,
+"t1": "d02d184f-d846-4a10-8512-88766a8361fa",
+"t2": "f30167f8-199f-4817-969f-d852231cb0cf",
+"target": "this would make me happier than it",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L03U03",
+"ka": "ede9deab-f01b-44d1-b669-c98535df1c10",
+"known": "हे मला दूर निघून जाण्यापेक्षा जास्त आनंदी करेल",
+"pos": 9,
+"t1": "0dddf374-77b0-4c5d-81fd-2b2d5e7f9d46",
+"t2": "57c9e239-c4e4-4d4a-bf9f-354980db5895",
+"target": "this would make me happier than to get away",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L03U04",
+"ka": "05348552-41fd-4184-8a88-b51a19295482",
+"known": "इंग्रजी बोलणं मला त्यापेक्षा जास्त आनंदी करेल",
+"pos": 10,
+"t1": "437f4880-32b1-4d2d-aa64-133bb32333a4",
+"t2": "e144cc58-cff0-480a-b3d9-6d5dc82d8c51",
+"target": "speaking English would make me happier than it",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L03U05",
+"ka": "3c9dfb08-98e8-40be-87ea-ea92ec6f8a8e",
+"known": "तुमच्याशी बोलणं मला यापेक्षा जास्त आनंदी करेल",
+"pos": 11,
+"t1": "c840ab48-09f8-4df2-8352-bb51eb1d21d8",
+"t2": "07526838-284f-46dd-9a70-e80bb98dee99",
+"target": "speaking with you would make me happier than this",
+"type": "use"
+}
+],
+"target": "happier than",
+"type": "M"
+},
+{
+"id": "S0485L04",
+"idx": 4,
+"is_new": true,
+"known": "काहीही नाही",
+"phrases": [
+{
+"id": "34fdf456-4ecb-4880-b5a9-25cd88504ec5",
+"ka": "f34a4ede-be26-4c8a-8499-be85a85e3cf5",
+"known": "काहीही नाही",
+"pos": 0,
+"t1": "61504df1-017f-4196-b794-a19297e30f2d",
+"t2": "c7cb4867-46f2-46d8-a90c-7e3a419e04df",
+"target": "nothing",
+"type": "lego_debut"
+},
+{
+"id": "eng_for_mar:S0485L04B01",
+"ka": "f34a4ede-be26-4c8a-8499-be85a85e3cf5",
+"known": "काहीही नाही",
+"pos": 1,
+"t1": "61504df1-017f-4196-b794-a19297e30f2d",
+"t2": "c7cb4867-46f2-46d8-a90c-7e3a419e04df",
+"target": "nothing",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L04B02",
+"ka": "ba378635-46d3-49fa-996e-3ae4eef9018a",
+"known": "इथे काहीही नाही",
+"pos": 2,
+"t1": "6352aa69-1619-487d-813a-bc4aa8e8dd4d",
+"t2": "adf3c1d4-42f8-4eba-82cd-a1e26c347741",
+"target": "nothing here",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L04B03",
+"ka": "03a5a799-53b8-4034-9a31-2426c107f9a5",
+"known": "काहीही मोठं नाही",
+"pos": 3,
+"t1": "d1470514-aacc-46f6-ad29-6fc01e0337c5",
+"t2": "1c7eb16d-8be9-4f75-8e5c-6991d0f0d022",
+"target": "nothing is big",
+"type": "build"
+},
+{
+"id": "eng_for_mar:S0485L04U01",
+"ka": "7328542d-7262-48c9-8790-673794172b94",
+"known": "दूर निघून जाण्यापेक्षा काहीही मला जास्त आनंदी करणार नाही",
+"pos": 4,
+"t1": "05668a1c-9724-48ef-a8a8-409e59f33285",
+"t2": "61589f35-caa3-46a1-bf37-6c65b85f0cfd",
+"target": "nothing would make me happier than to get away",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L04U02",
+"ka": "86fb397c-9999-4735-9cf9-5eb0b0c8e416",
+"known": "काहीही इथे नाही",
+"pos": 5,
+"t1": "7e1e182f-3001-4699-a459-bc6d195f89b1",
+"t2": "0ed976bb-1759-4ebd-90b6-5d90c7b1776d",
+"target": "nothing is here",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L04U03",
+"ka": "874fe61d-19b1-4414-b41b-831737740d54",
+"known": "काहीही सोपं नाही",
+"pos": 6,
+"t1": "d7c36580-ad51-4e3f-b482-0008dd033f2d",
+"t2": "f9253b13-6d75-4d48-b788-86e9e6496df3",
+"target": "nothing is easy",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L04U04",
+"ka": "b13303cd-ca59-4979-ba16-6e926495a1a6",
+"known": "मला वाटतं काहीही गंभीर नाही",
+"pos": 7,
+"t1": "ccc76c93-1989-49e5-8d04-7005f453f665",
+"t2": "86063231-75d3-4cb0-9afc-49af43392ef3",
+"target": "I think nothing is serious",
+"type": "use"
+},
+{
+"id": "eng_for_mar:S0485L04U05",
+"ka": "03a5a799-53b8-4034-9a31-2426c107f9a5",
+"known": "काहीही मोठं नाही",
+"pos": 8,
+"t1": "d1470514-aacc-46f6-ad29-6fc01e0337c5",
+"t2": "1c7eb16d-8be9-4f75-8e5c-6991d0f0d022",
+"target": "nothing is big",
+"type": "use"
+}
+],
+"target": "nothing",
+"type": "A"
+}
+],
+"status": "released",
+"target": "Nothing would make me happier than to get away."
+}
+}

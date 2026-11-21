@@ -1,0 +1,30 @@
+{
+ "course": "eng_for_guj",
+ "copy_db": "ssi_copy_20261119t033000z",
+ "copy_built": "2026-11-19T03:41:21Z",
+ "files": {
+  "1-backfill": 4,
+  "4-recut-S0339": 9
+ },
+ "backfill": {
+  "insert": 2,
+  "rewrite": 2
+ },
+ "deletes": {
+  "free": 0,
+  "filled": 0
+ },
+ "recut": {
+  "seeds": 1,
+  "lego_update": 1,
+  "insert": 0,
+  "rewrite": 8,
+  "delete": 0
+ },
+ "set_aside": {
+  "unauthored": [],
+  "drift": [],
+  "error": []
+ },
+ "warnings": 4
+}

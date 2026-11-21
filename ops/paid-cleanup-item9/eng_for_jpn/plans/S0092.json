@@ -1,0 +1,23 @@
+{
+ "seed": 92,
+ "legos": {
+  "L01": {
+   "delete": [
+    "B06"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (1 duplicate phrase(s) within this LEGO: \"I'd like to keep on\"); deletes do not lower its counted rows"
+  },
+  "L02": {
+   "delete": [
+    "U11"
+   ]
+  },
+  "L04": {
+   "delete": [
+    "B06"
+   ],
+   "accept_gap": "basket was already under the floor before item 9 (2 duplicate phrase(s) within this LEGO: \"talk for a while\", \"I think that it's interesting to keep on talking for a while\"); deletes do not lower its counted rows"
+  }
+ },
+ "notes": "cs #738·AI auto plan: delete rows using a target word no seed has taught by then (K14/K15)."
+}

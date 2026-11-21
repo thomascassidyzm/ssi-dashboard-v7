@@ -1,0 +1,3441 @@
+{
+ "course": "eng_for_tam",
+ "built_from": "ssi_copy_20261119t033000z",
+ "rule": "Kai 19 Nov 10:38Z: hold on any mismatch, never force",
+ "rows": {
+  "S0001L05U04": {
+   "seed": {
+    "seed_number": 1,
+    "known_text": "நான் இப்போது உங்களுடன் ஆங்கிலம் பேச விரும்புகிறேன்.",
+    "target_text": "I want to speak English with you now.",
+    "known_audio_id": "1330ebdf-c97b-4ce1-9b99-2c5c0620f90b",
+    "target1_audio_id": "10b1ed1f-c585-4b91-bbe9-30e42f891988",
+    "target2_audio_id": "100563f8-3f7b-40ee-bcf4-393a1c0e5436"
+   },
+   "lego": {
+    "lego_id": "S0001L05",
+    "known_text": "இப்போது",
+    "target_text": "now",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0003L02U04": {
+   "seed": {
+    "seed_number": 3,
+    "known_text": "எவ்வளவு அடிக்கடி முடியுமோ அவ்வளவு அடிக்கடி பேசுவது எப்படி.",
+    "target_text": "how to speak as often as possible.",
+    "known_audio_id": "9124e7c0-a193-493e-94af-194e7693c422",
+    "target1_audio_id": "c3c1e1ae-483b-421f-9221-edfcdd2f8704",
+    "target2_audio_id": "b5061dde-43cf-4b82-aba7-a47e9cbd0009"
+   },
+   "lego": {
+    "lego_id": "S0003L02",
+    "known_text": "எவ்வளவு அடிக்கடி முடியுமோ அவ்வளவு",
+    "target_text": "as often as possible",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0006L02U06": {
+   "seed": {
+    "seed_number": 6,
+    "known_text": "நான் ஒரு வார்த்தை நினைவில் கொள்ள முயற்சிக்கிறேன்.",
+    "target_text": "I'm trying to remember a word.",
+    "known_audio_id": "ec54f369-cad2-42cc-a8de-4fa15d13e7ba",
+    "target1_audio_id": "7b28a720-d72e-422a-8b78-f9c619957831",
+    "target2_audio_id": "62d9d4b8-158d-402c-aaff-df98512cf40f"
+   },
+   "lego": {
+    "lego_id": "S0006L02",
+    "known_text": "நினைவில் கொள்ள",
+    "target_text": "remember",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0007L02U06": {
+   "seed": {
+    "seed_number": 7,
+    "known_text": "நான் இன்று என்னால் முடிந்த அளவு கடினமாக முயற்சிக்க விரும்புகிறேன்.",
+    "target_text": "I want to try as hard as I can today.",
+    "known_audio_id": "ab186660-2173-4392-af17-3bbb8f81191b",
+    "target1_audio_id": "44ed428b-815d-48a1-8434-4a50e7a1dd87",
+    "target2_audio_id": "e4637615-7988-49c7-bc76-b470760f9930"
+   },
+   "lego": {
+    "lego_id": "S0007L02",
+    "known_text": "இன்று",
+    "target_text": "today",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0008L02U06": {
+   "seed": {
+    "seed_number": 8,
+    "known_text": "நான் என்ன சொல்ல வேண்டும் என்று விளக்கப் போகிறேன்.",
+    "target_text": "I'm going to try to explain what I mean.",
+    "known_audio_id": "a3a68f62-c150-4330-b8ea-bbee6164dc42",
+    "target1_audio_id": "f3a6cbd8-ba38-4f02-963a-f9bd67bba41a",
+    "target2_audio_id": "33c1e3d4-2ab9-4186-963e-32a1a4935307"
+   },
+   "lego": {
+    "lego_id": "S0008L02",
+    "known_text": "என்ன சொல்ல வேண்டும் என்று",
+    "target_text": "what I mean",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0009L01U06": {
+   "seed": {
+    "seed_number": 9,
+    "known_text": "நான் இப்போது கொஞ்சம் ஆங்கிலம் பேசுகிறேன்.",
+    "target_text": "I speak a little English now.",
+    "known_audio_id": "e3a32dcf-7ef3-4de9-bfbc-6e8f9dd09842",
+    "target1_audio_id": "096859e0-a51c-49bb-ae98-5ef93b834e5b",
+    "target2_audio_id": "6f31bfd8-9997-4836-96fd-dcd0e15bf8c4"
+   },
+   "lego": {
+    "lego_id": "S0009L01",
+    "known_text": "கொஞ்சம்",
+    "target_text": "a little",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0010L02U06": {
+   "seed": {
+    "seed_number": 10,
+    "known_text": "நான் முழு வாக்கியத்தையும் நினைவில் கொள்ள முடியுமா என்று தெரியவில்லை.",
+    "target_text": "I'm not sure if I can remember the whole sentence.",
+    "known_audio_id": "f165dba5-b1c7-4cb2-8092-c5c8aee8c420",
+    "target1_audio_id": "ff009dd5-26df-4616-8c1a-4bf5241386cf",
+    "target2_audio_id": "f202bc27-84f3-4a06-9edb-25de66cdb469"
+   },
+   "lego": {
+    "lego_id": "S0010L02",
+    "known_text": "தெரியவில்லை",
+    "target_text": "I'm not sure if",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0011L04U06": {
+   "seed": {
+    "seed_number": 11,
+    "known_text": "நீங்கள் முடித்த பிறகு நான் பேச விரும்புகிறேன்.",
+    "target_text": "I'd like to be able to speak after you finish.",
+    "known_audio_id": "a7fa8935-d84d-48af-96ed-bab9ae340678",
+    "target1_audio_id": "d23f8c84-cf7d-49db-93f0-305130555b55",
+    "target2_audio_id": "60e54e1a-616c-4389-a17f-abe2847385c0"
+   },
+   "lego": {
+    "lego_id": "S0011L04",
+    "known_text": "விரும்புகிறேன்",
+    "target_text": "I'd like to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0015L01U08": {
+   "seed": {
+    "seed_number": 15,
+    "known_text": "நான் நாளை என்னுடன் ஆங்கிலம் பேச விரும்புகிறேன்.",
+    "target_text": "And I want you to speak English with me tomorrow.",
+    "known_audio_id": "630b9a01-de44-451f-8373-8139c91592ca",
+    "target1_audio_id": "f2f0fe5d-61d2-43d9-9413-7943d3f2707c",
+    "target2_audio_id": "b9bb6c65-0877-4110-ad37-3a8f02bc05e1"
+   },
+   "lego": {
+    "lego_id": "S0015L01",
+    "known_text": "என்னுடன்",
+    "target_text": "me",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0016L04U06": {
+   "seed": {
+    "seed_number": 16,
+    "known_text": "பிறகு மற்றவர்களுடன் திரும்பி வர அவர் விரும்புகிறார்.",
+    "target_text": "He wants to come back with everyone else later on.",
+    "known_audio_id": "5e186223-9103-4ed5-b425-05382ac30b34",
+    "target1_audio_id": "3a3f7164-5f2e-4519-9124-456ffed8c7ae",
+    "target2_audio_id": "2c182b95-a27c-41c9-a8cf-f08375a76b47"
+   },
+   "lego": {
+    "lego_id": "S0016L04",
+    "known_text": "மற்றவர்களுடன்",
+    "target_text": "everyone else",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0017L03U06": {
+   "seed": {
+    "seed_number": 17,
+    "known_text": "விடை என்னவென்று அவள் கண்டுபிடிக்க விரும்புகிறாள்.",
+    "target_text": "She wants to find out what the answer is.",
+    "known_audio_id": "ae979ce1-2ef2-4f08-92ac-2727b1f2b25f",
+    "target1_audio_id": "cdd8f737-c387-436d-b5ea-e2ce1a507bde",
+    "target2_audio_id": "de3f3976-e437-43ec-823b-8428cad99020"
+   },
+   "lego": {
+    "lego_id": "S0017L03",
+    "known_text": "விடை",
+    "target_text": "the answer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0018L04U06": {
+   "seed": {
+    "seed_number": 18,
+    "known_text": "இந்த மாலை ஆறு மணிக்கு சந்திக்க நாங்கள் விரும்புகிறோம்.",
+    "target_text": "We want to meet at six o'clock this evening.",
+    "known_audio_id": "e61b18f8-fbfd-4c8f-9bb8-27d574c00a54",
+    "target1_audio_id": "69201f95-606d-402a-8315-89d3af1ca920",
+    "target2_audio_id": "b87142c8-7686-4700-b47f-015e7337ede7"
+   },
+   "lego": {
+    "lego_id": "S0018L04",
+    "known_text": "இந்த மாலை",
+    "target_text": "this evening",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0021L02U06": {
+   "seed": {
+    "seed_number": 21,
+    "known_text": "ஏன் நீங்கள் அவள் பெயரை கற்கிறீர்கள்?",
+    "target_text": "Why are you learning her name?",
+    "known_audio_id": "c0c9f1bd-1a81-458d-860c-691e0b350ff1",
+    "target1_audio_id": "74ed9e52-1fe5-4036-a16e-3e6a619c3d2a",
+    "target2_audio_id": "45d2e551-ca6c-47fb-9a26-cb4d3d727a7a"
+   },
+   "lego": {
+    "lego_id": "S0021L02",
+    "known_text": "நீங்கள் கற்கிறீர்கள்",
+    "target_text": "are you learning",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0022L04U06": {
+   "seed": {
+    "seed_number": 22,
+    "known_text": "ஏனென்றால் நான் ஆங்கிலம் பேசும் மக்களை சந்திக்க விரும்புகிறேன்.",
+    "target_text": "Because I want to meet people who speak English.",
+    "known_audio_id": "a2a53635-439e-4852-85be-871bd8a6bdc2",
+    "target1_audio_id": "eed545ef-1881-44a2-9313-d3d121b0a903",
+    "target2_audio_id": "e020e509-9a64-4589-8f16-2298cec9fd7a"
+   },
+   "lego": {
+    "lego_id": "S0022L04",
+    "known_text": "சந்திக்க விரும்புகிறேன்",
+    "target_text": "I want to meet",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0023L03U06": {
+   "seed": {
+    "seed_number": 23,
+    "known_text": "நான் விரைவில் அதிகமாக பேசத் தொடங்கப் போகிறேன்.",
+    "target_text": "I'm going to start talking more soon.",
+    "known_audio_id": "feadde84-771f-4f42-ae30-6523370cc901",
+    "target1_audio_id": "fbd30dcf-10b7-450e-924d-76bd1565a6c4",
+    "target2_audio_id": "fc8fc97a-094d-45e1-bb17-92870a668b36"
+   },
+   "lego": {
+    "lego_id": "S0023L03",
+    "known_text": "விரைவில்",
+    "target_text": "soon",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0024L02U07": {
+   "seed": {
+    "seed_number": 24,
+    "known_text": "என்னால் எளிதாக நினைவில் கொள்ள முடியாது போகிறது.",
+    "target_text": "I'm not going to be able to remember easily.",
+    "known_audio_id": "b670c5d0-4e92-4803-8b51-cee7f4444519",
+    "target1_audio_id": "d36e39f7-9ec4-463e-b777-149a4d34dfca",
+    "target2_audio_id": "6232d0dd-e347-4b07-89f6-956d6aa56d31"
+   },
+   "lego": {
+    "lego_id": "S0024L02",
+    "known_text": "நினைவில் கொள்ள முடியாது",
+    "target_text": "not going to be able to remember",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0025L03U06": {
+   "seed": {
+    "seed_number": 25,
+    "known_text": "நீங்கள் போவதற்கு முன் என்னை உதவப் போகிறீர்களா?",
+    "target_text": "Are you going to help me before I have to go?",
+    "known_audio_id": "84cc48df-94f9-404c-ba1e-f4ab872b3fa9",
+    "target1_audio_id": "060731bd-1a31-46c3-bda5-9f6b69d522d4",
+    "target2_audio_id": "5e5c44ea-0d8a-4c5a-b629-ed654189868d"
+   },
+   "lego": {
+    "lego_id": "S0025L03",
+    "known_text": "நீங்கள் போகிறீர்களா",
+    "target_text": "are you going to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0026L02U06": {
+   "seed": {
+    "seed_number": 26,
+    "known_text": "நான் கிட்டத்தட்ட போகத் தயாராக இருப்பதாக உணர்கிறேன்.",
+    "target_text": "I like feeling as if I'm nearly ready to go.",
+    "known_audio_id": "a091e3b8-845c-486a-9dea-d52da3de3484",
+    "target1_audio_id": "88155723-c4db-4165-85f0-de86629e152d",
+    "target2_audio_id": "de445729-44c5-4063-b9b8-3aa8334df73b"
+   },
+   "lego": {
+    "lego_id": "S0026L02",
+    "known_text": "கிட்டத்தட்ட",
+    "target_text": "nearly",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0027L02U06": {
+   "seed": {
+    "seed_number": 27,
+    "known_text": "நான் பதிலளிக்க அதிக நேரம் எடுப்பதை விரும்பவில்லை.",
+    "target_text": "I don't like taking too much time to answer.",
+    "known_audio_id": "7ad819fd-4b87-4fa6-9d6c-76c9b2afcdfa",
+    "target1_audio_id": "7829c483-1299-4bff-a6dd-ae2a4907e14a",
+    "target2_audio_id": "abf8159f-001b-4aa9-86f2-7354ceaea371"
+   },
+   "lego": {
+    "lego_id": "S0027L02",
+    "known_text": "அதிக",
+    "target_text": "too much",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0028L03U06": {
+   "seed": {
+    "seed_number": 28,
+    "known_text": "நீங்கள் முடிந்தவரை விரைவில் பேசத் தொடங்குவது பயனுள்ளது.",
+    "target_text": "It's useful to start talking as soon as you can.",
+    "known_audio_id": "ea2fe58c-70aa-4cd3-b1bf-336ceaaae2bc",
+    "target1_audio_id": "93ff0185-c23e-4bfd-a5a4-35e03f498969",
+    "target2_audio_id": "63313e2c-7300-4aea-b4f3-0829d4362c68"
+   },
+   "lego": {
+    "lego_id": "S0028L03",
+    "known_text": "பேசத் தொடங்குவது பயனுள்ளது",
+    "target_text": "it's useful to start talking",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0029L03U07": {
+   "seed": {
+    "seed_number": 29,
+    "known_text": "நான் முடிந்தவரை விரைவில் சிறப்பாக பேசுவதை ஆர்வமாக எதிர்நோக்குகிறேன்.",
+    "target_text": "I'm looking forward to speaking better as soon as I can.",
+    "known_audio_id": "1311455a-a9e1-41ea-9211-cf06e179a2d4",
+    "target1_audio_id": "a04fc2ca-d1db-43dd-b3ff-81f8d1c4926f",
+    "target2_audio_id": "3d549d4d-80e1-426c-b877-6cdd4c8da1b4"
+   },
+   "lego": {
+    "lego_id": "S0029L03",
+    "known_text": "ஆர்வமாக எதிர்நோக்குகிறேன்",
+    "target_text": "I'm looking forward to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0030L03U06": {
+   "seed": {
+    "seed_number": 30,
+    "known_text": "நேற்று உங்களிடம் ஏதாவது கேட்க விரும்பினேன்.",
+    "target_text": "I wanted to ask you something yesterday.",
+    "known_audio_id": "664b5b79-413a-4646-874a-95261bb96c6a",
+    "target1_audio_id": "f9e5daad-87e9-4f40-a17e-b1915adb9955",
+    "target2_audio_id": "40f8f08d-2db7-40cd-aece-88d01714c9a5"
+   },
+   "lego": {
+    "lego_id": "S0030L03",
+    "known_text": "கேட்க விரும்பினேன்",
+    "target_text": "I wanted to ask",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0034L04U06": {
+   "seed": {
+    "seed_number": 34,
+    "known_text": "மற்ற மக்கள் இங்கே இருக்கும்போது அவர் அமைதியாக இருக்க விரும்புவதில்லை.",
+    "target_text": "He doesn't want to be quiet when other people are here.",
+    "known_audio_id": "bac1da0d-d65a-4a65-a561-6694ed046e55",
+    "target1_audio_id": "0e15832e-e290-491d-8d5d-ef2a5bfdbc8c",
+    "target2_audio_id": "cfb73c9c-4329-4359-a3d4-fd78b71ec40b"
+   },
+   "lego": {
+    "lego_id": "S0034L04",
+    "known_text": "அமைதியாக இருக்க விரும்புவதில்லை",
+    "target_text": "doesn't want to be quiet",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0035L04U06": {
+   "seed": {
+    "seed_number": 35,
+    "known_text": "இந்த பிற்பகல் அவள் எதுவும் படிக்க விரும்புவதில்லை.",
+    "target_text": "She doesn't want to read anything this afternoon.",
+    "known_audio_id": "e40041a1-e096-4c4c-818c-e12735d1d50f",
+    "target1_audio_id": "a8eef2eb-967e-4a48-b1c2-4959882bc70e",
+    "target2_audio_id": "e5bc1926-08ac-42f7-aa45-669581e98f31"
+   },
+   "lego": {
+    "lego_id": "S0035L04",
+    "known_text": "படிக்க விரும்புவதில்லை",
+    "target_text": "doesn't want to read",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0037L05U06": {
+   "seed": {
+    "seed_number": 37,
+    "known_text": "கடந்த மாதம் அதை கவனமாக யோசிக்கத் தொடங்கினேன்.",
+    "target_text": "I started to think about it carefully last month.",
+    "known_audio_id": "49ad76b1-2153-4ffa-bdac-a183c292f434",
+    "target1_audio_id": "e93d36da-72b0-45c7-9238-1e98986e70b3",
+    "target2_audio_id": "0e488077-a127-466d-9b91-f3e124d407af"
+   },
+   "lego": {
+    "lego_id": "S0037L05",
+    "known_text": "யோசிக்கத் தொடங்கினேன்",
+    "target_text": "I started to think",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0039L03U06": {
+   "seed": {
+    "seed_number": 39,
+    "known_text": "ஆனால் இந்த காலையில் நான் கொஞ்சம் சோர்வாக இருக்கிறேன்.",
+    "target_text": "But I'm a little tired this morning.",
+    "known_audio_id": "22bf5df0-c373-43de-974c-03bbc9e8cc8f",
+    "target1_audio_id": "f0742469-acf2-43fa-97f8-eb47e92b7e98",
+    "target2_audio_id": "2b30a367-88d2-4647-acab-c463051d6476"
+   },
+   "lego": {
+    "lego_id": "S0039L03",
+    "known_text": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன்",
+    "target_text": "but I'm a little tired",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0040L03U06": {
+   "seed": {
+    "seed_number": 40,
+    "known_text": "இந்த நேரத்தில் நீங்கள் எப்படி உணர்கிறீர்கள்?",
+    "target_text": "How do you feel at the moment?",
+    "known_audio_id": "19b1fc92-c377-451f-940a-284bc0e7dae2",
+    "target1_audio_id": "0512ae7c-61cd-4ac1-bf66-83151978f9c5",
+    "target2_audio_id": "2ae98ace-37ff-4c38-9025-9e7ff201e138"
+   },
+   "lego": {
+    "lego_id": "S0040L03",
+    "known_text": "நீங்கள் எப்படி உணர்கிறீர்கள்",
+    "target_text": "how do you feel",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0041L02U06": {
+   "seed": {
+    "seed_number": 41,
+    "known_text": "நான் நன்றாக உணர்கிறேன், ஆனால் சோர்வாக உணர்கத் தொடங்குகிறேன்.",
+    "target_text": "I feel okay, but I'm starting to feel tired.",
+    "known_audio_id": "9f14904c-e2dc-4260-be00-3da1e87a14a9",
+    "target1_audio_id": "b9bbc411-bf17-454d-bf23-a1da71b4c48e",
+    "target2_audio_id": "f2ccb943-4627-478f-ab20-cd9ba3a2c1d1"
+   },
+   "lego": {
+    "lego_id": "S0041L02",
+    "known_text": "தொடங்குகிறேன்",
+    "target_text": "I'm starting to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0042L03U06": {
+   "seed": {
+    "seed_number": 42,
+    "known_text": "கடந்த இரவை விட நன்றாக உணரத் தொடங்கினேன்.",
+    "target_text": "I was starting to feel better than last night.",
+    "known_audio_id": "a3170c11-830f-4c29-b803-53aaaa408c0a",
+    "target1_audio_id": "01112c17-72ba-4f25-aa58-5f712d031af1",
+    "target2_audio_id": "6ec3067a-b042-4749-808a-c92e321f94a1"
+   },
+   "lego": {
+    "lego_id": "S0042L03",
+    "known_text": "நன்றாக உணரத் தொடங்கினேன்",
+    "target_text": "I was starting to feel better",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0044L03U06": {
+   "seed": {
+    "seed_number": 44,
+    "known_text": "அல்லது என்னால் மேம்படுத்த வேண்டுமா என்றால்.",
+    "target_text": "Or if I need to improve.",
+    "known_audio_id": "5001b8e0-5505-4ecf-8488-2dd54b4d09c6",
+    "target1_audio_id": "85d9be80-0a2e-4d68-a1e0-a216fa718e1a",
+    "target2_audio_id": "f210ee96-00c3-47fd-b5ff-be2d64ed344a"
+   },
+   "lego": {
+    "lego_id": "S0044L03",
+    "known_text": "மேம்படுத்த",
+    "target_text": "improve",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0045L03U06": {
+   "seed": {
+    "seed_number": 45,
+    "known_text": "எனக்கு எல்லாவற்றையும் தெரிய வேண்டியதில்லை.",
+    "target_text": "I don't need to know everything.",
+    "known_audio_id": "72e38cb8-64c9-4322-a00a-eb6950040c4a",
+    "target1_audio_id": "44ad3f66-74e3-4498-b243-ce42cf0c6e9a",
+    "target2_audio_id": "f281303d-8dc0-499d-9d37-1b9f3a347acd"
+   },
+   "lego": {
+    "lego_id": "S0045L03",
+    "known_text": "தெரிய வேண்டியதில்லை",
+    "target_text": "don't need to know",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0046L04U06": {
+   "seed": {
+    "seed_number": 46,
+    "known_text": "ஆனால் தவறுகள் செய்வதைப் பற்றி கவலைப்படுவதில்லை.",
+    "target_text": "But I don't worry about making mistakes.",
+    "known_audio_id": "33eaf05f-fa17-4ed3-a0f5-967b24cd8196",
+    "target1_audio_id": "3997334d-83ba-4b9a-b5ec-fb66896df9c6",
+    "target2_audio_id": "aee481ba-6483-49d2-983d-ab8b549f8eb3"
+   },
+   "lego": {
+    "lego_id": "S0046L04",
+    "known_text": "தவறுகள் செய்வதைப் பற்றி",
+    "target_text": "about making mistakes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0047L05U07": {
+   "seed": {
+    "seed_number": 47,
+    "known_text": "ஏனென்றால் தவறுகள் செய்வது நல்ல விஷயம் என்று நினைக்கிறேன்.",
+    "target_text": "Because I think that it's a good thing to make mistakes.",
+    "known_audio_id": "6f9d11fd-e19b-46a0-b5eb-9153c8851448",
+    "target1_audio_id": "7637b9ab-1880-4975-9385-6b6f54ef5cec",
+    "target2_audio_id": "486a5e23-a8eb-4f6d-8d5c-0058dda61de5"
+   },
+   "lego": {
+    "lego_id": "S0047L05",
+    "known_text": "தவறுகள் செய்வது",
+    "target_text": "to make mistakes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0048L02U06": {
+   "seed": {
+    "seed_number": 48,
+    "known_text": "தவறுகள் செய்வது பற்றி அக்கறைப்படுவதில்லை.",
+    "target_text": "I don't care about making mistakes.",
+    "known_audio_id": "32a27bf1-9b84-46d2-9bd6-e0a89a9b89ca",
+    "target1_audio_id": "2c34fad4-a523-4e54-b550-17adc515b1e1",
+    "target2_audio_id": "0317d92e-7b6f-46ae-bdd6-c144b07e38b7"
+   },
+   "lego": {
+    "lego_id": "S0048L02",
+    "known_text": "அக்கறைப்படுவதில்லை",
+    "target_text": "don't care about",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0049L02U06": {
+   "seed": {
+    "seed_number": 49,
+    "known_text": "இது இப்படித்தான் இருக்கும், நான் சொல்வது புரிகிறதா.",
+    "target_text": "It's like this, if you know what I mean.",
+    "known_audio_id": "a46b58b7-8b62-4f16-862a-cc2453d63608",
+    "target1_audio_id": "cdaa1930-e0ac-4f5f-acc5-2ff8fde5ba3a",
+    "target2_audio_id": "5e90ec5e-4bc4-41ea-84ac-f2ee736f3f01"
+   },
+   "lego": {
+    "lego_id": "S0049L02",
+    "known_text": "நான் சொல்வது புரிகிறதா",
+    "target_text": "if you know what I mean",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0051L05U06": {
+   "seed": {
+    "seed_number": 51,
+    "known_text": "என்னுடைய நண்பர்களுடன் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்.",
+    "target_text": "I enjoy doing interesting things with my friends.",
+    "known_audio_id": "0ffaafdd-73f0-4415-9bb0-f604af4fde56",
+    "target1_audio_id": "4d9e5747-045f-4d35-a6e5-397fe50b544a",
+    "target2_audio_id": "e11cda3b-8c56-47b3-8b77-5265f2d0f475"
+   },
+   "lego": {
+    "lego_id": "S0051L05",
+    "known_text": "சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்",
+    "target_text": "enjoy doing interesting things",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0052L05U07": {
+   "seed": {
+    "seed_number": 52,
+    "known_text": "அவர் கடந்த வாரம் தன் நண்பருக்கு கடிதம் எழுத விரும்பினார்.",
+    "target_text": "He wanted to write a letter to his friend last week.",
+    "known_audio_id": "990cb856-1ff4-4b8f-aa30-ab67445ab263",
+    "target1_audio_id": "cfbc41f4-52f4-4a83-881a-3604d5756954",
+    "target2_audio_id": "72b7f732-892e-4155-a8f1-5ad7c54e4ba2"
+   },
+   "lego": {
+    "lego_id": "S0052L05",
+    "known_text": "கடிதம் எழுத விரும்பினார்",
+    "target_text": "he wanted to write a letter",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0059L04U07": {
+   "seed": {
+    "seed_number": 59,
+    "known_text": "அடுத்த வாரம் நான் என்ன செய்ய வேண்டும் என்று எனக்கு தெரியும்.",
+    "target_text": "I know how to do what I need to do next week.",
+    "known_audio_id": "e4978917-be0f-4a87-bb57-6bf04ae96bf7",
+    "target1_audio_id": "273f27f6-1bde-4650-8d85-edd2d606314c",
+    "target2_audio_id": "8b232959-f329-476b-960b-6952fa030fa9"
+   },
+   "lego": {
+    "lego_id": "S0059L04",
+    "known_text": "செய்ய வேண்டும்",
+    "target_text": "I need to do",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0060L02U06": {
+   "seed": {
+    "seed_number": 60,
+    "known_text": "நான் இன்னும் போதுமான வேறு வார்த்தைகளை எப்படி சொல்வது என்று தெரியவில்லை.",
+    "target_text": "I don't know how to say enough different words yet.",
+    "known_audio_id": "f4cbf051-ee55-4b51-9239-aa55a7413baa",
+    "target1_audio_id": "e4e0c117-08c6-480c-809d-554f25bc59c2",
+    "target2_audio_id": "57643ff5-a71b-47d7-bd1c-41152124758c"
+   },
+   "lego": {
+    "lego_id": "S0060L02",
+    "known_text": "வேறு",
+    "target_text": "different",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0061L04U06": {
+   "seed": {
+    "seed_number": 61,
+    "known_text": "நீங்கள் அதை மீண்டும் கொஞ்சம் மெதுவாக சொல்ல முடியுமா?",
+    "target_text": "Could you say that again a little more slowly?",
+    "known_audio_id": "2ab5e4d0-9b65-4dee-b6cb-47cecdb0b9d9",
+    "target1_audio_id": "74aa2953-a378-4373-9b2b-a5ae6492806f",
+    "target2_audio_id": "1cb7edbe-fce7-4313-a3d9-3f7c12e567ff"
+   },
+   "lego": {
+    "lego_id": "S0061L04",
+    "known_text": "நீங்கள் சொல்ல முடியுமா",
+    "target_text": "could you say",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0063L04U06": {
+   "seed": {
+    "seed_number": 63,
+    "known_text": "நீங்கள் என்னுக்கு உதவுவதில் ஆட்சேபனை இல்லை என்று உறுதியா?",
+    "target_text": "Are you sure you don't mind helping me?",
+    "known_audio_id": "1476eb2b-53de-457f-9726-814c93fdee49",
+    "target1_audio_id": "27c02c57-7def-48b6-b4a5-63c3cfdcff34",
+    "target2_audio_id": "c7892636-c98a-4ed4-8f1a-1136df8e149f"
+   },
+   "lego": {
+    "lego_id": "S0063L04",
+    "known_text": "நீங்கள் உறுதியா",
+    "target_text": "are you sure",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0064L04U06": {
+   "seed": {
+    "seed_number": 64,
+    "known_text": "ஆங்கிலம் கற்பது எளிதல்ல ஆனால் அது வேடிக்கையாக உள்ளது.",
+    "target_text": "Learning English isn't easy but it is fun.",
+    "known_audio_id": "92b592e2-9e44-4947-8a0a-136edabedeab",
+    "target1_audio_id": "b7082031-28f2-43ab-8670-875c81bc649e",
+    "target2_audio_id": "2a557cfd-d5c9-43b9-9669-2fa297db3e52"
+   },
+   "lego": {
+    "lego_id": "S0064L04",
+    "known_text": "எளிதல்ல",
+    "target_text": "isn't easy",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0065L03U06": {
+   "seed": {
+    "seed_number": 65,
+    "known_text": "உங்களையே சோதிக்க நேரம் எடுப்பது முக்கியம்.",
+    "target_text": "It's important to take time to test yourself.",
+    "known_audio_id": "ea324fcd-96da-4661-ba24-509318f11597",
+    "target1_audio_id": "9230d40c-ba8a-4c40-ba3c-80cc5aaa46f7",
+    "target2_audio_id": "11fdca07-a522-43f1-8875-d4b1b2e2dd1b"
+   },
+   "lego": {
+    "lego_id": "S0065L03",
+    "known_text": "உங்களையே",
+    "target_text": "yourself",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0068L02U07": {
+   "seed": {
+    "seed_number": 68,
+    "known_text": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+    "target_text": "What are you looking for?",
+    "known_audio_id": "a1d4adcd-6a4c-46b9-ace3-3484cd6fa7ec",
+    "target1_audio_id": "18411a1f-a1b0-456b-872b-ab1f91fa3b6e",
+    "target2_audio_id": "0c2942af-ecba-443a-85b6-8ac93cbd3a35"
+   },
+   "lego": {
+    "lego_id": "S0068L02",
+    "known_text": "என்ன தேடுகிறீர்கள்",
+    "target_text": "what are you looking for",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0069L05U06": {
+   "seed": {
+    "seed_number": 69,
+    "known_text": "அவர் மதியம் முழுவதும் இளம் நாயை கவனிக்க விரும்பவில்லை.",
+    "target_text": "He didn't want to look after the young dog all afternoon.",
+    "known_audio_id": "eb3ef599-ec0b-4e7a-997e-99056f0d1855",
+    "target1_audio_id": "6ef31f40-762f-4b3f-98e5-1fd32e91386a",
+    "target2_audio_id": "5e645225-f86a-4f0b-b799-94de36caf9dc"
+   },
+   "lego": {
+    "lego_id": "S0069L05",
+    "known_text": "விரும்பவில்லை கவனிக்க",
+    "target_text": "didn't want to look after",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0070L03U06": {
+   "seed": {
+    "seed_number": 70,
+    "known_text": "அது எங்கே இருந்தது என்று என்னிடம் சொல்ல அவள் விரும்பவில்லை.",
+    "target_text": "She didn't want to tell me where it was.",
+    "known_audio_id": "e9cc2956-bf7f-4015-98aa-970e2c3ba407",
+    "target1_audio_id": "ad63790e-b913-462d-a745-7272a6b045d7",
+    "target2_audio_id": "85be60e6-00d4-4aa3-9dfa-62670d72ef97"
+   },
+   "lego": {
+    "lego_id": "S0070L03",
+    "known_text": "விரும்பவில்லை சொல்ல",
+    "target_text": "didn't want to tell",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0071L02U06": {
+   "seed": {
+    "seed_number": 71,
+    "known_text": "யாரும் உண்மையை கேட்க நாங்கள் விரும்பவில்லை.",
+    "target_text": "We didn't want to let anyone hear the truth.",
+    "known_audio_id": "f5f9c3b1-fcd1-4346-9a15-6a86c9921ae4",
+    "target1_audio_id": "5b932986-bec9-4c31-8801-b943392849f4",
+    "target2_audio_id": "38576374-bd7d-4bce-b05b-c824f2631083"
+   },
+   "lego": {
+    "lego_id": "S0071L02",
+    "known_text": "யாரும்",
+    "target_text": "anyone",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0072L02U06": {
+   "seed": {
+    "seed_number": 72,
+    "known_text": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள் என்று நான் நினைக்கிறேன்.",
+    "target_text": "I think that you're doing very well.",
+    "known_audio_id": "abb5824a-c229-4afe-9c95-0bd0e503f19e",
+    "target1_audio_id": "5cf2bc47-05d8-48f2-8c85-1e6ef3f67f62",
+    "target2_audio_id": "48f45aee-5c40-48e2-a862-c33e6229fe59"
+   },
+   "lego": {
+    "lego_id": "S0072L02",
+    "known_text": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+    "target_text": "you're doing very well",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0074L01U07": {
+   "seed": {
+    "seed_number": 74,
+    "known_text": "என்னை புரிந்துகொள்ள உதவிய மிக்க நன்றி.",
+    "target_text": "Thank you very much for helping me to understand.",
+    "known_audio_id": "3c21bda8-6bf6-4cf3-a763-9c73bd6c6b29",
+    "target1_audio_id": "d9405e20-8353-4a8c-9253-5f5d80458459",
+    "target2_audio_id": "478052ff-541c-49f0-9633-f2f0807859cf"
+   },
+   "lego": {
+    "lego_id": "S0074L01",
+    "known_text": "உதவிய புரிந்துகொள்ள",
+    "target_text": "helping me to understand",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0076L03U06": {
+   "seed": {
+    "seed_number": 76,
+    "known_text": "நான் ஏற்கனவே எவ்வளவு கற்றேன் என்று மிகவும் மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target_text": "I'm very happy with how much I've learnt already.",
+    "known_audio_id": "90f3eee5-8007-43d4-9a47-1c24c412c4c9",
+    "target1_audio_id": "f1d1543f-4cfd-44df-85b1-22a0df3fe50f",
+    "target2_audio_id": "ca9d13e4-9b48-473d-a5e5-80537192c505"
+   },
+   "lego": {
+    "lego_id": "S0076L03",
+    "known_text": "ஏற்கனவே",
+    "target_text": "already",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0077L03U06": {
+   "seed": {
+    "seed_number": 77,
+    "known_text": "நான் எவ்வளவு விரைவாக புரிந்துகொள்ள ஆரம்பிக்கிறேன் என்று ஆச்சரியமாக இருக்கிறேன்.",
+    "target_text": "I'm surprised at how quickly I'm starting to understand.",
+    "known_audio_id": "fb5ac570-6c11-4823-897e-80bf70fe151a",
+    "target1_audio_id": "df2d0a61-c48f-4a3f-a2c6-49a3fca0a8b9",
+    "target2_audio_id": "530ba8fd-b3a8-4da8-a98c-d69d4c761f4c"
+   },
+   "lego": {
+    "lego_id": "S0077L03",
+    "known_text": "ஆரம்பிக்கிறேன் புரிந்துகொள்ள",
+    "target_text": "starting to understand",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0078L02U07": {
+   "seed": {
+    "seed_number": 78,
+    "known_text": "நீங்கள் சொன்னது என்னவென்று புரியவில்லை.",
+    "target_text": "I don't understand what you said.",
+    "known_audio_id": "abd7328f-74e9-4a89-84e4-a987ee04e68d",
+    "target1_audio_id": "3312b055-37ee-4bb9-92ec-7b43bd9a3208",
+    "target2_audio_id": "825d6202-e68f-4f6d-8f94-7205bc3f359e"
+   },
+   "lego": {
+    "lego_id": "S0078L02",
+    "known_text": "புரியவில்லை நீங்கள் சொன்னது",
+    "target_text": "I don't understand what you said",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0079L02U06": {
+   "seed": {
+    "seed_number": 79,
+    "known_text": "நீங்கள் எப்போது கற்க ஆரம்பித்தீர்கள்?",
+    "target_text": "When did you start to learn?",
+    "known_audio_id": "51121bfe-7dac-4987-9ea5-8a569b9ebca4",
+    "target1_audio_id": "b6b28eaf-5b33-4a46-9974-59664aa3a864",
+    "target2_audio_id": "b2ab46ca-fbbe-410e-9a6c-039f3f18e8fd"
+   },
+   "lego": {
+    "lego_id": "S0079L02",
+    "known_text": "எப்போது ஆரம்பித்தீர்கள் கற்க",
+    "target_text": "when did you start to learn",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0080L02U06": {
+   "seed": {
+    "seed_number": 80,
+    "known_text": "நான் எப்போது தயாராவேன் என்று தெரியவில்லை.",
+    "target_text": "I'm not sure when I'll be ready.",
+    "known_audio_id": "6dff4ca8-3cb2-4a46-9826-e06b5ce32eb4",
+    "target1_audio_id": "be4ef68d-c977-4d19-92ee-fcc7039e547c",
+    "target2_audio_id": "f19b1a41-7b74-44bc-86b7-b73dc35c037c"
+   },
+   "lego": {
+    "lego_id": "S0080L02",
+    "known_text": "எப்போது தயாராவேன்",
+    "target_text": "when I'll be ready",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0081L01U06": {
+   "seed": {
+    "seed_number": 81,
+    "known_text": "நீங்கள் எப்போது ஆரம்பிக்க விரும்புகிறீர்கள்?",
+    "target_text": "When do you want to start?",
+    "known_audio_id": "43e30b51-af9d-47df-885b-18b0fc919355",
+    "target1_audio_id": "2e8bec85-4f17-472b-a7e0-c39611742531",
+    "target2_audio_id": "5186f5d8-40e9-4193-aea0-8040f88ccb76"
+   },
+   "lego": {
+    "lego_id": "S0081L01",
+    "known_text": "எப்போது நீங்கள் விரும்புகிறீர்கள்",
+    "target_text": "when do you want",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0082L02U07": {
+   "seed": {
+    "seed_number": 82,
+    "known_text": "நான் உங்களுக்காக காத்திருக்க மாட்டேன். ஏன் இல்லை?",
+    "target_text": "I'm not going to wait for you. Why not?",
+    "known_audio_id": "e48a9b30-275e-4ad9-b930-f98446b9bc7c",
+    "target1_audio_id": "a130f2ef-8ffd-4a45-b93a-75a157cbe354",
+    "target2_audio_id": "640d6f98-0073-46ff-bdad-46dcd927a94e"
+   },
+   "lego": {
+    "lego_id": "S0082L02",
+    "known_text": "காத்திருக்க மாட்டேன்",
+    "target_text": "not going to wait",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0084L03U06": {
+   "seed": {
+    "seed_number": 84,
+    "known_text": "அவர் என் நண்பரைப் பற்றி சொன்னதனோடு நான் உடன்படவில்லை.",
+    "target_text": "I don't agree with what he said about my friend.",
+    "known_audio_id": "332a1c07-a6f8-46fe-9fa5-d6c1fb586058",
+    "target1_audio_id": "93d47c23-6acb-41cb-bc80-4b800f0d0921",
+    "target2_audio_id": "76e17b2f-039a-4a57-a0f4-66cd1cd13a84"
+   },
+   "lego": {
+    "lego_id": "S0084L03",
+    "known_text": "அவர் சொன்னதனோடு உடன்படவில்லை",
+    "target_text": "don't agree with what he said",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0086L03U06": {
+   "seed": {
+    "seed_number": 86,
+    "known_text": "துரதிர்ஷ்டவசமாக, அது சாத்தியமில்லை.",
+    "target_text": "It wasn't possible, unfortunately.",
+    "known_audio_id": "0dd20ec1-f4ac-4e8c-bc78-b03164cddfe0",
+    "target1_audio_id": "7788a2fd-23f6-42bc-aff5-2aa0c2f30958",
+    "target2_audio_id": "d2163a54-d88f-4f61-95c7-464aa75d73d0"
+   },
+   "lego": {
+    "lego_id": "S0086L03",
+    "known_text": "சாத்தியமில்லை துரதிர்ஷ்டவசமாக",
+    "target_text": "wasn't possible, unfortunately",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0091L04U06": {
+   "seed": {
+    "seed_number": 91,
+    "known_text": "நேரத்தில் பதில் சொல்ல போதுமான வேகமாக நினைக்க கடினமாக இருக்கிறது.",
+    "target_text": "It's difficult to think quickly enough to answer in time.",
+    "known_audio_id": "4b976393-45d2-486f-9aa1-19bb836ea4b1",
+    "target1_audio_id": "c0e7028a-a610-4723-bc97-e433a8ccd173",
+    "target2_audio_id": "9b2603ff-4415-4f5e-98ea-03ad34efaa4c"
+   },
+   "lego": {
+    "lego_id": "S0091L04",
+    "known_text": "நேரத்தில் பதில் சொல்ல",
+    "target_text": "to answer in time",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0092L02U06": {
+   "seed": {
+    "seed_number": 92,
+    "known_text": "நான் இதை இன்னும் கொஞ்ச நேரம் தொடர்ந்து செய்ய விரும்புகிறேன்.",
+    "target_text": "I'd like to keep on doing this for a while.",
+    "known_audio_id": "b4d81b5c-1ec7-43e7-9a5e-b9db64ad4880",
+    "target1_audio_id": "a18d49c6-dd4f-4596-a454-28dda2f2cf30",
+    "target2_audio_id": "5f775d2a-4547-482f-891f-0eff14e2bb15"
+   },
+   "lego": {
+    "lego_id": "S0092L02",
+    "known_text": "தொடர்ந்து செய்ய விரும்புகிறேன்",
+    "target_text": "I'd like to keep on doing",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0093L02U06": {
+   "seed": {
+    "seed_number": 93,
+    "known_text": "இப்போது போக வேண்டிய நேரம்.",
+    "target_text": "It's time to go now.",
+    "known_audio_id": "b685fa06-1986-4f75-967e-900fcc9fa791",
+    "target1_audio_id": "dddeb059-60da-48d0-b3e6-401a484d9000",
+    "target2_audio_id": "e8a22143-5d09-463a-b8bc-ca49f936667f"
+   },
+   "lego": {
+    "lego_id": "S0093L02",
+    "known_text": "போக நேரம்",
+    "target_text": "time to go",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0094L03U07": {
+   "seed": {
+    "seed_number": 94,
+    "known_text": "இது வேலை செய்ய ஒரே வழி.",
+    "target_text": "This is the only way it will work.",
+    "known_audio_id": "a322c9cf-3e93-4215-97e2-5e24c75c7e17",
+    "target1_audio_id": "bc91d113-cb19-4273-90ef-c84f9a9a1f15",
+    "target2_audio_id": "1ea2ffe0-8254-4bdf-9ba2-36950b46fc3c"
+   },
+   "lego": {
+    "lego_id": "S0094L03",
+    "known_text": "ஒரே",
+    "target_text": "only",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0096L03U06": {
+   "seed": {
+    "seed_number": 96,
+    "known_text": "இல்லை, நான் இன்னும் தயாராக இல்லை, எனக்கு இன்னும் கொஞ்ச நேரம் வேண்டும்.",
+    "target_text": "No I'm not ready yet, I need a little more time.",
+    "known_audio_id": "60b86519-e0bd-4843-a73f-924618836111",
+    "target1_audio_id": "de1554dc-0320-46d3-85a1-7206a9516b89",
+    "target2_audio_id": "488e2875-d0d5-44b8-94ed-4569cfe82ad3"
+   },
+   "lego": {
+    "lego_id": "S0096L03",
+    "known_text": "தயாராக இல்லை இன்னும்",
+    "target_text": "not ready yet",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0097L02U06": {
+   "seed": {
+    "seed_number": 97,
+    "known_text": "ஆமாம், நீங்கள் விரும்பும்போதே நான் போக தயார்.",
+    "target_text": "Yes I'm ready to go as soon as you want.",
+    "known_audio_id": "ebf69e8e-5452-4894-b45a-331ed297e127",
+    "target1_audio_id": "3528895a-99bf-438a-8172-2fb16e15a30d",
+    "target2_audio_id": "fc494196-97e9-4758-82f5-5df23ddb435c"
+   },
+   "lego": {
+    "lego_id": "S0097L02",
+    "known_text": "விரும்பும்போதே",
+    "target_text": "as soon as you want",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0098L04U06": {
+   "seed": {
+    "seed_number": 98,
+    "known_text": "நான் வேறு ஏதாவது விளையாடுவதை கருத்தில் கொள்ள வேண்டும்.",
+    "target_text": "I should consider playing something else.",
+    "known_audio_id": "dd4d4cf5-fc5b-4322-85e4-ecbb6f02ece0",
+    "target1_audio_id": "9c9e1ed4-47b9-44a2-9c0f-e19db9d51665",
+    "target2_audio_id": "e9315001-c95d-4b21-b3ed-7dd7cde302bf"
+   },
+   "lego": {
+    "lego_id": "S0098L04",
+    "known_text": "விளையாடுவதை கருத்தில் கொள்ள",
+    "target_text": "consider playing",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0100L03U06": {
+   "seed": {
+    "seed_number": 100,
+    "known_text": "நீங்கள் இதே போன்ற ஏதாவது செய்வதில் கவலைப்படக்கூடாது.",
+    "target_text": "You shouldn't worry about doing something similar.",
+    "known_audio_id": "5d2c5e37-4f03-4774-b957-a04b9b476c48",
+    "target1_audio_id": "868b3124-9b26-4e77-b46a-3d1df5303c45",
+    "target2_audio_id": "14b2b5ae-c183-4c62-84ac-01e92702a8d6"
+   },
+   "lego": {
+    "lego_id": "S0100L03",
+    "known_text": "செய்வதில் கவலைப்படக்கூடாது",
+    "target_text": "shouldn't worry about doing",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0102L03U07": {
+   "seed": {
+    "seed_number": 102,
+    "known_text": "நாங்கள் அது அப்படி இல்லை என்று கூற முயற்சிக்கிறோம்.",
+    "target_text": "We're trying to say that it's not like that.",
+    "known_audio_id": "902ec3a2-bded-4412-a7f3-cf7f914fbc00",
+    "target1_audio_id": "69ed0e83-2a58-4258-a24d-475397805006",
+    "target2_audio_id": "863069e5-1612-4587-8a21-ee3f7de576e3"
+   },
+   "lego": {
+    "lego_id": "S0102L03",
+    "known_text": "அப்படி இல்லை",
+    "target_text": "not like that",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0103L02U07": {
+   "seed": {
+    "seed_number": 103,
+    "known_text": "நாங்கள் இன்னும் பல வார்த்தைகளை கேட்கவில்லை என்று முயற்சிக்கிறோம்.",
+    "target_text": "We're not trying to hear many more words.",
+    "known_audio_id": "97e87ca0-d532-4133-aec9-c2feb988a2ae",
+    "target1_audio_id": "6b3d709c-6125-4e30-87dc-04f9adb02739",
+    "target2_audio_id": "fcf3e0c1-71c2-47de-85ad-c653586ad3bd"
+   },
+   "lego": {
+    "lego_id": "S0103L02",
+    "known_text": "பல",
+    "target_text": "many",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0106L05U06": {
+   "seed": {
+    "seed_number": 106,
+    "known_text": "நாங்கள் மகிழ்ச்சியாக உணர வேண்டியதில்லை, நாங்கள் கஷ்டப்பட்டு வேலை செய்ய வேண்டும்.",
+    "target_text": "We don't need to feel happy, we just need to work hard.",
+    "known_audio_id": "21570896-cab6-4ffd-94fa-1a3444a55daa",
+    "target1_audio_id": "0b6f9151-95be-4b63-ba6f-1061ed2fbd98",
+    "target2_audio_id": "0635331a-9468-4b80-8ed7-727b8e725ddb"
+   },
+   "lego": {
+    "lego_id": "S0106L05",
+    "known_text": "வேண்டியதில்லை உணர மகிழ்ச்சியாக",
+    "target_text": "don't need to feel happy",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0107L03U06": {
+   "seed": {
+    "seed_number": 107,
+    "known_text": "நீங்கள் என்ன செய்கிறீர்கள் என்று பார்க்க நாங்கள் நம்பிக்கை வைத்தோம்.",
+    "target_text": "We hoped to see what you were doing.",
+    "known_audio_id": "a3b10890-fd38-47e8-a34f-b429e809c5ee",
+    "target1_audio_id": "bf2d2108-aa00-49fe-b9e3-f1579a623a48",
+    "target2_audio_id": "4e1b3390-8c08-4eb1-bffa-5d674cfa6aa7"
+   },
+   "lego": {
+    "lego_id": "S0107L03",
+    "known_text": "என்ன நீங்கள் செய்கிறீர்கள்",
+    "target_text": "what you were doing",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0108L03U06": {
+   "seed": {
+    "seed_number": 108,
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிப்போம் என்று நம்பவில்லை.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "c50ae9e3-d0a6-4ef4-b3c7-169a8671b5e6",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "lego": {
+    "lego_id": "S0108L03",
+    "known_text": "இரவின் நடுவில்",
+    "target_text": "middle of the night",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0109L03U06": {
+   "seed": {
+    "seed_number": 109,
+    "known_text": "நிறைய புதிய வார்த்தைகள் கற்றுக்கொள்ள நாங்கள் கஷ்டமாக வேலை செய்யவேண்டியது அவசியம்.",
+    "target_text": "We must work hard to learn a lot of new words.",
+    "known_audio_id": "81ee3887-9b70-431b-b058-ed08ac559185",
+    "target1_audio_id": "ef1236f8-8a47-456d-9d81-287f9e875db4",
+    "target2_audio_id": "d65894ef-7f7c-4e9e-afd2-7a723cfed66c"
+   },
+   "lego": {
+    "lego_id": "S0109L03",
+    "known_text": "நிறைய புதிய வார்த்தைகள்",
+    "target_text": "a lot of new words",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0110L03U08": {
+   "seed": {
+    "seed_number": 110,
+    "known_text": "நாங்கள் நண்பர்கள், நாங்கள் முடித்த பிறகு நான் ஓய்வெடுக்க விரும்புகிறேன்.",
+    "target_text": "We're friends, and after we finish I'd like to relax.",
+    "known_audio_id": "d458b148-e770-4f2d-9a80-e49e0166e1b1",
+    "target1_audio_id": "aab351cb-240f-4362-a507-0ebb923dc9a4",
+    "target2_audio_id": "1e46f2a9-8bdf-4677-a016-d9376716be4c"
+   },
+   "lego": {
+    "lego_id": "S0110L03",
+    "known_text": "முடித்த பிறகு",
+    "target_text": "after we finish",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0113L02U06": {
+   "seed": {
+    "seed_number": 113,
+    "known_text": "நீங்கள் சொன்னதை என்னால் ஏன் நினைவில் வைத்துக்கொள்ள முடியவில்லை?",
+    "target_text": "Why can't I remember what you said?",
+    "known_audio_id": "7ae56442-f2f9-4938-93a2-3e465fe471be",
+    "target1_audio_id": "2c4365c2-778a-474d-8f4a-34335a1fefc0",
+    "target2_audio_id": "2edfe1f1-327f-4a6b-beb3-ef005a2e096f"
+   },
+   "lego": {
+    "lego_id": "S0113L02",
+    "known_text": "நினைவில் வைத்துக்கொள்ள முடியவில்லை",
+    "target_text": "I can't remember",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0114L02U06": {
+   "seed": {
+    "seed_number": 114,
+    "known_text": "நான் நேற்றை விட இன்று மோசமாக செய்கிறேன் என்று உணர்கிறேன்.",
+    "target_text": "I feel as if I'm doing worse today than yesterday.",
+    "known_audio_id": "cc4167cf-9cc0-4a9e-991a-4c5ff901ced1",
+    "target1_audio_id": "ec88469b-d79f-4945-9ada-011aef5b3568",
+    "target2_audio_id": "4a9a0979-4d79-4eb0-b000-c29d9a151520"
+   },
+   "lego": {
+    "lego_id": "S0114L02",
+    "known_text": "உணர்கிறேன் மோசமாக செய்கிறேன்",
+    "target_text": "feel as if doing worse",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0117L01U06": {
+   "seed": {
+    "seed_number": 117,
+    "known_text": "நான் கடந்த முறை நாம் பேசிய நேரத்தை விட இப்போது நிச்சயமாக சிறப்பாக செய்கிறேன்.",
+    "target_text": "I'm definitely doing better than I was last time we talked to each other.",
+    "known_audio_id": "664c2e8a-cde3-4194-b6c4-00df3f5a1c66",
+    "target1_audio_id": "98c90eb0-e8fe-490f-a5f2-0eb73c62917e",
+    "target2_audio_id": "1e91876c-cd0e-4db8-99a6-a7b037c0997e"
+   },
+   "lego": {
+    "lego_id": "S0117L01",
+    "known_text": "நிச்சயமாக",
+    "target_text": "definitely",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0118L02U07": {
+   "seed": {
+    "seed_number": 118,
+    "known_text": "நான் நாங்கள் பாரில் இருந்தபோது உணர்ந்ததை விட இப்போது சிறப்பாக உணர்கிறேன்.",
+    "target_text": "I feel better than I felt when we were in the pub.",
+    "known_audio_id": "4bccf78b-e5bb-4927-880a-fa1bc066bf67",
+    "target1_audio_id": "3c25749f-c94a-4cb5-bb6a-e224c03dc286",
+    "target2_audio_id": "15430d76-5101-4ced-88ed-0224f171b544"
+   },
+   "lego": {
+    "lego_id": "S0118L02",
+    "known_text": "உணர்ந்ததை விட சிறப்பாக",
+    "target_text": "better than I felt",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0119L02U07": {
+   "seed": {
+    "seed_number": 119,
+    "known_text": "நீங்கள் கிளம்புவதற்கு முன்பு நான் உங்களிடம் ஏதாவது கேட்கலாமா?",
+    "target_text": "Can I ask you something before you leave?",
+    "known_audio_id": "ea632ab0-ace7-4216-b041-76e1d61257a2",
+    "target1_audio_id": "3b8f5a4a-628c-46b7-a064-89e2e3de6f58",
+    "target2_audio_id": "768af793-4d1e-4e39-b2d1-59cf82d17846"
+   },
+   "lego": {
+    "lego_id": "S0119L02",
+    "known_text": "கிளம்புவதற்கு",
+    "target_text": "leave",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0120L03U07": {
+   "seed": {
+    "seed_number": 120,
+    "known_text": "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்கள் என்பது சுவாரஸ்யமானது.",
+    "target_text": "It's interesting that you like to go by bus.",
+    "known_audio_id": "f4d1d61a-790e-4343-ae38-1a97f2390ccc",
+    "target1_audio_id": "f2533737-e60a-4f11-bd6a-43a39d9fa67c",
+    "target2_audio_id": "51b8cb53-be15-4097-ad81-b2031c412f04"
+   },
+   "lego": {
+    "lego_id": "S0120L03",
+    "known_text": "சுவாரஸ்யமானது நீங்கள் பேருந்தில் செல்ல",
+    "target_text": "interesting that you go by bus",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0121L04U06": {
+   "seed": {
+    "seed_number": 121,
+    "known_text": "நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது அசாதாரணமானது.",
+    "target_text": "It's unusual that you don't like to use your car.",
+    "known_audio_id": "a5847ec8-6a68-4caf-a27c-c3cf72842795",
+    "target1_audio_id": "d9f7e745-77d9-4d48-a6de-272c63bee037",
+    "target2_audio_id": "058f72c0-0c10-4714-be63-b9db5d0732ac"
+   },
+   "lego": {
+    "lego_id": "S0121L04",
+    "known_text": "அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+    "target_text": "unusual that you don't use car",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0122L04U07": {
+   "seed": {
+    "seed_number": 122,
+    "known_text": "அது எளிதாக உணர ஆரம்பிக்கிறது, நான் எப்படி நடக்கிறது என்று உற்சாகமாக உள்ளேன்.",
+    "target_text": "It's starting to feel easier and I'm excited about how it's going.",
+    "known_audio_id": "67003d68-6088-4aea-b21a-ab82e53e6070",
+    "target1_audio_id": "9e91493e-aad1-44c1-bf76-856d76d66148",
+    "target2_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375"
+   },
+   "lego": {
+    "lego_id": "S0122L04",
+    "known_text": "உற்சாகமாக எப்படி நடக்கிறது",
+    "target_text": "excited about how it's going",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0127L02U06": {
+   "seed": {
+    "seed_number": 127,
+    "known_text": "அதனால் தான் நான் உங்களை பார்க்க விரும்பினேன் என்று இல்லை.",
+    "target_text": "That isn't why I wanted to see you.",
+    "known_audio_id": "93cbcb93-285c-40e1-af63-b56bc6b1b09e",
+    "target1_audio_id": "f6daa69f-f211-43c9-9584-d36d69aa25f9",
+    "target2_audio_id": "7a597d9d-e92e-4722-85ad-45b733b5a5bb"
+   },
+   "lego": {
+    "lego_id": "S0127L02",
+    "known_text": "விரும்பினேன் பார்க்க",
+    "target_text": "wanted to see you",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0129L03U06": {
+   "seed": {
+    "seed_number": 129,
+    "known_text": "நீங்கள் இவ்வளவு நன்றாக செய்கிறீர்கள் என்று நான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target_text": "I'm so happy that you're doing so well.",
+    "known_audio_id": "c190d15f-100e-48c1-991d-fb68643fd802",
+    "target1_audio_id": "82c09c56-7751-4ee7-a6ed-fdf129f715c9",
+    "target2_audio_id": "02ed50f9-bf9a-4946-8e8f-905ce4f6b4a9"
+   },
+   "lego": {
+    "lego_id": "S0129L03",
+    "known_text": "மகிழ்ச்சியாக நீங்கள் நன்றாக செய்கிறீர்கள்",
+    "target_text": "happy that you're doing so well",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0131L01U06": {
+   "seed": {
+    "seed_number": 131,
+    "known_text": "என் தலையில் அதிகமான யோசனைகள் சுற்றிக்கொண்டிருக்கின்றன.",
+    "target_text": "There are too many ideas going around in my head.",
+    "known_audio_id": "8f2e35d9-edcb-4e79-bdfa-2e3a4f6effd2",
+    "target1_audio_id": "db398f6d-c191-4035-b528-0cbb30c161b4",
+    "target2_audio_id": "398c4544-56a5-4217-8a2b-6ddfa307ae8c"
+   },
+   "lego": {
+    "lego_id": "S0131L01",
+    "known_text": "யோசனைகள்",
+    "target_text": "ideas",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0132L04U06": {
+   "seed": {
+    "seed_number": 132,
+    "known_text": "அவள் சொல்கிறதை விட இது குறைவாக சுவாரஸ்யமாக இருக்கிறது.",
+    "target_text": "That's less exciting than what she was saying.",
+    "known_audio_id": "85454141-83b8-4e32-92cc-f13ba272d87a",
+    "target1_audio_id": "e14ad60e-6d64-42c8-be09-0b032adff7b9",
+    "target2_audio_id": "96ebd897-6d29-43e9-b846-b00b56e4cf42"
+   },
+   "lego": {
+    "lego_id": "S0132L04",
+    "known_text": "அவள் சொல்கிறதை விட",
+    "target_text": "what she was saying",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0133L02U05": {
+   "seed": {
+    "seed_number": 133,
+    "known_text": "நீங்கள் ஒன்றாக வேலை செய்யும்போது யாரையாவது மிகவும் நன்றாக அறிவீர்கள்.",
+    "target_text": "You get to know someone very well when you work together.",
+    "known_audio_id": "7406b6d9-4907-4a3f-943d-d4d74b962d4a",
+    "target1_audio_id": "016da31d-90cd-47b9-80b7-63a7b7feea08",
+    "target2_audio_id": "79522ef0-b2e5-47df-bd8d-47ffedb839dd"
+   },
+   "lego": {
+    "lego_id": "S0133L02",
+    "known_text": "யாரையாவது நன்றாக அறிவீர்கள்",
+    "target_text": "get to know someone",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0134L04U07": {
+   "seed": {
+    "seed_number": 134,
+    "known_text": "அவர்களுடன் கடினமான ஏதாவது ஒன்றில் வேலை செய்யும்போது பிரச்னை இல்லை.",
+    "target_text": "It's not a problem when you work at something difficult with them.",
+    "known_audio_id": "4786cb32-20fb-4bb5-9c06-967884287874",
+    "target1_audio_id": "1822c9db-9aea-43cb-869b-396dcceca7f1",
+    "target2_audio_id": "7905f342-2385-45aa-b5fb-a1a28b12464f"
+   },
+   "lego": {
+    "lego_id": "S0134L04",
+    "known_text": "அவர்களுடன் வேலை",
+    "target_text": "work with them",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0136L02U07": {
+   "seed": {
+    "seed_number": 136,
+    "known_text": "நிச்சயமாக நீங்கள் அவளிடம் கேட்கலாம், ஏனென்றால் அவள் என் நண்பன்.",
+    "target_text": "Of course you can ask her because she's my friend.",
+    "known_audio_id": "909264c7-ff0f-4fda-aea1-cca60dc4979b",
+    "target1_audio_id": "97a3a59a-96a3-4572-827c-f54a60a3e7ca",
+    "target2_audio_id": "e1c432a1-cc51-459a-99c0-0d8f9840e83d"
+   },
+   "lego": {
+    "lego_id": "S0136L02",
+    "known_text": "ஏனென்றால் அவள் என் நண்பன்",
+    "target_text": "because she's my friend",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0137L03U06": {
+   "seed": {
+    "seed_number": 137,
+    "known_text": "சரியாக இருப்பதை விட அடிக்கடி பேசுவது மிகவும் முக்கியம்.",
+    "target_text": "It's more important to talk often than to be perfect.",
+    "known_audio_id": "cf048db8-0bb8-4e4a-9399-a67078fa4e45",
+    "target1_audio_id": "10fde181-5cf6-4397-8d87-307169ee9a71",
+    "target2_audio_id": "5de99132-44e7-483d-9b15-29ce1dc00e28"
+   },
+   "lego": {
+    "lego_id": "S0137L03",
+    "known_text": "அடிக்கடி",
+    "target_text": "often",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0138L04U06": {
+   "seed": {
+    "seed_number": 138,
+    "known_text": "என் நண்பன் நம்மை சந்திக்க விரும்பிய இடம் இது தான்.",
+    "target_text": "This was where my friend wanted to meet us.",
+    "known_audio_id": "15c53178-2287-41bc-a740-26c1a373460b",
+    "target1_audio_id": "ead93ad2-4b7b-4585-a34a-ba3318f7bc9f",
+    "target2_audio_id": "9a77c09a-774b-439b-ab73-a2a286d035d5"
+   },
+   "lego": {
+    "lego_id": "S0138L04",
+    "known_text": "இது தான் என் நண்பன் நம்மை சந்திக்க",
+    "target_text": "where my friend wanted to meet",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0139L03U07": {
+   "seed": {
+    "seed_number": 139,
+    "known_text": "நான் சீக்கிரம் வந்துவிட்டேன், மன்னிக்கவும்.",
+    "target_text": "I'm sorry that I need to leave so early.",
+    "known_audio_id": "a1bfcda3-4144-435b-99a5-8fda40256846",
+    "target1_audio_id": "dd6bdb8c-041d-4f43-b458-e9e07471e387",
+    "target2_audio_id": "ea0d0461-f96d-414a-af44-50b6f46dcca1"
+   },
+   "lego": {
+    "lego_id": "S0139L03",
+    "known_text": "மன்னிக்கவும் நான் சீக்கிரம்",
+    "target_text": "sorry I'm early",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0144L02U06": {
+   "seed": {
+    "seed_number": 144,
+    "known_text": "நான் இன்று காலை எழுந்திரிக்க விரும்பியதை விட முன்பே எழுந்திரித்தேன்.",
+    "target_text": "I woke earlier than I wanted to this morning.",
+    "known_audio_id": "16519167-5eff-4058-8e92-a26d1e2b7c5d",
+    "target1_audio_id": "9f9516e7-c0cc-4f89-8e41-acc43d91057f",
+    "target2_audio_id": "6cdbae69-48c8-4836-b1d2-acdc7ac46644"
+   },
+   "lego": {
+    "lego_id": "S0144L02",
+    "known_text": "காலை",
+    "target_text": "morning",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0146L01U06": {
+   "seed": {
+    "seed_number": 146,
+    "known_text": "நாங்கள் சரிசெய்ய முயன்றதிலிருந்து எதுவும் வேலை செய்வதாகத் தெரியவில்லை.",
+    "target_text": "Nothing seems to be working since we tried to fix it.",
+    "known_audio_id": "75c8ac98-db48-4ef2-81bb-b83d3b985ad7",
+    "target1_audio_id": "acb716b8-c277-4100-913e-999f9e736df3",
+    "target2_audio_id": "97c6d9f1-2ba8-4455-85e3-d451475dbef9"
+   },
+   "lego": {
+    "lego_id": "S0146L01",
+    "known_text": "சரிசெய்ய",
+    "target_text": "fix",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0147L01U06": {
+   "seed": {
+    "seed_number": 147,
+    "known_text": "அவள் என்னை பதட்டமாக உணரும்போது மிகவும் இரக்கமாக இருந்தாள்.",
+    "target_text": "She was very kind when she saw me feeling nervous.",
+    "known_audio_id": "bf3aeb3a-7ad6-4727-84e6-3f39a8b7a499",
+    "target1_audio_id": "807ed249-3b6b-448c-b5de-413a24234fc0",
+    "target2_audio_id": "564e7b71-6774-44a0-804a-35d3dbbe8908"
+   },
+   "lego": {
+    "lego_id": "S0147L01",
+    "known_text": "பதட்டமாக",
+    "target_text": "nervous",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0152L01U11": {
+   "seed": {
+    "seed_number": 152,
+    "known_text": "நான் உங்கள் விருப்பம் தெரிந்திருந்தால் வேறு மாதிரி செய்திருப்பேன்.",
+    "target_text": "I would have done it differently if I had known what you wanted.",
+    "known_audio_id": "39d40219-8671-4120-90f2-99a88e4cf3cb",
+    "target1_audio_id": "15389261-ebfa-4db0-95e7-826ee5d0369c",
+    "target2_audio_id": "7dc29f92-8b83-4ce6-a9f1-fea39f604945"
+   },
+   "lego": {
+    "lego_id": "S0152L01",
+    "known_text": "வேறு மாதிரி",
+    "target_text": "differently",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0155L02U05": {
+   "seed": {
+    "seed_number": 155,
+    "known_text": "நான் நாளை காலை சில நிமிடங்கள் காத்திருக்கவே பரவாயில்லை.",
+    "target_text": "I don't mind waiting for a few minutes tomorrow morning.",
+    "known_audio_id": "c34e4574-148f-4f8e-afc6-38c31236a6a4",
+    "target1_audio_id": "55af3ed7-042c-49cd-b0bd-84e337883c45",
+    "target2_audio_id": "ed5e3d11-2a8a-4097-9884-8ae2303ac549"
+   },
+   "lego": {
+    "lego_id": "S0155L02",
+    "known_text": "நிமிடங்கள்",
+    "target_text": "minutes",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0157L02U06": {
+   "seed": {
+    "seed_number": 157,
+    "known_text": "நான் அடுத்த மாதம் அங்கே இருக்க மாட்டேன்.",
+    "target_text": "I won't be able to be there next month.",
+    "known_audio_id": "d8c199b2-9c59-43d6-8e59-d722c3324f29",
+    "target1_audio_id": "4e3a0d3b-b587-4890-a20b-9a005a9b1c78",
+    "target2_audio_id": "aae34b9b-7880-428f-bce1-2f5f917540e3"
+   },
+   "lego": {
+    "lego_id": "S0157L02",
+    "known_text": "இருக்க மாட்டேன் அங்கே",
+    "target_text": "won't be able to be there",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0158L01U08": {
+   "seed": {
+    "seed_number": 158,
+    "known_text": "நாம் வேறு ஏதாவது பேசுவோம்.",
+    "target_text": "Let's talk about something else.",
+    "known_audio_id": "d168ff7b-dab5-4435-b7d5-f67c75542d31",
+    "target1_audio_id": "dfcd1282-989d-498b-b56f-9d29335f58dc",
+    "target2_audio_id": "58b8b56d-024e-4403-8161-1e87512185c5"
+   },
+   "lego": {
+    "lego_id": "S0158L01",
+    "known_text": "பேசுவோம்",
+    "target_text": "let's",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0161L04U09": {
+   "seed": {
+    "seed_number": 161,
+    "known_text": "நீங்கள் அந்த புத்தகத்தை ஞாயிற்றுக்கிழமை காலை என்னிடம் தர முடியுமா?",
+    "target_text": "Can you give me that book on Sunday morning?",
+    "known_audio_id": "41fcff59-e295-4131-9a5e-57bd8519459b",
+    "target1_audio_id": "25b5c860-ab76-4b34-926d-afee1ad6fff5",
+    "target2_audio_id": "b89a5d50-772d-467c-8a69-fed6efa42c60"
+   },
+   "lego": {
+    "lego_id": "S0161L04",
+    "known_text": "ஞாயிற்றுக்கிழமை காலை",
+    "target_text": "on Sunday morning",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0163L01U06": {
+   "seed": {
+    "seed_number": 163,
+    "known_text": "நான் அது சுவாரஸ்யமானது என்று நினைக்கிறேன்.",
+    "target_text": "I think that it's interesting.",
+    "known_audio_id": "c72a2326-ef8c-43c2-ab2a-e0fadcf0280e",
+    "target1_audio_id": "55222eaa-c0e1-4d1a-998e-2b99216c7f8f",
+    "target2_audio_id": "9f524b51-3ead-4ff8-b648-7b279d7b2dc1"
+   },
+   "lego": {
+    "lego_id": "S0163L01",
+    "known_text": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது",
+    "target_text": "I think that it's interesting",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0164L01U06": {
+   "seed": {
+    "seed_number": 164,
+    "known_text": "ஒரு சுவாரஸ்யமான புத்தகம்",
+    "target_text": "An interesting book",
+    "known_audio_id": "c85023a6-cffc-4441-ad87-4ae5c1bf87da",
+    "target1_audio_id": "2a336cb3-c086-4b74-819b-19dca60e0275",
+    "target2_audio_id": "52d47593-143d-4926-ab3a-19da1944e829"
+   },
+   "lego": {
+    "lego_id": "S0164L01",
+    "known_text": "சுவாரஸ்யமான புத்தகம்",
+    "target_text": "an interesting book",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0167L01U06": {
+   "seed": {
+    "seed_number": 167,
+    "known_text": "நாளை மாலை நீங்கள் என்ன செய்ய வேண்டும்?",
+    "target_text": "What do you need to do tomorrow afternoon?",
+    "known_audio_id": "515f7fc0-200c-4a36-b957-057549e72ac5",
+    "target1_audio_id": "b25aed60-376a-49a3-aea1-3c20593aeb7f",
+    "target2_audio_id": "24f3fca4-3630-43dc-acf7-844fb48b4012"
+   },
+   "lego": {
+    "lego_id": "S0167L01",
+    "known_text": "என்ன நீங்கள் வேண்டும் செய்ய",
+    "target_text": "what do you need to do",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0168L01U06": {
+   "seed": {
+    "seed_number": 168,
+    "known_text": "அப்புறம் நான் வந்து உதவ முடியும்.",
+    "target_text": "And then I'll be able to come and help later on.",
+    "known_audio_id": "741a463e-efe8-4a60-9205-282f194f3073",
+    "target1_audio_id": "175b4991-f1b6-4fdd-bb54-ea7023b03f09",
+    "target2_audio_id": "c2a4abeb-d9d7-462e-aeab-b8c7d088a423"
+   },
+   "lego": {
+    "lego_id": "S0168L01",
+    "known_text": "அப்புறம்",
+    "target_text": "then",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0173L02U06": {
+   "seed": {
+    "seed_number": 173,
+    "known_text": "இல்லை நன்றி நான் என்னாலேயே சமாளிக்க முடியும்.",
+    "target_text": "No thank you I can manage on my own.",
+    "known_audio_id": "d40202d8-dcaf-4753-af5a-0695254fd062",
+    "target1_audio_id": "8b91c09c-4633-466b-912e-ad2584c156a8",
+    "target2_audio_id": "de13fc62-a42e-4617-9b07-c5d646d44c73"
+   },
+   "lego": {
+    "lego_id": "S0173L02",
+    "known_text": "என்னாலேயே சமாளிக்க முடியும்",
+    "target_text": "manage on my own",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0175L01U06": {
+   "seed": {
+    "seed_number": 175,
+    "known_text": "ஞாயிற்றுக்கிழமை காலை நீங்கள் என்ன செய்ய விரும்புகிறீர்கள்?",
+    "target_text": "What do you want to do on Sunday morning?",
+    "known_audio_id": "2c42f9fa-a4b9-4bf7-b5b9-8569522cb09c",
+    "target1_audio_id": "40f66312-4d1d-421b-89b4-c5365353b19a",
+    "target2_audio_id": "8eabf03b-584b-45ea-b0f5-cb525c15a846"
+   },
+   "lego": {
+    "lego_id": "S0175L01",
+    "known_text": "என்ன நீங்கள் விரும்புகிறீர்கள் செய்ய",
+    "target_text": "what do you want to do",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0176L02U06": {
+   "seed": {
+    "seed_number": 176,
+    "known_text": "அடுத்த வருடம் உதவ முடியுமா என்று நான் அவனிடம் கேட்பேன்.",
+    "target_text": "I'll ask him if he'll be able to help next year.",
+    "known_audio_id": "c6d55d6d-25ae-4070-ab32-e747f29d0d8f",
+    "target1_audio_id": "a05fef3f-1fe7-4772-811c-16d2e6d53d9d",
+    "target2_audio_id": "8d6a5e06-5625-42e3-9424-cda9e7d2e2b6"
+   },
+   "lego": {
+    "lego_id": "S0176L02",
+    "known_text": "அவனிடம்",
+    "target_text": "him",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0178L02U06": {
+   "seed": {
+    "seed_number": 178,
+    "known_text": "என்னிடம் நேரம் இல்லை, ஆனாலும் உங்களை பார்க்க விரும்பினேன்.",
+    "target_text": "I didn't have time, although I wanted to see you.",
+    "known_audio_id": "f38359f4-f53d-42b6-885f-d5fabcb45447",
+    "target1_audio_id": "332aa3ff-376d-4104-ba0d-8013a111f619",
+    "target2_audio_id": "c07d61f8-8839-484c-b0c3-3be3dfdb765b"
+   },
+   "lego": {
+    "lego_id": "S0178L02",
+    "known_text": "ஆனாலும் விரும்பினேன் பார்க்க",
+    "target_text": "although wanted to see you",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0179L01U06": {
+   "seed": {
+    "seed_number": 179,
+    "known_text": "ஞாயிற்றுக்கிழமை மாலை நீங்கள் என்ன செய்யப் போகிறீர்கள்?",
+    "target_text": "What are you going to do on Sunday afternoon?",
+    "known_audio_id": "a02be633-16a7-4d52-a316-c1ef4c4de560",
+    "target1_audio_id": "d0d48f68-53a2-4983-b5c6-d1c0552446f2",
+    "target2_audio_id": "c60bafc7-135c-4f88-add7-efd7e94f3907"
+   },
+   "lego": {
+    "lego_id": "S0179L01",
+    "known_text": "என்ன நீங்கள் செய்யப் போகிறீர்கள்",
+    "target_text": "what are you going to do",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0181L03U06": {
+   "seed": {
+    "seed_number": 181,
+    "known_text": "ஆனால் நான் என் அம்மாவை டாக்டரிடம் அழைத்துச் செல்ல வேண்டும்.",
+    "target_text": "But I have to take my mother to the doctor.",
+    "known_audio_id": "6ff7c81c-edf9-4fab-9c34-3274aaaf0464",
+    "target1_audio_id": "f4aeb416-e509-48a8-a69f-dd0f8f474a12",
+    "target2_audio_id": "f553830c-e4d1-4cf6-9b7c-a38cdc469912"
+   },
+   "lego": {
+    "lego_id": "S0181L03",
+    "known_text": "அழைத்துச் செல்ல என் அம்மாவை டாக்டரிடம்",
+    "target_text": "take my mother to the doctor",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0182L02U06": {
+   "seed": {
+    "seed_number": 182,
+    "known_text": "நீங்கள் என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+    "target_text": "Have you seen my keys anywhere?",
+    "known_audio_id": "1a5e8891-2a9f-4ed6-bfcf-91ee30721be2",
+    "target1_audio_id": "da2599ef-ba03-40aa-8ed2-4c2abfdaf592",
+    "target2_audio_id": "23c85a8f-f95f-4498-8afc-3a0c3f04f49b"
+   },
+   "lego": {
+    "lego_id": "S0182L02",
+    "known_text": "பார்த்தீர்களா என் சாவிகளை எங்காவது",
+    "target_text": "seen my keys anywhere",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0184L02U06": {
+   "seed": {
+    "seed_number": 184,
+    "known_text": "ஆம் நான் அவற்றை கொஞ்ச நேரத்திற்கு முன்பு அலுவலகத்தில் பார்த்தேன்.",
+    "target_text": "Yes I saw them in the office a while ago.",
+    "known_audio_id": "3fc7a25d-e98a-4367-a301-1d3b89b93e5a",
+    "target1_audio_id": "5bb92344-ef10-4a28-ab56-b32bdbcfba72",
+    "target2_audio_id": "f8f820e1-4315-4f2e-ab6e-00bbc8199951"
+   },
+   "lego": {
+    "lego_id": "S0184L02",
+    "known_text": "பார்த்தேன் அவற்றை அலுவலகத்தில்",
+    "target_text": "saw them in the office",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0185L02U06": {
+   "seed": {
+    "seed_number": 185,
+    "known_text": "நான் நினைக்கிறேன் நீங்கள் அவற்றை வேலையில் விட்டு.",
+    "target_text": "I think you left them at work.",
+    "known_audio_id": "9d26d5b0-4871-437c-9794-38c54f74ff49",
+    "target1_audio_id": "0493be03-bccf-4fe4-b606-de520c2a547f",
+    "target2_audio_id": "ef34e53b-a9b2-4cc8-94ab-62b3c1a0b69a"
+   },
+   "lego": {
+    "lego_id": "S0185L02",
+    "known_text": "விட்டு அவற்றை வேலையில்",
+    "target_text": "left them at work",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0187L01U04": {
+   "seed": {
+    "seed_number": 187,
+    "known_text": "நான் இதுவரை மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target_text": "I'm happy so far.",
+    "known_audio_id": "375b3204-4a93-4ac0-a727-320bc7bedb70",
+    "target1_audio_id": "e0b94a1f-c853-4644-94e5-a1217d90e029",
+    "target2_audio_id": "8a19c13f-2ffc-47a2-9772-719299dd6922"
+   },
+   "lego": {
+    "lego_id": "S0187L01",
+    "known_text": "நான் மகிழ்ச்சியாக இதுவரை",
+    "target_text": "I'm happy so far",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0190L01U08": {
+   "seed": {
+    "seed_number": 190,
+    "known_text": "நான் சில கேள்விகள் கேட்கலாமா?",
+    "target_text": "Do you mind if I ask you some questions?",
+    "known_audio_id": "6b763cd6-3b23-4bc4-b2e9-b78fbd3c17d1",
+    "target1_audio_id": "9dad0bab-b619-4ed9-9091-217a34ebab17",
+    "target2_audio_id": "f21f7605-4c01-414f-b008-99876c6dfb9f"
+   },
+   "lego": {
+    "lego_id": "S0190L01",
+    "known_text": "கேள்விகள்",
+    "target_text": "questions",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0194L01U06": {
+   "seed": {
+    "seed_number": 194,
+    "known_text": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+    "target_text": "What are you looking for?",
+    "known_audio_id": "a1d4adcd-6a4c-46b9-ace3-3484cd6fa7ec",
+    "target1_audio_id": "18411a1f-a1b0-456b-872b-ab1f91fa3b6e",
+    "target2_audio_id": "0c2942af-ecba-443a-85b6-8ac93cbd3a35"
+   },
+   "lego": {
+    "lego_id": "S0194L01",
+    "known_text": "என்ன நீங்கள் தேடுகிறீர்கள்",
+    "target_text": "what are you looking for",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0199L01U06": {
+   "seed": {
+    "seed_number": 199,
+    "known_text": "என் நண்பர் ஒரு அலுவலகத்தில் வேலை செய்வார்.",
+    "target_text": "My friend used to work in an office.",
+    "known_audio_id": "cfd2ba16-b838-4d53-9595-86d563b273f1",
+    "target1_audio_id": "a772a551-9e40-416f-9c5d-c32ad535c6ee",
+    "target2_audio_id": "ff93f505-e073-4825-8acc-7ab2cd24aa03"
+   },
+   "lego": {
+    "lego_id": "S0199L01",
+    "known_text": "நண்பர் வேலை அலுவலகத்தில்",
+    "target_text": "used to work in an office",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0201L01U06": {
+   "seed": {
+    "seed_number": 201,
+    "known_text": "நாம் என்ன நடக்கப் போகிறது என்று தெரிந்துகொள்ள விரும்பினோம்.",
+    "target_text": "We wanted to know what was going to happen.",
+    "known_audio_id": "2704da8d-9d2c-4f6e-a99c-ddb8a2e39333",
+    "target1_audio_id": "4ebeae0e-f658-468c-86ab-0ddc48f72448",
+    "target2_audio_id": "fb252e9d-f857-4317-81cc-f3687f7e043e"
+   },
+   "lego": {
+    "lego_id": "S0201L01",
+    "known_text": "விரும்பினோம் தெரிந்துகொள்ள என்ன",
+    "target_text": "wanted to know what",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0202L01U06": {
+   "seed": {
+    "seed_number": 202,
+    "known_text": "எவரும் கேள்விக்கு எப்படி பதில் சொல்வது என்று நிச்சயமில்லை.",
+    "target_text": "Nobody was sure how to answer the question.",
+    "known_audio_id": "0a37db0d-bf4b-4a5e-878c-849e5fcbe91e",
+    "target1_audio_id": "f4366eae-0747-4b40-852f-9860b97ee3a3",
+    "target2_audio_id": "0443e07e-f4e6-4d70-8509-8a951d2e9ed9"
+   },
+   "lego": {
+    "lego_id": "S0202L01",
+    "known_text": "எவரும்",
+    "target_text": "nobody",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0204L03U06": {
+   "seed": {
+    "seed_number": 204,
+    "known_text": "நான் அவளை உங்களுக்கு ஏற்பாடுகளை கவனிக்க உதவ விரும்பினேன்.",
+    "target_text": "I wanted her to help you to deal with the arrangements.",
+    "known_audio_id": "3c2e1783-a54b-4e9d-97cc-d449190654ee",
+    "target1_audio_id": "f9480df8-81be-40c0-88c0-197eb7bf91d5",
+    "target2_audio_id": "e5f13539-3682-4494-a341-448c75e19b98"
+   },
+   "lego": {
+    "lego_id": "S0204L03",
+    "known_text": "விரும்பினேன் அவளை உதவ",
+    "target_text": "wanted her to help",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0205L01U06": {
+   "seed": {
+    "seed_number": 205,
+    "known_text": "நான் சொல்ல முயற்சித்த வார்த்தையை மறந்துவிட்டேன்.",
+    "target_text": "I've forgotten the word I was trying to say.",
+    "known_audio_id": "d77d7624-b4ba-478c-9ebf-4b1c2d50d8e3",
+    "target1_audio_id": "c2896d3d-d53a-451a-9399-a486664b76e2",
+    "target2_audio_id": "7f0811cc-4eed-4df8-9003-495c8f2354cd"
+   },
+   "lego": {
+    "lego_id": "S0205L01",
+    "known_text": "மறந்துவிட்டேன்",
+    "target_text": "forgotten",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0210L01U06": {
+   "seed": {
+    "seed_number": 210,
+    "known_text": "அவர்கள் நினைக்கிறார்கள் நாம் சிக்கலை விவாதிக்க வேண்டும்.",
+    "target_text": "They think that we need to discuss the problem.",
+    "known_audio_id": "f14f0662-0fd7-4792-ab80-ed449776d3e4",
+    "target1_audio_id": "35c1f6ed-d877-4c6f-b375-31f64c01f484",
+    "target2_audio_id": "c307be71-6783-42f3-b060-2d88adf54fac"
+   },
+   "lego": {
+    "lego_id": "S0210L01",
+    "known_text": "விவாதிக்க",
+    "target_text": "discuss",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0213L01U06": {
+   "seed": {
+    "seed_number": 213,
+    "known_text": "அவர்கள் என்ன சாதிக்க முயற்சிக்கிறார்கள் என்று எங்களுக்கு தெரியாது.",
+    "target_text": "We don't know what they're trying to achieve.",
+    "known_audio_id": "055625e0-2a92-4586-ae52-9e22779055be",
+    "target1_audio_id": "1c37ac83-4d5a-44a7-95eb-d81bf5a85ae0",
+    "target2_audio_id": "9d037a28-c3da-4d46-862f-b36eb8ab3dcf"
+   },
+   "lego": {
+    "lego_id": "S0213L01",
+    "known_text": "சாதிக்க",
+    "target_text": "achieve",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0215L01U06": {
+   "seed": {
+    "seed_number": 215,
+    "known_text": "நான் சனிக்கிழமை இரவு வெளியே சென்றேன்.",
+    "target_text": "I went out on Saturday night.",
+    "known_audio_id": "14105234-048c-4b00-97b8-b40413da13bb",
+    "target1_audio_id": "9abf52b7-310e-46bd-b1a5-438c412dfd42",
+    "target2_audio_id": "b06fca38-891b-4731-839d-aed9285d7922"
+   },
+   "lego": {
+    "lego_id": "S0215L01",
+    "known_text": "சென்றேன்",
+    "target_text": "went",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0217L03U08": {
+   "seed": {
+    "seed_number": 217,
+    "known_text": "நான் ஒன்று அல்லது இரண்டு கிளாஸ் தண்ணீர் குடித்தேன்.",
+    "target_text": "I had a glass or two of water.",
+    "known_audio_id": "67216a36-472c-48a2-8002-d561e25983d9",
+    "target1_audio_id": "8d231d0e-a4d9-46d5-ac33-6a4efd60dd99",
+    "target2_audio_id": "5c7e2c4d-ef8a-465c-b07b-61d1f380e51f"
+   },
+   "lego": {
+    "lego_id": "S0217L03",
+    "known_text": "கிளாஸ் இரண்டு தண்ணீர்",
+    "target_text": "glass or two of water",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0220L03U06": {
+   "seed": {
+    "seed_number": 220,
+    "known_text": "நீங்கள் கொஞ்சம் தொலைக்காட்சி பார்த்தீர்களா?",
+    "target_text": "Did you watch a bit of television?",
+    "known_audio_id": "efe2422c-e566-4fdc-9687-a8bef5c22d3f",
+    "target1_audio_id": "afcc2d65-7337-4b48-aea8-150db25c6be1",
+    "target2_audio_id": "b564c3d7-c7f9-47ea-9977-96c97b977843"
+   },
+   "lego": {
+    "lego_id": "S0220L03",
+    "known_text": "தொலைக்காட்சி",
+    "target_text": "television",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0221L03U06": {
+   "seed": {
+    "seed_number": 221,
+    "known_text": "நான் கால்பந்து பார்த்தேன், பிறகு ஒரு திரைப்படம் பார்த்தேன்.",
+    "target_text": "I watched the football and then I watched a film.",
+    "known_audio_id": "235f3333-3516-4f04-8b85-e3405d3404ce",
+    "target1_audio_id": "af5baecb-1544-461b-92bf-7433c8a1c95e",
+    "target2_audio_id": "09468a89-8052-4ef8-b98d-9a737ac9f6d4"
+   },
+   "lego": {
+    "lego_id": "S0221L03",
+    "known_text": "திரைப்படம்",
+    "target_text": "film",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0224L01U07": {
+   "seed": {
+    "seed_number": 224,
+    "known_text": "அவன் இப்போதுதான் கற்க ஆரம்பித்தான்.",
+    "target_text": "He's just started to learn.",
+    "known_audio_id": "481678b9-19e5-44a0-852e-0e296243bca2",
+    "target1_audio_id": "16e3c1cf-6d1d-4d00-9de5-3a8c1c03e5f5",
+    "target2_audio_id": "8f627525-457d-463f-a47d-2a2a4bd396ed"
+   },
+   "lego": {
+    "lego_id": "S0224L01",
+    "known_text": "அவன் இப்போதுதான் ஆரம்பித்தான் கற்க",
+    "target_text": "he's just started to learn",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0225L01U09": {
+   "seed": {
+    "seed_number": 225,
+    "known_text": "அவன் முடிந்தால் உங்களுக்கு ஒரு பதில் கொடுப்பான்.",
+    "target_text": "He would give you an answer if he could.",
+    "known_audio_id": "ba54038d-cf7c-439c-8746-77bb877f5025",
+    "target1_audio_id": "510eb1b7-a402-4d09-9e09-89c4269886b6",
+    "target2_audio_id": "d6944056-6dcd-4f8a-b60e-c03f15e14442"
+   },
+   "lego": {
+    "lego_id": "S0225L01",
+    "known_text": "கொடுப்பான் பதில் முடிந்தால்",
+    "target_text": "give you an answer if he could",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0229L02U05": {
+   "seed": {
+    "seed_number": 229,
+    "known_text": "அந்த பெண் முடிந்தால் உங்களுக்கு உதவுவாள்.",
+    "target_text": "That woman would help you if she could.",
+    "known_audio_id": "366724a0-916a-4d22-bcd2-a10a1d07f274",
+    "target1_audio_id": "1242b775-74f0-4c56-977b-7c627d276269",
+    "target2_audio_id": "c3341a8f-95c1-4548-adf6-5b5a4e03d170"
+   },
+   "lego": {
+    "lego_id": "S0229L02",
+    "known_text": "உதவுவாள் முடிந்தால்",
+    "target_text": "would help you if she could",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0231L01U06": {
+   "seed": {
+    "seed_number": 231,
+    "known_text": "நான் உதவி கேட்க விரும்பிய ஒரு வயதான ஆணை அறிவேன்.",
+    "target_text": "I know an old man who wanted to ask for help.",
+    "known_audio_id": "8db55d49-6d31-4066-8700-8dc5ea91349b",
+    "target1_audio_id": "0efb5a59-76ac-482d-b1ff-0a41cecc01d2",
+    "target2_audio_id": "21fa8541-f7e8-4309-9b5d-5c5d282bc59b"
+   },
+   "lego": {
+    "lego_id": "S0231L01",
+    "known_text": "வயதான",
+    "target_text": "old",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0237L01U06": {
+   "seed": {
+    "seed_number": 237,
+    "known_text": "அவன் வார இறுதிக்கு முன்பு உங்களிடம் சொல்ல என்னை விரும்பினான்.",
+    "target_text": "He wanted me to tell you before the weekend.",
+    "known_audio_id": "7c8fd259-4f55-4805-8fa8-cf51a92be24f",
+    "target1_audio_id": "77aa3bf2-8aeb-473c-b4d7-82ecda5478d1",
+    "target2_audio_id": "f4e86136-7fe3-4fb3-a85a-06382e5c3e15"
+   },
+   "lego": {
+    "lego_id": "S0237L01",
+    "known_text": "விரும்பினான் என்னை சொல்ல",
+    "target_text": "wanted me to tell you",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0243L01U06": {
+   "seed": {
+    "seed_number": 243,
+    "known_text": "நான் சாப்பிட அதே விஷயத்தை கேட்கப் போகிறேன்.",
+    "target_text": "I'm going to ask for the same thing to eat.",
+    "known_audio_id": "fcb09392-dc94-499a-b520-8c673cda5721",
+    "target1_audio_id": "66c6235f-2f4d-40b6-b847-b03679fb82b6",
+    "target2_audio_id": "7a8858e7-013c-4c84-8cec-f72fda6300ee"
+   },
+   "lego": {
+    "lego_id": "S0243L01",
+    "known_text": "சாப்பிட",
+    "target_text": "eat",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0244L01U06": {
+   "seed": {
+    "seed_number": 244,
+    "known_text": "நான் நிறைய கற்றுக்கொண்டேன்.",
+    "target_text": "I've learnt a lot already",
+    "known_audio_id": "583c3f19-42fe-4e74-8fb9-58e0f4c34d7e",
+    "target1_audio_id": "4abdf396-0967-4f2b-a9ec-45daf95dd6b5",
+    "target2_audio_id": "baaa72d1-d156-48f7-97db-328df0ae758d"
+   },
+   "lego": {
+    "lego_id": "S0244L01",
+    "known_text": "கற்றுக்கொண்டேன் நிறைய",
+    "target_text": "learnt a lot already",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0250L01U08": {
+   "seed": {
+    "seed_number": 250,
+    "known_text": "நான் பதில் சொல்வதற்கு முன்பு வேறு ஏதாவது சொல்ல முடியுமா?",
+    "target_text": "Can you tell me something else before I answer?",
+    "known_audio_id": "77e689bd-bacf-4105-a192-17c191cfd52a",
+    "target1_audio_id": "5dac9a37-e2ec-4eed-a137-9c49df80260c",
+    "target2_audio_id": "886174fb-9779-465f-9b19-8055f9e47a05"
+   },
+   "lego": {
+    "lego_id": "S0250L01",
+    "known_text": "ஏதாவது முன்பு பதில்",
+    "target_text": "something else before I answer",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0251L01U10": {
+   "seed": {
+    "seed_number": 251,
+    "known_text": "நாங்கள் முடிக்கும் வரை தெரிந்துகொள்ள விரும்பவில்லை.",
+    "target_text": "I don't want to find out until after we finish.",
+    "known_audio_id": "41589273-6c13-438f-b302-5b0044a25ac4",
+    "target1_audio_id": "56283ac3-f06f-4a28-9fa0-58b9edccc462",
+    "target2_audio_id": "1f9685a7-c351-478f-b8a1-0ec10b317469"
+   },
+   "lego": {
+    "lego_id": "S0251L01",
+    "known_text": "வரை",
+    "target_text": "until",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0268L02U08": {
+   "seed": {
+    "seed_number": 268,
+    "known_text": "ஆம், அவள் கடந்த வாரம் என்னிடம் இரண்டு மின்னஞ்சல்கள் அனுப்பினாள்.",
+    "target_text": "Yes she sent me two emails last week.",
+    "known_audio_id": "481cd495-77ef-437c-b9a9-d4447c76267c",
+    "target1_audio_id": "26961a10-d06e-4908-bb40-aee9fe355269",
+    "target2_audio_id": "5c17f963-3cf3-4a9b-863c-4bcfa7f3a008"
+   },
+   "lego": {
+    "lego_id": "S0268L02",
+    "known_text": "அனுப்பினாள் மின்னஞ்சல்கள் கடந்த வாரம்",
+    "target_text": "sent me emails last week",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0271L01U02": {
+   "seed": {
+    "seed_number": 271,
+    "known_text": "அடுத்த மாதம் எங்களுடன் வர விரும்புகிறீர்களா?",
+    "target_text": "Would you like to come with us next month?",
+    "known_audio_id": "7d6b6d63-6c47-4bcb-9375-eb962fd91352",
+    "target1_audio_id": "7aee820d-6bec-48dd-be44-91650d28275b",
+    "target2_audio_id": "b743b32d-0379-4233-b471-f95c4c2ae432"
+   },
+   "lego": {
+    "lego_id": "S0271L01",
+    "known_text": "விரும்புகிறீர்களா வர எங்களுடன்",
+    "target_text": "would you like to come with us",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0272L01U06": {
+   "seed": {
+    "seed_number": 272,
+    "known_text": "ஆம், அது ஒரு அருமையான யோசனையாக தோன்றுகிறது.",
+    "target_text": "Yes that sounds like a great idea.",
+    "known_audio_id": "9ce0a5fa-e2d8-401a-bfae-0ab738a060d5",
+    "target1_audio_id": "2a540bd3-9050-47ae-9a42-d785170a34c0",
+    "target2_audio_id": "e9f6ba72-361a-433e-9216-c420228cb57c"
+   },
+   "lego": {
+    "lego_id": "S0272L01",
+    "known_text": "தோன்றுகிறது",
+    "target_text": "sounds",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0278L01U06": {
+   "seed": {
+    "seed_number": 278,
+    "known_text": "நேற்று இரவு எல்லாவற்றையும் முடிக்க வேண்டியதா?",
+    "target_text": "Did you have to finish everything last night?",
+    "known_audio_id": "f68c242c-3862-404c-a35a-ca6e59a8a4ad",
+    "target1_audio_id": "e3949c29-268a-45e6-8dfa-bed589f0f47d",
+    "target2_audio_id": "b6b38fce-6676-4b43-b98d-88f839ef5c5e"
+   },
+   "lego": {
+    "lego_id": "S0278L01",
+    "known_text": "முடிக்க எல்லாவற்றையும் இரவு",
+    "target_text": "finish everything last night",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0280L01U06": {
+   "seed": {
+    "seed_number": 280,
+    "known_text": "இல்லை, நான் மிக முக்கியமான வேலையை மட்டும் செய்ய வேண்டியிருந்தது.",
+    "target_text": "No I only had to do the most important job.",
+    "known_audio_id": "7ee8552e-08e6-41bc-b4e6-65f879bf5b57",
+    "target1_audio_id": "4c27f362-2d85-4eeb-825c-9e052afe60e6",
+    "target2_audio_id": "888f4aaf-b587-43a9-92f5-160b75a39bb9"
+   },
+   "lego": {
+    "lego_id": "S0280L01",
+    "known_text": "மிக",
+    "target_text": "most",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0281L01U06": {
+   "seed": {
+    "seed_number": 281,
+    "known_text": "நான் காபி குடிக்கும் முன்பு தொடங்கலாமா?",
+    "target_text": "Do you mind if I finish my coffee before you start?",
+    "known_audio_id": "5673a7a6-17ff-4a79-afe9-fb904549a287",
+    "target1_audio_id": "2881d789-80f5-4bd1-8a5b-88d51657f3f5",
+    "target2_audio_id": "93b60170-31ac-4146-b338-74e941d6599b"
+   },
+   "lego": {
+    "lego_id": "S0281L01",
+    "known_text": "காபி",
+    "target_text": "coffee",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0282L01U06": {
+   "seed": {
+    "seed_number": 282,
+    "known_text": "இல்லை, அது ஒரு பிரச்னை இல்லை.",
+    "target_text": "No that's not a problem.",
+    "known_audio_id": "59c77a27-8410-402e-b4c7-aafc24bf7e34",
+    "target1_audio_id": "d1ef5454-cb1f-406f-98c3-1ea7bc00db0f",
+    "target2_audio_id": "a065e577-7d7d-4c75-9db4-7fec8211b4c8"
+   },
+   "lego": {
+    "lego_id": "S0282L01",
+    "known_text": "அது பிரச்னை இல்லை",
+    "target_text": "that's not a problem",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0285L01U09": {
+   "seed": {
+    "seed_number": 285,
+    "known_text": "அவள் ஆங்கிலம் பேசுகிறாள்.",
+    "target_text": "She speaks English.",
+    "known_audio_id": "e64ddf6f-f841-475a-8a65-da3446232e0b",
+    "target1_audio_id": "671dffd1-fb5b-4c7c-8b31-4bb46852cc5e",
+    "target2_audio_id": "571242e4-cdac-4d0a-92e5-0a84d9fd9de8"
+   },
+   "lego": {
+    "lego_id": "S0285L01",
+    "known_text": "பேசுகிறாள்",
+    "target_text": "speaks",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0291L01U06": {
+   "seed": {
+    "seed_number": 291,
+    "known_text": "விரைவில் நான் சிறப்பாக பேச முடியும் என்று நம்புகிறேன்.",
+    "target_text": "I hope I'll be able to speak better soon.",
+    "known_audio_id": "2b6d47bb-74e5-412b-972c-5fcd3ead9899",
+    "target1_audio_id": "c51650e5-6adc-4d48-ac06-fe470b8d3feb",
+    "target2_audio_id": "5265e5a8-43ee-4c9c-82c6-1fd4376819e1"
+   },
+   "lego": {
+    "lego_id": "S0291L01",
+    "known_text": "நம்புகிறேன் பேச சிறப்பாக",
+    "target_text": "hope to speak better",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0295L02U06": {
+   "seed": {
+    "seed_number": 295,
+    "known_text": "ஒரு நாளில் முடிக்க விரும்புவதாக நான் சொல்லவில்லை.",
+    "target_text": "I didn't say that I wanted to finish in a day.",
+    "known_audio_id": "c5f9b55c-5297-4f03-a4cf-1bfc4c754c23",
+    "target1_audio_id": "feb174e7-78ed-4748-aa32-c2cc565d6907",
+    "target2_audio_id": "7098fded-e3a8-46a6-b91e-b462d22f0c9a"
+   },
+   "lego": {
+    "lego_id": "S0295L02",
+    "known_text": "முடிக்க நாளில்",
+    "target_text": "finish in a day",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0298L01U06": {
+   "seed": {
+    "seed_number": 298,
+    "known_text": "என்னிடம் சொல்ல இனி எதுவும் இல்லை.",
+    "target_text": "I've got nothing left to say.",
+    "known_audio_id": "012ef321-62c4-4b31-b69e-737cbc8c3bec",
+    "target1_audio_id": "5de551a9-ac11-42d6-b63b-c15cad9ca7cf",
+    "target2_audio_id": "da6b9253-8dfb-4102-a962-e04327bcc57c"
+   },
+   "lego": {
+    "lego_id": "S0298L01",
+    "known_text": "எதுவும் இல்லை சொல்ல",
+    "target_text": "nothing left to say",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0301L03U07": {
+   "seed": {
+    "seed_number": 301,
+    "known_text": "அவன் உனக்கு ஏதாவது காட்ட விரும்புகிறான் என்று சொன்னான்.",
+    "target_text": "He said that he wants to show you something.",
+    "known_audio_id": "27a2edd0-48d5-4c83-8c40-4c60ad23cc9b",
+    "target1_audio_id": "581b6ec5-d9b0-4423-9e4a-20d0e2018df3",
+    "target2_audio_id": "41e27acd-034f-448f-9c35-7d3790442f7d"
+   },
+   "lego": {
+    "lego_id": "S0301L03",
+    "known_text": "உனக்கு ஏதாவது காட்ட",
+    "target_text": "to show you something",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0302L03U06": {
+   "seed": {
+    "seed_number": 302,
+    "known_text": "அவள் ஒரு நகரத்தில் வாழ விரும்பவில்லை என்று சொன்னாள்.",
+    "target_text": "She said that she doesn't want to live in a city.",
+    "known_audio_id": "afc92ed1-78be-4406-ab3f-8c834987a13e",
+    "target1_audio_id": "6393c187-5ad4-4828-8ee4-962f266358e5",
+    "target2_audio_id": "c9ad5cb2-6262-4c2b-95ae-090725ff8d78"
+   },
+   "lego": {
+    "lego_id": "S0302L03",
+    "known_text": "வாழ விரும்பவில்லை",
+    "target_text": "doesn't want to live",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0304L02U08": {
+   "seed": {
+    "seed_number": 304,
+    "known_text": "அவள் வீட்டிலிருந்து வேலை செய்ய விரும்பவில்லை என்று நினைக்கிறேன்.",
+    "target_text": "I think that she doesn't want to work from home.",
+    "known_audio_id": "c54544ff-aa84-4066-8ecb-6eb92e34a5c7",
+    "target1_audio_id": "ebef4369-f141-4e07-88f6-44c04802aa18",
+    "target2_audio_id": "d53577a5-5ad1-411c-b07c-01fe3019fb33"
+   },
+   "lego": {
+    "lego_id": "S0304L02",
+    "known_text": "வீட்டிலிருந்து",
+    "target_text": "from home",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0312L03U08": {
+   "seed": {
+    "seed_number": 312,
+    "known_text": "நாளை இரவு தான் மற்ற அறையைப் பயன்படுத்த முடியும் என்று அவள் சொன்னாள்.",
+    "target_text": "She said that she could use the other room tomorrow night.",
+    "known_audio_id": "bf791bbb-87c3-4400-bd5e-104446368284",
+    "target1_audio_id": "ab6f51cd-a7d7-4bff-b939-901779998923",
+    "target2_audio_id": "ed23a0b2-2d9b-45a3-bd82-c9b1273467b0"
+   },
+   "lego": {
+    "lego_id": "S0312L03",
+    "known_text": "நாளை இரவு",
+    "target_text": "tomorrow night",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0313L02U06": {
+   "seed": {
+    "seed_number": 313,
+    "known_text": "எல்லா ஐந்து விளையாட்டுகளையும் பார்க்க முடியவில்லை என்று அவன் சொன்னான்.",
+    "target_text": "He said that he couldn't watch all five games.",
+    "known_audio_id": "8796125d-ec6c-4161-a90b-f1a2183d1a03",
+    "target1_audio_id": "a754448f-e4d0-4d6e-b1d1-bdc8b12ac2bd",
+    "target2_audio_id": "f03e7e8d-7088-4ec4-bccd-edcec3dc20a1"
+   },
+   "lego": {
+    "lego_id": "S0313L02",
+    "known_text": "எல்லா ஐந்து விளையாட்டுகளையும்",
+    "target_text": "all five games",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0315L02U07": {
+   "seed": {
+    "seed_number": 315,
+    "known_text": "அவன் விரும்பிய காரை வாங்க அவனால் முடியவில்லை என்று நினைக்கிறேன்.",
+    "target_text": "I think that he couldn't afford the car that he wanted.",
+    "known_audio_id": "5bec57a8-5d59-42aa-b239-a9b481547041",
+    "target1_audio_id": "fabef82f-8589-4f02-87c5-23ba976f18d9",
+    "target2_audio_id": "05fb9723-9a20-4fbb-a601-b5a51e26ee3f"
+   },
+   "lego": {
+    "lego_id": "S0315L02",
+    "known_text": "அவன் விரும்பிய காரை",
+    "target_text": "the car that he wanted",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0316L04U06": {
+   "seed": {
+    "seed_number": 316,
+    "known_text": "திங்கள்கிழமை அவள் தன் தம்பியை அழைத்து வர முடியும் என்று நினைக்கிறாயா?",
+    "target_text": "Do you think that she could bring her brother on Monday?",
+    "known_audio_id": "877de31e-9c78-4f96-8cbf-3bd10691157d",
+    "target1_audio_id": "362118a8-7741-4e4f-8df1-1fa9fca49224",
+    "target2_audio_id": "146ad304-d908-400a-8a8d-4e402352461d"
+   },
+   "lego": {
+    "lego_id": "S0316L04",
+    "known_text": "திங்கள்கிழமை",
+    "target_text": "on Monday",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0318L02U09": {
+   "seed": {
+    "seed_number": 318,
+    "known_text": "இல்லை, இந்த முறை அவளால் முடியும் என்று நினைக்கவில்லை.",
+    "target_text": "No I don't think she could this time.",
+    "known_audio_id": "26462e60-3844-4d65-9340-810760994227",
+    "target1_audio_id": "adb52bef-d7f8-483e-baae-4c1f9d1090dd",
+    "target2_audio_id": "6f1a4fa6-db2c-4b43-93c8-ff1f9b6d23b9"
+   },
+   "lego": {
+    "lego_id": "S0318L02",
+    "known_text": "இந்த முறை",
+    "target_text": "this time",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0322L02U07": {
+   "seed": {
+    "seed_number": 322,
+    "known_text": "அதே புத்தகத்தை படிக்க வேண்டும் என்று அவள் சொன்னாள்.",
+    "target_text": "She said that she needs to read the same book.",
+    "known_audio_id": "44850ac8-63a3-458e-bf61-59405a2bad4a",
+    "target1_audio_id": "cf89dc77-d2ec-4899-bbf3-e352428fff44",
+    "target2_audio_id": "af714295-4f0b-4606-89af-a9cb8383a49f"
+   },
+   "lego": {
+    "lego_id": "S0322L02",
+    "known_text": "அதே புத்தகத்தை",
+    "target_text": "the same book",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0323L02U07": {
+   "seed": {
+    "seed_number": 323,
+    "known_text": "பள்ளிக்கு நடந்து செல்ல வேண்டியதில்லை என்று அவன் சொன்னான்.",
+    "target_text": "He said that he doesn't need to walk to school.",
+    "known_audio_id": "0c405c99-8a3b-44c8-b3a8-3d75c4b6ff4d",
+    "target1_audio_id": "8e263952-d236-4332-b0a0-76c34ee5156e",
+    "target2_audio_id": "90e734d7-cae8-4eeb-bc95-711618812ecf"
+   },
+   "lego": {
+    "lego_id": "S0323L02",
+    "known_text": "பள்ளிக்கு",
+    "target_text": "to school",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0325L03U06": {
+   "seed": {
+    "seed_number": 325,
+    "known_text": "அவன் சாத்தியமான பத்து பிரச்சினைகளை பரிசீலிக்க வேண்டும் என்று நினைக்கிறேன்.",
+    "target_text": "I think that he needs to consider ten possible problems.",
+    "known_audio_id": "22c29348-9540-4573-b24a-e8d3f4e29263",
+    "target1_audio_id": "4d7a6400-0bfc-499b-adda-5a8b769a95d7",
+    "target2_audio_id": "5ed0f3e8-cdbc-4c6f-846f-3ba788cb8cde"
+   },
+   "lego": {
+    "lego_id": "S0325L03",
+    "known_text": "பத்து",
+    "target_text": "ten",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0333L02U07": {
+   "seed": {
+    "seed_number": 333,
+    "known_text": "குழுவுடன் அதிக நேரம் செலவிட முடியாது என்று அவள் சொன்னாள்.",
+    "target_text": "She said that she can't spend much time with the group.",
+    "known_audio_id": "fa1d01c0-6de4-47cd-8b57-420af6a27f22",
+    "target1_audio_id": "4e134118-9176-4666-b76e-7c5cbcb4e99b",
+    "target2_audio_id": "e7183b6a-d0cb-4588-9d6f-f26243f17cb4"
+   },
+   "lego": {
+    "lego_id": "S0333L02",
+    "known_text": "குழுவுடன்",
+    "target_text": "with the group",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0334L02U06": {
+   "seed": {
+    "seed_number": 334,
+    "known_text": "பூனைக்குட்டியை உன்னை பிடிக்க விட முடியும் என்று அவன் சொன்னான்.",
+    "target_text": "He said that he can let you hold the kitten",
+    "known_audio_id": "64529df9-a959-4544-8da0-bf98bf55e967",
+    "target1_audio_id": "0879ffc1-dd6a-4fa4-bf83-0c992098ad75",
+    "target2_audio_id": "209e48ec-0b17-46bd-aa98-e3b7fe3fa07c"
+   },
+   "lego": {
+    "lego_id": "S0334L02",
+    "known_text": "பூனைக்குட்டியை பிடிக்க",
+    "target_text": "hold the kitten",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0341L02U07": {
+   "seed": {
+    "seed_number": 341,
+    "known_text": "சில நாட்களுக்கு முன்பு நான் ஒருவரை சந்தித்தேன்.",
+    "target_text": "I met someone a few days ago.",
+    "known_audio_id": "1d3eefdd-2196-482e-9a5b-e59ce7d49091",
+    "target1_audio_id": "419ea720-362f-4711-adee-8b2f9e5a842f",
+    "target2_audio_id": "927aad94-8b3b-406e-bf58-210f2890d517"
+   },
+   "lego": {
+    "lego_id": "S0341L02",
+    "known_text": "சில நாட்களுக்கு முன்பு",
+    "target_text": "a few days ago",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0342L01U06": {
+   "seed": {
+    "seed_number": 342,
+    "known_text": "ஏதோ சொன்ன ஒருவரை நான் சந்தித்தேன்.",
+    "target_text": "I met someone who said something.",
+    "known_audio_id": "ca7c8207-a115-49a9-b929-14d514d08508",
+    "target1_audio_id": "a728ed75-8011-467a-b949-eecec4ed69eb",
+    "target2_audio_id": "da93a15e-55db-4a73-a7d7-fbdb3530cc97"
+   },
+   "lego": {
+    "lego_id": "S0342L01",
+    "known_text": "சொன்ன",
+    "target_text": "who said",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0343L03U06": {
+   "seed": {
+    "seed_number": 343,
+    "known_text": "பொருளாதாரத்தைப் பற்றி கவலைப்படுவதாக சொன்னவர்.",
+    "target_text": "Who said that she's worried about the economy.",
+    "known_audio_id": "afb88fff-0341-4cf4-8d97-5cbfb7c95064",
+    "target1_audio_id": "8ef6c7fe-c38e-40ed-8d85-819f2691f9ac",
+    "target2_audio_id": "9d4d3842-ce1e-4613-96d4-ff2f012bb267"
+   },
+   "lego": {
+    "lego_id": "S0343L03",
+    "known_text": "சொன்னவர்",
+    "target_text": "who said that",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0344L02U06": {
+   "seed": {
+    "seed_number": 344,
+    "known_text": "உனக்கு உதவ மகிழ்ச்சி என்று சொன்னவர்.",
+    "target_text": "Who said that he's happy to help you.",
+    "known_audio_id": "8e4fcfcc-fc10-41dd-bb95-65498e503bed",
+    "target1_audio_id": "0e75af1e-bcfb-4ed5-be1a-89613b67b39d",
+    "target2_audio_id": "e3e4d606-940a-476c-832d-33f45a0d1116"
+   },
+   "lego": {
+    "lego_id": "S0344L02",
+    "known_text": "என்று சொன்னவர்",
+    "target_text": "who said that",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0345L01U06": {
+   "seed": {
+    "seed_number": 345,
+    "known_text": "இன்னும் கிளம்பத் தயாராக இல்லை என்று சொன்னவர்.",
+    "target_text": "Who said that he's not ready to leave yet.",
+    "known_audio_id": "9ce03d8f-d119-4f08-8ad9-4db86408d199",
+    "target1_audio_id": "f4eb9a1a-109f-4a16-bf7a-6e029fc64ae8",
+    "target2_audio_id": "61c35a58-09fa-425b-8ea1-520330643d9a"
+   },
+   "lego": {
+    "lego_id": "S0345L01",
+    "known_text": "இன்னும் கிளம்பத் தயாராக இல்லை",
+    "target_text": "he's not ready to leave yet",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0346L02U06": {
+   "seed": {
+    "seed_number": 346,
+    "known_text": "அவளுடைய புத்தகம் எனக்கு பிடித்திருந்தது என்பதை அவள் அறிய வேண்டும் என்று விரும்பினேன்.",
+    "target_text": "I wanted her to know that I liked her book.",
+    "known_audio_id": "eb45b037-7252-4d12-89a0-80f095576d5b",
+    "target1_audio_id": "bc28f319-2417-416a-b00b-5bb19bd191ac",
+    "target2_audio_id": "8118d934-b55c-4642-a275-22c81af974b5"
+   },
+   "lego": {
+    "lego_id": "S0346L02",
+    "known_text": "அறிய வேண்டும் என்று விரும்பினேன்",
+    "target_text": "I wanted her to know",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0347L03U06": {
+   "seed": {
+    "seed_number": 347,
+    "known_text": "ஒரு வாரத்திற்கு முன்பு என்ன நடந்தது என்பதை அறிய அவன் விரும்பினான்.",
+    "target_text": "He wanted to know what was happening a week ago.",
+    "known_audio_id": "a5e435ba-88e7-4c17-95ac-6d1076e08618",
+    "target1_audio_id": "3c6e42b9-8216-4c28-8a51-77a4765ac926",
+    "target2_audio_id": "e124b4d5-91d7-46d2-a185-f027fda2efa3"
+   },
+   "lego": {
+    "lego_id": "S0347L03",
+    "known_text": "ஒரு வாரத்திற்கு முன்பு",
+    "target_text": "a week ago",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0349L02U06": {
+   "seed": {
+    "seed_number": 349,
+    "known_text": "வெள்ளி இரவு அவன் வெளியே செல்ல விரும்பினானா?",
+    "target_text": "Did he want to go out on Friday night?",
+    "known_audio_id": "9dde1ecc-f622-4420-b282-1094943eae7a",
+    "target1_audio_id": "41eef50a-4aa1-445b-ac89-96da636f3214",
+    "target2_audio_id": "189db3d9-0e28-4293-abdd-fb589eea6225"
+   },
+   "lego": {
+    "lego_id": "S0349L02",
+    "known_text": "வெளியே செல்ல விரும்பினானா",
+    "target_text": "did he want to go out",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0354L02U06": {
+   "seed": {
+    "seed_number": 354,
+    "known_text": "அவன் கோபமாக காட்டிக்கொள்ள வேண்டியதில்லை.",
+    "target_text": "He didn't need to appear angry.",
+    "known_audio_id": "acd2ca81-a831-40d9-8cfb-b99f690214a3",
+    "target1_audio_id": "7319ddcf-f244-429e-911e-44fd0c2eb72f",
+    "target2_audio_id": "6baa2433-6229-4952-8b0f-a3b40d02b185"
+   },
+   "lego": {
+    "lego_id": "S0354L02",
+    "known_text": "காட்டிக்கொள்ள வேண்டியதில்லை",
+    "target_text": "he didn't need to appear",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0355L03U08": {
+   "seed": {
+    "seed_number": 355,
+    "known_text": "உனக்குத் தெரிந்த அந்த பெண்ணிடம் அவள் பேச வேண்டியிருந்ததா?",
+    "target_text": "Did she need to talk to that woman you know?",
+    "known_audio_id": "27c5a661-c03d-4125-b093-d790e7ddf0b3",
+    "target1_audio_id": "1cd8830c-1e5c-4499-b8c7-73980b302cdf",
+    "target2_audio_id": "e0538a08-0b7b-4e7e-bf5c-ed61bce3da23"
+   },
+   "lego": {
+    "lego_id": "S0355L03",
+    "known_text": "உனக்குத் தெரிந்த",
+    "target_text": "you know",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0380L01U06": {
+   "seed": {
+    "seed_number": 380,
+    "known_text": "அவள் எதை சேர்க்க விரும்பினாள் என்று நான் கேட்டேன்.",
+    "target_text": "I asked what she wanted to include.",
+    "known_audio_id": "63b58fea-eed4-41fe-b2cb-6c019e6c4cf1",
+    "target1_audio_id": "4b480550-afd6-46a4-8f85-e2476ddb4d57",
+    "target2_audio_id": "628610c9-77c7-4ce7-a53f-0568e32a2ada"
+   },
+   "lego": {
+    "lego_id": "S0380L01",
+    "known_text": "நான் கேட்டேன்",
+    "target_text": "I asked",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0381L02U06": {
+   "seed": {
+    "seed_number": 381,
+    "known_text": "அவன் எங்களைப் பின்தொடர விரும்பினானா என்று நான் கேட்கவில்லை.",
+    "target_text": "I didn't ask if he wanted to follow us.",
+    "known_audio_id": "555f21ba-13c6-4889-8bc6-2891e115a6a3",
+    "target1_audio_id": "6e355703-ca5b-4ea7-9a35-5549c9f36d87",
+    "target2_audio_id": "7a2991b8-5cb2-4bf5-b659-316c2c3ce61b"
+   },
+   "lego": {
+    "lego_id": "S0381L02",
+    "known_text": "பின்தொடர",
+    "target_text": "follow",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0390L02U06": {
+   "seed": {
+    "seed_number": 390,
+    "known_text": "நுழைவாயிலுக்கு அருகில் நிற்கும் நபர்.",
+    "target_text": "The one who is standing near the entrance.",
+    "known_audio_id": "85d30dbc-0ea4-491f-b5d2-223fcdbd8592",
+    "target1_audio_id": "b8b2328b-1a48-46f0-8118-dd2b6edbacf0",
+    "target2_audio_id": "35ba1be7-0e14-4c22-9bc9-c763844f4bbe"
+   },
+   "lego": {
+    "lego_id": "S0390L02",
+    "known_text": "நிற்கும்",
+    "target_text": "standing",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0391L02U06": {
+   "seed": {
+    "seed_number": 391,
+    "known_text": "பேருந்தை நோக்கி நடந்து செல்பவர்.",
+    "target_text": "The one who is walking towards the bus.",
+    "known_audio_id": "588e619b-f0cb-4281-bdf1-399c18455da0",
+    "target1_audio_id": "61d10419-f7d2-496c-8300-bae455773f76",
+    "target2_audio_id": "9139cd5b-4f9c-4cc8-b1ba-4bc7abfcee2e"
+   },
+   "lego": {
+    "lego_id": "S0391L02",
+    "known_text": "நோக்கி",
+    "target_text": "towards",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0392L04U06": {
+   "seed": {
+    "seed_number": 392,
+    "known_text": "தபால் அலுவலகத்திற்கு எதிரே கருப்பு முடியுடன் இருக்கும் அந்த குழந்தை.",
+    "target_text": "That child with the black hair opposite the post office.",
+    "known_audio_id": "7430a25c-b655-46c5-ad31-e90d44dffcb5",
+    "target1_audio_id": "f47fe673-c450-48f7-8ff5-2816a9e54ca8",
+    "target2_audio_id": "28a04339-6100-4325-8019-106c761f11e1"
+   },
+   "lego": {
+    "lego_id": "S0392L04",
+    "known_text": "எதிரே",
+    "target_text": "opposite",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0393L03U08": {
+   "seed": {
+    "seed_number": 393,
+    "known_text": "பச்சை சட்டை அணிந்த அந்த சிறுவன்.",
+    "target_text": "That boy with the green shirt.",
+    "known_audio_id": "67e08692-ce6b-468d-bbb6-7f9a53c09271",
+    "target1_audio_id": "fb612206-2e35-4df4-9660-1a3aeeff90ba",
+    "target2_audio_id": "438ab837-69ac-4ceb-a887-0d87f7847ddc"
+   },
+   "lego": {
+    "lego_id": "S0393L03",
+    "known_text": "சிறுவன்",
+    "target_text": "boy",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0394L03U06": {
+   "seed": {
+    "seed_number": 394,
+    "known_text": "மஞ்சள் உடை அணிந்த அந்த சிறுமி.",
+    "target_text": "That girl with the yellow dress.",
+    "known_audio_id": "8bd4583c-f145-40f1-befb-ae2b697cb458",
+    "target1_audio_id": "52f94db4-2f33-4eb1-bbac-d07a5208729c",
+    "target2_audio_id": "3f7f139b-461a-4404-9de5-07dc09ac22fc"
+   },
+   "lego": {
+    "lego_id": "S0394L03",
+    "known_text": "சிறுமி",
+    "target_text": "girl",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0397L01U06": {
+   "seed": {
+    "seed_number": 397,
+    "known_text": "நாம் விரைவில் தயாராக வேண்டுமா?",
+    "target_text": "Do we need to get ready soon?",
+    "known_audio_id": "57916e15-8bf6-4f5a-ac0e-76c388a22af2",
+    "target1_audio_id": "543c08dd-bfa9-484b-89c2-ce2aeb7f2d15",
+    "target2_audio_id": "7dcd075a-b2f8-4b21-9e26-b1b9f4642781"
+   },
+   "lego": {
+    "lego_id": "S0397L01",
+    "known_text": "நாம் வேண்டுமா",
+    "target_text": "do we need to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0401L01U06": {
+   "seed": {
+    "seed_number": 401,
+    "known_text": "இல்லை, நேராக வீட்டுக்கு செல்வது நல்லது.",
+    "target_text": "No it would be better to go straight home.",
+    "known_audio_id": "89b1bff6-554b-497b-a345-661fd0b7465d",
+    "target1_audio_id": "29c520a7-b6e2-4327-b8b6-eb02631ec73c",
+    "target2_audio_id": "decaaa65-b5ac-4075-a777-3acc0915d6c1"
+   },
+   "lego": {
+    "lego_id": "S0401L01",
+    "known_text": "நேராக",
+    "target_text": "straight",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0411L03U06": {
+   "seed": {
+    "seed_number": 411,
+    "known_text": "இன்று இரவு நான்கு பேருக்கு ஒரு மேசையை முன்பதிவு செய்ய விரும்புகிறோம்.",
+    "target_text": "We would like to reserve a table for four tonight.",
+    "known_audio_id": "ec1fde8d-2c17-4aac-b08f-15ce0bf32efb",
+    "target1_audio_id": "34541419-aac0-4bbe-9b69-7f89ad854c40",
+    "target2_audio_id": "784e3502-6c50-4cdb-a2ba-48bdbfd92855"
+   },
+   "lego": {
+    "lego_id": "S0411L03",
+    "known_text": "விரும்புகிறோம்",
+    "target_text": "we would like to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0414L04U06": {
+   "seed": {
+    "seed_number": 414,
+    "known_text": "தயவுசெய்து எங்களுக்கு ஒரு பாட்டில் சிவப்பு ஒயின் கிடைக்குமா?",
+    "target_text": "Could we have a bottle of red wine please?",
+    "known_audio_id": "f7054ca3-3e8e-41a0-a360-0fe4d38f3532",
+    "target1_audio_id": "a183c224-38da-4566-a405-10e56368dc04",
+    "target2_audio_id": "a75925d2-5d88-40c3-b410-45b9c736f863"
+   },
+   "lego": {
+    "lego_id": "S0414L04",
+    "known_text": "கிடைக்குமா",
+    "target_text": "could we have",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0416L03U06": {
+   "seed": {
+    "seed_number": 416,
+    "known_text": "அடுத்த வருடம் அவர்கள் வழிநடத்த விரும்புகிறார்கள்.",
+    "target_text": "They want to lead the way next year.",
+    "known_audio_id": "08e95c6d-34f9-4248-af93-3c67f73e6c4d",
+    "target1_audio_id": "aada0598-00ff-485e-a58c-b46d3d1031ae",
+    "target2_audio_id": "cd62c2cf-0f3a-4718-ada4-1ab64e39b512"
+   },
+   "lego": {
+    "lego_id": "S0416L03",
+    "known_text": "அடுத்த வருடம்",
+    "target_text": "next year",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0417L03U06": {
+   "seed": {
+    "seed_number": 417,
+    "known_text": "அவர்கள் அந்த எறும்புகளை கொல்ல விரும்புகிறார்களா?",
+    "target_text": "Do they want to kill those ants?",
+    "known_audio_id": "2f66a94c-f8ea-482a-b173-9c25ddc22124",
+    "target1_audio_id": "c9d71845-1f0e-49f4-9f15-8f2dc9d93e3e",
+    "target2_audio_id": "f291eb24-4233-4583-80b8-711d323c4501"
+   },
+   "lego": {
+    "lego_id": "S0417L03",
+    "known_text": "அந்த எறும்புகளை",
+    "target_text": "those ants",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0419L02U06": {
+   "seed": {
+    "seed_number": 419,
+    "known_text": "மக்கள் தங்களை விரும்ப வேண்டும் என்று அவர்கள் விரும்பினால்.",
+    "target_text": "If they want people to like them.",
+    "known_audio_id": "ff8410b7-d6b4-45af-9aa2-e8c60c96af74",
+    "target1_audio_id": "f3b39cde-7121-4e0d-8eef-94c007002c2e",
+    "target2_audio_id": "6911e88e-be36-4399-a04b-e8f9a25c63c3"
+   },
+   "lego": {
+    "lego_id": "S0419L02",
+    "known_text": "தங்களை விரும்ப",
+    "target_text": "to like them",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0420L01U06": {
+   "seed": {
+    "seed_number": 420,
+    "known_text": "அவனுக்கு எத்தனை வயது என்று அவர்கள் கேட்க வேண்டியதில்லை.",
+    "target_text": "They don't need to ask how old he is.",
+    "known_audio_id": "60eb9744-5697-4daf-b0d1-9283a0b7c313",
+    "target1_audio_id": "67683d63-aae5-47a3-bdd4-bb4068d01a18",
+    "target2_audio_id": "fa21f604-5332-4307-98c4-3b3ecb96b231"
+   },
+   "lego": {
+    "lego_id": "S0420L01",
+    "known_text": "அவனுக்கு எத்தனை வயது",
+    "target_text": "how old he is",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0424L02U06": {
+   "seed": {
+    "seed_number": 424,
+    "known_text": "இல்லை, அவர்கள் அனைவரின் நேரத்தையும் வீணாக்குகிறார்கள்.",
+    "target_text": "No they're wasting everybody's time.",
+    "known_audio_id": "34f4db85-7d08-4fe6-9433-725ef3f7cf10",
+    "target1_audio_id": "1f961a0b-015f-4ee8-ae04-150402099a9a",
+    "target2_audio_id": "290dc5e0-ce95-4da8-944d-12fca8d4a189"
+   },
+   "lego": {
+    "lego_id": "S0424L02",
+    "known_text": "அனைவரின் நேரத்தையும்",
+    "target_text": "everybody's time",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0428L03U06": {
+   "seed": {
+    "seed_number": 428,
+    "known_text": "செவ்வாய்க்கிழமை அவர்கள் எங்களை பார்க்க வர விரும்புவார்களா?",
+    "target_text": "Would they like to visit us on Tuesday?",
+    "known_audio_id": "8230805c-ada9-449e-9710-f755bf8b85e1",
+    "target1_audio_id": "aefcbbc9-8504-4937-8945-d7d9595eebca",
+    "target2_audio_id": "95f914aa-3be6-4358-8622-deb4a1e36133"
+   },
+   "lego": {
+    "lego_id": "S0428L03",
+    "known_text": "செவ்வாய்க்கிழமை",
+    "target_text": "on Tuesday",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0442L01U07": {
+   "seed": {
+    "seed_number": 442,
+    "known_text": "அவர்கள் ஒரு புதிய அணுகுமுறையை உருவாக்க விரும்பினார்களா?",
+    "target_text": "Did they want to develop a new approach?",
+    "known_audio_id": "cd7d8497-5675-4151-a7aa-84dcb5e4ff9a",
+    "target1_audio_id": "7131c582-25a5-4828-8ad7-ea3d1ec2dbe0",
+    "target2_audio_id": "ec1cb688-b477-4fe1-824c-95270bfdb398"
+   },
+   "lego": {
+    "lego_id": "S0442L01",
+    "known_text": "விரும்பினார்களா",
+    "target_text": "did they want to",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0461L01U06": {
+   "seed": {
+    "seed_number": 461,
+    "known_text": "நான் சில அஞ்சல் அட்டைகளை வாங்கக்கூடிய ஒரு கடை.",
+    "target_text": "A shop where I can buy some postcards.",
+    "known_audio_id": "cc26105b-e269-4ed5-a6d2-531d22e71006",
+    "target1_audio_id": "955f64ab-210d-41ab-8b18-74ded4583dca",
+    "target2_audio_id": "a8c32c2b-7f1d-43cc-b7b2-e846a7aee958"
+   },
+   "lego": {
+    "lego_id": "S0461L01",
+    "known_text": "வாங்கக்கூடிய",
+    "target_text": "where I can buy",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0493L01U06": {
+   "seed": {
+    "seed_number": 493,
+    "known_text": "அடுத்து என்ன வரப்போகிறது?",
+    "target_text": "What's going to come next?",
+    "known_audio_id": "d19c6b8d-f3e6-424b-8b35-08dcf72e18da",
+    "target1_audio_id": "a2643f08-7cea-482c-9937-f13d259fc644",
+    "target2_audio_id": "942ec3d1-c0ed-4b03-a9f2-0564e1dc0e6d"
+   },
+   "lego": {
+    "lego_id": "S0493L01",
+    "known_text": "என்ன",
+    "target_text": "what's",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0494L01U06": {
+   "seed": {
+    "seed_number": 494,
+    "known_text": "நிகழ்ச்சியின் முதல் பகுதிக்குப் பிறகு என்ன நடக்கிறது?",
+    "target_text": "What happens after the first part of the show?",
+    "known_audio_id": "9735da4a-caaf-472f-864f-ba0781c651f2",
+    "target1_audio_id": "cc0edb05-1541-434c-a8a3-7a14e0f3843d",
+    "target2_audio_id": "2f7875a7-02e1-4fba-bef0-098ef381a3ce"
+   },
+   "lego": {
+    "lego_id": "S0494L01",
+    "known_text": "நடக்கிறது",
+    "target_text": "happens",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0496L02U06": {
+   "seed": {
+    "seed_number": 496,
+    "known_text": "அது உண்மையிலேயே முக்கியமாக இருக்கும்போது தோற்க நான் திட்டமிடவில்லை.",
+    "target_text": "I'm not planning to lose when it really matters.",
+    "known_audio_id": "62160dbf-6c99-4f2e-8bbb-3e821024b20a",
+    "target1_audio_id": "a7f71d39-d9f0-4395-b9af-b0555973e76f",
+    "target2_audio_id": "f64f8f23-b059-4970-a9cc-225729ab6b03"
+   },
+   "lego": {
+    "lego_id": "S0496L02",
+    "known_text": "நான் திட்டமிடவில்லை",
+    "target_text": "I'm not planning",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0500L02U06": {
+   "seed": {
+    "seed_number": 500,
+    "known_text": "அந்த இரண்டு பெண்களுக்கு இடையில் நீ ஏன் உட்கார விரும்பவில்லை?",
+    "target_text": "Why don't you want to sit between the two girls?",
+    "known_audio_id": "6bd0cec6-27ec-4bf1-b3b3-411d406a641b",
+    "target1_audio_id": "ab757db6-957b-4b93-aa08-bd3230634f35",
+    "target2_audio_id": "bb8b5ff3-8ff2-4d10-961c-f92cd07d00d5"
+   },
+   "lego": {
+    "lego_id": "S0500L02",
+    "known_text": "இரண்டு பெண்களுக்கு இடையில்",
+    "target_text": "between the two girls",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0503L02U06": {
+   "seed": {
+    "seed_number": 503,
+    "known_text": "சிக்கல் உண்டாக்குவதை நான் வெறுக்கிறேன் ஆனால் அது என்னுடையது.",
+    "target_text": "I hate making trouble but that one's mine.",
+    "known_audio_id": "6a506967-4ecf-472a-a0ba-cc30f185a044",
+    "target1_audio_id": "be29f68a-e242-402a-801d-66985dbca52c",
+    "target2_audio_id": "43b2803f-22b5-45d2-a1f9-17b6af032e74"
+   },
+   "lego": {
+    "lego_id": "S0503L02",
+    "known_text": "அது என்னுடையது",
+    "target_text": "that one's mine",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0508L02U06": {
+   "seed": {
+    "seed_number": 508,
+    "known_text": "நீ எப்படி பணம் செலுத்தப் போகிறாய் என்று கவலைப்படுவதில் அர்த்தமில்லை.",
+    "target_text": "There's no point worrying about how you're going to pay.",
+    "known_audio_id": "3725606c-b689-48e5-875b-a1b680e2001f",
+    "target1_audio_id": "63ebe87d-2522-416c-ab2f-c1d98b386548",
+    "target2_audio_id": "e6cffc6f-7bf1-4683-8790-257bf5467c64"
+   },
+   "lego": {
+    "lego_id": "S0508L02",
+    "known_text": "என்று கவலைப்படுவதில் அர்த்தமில்லை",
+    "target_text": "there's no point worrying about",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0509L01U06": {
+   "seed": {
+    "seed_number": 509,
+    "known_text": "நீ ஒரு புதிய படுக்கைக்கு பணம் செலுத்தப் போகிறாய் என்று கேள்விப்பட்டேன்.",
+    "target_text": "I heard that you're going to pay for a new bed.",
+    "known_audio_id": "2be78025-6f8d-4562-93fe-4e63f5307141",
+    "target1_audio_id": "57d35177-8baa-4fe1-8508-f181c2cbdc3b",
+    "target2_audio_id": "9b8dab1c-e818-4bda-91c8-ca015fb4014d"
+   },
+   "lego": {
+    "lego_id": "S0509L01",
+    "known_text": "ஒரு புதிய படுக்கைக்கு",
+    "target_text": "for a new bed",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0541L02U06": {
+   "seed": {
+    "seed_number": 541,
+    "known_text": "மெதுவாக மூச்சு விட முயற்சிப்பது ஒரு நல்ல யோசனை.",
+    "target_text": "It's a good idea to try and breathe slowly.",
+    "known_audio_id": "574a6416-1852-4169-b1c6-3f52c5197d32",
+    "target1_audio_id": "86e474d5-f1d5-418f-8242-2f694d5aa7d6",
+    "target2_audio_id": "0966501e-3fea-444b-9d07-59af14020f3d"
+   },
+   "lego": {
+    "lego_id": "S0541L02",
+    "known_text": "முயற்சிப்பது ஒரு நல்ல யோசனை",
+    "target_text": "it's a good idea to try",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0564L01U07": {
+   "seed": {
+    "seed_number": 564,
+    "known_text": "உன் உதவி இல்லாமல் என்னால் முடிந்திருக்காது.",
+    "target_text": "I wouldn't have been able to without your help.",
+    "known_audio_id": "ddf411e1-c780-419a-93d6-bac9fdadbc2e",
+    "target1_audio_id": "5981b564-b61a-4aee-952d-e2cc93638aa8",
+    "target2_audio_id": "3b315a81-7f5a-4fb6-a634-ffe17d540309"
+   },
+   "lego": {
+    "lego_id": "S0564L01",
+    "known_text": "உன் உதவி இல்லாமல்",
+    "target_text": "without your help",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0570L01U02": {
+   "seed": {
+    "seed_number": 570,
+    "known_text": "உன் டிக்கெட்டுக்கு நீ எவ்வளவு பணம் செலுத்த தயாராக இருக்கிறாய்?",
+    "target_text": "How much are you willing to pay for your ticket?",
+    "known_audio_id": "0c133fef-9637-4821-804a-1d1d451c7afb",
+    "target1_audio_id": "e716f05f-e476-4122-b84d-6adcb6a542c0",
+    "target2_audio_id": "1f10354a-f883-4d2a-9174-cf36618a7773"
+   },
+   "lego": {
+    "lego_id": "S0570L01",
+    "known_text": "உன் டிக்கெட்டுக்கு",
+    "target_text": "for your ticket",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0592L01U03": {
+   "seed": {
+    "seed_number": 592,
+    "known_text": "மற்றும் பிரதான சாலை வழியாக.",
+    "target_text": "And along the main road.",
+    "known_audio_id": "12ee0a78-abb0-448c-9979-1dfe24fecb1a",
+    "target1_audio_id": "b14c4267-2f87-4349-b10a-0345d657d1b3",
+    "target2_audio_id": "ea70a0e1-6915-4f71-9c79-10aece10fd5b"
+   },
+   "lego": {
+    "lego_id": "S0592L01",
+    "known_text": "பிரதான சாலை வழியாக",
+    "target_text": "along the main road",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0622L02U06": {
+   "seed": {
+    "seed_number": 622,
+    "known_text": "குழந்தைகள் அதை உடைத்துவிட்டார்கள் என்று எனக்குத் தெரியும்.",
+    "target_text": "I knew that the children had broken it.",
+    "known_audio_id": "2df5f5e0-3448-491b-a032-f2daa78f9020",
+    "target1_audio_id": "e310c0d8-7bff-4009-8833-86a99a508a37",
+    "target2_audio_id": "942cad5f-3f12-4e2c-81a4-74e8124cf53f"
+   },
+   "lego": {
+    "lego_id": "S0622L02",
+    "known_text": "குழந்தைகள் அதை உடைத்துவிட்டார்கள்",
+    "target_text": "the children had broken it",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0638L01U08": {
+   "seed": {
+    "seed_number": 638,
+    "known_text": "நான் யோசிக்க முயற்சிக்கிறேன்.",
+    "target_text": "I'm trying to think.",
+    "known_audio_id": "e3f36017-af93-4655-b746-aaa3f90c5801",
+    "target1_audio_id": "954bfbef-0197-45a0-9a72-465a59afb133",
+    "target2_audio_id": "168996b4-6583-495e-84a6-35e26b55a4f4"
+   },
+   "lego": {
+    "lego_id": "S0638L01",
+    "known_text": "யோசிக்க முயற்சிக்கிறேன்",
+    "target_text": "I'm trying to think",
+    "is_new": true
+   },
+   "phrase_absent": true
+  },
+  "S0639L01U08": {
+   "seed": {
+    "seed_number": 639,
+    "known_text": "உங்களுடன் ஐயா",
+    "target_text": "with you sir",
+    "known_audio_id": "629a2758-0264-41d9-b0f0-38e07c61a25a",
+    "target1_audio_id": "b71aaa60-eaab-4448-b36e-e919f5f80684",
+    "target2_audio_id": "6b74a039-cfac-4ffb-a2af-46eeab4cf262"
+   },
+   "lego": {
+    "lego_id": "S0639L01",
+    "known_text": "ஐயா",
+    "target_text": "sir",
+    "is_new": true
+   },
+   "phrase_absent": true
+  }
+ }
+}

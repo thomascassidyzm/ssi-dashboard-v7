@@ -1,0 +1,2141 @@
+{
+ "languages": {
+  "ben": {
+   "code": "ben",
+   "name": "Bengali",
+   "knownOnly": false,
+   "knownCourses": 1,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Rubel is GONE (Cartesia withdrew it)",
+     "now": "Rubel"
+    },
+    {
+     "gender": "f",
+     "why": "cast Pooja is the 2026-09-04 mechanical draft",
+     "now": "Pooja"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_59ba7dee-8f9a-432f-a6c0-ffb33666b654",
+     "name": "Pooja",
+     "gender": "f",
+     "accent": "jessore",
+     "locale": "bn-BD",
+     "tagline": "Everyday Assistant",
+     "description": "Soft-spoken adult female voice for casual conversations and natural dialogue",
+     "audio": "/d/8595ec4f/file"
+    },
+    {
+     "voiceId": "cartesia_9c35520a-73f9-4c9e-b6c6-69027a3819bd",
+     "name": "Poulomi",
+     "gender": "f",
+     "accent": "jessore",
+     "locale": "bn-BD",
+     "tagline": "Courteous Dispatcher",
+     "description": "Crisp, responsive, and politely proactive, bringing warmth and clarity to real-time service updates and transactional notifications.",
+     "audio": "/d/e71ecf33/file"
+    },
+    {
+     "voiceId": "cartesia_cd983593-81f5-4b9d-abad-21791ee86363",
+     "name": "Arindam",
+     "gender": "m",
+     "accent": "jessore",
+     "locale": "bn-BD",
+     "tagline": "Reliable Handler",
+     "description": "Features a methodical, grounded delivery that keeps transactional dialogues focused, making troubleshooting and service follow-ups effortless.",
+     "audio": "/d/dbb5c357/file"
+    },
+    {
+     "voiceId": "cartesia_314be1d2-3d14-468d-be40-08a1af7df49d",
+     "name": "Kian",
+     "gender": "m",
+     "accent": "jessore",
+     "locale": "bn-BD",
+     "tagline": "Thoughtful Narrator",
+     "description": "A gentle and measured cadence provides a thoughtful narrative experience, suitable for educational content or reflective storytelling.",
+     "audio": "/d/45f20af9/file"
+    },
+    {
+     "voiceId": "cartesia_ddf9ec71-3337-4a8a-a318-9a42f72433e2",
+     "name": "Rupam",
+     "gender": "m",
+     "accent": "jessore",
+     "locale": "bn-BD",
+     "tagline": "Detailed Analyst",
+     "description": "Offers a detailed and precise delivery, excellent for analytical content requiring careful and clear communication.",
+     "audio": "/d/0c19d64d/file"
+    }
+   ],
+   "line": "আমি কাল কী হবে তা অনুমান করতে চাইতাম না।",
+   "lineSource": "eng_for_ben seed 12 (known side)"
+  },
+  "deu_at": {
+   "code": "deu_at",
+   "name": "Austrian German",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Clemens - Precise Instructor is the 2026-09-04 mechanical draft",
+     "now": "Clemens - Precise Instructor"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_f6f315e4-4fb3-4440-92ea-2edb01f9bf1b",
+     "name": "Hermann",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Businessman",
+     "description": "Warm, confident, and approachable voice, perfect for customer support and business conversations",
+     "otherLine": "reads the deu_ch line: «Ich wott jetz mit dir Schwiizerdütsch rede.»",
+     "audio": "/d/fbdb1f81/file"
+    },
+    {
+     "voiceId": "cartesia_afa425cf-5489-4a09-8a3f-d3cb1f82150d",
+     "name": "Nico",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Friendly Agent",
+     "description": "Casual male for phone calls and conversational agents",
+     "audio": "/d/192a9b1a/file"
+    },
+    {
+     "voiceId": "cartesia_57a3a9e0-a91c-4c94-a2bb-e6cbab3ae649",
+     "name": "Clemens - Precise Instructor",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Precise Instructor",
+     "description": "This voice offers clear, articulate guidance, perfect for detailed instructions and educational content.",
+     "audio": "/d/23c31804/file"
+    },
+    {
+     "voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+     "name": "Sebastian",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Orator",
+     "description": "Warm male for audiobooks and clear communication",
+     "audio": "/d/d51c73f8/file"
+    },
+    {
+     "voiceId": "cartesia_4ad22058-7cb6-402c-a115-196cbfc25dce",
+     "name": "Moritz",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Modern Communicator",
+     "description": "Crisp, approachable German male ideal for digital assistants.",
+     "audio": "/d/06dad393/file"
+    },
+    {
+     "voiceId": "cartesia_d1cbea67-e4d3-47cd-be2a-2bd4e646b002",
+     "name": "Henrik",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Steady Analyst",
+     "description": "Articulate, dependable German male perfect for business briefings.",
+     "audio": "/d/cc3b3978/file"
+    },
+    {
+     "voiceId": "cartesia_cd7b67f4-22a4-49a0-a197-3fa16f7e64d4",
+     "name": "Alexander",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Reliable Advisor",
+     "description": "Steady and assured delivery for clear instructions and dependable support conversations.",
+     "audio": "/d/e09850fb/file"
+    },
+    {
+     "voiceId": "cartesia_758a5cff-af0b-4bdf-84bd-4c1b5525c249",
+     "name": "Leander",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": null,
+     "description": "Warm and approachable voice, ideal for lifestyle content, social media, and casual explainers.",
+     "audio": "/d/dce40720/file"
+    },
+    {
+     "voiceId": "cartesia_dff81230-ff75-49a4-af44-f6b2f43500d8",
+     "name": "Jonas",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": null,
+     "description": "Casual male voice thats warm, friendly, and conversational",
+     "audio": "/d/c8b613f6/file"
+    },
+    {
+     "voiceId": "cartesia_d42fc8d7-efdd-44df-bb2e-a6e093601917",
+     "name": "Oskar",
+     "gender": "m",
+     "accent": "standard-german",
+     "locale": "de-DE",
+     "tagline": "Steady Advisor",
+     "description": "Seasoned and composed voice with a calm and confident tone, ideal for guidance and thoughtful narration",
+     "audio": "/d/c270efbe/file"
+    }
+   ],
+   "line": "i wü's heit so fest versuchen, wia i kann",
+   "lineSource": "deu_at_for_eng seed 7"
+  },
+  "bul": {
+   "code": "bul",
+   "name": "Bulgarian",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Georgi is GONE (Cartesia withdrew it)",
+     "now": "Georgi"
+    },
+    {
+     "gender": "f",
+     "why": "cast voice Ivana is GONE (Cartesia withdrew it)",
+     "now": "Ivana"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_cb5e08c5-299e-4908-8409-b6549292e29b",
+     "name": "Nikola",
+     "gender": "m",
+     "accent": "bulgarian",
+     "locale": "bg-BG",
+     "tagline": "Dependable Troubleshooter",
+     "description": "Grounded and precise with a natural cadence, perfect for step-by-step problem resolution, transactional flows, and user confirmations.",
+     "audio": "/d/8207aa8c/file"
+    },
+    {
+     "voiceId": "cartesia_3c90f2ab-ff91-434e-9e59-5ca2dcf6abc9",
+     "name": "Teodora",
+     "gender": "f",
+     "accent": "bulgarian",
+     "locale": "bg-BG",
+     "tagline": "Courteous Representative",
+     "description": "Offers a polite, methodical manner suited for front-desk reception, concierge services, and structured problem resolution.",
+     "audio": "/d/ffcc1edb/file"
+    }
+   ],
+   "line": "Искам да говоря с теб на български сега.",
+   "lineSource": "bul_for_eng seed 1"
+  },
+  "ces": {
+   "code": "ces",
+   "name": "Czech",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Jan is the 2026-09-04 mechanical draft",
+     "now": "Jan"
+    },
+    {
+     "gender": "f",
+     "why": "cast Milena - Composed Clarifier is the 2026-09-04 mechanical draft",
+     "now": "Milena - Composed Clarifier"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_82db1f84-5b96-4364-b04a-4c7ff80e2f8a",
+     "name": "Jan",
+     "gender": "m",
+     "accent": "czech",
+     "locale": "cs-CZ",
+     "tagline": "Capable Coordinator",
+     "description": "Clear, professional Czech male for trustworthy customer communication.",
+     "audio": "/d/76170b5d/file"
+    },
+    {
+     "voiceId": "cartesia_0b6d3ccb-f421-4e49-80f7-4bfa39f6eb8e",
+     "name": "Marek",
+     "gender": "m",
+     "accent": "czech",
+     "locale": "cs-CZ",
+     "tagline": "Steady Specialist",
+     "description": "Resonant Czech male with a calm presence for expert support.",
+     "audio": "/d/ba762866/file"
+    },
+    {
+     "voiceId": "cartesia_f8685385-96f6-4c12-8520-49e4914bcbfe",
+     "name": "Tereza - Decisive Agent",
+     "gender": "f",
+     "accent": "czech",
+     "locale": "cs-CZ",
+     "tagline": "Decisive Agent",
+     "description": "Professional adult female for highly structured customer communication.",
+     "audio": "/d/9684adbc/file"
+    },
+    {
+     "voiceId": "cartesia_b66b3a19-31b3-401f-8b08-40d46a61e4f1",
+     "name": "Milena - Composed Clarifier",
+     "gender": "f",
+     "accent": "czech",
+     "locale": "cs-CZ",
+     "tagline": "Composed Clarifier",
+     "description": "Steady Czech voice for capable professional assistance.",
+     "audio": "/d/d4a1bb9e/file"
+    },
+    {
+     "voiceId": "cartesia_89266bab-6e15-455d-8654-e18c440b0656",
+     "name": "Petr",
+     "gender": "m",
+     "accent": "czech",
+     "locale": "cs-CZ",
+     "tagline": "Pastor",
+     "description": "Resonant adult male voice, reminiscent of a priest delivering a sermon for narrations and formal reading",
+     "audio": "/d/c6e76914/file"
+    }
+   ],
+   "line": "Dneska odpoledne půjdu s kamarádem na kávu.",
+   "lineSource": "authored audition line (this language has no course line)"
+  },
+  "dan": {
+   "code": "dan",
+   "name": "Danish",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Søren is the 2026-09-04 mechanical draft",
+     "now": "Søren"
+    },
+    {
+     "gender": "f",
+     "why": "cast Mette is the 2026-09-04 mechanical draft",
+     "now": "Mette"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_a466f9e2-28eb-4bb7-925c-8e8984950700",
+     "name": "Søren",
+     "gender": "m",
+     "accent": "danish",
+     "locale": "da-DK",
+     "tagline": "Steady Strategist",
+     "description": "Steady, Danish male voice for reassuring professional dialogue.",
+     "audio": "/d/7cbfe2ec/file"
+    },
+    {
+     "voiceId": "cartesia_eb929394-68e7-4e08-bd2f-e7055728a5e1",
+     "name": "Mette",
+     "gender": "f",
+     "accent": "danish",
+     "locale": "da-DK",
+     "tagline": "Polished Facilitator",
+     "description": "Bright, professional Danish female for welcoming customer service.",
+     "audio": "/d/748c8ddf/file"
+    }
+   ],
+   "line": "Hun vil gerne finde ud af hvad svaret er.",
+   "lineSource": "dan_for_eng seed 17"
+  },
+  "heb": {
+   "code": "heb",
+   "name": "Hebrew",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Noam is the 2026-09-04 mechanical draft",
+     "now": "Noam"
+    },
+    {
+     "gender": "f",
+     "why": "cast Ayala is the 2026-09-04 mechanical draft",
+     "now": "Ayala"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_3e32f3c5-9ac0-4192-9994-87fdb277120f",
+     "name": "Noam",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Broadcaster",
+     "description": "Clear and authoritative adult male voice for announcements, broadcasts, and formal presentations",
+     "audio": "/d/fb92a634/file"
+    },
+    {
+     "voiceId": "cartesia_84b969ad-19c7-428d-b742-48d387f7f138",
+     "name": "Gil",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Friendly Host",
+     "description": "Warm, genuine Hebrew male perfect for conversational experiences.",
+     "audio": "/d/1feefba5/file"
+    },
+    {
+     "voiceId": "cartesia_ff857c8e-e7f9-4afd-af42-dce9f3c5ab02",
+     "name": "Yarden",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Trusted Advisor",
+     "description": "Composed Hebrew female for reliable customer assistance.",
+     "audio": "/d/0fc99dc6/file"
+    },
+    {
+     "voiceId": "cartesia_ebc02c0d-61fd-48f2-a6c9-0d6683b7d466",
+     "name": "Ayala",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Expert Narrator",
+     "description": "Ayala's expressive yet controlled delivery makes her perfect for engaging narrations and insightful presentations.",
+     "audio": "/d/0a34d3fb/file"
+    },
+    {
+     "voiceId": "cartesia_431b7e77-b46d-4eda-8362-db430ac0913c",
+     "name": "Oren",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Steady Advisor",
+     "description": "Calm, measured Hebrew male suited for professional communication.",
+     "audio": "/d/b4f910ee/file"
+    },
+    {
+     "voiceId": "cartesia_daa4d6bb-da62-4e16-8065-76cd87942475",
+     "name": "Eitan",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Modern Communicator",
+     "description": "Strong Hebrew male providing a clear tone for corporate messaging.",
+     "audio": "/d/45a2009f/file"
+    },
+    {
+     "voiceId": "cartesia_2821fd0c-35c7-4adf-9c42-32e394bf85cb",
+     "name": "Adi",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Efficient Expert",
+     "description": "Articulate, professional Hebrew female for customer assistance.",
+     "audio": "/d/a67d0d36/file"
+    },
+    {
+     "voiceId": "cartesia_32a91a5d-05d2-4c1e-bd5a-ff5fd0c413f2",
+     "name": "Tehila",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Calm Specialist",
+     "description": "Calm, precise sound for careful guidance, sensitive support, and focused professional assistance.",
+     "audio": "/d/3c51d8e2/file"
+    },
+    {
+     "voiceId": "cartesia_731d8feb-5eb8-4e2b-b6b3-723dfccdcd18",
+     "name": "Neta",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Clear Professional",
+     "description": "Delivers information with a measured, articulate tone, perfect for e-learning and professional guidance.",
+     "audio": "/d/7b5312d8/file"
+    },
+    {
+     "voiceId": "cartesia_33124162-0d74-48af-ab1c-c1c01bac0247",
+     "name": "Ido",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Calm Communicator",
+     "description": "Ido's mid-pitched voice offers a reassuring and composed delivery, perfect for customer support and detailed narration.",
+     "audio": "/d/a57ca167/file"
+    },
+    {
+     "voiceId": "cartesia_921f4026-af53-4761-ac56-1c32e44856e8",
+     "name": "Ronen",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Calm Consultant",
+     "description": "Consultative and composed delivery for expert guidance, decision support, and professional assistance.",
+     "audio": "/d/16024228/file"
+    },
+    {
+     "voiceId": "cartesia_1cd6668f-84b9-41a2-adbd-b7328f8d6ef4",
+     "name": "Hila",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Warm Guide",
+     "description": "Hila is a warm and clear voice, perfect for guiding and providing reassuring customer support.",
+     "audio": "/d/808e503f/file"
+    },
+    {
+     "voiceId": "cartesia_4ff88d85-28a2-4870-bdc4-cd9697fd5af5",
+     "name": "Aviva",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Patient Guide",
+     "description": "Patient and reassuring delivery for careful explanations, scheduling support, and step-by-step guidance.",
+     "audio": "/d/3816f16b/file"
+    },
+    {
+     "voiceId": "cartesia_a976c076-3e31-4bf2-a178-8c3ce3d52b2a",
+     "name": "Eyal",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Grounded Guide",
+     "description": "Grounded and calm presence for professional help, issue resolution, and confident next-step guidance.",
+     "audio": "/d/9dc437d0/file"
+    },
+    {
+     "voiceId": "cartesia_80589fbe-9893-45f7-9c35-13555f8fd02d",
+     "name": "Shai",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Focused Administrator",
+     "description": "Offers an organized and steady delivery, perfect for managing tasks and administrative instructions.",
+     "audio": "/d/2b5df04f/file"
+    },
+    {
+     "voiceId": "cartesia_db3dc8a6-d8f8-4ca5-add9-559c849a6fa0",
+     "name": "Itai",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Measured Advisor",
+     "description": "Measured, thoughtful tone for structured support, careful explanations, and calm customer interactions.",
+     "audio": "/d/2356c823/file"
+    },
+    {
+     "voiceId": "cartesia_43300c5e-f925-4cd2-adf7-0a031c0e242e",
+     "name": "Alma",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Clear Advisor",
+     "description": "Crisp advisory tone for concise directions, customer answers, and well-structured support flows.",
+     "audio": "/d/defc9bdb/file"
+    },
+    {
+     "voiceId": "cartesia_b54dc7e4-afca-4877-aa67-2c725419b600",
+     "name": "Liora",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Gentle Guide",
+     "description": "Gentle delivery for confident assistance, structured support, and professional conversations.",
+     "audio": "/d/7f1eb8af/file"
+    },
+    {
+     "voiceId": "cartesia_8193c793-825c-4bb1-b522-13d458ce8d68",
+     "name": "Nava",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Warm Specialist",
+     "description": "Warm specialist for supportive service, patient explanations, and approachable customer care.",
+     "audio": "/d/6b2ec320/file"
+    },
+    {
+     "voiceId": "cartesia_858c98dc-db9e-4d1a-9435-557cdf77685c",
+     "name": "Avi",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Calm Consultant",
+     "description": "Calm, consultative presence for thoughtful guidance, account help, and clear next-step support.",
+     "audio": "/d/f5185c8b/file"
+    },
+    {
+     "voiceId": "cartesia_3a1546bd-6781-4376-984d-70b4e9f3d2c4",
+     "name": "Dafna",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Supportive Guide",
+     "description": "Supportive and composed tone for guided onboarding, service reassurance, and clear assistance.",
+     "audio": "/d/a2004881/file"
+    },
+    {
+     "voiceId": "cartesia_d179b385-3cd4-4972-b155-e7cb2445776f",
+     "name": "Rina",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Articulate Coordinator",
+     "description": "Clear, composed delivery for direct guidance, support tasks, and practical assistant interactions.",
+     "audio": "/d/f690ec8f/file"
+    },
+    {
+     "voiceId": "cartesia_52271edb-c161-4c76-9e33-c5c1d39de6e3",
+     "name": "Asaf",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Steady Advisor",
+     "description": "Steady, grounded delivery for reliable guidance, account assistance, and clear service conversations.",
+     "audio": "/d/3e0038c7/file"
+    },
+    {
+     "voiceId": "cartesia_95d91579-a3f1-4bb3-b5e1-9a97ef401628",
+     "name": "Yonatan",
+     "gender": "m",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Measured Professional",
+     "description": "Steady and even pacing that offers a grounding presence for any script.",
+     "audio": "/d/ada8bf38/file"
+    },
+    {
+     "voiceId": "cartesia_c5bc902c-bc31-40a8-b81f-7d3a1e1920bd",
+     "name": "Yardena",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Expert Facilitator",
+     "description": "Hebrew female for efficient customer communication.",
+     "audio": "/d/aa374897/file"
+    },
+    {
+     "voiceId": "cartesia_e8e2079b-b690-40e6-8e21-02721d3d56bc",
+     "name": "Maayan",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Refined Speaker",
+     "description": "Elegant and precise articulation suited for sophisticated brand communications.",
+     "audio": "/d/e915a89f/file"
+    },
+    {
+     "voiceId": "cartesia_94c2e193-a498-44e4-b958-174478734c3f",
+     "name": "Tamar",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Crisp Announcer",
+     "description": "Clean and authoritative articulation perfect for clear, public-facing statements.",
+     "audio": "/d/c179e147/file"
+    },
+    {
+     "voiceId": "cartesia_d0be495c-5e23-4b88-b12d-bc42d38be9a5",
+     "name": "Shira",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Comforting Presence",
+     "description": "Deeply warm and steady tone designed to soothe and reassure the listener.",
+     "audio": "/d/e50b59db/file"
+    },
+    {
+     "voiceId": "cartesia_bd05edd9-cec9-4600-9af4-c9ba4e032ff9",
+     "name": "Talia",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Approachable Guide",
+     "description": "Friendly and clear voice that makes detailed information easy to digest.",
+     "audio": "/d/002cd24b/file"
+    },
+    {
+     "voiceId": "cartesia_1daba551-67af-465e-a189-f91495aa2347",
+     "name": "Yael",
+     "gender": "f",
+     "accent": "israeli",
+     "locale": "he-IL",
+     "tagline": "Casual Presence",
+     "description": "Voice with relaxed tone and friendly warmth, ideal for conversational dialogue and everyday narration",
+     "audio": "/d/8af8e9f4/file"
+    }
+   ],
+   "line": "הוא רוצה לחזור עם כל השאר אחר כך.",
+   "lineSource": "heb_for_eng seed 16"
+  },
+  "hun": {
+   "code": "hun",
+   "name": "Hungarian",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "f",
+     "why": "cast voice Eszter is GONE (Cartesia withdrew it)",
+     "now": "Eszter"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_42e4da1d-34d8-4fe0-8fc6-086afd6df348",
+     "name": "Kinga",
+     "gender": "f",
+     "accent": "budapest",
+     "locale": "hu-HU",
+     "tagline": "Mindful Navigator",
+     "description": "Calm and systematically clear, providing a focused, steady tone that keeps client interactions orderly, pleasant, and efficient.",
+     "audio": "/d/35d703e6/file"
+    }
+   ],
+   "line": "Ma délután egy barátommal megyünk kávézni.",
+   "lineSource": "authored audition line (this language has no course line)"
+  },
+  "ind": {
+   "code": "ind",
+   "name": "Indonesian",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Andi is GONE (Cartesia withdrew it)",
+     "now": "Andi"
+    },
+    {
+     "gender": "f",
+     "why": "cast Siti is the 2026-09-04 mechanical draft",
+     "now": "Siti"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_b441c4fd-4910-4c55-ae56-f0291057e2cc",
+     "name": "Siti",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Ad Narrator",
+     "description": "Cheerful and optimistic adult female voice for brand placements, advertisements, and engaging storytelling",
+     "audio": "/d/0b19c64a/file"
+    },
+    {
+     "voiceId": "cartesia_04b567df-2923-4b0c-896b-4b7df0a07e1a",
+     "name": "Galang",
+     "gender": "m",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Serene Communicator",
+     "description": "A soothing and unhurried voice that brings clarity and a sense of calm to complex topics or guided instructions.",
+     "audio": "/d/4deaebcc/file"
+    },
+    {
+     "voiceId": "cartesia_f3b7c445-d015-40f7-a665-9595e0bc0c90",
+     "name": "Intan",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Service Representative",
+     "description": "A composed and reassuring voice provides seamless support, perfectly suited for customer service applications and automated system prompts.",
+     "audio": "/d/92607713/file"
+    },
+    {
+     "voiceId": "cartesia_8f703c45-8cb6-4e0c-8015-5e8a9e260a8a",
+     "name": "Anisa",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Customer Care",
+     "description": "This voice offers a calm and clear delivery, ideal for customer service interactions and guiding users through processes.",
+     "audio": "/d/75d22d25/file"
+    },
+    {
+     "voiceId": "cartesia_9076f14a-5602-48a7-bfd1-67ef9b40dd6d",
+     "name": "Safira",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Digital Host",
+     "description": "Offers a professional yet approachable tone, ideal for digital assistance and informative content.",
+     "audio": "/d/c2418584/file"
+    },
+    {
+     "voiceId": "cartesia_e78f5fbd-2445-42a2-bddc-2dee624330eb",
+     "name": "Ratna",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Empathetic Responder",
+     "description": "A genuinely supportive and empathetic voice, designed for engaging customer interactions, health messages, and comforting narratives.",
+     "audio": "/d/bc1da421/file"
+    },
+    {
+     "voiceId": "cartesia_6a3fe952-63f8-4c99-865a-44887175ea26",
+     "name": "Risa",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Compassionate Helper",
+     "description": "Featuring a gentle and empathetic tone, this voice is well-suited for sensitive topics and offering comforting assistance.",
+     "audio": "/d/9b7125b4/file"
+    },
+    {
+     "voiceId": "cartesia_74546efd-3ac5-4c41-ba59-4756227f429a",
+     "name": "Citra",
+     "gender": "f",
+     "accent": "standard-indonesian",
+     "locale": "id-ID",
+     "tagline": "Interactive Agent",
+     "description": "A friendly and approachable voice, ideal for guiding users through interactive systems and delivering engaging, personalized responses.",
+     "audio": "/d/b8d50cca/file"
+    }
+   ],
+   "line": "Sore ini saya mau minum kopi dengan teman.",
+   "lineSource": "authored audition line (this language has no course line)"
+  },
+  "kan": {
+   "code": "kan",
+   "name": "Kannada",
+   "knownOnly": false,
+   "knownCourses": 1,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Prakash is GONE (Cartesia withdrew it)",
+     "now": "Prakash"
+    },
+    {
+     "gender": "f",
+     "why": "cast Divya is the 2026-09-04 mechanical draft",
+     "now": "Divya"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_7c6219d2-e8d2-462c-89d8-7ecba7c75d65",
+     "name": "Divya",
+     "gender": "f",
+     "accent": "southern-karnataka",
+     "locale": "kn-IN",
+     "tagline": "Joyful Narrator",
+     "description": "Lively and cheerful adult female voice for product advertisements, upbeat promotions, and happy storytelling",
+     "audio": "/d/d114e22b/file"
+    },
+    {
+     "voiceId": "cartesia_3fffe34e-bcfb-4b71-ba11-ff3aba4d6c6f",
+     "name": "Chetan",
+     "gender": "m",
+     "accent": "southern-karnataka",
+     "locale": "kn-IN",
+     "tagline": "Casual Storyteller",
+     "description": "A relaxed, easygoing male voice ideal for personal anecdotes, conversational podcasts, and informal audio narratives.",
+     "audio": "/d/c89ccf8b/file"
+    },
+    {
+     "voiceId": "cartesia_414a9c07-766e-4eab-87b2-805d424516e8",
+     "name": "Chaitra",
+     "gender": "f",
+     "accent": "southern-karnataka",
+     "locale": "kn-IN",
+     "tagline": "Thoughtful Navigator",
+     "description": "Friendly and reassuring, offering a fluid conversational style that makes routine updates and transactional assistance feel effortless and approachable.",
+     "audio": "/d/bbf9c73f/file"
+    },
+    {
+     "voiceId": "cartesia_0337be6e-6b5d-4ce5-a75a-5e5c01f142c4",
+     "name": "Sahana",
+     "gender": "f",
+     "accent": "southern-karnataka",
+     "locale": "kn-IN",
+     "tagline": "Bright Concierge",
+     "description": "Bright, focused delivery with an engaging cadence, tailored for everyday personal assistance, scheduling alerts, and modern mobile app interactions.",
+     "audio": "/d/a7d94746/file"
+    },
+    {
+     "voiceId": "cartesia_4c00ff98-199c-4967-99ae-7b69125edcff",
+     "name": "Disha",
+     "gender": "f",
+     "accent": "southern-karnataka",
+     "locale": "kn-IN",
+     "tagline": "Friendly Anchor",
+     "description": "Offers a friendly and efficient tone, ideal for guiding users through digital platforms and interactive experiences.",
+     "audio": "/d/c17b380e/file"
+    }
+   ],
+   "line": "ಇಡೀ ವಾಕ್ಯ ನನಗೆ ನೆನಪಿರುತ್ತೋ ಇಲ್ಲವೋ ಗೊತ್ತಿಲ್ಲ.",
+   "lineSource": "eng_for_kan seed 10 (known side)"
+  },
+  "mar": {
+   "code": "mar",
+   "name": "Marathi",
+   "knownOnly": false,
+   "knownCourses": 1,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Suresh is the 2026-09-04 mechanical draft",
+     "now": "Suresh"
+    },
+    {
+     "gender": "f",
+     "why": "cast Anika is the 2026-09-04 mechanical draft",
+     "now": "Anika"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_f227bc18-3704-47fe-b759-8c78a450fdfa",
+     "name": "Suresh",
+     "gender": "m",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Instruction Voice",
+     "description": "Clear and well-enunciated adult male voice for instructions, narrations, and professional communication",
+     "audio": "/d/e1becf7e/file"
+    },
+    {
+     "voiceId": "cartesia_fc0401bc-6eb0-4468-946c-fea5594522b4",
+     "name": "Sayali",
+     "gender": "f",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Support Dispatcher",
+     "description": "A brisk, solution-oriented voice delivering prompt updates and attentive customer assistance with reassuring clarity.",
+     "audio": "/d/d9bce69f/file"
+    },
+    {
+     "voiceId": "cartesia_e3ca7d7c-d6b2-4dd9-a858-3ea17744a736",
+     "name": "Yash",
+     "gender": "m",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Attentive Handler",
+     "description": "Grounding and earnest tones suited for service desk interactions, account management, and everyday problem-solving dialogs.",
+     "audio": "/d/f8d3d173/file"
+    },
+    {
+     "voiceId": "cartesia_c2ead8bf-408d-4e02-ab92-45c0d3846d4b",
+     "name": "Mandar",
+     "gender": "m",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Clinic Guide",
+     "description": "Attentive and businesslike, this grounded delivery offers brisk composure for client support, order tracking, and day-to-day coordination dialogues.",
+     "audio": "/d/9a3569bd/file"
+    },
+    {
+     "voiceId": "cartesia_78f23aa7-9bee-4b55-aa29-5bdc598acb54",
+     "name": "Asha",
+     "gender": "f",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Attentive Dispatcher",
+     "description": "A brisk and proactive tone suited for customer support hotlines, transactional updates, and interactive voice response systems.",
+     "audio": "/d/f9123e49/file"
+    },
+    {
+     "voiceId": "cartesia_31670ac9-21a4-4c9e-963b-66288548471b",
+     "name": "Prasad",
+     "gender": "m",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Status Desk",
+     "description": "A grounded, earnest voice with a practical rhythm suited for customer service resolutions, workflow status updates, and interactive dispatch.",
+     "audio": "/d/42c0d727/file"
+    },
+    {
+     "voiceId": "cartesia_5fead402-189f-4649-bfce-0e8d937d86a2",
+     "name": "Chinmay",
+     "gender": "m",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Product Guide",
+     "description": "Practical and purposeful articulation designed to clarify complex steps and manage routine status updates with ease.",
+     "audio": "/d/4fed8fac/file"
+    },
+    {
+     "voiceId": "cartesia_77e8c11f-3b73-48c9-8f37-214f6f7a646e",
+     "name": "Kedar",
+     "gender": "m",
+     "accent": "konkani",
+     "locale": "mr-IN",
+     "tagline": "Prompt Liaison",
+     "description": "Composed and pragmatic, this voice brings efficient enunciation and approachable confidence to automated phone systems and daily business communication.",
+     "audio": "/d/068211a4/file"
+    }
+   ],
+   "line": "मला मदत करायला तुम्हाला खरंच हरकत नाही ना?",
+   "lineSource": "mar_for_eng seed 63"
+  },
+  "nld": {
+   "code": "nld",
+   "name": "Dutch",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Stijn is the 2026-09-04 mechanical draft",
+     "now": "Stijn"
+    },
+    {
+     "gender": "f",
+     "why": "cast Noa is the 2026-09-04 mechanical draft",
+     "now": "Noa"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_96355f3d-0179-4c9a-a8d8-11ef0779a9b8",
+     "name": "Noa",
+     "gender": "f",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Reassuring Responder",
+     "description": "Soft, clear Dutch female for empathetic customer communication.",
+     "audio": "/d/bd07c29a/file"
+    },
+    {
+     "voiceId": "cartesia_de075c71-b2dd-4723-848d-ea9aa9cd010b",
+     "name": "Fleur",
+     "gender": "f",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Vibrant Voice",
+     "description": "Youthful, spirited Dutch female for friendly professional assistance.",
+     "audio": "/d/1cfedbf1/file"
+    },
+    {
+     "voiceId": "cartesia_da743a82-ddf2-4d9b-8eb8-ff67ca0b138e",
+     "name": "Stijn",
+     "gender": "m",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Helpful Handler",
+     "description": "Approachable Dutch male for professional dialogue.",
+     "audio": "/d/98c2071e/file"
+    },
+    {
+     "voiceId": "cartesia_95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+     "name": "Thijs",
+     "gender": "m",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Confident Coordinator",
+     "description": "Clear, methodical Dutch male for reassuring professional dialogue.",
+     "audio": "/d/9e470caf/file"
+    },
+    {
+     "voiceId": "cartesia_225ba8cf-9fc2-4371-a78c-fe38ba38898a",
+     "name": "Anneliese",
+     "gender": "f",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Methodical Guide",
+     "description": "Clear, articulate Dutch female for efficient professional assistance.",
+     "audio": "/d/beee0c24/file"
+    },
+    {
+     "voiceId": "cartesia_4fbae271-89c4-494d-8181-6eddca393453",
+     "name": "Femke",
+     "gender": "f",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Global Host",
+     "description": "Femke holds consistency across alphanumerics and sales pitches, with the focused feel of a global host.",
+     "audio": "/d/a9dcfb64/file"
+    },
+    {
+     "voiceId": "cartesia_0eb213fe-4658-45bc-9442-33a48b24b133",
+     "name": "Sanne",
+     "gender": "f",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Clear Companion",
+     "description": "Cheerful female for engaging conversations",
+     "audio": "/d/f382d106/file"
+    },
+    {
+     "voiceId": "cartesia_af482421-80f4-4379-b00c-a118def29cde",
+     "name": "Lucas",
+     "gender": "m",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Storyteller",
+     "description": "Enunciating male for storytelling",
+     "audio": "/d/ecb4e3d2/file"
+    },
+    {
+     "voiceId": "cartesia_60e94cf5-8069-459f-a91e-3ff852a51107",
+     "name": "Isa",
+     "gender": "f",
+     "accent": "randstad",
+     "locale": "nl-NL",
+     "tagline": "Empathetic Ear",
+     "description": "Warm, expressive Dutch female for supportive customer interactions",
+     "audio": "/d/fa9d646f/file"
+    }
+   ],
+   "line": "ja, ik ben klaar om te gaan zodra je wilt",
+   "lineSource": "nld_for_eng seed 97"
+  },
+  "nor": {
+   "code": "nor",
+   "name": "Norwegian",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Lars is GONE (Cartesia withdrew it)",
+     "now": "Lars"
+    },
+    {
+     "gender": "f",
+     "why": "cast Kari is the 2026-09-04 mechanical draft",
+     "now": "Kari"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_4f7b1820-6263-4615-87a7-b105768d8f64",
+     "name": "Kari",
+     "gender": "f",
+     "accent": "oslo",
+     "locale": "no-NO",
+     "tagline": "Crisp Coordinator",
+     "description": "Polished Norwegian voice for efficient transactional assistance.",
+     "audio": "/d/29d28b47/file"
+    },
+    {
+     "voiceId": "cartesia_311174e8-4bf6-4467-9a84-352c5dae28a5",
+     "name": "Erlend",
+     "gender": "m",
+     "accent": "oslo",
+     "locale": "no-NO",
+     "tagline": "Cordial Dispatcher",
+     "description": "A natural, conversational cadence suited for logistical updates, account troubleshooting, and friendly frontline service assistance.",
+     "audio": "/d/c29ef391/file"
+    }
+   ],
+   "line": "Hun ville legge brevet hans i vesken sin.",
+   "lineSource": "nor_for_eng seed 53"
+  },
+  "pol": {
+   "code": "pol",
+   "name": "Polish",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Marcin is the 2026-09-04 mechanical draft",
+     "now": "Marcin"
+    },
+    {
+     "gender": "f",
+     "why": "cast voice Zofia is GONE (Cartesia withdrew it)",
+     "now": "Zofia"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_d358377a-cd1d-45c5-abd0-701314e36cbe",
+     "name": "Marcin",
+     "gender": "m",
+     "accent": "polish",
+     "locale": "pl-PL",
+     "tagline": "Charismatic Presenter",
+     "description": "Bright, energetic Polish male that brings scripts to life.",
+     "audio": "/d/784ffac8/file"
+    },
+    {
+     "voiceId": "cartesia_43e52207-96fc-4e01-aaf8-cae317e43fdb",
+     "name": "Kacper",
+     "gender": "m",
+     "accent": "polish",
+     "locale": "pl-PL",
+     "tagline": "Diligent Detailer",
+     "description": "Methodical Polish male for precise and efficient support.",
+     "audio": "/d/552f11a0/file"
+    },
+    {
+     "voiceId": "cartesia_2a3503b2-b6b6-4534-a224-e8c0679cec4a",
+     "name": "Jakub",
+     "gender": "m",
+     "accent": "polish",
+     "locale": "pl-PL",
+     "tagline": "Gentle Guide",
+     "description": "Clear male for narrations",
+     "audio": "/d/07070976/file"
+    },
+    {
+     "voiceId": "cartesia_f8aacd6e-1ac2-42d3-bcbf-125336ecd0f2",
+     "name": "Ewa",
+     "gender": "f",
+     "accent": "polish",
+     "locale": "pl-PL",
+     "tagline": "Efficient Envoy",
+     "description": "Professional Polish female for efficient, everyday dialogue.",
+     "audio": "/d/843dad31/file"
+    },
+    {
+     "voiceId": "cartesia_6bc7c014-022b-42ce-8b53-a5ec878a7ca7",
+     "name": "Agnieszka",
+     "gender": "f",
+     "accent": "polish",
+     "locale": "pl-PL",
+     "tagline": "Coordinator",
+     "description": "Formal adult female for direct and capable assistance.",
+     "audio": "/d/172e8363/file"
+    }
+   ],
+   "line": "Nie mogę się doczekać, żeby mówić lepiej.",
+   "lineSource": "pol_for_eng seed 29"
+  },
+  "ron": {
+   "code": "ron",
+   "name": "Romanian",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Andrei is GONE (Cartesia withdrew it)",
+     "now": "Andrei"
+    },
+    {
+     "gender": "f",
+     "why": "cast voice Andrada is GONE (Cartesia withdrew it)",
+     "now": "Andrada"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_26aa0590-65e4-436e-8dd9-b02e6caa5a37",
+     "name": "Miruna",
+     "gender": "f",
+     "accent": "romanian",
+     "locale": "ro-RO",
+     "tagline": "Attentive Representative",
+     "description": "Delivers an engaged, inquiring cadence ideal for troubleshooting workflows, ticketing inquiries, and step-by-step customer assistance.",
+     "audio": "/d/855988e9/file"
+    },
+    {
+     "voiceId": "cartesia_03292898-4865-4f19-bc0f-139b9d27a841",
+     "name": "Vlad",
+     "gender": "m",
+     "accent": "romanian",
+     "locale": "ro-RO",
+     "tagline": "Pragmatic Coordinator",
+     "description": "Combines a practical, conversational cadence with focused listening, ideal for order tracking, workflow updates, and frontline assistance.",
+     "audio": "/d/246cd71c/file"
+    },
+    {
+     "voiceId": "cartesia_a98af725-3118-44e3-a7f6-6bd4fca20b32",
+     "name": "Bogdan",
+     "gender": "m",
+     "accent": "romanian",
+     "locale": "ro-RO",
+     "tagline": "Attentive Advocate",
+     "description": "An attentive and natural conversational tone that effortlessly clarifies complex details for customer service interactions and order tracking.",
+     "audio": "/d/2c989f1c/file"
+    }
+   ],
+   "line": "O să încep să vorbesc mai mult în curând.",
+   "lineSource": "ron_for_eng seed 23"
+  },
+  "rus": {
+   "code": "rus",
+   "name": "Russian",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Sergei is the 2026-09-04 mechanical draft",
+     "now": "Sergei"
+    },
+    {
+     "gender": "f",
+     "why": "cast Tatiana is the 2026-09-04 mechanical draft",
+     "now": "Tatiana"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_1e4176b1-3db9-44d6-a601-4fe68b041942",
+     "name": "Sergei",
+     "gender": "m",
+     "accent": "russian",
+     "locale": "ru-RU",
+     "tagline": "Steady Supporter",
+     "description": "Reliable Russian male for clear, efficient dialogue.",
+     "audio": "/d/26f9333c/file"
+    },
+    {
+     "voiceId": "cartesia_064b17af-d36b-4bfb-b003-be07dba1b649",
+     "name": "Tatiana",
+     "gender": "f",
+     "accent": "russian",
+     "locale": "ru-RU",
+     "tagline": "Friendly Storyteller",
+     "description": "Friendly female for audiobooks and clear communication",
+     "audio": "/d/256bfa12/file"
+    },
+    {
+     "voiceId": "cartesia_069ff31a-5524-4945-a403-f746ee617507",
+     "name": "Alexei - Articulate Analyst",
+     "gender": "m",
+     "accent": "russian",
+     "locale": "ru-RU",
+     "tagline": "Articulate Analyst",
+     "description": "Polished Russian voice for capable transactional assistance.",
+     "audio": "/d/4817ebf3/file"
+    },
+    {
+     "voiceId": "cartesia_7a62541e-5492-410e-95ff-3abd096fce87",
+     "name": "Natalia",
+     "gender": "f",
+     "accent": "russian",
+     "locale": "ru-RU",
+     "tagline": "Steady Strategist",
+     "description": "Measured Russian female for highly structured communication.",
+     "audio": "/d/6bea79bc/file"
+    },
+    {
+     "voiceId": "cartesia_25b7aaa6-1670-42dc-b791-419322400803",
+     "name": "Daria",
+     "gender": "f",
+     "accent": "russian",
+     "locale": "ru-RU",
+     "tagline": "Decisive Dispatcher",
+     "description": "Confident adult female for direct and capable assistance.",
+     "audio": "/d/7a31bb42/file"
+    }
+   ],
+   "line": "Сегодня днём я пойду с другом выпить кофе.",
+   "lineSource": "authored audition line (this language has no course line)"
+  },
+  "swe": {
+   "code": "swe",
+   "name": "Swedish",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Vidar - Supportive Voice is the 2026-09-04 mechanical draft",
+     "now": "Vidar - Supportive Voice"
+    },
+    {
+     "gender": "f",
+     "why": "cast Freja - Informative Host is the 2026-09-04 mechanical draft",
+     "now": "Freja - Informative Host"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+     "name": "Nils",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Friendly Host",
+     "description": "Warm, genuine Swedish male for podcasts and conversational platforms.",
+     "audio": "/d/78a2959d/file"
+    },
+    {
+     "voiceId": "cartesia_bcdcad6d-4eb6-4a71-89fd-1ae2ce9f95d8",
+     "name": "Freja - Informative Host",
+     "gender": "f",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Informative Host",
+     "description": "A bright and articulate voice, ideal for presenting information with clarity and warmth.",
+     "audio": "/d/2d026db9/file"
+    },
+    {
+     "voiceId": "cartesia_ebe0038b-1790-40bd-98cd-924313e58d3b",
+     "name": "Vidar - Supportive Voice",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Supportive Voice",
+     "description": "A warm and understanding presence, perfect for empathetic customer service and supportive interactions.",
+     "audio": "/d/83c15b71/file"
+    },
+    {
+     "voiceId": "cartesia_f4d8ad0e-ad3a-4c37-b99d-ff28e366781b",
+     "name": "Ludvig",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Insightful Guide",
+     "description": "Provides insightful explanations with a reassuring and helpful demeanor.",
+     "audio": "/d/7bd074a5/file"
+    },
+    {
+     "voiceId": "cartesia_eede54e1-c038-4b4d-b655-809eeaa45c4c",
+     "name": "Henrik",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Refined Narrator",
+     "description": "Smooth, polished Swedish male suited for premium content.",
+     "audio": "/d/28e78911/file"
+    },
+    {
+     "voiceId": "cartesia_573ad84b-f4bf-49cb-908d-d4a939aef147",
+     "name": "Filip",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Precise Lead",
+     "description": "This voice delivers precise details with an approachable and service-oriented demeanor for clear instructions.",
+     "audio": "/d/efade658/file"
+    },
+    {
+     "voiceId": "cartesia_922e8304-2630-4779-8a86-effedfa99a79",
+     "name": "Albin",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Information Steward",
+     "description": "This thoughtful voice offers a measured and analytical delivery, ideal for detailed explanations and considered presentations.",
+     "audio": "/d/89d215d6/file"
+    },
+    {
+     "voiceId": "cartesia_6384afc4-3731-4260-91dc-62e52bc793c3",
+     "name": "Olle",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Poised Helper",
+     "description": "This voice provides a poised and polite experience, ensuring every interaction feels supported and well-handled.",
+     "audio": "/d/6dea678b/file"
+    },
+    {
+     "voiceId": "cartesia_3528e5c3-02d3-4a43-ac10-e1b3f1f6277d",
+     "name": "Arvid",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Briefing Host",
+     "description": "With a reassuring tone, this voice patiently guides listeners through details, fostering understanding and trust.",
+     "audio": "/d/9708efd7/file"
+    },
+    {
+     "voiceId": "cartesia_f72246fe-1c80-4afc-9db2-54bb905da1e3",
+     "name": "Saga",
+     "gender": "f",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Keen Specialist",
+     "description": "Delivering information with captivating clarity and a pleasant timbre, this voice is ideal for educational content and detailed presentations.",
+     "audio": "/d/b4e8e133/file"
+    },
+    {
+     "voiceId": "cartesia_d3cc405c-a812-489b-afe5-f3d50a7a8310",
+     "name": "August",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Clear Narrator",
+     "description": "This voice provides a clear and professional link, ensuring smooth interactions and a helpful, understanding connection.",
+     "audio": "/d/448e6036/file"
+    },
+    {
+     "voiceId": "cartesia_6c6b05bf-ae5f-4013-82ab-7348e99ffdb2",
+     "name": "Freja",
+     "gender": "f",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Nordic Reader",
+     "description": "Expressive female for clear communication",
+     "audio": "/d/40468a66/file"
+    },
+    {
+     "voiceId": "cartesia_0caedb75-417f-4e36-9b64-c21354cb94c8",
+     "name": "Cees",
+     "gender": "m",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Nordic Narrator",
+     "description": "Enunciating male for smooth conversations",
+     "audio": "/d/058cc312/file"
+    },
+    {
+     "voiceId": "cartesia_b576c504-cbd1-4224-af06-04067c5a5e3e",
+     "name": "Astrid",
+     "gender": "f",
+     "accent": "stockholm",
+     "locale": "sv-SE",
+     "tagline": "Direct Director",
+     "description": "Polished Swedish female for efficient corporate assistance.",
+     "audio": "/d/5edefae3/file"
+    }
+   ],
+   "line": "Jag tänkte inte på hur jag skulle svara.",
+   "lineSource": "swe_for_eng seed 43"
+  },
+  "tel": {
+   "code": "tel",
+   "name": "Telugu",
+   "knownOnly": false,
+   "knownCourses": 1,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Charan is the 2026-09-04 mechanical draft",
+     "now": "Charan"
+    },
+    {
+     "gender": "f",
+     "why": "cast Shanti is the 2026-09-04 mechanical draft",
+     "now": "Shanti"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_4418bb06-8329-49a1-bb11-53bb64ca0547",
+     "name": "Shanti",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Calm Authority",
+     "description": "Grounded and soothing voice that conveys confidence.",
+     "audio": "/d/38f4b647/file"
+    },
+    {
+     "voiceId": "cartesia_ebecd063-10f4-422e-a8ff-556ce5c4d4e4",
+     "name": "Pavan",
+     "gender": "m",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Bright Voice",
+     "description": "Voice with energetic clarity and upbeat tone, ideal for customer support and engaging communication",
+     "audio": "/d/c722102c/file"
+    },
+    {
+     "voiceId": "cartesia_82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b",
+     "name": "Charan",
+     "gender": "m",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Clear Concierge",
+     "description": "A clear and composed voice, perfect for conveying information and providing guidance with precision.",
+     "audio": "/d/0c5b2d82/file"
+    },
+    {
+     "voiceId": "cartesia_3a8e6fea-81e5-4d4d-8755-86093146cdb8",
+     "name": "Vidya",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Empathetic Voice",
+     "description": "Gentle and reassuring tone designed to offer comfort and build trust.",
+     "audio": "/d/b76316a4/file"
+    },
+    {
+     "voiceId": "cartesia_76961778-5ce4-4aa9-9cdf-66a029d61a8f",
+     "name": "Bhavani",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Reassuring Companion",
+     "description": "Soft and understanding tone for conveying genuine care and empathy.",
+     "audio": "/d/2d63b71c/file"
+    },
+    {
+     "voiceId": "cartesia_cf061d8b-a752-4865-81a2-57570a6e0565",
+     "name": "Ramya",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Graceful Host",
+     "description": "Warm, welcoming Telugu female that puts listeners at ease instantly.",
+     "audio": "/d/e43f47aa/file"
+    },
+    {
+     "voiceId": "cartesia_07bc462a-c644-49f1-baf7-82d5599131be",
+     "name": "Sindhu",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Conversational Partner",
+     "description": "Clear and natural adult female voice for casual conversations and everyday interactions",
+     "audio": "/d/d7c19868/file"
+    },
+    {
+     "voiceId": "cartesia_062c17da-6ab6-4ecc-9f8a-d2a3dace8003",
+     "name": "Deepthi",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Solution Navigator",
+     "description": "Walks through a problem step by step and lands on a clear next action.",
+     "audio": "/d/f2cb4900/file"
+    },
+    {
+     "voiceId": "cartesia_292708e4-1200-4214-a3b7-f522a88c7284",
+     "name": "Divya",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Client Support",
+     "description": "Provides a reassuring and attentive presence, making customers feel heard and supported with genuine care.",
+     "audio": "/d/4bc5c4a0/file"
+    },
+    {
+     "voiceId": "cartesia_330c4fa0-1da3-4c55-8e97-951bfd724e20",
+     "name": "Sarika",
+     "gender": "f",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Calm Spirit",
+     "description": "Voice with laidback tone and gentle rhythm, perfect for relaxed, friendly, and conversational dialogue",
+     "audio": "/d/c2e08506/file"
+    },
+    {
+     "voiceId": "cartesia_38bded0a-3ab4-42d1-8e47-2e0b6b10ced9",
+     "name": "Vikram",
+     "gender": "m",
+     "accent": "telangana",
+     "locale": "te-IN",
+     "tagline": "Folk Narrator",
+     "description": "Expressive adult male voice with a colorful tone for storytelling, narrations, and engaging cultural content",
+     "audio": "/d/64d62293/file"
+    }
+   ],
+   "line": "నేను తక్కువ సమయంలో చాలా చేశానని అనుకుంటున్నాను.",
+   "lineSource": "tel_for_eng seed 89"
+  },
+  "tha": {
+   "code": "tha",
+   "name": "Thai",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Somchai is the 2026-09-04 mechanical draft",
+     "now": "Somchai"
+    },
+    {
+     "gender": "f",
+     "why": "cast Supannee - Support Concierge is the 2026-09-04 mechanical draft",
+     "now": "Supannee - Support Concierge"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_5de076e9-7b28-4442-b279-e7d80d573505",
+     "name": "Somchai",
+     "gender": "m",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Star",
+     "description": "Upbeat and confident adult male voice for commercials, brand promotions, and lively presentations",
+     "audio": "/d/1e17c81c/file"
+    },
+    {
+     "voiceId": "cartesia_4ff0f045-c140-4aa3-9210-529083f86fca",
+     "name": "Supannee - Support Concierge",
+     "gender": "f",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Support Concierge",
+     "description": "Offers a composed and considerate presence, ideal for providing attentive support and detailed responses.",
+     "audio": "/d/12c66985/file"
+    },
+    {
+     "voiceId": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+     "name": "Chakrit",
+     "gender": "m",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Reliable Communicator",
+     "description": "Clear, dependable Thai male built for public communications.",
+     "audio": "/d/1bcfb5b1/file"
+    },
+    {
+     "voiceId": "cartesia_d051b675-6863-44cc-b7ba-356858ed7df8",
+     "name": "Nisa - System Navigator",
+     "gender": "f",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "System Navigator",
+     "description": "Delivers information with a composed and knowledgeable tone, perfect for explaining complex processes or technical steps.",
+     "audio": "/d/a4d44231/file"
+    },
+    {
+     "voiceId": "cartesia_ccc7bb22-dcd0-42e4-822e-0731b950972f",
+     "name": "Suda",
+     "gender": "f",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Fortune Teller",
+     "description": "Expressive adult female voice with lively pronunciation for storytelling, advertisements, and engaging dialogue",
+     "audio": "/d/d31c4fd4/file"
+    },
+    {
+     "voiceId": "cartesia_273193f7-dbff-438e-b8af-fcc499200b1c",
+     "name": "Narin",
+     "gender": "f",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Warm Concierge",
+     "description": "Warm and welcoming delivery for concierge-style assistance, travel support, and friendly service interactions.",
+     "audio": "/d/43e6ba11/file"
+    },
+    {
+     "voiceId": "cartesia_8810fbfa-b317-4503-9974-9774d08b5897",
+     "name": "Kanya",
+     "gender": "f",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Gentle Helper",
+     "description": "Gentle and hospitable voice good for support and helpful conversational guidance.",
+     "audio": "/d/fafa1f11/file"
+    },
+    {
+     "voiceId": "cartesia_a50a04b8-35ee-487e-8b87-97f0eee68a64",
+     "name": "Krit",
+     "gender": "m",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Efficient Envoy",
+     "description": "Professional adult male for smooth, everyday dialogue.",
+     "audio": "/d/7b7f304f/file"
+    },
+    {
+     "voiceId": "cartesia_db938869-18b5-4c21-be8b-2ffdfba6d8d4",
+     "name": "Thaksin",
+     "gender": "m",
+     "accent": "central-thai",
+     "locale": "th-TH",
+     "tagline": "Tactful Tracker",
+     "description": "Methodical adult male for structured professional interactions.",
+     "audio": "/d/808da2cb/file"
+    }
+   ],
+   "line": "ผมอยากสามารถพูดหลังจากคุณพูดจบ",
+   "lineSource": "tha_for_eng seed 11"
+  },
+  "tur": {
+   "code": "tur",
+   "name": "Turkish",
+   "knownOnly": false,
+   "knownCourses": 0,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast voice Emre is GONE (Cartesia withdrew it)",
+     "now": "Emre"
+    },
+    {
+     "gender": "f",
+     "why": "cast Leyla is the 2026-09-04 mechanical draft",
+     "now": "Leyla"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+     "name": "Taylan",
+     "gender": "m",
+     "accent": "istanbul",
+     "locale": "tr-TR",
+     "tagline": "Expressive Voice",
+     "description": "Versatile articulate male for storytelling",
+     "audio": "/d/6635f5a6/file"
+    },
+    {
+     "voiceId": "cartesia_fa7bfcdc-603c-4bf1-a600-a371400d2f8c",
+     "name": "Leyla",
+     "gender": "f",
+     "accent": "istanbul",
+     "locale": "tr-TR",
+     "tagline": "Story Companion",
+     "description": "Expressive female for conversational support",
+     "audio": "/d/32eecd82/file"
+    },
+    {
+     "voiceId": "cartesia_8036098f-cff4-401e-bfba-f0a6a6e5e49b",
+     "name": "Elif",
+     "gender": "f",
+     "accent": "istanbul",
+     "locale": "tr-TR",
+     "tagline": "Structured Supporter",
+     "description": "Methodical adult female for precise and reliable assistance.",
+     "audio": "/d/5b7e3079/file"
+    }
+   ],
+   "line": "Şimdi seninle Türkçe konuşmak istiyorum.",
+   "lineSource": "tur_for_eng seed 1"
+  },
+  "guj": {
+   "code": "guj",
+   "name": "Gujarati",
+   "knownOnly": true,
+   "knownCourses": 1,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Amit is the 2026-09-04 mechanical draft",
+     "now": "Amit"
+    },
+    {
+     "gender": "f",
+     "why": "cast Isha is the 2026-09-04 mechanical draft",
+     "now": "Isha"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+     "name": "Amit",
+     "gender": "m",
+     "accent": "parsi",
+     "locale": "gu-IN",
+     "tagline": "Sports Student",
+     "description": "Friendly young adult male voice for casual conversations and natural everyday dialogue",
+     "audio": "/d/cd24ab2f/file"
+    },
+    {
+     "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+     "name": "Isha",
+     "gender": "f",
+     "accent": "parsi",
+     "locale": "gu-IN",
+     "tagline": "Learner",
+     "description": "Youthful female voice with a clear and approachable tone for narration, educational content, and voiceover",
+     "audio": "/d/6f93d8d3/file"
+    },
+    {
+     "voiceId": "cartesia_5ef8514d-954b-4f57-a8c8-c211c0dba93a",
+     "name": "Niyati",
+     "gender": "f",
+     "accent": "parsi",
+     "locale": "gu-IN",
+     "tagline": "Thoughtful Coordinator",
+     "description": "Conveys patient understanding and organized clarity, perfectly tailored for conversational virtual assistance and direct consumer helplines.",
+     "audio": "/d/85669b4d/file"
+    }
+   ],
+   "line": "શું તમે તે ફરી એક વાર થોડું ધીરે કહી શકો?",
+   "lineSource": "eng_for_guj seed 61 (known side)"
+  },
+  "pan": {
+   "code": "pan",
+   "name": "Punjabi",
+   "knownOnly": true,
+   "knownCourses": 1,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Gurpreet is the 2026-09-04 mechanical draft",
+     "now": "Gurpreet"
+    },
+    {
+     "gender": "f",
+     "why": "cast Jaspreet is the 2026-09-04 mechanical draft",
+     "now": "Jaspreet"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+     "name": "Gurpreet",
+     "gender": "m",
+     "accent": "powadhi",
+     "locale": "pa-IN",
+     "tagline": "Companion",
+     "description": "Soft and caring adult male voice for empathetic conversations, support, and reassuring dialogue",
+     "audio": "/d/9db85be7/file"
+    },
+    {
+     "voiceId": "cartesia_991c62ce-631f-48b0-8060-2a0ebecbd15b",
+     "name": "Jaspreet",
+     "gender": "f",
+     "accent": "powadhi",
+     "locale": "pa-IN",
+     "tagline": "Commercial Woman",
+     "description": "Expressive adult female voice with an engaging tone for commercials, promotions, and lively announcements",
+     "audio": "/d/a2c1ce4f/file"
+    },
+    {
+     "voiceId": "cartesia_9bf2ddcd-bb35-4e90-81b3-21c8183b24f4",
+     "name": "Navjot",
+     "gender": "f",
+     "accent": "powadhi",
+     "locale": "pa-IN",
+     "tagline": "Data Relayer",
+     "description": "Delivers complex information with clear enunciation and a precise, efficient manner for technical discussions.",
+     "audio": "/d/34f98c6f/file"
+    },
+    {
+     "voiceId": "cartesia_cf7254bf-2649-41d2-a8b8-23348e824408",
+     "name": "Veer",
+     "gender": "m",
+     "accent": "powadhi",
+     "locale": "pa-IN",
+     "tagline": "Steadfast Planner",
+     "description": "Provides dependable advice with a steady, confident delivery, suitable for strategic planning and project support.",
+     "audio": "/d/bb5f3a3e/file"
+    },
+    {
+     "voiceId": "cartesia_c5e33a8f-46f3-4bbc-ad62-2a9676ecf648",
+     "name": "Rupinder",
+     "gender": "m",
+     "accent": "powadhi",
+     "locale": "pa-IN",
+     "tagline": "Steady Desk",
+     "description": "Offers a steady and dependable delivery, ideal for detailed instructions and step-by-step guidance.",
+     "audio": "/d/9571671c/file"
+    }
+   ],
+   "line": "ਮੈਂ ਇੱਕ ਸ਼ਬਦ ਯਾਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ।",
+   "lineSource": "eng_for_pan seed 6 (known side)"
+  },
+  "tam": {
+   "code": "tam",
+   "name": "Tamil",
+   "knownOnly": true,
+   "knownCourses": 3,
+   "slots": [
+    {
+     "gender": "m",
+     "why": "cast Karthik is the 2026-09-04 mechanical draft",
+     "now": "Karthik"
+    },
+    {
+     "gender": "f",
+     "why": "cast Janani is the 2026-09-04 mechanical draft",
+     "now": "Janani"
+    }
+   ],
+   "voices": [
+    {
+     "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+     "name": "Karthik",
+     "gender": "m",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Customer Assistant",
+     "description": "A clear, helpful voice with a calm demeanor, ideal for customer support and informational announcements.",
+     "audio": "/d/617f8376/file"
+    },
+    {
+     "voiceId": "cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2",
+     "name": "Janani",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Calm Professional",
+     "description": "Janani delivers content with a composed and reassuring tone, perfect for professional explanations and reliable guidance.",
+     "audio": "/d/33637623/file"
+    },
+    {
+     "voiceId": "cartesia_96e6974d-57a9-4325-89c8-43f065f8bd95",
+     "name": "Akshara",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Resourceful Assistant",
+     "description": "A voice that navigates support interactions with bright intelligence and a helpful, organized tone.",
+     "audio": "/d/27708587/file"
+    },
+    {
+     "voiceId": "cartesia_80e4e2b3-ec54-4930-97ac-667eba950352",
+     "name": "Nithya",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Polished Presence",
+     "description": "Refined and smooth articulation suited for corporate messaging.",
+     "audio": "/d/4cc64c33/file"
+    },
+    {
+     "voiceId": "cartesia_d4470f50-295e-4e11-82a2-158d45bf6abc",
+     "name": "Anitha",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Warm Guide",
+     "description": "Inviting and approachable tone perfect for providing friendly guidance.",
+     "audio": "/d/c41a54d9/file"
+    },
+    {
+     "voiceId": "cartesia_4014f0c9-d3eb-4eca-af2b-fd6004f526be",
+     "name": "Meena",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Measured Professional",
+     "description": "Steady and even pacing that offers a grounding presence for any script.",
+     "audio": "/d/25475fd4/file"
+    },
+    {
+     "voiceId": "cartesia_01d7796d-ac10-4ea3-8df0-3cc04f2d25ff",
+     "name": "Kavitha",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Clear Communicator",
+     "description": "Crisp and articulate delivery designed for seamless information sharing.",
+     "audio": "/d/94373856/file"
+    },
+    {
+     "voiceId": "cartesia_dec57575-274e-4544-b4c5-9058bb26b152",
+     "name": "Kanmani",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Vibrant Informer",
+     "description": "Combines buoyant clarity and purposeful cadence to keep listeners attentive during interactive service calls and timely status updates.",
+     "audio": "/d/9a12e573/file"
+    },
+    {
+     "voiceId": "cartesia_a2f3e72f-7fa0-4e96-91b0-c409115c1c28",
+     "name": "Dinesh",
+     "gender": "m",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Informed Source",
+     "description": "This voice delivers clear, well-structured information with a confident and measured tone, suitable for complex topics.",
+     "audio": "/d/68a3c441/file"
+    },
+    {
+     "voiceId": "cartesia_6599f426-765e-4b73-8c5d-9f7250af3c88",
+     "name": "Nila",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Studio Narrator",
+     "description": "A contemporary voice offering clear, engaging guidance for digital platforms and interactive experiences.",
+     "audio": "/d/4d3eec48/file"
+    },
+    {
+     "voiceId": "cartesia_25d2c432-139c-4035-bfd6-9baaabcdd006",
+     "name": "Kavya",
+     "gender": "f",
+     "accent": "central-tamil",
+     "locale": "ta-IN",
+     "tagline": "Warm Presence",
+     "description": "Friendly voice with natural tone and smooth flow, ideal for everyday conversations",
+     "audio": "/d/17dbcf23/file"
+    }
+   ],
+   "line": "நான் இப்போது உங்களுடன் ஆங்கிலம் பேச விரும்புகிறேன்.",
+   "lineSource": "eng_for_tam seed 1 (known side)"
+  }
+ },
+ "gaps": [
+  {
+   "lang": "ben",
+   "voice": "Rubel",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "ben",
+   "voice": "Ananya",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "bul",
+   "voice": "Ivana",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "bul",
+   "voice": "Georgi",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "dan",
+   "voice": "Soren",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "dan",
+   "voice": "Katrine",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "hun",
+   "voice": "Eszter",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "ind",
+   "voice": "Andi",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "kan",
+   "voice": "Prakash",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "mar",
+   "voice": "Anika",
+   "why": "no published #716 sample"
+  },
+  {
+   "lang": "nor",
+   "voice": "Lars",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "pol",
+   "voice": "Zofia",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "pol",
+   "voice": "Katarzyna",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "ron",
+   "voice": "Andrei",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "ron",
+   "voice": "Andrada",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "rus",
+   "voice": "Irina",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "swe",
+   "voice": "Ingrid",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "tur",
+   "voice": "Aylin",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "tur",
+   "voice": "Emre",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  },
+  {
+   "lang": "tam",
+   "voice": "Arun",
+   "why": "GONE: Cartesia withdrew it (voice_not_found), cannot be cast"
+  }
+ ]
+}

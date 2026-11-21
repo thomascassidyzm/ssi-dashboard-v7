@@ -1,0 +1,29 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "target_text": "não, têm de apanhar o comboio eles próprios"
+   },
+   "expect": {
+    "known_text": "no they have to catch the train themselves",
+    "target_text": "não, eles têm de apanhar o comboio"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target1",
+   "audio_id": "0974334e-28f3-4344-84d3-72bd6a518f71",
+   "seed_number": 450
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "slot": "target2",
+   "audio_id": "d5515898-e8fc-4b28-ab5c-7440fad0e26f",
+   "seed_number": 450
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "seed": 589,
+ "generated": true,
+ "legos": {
+  "L01": {
+   "update": {
+    "B01": [
+     "আমি বাসটার দিকে যেতে চাই",
+     "I want to go towards the bus",
+     null,
+     null
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "আমি মনে করি আমি বাসটার দিকে যেতে চাই",
+     "I think I want to go towards the bus",
+     null,
+     null,
+     "বাসটার|form of taught বাসটা"
+    ]
+   ]
+  }
+ },
+ "known_ok": {
+  "S0589L01B01": "বাসটার|form of taught বাসটা"
+ },
+ "notes": "item 20 back-fill (cs #740·AI): English from eng_for_hin rows (hin_row) unless authored"
+}

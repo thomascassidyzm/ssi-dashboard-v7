@@ -1,0 +1,34 @@
+{
+ "course": "eng_for_guj",
+ "batch": "probe",
+ "seeds": [
+  71
+ ],
+ "counts": {
+  "lego_insert": 0,
+  "lego_update": 1,
+  "insert": 1,
+  "update": 8,
+  "delete": 0
+ },
+ "structural": false,
+ "recorded_today_by_others": [],
+ "errors": [],
+ "warnings": [
+  "S0071L02: LEGO target text changes but its target clips are not re-pointed in this op: they still speak the old words (render first, put the ids in \"set\")",
+  "S0071L02B01: bare row of a re-cut LEGO, re-said with the new words"
+ ],
+ "checks": [
+  {
+   "lego": "S0071L02",
+   "is_new": true,
+   "before": "BUILD: need 3+, got 0 (8 component phrases excluded)",
+   "after": "ok",
+   "real_builds_after": 3,
+   "deleted": 0,
+   "rewritten": 8,
+   "inserted": 1,
+   "accept_gap": null
+  }
+ ]
+}

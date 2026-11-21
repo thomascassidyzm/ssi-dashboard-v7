@@ -1,0 +1,15 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 450,
+   "set": {
+    "known_text": "不，他们得赶火车。"
+   },
+   "expect": {
+    "known_text": "不，他们得自己赶火车。",
+    "target_text": "No, ellos tienen que coger el tren."
+   }
+  }
+ ]
+}

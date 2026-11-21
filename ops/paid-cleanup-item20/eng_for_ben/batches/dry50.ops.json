@@ -1,0 +1,604 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0100L01B01",
+   "expect": {
+    "known_text": "একই রকম",
+    "target_text": "similar"
+   },
+   "set": {
+    "known_text": "আজ একই রকম কিছু করা",
+    "target_text": "doing something similar today",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0100L02B01",
+   "expect": {
+    "known_text": "উচিত নয়",
+    "target_text": "shouldn't"
+   },
+   "set": {
+    "known_text": "তোমার গল্পটা নিয়ে চিন্তা করা উচিত নয়",
+    "target_text": "you shouldn't worry about the story",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0101L01B01",
+   "expect": {
+    "known_text": "ভাষা",
+    "target_text": "language"
+   },
+   "set": {
+    "known_text": "এই ভাষা সম্পর্কে জানা",
+    "target_text": "to find out about this language",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0101L02B01",
+   "expect": {
+    "known_text": "খুঁজে বের করছি",
+    "target_text": "finding out"
+   },
+   "set": {
+    "known_text": "আজ আরও খুঁজে বের করা",
+    "target_text": "finding out more today",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0101L03B01",
+   "expect": {
+    "known_text": "উপভোগ করছি",
+    "target_text": "I'm enjoying"
+   },
+   "set": {
+    "known_text": "আমি মনে করি যে আমি এটা উপভোগ করছি",
+    "target_text": "I think that I'm enjoying this",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0109L03B01",
+   "expect": {
+    "known_text": "অবশ্যই কঠিন পরিশ্রম",
+    "target_text": "must work hard"
+   },
+   "set": {
+    "known_text": "আমাদের আজ অবশ্যই কঠিন পরিশ্রম করতে হবে",
+    "target_text": "we must work hard today",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0110L02B01",
+   "expect": {
+    "known_text": "আমরা বন্ধুরা",
+    "target_text": "we're friends"
+   },
+   "set": {
+    "known_text": "তুমি জানো আমরা বন্ধু",
+    "target_text": "you know we're friends",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0111L03B01",
+   "expect": {
+    "known_text": "যখন আমরা শিখি",
+    "target_text": "when we learn"
+   },
+   "set": {
+    "known_text": "যখন আমরা ইংরেজি শিখি",
+    "target_text": "when we learn English",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0113L01B02",
+   "expect": {
+    "known_text": "তুমি বলেছিলে",
+    "target_text": "you said"
+   },
+   "set": {
+    "known_text": "তুমি যা বলেছিলে তার সাথে আমি একমত নই",
+    "target_text": "I don't agree with what you said",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0113L02B01",
+   "expect": {
+    "known_text": "মনে রাখতে পারি না",
+    "target_text": "can't remember"
+   },
+   "set": {
+    "known_text": "আমি এটা প্রত্যাশা করিনি আর আমি মনে রাখতে পারি না",
+    "target_text": "I wasn't expecting it and I can't remember",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0114L01B02",
+   "expect": {
+    "known_text": "আরও খারাপ",
+    "target_text": "worse"
+   },
+   "set": {
+    "known_text": "সেইজন্যই আমি আরও খারাপ করছি",
+    "target_text": "that is why I'm doing worse",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0115L01B01",
+   "expect": {
+    "known_text": "কথোপকথন করতে",
+    "target_text": "to have a conversation"
+   },
+   "set": {
+    "known_text": "আমি আজ কথোপকথন করতে তৈরি",
+    "target_text": "I'm ready to have a conversation today",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0116L03B01",
+   "expect": {
+    "known_text": "পারতাম",
+    "target_text": "I could"
+   },
+   "set": {
+    "known_text": "এটা সেরা পছন্দ না যা আমি আজ করতে পারতাম",
+    "target_text": "this isn't the best choice I could make today",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0117L03B01",
+   "expect": {
+    "known_text": "কথা বলেছিলাম",
+    "target_text": "we talked"
+   },
+   "set": {
+    "known_text": "আমরা গতকাল একে অপরের সাথে কথা বলেছিলাম",
+    "target_text": "we talked to each other yesterday",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0117L04B01",
+   "expect": {
+    "known_text": "শেষবার",
+    "target_text": "last time"
+   },
+   "set": {
+    "known_text": "শেষবার আমি ক্লান্ত ছিলাম",
+    "target_text": "last time I was tired",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0122L02B01",
+   "expect": {
+    "known_text": "সহজ হতে শুরু করছে",
+    "target_text": "starting to feel easier"
+   },
+   "set": {
+    "known_text": "তুমি জানো এটা সহজ হতে শুরু করছে",
+    "target_text": "you know it's starting to feel easier",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0124L01B01",
+   "expect": {
+    "known_text": "মনে করেছিলাম",
+    "target_text": "I thought"
+   },
+   "set": {
+    "known_text": "আমি মনে করেছিলাম আমরা দেখা করার আশা করেছিলাম",
+    "target_text": "I thought we hoped to meet",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0125L01B03",
+   "expect": {
+    "known_text": "বিশ্বাস করা",
+    "target_text": "believe"
+   },
+   "set": {
+    "known_text": "আমি বিশ্বাস করি যে আমরা বন্ধু",
+    "target_text": "I believe that we're friends",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0126L02B01",
+   "expect": {
+    "known_text": "আমার মস্তিষ্কের আকৃতি",
+    "target_text": "the shape of my brain"
+   },
+   "set": {
+    "known_text": "আজ আমার মস্তিষ্কের আকৃতি",
+    "target_text": "the shape of my brain today",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0128L02B01",
+   "expect": {
+    "known_text": "তুমি এমন কারো মতো",
+    "target_text": "you're like someone"
+   },
+   "set": {
+    "known_text": "তুমি এমন কারো মতো যার সাথে আমি দেখা করতে চাই",
+    "target_text": "you're like someone I want to meet",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0129L02B01",
+   "expect": {
+    "known_text": "আমি খুব খুশি যে",
+    "target_text": "I'm so happy that"
+   },
+   "set": {
+    "known_text": "আমি খুব খুশি যে আমরা বন্ধু",
+    "target_text": "I'm so happy that we're friends",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0130L02B01",
+   "expect": {
+    "known_text": "সে আমার বন্ধু",
+    "target_text": "he's my friend"
+   },
+   "set": {
+    "known_text": "আমি মনে করি সে আমার বন্ধু",
+    "target_text": "I think he's my friend",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0131L02B01",
+   "expect": {
+    "known_text": "ধারণা ঘুরছে",
+    "target_text": "ideas going around"
+   },
+   "set": {
+    "known_text": "আজ ধারণা ঘুরছে",
+    "target_text": "ideas going around today",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0131L04B01",
+   "expect": {
+    "known_text": "সেখানে আছে",
+    "target_text": "there are"
+   },
+   "set": {
+    "known_text": "আজ অনেক বেশি ধারণা ঘুরছে",
+    "target_text": "there are too many ideas going around today",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0132L02B01",
+   "expect": {
+    "known_text": "বলছিল",
+    "target_text": "she was saying"
+   },
+   "set": {
+    "known_text": "আমি জানি না সে কী বলছিল",
+    "target_text": "I don't know what she was saying",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0134L03B01",
+   "expect": {
+    "known_text": "তাদের সাথে",
+    "target_text": "with them"
+   },
+   "set": {
+    "known_text": "তাদের সাথে দেখা করা",
+    "target_text": "to meet with them",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0135L01B01",
+   "expect": {
+    "known_text": "জানি না কেন",
+    "target_text": "don't know why"
+   },
+   "set": {
+    "known_text": "আমি জানি না কেন এটা এত ভালো",
+    "target_text": "I don't know why it's so good",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0135L02B01",
+   "expect": {
+    "known_text": "তুমি মনে কর",
+    "target_text": "you think"
+   },
+   "set": {
+    "known_text": "তুমি মনে কর যে এটা এত ভালো",
+    "target_text": "you think that it's so good",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0136L01B01",
+   "expect": {
+    "known_text": "অবশ্যই তুমি পারবে",
+    "target_text": "of course you can"
+   },
+   "set": {
+    "known_text": "অবশ্যই তুমি যাওয়ার আগে জিজ্ঞেস করতে পারবে",
+    "target_text": "of course you can ask before I have to go",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0136L02B01",
+   "expect": {
+    "known_text": "সে আমার বান্ধবী",
+    "target_text": "she's my friend"
+   },
+   "set": {
+    "known_text": "কারণ সে এখন আমার বান্ধবী",
+    "target_text": "because she's my friend now",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0137L03B01",
+   "expect": {
+    "known_text": "কথা বলতে হয়",
+    "target_text": "to talk"
+   },
+   "set": {
+    "known_text": "আমি প্রায়ই কথা বলতে চাই",
+    "target_text": "I want to talk often",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0138L03B01",
+   "expect": {
+    "known_text": "দেখা করতে চেয়েছিল",
+    "target_text": "wanted to meet"
+   },
+   "set": {
+    "known_text": "আমার বন্ধু দেখা করতে চেয়েছিল",
+    "target_text": "my friend wanted to meet",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0139L03B01",
+   "expect": {
+    "known_text": "আমি দুঃখিত যে",
+    "target_text": "I'm sorry that"
+   },
+   "set": {
+    "known_text": "আমি দুঃখিত যে আমি আরও খারাপ করছি",
+    "target_text": "I'm sorry that I'm doing worse",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0140L01B01",
+   "expect": {
+    "known_text": "দেখাতে চেষ্টা করছ",
+    "target_text": "trying to show"
+   },
+   "set": {
+    "known_text": "তুমি আমাকে কী দেখাতে চেষ্টা করছ",
+    "target_text": "what you're trying to show me",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0141L01B01",
+   "expect": {
+    "known_text": "কোনো সমস্যা নেই",
+    "target_text": "no problem"
+   },
+   "set": {
+    "known_text": "কোনো সমস্যা নেই, আমরা বন্ধু",
+    "target_text": "no problem we're friends",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0141L02B01",
+   "expect": {
+    "known_text": "সব ঠিক আছে",
+    "target_text": "everything is okay"
+   },
+   "set": {
+    "known_text": "তুমি জানো সব ঠিক আছে",
+    "target_text": "you know everything is okay",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0142L02B01",
+   "expect": {
+    "known_text": "তোমার কাছ থেকে খুব ভালো",
+    "target_text": "very kind of you"
+   },
+   "set": {
+    "known_text": "আমি মনে করি সেটা তোমার কাছ থেকে খুব ভালো",
+    "target_text": "I think that's very kind of you",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0143L01B01",
+   "expect": {
+    "known_text": "আগে",
+    "target_text": "earlier"
+   },
+   "set": {
+    "known_text": "আগে জেগে উঠতে",
+    "target_text": "to wake earlier",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0143L02B01",
+   "expect": {
+    "known_text": "কথা বলছিলাম",
+    "target_text": "were talking about"
+   },
+   "set": {
+    "known_text": "আমরা গতকাল কথা বলছিলাম",
+    "target_text": "we were talking about yesterday",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0144L02B01",
+   "expect": {
+    "known_text": "জেগেছিলাম",
+    "target_text": "I woke"
+   },
+   "set": {
+    "known_text": "আমি এত তাড়াতাড়ি জেগেছিলাম",
+    "target_text": "I woke so early",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

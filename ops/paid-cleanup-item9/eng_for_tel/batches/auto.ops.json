@@ -1,0 +1,204 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0051L01U04",
+   "expect": {
+    "known_text": "నేను ఇంగ్లీష్ మాట్లాడే వ్యక్తులను కలవడం ఆనందిస్తాను",
+    "target_text": "I enjoy meeting people who speak English"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0144L02U04",
+   "expect": {
+    "known_text": "నేను అనుకున్నదానికంటే ముందే వెళ్ళిపోయాను",
+    "target_text": "I left earlier than I wanted to"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0144L02U05",
+   "expect": {
+    "known_text": "మేము అనుకున్నదానికంటే ముందే ముగించాం",
+    "target_text": "we finished earlier than I wanted to"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0147L02U01",
+   "expect": {
+    "known_text": "నేను కంగారుగా ఉండటం చూసినప్పుడు ఆమె నాకు సహాయం చేసింది",
+    "target_text": "she helped me when she saw that I was nervous"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0178L02U02",
+   "expect": {
+    "known_text": "నేను నిన్ను కలవాలనుకున్నప్పటికీ నేను వెళ్ళిపోయాను",
+    "target_text": "I left although I wanted to see you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0178L02U04",
+   "expect": {
+    "known_text": "నేను నిన్ను కలవాలనుకున్నప్పటికీ నేను ఇంటికి వెళ్ళిపోయాను",
+    "target_text": "I went home although I wanted to see you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0182L01U05",
+   "expect": {
+    "known_text": "ఆఫీసులో నీకు నా తాళాలు కనిపించాయా?",
+    "target_text": "have you seen my keys in the office?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0184L02U02",
+   "expect": {
+    "known_text": "నేను వాటిని ఆఫీసులో వదిలేశాను",
+    "target_text": "I left them in the office"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0184L03U02",
+   "expect": {
+    "known_text": "నేను వాటిని కొంచెంసేపటి క్రితం వదిలేశాను",
+    "target_text": "I left them a while ago"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0184L03U04",
+   "expect": {
+    "known_text": "నేను కొంచెంసేపటి క్రితం ముగించాను",
+    "target_text": "I finished a while ago"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0199L01B02",
+   "expect": {
+    "known_text": "ఒకప్పుడు నా స్నేహితుడు ఆఫీసులో పని చేసేవాడు",
+    "target_text": "my friend used to work in an office once"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0220L01U03",
+   "expect": {
+    "known_text": "నువ్వు ఫుట్‌బాల్ చూశావా?",
+    "target_text": "did you watch the football?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0220L01U04",
+   "expect": {
+    "known_text": "నువ్వు ఒక సినిమా చూశావా?",
+    "target_text": "did you watch a film?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0220L02U01",
+   "expect": {
+    "known_text": "నేను కొంచెం టీవీ చూశాను",
+    "target_text": "I watched a bit of television"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0220L02U05",
+   "expect": {
+    "known_text": "నేను ఆదివారం కొంచెం టీవీ చూశాను",
+    "target_text": "I watched a bit of television on Sunday"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0230L02U01",
+   "expect": {
+    "known_text": "నీతో కలిసి పని చేయాలనుకునే ఒక ముసలాయన నాకు తెలుసు",
+    "target_text": "I know an old man who wants to work with you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0230L02U03",
+   "expect": {
+    "known_text": "నీతో కలిసి పని చేయాలనుకునే ఒకరిని నేను కలిశాను",
+    "target_text": "I met someone who wants to work with you"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0231L02U03",
+   "expect": {
+    "known_text": "సహాయం అడగాలనుకున్న ఒకరిని నేను కలిశాను",
+    "target_text": "I met someone who wanted to ask for help"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0232L02U03",
+   "expect": {
+    "known_text": "సమాధానం గుర్తుంచుకోగల ఒకరిని నేను కలిశాను",
+    "target_text": "I met someone who can remember the answer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0233L02U03",
+   "expect": {
+    "known_text": "నీ సోదరి తెలిసిన ఒకరిని నేను కలిశాను",
+    "target_text": "I met someone who knows your sister"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0275L01U01",
+   "expect": {
+    "known_text": "నేను ఇంకా ఎక్కువ కాలం ఉండగలను",
+    "target_text": "I can stay even longer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0275L01U02",
+   "expect": {
+    "known_text": "నేను ఇంకా ఎక్కువ కాలం ఉండాలనుకుంటున్నాను",
+    "target_text": "I want to stay even longer"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0275L01U04",
+   "expect": {
+    "known_text": "నువ్వు ఇంకా ఎక్కువ కాలం ఉండగలవా?",
+    "target_text": "can you stay even longer?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0575L02U04",
+   "expect": {
+    "known_text": "ఇది బాధ కలిగించలేదా?",
+    "target_text": "hasn't it been upsetting?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_tel:S0622L01U04",
+   "expect": {
+    "known_text": "పిల్లలు దాన్ని విరగొట్టలేదు",
+    "target_text": "the children hadn't broken it"
+   }
+  }
+ ]
+}
