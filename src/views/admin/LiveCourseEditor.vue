@@ -34,18 +34,18 @@
         <div v-for="r in rendered" :key="r.k" class="row" :class="rowClass(r.it)" :data-k="r.k">
           <span class="stripe" :class="{ white: r.belt === 0 }" :style="{ background: BELTS[r.belt].color }"></span>
           <div class="line">
-            <span class="num">{{ r.it.t === 'l' ? 'LEGO' : r.it.n }}</span>
+            <span class="num">{{ r.it.t === 'l' ? 'LEGO' : r.it.ghost ? '–' : r.it.n }}</span>
             <div class="text">
-              <div class="tx" @click="openRow(r.it)">{{ cur(r.it).tx }}<button class="flag" :class="{ on: flagOf(r.it).flagged }"
+              <div class="tx" @click="openRow(r.it)">{{ cur(r.it).tx }}<button v-if="!r.it.ghost" class="flag" :class="{ on: flagOf(r.it).flagged }"
                 :aria-label="(flagOf(r.it).flagged ? 'Unflag ' : 'Flag ') + r.it.id" @click.stop="flip(r.it)">{{ flagOf(r.it).flagged ? '⚑' : '⚐' }}</button></div>
               <div class="kn" @click="openRow(r.it)">{{ cur(r.it).kn || '— no English —' }}</div>
-              <div v-if="needsAudio(r.it)" class="audio-need">🔇 needs new audio<span v-if="missingOf(r.it).length"> ({{ missingOf(r.it).join(', ') }})</span>
+              <div v-if="needsAudio(r.it) && !r.it.ghost" class="audio-need">🔇 needs new audio<span v-if="missingOf(r.it).length"> ({{ missingOf(r.it).join(', ') }})</span>
                 <button v-if="audioMode === 'tts'" class="mini" @click="renderAsk(r.it)">Make new audio</button>
                 <span v-else> — on the booth's Re-record card</span>
               </div>
               <div v-if="renderState[keyOf(r.it)]" class="render">
                 <span>{{ renderState[keyOf(r.it)].text }}</span>
-                <button v-if="renderState[keyOf(r.it)].canConfirm" class="mini go" @click="renderConfirm(r.it)">Confirm render</button>
+                <button v-if="renderState[keyOf(r.it)].canConfirm" class="mini go" @click="renderConfirm(r.it)">{{ renderState[keyOf(r.it)].lib ? 'Link it' : 'Confirm render' }}</button>
               </div>
 
               <!-- Editing: propose, never write. -->
@@ -152,7 +152,52 @@ const shown = computed(() => {
 })
 function rowClass(it) {
   const p = propOf(it)
-  return { lego: it.t === 'l', flagged: flagOf(it).flagged, pending: p?.status === 'pending', applied: p?.status === 'applied', removed: p?.status === 'applied' && p.action === 'remove' }
+  return { ghost: !!it.ghost, lego: it.t === 'l', flagged: flagOf(it).flagged, pending: p?.status === 'pending', applied: p?.status === 'applied', removed: p?.status === 'applied' && p.action === 'remove' }
+}
+// The server's spokenForm (services/course-editor/course-editor-ops.cjs), mirrored for the hint only — Apply decides on
+// the server. Apostrophes/hyphens INSIDE a word join it ("don't" = "dont"); every other mark separates words.
+const spoken = (s) => String(s || '').toLowerCase().replace(/(?<=[\p{L}\p{N}])['‘’ʼ\-‐‑]+(?=[\p{L}\p{N}])/gu, '')
+  .replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
+const same = (a, b) => spoken(a) === spoken(b)
+
+/**
+ * GHOST ROWS (Astra #120·AK, fix #121·AK). An applied removal has no live row any more, so after a reload its Undo had
+ * nowhere to show and the removal became unreversible from the page. Each applied removal whose line is gone is put back
+ * into the list as a struck-through ghost at its old place: a phrase under its LEGO, among that LEGO's phrases by id; a
+ * LEGO among its seed's LEGOs by id (its phrases went with it and come back with its Undo). A line whose LEGO or seed is
+ * gone too goes at the end — never dropped.
+ */
+function withGhosts(list, props) {
+  const out = list.slice()
+  const have = new Set(out.map(keyOf))
+  for (const p of props) {
+    if (p.status !== 'applied' || p.action !== 'remove') continue
+    const t = p.kind === 'lego' ? 'l' : 'p'
+    if (have.has(`${t}:${p.key}`)) continue
+    const ghost = Object.freeze({ t, id: p.key, n: 0, tx: p.before.target, kn: p.before.known || '', m: null, ghost: true })
+    let at = -1
+    if (t === 'p') {
+      const legoId = p.key.match(/^S\d+L\d+/)?.[0]
+      const li = out.findIndex((it) => it.t === 'l' && it.id === legoId)
+      if (li >= 0) {
+        at = li + 1
+        while (at < out.length && out[at].t === 'p' && out[at].id < p.key) at++
+      }
+    } else {
+      const seed = p.key.match(/^S\d+/)[0]
+      let last = -1
+      for (let i = 0; i < out.length; i++) {
+        if (out[i].t !== 'l' || !out[i].id.startsWith(seed + 'L')) continue
+        if (out[i].id > p.key) { at = i; break }
+        last = i
+      }
+      if (at < 0 && last >= 0) { at = last + 1; while (at < out.length && out[at].t === 'p') at++ }
+    }
+    if (at < 0) at = out.length
+    out.splice(at, 0, Object.freeze({ ...ghost, n: at > 0 ? out[at - 1].n : 1 }))
+    have.add(`${t}:${p.key}`)
+  }
+  return out
 }
 function say(text, bad = false) { msg.value = text; msgBad.value = bad }
 function statusLabel(p) {
@@ -163,7 +208,6 @@ function audioHint(p) {
     if (!p.needsAudio) return 'Same spoken words: the recording was kept.'
     return audioMode.value === 'tts' ? (p.audioQueued ? 'Words changed: new audio queued for the next audio pass.' : 'Words changed: needs new audio.') : 'Words changed: on the booth\'s Re-record card.'
   }
-  const same = (a, b) => String(a || '').toLowerCase().replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim() === String(b || '').toLowerCase().replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
   return same(p.before.target, p.after.target) && same(p.before.known, p.after.known)
     ? 'Capitals/punctuation only: on Apply the recording is kept.'
     : 'Spoken words change: on Apply this line will need new audio.'
@@ -277,7 +321,7 @@ async function load() {
     audioMode.value = body.audioMode || 'tts'
     usesT2.value = !!body.usesTarget2
     total.value = body.total
-    items.value = Object.freeze(body.items.map((it) => Object.freeze({ t: it.t, id: it.id, n: it.n, tx: it.tx, kn: it.kn, m: it.m || null })))
+    items.value = Object.freeze(withGhosts(body.items.map((it) => Object.freeze({ t: it.t, id: it.id, n: it.n, tx: it.tx, kn: it.kn, m: it.m || null })), body.proposals || []))
   } catch (e) {
     if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
   } finally { if (gen === loadGen) loading.value = false }
@@ -302,6 +346,7 @@ async function call(method, path, body) {
   return { ok: r.ok, status: r.status, body: out }
 }
 function openRow(it) {
+  if (it.ghost) return // a removed line: nothing to edit until its Undo brings it back
   const k = keyOf(it)
   if (editing[k]) return
   editing[k] = { tx: cur(it).tx, kn: cur(it).kn }
@@ -370,6 +415,7 @@ async function undo(it) {
     delete proposals[k]
     if (r.body.row) takeRow(it, r.body.row)
     say(`${it.id}: undone — the line is back as it was.`)
+    if (it.ghost) load() // the line is live again: re-read it in its real place
   } catch (err) { say(`${it.id}: not undone — ${err.message}`, true) } finally { delete busy[k] }
 }
 
@@ -382,16 +428,25 @@ async function renderAsk(it) {
   const r = await call('POST', '/render', { kind: kindOf(it), id: it.id, role })
   const b = r.body
   if (!r.ok || b.ok === false) { renderState[k] = { text: `Refused: ${b.code || r.status} — ${b.error || ''}` }; return }
-  renderState[k] = { role, canConfirm: b.source !== 'library', text: b.source === 'library' ? `Found in the library (no cost) — ${b.audioId || 'linked'}` : `${role}: would render ${b.charsSpent ?? b.chars ?? '?'} characters.` }
+  // A dry run answers wouldSpendChars (charsSpent is always 0 on a dry run — shared/audio-render-entry.cjs). A library hit
+  // costs nothing but is not linked yet: its confirm tap links it into this line's slot.
+  const lib = b.source === 'library'
+  const n = b.wouldSpendChars ?? b.chars
+  renderState[k] = { role, lib, canConfirm: true,
+    text: lib ? `${role}: found in the library (no cost) — tap to link it to this line.` : `${role}: would render ${n == null ? 'an unknown number of' : Number(n).toLocaleString()} characters.` }
 }
 async function renderConfirm(it) {
   const k = keyOf(it)
   const role = renderState[k]?.role || roleFor(it)
-  if (!confirm(`Render new ${role} audio for ${it.id}? This spends TTS characters.`)) return
-  renderState[k] = { text: 'Rendering…' }
+  const lib = renderState[k]?.lib
+  if (!confirm(lib ? `Link the library ${role} clip to ${it.id}? No cost.` : `Render new ${role} audio for ${it.id}? This spends TTS characters.`)) return
+  renderState[k] = { text: lib ? 'Linking…' : 'Rendering…' }
   const r = await call('POST', '/render', { kind: kindOf(it), id: it.id, role, confirm: true })
   const b = r.body
-  renderState[k] = { text: !r.ok || b.ok === false ? `Refused: ${b.code || r.status} — ${b.error || ''}` : `Done: ${b.source} ${b.audioId || ''}` }
+  if (!r.ok || b.ok === false) { renderState[k] = { text: `Refused: ${b.code || r.status} — ${b.error || ''}` }; return }
+  const linked = b.slotLinked === true || b.slotLinked === 'already'
+  renderState[k] = { text: linked ? `Done: ${b.source}, linked to this line's ${role}.` : `${b.source} ${b.audioId || ''} — NOT linked: ${b.slotNote || 'no clip id came back'}` }
+  if (linked) { const m = missingOf(it).filter((s) => s !== role); rows[k] = { ...cur(it), m: m.length ? m : null } }
 }
 
 // ---- flags (the proof pages' tables, unchanged) ---------------------------------------------------------------------
