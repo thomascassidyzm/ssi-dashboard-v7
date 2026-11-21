@@ -706,6 +706,13 @@ const routes = [
     meta: { title: 'Phrase proof', requiresAuth: true }
   },
   {
+    // Course editor (job #116·AK): Aran's proof pages as an editor — propose a change, apply it on an admin tap. Admin-only.
+    path: '/edit/course/:courseCode?',
+    name: 'LiveCourseEditor',
+    component: () => import('../views/admin/LiveCourseEditor.vue'),
+    meta: { title: 'Course editor', requiresAuth: true, requiresAdmin: true }
+  },
+  {
     // Capture A/B — record the same line under each mic profile and measure
     // both, on the phone that actually does the recording. It joins the labs
     // here because it IS one; before this it was linked from nowhere in src/.
