@@ -277,6 +277,14 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     } catch (e) { res.status(500).json({ error: e.message }) }
   })
 
+  // ONE apply/undo per proposal at a time. Live check, 2026-11-21: an undo held back by the DB load governor outlived its
+  // client's timeout, the retry passed the status check before the first finished, and the undo ran twice.
+  const inflight = new Set()
+  const claim = (req, res, pid) => {
+    if (inflight.has(pid)) { req.contentEdit?.wroteNothing(); res.status(409).json({ error: 'this change is already being applied or undone — wait a moment and reload', code: 'IN_PROGRESS' }); return false }
+    inflight.add(pid)   // released in the handler's finally — NOT on res 'close', which fires when the client gives up
+    return true
+  }
   const findProposal = (courseCode, pid) => proposals.list(courseCode).find((x) => x.id === pid)
   const patchProposal = (courseCode, pid, patch) => proposals.mutate(courseCode, (list) => {
     const rec = list.find((x) => x.id === pid)
@@ -287,6 +295,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
   // APPLY: the one place a proposal touches the course. Content write — the content gate has already resolved who.
   router.post('/proposals/:pid/apply', express.json({ limit: '4kb' }), async (req, res) => {
     const { courseCode, pid } = req.params
+    if (!claim(req, res, pid)) return
     try {
       const rec = findProposal(courseCode, pid)
       if (!rec) { req.contentEdit?.wroteNothing(); return res.status(404).json({ error: 'no such proposal' }) }
@@ -329,12 +338,13 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     } catch (e) {
       log.error(`[course-editor] apply ${courseCode} ${pid}: ${e.message}`)
       res.status(500).json({ error: e.message })
-    }
+    } finally { inflight.delete(pid) }
   })
 
   // UNDO: the edit door's own derived undo, posted back through the same engine.
   router.post('/proposals/:pid/undo', express.json({ limit: '4kb' }), async (req, res) => {
     const { courseCode, pid } = req.params
+    if (!claim(req, res, pid)) return
     try {
       const rec = findProposal(courseCode, pid)
       if (!rec || rec.status !== 'applied' || !Array.isArray(rec.undoOps)) { req.contentEdit?.wroteNothing(); return res.status(409).json({ error: 'nothing to undo' }) }
@@ -347,7 +357,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     } catch (e) {
       log.error(`[course-editor] undo ${courseCode} ${pid}: ${e.message}`)
       res.status(500).json({ error: e.message })
-    }
+    } finally { inflight.delete(pid) }
   })
 
   // MAKE NEW AUDIO: Popty's one audio route, a dry run (library first, cost shown) unless confirm:true. A refusal is the
