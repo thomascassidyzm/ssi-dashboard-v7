@@ -558,6 +558,21 @@ app.use('/api/production/:courseCode/phrase-proof',
     logger,
   }))
 
+// Course editor (job #116·AK): Aran's proof pages made an editor — running order, propose a change, apply it only on an
+// admin's tap through the course-edit door (runCourseEdit below; function declarations are hoisted). Admin-only (or a
+// same-host caller naming itself); kor_for_eng only for now. Under /api/production/:courseCode so the course-scope gate fires.
+app.use('/api/production/:courseCode/course-editor',
+  require('./course-editor/course-editor-router.cjs').createCourseEditorRouter({
+    getDb: () => supabaseClient.getClient(),
+    requireAdmin,
+    isLoopbackDirect: isLoopbackDirectRequest,
+    runCourseEdit: (...a) => runCourseEdit(...a),
+    queueAudioPass: require('./shared/audio-pass-queue.cjs').queueAudioPass,
+    isHumanVoiceCourse: require('./shared/human-voice-courses.cjs').isHumanVoiceCourse,
+    renderUrl: (req) => `http://127.0.0.1:${req.socket.localPort || PORT}/api/audio/render`,
+    logger,
+  }))
+
 // Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
 // lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
 // REGISTERED BEFORE the pods router on purpose: this read-only route relies on

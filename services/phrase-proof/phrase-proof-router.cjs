@@ -163,4 +163,4 @@ function createPhraseProofRouter({ getDb, logger }) {
   return router
 }
 
-module.exports = { createPhraseProofRouter, buildPhraseList, flagRow, phrasesBySeedChunks }
+module.exports = { createPhraseProofRouter, buildPhraseList, flagRow, phrasesBySeedChunks, allRows }
