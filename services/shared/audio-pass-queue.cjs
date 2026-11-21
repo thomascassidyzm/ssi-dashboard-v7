@@ -17,6 +17,33 @@ const createLogger = require('./logger.cjs')
 const { isHumanVoiceCourse } = require('./human-voice-courses.cjs')
 const logger = createLogger('AudioPassQueue')
 
+function refuseHumanVoice(courseCode, reason) {
+  if (!isHumanVoiceCourse(courseCode)) return null
+  logger.warn(
+    `Refused audio-pass request for ${courseCode} (${reason}) — human-voice course, ` +
+    'no TTS is ever queued for it. If this content changed, it is a recording task for ' +
+    'Aran and Catrin, not a render.'
+  )
+  return { queued: false, touched: false, refused: true, reason: 'human_voice_course' }
+}
+
+/** The patch that joins an open (pending/held) request — shared by the REST and pg paths. */
+function joinPatch(existing, { reason, requestedBy, metadata, append, metadataKey }) {
+  return append
+    ? {
+        reason: !existing.reason ? reason
+          : existing.reason.includes(reason) ? existing.reason
+          : `${existing.reason}; ${reason}`,
+        requested_by: existing.requested_by || requestedBy,
+        metadata: { ...(existing.metadata || {}), [metadataKey || 'passes']: metadata },
+      }
+    : { reason, requested_by: requestedBy, metadata: { ...existing.metadata, ...metadata } }
+}
+
+function newMetadata({ metadata, append, metadataKey }) {
+  return append ? { [metadataKey || 'passes']: metadata } : metadata
+}
+
 /**
  * Queue (or touch) the pending audio-pass request for a course.
  * Idempotent: one pending row per course; a repeat call updates reason/metadata.
@@ -30,14 +57,8 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
   // 2026-07-25 arrived exactly this way). Refuse, loudly in the log, and do not
   // fail the caller's content pass — the edit itself is legitimate; only the
   // render request is not. A Welsh text change is a RECORDING task.
-  if (isHumanVoiceCourse(courseCode)) {
-    logger.warn(
-      `Refused audio-pass request for ${courseCode} (${reason}) — human-voice course, ` +
-      'no TTS is ever queued for it. If this content changed, it is a recording task for ' +
-      'Aran and Catrin, not a render.'
-    )
-    return { queued: false, touched: false, refused: true, reason: 'human_voice_course' }
-  }
+  const refusal = refuseHumanVoice(courseCode, reason)
+  if (refusal) return refusal
 
   try {
     const { data: existing } = await supabase
@@ -68,15 +89,7 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
       // open request's reason gains this pass's reason (not replaced), its requester
       // is kept, and this pass's metadata goes under its own `metadataKey` instead
       // of overwriting shared keys. Default behaviour is unchanged for old callers.
-      const patch = append
-        ? {
-            reason: !existing.reason ? reason
-              : existing.reason.includes(reason) ? existing.reason
-              : `${existing.reason}; ${reason}`,
-            requested_by: existing.requested_by || requestedBy,
-            metadata: { ...(existing.metadata || {}), [metadataKey || 'passes']: metadata },
-          }
-        : { reason, requested_by: requestedBy, metadata: { ...existing.metadata, ...metadata } }
+      const patch = joinPatch(existing, { reason, requestedBy, metadata, append, metadataKey })
       const { error } = await supabase
         .from('audio_pass_requests')
         .update({ ...patch, updated_at: new Date().toISOString() })
@@ -88,7 +101,7 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
 
     const { data, error } = await supabase
       .from('audio_pass_requests')
-      .insert({ course_code: courseCode, reason, requested_by: requestedBy, metadata: append ? { [metadataKey || 'passes']: metadata } : metadata })
+      .insert({ course_code: courseCode, reason, requested_by: requestedBy, metadata: newMetadata({ metadata, append, metadataKey }) })
       .select('id')
       .single()
     if (error) throw error
@@ -121,4 +134,56 @@ async function fulfillAudioPassRequests(supabase, courseCode, fulfilledBy = 'pha
   }
 }
 
-module.exports = { queueAudioPass, fulfillAudioPassRequests }
+/**
+ * queueAudioPass over a pg client (services/shared/agent-db.cjs connect()) —
+ * the same decisions as queueAudioPass: human-voice refusal, join the OLDEST
+ * open pending/held row (a held row stays held), append mode, metadata merge.
+ * The calling file must carry an `@db-live-write:` marker, or a worker's
+ * connection is redirected to the read-only nightly copy and nothing is queued.
+ * The open row is locked for the read-modify-write. Never throws.
+ */
+async function queueAudioPassPg(pg, { courseCode, reason, requestedBy = null, metadata = {}, append = false, metadataKey = null }) {
+  const refusal = refuseHumanVoice(courseCode, reason)
+  if (refusal) return refusal
+  try {
+    await pg.query('begin')
+    try {
+      const { rows } = await pg.query(
+        `select id, metadata, status, reason, requested_by from audio_pass_requests
+          where course_code = $1 and status = any($2::text[])
+          order by created_at limit 1 for update`,
+        [courseCode, ['pending', 'held']]
+      )
+      const existing = rows[0]
+      let result
+      if (existing) {
+        const patch = joinPatch(existing, { reason, requestedBy, metadata, append, metadataKey })
+        await pg.query(
+          `update audio_pass_requests set reason = $2, requested_by = $3, metadata = $4::jsonb, updated_at = now()
+            where id = $1::uuid`,
+          [existing.id, patch.reason, patch.requested_by, JSON.stringify(patch.metadata)]
+        )
+        logger.info(`Touched ${existing.status} audio-pass request for ${courseCode} (${reason})`)
+        result = { queued: false, touched: true, id: existing.id, held: existing.status === 'held' }
+      } else {
+        const ins = await pg.query(
+          `insert into audio_pass_requests (course_code, reason, requested_by, metadata)
+           values ($1, $2, $3, $4::jsonb) returning id`,
+          [courseCode, reason, requestedBy, JSON.stringify(newMetadata({ metadata, append, metadataKey }))]
+        )
+        logger.info(`Queued audio-pass request for ${courseCode} (${reason})`)
+        result = { queued: true, touched: false, id: ins.rows[0].id }
+      }
+      await pg.query('commit')
+      return result
+    } catch (e) {
+      await pg.query('rollback').catch(() => {})
+      throw e
+    }
+  } catch (e) {
+    logger.warn(`Failed to queue audio pass for ${courseCode}: ${e.message}`)
+    return { queued: false, touched: false, error: e.message }
+  }
+}
+
+module.exports = { queueAudioPass, queueAudioPassPg, fulfillAudioPassRequests }
