@@ -203,10 +203,6 @@
    "target": "creo que él podría llegar a la cima"
   },
   {
-   "id": "S0361L01B02",
-   "target": "creo que estaba callado"
-  },
-  {
    "id": "S0363L01U05",
    "target": "creo que tenía ganas de ayudar"
   },
@@ -351,5 +347,8 @@
  "seeds": [],
  "deletes": [
   "S0135L01U09"
+ ],
+ "held_840": [
+  "S0361L01B02 held 21 Nov: render refused GENDER_PREP_MISSING (503), not retried"
  ]
 }

@@ -11,6 +11,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 147,
+  "slot": "target1",
+  "audio_id": "7fd43e7d-c2d0-400e-b862-b1db63fc1378"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 147,
+  "slot": "target2",
+  "audio_id": "b79cd24a-0e6b-4fce-aae4-d9bb40d3163b"
+ },
+ {
   "op": "lego.update",
   "lego_id": "S0147L02",
   "expect": {
@@ -21,6 +35,34 @@
    "known_text": "she saw me",
    "target_text": "me vio"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0147L02",
+  "slot": "known",
+  "audio_id": "6bc998cf-02ec-456a-ba7b-ecf774b53916"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0147L02",
+  "slot": "target1",
+  "audio_id": "aeb6f77b-72d8-4f8d-a5e3-85f9da1e346c"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0147L02",
+  "slot": "target2",
+  "audio_id": "7768ecde-72aa-43f6-9f72-95bc7cc636bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0147L02",
+  "slot": "presentation",
+  "audio_id": "19a3ebd7-35c8-4b12-b7ea-65856aeb0330"
  },
  {
   "op": "phrase.update",
@@ -35,6 +77,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B01",
+  "slot": "known",
+  "audio_id": "6bc998cf-02ec-456a-ba7b-ecf774b53916"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B01",
+  "slot": "target1",
+  "audio_id": "aeb6f77b-72d8-4f8d-a5e3-85f9da1e346c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B01",
+  "slot": "target2",
+  "audio_id": "7768ecde-72aa-43f6-9f72-95bc7cc636bf"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L02B02",
   "expect": {
@@ -45,6 +108,27 @@
    "known_text": "when she saw me",
    "target_text": "cuando me vio"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B02",
+  "slot": "known",
+  "audio_id": "ae6e67b6-bfb1-433a-8671-43d3c7525391"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B02",
+  "slot": "target1",
+  "audio_id": "7d7f061d-53f8-4af6-8bf7-77e8b6982f75"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B02",
+  "slot": "target2",
+  "audio_id": "bef399e6-f02d-4a4e-80ef-61f3954e854e"
  },
  {
   "op": "phrase.update",
@@ -59,6 +143,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B03",
+  "slot": "known",
+  "audio_id": "cce7d08a-6dba-4ef1-befc-cec4883677aa"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B03",
+  "slot": "target1",
+  "audio_id": "32cb1765-76a8-40bf-b936-4411b0d255cb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02B03",
+  "slot": "target2",
+  "audio_id": "60920025-09c1-41c6-85fe-546d84569b03"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L02U01",
   "expect": {
@@ -69,6 +174,27 @@
    "known_text": "I think she saw me",
    "target_text": "creo que me vio"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U01",
+  "slot": "known",
+  "audio_id": "52260385-5fb1-4666-9341-298c384e39a2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U01",
+  "slot": "target1",
+  "audio_id": "23900383-d88d-420c-bd9d-d0e08ba44280"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U01",
+  "slot": "target2",
+  "audio_id": "3dab382d-cf9c-4fbe-bf35-54b751374b58"
  },
  {
   "op": "phrase.update",
@@ -83,6 +209,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U02",
+  "slot": "known",
+  "audio_id": "d7a8864b-69f7-4a3f-ad99-b21fe8361fe1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U02",
+  "slot": "target1",
+  "audio_id": "ae71b85c-f706-453b-aadd-908da8fc9515"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U02",
+  "slot": "target2",
+  "audio_id": "0df78ba6-0bcb-4bdf-af89-37b109bdeffd"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L02U03",
   "expect": {
@@ -93,6 +240,27 @@
    "known_text": "she saw me with my friend",
    "target_text": "me vio con mi amigo"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U03",
+  "slot": "known",
+  "audio_id": "78355292-1e4a-47a2-a7e5-4b14d9234dc8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U03",
+  "slot": "target1",
+  "audio_id": "203a8272-aef9-40ef-b05a-c6dc4ceb10d8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U03",
+  "slot": "target2",
+  "audio_id": "8b3ea951-eb02-42c9-b2ea-ee05953fadf7"
  },
  {
   "op": "phrase.update",
@@ -107,6 +275,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U04",
+  "slot": "known",
+  "audio_id": "0f552708-0bde-4e2e-97ee-46980db69161"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U04",
+  "slot": "target1",
+  "audio_id": "8ff7f294-7cb6-4c2b-bc43-70fc71d1d74f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U04",
+  "slot": "target2",
+  "audio_id": "15add393-6616-4f2c-8a30-d1cab3b70e4a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L02U05",
   "expect": {
@@ -117,6 +306,27 @@
    "known_text": "she saw me speaking Spanish",
    "target_text": "me vio hablando español"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U05",
+  "slot": "known",
+  "audio_id": "7cae68c7-0a0c-4fab-b76b-eb69ee0394c5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U05",
+  "slot": "target1",
+  "audio_id": "de01936d-04c2-4b42-8943-4427916afbe0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U05",
+  "slot": "target2",
+  "audio_id": "fd5aa00b-0173-4166-a1cc-6b451b582ae9"
  },
  {
   "op": "phrase.update",
@@ -131,6 +341,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U06",
+  "slot": "known",
+  "audio_id": "08fb9261-5bc5-45ef-ad46-d43c254f4f2a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U06",
+  "slot": "target1",
+  "audio_id": "4bac82bb-eb05-4986-a1b3-e019f0f98741"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U06",
+  "slot": "target2",
+  "audio_id": "205a81d3-5297-43d7-aa5c-2d170f933467"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L02U07",
   "expect": {
@@ -141,6 +372,27 @@
    "known_text": "she saw me when I was learning",
    "target_text": "me vio cuando estaba aprendiendo"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U07",
+  "slot": "known",
+  "audio_id": "e0b318d1-db33-437f-8416-6e3c23ec89b9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U07",
+  "slot": "target1",
+  "audio_id": "ecfe4718-1b16-4123-9b4f-93bc1fe6d024"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U07",
+  "slot": "target2",
+  "audio_id": "0550df6c-6524-45cb-9409-71e7731097b8"
  },
  {
   "op": "phrase.update",
@@ -155,6 +407,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U08",
+  "slot": "known",
+  "audio_id": "56b4af22-80dd-49b8-b854-c901e75f2ab2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U08",
+  "slot": "target1",
+  "audio_id": "12303bed-51d0-4989-89cd-e182891ffc98"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U08",
+  "slot": "target2",
+  "audio_id": "affe1991-8b67-4751-8955-0e6e0a746879"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L02U09",
   "expect": {
@@ -165,6 +438,27 @@
    "known_text": "I think she saw me after practising",
    "target_text": "creo que me vio después de practicar"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U09",
+  "slot": "known",
+  "audio_id": "693105d2-5ec3-4d89-a70b-2123a4bd636f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U09",
+  "slot": "target1",
+  "audio_id": "a566ce30-5377-456a-824f-61436292bc1b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L02U09",
+  "slot": "target2",
+  "audio_id": "33bc69da-19f6-420a-9fbf-3beee324fea8"
  },
  {
   "op": "phrase.update",
@@ -179,6 +473,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U02",
+  "slot": "known",
+  "audio_id": "62aacb4a-f9de-4a7c-8f63-f4c58475111a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U02",
+  "slot": "target1",
+  "audio_id": "b49b8208-87d0-4b78-99a1-4c940d7857b1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U02",
+  "slot": "target2",
+  "audio_id": "9f0177d5-057d-4d82-b957-e77f7fb5637d"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0147L03U04",
   "expect": {
@@ -190,15 +505,18 @@
   }
  },
  {
-  "op": "phrase.update",
-  "phrase_id": "spa_mx_for_eng:S0147L03U06",
-  "expect": {
-   "known_text": "when she saw me feeling nervous",
-   "target_text": "cuando me vio sintiéndome nervioso"
-  },
-  "set": {
-   "target_text": "cuando me vio nervioso"
-  }
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U04",
+  "slot": "target1",
+  "audio_id": "8e899287-dfdc-494a-90cf-2f60dd8c7cdc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U04",
+  "slot": "target2",
+  "audio_id": "1aa64c79-ccde-4533-a091-71ba74c28688"
  },
  {
   "op": "phrase.update",
@@ -210,5 +528,19 @@
   "set": {
    "target_text": "ella fue muy amable cuando me vio nervioso"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U10",
+  "slot": "target1",
+  "audio_id": "7fd43e7d-c2d0-400e-b862-b1db63fc1378"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0147L03U10",
+  "slot": "target2",
+  "audio_id": "b79cd24a-0e6b-4fce-aae4-d9bb40d3163b"
  }
 ]

@@ -11,6 +11,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 377,
+  "slot": "target1",
+  "audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 377,
+  "slot": "target2",
+  "audio_id": "aa9b531d-2a86-42d7-8744-f9c2f1430627"
+ },
+ {
   "op": "seed.update",
   "seed_number": 402,
   "expect": {
@@ -20,6 +34,20 @@
   "set": {
    "target_text": "sí, sería agradable parar en algún lado para comer"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 402,
+  "slot": "target1",
+  "audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 402,
+  "slot": "target2",
+  "audio_id": "4dc8ab30-ab2d-4a91-b7f7-60a18bb3fe49"
  },
  {
   "op": "lego.update",
@@ -43,6 +71,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0377L02",
+  "slot": "target1",
+  "audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0377L02",
+  "slot": "target2",
+  "audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0377L02",
+  "slot": "presentation",
+  "audio_id": "557ee9d7-cefe-4d3d-b811-6c2528c0eb33"
+ },
+ {
   "op": "lego.update",
   "lego_id": "S0402L01",
   "expect": {
@@ -64,6 +113,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0402L01",
+  "slot": "target1",
+  "audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0402L01",
+  "slot": "target2",
+  "audio_id": "2c768342-b88b-4270-b789-d3c8121b6bd3"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0402L01",
+  "slot": "presentation",
+  "audio_id": "f256e3d6-e865-4fee-bed1-5362d2dc00cc"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0377L02C02",
   "expect": {
@@ -74,6 +144,27 @@
    "known_text": "side",
    "target_text": "lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02C02",
+  "slot": "known",
+  "audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02C02",
+  "slot": "target1",
+  "audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02C02",
+  "slot": "target2",
+  "audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429"
  },
  {
   "op": "phrase.update",
@@ -87,6 +178,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B01",
+  "slot": "target1",
+  "audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B01",
+  "slot": "target2",
+  "audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0377L02B02",
   "expect": {
@@ -96,6 +201,20 @@
   "set": {
    "target_text": "¿fuiste a algún lado?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B02",
+  "slot": "target1",
+  "audio_id": "87132a5b-d001-4959-809c-d4a2ea47a7e1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B02",
+  "slot": "target2",
+  "audio_id": "fd714f11-f453-47b0-a009-2a1677c3a451"
  },
  {
   "op": "phrase.update",
@@ -110,6 +229,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B03",
+  "slot": "known",
+  "audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B03",
+  "slot": "target1",
+  "audio_id": "7a08efd6-ba61-4c33-9372-c928bcf6ad6a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02B03",
+  "slot": "target2",
+  "audio_id": "dc5b3820-95ef-498c-8061-130a858ff426"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0377L02U01",
   "expect": {
@@ -120,6 +260,27 @@
    "known_text": "did you go somewhere with my friend?",
    "target_text": "¿fuiste a algún lado con mi amigo?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U01",
+  "slot": "known",
+  "audio_id": "730b1909-39fa-42a5-b876-f57129680fe5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U01",
+  "slot": "target1",
+  "audio_id": "c4331f27-44de-4122-b454-effd4ac6149e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U01",
+  "slot": "target2",
+  "audio_id": "4770e3fc-670a-494b-8de9-500b7439bfb2"
  },
  {
   "op": "phrase.update",
@@ -133,6 +294,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U02",
+  "slot": "target1",
+  "audio_id": "d384819f-d124-47a9-92a5-3eaad23c43d8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U02",
+  "slot": "target2",
+  "audio_id": "c5e5ac1e-b632-418e-80de-cd93c634c690"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0377L02U03",
   "expect": {
@@ -142,6 +317,20 @@
   "set": {
    "target_text": "mi amigo podría ir a algún lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U03",
+  "slot": "target1",
+  "audio_id": "ae04701b-9294-47f0-a9d6-71c7fdecc6ed"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U03",
+  "slot": "target2",
+  "audio_id": "e0a584f1-cd2f-47a2-9083-db2dfcf9de4e"
  },
  {
   "op": "phrase.update",
@@ -155,6 +344,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U04",
+  "slot": "target1",
+  "audio_id": "1e85e7f3-43d9-439d-8559-58bb38c0e666"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U04",
+  "slot": "target2",
+  "audio_id": "aebf2024-95a5-4d06-b9fe-739b0c133aee"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0377L02U05",
   "expect": {
@@ -164,6 +367,20 @@
   "set": {
    "target_text": "creo que fuiste a algún lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "slot": "target1",
+  "audio_id": "4e53cb00-f72b-4707-b6ca-b9b9fddde6bd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "slot": "target2",
+  "audio_id": "f99ee373-c8d4-4828-8165-3223d90e967a"
  },
  {
   "op": "phrase.update",
@@ -177,6 +394,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L03U01",
+  "slot": "target1",
+  "audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L03U01",
+  "slot": "target2",
+  "audio_id": "aa9b531d-2a86-42d7-8744-f9c2f1430627"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0402L01C02",
   "expect": {
@@ -186,6 +417,20 @@
   "set": {
    "target_text": "algún lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01C02",
+  "slot": "target1",
+  "audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01C02",
+  "slot": "target2",
+  "audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d"
  },
  {
   "op": "phrase.update",
@@ -199,6 +444,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01B01",
+  "slot": "target1",
+  "audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01B01",
+  "slot": "target2",
+  "audio_id": "2c768342-b88b-4270-b789-d3c8121b6bd3"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0402L01B02",
   "expect": {
@@ -208,6 +467,20 @@
   "set": {
    "target_text": "sería agradable parar en algún lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01B02",
+  "slot": "target1",
+  "audio_id": "d9215f70-0233-45ff-bdd0-5d6016523b23"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01B02",
+  "slot": "target2",
+  "audio_id": "78f15ac6-b294-4853-91f4-7f1dd36a54e1"
  },
  {
   "op": "phrase.update",
@@ -221,6 +494,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01B03",
+  "slot": "target1",
+  "audio_id": "793e5b21-ec69-455d-9292-e5b0c7eab65e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01B03",
+  "slot": "target2",
+  "audio_id": "bde77a6f-83e1-49a4-95ee-52119000be9d"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0402L01U01",
   "expect": {
@@ -230,6 +517,20 @@
   "set": {
    "target_text": "sí, sería agradable parar en algún lado para comer"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U01",
+  "slot": "target1",
+  "audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U01",
+  "slot": "target2",
+  "audio_id": "4dc8ab30-ab2d-4a91-b7f7-60a18bb3fe49"
  },
  {
   "op": "phrase.update",
@@ -243,6 +544,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U02",
+  "slot": "target1",
+  "audio_id": "00abd054-6e32-4b05-89ab-6058ee27d329"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U02",
+  "slot": "target2",
+  "audio_id": "6c3bd000-5ca7-47a0-94ed-7bf304573564"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0402L01U03",
   "expect": {
@@ -252,6 +567,20 @@
   "set": {
    "target_text": "sería mejor parar en algún lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U03",
+  "slot": "target1",
+  "audio_id": "e7c5e52c-555d-486e-9717-10f0c74b7be1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U03",
+  "slot": "target2",
+  "audio_id": "13548ce6-64fe-49c1-bc3a-60b8cbfaaf61"
  },
  {
   "op": "phrase.update",
@@ -265,6 +594,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U04",
+  "slot": "target1",
+  "audio_id": "397caf1c-6956-4ee3-bc5c-1b9beb283e7b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U04",
+  "slot": "target2",
+  "audio_id": "3de139f0-d504-47d2-a62e-10112f44711a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0402L01U05",
   "expect": {
@@ -274,6 +617,20 @@
   "set": {
    "target_text": "es importante parar en algún lado para comer"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U05",
+  "slot": "target1",
+  "audio_id": "b95ccbb8-22fa-490c-9299-ea73829a8f4a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U05",
+  "slot": "target2",
+  "audio_id": "b6cea81e-bda7-4604-a1ca-d3db9e1abe58"
  },
  {
   "op": "phrase.update",
@@ -287,6 +644,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U06",
+  "slot": "target1",
+  "audio_id": "8db709aa-d163-40fa-97d5-3b7c4eb949e7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0402L01U06",
+  "slot": "target2",
+  "audio_id": "476c1ef2-c8ee-4927-9f37-a6976fba2c9a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "spa_mx_for_eng:S0403L01U05",
   "expect": {
@@ -296,5 +667,19 @@
   "set": {
    "target_text": "deberíamos parar en algún lado"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0403L01U05",
+  "slot": "target1",
+  "audio_id": "d3e4b6d8-9af6-45e9-8d4f-7306e19c3c8c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0403L01U05",
+  "slot": "target2",
+  "audio_id": "54f720ef-cc45-4d37-ace9-9e9b5e8bd71f"
  }
 ]

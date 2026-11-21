@@ -1,32 +1,5129 @@
 [
  {
   "batch": 0,
-  "status": 0,
-  "n": 12,
+  "status": 200,
+  "n": 8,
   "result": {
-   "ok": false,
-   "code": "CLIENT_TIMEOUT",
-   "error": "<urlopen error [Errno 111] Connection refused>"
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "seed.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 27
+     },
+     "before": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar",
+      "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+      "target1_audio_id": "4dd2b1a2-60e7-410e-8de7-37dc2f113800",
+      "target2_audio_id": "f7f8d9cb-d614-4216-ba1f-93400d714623"
+     },
+     "after": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 27
+     },
+     "before": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 27
+     },
+     "before": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "target1_audio_id": "2dd50bd2-41c7-4a3c-a422-0c1bdaf2ee9b",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 27
+     },
+     "before": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target1_audio_id": "2dd50bd2-41c7-4a3c-a422-0c1bdaf2ee9b"
+     },
+     "after": {
+      "id": "66eb74c7-9536-42c9-ad43-d1c2433a3b22",
+      "seed_number": 27,
+      "target2_audio_id": "d87b9d63-b7b0-4ae7-9d83-190fc6707798",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target1_audio_id": "2dd50bd2-41c7-4a3c-a422-0c1bdaf2ee9b"
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "seed.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 65
+     },
+     "before": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "known_text": "It's important to take time to test yourself",
+      "target_text": "Es importante tomar tiempo para ponerte a prueba",
+      "known_audio_id": "665dad39-0714-4fa6-bbcc-2ed724b273ef",
+      "target1_audio_id": "c075e209-f51c-4447-9c3b-549408fe3995",
+      "target2_audio_id": "e7094e2a-cfa0-4abd-8c33-8c6c9be27f79"
+     },
+     "after": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a",
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9"
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 65
+     },
+     "before": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a",
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9"
+     },
+     "after": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a",
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9"
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 65
+     },
+     "before": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a",
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9"
+     },
+     "after": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a",
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9"
+     },
+     "changed": false
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 65
+     },
+     "before": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9",
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a"
+     },
+     "after": {
+      "id": "c0f8ac54-a5f7-4e73-a2c6-bdf1462e8c58",
+      "seed_number": 65,
+      "target2_audio_id": "f59ead39-a979-430c-bd1d-8d9cfc5e2fe9",
+      "known_text": "It's important to test yourself",
+      "target_text": "Es importante ponerte a prueba",
+      "known_audio_id": "cb167246-b812-4f92-908e-34b758627c2d",
+      "target1_audio_id": "891e6ba5-ea5c-4ee6-b897-210d1f3a9d7a"
+     },
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "seed.update",
+     "seed_number": 65,
+     "set": {
+      "known_text": "It's important to take time to test yourself",
+      "target_text": "Es importante tomar tiempo para ponerte a prueba",
+      "known_audio_id": "665dad39-0714-4fa6-bbcc-2ed724b273ef",
+      "target1_audio_id": "c075e209-f51c-4447-9c3b-549408fe3995",
+      "target2_audio_id": "e7094e2a-cfa0-4abd-8c33-8c6c9be27f79"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 27,
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 27,
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 27,
+     "set": {
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar",
+      "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+      "target1_audio_id": "4dd2b1a2-60e7-410e-8de7-37dc2f113800",
+      "target2_audio_id": "f7f8d9cb-d614-4216-ba1f-93400d714623"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
   }
  },
  {
   "batch": 1,
-  "status": 0,
-  "n": 12,
+  "status": 200,
+  "n": 9,
   "result": {
-   "ok": false,
-   "code": "CLIENT_TIMEOUT",
-   "error": "<urlopen error [Errno 111] Connection refused>"
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "lego.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L02"
+     },
+     "before": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "known_text": "taking too much time",
+      "target_text": "tomar demasiado tiempo",
+      "components": [
+       {
+        "known": "taking",
+        "target": "tomar"
+       },
+       {
+        "known": "time",
+        "target": "tiempo"
+       }
+      ],
+      "known_audio_id": "382e8282-bd87-4d9c-8c9e-f310949a1271",
+      "target1_audio_id": "5956d78d-bcde-4c64-90af-e78d20d411db",
+      "target2_audio_id": "5d8d6d26-858f-45ff-a96f-0bd5a26e11cb",
+      "presentation_audio_id": "450629b1-991c-4270-9775-848472d4f095"
+     },
+     "after": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "components": [
+       {
+        "known": "to take long",
+        "target": "tardar"
+       },
+       {
+        "known": "too much",
+        "target": "demasiado"
+       }
+      ],
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L02"
+     },
+     "before": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L02"
+     },
+     "before": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "target1_audio_id": null,
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L02"
+     },
+     "before": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "target2_audio_id": null,
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "target2_audio_id": "16247bca-3602-4fb5-aedf-997c24d6a9db",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L02"
+     },
+     "before": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "presentation_audio_id": null,
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "target2_audio_id": "16247bca-3602-4fb5-aedf-997c24d6a9db"
+     },
+     "after": {
+      "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": "S0027L02",
+      "presentation_audio_id": "6d3512dc-dadb-48f4-aa78-4e600e8912a7",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "target2_audio_id": "16247bca-3602-4fb5-aedf-997c24d6a9db"
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "lego.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L03"
+     },
+     "before": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "target_text": "para contestar",
+      "type": "M",
+      "components": [
+       {
+        "known": "for",
+        "target": "para"
+       },
+       {
+        "known": "to answer",
+        "target": "contestar"
+       }
+      ],
+      "known_text": "to answer",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "fcdba271-4cae-47e3-9a54-e4272bde5f65",
+      "target2_audio_id": "cd77375c-38a0-4183-be28-11db55f36d82",
+      "presentation_audio_id": "cdb9e402-ff1e-404d-9e7b-f86285a4318c"
+     },
+     "after": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "target_text": "contestar",
+      "type": "A",
+      "components": [],
+      "known_text": "to answer",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L03"
+     },
+     "before": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L03"
+     },
+     "before": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0027L03"
+     },
+     "before": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "presentation_audio_id": null,
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04"
+     },
+     "after": {
+      "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": "S0027L03",
+      "presentation_audio_id": "cdb9e402-ff1e-404d-9e7b-f86285a4318c",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04"
+     },
+     "changed": true
+    },
+    {
+     "index": null,
+     "op": "tiles.refresh",
+     "key": {
+      "lego_ids": [
+       "S0027L02",
+       "S0027L03"
+      ]
+     },
+     "skipped": true,
+     "note": "dry run: tile refresh not previewed; send \"previewTiles\": true to preview it. An apply always refreshes.",
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "lego.update",
+     "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+     "set": {
+      "presentation_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "af011c58-7a56-4828-bfae-d40146a1fd6c",
+     "set": {
+      "type": "M",
+      "target_text": "para contestar",
+      "components": [
+       {
+        "known": "for",
+        "target": "para"
+       },
+       {
+        "known": "to answer",
+        "target": "contestar"
+       }
+      ],
+      "target1_audio_id": "fcdba271-4cae-47e3-9a54-e4272bde5f65",
+      "target2_audio_id": "cd77375c-38a0-4183-be28-11db55f36d82",
+      "presentation_audio_id": "cdb9e402-ff1e-404d-9e7b-f86285a4318c"
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+     "set": {
+      "presentation_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "c341195f-bb19-492c-becf-fdfe037ed66b",
+     "set": {
+      "known_text": "taking too much time",
+      "target_text": "tomar demasiado tiempo",
+      "components": [
+       {
+        "known": "taking",
+        "target": "tomar"
+       },
+       {
+        "known": "time",
+        "target": "tiempo"
+       }
+      ],
+      "known_audio_id": "382e8282-bd87-4d9c-8c9e-f310949a1271",
+      "target1_audio_id": "5956d78d-bcde-4c64-90af-e78d20d411db",
+      "target2_audio_id": "5d8d6d26-858f-45ff-a96f-0bd5a26e11cb",
+      "presentation_audio_id": "450629b1-991c-4270-9775-848472d4f095"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
   }
  },
  {
   "batch": 2,
-  "status": 0,
-  "n": 9,
+  "status": 200,
+  "n": 12,
   "result": {
-   "ok": false,
-   "code": "CLIENT_TIMEOUT",
-   "error": "<urlopen error [Errno 111] Connection refused>"
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "taking",
+      "target_text": "tomar",
+      "known_audio_id": "09896716-abc0-42ce-8cf1-4ca3ad12da6c",
+      "target1_audio_id": "f83698a3-5c7e-4fb0-908e-d9fc4f2fcfa4",
+      "target2_audio_id": "d682d2f4-af40-4634-890e-6b5f192cffcc",
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "target2_audio_id": null,
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "0e6ee71c-6cc0-4032-90cd-a2978fde8a69",
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "target2_audio_id": null,
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "target1_audio_id": "0e6ee71c-6cc0-4032-90cd-a2978fde8a69",
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "0ce7fca9-43a4-4ff1-9f71-de9bac1f1dca",
+      "known_text": "to take long",
+      "target_text": "tardar",
+      "known_audio_id": "9c4c499a-0a32-4ea0-b2af-cea9891d08cd",
+      "target1_audio_id": "0e6ee71c-6cc0-4032-90cd-a2978fde8a69",
+      "presentation_audio_id": "7c67a3e8-71f0-4c7f-8502-728c90262d97"
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "time",
+      "target_text": "tiempo",
+      "known_audio_id": "7e4cbda4-0816-4752-a528-43701d9b8689",
+      "target1_audio_id": "44a35382-2086-464b-8243-22fb49828dae",
+      "target2_audio_id": "f81836b4-8614-47e8-9a31-3ec44cffdfee",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "changed": false
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02C02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "008e4903-95d0-4609-bbee-2c96f7e72850",
+      "known_text": "too much",
+      "target_text": "demasiado",
+      "known_audio_id": "30b5c797-789b-4f23-a503-be13c07c21fc",
+      "target1_audio_id": "d307a7a0-102c-47be-a72f-7c5d2720c88d",
+      "presentation_audio_id": "e8675079-fa38-4251-9586-09792cf1c00b"
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "taking too much time",
+      "target_text": "tomar demasiado tiempo",
+      "known_audio_id": "382e8282-bd87-4d9c-8c9e-f310949a1271",
+      "target1_audio_id": "5956d78d-bcde-4c64-90af-e78d20d411db",
+      "target2_audio_id": "5d8d6d26-858f-45ff-a96f-0bd5a26e11cb",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "16247bca-3602-4fb5-aedf-997c24d6a9db",
+      "known_text": "to take too long",
+      "target_text": "tardar demasiado",
+      "known_audio_id": "50ea05f5-8fc1-44d1-bf55-97ad9806c4dc",
+      "target1_audio_id": "5dca2207-dc7f-4150-bd11-af3d92fda9f8",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B01",
+     "set": {
+      "known_text": "taking too much time",
+      "target_text": "tomar demasiado tiempo",
+      "known_audio_id": "382e8282-bd87-4d9c-8c9e-f310949a1271",
+      "target1_audio_id": "5956d78d-bcde-4c64-90af-e78d20d411db",
+      "target2_audio_id": "5d8d6d26-858f-45ff-a96f-0bd5a26e11cb"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02C02",
+     "set": {
+      "known_text": "time",
+      "target_text": "tiempo",
+      "known_audio_id": "7e4cbda4-0816-4752-a528-43701d9b8689",
+      "target1_audio_id": "44a35382-2086-464b-8243-22fb49828dae",
+      "target2_audio_id": "f81836b4-8614-47e8-9a31-3ec44cffdfee"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02C01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02C01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02C01",
+     "set": {
+      "known_text": "taking",
+      "target_text": "tomar",
+      "known_audio_id": "09896716-abc0-42ce-8cf1-4ca3ad12da6c",
+      "target1_audio_id": "f83698a3-5c7e-4fb0-908e-d9fc4f2fcfa4",
+      "target2_audio_id": "d682d2f4-af40-4634-890e-6b5f192cffcc"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "are you going to take too much time today?",
+      "target_text": "¿vas a tomar demasiado tiempo hoy?",
+      "known_audio_id": "33af347c-91aa-40db-abcf-1361afcf54ba",
+      "target1_audio_id": "9efbf24d-bfb2-432a-a7b0-c2ba6b170938",
+      "target2_audio_id": "17a4d0c3-7c72-4da6-aa2a-4fd1b60eda29",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "98dc468e-8e9a-43bf-8954-e40f3873439c",
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "target1_audio_id": "98dc468e-8e9a-43bf-8954-e40f3873439c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "6b117234-5e5e-46f2-aa87-9e3469fdc8e7",
+      "known_text": "are you going to take too long today?",
+      "target_text": "¿vas a tardar demasiado hoy?",
+      "known_audio_id": "9a6e2271-d383-4211-ae9d-fc1851081228",
+      "target1_audio_id": "98dc468e-8e9a-43bf-8954-e40f3873439c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time",
+      "target_text": "no me gusta tomar demasiado tiempo",
+      "known_audio_id": "1d4bd5e7-0a66-4888-8305-277a9d521388",
+      "target1_audio_id": "f57a67d3-1f52-403c-8a30-a6cea2971b11",
+      "target2_audio_id": "7077c40d-c0a9-425f-bc35-30ee5f8420e6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "54c92e14-fc72-4986-ae5e-618e77cc2628",
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "target1_audio_id": "54c92e14-fc72-4986-ae5e-618e77cc2628",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "69c5f2e7-7043-46a5-bea5-ce9863cce7a5",
+      "known_text": "I don't like taking too long",
+      "target_text": "no me gusta tardar demasiado",
+      "known_audio_id": "5ff711ac-0ff8-4e9f-aa44-22c481eda778",
+      "target1_audio_id": "54c92e14-fc72-4986-ae5e-618e77cc2628",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I'm not going to be able to take too much time today",
+      "target_text": "no voy a poder tomar demasiado tiempo hoy",
+      "known_audio_id": "01387d8f-a339-4a6c-9242-6e60272bce83",
+      "target1_audio_id": "128364ff-1ace-4458-93ca-ccc292bdaf18",
+      "target2_audio_id": "0cfb7870-8013-4a30-b3ce-49c24c7993a8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "d1a1de11-23fe-468d-aca1-4a9a04da2033",
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "target1_audio_id": "d1a1de11-23fe-468d-aca1-4a9a04da2033",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02B04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "670da7d3-551f-473f-b694-834d13edaa2a",
+      "known_text": "I'm not going to be able to take too long today",
+      "target_text": "no voy a poder tardar demasiado hoy",
+      "known_audio_id": "22d4f2af-5e06-4e87-b9c2-86689455b4be",
+      "target1_audio_id": "d1a1de11-23fe-468d-aca1-4a9a04da2033",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B04",
+     "set": {
+      "known_text": "I'm not going to be able to take too much time today",
+      "target_text": "no voy a poder tomar demasiado tiempo hoy",
+      "known_audio_id": "01387d8f-a339-4a6c-9242-6e60272bce83",
+      "target1_audio_id": "128364ff-1ace-4458-93ca-ccc292bdaf18",
+      "target2_audio_id": "0cfb7870-8013-4a30-b3ce-49c24c7993a8"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B03",
+     "set": {
+      "known_text": "I don't like taking too much time",
+      "target_text": "no me gusta tomar demasiado tiempo",
+      "known_audio_id": "1d4bd5e7-0a66-4888-8305-277a9d521388",
+      "target1_audio_id": "f57a67d3-1f52-403c-8a30-a6cea2971b11",
+      "target2_audio_id": "7077c40d-c0a9-425f-bc35-30ee5f8420e6"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02B02",
+     "set": {
+      "known_text": "are you going to take too much time today?",
+      "target_text": "¿vas a tomar demasiado tiempo hoy?",
+      "known_audio_id": "33af347c-91aa-40db-abcf-1361afcf54ba",
+      "target1_audio_id": "9efbf24d-bfb2-432a-a7b0-c2ba6b170938",
+      "target2_audio_id": "17a4d0c3-7c72-4da6-aa2a-4fd1b60eda29"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time speaking",
+      "target_text": "no me gusta tomar demasiado tiempo hablando",
+      "known_audio_id": "6a7ebf90-9f03-44f6-a021-f63448523a87",
+      "target1_audio_id": "bdb11456-4594-4e20-a1e2-ff2824937dee",
+      "target2_audio_id": "1a8aa436-8d09-495a-9444-e9d17fa6a1b2",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "b4a9fecb-8f42-4157-a243-d68d4776acb6",
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "target1_audio_id": "b4a9fecb-8f42-4157-a243-d68d4776acb6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U01",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "765bfe64-c40f-4779-945e-d39ee757480f",
+      "known_text": "I don't like taking too long to speak",
+      "target_text": "no me gusta tardar demasiado en hablar",
+      "known_audio_id": "9be87273-ea74-4ba8-900b-7ad2f392b4d4",
+      "target1_audio_id": "b4a9fecb-8f42-4157-a243-d68d4776acb6",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time speaking Spanish",
+      "target_text": "no me gusta tomar demasiado tiempo hablando español",
+      "known_audio_id": "585ee3ad-5714-4225-be5a-11e9f04a2070",
+      "target1_audio_id": "e912051f-9e48-4dd5-8ce9-1fbafcb89844",
+      "target2_audio_id": "108ab26a-68c5-4ddf-b0e7-892cbb4b91b8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "c428e584-1440-44c6-a54b-319dffe70066",
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "target1_audio_id": "c428e584-1440-44c6-a54b-319dffe70066",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U02",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "9e3486a4-2ad6-451f-a898-a96cc0852ad2",
+      "known_text": "I don't like taking too long to speak Spanish",
+      "target_text": "no me gusta tardar demasiado en hablar español",
+      "known_audio_id": "53a2b266-2161-45c8-b5c7-bcd437a6aee9",
+      "target1_audio_id": "c428e584-1440-44c6-a54b-319dffe70066",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time with someone else",
+      "target_text": "no me gusta tomar demasiado tiempo con otra persona",
+      "known_audio_id": "4c610b33-6d54-4b08-9081-fdc1b72af307",
+      "target1_audio_id": "272a70cb-eca8-4866-ada7-55089d8a88da",
+      "target2_audio_id": "0d9f4b31-f115-4926-b590-4499995fdb85",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "65c99ce0-d1f8-4ed3-beeb-4452de3839a9",
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "target1_audio_id": "65c99ce0-d1f8-4ed3-beeb-4452de3839a9",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U03",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "ff8729bd-e614-4608-904a-6f8d009f9b55",
+      "known_text": "I don't like taking too long with someone else",
+      "target_text": "no me gusta tardar demasiado con otra persona",
+      "known_audio_id": "db3e87f7-a778-438b-a3d2-baede43094ac",
+      "target1_audio_id": "65c99ce0-d1f8-4ed3-beeb-4452de3839a9",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U03",
+     "set": {
+      "known_text": "I don't like taking too much time with someone else",
+      "target_text": "no me gusta tomar demasiado tiempo con otra persona",
+      "known_audio_id": "4c610b33-6d54-4b08-9081-fdc1b72af307",
+      "target1_audio_id": "272a70cb-eca8-4866-ada7-55089d8a88da",
+      "target2_audio_id": "0d9f4b31-f115-4926-b590-4499995fdb85"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U02",
+     "set": {
+      "known_text": "I don't like taking too much time speaking Spanish",
+      "target_text": "no me gusta tomar demasiado tiempo hablando español",
+      "known_audio_id": "585ee3ad-5714-4225-be5a-11e9f04a2070",
+      "target1_audio_id": "e912051f-9e48-4dd5-8ce9-1fbafcb89844",
+      "target2_audio_id": "108ab26a-68c5-4ddf-b0e7-892cbb4b91b8"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U01",
+     "set": {
+      "known_text": "I don't like taking too much time speaking",
+      "target_text": "no me gusta tomar demasiado tiempo hablando",
+      "known_audio_id": "6a7ebf90-9f03-44f6-a021-f63448523a87",
+      "target1_audio_id": "bdb11456-4594-4e20-a1e2-ff2824937dee",
+      "target2_audio_id": "1a8aa436-8d09-495a-9444-e9d17fa6a1b2"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "are you going to take too much time before I have to go?",
+      "target_text": "¿vas a tomar demasiado tiempo antes de que tenga que irme?",
+      "known_audio_id": "42405d59-d39e-4527-8976-b4a53c28ad55",
+      "target1_audio_id": "08704d11-fb0c-4d6c-8c75-bea2269cd1d5",
+      "target2_audio_id": "c32d7702-fff5-44c1-9ada-3e76e7cba4f1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "88777c01-d56b-433e-9b5d-d3d71480cb1d",
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "target1_audio_id": "88777c01-d56b-433e-9b5d-d3d71480cb1d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U04",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "18a36ae0-a13c-426c-a5d8-ef9708513518",
+      "known_text": "are you going to take too long before I have to go?",
+      "target_text": "¿vas a tardar demasiado antes de que tenga que irme?",
+      "known_audio_id": "6334ed52-44eb-4515-a361-d72da1a5e4c2",
+      "target1_audio_id": "88777c01-d56b-433e-9b5d-d3d71480cb1d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time speaking Spanish with you",
+      "target_text": "no me gusta tomar demasiado tiempo hablando español contigo",
+      "known_audio_id": "0d18e81d-6f77-4275-a7dd-d7b4eec1ba90",
+      "target1_audio_id": "29034a75-2c22-47ba-a47e-37e3f160fe20",
+      "target2_audio_id": "2e06aeb5-5259-4c0e-b2a7-dede4834adba",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "16d2541a-26db-4b68-b962-945b4c53da1a",
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "target1_audio_id": "16d2541a-26db-4b68-b962-945b4c53da1a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U05",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "20e4aa17-f781-418f-acb4-eb6daaf211e1",
+      "known_text": "I don't like taking too long to speak Spanish with you",
+      "target_text": "no me gusta tardar demasiado en hablar español contigo",
+      "known_audio_id": "ab58a333-0fc5-48a3-bebd-79bfb20bb864",
+      "target1_audio_id": "16d2541a-26db-4b68-b962-945b4c53da1a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time speaking with someone else today",
+      "target_text": "no me gusta tomar demasiado tiempo hablando con otra persona hoy",
+      "known_audio_id": "89745bfb-dd96-4f6e-8a82-c1ba75560d6d",
+      "target1_audio_id": "e1231da3-0f82-4df6-beff-adecfee32beb",
+      "target2_audio_id": "273da1aa-b465-49da-b6e5-0513b89e32a7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "f2e1c83d-3f54-405d-b7e3-d4b4006712dc",
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L02U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "target1_audio_id": "f2e1c83d-3f54-405d-b7e3-d4b4006712dc",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L02U06",
+      "seed_number": 27,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "a90b6998-0010-413f-877a-5a1207a31a58",
+      "known_text": "I don't like taking too long to speak with someone else today",
+      "target_text": "no me gusta tardar demasiado en hablar con otra persona hoy",
+      "known_audio_id": "f528f6fc-1c8d-4e1b-a3f5-b99f9c40face",
+      "target1_audio_id": "f2e1c83d-3f54-405d-b7e3-d4b4006712dc",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U06",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U06",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U06",
+     "set": {
+      "known_text": "I don't like taking too much time speaking with someone else today",
+      "target_text": "no me gusta tomar demasiado tiempo hablando con otra persona hoy",
+      "known_audio_id": "89745bfb-dd96-4f6e-8a82-c1ba75560d6d",
+      "target1_audio_id": "e1231da3-0f82-4df6-beff-adecfee32beb",
+      "target2_audio_id": "273da1aa-b465-49da-b6e5-0513b89e32a7"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U05",
+     "set": {
+      "known_text": "I don't like taking too much time speaking Spanish with you",
+      "target_text": "no me gusta tomar demasiado tiempo hablando español contigo",
+      "known_audio_id": "0d18e81d-6f77-4275-a7dd-d7b4eec1ba90",
+      "target1_audio_id": "29034a75-2c22-47ba-a47e-37e3f160fe20",
+      "target2_audio_id": "2e06aeb5-5259-4c0e-b2a7-dede4834adba"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L02U04",
+     "set": {
+      "known_text": "are you going to take too much time before I have to go?",
+      "target_text": "¿vas a tomar demasiado tiempo antes de que tenga que irme?",
+      "known_audio_id": "42405d59-d39e-4527-8976-b4a53c28ad55",
+      "target1_audio_id": "08704d11-fb0c-4d6c-8c75-bea2269cd1d5",
+      "target2_audio_id": "c32d7702-fff5-44c1-9ada-3e76e7cba4f1"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "n": 11,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "para contestar",
+      "known_text": "to answer",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "fcdba271-4cae-47e3-9a54-e4272bde5f65",
+      "target2_audio_id": "cd77375c-38a0-4183-be28-11db55f36d82",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "contestar",
+      "known_text": "to answer",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I want time to answer in Spanish",
+      "target_text": "quiero tiempo para contestar en español",
+      "known_audio_id": "a6b83d56-4631-4926-98bc-44834c2a58df",
+      "target1_audio_id": "da7a14d2-ce9f-4bc3-9e07-8dd4095eadb8",
+      "target2_audio_id": "734e1f69-5459-4daf-924d-3d9cde9ef112",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "f54a84cf-a5d0-449b-b9b4-fef32593914f",
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "target1_audio_id": "f54a84cf-a5d0-449b-b9b4-fef32593914f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "20959f46-93cb-4811-b9bc-cc4a4bdda2f4",
+      "known_text": "to answer in Spanish",
+      "target_text": "contestar en español",
+      "known_audio_id": "b004374e-a9cc-4506-886d-bcc6975aefce",
+      "target1_audio_id": "f54a84cf-a5d0-449b-b9b4-fef32593914f",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "are you going to take too much time to answer today?",
+      "target_text": "¿vas a tomar demasiado tiempo para contestar hoy?",
+      "known_audio_id": "c3757acc-d488-44c0-a65c-ca281ceabf82",
+      "target1_audio_id": "cae9bb15-2be3-48da-9b57-a8ec9a387c0a",
+      "target2_audio_id": "cf802f6f-85a5-4fcb-8dcd-b52ceaefb9c0",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "22dee941-19c8-46fc-a9c9-7395b1c08e9f",
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "target1_audio_id": "22dee941-19c8-46fc-a9c9-7395b1c08e9f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "32f647ab-1d9f-4c10-a037-4b9d2d4ac823",
+      "known_text": "are you going to take too long to answer today?",
+      "target_text": "¿vas a tardar demasiado en contestar hoy?",
+      "known_audio_id": "f6dd8992-b1e8-43ca-b587-c06752ab29e2",
+      "target1_audio_id": "22dee941-19c8-46fc-a9c9-7395b1c08e9f",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B03",
+     "set": {
+      "known_text": "are you going to take too much time to answer today?",
+      "target_text": "¿vas a tomar demasiado tiempo para contestar hoy?",
+      "known_audio_id": "c3757acc-d488-44c0-a65c-ca281ceabf82",
+      "target1_audio_id": "cae9bb15-2be3-48da-9b57-a8ec9a387c0a",
+      "target2_audio_id": "cf802f6f-85a5-4fcb-8dcd-b52ceaefb9c0"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B02",
+     "set": {
+      "known_text": "I want time to answer in Spanish",
+      "target_text": "quiero tiempo para contestar en español",
+      "known_audio_id": "a6b83d56-4631-4926-98bc-44834c2a58df",
+      "target1_audio_id": "da7a14d2-ce9f-4bc3-9e07-8dd4095eadb8",
+      "target2_audio_id": "734e1f69-5459-4daf-924d-3d9cde9ef112"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B01",
+     "set": {
+      "target_text": "para contestar",
+      "target1_audio_id": "fcdba271-4cae-47e3-9a54-e4272bde5f65",
+      "target2_audio_id": "cd77375c-38a0-4183-be28-11db55f36d82"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 7,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I want time to answer in Spanish today",
+      "target_text": "quiero tiempo para contestar en español hoy",
+      "known_audio_id": "5215541f-af1b-4c06-b27a-7ebddbb5246d",
+      "target1_audio_id": "c2ca80dc-3299-4c3e-b5ba-84db41e2850b",
+      "target2_audio_id": "55952ccf-05be-4508-a1b2-0ebcb040fe24",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03B04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03B04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "c42627ea-2da7-42c6-82f7-6e37d563ec15",
+      "known_text": "I want to answer in Spanish today",
+      "target_text": "quiero contestar en español hoy",
+      "known_audio_id": "120d08aa-4692-4edf-a6f8-e32091608aa2",
+      "target1_audio_id": "6705b3a4-1bc6-4bd6-9391-1bf7819e9f2c",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar",
+      "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+      "target1_audio_id": "4dd2b1a2-60e7-410e-8de7-37dc2f113800",
+      "target2_audio_id": "f7f8d9cb-d614-4216-ba1f-93400d714623",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "2dd50bd2-41c7-4a3c-a422-0c1bdaf2ee9b",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target1_audio_id": "2dd50bd2-41c7-4a3c-a422-0c1bdaf2ee9b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "d87b9d63-b7b0-4ae7-9d83-190fc6707798",
+      "known_text": "I don't like taking too long to answer",
+      "target_text": "no me gusta tardar demasiado en contestar",
+      "known_audio_id": "91848861-3352-4bf7-a223-7f9c09792279",
+      "target1_audio_id": "2dd50bd2-41c7-4a3c-a422-0c1bdaf2ee9b",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I'd like time to answer in Spanish soon",
+      "target_text": "me gustaría tiempo para contestar en español pronto",
+      "known_audio_id": "1d75dbe7-a99a-4e39-afc8-2adbdea0fffb",
+      "target1_audio_id": "c2638059-b519-4b3e-8ebe-9a72f01d95ae",
+      "target2_audio_id": "0cd57c1c-d2c0-4622-bdc3-0385cc7092f3",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "142784e9-ca5f-4b45-8d51-3d9989e55b75",
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "target1_audio_id": "142784e9-ca5f-4b45-8d51-3d9989e55b75",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "01f078a3-0c4d-4b77-be80-89824461b9aa",
+      "known_text": "I'd like to answer in Spanish soon",
+      "target_text": "me gustaría contestar en español pronto",
+      "known_audio_id": "7077ba85-b58c-4273-940a-131270328506",
+      "target1_audio_id": "142784e9-ca5f-4b45-8d51-3d9989e55b75",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U02",
+     "set": {
+      "known_text": "I'd like time to answer in Spanish soon",
+      "target_text": "me gustaría tiempo para contestar en español pronto",
+      "known_audio_id": "1d75dbe7-a99a-4e39-afc8-2adbdea0fffb",
+      "target1_audio_id": "c2638059-b519-4b3e-8ebe-9a72f01d95ae",
+      "target2_audio_id": "0cd57c1c-d2c0-4622-bdc3-0385cc7092f3"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U01",
+     "set": {
+      "known_text": "I don't like taking too much time to answer",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar",
+      "known_audio_id": "d123260b-fa56-433c-902b-1c86d32d286d",
+      "target1_audio_id": "4dd2b1a2-60e7-410e-8de7-37dc2f113800",
+      "target2_audio_id": "f7f8d9cb-d614-4216-ba1f-93400d714623"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03B04",
+     "set": {
+      "known_text": "I want time to answer in Spanish today",
+      "target_text": "quiero tiempo para contestar en español hoy",
+      "known_audio_id": "5215541f-af1b-4c06-b27a-7ebddbb5246d",
+      "target1_audio_id": "c2ca80dc-3299-4c3e-b5ba-84db41e2850b",
+      "target2_audio_id": "55952ccf-05be-4508-a1b2-0ebcb040fe24"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 8,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time to answer today",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar hoy",
+      "known_audio_id": "fda82d10-aeaa-4da8-94ec-36011356557e",
+      "target1_audio_id": "693ca616-d088-4fd0-b966-b63aea0c5192",
+      "target2_audio_id": "4ff708b7-c98c-4644-ba81-207f6f99d522",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "aeaa483e-c596-498a-81c8-de799f5c6b2c",
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "target1_audio_id": "aeaa483e-c596-498a-81c8-de799f5c6b2c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U03",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "fe7f93d4-ddd6-4b04-9c1d-85f74285eb18",
+      "known_text": "I don't like taking too long to answer today",
+      "target_text": "no me gusta tardar demasiado en contestar hoy",
+      "known_audio_id": "e13b8744-5624-4cfd-8c83-d88a939a2f72",
+      "target1_audio_id": "aeaa483e-c596-498a-81c8-de799f5c6b2c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time to answer in Spanish",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar en español",
+      "known_audio_id": "bb61e9bb-0e4d-456e-8956-773a6227af03",
+      "target1_audio_id": "1caa6f73-aa0c-46dd-bdab-ea101d5a9b0e",
+      "target2_audio_id": "1fe957b5-f7b8-4c57-bce2-815c9d1c5f57",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "434a3c35-7c0b-4512-b972-8f0f4c2cba2d",
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "target1_audio_id": "434a3c35-7c0b-4512-b972-8f0f4c2cba2d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U04",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "e694836a-807f-4e72-abed-f60313ddb665",
+      "known_text": "I don't like taking too long to answer in Spanish",
+      "target_text": "no me gusta tardar demasiado en contestar en español",
+      "known_audio_id": "58f7b58e-e11b-436f-bcaa-335dd775130a",
+      "target1_audio_id": "434a3c35-7c0b-4512-b972-8f0f4c2cba2d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time to answer with someone else",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar con otra persona",
+      "known_audio_id": "d7c822ce-d5fb-42e2-bc84-cbb0b5b477ee",
+      "target1_audio_id": "ab3aea86-17af-4668-8f00-8eb9d6c2390b",
+      "target2_audio_id": "b59c0139-33ac-4394-a092-66f3f9949d0d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "4c669fbe-c964-4d39-9c02-2a6a3d383b48",
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "target1_audio_id": "4c669fbe-c964-4d39-9c02-2a6a3d383b48",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U05",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "261c9f0e-bd18-4701-b718-c7a66be9f9ed",
+      "known_text": "I don't like taking too long to answer with someone else",
+      "target_text": "no me gusta tardar demasiado en contestar con otra persona",
+      "known_audio_id": "6cf59942-2ef7-4485-afec-34c66dff6720",
+      "target1_audio_id": "4c669fbe-c964-4d39-9c02-2a6a3d383b48",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U05",
+     "set": {
+      "known_text": "I don't like taking too much time to answer with someone else",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar con otra persona",
+      "known_audio_id": "d7c822ce-d5fb-42e2-bc84-cbb0b5b477ee",
+      "target1_audio_id": "ab3aea86-17af-4668-8f00-8eb9d6c2390b",
+      "target2_audio_id": "b59c0139-33ac-4394-a092-66f3f9949d0d"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U04",
+     "set": {
+      "known_text": "I don't like taking too much time to answer in Spanish",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar en español",
+      "known_audio_id": "bb61e9bb-0e4d-456e-8956-773a6227af03",
+      "target1_audio_id": "1caa6f73-aa0c-46dd-bdab-ea101d5a9b0e",
+      "target2_audio_id": "1fe957b5-f7b8-4c57-bce2-815c9d1c5f57"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U03",
+     "set": {
+      "known_text": "I don't like taking too much time to answer today",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar hoy",
+      "known_audio_id": "fda82d10-aeaa-4da8-94ec-36011356557e",
+      "target1_audio_id": "693ca616-d088-4fd0-b966-b63aea0c5192",
+      "target2_audio_id": "4ff708b7-c98c-4644-ba81-207f6f99d522"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 9,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too much time to answer in Spanish today",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar en español hoy",
+      "known_audio_id": "1756f1f3-24af-4325-b28c-7457ef9373bd",
+      "target1_audio_id": "6c801f5d-cfb5-431d-8bca-bcd642ca8e47",
+      "target2_audio_id": "bbdb67db-d07d-4736-8d58-e8d609c8067b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0027L03U06",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "c901238e-3603-416f-b6a8-74f36b989da4",
+      "known_text": "I don't like taking too long to answer in Spanish today",
+      "target_text": "no me gusta tardar demasiado en contestar en español hoy",
+      "known_audio_id": "55ec1007-9540-4ff1-bcc6-4878d9570abe",
+      "target1_audio_id": "e23d5e61-080c-4920-93b9-08bec290ff4f",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0028L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "it's useful to not take too much time to answer",
+      "target_text": "es útil no tomar demasiado tiempo para contestar",
+      "known_audio_id": "896df167-f365-4f0b-9874-bb76305e68b0",
+      "target1_audio_id": "e2ccc4db-1d70-4ddd-8f9a-dbcc75580248",
+      "target2_audio_id": "8f2caf7c-b153-42f9-8c5b-1a871613000f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0028L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0028L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "564c24f4-0b7e-4dbf-8ea5-bf87abb169a4",
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0028L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "target1_audio_id": "564c24f4-0b7e-4dbf-8ea5-bf87abb169a4",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0028L01U06",
+      "seed_number": 28,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "cd53c5f1-a3fa-430f-ad31-bf4ac02efb94",
+      "known_text": "it's useful to not take too long to answer",
+      "target_text": "es útil no tardar demasiado en contestar",
+      "known_audio_id": "293103af-4a62-498d-99a3-3e8fad463df2",
+      "target1_audio_id": "564c24f4-0b7e-4dbf-8ea5-bf87abb169a4",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "to take time to test yourself",
+      "target_text": "tomar tiempo para ponerte a prueba",
+      "known_audio_id": "36b884cb-7e95-4727-a58b-46e972ab5320",
+      "target1_audio_id": "a0bca3ca-a33c-43c2-b3eb-bc8e063410e2",
+      "target2_audio_id": "1fdb7d02-4d81-4b73-9916-8b6c9e351a3f",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "535fb054-63dd-4f42-a0e7-d914db70a737",
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "target1_audio_id": "535fb054-63dd-4f42-a0e7-d914db70a737",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02B03",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "737fdde5-e79f-4e85-b9c6-69012e63173d",
+      "known_text": "to test yourself in Spanish",
+      "target_text": "ponerte a prueba en español",
+      "known_audio_id": "f90a9d64-425d-46a7-8b64-b6af5396e292",
+      "target1_audio_id": "535fb054-63dd-4f42-a0e7-d914db70a737",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0065L02B03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0065L02B03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0065L02B03",
+     "set": {
+      "known_text": "to take time to test yourself",
+      "target_text": "tomar tiempo para ponerte a prueba",
+      "known_audio_id": "36b884cb-7e95-4727-a58b-46e972ab5320",
+      "target1_audio_id": "a0bca3ca-a33c-43c2-b3eb-bc8e063410e2",
+      "target2_audio_id": "1fdb7d02-4d81-4b73-9916-8b6c9e351a3f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0028L01U06",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0028L01U06",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0028L01U06",
+     "set": {
+      "known_text": "it's useful to not take too much time to answer",
+      "target_text": "es útil no tomar demasiado tiempo para contestar",
+      "known_audio_id": "896df167-f365-4f0b-9874-bb76305e68b0",
+      "target1_audio_id": "e2ccc4db-1d70-4ddd-8f9a-dbcc75580248",
+      "target2_audio_id": "8f2caf7c-b153-42f9-8c5b-1a871613000f"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0027L03U06",
+     "set": {
+      "known_text": "I don't like taking too much time to answer in Spanish today",
+      "target_text": "no me gusta tomar demasiado tiempo para contestar en español hoy",
+      "known_audio_id": "1756f1f3-24af-4325-b28c-7457ef9373bd",
+      "target1_audio_id": "6c801f5d-cfb5-431d-8bca-bcd642ca8e47",
+      "target2_audio_id": "bbdb67db-d07d-4736-8d58-e8d609c8067b"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 10,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "it's important to take time to test yourself",
+      "target_text": "es importante tomar tiempo para ponerte a prueba",
+      "known_audio_id": "665dad39-0714-4fa6-bbcc-2ed724b273ef",
+      "target1_audio_id": "c075e209-f51c-4447-9c3b-549408fe3995",
+      "target2_audio_id": "e7094e2a-cfa0-4abd-8c33-8c6c9be27f79",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "bf6aebe7-a8a7-4b92-89bc-f9ed9d3c32c5",
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0065L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "target1_audio_id": "bf6aebe7-a8a7-4b92-89bc-f9ed9d3c32c5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0065L02U01",
+      "seed_number": 65,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "af74cf6b-62bb-425a-84e3-d997ee85bb84",
+      "known_text": "it's important to test yourself again",
+      "target_text": "es importante ponerte a prueba otra vez",
+      "known_audio_id": "df3e58b7-df05-4656-bf63-9fd36a5cbcc4",
+      "target1_audio_id": "bf6aebe7-a8a7-4b92-89bc-f9ed9d3c32c5",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0066L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "it's not difficult to take time to improve as often as possible",
+      "target_text": "no es difícil tomar tiempo para mejorar lo más seguido posible",
+      "known_audio_id": "4ee65956-d024-4290-a172-3677f86212ec",
+      "target1_audio_id": "87a142bc-2a2e-4a88-8d6d-7f5224e700f3",
+      "target2_audio_id": "47a23998-a069-4df2-9307-682b8e0a8d0d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0066L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0066L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "f398f7fb-bc9b-436e-a8e3-44f29084aad7",
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0066L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "target1_audio_id": "f398f7fb-bc9b-436e-a8e3-44f29084aad7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0066L01U04",
+      "seed_number": 66,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "4b1c5406-fdc2-457d-b6dd-32c03b6f2f49",
+      "known_text": "it's not difficult to improve as often as possible",
+      "target_text": "no es difícil mejorar lo más seguido posible",
+      "known_audio_id": "6024a4cb-f9d5-4403-b8b5-065f9ee41508",
+      "target1_audio_id": "f398f7fb-bc9b-436e-a8e3-44f29084aad7",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0094L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0094L03U05",
+      "seed_number": 94,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "va a tomar tiempo para aprender bien",
+      "known_text": "it's going to take time to learn well",
+      "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+      "target1_audio_id": "5e422a66-4459-456a-afe1-ff98a7372889",
+      "target2_audio_id": "40f40944-acbd-4685-adee-c440d932cca8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0094L03U05",
+      "seed_number": 94,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "va a tomar tiempo aprender bien",
+      "known_text": "it's going to take time to learn well",
+      "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0094L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0094L03U05",
+      "seed_number": 94,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it's going to take time to learn well",
+      "target_text": "va a tomar tiempo aprender bien",
+      "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0094L03U05",
+      "seed_number": 94,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "0780710f-999a-41fa-94c2-7fd2d4add034",
+      "known_text": "it's going to take time to learn well",
+      "target_text": "va a tomar tiempo aprender bien",
+      "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0094L03U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0094L03U05",
+      "seed_number": 94,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it's going to take time to learn well",
+      "target_text": "va a tomar tiempo aprender bien",
+      "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+      "target1_audio_id": "0780710f-999a-41fa-94c2-7fd2d4add034",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0094L03U05",
+      "seed_number": 94,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "0fd0c3bd-a1a1-4e9e-9cb6-f1f6cbb7769c",
+      "known_text": "it's going to take time to learn well",
+      "target_text": "va a tomar tiempo aprender bien",
+      "known_audio_id": "6154d968-69a6-4b83-9158-25a5e21ec56c",
+      "target1_audio_id": "0780710f-999a-41fa-94c2-7fd2d4add034",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "phrase.delete",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03C01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03C01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "for",
+      "target_text": "para",
+      "known_audio_id": "27205e37-7bc9-4c43-9402-294756b4f50f",
+      "target1_audio_id": "0c65134a-4b9e-43f6-b437-5483e8cba8cd",
+      "target2_audio_id": "a9c3d4a2-baf0-403e-8974-6fb695617c89",
+      "presentation_audio_id": "411ed1d7-15a6-4717-90f2-132fcfa5b9b6"
+     },
+     "after": null,
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "spa_mx_for_eng:S0027L03C01",
+      "seed_number": 27,
+      "lego_index": 3,
+      "position": 1,
+      "known_text": "for",
+      "target_text": "para",
+      "word_count": 4,
+      "lego_count": 1,
+      "difficulty": null,
+      "register": null,
+      "metadata": {
+       "buildup": "component",
+       "component_index": 0
+      },
+      "status": "draft",
+      "release_batch": null,
+      "created_at": "2026-03-10T14:02:00.941Z",
+      "target_syllable_count": null,
+      "phrase_role": "component",
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "known_audio_id": "27205e37-7bc9-4c43-9402-294756b4f50f",
+      "target1_audio_id": "0c65134a-4b9e-43f6-b437-5483e8cba8cd",
+      "target2_audio_id": "a9c3d4a2-baf0-403e-8974-6fb695617c89",
+      "qa_checked": null,
+      "target1_duration_ms": 1872,
+      "target2_duration_ms": 2040,
+      "lego_id": null,
+      "target_text_roman": null,
+      "target_phrase_id": null,
+      "presentation_audio_id": "411ed1d7-15a6-4717-90f2-132fcfa5b9b6",
+      "introduce": true,
+      "decomposition": [
+       {
+        "known": "",
+        "legoId": null,
+        "target": "para",
+        "isGhost": true
+       }
+      ],
+      "decomposition_course_version": null,
+      "display_tiling": null,
+      "display_tiling_version": null,
+      "known_gloss_segments": null,
+      "frame_mask": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0094L03U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0094L03U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0094L03U05",
+     "set": {
+      "target_text": "va a tomar tiempo para aprender bien",
+      "target1_audio_id": "5e422a66-4459-456a-afe1-ff98a7372889",
+      "target2_audio_id": "40f40944-acbd-4685-adee-c440d932cca8"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0066L01U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0066L01U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0066L01U04",
+     "set": {
+      "known_text": "it's not difficult to take time to improve as often as possible",
+      "target_text": "no es difícil tomar tiempo para mejorar lo más seguido posible",
+      "known_audio_id": "4ee65956-d024-4290-a172-3677f86212ec",
+      "target1_audio_id": "87a142bc-2a2e-4a88-8d6d-7f5224e700f3",
+      "target2_audio_id": "47a23998-a069-4df2-9307-682b8e0a8d0d"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0065L02U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0065L02U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0065L02U01",
+     "set": {
+      "known_text": "it's important to take time to test yourself",
+      "target_text": "es importante tomar tiempo para ponerte a prueba",
+      "known_audio_id": "665dad39-0714-4fa6-bbcc-2ed724b273ef",
+      "target1_audio_id": "c075e209-f51c-4447-9c3b-549408fe3995",
+      "target2_audio_id": "e7094e2a-cfa0-4abd-8c33-8c6c9be27f79"
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+  }
+ },
+ {
+  "batch": 11,
+  "status": 200,
+  "n": 1,
+  "result": {
+   "ok": true,
+   "dryRun": true,
+   "applied": false,
+   "event_id": null,
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.delete",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0027L03C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0027L03C02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "lego_id": null,
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "presentation_audio_id": "8e3fe274-4283-4724-9de1-26f2c260478c"
+     },
+     "after": null,
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.insert",
+     "row": {
+      "id": "spa_mx_for_eng:S0027L03C02",
+      "seed_number": 27,
+      "lego_index": 3,
+      "position": 2,
+      "known_text": "to answer",
+      "target_text": "contestar",
+      "word_count": 9,
+      "lego_count": 1,
+      "difficulty": null,
+      "register": null,
+      "metadata": {
+       "buildup": "component",
+       "component_index": 1
+      },
+      "status": "draft",
+      "release_batch": null,
+      "created_at": "2026-03-10T14:02:00.941Z",
+      "target_syllable_count": null,
+      "phrase_role": "component",
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "known_audio_id": "ddd6efc4-7a82-459f-84d4-b06c2f320869",
+      "target1_audio_id": "9a268f57-256c-4577-b4aa-1ab0c2f620c2",
+      "target2_audio_id": "8f950281-6e96-4998-adf1-da96e697da04",
+      "qa_checked": null,
+      "target1_duration_ms": 2256,
+      "target2_duration_ms": 2376,
+      "lego_id": null,
+      "target_text_roman": null,
+      "target_phrase_id": null,
+      "presentation_audio_id": "8e3fe274-4283-4724-9de1-26f2c260478c",
+      "introduce": true,
+      "decomposition": [
+       {
+        "known": "",
+        "legoId": null,
+        "target": "contestar",
+        "isGhost": true
+       }
+      ],
+      "decomposition_course_version": null,
+      "display_tiling": null,
+      "display_tiling_version": null,
+      "known_gloss_segments": null,
+      "frame_mask": null
+     }
+    }
+   ],
+   "undo_file": null,
+   "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
   }
  }
 ]

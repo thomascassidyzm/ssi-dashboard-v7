@@ -1,5 +1,155 @@
 [
  {
+  "op": "seed.update",
+  "seed_number": 202,
+  "expect": {
+   "known_text": "nobody was sure how to answer the question",
+   "target_text": "ninguém tinha a certeza de como responder à pergunta"
+  },
+  "set": {
+   "target_text": "ninguém tinha certeza de como responder à pergunta"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 202,
+  "slot": "target1",
+  "audio_id": "d8c0fe02-0247-4dcd-8b19-0ec89e0ea5b1"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 202,
+  "slot": "target2",
+  "audio_id": "153297c0-5ce5-40d6-9aea-abcddb544cd0"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 340,
+  "expect": {
+   "known_text": "yes I'm sure he's going to be okay",
+   "target_text": "sim, tenho a certeza de que ele vai ficar bem"
+  },
+  "set": {
+   "target_text": "sim, tenho certeza de que ele vai ficar bem"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 340,
+  "slot": "target1",
+  "audio_id": "09c55c3b-f626-4d5d-a029-ef392fe644e6"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 340,
+  "slot": "target2",
+  "audio_id": "b0c52354-f5be-4374-941e-d2eca763abc8"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 339,
+  "expect": {
+   "known_text": "no I think he's hurt himself quite badly",
+   "target_text": "não, eu acho que ele se magoou bastante"
+  },
+  "set": {
+   "target_text": "não, eu acho que ele se machucou bastante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 339,
+  "slot": "target1",
+  "audio_id": "d31776e4-fb39-4d2a-b3a7-6d8a8f82d384"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 339,
+  "slot": "target2",
+  "audio_id": "d1f27398-2a5f-4fed-8be7-a8073fb221e3"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 382,
+  "expect": {
+   "known_text": "did you ask where he wanted to put it?",
+   "target_text": "perguntaste onde ele queria pôr isso?"
+  },
+  "set": {
+   "target_text": "você perguntou onde ele queria pôr isso?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 382,
+  "slot": "target1",
+  "audio_id": "c40071f4-2257-4246-a719-88f2b9be4175"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 382,
+  "slot": "target2",
+  "audio_id": "7afec4a5-f798-4e47-9026-2dbd22725cde"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 385,
+  "expect": {
+   "known_text": "did you agree with her?",
+   "target_text": "concordaste com ela?"
+  },
+  "set": {
+   "target_text": "você concordou com ela?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 385,
+  "slot": "target1",
+  "audio_id": "a25aa6c2-babe-41ee-8eff-cc6511a13d58"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 385,
+  "slot": "target2",
+  "audio_id": "0ec7af2e-9718-4d01-b065-197715223b43"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 482,
+  "expect": {
+   "known_text": "the only real hope is that they're not serious",
+   "target_text": "a única esperança real é que eles não estejam falando a sério"
+  },
+  "set": {
+   "target_text": "a única esperança real é que eles não estejam falando sério"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 482,
+  "slot": "target1",
+  "audio_id": "63b2b560-fb72-4b4d-a4d6-8c1114f49441"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 482,
+  "slot": "target2",
+  "audio_id": "5afd0031-ee73-4913-8bb3-51ecdfe1c549"
+ },
+ {
   "op": "lego.update",
   "lego_id": "S0202L03",
   "expect": {
@@ -9,6 +159,27 @@
   "set": {
    "target_text": "tinha certeza"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0202L03",
+  "slot": "target1",
+  "audio_id": "4489f1a6-9b1f-4d4e-bb24-efde546401d2"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0202L03",
+  "slot": "target2",
+  "audio_id": "b92566cd-77a0-4f36-8cb0-026a5f49a6c1"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0202L03",
+  "slot": "presentation",
+  "audio_id": "f54d9d37-4e9d-4549-a99d-522c1cf643e6"
  },
  {
   "op": "lego.update",
@@ -22,6 +193,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0340L01",
+  "slot": "target1",
+  "audio_id": "c0f9f7d4-7282-46a1-ba78-1d53cd5a908d"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0340L01",
+  "slot": "target2",
+  "audio_id": "e03f7d42-b8ba-4e62-9522-dc9d01364f0a"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0340L01",
+  "slot": "presentation",
+  "audio_id": "5d13f613-7088-40a2-afa8-a935686524c7"
+ },
+ {
   "op": "lego.update",
   "lego_id": "S0482L04",
   "expect": {
@@ -31,6 +223,27 @@
   "set": {
    "target_text": "falando sério"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0482L04",
+  "slot": "target1",
+  "audio_id": "01308cc4-4ee3-4789-abca-12731b0493bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0482L04",
+  "slot": "target2",
+  "audio_id": "2f23f249-bfdb-47a1-b1f7-0d6a19133bb5"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0482L04",
+  "slot": "presentation",
+  "audio_id": "7592ed08-f8e2-487f-8a4c-50f778a07422"
  },
  {
   "op": "lego.update",
@@ -44,6 +257,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0339L01",
+  "slot": "target1",
+  "audio_id": "0ef258b7-1766-4fcf-a6bd-515443add04c"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0339L01",
+  "slot": "target2",
+  "audio_id": "3595a381-41f9-4304-9f08-5a09696cc682"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0339L01",
+  "slot": "presentation",
+  "audio_id": "16b43fc1-b86d-45b2-832d-d7fbdcf001c0"
+ },
+ {
   "op": "lego.update",
   "lego_id": "S0382L01",
   "expect": {
@@ -53,6 +287,27 @@
   "set": {
    "target_text": "você perguntou"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0382L01",
+  "slot": "target1",
+  "audio_id": "c5c9b35c-b9bf-419f-856d-f01e4e666d1b"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0382L01",
+  "slot": "target2",
+  "audio_id": "aa22913f-76fc-413a-9fda-66fe07b0b4e3"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0382L01",
+  "slot": "presentation",
+  "audio_id": "d0257444-cfbc-40fa-9431-1b5bd9aae1b6"
  },
  {
   "op": "lego.update",
@@ -66,6 +321,27 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0385L01",
+  "slot": "target1",
+  "audio_id": "f6f090f5-3caa-4720-80ed-e59b63bc0ee6"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0385L01",
+  "slot": "target2",
+  "audio_id": "b038234c-8d1e-43fe-ac0a-84a9df692d32"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0385L01",
+  "slot": "presentation",
+  "audio_id": "1e396631-9d83-4ed2-b6e7-bf8711ef3c42"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0202L03B01",
   "expect": {
@@ -75,6 +351,20 @@
   "set": {
    "target_text": "tinha certeza"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03B01",
+  "slot": "target1",
+  "audio_id": "4489f1a6-9b1f-4d4e-bb24-efde546401d2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03B01",
+  "slot": "target2",
+  "audio_id": "b92566cd-77a0-4f36-8cb0-026a5f49a6c1"
  },
  {
   "op": "phrase.update",
@@ -88,6 +378,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U01",
+  "slot": "target1",
+  "audio_id": "04ced21c-ce0d-4a16-946c-c89c278af286"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U01",
+  "slot": "target2",
+  "audio_id": "adc94110-5114-4e63-904a-9438a3efc1e8"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0202L03U02",
   "expect": {
@@ -97,6 +401,20 @@
   "set": {
    "target_text": "ela tinha certeza de que era uma boa ideia"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U02",
+  "slot": "target1",
+  "audio_id": "2968a6ba-7350-4d84-8038-54f35b1c4747"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U02",
+  "slot": "target2",
+  "audio_id": "d06c0568-57ae-45b1-8577-cd972067aa69"
  },
  {
   "op": "phrase.update",
@@ -110,6 +428,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U03",
+  "slot": "target1",
+  "audio_id": "1ef7c38b-05cd-4f40-827f-b94bf477ee15"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U03",
+  "slot": "target2",
+  "audio_id": "1f7f827b-2be0-430c-84a0-a3c79a6d1459"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0202L03U04",
   "expect": {
@@ -119,6 +451,20 @@
   "set": {
    "target_text": "ele tinha certeza de que sabia a resposta"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U04",
+  "slot": "target1",
+  "audio_id": "bf1e579d-8e87-4538-bd0d-a8ea8556c38b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L03U04",
+  "slot": "target2",
+  "audio_id": "f7d86054-b24f-4bad-886a-6997cf58ed86"
  },
  {
   "op": "phrase.update",
@@ -132,6 +478,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L04U01",
+  "slot": "target1",
+  "audio_id": "773bb4f9-7bde-41ad-bd7f-5f9d671b36cd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L04U01",
+  "slot": "target2",
+  "audio_id": "5372c7d0-4ac7-498a-aa8f-f3bafb1fba1a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0202L05U01",
   "expect": {
@@ -141,6 +501,20 @@
   "set": {
    "target_text": "ninguém tinha certeza de como responder à pergunta"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L05U01",
+  "slot": "target1",
+  "audio_id": "d8c0fe02-0247-4dcd-8b19-0ec89e0ea5b1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0202L05U01",
+  "slot": "target2",
+  "audio_id": "153297c0-5ce5-40d6-9aea-abcddb544cd0"
  },
  {
   "op": "phrase.update",
@@ -154,6 +528,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0204L02U03",
+  "slot": "target1",
+  "audio_id": "d64329c2-7744-40de-9b85-d764553d13da"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0204L02U03",
+  "slot": "target2",
+  "audio_id": "2a522c8d-2ef8-4d64-a3fd-4407c3189ef7"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0204L02U05",
   "expect": {
@@ -163,6 +551,20 @@
   "set": {
    "target_text": "ela tinha certeza dos preparativos"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0204L02U05",
+  "slot": "target1",
+  "audio_id": "826843b3-4017-4da9-aa76-35d9a631b1d5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0204L02U05",
+  "slot": "target2",
+  "audio_id": "e97a587e-24f0-423c-9235-08b72114fe27"
  },
  {
   "op": "phrase.update",
@@ -176,6 +578,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0205L02U03",
+  "slot": "target1",
+  "audio_id": "4de9553f-2ba4-46a4-9b03-197369cd9257"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0205L02U03",
+  "slot": "target2",
+  "audio_id": "28cab4fe-1a2f-4b4a-bd2a-227aafd077aa"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0205L02U05",
   "expect": {
@@ -185,6 +601,20 @@
   "set": {
    "target_text": "ela tinha certeza da pergunta"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0205L02U05",
+  "slot": "target1",
+  "audio_id": "c99ff29f-78e8-45fb-a153-5c0d4b98fec3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0205L02U05",
+  "slot": "target2",
+  "audio_id": "ab00381c-f4d5-484e-8c9a-e252041a20bf"
  },
  {
   "op": "phrase.update",
@@ -198,6 +628,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01B01",
+  "slot": "target1",
+  "audio_id": "c0f9f7d4-7282-46a1-ba78-1d53cd5a908d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01B01",
+  "slot": "target2",
+  "audio_id": "e03f7d42-b8ba-4e62-9522-dc9d01364f0a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0340L01B02",
   "expect": {
@@ -207,6 +651,20 @@
   "set": {
    "target_text": "tenho certeza de que ele vai ficar bem"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01B02",
+  "slot": "target1",
+  "audio_id": "f3c6b120-65fd-401a-b9cb-dad510c1dadb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01B02",
+  "slot": "target2",
+  "audio_id": "5bd8856d-14fc-40ab-917a-ff9a34fc60af"
  },
  {
   "op": "phrase.update",
@@ -220,6 +678,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01B03",
+  "slot": "target1",
+  "audio_id": "23f9bb63-f15b-4cd0-a430-7941c26a20c6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01B03",
+  "slot": "target2",
+  "audio_id": "6c7cb494-c4bc-4624-95d4-9603c8a48d32"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0340L01U01",
   "expect": {
@@ -229,6 +701,20 @@
   "set": {
    "target_text": "sim, tenho certeza de que ele vai ficar bem"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U01",
+  "slot": "target1",
+  "audio_id": "09c55c3b-f626-4d5d-a029-ef392fe644e6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U01",
+  "slot": "target2",
+  "audio_id": "b0c52354-f5be-4374-941e-d2eca763abc8"
  },
  {
   "op": "phrase.update",
@@ -242,6 +728,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U02",
+  "slot": "target1",
+  "audio_id": "b387502c-2c07-40a2-b3d8-60696e92c0fc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U02",
+  "slot": "target2",
+  "audio_id": "bc09f1d9-2797-4d66-a1fa-2756b6215dae"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0340L01U03",
   "expect": {
@@ -251,6 +751,20 @@
   "set": {
    "target_text": "tenho certeza de que ela consegue continuar a jogar"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U03",
+  "slot": "target1",
+  "audio_id": "385d4a6e-bfb5-4d90-b79d-9f79d9e058fd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U03",
+  "slot": "target2",
+  "audio_id": "3d046432-c529-45be-b8b9-02bf4ba30e71"
  },
  {
   "op": "phrase.update",
@@ -264,6 +778,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U04",
+  "slot": "target1",
+  "audio_id": "51e952b2-0762-4567-9399-a0f46f8515d9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U04",
+  "slot": "target2",
+  "audio_id": "1fc4c6ab-8975-47e3-9d96-6fcb14c8cf40"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0340L01U05",
   "expect": {
@@ -273,6 +801,20 @@
   "set": {
    "target_text": "tenho certeza de que ele se machucou"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U05",
+  "slot": "target1",
+  "audio_id": "03089f24-4fd0-4ebb-a32e-8f5d6303eb61"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0340L01U05",
+  "slot": "target2",
+  "audio_id": "369a7f20-3bb4-47ec-aed3-f2738975f383"
  },
  {
   "op": "phrase.update",
@@ -286,6 +828,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U02",
+  "slot": "target1",
+  "audio_id": "ba00d731-f986-47bd-98f1-fbc7c6fdd675"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U02",
+  "slot": "target2",
+  "audio_id": "f8994e3b-c249-4ad4-ad72-04fbec62a876"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0341L01U05",
   "expect": {
@@ -295,6 +851,20 @@
   "set": {
    "target_text": "tenho certeza de que conheci alguém há uns dias"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U05",
+  "slot": "target1",
+  "audio_id": "e75a364a-5897-4361-8797-fc155c67a74d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U05",
+  "slot": "target2",
+  "audio_id": "e9f671d6-752f-4ee5-b332-50e61227b512"
  },
  {
   "op": "phrase.update",
@@ -308,6 +878,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0342L01U03",
+  "slot": "target1",
+  "audio_id": "a92de34d-ba15-4676-a27d-34a6de27cbc4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0342L01U03",
+  "slot": "target2",
+  "audio_id": "9c5bb11b-4ff7-4645-b1ec-80d2cb31533c"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0343L01B03",
   "expect": {
@@ -317,6 +901,20 @@
   "set": {
    "target_text": "tenho certeza de que está preocupada"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0343L01B03",
+  "slot": "target1",
+  "audio_id": "e19b9228-04b8-4992-acb6-a87d1b23bfbb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0343L01B03",
+  "slot": "target2",
+  "audio_id": "14984072-1b2d-4a53-8c06-85a4c589ee2e"
  },
  {
   "op": "phrase.update",
@@ -330,6 +928,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0343L02U05",
+  "slot": "target1",
+  "audio_id": "b7079354-6ebf-4b0c-ae63-666c25bc0d49"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0343L02U05",
+  "slot": "target2",
+  "audio_id": "7bdef24b-d9e6-4332-ace1-8ccaa76d1b22"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0344L01U03",
   "expect": {
@@ -339,6 +951,20 @@
   "set": {
    "target_text": "tenho certeza de que tem todo o gosto em te ajudar"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0344L01U03",
+  "slot": "target1",
+  "audio_id": "f05eec52-19f3-455e-a34b-25692d4a0f2f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0344L01U03",
+  "slot": "target2",
+  "audio_id": "b2e632f6-17e5-407c-b8db-37c46c0ee3c6"
  },
  {
   "op": "phrase.update",
@@ -352,6 +978,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0345L01U03",
+  "slot": "target1",
+  "audio_id": "16db2c19-7c34-4dc3-82a9-d28dad12aaae"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0345L01U03",
+  "slot": "target2",
+  "audio_id": "896ffa67-6495-4e95-81f6-de94ff78be2d"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0346L01U03",
   "expect": {
@@ -361,6 +1001,20 @@
   "set": {
    "target_text": "tenho certeza de que queria que ela soubesse"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0346L01U03",
+  "slot": "target1",
+  "audio_id": "75ba3f51-5f0d-47e0-a3ca-24e2f52fa6ad"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0346L01U03",
+  "slot": "target2",
+  "audio_id": "69adf387-a7ca-45d9-a51e-bcaf9761e452"
  },
  {
   "op": "phrase.update",
@@ -374,6 +1028,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0346L02U05",
+  "slot": "target1",
+  "audio_id": "f9dd00a0-d3a6-4c40-a9ca-de454d49e1bc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0346L02U05",
+  "slot": "target2",
+  "audio_id": "2bd17e2b-aebc-4b80-ad67-845fb5f53a75"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0347L01U03",
   "expect": {
@@ -383,6 +1051,20 @@
   "set": {
    "target_text": "tenho certeza de que sei o que estava acontecendo"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0347L01U03",
+  "slot": "target1",
+  "audio_id": "4ba7069c-aa72-44a1-9952-cb07062b35e0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0347L01U03",
+  "slot": "target2",
+  "audio_id": "775aba48-01c4-4c23-bcb2-4e8bd759a4df"
  },
  {
   "op": "phrase.update",
@@ -396,6 +1078,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0348L01U03",
+  "slot": "target1",
+  "audio_id": "400a4a92-aadf-402d-9413-c1870cc82e1f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0348L01U03",
+  "slot": "target2",
+  "audio_id": "d2b0699e-a1a6-41c1-a61a-c500980500ac"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0349L01U03",
   "expect": {
@@ -405,6 +1101,20 @@
   "set": {
    "target_text": "tenho certeza de que queria sair na sexta-feira"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0349L01U03",
+  "slot": "target1",
+  "audio_id": "e65c219d-1aa6-4cb8-b47d-c5518b3ba6c9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0349L01U03",
+  "slot": "target2",
+  "audio_id": "1dfa1eea-edcf-436e-9a7e-0f7f4d7eeae2"
  },
  {
   "op": "phrase.update",
@@ -418,6 +1128,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0350L01U03",
+  "slot": "target1",
+  "audio_id": "47d90ae7-8c31-48bd-9216-f071389e74bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0350L01U03",
+  "slot": "target2",
+  "audio_id": "5ea38f9a-5b2e-4a16-ad77-679a5af78b47"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0351L02U03",
   "expect": {
@@ -427,6 +1151,20 @@
   "set": {
    "target_text": "tenho certeza de que não queria me deixar sozinho"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0351L02U03",
+  "slot": "target1",
+  "audio_id": "33381d8d-6238-4175-a0c4-6d2212f552db"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0351L02U03",
+  "slot": "target2",
+  "audio_id": "ead8f171-4a58-4151-a8b0-9a00d131cc9c"
  },
  {
   "op": "phrase.update",
@@ -440,6 +1178,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0353L01U04",
+  "slot": "target1",
+  "audio_id": "b8de1b89-efeb-449a-a799-0e6f8fd19105"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0353L01U04",
+  "slot": "target2",
+  "audio_id": "fde6c84b-963b-423c-b92f-9b252f314e8e"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0353L02U03",
   "expect": {
@@ -449,6 +1201,20 @@
   "set": {
    "target_text": "tenho certeza de que precisava correr à volta do campo"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0353L02U03",
+  "slot": "target1",
+  "audio_id": "a01316c1-8a9e-45cd-91ba-b2ddd65cf0bc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0353L02U03",
+  "slot": "target2",
+  "audio_id": "52980b58-a932-4bbe-aa25-6cde29aa0e76"
  },
  {
   "op": "phrase.update",
@@ -462,6 +1228,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0354L01U03",
+  "slot": "target1",
+  "audio_id": "5389108a-ae2d-43ad-be1e-7f4ab3f835ef"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0354L01U03",
+  "slot": "target2",
+  "audio_id": "6bf71fc3-ba44-493b-ad3a-ff40372a8d73"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0360L01U05",
   "expect": {
@@ -471,6 +1251,20 @@
   "set": {
    "target_text": "tenho certeza de que disse mais alguma coisa"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0360L01U05",
+  "slot": "target1",
+  "audio_id": "82b9bcd0-1769-4a86-aaea-0048a016465c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0360L01U05",
+  "slot": "target2",
+  "audio_id": "c289bdf2-7f3e-4cb8-9dac-3e34316c6f3e"
  },
  {
   "op": "phrase.update",
@@ -484,6 +1278,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0364L03U06",
+  "slot": "target1",
+  "audio_id": "4c94172a-8bfb-4e3f-83b3-9d4946a06316"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0364L03U06",
+  "slot": "target2",
+  "audio_id": "1934c44e-0e19-48a5-ac04-e446eb63236a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0385L01U06",
   "expect": {
@@ -493,6 +1301,20 @@
   "set": {
    "target_text": "tenho certeza de que você concordou com ela"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U06",
+  "slot": "target1",
+  "audio_id": "0bb39e9c-530a-4258-85dc-c42cebd9da04"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U06",
+  "slot": "target2",
+  "audio_id": "9c67f431-73e4-408b-8ec2-e67f39780fe7"
  },
  {
   "op": "phrase.update",
@@ -506,6 +1328,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0400L01U08",
+  "slot": "target1",
+  "audio_id": "d1658827-bc13-4551-8a46-730fea78b7b7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0400L01U08",
+  "slot": "target2",
+  "audio_id": "48d62889-d5ed-4dba-a066-5ac96ed19b6e"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0482L04B01",
   "expect": {
@@ -515,6 +1351,20 @@
   "set": {
    "target_text": "falando sério"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04B01",
+  "slot": "target1",
+  "audio_id": "01308cc4-4ee3-4789-abca-12731b0493bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04B01",
+  "slot": "target2",
+  "audio_id": "2f23f249-bfdb-47a1-b1f7-0d6a19133bb5"
  },
  {
   "op": "phrase.update",
@@ -528,6 +1378,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04B02",
+  "slot": "target1",
+  "audio_id": "8f9e30ff-4693-4db5-abe2-72d5b7f093bc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04B02",
+  "slot": "target2",
+  "audio_id": "f1c78ae3-dc95-467d-b8e1-cb00b9cfdac6"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0482L04B03",
   "expect": {
@@ -537,6 +1401,20 @@
   "set": {
    "target_text": "sim, falando sério"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04B03",
+  "slot": "target1",
+  "audio_id": "c17a2dde-098e-42f9-8da5-019a54306ce9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04B03",
+  "slot": "target2",
+  "audio_id": "97166c99-40b5-44b8-be41-6554490fa8b2"
  },
  {
   "op": "phrase.update",
@@ -550,6 +1428,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U01",
+  "slot": "target1",
+  "audio_id": "63b2b560-fb72-4b4d-a4d6-8c1114f49441"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U01",
+  "slot": "target2",
+  "audio_id": "5afd0031-ee73-4913-8bb3-51ecdfe1c549"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0482L04U02",
   "expect": {
@@ -559,6 +1451,20 @@
   "set": {
    "target_text": "não, falando sério"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U02",
+  "slot": "target1",
+  "audio_id": "1d179791-6975-4f9b-8955-9edc52d0af2f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U02",
+  "slot": "target2",
+  "audio_id": "92df2eda-60ab-45c6-af0e-e26fd1375ba6"
  },
  {
   "op": "phrase.update",
@@ -572,6 +1478,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U03",
+  "slot": "target1",
+  "audio_id": "8f921562-5e94-4f94-8954-d0ce1bdb239b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U03",
+  "slot": "target2",
+  "audio_id": "ac965285-5726-4ab1-8086-3202a044136f"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0482L04U04",
   "expect": {
@@ -581,6 +1501,20 @@
   "set": {
    "target_text": "sim, a única esperança real é que eles não estejam falando sério"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U04",
+  "slot": "target1",
+  "audio_id": "522cac6c-a3d8-4c32-b7bd-d022245ba013"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U04",
+  "slot": "target2",
+  "audio_id": "ed57b41b-9bc0-4ad3-b0de-eb1d94ae7339"
  },
  {
   "op": "phrase.update",
@@ -594,6 +1528,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U05",
+  "slot": "target1",
+  "audio_id": "094965b2-e1da-4f8f-a142-400e2b773eba"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0482L04U05",
+  "slot": "target2",
+  "audio_id": "068b58b6-6d83-4e78-a735-62ec21a5c758"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0339L01B01",
   "expect": {
@@ -603,6 +1551,20 @@
   "set": {
    "target_text": "ele se machucou"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01B01",
+  "slot": "target1",
+  "audio_id": "0ef258b7-1766-4fcf-a6bd-515443add04c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01B01",
+  "slot": "target2",
+  "audio_id": "3595a381-41f9-4304-9f08-5a09696cc682"
  },
  {
   "op": "phrase.update",
@@ -616,6 +1578,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01B02",
+  "slot": "target1",
+  "audio_id": "3a0713bc-fea3-4c4b-a228-80f2cfb742ac"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01B02",
+  "slot": "target2",
+  "audio_id": "048824f5-4d49-461a-9a1d-7c47720e8a40"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0339L01B03",
   "expect": {
@@ -625,6 +1601,20 @@
   "set": {
    "target_text": "ele se machucou hoje"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01B03",
+  "slot": "target1",
+  "audio_id": "6f24f5a3-7bc5-4143-b37c-9d3c83c9ee85"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01B03",
+  "slot": "target2",
+  "audio_id": "a9793680-f73f-4941-9991-0d556b8f09bb"
  },
  {
   "op": "phrase.update",
@@ -638,6 +1628,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U01",
+  "slot": "target1",
+  "audio_id": "af6dc0aa-91e0-428d-9d9c-85b05bad1822"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U01",
+  "slot": "target2",
+  "audio_id": "364129f8-d3d0-4a89-aadc-f0834e81d940"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0339L01U02",
   "expect": {
@@ -647,6 +1651,20 @@
   "set": {
    "target_text": "ele se machucou este ano"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U02",
+  "slot": "target1",
+  "audio_id": "5afbac95-2918-450b-89c8-a1204b9eb3bc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U02",
+  "slot": "target2",
+  "audio_id": "fe7b98c9-55e5-424b-83c1-d6fbeb952f8e"
  },
  {
   "op": "phrase.update",
@@ -660,6 +1678,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U03",
+  "slot": "target1",
+  "audio_id": "84509190-bf61-45f2-8ab7-0bfac70e63c4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U03",
+  "slot": "target2",
+  "audio_id": "92d716d3-47c0-44e9-a00d-57cb1a74dce7"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0339L01U04",
   "expect": {
@@ -669,6 +1701,20 @@
   "set": {
    "target_text": "eu acho que ele se machucou"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U04",
+  "slot": "target1",
+  "audio_id": "e8e656df-113c-4c5b-9a65-c227b16d450c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U04",
+  "slot": "target2",
+  "audio_id": "1bf8fa04-fe82-498c-8fc7-b9b7d95b381f"
  },
  {
   "op": "phrase.update",
@@ -682,6 +1728,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U05",
+  "slot": "target1",
+  "audio_id": "9eeefd1d-ea51-4551-9901-79744e18d5be"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L01U05",
+  "slot": "target2",
+  "audio_id": "894b3417-836b-4aa7-b98a-24268cad9789"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0339L02B03",
   "expect": {
@@ -691,6 +1751,20 @@
   "set": {
    "target_text": "ele se machucou bastante"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02B03",
+  "slot": "target1",
+  "audio_id": "5edb3f43-0d17-4d18-a7f1-17fabdbf0a12"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02B03",
+  "slot": "target2",
+  "audio_id": "1694ffb5-50f2-4db7-af63-cf6d78872829"
  },
  {
   "op": "phrase.update",
@@ -704,6 +1778,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02U01",
+  "slot": "target1",
+  "audio_id": "d31776e4-fb39-4d2a-b3a7-6d8a8f82d384"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02U01",
+  "slot": "target2",
+  "audio_id": "d1f27398-2a5f-4fed-8be7-a8073fb221e3"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0339L02U02",
   "expect": {
@@ -713,6 +1801,20 @@
   "set": {
    "target_text": "aquele homem se machucou bastante"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02U02",
+  "slot": "target1",
+  "audio_id": "11248d07-e851-4980-9037-e0e176850a29"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02U02",
+  "slot": "target2",
+  "audio_id": "7fab1a1e-f186-4a1d-9f24-dd12562e467a"
  },
  {
   "op": "phrase.update",
@@ -726,6 +1828,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02U05",
+  "slot": "target1",
+  "audio_id": "cb3d6db2-a858-4b04-90b8-203844abbaf9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0339L02U05",
+  "slot": "target2",
+  "audio_id": "e5a904b2-18e3-49e6-858b-282b4fe4753a"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0341L01B03",
   "expect": {
@@ -735,6 +1851,20 @@
   "set": {
    "target_text": "ele se machucou há uns dias"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01B03",
+  "slot": "target1",
+  "audio_id": "62ab562c-8f1d-451b-8efc-3e9a06aec0ad"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01B03",
+  "slot": "target2",
+  "audio_id": "93554904-aea6-444b-8a37-11fb7543651d"
  },
  {
   "op": "phrase.update",
@@ -748,6 +1878,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U01",
+  "slot": "target1",
+  "audio_id": "31425c08-22f4-40b9-bb52-e7e6160b9ba7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U01",
+  "slot": "target2",
+  "audio_id": "ef4ba8b9-5319-41b4-93d7-175db16f4245"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0341L01U03",
   "expect": {
@@ -757,6 +1901,20 @@
   "set": {
    "target_text": "aquela estudante se machucou há uns dias"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U03",
+  "slot": "target1",
+  "audio_id": "70ec74ee-6eed-4623-a895-e6d0761ec147"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0341L01U03",
+  "slot": "target2",
+  "audio_id": "5c374038-c961-4302-aae8-2ea9f1db5fc1"
  },
  {
   "op": "phrase.update",
@@ -770,6 +1928,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B01",
+  "slot": "target1",
+  "audio_id": "c5c9b35c-b9bf-419f-856d-f01e4e666d1b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B01",
+  "slot": "target2",
+  "audio_id": "aa22913f-76fc-413a-9fda-66fe07b0b4e3"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0382L01B02",
   "expect": {
@@ -779,6 +1951,20 @@
   "set": {
    "target_text": "você perguntou onde"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B02",
+  "slot": "target1",
+  "audio_id": "c6d88832-1bc0-4507-a40e-149da1e8cd5e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B02",
+  "slot": "target2",
+  "audio_id": "921b961e-d825-4f10-ab84-e241ab0496ed"
  },
  {
   "op": "phrase.update",
@@ -792,6 +1978,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B03",
+  "slot": "target1",
+  "audio_id": "f7026bd4-6aca-4e9e-9050-c73e88f2b697"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B03",
+  "slot": "target2",
+  "audio_id": "e8e2dd2a-f568-431d-b8f7-6357cfeca2bb"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0382L01U01",
   "expect": {
@@ -801,6 +2001,20 @@
   "set": {
    "target_text": "você perguntou onde ele queria pôr isso?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U01",
+  "slot": "target1",
+  "audio_id": "c40071f4-2257-4246-a719-88f2b9be4175"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U01",
+  "slot": "target2",
+  "audio_id": "7afec4a5-f798-4e47-9026-2dbd22725cde"
  },
  {
   "op": "phrase.update",
@@ -814,6 +2028,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U02",
+  "slot": "target1",
+  "audio_id": "4d908245-936d-4d61-8ced-85b68eb8e2c7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U02",
+  "slot": "target2",
+  "audio_id": "1ac832aa-7657-43e9-8595-ed1efde97b1c"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0382L01U03",
   "expect": {
@@ -823,6 +2051,20 @@
   "set": {
    "target_text": "você perguntou se estava preocupada?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U03",
+  "slot": "target1",
+  "audio_id": "b4af6821-1abb-41a8-b5cc-5c755928537c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U03",
+  "slot": "target2",
+  "audio_id": "fb29b2a7-e311-4979-b90c-27edcd18432f"
  },
  {
   "op": "phrase.update",
@@ -836,6 +2078,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U04",
+  "slot": "target1",
+  "audio_id": "adeb2ad9-2deb-4a70-912f-ccb2c41ed525"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U04",
+  "slot": "target2",
+  "audio_id": "25d066a5-1365-4cf7-aa46-94582a3e26d1"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0382L01U05",
   "expect": {
@@ -845,6 +2101,20 @@
   "set": {
    "target_text": "sim, você perguntou onde ele queria pôr isso"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U05",
+  "slot": "target1",
+  "audio_id": "c3cc080f-6c09-490c-9580-2ce1529f6ab0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01U05",
+  "slot": "target2",
+  "audio_id": "b4c89241-e0a0-4cf2-bbba-d8a0110a77d7"
  },
  {
   "op": "phrase.update",
@@ -858,6 +2128,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B04",
+  "slot": "target1",
+  "audio_id": "2cd11440-de91-409f-8a7d-54078b107e93"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0382L01B04",
+  "slot": "target2",
+  "audio_id": "25da67fa-8760-4f8a-8b80-58ddfba8b546"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0385L01B01",
   "expect": {
@@ -867,6 +2151,20 @@
   "set": {
    "target_text": "você concordou"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01B01",
+  "slot": "target1",
+  "audio_id": "f6f090f5-3caa-4720-80ed-e59b63bc0ee6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01B01",
+  "slot": "target2",
+  "audio_id": "b038234c-8d1e-43fe-ac0a-84a9df692d32"
  },
  {
   "op": "phrase.update",
@@ -880,6 +2178,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01B02",
+  "slot": "target1",
+  "audio_id": "869ae428-25f5-4f27-8b7d-3199ec4a478f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01B02",
+  "slot": "target2",
+  "audio_id": "f9ff020b-eecc-4fc4-9c5e-1f2e5a6786fc"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0385L01B03",
   "expect": {
@@ -889,6 +2201,20 @@
   "set": {
    "target_text": "você concordou com aquele homem?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01B03",
+  "slot": "target1",
+  "audio_id": "086e61ff-3f4e-41e3-9ada-a1585b0be840"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01B03",
+  "slot": "target2",
+  "audio_id": "74952a09-3744-4a5d-8df4-4db0ad707725"
  },
  {
   "op": "phrase.update",
@@ -902,6 +2228,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U01",
+  "slot": "target1",
+  "audio_id": "a25aa6c2-babe-41ee-8eff-cc6511a13d58"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U01",
+  "slot": "target2",
+  "audio_id": "0ec7af2e-9718-4d01-b065-197715223b43"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0385L01U02",
   "expect": {
@@ -911,6 +2251,20 @@
   "set": {
    "target_text": "você concordou com aquela mulher?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U02",
+  "slot": "target1",
+  "audio_id": "76cc3084-46e8-414d-8e97-feab47248d85"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U02",
+  "slot": "target2",
+  "audio_id": "e0dae3ed-5621-476c-8c6e-cc0b77656d98"
  },
  {
   "op": "phrase.update",
@@ -924,6 +2278,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U03",
+  "slot": "target1",
+  "audio_id": "31f16b7e-47ff-4ede-b18f-d11dadc2a583"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U03",
+  "slot": "target2",
+  "audio_id": "3fc6b894-a300-407e-bcd8-afc9184250d1"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0385L01U04",
   "expect": {
@@ -933,6 +2301,20 @@
   "set": {
    "target_text": "você concordou com ele há pouco?"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U04",
+  "slot": "target1",
+  "audio_id": "64a2706c-5d6a-47bd-93d4-31d183b6a461"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U04",
+  "slot": "target2",
+  "audio_id": "f1c3a2bb-88e5-48da-a7d1-1ddc2aa6aae0"
  },
  {
   "op": "phrase.update",
@@ -946,6 +2328,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U05",
+  "slot": "target1",
+  "audio_id": "26eee0a5-5a2a-444a-843f-cae129f5b6cf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0385L01U05",
+  "slot": "target2",
+  "audio_id": "d733f982-beb5-4785-adfa-05b077880caf"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0098L02U02",
   "expect": {
@@ -955,6 +2351,20 @@
   "set": {
    "target_text": "você devia considerar esperar um pouco mais"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L02U02",
+  "slot": "target1",
+  "audio_id": "f94111eb-0e32-4611-b056-e04b520d39ad"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L02U02",
+  "slot": "target2",
+  "audio_id": "53a3bb5e-ada3-4d22-beb7-d8cf063349cb"
  },
  {
   "op": "phrase.update",
@@ -968,6 +2378,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L02U03",
+  "slot": "target1",
+  "audio_id": "649f764c-561f-4183-8051-15ec1991306f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L02U03",
+  "slot": "target2",
+  "audio_id": "13d5a8d3-d02b-4999-9139-747eaaebf816"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0098L03B02",
   "expect": {
@@ -977,6 +2401,20 @@
   "set": {
    "target_text": "considerar jogar outra coisa"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L03B02",
+  "slot": "target1",
+  "audio_id": "12f27a69-f1df-4a9d-8144-575087721cfc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L03B02",
+  "slot": "target2",
+  "audio_id": "f1170b1a-39ae-4993-a681-8e96c5812808"
  },
  {
   "op": "phrase.update",
@@ -990,6 +2428,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L03U03",
+  "slot": "target1",
+  "audio_id": "7eb7acf0-0e50-4bd4-9863-bb255ae6e3b6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L03U03",
+  "slot": "target2",
+  "audio_id": "51b9156c-4266-483a-b266-a233bc1bd601"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0098L03U04",
   "expect": {
@@ -999,6 +2451,20 @@
   "set": {
    "target_text": "é importante considerar jogar outra coisa"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L03U04",
+  "slot": "target1",
+  "audio_id": "6b638046-2806-446b-a8c6-362e0b259c82"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0098L03U04",
+  "slot": "target2",
+  "audio_id": "0e4cd35b-9e05-4983-9eff-5173297054f9"
  },
  {
   "op": "phrase.update",
@@ -1012,6 +2478,20 @@
   }
  },
  {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0100L02U02",
+  "slot": "target1",
+  "audio_id": "be93be8e-a528-4a52-99ba-cf2720d51560"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0100L02U02",
+  "slot": "target2",
+  "audio_id": "b961fcbb-6f46-45f8-ac10-185e0d0b1925"
+ },
+ {
   "op": "phrase.update",
   "phrase_id": "por_br_for_eng:S0100L02U04",
   "expect": {
@@ -1021,5 +2501,19 @@
   "set": {
    "target_text": "você devia considerar jogar algo parecido"
   }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0100L02U04",
+  "slot": "target1",
+  "audio_id": "cf0a12c2-b3c1-4937-bb88-cdf2719beb2e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0100L02U04",
+  "slot": "target2",
+  "audio_id": "c4d81840-fb09-4ecc-b5c5-27c77204cc99"
  }
 ]

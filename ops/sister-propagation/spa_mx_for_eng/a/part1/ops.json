@@ -1,0 +1,2994 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 123,
+  "expect": {
+   "known_text": "I think that's a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 123,
+  "slot": "target1",
+  "audio_id": "9e48c82f-e614-4ce0-8141-5c2ebd1a3a08"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 123,
+  "slot": "target2",
+  "audio_id": "5f215db4-4040-459c-9b39-f276a3669159"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 163,
+  "expect": {
+   "known_text": "I think that it's interesting",
+   "target_text": "pienso que es interesante"
+  },
+  "set": {
+   "target_text": "creo que es interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 163,
+  "slot": "target1",
+  "audio_id": "9d35e7f5-505e-4063-8938-1eb4880a2363"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 163,
+  "slot": "target2",
+  "audio_id": "c17f64cb-a7b3-4b0a-ae21-67b15d5b20cf"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 185,
+  "expect": {
+   "known_text": "I think you left them at work",
+   "target_text": "pienso que las dejaste en el trabajo"
+  },
+  "set": {
+   "target_text": "creo que las dejaste en el trabajo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 185,
+  "slot": "target1",
+  "audio_id": "7de077ec-d8e3-4b51-b0b0-a39c6b313f5f"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 185,
+  "slot": "target2",
+  "audio_id": "8fd80164-5686-4f3a-a204-c45e320c24d3"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 210,
+  "expect": {
+   "known_text": "they think that we need to discuss the problem",
+   "target_text": "piensan que necesitamos discutir el problema"
+  },
+  "set": {
+   "target_text": "creen que necesitamos discutir el problema"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 210,
+  "slot": "target1",
+  "audio_id": "b9727544-9efa-425c-b8aa-74ee5b1e961a"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 210,
+  "slot": "target2",
+  "audio_id": "0fa65043-9185-4a75-acfc-65a2d691daad"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 255,
+  "expect": {
+   "known_text": "when do you think you'll be ready to leave?",
+   "target_text": "¿Cuándo piensas que estarás listo para irte?"
+  },
+  "set": {
+   "target_text": "¿Cuándo crees que estarás listo para irte?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 255,
+  "slot": "target1",
+  "audio_id": "77b3ada2-7a95-41b6-bb00-d2a7e33708e7"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 255,
+  "slot": "target2",
+  "audio_id": "bc688ccc-7d56-4288-8b8f-497817937512"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 256,
+  "expect": {
+   "known_text": "I think I'll be ready in less than an hour",
+   "target_text": "pienso que estaré listo en menos de una hora"
+  },
+  "set": {
+   "target_text": "creo que estaré listo en menos de una hora"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 256,
+  "slot": "target1",
+  "audio_id": "edfdcd3b-a586-4830-8710-f703fd5432c7"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 256,
+  "slot": "target2",
+  "audio_id": "edaf1566-394e-4b66-869b-52dba1eda2bf"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 261,
+  "expect": {
+   "known_text": "I think it might be something important",
+   "target_text": "pienso que podría ser algo importante"
+  },
+  "set": {
+   "target_text": "creo que podría ser algo importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 261,
+  "slot": "target1",
+  "audio_id": "b783d589-2e8f-4b6f-856e-a3b3ca4cc52f"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 261,
+  "slot": "target2",
+  "audio_id": "6dae753c-0b43-4309-a24b-9fa2060e0a4b"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 303,
+  "expect": {
+   "known_text": "I think that he wants to sit down",
+   "target_text": "pienso que él quiere sentarse"
+  },
+  "set": {
+   "target_text": "creo que él quiere sentarse"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 303,
+  "slot": "target1",
+  "audio_id": "07cad04e-5047-46a5-893d-3e973821dbc0"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 303,
+  "slot": "target2",
+  "audio_id": "72c3fa03-ec9a-4411-bad2-757a98392577"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 304,
+  "expect": {
+   "known_text": "I think that she doesn't want to work from home",
+   "target_text": "pienso que ella no quiere trabajar desde casa"
+  },
+  "set": {
+   "target_text": "creo que ella no quiere trabajar desde casa"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 304,
+  "slot": "target1",
+  "audio_id": "9599c218-f56a-4ec7-a870-1580d85ff727"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 304,
+  "slot": "target2",
+  "audio_id": "ebf49c49-d7f6-4010-9582-56fe09fae5cc"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 314,
+  "expect": {
+   "known_text": "I think that she could put it on the table",
+   "target_text": "pienso que ella podría ponerlo en la mesa"
+  },
+  "set": {
+   "target_text": "creo que ella podría ponerlo en la mesa"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 314,
+  "slot": "target1",
+  "audio_id": "f0d8bbc2-3139-4f5e-8535-6c88e2704361"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 314,
+  "slot": "target2",
+  "audio_id": "2f86b8aa-0d61-4a73-8b3a-6208cf6ba486"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 315,
+  "expect": {
+   "known_text": "I think that he couldn't afford the car that he wanted",
+   "target_text": "pienso que él no podía permitirse el carro que quería"
+  },
+  "set": {
+   "target_text": "creo que él no podía permitirse el carro que quería"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 315,
+  "slot": "target1",
+  "audio_id": "291e266f-c345-4b65-b945-506f2eefc4b0"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 315,
+  "slot": "target2",
+  "audio_id": "ceea8921-2aa2-4828-8352-14747b437e11"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 316,
+  "expect": {
+   "known_text": "Do you think that she could bring her brother on Monday?",
+   "target_text": "¿Piensas que ella podría traer a su hermano el lunes?"
+  },
+  "set": {
+   "target_text": "¿Crees que ella podría traer a su hermano el lunes?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 316,
+  "slot": "target1",
+  "audio_id": "00c356eb-6534-426f-9b49-89cc7b2f2ab5"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 316,
+  "slot": "target2",
+  "audio_id": "27beceda-fab2-4833-b6ce-fd9e3fc240a6"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 317,
+  "expect": {
+   "known_text": "yes I think she could if she wanted to",
+   "target_text": "sí, pienso que podría si quisiera"
+  },
+  "set": {
+   "target_text": "sí, creo que podría si quisiera"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 317,
+  "slot": "target1",
+  "audio_id": "1f4bd4ec-8974-461d-9a6d-25f0896d8909"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 317,
+  "slot": "target2",
+  "audio_id": "f28cfcd3-6169-48dc-932a-67f6d8d7d1e7"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 318,
+  "expect": {
+   "known_text": "no I don't think she could this time",
+   "target_text": "no, no pienso que pueda esta vez"
+  },
+  "set": {
+   "target_text": "no, no creo que pueda esta vez"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 318,
+  "slot": "target1",
+  "audio_id": "3d67949e-092a-4ca1-9175-6c3cf424ab70"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 318,
+  "slot": "target2",
+  "audio_id": "44bdc33f-cb67-42f1-8e5a-c63e07c1e9c2"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 325,
+  "expect": {
+   "known_text": "I think that he needs to consider ten possible problems",
+   "target_text": "pienso que él necesita considerar diez posibles problemas"
+  },
+  "set": {
+   "target_text": "creo que él necesita considerar diez posibles problemas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 325,
+  "slot": "target1",
+  "audio_id": "26a27621-7b72-42c3-98e7-9d1f2f0e3a45"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 325,
+  "slot": "target2",
+  "audio_id": "14510b26-5f9a-4a82-b73a-03faaa5c7b79"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 326,
+  "expect": {
+   "known_text": "I don't think that she needs to sell the company",
+   "target_text": "no pienso que ella necesite vender la empresa"
+  },
+  "set": {
+   "target_text": "no creo que ella necesite vender la empresa"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 326,
+  "slot": "target1",
+  "audio_id": "b43522f0-b174-49f6-82e2-86a146b43f77"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 326,
+  "slot": "target2",
+  "audio_id": "43021106-9bd7-4b13-b29f-091f5ca59394"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 327,
+  "expect": {
+   "known_text": "Do you think that she needs to offer another way?",
+   "target_text": "¿Piensas que ella necesita ofrecer otra manera?"
+  },
+  "set": {
+   "target_text": "¿Crees que ella necesita ofrecer otra manera?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 327,
+  "slot": "target1",
+  "audio_id": "6d7d1d2f-6b5a-4ca9-a155-85e873180a36"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 327,
+  "slot": "target2",
+  "audio_id": "654dbd30-1a9f-4a27-9a5a-617f8a5a3c66"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 328,
+  "expect": {
+   "known_text": "yes I think she ought to",
+   "target_text": "sí, pienso que debería"
+  },
+  "set": {
+   "target_text": "sí, creo que debería"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 328,
+  "slot": "target1",
+  "audio_id": "9570a17c-bd72-4d00-9e2b-c7e519e0a56d"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 328,
+  "slot": "target2",
+  "audio_id": "efdf7a2e-3368-423f-a4a6-8a7eb172678f"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 330,
+  "expect": {
+   "known_text": "no I don't think it's very important",
+   "target_text": "no, no pienso que sea muy importante"
+  },
+  "set": {
+   "target_text": "no, no creo que sea muy importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 330,
+  "slot": "target1",
+  "audio_id": "ffcba527-e379-48f9-8b42-8fe0e4e603f8"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 330,
+  "slot": "target2",
+  "audio_id": "4af58343-0226-40ed-8462-f836810800a4"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 335,
+  "expect": {
+   "known_text": "I think that he can add some valuable ideas",
+   "target_text": "pienso que él puede añadir algunas ideas valiosas"
+  },
+  "set": {
+   "target_text": "creo que él puede añadir algunas ideas valiosas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 335,
+  "slot": "target1",
+  "audio_id": "dcf06809-290c-4a68-ae65-ad322a52a746"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 335,
+  "slot": "target2",
+  "audio_id": "328fd60b-ba1b-4cb7-aa11-6ed5e1130044"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 336,
+  "expect": {
+   "known_text": "I don't think that she can open the door",
+   "target_text": "no pienso que ella pueda abrir la puerta"
+  },
+  "set": {
+   "target_text": "no creo que ella pueda abrir la puerta"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 336,
+  "slot": "target1",
+  "audio_id": "0ce58541-5457-4552-ad48-361c9c8d9ed4"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 336,
+  "slot": "target2",
+  "audio_id": "1662eac3-fa2d-4fe4-aa4e-bb6b61fabfc6"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 337,
+  "expect": {
+   "known_text": "Do you think that he can continue to play?",
+   "target_text": "¿Piensas que él puede seguir jugando?"
+  },
+  "set": {
+   "target_text": "¿Crees que él puede seguir jugando?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 337,
+  "slot": "target1",
+  "audio_id": "c89db55e-c14e-4650-b95b-69e2173b192a"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 337,
+  "slot": "target2",
+  "audio_id": "4294862e-2c63-4110-9184-346a19dccf2d"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 339,
+  "expect": {
+   "known_text": "no I think he's hurt himself quite badly",
+   "target_text": "no, pienso que se ha hecho bastante daño"
+  },
+  "set": {
+   "target_text": "no, creo que se ha hecho bastante daño"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 339,
+  "slot": "target1",
+  "audio_id": "003e2d69-4d14-4ba4-be3d-a1e572d58f2d"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 339,
+  "slot": "target2",
+  "audio_id": "53a13351-154a-4b0e-b5ff-4fd94295ae57"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 486,
+  "expect": {
+   "known_text": "I think your eyes are beautiful",
+   "target_text": "pienso que tus ojos son hermosos"
+  },
+  "set": {
+   "target_text": "creo que tus ojos son hermosos"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 486,
+  "slot": "target1",
+  "audio_id": "b767b247-9cf2-4abe-8ffe-45909b0d2ddd"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 486,
+  "slot": "target2",
+  "audio_id": "ca3a19f0-06a1-4fdd-bcd4-fe022756aeb7"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 492,
+  "expect": {
+   "known_text": "which of those places do you think is the most interesting?",
+   "target_text": "¿Cuál de esos lugares piensas que es el más interesante?"
+  },
+  "set": {
+   "target_text": "¿Cuál de esos lugares crees que es el más interesante?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 492,
+  "slot": "target1",
+  "audio_id": "541ec1ac-eb83-4ce8-8dcb-a8694a8baef1"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 492,
+  "slot": "target2",
+  "audio_id": "77bf23cb-a48d-45cb-9f95-7c2fd6424a33"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 553,
+  "expect": {
+   "known_text": "I think the small church is very ugly",
+   "target_text": "pienso que la iglesia pequeña es muy fea"
+  },
+  "set": {
+   "target_text": "creo que la iglesia pequeña es muy fea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 553,
+  "slot": "target1",
+  "audio_id": "0dbcf0e3-56a0-4218-b85d-2931162b76f8"
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 553,
+  "slot": "target2",
+  "audio_id": "1e95ef32-3ef1-4705-8039-e5a728bdd142"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0123L01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0123L01",
+  "slot": "target1",
+  "audio_id": "d24fe73e-0f7f-45d3-bbf5-9a9b3f800970"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0123L01",
+  "slot": "target2",
+  "audio_id": "c4a67905-30df-4495-9922-69080173dded"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0123L01",
+  "slot": "presentation",
+  "audio_id": "42bc248a-6939-42c0-afdd-8de21c792950"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0123L02",
+  "expect": {
+   "known_text": "I reckon that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0123L02",
+  "slot": "target1",
+  "audio_id": "15b864e2-1b81-486a-a2a3-85abff0236f2"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0123L02",
+  "slot": "target2",
+  "audio_id": "cde75673-3166-4688-b8bb-20975370745f"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0123L02",
+  "slot": "presentation",
+  "audio_id": "3342b34f-5b89-4368-ba2e-1479b735a30b"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0135L01",
+  "expect": {
+   "known_text": "you think",
+   "target_text": "piensas"
+  },
+  "set": {
+   "target_text": "crees"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0135L01",
+  "slot": "target1",
+  "audio_id": "fc82361a-cb62-495a-93b4-1c98a3fd37c3"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0135L01",
+  "slot": "target2",
+  "audio_id": "bbce5821-2e68-480e-992d-fe6b7c6f44fe"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0135L01",
+  "slot": "presentation",
+  "audio_id": "f6134716-f03c-4680-9f50-d318c169862a"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0163L01",
+  "expect": {
+   "known_text": "I think that it's",
+   "target_text": "pienso que es"
+  },
+  "set": {
+   "target_text": "creo que es"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0163L01",
+  "slot": "target1",
+  "audio_id": "c813f9c0-cc48-473d-a0dc-32ca67d50c80"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0163L01",
+  "slot": "target2",
+  "audio_id": "2806499f-d1b4-44b1-817c-3ce565985faf"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0163L01",
+  "slot": "presentation",
+  "audio_id": "e4a4ad24-8af7-400e-a53a-25370b67b6a3"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0210L01",
+  "expect": {
+   "known_text": "they think",
+   "target_text": "piensan"
+  },
+  "set": {
+   "target_text": "creen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0210L01",
+  "slot": "target1",
+  "audio_id": "96203a90-b15a-4734-891d-e6e8c4095cd0"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0210L01",
+  "slot": "target2",
+  "audio_id": "1005728a-4731-45fe-a3a8-b4b8b40680e1"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0210L01",
+  "slot": "presentation",
+  "audio_id": "9a547e45-b8f5-4afb-8567-184e6178e644"
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0318L01",
+  "expect": {
+   "known_text": "I don't think that",
+   "target_text": "no pienso que"
+  },
+  "set": {
+   "target_text": "no creo que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0318L01",
+  "slot": "target1",
+  "audio_id": "7c89cf62-f1b1-4c6e-b1d3-6838b0c13863"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0318L01",
+  "slot": "target2",
+  "audio_id": "62646f07-47f2-4b6e-877e-a5975c09b27c"
+ },
+ {
+  "op": "audio.link",
+  "target": "lego",
+  "lego_id": "S0318L01",
+  "slot": "presentation",
+  "audio_id": "8589efc6-427e-4b25-a670-1a75929221da"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01B01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01B01",
+  "slot": "target1",
+  "audio_id": "d24fe73e-0f7f-45d3-bbf5-9a9b3f800970"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01B01",
+  "slot": "target2",
+  "audio_id": "c4a67905-30df-4495-9922-69080173dded"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01B02",
+  "expect": {
+   "known_text": "I think that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01B02",
+  "slot": "target1",
+  "audio_id": "15b864e2-1b81-486a-a2a3-85abff0236f2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01B02",
+  "slot": "target2",
+  "audio_id": "cde75673-3166-4688-b8bb-20975370745f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01B03",
+  "expect": {
+   "known_text": "I think so",
+   "target_text": "pienso que sí"
+  },
+  "set": {
+   "target_text": "creo que sí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01B03",
+  "slot": "target1",
+  "audio_id": "57ed4910-2f62-40e5-80ab-ae40c580db28"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01B03",
+  "slot": "target2",
+  "audio_id": "062abb96-cef4-47d3-a394-ae69624e7951"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U01",
+  "expect": {
+   "known_text": "I don't think so",
+   "target_text": "pienso que no"
+  },
+  "set": {
+   "target_text": "creo que no"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U01",
+  "slot": "target1",
+  "audio_id": "f559ac24-90b7-4ecb-9e3d-4fbba1fb1862"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U01",
+  "slot": "target2",
+  "audio_id": "7e1db308-30f0-4d30-a26f-fb1fb757506e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U03",
+  "expect": {
+   "known_text": "I think I'm excited about how it's going",
+   "target_text": "pienso que estoy emocionado con cómo va"
+  },
+  "set": {
+   "target_text": "creo que estoy emocionado con cómo va"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U03",
+  "slot": "target1",
+  "audio_id": "977daa0e-e221-4054-b457-8aabd1ec52f3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U03",
+  "slot": "target2",
+  "audio_id": "9393a9d3-0ed1-478c-98e1-58bc2d914891"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U04",
+  "expect": {
+   "known_text": "I think it's starting to get easier",
+   "target_text": "pienso que está empezando a ser más fácil"
+  },
+  "set": {
+   "target_text": "creo que está empezando a ser más fácil"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U04",
+  "slot": "target1",
+  "audio_id": "e1264c52-0aef-458d-b1df-0d93e0e7b7ae"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U04",
+  "slot": "target2",
+  "audio_id": "11908831-d9ba-4af2-936c-77146bb8b8ea"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U05",
+  "expect": {
+   "known_text": "I think it's the best decision I could make",
+   "target_text": "pienso que es la mejor decisión que podría tomar"
+  },
+  "set": {
+   "target_text": "creo que es la mejor decisión que podría tomar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U05",
+  "slot": "target1",
+  "audio_id": "edbb079b-9c5f-49ab-9feb-1e4fab9e237c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U05",
+  "slot": "target2",
+  "audio_id": "f5d8bfaa-54d1-464e-924e-c8b4b351431a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L01U07",
+  "expect": {
+   "known_text": "I think it's definitely difficult to learn many new words",
+   "target_text": "pienso que definitivamente es difícil aprender muchas palabras nuevas"
+  },
+  "set": {
+   "target_text": "creo que definitivamente es difícil aprender muchas palabras nuevas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U07",
+  "slot": "target1",
+  "audio_id": "3f744d62-8fb3-43ed-a0f1-facc6098d5c9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L01U07",
+  "slot": "target2",
+  "audio_id": "595e1fa9-3400-40c1-83c9-4e56a1dfa362"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02C01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02C01",
+  "slot": "target1",
+  "audio_id": "d24fe73e-0f7f-45d3-bbf5-9a9b3f800970"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02C01",
+  "slot": "target2",
+  "audio_id": "c4a67905-30df-4495-9922-69080173dded"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02B01",
+  "expect": {
+   "known_text": "I reckon that",
+   "target_text": "pienso que"
+  },
+  "set": {
+   "target_text": "creo que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02B01",
+  "slot": "target1",
+  "audio_id": "15b864e2-1b81-486a-a2a3-85abff0236f2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02B01",
+  "slot": "target2",
+  "audio_id": "cde75673-3166-4688-b8bb-20975370745f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02B02",
+  "expect": {
+   "known_text": "I reckon it is",
+   "target_text": "pienso que es"
+  },
+  "set": {
+   "target_text": "creo que es"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02B02",
+  "slot": "target1",
+  "audio_id": "c813f9c0-cc48-473d-a0dc-32ca67d50c80"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02B02",
+  "slot": "target2",
+  "audio_id": "2806499f-d1b4-44b1-817c-3ce565985faf"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02B03",
+  "expect": {
+   "known_text": "I reckon it's strange",
+   "target_text": "pienso que es raro"
+  },
+  "set": {
+   "target_text": "creo que es raro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02B03",
+  "slot": "target1",
+  "audio_id": "cdeefc45-6816-40e6-b1b0-2c91219f8159"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02B03",
+  "slot": "target2",
+  "audio_id": "d59eb4b3-64f8-40ad-84d5-b8ca640f8a18"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U01",
+  "expect": {
+   "known_text": "I reckon we have to",
+   "target_text": "pienso que tenemos que"
+  },
+  "set": {
+   "target_text": "creo que tenemos que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U01",
+  "slot": "target1",
+  "audio_id": "9396ea20-5a18-4d7f-a459-39e271791259"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U01",
+  "slot": "target2",
+  "audio_id": "3b217d82-6c76-4948-80d3-276878b4232a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U02",
+  "expect": {
+   "known_text": "I reckon it's interesting",
+   "target_text": "pienso que es interesante"
+  },
+  "set": {
+   "target_text": "creo que es interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U02",
+  "slot": "target1",
+  "audio_id": "9d35e7f5-505e-4063-8938-1eb4880a2363"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U02",
+  "slot": "target2",
+  "audio_id": "c17f64cb-a7b3-4b0a-ae21-67b15d5b20cf"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U03",
+  "expect": {
+   "known_text": "I reckon it's strange that you don't like to use your car",
+   "target_text": "pienso que es raro que no te guste usar tu carro"
+  },
+  "set": {
+   "target_text": "creo que es raro que no te guste usar tu carro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U03",
+  "slot": "target1",
+  "audio_id": "88d7a476-2867-441a-a7be-4d406bf695de"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U03",
+  "slot": "target2",
+  "audio_id": "5b50111f-41cf-41ff-880e-6e24594ec1cf"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U04",
+  "expect": {
+   "known_text": "I reckon it's the best decision I could make",
+   "target_text": "pienso que es la mejor decisión que podría tomar"
+  },
+  "set": {
+   "target_text": "creo que es la mejor decisión que podría tomar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U04",
+  "slot": "target1",
+  "audio_id": "edbb079b-9c5f-49ab-9feb-1e4fab9e237c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U04",
+  "slot": "target2",
+  "audio_id": "f5d8bfaa-54d1-464e-924e-c8b4b351431a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U06",
+  "expect": {
+   "known_text": "I reckon it's starting to get easier now",
+   "target_text": "pienso que está empezando a ser más fácil ahora"
+  },
+  "set": {
+   "target_text": "creo que está empezando a ser más fácil ahora"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U06",
+  "slot": "target1",
+  "audio_id": "b3329617-0037-4e13-9bdb-ab30f6f2e7fe"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U06",
+  "slot": "target2",
+  "audio_id": "0b0bb2fc-b27b-42fd-827f-6b414338fe63"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L02U07",
+  "expect": {
+   "known_text": "I reckon it's definitely better than the last time",
+   "target_text": "pienso que definitivamente es mejor que la última vez"
+  },
+  "set": {
+   "target_text": "creo que definitivamente es mejor que la última vez"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U07",
+  "slot": "target1",
+  "audio_id": "50b75dea-f83f-4793-960d-0c50c8d658dc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L02U07",
+  "slot": "target2",
+  "audio_id": "bfaba8a4-cfe2-4622-bf1c-ffe3ac050d33"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L03U02",
+  "expect": {
+   "known_text": "I reckon it's a good decision",
+   "target_text": "pienso que es una buena decisión"
+  },
+  "set": {
+   "target_text": "creo que es una buena decisión"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L03U02",
+  "slot": "target1",
+  "audio_id": "52d18f0f-83d9-45b5-8835-835ef6a7c564"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L03U02",
+  "slot": "target2",
+  "audio_id": "ee460876-90ce-472a-aa07-7c9c26a7215f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L03U05",
+  "expect": {
+   "known_text": "I reckon a good conversation changes how I feel",
+   "target_text": "pienso que una buena conversación cambia cómo me siento"
+  },
+  "set": {
+   "target_text": "creo que una buena conversación cambia cómo me siento"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L03U05",
+  "slot": "target1",
+  "audio_id": "4471bfc3-a284-47f0-ae8c-f1dbcfac03a4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L03U05",
+  "slot": "target2",
+  "audio_id": "173eea13-cd99-41a7-9d13-fceb1a1dead2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L03U07",
+  "expect": {
+   "known_text": "I reckon it's a good decision to work hard to learn",
+   "target_text": "pienso que es una buena decisión trabajar duro para aprender"
+  },
+  "set": {
+   "target_text": "creo que es una buena decisión trabajar duro para aprender"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L03U07",
+  "slot": "target1",
+  "audio_id": "ea215187-e2cb-4106-bd47-6ba0ee0b03b0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L03U07",
+  "slot": "target2",
+  "audio_id": "5e376e55-5f92-4501-a534-b78e4c55a32e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L04U02",
+  "expect": {
+   "known_text": "I reckon it's a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L04U02",
+  "slot": "target1",
+  "audio_id": "9e48c82f-e614-4ce0-8141-5c2ebd1a3a08"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L04U02",
+  "slot": "target2",
+  "audio_id": "5f215db4-4040-459c-9b39-f276a3669159"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L04U03",
+  "expect": {
+   "known_text": "I reckon that's a good idea",
+   "target_text": "pienso que eso es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que eso es una buena idea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L04U03",
+  "slot": "target1",
+  "audio_id": "08ffcbc9-ab19-4943-9de0-603e7df6411d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L04U03",
+  "slot": "target2",
+  "audio_id": "da852389-a02d-454e-a174-531e2b023925"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0123L04U06",
+  "expect": {
+   "known_text": "I definitely reckon it's a good idea to work hard",
+   "target_text": "definitivamente pienso que es una buena idea trabajar duro"
+  },
+  "set": {
+   "target_text": "definitivamente creo que es una buena idea trabajar duro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L04U06",
+  "slot": "target1",
+  "audio_id": "7ef0152e-adbd-4812-a616-b4344977ffbc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0123L04U06",
+  "slot": "target2",
+  "audio_id": "5afabb5d-27aa-4382-80aa-9acd3251367a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0126L01U04",
+  "expect": {
+   "known_text": "I reckon our work is very interesting",
+   "target_text": "pienso que nuestro trabajo es muy interesante"
+  },
+  "set": {
+   "target_text": "creo que nuestro trabajo es muy interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0126L01U04",
+  "slot": "target1",
+  "audio_id": "1aa63383-d693-4ab6-8dff-05d862496729"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0126L01U04",
+  "slot": "target2",
+  "audio_id": "f2fc3213-b866-41d3-bd4b-fa01cdd6c2c3"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L01U01",
+  "expect": {
+   "known_text": "I reckon you are",
+   "target_text": "pienso que eres"
+  },
+  "set": {
+   "target_text": "creo que eres"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L01U01",
+  "slot": "target1",
+  "audio_id": "98c672bc-2888-493b-9d96-52ad129e5c77"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L01U01",
+  "slot": "target2",
+  "audio_id": "1db54d85-52a3-4041-a075-f71cc7023a64"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L01U07",
+  "expect": {
+   "known_text": "I reckon you are very interesting when you speak like that",
+   "target_text": "pienso que eres muy interesante cuando hablas así"
+  },
+  "set": {
+   "target_text": "creo que eres muy interesante cuando hablas así"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L01U07",
+  "slot": "target1",
+  "audio_id": "21ee7ed7-5a41-4bdc-96b5-1d27db7cb473"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L01U07",
+  "slot": "target2",
+  "audio_id": "72022f8e-fa73-47b8-979e-058d1a7a0874"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L02U05",
+  "expect": {
+   "known_text": "I reckon it's like when we were in the bar",
+   "target_text": "pienso que es como cuando estábamos en el bar"
+  },
+  "set": {
+   "target_text": "creo que es como cuando estábamos en el bar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L02U05",
+  "slot": "target1",
+  "audio_id": "733cabea-6bc7-4f74-b379-d5416de132af"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L02U05",
+  "slot": "target2",
+  "audio_id": "a67639c0-b5d6-44ce-8dcf-e5ef44f403b4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L03U06",
+  "expect": {
+   "known_text": "I reckon someone who wants to work hard could do this",
+   "target_text": "pienso que alguien que quiere trabajar duro podría hacer esto"
+  },
+  "set": {
+   "target_text": "creo que alguien que quiere trabajar duro podría hacer esto"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L03U06",
+  "slot": "target1",
+  "audio_id": "a649d401-f080-4597-b130-833ea0ecf03e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L03U06",
+  "slot": "target2",
+  "audio_id": "5abe0464-4015-4657-bbe4-a389e1c298d8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L04U05",
+  "expect": {
+   "known_text": "I reckon you're like someone I used to know",
+   "target_text": "pienso que eres como alguien que conocía"
+  },
+  "set": {
+   "target_text": "creo que eres como alguien que conocía"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L04U05",
+  "slot": "target1",
+  "audio_id": "64557529-778f-4ee3-ae92-6ec2396b1503"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L04U05",
+  "slot": "target2",
+  "audio_id": "49c25d58-6ac4-4426-868a-2fd8c3ef3602"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0128L05U04",
+  "expect": {
+   "known_text": "I reckon before I wasn't ready to speak like that",
+   "target_text": "pienso que antes no estaba listo para hablar así"
+  },
+  "set": {
+   "target_text": "creo que antes no estaba listo para hablar así"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L05U04",
+  "slot": "target1",
+  "audio_id": "9df53899-cea4-46d7-91bb-a5ffde9310e0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0128L05U04",
+  "slot": "target2",
+  "audio_id": "94862c70-1b99-4d42-a771-829a3a8c5b42"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0132L02U04",
+  "expect": {
+   "known_text": "that's why I think it's more exciting",
+   "target_text": "por eso pienso que es más emocionante"
+  },
+  "set": {
+   "target_text": "por eso creo que es más emocionante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0132L02U04",
+  "slot": "target1",
+  "audio_id": "c42e7044-9d6a-4ee8-b27b-f535efad7fb7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0132L02U04",
+  "slot": "target2",
+  "audio_id": "781dfba9-57a3-45ae-b4bd-5a786cb74bc6"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0134L01U11",
+  "expect": {
+   "known_text": "I definitely think the problem is that we need to practice more",
+   "target_text": "definitivamente pienso que el problema es que tenemos que practicar más"
+  },
+  "set": {
+   "target_text": "definitivamente creo que el problema es que tenemos que practicar más"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0134L01U11",
+  "slot": "target1",
+  "audio_id": "683bb381-ca5e-453c-a6ce-39a50a240b54"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0134L01U11",
+  "slot": "target2",
+  "audio_id": "dd47397c-e364-44ff-afd1-e1850cf9f5e4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01B01",
+  "expect": {
+   "known_text": "you think",
+   "target_text": "piensas"
+  },
+  "set": {
+   "target_text": "crees"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01B01",
+  "slot": "target1",
+  "audio_id": "fc82361a-cb62-495a-93b4-1c98a3fd37c3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01B01",
+  "slot": "target2",
+  "audio_id": "bbce5821-2e68-480e-992d-fe6b7c6f44fe"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01B02",
+  "expect": {
+   "known_text": "you think that",
+   "target_text": "piensas que"
+  },
+  "set": {
+   "target_text": "crees que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01B02",
+  "slot": "target1",
+  "audio_id": "72e609b6-8577-4aa7-ab3d-27ef1f84f1bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01B02",
+  "slot": "target2",
+  "audio_id": "3ee88247-6529-4ef7-9c72-fb343c518dbe"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U02",
+  "expect": {
+   "known_text": "you think it's good",
+   "target_text": "piensas que es bueno"
+  },
+  "set": {
+   "target_text": "crees que es bueno"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U02",
+  "slot": "target1",
+  "audio_id": "3a820e6f-5e46-4498-b0be-cbd9336db92a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U02",
+  "slot": "target2",
+  "audio_id": "2ee5ff23-082b-4099-bf00-cf91a94894c8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U04",
+  "expect": {
+   "known_text": "do you think it's difficult?",
+   "target_text": "¿piensas que es difícil?"
+  },
+  "set": {
+   "target_text": "¿crees que es difícil?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U04",
+  "slot": "target1",
+  "audio_id": "b3b909e8-6d29-4792-a12d-661d2f73df66"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U04",
+  "slot": "target2",
+  "audio_id": "d667b33f-fa25-48d5-8758-6380143a48d7"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U05",
+  "expect": {
+   "known_text": "you think it's so good",
+   "target_text": "piensas que es tan bueno"
+  },
+  "set": {
+   "target_text": "crees que es tan bueno"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U05",
+  "slot": "target1",
+  "audio_id": "3cee5d06-259f-4ce3-affd-0826d89b42d4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U05",
+  "slot": "target2",
+  "audio_id": "8b5ba8af-757e-493b-a81f-9ab642635220"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0135L01U11",
+  "expect": {
+   "known_text": "do you think it's better when you work hard?",
+   "target_text": "¿piensas que es mejor cuando trabajas duro?"
+  },
+  "set": {
+   "target_text": "¿crees que es mejor cuando trabajas duro?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U11",
+  "slot": "target1",
+  "audio_id": "a2ad6fcb-0854-4cea-abbb-27427b93ea59"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0135L01U11",
+  "slot": "target2",
+  "audio_id": "4c3698e1-e9b8-4814-81e5-356f42647e55"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0136L01U03",
+  "expect": {
+   "known_text": "of course I think so",
+   "target_text": "claro que pienso que sí"
+  },
+  "set": {
+   "target_text": "claro que creo que sí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0136L01U03",
+  "slot": "target1",
+  "audio_id": "ed3d59f0-d6ef-4d4c-bf00-c68a582497df"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0136L01U03",
+  "slot": "target2",
+  "audio_id": "0f9f838f-9a88-4db7-8810-8b6f010b47c8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0136L02U01",
+  "expect": {
+   "known_text": "of course I think so",
+   "target_text": "claro que pienso que sí"
+  },
+  "set": {
+   "target_text": "claro que creo que sí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0136L02U01",
+  "slot": "target1",
+  "audio_id": "ed3d59f0-d6ef-4d4c-bf00-c68a582497df"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0136L02U01",
+  "slot": "target2",
+  "audio_id": "0f9f838f-9a88-4db7-8810-8b6f010b47c8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0137L03U05",
+  "expect": {
+   "known_text": "that's why I think you can be better",
+   "target_text": "por eso pienso que puedes ser mejor"
+  },
+  "set": {
+   "target_text": "por eso creo que puedes ser mejor"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0137L03U05",
+  "slot": "target1",
+  "audio_id": "c3de25c3-afcf-44eb-a1af-bc7a2160ebe5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0137L03U05",
+  "slot": "target2",
+  "audio_id": "d23064c2-eaaa-42e2-8428-09f6d649cbfd"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0141L02U07",
+  "expect": {
+   "known_text": "that's why I think everything is okay, no problem",
+   "target_text": "por eso pienso que todo está bien, no hay problema"
+  },
+  "set": {
+   "target_text": "por eso creo que todo está bien, no hay problema"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0141L02U07",
+  "slot": "target1",
+  "audio_id": "32a3f72a-f790-437b-b411-d5134790d959"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0141L02U07",
+  "slot": "target2",
+  "audio_id": "c48590f1-e078-41d4-89c6-13205cd401fc"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0141L02U09",
+  "expect": {
+   "known_text": "I definitely think everything that we learn changes our brain",
+   "target_text": "definitivamente pienso que todo lo que aprendemos cambia nuestro cerebro"
+  },
+  "set": {
+   "target_text": "definitivamente creo que todo lo que aprendemos cambia nuestro cerebro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0141L02U09",
+  "slot": "target1",
+  "audio_id": "41d46b67-7255-4f76-94ba-0ff2a85cc9a8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0141L02U09",
+  "slot": "target2",
+  "audio_id": "3810ea6d-16f2-48a8-a2d8-4b4c960b7b03"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0142L01U07",
+  "expect": {
+   "known_text": "that's why I think you're very kind",
+   "target_text": "por eso pienso que eres muy amable"
+  },
+  "set": {
+   "target_text": "por eso creo que eres muy amable"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0142L01U07",
+  "slot": "target1",
+  "audio_id": "465e0cc6-26ec-4b51-8350-af29c7e16dcf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0142L01U07",
+  "slot": "target2",
+  "audio_id": "2a9cc793-bf6a-45f0-aa9e-ff5aea56d756"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0142L01U09",
+  "expect": {
+   "known_text": "I definitely think he was very kind the last time",
+   "target_text": "definitivamente pienso que fue muy amable la última vez"
+  },
+  "set": {
+   "target_text": "definitivamente creo que fue muy amable la última vez"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0142L01U09",
+  "slot": "target1",
+  "audio_id": "1036baed-45ee-44cb-ada3-8a2c92235590"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0142L01U09",
+  "slot": "target2",
+  "audio_id": "16caf1d2-5852-4a19-966c-8d89effb024d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0143L01U09",
+  "expect": {
+   "known_text": "I definitely think it's the same thing that changes our brain",
+   "target_text": "definitivamente pienso que es lo mismo que cambia nuestro cerebro"
+  },
+  "set": {
+   "target_text": "definitivamente creo que es lo mismo que cambia nuestro cerebro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0143L01U09",
+  "slot": "target1",
+  "audio_id": "ebd4d988-766d-4af6-abc6-b54cf7e77e7f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0143L01U09",
+  "slot": "target2",
+  "audio_id": "0ce9fa6b-3d2e-4adf-a659-3ab4f085dcfd"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0145L01U11",
+  "expect": {
+   "known_text": "that's why I think it's no longer difficult to do",
+   "target_text": "por eso pienso que ya no es difícil de hacer"
+  },
+  "set": {
+   "target_text": "por eso creo que ya no es difícil de hacer"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0145L01U11",
+  "slot": "target1",
+  "audio_id": "afe1f628-b978-485c-b0d4-a12f21a8f5e5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0145L01U11",
+  "slot": "target2",
+  "audio_id": "6ca7337b-e606-4bbe-8dab-333c5c1f76c4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L01U12",
+  "expect": {
+   "known_text": "I definitely think it seems to be better now",
+   "target_text": "definitivamente pienso que parece estar mejor"
+  },
+  "set": {
+   "target_text": "definitivamente creo que parece estar mejor"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L01U12",
+  "slot": "target1",
+  "audio_id": "a93eafcf-c78c-4190-b8d5-1faaee711319"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L01U12",
+  "slot": "target2",
+  "audio_id": "c840cbcb-caaf-46b5-b831-32cd6ca69098"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L02U07",
+  "expect": {
+   "known_text": "I definitely think it's no longer the same since yesterday",
+   "target_text": "definitivamente pienso que ya no es lo mismo desde ayer"
+  },
+  "set": {
+   "target_text": "definitivamente creo que ya no es lo mismo desde ayer"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L02U07",
+  "slot": "target1",
+  "audio_id": "04624dff-fed8-452a-8e4f-b7628ccfcce0"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L02U07",
+  "slot": "target2",
+  "audio_id": "9995521c-6b86-422c-8f05-ef89abf56b08"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L04U11",
+  "expect": {
+   "known_text": "I definitely think since we tried it's better",
+   "target_text": "definitivamente pienso que desde que intentamos es mejor"
+  },
+  "set": {
+   "target_text": "definitivamente creo que desde que intentamos es mejor"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L04U11",
+  "slot": "target1",
+  "audio_id": "d9c73654-964b-4e8d-b7bd-71862bb44960"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L04U11",
+  "slot": "target2",
+  "audio_id": "1129b194-4dc9-4638-825c-7d067778ddf9"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0146L05U09",
+  "expect": {
+   "known_text": "I definitely think we tried to fix it but nothing seems to work",
+   "target_text": "definitivamente pienso que intentamos arreglarlo pero nada parece funcionar"
+  },
+  "set": {
+   "target_text": "definitivamente creo que intentamos arreglarlo pero nada parece funcionar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L05U09",
+  "slot": "target1",
+  "audio_id": "eef03a69-4d97-4270-a500-69454131cbc4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0146L05U09",
+  "slot": "target2",
+  "audio_id": "323b1645-7f71-4de4-a8d6-8788b637b926"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0148L01U09",
+  "expect": {
+   "known_text": "I definitely think he was more patient the last time",
+   "target_text": "definitivamente pienso que fue más paciente la última vez"
+  },
+  "set": {
+   "target_text": "definitivamente creo que fue más paciente la última vez"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0148L01U09",
+  "slot": "target1",
+  "audio_id": "de4b4560-d94d-4819-9188-a67bb6087133"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0148L01U09",
+  "slot": "target2",
+  "audio_id": "ed3a11df-2775-4309-8e67-2f10c0ed6e34"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0162L03U05",
+  "expect": {
+   "known_text": "do you think it's easy to talk about that?",
+   "target_text": "¿piensas que es fácil hablar de eso?"
+  },
+  "set": {
+   "target_text": "¿crees que es fácil hablar de eso?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0162L03U05",
+  "slot": "target1",
+  "audio_id": "5d24e744-9179-4958-a7e4-5fb0f01bb604"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0162L03U05",
+  "slot": "target2",
+  "audio_id": "a2835093-fbfd-4875-87af-1f71248cfabb"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01C01",
+  "expect": {
+   "known_text": "I think",
+   "target_text": "pienso"
+  },
+  "set": {
+   "target_text": "creo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01C01",
+  "slot": "target1",
+  "audio_id": "d24fe73e-0f7f-45d3-bbf5-9a9b3f800970"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01C01",
+  "slot": "target2",
+  "audio_id": "c4a67905-30df-4495-9922-69080173dded"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B01",
+  "expect": {
+   "known_text": "I think that it's",
+   "target_text": "pienso que es"
+  },
+  "set": {
+   "target_text": "creo que es"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B01",
+  "slot": "target1",
+  "audio_id": "c813f9c0-cc48-473d-a0dc-32ca67d50c80"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B01",
+  "slot": "target2",
+  "audio_id": "2806499f-d1b4-44b1-817c-3ce565985faf"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B02",
+  "expect": {
+   "known_text": "I think that it's important",
+   "target_text": "pienso que es importante"
+  },
+  "set": {
+   "target_text": "creo que es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B02",
+  "slot": "target1",
+  "audio_id": "6ac21937-f4a8-4f30-a8f0-21e310c17452"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B02",
+  "slot": "target2",
+  "audio_id": "ca0d9c04-1df1-4e7e-bbc6-5fbdc3346f7e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B03",
+  "expect": {
+   "known_text": "I think that it's difficult",
+   "target_text": "pienso que es difícil"
+  },
+  "set": {
+   "target_text": "creo que es difícil"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B03",
+  "slot": "target1",
+  "audio_id": "f490521e-859b-4078-9ed4-26f440f1ea8e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B03",
+  "slot": "target2",
+  "audio_id": "0fb8dc93-2cc9-47e8-bc84-3562970bd7fb"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B04",
+  "expect": {
+   "known_text": "I think that it's easy",
+   "target_text": "pienso que es fácil"
+  },
+  "set": {
+   "target_text": "creo que es fácil"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B04",
+  "slot": "target1",
+  "audio_id": "ec4b37e8-7dc3-4252-a747-f501fb6bc705"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B04",
+  "slot": "target2",
+  "audio_id": "39e6a3b4-152a-4bcf-98e3-6cee0c90bbc4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01B05",
+  "expect": {
+   "known_text": "I think that it's good",
+   "target_text": "pienso que es bueno"
+  },
+  "set": {
+   "target_text": "creo que es bueno"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B05",
+  "slot": "target1",
+  "audio_id": "b1a7fe44-1797-48a5-8640-f5b230414548"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01B05",
+  "slot": "target2",
+  "audio_id": "161c87c8-e028-4129-8022-80a18187a92d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U01",
+  "expect": {
+   "known_text": "I think that it's a good idea to practise",
+   "target_text": "pienso que es una buena idea practicar"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea practicar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U01",
+  "slot": "target1",
+  "audio_id": "6687315f-3933-4e08-9cb8-33aef5749697"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U01",
+  "slot": "target2",
+  "audio_id": "678baf1e-32d0-4b3e-956a-c9af777942f9"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U02",
+  "expect": {
+   "known_text": "I think that it's important to speak Spanish",
+   "target_text": "pienso que es importante hablar español"
+  },
+  "set": {
+   "target_text": "creo que es importante hablar español"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U02",
+  "slot": "target1",
+  "audio_id": "6d4c4991-2cf3-4eb7-a37a-778423c89feb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U02",
+  "slot": "target2",
+  "audio_id": "bccbaebd-61e5-40d8-8231-7631cf222e32"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U03",
+  "expect": {
+   "known_text": "I think that it's difficult to remember",
+   "target_text": "pienso que es difícil recordar"
+  },
+  "set": {
+   "target_text": "creo que es difícil recordar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U03",
+  "slot": "target1",
+  "audio_id": "5a1704c0-c272-4ccb-b7d4-2aa6f8c8b58e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U03",
+  "slot": "target2",
+  "audio_id": "03f5cf40-aaf6-4d8e-943f-99b96a837c80"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U04",
+  "expect": {
+   "known_text": "I think that it's interesting to learn more",
+   "target_text": "pienso que es interesante aprender más"
+  },
+  "set": {
+   "target_text": "creo que es interesante aprender más"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U04",
+  "slot": "target1",
+  "audio_id": "f1b13c70-26a1-44c5-91c2-93c87232673b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U04",
+  "slot": "target2",
+  "audio_id": "41427568-d435-4db0-98fd-0e703db1db6d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U05",
+  "expect": {
+   "known_text": "I think that it's better to start now",
+   "target_text": "pienso que es mejor empezar ahora"
+  },
+  "set": {
+   "target_text": "creo que es mejor empezar ahora"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U05",
+  "slot": "target1",
+  "audio_id": "7b1cacfe-e20b-4f14-9192-26d98088239e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U05",
+  "slot": "target2",
+  "audio_id": "155ff38a-be03-4481-990a-76021fce45b5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U06",
+  "expect": {
+   "known_text": "I think that it's easy to understand",
+   "target_text": "pienso que es fácil entender"
+  },
+  "set": {
+   "target_text": "creo que es fácil entender"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U06",
+  "slot": "target1",
+  "audio_id": "6c4b7b94-6c9a-4c0b-a4df-622cd1fdbf52"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U06",
+  "slot": "target2",
+  "audio_id": "03321352-7d70-45a8-971c-5c75320d2bf8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L01U07",
+  "expect": {
+   "known_text": "I think that it's very interesting to speak with you",
+   "target_text": "pienso que es muy interesante hablar contigo"
+  },
+  "set": {
+   "target_text": "creo que es muy interesante hablar contigo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U07",
+  "slot": "target1",
+  "audio_id": "ba746cb7-6ca1-4e0d-8af5-6862b05da040"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L01U07",
+  "slot": "target2",
+  "audio_id": "d21ba268-2e5f-42fa-9dc8-129aba8fe768"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0163L02U03",
+  "expect": {
+   "known_text": "I think that it's interesting to speak with someone else",
+   "target_text": "pienso que es interesante hablar con otra persona"
+  },
+  "set": {
+   "target_text": "creo que es interesante hablar con otra persona"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L02U03",
+  "slot": "target1",
+  "audio_id": "b26161e0-3fca-46ba-b53a-dbef6e85c096"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0163L02U03",
+  "slot": "target2",
+  "audio_id": "6cc8432f-b155-4bd8-8cf4-23e58312b6a4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0164L01U03",
+  "expect": {
+   "known_text": "I think that it's an interesting book",
+   "target_text": "pienso que es un libro interesante"
+  },
+  "set": {
+   "target_text": "creo que es un libro interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0164L01U03",
+  "slot": "target1",
+  "audio_id": "0c492a1b-9c7c-46fe-b41e-5162d0e2cb6b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0164L01U03",
+  "slot": "target2",
+  "audio_id": "6b641413-e6d6-4ea4-9028-6029f0703cb7"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0165L01U06",
+  "expect": {
+   "known_text": "do you really think it is interesting?",
+   "target_text": "¿de verdad piensas que es interesante?"
+  },
+  "set": {
+   "target_text": "¿de verdad crees que es interesante?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0165L01U06",
+  "slot": "target1",
+  "audio_id": "345e1185-7991-4d26-9058-f2da09ec6adc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0165L01U06",
+  "slot": "target2",
+  "audio_id": "d8482347-87c1-4af9-ad60-98f87061c718"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0168L01U03",
+  "expect": {
+   "known_text": "do you think I will be able to do it?",
+   "target_text": "¿piensas que podré hacer eso?"
+  },
+  "set": {
+   "target_text": "¿crees que podré hacer eso?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0168L01U03",
+  "slot": "target1",
+  "audio_id": "9e189856-d6cf-4c89-917b-17ead6d5cadb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0168L01U03",
+  "slot": "target2",
+  "audio_id": "05238dca-8672-4493-86ef-61a4c56eba85"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0174L01U04",
+  "expect": {
+   "known_text": "I think you understand what I'm saying",
+   "target_text": "pienso que entiendes lo que estoy diciendo"
+  },
+  "set": {
+   "target_text": "creo que entiendes lo que estoy diciendo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0174L01U04",
+  "slot": "target1",
+  "audio_id": "a8446d71-c0d8-413c-b791-b1d43bd2e62f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0174L01U04",
+  "slot": "target2",
+  "audio_id": "b2d7dadd-19f7-47e7-8984-bc9122bfb20c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0175L01U07",
+  "expect": {
+   "known_text": "I think I know what you want to do",
+   "target_text": "pienso que sé lo que quieres hacer"
+  },
+  "set": {
+   "target_text": "creo que sé lo que quieres hacer"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0175L01U07",
+  "slot": "target1",
+  "audio_id": "9df3204e-5a0c-4873-b722-f264bb96a18c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0175L01U07",
+  "slot": "target2",
+  "audio_id": "5ac8b52d-d61e-4273-bdee-02afb23f4e81"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0176L03U04",
+  "expect": {
+   "known_text": "do you think he will be able to come on Sunday?",
+   "target_text": "¿piensas que podrá venir el domingo?"
+  },
+  "set": {
+   "target_text": "¿crees que podrá venir el domingo?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0176L03U04",
+  "slot": "target1",
+  "audio_id": "649bfa89-c51a-44f9-914e-c4ab07384082"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0176L03U04",
+  "slot": "target2",
+  "audio_id": "08b0e9da-1b74-4448-b36d-e81185aabaab"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0178L02U05",
+  "expect": {
+   "known_text": "although you think not, I think yes",
+   "target_text": "aunque piensas que no, pienso que sí"
+  },
+  "set": {
+   "target_text": "aunque crees que no, creo que sí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0178L02U05",
+  "slot": "target1",
+  "audio_id": "7498118d-e43d-45d5-b500-b81c98f8c50c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0178L02U05",
+  "slot": "target2",
+  "audio_id": "168f4100-be30-41c8-9c16-f186ecc31dd9"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0185L01U04",
+  "expect": {
+   "known_text": "I think you left it here",
+   "target_text": "pienso que lo dejaste aquí"
+  },
+  "set": {
+   "target_text": "creo que lo dejaste aquí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0185L01U04",
+  "slot": "target1",
+  "audio_id": "34168e07-bec4-46ee-abfb-787a8dfcfaa6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0185L01U04",
+  "slot": "target2",
+  "audio_id": "209cde61-b2d1-4034-81de-fabcdc766d48"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0185L01U05",
+  "expect": {
+   "known_text": "I think you left it at work",
+   "target_text": "pienso que lo dejaste en el trabajo"
+  },
+  "set": {
+   "target_text": "creo que lo dejaste en el trabajo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0185L01U05",
+  "slot": "target1",
+  "audio_id": "38d6e1a8-0bf9-447a-af90-bff0628861d1"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0185L01U05",
+  "slot": "target2",
+  "audio_id": "27a67cff-20eb-4728-8f13-ef33eff82040"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0186L02U01",
+  "expect": {
+   "known_text": "I think it is the coming week",
+   "target_text": "pienso que es la semana que viene"
+  },
+  "set": {
+   "target_text": "creo que es la semana que viene"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0186L02U01",
+  "slot": "target1",
+  "audio_id": "39aed12b-4c6c-4df2-97df-eff1d58844c4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0186L02U01",
+  "slot": "target2",
+  "audio_id": "7515e783-25ac-4610-84d1-cd72b092f934"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0188L01U02",
+  "expect": {
+   "known_text": "I think I need to change",
+   "target_text": "pienso que necesito cambiar"
+  },
+  "set": {
+   "target_text": "creo que necesito cambiar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0188L01U02",
+  "slot": "target1",
+  "audio_id": "a797f837-c053-433b-99e5-4c6326e4337b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0188L01U02",
+  "slot": "target2",
+  "audio_id": "6dd6ac50-ccd7-45d1-94e7-9834bb21d50a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0188L01U04",
+  "expect": {
+   "known_text": "do you think I need to change?",
+   "target_text": "¿piensas que necesito cambiar?"
+  },
+  "set": {
+   "target_text": "¿crees que necesito cambiar?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0188L01U04",
+  "slot": "target1",
+  "audio_id": "655666a9-00b4-4245-ad4a-215ad7b9c200"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0188L01U04",
+  "slot": "target2",
+  "audio_id": "660c9807-6fa0-458a-8240-a4cf84de9420"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0189L01U02",
+  "expect": {
+   "known_text": "I think it is good",
+   "target_text": "pienso que es bueno"
+  },
+  "set": {
+   "target_text": "creo que es bueno"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0189L01U02",
+  "slot": "target1",
+  "audio_id": "b1a7fe44-1797-48a5-8640-f5b230414548"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0189L01U02",
+  "slot": "target2",
+  "audio_id": "161c87c8-e028-4129-8022-80a18187a92d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0189L02U03",
+  "expect": {
+   "known_text": "I think it is a good idea",
+   "target_text": "pienso que es una buena idea"
+  },
+  "set": {
+   "target_text": "creo que es una buena idea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0189L02U03",
+  "slot": "target1",
+  "audio_id": "9e48c82f-e614-4ce0-8141-5c2ebd1a3a08"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0189L02U03",
+  "slot": "target2",
+  "audio_id": "5f215db4-4040-459c-9b39-f276a3669159"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0190L02U04",
+  "expect": {
+   "known_text": "I think it does not matter",
+   "target_text": "pienso que no importa"
+  },
+  "set": {
+   "target_text": "creo que no importa"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0190L02U04",
+  "slot": "target1",
+  "audio_id": "1bced4f7-6b42-441b-aea1-701976105a8d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0190L02U04",
+  "slot": "target2",
+  "audio_id": "cfdbdbf5-46b4-44db-9551-1c7edb6f5944"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0193L01U03",
+  "expect": {
+   "known_text": "I think I'm too busy",
+   "target_text": "pienso que estoy demasiado ocupado"
+  },
+  "set": {
+   "target_text": "creo que estoy demasiado ocupado"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0193L01U03",
+  "slot": "target1",
+  "audio_id": "b37f1407-ecc8-4c1e-810c-d74cd7509ee9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0193L01U03",
+  "slot": "target2",
+  "audio_id": "5224ef4c-93f1-400d-be1b-35cab2193e57"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0193L01U06",
+  "expect": {
+   "known_text": "do you think you're too busy?",
+   "target_text": "¿piensas que estás demasiado ocupado?"
+  },
+  "set": {
+   "target_text": "¿crees que estás demasiado ocupado?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0193L01U06",
+  "slot": "target1",
+  "audio_id": "a852da94-290b-4bb9-a99c-c6ece86ef8e7"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0193L01U06",
+  "slot": "target2",
+  "audio_id": "b94daabf-4ee9-4334-b43f-011ab95f1f9d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0210L01B01",
+  "expect": {
+   "known_text": "they think that",
+   "target_text": "piensan que"
+  },
+  "set": {
+   "target_text": "creen que"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0210L01B01",
+  "slot": "target1",
+  "audio_id": "b884206f-289b-4baa-afdc-74e7dcb6f78b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0210L01B01",
+  "slot": "target2",
+  "audio_id": "86109cc9-1814-43eb-828d-6d25af023034"
+ }
+]

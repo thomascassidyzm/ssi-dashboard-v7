@@ -1,0 +1,3317 @@
+[
+ {
+  "batch": 0,
+  "status": 200,
+  "n": 10,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "426a63bb-fdfb-4db0-968e-10d516e421aa",
+   "results": [
+    {
+     "index": 0,
+     "op": "seed.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 377
+     },
+     "before": {
+      "id": "4d87d312-0167-4b1a-9a81-6133f99b4b09",
+      "seed_number": 377,
+      "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?",
+      "known_text": "did you go anywhere in the world last year?",
+      "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+      "target1_audio_id": "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+      "target2_audio_id": "f799ae40-d9cd-4a45-bfc2-e979bf0d8903"
+     },
+     "after": {
+      "id": "4d87d312-0167-4b1a-9a81-6133f99b4b09",
+      "seed_number": 377,
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_text": "did you go anywhere in the world last year?",
+      "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 377
+     },
+     "before": {
+      "id": "4d87d312-0167-4b1a-9a81-6133f99b4b09",
+      "seed_number": 377,
+      "target1_audio_id": null,
+      "known_text": "did you go anywhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "4d87d312-0167-4b1a-9a81-6133f99b4b09",
+      "seed_number": 377,
+      "target1_audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1",
+      "known_text": "did you go anywhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 377
+     },
+     "before": {
+      "id": "4d87d312-0167-4b1a-9a81-6133f99b4b09",
+      "seed_number": 377,
+      "target2_audio_id": null,
+      "known_text": "did you go anywhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+      "target1_audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1"
+     },
+     "after": {
+      "id": "4d87d312-0167-4b1a-9a81-6133f99b4b09",
+      "seed_number": 377,
+      "target2_audio_id": "aa9b531d-2a86-42d7-8744-f9c2f1430627",
+      "known_text": "did you go anywhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+      "target1_audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1"
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "seed.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 402
+     },
+     "before": {
+      "id": "37218381-566a-452a-b313-259e6af0afa9",
+      "seed_number": 402,
+      "target_text": "sí, sería agradable parar en algún sitio para comer",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": "bca00b2b-af0c-45db-9ae3-078d64e91234",
+      "target2_audio_id": "952c2950-d814-4aed-90dc-67461041ef8e"
+     },
+     "after": {
+      "id": "37218381-566a-452a-b313-259e6af0afa9",
+      "seed_number": 402,
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": null,
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 402
+     },
+     "before": {
+      "id": "37218381-566a-452a-b313-259e6af0afa9",
+      "seed_number": 402,
+      "target1_audio_id": null,
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target2_audio_id": null
+     },
+     "after": {
+      "id": "37218381-566a-452a-b313-259e6af0afa9",
+      "seed_number": 402,
+      "target1_audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target2_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "seed_number": 402
+     },
+     "before": {
+      "id": "37218381-566a-452a-b313-259e6af0afa9",
+      "seed_number": 402,
+      "target2_audio_id": null,
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925"
+     },
+     "after": {
+      "id": "37218381-566a-452a-b313-259e6af0afa9",
+      "seed_number": 402,
+      "target2_audio_id": "4dc8ab30-ab2d-4a91-b7f7-60a18bb3fe49",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925"
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "lego.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0377L02"
+     },
+     "before": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "target_text": "algún sitio",
+      "components": [
+       {
+        "known": "some",
+        "target": "algún"
+       },
+       {
+        "known": "place",
+        "target": "sitio"
+       }
+      ],
+      "known_text": "somewhere",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "e301a69a-5bd2-478f-8085-d8c05b8c8f5b",
+      "target2_audio_id": "ffe8861d-a3df-41b6-a219-67333e4e1baf",
+      "presentation_audio_id": "5297f7e1-7947-46cb-ae5e-3618701eacc6"
+     },
+     "after": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "target_text": "algún lado",
+      "components": [
+       {
+        "known": "some",
+        "target": "algún"
+       },
+       {
+        "known": "side",
+        "target": "lado"
+       }
+      ],
+      "known_text": "somewhere",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0377L02"
+     },
+     "before": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0377L02"
+     },
+     "before": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0377L02"
+     },
+     "before": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "presentation_audio_id": null,
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d"
+     },
+     "after": {
+      "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": "S0377L02",
+      "presentation_audio_id": "557ee9d7-cefe-4d3d-b811-6c2528c0eb33",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d"
+     },
+     "changed": true
+    },
+    {
+     "index": null,
+     "op": "tiles.refresh",
+     "key": {
+      "lego_ids": [
+       "S0377L02"
+      ]
+     },
+     "considered": 0,
+     "rewritten": [],
+     "needs_a_person": [],
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "lego.update",
+     "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+     "set": {
+      "presentation_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "dbe7d480-9e88-42e1-a83a-953511e0792e",
+     "set": {
+      "target_text": "algún sitio",
+      "components": [
+       {
+        "known": "some",
+        "target": "algún"
+       },
+       {
+        "known": "place",
+        "target": "sitio"
+       }
+      ],
+      "target1_audio_id": "e301a69a-5bd2-478f-8085-d8c05b8c8f5b",
+      "target2_audio_id": "ffe8861d-a3df-41b6-a219-67333e4e1baf",
+      "presentation_audio_id": "5297f7e1-7947-46cb-ae5e-3618701eacc6"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 402,
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 402,
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 402,
+     "set": {
+      "target_text": "sí, sería agradable parar en algún sitio para comer",
+      "target1_audio_id": "bca00b2b-af0c-45db-9ae3-078d64e91234",
+      "target2_audio_id": "952c2950-d814-4aed-90dc-67461041ef8e"
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 377,
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 377,
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "seed.update",
+     "seed_number": 377,
+     "set": {
+      "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?",
+      "target1_audio_id": "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+      "target2_audio_id": "f799ae40-d9cd-4a45-bfc2-e979bf0d8903"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-08-40-147Z-426a63bb-fdfb-4db0-968e-10d516e421aa.json"
+  }
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "n": 11,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "3aedef26-d49f-4aaf-874f-c0974d9b3330",
+   "results": [
+    {
+     "index": 0,
+     "op": "lego.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0402L01"
+     },
+     "before": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "target_text": "parar en algún sitio",
+      "components": [
+       {
+        "known": "to stop",
+        "target": "parar"
+       },
+       {
+        "known": "somewhere",
+        "target": "algún sitio"
+       }
+      ],
+      "known_text": "to stop somewhere",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "d27028d2-6668-410f-9837-8d1b766d185c",
+      "target2_audio_id": "6d6c3aa0-3676-42ff-b0a2-eeac72039fae",
+      "presentation_audio_id": "f256e3d6-e865-4fee-bed1-5362d2dc00cc"
+     },
+     "after": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "target_text": "parar en algún lado",
+      "components": [
+       {
+        "known": "to stop",
+        "target": "parar"
+       },
+       {
+        "known": "somewhere",
+        "target": "algún lado"
+       }
+      ],
+      "known_text": "to stop somewhere",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0402L01"
+     },
+     "before": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "target1_audio_id": null,
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0402L01"
+     },
+     "before": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "target2_audio_id": null,
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "target2_audio_id": "2c768342-b88b-4270-b789-d3c8121b6bd3",
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "lego_id": "S0402L01"
+     },
+     "before": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "presentation_audio_id": null,
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "target2_audio_id": "2c768342-b88b-4270-b789-d3c8121b6bd3"
+     },
+     "after": {
+      "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": "S0402L01",
+      "presentation_audio_id": "f256e3d6-e865-4fee-bed1-5362d2dc00cc",
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "target2_audio_id": "2c768342-b88b-4270-b789-d3c8121b6bd3"
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "place",
+      "target_text": "sitio",
+      "known_audio_id": "8b620d2e-92c9-4637-8722-bf8ebd907411",
+      "target1_audio_id": "e209c466-a5b2-4614-8b61-bdc27b42ddc1",
+      "target2_audio_id": "53ad724c-977a-4bc4-8762-f4cde8897023",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "side",
+      "target_text": "lado",
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "known_text": "side",
+      "target_text": "lado",
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "known_text": "side",
+      "target_text": "lado",
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "known_text": "side",
+      "target_text": "lado",
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "known_text": "side",
+      "target_text": "lado",
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "changed": false
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "known_text": "side",
+      "target_text": "lado",
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02C02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "39c87704-0a76-4114-b0c8-deed3fd8e429",
+      "known_text": "side",
+      "target_text": "lado",
+      "known_audio_id": "9522fe3c-b170-4f5e-a993-f15655a232b4",
+      "target1_audio_id": "b6e1fb50-e991-48b6-b2a5-a11276bc78f4",
+      "presentation_audio_id": "8b57efaa-1c2d-49fc-98a9-e0e82e826055"
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "algún sitio",
+      "known_text": "somewhere",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "e301a69a-5bd2-478f-8085-d8c05b8c8f5b",
+      "target2_audio_id": "ffe8861d-a3df-41b6-a219-67333e4e1baf",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "algún lado",
+      "known_text": "somewhere",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": null,
+     "op": "tiles.refresh",
+     "key": {
+      "lego_ids": [
+       "S0402L01"
+      ]
+     },
+     "considered": 0,
+     "rewritten": [],
+     "needs_a_person": [],
+     "changed": false
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B01",
+     "set": {
+      "target_text": "algún sitio",
+      "target1_audio_id": "e301a69a-5bd2-478f-8085-d8c05b8c8f5b",
+      "target2_audio_id": "ffe8861d-a3df-41b6-a219-67333e4e1baf"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02C02",
+     "set": {
+      "known_text": "place",
+      "target_text": "sitio",
+      "known_audio_id": "8b620d2e-92c9-4637-8722-bf8ebd907411",
+      "target1_audio_id": "e209c466-a5b2-4614-8b61-bdc27b42ddc1",
+      "target2_audio_id": "53ad724c-977a-4bc4-8762-f4cde8897023"
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+     "set": {
+      "presentation_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "lego.update",
+     "id": "eac5d9a3-e2f7-486b-92a2-16252de30353",
+     "set": {
+      "target_text": "parar en algún sitio",
+      "components": [
+       {
+        "known": "to stop",
+        "target": "parar"
+       },
+       {
+        "known": "somewhere",
+        "target": "algún sitio"
+       }
+      ],
+      "target1_audio_id": "d27028d2-6668-410f-9837-8d1b766d185c",
+      "target2_audio_id": "6d6c3aa0-3676-42ff-b0a2-eeac72039fae",
+      "presentation_audio_id": "f256e3d6-e865-4fee-bed1-5362d2dc00cc"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-08-46-831Z-3aedef26-d49f-4aaf-874f-c0974d9b3330.json"
+  }
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "n": 11,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "8b9c0dfa-2236-42e1-a8f7-e0665bf3a38a",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "¿fuiste a algún sitio?",
+      "known_text": "did you go somewhere?",
+      "known_audio_id": "bc7c4f84-f993-45c9-a276-7c7de5c01e15",
+      "target1_audio_id": "7d2301cc-98be-4a94-a85f-2a8216321edd",
+      "target2_audio_id": "e03f3a07-7b5f-4c94-9275-889a4f1d68c2",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "¿fuiste a algún lado?",
+      "known_text": "did you go somewhere?",
+      "known_audio_id": "bc7c4f84-f993-45c9-a276-7c7de5c01e15",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "did you go somewhere?",
+      "target_text": "¿fuiste a algún lado?",
+      "known_audio_id": "bc7c4f84-f993-45c9-a276-7c7de5c01e15",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "87132a5b-d001-4959-809c-d4a2ea47a7e1",
+      "known_text": "did you go somewhere?",
+      "target_text": "¿fuiste a algún lado?",
+      "known_audio_id": "bc7c4f84-f993-45c9-a276-7c7de5c01e15",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "did you go somewhere?",
+      "target_text": "¿fuiste a algún lado?",
+      "known_audio_id": "bc7c4f84-f993-45c9-a276-7c7de5c01e15",
+      "target1_audio_id": "87132a5b-d001-4959-809c-d4a2ea47a7e1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "fd714f11-f453-47b0-a009-2a1677c3a451",
+      "known_text": "did you go somewhere?",
+      "target_text": "¿fuiste a algún lado?",
+      "known_audio_id": "bc7c4f84-f993-45c9-a276-7c7de5c01e15",
+      "target1_audio_id": "87132a5b-d001-4959-809c-d4a2ea47a7e1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "did you see somewhere interesting?",
+      "target_text": "¿viste algún sitio interesante?",
+      "known_audio_id": "d8e438db-1762-46de-8ead-f44f2cb2158d",
+      "target1_audio_id": "eb133c6f-06ef-4001-a43e-79516c0a9481",
+      "target2_audio_id": "2f0dfe5f-3f5f-4c59-90bf-226312e3498d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "7a08efd6-ba61-4c33-9372-c928bcf6ad6a",
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "target1_audio_id": "7a08efd6-ba61-4c33-9372-c928bcf6ad6a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02B03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "dc5b3820-95ef-498c-8061-130a858ff426",
+      "known_text": "did you go somewhere last year?",
+      "target_text": "¿fuiste a algún lado el año pasado?",
+      "known_audio_id": "e8cff70c-aab4-4cc7-a6c7-a3e5ac1b016c",
+      "target1_audio_id": "7a08efd6-ba61-4c33-9372-c928bcf6ad6a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "did you see somewhere pretty?",
+      "target_text": "¿viste algún sitio bonito?",
+      "known_audio_id": "48bede1d-5920-438a-9b8d-8d23fb6c140f",
+      "target1_audio_id": "5ff1e4f1-abd2-4a46-8ee4-a1503c2ca4dc",
+      "target2_audio_id": "c0d98ceb-c47c-48e1-9b66-644d815fe984",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "c4331f27-44de-4122-b454-effd4ac6149e",
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "target1_audio_id": "c4331f27-44de-4122-b454-effd4ac6149e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U01",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "4770e3fc-670a-494b-8de9-500b7439bfb2",
+      "known_text": "did you go somewhere with my friend?",
+      "target_text": "¿fuiste a algún lado con mi amigo?",
+      "known_audio_id": "730b1909-39fa-42a5-b876-f57129680fe5",
+      "target1_audio_id": "c4331f27-44de-4122-b454-effd4ac6149e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U01",
+     "set": {
+      "known_text": "did you see somewhere pretty?",
+      "target_text": "¿viste algún sitio bonito?",
+      "known_audio_id": "48bede1d-5920-438a-9b8d-8d23fb6c140f",
+      "target1_audio_id": "5ff1e4f1-abd2-4a46-8ee4-a1503c2ca4dc",
+      "target2_audio_id": "c0d98ceb-c47c-48e1-9b66-644d815fe984"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B03",
+     "set": {
+      "known_text": "did you see somewhere interesting?",
+      "target_text": "¿viste algún sitio interesante?",
+      "known_audio_id": "d8e438db-1762-46de-8ead-f44f2cb2158d",
+      "target1_audio_id": "eb133c6f-06ef-4001-a43e-79516c0a9481",
+      "target2_audio_id": "2f0dfe5f-3f5f-4c59-90bf-226312e3498d"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02B02",
+     "set": {
+      "target_text": "¿fuiste a algún sitio?",
+      "target1_audio_id": "7d2301cc-98be-4a94-a85f-2a8216321edd",
+      "target2_audio_id": "e03f3a07-7b5f-4c94-9275-889a4f1d68c2"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-08-53-861Z-8b9c0dfa-2236-42e1-a8f7-e0665bf3a38a.json"
+  }
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "0021db1b-4663-4583-abde-4ac2470a5122",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "quiero ir a algún sitio",
+      "known_text": "I want to go somewhere",
+      "known_audio_id": "b0559fe5-eb92-40da-a16e-c7674c9d3fcf",
+      "target1_audio_id": "76df89b5-c29a-4094-9704-1da1fb1e95c1",
+      "target2_audio_id": "4fad95e2-fa0b-4f6b-bcb2-56a9e8c0777e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "quiero ir a algún lado",
+      "known_text": "I want to go somewhere",
+      "known_audio_id": "b0559fe5-eb92-40da-a16e-c7674c9d3fcf",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I want to go somewhere",
+      "target_text": "quiero ir a algún lado",
+      "known_audio_id": "b0559fe5-eb92-40da-a16e-c7674c9d3fcf",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "d384819f-d124-47a9-92a5-3eaad23c43d8",
+      "known_text": "I want to go somewhere",
+      "target_text": "quiero ir a algún lado",
+      "known_audio_id": "b0559fe5-eb92-40da-a16e-c7674c9d3fcf",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I want to go somewhere",
+      "target_text": "quiero ir a algún lado",
+      "known_audio_id": "b0559fe5-eb92-40da-a16e-c7674c9d3fcf",
+      "target1_audio_id": "d384819f-d124-47a9-92a5-3eaad23c43d8",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U02",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "c5e5ac1e-b632-418e-80de-cd93c634c690",
+      "known_text": "I want to go somewhere",
+      "target_text": "quiero ir a algún lado",
+      "known_audio_id": "b0559fe5-eb92-40da-a16e-c7674c9d3fcf",
+      "target1_audio_id": "d384819f-d124-47a9-92a5-3eaad23c43d8",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "mi amigo podría ir a algún sitio",
+      "known_text": "my friend could go somewhere",
+      "known_audio_id": "2002dcac-e006-49a4-bb13-055b1898fd38",
+      "target1_audio_id": "15b445f8-eb12-4d8b-a7cd-961510491996",
+      "target2_audio_id": "50aaada7-9438-427a-9c5a-998badea2dfd",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "mi amigo podría ir a algún lado",
+      "known_text": "my friend could go somewhere",
+      "known_audio_id": "2002dcac-e006-49a4-bb13-055b1898fd38",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "my friend could go somewhere",
+      "target_text": "mi amigo podría ir a algún lado",
+      "known_audio_id": "2002dcac-e006-49a4-bb13-055b1898fd38",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "ae04701b-9294-47f0-a9d6-71c7fdecc6ed",
+      "known_text": "my friend could go somewhere",
+      "target_text": "mi amigo podría ir a algún lado",
+      "known_audio_id": "2002dcac-e006-49a4-bb13-055b1898fd38",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "my friend could go somewhere",
+      "target_text": "mi amigo podría ir a algún lado",
+      "known_audio_id": "2002dcac-e006-49a4-bb13-055b1898fd38",
+      "target1_audio_id": "ae04701b-9294-47f0-a9d6-71c7fdecc6ed",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U03",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "e0a584f1-cd2f-47a2-9083-db2dfcf9de4e",
+      "known_text": "my friend could go somewhere",
+      "target_text": "mi amigo podría ir a algún lado",
+      "known_audio_id": "2002dcac-e006-49a4-bb13-055b1898fd38",
+      "target1_audio_id": "ae04701b-9294-47f0-a9d6-71c7fdecc6ed",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U04",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "ella necesita ir a algún sitio",
+      "known_text": "she needs to go somewhere",
+      "known_audio_id": "3fc3bc83-41c9-4fec-b6dc-7d395c1fd09a",
+      "target1_audio_id": "9ba772fa-f851-4913-8cbe-4c4c2d49b049",
+      "target2_audio_id": "07647aaf-182d-4c4a-9d88-419f1adc0a4c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U04",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "ella necesita ir a algún lado",
+      "known_text": "she needs to go somewhere",
+      "known_audio_id": "3fc3bc83-41c9-4fec-b6dc-7d395c1fd09a",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U04",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she needs to go somewhere",
+      "target_text": "ella necesita ir a algún lado",
+      "known_audio_id": "3fc3bc83-41c9-4fec-b6dc-7d395c1fd09a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U04",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "1e85e7f3-43d9-439d-8559-58bb38c0e666",
+      "known_text": "she needs to go somewhere",
+      "target_text": "ella necesita ir a algún lado",
+      "known_audio_id": "3fc3bc83-41c9-4fec-b6dc-7d395c1fd09a",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U04",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she needs to go somewhere",
+      "target_text": "ella necesita ir a algún lado",
+      "known_audio_id": "3fc3bc83-41c9-4fec-b6dc-7d395c1fd09a",
+      "target1_audio_id": "1e85e7f3-43d9-439d-8559-58bb38c0e666",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U04",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "aebf2024-95a5-4d06-b9fe-739b0c133aee",
+      "known_text": "she needs to go somewhere",
+      "target_text": "ella necesita ir a algún lado",
+      "known_audio_id": "3fc3bc83-41c9-4fec-b6dc-7d395c1fd09a",
+      "target1_audio_id": "1e85e7f3-43d9-439d-8559-58bb38c0e666",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U05",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "pienso que fuiste a algún sitio",
+      "known_text": "I think that you went somewhere",
+      "known_audio_id": "9b9ba29a-d53b-420f-b501-9fbe1d9ea2df",
+      "target1_audio_id": "236f0b8c-8afc-4113-b828-6d9a69396747",
+      "target2_audio_id": "00bf4afb-a28a-46ea-9037-561f5bd337e5",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U05",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target_text": "creo que fuiste a algún lado",
+      "known_text": "I think that you went somewhere",
+      "known_audio_id": "9b9ba29a-d53b-420f-b501-9fbe1d9ea2df",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U05",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "I think that you went somewhere",
+      "target_text": "creo que fuiste a algún lado",
+      "known_audio_id": "9b9ba29a-d53b-420f-b501-9fbe1d9ea2df",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U05",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target1_audio_id": "4e53cb00-f72b-4707-b6ca-b9b9fddde6bd",
+      "known_text": "I think that you went somewhere",
+      "target_text": "creo que fuiste a algún lado",
+      "known_audio_id": "9b9ba29a-d53b-420f-b501-9fbe1d9ea2df",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L02U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L02U05",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "I think that you went somewhere",
+      "target_text": "creo que fuiste a algún lado",
+      "known_audio_id": "9b9ba29a-d53b-420f-b501-9fbe1d9ea2df",
+      "target1_audio_id": "4e53cb00-f72b-4707-b6ca-b9b9fddde6bd",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L02U05",
+      "seed_number": 377,
+      "lego_index": 2,
+      "lego_id": null,
+      "target2_audio_id": "f99ee373-c8d4-4828-8165-3223d90e967a",
+      "known_text": "I think that you went somewhere",
+      "target_text": "creo que fuiste a algún lado",
+      "known_audio_id": "9b9ba29a-d53b-420f-b501-9fbe1d9ea2df",
+      "target1_audio_id": "4e53cb00-f72b-4707-b6ca-b9b9fddde6bd",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U05",
+     "set": {
+      "target_text": "pienso que fuiste a algún sitio",
+      "target1_audio_id": "236f0b8c-8afc-4113-b828-6d9a69396747",
+      "target2_audio_id": "00bf4afb-a28a-46ea-9037-561f5bd337e5"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U04",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U04",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U04",
+     "set": {
+      "target_text": "ella necesita ir a algún sitio",
+      "target1_audio_id": "9ba772fa-f851-4913-8cbe-4c4c2d49b049",
+      "target2_audio_id": "07647aaf-182d-4c4a-9d88-419f1adc0a4c"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U03",
+     "set": {
+      "target_text": "mi amigo podría ir a algún sitio",
+      "target1_audio_id": "15b445f8-eb12-4d8b-a7cd-961510491996",
+      "target2_audio_id": "50aaada7-9438-427a-9c5a-998badea2dfd"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L02U02",
+     "set": {
+      "target_text": "quiero ir a algún sitio",
+      "target1_audio_id": "76df89b5-c29a-4094-9704-1da1fb1e95c1",
+      "target2_audio_id": "4fad95e2-fa0b-4f6b-bcb2-56a9e8c0777e"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-09-00-457Z-0021db1b-4663-4583-abde-4ac2470a5122.json"
+  }
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "a3d26753-3730-4460-ba1b-c67e2c6c9657",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L03U01",
+      "seed_number": 377,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?",
+      "known_text": "did you go somewhere in the world last year?",
+      "known_audio_id": "5c308c62-1439-40cd-9aee-37a04cbb367d",
+      "target1_audio_id": "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+      "target2_audio_id": "f799ae40-d9cd-4a45-bfc2-e979bf0d8903",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L03U01",
+      "seed_number": 377,
+      "lego_index": 3,
+      "lego_id": null,
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_text": "did you go somewhere in the world last year?",
+      "known_audio_id": "5c308c62-1439-40cd-9aee-37a04cbb367d",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L03U01",
+      "seed_number": 377,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "did you go somewhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "5c308c62-1439-40cd-9aee-37a04cbb367d",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L03U01",
+      "seed_number": 377,
+      "lego_index": 3,
+      "lego_id": null,
+      "target1_audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1",
+      "known_text": "did you go somewhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "5c308c62-1439-40cd-9aee-37a04cbb367d",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0377L03U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0377L03U01",
+      "seed_number": 377,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "did you go somewhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "5c308c62-1439-40cd-9aee-37a04cbb367d",
+      "target1_audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0377L03U01",
+      "seed_number": 377,
+      "lego_index": 3,
+      "lego_id": null,
+      "target2_audio_id": "aa9b531d-2a86-42d7-8744-f9c2f1430627",
+      "known_text": "did you go somewhere in the world last year?",
+      "target_text": "¿Fuiste a algún lado en el mundo el año pasado?",
+      "known_audio_id": "5c308c62-1439-40cd-9aee-37a04cbb367d",
+      "target1_audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01C02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "algún sitio",
+      "known_text": "somewhere",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "e301a69a-5bd2-478f-8085-d8c05b8c8f5b",
+      "target2_audio_id": "ffe8861d-a3df-41b6-a219-67333e4e1baf",
+      "presentation_audio_id": "eae2b9be-0dcb-4272-96f9-174ef89863ce"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01C02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "algún lado",
+      "known_text": "somewhere",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": "eae2b9be-0dcb-4272-96f9-174ef89863ce"
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01C02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": "eae2b9be-0dcb-4272-96f9-174ef89863ce"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01C02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "presentation_audio_id": "eae2b9be-0dcb-4272-96f9-174ef89863ce"
+     },
+     "changed": false
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01C02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01C02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "presentation_audio_id": "eae2b9be-0dcb-4272-96f9-174ef89863ce"
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01C02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "8bbb6543-358f-421f-b278-65eabf65ce2d",
+      "known_text": "somewhere",
+      "target_text": "algún lado",
+      "known_audio_id": "c5b3a79f-b043-4f84-a08f-a667971c5c94",
+      "target1_audio_id": "b08a3bbf-3d84-49f2-b1cd-9cf774c0894e",
+      "presentation_audio_id": "eae2b9be-0dcb-4272-96f9-174ef89863ce"
+     },
+     "changed": false
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "parar en algún sitio",
+      "known_text": "to stop somewhere",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "d27028d2-6668-410f-9837-8d1b766d185c",
+      "target2_audio_id": "6d6c3aa0-3676-42ff-b0a2-eeac72039fae",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "parar en algún lado",
+      "known_text": "to stop somewhere",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "2c768342-b88b-4270-b789-d3c8121b6bd3",
+      "known_text": "to stop somewhere",
+      "target_text": "parar en algún lado",
+      "known_audio_id": "1b677f37-0028-4824-9866-a1442fef63a2",
+      "target1_audio_id": "552ae5db-8689-47b0-8096-395c70ff30cf",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sería agradable parar en algún sitio",
+      "known_text": "it would be nice to stop somewhere",
+      "known_audio_id": "8a6869e4-7a4f-4797-ad28-6b8846e61e47",
+      "target1_audio_id": "89db8176-de6e-4782-8bcb-330b91f987fb",
+      "target2_audio_id": "23b8747b-f61d-4c02-a8d9-135f9bdb9c2d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sería agradable parar en algún lado",
+      "known_text": "it would be nice to stop somewhere",
+      "known_audio_id": "8a6869e4-7a4f-4797-ad28-6b8846e61e47",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it would be nice to stop somewhere",
+      "target_text": "sería agradable parar en algún lado",
+      "known_audio_id": "8a6869e4-7a4f-4797-ad28-6b8846e61e47",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "d9215f70-0233-45ff-bdd0-5d6016523b23",
+      "known_text": "it would be nice to stop somewhere",
+      "target_text": "sería agradable parar en algún lado",
+      "known_audio_id": "8a6869e4-7a4f-4797-ad28-6b8846e61e47",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it would be nice to stop somewhere",
+      "target_text": "sería agradable parar en algún lado",
+      "known_audio_id": "8a6869e4-7a4f-4797-ad28-6b8846e61e47",
+      "target1_audio_id": "d9215f70-0233-45ff-bdd0-5d6016523b23",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "78f15ac6-b294-4853-91f4-7f1dd36a54e1",
+      "known_text": "it would be nice to stop somewhere",
+      "target_text": "sería agradable parar en algún lado",
+      "known_audio_id": "8a6869e4-7a4f-4797-ad28-6b8846e61e47",
+      "target1_audio_id": "d9215f70-0233-45ff-bdd0-5d6016523b23",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B02",
+     "set": {
+      "target_text": "sería agradable parar en algún sitio",
+      "target1_audio_id": "89db8176-de6e-4782-8bcb-330b91f987fb",
+      "target2_audio_id": "23b8747b-f61d-4c02-a8d9-135f9bdb9c2d"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B01",
+     "set": {
+      "target_text": "parar en algún sitio",
+      "target1_audio_id": "d27028d2-6668-410f-9837-8d1b766d185c",
+      "target2_audio_id": "6d6c3aa0-3676-42ff-b0a2-eeac72039fae"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01C02",
+     "set": {
+      "target_text": "algún sitio",
+      "target1_audio_id": "e301a69a-5bd2-478f-8085-d8c05b8c8f5b",
+      "target2_audio_id": "ffe8861d-a3df-41b6-a219-67333e4e1baf"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L03U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L03U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0377L03U01",
+     "set": {
+      "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?",
+      "target1_audio_id": "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+      "target2_audio_id": "f799ae40-d9cd-4a45-bfc2-e979bf0d8903"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-09-07-091Z-a3d26753-3730-4460-ba1b-c67e2c6c9657.json"
+  }
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "23053646-9040-4724-93cf-7c6845cfce72",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ella quiere parar en algún sitio",
+      "known_text": "she wants to stop somewhere",
+      "known_audio_id": "1ea75998-0a3d-4f52-8449-2c80778e2602",
+      "target1_audio_id": "f4973826-d719-4fbc-9e8d-a4dcddc867e6",
+      "target2_audio_id": "22bcb0fa-b97d-4e16-9350-3d4fab46371e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ella quiere parar en algún lado",
+      "known_text": "she wants to stop somewhere",
+      "known_audio_id": "1ea75998-0a3d-4f52-8449-2c80778e2602",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she wants to stop somewhere",
+      "target_text": "ella quiere parar en algún lado",
+      "known_audio_id": "1ea75998-0a3d-4f52-8449-2c80778e2602",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "793e5b21-ec69-455d-9292-e5b0c7eab65e",
+      "known_text": "she wants to stop somewhere",
+      "target_text": "ella quiere parar en algún lado",
+      "known_audio_id": "1ea75998-0a3d-4f52-8449-2c80778e2602",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01B03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01B03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she wants to stop somewhere",
+      "target_text": "ella quiere parar en algún lado",
+      "known_audio_id": "1ea75998-0a3d-4f52-8449-2c80778e2602",
+      "target1_audio_id": "793e5b21-ec69-455d-9292-e5b0c7eab65e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01B03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "bde77a6f-83e1-49a4-95ee-52119000be9d",
+      "known_text": "she wants to stop somewhere",
+      "target_text": "ella quiere parar en algún lado",
+      "known_audio_id": "1ea75998-0a3d-4f52-8449-2c80778e2602",
+      "target1_audio_id": "793e5b21-ec69-455d-9292-e5b0c7eab65e",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sí, sería agradable parar en algún sitio para comer",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": "bca00b2b-af0c-45db-9ae3-078d64e91234",
+      "target2_audio_id": "952c2950-d814-4aed-90dc-67461041ef8e",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U01"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U01",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "4dc8ab30-ab2d-4a91-b7f7-60a18bb3fe49",
+      "known_text": "yes it would be nice to stop somewhere for food",
+      "target_text": "sí, sería agradable parar en algún lado para comer",
+      "known_audio_id": "4e183ba7-d119-4398-aa90-15a540e3aa8e",
+      "target1_audio_id": "d907bc75-804d-4bb5-83fc-3ef8311f6925",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ella quiere parar en algún sitio para comer",
+      "known_text": "she wants to stop somewhere for food",
+      "known_audio_id": "24df236c-a5c4-4af0-9bc5-2a01d38532be",
+      "target1_audio_id": "d444af5a-be49-480b-989d-ba142e65425e",
+      "target2_audio_id": "6e2a47a2-4178-4369-8231-56996d433b7b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "ella quiere parar en algún lado para comer",
+      "known_text": "she wants to stop somewhere for food",
+      "known_audio_id": "24df236c-a5c4-4af0-9bc5-2a01d38532be",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "she wants to stop somewhere for food",
+      "target_text": "ella quiere parar en algún lado para comer",
+      "known_audio_id": "24df236c-a5c4-4af0-9bc5-2a01d38532be",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "00abd054-6e32-4b05-89ab-6058ee27d329",
+      "known_text": "she wants to stop somewhere for food",
+      "target_text": "ella quiere parar en algún lado para comer",
+      "known_audio_id": "24df236c-a5c4-4af0-9bc5-2a01d38532be",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U02"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "she wants to stop somewhere for food",
+      "target_text": "ella quiere parar en algún lado para comer",
+      "known_audio_id": "24df236c-a5c4-4af0-9bc5-2a01d38532be",
+      "target1_audio_id": "00abd054-6e32-4b05-89ab-6058ee27d329",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U02",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "6c3bd000-5ca7-47a0-94ed-7bf304573564",
+      "known_text": "she wants to stop somewhere for food",
+      "target_text": "ella quiere parar en algún lado para comer",
+      "known_audio_id": "24df236c-a5c4-4af0-9bc5-2a01d38532be",
+      "target1_audio_id": "00abd054-6e32-4b05-89ab-6058ee27d329",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sería mejor parar en algún sitio",
+      "known_text": "it would be better to stop somewhere",
+      "known_audio_id": "df79b975-d52d-48e3-a2ab-013a2d1394c7",
+      "target1_audio_id": "23bd00bb-2e48-4336-9e7f-86001304c00d",
+      "target2_audio_id": "4762ecfd-4be7-4d13-8ed5-6838fadd4639",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "sería mejor parar en algún lado",
+      "known_text": "it would be better to stop somewhere",
+      "known_audio_id": "df79b975-d52d-48e3-a2ab-013a2d1394c7",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it would be better to stop somewhere",
+      "target_text": "sería mejor parar en algún lado",
+      "known_audio_id": "df79b975-d52d-48e3-a2ab-013a2d1394c7",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "e7c5e52c-555d-486e-9717-10f0c74b7be1",
+      "known_text": "it would be better to stop somewhere",
+      "target_text": "sería mejor parar en algún lado",
+      "known_audio_id": "df79b975-d52d-48e3-a2ab-013a2d1394c7",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U03"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it would be better to stop somewhere",
+      "target_text": "sería mejor parar en algún lado",
+      "known_audio_id": "df79b975-d52d-48e3-a2ab-013a2d1394c7",
+      "target1_audio_id": "e7c5e52c-555d-486e-9717-10f0c74b7be1",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U03",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "13548ce6-64fe-49c1-bc3a-60b8cbfaaf61",
+      "known_text": "it would be better to stop somewhere",
+      "target_text": "sería mejor parar en algún lado",
+      "known_audio_id": "df79b975-d52d-48e3-a2ab-013a2d1394c7",
+      "target1_audio_id": "e7c5e52c-555d-486e-9717-10f0c74b7be1",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U03",
+     "set": {
+      "target_text": "sería mejor parar en algún sitio",
+      "target1_audio_id": "23bd00bb-2e48-4336-9e7f-86001304c00d",
+      "target2_audio_id": "4762ecfd-4be7-4d13-8ed5-6838fadd4639"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U02",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U02",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U02",
+     "set": {
+      "target_text": "ella quiere parar en algún sitio para comer",
+      "target1_audio_id": "d444af5a-be49-480b-989d-ba142e65425e",
+      "target2_audio_id": "6e2a47a2-4178-4369-8231-56996d433b7b"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U01",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U01",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U01",
+     "set": {
+      "target_text": "sí, sería agradable parar en algún sitio para comer",
+      "target1_audio_id": "bca00b2b-af0c-45db-9ae3-078d64e91234",
+      "target2_audio_id": "952c2950-d814-4aed-90dc-67461041ef8e"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B03",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B03",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01B03",
+     "set": {
+      "target_text": "ella quiere parar en algún sitio",
+      "target1_audio_id": "f4973826-d719-4fbc-9e8d-a4dcddc867e6",
+      "target2_audio_id": "22bcb0fa-b97d-4e16-9350-3d4fab46371e"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-09-13-808Z-23053646-9040-4724-93cf-7c6845cfce72.json"
+  }
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "n": 12,
+  "result": {
+   "ok": true,
+   "dryRun": false,
+   "applied": true,
+   "event_id": "29adc7c4-d2ef-47d9-bf49-e06b3e3ae869",
+   "results": [
+    {
+     "index": 0,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U04",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "queremos parar en algún sitio ahora",
+      "known_text": "we want to stop somewhere now",
+      "known_audio_id": "2a4d4ee0-1df5-44d0-a31c-0724cbe26747",
+      "target1_audio_id": "e986e123-23d9-457f-a671-ab18f58dd352",
+      "target2_audio_id": "8bf43fbd-d324-4b85-a3e0-8f1e2e914b3d",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U04",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "queremos parar en algún lado ahora",
+      "known_text": "we want to stop somewhere now",
+      "known_audio_id": "2a4d4ee0-1df5-44d0-a31c-0724cbe26747",
+      "target1_audio_id": "397caf1c-6956-4ee3-bc5c-1b9beb283e7b",
+      "target2_audio_id": "3de139f0-d504-47d2-a62e-10112f44711a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 1,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U04",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "397caf1c-6956-4ee3-bc5c-1b9beb283e7b",
+      "known_text": "we want to stop somewhere now",
+      "target_text": "queremos parar en algún lado ahora",
+      "known_audio_id": "2a4d4ee0-1df5-44d0-a31c-0724cbe26747",
+      "target2_audio_id": "3de139f0-d504-47d2-a62e-10112f44711a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U04",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "397caf1c-6956-4ee3-bc5c-1b9beb283e7b",
+      "known_text": "we want to stop somewhere now",
+      "target_text": "queremos parar en algún lado ahora",
+      "known_audio_id": "2a4d4ee0-1df5-44d0-a31c-0724cbe26747",
+      "target2_audio_id": "3de139f0-d504-47d2-a62e-10112f44711a",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 2,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U04"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U04",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "3de139f0-d504-47d2-a62e-10112f44711a",
+      "known_text": "we want to stop somewhere now",
+      "target_text": "queremos parar en algún lado ahora",
+      "known_audio_id": "2a4d4ee0-1df5-44d0-a31c-0724cbe26747",
+      "target1_audio_id": "397caf1c-6956-4ee3-bc5c-1b9beb283e7b",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U04",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "3de139f0-d504-47d2-a62e-10112f44711a",
+      "known_text": "we want to stop somewhere now",
+      "target_text": "queremos parar en algún lado ahora",
+      "known_audio_id": "2a4d4ee0-1df5-44d0-a31c-0724cbe26747",
+      "target1_audio_id": "397caf1c-6956-4ee3-bc5c-1b9beb283e7b",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 3,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U05",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "es importante parar en algún sitio para comer",
+      "known_text": "it's important to stop somewhere for food",
+      "known_audio_id": "6e631967-274e-4325-9a63-80a1f89d4962",
+      "target1_audio_id": "3d5c8c21-065a-4c51-81b2-ab32a29ab5e9",
+      "target2_audio_id": "95f97e30-55fe-4405-9c65-fd8df9f6edae",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U05",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "es importante parar en algún lado para comer",
+      "known_text": "it's important to stop somewhere for food",
+      "known_audio_id": "6e631967-274e-4325-9a63-80a1f89d4962",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 4,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U05",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "it's important to stop somewhere for food",
+      "target_text": "es importante parar en algún lado para comer",
+      "known_audio_id": "6e631967-274e-4325-9a63-80a1f89d4962",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U05",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "b95ccbb8-22fa-490c-9299-ea73829a8f4a",
+      "known_text": "it's important to stop somewhere for food",
+      "target_text": "es importante parar en algún lado para comer",
+      "known_audio_id": "6e631967-274e-4325-9a63-80a1f89d4962",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 5,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U05",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "it's important to stop somewhere for food",
+      "target_text": "es importante parar en algún lado para comer",
+      "known_audio_id": "6e631967-274e-4325-9a63-80a1f89d4962",
+      "target1_audio_id": "b95ccbb8-22fa-490c-9299-ea73829a8f4a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U05",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "b6cea81e-bda7-4604-a1ca-d3db9e1abe58",
+      "known_text": "it's important to stop somewhere for food",
+      "target_text": "es importante parar en algún lado para comer",
+      "known_audio_id": "6e631967-274e-4325-9a63-80a1f89d4962",
+      "target1_audio_id": "b95ccbb8-22fa-490c-9299-ea73829a8f4a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 6,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U06",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "podré parar en algún sitio",
+      "known_text": "I will be able to stop somewhere",
+      "known_audio_id": "419d362b-e31d-44ff-baf7-12c808a6ee7f",
+      "target1_audio_id": "56186f08-3fa9-4dcc-9172-d5a10b1a0311",
+      "target2_audio_id": "3151aa90-1604-4d55-8f37-dac6fb286ba6",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U06",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "podré parar en algún lado",
+      "known_text": "I will be able to stop somewhere",
+      "known_audio_id": "419d362b-e31d-44ff-baf7-12c808a6ee7f",
+      "target1_audio_id": "8db709aa-d163-40fa-97d5-3b7c4eb949e7",
+      "target2_audio_id": "476c1ef2-c8ee-4927-9f37-a6976fba2c9a",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 7,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U06",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "8db709aa-d163-40fa-97d5-3b7c4eb949e7",
+      "known_text": "I will be able to stop somewhere",
+      "target_text": "podré parar en algún lado",
+      "known_audio_id": "419d362b-e31d-44ff-baf7-12c808a6ee7f",
+      "target2_audio_id": "476c1ef2-c8ee-4927-9f37-a6976fba2c9a",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U06",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "8db709aa-d163-40fa-97d5-3b7c4eb949e7",
+      "known_text": "I will be able to stop somewhere",
+      "target_text": "podré parar en algún lado",
+      "known_audio_id": "419d362b-e31d-44ff-baf7-12c808a6ee7f",
+      "target2_audio_id": "476c1ef2-c8ee-4927-9f37-a6976fba2c9a",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 8,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0402L01U06"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0402L01U06",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "476c1ef2-c8ee-4927-9f37-a6976fba2c9a",
+      "known_text": "I will be able to stop somewhere",
+      "target_text": "podré parar en algún lado",
+      "known_audio_id": "419d362b-e31d-44ff-baf7-12c808a6ee7f",
+      "target1_audio_id": "8db709aa-d163-40fa-97d5-3b7c4eb949e7",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0402L01U06",
+      "seed_number": 402,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "476c1ef2-c8ee-4927-9f37-a6976fba2c9a",
+      "known_text": "I will be able to stop somewhere",
+      "target_text": "podré parar en algún lado",
+      "known_audio_id": "419d362b-e31d-44ff-baf7-12c808a6ee7f",
+      "target1_audio_id": "8db709aa-d163-40fa-97d5-3b7c4eb949e7",
+      "presentation_audio_id": null
+     },
+     "changed": false
+    },
+    {
+     "index": 9,
+     "op": "phrase.update",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0403L01U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0403L01U05",
+      "seed_number": 403,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "deberíamos parar en algún sitio",
+      "known_text": "we should stop somewhere",
+      "known_audio_id": "a753dec9-5d37-4386-a0ab-04b9a41beedf",
+      "target1_audio_id": "d8337740-f8c2-422b-8fba-6fb73cdbb24f",
+      "target2_audio_id": "303c1a53-f5f0-48ec-8626-c69ed8fdb54c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0403L01U05",
+      "seed_number": 403,
+      "lego_index": 1,
+      "lego_id": null,
+      "target_text": "deberíamos parar en algún lado",
+      "known_text": "we should stop somewhere",
+      "known_audio_id": "a753dec9-5d37-4386-a0ab-04b9a41beedf",
+      "target1_audio_id": null,
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 10,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0403L01U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0403L01U05",
+      "seed_number": 403,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": null,
+      "known_text": "we should stop somewhere",
+      "target_text": "deberíamos parar en algún lado",
+      "known_audio_id": "a753dec9-5d37-4386-a0ab-04b9a41beedf",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0403L01U05",
+      "seed_number": 403,
+      "lego_index": 1,
+      "lego_id": null,
+      "target1_audio_id": "d3e4b6d8-9af6-45e9-8d4f-7306e19c3c8c",
+      "known_text": "we should stop somewhere",
+      "target_text": "deberíamos parar en algún lado",
+      "known_audio_id": "a753dec9-5d37-4386-a0ab-04b9a41beedf",
+      "target2_audio_id": null,
+      "presentation_audio_id": null
+     },
+     "changed": true
+    },
+    {
+     "index": 11,
+     "op": "audio.link",
+     "key": {
+      "course_code": "spa_mx_for_eng",
+      "id": "spa_mx_for_eng:S0403L01U05"
+     },
+     "before": {
+      "id": "spa_mx_for_eng:S0403L01U05",
+      "seed_number": 403,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": null,
+      "known_text": "we should stop somewhere",
+      "target_text": "deberíamos parar en algún lado",
+      "known_audio_id": "a753dec9-5d37-4386-a0ab-04b9a41beedf",
+      "target1_audio_id": "d3e4b6d8-9af6-45e9-8d4f-7306e19c3c8c",
+      "presentation_audio_id": null
+     },
+     "after": {
+      "id": "spa_mx_for_eng:S0403L01U05",
+      "seed_number": 403,
+      "lego_index": 1,
+      "lego_id": null,
+      "target2_audio_id": "54f720ef-cc45-4d37-ace9-9e9b5e8bd71f",
+      "known_text": "we should stop somewhere",
+      "target_text": "deberíamos parar en algún lado",
+      "known_audio_id": "a753dec9-5d37-4386-a0ab-04b9a41beedf",
+      "target1_audio_id": "d3e4b6d8-9af6-45e9-8d4f-7306e19c3c8c",
+      "presentation_audio_id": null
+     },
+     "changed": true
+    }
+   ],
+   "undo_ops": [
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0403L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0403L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0403L01U05",
+     "set": {
+      "target_text": "deberíamos parar en algún sitio",
+      "target1_audio_id": "d8337740-f8c2-422b-8fba-6fb73cdbb24f",
+      "target2_audio_id": "303c1a53-f5f0-48ec-8626-c69ed8fdb54c"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U06",
+     "set": {
+      "target_text": "podré parar en algún sitio",
+      "target1_audio_id": "56186f08-3fa9-4dcc-9172-d5a10b1a0311",
+      "target2_audio_id": "3151aa90-1604-4d55-8f37-dac6fb286ba6"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U05",
+     "set": {
+      "target2_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U05",
+     "set": {
+      "target1_audio_id": null
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U05",
+     "set": {
+      "target_text": "es importante parar en algún sitio para comer",
+      "target1_audio_id": "3d5c8c21-065a-4c51-81b2-ab32a29ab5e9",
+      "target2_audio_id": "95f97e30-55fe-4405-9c65-fd8df9f6edae"
+     }
+    },
+    {
+     "op": "phrase.update",
+     "phrase_id": "spa_mx_for_eng:S0402L01U04",
+     "set": {
+      "target_text": "queremos parar en algún sitio ahora",
+      "target1_audio_id": "e986e123-23d9-457f-a671-ab18f58dd352",
+      "target2_audio_id": "8bf43fbd-d324-4b85-a3e0-8f1e2e914b3d"
+     }
+    }
+   ],
+   "undo_file": "2026-11-21T02-09-20-131Z-29adc7c4-d2ef-47d9-bf49-e06b3e3ae869.json"
+  }
+ }
+]

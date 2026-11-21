@@ -1576,276 +1576,271 @@
  {
   "role": "target2",
   "text": "sim, você concordou com ela",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "3fc6b894-a300-407e-bcd8-afc9184250d1",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0385L01U03"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target1",
   "text": "você concordou com ele há pouco?",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "64a2706c-5d6a-47bd-93d4-31d183b6a461",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0385L01U04"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target2",
   "text": "você concordou com ele há pouco?",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "f1c3a2bb-88e5-48da-a7d1-1ddc2aa6aae0",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0385L01U04"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target1",
   "text": "não, você não concordou com ela",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "26eee0a5-5a2a-444a-843f-cae129f5b6cf",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0385L01U05"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target2",
   "text": "não, você não concordou com ela",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "d733f982-beb5-4785-adfa-05b077880caf",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0385L01U05"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target1",
   "text": "você devia considerar esperar um pouco mais",
-  "audioId": null,
-  "source": null,
+  "audioId": "f94111eb-0e32-4611-b056-e04b520d39ad",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L02U02"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-BrendaNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target2",
   "text": "você devia considerar esperar um pouco mais",
-  "audioId": null,
-  "source": null,
+  "audioId": "53a3bb5e-ada3-4d22-beb7-d8cf063349cb",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L02U02"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-JulioNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target1",
   "text": "devia considerar fazer coisas diferentes",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "649f764c-561f-4183-8051-15ec1991306f",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0098L02U03"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target2",
   "text": "devia considerar fazer coisas diferentes",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "13d5a8d3-d02b-4999-9139-747eaaebf816",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0098L02U03"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target1",
   "text": "considerar jogar outra coisa",
-  "audioId": null,
-  "source": null,
+  "audioId": "12f27a69-f1df-4a9d-8144-575087721cfc",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L03B02"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-BrendaNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target2",
   "text": "considerar jogar outra coisa",
-  "audioId": null,
-  "source": null,
+  "audioId": "f1170b1a-39ae-4993-a681-8e96c5812808",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L03B02"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-JulioNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target1",
   "text": "você devia considerar jogar outra coisa",
-  "audioId": null,
-  "source": null,
+  "audioId": "7eb7acf0-0e50-4bd4-9863-bb255ae6e3b6",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L03U03"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-BrendaNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target2",
   "text": "você devia considerar jogar outra coisa",
-  "audioId": null,
-  "source": null,
+  "audioId": "51b9156c-4266-483a-b266-a233bc1bd601",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L03U03"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-JulioNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target1",
   "text": "é importante considerar jogar outra coisa",
-  "audioId": null,
-  "source": null,
+  "audioId": "6b638046-2806-446b-a8c6-362e0b259c82",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L03U04"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-BrendaNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target2",
   "text": "é importante considerar jogar outra coisa",
-  "audioId": null,
-  "source": null,
+  "audioId": "0e4cd35b-9e05-4983-9eff-5173297054f9",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0098L03U04"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-JulioNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target1",
   "text": "devia considerar fazer algo parecido",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "be93be8e-a528-4a52-99ba-cf2720d51560",
+  "source": "rendered",
+  "charsSpent": 36,
   "rows": [
    "S0100L02U02"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target2",
   "text": "devia considerar fazer algo parecido",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "b961fcbb-6f46-45f8-ac10-185e0d0b1925",
+  "source": "rendered",
+  "charsSpent": 36,
   "rows": [
    "S0100L02U02"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "target1",
   "text": "você devia considerar jogar algo parecido",
-  "audioId": null,
-  "source": null,
+  "audioId": "cf0a12c2-b3c1-4937-bb88-cdf2719beb2e",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0100L02U04"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-BrendaNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "target2",
   "text": "você devia considerar jogar algo parecido",
-  "audioId": null,
-  "source": null,
+  "audioId": "c4d81840-fb09-4ecc-b5c5-27c77204cc99",
+  "source": "exists_in_language",
   "charsSpent": null,
   "rows": [
    "S0100L02U04"
   ],
-  "code": "CLIENT_TIMEOUT"
+  "voiceId": "azure_pt-BR-JulioNeural",
+  "code": "EXISTS_IN_LANGUAGE"
  },
  {
   "role": "presentation",
   "text": "The Portuguese for: 'was sure', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "f54d9d37-4e9d-4549-a99d-522c1cf643e6",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0202L03"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "presentation",
   "text": "The Portuguese for: 'i'm sure that', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "5d13f613-7088-40a2-afa8-a935686524c7",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0340L01"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "presentation",
   "text": "The Portuguese for: 'serious', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "7592ed08-f8e2-487f-8a4c-50f778a07422",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0482L04"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "presentation",
   "text": "The Portuguese for: 'he's hurt himself', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "16b43fc1-b86d-45b2-832d-d7fbdcf001c0",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0339L01"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "presentation",
   "text": "The Portuguese for: 'you asked', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "d0257444-cfbc-40fa-9431-1b5bd9aae1b6",
+  "source": "rendered",
+  "charsSpent": 0,
   "rows": [
    "S0382L01"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  },
  {
   "role": "presentation",
   "text": "The Portuguese for: 'you agreed', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-  "audioId": null,
-  "source": null,
-  "charsSpent": null,
+  "audioId": "1e396631-9d83-4ed2-b6e7-bf8711ef3c42",
+  "source": "library",
+  "charsSpent": 0,
   "rows": [
    "S0385L01"
-  ],
-  "code": "CLIENT_TIMEOUT"
+  ]
  }
 ]

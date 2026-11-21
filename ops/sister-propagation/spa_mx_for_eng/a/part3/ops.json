@@ -1,0 +1,2135 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01B03",
+  "expect": {
+   "known_text": "I don't think that he could sit down",
+   "target_text": "no pienso que él pueda sentarse"
+  },
+  "set": {
+   "target_text": "no creo que él pueda sentarse"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01B03",
+  "slot": "target1",
+  "audio_id": "e1773034-74f0-4c9a-9835-114a577015fb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01B03",
+  "slot": "target2",
+  "audio_id": "740ccdd0-5f99-41f4-ab93-714c3e9f3d84"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U01",
+  "expect": {
+   "known_text": "I don't think that she can help you",
+   "target_text": "no pienso que pueda ayudarte"
+  },
+  "set": {
+   "target_text": "no creo que pueda ayudarte"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U01",
+  "slot": "target1",
+  "audio_id": "93dfb4f3-7319-40c9-8b67-dceb15a6bea5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U01",
+  "slot": "target2",
+  "audio_id": "d0f747ad-2f3b-47c9-b671-e237c867292b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U02",
+  "expect": {
+   "known_text": "I don't think that she can write that",
+   "target_text": "no pienso que pueda escribir eso"
+  },
+  "set": {
+   "target_text": "no creo que pueda escribir eso"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U02",
+  "slot": "target1",
+  "audio_id": "88da0997-0ff2-47a3-a5f5-9b7e54c2a0bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U02",
+  "slot": "target2",
+  "audio_id": "a7ca3911-ea02-42d4-b912-293a148d0fd5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U03",
+  "expect": {
+   "known_text": "I don't think that she can live here",
+   "target_text": "no pienso que pueda vivir aquí"
+  },
+  "set": {
+   "target_text": "no creo que pueda vivir aquí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U03",
+  "slot": "target1",
+  "audio_id": "4acf3877-5208-4bf3-8bef-9c072ea8c4b6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U03",
+  "slot": "target2",
+  "audio_id": "6d3176b7-f74d-474f-aa58-61c8b8d8c1a4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U04",
+  "expect": {
+   "known_text": "I don't think that he can work",
+   "target_text": "no pienso que él pueda trabajar"
+  },
+  "set": {
+   "target_text": "no creo que él pueda trabajar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U04",
+  "slot": "target1",
+  "audio_id": "3d601052-bbc5-471b-827f-1e3e5a5d3fbc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U04",
+  "slot": "target2",
+  "audio_id": "97fd70fd-ea80-4394-8b8e-5d7e888c84a8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L01U05",
+  "expect": {
+   "known_text": "I don't think that she can sit over there",
+   "target_text": "no pienso que pueda sentarse allí"
+  },
+  "set": {
+   "target_text": "no creo que pueda sentarse allí"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U05",
+  "slot": "target1",
+  "audio_id": "e157d867-5959-4e9a-813c-1b49090abb55"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L01U05",
+  "slot": "target2",
+  "audio_id": "33328737-7d9a-4a84-911a-ae467091da4d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0318L02U01",
+  "expect": {
+   "known_text": "no, I don't think that she could this time",
+   "target_text": "no, no pienso que pueda esta vez"
+  },
+  "set": {
+   "target_text": "no, no creo que pueda esta vez"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L02U01",
+  "slot": "target1",
+  "audio_id": "3d67949e-092a-4ca1-9175-6c3cf424ab70"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0318L02U01",
+  "slot": "target2",
+  "audio_id": "44bdc33f-cb67-42f1-8e5a-c63e07c1e9c2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0325L02U01",
+  "expect": {
+   "known_text": "I think that he needs to consider ten possible problems",
+   "target_text": "pienso que él necesita considerar diez posibles problemas"
+  },
+  "set": {
+   "target_text": "creo que él necesita considerar diez posibles problemas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0325L02U01",
+  "slot": "target1",
+  "audio_id": "26a27621-7b72-42c3-98e7-9d1f2f0e3a45"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0325L02U01",
+  "slot": "target2",
+  "audio_id": "14510b26-5f9a-4a82-b73a-03faaa5c7b79"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01B02",
+  "expect": {
+   "known_text": "I don't think that she needs to write",
+   "target_text": "no pienso que necesite escribir"
+  },
+  "set": {
+   "target_text": "no creo que necesite escribir"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01B02",
+  "slot": "target1",
+  "audio_id": "0292ea51-5f48-4ae6-8ec1-78551a05ca50"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01B02",
+  "slot": "target2",
+  "audio_id": "42d1fbbe-916e-42f8-8375-c4f1bfc97e80"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01B03",
+  "expect": {
+   "known_text": "I don't think that he needs to work",
+   "target_text": "no pienso que necesite trabajar"
+  },
+  "set": {
+   "target_text": "no creo que necesite trabajar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01B03",
+  "slot": "target1",
+  "audio_id": "45bf73ac-0e9f-4390-8ce7-d8ba88fdc359"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01B03",
+  "slot": "target2",
+  "audio_id": "8784361d-bdc2-41ee-a4ae-6dd6e993af0a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U01",
+  "expect": {
+   "known_text": "I don't think that she needs to buy a car",
+   "target_text": "no pienso que necesite comprar un carro"
+  },
+  "set": {
+   "target_text": "no creo que necesite comprar un carro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U01",
+  "slot": "target1",
+  "audio_id": "b5d60b3b-c4c3-42eb-b6cb-72471266c48f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U01",
+  "slot": "target2",
+  "audio_id": "00fb7be5-c203-4aa3-940d-bde63d58df2c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U02",
+  "expect": {
+   "known_text": "I don't think that he needs to move",
+   "target_text": "no pienso que necesite mudarse"
+  },
+  "set": {
+   "target_text": "no creo que necesite mudarse"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U02",
+  "slot": "target1",
+  "audio_id": "52322b78-489d-46bf-8155-38542471b72b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U02",
+  "slot": "target2",
+  "audio_id": "667f355e-67f8-4f05-916f-f3611b0d933f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U03",
+  "expect": {
+   "known_text": "I don't think that she needs that book",
+   "target_text": "no pienso que necesite ese libro"
+  },
+  "set": {
+   "target_text": "no creo que necesite ese libro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U03",
+  "slot": "target1",
+  "audio_id": "0eb0c91d-7237-4f01-b6b0-2787a1304f85"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U03",
+  "slot": "target2",
+  "audio_id": "7f6c1b2e-222d-4067-8cc9-c62c2853528b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U04",
+  "expect": {
+   "known_text": "I don't think that he needs help",
+   "target_text": "no pienso que necesite ayuda"
+  },
+  "set": {
+   "target_text": "no creo que necesite ayuda"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U04",
+  "slot": "target1",
+  "audio_id": "0b209bee-0123-4526-bd1c-004b7e17bc24"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U04",
+  "slot": "target2",
+  "audio_id": "aea55be7-818c-42dc-8b25-4224dbe440ab"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L01U05",
+  "expect": {
+   "known_text": "I don't think that she needs to go to school",
+   "target_text": "no pienso que necesite ir a la escuela"
+  },
+  "set": {
+   "target_text": "no creo que necesite ir a la escuela"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U05",
+  "slot": "target1",
+  "audio_id": "8b7eb69d-a6c3-4a08-b9ba-b48ac34cd687"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L01U05",
+  "slot": "target2",
+  "audio_id": "4a9df1f1-e778-40bc-abe6-1366e51e6ef0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L02U04",
+  "expect": {
+   "known_text": "I don't think that she needs to sell that book",
+   "target_text": "no pienso que necesite vender ese libro"
+  },
+  "set": {
+   "target_text": "no creo que necesite vender ese libro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L02U04",
+  "slot": "target1",
+  "audio_id": "f8fb6b2c-e7b5-4042-bf23-f178de3966ec"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L02U04",
+  "slot": "target2",
+  "audio_id": "98a76cff-13e9-4b43-a6d1-46ac20c10a2c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0326L03U01",
+  "expect": {
+   "known_text": "I don't think that she needs to sell the company",
+   "target_text": "no pienso que ella necesite vender la empresa"
+  },
+  "set": {
+   "target_text": "no creo que ella necesite vender la empresa"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L03U01",
+  "slot": "target1",
+  "audio_id": "b43522f0-b174-49f6-82e2-86a146b43f77"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0326L03U01",
+  "slot": "target2",
+  "audio_id": "43021106-9bd7-4b13-b29f-091f5ca59394"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0327L02U01",
+  "expect": {
+   "known_text": "do you think that she needs to offer another way?",
+   "target_text": "¿piensas que ella necesita ofrecer otra manera?"
+  },
+  "set": {
+   "target_text": "¿crees que ella necesita ofrecer otra manera?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0327L02U01",
+  "slot": "target1",
+  "audio_id": "6d7d1d2f-6b5a-4ca9-a155-85e873180a36"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0327L02U01",
+  "slot": "target2",
+  "audio_id": "654dbd30-1a9f-4a27-9a5a-617f8a5a3c66"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0327L02U03",
+  "expect": {
+   "known_text": "I don't think that she needs another way",
+   "target_text": "no pienso que necesite otra manera"
+  },
+  "set": {
+   "target_text": "no creo que necesite otra manera"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0327L02U03",
+  "slot": "target1",
+  "audio_id": "afb6d25b-3719-4c3c-ab4f-7ce40c3eea99"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0327L02U03",
+  "slot": "target2",
+  "audio_id": "dc8558e7-03b9-4827-b60f-da8d836e0aab"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01B02",
+  "expect": {
+   "known_text": "I think she ought to write",
+   "target_text": "pienso que debería escribir"
+  },
+  "set": {
+   "target_text": "creo que debería escribir"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01B02",
+  "slot": "target1",
+  "audio_id": "f15bb8c8-3259-461b-aa3f-c0c789c05d86"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01B02",
+  "slot": "target2",
+  "audio_id": "80c98718-3adf-4fe8-a18d-d780d1b4a257"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01B03",
+  "expect": {
+   "known_text": "I think he ought to work",
+   "target_text": "pienso que debería trabajar"
+  },
+  "set": {
+   "target_text": "creo que debería trabajar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01B03",
+  "slot": "target1",
+  "audio_id": "ed41a55f-e45c-485b-9156-9e3981483ba4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01B03",
+  "slot": "target2",
+  "audio_id": "2a815553-c33b-4d39-a845-851245c3fbb5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U01",
+  "expect": {
+   "known_text": "yes, I think she ought to",
+   "target_text": "sí, pienso que debería"
+  },
+  "set": {
+   "target_text": "sí, creo que debería"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U01",
+  "slot": "target1",
+  "audio_id": "9570a17c-bd72-4d00-9e2b-c7e519e0a56d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U01",
+  "slot": "target2",
+  "audio_id": "efdf7a2e-3368-423f-a4a6-8a7eb172678f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U02",
+  "expect": {
+   "known_text": "I think he ought to sell the car",
+   "target_text": "pienso que debería vender el carro"
+  },
+  "set": {
+   "target_text": "creo que debería vender el carro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U02",
+  "slot": "target1",
+  "audio_id": "08928d58-fa6c-49bd-b255-14d19b19d1c5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U02",
+  "slot": "target2",
+  "audio_id": "242cd48d-4478-4f51-8b2c-02b38455ab8e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U03",
+  "expect": {
+   "known_text": "I think she ought to go to school",
+   "target_text": "pienso que debería ir a la escuela"
+  },
+  "set": {
+   "target_text": "creo que debería ir a la escuela"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U03",
+  "slot": "target1",
+  "audio_id": "64df8417-4a5a-46f7-bc37-a4b0c1f0cdeb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U03",
+  "slot": "target2",
+  "audio_id": "af4575e4-f7ee-44ab-84dd-ae40b4ae0a6d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0328L01U05",
+  "expect": {
+   "known_text": "I think that she ought to buy another house",
+   "target_text": "pienso que debería comprar otra casa"
+  },
+  "set": {
+   "target_text": "creo que debería comprar otra casa"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U05",
+  "slot": "target1",
+  "audio_id": "19d0c8c5-0bcc-4bdd-98db-9c8f930c8b38"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0328L01U05",
+  "slot": "target2",
+  "audio_id": "484c108d-bc57-462d-8adb-c4a90a6a65aa"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0329L01U01",
+  "expect": {
+   "known_text": "I think that it's important",
+   "target_text": "pienso que es importante"
+  },
+  "set": {
+   "target_text": "creo que es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0329L01U01",
+  "slot": "target1",
+  "audio_id": "6ac21937-f4a8-4f30-a8f0-21e310c17452"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0329L01U01",
+  "slot": "target2",
+  "audio_id": "ca0d9c04-1df1-4e7e-bbc6-5fbdc3346f7e"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02B02",
+  "expect": {
+   "known_text": "I don't think that it may be important",
+   "target_text": "no pienso que sea importante"
+  },
+  "set": {
+   "target_text": "no creo que sea importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02B02",
+  "slot": "target1",
+  "audio_id": "d55947c5-8e4e-4e8b-8130-6db674c245cf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02B02",
+  "slot": "target2",
+  "audio_id": "e63f89e6-6b71-4f4f-82fa-ea13106c624b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02B03",
+  "expect": {
+   "known_text": "I don't think that it may be very important",
+   "target_text": "no pienso que sea muy importante"
+  },
+  "set": {
+   "target_text": "no creo que sea muy importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02B03",
+  "slot": "target1",
+  "audio_id": "34329d61-cc72-4faa-947a-9f5ceaaedc4a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02B03",
+  "slot": "target2",
+  "audio_id": "cd3e9ba6-08b1-405f-829d-e5bae9b52a1c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U01",
+  "expect": {
+   "known_text": "no, I don't think it's very important",
+   "target_text": "no, no pienso que sea muy importante"
+  },
+  "set": {
+   "target_text": "no, no creo que sea muy importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U01",
+  "slot": "target1",
+  "audio_id": "ffcba527-e379-48f9-8b42-8fe0e4e603f8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U01",
+  "slot": "target2",
+  "audio_id": "4af58343-0226-40ed-8462-f836810800a4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U02",
+  "expect": {
+   "known_text": "I don't think that it's a problem",
+   "target_text": "no pienso que sea un problema"
+  },
+  "set": {
+   "target_text": "no creo que sea un problema"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U02",
+  "slot": "target1",
+  "audio_id": "1554245e-30b0-4c81-bcb6-b75efd68b796"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U02",
+  "slot": "target2",
+  "audio_id": "368ca333-8739-4841-a0d8-f0438e37d3ba"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U03",
+  "expect": {
+   "known_text": "I don't think that it's the answer",
+   "target_text": "no pienso que sea la respuesta"
+  },
+  "set": {
+   "target_text": "no creo que sea la respuesta"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U03",
+  "slot": "target1",
+  "audio_id": "1cae3513-590e-4bfc-bfb7-1fdc3f16503a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U03",
+  "slot": "target2",
+  "audio_id": "8cd06619-3470-4269-bfd2-9c3af851340a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U04",
+  "expect": {
+   "known_text": "I don't think that it's possible",
+   "target_text": "no pienso que sea posible"
+  },
+  "set": {
+   "target_text": "no creo que sea posible"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U04",
+  "slot": "target1",
+  "audio_id": "89a01d71-d7a0-4892-98ec-5d146961c604"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U04",
+  "slot": "target2",
+  "audio_id": "327fc730-505a-44e6-a316-ba12a9104cdd"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0330L02U05",
+  "expect": {
+   "known_text": "I don't think that it's the same book",
+   "target_text": "no pienso que sea el mismo libro"
+  },
+  "set": {
+   "target_text": "no creo que sea el mismo libro"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U05",
+  "slot": "target1",
+  "audio_id": "0e5ddaf1-03ab-4fcf-8ac7-be98058f2d7d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0330L02U05",
+  "slot": "target2",
+  "audio_id": "486b003f-96ae-4b90-be98-fcf3f5a5f4cf"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0331L03U03",
+  "expect": {
+   "known_text": "I don't think that she needs all the answers",
+   "target_text": "no pienso que necesite todas las respuestas"
+  },
+  "set": {
+   "target_text": "no creo que necesite todas las respuestas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0331L03U03",
+  "slot": "target1",
+  "audio_id": "e13d16f5-60e3-43ec-b9d7-88f78589eb45"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0331L03U03",
+  "slot": "target2",
+  "audio_id": "543bc169-2901-4931-b468-428b5d82e34b"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0332L03U05",
+  "expect": {
+   "known_text": "I think that she needs a new life",
+   "target_text": "pienso que ella necesita una nueva vida"
+  },
+  "set": {
+   "target_text": "creo que ella necesita una nueva vida"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0332L03U05",
+  "slot": "target1",
+  "audio_id": "de71264c-c507-4e5c-9462-bf7d51a885cb"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0332L03U05",
+  "slot": "target2",
+  "audio_id": "e47e313f-8897-4000-9965-ddd7ceba8bce"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0335L02U01",
+  "expect": {
+   "known_text": "I think that he can add some valuable ideas",
+   "target_text": "pienso que él puede añadir algunas ideas valiosas"
+  },
+  "set": {
+   "target_text": "creo que él puede añadir algunas ideas valiosas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0335L02U01",
+  "slot": "target1",
+  "audio_id": "dcf06809-290c-4a68-ae65-ad322a52a746"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0335L02U01",
+  "slot": "target2",
+  "audio_id": "328fd60b-ba1b-4cb7-aa11-6ed5e1130044"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0335L02U05",
+  "expect": {
+   "known_text": "I don't think that she needs some valuable ideas",
+   "target_text": "no pienso que necesite algunas ideas valiosas"
+  },
+  "set": {
+   "target_text": "no creo que necesite algunas ideas valiosas"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0335L02U05",
+  "slot": "target1",
+  "audio_id": "3093171c-571c-471d-af54-8799c5757ccd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0335L02U05",
+  "slot": "target2",
+  "audio_id": "9a45dcea-7f21-44d5-90b3-5e9d081592e2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0336L01U02",
+  "expect": {
+   "known_text": "I don't think that she can open that",
+   "target_text": "no pienso que pueda abrir eso"
+  },
+  "set": {
+   "target_text": "no creo que pueda abrir eso"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0336L01U02",
+  "slot": "target1",
+  "audio_id": "ac39acb1-b55e-4676-b5d3-4b070ad3c771"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0336L01U02",
+  "slot": "target2",
+  "audio_id": "eb6d613c-f044-4a54-9d73-4327e577b7c4"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0336L02U01",
+  "expect": {
+   "known_text": "I don't think that she can open the door",
+   "target_text": "no pienso que ella pueda abrir la puerta"
+  },
+  "set": {
+   "target_text": "no creo que ella pueda abrir la puerta"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0336L02U01",
+  "slot": "target1",
+  "audio_id": "0ce58541-5457-4552-ad48-361c9c8d9ed4"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0336L02U01",
+  "slot": "target2",
+  "audio_id": "1662eac3-fa2d-4fe4-aa4e-bb6b61fabfc6"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0337L02U01",
+  "expect": {
+   "known_text": "do you think that he can continue to play?",
+   "target_text": "¿piensas que él puede seguir jugando?"
+  },
+  "set": {
+   "target_text": "¿crees que él puede seguir jugando?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0337L02U01",
+  "slot": "target1",
+  "audio_id": "c89db55e-c14e-4650-b95b-69e2173b192a"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0337L02U01",
+  "slot": "target2",
+  "audio_id": "4294862e-2c63-4110-9184-346a19dccf2d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0338L01U05",
+  "expect": {
+   "known_text": "I think that he works badly",
+   "target_text": "pienso que trabaja mal"
+  },
+  "set": {
+   "target_text": "creo que trabaja mal"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0338L01U05",
+  "slot": "target1",
+  "audio_id": "65279286-0d79-4f67-aaba-de944928b21f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0338L01U05",
+  "slot": "target2",
+  "audio_id": "9fe7be61-6c9b-49ff-93ea-074ffb670cec"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01B02",
+  "expect": {
+   "known_text": "I think that he's hurt himself",
+   "target_text": "pienso que se ha hecho daño"
+  },
+  "set": {
+   "target_text": "creo que se ha hecho daño"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01B02",
+  "slot": "target1",
+  "audio_id": "a1305603-ddd0-451e-beba-58a9b4940553"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01B02",
+  "slot": "target2",
+  "audio_id": "8880cffe-039c-4df3-b550-1b32e5e362c0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01U01",
+  "expect": {
+   "known_text": "no, I think he's hurt himself",
+   "target_text": "no, pienso que se ha hecho daño"
+  },
+  "set": {
+   "target_text": "no, creo que se ha hecho daño"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01U01",
+  "slot": "target1",
+  "audio_id": "671bb042-2b6d-4c8f-8372-b02f0e444410"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01U01",
+  "slot": "target2",
+  "audio_id": "269ac1a6-87c5-49a2-ba56-131abe8332e3"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01U03",
+  "expect": {
+   "known_text": "I think that my friend has hurt himself",
+   "target_text": "pienso que mi amigo se ha hecho daño"
+  },
+  "set": {
+   "target_text": "creo que mi amigo se ha hecho daño"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01U03",
+  "slot": "target1",
+  "audio_id": "1f32ef2e-41fb-40a7-a497-b6216510a133"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01U03",
+  "slot": "target2",
+  "audio_id": "97d77386-1e2c-427c-bfab-a31601c7228d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0339L01U05",
+  "expect": {
+   "known_text": "I think that he has hurt himself",
+   "target_text": "pienso que él se ha hecho daño"
+  },
+  "set": {
+   "target_text": "creo que él se ha hecho daño"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01U05",
+  "slot": "target1",
+  "audio_id": "7bf1881c-fc9d-46b5-b658-4f8180379a65"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0339L01U05",
+  "slot": "target2",
+  "audio_id": "7181759c-099e-49f1-8010-dc16ac280827"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0343L01U05",
+  "expect": {
+   "known_text": "I think that she's worried",
+   "target_text": "pienso que está preocupada"
+  },
+  "set": {
+   "target_text": "creo que está preocupada"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0343L01U05",
+  "slot": "target1",
+  "audio_id": "fc8aa89e-96fe-4480-93b3-0cc688e00212"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0343L01U05",
+  "slot": "target2",
+  "audio_id": "fb7d16db-31a2-47e5-8231-823376b9002d"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0343L02U03",
+  "expect": {
+   "known_text": "I think that the economy is important",
+   "target_text": "pienso que la economía es importante"
+  },
+  "set": {
+   "target_text": "creo que la economía es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0343L02U03",
+  "slot": "target1",
+  "audio_id": "9ff05953-f284-479d-818d-5a9bfdc10587"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0343L02U03",
+  "slot": "target2",
+  "audio_id": "f9004351-49f2-4118-a4e9-660865a900f9"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0345L01U05",
+  "expect": {
+   "known_text": "I think that he's not ready to leave",
+   "target_text": "pienso que no está listo para irse"
+  },
+  "set": {
+   "target_text": "creo que no está listo para irse"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0345L01U05",
+  "slot": "target1",
+  "audio_id": "08fbc500-35ea-4d7f-b647-b885184be2b5"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0345L01U05",
+  "slot": "target2",
+  "audio_id": "a90bb05e-1678-4c3e-af53-353215788fdc"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0354L01U05",
+  "expect": {
+   "known_text": "I think that he's angry",
+   "target_text": "pienso que está enojado"
+  },
+  "set": {
+   "target_text": "creo que está enojado"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0354L01U05",
+  "slot": "target1",
+  "audio_id": "e4353f79-3b27-4920-b0dc-80041f9bf5d3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0354L01U05",
+  "slot": "target2",
+  "audio_id": "deedc2f4-bc58-490d-88a9-26d75fa9f020"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0358L02U05",
+  "expect": {
+   "known_text": "I think that he could reach the top",
+   "target_text": "pienso que él podría llegar a la cima"
+  },
+  "set": {
+   "target_text": "creo que él podría llegar a la cima"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0358L02U05",
+  "slot": "target1",
+  "audio_id": "96f45ef9-edc5-4f8e-9392-164bd9d504b6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0358L02U05",
+  "slot": "target2",
+  "audio_id": "1c39dd40-ccf7-46cd-aa1b-84ad8ec3c6dd"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0363L01U05",
+  "expect": {
+   "known_text": "I think that he felt like helping",
+   "target_text": "pienso que tenía ganas de ayudar"
+  },
+  "set": {
+   "target_text": "creo que tenía ganas de ayudar"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0363L01U05",
+  "slot": "target1",
+  "audio_id": "149b2a48-acf9-4852-bb91-21852dc0593c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0363L01U05",
+  "slot": "target2",
+  "audio_id": "58ca4e34-f41c-486b-bdd4-a0b7dfae24fb"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0364L02U05",
+  "expect": {
+   "known_text": "I think that he didn't like the idea",
+   "target_text": "pienso que a él no le gustaba la idea"
+  },
+  "set": {
+   "target_text": "creo que a él no le gustaba la idea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0364L02U05",
+  "slot": "target1",
+  "audio_id": "451c9558-a8f0-4996-95b6-837a4439efbc"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0364L02U05",
+  "slot": "target2",
+  "audio_id": "da369298-8d8a-4f75-8903-d6ed42f06c27"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0373L01U02",
+  "expect": {
+   "known_text": "I think that it was beautiful",
+   "target_text": "pienso que era precioso"
+  },
+  "set": {
+   "target_text": "creo que era precioso"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0373L01U02",
+  "slot": "target1",
+  "audio_id": "be792ad9-81e0-487e-8c3a-6c1f2e8087ad"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0373L01U02",
+  "slot": "target2",
+  "audio_id": "a00efd0f-6881-49e4-8160-8e2af61dfb5a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0374L02U03",
+  "expect": {
+   "known_text": "I think that it's very pretty",
+   "target_text": "pienso que es muy bonito"
+  },
+  "set": {
+   "target_text": "creo que es muy bonito"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0374L02U03",
+  "slot": "target1",
+  "audio_id": "ca35115b-e9e1-4605-bf2a-afabfd62715f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0374L02U03",
+  "slot": "target2",
+  "audio_id": "1e8e4e8c-33f0-458e-8e03-fbbf439416df"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0375L01U05",
+  "expect": {
+   "known_text": "I think that he was doing something",
+   "target_text": "pienso que estaba haciendo algo"
+  },
+  "set": {
+   "target_text": "creo que estaba haciendo algo"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0375L01U05",
+  "slot": "target1",
+  "audio_id": "8eb4198b-d291-44ca-93f2-6d406780a748"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0375L01U05",
+  "slot": "target2",
+  "audio_id": "8c3a31d9-0f57-4c7a-8804-c2f139fa205f"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "expect": {
+   "known_text": "I think that you went somewhere",
+   "target_text": "creo que fuiste a algún lado"
+  },
+  "set": {
+   "target_text": "creo que fuiste a algún sitio"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "slot": "target1",
+  "audio_id": "cbbef8a4-9629-4842-9a03-e91c81b43121"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0377L02U05",
+  "slot": "target2",
+  "audio_id": "d3a1b91e-d9d9-4c69-8575-6bb5a7830e29"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0378L02U05",
+  "expect": {
+   "known_text": "I think that he needs money for holidays",
+   "target_text": "pienso que necesita dinero para vacaciones"
+  },
+  "set": {
+   "target_text": "creo que necesita dinero para vacaciones"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0378L02U05",
+  "slot": "target1",
+  "audio_id": "c34d22d1-bdf4-48ca-a517-fcf101fdf147"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0378L02U05",
+  "slot": "target2",
+  "audio_id": "15c17989-08d9-452a-a69d-3a1c86f47dae"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0381L01U05",
+  "expect": {
+   "known_text": "I think that he wants to follow us",
+   "target_text": "pienso que quiere seguirnos"
+  },
+  "set": {
+   "target_text": "creo que quiere seguirnos"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0381L01U05",
+  "slot": "target1",
+  "audio_id": "cfbd816a-a1b0-46bb-ade0-f400f30919ce"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0381L01U05",
+  "slot": "target2",
+  "audio_id": "3a10bccf-1458-41aa-b4c6-8e02e0532eec"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0382L02U05",
+  "expect": {
+   "known_text": "I think that she wants to put it in the room",
+   "target_text": "pienso que quiere ponerlo en la habitación"
+  },
+  "set": {
+   "target_text": "creo que quiere ponerlo en la habitación"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0382L02U05",
+  "slot": "target1",
+  "audio_id": "5c44f547-5c20-41a9-9e3c-69f27ae7f5bf"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0382L02U05",
+  "slot": "target2",
+  "audio_id": "cc84cd4f-c4ba-4560-aeed-580458545bd5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0383L01U05",
+  "expect": {
+   "known_text": "I think that he needs to work in the garden",
+   "target_text": "pienso que necesita trabajar en el jardín"
+  },
+  "set": {
+   "target_text": "creo que necesita trabajar en el jardín"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0383L01U05",
+  "slot": "target1",
+  "audio_id": "a541092e-bf47-4628-b7c4-dae3d34a44b6"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0383L01U05",
+  "slot": "target2",
+  "audio_id": "cb617421-43e6-4839-aa01-ab789de24272"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0388L01U05",
+  "expect": {
+   "known_text": "I think that person you work with is important",
+   "target_text": "pienso que esa persona con la que trabajas es importante"
+  },
+  "set": {
+   "target_text": "creo que esa persona con la que trabajas es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0388L01U05",
+  "slot": "target1",
+  "audio_id": "cae6abe8-22bd-43d0-85d8-ab8007103a18"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0388L01U05",
+  "slot": "target2",
+  "audio_id": "3c335952-dceb-4fce-9847-fa5e319748a6"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0389L01U05",
+  "expect": {
+   "known_text": "I think that person over there is important",
+   "target_text": "pienso que esa persona de allí es importante"
+  },
+  "set": {
+   "target_text": "creo que esa persona de allí es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0389L01U05",
+  "slot": "target1",
+  "audio_id": "87f3b7a9-8082-40e0-8e99-41b7b8b9f01b"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0389L01U05",
+  "slot": "target2",
+  "audio_id": "2ccec7fc-ebea-4d77-9768-9cf1220309b0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0390L01U04",
+  "expect": {
+   "known_text": "I think that the one who is standing is important",
+   "target_text": "pienso que la que está de pie es importante"
+  },
+  "set": {
+   "target_text": "creo que la que está de pie es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0390L01U04",
+  "slot": "target1",
+  "audio_id": "c2bb4e2d-38b3-40cd-9aec-3d096d151e23"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0390L01U04",
+  "slot": "target2",
+  "audio_id": "16ebbdd9-0f7f-404a-bf74-1746e5b0869a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0391L01U05",
+  "expect": {
+   "known_text": "I think that the one who is walking is important",
+   "target_text": "pienso que la que está caminando es importante"
+  },
+  "set": {
+   "target_text": "creo que la que está caminando es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0391L01U05",
+  "slot": "target1",
+  "audio_id": "f49decbc-394c-4a66-b432-a1e355edb06e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0391L01U05",
+  "slot": "target2",
+  "audio_id": "67660d93-01ca-441f-a982-13d9d9610b34"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0392L01U05",
+  "expect": {
+   "known_text": "I think that child is important",
+   "target_text": "pienso que ese niño es importante"
+  },
+  "set": {
+   "target_text": "creo que ese niño es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0392L01U05",
+  "slot": "target1",
+  "audio_id": "dd68d423-e820-4a24-bd54-5bafd0c83350"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0392L01U05",
+  "slot": "target2",
+  "audio_id": "4d3c3bf1-bfe0-4472-b235-de36517bcfdc"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0392L05U05",
+  "expect": {
+   "known_text": "I think that the post office is important",
+   "target_text": "pienso que la oficina de correos es importante"
+  },
+  "set": {
+   "target_text": "creo que la oficina de correos es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0392L05U05",
+  "slot": "target1",
+  "audio_id": "4082b1b4-ccf1-4d20-bc26-d5d18dcc1484"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0392L05U05",
+  "slot": "target2",
+  "audio_id": "346df574-d6f2-4220-8fcc-732883126059"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0393L01U04",
+  "expect": {
+   "known_text": "I think that boy is important",
+   "target_text": "pienso que ese chico es importante"
+  },
+  "set": {
+   "target_text": "creo que ese chico es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0393L01U04",
+  "slot": "target1",
+  "audio_id": "06d78a45-7f2c-4a08-bdda-4c4171f6affa"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0393L01U04",
+  "slot": "target2",
+  "audio_id": "60ea29da-94ca-434c-add2-0d1288eedbf2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0393L03U05",
+  "expect": {
+   "known_text": "I think that green car is pretty",
+   "target_text": "pienso que ese carro verde es bonito"
+  },
+  "set": {
+   "target_text": "creo que ese carro verde es bonito"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0393L03U05",
+  "slot": "target1",
+  "audio_id": "ea13d2b9-1e02-43f0-8e86-c70b930a78f3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0393L03U05",
+  "slot": "target2",
+  "audio_id": "daaccc11-daba-49bd-875a-b8ffe2506813"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0394L01U04",
+  "expect": {
+   "known_text": "I think that girl is important",
+   "target_text": "pienso que esa chica es importante"
+  },
+  "set": {
+   "target_text": "creo que esa chica es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0394L01U04",
+  "slot": "target1",
+  "audio_id": "f7135ffc-f270-4e40-a7f4-7fa2cc39e480"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0394L01U04",
+  "slot": "target2",
+  "audio_id": "0d432978-5423-4e8b-835d-e0fae182f775"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0394L03U05",
+  "expect": {
+   "known_text": "I think that yellow car is pretty",
+   "target_text": "pienso que ese carro amarillo es bonito"
+  },
+  "set": {
+   "target_text": "creo que ese carro amarillo es bonito"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0394L03U05",
+  "slot": "target1",
+  "audio_id": "025223cd-8bc5-498f-955d-1cdfd2972457"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0394L03U05",
+  "slot": "target2",
+  "audio_id": "79372651-a51a-4608-93ab-99d5cf531fe3"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0395L01U05",
+  "expect": {
+   "known_text": "I think that corner is important",
+   "target_text": "pienso que esa esquina es importante"
+  },
+  "set": {
+   "target_text": "creo que esa esquina es importante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0395L01U05",
+  "slot": "target1",
+  "audio_id": "3e2b52d4-bf35-4804-b4b9-94666a97dbb2"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0395L01U05",
+  "slot": "target2",
+  "audio_id": "9da2581a-ee1c-41fe-b187-c136d1d5aaf2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0396L01U03",
+  "expect": {
+   "known_text": "I think we need to stand up",
+   "target_text": "pienso que necesitamos levantarnos"
+  },
+  "set": {
+   "target_text": "creo que necesitamos levantarnos"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0396L01U03",
+  "slot": "target1",
+  "audio_id": "87ffa9e3-cf0c-4528-afc4-63e264d5569f"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0396L01U03",
+  "slot": "target2",
+  "audio_id": "da963a8c-31f8-4a37-af0d-d54aa62cb881"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0397L01U05",
+  "expect": {
+   "known_text": "I think we need to get ready soon",
+   "target_text": "pienso que necesitamos prepararnos pronto"
+  },
+  "set": {
+   "target_text": "creo que necesitamos prepararnos pronto"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0397L01U05",
+  "slot": "target1",
+  "audio_id": "e0198842-0af3-4500-b117-a1b86f72a2db"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0397L01U05",
+  "slot": "target2",
+  "audio_id": "fd70a281-0cda-4039-8b21-2d546fb23fd8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0398L01U03",
+  "expect": {
+   "known_text": "I think we need to become more patient",
+   "target_text": "pienso que necesitamos ser más pacientes"
+  },
+  "set": {
+   "target_text": "creo que necesitamos ser más pacientes"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0398L01U03",
+  "slot": "target1",
+  "audio_id": "867de737-b90c-4dfc-b67e-d7a649068028"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0398L01U03",
+  "slot": "target2",
+  "audio_id": "4efb2ca7-820a-49cb-8433-6f3db3afebe0"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0398L03U04",
+  "expect": {
+   "known_text": "I think we need to become more patient with our children",
+   "target_text": "pienso que necesitamos ser más pacientes con nuestros hijos"
+  },
+  "set": {
+   "target_text": "creo que necesitamos ser más pacientes con nuestros hijos"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0398L03U04",
+  "slot": "target1",
+  "audio_id": "9dc21009-1199-42df-b7df-31e4d85c9e02"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0398L03U04",
+  "slot": "target2",
+  "audio_id": "0e6c30c1-2fec-4f42-b03c-6b68ace63357"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0480L01B02",
+  "expect": {
+   "known_text": "whatever he says, I don't think it's a great idea",
+   "target_text": "diga lo que diga, no pienso que sea una gran idea"
+  },
+  "set": {
+   "target_text": "diga lo que diga, no creo que sea una gran idea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0480L01B02",
+  "slot": "target1",
+  "audio_id": "75af7657-8e58-4d98-99d6-24465643f021"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0480L01B02",
+  "slot": "target2",
+  "audio_id": "4167bffc-f6c3-4c1b-9324-d7c61b1b8ff8"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0486L02U05",
+  "expect": {
+   "known_text": "I think your eyes are beautiful",
+   "target_text": "pienso que tus ojos son hermosos"
+  },
+  "set": {
+   "target_text": "creo que tus ojos son hermosos"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0486L02U05",
+  "slot": "target1",
+  "audio_id": "b767b247-9cf2-4abe-8ffe-45909b0d2ddd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0486L02U05",
+  "slot": "target2",
+  "audio_id": "ca3a19f0-06a1-4fdd-bcd4-fe022756aeb7"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0492L03B03",
+  "expect": {
+   "known_text": "which of those places do you think is the most interesting",
+   "target_text": "cuál de esos lugares piensas que es el más interesante"
+  },
+  "set": {
+   "target_text": "cuál de esos lugares crees que es el más interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0492L03B03",
+  "slot": "target1",
+  "audio_id": "d403e002-131b-472f-8163-b5f8b8d04566"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0492L03B03",
+  "slot": "target2",
+  "audio_id": "b4e2554e-aa59-42fa-a2b8-5517b197b3a5"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0492L03U04",
+  "expect": {
+   "known_text": "I think it's the most interesting",
+   "target_text": "pienso que es el más interesante"
+  },
+  "set": {
+   "target_text": "creo que es el más interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0492L03U04",
+  "slot": "target1",
+  "audio_id": "45af1317-8768-43f8-aee4-a6e4a6b57d37"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0492L03U04",
+  "slot": "target2",
+  "audio_id": "5c495b94-dce0-4f79-81cc-756917dade3c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0492L03U05",
+  "expect": {
+   "known_text": "you think it's the most interesting",
+   "target_text": "piensas que es el más interesante"
+  },
+  "set": {
+   "target_text": "crees que es el más interesante"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0492L03U05",
+  "slot": "target1",
+  "audio_id": "75a404bb-53ed-4f36-83e5-ca273307410c"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0492L03U05",
+  "slot": "target2",
+  "audio_id": "662ecf39-22ef-4645-b4b9-2604d6811b24"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0503L03U05",
+  "expect": {
+   "known_text": "I think it's mine",
+   "target_text": "pienso que es mío"
+  },
+  "set": {
+   "target_text": "creo que es mío"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0503L03U05",
+  "slot": "target1",
+  "audio_id": "8af5db65-adca-4aa7-83cc-7d1d511080c3"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0503L03U05",
+  "slot": "target2",
+  "audio_id": "7cb332b1-e0e7-4312-8c03-a918b1c5785a"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0537L01U10",
+  "expect": {
+   "known_text": "there are people who think that I was wrong",
+   "target_text": "hay personas que piensan que estaba equivocado"
+  },
+  "set": {
+   "target_text": "hay personas que creen que estaba equivocado"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0537L01U10",
+  "slot": "target1",
+  "audio_id": "b1294e45-705a-46c9-aa72-92afededdadd"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0537L01U10",
+  "slot": "target2",
+  "audio_id": "a5f4afd8-a819-4a91-ada9-545b31222fc2"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0553L01U01",
+  "expect": {
+   "known_text": "I think the small church is very ugly",
+   "target_text": "pienso que la iglesia pequeña es muy fea"
+  },
+  "set": {
+   "target_text": "creo que la iglesia pequeña es muy fea"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0553L01U01",
+  "slot": "target1",
+  "audio_id": "0dbcf0e3-56a0-4218-b85d-2931162b76f8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0553L01U01",
+  "slot": "target2",
+  "audio_id": "1e95ef32-3ef1-4705-8039-e5a728bdd142"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0617L02U11",
+  "expect": {
+   "known_text": "there are people who think that it's a mistake",
+   "target_text": "hay personas que piensan que es un error"
+  },
+  "set": {
+   "target_text": "hay personas que creen que es un error"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0617L02U11",
+  "slot": "target1",
+  "audio_id": "5eb4a37f-7fd0-41a6-beef-2c1e164863ba"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0617L02U11",
+  "slot": "target2",
+  "audio_id": "d3868b15-767d-4e15-aa99-ab98764dcb2c"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "spa_mx_for_eng:S0617L02U12",
+  "expect": {
+   "known_text": "do you think that it's a mistake?",
+   "target_text": "¿piensas que es un error?"
+  },
+  "set": {
+   "target_text": "¿crees que es un error?"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0617L02U12",
+  "slot": "target1",
+  "audio_id": "3dd71fa4-95e5-4387-8b15-47fade432216"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "spa_mx_for_eng:S0617L02U12",
+  "slot": "target2",
+  "audio_id": "da4c3995-dffa-4a31-b65c-09a27fc94dd3"
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "spa_mx_for_eng:S0135L01U09",
+  "expect": {
+   "known_text": "I think you think it's not a problem",
+   "target_text": "creo que piensas que no es un problema"
+  }
+ }
+]
