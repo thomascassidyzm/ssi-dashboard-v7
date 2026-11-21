@@ -27,8 +27,17 @@ const AUDIO_COLS = ['known_audio_id', 'target1_audio_id', 'target2_audio_id', 'p
  * '?' in a clip's KEY: adding a question mark changes the key but not the words, and Aran's ruling keeps the take
  * (welsh-question-marks, 2026-10). The relabel below moves the clip's key with the row, so the looser test is safe.
  */
+/**
+ * WORD-INTERNAL MARKS JOIN, THEY DO NOT SPLIT (Astra #120·AK, fix #121·AK). An apostrophe (straight ' or curly ’ ‘ ʼ)
+ * or a hyphen (- ‐ ‑) with a letter or digit on BOTH sides is part of one spoken word, so it is dropped with no space:
+ * "don't" = "dont", "well-known" = "wellknown". Without this, "don't" became "don t" and a good take was thrown on the
+ * re-record list. Every other mark — and an apostrophe/hyphen at a word's edge — still separates words below.
+ */
+const WORD_INTERNAL_MARK = /(?<=[\p{L}\p{N}])['\u2018\u2019\u02BC\-\u2010\u2011]+(?=[\p{L}\p{N}])/gu
+const joinWordInternalMarks = (s) => s.replace(WORD_INTERNAL_MARK, '')
+
 function spokenForm(text) {
-  return String(text || '').toLowerCase().replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
+  return joinWordInternalMarks(String(text || '').toLowerCase()).replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
 }
 const sameWords = (a, b) => spokenForm(a) === spokenForm(b)
 
