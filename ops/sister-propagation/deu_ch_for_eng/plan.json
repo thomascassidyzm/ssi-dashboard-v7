@@ -107,11 +107,6 @@
    "target": "Sie händ e Tasche"
   },
   {
-   "id": "S0642L01U03",
-   "known": "I think you have a bag, madam",
-   "target": "ich dänke, Sie händ e Tasche"
-  },
-  {
    "id": "S0642L01U04",
    "known": "you have to have water, madam",
    "target": "Sie müend Wasser ha"
@@ -350,5 +345,6 @@
  "deletes": [
   "S0538L03U03",
   "S0538L03U04"
- ]
+ ],
+ "note_840": "S0642L01U03 dropped 21 Nov: live row now reads \"can you help me, madam?\" / \"chönd Sie mir hälfe?\" (replaced since 18 Nov), plan row was for the old sentence"
 }
