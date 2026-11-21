@@ -352,7 +352,15 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     try {
       const rec = findProposal(courseCode, pid)
       if (!rec || rec.status !== 'applied' || !Array.isArray(rec.undoOps)) { req.contentEdit?.wroteNothing(); return res.status(409).json({ error: 'nothing to undo' }) }
-      const { status, body } = await captureEdit(runCourseEdit, req, rec.undoOps, { apply: true })
+      // RELABEL UNDO ORDER (live check, cs #121·AK). The door's undo is the apply reversed: row text back FIRST, clip label
+      // after — so the null_*_audio_on_text_change trigger saw the kept clip still labelled with the NEW text, judged it
+      // stale and emptied the slot (S0325L04U08 lost its English clip on undo). Clip labels go back first, then the row,
+      // then every slot the apply kept (rec.plan, relabel or relink) is linked straight back to its clip.
+      const isClip = (o) => o.op === 'audio.update'
+      const key = rec.kind === 'lego' ? { lego_id: rec.key } : { phrase_id: fullPhraseId(courseCode, rec.key) }
+      const relinkKept = (rec.plan || []).map((pl) => ({ op: 'audio.link', target: rec.kind, ...key, slot: pl.slot, audio_id: pl.audio_id, allow_text_mismatch: true }))
+      const ops = [...rec.undoOps.filter(isClip), ...rec.undoOps.filter((o) => !isClip(o)), ...relinkKept]
+      const { status, body } = await captureEdit(runCourseEdit, req, ops, { apply: true })
       if (status !== 200 || !body.applied) return res.status(status === 200 ? 500 : status).json({ error: body.error, code: body.code })
       const p = await patchProposal(courseCode, pid, { status: 'undone', undoneBy: req.editorWho, undoneAt: new Date().toISOString(), undoEventId: body.event_id || null })
       const row = rec.action === 'remove' && rec.kind === 'lego' ? null : await liveRow(courseCode, rec.kind, rec.key).catch(() => null)
