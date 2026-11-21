@@ -149,9 +149,12 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
   }
 
   /**
-   * The clips a row links, with who owns them and whether any OTHER row of this course plays them too (then the clip's
-   * text is not ours to relabel). Looked up within this course only: a clip owned here and also linked by another
-   * course would be relabelled under it — the words are the same, only capitals/punctuation move.
+   * The clips a row links, with who owns them and how many OTHER rows play them — in EVERY course, not just this one
+   * (Astra #120·AK, fix #121·AK). A clip relabelled while another course or another line plays it would silently
+   * change that line's audio text, so any other link at all makes it RELINK, never RELABEL (buildOps, otherLinks > 0);
+   * a clip whose own course_code is another course is shared by definition. Index use under the agent 5 s cap: every
+   * read is keyed on a clip id against the per-column *_audio_id indexes (a bitmap OR), no course filter, no cast,
+   * limit 3 — three small reads per clip, and a row links at most four clips.
    */
   async function clipsFor(courseCode, kind, id, row) {
     const ids = [...new Set(AUDIO_COLS.map((c) => row[c]).filter(Boolean))]
@@ -160,17 +163,18 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     const { data, error } = await db().from('course_audio').select('id,course_code,text').in('id', ids)
     if (error) throw new Error(error.message)
     const selfKey = kind === 'lego' ? id : fullPhraseId(courseCode, id)
+    const isSelf = (courseOf, key) => courseOf === courseCode && key === selfKey
     for (const c of data || []) {
-      const or = AUDIO_COLS.slice(0, 3).map((col) => `${col}.eq.${c.id}`).join(',')
+      const or = (cols) => cols.map((col) => `${col}.eq.${c.id}`).join(',')
       const [s, l, p] = await Promise.all([
-        db().from('course_seeds').select('seed_number').eq('course_code', courseCode).or(or).limit(3),
-        db().from('course_legos').select('lego_id').eq('course_code', courseCode).or(`${or},presentation_audio_id.eq.${c.id}`).limit(3),
-        db().from('course_practice_phrases').select('id').eq('course_code', courseCode).or(or).limit(3),
+        db().from('course_seeds').select('course_code,seed_number').or(or(AUDIO_COLS.slice(0, 3))).limit(3),
+        db().from('course_legos').select('course_code,lego_id').or(or(AUDIO_COLS)).limit(3),
+        db().from('course_practice_phrases').select('course_code,id').or(or(AUDIO_COLS)).limit(3),
       ])
       for (const r of [s, l, p]) if (r.error) throw new Error(r.error.message)
       const others = (s.data || []).length
-        + (l.data || []).filter((x) => x.lego_id !== selfKey).length
-        + (p.data || []).filter((x) => x.id !== selfKey).length
+        + (l.data || []).filter((x) => !(kind === 'lego' && isSelf(x.course_code, x.lego_id))).length
+        + (p.data || []).filter((x) => !(kind === 'phrase' && isSelf(x.course_code, x.id))).length
       out.set(c.id, { course_code: c.course_code, text: c.text, otherLinks: others })
     }
     return out
