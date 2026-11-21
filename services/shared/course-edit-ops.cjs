@@ -57,7 +57,7 @@ const UPDATABLE = {
     'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
   // s3_key, clip_id, id and course_code are not metadata: moving them moves the
   // file a slot plays, which is the render route's business, not this door's.
-  course_audio: ['text', 'text_stripped', 'role', 'voice_id', 'origin', 'lego_id', 'language',
+  course_audio: ['text', 'role', 'voice_id', 'origin', 'lego_id', 'language',
     'rerecord_wanted', 'word_boundaries', 'word_timings', 'duration_ms', 'sequence', 'recorded_at',
     'veracity_pass', 'veracity_reason', 'veracity_checked_at', 'veracity_checker'],
   course_gender_expansions: ['original_text', 'language', 'expanded_f', 'expanded_m', 'text_side', 'processed_at'],
@@ -67,8 +67,10 @@ const UPDATABLE = {
 // whole row back, audio links, decomposition and all).
 const INSERTABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expansions', 'course_legos']);
 const DELETABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expansions', 'course_legos']);
-// course_legos.lego_id is a GENERATED column (S<seed>L<index>): it is read, never written.
-const GENERATED = { course_legos: ['lego_id'] };
+// course_legos.lego_id is a GENERATED column (S<seed>L<index>): it is read, never written. So is course_audio.text_stripped
+// (GENERATED ALWAYS from text_normalized): an undo that put it back failed with 428C9 "can only be updated to DEFAULT", so
+// every relabel's undo was refused (course editor live check, cs #121·AK). Never in an undo's set; dropped from a stored one.
+const GENERATED = { course_legos: ['lego_id'], course_audio: ['text_stripped'] };
 const LEGO_TYPES = ['A', 'M'];
 // What an insert's copy_of must match in its source row to be exempt from the new-row shape rules.
 const COPY_CHECKED = {
@@ -125,7 +127,9 @@ function planOp(op, index, courseCode) {
   const base = { index, name, expect };
 
   const needSet = (table) => {
-    const set = op.set;
+    // A generated column is the database's to move: an undo stored before cs #121·AK may still carry one, so drop it.
+    const set = op.set && typeof op.set === 'object'
+      ? Object.fromEntries(Object.entries(op.set).filter(([c]) => !(GENERATED[table] || []).includes(c))) : op.set;
     if (!set || typeof set !== 'object' || !Object.keys(set).length) throw new EditOpError(index, `${name} needs a non-empty "set"`);
     const bad = Object.keys(set).filter(c => !UPDATABLE[table].includes(c));
     if (bad.length) throw new EditOpError(index, `${name} cannot set ${bad.join(', ')} (allowed: ${UPDATABLE[table].join(', ')})`);
