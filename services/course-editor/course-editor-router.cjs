@@ -371,6 +371,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const { courseCode } = req.params
       const b = req.body || {}
       const kind = b.kind === 'lego' ? 'lego' : 'phrase'
+      if (b.confirm !== true) req.contentEdit?.wroteNothing() // a dry run writes nothing, whatever it answers
       if (!['known', 'target1', 'target2'].includes(b.role)) return res.status(400).json({ error: 'role must be known, target1 or target2' })
       if (isHumanVoiceCourse(courseCode)) return res.status(409).json({ error: 'a human-voice course is re-recorded in the booth, never rendered' })
       const live = await liveRow(courseCode, kind, String(b.id || ''))
@@ -383,7 +384,19 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       })
       const body = await r.json().catch(() => ({ ok: false, error: `HTTP ${r.status}` }))
       log.info(`[course-editor] ${courseCode}: render ${b.confirm === true ? 'CONFIRMED' : 'dry run'} ${b.id} ${b.role} by ${req.editorWho} → ${r.status} ${body.code || body.source || ''}`)
-      res.status(r.status).json(body)
+      // LINK THE CLIP INTO THIS LINE'S SLOT (Astra #120·AK, fix #121·AK). The render door takes no phrase id: it files a
+      // course_audio row and leaves slot-filling to the text-keyed audio_autolink trigger, which does nothing when the
+      // library answers with a clip this course already holds. So after a real render (or a library hit) the clip is put
+      // in the slot through the edit door, FILL-ONLY: `expect` the slot as we read it, never over another clip.
+      const slotCol = `${b.role}_audio_id`
+      if (b.confirm !== true || !r.ok || body.ok === false || !body.audioId) { req.contentEdit?.wroteNothing(); return res.status(r.status).json(body) }
+      const now = await liveRow(courseCode, kind, String(b.id))
+      if (now && now[slotCol] === body.audioId) { req.contentEdit?.wroteNothing(); return res.json({ ...body, slotLinked: 'already' }) }
+      if (!now || now[slotCol]) { req.contentEdit?.wroteNothing(); return res.json({ ...body, slotLinked: false, slotNote: now ? `the ${b.role} slot already holds another clip — not overwritten` : 'the line is gone' }) }
+      const key = kind === 'lego' ? { lego_id: b.id } : { phrase_id: fullPhraseId(courseCode, b.id) }
+      const linked = await captureEdit(runCourseEdit, req, [{ op: 'audio.link', target: kind, ...key, slot: b.role, audio_id: body.audioId, expect: { [slotCol]: null } }], { apply: true })
+      if (linked.status !== 200 || !linked.body.applied) return res.json({ ...body, slotLinked: false, slotNote: linked.body.error || `HTTP ${linked.status}` })
+      res.json({ ...body, slotLinked: true, linkEventId: linked.body.event_id || null })
     } catch (e) {
       log.error(`[course-editor] render ${req.params.courseCode}: ${e.message}`)
       res.status(500).json({ error: e.message })

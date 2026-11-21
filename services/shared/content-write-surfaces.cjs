@@ -113,6 +113,8 @@ const PRODUCTION_API = [
   // The course editor (job #116·AK): an admin's Apply / Undo of a proposed change, run through the same course-edit engine.
   { method: 'POST',   path: '/api/production/:courseCode/course-editor/proposals/:pid/apply', operation: 'course-edit', legos: true },
   { method: 'POST',   path: '/api/production/:courseCode/course-editor/proposals/:pid/undo',  operation: 'course-edit', legos: true },
+  // …and its "make new audio": a confirmed render's clip is linked into the line's empty slot through the same engine (#121·AK).
+  { method: 'POST',   path: '/api/production/:courseCode/course-editor/render',              operation: 'course-edit', legos: true },
   { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
   // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
