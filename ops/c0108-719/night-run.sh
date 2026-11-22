@@ -4,7 +4,8 @@
 # user timer cs-long-keep-c0108-apply-374.timer (22:10 UTC). Each night:
 #   a) fast-forwards the persistent worktree ~/.cs-long/c0108-374/popty to origin/main (never recreated: the ledgers
 #      <file>.applied.jsonl and audio logs, untracked, live beside the changesets and make the nights resumable);
-#   b) waits while two other DB writers run (Tom 18 Nov: at most 3 writers, the a2c chain counted); gives up at 05:30 UK;
+#   b) waits only while three other DB writers run (Tom 18 Nov: at most 3 writers, the a2c chain counted; Kai 22 Nov: item 4 +
+#      a2c + this runner is the 3); gives up at 05:30 UK; it starts no parallel writer of its own (audio follows text, same process chain);
 #   c) courses = every ops/c0108-719/<course>/changesets/c0108-374.changeset.jsonl on main (so a course landed later
 #      joins the next night). PROBES FIRST: lit_for_eng (kind E) then deu_for_eng (kind T, no add-on); each is read back
 #      from live (tools/live-check.cjs readback) and the run STOPS unless both match. Then the rest, one course at a
@@ -34,7 +35,7 @@ curl -s -m 20 http://localhost:3470/health | grep -q '"governed":true' || { say 
 
 writers() { systemctl --user list-units --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
   | grep -E 'a2c|item|apply|night|tiles|relink|render|fill' | grep -v 'c0108' | wc -l; }
-while [ "$(writers)" -ge 2 ]; do
+while [ "$(writers)" -ge 3 ]; do   # Kai 22 Nov: item 4 + a2c + this runner = 3, the cap; a 4th never starts
   if late; then say "[c0108 night] skipped tonight: $(writers) other DB writers still running at $(ukh)h UK (log $LOG)"; exit 0; fi
   echo "$(date -u +%T) $(writers) other writers active; waiting"; sleep 300
 done
