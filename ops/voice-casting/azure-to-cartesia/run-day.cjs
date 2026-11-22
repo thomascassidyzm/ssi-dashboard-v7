@@ -79,13 +79,6 @@ const UNTIL = opt('--until', null) ? Date.parse(opt('--until')) : Infinity
 const WAIT_DAY_CAP = argv.includes('--wait-day-cap')
 // --requeue-timeouts (Kai 20 Nov): send ONLY the asks of this list whose latest row is a 120 s TIMEOUT, once each, nothing else.
 const REQUEUE_TIMEOUTS = argv.includes('--requeue-timeouts')
-// --concurrency C (cs #486·AK, Tom 22 Nov: "Serial 5 s/line is the problem ... run it with ~15 concurrent asks"): C asks in flight
-// at once. Popty's own process-wide Cartesia limiter (services/shared/provider-concurrency.cjs, cap 15, shrinks on a 429 and
-// re-sends unbilled) is the real ceiling and the 429 backoff, and its agent rate cap (10/s per caller) queues the excess, so
-// oversubscribing here only waits. C > 1 needs --cap: the list cap is then checked in memory against spent + every in-flight
-// ask's worst case, so concurrency can never overrun it.
-const CONC = Math.max(1, Number(opt('--concurrency', 1)) || 1)
-if (CONC > 1 && LIST_CAP == null) { console.error('--concurrency > 1 needs --cap'); process.exit(1) }
 if (!['file', 'chars-desc'].includes(ORDER) || Number.isNaN(UNTIL)) { console.error('bad --order or --until'); process.exit(1) }
 const askKey = (a) => [a.course, a.role, a.voiceId, a.text].join('|')
 const EVID = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia')
@@ -239,11 +232,8 @@ async function main() {
     : [...asks.map((a) => ({ ask: a, requeue: false })), ...requeue.map((a) => ({ ask: a, requeue: true }))]
   if (REQUEUE_TIMEOUTS) console.log(`--requeue-timeouts: ${timedOut.length} timed-out ask(s), one attempt each`)
   if (requeue.length) console.log(`${requeue.length} pre-rule connection failure(s) re-queued at the end of the list`)
-  let timeouts = 0, sent = 0, nextCheckpoint = null, stop = null, next = 0, inFlightWant = 0
-  let ownSpentMem = LIST_CAP != null ? allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0) : 0
-  const worker = async () => { while (!stop) {
-    let idx = next++
-    if (idx >= items.length) break
+  let timeouts = 0, sent = 0, nextCheckpoint = null, stop = null
+  for (let idx = 0; idx < items.length; idx++) {
     const ask = items[idx].ask
     const isRequeue = items[idx].requeue
     const key = askKey(ask)
@@ -256,20 +246,20 @@ async function main() {
     if (sent >= MAX_ASKS) { stop = `--max-asks ${MAX_ASKS} reached`; break }
     if (Date.now() >= UNTIL) { stop = `until ${new Date(UNTIL).toISOString()} reached`; break }
     // LIMIT CHECK, every ask.
-    const t = LIST_CAP != null && CONC > 1 ? (sent % 200 === 0 ? tally() : { total: -1 }) : tally()
-    if (t.total >= 0 && nextCheckpoint === null) nextCheckpoint = Math.floor(t.total / CHECKPOINT) * CHECKPOINT + CHECKPOINT
-    if (t.total >= 0 && t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
+    const t = tally()
+    if (nextCheckpoint === null) nextCheckpoint = Math.floor(t.total / CHECKPOINT) * CHECKPOINT + CHECKPOINT
+    if (t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
     const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // gender prep can lengthen a line a little
     if (LIST_CAP != null) {
-      const ownSpent = CONC > 1 ? ownSpentMem + inFlightWant : allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0)
-      if (ownSpent + want > LIST_CAP) { stop = `list cap: day ${DAY} spent ${ownSpent} (incl. in flight) + next ask ${want} > ${LIST_CAP}`; break }
+      const ownSpent = allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0)
+      if (ownSpent + want > LIST_CAP) { stop = `list cap: day ${DAY} spent ${ownSpent} + next ask ${want} > ${LIST_CAP}`; break }
     } else {
     if (t.today + t.reserve + want > DAY_CAP && WAIT_DAY_CAP && t.total + t.reserve + want <= TOTAL_CAP) {
-      const nextDay = Date.parse(utcDay(Date.now()) + 'T00:00:00Z') + 86_400_000 + 60_000
-      if (nextDay < UNTIL) {
-        append({ kind: 'day-cap-wait', idx, key, at: new Date().toISOString(), until: new Date(nextDay).toISOString(), tally: t })
-        console.log(`day cap at ask ${idx}: waiting to ${new Date(nextDay).toISOString()}`)
-        await sleep(nextDay - Date.now()); next = idx; continue
+      const next = Date.parse(utcDay(Date.now()) + 'T00:00:00Z') + 86_400_000 + 60_000
+      if (next < UNTIL) {
+        append({ kind: 'day-cap-wait', idx, key, at: new Date().toISOString(), until: new Date(next).toISOString(), tally: t })
+        console.log(`day cap at ask ${idx}: waiting to ${new Date(next).toISOString()}`)
+        await sleep(next - Date.now()); idx--; continue
       }
     }
     if (t.today + t.reserve + want > DAY_CAP) { stop = `day cap: today ${t.today} (incl. fix reserve ${t.fixDay}) + item-9 reserve ${t.reserve} + next ask ${want} > ${DAY_CAP}`; break }
@@ -281,10 +271,7 @@ async function main() {
     const body = LIBRARY_ONLY
       ? { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE } // no approval: cannot pass EXISTS_IN_LANGUAGE
       : { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE, approval: APPROVAL }
-    inFlightWant += want
-    let r, connRetried = false
-    try {
-    r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
+    let r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
     // SURFACE-DOWN ONE-RETRY (Kai, 19 Nov, after the 16:30:57Z surface restart refused ask 35): an APPROVAL_UNVERIFIED while the
     // Command Surface is DOWN (Popty could not reach it, or it does not answer now) waits 2 min and sends THAT ask once more.
     // Surface UP = a real seat refusal: stop as before. Never more than one extra send per ask.
@@ -294,6 +281,7 @@ async function main() {
       r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
     }
     // POPTY-RESTART RULE (header): connection-level failure → wait for green /health (≤10 min) → this ask once more.
+    let connRetried = false
     if (connFailed(r)) {
       append({ kind: 'popty-down', idx, key, at: new Date().toISOString(), error: String(r.json.error || '').slice(0, 300) })
       if (!(await waitPoptyGreen())) {
@@ -303,14 +291,12 @@ async function main() {
       r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
       connRetried = true
     }
-    } finally { inFlightWant -= want }
     sent++
     const j = r.json || {}
     const rec = { kind: 'render', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, http: r.http,
       ok: !!j.ok, source: j.source, code: j.code, charsSpent: Number(j.charsSpent) || 0, audioId: j.audioId, voiceId: j.voiceId,
       error: j.ok ? undefined : String(j.error || '').slice(0, 300), connRule: true, ...(connRetried ? { connRetried: true } : {}), ...(isRequeue ? { requeue: true } : {}) }
     if (j.ok && j.source === 'rendered' && !(Number(j.charsSpent) > 0)) rec.charsSpent = ask.chars // never under-count a paid render
-    ownSpentMem += rec.charsSpent
     if (LIBRARY_ONLY && !j.ok && (j.code === 'EXISTS_IN_LANGUAGE' || j.code === 'RERECORD_NOT_PERMITTED')) {
       append({ kind: 'gap', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, slots: ask.slots.length, http: r.http, code: j.code })
       timeouts = 0; continue
@@ -329,8 +315,7 @@ async function main() {
     }
     if (sent % 200 === 0) console.log(`${new Date().toISOString()} ask ${idx + 1}/${items.length}`)
     await sleep(100)
-  } }
-  await Promise.all(Array.from({ length: CONC }, worker))
+  }
   const end = tally()
   const own2 = fs.readFileSync(LOG, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
   const R = own2.filter((r) => r.kind === 'render'), L = own2.filter((r) => r.kind === 'link')
