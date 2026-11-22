@@ -64,9 +64,10 @@ const APPROVER = opt('--approver', 'kai')
 const LIST_CAP = opt('--cap', null) == null ? null : Number(opt('--cap'))
 const REASON = opt('--reason', null)
 // --library-only (cs #468·AK, Tom 22 Nov: "no re-record ... LINK the existing Cartesia clips from the library, rendering nothing"):
-// each ask is first sent as a DRY RUN; only a dry-run 'library' answer is sent for real (which links that existing clip, free) and
-// its slots re-pointed. Anything else is logged kind:'gap' with the route's code and NOTHING is sent, so a later paid run (if one is
-// ever approved) still sees those asks as unsent. A real answer that is not a free library link stops the run at once.
+// feed it ONLY asks the clip index holds in the cast voice. Each is sent WITHOUT approval: a library hit links that existing clip
+// (free) and its slots are re-pointed; a line not in the library is refused EXISTS_IN_LANGUAGE by the route (its Azure take exists)
+// and logged kind:'gap', so a later paid run still sees it as unsent. No dry runs (the live route budgets them, agent-rate-cap.cjs).
+// A real answer that is not a free library link stops the run at once; pair it with a small --cap.
 const LIBRARY_ONLY = argv.includes('--library-only')
 if (!['kai', 'tom'].includes(APPROVER) || (LIST_CAP != null && !(LIST_CAP > 0))) { console.error('bad --approver or --cap'); process.exit(1) }
 if (APPROVER !== 'kai' && (LIST_CAP == null || !REASON)) { console.error('--approver tom needs --cap and --reason'); process.exit(1) }
@@ -266,18 +267,9 @@ async function main() {
     if (CYCLE_CREDIT - (t.total + t.reserve + want) < RESERVE) { stop = `credit reserve: 2.45M − ${t.total + t.reserve + want} < 450k` ; break }
     }
 
-    if (LIBRARY_ONLY) {
-      if (gapKey.has(key)) continue
-      const dry = await post(`${BASE}/api/audio/render`, { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE, dryRun: true }, {}, RENDER_TIMEOUT_MS)
-      const dj = dry.json || {}
-      if (!(dj.ok && dj.source === 'library')) {
-        append({ kind: 'gap', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, slots: ask.slots.length, http: dry.http, source: dj.source, code: dj.code, wouldSpendChars: dj.wouldSpendChars })
-        if (dry.http === 0 || dry.http >= 500) { timeouts++; if (timeouts >= 5) { stop = `5 failed dry runs in a row (last at ask ${idx})`; break } } else timeouts = 0
-        continue
-      }
-    }
+    if (LIBRARY_ONLY && gapKey.has(key)) continue
     const body = LIBRARY_ONLY
-      ? { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE }
+      ? { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE } // no approval: cannot pass EXISTS_IN_LANGUAGE
       : { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE, approval: APPROVAL }
     let r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)
     // SURFACE-DOWN ONE-RETRY (Kai, 19 Nov, after the 16:30:57Z surface restart refused ask 35): an APPROVAL_UNVERIFIED while the
@@ -305,6 +297,10 @@ async function main() {
       ok: !!j.ok, source: j.source, code: j.code, charsSpent: Number(j.charsSpent) || 0, audioId: j.audioId, voiceId: j.voiceId,
       error: j.ok ? undefined : String(j.error || '').slice(0, 300), connRule: true, ...(connRetried ? { connRetried: true } : {}), ...(isRequeue ? { requeue: true } : {}) }
     if (j.ok && j.source === 'rendered' && !(Number(j.charsSpent) > 0)) rec.charsSpent = ask.chars // never under-count a paid render
+    if (LIBRARY_ONLY && !j.ok && (j.code === 'EXISTS_IN_LANGUAGE' || j.code === 'RERECORD_NOT_PERMITTED')) {
+      append({ kind: 'gap', idx, key, day: DAY, at: new Date().toISOString(), course: ask.course, role: ask.role, chars: ask.chars, slots: ask.slots.length, http: r.http, code: j.code })
+      timeouts = 0; continue
+    }
     append(rec)
     if (LIBRARY_ONLY && j.ok && (j.source !== 'library' || Number(j.charsSpent) > 0)) { stop = `ask ${idx}: --library-only got source ${j.source}, charsSpent ${j.charsSpent}`; break }
     const why = stopReason(r.http, j)
