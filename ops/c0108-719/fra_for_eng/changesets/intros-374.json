@@ -1,0 +1,27 @@
+{
+ "course": "fra_for_eng",
+ "template": "The French for: '{X}', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+ "intros": [
+  {
+   "lego_id": "S0108L01",
+   "why": "re-cut LEGO",
+   "old_text": "The French for: 'we didn't hope to', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "new_text": "The French for: 'we didn't expect to', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "needs_op": 0
+  },
+  {
+   "lego_id": "S0108L02",
+   "why": "re-cut LEGO",
+   "old_text": "The French for: 'to wake', as in — 'we didn't hope to wake in the middle of the night', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "new_text": "The French for: 'to wake up', as in — 'we didn't expect to wake up in the middle of the night', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "needs_op": 1
+  }
+ ],
+ "skipped": [],
+ "kept": [
+  {
+   "lego_id": "S0108L03",
+   "why": "intro still names the LEGO's known words"
+  }
+ ]
+}

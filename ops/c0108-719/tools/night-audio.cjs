@@ -9,7 +9,12 @@
 //   whose words changed (seed slots link by seedNumber, LEGO slots by legoId, phrases by phraseId).
 // Exceptions (Kai's brief, 22 Nov): fry_for_eng target1/target2 are human-voiced (Auke): never rendered, written to
 //   <course>/changesets/auke-retakes-374.json; cor_for_eng is parked for audio: nothing at all.
-// Spend: 80,000 Cartesia characters in TOTAL for this job; a slot that would pass it is not sent and the run stops.
+// INTROS (Kai 22 Nov: no silent slots): <course>/changesets/intros-374.json (tools/intros.py) names, per LEGO whose words change
+//   (re-cut, inserted, or whose intro quotes the old seed sentence), the NEW intro text in the course's own intro format.
+//   Each is sent once its op (needs_op) is applied, as role presentation with --lego: the route renders it in the course's
+//   cast presentation voice (or splices it from Charlotte pieces, or refuses by the voicing policy: logged) and binds
+//   course_legos.presentation_audio_id itself (the old clip is kept, never deleted).
+// Spend: 110,000 Cartesia characters in TOTAL for this job; a slot that would pass it is not sent and the run stops.
 //   Azure tallied apart. Spend file ~/ssi-evidence/ssi-dashboard-v7/ops/c0108-719/cartesia-spend.json ({done,total,byDay})
 //   is read by the azure-to-cartesia runner through its fixes.json reserve "c0108-374".
 // Refusals: a spend/quota/stop refusal (402, *CAP*, *QUOTA*, *STOP*, NOT_IN_CHAIN, *BUDGET*, *LIMIT*) STOPS the run;
@@ -25,9 +30,9 @@ const cs = require('../../../services/shared/changeset.cjs');
 const { loadLedger } = require('../../../tools/changeset/apply-changeset.cjs');
 const ROOT = path.resolve(__dirname, '../../..');
 const DIR = path.resolve(__dirname, '..');
-const CAP = 80000;
+const CAP = 110000;   // 80k sized from SIZING.md; raised 22 Nov when Kai asked for every changed intro too (the add-on LEGOs added rows)
 const AGENT = process.env.AGENT_ID || 'kai-c0108-374';
-const APPROVAL = "kai:2026-11-18:C0108 seed 108 hope->expect, Kai yes 18 Nov 13:22Z incl. audio (80k Cartesia cap); fill now, mismatch OK (cs #374)";
+const APPROVAL = "kai:2026-11-18:C0108 seed 108 hope->expect, Kai yes 18 Nov 13:22Z incl. audio (110k Cartesia cap, intros included); fill now, mismatch OK (cs #374)";
 const PURPOSE = "cs #374 C0108 seed 108 'didn't hope to wake' -> 'didn't expect to wake up', Kai approved 18 Nov";
 const SPEND = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/c0108-719/cartesia-spend.json');
 const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT/i;
@@ -89,6 +94,16 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
     }
     if (auke.length) fs.writeFileSync(path.join(DIR, c, 'changesets', 'auke-retakes-374.json'), JSON.stringify({ why: 'human-voiced target slots (Auke): re-takes owed, never TTS (cs #374)', slots: auke }, null, 1));
   }
+  for (const c of courses) {
+    if (PARKED.has(c) || !fs.existsSync(cfile(c))) continue;
+    const ifile = path.join(DIR, c, 'changesets', 'intros-374.json');
+    if (!fs.existsSync(ifile)) continue;
+    const ledger = loadLedger(`${cfile(c)}.applied.jsonl`);
+    for (const x of JSON.parse(fs.readFileSync(ifile, 'utf8')).intros) {
+      if (!['applied', 'already'].includes(ledger.get(x.needs_op))) continue;
+      queue.push({ course: c, legoId: x.lego_id, id: x.lego_id, role: 'presentation', text: x.new_text, key: `${x.lego_id}|presentation`, intro: true });
+    }
+  }
   const answered = new Set(allRecs().map((r) => `${r.course}|${r.key}`));
   let spent = writeSpend();
   const tally = {}; const bump = (k) => { tally[k] = (tally[k] || 0) + 1; };
@@ -98,6 +113,7 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
     if (!night()) { stop = 'UK night window closed'; break; }
     if (spent + s.text.length > CAP) { stop = `c0108 cap: ${spent} spent + next ${s.text.length} > ${CAP}`; break; }
     const args = [path.join(ROOT, 'tools/audio/render.cjs'), '--course', s.course, '--role', s.role, '--text', s.text, '--purpose', PURPOSE, '--job', '#374'];
+    if (s.intro) args.push('--lego', s.legoId);   // the route binds the LEGO's intro itself
     if (process.env.CS_CONV_TOKEN) args.push('--approval', APPROVAL);
     await up(s.course);
     let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
@@ -106,7 +122,8 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
     const rec = { at: new Date().toISOString(), course: s.course, key: s.key, id: s.id, role: s.role, text: s.text,
       ok: !!r.ok, source: r.source, code: r.code, audioId: r.audioId, voiceId: r.voiceId || r.voice || null, charsSpent: r.charsSpent || 0,
       error: r.error && String(r.error).slice(0, 400) };
-    if (r.ok && r.audioId) {
+    if (r.ok && r.audioId && s.intro) rec.link = { ok: r.legoLinked !== false, code: r.legoLinked ? 'BOUND_BY_ROUTE' : (r.dryRun ? 'DRY' : 'NOT_BOUND') };
+    else if (r.ok && r.audioId) {
       await up(s.course);
       const link = { role: s.role, audioId: r.audioId };
       if (s.seedNumber) link.seedNumber = s.seedNumber; else if (s.legoId) link.legoId = s.legoId; else link.phraseId = s.phraseId;
@@ -120,7 +137,7 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
     fs.appendFileSync(logOf(s.course), JSON.stringify(rec) + '\n');
     answered.add(`${s.course}|${s.key}`);
     if (rec.ok && isCartesia(rec.voiceId)) spent += Number(rec.charsSpent) || 0;
-    bump(r.ok ? (rec.link && rec.link.ok ? `linked_${r.source}` : `link_${rec.link && rec.link.code}`) : `refused_${r.code}`);
+    bump((s.intro ? 'intro_' : '') + (r.ok ? (rec.link && rec.link.ok ? `linked_${r.source}` : `link_${rec.link && rec.link.code}`) : `refused_${r.code}`));
     if (!r.ok && STOP_RE.test(`${r.code} ${r.error || ''}`)) { stop = `STOPPED on a spend refusal: ${r.code} ${String(r.error || '').slice(0, 300)}`; break; }
   }
   const left = queue.filter((s) => !answered.has(`${s.course}|${s.key}`)).length;
