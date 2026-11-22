@@ -1,0 +1,22 @@
+{
+ "course": "fry_for_eng",
+ "template": "The Frisian for: '{X}', is:",
+ "intros": [
+  {
+   "lego_id": "S0108L01",
+   "why": "intro quotes the old seed sentence (as-in context)",
+   "old_text": "The Frisian for: 'in the middle of the night', as in — 'We didn't hope to wake in the middle of the night', is:",
+   "new_text": "The Frisian for: 'in the middle of the night', as in — 'We didn't expect to wake up in the middle of the night', is:",
+   "needs_op": 10
+  },
+  {
+   "lego_id": "S0108L02",
+   "why": "re-cut LEGO",
+   "old_text": "The Frisian for: 'we didn't hope', as in — 'We didn't hope to wake in the middle of the night', is:",
+   "new_text": "The Frisian for: 'we didn't expect', as in — 'We didn't expect to wake up in the middle of the night', is:",
+   "needs_op": 0
+  }
+ ],
+ "skipped": [],
+ "kept": []
+}

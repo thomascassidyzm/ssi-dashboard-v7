@@ -1,0 +1,27 @@
+{
+ "course": "eng_for_fra",
+ "template": "En anglais — '{X}' — c'est :",
+ "intros": [
+  {
+   "lego_id": "S0108L01",
+   "why": "re-cut LEGO",
+   "old_text": "En anglais — 'nous n'espérions pas' — c'est :",
+   "new_text": "En anglais — 'nous ne nous attendions pas à' — c'est :",
+   "needs_op": 0
+  },
+  {
+   "lego_id": "S0108L02",
+   "why": "intro quotes the old seed sentence (as-in context)",
+   "old_text": "En anglais — 'nous réveiller' — comme dans — 'nous n'espérions pas nous réveiller maintenant' — c'est :",
+   "new_text": "En anglais — 'nous réveiller' — comme dans — 'nous ne nous attendions pas à nous réveiller maintenant' — c'est :",
+   "needs_op": 15
+  }
+ ],
+ "skipped": [],
+ "kept": [
+  {
+   "lego_id": "S0108L03",
+   "why": "intro still names the LEGO's known words"
+  }
+ ]
+}

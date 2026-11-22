@@ -1,0 +1,29 @@
+{
+ "course": "nor_for_eng",
+ "template": "The Norwegian for: '{X}', is:",
+ "intros": [
+  {
+   "lego_id": "S0108L01",
+   "why": "intro quotes the old seed sentence (as-in context)",
+   "old_text": "The Norwegian for: 'the night', as in — 'We didn't hope to wake in the middle of the night.', is:",
+   "new_text": "The Norwegian for: 'the night', as in — 'We didn't expect to wake up in the middle of the night.', is:",
+   "needs_op": 24
+  },
+  {
+   "lego_id": "S0108L02",
+   "why": "intro quotes the old seed sentence (as-in context)",
+   "old_text": "The Norwegian for: 'middle', as in — 'We didn't hope to wake in the middle of the night.', is:",
+   "new_text": "The Norwegian for: 'middle', as in — 'We didn't expect to wake up in the middle of the night.', is:",
+   "needs_op": 24
+  },
+  {
+   "lego_id": "S0108L03",
+   "why": "new LEGO (add-on)",
+   "old_text": null,
+   "new_text": "The Norwegian for: 'expected', is:",
+   "needs_op": 0
+  }
+ ],
+ "skipped": [],
+ "kept": []
+}
