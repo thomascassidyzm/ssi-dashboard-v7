@@ -1,0 +1,754 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "7bfd994f-d174-4dbb-921c-4f9e8e1794e5",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nie mieliśmy nadziei obudzić się w środku nocy.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7099f42c-b18e-4e09-a42f-ac9b812801fb",
+    "target2_audio_id": "ba4260e1-d641-453e-81ec-90fa3daa41e6"
+   },
+   "after": {
+    "id": "7bfd994f-d174-4dbb-921c-4f9e8e1794e5",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nie spodziewaliśmy się obudzić się w środku nocy.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "1882e05c-f644-4e1f-801e-8667e5cd87fe",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nie mieliśmy nadziei",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "not",
+      "target": "nie"
+     },
+     {
+      "known": "we had",
+      "target": "mieliśmy"
+     },
+     {
+      "known": "hope",
+      "target": "nadziei"
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "e02125da-fa08-46dd-a600-ed24e463df93",
+    "target2_audio_id": "73c74054-7cc7-4736-a557-928d0abb224e",
+    "presentation_audio_id": "8eec79c0-fe0a-485f-9cb7-748fe1656983"
+   },
+   "after": {
+    "id": "1882e05c-f644-4e1f-801e-8667e5cd87fe",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nie spodziewaliśmy się",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "not",
+      "target": "nie"
+     },
+     {
+      "known": "we expected",
+      "target": "spodziewaliśmy"
+     },
+     {
+      "known": "oneself",
+      "target": "się"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mieliśmy",
+    "known_text": "we had",
+    "known_audio_id": "c5491f56-5e28-451d-9d83-2ba727119097",
+    "target1_audio_id": "3199228b-0f31-4c27-a3ef-01dad3ee6e0d",
+    "target2_audio_id": "fa11e06e-7bc8-46af-8df3-71242578fa09",
+    "presentation_audio_id": "f3cd66dd-4156-44a0-8807-bf3ffd1c3bea"
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "spodziewaliśmy",
+    "known_text": "we expected",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "f3cd66dd-4156-44a0-8807-bf3ffd1c3bea"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01C03"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01C03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nadziei",
+    "known_text": "hope",
+    "known_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "target1_audio_id": "1804c7a2-2aa2-48db-8630-c08154d056ed",
+    "target2_audio_id": "9d017295-58e8-4e16-9880-5ab06d883354",
+    "presentation_audio_id": "a62fdea0-8faa-445b-be9e-3fed8b6d8c49"
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01C03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "się",
+    "known_text": "oneself",
+    "known_audio_id": null,
+    "target1_audio_id": "93e7df0a-09e5-4d8e-af96-31c1a9743bf6",
+    "target2_audio_id": "30c65061-9acc-4c2e-9a56-c16e727b10d0",
+    "presentation_audio_id": "a62fdea0-8faa-445b-be9e-3fed8b6d8c49"
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei",
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "e02125da-fa08-46dd-a600-ed24e463df93",
+    "target2_audio_id": "73c74054-7cc7-4736-a557-928d0abb224e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei zobaczyć",
+    "known_text": "we didn't hope to see",
+    "known_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+    "target1_audio_id": "ff2a1d57-442d-4fcc-ad97-2e2c526d9df5",
+    "target2_audio_id": "5909d1ae-20ff-47aa-ad4a-f88da4b911ea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się zobaczyć",
+    "known_text": "we didn't expect to see",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei iść",
+    "known_text": "we didn't hope to go",
+    "known_audio_id": "4061847e-d709-4ef6-a553-6b7e23e99381",
+    "target1_audio_id": "16c66ae7-dc83-40d8-8be2-8ae791be9f9a",
+    "target2_audio_id": "44c3599d-fc20-4175-90fb-307255558a04",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się iść",
+    "known_text": "we didn't expect to go",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei czuć się szczęśliwi",
+    "known_text": "we didn't hope to feel happy",
+    "known_audio_id": "5eb9d955-ce5e-442d-a9a5-75f8cbe2ed17",
+    "target1_audio_id": "957ad62f-4fa8-4454-810d-2cfdf8c0dd53",
+    "target2_audio_id": "1bfe39ee-3da4-4721-aa6d-143f57041978",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się czuć się szczęśliwi",
+    "known_text": "we didn't expect to feel happy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei zmienić to co robimy",
+    "known_text": "we didn't hope to change what we're doing",
+    "known_audio_id": "5e254659-0cd3-42ca-9349-8fb27ce74452",
+    "target1_audio_id": "5581de3f-db5d-40be-a277-7ddf6666d6e8",
+    "target2_audio_id": "989c927f-04cd-428b-8a6a-2870f48f2a29",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się zmienić to co robimy",
+    "known_text": "we didn't expect to change what we're doing",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei dowiadywać się o tym",
+    "known_text": "we didn't hope to find out about it",
+    "known_audio_id": "6780d9e0-3052-4f97-9eb7-83d7ca3e323e",
+    "target1_audio_id": "f466e174-cbb2-4487-aafb-8a9e5f0a049c",
+    "target2_audio_id": "d349cf2d-57fd-4a4d-a035-f40e925258aa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się dowiadywać się o tym",
+    "known_text": "we didn't expect to find out about it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei pojechać do domu tak szybko",
+    "known_text": "we didn't hope to go home so soon",
+    "known_audio_id": "767ee2f6-41cb-4eed-b0b7-8c6a769c1d10",
+    "target1_audio_id": "1cf8fecd-30e1-48a7-be4f-89ce7c13b1ee",
+    "target2_audio_id": "89eb6fdd-0f91-440b-83c1-f8bf8986f8b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się pojechać do domu tak szybko",
+    "known_text": "we didn't expect to go home so soon",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei ciężko pracować dziś",
+    "known_text": "we didn't hope to work hard today",
+    "known_audio_id": "726a3e6c-f024-4371-844f-3108a704b669",
+    "target1_audio_id": "eefd6ad2-cce9-4c4f-a6bc-f53087e64e7a",
+    "target2_audio_id": "f1f1bc5b-35b0-4a2d-9520-b06e31bdb3cf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się ciężko pracować dziś",
+    "known_text": "we didn't expect to work hard today",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei zobaczyć czegoś podobnego",
+    "known_text": "we didn't hope to see something similar",
+    "known_audio_id": "6bcd7db9-7c08-4291-b5fc-99f17e62298d",
+    "target1_audio_id": "1490bc16-35bc-4460-a308-d65fcef56855",
+    "target2_audio_id": "9453f976-85ed-4442-9422-e3c8fda7672a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się zobaczyć czegoś podobnego",
+    "known_text": "we didn't expect to see something similar",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei obudzić się",
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "100bd5c7-ddb2-4b02-ac8e-8d48ce4b1c38",
+    "target2_audio_id": "3275c3f0-4948-4576-a969-ddc8a710b805",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się obudzić się",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei obudzić się tak szybko",
+    "known_text": "we didn't hope to wake up so quickly",
+    "known_audio_id": "5253c19d-833d-4ea9-b350-33bfbf4c2fcd",
+    "target1_audio_id": "3e994e3f-f4c4-4dcb-8e36-b4aa68cd4fbe",
+    "target2_audio_id": "16fc5d6f-0d75-4cb0-a84c-3996d30e6d0b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się obudzić się tak szybko",
+    "known_text": "we didn't expect to wake up so quickly",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pol_for_eng",
+    "id": "pol_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "pol_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nie mieliśmy nadziei obudzić się w środku nocy",
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "7099f42c-b18e-4e09-a42f-ac9b812801fb",
+    "target2_audio_id": "ba4260e1-d641-453e-81ec-90fa3daa41e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pol_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nie spodziewaliśmy się obudzić się w środku nocy",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "nie mieliśmy nadziei obudzić się w środku nocy",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "7099f42c-b18e-4e09-a42f-ac9b812801fb",
+    "target2_audio_id": "ba4260e1-d641-453e-81ec-90fa3daa41e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we didn't hope to wake up so quickly",
+    "target_text": "nie mieliśmy nadziei obudzić się tak szybko",
+    "known_audio_id": "5253c19d-833d-4ea9-b350-33bfbf4c2fcd",
+    "target1_audio_id": "3e994e3f-f4c4-4dcb-8e36-b4aa68cd4fbe",
+    "target2_audio_id": "16fc5d6f-0d75-4cb0-a84c-3996d30e6d0b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nie mieliśmy nadziei obudzić się",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "100bd5c7-ddb2-4b02-ac8e-8d48ce4b1c38",
+    "target2_audio_id": "3275c3f0-4948-4576-a969-ddc8a710b805"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we didn't hope to see something similar",
+    "target_text": "nie mieliśmy nadziei zobaczyć czegoś podobnego",
+    "known_audio_id": "6bcd7db9-7c08-4291-b5fc-99f17e62298d",
+    "target1_audio_id": "1490bc16-35bc-4460-a308-d65fcef56855",
+    "target2_audio_id": "9453f976-85ed-4442-9422-e3c8fda7672a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to work hard today",
+    "target_text": "nie mieliśmy nadziei ciężko pracować dziś",
+    "known_audio_id": "726a3e6c-f024-4371-844f-3108a704b669",
+    "target1_audio_id": "eefd6ad2-cce9-4c4f-a6bc-f53087e64e7a",
+    "target2_audio_id": "f1f1bc5b-35b0-4a2d-9520-b06e31bdb3cf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to go home so soon",
+    "target_text": "nie mieliśmy nadziei pojechać do domu tak szybko",
+    "known_audio_id": "767ee2f6-41cb-4eed-b0b7-8c6a769c1d10",
+    "target1_audio_id": "1cf8fecd-30e1-48a7-be4f-89ce7c13b1ee",
+    "target2_audio_id": "89eb6fdd-0f91-440b-83c1-f8bf8986f8b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to find out about it",
+    "target_text": "nie mieliśmy nadziei dowiadywać się o tym",
+    "known_audio_id": "6780d9e0-3052-4f97-9eb7-83d7ca3e323e",
+    "target1_audio_id": "f466e174-cbb2-4487-aafb-8a9e5f0a049c",
+    "target2_audio_id": "d349cf2d-57fd-4a4d-a035-f40e925258aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to change what we're doing",
+    "target_text": "nie mieliśmy nadziei zmienić to co robimy",
+    "known_audio_id": "5e254659-0cd3-42ca-9349-8fb27ce74452",
+    "target1_audio_id": "5581de3f-db5d-40be-a277-7ddf6666d6e8",
+    "target2_audio_id": "989c927f-04cd-428b-8a6a-2870f48f2a29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "we didn't hope to feel happy",
+    "target_text": "nie mieliśmy nadziei czuć się szczęśliwi",
+    "known_audio_id": "5eb9d955-ce5e-442d-a9a5-75f8cbe2ed17",
+    "target1_audio_id": "957ad62f-4fa8-4454-810d-2cfdf8c0dd53",
+    "target2_audio_id": "1bfe39ee-3da4-4721-aa6d-143f57041978"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to go",
+    "target_text": "nie mieliśmy nadziei iść",
+    "known_audio_id": "4061847e-d709-4ef6-a553-6b7e23e99381",
+    "target1_audio_id": "16c66ae7-dc83-40d8-8be2-8ae791be9f9a",
+    "target2_audio_id": "44c3599d-fc20-4175-90fb-307255558a04"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to see",
+    "target_text": "nie mieliśmy nadziei zobaczyć",
+    "known_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+    "target1_audio_id": "ff2a1d57-442d-4fcc-ad97-2e2c526d9df5",
+    "target2_audio_id": "5909d1ae-20ff-47aa-ad4a-f88da4b911ea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "nie mieliśmy nadziei",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "e02125da-fa08-46dd-a600-ed24e463df93",
+    "target2_audio_id": "73c74054-7cc7-4736-a557-928d0abb224e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01C03",
+   "set": {
+    "known_text": "hope",
+    "target_text": "nadziei",
+    "known_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "target1_audio_id": "1804c7a2-2aa2-48db-8630-c08154d056ed",
+    "target2_audio_id": "9d017295-58e8-4e16-9880-5ab06d883354"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pol_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "we had",
+    "target_text": "mieliśmy",
+    "known_audio_id": "c5491f56-5e28-451d-9d83-2ba727119097",
+    "target1_audio_id": "3199228b-0f31-4c27-a3ef-01dad3ee6e0d",
+    "target2_audio_id": "fa11e06e-7bc8-46af-8df3-71242578fa09"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "1882e05c-f644-4e1f-801e-8667e5cd87fe",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "nie mieliśmy nadziei",
+    "components": [
+     {
+      "known": "not",
+      "target": "nie"
+     },
+     {
+      "known": "we had",
+      "target": "mieliśmy"
+     },
+     {
+      "known": "hope",
+      "target": "nadziei"
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "e02125da-fa08-46dd-a600-ed24e463df93",
+    "target2_audio_id": "73c74054-7cc7-4736-a557-928d0abb224e",
+    "presentation_audio_id": "8eec79c0-fe0a-485f-9cb7-748fe1656983"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nie mieliśmy nadziei obudzić się w środku nocy.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "7099f42c-b18e-4e09-a42f-ac9b812801fb",
+    "target2_audio_id": "ba4260e1-d641-453e-81ec-90fa3daa41e6"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

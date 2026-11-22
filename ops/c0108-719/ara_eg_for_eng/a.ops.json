@@ -1,0 +1,261 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "إحنا ماكناش متوقعين نصحى في نص الليل.",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nisha fi nuss il-leel."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "إحنا ماكناش نتمنى نصحى في نص الليل."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "متوقعين",
+    "known_text": "we expect",
+    "target_text_roman": "mitwaqqa'iin",
+    "components": [
+     {
+      "known": "\"we\"",
+      "target": "\"إحنا\""
+     },
+     {
+      "known": "\"expecting\"",
+      "target": "\"متوقع\""
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we hope",
+    "target_text": "نتمنى"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01C02",
+   "set": {
+    "target_text": "\"متوقع\"",
+    "target_text_roman": "mitwaqqa'",
+    "known_text": "\"expecting\""
+   },
+   "expect": {
+    "known_text": "\"hope\"",
+    "target_text": "\"أتمنى\""
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "ماكناش متوقعين",
+    "target_text_roman": "makunnaash mitwaqqa'iin",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "ماكناش نتمنى"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "متوقعين نتقابل",
+    "target_text_roman": "mitwaqqa'iin nit'aabil",
+    "known_text": "we expect to meet"
+   },
+   "expect": {
+    "known_text": "we hope to meet",
+    "target_text": "نتمنى نتقابل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "إحنا ماكناش متوقعين ده",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin da",
+    "known_text": "we didn't expect that"
+   },
+   "expect": {
+    "known_text": "we didn't hope for that",
+    "target_text": "إحنا ماكناش نتمنى ده"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "إحنا متوقعين نتقابل بكرة",
+    "target_text_roman": "ihna mitwaqqa'iin nit'aabil bukra",
+    "known_text": "we expect to meet tomorrow"
+   },
+   "expect": {
+    "known_text": "we hope to meet tomorrow",
+    "target_text": "إحنا نتمنى نتقابل بكرة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "إحنا متوقعين نتقابل قريب",
+    "target_text_roman": "ihna mitwaqqa'iin nit'aabil 'urayyib",
+    "known_text": "we expect to meet soon"
+   },
+   "expect": {
+    "known_text": "we hope to meet soon",
+    "target_text": "إحنا نتمنى نتقابل قريب"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "إحنا ماكناش متوقعين نمشي دلوقتي",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nimshi dilwa'ti",
+    "known_text": "we didn't expect to go now"
+   },
+   "expect": {
+    "known_text": "we didn't hope to go now",
+    "target_text": "إحنا ماكناش نتمنى نمشي دلوقتي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "إحنا متوقعين نقول حاجة كويسة",
+    "target_text_roman": "ihna mitwaqqa'iin ni'uul haaga kuwayyisa",
+    "known_text": "we expect to say something good"
+   },
+   "expect": {
+    "known_text": "we hope to say something good",
+    "target_text": "إحنا نتمنى نقول حاجة كويسة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02B02",
+   "set": {
+    "target_text": "متوقعين نصحى",
+    "target_text_roman": "mitwaqqa'iin nisha",
+    "known_text": "expect to wake up"
+   },
+   "expect": {
+    "known_text": "hope to wake up",
+    "target_text": "نتمنى نصحى"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02B03",
+   "set": {
+    "target_text": "ماكناش متوقعين نصحى",
+    "target_text_roman": "makunnaash mitwaqqa'iin nisha",
+    "known_text": "didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "didn't hope to wake up",
+    "target_text": "ماكناش نتمنى نصحى"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02U02",
+   "set": {
+    "target_text": "إحنا متوقعين نصحى في الوقت",
+    "target_text_roman": "ihna mitwaqqa'iin nisha fi il-wa't",
+    "known_text": "we expect to wake up on time"
+   },
+   "expect": {
+    "known_text": "we hope to wake up on time",
+    "target_text": "إحنا نتمنى نصحى في الوقت"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02U03",
+   "set": {
+    "target_text": "إحنا ماكناش متوقعين نصحى دلوقتي",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nisha dilwa'ti",
+    "known_text": "we didn't expect to wake up now"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up now",
+    "target_text": "إحنا ماكناش نتمنى نصحى دلوقتي"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L02U06",
+   "set": {
+    "target_text": "إحنا متوقعين نصحى قبل ما يبقى الليلة",
+    "target_text_roman": "ihna mitwaqqa'iin nisha 'abl ma yib'a il-leela",
+    "known_text": "we expect to wake up before tomorrow night"
+   },
+   "expect": {
+    "known_text": "we hope to wake up before tomorrow night",
+    "target_text": "إحنا نتمنى نصحى قبل ما يبقى الليلة"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03B03",
+   "set": {
+    "target_text": "ماكناش متوقعين نصحى في نص الليل",
+    "target_text_roman": "makunnaash mitwaqqa'iin nisha fi nuss il-leel",
+    "known_text": "didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "didn't hope to wake in the middle of the night",
+    "target_text": "ماكناش نتمنى نصحى في نص الليل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "إحنا ماكناش متوقعين نصحى في نص الليل",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nisha fi nuss il-leel",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "إحنا ماكناش نتمنى نصحى في نص الليل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03U02",
+   "set": {
+    "target_text": "إحنا ماكناش متوقعين نمشي في نص الليل",
+    "target_text_roman": "ihna makunnaash mitwaqqa'iin nimshi fi nuss il-leel",
+    "known_text": "we didn't expect to go in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to go in the middle of the night",
+    "target_text": "إحنا ماكناش نتمنى نمشي في نص الليل"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0108L03U05",
+   "set": {
+    "target_text": "إحنا متوقعين نمشي البيت في نص الليل",
+    "target_text_roman": "ihna mitwaqqa'iin nimshi il-beet fi nuss il-leel",
+    "known_text": "we expect to go home in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hope to go home in the middle of the night",
+    "target_text": "إحنا نتمنى نمشي البيت في نص الليل"
+   }
+  }
+ ]
+}

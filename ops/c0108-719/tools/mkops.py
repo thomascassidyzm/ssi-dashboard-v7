@@ -15,6 +15,7 @@ for rid, v in plan.PLAN.items():
         s = int(rid[4:] or 108); sp = popty.load(C, s)["seed_pair"]; st = {}; ex = {}
         if v[0] is not None and v[0] != sp["known"]: st["known_text"] = v[0]; ex["known_text"] = sp["known"]
         if v[1] is not None and v[1] != sp["target"]: st["target_text"] = v[1]; ex["target_text"] = sp["target"]
+        if len(v) > 2 and "target_text" in st: st["target_text_roman"] = v[2]  # cs #771: seed rows carrying a romanisation refuse a target change without it (ROMAN_STALE)
         if st: ops.append({"op": "seed.update", "seed_number": s, "set": st, "expect": ex})
         continue
     if rid not in rows: missing.append(rid); continue
@@ -31,6 +32,8 @@ for rid, v in plan.PLAN.items():
         k, t = v["lego"]
         if t is not None and t != r["target_text"]: st["target_text"] = t
         if k is not None and k != r["known_text"]: st["known_text"] = k
+        if "roman" in v: st["target_text_roman"] = v["roman"]  # cs #771: optional LEGO romanisation
+        if "type" in v: st["type"] = v["type"]  # cs #771: optional A<->M change with a re-cut
         if "components" in v:
             if v["components"] is None: st["type"] = "A"; st["components"] = None
             else: st["components"] = v["components"]

@@ -1,0 +1,101 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ab71597a-3a83-4f03-9455-143f1dc32e44",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "ما كنا نتمنى نصحى بنص الليل.",
+    "target_text_roman": "ma kunna nitmanna nsuha b-nuss al-liil.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "32c9892b-3f74-4dda-9705-4d1a5f9dc598",
+    "target2_audio_id": "7bae87b5-24fc-4ae9-b09a-f0675f153eaf"
+   },
+   "after": {
+    "id": "ab71597a-3a83-4f03-9455-143f1dc32e44",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "ما كنا متوقعين نصحى بنص الليل.",
+    "target_text_roman": "ma kinna mitwa''iin nisha b-nuss il-leil.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_lb_for_eng",
+    "id": "ara_lb_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "ara_lb_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ما كنا نتمنى نصحى بنص الليل",
+    "target_text_roman": "ma kunna nitmanna nsuha b-nuss al-liil",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "32c9892b-3f74-4dda-9705-4d1a5f9dc598",
+    "target2_audio_id": "7bae87b5-24fc-4ae9-b09a-f0675f153eaf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_lb_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ما كنا متوقعين نصحى بنص الليل",
+    "target_text_roman": "ma kinna mitwa''iin nisha b-nuss il-leil",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ما كنا نتمنى نصحى بنص الليل",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "32c9892b-3f74-4dda-9705-4d1a5f9dc598",
+    "target2_audio_id": "7bae87b5-24fc-4ae9-b09a-f0675f153eaf",
+    "target_text_roman": "ma kunna nitmanna nsuha b-nuss al-liil"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "ما كنا نتمنى نصحى بنص الليل.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "32c9892b-3f74-4dda-9705-4d1a5f9dc598",
+    "target2_audio_id": "7bae87b5-24fc-4ae9-b09a-f0675f153eaf",
+    "target_text_roman": "ma kunna nitmanna nsuha b-nuss al-liil."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

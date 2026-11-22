@@ -1,0 +1,72 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Մենք չէինք սպասում արկնանալ գիշերի մեջ։",
+    "target_text_roman": "menk cheink spasum arknanal gisheri mej."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Մենք չի ուզում եինք արկնանալ գիշերի մեջ։"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "don't like waking up at night"
+   },
+   "expect": {
+    "known_text": "don't like waking at night",
+    "target_text": "չի սիրում արկնանալ գիշերի"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I don't want to wake up at night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake at night",
+    "target_text": "ես չեմ ուզում արկնանալ գիշերի"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "I don't like waking up at night"
+   },
+   "expect": {
+    "known_text": "I don't like waking at night",
+    "target_text": "ես չի սիրում արկնանալ գիշերի"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "արկնանալ գիշերի մեջ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hye_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "ես չեմ ուզում արկնանալ գիշերի մեջ"
+   }
+  }
+ ]
+}

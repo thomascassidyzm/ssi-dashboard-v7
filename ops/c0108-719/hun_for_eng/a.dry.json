@@ -1,0 +1,93 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "hun_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "8bf24630-213a-4f01-9de8-908a3b524832",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nem reméltük, hogy az éjszaka közepén felébredünk.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "0eedb0e1-c8b9-4923-9b8a-a5d7fd113bb5",
+    "target2_audio_id": "898c5544-8e38-4160-a153-27cb0ad4fa9e"
+   },
+   "after": {
+    "id": "8bf24630-213a-4f01-9de8-908a3b524832",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nem számítottunk arra, hogy az éjszaka közepén felébredünk.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "hun_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "1062039a-19da-4cd5-96ef-2323d69636d5",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "we",
+    "target_text": "felébredünk",
+    "known_audio_id": "a24754eb-201f-4b12-bf11-32b2ab328248",
+    "target1_audio_id": "65e969ba-9df5-4bc1-b1bb-88ae8d7ce7ce",
+    "target2_audio_id": "4d758972-6106-4e6e-a5cf-af5ee04eeb1c",
+    "presentation_audio_id": "8e8d9011-7626-447e-9254-d0a5eec6f771"
+   },
+   "after": {
+    "id": "1062039a-19da-4cd5-96ef-2323d69636d5",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "we wake up",
+    "target_text": "felébredünk",
+    "known_audio_id": null,
+    "target1_audio_id": "65e969ba-9df5-4bc1-b1bb-88ae8d7ce7ce",
+    "target2_audio_id": "4d758972-6106-4e6e-a5cf-af5ee04eeb1c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "1062039a-19da-4cd5-96ef-2323d69636d5",
+   "set": {
+    "known_text": "we",
+    "known_audio_id": "a24754eb-201f-4b12-bf11-32b2ab328248",
+    "presentation_audio_id": "8e8d9011-7626-447e-9254-d0a5eec6f771"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nem reméltük, hogy az éjszaka közepén felébredünk.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "0eedb0e1-c8b9-4923-9b8a-a5d7fd113bb5",
+    "target2_audio_id": "898c5544-8e38-4160-a153-27cb0ad4fa9e"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

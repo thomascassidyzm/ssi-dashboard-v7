@@ -1,0 +1,917 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "df10a78a-054f-4c0d-b981-10c6c1ec9de4",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Չէինք յուսար գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink husar kishervan gesin artnnal.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "df10a78a-054f-4c0d-b981-10c6c1ec9de4",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Չէինք սպասեր գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink sbaser kishervan gesin artnnal.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "01e099d5-77d5-4635-964d-427db8727e50",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "չէինք յուսար",
+    "known_text": "we didn't hope",
+    "target_text_roman": "cheink husar",
+    "components": [
+     {
+      "known": "we weren't",
+      "target": "չէինք"
+     },
+     {
+      "known": "hoping",
+      "target": "յուսար"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "01e099d5-77d5-4635-964d-427db8727e50",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "չէինք սպասեր",
+    "known_text": "we didn't expect",
+    "target_text_roman": "cheink sbaser",
+    "components": [
+     {
+      "known": "we weren't",
+      "target": "չէինք"
+     },
+     {
+      "known": "expecting",
+      "target": "սպասեր"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք յուսար տեսնել",
+    "target_text_roman": "cheink husar desnel",
+    "known_text": "we didn't hope to see",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք սպասեր տեսնել",
+    "target_text_roman": "cheink sbaser desnel",
+    "known_text": "we didn't expect to see",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք յուսար հասկնալ",
+    "target_text_roman": "cheink husar hasgnal",
+    "known_text": "we didn't hope to understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք սպասեր հասկնալ",
+    "target_text_roman": "cheink sbaser hasgnal",
+    "known_text": "we didn't expect to understand",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք յուսար աւարտել",
+    "target_text_roman": "cheink husar avardel",
+    "known_text": "we didn't hope to finish",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք սպասեր աւարտել",
+    "target_text_roman": "cheink sbaser avardel",
+    "known_text": "we didn't expect to finish",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք յուսար որքան կարելի է արագ աւարտել",
+    "target_text_roman": "cheink husar vorkan gareli e arak avardel",
+    "known_text": "we didn't hope to finish as quickly as possible",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք սպասեր որքան կարելի է արագ աւարտել",
+    "target_text_roman": "cheink sbaser vorkan gareli e arak avardel",
+    "known_text": "we didn't expect to finish as quickly as possible",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք յուսար պատասխանը դիւրութեամբ գտնել",
+    "target_text_roman": "cheink husar badaskhanə tyurutyamp kədnel",
+    "known_text": "we didn't hope to find the answer easily",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք սպասեր պատասխանը դիւրութեամբ գտնել",
+    "target_text_roman": "cheink sbaser badaskhanə tyurutyamp kədnel",
+    "known_text": "we didn't expect to find the answer easily",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "երէկ չէինք յուսար ճշմարտութիւնը լսել",
+    "target_text_roman": "yereg cheink husar jəshmardutyunə ləsel",
+    "known_text": "we didn't hope to hear the truth yesterday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "երէկ չէինք սպասեր ճշմարտութիւնը լսել",
+    "target_text_roman": "yereg cheink sbaser jəshmardutyunə ləsel",
+    "known_text": "we didn't expect to hear the truth yesterday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք յուսար շատ լաւ հայերէն խօսիլ",
+    "target_text_roman": "cheink husar shad lav hayeren khosil",
+    "known_text": "we didn't hope to speak Armenian very well",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "չէինք սպասեր շատ լաւ հայերէն խօսիլ",
+    "target_text_roman": "cheink sbaser shad lav hayeren khosil",
+    "known_text": "we didn't expect to speak Armenian very well",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "lego.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "59039fc4-b143-4204-8f5d-67b7bccb3a31",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake",
+    "target_text": "արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "59039fc4-b143-4204-8f5d-67b7bccb3a31",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake up",
+    "target_text": "արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I want to wake",
+    "target_text": "կ՚ուզեմ արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I want to wake up",
+    "target_text": "կ՚ուզեմ արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake",
+    "target_text": "չեմ ուզեր արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't want to wake up",
+    "target_text": "չեմ ուզեր արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake tomorrow",
+    "target_text": "վաղը արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up tomorrow",
+    "target_text": "վաղը արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'd like to be able to wake easily",
+    "target_text": "պիտի ուզէի կարենալ դիւրութեամբ արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'd like to be able to wake up easily",
+    "target_text": "պիտի ուզէի կարենալ դիւրութեամբ արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he doesn't want to wake this morning",
+    "target_text": "ան չ՚ուզեր այս առտու արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he doesn't want to wake up this morning",
+    "target_text": "ան չ՚ուզեր այս առտու արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not sure if I can wake at six o'clock",
+    "target_text": "վստահ չեմ թէ կրնամ ժամը վեցին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm not sure if I can wake up at six o'clock",
+    "target_text": "վստահ չեմ թէ կրնամ ժամը վեցին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wanted to wake at six o'clock yesterday",
+    "target_text": "երէկ կ՚ուզէինք ժամը վեցին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we wanted to wake up at six o'clock yesterday",
+    "target_text": "երէկ կ՚ուզէինք ժամը վեցին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "գիշերուան կէսին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "գիշերուան կէսին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "չեմ ուզեր գիշերուան կէսին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "չեմ ուզեր գիշերուան կէսին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't like to wake in the middle of the night",
+    "target_text": "չեմ սիրեր գիշերուան կէսին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't like to wake up in the middle of the night",
+    "target_text": "չեմ սիրեր գիշերուան կէսին արթննալ",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hyw_for_eng",
+    "id": "hyw_for_eng:S0108L03U06"
+   },
+   "before": {
+    "id": "hyw_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "Չէինք յուսար գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink husar kishervan gesin artnnal.",
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hyw_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "Չէինք սպասեր գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink sbaser kishervan gesin artnnal.",
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Չէինք յուսար գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink husar kishervan gesin artnnal."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "I don't like to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we wanted to wake at six o'clock yesterday"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I'm not sure if I can wake at six o'clock"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "he doesn't want to wake this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "I'd like to be able to wake easily"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "to wake tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "I want to wake"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "59039fc4-b143-4204-8f5d-67b7bccb3a31",
+   "set": {
+    "known_text": "to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope to speak Armenian very well",
+    "target_text": "չէինք յուսար շատ լաւ հայերէն խօսիլ",
+    "target_text_roman": "cheink husar shad lav hayeren khosil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope to hear the truth yesterday",
+    "target_text": "երէկ չէինք յուսար ճշմարտութիւնը լսել",
+    "target_text_roman": "yereg cheink husar jəshmardutyunə ləsel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to find the answer easily",
+    "target_text": "չէինք յուսար պատասխանը դիւրութեամբ գտնել",
+    "target_text_roman": "cheink husar badaskhanə tyurutyamp kədnel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to finish as quickly as possible",
+    "target_text": "չէինք յուսար որքան կարելի է արագ աւարտել",
+    "target_text_roman": "cheink husar vorkan gareli e arak avardel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to finish",
+    "target_text": "չէինք յուսար աւարտել",
+    "target_text_roman": "cheink husar avardel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to understand",
+    "target_text": "չէինք յուսար հասկնալ",
+    "target_text_roman": "cheink husar hasgnal"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope to see",
+    "target_text": "չէինք յուսար տեսնել",
+    "target_text_roman": "cheink husar desnel"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "01e099d5-77d5-4635-964d-427db8727e50",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "չէինք յուսար",
+    "components": [
+     {
+      "known": "we weren't",
+      "target": "չէինք"
+     },
+     {
+      "known": "hoping",
+      "target": "յուսար"
+     }
+    ],
+    "target_text_roman": "cheink husar"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Չէինք յուսար գիշերուան կէսին արթննալ։",
+    "target_text_roman": "cheink husar kishervan gesin artnnal."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

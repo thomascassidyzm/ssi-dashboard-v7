@@ -1,0 +1,177 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nismo očekivali probuditi se usred noći."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nismo se nadali probuditi se usred noći."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "nismo očekivali",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we didn't",
+      "target": "nismo"
+     },
+     {
+      "known": "expected",
+      "target": "očekivali"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nismo se nadali"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01C02",
+   "set": {
+    "target_text": "očekivali",
+    "known_text": "expected"
+   },
+   "expect": {
+    "known_text": "oneself",
+    "target_text": "se"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "hrv_for_eng:S0108L01C03",
+   "expect": {
+    "target_text": "nadali"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "nismo očekivali",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nismo se nadali"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nismo očekivali čuti to",
+    "known_text": "we didn't expect to hear that"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear that",
+    "target_text": "nismo se nadali čuti to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "mislim da nismo očekivali to",
+    "known_text": "I think we didn't expect that"
+   },
+   "expect": {
+    "known_text": "I think we didn't hope",
+    "target_text": "mislim da se nismo nadali"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "nismo očekivali vidjeti to",
+    "known_text": "we didn't expect to see that"
+   },
+   "expect": {
+    "known_text": "we didn't hope to see that",
+    "target_text": "nismo se nadali vidjeti to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "nismo očekivali promijeniti što radimo",
+    "known_text": "we didn't expect to change what we're doing"
+   },
+   "expect": {
+    "known_text": "we didn't hope to change what we're doing",
+    "target_text": "nismo se nadali promijeniti što radimo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "iznenađen sam da nismo očekivali više",
+    "known_text": "I'm surprised that we didn't expect more"
+   },
+   "expect": {
+    "known_text": "I'm surprised that we didn't hope for more",
+    "target_text": "iznenađen sam da se nismo nadali više"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "zato nismo očekivali nastaviti",
+    "known_text": "that's why we didn't expect to continue"
+   },
+   "expect": {
+    "known_text": "that's why we didn't hope to continue",
+    "target_text": "zato se nismo nadali nastaviti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "nažalost nismo očekivali to",
+    "known_text": "unfortunately we didn't expect that"
+   },
+   "expect": {
+    "known_text": "unfortunately we didn't hope for that",
+    "target_text": "nažalost nismo se nadali tome"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L02B02",
+   "set": {
+    "target_text": "nismo očekivali probuditi se",
+    "known_text": "we didn't expect to awaken"
+   },
+   "expect": {
+    "known_text": "we didn't hope to awaken",
+    "target_text": "nismo se nadali probuditi se"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hrv_for_eng:S0108L03B03",
+   "set": {
+    "target_text": "nismo očekivali probuditi se usred noći",
+    "known_text": "we didn't expect to awaken mid-night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to awaken mid-night",
+    "target_text": "nismo se nadali probuditi se usred noći"
+   }
+  }
+ ]
+}

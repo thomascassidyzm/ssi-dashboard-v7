@@ -1,0 +1,775 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ec42653e-5767-449e-91e9-edbcec062e35",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nedoufali jsme, že se probudíme uprostřed noci.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7c99ed2-f5b7-4c0a-998d-caa15778881b",
+    "target2_audio_id": "98199459-6a20-46b5-969c-d7e4a1b08dcc"
+   },
+   "after": {
+    "id": "ec42653e-5767-449e-91e9-edbcec062e35",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nečekali jsme, že se probudíme uprostřed noci.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "b1f879ad-8a1a-4b0e-b53e-9dca1c283bec",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nedoufali jsme",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "not hoped",
+      "target": "nedoufali"
+     },
+     {
+      "known": "we were",
+      "target": "jsme"
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "dfc049ca-120c-4feb-be85-35e7a300308f",
+    "target2_audio_id": "ea53c78f-02d3-4486-bc79-eacf19405360",
+    "presentation_audio_id": "3abcfe6e-a349-4a33-9b7b-66ab78f45b34"
+   },
+   "after": {
+    "id": "b1f879ad-8a1a-4b0e-b53e-9dca1c283bec",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nečekali jsme",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "not expected",
+      "target": "nečekali"
+     },
+     {
+      "known": "we were",
+      "target": "jsme"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01C01"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01C01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali",
+    "known_text": "not hoped",
+    "known_audio_id": "75a8af56-0e4b-4305-bda2-62a306a3c8c9",
+    "target1_audio_id": "972d7909-04bf-44cf-9ee7-0d141505eb97",
+    "target2_audio_id": "3d40c2f1-14b9-4330-9de4-69b7f93ea022",
+    "presentation_audio_id": "f5828fee-327a-487e-b803-e19f593b9b33"
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01C01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali",
+    "known_text": "not expected",
+    "known_audio_id": "fba48004-c521-4b4d-ad0a-8b2beb433387",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "f5828fee-327a-487e-b803-e19f593b9b33"
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme",
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "dfc049ca-120c-4feb-be85-35e7a300308f",
+    "target2_audio_id": "ea53c78f-02d3-4486-bc79-eacf19405360",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme mluvit česky teď se mnou",
+    "known_text": "we didn't hope to speak Czech now with me",
+    "known_audio_id": "f0367928-f257-4d3c-9a24-01b4350bf772",
+    "target1_audio_id": "67c8d940-85fe-4e96-80f5-b54d36d24ce7",
+    "target2_audio_id": "30726d0b-ef3b-4aa0-91d0-9afa3b7e9469",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme to",
+    "known_text": "we didn't expect it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme dnes s tebou",
+    "known_text": "we didn't hope today with you",
+    "known_audio_id": "ab9fe2a0-6f09-4491-bd4c-8603fb45db8d",
+    "target1_audio_id": "bda9e8e8-f3a4-4bf0-87bf-15026a16162f",
+    "target2_audio_id": "cf819a1b-c854-4539-ae59-14615e27ded1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme to dnes",
+    "known_text": "we didn't expect it today",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme slyšet se všemi",
+    "known_text": "we didn't hope to hear with everyone",
+    "known_audio_id": "fa163a06-d848-4983-91ce-2811bea1f8e9",
+    "target1_audio_id": "ab3aaac4-dfa2-4994-8bd4-a5d8092860db",
+    "target2_audio_id": "3e4841ac-f2c9-48ba-a7c1-a2b30d26ccb2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme, že to uvidíme",
+    "known_text": "we didn't expect we would see it",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme, že se naučíme česky",
+    "known_text": "we didn't hope we would learn Czech",
+    "known_audio_id": "92ee9e5f-ce95-44c1-b270-cc86b7c8a231",
+    "target1_audio_id": "bea74ed2-f10c-4add-9462-638c8aecde84",
+    "target2_audio_id": "95fcd885-a567-4bcc-b7fc-da2dfe528187",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme, že se naučíme česky",
+    "known_text": "we didn't expect we would learn Czech",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme, že to bude možné",
+    "known_text": "we didn't hope it would be possible",
+    "known_audio_id": "f3299867-06ef-4337-b248-7992fe4a2310",
+    "target1_audio_id": "738c55df-a756-4095-9fc3-e5b694d632b1",
+    "target2_audio_id": "43af162f-6957-4b71-a07b-a13a64029623",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme, že to bude možné",
+    "known_text": "we didn't expect it would be possible",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme, že budeme mluvit tak dobře",
+    "known_text": "we didn't hope we would speak so well",
+    "known_audio_id": "7d74b349-2f05-409d-a1e5-8ec467c67cf8",
+    "target1_audio_id": "33bd59cc-01c6-4b19-b328-fa7c9e63fee6",
+    "target2_audio_id": "daa42161-1cec-4352-ba0d-42eb7d976df4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme, že budeme mluvit tak dobře",
+    "known_text": "we didn't expect we would speak so well",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nedoufali jsme, že uvidíme tolik",
+    "known_text": "we didn't hope we would see so much",
+    "known_audio_id": "40ca4663-61df-42e5-bdc8-ff2418fed235",
+    "target1_audio_id": "db909acb-dee4-4043-beea-22aeadb153b7",
+    "target2_audio_id": "28ff3d35-8198-4cb7-a93f-f0d0ecab1b79",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nečekali jsme, že uvidíme tolik",
+    "known_text": "we didn't expect we would see so much",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "625660b9-a892-48a1-91a9-b5258ba386f9",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake in the middle of the night",
+    "target_text": "se probudíme uprostřed noci",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "target1_audio_id": "93b7a75f-674a-4d25-83a8-b78c42f8dc2e",
+    "target2_audio_id": "fa1654f7-827a-4d8f-9d08-4cc7c212a13c",
+    "presentation_audio_id": "35e99ea2-e9b4-41cc-9bdf-b8a429040f85"
+   },
+   "after": {
+    "id": "625660b9-a892-48a1-91a9-b5258ba386f9",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "se probudíme uprostřed noci",
+    "known_audio_id": null,
+    "target1_audio_id": "93b7a75f-674a-4d25-83a8-b78c42f8dc2e",
+    "target2_audio_id": "fa1654f7-827a-4d8f-9d08-4cc7c212a13c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "se probudíme uprostřed noci",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "target1_audio_id": "93b7a75f-674a-4d25-83a8-b78c42f8dc2e",
+    "target2_audio_id": "fa1654f7-827a-4d8f-9d08-4cc7c212a13c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "se probudíme uprostřed noci",
+    "known_audio_id": null,
+    "target1_audio_id": "93b7a75f-674a-4d25-83a8-b78c42f8dc2e",
+    "target2_audio_id": "fa1654f7-827a-4d8f-9d08-4cc7c212a13c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night today with me",
+    "target_text": "se probudíme uprostřed noci dnes se mnou",
+    "known_audio_id": "41107523-ca2c-4d23-bedf-2f9ac819d892",
+    "target1_audio_id": "fd1c2183-3751-4e50-9401-2ba23cee11f2",
+    "target2_audio_id": "a7262854-0761-4590-a5cf-44cd2929c369",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night today with me",
+    "target_text": "se probudíme uprostřed noci dnes se mnou",
+    "known_audio_id": null,
+    "target1_audio_id": "fd1c2183-3751-4e50-9401-2ba23cee11f2",
+    "target2_audio_id": "a7262854-0761-4590-a5cf-44cd2929c369",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L02B04"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night with everyone",
+    "target_text": "se probudíme uprostřed noci se všemi",
+    "known_audio_id": "68684ad2-5f3d-4585-97fc-02ebed2164bd",
+    "target1_audio_id": "c54df46f-00c4-4f41-90b1-01c30eade28a",
+    "target2_audio_id": "e0c48ff2-dd88-46f7-9212-6f65f254dcb6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night with everyone",
+    "target_text": "se probudíme uprostřed noci se všemi",
+    "known_audio_id": null,
+    "target1_audio_id": "c54df46f-00c4-4f41-90b1-01c30eade28a",
+    "target2_audio_id": "e0c48ff2-dd88-46f7-9212-6f65f254dcb6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nedoufali jsme, že se probudíme uprostřed noci",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7c99ed2-f5b7-4c0a-998d-caa15778881b",
+    "target2_audio_id": "98199459-6a20-46b5-969c-d7e4a1b08dcc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nečekali jsme, že se probudíme uprostřed noci",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ces_for_eng",
+    "id": "ces_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "ces_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "doufám, že se probudíme uprostřed noci",
+    "known_text": "I hope we wake up in the middle of the night",
+    "known_audio_id": "204f63a1-5f21-423c-b775-558997a8a35c",
+    "target1_audio_id": "853413bb-59b0-4d28-b628-1b4367084f98",
+    "target2_audio_id": "43c55f5e-d19f-4dab-8ab7-3d507d51e920",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ces_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "čekali jsme, že se probudíme uprostřed noci",
+    "known_text": "we expected we would wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I hope we wake up in the middle of the night",
+    "target_text": "doufám, že se probudíme uprostřed noci",
+    "known_audio_id": "204f63a1-5f21-423c-b775-558997a8a35c",
+    "target1_audio_id": "853413bb-59b0-4d28-b628-1b4367084f98",
+    "target2_audio_id": "43c55f5e-d19f-4dab-8ab7-3d507d51e920"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nedoufali jsme, že se probudíme uprostřed noci",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7c99ed2-f5b7-4c0a-998d-caa15778881b",
+    "target2_audio_id": "98199459-6a20-46b5-969c-d7e4a1b08dcc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "wake in the middle of the night with everyone",
+    "known_audio_id": "68684ad2-5f3d-4585-97fc-02ebed2164bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake in the middle of the night today with me",
+    "known_audio_id": "41107523-ca2c-4d23-bedf-2f9ac819d892"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "625660b9-a892-48a1-91a9-b5258ba386f9",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": "27101140-7c8e-4b72-a182-9d3446a1c880",
+    "presentation_audio_id": "35e99ea2-e9b4-41cc-9bdf-b8a429040f85"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we didn't hope we would see so much",
+    "target_text": "nedoufali jsme, že uvidíme tolik",
+    "known_audio_id": "40ca4663-61df-42e5-bdc8-ff2418fed235",
+    "target1_audio_id": "db909acb-dee4-4043-beea-22aeadb153b7",
+    "target2_audio_id": "28ff3d35-8198-4cb7-a93f-f0d0ecab1b79"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we didn't hope we would speak so well",
+    "target_text": "nedoufali jsme, že budeme mluvit tak dobře",
+    "known_audio_id": "7d74b349-2f05-409d-a1e5-8ec467c67cf8",
+    "target1_audio_id": "33bd59cc-01c6-4b19-b328-fa7c9e63fee6",
+    "target2_audio_id": "daa42161-1cec-4352-ba0d-42eb7d976df4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope it would be possible",
+    "target_text": "nedoufali jsme, že to bude možné",
+    "known_audio_id": "f3299867-06ef-4337-b248-7992fe4a2310",
+    "target1_audio_id": "738c55df-a756-4095-9fc3-e5b694d632b1",
+    "target2_audio_id": "43af162f-6957-4b71-a07b-a13a64029623"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope we would learn Czech",
+    "target_text": "nedoufali jsme, že se naučíme česky",
+    "known_audio_id": "92ee9e5f-ce95-44c1-b270-cc86b7c8a231",
+    "target1_audio_id": "bea74ed2-f10c-4add-9462-638c8aecde84",
+    "target2_audio_id": "95fcd885-a567-4bcc-b7fc-da2dfe528187"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "we didn't hope to hear with everyone",
+    "target_text": "nedoufali jsme slyšet se všemi",
+    "known_audio_id": "fa163a06-d848-4983-91ce-2811bea1f8e9",
+    "target1_audio_id": "ab3aaac4-dfa2-4994-8bd4-a5d8092860db",
+    "target2_audio_id": "3e4841ac-f2c9-48ba-a7c1-a2b30d26ccb2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope today with you",
+    "target_text": "nedoufali jsme dnes s tebou",
+    "known_audio_id": "ab9fe2a0-6f09-4491-bd4c-8603fb45db8d",
+    "target1_audio_id": "bda9e8e8-f3a4-4bf0-87bf-15026a16162f",
+    "target2_audio_id": "cf819a1b-c854-4539-ae59-14615e27ded1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to speak Czech now with me",
+    "target_text": "nedoufali jsme mluvit česky teď se mnou",
+    "known_audio_id": "f0367928-f257-4d3c-9a24-01b4350bf772",
+    "target1_audio_id": "67c8d940-85fe-4e96-80f5-b54d36d24ce7",
+    "target2_audio_id": "30726d0b-ef3b-4aa0-91d0-9afa3b7e9469"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "nedoufali jsme",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "dfc049ca-120c-4feb-be85-35e7a300308f",
+    "target2_audio_id": "ea53c78f-02d3-4486-bc79-eacf19405360"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01C01",
+   "set": {
+    "known_text": "not hoped",
+    "target_text": "nedoufali",
+    "known_audio_id": "75a8af56-0e4b-4305-bda2-62a306a3c8c9",
+    "target1_audio_id": "972d7909-04bf-44cf-9ee7-0d141505eb97",
+    "target2_audio_id": "3d40c2f1-14b9-4330-9de4-69b7f93ea022"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "b1f879ad-8a1a-4b0e-b53e-9dca1c283bec",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "nedoufali jsme",
+    "components": [
+     {
+      "known": "not hoped",
+      "target": "nedoufali"
+     },
+     {
+      "known": "we were",
+      "target": "jsme"
+     }
+    ],
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "dfc049ca-120c-4feb-be85-35e7a300308f",
+    "target2_audio_id": "ea53c78f-02d3-4486-bc79-eacf19405360",
+    "presentation_audio_id": "3abcfe6e-a349-4a33-9b7b-66ab78f45b34"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nedoufali jsme, že se probudíme uprostřed noci.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7c99ed2-f5b7-4c0a-998d-caa15778881b",
+    "target2_audio_id": "98199459-6a20-46b5-969c-d7e4a1b08dcc"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
