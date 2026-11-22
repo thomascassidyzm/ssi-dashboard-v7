@@ -1,0 +1,73 @@
+{
+ "seed": 183,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "मी त्या आज पाहिल्या नाहीत",
+     "I haven't seen them today"
+    ],
+    "U01": [
+     "मला वाटतं की मी त्या आज पाहिल्या नाहीत",
+     "I think that I haven't seen them today"
+    ],
+    "U03": [
+     "मी त्या आज सकाळी पाहिल्या नाहीत",
+     "I haven't seen them this morning"
+    ],
+    "U04": [
+     "कारण मी त्या पाहिल्या नाहीत",
+     "because I haven't seen them"
+    ],
+    "U05": [
+     "पण मी त्या पाहिल्या नाहीत",
+     "but I haven't seen them"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मी त्या कुठेही पाहिल्या नाहीत",
+     "I haven't seen them anywhere"
+    ],
+    [
+     "build",
+     "मी त्या इथे पाहिल्या नाहीत",
+     "I haven't seen them here"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "नाही, मला वाटतं आज नाही",
+     "no I'm afraid not today"
+    ],
+    "U02": [
+     "नाही, मला वाटतं मी त्या आज पाहिल्या नाहीत",
+     "no I'm afraid I haven't seen them today"
+    ],
+    "U03": [
+     "नाही, मला वाटतं मला माहित नाही",
+     "no I'm afraid I don't know"
+    ],
+    "U04": [
+     "नाही, मला वाटतं मी तयार नाही",
+     "no I'm afraid I'm not ready"
+    ],
+    "U05": [
+     "नाही, मला वाटतं मला आठवत नाही",
+     "no I'm afraid I can't remember"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "नाही, मला वाटतं माझ्याकडे वेळ नाही",
+     "no I'm afraid I don't have time"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

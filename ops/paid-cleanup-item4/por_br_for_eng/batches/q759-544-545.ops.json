@@ -1,0 +1,624 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0544L02B04",
+    "seed_number": 544,
+    "lego_index": 2,
+    "position": 15,
+    "known_text": "I thought it would be difficult",
+    "target_text": "achei que ia ser difícil",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0544L03B04",
+    "seed_number": 544,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "he was absolutely right",
+    "target_text": "ele tinha toda a razão",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0545L01B04",
+    "seed_number": 545,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's your turn to speak",
+    "target_text": "é a sua vez de falar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0545L02B04",
+    "seed_number": 545,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "don't forget to take the clean clothes",
+    "target_text": "não esqueça de levar a roupa limpa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 34,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0545L03B04",
+    "seed_number": 545,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "everything upstairs",
+    "target_text": "tudo lá para cima",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 2,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L01B03",
+   "expect": {
+    "known_text": "yes, whoever said",
+    "target_text": "sim, quem disse"
+   },
+   "set": {
+    "known_text": "whoever said it was easy",
+    "target_text": "quem disse que era fácil",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L01U01",
+   "expect": {
+    "known_text": "we know whoever said",
+    "target_text": "sabemos quem disse"
+   },
+   "set": {
+    "known_text": "whoever said that was wrong",
+    "target_text": "quem disse isso estava enganado",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L01U02",
+   "expect": {
+    "known_text": "they said whoever said",
+    "target_text": "disseram quem disse"
+   },
+   "set": {
+    "known_text": "whoever said it was easy didn't know",
+    "target_text": "quem disse que era fácil não sabia",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L01U03",
+   "expect": {
+    "known_text": "I'm sure, whoever said",
+    "target_text": "tenho certeza, quem disse"
+   },
+   "set": {
+    "known_text": "whoever said that doesn't know me",
+    "target_text": "quem disse isso não me conhece",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L01U04",
+   "expect": {
+    "known_text": "I think, whoever said",
+    "target_text": "acho que quem disse"
+   },
+   "set": {
+    "known_text": "whoever said that was right",
+    "target_text": "quem disse isso tinha razão",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L01U05",
+   "expect": {
+    "known_text": "he said, whoever said",
+    "target_text": "ele disse que quem disse"
+   },
+   "set": {
+    "known_text": "whoever said that isn't my friend",
+    "target_text": "quem disse isso não é meu amigo",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02B02",
+   "expect": {
+    "known_text": "whoever still said it would be difficult",
+    "target_text": "quem ainda disse que ia ser difícil"
+   },
+   "set": {
+    "known_text": "I knew it would be difficult",
+    "target_text": "eu sabia que ia ser difícil",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02B03",
+   "expect": {
+    "known_text": "yes, it would be difficult",
+    "target_text": "sim, que ia ser difícil"
+   },
+   "set": {
+    "known_text": "he said it would be difficult",
+    "target_text": "ele disse que ia ser difícil",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02U01",
+   "expect": {
+    "known_text": "whoever said it would be difficult",
+    "target_text": "quem disse que ia ser difícil"
+   },
+   "set": {
+    "known_text": "nobody told me it would be difficult",
+    "target_text": "ninguém me disse que ia ser difícil",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02U02",
+   "expect": {
+    "known_text": "we know whoever said it would be difficult",
+    "target_text": "sabemos que quem disse que ia ser difícil"
+   },
+   "set": {
+    "known_text": "I didn't think it would be difficult",
+    "target_text": "não achei que ia ser difícil",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02U03",
+   "expect": {
+    "known_text": "they said whoever said it would be difficult",
+    "target_text": "disseram que quem disse que ia ser difícil"
+   },
+   "set": {
+    "known_text": "she told me it would be difficult",
+    "target_text": "ela me disse que ia ser difícil",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02U04",
+   "expect": {
+    "known_text": "I'm sure, whoever said it would be difficult",
+    "target_text": "tenho certeza, quem disse que ia ser difícil"
+   },
+   "set": {
+    "known_text": "everyone knew it would be difficult",
+    "target_text": "todo mundo sabia que ia ser difícil",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L02U05",
+   "expect": {
+    "known_text": "I think, whoever said it would be difficult",
+    "target_text": "acho que quem disse que ia ser difícil"
+   },
+   "set": {
+    "known_text": "I thought it would be difficult to learn Portuguese",
+    "target_text": "achei que ia ser difícil aprender português",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L03B02",
+   "expect": {
+    "known_text": "it would be difficult was absolutely right",
+    "target_text": "que ia ser difícil tinha toda a razão"
+   },
+   "set": {
+    "known_text": "she was absolutely right",
+    "target_text": "ela tinha toda a razão",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L03B03",
+   "expect": {
+    "known_text": "yes, was absolutely right",
+    "target_text": "sim, tinha toda a razão"
+   },
+   "set": {
+    "known_text": "my mother was absolutely right",
+    "target_text": "minha mãe tinha toda a razão",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L03U02",
+   "expect": {
+    "known_text": "we know whoever said it would be difficult was absolutely right",
+    "target_text": "sabemos que quem disse que ia ser difícil tinha toda a razão"
+   },
+   "set": {
+    "known_text": "I think you were absolutely right",
+    "target_text": "eu acho que você tinha toda a razão",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L03U03",
+   "expect": {
+    "known_text": "they said whoever said it would be difficult was absolutely right",
+    "target_text": "disseram que quem disse que ia ser difícil tinha toda a razão"
+   },
+   "set": {
+    "known_text": "the teacher was absolutely right about that",
+    "target_text": "o professor tinha toda a razão sobre isso",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L03U04",
+   "expect": {
+    "known_text": "I'm sure, whoever said it would be difficult was absolutely right",
+    "target_text": "tenho certeza, quem disse que ia ser difícil tinha toda a razão"
+   },
+   "set": {
+    "known_text": "I'm sure she was absolutely right",
+    "target_text": "tenho certeza de que ela tinha toda a razão",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0544L03U05",
+   "expect": {
+    "known_text": "I think, whoever said it would be difficult was absolutely right",
+    "target_text": "acho que quem disse que ia ser difícil tinha toda a razão"
+   },
+   "set": {
+    "known_text": "you were absolutely right, I was wrong",
+    "target_text": "você tinha toda a razão, eu estava enganado",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L01B02",
+   "expect": {
+    "known_text": "it's your turn now",
+    "target_text": "é a sua vez agora"
+   },
+   "set": {
+    "known_text": "it's your turn to play",
+    "target_text": "é a sua vez de jogar",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L01B03",
+   "expect": {
+    "known_text": "yes, it's your turn",
+    "target_text": "sim, é a sua vez"
+   },
+   "set": {
+    "known_text": "it's your turn to pay",
+    "target_text": "é a sua vez de pagar",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L01U02",
+   "expect": {
+    "known_text": "we know it's your turn",
+    "target_text": "sabemos que é a sua vez"
+   },
+   "set": {
+    "known_text": "it's your turn to make the coffee",
+    "target_text": "é a sua vez de fazer o café",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L01U03",
+   "expect": {
+    "known_text": "they said it's your turn",
+    "target_text": "disseram que é a sua vez"
+   },
+   "set": {
+    "known_text": "it's your turn to choose",
+    "target_text": "é a sua vez de escolher",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L02B02",
+   "expect": {
+    "known_text": "it's your turn to take the clean clothes now",
+    "target_text": "é a sua vez de levar a roupa limpa agora"
+   },
+   "set": {
+    "known_text": "it's my turn to take the clean clothes",
+    "target_text": "é a minha vez de levar a roupa limpa",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L02B03",
+   "expect": {
+    "known_text": "yes, to take the clean clothes",
+    "target_text": "sim, de levar a roupa limpa"
+   },
+   "set": {
+    "known_text": "I forgot to take the clean clothes",
+    "target_text": "esqueci de levar a roupa limpa",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L02U02",
+   "expect": {
+    "known_text": "she said it's your turn to take the clean clothes",
+    "target_text": "ela disse que é a sua vez de levar a roupa limpa"
+   },
+   "set": {
+    "known_text": "I forgot to take the clean clothes to my mother",
+    "target_text": "esqueci de levar a roupa limpa para a minha mãe",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L02U03",
+   "expect": {
+    "known_text": "we know it's your turn to take the clean clothes",
+    "target_text": "sabemos que é a sua vez de levar a roupa limpa"
+   },
+   "set": {
+    "known_text": "don't forget to take the clean clothes with you",
+    "target_text": "não esqueça de levar a roupa limpa com você",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L02U04",
+   "expect": {
+    "known_text": "they said it's your turn to take the clean clothes",
+    "target_text": "disseram que é a sua vez de levar a roupa limpa"
+   },
+   "set": {
+    "known_text": "it's his turn to take the clean clothes",
+    "target_text": "é a vez dele de levar a roupa limpa",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L02U05",
+   "expect": {
+    "known_text": "I'm sure it's your turn to take the clean clothes",
+    "target_text": "tenho certeza de que é a sua vez de levar a roupa limpa"
+   },
+   "set": {
+    "known_text": "she forgot to take the clean clothes to the hotel",
+    "target_text": "ela esqueceu de levar a roupa limpa para o hotel",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L03B03",
+   "expect": {
+    "known_text": "yes, upstairs",
+    "target_text": "sim, lá para cima"
+   },
+   "set": {
+    "known_text": "to go upstairs",
+    "target_text": "ir lá para cima",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L03U02",
+   "expect": {
+    "known_text": "she said it's your turn to take the clean clothes upstairs",
+    "target_text": "ela disse que é a sua vez de levar a roupa limpa lá para cima"
+   },
+   "set": {
+    "known_text": "I'm going upstairs to sleep",
+    "target_text": "vou lá para cima dormir",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L03U03",
+   "expect": {
+    "known_text": "we know it's your turn to take the clean clothes upstairs",
+    "target_text": "sabemos que é a sua vez de levar a roupa limpa lá para cima"
+   },
+   "set": {
+    "known_text": "can you take my bag upstairs?",
+    "target_text": "você pode levar minha mala lá para cima?",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L03U04",
+   "expect": {
+    "known_text": "they said it's your turn to take the clean clothes upstairs",
+    "target_text": "disseram que é a sua vez de levar a roupa limpa lá para cima"
+   },
+   "set": {
+    "known_text": "the children want to go upstairs",
+    "target_text": "as crianças querem ir lá para cima",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0545L03U05",
+   "expect": {
+    "known_text": "I'm sure it's your turn to take the clean clothes upstairs",
+    "target_text": "tenho certeza de que é a sua vez de levar a roupa limpa lá para cima"
+   },
+   "set": {
+    "known_text": "I'll take the clean clothes upstairs later",
+    "target_text": "vou levar a roupa limpa lá para cima mais tarde",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

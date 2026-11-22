@@ -1,0 +1,17 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Не очекувавме да се разбудиме среде ноќ.",
+    "target_text_roman": "Ne ochekuvavme da se razbudime srede nokj."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Не се надевавме да се разбудиме среде ноќ."
+   }
+  }
+ ]
+}

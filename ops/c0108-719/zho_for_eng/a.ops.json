@@ -1,0 +1,63 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "我们没想到会半夜醒来",
+    "target_text_roman": "wǒmen méi xiǎngdào huì bànyè xǐng lái"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我们没希望半夜醒来"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "wake up at midnight"
+   },
+   "expect": {
+    "known_text": "wake at midnight",
+    "target_text": "半夜醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "I originally hoped to sleep, not wake up at midnight"
+   },
+   "expect": {
+    "known_text": "I originally hoped to sleep, not wake at midnight",
+    "target_text": "我本来希望睡，不是半夜醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01U07",
+   "set": {
+    "known_text": "I don't feel happy when I wake up at midnight"
+   },
+   "expect": {
+    "known_text": "I don't feel happy when I wake at midnight",
+    "target_text": "我半夜醒时不觉得开心"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01U09",
+   "set": {
+    "target_text": "我们没想到会半夜醒来",
+    "target_text_roman": "wǒmen méi xiǎngdào huì bànyè xǐng lái.",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我们没希望半夜醒来"
+   }
+  }
+ ]
+}

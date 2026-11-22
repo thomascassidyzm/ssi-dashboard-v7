@@ -1,0 +1,37 @@
+{
+ "course": "fas_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "ops": 26,
+ "by_op": {
+  "lego.update": 1,
+  "phrase.update": 22,
+  "phrase.delete": 2,
+  "seed.update": 1
+ },
+ "seeds": [
+  108,
+  109,
+  110,
+  111
+ ],
+ "has_b": false,
+ "validator_issues_before": 285,
+ "validator_issues_after": 292,
+ "new_issues": 0,
+ "answered_by_own_seed_fix": {
+  "109": [
+   "L1: vocab violations in 1 phrase(s)",
+   "L2: vocab violations in 1 phrase(s)",
+   "L3: vocab violations in 1 phrase(s)"
+  ],
+  "110": [
+   "L1: vocab violations in 1 phrase(s)",
+   "L2: vocab violations in 2 phrase(s)",
+   "L3: vocab violations in 1 phrase(s)"
+  ],
+  "111": [
+   "L2: vocab violations in 1 phrase(s)"
+  ]
+ },
+ "notes": []
+}

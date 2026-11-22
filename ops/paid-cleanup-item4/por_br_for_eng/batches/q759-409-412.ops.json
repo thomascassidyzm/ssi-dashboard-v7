@@ -1,0 +1,608 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0409L02B04",
+    "seed_number": 409,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "it doesn't matter to her",
+    "target_text": "não importa para ela",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0409L03B04",
+    "seed_number": 409,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "what we do tomorrow",
+    "target_text": "o que façamos amanhã",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0410L01B04",
+    "seed_number": 410,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "they still fight with him",
+    "target_text": "eles ainda lutam com ele",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0411L02B04",
+    "seed_number": 411,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "we want to reserve",
+    "target_text": "queremos reservar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0412L01B04",
+    "seed_number": 412,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "we couldn't go",
+    "target_text": "nós não podíamos ir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0412L02B04",
+    "seed_number": 412,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "I'd like to allow them",
+    "target_text": "gostaria de deixá-los",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0412L03B04",
+    "seed_number": 412,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "she wants to win",
+    "target_text": "ela quer ganhar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 15,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02B02",
+   "expect": {
+    "known_text": "it doesn't matter now",
+    "target_text": "não importa agora"
+   },
+   "set": {
+    "known_text": "but it doesn't matter",
+    "target_text": "mas não importa",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02B03",
+   "expect": {
+    "known_text": "it doesn't matter today",
+    "target_text": "não importa hoje"
+   },
+   "set": {
+    "known_text": "it doesn't matter when",
+    "target_text": "não importa quando",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02U01",
+   "expect": {
+    "known_text": "no, it doesn't matter",
+    "target_text": "não, não importa"
+   },
+   "set": {
+    "known_text": "it doesn't matter what he said",
+    "target_text": "não importa o que ele disse",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02U03",
+   "expect": {
+    "known_text": "yes, it doesn't matter to me",
+    "target_text": "sim, não importa para mim"
+   },
+   "set": {
+    "known_text": "it doesn't matter what she wants",
+    "target_text": "não importa o que ela quer",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02U05",
+   "expect": {
+    "known_text": "no, it doesn't matter now",
+    "target_text": "não, não importa agora"
+   },
+   "set": {
+    "known_text": "it doesn't matter if he's not ready",
+    "target_text": "não importa se não está pronto",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03B02",
+   "expect": {
+    "known_text": "what we do today",
+    "target_text": "o que façamos hoje"
+   },
+   "set": {
+    "known_text": "it doesn't matter what we do",
+    "target_text": "não importa o que façamos",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03B03",
+   "expect": {
+    "known_text": "what we do now",
+    "target_text": "o que façamos agora"
+   },
+   "set": {
+    "known_text": "what we do with it",
+    "target_text": "o que façamos com isso",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03U03",
+   "expect": {
+    "known_text": "yes, it doesn't matter what we do",
+    "target_text": "sim, não importa o que façamos"
+   },
+   "set": {
+    "known_text": "it doesn't matter what we do with the money",
+    "target_text": "não importa o que façamos com o dinheiro",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03U05",
+   "expect": {
+    "known_text": "it doesn't matter what we do now",
+    "target_text": "não importa o que façamos agora"
+   },
+   "set": {
+    "known_text": "she said that it doesn't matter what we do",
+    "target_text": "ela disse que não importa o que façamos",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01B02",
+   "expect": {
+    "known_text": "they still fight today",
+    "target_text": "eles ainda lutam hoje"
+   },
+   "set": {
+    "known_text": "but they still fight",
+    "target_text": "mas eles ainda lutam",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01B03",
+   "expect": {
+    "known_text": "they still fight now",
+    "target_text": "eles ainda lutam agora"
+   },
+   "set": {
+    "known_text": "why do they still fight?",
+    "target_text": "por que eles ainda lutam?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U01",
+   "expect": {
+    "known_text": "yes, they still fight",
+    "target_text": "sim, eles ainda lutam"
+   },
+   "set": {
+    "known_text": "she said that they still fight",
+    "target_text": "ela disse que eles ainda lutam",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U03",
+   "expect": {
+    "known_text": "no, they still fight",
+    "target_text": "não, eles ainda lutam"
+   },
+   "set": {
+    "known_text": "he said that they still fight",
+    "target_text": "ele disse que eles ainda lutam",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U04",
+   "expect": {
+    "known_text": "they still fight, I'm sure",
+    "target_text": "eles ainda lutam, tenho certeza"
+   },
+   "set": {
+    "known_text": "they still fight all day",
+    "target_text": "eles ainda lutam o dia todo",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U05",
+   "expect": {
+    "known_text": "they still fight, that's true",
+    "target_text": "eles ainda lutam, isso é verdade"
+   },
+   "set": {
+    "known_text": "they still fight when they are here",
+    "target_text": "eles ainda lutam quando estão aqui",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02B02",
+   "expect": {
+    "known_text": "to reserve now",
+    "target_text": "reservar agora"
+   },
+   "set": {
+    "known_text": "I'd like to reserve",
+    "target_text": "gostaria de reservar",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02B03",
+   "expect": {
+    "known_text": "to reserve today",
+    "target_text": "reservar hoje"
+   },
+   "set": {
+    "known_text": "he wants to reserve",
+    "target_text": "ele quer reservar",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02U02",
+   "expect": {
+    "known_text": "yes, I want to reserve",
+    "target_text": "sim, eu quero reservar"
+   },
+   "set": {
+    "known_text": "why do you want to reserve?",
+    "target_text": "por que você quer reservar?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02U04",
+   "expect": {
+    "known_text": "no, I want to reserve",
+    "target_text": "não, eu quero reservar"
+   },
+   "set": {
+    "known_text": "I'd like to reserve for tonight",
+    "target_text": "gostaria de reservar para esta noite",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02U05",
+   "expect": {
+    "known_text": "I want to reserve now",
+    "target_text": "eu quero reservar agora"
+   },
+   "set": {
+    "known_text": "she wants to reserve for tomorrow",
+    "target_text": "ela quer reservar para amanhã",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L01U01",
+   "expect": {
+    "known_text": "no, we couldn't",
+    "target_text": "não, nós não podíamos"
+   },
+   "set": {
+    "known_text": "we couldn't help",
+    "target_text": "nós não podíamos ajudar",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L01U04",
+   "expect": {
+    "known_text": "yes, we couldn't speak",
+    "target_text": "sim, nós não podíamos falar"
+   },
+   "set": {
+    "known_text": "we couldn't speak Portuguese",
+    "target_text": "nós não podíamos falar português",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L01U05",
+   "expect": {
+    "known_text": "we couldn't reserve now",
+    "target_text": "nós não podíamos reservar agora"
+   },
+   "set": {
+    "known_text": "we couldn't reserve for tonight",
+    "target_text": "nós não podíamos reservar para esta noite",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L02B03",
+   "expect": {
+    "known_text": "yes, allow them",
+    "target_text": "sim, deixá-los"
+   },
+   "set": {
+    "known_text": "I want to allow them",
+    "target_text": "eu quero deixá-los",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L02U04",
+   "expect": {
+    "known_text": "yes, we couldn't allow them to reserve",
+    "target_text": "sim, nós não podíamos deixá-los reservar"
+   },
+   "set": {
+    "known_text": "we couldn't allow them to leave",
+    "target_text": "nós não podíamos deixá-los sair",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L02U05",
+   "expect": {
+    "known_text": "we couldn't allow them now",
+    "target_text": "nós não podíamos deixá-los agora"
+   },
+   "set": {
+    "known_text": "we couldn't allow them to help",
+    "target_text": "nós não podíamos deixá-los ajudar",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03B02",
+   "expect": {
+    "known_text": "to win now",
+    "target_text": "ganhar agora"
+   },
+   "set": {
+    "known_text": "we want to win",
+    "target_text": "queremos ganhar",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03B03",
+   "expect": {
+    "known_text": "to win today",
+    "target_text": "ganhar hoje"
+   },
+   "set": {
+    "known_text": "he wants to win",
+    "target_text": "ele quer ganhar",
+    "decomposition": null,
+    "word_count": 15,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03U02",
+   "expect": {
+    "known_text": "yes, I want to win",
+    "target_text": "sim, eu quero ganhar"
+   },
+   "set": {
+    "known_text": "I'd like to win",
+    "target_text": "gostaria de ganhar",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03U05",
+   "expect": {
+    "known_text": "no, I want to win",
+    "target_text": "não, eu quero ganhar"
+   },
+   "set": {
+    "known_text": "she doesn't want to win",
+    "target_text": "ela não quer ganhar",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

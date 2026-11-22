@@ -1,0 +1,8 @@
+{
+ "_why": "cs #383·AI. After the C0108 re-cut 'toivottu' (hoped) is no longer taught anywhere before seed 577, so three later rows fail vocabulary. S0603L01U07 is re-said with the expect verb: 'odottaa' = to expect/wait for (Kielitoimiston sanakirja, s.v. odottaa; Wiktionary 'odottaa'), takes a partitive object (sitä), colloquial 1pl 'me ei odotettu' as in the new seed; 'odotettu' is taught by S0577 before 603. S0200L01U08 and S0296L01U09 sit before 577, where the builder (own-seed pair without the 108 overlay) cannot see 'odotettu' as taught, so they are deleted (thin basket over a bad row, Kai 19 Nov; baskets 14 and 16 rows).",
+ "add": [
+  {"op": "phrase.update", "phrase_id": "fin_for_eng:S0603L01U07", "set": {"known_text": "we didn't expect it at the time", "target_text": "me ei odotettu sitä siihen aikaan"}},
+  {"op": "phrase.delete", "phrase_id": "fin_for_eng:S0200L01U08"},
+  {"op": "phrase.delete", "phrase_id": "fin_for_eng:S0296L01U09"}
+ ]
+}

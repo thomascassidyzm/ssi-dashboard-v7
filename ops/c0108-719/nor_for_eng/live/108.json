@@ -1,0 +1,1447 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Vi håpet ikke å våkne midt på natten."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "the night",
+    "target_text": "natten",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nor_for_eng:S0108L01B01",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "the night",
+     "target_text": "natten",
+     "word_count": 6,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 58,
+     "updated_at": "2026-10-12T16:27:35.615473+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "d570ea83-daba-45e6-ad10-3fe257636e37",
+     "target2_audio_id": "ac5300fa-6720-47f1-8ec4-a344819ad33a",
+     "qa_checked": null,
+     "target1_duration_ms": 1536,
+     "target2_duration_ms": 1608,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": "natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "63720807-41bf-4b5b-8fac-3bf3bbd8b8f6",
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01B02",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "in the night",
+     "target_text": "på natten",
+     "word_count": 9,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 56,
+     "updated_at": "2026-10-13T00:18:38.094714+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ab3b282e-4c70-4cee-99c9-45ec755d4ed2",
+     "target1_audio_id": "eb870ca9-0fda-486d-af47-fcbd16be241d",
+     "target2_audio_id": "6424f7a7-de2b-479d-8335-4f79ddee7aff",
+     "qa_checked": null,
+     "target1_duration_ms": 1728,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "e6fe3b11-66e2-4874-a91f-2dd6d36d5153",
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01B03",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "wake in the night",
+     "target_text": "våkne på natten",
+     "word_count": 15,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:31.896647+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ea0f617b-2d33-40a1-90a7-a392bbce33aa",
+     "target1_audio_id": "f56b1f0b-f06b-414e-abc4-2378799ee116",
+     "target2_audio_id": "6fa3543a-3ece-4eef-a7f8-a1ad61ba1bb1",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": "våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01U01",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "I didn't hope to wake in the night",
+     "target_text": "jeg håpet ikke å våkne på natten",
+     "word_count": 32,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:32.974Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:37.319019+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "36306239-b6f1-40de-8a63-f23ab6fda03f",
+     "target1_audio_id": "17d685b9-82a7-4193-a8c1-e50614e72c96",
+     "target2_audio_id": "da1d205f-b7c6-4586-8483-dfabbc796224",
+     "qa_checked": null,
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 2808,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "jeg",
+       "isGhost": true
+      },
+      {
+       "known": "hoped",
+       "legoId": "S0107L03",
+       "target": " håpet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " å",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01U02",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "she doesn't want to wake in the night",
+     "target_text": "hun vil ikke våkne på natten",
+     "word_count": 28,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:32.974Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:27.31987+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5759176b-a8c6-4ffb-b458-07a86f86e6d5",
+     "target1_audio_id": "24d133c8-1bdd-44be-a8cb-bcda6891fdad",
+     "target2_audio_id": "502d705b-df92-4f78-baac-c25a66d86988",
+     "qa_checked": null,
+     "target1_duration_ms": 2688,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "hun",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vil",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01U03",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "it's difficult to wake in the night",
+     "target_text": "det er vanskelig å våkne på natten",
+     "word_count": 34,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:32.974Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:27.798602+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b8049824-46db-48f4-914c-8dd1c7dd3783",
+     "target1_audio_id": "aced695a-d688-46dd-85fc-899f3217c31b",
+     "target2_audio_id": "29a56821-bab9-464e-99ff-2196992423cb",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": "det",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " er",
+       "isGhost": true
+      },
+      {
+       "known": "difficult",
+       "legoId": "S0066L01",
+       "target": " vanskelig",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " å",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01U04",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "he needs to wake in the night",
+     "target_text": "han trenger å våkne på natten",
+     "word_count": 29,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:32.974Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:29.534305+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1409c5e9-b3ec-4bd9-bf12-dcf3a2455c8c",
+     "target1_audio_id": "3d94ada8-3d1f-48b6-aa5d-abf7e7c33917",
+     "target2_audio_id": "73ed48f6-c513-471e-8879-92ed81199d06",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he",
+       "legoId": "S0016L01",
+       "target": "han",
+       "isGhost": false
+      },
+      {
+       "known": "need to",
+       "legoId": "S0044L02",
+       "target": " trenger",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " å",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01U05",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "can you wake in the night?",
+     "target_text": "kan du våkne på natten?",
+     "word_count": 23,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:32.974Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:31.448419+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "569b9da2-4fc9-4129-a36d-995a20d0e516",
+     "target1_audio_id": "18c27642-25ae-47e2-8b8e-efcee8687fb9",
+     "target2_audio_id": "8fad06c7-54a2-4e6a-8bca-dc8b66d3119b",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "could you",
+       "legoId": "S0061L01",
+       "target": "kan du",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L01U06",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "I don't want to wake in the night",
+     "target_text": "jeg vil ikke våkne på natten",
+     "word_count": 28,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:32.974Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:35.345652+00:00",
+     "created_at": "2026-03-23T23:38:35.081959+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c60ab5a4-2bbd-4807-b76c-47bc68041a53",
+     "target1_audio_id": "7086e502-7a76-4ee9-8b6b-e88e93e9f414",
+     "target2_audio_id": "d6fd672c-3cc8-47c2-8985-b4cb9f50206a",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2688,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I want",
+       "legoId": "S0001L01",
+       "target": "jeg vil",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "middle",
+    "target_text": "midt",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nor_for_eng:S0108L02B01",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "midt",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 56,
+     "updated_at": "2026-10-12T14:29:30.117384+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "38462b92-d4c3-45ea-a508-4665e4c77bb3",
+     "target2_audio_id": "041ba35f-26b8-4aa6-a44a-0e087b625404",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": "midt",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4901aed2-a844-4896-90ac-794762c08684",
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02B02",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "in the middle of the night",
+     "target_text": "midt på natten",
+     "word_count": 14,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 57,
+     "updated_at": "2026-10-12T16:57:17.020077+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "0db865cf-3379-4f9a-8012-a60fa5b163c5",
+     "target2_audio_id": "2c69ec06-52f0-4a52-a792-7edcdb4c3f39",
+     "qa_checked": null,
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": "midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "ac6de4e3-2a81-417a-88fc-3c347a916f15",
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02B03",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "wake in the middle of the night",
+     "target_text": "våkne midt på natten",
+     "word_count": 20,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 58,
+     "updated_at": "2026-10-12T16:27:35.615473+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+     "target1_audio_id": "7f582b95-387f-4281-bf63-66addc9211a8",
+     "target2_audio_id": "f60d4b5b-48dc-4862-9cf7-e2f8a6a92961",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": "våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "63720807-41bf-4b5b-8fac-3bf3bbd8b8f6",
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02U01",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "vi håpet ikke å våkne midt på natten",
+     "word_count": 36,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:33.197Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 57,
+     "updated_at": "2026-10-12T16:27:38.79148+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "d5e8caa5-35d6-4718-bf8c-53bc4036047a",
+     "target2_audio_id": "665c5b11-346a-4263-b9f2-81ba69840697",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we",
+       "legoId": "S0018L01",
+       "target": "vi",
+       "isGhost": false
+      },
+      {
+       "known": "hoped",
+       "legoId": "S0107L03",
+       "target": " håpet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " å",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "63720807-41bf-4b5b-8fac-3bf3bbd8b8f6",
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02U02",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "she doesn't want to wake in the middle of the night",
+     "target_text": "hun vil ikke våkne midt på natten",
+     "word_count": 33,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:33.197Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:25.233416+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "df73b128-7a44-44d4-84ec-d7c83df11424",
+     "target1_audio_id": "c733e074-a43a-49f1-b5b4-da15d3100ea9",
+     "target2_audio_id": "11e43a7d-49f3-4303-aad4-c0b9fdc243a2",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "hun",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vil",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02U03",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "I didn't want to wake in the middle of the night",
+     "target_text": "jeg ville ikke våkne midt på natten",
+     "word_count": 35,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:33.197Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:32.571948+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "14f40b9e-0530-4930-8889-6b6ee7825b6f",
+     "target1_audio_id": "b457416d-7a9c-4dff-ae70-2421eceb904b",
+     "target2_audio_id": "bfb49b10-2e22-4732-adce-f251a47f8eda",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2880,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "jeg",
+       "isGhost": true
+      },
+      {
+       "known": "wanted to",
+       "legoId": "S0030L01",
+       "target": " ville",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02U04",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "it's not good to wake in the middle of the night",
+     "target_text": "det er ikke bra å våkne midt på natten",
+     "word_count": 38,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:33.197Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:34.511804+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "51b0938a-9374-4a33-9e6e-a56e87f92572",
+     "target1_audio_id": "ef31b7db-803e-4077-bcdf-0a306066568d",
+     "target2_audio_id": "1b591b6d-16d0-424f-a2e0-18f7c616af38",
+     "qa_checked": null,
+     "target1_duration_ms": 3096,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0028L01",
+       "target": "det",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " er",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "well",
+       "legoId": "S0013L02",
+       "target": " bra",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " å",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02U05",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "did you hope to wake in the middle of the night?",
+     "target_text": "håpet du å våkne midt på natten?",
+     "word_count": 32,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:33.197Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:24.552004+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "70ac08fe-32b2-4a26-ae60-42e28d500b8b",
+     "target1_audio_id": "74766b8b-8d92-47c4-818f-9ed0cf658c3e",
+     "target2_audio_id": "97ccacf7-8198-4e8b-aa60-50223d7d13c4",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "hoped",
+       "legoId": "S0107L03",
+       "target": "håpet",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " du",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " å",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nor_for_eng:S0108L02U06",
+     "course_code": "nor_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "he doesn't want to wake in the middle of the night",
+     "target_text": "han vil ikke våkne midt på natten",
+     "word_count": 33,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-23T23:38:33.197Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 55,
+     "updated_at": "2026-06-02T22:55:34.403023+00:00",
+     "created_at": "2026-03-23T23:38:35.310084+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f59562ec-de5b-4777-b168-e010d5d3696a",
+     "target1_audio_id": "9b93889c-fa31-4e5b-ba25-b3f58867c046",
+     "target2_audio_id": "062fc2dd-f655-4c47-9a7d-fd9bb6120e81",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "he",
+       "legoId": "S0016L01",
+       "target": "han",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " vil",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ikke",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " våkne",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L02",
+       "target": " midt",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " på",
+       "isGhost": true
+      },
+      {
+       "known": "the night",
+       "legoId": "S0108L01",
+       "target": " natten",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

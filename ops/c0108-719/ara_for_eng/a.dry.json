@@ -1,0 +1,766 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "ea44d4e0-8781-4674-93a6-9a371ec5a686",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْل",
+    "target_text_roman": "lam nakun na-amal an nastagiq fi muntasaf al-layl",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "9523ad89-68db-43bb-9d84-8b56c02c5806",
+    "target2_audio_id": "3f6a2a1e-1ec7-457a-8285-747e95cbb30a"
+   },
+   "after": {
+    "id": "ea44d4e0-8781-4674-93a6-9a371ec5a686",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْل",
+    "target_text_roman": "lam nakun natawaqqa'u an nastayqiza fee muntasafi l-layl",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "488b6c06-fb80-4309-8c34-d8e7e229291b",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "لَمْ نَكُنْ",
+    "known_text": "we were not",
+    "target_text_roman": "lam nakun",
+    "components": [],
+    "known_audio_id": "e64d476c-fe42-4a02-97f1-0a713a8614b5",
+    "target1_audio_id": "cd161322-1ff8-4581-8d87-fd27914461e9",
+    "target2_audio_id": "b63e4081-d8b3-428b-a515-af592eb5f49e",
+    "presentation_audio_id": "7de1c386-4b21-49c7-9129-abdb78a5334e"
+   },
+   "after": {
+    "id": "488b6c06-fb80-4309-8c34-d8e7e229291b",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ",
+    "known_text": "we didn't expect",
+    "target_text_roman": "lam nakun natawaqqa'u",
+    "components": [
+     {
+      "known": "we were not",
+      "target": "لَمْ نَكُنْ"
+     },
+     {
+      "known": "we expect",
+      "target": "نَتَوَقَّعُ"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ",
+    "target_text_roman": "lam nakun",
+    "known_text": "we were not",
+    "known_audio_id": "e64d476c-fe42-4a02-97f1-0a713a8614b5",
+    "target1_audio_id": "cd161322-1ff8-4581-8d87-fd27914461e9",
+    "target2_audio_id": "b63e4081-d8b3-428b-a515-af592eb5f49e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ",
+    "target_text_roman": "lam nakun natawaqqa'u",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ",
+    "target_text_roman": "lam nakun na'mal",
+    "known_text": "we didn't hope",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "e04f9a2d-6c5e-4118-9e4d-21b3b43e8886",
+    "target2_audio_id": "b923cd63-ee4c-4ee6-b408-951a4d21f622",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ ذٰلِكَ",
+    "target_text_roman": "lam nakun natawaqqa'u dhaalika",
+    "known_text": "we didn't expect that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نُحاوِلُ",
+    "target_text_roman": "lam nakun nuhhaawil",
+    "known_text": "we were not trying",
+    "known_audio_id": "a3cecc6c-59da-4960-9e76-c0f1013e4374",
+    "target1_audio_id": "4c7231e0-c52a-43f5-a5b7-61501365be34",
+    "target2_audio_id": "a938b6dd-2b98-4bfa-9995-4838a219c289",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نُحاوِلَ",
+    "target_text_roman": "lam nakun natawaqqa'u an nuhaawila",
+    "known_text": "we didn't expect to try",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نُحاوِلُ أَنْ نَسْمَعَ كَلِماتٍ كَثيرَةً أُخْرى",
+    "target_text_roman": "lamnakunnanuhhaawiluansnas'amaka limaatinkathirata'ukhrah",
+    "known_text": "we were not trying to hear many more words",
+    "known_audio_id": "025a4450-a334-4a73-b5bd-f38eb170d6b3",
+    "target1_audio_id": "d6098ead-71c2-4128-b79d-9747cb637c57",
+    "target2_audio_id": "42156b78-00a7-4fa5-805e-9fe6b27593ff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَسْمَعَ كَلِماتٍ كَثيرَةً أُخْرى",
+    "target_text_roman": "lam nakun natawaqqa'u an nasma'a kalimaatin katheeratan ukhraa",
+    "known_text": "we didn't expect to hear many more words",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "أُريدُ أَنْ أَتَكَلَّمَ العَرَبِيَّةَ لٰكِنْ لَمْ نَكُنْ نُحاوِلُ",
+    "target_text_roman": "ureedu an atakallama al-'arabiyyata laakin lam nakun nuhhaawiil",
+    "known_text": "I want to speak Arabic but we were not trying",
+    "known_audio_id": "81950af0-755a-4f1f-93f2-b32ce7d1e631",
+    "target1_audio_id": "02a523d6-51d0-4d88-aaf3-88a91c39f2e1",
+    "target2_audio_id": "863945f8-af0e-48cd-9c2b-b1c69a6cd945",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "أُريدُ أَنْ أَتَكَلَّمَ العَرَبِيَّةَ لٰكِنْ لَمْ نَكُنْ نَتَوَقَّعُ ذٰلِكَ",
+    "target_text_roman": "ureedu an atakallama al-'arabiyyata laakin lam nakun natawaqqa'u dhaalika",
+    "known_text": "I want to speak Arabic but we didn't expect that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نُغَيِّرَ ما نَقولُ",
+    "target_text_roman": "lam nakun na'malu an nughayira maa naqool",
+    "known_text": "we were not hoping to change what we say",
+    "known_audio_id": "8689c60e-847b-4d5a-979c-933faf3e9e47",
+    "target1_audio_id": "f1986f33-b586-4e4e-98a0-6e92e1504529",
+    "target2_audio_id": "6c89ea96-e184-4681-95f6-4c697053a488",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نُغَيِّرَ ما نَقولُ",
+    "target_text_roman": "lam nakun natawaqqa'u an nughayyira maa naqoolu",
+    "known_text": "we didn't expect to change what we say",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَعْمَلُ بِجِدّ، لِذٰلِكَ نَحْتاجُ أَنْ نُغَيِّرَ",
+    "target_text_roman": "lam nakun na'malu bijiddin, lidhaalika nahtaaju an nughayir",
+    "known_text": "we were not working hard, that is why we need to change",
+    "known_audio_id": "1438469b-190d-4e42-b0a5-bc36a4c3c5d3",
+    "target1_audio_id": "555cdfd9-3b24-40cc-b182-2fe3264c986e",
+    "target2_audio_id": "29559267-c395-4fb2-b84f-f778a68b34ad",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَعْمَلَ بِجِدّ، لِذٰلِكَ نَحْتاجُ أَنْ نُغَيِّرَ",
+    "target_text_roman": "lam nakun natawaqqa'u an na'mala bijidd, lidhaalika nahtaaju an nughayyira",
+    "known_text": "we didn't expect to work hard, that is why we need to change",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَعْمَلُ بِجِدٍّ قَبْلَ المَساءِ",
+    "target_text_roman": "lam nakun na'malu bijiddin qabla al-masaa'i",
+    "known_text": "we were not working hard before the evening",
+    "known_audio_id": "22b3b659-a1ac-48e0-81f8-ae1b34f6848a",
+    "target1_audio_id": "2ac5e36e-ea53-46ef-b8b1-148442532a56",
+    "target2_audio_id": "5b2c87b9-7600-4e96-99d5-13cabd98c11f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَعْمَلَ بِجِدٍّ قَبْلَ المَساءِ",
+    "target_text_roman": "lam nakun natawaqqa'u an na'mala bijiddin qabla al-masaa'i",
+    "known_text": "we didn't expect to work hard before the evening",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ",
+    "target_text_roman": "lam nakunn na'malu an nastaeeqiza",
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "7f1c73a6-b820-45b3-a251-cc0a4b59a219",
+    "target2_audio_id": "2e206603-6c83-4fe1-b188-0d2c1063fc77",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَسْتَيْقِظَ",
+    "target_text_roman": "lam nakun natawaqqa'u an nastayqiza",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "نَأْمَلُ أَنْ نَسْتَيْقِظَ قَبْلَ أَنْ نَحْتاجَ أَنْ نَقولَ شَيْئاً",
+    "target_text_roman": "na'malu an nastaeeqi'a qabla an nahtaaja an naqoola shay'",
+    "known_text": "we hope to wake up before we need to say something",
+    "known_audio_id": "8eb7d59d-d2dc-483f-91b6-8fe226262853",
+    "target1_audio_id": "d24d2fee-16dc-4b0e-89b8-d620e96c3b6c",
+    "target2_audio_id": "42c215d8-9b73-48eb-bd5f-c4c367429f13",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "نَتَوَقَّعُ أَنْ نَسْتَيْقِظَ قَبْلَ أَنْ نَحْتاجَ أَنْ نَقولَ شَيْئاً",
+    "target_text_roman": "natawaqqa'u an nastayqiza qabla an nahtaaja an naqoola shay'an",
+    "known_text": "we expect to wake up before we need to say something",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "لِذٰلِكَ لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ",
+    "target_text_roman": "lidhaalikalamnakunnanar'malu'ansanastayiqiza",
+    "known_text": "that is why we didn't hope to wake up",
+    "known_audio_id": "da0e6da6-9ac8-4f98-97f1-abf68d42177a",
+    "target1_audio_id": "f23141e1-0634-4b64-a702-0b10a3b4bf72",
+    "target2_audio_id": "f2c660e7-603f-4d32-aff1-cf434ebc4308",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "لِذٰلِكَ لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَسْتَيْقِظَ",
+    "target_text_roman": "lidhaalika lam nakun natawaqqa'u an nastayqiza",
+    "known_text": "that is why we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ قَبْلَ المَساءِ",
+    "target_text_roman": "lam nakun na'malu an nastaeeqiz qabla al-masaa'i",
+    "known_text": "we were not hoping to wake up before the evening",
+    "known_audio_id": "839debc5-e1f7-4b43-95d0-11a9c4d1eedd",
+    "target1_audio_id": "7914b0d7-ad04-4776-b37d-c3016f1d0a17",
+    "target2_audio_id": "ced4ce2d-6361-4e13-8f68-1307df0a7932",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَسْتَيْقِظَ قَبْلَ المَساءِ",
+    "target_text_roman": "lam nakun natawaqqa'u an nastayqiza qabla al-masaa'i",
+    "known_text": "we didn't expect to wake up before the evening",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْلِ",
+    "target_text_roman": "lamnakunnannaarmaluansanatastaeeqeizafeemuntasafilayl",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "29a1bf72-bea5-494d-9add-f2474ea3a907",
+    "target2_audio_id": "01f7baa7-51f2-4d57-88fe-9f5ccc1faf66",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "لَمْ نَكُنْ نَتَوَقَّعُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْلِ",
+    "target_text_roman": "lam nakun natawaqqa'u an nastayqiza fee muntasafi l-layl",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we feel happy when we don't wake in the middle of the night",
+    "target_text": "نَشْعُرُ بِالسَّعادَةِ عِنْدَما لا نَسْتَيْقِظُ في مُنْتَصَفِ اللَّيْلِ",
+    "known_audio_id": "56ee09a2-581b-419c-ad19-bbfa90edf2bb",
+    "target1_audio_id": "327ffca9-cfbf-4f5c-ba74-cba7795ac180",
+    "target2_audio_id": "c7a9ca03-f3c8-405b-a95e-3d5ea15a761c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we feel happy when we don't wake up in the middle of the night",
+    "target_text": "نَشْعُرُ بِالسَّعادَةِ عِنْدَما لا نَسْتَيْقِظُ في مُنْتَصَفِ اللَّيْلِ",
+    "known_audio_id": null,
+    "target1_audio_id": "327ffca9-cfbf-4f5c-ba74-cba7795ac180",
+    "target2_audio_id": "c7a9ca03-f3c8-405b-a95e-3d5ea15a761c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we feel happy when we don't wake in the middle of the night",
+    "known_audio_id": "56ee09a2-581b-419c-ad19-bbfa90edf2bb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْلِ",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "29a1bf72-bea5-494d-9add-f2474ea3a907",
+    "target2_audio_id": "01f7baa7-51f2-4d57-88fe-9f5ccc1faf66",
+    "target_text_roman": "lamnakunnannaarmaluansanatastaeeqeizafeemuntasafilayl"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we were not hoping to wake up before the evening",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ قَبْلَ المَساءِ",
+    "known_audio_id": "839debc5-e1f7-4b43-95d0-11a9c4d1eedd",
+    "target1_audio_id": "7914b0d7-ad04-4776-b37d-c3016f1d0a17",
+    "target2_audio_id": "ced4ce2d-6361-4e13-8f68-1307df0a7932",
+    "target_text_roman": "lam nakun na'malu an nastaeeqiz qabla al-masaa'i"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "that is why we didn't hope to wake up",
+    "target_text": "لِذٰلِكَ لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ",
+    "known_audio_id": "da0e6da6-9ac8-4f98-97f1-abf68d42177a",
+    "target1_audio_id": "f23141e1-0634-4b64-a702-0b10a3b4bf72",
+    "target2_audio_id": "f2c660e7-603f-4d32-aff1-cf434ebc4308",
+    "target_text_roman": "lidhaalikalamnakunnanar'malu'ansanastayiqiza"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we hope to wake up before we need to say something",
+    "target_text": "نَأْمَلُ أَنْ نَسْتَيْقِظَ قَبْلَ أَنْ نَحْتاجَ أَنْ نَقولَ شَيْئاً",
+    "known_audio_id": "8eb7d59d-d2dc-483f-91b6-8fe226262853",
+    "target1_audio_id": "d24d2fee-16dc-4b0e-89b8-d620e96c3b6c",
+    "target2_audio_id": "42c215d8-9b73-48eb-bd5f-c4c367429f13",
+    "target_text_roman": "na'malu an nastaeeqi'a qabla an nahtaaja an naqoola shay'"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "7f1c73a6-b820-45b3-a251-cc0a4b59a219",
+    "target2_audio_id": "2e206603-6c83-4fe1-b188-0d2c1063fc77",
+    "target_text_roman": "lam nakunn na'malu an nastaeeqiza"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "we were not working hard before the evening",
+    "target_text": "لَمْ نَكُنْ نَعْمَلُ بِجِدٍّ قَبْلَ المَساءِ",
+    "known_audio_id": "22b3b659-a1ac-48e0-81f8-ae1b34f6848a",
+    "target1_audio_id": "2ac5e36e-ea53-46ef-b8b1-148442532a56",
+    "target2_audio_id": "5b2c87b9-7600-4e96-99d5-13cabd98c11f",
+    "target_text_roman": "lam nakun na'malu bijiddin qabla al-masaa'i"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we were not working hard, that is why we need to change",
+    "target_text": "لَمْ نَكُنْ نَعْمَلُ بِجِدّ، لِذٰلِكَ نَحْتاجُ أَنْ نُغَيِّرَ",
+    "known_audio_id": "1438469b-190d-4e42-b0a5-bc36a4c3c5d3",
+    "target1_audio_id": "555cdfd9-3b24-40cc-b182-2fe3264c986e",
+    "target2_audio_id": "29559267-c395-4fb2-b84f-f778a68b34ad",
+    "target_text_roman": "lam nakun na'malu bijiddin, lidhaalika nahtaaju an nughayir"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "we were not hoping to change what we say",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نُغَيِّرَ ما نَقولُ",
+    "known_audio_id": "8689c60e-847b-4d5a-979c-933faf3e9e47",
+    "target1_audio_id": "f1986f33-b586-4e4e-98a0-6e92e1504529",
+    "target2_audio_id": "6c89ea96-e184-4681-95f6-4c697053a488",
+    "target_text_roman": "lam nakun na'malu an nughayira maa naqool"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I want to speak Arabic but we were not trying",
+    "target_text": "أُريدُ أَنْ أَتَكَلَّمَ العَرَبِيَّةَ لٰكِنْ لَمْ نَكُنْ نُحاوِلُ",
+    "known_audio_id": "81950af0-755a-4f1f-93f2-b32ce7d1e631",
+    "target1_audio_id": "02a523d6-51d0-4d88-aaf3-88a91c39f2e1",
+    "target2_audio_id": "863945f8-af0e-48cd-9c2b-b1c69a6cd945",
+    "target_text_roman": "ureedu an atakallama al-'arabiyyata laakin lam nakun nuhhaawiil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we were not trying to hear many more words",
+    "target_text": "لَمْ نَكُنْ نُحاوِلُ أَنْ نَسْمَعَ كَلِماتٍ كَثيرَةً أُخْرى",
+    "known_audio_id": "025a4450-a334-4a73-b5bd-f38eb170d6b3",
+    "target1_audio_id": "d6098ead-71c2-4128-b79d-9747cb637c57",
+    "target2_audio_id": "42156b78-00a7-4fa5-805e-9fe6b27593ff",
+    "target_text_roman": "lamnakunnanuhhaawiluansnas'amaka limaatinkathirata'ukhrah"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we were not trying",
+    "target_text": "لَمْ نَكُنْ نُحاوِلُ",
+    "known_audio_id": "a3cecc6c-59da-4960-9e76-c0f1013e4374",
+    "target1_audio_id": "4c7231e0-c52a-43f5-a5b7-61501365be34",
+    "target2_audio_id": "a938b6dd-2b98-4bfa-9995-4838a219c289",
+    "target_text_roman": "lam nakun nuhhaawil"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ",
+    "known_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "target1_audio_id": "e04f9a2d-6c5e-4118-9e4d-21b3b43e8886",
+    "target2_audio_id": "b923cd63-ee4c-4ee6-b408-951a4d21f622",
+    "target_text_roman": "lam nakun na'mal"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we were not",
+    "target_text": "لَمْ نَكُنْ",
+    "known_audio_id": "e64d476c-fe42-4a02-97f1-0a713a8614b5",
+    "target1_audio_id": "cd161322-1ff8-4581-8d87-fd27914461e9",
+    "target2_audio_id": "b63e4081-d8b3-428b-a515-af592eb5f49e",
+    "target_text_roman": "lam nakun"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "488b6c06-fb80-4309-8c34-d8e7e229291b",
+   "set": {
+    "known_text": "we were not",
+    "target_text": "لَمْ نَكُنْ",
+    "components": [],
+    "known_audio_id": "e64d476c-fe42-4a02-97f1-0a713a8614b5",
+    "target1_audio_id": "cd161322-1ff8-4581-8d87-fd27914461e9",
+    "target2_audio_id": "b63e4081-d8b3-428b-a515-af592eb5f49e",
+    "presentation_audio_id": "7de1c386-4b21-49c7-9129-abdb78a5334e",
+    "target_text_roman": "lam nakun"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "لَمْ نَكُنْ نَأْمَلُ أَنْ نَسْتَيْقِظَ في مُنْتَصَفِ اللَّيْل",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "9523ad89-68db-43bb-9d84-8b56c02c5806",
+    "target2_audio_id": "3f6a2a1e-1ec7-457a-8285-747e95cbb30a",
+    "target_text_roman": "lam nakun na-amal an nastagiq fi muntasaf al-layl"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

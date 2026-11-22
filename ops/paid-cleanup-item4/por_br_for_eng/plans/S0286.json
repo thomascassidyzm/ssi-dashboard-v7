@@ -1,0 +1,26 @@
+{
+ "seed": 286,
+ "legos": {
+  "L01": {
+   "delete": [
+    "B02",
+    "B03"
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "they like Portuguese",
+     "gostam de português"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "they like it here",
+     "gostam daqui"
+    ]
+   ]
+  }
+ }
+}

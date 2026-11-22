@@ -1,0 +1,1012 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": "si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B03",
+   "set": {
+    "decomposition": [
+     {
+      "known": "I would have been happy",
+      "legoId": "S0599L03",
+      "target": "j'aurais été content",
+      "isGhost": false
+     },
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": " si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05U01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "I would have",
+      "legoId": "S0152L01",
+      "target": "j'aurais",
+      "isGhost": false
+     },
+     {
+      "known": "driven",
+      "legoId": "S0600L02",
+      "target": " conduit",
+      "isGhost": false
+     },
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": " si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "how tired you were",
+      "legoId": "S0600L03",
+      "target": " à quel point tu étais fatigué",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "I would have",
+      "legoId": "S0152L01",
+      "target": "j'aurais",
+      "isGhost": false
+     },
+     {
+      "known": "driven",
+      "legoId": "S0600L02",
+      "target": " conduit",
+      "isGhost": false
+     },
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": " si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05C02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cbfb416b-3c31-4256-b32a-4349ae42cce1",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cbfb416b-3c31-4256-b32a-4349ae42cce1",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0116L02B06",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0116L02B06",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0116L02B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0116L02B05",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0116L02B05",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0116L02B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0600L05U05",
+    "seed_number": 600,
+    "lego_index": 5,
+    "position": 10,
+    "known_text": "I'd have been happy if you told me",
+    "target_text": "j'aurais été content si tu m'avais dit ça",
+    "word_count": 41,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-05-23T03:50:03.224Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-23T03:50:03.262Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "437a3d75-219f-4e0a-8b81-a9d4ad71a60e",
+    "target1_audio_id": "c82cb923-949f-43c9-8319-e1f39035814e",
+    "target2_audio_id": "bdaa37cb-78a8-4ea3-9431-996c0bde39a5",
+    "qa_checked": null,
+    "target1_duration_ms": 2040,
+    "target2_duration_ms": 2040,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I would have been happy",
+      "legoId": "S0599L03",
+      "target": "j'aurais été content",
+      "isGhost": false
+     },
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": " si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ça",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 73728
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0600L05U04",
+    "seed_number": 600,
+    "lego_index": 5,
+    "position": 9,
+    "known_text": "I'd have driven if you told me sooner",
+    "target_text": "j'aurais conduit si tu m'avais dit plus tôt",
+    "word_count": 43,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-05-23T03:50:03.224Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-23T03:50:03.262Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "fab4f3a6-3eb7-42b9-8f90-0d3e9cbffa7d",
+    "target1_audio_id": "2f620f7a-544b-496c-835e-d06d9a1c3eae",
+    "target2_audio_id": "2bff0316-b6ae-4fc2-a403-b31002e2f9ff",
+    "qa_checked": null,
+    "target1_duration_ms": 2160,
+    "target2_duration_ms": 1920,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I would have",
+      "legoId": "S0152L01",
+      "target": "j'aurais",
+      "isGhost": false
+     },
+     {
+      "known": "driven",
+      "legoId": "S0600L02",
+      "target": " conduit",
+      "isGhost": false
+     },
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": " si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "no longer",
+      "legoId": "S0480L03",
+      "target": " plus",
+      "isGhost": false
+     },
+     {
+      "known": "early",
+      "legoId": "S0139L04",
+      "target": " tôt",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 134291456
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0600L05U03",
+    "seed_number": 600,
+    "lego_index": 5,
+    "position": 8,
+    "known_text": "if you told me I would have driven",
+    "target_text": "si tu m'avais dit j'aurais conduit",
+    "word_count": 34,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-05-23T03:50:03.224Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-23T03:50:03.262Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "59cd2a49-35a3-48ec-8ee0-ad71721359ff",
+    "target1_audio_id": "15cbb7fc-7e28-4235-a51b-bdb427cb4504",
+    "target2_audio_id": "3d05a306-ae87-42d8-ac82-1268589c0f1b",
+    "qa_checked": null,
+    "target1_duration_ms": 1896,
+    "target2_duration_ms": 1920,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": "si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "I would have",
+      "legoId": "S0152L01",
+      "target": " j'aurais",
+      "isGhost": false
+     },
+     {
+      "known": "driven",
+      "legoId": "S0600L02",
+      "target": " conduit",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 73728
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0600L05U02",
+    "seed_number": 600,
+    "lego_index": 5,
+    "position": 7,
+    "known_text": "I'd have driven if you told me before",
+    "target_text": "j'aurais conduit si tu m'avais dit avant",
+    "word_count": 40,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-05-23T03:50:03.224Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-23T03:50:03.262Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "cb0a3b70-e064-4862-8b01-dde26622569d",
+    "target1_audio_id": "ec3606a3-5c2a-407d-8894-d7770c10f458",
+    "target2_audio_id": "b3fac51a-3c28-4aec-a9fe-921b98267527",
+    "qa_checked": null,
+    "target1_duration_ms": 2064,
+    "target2_duration_ms": 2208,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I would have",
+      "legoId": "S0152L01",
+      "target": "j'aurais",
+      "isGhost": false
+     },
+     {
+      "known": "driven",
+      "legoId": "S0600L02",
+      "target": " conduit",
+      "isGhost": false
+     },
+     {
+      "known": "if you told me",
+      "legoId": "S0600L05",
+      "target": " si tu m'avais dit",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "before",
+      "legoId": "S0404L04",
+      "target": " avant",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 134291456
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05U01",
+   "set": {
+    "known_text": "I'd have driven if you told me how tired you were",
+    "known_audio_id": "40e6850d-9734-4a71-aa68-2425ac654c2a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B03",
+   "set": {
+    "known_text": "I'd have been happy if you told me",
+    "target_text": "j'aurais été content si tu m'avais dit",
+    "known_audio_id": "437a3d75-219f-4e0a-8b81-a9d4ad71a60e",
+    "target1_audio_id": "ba8d349f-657e-4ce4-91cd-128e3896b5e8",
+    "target2_audio_id": "6f48b960-75df-4c1a-9c22-07906643b438"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B02",
+   "set": {
+    "known_text": "I'd have driven if you told me",
+    "target_text": "j'aurais conduit si tu m'avais dit",
+    "known_audio_id": "6446b8fa-1eab-4a24-8582-d62306faca30",
+    "target1_audio_id": "47e8e046-14f0-4d68-ab46-af775c092bb0",
+    "target2_audio_id": "133cc850-56c1-48c1-aa36-7fddd054cfba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05B01",
+   "set": {
+    "known_text": "if you told me",
+    "known_audio_id": "e40325c6-676e-4793-b312-f31ff78391ad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0600L05C02",
+   "set": {
+    "known_text": "you told me",
+    "known_audio_id": "65de7808-9e1f-4976-87db-1ec20e971932"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cbfb416b-3c31-4256-b32a-4349ae42cce1",
+   "set": {
+    "known_text": "if you told me",
+    "components": [
+     {
+      "known": "if",
+      "target": "si"
+     },
+     {
+      "known": "you told me",
+      "target": "tu m'avais dit"
+     }
+    ],
+    "known_audio_id": "e40325c6-676e-4793-b312-f31ff78391ad",
+    "presentation_audio_id": "f0951d8d-5a79-4c81-ae5a-506398adfd22"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0116L02B06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0116L02B05"
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0117L01U06",
+    "seed_number": 117,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I'm definitely doing the best I could make",
+    "target_text": "je fais clairement le meilleur que je pouvais faire",
+    "word_count": 52,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "scored_at": "2026-02-11T01:26:33.789Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T01:26:38.007Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": null,
+    "known_audio_id": "f2ca538d-066a-4831-ae01-da3cecfa9299",
+    "target1_audio_id": "bc9ce3e4-b1e9-4745-baef-f7e13d01b33d",
+    "target2_audio_id": "3f17d6bf-71a6-4d8c-ae3a-f620b84bbb45",
+    "qa_checked": "2026-02-11T01:47:51.851Z",
+    "target1_duration_ms": 2376,
+    "target2_duration_ms": 2496,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I'm definitely doing",
+      "legoId": "S0117L01",
+      "target": "Je fais clairement",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the",
+      "legoId": "S0033L01",
+      "target": " le",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " meilleur",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "I could make",
+      "legoId": "S0116L02",
+      "target": " je pouvais faire",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 8421388
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0116L02U09",
+    "seed_number": 116,
+    "lego_index": 2,
+    "position": 15,
+    "known_text": "I didn't know what I could make",
+    "target_text": "je ne savais pas ce que je pouvais faire",
+    "word_count": 40,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "backfill",
+     "scored_at": "2026-05-22T17:23:09.067Z",
+     "target_score": 8
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-22T17:23:09.110Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "a27af942-f5a4-4bf5-bbe5-0e74dfb5b0d3",
+    "target1_audio_id": "089bcf03-8e54-4747-b859-6ce203f3de7f",
+    "target2_audio_id": "a0d4557e-077e-4186-a3c7-d1e5f11c7ea8",
+    "qa_checked": null,
+    "target1_duration_ms": 2064,
+    "target2_duration_ms": 1944,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "je",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ne",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " savais",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pas",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ce",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "I could make",
+      "legoId": "S0116L02",
+      "target": " je pouvais faire",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 6291976
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0116L02U08",
+    "seed_number": 116,
+    "lego_index": 2,
+    "position": 14,
+    "known_text": "she showed me what I could make",
+    "target_text": "elle me montrait ce que je pouvais faire",
+    "word_count": 40,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "backfill",
+     "scored_at": "2026-05-22T17:23:09.067Z",
+     "target_score": 8
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-22T17:23:09.110Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "79163c15-b0a9-49ec-b3bc-26c326365f8a",
+    "target1_audio_id": "12e9063c-42bc-4dcf-a3d1-06be54b32167",
+    "target2_audio_id": "4aa5a4b5-7b44-4419-b5fc-89ec7bf0a6bb",
+    "qa_checked": null,
+    "target1_duration_ms": 1920,
+    "target2_duration_ms": 2064,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "elle",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " me",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " montrait",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ce",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "I could make",
+      "legoId": "S0116L02",
+      "target": " je pouvais faire",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0116L02U07",
+    "seed_number": 116,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "Why can't I make what I could make before?",
+    "target_text": "pourquoi je n'arrive pas à faire ce que je pouvais faire avant ?",
+    "word_count": 64,
+    "lego_count": 9,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "scored_at": "2026-02-11T01:26:33.647Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T01:26:37.869Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "9391377c-faff-4cc7-b032-d7d6fd13e911",
+    "target1_audio_id": "51c57ee0-caa9-42bd-b80a-8edd00de625f",
+    "target2_audio_id": "66733daa-28c4-4cf0-a835-a666b82e6ab8",
+    "qa_checked": "2026-02-11T01:47:51.851Z",
+    "target1_duration_ms": 2784,
+    "target2_duration_ms": 2760,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "why can't I",
+      "legoId": "S0113L01",
+      "target": "Pourquoi je n'arrive pas à",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " faire",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ce",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " que",
+      "isGhost": true
+     },
+     {
+      "known": "I could make",
+      "legoId": "S0116L02",
+      "target": " je pouvais faire",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " avant",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ?",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 139984904
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0116L02B04",
+    "seed_number": 116,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "I could make it better",
+    "target_text": "je pouvais faire mieux",
+    "word_count": 23,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T01:26:37.869Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": null,
+    "known_audio_id": "3e63eda1-e897-438c-8891-aff93503c2c0",
+    "target1_audio_id": "ca9ad712-f7da-4485-88be-4e2035482903",
+    "target2_audio_id": "b06dee60-bb17-4670-be5a-f13a6078cf10",
+    "qa_checked": "2026-02-11T01:47:51.851Z",
+    "target1_duration_ms": 1080,
+    "target2_duration_ms": 1128,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I could make",
+      "legoId": "S0116L02",
+      "target": "Je pouvais faire",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "better",
+      "legoId": "S0029L02",
+      "target": " mieux",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 8388616
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0116L02B02",
+    "seed_number": 116,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "I could make",
+    "target_text": "je pouvais faire",
+    "word_count": 16,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T01:26:37.869Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "0c1c3f7b-032c-4426-8cbd-901cadf7bc21",
+    "target1_audio_id": "2221a0c3-ecdc-4b93-b304-059fde62ba4b",
+    "target2_audio_id": "71bbaadf-4f8f-464f-848c-9d779ac5c7cf",
+    "qa_checked": "2026-02-11T01:47:51.851Z",
+    "target1_duration_ms": 1056,
+    "target2_duration_ms": 1032,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I could make",
+      "legoId": "S0116L02",
+      "target": "je pouvais faire",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 8
+   }
+  }
+ ]
+}

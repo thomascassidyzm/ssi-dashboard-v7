@@ -204,12 +204,19 @@ async function restoreSnapshotUnlocked(supabase, { courseCode, seedNumber, snaps
   const phrases = snap.phrases || [];
 
   // What is there now — reported either way, and what a dry run is for.
-  const { count: currentLegos } = await supabase
+  const { count: currentLegos, error: legoCountErr } = await supabase
     .from('course_legos').select('id', { count: 'exact', head: true })
     .eq('course_code', courseCode).eq('seed_number', snap.seed_number);
-  const { count: currentPhrases } = await supabase
+  const { count: currentPhrases, error: phraseCountErr } = await supabase
     .from('course_practice_phrases').select('id', { count: 'exact', head: true })
     .eq('course_code', courseCode).eq('seed_number', snap.seed_number);
+  // FAIL SAFE (review 06b848ce): a failed count is NOT zero. The automatic restore (requireEmpty) wipes only a seed it
+  // has SEEN empty; if either count errored or came back without a number it does nothing, so a freshly submitted
+  // seed is never wiped on a database hiccup. COUNT_FAILED is transient: the watchdog leaves the batch open.
+  const countFailed = !!(legoCountErr || phraseCountErr) || !Number.isInteger(currentLegos) || !Number.isInteger(currentPhrases);
+  if (requireEmpty && !dryRun && countFailed) {
+    throw new Error(`COUNT_FAILED: could not count seed ${snap.seed_number}'s current LEGOs/phrases (${(legoCountErr || phraseCountErr)?.message || 'no count returned'}); snapshot ${snap.id} was not restored`);
+  }
 
   if (dryRun) {
     return {

@@ -1,0 +1,56 @@
+{
+ "seed": 225,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "आणि जर जमलं असतं तर",
+     "and if he could"
+    ],
+    "B03": [
+     "पण जर जमलं असतं तर",
+     "but if he could"
+    ],
+    "B04": [
+     "आज, जर जमलं असतं तर",
+     "today, if he could"
+    ],
+    "U05": [
+     "त्याला येता आलं असतं का मला माहित नाही",
+     "I don't know if he could come"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "त्याने आज तुम्हाला उत्तर दिलं असतं",
+     "he would give you an answer today"
+    ],
+    "B04": [
+     "त्याने उद्या तुम्हाला उत्तर दिलं असतं",
+     "he would give you an answer tomorrow"
+    ],
+    "U02": [
+     "मला वाटतं त्याने तुम्हाला उत्तर दिलं असतं",
+     "I think he would give you an answer"
+    ],
+    "U05": [
+     "त्याने तुम्हाला कामावर उत्तर दिलं असतं",
+     "he would give you an answer at work"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "त्याने आता तुम्हाला उत्तर दिलं असतं",
+     "he would give you an answer now"
+    ]
+   ],
+   "delete": [
+    "U01"
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L02: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (U01)"
+}

@@ -1,0 +1,25 @@
+{
+ "course": "ara_lb_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "phrase.update",
+   "key": "ara_lb_for_eng:S0108L03U01",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [],
+ "counts": {
+  "ok": 2
+ }
+}

@@ -1,0 +1,531 @@
+{
+ "event_id": "67add3a1-3971-4580-9eed-9bbe238c4a19",
+ "undo_file": "2026-11-18T15-19-51-303Z-67add3a1-3971-4580-9eed-9bbe238c4a19.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L04U05",
+   "set": {
+    "known_text": "I'm sure, without arguing",
+    "target_text": "tenho certeza, sem discutir",
+    "word_count": 27,
+    "known_audio_id": "6ad6cbd2-0311-4fdb-9721-6e7d3f3dbe8f",
+    "target1_audio_id": "46ae4e65-a1bf-4d51-b6fd-8c9d22c47e5a",
+    "target2_audio_id": "ef834cc6-3d65-40dd-a587-a54f249094c7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L04U04",
+   "set": {
+    "known_text": "yes, if only I could trust you to play together without arguing",
+    "target_text": "sim, se ao menos pudesse confiar em você para brincarem juntos sem discutir",
+    "word_count": 75,
+    "known_audio_id": "190a8c80-2323-4cf6-bd7e-34cd4afb41d4",
+    "target1_audio_id": "b1178046-93bd-4ff1-8b79-8c748e25727a",
+    "target2_audio_id": "f9ee14ec-307b-4767-90a8-86e890302f95"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L04U03",
+   "set": {
+    "known_text": "that's true, without arguing",
+    "target_text": "isso é verdade, sem discutir",
+    "word_count": 28,
+    "known_audio_id": "bb1911fc-b2aa-4767-9653-41cef5d2d9be",
+    "target1_audio_id": "b8bb04b7-4a12-49a9-8439-f19d5a98cfd8",
+    "target2_audio_id": "a2a1987d-33ba-4dc1-8ed1-7ff7066aadda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L04U02",
+   "set": {
+    "known_text": "no, without arguing",
+    "target_text": "não, sem discutir",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "09418b56-fba2-49d2-90ed-9a3b163319b6",
+    "target1_audio_id": "8d624c78-fb78-4e04-be57-a9475028dfb4",
+    "target2_audio_id": "01656052-80b5-4038-94a7-4739f55921d0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L04B03",
+   "set": {
+    "known_text": "yes, without arguing",
+    "target_text": "sim, sem discutir",
+    "word_count": 17,
+    "known_audio_id": "3784099c-e28c-4eb3-b440-b1204d784874",
+    "target1_audio_id": "db27bc15-a6ce-4458-82ea-c100967f52ae",
+    "target2_audio_id": "623d16b9-4c6b-4330-a2b9-427e4f3cc8a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L03U04",
+   "set": {
+    "known_text": "yes, trust you to play together",
+    "target_text": "sim, confiar em você para brincarem juntos",
+    "word_count": 42,
+    "known_audio_id": "4b0e3e31-0b53-423c-8c14-381a56862e74",
+    "target1_audio_id": "9378df9e-329c-400f-b6c8-b20e675b6198",
+    "target2_audio_id": "66a79241-0677-43df-93e0-3878bbc7f4ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L03U03",
+   "set": {
+    "known_text": "I want to play together",
+    "target_text": "quero para brincarem juntos",
+    "word_count": 27,
+    "lego_position": "middle",
+    "known_audio_id": "319062a6-638f-4bc9-a8a4-a1d55a3afa88",
+    "target1_audio_id": "12e0893b-f678-4a15-8f30-e8a62392046d",
+    "target2_audio_id": "ab458765-0169-4f89-bb95-a3b040831524"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L03U02",
+   "set": {
+    "known_text": "that's true, to play together",
+    "target_text": "isso é verdade, para brincarem juntos",
+    "word_count": 37,
+    "known_audio_id": "3c5b6fa5-df7b-46e5-a1e3-47212be0feb4",
+    "target1_audio_id": "7a4ac35e-4e3c-4e00-b7f1-6df02e9a93b7",
+    "target2_audio_id": "0ff2371c-406f-4693-bd76-c5a02794433a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L03U01",
+   "set": {
+    "known_text": "no, to play together",
+    "target_text": "não, para brincarem juntos",
+    "word_count": 26,
+    "lego_position": "middle",
+    "known_audio_id": "d367e252-c03c-4dde-80fb-a9d924f316b7",
+    "target1_audio_id": "a3013e2f-69fe-4a66-b535-6a6a427eeb76",
+    "target2_audio_id": "82b50143-83d9-492e-b7e8-de4a105875b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L03B03",
+   "set": {
+    "known_text": "yes, to play together",
+    "target_text": "sim, para brincarem juntos",
+    "word_count": 26,
+    "known_audio_id": "6c8a5da2-6657-42cd-a4a3-9cf9f7fca11f",
+    "target1_audio_id": "11508b78-cc80-4b44-a108-c74789655696",
+    "target2_audio_id": "00a4ea52-42bc-4849-a292-37b0b99c8f4d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L02U05",
+   "set": {
+    "known_text": "if only I still could trust you",
+    "target_text": "se ao menos ainda pudesse confiar em você",
+    "word_count": 41,
+    "lego_position": "end",
+    "known_audio_id": "5225d8af-a73e-4246-8575-ca9f1eb0da81",
+    "target1_audio_id": "7dd99b01-3ae4-4119-9212-3f5e0df7250c",
+    "target2_audio_id": "cb3fd5ec-6bf3-49d6-b5ec-0049d8ce0cf7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L02U04",
+   "set": {
+    "known_text": "yes, if only I could trust you",
+    "target_text": "sim, se ao menos pudesse confiar em você",
+    "word_count": 40,
+    "known_audio_id": "76c920e1-0294-43e1-9f73-75f90f4f2ef4",
+    "target1_audio_id": "9766ae1a-b641-4c6f-8658-1f41aa903c70",
+    "target2_audio_id": "fc14754f-2442-4e29-a616-ef8ef07696b7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L02U02",
+   "set": {
+    "known_text": "that's true, trust you",
+    "target_text": "isso é verdade, confiar em você",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "c8f5ac6a-3d2b-4017-921e-0e47b236b35f",
+    "target1_audio_id": "4217e448-3b24-4e16-b70c-45d036ce99ef",
+    "target2_audio_id": "a52b56e9-ea6f-4ade-8118-b3f63738c2ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L02U01",
+   "set": {
+    "known_text": "no, trust you",
+    "target_text": "não, confiar em você",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "e445a7c1-22ee-451e-a98c-d95d67416811",
+    "target1_audio_id": "271d6c58-a3c0-44eb-86dd-ce8ffcff292f",
+    "target2_audio_id": "b363aaf9-b7a0-4127-9154-38d2228a72b9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L02B03",
+   "set": {
+    "known_text": "yes, to trust you",
+    "target_text": "sim, confiar em você",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "b00b3e4b-8f2f-4c36-a736-4e93a13f6b15",
+    "target1_audio_id": "a74c3344-25d7-4323-b6ba-978c921d21a4",
+    "target2_audio_id": "b8853ffc-22d6-444a-995a-bd39d9fd435a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01U05",
+   "set": {
+    "known_text": "if only I still could",
+    "target_text": "se ao menos ainda pudesse",
+    "word_count": 25,
+    "lego_position": null,
+    "known_audio_id": "5672eaf7-8d54-4f97-bf9c-481d1f09b47e",
+    "target1_audio_id": "673e0fcb-56c8-419e-9b02-e50b43947c28",
+    "target2_audio_id": "22a3a8ad-6fdd-4ecc-820a-d15c4143bd7b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01U04",
+   "set": {
+    "known_text": "yes, that's true, if only I could",
+    "target_text": "sim, isso é verdade, se ao menos pudesse",
+    "word_count": 40,
+    "lego_position": "end",
+    "known_audio_id": "ac72b1f0-196e-47c8-8ba6-baf3c33c3e7b",
+    "target1_audio_id": "7e38e1ee-c073-4050-9d74-235b4f8e50b4",
+    "target2_audio_id": "83ce54c8-e104-44af-9495-138dd3a47ca2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01U03",
+   "set": {
+    "known_text": "I'm sure, if only I could",
+    "target_text": "tenho certeza, se ao menos pudesse",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "9f53d633-609f-4bff-8a1e-5700781ca5f2",
+    "target1_audio_id": "a9f4ffd6-eb76-4f28-af53-ff761b70e86b",
+    "target2_audio_id": "1bec68c6-0b26-49f8-897f-4e9aea42a3b4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01U02",
+   "set": {
+    "known_text": "that's true, if only I could",
+    "target_text": "isso é verdade, se ao menos pudesse",
+    "word_count": 35,
+    "lego_position": "end",
+    "known_audio_id": "969c087c-e2e5-4f16-b7b2-5e0259ac848b",
+    "target1_audio_id": "449692f0-8532-4f29-a97c-bcd1b975eed9",
+    "target2_audio_id": "c8a76906-749f-4025-8491-51dfd4787649"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01U01",
+   "set": {
+    "known_text": "no, if only I could",
+    "target_text": "não, se ao menos pudesse",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "79953695-b313-48b2-9b79-c4ec1e9ff505",
+    "target1_audio_id": "fd8cf9b9-8a72-4076-8417-4052c85a145f",
+    "target2_audio_id": "f477dee8-a0eb-4bc7-b9cb-8ff77f8dd6d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01B03",
+   "set": {
+    "known_text": "yes, if only I could",
+    "target_text": "sim, se ao menos pudesse",
+    "word_count": 24,
+    "known_audio_id": "f9dcef29-2d48-4868-8522-db9a76e025b3",
+    "target1_audio_id": "ad4dcb9f-b2d7-4b9a-be1b-2c7389f4bf1e",
+    "target2_audio_id": "cfea637b-72c5-4e97-a5df-5dc27e3edf00"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0501L01B02",
+   "set": {
+    "known_text": "if only I could serve",
+    "target_text": "se ao menos pudesse servir",
+    "known_audio_id": "4188ef75-34d8-42ac-8cfc-b2523a5c97da",
+    "target1_audio_id": "6ad5a1a4-37fd-413b-b6a9-f96e6f2e27b3",
+    "target2_audio_id": "1d4ca3c0-1ebb-4070-a6c0-f78fe8ee2382"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L03U05",
+   "set": {
+    "known_text": "why don't you still want to sit between the two girls?",
+    "target_text": "por que você ainda não quer se sentar entre as duas meninas?",
+    "word_count": 60,
+    "lego_position": "end",
+    "known_audio_id": "f9244706-d1b5-4bdd-b4ef-d1e1df8616de",
+    "target1_audio_id": "338ce89f-c451-4198-a5b2-0da6336bcacd",
+    "target2_audio_id": "97f984ae-4150-42d6-abbf-2e078b524551"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L03U04",
+   "set": {
+    "known_text": "yes, why don't you want to sit between the two girls?",
+    "target_text": "sim, por que você não quer se sentar entre as duas meninas?",
+    "word_count": 59,
+    "lego_position": "end",
+    "known_audio_id": "31ebac7f-29c8-49ca-b1f1-9385cdb184e9",
+    "target1_audio_id": "5c7bafef-105b-43b0-a257-0a8610670e59",
+    "target2_audio_id": "41e2a8aa-2aaa-460f-8287-29356af73212"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L03U03",
+   "set": {
+    "known_text": "that's true, the two girls",
+    "target_text": "isso é verdade, as duas meninas",
+    "word_count": 31,
+    "known_audio_id": "e111f014-4b5c-4461-9992-77ba51b365c8",
+    "target1_audio_id": "4622a668-75b5-451e-bd6c-c9cd7ce0c607",
+    "target2_audio_id": "f6cb4dae-9dc3-4286-b1d6-f1b92bcd7652"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L03U02",
+   "set": {
+    "known_text": "no, the two girls",
+    "target_text": "não, as duas meninas",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "8c6e0f3f-0002-48a1-846a-e710bbf53a0b",
+    "target1_audio_id": "0201e874-f43a-48fe-9765-5623e048d4a5",
+    "target2_audio_id": "60ff1b32-59f5-4e78-a9ce-0f17629c04a6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L03B03",
+   "set": {
+    "known_text": "yes, the two girls",
+    "target_text": "sim, as duas meninas",
+    "word_count": 20,
+    "known_audio_id": "513499a3-e8fd-48b4-b6cc-c7fec11f0766",
+    "target1_audio_id": "91690c18-696b-43d8-be6e-28390aba49b6",
+    "target2_audio_id": "5c82d279-9662-4799-91fc-c82cebd5c731"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L02U05",
+   "set": {
+    "known_text": "why don't you still want to sit between",
+    "target_text": "por que você ainda não quer se sentar entre",
+    "word_count": 43,
+    "lego_position": "end",
+    "known_audio_id": "552274e3-4662-403d-80a7-5b2ac6111dd2",
+    "target1_audio_id": "6d0aa06f-0845-4b44-886e-77d64cc292e6",
+    "target2_audio_id": "11000707-3c71-4743-b316-7810b35106e4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L02U04",
+   "set": {
+    "known_text": "yes, why don't you want to sit between",
+    "target_text": "sim, por que você não quer se sentar entre",
+    "word_count": 42,
+    "lego_position": "end",
+    "known_audio_id": "6f59f62e-0e20-4aa4-a184-05cfdb565530",
+    "target1_audio_id": "3f046666-4a13-452b-8f70-b8ef0112d5bc",
+    "target2_audio_id": "c8ad387d-dbc0-400e-ba5e-a83859814256"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L02U03",
+   "set": {
+    "known_text": "I want to sit between",
+    "target_text": "quero se sentar entre",
+    "word_count": 21,
+    "known_audio_id": "fb93a07e-82b0-4db8-8827-c6bd3c90bc20",
+    "target1_audio_id": "a3a4f8b7-a26d-4a73-a901-624658de59e6",
+    "target2_audio_id": "108a018a-245a-4767-a259-b7bb4721a810"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L02U02",
+   "set": {
+    "known_text": "that's true, sit between",
+    "target_text": "isso é verdade, se sentar entre",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "fd95c596-1ca3-4a63-9a39-b42b90bdd125",
+    "target1_audio_id": "84708bd9-73b8-4a68-b8f9-f6a812a026fa",
+    "target2_audio_id": "cb68430f-5731-4140-93a2-c95d08ab4752"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L02U01",
+   "set": {
+    "known_text": "no, sit between",
+    "target_text": "não, se sentar entre",
+    "word_count": 20,
+    "known_audio_id": "d36c6fbd-da4b-46ae-b791-d02ffdecbf2d",
+    "target1_audio_id": "c168c134-552a-46c9-a63f-0a8b54ebd528",
+    "target2_audio_id": "e8ace5f1-2ec4-4c40-9bab-8cb663e53f00"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L02B03",
+   "set": {
+    "known_text": "yes, sit between",
+    "target_text": "sim, se sentar entre",
+    "known_audio_id": "f760910f-067a-4028-9c85-4102123ea8cd",
+    "target1_audio_id": "ee10885b-2c48-498d-87fb-e4305f0ffc24",
+    "target2_audio_id": "df62b8f6-3cc7-4428-9fe3-4cae06fd2c25"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01U05",
+   "set": {
+    "known_text": "why don't you still want to",
+    "target_text": "por que você ainda não quer",
+    "word_count": 27,
+    "lego_position": null,
+    "known_audio_id": "cd881aa4-08d3-4a36-b03e-46b2608fcb84",
+    "target1_audio_id": "e24af39e-b2b7-4e42-9f14-d470dd9805c8",
+    "target2_audio_id": "fc3b035a-43bc-4abe-9653-6b8b964cf03c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01U04",
+   "set": {
+    "known_text": "yes, that's true, why don't you want to",
+    "target_text": "sim, isso é verdade, por que você não quer",
+    "word_count": 42,
+    "lego_position": "end",
+    "known_audio_id": "6e1105ea-4af5-4f59-b0e4-ae5eae3ad982",
+    "target1_audio_id": "e5d6f85a-1057-4f91-b3f7-13bbc90c12cc",
+    "target2_audio_id": "61a52d62-cccb-4c08-843d-85a97276d747"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01U03",
+   "set": {
+    "known_text": "I'm sure, why don't you want to",
+    "target_text": "tenho certeza, por que você não quer",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "cc3175db-6523-4edf-bcf4-d3f99c55919d",
+    "target1_audio_id": "3c8d9af3-55ff-4ec3-a6f0-e378fa0a11ae",
+    "target2_audio_id": "25064c65-fe33-4f14-897b-695c9152c728"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01U02",
+   "set": {
+    "known_text": "that's true, why don't you want to",
+    "target_text": "isso é verdade, por que você não quer",
+    "word_count": 37,
+    "lego_position": "end",
+    "known_audio_id": "f7261540-1cf3-4b5f-a72d-3c80b5cfb117",
+    "target1_audio_id": "d331df83-491e-43ba-80da-0a31eec3c019",
+    "target2_audio_id": "c1529f81-cb26-42a9-9642-33137d63bee7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01U01",
+   "set": {
+    "known_text": "no, why don't you want to",
+    "target_text": "não, por que você não quer",
+    "word_count": 26,
+    "lego_position": "middle",
+    "known_audio_id": "e9cb7f55-252c-464e-9376-d5b06f0e6281",
+    "target1_audio_id": "dad34f53-9508-4259-8f98-f2082b16d6fa",
+    "target2_audio_id": "3deb22c7-ce91-425b-9649-76549c8d9a1e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01B03",
+   "set": {
+    "known_text": "yes, why don't you want to",
+    "target_text": "sim, por que você não quer",
+    "word_count": 26,
+    "known_audio_id": "3a0f1129-88a6-48df-b7f1-b83b98d61da6",
+    "target1_audio_id": "cb636f30-24a6-4bf2-86ff-1ee4b7801e3b",
+    "target2_audio_id": "f128eada-f08c-4d77-b670-df1bfcaf8f9f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0500L01B02",
+   "set": {
+    "known_text": "why don't you want to serve",
+    "target_text": "por que você não quer servir",
+    "word_count": 28,
+    "known_audio_id": "6a01463a-8d83-4566-aee6-e6a6fb2f87b9",
+    "target1_audio_id": "dbda820e-cf5b-4c2b-81ce-4e52d55405f8",
+    "target2_audio_id": "813bc4c8-43a8-4c09-be7b-70693fded64c"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0501L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0501L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0501L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0500L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0500L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0500L01B04"
+  }
+ ]
+}

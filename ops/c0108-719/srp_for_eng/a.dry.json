@@ -1,0 +1,614 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "3699bf9f-5bf9-4dd8-b3a7-8517db38bd04",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nismo se nadali da ćemo se probuditi usred noći.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "883a94bd-8ce6-4557-ab1f-2ee14e301051",
+    "target2_audio_id": "69828f26-bbc2-44bc-967c-6da357fcf556"
+   },
+   "after": {
+    "id": "3699bf9f-5bf9-4dd8-b3a7-8517db38bd04",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nismo očekivali da ćemo se probuditi usred noći.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "42f39601-f980-4fb9-86d4-fcec3c6f2b53",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nismo se nadali da",
+    "known_text": "we didn't hope to",
+    "components": [
+     {
+      "known": "\"we aren't\"",
+      "target": "\"nismo\""
+     },
+     {
+      "known": "\"self\"",
+      "target": "\"se\""
+     },
+     {
+      "known": "\"hoped\"",
+      "target": "\"nadali\""
+     },
+     {
+      "known": "\"to\"",
+      "target": "\"da\""
+     }
+    ],
+    "known_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "target1_audio_id": "d11c08a0-e5ca-4a45-a986-29170ef68a63",
+    "target2_audio_id": "f2fd3096-600a-462e-b56a-cddebac26c58",
+    "presentation_audio_id": "28e70284-08db-4110-8cc2-f567078bde5c"
+   },
+   "after": {
+    "id": "42f39601-f980-4fb9-86d4-fcec3c6f2b53",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "nismo očekivali da",
+    "known_text": "we didn't expect to",
+    "components": [
+     {
+      "known": "\"we aren't\"",
+      "target": "\"nismo\""
+     },
+     {
+      "known": "\"expected\"",
+      "target": "\"očekivali\""
+     },
+     {
+      "known": "\"to\"",
+      "target": "\"da\""
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "\"self\"",
+    "target_text": "\"se\"",
+    "known_audio_id": "d2c0a97f-076b-45a6-8ee8-46f66ac3237d",
+    "target1_audio_id": "39346cdd-f4fe-4fcf-b059-3b8fb574b8cb",
+    "target2_audio_id": "aff14a92-721c-4851-b0cd-2a267937bbcd",
+    "presentation_audio_id": "4de8e74e-81c0-4975-8552-8ab62ca15afa"
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01C03"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01C03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "\"nadali\"",
+    "known_text": "\"hoped\"",
+    "known_audio_id": "6f4f2f4a-62bd-4689-8a76-e6d2679fe393",
+    "target1_audio_id": "9ad6ff60-8d69-47ae-8f53-70a30463d073",
+    "target2_audio_id": "0887097a-08f4-40ef-afef-184e82ab2a2c",
+    "presentation_audio_id": "9fa83bf4-34db-4657-b8ae-eab268342071"
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01C03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "\"očekivali\"",
+    "known_text": "\"expected\"",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "9fa83bf4-34db-4657-b8ae-eab268342071"
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo se nadali da",
+    "known_text": "we didn't hope to",
+    "known_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "target1_audio_id": "d11c08a0-e5ca-4a45-a986-29170ef68a63",
+    "target2_audio_id": "f2fd3096-600a-462e-b56a-cddebac26c58",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo očekivali da",
+    "known_text": "we didn't expect to",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo se nadali da vidimo",
+    "known_text": "we didn't hope to see",
+    "known_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+    "target1_audio_id": "00b34340-d53b-4013-b5d5-0c255b532f69",
+    "target2_audio_id": "303b35d1-89d0-49ba-bbab-776cd61360d6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo očekivali da vidimo",
+    "known_text": "we didn't expect to see",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo se nadali da čujemo",
+    "known_text": "we didn't hope to hear",
+    "known_audio_id": "796880dd-b5ee-486e-863f-312aeb0dfd03",
+    "target1_audio_id": "fbf408e2-680a-4287-9bd8-bffb95e60de2",
+    "target2_audio_id": "2d1ade29-3217-4e6a-bd0a-67a1e5718ba1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo očekivali da čujemo",
+    "known_text": "we didn't expect to hear",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo se nadali da vidimo to",
+    "known_text": "we didn't hope to see that",
+    "known_audio_id": "cac4e33d-f663-4832-b032-fc0b7802498c",
+    "target1_audio_id": "906877d4-6d16-4da8-a2ad-376fb93ac577",
+    "target2_audio_id": "b6307ddd-1bf8-4a47-919d-f57018a4b3d4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo očekivali da vidimo to",
+    "known_text": "we didn't expect to see that",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo se nadali da čujemo srpski",
+    "known_text": "we didn't hope to hear Serbian",
+    "known_audio_id": "5e851386-dc54-403b-a3fa-b9ac683035e9",
+    "target1_audio_id": "e6055e29-d094-4d47-a4a3-54d5905eed9b",
+    "target2_audio_id": "b67150b1-6b44-48ad-bc0a-5d0afccf4880",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo očekivali da čujemo srpski",
+    "known_text": "we didn't expect to hear Serbian",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo se nadali da razumemo sve",
+    "known_text": "we did not hope to understand everything",
+    "known_audio_id": "74290bfa-3f40-4d5b-98b9-989912e6d988",
+    "target1_audio_id": "38dc59fe-f883-4420-b80d-256bb9da8d44",
+    "target2_audio_id": "9db32198-0c6c-4258-b9fa-49b553d1adad",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nismo očekivali da razumemo sve",
+    "known_text": "we did not expect to understand everything",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nismo se nadali da ćemo se probuditi",
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "5afbaa3f-1df9-4a5a-9c79-b0864351eecc",
+    "target2_audio_id": "1675e67f-ae02-48fa-82ef-d0c22b4bc5cd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nismo očekivali da ćemo se probuditi",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "srp_for_eng",
+    "id": "srp_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "srp_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nismo se nadali da ćemo se probuditi usred noći",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "883a94bd-8ce6-4557-ab1f-2ee14e301051",
+    "target2_audio_id": "69828f26-bbc2-44bc-967c-6da357fcf556",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "srp_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "nismo očekivali da ćemo se probuditi usred noći",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nismo se nadali da ćemo se probuditi usred noći",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "883a94bd-8ce6-4557-ab1f-2ee14e301051",
+    "target2_audio_id": "69828f26-bbc2-44bc-967c-6da357fcf556"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nismo se nadali da ćemo se probuditi",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "5afbaa3f-1df9-4a5a-9c79-b0864351eecc",
+    "target2_audio_id": "1675e67f-ae02-48fa-82ef-d0c22b4bc5cd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "we did not hope to understand everything",
+    "target_text": "nismo se nadali da razumemo sve",
+    "known_audio_id": "74290bfa-3f40-4d5b-98b9-989912e6d988",
+    "target1_audio_id": "38dc59fe-f883-4420-b80d-256bb9da8d44",
+    "target2_audio_id": "9db32198-0c6c-4258-b9fa-49b553d1adad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "we didn't hope to hear Serbian",
+    "target_text": "nismo se nadali da čujemo srpski",
+    "known_audio_id": "5e851386-dc54-403b-a3fa-b9ac683035e9",
+    "target1_audio_id": "e6055e29-d094-4d47-a4a3-54d5905eed9b",
+    "target2_audio_id": "b67150b1-6b44-48ad-bc0a-5d0afccf4880"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to see that",
+    "target_text": "nismo se nadali da vidimo to",
+    "known_audio_id": "cac4e33d-f663-4832-b032-fc0b7802498c",
+    "target1_audio_id": "906877d4-6d16-4da8-a2ad-376fb93ac577",
+    "target2_audio_id": "b6307ddd-1bf8-4a47-919d-f57018a4b3d4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we didn't hope to hear",
+    "target_text": "nismo se nadali da čujemo",
+    "known_audio_id": "796880dd-b5ee-486e-863f-312aeb0dfd03",
+    "target1_audio_id": "fbf408e2-680a-4287-9bd8-bffb95e60de2",
+    "target2_audio_id": "2d1ade29-3217-4e6a-bd0a-67a1e5718ba1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to see",
+    "target_text": "nismo se nadali da vidimo",
+    "known_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+    "target1_audio_id": "00b34340-d53b-4013-b5d5-0c255b532f69",
+    "target2_audio_id": "303b35d1-89d0-49ba-bbab-776cd61360d6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope to",
+    "target_text": "nismo se nadali da",
+    "known_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "target1_audio_id": "d11c08a0-e5ca-4a45-a986-29170ef68a63",
+    "target2_audio_id": "f2fd3096-600a-462e-b56a-cddebac26c58"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "srp_for_eng:S0108L01C03",
+   "set": {
+    "known_text": "\"hoped\"",
+    "target_text": "\"nadali\"",
+    "known_audio_id": "6f4f2f4a-62bd-4689-8a76-e6d2679fe393",
+    "target1_audio_id": "9ad6ff60-8d69-47ae-8f53-70a30463d073",
+    "target2_audio_id": "0887097a-08f4-40ef-afef-184e82ab2a2c"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "srp_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "\"self\"",
+    "target_text": "\"se\"",
+    "word_count": 4,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 1
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-07T12:40:24.590Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "d2c0a97f-076b-45a6-8ee8-46f66ac3237d",
+    "target1_audio_id": "39346cdd-f4fe-4fcf-b059-3b8fb574b8cb",
+    "target2_audio_id": "aff14a92-721c-4851-b0cd-2a267937bbcd",
+    "qa_checked": null,
+    "target1_duration_ms": 1368,
+    "target2_duration_ms": 1464,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": "4de8e74e-81c0-4975-8552-8ab62ca15afa",
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "\"se\"",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "42f39601-f980-4fb9-86d4-fcec3c6f2b53",
+   "set": {
+    "known_text": "we didn't hope to",
+    "target_text": "nismo se nadali da",
+    "components": [
+     {
+      "known": "\"we aren't\"",
+      "target": "\"nismo\""
+     },
+     {
+      "known": "\"self\"",
+      "target": "\"se\""
+     },
+     {
+      "known": "\"hoped\"",
+      "target": "\"nadali\""
+     },
+     {
+      "known": "\"to\"",
+      "target": "\"da\""
+     }
+    ],
+    "known_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "target1_audio_id": "d11c08a0-e5ca-4a45-a986-29170ef68a63",
+    "target2_audio_id": "f2fd3096-600a-462e-b56a-cddebac26c58",
+    "presentation_audio_id": "28e70284-08db-4110-8cc2-f567078bde5c"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nismo se nadali da ćemo se probuditi usred noći.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "883a94bd-8ce6-4557-ab1f-2ee14e301051",
+    "target2_audio_id": "69828f26-bbc2-44bc-967c-6da357fcf556"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

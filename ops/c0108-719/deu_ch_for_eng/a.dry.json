@@ -1,0 +1,300 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "6c2fc930-6243-4925-bbb0-86aa3b3ff455",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Mir händ nöd ghofft, mitts i de Nacht ufzwache.",
+    "known_audio_id": "e1cf80a1-4950-487a-985e-54641a6116de",
+    "target1_audio_id": "31b16597-4bce-4f64-95e0-57a5a73dbbc5",
+    "target2_audio_id": "e3661d92-35af-43be-aa4c-4ca610d2b8d7"
+   },
+   "after": {
+    "id": "6c2fc930-6243-4925-bbb0-86aa3b3ff455",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Mir händ nöd erwartet, mitts i de Nacht ufzwache.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "id": "deu_ch_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "deu_ch_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "mitts i de Nacht ufzwache",
+    "known_audio_id": "a6c55007-d3ab-4b77-a193-8533af75e36a",
+    "target1_audio_id": "b1e609db-36f9-4595-8799-e7e0acf67902",
+    "target2_audio_id": "dc308f9b-9ab1-4f1a-a765-9fc6b5c98a00",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_ch_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "mitts i de Nacht ufzwache",
+    "known_audio_id": null,
+    "target1_audio_id": "b1e609db-36f9-4595-8799-e7e0acf67902",
+    "target2_audio_id": "dc308f9b-9ab1-4f1a-a765-9fc6b5c98a00",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "id": "deu_ch_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "deu_ch_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mir händ nöd ghofft, mitts i de Nacht ufzwache",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "e1cf80a1-4950-487a-985e-54641a6116de",
+    "target1_audio_id": "31b16597-4bce-4f64-95e0-57a5a73dbbc5",
+    "target2_audio_id": "e3661d92-35af-43be-aa4c-4ca610d2b8d7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_ch_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mir händ nöd erwartet, mitts i de Nacht ufzwache",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "id": "deu_ch_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "deu_ch_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking in the middle of the night",
+    "target_text": "ich gnüsse s nöd, mitts i de Nacht ufzwache",
+    "known_audio_id": "7df3647e-bea4-4526-9b41-daef5b6a18c0",
+    "target1_audio_id": "44ad7e9b-119d-4665-8084-b58f348cd10e",
+    "target2_audio_id": "b79682d3-b09c-4e5d-97a2-9f4312f7eb47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_ch_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up in the middle of the night",
+    "target_text": "ich gnüsse s nöd, mitts i de Nacht ufzwache",
+    "known_audio_id": null,
+    "target1_audio_id": "44ad7e9b-119d-4665-8084-b58f348cd10e",
+    "target2_audio_id": "b79682d3-b09c-4e5d-97a2-9f4312f7eb47",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "id": "deu_ch_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "deu_ch_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she hoped not to wake in the middle of the night",
+    "target_text": "si hät ghofft, nöd mitts i de Nacht ufzwache",
+    "known_audio_id": "e53b5e9a-507e-4122-96eb-a73835fc1748",
+    "target1_audio_id": "86f07086-60b8-456a-bbd2-1d114eed464a",
+    "target2_audio_id": "cc0762bf-3229-4650-be06-47a90c3bb306",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_ch_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she hoped not to wake up in the middle of the night",
+    "target_text": "si hät ghofft, nöd mitts i de Nacht ufzwache",
+    "known_audio_id": null,
+    "target1_audio_id": "86f07086-60b8-456a-bbd2-1d114eed464a",
+    "target2_audio_id": "cc0762bf-3229-4650-be06-47a90c3bb306",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "id": "deu_ch_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "deu_ch_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to try not to wake in the middle of the night",
+    "target_text": "ich mues versueche, nöd mitts i de Nacht ufzwache",
+    "known_audio_id": "a1b67d77-861b-46fc-8b49-98aff1154d53",
+    "target1_audio_id": "91941ab9-6537-4b70-93df-9273383e71b3",
+    "target2_audio_id": "0df386bb-1179-4319-a32c-bff60d58cafa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_ch_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to try not to wake up in the middle of the night",
+    "target_text": "ich mues versueche, nöd mitts i de Nacht ufzwache",
+    "known_audio_id": null,
+    "target1_audio_id": "91941ab9-6537-4b70-93df-9273383e71b3",
+    "target2_audio_id": "0df386bb-1179-4319-a32c-bff60d58cafa",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_ch_for_eng",
+    "id": "deu_ch_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "deu_ch_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "you shouldn't wake in the middle of the night",
+    "target_text": "du sottsch nöd mitts i de Nacht ufzwache",
+    "known_audio_id": "69ed8388-8195-4ad7-b7b8-ece117dc1392",
+    "target1_audio_id": "cec175ee-0b16-44c6-99cc-2ff1a3b86a65",
+    "target2_audio_id": "d121365a-4f41-4c4c-a99a-ec84816dc9af",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_ch_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "you shouldn't wake up in the middle of the night",
+    "target_text": "du sottsch nöd mitts i de Nacht ufzwache",
+    "known_audio_id": null,
+    "target1_audio_id": "cec175ee-0b16-44c6-99cc-2ff1a3b86a65",
+    "target2_audio_id": "d121365a-4f41-4c4c-a99a-ec84816dc9af",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "you shouldn't wake in the middle of the night",
+    "known_audio_id": "69ed8388-8195-4ad7-b7b8-ece117dc1392"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I need to try not to wake in the middle of the night",
+    "known_audio_id": "a1b67d77-861b-46fc-8b49-98aff1154d53"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "she hoped not to wake in the middle of the night",
+    "known_audio_id": "e53b5e9a-507e-4122-96eb-a73835fc1748"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't enjoy waking in the middle of the night",
+    "known_audio_id": "7df3647e-bea4-4526-9b41-daef5b6a18c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "mir händ nöd ghofft, mitts i de Nacht ufzwache",
+    "known_audio_id": "e1cf80a1-4950-487a-985e-54641a6116de",
+    "target1_audio_id": "31b16597-4bce-4f64-95e0-57a5a73dbbc5",
+    "target2_audio_id": "e3661d92-35af-43be-aa4c-4ca610d2b8d7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "to wake in the middle of the night",
+    "known_audio_id": "a6c55007-d3ab-4b77-a193-8533af75e36a"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Mir händ nöd ghofft, mitts i de Nacht ufzwache.",
+    "known_audio_id": "e1cf80a1-4950-487a-985e-54641a6116de",
+    "target1_audio_id": "31b16597-4bce-4f64-95e0-57a5a73dbbc5",
+    "target2_audio_id": "e3661d92-35af-43be-aa4c-4ca610d2b8d7"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

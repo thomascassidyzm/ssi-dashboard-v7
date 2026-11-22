@@ -1,0 +1,27 @@
+{
+ "course": "fra_ca_for_eng",
+ "template": "The French for: '{X}', is:",
+ "intros": [
+  {
+   "lego_id": "S0108L01",
+   "why": "re-cut LEGO",
+   "old_text": "The French for: 'we didn't hope to', as in — 'we didn't hope to finish that quickly', is:",
+   "new_text": "The French for: 'we didn't expect to', as in — 'we didn't expect to finish that quickly', is:",
+   "needs_op": 0
+  },
+  {
+   "lego_id": "S0108L02",
+   "why": "intro quotes the old seed sentence (as-in context)",
+   "old_text": "The French for: 'to wake', as in — 'she said she didn't want to wake', is:",
+   "new_text": "The French for: 'to wake', as in — 'she said she didn't want to wake up', is:",
+   "needs_op": 16
+  }
+ ],
+ "skipped": [],
+ "kept": [
+  {
+   "lego_id": "S0108L03",
+   "why": "intro still names the LEGO's known words"
+  }
+ ]
+}

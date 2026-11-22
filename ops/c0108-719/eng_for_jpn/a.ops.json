@@ -1,0 +1,130 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "夜中に起きるとは思っていませんでした。",
+    "target_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいませんでした。",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "夜中に起きるとは思っていませんでした",
+    "components": [
+     {
+      "known": "夜中に",
+      "target": "in the middle of the night"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいませんでした",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02B01",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "夜中に起きるとは思っていませんでした"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいませんでした",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02B02",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "私たちは夜中に起きるとは思っていませんでした"
+   },
+   "expect": {
+    "known_text": "私たちは夜中に起きることを望んでいませんでした",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02B03",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night but we did",
+    "known_text": "夜中に起きるとは思っていませんでしたが、起きてしまいました"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいませんでしたが、起きてしまいました",
+    "target_text": "we didn't hope to wake in the middle of the night but we did"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U01",
+   "set": {
+    "target_text": "I know that we didn't expect to wake up in the middle of the night",
+    "known_text": "夜中に起きるとは思っていなかったことはわかっています"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいなかったことはわかっています",
+    "target_text": "I know that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U02",
+   "set": {
+    "target_text": "she told me that we didn't expect to wake up in the middle of the night",
+    "known_text": "彼女は夜中に起きるとは思っていなかったと私に言いました"
+   },
+   "expect": {
+    "known_text": "彼女は夜中に起きることを望んでいなかったと私に言いました",
+    "target_text": "she told me that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U03",
+   "set": {
+    "target_text": "I remember that we didn't expect to wake up in the middle of the night",
+    "known_text": "夜中に起きるとは思っていなかったことを覚えています"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいなかったことを覚えています",
+    "target_text": "I remember that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U04",
+   "set": {
+    "target_text": "I think that we didn't expect to wake up in the middle of the night",
+    "known_text": "夜中に起きるとは思っていなかったと思います"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいなかったと思います",
+    "target_text": "I think that we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_jpn:S0108L02U05",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night so we're very tired",
+    "known_text": "夜中に起きるとは思っていなかったので、とても疲れています"
+   },
+   "expect": {
+    "known_text": "夜中に起きることを望んでいなかったので、とても疲れています",
+    "target_text": "we didn't hope to wake in the middle of the night so we're very tired"
+   }
+  }
+ ]
+}

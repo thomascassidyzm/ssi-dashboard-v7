@@ -1,0 +1,30 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "לא ציפינו להתעורר באמצע הלילה.",
+    "target_text_roman": "lo tsipinu lehit'orer be'emtsa halayla."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "לא קיווינו להתעורר באמצע הלילה."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "heb_for_eng:S0108L02B03",
+   "set": {
+    "target_text": "לא ציפינו להתעורר באמצע הלילה",
+    "target_text_roman": "lo tsipinu lehit'orer be'emtsa halayla",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "לא קיווינו להתעורר באמצע הלילה"
+   }
+  }
+ ]
+}

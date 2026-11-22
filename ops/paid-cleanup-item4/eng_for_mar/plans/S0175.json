@@ -1,0 +1,41 @@
+{
+ "seed": 175,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "आम्हाला रविवारी सकाळी भेटायचं आहे",
+     "we need to meet on Sunday morning"
+    ],
+    "B03": [
+     "मी रविवारी सकाळी सराव करणार आहे",
+     "I'm going to practise on Sunday morning"
+    ],
+    "U05": [
+     "मला रविवारी सकाळी भेटायचं आहे",
+     "I want to meet on Sunday morning"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "U01": [
+     "तुम्हाला आज संध्याकाळी काय करायचं आहे?",
+     "what do you want to do this evening?"
+    ],
+    "U02": [
+     "आणि तुम्हाला काय करायचं आहे?",
+     "and what do you want to do?"
+    ],
+    "U03": [
+     "तुम्हाला आता काय करायचं आहे?",
+     "what do you want to do now?"
+    ]
+   },
+   "delete": [
+    "U05"
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L02: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (U05)"
+}

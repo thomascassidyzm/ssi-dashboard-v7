@@ -1,0 +1,72 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Við bjuggumst ekki við að vakna um miðja nótt."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Við vonuðum ekki að vakna um miðja nótt."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "vakna um miðja nótt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "við bjuggumst ekki við að vakna um miðja nótt",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "við vonuðum ekki að vakna um miðja nótt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "ég vil ekki vakna um miðja nótt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I'm going to try not to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I'm going to try not to wake in the middle of the night",
+    "target_text": "ég ætla að reyna að vakna ekki um miðja nótt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "isl_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we hoped not to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hoped not to wake in the middle of the night",
+    "target_text": "við vonuðum að vakna ekki um miðja nótt"
+   }
+  }
+ ]
+}

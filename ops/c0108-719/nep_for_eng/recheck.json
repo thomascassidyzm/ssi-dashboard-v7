@@ -1,0 +1,128 @@
+{
+ "course": "nep_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L02B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 2,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L02U02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 3,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L02U04",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 4,
+   "op": "lego.update",
+   "key": "S0108L03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 5,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03B01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 6,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 7,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 8,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 9,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03U02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 10,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03U03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 11,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03U04",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 12,
+   "op": "phrase.update",
+   "key": "nep_for_eng:S0108L03U05",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [
+  {
+   "key": "nep_for_eng:S0108L01B02",
+   "known": "in the middle of the night there was hope",
+   "target": "रातको बीचमा आशा थियो"
+  },
+  {
+   "key": "nep_for_eng:S0108L01U03",
+   "known": "I had hope in the middle of the night",
+   "target": "रातको बीचमा मलाई आशा थियो"
+  },
+  {
+   "key": "nep_for_eng:S0108L02U03",
+   "known": "waking in the middle of the night is hard",
+   "target": "रातको बीचमा ब्युँझने गाह्रो छ"
+  },
+  {
+   "key": "nep_for_eng:S0108L02U05",
+   "known": "he hopes to wake up",
+   "target": "ब्युँझने उसलाई आशा छ"
+  },
+  {
+   "key": "nep_for_eng:S0108L03C02",
+   "known": "hope",
+   "target": "आशा"
+  }
+ ],
+ "counts": {
+  "ok": 13
+ }
+}

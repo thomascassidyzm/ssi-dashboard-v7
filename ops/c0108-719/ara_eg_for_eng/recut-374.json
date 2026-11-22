@@ -1,0 +1,41 @@
+{
+ "_why": "cs #383·AI. After the C0108 re-cut, 'نتمنى' (we hope) is taught only at seed 108's old LEGO, which now says 'متوقعين' (we expect; Hinds & Badawi, A Dictionary of Egyptian Arabic, w-q-ʕ: itwaqqaʕ 'to expect'). Nine later rows still say 'we hope' / نتمنى and fail vocabulary. Re-saying them with متوقعين cannot pass the builder (the exact form is taught by no other LEGO, and each seed is validated without the 108 overlay; only 'متوقع' at S0112), and 'we hope' has no other taught Egyptian equivalent, so the nine rows are deleted (thin basket over a bad row, Kai 19 Nov). Basket sizes after: 9, 6, 15, 10, 9, 12, 13, 8, 32.",
+ "add": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0109L02U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0109L03U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0343L02U11"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0387L02U07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0428L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0482L01B05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0617L01U09"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0633L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0656L01U16"
+  }
+ ]
+}

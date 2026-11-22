@@ -1,0 +1,224 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "zho_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "d9cc0875-6e62-4cb2-8667-5c49af6982de",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我们没希望半夜醒来",
+    "target_text_roman": "wǒmen méi xīwàng bànyè xǐng lái.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "ef54e3ab-bd2e-40ef-a863-b9e603cdbf8e",
+    "target2_audio_id": "8d3050ed-6bc4-4e8c-81dd-17340c164682"
+   },
+   "after": {
+    "id": "d9cc0875-6e62-4cb2-8667-5c49af6982de",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "我们没想到会半夜醒来",
+    "target_text_roman": "wǒmen méi xiǎngdào huì bànyè xǐng lái",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0108L01B04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "wake at midnight",
+    "target_text": "半夜醒",
+    "known_audio_id": "379d9616-8908-495c-9877-7279a9de6422",
+    "target1_audio_id": "a8c3feb0-9b83-446a-9554-d545362615d3",
+    "target2_audio_id": "0ae27d21-6ed6-4d96-896d-85e034c96d71",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0108L01B04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "wake up at midnight",
+    "target_text": "半夜醒",
+    "known_audio_id": null,
+    "target1_audio_id": "a8c3feb0-9b83-446a-9554-d545362615d3",
+    "target2_audio_id": "0ae27d21-6ed6-4d96-896d-85e034c96d71",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "zho_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I originally hoped to sleep, not wake at midnight",
+    "target_text": "我本来希望睡，不是半夜醒",
+    "known_audio_id": "76d09f80-3cf6-428c-8fec-688a92301767",
+    "target1_audio_id": "dd4fcf50-9268-429d-a77f-1bda0e1e6af0",
+    "target2_audio_id": "27f026a7-91e4-4771-8d28-c06ed065b466",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I originally hoped to sleep, not wake up at midnight",
+    "target_text": "我本来希望睡，不是半夜醒",
+    "known_audio_id": null,
+    "target1_audio_id": "dd4fcf50-9268-429d-a77f-1bda0e1e6af0",
+    "target2_audio_id": "27f026a7-91e4-4771-8d28-c06ed065b466",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0108L01U07"
+   },
+   "before": {
+    "id": "zho_for_eng:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't feel happy when I wake at midnight",
+    "target_text": "我半夜醒时不觉得开心",
+    "known_audio_id": "33baa930-69bf-4dce-8e3c-55e5bc4ff4f7",
+    "target1_audio_id": "2fd17961-de55-4bcb-a16b-ada594e12642",
+    "target2_audio_id": "cbc87679-71dc-4e32-9fec-cbfaa05d329d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't feel happy when I wake up at midnight",
+    "target_text": "我半夜醒时不觉得开心",
+    "known_audio_id": null,
+    "target1_audio_id": "2fd17961-de55-4bcb-a16b-ada594e12642",
+    "target2_audio_id": "cbc87679-71dc-4e32-9fec-cbfaa05d329d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_eng",
+    "id": "zho_for_eng:S0108L01U09"
+   },
+   "before": {
+    "id": "zho_for_eng:S0108L01U09",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "我们没希望半夜醒来",
+    "target_text_roman": "wǒmen méi xīwàng bànyè xǐng lái.",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "ef54e3ab-bd2e-40ef-a863-b9e603cdbf8e",
+    "target2_audio_id": "8d3050ed-6bc4-4e8c-81dd-17340c164682",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_eng:S0108L01U09",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "我们没想到会半夜醒来",
+    "target_text_roman": "wǒmen méi xiǎngdào huì bànyè xǐng lái.",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01U09",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我们没希望半夜醒来",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "ef54e3ab-bd2e-40ef-a863-b9e603cdbf8e",
+    "target2_audio_id": "8d3050ed-6bc4-4e8c-81dd-17340c164682",
+    "target_text_roman": "wǒmen méi xīwàng bànyè xǐng lái."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01U07",
+   "set": {
+    "known_text": "I don't feel happy when I wake at midnight",
+    "known_audio_id": "33baa930-69bf-4dce-8e3c-55e5bc4ff4f7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "I originally hoped to sleep, not wake at midnight",
+    "known_audio_id": "76d09f80-3cf6-428c-8fec-688a92301767"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_eng:S0108L01B04",
+   "set": {
+    "known_text": "wake at midnight",
+    "known_audio_id": "379d9616-8908-495c-9877-7279a9de6422"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我们没希望半夜醒来",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "ef54e3ab-bd2e-40ef-a863-b9e603cdbf8e",
+    "target2_audio_id": "8d3050ed-6bc4-4e8c-81dd-17340c164682",
+    "target_text_roman": "wǒmen méi xīwàng bànyè xǐng lái."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

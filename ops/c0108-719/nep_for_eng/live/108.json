@@ -1,0 +1,2054 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "हामी रातको बीचमा ब्युँझने आशा राखेका थिएनौं।"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "रातको बीचमा",
+    "components": [
+     {
+      "known": "night's night",
+      "target": "रातको"
+     },
+     {
+      "known": "middle",
+      "target": "बीच"
+     },
+     {
+      "known": "in",
+      "target": "मा"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nep_for_eng:S0108L01C01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "night's night",
+     "target_text": "रातको",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 143,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": "32aaf55d-2bda-4f1a-a5b8-08ee3d8d1358",
+     "target2_audio_id": "ae80b153-0965-4311-b3e6-db64645cd894",
+     "qa_checked": null,
+     "target1_duration_ms": 1656,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "298bc7da-dde8-4a78-b88c-b50471a83442",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "रातको",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01C02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "middle",
+     "target_text": "बीच",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 143,
+     "updated_at": "2026-10-12T14:29:29.63188+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "e8668387-d783-4cd4-932d-64cb8da9f7b3",
+     "target2_audio_id": "33826e7c-b51c-44bd-8413-ff6854f78c30",
+     "qa_checked": null,
+     "target1_duration_ms": 1512,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "fba5ed6a-5c5a-4973-a159-8e830c075d8d",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "बीच",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "33019977-578f-4854-9bf9-bf160aa75aed",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01C03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "in",
+     "target_text": "मा",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 148,
+     "updated_at": "2026-10-12T16:30:50.877718+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+     "target1_audio_id": "edf98678-b1af-4f75-9d9a-a630aac2410f",
+     "target2_audio_id": "a1f57df0-c32a-4de1-8453-f970241924c7",
+     "qa_checked": null,
+     "target1_duration_ms": 1368,
+     "target2_duration_ms": 1368,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "d5732f1a-9fd3-4918-964e-5ae3690f8f14",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "मा",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01B01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "in the middle of the night",
+     "target_text": "रातको बीचमा",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 141,
+     "updated_at": "2026-10-12T16:57:18.467578+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "e8be18af-b32d-4697-8c6a-c614b808560d",
+     "target2_audio_id": "38b76c6a-9d23-42ac-9a35-0b07703689ca",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2c979755-0eee-4ed7-8c9e-7c5c6ef0a4ad",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01B02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "in the middle of the night there was hope",
+     "target_text": "रातको बीचमा आशा थियो",
+     "word_count": 20,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4f7178ce-452f-4b09-806c-7623503c048c",
+     "target1_audio_id": "2afaa253-e215-40d7-a0ad-4c815c5d6a5e",
+     "target2_audio_id": "822b1e5f-c736-4e33-9552-1b7862f0e100",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L02",
+       "target": " आशा",
+       "isGhost": false
+      },
+      {
+       "known": "was",
+       "legoId": "S0070L02",
+       "target": " थियो",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01B03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "in the middle of the night it happened",
+     "target_text": "रातको बीचमा भयो।",
+     "word_count": 16,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 139,
+     "updated_at": "2026-06-02T22:55:01.501623+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "af7741ac-b6bd-4d88-85ff-4a3fdc72e2f6",
+     "target1_audio_id": "7bbc9ecf-986f-48d1-8d7d-6f8c949a35f0",
+     "target2_audio_id": "748752bf-3aae-4f27-b049-64118e179497",
+     "qa_checked": null,
+     "target1_duration_ms": 2232,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "भयो",
+       "legoId": "S0093L03",
+       "target": " भयो।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01U01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "that happened in the middle of the night",
+     "target_text": "त्यो रातको बीचमा भयो।",
+     "word_count": 21,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.662Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ea8535dd-6660-4d65-a563-21d5d0f3c733",
+     "target1_audio_id": "08f27414-5f59-4f64-b797-94e08a9ee045",
+     "target2_audio_id": "ab324c91-68a2-42c2-bd8b-bce5da2f72a7",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0058L05",
+       "target": "त्यो",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": " रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "भयो",
+       "legoId": "S0093L03",
+       "target": " भयो।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01U02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "it was difficult in the middle of the night",
+     "target_text": "रातको बीचमा गाह्रो थियो",
+     "word_count": 23,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.662Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "41376871-d493-4e68-8376-7591950096ce",
+     "target1_audio_id": "b4a61056-71b0-49e4-962c-957e315acefa",
+     "target2_audio_id": "0dc39aa4-2123-4360-aed4-f63c3adc2455",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "difficult",
+       "legoId": "S0091L04",
+       "target": " गाह्रो",
+       "isGhost": false
+      },
+      {
+       "known": "was",
+       "legoId": "S0070L02",
+       "target": " थियो",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01U03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "I had hope in the middle of the night",
+     "target_text": "रातको बीचमा मलाई आशा थियो",
+     "word_count": 25,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.662Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "2f70f8ea-27b6-458b-8c48-738ed19dc868",
+     "target1_audio_id": "d819493b-8425-49e6-8e50-b0b7f12e67b9",
+     "target2_audio_id": "143e72ca-6e34-4e64-b401-c1204eeaf6c5",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to me",
+       "legoId": "S0055L04",
+       "target": " मलाई",
+       "isGhost": false
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L02",
+       "target": " आशा",
+       "isGhost": false
+      },
+      {
+       "known": "was",
+       "legoId": "S0070L02",
+       "target": " थियो",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L01U04",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "in the middle of the night he didn't know",
+     "target_text": "रातको बीचमा उसलाई थाहा थिएन",
+     "word_count": 27,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.662Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.753493+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ca5268f1-ee9c-45e2-9aa6-cfeef3e9f8c4",
+     "target1_audio_id": "19d7b07e-2e9a-4b7e-a6f9-73c92dd2eb3f",
+     "target2_audio_id": "4dcaa775-0583-4cd0-bcf6-857b44af191c",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "him him",
+       "legoId": "S0105L01",
+       "target": " उसलाई",
+       "isGhost": false
+      },
+      {
+       "known": "didn't know",
+       "legoId": "S0105L02",
+       "target": " थाहा थिएन",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "to wake up",
+    "target_text": "ब्युँझने",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nep_for_eng:S0108L02B01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "to wake up",
+     "target_text": "ब्युँझने",
+     "word_count": 8,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 120,
+     "updated_at": "2026-10-12T16:30:52.86086+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a10d4f59-3cf0-4071-80d7-930ac574949f",
+     "target1_audio_id": "497dae38-e199-4ab6-8092-ae3f4e434fe7",
+     "target2_audio_id": "de853631-b0e3-4762-ba12-e35f52361063",
+     "qa_checked": null,
+     "target1_duration_ms": 1608,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": "ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02B02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "wake up early",
+     "target_text": "चाँडो ब्युँझने",
+     "word_count": 14,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 139,
+     "updated_at": "2026-06-02T22:54:40.080785+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0077f952-b5c7-4321-bfbd-256b1552900c",
+     "target1_audio_id": "84fb0e04-b0c8-44da-93ca-bcbc591fadd6",
+     "target2_audio_id": "56de67b9-ceb0-4afd-aec3-7ccc44ce605e",
+     "qa_checked": null,
+     "target1_duration_ms": 1968,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "चाँडो",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": " ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02B03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "need to wake",
+     "target_text": "ब्युँझने जरूरी",
+     "word_count": 14,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 143,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "f252aebe-8c02-4a8c-acc1-84c6cb9ac9b9",
+     "target1_audio_id": "3380b8f1-1e95-4205-9f8c-163009738968",
+     "target2_audio_id": "7c7d4298-4d74-4d00-b527-c670b167b863",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": "ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "necessary",
+       "legoId": "S0104L01",
+       "target": " जरूरी",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02U01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "I want to wake up early",
+     "target_text": "चाँडो ब्युँझने मन लाग्छ",
+     "word_count": 23,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.775Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 139,
+     "updated_at": "2026-06-02T22:54:59.330077+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6f51560f-c17d-46e6-ad88-c6add30fcb0c",
+     "target1_audio_id": "2374eb38-fdc6-4d2c-9914-bc9e0f1d5ee0",
+     "target2_audio_id": "5b99488c-8451-4bdb-b5e9-312560303fe0",
+     "qa_checked": null,
+     "target1_duration_ms": 2472,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "चाँडो",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": " ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " मन",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " लाग्छ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02U02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "I need to wake in the morning",
+     "target_text": "बिहान ब्युँझने जरूरी छ",
+     "word_count": 22,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.775Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "39a658bb-6fc9-4d47-b5b3-7ed467feb2d0",
+     "target1_audio_id": "a8488bf0-83dd-4669-a144-c07c0ec30231",
+     "target2_audio_id": "35740aad-78cc-4379-930d-04f086b8858e",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "morning",
+       "legoId": "S0039L02",
+       "target": "बिहान",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": " ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "necessary",
+       "legoId": "S0104L01",
+       "target": " जरूरी",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " छ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02U03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "waking in the middle of the night is hard",
+     "target_text": "रातको बीचमा ब्युँझने गाह्रो छ",
+     "word_count": 29,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.775Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 139,
+     "updated_at": "2026-06-02T22:55:02.705882+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c14410fc-03fe-4463-8a0e-0f3dc206af8a",
+     "target1_audio_id": "31c5e667-194c-49b0-b72b-99a037706cfb",
+     "target2_audio_id": "9a3cf25d-01c8-410b-b5f9-5b9d1351ddb0",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2976,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "रातको बीचमा",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": " ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "difficult",
+       "legoId": "S0091L04",
+       "target": " गाह्रो",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " छ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02U04",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "I hope to wake early",
+     "target_text": "चाँडो ब्युँझने आशा छ",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.775Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7efe5519-6346-4dad-9f25-699b4292d124",
+     "target1_audio_id": "bc8a0790-e875-4159-a98d-8ce112fbd592",
+     "target2_audio_id": "587b99d1-303e-4778-9a82-b2fe522e4066",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "चाँडो",
+       "isGhost": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": " ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L02",
+       "target": " आशा",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " छ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L02U05",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "he hopes to wake up",
+     "target_text": "ब्युँझने उसलाई आशा छ",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.775Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.864885+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a733905c-4614-41d0-a842-e17d9532481a",
+     "target1_audio_id": "81c4c22e-ff98-49c0-8c75-a55f8539f1a2",
+     "target2_audio_id": "73a2831d-68ce-4727-8144-66d756aae0e1",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2448,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to wake up",
+       "legoId": "S0108L02",
+       "target": "ब्युँझने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "him him",
+       "legoId": "S0105L01",
+       "target": " उसलाई",
+       "isGhost": false
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L02",
+       "target": " आशा",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " छ",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "we didn't hope to",
+    "target_text": "हामी आशा राखेका थिएनौं।",
+    "components": [
+     {
+      "known": "we",
+      "target": "हामी"
+     },
+     {
+      "known": "hope",
+      "target": "आशा"
+     },
+     {
+      "known": "kept",
+      "target": "राखेका"
+     },
+     {
+      "known": "were not",
+      "target": "थिएनौं।"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nep_for_eng:S0108L03C01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "we",
+     "target_text": "हामी",
+     "word_count": 6,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-10-12T16:30:50.877718+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "a24754eb-201f-4b12-bf11-32b2ab328248",
+     "target1_audio_id": "b30815e2-0e43-4a95-984c-3c76cdea9ceb",
+     "target2_audio_id": "db00df53-e049-422f-9e5f-dac1510e4455",
+     "qa_checked": null,
+     "target1_duration_ms": 1512,
+     "target2_duration_ms": 1512,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "fc9756b3-240f-438b-ac8b-2cb9534d5e4d",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "हामी",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03C02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "hope",
+     "target_text": "आशा",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 145,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+     "target1_audio_id": "bc021d14-9798-4176-aa06-5d9a6cc784ca",
+     "target2_audio_id": "4ae65feb-24e1-40a9-a196-81e1baa80a9a",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1440,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "44c5f81a-f5be-4731-9832-6fcad33c810c",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "hope",
+       "legoId": "S0107L02",
+       "target": "आशा",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "252b0c54-83e5-417a-857d-0fd66ba7399d",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03C03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "kept",
+     "target_text": "राखेका",
+     "word_count": 8,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 2
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 144,
+     "updated_at": "2026-10-13T17:17:15.592681+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": null,
+     "target1_audio_id": "6d525336-d91b-4db1-8d86-d0dd4fe05867",
+     "target2_audio_id": "b6071b12-3e9e-45a4-92b6-45565de8315c",
+     "qa_checked": null,
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "7d64743f-8ba2-4761-9df8-fbf2b58f3971",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "राखेका",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03C04",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "were not",
+     "target_text": "थिएनौं।",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 3
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 142,
+     "updated_at": "2026-06-02T22:54:53.367587+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "10ec0a18-e70c-4667-b8f1-c28c829f2610",
+     "target1_audio_id": "1efd3ec4-ecbe-48d9-b42d-a29b37a87d68",
+     "target2_audio_id": "b1f8b5a5-8bac-4951-9dd7-2f1adec7f3f4",
+     "qa_checked": null,
+     "target1_duration_ms": 1584,
+     "target2_duration_ms": 1584,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "076a7122-d757-4caa-98ad-31b0e0a08e62",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "थिएनौं।",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03B01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "we didn't hope to",
+     "target_text": "हामी आशा राखेका थिएनौं।",
+     "word_count": 23,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 142,
+     "updated_at": "2026-10-12T16:30:50.877718+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+     "target1_audio_id": "ae1b750b-bceb-4936-bd57-2f43dd1f398e",
+     "target2_audio_id": "791a1ecb-6f9d-4f20-9f00-3e0f30eb870b",
+     "qa_checked": null,
+     "target1_duration_ms": 2664,
+     "target2_duration_ms": 2592,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी आशा राखेका थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03B02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "we didn't hope to wake",
+     "target_text": "हामी ब्युँझने आशा राखेका थिएनौं।",
+     "word_count": 32,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 141,
+     "updated_at": "2026-10-12T18:41:38.147535+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+     "target1_audio_id": "1a99ab3e-83cb-4168-b9a7-2f4e12ee5ce0",
+     "target2_audio_id": "bdbdbb29-fd81-49c5-a89d-ce213cdc1c16",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3024,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ब्युँझने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "2c979755-0eee-4ed7-8c9e-7c5c6ef0a4ad",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03B03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "we didn't hope to see",
+     "target_text": "हामी हेर्ने आशा राखेका थिएनौं।",
+     "word_count": 30,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 143,
+     "updated_at": "2026-10-12T16:30:50.877718+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+     "target1_audio_id": "65b31902-eff8-45f2-89a3-31d7c8dcd6db",
+     "target2_audio_id": "2d45735f-5871-4690-832f-fd0dc97d3f17",
+     "qa_checked": null,
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " हेर्ने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03U01",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "हामी रातको बीचमा ब्युँझने आशा राखेका थिएनौं।",
+     "word_count": 44,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.889Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 142,
+     "updated_at": "2026-10-12T16:30:53.968875+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "1a66d5ce-a4de-4256-9466-d46af87255ba",
+     "target2_audio_id": "24c776f7-f0b5-4faf-97a9-0c9746b10645",
+     "qa_checked": null,
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " रातको",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " बीचमा",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ब्युँझने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "c2e01a91-e6e9-445b-8631-fd4d1d60d7ca",
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03U02",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "we didn't hope to work at night",
+     "target_text": "हामी रातको बीचमा काम गर्ने आशा राखेका थिएनौं।",
+     "word_count": 45,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.889Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-06-02T23:33:59.458426+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "00cc04f6-390d-4c67-9043-9d3873cb6d51",
+     "target1_audio_id": "bd15f044-1a20-42bb-94e4-58921a9d5dd6",
+     "target2_audio_id": "97c55c6d-d804-409f-89e7-957487f6ab84",
+     "qa_checked": null,
+     "target1_duration_ms": 4104,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " रातको",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " बीचमा",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " काम",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " गर्ने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03U03",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 10,
+     "known_text": "we didn't hope to hear that",
+     "target_text": "हामी त्यो सुन्ने आशा राखेका थिएनौं।",
+     "word_count": 35,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.889Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-06-02T23:33:59.508304+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "a97fd02a-ca7b-4545-bf6c-bf8aaf91656d",
+     "target1_audio_id": "167fbe32-b33f-4810-9520-0e406775e85e",
+     "target2_audio_id": "e0e0d600-094a-4137-9895-ce45bc734fe4",
+     "qa_checked": null,
+     "target1_duration_ms": 3240,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " त्यो",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " सुन्ने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03U04",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "we didn't hope to see more",
+     "target_text": "हामी अझ बढी हेर्ने आशा राखेका थिएनौं।",
+     "word_count": 37,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.889Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-06-02T23:33:59.527155+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "f2a1eb0f-dc9e-403f-8a7b-9aba1c82e813",
+     "target1_audio_id": "252be5d0-c09a-4b25-ad33-848b39fc73ce",
+     "target2_audio_id": "3a6e100e-dc44-4a9a-95ac-31f049d04068",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " अझ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " बढी",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " हेर्ने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nep_for_eng:S0108L03U05",
+     "course_code": "nep_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "we didn't hope to work more",
+     "target_text": "हामी अझ बढी काम गर्ने आशा राखेका थिएनौं।",
+     "word_count": 40,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "scored_at": "2026-04-12T20:26:09.889Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 140,
+     "updated_at": "2026-06-02T23:33:59.862198+00:00",
+     "created_at": "2026-04-12T20:26:09.980302+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "28089073-2404-490c-953f-909c0bc5f076",
+     "target1_audio_id": "738c88c8-2a46-4ff2-9868-5b20347f9354",
+     "target2_audio_id": "36b8bb1e-0c46-4a4e-b63d-8dda0ab5226c",
+     "qa_checked": null,
+     "target1_duration_ms": 3816,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we didn't hope to",
+       "legoId": "S0108L03",
+       "target": "हामी",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " अझ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " बढी",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " काम",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " गर्ने",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " आशा",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " राखेका",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": "S0108L03",
+       "target": " थिएनौं।",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

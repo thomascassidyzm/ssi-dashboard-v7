@@ -1,0 +1,33 @@
+{
+ "seed": 182,
+ "legos": {
+  "L01": {
+   "update": {
+    "U03": [
+     "आज संध्याकाळी तुम्ही माझ्या चाव्या कुठे पाहिल्या का?",
+     "have you seen my keys anywhere this evening?"
+    ],
+    "U04": [
+     "पण तुम्ही माझ्या चाव्या कुठे पाहिल्या का?",
+     "but have you seen my keys anywhere?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही इथे माझ्या चाव्या कुठे पाहिल्या का?",
+     "have you seen my keys anywhere here?"
+    ],
+    [
+     "use",
+     "आज दुपारी तुम्ही माझ्या चाव्या कुठे पाहिल्या का?",
+     "have you seen my keys anywhere this afternoon?"
+    ]
+   ],
+   "delete": [
+    "B01"
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L01: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (bare-LEGO B01)"
+}

@@ -1,0 +1,223 @@
+{
+ "ops": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 2,
+    "known_text": "expected",
+    "target_text": "erwaart",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02B01",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "expected",
+    "target_text": "erwaart",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02B02",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "I expected",
+    "target_text": "ich hab erwaart",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 15,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02B03",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "we expected",
+    "target_text": "mir hen erwaart",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 15,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02B04",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "we didn't expect",
+    "target_text": "mir hen net erwaart",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 19,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02U01",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "I expected to speak",
+    "target_text": "ich hab erwaart fer schwetze",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 28,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02U02",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "we expected to wake up",
+    "target_text": "mir hen erwaart fer uffwache",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 28,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02U03",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "I expected to speak in the middle of the night",
+    "target_text": "ich hab erwaart fer schwetze in der Mitt vun der Nacht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 54,
+    "lego_count": 11
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02U04",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "we expected to wake up in the middle of the night",
+    "target_text": "mir hen erwaart fer uffwache in der Mitt vun der Nacht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 54,
+    "lego_count": 11
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "pdc_for_eng:S0108L02U05",
+    "course_code": "pdc_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "we didn't expect to speak in the middle of the night",
+    "target_text": "mir hen net erwaart fer schwetze in der Mitt vun der Nacht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 58,
+    "lego_count": 12
+   }
+  }
+ ]
+}

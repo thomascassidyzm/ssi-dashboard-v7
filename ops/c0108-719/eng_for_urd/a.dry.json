@@ -1,0 +1,788 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "e80263df-59f7-4d27-8661-40264217de53",
+    "seed_number": 108,
+    "known_text": "ہم رات کے درمیان میں جاگنے کی امید نہیں رکھتے تھے۔",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "b6798615-8810-4584-8a2e-fe6304388ded",
+    "target1_audio_id": "a164daf5-fda6-41d6-9ed2-5706a8af03d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "e80263df-59f7-4d27-8661-40264217de53",
+    "seed_number": 108,
+    "known_text": "ہمیں رات کے وسط میں جاگنے کی توقع نہیں تھی۔",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake at night",
+    "known_text": "رات کو جاگنا",
+    "known_audio_id": "7884d81a-eabb-4403-85c4-7e6f50bbb90d",
+    "target1_audio_id": "72e2b1a7-0568-4705-b90b-1ad431044648",
+    "target2_audio_id": "1bb99bf7-b362-4c8a-8a28-d0281ba73d46",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake up at night",
+    "known_text": "رات کو جاگنا",
+    "known_audio_id": "7884d81a-eabb-4403-85c4-7e6f50bbb90d",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L01U01"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake at night",
+    "known_text": "میں رات کو جاگنا نہیں چاہتا",
+    "known_audio_id": "6c13b7d5-7be6-4d22-9c50-94b25242c77c",
+    "target1_audio_id": "bbc17d54-db97-47ff-bc74-cda5513c3965",
+    "target2_audio_id": "eafd02a9-44af-497a-a468-1bd7aa36cfa4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake up at night",
+    "known_text": "میں رات کو جاگنا نہیں چاہتا",
+    "known_audio_id": "6c13b7d5-7be6-4d22-9c50-94b25242c77c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "1598cf03-a8f5-4173-956a-285949c2afe6",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "hope",
+    "known_text": "امید ہے",
+    "known_audio_id": "a9ec68c0-96ce-4655-92ad-d85b9c47146c",
+    "target1_audio_id": "bc8672ed-107a-41a2-8e04-47cb568bc416",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "bcf3dc58-2622-4dac-9a0e-95bbbcb49a84"
+   },
+   "after": {
+    "id": "1598cf03-a8f5-4173-956a-285949c2afe6",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "expect",
+    "known_text": "توقع ہے",
+    "known_audio_id": null,
+    "target1_audio_id": "47712fcc-1c96-4fb6-9172-f67ce8132b7b",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "hope to see",
+    "known_text": "امید ہے دیکھنا",
+    "known_audio_id": "de7d81b7-7b21-4a99-bb2c-881aa24167f5",
+    "target1_audio_id": "bb54f8ee-558c-4df8-b460-7fe70800ffb0",
+    "target2_audio_id": "22057d76-9818-4387-97dc-6bbcdae55a9c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "expect to see",
+    "known_text": "دیکھنے کی توقع ہے",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "hope to learn",
+    "known_text": "امید ہے سیکھنا",
+    "known_audio_id": "e825f6b0-10c5-4b4f-aed0-06b01e5d4d62",
+    "target1_audio_id": "cef47c4f-7a8d-456a-857d-d1da6aed7b43",
+    "target2_audio_id": "b7f41a0e-d114-4c96-a932-3dc43d42dd6d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "expect to learn",
+    "known_text": "سیکھنے کی توقع ہے",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "hope to hear",
+    "known_text": "امید ہے سننا",
+    "known_audio_id": "d92d5312-ddf9-45e0-9154-93104f778f18",
+    "target1_audio_id": "c5314b5e-41ce-49a2-aaa2-69388654208d",
+    "target2_audio_id": "cb76a862-b3b0-4d74-bf74-4d35d977c4e7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "expect to hear",
+    "known_text": "سننے کی توقع ہے",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I hope that you are ready",
+    "known_text": "مجھے امید ہے کہ آپ تیار ہیں",
+    "known_audio_id": "a14a2b8c-c352-466b-aad7-e0ddfc00dc26",
+    "target1_audio_id": "1e6ad6a6-7364-4b57-8e75-56287860e04c",
+    "target2_audio_id": "934ced02-c4f1-4b47-a9ed-11dccfe935c9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I expect that you are ready",
+    "known_text": "مجھے توقع ہے کہ آپ تیار ہیں",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we don't hope to wake at night",
+    "known_text": "ہم امید نہیں کرتے کہ رات کو جاگیں گے",
+    "known_audio_id": "a8e50f54-142a-473b-8bd4-d0de334a70de",
+    "target1_audio_id": "3ceabe0a-bced-459d-bc4c-d528dffabe64",
+    "target2_audio_id": "97bf4827-19d2-4c61-9553-ffd103b2a711",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we don't expect to wake up at night",
+    "known_text": "ہمیں توقع نہیں کہ رات کو جاگیں گے",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I hope that it will work",
+    "known_text": "مجھے امید ہے کہ یہ کام کرے گا",
+    "known_audio_id": "13475cb2-eaca-4dcd-a4f9-389d0f064f0a",
+    "target1_audio_id": "26af7f73-78a5-45b0-8912-f7ce946add42",
+    "target2_audio_id": "fda8d609-c491-415c-a8ec-73670cdfef54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I expect that it will work",
+    "known_text": "مجھے توقع ہے کہ یہ کام کرے گا",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "do you hope?",
+    "known_text": "کیا آپ کو امید ہے؟",
+    "known_audio_id": "f7d636c4-96f2-42f5-aa93-f80abba51f8b",
+    "target1_audio_id": "9102cd00-4207-4547-bd4f-36b1aa633233",
+    "target2_audio_id": "8026ca86-e76c-4f82-a249-bff1b15430e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "do you expect it?",
+    "known_text": "کیا آپ کو اس کی توقع ہے؟",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I hope that this language is easy",
+    "known_text": "مجھے امید ہے کہ یہ زبان آسان ہے",
+    "known_audio_id": "0b815687-6156-466a-b8dc-41fae70a70f1",
+    "target1_audio_id": "c7eddecf-51f6-41f7-a9e8-16e1f8f011d6",
+    "target2_audio_id": "6ccca34e-ff7b-446e-8981-b3e21bb02f82",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I expect that this language is easy",
+    "known_text": "مجھے توقع ہے کہ یہ زبان آسان ہے",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L03B02"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wake in the middle of the night",
+    "known_text": "رات کے وسط میں جاگنا",
+    "known_audio_id": "a6427c87-e52c-4ef3-afa3-da3d051a395a",
+    "target1_audio_id": "d0d85a4d-57b7-4ead-99bf-84b74c0eb010",
+    "target2_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wake up in the middle of the night",
+    "known_text": "رات کے وسط میں جاگنا",
+    "known_audio_id": "a6427c87-e52c-4ef3-afa3-da3d051a395a",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L03B04"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "hope in the middle of the night",
+    "known_text": "رات کے وسط میں امید ہے",
+    "known_audio_id": "4cf070a8-c558-46f7-8173-10d6b03e64d2",
+    "target1_audio_id": "a812a1c8-fd91-4775-9795-19a8a876b8d2",
+    "target2_audio_id": "4440b408-3698-4c9e-8b0e-ddf05a567ef0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "expect in the middle of the night",
+    "known_text": "رات کے وسط میں توقع ہے",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L03U01"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "ہم رات کے وسط میں جاگنے کی امید نہیں کی تھی",
+    "known_audio_id": "3c59cbe7-4926-498a-9524-4d415b8aaea5",
+    "target1_audio_id": "a164daf5-fda6-41d6-9ed2-5706a8af03d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "ہمیں رات کے وسط میں جاگنے کی توقع نہیں تھی",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L03U02"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I don't want to wake in the middle of the night",
+    "known_text": "میں رات کے وسط میں نہیں جاگنا چاہتا",
+    "known_audio_id": "6f03733d-8a76-4b14-8719-eb788c2f0d0e",
+    "target1_audio_id": "6649ea52-9c2b-4947-b70f-c5e35b7064ac",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I don't want to wake up in the middle of the night",
+    "known_text": "میں رات کے وسط میں نہیں جاگنا چاہتا",
+    "known_audio_id": "6f03733d-8a76-4b14-8719-eb788c2f0d0e",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L03U03"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "it's difficult to wake in the middle of the night",
+    "known_text": "رات کے وسط میں جاگنا مشکل ہے",
+    "known_audio_id": "409f44e6-cce2-4af7-9285-f71dc9149aef",
+    "target1_audio_id": "cdf2196b-2720-4440-b6ba-9ae041536cc6",
+    "target2_audio_id": "6a945bb8-6707-4998-8a05-95747f691868",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "it's difficult to wake up in the middle of the night",
+    "known_text": "رات کے وسط میں جاگنا مشکل ہے",
+    "known_audio_id": "409f44e6-cce2-4af7-9285-f71dc9149aef",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_urd",
+    "id": "eng_for_urd:S0108L03U05"
+   },
+   "before": {
+    "id": "eng_for_urd:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "do you wake in the middle of the night?",
+    "known_text": "کیا آپ رات کے وسط میں جاگتے ہیں؟",
+    "known_audio_id": "1bab9d02-4f5f-4a76-b3c1-cca8384cfa00",
+    "target1_audio_id": "439d7840-0c01-488a-bb00-9b63b7973d0c",
+    "target2_audio_id": "24f3c3aa-f4fa-4656-83ef-df5ef5aef06d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_urd:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "do you wake up in the middle of the night?",
+    "known_text": "کیا آپ رات کے وسط میں جاگتے ہیں؟",
+    "known_audio_id": "1bab9d02-4f5f-4a76-b3c1-cca8384cfa00",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U05",
+   "set": {
+    "target_text": "do you wake in the middle of the night?",
+    "target1_audio_id": "439d7840-0c01-488a-bb00-9b63b7973d0c",
+    "target2_audio_id": "24f3c3aa-f4fa-4656-83ef-df5ef5aef06d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U03",
+   "set": {
+    "target_text": "it's difficult to wake in the middle of the night",
+    "target1_audio_id": "cdf2196b-2720-4440-b6ba-9ae041536cc6",
+    "target2_audio_id": "6a945bb8-6707-4998-8a05-95747f691868"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U02",
+   "set": {
+    "target_text": "I don't want to wake in the middle of the night",
+    "target1_audio_id": "6649ea52-9c2b-4947-b70f-c5e35b7064ac",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U01",
+   "set": {
+    "known_text": "ہم رات کے وسط میں جاگنے کی امید نہیں کی تھی",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "3c59cbe7-4926-498a-9524-4d415b8aaea5",
+    "target1_audio_id": "a164daf5-fda6-41d6-9ed2-5706a8af03d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03B04",
+   "set": {
+    "known_text": "رات کے وسط میں امید ہے",
+    "target_text": "hope in the middle of the night",
+    "known_audio_id": "4cf070a8-c558-46f7-8173-10d6b03e64d2",
+    "target1_audio_id": "a812a1c8-fd91-4775-9795-19a8a876b8d2",
+    "target2_audio_id": "4440b408-3698-4c9e-8b0e-ddf05a567ef0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03B02",
+   "set": {
+    "target_text": "wake in the middle of the night",
+    "target1_audio_id": "d0d85a4d-57b7-4ead-99bf-84b74c0eb010",
+    "target2_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U05",
+   "set": {
+    "known_text": "مجھے امید ہے کہ یہ زبان آسان ہے",
+    "target_text": "I hope that this language is easy",
+    "known_audio_id": "0b815687-6156-466a-b8dc-41fae70a70f1",
+    "target1_audio_id": "c7eddecf-51f6-41f7-a9e8-16e1f8f011d6",
+    "target2_audio_id": "6ccca34e-ff7b-446e-8981-b3e21bb02f82"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U04",
+   "set": {
+    "known_text": "کیا آپ کو امید ہے؟",
+    "target_text": "do you hope?",
+    "known_audio_id": "f7d636c4-96f2-42f5-aa93-f80abba51f8b",
+    "target1_audio_id": "9102cd00-4207-4547-bd4f-36b1aa633233",
+    "target2_audio_id": "8026ca86-e76c-4f82-a249-bff1b15430e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U03",
+   "set": {
+    "known_text": "مجھے امید ہے کہ یہ کام کرے گا",
+    "target_text": "I hope that it will work",
+    "known_audio_id": "13475cb2-eaca-4dcd-a4f9-389d0f064f0a",
+    "target1_audio_id": "26af7f73-78a5-45b0-8912-f7ce946add42",
+    "target2_audio_id": "fda8d609-c491-415c-a8ec-73670cdfef54"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U02",
+   "set": {
+    "known_text": "ہم امید نہیں کرتے کہ رات کو جاگیں گے",
+    "target_text": "we don't hope to wake at night",
+    "known_audio_id": "a8e50f54-142a-473b-8bd4-d0de334a70de",
+    "target1_audio_id": "3ceabe0a-bced-459d-bc4c-d528dffabe64",
+    "target2_audio_id": "97bf4827-19d2-4c61-9553-ffd103b2a711"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U01",
+   "set": {
+    "known_text": "مجھے امید ہے کہ آپ تیار ہیں",
+    "target_text": "I hope that you are ready",
+    "known_audio_id": "a14a2b8c-c352-466b-aad7-e0ddfc00dc26",
+    "target1_audio_id": "1e6ad6a6-7364-4b57-8e75-56287860e04c",
+    "target2_audio_id": "934ced02-c4f1-4b47-a9ed-11dccfe935c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02B03",
+   "set": {
+    "known_text": "امید ہے سننا",
+    "target_text": "hope to hear",
+    "known_audio_id": "d92d5312-ddf9-45e0-9154-93104f778f18",
+    "target1_audio_id": "c5314b5e-41ce-49a2-aaa2-69388654208d",
+    "target2_audio_id": "cb76a862-b3b0-4d74-bf74-4d35d977c4e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02B02",
+   "set": {
+    "known_text": "امید ہے سیکھنا",
+    "target_text": "hope to learn",
+    "known_audio_id": "e825f6b0-10c5-4b4f-aed0-06b01e5d4d62",
+    "target1_audio_id": "cef47c4f-7a8d-456a-857d-d1da6aed7b43",
+    "target2_audio_id": "b7f41a0e-d114-4c96-a932-3dc43d42dd6d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02B01",
+   "set": {
+    "known_text": "امید ہے دیکھنا",
+    "target_text": "hope to see",
+    "known_audio_id": "de7d81b7-7b21-4a99-bb2c-881aa24167f5",
+    "target1_audio_id": "bb54f8ee-558c-4df8-b460-7fe70800ffb0",
+    "target2_audio_id": "22057d76-9818-4387-97dc-6bbcdae55a9c"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "1598cf03-a8f5-4173-956a-285949c2afe6",
+   "set": {
+    "known_text": "امید ہے",
+    "target_text": "hope",
+    "known_audio_id": "a9ec68c0-96ce-4655-92ad-d85b9c47146c",
+    "target1_audio_id": "bc8672ed-107a-41a2-8e04-47cb568bc416",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "bcf3dc58-2622-4dac-9a0e-95bbbcb49a84"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L01U01",
+   "set": {
+    "target_text": "I don't want to wake at night",
+    "target1_audio_id": "bbc17d54-db97-47ff-bc74-cda5513c3965",
+    "target2_audio_id": "eafd02a9-44af-497a-a468-1bd7aa36cfa4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L01B02",
+   "set": {
+    "target_text": "wake at night",
+    "target1_audio_id": "72e2b1a7-0568-4705-b90b-1ad431044648",
+    "target2_audio_id": "1bb99bf7-b362-4c8a-8a28-d0281ba73d46"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "ہم رات کے درمیان میں جاگنے کی امید نہیں رکھتے تھے۔",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "b6798615-8810-4584-8a2e-fe6304388ded",
+    "target1_audio_id": "a164daf5-fda6-41d6-9ed2-5706a8af03d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -6,18 +6,6 @@
     "B02": [
      "मला वाटतं ते छान आहे",
      "I think that's great"
-    ],
-    "B04": [
-     "मला वाटतं ते शक्य आहे",
-     "I think that's possible"
-    ],
-    "U04": [
-     "मला वाटतं तो सर्वात चांगला पर्याय आहे",
-     "I think that's the best choice"
-    ],
-    "U05": [
-     "मला वाटतं ती त्याची बॅग आहे",
-     "I think that's his bag"
     ]
    }
   },
@@ -47,8 +35,11 @@
      "शक्य तितक्या वेळा सराव करणं ही चांगली कल्पना आहे",
      "it's a good idea to practise as often as possible"
     ]
-   }
+   },
+   "delete": [
+    "U01"
+   ]
   }
  },
- "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+ "notes": "cs #708·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L01: B04/U04/U05 edited 18 Nov by another job (4966a3f3 / no event): our rewrites dropped (collision, left alone) | #358 L02: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (U01)"
 }

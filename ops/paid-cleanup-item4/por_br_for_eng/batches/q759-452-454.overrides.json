@@ -1,0 +1,422 @@
+[
+ {
+  "seed_number": 452,
+  "phrases": {
+   "452:1": [
+    {
+     "known_text": "they",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "said",
+     "target_text": "disseram",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they didn't say",
+     "target_text": "eles não disseram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they didn't say so",
+     "target_text": "eles não disseram isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they didn't say anything",
+     "target_text": "eles não disseram nada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they didn't say why",
+     "target_text": "eles não disseram por que",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they still didn't say",
+     "target_text": "eles ainda não disseram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they didn't say when",
+     "target_text": "eles não disseram quando",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they didn't say where they were",
+     "target_text": "eles não disseram onde estavam",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they didn't say what the problem was",
+     "target_text": "eles não disseram qual era o problema",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they didn't say it could be done",
+     "target_text": "eles não disseram que podia ser feito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they didn't say what they wanted to do",
+     "target_text": "eles não disseram o que queriam fazer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they didn't say where",
+     "target_text": "eles não disseram onde",
+     "phrase_role": "build"
+    }
+   ],
+   "452:2": [],
+   "452:3": []
+  }
+ },
+ {
+  "seed_number": 453,
+  "phrases": {
+   "453:1": [
+    {
+     "known_text": "they",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "said",
+     "target_text": "disseram",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "did they say",
+     "target_text": "eles disseram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did they say so",
+     "target_text": "eles disseram isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did they say when?",
+     "target_text": "eles disseram quando?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did they say why?",
+     "target_text": "eles disseram por que?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did they say where?",
+     "target_text": "eles disseram onde?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did they say what they wanted?",
+     "target_text": "eles disseram o que queriam?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did they say it was difficult?",
+     "target_text": "eles disseram que era difícil?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did they say something?",
+     "target_text": "eles disseram algo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did they say who?",
+     "target_text": "eles disseram quem?",
+     "phrase_role": "build"
+    }
+   ],
+   "453:2": [
+    {
+     "known_text": "who",
+     "target_text": "quem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they saw",
+     "target_text": "viram",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "who they saw",
+     "target_text": "quem viram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "did they say who they saw",
+     "target_text": "eles disseram quem viram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know who they saw",
+     "target_text": "sei quem viram",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they didn't say who they saw",
+     "target_text": "eles não disseram quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "nobody knows who they saw",
+     "target_text": "ninguém sabe quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to know who they saw",
+     "target_text": "quero saber quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know who they saw",
+     "target_text": "não sei quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to know who they saw",
+     "target_text": "ela quer saber quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he is going to ask who they saw",
+     "target_text": "ele vai perguntar quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to remember who they saw",
+     "target_text": "estou tentando me lembrar de quem viram",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "did they say who they saw last night?",
+     "target_text": "eles disseram quem viram ontem à noite?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "who they saw there",
+     "target_text": "quem viram lá",
+     "phrase_role": "build"
+    }
+   ],
+   "453:3": []
+  }
+ },
+ {
+  "seed_number": 454,
+  "phrases": {
+   "454:1": [
+    {
+     "known_text": "our",
+     "target_text": "nossos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "friends",
+     "target_text": "amigos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "our friends",
+     "target_text": "nossos amigos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "with our friends",
+     "target_text": "com nossos amigos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "our friends from school",
+     "target_text": "nossos amigos da escola",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we're going to see our friends",
+     "target_text": "vamos ver nossos amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends speak Portuguese",
+     "target_text": "nossos amigos falam português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends want to come",
+     "target_text": "nossos amigos querem vir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends are going to help us",
+     "target_text": "nossos amigos vão nos ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends are here",
+     "target_text": "nossos amigos estão aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends are trying to help me",
+     "target_text": "nossos amigos estão tentando me ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we hoped to see our friends",
+     "target_text": "nós esperávamos ver nossos amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a problem with our friends",
+     "target_text": "há um problema com nossos amigos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends like to travel",
+     "target_text": "nossos amigos gostam de viajar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "all our friends",
+     "target_text": "todos os nossos amigos",
+     "phrase_role": "build"
+    }
+   ],
+   "454:2": [
+    {
+     "known_text": "came",
+     "target_text": "vieram",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "round",
+     "target_text": "aqui",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "came round",
+     "target_text": "vieram aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "our friends came round",
+     "target_text": "nossos amigos vieram aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they came round yesterday",
+     "target_text": "eles vieram aqui ontem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my friends came round last night",
+     "target_text": "meus amigos vieram aqui ontem à noite",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came round on Saturday",
+     "target_text": "eles vieram aqui no sábado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came round",
+     "target_text": "eles vieram aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "our friends came round to help",
+     "target_text": "nossos amigos vieram aqui para ajudar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came round after the meal",
+     "target_text": "eles vieram aqui depois da refeição",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came round last week",
+     "target_text": "eles vieram aqui na semana passada",
+     "phrase_role": "build"
+    }
+   ],
+   "454:3": [
+    {
+     "known_text": "around",
+     "target_text": "por volta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of the",
+     "target_text": "das",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "six",
+     "target_text": "seis",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "at about six o'clock",
+     "target_text": "por volta das seis",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "at about six o'clock this evening",
+     "target_text": "por volta das seis da tarde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "tomorrow at about six o'clock",
+     "target_text": "amanhã por volta das seis",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "our friends came round at about six o'clock",
+     "target_text": "nossos amigos vieram aqui por volta das seis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's meet at about six o'clock",
+     "target_text": "vamos nos encontrar por volta das seis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'll be ready at about six o'clock",
+     "target_text": "vou estar pronto por volta das seis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I woke up at about six o'clock",
+     "target_text": "eu acordei por volta das seis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came round at about six o'clock",
+     "target_text": "eles vieram aqui por volta das seis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think that our friends came round at about six o'clock",
+     "target_text": "acho que nossos amigos vieram aqui por volta das seis",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "on Saturday at about six o'clock",
+     "target_text": "no sábado por volta das seis",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

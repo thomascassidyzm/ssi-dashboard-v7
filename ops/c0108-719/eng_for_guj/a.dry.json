@@ -1,0 +1,1195 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "2374b272-f2cb-4c37-9e36-cc63521b14a8",
+    "seed_number": 108,
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવાની આશા નહોતી રાખી.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "4fa730ca-6f22-44fd-af8e-ce5da7d78bea",
+    "target1_audio_id": "ff06491d-da61-4381-bd34-ad529a64fc1d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "2374b272-f2cb-4c37-9e36-cc63521b14a8",
+    "seed_number": 108,
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવાની અપેક્ષા નહોતી રાખી.",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "17fbb6c8-947c-4997-bfb7-39ac94642206",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "wake",
+    "known_text": "ઊઠવા",
+    "known_audio_id": "69eb6e29-0311-40dd-ac3c-487f9d097303",
+    "target1_audio_id": "dba7a16e-05ed-4f79-a7d0-62f07f8d479d",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "9203b58a-28b8-4232-8668-2af5e316e7fa"
+   },
+   "after": {
+    "id": "17fbb6c8-947c-4997-bfb7-39ac94642206",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "wake up",
+    "known_text": "ઊઠવા",
+    "known_audio_id": "69eb6e29-0311-40dd-ac3c-487f9d097303",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01B01"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake",
+    "known_text": "ઊઠવા",
+    "known_audio_id": "69eb6e29-0311-40dd-ac3c-487f9d097303",
+    "target1_audio_id": "dba7a16e-05ed-4f79-a7d0-62f07f8d479d",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake up",
+    "known_text": "ઊઠવા",
+    "known_audio_id": "69eb6e29-0311-40dd-ac3c-487f9d097303",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I want to wake",
+    "known_text": "હું ઊઠવા માગું છું",
+    "known_audio_id": "83557804-24d6-440b-844f-e60bf14291ef",
+    "target1_audio_id": "bfc1eb5a-4e9f-493b-a5b4-696ca26e1ef3",
+    "target2_audio_id": "10553005-d141-4fa3-8656-0609ff8b0311",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I want to wake up",
+    "known_text": "હું ઊઠવા માગું છું",
+    "known_audio_id": "83557804-24d6-440b-844f-e60bf14291ef",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01B03"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm going to wake",
+    "known_text": "હું ઊઠવા જઈ રહ્યો છું",
+    "known_audio_id": "c8041755-82c8-47e1-91e0-f5e0cf17f38f",
+    "target1_audio_id": "88932e6c-7bfe-4c4f-8fb7-b868cc260f52",
+    "target2_audio_id": "d05014fa-c7dd-4611-b702-599d2fe17e0b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm going to wake up",
+    "known_text": "હું ઊઠવા જઈ રહ્યો છું",
+    "known_audio_id": "c8041755-82c8-47e1-91e0-f5e0cf17f38f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01U01"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake",
+    "known_text": "હું ઊઠવા માગતો નથી",
+    "known_audio_id": "825d5f90-cd77-432d-a1b4-91605c88592b",
+    "target1_audio_id": "2a955198-a3a2-438a-ae46-03cf051edd09",
+    "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake up",
+    "known_text": "હું ઊઠવા માગતો નથી",
+    "known_audio_id": "825d5f90-cd77-432d-a1b4-91605c88592b",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01U02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm trying to wake",
+    "known_text": "હું ઊઠવાની કોશિશ કરી રહ્યો છું",
+    "known_audio_id": "a73c2a9c-c644-43f3-83b5-52c708e61528",
+    "target1_audio_id": "6da95e49-3746-46f9-bba9-ea97c1274aa7",
+    "target2_audio_id": "20de5753-3ca6-402a-bc16-3287ff675a2d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm trying to wake up",
+    "known_text": "હું ઊઠવાની કોશિશ કરી રહ્યો છું",
+    "known_audio_id": "a73c2a9c-c644-43f3-83b5-52c708e61528",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01U03"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "when do you want to wake?",
+    "known_text": "તમે ક્યારે ઊઠવા માગો છો?",
+    "known_audio_id": "1ec5cdbd-7e3f-48ef-ae20-4cbd2babf41c",
+    "target1_audio_id": "c7f37e01-3b51-44b7-a056-31e0b03ca47c",
+    "target2_audio_id": "7aab7cd0-d447-4243-9d6c-e6e424b0ea3e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "when do you want to wake up?",
+    "known_text": "તમે ક્યારે ઊઠવા માગો છો?",
+    "known_audio_id": "1ec5cdbd-7e3f-48ef-ae20-4cbd2babf41c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01U04"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he didn't want to wake",
+    "known_text": "એ ઊઠવા માગતો ન’તો",
+    "known_audio_id": "45a9efd3-2e1d-4803-81de-550d688c8c05",
+    "target1_audio_id": "b1052943-0ab8-4630-9a84-e8287cff26fa",
+    "target2_audio_id": "92fe6ec5-1863-4399-8e2e-f02563619103",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he didn't want to wake up",
+    "known_text": "એ ઊઠવા માગતો ન’તો",
+    "known_audio_id": "45a9efd3-2e1d-4803-81de-550d688c8c05",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L01U05"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I started to wake",
+    "known_text": "હું ઊઠવા લાગ્યો",
+    "known_audio_id": "5f1484a0-c761-41bf-8c44-de8ebaba66e6",
+    "target1_audio_id": "9d86377d-f5b7-4739-bb9e-04b786e79424",
+    "target2_audio_id": "365ed86c-d84e-4353-80e0-454337d1d071",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I started to wake up",
+    "known_text": "હું ઊઠવા લાગ્યો",
+    "known_audio_id": "5f1484a0-c761-41bf-8c44-de8ebaba66e6",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I want to wake in the middle of the night",
+    "known_text": "હું રાત્રે વચ્ચે ઊઠવા માગું છું",
+    "known_audio_id": "6b343fde-331a-44b1-9029-58984d801b78",
+    "target1_audio_id": "54a418be-724d-4cca-ac57-bf0144e11f6c",
+    "target2_audio_id": "e366fc15-83aa-4b33-9898-42c0c3cfba36",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I want to wake up in the middle of the night",
+    "known_text": "હું રાત્રે વચ્ચે ઊઠવા માગું છું",
+    "known_audio_id": "6b343fde-331a-44b1-9029-58984d801b78",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I'm trying to wake in the middle of the night",
+    "known_text": "હું રાત્રે વચ્ચે ઊઠવાની કોશિશ કરી રહ્યો છું",
+    "known_audio_id": "d53a4404-7fa5-4049-84d1-4ca82dded05f",
+    "target1_audio_id": "e20ca615-0366-40cd-85b5-6df29d256108",
+    "target2_audio_id": "e5650663-036b-46c8-b976-b2272beaf002",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I'm trying to wake up in the middle of the night",
+    "known_text": "હું રાત્રે વચ્ચે ઊઠવાની કોશિશ કરી રહ્યો છું",
+    "known_audio_id": "d53a4404-7fa5-4049-84d1-4ca82dded05f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake in the middle of the night",
+    "known_text": "હું રાત્રે વચ્ચે ઊઠવા માગતો નથી",
+    "known_audio_id": "50228555-09cf-4295-93a3-e9e011b01c49",
+    "target1_audio_id": "f01313c6-8451-4410-b48a-41e3a63210ee",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I don't want to wake up in the middle of the night",
+    "known_text": "હું રાત્રે વચ્ચે ઊઠવા માગતો નથી",
+    "known_audio_id": "50228555-09cf-4295-93a3-e9e011b01c49",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "he didn't want to wake in the middle of the night",
+    "known_text": "એ રાત્રે વચ્ચે ઊઠવા માગતો ન’તો",
+    "known_audio_id": "ed26107e-2954-4fd3-8847-642b09105aa7",
+    "target1_audio_id": "9875ebfe-9bfd-4cbc-ab7e-fae52cb6196c",
+    "target2_audio_id": "195ecd71-2243-49c5-934a-29082b6d3342",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "he didn't want to wake up in the middle of the night",
+    "known_text": "એ રાત્રે વચ્ચે ઊઠવા માગતો ન’તો",
+    "known_audio_id": "ed26107e-2954-4fd3-8847-642b09105aa7",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we don't want to wake in the middle of the night",
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવા માગતા નથી",
+    "known_audio_id": "80e3b983-c21d-41bb-b0b9-e2eae46958bd",
+    "target1_audio_id": "885b5d24-4ce8-47c9-8b68-bad72feb2ae3",
+    "target2_audio_id": "4a059abf-1ee1-4bb2-9e72-6bab51dbfdf3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we don't want to wake up in the middle of the night",
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવા માગતા નથી",
+    "known_audio_id": "80e3b983-c21d-41bb-b0b9-e2eae46958bd",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "she didn't want to wake in the middle of the night",
+    "known_text": "એ રાત્રે વચ્ચે ઊઠવા માગતી ન’તી",
+    "known_audio_id": "91c1b86f-a02c-42c4-ac85-957f88302145",
+    "target1_audio_id": "bda15251-ca50-40c0-bd98-fc89247660d4",
+    "target2_audio_id": "ff49f813-866e-453d-8c41-c3ba517bb538",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "she didn't want to wake up in the middle of the night",
+    "known_text": "એ રાત્રે વચ્ચે ઊઠવા માગતી ન’તી",
+    "known_audio_id": "91c1b86f-a02c-42c4-ac85-957f88302145",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "do you want to wake in the middle of the night?",
+    "known_text": "તમે રાત્રે વચ્ચે ઊઠવા માગો છો?",
+    "known_audio_id": "d0d3dee0-2060-4fad-9197-a60bec3b3382",
+    "target1_audio_id": "f2eb93d6-d05a-489b-a3c7-8dcff86f96c6",
+    "target2_audio_id": "09be7e35-39d6-44a1-9cff-e347eb90d241",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "do you want to wake up in the middle of the night?",
+    "known_text": "તમે રાત્રે વચ્ચે ઊઠવા માગો છો?",
+    "known_audio_id": "d0d3dee0-2060-4fad-9197-a60bec3b3382",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "4a9e9a2f-3efe-492a-9ee6-370440af993f",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "we didn't hope to",
+    "known_text": "અમે આશા નહોતી રાખી",
+    "components": [
+     {
+      "known": "અમે",
+      "target": "we"
+     },
+     {
+      "known": "આશા નહોતી રાખી",
+      "target": "didn't hope to"
+     }
+    ],
+    "known_audio_id": "5ee2b613-2992-427e-b4ef-3482581f9c3e",
+    "target1_audio_id": "164db9ad-af50-4431-a191-33205d363d58",
+    "target2_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "presentation_audio_id": "6d14039a-4b70-4f00-a066-65c00fe88e8c"
+   },
+   "after": {
+    "id": "4a9e9a2f-3efe-492a-9ee6-370440af993f",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "we didn't expect to",
+    "known_text": "અમે અપેક્ષા નહોતી રાખી",
+    "components": [
+     {
+      "known": "અમે",
+      "target": "we"
+     },
+     {
+      "known": "અપેક્ષા નહોતી રાખી",
+      "target": "didn't expect to"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03B01"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to",
+    "known_text": "અમે આશા નહોતી રાખી",
+    "known_audio_id": "5ee2b613-2992-427e-b4ef-3482581f9c3e",
+    "target1_audio_id": "164db9ad-af50-4431-a191-33205d363d58",
+    "target2_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to",
+    "known_text": "અમે અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03B02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake",
+    "known_text": "અમે ઊઠવાની આશા નહોતી રાખી",
+    "known_audio_id": "9f2cf1bb-dee5-4848-9c52-9ee8d8167f80",
+    "target1_audio_id": "8113958a-9403-48c5-b804-c43ffd8823a1",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "અમે ઊઠવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03B03"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to speak",
+    "known_text": "અમે બોલવાની આશા નહોતી રાખી",
+    "known_audio_id": "0b849297-31e4-44cd-89be-250b49222f4d",
+    "target1_audio_id": "dd0272ba-fca8-45e6-ad2e-7f707da9558e",
+    "target2_audio_id": "a6fe0459-23cb-4be6-a361-f5f454b83697",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to speak",
+    "known_text": "અમે બોલવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03C02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03C02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "didn't hope to",
+    "known_text": "આશા નહોતી રાખી",
+    "known_audio_id": "92c92fec-e8a8-47b1-946b-424734e5a859",
+    "target1_audio_id": "cae9196a-e033-44b2-9be1-4a5a630919de",
+    "target2_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03C02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "didn't expect to",
+    "known_text": "અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03U01"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવાની આશા નહોતી રાખી",
+    "known_audio_id": "4fa730ca-6f22-44fd-af8e-ce5da7d78bea",
+    "target1_audio_id": "ff06491d-da61-4381-bd34-ad529a64fc1d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03U02"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to speak English",
+    "known_text": "અમે અંગ્રેજી બોલવાની આશા નહોતી રાખી",
+    "known_audio_id": "9b7b9873-9aab-4988-8476-9e976665adef",
+    "target1_audio_id": "443e61b9-8bfc-4e7a-b45e-2ecaf699dc7a",
+    "target2_audio_id": "c5c4e453-63e2-4018-b012-e7cc2c061bb1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to speak English",
+    "known_text": "અમે અંગ્રેજી બોલવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03U03"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to learn this",
+    "known_text": "અમે આ શીખવાની આશા નહોતી રાખી",
+    "known_audio_id": "45507b85-c0a6-406b-8c48-08855f2470c9",
+    "target1_audio_id": "01d76411-a9c2-45d6-9259-da08830a65b4",
+    "target2_audio_id": "6a04c958-6932-4ee1-b9dd-520e1d2e6d1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to learn this",
+    "known_text": "અમે આ શીખવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03U04"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to practise speaking",
+    "known_text": "અમે બોલવાની પ્રેક્ટિસ કરવાની આશા નહોતી રાખી",
+    "known_audio_id": "c867acf6-fb5d-4e39-909a-462bb06ad010",
+    "target1_audio_id": "c5b50d4b-4387-4d2b-b236-2ad842534282",
+    "target2_audio_id": "0b36233a-f5fe-4a03-98f0-9edccbaf3b0e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to practise speaking",
+    "known_text": "અમે બોલવાની પ્રેક્ટિસ કરવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_guj",
+    "id": "eng_for_guj:S0108L03U05"
+   },
+   "before": {
+    "id": "eng_for_guj:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to find the answer",
+    "known_text": "અમે જવાબ શોધવાની આશા નહોતી રાખી",
+    "known_audio_id": "16013164-c5e8-4fa3-be90-a6db913d6183",
+    "target1_audio_id": "2f722c9e-7488-47b7-b232-897e9a33fd69",
+    "target2_audio_id": "218ba731-4934-439f-9858-6c549f716a70",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_guj:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to find the answer",
+    "known_text": "અમે જવાબ શોધવાની અપેક્ષા નહોતી રાખી",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03U05",
+   "set": {
+    "known_text": "અમે જવાબ શોધવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to find the answer",
+    "known_audio_id": "16013164-c5e8-4fa3-be90-a6db913d6183",
+    "target1_audio_id": "2f722c9e-7488-47b7-b232-897e9a33fd69",
+    "target2_audio_id": "218ba731-4934-439f-9858-6c549f716a70"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03U04",
+   "set": {
+    "known_text": "અમે બોલવાની પ્રેક્ટિસ કરવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to practise speaking",
+    "known_audio_id": "c867acf6-fb5d-4e39-909a-462bb06ad010",
+    "target1_audio_id": "c5b50d4b-4387-4d2b-b236-2ad842534282",
+    "target2_audio_id": "0b36233a-f5fe-4a03-98f0-9edccbaf3b0e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03U03",
+   "set": {
+    "known_text": "અમે આ શીખવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to learn this",
+    "known_audio_id": "45507b85-c0a6-406b-8c48-08855f2470c9",
+    "target1_audio_id": "01d76411-a9c2-45d6-9259-da08830a65b4",
+    "target2_audio_id": "6a04c958-6932-4ee1-b9dd-520e1d2e6d1b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03U02",
+   "set": {
+    "known_text": "અમે અંગ્રેજી બોલવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to speak English",
+    "known_audio_id": "9b7b9873-9aab-4988-8476-9e976665adef",
+    "target1_audio_id": "443e61b9-8bfc-4e7a-b45e-2ecaf699dc7a",
+    "target2_audio_id": "c5c4e453-63e2-4018-b012-e7cc2c061bb1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03U01",
+   "set": {
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "4fa730ca-6f22-44fd-af8e-ce5da7d78bea",
+    "target1_audio_id": "ff06491d-da61-4381-bd34-ad529a64fc1d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03C02",
+   "set": {
+    "known_text": "આશા નહોતી રાખી",
+    "target_text": "didn't hope to",
+    "known_audio_id": "92c92fec-e8a8-47b1-946b-424734e5a859",
+    "target1_audio_id": "cae9196a-e033-44b2-9be1-4a5a630919de",
+    "target2_audio_id": "64a8c765-6d84-4c97-80a3-a3b05367fb5f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03B03",
+   "set": {
+    "known_text": "અમે બોલવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to speak",
+    "known_audio_id": "0b849297-31e4-44cd-89be-250b49222f4d",
+    "target1_audio_id": "dd0272ba-fca8-45e6-ad2e-7f707da9558e",
+    "target2_audio_id": "a6fe0459-23cb-4be6-a361-f5f454b83697"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03B02",
+   "set": {
+    "known_text": "અમે ઊઠવાની આશા નહોતી રાખી",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "9f2cf1bb-dee5-4848-9c52-9ee8d8167f80",
+    "target1_audio_id": "8113958a-9403-48c5-b804-c43ffd8823a1",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L03B01",
+   "set": {
+    "known_text": "અમે આશા નહોતી રાખી",
+    "target_text": "we didn't hope to",
+    "known_audio_id": "5ee2b613-2992-427e-b4ef-3482581f9c3e",
+    "target1_audio_id": "164db9ad-af50-4431-a191-33205d363d58",
+    "target2_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4a9e9a2f-3efe-492a-9ee6-370440af993f",
+   "set": {
+    "known_text": "અમે આશા નહોતી રાખી",
+    "target_text": "we didn't hope to",
+    "components": [
+     {
+      "known": "અમે",
+      "target": "we"
+     },
+     {
+      "known": "આશા નહોતી રાખી",
+      "target": "didn't hope to"
+     }
+    ],
+    "known_audio_id": "5ee2b613-2992-427e-b4ef-3482581f9c3e",
+    "target1_audio_id": "164db9ad-af50-4431-a191-33205d363d58",
+    "target2_audio_id": "6f1e1257-ac75-4c78-9d2f-047d3a834709",
+    "presentation_audio_id": "6d14039a-4b70-4f00-a066-65c00fe88e8c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02U05",
+   "set": {
+    "target_text": "do you want to wake in the middle of the night?",
+    "target1_audio_id": "f2eb93d6-d05a-489b-a3c7-8dcff86f96c6",
+    "target2_audio_id": "09be7e35-39d6-44a1-9cff-e347eb90d241"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02U04",
+   "set": {
+    "target_text": "she didn't want to wake in the middle of the night",
+    "target1_audio_id": "bda15251-ca50-40c0-bd98-fc89247660d4",
+    "target2_audio_id": "ff49f813-866e-453d-8c41-c3ba517bb538"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02U03",
+   "set": {
+    "target_text": "we don't want to wake in the middle of the night",
+    "target1_audio_id": "885b5d24-4ce8-47c9-8b68-bad72feb2ae3",
+    "target2_audio_id": "4a059abf-1ee1-4bb2-9e72-6bab51dbfdf3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02U02",
+   "set": {
+    "target_text": "he didn't want to wake in the middle of the night",
+    "target1_audio_id": "9875ebfe-9bfd-4cbc-ab7e-fae52cb6196c",
+    "target2_audio_id": "195ecd71-2243-49c5-934a-29082b6d3342"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02U01",
+   "set": {
+    "target_text": "I don't want to wake in the middle of the night",
+    "target1_audio_id": "f01313c6-8451-4410-b48a-41e3a63210ee",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02B03",
+   "set": {
+    "target_text": "I'm trying to wake in the middle of the night",
+    "target1_audio_id": "e20ca615-0366-40cd-85b5-6df29d256108",
+    "target2_audio_id": "e5650663-036b-46c8-b976-b2272beaf002"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L02B02",
+   "set": {
+    "target_text": "I want to wake in the middle of the night",
+    "target1_audio_id": "54a418be-724d-4cca-ac57-bf0144e11f6c",
+    "target2_audio_id": "e366fc15-83aa-4b33-9898-42c0c3cfba36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01U05",
+   "set": {
+    "target_text": "I started to wake",
+    "target1_audio_id": "9d86377d-f5b7-4739-bb9e-04b786e79424",
+    "target2_audio_id": "365ed86c-d84e-4353-80e0-454337d1d071"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01U04",
+   "set": {
+    "target_text": "he didn't want to wake",
+    "target1_audio_id": "b1052943-0ab8-4630-9a84-e8287cff26fa",
+    "target2_audio_id": "92fe6ec5-1863-4399-8e2e-f02563619103"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01U03",
+   "set": {
+    "target_text": "when do you want to wake?",
+    "target1_audio_id": "c7f37e01-3b51-44b7-a056-31e0b03ca47c",
+    "target2_audio_id": "7aab7cd0-d447-4243-9d6c-e6e424b0ea3e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01U02",
+   "set": {
+    "target_text": "I'm trying to wake",
+    "target1_audio_id": "6da95e49-3746-46f9-bba9-ea97c1274aa7",
+    "target2_audio_id": "20de5753-3ca6-402a-bc16-3287ff675a2d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01U01",
+   "set": {
+    "target_text": "I don't want to wake",
+    "target1_audio_id": "2a955198-a3a2-438a-ae46-03cf051edd09",
+    "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01B03",
+   "set": {
+    "target_text": "I'm going to wake",
+    "target1_audio_id": "88932e6c-7bfe-4c4f-8fb7-b868cc260f52",
+    "target2_audio_id": "d05014fa-c7dd-4611-b702-599d2fe17e0b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01B02",
+   "set": {
+    "target_text": "I want to wake",
+    "target1_audio_id": "bfc1eb5a-4e9f-493b-a5b4-696ca26e1ef3",
+    "target2_audio_id": "10553005-d141-4fa3-8656-0609ff8b0311"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_guj:S0108L01B01",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "dba7a16e-05ed-4f79-a7d0-62f07f8d479d",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "17fbb6c8-947c-4997-bfb7-39ac94642206",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "dba7a16e-05ed-4f79-a7d0-62f07f8d479d",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "9203b58a-28b8-4232-8668-2af5e316e7fa"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "અમે રાત્રે વચ્ચે ઊઠવાની આશા નહોતી રાખી.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "4fa730ca-6f22-44fd-af8e-ce5da7d78bea",
+    "target1_audio_id": "ff06491d-da61-4381-bd34-ad529a64fc1d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

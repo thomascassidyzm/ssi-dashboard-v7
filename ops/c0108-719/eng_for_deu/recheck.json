@@ -1,0 +1,95 @@
+{
+ "course": "eng_for_deu",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "lego.update",
+   "key": "S0108L02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 2,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02B01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 3,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 4,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 5,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02B04",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 6,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 7,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02U02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 8,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02U03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 9,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02U04",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 10,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L02U05",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 11,
+   "op": "phrase.update",
+   "key": "eng_for_deu:S0108L03B02",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [],
+ "counts": {
+  "ok": 12
+ }
+}

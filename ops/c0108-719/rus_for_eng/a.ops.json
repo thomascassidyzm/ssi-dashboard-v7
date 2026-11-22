@@ -1,0 +1,87 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Мы не ожидали просыпаться посреди ночи.",
+    "target_text_roman": "my ne ozhidali prosypatsya posredi nochi."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Мы не надеялись просыпаться посреди ночи."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "rus_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "wake up in the middle"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "просыпаться посреди"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "rus_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I don't like waking up in the middle"
+   },
+   "expect": {
+    "known_text": "I don't like waking in the middle",
+    "target_text": "Мне не нравится просыпаться посреди"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "rus_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "Мы не ожидали просыпаться посреди",
+    "target_text_roman": "my ne ozhidali prosypatsya posredi",
+    "known_text": "we didn't expect to wake up in the middle"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up in the middle",
+    "target_text": "Мы не надеялись просыпаться посреди"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "rus_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "in the middle of the night we wake up"
+   },
+   "expect": {
+    "known_text": "in the middle of the night we wake",
+    "target_text": "посреди ночи просыпаться"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "rus_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "Мы не ожидали просыпаться посреди ночи",
+    "target_text_roman": "my ne ozhidali prosypatsya posredi nochi",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Мы не надеялись просыпаться посреди ночи"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "rus_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't like waking up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't like waking in the middle of the night",
+    "target_text": "Мне не нравится просыпаться посреди ночи"
+   }
+  }
+ ]
+}

@@ -1,0 +1,608 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0444L02B04",
+    "seed_number": 444,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "they thought it was interesting",
+    "target_text": "eles achavam que era interessante",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0444L03B04",
+    "seed_number": 444,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "he said it could be done",
+    "target_text": "ele disse que podia ser feito",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0444L04B04",
+    "seed_number": 444,
+    "lego_index": 4,
+    "position": 11,
+    "known_text": "to do it in a different way",
+    "target_text": "fazer isso de forma diferente",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0444L05B04",
+    "seed_number": 444,
+    "lego_index": 5,
+    "position": 13,
+    "known_text": "more efficient than",
+    "target_text": "mais eficiente do que",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0445L01B04",
+    "seed_number": 445,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "they will be able to speak",
+    "target_text": "eles vão conseguir falar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0445L02B04",
+    "seed_number": 445,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "to carry everything",
+    "target_text": "carregar tudo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0445L03B04",
+    "seed_number": 445,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "to open that suitcase",
+    "target_text": "abrir aquela mala",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L02B03",
+   "expect": {
+    "known_text": "yes, they thought",
+    "target_text": "sim, eles achavam"
+   },
+   "set": {
+    "known_text": "they thought that it was easy",
+    "target_text": "eles achavam que era fácil",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L02U01",
+   "expect": {
+    "known_text": "no, they thought",
+    "target_text": "não, eles achavam"
+   },
+   "set": {
+    "known_text": "they thought that I was tired",
+    "target_text": "eles achavam que eu estava cansado",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L02U03",
+   "expect": {
+    "known_text": "that's true, they thought",
+    "target_text": "isso é verdade, eles achavam"
+   },
+   "set": {
+    "known_text": "they thought it was a good idea",
+    "target_text": "eles achavam que era uma boa ideia",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L02U04",
+   "expect": {
+    "known_text": "yes, they still thought",
+    "target_text": "sim, eles ainda achavam"
+   },
+   "set": {
+    "known_text": "they thought it was too difficult",
+    "target_text": "eles achavam que era difícil demais",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L02U05",
+   "expect": {
+    "known_text": "I'm sure they thought",
+    "target_text": "tenho certeza, eles achavam"
+   },
+   "set": {
+    "known_text": "they thought she was busy",
+    "target_text": "eles achavam que ela estava ocupada",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L03B03",
+   "expect": {
+    "known_text": "yes, it could be done",
+    "target_text": "sim, que podia ser feito"
+   },
+   "set": {
+    "known_text": "I thought it could be done",
+    "target_text": "achei que podia ser feito",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L03U01",
+   "expect": {
+    "known_text": "no, it could be done",
+    "target_text": "não, que podia ser feito"
+   },
+   "set": {
+    "known_text": "she said it could be done",
+    "target_text": "ela disse que podia ser feito",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L03U02",
+   "expect": {
+    "known_text": "that's true, it could be done",
+    "target_text": "isso é verdade, que podia ser feito"
+   },
+   "set": {
+    "known_text": "I didn't know it could be done",
+    "target_text": "eu não sabia que podia ser feito",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L03U05",
+   "expect": {
+    "known_text": "I'm sure it could be done",
+    "target_text": "tenho certeza, que podia ser feito"
+   },
+   "set": {
+    "known_text": "I was sure it could be done",
+    "target_text": "eu tinha certeza de que podia ser feito",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L04B03",
+   "expect": {
+    "known_text": "yes, in a way",
+    "target_text": "sim, de forma"
+   },
+   "set": {
+    "known_text": "in a different way",
+    "target_text": "de forma diferente",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L04U01",
+   "expect": {
+    "known_text": "no, in a way",
+    "target_text": "não, de forma"
+   },
+   "set": {
+    "known_text": "they thought it could be done in a different way",
+    "target_text": "eles achavam que podia ser feito de forma diferente",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L04U02",
+   "expect": {
+    "known_text": "that's true, in a way",
+    "target_text": "isso é verdade, de forma"
+   },
+   "set": {
+    "known_text": "I want to do it in a different way",
+    "target_text": "quero fazer isso de forma diferente",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L04U03",
+   "expect": {
+    "known_text": "they thought it could be done in a way",
+    "target_text": "eles achavam que podia ser feito de forma"
+   },
+   "set": {
+    "known_text": "she speaks in a different way",
+    "target_text": "ela fala de forma diferente",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L04U04",
+   "expect": {
+    "known_text": "yes, it could be done in a way",
+    "target_text": "sim, que podia ser feito de forma"
+   },
+   "set": {
+    "known_text": "we need to do it in a different way",
+    "target_text": "nós precisamos fazer isso de forma diferente",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L04U05",
+   "expect": {
+    "known_text": "I'm sure, in a way",
+    "target_text": "tenho certeza, de forma"
+   },
+   "set": {
+    "known_text": "he speaks Portuguese in an interesting way",
+    "target_text": "ele fala português de forma interessante",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L05B03",
+   "expect": {
+    "known_text": "yes, more efficient",
+    "target_text": "sim, mais eficiente"
+   },
+   "set": {
+    "known_text": "a more efficient way",
+    "target_text": "uma forma mais eficiente",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L05U02",
+   "expect": {
+    "known_text": "no, more efficient",
+    "target_text": "não, mais eficiente"
+   },
+   "set": {
+    "known_text": "the new approach is more efficient",
+    "target_text": "a nova abordagem é mais eficiente",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0444L05U04",
+   "expect": {
+    "known_text": "yes, in a more efficient way",
+    "target_text": "sim, de forma mais eficiente"
+   },
+   "set": {
+    "known_text": "I want to work in a more efficient way",
+    "target_text": "quero trabalhar de forma mais eficiente",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L01B03",
+   "expect": {
+    "known_text": "yes, they will be able to",
+    "target_text": "sim, eles vão conseguir"
+   },
+   "set": {
+    "known_text": "they will be able to help",
+    "target_text": "eles vão conseguir ajudar",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L01U01",
+   "expect": {
+    "known_text": "no, they will be able to",
+    "target_text": "não, eles vão conseguir"
+   },
+   "set": {
+    "known_text": "they will be able to come tomorrow",
+    "target_text": "eles vão conseguir vir amanhã",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L01U03",
+   "expect": {
+    "known_text": "that's true, they will be able to",
+    "target_text": "isso é verdade, eles vão conseguir"
+   },
+   "set": {
+    "known_text": "I think they will be able to finish",
+    "target_text": "acho que eles vão conseguir acabar",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L01U04",
+   "expect": {
+    "known_text": "yes, they will be able to serve",
+    "target_text": "sim, eles vão conseguir servir"
+   },
+   "set": {
+    "known_text": "they will be able to understand",
+    "target_text": "eles vão conseguir entender",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L01U05",
+   "expect": {
+    "known_text": "I'm sure they will be able to",
+    "target_text": "tenho certeza, eles vão conseguir"
+   },
+   "set": {
+    "known_text": "I'm sure they will be able to do it",
+    "target_text": "tenho certeza de que eles vão conseguir fazer isso",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L02B03",
+   "expect": {
+    "known_text": "yes, to carry",
+    "target_text": "sim, carregar"
+   },
+   "set": {
+    "known_text": "to carry her bag",
+    "target_text": "carregar a bolsa dela",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L02U01",
+   "expect": {
+    "known_text": "no, carry",
+    "target_text": "não, carregar"
+   },
+   "set": {
+    "known_text": "can you help me carry this?",
+    "target_text": "você pode me ajudar a carregar isso?",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L02U03",
+   "expect": {
+    "known_text": "that's true, carry",
+    "target_text": "isso é verdade, carregar"
+   },
+   "set": {
+    "known_text": "I can't carry everything",
+    "target_text": "não consigo carregar tudo",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L02U04",
+   "expect": {
+    "known_text": "yes, they will be able to carry",
+    "target_text": "sim, eles vão conseguir carregar"
+   },
+   "set": {
+    "known_text": "he wants to carry the water",
+    "target_text": "ele quer carregar a água",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L03B03",
+   "expect": {
+    "known_text": "yes, that suitcase",
+    "target_text": "sim, aquela mala"
+   },
+   "set": {
+    "known_text": "I want that suitcase",
+    "target_text": "quero aquela mala",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L03U02",
+   "expect": {
+    "known_text": "no, that suitcase",
+    "target_text": "não, aquela mala"
+   },
+   "set": {
+    "known_text": "that suitcase is blue",
+    "target_text": "aquela mala é azul",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0445L03U04",
+   "expect": {
+    "known_text": "yes, they will be able to carry that suitcase",
+    "target_text": "sim, eles vão conseguir carregar aquela mala"
+   },
+   "set": {
+    "known_text": "can you help me carry that suitcase?",
+    "target_text": "você pode me ajudar a carregar aquela mala?",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

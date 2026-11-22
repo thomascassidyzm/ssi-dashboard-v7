@@ -1,0 +1,586 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0534L01B04",
+    "seed_number": 534,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "let's not go by car",
+    "target_text": "não vamos de carro",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0534L02B04",
+    "seed_number": 534,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "outside in the garden",
+    "target_text": "lá fora no jardim",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 17,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0534L03B04",
+    "seed_number": 534,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "to wait in this dreadful weather",
+    "target_text": "esperar com este tempo horrível",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0535L01B04",
+    "seed_number": 535,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "he made a promise last year",
+    "target_text": "ele fez uma promessa no ano passado",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 35,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0535L02B04",
+    "seed_number": 535,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "a promise that he wouldn't choose anyone",
+    "target_text": "uma promessa de que não ia escolher ninguém",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 43,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0535L03B04",
+    "seed_number": 535,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "to have the wrong job",
+    "target_text": "ter o emprego errado",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01B02",
+   "expect": {
+    "known_text": "let's not go now",
+    "target_text": "não vamos agora"
+   },
+   "set": {
+    "known_text": "let's not go there",
+    "target_text": "não vamos lá",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01B03",
+   "expect": {
+    "known_text": "yes, let's not go",
+    "target_text": "sim, não vamos"
+   },
+   "set": {
+    "known_text": "let's not go to the party",
+    "target_text": "não vamos à festa",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01U01",
+   "expect": {
+    "known_text": "I think we shouldn't go",
+    "target_text": "acho que não vamos"
+   },
+   "set": {
+    "known_text": "let's not go to the city today",
+    "target_text": "não vamos à cidade hoje",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01U02",
+   "expect": {
+    "known_text": "she said we shouldn't go",
+    "target_text": "ela disse que não vamos"
+   },
+   "set": {
+    "known_text": "it's late, let's not go",
+    "target_text": "é tarde, não vamos",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01U03",
+   "expect": {
+    "known_text": "we know we shouldn't go",
+    "target_text": "sabemos que não vamos"
+   },
+   "set": {
+    "known_text": "let's not go without them",
+    "target_text": "não vamos sem eles",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01U04",
+   "expect": {
+    "known_text": "they said we shouldn't go",
+    "target_text": "disseram que não vamos"
+   },
+   "set": {
+    "known_text": "let's not go on foot",
+    "target_text": "não vamos a pé",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L01U05",
+   "expect": {
+    "known_text": "I'm sure we shouldn't go",
+    "target_text": "tenho certeza de que não vamos"
+   },
+   "set": {
+    "known_text": "let's not go before the meeting",
+    "target_text": "não vamos antes da reunião",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L02B02",
+   "expect": {
+    "known_text": "let's not go outside now",
+    "target_text": "não vamos lá fora agora"
+   },
+   "set": {
+    "known_text": "the children are outside",
+    "target_text": "as crianças estão lá fora",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L02B03",
+   "expect": {
+    "known_text": "yes, outside",
+    "target_text": "sim, lá fora"
+   },
+   "set": {
+    "known_text": "to go outside",
+    "target_text": "ir lá fora",
+    "decomposition": null,
+    "word_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L02U02",
+   "expect": {
+    "known_text": "I think we shouldn't go outside",
+    "target_text": "acho que não vamos lá fora"
+   },
+   "set": {
+    "known_text": "the dog wants to go outside",
+    "target_text": "o cachorro quer ir lá fora",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L02U03",
+   "expect": {
+    "known_text": "she said we shouldn't go outside",
+    "target_text": "ela disse que não vamos lá fora"
+   },
+   "set": {
+    "known_text": "I'm going to wait outside",
+    "target_text": "vou esperar lá fora",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L02U04",
+   "expect": {
+    "known_text": "we know we shouldn't go outside",
+    "target_text": "sabemos que não vamos lá fora"
+   },
+   "set": {
+    "known_text": "let's eat outside",
+    "target_text": "vamos comer lá fora",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L02U05",
+   "expect": {
+    "known_text": "they said we shouldn't go outside",
+    "target_text": "disseram que não vamos lá fora"
+   },
+   "set": {
+    "known_text": "my friends are waiting outside",
+    "target_text": "meus amigos estão esperando lá fora",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L03B03",
+   "expect": {
+    "known_text": "yes, in this dreadful weather",
+    "target_text": "sim, com este tempo horrível"
+   },
+   "set": {
+    "known_text": "to run in this dreadful weather",
+    "target_text": "correr com este tempo horrível",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L03U02",
+   "expect": {
+    "known_text": "I think we shouldn't go outside in this dreadful weather",
+    "target_text": "acho que não vamos lá fora com este tempo horrível"
+   },
+   "set": {
+    "known_text": "I don't want to go outside in this dreadful weather",
+    "target_text": "não quero ir lá fora com este tempo horrível",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L03U03",
+   "expect": {
+    "known_text": "she said we shouldn't go outside in this dreadful weather",
+    "target_text": "ela disse que não vamos lá fora com este tempo horrível"
+   },
+   "set": {
+    "known_text": "nobody wants to work in this dreadful weather",
+    "target_text": "ninguém quer trabalhar com este tempo horrível",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L03U04",
+   "expect": {
+    "known_text": "we know we shouldn't go outside in this dreadful weather",
+    "target_text": "sabemos que não vamos lá fora com este tempo horrível"
+   },
+   "set": {
+    "known_text": "the children can't stay outside in this dreadful weather",
+    "target_text": "as crianças não podem ficar lá fora com este tempo horrível",
+    "decomposition": null,
+    "word_count": 59,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0534L03U05",
+   "expect": {
+    "known_text": "they said we shouldn't go outside in this dreadful weather",
+    "target_text": "disseram que não vamos lá fora com este tempo horrível"
+   },
+   "set": {
+    "known_text": "it's hard to sleep in this dreadful weather",
+    "target_text": "é difícil dormir com este tempo horrível",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L01B02",
+   "expect": {
+    "known_text": "he made a promise now",
+    "target_text": "ele fez uma promessa agora"
+   },
+   "set": {
+    "known_text": "he made a promise to her",
+    "target_text": "ele fez uma promessa para ela",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L01B03",
+   "expect": {
+    "known_text": "yes, he made a promise",
+    "target_text": "sim, ele fez uma promessa"
+   },
+   "set": {
+    "known_text": "he made a promise to his mother",
+    "target_text": "ele fez uma promessa à mãe dele",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02B02",
+   "expect": {
+    "known_text": "he made a promise that he wouldn't choose now",
+    "target_text": "ele fez uma promessa de que não ia escolher agora"
+   },
+   "set": {
+    "known_text": "a promise that he wouldn't choose",
+    "target_text": "uma promessa de que não ia escolher",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02B03",
+   "expect": {
+    "known_text": "yes, that he wouldn't choose",
+    "target_text": "sim, de que não ia escolher"
+   },
+   "set": {
+    "known_text": "the promise that he wouldn't choose",
+    "target_text": "a promessa de que não ia escolher",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U01",
+   "expect": {
+    "known_text": "he made a promise that he wouldn't choose",
+    "target_text": "ele fez uma promessa de que não ia escolher"
+   },
+   "set": {
+    "known_text": "he made a promise that he wouldn't choose the same house",
+    "target_text": "ele fez uma promessa de que não ia escolher a mesma casa",
+    "decomposition": null,
+    "word_count": 56,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U02",
+   "expect": {
+    "known_text": "I think he made a promise that he wouldn't choose",
+    "target_text": "acho que ele fez uma promessa de que não ia escolher"
+   },
+   "set": {
+    "known_text": "she made a promise that she wouldn't choose without me",
+    "target_text": "ela fez uma promessa de que não ia escolher sem mim",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U03",
+   "expect": {
+    "known_text": "she said he made a promise that he wouldn't choose",
+    "target_text": "ela disse que ele fez uma promessa de que não ia escolher"
+   },
+   "set": {
+    "known_text": "I made a promise that I wouldn't choose for them",
+    "target_text": "eu fiz uma promessa de que não ia escolher por eles",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U04",
+   "expect": {
+    "known_text": "we know he made a promise that he wouldn't choose",
+    "target_text": "sabemos que ele fez uma promessa de que não ia escolher"
+   },
+   "set": {
+    "known_text": "he made a promise that he wouldn't choose the first answer",
+    "target_text": "ele fez uma promessa de que não ia escolher a primeira resposta",
+    "decomposition": null,
+    "word_count": 63,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L02U05",
+   "expect": {
+    "known_text": "they said he made a promise that he wouldn't choose",
+    "target_text": "disseram que ele fez uma promessa de que não ia escolher"
+   },
+   "set": {
+    "known_text": "my father made a promise that he wouldn't choose for me",
+    "target_text": "meu pai fez uma promessa de que não ia escolher por mim",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L03B03",
+   "expect": {
+    "known_text": "yes, the wrong job",
+    "target_text": "sim, o emprego errado"
+   },
+   "set": {
+    "known_text": "the wrong job for me",
+    "target_text": "o emprego errado para mim",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L03U03",
+   "expect": {
+    "known_text": "she said he made a promise that he wouldn't choose the wrong job",
+    "target_text": "ela disse que ele fez uma promessa de que não ia escolher o emprego errado"
+   },
+   "set": {
+    "known_text": "it's easy to choose the wrong job",
+    "target_text": "é fácil escolher o emprego errado",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0535L03U04",
+   "expect": {
+    "known_text": "we know he made a promise that he wouldn't choose the wrong job",
+    "target_text": "sabemos que ele fez uma promessa de que não ia escolher o emprego errado"
+   },
+   "set": {
+    "known_text": "I think he has the wrong job",
+    "target_text": "eu acho que ele tem o emprego errado",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

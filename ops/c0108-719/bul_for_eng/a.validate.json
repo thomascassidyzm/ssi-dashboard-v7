@@ -1,0 +1,20 @@
+{
+ "108": {
+  "before": [
+   "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+  ],
+  "after": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [очаквахме]",
+   "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "L1: vocab violations in 2 phrase(s)",
+   "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+   "L2: vocab violations in 2 phrase(s)"
+  ],
+  "new_issues": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [очаквахме]",
+   "L1: vocab violations in 2 phrase(s)",
+   "L2: vocab violations in 2 phrase(s)"
+  ]
+ }
+}

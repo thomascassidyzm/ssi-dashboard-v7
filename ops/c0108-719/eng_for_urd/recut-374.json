@@ -1,0 +1,379 @@
+{
+ "_why": "cs #383·AI. (1) Seed 108: the plan re-says L03's rows as 'wake up in the middle of the night' (the settled English) but left the LEGO at 'wake in the middle of the night', so six rows failed containment. The LEGO target and components now say 'wake up' too ('up' is taught earlier), with B01, B03 and U04, the three rows the plan did not touch. B02 (re-cut in recut-374.json to 'hope to wake up…', the 1 vocab failure: hope is no longer taught at 108) is re-said 'expect to wake up in the middle of the night' / رات کے وسط میں جاگنے کی توقع (Platts, s.v. توقع 'expectation'; the plan's own known word). (2) Seed 149's canonical target 'This isn't very difficult, so I hope you'll finish soon.' needs 'hope'. The seed is not touched. The shortest LEGO 'hope' (known امید ہے, the seed's own known word and the old 108 LEGO's, now free since 108 says توقع ہے; Platts, s.v. امید 'hope') is inserted as S0149L02 with 10 rows. Six reuse sentences the course already had (S0149L01's 'I hope' rows and the old S0108L02 'I hope that…' rows). The five S0149L01 rows that said 'I hope' come before that LEGO, so they are re-said without it ('I think that…' / مجھے لگتا ہے کہ as S0072L01U01 and S0163L01, or without the verb), keeping L01 at its BUILD/USE minimum. (3) Six rows in seeds 168-276 said 'I hope' before S0291 re-teaches it. Each seed is validated without the 108/149 overlays, so these are re-said 'I think that…' (taught at S0047/S0163) rather than deleted, because two of them are BUILD rows at their basket's minimum.",
+ "replace": {
+  "eng_for_urd:S0108L03B02": {
+   "known_text": "رات کے وسط میں جاگنے کی توقع",
+   "target_text": "expect to wake up in the middle of the night"
+  }
+ },
+ "add": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "target_text": "wake up in the middle of the night",
+    "components": [
+     {
+      "known": "جاگنا",
+      "target": "wake up"
+     },
+     {
+      "known": "رات کے وسط میں",
+      "target": "in the middle of the night"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03B01",
+   "set": {
+    "target_text": "wake up in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U04",
+   "set": {
+    "target_text": "I don't like to wake up in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03B03",
+   "set": {
+    "target_text": "wake up in the middle of the night again"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0149L01B02",
+   "set": {
+    "known_text": "آپ آج ختم کریں گے",
+    "target_text": "you'll finish today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0149L01B04",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ آپ جلد ختم کریں گے",
+    "target_text": "I think that you'll finish soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0149L01U03",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ آپ ختم کریں گے جب آپ تیار ہوں",
+    "target_text": "I think that you'll finish when you're ready"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0149L01U04",
+   "set": {
+    "known_text": "یہ مشکل نہیں، اس لیے آپ ختم کریں گے",
+    "target_text": "this isn't difficult so you'll finish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0149L01U05",
+   "set": {
+    "known_text": "یہ بہت مشکل نہیں، اس لیے آپ جلد ختم کریں گے",
+    "target_text": "this isn't very difficult so you'll finish soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0168L02U02",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ میں جلد آ کر مدد کر سکوں گا",
+    "target_text": "I think that I'll be able to come and help soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0198L02B01",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ میرا بیٹا کونسل کے لیے کام کرتا ہے",
+    "target_text": "I think that my son works for the council"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0212L01B01",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ آپ مدد مانگنا چاہتے ہیں",
+    "target_text": "I think that you want to ask for help"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0271L01U10",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ آپ اگلے مہینے ختم کریں گے",
+    "target_text": "I think that you'll finish next month"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0274L01U10",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ آپ چند دنوں میں ختم کریں گے",
+    "target_text": "I think that you'll finish in a few days"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0276L02U07",
+   "set": {
+    "known_text": "مجھے لگتا ہے کہ میں یہاں تھوڑا اور رہ سکتا ہوں",
+    "target_text": "I think that I can stay here for a little longer"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 149,
+    "lego_index": 2,
+    "known_text": "امید ہے",
+    "target_text": "hope",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02B01",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "امید ہے",
+    "target_text": "hope",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 4,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02B02",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "مجھے امید ہے",
+    "target_text": "I hope",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 6,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02B03",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "مجھے امید ہے کہ آپ ختم کریں گے",
+    "target_text": "I hope you'll finish",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 20,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02B04",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "مجھے امید ہے کہ آپ جلد ختم کریں گے",
+    "target_text": "I hope you'll finish soon",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 25,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02U01",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "مجھے امید ہے کہ آپ ختم کریں گے جب آپ تیار ہوں",
+    "target_text": "I hope you'll finish when you're ready",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 38,
+    "lego_count": 12
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02U02",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "یہ مشکل نہیں، اس لیے مجھے امید ہے کہ آپ ختم کریں گے",
+    "target_text": "this isn't difficult so I hope you'll finish",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 44,
+    "lego_count": 13
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02U03",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "یہ بہت مشکل نہیں، اس لیے مجھے امید ہے کہ آپ جلد ختم کریں گے",
+    "target_text": "this isn't very difficult so I hope you'll finish soon",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 54,
+    "lego_count": 15
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02U04",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "مجھے امید ہے کہ آپ تیار ہیں",
+    "target_text": "I hope that you are ready",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 25,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02U05",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "مجھے امید ہے کہ یہ کام کرے گا",
+    "target_text": "I hope that it will work",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 24,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_urd:S0149L02U06",
+    "course_code": "eng_for_urd",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "مجھے امید ہے کہ یہ زبان آسان ہے",
+    "target_text": "I hope that this language is easy",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 33,
+    "lego_count": 8
+   }
+  }
+ ]
+}

@@ -1,0 +1,384 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0532L01B04",
+    "seed_number": 532,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "unless they're at home",
+    "target_text": "a menos que estejam em casa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0532L02B04",
+    "seed_number": 532,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "unless I'm lucky",
+    "target_text": "a menos que eu tenha sorte",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0533L01U05",
+    "seed_number": 533,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "she won't listen to anything I say",
+    "target_text": "ela não vai ouvir o que eu disser",
+    "phrase_role": "use",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0533L02B04",
+    "seed_number": 533,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "every word I said",
+    "target_text": "cada palavra que eu disse",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0533L03B04",
+    "seed_number": 533,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "everything that you say",
+    "target_text": "tudo o que você disser",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01B02",
+   "expect": {
+    "known_text": "unless they're still",
+    "target_text": "a menos que ainda"
+   },
+   "set": {
+    "known_text": "unless they're ready",
+    "target_text": "a menos que estejam prontos",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01B03",
+   "expect": {
+    "known_text": "yes, unless they're",
+    "target_text": "sim, a menos que"
+   },
+   "set": {
+    "known_text": "unless they're here",
+    "target_text": "a menos que estejam aqui",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01U01",
+   "expect": {
+    "known_text": "no, unless they're",
+    "target_text": "não, a menos que"
+   },
+   "set": {
+    "known_text": "I won't wait unless they're near",
+    "target_text": "não vou esperar a menos que estejam perto",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01U02",
+   "expect": {
+    "known_text": "that's true, unless they're",
+    "target_text": "isso é verdade, a menos que"
+   },
+   "set": {
+    "known_text": "they won't help us unless they're here",
+    "target_text": "eles não vão nos ajudar a menos que estejam aqui",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01U03",
+   "expect": {
+    "known_text": "I'm sure, unless they're",
+    "target_text": "tenho certeza, a menos que"
+   },
+   "set": {
+    "known_text": "we're going to start, unless they're in the car",
+    "target_text": "vamos começar, a menos que estejam no carro",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01U04",
+   "expect": {
+    "known_text": "yes, that's true, unless they're",
+    "target_text": "sim, isso é verdade, a menos que"
+   },
+   "set": {
+    "known_text": "they can't come unless they're ready",
+    "target_text": "eles não podem vir a menos que estejam prontos",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L01U05",
+   "expect": {
+    "known_text": "yes, unless they're still",
+    "target_text": "sim, a menos que ainda"
+   },
+   "set": {
+    "known_text": "I'm going to ask them, unless they're in the office",
+    "target_text": "vou perguntar para eles, a menos que estejam no escritório",
+    "decomposition": null,
+    "word_count": 58,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L02B02",
+   "expect": {
+    "known_text": "unless they're still lucky",
+    "target_text": "a menos que ainda tenha sorte"
+   },
+   "set": {
+    "known_text": "I hope he's lucky",
+    "target_text": "espero que tenha sorte",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L02B03",
+   "expect": {
+    "known_text": "yes, unless they're still lucky",
+    "target_text": "sim, a menos que ainda tenha sorte"
+   },
+   "set": {
+    "known_text": "I hope you're lucky",
+    "target_text": "espero que você tenha sorte",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L02U02",
+   "expect": {
+    "known_text": "no, unless they're lucky",
+    "target_text": "não, a menos que tenha sorte"
+   },
+   "set": {
+    "known_text": "he won't win unless he's lucky",
+    "target_text": "ele não vai ganhar a menos que tenha sorte",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L02U03",
+   "expect": {
+    "known_text": "that's true, unless they're lucky",
+    "target_text": "isso é verdade, a menos que tenha sorte"
+   },
+   "set": {
+    "known_text": "I hope she's lucky this time",
+    "target_text": "espero que ela tenha sorte desta vez",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L02U04",
+   "expect": {
+    "known_text": "yes, unless they're lucky",
+    "target_text": "sim, a menos que tenha sorte"
+   },
+   "set": {
+    "known_text": "it isn't possible unless you're lucky",
+    "target_text": "não é possível a menos que você tenha sorte",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0532L02U05",
+   "expect": {
+    "known_text": "I'm sure, unless they're lucky",
+    "target_text": "tenho certeza, a menos que tenha sorte"
+   },
+   "set": {
+    "known_text": "she won't find a house unless she's lucky",
+    "target_text": "ela não vai encontrar uma casa a menos que tenha sorte",
+    "decomposition": null,
+    "word_count": 54,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0533L01B03",
+   "expect": {
+    "known_text": "she won't listen to it now",
+    "target_text": "ela não vai ouvir isso agora"
+   },
+   "set": {
+    "known_text": "she won't listen to him",
+    "target_text": "ela não vai ouvir ele",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0533L01B04",
+   "expect": {
+    "known_text": "yes, she won't listen to",
+    "target_text": "sim, ela não vai ouvir"
+   },
+   "set": {
+    "known_text": "she won't listen to anyone",
+    "target_text": "ela não vai ouvir ninguém",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0533L02B02",
+   "expect": {
+    "known_text": "she won't listen to every word now",
+    "target_text": "ela não vai ouvir cada palavra agora"
+   },
+   "set": {
+    "known_text": "to hear every word",
+    "target_text": "ouvir cada palavra",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0533L02B03",
+   "expect": {
+    "known_text": "yes, every word",
+    "target_text": "sim, cada palavra"
+   },
+   "set": {
+    "known_text": "every word in the book",
+    "target_text": "cada palavra do livro",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0533L03B03",
+   "expect": {
+    "known_text": "yes, that you say",
+    "target_text": "sim, que você disser"
+   },
+   "set": {
+    "known_text": "whatever you say",
+    "target_text": "o que você disser",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

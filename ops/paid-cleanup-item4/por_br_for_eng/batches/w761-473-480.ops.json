@@ -1,0 +1,1893 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0473L01B04",
+    "seed_number": 473,
+    "lego_index": 1,
+    "position": 15,
+    "known_text": "I don't want it on the table",
+    "target_text": "eu não quero isso em cima da mesa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0474L01B04",
+    "seed_number": 474,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I don't even want it for me",
+    "target_text": "eu nem sequer quero isso para mim",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0474L02B04",
+    "seed_number": 474,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "to give it as a free offer",
+    "target_text": "dar isso como oferta gratuita",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0475L01B04",
+    "seed_number": 475,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "there are many words",
+    "target_text": "há muitas palavras",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0475L02B04",
+    "seed_number": 475,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "many reasons",
+    "target_text": "muitas razões",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 2,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0475L03B04",
+    "seed_number": 475,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "many reasons to consider waiting",
+    "target_text": "muitas razões para considerar esperar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 37,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0476L01B04",
+    "seed_number": 476,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I'm waiting for the train",
+    "target_text": "estou esperando o trem",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0476L03B04",
+    "seed_number": 476,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "at the start of the second half",
+    "target_text": "no início da segunda parte",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0477L01B04",
+    "seed_number": 477,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "he's been sick since Friday",
+    "target_text": "ele está doente desde sexta-feira",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0477L02B04",
+    "seed_number": 477,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "here since the second day",
+    "target_text": "aqui desde o segundo dia",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0477L03B04",
+    "seed_number": 477,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "the start of the holidays",
+    "target_text": "o início das férias",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0478L01B04",
+    "seed_number": 478,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "she has a brother",
+    "target_text": "ela tem um irmão",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0478L02B04",
+    "seed_number": 478,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "my grandfather has such a kind heart",
+    "target_text": "o meu avô tem um coração tão bondoso",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 36,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0479L01B04",
+    "seed_number": 479,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's the least you could do",
+    "target_text": "é o mínimo que você podia fazer",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0479L02B04",
+    "seed_number": 479,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "the only thing I could do",
+    "target_text": "a única coisa que eu podia fazer",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0480L01B04",
+    "seed_number": 480,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "whatever he says, I know",
+    "target_text": "diga ele o que disser, eu sei",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0480L02B04",
+    "seed_number": 480,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "but it's not far ahead now",
+    "target_text": "mas não falta mais muito",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0473L01B02",
+   "expect": {
+    "known_text": "I don't want it now",
+    "target_text": "eu não quero isso agora"
+   },
+   "set": {
+    "known_text": "I don't want it here",
+    "target_text": "eu não quero isso aqui",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0473L01B03",
+   "expect": {
+    "known_text": "yes, I don't want it",
+    "target_text": "sim, eu não quero isso"
+   },
+   "set": {
+    "known_text": "I don't want it in my house",
+    "target_text": "eu não quero isso na minha casa",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0473L01U01",
+   "expect": {
+    "known_text": "no, I don't want it",
+    "target_text": "não, eu não quero isso"
+   },
+   "set": {
+    "known_text": "I don't want it because I don't need it",
+    "target_text": "eu não quero isso porque não preciso disso",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0473L01U03",
+   "expect": {
+    "known_text": "that's true, I don't want it",
+    "target_text": "isso é verdade, eu não quero isso"
+   },
+   "set": {
+    "known_text": "I don't want it, I want something else",
+    "target_text": "eu não quero isso, quero outra coisa",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0473L01U04",
+   "expect": {
+    "known_text": "yes, I still don't want it",
+    "target_text": "sim, eu ainda não quero isso"
+   },
+   "set": {
+    "known_text": "I've already said I don't want it",
+    "target_text": "já disse que eu não quero isso",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0473L01U05",
+   "expect": {
+    "known_text": "I'm sure I don't want it",
+    "target_text": "tenho certeza, eu não quero isso"
+   },
+   "set": {
+    "known_text": "I'm sure I don't want it",
+    "target_text": "tenho certeza de que eu não quero isso",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01B02",
+   "expect": {
+    "known_text": "I don't even want it now",
+    "target_text": "eu nem sequer quero isso agora"
+   },
+   "set": {
+    "known_text": "I don't even want it here",
+    "target_text": "eu nem sequer quero isso aqui",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01B03",
+   "expect": {
+    "known_text": "yes, I don't even want it",
+    "target_text": "sim, eu nem sequer quero isso"
+   },
+   "set": {
+    "known_text": "I don't even want it in my house",
+    "target_text": "eu nem sequer quero isso na minha casa",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01U01",
+   "expect": {
+    "known_text": "no, I don't even want it",
+    "target_text": "não, eu nem sequer quero isso"
+   },
+   "set": {
+    "known_text": "I don't even want it, it's rubbish",
+    "target_text": "eu nem sequer quero isso, é lixo",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01U02",
+   "expect": {
+    "known_text": "that's true, I don't even want it",
+    "target_text": "isso é verdade, eu nem sequer quero isso"
+   },
+   "set": {
+    "known_text": "I don't even want it, I don't need it",
+    "target_text": "eu nem sequer quero isso, não preciso disso",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01U03",
+   "expect": {
+    "known_text": "I'm sure I don't even want it",
+    "target_text": "tenho certeza, eu nem sequer quero isso"
+   },
+   "set": {
+    "known_text": "I don't even want it, I want something else",
+    "target_text": "eu nem sequer quero isso, quero outra coisa",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01U04",
+   "expect": {
+    "known_text": "yes, that's true, I don't even want it",
+    "target_text": "sim, isso é verdade, eu nem sequer quero isso"
+   },
+   "set": {
+    "known_text": "you can keep it, I don't even want it",
+    "target_text": "você pode ficar com isso, eu nem sequer quero isso",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L01U05",
+   "expect": {
+    "known_text": "I still don't even want it",
+    "target_text": "eu ainda nem sequer quero isso"
+   },
+   "set": {
+    "known_text": "I don't even want it on the table",
+    "target_text": "eu nem sequer quero isso em cima da mesa",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L02B03",
+   "expect": {
+    "known_text": "yes, as a free offer",
+    "target_text": "sim, como oferta gratuita"
+   },
+   "set": {
+    "known_text": "I want it as a free offer",
+    "target_text": "quero isso como oferta gratuita",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L02U01",
+   "expect": {
+    "known_text": "no, as a free offer",
+    "target_text": "não, como oferta gratuita"
+   },
+   "set": {
+    "known_text": "she wants to give it as a free offer",
+    "target_text": "ela quer dar isso como oferta gratuita",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L02U02",
+   "expect": {
+    "known_text": "that's true, as a free offer",
+    "target_text": "isso é verdade, como oferta gratuita"
+   },
+   "set": {
+    "known_text": "I don't want it as a free offer",
+    "target_text": "eu não quero isso como oferta gratuita",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L02U03",
+   "expect": {
+    "known_text": "I have it as a free offer",
+    "target_text": "tenho isso como oferta gratuita"
+   },
+   "set": {
+    "known_text": "you can give it as a free offer",
+    "target_text": "você pode dar isso como oferta gratuita",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0474L02U04",
+   "expect": {
+    "known_text": "yes, I don't even want it as a free offer",
+    "target_text": "sim, eu nem sequer quero isso como oferta gratuita"
+   },
+   "set": {
+    "known_text": "nobody wants it as a free offer",
+    "target_text": "ninguém quer isso como oferta gratuita",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01B02",
+   "expect": {
+    "known_text": "there are many now",
+    "target_text": "há muitas agora"
+   },
+   "set": {
+    "known_text": "there are many people",
+    "target_text": "há muitas pessoas",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01B03",
+   "expect": {
+    "known_text": "yes, there are many",
+    "target_text": "sim, há muitas"
+   },
+   "set": {
+    "known_text": "there are many things",
+    "target_text": "há muitas coisas",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01U01",
+   "expect": {
+    "known_text": "no, there are many",
+    "target_text": "não, há muitas"
+   },
+   "set": {
+    "known_text": "there are many ideas",
+    "target_text": "há muitas ideias",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01U02",
+   "expect": {
+    "known_text": "that's true, there are many",
+    "target_text": "isso é verdade, há muitas"
+   },
+   "set": {
+    "known_text": "there are many words I don't know",
+    "target_text": "há muitas palavras que eu não conheço",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01U03",
+   "expect": {
+    "known_text": "I'm sure, there are many",
+    "target_text": "tenho certeza, há muitas"
+   },
+   "set": {
+    "known_text": "there are many questions",
+    "target_text": "há muitas perguntas",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01U04",
+   "expect": {
+    "known_text": "yes, there are many things",
+    "target_text": "sim, há muitas coisas"
+   },
+   "set": {
+    "known_text": "there are many things to do",
+    "target_text": "há muitas coisas para fazer",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L01U05",
+   "expect": {
+    "known_text": "there are still many",
+    "target_text": "ainda há muitas"
+   },
+   "set": {
+    "known_text": "there are still many questions",
+    "target_text": "ainda há muitas perguntas",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L02B03",
+   "expect": {
+    "known_text": "yes, reasons",
+    "target_text": "sim, razões"
+   },
+   "set": {
+    "known_text": "two reasons",
+    "target_text": "duas razões",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L02U01",
+   "expect": {
+    "known_text": "no, reasons",
+    "target_text": "não, razões"
+   },
+   "set": {
+    "known_text": "I have my reasons",
+    "target_text": "tenho as minhas razões",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L02U02",
+   "expect": {
+    "known_text": "that's true, reasons",
+    "target_text": "isso é verdade, razões"
+   },
+   "set": {
+    "known_text": "there are reasons for that",
+    "target_text": "há razões para isso",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L02U03",
+   "expect": {
+    "known_text": "I'm sure, reasons",
+    "target_text": "tenho certeza, razões"
+   },
+   "set": {
+    "known_text": "for many reasons",
+    "target_text": "por muitas razões",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L02U04",
+   "expect": {
+    "known_text": "yes, there are many reasons",
+    "target_text": "sim, há muitas razões"
+   },
+   "set": {
+    "known_text": "I have three reasons",
+    "target_text": "tenho três razões",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L03B03",
+   "expect": {
+    "known_text": "yes, to consider waiting",
+    "target_text": "sim, para considerar esperar"
+   },
+   "set": {
+    "known_text": "there are reasons to consider waiting",
+    "target_text": "há razões para considerar esperar",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L03U02",
+   "expect": {
+    "known_text": "no, to consider waiting",
+    "target_text": "não, para considerar esperar"
+   },
+   "set": {
+    "known_text": "I have my reasons to consider waiting",
+    "target_text": "tenho as minhas razões para considerar esperar",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L03U03",
+   "expect": {
+    "known_text": "that's true, to consider waiting",
+    "target_text": "isso é verdade, para considerar esperar"
+   },
+   "set": {
+    "known_text": "we have reasons to consider waiting",
+    "target_text": "temos razões para considerar esperar",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0475L03U04",
+   "expect": {
+    "known_text": "yes, there are many reasons to consider waiting",
+    "target_text": "sim, há muitas razões para considerar esperar"
+   },
+   "set": {
+    "known_text": "there are two reasons to consider waiting",
+    "target_text": "há duas razões para considerar esperar",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L01B03",
+   "expect": {
+    "known_text": "yes, I'm waiting for",
+    "target_text": "sim, estou esperando"
+   },
+   "set": {
+    "known_text": "I'm waiting for the bus",
+    "target_text": "estou esperando o ônibus",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L01U01",
+   "expect": {
+    "known_text": "no, I'm waiting for",
+    "target_text": "não, estou esperando"
+   },
+   "set": {
+    "known_text": "I'm waiting for my friend",
+    "target_text": "estou esperando o meu amigo",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L01U02",
+   "expect": {
+    "known_text": "that's true, I'm waiting for",
+    "target_text": "isso é verdade, estou esperando"
+   },
+   "set": {
+    "known_text": "I'm waiting for an answer",
+    "target_text": "estou esperando uma resposta",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L01U03",
+   "expect": {
+    "known_text": "I'm still waiting for",
+    "target_text": "ainda estou esperando"
+   },
+   "set": {
+    "known_text": "I'm still waiting for the train",
+    "target_text": "ainda estou esperando o trem",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L01U04",
+   "expect": {
+    "known_text": "yes, I'm still waiting for",
+    "target_text": "sim, ainda estou esperando"
+   },
+   "set": {
+    "known_text": "I'm waiting for my sister",
+    "target_text": "estou esperando a minha irmã",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L01U05",
+   "expect": {
+    "known_text": "I'm sure I'm waiting for",
+    "target_text": "tenho certeza, estou esperando"
+   },
+   "set": {
+    "known_text": "I'm waiting for you",
+    "target_text": "estou esperando você",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L02B03",
+   "expect": {
+    "known_text": "yes, the end",
+    "target_text": "sim, o fim"
+   },
+   "set": {
+    "known_text": "the end of the film",
+    "target_text": "o fim do filme",
+    "decomposition": null,
+    "word_count": 14,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L02U01",
+   "expect": {
+    "known_text": "no, the end",
+    "target_text": "não, o fim"
+   },
+   "set": {
+    "known_text": "I didn't see the end",
+    "target_text": "não vi o fim",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L02U03",
+   "expect": {
+    "known_text": "I have the end",
+    "target_text": "tenho o fim"
+   },
+   "set": {
+    "known_text": "I want to see the end of the film",
+    "target_text": "quero ver o fim do filme",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L02U04",
+   "expect": {
+    "known_text": "yes, I'm waiting for the end",
+    "target_text": "sim, estou esperando o fim"
+   },
+   "set": {
+    "known_text": "it's not the end",
+    "target_text": "não é o fim",
+    "decomposition": null,
+    "word_count": 11,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L03B03",
+   "expect": {
+    "known_text": "yes, of the second half",
+    "target_text": "sim, da segunda parte"
+   },
+   "set": {
+    "known_text": "the start of the second half",
+    "target_text": "o início da segunda parte",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L03U02",
+   "expect": {
+    "known_text": "no, of the second half",
+    "target_text": "não, da segunda parte"
+   },
+   "set": {
+    "known_text": "I didn't see the end of the second half",
+    "target_text": "não vi o fim da segunda parte",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L03U03",
+   "expect": {
+    "known_text": "that's the second half",
+    "target_text": "isso é da segunda parte"
+   },
+   "set": {
+    "known_text": "the start of the second half was better",
+    "target_text": "o início da segunda parte foi melhor",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0476L03U04",
+   "expect": {
+    "known_text": "yes, I'm waiting for the end of the second half",
+    "target_text": "sim, estou esperando o fim da segunda parte"
+   },
+   "set": {
+    "known_text": "I want to see the start of the second half",
+    "target_text": "quero ver o início da segunda parte",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L01B02",
+   "expect": {
+    "known_text": "he's been sick now",
+    "target_text": "ele está doente agora"
+   },
+   "set": {
+    "known_text": "he's been sick for a week",
+    "target_text": "ele está doente há uma semana",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L01B03",
+   "expect": {
+    "known_text": "yes, he's been sick",
+    "target_text": "sim, ele está doente"
+   },
+   "set": {
+    "known_text": "he's been sick since Monday",
+    "target_text": "ele está doente desde segunda-feira",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L01U01",
+   "expect": {
+    "known_text": "no, he's been sick",
+    "target_text": "não, ele está doente"
+   },
+   "set": {
+    "known_text": "he's been sick for a long time",
+    "target_text": "ele está doente há muito tempo",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L01U02",
+   "expect": {
+    "known_text": "that's true, he's been sick",
+    "target_text": "isso é verdade, ele está doente"
+   },
+   "set": {
+    "known_text": "he's been sick all week",
+    "target_text": "ele está doente a semana toda",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L01U04",
+   "expect": {
+    "known_text": "yes, he's still been sick",
+    "target_text": "sim, ele ainda está doente"
+   },
+   "set": {
+    "known_text": "he's been sick since yesterday",
+    "target_text": "ele está doente desde ontem",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L01U05",
+   "expect": {
+    "known_text": "I'm sure he's been sick",
+    "target_text": "tenho certeza, ele está doente"
+   },
+   "set": {
+    "known_text": "he's been sick since last month",
+    "target_text": "ele está doente desde o mês passado",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L02B03",
+   "expect": {
+    "known_text": "yes, since the second day",
+    "target_text": "sim, desde o segundo dia"
+   },
+   "set": {
+    "known_text": "since the second day of the week",
+    "target_text": "desde o segundo dia da semana",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L02U01",
+   "expect": {
+    "known_text": "no, since the second day",
+    "target_text": "não, desde o segundo dia"
+   },
+   "set": {
+    "known_text": "she's been sick since the second day",
+    "target_text": "ela está doente desde o segundo dia",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L02U02",
+   "expect": {
+    "known_text": "that's true, since the second day",
+    "target_text": "isso é verdade, desde o segundo dia"
+   },
+   "set": {
+    "known_text": "I've been tired since the second day",
+    "target_text": "estou cansado desde o segundo dia",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L02U03",
+   "expect": {
+    "known_text": "I have it since the second day",
+    "target_text": "tenho isso desde o segundo dia"
+   },
+   "set": {
+    "known_text": "we've been here since the second day",
+    "target_text": "estamos aqui desde o segundo dia",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L02U04",
+   "expect": {
+    "known_text": "yes, he's been sick since the second day",
+    "target_text": "sim, ele está doente desde o segundo dia"
+   },
+   "set": {
+    "known_text": "I've known it since the second day",
+    "target_text": "sei disso desde o segundo dia",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L02U05",
+   "expect": {
+    "known_text": "he's still been sick since the second day",
+    "target_text": "ele ainda está doente desde o segundo dia"
+   },
+   "set": {
+    "known_text": "he's been at home since the second day",
+    "target_text": "ele está em casa desde o segundo dia",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L03B03",
+   "expect": {
+    "known_text": "yes, of the holidays",
+    "target_text": "sim, das férias"
+   },
+   "set": {
+    "known_text": "the end of the holidays",
+    "target_text": "o fim das férias",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L03U02",
+   "expect": {
+    "known_text": "no, of the holidays",
+    "target_text": "não, das férias"
+   },
+   "set": {
+    "known_text": "I'm waiting for the end of the holidays",
+    "target_text": "estou esperando o fim das férias",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L03U03",
+   "expect": {
+    "known_text": "that's true, of the holidays",
+    "target_text": "isso é verdade, das férias"
+   },
+   "set": {
+    "known_text": "on the second day of the holidays",
+    "target_text": "no segundo dia das férias",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L03U04",
+   "expect": {
+    "known_text": "yes, he's been sick since the second day of the holidays",
+    "target_text": "sim, ele está doente desde o segundo dia das férias"
+   },
+   "set": {
+    "known_text": "she's been sick since the start of the holidays",
+    "target_text": "ela está doente desde o início das férias",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0477L03U05",
+   "expect": {
+    "known_text": "he's still been sick since the second day of the holidays",
+    "target_text": "ele ainda está doente desde o segundo dia das férias"
+   },
+   "set": {
+    "known_text": "the second day of the holidays was perfect",
+    "target_text": "o segundo dia das férias foi perfeito",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L01B03",
+   "expect": {
+    "known_text": "yes, she has",
+    "target_text": "sim, ela tem"
+   },
+   "set": {
+    "known_text": "she has a car",
+    "target_text": "ela tem um carro",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L01U01",
+   "expect": {
+    "known_text": "no, she has",
+    "target_text": "não, ela tem"
+   },
+   "set": {
+    "known_text": "she has two children",
+    "target_text": "ela tem dois filhos",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L01U02",
+   "expect": {
+    "known_text": "that's true, she has",
+    "target_text": "isso é verdade, ela tem"
+   },
+   "set": {
+    "known_text": "she has a lot of work",
+    "target_text": "ela tem muito trabalho",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L01U03",
+   "expect": {
+    "known_text": "she still has",
+    "target_text": "ela ainda tem"
+   },
+   "set": {
+    "known_text": "she has a new idea",
+    "target_text": "ela tem uma nova ideia",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L01U04",
+   "expect": {
+    "known_text": "yes, she still has",
+    "target_text": "sim, ela ainda tem"
+   },
+   "set": {
+    "known_text": "she has a sister",
+    "target_text": "ela tem uma irmã",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L01U05",
+   "expect": {
+    "known_text": "I'm sure she has",
+    "target_text": "tenho certeza, ela tem"
+   },
+   "set": {
+    "known_text": "she has the keys",
+    "target_text": "ela tem as chaves",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L02B02",
+   "expect": {
+    "known_text": "yes, that's a heart so kind",
+    "target_text": "sim, isso é um coração tão bondoso"
+   },
+   "set": {
+    "known_text": "he has such a kind heart",
+    "target_text": "ele tem um coração tão bondoso",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L02B03",
+   "expect": {
+    "known_text": "yes, a heart so kind",
+    "target_text": "sim, um coração tão bondoso"
+   },
+   "set": {
+    "known_text": "you have such a kind heart",
+    "target_text": "você tem um coração tão bondoso",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L02U02",
+   "expect": {
+    "known_text": "no, a heart so kind",
+    "target_text": "não, um coração tão bondoso"
+   },
+   "set": {
+    "known_text": "my mother has such a kind heart",
+    "target_text": "a minha mãe tem um coração tão bondoso",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L02U03",
+   "expect": {
+    "known_text": "that's true, a heart so kind",
+    "target_text": "isso é verdade, um coração tão bondoso"
+   },
+   "set": {
+    "known_text": "your sister has such a kind heart",
+    "target_text": "sua irmã tem um coração tão bondoso",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0478L02U04",
+   "expect": {
+    "known_text": "yes, she has such a kind heart",
+    "target_text": "sim, ela tem um coração tão bondoso"
+   },
+   "set": {
+    "known_text": "I didn't know she had such a kind heart",
+    "target_text": "eu não sabia que ela tinha um coração tão bondoso",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01B02",
+   "expect": {
+    "known_text": "it's the least now",
+    "target_text": "é o mínimo agora"
+   },
+   "set": {
+    "known_text": "it's the least you can do",
+    "target_text": "é o mínimo que você pode fazer",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01B03",
+   "expect": {
+    "known_text": "yes, it's the least",
+    "target_text": "sim, é o mínimo"
+   },
+   "set": {
+    "known_text": "it's the least he could do",
+    "target_text": "é o mínimo que ele podia fazer",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01U01",
+   "expect": {
+    "known_text": "no, it's the least",
+    "target_text": "não, é o mínimo"
+   },
+   "set": {
+    "known_text": "it's the least we could do",
+    "target_text": "é o mínimo que nós podíamos fazer",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01U02",
+   "expect": {
+    "known_text": "that's true, it's the least",
+    "target_text": "isso é verdade, é o mínimo"
+   },
+   "set": {
+    "known_text": "I think it's the least you can do",
+    "target_text": "acho que é o mínimo que você pode fazer",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01U03",
+   "expect": {
+    "known_text": "I'm sure, it's the least",
+    "target_text": "tenho certeza, é o mínimo"
+   },
+   "set": {
+    "known_text": "it's the least they could do",
+    "target_text": "é o mínimo que eles podiam fazer",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01U04",
+   "expect": {
+    "known_text": "yes, that's true, it's the least",
+    "target_text": "sim, isso é verdade, é o mínimo"
+   },
+   "set": {
+    "known_text": "it's the least she could do",
+    "target_text": "é o mínimo que ela podia fazer",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L01U05",
+   "expect": {
+    "known_text": "it's still the least",
+    "target_text": "ainda é o mínimo"
+   },
+   "set": {
+    "known_text": "it's the least I can do",
+    "target_text": "é o mínimo que eu posso fazer",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L02B03",
+   "expect": {
+    "known_text": "yes, I could do",
+    "target_text": "sim, que eu podia fazer"
+   },
+   "set": {
+    "known_text": "everything I could do",
+    "target_text": "tudo que eu podia fazer",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L02U02",
+   "expect": {
+    "known_text": "no, I could do",
+    "target_text": "não, que eu podia fazer"
+   },
+   "set": {
+    "known_text": "I did everything I could do",
+    "target_text": "fiz tudo que eu podia fazer",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L02U03",
+   "expect": {
+    "known_text": "that's true, I could do",
+    "target_text": "isso é verdade, que eu podia fazer"
+   },
+   "set": {
+    "known_text": "that's all I could do",
+    "target_text": "isso é tudo que eu podia fazer",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L02U04",
+   "expect": {
+    "known_text": "yes, it's the least I could do",
+    "target_text": "sim, é o mínimo que eu podia fazer"
+   },
+   "set": {
+    "known_text": "it was the only thing I could do",
+    "target_text": "era a única coisa que eu podia fazer",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0479L02U05",
+   "expect": {
+    "known_text": "I'm sure it's the least I could do",
+    "target_text": "tenho certeza, é o mínimo que eu podia fazer"
+   },
+   "set": {
+    "known_text": "I'm sure it's the least I could do",
+    "target_text": "tenho certeza de que é o mínimo que eu podia fazer",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01B02",
+   "expect": {
+    "known_text": "whatever he says now",
+    "target_text": "diga ele o que disser agora"
+   },
+   "set": {
+    "known_text": "whatever he says, I'm going",
+    "target_text": "diga ele o que disser, eu vou",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01B03",
+   "expect": {
+    "known_text": "yes, whatever he says",
+    "target_text": "sim, diga ele o que disser"
+   },
+   "set": {
+    "known_text": "whatever he says, I don't agree",
+    "target_text": "diga ele o que disser, eu não concordo",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01U01",
+   "expect": {
+    "known_text": "no, whatever he says",
+    "target_text": "não, diga ele o que disser"
+   },
+   "set": {
+    "known_text": "whatever he says, I'm not going to change it",
+    "target_text": "diga ele o que disser, não vou mudar isso",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01U02",
+   "expect": {
+    "known_text": "that's true, whatever he says",
+    "target_text": "isso é verdade, diga ele o que disser"
+   },
+   "set": {
+    "known_text": "whatever he says, I want to go",
+    "target_text": "diga ele o que disser, eu quero ir",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01U03",
+   "expect": {
+    "known_text": "I'm sure, whatever he says",
+    "target_text": "tenho certeza, diga ele o que disser"
+   },
+   "set": {
+    "known_text": "whatever he says, I'm going to stay",
+    "target_text": "diga ele o que disser, vou ficar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01U04",
+   "expect": {
+    "known_text": "yes, that's true, whatever he says",
+    "target_text": "sim, isso é verdade, diga ele o que disser"
+   },
+   "set": {
+    "known_text": "whatever he says, we have to go",
+    "target_text": "diga ele o que disser, temos que ir",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L01U05",
+   "expect": {
+    "known_text": "whatever he still says",
+    "target_text": "diga ele o que ainda disser"
+   },
+   "set": {
+    "known_text": "whatever he says, it's not possible",
+    "target_text": "diga ele o que disser, não é possível",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L02B02",
+   "expect": {
+    "known_text": "I don't think that it's not far ahead now",
+    "target_text": "eu não acho que não falta mais muito"
+   },
+   "set": {
+    "known_text": "come on, it's not far ahead now",
+    "target_text": "vamos, não falta mais muito",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L02B03",
+   "expect": {
+    "known_text": "yes, it's not far ahead now",
+    "target_text": "sim, não falta mais muito"
+   },
+   "set": {
+    "known_text": "I know it's not far ahead now",
+    "target_text": "sei que não falta mais muito",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L02U02",
+   "expect": {
+    "known_text": "that's true, it's not far ahead now",
+    "target_text": "isso é verdade, não falta mais muito"
+   },
+   "set": {
+    "known_text": "I think it's not far ahead now",
+    "target_text": "acho que não falta mais muito",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L02U03",
+   "expect": {
+    "known_text": "I'm sure it's not far ahead now",
+    "target_text": "tenho certeza, não falta mais muito"
+   },
+   "set": {
+    "known_text": "he said it's not far ahead now",
+    "target_text": "ele disse que não falta mais muito",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L02U04",
+   "expect": {
+    "known_text": "yes, whatever he says it's not far ahead now",
+    "target_text": "sim, diga ele o que disser, não falta mais muito"
+   },
+   "set": {
+    "known_text": "they say it's not far ahead now",
+    "target_text": "eles dizem que não falta mais muito",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0480L02U05",
+   "expect": {
+    "known_text": "I want to know, it's not far ahead now",
+    "target_text": "quero saber, não falta mais muito"
+   },
+   "set": {
+    "known_text": "let's keep going, it's not far ahead now",
+    "target_text": "vamos continuar, não falta mais muito",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

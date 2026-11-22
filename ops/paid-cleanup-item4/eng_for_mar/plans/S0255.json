@@ -1,0 +1,36 @@
+{
+ "seed": 255,
+ "legos": {
+  "L01": {
+   "update": {
+    "B04": [
+     "तुम्ही कधी तयार व्हाल असं तुम्हाला वाटतं?",
+     "when do you think you'll be ready?"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तुम्ही उद्या तयार व्हाल असं तुम्हाला कधी वाटतं?",
+     "when do you think you'll be ready tomorrow?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "U04": [
+     "तुम्ही उद्या निघायला तयार व्हाल",
+     "you'll be ready to leave tomorrow"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तुम्ही आज संध्याकाळी निघायला तयार व्हाल",
+     "you'll be ready to leave this evening"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

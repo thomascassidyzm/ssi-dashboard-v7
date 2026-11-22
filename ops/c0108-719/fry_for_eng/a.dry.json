@@ -1,0 +1,509 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "2d3373e7-d435-4f56-aaec-d18f55dae629",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Wy hopen net om midden yn 'e nacht wekker te wurden.",
+    "known_audio_id": "d9e5b6e9-f118-4d69-a9f9-e9a6f3ced346",
+    "target1_audio_id": "ff889aa7-a42b-4373-98d9-3575ad16af9a",
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "2d3373e7-d435-4f56-aaec-d18f55dae629",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Wy ferwachten net midden yn 'e nacht wekker te wurden.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "42bea733-cf19-4183-b128-a4991b46d257",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "wy hopen net",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "we hoped",
+      "target": "wy hopen"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "known_audio_id": "9db360dc-c8ce-4ae5-8e45-92f64f014265",
+    "target1_audio_id": "0fca76b3-bf58-4efd-a1f1-061f65ee71d4",
+    "target2_audio_id": null,
+    "presentation_audio_id": "df06b0a8-a5b4-442c-b74f-f5a4e3bfe4ac"
+   },
+   "after": {
+    "id": "42bea733-cf19-4183-b128-a4991b46d257",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "wy ferwachten net",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we expected",
+      "target": "wy ferwachten"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02C01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen",
+    "known_text": "we hoped",
+    "known_audio_id": "3150673d-2790-4a5b-a60b-2f67c9722ad5",
+    "target1_audio_id": "f93bf94f-39c2-4dae-8c94-35e8574999a8",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten",
+    "known_text": "we expected",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02B01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net om flaters te meitsjen",
+    "known_text": "we didn't hope to make mistakes",
+    "known_audio_id": "38ba99da-559f-49ae-8b7a-8499f5e99d5f",
+    "target1_audio_id": "a5188e01-c578-4620-91b2-93f84fa829ee",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net flaters te meitsjen",
+    "known_text": "we didn't expect to make mistakes",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net om mear wurden te hearren",
+    "known_text": "we didn't hope to hear more words",
+    "known_audio_id": "8402b667-1deb-4fce-975e-5526ef980f22",
+    "target1_audio_id": "9f5a964b-98d6-4c59-bd8a-89823874982b",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net mear wurden te hearren",
+    "known_text": "we didn't expect to hear more words",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net de hiele dei te praten",
+    "known_text": "we didn't hope to talk all day",
+    "known_audio_id": "aef5cb30-215b-4dea-8065-af653456a764",
+    "target1_audio_id": "279d9b9c-4d6e-48d3-9d9a-d789ab2e67d6",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net de hiele dei te praten",
+    "known_text": "we didn't expect to talk all day",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net mear oer dizze taal út te finen",
+    "known_text": "we didn't hope to find out more about this language",
+    "known_audio_id": "9d135cf7-7e9c-4b39-9081-bf7603a51178",
+    "target1_audio_id": "15ba1f30-6672-4d33-a2e9-cb053972807a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net mear oer dizze taal út te finen",
+    "known_text": "we didn't expect to find out more about this language",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ja, mar wy hopen net om it antwurd te finen",
+    "known_text": "yes but we didn't hope to find the answer",
+    "known_audio_id": "ac8c76da-e923-4530-be1d-099719bc4da7",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ja, mar wy ferwachten net it antwurd te finen",
+    "known_text": "yes but we didn't expect to find the answer",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net sa fluch mooglik klear te wêzen",
+    "known_text": "we didn't hope to finish as quickly as possible",
+    "known_audio_id": "48d50bc4-4aa6-4409-9459-cbb243add98c",
+    "target1_audio_id": "45a4bb92-852b-4690-8b03-b33397ea1282",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net sa fluch klear te wêzen",
+    "known_text": "we didn't expect to finish so quickly",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net nei hûs te gean",
+    "known_text": "we didn't hope to go home",
+    "known_audio_id": null,
+    "target1_audio_id": "7a65dafe-b5cc-4d7b-8ea8-86b3ee7b0bd3",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net nei hûs te gean",
+    "known_text": "we didn't expect to go home",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fry_for_eng",
+    "id": "fry_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "fry_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy hopen net om midden yn 'e nacht wekker te wurden",
+    "known_text": "we didn't hope to be awake in the middle of the night",
+    "known_audio_id": "46dd4f47-5241-434d-8eb6-1b300a6534a4",
+    "target1_audio_id": "ff889aa7-a42b-4373-98d9-3575ad16af9a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fry_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wy ferwachten net midden yn 'e nacht wekker te wurden",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we didn't hope to be awake in the middle of the night",
+    "target_text": "wy hopen net om midden yn 'e nacht wekker te wurden",
+    "known_audio_id": "46dd4f47-5241-434d-8eb6-1b300a6534a4",
+    "target1_audio_id": "ff889aa7-a42b-4373-98d9-3575ad16af9a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "we didn't hope to go home",
+    "target_text": "wy hopen net nei hûs te gean",
+    "target1_audio_id": "7a65dafe-b5cc-4d7b-8ea8-86b3ee7b0bd3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we didn't hope to finish as quickly as possible",
+    "target_text": "wy hopen net sa fluch mooglik klear te wêzen",
+    "known_audio_id": "48d50bc4-4aa6-4409-9459-cbb243add98c",
+    "target1_audio_id": "45a4bb92-852b-4690-8b03-b33397ea1282"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "yes but we didn't hope to find the answer",
+    "target_text": "ja, mar wy hopen net om it antwurd te finen",
+    "known_audio_id": "ac8c76da-e923-4530-be1d-099719bc4da7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to find out more about this language",
+    "target_text": "wy hopen net mear oer dizze taal út te finen",
+    "known_audio_id": "9d135cf7-7e9c-4b39-9081-bf7603a51178",
+    "target1_audio_id": "15ba1f30-6672-4d33-a2e9-cb053972807a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we didn't hope to talk all day",
+    "target_text": "wy hopen net de hiele dei te praten",
+    "known_audio_id": "aef5cb30-215b-4dea-8065-af653456a764",
+    "target1_audio_id": "279d9b9c-4d6e-48d3-9d9a-d789ab2e67d6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we didn't hope to hear more words",
+    "target_text": "wy hopen net om mear wurden te hearren",
+    "known_audio_id": "8402b667-1deb-4fce-975e-5526ef980f22",
+    "target1_audio_id": "9f5a964b-98d6-4c59-bd8a-89823874982b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "we didn't hope to make mistakes",
+    "target_text": "wy hopen net om flaters te meitsjen",
+    "known_audio_id": "38ba99da-559f-49ae-8b7a-8499f5e99d5f",
+    "target1_audio_id": "a5188e01-c578-4620-91b2-93f84fa829ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02C01",
+   "set": {
+    "known_text": "we hoped",
+    "target_text": "wy hopen",
+    "known_audio_id": "3150673d-2790-4a5b-a60b-2f67c9722ad5",
+    "target1_audio_id": "f93bf94f-39c2-4dae-8c94-35e8574999a8"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "42bea733-cf19-4183-b128-a4991b46d257",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "wy hopen net",
+    "components": [
+     {
+      "known": "we hoped",
+      "target": "wy hopen"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ],
+    "known_audio_id": "9db360dc-c8ce-4ae5-8e45-92f64f014265",
+    "target1_audio_id": "0fca76b3-bf58-4efd-a1f1-061f65ee71d4",
+    "presentation_audio_id": "df06b0a8-a5b4-442c-b74f-f5a4e3bfe4ac"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Wy hopen net om midden yn 'e nacht wekker te wurden.",
+    "known_audio_id": "d9e5b6e9-f118-4d69-a9f9-e9a6f3ced346",
+    "target1_audio_id": "ff889aa7-a42b-4373-98d9-3575ad16af9a"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -1,0 +1,116 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "我哋估唔到會半夜瞓醒。"
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "我哋唔希望半夜瞓醒。"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "I woke up"
+   },
+   "expect": {
+    "known_text": "I woke",
+    "target_text": "我瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "don't want to wake up"
+   },
+   "expect": {
+    "known_text": "don't want to wake",
+    "target_text": "唔想瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "我哋估唔到會半夜瞓醒",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "我哋唔希望半夜瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "therefore, I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "therefore, I don't want to wake",
+    "target_text": "所以我唔想瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we hope not to wake up"
+   },
+   "expect": {
+    "known_text": "we hope not to wake",
+    "target_text": "我哋希望唔會瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "he's not ready to wake up yet"
+   },
+   "expect": {
+    "known_text": "he's not ready to wake yet",
+    "target_text": "佢仲未準備好瞓醒"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "yue_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "everyone else woke up too"
+   },
+   "expect": {
+    "known_text": "everyone else woke too",
+    "target_text": "其他人都瞓醒"
+   }
+  }
+ ]
+}

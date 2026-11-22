@@ -1,0 +1,99 @@
+{
+ "seed": 203,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्ही मला मदत करावी असं मला वाटतं",
+     "I'd like you to help me"
+    ],
+    "B03": [
+     "आज मला मदत करायला",
+     "to help me today"
+    ],
+    "B04": [
+     "उद्या मला मदत करायला",
+     "to help me tomorrow"
+    ],
+    "U01": [
+     "तुम्ही आज मला मदत करावी असं मला वाटतं",
+     "I'd like you to help me today"
+    ],
+    "U02": [
+     "तिला मला मदत करायची आहे",
+     "she wants to help me"
+    ],
+    "U03": [
+     "कारण तुम्ही मला मदत करावी असं मला वाटतं",
+     "because I'd like you to help me"
+    ],
+    "U04": [
+     "मला वाटतं की त्याला मला मदत करायची आहे",
+     "I think that he wants to help me"
+    ],
+    "U05": [
+     "कोणालाच मला मदत करायची नाही",
+     "nobody wants to help me"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "मी तुम्हाला आज सांगितलं तर",
+     "if I asked you today"
+    ],
+    "U01": [
+     "आणि मी तुम्हाला सांगितलं तर?",
+     "and if I asked you?"
+    ],
+    "U02": [
+     "मी तुम्हाला आज मला मदत करायला सांगितलं तर",
+     "if I asked you to help me today"
+    ],
+    "U03": [
+     "पण मी तुम्हाला उद्या सांगितलं तर?",
+     "but if I asked you tomorrow?"
+    ],
+    "U04": [
+     "मी तुम्हाला नंतर परत यायला सांगितलं तर",
+     "if I asked you to come back later on"
+    ],
+    "U05": [
+     "मी तुम्हाला समजावून सांगायला सांगितलं तर",
+     "if I asked you to explain"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B04": [
+     "आणि तुम्ही काय कराल?",
+     "and what would you do?"
+    ],
+    "U03": [
+     "तुम्ही उद्या काय कराल?",
+     "what would you do tomorrow?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही आता काय कराल?",
+     "what would you do now?"
+    ],
+    [
+     "use",
+     "मी तुम्हाला परत यायला सांगितलं तर तुम्ही काय कराल?",
+     "what would you do if I asked you to come back?"
+    ],
+    [
+     "use",
+     "तुम्ही रविवारी दुपारी काय कराल?",
+     "what would you do on Sunday afternoon?"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

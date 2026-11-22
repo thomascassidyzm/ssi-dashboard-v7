@@ -1,0 +1,60 @@
+{
+ "course": "mar_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "phrase.update",
+   "key": "mar_for_eng:S0108L02B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 2,
+   "op": "phrase.update",
+   "key": "mar_for_eng:S0108L02U05",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 3,
+   "op": "phrase.update",
+   "key": "mar_for_eng:S0108L03U05",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 4,
+   "op": "phrase.update",
+   "key": "mar_for_eng:S0108L04B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 5,
+   "op": "phrase.update",
+   "key": "mar_for_eng:S0108L04U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 6,
+   "op": "phrase.update",
+   "key": "mar_for_eng:S0108L04U05",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [],
+ "counts": {
+  "ok": 7
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "family": "zut",
+ "touched_seeds": [
+  600
+ ],
+ "ops": [],
+ "need": [
+  {
+   "kind": "lego",
+   "id": "S0600L03",
+   "slot": "presentation",
+   "text": "The French for: 'how much', when you mean to what extent, is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  }
+ ],
+ "links": [],
+ "held": [
+  {
+   "what": "S0513L01 to move | bouger (LEGO delete + 8 phrases)",
+   "why": "lego.delete on a released course needs kai_go/tom_go in the request (TOM_GO_REQUIRED); structural, moves learner rounds — needs Kai's word for this delete"
+  },
+  {
+   "what": "S0408L04 happy | heureuse (LEGO delete, U04/U05 to L05, 6 phrases)",
+   "why": "same: structural delete on a released course needs Kai's word"
+  }
+ ],
+ "audio": {
+  "presentation|The French for: 'how much', when you mean to what extent, is: <break time=\"300ms\"/> <break time=\"10ms\"/>": {
+   "audioId": "6c39a975-e2bb-4b05-904b-1ec9820c02c0",
+   "source": "rendered",
+   "chars": 104
+  }
+ },
+ "unvoiced": []
+}

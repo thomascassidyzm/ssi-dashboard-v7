@@ -1,0 +1,558 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0541L01B04",
+    "seed_number": 541,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "it's a good idea to rest",
+    "target_text": "é boa ideia descansar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0541L02B04",
+    "seed_number": 541,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "to try and breathe better",
+    "target_text": "tentar respirar melhor",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0541L03B04",
+    "seed_number": 541,
+    "lego_index": 3,
+    "position": 19,
+    "known_text": "to speak slowly",
+    "target_text": "falar devagar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0542L01B04",
+    "seed_number": 542,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "whenever you feel nervous",
+    "target_text": "sempre que você se sentir nervoso",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 33,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0542L02B04",
+    "seed_number": 542,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "I was angry",
+    "target_text": "eu estava com raiva",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 3,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0543L01B04",
+    "seed_number": 543,
+    "lego_index": 1,
+    "position": 15,
+    "known_text": "she was right about everything",
+    "target_text": "ela tinha razão sobre tudo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01B02",
+   "expect": {
+    "known_text": "it's a good idea now",
+    "target_text": "é boa ideia agora"
+   },
+   "set": {
+    "known_text": "it's a good idea to wait",
+    "target_text": "é boa ideia esperar",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01B03",
+   "expect": {
+    "known_text": "yes, it's a good idea",
+    "target_text": "sim, é boa ideia"
+   },
+   "set": {
+    "known_text": "it's a good idea to ask",
+    "target_text": "é boa ideia perguntar",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01U02",
+   "expect": {
+    "known_text": "we know it's a good idea",
+    "target_text": "sabemos que é boa ideia"
+   },
+   "set": {
+    "known_text": "it's a good idea to learn Portuguese",
+    "target_text": "é boa ideia aprender português",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L01U03",
+   "expect": {
+    "known_text": "they said it's a good idea",
+    "target_text": "disseram que é boa ideia"
+   },
+   "set": {
+    "known_text": "it's a good idea to call before you go",
+    "target_text": "é boa ideia ligar antes de ir",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02B02",
+   "expect": {
+    "known_text": "it's a good idea to try and breathe now",
+    "target_text": "é boa ideia tentar respirar agora"
+   },
+   "set": {
+    "known_text": "I want to try and breathe",
+    "target_text": "quero tentar respirar",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02B03",
+   "expect": {
+    "known_text": "yes, to try and breathe",
+    "target_text": "sim, tentar respirar"
+   },
+   "set": {
+    "known_text": "you need to try and breathe",
+    "target_text": "você precisa tentar respirar",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U02",
+   "expect": {
+    "known_text": "she said it's a good idea to try and breathe",
+    "target_text": "ela disse que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "when you're nervous, it helps to try and breathe slowly",
+    "target_text": "quando você está nervoso, ajuda tentar respirar devagar",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U03",
+   "expect": {
+    "known_text": "we know it's a good idea to try and breathe",
+    "target_text": "sabemos que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "I'm going to try and breathe more slowly",
+    "target_text": "vou tentar respirar mais devagar",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U04",
+   "expect": {
+    "known_text": "they said it's a good idea to try and breathe",
+    "target_text": "disseram que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "the doctor said to try and breathe slowly",
+    "target_text": "o médico disse para tentar respirar devagar",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L02U05",
+   "expect": {
+    "known_text": "I'm sure it's a good idea to try and breathe",
+    "target_text": "tenho certeza de que é boa ideia tentar respirar"
+   },
+   "set": {
+    "known_text": "I need to sit down and try and breathe",
+    "target_text": "preciso me sentar e tentar respirar",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0541L03B03",
+   "expect": {
+    "known_text": "yes, slowly",
+    "target_text": "sim, devagar"
+   },
+   "set": {
+    "known_text": "very slowly",
+    "target_text": "muito devagar",
+    "decomposition": null,
+    "word_count": 13,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01B02",
+   "expect": {
+    "known_text": "whenever you feel it",
+    "target_text": "sempre que você se sentir isso"
+   },
+   "set": {
+    "known_text": "whenever you feel tired",
+    "target_text": "sempre que você se sentir cansado",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01B03",
+   "expect": {
+    "known_text": "yes, whenever you feel",
+    "target_text": "sim, sempre que você se sentir"
+   },
+   "set": {
+    "known_text": "whenever you feel ill",
+    "target_text": "sempre que você se sentir doente",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01U01",
+   "expect": {
+    "known_text": "she said whenever you feel",
+    "target_text": "ela disse que sempre que você se sentir"
+   },
+   "set": {
+    "known_text": "you can call me whenever you feel alone",
+    "target_text": "você pode me ligar sempre que você se sentir sozinho",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01U02",
+   "expect": {
+    "known_text": "we know whenever you feel",
+    "target_text": "sabemos que sempre que você se sentir"
+   },
+   "set": {
+    "known_text": "you should rest whenever you feel tired",
+    "target_text": "você devia descansar sempre que você se sentir cansado",
+    "decomposition": null,
+    "word_count": 54,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01U03",
+   "expect": {
+    "known_text": "they said whenever you feel",
+    "target_text": "disseram que sempre que você se sentir"
+   },
+   "set": {
+    "known_text": "you can talk to me whenever you feel nervous",
+    "target_text": "você pode falar comigo sempre que você se sentir nervoso",
+    "decomposition": null,
+    "word_count": 56,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01U04",
+   "expect": {
+    "known_text": "I'm sure, whenever you feel",
+    "target_text": "tenho certeza, sempre que você se sentir"
+   },
+   "set": {
+    "known_text": "you can go home whenever you feel ill",
+    "target_text": "você pode ir para casa sempre que você se sentir doente",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L01U05",
+   "expect": {
+    "known_text": "I think, whenever you feel",
+    "target_text": "acho que sempre que você se sentir"
+   },
+   "set": {
+    "known_text": "whenever you feel ready, we're going to start",
+    "target_text": "sempre que você se sentir pronto, vamos começar",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L02B02",
+   "expect": {
+    "known_text": "feel angry now",
+    "target_text": "se sentir com raiva agora"
+   },
+   "set": {
+    "known_text": "to feel angry",
+    "target_text": "se sentir com raiva",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L02B03",
+   "expect": {
+    "known_text": "yes, with anger",
+    "target_text": "sim, com raiva"
+   },
+   "set": {
+    "known_text": "he's angry",
+    "target_text": "ele está com raiva",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L02U02",
+   "expect": {
+    "known_text": "she said whenever you feel angry",
+    "target_text": "ela disse que sempre que você se sentir com raiva"
+   },
+   "set": {
+    "known_text": "she's angry with me",
+    "target_text": "ela está com raiva de mim",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L02U03",
+   "expect": {
+    "known_text": "we know whenever you feel angry",
+    "target_text": "sabemos que sempre que você se sentir com raiva"
+   },
+   "set": {
+    "known_text": "I don't want to feel angry",
+    "target_text": "não quero me sentir com raiva",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L02U04",
+   "expect": {
+    "known_text": "they said whenever you feel angry",
+    "target_text": "disseram que sempre que você se sentir com raiva"
+   },
+   "set": {
+    "known_text": "it's a good idea to breathe slowly when you feel angry",
+    "target_text": "é boa ideia respirar devagar quando você se sentir com raiva",
+    "decomposition": null,
+    "word_count": 60,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0542L02U05",
+   "expect": {
+    "known_text": "I'm sure, whenever you feel angry",
+    "target_text": "tenho certeza, sempre que você se sentir com raiva"
+   },
+   "set": {
+    "known_text": "why are you angry?",
+    "target_text": "por que você está com raiva?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0543L01B02",
+   "expect": {
+    "known_text": "she was right now",
+    "target_text": "ela tinha razão agora"
+   },
+   "set": {
+    "known_text": "she was right about that",
+    "target_text": "ela tinha razão sobre isso",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0543L01B03",
+   "expect": {
+    "known_text": "yes, she was right",
+    "target_text": "sim, ela tinha razão"
+   },
+   "set": {
+    "known_text": "she was right from the start",
+    "target_text": "ela tinha razão desde o início",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U02",
+   "expect": {
+    "known_text": "she said it's a good idea to try and breathe slowly",
+    "target_text": "ela disse que é boa ideia tentar respirar devagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U03",
+   "expect": {
+    "known_text": "we know it's a good idea to try and breathe slowly",
+    "target_text": "sabemos que é boa ideia tentar respirar devagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U04",
+   "expect": {
+    "known_text": "they said it's a good idea to try and breathe slowly",
+    "target_text": "disseram que é boa ideia tentar respirar devagar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0541L03U05",
+   "expect": {
+    "known_text": "I'm sure it's a good idea to try and breathe slowly",
+    "target_text": "tenho certeza de que é boa ideia tentar respirar devagar"
+   }
+  }
+ ]
+}

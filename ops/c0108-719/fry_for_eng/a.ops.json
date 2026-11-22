@@ -1,0 +1,146 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Wy ferwachten net midden yn 'e nacht wekker te wurden."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Wy hopen net om midden yn 'e nacht wekker te wurden."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "wy ferwachten net",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we expected",
+      "target": "wy ferwachten"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "wy hopen net"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02C01",
+   "set": {
+    "target_text": "wy ferwachten",
+    "known_text": "we expected"
+   },
+   "expect": {
+    "known_text": "we hoped",
+    "target_text": "wy hopen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02B01",
+   "set": {
+    "target_text": "wy ferwachten net flaters te meitsjen",
+    "known_text": "we didn't expect to make mistakes"
+   },
+   "expect": {
+    "known_text": "we didn't hope to make mistakes",
+    "target_text": "wy hopen net om flaters te meitsjen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02B02",
+   "set": {
+    "target_text": "wy ferwachten net mear wurden te hearren",
+    "known_text": "we didn't expect to hear more words"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear more words",
+    "target_text": "wy hopen net om mear wurden te hearren"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02B03",
+   "set": {
+    "target_text": "wy ferwachten net de hiele dei te praten",
+    "known_text": "we didn't expect to talk all day"
+   },
+   "expect": {
+    "known_text": "we didn't hope to talk all day",
+    "target_text": "wy hopen net de hiele dei te praten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "wy ferwachten net mear oer dizze taal út te finen",
+    "known_text": "we didn't expect to find out more about this language"
+   },
+   "expect": {
+    "known_text": "we didn't hope to find out more about this language",
+    "target_text": "wy hopen net mear oer dizze taal út te finen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U02",
+   "set": {
+    "target_text": "ja, mar wy ferwachten net it antwurd te finen",
+    "known_text": "yes but we didn't expect to find the answer"
+   },
+   "expect": {
+    "known_text": "yes but we didn't hope to find the answer",
+    "target_text": "ja, mar wy hopen net om it antwurd te finen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U03",
+   "set": {
+    "target_text": "wy ferwachten net sa fluch klear te wêzen",
+    "known_text": "we didn't expect to finish so quickly"
+   },
+   "expect": {
+    "known_text": "we didn't hope to finish as quickly as possible",
+    "target_text": "wy hopen net sa fluch mooglik klear te wêzen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U04",
+   "set": {
+    "target_text": "wy ferwachten net nei hûs te gean",
+    "known_text": "we didn't expect to go home"
+   },
+   "expect": {
+    "known_text": "we didn't hope to go home",
+    "target_text": "wy hopen net nei hûs te gean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0108L02U05",
+   "set": {
+    "target_text": "wy ferwachten net midden yn 'e nacht wekker te wurden",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to be awake in the middle of the night",
+    "target_text": "wy hopen net om midden yn 'e nacht wekker te wurden"
+   }
+  }
+ ]
+}

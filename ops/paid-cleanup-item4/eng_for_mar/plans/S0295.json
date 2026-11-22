@@ -1,0 +1,66 @@
+{
+ "seed": 295,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मी ते एका दिवसात पूर्ण करू शकतो",
+     "I can finish it in a day"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "मी ते एका दिवसात पूर्ण करू शकत नाही",
+     "I can't finish it in a day"
+    ],
+    [
+     "use",
+     "मला एका दिवसात सगळं पूर्ण करायचं आहे",
+     "I want to finish everything in a day"
+    ],
+    [
+     "use",
+     "मी ते एका दिवसात पूर्ण करणार आहे",
+     "I'm going to finish it in a day"
+    ],
+    [
+     "use",
+     "एका दिवसात ते शक्य नाही",
+     "it's not possible in a day"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "मला आज संपवायचं होतं",
+     "I wanted to finish today"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तिला वेळेत संपवायचं होतं",
+     "she wanted to finish in time"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "मी ते म्हटलं नाही",
+     "I didn't say that"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "ते सोपं होतं असं मी म्हटलं नाही",
+     "I didn't say that it was easy"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,294 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "c0cbbae2-604c-479c-bc60-8892103c9d01",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "684c0e9f-0af1-4939-8785-534e93757eb8",
+    "target2_audio_id": "427282ee-009f-4fb8-b46b-c4f5a723c971"
+   },
+   "after": {
+    "id": "c0cbbae2-604c-479c-bc60-8892103c9d01",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।",
+    "known_audio_id": null,
+    "target1_audio_id": "684c0e9f-0af1-4939-8785-534e93757eb8",
+    "target2_audio_id": "427282ee-009f-4fb8-b46b-c4f5a723c971"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "id": "hin_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "hin_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "hope to wake",
+    "target_text": "जागने की उम्मीद",
+    "known_audio_id": "6cbf8118-6212-4c3e-b5cc-4f920debbdf9",
+    "target1_audio_id": "c7aa104d-6f76-4580-a0a3-99e6971d2db7",
+    "target2_audio_id": "abe76551-a9c0-45e1-962f-5478782a5758",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hin_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expect to wake up",
+    "target_text": "जागने की उम्मीद",
+    "known_audio_id": null,
+    "target1_audio_id": "c7aa104d-6f76-4580-a0a3-99e6971d2db7",
+    "target2_audio_id": "abe76551-a9c0-45e1-962f-5478782a5758",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "id": "hin_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "hin_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "no need to wake",
+    "target_text": "जागने की ज़रूरत नहीं है।",
+    "known_audio_id": "7b89079a-c26f-45d1-8c7f-8752205276fc",
+    "target1_audio_id": "1405cc13-faa6-4351-bba0-6854ebf97ab5",
+    "target2_audio_id": "03cf1779-4593-424b-8d82-ead398f76090",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hin_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "no need to wake up",
+    "target_text": "जागने की ज़रूरत नहीं है।",
+    "known_audio_id": null,
+    "target1_audio_id": "1405cc13-faa6-4351-bba0-6854ebf97ab5",
+    "target2_audio_id": "03cf1779-4593-424b-8d82-ead398f76090",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "id": "hin_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "hin_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "so no need to wake at night",
+    "target_text": "तो रात में जागने की ज़रूरत नहीं है।",
+    "known_audio_id": "78ad2bfc-a57a-41d6-8f10-7e9a3ab4dfca",
+    "target1_audio_id": "ac0f6d1e-c861-46d2-84aa-a1dde61b1d6f",
+    "target2_audio_id": "114b710c-5c6c-42f6-a7dd-64d5e3be5aa9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hin_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "so no need to wake up at night",
+    "target_text": "तो रात में जागने की ज़रूरत नहीं है।",
+    "known_audio_id": null,
+    "target1_audio_id": "ac0f6d1e-c861-46d2-84aa-a1dde61b1d6f",
+    "target2_audio_id": "114b710c-5c6c-42f6-a7dd-64d5e3be5aa9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "id": "hin_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "hin_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I hope not to wake",
+    "target_text": "मुझे जागने की उम्मीद नहीं है।",
+    "known_audio_id": "43255e95-f4ce-4561-802f-456ec776f66c",
+    "target1_audio_id": "d212e68c-3c06-40d0-918b-f6bc24f75712",
+    "target2_audio_id": "6a3f651c-9d6e-4cb1-81a9-61d051224003",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hin_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't expect to wake up",
+    "target_text": "मुझे जागने की उम्मीद नहीं है।",
+    "known_audio_id": null,
+    "target1_audio_id": "d212e68c-3c06-40d0-918b-f6bc24f75712",
+    "target2_audio_id": "6a3f651c-9d6e-4cb1-81a9-61d051224003",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "id": "hin_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "hin_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "wake in middle of night",
+    "target_text": "रात के बीच में जागने",
+    "known_audio_id": "193442c7-871b-4aa7-bf5d-7ffa3066b4db",
+    "target1_audio_id": "56f365d5-1fd0-442c-be5d-c61d0e280282",
+    "target2_audio_id": "fda430a4-d084-42d2-817d-dc676dab6e76",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hin_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "wake up in middle of night",
+    "target_text": "रात के बीच में जागने",
+    "known_audio_id": null,
+    "target1_audio_id": "56f365d5-1fd0-442c-be5d-c61d0e280282",
+    "target2_audio_id": "fda430a4-d084-42d2-817d-dc676dab6e76",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "hin_for_eng",
+    "id": "hin_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "hin_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "684c0e9f-0af1-4939-8785-534e93757eb8",
+    "target2_audio_id": "427282ee-009f-4fb8-b46b-c4f5a723c971",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "hin_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।",
+    "known_audio_id": null,
+    "target1_audio_id": "684c0e9f-0af1-4939-8785-534e93757eb8",
+    "target2_audio_id": "427282ee-009f-4fb8-b46b-c4f5a723c971",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "wake in middle of night",
+    "known_audio_id": "193442c7-871b-4aa7-bf5d-7ffa3066b4db"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "I hope not to wake",
+    "known_audio_id": "43255e95-f4ce-4561-802f-456ec776f66c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "so no need to wake at night",
+    "known_audio_id": "78ad2bfc-a57a-41d6-8f10-7e9a3ab4dfca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "no need to wake",
+    "known_audio_id": "7b89079a-c26f-45d1-8c7f-8752205276fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hin_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "hope to wake",
+    "known_audio_id": "6cbf8118-6212-4c3e-b5cc-4f920debbdf9"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

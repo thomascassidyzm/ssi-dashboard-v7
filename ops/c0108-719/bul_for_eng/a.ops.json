@@ -1,0 +1,82 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Не очаквахме да се събудим посред нощ.",
+    "target_text_roman": "Ne ochakvahme da se sabudim posred nosht."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Не се надявахме да се събудим посред нощ."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "не очаквахме да се събудим",
+    "target_text_roman": "ne ochakvahme da se sabudim",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "не се надявахме да се събудим"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "Очаквахме да се събудим",
+    "target_text_roman": "ochakvahme da se sabudim",
+    "known_text": "we expected to wake up"
+   },
+   "expect": {
+    "known_text": "we hoped not to wake up",
+    "target_text": "Надявахме се да не се събудим"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L02B03",
+   "set": {
+    "target_text": "да се събудим посред нощ",
+    "target_text_roman": "da se sabudim posred nosht",
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake up at midnight",
+    "target_text": "не се надявахме посред нощ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "Не очаквахме да се събудим посред нощ",
+    "target_text_roman": "ne ochakvahme da se sabudim posred nosht",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Не се надявахме да се събудим посред нощ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "bul_for_eng:S0108L02U02",
+   "set": {
+    "target_text": "Очаквахме да се събудим посред нощ",
+    "target_text_roman": "ochakvahme da se sabudim posred nosht",
+    "known_text": "we expected to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we hoped not to wake up at midnight",
+    "target_text": "Надявахме се да не се събудим посред нощ"
+   }
+  }
+ ]
+}

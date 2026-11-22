@@ -1,0 +1,1321 @@
+{
+ "course": "eng_for_mar",
+ "at": "2026-11-22",
+ "by": "cs #358",
+ "how": "plans/ vs applied events (events-*.json incl. events-759c-recovered.json, batches/*.apply.json, Popty undo files actor cs-item4-filler); confirmed on the nightly copy ssi_copy_20261122t033000z: every to-apply seed builds with 0 errors there (its rows still hold the pre-plan text), so none of them is live yet",
+ "counts": {
+  "no change needed (kept)": 3,
+  "to apply (night changeset r358)": 207,
+  "live": 6
+ },
+ "to_apply": [
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  50,
+  51,
+  52,
+  53,
+  54,
+  56,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63,
+  64,
+  65,
+  66,
+  67,
+  69,
+  71,
+  72,
+  73,
+  77,
+  78,
+  79,
+  81,
+  82,
+  83,
+  84,
+  85,
+  86,
+  89,
+  90,
+  92,
+  93,
+  94,
+  95,
+  97,
+  98,
+  99,
+  100,
+  101,
+  102,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  112,
+  113,
+  114,
+  115,
+  116,
+  117,
+  118,
+  119,
+  120,
+  121,
+  122,
+  123,
+  125,
+  126,
+  127,
+  128,
+  130,
+  131,
+  132,
+  133,
+  134,
+  135,
+  136,
+  137,
+  143,
+  146,
+  148,
+  149,
+  150,
+  151,
+  152,
+  153,
+  154,
+  155,
+  156,
+  157,
+  158,
+  159,
+  160,
+  162,
+  163,
+  165,
+  166,
+  168,
+  169,
+  170,
+  171,
+  172,
+  173,
+  174,
+  175,
+  176,
+  178,
+  179,
+  180,
+  181,
+  182,
+  183,
+  187,
+  188,
+  190,
+  191,
+  192,
+  194,
+  196,
+  197,
+  198,
+  199,
+  200,
+  201,
+  202,
+  203,
+  204,
+  205,
+  206,
+  207,
+  208,
+  209,
+  210,
+  211,
+  213,
+  214,
+  216,
+  217,
+  218,
+  219,
+  220,
+  221,
+  222,
+  223,
+  224,
+  225,
+  226,
+  228,
+  229,
+  230,
+  231,
+  232,
+  233,
+  235,
+  236,
+  237,
+  238,
+  239,
+  240,
+  241,
+  242,
+  243,
+  244,
+  245,
+  246,
+  247,
+  248,
+  249,
+  250,
+  251,
+  252,
+  253,
+  254,
+  255,
+  256,
+  258,
+  260,
+  262,
+  273,
+  275,
+  276,
+  278,
+  281,
+  282,
+  284,
+  286,
+  287,
+  288,
+  289,
+  290,
+  291,
+  292,
+  293,
+  294,
+  295,
+  296,
+  297,
+  298,
+  299,
+  300,
+  491,
+  538,
+  618,
+  647,
+  662
+ ],
+ "to_apply_ops": 2092,
+ "seeds": {
+  "34": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "live",
+   "events": [
+    "a62d2c31"
+   ]
+  },
+  "36": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "a62d2c31"
+   ]
+  },
+  "37": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "a62d2c31"
+   ]
+  },
+  "38": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "a62d2c31"
+   ]
+  },
+  "39": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "a62d2c31"
+   ]
+  },
+  "40": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "a62d2c31"
+   ]
+  },
+  "41": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "42": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "to apply (night changeset r358)"
+  },
+  "43": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "44": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "to apply (night changeset r358)"
+  },
+  "45": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "46": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "47": {
+   "scan_rows": true,
+   "plan_ops": 24,
+   "state": "to apply (night changeset r358)"
+  },
+  "50": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "51": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "to apply (night changeset r358)"
+  },
+  "52": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "53": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "54": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "56": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "58": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "59": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "60": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "61": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "62": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "63": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "64": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "65": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "to apply (night changeset r358)"
+  },
+  "66": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "67": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "69": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "71": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "72": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "73": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "77": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "78": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "79": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "81": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "82": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "83": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "84": {
+   "scan_rows": false,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "85": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "86": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "89": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "90": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "to apply (night changeset r358)"
+  },
+  "92": {
+   "scan_rows": true,
+   "plan_ops": 27,
+   "state": "to apply (night changeset r358)"
+  },
+  "93": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "94": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "to apply (night changeset r358)"
+  },
+  "95": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "97": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "98": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "99": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "100": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "101": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "102": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "104": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "105": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "106": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "107": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "108": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "109": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "110": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "to apply (night changeset r358)"
+  },
+  "111": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "112": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "113": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "114": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "115": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "116": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "to apply (night changeset r358)"
+  },
+  "117": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "to apply (night changeset r358)"
+  },
+  "118": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "to apply (night changeset r358)"
+  },
+  "119": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "120": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "121": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "122": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "to apply (night changeset r358)"
+  },
+  "123": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "125": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "126": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "127": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "128": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "130": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "131": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "to apply (night changeset r358)"
+  },
+  "132": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "133": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "to apply (night changeset r358)"
+  },
+  "134": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "to apply (night changeset r358)"
+  },
+  "135": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "136": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "137": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "143": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "to apply (night changeset r358)"
+  },
+  "146": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "148": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "149": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "150": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "151": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "152": {
+   "scan_rows": true,
+   "plan_ops": 31,
+   "state": "to apply (night changeset r358)"
+  },
+  "153": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "154": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "155": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "to apply (night changeset r358)"
+  },
+  "156": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "157": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "to apply (night changeset r358)"
+  },
+  "158": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "159": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "160": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "162": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "163": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "165": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "166": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "168": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "to apply (night changeset r358)"
+  },
+  "169": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "170": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "171": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "172": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "173": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "to apply (night changeset r358)"
+  },
+  "174": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "175": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "176": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "to apply (night changeset r358)"
+  },
+  "178": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "179": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "180": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "181": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "182": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "183": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "187": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "188": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "190": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "191": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "192": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "194": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "196": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "197": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "198": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "199": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "200": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "to apply (night changeset r358)"
+  },
+  "201": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "202": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "203": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "to apply (night changeset r358)"
+  },
+  "204": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "to apply (night changeset r358)"
+  },
+  "205": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "206": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "207": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "208": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "209": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "to apply (night changeset r358)"
+  },
+  "210": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "211": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "213": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "214": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "216": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "217": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "218": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "219": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "to apply (night changeset r358)"
+  },
+  "220": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "221": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "222": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "223": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "224": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "225": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "226": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "228": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "229": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "230": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "231": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "232": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "233": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "235": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "236": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "237": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "238": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "239": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "240": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "241": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "242": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "243": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "244": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "245": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "246": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "247": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "248": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "249": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "250": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "251": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "252": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "253": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "254": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "255": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "256": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "258": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "260": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "262": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "273": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "275": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "276": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "278": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "to apply (night changeset r358)"
+  },
+  "281": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "282": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "284": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "286": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "287": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "to apply (night changeset r358)"
+  },
+  "288": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "289": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "290": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "291": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "292": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "293": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "294": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "295": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "to apply (night changeset r358)"
+  },
+  "296": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "297": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "298": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "299": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "300": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "363": {
+   "scan_rows": true,
+   "plan_ops": 0,
+   "state": "no change needed (kept)"
+  },
+  "491": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "538": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "to apply (night changeset r358)"
+  },
+  "601": {
+   "scan_rows": true,
+   "plan_ops": 0,
+   "state": "no change needed (kept)"
+  },
+  "618": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "to apply (night changeset r358)"
+  },
+  "647": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  },
+  "660": {
+   "scan_rows": true,
+   "plan_ops": 0,
+   "state": "no change needed (kept)"
+  },
+  "662": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "to apply (night changeset r358)"
+  }
+ }
+}

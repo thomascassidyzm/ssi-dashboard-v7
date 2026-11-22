@@ -1,0 +1,374 @@
+[
+ {
+  "seed_number": 527,
+  "phrases": {
+   "527:1": [
+    {
+     "known_text": "guess",
+     "target_text": "adivinha",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "who",
+     "target_text": "quem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "guess who",
+     "target_text": "adivinha quem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "guess who's here",
+     "target_text": "adivinha quem está aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "guess who I saw",
+     "target_text": "adivinha quem eu vi",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "guess who I saw at the café",
+     "target_text": "adivinha quem eu vi no café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "guess who wants to come with us",
+     "target_text": "adivinha quem quer vir conosco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "guess who is going to pay",
+     "target_text": "adivinha quem vai pagar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "guess who I met yesterday",
+     "target_text": "adivinha quem eu conheci ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "guess who is learning Portuguese",
+     "target_text": "adivinha quem está aprendendo português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "guess who's at the door",
+     "target_text": "adivinha quem está na porta",
+     "phrase_role": "build"
+    }
+   ],
+   "527:2": [
+    {
+     "known_text": "told",
+     "target_text": "contou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "me",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "told me",
+     "target_text": "me contou",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "guess who told me",
+     "target_text": "adivinha quem me contou",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my friend told me",
+     "target_text": "meu amigo me contou",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me the truth",
+     "target_text": "ela me contou a verdade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my father told me the news",
+     "target_text": "meu pai me contou a notícia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my brother told me a story",
+     "target_text": "meu irmão me contou uma história",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he told me why he left",
+     "target_text": "ele me contou por que foi embora",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my mother told me about the new baby",
+     "target_text": "minha mãe me contou sobre o bebê novo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he told me everything",
+     "target_text": "ele me contou tudo",
+     "phrase_role": "build"
+    }
+   ],
+   "527:3": [
+    {
+     "known_text": "that",
+     "target_text": "aquela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "story",
+     "target_text": "história",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "funny",
+     "target_text": "engraçada",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that funny story",
+     "target_text": "aquela história engraçada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "told me that funny story",
+     "target_text": "me contou aquela história engraçada",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that funny story about the dog",
+     "target_text": "aquela história engraçada sobre o cachorro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "guess who told me that funny story",
+     "target_text": "adivinha quem me contou aquela história engraçada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I love that funny story",
+     "target_text": "eu adoro aquela história engraçada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me that funny story yesterday",
+     "target_text": "ela me contou aquela história engraçada ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "who told you that funny story?",
+     "target_text": "quem te contou aquela história engraçada?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "everyone knows that funny story",
+     "target_text": "todo mundo conhece aquela história engraçada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that funny story about my father",
+     "target_text": "aquela história engraçada sobre o meu pai",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 528,
+  "phrases": {
+   "528:1": [
+    {
+     "known_text": "probably",
+     "target_text": "provavelmente",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I was supposed to",
+     "target_text": "devia",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I'm probably supposed to",
+     "target_text": "provavelmente devia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm probably supposed to wait",
+     "target_text": "provavelmente devia esperar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm probably supposed to ask",
+     "target_text": "provavelmente devia perguntar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm probably supposed to be at work",
+     "target_text": "provavelmente devia estar no trabalho",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm probably supposed to call my mother",
+     "target_text": "provavelmente devia ligar para a minha mãe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm probably supposed to say something",
+     "target_text": "provavelmente devia dizer algo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm probably supposed to stay here",
+     "target_text": "provavelmente devia ficar aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm probably supposed to learn more Portuguese",
+     "target_text": "provavelmente devia aprender mais português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm probably supposed to pay",
+     "target_text": "provavelmente devia pagar",
+     "phrase_role": "build"
+    }
+   ],
+   "528:2": [
+    {
+     "known_text": "to keep",
+     "target_text": "guardar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "those",
+     "target_text": "essas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "things",
+     "target_text": "coisas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to keep those things",
+     "target_text": "guardar essas coisas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm probably supposed to keep those things",
+     "target_text": "provavelmente devia guardar essas coisas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to keep those things at home",
+     "target_text": "guardar essas coisas em casa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "where can I keep those things?",
+     "target_text": "onde posso guardar essas coisas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to keep those things in the car",
+     "target_text": "vou guardar essas coisas no carro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to keep those things",
+     "target_text": "quero guardar essas coisas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can keep those things here",
+     "target_text": "você pode guardar essas coisas aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to keep those things",
+     "target_text": "ela não quer guardar essas coisas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "where do you want to keep those things?",
+     "target_text": "onde é que você quer guardar essas coisas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to keep those things",
+     "target_text": "preciso guardar essas coisas",
+     "phrase_role": "build"
+    }
+   ],
+   "528:3": [
+    {
+     "known_text": "in",
+     "target_text": "em",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "another",
+     "target_text": "outro",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "room",
+     "target_text": "quarto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in another room",
+     "target_text": "em outro quarto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to keep those things in another room",
+     "target_text": "guardar essas coisas em outro quarto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he's in another room",
+     "target_text": "ele está em outro quarto",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm probably supposed to keep those things in another room",
+     "target_text": "provavelmente devia guardar essas coisas em outro quarto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children are in another room",
+     "target_text": "as crianças estão em outro quarto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to sleep in another room tonight",
+     "target_text": "vou dormir em outro quarto esta noite",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I talk to you in another room?",
+     "target_text": "posso falar com você em outro quarto?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my things are in another room",
+     "target_text": "minhas coisas estão em outro quarto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to sleep in another room",
+     "target_text": "dormir em outro quarto",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,593 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0417L01B04",
+    "seed_number": 417,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "but they want to kill it",
+    "target_text": "mas eles querem matar isso",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0417L02B04",
+    "seed_number": 417,
+    "lego_index": 2,
+    "position": 15,
+    "known_text": "I saw those ants",
+    "target_text": "eu vi aquelas formigas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0418L01B04",
+    "seed_number": 418,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I know they need to serve",
+    "target_text": "eu sei que eles precisam servir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0418L02B04",
+    "seed_number": 418,
+    "lego_index": 2,
+    "position": 15,
+    "known_text": "to help the community",
+    "target_text": "ajudar a comunidade",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0419L01B04",
+    "seed_number": 419,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "but if they want",
+    "target_text": "mas se querem",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0419L02B04",
+    "seed_number": 419,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "they say that people",
+    "target_text": "eles dizem que as pessoas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 4,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0419L03B04",
+    "seed_number": 419,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "he wants people to like them",
+    "target_text": "ele quer que as pessoas gostem deles",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 36,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0417L01B03",
+   "expect": {
+    "known_text": "they want to kill now",
+    "target_text": "eles querem matar agora"
+   },
+   "set": {
+    "known_text": "they want to kill something",
+    "target_text": "eles querem matar algo",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0417L01U02",
+   "expect": {
+    "known_text": "no, they want to kill",
+    "target_text": "não, eles querem matar"
+   },
+   "set": {
+    "known_text": "she said that they want to kill it",
+    "target_text": "ela disse que eles querem matar isso",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0417L01U03",
+   "expect": {
+    "known_text": "I think they want to kill",
+    "target_text": "acho que eles querem matar"
+   },
+   "set": {
+    "known_text": "I know they want to kill it",
+    "target_text": "eu sei que eles querem matar isso",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0417L01U05",
+   "expect": {
+    "known_text": "yes, do they want to kill?",
+    "target_text": "sim, eles querem matar?"
+   },
+   "set": {
+    "known_text": "why do they want to kill it?",
+    "target_text": "por que eles querem matar isso?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0417L02U02",
+   "expect": {
+    "known_text": "yes, those ants",
+    "target_text": "sim, aquelas formigas"
+   },
+   "set": {
+    "known_text": "those ants are here",
+    "target_text": "aquelas formigas estão aqui",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0417L02U03",
+   "expect": {
+    "known_text": "I think those ants",
+    "target_text": "acho que aquelas formigas"
+   },
+   "set": {
+    "known_text": "where are those ants?",
+    "target_text": "onde estão aquelas formigas?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0418L01B02",
+   "expect": {
+    "known_text": "they need to serve now",
+    "target_text": "eles precisam servir agora"
+   },
+   "set": {
+    "known_text": "but they need to serve",
+    "target_text": "mas eles precisam servir",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0418L01B03",
+   "expect": {
+    "known_text": "yes, they need to serve",
+    "target_text": "sim, eles precisam servir"
+   },
+   "set": {
+    "known_text": "why do they need to serve?",
+    "target_text": "por que eles precisam servir?",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0418L01U01",
+   "expect": {
+    "known_text": "no, they need to serve",
+    "target_text": "não, eles precisam servir"
+   },
+   "set": {
+    "known_text": "she said that they need to serve",
+    "target_text": "ela disse que eles precisam servir",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0418L02U01",
+   "expect": {
+    "known_text": "yes, the community",
+    "target_text": "sim, a comunidade"
+   },
+   "set": {
+    "known_text": "the community needs help",
+    "target_text": "a comunidade precisa de ajuda",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0418L02U02",
+   "expect": {
+    "known_text": "I think the community",
+    "target_text": "acho que a comunidade"
+   },
+   "set": {
+    "known_text": "the community wants to help",
+    "target_text": "a comunidade quer ajudar",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L01B02",
+   "expect": {
+    "known_text": "if they still want",
+    "target_text": "se ainda querem"
+   },
+   "set": {
+    "known_text": "if they want to help",
+    "target_text": "se querem ajudar",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L01B03",
+   "expect": {
+    "known_text": "yes, if they want",
+    "target_text": "sim, se querem"
+   },
+   "set": {
+    "known_text": "if they want to win",
+    "target_text": "se querem ganhar",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L01U01",
+   "expect": {
+    "known_text": "no, if they want",
+    "target_text": "não, se querem"
+   },
+   "set": {
+    "known_text": "if they want to win, they need to work hard",
+    "target_text": "se querem ganhar, precisam trabalhar muito",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L01U02",
+   "expect": {
+    "known_text": "I think if they want",
+    "target_text": "acho que se querem"
+   },
+   "set": {
+    "known_text": "if they want to reserve, they need to ask",
+    "target_text": "se querem reservar, precisam perguntar",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L01U05",
+   "expect": {
+    "known_text": "yes, if they still want",
+    "target_text": "sim, se ainda querem"
+   },
+   "set": {
+    "known_text": "if they want to lead, they need to help",
+    "target_text": "se querem liderar, precisam ajudar",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02B02",
+   "expect": {
+    "known_text": "if they want that people",
+    "target_text": "se querem que as pessoas"
+   },
+   "set": {
+    "known_text": "I know that people",
+    "target_text": "sei que as pessoas",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02B03",
+   "expect": {
+    "known_text": "yes, that people",
+    "target_text": "sim, que as pessoas"
+   },
+   "set": {
+    "known_text": "she said that people",
+    "target_text": "ela disse que as pessoas",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02U01",
+   "expect": {
+    "known_text": "no, that people",
+    "target_text": "não, que as pessoas"
+   },
+   "set": {
+    "known_text": "I know that people want to help",
+    "target_text": "eu sei que as pessoas querem ajudar",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02U02",
+   "expect": {
+    "known_text": "I think that people",
+    "target_text": "acho que as pessoas"
+   },
+   "set": {
+    "known_text": "I think that people want to learn",
+    "target_text": "acho que as pessoas querem aprender",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02U03",
+   "expect": {
+    "known_text": "yes, if they want that people",
+    "target_text": "sim, se querem que as pessoas"
+   },
+   "set": {
+    "known_text": "she said that people don't want to wait",
+    "target_text": "ela disse que as pessoas não querem esperar",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02U04",
+   "expect": {
+    "known_text": "if they still want that people",
+    "target_text": "se ainda querem que as pessoas"
+   },
+   "set": {
+    "known_text": "he said that people are here",
+    "target_text": "ele disse que as pessoas estão aqui",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L02U05",
+   "expect": {
+    "known_text": "if they want that people now",
+    "target_text": "se querem que as pessoas agora"
+   },
+   "set": {
+    "known_text": "it's true that people need help",
+    "target_text": "é verdade que as pessoas precisam de ajuda",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L03B02",
+   "expect": {
+    "known_text": "to like them now",
+    "target_text": "gostem deles agora"
+   },
+   "set": {
+    "known_text": "people to like them",
+    "target_text": "que as pessoas gostem deles",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L03B03",
+   "expect": {
+    "known_text": "yes, to like them",
+    "target_text": "sim, gostem deles"
+   },
+   "set": {
+    "known_text": "they want people to like them",
+    "target_text": "querem que as pessoas gostem deles",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L03U01",
+   "expect": {
+    "known_text": "if they want that people like them",
+    "target_text": "se querem que as pessoas gostem deles"
+   },
+   "set": {
+    "known_text": "if they want people to like them",
+    "target_text": "se querem que as pessoas gostem deles",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L03U02",
+   "expect": {
+    "known_text": "yes, if they want that people like them",
+    "target_text": "sim, se querem que as pessoas gostem deles"
+   },
+   "set": {
+    "known_text": "I want people to like them",
+    "target_text": "quero que as pessoas gostem deles",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L03U04",
+   "expect": {
+    "known_text": "no, they want people to like them",
+    "target_text": "não, querem que as pessoas gostem deles"
+   },
+   "set": {
+    "known_text": "she wants people to like them",
+    "target_text": "ela quer que as pessoas gostem deles",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0419L03U05",
+   "expect": {
+    "known_text": "yes, they still want people to like them",
+    "target_text": "sim, ainda querem que as pessoas gostem deles"
+   },
+   "set": {
+    "known_text": "they still want people to like them",
+    "target_text": "eles ainda querem que as pessoas gostem deles",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

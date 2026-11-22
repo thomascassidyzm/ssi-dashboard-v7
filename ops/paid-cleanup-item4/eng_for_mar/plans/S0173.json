@@ -1,0 +1,92 @@
+{
+ "seed": 173,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "मी स्वतः प्रयत्न करतोय",
+     "I'm trying on my own"
+    ],
+    "B04": [
+     "मला स्वतः शिकायचं आहे",
+     "I want to learn on my own"
+    ],
+    "U01": [
+     "मला स्वतः सराव करायचा आहे",
+     "I want to practise on my own"
+    ],
+    "U02": [
+     "मी स्वतः प्रयत्न करणार आहे",
+     "I'm going to try on my own"
+    ],
+    "U03": [
+     "मला स्वतः शिकायला आवडतं",
+     "I like to learn on my own"
+    ],
+    "U04": [
+     "मला स्वतः शोधून काढायचं आहे",
+     "I want to find out on my own"
+    ],
+    "U05": [
+     "मला स्वतः इंग्रजी शिकायचं आहे",
+     "I want to learn English on my own"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "स्वतः सराव करायला",
+     "to practise on my own"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "मला वाटतं की मी स्वतः सांभाळू शकतो",
+     "I think that I can manage on my own"
+    ],
+    "B03": [
+     "मी आज सांभाळू शकतो",
+     "I can manage today"
+    ],
+    "U01": [
+     "मी स्वतः सांभाळू शकतो",
+     "I can manage on my own"
+    ],
+    "U04": [
+     "मी उद्या सांभाळू शकतो",
+     "I can manage tomorrow"
+    ],
+    "U05": [
+     "मी सांभाळू शकेन याची मला खात्री नाही",
+     "I'm not sure I can manage"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "नाही धन्यवाद, आज नाही",
+     "no thank you, not today"
+    ],
+    "B04": [
+     "नाही धन्यवाद, मी तयार आहे",
+     "no thank you, I'm ready"
+    ],
+    "U03": [
+     "नाही धन्यवाद, मी स्वतः प्रयत्न करतोय",
+     "no thank you, I'm trying on my own"
+    ],
+    "U04": [
+     "नाही धन्यवाद, मी आज सांभाळू शकतो",
+     "no thank you, I can manage today"
+    ]
+   },
+   "delete": [
+    "U01"
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L03: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (U01; our U01 rewrite would have matched it too)"
+}

@@ -1,0 +1,296 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Me ei odotettu, että herätään keskellä yötä"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "Me ei toivottu, että herätään keskellä yötä"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "me ei odotettu, että",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "we",
+      "target": "me"
+     },
+     {
+      "known": "didn't expect",
+      "target": "ei odotettu"
+     },
+     {
+      "known": "that",
+      "target": "että"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "me ei toivottu, että"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01C02",
+   "set": {
+    "target_text": "ei odotettu",
+    "known_text": "didn't expect"
+   },
+   "expect": {
+    "known_text": "didn't hope",
+    "target_text": "ei toivottu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "me ei odotettu, että",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "me ei toivottu, että"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "me ei odotettu, että sä puhut",
+    "known_text": "we didn't expect that you speak"
+   },
+   "expect": {
+    "known_text": "we didn't hope that you speak",
+    "target_text": "me ei toivottu, että sä puhut"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "me ei odotettu, että sä ymmärrät",
+    "known_text": "we didn't expect that you understand"
+   },
+   "expect": {
+    "known_text": "we didn't hope that you understand",
+    "target_text": "me ei toivottu, että sä ymmärrät"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "me ei odotettu, että sä puhut suomea",
+    "known_text": "we didn't expect that you speak Finnish"
+   },
+   "expect": {
+    "known_text": "we didn't hope that you speak Finnish",
+    "target_text": "me ei toivottu, että sä puhut suomea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "me ei odotettu, että se toimii",
+    "known_text": "we didn't expect that it works"
+   },
+   "expect": {
+    "known_text": "we didn't hope that it works",
+    "target_text": "me ei toivottu, että se toimii"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "me ei odotettu, että sä haluut tulla takaisin",
+    "known_text": "we didn't expect that you want to come back"
+   },
+   "expect": {
+    "known_text": "we didn't hope that you want to come back",
+    "target_text": "me ei toivottu, että sä haluut tulla takaisin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "me ei odotettu, että me nähdään se",
+    "known_text": "we didn't expect that we see it"
+   },
+   "expect": {
+    "known_text": "we didn't hope that we see it",
+    "target_text": "me ei toivottu, että me nähdään se"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L01U05",
+   "set": {
+    "target_text": "me ei odotettu, että sä teit sen",
+    "known_text": "we didn't expect that you did it"
+   },
+   "expect": {
+    "known_text": "we didn't hope that you did it",
+    "target_text": "me ei toivottu, että sä teit sen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02B01",
+   "set": {
+    "target_text": "me ei odotettu, että herätään",
+    "known_text": "we didn't expect that we wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope that we wake",
+    "target_text": "me ei toivottu, että herätään"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "we wake up now"
+   },
+   "expect": {
+    "known_text": "we wake now",
+    "target_text": "herätään nyt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we wake up this morning"
+   },
+   "expect": {
+    "known_text": "we wake this morning",
+    "target_text": "herätään tänä aamuna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "me ei odotettu, että herätään tänä aamuna",
+    "known_text": "we didn't expect that we wake up this morning"
+   },
+   "expect": {
+    "known_text": "we didn't hope that we wake this morning",
+    "target_text": "me ei toivottu, että herätään tänä aamuna"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I don't want us to wake up now"
+   },
+   "expect": {
+    "known_text": "I don't want us to wake now",
+    "target_text": "mä en haluu, että herätään nyt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "it's not good that we wake up now"
+   },
+   "expect": {
+    "known_text": "it's not good that we wake now",
+    "target_text": "ei oo hyvä, että herätään nyt"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'm not sure when we wake up"
+   },
+   "expect": {
+    "known_text": "I'm not sure when we wake",
+    "target_text": "mä en oo varma, milloin herätään"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "we wake up this evening"
+   },
+   "expect": {
+    "known_text": "we wake this evening",
+    "target_text": "herätään tänä iltana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "herätä keskellä yötä"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "me ei odotettu, että herätään keskellä yötä",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "me ei toivottu, että herätään keskellä yötä"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "mä en haluu herätä keskellä yötä"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "I don't want us to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want us to wake in the middle of the night",
+    "target_text": "mä en haluu, että herätään keskellä yötä"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fin_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "I'm not sure why we wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I'm not sure why we wake in the middle of the night",
+    "target_text": "mä en oo varma, miksi herätään keskellä yötä"
+   }
+  }
+ ]
+}

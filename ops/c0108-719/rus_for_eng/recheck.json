@@ -1,0 +1,60 @@
+{
+ "course": "rus_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "phrase.update",
+   "key": "rus_for_eng:S0108L01B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 2,
+   "op": "phrase.update",
+   "key": "rus_for_eng:S0108L01U02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 3,
+   "op": "phrase.update",
+   "key": "rus_for_eng:S0108L01U03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 4,
+   "op": "phrase.update",
+   "key": "rus_for_eng:S0108L02B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 5,
+   "op": "phrase.update",
+   "key": "rus_for_eng:S0108L02U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 6,
+   "op": "phrase.update",
+   "key": "rus_for_eng:S0108L02U02",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [],
+ "counts": {
+  "ok": 7
+ }
+}

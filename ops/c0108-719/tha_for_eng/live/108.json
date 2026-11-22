@@ -1,0 +1,808 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "พวกเราไม่ได้หวังจะตื่นกลางดึก"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "wake up in the middle of the night",
+    "target_text": "ตื่นกลางดึก",
+    "components": [
+     {
+      "known": "wake up",
+      "target": "ตื่น"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "tha_for_eng:S0108L01C01",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "wake up",
+     "target_text": "ตื่น",
+     "word_count": 4,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-10-12T20:10:16.769754+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "58f8db58-03c0-4315-a0fa-bae55c887c12",
+     "target1_audio_id": "a3f9e69a-f6c3-4288-aca7-5bbd5239d53c",
+     "target2_audio_id": "2279ae59-aa5d-4e48-a4ae-dcd9a411406e",
+     "qa_checked": null,
+     "target1_duration_ms": 1440,
+     "target2_duration_ms": 1248,
+     "lego_id": null,
+     "target_text_roman": "tuen",
+     "target_phrase_id": null,
+     "presentation_audio_id": "5802d838-eb59-4fdc-b08d-686c0634f778",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ต",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ื",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "่",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "น",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9fb81264-ca76-4b52-86d6-7863a95414c9",
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01B01",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "wake up in the middle of the night",
+     "target_text": "ตื่นกลางดึก",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-04T12:10:00.042427+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "129d849a-cd6a-4ada-9f3f-f5ae099cbdb5",
+     "target1_audio_id": "d38b3e33-cbe7-4d8c-939e-4be51fe772e6",
+     "target2_audio_id": "b8e708c5-3ef8-4a3e-8793-879e6f83dee6",
+     "qa_checked": null,
+     "target1_duration_ms": 1752,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": "tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01B02",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "hope to wake up in the middle of the night",
+     "target_text": "หวังจะตื่นกลางดึก",
+     "word_count": 17,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-04T13:15:21.197214+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "687dbb35-9776-4362-9b86-95736e101ca6",
+     "target1_audio_id": "44c75d69-12e4-460c-a887-d3b762cdfee1",
+     "target2_audio_id": "f9476e2a-407a-444c-bb80-798bd80f8be2",
+     "qa_checked": null,
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 1968,
+     "lego_id": null,
+     "target_text_roman": "wang cha tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": "หวัง",
+       "isGhost": false
+      },
+      {
+       "known": "will",
+       "legoId": "S0005L01",
+       "target": "จะ",
+       "isGhost": false
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01B03",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "didn't hope to wake up in the middle",
+     "target_text": "ไม่ได้หวังจะตื่นกลางดึก",
+     "word_count": 23,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-13T16:12:15.13821+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8e621328-5368-4af2-8172-b934e38a6a09",
+     "target1_audio_id": "32169e9f-b401-4ad2-b018-c712466f67ba",
+     "target2_audio_id": "833ce96a-926f-4a74-9e40-eeb5002743a4",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": "mai dai wang cha tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "didn't",
+       "legoId": "S0043L01",
+       "target": "ไม่ได้",
+       "isGhost": false
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": "หวัง",
+       "isGhost": false
+      },
+      {
+       "known": "will",
+       "legoId": "S0005L01",
+       "target": "จะ",
+       "isGhost": false
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01U01",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "we didn't hope to wake up in the middle of the night",
+     "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก",
+     "word_count": 29,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T15:03:29.764Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-13T16:12:15.13821+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+     "target1_audio_id": "f91201da-682a-4dba-b726-2cb69332134e",
+     "target2_audio_id": "80180deb-d03a-47fb-bbd4-6c8ba287e680",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": "phuak rao mai dai wang cha tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we all",
+       "legoId": "S0018L01",
+       "target": "พวกเรา",
+       "isGhost": false
+      },
+      {
+       "known": "didn't",
+       "legoId": "S0043L01",
+       "target": "ไม่ได้",
+       "isGhost": false
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": "หวัง",
+       "isGhost": false
+      },
+      {
+       "known": "will",
+       "legoId": "S0005L01",
+       "target": "จะ",
+       "isGhost": false
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "3a0c1c71-3600-4e3f-a1d3-f120113237e0",
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01U02",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "I don't want to wake up in the middle of the night",
+     "target_text": "ผมไม่อยากตื่นกลางดึก",
+     "word_count": 20,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T15:03:29.764Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 14,
+     "updated_at": "2026-10-13T16:12:15.13821+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b5fbcd24-f2f0-438b-8331-0cfb726459f7",
+     "target1_audio_id": "c95e248b-ad62-41b8-ba51-90b48d6c8021",
+     "target2_audio_id": "63ab21e7-7c1f-4378-8148-94ca49df4fb9",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": "phom mai yak tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'm not",
+       "legoId": "S0078L01",
+       "target": "ผมไม่",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "อ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ย",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "า",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ก",
+       "isGhost": true
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01U03",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "I know you didn't want to wake up in the middle of the night",
+     "target_text": "ผมรู้ว่าคุณไม่อยากตื่นกลางดึก",
+     "word_count": 29,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-03-20T15:03:29.764Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-10-13T16:12:15.13821+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "4cbc5205-4123-4f2c-ae88-7c4bcec9dbc6",
+     "target1_audio_id": "f613f08e-c319-4944-b98b-f8063ab3382c",
+     "target2_audio_id": "df253622-6571-4ef4-af77-0247aa44be15",
+     "qa_checked": null,
+     "target1_duration_ms": 2880,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": "phom ru wa khun mai yak tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ผ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ม",
+       "isGhost": true
+      },
+      {
+       "known": "to know",
+       "legoId": "S0017L02",
+       "target": "รู้",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0010L03",
+       "target": "ว่า",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ค",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ุ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ณ",
+       "isGhost": true
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": "ไม่",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "อ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ย",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "า",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ก",
+       "isGhost": true
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01U04",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "she woke up in the middle of the night too",
+     "target_text": "เธอตื่นกลางดึกด้วย",
+     "word_count": 18,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T15:03:29.764Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-04T13:16:16.411631+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5499456e-6888-444d-8c65-1b29d7b38051",
+     "target1_audio_id": "736f1c38-8526-4b1c-8b13-354e528c227a",
+     "target2_audio_id": "0c2c4fb6-7ac1-45bd-9f9c-c65cf01d4992",
+     "qa_checked": null,
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": "thoe tuen klang duek duai",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "เธอ",
+       "isGhost": false
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ด",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "้",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ว",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ย",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01U05",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "I hope I won't wake up in the middle of the night",
+     "target_text": "ผมหวังว่าผมจะไม่ตื่นกลางดึก",
+     "word_count": 27,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T15:03:29.764Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-04T13:13:31.849419+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "8a62e786-7b2b-4591-b65f-b78ed1dde085",
+     "target1_audio_id": "23f37b67-22a4-4f83-a3c6-7d155f90bf61",
+     "target2_audio_id": "5b2a8228-6ec6-49fb-8dca-2b18e45c1e82",
+     "qa_checked": null,
+     "target1_duration_ms": 2832,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": "phom wang wa phom cha mai tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ผ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ม",
+       "isGhost": true
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": "หวัง",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0010L03",
+       "target": "ว่า",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ผ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ม",
+       "isGhost": true
+      },
+      {
+       "known": "will",
+       "legoId": "S0005L01",
+       "target": "จะ",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": "ไม่",
+       "isGhost": false
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "tha_for_eng:S0108L01U06",
+     "course_code": "tha_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "you shouldn't wake up in the middle of the night",
+     "target_text": "คุณไม่ควรตื่นกลางดึก",
+     "word_count": 20,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-20T15:03:29.764Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-06-04T13:12:37.898392+00:00",
+     "created_at": "2026-03-20T15:03:29.875448+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "eae0cf10-9d61-46a2-acef-3cb06282bb52",
+     "target1_audio_id": "8b760e63-225b-4344-97c7-08dcc26a2c3a",
+     "target2_audio_id": "f4607cab-5cad-4779-9734-a3011a80a53d",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": "khun mai khuan tuen klang duek",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "you shouldn't",
+       "legoId": "S0100L01",
+       "target": "คุณไม่ควร",
+       "isGhost": false
+      },
+      {
+       "known": "wake up in the middle of the night",
+       "legoId": "S0108L01",
+       "target": "ตื่นกลางดึก",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

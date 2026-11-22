@@ -1,0 +1,2533 @@
+{
+ "course": "por_br_for_eng",
+ "at": "2026-11-22",
+ "by": "cs #358",
+ "how": "plans/ vs applied events (events-*.json incl. events-759c-recovered.json, batches/*.apply.json, Popty undo files actor cs-item4-filler); confirmed on the nightly copy ssi_copy_20261122t033000z: every to-apply seed builds with 0 errors there (its rows still hold the pre-plan text), so none of them is live yet",
+ "counts": {
+  "no plan": 1,
+  "to apply (night changeset r358)": 22,
+  "live": 297
+ },
+ "to_apply": [
+  433,
+  434,
+  435,
+  436,
+  437,
+  438,
+  439,
+  440,
+  441,
+  442,
+  443,
+  444,
+  445,
+  446,
+  447,
+  448,
+  452,
+  453,
+  454,
+  589,
+  590,
+  591
+ ],
+ "to_apply_ops": 309,
+ "seeds": {
+  "9": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "e0d23e13"
+   ]
+  },
+  "10": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "e0d23e13"
+   ]
+  },
+  "13": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "e0d23e13"
+   ]
+  },
+  "15": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "e0d23e13"
+   ]
+  },
+  "25": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "e0d23e13"
+   ]
+  },
+  "32": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "34": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "35": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "38": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "39": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "c617516d",
+    "71cdd3f3"
+   ]
+  },
+  "44": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "45": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "46": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "49": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "50": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "51": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "c617516d",
+    "71cdd3f3",
+    "9f011e73"
+   ]
+  },
+  "58": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "59": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "c617516d"
+   ]
+  },
+  "89": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "114": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "119": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "134": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "71cdd3f3",
+    "3bd9bfd5"
+   ]
+  },
+  "167": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "178": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "188": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "189": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "2738b375"
+   ]
+  },
+  "218": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "71cdd3f3"
+   ]
+  },
+  "251": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "253": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "254": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "256": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "257": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "258": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "263": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "264": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "265": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "266": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "267": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "268": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "271": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "238e2873"
+   ]
+  },
+  "272": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "274": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "275": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "276": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "277": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "279": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "281": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "283": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "284": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "286": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "live",
+   "events": [
+    "9f011e73"
+   ]
+  },
+  "287": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "288": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "289": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "291": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "294": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "298": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "309": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "339": {
+   "scan_rows": true,
+   "plan_ops": null,
+   "state": "no plan"
+  },
+  "343": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "345": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "367": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "375": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "380": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "389": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "406": {
+   "scan_rows": true,
+   "plan_ops": 2,
+   "state": "live",
+   "events": [
+    "3bd9bfd5"
+   ]
+  },
+  "409": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "e4ab7b21"
+   ]
+  },
+  "410": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "e4ab7b21"
+   ]
+  },
+  "411": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "e4ab7b21"
+   ]
+  },
+  "412": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "e4ab7b21"
+   ]
+  },
+  "413": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "live",
+   "events": [
+    "68839b8e"
+   ]
+  },
+  "414": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "68839b8e"
+   ]
+  },
+  "415": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "68839b8e"
+   ]
+  },
+  "416": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "8cbb854d"
+   ]
+  },
+  "417": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "live",
+   "events": [
+    "8cbb854d"
+   ]
+  },
+  "418": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "live",
+   "events": [
+    "8cbb854d"
+   ]
+  },
+  "419": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "8cbb854d"
+   ]
+  },
+  "420": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "578fd443"
+   ]
+  },
+  "421": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "578fd443"
+   ]
+  },
+  "422": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "578fd443"
+   ]
+  },
+  "423": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "578fd443"
+   ]
+  },
+  "424": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "dc6bda8d"
+   ]
+  },
+  "425": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "dc6bda8d"
+   ]
+  },
+  "426": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "dc6bda8d"
+   ]
+  },
+  "427": {
+   "scan_rows": true,
+   "plan_ops": 24,
+   "state": "live",
+   "events": [
+    "5bf5ae67"
+   ]
+  },
+  "428": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "5bf5ae67"
+   ]
+  },
+  "429": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "5bf5ae67"
+   ]
+  },
+  "430": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "5bf5ae67"
+   ]
+  },
+  "431": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "f8db73bd"
+   ]
+  },
+  "432": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "f8db73bd"
+   ]
+  },
+  "433": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "to apply (night changeset r358)"
+  },
+  "434": {
+   "scan_rows": true,
+   "plan_ops": 24,
+   "state": "to apply (night changeset r358)"
+  },
+  "435": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "436": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "to apply (night changeset r358)"
+  },
+  "437": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "to apply (night changeset r358)"
+  },
+  "438": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "to apply (night changeset r358)"
+  },
+  "439": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "to apply (night changeset r358)"
+  },
+  "440": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "441": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "442": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "443": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "to apply (night changeset r358)"
+  },
+  "444": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "to apply (night changeset r358)"
+  },
+  "445": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "to apply (night changeset r358)"
+  },
+  "446": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "to apply (night changeset r358)"
+  },
+  "447": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "to apply (night changeset r358)"
+  },
+  "448": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "449": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "a5be8658"
+   ]
+  },
+  "450": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "live",
+   "events": [
+    "a5be8658"
+   ]
+  },
+  "451": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "a5be8658"
+   ]
+  },
+  "452": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "to apply (night changeset r358)"
+  },
+  "453": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "to apply (night changeset r358)"
+  },
+  "454": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "to apply (night changeset r358)"
+  },
+  "455": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "live",
+   "events": [
+    "03a7f9ce"
+   ]
+  },
+  "456": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "03a7f9ce"
+   ]
+  },
+  "457": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "b335d749"
+   ]
+  },
+  "458": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "b335d749"
+   ]
+  },
+  "459": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "4d357da6"
+   ]
+  },
+  "460": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "4d357da6"
+   ]
+  },
+  "461": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "4d357da6"
+   ]
+  },
+  "462": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "live",
+   "events": [
+    "3b85c4e5"
+   ]
+  },
+  "463": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "3b85c4e5"
+   ]
+  },
+  "464": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "1a5f8a87"
+   ]
+  },
+  "465": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "1a5f8a87"
+   ]
+  },
+  "466": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "c5feb60f"
+   ]
+  },
+  "467": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "c5feb60f"
+   ]
+  },
+  "468": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "c5feb60f"
+   ]
+  },
+  "469": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "a3de3365"
+   ]
+  },
+  "470": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "a3de3365"
+   ]
+  },
+  "471": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "033dff1b"
+   ]
+  },
+  "472": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "033dff1b"
+   ]
+  },
+  "473": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "033dff1b"
+   ]
+  },
+  "474": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "2d683e85"
+   ]
+  },
+  "475": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "2d683e85"
+   ]
+  },
+  "476": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "2d683e85"
+   ]
+  },
+  "477": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "54f18fde"
+   ]
+  },
+  "478": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "54f18fde"
+   ]
+  },
+  "479": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "54f18fde"
+   ]
+  },
+  "480": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "bd61b60b"
+   ]
+  },
+  "481": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "461e00fe"
+   ]
+  },
+  "482": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "461e00fe"
+   ]
+  },
+  "483": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "461e00fe"
+   ]
+  },
+  "484": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "461e00fe"
+   ]
+  },
+  "485": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "87399d97"
+   ]
+  },
+  "486": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "87399d97"
+   ]
+  },
+  "487": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "8c9e2d57"
+   ]
+  },
+  "488": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "8c9e2d57"
+   ]
+  },
+  "489": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "live",
+   "events": [
+    "8a1ed5b9"
+   ]
+  },
+  "490": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "8a1ed5b9"
+   ]
+  },
+  "491": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "715a11e2"
+   ]
+  },
+  "492": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "715a11e2"
+   ]
+  },
+  "493": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "8a14c19c"
+   ]
+  },
+  "494": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "8a14c19c"
+   ]
+  },
+  "495": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "8a14c19c"
+   ]
+  },
+  "496": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "0b910c84"
+   ]
+  },
+  "497": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "0b910c84"
+   ]
+  },
+  "498": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "2c470967"
+   ]
+  },
+  "499": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "2c470967"
+   ]
+  },
+  "500": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "67add3a1"
+   ]
+  },
+  "501": {
+   "scan_rows": true,
+   "plan_ops": 25,
+   "state": "live",
+   "events": [
+    "67add3a1"
+   ]
+  },
+  "502": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "4620919b"
+   ]
+  },
+  "503": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "4620919b"
+   ]
+  },
+  "504": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "02de85ff"
+   ]
+  },
+  "505": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "02de85ff"
+   ]
+  },
+  "506": {
+   "scan_rows": true,
+   "plan_ops": 23,
+   "state": "live",
+   "events": [
+    "58b8efe2"
+   ]
+  },
+  "507": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "58b8efe2"
+   ]
+  },
+  "508": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "live",
+   "events": [
+    "c60e08c8"
+   ]
+  },
+  "509": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "c60e08c8"
+   ]
+  },
+  "510": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "d6a3a52c"
+   ]
+  },
+  "511": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "live",
+   "events": [
+    "d6a3a52c"
+   ]
+  },
+  "512": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "live",
+   "events": [
+    "4bd9c446"
+   ]
+  },
+  "513": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "live",
+   "events": [
+    "a7d2d8e7"
+   ]
+  },
+  "514": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "live",
+   "events": [
+    "a7d2d8e7"
+   ]
+  },
+  "515": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "a7d2d8e7"
+   ]
+  },
+  "516": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "da964189"
+   ]
+  },
+  "517": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "da964189"
+   ]
+  },
+  "518": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "live",
+   "events": [
+    "40557e4b"
+   ]
+  },
+  "519": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "40557e4b"
+   ]
+  },
+  "520": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "4d57f61e"
+   ]
+  },
+  "521": {
+   "scan_rows": true,
+   "plan_ops": 29,
+   "state": "live",
+   "events": [
+    "4d57f61e"
+   ]
+  },
+  "522": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "6232fb29"
+   ]
+  },
+  "523": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "6232fb29"
+   ]
+  },
+  "524": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "6232fb29"
+   ]
+  },
+  "525": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "baf60033"
+   ]
+  },
+  "526": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "baf60033"
+   ]
+  },
+  "527": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "2bea1a2b"
+   ]
+  },
+  "528": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "2bea1a2b"
+   ]
+  },
+  "529": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "7c72bdaa"
+   ]
+  },
+  "530": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "7c72bdaa"
+   ]
+  },
+  "531": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "7c72bdaa"
+   ]
+  },
+  "532": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "71e03d33"
+   ]
+  },
+  "533": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "71e03d33"
+   ]
+  },
+  "534": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "71e03d33"
+   ]
+  },
+  "535": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "e0f7d7bb"
+   ]
+  },
+  "536": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "e0f7d7bb"
+   ]
+  },
+  "537": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "e0f7d7bb"
+   ]
+  },
+  "538": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "9be5cf06"
+   ]
+  },
+  "539": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "9be5cf06"
+   ]
+  },
+  "540": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "9be5cf06"
+   ]
+  },
+  "541": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "648e5a55"
+   ]
+  },
+  "542": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "648e5a55"
+   ]
+  },
+  "543": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "648e5a55"
+   ]
+  },
+  "544": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "cb30f5d3"
+   ]
+  },
+  "545": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "cb30f5d3"
+   ]
+  },
+  "546": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "78583efc"
+   ]
+  },
+  "547": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "78583efc"
+   ]
+  },
+  "548": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "78583efc"
+   ]
+  },
+  "549": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "78583efc"
+   ]
+  },
+  "550": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "6c50a943"
+   ]
+  },
+  "551": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "6c50a943"
+   ]
+  },
+  "552": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "6c50a943"
+   ]
+  },
+  "553": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "live",
+   "events": [
+    "6c50a943"
+   ]
+  },
+  "554": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "6c50a943"
+   ]
+  },
+  "555": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "7a35c7b5"
+   ]
+  },
+  "556": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "7a35c7b5"
+   ]
+  },
+  "557": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "7a35c7b5"
+   ]
+  },
+  "558": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "4e6a29e5"
+   ]
+  },
+  "559": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "4e6a29e5"
+   ]
+  },
+  "560": {
+   "scan_rows": true,
+   "plan_ops": 1,
+   "state": "live",
+   "events": [
+    "4e6a29e5"
+   ]
+  },
+  "561": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "4e6a29e5"
+   ]
+  },
+  "562": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "d14eb1c1"
+   ]
+  },
+  "563": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "d14eb1c1"
+   ]
+  },
+  "564": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "d14eb1c1"
+   ]
+  },
+  "565": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "d14eb1c1"
+   ]
+  },
+  "566": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "bf190718"
+   ]
+  },
+  "567": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "bf190718"
+   ]
+  },
+  "568": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "e0d5d98e"
+   ]
+  },
+  "569": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "e0d5d98e"
+   ]
+  },
+  "570": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "live",
+   "events": [
+    "ff355388"
+   ]
+  },
+  "571": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "ff355388"
+   ]
+  },
+  "572": {
+   "scan_rows": true,
+   "plan_ops": 25,
+   "state": "live",
+   "events": [
+    "f771ea36"
+   ]
+  },
+  "573": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "f771ea36"
+   ]
+  },
+  "574": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "e186fb10"
+   ]
+  },
+  "575": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "e186fb10"
+   ]
+  },
+  "576": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "e186fb10"
+   ]
+  },
+  "577": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "e186fb10"
+   ]
+  },
+  "578": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "e186fb10"
+   ]
+  },
+  "579": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "e186fb10"
+   ]
+  },
+  "580": {
+   "scan_rows": true,
+   "plan_ops": 28,
+   "state": "live",
+   "events": [
+    "3473ce2a"
+   ]
+  },
+  "581": {
+   "scan_rows": true,
+   "plan_ops": 20,
+   "state": "live",
+   "events": [
+    "3473ce2a"
+   ]
+  },
+  "582": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "899dcd96"
+   ]
+  },
+  "583": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "899dcd96"
+   ]
+  },
+  "584": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "899dcd96"
+   ]
+  },
+  "585": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "live",
+   "events": [
+    "899dcd96"
+   ]
+  },
+  "586": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "899dcd96"
+   ]
+  },
+  "587": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "11499da1"
+   ]
+  },
+  "588": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "11499da1"
+   ]
+  },
+  "589": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "to apply (night changeset r358)"
+  },
+  "590": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "to apply (night changeset r358)"
+  },
+  "591": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "to apply (night changeset r358)"
+  },
+  "592": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "278cae64"
+   ]
+  },
+  "593": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "278cae64"
+   ]
+  },
+  "594": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "278cae64"
+   ]
+  },
+  "595": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "278cae64"
+   ]
+  },
+  "596": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "live",
+   "events": [
+    "98b49df1"
+   ]
+  },
+  "597": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "98b49df1"
+   ]
+  },
+  "598": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "98b49df1"
+   ]
+  },
+  "599": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "d1a1bd2c"
+   ]
+  },
+  "600": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "d1a1bd2c"
+   ]
+  },
+  "601": {
+   "scan_rows": true,
+   "plan_ops": 9,
+   "state": "live",
+   "events": [
+    "d1a1bd2c"
+   ]
+  },
+  "602": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "d1a1bd2c"
+   ]
+  },
+  "603": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "6a71e61b"
+   ]
+  },
+  "604": {
+   "scan_rows": true,
+   "plan_ops": 12,
+   "state": "live",
+   "events": [
+    "6a71e61b"
+   ]
+  },
+  "605": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "6a71e61b"
+   ]
+  },
+  "606": {
+   "scan_rows": true,
+   "plan_ops": 29,
+   "state": "live",
+   "events": [
+    "714da824"
+   ]
+  },
+  "607": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "714da824"
+   ]
+  },
+  "608": {
+   "scan_rows": true,
+   "plan_ops": 13,
+   "state": "live",
+   "events": [
+    "714da824"
+   ]
+  },
+  "609": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "3e96ba85"
+   ]
+  },
+  "610": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "3e96ba85"
+   ]
+  },
+  "611": {
+   "scan_rows": true,
+   "plan_ops": 17,
+   "state": "live",
+   "events": [
+    "3e96ba85"
+   ]
+  },
+  "612": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "8934ea3e"
+   ]
+  },
+  "613": {
+   "scan_rows": true,
+   "plan_ops": 18,
+   "state": "live",
+   "events": [
+    "8934ea3e"
+   ]
+  },
+  "614": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "8934ea3e"
+   ]
+  },
+  "615": {
+   "scan_rows": true,
+   "plan_ops": 26,
+   "state": "live",
+   "events": [
+    "7709d18c"
+   ]
+  },
+  "616": {
+   "scan_rows": true,
+   "plan_ops": 16,
+   "state": "live",
+   "events": [
+    "7709d18c"
+   ]
+  },
+  "617": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "c4b0de43"
+   ]
+  },
+  "618": {
+   "scan_rows": true,
+   "plan_ops": 10,
+   "state": "live",
+   "events": [
+    "c4b0de43"
+   ]
+  },
+  "619": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "c4b0de43"
+   ]
+  },
+  "620": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "235f9b0a"
+   ]
+  },
+  "621": {
+   "scan_rows": true,
+   "plan_ops": 22,
+   "state": "live",
+   "events": [
+    "235f9b0a"
+   ]
+  },
+  "622": {
+   "scan_rows": true,
+   "plan_ops": 19,
+   "state": "live",
+   "events": [
+    "0b7c3da9"
+   ]
+  },
+  "623": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "0b7c3da9"
+   ]
+  },
+  "624": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "0b7c3da9"
+   ]
+  },
+  "625": {
+   "scan_rows": true,
+   "plan_ops": 3,
+   "state": "live",
+   "events": [
+    "0b7c3da9"
+   ]
+  },
+  "626": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "0b7c3da9"
+   ]
+  },
+  "627": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "0b7c3da9"
+   ]
+  },
+  "628": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "ab0a1bed"
+   ]
+  },
+  "629": {
+   "scan_rows": true,
+   "plan_ops": 24,
+   "state": "live",
+   "events": [
+    "ab0a1bed"
+   ]
+  },
+  "630": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "ab0a1bed"
+   ]
+  },
+  "631": {
+   "scan_rows": true,
+   "plan_ops": 4,
+   "state": "live",
+   "events": [
+    "ab0a1bed"
+   ]
+  },
+  "632": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "ab0a1bed"
+   ]
+  },
+  "633": {
+   "scan_rows": true,
+   "plan_ops": 21,
+   "state": "live",
+   "events": [
+    "9800b9b6"
+   ]
+  },
+  "634": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "9800b9b6"
+   ]
+  },
+  "635": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "9800b9b6"
+   ]
+  },
+  "636": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "9800b9b6"
+   ]
+  },
+  "637": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "d5c8abb9"
+   ]
+  },
+  "638": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "d5c8abb9"
+   ]
+  },
+  "639": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "d5c8abb9"
+   ]
+  },
+  "640": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "d5c8abb9"
+   ]
+  },
+  "641": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "d5c8abb9"
+   ]
+  },
+  "643": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "d5c8abb9"
+   ]
+  },
+  "644": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "1f85ea72"
+   ]
+  },
+  "645": {
+   "scan_rows": true,
+   "plan_ops": 11,
+   "state": "live",
+   "events": [
+    "1f85ea72"
+   ]
+  },
+  "647": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "1f85ea72"
+   ]
+  },
+  "650": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "1f85ea72"
+   ]
+  },
+  "651": {
+   "scan_rows": false,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "1f85ea72"
+   ]
+  },
+  "652": {
+   "scan_rows": false,
+   "plan_ops": 4,
+   "state": "live",
+   "events": [
+    "1f85ea72"
+   ]
+  },
+  "653": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "654": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "656": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "657": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "658": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "659": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "660": {
+   "scan_rows": true,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "5777af59"
+   ]
+  },
+  "661": {
+   "scan_rows": true,
+   "plan_ops": 15,
+   "state": "live",
+   "events": [
+    "764ea879"
+   ]
+  },
+  "662": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "764ea879"
+   ]
+  },
+  "663": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "764ea879"
+   ]
+  },
+  "664": {
+   "scan_rows": true,
+   "plan_ops": 7,
+   "state": "live",
+   "events": [
+    "764ea879"
+   ]
+  },
+  "665": {
+   "scan_rows": true,
+   "plan_ops": 5,
+   "state": "live",
+   "events": [
+    "764ea879"
+   ]
+  },
+  "666": {
+   "scan_rows": false,
+   "plan_ops": 6,
+   "state": "live",
+   "events": [
+    "764ea879"
+   ]
+  },
+  "667": {
+   "scan_rows": true,
+   "plan_ops": 8,
+   "state": "live",
+   "events": [
+    "2103ad9c"
+   ]
+  },
+  "668": {
+   "scan_rows": true,
+   "plan_ops": 14,
+   "state": "live",
+   "events": [
+    "2103ad9c"
+   ]
+  }
+ }
+}

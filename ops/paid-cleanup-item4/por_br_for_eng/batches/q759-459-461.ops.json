@@ -1,0 +1,647 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0459L01B04",
+    "seed_number": 459,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "it wasn't in front of the café",
+    "target_text": "não estava em frente do café",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0459L02B04",
+    "seed_number": 459,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "a blue sign",
+    "target_text": "um sinal azul",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0460L01B04",
+    "seed_number": 460,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I want to find a café",
+    "target_text": "eu quero encontrar um café",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 26,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0460L02B04",
+    "seed_number": 460,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "a new shop",
+    "target_text": "uma loja nova",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 13,
+    "lego_count": 3,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01B02",
+   "expect": {
+    "known_text": "it wasn't in front of the table",
+    "target_text": "não estava em frente do problema"
+   },
+   "set": {
+    "known_text": "it wasn't in front of the office",
+    "target_text": "não estava em frente do escritório",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01B03",
+   "expect": {
+    "known_text": "yes, it wasn't in front of the",
+    "target_text": "sim, não estava em frente do"
+   },
+   "set": {
+    "known_text": "it wasn't in front of the car",
+    "target_text": "não estava em frente do carro",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U01",
+   "expect": {
+    "known_text": "no, it wasn't in front of the",
+    "target_text": "não, não estava em frente do"
+   },
+   "set": {
+    "known_text": "it wasn't in front of the restaurant",
+    "target_text": "não estava em frente do restaurante",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U02",
+   "expect": {
+    "known_text": "it still wasn't in front of the",
+    "target_text": "ainda não estava em frente do"
+   },
+   "set": {
+    "known_text": "the bus wasn't in front of the office",
+    "target_text": "o ônibus não estava em frente do escritório",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U03",
+   "expect": {
+    "known_text": "that's true, it wasn't in front of the",
+    "target_text": "isso é verdade, não estava em frente do"
+   },
+   "set": {
+    "known_text": "my car wasn't in front of the restaurant",
+    "target_text": "o meu carro não estava em frente do restaurante",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U04",
+   "expect": {
+    "known_text": "yes, it still wasn't in front of the",
+    "target_text": "sim, ainda não estava em frente do"
+   },
+   "set": {
+    "known_text": "he said it wasn't in front of the office",
+    "target_text": "ele disse que não estava em frente do escritório",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L01U05",
+   "expect": {
+    "known_text": "I'm sure it wasn't in front of the",
+    "target_text": "tenho certeza, não estava em frente do"
+   },
+   "set": {
+    "known_text": "it wasn't in front of the garden",
+    "target_text": "não estava em frente do jardim",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02B03",
+   "expect": {
+    "known_text": "yes, blue sign",
+    "target_text": "sim, sinal azul"
+   },
+   "set": {
+    "known_text": "the blue sign",
+    "target_text": "o sinal azul",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U02",
+   "expect": {
+    "known_text": "no, blue sign",
+    "target_text": "não, sinal azul"
+   },
+   "set": {
+    "known_text": "near the blue sign",
+    "target_text": "perto do sinal azul",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U03",
+   "expect": {
+    "known_text": "that's true, blue sign",
+    "target_text": "isso é verdade, sinal azul"
+   },
+   "set": {
+    "known_text": "I'm going to wait near the blue sign",
+    "target_text": "vou esperar perto do sinal azul",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U04",
+   "expect": {
+    "known_text": "yes, it wasn't in front of the blue sign",
+    "target_text": "sim, não estava em frente do sinal azul"
+   },
+   "set": {
+    "known_text": "there's a blue sign over there",
+    "target_text": "há um sinal azul ali",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0459L02U05",
+   "expect": {
+    "known_text": "it still wasn't in front of the blue sign",
+    "target_text": "ainda não estava em frente do sinal azul"
+   },
+   "set": {
+    "known_text": "I didn't see the blue sign",
+    "target_text": "não vi o sinal azul",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01B02",
+   "expect": {
+    "known_text": "I want to find it now",
+    "target_text": "eu quero encontrar isso agora"
+   },
+   "set": {
+    "known_text": "I want to find my keys",
+    "target_text": "eu quero encontrar minhas chaves",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01B03",
+   "expect": {
+    "known_text": "yes, I want to find",
+    "target_text": "sim, eu quero encontrar"
+   },
+   "set": {
+    "known_text": "I want to find work",
+    "target_text": "eu quero encontrar trabalho",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U01",
+   "expect": {
+    "known_text": "no, I want to find",
+    "target_text": "não, eu quero encontrar"
+   },
+   "set": {
+    "known_text": "I want to find a restaurant",
+    "target_text": "eu quero encontrar um restaurante",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U02",
+   "expect": {
+    "known_text": "I still want to find",
+    "target_text": "eu ainda quero encontrar"
+   },
+   "set": {
+    "known_text": "I want to find a place to live",
+    "target_text": "eu quero encontrar um lugar para viver",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U03",
+   "expect": {
+    "known_text": "that's true, I want to find",
+    "target_text": "isso é verdade, eu quero encontrar"
+   },
+   "set": {
+    "known_text": "I want to find my money",
+    "target_text": "eu quero encontrar o meu dinheiro",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U04",
+   "expect": {
+    "known_text": "yes, I still want to find",
+    "target_text": "sim, eu ainda quero encontrar"
+   },
+   "set": {
+    "known_text": "I want to find a good restaurant",
+    "target_text": "eu quero encontrar um bom restaurante",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L01U05",
+   "expect": {
+    "known_text": "I'm sure I want to find",
+    "target_text": "tenho certeza, eu quero encontrar"
+   },
+   "set": {
+    "known_text": "I want to find that book",
+    "target_text": "eu quero encontrar aquele livro",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L02B03",
+   "expect": {
+    "known_text": "yes, a shop",
+    "target_text": "sim, uma loja"
+   },
+   "set": {
+    "known_text": "a shop over there",
+    "target_text": "uma loja ali",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L02U01",
+   "expect": {
+    "known_text": "no, a shop",
+    "target_text": "não, uma loja"
+   },
+   "set": {
+    "known_text": "my brother has a shop",
+    "target_text": "meu irmão tem uma loja",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L02U04",
+   "expect": {
+    "known_text": "yes, I want to find a shop",
+    "target_text": "sim, eu quero encontrar uma loja"
+   },
+   "set": {
+    "known_text": "is there a shop here?",
+    "target_text": "há uma loja aqui?",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03B03",
+   "expect": {
+    "known_text": "yes, near the hotel",
+    "target_text": "sim, perto do hotel"
+   },
+   "set": {
+    "known_text": "a restaurant near the hotel",
+    "target_text": "um restaurante perto do hotel",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03U02",
+   "expect": {
+    "known_text": "no, near the hotel",
+    "target_text": "não, perto do hotel"
+   },
+   "set": {
+    "known_text": "there's a café near the hotel",
+    "target_text": "há um café perto do hotel",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03U04",
+   "expect": {
+    "known_text": "yes, I want to find a shop near the hotel",
+    "target_text": "sim, eu quero encontrar uma loja perto do hotel"
+   },
+   "set": {
+    "known_text": "let's meet near the hotel",
+    "target_text": "vamos nos encontrar perto do hotel",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0460L03U05",
+   "expect": {
+    "known_text": "I still want to find a shop near the hotel",
+    "target_text": "eu ainda quero encontrar uma loja perto do hotel"
+   },
+   "set": {
+    "known_text": "the car is near the hotel",
+    "target_text": "o carro está perto do hotel",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01B02",
+   "expect": {
+    "known_text": "a shop where now",
+    "target_text": "uma loja onde agora"
+   },
+   "set": {
+    "known_text": "a shop where they speak Portuguese",
+    "target_text": "uma loja onde falam português",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01B03",
+   "expect": {
+    "known_text": "yes, a shop where",
+    "target_text": "sim, uma loja onde"
+   },
+   "set": {
+    "known_text": "a shop where I left my bag",
+    "target_text": "uma loja onde deixei a minha bolsa",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U01",
+   "expect": {
+    "known_text": "no, a shop where",
+    "target_text": "não, uma loja onde"
+   },
+   "set": {
+    "known_text": "I know a shop where they speak Portuguese",
+    "target_text": "conheço uma loja onde falam português",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U03",
+   "expect": {
+    "known_text": "I have a shop where",
+    "target_text": "tenho uma loja onde"
+   },
+   "set": {
+    "known_text": "there's a shop where my sister works",
+    "target_text": "há uma loja onde a minha irmã trabalha",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U04",
+   "expect": {
+    "known_text": "yes, that's a shop where",
+    "target_text": "sim, isso é uma loja onde"
+   },
+   "set": {
+    "known_text": "I'm looking for a shop where I can find coffee",
+    "target_text": "estou procurando uma loja onde posso encontrar café",
+    "decomposition": null,
+    "word_count": 51,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L01U05",
+   "expect": {
+    "known_text": "that would be a shop where",
+    "target_text": "isso seria uma loja onde"
+   },
+   "set": {
+    "known_text": "it's a shop where everyone speaks Portuguese",
+    "target_text": "é uma loja onde todo mundo fala português",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03B03",
+   "expect": {
+    "known_text": "yes, some postcards",
+    "target_text": "sim, uns cartões postais"
+   },
+   "set": {
+    "known_text": "I want some postcards",
+    "target_text": "quero uns cartões postais",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U02",
+   "expect": {
+    "known_text": "no, some postcards",
+    "target_text": "não, uns cartões postais"
+   },
+   "set": {
+    "known_text": "I'd like to send some postcards",
+    "target_text": "eu gostaria de mandar uns cartões postais",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U03",
+   "expect": {
+    "known_text": "that's true, some postcards",
+    "target_text": "isso é verdade, uns cartões postais"
+   },
+   "set": {
+    "known_text": "she sent me some postcards",
+    "target_text": "ela me mandou uns cartões postais",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U04",
+   "expect": {
+    "known_text": "yes, a shop where I can buy some postcards",
+    "target_text": "sim, uma loja onde possa comprar uns cartões postais"
+   },
+   "set": {
+    "known_text": "I need some postcards",
+    "target_text": "preciso de uns cartões postais",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0461L03U05",
+   "expect": {
+    "known_text": "that would be a shop where I can buy some postcards",
+    "target_text": "isso seria uma loja onde possa comprar uns cartões postais"
+   },
+   "set": {
+    "known_text": "I want to send some postcards to my mother",
+    "target_text": "quero mandar uns cartões postais para a minha mãe",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

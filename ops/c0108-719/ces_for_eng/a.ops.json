@@ -1,0 +1,214 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nečekali jsme, že se probudíme uprostřed noci."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nedoufali jsme, že se probudíme uprostřed noci."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "nečekali jsme",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "not expected",
+      "target": "nečekali"
+     },
+     {
+      "known": "we were",
+      "target": "jsme"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nedoufali jsme"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01C01",
+   "set": {
+    "target_text": "nečekali",
+    "known_text": "not expected"
+   },
+   "expect": {
+    "known_text": "not hoped",
+    "target_text": "nedoufali"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "nečekali jsme",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "nedoufali jsme"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nečekali jsme to",
+    "known_text": "we didn't expect it"
+   },
+   "expect": {
+    "known_text": "we didn't hope to speak Czech now with me",
+    "target_text": "nedoufali jsme mluvit česky teď se mnou"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "nečekali jsme to dnes",
+    "known_text": "we didn't expect it today"
+   },
+   "expect": {
+    "known_text": "we didn't hope today with you",
+    "target_text": "nedoufali jsme dnes s tebou"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01B04",
+   "set": {
+    "target_text": "nečekali jsme, že to uvidíme",
+    "known_text": "we didn't expect we would see it"
+   },
+   "expect": {
+    "known_text": "we didn't hope to hear with everyone",
+    "target_text": "nedoufali jsme slyšet se všemi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "nečekali jsme, že se naučíme česky",
+    "known_text": "we didn't expect we would learn Czech"
+   },
+   "expect": {
+    "known_text": "we didn't hope we would learn Czech",
+    "target_text": "nedoufali jsme, že se naučíme česky"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "nečekali jsme, že to bude možné",
+    "known_text": "we didn't expect it would be possible"
+   },
+   "expect": {
+    "known_text": "we didn't hope it would be possible",
+    "target_text": "nedoufali jsme, že to bude možné"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U03",
+   "set": {
+    "target_text": "nečekali jsme, že budeme mluvit tak dobře",
+    "known_text": "we didn't expect we would speak so well"
+   },
+   "expect": {
+    "known_text": "we didn't hope we would speak so well",
+    "target_text": "nedoufali jsme, že budeme mluvit tak dobře"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L01U04",
+   "set": {
+    "target_text": "nečekali jsme, že uvidíme tolik",
+    "known_text": "we didn't expect we would see so much"
+   },
+   "expect": {
+    "known_text": "we didn't hope we would see so much",
+    "target_text": "nedoufali jsme, že uvidíme tolik"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "se probudíme uprostřed noci"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02B01",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "se probudíme uprostřed noci"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake up in the middle of the night today with me"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night today with me",
+    "target_text": "se probudíme uprostřed noci dnes se mnou"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "wake up in the middle of the night with everyone"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night with everyone",
+    "target_text": "se probudíme uprostřed noci se všemi"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "nečekali jsme, že se probudíme uprostřed noci",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nedoufali jsme, že se probudíme uprostřed noci"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ces_for_eng:S0108L02U02",
+   "set": {
+    "target_text": "čekali jsme, že se probudíme uprostřed noci",
+    "known_text": "we expected we would wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I hope we wake up in the middle of the night",
+    "target_text": "doufám, že se probudíme uprostřed noci"
+   }
+  }
+ ]
+}

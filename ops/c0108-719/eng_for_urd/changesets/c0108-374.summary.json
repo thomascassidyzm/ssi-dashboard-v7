@@ -1,0 +1,51 @@
+{
+ "course": "eng_for_urd",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "ops": 44,
+ "by_op": {
+  "lego.insert": 1,
+  "phrase.insert": 10,
+  "lego.update": 2,
+  "phrase.update": 30,
+  "seed.update": 1
+ },
+ "seeds": [
+  108,
+  149,
+  168,
+  198,
+  212,
+  271,
+  274,
+  276
+ ],
+ "has_b": false,
+ "validator_issues_before": 153,
+ "validator_issues_after": 161,
+ "new_issues": 0,
+ "answered_by_own_seed_fix": {
+  "149": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [hope]",
+   "L1: vocab violations in 5 phrase(s)"
+  ],
+  "168": [
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "198": [
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "212": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "271": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "274": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "276": [
+   "L2: vocab violations in 1 phrase(s)"
+  ]
+ },
+ "notes": []
+}

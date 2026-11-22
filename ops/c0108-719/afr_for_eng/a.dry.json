@@ -1,0 +1,51 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "afr_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "90a9fb2b-eb90-4734-bd4e-6c29b37c9fb6",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ons het nie gehoop om in die middel van die nag wakker te word nie.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "72f0697b-d12e-41c9-8284-cb3625b84152",
+    "target2_audio_id": "01ea4a2e-b6dc-4935-8921-3904c9b5df74"
+   },
+   "after": {
+    "id": "90a9fb2b-eb90-4734-bd4e-6c29b37c9fb6",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Ons het nie verwag om in die middel van die nag wakker te word nie.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ons het nie gehoop om in die middel van die nag wakker te word nie.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "72f0697b-d12e-41c9-8284-cb3625b84152",
+    "target2_audio_id": "01ea4a2e-b6dc-4935-8921-3904c9b5df74"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

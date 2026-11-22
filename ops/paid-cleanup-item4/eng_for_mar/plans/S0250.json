@@ -1,0 +1,45 @@
+{
+ "seed": 250,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "मी उत्तर देण्यापूर्वी मला विचार करायचा आहे",
+     "I want to think before I answer"
+    ],
+    "B04": [
+     "मी उत्तर देण्यापूर्वी मला खात्री करायची आहे",
+     "I want to make sure before I answer"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "तुम्ही मला आज आणखी काहीतरी सांगाल का?",
+     "can you tell me something else today?"
+    ],
+    "B03": [
+     "तुम्ही मला उद्या आणखी काहीतरी सांगाल का?",
+     "can you tell me something else tomorrow?"
+    ],
+    "U02": [
+     "तुम्ही मला त्याबद्दल आणखी काहीतरी सांगाल का?",
+     "can you tell me something else about that?"
+    ],
+    "U05": [
+     "तुम्ही मला आता आणखी काहीतरी सांगाल का?",
+     "can you tell me something else now?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही मला कामावर आणखी काहीतरी सांगाल का?",
+     "can you tell me something else at work?"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

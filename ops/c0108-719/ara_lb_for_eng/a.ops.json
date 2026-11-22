@@ -1,0 +1,30 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "ما كنا متوقعين نصحى بنص الليل.",
+    "target_text_roman": "ma kinna mitwa''iin nisha b-nuss il-leil."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "ما كنا نتمنى نصحى بنص الليل."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_lb_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "ما كنا متوقعين نصحى بنص الليل",
+    "target_text_roman": "ma kinna mitwa''iin nisha b-nuss il-leil",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ما كنا نتمنى نصحى بنص الليل"
+   }
+  }
+ ]
+}

@@ -1,0 +1,473 @@
+{
+ "event_id": "5bf5ae67-f145-43f9-a696-631c4a0d04d8",
+ "undo_file": "2026-11-18T15-05-05-800Z-5bf5ae67-f145-43f9-a696-631c4a0d04d8.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0430L03U03",
+   "set": {
+    "known_text": "that's true, possible",
+    "target_text": "isso é verdade, possível",
+    "word_count": 24,
+    "known_audio_id": "70c2257d-099f-4c1c-8acc-b0abf249647c",
+    "target1_audio_id": "564d39d1-8e12-4459-85b4-835052d38e45",
+    "target2_audio_id": "4e1e020c-6b31-4cde-80eb-5e6de78544d2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0429L04U03",
+   "set": {
+    "known_text": "that's true, for them",
+    "target_text": "isso é verdade, para eles",
+    "word_count": 25,
+    "known_audio_id": "5d977762-207a-4ed2-b228-de435892acc1",
+    "target1_audio_id": "dc0a3760-9413-4295-b25b-3c49b7f54461",
+    "target2_audio_id": "44676a0c-a259-40e1-9ac7-c89a8060c623"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0429L04U02",
+   "set": {
+    "known_text": "no, for them",
+    "target_text": "não, para eles",
+    "word_count": 14,
+    "known_audio_id": "be76ae76-56c0-49c6-8b6d-2f4dde3b5a3e",
+    "target1_audio_id": "9eef906f-4714-4fb0-b098-8a828fd390f1",
+    "target2_audio_id": "d5547b1c-a92d-4624-9981-14aa7ba1a599"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0429L04B03",
+   "set": {
+    "known_text": "yes, for them",
+    "target_text": "sim, para eles",
+    "word_count": 14,
+    "known_audio_id": "f9f92617-dc1a-4c87-9603-dd5ce4266238",
+    "target1_audio_id": "53b34736-7f7e-47b3-a5db-9a57e7f5f500",
+    "target2_audio_id": "b3e3387e-ba2e-4f9f-a00b-805702422607"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L03U03",
+   "set": {
+    "known_text": "that's true, on Tuesday",
+    "target_text": "isso é verdade, na terça-feira",
+    "word_count": 30,
+    "known_audio_id": "49841a83-689d-4af6-8e7c-d6b376b7a67f",
+    "target1_audio_id": "1d665cf9-7d0a-47b3-9b99-b466844961d1",
+    "target2_audio_id": "8fcd410a-2020-4e9e-a4d3-9d931940121a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L03U02",
+   "set": {
+    "known_text": "no, on Tuesday",
+    "target_text": "não, na terça-feira",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "65b86385-6296-4b30-ab6a-2a89efca5fa0",
+    "target1_audio_id": "9cc248cd-4d7c-4bf8-bb20-98211dc02987",
+    "target2_audio_id": "5532fc62-856e-4aab-a321-41956dd93dd8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L03B03",
+   "set": {
+    "known_text": "yes, on Tuesday",
+    "target_text": "sim, na terça-feira",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "4475820c-6fe0-4704-851c-d57a493b68e8",
+    "target1_audio_id": "35aa16de-be9d-4387-b318-bbeef51e7095",
+    "target2_audio_id": "7f4560e8-b23c-4ebe-942c-fe169ed96a88"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L02U03",
+   "set": {
+    "known_text": "that's true, visit us",
+    "target_text": "isso é verdade, nos visitar",
+    "word_count": 27,
+    "known_audio_id": "abcd03a2-11a5-43a2-bc35-88bef1e07106",
+    "target1_audio_id": "0a3346e1-da63-4e5e-b0f7-8dc2f02a79b6",
+    "target2_audio_id": "f54e00ab-abbb-4e5d-9988-4b692ed2c079"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L02U02",
+   "set": {
+    "known_text": "no, visit us",
+    "target_text": "não, nos visitar",
+    "word_count": 16,
+    "known_audio_id": "4d21a244-fcce-4690-9650-baaec2f3aa9e",
+    "target1_audio_id": "827a38cc-1c86-4d53-8ac3-5d5abd516e81",
+    "target2_audio_id": "41f2ccb7-f3aa-456a-b60c-e257af2c9be4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L02B03",
+   "set": {
+    "known_text": "yes, visit us",
+    "target_text": "sim, nos visitar",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "019ca7d5-16fd-431e-b8b8-9ddf1ef43475",
+    "target1_audio_id": "c419f636-717b-4c92-94e9-f2b57cb9c035",
+    "target2_audio_id": "27f353f4-8a58-4869-a4cd-b064d4264f1f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L02B02",
+   "set": {
+    "known_text": "they still would like to visit us now",
+    "target_text": "eles ainda gostariam de nos visitar agora",
+    "word_count": 41,
+    "known_audio_id": "559307ff-07cd-449c-ab4b-5b1378e6eaf3",
+    "target1_audio_id": "102a61a2-13a6-4667-b3a5-8613459d404e",
+    "target2_audio_id": "7663d5e3-4e77-41ea-8777-4b14e9280d97"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L01U04",
+   "set": {
+    "known_text": "yes, would they like to serve",
+    "target_text": "sim, eles gostariam de servir",
+    "word_count": 29,
+    "lego_position": "middle",
+    "known_audio_id": "ba77d570-127a-4168-9e0a-e1e896e5295f",
+    "target1_audio_id": "2f4ce76e-0fcd-47e9-91e2-9ba4540af634",
+    "target2_audio_id": "8572f66a-6284-4d5b-8ae0-25f0ae2a0563"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L01U03",
+   "set": {
+    "known_text": "that's true, would they like to",
+    "target_text": "isso é verdade, eles gostariam de",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "b9f0f2cb-3241-4fd0-a38f-aec7ccb1dde7",
+    "target1_audio_id": "bf5f22b4-78d7-42c1-a537-7e7761bf96e6",
+    "target2_audio_id": "f614eaf2-f608-45c5-a0e7-749df3329503"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L01U01",
+   "set": {
+    "known_text": "no, would they like to",
+    "target_text": "não, eles gostariam de",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "3e88b9f4-7803-43fa-ba77-5b13c5856e72",
+    "target1_audio_id": "31f1f985-001a-482e-9047-bf17d028e81a",
+    "target2_audio_id": "6afde028-5201-44ea-9a27-ba5bc9e2a5c8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0428L01B03",
+   "set": {
+    "known_text": "yes, would they like to",
+    "target_text": "sim, eles gostariam de",
+    "word_count": 22,
+    "known_audio_id": "c1cdf6e2-7c96-4bca-8591-fdcd2e1f219a",
+    "target1_audio_id": "7d97da34-6733-484e-a8ab-58fa90c119d1",
+    "target2_audio_id": "e8c4306d-f871-4b72-a1a9-2fb8cad0de01"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L04U04",
+   "set": {
+    "known_text": "yes, that they're bored",
+    "target_text": "sim, que estão entediados",
+    "word_count": 25,
+    "known_audio_id": "3ea44afe-a21c-45bc-999c-665b90944b55",
+    "target1_audio_id": "6fe2faf1-8587-433a-8f74-acd77cad7b24",
+    "target2_audio_id": "5da9bfa7-353c-4134-8016-0ae48a038b27"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L04U03",
+   "set": {
+    "known_text": "that's true, bored",
+    "target_text": "isso é verdade, entediados",
+    "word_count": 26,
+    "known_audio_id": "8e3de471-f6cd-4290-8b1a-3e97e0afb60e",
+    "target1_audio_id": "fb662f0c-ddaf-4be8-bee7-353a379a93d4",
+    "target2_audio_id": "b7571caa-734e-4127-a964-aaf0176d82af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L04U02",
+   "set": {
+    "known_text": "no, bored",
+    "target_text": "não, entediados",
+    "word_count": 15,
+    "lego_position": "middle",
+    "known_audio_id": "2cbf3d94-34c3-4e07-ba3a-c03136ef419e",
+    "target1_audio_id": "0adaba34-6bda-411f-8c89-8545616a1bab",
+    "target2_audio_id": "3c6d38c5-752b-49ed-9847-167293261343"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L04B03",
+   "set": {
+    "known_text": "yes, bored",
+    "target_text": "sim, entediados",
+    "word_count": 15,
+    "lego_position": "middle",
+    "known_audio_id": "7847388a-dff6-40db-9bdc-37b117aecaba",
+    "target1_audio_id": "759b5407-1394-465e-87b3-aeb214d83ead",
+    "target2_audio_id": "e38fa3b9-1ab1-4122-b86a-fb9dfd522ada"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L03U05",
+   "set": {
+    "known_text": "that they're still wasting",
+    "target_text": "que ainda estão desperdiçando",
+    "lego_position": null,
+    "known_audio_id": "9c8c54b3-d232-489c-95ff-bcb808dc40a4",
+    "target1_audio_id": "6c5613ff-e4bf-4e72-ab40-cca0dcd40abc",
+    "target2_audio_id": "f5d4f703-dc8a-4e92-9239-99cd1dd2bae2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L03U04",
+   "set": {
+    "known_text": "yes, that they're wasting",
+    "target_text": "sim, que estão desperdiçando",
+    "word_count": 28,
+    "known_audio_id": "1d93f0d5-e6cf-4d22-b7d3-67d3acb600a6",
+    "target1_audio_id": "021026cf-415f-4d5f-bc05-158ba9cb7858",
+    "target2_audio_id": "41a89bb5-a064-461f-9d36-36907578d238"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L03U03",
+   "set": {
+    "known_text": "they wouldn't like you to think that they're",
+    "target_text": "eles não gostariam que você achasse que estão",
+    "word_count": 45,
+    "known_audio_id": "2c5e1309-b0ff-44ce-a583-a23375a3ae08",
+    "target1_audio_id": "60560197-6b3a-4752-9bcf-8d141540399e",
+    "target2_audio_id": "2b63ccb9-40e4-4f06-a7d7-02d6ae0e69f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L03U02",
+   "set": {
+    "known_text": "that's true, that they're",
+    "target_text": "isso é verdade, que estão",
+    "word_count": 25,
+    "lego_position": "end",
+    "known_audio_id": "32951ede-5bb8-4966-93cf-a1d75d8d4b20",
+    "target1_audio_id": "1c4e87cf-d2e5-43bb-848e-99b33a05db50",
+    "target2_audio_id": "e99cc00b-9b98-4964-896d-c0fae4f25c86"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L03U01",
+   "set": {
+    "known_text": "no, that they're",
+    "target_text": "não, que estão",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "9e3d184c-4903-4b53-be38-5109acd7cb20",
+    "target1_audio_id": "bcb7e211-7ab6-4bcf-848d-509b849cdc48",
+    "target2_audio_id": "633f5f35-eef0-48f5-9b91-29739b088378"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L03B03",
+   "set": {
+    "known_text": "yes, that they're",
+    "target_text": "sim, que estão",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "8b85a752-7ac4-423b-8757-af500ade389c",
+    "target1_audio_id": "2c23f9b5-bfd4-4b88-b129-b021a6dde96d",
+    "target2_audio_id": "01fdfcc8-b38b-4f1d-911d-25bf693e9a94"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L02U05",
+   "set": {
+    "known_text": "they still wouldn't like you to think",
+    "target_text": "eles ainda não gostariam que você achasse",
+    "word_count": 41,
+    "lego_position": "end",
+    "known_audio_id": "7355e3f0-99dd-4c56-80cb-f79dc3dea612",
+    "target1_audio_id": "e9ca4345-cb6f-4cfa-949c-47207d4fd50e",
+    "target2_audio_id": "a2970384-3a0b-4809-afb9-51773014e076"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L02U04",
+   "set": {
+    "known_text": "yes, they wouldn't like you to think",
+    "target_text": "sim, eles não gostariam que você achasse",
+    "word_count": 40,
+    "lego_position": "end",
+    "known_audio_id": "d0c44e0c-4d18-4dde-b2b1-2bd980f54cb2",
+    "target1_audio_id": "3864a37e-db75-4abc-86fb-9731a54d9c01",
+    "target2_audio_id": "16060173-762b-4321-8584-db041d2e59bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L02U03",
+   "set": {
+    "known_text": "they wouldn't like you to think now",
+    "target_text": "eles não gostariam que você achasse agora",
+    "word_count": 41,
+    "known_audio_id": "323801b9-33ed-4288-89bc-1df600ad2c0a",
+    "target1_audio_id": "315abee2-cd64-404a-b120-b1754662610b",
+    "target2_audio_id": "7509bce8-f9e7-4c38-ae9c-a89782958e5b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L02U02",
+   "set": {
+    "known_text": "that's true, you to think",
+    "target_text": "isso é verdade, que você achasse",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "359fa613-d141-4b9b-90d4-a59535f3f4cf",
+    "target1_audio_id": "69e0e716-cd05-4be1-9e3f-e7b4b49534a3",
+    "target2_audio_id": "652e6625-6dfc-4050-805e-941cf46b69f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L02U01",
+   "set": {
+    "known_text": "no, you to think",
+    "target_text": "não, que você achasse",
+    "word_count": 21,
+    "known_audio_id": "05bbf5c7-2e46-4548-9d49-fb7ae45c3256",
+    "target1_audio_id": "33e2c49e-806a-4ef5-a963-98d3731072d6",
+    "target2_audio_id": "1ef81a26-1e2a-497b-b743-23bb7bd8aeed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L02B03",
+   "set": {
+    "known_text": "yes, you to think",
+    "target_text": "sim, que você achasse",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "99085272-79f4-4719-8863-708ea9a3b5a1",
+    "target1_audio_id": "32fa8474-6317-49ba-9b3b-9deb3816a430",
+    "target2_audio_id": "7d4b9f6d-72e0-45a4-bd09-4277afb0e5bc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L01U04",
+   "set": {
+    "known_text": "yes, they wouldn't like to serve",
+    "target_text": "sim, eles não gostariam de servir",
+    "word_count": 33,
+    "lego_position": "middle",
+    "known_audio_id": "868d05f6-55a1-4623-85d2-7765551baa55",
+    "target1_audio_id": "5343e8a9-5346-4e30-a78e-3ac5c7ebf299",
+    "target2_audio_id": "ab77af8e-5aed-4757-814d-c7ebfde4b3a5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L01U02",
+   "set": {
+    "known_text": "that's true, they wouldn't like",
+    "target_text": "isso é verdade, eles não gostariam",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "df62fcb3-43fa-4872-a840-707796ad4f0a",
+    "target1_audio_id": "0c9fd751-4a7e-4d49-8975-e9164d3554af",
+    "target2_audio_id": "d807cb2c-8677-4661-89ec-29afb610b5ed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L01U01",
+   "set": {
+    "known_text": "no, they wouldn't like",
+    "target_text": "não, eles não gostariam",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "2db2deb1-b779-4dcd-abe5-9fd2261e4df4",
+    "target1_audio_id": "f97e0ecd-8ba4-4be9-8291-ab2195c9ef38",
+    "target2_audio_id": "ace3fed6-d4ce-4019-8e9f-10540ba69179"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0427L01B03",
+   "set": {
+    "known_text": "yes, they wouldn't like",
+    "target_text": "sim, eles não gostariam",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "9f49f2eb-baa2-4ab6-b7c0-93587fe575b9",
+    "target1_audio_id": "992fb23e-032c-403e-aeab-34d683de6434",
+    "target2_audio_id": "57224c51-a6ef-4498-a29f-f41c1c52b000"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0428L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0428L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0428L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0427L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0427L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0427L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0427L01B04"
+  }
+ ]
+}

@@ -1,0 +1,1797 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "we didn't hope to wake in the middle of the night",
+  "target": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "have hoped",
+    "target_text": "haben gehofft",
+    "components": [
+     {
+      "known": "have",
+      "target": "haben"
+     },
+     {
+      "known": "hoped",
+      "target": "gehofft"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "deu_for_eng:S0108L01C01",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "Have",
+     "target_text": "Haben",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T21:51:41.810984+00:00",
+     "created_at": "2026-03-11T19:13:19.351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6d2b9926-c990-448c-a3f8-2e575428d0bf",
+     "target1_audio_id": "db46cafe-a0ab-4a05-87af-4a7b2f74600f",
+     "target2_audio_id": "9bd9c2a3-8c4a-47cd-acab-92c8def5cfd4",
+     "qa_checked": null,
+     "target1_duration_ms": 696,
+     "target2_duration_ms": 672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "474f8c77-140b-4b5b-b4d1-e79f60e1eeab",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Haben",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4b49254d-af70-4045-bd08-76e0deb7c92c",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01C02",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "Hoped",
+     "target_text": "Gehofft",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 25,
+     "updated_at": "2026-10-12T17:30:01.922712+00:00",
+     "created_at": "2026-03-11T19:13:19.351+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "90292786-2405-4270-881b-934905a57912",
+     "target1_audio_id": "ac17187e-ed7f-4551-b1c9-d400508f4116",
+     "target2_audio_id": "7e2951fc-2578-4259-8924-b7c3ece933f1",
+     "qa_checked": null,
+     "target1_duration_ms": 672,
+     "target2_duration_ms": 696,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "0a49aca4-4a69-42c5-885d-78b754053eae",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Gehofft",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9892f9b1-a3ac-4ad3-916c-084445ffa792",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01B01",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "Have hoped",
+     "target_text": "Haben gehofft",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-28T21:48:27.733159+00:00",
+     "created_at": "2026-02-14T15:44:41.095526+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1ee630d1-06d5-442d-ac63-c6cb539aca56",
+     "target1_audio_id": "e2182839-ddda-4049-bc98-315dd2b72561",
+     "target2_audio_id": "9a12543d-3a98-4d02-bf3b-e35c520b2c41",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 1080,
+     "target2_duration_ms": 1128,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "have hoped",
+       "legoId": "S0108L01",
+       "target": "Haben gehofft",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4b49254d-af70-4045-bd08-76e0deb7c92c",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01B03",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "They have hoped to find it here",
+     "target_text": "Sie haben gehofft es hier zu finden",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-28T21:48:27.734112+00:00",
+     "created_at": "2026-02-14T15:44:41.095526+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "29bd37a0-c773-4a52-8347-052fddb6bf17",
+     "target1_audio_id": "6db43768-cd20-4102-abd4-7f98afd8224a",
+     "target2_audio_id": "d52f8f95-34d0-42d3-9297-b9d44eff3894",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 2112,
+     "target2_duration_ms": 2232,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Sie",
+       "isGhost": true
+      },
+      {
+       "known": "have hoped",
+       "legoId": "S0108L01",
+       "target": " haben gehofft",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "it",
+       "legoId": "S0027L01",
+       "target": " es",
+       "isGhost": false
+      },
+      {
+       "known": "here",
+       "legoId": "S0034L03",
+       "target": " hier",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " zu",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " finden",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01U10",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 16,
+     "known_text": "They have hoped to see us here very soon so we can talk",
+     "target_text": "Sie haben gehofft uns hier sehr bald zu sehen damit wir reden können",
+     "word_count": 68,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-14T15:44:41.042Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-29T14:18:39.874908+00:00",
+     "created_at": "2026-02-14T15:44:41.095526+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6992b00f-bc9d-4dbb-944b-024d0a018e66",
+     "target1_audio_id": "b29c1f03-e0c3-4fd5-a7f0-cd90aebf4299",
+     "target2_audio_id": "30ddae5c-a42b-4d1a-bb7d-d6e07c4daeb7",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 3984,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Sie",
+       "isGhost": true
+      },
+      {
+       "known": "have hoped",
+       "legoId": "S0108L01",
+       "target": " haben gehofft",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "each other",
+       "legoId": "S0018L03",
+       "target": " uns",
+       "isGhost": false
+      },
+      {
+       "known": "here",
+       "legoId": "S0034L03",
+       "target": " hier",
+       "isGhost": false
+      },
+      {
+       "known": "very",
+       "legoId": "S0013L03",
+       "target": " sehr",
+       "isGhost": false
+      },
+      {
+       "known": "soon",
+       "legoId": "S0023L01",
+       "target": " bald",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " zu",
+       "isGhost": true
+      },
+      {
+       "known": "to see",
+       "legoId": "S0107L02",
+       "target": " sehen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " damit",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wir",
+       "isGhost": true
+      },
+      {
+       "known": "talk",
+       "legoId": "S0088L02",
+       "target": " reden",
+       "isGhost": false
+      },
+      {
+       "known": "to be able to",
+       "legoId": "S0011L02",
+       "target": " können",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "131671e4-7371-4d90-8929-6a66b0a0afba",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01U11",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "They have hoped to learn German better",
+     "target_text": "Sie haben gehofft Deutsch besser zu lernen",
+     "word_count": 42,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-13T13:30:13.581Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-28T21:48:27.739388+00:00",
+     "created_at": "2026-04-13T13:30:13.643265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "fa5adaf6-3648-4e68-9899-4c361da39796",
+     "target1_audio_id": "40a7f5d7-0934-45f9-a431-bf330a1db130",
+     "target2_audio_id": "50cca4b6-f6d8-43ac-9d7d-02edcac3923b",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Sie",
+       "isGhost": true
+      },
+      {
+       "known": "have hoped",
+       "legoId": "S0108L01",
+       "target": " haben gehofft",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "German",
+       "legoId": "S0001L03",
+       "target": " Deutsch",
+       "isGhost": false
+      },
+      {
+       "known": "better",
+       "legoId": "S0029L02",
+       "target": " besser",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " zu",
+       "isGhost": true
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " lernen",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01U12",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 18,
+     "known_text": "We have hoped to be able to help you here",
+     "target_text": "Wir haben gehofft dir hier helfen zu können",
+     "word_count": 43,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-13T13:30:13.581Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-28T21:48:27.854672+00:00",
+     "created_at": "2026-04-13T13:30:13.643265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ec6c7092-dcd5-4b9e-b149-e17a045fddad",
+     "target1_audio_id": "35029040-5f26-4153-9c01-37f465750bda",
+     "target2_audio_id": "ac6bd558-0f81-4524-a00f-0cf629461733",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Wir",
+       "isGhost": true
+      },
+      {
+       "known": "have hoped",
+       "legoId": "S0108L01",
+       "target": " haben gehofft",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dir",
+       "isGhost": true
+      },
+      {
+       "known": "here",
+       "legoId": "S0034L03",
+       "target": " hier",
+       "isGhost": false
+      },
+      {
+       "known": "to help",
+       "legoId": "S0025L02",
+       "target": " helfen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " zu",
+       "isGhost": true
+      },
+      {
+       "known": "to be able to",
+       "legoId": "S0011L02",
+       "target": " können",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L01U13",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "They have hoped to meet us here",
+     "target_text": "Sie haben gehofft uns hier zu treffen",
+     "word_count": 37,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-13T13:30:13.581Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-28T21:48:27.845365+00:00",
+     "created_at": "2026-04-13T13:30:13.643265+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "34d77db3-3a01-47f7-ba11-5a5ce20ba562",
+     "target1_audio_id": "bc204bd7-c349-4258-a527-c8b047c77d3a",
+     "target2_audio_id": "dd6b4485-0901-4109-a607-6862006ddccd",
+     "qa_checked": null,
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Sie",
+       "isGhost": true
+      },
+      {
+       "known": "have hoped",
+       "legoId": "S0108L01",
+       "target": " haben gehofft",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "each other",
+       "legoId": "S0018L03",
+       "target": " uns",
+       "isGhost": false
+      },
+      {
+       "known": "here",
+       "legoId": "S0034L03",
+       "target": " hier",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " zu",
+       "isGhost": true
+      },
+      {
+       "known": "to meet",
+       "legoId": "S0018L02",
+       "target": " treffen",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "In the middle of the night",
+    "target_text": "mitten in der Nacht",
+    "components": [
+     {
+      "known": "in the middle of",
+      "target": "mitten in"
+     },
+     {
+      "known": "the night",
+      "target": "der Nacht"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "deu_for_eng:S0108L02C01",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "In the middle of",
+     "target_text": "Mitten in",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-12T16:28:27.073724+00:00",
+     "created_at": "2026-03-11T19:13:19.588+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "015ec61e-cb05-4bef-99ba-c2b1be2ab42d",
+     "target1_audio_id": "7efdc259-576f-409d-808c-e460e5f3a00c",
+     "target2_audio_id": "084ae06c-31fa-4f18-bcc9-f09dbd51f45a",
+     "qa_checked": null,
+     "target1_duration_ms": 936,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "1ff6a0f9-e8eb-4a55-977a-fb04fbc1c808",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Mitten",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " in",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4b49254d-af70-4045-bd08-76e0deb7c92c",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02C02",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "The night",
+     "target_text": "Der Nacht",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-12T16:28:27.073724+00:00",
+     "created_at": "2026-03-11T19:13:19.588+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "147e6f22-cba2-4931-93c7-ea5eb18cdd85",
+     "target2_audio_id": "868e97f8-8e38-48c4-acb7-d68a87498d76",
+     "qa_checked": null,
+     "target1_duration_ms": 624,
+     "target2_duration_ms": 600,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": "cbe7b501-2fab-41ca-9aad-d853a1d59903",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Der",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " Nacht",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4b49254d-af70-4045-bd08-76e0deb7c92c",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02B01",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "In the middle of the night",
+     "target_text": "Mitten in der Nacht",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T21:48:27.852414+00:00",
+     "created_at": "2026-02-14T15:45:32.202371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "target1_audio_id": "91e7fbdc-0d3b-437c-80e5-a0a060d8a028",
+     "target2_audio_id": "b7f12682-bde7-4c8e-8f28-9709920c01e7",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 1152,
+     "target2_duration_ms": 1224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": "Mitten in der Nacht",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "9892f9b1-a3ac-4ad3-916c-084445ffa792",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02B02",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "Something can happen in the middle of the night",
+     "target_text": "Etwas kann mitten in der Nacht passieren",
+     "word_count": 40,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 24,
+     "updated_at": "2026-10-28T21:48:27.979294+00:00",
+     "created_at": "2026-02-14T15:45:32.202371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "c928594b-a79a-43f2-bb1a-a0cc2a6faac5",
+     "target1_audio_id": "f4135063-ae2c-49aa-b4fa-f8a6d8d6aa0b",
+     "target2_audio_id": "cca5ceb4-8acf-423c-9448-37edb486a5f8",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "something",
+       "legoId": "S0004L01",
+       "target": "Etwas",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " kann",
+       "isGhost": true
+      },
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": " mitten in der Nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " passieren",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02B04",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "It happened in the middle of the night",
+     "target_text": "Es ist mitten in der Nacht passiert",
+     "word_count": 35,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 23,
+     "updated_at": "2026-10-12T06:33:13.404366+00:00",
+     "created_at": "2026-02-14T15:45:32.202371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "2311b223-2759-4ee7-bf24-3ca1656e5872",
+     "target1_audio_id": "12f408eb-17f6-4363-9a08-16ab673a5c31",
+     "target2_audio_id": "c34b08f4-89f4-4a4e-be8a-cdeb54795eaf",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 1944,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0027L01",
+       "target": "Es",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L03",
+       "target": " ist",
+       "isGhost": false
+      },
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": " mitten in der Nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "happens",
+       "legoId": "S0012L03",
+       "target": " passiert",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02U01",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "Something very interesting can happen in the middle of the night I think",
+     "target_text": "Etwas sehr Interessantes kann mitten in der Nacht passieren, denke ich",
+     "word_count": 67,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-14T15:45:32.143Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-10-28T21:48:28.129385+00:00",
+     "created_at": "2026-02-14T15:45:32.202371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "f3e0419e-d8df-4fd8-8695-84ce3ecba169",
+     "target1_audio_id": "e67f7e4d-17dd-4e40-a537-4fdd1b8b0d0b",
+     "target2_audio_id": "35526a7a-29b6-40da-b6e3-b48be93a2515",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3816,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "something",
+       "legoId": "S0004L01",
+       "target": "Etwas",
+       "isGhost": false
+      },
+      {
+       "known": "very",
+       "legoId": "S0013L03",
+       "target": " sehr",
+       "isGhost": false
+      },
+      {
+       "known": "interesting",
+       "legoId": "S0058L01",
+       "target": " interessant",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " kann",
+       "isGhost": true
+      },
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": " mitten in der Nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " passieren",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " denke",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ich",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02U03",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "My friend wanted to talk with me in the middle of the night yesterday",
+     "target_text": "Mein Freund wollte gestern mitten in der Nacht mit mir reden",
+     "word_count": 60,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-14T15:45:32.143Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 28,
+     "updated_at": "2026-10-28T21:48:28.134643+00:00",
+     "created_at": "2026-02-14T15:45:32.202371+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "b7a12e57-7bd7-451f-8df7-a29b420165ac",
+     "target1_audio_id": "42a08252-9628-4a39-81f2-a41a66b10e84",
+     "target2_audio_id": "abed3935-2e19-42bf-a13c-a1bea78500f2",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 3072,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Mein",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " Freund",
+       "isGhost": true
+      },
+      {
+       "known": "wanted",
+       "legoId": "S0030L01",
+       "target": " wollte",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mit",
+       "isGhost": true
+      },
+      {
+       "known": "me",
+       "legoId": "S0025L03",
+       "target": " mir",
+       "isGhost": false
+      },
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": " mitten in der Nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "yesterday",
+       "legoId": "S0030L03",
+       "target": " gestern",
+       "isGhost": false
+      },
+      {
+       "known": "talk",
+       "legoId": "S0088L02",
+       "target": " reden",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02U09",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 15,
+     "known_text": "I do not want to work in the middle of the night",
+     "target_text": "Ich will nicht mitten in der Nacht arbeiten",
+     "word_count": 43,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-07T09:52:59.507Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 331,
+     "updated_at": "2026-10-28T21:48:27.966836+00:00",
+     "created_at": "2026-07-07T09:52:59.601146+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "01478da4-3df2-42cf-8423-4219f54355ed",
+     "target1_audio_id": "280147a3-b72d-4d98-89c9-d9a4e7e892d8",
+     "target2_audio_id": "8146d20a-c512-4095-b112-6c5b003ecb4e",
+     "qa_checked": null,
+     "target1_duration_ms": 2256,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I want",
+       "legoId": "S0001L01",
+       "target": "Ich will",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " nicht",
+       "isGhost": false
+      },
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": " mitten in der Nacht",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " arbeiten",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 3902,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L02U10",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "My dog was very quiet in the middle of the night",
+     "target_text": "Mein Hund war mitten in der Nacht sehr still",
+     "word_count": 44,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-07-07T09:52:59.507Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 331,
+     "updated_at": "2026-10-28T21:48:27.963963+00:00",
+     "created_at": "2026-07-07T09:52:59.601146+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9c990624-627d-433e-b05e-ed142c3d7957",
+     "target1_audio_id": "938be441-1488-4cd9-b7af-679a921291bf",
+     "target2_audio_id": "ebebd58c-905b-47ee-be0d-b5cd97ed5d96",
+     "qa_checked": null,
+     "target1_duration_ms": 2496,
+     "target2_duration_ms": 2496,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Mein",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " Hund",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " war",
+       "isGhost": true
+      },
+      {
+       "known": "In the middle of the night",
+       "legoId": "S0108L02",
+       "target": " mitten in der Nacht",
+       "isGhost": false
+      },
+      {
+       "known": "very",
+       "legoId": "S0013L03",
+       "target": " sehr",
+       "isGhost": false
+      },
+      {
+       "known": "quiet",
+       "legoId": "S0034L01",
+       "target": " still",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 3902,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "A",
+    "known_text": "to wake up",
+    "target_text": "aufzuwachen",
+    "components": null,
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "deu_for_eng:S0108L03U08",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 11,
+     "known_text": "It is not easy to wake up when you are still very tired",
+     "target_text": "Es ist nicht leicht aufzuwachen wenn du noch sehr müde bist",
+     "word_count": 59,
+     "lego_count": 13,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-14T15:46:25.532Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 22,
+     "updated_at": "2026-10-28T21:48:28.117505+00:00",
+     "created_at": "2026-02-14T15:13:02.413305+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7e55e18d-9a4f-4900-b8b6-da6651b4edbc",
+     "target1_audio_id": "9e9626a8-3be4-4e0a-8d49-3bb04f0631be",
+     "target2_audio_id": "530211d6-9e11-4f4f-9ab6-fb06db6f414e",
+     "qa_checked": "2026-02-14T17:07:09.328+00:00",
+     "target1_duration_ms": 3216,
+     "target2_duration_ms": 3168,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0027L01",
+       "target": "Es",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L03",
+       "target": " ist",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " nicht",
+       "isGhost": false
+      },
+      {
+       "known": "easily",
+       "legoId": "S0024L01",
+       "target": " leicht",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L03",
+       "target": " aufzuwachen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wenn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " du",
+       "isGhost": true
+      },
+      {
+       "known": "yet",
+       "legoId": "S0060L01",
+       "target": " noch",
+       "isGhost": false
+      },
+      {
+       "known": "very",
+       "legoId": "S0013L03",
+       "target": " sehr",
+       "isGhost": false
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " müde",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bist",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L03U09",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 12,
+     "known_text": "I know it is difficult to wake up early",
+     "target_text": "Ich weiß es ist schwierig früh aufzuwachen",
+     "word_count": 42,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-08T14:21:55.071Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-29T14:18:39.874908+00:00",
+     "created_at": "2026-04-08T14:21:55.127462+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "644d81fb-b5aa-4c03-88d8-8b821339d05a",
+     "target1_audio_id": "1ed18392-31b9-4f5c-ba62-1fc4b22d8e5a",
+     "target2_audio_id": "58a2fb19-071a-474b-857a-ed9d277ce044",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Ich",
+       "isGhost": true
+      },
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": " weiß",
+       "isGhost": false
+      },
+      {
+       "known": "it",
+       "legoId": "S0027L01",
+       "target": " es",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L03",
+       "target": " ist",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " schwierig",
+       "isGhost": true
+      },
+      {
+       "known": "early",
+       "legoId": "S0028L02",
+       "target": " früh",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L03",
+       "target": " aufzuwachen",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "131671e4-7371-4d90-8929-6a66b0a0afba",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L03U10",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 13,
+     "known_text": "Waking up early is not easy when you are tired",
+     "target_text": "Früh aufzuwachen ist nicht leicht wenn man müde ist",
+     "word_count": 51,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-08T14:21:55.072Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 34,
+     "updated_at": "2026-10-28T21:48:28.142023+00:00",
+     "created_at": "2026-04-08T14:21:55.127462+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "659d37ed-f765-4318-9333-18ee7e4bbed5",
+     "target1_audio_id": "daee23c4-3ab4-4892-a49a-4f67e7bc7fab",
+     "target2_audio_id": "b6573f88-2439-49c4-8aea-23e5c77deac7",
+     "qa_checked": null,
+     "target1_duration_ms": 3192,
+     "target2_duration_ms": 3384,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "early",
+       "legoId": "S0028L02",
+       "target": "Früh",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L03",
+       "target": " aufzuwachen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L03",
+       "target": " ist",
+       "isGhost": false
+      },
+      {
+       "known": "not",
+       "legoId": "S0010L01",
+       "target": " nicht",
+       "isGhost": false
+      },
+      {
+       "known": "easily",
+       "legoId": "S0024L01",
+       "target": " leicht",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wenn",
+       "isGhost": true
+      },
+      {
+       "known": "one",
+       "legoId": "S0056L03",
+       "target": " man",
+       "isGhost": false
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " müde",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L03",
+       "target": " ist",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L03U11",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 14,
+     "known_text": "It is important to wake up early when you want to learn a lot",
+     "target_text": "Es ist wichtig früh aufzuwachen wenn du viel lernen willst",
+     "word_count": 58,
+     "lego_count": 14,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-13T13:48:05.495Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 31,
+     "updated_at": "2026-10-28T21:48:28.147911+00:00",
+     "created_at": "2026-04-13T13:48:05.547152+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "79c1739b-9ac8-4e45-9e69-0f6a7d68ddae",
+     "target1_audio_id": "66bf3b5c-0b46-47dc-a17e-4eeacd4e0ed4",
+     "target2_audio_id": "be90cff9-02ef-43a0-bd96-58c0d7b1843e",
+     "qa_checked": null,
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3528,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "it",
+       "legoId": "S0027L01",
+       "target": "Es",
+       "isGhost": false
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L03",
+       "target": " ist",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wichtig",
+       "isGhost": true
+      },
+      {
+       "known": "early",
+       "legoId": "S0028L02",
+       "target": " früh",
+       "isGhost": false
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0108L03",
+       "target": " aufzuwachen",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wenn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " du",
+       "isGhost": true
+      },
+      {
+       "known": "many",
+       "legoId": "S0103L01",
+       "target": " viel",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " lernen",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " willst",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "fe421fe1-fe8d-4eef-9580-b0fe4fc20506",
+     "frame_mask": null
+    },
+    {
+     "id": "deu_for_eng:S0108L03U01",
+     "course_code": "deu_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 15,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen",
+     "word_count": 56,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "job": "#358",
+      "why": "own last new LEGO",
+      "format": "build_use",
+      "source": "deu-italian-rules-apply-2026-10-02",
+      "move_why": "P26 seed-sentence row (job #358) contains S0108L03 \"aufzuwachen\", a later LEGO of its own seed",
+      "moved_by": "deu-deborah-oct-findings-2026-10-06 #327",
+      "moved_from": "S0108L02U11",
+      "seed_sentence_of": 108
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 3,
+     "updated_at": "2026-10-12T16:28:27.073724+00:00",
+     "created_at": "2026-10-06T20:56:10.513424+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "548ecdcf-2be1-4e27-913d-0dc08ace628b",
+     "target2_audio_id": "947d00da-8152-4412-a04f-8a3c198b9b53",
+     "qa_checked": null,
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 3144,
+     "lego_id": "S0108L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4b49254d-af70-4045-bd08-76e0deb7c92c",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

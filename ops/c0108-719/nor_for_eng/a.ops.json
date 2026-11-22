@@ -1,0 +1,173 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Vi forventet ikke å våkne midt på natten."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Vi håpet ikke å våkne midt på natten."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "wake up in the night"
+   },
+   "expect": {
+    "known_text": "wake in the night",
+    "target_text": "våkne på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "jeg forventet ikke å våkne på natten",
+    "known_text": "I didn't expect to wake up in the night"
+   },
+   "expect": {
+    "known_text": "I didn't hope to wake in the night",
+    "target_text": "jeg håpet ikke å våkne på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "she doesn't want to wake up in the night"
+   },
+   "expect": {
+    "known_text": "she doesn't want to wake in the night",
+    "target_text": "hun vil ikke våkne på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "it's difficult to wake up in the night"
+   },
+   "expect": {
+    "known_text": "it's difficult to wake in the night",
+    "target_text": "det er vanskelig å våkne på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "he needs to wake up in the night"
+   },
+   "expect": {
+    "known_text": "he needs to wake in the night",
+    "target_text": "han trenger å våkne på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "can you wake up in the night?"
+   },
+   "expect": {
+    "known_text": "can you wake in the night?",
+    "target_text": "kan du våkne på natten?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "I don't want to wake up in the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the night",
+    "target_text": "jeg vil ikke våkne på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "våkne midt på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "vi forventet ikke å våkne midt på natten",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "vi håpet ikke å våkne midt på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "she doesn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "target_text": "hun vil ikke våkne midt på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I didn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I didn't want to wake in the middle of the night",
+    "target_text": "jeg ville ikke våkne midt på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "it's not good to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "it's not good to wake in the middle of the night",
+    "target_text": "det er ikke bra å våkne midt på natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U05",
+   "set": {
+    "target_text": "forventet du å våkne midt på natten?",
+    "known_text": "did you expect to wake up in the middle of the night?"
+   },
+   "expect": {
+    "known_text": "did you hope to wake in the middle of the night?",
+    "target_text": "håpet du å våkne midt på natten?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "he doesn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "he doesn't want to wake in the middle of the night",
+    "target_text": "han vil ikke våkne midt på natten"
+   }
+  }
+ ]
+}

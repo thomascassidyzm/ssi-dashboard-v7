@@ -1,0 +1,746 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "4fef69f5-1038-4d30-b8a4-5221ee231fd7",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ми не сподівалися прокинутися посеред ночі.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "085246cb-2a5d-4142-8ad7-0e757683914b",
+    "target2_audio_id": "de213ed4-d2f4-4412-b129-4bb46d150ed3"
+   },
+   "after": {
+    "id": "4fef69f5-1038-4d30-b8a4-5221ee231fd7",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Ми не сподівалися прокинутися посеред ночі.",
+    "known_audio_id": null,
+    "target1_audio_id": "085246cb-2a5d-4142-8ad7-0e757683914b",
+    "target2_audio_id": "de213ed4-d2f4-4412-b129-4bb46d150ed3"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "909915fd-bb50-475a-a7a4-113d5aaa7342",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "to wake",
+    "target_text": "прокинутися",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "target1_audio_id": "14cb24ed-cb69-4bd4-b068-428cd167b2f4",
+    "target2_audio_id": "ee428f7a-5055-4ee8-9135-20dbedbd4a7c",
+    "presentation_audio_id": "eea65a3e-822d-4194-866f-aef1e88e8910"
+   },
+   "after": {
+    "id": "909915fd-bb50-475a-a7a4-113d5aaa7342",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "to wake up",
+    "target_text": "прокинутися",
+    "known_audio_id": null,
+    "target1_audio_id": "14cb24ed-cb69-4bd4-b068-428cd167b2f4",
+    "target2_audio_id": "ee428f7a-5055-4ee8-9135-20dbedbd4a7c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake",
+    "target_text": "ми не сподівалися прокинутися",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "target1_audio_id": "8e2c31aa-82dd-481f-930e-9ce3cce2b4cc",
+    "target2_audio_id": "aeb64894-57d6-4cf9-9165-584acbbd1dd6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "ми не сподівалися прокинутися",
+    "known_audio_id": null,
+    "target1_audio_id": "8e2c31aa-82dd-481f-930e-9ce3cce2b4cc",
+    "target2_audio_id": "aeb64894-57d6-4cf9-9165-584acbbd1dd6",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I want to wake now",
+    "target_text": "я хочу прокинутися зараз",
+    "known_audio_id": "ba863162-eb99-45e4-b405-ff46a292b4e8",
+    "target1_audio_id": "45a2e67c-a80b-4cb5-8918-d84f08f93d8a",
+    "target2_audio_id": "0dcf12d9-51d3-4aea-8a08-781e3a35fc5a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I want to wake up now",
+    "target_text": "я хочу прокинутися зараз",
+    "known_audio_id": null,
+    "target1_audio_id": "45a2e67c-a80b-4cb5-8918-d84f08f93d8a",
+    "target2_audio_id": "0dcf12d9-51d3-4aea-8a08-781e3a35fc5a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I need to wake",
+    "target_text": "мені треба прокинутися",
+    "known_audio_id": "56fb851f-194a-4bfb-86d5-afa265389311",
+    "target1_audio_id": "227caec6-4c01-4702-9318-236c40aea23d",
+    "target2_audio_id": "62c4d2b5-d697-457e-b86b-ff9209fa57a8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I need to wake up",
+    "target_text": "мені треба прокинутися",
+    "known_audio_id": null,
+    "target1_audio_id": "227caec6-4c01-4702-9318-236c40aea23d",
+    "target2_audio_id": "62c4d2b5-d697-457e-b86b-ff9209fa57a8",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I need to wake now",
+    "target_text": "мені треба прокинутися зараз",
+    "known_audio_id": "6d11747c-220a-4f7e-8ed2-534230fdc9e4",
+    "target1_audio_id": "c9e54424-1b84-48d1-be0b-6958ebea01a7",
+    "target2_audio_id": "b6bc19df-4d88-4724-99e0-58ed073d2edd",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I need to wake up now",
+    "target_text": "мені треба прокинутися зараз",
+    "known_audio_id": null,
+    "target1_audio_id": "c9e54424-1b84-48d1-be0b-6958ebea01a7",
+    "target2_audio_id": "b6bc19df-4d88-4724-99e0-58ed073d2edd",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I want to wake and speak Ukrainian",
+    "target_text": "я хочу прокинутися і говорити українською",
+    "known_audio_id": "5e798850-f873-449c-b906-0285ebb8baed",
+    "target1_audio_id": "e7a06b5e-37ed-4c48-9e51-d1b1d1f64a05",
+    "target2_audio_id": "43ea83af-a5d5-4acd-a3ca-a8eb9d0db9c0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I want to wake up and speak Ukrainian",
+    "target_text": "я хочу прокинутися і говорити українською",
+    "known_audio_id": null,
+    "target1_audio_id": "e7a06b5e-37ed-4c48-9e51-d1b1d1f64a05",
+    "target2_audio_id": "43ea83af-a5d5-4acd-a3ca-a8eb9d0db9c0",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I'm going to try to wake",
+    "target_text": "я збираюся спробувати прокинутися",
+    "known_audio_id": "91041f31-1238-4559-be29-571f886f8caf",
+    "target1_audio_id": "9a2473ca-fe0c-4f8d-95d9-63ceda92cc85",
+    "target2_audio_id": "0e3ef277-8b81-4e1d-8955-bf87f01982e9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I'm going to try to wake up",
+    "target_text": "я збираюся спробувати прокинутися",
+    "known_audio_id": null,
+    "target1_audio_id": "9a2473ca-fe0c-4f8d-95d9-63ceda92cc85",
+    "target2_audio_id": "0e3ef277-8b81-4e1d-8955-bf87f01982e9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we hoped to wake",
+    "target_text": "ми сподівалися прокинутися",
+    "known_audio_id": "8828c5b9-40f1-405a-84e7-aa6686e7d1ce",
+    "target1_audio_id": "19b5aac2-5858-4e89-912b-734e9e44a1b8",
+    "target2_audio_id": "2540c889-082e-42bd-bb83-e206fb59ecf5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we hoped to wake up",
+    "target_text": "ми сподівалися прокинутися",
+    "known_audio_id": null,
+    "target1_audio_id": "19b5aac2-5858-4e89-912b-734e9e44a1b8",
+    "target2_audio_id": "2540c889-082e-42bd-bb83-e206fb59ecf5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I didn't want to wake today",
+    "target_text": "я не хотів прокинутися сьогодні",
+    "known_audio_id": "66fcaf4a-f2ad-4ebd-8571-068689f058be",
+    "target1_audio_id": "16d44c58-3eea-45df-8475-6d52661e99b5",
+    "target2_audio_id": "4973512c-318e-41dc-b40e-811e771a4f74",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I didn't want to wake up today",
+    "target_text": "я не хотів прокинутися сьогодні",
+    "known_audio_id": null,
+    "target1_audio_id": "16d44c58-3eea-45df-8475-6d52661e99b5",
+    "target2_audio_id": "4973512c-318e-41dc-b40e-811e771a4f74",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "прокинутися посеред ночі",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "target1_audio_id": "23d3fac5-6d7e-416d-8d5c-6a7bf55cc25c",
+    "target2_audio_id": "c5ca3259-a6ac-47b8-9eae-8d54b72f4aa4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "23d3fac5-6d7e-416d-8d5c-6a7bf55cc25c",
+    "target2_audio_id": "c5ca3259-a6ac-47b8-9eae-8d54b72f4aa4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I want to wake in the middle of the night",
+    "target_text": "я хочу прокинутися посеред ночі",
+    "known_audio_id": "3fb2fa04-1c29-4b60-b9ff-574e5a1bd3fc",
+    "target1_audio_id": "3c7525cf-6920-4f22-bad5-4bfd84cd3250",
+    "target2_audio_id": "ff6825ce-3698-44ad-a7f6-f807c0129606",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I want to wake up in the middle of the night",
+    "target_text": "я хочу прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "3c7525cf-6920-4f22-bad5-4bfd84cd3250",
+    "target2_audio_id": "ff6825ce-3698-44ad-a7f6-f807c0129606",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02B04"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we hoped to wake in the middle of the night",
+    "target_text": "ми сподівалися прокинутися посеред ночі",
+    "known_audio_id": "d5a89a5e-e0fb-4516-95cd-35b16b6cc018",
+    "target1_audio_id": "78cf5383-9c0a-45a8-854b-e386e57e3d3b",
+    "target2_audio_id": "2b4393ef-31e0-4a0f-bcc5-d4d688762b64",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we hoped to wake up in the middle of the night",
+    "target_text": "ми сподівалися прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "78cf5383-9c0a-45a8-854b-e386e57e3d3b",
+    "target2_audio_id": "2b4393ef-31e0-4a0f-bcc5-d4d688762b64",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ми не сподівалися прокинутися посеред ночі",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "085246cb-2a5d-4142-8ad7-0e757683914b",
+    "target2_audio_id": "de213ed4-d2f4-4412-b129-4bb46d150ed3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "ми не сподівалися прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "085246cb-2a5d-4142-8ad7-0e757683914b",
+    "target2_audio_id": "de213ed4-d2f4-4412-b129-4bb46d150ed3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I didn't want to wake in the middle of the night",
+    "target_text": "я не хотів прокинутися посеред ночі",
+    "known_audio_id": "942829a3-8465-4fdc-b8f2-8ecbf6158a18",
+    "target1_audio_id": "f407fa12-2c37-48d1-bcb6-78b9d7c0dc54",
+    "target2_audio_id": "e5701e06-7af3-4c91-bc13-24221d5fd955",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I didn't want to wake up in the middle of the night",
+    "target_text": "я не хотів прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "f407fa12-2c37-48d1-bcb6-78b9d7c0dc54",
+    "target2_audio_id": "e5701e06-7af3-4c91-bc13-24221d5fd955",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to wake in the middle of the night",
+    "target_text": "мені треба прокинутися посеред ночі",
+    "known_audio_id": "1b878d59-08fe-4552-8aac-c1f56e86b88d",
+    "target1_audio_id": "b5eeed90-f165-4cbf-afec-2e6086712b70",
+    "target2_audio_id": "885bf2a4-93bd-43f1-83ee-05b7620a0a14",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need to wake up in the middle of the night",
+    "target_text": "мені треба прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "b5eeed90-f165-4cbf-afec-2e6086712b70",
+    "target2_audio_id": "885bf2a4-93bd-43f1-83ee-05b7620a0a14",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm going to try to wake in the middle of the night",
+    "target_text": "я збираюся спробувати прокинутися посеред ночі",
+    "known_audio_id": "71b5eb8d-f7e8-4504-83a7-36b1f690ba10",
+    "target1_audio_id": "cfd7efaa-b73a-452d-95d2-63178928ad11",
+    "target2_audio_id": "e947c251-e788-429b-a535-b0394943b33e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I'm going to try to wake up in the middle of the night",
+    "target_text": "я збираюся спробувати прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "cfd7efaa-b73a-452d-95d2-63178928ad11",
+    "target2_audio_id": "e947c251-e788-429b-a535-b0394943b33e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ukr_for_eng",
+    "id": "ukr_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "ukr_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I enjoy waking in the middle of the night",
+    "target_text": "мені подобається прокинутися посеред ночі",
+    "known_audio_id": "aa0b5485-eb17-4940-8b99-f04f48cbed9c",
+    "target1_audio_id": "b12f3b59-ac2b-4c83-aff4-fa7881be12e4",
+    "target2_audio_id": "abd034e8-7381-4ec2-a867-2c1c8efdbbb4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ukr_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I enjoy waking up in the middle of the night",
+    "target_text": "мені подобається прокинутися посеред ночі",
+    "known_audio_id": null,
+    "target1_audio_id": "b12f3b59-ac2b-4c83-aff4-fa7881be12e4",
+    "target2_audio_id": "abd034e8-7381-4ec2-a867-2c1c8efdbbb4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "I enjoy waking in the middle of the night",
+    "known_audio_id": "aa0b5485-eb17-4940-8b99-f04f48cbed9c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "I'm going to try to wake in the middle of the night",
+    "known_audio_id": "71b5eb8d-f7e8-4504-83a7-36b1f690ba10"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I need to wake in the middle of the night",
+    "known_audio_id": "1b878d59-08fe-4552-8aac-c1f56e86b88d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "I didn't want to wake in the middle of the night",
+    "known_audio_id": "942829a3-8465-4fdc-b8f2-8ecbf6158a18"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02B04",
+   "set": {
+    "known_text": "we hoped to wake in the middle of the night",
+    "known_audio_id": "d5a89a5e-e0fb-4516-95cd-35b16b6cc018"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "I want to wake in the middle of the night",
+    "known_audio_id": "3fb2fa04-1c29-4b60-b9ff-574e5a1bd3fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "I didn't want to wake today",
+    "known_audio_id": "66fcaf4a-f2ad-4ebd-8571-068689f058be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "we hoped to wake",
+    "known_audio_id": "8828c5b9-40f1-405a-84e7-aa6686e7d1ce"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I'm going to try to wake",
+    "known_audio_id": "91041f31-1238-4559-be29-571f886f8caf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I want to wake and speak Ukrainian",
+    "known_audio_id": "5e798850-f873-449c-b906-0285ebb8baed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I need to wake now",
+    "known_audio_id": "6d11747c-220a-4f7e-8ed2-534230fdc9e4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "I need to wake",
+    "known_audio_id": "56fb851f-194a-4bfb-86d5-afa265389311"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "I want to wake now",
+    "known_audio_id": "ba863162-eb99-45e4-b405-ff46a292b4e8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ukr_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "909915fd-bb50-475a-a7a4-113d5aaa7342",
+   "set": {
+    "known_text": "to wake",
+    "known_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": "eea65a3e-822d-4194-866f-aef1e88e8910"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

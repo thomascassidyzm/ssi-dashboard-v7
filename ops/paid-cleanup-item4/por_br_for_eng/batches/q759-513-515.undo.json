@@ -1,0 +1,774 @@
+{
+ "event_id": "a7d2d8e7-54dd-4dc3-a841-3bfc0e25ab8e",
+ "undo_file": "2026-11-18T15-25-34-803Z-a7d2d8e7-54dd-4dc3-a841-3bfc0e25ab8e.json",
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0515L02U05",
+    "seed_number": 515,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "I'm sure, of the new year",
+    "target_text": "tenho certeza, do ano novo",
+    "word_count": 26,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:09:21.393Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:09:21.487Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "d1045f7f-ea0f-4798-9b4e-4e45e1423032",
+    "target1_audio_id": "ff109ce5-dce2-4a48-bbb9-4fb8201a0180",
+    "target2_audio_id": "542a56f1-8e90-4749-b441-4977b1a4f1ac",
+    "qa_checked": null,
+    "target1_duration_ms": 3552,
+    "target2_duration_ms": 3624,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0515L02U04",
+    "seed_number": 515,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "yes, on the first day of the new year",
+    "target_text": "sim, no primeiro dia do ano novo",
+    "word_count": 32,
+    "lego_count": 9,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 10,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:09:21.393Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:09:21.487Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "0ada80c9-b93d-48a2-bdb9-ba0c3d875299",
+    "target1_audio_id": "94b2a43f-cbe3-4155-924c-a32a778c4984",
+    "target2_audio_id": "3420a087-0f9f-45a4-9920-a38444aea05d",
+    "qa_checked": null,
+    "target1_duration_ms": 3912,
+    "target2_duration_ms": 4032,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0514L03U05",
+    "seed_number": 514,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "I'm sure, on the first day",
+    "target_text": "tenho certeza, no primeiro dia",
+    "word_count": 30,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:08:58.128Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:08:58.178Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "4de0e9d5-fe0b-4d93-9a66-cf813947e84a",
+    "target1_audio_id": "aa604575-0d23-43c3-be79-ac70cb1714a4",
+    "target2_audio_id": "46feb559-1db1-4e1e-a833-e6a8af7d0832",
+    "qa_checked": null,
+    "target1_duration_ms": 3816,
+    "target2_duration_ms": 3840,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0514L03U04",
+    "seed_number": 514,
+    "lego_index": 3,
+    "position": 10,
+    "known_text": "yes, I found the perfect house on the first day",
+    "target_text": "sim, eu encontrei a casa perfeita no primeiro dia",
+    "word_count": 49,
+    "lego_count": 10,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 13,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:08:58.128Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:08:58.178Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "6cefda56-28f3-4a44-9ae5-6415ba7779cb",
+    "target1_audio_id": "589b638b-a680-4029-a99a-088358103754",
+    "target2_audio_id": "e64368ad-9da6-4480-8222-546a2ff5396a",
+    "qa_checked": null,
+    "target1_duration_ms": 4920,
+    "target2_duration_ms": 5184,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0514L03U03",
+    "seed_number": 514,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "that's true, on the first day",
+    "target_text": "isso é verdade, no primeiro dia",
+    "word_count": 31,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 9,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:08:58.128Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:08:58.178Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "2f80e76a-e453-4589-9b06-c90b542f77e9",
+    "target1_audio_id": "e9da83dc-2340-4a75-a40b-55f39c855d2b",
+    "target2_audio_id": "886fbece-31c6-45d0-918d-8f041986db1f",
+    "qa_checked": null,
+    "target1_duration_ms": 3768,
+    "target2_duration_ms": 3912,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0514L03U02",
+    "seed_number": 514,
+    "lego_index": 3,
+    "position": 8,
+    "known_text": "no, on the first day",
+    "target_text": "não, no primeiro dia",
+    "word_count": 20,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "scored_at": "2026-07-15T16:08:58.128Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-07-15T16:08:58.178Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "e5af2cf4-1cc8-47c9-a5ab-1931c30ade41",
+    "target1_audio_id": "b1d79ecf-a3e3-4bc3-ac22-5101df15bac6",
+    "target2_audio_id": "99fe7c14-34a1-4e3d-a913-365c4b9d84ce",
+    "qa_checked": null,
+    "target1_duration_ms": 3168,
+    "target2_duration_ms": 3168,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02U03",
+   "set": {
+    "known_text": "that's true, of the new year",
+    "target_text": "isso é verdade, do ano novo",
+    "word_count": 27,
+    "lego_position": "end",
+    "known_audio_id": "77c92231-88d7-4d8d-b935-51c258e1b4d9",
+    "target1_audio_id": "18029958-41a2-4636-ac6d-a8e6e385d58d",
+    "target2_audio_id": "e0bd240b-0101-4cde-a2c4-aa7b6f9223ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02U02",
+   "set": {
+    "known_text": "no, of the new year",
+    "target_text": "não, do ano novo",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "06dc3e30-8e0f-406d-9483-65e78cdc31f5",
+    "target1_audio_id": "35938c1d-23a3-4eed-9128-488058728ca6",
+    "target2_audio_id": "dca0e941-f78d-4b4d-a642-ceb8d07077e1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02B03",
+   "set": {
+    "known_text": "yes, of the new year",
+    "target_text": "sim, do ano novo",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "dd57113e-10b8-4ba8-a488-6dcbf034832c",
+    "target1_audio_id": "368b67fd-4f42-42b6-bcea-3a0ff7a0d9cf",
+    "target2_audio_id": "04b1b46d-abf0-4efa-840a-642f07a9e186"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0515L02B02",
+   "set": {
+    "known_text": "on the first day of the new year now",
+    "target_text": "no primeiro dia do ano novo agora",
+    "word_count": 33,
+    "lego_position": "middle",
+    "known_audio_id": "1d42421c-4c72-4c49-8450-d3f0642b8b26",
+    "target1_audio_id": "9a2c50d0-e0fa-4850-bfff-8f90a82d7414",
+    "target2_audio_id": "25f759b6-e7cd-46ba-a040-9a30af486882"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L03B03",
+   "set": {
+    "known_text": "yes, on the first day",
+    "target_text": "sim, no primeiro dia",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "02e9125c-6fd9-42fb-82c3-4a245e801b49",
+    "target1_audio_id": "4dc36beb-19e6-472c-8cee-88b5cf8eabaf",
+    "target2_audio_id": "50a79041-91be-4d7e-a7ea-12b9fa664f0b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U05",
+   "set": {
+    "known_text": "I still found the perfect house",
+    "target_text": "eu ainda encontrei a casa perfeita",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "837e088d-d91d-4ed5-94bd-910b47efaae8",
+    "target1_audio_id": "166d8821-d217-4c7c-82fa-f3dd7b70715c",
+    "target2_audio_id": "a7b03482-aa20-4b4f-8e2a-3b0e2dc1560c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U04",
+   "set": {
+    "known_text": "yes, I found the perfect house",
+    "target_text": "sim, eu encontrei a casa perfeita",
+    "word_count": 33,
+    "known_audio_id": "b194b5f1-948d-40eb-a5a1-9af0bed06a7f",
+    "target1_audio_id": "eec0585e-022f-43e7-8eba-d83a3249c8b2",
+    "target2_audio_id": "ffcfbdba-6d4b-4b4e-bbe6-c2ceeb16ab52"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U02",
+   "set": {
+    "known_text": "that's true, the perfect house",
+    "target_text": "isso é verdade, a casa perfeita",
+    "word_count": 31,
+    "known_audio_id": "5efcded0-d323-46fc-9f2d-0280c9838a0b",
+    "target1_audio_id": "14fa23ec-f706-4fe8-a7a8-7c618b51e026",
+    "target2_audio_id": "e9268642-97df-46d8-bc91-556fd58c387a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02U01",
+   "set": {
+    "known_text": "no, the perfect house",
+    "target_text": "não, a casa perfeita",
+    "word_count": 20,
+    "known_audio_id": "d88181c0-7015-4828-a793-24d970cfec4c",
+    "target1_audio_id": "ead0bbbc-7995-4053-b8ea-e9d3572fd0aa",
+    "target2_audio_id": "e0c72496-7221-4047-91a2-3edd195c1d9d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L02B03",
+   "set": {
+    "known_text": "yes, the perfect house",
+    "target_text": "sim, a casa perfeita",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "c4d24b1a-6fda-4e0e-b84c-edc2a7c1f5c4",
+    "target1_audio_id": "da5248a2-1938-44ce-8a39-b46efa82f059",
+    "target2_audio_id": "bec36859-a9a8-4ede-ad58-0adb71a55366"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U05",
+   "set": {
+    "known_text": "I still found",
+    "target_text": "eu ainda encontrei",
+    "word_count": 18,
+    "lego_position": null,
+    "known_audio_id": "1d2282cf-a413-4f04-a447-4ea16cbddc68",
+    "target1_audio_id": "9c096923-1dbd-4a18-8bf6-727c35dfeacd",
+    "target2_audio_id": "b8a124a0-61c8-4a4a-bd61-dbca038b11c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U04",
+   "set": {
+    "known_text": "yes, that's true, I found",
+    "target_text": "sim, isso é verdade, eu encontrei",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "30c5137f-3293-44fb-9a99-cb2801646bc3",
+    "target1_audio_id": "b08a1120-f844-417f-a31b-89dd7c942a3e",
+    "target2_audio_id": "2a10b18b-6f5c-4634-83f3-39ab1fb27e34"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U03",
+   "set": {
+    "known_text": "I'm sure I found",
+    "target_text": "tenho certeza, eu encontrei",
+    "word_count": 27,
+    "lego_position": "end",
+    "known_audio_id": "1fae6f1e-0ad0-465b-95de-ebbae5813d06",
+    "target1_audio_id": "1e9b018b-9a23-4bed-8221-ea8941fea607",
+    "target2_audio_id": "fbf53bcf-fc6d-4996-a376-c03af989c9cb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U02",
+   "set": {
+    "known_text": "that's true, I found",
+    "target_text": "isso é verdade, eu encontrei",
+    "word_count": 28,
+    "lego_position": "end",
+    "known_audio_id": "ceac611f-1522-4fb8-a852-7038e3fe30dd",
+    "target1_audio_id": "3fc2441d-7b71-44e0-b002-375ba6619eb6",
+    "target2_audio_id": "3c5686a3-192a-4573-a3d5-d395c7383f9e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01U01",
+   "set": {
+    "known_text": "no, I found",
+    "target_text": "não, eu encontrei",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "6be57619-faf4-4f56-b364-5daa0989c387",
+    "target1_audio_id": "d67694b5-0522-4d1d-8e9e-6e318bfa0f24",
+    "target2_audio_id": "8410d64d-6587-4f06-a32f-72193239bbbd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0514L01B03",
+   "set": {
+    "known_text": "yes, I found",
+    "target_text": "sim, eu encontrei",
+    "word_count": 17,
+    "lego_position": "middle",
+    "known_audio_id": "1a3b99b4-0c54-4659-bc32-d372a980eea1",
+    "target1_audio_id": "3b470311-80b3-400a-b634-55a85e78e492",
+    "target2_audio_id": "60633e8a-e841-4494-81b8-b6a0a6ce42d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U05",
+   "set": {
+    "known_text": "I'm sure, up and down",
+    "target_text": "tenho certeza, para cima e para baixo",
+    "word_count": 37,
+    "lego_position": "end",
+    "known_audio_id": "c8b121ca-e0c0-44a9-9958-2b9506db7cd4",
+    "target1_audio_id": "74b0a9fb-41ba-44c5-b2e1-13deec581882",
+    "target2_audio_id": "2fe82d7a-49a8-42c3-8a1f-9f57fd66b71d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U04",
+   "set": {
+    "known_text": "yes, it hurts most when I move my head up and down",
+    "target_text": "sim, dói mais quando mexo a cabeça para cima e para baixo",
+    "word_count": 57,
+    "known_audio_id": "2abcb34d-cc62-4520-86fd-4fc9acc67c38",
+    "target1_audio_id": "5bc295e3-8745-4a8d-9457-df8bbdcb4c02",
+    "target2_audio_id": "9ff787ad-e9af-4cf5-8d74-8ffdd0e5d1ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U03",
+   "set": {
+    "known_text": "that's true, up and down",
+    "target_text": "isso é verdade, para cima e para baixo",
+    "word_count": 38,
+    "known_audio_id": "68ba2206-9e42-4ef6-b810-14609726403f",
+    "target1_audio_id": "311933d4-b8f5-4b2e-abe7-0ad26626a765",
+    "target2_audio_id": "ff8b4334-33d5-4c57-bb1c-9c159d8d14a5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04U02",
+   "set": {
+    "known_text": "no, up and down",
+    "target_text": "não, para cima e para baixo",
+    "word_count": 27,
+    "known_audio_id": "79167e85-3197-4319-8af8-429b633e0a42",
+    "target1_audio_id": "f4fe1150-392f-4a4e-9772-5b9d52ee3a8d",
+    "target2_audio_id": "5d0a08d7-fdaa-404b-9298-7e510189edd0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L04B03",
+   "set": {
+    "known_text": "yes, up and down",
+    "target_text": "sim, para cima e para baixo",
+    "word_count": 27,
+    "lego_position": "middle",
+    "known_audio_id": "91460128-b45f-488d-be7b-acc1666e8ab0",
+    "target1_audio_id": "3217806d-11c1-49f7-a836-d9dc22de8a73",
+    "target2_audio_id": "16a653b7-76a7-4aa9-89c1-073f140e64c1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U04",
+   "set": {
+    "known_text": "yes, it hurts most when I move my head",
+    "target_text": "sim, dói mais quando mexo a cabeça",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "b544bda8-9cf3-403d-ae07-c2a0b02762f6",
+    "target1_audio_id": "70b71bd4-854f-4ba6-9ce2-96912a6a2090",
+    "target2_audio_id": "27f7955e-9e6c-4b5b-b3b2-4371821867b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U03",
+   "set": {
+    "known_text": "I have my head",
+    "target_text": "tenho a cabeça",
+    "word_count": 14,
+    "known_audio_id": "227968a7-6013-4d8e-919f-d23e1fd5a282",
+    "target1_audio_id": "9b1e8485-378e-4a38-be43-052b42ffed15",
+    "target2_audio_id": "1f4456b1-8a9f-414e-b0f2-5936be82f00b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U02",
+   "set": {
+    "known_text": "that's true, my head",
+    "target_text": "isso é verdade, a cabeça",
+    "word_count": 24,
+    "lego_position": "end",
+    "known_audio_id": "3095681a-e607-42c9-83a3-381fd7583c97",
+    "target1_audio_id": "a339649d-30da-4a01-b2e5-7be12d1a564b",
+    "target2_audio_id": "ff192cde-a4a6-47d9-8fbf-fad7cc5896a7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03U01",
+   "set": {
+    "known_text": "no, my head",
+    "target_text": "não, a cabeça",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "0bc7f2a1-b4d4-49f2-b2ec-926344bed7e9",
+    "target1_audio_id": "61e1993b-4a80-4dda-8813-d7235853161c",
+    "target2_audio_id": "e9619294-bfc8-43a0-9283-bdf60d087b7f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L03B03",
+   "set": {
+    "known_text": "yes, my head",
+    "target_text": "sim, a cabeça",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "48c35abe-bd8b-4fee-bdaf-3bd96cdee9ec",
+    "target1_audio_id": "96c78ecd-9cb8-4a4f-ac25-42a0234f7606",
+    "target2_audio_id": "62378710-4642-4f53-9d66-d7cc7762ea53"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U04",
+   "set": {
+    "known_text": "yes, it hurts most when I move",
+    "target_text": "sim, dói mais quando mexo",
+    "word_count": 25,
+    "known_audio_id": "067863ae-a90f-4207-bfdd-1154ea011d08",
+    "target1_audio_id": "f4799ec3-dc2d-48c8-932d-303bc866017e",
+    "target2_audio_id": "871d2bca-bc5d-4789-bb53-88cc947f0bde"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U03",
+   "set": {
+    "known_text": "I'm sure, when I move",
+    "target_text": "tenho certeza, quando mexo",
+    "word_count": 26,
+    "known_audio_id": "e9ff458a-24d5-40c2-ac50-e91dacc3a7ec",
+    "target1_audio_id": "c4bb7ac5-f016-48cc-8e4c-66bea02cae20",
+    "target2_audio_id": "aef390b6-79eb-4fb6-b7df-56f1aff32ce5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U02",
+   "set": {
+    "known_text": "that's true, when I move",
+    "target_text": "isso é verdade, quando mexo",
+    "word_count": 27,
+    "known_audio_id": "3016e6ee-f0da-4384-a503-ba7e67a7f60a",
+    "target1_audio_id": "8b41687e-a661-4e0b-89b4-b4e689bb6a8e",
+    "target2_audio_id": "a38e15ed-5ddc-4a55-9b01-fc527ce4d640"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02U01",
+   "set": {
+    "known_text": "no, when I move",
+    "target_text": "não, quando mexo",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "83ca7c1f-c4ef-42e2-82b1-513d355d7ba2",
+    "target1_audio_id": "e05f84a5-34b3-412c-836d-fb231d1aaf09",
+    "target2_audio_id": "aef51bba-682b-4ded-abe7-08abf33abe49"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L02B03",
+   "set": {
+    "known_text": "yes, when I move",
+    "target_text": "sim, quando mexo",
+    "word_count": 16,
+    "known_audio_id": "aa467f41-b572-405b-a4b5-8044622f515e",
+    "target1_audio_id": "fbfce693-3ac2-4bb1-bfd2-6f01134ad281",
+    "target2_audio_id": "23dba67e-57bd-4f94-a891-106b5efecc4c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U05",
+   "set": {
+    "known_text": "it still hurts most",
+    "target_text": "ainda dói mais",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "bf6e968d-df1b-48d5-bcec-dbfd71cf25aa",
+    "target1_audio_id": "78f94b2c-55d2-4c08-aae0-e5790590ae2c",
+    "target2_audio_id": "6481ea9b-90dc-4acb-bd5d-5a4ef79c6d2b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U04",
+   "set": {
+    "known_text": "yes, that's true, it hurts most",
+    "target_text": "sim, isso é verdade, dói mais",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "99311756-2b97-462e-a980-4d8e14b8db7c",
+    "target1_audio_id": "5e865470-c914-45e0-8355-46fc163810bc",
+    "target2_audio_id": "c8c12111-bd0c-4526-b11e-b744304c5946"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U03",
+   "set": {
+    "known_text": "I'm sure it hurts most",
+    "target_text": "tenho certeza, dói mais",
+    "word_count": 23,
+    "lego_position": "end",
+    "known_audio_id": "65b63599-e94a-48f7-b4bf-bfdcf477c3e6",
+    "target1_audio_id": "0d2d77c0-4dac-4087-af5b-e36da0789208",
+    "target2_audio_id": "d30cc887-b20c-4fd9-9710-63aa652ebeab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U02",
+   "set": {
+    "known_text": "that's true, it hurts most",
+    "target_text": "isso é verdade, dói mais",
+    "lego_position": "end",
+    "known_audio_id": "4e1c29ae-45fd-4059-8315-85088a5b488f",
+    "target1_audio_id": "35c2f101-40b6-43a1-ae85-118079b10b43",
+    "target2_audio_id": "5e907463-fa52-4e9d-af8f-0da12596b110"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01U01",
+   "set": {
+    "known_text": "no, it hurts most",
+    "target_text": "não, dói mais",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "457c0828-324b-4c2c-8cb3-1dd9405efc94",
+    "target1_audio_id": "8eec4f93-8fa7-43dd-82bb-343414822609",
+    "target2_audio_id": "072d8120-d649-4de2-8c7c-96bddb147620"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01B03",
+   "set": {
+    "known_text": "yes, it hurts most",
+    "target_text": "sim, dói mais",
+    "lego_position": "end",
+    "known_audio_id": "af18aa20-0f08-4b87-89b8-061b0a76f777",
+    "target1_audio_id": "b97874ca-3be9-405a-a4a5-504b61ff5ad7",
+    "target2_audio_id": "8a8b9be2-4c4a-47af-b553-132757b79329"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0513L01B02",
+   "set": {
+    "known_text": "it hurts most now",
+    "target_text": "dói mais agora",
+    "word_count": 14,
+    "known_audio_id": "76bb08c2-8b78-4d87-993f-6fb63f8ac386",
+    "target1_audio_id": "0b959cd9-2fe7-4dfc-b953-588a9074eff5",
+    "target2_audio_id": "56708dd7-ae6c-4af1-a12a-e59d3a8a1761"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0515L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0514L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0513L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0513L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0513L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0513L01B04"
+  }
+ ]
+}

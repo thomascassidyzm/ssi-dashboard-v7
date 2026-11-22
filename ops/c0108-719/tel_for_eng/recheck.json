@@ -1,0 +1,199 @@
+{
+ "course": "tel_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "lego.update",
+   "key": "S0108L02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 2,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02B01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 3,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 4,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 5,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 6,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02U02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 7,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02U03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 8,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02U04",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 9,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L02U05",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 10,
+   "op": "lego.update",
+   "key": "S0108L03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 11,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03B01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 12,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03B02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 13,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 14,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 15,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03U02",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 16,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03U03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 17,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03U04",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 18,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L03U05",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 19,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L04U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 20,
+   "op": "phrase.update",
+   "key": "tel_for_eng:S0108L04U02",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [
+  {
+   "key": "tel_for_eng:S0108L01B01",
+   "known": "wake here",
+   "target": "మెలకువ ఇక్కడ"
+  },
+  {
+   "key": "tel_for_eng:S0108L01B02",
+   "known": "but wake",
+   "target": "కానీ మెలకువ"
+  },
+  {
+   "key": "tel_for_eng:S0108L01B03",
+   "known": "or wake",
+   "target": "లేదా మెలకువ"
+  },
+  {
+   "key": "tel_for_eng:S0108L01U02",
+   "known": "though wake",
+   "target": "కానీ మెలకువ ఉంది"
+  },
+  {
+   "key": "tel_for_eng:S0108L01U03",
+   "known": "else wake",
+   "target": "లేదా మెలకువ ఉంది"
+  },
+  {
+   "key": "tel_for_eng:S0108L01U04",
+   "known": "wake useful",
+   "target": "మెలకువ ఉపయోగకరం"
+  },
+  {
+   "key": "tel_for_eng:S0108L01U05",
+   "known": "wake good",
+   "target": "మెలకువ బాగా ఉంది"
+  },
+  {
+   "key": "tel_for_eng:S0108L04B03",
+   "known": "midnight wake",
+   "target": "అర్ధరాత్రి మెలకువ"
+  }
+ ],
+ "counts": {
+  "ok": 21
+ }
+}

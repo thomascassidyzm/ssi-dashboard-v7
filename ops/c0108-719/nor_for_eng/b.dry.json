@@ -1,0 +1,264 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.insert",
+   "key": {
+    "seed_number": 108,
+    "lego_index": 3
+   },
+   "before": null,
+   "after": {
+    "id": "6326f835-aefc-4ecb-bb76-f0814393cf52",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "known_text": "expected",
+    "target_text": "forventet",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03B01"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "expected",
+    "target_text": "forventet",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03B02"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I expected to wake up",
+    "target_text": "jeg forventet å våkne",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03B03"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she expected to wake up in the night",
+    "target_text": "hun forventet å våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03B04"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03B04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "vi forventet ikke å våkne",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03U01"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "he expected to wake up in the night",
+    "target_text": "han forventet å våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03U02"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I didn't expect to wake up in the middle of the night",
+    "target_text": "jeg forventet ikke å våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03U03"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she didn't expect to wake up in the middle of the night",
+    "target_text": "hun forventet ikke å våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03U04"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "did you expect to wake up in the night?",
+    "target_text": "forventet du å våkne på natten?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.insert",
+   "key": {
+    "id": "nor_for_eng:S0108L03U05"
+   },
+   "before": null,
+   "after": {
+    "id": "nor_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "he didn't expect to wake up in the night",
+    "target_text": "han forventet ikke å våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03B03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03B02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "nor_for_eng:S0108L03B01"
+  },
+  {
+   "op": "lego.delete",
+   "id": "6326f835-aefc-4ecb-bb76-f0814393cf52"
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

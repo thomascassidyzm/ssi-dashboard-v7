@@ -36,10 +36,12 @@ const collide = new Set(fs.existsSync(path.join(cdir, 'collide.json')) ? JSON.pa
 // Every event this job wrote, whichever worker wrote it (events-<owner>.json, one per worker, so branches never conflict).
 const ourEvents = new Set(fs.readdirSync(cdir).filter(f => /^events.*\.json$/.test(f)).flatMap(f => JSON.parse(fs.readFileSync(path.join(cdir, f), 'utf8')).map(e => e.event_id)));
 
+// cs #358: ITEM4_ONLY="433,434,…" restricts a range to the seeds still to apply (to-changesets.cjs).
+const ONLY = process.env.ITEM4_ONLY ? new Set(process.env.ITEM4_ONLY.split(',').map(Number)) : null;
 const plans = [];
 for (const f of fs.readdirSync(path.join(cdir, 'plans')).filter(f => /^S\d{4}\.json$/.test(f)).sort()) {
   const p = JSON.parse(fs.readFileSync(path.join(cdir, 'plans', f), 'utf8'));
-  if (p.seed >= lo && p.seed <= hi) plans.push(p);
+  if (p.seed >= lo && p.seed <= hi && (!ONLY || ONLY.has(p.seed))) plans.push(p);
 }
 const planBySeed = new Map(plans.map(p => [p.seed, p]));
 const errors = [], warnings = [], checks = [], recordedToday = [];

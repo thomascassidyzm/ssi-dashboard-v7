@@ -1,0 +1,528 @@
+[
+ {
+  "seed_number": 459,
+  "phrases": {
+   "459:1": [
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "was",
+     "target_text": "estava",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in front of",
+     "target_text": "em frente",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of the",
+     "target_text": "do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "it wasn't in front of the",
+     "target_text": "não estava em frente do",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it wasn't in front of the office",
+     "target_text": "não estava em frente do escritório",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it wasn't in front of the car",
+     "target_text": "não estava em frente do carro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it wasn't in front of the restaurant",
+     "target_text": "não estava em frente do restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the bus wasn't in front of the office",
+     "target_text": "o ônibus não estava em frente do escritório",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "my car wasn't in front of the restaurant",
+     "target_text": "o meu carro não estava em frente do restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said it wasn't in front of the office",
+     "target_text": "ele disse que não estava em frente do escritório",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it wasn't in front of the garden",
+     "target_text": "não estava em frente do jardim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it wasn't in front of the café",
+     "target_text": "não estava em frente do café",
+     "phrase_role": "build"
+    }
+   ],
+   "459:2": [
+    {
+     "known_text": "sign",
+     "target_text": "sinal",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "blue",
+     "target_text": "azul",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "blue sign",
+     "target_text": "sinal azul",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "in front of the blue sign",
+     "target_text": "em frente do sinal azul",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the blue sign",
+     "target_text": "o sinal azul",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it wasn't in front of the blue sign",
+     "target_text": "não estava em frente do sinal azul",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "near the blue sign",
+     "target_text": "perto do sinal azul",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to wait near the blue sign",
+     "target_text": "vou esperar perto do sinal azul",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's a blue sign over there",
+     "target_text": "há um sinal azul ali",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I didn't see the blue sign",
+     "target_text": "não vi o sinal azul",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a blue sign",
+     "target_text": "um sinal azul",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 460,
+  "phrases": {
+   "460:1": [
+    {
+     "known_text": "I want to",
+     "target_text": "eu quero",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to find",
+     "target_text": "encontrar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I want to find",
+     "target_text": "eu quero encontrar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to find my keys",
+     "target_text": "eu quero encontrar minhas chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to find work",
+     "target_text": "eu quero encontrar trabalho",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to find a restaurant",
+     "target_text": "eu quero encontrar um restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find a place to live",
+     "target_text": "eu quero encontrar um lugar para viver",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find my money",
+     "target_text": "eu quero encontrar o meu dinheiro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find a good restaurant",
+     "target_text": "eu quero encontrar um bom restaurante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find that book",
+     "target_text": "eu quero encontrar aquele livro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find a café",
+     "target_text": "eu quero encontrar um café",
+     "phrase_role": "build"
+    }
+   ],
+   "460:2": [
+    {
+     "known_text": "a",
+     "target_text": "uma",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "shop",
+     "target_text": "loja",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a shop",
+     "target_text": "uma loja",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to find a shop",
+     "target_text": "eu quero encontrar uma loja",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a shop over there",
+     "target_text": "uma loja ali",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "my brother has a shop",
+     "target_text": "meu irmão tem uma loja",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's a shop",
+     "target_text": "isso é uma loja",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have a shop",
+     "target_text": "tenho uma loja",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "is there a shop here?",
+     "target_text": "há uma loja aqui?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I still want to find a shop",
+     "target_text": "eu ainda quero encontrar uma loja",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a new shop",
+     "target_text": "uma loja nova",
+     "phrase_role": "build"
+    }
+   ],
+   "460:3": [
+    {
+     "known_text": "near",
+     "target_text": "perto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "of the",
+     "target_text": "do",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hotel",
+     "target_text": "hotel",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "near the hotel",
+     "target_text": "perto do hotel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a shop near the hotel",
+     "target_text": "uma loja perto do hotel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a restaurant near the hotel",
+     "target_text": "um restaurante perto do hotel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want to find a shop near the hotel",
+     "target_text": "eu quero encontrar uma loja perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's a café near the hotel",
+     "target_text": "há um café perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's near the hotel",
+     "target_text": "isso é perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's meet near the hotel",
+     "target_text": "vamos nos encontrar perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the car is near the hotel",
+     "target_text": "o carro está perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to wait near the hotel",
+     "target_text": "vou esperar perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "could you wait near the hotel?",
+     "target_text": "você podia esperar perto do hotel?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "will they be able to wait near the hotel?",
+     "target_text": "eles vão conseguir esperar perto do hotel?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you should wait near the hotel",
+     "target_text": "você devia esperar perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to find a shop near the hotel",
+     "target_text": "espero conseguir encontrar uma loja perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a shop near the hotel",
+     "target_text": "havia uma loja perto do hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's like this near the hotel",
+     "target_text": "é assim perto do hotel",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left the money near the hotel",
+     "target_text": "deixei o dinheiro perto do hotel",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 461,
+  "phrases": {
+   "461:1": [
+    {
+     "known_text": "a shop",
+     "target_text": "uma loja",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "where",
+     "target_text": "onde",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a shop where",
+     "target_text": "uma loja onde",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a shop where they speak Portuguese",
+     "target_text": "uma loja onde falam português",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a shop where I left my bag",
+     "target_text": "uma loja onde deixei a minha bolsa",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know a shop where they speak Portuguese",
+     "target_text": "conheço uma loja onde falam português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's a shop where",
+     "target_text": "isso é uma loja onde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's a shop where my sister works",
+     "target_text": "há uma loja onde a minha irmã trabalha",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm looking for a shop where I can find coffee",
+     "target_text": "estou procurando uma loja onde posso encontrar café",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a shop where everyone speaks Portuguese",
+     "target_text": "é uma loja onde todo mundo fala português",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "sounds like a shop where",
+     "target_text": "parece uma loja onde",
+     "phrase_role": "build"
+    }
+   ],
+   "461:2": [
+    {
+     "known_text": "I can",
+     "target_text": "possa",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "buy",
+     "target_text": "comprar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I can buy",
+     "target_text": "possa comprar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a shop where I can buy",
+     "target_text": "uma loja onde possa comprar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, where I can buy",
+     "target_text": "sim, onde possa comprar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no, a shop where I can buy",
+     "target_text": "não, uma loja onde possa comprar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's true, a shop where I can buy",
+     "target_text": "isso é verdade, uma loja onde possa comprar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that would be where I can buy",
+     "target_text": "isso seria onde possa comprar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, a shop where I can buy",
+     "target_text": "sim, uma loja onde possa comprar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm sure, a shop where I can buy",
+     "target_text": "tenho certeza, uma loja onde possa comprar",
+     "phrase_role": "use"
+    }
+   ],
+   "461:3": [
+    {
+     "known_text": "some",
+     "target_text": "uns",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "postcards",
+     "target_text": "cartões postais",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "some postcards",
+     "target_text": "uns cartões postais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to buy some postcards",
+     "target_text": "comprar uns cartões postais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I want some postcards",
+     "target_text": "quero uns cartões postais",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a shop where I can buy some postcards",
+     "target_text": "uma loja onde possa comprar uns cartões postais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to send some postcards",
+     "target_text": "eu gostaria de mandar uns cartões postais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she sent me some postcards",
+     "target_text": "ela me mandou uns cartões postais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need some postcards",
+     "target_text": "preciso de uns cartões postais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to send some postcards to my mother",
+     "target_text": "quero mandar uns cartões postais para a minha mãe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to buy some postcards",
+     "target_text": "estou tentando comprar uns cartões postais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to buy some postcards",
+     "target_text": "espero conseguir comprar uns cartões postais",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I like to buy some postcards",
+     "target_text": "gosto de comprar uns cartões postais",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,111 @@
+{
+ "seed": 477,
+ "notes": "cs #761·AI | cs #759·AI: rows that split the LEGO with still/really rewritten (validator containment)",
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "he's been sick for a week",
+     "ele está doente há uma semana"
+    ],
+    "B03": [
+     "he's been sick since Monday",
+     "ele está doente desde segunda-feira"
+    ],
+    "U01": [
+     "he's been sick for a long time",
+     "ele está doente há muito tempo"
+    ],
+    "U02": [
+     "he's been sick all week",
+     "ele está doente a semana toda"
+    ],
+    "U04": [
+     "he's been sick since yesterday",
+     "ele está doente desde ontem"
+    ],
+    "U05": [
+     "he's been sick since last month",
+     "ele está doente desde o mês passado"
+    ],
+    "U03": [
+     "I think he's been sick",
+     "acho que ele está doente"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "he's been sick since Friday",
+     "ele está doente desde sexta-feira"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "since the second day of the week",
+     "desde o segundo dia da semana"
+    ],
+    "U01": [
+     "she's been sick since the second day",
+     "ela está doente desde o segundo dia"
+    ],
+    "U02": [
+     "I've been tired since the second day",
+     "estou cansado desde o segundo dia"
+    ],
+    "U03": [
+     "we've been here since the second day",
+     "estamos aqui desde o segundo dia"
+    ],
+    "U04": [
+     "I've known it since the second day",
+     "sei disso desde o segundo dia"
+    ],
+    "U05": [
+     "he's been at home since the second day",
+     "ele está em casa desde o segundo dia"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "here since the second day",
+     "aqui desde o segundo dia"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "the end of the holidays",
+     "o fim das férias"
+    ],
+    "U02": [
+     "I'm waiting for the end of the holidays",
+     "estou esperando o fim das férias"
+    ],
+    "U03": [
+     "on the second day of the holidays",
+     "no segundo dia das férias"
+    ],
+    "U04": [
+     "she's been sick since the start of the holidays",
+     "ela está doente desde o início das férias"
+    ],
+    "U05": [
+     "the second day of the holidays was perfect",
+     "o segundo dia das férias foi perfeito"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "the start of the holidays",
+     "o início das férias"
+    ]
+   ]
+  }
+ }
+}

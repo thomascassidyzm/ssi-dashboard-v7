@@ -1,0 +1,268 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "Non ci aspettavamo di svegliarci nel mezzo della notte.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "Non speravamo di svegliarci nel mezzo della notte.",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "we didn't expect to",
+    "known_text": "non ci aspettavamo di",
+    "components": [
+     {
+      "known": "ci aspettavamo",
+      "target": "expected"
+     },
+     {
+      "known": "non ci aspettavamo di",
+      "target": "we didn't expect to"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "non speravamo di",
+    "target_text": "we didn't hope to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01C01",
+   "set": {
+    "target_text": "expected",
+    "known_text": "ci aspettavamo"
+   },
+   "expect": {
+    "known_text": "speravamo",
+    "target_text": "hoped"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01B01",
+   "set": {
+    "target_text": "we didn't expect to",
+    "known_text": "non ci aspettavamo di"
+   },
+   "expect": {
+    "known_text": "non speravamo di",
+    "target_text": "we didn't hope to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01B02",
+   "set": {
+    "target_text": "we didn't expect to do this",
+    "known_text": "non ci aspettavamo di fare questo"
+   },
+   "expect": {
+    "known_text": "non speravamo di fare questo",
+    "target_text": "we didn't hope to do this"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01B03",
+   "set": {
+    "target_text": "we didn't expect to feel happy",
+    "known_text": "non ci aspettavamo di sentirci felici"
+   },
+   "expect": {
+    "known_text": "non speravamo di sentirci felici",
+    "target_text": "we didn't hope to feel happy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01U01",
+   "set": {
+    "target_text": "we didn't expect to do everything at the same time",
+    "known_text": "non ci aspettavamo di fare tutto allo stesso tempo"
+   },
+   "expect": {
+    "known_text": "non speravamo di fare tutto allo stesso tempo",
+    "target_text": "we didn't hope to do everything at the same time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01U02",
+   "set": {
+    "target_text": "we didn't expect to do something similar",
+    "known_text": "non ci aspettavamo di fare qualcosa di simile"
+   },
+   "expect": {
+    "known_text": "non speravamo di fare qualcosa di simile",
+    "target_text": "we didn't hope to do something similar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01U03",
+   "set": {
+    "target_text": "we didn't expect to do this just now",
+    "known_text": "non ci aspettavamo di fare questo proprio adesso"
+   },
+   "expect": {
+    "known_text": "non speravamo di fare questo proprio adesso",
+    "target_text": "we didn't hope to do this just now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01U04",
+   "set": {
+    "target_text": "we didn't expect to do something difficult",
+    "known_text": "non ci aspettavamo di fare qualcosa di difficile"
+   },
+   "expect": {
+    "known_text": "non speravamo di fare qualcosa di difficile",
+    "target_text": "we didn't hope to do something difficult"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L01U05",
+   "set": {
+    "target_text": "we didn't expect to do more",
+    "known_text": "non ci aspettavamo di fare di più"
+   },
+   "expect": {
+    "known_text": "non speravamo di fare di più",
+    "target_text": "we didn't hope to do more"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "wake up in the middle of the night",
+    "components": [
+     {
+      "known": "svegliarci",
+      "target": "wake up"
+     },
+     {
+      "known": "nel mezzo della notte",
+      "target": "in the middle of the night"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "svegliarci nel mezzo della notte",
+    "target_text": "wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02C01",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "svegliarci",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02B01",
+   "set": {
+    "target_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "svegliarci nel mezzo della notte",
+    "target_text": "wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02B02",
+   "set": {
+    "target_text": "I didn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "non volevo svegliarmi nel mezzo della notte",
+    "target_text": "I didn't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02B03",
+   "set": {
+    "target_text": "it isn't easy to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "non è facile svegliarsi nel mezzo della notte",
+    "target_text": "it isn't easy to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02U01",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "non ci aspettavamo di svegliarci nel mezzo della notte"
+   },
+   "expect": {
+    "known_text": "non speravamo di svegliarci nel mezzo della notte",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02U02",
+   "set": {
+    "target_text": "she didn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "lei non voleva svegliarsi nel mezzo della notte",
+    "target_text": "she didn't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02U03",
+   "set": {
+    "target_text": "it isn't easy to work hard if you wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "non è facile lavorare sodo se ti svegli nel mezzo della notte",
+    "target_text": "it isn't easy to work hard if you wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02U04",
+   "set": {
+    "target_text": "that is why I didn't wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ecco perché non mi sono svegliato nel mezzo della notte",
+    "target_text": "that is why I didn't wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ita:S0108L02U05",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night again",
+    "known_text": "non ci aspettavamo di svegliarci nel mezzo della notte di nuovo"
+   },
+   "expect": {
+    "known_text": "non speravamo di svegliarci nel mezzo della notte di nuovo",
+    "target_text": "we didn't hope to wake in the middle of the night again"
+   }
+  }
+ ]
+}

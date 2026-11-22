@@ -1,0 +1,575 @@
+[
+ {
+  "seed_number": 427,
+  "phrases": {
+   "427:1": [
+    {
+     "known_text": "they",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "would like",
+     "target_text": "gostariam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they wouldn't like",
+     "target_text": "eles não gostariam",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they wouldn't like to serve",
+     "target_text": "eles não gostariam de servir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they wouldn't like to win",
+     "target_text": "eles não gostariam de ganhar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they wouldn't like to wait",
+     "target_text": "eles não gostariam de esperar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think they wouldn't like to go",
+     "target_text": "acho que eles não gostariam de ir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they wouldn't like to lead",
+     "target_text": "eles não gostariam de liderar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they wouldn't like to speak with me",
+     "target_text": "eles não gostariam de falar comigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they wouldn't like to reserve",
+     "target_text": "eles não gostariam de reservar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they wouldn't like to help",
+     "target_text": "eles não gostariam de ajudar",
+     "phrase_role": "build"
+    }
+   ],
+   "427:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "thought",
+     "target_text": "achasse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you to think",
+     "target_text": "que você achasse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they wouldn't like you to think",
+     "target_text": "eles não gostariam que você achasse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I wouldn't like you to think",
+     "target_text": "não gostaria que você achasse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they wouldn't like you to think that it's easy",
+     "target_text": "eles não gostariam que você achasse que é fácil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wouldn't like you to think that I'm tired",
+     "target_text": "não gostaria que você achasse que estou cansado",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wouldn't like you to think that she's concerned",
+     "target_text": "ela não gostaria que você achasse que está preocupada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they wouldn't like you to think that it's true",
+     "target_text": "eles não gostariam que você achasse que é verdade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wouldn't like you to think that he's not ready",
+     "target_text": "ele não gostaria que você achasse que não está pronto",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we wouldn't like you to think",
+     "target_text": "nós não gostaríamos que você achasse",
+     "phrase_role": "build"
+    }
+   ],
+   "427:3": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they are",
+     "target_text": "estão",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "that they're",
+     "target_text": "que estão",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you to think that they're",
+     "target_text": "que você achasse que estão",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I know that they're here",
+     "target_text": "eu sei que estão aqui",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think that they're ready",
+     "target_text": "acho que estão prontos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that they're quiet",
+     "target_text": "ela disse que estão calados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they wouldn't like you to think that they're unhappy",
+     "target_text": "eles não gostariam que você achasse que estão infelizes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't think that they're wasting time",
+     "target_text": "eu não acho que estão desperdiçando tempo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true that they're unhappy",
+     "target_text": "é verdade que estão infelizes",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that they're ready",
+     "target_text": "que estão prontos",
+     "phrase_role": "build"
+    }
+   ],
+   "427:4": [
+    {
+     "known_text": "bored",
+     "target_text": "entediados",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that they're bored",
+     "target_text": "que estão entediados",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they're bored",
+     "target_text": "estão entediados",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they wouldn't like you to think that they're bored",
+     "target_text": "eles não gostariam que você achasse que estão entediados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think they're bored",
+     "target_text": "acho que estão entediados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they're not bored",
+     "target_text": "não estão entediados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that they're bored",
+     "target_text": "ela disse que estão entediados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they're still bored",
+     "target_text": "ainda estão entediados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why are they bored?",
+     "target_text": "por que estão entediados?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I wonder why they're bored",
+     "target_text": "me pergunto por que estão entediados",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "but they're bored",
+     "target_text": "mas estão entediados",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 428,
+  "phrases": {
+   "428:1": [
+    {
+     "known_text": "they",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "would like to",
+     "target_text": "gostariam de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "would they like to",
+     "target_text": "eles gostariam de",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would they like to serve",
+     "target_text": "eles gostariam de servir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would they like to come back?",
+     "target_text": "eles gostariam de voltar?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would they like to eat something?",
+     "target_text": "eles gostariam de comer algo?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would they like to lead",
+     "target_text": "eles gostariam de liderar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would they like to stay?",
+     "target_text": "eles gostariam de ficar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would they like to learn Portuguese?",
+     "target_text": "eles gostariam de aprender português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would they like to reserve",
+     "target_text": "eles gostariam de reservar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "would they like to go?",
+     "target_text": "eles gostariam de ir?",
+     "phrase_role": "build"
+    }
+   ],
+   "428:2": [
+    {
+     "known_text": "us",
+     "target_text": "nos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to visit",
+     "target_text": "visitar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "visit us",
+     "target_text": "nos visitar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they want to visit us",
+     "target_text": "eles querem nos visitar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she wants to visit us",
+     "target_text": "ela quer nos visitar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would they like to visit us?",
+     "target_text": "eles gostariam de nos visitar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they want to visit us tomorrow",
+     "target_text": "eles querem nos visitar amanhã",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "when do you want to visit us?",
+     "target_text": "quando você quer nos visitar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, would they like to visit us?",
+     "target_text": "sim, eles gostariam de nos visitar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they still would like to visit us",
+     "target_text": "eles ainda gostariam de nos visitar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that they would like to visit us",
+     "target_text": "ela disse que eles gostariam de nos visitar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to visit us",
+     "target_text": "ele quer nos visitar",
+     "phrase_role": "build"
+    }
+   ],
+   "428:3": [
+    {
+     "known_text": "on",
+     "target_text": "na",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "Tuesday",
+     "target_text": "terça-feira",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "on Tuesday",
+     "target_text": "na terça-feira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to visit us on Tuesday",
+     "target_text": "nos visitar na terça-feira",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "on Tuesday evening",
+     "target_text": "na terça-feira à noite",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "would they like to visit us on Tuesday?",
+     "target_text": "eles gostariam de nos visitar na terça-feira?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to visit you on Tuesday",
+     "target_text": "vou te visitar na terça-feira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we could meet on Tuesday",
+     "target_text": "podíamos nos encontrar na terça-feira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, they would like to visit us on Tuesday",
+     "target_text": "sim, eles gostariam de nos visitar na terça-feira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they still would like to visit us on Tuesday",
+     "target_text": "eles ainda gostariam de nos visitar na terça-feira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he is going to visit us on Tuesday",
+     "target_text": "ele vai nos visitar na terça-feira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope you'll be able to visit us on Tuesday",
+     "target_text": "espero que você consiga nos visitar na terça-feira",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they want to visit us on Tuesday",
+     "target_text": "eles querem nos visitar na terça-feira",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 429,
+  "phrases": {
+   "429:1": [],
+   "429:2": [],
+   "429:3": [],
+   "429:4": [
+    {
+     "known_text": "for",
+     "target_text": "para",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "them",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "for them",
+     "target_text": "para eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "perfect for them",
+     "target_text": "perfeito para eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's easy for them",
+     "target_text": "é fácil para eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes that would be perfect for them",
+     "target_text": "sim, isso seria perfeito para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that wouldn't be easy for them",
+     "target_text": "isso não seria fácil para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to do something for them",
+     "target_text": "gostaria de fazer algo para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that would be perfect for them today",
+     "target_text": "isso seria perfeito para eles hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that would still be perfect for them",
+     "target_text": "isso ainda seria perfeito para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to do something for them",
+     "target_text": "vou fazer algo para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it is fun for them",
+     "target_text": "é divertido para eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "there was nothing for them",
+     "target_text": "não havia nada para eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's like this for them",
+     "target_text": "é assim para eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I left something for them",
+     "target_text": "deixei algo para eles",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 430,
+  "phrases": {
+   "430:1": [],
+   "430:2": [],
+   "430:3": [
+    {
+     "known_text": "that's possible",
+     "target_text": "isso é possível",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "that wouldn't be possible",
+     "target_text": "isso não seria possível",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "yes, that's possible",
+     "target_text": "sim, isso é possível",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "no that wouldn't be possible",
+     "target_text": "não, isso não seria possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "no, that's not possible",
+     "target_text": "não, isso não é possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think it's possible",
+     "target_text": "acho que é possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that would be possible",
+     "target_text": "isso seria possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that wouldn't still be possible",
+     "target_text": "isso ainda não seria possível",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said that it wasn't possible",
+     "target_text": "ele disse que não era possível",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

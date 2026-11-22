@@ -1,0 +1,477 @@
+[
+ {
+  "seed_number": 589,
+  "phrases": {
+   "589:1": [
+    {
+     "known_text": "she",
+     "target_text": "ela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "me",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "told",
+     "target_text": "disse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she told me",
+     "target_text": "ela me disse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me so",
+     "target_text": "ela me disse isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me the answer",
+     "target_text": "ela me disse a resposta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me everything",
+     "target_text": "ela me disse tudo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me it was difficult",
+     "target_text": "ela me disse que era difícil",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me it was late",
+     "target_text": "ela me disse que era tarde",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me what happened",
+     "target_text": "ela me disse o que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she told me the truth",
+     "target_text": "acho que ela me disse a verdade",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me that it could be done",
+     "target_text": "ela me disse que podia ser feito",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me her name",
+     "target_text": "ela me disse o nome dela",
+     "phrase_role": "build"
+    }
+   ],
+   "589:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "had",
+     "target_text": "tinha",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "just",
+     "target_text": "acabado de",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "seen",
+     "target_text": "ver",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she'd just seen",
+     "target_text": "que tinha acabado de ver",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me she'd just seen the children",
+     "target_text": "ela me disse que tinha acabado de ver as crianças",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me she'd just seen the bus",
+     "target_text": "ela me disse que tinha acabado de ver o ônibus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me she'd just seen my mother",
+     "target_text": "ela me disse que tinha acabado de ver a minha mãe",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me she'd just seen the mountains",
+     "target_text": "ela me disse que tinha acabado de ver as montanhas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she'd just seen my friend",
+     "target_text": "ela disse que tinha acabado de ver o meu amigo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she told me she'd just seen the bus",
+     "target_text": "acho que ela me disse que tinha acabado de ver o ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me she'd just seen something interesting",
+     "target_text": "ela me disse que tinha acabado de ver algo interessante",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said she'd just seen the dog",
+     "target_text": "ela disse que tinha acabado de ver o cachorro",
+     "phrase_role": "build"
+    }
+   ],
+   "589:3": [
+    {
+     "known_text": "the last",
+     "target_text": "o último",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "bus",
+     "target_text": "ônibus",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the last bus",
+     "target_text": "o último ônibus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm waiting for the last bus",
+     "target_text": "estou esperando o último ônibus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the last bus goes to the beach",
+     "target_text": "o último ônibus vai até a praia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she told me she'd just seen the last bus",
+     "target_text": "ela me disse que tinha acabado de ver o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's waiting for the last bus",
+     "target_text": "ela está esperando o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'd like to know when the last bus is",
+     "target_text": "gostaria de saber quando é o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children are on the last bus",
+     "target_text": "as crianças estão no último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she told me she'd just seen the last bus",
+     "target_text": "acho que ela me disse que tinha acabado de ver o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we've been waiting for the last bus",
+     "target_text": "estamos esperando o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to catch the last bus",
+     "target_text": "preciso pegar o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should catch the last bus",
+     "target_text": "talvez devêssemos pegar o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if you can catch the last bus that would be great",
+     "target_text": "se você puder pegar o último ônibus seria ótimo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's no point worrying about the last bus",
+     "target_text": "não vale a pena se preocupar com o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going home on the last bus",
+     "target_text": "vou para casa no último ônibus",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going to wait for the last bus",
+     "target_text": "vou esperar o último ônibus",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 590,
+  "phrases": {
+   "590:1": [
+    {
+     "known_text": "I",
+     "target_text": "eu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "saw",
+     "target_text": "vi",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I myself saw",
+     "target_text": "eu vi",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I saw the dog",
+     "target_text": "eu vi o cachorro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I saw the children",
+     "target_text": "eu vi as crianças",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I saw the church yesterday",
+     "target_text": "eu vi a igreja ontem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw the last bus",
+     "target_text": "eu vi o último ônibus",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw what happened",
+     "target_text": "eu vi o que aconteceu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw my friend at the hotel",
+     "target_text": "eu vi o meu amigo no hotel",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw the children playing in the garden",
+     "target_text": "eu vi as crianças brincando no jardim",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw the mountains",
+     "target_text": "eu vi as montanhas",
+     "phrase_role": "build"
+    }
+   ],
+   "590:2": [],
+   "590:3": [
+    {
+     "known_text": "leaving",
+     "target_text": "saindo",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the station",
+     "target_text": "da estação",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "leaving the station",
+     "target_text": "saindo da estação",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the last bus leaving the station",
+     "target_text": "o último ônibus saindo da estação",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the bus leaving the station",
+     "target_text": "o ônibus saindo da estação",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I saw the last bus leaving the station",
+     "target_text": "eu vi o último ônibus saindo da estação",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw the children leaving the station",
+     "target_text": "eu vi as crianças saindo da estação",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she saw me leaving the station",
+     "target_text": "ela me viu saindo da estação",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can see the bus leaving the station",
+     "target_text": "eu consigo ver o ônibus saindo da estação",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she told me she'd just seen the last bus leaving the station",
+     "target_text": "ela me disse que tinha acabado de ver o último ônibus saindo da estação",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I saw the bus leaving the station",
+     "target_text": "eu vi o ônibus saindo da estação",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 591,
+  "phrases": {
+   "591:1": [
+    {
+     "known_text": "she",
+     "target_text": "ela",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "me",
+     "target_text": "me",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "followed",
+     "target_text": "seguiu",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "she followed me",
+     "target_text": "ela me seguiu",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she followed me there",
+     "target_text": "ela me seguiu lá",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she followed me yesterday",
+     "target_text": "ela me seguiu ontem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it seems she followed me",
+     "target_text": "parece que ela me seguiu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know she followed me",
+     "target_text": "você sabe que ela me seguiu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they know she followed me",
+     "target_text": "eles sabem que ela me seguiu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I think she followed me",
+     "target_text": "acho que ela me seguiu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said she followed me",
+     "target_text": "ele disse que ela me seguiu",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she followed me when I went out",
+     "target_text": "ela me seguiu quando saí",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she followed me again",
+     "target_text": "ela me seguiu outra vez",
+     "phrase_role": "build"
+    }
+   ],
+   "591:2": [
+    {
+     "known_text": "down to",
+     "target_text": "até",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the shops",
+     "target_text": "as lojas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "down to the shops",
+     "target_text": "até as lojas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she went down to the shops",
+     "target_text": "ela foi até as lojas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I'm going down to the shops",
+     "target_text": "vou até as lojas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "she followed me down to the shops",
+     "target_text": "ela me seguiu até as lojas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it seems she followed me down to the shops",
+     "target_text": "parece que ela me seguiu até as lojas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you know she followed me down to the shops",
+     "target_text": "você sabe que ela me seguiu até as lojas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they know she followed me down to the shops",
+     "target_text": "eles sabem que ela me seguiu até as lojas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he said she followed me down to the shops",
+     "target_text": "ele disse que ela me seguiu até as lojas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he went with me down to the shops",
+     "target_text": "ele foi comigo até as lojas",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,83 @@
+{
+ "_what": "cs #374·AI re-cuts on the 22 Nov 03:30Z nightly copy (ssi_copy_20261122t033000z): rows of seed 108 that moved since the 18 Nov plans (recheck.json status drift/gone), plus seed-108 rows the plans never covered that still teach the old words. 'replace' = the op for that row is rebuilt with this set (expect comes from the copy); 'drop' = the plan op is dropped (row gone); 'add' = extra ops. Same verb choices as the shard plans.",
+ "eng_for_guj": {
+  "replace": {
+   "eng_for_guj:S0108L01B01": {
+    "target_text": "to wake up this morning"
+   },
+   "eng_for_guj:S0108L03B01": {
+    "known_text": "અમે તમને જોવાની અપેક્ષા નહોતી રાખી",
+    "target_text": "we didn't expect to see you"
+   }
+  }
+ },
+ "eng_for_pan": {
+  "replace": {
+   "eng_for_pan:S0108L01B01": {
+    "target_text": "to wake up this morning"
+   },
+   "eng_for_pan:S0108L02B01": {
+    "target_text": "we didn't expect to see you"
+   }
+  }
+ },
+ "eng_for_urd": {
+  "replace": {
+   "eng_for_urd:S0108L03B02": {
+    "target_text": "hope to wake up in the middle of the night"
+   },
+   "eng_for_urd:S0108L03B04": {
+    "target_text": "don't want to wake up in the middle of the night"
+   }
+  }
+ },
+ "eng_for_jpn": {
+  "replace": {
+   "eng_for_jpn:S0108L02U02": {
+    "known_text": "彼は夜中に起きるとは思っていなかったと言いました",
+    "target_text": "he said that we didn't expect to wake up in the middle of the night"
+   }
+  }
+ },
+ "eng_for_tam": {
+  "drop": [
+   "eng_for_tam:S0108L02U02",
+   "eng_for_tam:S0108L02U04",
+   "eng_for_tam:S0108L02U05"
+  ]
+ },
+ "fra_ca_for_eng": {
+  "_why": "S0108L03U06 was inserted 20 Nov with the old words; once U01 says 'we didn't expect to wake up in the middle of the night' U06 is the same sentence again, so it is deleted (thin basket over a duplicate, Kai 19 Nov)",
+  "add": [
+   {
+    "op": "phrase.delete",
+    "phrase_id": "fra_ca_for_eng:S0108L03U06"
+   }
+  ]
+ },
+ "lit_for_eng": {
+  "_why": "E course already says expect; its component row C02 still glosses 'sitikėjome' as \"we hoped\" while the LEGO's own component says \"we expected\"",
+  "add": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "lit_for_eng:S0108L01C02",
+    "set": {
+     "known_text": "\"we expected\""
+    }
+   }
+  ]
+ },
+ "deu_for_eng": {
+  "_why": "S0118L03U12 used 'gehofft', which only seed 108 taught; after the re-cut it is untaught (validator: vocab violation at seed 118). Re-said with 'erwartet' (taught at S0112L01 and now S0108L01)",
+  "add": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "deu_for_eng:S0118L03U12",
+    "set": {
+     "known_text": "we expected to see you in the pub",
+     "target_text": "wir haben erwartet, dich in der Kneipe zu sehen"
+    }
+   }
+  ]
+ }
+}

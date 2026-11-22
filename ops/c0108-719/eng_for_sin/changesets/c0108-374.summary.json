@@ -1,0 +1,72 @@
+{
+ "course": "eng_for_sin",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "ops": 59,
+ "by_op": {
+  "lego.insert": 1,
+  "phrase.insert": 10,
+  "lego.update": 2,
+  "phrase.update": 31,
+  "phrase.delete": 14,
+  "seed.update": 1
+ },
+ "seeds": [
+  108,
+  109,
+  111,
+  112,
+  115,
+  116,
+  117,
+  118,
+  119,
+  121,
+  126,
+  149,
+  291
+ ],
+ "has_b": false,
+ "validator_issues_before": 745,
+ "validator_issues_after": 760,
+ "new_issues": 0,
+ "answered_by_own_seed_fix": {
+  "109": [
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "111": [
+   "L1: vocab violations in 2 phrase(s)",
+   "L2: vocab violations in 2 phrase(s)"
+  ],
+  "112": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "115": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "116": [
+   "L1: vocab violations in 1 phrase(s)",
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "117": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "118": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "119": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "121": [
+   "L1: vocab violations in 2 phrase(s)",
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "126": [
+   "L1: vocab violations in 2 phrase(s)"
+  ],
+  "149": [
+   "Tiling: Seed target contains vocabulary not covered by LEGOs: [hope]",
+   "L1: vocab violations in 2 phrase(s)"
+  ]
+ },
+ "notes": []
+}

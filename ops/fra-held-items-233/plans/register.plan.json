@@ -1,0 +1,25 @@
+{
+ "family": "register",
+ "touched_seeds": [
+  174
+ ],
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0174L01U04",
+   "expect": {
+    "known_text": "Can you understand what I'm saying?",
+    "target_text": "peux-tu comprendre ce que je dis?"
+   }
+  }
+ ],
+ "need": [],
+ "links": [],
+ "held": [
+  {
+   "what": "S0174 seed copy (P26)",
+   "why": "listed P26 no-home: the seed's \"pouvez-vous\" is not taught at or before 174, so its own sentence cannot be a phrase here"
+  }
+ ],
+ "unvoiced": []
+}

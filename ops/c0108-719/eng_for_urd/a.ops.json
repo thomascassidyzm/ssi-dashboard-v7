@@ -1,0 +1,214 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "ہمیں رات کے وسط میں جاگنے کی توقع نہیں تھی۔",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "ہم رات کے درمیان میں جاگنے کی امید نہیں رکھتے تھے۔",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L01B02",
+   "set": {
+    "target_text": "wake up at night"
+   },
+   "expect": {
+    "known_text": "رات کو جاگنا",
+    "target_text": "wake at night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L01U01",
+   "set": {
+    "target_text": "I don't want to wake up at night"
+   },
+   "expect": {
+    "known_text": "میں رات کو جاگنا نہیں چاہتا",
+    "target_text": "I don't want to wake at night"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "expect",
+    "known_text": "توقع ہے"
+   },
+   "expect": {
+    "known_text": "امید ہے",
+    "target_text": "hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02B01",
+   "set": {
+    "target_text": "expect to see",
+    "known_text": "دیکھنے کی توقع ہے"
+   },
+   "expect": {
+    "known_text": "امید ہے دیکھنا",
+    "target_text": "hope to see"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02B02",
+   "set": {
+    "target_text": "expect to learn",
+    "known_text": "سیکھنے کی توقع ہے"
+   },
+   "expect": {
+    "known_text": "امید ہے سیکھنا",
+    "target_text": "hope to learn"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02B03",
+   "set": {
+    "target_text": "expect to hear",
+    "known_text": "سننے کی توقع ہے"
+   },
+   "expect": {
+    "known_text": "امید ہے سننا",
+    "target_text": "hope to hear"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U01",
+   "set": {
+    "target_text": "I expect that you are ready",
+    "known_text": "مجھے توقع ہے کہ آپ تیار ہیں"
+   },
+   "expect": {
+    "known_text": "مجھے امید ہے کہ آپ تیار ہیں",
+    "target_text": "I hope that you are ready"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U02",
+   "set": {
+    "target_text": "we don't expect to wake up at night",
+    "known_text": "ہمیں توقع نہیں کہ رات کو جاگیں گے"
+   },
+   "expect": {
+    "known_text": "ہم امید نہیں کرتے کہ رات کو جاگیں گے",
+    "target_text": "we don't hope to wake at night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U03",
+   "set": {
+    "target_text": "I expect that it will work",
+    "known_text": "مجھے توقع ہے کہ یہ کام کرے گا"
+   },
+   "expect": {
+    "known_text": "مجھے امید ہے کہ یہ کام کرے گا",
+    "target_text": "I hope that it will work"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U04",
+   "set": {
+    "target_text": "do you expect it?",
+    "known_text": "کیا آپ کو اس کی توقع ہے؟"
+   },
+   "expect": {
+    "known_text": "کیا آپ کو امید ہے؟",
+    "target_text": "do you hope?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L02U05",
+   "set": {
+    "target_text": "I expect that this language is easy",
+    "known_text": "مجھے توقع ہے کہ یہ زبان آسان ہے"
+   },
+   "expect": {
+    "known_text": "مجھے امید ہے کہ یہ زبان آسان ہے",
+    "target_text": "I hope that this language is easy"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03B02",
+   "set": {
+    "target_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "رات کے وسط میں جاگنا",
+    "target_text": "wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03B04",
+   "set": {
+    "target_text": "expect in the middle of the night",
+    "known_text": "رات کے وسط میں توقع ہے"
+   },
+   "expect": {
+    "known_text": "رات کے وسط میں امید ہے",
+    "target_text": "hope in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U01",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "ہمیں رات کے وسط میں جاگنے کی توقع نہیں تھی"
+   },
+   "expect": {
+    "known_text": "ہم رات کے وسط میں جاگنے کی امید نہیں کی تھی",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U02",
+   "set": {
+    "target_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "میں رات کے وسط میں نہیں جاگنا چاہتا",
+    "target_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U03",
+   "set": {
+    "target_text": "it's difficult to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "رات کے وسط میں جاگنا مشکل ہے",
+    "target_text": "it's difficult to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_urd:S0108L03U05",
+   "set": {
+    "target_text": "do you wake up in the middle of the night?"
+   },
+   "expect": {
+    "known_text": "کیا آپ رات کے وسط میں جاگتے ہیں؟",
+    "target_text": "do you wake in the middle of the night?"
+   }
+  }
+ ]
+}

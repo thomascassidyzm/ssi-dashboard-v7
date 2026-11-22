@@ -1,0 +1,41 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0189L01B04",
+    "seed_number": 189,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "but that's a good idea",
+    "target_text": "mas é uma boa ideia",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0189L01U01",
+   "expect": {
+    "known_text": "yes, that's a good idea",
+    "target_text": "sim, é uma boa ideia"
+   },
+   "set": {
+    "known_text": "that's a good idea, but I don't want to",
+    "target_text": "é uma boa ideia, mas não quero",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  }
+ ]
+}
