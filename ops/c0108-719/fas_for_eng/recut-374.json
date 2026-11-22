@@ -1,0 +1,67 @@
+{
+ "_why": "cs #383·AI. After the C0108 re-cut, seed 108 no longer teaches 'نبودیم' (we weren't); its LEGO is now 'انتظار نداشتیم' (we didn't expect). Eight rows in seeds 109-111 said 'we weren't ...' and fail vocabulary. Six are re-said in the positive with 'بودیم' (we were, taught S0107L02) and words they already used: 'آماده بودیم' = we were ready, 'مطمئن بودیم' = we were sure (Aryanpur Persian-English Dictionary: بودن 'to be', آماده 'ready', مطمئن 'sure'). Re-saying them with 'انتظار نداشتیم' cannot pass the builder (each seed is validated without the 108 overlay, and no other LEGO teaches it). Two rows are deleted (thin basket over a bad row, Kai 19 Nov): S0110L02U04 and U05 ('after we learn/work, we weren't ...', where the tense was already wrong). S0110L01U04 is kept, re-said, because that basket is at its USE minimum.",
+ "add": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0109L01U02",
+   "set": {
+    "known_text": "we were ready to work hard",
+    "target_text": "آماده بودیم سخت کار کنیم",
+    "target_text_roman": "âmâde budim sakht kâr konim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0109L02U05",
+   "set": {
+    "known_text": "we were sure we'd work hard until night",
+    "target_text": "مطمئن بودیم تا شب سخت کار کنیم",
+    "target_text_roman": "motma'en budim tâ shab sakht kâr konim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0109L03U02",
+   "set": {
+    "known_text": "we were ready to learn a lot of words",
+    "target_text": "آماده بودیم کلمه‌های زیادی یاد بگیریم",
+    "target_text_roman": "âmâde budim kalame-hâ-ye ziâdi yâd begirim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0110L03U02",
+   "set": {
+    "known_text": "we were ready to finish",
+    "target_text": "آماده بودیم تموم کنیم",
+    "target_text_roman": "âmâde budim tamum konim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0111L02U03",
+   "set": {
+    "known_text": "we were ready for something new",
+    "target_text": "آماده بودیم برای یه چیز جدید",
+    "target_text_roman": "âmâde budim barâ-ye ye chiz-e jadid"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fas_for_eng:S0110L01U04",
+   "set": {
+    "known_text": "we're friends and we were ready",
+    "target_text": "دوستیم و آماده بودیم",
+    "target_text_roman": "dustim o âmâde budim"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fas_for_eng:S0110L02U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fas_for_eng:S0110L02U05"
+  }
+ ]
+}
