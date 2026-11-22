@@ -418,10 +418,10 @@ module.exports = function (ctx) {
 
       res.json({ ok: true, ...result });
     } catch (err) {
-      // A guarded restore that stood down (a later Redo owns the seed, or content arrived) is a refusal, not a fault:
+      // A guarded restore that stood down (a later Redo owns the seed, content arrived, or it could not count) is a refusal, not a fault:
       // 409 with the code, so a caller can tell it from a failed restore (cs #984). The message keeps its prefix,
       // which is what the watchdog matches on.
-      const refused = /^(SUPERSEDED|NOT_EMPTY):/.exec(err.message || '');
+      const refused = /^(SUPERSEDED|NOT_EMPTY|COUNT_FAILED):/.exec(err.message || '');
       res.status(refused ? 409 : 500).json({ ok: false, error: err.message, code: refused ? refused[1] : null });
     }
   });

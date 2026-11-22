@@ -251,12 +251,15 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         if (after.known === before.known && after.target === before.target) return res.status(400).json({ error: 'that is the text it already has' })
       }
       const saved = await proposals.mutate(courseCode, (list) => {
+        // Never replace a proposal whose apply/undo is in flight (review 06b848ce): its record carries the Undo.
+        if (list.some((x) => x.kind === p.kind && x.key === p.id && inflight.has(x.id))) return { busy: true }
         // One open proposal per line: a new one replaces a pending one.
         for (let i = list.length - 1; i >= 0; i--) if (list[i].kind === p.kind && list[i].key === p.id && ['pending', 'stale', 'failed'].includes(list[i].status)) list.splice(i, 1)
         const rec = { id: proposals.newId(), kind: p.kind, key: p.id, action: p.action, before, after, proposedBy: req.editorWho, proposedAt: new Date().toISOString(), status: 'pending' }
         list.push(rec)
         return rec
       })
+      if (saved.busy) return res.status(409).json({ error: 'a change to this line is being applied or undone — wait a moment and reload', code: 'IN_PROGRESS' })
       log.info(`[course-editor] ${courseCode}: proposed ${p.action} ${p.kind} ${p.id} by ${req.editorWho}`)
       res.json({ ok: true, proposal: saved })
     } catch (e) {
@@ -271,6 +274,9 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const out = await proposals.mutate(courseCode, (list) => {
         const i = list.findIndex((x) => x.id === pid)
         if (i < 0) return { status: 404, error: 'no such proposal' }
+        // DISCARD NEVER RACES AN APPLY (review 06b848ce): spliced mid-apply, the apply's final patch found no record and
+        // the undoOps — the only Undo for a write that DID land — were lost. Refuse while it is claimed.
+        if (inflight.has(pid)) return { status: 409, error: 'this change is being applied or undone — wait a moment and reload' }
         if (list[i].status === 'applied') return { status: 409, error: 'applied changes are undone, not discarded' }
         list.splice(i, 1)
         return { ok: true }
@@ -289,6 +295,12 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     inflight.add(pid)   // released in the handler's finally — NOT on res 'close', which fires when the client gives up
     return true
   }
+  // The write landed: record it, and if the record is somehow gone, re-file it — its undoOps are the only Undo.
+  const applyLanded = (courseCode, rec, patch) => proposals.mutate(courseCode, (list) => {
+    let cur = list.find((x) => x.id === rec.id)
+    if (!cur) { cur = { ...rec }; list.push(cur); log.warn(`[course-editor] ${courseCode}: proposal ${rec.id} vanished mid-apply — re-filed so its Undo survives`) }
+    return Object.assign(cur, patch)
+  })
   const findProposal = (courseCode, pid) => proposals.list(courseCode).find((x) => x.id === pid)
   const patchProposal = (courseCode, pid, patch) => proposals.mutate(courseCode, (list) => {
     const rec = list.find((x) => x.id === pid)
@@ -332,7 +344,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         return res.status(status === 200 ? 500 : status).json({ error: body.error, code: stale ? 'STALE' : body.code, proposal: p })
       }
       const after = await liveRow(courseCode, rec.kind, rec.key).catch(() => null)
-      const p = await patchProposal(courseCode, pid, {
+      const p = await applyLanded(courseCode, rec, {
         status: 'applied', appliedBy: req.editorWho, appliedAt: new Date().toISOString(), eventId: body.event_id || null,
         undoOps: body.undo_ops, undoFile: body.undo_file || null, change, plan, needsAudio: wantsAudio,
         audioQueued: queued ? !!queued.queued || !!queued.touched : false, audioRefused: queued && queued.refused ? queued.reason : null, error: null,

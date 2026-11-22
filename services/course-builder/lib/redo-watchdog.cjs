@@ -299,7 +299,7 @@ async function sweepRedos(ctx, { now = new Date(), deps = {} } = {}) {
         }
       }
 
-      const restored = [], failed = [], stoodDown = [];
+      const restored = [], failed = [], stoodDown = [], deferred = [];
       for (const n of pending) {
         const id = snapshotBySeed.get(n);
         try {
@@ -310,8 +310,15 @@ async function sweepRedos(ctx, { now = new Date(), deps = {} } = {}) {
           // The guarded restore refused because a later Redo took the seed, or content arrived, after the sweep
           // looked: the seed is not empty-and-ours any more, so there is nothing to put back.
           if (/^(SUPERSEDED|NOT_EMPTY):/.test(e.message)) stoodDown.push(`${n} (${e.message})`);
+          // The guard could not COUNT the seed (review 06b848ce): nothing was wiped; no alert, batch stays open.
+          else if (/COUNT_FAILED:/.test(e.message)) deferred.push(n);
           else failed.push(`${n} (${e.message})`);
         }
+      }
+      if (deferred.length) {
+        // Not final: the next sweep re-checks. Seeds restored this pass are snapshot-stamped, so they are not redone.
+        results.push({ batch, course: courseCode, action: 'deferred', why: `count failed for seed(s) ${deferred.join(', ')}; nothing wiped, re-checking next sweep` });
+        continue;
       }
       if (!restored.length && !failed.length && stoodDown.length) {
         await closeBatch(ctx, courseCode, batch, m.seeds || [], pending);
