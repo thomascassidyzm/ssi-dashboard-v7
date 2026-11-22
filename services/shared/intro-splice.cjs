@@ -2,15 +2,14 @@
  * DICE AND SPLICE — build an English-known presentation intro out of Charlotte clips that already exist
  * (Tom 2026-10-11 22:51Z: "Charlotte will be mostly done … we can piece together every introduction using dice and splice").
  *
- * An intro reads  The <Base> for: 'X', as in — 'context', is:   (or the bare  The <Base> for: 'X', is:).  Every piece of it is English
- * spoken by Charlotte, and English is one language shared by every course, so the pieces very likely exist already:
- *   fragment  "The Spanish for"   one clip per BASE language (spa_mx reuses spa's — voicing-policy.introFragmentText)
- *   x         the LEGO's known text            (a known-side clip somewhere in the estate)
- *   as in     the connective                   (one clip, estate-wide)
- *   context   the seed's known sentence        (a known-side clip somewhere in the estate)
- *   is        the closing word                 (one clip, estate-wide)
- * Only a piece that exists nowhere is rendered (once, through the one render route, cached and shared); the rest are
- * looked up, fetched and joined. This file owns the parse, the plan and the join; every outside effect is a dep so the
+ * An intro reads  The <Base> for: 'X', as in — 'context', is:   (or the bare  The <Base> for: 'X', is:).  It is TWO pieces
+ * (Tom 2026-11-22, the sandwich model; r-2026-10-31-intros-are-two-separate-audio-files: "Language specific + {known lego} is..."):
+ *   part 1  fragment   "The Spanish for"   one clip per BASE language (spa_mx reuses spa's — voicing-policy.introFragmentText)
+ *   part 2  remainder  "'X', is:" or "'X', as in — 'context', is:"   ONE clip, spoken as one phrase; the "is" (and the as-in)
+ *                      live inside it. It is English shared by every course, so one recording serves them all.
+ * There is no separate "as in", context or "is" piece any more (the old 3-5 piece splice, job #516, is retired here).
+ * Only a piece that exists nowhere is rendered (once, through the one render route, cached and shared).
+ * The rest are looked up, fetched and joined. This file owns the parse, the plan and the join; every outside effect is a dep so the
  * whole assembly is testable without a provider, S3 or a database.
  *
  * THE JOIN (joinPcm): each piece is decoded to mono PCM, trimmed of edge silence, level-matched to the group's median
@@ -26,7 +25,7 @@ const policy = require('./voicing-policy.cjs')
 
 const SAMPLE_RATE = 44100
 /** The silence between pieces, ms — the pause a comma gives a spoken intro. */
-const GAPS_MS = Object.freeze({ afterFragment: 190, afterX: 230, afterAsIn: 140, afterContext: 230 })
+const GAPS_MS = Object.freeze({ afterFragment: 190 })
 const FADE_IN_MS = 4
 const FADE_OUT_MS = 12
 const PAD_BEFORE_MS = 8
@@ -50,8 +49,11 @@ function parseIntro(text) {
   return { named: m[1], x, context }
 }
 
+/** Part 2 of an intro, exactly as the intro-reuse plan writes it (tools/audio/intro-reuse/as-in-store.cjs secondHalfText). */
+const remainderText = (x, context) => `'${x}'${context ? `, as in — '${context}'` : ''}, is:`
+
 /**
- * The pieces of one intro, in speaking order. `course` is the courses row; null when the course is not taught from English
+ * The two pieces of one intro, in speaking order. `course` is the courses row; null when the course is not taught from English
  * or the text is not a standard intro. The fragment text comes from the voicing policy, never from the stored intro, so
  * spa_mx's "The Spanish for" is the one fragment whatever the stored text said.
  */
@@ -60,9 +62,7 @@ function planIntro(text, course) {
   const parsed = plan && parseIntro(text)
   if (!parsed) return null
   const pieces = [{ kind: 'fragment', text: plan.fragmentText, role: 'presentation', gapAfterMs: GAPS_MS.afterFragment },
-    { kind: 'x', text: parsed.x, role: 'presentation', gapAfterMs: parsed.context ? GAPS_MS.afterX : GAPS_MS.afterX }]
-  if (parsed.context) pieces.push({ kind: 'asin', text: 'as in', role: 'presentation', gapAfterMs: GAPS_MS.afterAsIn }, { kind: 'context', text: parsed.context, role: 'presentation', gapAfterMs: GAPS_MS.afterContext })
-  pieces.push({ kind: 'is', text: 'is', role: 'presentation', gapAfterMs: 0 })
+    { kind: 'remainder', text: remainderText(parsed.x, parsed.context), role: 'presentation', gapAfterMs: 0 }]
   return { voiceId: plan.voiceId, pieces }
 }
 
@@ -195,4 +195,4 @@ async function spliceIntro(req, deps) {
   return { ok: true, source: 'spliced', charsSpent, durationMs: mastered.durationMs, ...stored, pieces: splicedFrom.map(({ kind, text, audio_id, rendered_now }) => ({ kind, text, audioId: audio_id, reused: !rendered_now })) }
 }
 
-module.exports = { parseIntro, planIntro, spliceIntro, joinPcm, trimEdges, fadeEnds, encodeWav, decodeMono, GAPS_MS, SAMPLE_RATE }
+module.exports = { parseIntro, planIntro, remainderText, spliceIntro, joinPcm, trimEdges, fadeEnds, encodeWav, decodeMono, GAPS_MS, SAMPLE_RATE }

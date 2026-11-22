@@ -28,7 +28,7 @@ describe('parseIntro', () => {
 describe('planIntro', () => {
   it("spa_mx names the BASE language: 'The Spanish for', never 'The Mexican Spanish for'", () => {
     const plan = planIntro("The Mexican Spanish for: 'five', as in — 'I have five', is:", SPA_MX)
-    expect(plan.pieces.map(p => p.text)).toEqual(['The Spanish for', 'five', 'as in', 'I have five', 'is'])
+    expect(plan.pieces.map(p => p.text)).toEqual(['The Spanish for', "'five', as in — 'I have five', is:"])
     expect(plan.pieces[0].role).toBe('presentation')
     expect(plan.voiceId).toBe(policy.config.englishVoice)
   })
@@ -81,35 +81,36 @@ describe('spliceIntro — only what exists nowhere is rendered', () => {
   const req = (o = {}) => ({ text: TEXT, course: SPA_MX, courseCode: 'spa_mx_for_eng', legoId: 'S0001L01', ...o })
 
   it('zero new characters when every piece exists', async () => {
-    const d = deps(['The Spanish for', 'five', 'as in', 'I have five', 'is'])
+    const d = deps(['The Spanish for', "'five', as in — 'I have five', is:"])
     const out = await spliceIntro(req(), d)
     expect(out).toMatchObject({ ok: true, source: 'spliced', charsSpent: 0, audioId: 'spliced-1' })
     expect(d.renderPiece).not.toHaveBeenCalled()
     const call = d.store.mock.calls[0][0]
     expect(call.text).toBe(TEXT)                                   // stored under the intro's own text, as a normal presentation clip
-    expect(call.splicedFrom.map(p => p.audio_id)).toEqual(['id:The Spanish for', 'id:five', 'id:as in', 'id:I have five', 'id:is'])
+    expect(call.splicedFrom.map(p => p.audio_id)).toEqual(['id:The Spanish for', "id:'five', as in — 'I have five', is:"])
     expect(call.durationMs).toBe(1500)
   })
   it("renders just the one missing piece ('The Spanish for'), as a presentation fragment", async () => {
-    const d = deps(['five', 'as in', 'I have five', 'is'])
+    const d = deps(["'five', as in — 'I have five', is:"])
     const out = await spliceIntro(req(), d)
     expect(d.renderPiece).toHaveBeenCalledTimes(1)
     expect(d.renderPiece).toHaveBeenCalledWith({ text: 'The Spanish for', role: 'presentation' })
     expect(out.charsSpent).toBe('The Spanish for'.length)
     expect(out.pieces.find(p => p.kind === 'fragment').reused).toBe(false)
   })
-  it("renders a missing English word as role 'presentation', never 'known' (the voice policy refuses 'known' for hin_for_eng)", async () => {
-    const d = deps(['The Spanish for', 'as in', 'I have five', 'is'])
+  it("renders a missing part 2 as ONE piece, role 'presentation', never 'known' (the voice policy refuses 'known' for hin_for_eng)", async () => {
+    const d = deps(['The Spanish for'])
     await spliceIntro(req(), d)
-    expect(d.renderPiece).toHaveBeenCalledWith({ text: 'five', role: 'presentation' })
+    expect(d.renderPiece).toHaveBeenCalledTimes(1)
+    expect(d.renderPiece).toHaveBeenCalledWith({ text: "'five', as in — 'I have five', is:", role: 'presentation' })
     const d2 = deps(['The Spanish for', 'five'])
     await spliceIntro(req(), d2)
     for (const c of d2.renderPiece.mock.calls) expect(c[0].role).toBe('presentation')
   })
   it('a dry run spends and writes nothing and says what it would render', async () => {
-    const d = deps(['five', 'is'])
+    const d = deps([])
     const out = await spliceIntro(req({ dryRun: true }), d)
-    expect(out).toMatchObject({ source: 'would-splice', charsSpent: 0, wouldSpendChars: 'The Spanish for'.length + 'as in'.length + 'I have five'.length })
+    expect(out).toMatchObject({ source: 'would-splice', charsSpent: 0, wouldSpendChars: 'The Spanish for'.length + "'five', as in — 'I have five', is:".length })
     expect(d.renderPiece).not.toHaveBeenCalled(); expect(d.store).not.toHaveBeenCalled(); expect(d.fetchObject).not.toHaveBeenCalled()
   })
   it('is null (normal path) for a text that is not an intro', async () => {
