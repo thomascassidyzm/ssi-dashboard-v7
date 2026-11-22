@@ -1,0 +1,566 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "e139c238-8e94-436f-adc2-98329af7c7fe",
+    "seed_number": 108,
+    "known_text": "우리는 밤 중간에 깨기를 바라지 않았어요",
+    "target_text": "We didn't hope to wake in the middle of the night",
+    "known_audio_id": "803af969-d82e-4ea7-81c3-b4b615ade189",
+    "target1_audio_id": "82d704f3-1d56-47a7-bc23-17a5a831f3d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "e139c238-8e94-436f-adc2-98329af7c7fe",
+    "seed_number": 108,
+    "known_text": "우리는 밤 중간에 깰 줄 몰랐어요",
+    "target_text": "We didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "586a4880-3df5-4b26-bd1d-6cf9d5e0c9cd",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "we didn't hope to wake",
+    "known_text": "깨기를 바라지 않았어요",
+    "components": [
+     {
+      "known": "깨기를",
+      "target": "to wake"
+     },
+     {
+      "known": "바라지 않았어요",
+      "target": "we didn't hope"
+     }
+    ],
+    "known_audio_id": "bdb34fda-8ed9-4b25-b2c4-8bdea4edb358",
+    "target1_audio_id": "97871035-8e07-4e7c-b422-bf9698143d2a",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "c9e3d556-a570-4b1a-a8f8-503614e3d481"
+   },
+   "after": {
+    "id": "586a4880-3df5-4b26-bd1d-6cf9d5e0c9cd",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "we didn't expect to wake up",
+    "known_text": "깰 줄 몰랐어요",
+    "components": [
+     {
+      "known": "깰",
+      "target": "to wake up"
+     },
+     {
+      "known": "줄 몰랐어요",
+      "target": "we didn't expect"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake",
+    "known_text": "깨기를 바라지 않았어요",
+    "known_audio_id": "bdb34fda-8ed9-4b25-b2c4-8bdea4edb358",
+    "target1_audio_id": "97871035-8e07-4e7c-b422-bf9698143d2a",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "밤 중간에 깨기를 바라지 않았어요",
+    "known_audio_id": "2f1ce13a-6fc7-4563-8d8c-436d34520374",
+    "target1_audio_id": "82d704f3-1d56-47a7-bc23-17a5a831f3d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "밤 중간에 깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake now",
+    "known_text": "지금 깨기를 바라지 않았어요",
+    "known_audio_id": "13a6dcc3-b859-4f95-9b7f-c55dad9404d8",
+    "target1_audio_id": "452b0e04-f450-414c-85fb-8e8eae71d714",
+    "target2_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up now",
+    "known_text": "지금 깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02C01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "to wake",
+    "known_text": "깨기를",
+    "known_audio_id": "ed59af4d-1518-48cc-b083-0182cd4f01d6",
+    "target1_audio_id": "f8e9d92d-50a8-483f-9337-d9c601383c94",
+    "target2_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644",
+    "presentation_audio_id": "19911426-e153-4b51-b8ff-a323ecd95fed"
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "to wake up",
+    "known_text": "깰",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "19911426-e153-4b51-b8ff-a323ecd95fed"
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02C02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope",
+    "known_text": "바라지 않았어요",
+    "known_audio_id": "470c98fc-aa68-433c-a323-068063756b36",
+    "target1_audio_id": "2e60f5b4-1345-43a5-a9dc-fd380372cf87",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": "efc83709-d8f8-481c-aaf4-f47ad94854f9"
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02C02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect",
+    "known_text": "줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": "efc83709-d8f8-481c-aaf4-f47ad94854f9"
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "우리는 밤 중간에 깨기를 바라지 않았어요",
+    "known_audio_id": "803af969-d82e-4ea7-81c3-b4b615ade189",
+    "target1_audio_id": "82d704f3-1d56-47a7-bc23-17a5a831f3d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "우리는 밤 중간에 깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night tonight",
+    "known_text": "우리는 오늘 밤 중간에 깨기를 바라지 않았어요",
+    "known_audio_id": "ee2af5db-5e7a-419b-a938-440f6c7dcaa7",
+    "target1_audio_id": "240f60d4-74c3-4860-b48f-96da9ab0cc44",
+    "target2_audio_id": "2e252bd0-9b87-465b-819c-3d027f19b228",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night tonight",
+    "known_text": "우리는 오늘 밤 중간에 깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake up",
+    "known_text": "우리는 깨기를 바라지 않았어요",
+    "known_audio_id": "ab9138b4-cb2e-413e-89e2-fd843445c95d",
+    "target1_audio_id": "84fb641b-adb6-485e-99fe-3a4b86338782",
+    "target2_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "우리는 깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that is why we didn't hope to wake",
+    "known_text": "그것이 우리가 깨기를 바라지 않았던 이유예요",
+    "known_audio_id": "217183ae-f1c4-4619-b9ac-4379a2baf253",
+    "target1_audio_id": "cbfb1e8f-b1f1-40bc-8063-eaa25a008846",
+    "target2_audio_id": "691b61c5-33d8-453f-bc2a-08d55bd3dbcc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "that is why we didn't expect to wake up",
+    "known_text": "그것이 우리가 깰 줄 몰랐던 이유예요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_kor",
+    "id": "eng_for_kor:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_kor:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake just now",
+    "known_text": "우리는 그냥 깨기를 바라지 않았어요",
+    "known_audio_id": "8a8f1df0-4094-47fa-b8f8-0fdae122b6e9",
+    "target1_audio_id": "afad60f2-a527-43c2-a72e-567a9ac24f4d",
+    "target2_audio_id": "68ea3013-2a9f-4e04-a5cc-6529780b9a91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_kor:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up tonight",
+    "known_text": "우리는 오늘 밤 깰 줄 몰랐어요",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U05",
+   "set": {
+    "known_text": "우리는 그냥 깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake just now",
+    "known_audio_id": "8a8f1df0-4094-47fa-b8f8-0fdae122b6e9",
+    "target1_audio_id": "afad60f2-a527-43c2-a72e-567a9ac24f4d",
+    "target2_audio_id": "68ea3013-2a9f-4e04-a5cc-6529780b9a91"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U04",
+   "set": {
+    "known_text": "그것이 우리가 깨기를 바라지 않았던 이유예요",
+    "target_text": "that is why we didn't hope to wake",
+    "known_audio_id": "217183ae-f1c4-4619-b9ac-4379a2baf253",
+    "target1_audio_id": "cbfb1e8f-b1f1-40bc-8063-eaa25a008846",
+    "target2_audio_id": "691b61c5-33d8-453f-bc2a-08d55bd3dbcc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U03",
+   "set": {
+    "known_text": "우리는 깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake up",
+    "known_audio_id": "ab9138b4-cb2e-413e-89e2-fd843445c95d",
+    "target1_audio_id": "84fb641b-adb6-485e-99fe-3a4b86338782",
+    "target2_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U02",
+   "set": {
+    "known_text": "우리는 오늘 밤 중간에 깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake in the middle of the night tonight",
+    "known_audio_id": "ee2af5db-5e7a-419b-a938-440f6c7dcaa7",
+    "target1_audio_id": "240f60d4-74c3-4860-b48f-96da9ab0cc44",
+    "target2_audio_id": "2e252bd0-9b87-465b-819c-3d027f19b228"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02U01",
+   "set": {
+    "known_text": "우리는 밤 중간에 깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "803af969-d82e-4ea7-81c3-b4b615ade189",
+    "target1_audio_id": "82d704f3-1d56-47a7-bc23-17a5a831f3d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02C02",
+   "set": {
+    "known_text": "바라지 않았어요",
+    "target_text": "we didn't hope",
+    "known_audio_id": "470c98fc-aa68-433c-a323-068063756b36",
+    "target1_audio_id": "2e60f5b4-1345-43a5-a9dc-fd380372cf87",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02C01",
+   "set": {
+    "known_text": "깨기를",
+    "target_text": "to wake",
+    "known_audio_id": "ed59af4d-1518-48cc-b083-0182cd4f01d6",
+    "target1_audio_id": "f8e9d92d-50a8-483f-9337-d9c601383c94",
+    "target2_audio_id": "2bdc5644-b7e6-40ea-a122-e57683a6f644"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02B03",
+   "set": {
+    "known_text": "지금 깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake now",
+    "known_audio_id": "13a6dcc3-b859-4f95-9b7f-c55dad9404d8",
+    "target1_audio_id": "452b0e04-f450-414c-85fb-8e8eae71d714",
+    "target2_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02B02",
+   "set": {
+    "known_text": "밤 중간에 깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "2f1ce13a-6fc7-4563-8d8c-436d34520374",
+    "target1_audio_id": "82d704f3-1d56-47a7-bc23-17a5a831f3d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kor:S0108L02B01",
+   "set": {
+    "known_text": "깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "bdb34fda-8ed9-4b25-b2c4-8bdea4edb358",
+    "target1_audio_id": "97871035-8e07-4e7c-b422-bf9698143d2a",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "586a4880-3df5-4b26-bd1d-6cf9d5e0c9cd",
+   "set": {
+    "known_text": "깨기를 바라지 않았어요",
+    "target_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "깨기를",
+      "target": "to wake"
+     },
+     {
+      "known": "바라지 않았어요",
+      "target": "we didn't hope"
+     }
+    ],
+    "known_audio_id": "bdb34fda-8ed9-4b25-b2c4-8bdea4edb358",
+    "target1_audio_id": "97871035-8e07-4e7c-b422-bf9698143d2a",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "c9e3d556-a570-4b1a-a8f8-503614e3d481"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "우리는 밤 중간에 깨기를 바라지 않았어요",
+    "target_text": "We didn't hope to wake in the middle of the night",
+    "known_audio_id": "803af969-d82e-4ea7-81c3-b4b615ade189",
+    "target1_audio_id": "82d704f3-1d56-47a7-bc23-17a5a831f3d5",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -1,0 +1,266 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "ਜਾਗਣ",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01B01",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "ਜਾਗਣ",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01B02",
+   "set": {
+    "target_text": "wake up today"
+   },
+   "expect": {
+    "known_text": "ਅੱਜ ਜਾਗਣ",
+    "target_text": "wake today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01B03",
+   "set": {
+    "target_text": "wake up quickly"
+   },
+   "expect": {
+    "known_text": "ਜਲਦੀ ਜਾਗਣ",
+    "target_text": "wake quickly"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U01",
+   "set": {
+    "target_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "ਮੈਂ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "target_text": "I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U02",
+   "set": {
+    "target_text": "I'm ready to wake up now"
+   },
+   "expect": {
+    "known_text": "ਮੈਂ ਹੁਣ ਜਾਗਣ ਲਈ ਤਿਆਰ ਹਾਂ",
+    "target_text": "I'm ready to wake now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U03",
+   "set": {
+    "target_text": "I don't want to wake up today"
+   },
+   "expect": {
+    "known_text": "ਮੈਂ ਅੱਜ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "target_text": "I don't want to wake today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U04",
+   "set": {
+    "target_text": "I'm trying to wake up"
+   },
+   "expect": {
+    "known_text": "ਮੈਂ ਜਾਗਣ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+    "target_text": "I'm trying to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U05",
+   "set": {
+    "target_text": "I want to wake up this way"
+   },
+   "expect": {
+    "known_text": "ਮੈਂ ਇਸ ਤਰੀਕੇ ਨਾਲ ਜਾਗਣ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "target_text": "I want to wake this way"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "we didn't expect",
+    "components": [
+     {
+      "known": "ਉਮੀਦ",
+      "target": "expect"
+     },
+     {
+      "known": "ਨਹੀਂ ਕੀਤੀ",
+      "target": "didn't"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ",
+    "target_text": "we didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02B01",
+   "set": {
+    "target_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ",
+    "target_text": "we didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02B02",
+   "set": {
+    "target_text": "we didn't expect today"
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਅੱਜ",
+    "target_text": "we didn't hope today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02B03",
+   "set": {
+    "target_text": "we didn't expect to see"
+   },
+   "expect": {
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਦੇਖਣਾ",
+    "target_text": "we didn't hope to see"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02C01",
+   "set": {
+    "target_text": "expect"
+   },
+   "expect": {
+    "known_text": "ਉਮੀਦ",
+    "target_text": "hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U01",
+   "set": {
+    "target_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਗਣ",
+    "target_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U02",
+   "set": {
+    "target_text": "we didn't expect to see what you were doing"
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਦੇਖਣਾ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ",
+    "target_text": "we didn't hope to see what you were doing"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U03",
+   "set": {
+    "target_text": "we didn't expect to change"
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਬਦਲਣ ਦੀ",
+    "target_text": "we didn't hope to change"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U04",
+   "set": {
+    "target_text": "we didn't expect to see today"
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਅੱਜ ਦੇਖਣਾ",
+    "target_text": "we didn't hope to see today"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03B02",
+   "set": {
+    "target_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ਜਾਗਣ ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "target_text": "wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U01",
+   "set": {
+    "target_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ਮੈਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "target_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U02",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਗਣ ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U03",
+   "set": {
+    "target_text": "it's difficult to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਣ ਔਖਾ ਹੈ",
+    "target_text": "it's difficult to wake in the middle of the night"
+   }
+  }
+ ]
+}

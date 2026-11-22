@@ -1,0 +1,28 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "𠊎兜無想到會半夜睡醒。"
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "𠊎兜無希望半夜睡醒。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hak_for_eng:S0108L02U01",
+   "set": {
+    "target_text": "𠊎兜無想到會半夜睡醒",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "𠊎兜無希望半夜睡醒"
+   }
+  }
+ ]
+}

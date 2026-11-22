@@ -1,0 +1,195 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "tha_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "858b9029-8cc6-4350-8358-647574f9e056",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก",
+    "target_text_roman": "phuak rao mai dai wang cha tuen klang duek",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "f91201da-682a-4dba-b726-2cb69332134e",
+    "target2_audio_id": "80180deb-d03a-47fb-bbd4-6c8ba287e680"
+   },
+   "after": {
+    "id": "858b9029-8cc6-4350-8358-647574f9e056",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "พวกเราไม่ได้คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "phuak rao mai dai khat wa cha tuen klang duek",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tha_for_eng",
+    "id": "tha_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "tha_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "หวังจะตื่นกลางดึก",
+    "target_text_roman": "wang cha tuen klang duek",
+    "known_text": "hope to wake up in the middle of the night",
+    "known_audio_id": "687dbb35-9776-4362-9b86-95736e101ca6",
+    "target1_audio_id": "44c75d69-12e4-460c-a887-d3b762cdfee1",
+    "target2_audio_id": "f9476e2a-407a-444c-bb80-798bd80f8be2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tha_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "khat wa cha tuen klang duek",
+    "known_text": "expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tha_for_eng",
+    "id": "tha_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "tha_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ไม่ได้หวังจะตื่นกลางดึก",
+    "target_text_roman": "mai dai wang cha tuen klang duek",
+    "known_text": "didn't hope to wake up in the middle",
+    "known_audio_id": "8e621328-5368-4af2-8172-b934e38a6a09",
+    "target1_audio_id": "32169e9f-b401-4ad2-b018-c712466f67ba",
+    "target2_audio_id": "833ce96a-926f-4a74-9e40-eeb5002743a4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tha_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ไม่ได้คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "mai dai khat wa cha tuen klang duek",
+    "known_text": "didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "tha_for_eng",
+    "id": "tha_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "tha_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก",
+    "target_text_roman": "phuak rao mai dai wang cha tuen klang duek",
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "f91201da-682a-4dba-b726-2cb69332134e",
+    "target2_audio_id": "80180deb-d03a-47fb-bbd4-6c8ba287e680",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "tha_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "พวกเราไม่ได้คาดว่าจะตื่นกลางดึก",
+    "target_text_roman": "phuak rao mai dai khat wa cha tuen klang duek",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "tha_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we didn't hope to wake up in the middle of the night",
+    "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก",
+    "known_audio_id": "ec538786-b008-4900-b23d-9770621f8f66",
+    "target1_audio_id": "f91201da-682a-4dba-b726-2cb69332134e",
+    "target2_audio_id": "80180deb-d03a-47fb-bbd4-6c8ba287e680",
+    "target_text_roman": "phuak rao mai dai wang cha tuen klang duek"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tha_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "didn't hope to wake up in the middle",
+    "target_text": "ไม่ได้หวังจะตื่นกลางดึก",
+    "known_audio_id": "8e621328-5368-4af2-8172-b934e38a6a09",
+    "target1_audio_id": "32169e9f-b401-4ad2-b018-c712466f67ba",
+    "target2_audio_id": "833ce96a-926f-4a74-9e40-eeb5002743a4",
+    "target_text_roman": "mai dai wang cha tuen klang duek"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "tha_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "hope to wake up in the middle of the night",
+    "target_text": "หวังจะตื่นกลางดึก",
+    "known_audio_id": "687dbb35-9776-4362-9b86-95736e101ca6",
+    "target1_audio_id": "44c75d69-12e4-460c-a887-d3b762cdfee1",
+    "target2_audio_id": "f9476e2a-407a-444c-bb80-798bd80f8be2",
+    "target_text_roman": "wang cha tuen klang duek"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "พวกเราไม่ได้หวังจะตื่นกลางดึก",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "f91201da-682a-4dba-b726-2cb69332134e",
+    "target2_audio_id": "80180deb-d03a-47fb-bbd4-6c8ba287e680",
+    "target_text_roman": "phuak rao mai dai wang cha tuen klang duek"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -1,0 +1,328 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে প্রত্যাশা করিনি।",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে আশা করিনি।",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "expect",
+    "known_text": "প্রত্যাশা করা"
+   },
+   "expect": {
+    "known_text": "আশা করা",
+    "target_text": "hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01B01",
+   "set": {
+    "target_text": "I expect to speak",
+    "known_text": "আমি প্রত্যাশা করি কথা বলতে"
+   },
+   "expect": {
+    "known_text": "আমি আশা করি কথা বলতে",
+    "target_text": "I hope to speak"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01B02",
+   "set": {
+    "target_text": "expect to speak",
+    "known_text": "কথা বলতে প্রত্যাশা করি"
+   },
+   "expect": {
+    "known_text": "কথা বলতে আশা করি",
+    "target_text": "hope to speak"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01B03",
+   "set": {
+    "target_text": "I didn't expect",
+    "known_text": "আমি প্রত্যাশা করিনি"
+   },
+   "expect": {
+    "known_text": "আমি আশা করিনি",
+    "target_text": "I didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U01",
+   "set": {
+    "target_text": "I expect to speak English soon",
+    "known_text": "আমি প্রত্যাশা করি শীঘ্রই ইংরেজি কথা বলতে পারব।"
+   },
+   "expect": {
+    "known_text": "আমি আশা করি শীঘ্রই ইংরেজি কথা বলতে পারব।",
+    "target_text": "I hope to speak English soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U02",
+   "set": {
+    "target_text": "I expect to practise with you",
+    "known_text": "আমি প্রত্যাশা করি আপনার সাথে অনুশীলন করতে।"
+   },
+   "expect": {
+    "known_text": "আমি আশা করি আপনার সাথে অনুশীলন করতে।",
+    "target_text": "I hope to practise with you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U03",
+   "set": {
+    "target_text": "I expect to remember more words",
+    "known_text": "আমি প্রত্যাশা করি আরও শব্দ মনে রাখতে।"
+   },
+   "expect": {
+    "known_text": "আমি আশা করি আরও শব্দ মনে রাখতে।",
+    "target_text": "I hope to remember more words"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U04",
+   "set": {
+    "target_text": "we expect to meet with you",
+    "known_text": "আমরা প্রত্যাশা করি তোমার সাথে দেখা করতে।"
+   },
+   "expect": {
+    "known_text": "আমরা আশা করি তোমার সাথে দেখা করতে।",
+    "target_text": "we hope to meet with you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U05",
+   "set": {
+    "target_text": "I expect to learn a lot",
+    "known_text": "আমি প্রত্যাশা করি অনেক কিছু শিখতে।"
+   },
+   "expect": {
+    "known_text": "আমি আশা করি অনেক কিছু শিখতে।",
+    "target_text": "I hope to learn a lot"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L01U06",
+   "set": {
+    "target_text": "do you expect to speak as soon as you can?",
+    "known_text": "তুমি কি প্রত্যাশা করো যত তাড়াতাড়ি সম্ভব কথা বলতে?"
+   },
+   "expect": {
+    "known_text": "তুমি কি আশা করো যত তাড়াতাড়ি সম্ভব কথা বলতে?",
+    "target_text": "do you hope to speak as soon as you can?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "to wake up",
+    "components": [
+     {
+      "known": "উঠতে",
+      "target": "to",
+      "introduce": false
+     },
+     {
+      "known": "জেগে",
+      "target": "wake up"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "জেগে উঠতে",
+    "target_text": "to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B01",
+   "set": {
+    "target_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "জেগে উঠতে",
+    "target_text": "to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B02",
+   "set": {
+    "target_text": "expect to wake up",
+    "known_text": "জেগে উঠতে প্রত্যাশা করা"
+   },
+   "expect": {
+    "known_text": "জেগে উঠতে আশা করা",
+    "target_text": "hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B03",
+   "set": {
+    "target_text": "I want to wake up"
+   },
+   "expect": {
+    "known_text": "আমি জেগে উঠতে চাই",
+    "target_text": "I want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02B04",
+   "set": {
+    "target_text": "I don't want to wake up"
+   },
+   "expect": {
+    "known_text": "আমি জেগে উঠতে চাই না",
+    "target_text": "I don't want to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02C02",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "জেগে",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U01",
+   "set": {
+    "target_text": "I want to wake up at six o'clock tomorrow"
+   },
+   "expect": {
+    "known_text": "আমি আগামীকাল ছয়টায় জেগে উঠতে চাই।",
+    "target_text": "I want to wake at six o'clock tomorrow"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U02",
+   "set": {
+    "target_text": "I expect to wake up soon",
+    "known_text": "আমি শীঘ্রই জেগে উঠতে প্রত্যাশা করি।"
+   },
+   "expect": {
+    "known_text": "আমি শীঘ্রই জেগে উঠতে আশা করি।",
+    "target_text": "I hope to wake soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U03",
+   "set": {
+    "target_text": "I don't want to wake up when other people are here"
+   },
+   "expect": {
+    "known_text": "অন্য লোক আসার সময় আমি জেগে উঠতে চাই না।",
+    "target_text": "I don't want to wake when other people are here"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U04",
+   "set": {
+    "target_text": "I'm trying to wake up before I have to go"
+   },
+   "expect": {
+    "known_text": "যাওয়ার আগে জেগে উঠতে চেষ্টা করছি।",
+    "target_text": "I'm trying to wake before I have to go"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L02U05",
+   "set": {
+    "target_text": "we didn't expect to wake up",
+    "known_text": "আমরা জেগে উঠতে প্রত্যাশা করিনি।"
+   },
+   "expect": {
+    "known_text": "আমরা জেগে উঠতে আশা করিনি।",
+    "target_text": "we didn't hope to wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03B02",
+   "set": {
+    "target_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "রাতের মাঝখানে জেগে উঠতে",
+    "target_text": "to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03B03",
+   "set": {
+    "target_text": "expect to wake up in the middle of the night",
+    "known_text": "প্রত্যাশা করা জেগে উঠতে রাতের মাঝখানে"
+   },
+   "expect": {
+    "known_text": "আশা করা জেগে উঠতে রাতের মাঝখানে",
+    "target_text": "hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03U02",
+   "set": {
+    "target_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "আমি রাতের মাঝখানে জেগে উঠতে চাই না।",
+    "target_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03U03",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে প্রত্যাশা করিনি।"
+   },
+   "expect": {
+    "known_text": "আমরা রাতের মাঝখানে জেগে উঠতে আশা করিনি।",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_ben:S0108L03U06",
+   "set": {
+    "target_text": "did you wake up in the middle of the night?"
+   },
+   "expect": {
+    "known_text": "তুমি কি রাতের মাঝখানে জেগে উঠেছিলে?",
+    "target_text": "did you wake in the middle of the night?"
+   }
+  }
+ ]
+}

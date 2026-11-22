@@ -1,0 +1,448 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "38e27ab6-4c22-4297-b515-1ee15fab4e45",
+    "seed_number": 108,
+    "known_text": "आम्हाला मध्यरात्री जाग यायची आशा नव्हती.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "0e75f7f9-3fba-42e0-aa5b-cf6025133a66",
+    "target1_audio_id": "4f600238-eb40-4711-9e6d-41458c9ce65d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "38e27ab6-4c22-4297-b515-1ee15fab4e45",
+    "seed_number": 108,
+    "known_text": "आम्हाला मध्यरात्री जाग यायची अपेक्षा नव्हती.",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "dcb18654-26ab-481f-822f-bae49df95bee",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "we didn't hope to wake",
+    "known_text": "जाग यायची आशा नव्हती",
+    "known_audio_id": "263b125b-1e60-4dbe-9597-fa9c96842499",
+    "target1_audio_id": "27f53fc5-b1f5-4954-bead-1b274157afa3",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "7845c115-7984-4fa0-a29e-fbdf7e3f7936"
+   },
+   "after": {
+    "id": "dcb18654-26ab-481f-822f-bae49df95bee",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "we didn't expect to wake up",
+    "known_text": "जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake",
+    "known_text": "जाग यायची आशा नव्हती",
+    "known_audio_id": "263b125b-1e60-4dbe-9597-fa9c96842499",
+    "target1_audio_id": "27f53fc5-b1f5-4954-bead-1b274157afa3",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "because we didn't hope to wake",
+    "known_text": "कारण आम्हाला जाग यायची आशा नव्हती",
+    "known_audio_id": "720bb088-88e4-430d-97b7-4075877bc828",
+    "target1_audio_id": "f035347b-9399-46f7-bda7-3bb3a3258273",
+    "target2_audio_id": "a284497e-3b71-45e8-a530-e52fe5ea483c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "because we didn't expect to wake up",
+    "known_text": "कारण आम्हाला जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night again",
+    "known_text": "आम्हाला मध्यरात्री पुन्हा जाग यायची आशा नव्हती",
+    "known_audio_id": "24436420-e985-4565-81cf-0a8cd6ad0610",
+    "target1_audio_id": "5ae66832-eba7-4dab-be4f-1661398fa493",
+    "target2_audio_id": "3d59ee43-7ebe-4ca6-ad2c-18b03cc1f4c3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night again",
+    "known_text": "आम्हाला मध्यरात्री पुन्हा जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "आम्हाला मध्यरात्री जाग यायची आशा नव्हती",
+    "known_audio_id": "0e75f7f9-3fba-42e0-aa5b-cf6025133a66",
+    "target1_audio_id": "4f600238-eb40-4711-9e6d-41458c9ce65d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "आम्हाला मध्यरात्री जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in English",
+    "known_text": "आम्हाला इंग्रजीत जाग यायची आशा नव्हती",
+    "known_audio_id": "d0667483-2062-48a9-8e32-962cbafc7a9a",
+    "target1_audio_id": "e9734fb3-acbc-4f13-89c1-32bdc4a17611",
+    "target2_audio_id": "1ccaf172-ee53-4e91-a5a8-e6702392b2e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in English",
+    "known_text": "आम्हाला इंग्रजीत जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake again",
+    "known_text": "आम्हाला पुन्हा जाग यायची आशा नव्हती",
+    "known_audio_id": "966282ce-84b6-4fea-8a18-09077d6aa67c",
+    "target1_audio_id": "03683f9c-6c63-4251-8542-5eddc255719c",
+    "target2_audio_id": "756ed1af-59b2-44a7-a2c0-ec652567f2e6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up again",
+    "known_text": "आम्हाला पुन्हा जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I think that we didn't hope to wake",
+    "known_text": "मला वाटतं की आम्हाला जाग यायची आशा नव्हती",
+    "known_audio_id": "4895cfe7-3a64-4034-816f-623d1fdf04a2",
+    "target1_audio_id": "9b0f115b-c6f5-4590-9072-36850d1f6b7d",
+    "target2_audio_id": "dde9d447-cb75-452e-a06c-b0f5e0b15db8",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I think that we didn't expect to wake up",
+    "known_text": "मला वाटतं की आम्हाला जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_mar",
+    "id": "eng_for_mar:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_mar:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake already",
+    "known_text": "आम्हाला आधीच जाग यायची आशा नव्हती",
+    "known_audio_id": "7b16508c-7187-452f-83cb-2f2d516a20b6",
+    "target1_audio_id": "96079cf7-2e23-4484-a76e-e02fa94fa4d2",
+    "target2_audio_id": "9dbd8c7b-f859-487a-adec-4464ca8b17c3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_mar:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up already",
+    "known_text": "आम्हाला आधीच जाग यायची अपेक्षा नव्हती",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02U05",
+   "set": {
+    "known_text": "आम्हाला आधीच जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake already",
+    "known_audio_id": "7b16508c-7187-452f-83cb-2f2d516a20b6",
+    "target1_audio_id": "96079cf7-2e23-4484-a76e-e02fa94fa4d2",
+    "target2_audio_id": "9dbd8c7b-f859-487a-adec-4464ca8b17c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02U04",
+   "set": {
+    "known_text": "मला वाटतं की आम्हाला जाग यायची आशा नव्हती",
+    "target_text": "I think that we didn't hope to wake",
+    "known_audio_id": "4895cfe7-3a64-4034-816f-623d1fdf04a2",
+    "target1_audio_id": "9b0f115b-c6f5-4590-9072-36850d1f6b7d",
+    "target2_audio_id": "dde9d447-cb75-452e-a06c-b0f5e0b15db8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02U03",
+   "set": {
+    "known_text": "आम्हाला पुन्हा जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake again",
+    "known_audio_id": "966282ce-84b6-4fea-8a18-09077d6aa67c",
+    "target1_audio_id": "03683f9c-6c63-4251-8542-5eddc255719c",
+    "target2_audio_id": "756ed1af-59b2-44a7-a2c0-ec652567f2e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02U02",
+   "set": {
+    "known_text": "आम्हाला इंग्रजीत जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake in English",
+    "known_audio_id": "d0667483-2062-48a9-8e32-962cbafc7a9a",
+    "target1_audio_id": "e9734fb3-acbc-4f13-89c1-32bdc4a17611",
+    "target2_audio_id": "1ccaf172-ee53-4e91-a5a8-e6702392b2e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02U01",
+   "set": {
+    "known_text": "आम्हाला मध्यरात्री जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "0e75f7f9-3fba-42e0-aa5b-cf6025133a66",
+    "target1_audio_id": "4f600238-eb40-4711-9e6d-41458c9ce65d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02B03",
+   "set": {
+    "known_text": "आम्हाला मध्यरात्री पुन्हा जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake in the middle of the night again",
+    "known_audio_id": "24436420-e985-4565-81cf-0a8cd6ad0610",
+    "target1_audio_id": "5ae66832-eba7-4dab-be4f-1661398fa493",
+    "target2_audio_id": "3d59ee43-7ebe-4ca6-ad2c-18b03cc1f4c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02B02",
+   "set": {
+    "known_text": "कारण आम्हाला जाग यायची आशा नव्हती",
+    "target_text": "because we didn't hope to wake",
+    "known_audio_id": "720bb088-88e4-430d-97b7-4075877bc828",
+    "target1_audio_id": "f035347b-9399-46f7-bda7-3bb3a3258273",
+    "target2_audio_id": "a284497e-3b71-45e8-a530-e52fe5ea483c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0108L02B01",
+   "set": {
+    "known_text": "जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "263b125b-1e60-4dbe-9597-fa9c96842499",
+    "target1_audio_id": "27f53fc5-b1f5-4954-bead-1b274157afa3",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "dcb18654-26ab-481f-822f-bae49df95bee",
+   "set": {
+    "known_text": "जाग यायची आशा नव्हती",
+    "target_text": "we didn't hope to wake",
+    "known_audio_id": "263b125b-1e60-4dbe-9597-fa9c96842499",
+    "target1_audio_id": "27f53fc5-b1f5-4954-bead-1b274157afa3",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": "7845c115-7984-4fa0-a29e-fbdf7e3f7936"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "आम्हाला मध्यरात्री जाग यायची आशा नव्हती.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "0e75f7f9-3fba-42e0-aa5b-cf6025133a66",
+    "target1_audio_id": "4f600238-eb40-4711-9e6d-41458c9ce65d",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

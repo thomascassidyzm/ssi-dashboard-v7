@@ -1,0 +1,1043 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "e55beede-93a5-4aaa-b044-06fa18da2280",
+    "seed_number": 108,
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிப்போம் என்று நம்பவில்லை.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "c50ae9e3-d0a6-4ef4-b3c7-169a8671b5e6",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "e55beede-93a5-4aaa-b044-06fa18da2280",
+    "seed_number": 108,
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிப்போம் என்று எதிர்பார்க்கவில்லை.",
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "04eceac8-0bfc-4c37-99a2-b4608099cc1f",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "didn't hope",
+    "known_text": "நம்பவில்லை",
+    "known_audio_id": "c7c4939b-4344-42f0-b223-e546e6f0606a",
+    "target1_audio_id": "a4896ea3-3794-45c1-992d-3f46e6000983",
+    "target2_audio_id": "77b96839-6816-4ad9-a90d-405adf41af5e",
+    "presentation_audio_id": "346a49c8-153e-47ab-84e0-dfe1f1dff28e"
+   },
+   "after": {
+    "id": "04eceac8-0bfc-4c37-99a2-b4608099cc1f",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "didn't expect",
+    "known_text": "எதிர்பார்க்கவில்லை",
+    "known_audio_id": "3212b2d9-a7c7-4727-862a-9563fda34be5",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "didn't hope",
+    "known_text": "நம்பவில்லை",
+    "known_audio_id": "c7c4939b-4344-42f0-b223-e546e6f0606a",
+    "target1_audio_id": "a4896ea3-3794-45c1-992d-3f46e6000983",
+    "target2_audio_id": "77b96839-6816-4ad9-a90d-405adf41af5e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "didn't expect",
+    "known_text": "எதிர்பார்க்கவில்லை",
+    "known_audio_id": "3212b2d9-a7c7-4727-862a-9563fda34be5",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope",
+    "known_text": "நாங்கள் நம்பவில்லை",
+    "known_audio_id": "4d6cd7f7-90d2-45ab-bd55-fcb2ec0ee98e",
+    "target1_audio_id": "bcc62216-7b74-4032-bab1-acda0bf4a147",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect",
+    "known_text": "நாங்கள் எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't hope",
+    "known_text": "நான் நம்பவில்லை",
+    "known_audio_id": "83c0fbef-212d-4f85-a153-f9e6ca391ace",
+    "target1_audio_id": "b8e7da46-24d3-4aba-b6b0-76ac79b6e96d",
+    "target2_audio_id": "c943013c-1776-40de-849b-8d28476a3f6a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't expect",
+    "known_text": "நான் எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "you didn't hope",
+    "known_text": "நீங்கள் நம்பவில்லை",
+    "known_audio_id": "37dad3c9-15a0-47c4-8b05-ef16bb05d586",
+    "target1_audio_id": "ed78440d-7db2-4cb5-9a31-d6f02d7543aa",
+    "target2_audio_id": "c6ca6b74-7efb-43b6-a624-077f74917a09",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "you didn't expect",
+    "known_text": "நீங்கள் எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "known_audio_id": "d185e096-59ec-474e-9060-560781d55285",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't hope this would happen",
+    "known_text": "இது நடக்கும் என்று நம்பவில்லை",
+    "known_audio_id": "2f330939-7660-416b-9a06-4fa21dbe28a3",
+    "target1_audio_id": "7b8eef13-8ae4-400f-af7a-9f7877c75d1b",
+    "target2_audio_id": "e66c5539-bc52-44e5-8cbe-e23e2f6718b5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I didn't expect this would happen",
+    "known_text": "இது நடக்கும் என்று எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01U06"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he didn't hope to start so soon",
+    "known_text": "அவர் இவ்வளவு விரைவில் தொடங்குவார் என்று நம்பவில்லை",
+    "known_audio_id": "63bd271b-b443-4c4b-bc6c-cdc259104f4e",
+    "target1_audio_id": "41262b6f-65c1-40c7-bfc1-03696cd378d2",
+    "target2_audio_id": "2c80995e-eab0-4c55-87a7-7b63e95410c9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "he didn't expect to start so soon",
+    "known_text": "அவர் இவ்வளவு விரைவில் தொடங்குவார் என்று எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L01U07"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she didn't hope to finish so soon",
+    "known_text": "அவள் இவ்வளவு விரைவில் முடிக்க நம்பவில்லை",
+    "known_audio_id": "4a7f5b4e-1d07-40cf-882b-ef24547a8441",
+    "target1_audio_id": "abd02c6b-139f-4bbe-af75-ed3cd6514796",
+    "target2_audio_id": "09b41955-ab67-4fe1-837a-6120dfc04b3c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L01U07",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "she didn't expect to finish so soon",
+    "known_text": "அவள் இவ்வளவு விரைவில் முடிக்க எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "2ef43170-cf03-472d-956b-7cf2c670c7dc",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "wake",
+    "known_text": "விழிக்க",
+    "known_audio_id": "2cb36dd7-3beb-4dce-97d0-62c70b1e1047",
+    "target1_audio_id": "18ea04e7-e235-4a9e-bb96-cdebc149b01b",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "90ca690c-ac9c-4457-8aa7-8ccd3e88668f"
+   },
+   "after": {
+    "id": "2ef43170-cf03-472d-956b-7cf2c670c7dc",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "wake up",
+    "known_text": "விழிக்க",
+    "known_audio_id": "2cb36dd7-3beb-4dce-97d0-62c70b1e1047",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake",
+    "known_text": "விழிக்க",
+    "known_audio_id": "2cb36dd7-3beb-4dce-97d0-62c70b1e1047",
+    "target1_audio_id": "18ea04e7-e235-4a9e-bb96-cdebc149b01b",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake up",
+    "known_text": "விழிக்க",
+    "known_audio_id": "2cb36dd7-3beb-4dce-97d0-62c70b1e1047",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake now",
+    "known_text": "விழிக்க இப்போது",
+    "known_audio_id": "ce50ecab-159a-4d9f-b9a4-5b98e3408685",
+    "target1_audio_id": "e3c1a644-e31d-4c30-b5c3-9e083c097b82",
+    "target2_audio_id": "8c704702-0aaa-4670-872f-ec31f46b4375",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake up now",
+    "known_text": "விழிக்க இப்போது",
+    "known_audio_id": "ce50ecab-159a-4d9f-b9a4-5b98e3408685",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake at night",
+    "known_text": "இரவில் விழிக்க",
+    "known_audio_id": "3ecbc34d-f521-40d0-9708-5be3dd88f6e9",
+    "target1_audio_id": "edaaba07-fd96-4ae9-8cc4-5c88ce1ed905",
+    "target2_audio_id": "a540f89e-cc8b-4faf-93e5-664f7954f6c6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wake up at night",
+    "known_text": "இரவில் விழிக்க",
+    "known_audio_id": "3ecbc34d-f521-40d0-9708-5be3dd88f6e9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "it's not good to wake in the middle of the night",
+    "known_text": "இரவில் விழிப்பது நல்லதில்லை",
+    "known_audio_id": "83de9c86-75b4-417d-8d5a-1fd061ea1124",
+    "target1_audio_id": "2785c336-5ed4-4074-bddc-4eb086a1e73c",
+    "target2_audio_id": "00d60160-19bd-4480-804f-917a55fefea0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "it's not good to wake up in the middle of the night",
+    "known_text": "இரவில் விழிப்பது நல்லதில்லை",
+    "known_audio_id": "83de9c86-75b4-417d-8d5a-1fd061ea1124",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "she didn't want to wake us up",
+    "known_text": "அவள் எங்களை எழுப்ப விரும்பவில்லை",
+    "known_audio_id": "ea67cf21-3961-4503-bb27-4d793a5de099",
+    "target1_audio_id": "5096b248-b50d-4f1f-aeb4-6c7fa63d63f9",
+    "target2_audio_id": "8b182fb7-e688-42b1-a3af-cc7c4de103bf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "she didn't want to wake up",
+    "known_text": "அவள் விழிக்க விரும்பவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I didn't want to wake so soon this morning",
+    "known_text": "இந்த காலையில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "0d0335cb-2094-4ddc-8db2-1961798dbd8f",
+    "target1_audio_id": "45f96f02-1807-4f45-abdc-31ff69563870",
+    "target2_audio_id": "c28e8f74-c403-4ddc-bf18-a5a607950720",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I didn't want to wake up so soon this morning",
+    "known_text": "இந்த காலையில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "0d0335cb-2094-4ddc-8db2-1961798dbd8f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nobody wanted to wake in the middle of the night",
+    "known_text": "யாரும் இரவில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "0f005777-b521-46d7-8a98-1389bcb86cb1",
+    "target1_audio_id": "e5b571aa-c7a6-4e52-b70c-006841e5dd8f",
+    "target2_audio_id": "0b5e328f-06cb-47db-9547-21f0a4653cb1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nobody wanted to wake up in the middle of the night",
+    "known_text": "யாரும் இரவில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "0f005777-b521-46d7-8a98-1389bcb86cb1",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L02U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I didn't want to wake early this morning",
+    "known_text": "நான் இந்த காலையில் சீக்கிரம் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "e974181e-6e29-4095-9c4f-d1d1c42e0b4a",
+    "target1_audio_id": "a2432a6c-03af-4253-9c2b-d90893f1c3aa",
+    "target2_audio_id": "233ce451-3b9b-4d83-80ea-ebdc50b6a328",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "I didn't want to wake up early this morning",
+    "known_text": "நான் இந்த காலையில் சீக்கிரம் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "e974181e-6e29-4095-9c4f-d1d1c42e0b4a",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L03B02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wake middle of the night",
+    "known_text": "இரவின் நடுவில் விழிக்க",
+    "known_audio_id": "921bf740-0902-41fd-b978-b5359a0d80da",
+    "target1_audio_id": "e8793834-ef42-45d1-9006-a0dea75146ed",
+    "target2_audio_id": "7dcbbb63-40e2-4e4c-a10a-61a221813847",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wake up in the middle of the night",
+    "known_text": "இரவின் நடுவில் விழிக்க",
+    "known_audio_id": "921bf740-0902-41fd-b978-b5359a0d80da",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L03B03"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "didn't hope wake middle of the night",
+    "known_text": "இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "known_audio_id": "d2bc0a5c-06ac-448f-9cb2-9f9aef89b117",
+    "target1_audio_id": "8209c1c4-dba6-4e9a-9e46-55fe29974dd3",
+    "target2_audio_id": "47f71bbe-9663-45e0-9299-e9013d31d90d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "didn't expect to wake up in the middle of the night",
+    "known_text": "இரவின் நடுவில் விழிக்க எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L03U01"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "known_audio_id": "d185e096-59ec-474e-9060-560781d55285",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க எதிர்பார்க்கவில்லை",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L03U02"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I didn't want to wake in the middle of the night",
+    "known_text": "நான் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "858eb9e8-402b-49e0-ba30-cc5d4556b3b7",
+    "target1_audio_id": "d926565d-19b1-422f-8497-feab82bddf0b",
+    "target2_audio_id": "aca5e486-53fb-41a5-b3ce-0921573bf7cf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I didn't want to wake up in the middle of the night",
+    "known_text": "நான் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "858eb9e8-402b-49e0-ba30-cc5d4556b3b7",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_tam",
+    "id": "eng_for_tam:S0108L03U05"
+   },
+   "before": {
+    "id": "eng_for_tam:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "he didn't want to wake in the middle of the night",
+    "known_text": "அவன் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "bed64ec7-f363-45ea-a045-1f589984cd96",
+    "target1_audio_id": "83f287ff-fa36-4b77-8d3e-fd081724938a",
+    "target2_audio_id": "c2f892e0-7b3d-4e8e-b811-b5f38d1b409c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_tam:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "he didn't want to wake up in the middle of the night",
+    "known_text": "அவன் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+    "known_audio_id": "bed64ec7-f363-45ea-a045-1f589984cd96",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03U05",
+   "set": {
+    "target_text": "he didn't want to wake in the middle of the night",
+    "target1_audio_id": "83f287ff-fa36-4b77-8d3e-fd081724938a",
+    "target2_audio_id": "c2f892e0-7b3d-4e8e-b811-b5f38d1b409c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03U02",
+   "set": {
+    "target_text": "I didn't want to wake in the middle of the night",
+    "target1_audio_id": "d926565d-19b1-422f-8497-feab82bddf0b",
+    "target2_audio_id": "aca5e486-53fb-41a5-b3ce-0921573bf7cf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03U01",
+   "set": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "d185e096-59ec-474e-9060-560781d55285",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03B03",
+   "set": {
+    "known_text": "இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "target_text": "didn't hope wake middle of the night",
+    "known_audio_id": "d2bc0a5c-06ac-448f-9cb2-9f9aef89b117",
+    "target1_audio_id": "8209c1c4-dba6-4e9a-9e46-55fe29974dd3",
+    "target2_audio_id": "47f71bbe-9663-45e0-9299-e9013d31d90d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03B02",
+   "set": {
+    "target_text": "wake middle of the night",
+    "target1_audio_id": "e8793834-ef42-45d1-9006-a0dea75146ed",
+    "target2_audio_id": "7dcbbb63-40e2-4e4c-a10a-61a221813847"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U05",
+   "set": {
+    "target_text": "I didn't want to wake early this morning",
+    "target1_audio_id": "a2432a6c-03af-4253-9c2b-d90893f1c3aa",
+    "target2_audio_id": "233ce451-3b9b-4d83-80ea-ebdc50b6a328"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U04",
+   "set": {
+    "target_text": "nobody wanted to wake in the middle of the night",
+    "target1_audio_id": "e5b571aa-c7a6-4e52-b70c-006841e5dd8f",
+    "target2_audio_id": "0b5e328f-06cb-47db-9547-21f0a4653cb1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U03",
+   "set": {
+    "target_text": "I didn't want to wake so soon this morning",
+    "target1_audio_id": "45f96f02-1807-4f45-abdc-31ff69563870",
+    "target2_audio_id": "c28e8f74-c403-4ddc-bf18-a5a607950720"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U02",
+   "set": {
+    "known_text": "அவள் எங்களை எழுப்ப விரும்பவில்லை",
+    "target_text": "she didn't want to wake us up",
+    "known_audio_id": "ea67cf21-3961-4503-bb27-4d793a5de099",
+    "target1_audio_id": "5096b248-b50d-4f1f-aeb4-6c7fa63d63f9",
+    "target2_audio_id": "8b182fb7-e688-42b1-a3af-cc7c4de103bf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U01",
+   "set": {
+    "target_text": "it's not good to wake in the middle of the night",
+    "target1_audio_id": "2785c336-5ed4-4074-bddc-4eb086a1e73c",
+    "target2_audio_id": "00d60160-19bd-4480-804f-917a55fefea0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02B03",
+   "set": {
+    "target_text": "wake at night",
+    "target1_audio_id": "edaaba07-fd96-4ae9-8cc4-5c88ce1ed905",
+    "target2_audio_id": "a540f89e-cc8b-4faf-93e5-664f7954f6c6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02B02",
+   "set": {
+    "target_text": "wake now",
+    "target1_audio_id": "e3c1a644-e31d-4c30-b5c3-9e083c097b82",
+    "target2_audio_id": "8c704702-0aaa-4670-872f-ec31f46b4375"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02B01",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "18ea04e7-e235-4a9e-bb96-cdebc149b01b",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2ef43170-cf03-472d-956b-7cf2c670c7dc",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "18ea04e7-e235-4a9e-bb96-cdebc149b01b",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "90ca690c-ac9c-4457-8aa7-8ccd3e88668f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U07",
+   "set": {
+    "known_text": "அவள் இவ்வளவு விரைவில் முடிக்க நம்பவில்லை",
+    "target_text": "she didn't hope to finish so soon",
+    "known_audio_id": "4a7f5b4e-1d07-40cf-882b-ef24547a8441",
+    "target1_audio_id": "abd02c6b-139f-4bbe-af75-ed3cd6514796",
+    "target2_audio_id": "09b41955-ab67-4fe1-837a-6120dfc04b3c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U06",
+   "set": {
+    "known_text": "அவர் இவ்வளவு விரைவில் தொடங்குவார் என்று நம்பவில்லை",
+    "target_text": "he didn't hope to start so soon",
+    "known_audio_id": "63bd271b-b443-4c4b-bc6c-cdc259104f4e",
+    "target1_audio_id": "41262b6f-65c1-40c7-bfc1-03696cd378d2",
+    "target2_audio_id": "2c80995e-eab0-4c55-87a7-7b63e95410c9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U05",
+   "set": {
+    "known_text": "இது நடக்கும் என்று நம்பவில்லை",
+    "target_text": "I didn't hope this would happen",
+    "known_audio_id": "2f330939-7660-416b-9a06-4fa21dbe28a3",
+    "target1_audio_id": "7b8eef13-8ae4-400f-af7a-9f7877c75d1b",
+    "target2_audio_id": "e66c5539-bc52-44e5-8cbe-e23e2f6718b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U04",
+   "set": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "d185e096-59ec-474e-9060-560781d55285",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U03",
+   "set": {
+    "known_text": "நீங்கள் நம்பவில்லை",
+    "target_text": "you didn't hope",
+    "known_audio_id": "37dad3c9-15a0-47c4-8b05-ef16bb05d586",
+    "target1_audio_id": "ed78440d-7db2-4cb5-9a31-d6f02d7543aa",
+    "target2_audio_id": "c6ca6b74-7efb-43b6-a624-077f74917a09"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01B03",
+   "set": {
+    "known_text": "நான் நம்பவில்லை",
+    "target_text": "I didn't hope",
+    "known_audio_id": "83c0fbef-212d-4f85-a153-f9e6ca391ace",
+    "target1_audio_id": "b8e7da46-24d3-4aba-b6b0-76ac79b6e96d",
+    "target2_audio_id": "c943013c-1776-40de-849b-8d28476a3f6a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01B02",
+   "set": {
+    "known_text": "நாங்கள் நம்பவில்லை",
+    "target_text": "we didn't hope",
+    "known_audio_id": "4d6cd7f7-90d2-45ab-bd55-fcb2ec0ee98e",
+    "target1_audio_id": "bcc62216-7b74-4032-bab1-acda0bf4a147",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01B01",
+   "set": {
+    "known_text": "நம்பவில்லை",
+    "target_text": "didn't hope",
+    "known_audio_id": "c7c4939b-4344-42f0-b223-e546e6f0606a",
+    "target1_audio_id": "a4896ea3-3794-45c1-992d-3f46e6000983",
+    "target2_audio_id": "77b96839-6816-4ad9-a90d-405adf41af5e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "04eceac8-0bfc-4c37-99a2-b4608099cc1f",
+   "set": {
+    "known_text": "நம்பவில்லை",
+    "target_text": "didn't hope",
+    "known_audio_id": "c7c4939b-4344-42f0-b223-e546e6f0606a",
+    "target1_audio_id": "a4896ea3-3794-45c1-992d-3f46e6000983",
+    "target2_audio_id": "77b96839-6816-4ad9-a90d-405adf41af5e",
+    "presentation_audio_id": "346a49c8-153e-47ab-84e0-dfe1f1dff28e"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிப்போம் என்று நம்பவில்லை.",
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_audio_id": "c50ae9e3-d0a6-4ef4-b3c7-169a8671b5e6",
+    "target1_audio_id": "7411dd97-3bf6-4cab-be64-4e9f3a7287fa",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

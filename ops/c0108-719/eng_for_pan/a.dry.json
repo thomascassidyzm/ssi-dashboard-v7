@@ -1,0 +1,1005 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "b8982013-8906-4521-bcf7-f657f4b000f9",
+    "seed_number": 108,
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+    "known_audio_id": "ef364ef0-84c3-4432-917c-3c31fa40eccf",
+    "target1_audio_id": "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "after": {
+    "id": "b8982013-8906-4521-bcf7-f657f4b000f9",
+    "seed_number": 108,
+    "target_text": "We didn't expect to wake up in the middle of the night.",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+    "known_audio_id": "ef364ef0-84c3-4432-917c-3c31fa40eccf",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "3ebbab4f-d8c6-439b-a958-4c45ae5dc6e1",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "wake",
+    "known_text": "ਜਾਗਣ",
+    "known_audio_id": "eec006e0-543e-4e40-92d0-f18f596ac9d3",
+    "target1_audio_id": "0fd10764-1a56-4cd6-9b12-730c826297ed",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "d74b6c5b-793e-4a6c-8a3a-32eb89f00294"
+   },
+   "after": {
+    "id": "3ebbab4f-d8c6-439b-a958-4c45ae5dc6e1",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "target_text": "wake up",
+    "known_text": "ਜਾਗਣ",
+    "known_audio_id": "eec006e0-543e-4e40-92d0-f18f596ac9d3",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01B01"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake",
+    "known_text": "ਜਾਗਣ",
+    "known_audio_id": "eec006e0-543e-4e40-92d0-f18f596ac9d3",
+    "target1_audio_id": "0fd10764-1a56-4cd6-9b12-730c826297ed",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake up",
+    "known_text": "ਜਾਗਣ",
+    "known_audio_id": "eec006e0-543e-4e40-92d0-f18f596ac9d3",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01B02"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake today",
+    "known_text": "ਅੱਜ ਜਾਗਣ",
+    "known_audio_id": "9a958ddd-684f-46cf-b7e2-55bc09696d48",
+    "target1_audio_id": "a5122d96-deeb-47e3-8946-7da492323b7d",
+    "target2_audio_id": "57b85f45-611f-41f2-a56d-c68a385e309b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake up today",
+    "known_text": "ਅੱਜ ਜਾਗਣ",
+    "known_audio_id": "9a958ddd-684f-46cf-b7e2-55bc09696d48",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01B03"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake quickly",
+    "known_text": "ਜਲਦੀ ਜਾਗਣ",
+    "known_audio_id": "e9657bea-9729-433d-8462-415855790229",
+    "target1_audio_id": "3196dc3d-cd1c-4377-b680-717d2c209ae6",
+    "target2_audio_id": "98f59cac-c718-400e-bdc8-ba14e259fbf1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wake up quickly",
+    "known_text": "ਜਲਦੀ ਜਾਗਣ",
+    "known_audio_id": "e9657bea-9729-433d-8462-415855790229",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01U01"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake",
+    "known_text": "ਮੈਂ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "known_audio_id": "83ef2b75-3baa-4341-8c18-46750ae11e5c",
+    "target1_audio_id": "33b6b731-a223-4718-b224-cf8507e8bee8",
+    "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake up",
+    "known_text": "ਮੈਂ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "known_audio_id": "83ef2b75-3baa-4341-8c18-46750ae11e5c",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01U02"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm ready to wake now",
+    "known_text": "ਮੈਂ ਹੁਣ ਜਾਗਣ ਲਈ ਤਿਆਰ ਹਾਂ",
+    "known_audio_id": "f6071a42-0e04-4cb0-accd-8b68f51ef6c1",
+    "target1_audio_id": "13bf718e-2e7c-4888-afc9-2dc7bef160f5",
+    "target2_audio_id": "b4781b14-5760-4067-a0fe-ee41c6517e04",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm ready to wake up now",
+    "known_text": "ਮੈਂ ਹੁਣ ਜਾਗਣ ਲਈ ਤਿਆਰ ਹਾਂ",
+    "known_audio_id": "f6071a42-0e04-4cb0-accd-8b68f51ef6c1",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01U03"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake today",
+    "known_text": "ਮੈਂ ਅੱਜ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "known_audio_id": "8e74a359-a838-4072-b858-84b7194e8f3e",
+    "target1_audio_id": "224474e0-b9e0-46e7-a81f-81a4172830fb",
+    "target2_audio_id": "da4e1611-86a4-45e9-8ba0-1099c24ce361",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I don't want to wake up today",
+    "known_text": "ਮੈਂ ਅੱਜ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "known_audio_id": "8e74a359-a838-4072-b858-84b7194e8f3e",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01U04"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm trying to wake",
+    "known_text": "ਮੈਂ ਜਾਗਣ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+    "known_audio_id": "511ea6f7-84f8-4dce-ab6b-426ce41ae6aa",
+    "target1_audio_id": "beb7be02-882e-43f1-ac37-756f032dc0f1",
+    "target2_audio_id": "1323bc9f-3a6a-44c1-9e41-b8a542e43bff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I'm trying to wake up",
+    "known_text": "ਮੈਂ ਜਾਗਣ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ",
+    "known_audio_id": "511ea6f7-84f8-4dce-ab6b-426ce41ae6aa",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L01U05"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I want to wake this way",
+    "known_text": "ਮੈਂ ਇਸ ਤਰੀਕੇ ਨਾਲ ਜਾਗਣ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "known_audio_id": "66bb50ca-daa2-4db0-9716-ce36cc9228ec",
+    "target1_audio_id": "b61cb07a-373d-42e3-b17d-57935f626ea1",
+    "target2_audio_id": "69ed82d6-f6a8-4eba-a709-fef549a540b1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "I want to wake up this way",
+    "known_text": "ਮੈਂ ਇਸ ਤਰੀਕੇ ਨਾਲ ਜਾਗਣ ਚਾਹੁੰਦਾ ਹਾਂ",
+    "known_audio_id": "66bb50ca-daa2-4db0-9716-ce36cc9228ec",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "lego.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "lego_id": "S0108L02"
+   },
+   "before": {
+    "id": "02c8d5c6-568e-47e9-8703-57521e6c4016",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "we didn't hope",
+    "components": [
+     {
+      "known": "ਉਮੀਦ",
+      "target": "hope"
+     },
+     {
+      "known": "ਨਹੀਂ ਕੀਤੀ",
+      "target": "didn't"
+     }
+    ],
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ",
+    "known_audio_id": "2b48f62c-448c-4b8f-be80-cbd83b7619b9",
+    "target1_audio_id": "8612194f-9b53-464b-a6b8-7a80123da022",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": "a7ea3dcf-23de-4779-9bf6-20d6a3c6a3da"
+   },
+   "after": {
+    "id": "02c8d5c6-568e-47e9-8703-57521e6c4016",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "target_text": "we didn't expect",
+    "components": [
+     {
+      "known": "ਉਮੀਦ",
+      "target": "expect"
+     },
+     {
+      "known": "ਨਹੀਂ ਕੀਤੀ",
+      "target": "didn't"
+     }
+    ],
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ",
+    "known_audio_id": "2b48f62c-448c-4b8f-be80-cbd83b7619b9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02B01"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope",
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ",
+    "known_audio_id": "2b48f62c-448c-4b8f-be80-cbd83b7619b9",
+    "target1_audio_id": "8612194f-9b53-464b-a6b8-7a80123da022",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect",
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ",
+    "known_audio_id": "2b48f62c-448c-4b8f-be80-cbd83b7619b9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02B02"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope today",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਅੱਜ",
+    "known_audio_id": "fb9cccf7-0611-4d21-9f1f-b80bee811d01",
+    "target1_audio_id": "41491df4-4b29-4f32-ab4d-6c9e455edbc5",
+    "target2_audio_id": "4fad1d6b-dced-4686-96af-5854c972de83",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect today",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਅੱਜ",
+    "known_audio_id": "fb9cccf7-0611-4d21-9f1f-b80bee811d01",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02B03"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to see",
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਦੇਖਣਾ",
+    "known_audio_id": "9575de6a-baf9-4249-bf84-d1546e29137b",
+    "target1_audio_id": "373f9ee2-3368-49b5-80a6-99a51125059f",
+    "target2_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to see",
+    "known_text": "ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਦੇਖਣਾ",
+    "known_audio_id": "9575de6a-baf9-4249-bf84-d1546e29137b",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02C01"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "hope",
+    "known_text": "ਉਮੀਦ",
+    "known_audio_id": "41263764-4bf5-4234-9991-d5a18f36fd74",
+    "target1_audio_id": "0d03c2ee-62a9-472a-8118-85d1ca14ec38",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0",
+    "presentation_audio_id": "a62b5109-8899-4997-8d52-9656d2e2bb0f"
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02C01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "expect",
+    "known_text": "ਉਮੀਦ",
+    "known_audio_id": "41263764-4bf5-4234-9991-d5a18f36fd74",
+    "target1_audio_id": "93ed06ca-6de0-4213-b983-481a17fddeb0",
+    "target2_audio_id": null,
+    "presentation_audio_id": "a62b5109-8899-4997-8d52-9656d2e2bb0f"
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02U01"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਗਣ",
+    "known_audio_id": "9e12cb5c-230b-4f16-8b04-25e4f976525d",
+    "target1_audio_id": "1cc76f83-34dd-47bb-911b-522df620a84d",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਗਣ",
+    "known_audio_id": "9e12cb5c-230b-4f16-8b04-25e4f976525d",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02U02"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to see what you were doing",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਦੇਖਣਾ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ",
+    "known_audio_id": "4aabbdf5-2b49-450a-be71-268f80755c51",
+    "target1_audio_id": "ebf67c8f-2d4a-40bb-93b3-04755e693694",
+    "target2_audio_id": "71be25df-a3f2-4e59-84c2-1fd3d54c359d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to see what you were doing",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਦੇਖਣਾ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ",
+    "known_audio_id": "4aabbdf5-2b49-450a-be71-268f80755c51",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02U03"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to change",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਬਦਲਣ ਦੀ",
+    "known_audio_id": "1f16b824-8586-4157-9396-37ad40d8df0a",
+    "target1_audio_id": "27a95896-1a33-48fd-ab8c-271fb33c72a2",
+    "target2_audio_id": "4b2ec5e8-9713-4f7c-b3ce-0720d0029752",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to change",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਬਦਲਣ ਦੀ",
+    "known_audio_id": "1f16b824-8586-4157-9396-37ad40d8df0a",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L02U04"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't hope to see today",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਅੱਜ ਦੇਖਣਾ",
+    "known_audio_id": "07f9a7de-e55a-405b-afb8-4ad8b9dfecaf",
+    "target1_audio_id": "48e492c9-7c7f-46dc-bd68-518dcb0c79d6",
+    "target2_audio_id": "de5fea35-c719-42cc-91d3-d1f306ade25e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "we didn't expect to see today",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਅੱਜ ਦੇਖਣਾ",
+    "known_audio_id": "07f9a7de-e55a-405b-afb8-4ad8b9dfecaf",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L03B02"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wake in the middle of the night",
+    "known_text": "ਜਾਗਣ ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "known_audio_id": "5d39b9b9-5c22-41a9-915f-5feb4f84c705",
+    "target1_audio_id": "5856958e-c8c8-4896-9f58-74d0064872b8",
+    "target2_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wake up in the middle of the night",
+    "known_text": "ਜਾਗਣ ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "known_audio_id": "5d39b9b9-5c22-41a9-915f-5feb4f84c705",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L03U01"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I don't want to wake in the middle of the night",
+    "known_text": "ਮੈਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "known_audio_id": "8817ef36-2845-4077-8e12-44fb2e92d6cb",
+    "target1_audio_id": "a4085ebe-6482-4ccd-adec-9b9479f94c9c",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "I don't want to wake up in the middle of the night",
+    "known_text": "ਮੈਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਣ ਨਹੀਂ ਚਾਹੁੰਦਾ",
+    "known_audio_id": "8817ef36-2845-4077-8e12-44fb2e92d6cb",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L03U02"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਗਣ ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "known_audio_id": "f48939ee-99fc-4bff-a652-a67a78b76870",
+    "target1_audio_id": "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਗਣ ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "known_audio_id": "f48939ee-99fc-4bff-a652-a67a78b76870",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_pan",
+    "id": "eng_for_pan:S0108L03U03"
+   },
+   "before": {
+    "id": "eng_for_pan:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "it's difficult to wake in the middle of the night",
+    "known_text": "ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਣ ਔਖਾ ਹੈ",
+    "known_audio_id": "78ad2886-d473-4a18-88a7-d42ea371ba4d",
+    "target1_audio_id": "5a4181a8-45e7-4bdc-b3da-e300f7372aec",
+    "target2_audio_id": "5a705161-49ab-413a-ad5d-f4f85dcfdcc2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "eng_for_pan:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "it's difficult to wake up in the middle of the night",
+    "known_text": "ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਣ ਔਖਾ ਹੈ",
+    "known_audio_id": "78ad2886-d473-4a18-88a7-d42ea371ba4d",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U03",
+   "set": {
+    "target_text": "it's difficult to wake in the middle of the night",
+    "target1_audio_id": "5a4181a8-45e7-4bdc-b3da-e300f7372aec",
+    "target2_audio_id": "5a705161-49ab-413a-ad5d-f4f85dcfdcc2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U02",
+   "set": {
+    "target_text": "we didn't hope to wake in the middle of the night",
+    "target1_audio_id": "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U01",
+   "set": {
+    "target_text": "I don't want to wake in the middle of the night",
+    "target1_audio_id": "a4085ebe-6482-4ccd-adec-9b9479f94c9c",
+    "target2_audio_id": "8afb8aa1-ebd2-43a5-8dc6-2525725b9582"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03B02",
+   "set": {
+    "target_text": "wake in the middle of the night",
+    "target1_audio_id": "5856958e-c8c8-4896-9f58-74d0064872b8",
+    "target2_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U04",
+   "set": {
+    "target_text": "we didn't hope to see today",
+    "target1_audio_id": "48e492c9-7c7f-46dc-bd68-518dcb0c79d6",
+    "target2_audio_id": "de5fea35-c719-42cc-91d3-d1f306ade25e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U03",
+   "set": {
+    "target_text": "we didn't hope to change",
+    "target1_audio_id": "27a95896-1a33-48fd-ab8c-271fb33c72a2",
+    "target2_audio_id": "4b2ec5e8-9713-4f7c-b3ce-0720d0029752"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U02",
+   "set": {
+    "target_text": "we didn't hope to see what you were doing",
+    "target1_audio_id": "ebf67c8f-2d4a-40bb-93b3-04755e693694",
+    "target2_audio_id": "71be25df-a3f2-4e59-84c2-1fd3d54c359d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02U01",
+   "set": {
+    "target_text": "we didn't hope to wake",
+    "target1_audio_id": "1cc76f83-34dd-47bb-911b-522df620a84d",
+    "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02C01",
+   "set": {
+    "target_text": "hope",
+    "target1_audio_id": "0d03c2ee-62a9-472a-8118-85d1ca14ec38",
+    "target2_audio_id": "7ef8f823-3930-467f-bfa4-cdab10570bb0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02B03",
+   "set": {
+    "target_text": "we didn't hope to see",
+    "target1_audio_id": "373f9ee2-3368-49b5-80a6-99a51125059f",
+    "target2_audio_id": "95e48fb1-2e10-40ab-a934-2d8e38e5c127"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02B02",
+   "set": {
+    "target_text": "we didn't hope today",
+    "target1_audio_id": "41491df4-4b29-4f32-ab4d-6c9e455edbc5",
+    "target2_audio_id": "4fad1d6b-dced-4686-96af-5854c972de83"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L02B01",
+   "set": {
+    "target_text": "we didn't hope",
+    "target1_audio_id": "8612194f-9b53-464b-a6b8-7a80123da022",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "02c8d5c6-568e-47e9-8703-57521e6c4016",
+   "set": {
+    "target_text": "we didn't hope",
+    "components": [
+     {
+      "known": "ਉਮੀਦ",
+      "target": "hope"
+     },
+     {
+      "known": "ਨਹੀਂ ਕੀਤੀ",
+      "target": "didn't"
+     }
+    ],
+    "target1_audio_id": "8612194f-9b53-464b-a6b8-7a80123da022",
+    "target2_audio_id": "59d74d73-2e2b-41bc-bd93-af0fff3e6ff4",
+    "presentation_audio_id": "a7ea3dcf-23de-4779-9bf6-20d6a3c6a3da"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U05",
+   "set": {
+    "target_text": "I want to wake this way",
+    "target1_audio_id": "b61cb07a-373d-42e3-b17d-57935f626ea1",
+    "target2_audio_id": "69ed82d6-f6a8-4eba-a709-fef549a540b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U04",
+   "set": {
+    "target_text": "I'm trying to wake",
+    "target1_audio_id": "beb7be02-882e-43f1-ac37-756f032dc0f1",
+    "target2_audio_id": "1323bc9f-3a6a-44c1-9e41-b8a542e43bff"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U03",
+   "set": {
+    "target_text": "I don't want to wake today",
+    "target1_audio_id": "224474e0-b9e0-46e7-a81f-81a4172830fb",
+    "target2_audio_id": "da4e1611-86a4-45e9-8ba0-1099c24ce361"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U02",
+   "set": {
+    "target_text": "I'm ready to wake now",
+    "target1_audio_id": "13bf718e-2e7c-4888-afc9-2dc7bef160f5",
+    "target2_audio_id": "b4781b14-5760-4067-a0fe-ee41c6517e04"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01U01",
+   "set": {
+    "target_text": "I don't want to wake",
+    "target1_audio_id": "33b6b731-a223-4718-b224-cf8507e8bee8",
+    "target2_audio_id": "216485d5-eace-4502-ae7d-a19cbd9cedc6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01B03",
+   "set": {
+    "target_text": "wake quickly",
+    "target1_audio_id": "3196dc3d-cd1c-4377-b680-717d2c209ae6",
+    "target2_audio_id": "98f59cac-c718-400e-bdc8-ba14e259fbf1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01B02",
+   "set": {
+    "target_text": "wake today",
+    "target1_audio_id": "a5122d96-deeb-47e3-8946-7da492323b7d",
+    "target2_audio_id": "57b85f45-611f-41f2-a56d-c68a385e309b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L01B01",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "0fd10764-1a56-4cd6-9b12-730c826297ed",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "3ebbab4f-d8c6-439b-a958-4c45ae5dc6e1",
+   "set": {
+    "target_text": "wake",
+    "target1_audio_id": "0fd10764-1a56-4cd6-9b12-730c826297ed",
+    "target2_audio_id": "8e543218-88b7-4f17-aad5-e31445f03e68",
+    "presentation_audio_id": "d74b6c5b-793e-4a6c-8a3a-32eb89f00294"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "target_text": "We didn't hope to wake in the middle of the night.",
+    "target1_audio_id": "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+    "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

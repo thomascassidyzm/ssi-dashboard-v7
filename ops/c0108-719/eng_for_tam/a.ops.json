@@ -1,0 +1,281 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிப்போம் என்று எதிர்பார்க்கவில்லை.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிப்போம் என்று நம்பவில்லை.",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "didn't expect",
+    "known_text": "எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நம்பவில்லை",
+    "target_text": "didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01B01",
+   "set": {
+    "target_text": "didn't expect",
+    "known_text": "எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நம்பவில்லை",
+    "target_text": "didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01B02",
+   "set": {
+    "target_text": "we didn't expect",
+    "known_text": "நாங்கள் எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நாங்கள் நம்பவில்லை",
+    "target_text": "we didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01B03",
+   "set": {
+    "target_text": "I didn't expect",
+    "known_text": "நான் எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நான் நம்பவில்லை",
+    "target_text": "I didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U03",
+   "set": {
+    "target_text": "you didn't expect",
+    "known_text": "நீங்கள் எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நீங்கள் நம்பவில்லை",
+    "target_text": "you didn't hope"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U04",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U05",
+   "set": {
+    "target_text": "I didn't expect this would happen",
+    "known_text": "இது நடக்கும் என்று எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "இது நடக்கும் என்று நம்பவில்லை",
+    "target_text": "I didn't hope this would happen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U06",
+   "set": {
+    "target_text": "he didn't expect to start so soon",
+    "known_text": "அவர் இவ்வளவு விரைவில் தொடங்குவார் என்று எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "அவர் இவ்வளவு விரைவில் தொடங்குவார் என்று நம்பவில்லை",
+    "target_text": "he didn't hope to start so soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L01U07",
+   "set": {
+    "target_text": "she didn't expect to finish so soon",
+    "known_text": "அவள் இவ்வளவு விரைவில் முடிக்க எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "அவள் இவ்வளவு விரைவில் முடிக்க நம்பவில்லை",
+    "target_text": "she didn't hope to finish so soon"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L02",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "விழிக்க",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02B01",
+   "set": {
+    "target_text": "wake up"
+   },
+   "expect": {
+    "known_text": "விழிக்க",
+    "target_text": "wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02B02",
+   "set": {
+    "target_text": "wake up now"
+   },
+   "expect": {
+    "known_text": "விழிக்க இப்போது",
+    "target_text": "wake now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02B03",
+   "set": {
+    "target_text": "wake up at night"
+   },
+   "expect": {
+    "known_text": "இரவில் விழிக்க",
+    "target_text": "wake at night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U01",
+   "set": {
+    "target_text": "it's not good to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "இரவில் விழிப்பது நல்லதில்லை",
+    "target_text": "it's not good to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U02",
+   "set": {
+    "target_text": "she didn't want to wake up",
+    "known_text": "அவள் விழிக்க விரும்பவில்லை"
+   },
+   "expect": {
+    "known_text": "அவள் எங்களை எழுப்ப விரும்பவில்லை",
+    "target_text": "she didn't want to wake us up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U03",
+   "set": {
+    "target_text": "I didn't want to wake up so soon this morning"
+   },
+   "expect": {
+    "known_text": "இந்த காலையில் விழிக்க விரும்பவில்லை",
+    "target_text": "I didn't want to wake so soon this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U04",
+   "set": {
+    "target_text": "nobody wanted to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "யாரும் இரவில் விழிக்க விரும்பவில்லை",
+    "target_text": "nobody wanted to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L02U05",
+   "set": {
+    "target_text": "I didn't want to wake up early this morning"
+   },
+   "expect": {
+    "known_text": "நான் இந்த காலையில் சீக்கிரம் விழிக்க விரும்பவில்லை",
+    "target_text": "I didn't want to wake early this morning"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03B02",
+   "set": {
+    "target_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "இரவின் நடுவில் விழிக்க",
+    "target_text": "wake middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03B03",
+   "set": {
+    "target_text": "didn't expect to wake up in the middle of the night",
+    "known_text": "இரவின் நடுவில் விழிக்க எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "target_text": "didn't hope wake middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03U01",
+   "set": {
+    "target_text": "we didn't expect to wake up in the middle of the night",
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க எதிர்பார்க்கவில்லை"
+   },
+   "expect": {
+    "known_text": "நாங்கள் இரவின் நடுவில் விழிக்க நம்பவில்லை",
+    "target_text": "we didn't hope to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03U02",
+   "set": {
+    "target_text": "I didn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "நான் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+    "target_text": "I didn't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_tam:S0108L03U05",
+   "set": {
+    "target_text": "he didn't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "அவன் இரவின் நடுவில் விழிக்க விரும்பவில்லை",
+    "target_text": "he didn't want to wake in the middle of the night"
+   }
+  }
+ ]
+}

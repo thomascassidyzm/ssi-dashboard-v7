@@ -1,0 +1,50 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "阮想袂到會佇半暝精神。"
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "阮無希望佇半暝精神。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nan_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "to wake in the middle of the night",
+    "target_text": "佇半暝精神"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nan_for_eng:S0108L01U01",
+   "set": {
+    "target_text": "阮想袂到會佇半暝精神",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "阮無希望佇半暝精神"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nan_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "i don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "i don't want to wake in the middle of the night",
+    "target_text": "我無想欲佇半暝精神"
+   }
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "मध्यरात्री जागं होण्याची आम्हाला अपेक्षा नव्हती."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "मध्यरात्री जागं होण्याची आम्हाला आशा नव्हती."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mar_for_eng:S0108L02B02",
+   "set": {
+    "target_text": "आम्हाला अपेक्षा नव्हती",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "आम्हाला आशा नव्हती"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mar_for_eng:S0108L02U05",
+   "set": {
+    "target_text": "अपेक्षा नव्हती",
+    "known_text": "didn't expect"
+   },
+   "expect": {
+    "known_text": "hope wasn't there",
+    "target_text": "आशा नव्हती"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mar_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "to wake up"
+   },
+   "expect": {
+    "known_text": "to wake",
+    "target_text": "जागं होण्याची"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mar_for_eng:S0108L04B02",
+   "set": {
+    "target_text": "मध्यरात्री आम्हाला अपेक्षा नव्हती",
+    "known_text": "midnight — we didn't expect"
+   },
+   "expect": {
+    "known_text": "midnight — we didn't hope",
+    "target_text": "मध्यरात्री आम्हाला आशा नव्हती"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mar_for_eng:S0108L04U01",
+   "set": {
+    "target_text": "मध्यरात्री जागं होण्याची आम्हाला अपेक्षा नव्हती",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "मध्यरात्री जागं होण्याची आम्हाला आशा नव्हती"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mar_for_eng:S0108L04U05",
+   "set": {
+    "known_text": "wake up at midnight"
+   },
+   "expect": {
+    "known_text": "wake at midnight",
+    "target_text": "मध्यरात्री जागं होण्याची"
+   }
+  }
+ ]
+}
