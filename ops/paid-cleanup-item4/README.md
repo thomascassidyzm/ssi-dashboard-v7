@@ -22,3 +22,15 @@ remove the generator filler, back-fill real phrases from taught words, every tou
 fetch → dump the seeds → read and write plans → build (0 errors) → post validate (0 blocking) → post dry → post apply → commit.
 After the last batch of a course: `post.cjs after <course>` → `validate-diff.json`.
 Undo: `POST /api/production/<course>/edit-batch {"undo_file":"<name from the apply>","apply":true}`.
+
+## cs #358 (22 Nov): the rest, applied by night changeset
+- `status-358.json` per course: live vs planned per seed. por_br 469-668 went live on 18 Nov 18:49-19:29Z (queue c) but its
+  record was lost with the #759 worktree; `por_br_for_eng/events-759c-recovered.json` rebuilds it from Popty's undo files.
+- Planning reads the NIGHTLY COPY: `ITEM4_LIVE_DIR=<dir>` (snapshot by `ops/paid-cleanup-item9/tools/copy-live.cjs`);
+  `post.cjs cvalidate|cafter` run the course-builder's /v2/validate on the copy (no live read, any hour).
+- `tools/to-changesets.cjs <course>` → `<course>/changesets/r358.changeset.jsonl` + `.guards.json` (Kai's seed+LEGO pre-check,
+  checked by item 9's `precheck-guards.cjs`). Never rebuilt after its first night (the ledger keys ops by line).
+- `tools/audio-backlog.cjs` → `<course>/changesets/backlog-358.slots.json`: slots item 4's 18 Nov rows left silent (copy).
+- `night-run.sh` (timer `cs-long-keep-item4-358.timer`, 22:05 UTC, persistent worktree `~/.cs-long/item4-358/popty`):
+  pre-check → governed applier (por_br, then eng_for_mar) → `tools/night-audio.cjs` (seed order, 200k Cartesia cap in total,
+  spend file `~/ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json`, reserved in the a2c `fixes.json`).
