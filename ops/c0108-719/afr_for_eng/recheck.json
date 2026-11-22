@@ -1,0 +1,89 @@
+{
+ "course": "afr_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "b",
+   "i": 0,
+   "op": "lego.insert",
+   "key": "L3",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 1,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03B01",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 2,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03B02",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 3,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03B03",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 4,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03B04",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 5,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03U01",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 6,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03U02",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 7,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03U03",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 8,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03U04",
+   "status": "insert-ok"
+  },
+  {
+   "part": "b",
+   "i": 9,
+   "op": "phrase.insert",
+   "key": "afr_for_eng:S0108L03U05",
+   "status": "insert-ok"
+  }
+ ],
+ "uncovered": [],
+ "counts": {
+  "insert-ok": 10,
+  "ok": 1
+ }
+}

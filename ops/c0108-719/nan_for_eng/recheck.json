@@ -1,0 +1,45 @@
+{
+ "course": "nan_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "copy_built": "2026-11-22T03:40:23Z",
+ "ops": [
+  {
+   "part": "a",
+   "i": 0,
+   "op": "seed.update",
+   "key": 108,
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 1,
+   "op": "phrase.update",
+   "key": "nan_for_eng:S0108L01B03",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 2,
+   "op": "phrase.update",
+   "key": "nan_for_eng:S0108L01U01",
+   "status": "ok"
+  },
+  {
+   "part": "a",
+   "i": 3,
+   "op": "phrase.update",
+   "key": "nan_for_eng:S0108L01U02",
+   "status": "ok"
+  }
+ ],
+ "uncovered": [
+  {
+   "key": "nan_for_eng:S0108L01U04",
+   "known": "we hope to sleep well in the middle of the night",
+   "target": "阮希望佇半暝睏好"
+  }
+ ],
+ "counts": {
+  "ok": 4
+ }
+}
