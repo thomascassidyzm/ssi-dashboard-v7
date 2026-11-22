@@ -1,0 +1,241 @@
+{
+ "_why": "cs #381·AI: the plan's new verb ציפינו (לצפות ל- 'expect': Pealim לצפות; Morfix) had no LEGO. Adds L03 A 'we expected'=ציפינו (single word, as seed 112's component 'I expected'=ציפיתי) with a BUILD/USE basket from seed-108 LEGOs + earlier vocabulary. The seed echo moves from L02B03 into the new basket (L02 cannot use a word taught after it); L02B03 is re-worded inside L02's own vocabulary instead.",
+ "replace": {
+  "heb_for_eng:S0108L02B03": {
+   "known_text": "it's not good to wake up in the middle of the night",
+   "target_text": "זה לא טוב להתעורר באמצע הלילה",
+   "target_text_roman": "ze lo tov lehit'orer be'emtsa halayla"
+  }
+ },
+ "drop": [],
+ "add": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 3,
+    "known_text": "we expected",
+    "target_text": "ציפינו",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03B01",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 1,
+    "known_text": "we expected",
+    "target_text": "ציפינו",
+    "target_text_roman": "tsipinu",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 6,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03B02",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "we didn't expect",
+    "target_text": "לא ציפינו",
+    "target_text_roman": "lo tsipinu",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 9,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03B03",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 3,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "לא ציפינו להתעורר",
+    "target_text_roman": "lo tsipinu lehit'orer",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 17,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03B04",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 4,
+    "known_text": "we expected to wake up",
+    "target_text": "ציפינו להתעורר",
+    "target_text_roman": "tsipinu lehit'orer",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 14,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03U01",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 5,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "לא ציפינו להתעורר באמצע הלילה",
+    "target_text_roman": "lo tsipinu lehit'orer be'emtsa halayla",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 29,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03U02",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 6,
+    "known_text": "we expected to wake up in the middle of the night",
+    "target_text": "ציפינו להתעורר באמצע הלילה",
+    "target_text_roman": "tsipinu lehit'orer be'emtsa halayla",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 26,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03U03",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 7,
+    "known_text": "we didn't expect to learn Hebrew in the middle of the night",
+    "target_text": "לא ציפינו ללמוד עברית באמצע הלילה",
+    "target_text_roman": "lo tsipinu lilmod ivrit be'emtsa halayla",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 33,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03U04",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 8,
+    "known_text": "we didn't expect to work hard",
+    "target_text": "לא ציפינו לעבוד קשה",
+    "target_text_roman": "lo tsipinu la'avod kashe",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 19,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "heb_for_eng:S0108L03U05",
+    "course_code": "heb_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "we didn't expect to practise Hebrew",
+    "target_text": "לא ציפינו להתאמן בעברית",
+    "target_text_roman": "lo tsipinu lehit'amen be'ivrit",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 23,
+    "lego_count": 4
+   }
+  }
+ ]
+}
