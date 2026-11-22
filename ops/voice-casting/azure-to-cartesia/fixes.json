@@ -1,17 +1,148 @@
 {
  "_what": "Cartesia characters still owed for COURSE FIXES, charged FIRST inside the 2.0M cap (Kai, 19 Nov). Figures are each job's own published price (upper bounds unless noted), NOT re-measured here; pan-male is computed by this job. status: approved = Kai said yes and a runner is armed; awaiting = plan ready, needs Kai's Y/N.",
  "fixes": [
-  {"id": "item9-night", "what": "Paid cleanup item 9 untaught words: 28 night changesets (back-fill, deletes, re-cuts) incl. guj S0071L02 B04 t2", "chars": 52000, "status": "approved", "basis": "#960·AI ~52k GROSS audio chars (Cartesia + Azure not split, so an upper bound); timer cs-long-keep-item9-night 22:35 UTC nightly", "doc": "d/2b1212d7", "day": 1, "utc_day": "2026-11-19", "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/item9-spend.json"},
-  {"id": "item20-indic", "what": "Paid cleanup item 20 thin Indic baskets (urd/pan/ben/mar/guj), 3,439 rows", "chars": 230000, "status": "approved", "basis": "cs #79·AJ re-price of the #740·AI plan on the 19 Nov copy (0 drift): CAST-VOICE price 215,941 Cartesia (+6% = 230k, item 20s own hard cap ITEM20_CAP): the 19 Nov cast (#998·AI) put the pan/mar/guj known side on Cartesia (ben already), and English recorded only in other voices (EXISTS_IN_LANGUAGE, 37 of 97 live answers) needs a fresh Charlotte/Tom-006 take under Kais grant; urd known stays Azure (12,058, not counted). Kai approved 19 Nov ~17:05Z: Happy with item 20. Runner cs-long-keep-item20-sat from Sat 21 Nov 00:05 UTC, FIRST on day 3; run-day.cjs reserves it (fixReserve)", "doc": "d/a1c696a6", "day": 3, "utc_day": "2026-11-21", "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item20/cartesia-spend.json"},
-  {"id": "sister-priced", "what": "Sister-course propagation, priced not applied: spa_mx A pienso->creo 20,200, I seed 147 1,300, S0402 sitio 1,500; por_br 93 rows 6,320; zho_for_tam 486; deu_at 370; deu_ch 14 re-cuts 2,000 (spa_mx C seed 27 excluded: needs Tom's go; urd thin basket is inside item 20)", "chars": 32176, "status": "awaiting", "basis": "#695·AI price list", "doc": "d/2aac0761", "day": 2},
-  {"id": "pan-male-known", "what": "eng_for_pan known male half (Gurpreet) after cs #17 two-voice switch; the whole known side is still Azure Vaani", "chars": 143964, "status": "awaiting", "basis": "this job: services/shared/known-voice-gender.cjs hashGender over the census's 11,187 pan known asks (phrase lines only; seeds/LEGOs anchored female; stored gender pairs not read) = 4,616 asks. eng_for_urd male (Asad) is Azure: 0 Cartesia", "doc": "d/3a41a2c9", "day": 3},
-  {"id": "jpn-item3-d2", "what": "eng_for_jpn item 3 known prompts, D2 seeds 74-300 (~1,280 rows)", "chars": 41000, "status": "awaiting", "basis": "scaled from #726·AI: 13,832 chars for 424 rows", "doc": "d/3956b3da", "day": 3},
-  {"id": "fra-female-male-form", "what": "fra_for_eng 233 female-voice clips saying the male form, re-record", "chars": 9312, "status": "awaiting", "basis": "#175·AI quote", "doc": "d/2e88fb0f", "day": 3},
-  {"id": "ita-own-lego", "what": "ita 82 phrases missing their own LEGO: 71 re-words, 7 deletes", "chars": 7740, "status": "awaiting", "basis": "#942·AI (eng 6,901, jpn 839)", "doc": "d/785f163d", "day": 3},
-  {"id": "jpn-held", "what": "jpn_for_eng 33 held items, 8 families", "chars": 4600, "status": "awaiting", "basis": "#421 (~4.6k)", "doc": "d/71221f73", "day": 3},
-  {"id": "fra-held", "what": "fra_for_eng 21 held items, 8 families", "chars": 4350, "status": "awaiting", "basis": "#424·AI", "doc": "d/b6a2a5d7", "day": 3},
-  {"id": "por-held", "what": "por_for_eng 15 held items, 7 families", "chars": 1300, "status": "awaiting", "basis": "#426·AI", "doc": "d/f1e11f9f", "day": 3},
-  {"id": "hrv-pod1", "what": "hrv Pod 1 scene 6 speaker swap + 7.4 Zeljela", "chars": 1137, "status": "awaiting", "basis": "#780·AI (737 Croatian + <=400 English)", "doc": "d/34f0f311", "day": 3},
-  {"id": "small-followups", "what": "unpriced small follow-ups (listening fixes #984 deu 626 not|nicht, item 12 follow-ups)", "chars": 1000, "status": "awaiting", "basis": "contingency, not measured", "doc": "d/995fbe63", "day": 3}
+  {
+   "id": "item9-night",
+   "what": "Paid cleanup item 9 untaught words: 28 night changesets (back-fill, deletes, re-cuts) incl. guj S0071L02 B04 t2",
+   "chars": 52000,
+   "status": "approved",
+   "basis": "#960·AI ~52k GROSS audio chars (Cartesia + Azure not split, so an upper bound); timer cs-long-keep-item9-night 22:35 UTC nightly",
+   "doc": "d/2b1212d7",
+   "day": 1,
+   "utc_day": "2026-11-19",
+   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/item9-spend.json"
+  },
+  {
+   "id": "item20-indic",
+   "what": "Paid cleanup item 20 thin Indic baskets (urd/pan/ben/mar/guj), 3,439 rows",
+   "chars": 230000,
+   "status": "approved",
+   "basis": "cs #79·AJ re-price of the #740·AI plan on the 19 Nov copy (0 drift): CAST-VOICE price 215,941 Cartesia (+6% = 230k, item 20s own hard cap ITEM20_CAP): the 19 Nov cast (#998·AI) put the pan/mar/guj known side on Cartesia (ben already), and English recorded only in other voices (EXISTS_IN_LANGUAGE, 37 of 97 live answers) needs a fresh Charlotte/Tom-006 take under Kais grant; urd known stays Azure (12,058, not counted). Kai approved 19 Nov ~17:05Z: Happy with item 20. Runner cs-long-keep-item20-sat from Sat 21 Nov 00:05 UTC, FIRST on day 3; run-day.cjs reserves it (fixReserve)",
+   "doc": "d/a1c696a6",
+   "day": 3,
+   "utc_day": "2026-11-21",
+   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item20/cartesia-spend.json"
+  },
+  {
+   "id": "sister-priced",
+   "what": "Sister-course propagation, priced not applied: spa_mx A pienso->creo 20,200, I seed 147 1,300, S0402 sitio 1,500; por_br 93 rows 6,320; zho_for_tam 486; deu_at 370; deu_ch 14 re-cuts 2,000 (spa_mx C seed 27 excluded: needs Tom's go; urd thin basket is inside item 20)",
+   "chars": 32176,
+   "status": "awaiting",
+   "basis": "#695·AI price list",
+   "doc": "d/2aac0761",
+   "day": 2
+  },
+  {
+   "id": "pan-male-known",
+   "what": "eng_for_pan known male half (Gurpreet) after cs #17 two-voice switch; the whole known side is still Azure Vaani",
+   "chars": 143964,
+   "status": "awaiting",
+   "basis": "this job: services/shared/known-voice-gender.cjs hashGender over the census's 11,187 pan known asks (phrase lines only; seeds/LEGOs anchored female; stored gender pairs not read) = 4,616 asks. eng_for_urd male (Asad) is Azure: 0 Cartesia",
+   "doc": "d/3a41a2c9",
+   "day": 3
+  },
+  {
+   "id": "jpn-item3-d2",
+   "what": "eng_for_jpn item 3 known prompts, D2 seeds 74-300 (~1,280 rows)",
+   "chars": 41000,
+   "status": "awaiting",
+   "basis": "scaled from #726·AI: 13,832 chars for 424 rows",
+   "doc": "d/3956b3da",
+   "day": 3
+  },
+  {
+   "id": "fra-female-male-form",
+   "what": "fra_for_eng 233 female-voice clips saying the male form, re-record",
+   "chars": 9312,
+   "status": "awaiting",
+   "basis": "#175·AI quote",
+   "doc": "d/2e88fb0f",
+   "day": 3
+  },
+  {
+   "id": "ita-own-lego",
+   "what": "ita 82 phrases missing their own LEGO: 71 re-words, 7 deletes",
+   "chars": 7740,
+   "status": "awaiting",
+   "basis": "#942·AI (eng 6,901, jpn 839)",
+   "doc": "d/785f163d",
+   "day": 3
+  },
+  {
+   "id": "jpn-held",
+   "what": "jpn_for_eng 33 held items, 8 families",
+   "chars": 4600,
+   "status": "awaiting",
+   "basis": "#421 (~4.6k)",
+   "doc": "d/71221f73",
+   "day": 3
+  },
+  {
+   "id": "fra-held",
+   "what": "fra_for_eng 21 held items, 8 families",
+   "chars": 4350,
+   "status": "awaiting",
+   "basis": "#424·AI",
+   "doc": "d/b6a2a5d7",
+   "day": 3
+  },
+  {
+   "id": "por-held",
+   "what": "por_for_eng 15 held items, 7 families",
+   "chars": 1300,
+   "status": "awaiting",
+   "basis": "#426·AI",
+   "doc": "d/f1e11f9f",
+   "day": 3
+  },
+  {
+   "id": "hrv-pod1",
+   "what": "hrv Pod 1 scene 6 speaker swap + 7.4 Zeljela",
+   "chars": 1137,
+   "status": "awaiting",
+   "basis": "#780·AI (737 Croatian + <=400 English)",
+   "doc": "d/34f0f311",
+   "day": 3
+  },
+  {
+   "id": "small-followups",
+   "what": "unpriced small follow-ups (listening fixes #984 deu 626 not|nicht, item 12 follow-ups)",
+   "chars": 1000,
+   "status": "awaiting",
+   "basis": "contingency, not measured",
+   "doc": "d/995fbe63",
+   "day": 3
+  },
+  {
+   "id": "fry246-english",
+   "what": "fry_for_eng English known cues (Tom-006) + intros (Charlotte splice), finishing #428·AI inside Kai's 600k HARD STOP",
+   "chars": 70000,
+   "status": "approved",
+   "basis": "cs #246 dry count 22 Nov: 784 known + 78 intros = 29,565 upper bound main pass; +1,042 EXISTS_IN_LANGUAGE keys 32,023 second pass (needs Kai token); 70k reserve; #428 ledger 471,235 of 600,000",
+   "utc_day": "2026-11-22",
+   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/fry-build/246/cartesia-spend.json"
+  },
+  {
+   "id": "item4-358",
+   "what": "Paid cleanup item 4 filler rows: por_br_for_eng + eng_for_mar audio back-fill (night 22->23 Nov and after), tonight's changeset rows + the 18 Nov rows left silent",
+   "chars": 550000,
+   "status": "approved",
+   "basis": "Kai's item-4 cap raised 200k->550k by Kai's Watson 22 Nov (no row left silent); upper bound before library hits ~511k (por_br 18 Nov backlog 304k, mar 177k, por_br r358 27k); audio starts only after the a2c chain ends (night-run.sh waits), so it reserves on the four-day total, not on 22 Nov's day cap",
+   "doc": "ops/paid-cleanup-item4/README.md (main)",
+   "day": 4,
+   "utc_day": "2026-11-23",
+   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json"
+  },
+  {
+   "id": "c0108-374",
+   "what": "C0108 seed 108 hope -> expect (Kai yes 18 Nov 13:22Z, re-commissioned 22 Nov): audio back-fill for every seed-108 row the night apply changes, ~80 courses",
+   "chars": 110000,
+   "status": "approved",
+   "basis": "cs #374·AI cap 110,000 Cartesia (80k + every changed intro, Kai 22 Nov) (SIZING.md upper bound 66,532 if every touched voiced slot re-records; library hits free); audio starts after the a2c chain ends, so it reserves on 23 Nov",
+   "doc": "ops/c0108-719/night-run.sh (main)",
+   "day": 4,
+   "utc_day": "2026-11-23",
+   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/c0108-719/cartesia-spend.json"
+  }
  ]
 }
