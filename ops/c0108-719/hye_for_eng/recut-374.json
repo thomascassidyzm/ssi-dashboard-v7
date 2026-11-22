@@ -1,0 +1,293 @@
+{
+ "_why": "cs #381·AI: the plan's new verb phrase չէինք սպասում (negative past auxiliary + imperfective participle of սպասել 'expect': Wiktionary սպասել; Nayiri) had no LEGO, and neither word was taught. Adds L03 M 'we didn't expect'=չէինք սպասում (shortest cut that is a unit of meaning: the auxiliary carries the negation and person, so the two words cannot be split into A-LEGOs; components 'we weren't'=չէինք and 'expecting'=սպասում, the latter as seed 112's A 'expecting') with a BUILD/USE basket from seed-108 LEGOs + earlier vocabulary. The course's live spelling արկնանալ is kept on purpose (see plans-east.md).",
+ "replace": {},
+ "drop": [],
+ "add": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 3,
+    "known_text": "we didn't expect",
+    "target_text": "չէինք սպասում",
+    "type": "M",
+    "is_new": true,
+    "status": "draft",
+    "components": [
+     {
+      "known": "we weren't",
+      "target": "չէինք"
+     },
+     {
+      "known": "expecting",
+      "target": "սպասում"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03C01",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 1,
+    "known_text": "we weren't",
+    "target_text": "չէինք",
+    "target_text_roman": "cheink",
+    "phrase_role": "component",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 5,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03C02",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "expecting",
+    "target_text": "սպասում",
+    "target_text_roman": "spasum",
+    "phrase_role": "component",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03B01",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 3,
+    "known_text": "we didn't expect",
+    "target_text": "չէինք սպասում",
+    "target_text_roman": "cheink spasum",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 13,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03B02",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 4,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "չէինք սպասում արկնանալ",
+    "target_text_roman": "cheink spasum arknanal",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 22,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03B03",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 5,
+    "known_text": "we didn't expect to wake up at night",
+    "target_text": "չէինք սպասում արկնանալ գիշերի",
+    "target_text_roman": "cheink spasum arknanal gisheri",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 29,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03B04",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 6,
+    "known_text": "we didn't expect to speak",
+    "target_text": "չէինք սպասում խոսել",
+    "target_text_roman": "cheink spasum khosel",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 19,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03U01",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 7,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Մենք չէինք սպասում արկնանալ գիշերի մեջ",
+    "target_text_roman": "menk cheink spasum arknanal gisheri mej",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 38,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03U02",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 8,
+    "known_text": "we didn't expect to speak now",
+    "target_text": "Մենք չէինք սպասում հիմա խոսել",
+    "target_text_roman": "menk cheink spasum hima khosel",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 29,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03U03",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "we didn't expect to sleep in the middle of the night",
+    "target_text": "Մենք չէինք սպասում քնել գիշերի մեջ",
+    "target_text_roman": "menk cheink spasum knel gisheri mej",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 34,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03U04",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 10,
+    "known_text": "we didn't expect to speak in the middle of the night",
+    "target_text": "Մենք չէինք սպասում խոսել գիշերի մեջ",
+    "target_text_roman": "menk cheink spasum khosel gisheri mej",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 35,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "hye_for_eng:S0108L03U05",
+    "course_code": "hye_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "we didn't expect to learn now",
+    "target_text": "Մենք չէինք սպասում հիմա սովորել",
+    "target_text_roman": "menk cheink spasum hima sovorel",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 31,
+    "lego_count": 5
+   }
+  }
+ ]
+}

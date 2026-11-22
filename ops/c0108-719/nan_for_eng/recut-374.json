@@ -1,0 +1,224 @@
+{
+ "_why": "cs #382·AI: the plan (#772·AI, plans-asia.md) makes seed 108 阮想袂到會佇半暝精神 with 想袂到 'didn't expect' (MOE 臺灣台語常用詞辭典: 想袂到 siūnn-bē-kàu, 'did not expect, unexpectedly'; 會 ē 'will'), but 想袂到 is first taught at S0112L01, so 到會 does not tile at 108. This adds the expect LEGO at 108, shortest cut 想袂到 (Kai 17 Nov), atomic, known 'didn't expect' (S0112L01's known is 'wasn't expecting', so no known prompt gets two targets), with 4 BUILD + 5 USE rows on vocab taught by 108; the course's rows carry no romanisation, so none is added. Same changeset as the a plan.",
+ "add": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 2,
+    "known_text": "didn't expect",
+    "target_text": "想袂到",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02B01",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "didn't expect",
+    "target_text": "想袂到",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02B02",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "we didn't expect",
+    "target_text": "阮想袂到",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02B03",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "I didn't expect",
+    "target_text": "我想袂到",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02B04",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "he didn't expect",
+    "target_text": "伊想袂到",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 4,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02U01",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "I didn't expect to wake up in the middle of the night",
+    "target_text": "我想袂到會佇半暝精神",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 10,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02U02",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "he didn't expect you to come",
+    "target_text": "伊想袂到你會來",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02U03",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "I didn't expect you to remember",
+    "target_text": "我想袂到你會記得",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02U04",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "we didn't expect to be ready",
+    "target_text": "阮想袂到會準備好",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "nan_for_eng:S0108L02U05",
+    "course_code": "nan_for_eng",
+    "seed_number": 108,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "didn't expect to wake up in the middle of the night",
+    "target_text": "想袂到會佇半暝精神",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #382·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 9,
+    "lego_count": 1
+   }
+  }
+ ]
+}
