@@ -1,0 +1,256 @@
+{
+ "_why": "cs #381·AI: the plan's new verb очаквахме (очаквам 'expect': Wiktionary очаквам; РБЕ) had no LEGO. Adds L03 A 'we expected'=очаквахме (single word, as seed 112's 'I expected'=очаквах) with a BUILD/USE basket from seed-108 LEGOs + earlier vocabulary. The four plan rows in L01/L02 that would have used очаквахме before it is taught are re-worded inside their own baskets' vocabulary (want/wanted/good), and the expect sentences move to L03.",
+ "replace": {
+  "bul_for_eng:S0108L01B03": {
+   "known_text": "we don't want to wake up",
+   "target_text": "не искаме да се събудим",
+   "target_text_roman": "ne iskame da se sabudim"
+  },
+  "bul_for_eng:S0108L01U02": {
+   "known_text": "we wanted to wake up",
+   "target_text": "Искахме да се събудим",
+   "target_text_roman": "iskahme da se sabudim"
+  },
+  "bul_for_eng:S0108L02U01": {
+   "known_text": "we want to wake up in the middle of the night",
+   "target_text": "Искаме да се събудим посред нощ",
+   "target_text_roman": "iskame da se sabudim posred nosht"
+  },
+  "bul_for_eng:S0108L02U02": {
+   "known_text": "it is good to wake up in the middle of the night",
+   "target_text": "Добре е да се събудим посред нощ",
+   "target_text_roman": "dobre e da se sabudim posred nosht"
+  }
+ },
+ "drop": [],
+ "add": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 3,
+    "known_text": "we expected",
+    "target_text": "очаквахме",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03B01",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 1,
+    "known_text": "we expected",
+    "target_text": "очаквахме",
+    "target_text_roman": "ochakvahme",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 9,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03B02",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "we didn't expect",
+    "target_text": "не очаквахме",
+    "target_text_roman": "ne ochakvahme",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 12,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03B03",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 3,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "не очаквахме да се събудим",
+    "target_text_roman": "ne ochakvahme da se sabudim",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 26,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03B04",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 4,
+    "known_text": "we expected to wake up",
+    "target_text": "очаквахме да се събудим",
+    "target_text_roman": "ochakvahme da se sabudim",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 23,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03U01",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 5,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "Не очаквахме да се събудим посред нощ",
+    "target_text_roman": "ne ochakvahme da se sabudim posred nosht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 37,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03U02",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 6,
+    "known_text": "we expected to wake up in the middle of the night",
+    "target_text": "Очаквахме да се събудим посред нощ",
+    "target_text_roman": "ochakvahme da se sabudim posred nosht",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 34,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03U03",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 7,
+    "known_text": "we didn't expect to wake up well",
+    "target_text": "Не очаквахме да се събудим добре",
+    "target_text_roman": "ne ochakvahme da se sabudim dobre",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 32,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03U04",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 8,
+    "known_text": "we didn't expect it to be good",
+    "target_text": "Не очаквахме да е добре",
+    "target_text_roman": "ne ochakvahme da e dobre",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 23,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "bul_for_eng:S0108L03U05",
+    "course_code": "bul_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "we expected it to be good",
+    "target_text": "Очаквахме да е добре",
+    "target_text_roman": "ochakvahme da e dobre",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 20,
+    "lego_count": 4
+   }
+  }
+ ]
+}
