@@ -1,0 +1,986 @@
+{
+ "changeset": "own-lego-420-ita_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "guards": [
+  {
+   "seed_number": 141,
+   "seed": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "nessun problema. Va tutto bene"
+   },
+   "lego_id": "S0141L02",
+   "lego": [
+    {
+     "known_text": "everything is",
+     "target_text": "va tutto"
+    }
+   ]
+  },
+  {
+   "seed_number": 141,
+   "seed": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "nessun problema. Va tutto bene"
+   },
+   "lego_id": "S0141L02",
+   "lego": [
+    {
+     "known_text": "everything is",
+     "target_text": "va tutto"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 312,
+   "seed": {
+    "known_text": "she said that she could use the other room tomorrow night",
+    "target_text": "ha detto che poteva usare l'altra stanza domani sera"
+   },
+   "lego_id": "S0312L02",
+   "lego": [
+    {
+     "known_text": "the other room",
+     "target_text": "l'altra stanza"
+    }
+   ]
+  },
+  {
+   "seed_number": 648,
+   "seed": {
+    "known_text": "what you said madam",
+    "target_text": "quello che ha detto, signora"
+   },
+   "lego_id": "S0648L01",
+   "lego": [
+    {
+     "known_text": "what you said madam",
+     "target_text": "quello che ha detto, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "I should consider playing something else",
+    "target_text": "dovrei considerare di suonare qualcos'altro"
+   },
+   "lego_id": "S0098L03",
+   "lego": [
+    {
+     "known_text": "playing something else",
+     "target_text": "suonare qualcos'altro"
+    }
+   ]
+  },
+  {
+   "seed_number": 213,
+   "seed": {
+    "known_text": "we don't know what they're trying to achieve",
+    "target_text": "non sappiamo che cosa stanno provando a ottenere"
+   },
+   "lego_id": "S0213L03",
+   "lego": [
+    {
+     "known_text": "to achieve",
+     "target_text": "ottenere"
+    }
+   ]
+  },
+  {
+   "seed_number": 213,
+   "seed": {
+    "known_text": "we don't know what they're trying to achieve",
+    "target_text": "non sappiamo che cosa stanno provando a ottenere"
+   },
+   "lego_id": "S0213L03",
+   "lego": [
+    {
+     "known_text": "to achieve",
+     "target_text": "ottenere"
+    }
+   ]
+  },
+  {
+   "seed_number": 213,
+   "seed": {
+    "known_text": "we don't know what they're trying to achieve",
+    "target_text": "non sappiamo che cosa stanno provando a ottenere"
+   },
+   "lego_id": "S0213L03",
+   "lego": [
+    {
+     "known_text": "to achieve",
+     "target_text": "ottenere"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 243,
+   "seed": {
+    "known_text": "I'm going to ask for the same thing to eat",
+    "target_text": "sto per chiedere la stessa cosa da mangiare"
+   },
+   "lego_id": "S0243L02",
+   "lego": [
+    {
+     "known_text": "thing to eat",
+     "target_text": "cosa da mangiare"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 308,
+   "seed": {
+    "known_text": "yes she's a friend of my mother",
+    "target_text": "sì, è un'amica di mia madre"
+   },
+   "lego_id": "S0308L01",
+   "lego": [
+    {
+     "known_text": "a friend of my mother",
+     "target_text": "un'amica di mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 601,
+   "seed": {
+    "known_text": "we were talking about how it all started",
+    "target_text": "stavamo parlando di come è iniziato tutto"
+   },
+   "lego_id": "S0601L01",
+   "lego": [
+    {
+     "known_text": "we were talking about",
+     "target_text": "stavamo parlando di"
+    }
+   ]
+  },
+  {
+   "seed_number": 601,
+   "seed": {
+    "known_text": "we were talking about how it all started",
+    "target_text": "stavamo parlando di come è iniziato tutto"
+   },
+   "lego_id": "S0601L01",
+   "lego": [
+    {
+     "known_text": "we were talking about",
+     "target_text": "stavamo parlando di"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "could you say it sir?",
+    "target_text": "potrebbe dirlo, signore?"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "could you say it sir?",
+     "target_text": "potrebbe dirlo, signore?"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 645,
+   "seed": {
+    "known_text": "I can help you madam",
+    "target_text": "posso aiutarla, signora"
+   },
+   "lego_id": "S0645L01",
+   "lego": [
+    {
+     "known_text": "I can help you madam",
+     "target_text": "posso aiutarla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 646,
+   "seed": {
+    "known_text": "you're doing something sir",
+    "target_text": "sta facendo qualcosa, signore"
+   },
+   "lego_id": "S0646L01",
+   "lego": [
+    {
+     "known_text": "you're doing something sir",
+     "target_text": "sta facendo qualcosa, signore"
+    }
+   ]
+  },
+  {
+   "seed_number": 647,
+   "seed": {
+    "known_text": "you speak it madam",
+    "target_text": "lei lo parla, signora"
+   },
+   "lego_id": "S0647L01",
+   "lego": [
+    {
+     "known_text": "you speak it madam",
+     "target_text": "lei lo parla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 647,
+   "seed": {
+    "known_text": "you speak it madam",
+    "target_text": "lei lo parla, signora"
+   },
+   "lego_id": "S0647L01",
+   "lego": [
+    {
+     "known_text": "you speak it madam",
+     "target_text": "lei lo parla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 647,
+   "seed": {
+    "known_text": "you speak it madam",
+    "target_text": "lei lo parla, signora"
+   },
+   "lego_id": "S0647L01",
+   "lego": [
+    {
+     "known_text": "you speak it madam",
+     "target_text": "lei lo parla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 647,
+   "seed": {
+    "known_text": "you speak it madam",
+    "target_text": "lei lo parla, signora"
+   },
+   "lego_id": "S0647L01",
+   "lego": [
+    {
+     "known_text": "you speak it madam",
+     "target_text": "lei lo parla, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 648,
+   "seed": {
+    "known_text": "what you said madam",
+    "target_text": "quello che ha detto, signora"
+   },
+   "lego_id": "S0648L01",
+   "lego": [
+    {
+     "known_text": "what you said madam",
+     "target_text": "quello che ha detto, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 648,
+   "seed": {
+    "known_text": "what you said madam",
+    "target_text": "quello che ha detto, signora"
+   },
+   "lego_id": "S0648L01",
+   "lego": [
+    {
+     "known_text": "what you said madam",
+     "target_text": "quello che ha detto, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 648,
+   "seed": {
+    "known_text": "what you said madam",
+    "target_text": "quello che ha detto, signora"
+   },
+   "lego_id": "S0648L01",
+   "lego": [
+    {
+     "known_text": "what you said madam",
+     "target_text": "quello che ha detto, signora"
+    }
+   ]
+  },
+  {
+   "seed_number": 649,
+   "seed": {
+    "known_text": "are you ready sir?",
+    "target_text": "è pronto, signore?"
+   },
+   "lego_id": "S0649L01",
+   "lego": [
+    {
+     "known_text": "are you ready",
+     "target_text": "è pronto"
+    }
+   ]
+  }
+ ]
+}
