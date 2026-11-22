@@ -1,0 +1,246 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Ma stennejniex li nqumu f'nofs il-lejl."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ma ttamajniex nqumu f'nofs il-lejl."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "known_text": "we wake up"
+   },
+   "expect": {
+    "known_text": "we wake",
+    "target_text": "nqumu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we wake up"
+   },
+   "expect": {
+    "known_text": "we wake",
+    "target_text": "nqumu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we wake up now"
+   },
+   "expect": {
+    "known_text": "we wake up",
+    "target_text": "nqumu issa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "i know when we wake up"
+   },
+   "expect": {
+    "known_text": "i know when we wake",
+    "target_text": "naf meta nqumu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "we wake up and continue"
+   },
+   "expect": {
+    "known_text": "we wake and continue",
+    "target_text": "nqumu u inkompli"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "nqumu f'nofs il-lejl"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "unfortunately we wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "unfortunately we wake in the middle of the night",
+    "target_text": "sfortunatament nqumu f'nofs il-lejl"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we don't want to wake in the middle of the night",
+    "target_text": "m'għandniex bżonn nqumu f'nofs il-lejl"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L03",
+   "set": {
+    "target_text": "ma stennejniex",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "not",
+      "target": "ma"
+     },
+     {
+      "known": "we expected",
+      "target": "stennejniex"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "ma ttamajniex"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03C02",
+   "set": {
+    "target_text": "stennejniex",
+    "known_text": "we expected"
+   },
+   "expect": {
+    "known_text": "\"we hoped\"",
+    "target_text": "\"ttamajniex\""
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03B01",
+   "set": {
+    "target_text": "ma stennejniex",
+    "known_text": "we didn't expect"
+   },
+   "expect": {
+    "known_text": "we didn't hope",
+    "target_text": "ma ttamajniex"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03B02",
+   "set": {
+    "target_text": "ma stennejniex li nqumu",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "ma ttamajniex nqumu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03B03",
+   "set": {
+    "target_text": "ma stennejniex li kien possibbli",
+    "known_text": "we didn't expect it to be possible"
+   },
+   "expect": {
+    "known_text": "we didn't hope it was possible",
+    "target_text": "ma ttamajniex li kien possibbli"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "ma stennejniex li nqumu f'nofs il-lejl",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ma ttamajniex nqumu f'nofs il-lejl"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U02",
+   "set": {
+    "target_text": "ma stennejniex dan",
+    "known_text": "we didn't expect this"
+   },
+   "expect": {
+    "known_text": "we didn't hope for this",
+    "target_text": "ma ttamajniex dan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U03",
+   "set": {
+    "target_text": "ma stennejniex li jaħdem",
+    "known_text": "we didn't expect it to work"
+   },
+   "expect": {
+    "known_text": "we didn't hope it would work",
+    "target_text": "ma ttamajniex li jaħdem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U04",
+   "set": {
+    "target_text": "naf li ma stennejniex dan",
+    "known_text": "i know we didn't expect this"
+   },
+   "expect": {
+    "known_text": "i know we didn't hope",
+    "target_text": "naf li ma ttamajniex"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U05",
+   "set": {
+    "target_text": "sfortunatament ma stennejniex li jaħdem",
+    "known_text": "unfortunately we didn't expect it to work"
+   },
+   "expect": {
+    "known_text": "unfortunately we didn't hope",
+    "target_text": "sfortunatament ma ttamajniex"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U06",
+   "set": {
+    "target_text": "ma stennejniex li kien faċli",
+    "known_text": "we didn't expect it to be easy"
+   },
+   "expect": {
+    "known_text": "we didn't hope it was easy",
+    "target_text": "ma ttamajniex li kien faċli"
+   }
+  }
+ ]
+}

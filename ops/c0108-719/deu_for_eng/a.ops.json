@@ -1,0 +1,134 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "wir haben nicht erwartet, mitten in der Nacht aufzuwachen"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0108L01",
+   "set": {
+    "target_text": "haben erwartet",
+    "known_text": "have expected",
+    "components": [
+     {
+      "known": "have",
+      "target": "haben"
+     },
+     {
+      "known": "expected",
+      "target": "erwartet"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "have hoped",
+    "target_text": "haben gehofft"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01C02",
+   "set": {
+    "target_text": "Erwartet",
+    "known_text": "Expected"
+   },
+   "expect": {
+    "known_text": "Hoped",
+    "target_text": "Gehofft"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01B01",
+   "set": {
+    "target_text": "Haben erwartet",
+    "known_text": "Have expected"
+   },
+   "expect": {
+    "known_text": "Have hoped",
+    "target_text": "Haben gehofft"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "Sie haben erwartet es hier zu finden",
+    "known_text": "They have expected to find it here"
+   },
+   "expect": {
+    "known_text": "They have hoped to find it here",
+    "target_text": "Sie haben gehofft es hier zu finden"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U10",
+   "set": {
+    "target_text": "Sie haben erwartet uns hier sehr bald zu sehen damit wir reden können",
+    "known_text": "They have expected to see us here very soon so we can talk"
+   },
+   "expect": {
+    "known_text": "They have hoped to see us here very soon so we can talk",
+    "target_text": "Sie haben gehofft uns hier sehr bald zu sehen damit wir reden können"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U11",
+   "set": {
+    "target_text": "Sie haben erwartet Deutsch besser zu lernen",
+    "known_text": "They have expected to learn German better"
+   },
+   "expect": {
+    "known_text": "They have hoped to learn German better",
+    "target_text": "Sie haben gehofft Deutsch besser zu lernen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U12",
+   "set": {
+    "target_text": "Wir haben erwartet dir hier helfen zu können",
+    "known_text": "We have expected to be able to help you here"
+   },
+   "expect": {
+    "known_text": "We have hoped to be able to help you here",
+    "target_text": "Wir haben gehofft dir hier helfen zu können"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L01U13",
+   "set": {
+    "target_text": "Sie haben erwartet uns hier zu treffen",
+    "known_text": "They have expected to meet us here"
+   },
+   "expect": {
+    "known_text": "They have hoped to meet us here",
+    "target_text": "Sie haben gehofft uns hier zu treffen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_for_eng:S0108L03U01",
+   "set": {
+    "target_text": "wir haben nicht erwartet, mitten in der Nacht aufzuwachen",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "wir haben nicht gehofft, mitten in der Nacht aufzuwachen"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1065 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "night",
+    "target_text": "रात",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": null,
+   "phrases": []
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "waking",
+    "target_text": "जागने",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hin_for_eng:S0108L02B01",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "waking",
+     "target_text": "जागने",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:11.566565+00:00",
+     "created_at": "2026-04-07T19:03:34.157394+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ff39496d-185c-46be-9614-cda94a186c96",
+     "target1_audio_id": "6675b799-cefb-462d-b0a4-b916cdc6e08d",
+     "target2_audio_id": "f846bed1-28c5-4873-baa0-140aa9ac8ff9",
+     "qa_checked": null,
+     "target1_duration_ms": 880,
+     "target2_duration_ms": 720,
+     "lego_id": null,
+     "target_text_roman": "jaagne",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": "जागने",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02B02",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "waking in night",
+     "target_text": "रात में जागने",
+     "word_count": 13,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:11.200565+00:00",
+     "created_at": "2026-04-07T19:03:34.157394+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f3332f07-ed38-4838-9d13-8a41bd2fcd5d",
+     "target1_audio_id": "a00ea6f2-5d4c-4aff-912b-dada865ab1e7",
+     "target2_audio_id": "5b0816ae-7ea8-4819-880c-675dfd3b8583",
+     "qa_checked": null,
+     "target1_duration_ms": 1520,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": "raat mein jaagne",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "night",
+       "legoId": "S0108L01",
+       "target": "रात",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " में",
+       "isGhost": true
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02B03",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "hope to wake",
+     "target_text": "जागने की उम्मीद",
+     "word_count": 15,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:11.658472+00:00",
+     "created_at": "2026-04-07T19:03:34.157394+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6cbf8118-6212-4c3e-b5cc-4f920debbdf9",
+     "target1_audio_id": "c7aa104d-6f76-4580-a0a3-99e6971d2db7",
+     "target2_audio_id": "abe76551-a9c0-45e1-962f-5478782a5758",
+     "qa_checked": null,
+     "target1_duration_ms": 1520,
+     "target2_duration_ms": 1360,
+     "lego_id": null,
+     "target_text_roman": "jaagne ki ummeed",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": "जागने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " की",
+       "isGhost": true
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": " उम्मीद",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02U01",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "no need to wake",
+     "target_text": "जागने की ज़रूरत नहीं है।",
+     "word_count": 24,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-07T19:03:34.109Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:11.097382+00:00",
+     "created_at": "2026-04-07T19:03:34.157394+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7b89079a-c26f-45d1-8c7f-8752205276fc",
+     "target1_audio_id": "1405cc13-faa6-4351-bba0-6854ebf97ab5",
+     "target2_audio_id": "03cf1779-4593-424b-8d82-ead398f76090",
+     "qa_checked": null,
+     "target1_duration_ms": 1840,
+     "target2_duration_ms": 1760,
+     "lego_id": null,
+     "target_text_roman": "jaagne ki zaroorat naheen hai.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": "जागने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " की",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ज़रूरत",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " नहीं",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0008L02",
+       "target": " है।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02U03",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "so no need to wake at night",
+     "target_text": "तो रात में जागने की ज़रूरत नहीं है।",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-07T19:03:34.109Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 131,
+     "updated_at": "2026-11-03T12:05:11.936392+00:00",
+     "created_at": "2026-04-07T19:03:34.157394+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "78ad2bfc-a57a-41d6-8f10-7e9a3ab4dfca",
+     "target1_audio_id": "ac0f6d1e-c861-46d2-84aa-a1dde61b1d6f",
+     "target2_audio_id": "114b710c-5c6c-42f6-a7dd-64d5e3be5aa9",
+     "qa_checked": null,
+     "target1_duration_ms": 2480,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": "to raat mein jaagne ki zaroorat nahin hai.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "so",
+       "legoId": "S0056L01",
+       "target": "तो",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L01",
+       "target": " रात",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " में",
+       "isGhost": true
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " की",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ज़रूरत",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " नहीं",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0008L02",
+       "target": " है।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02U05",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "I hope not to wake",
+     "target_text": "मुझे जागने की उम्मीद नहीं है।",
+     "word_count": 29,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-04-07T19:03:34.109Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:11.774469+00:00",
+     "created_at": "2026-04-07T19:03:34.157394+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "43255e95-f4ce-4561-802f-456ec776f66c",
+     "target1_audio_id": "d212e68c-3c06-40d0-918b-f6bc24f75712",
+     "target2_audio_id": "6a3f651c-9d6e-4cb1-81a9-61d051224003",
+     "qa_checked": null,
+     "target1_duration_ms": 1840,
+     "target2_duration_ms": 1840,
+     "lego_id": null,
+     "target_text_roman": "mujhe jaagne ki ummeed naheen hai.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "मुझे",
+       "isGhost": true
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " की",
+       "isGhost": true
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": " उम्मीद",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " नहीं",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0008L02",
+       "target": " है।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02U06",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "waking up in the morning takes time",
+     "target_text": "सुबह जागने में समय लगता है।",
+     "word_count": 27,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-07T22:39:03.962Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:11.349734+00:00",
+     "created_at": "2026-04-07T22:39:04.042646+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "99573d8a-3051-4a0e-b49f-b91be81c79d0",
+     "target1_audio_id": "a9bae521-5aa2-40fd-987d-26bedcaaf387",
+     "target2_audio_id": "fef3bee8-72f9-464c-9269-ed11bf4337f5",
+     "qa_checked": null,
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2000,
+     "lego_id": null,
+     "target_text_roman": "subah jaagne mein samay lagtaa hai.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "morning",
+       "legoId": "S0039L01",
+       "target": "सुबह",
+       "isGhost": false
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " में",
+       "isGhost": true
+      },
+      {
+       "known": "time",
+       "legoId": "S0054L01",
+       "target": " समय",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " लगता",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0008L02",
+       "target": " है।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L02U07",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "I don't need to wake up quickly",
+     "target_text": "मुझे जल्दी जागने की ज़रूरत नहीं है।",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-04-07T22:44:30.470Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 289,
+     "updated_at": "2026-11-03T12:05:12.315959+00:00",
+     "created_at": "2026-04-07T22:44:30.552571+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "96651112-e5db-472b-bd47-ac85f0bd6049",
+     "target1_audio_id": "3daab5cb-4487-4446-94ea-2d7a278237e4",
+     "target2_audio_id": "87e60232-c8fe-49eb-b051-1f932ebdcece",
+     "qa_checked": null,
+     "target1_duration_ms": 2480,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": "mujhe jaldi jaagne ki zaroorat naheen hai.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "मुझे",
+       "isGhost": true
+      },
+      {
+       "known": "quickly",
+       "legoId": "S0077L02",
+       "target": " जल्दी",
+       "isGhost": false
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " की",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ज़रूरत",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " नहीं",
+       "isGhost": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0008L02",
+       "target": " है।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "in the middle",
+    "target_text": "बीच में",
+    "components": [
+     {
+      "known": "middle",
+      "target": "बीच"
+     },
+     {
+      "known": "in",
+      "target": "में"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "hin_for_eng:S0108L03C01",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "middle",
+     "target_text": "बीच",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 136,
+     "updated_at": "2026-10-14T14:34:42.12796+00:00",
+     "created_at": "2026-04-07T19:03:34.286+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8ae7282b-75d3-4bf6-b349-0895f2f6a538",
+     "target1_audio_id": "aaa5a16c-ed86-4718-a196-fc30dc5a82e7",
+     "target2_audio_id": "8326508d-86f5-4071-a646-b7286827ca70",
+     "qa_checked": null,
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": "beech",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "बीच",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4d1f5904-83d8-455d-b850-7e07c6edb9a9",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L03C02",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "in",
+     "target_text": "में",
+     "word_count": 5,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 21,
+     "updated_at": "2026-10-14T14:34:42.12796+00:00",
+     "created_at": "2026-04-07T19:03:34.286+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d7d7424b-297b-4835-8229-77d3fa9e4d00",
+     "target1_audio_id": "cc5d3d64-34b9-43f8-8aa9-16a44e6f673c",
+     "target2_audio_id": "a3fda510-fdc6-44bb-8bc7-4dcc294f8580",
+     "qa_checked": null,
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": "mein",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "में",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "4d1f5904-83d8-455d-b850-7e07c6edb9a9",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L03B01",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "in the middle",
+     "target_text": "बीच में",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 131,
+     "updated_at": "2026-11-03T12:05:10.951626+00:00",
+     "created_at": "2026-04-07T19:03:34.286+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "9bc78274-455f-4daf-83a5-2fda27e57ebe",
+     "target1_audio_id": "ef024ff7-d327-4780-b0fa-04cd27e41f61",
+     "target2_audio_id": "47a33ec3-f694-4aae-a3bf-505c7c346541",
+     "qa_checked": null,
+     "target1_duration_ms": 1040,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": "beech mein",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": "बीच में",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L03B02",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "in the middle of night",
+     "target_text": "रात के बीच में",
+     "word_count": 14,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:13.39413+00:00",
+     "created_at": "2026-04-07T19:03:34.286+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "120d86c6-167f-475b-a6d9-8a121302df67",
+     "target1_audio_id": "18dab003-a2c1-4a69-b830-941db6425159",
+     "target2_audio_id": "1c2d9d54-6a30-41c0-af3f-b20521e04c1e",
+     "qa_checked": null,
+     "target1_duration_ms": 1488,
+     "target2_duration_ms": 1280,
+     "lego_id": null,
+     "target_text_roman": "raat ke beech mein",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "night",
+       "legoId": "S0108L01",
+       "target": "रात",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " के",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " बीच में",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L03B03",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "wake in middle of night",
+     "target_text": "रात के बीच में जागने",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 130,
+     "updated_at": "2026-11-03T12:05:12.415282+00:00",
+     "created_at": "2026-04-07T19:03:34.286+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "193442c7-871b-4aa7-bf5d-7ffa3066b4db",
+     "target1_audio_id": "56f365d5-1fd0-442c-be5d-c61d0e280282",
+     "target2_audio_id": "fda430a4-d084-42d2-817d-dc676dab6e76",
+     "qa_checked": null,
+     "target1_duration_ms": 2000,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": "raat ke beech mein jaagne",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "night",
+       "legoId": "S0108L01",
+       "target": "रात",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " के",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " बीच में",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    },
+    {
+     "id": "hin_for_eng:S0108L03U01",
+     "course_code": "hin_for_eng",
+     "seed_number": 108,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "हम रात के बीच में जागने की उम्मीद नहीं कर रहे थे।",
+     "word_count": 49,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-04-07T19:03:34.243Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 133,
+     "updated_at": "2026-11-03T12:05:10.620399+00:00",
+     "created_at": "2026-04-07T19:03:34.286+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "684c0e9f-0af1-4939-8785-534e93757eb8",
+     "target2_audio_id": "427282ee-009f-4fb8-b46b-c4f5a723c971",
+     "qa_checked": null,
+     "target1_duration_ms": 3280,
+     "target2_duration_ms": 2960,
+     "lego_id": null,
+     "target_text_roman": "hum raat ke beech mein jaagne ki umeed nahin kar rahe the.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we",
+       "legoId": "S0018L01",
+       "target": "हम",
+       "isGhost": false
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L01",
+       "target": " रात",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " के",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle",
+       "legoId": "S0108L03",
+       "target": " बीच में",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "waking",
+       "legoId": "S0108L02",
+       "target": " जागने",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " की",
+       "isGhost": true
+      },
+      {
+       "known": "hope",
+       "legoId": "S0107L01",
+       "target": " उम्मीद",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " नहीं",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " कर",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " रहे",
+       "isGhost": true
+      },
+      {
+       "known": "were",
+       "legoId": "S0031L03",
+       "target": " थे।",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0fb054c7-43ae-4929-8992-fc8f37af693b",
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

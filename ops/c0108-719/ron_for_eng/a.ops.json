@@ -1,0 +1,63 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nu ne așteptam să ne trezim în mijlocul nopții."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nu am sperat să ne trezim în mijlocul nopții."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "we wake up"
+   },
+   "expect": {
+    "known_text": "we wake",
+    "target_text": "trezim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L01B02",
+   "set": {
+    "target_text": "nu ne așteptam să ne trezim",
+    "known_text": "we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nu am sperat să ne trezim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L01U02",
+   "set": {
+    "target_text": "de aceea nu ne așteptam să ne trezim",
+    "known_text": "that is why we didn't expect to wake up"
+   },
+   "expect": {
+    "known_text": "that is why we didn't hope to wake up",
+    "target_text": "de aceea nu am sperat să ne trezim"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L02B03",
+   "set": {
+    "target_text": "nu ne așteptam să ne trezim în mijlocul nopții",
+    "known_text": "we didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nu am sperat să ne trezim în mijlocul nopții"
+   }
+  }
+ ]
+}

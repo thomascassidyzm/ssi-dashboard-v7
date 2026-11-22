@@ -1,0 +1,289 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "cd120db4-3ecf-4a3e-8656-3d188aab2596",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Mir hen net ghofft fer uffwache in der Mitt vun der Nacht.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "cd120db4-3ecf-4a3e-8656-3d188aab2596",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Mir hen net erwaart fer uffwache in der Mitt vun der Nacht.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "id": "pdc_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "pdc_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to wake in the middle of the night",
+    "target_text": "uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pdc_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "to wake up in the middle of the night",
+    "target_text": "uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "id": "pdc_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "pdc_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we hoped to wake in the middle of the night",
+    "target_text": "mir hen ghofft fer uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pdc_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we hoped to wake up in the middle of the night",
+    "target_text": "mir hen ghofft fer uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "id": "pdc_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "pdc_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mir hen net ghofft fer uffwache in der Mitt vun der Nacht",
+    "known_text": "we hoped not to wake in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pdc_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mir hen net erwaart fer uffwache in der Mitt vun der Nacht",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "id": "pdc_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "pdc_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "ich will net uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pdc_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the middle of the night",
+    "target_text": "ich will net uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "id": "pdc_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "pdc_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like to wake in the middle of the night",
+    "target_text": "ich gleich net uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pdc_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like to wake up in the middle of the night",
+    "target_text": "ich gleich net uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "pdc_for_eng",
+    "id": "pdc_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "pdc_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "target_text": "sie will net uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "pdc_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake up in the middle of the night",
+    "target_text": "sie will net uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "she doesn't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "I don't like to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I don't want to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "we hoped not to wake in the middle of the night",
+    "target_text": "mir hen net ghofft fer uffwache in der Mitt vun der Nacht"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "we hoped to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "pdc_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "to wake in the middle of the night"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Mir hen net ghofft fer uffwache in der Mitt vun der Nacht."
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

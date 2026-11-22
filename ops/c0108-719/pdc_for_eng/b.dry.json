@@ -1,0 +1,264 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.insert",
+   "key": {
+    "seed_number": 108,
+    "lego_index": 2
+   },
+   "before": null,
+   "after": {
+    "id": "59f14e57-0388-4f33-849d-e1b2b2606bb0",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "known_text": "expected",
+    "target_text": "erwaart",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02B01"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02B01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "expected",
+    "target_text": "erwaart",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02B02"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I expected",
+    "target_text": "ich hab erwaart",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02B03"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we expected",
+    "target_text": "mir hen erwaart",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02B04"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02B04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect",
+    "target_text": "mir hen net erwaart",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02U01"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I expected to speak",
+    "target_text": "ich hab erwaart fer schwetze",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02U02"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we expected to wake up",
+    "target_text": "mir hen erwaart fer uffwache",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02U03"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I expected to speak in the middle of the night",
+    "target_text": "ich hab erwaart fer schwetze in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02U04"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we expected to wake up in the middle of the night",
+    "target_text": "mir hen erwaart fer uffwache in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.insert",
+   "key": {
+    "id": "pdc_for_eng:S0108L02U05"
+   },
+   "before": null,
+   "after": {
+    "id": "pdc_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we didn't expect to speak in the middle of the night",
+    "target_text": "mir hen net erwaart fer schwetze in der Mitt vun der Nacht",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02B03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02B02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "pdc_for_eng:S0108L02B01"
+  },
+  {
+   "op": "lego.delete",
+   "id": "59f14e57-0388-4f33-849d-e1b2b2606bb0"
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

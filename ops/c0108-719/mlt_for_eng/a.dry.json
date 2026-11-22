@@ -1,0 +1,856 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "31e52243-9193-4f6f-b5e3-3167b2542785",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ma ttamajniex nqumu f'nofs il-lejl.",
+    "known_audio_id": "189b0126-538e-468e-b2d0-d0238f099afe",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "31e52243-9193-4f6f-b5e3-3167b2542785",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Ma stennejniex li nqumu f'nofs il-lejl.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "lego_id": "S0108L01"
+   },
+   "before": {
+    "id": "3e807bf8-f602-4c8f-acf6-4cd22f8c46e9",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "we wake",
+    "target_text": "nqumu",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "3e807bf8-f602-4c8f-acf6-4cd22f8c46e9",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "known_text": "we wake up",
+    "target_text": "nqumu",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L01B01"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake",
+    "target_text": "nqumu",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L01B01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake up",
+    "target_text": "nqumu",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake up",
+    "target_text": "nqumu issa",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake up now",
+    "target_text": "nqumu issa",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "i know when we wake",
+    "target_text": "naf meta nqumu",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "i know when we wake up",
+    "target_text": "naf meta nqumu",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake and continue",
+    "target_text": "nqumu u inkompli",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake up and continue",
+    "target_text": "nqumu u inkompli",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L02B02"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "nqumu f'nofs il-lejl",
+    "known_audio_id": "f43f202a-8a19-45ea-b008-77eac1563126",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L02B02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "nqumu f'nofs il-lejl",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "unfortunately we wake in the middle of the night",
+    "target_text": "sfortunatament nqumu f'nofs il-lejl",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "unfortunately we wake up in the middle of the night",
+    "target_text": "sfortunatament nqumu f'nofs il-lejl",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we don't want to wake in the middle of the night",
+    "target_text": "m'għandniex bżonn nqumu f'nofs il-lejl",
+    "known_audio_id": "117fc544-89c0-44a9-b690-ca6e1f8fd382",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "we don't want to wake up in the middle of the night",
+    "target_text": "m'għandniex bżonn nqumu f'nofs il-lejl",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "lego.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "lego_id": "S0108L03"
+   },
+   "before": {
+    "id": "44d91026-ea28-45ef-9cd8-cc62a8cc62fc",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "ma ttamajniex",
+    "known_text": "we didn't hope",
+    "components": [
+     {
+      "known": "\"not\"",
+      "target": "\"ma\""
+     },
+     {
+      "known": "\"we hoped\"",
+      "target": "\"ttamajniex\""
+     }
+    ],
+    "known_audio_id": "b9b319df-684c-4ec3-9d52-46a4d72772ba",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "44d91026-ea28-45ef-9cd8-cc62a8cc62fc",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "target_text": "ma stennejniex",
+    "known_text": "we didn't expect",
+    "components": [
+     {
+      "known": "not",
+      "target": "ma"
+     },
+     {
+      "known": "we expected",
+      "target": "stennejniex"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03C02"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03C02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "\"ttamajniex\"",
+    "known_text": "\"we hoped\"",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03C02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "stennejniex",
+    "known_text": "we expected",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03B01"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex",
+    "known_text": "we didn't hope",
+    "known_audio_id": "b9b319df-684c-4ec3-9d52-46a4d72772ba",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03B01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex",
+    "known_text": "we didn't expect",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03B02"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex nqumu",
+    "known_text": "we didn't hope to wake",
+    "known_audio_id": "b4080c1c-ecb9-4c5c-a88f-c7c06a847eee",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03B02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex li nqumu",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03B03"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex li kien possibbli",
+    "known_text": "we didn't hope it was possible",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03B03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex li kien possibbli",
+    "known_text": "we didn't expect it to be possible",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03U01"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex nqumu f'nofs il-lejl",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "189b0126-538e-468e-b2d0-d0238f099afe",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03U01",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex li nqumu f'nofs il-lejl",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03U02"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex dan",
+    "known_text": "we didn't hope for this",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03U02",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex dan",
+    "known_text": "we didn't expect this",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03U03"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex li jaħdem",
+    "known_text": "we didn't hope it would work",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03U03",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex li jaħdem",
+    "known_text": "we didn't expect it to work",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03U04"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "naf li ma ttamajniex",
+    "known_text": "i know we didn't hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03U04",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "naf li ma stennejniex dan",
+    "known_text": "i know we didn't expect this",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03U05"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "sfortunatament ma ttamajniex",
+    "known_text": "unfortunately we didn't hope",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03U05",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "sfortunatament ma stennejniex li jaħdem",
+    "known_text": "unfortunately we didn't expect it to work",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "mlt_for_eng",
+    "id": "mlt_for_eng:S0108L03U06"
+   },
+   "before": {
+    "id": "mlt_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma ttamajniex li kien faċli",
+    "known_text": "we didn't hope it was easy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "mlt_for_eng:S0108L03U06",
+    "seed_number": 108,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ma stennejniex li kien faċli",
+    "known_text": "we didn't expect it to be easy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U06",
+   "set": {
+    "known_text": "we didn't hope it was easy",
+    "target_text": "ma ttamajniex li kien faċli"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U05",
+   "set": {
+    "known_text": "unfortunately we didn't hope",
+    "target_text": "sfortunatament ma ttamajniex"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U04",
+   "set": {
+    "known_text": "i know we didn't hope",
+    "target_text": "naf li ma ttamajniex"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U03",
+   "set": {
+    "known_text": "we didn't hope it would work",
+    "target_text": "ma ttamajniex li jaħdem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U02",
+   "set": {
+    "known_text": "we didn't hope for this",
+    "target_text": "ma ttamajniex dan"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "ma ttamajniex nqumu f'nofs il-lejl",
+    "known_audio_id": "189b0126-538e-468e-b2d0-d0238f099afe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03B03",
+   "set": {
+    "known_text": "we didn't hope it was possible",
+    "target_text": "ma ttamajniex li kien possibbli"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03B02",
+   "set": {
+    "known_text": "we didn't hope to wake",
+    "target_text": "ma ttamajniex nqumu",
+    "known_audio_id": "b4080c1c-ecb9-4c5c-a88f-c7c06a847eee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03B01",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "ma ttamajniex",
+    "known_audio_id": "b9b319df-684c-4ec3-9d52-46a4d72772ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L03C02",
+   "set": {
+    "known_text": "\"we hoped\"",
+    "target_text": "\"ttamajniex\""
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "44d91026-ea28-45ef-9cd8-cc62a8cc62fc",
+   "set": {
+    "known_text": "we didn't hope",
+    "target_text": "ma ttamajniex",
+    "components": [
+     {
+      "known": "\"not\"",
+      "target": "\"ma\""
+     },
+     {
+      "known": "\"we hoped\"",
+      "target": "\"ttamajniex\""
+     }
+    ],
+    "known_audio_id": "b9b319df-684c-4ec3-9d52-46a4d72772ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "we don't want to wake in the middle of the night",
+    "known_audio_id": "117fc544-89c0-44a9-b690-ca6e1f8fd382"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "unfortunately we wake in the middle of the night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L02B02",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "f43f202a-8a19-45ea-b008-77eac1563126"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "we wake and continue"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "i know when we wake"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we wake up"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "mlt_for_eng:S0108L01B01",
+   "set": {
+    "known_text": "we wake"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "3e807bf8-f602-4c8f-acf6-4cd22f8c46e9",
+   "set": {
+    "known_text": "we wake"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Ma ttamajniex nqumu f'nofs il-lejl.",
+    "known_audio_id": "189b0126-538e-468e-b2d0-d0238f099afe"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

@@ -1,0 +1,95 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "0aff272b-eea3-4923-9238-9cd52ab5994e",
+    "seed_number": 108,
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "mir hobn ned ghofft, dass ma mitten in der Nocht aufwochen",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7943054-ac63-42d1-9cb3-7998d979ef10",
+    "target2_audio_id": "ae5914bd-c0b2-40f7-9f8e-9bb135daef1f"
+   },
+   "after": {
+    "id": "0aff272b-eea3-4923-9238-9cd52ab5994e",
+    "seed_number": 108,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "mir hobn ned erwartet, dass ma mitten in der Nocht aufwochen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "deu_at_for_eng",
+    "id": "deu_at_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "deu_at_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mir hobn ned ghofft, dass ma mitten in der Nocht aufwochen",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7943054-ac63-42d1-9cb3-7998d979ef10",
+    "target2_audio_id": "ae5914bd-c0b2-40f7-9f8e-9bb135daef1f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "deu_at_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mir hobn ned erwartet, dass ma mitten in der Nocht aufwochen",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_at_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "mir hobn ned ghofft, dass ma mitten in der Nocht aufwochen",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7943054-ac63-42d1-9cb3-7998d979ef10",
+    "target2_audio_id": "ae5914bd-c0b2-40f7-9f8e-9bb135daef1f"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "mir hobn ned ghofft, dass ma mitten in der Nocht aufwochen",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "a7943054-ac63-42d1-9cb3-7998d979ef10",
+    "target2_audio_id": "ae5914bd-c0b2-40f7-9f8e-9bb135daef1f"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

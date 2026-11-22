@@ -1,0 +1,1323 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "لم نكن نأمل في الاستيقاظ في منتصف الليل.",
+  "target": "We didn't hope to wake in the middle of the night."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "M",
+    "known_text": "لم نكن نأمل في الاستيقاظ",
+    "target_text": "we didn't hope to wake",
+    "components": [
+     {
+      "known": "لم نكن",
+      "target": "we didn't"
+     },
+     {
+      "known": "نأمل في الاستيقاظ",
+      "target": "hope to wake"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ara:S0108L01C01",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "لم نكن",
+     "target_text": "we didn't",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c1cd7848-7cff-420c-b148-a6cfecdf6a6f",
+     "target1_audio_id": "a3873355-350d-411c-9473-1fd31a2018c2",
+     "target2_audio_id": "ad004ec5-9a86-45b0-bef5-cd1345a7acfa",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 816,
+     "target2_duration_ms": 1032,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " didn't",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01C02",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "نأمل في الاستيقاظ",
+     "target_text": "hope to wake",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5d179781-7ef1-4c14-9e5d-0ea1a9bae2c0",
+     "target1_audio_id": "5eda6009-ee1a-495f-9f7f-e1d1c9c0c47a",
+     "target2_audio_id": "9c56059a-ad79-4c4d-b357-327928609297",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 1128,
+     "target2_duration_ms": 1008,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "hope",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wake",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01B01",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "لم نكن نأمل في الاستيقاظ",
+     "target_text": "we didn't hope to wake",
+     "word_count": 22,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-12T18:41:38.645035+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e949f228-47a1-4005-88c6-c492299d9104",
+     "target1_audio_id": "a2817ffc-9fcf-4571-94da-1404e6c04ec7",
+     "target2_audio_id": "0b73293d-9ecf-4af8-b4df-980b6215193e",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1680,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "723e47dd-bb27-4c44-96d6-b62059ea10e6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01B02",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "لم نكن نأمل في الاستيقاظ بهذه السرعة",
+     "target_text": "we didn't hope to wake so quickly",
+     "word_count": 33,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "94537650-ffbd-4f71-b272-d12acde474df",
+     "target1_audio_id": "58e08fd5-1a7c-48e8-99e1-8019f97fd869",
+     "target2_audio_id": "c225df99-8c58-42c4-b363-3ec6d898ce23",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " so",
+       "isGhost": true
+      },
+      {
+       "known": "بسرعة",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01B03",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "لم نكن نأمل في الاستيقاظ الآن",
+     "target_text": "we didn't hope to wake now",
+     "word_count": 26,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-27T13:26:47.202298+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f587a38d-6909-47fb-9821-4977bdb9a4bc",
+     "target1_audio_id": "e967a3e9-c98d-4836-8c65-2a39835b57f7",
+     "target2_audio_id": "3896a58a-c369-4b63-ad53-1128aad31e69",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 1848,
+     "target2_duration_ms": 1944,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "الآن",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "723e47dd-bb27-4c44-96d6-b62059ea10e6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01U01",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "لم نكن نأمل في الاستيقاظ هذا الصباح",
+     "target_text": "we didn't hope to wake this morning",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.821Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-27T13:26:47.177157+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "7fd0d1f4-53d8-462a-b266-ce8899e92a81",
+     "target1_audio_id": "0e2c94f6-9276-4658-bc9c-05e1aaa9db25",
+     "target2_audio_id": "1e131c74-f75d-4730-928a-e5e60bc6000f",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2064,
+     "target2_duration_ms": 2112,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "هذا الصباح",
+       "legoId": "S0039L03",
+       "target": " this morning",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "723e47dd-bb27-4c44-96d6-b62059ea10e6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01U02",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "لم نكن نأمل في الاستيقاظ بهذه السرعة",
+     "target_text": "we didn't hope to wake so quickly",
+     "word_count": 35,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.821Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 13,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "94537650-ffbd-4f71-b272-d12acde474df",
+     "target1_audio_id": "58e08fd5-1a7c-48e8-99e1-8019f97fd869",
+     "target2_audio_id": "c225df99-8c58-42c4-b363-3ec6d898ce23",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "بسرعة",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01U03",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "لم نكن نأمل في الاستيقاظ قبل الساعة السادسة",
+     "target_text": "we didn't hope to wake before six o'clock",
+     "word_count": 41,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.821Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ca77808c-ec1f-482e-88a1-b368224f70ad",
+     "target1_audio_id": "984f6356-7d4c-4a50-9a2d-5ce76f149565",
+     "target2_audio_id": "f683146f-a2ca-49dd-b28e-951b381508b0",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2328,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "قبل أن",
+       "legoId": "S0025L02",
+       "target": " before",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " six",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " o'clock",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01U04",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 9,
+     "known_text": "أعتقد أننا لم نكن نأمل في الاستيقاظ بعد",
+     "target_text": "I think that we didn't hope to wake yet",
+     "word_count": 39,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.821Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "652d9d1b-3b75-49b9-b43d-edbcc83bcc88",
+     "target1_audio_id": "518e3e3c-7026-492e-a58f-ac9f8ea88dff",
+     "target2_audio_id": "28fcafd3-1b98-4bf0-84b4-00b41349370f",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2808,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "أعتقد أن",
+       "legoId": "S0047L01",
+       "target": "I think that",
+       "isGhost": false
+      },
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": " we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yet",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L01U05",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "لم نكن نأمل في الاستيقاظ في وقت مبكر",
+     "target_text": "we didn't hope to wake soon",
+     "word_count": 27,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.821Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:09.894116+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ac354a9c-855c-40b4-925f-7f3ab3956de6",
+     "target1_audio_id": "f468a80e-3419-46ed-baca-8acf4f813140",
+     "target2_audio_id": "f0a38316-e4ac-43fb-8c93-7ad0acb411ee",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 1992,
+     "target2_duration_ms": 1728,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "قريباً",
+       "legoId": "S0023L03",
+       "target": " soon",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "في منتصف الليل",
+    "target_text": "in the middle of the night",
+    "components": [
+     {
+      "known": "في منتصف",
+      "target": "in the middle of"
+     },
+     {
+      "known": "الليل",
+      "target": "the night"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "eng_for_ara:S0108L02C01",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "في منتصف",
+     "target_text": "in the middle of",
+     "word_count": 16,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 15,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "06107e0f-2756-47db-b33e-bf4234abfdc6",
+     "target1_audio_id": "cb41fccd-a17f-4803-af7a-fe2140d52ce9",
+     "target2_audio_id": "582be7d1-949b-4be0-a852-d17985e58251",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 1008,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "in",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " middle",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " of",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02C02",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "الليل",
+     "target_text": "the night",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 16,
+     "updated_at": "2026-08-06T15:07:52.312304+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "15527b40-869e-4cf8-b506-6a96d4e9930d",
+     "target1_audio_id": "5d287c9c-4605-4040-a31a-da1687b88b82",
+     "target2_audio_id": "de61134a-7ebc-4496-b488-cb6bb300d7e7",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 744,
+     "target2_duration_ms": 960,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "the",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " night",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02B01",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "في منتصف الليل",
+     "target_text": "in the middle of the night",
+     "word_count": 26,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 12,
+     "updated_at": "2026-10-28T17:29:08.612783+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "74779a5e-9e77-47c4-a012-b91d5ab9f2f4",
+     "target1_audio_id": "1f5071eb-d107-4614-9f23-1760dc0d566d",
+     "target2_audio_id": "0946eac9-2a56-4d21-925c-9ecbea75a4f8",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 1296,
+     "target2_duration_ms": 1464,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": "in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "723e47dd-bb27-4c44-96d6-b62059ea10e6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02B02",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "الاستيقاظ في منتصف الليل",
+     "target_text": "hope to wake in the middle of the night",
+     "word_count": 39,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "250ca65b-2ed0-4dae-901c-6dd2925dc300",
+     "target1_audio_id": "0c26a8b4-cd07-4ef8-a187-7a412ea83c73",
+     "target2_audio_id": "11a6c019-6791-4b02-bd03-0ec5c9f5791e",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 2088,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "hope",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wake",
+       "isGhost": true
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02B03",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "لم نكن نأمل في الاستيقاظ في منتصف الليل",
+     "target_text": "we didn't hope to wake in the middle of the night",
+     "word_count": 49,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 19,
+     "updated_at": "2026-10-28T23:19:26.32863+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "b632cf84-f5cf-4695-bd9d-af43d9eac8b1",
+     "target1_audio_id": "dd3e4f7d-5f9e-4f6d-98b0-0e7e4657529c",
+     "target2_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2376,
+     "target2_duration_ms": 2832,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم نكن نأمل في الاستيقاظ",
+       "legoId": "S0108L01",
+       "target": "we didn't hope to wake",
+       "isGhost": false
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "723e47dd-bb27-4c44-96d6-b62059ea10e6",
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02U01",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "لا أستمتع بالاستيقاظ في منتصف الليل",
+     "target_text": "I don't enjoy waking up in the middle of the night",
+     "word_count": 50,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.929Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "81e03d90-3086-4743-9ec8-58a7bfc4c66b",
+     "target1_audio_id": "bf4fc992-da44-43a4-a7b8-b5b1e74e530e",
+     "target2_audio_id": "f105a31e-ac72-431e-9026-51176e3e874f",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 2928,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لا أستمتع بـ",
+       "legoId": "S0055L01",
+       "target": "I don't enjoy",
+       "isGhost": false
+      },
+      {
+       "known": "الاستيقاظ",
+       "legoId": "S0055L02",
+       "target": " waking up",
+       "isGhost": false
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02U02",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "لم أكن أفكر في ذلك في منتصف الليل",
+     "target_text": "I wasn't thinking about it in the middle of the night",
+     "word_count": 53,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.929Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6a848302-bfc2-4dba-bb67-1b21603aebb1",
+     "target1_audio_id": "3d2a43f4-45e0-43cc-82c2-526fddad9f36",
+     "target2_audio_id": "63bc21bf-053f-436b-ba8f-fdd8e986adc8",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 3144,
+     "target2_duration_ms": 2760,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "لم أكن أفكر",
+       "legoId": "S0043L01",
+       "target": "I wasn't thinking",
+       "isGhost": false
+      },
+      {
+       "known": "في الأمر",
+       "legoId": "S0037L02",
+       "target": " about it",
+       "isGhost": false
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02U03",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "أراد العودة في منتصف الليل",
+     "target_text": "he wanted to come back in the middle of the night",
+     "word_count": 49,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.929Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "c775e18a-106b-4095-a5a7-1479614499ae",
+     "target1_audio_id": "b1d6a4a9-1d67-4bd7-ae56-bb94a278e58a",
+     "target2_audio_id": "6410aacf-dd97-4128-809b-9b5ae635ee00",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2424,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "أراد أن",
+       "legoId": "S0052L01",
+       "target": "he wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " come",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " back",
+       "isGhost": true
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02U04",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "من الصعب التفكير بسرعة في منتصف الليل",
+     "target_text": "it's difficult to think quickly in the middle of the night",
+     "word_count": 58,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.929Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 11,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "392bd4a5-0e81-4347-8723-10f344aad462",
+     "target1_audio_id": "9024d64d-f2b3-420a-af37-fc740c47205f",
+     "target2_audio_id": "286784e1-4766-4946-baaa-87fba436048f",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3000,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "من الصعب",
+       "legoId": "S0091L01",
+       "target": "it's difficult",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " think",
+       "isGhost": true
+      },
+      {
+       "known": "بسرعة",
+       "legoId": "S0020L03",
+       "target": " quickly",
+       "isGhost": false
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "eng_for_ara:S0108L02U05",
+     "course_code": "eng_for_ara",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 10,
+     "known_text": "بدأت أشعر بالتعب في منتصف الليل",
+     "target_text": "I was starting to feel tired in the middle of the night",
+     "word_count": 55,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-26T04:39:09.929Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-19T06:46:28.365735+00:00",
+     "created_at": "2026-02-26T04:39:10.00181+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "d353f558-3e3d-47bd-8058-71a0a74f095a",
+     "target1_audio_id": "acf50cc4-3089-45ff-87c7-90382e3b09fa",
+     "target2_audio_id": "0e296200-7619-4488-99ec-77b503693d3c",
+     "qa_checked": "2026-03-17T15:00:01.134+00:00",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "كنت أبدأ",
+       "legoId": "S0042L01",
+       "target": "I was starting",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " feel",
+       "isGhost": true
+      },
+      {
+       "known": "متعب",
+       "legoId": "S0039L02",
+       "target": " tired",
+       "isGhost": false
+      },
+      {
+       "known": "في منتصف الليل",
+       "legoId": "S0108L02",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

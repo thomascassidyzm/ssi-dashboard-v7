@@ -1,0 +1,1017 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "We didn't hope to wake in the middle of the night.",
+  "target": "Не се надявахме да се събудим посред нощ."
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "we wake up",
+    "target_text": "събудим",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "bul_for_eng:S0108L01B01",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "we wake up",
+     "target_text": "събудим",
+     "word_count": 7,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T06:35:01.182723+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2117290e-f9bc-4ea0-932d-d64ec71f2ba4",
+     "target1_audio_id": "90101acb-31f9-4d4d-8df3-bda4e644b0bc",
+     "target2_audio_id": "d43172a5-6414-43ee-a4e5-d38eb325c8ca",
+     "qa_checked": null,
+     "target1_duration_ms": 1872,
+     "target2_duration_ms": 1656,
+     "lego_id": null,
+     "target_text_roman": "sabudim",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": "събудим",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "248bebce-5548-4b96-ab9d-b9b5cf75bda2",
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L01B02",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "we want to wake up",
+     "target_text": "искаме да се събудим",
+     "word_count": 20,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-06-03T14:25:33.97868+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "dc887368-c75e-41f4-8e55-6ed8ac0e80a6",
+     "target1_audio_id": "26bb4258-ec30-4c06-9f9b-772e54dba294",
+     "target2_audio_id": "cf17e01d-5937-4f1b-9d26-b54a62f1059b",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": "iskame da se sabudim",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we want",
+       "legoId": "S0018L01",
+       "target": "искаме",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L01B03",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "we didn't hope to wake up",
+     "target_text": "не се надявахме да се събудим",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T06:34:56.355647+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+     "target1_audio_id": "a0f5a8a4-faef-415d-b99c-09d0d5e394df",
+     "target2_audio_id": "e46c7858-0c6e-4c8a-89a1-0e1ee23c0f07",
+     "qa_checked": null,
+     "target1_duration_ms": 2952,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": "ne se nadyavahme da se sabudim",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " надявахме",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "248bebce-5548-4b96-ab9d-b9b5cf75bda2",
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L01U01",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "we want to wake up well",
+     "target_text": "Искаме да се събудим добре",
+     "word_count": 26,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.303Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-06-04T17:53:57.427814+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "0fdb5b53-d142-48a0-8a1c-e140a3d669d4",
+     "target1_audio_id": "ca22e2a0-ce41-4dd4-b216-a089c74850fd",
+     "target2_audio_id": "09ce026e-a45b-4df1-b700-c2a15b2bdb46",
+     "qa_checked": null,
+     "target1_duration_ms": 2760,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": "iskame da se sabudim dobre",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we want",
+       "legoId": "S0018L01",
+       "target": "Искаме",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "well",
+       "legoId": "S0013L01",
+       "target": " добре",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L01U02",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "we hoped not to wake up",
+     "target_text": "Надявахме се да не се събудим",
+     "word_count": 29,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.303Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-06-03T14:06:32.051936+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "6ea0753c-bace-4e51-b69b-db46c6994a31",
+     "target1_audio_id": "30636a31-3e05-4bd8-9d87-859f102737c4",
+     "target2_audio_id": "d6f02062-872c-43f3-b526-4258f4443114",
+     "qa_checked": null,
+     "target1_duration_ms": 3048,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": "nadyavahme se da ne se sabudim",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": "Надявахме се",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L01U03",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "it is good to wake up",
+     "target_text": "Добре е да се събудим",
+     "word_count": 21,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.303Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-06-03T13:59:26.170617+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "23775a15-ec2f-4450-9875-c3d1da9d0946",
+     "target1_audio_id": "a650bf35-6350-41ea-b7a7-b3bac2ea7248",
+     "target2_audio_id": "550f1f7f-f5a7-4173-a6c0-32f2266f19cb",
+     "qa_checked": null,
+     "target1_duration_ms": 2448,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": "dobre e da se sabudim",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "well",
+       "legoId": "S0013L01",
+       "target": "Добре",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " е",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L01U04",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "we didn't want to wake up",
+     "target_text": "Не искахме да се събудим",
+     "word_count": 24,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.303Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 35,
+     "updated_at": "2026-06-03T14:08:54.487553+00:00",
+     "created_at": "2026-03-21T16:42:40.396381+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "a9ec066a-c41b-4a65-8119-5c2356dd12cf",
+     "target1_audio_id": "22fbdd9a-7393-44cc-bfd7-d1470be4f071",
+     "target2_audio_id": "675c4050-d1c5-408f-a3dd-0bc42ff742b1",
+     "qa_checked": null,
+     "target1_duration_ms": 2616,
+     "target2_duration_ms": 2400,
+     "lego_id": null,
+     "target_text_roman": "ne iskahme da se sabudim",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Не",
+       "isGhost": true
+      },
+      {
+       "known": "we wanted",
+       "legoId": "S0054L01",
+       "target": " искахме",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "M",
+    "known_text": "in the middle of the night",
+    "target_text": "посред нощ",
+    "components": [
+     {
+      "known": "midnight",
+      "target": "посред нощ"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "bul_for_eng:S0108L02B01",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "in the middle of the night",
+     "target_text": "посред нощ",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T16:19:04.270731+00:00",
+     "created_at": "2026-03-21T16:42:40.555051+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "890ce55e-5523-41e7-b137-c46971da242d",
+     "target1_audio_id": "df29591c-e9a4-4db8-91af-11d12aba4472",
+     "target2_audio_id": "7ddf6085-8d59-4878-bdb4-e222da10da3e",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": "posred nosht",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": "посред нощ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L02B03",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "wake up at midnight",
+     "target_text": "не се надявахме посред нощ",
+     "word_count": 26,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T16:19:04.270731+00:00",
+     "created_at": "2026-03-21T16:42:40.555051+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "88b60607-3125-4f46-9228-efad0ad8d4ff",
+     "target1_audio_id": "a4429c87-5530-4346-b460-fd5a4fc79b26",
+     "target2_audio_id": "c581096d-0dca-4467-89da-c00897fa006a",
+     "qa_checked": null,
+     "target1_duration_ms": 2976,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": "ne se nadyavahme posred nosht",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " надявахме",
+       "isGhost": true
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " посред нощ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L02U01",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "Не се надявахме да се събудим посред нощ",
+     "word_count": 40,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.465Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 38,
+     "updated_at": "2026-10-13T16:19:04.270731+00:00",
+     "created_at": "2026-03-21T16:42:40.555051+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "863ce382-4c0a-4896-8ee0-027fbee310a1",
+     "target2_audio_id": "89c4c3d6-e9b1-4559-b627-09d20a6540c5",
+     "qa_checked": null,
+     "target1_duration_ms": 3600,
+     "target2_duration_ms": 3312,
+     "lego_id": null,
+     "target_text_roman": "ne se nadyavahme da se sabudim posred nosht",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " надявахме",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " посред нощ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "b72fac6e-7064-4650-b9fb-3b6053f2a1df",
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L02U02",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "we hoped not to wake up at midnight",
+     "target_text": "Надявахме се да не се събудим посред нощ",
+     "word_count": 40,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.465Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T16:19:04.270731+00:00",
+     "created_at": "2026-03-21T16:42:40.555051+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "69d28d98-9f03-40d4-800b-a44317ad89fa",
+     "target1_audio_id": "8e63c4ef-2532-4cd1-a2b9-840bff19d1c1",
+     "target2_audio_id": "a8223f04-765e-44cc-9cc4-32c44058cbe3",
+     "qa_checked": null,
+     "target1_duration_ms": 3672,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": "nadyavahme se da ne se sabudim posred nosht",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "we hoped",
+       "legoId": "S0107L01",
+       "target": "Надявахме се",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " посред нощ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L02U03",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "it is not good to wake up at midnight",
+     "target_text": "Не е добре да се събудим посред нощ",
+     "word_count": 35,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-03-21T16:42:40.465Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T16:19:04.270731+00:00",
+     "created_at": "2026-03-21T16:42:40.555051+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "f9920d16-71dc-42b2-abed-9b9e64be5653",
+     "target1_audio_id": "33eb513b-7499-40ae-b746-36ea55d77a1e",
+     "target2_audio_id": "d0439d11-7d49-40a3-a682-70e2f4b7ba9f",
+     "qa_checked": null,
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": "ne e dobre da se sabudim posred nosht",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "Не",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " е",
+       "isGhost": true
+      },
+      {
+       "known": "well",
+       "legoId": "S0013L01",
+       "target": " добре",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " посред нощ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "bul_for_eng:S0108L02U04",
+     "course_code": "bul_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "we didn't want to wake up in the middle of the night",
+     "target_text": "не искахме да се събудим посред нощ",
+     "word_count": 35,
+     "lego_count": 12,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-03-22T15:59:42.143Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 36,
+     "updated_at": "2026-10-13T16:19:04.270731+00:00",
+     "created_at": "2026-03-22T15:59:42.236863+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5276ee5d-207c-4c45-a644-203bde7a54b7",
+     "target1_audio_id": "6982b111-2356-421a-be90-8a108f16e59c",
+     "target2_audio_id": "4e162725-fa6e-42d0-aeb4-1d4592523c64",
+     "qa_checked": null,
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3096,
+     "lego_id": null,
+     "target_text_roman": "ne iskahme da se sabудим posred nosht",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "не",
+       "isGhost": true
+      },
+      {
+       "known": "we wanted",
+       "legoId": "S0054L01",
+       "target": " искахме",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " да",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " се",
+       "isGhost": true
+      },
+      {
+       "known": "we wake up",
+       "legoId": "S0108L01",
+       "target": " събудим",
+       "isGhost": false
+      },
+      {
+       "known": "in the middle of the night",
+       "legoId": "S0108L02",
+       "target": " посред нощ",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  }
+ }
+}

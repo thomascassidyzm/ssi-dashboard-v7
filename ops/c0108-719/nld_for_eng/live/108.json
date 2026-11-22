@@ -1,0 +1,801 @@
+{
+ "seed": 108,
+ "seed_pair": {
+  "known": "we didn't hope to wake in the middle of the night",
+  "target": "we hoopten niet midden in de nacht wakker te worden"
+ },
+ "legos": {
+  "S0108L01": {
+   "lego": {
+    "lego_index": 1,
+    "lego_id": "S0108L01",
+    "type": "A",
+    "known_text": "middle",
+    "target_text": "midden",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nld_for_eng:S0108L01B01",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "in the middle already",
+     "target_text": "al midden in",
+     "word_count": 12,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:55:08.500957+00:00",
+     "created_at": "2026-02-24T06:32:59.615042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ee1cffeb-e988-46ab-8eab-3115fab01688",
+     "target1_audio_id": "31753042-c4e9-4035-a74b-d0f84185b1c6",
+     "target2_audio_id": "4db7bb97-52bf-486b-8f32-c9bb741ec64c",
+     "qa_checked": null,
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2256,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "already",
+       "legoId": "S0033L02",
+       "target": "al",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L01",
+       "target": " midden",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L01B03",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "she started in the middle",
+     "target_text": "ze begon midden in",
+     "word_count": 18,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:55:11.987344+00:00",
+     "created_at": "2026-02-24T06:32:59.615042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d16ae863-21bb-4961-9442-e50e39af6f7e",
+     "target1_audio_id": "78eddcd5-695c-43bd-b835-2acfcdde4318",
+     "target2_audio_id": "d5e9e46d-69e5-48d8-a075-1f16efab136a",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2664,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "ze",
+       "isGhost": false
+      },
+      {
+       "known": "began",
+       "legoId": "S0042L01",
+       "target": " begon",
+       "isGhost": false
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L01",
+       "target": " midden",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L01U02",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "in the middle of the day",
+     "target_text": "midden in de dag",
+     "word_count": 16,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-24T06:32:59.529Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:55:09.703537+00:00",
+     "created_at": "2026-02-24T06:32:59.615042+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4c606ad0-e3f3-48cc-a80d-fc5dd17649b5",
+     "target1_audio_id": "d11b3203-7e5f-4620-a685-0513c136aa9b",
+     "target2_audio_id": "31048c6f-76fc-4429-8e6d-2f0a11bee8af",
+     "qa_checked": null,
+     "target1_duration_ms": 2544,
+     "target2_duration_ms": 2520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "middle",
+       "legoId": "S0108L01",
+       "target": "midden",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " de",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dag",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L02": {
+   "lego": {
+    "lego_index": 2,
+    "lego_id": "S0108L02",
+    "type": "A",
+    "known_text": "night",
+    "target_text": "nacht",
+    "components": [],
+    "seed_number": 108
+   },
+   "is_new": true,
+   "phrases": [
+    {
+     "id": "nld_for_eng:S0108L02B01",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 1,
+     "known_text": "the night",
+     "target_text": "de nacht",
+     "word_count": 8,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-10-12T16:30:06.500312+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "1b7a868e-9805-4571-854b-3e191760d808",
+     "target1_audio_id": "d40fbeda-ecbc-4353-afd6-1db2992fd3da",
+     "target2_audio_id": "c81b9ba7-6602-4819-a722-5814ce55e498",
+     "qa_checked": null,
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0542e0a8-cde8-4831-a285-384df0b9891b",
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L02B02",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 2,
+     "known_text": "not at night",
+     "target_text": "niet in de nacht",
+     "word_count": 19,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 10,
+     "updated_at": "2026-06-02T22:55:06.553529+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "dab2bb4b-44f2-4b31-8a78-e33b0b5ec2a3",
+     "target1_audio_id": "4dffe5ac-2720-4378-a1e1-a62ec7a3449c",
+     "target2_audio_id": "c7578c69-60a5-4c6f-98a1-50696e16ec6c",
+     "qa_checked": null,
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2616,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "niet",
+       "isGhost": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L02U01",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "the night is good",
+     "target_text": "de nacht is goed",
+     "word_count": 16,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-24T06:32:59.721Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 7,
+     "updated_at": "2026-06-02T22:55:12.738832+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "d62a7fcc-2634-4db2-97f1-5f650cbc72cf",
+     "target1_audio_id": "f5803cdf-5bcb-41f3-a0b4-d8e19e436665",
+     "target2_audio_id": "8f6b749c-8396-4f96-bcfb-a2815ab69ab9",
+     "qa_checked": null,
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "is",
+       "legoId": "S0017L02",
+       "target": " is",
+       "isGhost": false
+      },
+      {
+       "known": "good",
+       "legoId": "S0013L01",
+       "target": " goed",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L02U02",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "in the night",
+     "target_text": "in de nacht",
+     "word_count": 11,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-24T06:32:59.721Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-10-13T00:18:37.470968+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "ab3b282e-4c70-4cee-99c9-45ec755d4ed2",
+     "target1_audio_id": "fe055ea9-cb6a-416b-9f2a-41ba1af6ffdc",
+     "target2_audio_id": "9bd9c8fc-b420-4573-9e05-a237c7e759c1",
+     "qa_checked": null,
+     "target1_duration_ms": 2184,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": "in",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "1a181e04-881c-403e-b93f-3a510dc66e3c",
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L02U03",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "she hoped not to start at night",
+     "target_text": "ze hoopte niet in de nacht te beginnen",
+     "word_count": 39,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-24T06:32:59.721Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:55:17.683787+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b0caa51f-42d7-4f9c-8526-2c656afc7ce8",
+     "target1_audio_id": "493e807b-7959-4c2f-b509-fc163705ffca",
+     "target2_audio_id": "af44c322-9a43-4456-89bc-313d0a41e7f4",
+     "qa_checked": null,
+     "target1_duration_ms": 3840,
+     "target2_duration_ms": 3552,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "ze",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hoopte",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " niet",
+       "isGhost": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to start",
+       "legoId": "S0028L02",
+       "target": " te beginnen",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L02U04",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 7,
+     "known_text": "she hoped not to wake in the night",
+     "target_text": "ze hoopte niet in de nacht wakker te worden",
+     "word_count": 44,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-24T06:32:59.721Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 8,
+     "updated_at": "2026-06-02T22:55:09.63202+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b6f0fc5c-34d3-4693-87ff-4bd61f878dcb",
+     "target1_audio_id": "f236333a-c117-4e59-b406-e12c068d9fb1",
+     "target2_audio_id": "31ffa6ae-77c6-4e1a-8fd5-975465b7c2a9",
+     "qa_checked": null,
+     "target1_duration_ms": 4104,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L01",
+       "target": "ze",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hoopte",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " niet",
+       "isGhost": true
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " wakker te worden",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": null,
+     "frame_mask": null
+    },
+    {
+     "id": "nld_for_eng:S0108L02U05",
+     "course_code": "nld_for_eng",
+     "seed_number": 108,
+     "lego_index": 2,
+     "position": 8,
+     "known_text": "we didn't hope to wake in the middle of the night",
+     "target_text": "we hoopten niet midden in de nacht wakker te worden",
+     "word_count": 51,
+     "lego_count": 11,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-24T06:32:59.721Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "version": 9,
+     "updated_at": "2026-10-12T16:30:07.988461+00:00",
+     "created_at": "2026-02-24T06:32:59.799006+00:00",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+     "target1_audio_id": "a6f1fe0f-cab5-4d8d-bbd5-33e4fa79cc6f",
+     "target2_audio_id": "aacd770d-581b-400d-9efb-78eda35a3e04",
+     "qa_checked": null,
+     "target1_duration_ms": 4392,
+     "target2_duration_ms": 3971,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "we",
+       "isGhost": true
+      },
+      {
+       "known": "hoped",
+       "legoId": "S0107L01",
+       "target": " hoopten",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " niet",
+       "isGhost": true
+      },
+      {
+       "known": "middle",
+       "legoId": "S0108L01",
+       "target": " midden",
+       "isGhost": false
+      },
+      {
+       "known": "in",
+       "legoId": "S0053L01",
+       "target": " in",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " de",
+       "isGhost": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0108L02",
+       "target": " nacht",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to wake up",
+       "legoId": "S0055L01",
+       "target": " wakker te worden",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "last_edit_event_id": "0542e0a8-cde8-4831-a285-384df0b9891b",
+     "frame_mask": null
+    }
+   ]
+  },
+  "S0108L03": {
+   "lego": {
+    "lego_index": 3,
+    "lego_id": "S0108L03",
+    "type": "M",
+    "known_text": "to wake up",
+    "target_text": "wakker te worden",
+    "components": [
+     {
+      "known": "awake",
+      "target": "wakker"
+     },
+     {
+      "known": "to",
+      "target": "te"
+     },
+     {
+      "known": "become",
+      "target": "worden"
+     }
+    ],
+    "seed_number": 108
+   },
+   "is_new": null,
+   "phrases": []
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Vi forventede ikke at vågne midt om natten."
+   },
+   "expect": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Vi håbede ikke på at vågne midt om natten."
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "dan_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "wake in the middle of the night",
+    "target_text": "vågne midt om natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "dan_for_eng:S0108L01B03",
+   "set": {
+    "target_text": "forventede ikke at vågne midt om natten",
+    "known_text": "didn't expect to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "not hoping to wake in the middle of the night",
+    "target_text": "håbede ikke at vågne midt om natten"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "dan_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "I don't want to wake up in the middle of the night"
+   },
+   "expect": {
+    "known_text": "I don't want to wake in the middle of the night",
+    "target_text": "jeg vil ikke vågne midt om natten"
+   }
+  }
+ ]
+}

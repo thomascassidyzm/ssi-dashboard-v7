@@ -1,0 +1,224 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "ron_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "b9506d50-d9af-4137-a3d1-fa94d1f9cf5c",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nu am sperat să ne trezim în mijlocul nopții.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "876ed169-d71c-4c2f-92cb-212f8d2e19d6",
+    "target2_audio_id": "747c1a34-a9b7-4c62-b088-f7c1f9e6d29b"
+   },
+   "after": {
+    "id": "b9506d50-d9af-4137-a3d1-fa94d1f9cf5c",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Nu ne așteptam să ne trezim în mijlocul nopții.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ron_for_eng",
+    "id": "ron_for_eng:S0108L01C02"
+   },
+   "before": {
+    "id": "ron_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake",
+    "target_text": "trezim",
+    "known_audio_id": "bc9d01df-ccaa-430e-b3de-795c9f0f1581",
+    "target1_audio_id": "02eae728-8db4-467b-980e-ab9a9aeaaa39",
+    "target2_audio_id": "5f42866d-8b09-4662-b81c-d6820f232c89",
+    "presentation_audio_id": "a9a2549b-0886-42ca-8735-3370d8ecbf08"
+   },
+   "after": {
+    "id": "ron_for_eng:S0108L01C02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we wake up",
+    "target_text": "trezim",
+    "known_audio_id": "62361a4a-ec3d-49e3-82e4-d41d424b87b7",
+    "target1_audio_id": "02eae728-8db4-467b-980e-ab9a9aeaaa39",
+    "target2_audio_id": "5f42866d-8b09-4662-b81c-d6820f232c89",
+    "presentation_audio_id": "a9a2549b-0886-42ca-8735-3370d8ecbf08"
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ron_for_eng",
+    "id": "ron_for_eng:S0108L01B02"
+   },
+   "before": {
+    "id": "ron_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nu am sperat să ne trezim",
+    "known_text": "we didn't hope to wake up",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "69d6d9cb-154d-4012-9f78-c312080ff092",
+    "target2_audio_id": "1857653e-bb6b-4dc5-a429-e80a23cbe61b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ron_for_eng:S0108L01B02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "nu ne așteptam să ne trezim",
+    "known_text": "we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ron_for_eng",
+    "id": "ron_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "ron_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "de aceea nu am sperat să ne trezim",
+    "known_text": "that is why we didn't hope to wake up",
+    "known_audio_id": "da0e6da6-9ac8-4f98-97f1-abf68d42177a",
+    "target1_audio_id": "004c32fb-1f5e-4059-a1de-84c8c5c6f888",
+    "target2_audio_id": "2f14421d-a8e1-4d10-8252-5b06f7844d0e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ron_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "de aceea nu ne așteptam să ne trezim",
+    "known_text": "that is why we didn't expect to wake up",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ron_for_eng",
+    "id": "ron_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "ron_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nu am sperat să ne trezim în mijlocul nopții",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "876ed169-d71c-4c2f-92cb-212f8d2e19d6",
+    "target2_audio_id": "747c1a34-a9b7-4c62-b088-f7c1f9e6d29b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ron_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "nu ne așteptam să ne trezim în mijlocul nopții",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "nu am sperat să ne trezim în mijlocul nopții",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "876ed169-d71c-4c2f-92cb-212f8d2e19d6",
+    "target2_audio_id": "747c1a34-a9b7-4c62-b088-f7c1f9e6d29b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "that is why we didn't hope to wake up",
+    "target_text": "de aceea nu am sperat să ne trezim",
+    "known_audio_id": "da0e6da6-9ac8-4f98-97f1-abf68d42177a",
+    "target1_audio_id": "004c32fb-1f5e-4059-a1de-84c8c5c6f888",
+    "target2_audio_id": "2f14421d-a8e1-4d10-8252-5b06f7844d0e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L01B02",
+   "set": {
+    "known_text": "we didn't hope to wake up",
+    "target_text": "nu am sperat să ne trezim",
+    "known_audio_id": "425ce69b-b343-4340-b8c2-455c901d735e",
+    "target1_audio_id": "69d6d9cb-154d-4012-9f78-c312080ff092",
+    "target2_audio_id": "1857653e-bb6b-4dc5-a429-e80a23cbe61b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ron_for_eng:S0108L01C02",
+   "set": {
+    "known_text": "we wake",
+    "known_audio_id": "bc9d01df-ccaa-430e-b3de-795c9f0f1581"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Nu am sperat să ne trezim în mijlocul nopții.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "876ed169-d71c-4c2f-92cb-212f8d2e19d6",
+    "target2_audio_id": "747c1a34-a9b7-4c62-b088-f7c1f9e6d29b"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

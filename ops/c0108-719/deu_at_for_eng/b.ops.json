@@ -1,0 +1,223 @@
+{
+ "ops": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 3,
+    "known_text": "expected",
+    "target_text": "erwartet",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03B01",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 1,
+    "known_text": "expected",
+    "target_text": "erwartet",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 8,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03B02",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "we expected",
+    "target_text": "mir hobn erwartet",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 17,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03B03",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 3,
+    "known_text": "we didn't expect",
+    "target_text": "mir hobn ned erwartet",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 21,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03B04",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 4,
+    "known_text": "we expected to wake up",
+    "target_text": "mir hobn erwartet, dass ma aufwochen",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 36,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03U01",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 5,
+    "known_text": "we expected to wake up in time",
+    "target_text": "mir hobn erwartet, dass ma rechtzeitig aufwochen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 48,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03U02",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 6,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "mir hobn ned erwartet, dass ma aufwochen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 40,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03U03",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 7,
+    "known_text": "we didn't expect to wake up in the night",
+    "target_text": "mir hobn ned erwartet, dass ma in der Nocht aufwochen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 53,
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03U04",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 8,
+    "known_text": "we expected to wake up in the middle of the night",
+    "target_text": "mir hobn erwartet, dass ma mitten in der Nocht aufwochen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 56,
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "deu_at_for_eng:S0108L03U05",
+    "course_code": "deu_at_for_eng",
+    "seed_number": 108,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "he didn't expect us to wake up in the middle of the night",
+    "target_text": "er hot ned erwartet, dass ma mitten in der Nocht aufwochen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 58,
+    "lego_count": 11
+   }
+  }
+ ]
+}

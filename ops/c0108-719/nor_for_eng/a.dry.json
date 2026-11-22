@@ -1,0 +1,634 @@
+{
+ "status": 200,
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "seed_number": 108
+   },
+   "before": {
+    "id": "7a87094b-d0eb-4ea7-a899-263f67c92bf1",
+    "seed_number": 108,
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Vi håpet ikke å våkne midt på natten.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d5e8caa5-35d6-4718-bf8c-53bc4036047a",
+    "target2_audio_id": "665c5b11-346a-4263-b9f2-81ba69840697"
+   },
+   "after": {
+    "id": "7a87094b-d0eb-4ea7-a899-263f67c92bf1",
+    "seed_number": 108,
+    "known_text": "We didn't expect to wake up in the middle of the night.",
+    "target_text": "Vi forventet ikke å våkne midt på natten.",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01B03"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "wake in the night",
+    "target_text": "våkne på natten",
+    "known_audio_id": "ea0f617b-2d33-40a1-90a7-a392bbce33aa",
+    "target1_audio_id": "f56b1f0b-f06b-414e-abc4-2378799ee116",
+    "target2_audio_id": "6fa3543a-3ece-4eef-a7f8-a1ad61ba1bb1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01B03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "wake up in the night",
+    "target_text": "våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "f56b1f0b-f06b-414e-abc4-2378799ee116",
+    "target2_audio_id": "6fa3543a-3ece-4eef-a7f8-a1ad61ba1bb1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01U01"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "jeg håpet ikke å våkne på natten",
+    "known_text": "I didn't hope to wake in the night",
+    "known_audio_id": "36306239-b6f1-40de-8a63-f23ab6fda03f",
+    "target1_audio_id": "17d685b9-82a7-4193-a8c1-e50614e72c96",
+    "target2_audio_id": "da1d205f-b7c6-4586-8483-dfabbc796224",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01U01",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "jeg forventet ikke å våkne på natten",
+    "known_text": "I didn't expect to wake up in the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01U02"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake in the night",
+    "target_text": "hun vil ikke våkne på natten",
+    "known_audio_id": "5759176b-a8c6-4ffb-b458-07a86f86e6d5",
+    "target1_audio_id": "24d133c8-1bdd-44be-a8cb-bcda6891fdad",
+    "target2_audio_id": "502d705b-df92-4f78-baac-c25a66d86988",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01U02",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake up in the night",
+    "target_text": "hun vil ikke våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "24d133c8-1bdd-44be-a8cb-bcda6891fdad",
+    "target2_audio_id": "502d705b-df92-4f78-baac-c25a66d86988",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01U03"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "it's difficult to wake in the night",
+    "target_text": "det er vanskelig å våkne på natten",
+    "known_audio_id": "b8049824-46db-48f4-914c-8dd1c7dd3783",
+    "target1_audio_id": "aced695a-d688-46dd-85fc-899f3217c31b",
+    "target2_audio_id": "29a56821-bab9-464e-99ff-2196992423cb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01U03",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "it's difficult to wake up in the night",
+    "target_text": "det er vanskelig å våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "aced695a-d688-46dd-85fc-899f3217c31b",
+    "target2_audio_id": "29a56821-bab9-464e-99ff-2196992423cb",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01U04"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "he needs to wake in the night",
+    "target_text": "han trenger å våkne på natten",
+    "known_audio_id": "1409c5e9-b3ec-4bd9-bf12-dcf3a2455c8c",
+    "target1_audio_id": "3d94ada8-3d1f-48b6-aa5d-abf7e7c33917",
+    "target2_audio_id": "73ed48f6-c513-471e-8879-92ed81199d06",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01U04",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "he needs to wake up in the night",
+    "target_text": "han trenger å våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "3d94ada8-3d1f-48b6-aa5d-abf7e7c33917",
+    "target2_audio_id": "73ed48f6-c513-471e-8879-92ed81199d06",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01U05"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can you wake in the night?",
+    "target_text": "kan du våkne på natten?",
+    "known_audio_id": "569b9da2-4fc9-4129-a36d-995a20d0e516",
+    "target1_audio_id": "18c27642-25ae-47e2-8b8e-efcee8687fb9",
+    "target2_audio_id": "8fad06c7-54a2-4e6a-8bca-dc8b66d3119b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01U05",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can you wake up in the night?",
+    "target_text": "kan du våkne på natten?",
+    "known_audio_id": null,
+    "target1_audio_id": "18c27642-25ae-47e2-8b8e-efcee8687fb9",
+    "target2_audio_id": "8fad06c7-54a2-4e6a-8bca-dc8b66d3119b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L01U06"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake in the night",
+    "target_text": "jeg vil ikke våkne på natten",
+    "known_audio_id": "c60ab5a4-2bbd-4807-b76c-47bc68041a53",
+    "target1_audio_id": "7086e502-7a76-4ee9-8b6b-e88e93e9f414",
+    "target2_audio_id": "d6fd672c-3cc8-47c2-8985-b4cb9f50206a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L01U06",
+    "seed_number": 108,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't want to wake up in the night",
+    "target_text": "jeg vil ikke våkne på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "7086e502-7a76-4ee9-8b6b-e88e93e9f414",
+    "target2_audio_id": "d6fd672c-3cc8-47c2-8985-b4cb9f50206a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02B03"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake in the middle of the night",
+    "target_text": "våkne midt på natten",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699",
+    "target1_audio_id": "7f582b95-387f-4281-bf63-66addc9211a8",
+    "target2_audio_id": "f60d4b5b-48dc-4862-9cf7-e2f8a6a92961",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02B03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "wake up in the middle of the night",
+    "target_text": "våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "7f582b95-387f-4281-bf63-66addc9211a8",
+    "target2_audio_id": "f60d4b5b-48dc-4862-9cf7-e2f8a6a92961",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02U01"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "vi håpet ikke å våkne midt på natten",
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d5e8caa5-35d6-4718-bf8c-53bc4036047a",
+    "target2_audio_id": "665c5b11-346a-4263-b9f2-81ba69840697",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02U01",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "vi forventet ikke å våkne midt på natten",
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02U02"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "target_text": "hun vil ikke våkne midt på natten",
+    "known_audio_id": "df73b128-7a44-44d4-84ec-d7c83df11424",
+    "target1_audio_id": "c733e074-a43a-49f1-b5b4-da15d3100ea9",
+    "target2_audio_id": "11e43a7d-49f3-4303-aad4-c0b9fdc243a2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02U02",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "she doesn't want to wake up in the middle of the night",
+    "target_text": "hun vil ikke våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "c733e074-a43a-49f1-b5b4-da15d3100ea9",
+    "target2_audio_id": "11e43a7d-49f3-4303-aad4-c0b9fdc243a2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02U03"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I didn't want to wake in the middle of the night",
+    "target_text": "jeg ville ikke våkne midt på natten",
+    "known_audio_id": "14f40b9e-0530-4930-8889-6b6ee7825b6f",
+    "target1_audio_id": "b457416d-7a9c-4dff-ae70-2421eceb904b",
+    "target2_audio_id": "bfb49b10-2e22-4732-adce-f251a47f8eda",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02U03",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I didn't want to wake up in the middle of the night",
+    "target_text": "jeg ville ikke våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "b457416d-7a9c-4dff-ae70-2421eceb904b",
+    "target2_audio_id": "bfb49b10-2e22-4732-adce-f251a47f8eda",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02U04"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's not good to wake in the middle of the night",
+    "target_text": "det er ikke bra å våkne midt på natten",
+    "known_audio_id": "51b0938a-9374-4a33-9e6e-a56e87f92572",
+    "target1_audio_id": "ef31b7db-803e-4077-bcdf-0a306066568d",
+    "target2_audio_id": "1b591b6d-16d0-424f-a2e0-18f7c616af38",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02U04",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "it's not good to wake up in the middle of the night",
+    "target_text": "det er ikke bra å våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "ef31b7db-803e-4077-bcdf-0a306066568d",
+    "target2_audio_id": "1b591b6d-16d0-424f-a2e0-18f7c616af38",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02U05"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "håpet du å våkne midt på natten?",
+    "known_text": "did you hope to wake in the middle of the night?",
+    "known_audio_id": "70ac08fe-32b2-4a26-ae60-42e28d500b8b",
+    "target1_audio_id": "74766b8b-8d92-47c4-818f-9ed0cf658c3e",
+    "target2_audio_id": "97ccacf7-8198-4e8b-aa60-50223d7d13c4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02U05",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "forventet du å våkne midt på natten?",
+    "known_text": "did you expect to wake up in the middle of the night?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "nor_for_eng",
+    "id": "nor_for_eng:S0108L02U06"
+   },
+   "before": {
+    "id": "nor_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he doesn't want to wake in the middle of the night",
+    "target_text": "han vil ikke våkne midt på natten",
+    "known_audio_id": "f59562ec-de5b-4777-b168-e010d5d3696a",
+    "target1_audio_id": "9b93889c-fa31-4e5b-ba25-b3f58867c046",
+    "target2_audio_id": "062fc2dd-f655-4c47-9a7d-fd9bb6120e81",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "nor_for_eng:S0108L02U06",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "he doesn't want to wake up in the middle of the night",
+    "target_text": "han vil ikke våkne midt på natten",
+    "known_audio_id": null,
+    "target1_audio_id": "9b93889c-fa31-4e5b-ba25-b3f58867c046",
+    "target2_audio_id": "062fc2dd-f655-4c47-9a7d-fd9bb6120e81",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U06",
+   "set": {
+    "known_text": "he doesn't want to wake in the middle of the night",
+    "known_audio_id": "f59562ec-de5b-4777-b168-e010d5d3696a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U05",
+   "set": {
+    "known_text": "did you hope to wake in the middle of the night?",
+    "target_text": "håpet du å våkne midt på natten?",
+    "known_audio_id": "70ac08fe-32b2-4a26-ae60-42e28d500b8b",
+    "target1_audio_id": "74766b8b-8d92-47c4-818f-9ed0cf658c3e",
+    "target2_audio_id": "97ccacf7-8198-4e8b-aa60-50223d7d13c4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U04",
+   "set": {
+    "known_text": "it's not good to wake in the middle of the night",
+    "known_audio_id": "51b0938a-9374-4a33-9e6e-a56e87f92572"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U03",
+   "set": {
+    "known_text": "I didn't want to wake in the middle of the night",
+    "known_audio_id": "14f40b9e-0530-4930-8889-6b6ee7825b6f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U02",
+   "set": {
+    "known_text": "she doesn't want to wake in the middle of the night",
+    "known_audio_id": "df73b128-7a44-44d4-84ec-d7c83df11424"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02U01",
+   "set": {
+    "known_text": "we didn't hope to wake in the middle of the night",
+    "target_text": "vi håpet ikke å våkne midt på natten",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d5e8caa5-35d6-4718-bf8c-53bc4036047a",
+    "target2_audio_id": "665c5b11-346a-4263-b9f2-81ba69840697"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L02B03",
+   "set": {
+    "known_text": "wake in the middle of the night",
+    "known_audio_id": "dc823b1e-bc58-4698-ba89-9a740caca699"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U06",
+   "set": {
+    "known_text": "I don't want to wake in the night",
+    "known_audio_id": "c60ab5a4-2bbd-4807-b76c-47bc68041a53"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U05",
+   "set": {
+    "known_text": "can you wake in the night?",
+    "known_audio_id": "569b9da2-4fc9-4129-a36d-995a20d0e516"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U04",
+   "set": {
+    "known_text": "he needs to wake in the night",
+    "known_audio_id": "1409c5e9-b3ec-4bd9-bf12-dcf3a2455c8c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U03",
+   "set": {
+    "known_text": "it's difficult to wake in the night",
+    "known_audio_id": "b8049824-46db-48f4-914c-8dd1c7dd3783"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U02",
+   "set": {
+    "known_text": "she doesn't want to wake in the night",
+    "known_audio_id": "5759176b-a8c6-4ffb-b458-07a86f86e6d5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01U01",
+   "set": {
+    "known_text": "I didn't hope to wake in the night",
+    "target_text": "jeg håpet ikke å våkne på natten",
+    "known_audio_id": "36306239-b6f1-40de-8a63-f23ab6fda03f",
+    "target1_audio_id": "17d685b9-82a7-4193-a8c1-e50614e72c96",
+    "target2_audio_id": "da1d205f-b7c6-4586-8483-dfabbc796224"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "nor_for_eng:S0108L01B03",
+   "set": {
+    "known_text": "wake in the night",
+    "known_audio_id": "ea0f617b-2d33-40a1-90a7-a392bbce33aa"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 108,
+   "set": {
+    "known_text": "We didn't hope to wake in the middle of the night.",
+    "target_text": "Vi håpet ikke å våkne midt på natten.",
+    "known_audio_id": "beee2e4f-4a23-4c6b-a62d-d06036d44a92",
+    "target1_audio_id": "d5e8caa5-35d6-4718-bf8c-53bc4036047a",
+    "target2_audio_id": "665c5b11-346a-4263-b9f2-81ba69840697"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

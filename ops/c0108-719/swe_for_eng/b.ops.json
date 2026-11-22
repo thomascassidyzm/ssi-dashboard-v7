@@ -1,0 +1,223 @@
+{
+ "ops": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 4,
+    "known_text": "we expected",
+    "target_text": "vi förväntade oss",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04B01",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 1,
+    "known_text": "we expected",
+    "target_text": "vi förväntade oss",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 17,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04B02",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 2,
+    "known_text": "we didn't expect",
+    "target_text": "vi förväntade oss inte",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 22,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04B03",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 3,
+    "known_text": "we expected to wake up",
+    "target_text": "vi förväntade oss att vakna",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 27,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04B04",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 4,
+    "known_text": "we expected to do it",
+    "target_text": "vi förväntade oss att göra det",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 30,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04U01",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 5,
+    "known_text": "we didn't expect to do it in the middle of the night",
+    "target_text": "vi förväntade oss inte att göra det mitt i natten",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 49,
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04U02",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 6,
+    "known_text": "we expected to wake up in the middle of the day",
+    "target_text": "vi förväntade oss att vakna mitt i dagen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 40,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04U03",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 7,
+    "known_text": "we didn't expect to wake up in the middle of it",
+    "target_text": "vi förväntade oss inte att vakna mitt i det",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 43,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04U04",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 8,
+    "known_text": "we expected to do it in the middle of the day",
+    "target_text": "vi förväntade oss att göra det mitt i dagen",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 43,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "swe_for_eng:S0108L04U05",
+    "course_code": "swe_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "we didn't expect to do it",
+    "target_text": "vi förväntade oss inte att göra det",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #770·AI C0108 hope->expect: new expect LEGO basket, 18 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 35,
+    "lego_count": 7
+   }
+  }
+ ]
+}
