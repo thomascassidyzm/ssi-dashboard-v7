@@ -3470,6 +3470,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is never rendered whole (the voicing policy
       // refuses it) — it is spliced from existing Charlotte clips through the same entry the render route uses, rendering only a
       // piece that exists nowhere. Bound exactly like a rendered presentation clip.
+      // NEW INTRO BUILDS ONLY (Tom 2026-11-22, r-2026-11-22-ssi-intros-are-two-parts-from): this branch is reached only for an intro
+      // slot with no clip, after library-first above, so an existing course keeps the intros it has (fry_for_eng included) and the
+      // two-part model never re-renders one. The two parts are joined into ONE presentation clip, so the learner app is unchanged.
       if (item.role === 'presentation' && introSplice.planIntro(item.text, course)) {
         const spliced = await renderClip({ courseCode, role: 'presentation', text: item.text, legoId: item.lego_id || null, language: 'eng',
           voiceId: voicingPolicy.config.englishVoice, purpose: 'phase8 fill: spliced presentation intro (job #516)', requestedBy: 'phase8-fill' }, buildRenderDeps())

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * READ-ONLY census: what share of a course's presentation intros (seeds 1..N) could be built by dice-and-splice with ZERO new
- * characters — i.e. every piece (fragment, X, 'as in', context, 'is') already exists as a Charlotte English clip somewhere in
+ * characters — i.e. both pieces (part 1 'The <Lang> for', part 2 "'X'[, as in — 'context'], is:") already exist as a Charlotte English clip somewhere in
  * course_audio. Spends nothing and writes nothing. Used for Tom's 2026-10-11 question (job #516).
  *   node tools/audio/intro-splice-coverage.cjs --course spa_for_eng [--seeds 100]
  */
@@ -34,7 +34,7 @@ async function main() {
   for (const p of parsed) {
     const miss = p.plan.pieces.filter(pc => !exists(pc.text))
     if (!miss.length) full++
-    if (!miss.some(pc => pc.kind === 'x' || pc.kind === 'context')) contentReady++   // the LEGO and its sentence exist; only the shared fixed pieces (fragment, 'as in') are owed
+    if (!miss.some(pc => pc.kind === 'remainder')) contentReady++   // part 2 (the per-LEGO piece) exists; only the shared part-1 fragment is owed
     for (const pc of miss) { byKind[pc.kind] = (byKind[pc.kind] || 0) + 1; if (!missingUnique.has(pc.text.toLowerCase())) { missingUnique.add(pc.text.toLowerCase()); missChars += pc.text.length } }
   }
   console.log(JSON.stringify({ course, seedsTo: maxSeed, intros: rows.length, spliceable: parsed.length, zeroNewCharacters: full,
