@@ -1,0 +1,4363 @@
+{
+ "censusGeneratedAt": "2026-11-22T12:05:55.607Z",
+ "db": "ssi_copy_20261122t033000z",
+ "threshold": 0.02,
+ "tier": "premium",
+ "courses": [
+  {
+   "course": "eng_for_tel",
+   "status": "live",
+   "tier": "premium",
+   "rows": 13448,
+   "worstShare": 0.9961,
+   "azureSlotsInCast": 14843,
+   "freeLinkAsks": 4,
+   "freeLinkSlots": 4,
+   "paidAsks": 13189,
+   "paidChars": 500469,
+   "grantRoles": [
+    "known",
+    "presentation",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Ramya",
+     "inScope": true,
+     "azureSlots": 13395,
+     "share": 0.9961,
+     "asks": 11745,
+     "chars": 412717,
+     "azureVoices": {
+      "azure_te-IN-ShrutiNeural": 13395
+     },
+     "held_other": {
+      "asks": 11663,
+      "chars": 410679,
+      "slots": 13273
+     },
+     "missing": {
+      "asks": 82,
+      "chars": 2038,
+      "slots": 122
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Vikram",
+     "inScope": true,
+     "azureSlots": 1427,
+     "share": 0.1061,
+     "asks": 1427,
+     "chars": 87249,
+     "azureVoices": {
+      "azure_te-IN-ShrutiNeural": 1427
+     },
+     "held_other": {
+      "asks": 1427,
+      "chars": 87249,
+      "slots": 1427
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 11,
+     "share": 0.0008,
+     "asks": 11,
+     "chars": 333,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 9,
+      "azure_en-GB-BellaNeural": 1,
+      "azure_en-GB-RyanNeural": 1
+     },
+     "held_other": {
+      "asks": 11,
+      "chars": 333,
+      "slots": 11
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 10,
+     "share": 0.0007,
+     "asks": 10,
+     "chars": 319,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 8,
+      "azure_en-GB-BellaNeural": 1,
+      "azure_en-GB-RyanNeural": 1
+     },
+     "held_cast": {
+      "asks": 4,
+      "chars": 149,
+      "slots": 4
+     },
+     "held_other": {
+      "asks": 6,
+      "chars": 170,
+      "slots": 6
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 483683,
+   "paidAsksInOrder": 12791
+  },
+  {
+   "course": "eng_for_kan",
+   "status": "live",
+   "tier": "premium",
+   "rows": 14575,
+   "worstShare": 0.9763,
+   "azureSlotsInCast": 15679,
+   "freeLinkAsks": 1,
+   "freeLinkSlots": 1,
+   "paidAsks": 13829,
+   "paidChars": 458870,
+   "grantRoles": [
+    "known",
+    "presentation",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Chaitra",
+     "inScope": true,
+     "azureSlots": 14229,
+     "share": 0.9763,
+     "asks": 12380,
+     "chars": 358667,
+     "azureVoices": {
+      "azure_kn-IN-SapnaNeural": 14229
+     },
+     "held_other": {
+      "asks": 12280,
+      "chars": 356673,
+      "slots": 14100
+     },
+     "missing": {
+      "asks": 100,
+      "chars": 1994,
+      "slots": 129
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Chetan",
+     "inScope": true,
+     "azureSlots": 1442,
+     "share": 0.0989,
+     "asks": 1442,
+     "chars": 100026,
+     "azureVoices": {
+      "azure_kn-IN-SapnaNeural": 1442
+     },
+     "held_other": {
+      "asks": 1442,
+      "chars": 100026,
+      "slots": 1442
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 4,
+     "share": 0.0003,
+     "asks": 4,
+     "chars": 102,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 4
+     },
+     "held_other": {
+      "asks": 4,
+      "chars": 102,
+      "slots": 4
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 4,
+     "share": 0.0003,
+     "asks": 4,
+     "chars": 102,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 4
+     },
+     "held_other": {
+      "asks": 3,
+      "chars": 75,
+      "slots": 3
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 27,
+      "slots": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 448018,
+   "paidAsksInOrder": 13549
+  },
+  {
+   "course": "eng_for_guj",
+   "status": "live",
+   "tier": "premium",
+   "rows": 14081,
+   "worstShare": 0.8873,
+   "azureSlotsInCast": 13926,
+   "freeLinkAsks": 2,
+   "freeLinkSlots": 2,
+   "paidAsks": 13405,
+   "paidChars": 436227,
+   "grantRoles": [
+    "known",
+    "presentation",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Isha",
+     "inScope": true,
+     "azureSlots": 12494,
+     "share": 0.8873,
+     "asks": 11975,
+     "chars": 339585,
+     "azureVoices": {
+      "azure_gu-IN-DhwaniNeural": 12492,
+      "azure_gu-IN-NiranjanNeural": 2
+     },
+     "held_other": {
+      "asks": 11922,
+      "chars": 338405,
+      "slots": 12429
+     },
+     "missing": {
+      "asks": 52,
+      "chars": 1163,
+      "slots": 64
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 17,
+      "slots": 1
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Isha",
+     "inScope": true,
+     "azureSlots": 1422,
+     "share": 0.101,
+     "asks": 1422,
+     "chars": 96434,
+     "azureVoices": {
+      "azure_gu-IN-DhwaniNeural": 1422
+     },
+     "held_other": {
+      "asks": 1422,
+      "chars": 96434,
+      "slots": 1422
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 5,
+     "share": 0.0004,
+     "asks": 5,
+     "chars": 123,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 5
+     },
+     "held_other": {
+      "asks": 5,
+      "chars": 123,
+      "slots": 5
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 5,
+     "share": 0.0004,
+     "asks": 5,
+     "chars": 123,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 5
+     },
+     "held_other": {
+      "asks": 4,
+      "chars": 102,
+      "slots": 4
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 21,
+      "slots": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 419885,
+   "paidAsksInOrder": 12970
+  },
+  {
+   "course": "eng_for_mar",
+   "status": "live",
+   "tier": "premium",
+   "rows": 13964,
+   "worstShare": 0.9492,
+   "azureSlotsInCast": 14676,
+   "freeLinkAsks": 6,
+   "freeLinkSlots": 6,
+   "paidAsks": 13810,
+   "paidChars": 435511,
+   "grantRoles": [
+    "known",
+    "presentation",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Asha",
+     "inScope": true,
+     "azureSlots": 13255,
+     "share": 0.9492,
+     "asks": 12395,
+     "chars": 347615,
+     "azureVoices": {
+      "azure_mr-IN-ManoharNeural": 13255
+     },
+     "held_other": {
+      "asks": 12347,
+      "chars": 346643,
+      "slots": 13200
+     },
+     "missing": {
+      "asks": 48,
+      "chars": 972,
+      "slots": 55
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Chinmay",
+     "inScope": true,
+     "azureSlots": 1389,
+     "share": 0.0995,
+     "asks": 1389,
+     "chars": 87068,
+     "azureVoices": {
+      "azure_mr-IN-ManoharNeural": 1389
+     },
+     "held_other": {
+      "asks": 1389,
+      "chars": 87068,
+      "slots": 1389
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 17,
+     "share": 0.0012,
+     "asks": 17,
+     "chars": 543,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 4,
+      "azure_en-GB-SoniaNeural": 13
+     },
+     "held_other": {
+      "asks": 16,
+      "chars": 506,
+      "slots": 16
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 37,
+      "slots": 1
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 15,
+     "share": 0.0011,
+     "asks": 15,
+     "chars": 486,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 3,
+      "azure_en-GB-SoniaNeural": 12
+     },
+     "held_cast": {
+      "asks": 5,
+      "chars": 164,
+      "slots": 5
+     },
+     "held_other": {
+      "asks": 10,
+      "chars": 322,
+      "slots": 10
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 418137,
+   "paidAsksInOrder": 13373
+  },
+  {
+   "course": "eng_for_pan",
+   "status": "live",
+   "tier": "premium",
+   "rows": 13229,
+   "worstShare": 0.9095,
+   "azureSlotsInCast": 13325,
+   "freeLinkAsks": 12,
+   "freeLinkSlots": 13,
+   "paidAsks": 12421,
+   "paidChars": 428892,
+   "grantRoles": [
+    "known",
+    "presentation",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Navjot",
+     "inScope": true,
+     "azureSlots": 12032,
+     "share": 0.9095,
+     "asks": 11140,
+     "chars": 334515,
+     "azureVoices": {
+      "azure_pa-IN-VaaniNeural": 12032
+     },
+     "held_other": {
+      "asks": 11101,
+      "chars": 333654,
+      "slots": 11981
+     },
+     "missing": {
+      "asks": 37,
+      "chars": 826,
+      "slots": 48
+     },
+     "held_cast": {
+      "asks": 2,
+      "chars": 35,
+      "slots": 3
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Navjot",
+     "inScope": true,
+     "azureSlots": 1261,
+     "share": 0.0953,
+     "asks": 1261,
+     "chars": 93779,
+     "azureVoices": {
+      "azure_pa-IN-VaaniNeural": 1261
+     },
+     "held_other": {
+      "asks": 1261,
+      "chars": 93779,
+      "slots": 1261
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 16,
+     "share": 0.0012,
+     "asks": 16,
+     "chars": 461,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 2,
+      "azure_en-GB-SoniaNeural": 14
+     },
+     "held_other": {
+      "asks": 14,
+      "chars": 420,
+      "slots": 14
+     },
+     "held_cast": {
+      "asks": 2,
+      "chars": 41,
+      "slots": 2
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 16,
+     "share": 0.0012,
+     "asks": 16,
+     "chars": 461,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 2,
+      "azure_en-GB-SoniaNeural": 14
+     },
+     "held_other": {
+      "asks": 8,
+      "chars": 213,
+      "slots": 8
+     },
+     "held_cast": {
+      "asks": 8,
+      "chars": 248,
+      "slots": 8
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 428892,
+   "paidAsksInOrder": 12421
+  },
+  {
+   "course": "por_for_eng",
+   "status": "live",
+   "tier": "premium",
+   "rows": 15187,
+   "worstShare": 0.5744,
+   "azureSlotsInCast": 17443,
+   "freeLinkAsks": 178,
+   "freeLinkSlots": 297,
+   "paidAsks": 13996,
+   "paidChars": 316206,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Mariana",
+     "inScope": true,
+     "azureSlots": 8695,
+     "share": 0.5725,
+     "asks": 7072,
+     "chars": 159020,
+     "azureVoices": {
+      "azure_pt-PT-RaquelNeural": 8611,
+      "pt-PT-RaquelNeural": 84
+     },
+     "held_other": {
+      "asks": 6991,
+      "chars": 157951,
+      "slots": 8569
+     },
+     "missing": {
+      "asks": 16,
+      "chars": 290,
+      "slots": 16
+     },
+     "held_cast": {
+      "asks": 65,
+      "chars": 779,
+      "slots": 110
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Matias",
+     "inScope": true,
+     "azureSlots": 8723,
+     "share": 0.5744,
+     "asks": 7085,
+     "chars": 159085,
+     "azureVoices": {
+      "azure_pt-PT-DuarteNeural": 8626,
+      "pt-PT-DuarteNeural": 97
+     },
+     "held_other": {
+      "asks": 6973,
+      "chars": 157675,
+      "slots": 8545
+     },
+     "missing": {
+      "asks": 16,
+      "chars": 290,
+      "slots": 16
+     },
+     "held_cast": {
+      "asks": 96,
+      "chars": 1120,
+      "slots": 162
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 25,
+     "share": 0.0016,
+     "asks": 17,
+     "chars": 309,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 25
+     },
+     "held_cast": {
+      "asks": 17,
+      "chars": 309,
+      "slots": 25
+     }
+    }
+   },
+   "planned": true,
+   "breach": true,
+   "paidCharsInOrder": 316206,
+   "paidAsksInOrder": 13996
+  },
+  {
+   "course": "jpn_for_eng",
+   "status": "live",
+   "tier": "premium",
+   "rows": 13556,
+   "worstShare": 0.4874,
+   "azureSlotsInCast": 13193,
+   "freeLinkAsks": 264,
+   "freeLinkSlots": 298,
+   "paidAsks": 9927,
+   "paidChars": 70787,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 6586,
+     "share": 0.4858,
+     "asks": 5088,
+     "chars": 37051,
+     "azureVoices": {
+      "azure_ja-JP-MayuNeural": 6581,
+      "ja-JP-MayuNeural": 2,
+      "azure_ja-JP-ShioriNeural": 3
+     },
+     "held_cast": {
+      "asks": 146,
+      "chars": 1772,
+      "slots": 178
+     },
+     "held_other": {
+      "asks": 4877,
+      "chars": 34953,
+      "slots": 6304
+     },
+     "missing": {
+      "asks": 65,
+      "chars": 326,
+      "slots": 104
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Kyo",
+     "inScope": true,
+     "azureSlots": 6607,
+     "share": 0.4874,
+     "asks": 5103,
+     "chars": 37165,
+     "azureVoices": {
+      "azure_ja-JP-NaokiNeural": 6604,
+      "ja-JP-NaokiNeural": 1,
+      "azure_ja-JP-MayuNeural": 1,
+      "azure_ja-JP-ShioriNeural": 1
+     },
+     "held_cast": {
+      "asks": 118,
+      "chars": 1657,
+      "slots": 120
+     },
+     "held_other": {
+      "asks": 4920,
+      "chars": 35182,
+      "slots": 6383
+     },
+     "missing": {
+      "asks": 65,
+      "chars": 326,
+      "slots": 104
+     }
+    }
+   },
+   "planned": true,
+   "breach": true,
+   "paidCharsInOrder": 70485,
+   "paidAsksInOrder": 9884
+  },
+  {
+   "course": "kor_for_eng",
+   "status": "live",
+   "tier": "premium",
+   "rows": 15037,
+   "worstShare": 0.3612,
+   "azureSlotsInCast": 10850,
+   "freeLinkAsks": 253,
+   "freeLinkSlots": 263,
+   "paidAsks": 7703,
+   "paidChars": 55920,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Jihyun",
+     "inScope": true,
+     "azureSlots": 5418,
+     "share": 0.3603,
+     "asks": 3973,
+     "chars": 30309,
+     "azureVoices": {
+      "azure_ko-KR-YuJinNeural": 5417,
+      "azure_ko-KR-SunHiNeural": 1
+     },
+     "held_other": {
+      "asks": 3841,
+      "chars": 27903,
+      "slots": 5279
+     },
+     "held_cast": {
+      "asks": 125,
+      "chars": 2356,
+      "slots": 130
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 50,
+      "slots": 9
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Junho",
+     "inScope": true,
+     "azureSlots": 5432,
+     "share": 0.3612,
+     "asks": 3983,
+     "chars": 30346,
+     "azureVoices": {
+      "azure_ko-KR-GookMinNeural": 5431,
+      "azure_ko-KR-SunHiNeural": 1
+     },
+     "held_other": {
+      "asks": 3848,
+      "chars": 27917,
+      "slots": 5290
+     },
+     "held_cast": {
+      "asks": 128,
+      "chars": 2379,
+      "slots": 133
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 50,
+      "slots": 9
+     }
+    }
+   },
+   "planned": true,
+   "breach": true,
+   "paidCharsInOrder": 55920,
+   "paidAsksInOrder": 7703
+  },
+  {
+   "course": "eng_for_hin",
+   "status": "live",
+   "tier": "premium",
+   "rows": 13452,
+   "worstShare": 0.0001,
+   "azureSlotsInCast": 1,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 1,
+   "paidChars": 36,
+   "grantRoles": [
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 1,
+     "share": 0.0001,
+     "asks": 1,
+     "chars": 36,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 1
+     },
+     "held_other": {
+      "asks": 1,
+      "chars": 36,
+      "slots": 1
+     }
+    }
+   },
+   "planned": true,
+   "breach": false,
+   "paidCharsInOrder": 36,
+   "paidAsksInOrder": 1
+  },
+  {
+   "course": "eng_for_ben",
+   "status": "live",
+   "tier": "premium",
+   "rows": 12884,
+   "worstShare": 0.0001,
+   "azureSlotsInCast": 1,
+   "freeLinkAsks": 1,
+   "freeLinkSlots": 1,
+   "paidAsks": 0,
+   "paidChars": 0,
+   "grantRoles": [],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Arindam",
+     "inScope": true,
+     "azureSlots": 1,
+     "share": 0.0001,
+     "asks": 1,
+     "chars": 42,
+     "azureVoices": {
+      "azure_bn-IN-TanishaaNeural": 1
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 42,
+      "slots": 1
+     }
+    }
+   },
+   "planned": true,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "eng_for_tam",
+   "status": "live",
+   "tier": "premium",
+   "rows": 13203,
+   "worstShare": 0.0157,
+   "azureSlotsInCast": 207,
+   "freeLinkAsks": 205,
+   "freeLinkSlots": 207,
+   "paidAsks": 0,
+   "paidChars": 0,
+   "grantRoles": [],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Karthik",
+     "inScope": true,
+     "azureSlots": 207,
+     "share": 0.0157,
+     "asks": 205,
+     "chars": 10627,
+     "azureVoices": {
+      "azure_ta-LK-SaranyaNeural": 207
+     },
+     "held_cast": {
+      "asks": 205,
+      "chars": 10627,
+      "slots": 207
+     }
+    }
+   },
+   "planned": true,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "eng_for_urd",
+   "status": "live",
+   "tier": "premium",
+   "rows": 12108,
+   "worstShare": 0,
+   "azureSlotsInCast": 0,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 0,
+   "paidChars": 0,
+   "grantRoles": [],
+   "stayAzure": {
+    "known": {
+     "cast": "azure:Uzma",
+     "slots": 12100,
+     "chars": 297545
+    },
+    "presentation": {
+     "cast": "azure:Uzma",
+     "slots": 1152,
+     "chars": 68104
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "azure:Uzma",
+     "inScope": false,
+     "azureSlots": 12100,
+     "share": 0.9993,
+     "asks": 11355,
+     "chars": 297545,
+     "azureVoices": {
+      "azure_ur-PK-UzmaNeural": 11867,
+      "azure_ur-PK-AsadNeural": 233
+     }
+    },
+    "presentation": {
+     "cast": "azure:Uzma",
+     "inScope": false,
+     "azureSlots": 1152,
+     "share": 0.0951,
+     "asks": 1152,
+     "chars": 68104,
+     "azureVoices": {
+      "azure_ur-PK-UzmaNeural": 1152
+     }
+    }
+   },
+   "planned": true,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "ita_for_eng",
+   "status": "live",
+   "tier": "premium",
+   "rows": 14769,
+   "worstShare": 0,
+   "azureSlotsInCast": 0,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 0,
+   "paidChars": 0,
+   "grantRoles": [],
+   "stayAzure": {},
+   "roles": {},
+   "planned": true,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "spa_for_eng",
+   "status": "live",
+   "tier": "premium",
+   "rows": 17438,
+   "worstShare": 0,
+   "azureSlotsInCast": 0,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 0,
+   "paidChars": 0,
+   "grantRoles": [],
+   "stayAzure": {},
+   "roles": {},
+   "planned": false,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "zho_for_eng",
+   "status": "live",
+   "tier": "premium",
+   "rows": 12658,
+   "worstShare": 0,
+   "azureSlotsInCast": 0,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 0,
+   "paidChars": 0,
+   "grantRoles": [],
+   "stayAzure": {},
+   "roles": {},
+   "planned": true,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "ara_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 13704,
+   "worstShare": 0.9718,
+   "azureSlotsInCast": 26637,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 23399,
+   "paidChars": 808183,
+   "grantRoles": [
+    "target1",
+    "target2",
+    "known"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Maryam",
+     "inScope": true,
+     "azureSlots": 13318,
+     "share": 0.9718,
+     "asks": 11699,
+     "chars": 404081,
+     "azureVoices": {
+      "azure_ar-EG-SalmaNeural": 6643,
+      "ar-EG-SalmaNeural": 17,
+      "azure_ar-SA-ZariyahNeural": 6658
+     },
+     "held_other": {
+      "asks": 11699,
+      "chars": 404081,
+      "slots": 13318
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Hassan",
+     "inScope": true,
+     "azureSlots": 13318,
+     "share": 0.9718,
+     "asks": 11699,
+     "chars": 404081,
+     "azureVoices": {
+      "azure_ar-EG-ShakirNeural": 6649,
+      "ar-EG-ShakirNeural": 11,
+      "azure_ar-SA-HamedNeural": 6658
+     },
+     "held_other": {
+      "asks": 11699,
+      "chars": 404081,
+      "slots": 13318
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 1,
+     "share": 0.0001,
+     "asks": 1,
+     "chars": 21,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 1
+     },
+     "held_other": {
+      "asks": 1,
+      "chars": 21,
+      "slots": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 808183,
+   "paidAsksInOrder": 23399
+  },
+  {
+   "course": "fra_ca_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 13058,
+   "worstShare": 0.996,
+   "azureSlotsInCast": 27780,
+   "freeLinkAsks": 1183,
+   "freeLinkSlots": 1764,
+   "paidAsks": 23625,
+   "paidChars": 677926,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Sonia",
+     "slots": 503,
+     "chars": 34865
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 1775,
+     "share": 0.1359,
+     "asks": 1193,
+     "chars": 27081,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 1771,
+      "en-GB-SoniaNeural": 3,
+      "en-GB-RyanNeural": 1
+     },
+     "held_cast": {
+      "asks": 1183,
+      "chars": 26817,
+      "slots": 1764
+     },
+     "held_other": {
+      "asks": 10,
+      "chars": 264,
+      "slots": 11
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Léonie",
+     "inScope": true,
+     "azureSlots": 12999,
+     "share": 0.9955,
+     "asks": 11804,
+     "chars": 338637,
+     "azureVoices": {
+      "azure_fr-CA-SylvieNeural": 12966,
+      "fr-CA-SylvieNeural": 28,
+      "fr-CA-AntoineNeural": 2,
+      "fr-CA-JeanNeural": 1,
+      "fr-CA-ThierryNeural": 2
+     },
+     "held_other": {
+      "asks": 11778,
+      "chars": 337586,
+      "slots": 12969
+     },
+     "missing": {
+      "asks": 26,
+      "chars": 1051,
+      "slots": 30
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Félix",
+     "inScope": true,
+     "azureSlots": 13006,
+     "share": 0.996,
+     "asks": 11811,
+     "chars": 339025,
+     "azureVoices": {
+      "azure_fr-CA-AntoineNeural": 12991,
+      "fr-CA-AntoineNeural": 15
+     },
+     "held_other": {
+      "asks": 11785,
+      "chars": 337974,
+      "slots": 12976
+     },
+     "missing": {
+      "asks": 26,
+      "chars": 1051,
+      "slots": 30
+     }
+    },
+    "presentation": {
+     "cast": "azure:Sonia",
+     "inScope": false,
+     "azureSlots": 503,
+     "share": 0.0385,
+     "asks": 503,
+     "chars": 34865,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 503
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 627354,
+   "paidAsksInOrder": 22439
+  },
+  {
+   "course": "spa_mx_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 15018,
+   "worstShare": 0.9056,
+   "azureSlotsInCast": 27198,
+   "freeLinkAsks": 2,
+   "freeLinkSlots": 2,
+   "paidAsks": 23773,
+   "paidChars": 636576,
+   "grantRoles": [
+    "target1",
+    "target2",
+    "known"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Daniela",
+     "inScope": true,
+     "azureSlots": 13596,
+     "share": 0.9053,
+     "asks": 11891,
+     "chars": 318561,
+     "azureVoices": {
+      "azure_es-MX-CarlotaNeural": 13250,
+      "es-MX-CarlotaNeural": 323,
+      "azure_es-MX-DaliaNeural": 2,
+      "azure_es-MX-LucianoNeural": 21
+     },
+     "held_other": {
+      "asks": 11890,
+      "chars": 318536,
+      "slots": 13595
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 25,
+      "slots": 1
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Alejandro",
+     "inScope": true,
+     "azureSlots": 13601,
+     "share": 0.9056,
+     "asks": 11883,
+     "chars": 318037,
+     "azureVoices": {
+      "azure_es-MX-LucianoNeural": 13593,
+      "es-MX-LucianoNeural": 8
+     },
+     "held_other": {
+      "asks": 11882,
+      "chars": 318012,
+      "slots": 13600
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 25,
+      "slots": 1
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 1,
+     "share": 0.0001,
+     "asks": 1,
+     "chars": 28,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 1
+     },
+     "held_other": {
+      "asks": 1,
+      "chars": 28,
+      "slots": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 627566,
+   "paidAsksInOrder": 23533
+  },
+  {
+   "course": "kor_for_tam",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 14597,
+   "worstShare": 1,
+   "azureSlotsInCast": 16100,
+   "freeLinkAsks": 631,
+   "freeLinkSlots": 809,
+   "paidAsks": 14542,
+   "paidChars": 528235,
+   "grantRoles": [
+    "known",
+    "presentation"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Karthik",
+     "inScope": true,
+     "azureSlots": 14597,
+     "share": 1,
+     "asks": 13670,
+     "chars": 428508,
+     "azureVoices": {
+      "azure_ta-LK-SaranyaNeural": 14597
+     },
+     "held_other": {
+      "asks": 13011,
+      "chars": 415451,
+      "slots": 13759
+     },
+     "held_cast": {
+      "asks": 631,
+      "chars": 12279,
+      "slots": 809
+     },
+     "missing": {
+      "asks": 28,
+      "chars": 778,
+      "slots": 29
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Nila",
+     "inScope": true,
+     "azureSlots": 1503,
+     "share": 0.103,
+     "asks": 1503,
+     "chars": 112006,
+     "azureVoices": {
+      "azure_ta-LK-SaranyaNeural": 1503
+     },
+     "held_other": {
+      "asks": 1503,
+      "chars": 112006,
+      "slots": 1503
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 513025,
+   "paidAsksInOrder": 14257
+  },
+  {
+   "course": "spa_for_jpn",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 8359,
+   "worstShare": 0.9542,
+   "azureSlotsInCast": 23739,
+   "freeLinkAsks": 2610,
+   "freeLinkSlots": 3370,
+   "paidAsks": 19567,
+   "paidChars": 518889,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Shiori",
+     "slots": 610,
+     "chars": 17037
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 7787,
+     "share": 0.9316,
+     "asks": 7281,
+     "chars": 103665,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 7786,
+      "ja-JP-ShioriNeural": 1
+     },
+     "held_other": {
+      "asks": 7157,
+      "chars": 102862,
+      "slots": 7619
+     },
+     "held_cast": {
+      "asks": 120,
+      "chars": 776,
+      "slots": 164
+     },
+     "missing": {
+      "asks": 4,
+      "chars": 27,
+      "slots": 4
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Maite",
+     "inScope": true,
+     "azureSlots": 7976,
+     "share": 0.9542,
+     "asks": 7448,
+     "chars": 233848,
+     "azureVoices": {
+      "azure_es-ES-LaiaNeural": 7976
+     },
+     "held_cast": {
+      "asks": 1260,
+      "chars": 26019,
+      "slots": 1624
+     },
+     "held_other": {
+      "asks": 6188,
+      "chars": 207829,
+      "slots": 6352
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Thiago",
+     "inScope": true,
+     "azureSlots": 7976,
+     "share": 0.9542,
+     "asks": 7448,
+     "chars": 233848,
+     "azureVoices": {
+      "azure_es-ES-AlvaroNeural": 7976
+     },
+     "held_cast": {
+      "asks": 1230,
+      "chars": 25677,
+      "slots": 1582
+     },
+     "held_other": {
+      "asks": 6218,
+      "chars": 208171,
+      "slots": 6394
+     }
+    },
+    "presentation": {
+     "cast": "azure:Shiori",
+     "inScope": false,
+     "azureSlots": 610,
+     "share": 0.073,
+     "asks": 610,
+     "chars": 17037,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 610
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 508730,
+   "paidAsksInOrder": 19096
+  },
+  {
+   "course": "eng_for_fra",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6514,
+   "worstShare": 0.9894,
+   "azureSlotsInCast": 16842,
+   "freeLinkAsks": 3109,
+   "freeLinkSlots": 3866,
+   "paidAsks": 12261,
+   "paidChars": 488965,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Celeste",
+     "slots": 639,
+     "chars": 55650
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Inaya",
+     "inScope": true,
+     "azureSlots": 6445,
+     "share": 0.9894,
+     "asks": 5810,
+     "chars": 228117,
+     "azureVoices": {
+      "azure_fr-FR-CelesteNeural": 6040,
+      "fr-FR-CelesteNeural": 405
+     },
+     "held_other": {
+      "asks": 5501,
+      "chars": 220238,
+      "slots": 6066
+     },
+     "held_cast": {
+      "asks": 295,
+      "chars": 7552,
+      "slots": 365
+     },
+     "missing": {
+      "asks": 14,
+      "chars": 327,
+      "slots": 14
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 6358,
+     "share": 0.9761,
+     "asks": 5704,
+     "chars": 201409,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 6358
+     },
+     "held_cast": {
+      "asks": 2100,
+      "chars": 60851,
+      "slots": 2652
+     },
+     "held_other": {
+      "asks": 3455,
+      "chars": 134386,
+      "slots": 3557
+     },
+     "missing": {
+      "asks": 149,
+      "chars": 6172,
+      "slots": 149
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 4039,
+     "share": 0.62,
+     "asks": 3856,
+     "chars": 148483,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 4039
+     },
+     "held_other": {
+      "asks": 2993,
+      "chars": 121670,
+      "slots": 3041
+     },
+     "held_cast": {
+      "asks": 714,
+      "chars": 20641,
+      "slots": 849
+     },
+     "missing": {
+      "asks": 149,
+      "chars": 6172,
+      "slots": 149
+     }
+    },
+    "presentation": {
+     "cast": "azure:Celeste",
+     "inScope": false,
+     "azureSlots": 639,
+     "share": 0.0981,
+     "asks": 639,
+     "chars": 55650,
+     "azureVoices": {
+      "azure_fr-FR-CelesteNeural": 639
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 479819,
+   "paidAsksInOrder": 12045
+  },
+  {
+   "course": "eng_for_ita",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6216,
+   "worstShare": 0.9858,
+   "azureSlotsInCast": 16298,
+   "freeLinkAsks": 3774,
+   "freeLinkSlots": 4611,
+   "paidAsks": 11341,
+   "paidChars": 476715,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Elsa",
+     "slots": 596,
+     "chars": 46914
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Alessandra",
+     "inScope": true,
+     "azureSlots": 6128,
+     "share": 0.9858,
+     "asks": 5615,
+     "chars": 213951,
+     "azureVoices": {
+      "azure_it-IT-ElsaNeural": 5729,
+      "it-IT-ElsaNeural": 399
+     },
+     "held_other": {
+      "asks": 4558,
+      "chars": 186934,
+      "slots": 4786
+     },
+     "held_cast": {
+      "asks": 1038,
+      "chars": 26619,
+      "slots": 1323
+     },
+     "missing": {
+      "asks": 19,
+      "chars": 398,
+      "slots": 19
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 6098,
+     "share": 0.981,
+     "asks": 5582,
+     "chars": 206703,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 6098
+     },
+     "held_cast": {
+      "asks": 2014,
+      "chars": 57340,
+      "slots": 2445
+     },
+     "held_other": {
+      "asks": 3469,
+      "chars": 145142,
+      "slots": 3554
+     },
+     "missing": {
+      "asks": 99,
+      "chars": 4221,
+      "slots": 99
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 4072,
+     "share": 0.6551,
+     "asks": 3918,
+     "chars": 160237,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 4072
+     },
+     "held_other": {
+      "asks": 3097,
+      "chars": 135799,
+      "slots": 3130
+     },
+     "held_cast": {
+      "asks": 722,
+      "chars": 20217,
+      "slots": 843
+     },
+     "missing": {
+      "asks": 99,
+      "chars": 4221,
+      "slots": 99
+     }
+    },
+    "presentation": {
+     "cast": "azure:Elsa",
+     "inScope": false,
+     "azureSlots": 596,
+     "share": 0.0959,
+     "asks": 596,
+     "chars": 46914,
+     "azureVoices": {
+      "azure_it-IT-ElsaNeural": 596
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 459299,
+   "paidAsksInOrder": 10868
+  },
+  {
+   "course": "eng_for_por",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6431,
+   "worstShare": 0.9858,
+   "azureSlotsInCast": 16697,
+   "freeLinkAsks": 3216,
+   "freeLinkSlots": 3959,
+   "paidAsks": 12124,
+   "paidChars": 473088,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Raquel",
+     "slots": 614,
+     "chars": 46788
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Mariana",
+     "inScope": true,
+     "azureSlots": 6340,
+     "share": 0.9858,
+     "asks": 5746,
+     "chars": 204135,
+     "azureVoices": {
+      "azure_pt-PT-RaquelNeural": 6082,
+      "pt-PT-RaquelNeural": 258
+     },
+     "held_other": {
+      "asks": 5247,
+      "chars": 191640,
+      "slots": 5709
+     },
+     "held_cast": {
+      "asks": 475,
+      "chars": 12041,
+      "slots": 607
+     },
+     "missing": {
+      "asks": 24,
+      "chars": 454,
+      "slots": 24
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 6268,
+     "share": 0.9747,
+     "asks": 5669,
+     "chars": 203255,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 6247,
+      "en-GB-SoniaNeural": 19,
+      "azure_en-GB-RyanNeural": 2
+     },
+     "held_cast": {
+      "asks": 2047,
+      "chars": 57948,
+      "slots": 2541
+     },
+     "held_other": {
+      "asks": 3594,
+      "chars": 144025,
+      "slots": 3699
+     },
+     "missing": {
+      "asks": 28,
+      "chars": 1282,
+      "slots": 28
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 4089,
+     "share": 0.6358,
+     "asks": 3925,
+     "chars": 155239,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 4073,
+      "en-GB-RyanNeural": 14,
+      "azure_en-GB-SoniaNeural": 2
+     },
+     "held_other": {
+      "asks": 3203,
+      "chars": 134405,
+      "slots": 3250
+     },
+     "held_cast": {
+      "asks": 694,
+      "chars": 19552,
+      "slots": 811
+     },
+     "missing": {
+      "asks": 28,
+      "chars": 1282,
+      "slots": 28
+     }
+    },
+    "presentation": {
+     "cast": "azure:Raquel",
+     "inScope": false,
+     "azureSlots": 614,
+     "share": 0.0955,
+     "asks": 614,
+     "chars": 46788,
+     "azureVoices": {
+      "azure_pt-PT-RaquelNeural": 613,
+      "pt-PT-RaquelNeural": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 441441,
+   "paidAsksInOrder": 11083
+  },
+  {
+   "course": "eng_for_deu",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6243,
+   "worstShare": 0.9873,
+   "azureSlotsInCast": 16118,
+   "freeLinkAsks": 3148,
+   "freeLinkSlots": 3986,
+   "paidAsks": 11422,
+   "paidChars": 422235,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Katja",
+     "slots": 604,
+     "chars": 48524
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Viktoria",
+     "inScope": true,
+     "azureSlots": 6164,
+     "share": 0.9873,
+     "asks": 5512,
+     "chars": 206376,
+     "azureVoices": {
+      "azure_de-DE-KatjaNeural": 6001,
+      "de-DE-KatjaNeural": 163
+     },
+     "held_other": {
+      "asks": 5209,
+      "chars": 198522,
+      "slots": 5729
+     },
+     "held_cast": {
+      "asks": 285,
+      "chars": 7463,
+      "slots": 417
+     },
+     "missing": {
+      "asks": 18,
+      "chars": 391,
+      "slots": 18
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 6125,
+     "share": 0.9811,
+     "asks": 5457,
+     "chars": 177333,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 6124,
+      "en-GB-SoniaNeural": 1
+     },
+     "held_cast": {
+      "asks": 2105,
+      "chars": 59233,
+      "slots": 2650
+     },
+     "held_other": {
+      "asks": 3337,
+      "chars": 117544,
+      "slots": 3460
+     },
+     "missing": {
+      "asks": 15,
+      "chars": 556,
+      "slots": 15
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 3829,
+     "share": 0.6133,
+     "asks": 3601,
+     "chars": 126525,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 3828,
+      "en-GB-RyanNeural": 1
+     },
+     "held_other": {
+      "asks": 2828,
+      "chars": 104666,
+      "slots": 2895
+     },
+     "held_cast": {
+      "asks": 758,
+      "chars": 21303,
+      "slots": 919
+     },
+     "missing": {
+      "asks": 15,
+      "chars": 556,
+      "slots": 15
+     }
+    },
+    "presentation": {
+     "cast": "azure:Katja",
+     "inScope": false,
+     "azureSlots": 604,
+     "share": 0.0967,
+     "asks": 603,
+     "chars": 48524,
+     "azureVoices": {
+      "de-DE-KatjaNeural": 527,
+      "azure_de-DE-KatjaNeural": 77
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 391643,
+   "paidAsksInOrder": 10555
+  },
+  {
+   "course": "zho_for_tam",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 11864,
+   "worstShare": 1,
+   "azureSlotsInCast": 13027,
+   "freeLinkAsks": 574,
+   "freeLinkSlots": 828,
+   "paidAsks": 11063,
+   "paidChars": 412268,
+   "grantRoles": [
+    "known",
+    "presentation",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Karthik",
+     "inScope": true,
+     "azureSlots": 11864,
+     "share": 1,
+     "asks": 10474,
+     "chars": 343228,
+     "azureVoices": {
+      "azure_ta-LK-SaranyaNeural": 11864
+     },
+     "held_other": {
+      "asks": 9890,
+      "chars": 332460,
+      "slots": 11026
+     },
+     "held_cast": {
+      "asks": 574,
+      "chars": 10464,
+      "slots": 828
+     },
+     "missing": {
+      "asks": 10,
+      "chars": 304,
+      "slots": 10
+     }
+    },
+    "presentation": {
+     "cast": "cartesia:Nila",
+     "inScope": true,
+     "azureSlots": 1161,
+     "share": 0.0979,
+     "asks": 1161,
+     "chars": 79492,
+     "azureVoices": {
+      "azure_ta-LK-SaranyaNeural": 1161
+     },
+     "held_other": {
+      "asks": 1161,
+      "chars": 79492,
+      "slots": 1161
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 1,
+     "share": 0.0001,
+     "asks": 1,
+     "chars": 6,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 1
+     },
+     "held_other": {
+      "asks": 1,
+      "chars": 6,
+      "slots": 1
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Hao",
+     "inScope": true,
+     "azureSlots": 1,
+     "share": 0.0001,
+     "asks": 1,
+     "chars": 6,
+     "azureVoices": {
+      "azure_zh-CN-YunfengNeural": 1
+     },
+     "held_other": {
+      "asks": 1,
+      "chars": 6,
+      "slots": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 394683,
+   "paidAsksInOrder": 10539
+  },
+  {
+   "course": "fra_for_jpn",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6532,
+   "worstShare": 0.9434,
+   "azureSlotsInCast": 18469,
+   "freeLinkAsks": 895,
+   "freeLinkSlots": 1221,
+   "paidAsks": 15234,
+   "paidChars": 373431,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Shiori",
+     "slots": 662,
+     "chars": 19465
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 6145,
+     "share": 0.9408,
+     "asks": 5315,
+     "chars": 65674,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 6145
+     },
+     "held_other": {
+      "asks": 5217,
+      "chars": 64883,
+      "slots": 6000
+     },
+     "held_cast": {
+      "asks": 90,
+      "chars": 708,
+      "slots": 137
+     },
+     "missing": {
+      "asks": 8,
+      "chars": 83,
+      "slots": 8
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Inaya",
+     "inScope": true,
+     "azureSlots": 6162,
+     "share": 0.9434,
+     "asks": 5407,
+     "chars": 164119,
+     "azureVoices": {
+      "azure_fr-FR-DeniseNeural": 6162
+     },
+     "held_cast": {
+      "asks": 395,
+      "chars": 9646,
+      "slots": 532
+     },
+     "held_other": {
+      "asks": 5012,
+      "chars": 154473,
+      "slots": 5630
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Erwan",
+     "inScope": true,
+     "azureSlots": 6162,
+     "share": 0.9434,
+     "asks": 5407,
+     "chars": 164119,
+     "azureVoices": {
+      "azure_fr-FR-ClaudeNeural": 6162
+     },
+     "held_cast": {
+      "asks": 410,
+      "chars": 10127,
+      "slots": 552
+     },
+     "held_other": {
+      "asks": 4997,
+      "chars": 153992,
+      "slots": 5610
+     }
+    },
+    "presentation": {
+     "cast": "azure:Shiori",
+     "inScope": false,
+     "azureSlots": 662,
+     "share": 0.1013,
+     "asks": 662,
+     "chars": 19465,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 662
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 330524,
+   "paidAsksInOrder": 13445
+  },
+  {
+   "course": "eng_for_spa",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6790,
+   "worstShare": 0.8979,
+   "azureSlotsInCast": 15926,
+   "freeLinkAsks": 3288,
+   "freeLinkSlots": 4607,
+   "paidAsks": 10754,
+   "paidChars": 370461,
+   "grantRoles": [
+    "target1",
+    "known",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Elena",
+     "slots": 602,
+     "chars": 41251
+    }
+   },
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 6097,
+     "share": 0.8979,
+     "asks": 5246,
+     "chars": 168886,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 6091,
+      "en-GB-SoniaNeural": 4,
+      "azure_en-GB-RyanNeural": 1,
+      "azure_en-GB-MiaNeural": 1
+     },
+     "held_cast": {
+      "asks": 1785,
+      "chars": 49003,
+      "slots": 2520
+     },
+     "held_other": {
+      "asks": 3437,
+      "chars": 119175,
+      "slots": 3553
+     },
+     "missing": {
+      "asks": 24,
+      "chars": 708,
+      "slots": 24
+     }
+    },
+    "known": {
+     "cast": "cartesia:Maite",
+     "inScope": true,
+     "azureSlots": 6062,
+     "share": 0.8928,
+     "asks": 5264,
+     "chars": 164398,
+     "azureVoices": {
+      "azure_es-ES-ElviraNeural": 5765,
+      "azure_es-ES-AlvaroNeural": 80,
+      "es-ES-ElviraNeural": 217
+     },
+     "held_other": {
+      "asks": 4298,
+      "chars": 141697,
+      "slots": 4684
+     },
+     "held_cast": {
+      "asks": 953,
+      "chars": 22486,
+      "slots": 1365
+     },
+     "missing": {
+      "asks": 13,
+      "chars": 215,
+      "slots": 13
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 3767,
+     "share": 0.5548,
+     "asks": 3532,
+     "chars": 123433,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 3756,
+      "en-GB-RyanNeural": 4,
+      "azure_en-GB-SoniaNeural": 6,
+      "azure_en-GB-MiaNeural": 1
+     },
+     "held_other": {
+      "asks": 2958,
+      "chars": 107958,
+      "slots": 3021
+     },
+     "held_cast": {
+      "asks": 550,
+      "chars": 14767,
+      "slots": 722
+     },
+     "missing": {
+      "asks": 24,
+      "chars": 708,
+      "slots": 24
+     }
+    },
+    "presentation": {
+     "cast": "azure:Elena",
+     "inScope": false,
+     "azureSlots": 602,
+     "share": 0.0887,
+     "asks": 602,
+     "chars": 41251,
+     "azureVoices": {
+      "azure_es-AR-ElenaNeural": 602
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 340557,
+   "paidAsksInOrder": 9771
+  },
+  {
+   "course": "por_br_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 15886,
+   "worstShare": 0.5157,
+   "azureSlotsInCast": 16367,
+   "freeLinkAsks": 23,
+   "freeLinkSlots": 34,
+   "paidAsks": 12880,
+   "paidChars": 350042,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Ana Paula",
+     "inScope": true,
+     "azureSlots": 8192,
+     "share": 0.5157,
+     "asks": 6461,
+     "chars": 175681,
+     "azureVoices": {
+      "azure_pt-BR-BrendaNeural": 8059,
+      "azure_pt-BR-JulioNeural": 18,
+      "pt-BR-BrendaNeural": 115
+     },
+     "held_other": {
+      "asks": 6438,
+      "chars": 175311,
+      "slots": 8159
+     },
+     "missing": {
+      "asks": 16,
+      "chars": 246,
+      "slots": 25
+     },
+     "held_cast": {
+      "asks": 7,
+      "chars": 124,
+      "slots": 8
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Rafael",
+     "inScope": true,
+     "azureSlots": 8175,
+     "share": 0.5146,
+     "asks": 6442,
+     "chars": 174659,
+     "azureVoices": {
+      "azure_pt-BR-JulioNeural": 8056,
+      "pt-BR-JulioNeural": 119
+     },
+     "held_other": {
+      "asks": 6410,
+      "chars": 174239,
+      "slots": 8124
+     },
+     "missing": {
+      "asks": 16,
+      "chars": 246,
+      "slots": 25
+     },
+     "held_cast": {
+      "asks": 16,
+      "chars": 174,
+      "slots": 26
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 348423,
+   "paidAsksInOrder": 12838
+  },
+  {
+   "course": "ita_for_jpn",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5997,
+   "worstShare": 0.9343,
+   "azureSlotsInCast": 16704,
+   "freeLinkAsks": 2248,
+   "freeLinkSlots": 2907,
+   "paidAsks": 12866,
+   "paidChars": 328247,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Shiori",
+     "slots": 567,
+     "chars": 15877
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 5498,
+     "share": 0.9168,
+     "asks": 4934,
+     "chars": 65310,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 5495,
+      "ja-JP-ShioriNeural": 3
+     },
+     "held_other": {
+      "asks": 4825,
+      "chars": 64559,
+      "slots": 5362
+     },
+     "held_cast": {
+      "asks": 102,
+      "chars": 672,
+      "slots": 129
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 79,
+      "slots": 7
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Alessandra",
+     "inScope": true,
+     "azureSlots": 5603,
+     "share": 0.9343,
+     "asks": 5090,
+     "chars": 154775,
+     "azureVoices": {
+      "azure_it-IT-ElsaNeural": 5603
+     },
+     "held_cast": {
+      "asks": 1081,
+      "chars": 23182,
+      "slots": 1401
+     },
+     "held_other": {
+      "asks": 4004,
+      "chars": 131479,
+      "slots": 4197
+     },
+     "missing": {
+      "asks": 5,
+      "chars": 114,
+      "slots": 5
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Lorenzo",
+     "inScope": true,
+     "azureSlots": 5603,
+     "share": 0.9343,
+     "asks": 5090,
+     "chars": 154775,
+     "azureVoices": {
+      "azure_it-IT-LisandroNeural": 5603
+     },
+     "held_cast": {
+      "asks": 1065,
+      "chars": 22759,
+      "slots": 1377
+     },
+     "held_other": {
+      "asks": 4020,
+      "chars": 131902,
+      "slots": 4221
+     },
+     "missing": {
+      "asks": 5,
+      "chars": 114,
+      "slots": 5
+     }
+    },
+    "presentation": {
+     "cast": "azure:Shiori",
+     "inScope": false,
+     "azureSlots": 567,
+     "share": 0.0945,
+     "asks": 567,
+     "chars": 15877,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 567
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 298905,
+   "paidAsksInOrder": 11343
+  },
+  {
+   "course": "fra_for_zho",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5780,
+   "worstShare": 0.9369,
+   "azureSlotsInCast": 15958,
+   "freeLinkAsks": 1213,
+   "freeLinkSlots": 1826,
+   "paidAsks": 12614,
+   "paidChars": 309950,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "slots": 572,
+     "chars": 12238
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 5128,
+     "share": 0.8872,
+     "asks": 4325,
+     "chars": 31686,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 5122,
+      "zh-CN-XiaochenNeural": 6
+     },
+     "held_other": {
+      "asks": 3705,
+      "chars": 28580,
+      "slots": 4152
+     },
+     "held_cast": {
+      "asks": 615,
+      "chars": 3068,
+      "slots": 971
+     },
+     "missing": {
+      "asks": 5,
+      "chars": 38,
+      "slots": 5
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Inaya",
+     "inScope": true,
+     "azureSlots": 5415,
+     "share": 0.9369,
+     "asks": 4751,
+     "chars": 148456,
+     "azureVoices": {
+      "azure_fr-FR-CelesteNeural": 5415
+     },
+     "held_cast": {
+      "asks": 293,
+      "chars": 7561,
+      "slots": 420
+     },
+     "held_other": {
+      "asks": 4451,
+      "chars": 140777,
+      "slots": 4988
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 118,
+      "slots": 7
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Erwan",
+     "inScope": true,
+     "azureSlots": 5415,
+     "share": 0.9369,
+     "asks": 4751,
+     "chars": 148456,
+     "azureVoices": {
+      "azure_fr-FR-HenriNeural": 5415
+     },
+     "held_cast": {
+      "asks": 305,
+      "chars": 8019,
+      "slots": 435
+     },
+     "held_other": {
+      "asks": 4439,
+      "chars": 140319,
+      "slots": 4973
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 118,
+      "slots": 7
+     }
+    },
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "inScope": false,
+     "azureSlots": 572,
+     "share": 0.099,
+     "asks": 572,
+     "chars": 12238,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 572
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 247413,
+   "paidAsksInOrder": 10486
+  },
+  {
+   "course": "deu_for_zho",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6354,
+   "worstShare": 0.9411,
+   "azureSlotsInCast": 17719,
+   "freeLinkAsks": 1476,
+   "freeLinkSlots": 2441,
+   "paidAsks": 13612,
+   "paidChars": 303828,
+   "grantRoles": [
+    "target1",
+    "target2",
+    "known"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "slots": 608,
+     "chars": 13025
+    }
+   },
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Viktoria",
+     "inScope": true,
+     "azureSlots": 5980,
+     "share": 0.9411,
+     "asks": 5187,
+     "chars": 144773,
+     "azureVoices": {
+      "azure_de-DE-KatjaNeural": 5980
+     },
+     "held_other": {
+      "asks": 4778,
+      "chars": 136770,
+      "slots": 5342
+     },
+     "held_cast": {
+      "asks": 398,
+      "chars": 7782,
+      "slots": 627
+     },
+     "missing": {
+      "asks": 11,
+      "chars": 221,
+      "slots": 11
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Nico",
+     "inScope": true,
+     "azureSlots": 5980,
+     "share": 0.9411,
+     "asks": 5187,
+     "chars": 144773,
+     "azureVoices": {
+      "azure_de-DE-ConradNeural": 5980
+     },
+     "held_other": {
+      "asks": 4780,
+      "chars": 136805,
+      "slots": 5347
+     },
+     "held_cast": {
+      "asks": 396,
+      "chars": 7747,
+      "slots": 622
+     },
+     "missing": {
+      "asks": 11,
+      "chars": 221,
+      "slots": 11
+     }
+    },
+    "known": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 5759,
+     "share": 0.9064,
+     "asks": 4714,
+     "chars": 32909,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 5758,
+      "zh-CN-XiaochenNeural": 1
+     },
+     "held_other": {
+      "asks": 4025,
+      "chars": 29773,
+      "slots": 4560
+     },
+     "held_cast": {
+      "asks": 682,
+      "chars": 3098,
+      "slots": 1192
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 38,
+      "slots": 7
+     }
+    },
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "inScope": false,
+     "azureSlots": 608,
+     "share": 0.0957,
+     "asks": 608,
+     "chars": 13025,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 608
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 284611,
+   "paidAsksInOrder": 12505
+  },
+  {
+   "course": "deu_for_jpn",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5887,
+   "worstShare": 0.931,
+   "azureSlotsInCast": 16234,
+   "freeLinkAsks": 848,
+   "freeLinkSlots": 1458,
+   "paidAsks": 13167,
+   "paidChars": 291646,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Shiori",
+     "slots": 619,
+     "chars": 14725
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 5273,
+     "share": 0.8957,
+     "asks": 4516,
+     "chars": 49855,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 5270,
+      "ja-JP-ShioriNeural": 2,
+      "azure_ja-JP-MayuNeural": 1
+     },
+     "held_other": {
+      "asks": 4404,
+      "chars": 49085,
+      "slots": 5092
+     },
+     "held_cast": {
+      "asks": 106,
+      "chars": 682,
+      "slots": 175
+     },
+     "missing": {
+      "asks": 6,
+      "chars": 88,
+      "slots": 6
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Viktoria",
+     "inScope": true,
+     "azureSlots": 5480,
+     "share": 0.9309,
+     "asks": 4749,
+     "chars": 128057,
+     "azureVoices": {
+      "azure_de-DE-KatjaNeural": 5480
+     },
+     "held_other": {
+      "asks": 4369,
+      "chars": 120902,
+      "slots": 4829
+     },
+     "held_cast": {
+      "asks": 370,
+      "chars": 6804,
+      "slots": 641
+     },
+     "missing": {
+      "asks": 10,
+      "chars": 351,
+      "slots": 10
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Nico",
+     "inScope": true,
+     "azureSlots": 5481,
+     "share": 0.931,
+     "asks": 4750,
+     "chars": 128065,
+     "azureVoices": {
+      "azure_de-DE-ChristophNeural": 5481
+     },
+     "held_other": {
+      "asks": 4368,
+      "chars": 120869,
+      "slots": 4829
+     },
+     "held_cast": {
+      "asks": 372,
+      "chars": 6845,
+      "slots": 642
+     },
+     "missing": {
+      "asks": 10,
+      "chars": 351,
+      "slots": 10
+     }
+    },
+    "presentation": {
+     "cast": "azure:Shiori",
+     "inScope": false,
+     "azureSlots": 619,
+     "share": 0.1051,
+     "asks": 619,
+     "chars": 14725,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 619
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 228191,
+   "paidAsksInOrder": 9943
+  },
+  {
+   "course": "eng_for_kor",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5829,
+   "worstShare": 0.9897,
+   "azureSlotsInCast": 14910,
+   "freeLinkAsks": 2699,
+   "freeLinkSlots": 3447,
+   "paidAsks": 10532,
+   "paidChars": 274647,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Sun-Hi",
+     "slots": 545,
+     "chars": 19910
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Jihyun",
+     "inScope": true,
+     "azureSlots": 5763,
+     "share": 0.9887,
+     "asks": 4973,
+     "chars": 81204,
+     "azureVoices": {
+      "azure_ko-KR-SunHiNeural": 5763
+     },
+     "held_other": {
+      "asks": 4840,
+      "chars": 79201,
+      "slots": 5568
+     },
+     "missing": {
+      "asks": 24,
+      "chars": 298,
+      "slots": 27
+     },
+     "held_cast": {
+      "asks": 109,
+      "chars": 1705,
+      "slots": 168
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 5769,
+     "share": 0.9897,
+     "asks": 5079,
+     "chars": 161316,
+     "azureVoices": {
+      "en-GB-SoniaNeural": 5183,
+      "azure_en-GB-SoniaNeural": 583,
+      "azure_en-GB-AdaMultilingualNeural": 3
+     },
+     "held_cast": {
+      "asks": 1937,
+      "chars": 55931,
+      "slots": 2491
+     },
+     "held_other": {
+      "asks": 3104,
+      "chars": 103845,
+      "slots": 3240
+     },
+     "missing": {
+      "asks": 38,
+      "chars": 1540,
+      "slots": 38
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 3378,
+     "share": 0.5795,
+     "asks": 3179,
+     "chars": 108439,
+     "azureVoices": {
+      "azure_en-GB-RyanNeural": 3377,
+      "azure_en-GB-SoniaNeural": 1
+     },
+     "held_other": {
+      "asks": 2489,
+      "chars": 88230,
+      "slots": 2553
+     },
+     "held_cast": {
+      "asks": 653,
+      "chars": 18676,
+      "slots": 788
+     },
+     "missing": {
+      "asks": 37,
+      "chars": 1533,
+      "slots": 37
+     }
+    },
+    "presentation": {
+     "cast": "azure:Sun-Hi",
+     "inScope": false,
+     "azureSlots": 545,
+     "share": 0.0935,
+     "asks": 545,
+     "chars": 19910,
+     "azureVoices": {
+      "azure_ko-KR-SunHiNeural": 545
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 245868,
+   "paidAsksInOrder": 9516
+  },
+  {
+   "course": "ita_for_zho",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5837,
+   "worstShare": 0.9371,
+   "azureSlotsInCast": 16227,
+   "freeLinkAsks": 2795,
+   "freeLinkSlots": 3475,
+   "paidAsks": 12160,
+   "paidChars": 266073,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "slots": 592,
+     "chars": 13979
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 5288,
+     "share": 0.9059,
+     "asks": 4764,
+     "chars": 36617,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 5271,
+      "zh-CN-XiaochenNeural": 17
+     },
+     "held_cast": {
+      "asks": 586,
+      "chars": 2804,
+      "slots": 819
+     },
+     "held_other": {
+      "asks": 4173,
+      "chars": 33778,
+      "slots": 4464
+     },
+     "missing": {
+      "asks": 5,
+      "chars": 35,
+      "slots": 5
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Alessandra",
+     "inScope": true,
+     "azureSlots": 5469,
+     "share": 0.937,
+     "asks": 5095,
+     "chars": 139653,
+     "azureVoices": {
+      "azure_it-IT-ElsaNeural": 5469
+     },
+     "held_cast": {
+      "asks": 1113,
+      "chars": 23811,
+      "slots": 1337
+     },
+     "held_other": {
+      "asks": 3975,
+      "chars": 115680,
+      "slots": 4125
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 162,
+      "slots": 7
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Lorenzo",
+     "inScope": true,
+     "azureSlots": 5470,
+     "share": 0.9371,
+     "asks": 5096,
+     "chars": 139663,
+     "azureVoices": {
+      "azure_it-IT-BenignoNeural": 5470
+     },
+     "held_cast": {
+      "asks": 1096,
+      "chars": 23245,
+      "slots": 1319
+     },
+     "held_other": {
+      "asks": 3993,
+      "chars": 116256,
+      "slots": 4144
+     },
+     "missing": {
+      "asks": 7,
+      "chars": 162,
+      "slots": 7
+     }
+    },
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "inScope": false,
+     "azureSlots": 592,
+     "share": 0.1014,
+     "asks": 592,
+     "chars": 13979,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 592
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 233257,
+   "paidAsksInOrder": 10499
+  },
+  {
+   "course": "deu_at_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 13747,
+   "worstShare": 0.5162,
+   "azureSlotsInCast": 7096,
+   "freeLinkAsks": 440,
+   "freeLinkSlots": 477,
+   "paidAsks": 6528,
+   "paidChars": 169378,
+   "grantRoles": [
+    "known"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 7096,
+     "share": 0.5162,
+     "asks": 6968,
+     "chars": 179004,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 7095,
+      "azure_en-GB-RyanNeural": 1
+     },
+     "held_cast": {
+      "asks": 440,
+      "chars": 9626,
+      "slots": 477
+     },
+     "held_other": {
+      "asks": 6526,
+      "chars": 169333,
+      "slots": 6617
+     },
+     "missing": {
+      "asks": 2,
+      "chars": 45,
+      "slots": 2
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 167245,
+   "paidAsksInOrder": 6445
+  },
+  {
+   "course": "eng_for_ara",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 6187,
+   "worstShare": 0.994,
+   "azureSlotsInCast": 6150,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 5487,
+   "paidChars": 162886,
+   "grantRoles": [
+    "known"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Salma",
+     "slots": 592,
+     "chars": 41013
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Maryam",
+     "inScope": true,
+     "azureSlots": 6150,
+     "share": 0.994,
+     "asks": 5487,
+     "chars": 162886,
+     "azureVoices": {
+      "azure_ar-EG-SalmaNeural": 6150
+     },
+     "held_other": {
+      "asks": 5487,
+      "chars": 162886,
+      "slots": 6150
+     }
+    },
+    "presentation": {
+     "cast": "azure:Salma",
+     "inScope": false,
+     "azureSlots": 592,
+     "share": 0.0957,
+     "asks": 592,
+     "chars": 41013,
+     "azureVoices": {
+      "azure_ar-EG-SalmaNeural": 592
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 155136,
+   "paidAsksInOrder": 5188
+  },
+  {
+   "course": "eng_for_jpn",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 11146,
+   "worstShare": 0.9229,
+   "azureSlotsInCast": 10287,
+   "freeLinkAsks": 70,
+   "freeLinkSlots": 125,
+   "paidAsks": 8786,
+   "paidChars": 146585,
+   "grantRoles": [
+    "known"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Mayu",
+     "slots": 677,
+     "chars": 11071
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 10287,
+     "share": 0.9229,
+     "asks": 8856,
+     "chars": 146951,
+     "azureVoices": {
+      "azure_ja-JP-MayuNeural": 10285,
+      "azure_ja-JP-ShioriNeural": 2
+     },
+     "held_other": {
+      "asks": 8436,
+      "chars": 141112,
+      "slots": 9722
+     },
+     "held_cast": {
+      "asks": 70,
+      "chars": 366,
+      "slots": 125
+     },
+     "missing": {
+      "asks": 350,
+      "chars": 5473,
+      "slots": 440
+     }
+    },
+    "presentation": {
+     "cast": "azure:Mayu",
+     "inScope": false,
+     "azureSlots": 677,
+     "share": 0.0607,
+     "asks": 677,
+     "chars": 11071,
+     "azureVoices": {
+      "azure_ja-JP-MayuNeural": 677
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 134599,
+   "paidAsksInOrder": 7620
+  },
+  {
+   "course": "zho_for_jpn",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5083,
+   "worstShare": 0.9856,
+   "azureSlotsInCast": 14979,
+   "freeLinkAsks": 2498,
+   "freeLinkSlots": 3192,
+   "paidAsks": 11115,
+   "paidChars": 103280,
+   "grantRoles": [
+    "known",
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Shiori",
+     "slots": 454,
+     "chars": 9787
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 4960,
+     "share": 0.9758,
+     "asks": 4588,
+     "chars": 55503,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 4926,
+      "azure_ja-JP-MayuNeural": 2,
+      "ja-JP-ShioriNeural": 32
+     },
+     "held_other": {
+      "asks": 4263,
+      "chars": 51378,
+      "slots": 4605
+     },
+     "held_cast": {
+      "asks": 303,
+      "chars": 3902,
+      "slots": 332
+     },
+     "missing": {
+      "asks": 22,
+      "chars": 223,
+      "slots": 23
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 5009,
+     "share": 0.9854,
+     "asks": 4512,
+     "chars": 33202,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 5009
+     },
+     "held_cast": {
+      "asks": 1099,
+      "chars": 7378,
+      "slots": 1432
+     },
+     "held_other": {
+      "asks": 3400,
+      "chars": 25719,
+      "slots": 3564
+     },
+     "missing": {
+      "asks": 13,
+      "chars": 105,
+      "slots": 13
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Hao",
+     "inScope": true,
+     "azureSlots": 5010,
+     "share": 0.9856,
+     "asks": 4513,
+     "chars": 33207,
+     "azureVoices": {
+      "azure_zh-CN-YunfengNeural": 5010
+     },
+     "held_cast": {
+      "asks": 1096,
+      "chars": 7352,
+      "slots": 1428
+     },
+     "held_other": {
+      "asks": 3404,
+      "chars": 25750,
+      "slots": 3569
+     },
+     "missing": {
+      "asks": 13,
+      "chars": 105,
+      "slots": 13
+     }
+    },
+    "presentation": {
+     "cast": "azure:Shiori",
+     "inScope": false,
+     "azureSlots": 454,
+     "share": 0.0893,
+     "asks": 454,
+     "chars": 9787,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 454
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 88059,
+   "paidAsksInOrder": 9392
+  },
+  {
+   "course": "ara_lb_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 14249,
+   "worstShare": 0.242,
+   "azureSlotsInCast": 3448,
+   "freeLinkAsks": 169,
+   "freeLinkSlots": 203,
+   "paidAsks": 3091,
+   "paidChars": 78806,
+   "grantRoles": [
+    "known"
+   ],
+   "stayAzure": {
+    "target1": {
+     "cast": "azure:Layla",
+     "slots": 14245,
+     "chars": 205138
+    },
+    "target2": {
+     "cast": "azure:Rami",
+     "slots": 14245,
+     "chars": 205138
+    },
+    "presentation": {
+     "cast": "azure:Sonia",
+     "slots": 116,
+     "chars": 5428
+    }
+   },
+   "roles": {
+    "target1": {
+     "cast": "azure:Layla",
+     "inScope": false,
+     "azureSlots": 14245,
+     "share": 0.9997,
+     "asks": 12425,
+     "chars": 205138,
+     "azureVoices": {
+      "azure_ar-LB-LaylaNeural": 14214,
+      "azure_ar-LB-RamiNeural": 31
+     }
+    },
+    "target2": {
+     "cast": "azure:Rami",
+     "inScope": false,
+     "azureSlots": 14245,
+     "share": 0.9997,
+     "asks": 12425,
+     "chars": 205138,
+     "azureVoices": {
+      "azure_ar-LB-RamiNeural": 14217,
+      "azure_ar-LB-LaylaNeural": 28
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 3448,
+     "share": 0.242,
+     "asks": 3260,
+     "chars": 82568,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 3441,
+      "azure_en-GB-MiaNeural": 2,
+      "azure_en-GB-AdaMultilingualNeural": 3,
+      "azure_en-GB-RyanNeural": 2
+     },
+     "held_other": {
+      "asks": 3091,
+      "chars": 78806,
+      "slots": 3245
+     },
+     "held_cast": {
+      "asks": 169,
+      "chars": 3762,
+      "slots": 203
+     }
+    },
+    "presentation": {
+     "cast": "azure:Sonia",
+     "inScope": false,
+     "azureSlots": 116,
+     "share": 0.0081,
+     "asks": 116,
+     "chars": 5428,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 116
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 75230,
+   "paidAsksInOrder": 2944
+  },
+  {
+   "course": "ara_eg_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 13383,
+   "worstShare": 0.2652,
+   "azureSlotsInCast": 3549,
+   "freeLinkAsks": 214,
+   "freeLinkSlots": 246,
+   "paidAsks": 3094,
+   "paidChars": 74051,
+   "grantRoles": [
+    "known"
+   ],
+   "stayAzure": {
+    "target1": {
+     "cast": "azure:Salma",
+     "slots": 13371,
+     "chars": 222786
+    },
+    "target2": {
+     "cast": "azure:Shakir",
+     "slots": 13379,
+     "chars": 222808
+    },
+    "presentation": {
+     "cast": "azure:Sonia",
+     "slots": 97,
+     "chars": 4544
+    }
+   },
+   "roles": {
+    "target1": {
+     "cast": "azure:Salma",
+     "inScope": false,
+     "azureSlots": 13371,
+     "share": 0.9991,
+     "asks": 11900,
+     "chars": 222786,
+     "azureVoices": {
+      "azure_ar-EG-SalmaNeural": 13371
+     }
+    },
+    "target2": {
+     "cast": "azure:Shakir",
+     "inScope": false,
+     "azureSlots": 13379,
+     "share": 0.9997,
+     "asks": 11904,
+     "chars": 222808,
+     "azureVoices": {
+      "azure_ar-EG-ShakirNeural": 13379
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 3549,
+     "share": 0.2652,
+     "asks": 3308,
+     "chars": 78505,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 3540,
+      "azure_en-GB-AdaMultilingualNeural": 4,
+      "azure_en-GB-OliverNeural": 2,
+      "en-GB-SoniaNeural": 2,
+      "azure_en-GB-MiaNeural": 1
+     },
+     "held_other": {
+      "asks": 3094,
+      "chars": 74051,
+      "slots": 3303
+     },
+     "held_cast": {
+      "asks": 214,
+      "chars": 4454,
+      "slots": 246
+     }
+    },
+    "presentation": {
+     "cast": "azure:Sonia",
+     "inScope": false,
+     "azureSlots": 97,
+     "share": 0.0072,
+     "asks": 97,
+     "chars": 4544,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 97
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 68681,
+   "paidAsksInOrder": 2858
+  },
+  {
+   "course": "eng_for_zho",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 5636,
+   "worstShare": 0.9792,
+   "azureSlotsInCast": 5519,
+   "freeLinkAsks": 501,
+   "freeLinkSlots": 662,
+   "paidAsks": 4446,
+   "paidChars": 45014,
+   "grantRoles": [
+    "known"
+   ],
+   "stayAzure": {
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "slots": 502,
+     "chars": 12058
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 5519,
+     "share": 0.9792,
+     "asks": 4947,
+     "chars": 47890,
+     "azureVoices": {
+      "zh-CN-XiaochenNeural": 2483,
+      "azure_zh-CN-XiaochenNeural": 3036
+     },
+     "held_other": {
+      "asks": 4426,
+      "chars": 44806,
+      "slots": 4826
+     },
+     "held_cast": {
+      "asks": 501,
+      "chars": 2876,
+      "slots": 662
+     },
+     "missing": {
+      "asks": 20,
+      "chars": 208,
+      "slots": 31
+     }
+    },
+    "presentation": {
+     "cast": "azure:Xiaochen",
+     "inScope": false,
+     "azureSlots": 502,
+     "share": 0.0891,
+     "asks": 502,
+     "chars": 12058,
+     "azureVoices": {
+      "azure_zh-CN-XiaochenNeural": 502
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 43402,
+   "paidAsksInOrder": 4168
+  },
+  {
+   "course": "fra_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 17072,
+   "worstShare": 0.0002,
+   "azureSlotsInCast": 9,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 7,
+   "paidChars": 196,
+   "grantRoles": [
+    "target1",
+    "target2",
+    "known"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Inaya",
+     "inScope": true,
+     "azureSlots": 3,
+     "share": 0.0002,
+     "asks": 2,
+     "chars": 41,
+     "azureVoices": {
+      "azure_fr-FR-CelesteNeural": 3
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 41,
+      "slots": 3
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Erwan",
+     "inScope": true,
+     "azureSlots": 3,
+     "share": 0.0002,
+     "asks": 2,
+     "chars": 41,
+     "azureVoices": {
+      "azure_fr-FR-HenriNeural": 3
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 41,
+      "slots": 3
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 3,
+     "share": 0.0002,
+     "asks": 3,
+     "chars": 114,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 1,
+      "azure_en-GB-RyanNeural": 1,
+      "azure_en-GB-OliverNeural": 1
+     },
+     "held_other": {
+      "asks": 3,
+      "chars": 114,
+      "slots": 3
+     }
+    }
+   },
+   "planned": false,
+   "breach": false,
+   "paidCharsInOrder": 112,
+   "paidAsksInOrder": 5
+  },
+  {
+   "course": "eng_for_sin",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 12397,
+   "worstShare": 0.0006,
+   "azureSlotsInCast": 11,
+   "freeLinkAsks": 5,
+   "freeLinkSlots": 6,
+   "paidAsks": 5,
+   "paidChars": 175,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "known": {
+     "cast": "azure:Sameera",
+     "slots": 12383,
+     "chars": 293465
+    },
+    "presentation": {
+     "cast": "azure:Thilini",
+     "slots": 1241,
+     "chars": 84242
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "azure:Sameera",
+     "inScope": false,
+     "azureSlots": 12383,
+     "share": 0.9989,
+     "asks": 11334,
+     "chars": 293465,
+     "azureVoices": {
+      "azure_si-LK-SameeraNeural": 12381,
+      "si-LK-SameeraNeural": 2
+     }
+    },
+    "presentation": {
+     "cast": "azure:Thilini",
+     "inScope": false,
+     "azureSlots": 1241,
+     "share": 0.1001,
+     "asks": 1239,
+     "chars": 84242,
+     "azureVoices": {
+      "azure_si-LK-SameeraNeural": 1241
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Charlotte",
+     "inScope": true,
+     "azureSlots": 7,
+     "share": 0.0006,
+     "asks": 6,
+     "chars": 165,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 7
+     },
+     "held_other": {
+      "asks": 3,
+      "chars": 111,
+      "slots": 3
+     },
+     "held_cast": {
+      "asks": 3,
+      "chars": 54,
+      "slots": 4
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 4,
+     "share": 0.0003,
+     "asks": 4,
+     "chars": 146,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 4
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 64,
+      "slots": 2
+     },
+     "held_cast": {
+      "asks": 2,
+      "chars": 82,
+      "slots": 2
+     }
+    }
+   },
+   "planned": false,
+   "breach": false,
+   "paidCharsInOrder": 82,
+   "paidAsksInOrder": 2
+  },
+  {
+   "course": "deu_for_eng",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 15652,
+   "worstShare": 0.0004,
+   "azureSlotsInCast": 8,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 8,
+   "paidChars": 160,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Viktoria",
+     "inScope": true,
+     "azureSlots": 6,
+     "share": 0.0004,
+     "asks": 6,
+     "chars": 137,
+     "azureVoices": {
+      "azure_de-DE-KatjaNeural": 5,
+      "azure_de-DE-ChristophNeural": 1
+     },
+     "held_other": {
+      "asks": 6,
+      "chars": 137,
+      "slots": 6
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Nico",
+     "inScope": true,
+     "azureSlots": 2,
+     "share": 0.0001,
+     "asks": 2,
+     "chars": 23,
+     "azureVoices": {
+      "azure_de-DE-ChristophNeural": 1,
+      "azure_de-DE-ConradNeural": 1
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 23,
+      "slots": 2
+     }
+    }
+   },
+   "planned": false,
+   "breach": false,
+   "paidCharsInOrder": 0,
+   "paidAsksInOrder": 0
+  },
+  {
+   "course": "zho_for_gle",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 133,
+   "worstShare": 1,
+   "azureSlotsInCast": 266,
+   "freeLinkAsks": 248,
+   "freeLinkSlots": 262,
+   "paidAsks": 4,
+   "paidChars": 24,
+   "grantRoles": [
+    "target1",
+    "target2"
+   ],
+   "stayAzure": {
+    "known": {
+     "cast": "azure:Orla",
+     "slots": 133,
+     "chars": 4172
+    },
+    "presentation": {
+     "cast": "azure:Colm",
+     "slots": 15,
+     "chars": 534
+    }
+   },
+   "roles": {
+    "known": {
+     "cast": "azure:Orla",
+     "inScope": false,
+     "azureSlots": 133,
+     "share": 1,
+     "asks": 121,
+     "chars": 4172,
+     "azureVoices": {
+      "ga-IE-OrlaNeural": 117,
+      "azure_ga-IE-OrlaNeural": 16
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Shuwen",
+     "inScope": true,
+     "azureSlots": 133,
+     "share": 1,
+     "asks": 126,
+     "chars": 839,
+     "azureVoices": {
+      "azure_zh-CN-XiaoxiaoMultilingualNeural": 132,
+      "zh-CN-XiaoxiaoMultilingualNeural": 1
+     },
+     "held_cast": {
+      "asks": 124,
+      "chars": 827,
+      "slots": 131
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 12,
+      "slots": 2
+     }
+    },
+    "target2": {
+     "cast": "cartesia:Hao",
+     "inScope": true,
+     "azureSlots": 133,
+     "share": 1,
+     "asks": 126,
+     "chars": 839,
+     "azureVoices": {
+      "azure_zh-CN-YunyiMultilingualNeural": 131,
+      "zh-CN-YunyiMultilingualNeural": 2
+     },
+     "held_cast": {
+      "asks": 124,
+      "chars": 827,
+      "slots": 131
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 12,
+      "slots": 2
+     }
+    },
+    "presentation": {
+     "cast": "azure:Colm",
+     "inScope": false,
+     "azureSlots": 15,
+     "share": 0.1128,
+     "asks": 15,
+     "chars": 534,
+     "azureVoices": {
+      "ga-IE-OrlaNeural": 14,
+      "azure_ga-IE-OrlaNeural": 1
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 20,
+   "paidAsksInOrder": 3
+  },
+  {
+   "course": "kor_for_hin",
+   "status": "beta",
+   "tier": "premium",
+   "rows": 14809,
+   "worstShare": 0.0001,
+   "azureSlotsInCast": 2,
+   "freeLinkAsks": 0,
+   "freeLinkSlots": 0,
+   "paidAsks": 2,
+   "paidChars": 8,
+   "grantRoles": [
+    "target1"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "target1": {
+     "cast": "cartesia:Jihyun",
+     "inScope": true,
+     "azureSlots": 2,
+     "share": 0.0001,
+     "asks": 2,
+     "chars": 8,
+     "azureVoices": {
+      "azure_ko-KR-SunHiNeural": 1,
+      "azure_ko-KR-YuJinNeural": 1
+     },
+     "held_other": {
+      "asks": 2,
+      "chars": 8,
+      "slots": 2
+     }
+    }
+   },
+   "planned": false,
+   "breach": false,
+   "paidCharsInOrder": 4,
+   "paidAsksInOrder": 1
+  },
+  {
+   "course": "deu_ch_for_eng",
+   "status": "not_available",
+   "tier": "premium",
+   "rows": 13795,
+   "worstShare": 0.2075,
+   "azureSlotsInCast": 4646,
+   "freeLinkAsks": 1010,
+   "freeLinkSlots": 1380,
+   "paidAsks": 2963,
+   "paidChars": 80583,
+   "grantRoles": [
+    "target1",
+    "known"
+   ],
+   "stayAzure": {
+    "target2": {
+     "cast": "elevenlabs:Swiss German male (ElevenLabs vTifwvQGTZT1q7epCu2b)",
+     "slots": 404,
+     "chars": 9715
+    }
+   },
+   "roles": {
+    "target2": {
+     "cast": "elevenlabs:Swiss German male (ElevenLabs vTifwvQGTZT1q7epCu2b)",
+     "inScope": false,
+     "azureSlots": 404,
+     "share": 0.0293,
+     "asks": 335,
+     "chars": 9715,
+     "azureVoices": {
+      "azure_de-CH-JanNeural": 404
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Vreni",
+     "inScope": true,
+     "azureSlots": 1784,
+     "share": 0.1293,
+     "asks": 1498,
+     "chars": 39059,
+     "azureVoices": {
+      "azure_de-CH-LeniNeural": 1784
+     },
+     "held_other": {
+      "asks": 1492,
+      "chars": 38876,
+      "slots": 1777
+     },
+     "missing": {
+      "asks": 6,
+      "chars": 183,
+      "slots": 7
+     }
+    },
+    "known": {
+     "cast": "cartesia:Tom-006",
+     "inScope": true,
+     "azureSlots": 2862,
+     "share": 0.2075,
+     "asks": 2475,
+     "chars": 63693,
+     "azureVoices": {
+      "azure_en-GB-SoniaNeural": 2862
+     },
+     "held_other": {
+      "asks": 1465,
+      "chars": 41524,
+      "slots": 1482
+     },
+     "held_cast": {
+      "asks": 1010,
+      "chars": 22169,
+      "slots": 1380
+     }
+    }
+   },
+   "planned": false,
+   "breach": true,
+   "paidCharsInOrder": 74708,
+   "paidAsksInOrder": 2789
+  },
+  {
+   "course": "por_for_jpn",
+   "status": "not_available",
+   "tier": "premium",
+   "rows": 7620,
+   "worstShare": 0.0034,
+   "azureSlotsInCast": 50,
+   "freeLinkAsks": 1,
+   "freeLinkSlots": 1,
+   "paidAsks": 49,
+   "paidChars": 614,
+   "grantRoles": [
+    "known",
+    "target1"
+   ],
+   "stayAzure": {},
+   "roles": {
+    "known": {
+     "cast": "cartesia:Yuzuki - Composed Explainer",
+     "inScope": true,
+     "azureSlots": 24,
+     "share": 0.0031,
+     "asks": 24,
+     "chars": 200,
+     "azureVoices": {
+      "azure_ja-JP-ShioriNeural": 17,
+      "azure_ja-JP-MayuNeural": 6,
+      "azure_ja-JP-NaokiNeural": 1
+     },
+     "held_other": {
+      "asks": 23,
+      "chars": 195,
+      "slots": 23
+     },
+     "held_cast": {
+      "asks": 1,
+      "chars": 5,
+      "slots": 1
+     }
+    },
+    "target1": {
+     "cast": "cartesia:Mariana",
+     "inScope": true,
+     "azureSlots": 26,
+     "share": 0.0034,
+     "asks": 26,
+     "chars": 419,
+     "azureVoices": {
+      "azure_pt-PT-DuarteNeural": 7,
+      "azure_pt-PT-RaquelNeural": 19
+     },
+     "held_other": {
+      "asks": 26,
+      "chars": 419,
+      "slots": 26
+     }
+    }
+   },
+   "planned": false,
+   "breach": false,
+   "paidCharsInOrder": 28,
+   "paidAsksInOrder": 3
+  }
+ ],
+ "breaches": [
+  {
+   "course": "eng_for_tel",
+   "status": "live",
+   "worstShare": 0.9961,
+   "planned": false
+  },
+  {
+   "course": "eng_for_kan",
+   "status": "live",
+   "worstShare": 0.9763,
+   "planned": false
+  },
+  {
+   "course": "eng_for_guj",
+   "status": "live",
+   "worstShare": 0.8873,
+   "planned": false
+  },
+  {
+   "course": "eng_for_mar",
+   "status": "live",
+   "worstShare": 0.9492,
+   "planned": false
+  },
+  {
+   "course": "eng_for_pan",
+   "status": "live",
+   "worstShare": 0.9095,
+   "planned": false
+  },
+  {
+   "course": "por_for_eng",
+   "status": "live",
+   "worstShare": 0.5744,
+   "planned": true
+  },
+  {
+   "course": "jpn_for_eng",
+   "status": "live",
+   "worstShare": 0.4874,
+   "planned": true
+  },
+  {
+   "course": "kor_for_eng",
+   "status": "live",
+   "worstShare": 0.3612,
+   "planned": true
+  },
+  {
+   "course": "ara_for_eng",
+   "status": "beta",
+   "worstShare": 0.9718,
+   "planned": false
+  },
+  {
+   "course": "fra_ca_for_eng",
+   "status": "beta",
+   "worstShare": 0.996,
+   "planned": false
+  },
+  {
+   "course": "spa_mx_for_eng",
+   "status": "beta",
+   "worstShare": 0.9056,
+   "planned": false
+  },
+  {
+   "course": "kor_for_tam",
+   "status": "beta",
+   "worstShare": 1,
+   "planned": false
+  },
+  {
+   "course": "spa_for_jpn",
+   "status": "beta",
+   "worstShare": 0.9542,
+   "planned": false
+  },
+  {
+   "course": "eng_for_fra",
+   "status": "beta",
+   "worstShare": 0.9894,
+   "planned": false
+  },
+  {
+   "course": "eng_for_ita",
+   "status": "beta",
+   "worstShare": 0.9858,
+   "planned": false
+  },
+  {
+   "course": "eng_for_por",
+   "status": "beta",
+   "worstShare": 0.9858,
+   "planned": false
+  },
+  {
+   "course": "eng_for_deu",
+   "status": "beta",
+   "worstShare": 0.9873,
+   "planned": false
+  },
+  {
+   "course": "zho_for_tam",
+   "status": "beta",
+   "worstShare": 1,
+   "planned": false
+  },
+  {
+   "course": "fra_for_jpn",
+   "status": "beta",
+   "worstShare": 0.9434,
+   "planned": false
+  },
+  {
+   "course": "eng_for_spa",
+   "status": "beta",
+   "worstShare": 0.8979,
+   "planned": false
+  },
+  {
+   "course": "por_br_for_eng",
+   "status": "beta",
+   "worstShare": 0.5157,
+   "planned": false
+  },
+  {
+   "course": "ita_for_jpn",
+   "status": "beta",
+   "worstShare": 0.9343,
+   "planned": false
+  },
+  {
+   "course": "fra_for_zho",
+   "status": "beta",
+   "worstShare": 0.9369,
+   "planned": false
+  },
+  {
+   "course": "deu_for_zho",
+   "status": "beta",
+   "worstShare": 0.9411,
+   "planned": false
+  },
+  {
+   "course": "deu_for_jpn",
+   "status": "beta",
+   "worstShare": 0.931,
+   "planned": false
+  },
+  {
+   "course": "eng_for_kor",
+   "status": "beta",
+   "worstShare": 0.9897,
+   "planned": false
+  },
+  {
+   "course": "ita_for_zho",
+   "status": "beta",
+   "worstShare": 0.9371,
+   "planned": false
+  },
+  {
+   "course": "deu_at_for_eng",
+   "status": "beta",
+   "worstShare": 0.5162,
+   "planned": false
+  },
+  {
+   "course": "eng_for_ara",
+   "status": "beta",
+   "worstShare": 0.994,
+   "planned": false
+  },
+  {
+   "course": "eng_for_jpn",
+   "status": "beta",
+   "worstShare": 0.9229,
+   "planned": false
+  },
+  {
+   "course": "zho_for_jpn",
+   "status": "beta",
+   "worstShare": 0.9856,
+   "planned": false
+  },
+  {
+   "course": "ara_lb_for_eng",
+   "status": "beta",
+   "worstShare": 0.242,
+   "planned": false
+  },
+  {
+   "course": "ara_eg_for_eng",
+   "status": "beta",
+   "worstShare": 0.2652,
+   "planned": false
+  },
+  {
+   "course": "eng_for_zho",
+   "status": "beta",
+   "worstShare": 0.9792,
+   "planned": false
+  },
+  {
+   "course": "zho_for_gle",
+   "status": "beta",
+   "worstShare": 1,
+   "planned": false
+  },
+  {
+   "course": "deu_ch_for_eng",
+   "status": "not_available",
+   "worstShare": 0.2075,
+   "planned": false
+  }
+ ],
+ "index": {
+  "file": "/home/tomcassidy/ssi-evidence/ssi-dashboard-v7/clip-index/clip-index-dump.tsv.gz",
+  "mtime": "2026-11-22T11:55:40.601Z"
+ }
+}
