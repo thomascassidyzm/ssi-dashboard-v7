@@ -76,7 +76,7 @@ rb=""; silent=0; for c in ita_for_jpn ita_for_eng; do out=$(node $DIR/readback.c
 echo "=== end $(date -u +%FT%TZ)"
 left=0; for c in ita_for_jpn ita_for_eng; do read -r l a < <(state "$(cf "$c")"); left=$((left+l)); done
 if [ "$left" -eq 0 ] && [ -z "$stop" ] && [ $silent -eq 0 ] && [ -n "$audio" ]; then
-  systemctl --user disable --now cs-long-keep-ita420-apply.timer
+  systemctl --user stop cs-long-keep-ita420-apply.timer   # transient timer (systemd-run): stop, not disable
   say "[ita420 night] ALL DONE:${report:0:1500}; audio:${audio:0:900}; readback:${rb:0:900}; timer disabled. Log $LOG"
 else
   say "[ita420 night] $(date -u +%F): ops left $left${stop:+; STOP: $stop};${report:0:1500}; audio:${audio:- not run}; readback:${rb:0:900}. Log $LOG"
