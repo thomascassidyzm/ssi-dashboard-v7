@@ -1,0 +1,350 @@
+{
+ "_why": "cs #383·AI. After the C0108 re-cut seed 108 teaches 'expect', and 'hope' is next taught at S0151. (1) Seed 149's canonical target 'This isn't very difficult, so I hope you'll finish soon.' needs 'hope': the seed is not touched; the shortest LEGO 'hope' (known 'බලාපොරොත්තු වෙනවා', the seed's own known word; Malalasekera English-Sinhalese Dictionary, s.v. hope / expect: බලාපොරොත්තු වෙනවා covers both, so the English target is what the learner says) is inserted as S0149L02 with 10 rows (4 BUILD, 6 USE) on the shape of the existing S0149L01 rows. The two S0149L01 BUILD rows that said 'I hope' come before that LEGO, so they are re-said without it ('I believe' as in S0149L01U07; 'so you'll finish soon'), and their old sentences move into the new basket. (2) Seventeen rows in seeds 109-126 said 'hope'. Fourteen are deleted (thin basket over a bad row, Kai 19 Nov): most were already broken English ('I hope for our brain', 'I hope in the pub about that') and their known side says ආශා (desire), not the taught verb; re-saying them with 'expect' cannot pass the builder (each seed is validated without the 108 overlay; 'expect' is next taught at S0404). The three BUILD rows among them (S0111L01B02, S0121L01B03, S0126L01B03) are re-said with taught words instead, because those baskets are at their BUILD minimum: 'about our brain', 'about your car', 'I know the shape of that'. Baskets keep 9-11 rows each. (3) ZUT: S0291L01B01 gave the bare 'බලාපොරොත්තු වෙනවා' (now the hope LEGO's known) for 'I hope I'll be able to'; its known is re-said on its own basket's pattern ('මම ... ලැබෙයි කියලා බලාපොරොත්තු වෙනවා', as S0291L01U01-U11 and S0668L01B01) so one prompt keeps one answer.",
+ "add": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0109L02U08"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0111L01U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0111L02U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0111L02U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0112L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0115L01U08"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0116L01U05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0116L02U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0117L01U01"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0118L01U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0119L01U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0121L01U04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0121L02U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "eng_for_sin:S0126L01U05"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0111L01B02",
+   "set": {
+    "known_text": "මොළය ගැන",
+    "target_text": "about our brain"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0121L01B03",
+   "set": {
+    "known_text": "ඔයාගේ ගාඩිය ගැන",
+    "target_text": "about your car"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0126L01B03",
+   "set": {
+    "known_text": "මම ඒ ගැන හැඩය දන්නවා",
+    "target_text": "I know the shape of that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0291L01B01",
+   "set": {
+    "known_text": "මම ... ලැබෙයි කියලා බලාපොරොත්තු වෙනවා"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0149L01B02",
+   "set": {
+    "known_text": "මම විශ්වාස කරනවා ඔයා ඉක්මනට ඉවර කරයි වේවි කියලා",
+    "target_text": "I believe you'll finish soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_sin:S0149L01B03",
+   "set": {
+    "known_text": "මේක ඉතා අමාරු නෑ ඒ නිසා ඔයා ඉක්මනට ඉවර කරයි වේවි",
+    "target_text": "this isn't very difficult so you'll finish soon"
+   }
+  },
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 149,
+    "lego_index": 2,
+    "known_text": "බලාපොරොත්තු වෙනවා",
+    "target_text": "hope",
+    "type": "A",
+    "is_new": true,
+    "status": "draft"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02B01",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "බලාපොරොත්තු වෙනවා",
+    "target_text": "hope",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 4,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02B02",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "මම බලාපොරොත්තු වෙනවා",
+    "target_text": "I hope",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 6,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02B03",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා ඉක්මනට ඉවර කරයි වේවි කියලා",
+    "target_text": "I hope you'll finish soon",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 25,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02B04",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා ඉවර කරයි වේවි කියලා",
+    "target_text": "I hope you'll finish",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 20,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02U01",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 5,
+    "known_text": "මේක ඉතා අමාරු නෑ ඒ නිසා මම බලාපොරොත්තු වෙනවා ඔයා ඉක්මනට ඉවර කරයි වේවි",
+    "target_text": "this isn't very difficult so I hope you'll finish soon",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 54,
+    "lego_count": 14
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02U02",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා හොඳට කරයි වේවි කියලා",
+    "target_text": "I hope you'll do well",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 21,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02U03",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා ඒක තේරුම් ගනියි වේවි කියලා",
+    "target_text": "I hope you'll understand it",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 27,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02U04",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා හොඳට දැනෙයි වේවි කියලා",
+    "target_text": "I hope you'll feel better",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 25,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02U05",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා ඉක්මනට ලෑස්ති වෙයි වේවි කියලා",
+    "target_text": "I hope you'll be ready soon",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 27,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_sin:S0149L02U06",
+    "course_code": "eng_for_sin",
+    "seed_number": 149,
+    "lego_index": 2,
+    "position": 10,
+    "known_text": "මම බලාපොරොත්තු වෙනවා ඔයා ඉගෙන ගනියි වේවි කියලා",
+    "target_text": "I hope you'll learn",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #383·AI C0108: seed 149's canonical target says 'hope', which seed 108 no longer teaches; shortest hope LEGO, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "word_count": 19,
+    "lego_count": 8
+   }
+  }
+ ]
+}
