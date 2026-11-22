@@ -1,0 +1,149 @@
+{
+ "ops": [
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0167L01B04",
+   "expect": {
+    "known_text": "I know what do you need to do tomorrow afternoon",
+    "target_text": "je sais qu'est-ce que vous devez faire demain après-midi"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0167L01B02",
+   "expect": {
+    "known_text": "what do you need to do tomorrow afternoon",
+    "target_text": "qu'est-ce que vous devez faire demain après-midi"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0167L01B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 167,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "what do you need to do tomorrow afternoon with me?",
+    "target_text": "qu'est-ce que vous devez faire demain après-midi avec moi?",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 58,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0167L01B06",
+    "course_code": "fra_for_eng",
+    "seed_number": 167,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "so what do you need to do tomorrow afternoon?",
+    "target_text": "alors, qu'est-ce que vous devez faire demain après-midi?",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 56,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0167L01B07",
+    "course_code": "fra_for_eng",
+    "seed_number": 167,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "what do you need to do tomorrow afternoon here?",
+    "target_text": "qu'est-ce que vous devez faire demain après-midi ici?",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 53,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B05",
+   "slot": "known",
+   "audio_id": "ef1d9364-2b93-4ddc-bd9c-a8d8182b09ee"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B05",
+   "slot": "target1",
+   "audio_id": "f1212c68-594f-4c6a-a2e0-49a98984788d"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B05",
+   "slot": "target2",
+   "audio_id": "8b6c9650-5838-4214-853e-96aff3d6f6fe"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B06",
+   "slot": "known",
+   "audio_id": "3c445b3b-3e65-4620-8fce-74844385bcbb"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B06",
+   "slot": "target1",
+   "audio_id": "4cc2618a-41f7-495e-8e9e-740c3b7627ac"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B06",
+   "slot": "target2",
+   "audio_id": "158b57c3-a4db-48d4-a5ae-2783b08770ed"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B07",
+   "slot": "known",
+   "audio_id": "ecdbd89f-d0e1-48c3-a659-88343fcf6db6"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B07",
+   "slot": "target1",
+   "audio_id": "98fa77c2-4876-48f1-ab9c-7b2c0b161ab2"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0167L01B07",
+   "slot": "target2",
+   "audio_id": "0ebe86b3-dbcd-48f7-aa88-a0fbab9b9b7d"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 141,
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 141,
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 141,
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "set": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "pas de problème. Tout va bien",
+    "known_audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace",
+    "target1_audio_id": "2a8af21e-1ebd-48f5-8a55-bccf1f57f08e",
+    "target2_audio_id": "0f3932b3-588b-4239-bf27-3e169f275517"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 141,
+   "set": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "pas de problème. Tout va bien",
+    "known_audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace",
+    "target1_audio_id": "2a8af21e-1ebd-48f5-8a55-bccf1f57f08e",
+    "target2_audio_id": "0f3932b3-588b-4239-bf27-3e169f275517"
+   }
+  }
+ ]
+}

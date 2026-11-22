@@ -1,0 +1,76 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 141,
+   "expect": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "pas de problème. Tout va bien"
+   },
+   "set": {
+    "known_text": "no problem, everything is okay",
+    "target_text": "pas de problème, tout va bien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "expect": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "pas de problème. Tout va bien"
+   },
+   "set": {
+    "known_text": "no problem, everything is okay",
+    "target_text": "pas de problème, tout va bien"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 141,
+   "slot": "known",
+   "audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 141,
+   "slot": "target1",
+   "audio_id": "2a8af21e-1ebd-48f5-8a55-bccf1f57f08e",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 141,
+   "slot": "target2",
+   "audio_id": "0f3932b3-588b-4239-bf27-3e169f275517",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "slot": "known",
+   "audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "slot": "target1",
+   "audio_id": "2a8af21e-1ebd-48f5-8a55-bccf1f57f08e",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0141L03U09",
+   "slot": "target2",
+   "audio_id": "0f3932b3-588b-4239-bf27-3e169f275517",
+   "allow_text_mismatch": true
+  }
+ ]
+}

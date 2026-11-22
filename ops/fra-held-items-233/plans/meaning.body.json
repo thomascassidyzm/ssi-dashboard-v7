@@ -1,0 +1,237 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 248,
+   "expect": {
+    "known_text": "I thought the film was complete rubbish and I want my money back",
+    "target_text": "Je pensais que le film était vraiment nul et je veux récupérer mon argent"
+   },
+   "set": {
+    "known_text": "I thought the film was really rubbish and I want to get my money back"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0248L02U09",
+   "expect": {
+    "known_text": "I thought the film was complete rubbish and I want my money back",
+    "target_text": "Je pensais que le film était vraiment nul et je veux récupérer mon argent"
+   },
+   "set": {
+    "known_text": "I thought the film was really rubbish and I want to get my money back"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 280,
+   "expect": {
+    "known_text": "no I only had to do the most important job",
+    "target_text": "non je devais seulement faire le travail le plus important"
+   },
+   "set": {
+    "known_text": "no I only needed to do the most important job"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0280L01U10",
+   "expect": {
+    "known_text": "no I only had to do the most important job",
+    "target_text": "non je devais seulement faire le travail le plus important"
+   },
+   "set": {
+    "known_text": "no I only needed to do the most important job"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0280L02U07",
+   "expect": {
+    "known_text": "I needed to leave early next week",
+    "target_text": "je devais partir au début de la semaine prochaine"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0280L02U08",
+   "expect": {
+    "known_text": "unfortunately I needed to leave in a few days",
+    "target_text": "malheureusement je devais partir dans quelques jours"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 480,
+   "expect": {
+    "known_text": "whatever he says it's not far ahead now",
+    "target_text": "quoi qu'il dise ce n'est plus très loin maintenant"
+   },
+   "set": {
+    "known_text": "whatever he says it's no longer very far now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0480L02U15",
+   "expect": {
+    "known_text": "whatever he says it's not far ahead now",
+    "target_text": "quoi qu'il dise ce n'est plus très loin maintenant"
+   },
+   "set": {
+    "known_text": "whatever he says it's no longer very far now"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0480L03U02",
+   "expect": {
+    "known_text": "no longer good",
+    "target_text": "plus bien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0480L03U03",
+   "expect": {
+    "known_text": "not very far now",
+    "target_text": "plus très loin maintenant"
+   },
+   "set": {
+    "known_text": "no longer very far now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0480L03U04",
+   "expect": {
+    "known_text": "it's no longer a problem",
+    "target_text": "c'est plus un problème"
+   },
+   "set": {
+    "target_text": "ce n'est plus un problème"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0480L03U05",
+   "expect": {
+    "known_text": "it's not very far anymore",
+    "target_text": "c'est plus très loin"
+   },
+   "set": {
+    "known_text": "it's no longer very far",
+    "target_text": "ce n'est plus très loin"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 319,
+   "expect": {
+    "known_text": "she needs to move to a different country",
+    "target_text": "elle a besoin de déménager dans un autre pays"
+   },
+   "set": {
+    "target_text": "elle doit déménager dans un pays différent"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 248,
+   "slot": "known",
+   "audio_id": "c804fb7e-85c2-40e4-9e9b-60b05467e6c1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0248L02U09",
+   "slot": "known",
+   "audio_id": "c804fb7e-85c2-40e4-9e9b-60b05467e6c1"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 280,
+   "slot": "known",
+   "audio_id": "f8e9c9cf-2223-4969-ad69-38899dd2e1ae"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0280L01U10",
+   "slot": "known",
+   "audio_id": "f8e9c9cf-2223-4969-ad69-38899dd2e1ae"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 480,
+   "slot": "known",
+   "audio_id": "8af60fea-6cc1-4113-969f-8a55febbe720"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L02U15",
+   "slot": "known",
+   "audio_id": "8af60fea-6cc1-4113-969f-8a55febbe720"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L03U03",
+   "slot": "known",
+   "audio_id": "42f3d3bf-ac37-4503-ac8d-4c5fd774cf8e"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L03U04",
+   "slot": "target1",
+   "audio_id": "177e397f-017b-442e-9d14-1ab294b37c88"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L03U04",
+   "slot": "target2",
+   "audio_id": "56e1ed5d-72bb-4e83-a51a-5f3144b05e10"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L03U05",
+   "slot": "known",
+   "audio_id": "dbfccde6-3eb5-4993-914e-461fe8b9aa90"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L03U05",
+   "slot": "target1",
+   "audio_id": "9b4eaec1-8a7d-45ae-8d99-631f0939fa00"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0480L03U05",
+   "slot": "target2",
+   "audio_id": "53f2c1cc-246a-49c0-9a79-a95e1d70aa08"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 319,
+   "slot": "target1",
+   "audio_id": "5d22af23-86df-4d10-ab8f-47c006989d76"
+  },
+  {
+   "op": "audio.link",
+   "target": "seed",
+   "seed_number": 319,
+   "slot": "target2",
+   "audio_id": "ea2e05af-1bdd-4351-b470-173c905fe72e"
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B07",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B07",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B07",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B06",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B06",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B06",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B05",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B05",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0167L01B05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0167L01B07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0167L01B06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0167L01B05"
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0167L01B02",
+    "seed_number": 167,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "what do you need to do tomorrow afternoon",
+    "target_text": "qu'est-ce que vous devez faire demain après-midi",
+    "word_count": 48,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T01:26:52.741Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "24f3fca4-3630-43dc-acf7-844fb48b4012",
+    "target1_audio_id": "53948e18-8e82-461c-bea0-fede078a847e",
+    "target2_audio_id": "fc7b8843-8a1a-409f-8bf1-06620b28827f",
+    "qa_checked": "2026-02-11T01:46:18.377Z",
+    "target1_duration_ms": 2280,
+    "target2_duration_ms": 2184,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "what do you need to do tomorrow afternoon",
+      "legoId": "S0167L01",
+      "target": "qu'est-ce que vous devez faire demain après-midi",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 135790624
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0167L01B04",
+    "seed_number": 167,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "I know what do you need to do tomorrow afternoon",
+    "target_text": "je sais qu'est-ce que vous devez faire demain après-midi",
+    "word_count": 56,
+    "lego_count": 10,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-11T01:26:52.741Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "55755b74-4f90-4c46-a00d-55cdef17edc3",
+    "target1_audio_id": "8b20a33a-9b1f-42bb-b755-0ae7bb162768",
+    "target2_audio_id": "0a17b267-b9b7-4581-a085-01c829639819",
+    "qa_checked": "2026-02-11T01:46:18.377Z",
+    "target1_duration_ms": 2640,
+    "target2_duration_ms": 2832,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I know",
+      "legoId": "S0059L01",
+      "target": "je sais",
+      "isGhost": false
+     },
+     {
+      "known": "what do you need to do tomorrow afternoon",
+      "legoId": "S0167L01",
+      "target": " qu'est-ce que vous devez faire demain après-midi",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 136315424
+   }
+  }
+ ]
+}

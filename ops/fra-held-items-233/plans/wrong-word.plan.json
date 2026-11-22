@@ -1,0 +1,1796 @@
+{
+ "family": "wrong-word",
+ "touched_seeds": [
+  170,
+  238,
+  240,
+  275,
+  278,
+  326,
+  387,
+  543
+ ],
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0238L01",
+   "expect": {
+    "known_text": "wanted you to",
+    "target_text": "voulait que tu"
+   },
+   "set": {
+    "components": [
+     {
+      "known": "wanted",
+      "target": "voulait"
+     },
+     {
+      "known": "you to",
+      "target": "que tu"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0238L01B02",
+   "expect": {
+    "known_text": "he wanted that you",
+    "target_text": "il voulait que tu"
+   },
+   "set": {
+    "known_text": "he wanted you to"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0238L01B03",
+   "expect": {
+    "known_text": "she wanted that you",
+    "target_text": "elle voulait que tu"
+   },
+   "set": {
+    "known_text": "she wanted you to"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0238L02",
+   "expect": {
+    "known_text": "you're telling",
+    "target_text": "dises"
+   },
+   "set": {
+    "known_text": "you to tell me",
+    "target_text": "que tu me dises",
+    "type": "M",
+    "components": [
+     {
+      "known": "you to",
+      "target": "que tu"
+     },
+     {
+      "known": "tell me",
+      "target": "me dises"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0238L02B01",
+   "expect": {
+    "known_text": "you're telling me",
+    "target_text": "tu me dises"
+   },
+   "set": {
+    "known_text": "you to tell me",
+    "target_text": "que tu me dises"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0238L02B02",
+   "expect": {
+    "known_text": "you're telling someone",
+    "target_text": "tu dises à quelqu'un"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0238L02B03",
+   "expect": {
+    "known_text": "wanted you to tell",
+    "target_text": "voulait que tu dises"
+   },
+   "set": {
+    "known_text": "he wanted you to tell me",
+    "target_text": "il voulait que tu me dises"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0238L02B04",
+    "course_code": "fra_for_eng",
+    "seed_number": 238,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "she wanted you to tell me",
+    "target_text": "elle voulait que tu me dises",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 28,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0238L02B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 238,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "I want you to tell me",
+    "target_text": "je veux que tu me dises",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 23,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0240L02",
+   "expect": {
+    "known_text": "doesn't like",
+    "target_text": "n'aime pas"
+   },
+   "set": {
+    "type": "A",
+    "components": null
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0240L02C01",
+   "expect": {
+    "known_text": "doesn't",
+    "target_text": "n'aime"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0240L02C02",
+   "expect": {
+    "known_text": "like",
+    "target_text": "pas"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0240L03",
+   "expect": {
+    "known_text": "he's stopping",
+    "target_text": "s'arrêter"
+   },
+   "set": {
+    "known_text": "to stop"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B01",
+   "expect": {
+    "known_text": "like he's stopping",
+    "target_text": "aime s'arrêter"
+   },
+   "set": {
+    "known_text": "likes to stop"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B02",
+   "expect": {
+    "known_text": "he's stopping before",
+    "target_text": "s'arrêter avant"
+   },
+   "set": {
+    "known_text": "to stop before"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B03",
+   "expect": {
+    "known_text": "he's stopping talking",
+    "target_text": "s'arrêter de parler"
+   },
+   "set": {
+    "known_text": "to stop talking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B04",
+   "expect": {
+    "known_text": "doesn't like he's stopping",
+    "target_text": "n'aime pas s'arrêter"
+   },
+   "set": {
+    "known_text": "doesn't like to stop"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U01",
+   "expect": {
+    "known_text": "he doesn't like stopping speaking",
+    "target_text": "il n'aime pas s'arrêter de parler"
+   },
+   "set": {
+    "known_text": "he doesn't like to stop talking"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0278L01",
+   "expect": {
+    "known_text": "I've had to",
+    "target_text": "j'ai dû"
+   },
+   "set": {
+    "known_text": "did you have to",
+    "target_text": "est-ce que tu as dû",
+    "components": [
+     {
+      "known": "did you",
+      "target": "est-ce que tu as"
+     },
+     {
+      "known": "have to",
+      "target": "dû"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0278L01C01",
+   "expect": {
+    "known_text": "had to",
+    "target_text": "dû"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01B01",
+   "expect": {
+    "known_text": "I've had to",
+    "target_text": "j'ai dû"
+   },
+   "set": {
+    "known_text": "did you have to",
+    "target_text": "est-ce que tu as dû"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0278L01B02",
+   "expect": {
+    "known_text": "I've had to",
+    "target_text": "j'ai dû"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01B03",
+   "expect": {
+    "known_text": "I've had to finish",
+    "target_text": "j'ai dû finir"
+   },
+   "set": {
+    "known_text": "did you have to finish?",
+    "target_text": "est-ce que tu as dû finir ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01B04",
+   "expect": {
+    "known_text": "I've had to leave",
+    "target_text": "j'ai dû partir"
+   },
+   "set": {
+    "known_text": "did you have to leave?",
+    "target_text": "est-ce que tu as dû partir ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01U01",
+   "expect": {
+    "known_text": "I've had to stay here for the meeting",
+    "target_text": "j'ai dû rester ici pour la réunion"
+   },
+   "set": {
+    "known_text": "did you have to stay here for the meeting?",
+    "target_text": "est-ce que tu as dû rester ici pour la réunion ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01U03",
+   "expect": {
+    "known_text": "I've had to finish everything before the meeting",
+    "target_text": "j'ai dû tout finir avant la réunion"
+   },
+   "set": {
+    "known_text": "did you have to finish everything before the meeting?",
+    "target_text": "est-ce que tu as dû tout finir avant la réunion ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01U04",
+   "expect": {
+    "known_text": "I've had to wait much longer",
+    "target_text": "j'ai dû attendre beaucoup plus longtemps"
+   },
+   "set": {
+    "known_text": "did you have to wait much longer?",
+    "target_text": "est-ce que tu as dû attendre beaucoup plus longtemps ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01U05",
+   "expect": {
+    "known_text": "I've had to do this very important thing",
+    "target_text": "j'ai dû faire cette chose très importante"
+   },
+   "set": {
+    "known_text": "did you have to do this very important thing?",
+    "target_text": "est-ce que tu as dû faire cette chose très importante ?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0278L01U09",
+   "expect": {
+    "known_text": "I've had to work here much longer than I wanted",
+    "target_text": "j'ai dû travailler ici beaucoup plus longtemps que je voulais"
+   },
+   "set": {
+    "known_text": "did you have to work here much longer than you wanted?",
+    "target_text": "est-ce que tu as dû travailler ici beaucoup plus longtemps que tu voulais ?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0278L01U06",
+   "expect": {
+    "known_text": "I think I've had to wait too long",
+    "target_text": "je pense que j'ai dû attendre trop longtemps"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0278L01U07",
+   "expect": {
+    "known_text": "I've had to leave early next week",
+    "target_text": "j'ai dû partir au début de la semaine prochaine"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0278L01U08",
+   "expect": {
+    "known_text": "unfortunately I've had to leave in a few days",
+    "target_text": "malheureusement j'ai dû partir dans quelques jours"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0278L01B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 278,
+    "lego_index": 1,
+    "position": 3,
+    "known_text": "did you have to wait?",
+    "target_text": "est-ce que tu as dû attendre ?",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 30,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0278L01U02",
+    "course_code": "fra_for_eng",
+    "seed_number": 278,
+    "lego_index": 1,
+    "position": 14,
+    "known_text": "did you have to finish everything last night?",
+    "target_text": "est-ce que tu as dû tout finir la nuit dernière?",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 48,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0170L02",
+   "expect": {
+    "known_text": "you have",
+    "target_text": "vous avez"
+   },
+   "set": {
+    "known_text": "what you need",
+    "target_text": "ce dont vous avez besoin",
+    "components": [
+     {
+      "known": "what",
+      "target": "ce dont"
+     },
+     {
+      "known": "you need",
+      "target": "vous avez besoin"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02C01",
+   "expect": {
+    "known_text": "you",
+    "target_text": "vous"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02C02",
+   "expect": {
+    "known_text": "have",
+    "target_text": "avez"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02B01",
+   "expect": {
+    "known_text": "you have",
+    "target_text": "vous avez"
+   },
+   "set": {
+    "known_text": "what you need",
+    "target_text": "ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02B02",
+   "expect": {
+    "known_text": "you have",
+    "target_text": "vous avez"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02B03",
+   "expect": {
+    "known_text": "you have need",
+    "target_text": "vous avez besoin"
+   },
+   "set": {
+    "known_text": "I know what you need",
+    "target_text": "je sais ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0170L02B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 170,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "that's what you need",
+    "target_text": "c'est ce dont vous avez besoin",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 30,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0170L02B06",
+    "course_code": "fra_for_eng",
+    "seed_number": 170,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "everything you need",
+    "target_text": "tout ce dont vous avez besoin",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 29,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02B04",
+   "expect": {
+    "known_text": "what you have",
+    "target_text": "ce que vous avez"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U01",
+   "expect": {
+    "known_text": "you have a book",
+    "target_text": "vous avez un livre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U03",
+   "expect": {
+    "known_text": "do you have time to help me?",
+    "target_text": "vous avez le temps de m'aider?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U04",
+   "expect": {
+    "known_text": "you have an interesting book",
+    "target_text": "vous avez un livre intéressant"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U05",
+   "expect": {
+    "known_text": "you have a lot to learn",
+    "target_text": "vous avez beaucoup à apprendre"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02U06",
+   "expect": {
+    "known_text": "I'd like to know what you have",
+    "target_text": "j'aimerais savoir ce que vous avez"
+   },
+   "set": {
+    "known_text": "I'd like to know what you need",
+    "target_text": "j'aimerais savoir ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02U07",
+   "expect": {
+    "known_text": "I think you have something to tell me",
+    "target_text": "je pense que vous avez quelque chose à me dire"
+   },
+   "set": {
+    "known_text": "I don't know what you need",
+    "target_text": "je ne sais pas ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02U08",
+   "expect": {
+    "known_text": "I'd like you to tell me what you have need of",
+    "target_text": "je voudrais que vous me disiez ce dont vous avez besoin"
+   },
+   "set": {
+    "known_text": "I'd like you to tell me what you need"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0326L03",
+   "expect": {
+    "known_text": "she might need to",
+    "target_text": "qu'elle ait besoin de"
+   },
+   "set": {
+    "known_text": "I don't think she needs to",
+    "target_text": "je ne pense pas qu'elle ait besoin de",
+    "components": [
+     {
+      "known": "I don't think",
+      "target": "je ne pense pas"
+     },
+     {
+      "known": "she needs to",
+      "target": "qu'elle ait besoin de"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0326L03C01",
+   "expect": {
+    "known_text": "she",
+    "target_text": "qu'elle"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0326L03C02",
+   "expect": {
+    "known_text": "might need to",
+    "target_text": "ait besoin de"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03B01",
+   "expect": {
+    "known_text": "she might need to",
+    "target_text": "qu'elle ait besoin de"
+   },
+   "set": {
+    "known_text": "I don't think she needs to",
+    "target_text": "je ne pense pas qu'elle ait besoin de"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0326L03B02",
+   "expect": {
+    "known_text": "I don't think she might need to",
+    "target_text": "je ne pense pas qu'elle ait besoin de"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0326L03B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 326,
+    "lego_index": 3,
+    "position": 4,
+    "known_text": "I don't think she needs to speak",
+    "target_text": "je ne pense pas qu'elle ait besoin de parler",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 44,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03U01",
+   "expect": {
+    "known_text": "I don't think she might need to sell the company",
+    "target_text": "je ne pense pas qu'elle ait besoin de vendre l'entreprise"
+   },
+   "set": {
+    "known_text": "I don't think that she needs to sell the company"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03U02",
+   "expect": {
+    "known_text": "I don't think she might need to come",
+    "target_text": "je ne pense pas qu'elle ait besoin de venir"
+   },
+   "set": {
+    "known_text": "I don't think she needs to come"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03U03",
+   "expect": {
+    "known_text": "I don't think she might need to move",
+    "target_text": "je ne pense pas qu'elle ait besoin de déménager"
+   },
+   "set": {
+    "known_text": "I don't think she needs to move"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03U04",
+   "expect": {
+    "known_text": "I don't think she might need to read",
+    "target_text": "je ne pense pas qu'elle ait besoin de lire"
+   },
+   "set": {
+    "known_text": "I don't think she needs to read"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03U05",
+   "expect": {
+    "known_text": "I don't think she might need to sell",
+    "target_text": "je ne pense pas qu'elle ait besoin de vendre"
+   },
+   "set": {
+    "known_text": "I don't think she needs to sell"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0326L03U06",
+   "expect": {
+    "known_text": "I don't think she might need to read the same book",
+    "target_text": "je ne pense pas qu'elle ait besoin de lire le même livre"
+   },
+   "set": {
+    "known_text": "I don't think she needs to read the same book"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0387L01",
+   "expect": {
+    "known_text": "she was right",
+    "target_text": "qu'elle avait raison"
+   },
+   "set": {
+    "known_text": "that she was right"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0387L01B03",
+   "expect": {
+    "known_text": "she was right I think",
+    "target_text": "qu'elle avait raison je pense"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0543L01",
+   "expect": {
+    "known_text": "and she was right",
+    "target_text": "elle avait raison"
+   },
+   "set": {
+    "known_text": "she was right"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0543L01B01",
+   "expect": {
+    "known_text": "and she was right",
+    "target_text": "elle avait raison"
+   },
+   "set": {
+    "known_text": "she was right"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0543L01B02",
+   "expect": {
+    "known_text": "and she was right again",
+    "target_text": "elle avait raison encore"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0543L01B03",
+   "expect": {
+    "known_text": "and she was right now",
+    "target_text": "elle avait raison maintenant"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0543L01B04",
+    "course_code": "fra_for_eng",
+    "seed_number": 543,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "yes she was right",
+    "target_text": "oui elle avait raison",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 21,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0543L01B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 543,
+    "lego_index": 1,
+    "position": 5,
+    "known_text": "she was right too",
+    "target_text": "elle avait raison aussi",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 23,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0543L01U01",
+   "expect": {
+    "known_text": "and she was right this time",
+    "target_text": "elle avait raison cette fois"
+   },
+   "set": {
+    "known_text": "she was right this time"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0543L01U02",
+   "expect": {
+    "known_text": "and she was right about that",
+    "target_text": "elle avait raison sur ça"
+   },
+   "set": {
+    "known_text": "she was right about that"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0543L01U03",
+   "expect": {
+    "known_text": "and she was right yesterday",
+    "target_text": "elle avait raison hier"
+   },
+   "set": {
+    "known_text": "she was right yesterday"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0543L01U04",
+   "expect": {
+    "known_text": "and she was right all along",
+    "target_text": "elle avait raison tout ce temps"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0543L01U05",
+   "expect": {
+    "known_text": "and she was right with him",
+    "target_text": "elle avait raison avec lui"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0275L01",
+   "expect": {
+    "known_text": "longer",
+    "target_text": "longtemps"
+   },
+   "set": {
+    "target_text": "plus longtemps",
+    "components": [
+     {
+      "known": "longer",
+      "target": "plus longtemps"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0275L01B01",
+   "expect": {
+    "known_text": "longer",
+    "target_text": "longtemps"
+   },
+   "set": {
+    "target_text": "plus longtemps"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0275L01U04",
+   "expect": {
+    "known_text": "that sounds like it's going to take longer",
+    "target_text": "ça a l'air que ça va prendre plus longtemps"
+   },
+   "set": {
+    "known_text": "I think it's going to take longer",
+    "target_text": "je pense que ça va prendre plus longtemps"
+   }
+  }
+ ],
+ "need": [
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L01B02",
+   "slot": "known",
+   "text": "he wanted you to"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L01B03",
+   "slot": "known",
+   "text": "she wanted you to"
+  },
+  {
+   "kind": "lego",
+   "id": "S0238L02",
+   "slot": "known",
+   "text": "you to tell me"
+  },
+  {
+   "kind": "lego",
+   "id": "S0238L02",
+   "slot": "target1",
+   "text": "que tu me dises"
+  },
+  {
+   "kind": "lego",
+   "id": "S0238L02",
+   "slot": "target2",
+   "text": "que tu me dises"
+  },
+  {
+   "kind": "lego",
+   "id": "S0238L02",
+   "slot": "presentation",
+   "text": "The French for: 'you to tell me', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B01",
+   "slot": "known",
+   "text": "you to tell me"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B01",
+   "slot": "target1",
+   "text": "que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B01",
+   "slot": "target2",
+   "text": "que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B03",
+   "slot": "known",
+   "text": "he wanted you to tell me"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B03",
+   "slot": "target1",
+   "text": "il voulait que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B03",
+   "slot": "target2",
+   "text": "il voulait que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B04",
+   "slot": "known",
+   "text": "she wanted you to tell me"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B04",
+   "slot": "target1",
+   "text": "elle voulait que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B04",
+   "slot": "target2",
+   "text": "elle voulait que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B05",
+   "slot": "known",
+   "text": "I want you to tell me"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B05",
+   "slot": "target1",
+   "text": "je veux que tu me dises"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0238L02B05",
+   "slot": "target2",
+   "text": "je veux que tu me dises"
+  },
+  {
+   "kind": "lego",
+   "id": "S0240L03",
+   "slot": "known",
+   "text": "to stop"
+  },
+  {
+   "kind": "lego",
+   "id": "S0240L03",
+   "slot": "presentation",
+   "text": "The French for: 'to stop', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0240L03B01",
+   "slot": "known",
+   "text": "likes to stop"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0240L03B02",
+   "slot": "known",
+   "text": "to stop before"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0240L03B03",
+   "slot": "known",
+   "text": "to stop talking"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0240L03B04",
+   "slot": "known",
+   "text": "doesn't like to stop"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0240L03U01",
+   "slot": "known",
+   "text": "he doesn't like to stop talking"
+  },
+  {
+   "kind": "lego",
+   "id": "S0278L01",
+   "slot": "known",
+   "text": "did you have to"
+  },
+  {
+   "kind": "lego",
+   "id": "S0278L01",
+   "slot": "target1",
+   "text": "est-ce que tu as dû"
+  },
+  {
+   "kind": "lego",
+   "id": "S0278L01",
+   "slot": "target2",
+   "text": "est-ce que tu as dû"
+  },
+  {
+   "kind": "lego",
+   "id": "S0278L01",
+   "slot": "presentation",
+   "text": "The French for: 'did you have to', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B01",
+   "slot": "known",
+   "text": "did you have to"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B01",
+   "slot": "target1",
+   "text": "est-ce que tu as dû"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B01",
+   "slot": "target2",
+   "text": "est-ce que tu as dû"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B03",
+   "slot": "known",
+   "text": "did you have to finish?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B03",
+   "slot": "target1",
+   "text": "est-ce que tu as dû finir ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B03",
+   "slot": "target2",
+   "text": "est-ce que tu as dû finir ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B04",
+   "slot": "known",
+   "text": "did you have to leave?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B04",
+   "slot": "target1",
+   "text": "est-ce que tu as dû partir ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B04",
+   "slot": "target2",
+   "text": "est-ce que tu as dû partir ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U01",
+   "slot": "known",
+   "text": "did you have to stay here for the meeting?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U01",
+   "slot": "target1",
+   "text": "est-ce que tu as dû rester ici pour la réunion ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U01",
+   "slot": "target2",
+   "text": "est-ce que tu as dû rester ici pour la réunion ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U03",
+   "slot": "known",
+   "text": "did you have to finish everything before the meeting?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U03",
+   "slot": "target1",
+   "text": "est-ce que tu as dû tout finir avant la réunion ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U03",
+   "slot": "target2",
+   "text": "est-ce que tu as dû tout finir avant la réunion ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U04",
+   "slot": "known",
+   "text": "did you have to wait much longer?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U04",
+   "slot": "target1",
+   "text": "est-ce que tu as dû attendre beaucoup plus longtemps ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U04",
+   "slot": "target2",
+   "text": "est-ce que tu as dû attendre beaucoup plus longtemps ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U05",
+   "slot": "known",
+   "text": "did you have to do this very important thing?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U05",
+   "slot": "target1",
+   "text": "est-ce que tu as dû faire cette chose très importante ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U05",
+   "slot": "target2",
+   "text": "est-ce que tu as dû faire cette chose très importante ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U09",
+   "slot": "known",
+   "text": "did you have to work here much longer than you wanted?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U09",
+   "slot": "target1",
+   "text": "est-ce que tu as dû travailler ici beaucoup plus longtemps que tu voulais ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U09",
+   "slot": "target2",
+   "text": "est-ce que tu as dû travailler ici beaucoup plus longtemps que tu voulais ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B05",
+   "slot": "known",
+   "text": "did you have to wait?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B05",
+   "slot": "target1",
+   "text": "est-ce que tu as dû attendre ?"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01B05",
+   "slot": "target2",
+   "text": "est-ce que tu as dû attendre ?"
+  },
+  {
+   "kind": "lego",
+   "id": "S0170L02",
+   "slot": "known",
+   "text": "what you need"
+  },
+  {
+   "kind": "lego",
+   "id": "S0170L02",
+   "slot": "target1",
+   "text": "ce dont vous avez besoin"
+  },
+  {
+   "kind": "lego",
+   "id": "S0170L02",
+   "slot": "target2",
+   "text": "ce dont vous avez besoin"
+  },
+  {
+   "kind": "lego",
+   "id": "S0170L02",
+   "slot": "presentation",
+   "text": "The French for: 'what you need', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B01",
+   "slot": "known",
+   "text": "what you need"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B01",
+   "slot": "target1",
+   "text": "ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B01",
+   "slot": "target2",
+   "text": "ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B03",
+   "slot": "known",
+   "text": "I know what you need"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B03",
+   "slot": "target1",
+   "text": "je sais ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B03",
+   "slot": "target2",
+   "text": "je sais ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B05",
+   "slot": "known",
+   "text": "that's what you need"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B05",
+   "slot": "target1",
+   "text": "c'est ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B05",
+   "slot": "target2",
+   "text": "c'est ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B06",
+   "slot": "known",
+   "text": "everything you need"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B06",
+   "slot": "target1",
+   "text": "tout ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02B06",
+   "slot": "target2",
+   "text": "tout ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U06",
+   "slot": "known",
+   "text": "I'd like to know what you need"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U06",
+   "slot": "target1",
+   "text": "j'aimerais savoir ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U06",
+   "slot": "target2",
+   "text": "j'aimerais savoir ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U07",
+   "slot": "known",
+   "text": "I don't know what you need"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U07",
+   "slot": "target1",
+   "text": "je ne sais pas ce dont vous avez besoin"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U07",
+   "slot": "target2",
+   "text": "je ne sais pas ce dont vous avez besoin"
+  },
+  {
+   "kind": "lego",
+   "id": "S0326L03",
+   "slot": "known",
+   "text": "I don't think she needs to"
+  },
+  {
+   "kind": "lego",
+   "id": "S0326L03",
+   "slot": "target1",
+   "text": "je ne pense pas qu'elle ait besoin de"
+  },
+  {
+   "kind": "lego",
+   "id": "S0326L03",
+   "slot": "target2",
+   "text": "je ne pense pas qu'elle ait besoin de"
+  },
+  {
+   "kind": "lego",
+   "id": "S0326L03",
+   "slot": "presentation",
+   "text": "The French for: 'I don't think she needs to', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03B01",
+   "slot": "known",
+   "text": "I don't think she needs to"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03B01",
+   "slot": "target1",
+   "text": "je ne pense pas qu'elle ait besoin de"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03B01",
+   "slot": "target2",
+   "text": "je ne pense pas qu'elle ait besoin de"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03B05",
+   "slot": "known",
+   "text": "I don't think she needs to speak"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03B05",
+   "slot": "target1",
+   "text": "je ne pense pas qu'elle ait besoin de parler"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03B05",
+   "slot": "target2",
+   "text": "je ne pense pas qu'elle ait besoin de parler"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03U02",
+   "slot": "known",
+   "text": "I don't think she needs to come"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03U03",
+   "slot": "known",
+   "text": "I don't think she needs to move"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03U04",
+   "slot": "known",
+   "text": "I don't think she needs to read"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03U05",
+   "slot": "known",
+   "text": "I don't think she needs to sell"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03U06",
+   "slot": "known",
+   "text": "I don't think she needs to read the same book"
+  },
+  {
+   "kind": "lego",
+   "id": "S0387L01",
+   "slot": "known",
+   "text": "that she was right"
+  },
+  {
+   "kind": "lego",
+   "id": "S0387L01",
+   "slot": "presentation",
+   "text": "The French for: 'that she was right', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "lego",
+   "id": "S0543L01",
+   "slot": "known",
+   "text": "she was right"
+  },
+  {
+   "kind": "lego",
+   "id": "S0543L01",
+   "slot": "presentation",
+   "text": "The French for: 'she was right', is: <break time=\"300ms\"/> <break time=\"10ms\"/>"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B04",
+   "slot": "known",
+   "text": "yes she was right"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B04",
+   "slot": "target1",
+   "text": "oui elle avait raison"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B04",
+   "slot": "target2",
+   "text": "oui elle avait raison"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B05",
+   "slot": "known",
+   "text": "she was right too"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B05",
+   "slot": "target1",
+   "text": "elle avait raison aussi"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B05",
+   "slot": "target2",
+   "text": "elle avait raison aussi"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01U01",
+   "slot": "known",
+   "text": "she was right this time"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01U02",
+   "slot": "known",
+   "text": "she was right about that"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01U03",
+   "slot": "known",
+   "text": "she was right yesterday"
+  },
+  {
+   "kind": "lego",
+   "id": "S0275L01",
+   "slot": "target1",
+   "text": "plus longtemps"
+  },
+  {
+   "kind": "lego",
+   "id": "S0275L01",
+   "slot": "target2",
+   "text": "plus longtemps"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0275L01U04",
+   "slot": "known",
+   "text": "I think it's going to take longer"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0275L01U04",
+   "slot": "target1",
+   "text": "je pense que ça va prendre plus longtemps"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0275L01U04",
+   "slot": "target2",
+   "text": "je pense que ça va prendre plus longtemps"
+  }
+ ],
+ "links": [
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U02",
+   "slot": "known",
+   "audio_id": "b6b38fce-6676-4b43-b98d-88f839ef5c5e",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U02",
+   "slot": "target1",
+   "audio_id": "aa2a48a4-0e00-4e1d-bd95-11adc700be60",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0278L01U02",
+   "slot": "target2",
+   "audio_id": "0165cff8-f336-483f-b51a-14f0503c2961",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0170L02U08",
+   "slot": "known",
+   "audio_id": "ab4a3dde-ec52-4d57-bdfa-9aa7944d736b",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0326L03U01",
+   "slot": "known",
+   "audio_id": "43c2ff61-5889-466b-802d-bdd90a1e1635",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0543L01B01",
+   "slot": "known",
+   "audio_id": "7d77a05a-6c33-4d51-a5a8-10da580a0c01",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0275L01B01",
+   "slot": "target1",
+   "audio_id": "01c1fe0d-efa6-481f-b2a5-6ff26b8ce24f",
+   "from": "reuse"
+  },
+  {
+   "kind": "phrase",
+   "id": "fra_for_eng:S0275L01B01",
+   "slot": "target2",
+   "audio_id": "24a8ad79-8c0a-4d91-bffe-cada5f9adef0",
+   "from": "reuse"
+  }
+ ],
+ "held": [],
+ "audio": {
+  "known|he wanted you to": {
+   "audioId": "983b604f-179d-4fb5-af1e-df5fbfa79b34",
+   "source": "library",
+   "chars": 0
+  },
+  "known|you to tell me": {
+   "audioId": "b165b816-0cd8-4a0f-b649-61b0a8342a8c",
+   "source": "library",
+   "chars": 0
+  },
+  "known|he wanted you to tell me": {
+   "audioId": "94cd0c10-888a-41b2-9aa8-0bcb0e433df4",
+   "source": "library",
+   "chars": 0
+  },
+  "known|she wanted you to tell me": {
+   "audioId": "4b33b0fe-9bda-4378-a7c9-028b0c1cf93a",
+   "source": "library",
+   "chars": 0
+  },
+  "known|I want you to tell me": {
+   "audioId": "b96ab19f-8785-4af6-a6bc-8fc09c1a68c9",
+   "source": "library",
+   "chars": 0
+  },
+  "known|to stop": {
+   "audioId": "195c2959-00f5-4a36-9e2b-062437410efa",
+   "source": "linked-in-course",
+   "chars": 0
+  },
+  "known|likes to stop": {
+   "audioId": "65157727-0de3-42f2-8fce-c07f42fd0648",
+   "source": "library",
+   "chars": 0
+  },
+  "known|to stop talking": {
+   "audioId": "50193ebf-3818-4f02-b22a-d87a17585bff",
+   "source": "linked-in-course",
+   "chars": 0
+  },
+  "known|doesn't like to stop": {
+   "audioId": "43173134-84ee-4d85-bdb9-53137bf86921",
+   "source": "library",
+   "chars": 0
+  },
+  "known|did you have to": {
+   "audioId": "92329781-77d1-4f29-8684-dc6cda5ef229",
+   "source": "library",
+   "chars": 0
+  },
+  "known|did you have to finish?": {
+   "audioId": "47a8c0f5-ccf9-4350-98fa-ab5db47963b3",
+   "source": "library",
+   "chars": 0
+  },
+  "known|did you have to leave?": {
+   "audioId": "7336a9b7-4817-47b6-a41a-74a56ce8cff5",
+   "source": "library",
+   "chars": 0
+  },
+  "known|did you have to wait?": {
+   "audioId": "12da6f67-36b0-49b0-9dd4-1fa5e04bea22",
+   "source": "library",
+   "chars": 0
+  },
+  "known|what you need": {
+   "audioId": "5ee56331-82aa-4573-9c55-1587fcf0c92c",
+   "source": "library",
+   "chars": 0
+  },
+  "known|I know what you need": {
+   "audioId": "71a57516-31ba-4697-a748-9dbd36fdadde",
+   "source": "library",
+   "chars": 0
+  },
+  "known|she was right": {
+   "audioId": "7d77a05a-6c33-4d51-a5a8-10da580a0c01",
+   "source": "linked-in-course",
+   "chars": 0
+  },
+  "target1|plus longtemps": {
+   "audioId": "01c1fe0d-efa6-481f-b2a5-6ff26b8ce24f",
+   "source": "linked-in-course",
+   "chars": 0
+  },
+  "target2|plus longtemps": {
+   "audioId": "24a8ad79-8c0a-4d91-bffe-cada5f9adef0",
+   "source": "linked-in-course",
+   "chars": 0
+  }
+ }
+}
