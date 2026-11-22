@@ -1,2 +1,13 @@
-{"_why": "cs #382·AI: S0108L03U06 was inserted after the 18 Nov plan and is the whole seed sentence with the old words ('We didn't hope to wake in the middle of the night.'); 'hope' is no longer taught once L03 says 'didn't expect', so the row is re-worded to the new seed pair, word for word the a.ops.json seed.update (verb ನಿರೀಕ್ಷಿಸು 'expect', as chosen by #772·AI in plans-asia.md; Kittel/Alar Kannada-English dictionary). No other L03 row carries the whole sentence, so it is kept rather than deleted.",
- "add": [{"op": "phrase.update", "phrase_id": "eng_for_kan:S0108L03U06", "set": {"known_text": "ನಾವು ಮಧ್ಯರಾತ್ರಿಯಲ್ಲಿ ಎಚ್ಚರ ಆಗ್ತೀವಿ ಅಂತ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ.", "target_text": "We didn't expect to wake up in the middle of the night."}}]}
+{
+ "_why": "cs #382·AI: S0108L03U06 was inserted after the 18 Nov plan and is the whole seed sentence with the old words ('We didn't hope to wake in the middle of the night.'); 'hope' is no longer taught once L03 says 'didn't expect', so the row is re-worded to the new seed pair, word for word the a.ops.json seed.update (ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ, the verb #772·AI chose in plans-asia.md, citing the Alar Kannada-English dictionary). No other L03 row carries the whole sentence, so it is kept rather than deleted.",
+ "add": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_kan:S0108L03U06",
+   "set": {
+    "known_text": "ನಾವು ಮಧ್ಯರಾತ್ರಿಯಲ್ಲಿ ಎಚ್ಚರ ಆಗ್ತೀವಿ ಅಂತ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   }
+  }
+ ]
+}
