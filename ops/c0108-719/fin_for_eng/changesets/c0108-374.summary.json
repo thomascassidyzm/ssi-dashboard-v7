@@ -1,0 +1,33 @@
+{
+ "course": "fin_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "ops": 27,
+ "by_op": {
+  "lego.update": 1,
+  "phrase.update": 23,
+  "phrase.delete": 2,
+  "seed.update": 1
+ },
+ "seeds": [
+  108,
+  200,
+  296,
+  603
+ ],
+ "has_b": false,
+ "validator_issues_before": 846,
+ "validator_issues_after": 849,
+ "new_issues": 0,
+ "answered_by_own_seed_fix": {
+  "200": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "296": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "603": [
+   "L1: vocab violations in 1 phrase(s)"
+  ]
+ },
+ "notes": []
+}
