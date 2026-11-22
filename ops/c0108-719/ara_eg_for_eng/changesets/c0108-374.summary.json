@@ -1,0 +1,54 @@
+{
+ "course": "ara_eg_for_eng",
+ "copy_db": "ssi_copy_20261122t033000z",
+ "ops": 28,
+ "by_op": {
+  "lego.update": 1,
+  "phrase.update": 17,
+  "phrase.delete": 9,
+  "seed.update": 1
+ },
+ "seeds": [
+  108,
+  109,
+  343,
+  387,
+  428,
+  482,
+  617,
+  633,
+  656
+ ],
+ "has_b": false,
+ "validator_issues_before": 961,
+ "validator_issues_after": 970,
+ "new_issues": 0,
+ "answered_by_own_seed_fix": {
+  "109": [
+   "L2: vocab violations in 1 phrase(s)",
+   "L3: vocab violations in 1 phrase(s)"
+  ],
+  "343": [
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "387": [
+   "L2: vocab violations in 1 phrase(s)"
+  ],
+  "428": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "482": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "617": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "633": [
+   "L1: vocab violations in 1 phrase(s)"
+  ],
+  "656": [
+   "L1: vocab violations in 1 phrase(s)"
+  ]
+ },
+ "notes": []
+}
