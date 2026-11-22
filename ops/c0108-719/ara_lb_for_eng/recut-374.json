@@ -1,0 +1,299 @@
+{
+ "_why": "cs #381·AI: the plan's new word متوقعين (active participle of توقّع 'expect', plural, Levantine 'ما كنا متوقعين' = 'we didn't expect': Stowasser & Ani, Dictionary of Syrian Arabic, twaqqa'; Wiktionary توقع) had no LEGO. Adds L04 M 'we expected'=كنا متوقعين, the same shape as seed 107's M 'we hoped'=كنا نتمنى (components 'we were'=كنا, taught at seed 54, and 'expecting'=متوقعين), with a BUILD/USE basket from seed-108 LEGOs + earlier vocabulary. The seed echo moves from L03U01 into the new basket (L03 cannot use a word taught after it); L03U01 is re-worded inside L03's vocabulary, matching L03U03.",
+ "replace": {
+  "ara_lb_for_eng:S0108L03U01": {
+   "known_text": "we didn't want to wake up in the middle of the night",
+   "target_text": "ما كنا بدنا نصحى بنص الليل",
+   "target_text_roman": "ma kunna biddna nsuha b-nuss al-liil"
+  }
+ },
+ "drop": [],
+ "add": [
+  {
+   "op": "lego.insert",
+   "row": {
+    "seed_number": 108,
+    "lego_index": 4,
+    "known_text": "we expected",
+    "target_text": "كنا متوقعين",
+    "type": "M",
+    "is_new": true,
+    "status": "draft",
+    "components": [
+     {
+      "known": "we were",
+      "target": "كنا"
+     },
+     {
+      "known": "expecting",
+      "target": "متوقعين"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04C01",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 1,
+    "known_text": "we were",
+    "target_text": "كنا",
+    "target_text_roman": "kinna",
+    "phrase_role": "component",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 3,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04C02",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 2,
+    "known_text": "expecting",
+    "target_text": "متوقعين",
+    "target_text_roman": "mitwa''iin",
+    "phrase_role": "component",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 7,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04B01",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 3,
+    "known_text": "we expected",
+    "target_text": "كنا متوقعين",
+    "target_text_roman": "kinna mitwa''iin",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 11,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04B02",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 4,
+    "known_text": "we didn't expect",
+    "target_text": "ما كنا متوقعين",
+    "target_text_roman": "ma kinna mitwa''iin",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 14,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04B03",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 5,
+    "known_text": "we expected to wake up",
+    "target_text": "كنا متوقعين نصحى",
+    "target_text_roman": "kinna mitwa''iin nisha",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 16,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04B04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 6,
+    "known_text": "we didn't expect to wake up",
+    "target_text": "ما كنا متوقعين نصحى",
+    "target_text_roman": "ma kinna mitwa''iin nisha",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 19,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04U01",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 7,
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "ما كنا متوقعين نصحى بنص الليل",
+    "target_text_roman": "ma kinna mitwa''iin nisha b-nuss il-leil",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 29,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04U02",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 8,
+    "known_text": "we expected to wake up at night",
+    "target_text": "كنا متوقعين نصحى الليل",
+    "target_text_roman": "kinna mitwa''iin nisha il-leil",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 22,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04U03",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "we didn't expect it to be hard",
+    "target_text": "ما كنا متوقعين يكون صعب",
+    "target_text_roman": "ma kinna mitwa''iin ykuun sa'b",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 23,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04U04",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 10,
+    "known_text": "we expected it to be hard",
+    "target_text": "كنا متوقعين يكون صعب",
+    "target_text_roman": "kinna mitwa''iin ykuun sa'b",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 20,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_lb_for_eng:S0108L04U05",
+    "course_code": "ara_lb_for_eng",
+    "seed_number": 108,
+    "lego_index": 4,
+    "position": 11,
+    "known_text": "we didn't expect to wake up now",
+    "target_text": "ما كنا متوقعين نصحى هلق",
+    "target_text_roman": "ma kinna mitwa''iin nisha halla'",
+    "phrase_role": "use",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #381·AI C0108 hope->expect: new expect LEGO basket, 22 Nov 2026"
+    },
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "word_count": 23,
+    "lego_count": 5
+   }
+  }
+ ]
+}
