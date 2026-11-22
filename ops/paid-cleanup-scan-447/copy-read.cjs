@@ -205,7 +205,8 @@ async function snap(pg, c, course, out) {
     `SELECT id, seed_number, lego_index, lego_id, position, phrase_role, known_text, target_text, target_text_roman,
             known_audio_id::text AS ka, target1_audio_id::text AS t1, target2_audio_id::text AS t2, updated_at, status
        FROM course_practice_phrases WHERE course_code = $1 ORDER BY seed_number, lego_index, position`, [course])).rows
-  const ids = [...seeds.flatMap((s) => [s.ka, s.t1, s.t2]), ...phrases.map((p) => p.ka), ...legos.map((l) => l.ka)]
+  // + LEGO intro clips (cs #374·AI: a re-cut LEGO's new intro is written from its old intro text)
+  const ids = [...seeds.flatMap((s) => [s.ka, s.t1, s.t2]), ...phrases.map((p) => p.ka), ...legos.flatMap((l) => [l.ka, l.pres])].filter(Boolean)
   const clips = {}
   for (const k of await db.clipsById(pg, ids, { cols: 'id::text AS id, text, voice_id, role' })) clips[k.id] = { text: k.text, voice_id: k.voice_id, role: k.role }
   fs.writeFileSync(out, JSON.stringify({ course, db: c.dbn, source: 'qa-copy', copy_built: readState().built || null, at: new Date().toISOString(), seeds, legos, phrases, clips }))
