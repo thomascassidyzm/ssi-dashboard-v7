@@ -6896,6 +6896,23 @@ app.post('/api/audio/render', async (req, res) => {
   }
 })
 
+// AN AGREED BATCH (cs #502·AK): one reservation, 15 at a time, inside Popty — phase8 POST /render-batch
+// (services/shared/audio-render-batch.cjs). Same identity rule as /api/audio/render; the per-line rate cap runs in phase8.
+// Off unless TTS_SPEND_JOB_HOLDS=on there (409 JOB_HOLDS_OFF).
+app.post('/api/audio/render-batch', async (req, res) => {
+  try {
+    const who = String(req.headers['x-agent-id'] || req.headers['x-service-name'] || '').trim()
+    if (!who) return res.status(401).json({ ok: false, code: 'IDENTITY_REQUIRED', error: 'say who is asking: send x-agent-id (or x-service-name)' })
+    const conv = req.body && req.body.approval && req.headers['x-cs-conv'] ? { 'x-cs-conv': String(req.headers['x-cs-conv']) } : {}
+    const response = await proxyToPhase8('POST', '/render-batch', { ...(req.body || {}), requestedBy: who }, { 'x-agent-id': who, ...conv })
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Render batch proxy error:', error)
+    const status = require('./shared/phase8-transport-error.cjs').isPhase8TransportError(error) ? 503 : 500
+    res.status(status).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
 // THE ATTESTED RE-RECORD GRANT DOOR (job #772): inserts one tts_rerecord_permissions row, and only for a
 // nonce the Command Surface attests (Tom's own message, quoted by Tom's Watson). The body is never trusted
 // beyond the nonce — see services/shared/rerecord-grant-door.cjs for why and how.

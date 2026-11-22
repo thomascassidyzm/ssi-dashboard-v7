@@ -62,6 +62,7 @@ const os = require('os')
 const path = require('path')
 const crypto = require('crypto')
 const { ticketProblem } = require('./door-ticket.cjs')
+const chain = require('./chain-context.cjs')
 
 // ─── Configuration ──────────────────────────────────────────────────────────
 
@@ -171,6 +172,14 @@ function surfaceCommissionChecker({ surface = process.env.CS_SURFACE || 'http://
     return nums.some(n => cache.live.has(n))
   }
 }
+/**
+ * JOB HOLDS (cs #502·AK, r-2026-11-22-once-an-audio-job-is-agreed): an agreed batch reserves its size once and draws
+ * per clip (ops/sql/20261122-tts-spend-job-holds.sql). A hold stops counting after this long without a draw or a
+ * heartbeat, so a crashed job cannot hold the day's budget; Popty's batch route heartbeats every JOB_HOLD_HEARTBEAT_MS.
+ */
+const JOB_HOLD_STALE_MS = 5 * 60_000
+const JOB_HOLD_HEARTBEAT_MS = 60_000
+const JOB_HOLD_MAX_TTL_SECONDS = 7200
 /** How long a read of a job's spend today is reused before the ledger is asked again. */
 const JOB_SPEND_CACHE_MS = 30_000
 /** A raise may not be dated further out than this: raises expire on their own. */
@@ -474,6 +483,11 @@ function supabaseSpendStore({ client, url = process.env.SUPABASE_URL, key = proc
   return {
     kind: 'supabase',
     async reserve(r) { return rpc('tts_spend_reserve', reserveArgs(r)) },
+    // JOB HOLDS (cs #502·AK): ops/sql/20261122-tts-spend-job-holds.sql. Called only by Popty's batch route, behind TTS_SPEND_JOB_HOLDS.
+    async jobReserve(r) { return rpc('tts_spend_job_reserve', jobReserveArgs(r)) },
+    async jobDraw(r) { return rpc('tts_spend_job_draw', jobDrawArgs(r)) },
+    async jobRelease(holdId, note) { return rpc('tts_spend_job_release', { p_hold_id: holdId, p_note: note || null }) },
+    async jobHeartbeat(holdId) { return rpc('tts_spend_job_heartbeat', { p_hold_id: holdId }) },
     async settle(id, status, note) { await rpc('tts_spend_settle', { p_id: id, p_status: status, p_note: note || null }) },
     async trip(provider, code, message) { await rpc('tts_spend_trip', { p_provider: provider, p_code: code, p_message: message, p_host: os.hostname() }) },
     async totals(provider, cycleStartDay) { return rpc('tts_spend_totals', { p_provider: provider, p_cycle_start_day: cycleStartDay }) },
@@ -520,6 +534,18 @@ function pgSpendStore({ pool, connectionString = process.env.DATABASE_URL } = {}
       return row.r
     },
     async settle(id, status, note) { await call('select public.tts_spend_settle($1,$2,$3)', [id, status, note || null]) },
+    async jobReserve(r) {
+      const a = jobReserveArgs(r)
+      return (await call('select public.tts_spend_job_reserve($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) as r',
+        [a.p_provider, a.p_course, a.p_job, a.p_roles, a.p_grant_id, a.p_rerecord, a.p_chars, a.p_ttl_seconds, a.p_host, a.p_pid, a.p_daily_cap, a.p_cycle_start_day, a.p_cycle_cap, a.p_limits])).r
+    },
+    async jobDraw(r) {
+      const a = jobDrawArgs(r)
+      return (await call('select public.tts_spend_job_draw($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) as r',
+        [a.p_hold_id, a.p_provider, a.p_voice, a.p_chars, a.p_repeat_key, a.p_text_hash, a.p_language, a.p_attempt, a.p_host, a.p_pid, a.p_cycle_start_day, a.p_repeat_max, a.p_repeat_window_hours])).r
+    },
+    async jobRelease(holdId, note) { return (await call('select public.tts_spend_job_release($1,$2) as r', [holdId, note || null])).r },
+    async jobHeartbeat(holdId) { return (await call('select public.tts_spend_job_heartbeat($1) as r', [holdId])).r },
     async trip(provider, code, message) { await call('select public.tts_spend_trip($1,$2,$3,$4)', [provider, code, message, os.hostname()]) },
     async totals(provider, cycleStartDay) { return (await call('select public.tts_spend_totals($1,$2) as t', [provider, cycleStartDay])).t },
     async jobToday(token) {
@@ -545,6 +571,21 @@ function reserveArgs(r) {
   }
 }
 
+function jobReserveArgs(r) {
+  return {
+    p_provider: r.provider, p_course: r.course, p_job: r.job, p_roles: r.roles || null, p_grant_id: r.grantId ?? null, p_rerecord: !!r.rerecord,
+    p_chars: r.chars, p_ttl_seconds: r.ttlSeconds, p_host: os.hostname(), p_pid: process.pid,
+    p_daily_cap: r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars, p_cycle_start_day: r.limits.cycleStartDay, p_cycle_cap: r.limits.cycleCapChars, p_limits: r.limits,
+  }
+}
+function jobDrawArgs(r) {
+  return {
+    p_hold_id: r.holdId, p_provider: r.provider, p_voice: r.voice, p_chars: r.chars, p_repeat_key: r.key, p_text_hash: r.textHash,
+    p_language: r.language, p_attempt: r.attempt, p_host: os.hostname(), p_pid: process.pid,
+    p_cycle_start_day: r.cycleStartDay, p_repeat_max: r.maxPerKey, p_repeat_window_hours: r.windowHours,
+  }
+}
+
 /**
  * In-memory store with the SQL function's semantics, for tests. Stores are
  * shared by name, so two guards given the same ledgerPath see one ledger (the
@@ -556,48 +597,118 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
   if (name && memoryStores.has(name)) return memoryStores.get(name)
   const rows = []; const trips = new Map(); const limitLog = []; const totalCapRaises = []
   const sum = (provider, fromMs) => rows.filter(r => r.provider === provider && r.at >= fromMs).reduce((n, r) => n + r.chars, 0)
+  const holds = []
+  /** A hold counts while unreleased, in date, of today's UTC day, and drawn or heartbeated in the last 5 minutes (tts_spend_held). */
+  const holdLive = (hd, t) => hd.releasedAt == null && hd.day === dayKey(t) && hd.expiresAt > t && hd.heartbeatAt > t - JOB_HOLD_STALE_MS
+  const held = (provider, jobToken, t) => holds.filter(hd => holdLive(hd, t) && (!provider || hd.provider === provider) && (!jobToken || jobMatches(hd.job, jobToken))).reduce((n, hd) => n + Math.max(0, hd.reserved - hd.drawn), 0)
+  const stopRefusal = () => { const tr = trips.get('*'); return { ok: false, code: 'STOPPED_BY_TOM', message: `audio generation stopped by Tom since ${tr.at}: ${tr.message}. Only Tom lifts it` } }
+  const tripRefusal = (provider) => { const tr = trips.get(provider); return { ok: false, code: 'TRIPPED', message: `renders are stopped for ${provider} since ${tr.at}: ${tr.message}. Clear: delete the trip row once a human has looked` } }
+  /** The cap tiers, shared by a per-call reserve and a job hold — mirrors tts_spend_reserve, hold remainders included. */
+  function capCheck(r, t, seen) {
+    const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
+    const today = sum(r.provider, dayStart) + held(r.provider, null, t)
+    const cycle = sum(r.provider, cycleStart(t, r.limits.cycleStartDay)) + held(r.provider, null, t)
+    const dailyCap = r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars
+    // Two tiers under one ceiling — mirrors tts_spend_reserve (ops/sql/20260930-tts-spend-tom-approved-run.sql).
+    const signed = (x) => /^\s*tom\b/i.test(x.by) && x.why && x.until > t && x.until <= x.at + 31 * 86400e3
+    const todays = rows.filter(x => x.kind === 'call' && x.at >= dayStart)
+    const total = todays.reduce((n, x) => n + x.chars, 0) + held(null, null, t)
+    const approvals = totalCapRaises.filter(x => x.job && signed(x))
+    const raised = totalCapRaises.filter(x => !x.job && signed(x)).reduce((m, x) => Math.max(m, x.capChars), 0)
+    const approvedAll = todays.filter(x => approvals.some(a => jobMatches(x.job, a.job))).reduce((n, x) => n + x.chars, 0)
+      + holds.filter(hd => holdLive(hd, t) && approvals.some(a => jobMatches(hd.job, a.job))).reduce((n, hd) => n + Math.max(0, hd.reserved - hd.drawn), 0)
+    const approval = approvals.filter(a => jobMatches(r.job, a.job)).sort((a, b) => b.capChars - a.capChars)[0]
+    const ceiling = store.totalCeilingChars
+    if (total + r.chars > ceiling) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total, cap: ceiling, message: `the hard daily ceiling is reached (${total} chars spent today across all providers, this call is ${r.chars}, the ceiling is ${ceiling} even for a Tom-approved run; UTC day). Do not retry and do not split the job` }
+    if (approval) {
+      const here = todays.filter(x => jobMatches(x.job, approval.job)).reduce((n, x) => n + x.chars, 0) + held(null, approval.job, t)
+      const cap = Math.min(approval.capChars, ceiling)
+      if (here + r.chars > cap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: here, cap, message: `Tom-approved run ${approval.job} has spent ${here} chars today; this call (${r.chars}) would pass its approval of ${cap} (by ${approval.by}, until ${new Date(approval.until).toISOString()}; UTC day). Do not retry and do not split the job` }
+    } else if (!r.limits.commissioned) {
+      const totalCap = Math.min(ceiling, Math.max(store.totalCapChars, raised))
+      const auto = total - approvedAll
+      if (auto + r.chars > totalCap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: auto, cap: totalCap, message: `daily audio cap reached; only Tom can approve more (${auto} chars spent today across all providers outside Tom-approved runs, this call is ${r.chars}, the cap is ${totalCap}; UTC day). Do not retry and do not split the job` }
+    }
+    if (today + r.chars > dailyCap) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${dailyCap}` }
+    if (cycle + r.chars > r.limits.cycleCapChars) return { ok: false, code: 'POOL_SHARE', today, cycle, seen, message: `this cycle's ${r.provider} spend is ${cycle} chars; this call (${r.chars}) would pass the cycle stop of ${r.limits.cycleCapChars}` }
+    return { ok: true, today, cycle }
+  }
   const store = {
-    kind: 'memory', rows, trips, limitLog, totalCapRaises,
+    kind: 'memory', rows, trips, limitLog, totalCapRaises, holds,
+    /** Test knob: the re-record grants a job hold checks (tts_rerecord_permissions rows, with used = permitted uses). */
+    rerecordGrants: [],
     /** Test knobs: older tests spend far more than 50k in one day to exercise the per-provider caps, so they lift these on their own store. */
     totalCapChars: TOTAL_DAILY_CAP_CHARS,
     totalCeilingChars: TOTAL_DAILY_CEILING_CHARS,
     async reserve(r) {
       const t = now()
       // Tom's stop (job #676): a '*' trip stops every provider — mirrors tts_spend_reserve.
-      if (trips.has('*')) { const tr = trips.get('*'); return { ok: false, code: 'STOPPED_BY_TOM', message: `audio generation stopped by Tom since ${tr.at}: ${tr.message}. Only Tom lifts it` } }
-      if (trips.has(r.provider)) { const tr = trips.get(r.provider); return { ok: false, code: 'TRIPPED', message: `renders are stopped for ${r.provider} since ${tr.at}: ${tr.message}. Clear: delete the trip row once a human has looked` } }
-      const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
-      const today = sum(r.provider, dayStart)
-      const cycle = sum(r.provider, cycleStart(t, r.limits.cycleStartDay))
+      if (trips.has('*')) return stopRefusal()
+      if (trips.has(r.provider)) return tripRefusal(r.provider)
       const seen = r.key ? rows.filter(x => x.key === r.key && x.kind === 'call' && x.at >= t - r.limits.windowHours * 3600e3).length : 0
       const h = JSON.stringify(r.limits)
       if (limitLog.filter(l => l.provider === r.provider).pop()?.h !== h) limitLog.push({ provider: r.provider, h, limits: r.limits })
-      const dailyCap = r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars
-      // Two tiers under one ceiling — mirrors tts_spend_reserve (ops/sql/20260930-tts-spend-tom-approved-run.sql).
-      const signed = (x) => /^\s*tom\b/i.test(x.by) && x.why && x.until > t && x.until <= x.at + 31 * 86400e3
-      const todays = rows.filter(x => x.kind === 'call' && x.at >= dayStart)
-      const total = todays.reduce((n, x) => n + x.chars, 0)
-      const approvals = totalCapRaises.filter(x => x.job && signed(x))
-      const raised = totalCapRaises.filter(x => !x.job && signed(x)).reduce((m, x) => Math.max(m, x.capChars), 0)
-      const approvedAll = todays.filter(x => approvals.some(a => jobMatches(x.job, a.job))).reduce((n, x) => n + x.chars, 0)
-      const approval = approvals.filter(a => jobMatches(r.job, a.job)).sort((a, b) => b.capChars - a.capChars)[0]
-      const ceiling = store.totalCeilingChars
-      if (total + r.chars > ceiling) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total, cap: ceiling, message: `the hard daily ceiling is reached (${total} chars spent today across all providers, this call is ${r.chars}, the ceiling is ${ceiling} even for a Tom-approved run; UTC day). Do not retry and do not split the job` }
-      if (approval) {
-        const here = todays.filter(x => jobMatches(x.job, approval.job)).reduce((n, x) => n + x.chars, 0)
-        const cap = Math.min(approval.capChars, ceiling)
-        if (here + r.chars > cap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: here, cap, message: `Tom-approved run ${approval.job} has spent ${here} chars today; this call (${r.chars}) would pass its approval of ${cap} (by ${approval.by}, until ${new Date(approval.until).toISOString()}; UTC day). Do not retry and do not split the job` }
-      } else if (!r.limits.commissioned) {
-        const totalCap = Math.min(ceiling, Math.max(store.totalCapChars, raised))
-        const auto = total - approvedAll
-        if (auto + r.chars > totalCap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: auto, cap: totalCap, message: `daily audio cap reached; only Tom can approve more (${auto} chars spent today across all providers outside Tom-approved runs, this call is ${r.chars}, the cap is ${totalCap}; UTC day). Do not retry and do not split the job` }
-      }
-      if (today + r.chars > dailyCap) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${dailyCap}` }
-      if (cycle + r.chars > r.limits.cycleCapChars) return { ok: false, code: 'POOL_SHARE', today, cycle, seen, message: `this cycle's ${r.provider} spend is ${cycle} chars; this call (${r.chars}) would pass the cycle stop of ${r.limits.cycleCapChars}` }
+      const capped = capCheck(r, t, seen)
+      if (!capped.ok) return capped
+      const { today, cycle } = capped
       if (r.key && seen >= r.limits.maxPerKey) return { ok: false, code: 'REPEAT', today, cycle, seen, message: `these words in voice ${r.voice || '?'} have already been sent ${seen} times in ${r.limits.windowHours}h (limit ${r.limits.maxPerKey}) — a caller is re-rendering what it already has` }
       const id = rows.length + 1
       rows.push({ id, at: t, kind: 'call', provider: r.provider, voice: r.voice, chars: r.chars, key: r.key, job: r.job || null, status: 'reserved' })
       return { ok: true, id, today: today + r.chars, cycle: cycle + r.chars, seen: seen + 1 }
+    },
+    /** A job hold (cs #502·AK): the whole batch through the same caps, once. Mirrors tts_spend_job_reserve. */
+    async jobReserve(r) {
+      const t = now()
+      if (!r.provider || !(r.chars > 0) || !r.course || !r.job || !/#\d+/.test(r.job)) return { ok: false, code: 'BAD_CALL', message: 'a job hold needs a provider, a course, a job "#NNN" and a positive chars' }
+      if (trips.has('*')) return stopRefusal()
+      if (trips.has(r.provider)) return tripRefusal(r.provider)
+      if (r.rerecord || r.grantId != null) {
+        const g = store.rerecordGrants.find(x => x.id === r.grantId)
+        const roles = Array.isArray(r.roles) ? r.roles : []
+        const covers = g && (!Array.isArray(g.roles) || !g.roles.length || (roles.length > 0 && roles.every(x => g.roles.includes(x))))
+        const at = g ? Date.parse(g.at) : NaN, until = g ? Date.parse(g.until) : NaN
+        if (!g || g.course_code !== r.course || g.revoked_at || !/^\s*tom\b/i.test(String(g.by || '')) || !String(g.why || '').trim() || !(until > t) || !(until <= at + 31 * 86400e3) || !covers) {
+          return { ok: false, code: 'RERECORD_NOT_PERMITTED', message: `${r.course}: a re-record batch needs Tom's express permission (Tom 2026-10-11) — grant ${r.grantId == null ? '(none named)' : r.grantId} is missing, expired, revoked, not Tom's, or does not cover roles ${roles.join(',') || '(none named)'}. Do not retry or route around this` }
+        }
+        if (g.max_clips != null && (g.used || 0) >= g.max_clips) return { ok: false, code: 'RERECORD_NOT_PERMITTED', message: `${r.course}: Tom's permission #${g.id} is spent (${g.used} of ${g.max_clips} clips). Do not retry or route around this` }
+      }
+      const capped = capCheck(r, t, 0)
+      if (!capped.ok) return capped
+      const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
+      const expiresAt = Math.min(t + Math.max(60, Math.min(7200, r.ttlSeconds || 3600)) * 1000, dayStart + 86400e3)
+      const id = holds.length + 1
+      holds.push({ id, at: t, day: dayKey(t), provider: r.provider, course: r.course, job: r.job, roles: r.roles || null, grantId: r.grantId ?? null, reserved: r.chars, drawn: 0, draws: 0, expiresAt, heartbeatAt: t, releasedAt: null, limits: r.limits })
+      return { ok: true, id, reserved: r.chars, expires_at: new Date(expiresAt).toISOString(), today: capped.today + r.chars, cycle: capped.cycle + r.chars }
+    },
+    /** One clip out of its hold. Mirrors tts_spend_job_draw (provider lock only in SQL; synchronous here). */
+    async jobDraw(r) {
+      const t = now()
+      if (r.holdId == null || !r.provider || !(r.chars >= 0)) return { ok: false, code: 'BAD_CALL', message: 'a draw needs its hold, provider, a non-negative chars and the repeat limits' }
+      if (trips.has('*')) return stopRefusal()
+      if (trips.has(r.provider)) return tripRefusal(r.provider)
+      const hd = holds[r.holdId - 1]
+      if (!hd || hd.provider !== r.provider) return { ok: false, code: 'JOB_RESERVATION_GONE', message: `no ${r.provider} job reservation #${r.holdId} — refusing a clip with no reservation behind it` }
+      if (!holdLive(hd, t)) return { ok: false, code: 'JOB_RESERVATION_EXPIRED', message: `job reservation #${r.holdId} (${hd.job}) is ${hd.releasedAt != null ? 'released' : hd.day !== dayKey(t) ? 'from an earlier UTC day' : hd.expiresAt <= t ? 'past its expiry' : 'stale (no draw or heartbeat in 5 minutes)'} — its remainder no longer counts, so nothing more may be drawn from it. Take a new reservation` }
+      if (hd.drawn + r.chars > hd.reserved) return { ok: false, code: 'JOB_RESERVATION_EXCEEDED', drawn: hd.drawn, reserved: hd.reserved, message: `job ${hd.job} has drawn ${hd.drawn} of the ${hd.reserved} chars it reserved (#${r.holdId}); this clip (${r.chars}) would pass its reservation. Do not retry and do not split the job` }
+      const seen = r.key ? rows.filter(x => x.key === r.key && x.kind === 'call' && x.at >= t - r.windowHours * 3600e3).length : 0
+      if (r.key && seen >= r.maxPerKey) return { ok: false, code: 'REPEAT', seen, message: `these words in voice ${r.voice || '?'} have already been sent ${seen} times in ${r.windowHours}h (limit ${r.maxPerKey}) — a caller is re-rendering what it already has` }
+      const id = rows.length + 1
+      rows.push({ id, at: t, kind: 'call', provider: r.provider, voice: r.voice, chars: r.chars, key: r.key, job: hd.job, course: hd.course, status: 'reserved', note: `hold #${r.holdId}` })
+      hd.drawn += r.chars; hd.draws += 1; hd.heartbeatAt = t
+      const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
+      return { ok: true, id, today: sum(r.provider, dayStart) + held(r.provider, null, t), cycle: sum(r.provider, cycleStart(t, r.cycleStartDay || 1)) + held(r.provider, null, t), seen: seen + 1, drawn: hd.drawn, reserved: hd.reserved }
+    },
+    async jobRelease(holdId, note) {
+      const hd = holds[holdId - 1]
+      if (!hd) return { ok: false, code: 'JOB_RESERVATION_GONE' }
+      if (hd.releasedAt == null) hd.releasedAt = now()
+      if (note) hd.note = note
+      return { ok: true, id: hd.id, reserved: hd.reserved, drawn: hd.drawn, draws: hd.draws, released: hd.reserved - hd.drawn }
+    },
+    async jobHeartbeat(holdId) {
+      const hd = holds[holdId - 1]
+      if (!hd || !holdLive(hd, now())) return false
+      hd.heartbeatAt = now(); return true
     },
     async settle(id, status) { const row = rows[id - 1]; if (row && row.status === 'reserved') row.status = status },
     async trip(provider, code, message) { if (!trips.has(provider)) trips.set(provider, { code, message, at: new Date(now()).toISOString() }) },
@@ -613,7 +724,8 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
     },
     async totals(provider, cycleStartDay) {
       const t = now()
-      return { today: sum(provider, Date.parse(dayKey(t) + 'T00:00:00Z')), cycle: sum(provider, cycleStart(t, cycleStartDay)), tripped: trips.get(provider) || null }
+      const h = held(provider, null, t)
+      return { today: sum(provider, Date.parse(dayKey(t) + 'T00:00:00Z')) + h, cycle: sum(provider, cycleStart(t, cycleStartDay)) + h, held: h, tripped: trips.get(provider) || null }
     },
     /** Test helper: a row spent at a given time (the September seed, say). */
     seed(provider, chars, atMs) { rows.push({ id: rows.length + 1, at: atMs, kind: 'seed', provider, chars, status: 'seed' }) },
@@ -830,6 +942,13 @@ function createSpendGuard(opts = {}) {
       }
     }
 
+    // AN AGREED BATCH (cs #502·AK): inside Popty's batch route the clip draws from the batch's hold. The caps, the
+    // commission check and the job raise were met ONCE when the hold was taken; the hold's provider lock, its
+    // remainder and the repeat cap are met here per clip. A clip on another provider (a fallback) takes the per-call
+    // path below, exactly as today.
+    const hold = chain.jobHold()
+    if (hold && hold.provider === provider) return drawFromHold(hold, ctx, { provider, text, chars, cfg, b })
+
     await checkProvider(provider, cfg, b, chars, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
 
     // Job-scoped raises (see loadLimits). The raised job spends from its own
@@ -925,8 +1044,13 @@ function createSpendGuard(opts = {}) {
     if (raisedJob) { const c = jobSpend.get(raisedJob.job); if (c) c.byProvider[provider] = (Number(c.byProvider[provider]) || 0) + chars }
     try { mirror(entry) } catch { /* the reservation is in the DB; the intent line is on disk */ }
 
-    // Alerts on crossing lines: once per HOST per line per day/cycle (job #695) — a
-    // service restart must not re-raise a crossing already said (95% Cartesia repeated per restart).
+    crossingAlerts(provider, b, res)
+    return entry
+  }
+
+  // Alerts on crossing lines: once per HOST per line per day/cycle (job #695) — a
+  // service restart must not re-raise a crossing already said (95% Cartesia repeated per restart).
+  function crossingAlerts(provider, b, res) {
     const today = Number(res.today) || 0; const cycle = Number(res.cycle) || 0
     if (today >= b.alertDailyChars) {
       alert(`daily:${provider}:${dayKey(now())}`, 'warn', dailyLineMessage(provider, today, b), { provider }, { oncePerHost: true })
@@ -937,7 +1061,143 @@ function createSpendGuard(opts = {}) {
     if (b.overageAllowed && cycle > b.monthlyPoolChars) {
       alert(`overage:${provider}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has passed its ${b.monthlyPoolChars.toLocaleString()}-char allowance this cycle (${cycle.toLocaleString()} used since the ${b.cycleStartDay}th): overage billing has begun. No stop — this is a notice`, { provider, code: POOL_OVERAGE }, { oncePerHost: true })
     }
+  }
+
+  /**
+   * RESERVE AN AGREED BATCH ONCE (cs #502·AK, Tom 2026-11-22, r-2026-11-22-once-an-audio-job-is-agreed: "The size of
+   * the job is a fixed thing"). Popty's batch route calls this before its first clip. It applies every limit
+   * beforeProviderCall applies to a single call (retired provider, provider usage, a signed job raise, the held
+   * combined cap, the commission check, and in the ledger Tom's stop, trips, the hard ceiling, the approved and
+   * automatic total cap, the provider daily cap and the cycle stop), to the batch's whole size. A re-record batch
+   * also needs a Tom grant covering it. Refusals throw TtsSpendGuardError with the same codes as a single call.
+   * ctx: { provider, courseCode, job, roles, grantId, rerecord, chars, ttlSeconds }
+   * Returns the hold to run clips under (chain.withJobHold); pass it to releaseJob when the batch ends.
+   */
+  async function reserveJob(ctx) {
+    const provider = String(ctx.provider || 'unknown')
+    const chars = Math.ceil(Number(ctx.chars))
+    const course = ctx.courseCode ? String(ctx.courseCode) : null
+    const job = ctx.job ? String(ctx.job) : null
+    const who = { course, job }
+    if (!course || !job || !/#\d+/.test(job) || !(chars > 0)) throw new TtsSpendGuardError('BAD_CALL', 'a job hold names its course, its job ("#913") and a positive size in characters', who)
+    if (typeof store.jobReserve !== 'function') refuse('LEDGER', provider, `the ${store.kind} spend store has no job holds — refusing to reserve a batch it cannot account for`, who)
+    const cfg = limitsNow()
+    const b = providerLimits(cfg, provider)
+    if (b.retired) refuse('RETIRED', provider, b.retired, who)
+    await checkProvider(provider, cfg, b, chars, who)
+
+    const raisedJob = cfg.jobRaises.find(r => jobMatches(job, r.job)) || null
+    let dailyCap = null
+    let combinedCap = cfg.hold && cfg.hold.combinedDailyCapChars ? cfg.hold.combinedDailyCapChars : null
+    if (raisedJob) {
+      const spent = sumChars(await jobSpentToday(raisedJob.job))
+      if (spent + chars > raisedJob.extraDailyChars) {
+        refuse('DAILY_CAP', provider, `job ${raisedJob.job} has spent ${spent} chars today under Tom's signed raise; this batch (${chars}) would pass its allowance of ${raisedJob.extraDailyChars} (raise by ${raisedJob.by}, until ${raisedJob.until})`, who)
+      }
+      dailyCap = Number.MAX_SAFE_INTEGER
+      combinedCap = null
+    } else if (cfg.jobRaises.length) {
+      let extraHere = 0; let extraAll = 0
+      for (const r of cfg.jobRaises) { const sp = await jobSpentToday(r.job); extraHere += Number(sp[provider]) || 0; extraAll += sumChars(sp) }
+      dailyCap = b.dailyCapChars + extraHere
+      if (combinedCap) combinedCap += extraAll
+    }
+    let commissionedJob = false
+    if (!raisedJob) { try { commissionedJob = await isCommissioned(job) } catch { commissionedJob = false } }
+    if (combinedCap && !commissionedJob) {
+      let combined = 0
+      for (const p of Object.keys(cfg.providers)) combined += Number((await ledgerTotals(p, providerLimits(cfg, p))).today) || 0
+      if (combined + chars > combinedCap) refuse('DAILY_CAP', provider, `today's spend across all TTS providers is ${combined} chars; this batch (${chars}) would pass the combined daily cap of ${combinedCap}. HELD: ${cfg.hold.message}`, { today: combined, ...who })
+    }
+    let holdLimits = b
+    if (!raisedJob && commissionedJob) { holdLimits = { ...b, maxPerKey: COMMISSIONED_REPEAT_MAX, commissioned: true }; dailyCap = Number.MAX_SAFE_INTEGER }
+
+    const base = { at: new Date(now()).toISOString(), provider, chars, course, job, roles: ctx.roles || null, grant: ctx.grantId ?? null, pid: process.pid }
+    try { mirror({ kind: 'hold-intent', ...base }) } catch (e) {
+      throw new TtsSpendGuardError('LEDGER', `cannot write the spend mirror ${mirrorPath} (${e.message}) — refusing to render unrecorded`)
+    }
+    const ttlSeconds = Math.max(60, Math.min(JOB_HOLD_MAX_TTL_SECONDS, Number(ctx.ttlSeconds) || 3600))
+    let res
+    try {
+      res = await store.jobReserve({ provider, course, job, roles: ctx.roles || null, grantId: ctx.grantId ?? null, rerecord: !!ctx.rerecord, chars, ttlSeconds, limits: holdLimits, dailyCap })
+    } catch (e) {
+      try { mirror({ kind: 'hold-refused', code: 'LEDGER', ...base }) } catch {}
+      refuse('LEDGER', provider, `the shared spend ledger is unreachable (${e.message}) — refusing to reserve a batch unrecorded`, who)
+    }
+    if (!res || typeof res.ok !== 'boolean') refuse('LEDGER', provider, `the shared spend ledger answered ${JSON.stringify(res)} — refusing to render on an answer it cannot read`, who)
+    if (!res.ok) {
+      try { mirror({ kind: 'hold-refused', code: res.code, ...base }) } catch {}
+      const hint = res.code === 'DAILY_CAP' && cfg.hold ? ` HELD: ${cfg.hold.message}` : ''
+      refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.${hint}`, { today: res.today, cycle: res.cycle, total: res.total, cap: res.cap, chars: res.code === 'DAILY_TOTAL_CAP' ? chars : undefined, ...who })
+    }
+    const hold = Object.freeze({ id: res.id, provider, course, job, reserved: chars, repeatMax: holdLimits.maxPerKey, expiresAt: res.expires_at || null, raisedJob: raisedJob ? raisedJob.job : null })
+    if (raisedJob) { const c = jobSpend.get(raisedJob.job); if (c) c.byProvider[provider] = (Number(c.byProvider[provider]) || 0) + chars }
+    try { mirror({ kind: 'hold', id: res.id, ...base, expiresAt: hold.expiresAt }) } catch { /* the hold is in the DB; the intent line is on disk */ }
+    crossingAlerts(provider, b, res)
+    return hold
+  }
+
+  /** One clip's chars out of its batch's hold (from beforeProviderCall). Throws TtsSpendGuardError to refuse. */
+  async function drawFromHold(hold, ctx, { provider, text, chars, cfg, b }) {
+    await checkProvider(provider, cfg, b, 0, { course: hold.course, job: hold.job })   // the chars were charged when the hold was taken
+    const key = repeatKey(provider, ctx.voiceId, text, ctx.speed, ctx.model)
+    const base = {
+      at: new Date(now()).toISOString(), provider, voice: ctx.voiceId || null, chars,
+      course: hold.course, job: hold.job, hold: hold.id,
+      language: ctx.language || null, text_hash: textHash(text), key, attempt: ctx.attempt || 1, pid: process.pid,
+    }
+    try { mirror({ kind: 'intent', ...base }) } catch (e) {
+      throw new TtsSpendGuardError('LEDGER', `cannot write the spend mirror ${mirrorPath} (${e.message}) — refusing to render unrecorded`)
+    }
+    // A Tom-signed repeat exemption for this job and these words lifts only this key's repeat cap, up to its once-each count.
+    let maxPerKey = hold.repeatMax
+    const exempt = cfg.repeatExemptions.find(e => jobMatches(hold.job, e.job) && e.texts.has(repeatTextKey(text)))
+    if (exempt) {
+      let used
+      try { used = await store.keyJobCallsToday(key, exempt.job, exempt.since) } catch (e) {
+        try { mirror({ kind: 'refused', code: 'LEDGER', ...base }) } catch {}
+        refuse('LEDGER', provider, `cannot read job ${exempt.job}'s calls on these words from the ledger (${e.message}) — refusing to render unrecorded`, {})
+      }
+      if (used >= exempt.maxCallsPerText) {
+        try { mirror({ kind: 'refused', code: 'REPEAT', ...base }) } catch {}
+        refuse('REPEAT', provider, `job ${exempt.job} has already used its ${exempt.maxCallsPerText} exempt call(s) on these words in voice ${ctx.voiceId || '?'} today (Tom's exemption, until ${exempt.until}) — do not retry; a human listens first`, { key, course: base.course, job: base.job })
+      }
+      maxPerKey = 1_000_000
+    }
+    let res
+    try {
+      res = await store.jobDraw({ holdId: hold.id, provider, voice: base.voice, chars, key, textHash: base.text_hash, language: base.language, attempt: base.attempt, cycleStartDay: b.cycleStartDay, maxPerKey, windowHours: b.windowHours })
+    } catch (e) {
+      try { mirror({ kind: 'refused', code: 'LEDGER', ...base }) } catch {}
+      refuse('LEDGER', provider, `the shared spend ledger is unreachable (${e.message}) — refusing to render unrecorded`, {})
+    }
+    if (!res || typeof res.ok !== 'boolean') refuse('LEDGER', provider, `the shared spend ledger answered ${JSON.stringify(res)} — refusing to render on an answer it cannot read`, {})
+    if (!res.ok) {
+      try { mirror({ kind: 'refused', code: res.code, ...base }) } catch {}
+      refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.`, { key: res.code === 'REPEAT' ? key : undefined, seen: res.seen, drawn: res.drawn, reserved: res.reserved, course: base.course, job: base.job })
+    }
+    const entry = { kind: 'call', id: res.id, ...base }
+    try { mirror(entry) } catch { /* the draw is in the DB; the intent line is on disk */ }
+    crossingAlerts(provider, b, res)
     return entry
+  }
+
+  /** End a batch: its undrawn remainder stops counting. Never throws — an unreleased hold dies on its own (JOB_HOLD_STALE_MS). */
+  async function releaseJob(hold, note) {
+    if (!hold || hold.id == null) return null
+    try {
+      const out = await store.jobRelease(hold.id, note || null)
+      try { mirror({ kind: 'hold-release', id: hold.id, at: new Date(now()).toISOString(), ...(out || {}) }) } catch {}
+      return out
+    } catch (e) {
+      log.warn(`[TtsSpendGuard] job reservation #${hold.id} (${hold.job}) not released (${e.message}) — it stops counting by itself within ${JOB_HOLD_STALE_MS / 60000} minutes`)
+      return null
+    }
+  }
+  /** Keep a hold live while its clips render. false = the hold is dead (released, expired or stale): stop drawing. */
+  async function heartbeatJob(hold) {
+    if (!hold || hold.id == null) return false
+    try { return (await store.jobHeartbeat(hold.id)) === true } catch { return false }
   }
 
   /** After the call: sent or failed. Best effort, never throws — the chars stay counted either way. */
@@ -953,7 +1213,7 @@ function createSpendGuard(opts = {}) {
     return { provider, todayChars: Number(t.today) || 0, cycleChars: Number(t.cycle) || 0, pool: b.monthlyPoolChars, dailyCap: b.dailyCapChars, stopShare: b.stopAtShareOfPool, tripped: t.tripped || null }
   }
 
-  return { beforeProviderCall, afterProviderCall, snapshot, ledgerPath: mirrorPath, alertsPath, store }
+  return { beforeProviderCall, afterProviderCall, reserveJob, releaseJob, heartbeatJob, snapshot, ledgerPath: mirrorPath, alertsPath, store }
 }
 
 // ─── Human alert: one line into the command surface's needs-you ────────────
@@ -1105,6 +1365,9 @@ module.exports = {
   TOTAL_DAILY_CAP_CHARS,
   TOTAL_DAILY_CEILING_CHARS,
   COMMISSIONED_REPEAT_MAX,
+  JOB_HOLD_STALE_MS,
+  JOB_HOLD_HEARTBEAT_MS,
+  JOB_HOLD_MAX_TTL_SECONDS,
   surfaceCommissionChecker,
   repeatKey,
   repeatTextKey,
