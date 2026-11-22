@@ -1,3 +1,20 @@
+## 2026-11-22 — An agreed audio job reserves its size once, then renders 15 at a time (cs #502·AK)
+
+**Tom, 2026-11-22** (r-2026-11-22-once-an-audio-job-is-agreed): "There's no particular reason, once we've agreed to a job, for that job to be running in series. One clip at a time. The size of the job is a fixed thing." The guards stay.
+
+**Where the series came from.** Every paid clip calls `tts_spend_reserve`. That function takes two advisory locks: `tts_spend:__total__`, which is global across every provider and host, then the provider's own lock. While it holds them it sums today, the cycle, the approvals and the repeat window. Before that the JS side reads the surface's live jobs, any job raises and the combined hold. So fifteen concurrent asks queue on one lock, one clip at a time, however many Cartesia slots are free.
+
+**Decision (better × simpler × cheaper): a job hold.**
+- **Reserve once.** `POST /api/audio/render-batch` on Popty is the one door. It takes a list of lines for one course and one job, with an optional `grantId` and `rerecord:true`, and reserves the batch's worst case (the sum of its characters) ONCE through `tts_spend_job_reserve`. That call takes the same two locks, in the same order, and runs the same cap tiers with the same refusal codes: Tom's stop, trip, the hard ceiling, the Tom-approved allowance, the commissioned and automatic total cap, the provider daily cap and the cycle stop. A re-record batch must name a grant that is Tom's, in date, unrevoked and covering the course and its roles. Otherwise the hold is refused `RERECORD_NOT_PERMITTED` before a character is sent.
+- **Draw per clip.** Each clip draws its characters through `tts_spend_job_draw`. That takes ONLY the provider lock (the per-provider hash chain needs it), locks the hold row, and checks Tom's stop, the trip, that the hold is still live, `drawn + chars <= reserved` (else `JOB_RESERVATION_EXCEEDED`, a 402 like every cap) and the repeat cap. It then inserts the clip's own `call` row into the ledger. So the audit log keeps one row per clip, and the repeat cap and the per-clip re-record gate (`assertMayRerecord`, which logs and reserves each use) run exactly as they do now. Renders run 15 at a time under the existing Cartesia slot limiter.
+- **Count for everyone else.** `tts_spend_reserve` and `tts_spend_totals` add every live hold's undrawn remainder to today, the cycle and the total. So a hold spends the day's budget the moment it is taken, and a draw moves characters from the hold to the ledger under the provider lock without changing any total.
+- **Release.** The route releases the remainder in `finally`. A hold also dies on its own, at whichever comes first: its TTL (at most 2 h), the next UTC midnight (caps are per day), or 5 minutes without a draw or heartbeat (the route sends a heartbeat every 60 s). So a crashed job cannot hold the day's budget.
+- **Switch.** `TTS_SPEND_JOB_HOLDS=on` on the Popty service turns the batch route on. When it is off (the default) the route answers 409 `JOB_HOLDS_OFF`, and no code path touches the new SQL. The per-call `/api/audio/render` path is byte-for-byte today's either way.
+
+**Better:** wall-clock limited by Cartesia's 15 slots, not by one global lock. **Simpler:** one new route, one in-process context value (`chain-context.withJobHold`). The door and `renderClip` do not change shape. **Cheaper:** one global-lock reserve per batch instead of one per clip, and fewer DB reads per clip.
+**Needs Tom:** the migration `ops/sql/20261122-tts-spend-job-holds.sql` (rollback beside it) is unapplied. Apply it, then set the switch.
+**Proof:** `tools/audio/job-reserve-proof.cjs`, run on the in-process store with simulated Cartesia latency.
+
 ## 2026-11-18 — Load gate: cold verifier #838 findings fixed before promotion (cs job #835)
 
 Four defects, fixed before any promotion to main:
