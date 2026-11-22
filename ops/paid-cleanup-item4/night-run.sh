@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Item 4 night runner (cs #358; Kai approved item 4 on 18 Nov with a 200k Cartesia cap). The same shape as item 9's
+# Item 4 night runner (cs #358; Kai approved item 4 on 18 Nov with a 200k Cartesia cap, raised to 550k 22 Nov). The same shape as item 9's
 # (ops/paid-cleanup-item9/night-run.sh, #960·AI). Fired by the user timer cs-long-keep-item4-358.timer (22:05 UTC). Each night:
 #   a) fast-forwards the persistent worktree ~/.cs-long/item4-358/popty to origin/main (never recreated: the ledgers
 #      <file>.applied.jsonl and the audio logs, untracked, live beside the changesets and make the nights resumable);
@@ -11,7 +11,7 @@
 #      Exit 75 = quiet hours closed: stop, resume tomorrow. Exit 1 = stopped on an error: stop and say so.
 #      Exit 2 = file done with drift/refused ops set aside: carry on;
 #   d) audio for every row item 4 made live (tools/night-audio.cjs: tonight's applied ops + the 18 Nov backlog, in
-#      seed order, Popty's one render route, fill-only links, 200k Cartesia cap in total, stops on a spend refusal);
+#      seed order, Popty's one render route, fill-only links, 550k Cartesia cap in total, stops on a spend refusal);
 #   e) wakes the owning conversation with the night's numbers; when both ledgers are complete and the audio is either
 #      all answered or at the cap, disables its own timer.
 # No secret on any argv: --key kai is resolved by the signer (sudo -u popty); the surface token is read from a 0600 file.
@@ -55,6 +55,9 @@ for c in $COURSES; do
 done
 
 audio=""; arc=0
+# The a2c chain's own day tally runs until it ends (22 Nov 23:45Z): audio waits for it, so the two never share a day's
+# cap; item 4's whole cap is reserved on the a2c four-day total through fixes.json entry "item4-358" (utc_day 23 Nov).
+while systemctl --user is-active -q cs-long-keep-a2c-chain.service; do late && break; echo "$(date -u +%T) a2c chain still running; audio waits"; sleep 300; done
 # audio only ever touches ops the ledgers mark applied (and the 18 Nov backlog), so it runs whatever stopped above
 late || { AGENT_ID=kai-358-item4 node "$DIR/tools/night-audio.cjs" $COURSES; arc=$?; audio=$(grep '^night-audio item4' "$LOG" | tail -1); }
 echo "=== end $(date -u +%FT%TZ)"

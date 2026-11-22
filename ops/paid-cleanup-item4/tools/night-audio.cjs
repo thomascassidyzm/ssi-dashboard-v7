@@ -7,7 +7,7 @@
 //   - <course>/changesets/r358.changeset.jsonl: only ops its ledger marks "applied" (item 9's ledger-state.slotsFor:
 //     insert -> known/target1/target2; rewrite -> the side(s) whose words changed);
 //   - <course>/changesets/backlog-358.slots.json: rows item 4 changed on 18 Nov whose slots are silent (audio-backlog.cjs).
-// Spend: Kai's item-4 cap is 200,000 Cartesia characters in TOTAL (18 Nov). Every night's Cartesia (or unknown-voice)
+// Spend: Kai's item-4 cap is 550,000 Cartesia characters in TOTAL (18 Nov 200k, raised 22 Nov). Every night's Cartesia (or unknown-voice)
 // charsSpent across both courses' logs counts; a slot whose text would pass the cap is not sent, and the run stops
 // there (cap reached: the rest is listed as still silent). Azure characters are tallied apart (billed apart).
 // The spend file ~/ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json ({done,total,byDay}) is
@@ -24,9 +24,10 @@ const { execFileSync } = require('child_process');
 const ROOT = path.resolve(__dirname, '../../..');
 const ITEM = path.resolve(__dirname, '..');
 const { slotsFor } = require('../../paid-cleanup-item9/tools/ledger-state.cjs');
-const CAP = 200000;
+// Kai's Watson, 22 Nov: cap raised from 200k to 550k so no item-4 row is left silent (inside Kai's 1M/day for course fixes).
+const CAP = 550000;
 const AGENT = process.env.AGENT_ID || 'kai-358-item4';
-const APPROVAL = 'kai:2026-11-18:paid-cleanup item 4 filler rows, Kai approved incl. audio (200k Cartesia cap); fill now, mismatch OK (cs #358)';
+const APPROVAL = 'kai:2026-11-18:paid-cleanup item 4 filler rows, Kai approved incl. audio (550k Cartesia cap); fill now, mismatch OK (cs #358)';
 const PURPOSE = 'cs #358 paid cleanup item 4 (filler/template practice rows re-said or back-filled), Kai approved 18 Nov';
 const SPEND = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json');
 const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT/i;

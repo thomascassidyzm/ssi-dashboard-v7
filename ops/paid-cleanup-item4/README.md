@@ -32,5 +32,5 @@ Undo: `POST /api/production/<course>/edit-batch {"undo_file":"<name from the app
   checked by item 9's `precheck-guards.cjs`). Never rebuilt after its first night (the ledger keys ops by line).
 - `tools/audio-backlog.cjs` → `<course>/changesets/backlog-358.slots.json`: slots item 4's 18 Nov rows left silent (copy).
 - `night-run.sh` (timer `cs-long-keep-item4-358.timer`, 22:05 UTC, persistent worktree `~/.cs-long/item4-358/popty`):
-  pre-check → governed applier (por_br, then eng_for_mar) → `tools/night-audio.cjs` (seed order, 200k Cartesia cap in total,
+  pre-check → governed applier (por_br, then eng_for_mar) → `tools/night-audio.cjs` (seed order, 550k Cartesia cap in total (200k raised 22 Nov), audio starts after the a2c chain ends,
   spend file `~/ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json`, reserved in the a2c `fixes.json`).
