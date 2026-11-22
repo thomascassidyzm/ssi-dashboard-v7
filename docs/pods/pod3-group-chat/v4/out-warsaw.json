@@ -1,0 +1,954 @@
+{
+  "topic": "Danny is back from three days in Warsaw visiting his cousin. He's just told the table that the beautiful old town there, which looks medieval, was flattened in the war and rebuilt in the fifties, partly from eighteenth-century paintings by a Venetian painter, and that where the painter got a detail wrong they sometimes built it wrong on purpose. Hugh has asked whether that makes it fake.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F2",
+      "from": 2,
+      "to": 7,
+      "hint": "someone asks Danny a plain factual question about the place or the rebuilding; he answers it and then volunteers a detail nobody asked for that changes the picture"
+    },
+    {
+      "id": "F301",
+      "from": 7,
+      "to": 14,
+      "hint": "after someone has been building a view for a few turns, a listener hands it back compressed into a sharper name for what is really at stake; the person who built the view ratifies it and adopts that name next turn",
+      "followup": "ratify-and-adopt"
+    },
+    {
+      "id": "F305",
+      "from": 13,
+      "to": 21,
+      "hint": "someone pushes back with a counterexample; the person under pressure welcomes it and folds it in as making their own point stronger, not weaker"
+    },
+    {
+      "id": "F16",
+      "from": 19,
+      "to": 27,
+      "hint": "someone concedes the point they've just been given, and then holds their own position with a but"
+    },
+    {
+      "id": "F304",
+      "from": 23,
+      "to": 31,
+      "hint": "someone remarks on how the table itself is talking (talking over each other, everyone suddenly whispering, everyone having changed sides) and uses that observation as a move in the argument"
+    },
+    {
+      "id": "F11",
+      "from": 26,
+      "to": 33,
+      "hint": "someone answers a direct question briefly and in the same turn hands the identical question to a person who has said little"
+    }
+  ],
+  "T": [
+    {
+      "speaker": "Danny",
+      "line": "Fake? Hugh, it's more honest than half the cathedrals in England.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Hang on, built it wrong how, though? Like a chimney in the wrong place, or the whole frontage?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Frontages, mostly, a window that never existed. And they skipped the nineteenth century entirely",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F2",
+      "full": "Frontages, mostly, a window that never existed. And they skipped the nineteenth century entirely, built it how they'd rather remember it."
+    },
+    {
+      "speaker": "Jess",
+      "line": "Wait, wait, skipped it on purpose? So somebody sat in an office and decided which hundred years counted, and that's your more honest one? I'd want to know who got to pick.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "The Party picked. Who else?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Which Venetian? Not Canaletto?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "His nephew, Bellotto. Though every Pole calls him Canaletto, and he signed it that way himself",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "His nephew, Bellotto. Though every Pole calls him Canaletto, and he signed it that way himself, so the borrowing starts early."
+    },
+    {
+      "speaker": "Hugh",
+      "line": "So they rebuilt the painting.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F301"
+    },
+    {
+      "speaker": "Danny",
+      "line": "Yes. The painting, not the town. And it says so, there's a little sign. Your cathedral with the Victorian west front, that never owns up to anything.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "But the people who'd actually lived there before, did they want the painting back? Or their own street, with the nineteenth-century bits in?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Nobody wants their own street back, Sunny, they want the nice version. Half the Georgian fireplaces round here",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Nobody wants their own street back, Sunny, they want the nice version. Half the Georgian fireplaces round here came out of a reclamation yard in Leominster."
+    },
+    {
+      "speaker": "Femi",
+      "line": "Half? Counted them, have you?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "No, and that helps me, most of them aren't even Georgian, they're nineteen-twenties copies. People were buying the nice version a century ago.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F305"
+    },
+    {
+      "speaker": "Jess",
+      "line": "Right, but your twenties copy's a hundred years old now. When does a fake just quietly turn into the old thing?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "When the last one who watched it go up stops saying so. Will tells walkers our top barn's medieval",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "When the last one who watched it go up stops saying so. Will tells walkers our top barn's medieval. My father re-roofed it in seventy-one. I held the ladder."
+    },
+    {
+      "speaker": "Femi",
+      "line": "And is it?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Depends which bit you're asking. Stone's off a chapel that came down when my grandad was a boy, so the walls are older than the barn. Will just rounds it up a few centuries.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "And you were calling Warsaw fake.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "All right, Will's a liar, I'll grant you that. But every stone in that barn stood in a real chapel",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F16",
+      "full": "All right, Will's a liar, I'll grant you that. But every stone in that barn stood in a real chapel. Yours came out of a picture."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "So a chapel nobody alive remembers beats a picture every child in Warsaw grew up staring at? Odd thing to call more real, Hugh.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "No, they didn't stare at it, they walked about inside it. Different thing. Mind, I'll give you the chapel's no better.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Inside the copy, though, Hugh.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Hugh's swapped sides",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Hugh's swapped sides twice now.",
+      "moveRejected": "F304"
+    },
+    {
+      "speaker": "Rhi",
+      "line": "He hasn't, though. Nobody living in a listed house cares what's original, they care whether the bloody sash opens.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "My cousin's doesn't. Swollen since fifty-three.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "That's painted shut, that is.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Danny, standing in that square before you'd read the little sign, could you actually tell?",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Danny, standing in that square before you'd read the little sign, could you actually tell? Could any of us?"
+    },
+    {
+      "speaker": "Danny",
+      "line": "No. Could you, Jess?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": "F11"
+    },
+    {
+      "speaker": "Jess",
+      "line": "I'd have read the sign first.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "And that's the odd bit, isn't it. Same bricks, same light, and once you've read it you'd swear it looked newer.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Or you'd just start hunting for joins",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Or you'd just start hunting for joins once you know. And you'd find them in any old building, real or not."
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Old houses are nothing but joins.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "So the sign made it newer.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "So you'd rather take the sign down?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "No, leave it up. But which time was I seeing it properly, before I'd read it or after?",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "No, leave it up. But which time was I seeing it properly, before I'd read it or after? Because I'm not convinced it's after."
+    },
+    {
+      "speaker": "Femi",
+      "line": "After. Before, you were just trusting it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Fake? Hugh, it's more honest than half the cathedrals in England.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Hang on, built it wrong how, though? Like a chimney in the wrong place, or the whole frontage?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F2"
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Frontages, mostly, a window that never existed. And they skipped the nineteenth century entirely, built it how they'd rather remember it.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F2",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F2"
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Wait, wait, skipped it on purpose? So somebody sat in an office and decided which hundred years counted, and that's your more honest one? I'd want to know who got to pick.",
+        "cut_in": "And they skipped the nineteenth century entirely,",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Danny",
+        "line": "The Party picked. Who else?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Which Venetian? Not Canaletto?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Danny",
+        "line": "His nephew, Bellotto. Though every Pole calls him Canaletto, and he signed it that way himself, so the borrowing starts early.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F301"
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "So they rebuilt the painting.",
+        "cut_in": "Though every Pole calls him Canaletto, and he signed it that way himself",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F301",
+        "move_target": "Danny"
+      },
+      "cutApplied": true,
+      "planned": "F301"
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Yes. The painting, not the town. And it says so, there's a little sign. Your cathedral with the Victorian west front, that never owns up to anything.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "But the people who'd actually lived there before, did they want the painting back? Or their own street, with the nineteenth-century bits in?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Nobody wants their own street back, Sunny, they want the nice version. Half the Georgian fireplaces round here came out of a reclamation yard in Leominster.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Half? Counted them, have you?",
+        "cut_in": "Half the Georgian fireplaces round here",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No, and that helps me, most of them aren't even Georgian, they're nineteen-twenties copies. People were buying the nice version a century ago.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F305",
+        "move_target": "Femi"
+      },
+      "cutApplied": false,
+      "planned": "F305"
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Right, but your twenties copy's a hundred years old now. When does a fake just quietly turn into the old thing?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "When the last one who watched it go up stops saying so. Will tells walkers our top barn's medieval. My father re-roofed it in seventy-one. I held the ladder.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Femi",
+        "line": "And is it?",
+        "cut_in": "Will tells walkers our top barn's medieval.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Depends which bit you're asking. Stone's off a chapel that came down when my grandad was a boy, so the walls are older than the barn. Will just rounds it up a few centuries.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Danny",
+        "line": "And you were calling Warsaw fake.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "All right, Will's a liar, I'll grant you that. But every stone in that barn stood in a real chapel. Yours came out of a picture.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F16",
+        "move_target": "Danny"
+      },
+      "cutApplied": false,
+      "planned": "F16"
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "So a chapel nobody alive remembers beats a picture every child in Warsaw grew up staring at? Odd thing to call more real, Hugh.",
+        "cut_in": "But every stone in that barn stood in a real chapel.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "No, they didn't stare at it, they walked about inside it. Different thing. Mind, I'll give you the chapel's no better.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Inside the copy, though, Hugh.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Hugh's swapped sides twice now.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F304",
+        "move_target": "Hugh"
+      },
+      "cutApplied": false,
+      "planned": "F304"
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "He hasn't, though. Nobody living in a listed house cares what's original, they care whether the bloody sash opens.",
+        "cut_in": "Hugh's swapped sides",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Danny",
+        "line": "My cousin's doesn't. Swollen since fifty-three.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "That's painted shut, that is.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Danny, standing in that square before you'd read the little sign, could you actually tell? Could any of us?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Danny",
+        "line": "No. Could you, Jess?",
+        "cut_in": "Danny, standing in that square before you'd read the little sign, could you actually tell?",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F11",
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": "F11"
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Jess",
+        "line": "I'd have read the sign first.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "And that's the odd bit, isn't it. Same bricks, same light, and once you've read it you'd swear it looked newer.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Or you'd just start hunting for joins once you know. And you'd find them in any old building, real or not.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Old houses are nothing but joins.",
+        "cut_in": "Or you'd just start hunting for joins",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Jess",
+        "line": "So the sign made it newer.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Danny",
+        "line": "So you'd rather take the sign down?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "No, leave it up. But which time was I seeing it properly, before I'd read it or after? Because I'm not convinced it's after.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Femi",
+        "line": "After. Before, you were just trusting it.",
+        "cut_in": "before I'd read it or after?",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 3,
+      "speaker": "Danny",
+      "move": "F2",
+      "pass": true,
+      "reason": "Danny answers Rhi's question (frontages, a nonexistent window) and then adds the unasked fact that they skipped the nineteenth century, with Danny, Rhi and Jess all taking part and Jess picking up the extra material in turn 4."
+    },
+    {
+      "turn": 8,
+      "speaker": "Hugh",
+      "move": "F301",
+      "pass": true,
+      "reason": "Hugh compresses Danny's account of the rebuild into the sharper name 'they rebuilt the painting', and Danny ratifies and adopts it in turn 9 ('Yes. The painting, not the town') with Rhi, Jess, Femi and Sunny also in the exchange, so the three-person rule holds."
+    },
+    {
+      "turn": 13,
+      "speaker": "Rhi",
+      "move": "F305",
+      "pass": true,
+      "reason": "Pushed on by Femi ('Counted them, have you?'), Rhi concedes ('No') and turns that into support ('that helps me'): the fireplaces are mostly 1920s copies, which shows people were already buying 'the nice version' a century ago, so her claim gets stronger rather than defended, in a multi-party stretch where Jess takes up the upgraded point in turn 14."
+    },
+    {
+      "turn": 19,
+      "speaker": "Hugh",
+      "move": "F16",
+      "pass": true,
+      "reason": "In a multi-party stretch (Danny, Hugh, Sunny and others), Hugh grants Danny's jab that the barn's medieval claim is false ('Will's a liar, I'll grant you that') and then holds his position with a 'But' that the stones came from a real chapel."
+    },
+    {
+      "turn": 23,
+      "speaker": "Femi",
+      "move": "F304",
+      "pass": false,
+      "reason": "Femi's 'Hugh's swapped sides' remarks on one person's change of position in the argument, not on how the table itself is talking, and Rhi immediately disputes it rather than the table taking it up and using it."
+    },
+    {
+      "turn": 28,
+      "speaker": "Danny",
+      "move": "F11",
+      "pass": true,
+      "reason": "Danny answers Sunny's question ('No.') and in the same turn hands the identical question on, minimally and by name, to Jess ('Could you, Jess?'), with at least three people (Sunny, Danny, Jess, plus Rhi just before) taking part."
+    }
+  ],
+  "hit": [
+    {
+      "id": "F2",
+      "turn": 3
+    },
+    {
+      "id": "F301",
+      "turn": 8
+    },
+    {
+      "id": "F305",
+      "turn": 13
+    },
+    {
+      "id": "F16",
+      "turn": 19
+    },
+    {
+      "id": "F11",
+      "turn": 28
+    }
+  ],
+  "unplaced": [
+    "F304"
+  ]
+}

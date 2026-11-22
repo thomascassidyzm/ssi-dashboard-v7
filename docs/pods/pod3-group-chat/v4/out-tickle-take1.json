@@ -1,0 +1,919 @@
+{
+  "topic": "Danny's daughter rang him this afternoon and told him you physically can't tickle yourself, and that it's something to do with the brain. He has spent ten minutes trying under the table and has just told the others. Jess is already trying it.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F302",
+      "from": 3,
+      "to": 8,
+      "hint": "someone who half-knows why (Femi or Sunny) first marks down their own authority, plainly, and then says what they think the reason is at full strength"
+    },
+    {
+      "id": "F9",
+      "from": 8,
+      "to": 13,
+      "hint": "someone else, before pushing back, offers back an accurate version of that explanation in their own words, as a check before they push on it; the person who gave it confirms it next turn",
+      "followup": "confirm-or-correct"
+    },
+    {
+      "id": "F303",
+      "role": "coin",
+      "from": 9,
+      "to": 15,
+      "hint": "someone coins a short, vivid phrase for the idea under discussion that the others pick up"
+    },
+    {
+      "id": "F16",
+      "from": 14,
+      "to": 22,
+      "hint": "someone concedes the point another person just made, and then holds their own different view with a but"
+    },
+    {
+      "id": "F11",
+      "from": 18,
+      "to": 26,
+      "hint": "someone is asked a direct question, answers it briefly, and in the same turn hands the same question to someone at the table who has said little"
+    },
+    {
+      "id": "F303",
+      "role": "reuse",
+      "from": 24,
+      "to": 33,
+      "hint": "a different person redeploys the phrase coined earlier as a tease, shorthand or argument; its ownership can be contested"
+    }
+  ],
+  "T": [
+    {
+      "speaker": "Jess",
+      "line": "No, it's doing something. Ribs. It's definitely doing something.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "Doing what, though? Laughing?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Right, this is GP-level, not brain-surgeon-level, but it's prediction. Your brain knows exactly what your own hand's",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F302",
+      "full": "Right, this is GP-level, not brain-surgeon-level, but it's prediction. Your brain knows exactly what your own hand's about to do, so it turns the feeling down."
+    },
+    {
+      "speaker": "Danny",
+      "line": "Then why can I do armpits?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "You can't do armpits, you're just jumpy. Go on, do it now, I'm watching your face.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "Same with a heifer. Rub her flank slow and she'll lean into you. Come at it sudden and she'll have you over.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "So it's surprise",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "So it's surprise, not touch."
+    },
+    {
+      "speaker": "Danny",
+      "line": "Wait, wait. Sunny's version: my brain sees my own hand coming, files it as already known, and doesn't bother being surprised. Is that it?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null,
+      "moveRejected": "F9"
+    },
+    {
+      "speaker": "Femi",
+      "line": "Yeah, that's it. Already accounted for, so it barely registers. Which is why mine wasn't surprise exactly, it's the gap between what you expected and what you got.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "So your hand's read the ending.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "But Cai sees me coming from across the kitchen, hands up, and he's gone",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "But Cai sees me coming from across the kitchen, hands up, and he's gone before I've touched him. He knows the ending."
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Knowing it's coming isn't knowing where. I half-remember a study where people tickled themselves through a little robot arm, and if they put a delay in, it started working again.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [
+        {
+          "who": "Femi",
+          "text": "mm",
+          "after": "a delay in"
+        }
+      ],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "How much of a delay are we talking? A blink, or more like the echo coming back off the quarry face?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Alright, the where, I'll give you that. But Cai's gone before I've even moved a finger, so that's not prediction, that's dread.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F16"
+    },
+    {
+      "speaker": "Sunny",
+      "line": "Small, Hugh, a fraction of a second, if I'm remembering it right. And Rhi, dread's not nothing",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Small, Hugh, a fraction of a second, if I'm remembering it right. And Rhi, dread's not nothing, the wind-up's half of it."
+    },
+    {
+      "speaker": "Danny",
+      "line": "Hang on, I've just tried it with my eyes shut. Nothing. So it's not seeing the hand coming, is it?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "It's not the eyes, it's whatever sent the order to your hand. It keeps a copy. That's my guess anyway, I don't know the wiring.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Wait, so if Matt grabs my wrist and does it with my own hand, that'd work, then?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "My guess is no. Hugh's?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "moveRejected": "F11"
+    },
+    {
+      "speaker": "Hugh",
+      "line": "I'd go against you, Sunny. If Femi's right and it's the order that gets copied, Matt's the one giving the order",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "I'd go against you, Sunny. If Femi's right and it's the order that gets copied, Matt's the one giving the order. Her hand's just the tool he's holding."
+    },
+    {
+      "speaker": "Danny",
+      "line": "Testable. Jess, give me your wrist.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Not like that, Danny, you're stroking her like a cat",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Not like that, Danny, you're stroking her like a cat. Short and sharp, it's the poke that gets them."
+    },
+    {
+      "speaker": "Jess",
+      "line": "No, stop, stop, that works, that's horrible. But is it my finger doing it, or just knowing it's you on the end?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Hugh",
+      "line": "That's my bet come in, Sunny. Her hand can't have read the ending if it's Danny, well, Danny turning the pages.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F303"
+    },
+    {
+      "speaker": "Femi",
+      "line": "Do it without telling her when.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Danny",
+      "line": "Eyes shut, Jess",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Eyes shut, Jess. Whenever I fancy."
+    },
+    {
+      "speaker": "Jess",
+      "line": "No, I'm going already, look.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "He's not even touching you yet. Fine, Rhi, I'll give you dread, that's half of it before anyone's moved.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Right, so why can't I put the fear of God in myself, then? I know exactly what I'm about to do.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Sunny",
+      "line": "You can. Three in the morning.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Femi",
+      "line": "But that's not you scaring you, though. At three in the morning your head's invented somebody else",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "But that's not you scaring you, though. At three in the morning your head's invented somebody else to do it."
+    },
+    {
+      "speaker": "Danny",
+      "line": "So anyone who can properly fool himself should manage it. I know several men in this town who'd be in hysterics.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Wait, is lying to yourself the same—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Rhi",
+      "line": "Same as what, tickling or dread?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "speaker": "Jess",
+      "line": "Tickling. If you can't surprise yourself, how does anyone manage to believe their own lie, unless some bit of you isn't",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Tickling. If you can't surprise yourself, how does anyone manage to believe their own lie, unless some bit of you isn't, no, hang on—"
+    },
+    {
+      "speaker": "Danny",
+      "line": "Some bit isn't told. Memory's like that, you tidy a story up and it comes back as if somebody else—",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, it's doing something. Ribs. It's definitely doing something.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Doing what, though? Laughing?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Right, this is GP-level, not brain-surgeon-level, but it's prediction. Your brain knows exactly what your own hand's about to do, so it turns the feeling down.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F302"
+      },
+      "cutApplied": false,
+      "planned": "F302"
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Then why can I do armpits?",
+        "cut_in": "Your brain knows exactly what your own hand's",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "You can't do armpits, you're just jumpy. Go on, do it now, I'm watching your face.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Same with a heifer. Rub her flank slow and she'll lean into you. Come at it sudden and she'll have you over.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Femi",
+        "line": "So it's surprise, not touch.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Wait, wait. Sunny's version: my brain sees my own hand coming, files it as already known, and doesn't bother being surprised. Is that it?",
+        "cut_in": "So it's surprise,",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F9"
+      },
+      "cutApplied": true,
+      "planned": "F9"
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Yeah, that's it. Already accounted for, so it barely registers. Which is why mine wasn't surprise exactly, it's the gap between what you expected and what you got.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Jess",
+        "line": "So your hand's read the ending.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F303-coin"
+      },
+      "cutApplied": false,
+      "planned": "F303-coin"
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "But Cai sees me coming from across the kitchen, hands up, and he's gone before I've touched him. He knows the ending.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Knowing it's coming isn't knowing where. I half-remember a study where people tickled themselves through a little robot arm, and if they put a delay in, it started working again.",
+        "cut_in": "hands up, and he's gone",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "How much of a delay are we talking? A blink, or more like the echo coming back off the quarry face?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [
+          {
+            "who": "Femi",
+            "text": "mm",
+            "after": "a delay in"
+          }
+        ],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Alright, the where, I'll give you that. But Cai's gone before I've even moved a finger, so that's not prediction, that's dread.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": "F16"
+      },
+      "cutApplied": false,
+      "planned": "F16"
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Small, Hugh, a fraction of a second, if I'm remembering it right. And Rhi, dread's not nothing, the wind-up's half of it.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Hang on, I've just tried it with my eyes shut. Nothing. So it's not seeing the hand coming, is it?",
+        "cut_in": "And Rhi, dread's not nothing,",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Femi",
+        "line": "It's not the eyes, it's whatever sent the order to your hand. It keeps a copy. That's my guess anyway, I don't know the wiring.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Wait, so if Matt grabs my wrist and does it with my own hand, that'd work, then?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "My guess is no. Hugh's?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F11"
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "I'd go against you, Sunny. If Femi's right and it's the order that gets copied, Matt's the one giving the order. Her hand's just the tool he's holding.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Testable. Jess, give me your wrist.",
+        "cut_in": "Matt's the one giving the order.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Not like that, Danny, you're stroking her like a cat. Short and sharp, it's the poke that gets them.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, stop, stop, that works, that's horrible. But is it my finger doing it, or just knowing it's you on the end?",
+        "cut_in": "you're stroking her like a cat.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "That's my bet come in, Sunny. Her hand can't have read the ending if it's Danny, well, Danny turning the pages.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F303"
+      },
+      "cutApplied": false,
+      "planned": "F303-reuse"
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Do it without telling her when.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Eyes shut, Jess. Whenever I fancy.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Jess",
+        "line": "No, I'm going already, look.",
+        "cut_in": "Eyes shut, Jess.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "He's not even touching you yet. Fine, Rhi, I'll give you dread, that's half of it before anyone's moved.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Right, so why can't I put the fear of God in myself, then? I know exactly what I'm about to do.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "You can. Three in the morning.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Femi",
+        "line": "But that's not you scaring you, though. At three in the morning your head's invented somebody else to do it.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Danny",
+        "line": "So anyone who can properly fool himself should manage it. I know several men in this town who'd be in hysterics.",
+        "cut_in": "At three in the morning your head's invented somebody else",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Wait, is lying to yourself the same—",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Same as what, tickling or dread?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Tickling. If you can't surprise yourself, how does anyone manage to believe their own lie, unless some bit of you isn't, no, hang on—",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Some bit isn't told. Memory's like that, you tidy a story up and it comes back as if somebody else—",
+        "cut_in": "unless some bit of you isn't",
+        "overlap": false,
+        "backchannels": [],
+        "move": null
+      },
+      "cutApplied": true,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 3,
+      "speaker": "Sunny",
+      "move": "F302",
+      "pass": true,
+      "reason": "Sunny first marks down her own authority with \"GP-level, not brain-surgeon-level\" and then states \"it's prediction. Your brain knows exactly...\" without any hedging, so the flag licenses a confident delivery rather than withholding one, and the exchange has at least five participants."
+    },
+    {
+      "turn": 8,
+      "speaker": "Danny",
+      "move": "F9",
+      "pass": false,
+      "reason": "Danny offers back a candidate version of Sunny's explanation, but only Femi confirms it while Sunny, whose account was being checked, never ratifies it, so the move's confirmation is missing."
+    },
+    {
+      "turn": 14,
+      "speaker": "Rhi",
+      "move": "F16",
+      "pass": true,
+      "reason": "Rhi concedes Sunny's 'where' point with 'I'll give you that' and then holds her own position with 'But Cai's gone before I've even moved a finger', in a stretch where Rhi, Sunny, Hugh, Danny and Femi are all taking part."
+    },
+    {
+      "turn": 19,
+      "speaker": "Sunny",
+      "move": "F11",
+      "pass": false,
+      "reason": "Sunny answers Jess's question ('My guess is no') but then passes it on to Hugh ('Hugh's?') rather than handing it straight back to the asker, Jess, so this is a redirect to a third party, not an 'And you?' return."
+    },
+    {
+      "turn": 24,
+      "speaker": "Hugh",
+      "move": "F303",
+      "pass": true,
+      "reason": "In a six-way exchange, Hugh takes Jess's line from turn 10 (\"your hand's read the ending\") and turns it into an argument against Sunny, extending it playfully with \"Danny turning the pages\", which treats the phrase as common property rather than Jess's alone."
+    }
+  ],
+  "hit": [
+    {
+      "id": "F302",
+      "turn": 3
+    },
+    {
+      "id": "F16",
+      "turn": 14
+    },
+    {
+      "id": "F303",
+      "turn": 24
+    }
+  ],
+  "unplaced": [
+    "F9",
+    "F11"
+  ]
+}

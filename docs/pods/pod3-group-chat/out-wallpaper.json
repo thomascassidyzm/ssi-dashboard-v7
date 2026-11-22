@@ -1,0 +1,997 @@
+{
+  "topic": "Rhi stripped wallpaper in a front room on Broad Street today and found a note pencilled on the plaster by the man who papered it in 1962: his name, the date, the score of a Cardiff City match, and the words 'whoever reads this, I hope you're happier than me'. She's photographed it and is passing her phone round.",
+  "model": "opus",
+  "plan": [
+    {
+      "id": "F306",
+      "from": 6,
+      "to": 10,
+      "hint": "someone adds a thought and the next speaker takes it up as exactly where they were about to go, then carries it on along the merged line"
+    },
+    {
+      "id": "F301",
+      "from": 14,
+      "to": 18,
+      "hint": "after someone has been building a view for a few turns, a listener hands it back compressed into a sharper name; the person who built it ratifies it and uses that name next turn",
+      "followup": "ratify-and-adopt"
+    },
+    {
+      "id": "F11",
+      "from": 21,
+      "to": 25,
+      "hint": "someone answers a direct question briefly and in the same turn hands the identical question on, minimally, by name, to someone quiet"
+    },
+    {
+      "id": "F16",
+      "from": 28,
+      "to": 32,
+      "hint": "someone grants the point just made against them, then holds their own view with a but"
+    }
+  ],
+  "T": [
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Cardiff lost, then. That'll be the unhappiness, half of it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "No, they won. Read it again.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Femi",
+      "line": "Hang on, so he",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Hang on, so he— so they won?"
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "They won, they— two-nil, Femi.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": "Rhi's phone reaches Femi",
+      "speaker": "Femi",
+      "line": "Right, so not the football, then.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Sunny",
+      "line": "That's— no, that's where I was going, if they won two-nil then it's not the football, it's whatever was waiting at home.",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F306"
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Or he was just",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Or he was just Welsh."
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "Oi. Watch it, Gdańsk.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Jess",
+      "line": "Go on, Danny, just what?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Bored. Just bored, Jess.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": "the phone, passing back to Rhi, catches the rim of Jess's glass",
+      "speaker": "Hugh",
+      "line": "Mind, that's your pint",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Mind, that's your pint going."
+    },
+    {
+      "event": null,
+      "speaker": "Jess",
+      "line": "Got it, got it. Bored how?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Bored like— you're on your own in someone's front room all afternoon, wet paste, a pencil behind your ear. Gloom is what you write when nobody's watching.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Jess",
+      "line": "So it's— it's desk graffiti, isn't it. It's what Year Nines carve under the lid, all doom and their initials.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F301"
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Desk graffiti, yes, that's it. Under the lid, where nobody can see you",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Desk graffiti, yes, that's it. Under the lid, where nobody can see you, you can be as tragic as you like. Doesn't mean he was."
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "No, he signed it, though.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Femi",
+      "line": "Signed and dated, though, so it's checkable. Give us the date again",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Signed and dated, though, so it's checkable. Give us the date again. If Cardiff didn't win two-nil that day then he's not reporting the football, he's— that's a different man altogether."
+    },
+    {
+      "event": "Rhi pulls her phone back and zooms in with two fingers",
+      "speaker": "Rhi",
+      "line": "Third of March, sixty-two. Saturday.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Had the wireless on, then.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Sunny",
+      "line": "Saturday afternoon, though, papering someone else's front room while his team's playing. That's a man staying out of his own house.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Married, was he?",
+      "cutOff": true,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Married, was he? Married, I mean."
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "Doesn't say. Femi?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null,
+      "moveRejected": "F11"
+    },
+    {
+      "event": null,
+      "speaker": "Femi",
+      "line": "Well the Saturday's right, I did it in my head while you were zooming. The score I can't— I'd have to look it up. If it's wrong, mind, he wasn't listening to any wireless.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": "the dog under the table noses into Jess's bag after the crisps",
+      "speaker": "Jess",
+      "line": "Get off my bag, you— no, but why write the score at all? That's not gloom, that's him wanting you to know which day.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Sunny",
+      "line": "Because that's the one bit that went right that day, Jess. He puts the— the win down first",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Because that's the one bit that went right that day, Jess. He puts the— the win down first, then the rest."
+    },
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Or he'd a bob on it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "Nah, they all put the date, paperhangers. I've had loads under old paper, name, date, once what he charged for the room. Never had one— never had one talk to me, mind.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Sunny",
+      "line": "Fine, they all date it. But the score?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": "F16"
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "An alibi",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "An alibi. Where he was."
+    },
+    {
+      "event": null,
+      "speaker": "Jess",
+      "line": "Ooh, no, unless that's it, he wants it on record he was here papering and not wherever his wife thought he was.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Bit of a useless alibi, under three coats of paste. My father did ours, the back kitchen, about then, and— no, whatever he wrote, Mam never saw it. House was sold before anyone stripped it.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "Hang on, which— where's the house?",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Hugh",
+      "line": "Bottom of Mill Lane",
+      "cutOff": true,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null,
+      "full": "Bottom of Mill Lane. Blue door now."
+    },
+    {
+      "event": "Rhi's phone, face up by the crisps, buzzes and lights up with a message",
+      "speaker": "Femi",
+      "line": "Your phone's going, Rhi. Is that Broad Street? Are you telling them about it, or does it get papered over Monday?",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": true,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Rhi",
+      "line": "That's Cai. And I— dunno yet.",
+      "cutOff": false,
+      "overlap": false,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    },
+    {
+      "event": null,
+      "speaker": "Danny",
+      "line": "Paper it. That's the whole point—",
+      "cutOff": false,
+      "overlap": true,
+      "cutIn": false,
+      "backchannels": [],
+      "move": null
+    }
+  ],
+  "log": [
+    {
+      "turn": 1,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Cardiff lost, then. That'll be the unhappiness, half of it.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Rhi's phone reaches Hugh",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 2,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No, they won. Read it again.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 3,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Hang on, so he— so they won?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Hugh passes the phone to Femi",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 4,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "They won, they— two-nil, Femi.",
+        "cut_in": "Hang on, so he—",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 5,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Right, so not the football, then.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Rhi's phone reaches Femi",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 6,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "That's— no, that's where I was going, if they won two-nil then it's not the football, it's whatever was waiting at home.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": "F306",
+        "event": null,
+        "move_target": "Femi"
+      },
+      "cutApplied": false,
+      "planned": "F306"
+    },
+    {
+      "turn": 7,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Or he was just Welsh.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 8,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Oi. Watch it, Gdańsk.",
+        "cut_in": "Or he was just",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 9,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Go on, Danny, just what?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 10,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Bored. Just bored, Jess.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 11,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Mind, that's your pint going.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "the phone, passing back to Rhi, catches the rim of Jess's glass",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 12,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Got it, got it. Bored how?",
+        "cut_in": "Mind, that's your pint",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Jess grabs her glass before it tips",
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 13,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Bored like— you're on your own in someone's front room all afternoon, wet paste, a pencil behind your ear. Gloom is what you write when nobody's watching.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 14,
+      "raw": {
+        "speaker": "Jess",
+        "line": "So it's— it's desk graffiti, isn't it. It's what Year Nines carve under the lid, all doom and their initials.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F301",
+        "event": null,
+        "move_target": "Danny"
+      },
+      "cutApplied": false,
+      "planned": "F301"
+    },
+    {
+      "turn": 15,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Desk graffiti, yes, that's it. Under the lid, where nobody can see you, you can be as tragic as you like. Doesn't mean he was.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": "Jess"
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 16,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "No, he signed it, though.",
+        "cut_in": "where nobody can see you",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 17,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Signed and dated, though, so it's checkable. Give us the date again. If Cardiff didn't win two-nil that day then he's not reporting the football, he's— that's a different man altogether.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 18,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Third of March, sixty-two. Saturday.",
+        "cut_in": "Give us the date again.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Rhi pulls her phone back and zooms in with two fingers",
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 19,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Had the wireless on, then.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 20,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Saturday afternoon, though, papering someone else's front room while his team's playing. That's a man staying out of his own house.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 21,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Married, was he? Married, I mean.",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": "F11"
+    },
+    {
+      "turn": 22,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Doesn't say. Femi?",
+        "cut_in": "Married, was he?",
+        "overlap": false,
+        "backchannels": [],
+        "move": "F11",
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": "F11"
+    },
+    {
+      "turn": 23,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Well the Saturday's right, I did it in my head while you were zooming. The score I can't— I'd have to look it up. If it's wrong, mind, he wasn't listening to any wireless.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 24,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Get off my bag, you— no, but why write the score at all? That's not gloom, that's him wanting you to know which day.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "the dog under the table noses into Jess's bag after the crisps",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 25,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Because that's the one bit that went right that day, Jess. He puts the— the win down first, then the rest.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 26,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Or he'd a bob on it.",
+        "cut_in": "He puts the— the win down first",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 27,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Nah, they all put the date, paperhangers. I've had loads under old paper, name, date, once what he charged for the room. Never had one— never had one talk to me, mind.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 28,
+      "raw": {
+        "speaker": "Sunny",
+        "line": "Fine, they all date it. But the score?",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": "F16",
+        "event": null,
+        "move_target": "Rhi"
+      },
+      "cutApplied": false,
+      "planned": "F16"
+    },
+    {
+      "turn": 29,
+      "raw": {
+        "speaker": "Danny",
+        "line": "An alibi. Where he was.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 30,
+      "raw": {
+        "speaker": "Jess",
+        "line": "Ooh, no, unless that's it, he wants it on record he was here papering and not wherever his wife thought he was.",
+        "cut_in": "An alibi.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 31,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Bit of a useless alibi, under three coats of paste. My father did ours, the back kitchen, about then, and— no, whatever he wrote, Mam never saw it. House was sold before anyone stripped it.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 32,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "Hang on, which— where's the house?",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 33,
+      "raw": {
+        "speaker": "Hugh",
+        "line": "Bottom of Mill Lane. Blue door now.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 34,
+      "raw": {
+        "speaker": "Femi",
+        "line": "Your phone's going, Rhi. Is that Broad Street? Are you telling them about it, or does it get papered over Monday?",
+        "cut_in": "Bottom of Mill Lane.",
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Rhi's phone, face up by the crisps, buzzes and lights up with a message",
+        "move_target": null
+      },
+      "cutApplied": true,
+      "planned": null
+    },
+    {
+      "turn": 35,
+      "raw": {
+        "speaker": "Rhi",
+        "line": "That's Cai. And I— dunno yet.",
+        "cut_in": null,
+        "overlap": false,
+        "backchannels": [],
+        "move": null,
+        "event": "Rhi flips the phone face down without reading it",
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    },
+    {
+      "turn": 36,
+      "raw": {
+        "speaker": "Danny",
+        "line": "Paper it. That's the whole point—",
+        "cut_in": null,
+        "overlap": true,
+        "backchannels": [],
+        "move": null,
+        "event": null,
+        "move_target": null
+      },
+      "cutApplied": false,
+      "planned": null
+    }
+  ],
+  "judgements": [
+    {
+      "turn": 6,
+      "speaker": "Sunny",
+      "move": "F306",
+      "pass": true,
+      "reason": "In a five-person exchange, Sunny claims Femi's 'not the football, then' as 'where I was going' and carries it straight on into 'whatever was waiting at home', so the floor merges rather than passes, and the score both rely on was said aloud to the table (turn 4)."
+    },
+    {
+      "turn": 14,
+      "speaker": "Jess",
+      "move": "F301",
+      "pass": true,
+      "reason": "Jess hands Danny's 'bored, alone, gloom nobody sees' account back as a sharper name, 'desk graffiti', and Danny ratifies it ('yes, that's it') and adopts it to extend his point ('Under the lid, where nobody can see you'), all within a stretch of talk involving Danny, Jess, Rhi, Hugh and Sunny."
+    },
+    {
+      "turn": 22,
+      "speaker": "Rhi",
+      "move": "F11",
+      "pass": false,
+      "reason": "Rhi's \"Doesn't say. Femi?\" defers a factual question about the absent decorator to someone who might know more, rather than handing the same question back for the other person to answer about themselves, and Femi's reply addresses the date and score, not whether he was married."
+    },
+    {
+      "turn": 28,
+      "speaker": "Sunny",
+      "move": "F16",
+      "pass": true,
+      "reason": "Sunny grants Rhi's point that paperhangers routinely date their work ('Fine, they all date it') and then holds his own position with 'But the score?', keeping his claim that the score is the meaningful detail, in a stretch involving Rhi, Jess, Hugh, Danny and others."
+    }
+  ],
+  "hit": [
+    {
+      "id": "F306",
+      "turn": 6
+    },
+    {
+      "id": "F301",
+      "turn": 14
+    },
+    {
+      "id": "F16",
+      "turn": 28
+    }
+  ],
+  "unplaced": [
+    "F11"
+  ],
+  "handEdits": [
+    {
+      "what": "removed a doubled cut-off dash on 1 line(s); no words changed"
+    }
+  ]
+}
