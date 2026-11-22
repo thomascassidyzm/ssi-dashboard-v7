@@ -1,0 +1,51 @@
+{
+ "at": "2026-11-22T05:56:27.267Z",
+ "on": "nightly copy (copy-read validate)",
+ "pass": true,
+ "seeds": [
+  {
+   "seed": 363,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "blocking": []
+  },
+  {
+   "seed": 491,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 538,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 601,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "blocking": []
+  },
+  {
+   "seed": 618,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 647,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 660,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 662,
+   "issues": [],
+   "blocking": []
+  }
+ ]
+}

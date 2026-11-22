@@ -1,0 +1,160 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0491L02B04",
+    "seed_number": 491,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "आणि तुम्ही मदत करायचा प्रयत्न करता",
+    "target_text": "and you try to help",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0538L01B04",
+    "seed_number": 538,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "आणि मला पर्वा नाही",
+    "target_text": "and I don't care",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "eng_for_mar:S0618L02B04",
+    "seed_number": 618,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "आज ते बरोबर असल्यासारखं वाटत नाही",
+    "target_text": "it doesn't feel like it's right today",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 37,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0491L02U05",
+   "expect": {
+    "known_text": "तुम्ही इंग्रजीत मदत करायचा प्रयत्न करता",
+    "target_text": "you try to help in English"
+   },
+   "set": {
+    "known_text": "मला माहित आहे तुम्ही मदत करायचा प्रयत्न करता",
+    "target_text": "I know you try to help",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0538L01U05",
+   "expect": {
+    "known_text": "मला अजून पर्वा नाही",
+    "target_text": "I don't care yet"
+   },
+   "set": {
+    "known_text": "पण मला पर्वा नाही",
+    "target_text": "but I don't care",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0618L02B02",
+   "expect": {
+    "known_text": "अजून झाल्यासारखं वाटत नाही",
+    "target_text": "it doesn't feel like yet"
+   },
+   "set": {
+    "known_text": "तो चांगला दिवस असल्यासारखं वाटत नाही",
+    "target_text": "it doesn't feel like a good day",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0618L02B03",
+   "expect": {
+    "known_text": "अजिबात झाल्यासारखं वाटत नाही",
+    "target_text": "it doesn't feel like at all"
+   },
+   "set": {
+    "known_text": "ती समस्या असल्यासारखं वाटत नाही",
+    "target_text": "it doesn't feel like a problem",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0647L01U02",
+   "expect": {
+    "known_text": "आपण ते इंग्रजीत बोलता",
+    "target_text": "you speak it in English"
+   },
+   "set": {
+    "known_text": "आपण ते रोज बोलता",
+    "target_text": "you speak it every day",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_mar:S0662L01U02",
+   "expect": {
+    "known_text": "तुम्ही सगळे ते इंग्रजीत बोलता",
+    "target_text": "you all speak it in English"
+   },
+   "set": {
+    "known_text": "तुम्ही सगळे ते रोज बोलता",
+    "target_text": "you all speak it every day",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

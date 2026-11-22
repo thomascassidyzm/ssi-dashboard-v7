@@ -74,10 +74,6 @@
      "नाही धन्यवाद, मी तयार आहे",
      "no thank you, I'm ready"
     ],
-    "U01": [
-     "नाही धन्यवाद, मी स्वतः सांभाळू शकतो",
-     "no thank you I can manage on my own"
-    ],
     "U03": [
      "नाही धन्यवाद, मी स्वतः प्रयत्न करतोय",
      "no thank you, I'm trying on my own"
@@ -86,8 +82,11 @@
      "नाही धन्यवाद, मी आज सांभाळू शकतो",
      "no thank you, I can manage today"
     ]
-   }
+   },
+   "delete": [
+    "U01"
+   ]
   }
  },
- "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L03: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (U01; our U01 rewrite would have matched it too)"
 }

@@ -50,10 +50,6 @@
      "काय होणार आहे ते तुम्हाला समजतंय का?",
      "can you understand what's going to happen?"
     ],
-    "U03": [
-     "मी काय म्हणतोय ते तुम्हाला समजतंय का?",
-     "can you understand what I'm saying?"
-    ],
     "U04": [
      "मी आता काय म्हणतोय ते तुम्हाला समजतंय का?",
      "can you understand what I'm saying now?"
@@ -62,8 +58,11 @@
      "इंग्रजी बोलणारे लोक तुम्हाला समजतात का?",
      "can you understand people who speak English?"
     ]
-   }
+   },
+   "delete": [
+    "U03"
+   ]
   }
  },
- "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | #358 L02: item 12 (19 Nov) added a seed-sentence row with the same target; the older duplicate is deleted (U03; our U03 rewrite would have matched it too)"
 }
