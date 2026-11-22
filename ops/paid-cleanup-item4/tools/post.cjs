@@ -3,6 +3,7 @@
 //   node post.cjs baseline <course>          POST :3471/api/v2/validate (no override) -> <course>/validate-before.json
 //   node post.cjs validate <course> <batch>  one /v2/validate per seed WITH the batch's override (nothing written)
 //                                            -> batches/<batch>.validate.json; exit 1 if a touched LEGO fails
+//   node post.cjs cvalidate <course> <batch> the same, on the NIGHTLY COPY in process (no live read; any hour)
 //   node post.cjs dry      <course> <batch>  edit-batch dry run (real transaction, rolled back) -> batches/<batch>.dry.json
 //   node post.cjs apply    <course> <batch>  needs validate + dry to have passed; applies; saves event id,
 //                                            undo file name and undo ops -> batches/<batch>.apply.json, events.json
@@ -53,12 +54,22 @@ const issuesBySeed = (v) => new Map((v.failures || []).map(f => [f.seed, f.issue
   const ops = rd(path.join(bdir, `${batch}.ops.json`));
   const chk = rd(path.join(bdir, `${batch}.check.json`));
   if (chk.errors.length) { console.error('build check has errors; refusing'); process.exit(1); }
-  if (mode === 'validate') {
+  if (mode === 'validate' || mode === 'cvalidate') {
     const ovs = rd(path.join(bdir, `${batch}.overrides.json`));
     const touchedLegos = new Set(chk.checks.map(c => `L${Number(c.lego.slice(6))}:`));
     const res = []; let bad = 0;
-    for (const ov of ovs) {
-      const r = await post(`http://localhost:3471/api/v2/validate/${course}`, { override: ov, fromSeed: ov.seed_number });
+    // cs #358: 'cvalidate' runs the same /v2/validate checks IN PROCESS on the nightly copy (copy-read.cjs validate,
+    // the committed #931 reader), so a plan is validated by day without one read of live.
+    let copyAnswers = null;
+    if (mode === 'cvalidate') {
+      const os = require('os'); const tmp = fs.mkdtempSync(path.join(process.env.CS_SCRATCH || os.tmpdir(), 'cval-'));
+      wr(path.join(tmp, 'req.json'), ovs.map(ov => ({ fromSeed: ov.seed_number, override: ov })));
+      require('child_process').execFileSync('node', [path.resolve(__dirname, '../../paid-cleanup-scan-447/copy-read.cjs'), 'validate', course,
+        path.join(tmp, 'req.json'), path.join(tmp, 'out.json')], { stdio: ['ignore', 'ignore', 'inherit'] });
+      copyAnswers = rd(path.join(tmp, 'out.json'));
+    }
+    for (const [k, ov] of ovs.entries()) {
+      const r = copyAnswers ? { status: 200, body: copyAnswers[k] } : await post(`http://localhost:3471/api/v2/validate/${course}`, { override: ov, fromSeed: ov.seed_number });
       if (r.status !== 200) { res.push({ seed: ov.seed_number, error: r.status }); bad++; continue; }
       const issues = issuesBySeed(r.body).get(ov.seed_number) || [];
       const mine = chk.checks.filter(c => Number(c.lego.slice(1, 5)) === ov.seed_number).map(c => `L${Number(c.lego.slice(6))}:`);
@@ -66,7 +77,7 @@ const issuesBySeed = (v) => new Map((v.failures || []).map(f => [f.seed, f.issue
       if (blocking.length) bad++;
       res.push({ seed: ov.seed_number, issues, blocking });
     }
-    wr(path.join(bdir, `${batch}.validate.json`), { at: new Date().toISOString(), pass: bad === 0, seeds: res });
+    wr(path.join(bdir, `${batch}.validate.json`), { at: new Date().toISOString(), on: copyAnswers ? 'nightly copy (copy-read validate)' : 'live :3471', pass: bad === 0, seeds: res });
     console.log(`${course} ${batch} validate: ${res.length} seeds, ${bad} blocking`);
     for (const r of res) if ((r.blocking && r.blocking.length) || r.error) console.log('FAIL', r.seed, JSON.stringify(r.blocking || r.error));
     for (const r of res) if (r.issues && r.issues.length && !(r.blocking || []).length) console.log('pre-existing/other', r.seed, JSON.stringify(r.issues));

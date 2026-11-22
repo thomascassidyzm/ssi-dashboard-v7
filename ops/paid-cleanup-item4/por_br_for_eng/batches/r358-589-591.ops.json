@@ -1,0 +1,675 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L01B04",
+    "seed_number": 589,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "she told me her name",
+    "target_text": "ela me disse o nome dela",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L02B04",
+    "seed_number": 589,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "she said she'd just seen the dog",
+    "target_text": "ela disse que tinha acabado de ver o cachorro",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 45,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L03B04",
+    "seed_number": 589,
+    "lego_index": 3,
+    "position": 16,
+    "known_text": "I'm going home on the last bus",
+    "target_text": "vou para casa no último ônibus",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L03B05",
+    "seed_number": 589,
+    "lego_index": 3,
+    "position": 17,
+    "known_text": "I'm going to wait for the last bus",
+    "target_text": "vou esperar o último ônibus",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0590L01B04",
+    "seed_number": 590,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I saw the mountains",
+    "target_text": "eu vi as montanhas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0590L03B04",
+    "seed_number": 590,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "I saw the bus leaving the station",
+    "target_text": "eu vi o ônibus saindo da estação",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0591L01B04",
+    "seed_number": 591,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "she followed me again",
+    "target_text": "ela me seguiu outra vez",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 23,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0591L02B04",
+    "seed_number": 591,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "he went with me down to the shops",
+    "target_text": "ele foi comigo até as lojas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01B03",
+   "expect": {
+    "known_text": "yes, she told me",
+    "target_text": "sim, ela me disse"
+   },
+   "set": {
+    "known_text": "she told me the answer",
+    "target_text": "ela me disse a resposta",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U01",
+   "expect": {
+    "known_text": "it seems she told me",
+    "target_text": "parece que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me everything",
+    "target_text": "ela me disse tudo",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U02",
+   "expect": {
+    "known_text": "you know she told me",
+    "target_text": "você sabe que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me it was difficult",
+    "target_text": "ela me disse que era difícil",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U03",
+   "expect": {
+    "known_text": "they know she told me",
+    "target_text": "eles sabem que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me it was late",
+    "target_text": "ela me disse que era tarde",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U04",
+   "expect": {
+    "known_text": "I think she told me",
+    "target_text": "acho que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me what happened",
+    "target_text": "ela me disse o que aconteceu",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U05",
+   "expect": {
+    "known_text": "we know she told me",
+    "target_text": "sabemos que ela me disse"
+   },
+   "set": {
+    "known_text": "I think she told me the truth",
+    "target_text": "acho que ela me disse a verdade",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02B02",
+   "expect": {
+    "known_text": "she told me she'd just seen now",
+    "target_text": "ela me disse que tinha acabado de ver agora"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the children",
+    "target_text": "ela me disse que tinha acabado de ver as crianças",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02B03",
+   "expect": {
+    "known_text": "yes, she'd just seen",
+    "target_text": "sim, que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the bus",
+    "target_text": "ela me disse que tinha acabado de ver o ônibus",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U01",
+   "expect": {
+    "known_text": "she told me she'd just seen",
+    "target_text": "ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen my mother",
+    "target_text": "ela me disse que tinha acabado de ver a minha mãe",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U02",
+   "expect": {
+    "known_text": "it seems she told me she'd just seen",
+    "target_text": "parece que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the mountains",
+    "target_text": "ela me disse que tinha acabado de ver as montanhas",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U03",
+   "expect": {
+    "known_text": "you know she told me she'd just seen",
+    "target_text": "você sabe que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she said she'd just seen my friend",
+    "target_text": "ela disse que tinha acabado de ver o meu amigo",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U04",
+   "expect": {
+    "known_text": "they know she told me she'd just seen",
+    "target_text": "eles sabem que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "I think she told me she'd just seen the bus",
+    "target_text": "acho que ela me disse que tinha acabado de ver o ônibus",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U05",
+   "expect": {
+    "known_text": "I think she told me she'd just seen",
+    "target_text": "acho que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen something interesting",
+    "target_text": "ela me disse que tinha acabado de ver algo interessante",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03B02",
+   "expect": {
+    "known_text": "just seen the last bus",
+    "target_text": "acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "I'm waiting for the last bus",
+    "target_text": "estou esperando o último ônibus",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03B03",
+   "expect": {
+    "known_text": "yes, the last bus",
+    "target_text": "sim, o último ônibus"
+   },
+   "set": {
+    "known_text": "the last bus goes to the beach",
+    "target_text": "o último ônibus vai até a praia",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03U02",
+   "expect": {
+    "known_text": "it seems she told me she'd just seen the last bus",
+    "target_text": "parece que ela me disse que tinha acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "she's waiting for the last bus",
+    "target_text": "ela está esperando o último ônibus",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03U03",
+   "expect": {
+    "known_text": "you know she told me she'd just seen the last bus",
+    "target_text": "você sabe que ela me disse que tinha acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "I'd like to know when the last bus is",
+    "target_text": "gostaria de saber quando é o último ônibus",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03U04",
+   "expect": {
+    "known_text": "they know she told me she'd just seen the last bus",
+    "target_text": "eles sabem que ela me disse que tinha acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "the children are on the last bus",
+    "target_text": "as crianças estão no último ônibus",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01B02",
+   "expect": {
+    "known_text": "I myself saw that",
+    "target_text": "eu vi que"
+   },
+   "set": {
+    "known_text": "I saw the dog",
+    "target_text": "eu vi o cachorro",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01B03",
+   "expect": {
+    "known_text": "yes, I myself saw",
+    "target_text": "sim, eu vi"
+   },
+   "set": {
+    "known_text": "I saw the children",
+    "target_text": "eu vi as crianças",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U01",
+   "expect": {
+    "known_text": "it seems I myself saw",
+    "target_text": "parece que eu vi"
+   },
+   "set": {
+    "known_text": "I saw the church yesterday",
+    "target_text": "eu vi a igreja ontem",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U02",
+   "expect": {
+    "known_text": "you know I myself saw",
+    "target_text": "você sabe que eu vi"
+   },
+   "set": {
+    "known_text": "I saw the last bus",
+    "target_text": "eu vi o último ônibus",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U03",
+   "expect": {
+    "known_text": "they know I myself saw",
+    "target_text": "eles sabem que eu vi"
+   },
+   "set": {
+    "known_text": "I saw what happened",
+    "target_text": "eu vi o que aconteceu",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U04",
+   "expect": {
+    "known_text": "she said I myself saw",
+    "target_text": "ela disse que eu vi"
+   },
+   "set": {
+    "known_text": "I saw my friend at the hotel",
+    "target_text": "eu vi o meu amigo no hotel",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U05",
+   "expect": {
+    "known_text": "it's true that I myself saw",
+    "target_text": "é verdade que eu vi"
+   },
+   "set": {
+    "known_text": "I saw the children playing in the garden",
+    "target_text": "eu vi as crianças brincando no jardim",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03B03",
+   "expect": {
+    "known_text": "yes, leaving the station",
+    "target_text": "sim, saindo da estação"
+   },
+   "set": {
+    "known_text": "the bus leaving the station",
+    "target_text": "o ônibus saindo da estação",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U02",
+   "expect": {
+    "known_text": "it seems I saw the last bus leaving the station",
+    "target_text": "parece que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "I saw the children leaving the station",
+    "target_text": "eu vi as crianças saindo da estação",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U03",
+   "expect": {
+    "known_text": "you know I saw the last bus leaving the station",
+    "target_text": "você sabe que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "she saw me leaving the station",
+    "target_text": "ela me viu saindo da estação",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U04",
+   "expect": {
+    "known_text": "they know I saw the last bus leaving the station",
+    "target_text": "eles sabem que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "I can see the bus leaving the station",
+    "target_text": "eu consigo ver o ônibus saindo da estação",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U05",
+   "expect": {
+    "known_text": "she said I saw the last bus leaving the station",
+    "target_text": "ela disse que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the last bus leaving the station",
+    "target_text": "ela me disse que tinha acabado de ver o último ônibus saindo da estação",
+    "decomposition": null,
+    "word_count": 71,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0591L01B03",
+   "expect": {
+    "known_text": "yes, she followed me",
+    "target_text": "sim, ela me seguiu"
+   },
+   "set": {
+    "known_text": "she followed me yesterday",
+    "target_text": "ela me seguiu ontem",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0591L02B02",
+   "expect": {
+    "known_text": "she followed me down to the shops now",
+    "target_text": "ela me seguiu até as lojas agora"
+   },
+   "set": {
+    "known_text": "she went down to the shops",
+    "target_text": "ela foi até as lojas",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0591L02B03",
+   "expect": {
+    "known_text": "yes, down to the shops",
+    "target_text": "sim, até as lojas"
+   },
+   "set": {
+    "known_text": "I'm going down to the shops",
+    "target_text": "vou até as lojas",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}
