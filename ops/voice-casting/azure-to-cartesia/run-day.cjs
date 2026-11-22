@@ -54,7 +54,17 @@ const { execFileSync } = require('child_process')
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const DAY = Number(opt('--day'))
-if (!Number.isInteger(DAY) || DAY < 1 || DAY > 4) { console.error('usage: run-day.cjs --day N [--batch file] [--max-asks K]'); process.exit(1) }
+if (!Number.isInteger(DAY) || DAY < 1 || DAY > 9) { console.error('usage: run-day.cjs --day N [--batch file] [--max-asks K] [--approver tom --cap CHARS --reason TEXT]'); process.exit(1) }
+// EXTRA LISTS (cs #468·AK, Tom 22 Nov, r-2026-11-22-spanish-courses-use-the-cartesia-spanish): a course the census counted but
+// no day list carried (spa_for_zho, 284k) runs as day 5+ under its OWN approver and its OWN character cap. --approver tom signs
+// tom:YYYY-MM-DD:<reason> (the sending conversation must be on Tom's seat, approval-origin.cjs). With --cap, this list's own
+// logged spend is the only pre-check (Kai's day / four-day / credit-reserve caps were the 19-22 Nov plan's budget, now spent);
+// Popty's own 1M/day guard stays the backstop and every refusal still stops the run.
+const APPROVER = opt('--approver', 'kai')
+const LIST_CAP = opt('--cap', null) == null ? null : Number(opt('--cap'))
+const REASON = opt('--reason', null)
+if (!['kai', 'tom'].includes(APPROVER) || (LIST_CAP != null && !(LIST_CAP > 0))) { console.error('bad --approver or --cap'); process.exit(1) }
+if (APPROVER !== 'kai' && (LIST_CAP == null || !REASON)) { console.error('--approver tom needs --cap and --reason'); process.exit(1) }
 const HERE = __dirname
 const BATCH = opt('--batch', path.join(HERE, `day${DAY}-batch.jsonl`))
 const MAX_ASKS = Number(opt('--max-asks', Infinity))
@@ -77,9 +87,10 @@ const CYCLE_CREDIT = 2_450_000
 const RESERVE = 450_000
 const ITEM9_RESERVE = 52_000
 const CHECKPOINT = 50_000
-const AGENT = 'kai-azure-to-cartesia'
-const PURPOSE = `azure-to-cartesia day ${DAY} (cs #35 plan, Kai approved 19 Nov)`
-const APPROVAL = 'kai:2026-11-19:azure-to-cartesia four-day plan, Kai approved all batches 16:01Z'
+const AGENT = APPROVER === 'kai' ? 'kai-azure-to-cartesia' : `${APPROVER}-azure-to-cartesia`
+const PURPOSE = APPROVER === 'kai' ? `azure-to-cartesia day ${DAY} (cs #35 plan, Kai approved 19 Nov)` : `azure-to-cartesia day ${DAY}: ${REASON}`
+const APPROVAL = APPROVER === 'kai' ? 'kai:2026-11-19:azure-to-cartesia four-day plan, Kai approved all batches 16:01Z'
+  : `${APPROVER}:${new Date().toISOString().slice(0, 10)}:${REASON}`
 const STOP_CODES = new Set(['DAILY_TOTAL_CAP', 'DAILY_CAP', 'POOL_SHARE', 'POOL_OVERAGE', 'PROVIDER_POOL', 'USAGE_UNREADABLE', 'LEDGER',
   'TRIPPED', 'STOPPED_BY_TOM', 'NOT_IN_CHAIN', 'APPROVAL_UNVERIFIED', 'RATE_CAPPED', 'IDENTITY_REQUIRED'])
 const LIMIT_TEXT = /quota|credit|insufficient|payment|\b402\b|limit (reached|exceeded)|exceed/i
@@ -232,6 +243,10 @@ async function main() {
     if (nextCheckpoint === null) nextCheckpoint = Math.floor(t.total / CHECKPOINT) * CHECKPOINT + CHECKPOINT
     if (t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
     const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // gender prep can lengthen a line a little
+    if (LIST_CAP != null) {
+      const ownSpent = allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0)
+      if (ownSpent + want > LIST_CAP) { stop = `list cap: day ${DAY} spent ${ownSpent} + next ask ${want} > ${LIST_CAP}`; break }
+    } else {
     if (t.today + t.reserve + want > DAY_CAP && WAIT_DAY_CAP && t.total + t.reserve + want <= TOTAL_CAP) {
       const next = Date.parse(utcDay(Date.now()) + 'T00:00:00Z') + 86_400_000 + 60_000
       if (next < UNTIL) {
@@ -243,6 +258,7 @@ async function main() {
     if (t.today + t.reserve + want > DAY_CAP) { stop = `day cap: today ${t.today} (incl. fix reserve ${t.fixDay}) + item-9 reserve ${t.reserve} + next ask ${want} > ${DAY_CAP}`; break }
     if (t.total + t.reserve + want > TOTAL_CAP) { stop = `four-day cap: total ${t.total} (incl. fix reserve ${t.fixTotal}) + item-9 reserve ${t.reserve} + next ask ${want} > ${TOTAL_CAP}`; break }
     if (CYCLE_CREDIT - (t.total + t.reserve + want) < RESERVE) { stop = `credit reserve: 2.45M − ${t.total + t.reserve + want} < 450k` ; break }
+    }
 
     const body = { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE, approval: APPROVAL }
     let r = await post(`${BASE}/api/audio/render`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, RENDER_TIMEOUT_MS)

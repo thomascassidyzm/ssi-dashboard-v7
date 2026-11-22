@@ -11,4 +11,5 @@ Plan (cs #35) and the runner that executes it (cs #59). Only `run-day.cjs` rende
 
 Days 2-4 are re-censused (same two commands) before Kai's Y/N for that day.
 | `run-day.cjs` | cs #59: renders one day's committed list ONE ask at a time via `POST /api/audio/render` (Kai's approval token), re-points every listed slot via `link-clip` (replace + expectCurrent), checks the day/total/reserve caps before every ask, stops at the first limit error, never retries; results append to `~/ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/dayN-results.jsonl` | n/a |
+| `day5-batch.jsonl` | cs #468·AK, Tom 22 Nov (r-2026-11-22-spanish-courses-use-the-cartesia-spanish): spa_for_zho, counted by the census (284,125 chars) but on no day list. Seed order, targets first. Runs with `run-day.cjs --day 5 --approver tom --cap 330000 --reason …` | census `--courses spa_for_zho` + one python pass (in the commit message) |
 | `day.sh` | cs #59: what the day timers run: wait for an earlier day, stop check, day-of re-census + `build-days.py --batch-day N`, commit + push the list, `run-day.cjs`, wake | n/a |
