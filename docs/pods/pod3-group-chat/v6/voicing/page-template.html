@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>__TITLE__ · pod 3 voicing</title>
+<style>
+  :root{--bg:#faf8f3;--ink:#1d1c1a;--dim:#a39f96;--line:#e6e1d6;--hi:#ffe566;--card:#fff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+  header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(44px + env(safe-area-inset-top)) 14px 10px}
+  h1{font-size:19px;margin:0 0 2px}
+  .poc{font-size:12.5px;color:#7a766d;margin:0 0 8px}
+  audio{width:100%;height:40px;display:block}
+  .bar{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:13px;color:#7a766d}
+  .bar button{font:inherit;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;color:var(--ink)}
+  .bar button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  main{padding:10px 10px 40vh;max-width:640px;margin:0 auto}
+  .row{padding:7px 9px;border-radius:9px;margin:2px 0;cursor:pointer;transition:background .15s,color .25s;-webkit-tap-highlight-color:transparent}
+  .row .who{font-weight:700;font-size:13px;letter-spacing:.02em;margin-right:7px;color:var(--c,#555)}
+  .row.heard{color:var(--dim)} .row.heard .who{color:var(--dim)}
+  .row.now{background:var(--hi);color:var(--ink)} .row.now .who{color:var(--c,#555)}
+  .row.together{margin-left:14px;border-left:3px solid #d9c75a;border-radius:0 9px 9px 0}
+  .row.aside{margin-left:28px;font-size:15px;border-left:3px solid #b9c7d6;border-radius:0 9px 9px 0}
+  .row.back{margin-left:28px;font-size:15px;font-style:italic}
+  .note{font-style:italic;color:#7a766d;font-size:14.5px;padding:8px 9px;cursor:pointer}
+  .note.tag{font-size:12px;padding:6px 9px 0 28px;text-transform:uppercase;letter-spacing:.06em;font-style:normal}
+  .cast{margin:22px 4px 0;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:14px}
+  .cast h2{font-size:14px;margin:0 0 6px} .cast div{margin:3px 0} .cast code{font-size:11px;color:#7a766d;word-break:break-all}
+</style>
+</head>
+<body>
+<header>
+  <h1>__TITLE__</h1>
+  <p class="poc">Proof of concept: pod 3 group table, voiced. Synthetic and cloned British voices, nothing live.</p>
+  <audio id="a" controls preload="metadata" src="__AUDIO__"></audio>
+  <div class="bar"><button id="follow" class="on">Follow</button><button data-r="0.85">Slower</button><button data-r="1" class="on">Normal</button><span id="clock"></span></div>
+</header>
+<main id="m"></main>
+<script>
+const D = __DATA__;
+const COL = {Hugh:'#7a4b12',Danny:'#1f5fa8',Rhi:'#b0263e',Sunny:'#8a3fa0',Femi:'#1c7a52',Jess:'#c05a00',Waiter:'#5b6470'};
+const a = document.getElementById('a'), m = document.getElementById('m'), els = [];
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+D.rows.forEach(r => {
+  const d = document.createElement('div');
+  if (r.note != null) { d.className = 'note' + (r.aside ? ' tag' : ''); d.textContent = r.aside ? 'side conversation' : r.note; d.dataset.s = r.at == null ? '' : r.at; }
+  else { d.className = 'row ' + r.kind; d.style.setProperty('--c', COL[r.who] || '#555'); d.innerHTML = '<span class="who">' + esc(r.who) + '</span>' + esc(r.text); d.dataset.s = r.s; els.push({ d, r }); }
+  d.addEventListener('click', () => { if (d.dataset.s === '') return; a.currentTime = Math.max(0, +d.dataset.s - 0.05); a.play(); });
+  m.appendChild(d);
+});
+const cast = document.createElement('div'); cast.className = 'cast';
+cast.innerHTML = '<h2>Who is who</h2>' + D.cast.map(c => '<div><b>' + esc(c.who) + '</b> = ' + esc(c.voice) + '<br><code>' + esc(c.id) + '</code></div>').join('') +
+  '<div style="margin-top:8px;color:#7a766d">Lines marked with a bar are spoken at the same moment. Tap any line to jump there.</div>';
+m.appendChild(cast);
+let follow = true, lastTop = null;
+document.getElementById('follow').onclick = e => { follow = !follow; e.target.classList.toggle('on', follow); };
+document.querySelectorAll('[data-r]').forEach(b => b.onclick = () => { a.playbackRate = +b.dataset.r; document.querySelectorAll('[data-r]').forEach(x => x.classList.toggle('on', x === b)); });
+const fmt = t => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
+function tick() {
+  const t = a.currentTime; let lead = null;
+  for (const { d, r } of els) {
+    const now = t >= r.s - 0.05 && t < r.e, heard = t >= r.e;
+    if (d._n !== now) { d.classList.toggle('now', now); d._n = now; }
+    if (d._h !== heard) { d.classList.toggle('heard', heard); d._h = heard; }
+    if (now && r.kind !== 'aside' && r.kind !== 'back') lead = d;
+  }
+  if (follow && lead && lead !== lastTop && !a.paused) { lastTop = lead; lead.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  document.getElementById('clock').textContent = fmt(t) + ' / ' + fmt(D.duration);
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
