@@ -1,0 +1,100 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0275L01",
+   "expect": {
+    "known_text": "longer",
+    "target_text": "longtemps"
+   },
+   "set": {
+    "target_text": "plus longtemps",
+    "components": [
+     {
+      "known": "longer",
+      "target": "plus longtemps"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0275L01B01",
+   "expect": {
+    "known_text": "longer",
+    "target_text": "longtemps"
+   },
+   "set": {
+    "target_text": "plus longtemps"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0275L01U04",
+   "expect": {
+    "known_text": "that sounds like it's going to take longer",
+    "target_text": "ça a l'air que ça va prendre plus longtemps"
+   },
+   "set": {
+    "known_text": "I think it's going to take longer",
+    "target_text": "je pense que ça va prendre plus longtemps"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0275L01",
+   "slot": "target1",
+   "audio_id": "01c1fe0d-efa6-481f-b2a5-6ff26b8ce24f"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0275L01",
+   "slot": "target2",
+   "audio_id": "24a8ad79-8c0a-4d91-bffe-cada5f9adef0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0275L01U04",
+   "slot": "known",
+   "audio_id": "cdbc3511-9df2-416a-949c-c173ddad283b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0275L01U04",
+   "slot": "target1",
+   "audio_id": "ef5b8c89-3fb4-4b76-b84e-7eb32482e3cf"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0275L01U04",
+   "slot": "target2",
+   "audio_id": "246f814e-eb8d-4041-9938-f1b23d1a4483"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0275L01",
+   "slot": "presentation",
+   "audio_id": "2db890fc-25f6-4dc8-bc9d-fb25c27c2e5f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0275L01B01",
+   "slot": "target1",
+   "audio_id": "01c1fe0d-efa6-481f-b2a5-6ff26b8ce24f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0275L01B01",
+   "slot": "target2",
+   "audio_id": "24a8ad79-8c0a-4d91-bffe-cada5f9adef0"
+  }
+ ]
+}

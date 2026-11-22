@@ -1,0 +1,354 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0170L02",
+   "expect": {
+    "known_text": "you have",
+    "target_text": "vous avez"
+   },
+   "set": {
+    "known_text": "what you need",
+    "target_text": "ce dont vous avez besoin",
+    "components": [
+     {
+      "known": "what",
+      "target": "ce dont"
+     },
+     {
+      "known": "you need",
+      "target": "vous avez besoin"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02C01",
+   "expect": {
+    "known_text": "you",
+    "target_text": "vous"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02C02",
+   "expect": {
+    "known_text": "have",
+    "target_text": "avez"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02B01",
+   "expect": {
+    "known_text": "you have",
+    "target_text": "vous avez"
+   },
+   "set": {
+    "known_text": "what you need",
+    "target_text": "ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02B02",
+   "expect": {
+    "known_text": "you have",
+    "target_text": "vous avez"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02B03",
+   "expect": {
+    "known_text": "you have need",
+    "target_text": "vous avez besoin"
+   },
+   "set": {
+    "known_text": "I know what you need",
+    "target_text": "je sais ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02B04",
+   "expect": {
+    "known_text": "what you have",
+    "target_text": "ce que vous avez"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U01",
+   "expect": {
+    "known_text": "you have a book",
+    "target_text": "vous avez un livre"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U03",
+   "expect": {
+    "known_text": "do you have time to help me?",
+    "target_text": "vous avez le temps de m'aider?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U04",
+   "expect": {
+    "known_text": "you have an interesting book",
+    "target_text": "vous avez un livre intéressant"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0170L02U05",
+   "expect": {
+    "known_text": "you have a lot to learn",
+    "target_text": "vous avez beaucoup à apprendre"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0170L02B05",
+    "course_code": "fra_for_eng",
+    "seed_number": 170,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "that's what you need",
+    "target_text": "c'est ce dont vous avez besoin",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 30,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0170L02B06",
+    "course_code": "fra_for_eng",
+    "seed_number": 170,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "everything you need",
+    "target_text": "tout ce dont vous avez besoin",
+    "phrase_role": "build",
+    "status": "draft",
+    "introduce": true,
+    "metadata": {
+     "format": "build_use",
+     "authored": "cs #233 for Kai (fra_for_eng held items #424·AI, learner-POV gate 17 Nov)"
+    },
+    "connected_lego_ids": [],
+    "word_count": 29,
+    "lego_count": 1
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02U06",
+   "expect": {
+    "known_text": "I'd like to know what you have",
+    "target_text": "j'aimerais savoir ce que vous avez"
+   },
+   "set": {
+    "known_text": "I'd like to know what you need",
+    "target_text": "j'aimerais savoir ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02U07",
+   "expect": {
+    "known_text": "I think you have something to tell me",
+    "target_text": "je pense que vous avez quelque chose à me dire"
+   },
+   "set": {
+    "known_text": "I don't know what you need",
+    "target_text": "je ne sais pas ce dont vous avez besoin"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0170L02U08",
+   "expect": {
+    "known_text": "I'd like you to tell me what you have need of",
+    "target_text": "je voudrais que vous me disiez ce dont vous avez besoin"
+   },
+   "set": {
+    "known_text": "I'd like you to tell me what you need"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0170L02",
+   "slot": "known",
+   "audio_id": "5ee56331-82aa-4573-9c55-1587fcf0c92c"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0170L02",
+   "slot": "target1",
+   "audio_id": "1ad0edb7-e9de-4b89-954b-00893f9e9413"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0170L02",
+   "slot": "target2",
+   "audio_id": "00a1d03c-03ef-4090-aa6b-2b1176e461e9"
+  },
+  {
+   "op": "audio.link",
+   "target": "lego",
+   "lego_id": "S0170L02",
+   "slot": "presentation",
+   "audio_id": "e579c78e-1f3d-4e10-8883-ebef378e06a0"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B01",
+   "slot": "known",
+   "audio_id": "5ee56331-82aa-4573-9c55-1587fcf0c92c"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B01",
+   "slot": "target1",
+   "audio_id": "1ad0edb7-e9de-4b89-954b-00893f9e9413"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B01",
+   "slot": "target2",
+   "audio_id": "00a1d03c-03ef-4090-aa6b-2b1176e461e9"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B03",
+   "slot": "known",
+   "audio_id": "71a57516-31ba-4697-a748-9dbd36fdadde"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B03",
+   "slot": "target1",
+   "audio_id": "0ddcee45-0b11-4dd1-bba9-071eaf2758ac"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B03",
+   "slot": "target2",
+   "audio_id": "2933add5-2c76-47db-aaa7-744b8f8b7631"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B05",
+   "slot": "known",
+   "audio_id": "d0bd5fc0-1685-4aaa-892b-24d593ab2586"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B05",
+   "slot": "target1",
+   "audio_id": "75286756-b852-4c2e-8b89-a12cf81626ea"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B05",
+   "slot": "target2",
+   "audio_id": "e070192b-2f9d-4049-9797-1707d19f72df"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B06",
+   "slot": "known",
+   "audio_id": "c605cbdc-74de-4634-8e1c-0adff8fae169"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B06",
+   "slot": "target1",
+   "audio_id": "697d3450-f242-4e5b-8bb7-5d26b6e0eed1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02B06",
+   "slot": "target2",
+   "audio_id": "b22b9801-ef09-4c20-a7e8-3064cd07d24b"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U06",
+   "slot": "known",
+   "audio_id": "a4cef902-f033-4827-8c60-ac129eab942f"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U06",
+   "slot": "target1",
+   "audio_id": "f077c524-4b3c-4826-8594-65b721a052de"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U06",
+   "slot": "target2",
+   "audio_id": "c7d074bb-6c85-49e1-a64a-51099137622a"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U07",
+   "slot": "known",
+   "audio_id": "8ee8ab09-3af1-4237-acc7-5547ed7e5750"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U07",
+   "slot": "target1",
+   "audio_id": "cdb3268a-cac6-43bb-bcc3-7ab3f56b9cbf"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U07",
+   "slot": "target2",
+   "audio_id": "f710fd18-3a30-4cb0-aefa-0b7ac3bccc21"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "fra_for_eng:S0170L02U08",
+   "slot": "known",
+   "audio_id": "ab4a3dde-ec52-4d57-bdfa-9aa7944d736b"
+  }
+ ]
+}

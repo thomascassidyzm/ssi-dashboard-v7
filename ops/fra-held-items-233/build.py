@@ -72,7 +72,7 @@ class Fam:
     def link(self, kind, key, slots, frm):
         """reuse the clips another row ALREADY holds (frm = row dict from the dump); replaces any need for those slots"""
         for slot in slots:
-            col = {'known': 'known_audio_id', 'target1': 'target1_audio_id', 'target2': 'target2_audio_id'}[slot]
+            col = {'known': 'known_audio_id', 'target1': 'target1_audio_id', 'target2': 'target2_audio_id', 'presentation': 'presentation_audio_id'}[slot]
             self.need = [x for x in self.need if not (x['id'] == key and x['slot'] == slot)]
             self.links.append({'kind': kind, 'id': key, 'slot': slot, 'audio_id': frm[col], 'from': 'reuse'})
 
@@ -187,10 +187,10 @@ f.dele('S0170L02C01'); f.dele('S0170L02C02')
 f.ph('S0170L02B01', known_text='what you need', target_text='ce dont vous avez besoin')
 f.dele('S0170L02B02')
 f.ph('S0170L02B03', known_text='I know what you need', target_text='je sais ce dont vous avez besoin')
-f.ins('S0170L02', 'B', "that's what you need", "c'est ce dont vous avez besoin", 'build', pos=4)
-f.ins('S0170L02', 'B', 'everything you need', 'tout ce dont vous avez besoin', 'build', pos=6)
 for s in ('B04', 'U01', 'U03', 'U04', 'U05'):
     f.dele('S0170L02' + s)
+f.ins('S0170L02', 'B', "that's what you need", "c'est ce dont vous avez besoin", 'build', pos=4)
+f.ins('S0170L02', 'B', 'everything you need', 'tout ce dont vous avez besoin', 'build', pos=6)
 f.ph('S0170L02U06', known_text="I'd like to know what you need", target_text="j'aimerais savoir ce dont vous avez besoin")
 f.ph('S0170L02U07', known_text="I don't know what you need", target_text='je ne sais pas ce dont vous avez besoin')
 f.ph('S0170L02U08', known_text=S[170]['known_text']); f.link('phrase', pid('S0170L02U08'), ['known'], S[170])
@@ -218,6 +218,7 @@ for sfx in ('U01', 'U02', 'U03'):
 f.dele('S0543L01U04'); f.dele('S0543L01U05')
 # 275
 f.lego('S0275L01', target_text='plus longtemps', components=[{'known': 'longer', 'target': 'plus longtemps'}])
+f.link('lego', 'S0275L01', ['presentation'], L['S0275L01'])  # a target edit empties the intro slot; the intro ('longer') still says the LEGO
 f.ph('S0275L01B01', target_text='plus longtemps'); f.link('phrase', pid('S0275L01B01'), ['target1', 'target2'], S[275])
 f.ph('S0275L01U04', known_text="I think it's going to take longer", target_text='je pense que ça va prendre plus longtemps')
 

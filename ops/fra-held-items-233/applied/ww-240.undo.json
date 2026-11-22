@@ -1,0 +1,842 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L04U05",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "elle",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ne",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " veut",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pas",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false
+     },
+     {
+      "known": "for food order to eat",
+      "legoId": "S0402L04",
+      "target": " pour manger",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U03",
+   "set": {
+    "decomposition": [
+     {
+      "known": "it is",
+      "legoId": "S0049L01",
+      "target": "c'est",
+      "isGhost": false
+     },
+     {
+      "known": "difficult",
+      "legoId": "S0066L01",
+      "target": " difficile",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " parler",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L04U01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "yes",
+      "legoId": "S0097L01",
+      "target": "oui",
+      "isGhost": false
+     },
+     {
+      "known": "it would be nice",
+      "legoId": "S0402L01",
+      "target": " ce serait bien",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false
+     },
+     {
+      "known": "for food order to eat",
+      "legoId": "S0402L04",
+      "target": " pour manger",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L04U03",
+   "set": {
+    "decomposition": [
+     {
+      "known": "she wants",
+      "legoId": "S0017L01",
+      "target": "elle veut",
+      "isGhost": false
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false
+     },
+     {
+      "known": "for food order to eat",
+      "legoId": "S0402L04",
+      "target": " pour manger",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L04U02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S0402L01",
+      "target": "ce serait bien",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false
+     },
+     {
+      "known": "for food order to eat",
+      "legoId": "S0402L04",
+      "target": " pour manger",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L03U05",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "elle",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ne",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " veut",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pas",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L03U04",
+   "set": {
+    "decomposition": [
+     {
+      "known": "we want",
+      "legoId": "S0018L01",
+      "target": "nous voulons",
+      "isGhost": false
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L03U01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "she wants",
+      "legoId": "S0017L01",
+      "target": "elle veut",
+      "isGhost": false
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L03U02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S0402L01",
+      "target": "ce serait bien",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U04",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "il",
+      "isGhost": true
+     },
+     {
+      "known": "wanted",
+      "legoId": "S0052L01",
+      "target": " voulait",
+      "isGhost": false
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0019L01",
+      "target": " mais",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " il",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ne",
+      "isGhost": true
+     },
+     {
+      "known": "could",
+      "legoId": "S0225L02",
+      "target": " pouvait",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pas",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0508L04U04",
+   "set": {
+    "decomposition": [
+     {
+      "known": "there's no point",
+      "legoId": "S0508L04",
+      "target": "ça ne sert à rien de",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0402L03B02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": "s'arrêter",
+      "isGhost": false
+     },
+     {
+      "known": "somewhere",
+      "legoId": "S0402L03",
+      "target": " quelque part",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "elle",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ne",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " veut",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pas",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "il",
+      "isGhost": true
+     },
+     {
+      "known": "doesn't like",
+      "legoId": "S0240L02",
+      "target": " n'aime pas",
+      "isGhost": false
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " parler",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B04",
+   "set": {
+    "decomposition": [
+     {
+      "known": "doesn't like",
+      "legoId": "S0240L02",
+      "target": "n'aime pas",
+      "isGhost": false
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B03",
+   "set": {
+    "decomposition": [
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": "s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " parler",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": "s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " avant",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "aime",
+      "isGhost": true
+     },
+     {
+      "known": "he's stopping",
+      "legoId": "S0240L03",
+      "target": " s'arrêter",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B03",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B01",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "5089796e-5097-4970-940a-297eb1d11007",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "5089796e-5097-4970-940a-297eb1d11007",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03U01",
+   "set": {
+    "known_text": "he doesn't like stopping speaking",
+    "known_audio_id": "39288311-b638-4a51-b9a8-86381d148dd6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B04",
+   "set": {
+    "known_text": "doesn't like he's stopping",
+    "known_audio_id": "ab4451c2-4c73-4794-911d-47ccd221ac2f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B03",
+   "set": {
+    "known_text": "he's stopping talking",
+    "known_audio_id": "2a68f1f5-2895-4a7f-9f97-8d5ea503bc1f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B02",
+   "set": {
+    "known_text": "he's stopping before",
+    "known_audio_id": "89b8c131-bb19-4fbb-80ee-07d94d7aed5e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0240L03B01",
+   "set": {
+    "known_text": "like he's stopping",
+    "known_audio_id": "79136e4b-f49e-430b-9300-46adb32651e0"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "5089796e-5097-4970-940a-297eb1d11007",
+   "set": {
+    "known_text": "he's stopping",
+    "known_audio_id": "02b6ee28-76fa-4525-8592-e2781c49d2a5",
+    "presentation_audio_id": "c35e39a5-f770-46da-b3c2-c353bd8b4389"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0240L02C02",
+    "seed_number": 240,
+    "lego_index": 2,
+    "position": 2,
+    "known_text": "like",
+    "target_text": "pas",
+    "word_count": 3,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 1
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-11T19:41:42.236Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "8507300e-45df-4b0d-a558-8a0e890a3fcb",
+    "target1_audio_id": "c857c129-7a15-4a8a-ab9c-11856a491bba",
+    "target2_audio_id": "4e8003a1-ba1f-4a96-82f7-dbf358813d37",
+    "qa_checked": null,
+    "target1_duration_ms": 480,
+    "target2_duration_ms": 384,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": "9357411c-7ea7-4b78-8b81-89fe5b10dc4b",
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "pas",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0240L02C01",
+    "seed_number": 240,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "doesn't",
+    "target_text": "n'aime",
+    "word_count": 6,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 0
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-11T19:41:42.236Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "0323da3a-1931-4d0f-8a1f-ed6af1121924",
+    "target1_audio_id": "ad85a0c8-669a-43e6-bf24-72025c682621",
+    "target2_audio_id": "52bf773b-eb33-4d9c-94c0-bdcae04789ce",
+    "qa_checked": null,
+    "target1_duration_ms": 672,
+    "target2_duration_ms": 792,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": "3c53f81f-0468-4de2-b710-2fb94cd5237b",
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "n'aime",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "30a6afaf-8020-4b98-9176-6f5683b0ed7a",
+   "set": {
+    "type": "M",
+    "components": [
+     {
+      "known": "doesn't",
+      "target": "n'aime"
+     },
+     {
+      "known": "like",
+      "target": "pas"
+     }
+    ]
+   }
+  }
+ ]
+}
