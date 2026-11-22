@@ -1,0 +1,783 @@
+{
+ "event_id": "461e00fe-a592-40cf-8e99-e498c1db0d61",
+ "undo_file": "2026-11-18T13-13-24-310Z-461e00fe-a592-40cf-8e99-e498c1db0d61.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L02U05",
+   "set": {
+    "known_text": "I'm sure it's meant to be a challenge",
+    "target_text": "tenho certeza, é suposto ser um desafio",
+    "word_count": 39,
+    "known_audio_id": "8c8ac02e-5588-4540-a147-70eefbe7e566",
+    "target1_audio_id": "e4c654c7-e31d-4b6f-92ec-290dc0f47cd2",
+    "target2_audio_id": "7e9fcc98-08bc-4db1-9fb1-0ee19dbc9e61"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L02U04",
+   "set": {
+    "known_text": "yes, it's meant to be a challenge",
+    "target_text": "sim, é suposto ser um desafio",
+    "lego_position": "end",
+    "known_audio_id": "54f19d75-1c14-4c17-a49e-5292499aa6c0",
+    "target1_audio_id": "bf71255d-12c6-4087-b877-196b2b67f659",
+    "target2_audio_id": "23961009-35d6-481b-b156-00f2bdad6082"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L02U02",
+   "set": {
+    "known_text": "no, a challenge",
+    "target_text": "não, um desafio",
+    "word_count": 15,
+    "lego_position": "middle",
+    "known_audio_id": "b199e01e-a11e-480e-9ab1-a971c449b8c2",
+    "target1_audio_id": "28aa7709-7143-4d8e-b899-0b5ed3b9da5f",
+    "target2_audio_id": "5dbd187e-72f5-42e7-9cc0-7e159a31b50b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L02B03",
+   "set": {
+    "known_text": "yes, a challenge",
+    "target_text": "sim, um desafio",
+    "word_count": 15,
+    "known_audio_id": "5cecab2b-aa39-4217-b704-c9626f9e797b",
+    "target1_audio_id": "66cdb52e-8ad5-41da-9edd-1a39c51d5ecb",
+    "target2_audio_id": "853fa73f-10b7-48e9-9b0c-a9cf8e421e0d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L02B02",
+   "set": {
+    "known_text": "it's still meant to be a challenge",
+    "target_text": "ainda é suposto ser um desafio",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "8756d84d-2134-4a55-b89e-e944ae8bc791",
+    "target1_audio_id": "40edea8f-d790-45fb-b855-c1f2f7ce1468",
+    "target2_audio_id": "ec3eb872-07d8-4ae3-b325-d6056faae694"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01U05",
+   "set": {
+    "known_text": "it's still meant to be",
+    "target_text": "ainda é suposto ser",
+    "word_count": 19,
+    "lego_position": null,
+    "known_audio_id": "f4c14d3b-8353-4d1d-93d1-5d5eee7586a7",
+    "target1_audio_id": "d3b2119b-cc05-4af2-974e-dfee060ff4af",
+    "target2_audio_id": "95cdac27-b5f8-4e30-bd42-3013973c3e0e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01U04",
+   "set": {
+    "known_text": "yes, that's true, it's meant to be",
+    "target_text": "sim, isso é verdade, é suposto ser",
+    "word_count": 34,
+    "lego_position": null,
+    "known_audio_id": "a3924171-9610-46e9-9100-663fec9f8ecc",
+    "target1_audio_id": "f26ca4b8-42e5-40e0-86e6-98efc85dad95",
+    "target2_audio_id": "2a4f1025-ae46-4cd3-a8b7-84c245867c9f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01U03",
+   "set": {
+    "known_text": "I'm sure, it's meant to be",
+    "target_text": "tenho certeza, é suposto ser",
+    "word_count": 28,
+    "lego_position": null,
+    "known_audio_id": "6bbf583a-1471-4435-ad48-c0e140784dfe",
+    "target1_audio_id": "57a32f01-14a8-4c28-bf13-a30a9329c065",
+    "target2_audio_id": "28a64756-cf12-4d85-9d3e-b51ccd171b48"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01U02",
+   "set": {
+    "known_text": "that's true, it's meant to be",
+    "target_text": "isso é verdade, é suposto ser",
+    "word_count": 29,
+    "lego_position": null,
+    "known_audio_id": "a8283280-4347-4f27-8080-32bd776d1029",
+    "target1_audio_id": "1df72015-4ce5-4816-893a-65caa7295575",
+    "target2_audio_id": "7d22d627-d8e7-44db-9668-4f1631639584"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01U01",
+   "set": {
+    "known_text": "no, it's meant to be",
+    "target_text": "não, é suposto ser",
+    "word_count": 18,
+    "lego_position": null,
+    "known_audio_id": "9f4e1004-d12a-4115-86e3-1738f46ab570",
+    "target1_audio_id": "cbbac251-17aa-402d-bcf2-f2d7a3c88bd4",
+    "target2_audio_id": "bde811c6-2c25-49b8-8410-9c8e4a051556"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01B03",
+   "set": {
+    "known_text": "yes, it's meant to be",
+    "target_text": "sim, é suposto ser",
+    "word_count": 18,
+    "lego_position": null,
+    "known_audio_id": "af31884e-92ce-4963-90a0-a74267819c03",
+    "target1_audio_id": "d82aef55-4ca4-47b8-970c-eddde04be9fa",
+    "target2_audio_id": "e836a9dc-da21-4741-a254-a0a4457db398"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0484L01B02",
+   "set": {
+    "known_text": "it's meant to be now",
+    "target_text": "é suposto ser agora",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "3020bb75-2a21-4f5a-a44e-2946604d6f73",
+    "target1_audio_id": "b0a9ad6a-220b-4867-94af-9109cfbd8e5f",
+    "target2_audio_id": "38be5703-ff49-4757-b027-c414ab7525b4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L03U05",
+   "set": {
+    "known_text": "life still isn't easy but it's not meant to be easy",
+    "target_text": "a vida ainda não é fácil mas não é suposto ser fácil",
+    "word_count": 52,
+    "lego_position": "middle",
+    "known_audio_id": "ba0d3919-4132-471a-8d77-05c2cb533f0b",
+    "target1_audio_id": "e2f03e7b-b014-42db-a9b1-6d712b865278",
+    "target2_audio_id": "4382826d-1508-446a-89e0-7dde5f821195"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L03U04",
+   "set": {
+    "known_text": "yes, but it's not meant to be easy",
+    "target_text": "sim, mas não é suposto ser fácil",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "c277ceb6-a862-4581-b5ad-96e4ad379f44",
+    "target1_audio_id": "38ec6731-fc0e-4590-a45c-a2c242ab7a53",
+    "target2_audio_id": "ecaf8311-5692-4c03-b648-4aa0b7381e1a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L03U03",
+   "set": {
+    "known_text": "that's true, easy",
+    "target_text": "isso é verdade, fácil",
+    "word_count": 21,
+    "lego_position": "end",
+    "known_audio_id": "3d8d7265-1a19-40b1-b704-d6c077054b5a",
+    "target1_audio_id": "3104560b-1f04-48d0-872c-11acba3b8707",
+    "target2_audio_id": "60832247-f2eb-41c3-aa9b-3df8a6b6447f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L03U02",
+   "set": {
+    "known_text": "no, easy",
+    "target_text": "não, fácil",
+    "word_count": 10,
+    "lego_position": "end",
+    "known_audio_id": "569b74bc-5daa-4f20-bd50-92318f0012da",
+    "target1_audio_id": "212498d5-adc9-4e05-8d5d-fe2da51cf2f3",
+    "target2_audio_id": "4bee4dd5-54cc-4ea3-9dc3-8265daf9d2ef"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L03B03",
+   "set": {
+    "known_text": "yes, easy",
+    "target_text": "sim, fácil",
+    "word_count": 10,
+    "known_audio_id": "3caeba17-4038-4d0c-a5e3-3d3e1d40aaeb",
+    "target1_audio_id": "c7254f8b-6bea-4d34-9758-91ffd60c32a8",
+    "target2_audio_id": "a7cff252-ba54-4ab0-8667-0f2460475e28"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02U05",
+   "set": {
+    "known_text": "life still isn't easy but it's not meant to be",
+    "target_text": "a vida ainda não é fácil mas não é suposto ser",
+    "word_count": 46,
+    "lego_position": "end",
+    "known_audio_id": "f7e9fb6a-1319-48fb-b874-f6b7b48fa348",
+    "target1_audio_id": "0c04d3cb-6dca-4809-90a6-64dcf44e60c0",
+    "target2_audio_id": "4072a9c4-c103-43ef-a296-bba7006b3bc0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02U04",
+   "set": {
+    "known_text": "yes, life isn't easy but it's not meant to be",
+    "target_text": "sim, a vida não é fácil mas não é suposto ser",
+    "word_count": 45,
+    "lego_position": "end",
+    "known_audio_id": "872eca28-d5c3-481e-ad87-710028b6df1b",
+    "target1_audio_id": "f1aefcf7-9ad6-4c36-8abb-b36af6f64dc1",
+    "target2_audio_id": "46dc7f6a-10cd-46fd-873d-0a1bbc5633fd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02U03",
+   "set": {
+    "known_text": "I'm sure, but it's not meant to be",
+    "target_text": "tenho certeza, mas não é suposto ser",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "c365a3c7-ec14-4c86-a8f0-7dbcd553381e",
+    "target1_audio_id": "befa9697-b787-4f5c-bfc2-47c4a341e38f",
+    "target2_audio_id": "7a640381-7e9d-4ac5-9ab8-38b4377f9fd0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02U02",
+   "set": {
+    "known_text": "that's true, but it's not meant to be",
+    "target_text": "isso é verdade, mas não é suposto ser",
+    "word_count": 37,
+    "known_audio_id": "bdea0839-2b2a-4a7e-b91b-6f77324b143e",
+    "target1_audio_id": "853151f1-f465-49e2-b8ba-b7a8f0d3c829",
+    "target2_audio_id": "993e674a-d4e7-4ecc-9003-f7d73f1fc618"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02U01",
+   "set": {
+    "known_text": "no, but it's not meant to be",
+    "target_text": "não, mas não é suposto ser",
+    "word_count": 26,
+    "known_audio_id": "33b94591-42cf-4cd4-b9bb-a018260390de",
+    "target1_audio_id": "145b730f-a447-4124-852a-a738a4e23bba",
+    "target2_audio_id": "3717c0ba-4d28-4d40-a899-dcf245508533"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02B03",
+   "set": {
+    "known_text": "yes, but it's not meant to be",
+    "target_text": "sim, mas não é suposto ser",
+    "word_count": 26,
+    "lego_position": "middle",
+    "known_audio_id": "d06bb2b3-e53b-4b2c-98ce-4913a79988d3",
+    "target1_audio_id": "ce6ab359-b58f-4f24-b94d-ac39aa6d0641",
+    "target2_audio_id": "125b71a2-db53-495d-be22-3292d9cbc64b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L02B02",
+   "set": {
+    "known_text": "life isn't easy but it's still not meant to be",
+    "target_text": "a vida não é fácil mas ainda não é suposto ser",
+    "word_count": 46,
+    "lego_position": null,
+    "known_audio_id": "2ee0daf2-84a8-4936-8a31-fbf8e077b08e",
+    "target1_audio_id": "09feb655-1996-4c15-9a19-2a84a937ddaa",
+    "target2_audio_id": "9e5642d2-6d3a-4fcf-9f96-c2df333106bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L01U05",
+   "set": {
+    "known_text": "life still isn't easy",
+    "target_text": "a vida ainda não é fácil",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "19f5abc3-c97e-49b9-9edb-f3a255d0302f",
+    "target1_audio_id": "77d68c5f-0483-4024-87b5-79f6a5b60b00",
+    "target2_audio_id": "8435737d-1317-47f8-91d8-852f177966b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L01U04",
+   "set": {
+    "known_text": "yes, that's true, life isn't easy",
+    "target_text": "sim, isso é verdade, a vida não é fácil",
+    "word_count": 39,
+    "lego_position": "end",
+    "known_audio_id": "c8858c04-66fd-4641-85c4-f5abaad05c8d",
+    "target1_audio_id": "d02c616a-fb48-45cc-90e4-78529117469a",
+    "target2_audio_id": "a4649b2e-14aa-4f45-a394-cf4935aad543"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L01U03",
+   "set": {
+    "known_text": "I'm sure life isn't easy",
+    "target_text": "tenho certeza, a vida não é fácil",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "dcc71070-1687-447a-82fa-bd6f88506232",
+    "target1_audio_id": "c29d3ff6-692e-4065-a395-f11cbb4d30ae",
+    "target2_audio_id": "95096a33-1f45-4b0b-ad67-dfb99d769c29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L01U01",
+   "set": {
+    "known_text": "no, life isn't easy",
+    "target_text": "não, a vida não é fácil",
+    "word_count": 23,
+    "lego_position": "middle",
+    "known_audio_id": "4bedc94e-7de1-4544-b80d-0a4e3a4fd493",
+    "target1_audio_id": "6acc6676-a9ec-4797-9e2e-07403d12b4a6",
+    "target2_audio_id": "1d6cdde2-2ba8-424f-909a-93aa3f7217bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L01B03",
+   "set": {
+    "known_text": "yes, life isn't easy",
+    "target_text": "sim, a vida não é fácil",
+    "word_count": 23,
+    "known_audio_id": "a849a70f-ce04-4a22-bf3d-90b114ddc904",
+    "target1_audio_id": "f1d3c0fc-ec0f-42ac-ac00-0894fc0cea06",
+    "target2_audio_id": "cedc31e3-2ed9-4ed7-bb22-eaf670522edd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0483L01B02",
+   "set": {
+    "known_text": "life isn't easy now",
+    "target_text": "a vida não é fácil agora",
+    "word_count": 24,
+    "lego_position": "middle",
+    "known_audio_id": "18562564-ae8c-4d58-9379-9c71b8bddf56",
+    "target1_audio_id": "b07e492a-741d-4bec-a4a5-1e1beb5b71d1",
+    "target2_audio_id": "d9551701-578d-48d9-b141-aceb286beb0a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L03U05",
+   "set": {
+    "known_text": "that would be, is that they're not",
+    "target_text": "isso seria, é que eles não estejam",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "b8776ab7-69a8-49d5-b0b2-6e3aeb4614e4",
+    "target1_audio_id": "05adea4e-ff11-4ad7-b715-b819c1ab5fa6",
+    "target2_audio_id": "6921ee75-cab1-43f9-babf-5715c2adbfec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L03U04",
+   "set": {
+    "known_text": "yes, the only real hope is that they're not",
+    "target_text": "sim, a única esperança real é que eles não estejam",
+    "word_count": 50,
+    "lego_position": "end",
+    "known_audio_id": "0c928a0c-dd2c-4bc6-92c1-084eef739e7c",
+    "target1_audio_id": "712835e0-5b9e-4bff-a8e9-c5e4a63be886",
+    "target2_audio_id": "a848efc0-f16d-4f27-b837-9bb75202be4b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L03U03",
+   "set": {
+    "known_text": "I'm sure, is that they're not",
+    "target_text": "tenho certeza, é que eles não estejam",
+    "word_count": 37,
+    "lego_position": "end",
+    "known_audio_id": "7ce76a59-e6c0-44e0-a485-d98241f12efc",
+    "target1_audio_id": "53dc16c0-89a0-40bd-9ade-3c4f9009129f",
+    "target2_audio_id": "54d30734-b577-4e6c-9c6c-f2e7ee06ac5e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L03U02",
+   "set": {
+    "known_text": "that's true, is that they're not",
+    "target_text": "isso é verdade, é que eles não estejam",
+    "word_count": 38,
+    "lego_position": "end",
+    "known_audio_id": "e650fe71-194b-49a4-a296-1cf581f241ed",
+    "target1_audio_id": "c9e1f2ba-e221-4999-ba33-9de213985978",
+    "target2_audio_id": "291d930b-aa78-4785-97b5-104062afb123"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L03U01",
+   "set": {
+    "known_text": "no, is that they're not",
+    "target_text": "não, é que eles não estejam",
+    "word_count": 27,
+    "lego_position": "middle",
+    "known_audio_id": "4dfb3182-334a-47d2-8999-9ce69c4039b1",
+    "target1_audio_id": "6dd6287f-6dc3-4124-9245-9077fac63b7d",
+    "target2_audio_id": "49cc2e14-54b7-492c-8b87-aa9b0084693d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L03B03",
+   "set": {
+    "known_text": "yes, is that they're not",
+    "target_text": "sim, é que eles não estejam",
+    "word_count": 27,
+    "lego_position": "middle",
+    "known_audio_id": "440cd5b5-6992-4a95-b77d-8f16aa03cf83",
+    "target1_audio_id": "1670dd33-7b30-454f-a262-a0171b3edb61",
+    "target2_audio_id": "6afe7ea0-22ba-4d48-b7d7-27d6467ae642"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L01U05",
+   "set": {
+    "known_text": "that would be the only",
+    "target_text": "isso seria a única",
+    "word_count": 18,
+    "lego_position": "end",
+    "known_audio_id": "4c88749e-564f-45da-8a64-775a5a3a2a83",
+    "target1_audio_id": "3354d942-27cc-4e71-b52b-6261cfeafdde",
+    "target2_audio_id": "694f16ec-44dc-485e-a374-a80fc5d5a7fe"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L01U04",
+   "set": {
+    "known_text": "yes, that's the only",
+    "target_text": "sim, isso é a única",
+    "word_count": 19,
+    "lego_position": "end",
+    "known_audio_id": "d4c0a5a0-c167-4698-b4f4-624b1dedd1a9",
+    "target1_audio_id": "902daa2b-fd08-40bf-bfcd-6583d3a8367a",
+    "target2_audio_id": "4ca375ca-fbc2-47f3-a759-1c8c91c6e825"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L01U03",
+   "set": {
+    "known_text": "I have the only",
+    "target_text": "tenho a única",
+    "word_count": 13,
+    "lego_position": "end",
+    "known_audio_id": "912be144-afdb-4581-9870-63404d98e1c5",
+    "target1_audio_id": "fe8a4884-2d05-464d-9c22-e0f071437eb4",
+    "target2_audio_id": "858f5344-fb0d-448f-850f-e6829840e750"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L01U02",
+   "set": {
+    "known_text": "that's the only",
+    "target_text": "isso é a única",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "810358ce-6ee5-4fe9-aed3-6c86fb1c64f6",
+    "target1_audio_id": "f419f34d-6351-4f39-a2d3-da49aed33997",
+    "target2_audio_id": "c99a3b9b-3052-4db3-8df4-51e0c1dd67a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L01U01",
+   "set": {
+    "known_text": "no, the only",
+    "target_text": "não, a única",
+    "word_count": 12,
+    "lego_position": "end",
+    "known_audio_id": "c0d8408e-4897-416f-a1e8-95c8985bdea0",
+    "target1_audio_id": "86f8371f-3e51-416f-9738-c9bab2e1de3a",
+    "target2_audio_id": "a5d38145-307e-4184-a9d8-cece005fffb5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0482L01B03",
+   "set": {
+    "known_text": "yes, the only",
+    "target_text": "sim, a única",
+    "word_count": 12,
+    "lego_position": "end",
+    "known_audio_id": "bd01e67f-7d9c-44e2-97fe-d8327b5e4b18",
+    "target1_audio_id": "56c76c84-2bc5-4e58-a606-08cd38b47336",
+    "target2_audio_id": "c9ca48d6-9126-45ca-b66c-c9d33cf3922a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L03U04",
+   "set": {
+    "known_text": "yes, it's the only real hope we have left",
+    "target_text": "sim, é a única esperança real que nos resta",
+    "word_count": 43,
+    "known_audio_id": "3f23b82d-959c-446e-ad01-ab6e3e51221f",
+    "target1_audio_id": "5499da5f-5cc9-4155-a8f4-6739a35dbb4c",
+    "target2_audio_id": "cab202ce-eb6c-434d-8028-ee1a6edfeeaa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L03U03",
+   "set": {
+    "known_text": "that's true, that we have left",
+    "target_text": "isso é verdade, que nos resta",
+    "word_count": 29,
+    "known_audio_id": "a22f478f-dd83-4ebf-8f37-7f5e647819b7",
+    "target1_audio_id": "1c672a80-987c-4158-8394-c8057e372a32",
+    "target2_audio_id": "549db139-b5b1-4785-b3de-a62c9e697506"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L03U02",
+   "set": {
+    "known_text": "no, that we have left",
+    "target_text": "não, que nos resta",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "87edd993-a48c-4485-9107-b9c55426884e",
+    "target1_audio_id": "64845d61-20cd-428b-b872-1971c474c6f5",
+    "target2_audio_id": "3aec02da-4979-4e32-9fbf-69131fb0a031"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L03B03",
+   "set": {
+    "known_text": "yes, that we have left",
+    "target_text": "sim, que nos resta",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "9ab88c09-2972-43b8-a759-9ad1878807d4",
+    "target1_audio_id": "c0c04f55-9b0e-48c2-baae-6dfa7e6648ba",
+    "target2_audio_id": "9daa107a-7f53-496f-951b-cd3a0c8d100a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L03B02",
+   "set": {
+    "known_text": "I'm sure that we have left",
+    "target_text": "tenho certeza, que nos resta",
+    "word_count": 28,
+    "known_audio_id": "541a9e17-ec20-4b03-a9b6-f4915496fd37",
+    "target1_audio_id": "47ab1faa-9b8c-40f9-bd65-81a126be2921",
+    "target2_audio_id": "5e34cc5b-5696-424d-9989-875b68b562c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L02U04",
+   "set": {
+    "known_text": "yes, it's the only real hope",
+    "target_text": "sim, é a única esperança real",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "3bbdc3a4-644f-4572-98e1-0dd4040ead5f",
+    "target1_audio_id": "6bc004f5-e587-46c7-8a87-c02f881ce681",
+    "target2_audio_id": "89b431de-b7fb-4bbb-9b1b-d3773b991fd1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L02U02",
+   "set": {
+    "known_text": "that's true, real hope",
+    "target_text": "isso é verdade, esperança real",
+    "word_count": 30,
+    "known_audio_id": "0a015117-b5ef-4fb5-8294-be69dd9cd484",
+    "target1_audio_id": "f0314af8-277a-4787-b9a1-c7d62b303793",
+    "target2_audio_id": "19cfc01c-b3ba-43cc-814b-226821e7ed8e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L02U01",
+   "set": {
+    "known_text": "no, real hope",
+    "target_text": "não, esperança real",
+    "word_count": 19,
+    "known_audio_id": "d82521ac-9763-45ab-856a-ec8d1eee97ba",
+    "target1_audio_id": "ce63b2f5-5315-41bd-9c9e-716c8d7ab923",
+    "target2_audio_id": "52e23457-8528-47e5-b58e-38051c644a20"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L02B03",
+   "set": {
+    "known_text": "yes, real hope",
+    "target_text": "sim, esperança real",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "b2622fd6-c971-427f-9aec-6a9d8db7e292",
+    "target1_audio_id": "b2bb2d59-831b-4e45-9411-371516eae9ee",
+    "target2_audio_id": "db3fb68e-a3c3-4acf-a36b-7cfb8524422b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01U05",
+   "set": {
+    "known_text": "it's still the only",
+    "target_text": "ainda é a única",
+    "word_count": 15,
+    "lego_position": null,
+    "known_audio_id": "c5fe8aaa-01d8-4aae-ab5c-91246dd1bd18",
+    "target1_audio_id": "80fb9cac-9b3b-4fe5-920e-010de07f19ed",
+    "target2_audio_id": "c0424d4c-846f-40e9-9685-e411e6ea8bc2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01U04",
+   "set": {
+    "known_text": "yes, that's true, it's the only",
+    "target_text": "sim, isso é verdade, é a única",
+    "word_count": 30,
+    "lego_position": null,
+    "known_audio_id": "7e293a2b-8da0-414a-b6dd-f32b99df18d7",
+    "target1_audio_id": "688367ad-d8a0-44c9-9363-d34addf9bfb9",
+    "target2_audio_id": "5928ec18-720c-457d-846b-d2f0689c2a61"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01U03",
+   "set": {
+    "known_text": "I'm sure, it's the only",
+    "target_text": "tenho certeza, é a única",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "877b8bc2-8db1-484c-a6d0-e410ffc36e1d",
+    "target1_audio_id": "347d8f17-445c-445a-b72c-e34164b35a16",
+    "target2_audio_id": "a824428b-be7a-4207-833a-c1113dcd2798"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01U02",
+   "set": {
+    "known_text": "that's true, it's the only",
+    "target_text": "isso é verdade, é a única",
+    "word_count": 25,
+    "lego_position": null,
+    "known_audio_id": "e48a00f4-9137-4021-b4b2-4e60e0e0dd70",
+    "target1_audio_id": "b328c718-92a9-4a84-9063-b91d11ef564d",
+    "target2_audio_id": "5ef41a56-469c-458b-9429-2b96ff99785f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01U01",
+   "set": {
+    "known_text": "no, it's the only",
+    "target_text": "não, é a única",
+    "word_count": 14,
+    "lego_position": null,
+    "known_audio_id": "45bedc7b-1275-47a5-97a0-78e2126fea75",
+    "target1_audio_id": "25e8e5b2-e867-41fe-9bb5-17f49dede3ce",
+    "target2_audio_id": "ebbdd929-6347-4dcc-b41f-9b81243ef969"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01B03",
+   "set": {
+    "known_text": "yes, it's the only",
+    "target_text": "sim, é a única",
+    "word_count": 14,
+    "lego_position": null,
+    "known_audio_id": "041e33d5-b681-4aa8-98d0-75110b1fa34c",
+    "target1_audio_id": "b2d9926d-26fe-49f1-b9f2-9d66e9030f75",
+    "target2_audio_id": "96186ea3-80c2-4d36-b1e4-6c7790b89538"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0481L01B02",
+   "set": {
+    "known_text": "it's the only one now",
+    "target_text": "é a única agora",
+    "word_count": 15,
+    "known_audio_id": "29c5721d-0a50-4b6f-b534-666590c2bd59",
+    "target1_audio_id": "fa1d3703-31e9-46d8-9c46-9a0f3c94ca26",
+    "target2_audio_id": "9784c02f-0b8c-463d-984f-dcb33c8d6e32"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0484L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0484L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0483L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0483L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0483L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0482L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0482L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0481L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0481L01B04"
+  }
+ ]
+}

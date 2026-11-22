@@ -1,0 +1,58 @@
+{
+ "at": "2026-11-18T15:37:47.713Z",
+ "list": "189,251-298,309-430,485-545",
+ "done": [
+  "q759-189-189",
+  "q759-287-406",
+  "q759-409-412",
+  "q759-424-426",
+  "q759-427-430",
+  "q759-485-486",
+  "q759-487-488",
+  "q759-491-492",
+  "q759-493-495",
+  "q759-496-497",
+  "q759-498-499",
+  "q759-500-501",
+  "q759-502-503",
+  "q759-504-505",
+  "q759-508-509",
+  "q759-510-511",
+  "q759-512-512",
+  "q759-513-515",
+  "q759-516-517",
+  "q759-518-519",
+  "q759-520-521",
+  "q759-522-524",
+  "q759-525-526",
+  "q759-527-528",
+  "q759-529-531",
+  "q759-532-534",
+  "q759-535-537",
+  "q759-538-540",
+  "q759-541-543",
+  "q759-544-545"
+ ],
+ "skipped": [
+  {
+   "name": "q759-413-416",
+   "stage": "validate",
+   "out": "por_br_for_eng q759-413-416 validate: 4 seeds, 2 blocking\nFAIL 413 [\"L1: 1 phrase(s) fail containment\"]\nFAIL 416 [\"L1: 1 phrase(s) fail containment\"]"
+  },
+  {
+   "name": "q759-417-419",
+   "stage": "validate",
+   "out": "por_br_for_eng q759-417-419 validate: 3 seeds, 2 blocking\nFAIL 417 [\"L1: 1 phrase(s) fail containment\"]\nFAIL 418 [\"L1: 1 phrase(s) fail containment\"]"
+  },
+  {
+   "name": "q759-420-423",
+   "stage": "validate",
+   "out": "por_br_for_eng q759-420-423 validate: 4 seeds, 1 blocking\nFAIL 420 [\"L1: 1 phrase(s) fail containment\"]"
+  },
+  {
+   "name": "q759-489-490",
+   "stage": "validate",
+   "out": "por_br_for_eng q759-489-490 validate: 2 seeds, 1 blocking\nFAIL 489 500"
+  }
+ ]
+}

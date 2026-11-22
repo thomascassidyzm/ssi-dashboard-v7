@@ -1,0 +1,395 @@
+{
+ "at": "2026-11-18T15:05:05.823Z",
+ "status": 200,
+ "ms": 40187,
+ "ok": true,
+ "applied": true,
+ "event_id": "5bf5ae67-f145-43f9-a696-631c4a0d04d8",
+ "undo_file": "2026-11-18T15-05-05-800Z-5bf5ae67-f145-43f9-a696-631c4a0d04d8.json",
+ "error": null,
+ "code": null,
+ "seeds": [
+  427,
+  428,
+  429,
+  430
+ ],
+ "counts": {
+  "insert": 7,
+  "update": 35,
+  "delete": 0
+ },
+ "audio_after": [
+  {
+   "key": {
+    "id": "por_br_for_eng:S0427L01B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "por_br_for_eng:S0427L02B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "por_br_for_eng:S0427L03B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "por_br_for_eng:S0427L04B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "por_br_for_eng:S0428L01B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "por_br_for_eng:S0428L02B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "id": "por_br_for_eng:S0428L03B04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L01B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L01U01"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L01U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L01U04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L02B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L02U01"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L02U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L02U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L02U04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L02U05"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L03B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L03U01"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L03U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L03U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L03U04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L03U05"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L04B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L04U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L04U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0427L04U04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L01B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L01U01"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L01U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L01U04"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L02B02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L02B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L02U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L02U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L03B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L03U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0428L03U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0429L04B03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0429L04U02"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0429L04U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  },
+  {
+   "key": {
+    "course_code": "por_br_for_eng",
+    "id": "por_br_for_eng:S0430L03U03"
+   },
+   "k": null,
+   "t1": null,
+   "t2": null
+  }
+ ]
+}

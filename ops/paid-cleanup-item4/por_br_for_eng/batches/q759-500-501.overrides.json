@@ -1,0 +1,446 @@
+[
+ {
+  "seed_number": 500,
+  "phrases": {
+   "500:1": [
+    {
+     "known_text": "why",
+     "target_text": "por que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "want",
+     "target_text": "quer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "why don't you want to",
+     "target_text": "por que você não quer",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to go?",
+     "target_text": "por que você não quer ir?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to eat?",
+     "target_text": "por que você não quer comer?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to come with us?",
+     "target_text": "por que você não quer vir conosco?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to learn Portuguese?",
+     "target_text": "por que você não quer aprender português?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to talk about it?",
+     "target_text": "por que você não quer falar sobre isso?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to work with them?",
+     "target_text": "por que você não quer trabalhar com eles?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to go to the party?",
+     "target_text": "por que você não quer ir à festa?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why don't you want to help?",
+     "target_text": "por que você não quer ajudar?",
+     "phrase_role": "build"
+    }
+   ],
+   "500:2": [
+    {
+     "known_text": "to sit",
+     "target_text": "se sentar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "between",
+     "target_text": "entre",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "sit between",
+     "target_text": "se sentar entre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to sit between",
+     "target_text": "por que você não quer se sentar entre",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to sit between them",
+     "target_text": "se sentar entre eles",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "he wants to sit between his friends",
+     "target_text": "ele quer se sentar entre os amigos dele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to sit between them",
+     "target_text": "ela não quer se sentar entre eles",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why do you want to sit between them?",
+     "target_text": "por que você quer se sentar entre eles?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can sit between my mother and my father",
+     "target_text": "você pode se sentar entre minha mãe e meu pai",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the child is going to sit between us",
+     "target_text": "a criança vai se sentar entre nós",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants to sit between us",
+     "target_text": "ela quer se sentar entre nós",
+     "phrase_role": "build"
+    }
+   ],
+   "500:3": [
+    {
+     "known_text": "the two",
+     "target_text": "as duas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "girls",
+     "target_text": "meninas",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the two girls",
+     "target_text": "as duas meninas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "sit between the two girls",
+     "target_text": "se sentar entre as duas meninas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "between the two girls",
+     "target_text": "entre as duas meninas",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why don't you want to sit between the two girls?",
+     "target_text": "por que você não quer se sentar entre as duas meninas?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls want to play",
+     "target_text": "as duas meninas querem jogar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know the two girls",
+     "target_text": "eu conheço as duas meninas",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls are at school",
+     "target_text": "as duas meninas estão na escola",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls are waiting for you",
+     "target_text": "as duas meninas estão esperando por você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the two girls are here",
+     "target_text": "as duas meninas estão aqui",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 501,
+  "phrases": {
+   "501:1": [
+    {
+     "known_text": "if",
+     "target_text": "se",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "only",
+     "target_text": "ao menos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I could",
+     "target_text": "pudesse",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "if only I could",
+     "target_text": "se ao menos pudesse",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could help",
+     "target_text": "se ao menos pudesse ajudar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could go",
+     "target_text": "se ao menos pudesse ir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could stay here",
+     "target_text": "se ao menos pudesse ficar aqui",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could see my family",
+     "target_text": "se ao menos pudesse ver minha família",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could sleep a little",
+     "target_text": "se ao menos pudesse dormir um pouco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could understand what he says",
+     "target_text": "se ao menos pudesse entender o que ele diz",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could change that",
+     "target_text": "se ao menos pudesse mudar isso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could speak Portuguese",
+     "target_text": "se ao menos pudesse falar português",
+     "phrase_role": "build"
+    }
+   ],
+   "501:2": [
+    {
+     "known_text": "to trust",
+     "target_text": "confiar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "in",
+     "target_text": "em",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to trust you",
+     "target_text": "confiar em você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could trust you",
+     "target_text": "se ao menos pudesse confiar em você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I can't trust you",
+     "target_text": "não consigo confiar em você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't know if I can trust you",
+     "target_text": "não sei se posso confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I trust you?",
+     "target_text": "posso confiar em você?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to trust you",
+     "target_text": "quero confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to trust you",
+     "target_text": "ela não quer confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's hard to trust you after that",
+     "target_text": "é difícil confiar em você depois disso",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to trust you",
+     "target_text": "espero conseguir confiar em você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to trust you",
+     "target_text": "preciso confiar em você",
+     "phrase_role": "build"
+    }
+   ],
+   "501:3": [
+    {
+     "known_text": "to",
+     "target_text": "para",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "play",
+     "target_text": "brincarem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "together",
+     "target_text": "juntos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to play together",
+     "target_text": "para brincarem juntos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to trust you to play together",
+     "target_text": "confiar em você para brincarem juntos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "time to play together",
+     "target_text": "tempo para brincarem juntos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they have time to play together",
+     "target_text": "eles têm tempo para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the children need a place to play together",
+     "target_text": "as crianças precisam de um lugar para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I left them in the garden to play together",
+     "target_text": "eu os deixei no jardim para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they came here to play together",
+     "target_text": "eles vieram aqui para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "if only I could trust you to play together",
+     "target_text": "se ao menos pudesse confiar em você para brincarem juntos",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "a garden to play together",
+     "target_text": "um jardim para brincarem juntos",
+     "phrase_role": "build"
+    }
+   ],
+   "501:4": [
+    {
+     "known_text": "without",
+     "target_text": "sem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "arguing",
+     "target_text": "discutir",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "without arguing",
+     "target_text": "sem discutir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to play together without arguing",
+     "target_text": "para brincarem juntos sem discutir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to talk without arguing",
+     "target_text": "falar sem discutir",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "if only I could trust you to play together without arguing",
+     "target_text": "se ao menos pudesse confiar em você para brincarem juntos sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to talk without arguing",
+     "target_text": "quero falar sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "let's try to talk without arguing",
+     "target_text": "vamos tentar falar sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we need to decide without arguing",
+     "target_text": "precisamos decidir sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he did it without arguing",
+     "target_text": "ele fez isso sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they have to play without arguing",
+     "target_text": "eles têm que jogar sem discutir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "to work without arguing",
+     "target_text": "trabalhar sem discutir",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

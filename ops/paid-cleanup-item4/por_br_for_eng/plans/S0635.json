@@ -1,0 +1,61 @@
+{
+ "seed": 635,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "I want that bag",
+     "quero aquela bolsa"
+    ],
+    "B03": [
+     "where is that bag?",
+     "onde está aquela bolsa?"
+    ],
+    "U01": [
+     "I like that bag",
+     "eu gosto daquela bolsa"
+    ],
+    "U02": [
+     "she wants that bag",
+     "ela quer aquela bolsa"
+    ],
+    "U03": [
+     "I'm going to look for that bag",
+     "vou procurar aquela bolsa"
+    ],
+    "U04": [
+     "that bag is very large",
+     "aquela bolsa é muito grande"
+    ],
+    "U05": [
+     "I can see that bag",
+     "eu consigo ver aquela bolsa"
+    ]
+   }
+  },
+  "L03": {
+   "update": {
+    "B02": [
+     "it's Jane's",
+     "é da Jane"
+    ],
+    "B03": [
+     "the car is Jane's",
+     "o carro é da Jane"
+    ],
+    "U05": [
+     "I think that bag is Jane's",
+     "acho que aquela bolsa é da Jane"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "the house is Jane's",
+     "a casa é da Jane"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

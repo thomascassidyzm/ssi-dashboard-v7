@@ -1,0 +1,639 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0469L01B04",
+    "seed_number": 469,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "but that doesn't mean that",
+    "target_text": "mas isso não quer dizer que",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0469L02B04",
+    "seed_number": 469,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "that we can't go",
+    "target_text": "que não possamos ir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0470L01B04",
+    "seed_number": 470,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "how high is it?",
+    "target_text": "a que altura está?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0470L02B04",
+    "seed_number": 470,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "do you want to climb with me?",
+    "target_text": "você quer subir comigo?",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 23,
+    "lego_count": 7,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0470L03B04",
+    "seed_number": 470,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "to eat something before we stop",
+    "target_text": "comer algo antes de pararmos",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 28,
+    "lego_count": 6,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01B02",
+   "expect": {
+    "known_text": "but that doesn't mean now",
+    "target_text": "mas isso não quer dizer agora"
+   },
+   "set": {
+    "known_text": "but that doesn't mean anything",
+    "target_text": "mas isso não quer dizer nada",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01B03",
+   "expect": {
+    "known_text": "yes, but that doesn't mean",
+    "target_text": "sim, mas isso não quer dizer"
+   },
+   "set": {
+    "known_text": "but that doesn't mean it's easy",
+    "target_text": "mas isso não quer dizer que seja fácil",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01U01",
+   "expect": {
+    "known_text": "no, but that doesn't mean",
+    "target_text": "não, mas isso não quer dizer"
+   },
+   "set": {
+    "known_text": "it's true, but that doesn't mean it's possible",
+    "target_text": "é verdade, mas isso não quer dizer que seja possível",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01U02",
+   "expect": {
+    "known_text": "that's true, but that doesn't mean",
+    "target_text": "isso é verdade, mas isso não quer dizer"
+   },
+   "set": {
+    "known_text": "it's interesting, but that doesn't mean it's important",
+    "target_text": "é interessante, mas isso não quer dizer que seja importante",
+    "decomposition": null,
+    "word_count": 59,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01U03",
+   "expect": {
+    "known_text": "I'm sure, but that doesn't mean",
+    "target_text": "tenho certeza, mas isso não quer dizer"
+   },
+   "set": {
+    "known_text": "I'm tired, but that doesn't mean anything",
+    "target_text": "estou cansado, mas isso não quer dizer nada",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01U04",
+   "expect": {
+    "known_text": "yes, that's true, but that doesn't mean",
+    "target_text": "sim, isso é verdade, mas isso não quer dizer"
+   },
+   "set": {
+    "known_text": "but that doesn't mean that it's true",
+    "target_text": "mas isso não quer dizer que seja verdade",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L01U05",
+   "expect": {
+    "known_text": "but that still doesn't mean",
+    "target_text": "mas isso ainda não quer dizer"
+   },
+   "set": {
+    "known_text": "but that doesn't mean it's perfect",
+    "target_text": "mas isso não quer dizer que seja perfeito",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L02B03",
+   "expect": {
+    "known_text": "yes, that we can't",
+    "target_text": "sim, que não possamos"
+   },
+   "set": {
+    "known_text": "that we can't help",
+    "target_text": "que não possamos ajudar",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L02U01",
+   "expect": {
+    "known_text": "no, that we can't",
+    "target_text": "não, que não possamos"
+   },
+   "set": {
+    "known_text": "that doesn't mean that we can't go",
+    "target_text": "isso não quer dizer que não possamos ir",
+    "decomposition": null,
+    "word_count": 39,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L02U02",
+   "expect": {
+    "known_text": "that's true, that we can't",
+    "target_text": "isso é verdade, que não possamos"
+   },
+   "set": {
+    "known_text": "that doesn't mean that we can't help",
+    "target_text": "isso não quer dizer que não possamos ajudar",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L02U03",
+   "expect": {
+    "known_text": "I'm sure, that we can't",
+    "target_text": "tenho certeza, que não possamos"
+   },
+   "set": {
+    "known_text": "but that doesn't mean that we can't try",
+    "target_text": "mas isso não quer dizer que não possamos tentar",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L02U04",
+   "expect": {
+    "known_text": "yes, but that doesn't mean that we can't",
+    "target_text": "sim, mas isso não quer dizer que não possamos"
+   },
+   "set": {
+    "known_text": "that doesn't mean that we can't speak Portuguese",
+    "target_text": "isso não quer dizer que não possamos falar português",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L02U05",
+   "expect": {
+    "known_text": "but that still doesn't mean that we can't",
+    "target_text": "mas isso ainda não quer dizer que não possamos"
+   },
+   "set": {
+    "known_text": "but that doesn't mean that we can't learn",
+    "target_text": "mas isso não quer dizer que não possamos aprender",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L03B02",
+   "expect": {
+    "known_text": "we can't change it",
+    "target_text": "não possamos mudar isso"
+   },
+   "set": {
+    "known_text": "you can change it",
+    "target_text": "você pode mudar isso",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L03B03",
+   "expect": {
+    "known_text": "yes, to change it",
+    "target_text": "sim, mudar isso"
+   },
+   "set": {
+    "known_text": "to change it later",
+    "target_text": "mudar isso mais tarde",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L03U02",
+   "expect": {
+    "known_text": "no, change it",
+    "target_text": "não, mudar isso"
+   },
+   "set": {
+    "known_text": "I don't want to change it",
+    "target_text": "não quero mudar isso",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L03U03",
+   "expect": {
+    "known_text": "that's true, change it",
+    "target_text": "isso é verdade, mudar isso"
+   },
+   "set": {
+    "known_text": "nobody can change it",
+    "target_text": "ninguém consegue mudar isso",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0469L03U04",
+   "expect": {
+    "known_text": "yes, we can't change it",
+    "target_text": "sim, não possamos mudar isso"
+   },
+   "set": {
+    "known_text": "they want to change it",
+    "target_text": "eles querem mudar isso",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01B02",
+   "expect": {
+    "known_text": "how high now",
+    "target_text": "a que altura agora"
+   },
+   "set": {
+    "known_text": "how high are we?",
+    "target_text": "a que altura estamos?",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01B03",
+   "expect": {
+    "known_text": "yes, how high",
+    "target_text": "sim, a que altura"
+   },
+   "set": {
+    "known_text": "how high are they?",
+    "target_text": "a que altura eles estão?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01U01",
+   "expect": {
+    "known_text": "no, how high",
+    "target_text": "não, a que altura"
+   },
+   "set": {
+    "known_text": "do you know how high we are?",
+    "target_text": "você sabe a que altura estamos?",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01U02",
+   "expect": {
+    "known_text": "that's true, how high",
+    "target_text": "isso é verdade, a que altura"
+   },
+   "set": {
+    "known_text": "I want to know how high we are",
+    "target_text": "quero saber a que altura estamos",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01U03",
+   "expect": {
+    "known_text": "I'm sure, how high",
+    "target_text": "tenho certeza, a que altura"
+   },
+   "set": {
+    "known_text": "nobody knows how high they are",
+    "target_text": "ninguém sabe a que altura eles estão",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01U04",
+   "expect": {
+    "known_text": "yes, how high is it",
+    "target_text": "sim, a que altura é isso"
+   },
+   "set": {
+    "known_text": "how high is the top?",
+    "target_text": "a que altura está o topo?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L01U05",
+   "expect": {
+    "known_text": "how high, I wonder",
+    "target_text": "a que altura, eu me pergunto"
+   },
+   "set": {
+    "known_text": "I wonder how high we are",
+    "target_text": "me pergunto a que altura estamos",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L02B03",
+   "expect": {
+    "known_text": "yes, do you want to climb",
+    "target_text": "sim, você quer subir"
+   },
+   "set": {
+    "known_text": "do you want to climb to the top?",
+    "target_text": "você quer subir até o topo?",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L02U01",
+   "expect": {
+    "known_text": "no, do you want to climb",
+    "target_text": "não, você quer subir"
+   },
+   "set": {
+    "known_text": "do you want to climb with us?",
+    "target_text": "você quer subir conosco?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L02U02",
+   "expect": {
+    "known_text": "that's true, do you want to climb",
+    "target_text": "isso é verdade, você quer subir"
+   },
+   "set": {
+    "known_text": "do you want to climb tomorrow?",
+    "target_text": "você quer subir amanhã?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L02U03",
+   "expect": {
+    "known_text": "I'm sure, do you want to climb",
+    "target_text": "tenho certeza, você quer subir"
+   },
+   "set": {
+    "known_text": "why do you want to climb?",
+    "target_text": "por que você quer subir?",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L02U04",
+   "expect": {
+    "known_text": "yes, how high do you want to climb",
+    "target_text": "sim, a que altura você quer subir"
+   },
+   "set": {
+    "known_text": "do you want to climb that wall?",
+    "target_text": "você quer subir aquele muro?",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L02U05",
+   "expect": {
+    "known_text": "how high, do you still want to climb",
+    "target_text": "a que altura, você ainda quer subir"
+   },
+   "set": {
+    "known_text": "do you want to climb again?",
+    "target_text": "você quer subir outra vez?",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L03B03",
+   "expect": {
+    "known_text": "yes, before we stop",
+    "target_text": "sim, antes de pararmos"
+   },
+   "set": {
+    "known_text": "a little more before we stop",
+    "target_text": "um pouco mais antes de pararmos",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L03U02",
+   "expect": {
+    "known_text": "no, before we stop",
+    "target_text": "não, antes de pararmos"
+   },
+   "set": {
+    "known_text": "I want to finish before we stop",
+    "target_text": "quero acabar antes de pararmos",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L03U03",
+   "expect": {
+    "known_text": "that's true, before we stop",
+    "target_text": "isso é verdade, antes de pararmos"
+   },
+   "set": {
+    "known_text": "I want to see the top before we stop",
+    "target_text": "quero ver o topo antes de pararmos",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0470L03U04",
+   "expect": {
+    "known_text": "yes, do you want to climb before we stop?",
+    "target_text": "sim, você quer subir antes de pararmos?"
+   },
+   "set": {
+    "known_text": "we need to climb a little more before we stop",
+    "target_text": "nós precisamos subir mais um pouco antes de pararmos",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

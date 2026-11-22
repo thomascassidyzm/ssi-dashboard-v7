@@ -1,0 +1,1230 @@
+{
+ "event_id": "238e2873-91f9-4c05-95d4-a789dbfa58a8",
+ "undo_file": "2026-11-18T14-52-42-981Z-238e2873-91f9-4c05-95d4-a789dbfa58a8.json",
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0257L01B03",
+    "seed_number": 257,
+    "lego_index": 1,
+    "position": 3,
+    "known_text": "already that one",
+    "target_text": "já daquela",
+    "word_count": 12,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T23:20:13.480Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "fa9d6333-6690-4cd4-add1-f6a1dbd243bb",
+    "target1_audio_id": "5ab61aad-2f2a-4e6d-823b-df9ed3b6c13e",
+    "target2_audio_id": "3cd2c475-612e-40c7-aee4-99f7cff4b0bc",
+    "qa_checked": null,
+    "target1_duration_ms": 2304,
+    "target2_duration_ms": 2328,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "that one",
+      "legoId": "S0257L01",
+      "target": " daquela",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0257L01B02",
+    "seed_number": 257,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "just that one",
+    "target_text": "só daquela",
+    "word_count": 12,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T23:20:13.480Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "3074517b-752e-4da9-abe5-596a627da4c6",
+    "target1_audio_id": "324a3053-8cfc-4c56-9c36-09089ab7b33a",
+    "target2_audio_id": "beded6d5-e5b5-4c9a-8c41-3b9586f1f4ef",
+    "qa_checked": null,
+    "target1_duration_ms": 2328,
+    "target2_duration_ms": 2376,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "that one",
+      "legoId": "S0257L01",
+      "target": " daquela",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0253L03B02",
+    "seed_number": 253,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "some minutes",
+    "target_text": "só minutos",
+    "word_count": 12,
+    "lego_count": 2,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-12T23:17:47.206Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "43d7da52-024b-4191-b852-af6d426076b1",
+    "target1_audio_id": "d6ffc9d2-3a81-414d-aa51-11cb7f3d25e8",
+    "target2_audio_id": "f9ea493b-e118-47f8-b215-be44508264e5",
+    "qa_checked": null,
+    "target1_duration_ms": 2400,
+    "target2_duration_ms": 2472,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "minutes",
+      "legoId": "S0253L03",
+      "target": " minutos",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0271L03B03",
+   "set": {
+    "known_text": "stay with us",
+    "target_text": "conosco",
+    "word_count": 12,
+    "lego_position": "middle",
+    "known_audio_id": "fa63fe2c-89c7-4da7-85ba-f4f130513606",
+    "target1_audio_id": "ac1fc1d6-bdf0-479d-8cb5-99f41f5e4154",
+    "target2_audio_id": "0ce39b1d-22bf-4a2b-9c4b-a86102c1fa4b",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "with us",
+      "legoId": "S0271L03",
+      "target": " conosco",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0271L02B03",
+   "set": {
+    "known_text": "come now",
+    "target_text": "só vir",
+    "lego_position": "end",
+    "known_audio_id": "a5a9b94a-968d-47d6-bd30-f59bcb4e2c0b",
+    "target1_audio_id": "2c702bf6-fc4d-4a8b-aca5-2eee9236812d",
+    "target2_audio_id": "57e37e0c-229a-4b2d-a4cf-ad66fe7bb192",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "to come",
+      "legoId": "S0271L02",
+      "target": " vir",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0271L02B02",
+   "set": {
+    "known_text": "to come more",
+    "target_text": "vir",
+    "word_count": 8,
+    "known_audio_id": "7dffa6b1-bef2-4d94-8a4e-585cb807d14e",
+    "target1_audio_id": "82688046-b80e-4ca7-9650-6dac49d2487e",
+    "target2_audio_id": "e7f2e19e-89a2-4afa-8ce5-5c65e615a0ac",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "to come",
+      "legoId": "S0271L02",
+      "target": " vir",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0271L01B03",
+   "set": {
+    "known_text": "I would like that",
+    "target_text": "só gostaria",
+    "word_count": 13,
+    "known_audio_id": "254d41f0-1cf0-4fb1-8856-2e5b5016ccac",
+    "target1_audio_id": "23e11230-f20a-40f7-ace3-d85a66c67c0e",
+    "target2_audio_id": "6a723d85-70a1-4052-a905-cb3485d19cfb",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "would like",
+      "legoId": "S0271L01",
+      "target": " gostaria",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0271L01B02",
+   "set": {
+    "known_text": "I would like more",
+    "target_text": "gostaria",
+    "word_count": 13,
+    "known_audio_id": "1fdb4ffa-baad-428f-b23f-c2323eb7e2f2",
+    "target1_audio_id": "30282c2e-0194-4514-a95e-4480eb6f8aae",
+    "target2_audio_id": "7c06d0d5-d032-462d-affb-afa5926d4755",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "would like",
+      "legoId": "S0271L01",
+      "target": " gostaria",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0268L01B03",
+   "set": {
+    "known_text": "she sent it",
+    "target_text": "só mandou",
+    "word_count": 11,
+    "lego_position": "middle",
+    "known_audio_id": "3d0ead71-a38e-48b4-ab39-111d100862f2",
+    "target1_audio_id": "49ec76ec-c118-45d4-a407-419f7dbe09e1",
+    "target2_audio_id": "18f0fd40-fe22-454f-8818-1f02e21121a1",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "sent",
+      "legoId": "S0268L01",
+      "target": " mandou",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0268L01B02",
+   "set": {
+    "known_text": "she sent more",
+    "target_text": "mandou",
+    "word_count": 11,
+    "lego_position": "middle",
+    "known_audio_id": "0bd01533-7ac8-48cd-a48a-8191c2408b4f",
+    "target1_audio_id": "0eac1ec9-32c8-4f5b-b21e-03baba4d78c6",
+    "target2_audio_id": "2981f9be-95e3-497b-8f85-b8f02ea73f72",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "sent",
+      "legoId": "S0268L01",
+      "target": " mandou",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0267L01B02",
+   "set": {
+    "known_text": "some news",
+    "target_text": "só notícias",
+    "word_count": 13,
+    "lego_position": "middle",
+    "known_audio_id": "074e0761-9c42-4ee1-9987-a9a56ca6edd5",
+    "target1_audio_id": "243b25c8-3dc2-4fa1-b76d-b5b8ab077530",
+    "target2_audio_id": "ac6a05aa-23ef-436c-be38-5201b5688f5e",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "news",
+      "legoId": "S0267L01",
+      "target": " notícias",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0266L01B03",
+   "set": {
+    "known_text": "quite old",
+    "target_text": "velho",
+    "word_count": 10,
+    "lego_position": "middle",
+    "known_audio_id": "2fa8fa31-9655-4d74-b05a-ac3db1c30dde",
+    "target1_audio_id": "5091b37b-41e8-4556-861f-f65c8008c97e",
+    "target2_audio_id": "91eb6fd1-888b-457b-b39d-6810de5b63f0",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "old",
+      "legoId": "S0266L01",
+      "target": " velho",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0265L01B04",
+   "set": {
+    "known_text": "already a friend",
+    "target_text": "já um amigo",
+    "word_count": 13,
+    "lego_position": "middle",
+    "known_audio_id": "851361ab-9c0c-4650-a62e-2ec9987addf7",
+    "target1_audio_id": "6c3bdece-d382-4402-99a9-e55b545a0a52",
+    "target2_audio_id": "edfa6bb3-fda3-435e-aad7-d60177d62eff",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "a friend",
+      "legoId": "S0265L01",
+      "target": " um amigo",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0265L01B02",
+   "set": {
+    "known_text": "a friend",
+    "target_text": "um amigo",
+    "word_count": 10,
+    "known_audio_id": "93cfa429-e198-4d2b-b1e4-bbecb13d0486",
+    "target1_audio_id": "7fae6315-66c2-4488-9018-1b3d5db262aa",
+    "target2_audio_id": "aea97429-4234-49e5-bf53-177fa97734d1",
+    "decomposition": [
+     {
+      "known": "a friend",
+      "legoId": "S0265L01",
+      "target": "um amigo",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0264L01B04",
+   "set": {
+    "known_text": "quite an old man",
+    "target_text": "um senhor idoso",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "a9da4e3a-a2f6-4c41-bcad-abc68c69b552",
+    "target1_audio_id": "4ef94f4c-79e2-47a3-b504-cdcbe72ab0df",
+    "target2_audio_id": "a423e7fb-e2cc-4e6f-8289-15432462a2a4",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "an old man",
+      "legoId": "S0264L01",
+      "target": " um senhor idoso",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0264L01B03",
+   "set": {
+    "known_text": "just an old man",
+    "target_text": "só um senhor idoso",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "cd50ba73-0f5f-44ce-a1e3-82a4774d1be5",
+    "target1_audio_id": "dc141e0e-8307-4cef-adda-bbea12d98946",
+    "target2_audio_id": "694475f5-ac37-47e9-89e7-fe1b45346a95",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "an old man",
+      "legoId": "S0264L01",
+      "target": " um senhor idoso",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0264L01B02",
+   "set": {
+    "known_text": "an old man",
+    "target_text": "um senhor idoso",
+    "word_count": 17,
+    "known_audio_id": "e9a9c1f7-1d94-4a2d-9031-be1d7be0c664",
+    "target1_audio_id": "4ef94f4c-79e2-47a3-b504-cdcbe72ab0df",
+    "target2_audio_id": "a423e7fb-e2cc-4e6f-8289-15432462a2a4",
+    "decomposition": [
+     {
+      "known": "an old man",
+      "legoId": "S0264L01",
+      "target": "um senhor idoso",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0263L01B04",
+   "set": {
+    "known_text": "who do you mean right now?",
+    "target_text": "quem você quer dizer?",
+    "word_count": 25,
+    "known_audio_id": "853ca5c0-1672-4403-a995-b80ec30c2a48",
+    "target1_audio_id": "f57dcf72-1c34-43e6-9516-c2ba5b0e5099",
+    "target2_audio_id": "3c835634-460b-4003-bcf4-84f18659748c",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S0263L01",
+      "target": " quem você quer dizer",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0263L01B02",
+   "set": {
+    "known_text": "who you mean?",
+    "target_text": "quem você quer dizer?",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "49f509ed-a207-4f1e-8f35-a1d7946dd199",
+    "target1_audio_id": "f57dcf72-1c34-43e6-9516-c2ba5b0e5099",
+    "target2_audio_id": "3c835634-460b-4003-bcf4-84f18659748c",
+    "decomposition": [
+     {
+      "known": "who you mean",
+      "legoId": "S0263L01",
+      "target": "quem você quer dizer",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L02U03",
+   "set": {
+    "known_text": "what is over there?",
+    "target_text": "o que é ali?",
+    "word_count": 14,
+    "known_audio_id": "0299ad1a-a867-4ea3-87a2-26c33a9dc23b",
+    "target1_audio_id": "1c09d3ac-ede6-4be9-9788-a331b0942993",
+    "target2_audio_id": "312e0d45-e283-4f33-8a93-b3e686fe5a7f",
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0194L03",
+      "target": "o que",
+      "isGhost": false
+     },
+     {
+      "known": "is",
+      "legoId": "S0194L02",
+      "target": " é",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0258L02",
+      "target": " ali",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L02B03",
+   "set": {
+    "known_text": "right over there",
+    "target_text": "ali",
+    "word_count": 8,
+    "known_audio_id": "a0307d94-62f6-4ec4-989b-ac8ffc8fc669",
+    "target1_audio_id": "912a796e-81c3-4620-b834-7051e9c57718",
+    "target2_audio_id": "d6e203e8-a51d-451a-910d-5bc09b2226c9",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "over there",
+      "legoId": "S0258L02",
+      "target": " ali",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L02B02",
+   "set": {
+    "known_text": "just over there",
+    "target_text": "só ali",
+    "word_count": 8,
+    "known_audio_id": "4aa5b232-99ae-4ffe-94b1-bf465dd20be4",
+    "target1_audio_id": "fb5e83ba-936c-472d-867b-0df7df012893",
+    "target2_audio_id": "f043f1e3-3c42-4bd9-83be-da1179dacc44",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0258L02",
+      "target": " ali",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L01U03",
+   "set": {
+    "known_text": "what is that?",
+    "target_text": "o que é aquela?",
+    "word_count": 17,
+    "known_audio_id": "d3146e9e-aa05-4e47-8226-3b1ac71778c8",
+    "target1_audio_id": "34a25b6f-22d6-40a1-9e67-783a24177604",
+    "target2_audio_id": "9c1c4448-de76-4680-a2ba-9d7481cdb566",
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0194L03",
+      "target": "o que",
+      "isGhost": false
+     },
+     {
+      "known": "is",
+      "legoId": "S0194L02",
+      "target": " é",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aquela?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L01U02",
+   "set": {
+    "known_text": "she wants that one",
+    "target_text": "ela quer aquela",
+    "word_count": 17,
+    "known_audio_id": "4df8b1cf-628b-4dd3-883c-6828b3633b8e",
+    "target1_audio_id": "2ec39ef7-5ad6-4bbd-8d89-7b181b1cc9e3",
+    "target2_audio_id": "43471d66-2191-42b0-adaf-27ea574d8895",
+    "decomposition": [
+     {
+      "known": "she wants to",
+      "legoId": "S0017L01",
+      "target": "ela quer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aquela",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L01B03",
+   "set": {
+    "known_text": "already that",
+    "target_text": "já aquela",
+    "word_count": 11,
+    "known_audio_id": "3fe1ba3c-c1c6-4cb5-8f10-e1966a979044",
+    "target1_audio_id": "420dc339-26d3-4709-b5a1-7957ad4fa3b3",
+    "target2_audio_id": "e7d6b980-be6e-447a-a6b1-3991c9596c5b",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aquela",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L01B02",
+   "set": {
+    "known_text": "just that",
+    "target_text": "só aquela",
+    "word_count": 11,
+    "known_audio_id": "9de12943-223a-4098-a206-5fb1eed5afe4",
+    "target1_audio_id": "0a4f6a59-c9a1-4589-b7cc-7e5effed2cfc",
+    "target2_audio_id": "be208704-65e4-435d-913b-54ce93894ee1",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aquela",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0258L01B01",
+   "set": {
+    "known_text": "that one",
+    "target_text": "aquela",
+    "word_count": 8,
+    "known_audio_id": "66340890-b95e-4198-a776-1bd3da590b10",
+    "target1_audio_id": "99af35c5-9bc9-4be8-a217-263339ce9191",
+    "target2_audio_id": "ed929137-5981-4feb-85c0-3636b856ce40",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "aquela",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0256L02U03",
+   "set": {
+    "known_text": "in less than an hour",
+    "target_text": "em menos de uma hora",
+    "word_count": 22,
+    "known_audio_id": "561de43a-2506-425a-be01-42add753d318",
+    "target1_audio_id": "d5a2e1bd-8a2f-417b-a49d-5077f6ee727d",
+    "target2_audio_id": "dd58f067-d1f3-499c-a7ff-a831c883af63",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "em",
+      "isGhost": true
+     },
+     {
+      "known": "less",
+      "legoId": "S0256L01",
+      "target": " menos",
+      "isGhost": false
+     },
+     {
+      "known": "of",
+      "legoId": "S0200L03",
+      "target": " de",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " uma",
+      "isGhost": true
+     },
+     {
+      "known": "hour",
+      "legoId": "S0256L02",
+      "target": " hora",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0256L02B02",
+   "set": {
+    "known_text": "one hour",
+    "target_text": "só uma hora",
+    "word_count": 13,
+    "known_audio_id": "7fae0c1a-7e70-4016-a475-743e84f74f83",
+    "target1_audio_id": "43205124-0741-4c81-81f5-0a7ded9e4d90",
+    "target2_audio_id": "53ed1140-b414-4b91-bd1c-ddb78ddf50bd",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " uma",
+      "isGhost": true
+     },
+     {
+      "known": "hour",
+      "legoId": "S0256L02",
+      "target": " hora",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0254L01U05",
+   "set": {
+    "known_text": "I have been here since today",
+    "target_text": "estou aqui desde hoje",
+    "known_audio_id": "51c3d2d0-b989-4cab-b9a7-5a69207417ab",
+    "target1_audio_id": "d24935b3-edbb-446d-98cd-070a0ced75f6",
+    "target2_audio_id": "df79a21c-019f-4cf6-a37b-4e790684d3e3",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "estou",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " aqui",
+      "isGhost": true
+     },
+     {
+      "known": "since",
+      "legoId": "S0254L01",
+      "target": " desde",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0254L01U04",
+   "set": {
+    "known_text": "she has been trying since today",
+    "target_text": "ela está tentando desde hoje",
+    "word_count": 30,
+    "known_audio_id": "4b050f75-1be9-462b-a8e3-592d719953ef",
+    "target1_audio_id": "ebe9f129-2a28-4aa3-8dcb-3fc2ad42b6f9",
+    "target2_audio_id": "96f6eb93-c43f-4eb5-a2f7-3a1586015b7c",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ela",
+      "isGhost": true
+     },
+     {
+      "known": "is trying",
+      "legoId": "S0222L03",
+      "target": " está tentando",
+      "isGhost": false
+     },
+     {
+      "known": "since",
+      "legoId": "S0254L01",
+      "target": " desde",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0254L01B03",
+   "set": {
+    "known_text": "since today",
+    "target_text": "desde hoje",
+    "word_count": 12,
+    "known_audio_id": "85bc7023-b84c-4577-8308-26cfc168a367",
+    "target1_audio_id": "e8651444-9b54-46c8-95ee-d68da02c3144",
+    "target2_audio_id": "2137494e-25d0-4bfd-a200-778b651b325e",
+    "decomposition": [
+     {
+      "known": "since",
+      "legoId": "S0254L01",
+      "target": "desde",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "today",
+      "legoId": "S0007L03",
+      "target": " hoje",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0254L01B02",
+   "set": {
+    "known_text": "since now",
+    "target_text": "desde agora",
+    "word_count": 13,
+    "known_audio_id": "bd707c62-3658-418a-935a-9ea0268845e0",
+    "target1_audio_id": "cb4731be-b901-4939-9889-da77d0aec184",
+    "target2_audio_id": "5506a4b8-bb82-42d8-8cef-2f945dc2c2bc",
+    "decomposition": [
+     {
+      "known": "since",
+      "legoId": "S0254L01",
+      "target": "desde",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "now",
+      "legoId": "S0001L05",
+      "target": " agora",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0253L02U03",
+   "set": {
+    "known_text": "just a few more",
+    "target_text": "só poucos mais",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "702092a2-1bc2-4767-9658-0919ae11e239",
+    "target1_audio_id": "985630e8-2255-4f05-bef7-93d7e498840f",
+    "target2_audio_id": "9f07dc35-2cd9-4094-91c3-da426c79fcb3",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " poucos",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mais",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0253L02B02",
+   "set": {
+    "known_text": "just a few",
+    "target_text": "só poucos",
+    "word_count": 11,
+    "known_audio_id": "a31012c5-24a7-424d-a197-8c89d83ac888",
+    "target1_audio_id": "6ce562b2-b337-4675-9869-266bb2db141f",
+    "target2_audio_id": "811e6e1d-5afa-483b-982b-df63a15d927c",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " poucos",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0251L02B03",
+   "set": {
+    "target_text": "descobrir",
+    "word_count": 17,
+    "lego_position": "end",
+    "target1_audio_id": "cfaa59e1-7072-4dc8-b207-d50248de4f9c",
+    "target2_audio_id": "3feec1b4-0b49-4a5f-8d79-69ca3fa43d54",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ainda",
+      "isGhost": true
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0251L02",
+      "target": " descobrir",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0251L02B02",
+   "set": {
+    "known_text": "already find out",
+    "target_text": "já descobrir",
+    "word_count": 14,
+    "lego_position": "middle",
+    "known_audio_id": "8e896e91-4fff-4ac0-a2b3-135fed4ae82f",
+    "target1_audio_id": "2bb8eadf-7fb6-4bb0-96fb-401af332298e",
+    "target2_audio_id": "37ce8d10-f36f-49ff-a43c-a82d4d011b80",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "já",
+      "isGhost": true
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0251L02",
+      "target": " descobrir",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0251L02B01",
+   "set": {
+    "known_text": "just to discover",
+    "target_text": "só descobrir",
+    "word_count": 14,
+    "lego_position": "middle",
+    "known_audio_id": "8d085af2-9d43-400f-863a-0cb6fea5e3d5",
+    "target1_audio_id": "622d77e9-791f-4154-8675-ae5bd9d4b105",
+    "target2_audio_id": "9934093b-063a-4c81-8908-1998da8a0141",
+    "decomposition": [
+     {
+      "known": "just",
+      "legoId": "S0106L01",
+      "target": "só",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0251L02",
+      "target": " descobrir",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0271L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0271L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0271L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0268L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0267L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0266L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0258L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0258L01U07"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0256L02U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0254L01U06"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0253L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0253L02B03"
+  }
+ ]
+}

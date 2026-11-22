@@ -1,0 +1,80 @@
+{
+ "seed": 226,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "ती मला मदत करण्याचा प्रयत्न करतेय",
+     "she's trying to help me"
+    ],
+    "B03": [
+     "तो मला मदत करण्याचा प्रयत्न करतोय",
+     "he's trying to help me"
+    ],
+    "B04": [
+     "तुम्ही मला मदत करावी असं मला वाटतं",
+     "I'd like you to help me"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "ती आज मला मदत करण्याचा प्रयत्न करतेय",
+     "she's trying to help me today"
+    ],
+    [
+     "use",
+     "तो कामावर मला मदत करण्याचा प्रयत्न करतोय",
+     "he's trying to help me at work"
+    ],
+    [
+     "use",
+     "माझा मित्र मला मदत करण्याचा प्रयत्न करतोय",
+     "my friend is trying to help me"
+    ],
+    [
+     "use",
+     "माझा मुलगा मला मदत करण्याचा प्रयत्न करतोय",
+     "my son is trying to help me"
+    ],
+    [
+     "use",
+     "माझी मुलगी मला मदत करण्याचा प्रयत्न करतेय",
+     "my daughter is trying to help me"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "तो माणूस तुम्हाला मदत करण्याचा प्रयत्न करतोय",
+     "the man is trying to help you"
+    ],
+    "B03": [
+     "तो माणूस शिकण्याचा प्रयत्न करतोय",
+     "the man is trying to learn"
+    ],
+    "U02": [
+     "तो माणूस आज मला मदत करण्याचा प्रयत्न करतोय",
+     "the man is trying to help me today"
+    ],
+    "U03": [
+     "तो माणूस इंग्रजी बोलण्याचा प्रयत्न करतोय",
+     "the man is trying to speak English"
+    ],
+    "U04": [
+     "मला वाटतं तो माणूस मला मदत करण्याचा प्रयत्न करतोय",
+     "I think the man is trying to help me"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तो माणूस बोलण्याचा प्रयत्न करतोय",
+     "the man is trying to speak"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,573 @@
+[
+ {
+  "seed_number": 420,
+  "phrases": {
+   "420:1": [
+    {
+     "known_text": "they",
+     "target_text": "eles",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "not",
+     "target_text": "não",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "need to",
+     "target_text": "precisam",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "ask",
+     "target_text": "perguntar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they don't need to ask",
+     "target_text": "eles não precisam perguntar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "but they don't need to ask",
+     "target_text": "mas eles não precisam perguntar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they don't need to ask her name",
+     "target_text": "eles não precisam perguntar o nome dela",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think they don't need to ask",
+     "target_text": "acho que eles não precisam perguntar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't need to ask anything",
+     "target_text": "eles não precisam perguntar nada",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't need to ask today",
+     "target_text": "eles não precisam perguntar hoje",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true that they don't need to ask",
+     "target_text": "é verdade que eles não precisam perguntar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't need to ask what was happening",
+     "target_text": "eles não precisam perguntar o que estava acontecendo",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said that they don't need to ask",
+     "target_text": "ela disse que eles não precisam perguntar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't need to ask where it is",
+     "target_text": "eles não precisam perguntar onde está",
+     "phrase_role": "build"
+    }
+   ],
+   "420:2": [
+    {
+     "known_text": "how many",
+     "target_text": "quantos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "years",
+     "target_text": "anos",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "how old",
+     "target_text": "quantos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to ask how old",
+     "target_text": "perguntar quantos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they don't need to ask how old",
+     "target_text": "eles não precisam perguntar quantos anos",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how old are you?",
+     "target_text": "quantos anos você tem?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked how old you are",
+     "target_text": "perguntei quantos anos você tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't need to ask how old you are",
+     "target_text": "eles não precisam perguntar quantos anos você tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I ask you how old you are?",
+     "target_text": "posso te perguntar quantos anos você tem?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know how old you are",
+     "target_text": "eu não sei quantos anos você tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to remember how old he is",
+     "target_text": "estou tentando me lembrar de quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I asked how old",
+     "target_text": "perguntei quantos anos",
+     "phrase_role": "build"
+    }
+   ],
+   "420:3": [
+    {
+     "known_text": "he",
+     "target_text": "ele",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "has",
+     "target_text": "tem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he is",
+     "target_text": "ele tem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "how old he is",
+     "target_text": "quantos anos ele tem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I asked how old he is",
+     "target_text": "perguntei quantos anos ele tem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they don't need to ask how old he is",
+     "target_text": "eles não precisam perguntar quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I don't know how old he is",
+     "target_text": "eu não sei quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they still don't need to ask how old he is",
+     "target_text": "eles ainda não precisam perguntar quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can I ask you how old he is?",
+     "target_text": "posso te perguntar quantos anos ele tem?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find out how old he is",
+     "target_text": "estou tentando descobrir quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I should ask how old he is",
+     "target_text": "devo perguntar quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know how old he is",
+     "target_text": "eu sei quantos anos ele tem",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 421,
+  "phrases": {
+   "421:1": [
+    {
+     "known_text": "because",
+     "target_text": "Porque",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "already",
+     "target_text": "já",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "they know",
+     "target_text": "sabem",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "because they already know",
+     "target_text": "porque já sabem",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because they already know that",
+     "target_text": "porque já sabem que",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because they already know the answer",
+     "target_text": "porque já sabem a resposta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they don't need to ask because they already know",
+     "target_text": "eles não precisam perguntar porque já sabem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because they already know where it is",
+     "target_text": "porque já sabem onde está",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because they already know his name",
+     "target_text": "porque já sabem o nome dele",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because they already know how old he is",
+     "target_text": "porque já sabem quantos anos ele tem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't want to ask, because they already know",
+     "target_text": "eles não querem perguntar, porque já sabem",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "because they already know her name",
+     "target_text": "porque já sabem o nome dela",
+     "phrase_role": "build"
+    }
+   ],
+   "421:2": [
+    {
+     "known_text": "that",
+     "target_text": "que",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he",
+     "target_text": "ele",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "is getting",
+     "target_text": "está ficando",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "weak",
+     "target_text": "fraco",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "he's getting weak",
+     "target_text": "que ele está ficando fraco",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they know he's getting weak",
+     "target_text": "sabem que ele está ficando fraco",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I think he's getting weak",
+     "target_text": "acho que ele está ficando fraco",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "because they already know he's getting weak",
+     "target_text": "porque já sabem que ele está ficando fraco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I know he's getting weak",
+     "target_text": "eu sei que ele está ficando fraco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they don't know he's getting weak",
+     "target_text": "eles não sabem que ele está ficando fraco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's true that he's getting weak",
+     "target_text": "é verdade que ele está ficando fraco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, because they already know he's getting weak",
+     "target_text": "sim, porque já sabem que ele está ficando fraco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "they say he's getting weak",
+     "target_text": "eles dizem que ele está ficando fraco",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she said he's getting weak",
+     "target_text": "ela disse que ele está ficando fraco",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 422,
+  "phrases": {
+   "422:1": [
+    {
+     "known_text": "a",
+     "target_text": "uma",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "question",
+     "target_text": "pergunta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a question",
+     "target_text": "uma pergunta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to ask a question",
+     "target_text": "fazer uma pergunta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "a question for you",
+     "target_text": "uma pergunta para você",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can I ask you a question?",
+     "target_text": "posso te fazer uma pergunta?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "that's a question",
+     "target_text": "isso é uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have a question",
+     "target_text": "tenho uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she has a question",
+     "target_text": "ela tem uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I have a question for you",
+     "target_text": "tenho uma pergunta para você",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to ask a question",
+     "target_text": "vou fazer uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to ask a question",
+     "target_text": "espero conseguir fazer uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she ought to ask a question",
+     "target_text": "ela devia fazer uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope you'll be able to ask a question",
+     "target_text": "espero que você consiga fazer uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to ask a question as soon as I can",
+     "target_text": "vou fazer uma pergunta assim que eu puder",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's a question that I can't answer",
+     "target_text": "é uma pergunta que eu não consigo responder",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "it's easy to ask a question",
+     "target_text": "é fácil fazer uma pergunta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there was a question",
+     "target_text": "havia uma pergunta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the best way to ask a question",
+     "target_text": "a melhor maneira de fazer uma pergunta",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ },
+ {
+  "seed_number": 423,
+  "phrases": {
+   "423:1": [
+    {
+     "known_text": "do they need to",
+     "target_text": "eles precisam",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do they need to go?",
+     "target_text": "eles precisam ir?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "they need to win",
+     "target_text": "eles precisam ganhar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do they need to reserve?",
+     "target_text": "eles precisam reservar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do they need to serve",
+     "target_text": "eles precisam servir",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do they need to lead",
+     "target_text": "eles precisam liderar",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do they need to help?",
+     "target_text": "eles precisam ajudar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do they need to ask?",
+     "target_text": "eles precisam perguntar?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why do they need to",
+     "target_text": "por que eles precisam",
+     "phrase_role": "build"
+    }
+   ],
+   "423:2": [
+    {
+     "known_text": "to ask",
+     "target_text": "fazer",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "a",
+     "target_text": "uma",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "question",
+     "target_text": "pergunta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "such",
+     "target_text": "tão",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "obvious",
+     "target_text": "óbvia",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "to ask such an obvious question",
+     "target_text": "fazer uma pergunta tão óbvia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "we need to ask such an obvious question",
+     "target_text": "nós precisamos fazer uma pergunta tão óbvia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I don't want to ask such an obvious question",
+     "target_text": "não quero fazer uma pergunta tão óbvia",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "do they need to ask such an obvious question?",
+     "target_text": "eles precisam fazer uma pergunta tão óbvia?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she doesn't want to ask such an obvious question",
+     "target_text": "ela não quer fazer uma pergunta tão óbvia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "do they still need to ask such an obvious question?",
+     "target_text": "eles ainda precisam fazer uma pergunta tão óbvia?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "yes, do they need to ask such an obvious question?",
+     "target_text": "sim, eles precisam fazer uma pergunta tão óbvia?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm not going to ask such an obvious question",
+     "target_text": "não vou fazer uma pergunta tão óbvia",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "why do they need to ask such an obvious question?",
+     "target_text": "por que eles precisam fazer uma pergunta tão óbvia?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "he wants to ask such an obvious question",
+     "target_text": "ele quer fazer uma pergunta tão óbvia",
+     "phrase_role": "build"
+    }
+   ]
+  }
+ }
+]

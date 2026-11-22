@@ -1,0 +1,44 @@
+{
+ "event_id": "2738b375-8e74-4d38-a7b7-f2476463f12d",
+ "undo_file": "2026-11-18T14-58-30-920Z-2738b375-8e74-4d38-a7b7-f2476463f12d.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0189L01U01",
+   "set": {
+    "known_text": "yes, that's a good idea",
+    "target_text": "sim, é uma boa ideia",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "4a3c1210-21bc-4190-92ec-4c7796240e14",
+    "target1_audio_id": "514329ed-6f0f-4148-bbe9-74a657b719b0",
+    "target2_audio_id": "9dae5dee-5787-4dba-b01e-2b284aa44396",
+    "decomposition": [
+     {
+      "known": "yes",
+      "legoId": "S0097L01",
+      "target": "sim",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "that's a good idea",
+      "legoId": "S0189L01",
+      "target": " é uma boa ideia",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0189L01B04"
+  }
+ ]
+}

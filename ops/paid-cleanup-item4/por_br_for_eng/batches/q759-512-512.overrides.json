@@ -1,0 +1,295 @@
+[
+ {
+  "seed_number": 512,
+  "phrases": {
+   "512:1": [
+    {
+     "known_text": "you",
+     "target_text": "você",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "can",
+     "target_text": "pode",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "hold",
+     "target_text": "segurar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "can you hold",
+     "target_text": "você pode segurar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold it",
+     "target_text": "você pode segurar isso",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold my bag?",
+     "target_text": "você pode segurar minha mala?",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold this for a few minutes?",
+     "target_text": "você pode segurar isso por uns minutos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold my coffee, please?",
+     "target_text": "você pode segurar meu café, por favor?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold my keys?",
+     "target_text": "você pode segurar minhas chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the bag with both hands?",
+     "target_text": "você pode segurar a mala com as duas mãos?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the door?",
+     "target_text": "você pode segurar a porta?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the kitten?",
+     "target_text": "você pode segurar o gatinho?",
+     "phrase_role": "build"
+    }
+   ],
+   "512:2": [
+    {
+     "known_text": "the door",
+     "target_text": "a porta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "open",
+     "target_text": "aberta",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the door open",
+     "target_text": "a porta aberta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold the door open",
+     "target_text": "você pode segurar a porta aberta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "to leave the door open",
+     "target_text": "deixar a porta aberta",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I slept with the door open",
+     "target_text": "dormi com a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "who left the door open?",
+     "target_text": "quem deixou a porta aberta?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I can't work with the door open",
+     "target_text": "não consigo trabalhar com a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she wants the door open",
+     "target_text": "ela quer a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold the door open for her?",
+     "target_text": "você pode segurar a porta aberta para ela?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to leave the door open",
+     "target_text": "vou deixar a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "we had to leave the door open",
+     "target_text": "nós tivemos que deixar a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "maybe we should leave the door open",
+     "target_text": "talvez devêssemos deixar a porta aberta",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "with the door open",
+     "target_text": "com a porta aberta",
+     "phrase_role": "build"
+    }
+   ],
+   "512:3": [
+    {
+     "known_text": "while",
+     "target_text": "enquanto",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "I will go",
+     "target_text": "eu vou",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "fetch",
+     "target_text": "pegar",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "while I fetch",
+     "target_text": "enquanto eu vou pegar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold the door open while I fetch",
+     "target_text": "você pode segurar a porta aberta enquanto eu vou pegar",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "while I fetch the car",
+     "target_text": "enquanto eu vou pegar o carro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "you can wait here while I fetch the car",
+     "target_text": "você pode esperar aqui enquanto eu vou pegar o carro",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you hold my coffee while I fetch my bag?",
+     "target_text": "você pode segurar meu café enquanto eu vou pegar minha mala?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "you can sit down while I fetch something to eat",
+     "target_text": "você pode se sentar enquanto eu vou pegar algo para comer",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "can you stay with the children while I fetch the car?",
+     "target_text": "você pode ficar com as crianças enquanto eu vou pegar o carro?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "she's waiting at the door while I fetch the bag",
+     "target_text": "ela está esperando na porta enquanto eu vou pegar a mala",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "while I fetch my bag",
+     "target_text": "enquanto eu vou pegar minha mala",
+     "phrase_role": "build"
+    }
+   ],
+   "512:4": [
+    {
+     "known_text": "the",
+     "target_text": "as",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "keys",
+     "target_text": "chaves",
+     "phrase_role": "component"
+    },
+    {
+     "known_text": "the keys",
+     "target_text": "as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "fetch the keys",
+     "target_text": "pegar as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "the car keys",
+     "target_text": "as chaves do carro",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "can you hold the door open while I fetch the keys?",
+     "target_text": "você pode segurar a porta aberta enquanto eu vou pegar as chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm going to find the keys",
+     "target_text": "vou encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I'm trying to find the keys",
+     "target_text": "estou tentando encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I hope I'll be able to find the keys",
+     "target_text": "espero conseguir encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to find the keys",
+     "target_text": "preciso encontrar as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "I hope you'll be able to find the keys",
+     "target_text": "espero que você consiga encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "the man who said that he wanted the keys",
+     "target_text": "o homem que disse que queria as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "it's easy to find the keys",
+     "target_text": "é fácil encontrar as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there's no point worrying about the keys",
+     "target_text": "não vale a pena se preocupar com as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "there is a problem with the keys",
+     "target_text": "há um problema com as chaves",
+     "phrase_role": "build"
+    },
+    {
+     "known_text": "why do you want the keys?",
+     "target_text": "por que você quer as chaves?",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I want to find out where the keys are",
+     "target_text": "eu quero descobrir onde estão as chaves",
+     "phrase_role": "use"
+    },
+    {
+     "known_text": "I need to find the keys as quickly as possible",
+     "target_text": "preciso encontrar as chaves o mais rápido possível",
+     "phrase_role": "use"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,82 @@
+{
+ "seed": 220,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "तुम्ही ते पाहिलं का?",
+     "did you watch it?"
+    ],
+    "B03": [
+     "तुम्ही ते वीकेंडला पाहिलं का?",
+     "did you watch it at the weekend?"
+    ],
+    "U02": [
+     "तुम्ही ते काल पाहिलं का?",
+     "did you watch it yesterday?"
+    ],
+    "U03": [
+     "तुम्ही ते काही मित्रांबरोबर पाहिलं का?",
+     "did you watch it with a few friends?"
+    ],
+    "U04": [
+     "तुम्ही ते रविवारी पाहिलं का?",
+     "did you watch it on Sunday?"
+    ],
+    "U05": [
+     "तुम्ही ते आज संध्याकाळी पाहिलं का?",
+     "did you watch it this evening?"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही ते आज पाहिलं का?",
+     "did you watch it today?"
+    ],
+    [
+     "use",
+     "आणि तुम्ही ते पाहिलं का?",
+     "and did you watch it?"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B02": [
+     "आज थोडं टीव्ही",
+     "a bit of television today"
+    ],
+    "B03": [
+     "वीकेंडला थोडं टीव्ही",
+     "a bit of television at the weekend"
+    ],
+    "B04": [
+     "आज संध्याकाळी थोडं टीव्ही",
+     "a bit of television this evening"
+    ],
+    "U03": [
+     "तुम्ही काल थोडं टीव्ही पाहिलं का?",
+     "did you watch a bit of television yesterday?"
+    ],
+    "U04": [
+     "तुम्ही रविवारी थोडं टीव्ही पाहिलं का?",
+     "did you watch a bit of television on Sunday?"
+    ]
+   },
+   "insert": [
+    [
+     "use",
+     "तुम्ही काही मित्रांबरोबर थोडं टीव्ही पाहिलं का?",
+     "did you watch a bit of television with a few friends?"
+    ],
+    [
+     "use",
+     "थोडं टीव्ही पाहायला छान वाटलं",
+     "it was nice to watch a bit of television"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

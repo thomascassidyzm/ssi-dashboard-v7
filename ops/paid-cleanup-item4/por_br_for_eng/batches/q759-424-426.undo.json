@@ -1,0 +1,509 @@
+{
+ "event_id": "dc6bda8d-30d5-46fb-a653-a0c2daedb854",
+ "undo_file": "2026-11-18T15-03-34-834Z-dc6bda8d-30d5-46fb-a653-a0c2daedb854.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L04U03",
+   "set": {
+    "known_text": "that's true, unhappy",
+    "target_text": "isso é verdade, infelizes",
+    "word_count": 25,
+    "known_audio_id": "a066251e-6278-4d67-856d-ab3ddd6505cd",
+    "target1_audio_id": "164818be-6555-4c02-81ac-5cce04f614ab",
+    "target2_audio_id": "c02d99ef-a780-421a-80de-6c6984184725"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L04U02",
+   "set": {
+    "known_text": "no, unhappy",
+    "target_text": "não, infelizes",
+    "word_count": 14,
+    "known_audio_id": "f5b47ff2-c76a-4f55-b8b3-33e499e56c7d",
+    "target1_audio_id": "6479393a-f5ea-46fd-8a47-d02cba1f567f",
+    "target2_audio_id": "6b094665-ab1e-42cb-b385-284625aa5863"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L04B03",
+   "set": {
+    "known_text": "yes, unhappy",
+    "target_text": "sim, infelizes",
+    "word_count": 14,
+    "known_audio_id": "8e4995c1-1b49-4b1b-88e1-412ea9c14ead",
+    "target1_audio_id": "ef76b48f-e9ef-429c-a968-162c9dc9247d",
+    "target2_audio_id": "50dd19c4-1a77-46fb-be3e-7a80800454fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L03U05",
+   "set": {
+    "known_text": "but they're still wasting",
+    "target_text": "mas ainda estão desperdiçando",
+    "word_count": 29,
+    "lego_position": null,
+    "known_audio_id": "2bffa8d2-75db-49dd-8d11-8fcbf555cc7e",
+    "target1_audio_id": "d3419995-1cbb-4496-857b-2830d80e46f8",
+    "target2_audio_id": "a089d7cd-251c-46f3-a92d-e452286d8773"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L03U04",
+   "set": {
+    "known_text": "yes, but they're wasting",
+    "target_text": "sim, mas estão desperdiçando",
+    "word_count": 28,
+    "lego_position": "middle",
+    "known_audio_id": "fb15b1a4-bdd0-4d9b-becf-75d681180e3a",
+    "target1_audio_id": "a524ea26-786e-44d6-aee6-50da5d78931c",
+    "target2_audio_id": "6a52ee2a-6f3f-415b-8770-3466138f8d13"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L03U03",
+   "set": {
+    "known_text": "they would like to love each other, but they're",
+    "target_text": "eles gostariam de se amar, mas estão",
+    "word_count": 36,
+    "known_audio_id": "25aab9b5-4c2a-4283-af99-31b23e62eb0a",
+    "target1_audio_id": "41f76c64-4d35-427e-8129-8ea5d44d76d0",
+    "target2_audio_id": "e33536c0-28d9-4f2b-b24c-b941168f8406"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L03U02",
+   "set": {
+    "known_text": "that's true, but they're",
+    "target_text": "isso é verdade, mas estão",
+    "word_count": 25,
+    "known_audio_id": "92d3975a-8988-442c-a882-7e2cc0bc13ad",
+    "target1_audio_id": "38117135-6562-47b6-bdaa-56f3025366c6",
+    "target2_audio_id": "549c13ea-ab55-4877-847c-02ff60cce830"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L03U01",
+   "set": {
+    "known_text": "no, but they're",
+    "target_text": "não, mas estão",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "68447f02-c449-4329-ad5b-d84aa37c7edc",
+    "target1_audio_id": "2fae4fde-2fc6-41a9-8501-309be150c399",
+    "target2_audio_id": "32637fed-2615-4622-abc4-426e971687ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L03B03",
+   "set": {
+    "known_text": "yes, but they're",
+    "target_text": "sim, mas estão",
+    "word_count": 14,
+    "lego_position": "end",
+    "known_audio_id": "d865b1c0-8a5c-4f5d-ab40-ddb5c1d4d4ff",
+    "target1_audio_id": "baf8dd96-f8aa-4f3c-8176-2928721c5713",
+    "target2_audio_id": "cc14c3c5-9587-4b0d-976d-b21795bda657"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L02U03",
+   "set": {
+    "known_text": "they would like to love each other now",
+    "target_text": "eles gostariam de se amar agora",
+    "word_count": 31,
+    "known_audio_id": "2f3c674c-ff46-468a-8d59-1a82ed0a28a9",
+    "target1_audio_id": "908a8e53-fc2b-4d85-96df-2f22c3246eeb",
+    "target2_audio_id": "7e3d7bf9-b491-45f7-91be-204cadd14669"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L02U02",
+   "set": {
+    "known_text": "that's true, love each other",
+    "target_text": "isso é verdade, se amar",
+    "word_count": 23,
+    "known_audio_id": "4804e96d-25f0-477d-9a18-029462b89ca8",
+    "target1_audio_id": "c4846870-dc50-4818-8ff1-fabc86b14735",
+    "target2_audio_id": "934c3b7d-19c1-44f8-99fa-166c37cf0d19"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L02U01",
+   "set": {
+    "known_text": "no, love each other",
+    "target_text": "não, se amar",
+    "word_count": 12,
+    "known_audio_id": "f0c39c6e-0cbc-40ec-92e8-937c8f54410a",
+    "target1_audio_id": "f2c4925b-0c22-41e0-b606-0491810cca18",
+    "target2_audio_id": "b77215e6-5286-477c-a3e2-031a61d8c1e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L02B03",
+   "set": {
+    "known_text": "yes, love each other",
+    "target_text": "sim, se amar",
+    "word_count": 12,
+    "known_audio_id": "040cb0b7-ece8-4276-a3fe-6aaf26e0507a",
+    "target1_audio_id": "3990c130-af0c-4b3c-ad32-b2b356bc6634",
+    "target2_audio_id": "fa985b06-483f-467b-b4fa-6ef6864dd690"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L01U04",
+   "set": {
+    "known_text": "yes, they would like to serve",
+    "target_text": "sim, eles gostariam de servir",
+    "word_count": 29,
+    "known_audio_id": "33b446ab-925d-4d4a-beb4-95177dec5f11",
+    "target1_audio_id": "2f4ce76e-0fcd-47e9-91e2-9ba4540af634",
+    "target2_audio_id": "8572f66a-6284-4d5b-8ae0-25f0ae2a0563"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L01U03",
+   "set": {
+    "known_text": "that's true, they would like to",
+    "target_text": "isso é verdade, eles gostariam de",
+    "word_count": 33,
+    "lego_position": "end",
+    "known_audio_id": "36dd6da4-6910-4607-84ac-1d11cea7bf1a",
+    "target1_audio_id": "bf5f22b4-78d7-42c1-a537-7e7761bf96e6",
+    "target2_audio_id": "f614eaf2-f608-45c5-a0e7-749df3329503"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L01U01",
+   "set": {
+    "known_text": "no, they would like to",
+    "target_text": "não, eles gostariam de",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "59b5e7de-a838-428c-9526-3c17bcb9999f",
+    "target1_audio_id": "31f1f985-001a-482e-9047-bf17d028e81a",
+    "target2_audio_id": "6afde028-5201-44ea-9a27-ba5bc9e2a5c8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0426L01B03",
+   "set": {
+    "known_text": "yes, they would like to",
+    "target_text": "sim, eles gostariam de",
+    "word_count": 22,
+    "known_audio_id": "ca325f9c-fcf1-4b14-b88a-83e13a98c131",
+    "target1_audio_id": "7d97da34-6733-484e-a8ab-58fa90c119d1",
+    "target2_audio_id": "e8c4306d-f871-4b72-a1a9-2fb8cad0de01"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L04U05",
+   "set": {
+    "known_text": "they still understand today",
+    "target_text": "ainda entendem hoje",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "09778bb2-1241-4729-9a36-d80d16092226",
+    "target1_audio_id": "e9550f30-95c7-4e50-be28-620ee2798ed9",
+    "target2_audio_id": "be5c2518-0c25-4758-9cbd-9edefb584d99"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L04U03",
+   "set": {
+    "known_text": "that's true, they understand",
+    "target_text": "isso é verdade, entendem",
+    "word_count": 24,
+    "lego_position": "end",
+    "known_audio_id": "fcd56dba-031d-45a7-8dd8-613d2a8e1540",
+    "target1_audio_id": "5e8d4da7-c2f2-4978-81a3-a2955765cc65",
+    "target2_audio_id": "a0e8cbfa-fbcb-41f2-9aff-eeb7a85e8500"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L04U02",
+   "set": {
+    "known_text": "no, they understand",
+    "target_text": "não, entendem",
+    "word_count": 13,
+    "known_audio_id": "016d5a3e-4940-4293-ae18-d7ae7c25fb72",
+    "target1_audio_id": "e8c4bc96-62ef-4688-8827-49c9f03e07c5",
+    "target2_audio_id": "1ac6e239-40ba-4634-9f32-6381535b70fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L04B03",
+   "set": {
+    "known_text": "yes, they understand",
+    "target_text": "sim, entendem",
+    "word_count": 13,
+    "known_audio_id": "3206fd9c-bde0-4482-90f2-bc0861664f39",
+    "target1_audio_id": "f8c69d6f-c7bd-45f7-b2eb-073b2b369036",
+    "target2_audio_id": "3998c7ff-cb4e-48d5-8338-bdcdfc6b5301"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L03U05",
+   "set": {
+    "known_text": "they need to make sure that today",
+    "target_text": "eles precisam ter certeza de que hoje",
+    "word_count": 37,
+    "known_audio_id": "0a5266c3-f781-4bd9-a2d6-8e89646446f7",
+    "target1_audio_id": "567b7114-5137-4550-a8f6-7678ca480202",
+    "target2_audio_id": "059385a8-87e3-4ed3-abd7-007126165251"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L03U03",
+   "set": {
+    "known_text": "that's true, make sure that",
+    "target_text": "isso é verdade, ter certeza de que",
+    "word_count": 34,
+    "lego_position": "end",
+    "known_audio_id": "a537c3cc-febc-42f5-9bf3-8f03fa44425e",
+    "target1_audio_id": "c3f4fd3c-cd1a-4dca-a0dd-71ea55b58c32",
+    "target2_audio_id": "bf7207bf-0a68-4d64-a773-f6c2d23d85b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L03U01",
+   "set": {
+    "known_text": "no, make sure that",
+    "target_text": "não, ter certeza de que",
+    "word_count": 23,
+    "known_audio_id": "cd2112b1-bfc7-4810-8f68-40aeca0bad85",
+    "target1_audio_id": "faaa3671-9664-40f8-88e9-51a3bcae46bd",
+    "target2_audio_id": "529b97ac-d6d7-40d4-bf27-02a122eefff0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L03B03",
+   "set": {
+    "known_text": "yes, to make sure that",
+    "target_text": "sim, ter certeza de que",
+    "word_count": 23,
+    "known_audio_id": "86342179-3666-4fc9-b8f0-aea78b595d26",
+    "target1_audio_id": "3902f8be-1395-46ff-9e52-3bd0b75deadf",
+    "target2_audio_id": "a325aef8-d0a7-4de2-af76-110f8fb2018a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L02U05",
+   "set": {
+    "known_text": "that's true, they need to",
+    "target_text": "isso é verdade, eles precisam",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "3343d701-953b-43a5-90b3-e4d207d1544d",
+    "target1_audio_id": "4be50677-af61-49ef-9e30-be1a243d4513",
+    "target2_audio_id": "9bab91a9-2eb0-41ea-a032-5dfaa72ad1ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L02U04",
+   "set": {
+    "known_text": "yes, they still need to",
+    "target_text": "sim, eles ainda precisam",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "9a5a1ff7-1dc3-483b-8bc5-2f66872fd008",
+    "target1_audio_id": "ffa2e80f-e8c1-4678-97bf-0b2eb400ab5a",
+    "target2_audio_id": "0190ea13-49a8-4ec4-bbe5-e5a3cbb38f94"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L02U01",
+   "set": {
+    "known_text": "no, they need to",
+    "target_text": "não, eles precisam",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "9f76c644-c140-4e71-8091-a82adb391274",
+    "target1_audio_id": "f0e78ffb-a8bd-4852-be5a-c99612e31c93",
+    "target2_audio_id": "4ba63134-8f9e-48fe-bf78-822eff4a3a66"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L02B03",
+   "set": {
+    "known_text": "yes, they need to",
+    "target_text": "sim, eles precisam",
+    "word_count": 18,
+    "known_audio_id": "90908ef0-850f-4c01-a47b-466fee204f1b",
+    "target1_audio_id": "fcf345f5-e88b-4675-ad23-6fa767873be2",
+    "target2_audio_id": "04411ff7-b8d1-443b-977a-414e51c4b92f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0425L02B02",
+   "set": {
+    "known_text": "they still need to",
+    "target_text": "eles ainda precisam",
+    "word_count": 19,
+    "lego_position": null,
+    "known_audio_id": "04f2556e-6a47-4e48-9d98-82e115794917",
+    "target1_audio_id": "6989a8d6-8c65-4773-a1d1-d184decd4c39",
+    "target2_audio_id": "5ca443f5-c6a1-4514-a47c-79ad3aca83a2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L03U04",
+   "set": {
+    "known_text": "yes, they're wasting everybody's time",
+    "target_text": "sim, estão desperdiçando o tempo de todo mundo",
+    "word_count": 46,
+    "known_audio_id": "bdbcdd91-1649-4d0e-adab-7b553ff0032f",
+    "target1_audio_id": "c1c77b9e-7725-4da9-976e-f4618a5e736e",
+    "target2_audio_id": "74d86f1d-107d-4b3f-b897-2d746bee4135"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L03U02",
+   "set": {
+    "known_text": "that's true, everybody's time",
+    "target_text": "isso é verdade, o tempo de todo mundo",
+    "word_count": 37,
+    "known_audio_id": "426b512f-e2ae-449b-93f0-703813db9219",
+    "target1_audio_id": "622c9adb-1ab3-4db1-8c10-611687475cbd",
+    "target2_audio_id": "b3ea78d2-69b9-4198-843b-1e27ebb3158f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L03B03",
+   "set": {
+    "known_text": "yes, everybody's time",
+    "target_text": "sim, o tempo de todo mundo",
+    "word_count": 26,
+    "lego_position": "middle",
+    "known_audio_id": "8e747d71-ac94-4949-8368-de48cc703211",
+    "target1_audio_id": "6e47daec-fec7-4b8a-b072-a94aae18b5a7",
+    "target2_audio_id": "18ef8be3-3c61-419b-8684-40199272d227"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L02U05",
+   "set": {
+    "known_text": "I think they're wasting",
+    "target_text": "acho que estão desperdiçando",
+    "word_count": 28,
+    "known_audio_id": "c97a00ce-f82a-4732-a5b5-c9c9317673ba",
+    "target1_audio_id": "b5e14457-3ca3-473f-b50d-079be588eee6",
+    "target2_audio_id": "ce375b6e-3e4f-496e-b6f9-ea0d0e0a7a56"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L02U03",
+   "set": {
+    "known_text": "that's true, they're wasting",
+    "target_text": "isso é verdade, estão desperdiçando",
+    "word_count": 35,
+    "lego_position": "end",
+    "known_audio_id": "8b5277e4-51ed-4f9a-b380-1c899b77b0af",
+    "target1_audio_id": "103049ef-417e-4ecb-8225-da04655cfdb8",
+    "target2_audio_id": "0abdcfb7-a931-4e98-abdc-838be1923eb6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L02U02",
+   "set": {
+    "known_text": "they're still wasting",
+    "target_text": "ainda estão desperdiçando",
+    "word_count": 25,
+    "known_audio_id": "9322945c-39bf-4f72-93da-80513c4cb82b",
+    "target1_audio_id": "ee8f1713-07ef-4a57-a162-3506319e48ee",
+    "target2_audio_id": "014379e9-00eb-4e9e-9951-1ffa312df74c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L02U01",
+   "set": {
+    "known_text": "no, they're wasting",
+    "target_text": "não, estão desperdiçando",
+    "word_count": 24,
+    "known_audio_id": "2d9ff7c4-caf1-4939-adcb-4d88308d2141",
+    "target1_audio_id": "72fa6ba3-a891-4e61-a056-386a9502696e",
+    "target2_audio_id": "1bb23530-f3af-4f80-b6b5-d434e5dce3fb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0424L02B03",
+   "set": {
+    "known_text": "yes, they're wasting",
+    "target_text": "sim, estão desperdiçando",
+    "word_count": 24,
+    "known_audio_id": "465959dd-624a-46ae-ab06-b08175f91c80",
+    "target1_audio_id": "cdc9da86-dcab-471a-9c7a-105ed85d078b",
+    "target2_audio_id": "3bdc2817-41ca-4131-948c-47bcc6afa875"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0426L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0426L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0426L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0425L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0425L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0425L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0424L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0424L02B04"
+  }
+ ]
+}

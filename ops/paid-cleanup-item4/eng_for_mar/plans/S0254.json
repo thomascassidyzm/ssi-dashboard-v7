@@ -1,0 +1,43 @@
+{
+ "seed": 254,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "आज सकाळपासून इथे",
+     "here since this morning"
+    ],
+    "B03": [
+     "मी आज सकाळपासून व्यस्त आहे",
+     "I've been busy since this morning"
+    ]
+   }
+  },
+  "L02": {
+   "update": {
+    "B04": [
+     "मी कालपासून तयार आहे",
+     "I've been ready since yesterday"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "मी आज तयार आहे",
+     "I've been ready today"
+    ],
+    [
+     "use",
+     "मी आज सकाळपासून इथे तयार आहे",
+     "I've been ready here since this morning"
+    ],
+    [
+     "use",
+     "मी आज सकाळपासून कामावर तयार आहे",
+     "I've been ready at work since this morning"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

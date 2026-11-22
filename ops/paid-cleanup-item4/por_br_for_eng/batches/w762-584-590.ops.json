@@ -1,0 +1,1863 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0584L02B04",
+    "seed_number": 584,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "I want to wake up every morning and speak Portuguese",
+    "target_text": "eu quero acordar todas as manhãs e falar português",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 50,
+    "lego_count": 10,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0584L03B04",
+    "seed_number": 584,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "let's go out and see the mountains",
+    "target_text": "vamos sair e ver as montanhas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 29,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0585L01B04",
+    "seed_number": 585,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I can see the beach",
+    "target_text": "eu consigo ver a praia",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 22,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0585L03B04",
+    "seed_number": 585,
+    "lego_index": 3,
+    "position": 13,
+    "known_text": "I can see the church out of my bedroom window",
+    "target_text": "eu consigo ver a igreja da janela do meu quarto",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 47,
+    "lego_count": 10,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0586L01B04",
+    "seed_number": 586,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I want twenty minutes to think",
+    "target_text": "eu quero vinte minutos para pensar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 34,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0587L01B04",
+    "seed_number": 587,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "she used to insist on helping",
+    "target_text": "ela costumava insistir em ajudar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0587L02B04",
+    "seed_number": 587,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "that we had something",
+    "target_text": "que comêssemos algo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0587L03B04",
+    "seed_number": 587,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "I like eggs for supper",
+    "target_text": "gosto de ovos ao jantar",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 23,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0588L01B04",
+    "seed_number": 588,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "so I wanted to go",
+    "target_text": "por isso eu queria ir",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0588L02B04",
+    "seed_number": 588,
+    "lego_index": 2,
+    "position": 11,
+    "known_text": "he wanted to grow up and leave",
+    "target_text": "ele queria crescer e sair",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 25,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0588L03B04",
+    "seed_number": 588,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "I want to leave home",
+    "target_text": "eu quero sair de casa",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 5,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L01B04",
+    "seed_number": 589,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "she told me her name",
+    "target_text": "ela me disse o nome dela",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 24,
+    "lego_count": 5,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L02B04",
+    "seed_number": 589,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "she said she'd just seen the dog",
+    "target_text": "ela disse que tinha acabado de ver o cachorro",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 45,
+    "lego_count": 7,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L03B04",
+    "seed_number": 589,
+    "lego_index": 3,
+    "position": 16,
+    "known_text": "I'm going home on the last bus",
+    "target_text": "vou para casa no último ônibus",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 30,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0589L03B05",
+    "seed_number": 589,
+    "lego_index": 3,
+    "position": 17,
+    "known_text": "I'm going to wait for the last bus",
+    "target_text": "vou esperar o último ônibus",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 8,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0590L01B04",
+    "seed_number": 590,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "I saw the mountains",
+    "target_text": "eu vi as montanhas",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0590L03B04",
+    "seed_number": 590,
+    "lego_index": 3,
+    "position": 11,
+    "known_text": "I saw the bus leaving the station",
+    "target_text": "eu vi o ônibus saindo da estação",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 32,
+    "lego_count": 7,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0584L02B02",
+   "expect": {
+    "known_text": "what's it like to wake up every morning now",
+    "target_text": "como é acordar todas as manhãs agora"
+   },
+   "set": {
+    "known_text": "it's difficult to wake up every morning",
+    "target_text": "é difícil acordar todas as manhãs",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0584L02B03",
+   "expect": {
+    "known_text": "yes, to wake up every morning",
+    "target_text": "sim, acordar todas as manhãs"
+   },
+   "set": {
+    "known_text": "I have got to wake up every morning",
+    "target_text": "tenho que acordar todas as manhãs",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0584L03B03",
+   "expect": {
+    "known_text": "yes, and see the mountains",
+    "target_text": "sim, e ver as montanhas"
+   },
+   "set": {
+    "known_text": "I want to go out and see the mountains",
+    "target_text": "eu quero sair e ver as montanhas",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L01B03",
+   "expect": {
+    "known_text": "yes, I can see",
+    "target_text": "sim, eu consigo ver"
+   },
+   "set": {
+    "known_text": "I can see the church",
+    "target_text": "eu consigo ver a igreja",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L01U01",
+   "expect": {
+    "known_text": "it seems I can see",
+    "target_text": "parece que eu consigo ver"
+   },
+   "set": {
+    "known_text": "I can see the dog in the garden",
+    "target_text": "eu consigo ver o cachorro no jardim",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L01U02",
+   "expect": {
+    "known_text": "you know I can see",
+    "target_text": "você sabe que eu consigo ver"
+   },
+   "set": {
+    "known_text": "I can see the children playing",
+    "target_text": "eu consigo ver as crianças brincando",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L01U03",
+   "expect": {
+    "known_text": "they know I can see",
+    "target_text": "eles sabem que eu consigo ver"
+   },
+   "set": {
+    "known_text": "I can see the bus",
+    "target_text": "eu consigo ver o ônibus",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L01U04",
+   "expect": {
+    "known_text": "we want to know if I can see",
+    "target_text": "queremos saber se eu consigo ver"
+   },
+   "set": {
+    "known_text": "I can see that you're tired",
+    "target_text": "eu consigo ver que você está cansado",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L01U05",
+   "expect": {
+    "known_text": "I think, I can see",
+    "target_text": "acho que eu consigo ver"
+   },
+   "set": {
+    "known_text": "I think I can see the church",
+    "target_text": "acho que eu consigo ver a igreja",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L02B03",
+   "expect": {
+    "known_text": "yes, the mountains",
+    "target_text": "sim, as montanhas"
+   },
+   "set": {
+    "known_text": "the mountains are very special",
+    "target_text": "as montanhas são muito especiais",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L02U03",
+   "expect": {
+    "known_text": "you know I can see the mountains",
+    "target_text": "você sabe que eu consigo ver as montanhas"
+   },
+   "set": {
+    "known_text": "she wants to see the mountains",
+    "target_text": "ela quer ver as montanhas",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L02U04",
+   "expect": {
+    "known_text": "they know I can see the mountains",
+    "target_text": "eles sabem que eu consigo ver as montanhas"
+   },
+   "set": {
+    "known_text": "we want to go to the mountains",
+    "target_text": "queremos ir até as montanhas",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L02U05",
+   "expect": {
+    "known_text": "we want to know if I can see the mountains",
+    "target_text": "queremos saber se eu consigo ver as montanhas"
+   },
+   "set": {
+    "known_text": "I can see the mountains from the hotel",
+    "target_text": "eu consigo ver as montanhas do hotel",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L03B03",
+   "expect": {
+    "known_text": "yes, out of my bedroom window",
+    "target_text": "sim, da janela do meu quarto"
+   },
+   "set": {
+    "known_text": "the mountains out of my bedroom window",
+    "target_text": "as montanhas da janela do meu quarto",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L03U02",
+   "expect": {
+    "known_text": "it seems I can see the mountains out of my bedroom window",
+    "target_text": "parece que eu consigo ver as montanhas da janela do meu quarto"
+   },
+   "set": {
+    "known_text": "I can see the beach out of my bedroom window",
+    "target_text": "eu consigo ver a praia da janela do meu quarto",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L03U03",
+   "expect": {
+    "known_text": "you know I can see the mountains out of my bedroom window",
+    "target_text": "você sabe que eu consigo ver as montanhas da janela do meu quarto"
+   },
+   "set": {
+    "known_text": "I can see the garden out of my bedroom window",
+    "target_text": "eu consigo ver o jardim da janela do meu quarto",
+    "decomposition": null,
+    "word_count": 47,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L03U04",
+   "expect": {
+    "known_text": "they know I can see the mountains out of my bedroom window",
+    "target_text": "eles sabem que eu consigo ver as montanhas da janela do meu quarto"
+   },
+   "set": {
+    "known_text": "I like to see the mountains out of my bedroom window",
+    "target_text": "gosto de ver as montanhas da janela do meu quarto",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0585L03U05",
+   "expect": {
+    "known_text": "we want to know if I can see the mountains out of my bedroom window",
+    "target_text": "queremos saber se eu consigo ver as montanhas da janela do meu quarto"
+   },
+   "set": {
+    "known_text": "I can't see the mountains out of my bedroom window",
+    "target_text": "não consigo ver as montanhas da janela do meu quarto",
+    "decomposition": null,
+    "word_count": 52,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01B02",
+   "expect": {
+    "known_text": "I want twenty now",
+    "target_text": "eu quero vinte agora"
+   },
+   "set": {
+    "known_text": "I want twenty minutes with you",
+    "target_text": "eu quero vinte minutos com você",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01B03",
+   "expect": {
+    "known_text": "yes, I want twenty",
+    "target_text": "sim, eu quero vinte"
+   },
+   "set": {
+    "known_text": "I want twenty new words",
+    "target_text": "eu quero vinte palavras novas",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01U01",
+   "expect": {
+    "known_text": "it seems I want twenty",
+    "target_text": "parece que eu quero vinte"
+   },
+   "set": {
+    "known_text": "I want twenty, if you can",
+    "target_text": "eu quero vinte, se você puder",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01U02",
+   "expect": {
+    "known_text": "you know I want twenty",
+    "target_text": "você sabe que eu quero vinte"
+   },
+   "set": {
+    "known_text": "I want twenty minutes to relax",
+    "target_text": "eu quero vinte minutos para relaxar",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01U03",
+   "expect": {
+    "known_text": "they know I want twenty",
+    "target_text": "eles sabem que eu quero vinte"
+   },
+   "set": {
+    "known_text": "I want twenty minutes alone",
+    "target_text": "eu quero vinte minutos sozinho",
+    "decomposition": null,
+    "word_count": 30,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01U04",
+   "expect": {
+    "known_text": "we want to know if I want twenty",
+    "target_text": "queremos saber se eu quero vinte"
+   },
+   "set": {
+    "known_text": "I want twenty new words a week",
+    "target_text": "eu quero vinte palavras novas por semana",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L01U05",
+   "expect": {
+    "known_text": "I think, I want twenty",
+    "target_text": "acho que eu quero vinte"
+   },
+   "set": {
+    "known_text": "I think I want twenty",
+    "target_text": "acho que eu quero vinte",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L02B02",
+   "expect": {
+    "known_text": "I want twenty boiled eggs now",
+    "target_text": "eu quero vinte ovos cozidos agora"
+   },
+   "set": {
+    "known_text": "twenty boiled eggs",
+    "target_text": "vinte ovos cozidos",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L02B03",
+   "expect": {
+    "known_text": "yes, boiled eggs",
+    "target_text": "sim, ovos cozidos"
+   },
+   "set": {
+    "known_text": "I don't like boiled eggs",
+    "target_text": "não gosto de ovos cozidos",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L02U02",
+   "expect": {
+    "known_text": "it seems I want twenty boiled eggs",
+    "target_text": "parece que eu quero vinte ovos cozidos"
+   },
+   "set": {
+    "known_text": "the dog likes boiled eggs",
+    "target_text": "o cachorro gosta de ovos cozidos",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L02U03",
+   "expect": {
+    "known_text": "you know I want twenty boiled eggs",
+    "target_text": "você sabe que eu quero vinte ovos cozidos"
+   },
+   "set": {
+    "known_text": "I'd like boiled eggs",
+    "target_text": "gostaria de ovos cozidos",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L02U04",
+   "expect": {
+    "known_text": "they know I want twenty boiled eggs",
+    "target_text": "eles sabem que eu quero vinte ovos cozidos"
+   },
+   "set": {
+    "known_text": "there are no boiled eggs",
+    "target_text": "não há ovos cozidos",
+    "decomposition": null,
+    "word_count": 19,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0586L02U05",
+   "expect": {
+    "known_text": "we want to know if I want twenty boiled eggs",
+    "target_text": "queremos saber se eu quero vinte ovos cozidos"
+   },
+   "set": {
+    "known_text": "do you want boiled eggs?",
+    "target_text": "você quer ovos cozidos?",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L01B03",
+   "expect": {
+    "known_text": "yes, she used to insist",
+    "target_text": "sim, ela costumava insistir"
+   },
+   "set": {
+    "known_text": "she used to insist on speaking Portuguese",
+    "target_text": "ela costumava insistir em falar português",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L01U01",
+   "expect": {
+    "known_text": "it seems she used to insist",
+    "target_text": "parece que ela costumava insistir"
+   },
+   "set": {
+    "known_text": "she used to insist on paying",
+    "target_text": "ela costumava insistir em pagar",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L01U02",
+   "expect": {
+    "known_text": "you know she used to insist",
+    "target_text": "você sabe que ela costumava insistir"
+   },
+   "set": {
+    "known_text": "she used to insist on doing everything",
+    "target_text": "ela costumava insistir em fazer tudo",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L01U03",
+   "expect": {
+    "known_text": "they know she used to insist",
+    "target_text": "eles sabem que ela costumava insistir"
+   },
+   "set": {
+    "known_text": "she used to insist on waking up early",
+    "target_text": "ela costumava insistir em acordar cedo",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L01U04",
+   "expect": {
+    "known_text": "I think she used to insist",
+    "target_text": "acho que ela costumava insistir"
+   },
+   "set": {
+    "known_text": "I think she used to insist on paying",
+    "target_text": "acho que ela costumava insistir em pagar",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L01U05",
+   "expect": {
+    "known_text": "she still used to insist",
+    "target_text": "ela ainda costumava insistir"
+   },
+   "set": {
+    "known_text": "she used to insist on taking the children",
+    "target_text": "ela costumava insistir em levar as crianças",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02B02",
+   "expect": {
+    "known_text": "she used to insist that we had now",
+    "target_text": "ela costumava insistir que comêssemos agora"
+   },
+   "set": {
+    "known_text": "she used to insist that we had boiled eggs",
+    "target_text": "ela costumava insistir que comêssemos ovos cozidos",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02B03",
+   "expect": {
+    "known_text": "yes, that we had",
+    "target_text": "sim, que comêssemos"
+   },
+   "set": {
+    "known_text": "that we had boiled eggs",
+    "target_text": "que comêssemos ovos cozidos",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02U01",
+   "expect": {
+    "known_text": "she used to insist that we had",
+    "target_text": "ela costumava insistir que comêssemos"
+   },
+   "set": {
+    "known_text": "she used to insist that we had something",
+    "target_text": "ela costumava insistir que comêssemos algo",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02U02",
+   "expect": {
+    "known_text": "it seems she used to insist that we had",
+    "target_text": "parece que ela costumava insistir que comêssemos"
+   },
+   "set": {
+    "known_text": "my mother used to insist that we had boiled eggs",
+    "target_text": "a minha mãe costumava insistir que comêssemos ovos cozidos",
+    "decomposition": null,
+    "word_count": 58,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02U03",
+   "expect": {
+    "known_text": "you know she used to insist that we had",
+    "target_text": "você sabe que ela costumava insistir que comêssemos"
+   },
+   "set": {
+    "known_text": "she used to insist that we had something before leaving",
+    "target_text": "ela costumava insistir que comêssemos algo antes de sair",
+    "decomposition": null,
+    "word_count": 56,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02U04",
+   "expect": {
+    "known_text": "they know she used to insist that we had",
+    "target_text": "eles sabem que ela costumava insistir que comêssemos"
+   },
+   "set": {
+    "known_text": "she used to insist that we ate everything",
+    "target_text": "ela costumava insistir que comêssemos tudo",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L02U05",
+   "expect": {
+    "known_text": "I think she used to insist that we had",
+    "target_text": "acho que ela costumava insistir que comêssemos"
+   },
+   "set": {
+    "known_text": "my mother used to insist that we had something",
+    "target_text": "a minha mãe costumava insistir que comêssemos algo",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L03B02",
+   "expect": {
+    "known_text": "we had eggs for supper",
+    "target_text": "comêssemos ovos ao jantar"
+   },
+   "set": {
+    "known_text": "I want eggs for supper",
+    "target_text": "eu quero ovos ao jantar",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L03B03",
+   "expect": {
+    "known_text": "yes, eggs for supper",
+    "target_text": "sim, ovos ao jantar"
+   },
+   "set": {
+    "known_text": "eggs for supper again",
+    "target_text": "ovos ao jantar outra vez",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L03U02",
+   "expect": {
+    "known_text": "it seems she used to insist that we had eggs for supper",
+    "target_text": "parece que ela costumava insistir que comêssemos ovos ao jantar"
+   },
+   "set": {
+    "known_text": "my mother used to insist that we had eggs for supper",
+    "target_text": "a minha mãe costumava insistir que comêssemos ovos ao jantar",
+    "decomposition": null,
+    "word_count": 60,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L03U03",
+   "expect": {
+    "known_text": "you know she used to insist that we had eggs for supper",
+    "target_text": "você sabe que ela costumava insistir que comêssemos ovos ao jantar"
+   },
+   "set": {
+    "known_text": "I don't want eggs for supper",
+    "target_text": "não quero ovos ao jantar",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L03U04",
+   "expect": {
+    "known_text": "they know she used to insist that we had eggs for supper",
+    "target_text": "eles sabem que ela costumava insistir que comêssemos ovos ao jantar"
+   },
+   "set": {
+    "known_text": "do you want eggs for supper?",
+    "target_text": "você quer ovos ao jantar?",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0587L03U05",
+   "expect": {
+    "known_text": "I think she used to insist that we had eggs for supper",
+    "target_text": "acho que ela costumava insistir que comêssemos ovos ao jantar"
+   },
+   "set": {
+    "known_text": "we had to eat eggs for supper",
+    "target_text": "nós tivemos que comer ovos ao jantar",
+    "decomposition": null,
+    "word_count": 36,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01B02",
+   "expect": {
+    "known_text": "so I wanted it",
+    "target_text": "por isso eu queria isso"
+   },
+   "set": {
+    "known_text": "so I wanted to help",
+    "target_text": "por isso eu queria ajudar",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01B03",
+   "expect": {
+    "known_text": "yes, so I wanted",
+    "target_text": "sim, por isso eu queria"
+   },
+   "set": {
+    "known_text": "so I wanted to learn Portuguese",
+    "target_text": "por isso eu queria aprender português",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01U01",
+   "expect": {
+    "known_text": "it seems, so I wanted",
+    "target_text": "parece que por isso eu queria"
+   },
+   "set": {
+    "known_text": "I was tired, so I wanted to sleep",
+    "target_text": "eu estava cansado, por isso eu queria dormir",
+    "decomposition": null,
+    "word_count": 44,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01U02",
+   "expect": {
+    "known_text": "you know, so I wanted",
+    "target_text": "você sabe que por isso eu queria"
+   },
+   "set": {
+    "known_text": "it was late, so I wanted to go home",
+    "target_text": "era tarde, por isso eu queria ir para casa",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01U03",
+   "expect": {
+    "known_text": "they know, so I wanted",
+    "target_text": "eles sabem que por isso eu queria"
+   },
+   "set": {
+    "known_text": "it was difficult, so I wanted to try again",
+    "target_text": "era difícil, por isso eu queria tentar outra vez",
+    "decomposition": null,
+    "word_count": 48,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01U04",
+   "expect": {
+    "known_text": "I think, so I wanted",
+    "target_text": "acho que por isso eu queria"
+   },
+   "set": {
+    "known_text": "I didn't know, so I wanted to ask you",
+    "target_text": "eu não sabia, por isso eu queria te perguntar",
+    "decomposition": null,
+    "word_count": 45,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L01U05",
+   "expect": {
+    "known_text": "she said, so I wanted",
+    "target_text": "ela disse que por isso eu queria"
+   },
+   "set": {
+    "known_text": "it was my choice, so I wanted to stay",
+    "target_text": "era minha escolha, por isso eu queria ficar",
+    "decomposition": null,
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L02B02",
+   "expect": {
+    "known_text": "so I wanted to grow up and leave now",
+    "target_text": "por isso eu queria crescer e sair agora"
+   },
+   "set": {
+    "known_text": "I wanted to grow up and leave",
+    "target_text": "eu queria crescer e sair",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L02B03",
+   "expect": {
+    "known_text": "yes, to grow up and leave",
+    "target_text": "sim, crescer e sair"
+   },
+   "set": {
+    "known_text": "she wanted to grow up and leave",
+    "target_text": "ela queria crescer e sair",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L02U02",
+   "expect": {
+    "known_text": "it seems, so I wanted to grow up and leave",
+    "target_text": "parece que por isso eu queria crescer e sair"
+   },
+   "set": {
+    "known_text": "I wanted to grow up and leave the village",
+    "target_text": "eu queria crescer e sair da aldeia",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L02U03",
+   "expect": {
+    "known_text": "you know, so I wanted to grow up and leave",
+    "target_text": "você sabe que por isso eu queria crescer e sair"
+   },
+   "set": {
+    "known_text": "she wanted to grow up and leave the village",
+    "target_text": "ela queria crescer e sair da aldeia",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L02U04",
+   "expect": {
+    "known_text": "they know, so I wanted to grow up and leave",
+    "target_text": "eles sabem que por isso eu queria crescer e sair"
+   },
+   "set": {
+    "known_text": "I didn't want to grow up and leave",
+    "target_text": "eu não queria crescer e sair",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L02U05",
+   "expect": {
+    "known_text": "I think, so I wanted to grow up and leave",
+    "target_text": "acho que por isso eu queria crescer e sair"
+   },
+   "set": {
+    "known_text": "I just wanted to grow up and leave",
+    "target_text": "eu só queria crescer e sair",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L03B02",
+   "expect": {
+    "known_text": "leave home now",
+    "target_text": "sair de casa agora"
+   },
+   "set": {
+    "known_text": "to leave home",
+    "target_text": "sair de casa",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L03B03",
+   "expect": {
+    "known_text": "yes, away from home",
+    "target_text": "sim, de casa"
+   },
+   "set": {
+    "known_text": "before leaving home",
+    "target_text": "antes de sair de casa",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L03U02",
+   "expect": {
+    "known_text": "it seems, so I wanted to grow up and leave home",
+    "target_text": "parece que por isso eu queria crescer e sair de casa"
+   },
+   "set": {
+    "known_text": "I don't want to leave home",
+    "target_text": "não quero sair de casa",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L03U03",
+   "expect": {
+    "known_text": "you know, so I wanted to grow up and leave home",
+    "target_text": "você sabe que por isso eu queria crescer e sair de casa"
+   },
+   "set": {
+    "known_text": "she wanted to leave home",
+    "target_text": "ela queria sair de casa",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L03U04",
+   "expect": {
+    "known_text": "they know, so I wanted to grow up and leave home",
+    "target_text": "eles sabem que por isso eu queria crescer e sair de casa"
+   },
+   "set": {
+    "known_text": "it's difficult to leave home",
+    "target_text": "é difícil sair de casa",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0588L03U05",
+   "expect": {
+    "known_text": "I think, so I wanted to grow up and leave home",
+    "target_text": "acho que por isso eu queria crescer e sair de casa"
+   },
+   "set": {
+    "known_text": "I'm going to leave home early",
+    "target_text": "vou sair de casa cedo",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01B03",
+   "expect": {
+    "known_text": "yes, she told me",
+    "target_text": "sim, ela me disse"
+   },
+   "set": {
+    "known_text": "she told me the truth",
+    "target_text": "ela me disse a verdade",
+    "decomposition": null,
+    "word_count": 22,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U01",
+   "expect": {
+    "known_text": "it seems she told me",
+    "target_text": "parece que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me everything",
+    "target_text": "ela me disse tudo",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U02",
+   "expect": {
+    "known_text": "you know she told me",
+    "target_text": "você sabe que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me it was difficult",
+    "target_text": "ela me disse que era difícil",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U03",
+   "expect": {
+    "known_text": "they know she told me",
+    "target_text": "eles sabem que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me it was late",
+    "target_text": "ela me disse que era tarde",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U04",
+   "expect": {
+    "known_text": "I think she told me",
+    "target_text": "acho que ela me disse"
+   },
+   "set": {
+    "known_text": "she told me what happened",
+    "target_text": "ela me disse o que aconteceu",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L01U05",
+   "expect": {
+    "known_text": "we know she told me",
+    "target_text": "sabemos que ela me disse"
+   },
+   "set": {
+    "known_text": "I think she told me the truth",
+    "target_text": "acho que ela me disse a verdade",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02B02",
+   "expect": {
+    "known_text": "she told me she'd just seen now",
+    "target_text": "ela me disse que tinha acabado de ver agora"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the children",
+    "target_text": "ela me disse que tinha acabado de ver as crianças",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02B03",
+   "expect": {
+    "known_text": "yes, she'd just seen",
+    "target_text": "sim, que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the bus",
+    "target_text": "ela me disse que tinha acabado de ver o ônibus",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U01",
+   "expect": {
+    "known_text": "she told me she'd just seen",
+    "target_text": "ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen my mother",
+    "target_text": "ela me disse que tinha acabado de ver a minha mãe",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U02",
+   "expect": {
+    "known_text": "it seems she told me she'd just seen",
+    "target_text": "parece que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the mountains",
+    "target_text": "ela me disse que tinha acabado de ver as montanhas",
+    "decomposition": null,
+    "word_count": 50,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U03",
+   "expect": {
+    "known_text": "you know she told me she'd just seen",
+    "target_text": "você sabe que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she said she'd just seen my friend",
+    "target_text": "ela disse que tinha acabado de ver o meu amigo",
+    "decomposition": null,
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U04",
+   "expect": {
+    "known_text": "they know she told me she'd just seen",
+    "target_text": "eles sabem que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "I think she told me she'd just seen the bus",
+    "target_text": "acho que ela me disse que tinha acabado de ver o ônibus",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L02U05",
+   "expect": {
+    "known_text": "I think she told me she'd just seen",
+    "target_text": "acho que ela me disse que tinha acabado de ver"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen something interesting",
+    "target_text": "ela me disse que tinha acabado de ver algo interessante",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03B02",
+   "expect": {
+    "known_text": "just seen the last bus",
+    "target_text": "acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "I'm waiting for the last bus",
+    "target_text": "estou esperando o último ônibus",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03B03",
+   "expect": {
+    "known_text": "yes, the last bus",
+    "target_text": "sim, o último ônibus"
+   },
+   "set": {
+    "known_text": "the last bus goes to the beach",
+    "target_text": "o último ônibus vai até a praia",
+    "decomposition": null,
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03U02",
+   "expect": {
+    "known_text": "it seems she told me she'd just seen the last bus",
+    "target_text": "parece que ela me disse que tinha acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "she's waiting for the last bus",
+    "target_text": "ela está esperando o último ônibus",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03U03",
+   "expect": {
+    "known_text": "you know she told me she'd just seen the last bus",
+    "target_text": "você sabe que ela me disse que tinha acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "I'd like to know when the last bus is",
+    "target_text": "gostaria de saber quando é o último ônibus",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0589L03U04",
+   "expect": {
+    "known_text": "they know she told me she'd just seen the last bus",
+    "target_text": "eles sabem que ela me disse que tinha acabado de ver o último ônibus"
+   },
+   "set": {
+    "known_text": "the children are on the last bus",
+    "target_text": "as crianças estão no último ônibus",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01B02",
+   "expect": {
+    "known_text": "I myself saw that",
+    "target_text": "eu vi que"
+   },
+   "set": {
+    "known_text": "I saw the dog",
+    "target_text": "eu vi o cachorro",
+    "decomposition": null,
+    "word_count": 16,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01B03",
+   "expect": {
+    "known_text": "yes, I myself saw",
+    "target_text": "sim, eu vi"
+   },
+   "set": {
+    "known_text": "I saw the children",
+    "target_text": "eu vi as crianças",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U01",
+   "expect": {
+    "known_text": "it seems I myself saw",
+    "target_text": "parece que eu vi"
+   },
+   "set": {
+    "known_text": "I saw the church yesterday",
+    "target_text": "eu vi a igreja ontem",
+    "decomposition": null,
+    "word_count": 20,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U02",
+   "expect": {
+    "known_text": "you know I myself saw",
+    "target_text": "você sabe que eu vi"
+   },
+   "set": {
+    "known_text": "I saw the last bus",
+    "target_text": "eu vi o último ônibus",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U03",
+   "expect": {
+    "known_text": "they know I myself saw",
+    "target_text": "eles sabem que eu vi"
+   },
+   "set": {
+    "known_text": "I saw what happened",
+    "target_text": "eu vi o que aconteceu",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U04",
+   "expect": {
+    "known_text": "she said I myself saw",
+    "target_text": "ela disse que eu vi"
+   },
+   "set": {
+    "known_text": "I saw my friend at the hotel",
+    "target_text": "eu vi o meu amigo no hotel",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L01U05",
+   "expect": {
+    "known_text": "it's true that I myself saw",
+    "target_text": "é verdade que eu vi"
+   },
+   "set": {
+    "known_text": "I saw the children playing in the garden",
+    "target_text": "eu vi as crianças brincando no jardim",
+    "decomposition": null,
+    "word_count": 37,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03B03",
+   "expect": {
+    "known_text": "yes, leaving the station",
+    "target_text": "sim, saindo da estação"
+   },
+   "set": {
+    "known_text": "the bus leaving the station",
+    "target_text": "o ônibus saindo da estação",
+    "decomposition": null,
+    "word_count": 26,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U02",
+   "expect": {
+    "known_text": "it seems I saw the last bus leaving the station",
+    "target_text": "parece que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "I saw the children leaving the station",
+    "target_text": "eu vi as crianças saindo da estação",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U03",
+   "expect": {
+    "known_text": "you know I saw the last bus leaving the station",
+    "target_text": "você sabe que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "she saw me leaving the station",
+    "target_text": "ela me viu saindo da estação",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U04",
+   "expect": {
+    "known_text": "they know I saw the last bus leaving the station",
+    "target_text": "eles sabem que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "I can see the bus leaving the station",
+    "target_text": "eu consigo ver o ônibus saindo da estação",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0590L03U05",
+   "expect": {
+    "known_text": "she said I saw the last bus leaving the station",
+    "target_text": "ela disse que eu vi o último ônibus saindo da estação"
+   },
+   "set": {
+    "known_text": "she told me she'd just seen the last bus leaving the station",
+    "target_text": "ela me disse que tinha acabado de ver o último ônibus saindo da estação",
+    "decomposition": null,
+    "word_count": 71,
+    "lego_position": "end"
+   }
+  }
+ ]
+}

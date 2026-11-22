@@ -1,0 +1,437 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0538L01B04",
+    "seed_number": 538,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "I don't want to seem worried",
+    "target_text": "eu não quero parecer preocupado",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 31,
+    "lego_count": 6,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0538L02B04",
+    "seed_number": 538,
+    "lego_index": 2,
+    "position": 12,
+    "known_text": "she knows I don't care",
+    "target_text": "ela sabe que não me importo",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0539L01B04",
+    "seed_number": 539,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "but it's getting easier",
+    "target_text": "mas está ficando mais fácil",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 27,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0539L02B04",
+    "seed_number": 539,
+    "lego_index": 2,
+    "position": 9,
+    "known_text": "late in the evening",
+    "target_text": "tarde da noite",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 14,
+    "lego_count": 4,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01B02",
+   "expect": {
+    "known_text": "I don't want to seem now",
+    "target_text": "eu não quero parecer agora"
+   },
+   "set": {
+    "known_text": "I don't want to seem stupid",
+    "target_text": "eu não quero parecer estúpido",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01B03",
+   "expect": {
+    "known_text": "yes, I don't want to seem",
+    "target_text": "sim, eu não quero parecer"
+   },
+   "set": {
+    "known_text": "I don't want to seem tired",
+    "target_text": "eu não quero parecer cansado",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01U01",
+   "expect": {
+    "known_text": "she said I don't want to seem",
+    "target_text": "ela disse que eu não quero parecer"
+   },
+   "set": {
+    "known_text": "I don't want to seem stupid at the meeting",
+    "target_text": "eu não quero parecer estúpido na reunião",
+    "decomposition": null,
+    "word_count": 40,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01U02",
+   "expect": {
+    "known_text": "we know I don't want to seem",
+    "target_text": "sabemos que eu não quero parecer"
+   },
+   "set": {
+    "known_text": "I don't want to seem nervous",
+    "target_text": "eu não quero parecer nervoso",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01U03",
+   "expect": {
+    "known_text": "they said I don't want to seem",
+    "target_text": "disseram que eu não quero parecer"
+   },
+   "set": {
+    "known_text": "I don't want to seem worried, but I am",
+    "target_text": "eu não quero parecer preocupado, mas estou",
+    "decomposition": null,
+    "word_count": 42,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01U04",
+   "expect": {
+    "known_text": "I'm sure I don't want to seem",
+    "target_text": "tenho certeza de que eu não quero parecer"
+   },
+   "set": {
+    "known_text": "I don't want to seem too serious",
+    "target_text": "eu não quero parecer sério demais",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L01U05",
+   "expect": {
+    "known_text": "I still don't want to seem",
+    "target_text": "eu ainda não quero parecer"
+   },
+   "set": {
+    "known_text": "I don't want to seem as though I know everything",
+    "target_text": "eu não quero parecer que sei tudo",
+    "decomposition": null,
+    "word_count": 33,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L02B02",
+   "expect": {
+    "known_text": "I don't want to seem as though I don't care now",
+    "target_text": "eu não quero parecer que não me importo agora"
+   },
+   "set": {
+    "known_text": "it seems as though I don't care",
+    "target_text": "parece que não me importo",
+    "decomposition": null,
+    "word_count": 25,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L02B03",
+   "expect": {
+    "known_text": "yes, as though I don't care",
+    "target_text": "sim, que não me importo"
+   },
+   "set": {
+    "known_text": "he thinks I don't care",
+    "target_text": "ele acha que não me importo",
+    "decomposition": null,
+    "word_count": 27,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L02U02",
+   "expect": {
+    "known_text": "she said I don't want to seem as though I don't care",
+    "target_text": "ela disse que eu não quero parecer que não me importo"
+   },
+   "set": {
+    "known_text": "it seems as though I don't care, but I do",
+    "target_text": "parece que não me importo, mas me importo",
+    "decomposition": null,
+    "word_count": 41,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L02U03",
+   "expect": {
+    "known_text": "we know I don't want to seem as though I don't care",
+    "target_text": "sabemos que eu não quero parecer que não me importo"
+   },
+   "set": {
+    "known_text": "I don't want to seem as though I don't care about the children",
+    "target_text": "eu não quero parecer que não me importo com as crianças",
+    "decomposition": null,
+    "word_count": 55,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L02U04",
+   "expect": {
+    "known_text": "they said I don't want to seem as though I don't care",
+    "target_text": "disseram que eu não quero parecer que não me importo"
+   },
+   "set": {
+    "known_text": "she thinks I don't care about her",
+    "target_text": "ela acha que não me importo com ela",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0538L02U05",
+   "expect": {
+    "known_text": "I'm sure I don't want to seem as though I don't care",
+    "target_text": "tenho certeza de que eu não quero parecer que não me importo"
+   },
+   "set": {
+    "known_text": "my mother said I don't care",
+    "target_text": "minha mãe disse que não me importo",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L01B02",
+   "expect": {
+    "known_text": "but it's already getting",
+    "target_text": "mas já está ficando"
+   },
+   "set": {
+    "known_text": "but it's getting difficult",
+    "target_text": "mas está ficando difícil",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L01B03",
+   "expect": {
+    "known_text": "yes, but it's getting",
+    "target_text": "sim, mas está ficando"
+   },
+   "set": {
+    "known_text": "but it's getting better",
+    "target_text": "mas está ficando melhor",
+    "decomposition": null,
+    "word_count": 23,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L01U01",
+   "expect": {
+    "known_text": "she said, but it's getting late",
+    "target_text": "ela disse, mas está ficando tarde"
+   },
+   "set": {
+    "known_text": "I want to stay, but it's getting late",
+    "target_text": "eu quero ficar, mas está ficando tarde",
+    "decomposition": null,
+    "word_count": 38,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L01U02",
+   "expect": {
+    "known_text": "we know, but it's getting late",
+    "target_text": "sabemos, mas está ficando tarde"
+   },
+   "set": {
+    "known_text": "it was easy, but it's getting difficult",
+    "target_text": "era fácil, mas está ficando difícil",
+    "decomposition": null,
+    "word_count": 35,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L01U03",
+   "expect": {
+    "known_text": "I'm sure, but it's getting late",
+    "target_text": "tenho certeza, mas está ficando tarde"
+   },
+   "set": {
+    "known_text": "I'm learning slowly, but it's getting better",
+    "target_text": "estou aprendendo devagar, mas está ficando melhor",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L01U04",
+   "expect": {
+    "known_text": "they said, but it's getting late",
+    "target_text": "disseram, mas está ficando tarde"
+   },
+   "set": {
+    "known_text": "the work is hard, but it's getting easier",
+    "target_text": "o trabalho é difícil, mas está ficando mais fácil",
+    "decomposition": null,
+    "word_count": 49,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L02B02",
+   "expect": {
+    "known_text": "getting to a late hour",
+    "target_text": "ficando tarde"
+   },
+   "set": {
+    "known_text": "it's getting late",
+    "target_text": "está ficando tarde",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L02B03",
+   "expect": {
+    "known_text": "yes, late hour",
+    "target_text": "sim, tarde"
+   },
+   "set": {
+    "known_text": "too late",
+    "target_text": "tarde demais",
+    "decomposition": null,
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L02U03",
+   "expect": {
+    "known_text": "we know it's getting late",
+    "target_text": "sabemos que está ficando tarde"
+   },
+   "set": {
+    "known_text": "I woke up late today",
+    "target_text": "eu acordei tarde hoje",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0539L02U04",
+   "expect": {
+    "known_text": "they said it's getting late",
+    "target_text": "disseram que está ficando tarde"
+   },
+   "set": {
+    "known_text": "it's never too late to learn",
+    "target_text": "nunca é tarde demais para aprender",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  }
+ ]
+}

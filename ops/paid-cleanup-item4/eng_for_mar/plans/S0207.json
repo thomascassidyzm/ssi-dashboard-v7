@@ -1,0 +1,52 @@
+{
+ "seed": 207,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "तुम्ही ते केलंत",
+     "you've done it"
+    ],
+    "B04": [
+     "तुम्ही सगळं केलंत",
+     "you've done everything"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही ते आज केलंत",
+     "you've done it today"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "तुम्हाला काय करायला हवं होतं ते मला माहीत आहे",
+     "I know what you needed to do"
+    ],
+    "B04": [
+     "तुम्हाला तेच करायला हवं होतं",
+     "that's what you needed to do"
+    ],
+    "U02": [
+     "तुम्हाला जे करायला हवं होतं ते तुम्ही आज केलंत",
+     "you've done what you needed to do today"
+    ],
+    "U03": [
+     "तुम्हाला जे करायला हवं होतं ते तुम्ही वेळेत केलंत",
+     "you've done what you needed to do in time"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "आणि तुम्हाला जे करायला हवं होतं",
+     "and what you needed to do"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

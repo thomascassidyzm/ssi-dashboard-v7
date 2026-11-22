@@ -1,0 +1,324 @@
+{
+ "event_id": "8c9e2d57-1bb3-4c20-8666-3f087b678a0c",
+ "undo_file": "2026-11-18T15-12-10-299Z-8c9e2d57-1bb3-4c20-8666-3f087b678a0c.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L02B04",
+   "set": {
+    "known_text": "is it on the other side of that yellow line?",
+    "target_text": "é do outro lado daquela linha amarela?",
+    "word_count": 38,
+    "known_audio_id": "9c90963a-1a6f-40b7-b0c7-8b2a0929bf6e",
+    "target1_audio_id": "87466842-8e88-4ea1-83b4-2b2e11f284c1",
+    "target2_audio_id": "67b5ec92-4848-4199-bafd-6d9dfec345f2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L02U05",
+   "set": {
+    "known_text": "it's still on the other side of that yellow line",
+    "target_text": "ainda é do outro lado daquela linha amarela",
+    "word_count": 43,
+    "known_audio_id": "603e1daf-0e90-4ea9-ab4d-2c26520f2afc",
+    "target1_audio_id": "89563d18-c881-47b3-9ee5-5e5944d1f355",
+    "target2_audio_id": "3c9e1bef-dbb4-4c15-8716-7b06e320ec67"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L02U04",
+   "set": {
+    "known_text": "yes, it's on the other side of that yellow line",
+    "target_text": "sim, é do outro lado daquela linha amarela",
+    "word_count": 42,
+    "known_audio_id": "3c57222e-8a6b-47d3-ade4-422fe8d2195f",
+    "target1_audio_id": "cd355bcd-b1dc-4249-984d-0343d91eda4e",
+    "target2_audio_id": "7b60d9ef-fa04-437d-acae-b694c7257110"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L02U03",
+   "set": {
+    "known_text": "that's true, of that yellow line",
+    "target_text": "isso é verdade, daquela linha amarela",
+    "word_count": 37,
+    "known_audio_id": "028dea6e-4b74-4294-ba1b-7824bc621c78",
+    "target1_audio_id": "7665e48c-ab03-4c9e-9360-273bb66fb105",
+    "target2_audio_id": "7b9d4b9a-dc81-415e-b5bd-352144f9355e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L02U02",
+   "set": {
+    "known_text": "no, of that yellow line",
+    "target_text": "não, daquela linha amarela",
+    "word_count": 26,
+    "lego_position": "middle",
+    "known_audio_id": "0d5e5880-9388-441d-807c-87a0cc264b45",
+    "target1_audio_id": "9b53c785-b4e9-4cf3-8688-e630dfe7b636",
+    "target2_audio_id": "ad818722-5324-4727-8b4f-c609017f9071"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L02B03",
+   "set": {
+    "known_text": "yes, of that yellow line",
+    "target_text": "sim, daquela linha amarela",
+    "word_count": 26,
+    "known_audio_id": "947f5d42-8d26-4aed-87f5-8050ecb46b0d",
+    "target1_audio_id": "baed1a05-1af0-43b6-a55c-58d2d7f412cc",
+    "target2_audio_id": "4fd75f8f-e415-477b-b0de-24bfc8bc468c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01U05",
+   "set": {
+    "known_text": "it's still on the other side",
+    "target_text": "ainda é do outro lado",
+    "word_count": 21,
+    "lego_position": null,
+    "known_audio_id": "cb3eaf5b-9d29-4fc2-a05f-780412292504",
+    "target1_audio_id": "db1c66c2-9ce1-4d1f-9f01-f2091f8f05b4",
+    "target2_audio_id": "b80a54b9-16c8-42d4-bce1-047a8e77750f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01U04",
+   "set": {
+    "known_text": "yes, that's true, it's on the other side",
+    "target_text": "sim, isso é verdade, é do outro lado",
+    "word_count": 36,
+    "lego_position": null,
+    "known_audio_id": "9e7066f0-8bad-4eb8-9c95-e24042577fee",
+    "target1_audio_id": "0ed9e8b0-0526-4d57-8591-8d45fe1c595b",
+    "target2_audio_id": "4467d22f-d6f1-44da-863a-906c98cc1caf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01U03",
+   "set": {
+    "known_text": "I'm sure, it's on the other side",
+    "target_text": "tenho certeza, é do outro lado",
+    "word_count": 30,
+    "lego_position": null,
+    "known_audio_id": "14e52c77-3c5c-4b97-b4f5-7631fd156787",
+    "target1_audio_id": "76b25bee-0208-488d-a391-4ce898dc681e",
+    "target2_audio_id": "1fb0811b-5ca2-41ec-9987-ad2e8dccdb8b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01U02",
+   "set": {
+    "known_text": "that's true, it's on the other side",
+    "target_text": "isso é verdade, é do outro lado",
+    "word_count": 31,
+    "lego_position": null,
+    "known_audio_id": "058d16b2-a144-4d5a-8b92-1b85ea11212d",
+    "target1_audio_id": "33c90c21-bb11-4501-9891-fe67d1bd76a5",
+    "target2_audio_id": "b21f8a82-6835-470c-bf01-edd35b0d15b1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01U01",
+   "set": {
+    "known_text": "no, it's on the other side",
+    "target_text": "não, é do outro lado",
+    "word_count": 20,
+    "lego_position": null,
+    "known_audio_id": "50129739-8860-4412-aee3-7ac363aaab1c",
+    "target1_audio_id": "d743bc83-550d-4980-8062-5aeb0778cf67",
+    "target2_audio_id": "b5f49682-4829-4926-8596-856616c77abd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01B03",
+   "set": {
+    "known_text": "yes, it's on the other side",
+    "target_text": "sim, é do outro lado",
+    "word_count": 20,
+    "lego_position": null,
+    "known_audio_id": "191cfbd5-9aa6-41a9-bcaf-cef350e01510",
+    "target1_audio_id": "c09be872-9945-4497-bac4-b79997c35ab9",
+    "target2_audio_id": "8f290664-2017-4652-b793-65eb0a926c9b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0488L01B02",
+   "set": {
+    "known_text": "it's on the other side now",
+    "target_text": "é do outro lado agora",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "a4c00923-bc32-4b8e-8e95-d81e6777dec3",
+    "target1_audio_id": "265d5f5b-93bd-4062-b4bf-94d1715c9685",
+    "target2_audio_id": "e7a16797-8b25-48b9-b0cf-739ae3a4dcb5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L02U04",
+   "set": {
+    "known_text": "yes, it's under the bridge",
+    "target_text": "sim, é debaixo da ponte",
+    "word_count": 23,
+    "known_audio_id": "daf88c98-61ee-4c2f-9c11-63d8b3f0ca96",
+    "target1_audio_id": "7032e9b8-e7bf-43f5-965c-e565578e9eca",
+    "target2_audio_id": "bf21e59a-f0bf-4078-95d4-66bc3c660338"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L02U03",
+   "set": {
+    "known_text": "that's the bridge",
+    "target_text": "isso é da ponte",
+    "word_count": 15,
+    "known_audio_id": "485946c8-e424-430f-a06e-d2b110511d74",
+    "target1_audio_id": "225bea96-1bf3-427e-bc45-9831a0c6cae4",
+    "target2_audio_id": "f2afa411-c4ef-4848-ab1c-e4d894d1b5d4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L02U02",
+   "set": {
+    "known_text": "no, the bridge",
+    "target_text": "não, da ponte",
+    "word_count": 13,
+    "known_audio_id": "166f4a05-5238-40f0-88c5-490752dac345",
+    "target1_audio_id": "c6ebd3ee-b376-4f47-b0fe-6b1219f9c442",
+    "target2_audio_id": "4e75ee28-afe9-4fc0-a189-85adeca16b8d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L02B03",
+   "set": {
+    "known_text": "yes, the bridge",
+    "target_text": "sim, da ponte",
+    "word_count": 13,
+    "known_audio_id": "d96dead7-0651-4a24-9c33-d8c639424325",
+    "target1_audio_id": "213a1c61-632e-4ece-8fd9-55ec58dc8c61",
+    "target2_audio_id": "fcaa87f5-e02c-4eaa-b94a-0cebb881ac2a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01U05",
+   "set": {
+    "known_text": "it's still under",
+    "target_text": "ainda é debaixo",
+    "word_count": 15,
+    "lego_position": null,
+    "known_audio_id": "74ce81e0-14dc-41ed-ae46-2ad703b31de4",
+    "target1_audio_id": "28778c1a-a6b7-41d3-81fc-5a9e94e4a2e9",
+    "target2_audio_id": "0bfee8c1-77e5-44db-a94c-582044a19d0b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01U04",
+   "set": {
+    "known_text": "yes, that's true, it's under",
+    "target_text": "sim, isso é verdade, é debaixo",
+    "word_count": 30,
+    "lego_position": null,
+    "known_audio_id": "f8564043-9b69-49a8-a363-fc9788889c5d",
+    "target1_audio_id": "71b37b5c-038d-4ba2-8047-735826b325de",
+    "target2_audio_id": "77b605db-8de2-4c88-99d8-907fca0ae058"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01U03",
+   "set": {
+    "known_text": "I'm sure, it's under",
+    "target_text": "tenho certeza, é debaixo",
+    "word_count": 24,
+    "lego_position": null,
+    "known_audio_id": "2220fccf-dafb-4661-9a66-c5aee35f0437",
+    "target1_audio_id": "2312a1c1-e45b-4b7d-81a8-5fded2dd4dbd",
+    "target2_audio_id": "64ca3f27-d550-495d-aba4-9dd53f6a0f67"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01U02",
+   "set": {
+    "known_text": "that's true, it's under",
+    "target_text": "isso é verdade, é debaixo",
+    "word_count": 25,
+    "lego_position": null,
+    "known_audio_id": "f0c0d658-cb3b-4fd4-a574-09eda3df48ea",
+    "target1_audio_id": "ab19cc58-1458-43f4-b68c-38f79ee364d9",
+    "target2_audio_id": "2d76e1d3-983c-40b1-afed-e14517064ac5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01U01",
+   "set": {
+    "known_text": "no, it's under",
+    "target_text": "não, é debaixo",
+    "word_count": 14,
+    "lego_position": null,
+    "known_audio_id": "d4da7f36-010a-46a9-bced-8b370336628c",
+    "target1_audio_id": "d29f96be-c48c-4072-878e-f9ca9f65ecf9",
+    "target2_audio_id": "a6a8e61d-8715-4077-93a6-d2736019d7c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01B03",
+   "set": {
+    "known_text": "yes, it's under",
+    "target_text": "sim, é debaixo",
+    "word_count": 14,
+    "lego_position": null,
+    "known_audio_id": "0df34767-5098-45d0-afbf-22e990b41cf7",
+    "target1_audio_id": "7d42a65d-0d99-46e0-b682-1bdfe264b5b9",
+    "target2_audio_id": "1a4a35b7-d98a-4940-9c63-961fc8be8965"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0487L01B02",
+   "set": {
+    "known_text": "it's under now",
+    "target_text": "é debaixo agora",
+    "word_count": 15,
+    "known_audio_id": "4cf64ad2-a8af-40a7-bf61-192fac3dbf12",
+    "target1_audio_id": "ae7865ee-a9f6-4eb1-988b-326de03d1321",
+    "target2_audio_id": "d1a54bde-8c8d-44fc-b59f-48037dc45b44"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0488L02B05"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0488L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0487L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0487L01B04"
+  }
+ ]
+}

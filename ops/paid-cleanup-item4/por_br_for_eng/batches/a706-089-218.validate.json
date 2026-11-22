@@ -1,0 +1,56 @@
+{
+ "at": "2026-11-18T13:19:54.380Z",
+ "pass": true,
+ "seeds": [
+  {
+   "seed": 89,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "blocking": []
+  },
+  {
+   "seed": 114,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 119,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 134,
+   "issues": [
+    "L4: 4 phrase(s) fail containment",
+    "L4: BUILD: need 3+, got 1 (4 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "blocking": []
+  },
+  {
+   "seed": 167,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 178,
+   "issues": [
+    "L1: 5 phrase(s) fail containment",
+    "L1: USE: need 5+, got 0 (5 component phrases excluded)"
+   ],
+   "blocking": []
+  },
+  {
+   "seed": 188,
+   "issues": [],
+   "blocking": []
+  },
+  {
+   "seed": 218,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "blocking": []
+  }
+ ]
+}

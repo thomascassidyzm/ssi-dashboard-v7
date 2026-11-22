@@ -1,0 +1,394 @@
+{
+ "event_id": "c60e08c8-959d-4c97-b4eb-54f2d1687ee6",
+ "undo_file": "2026-11-18T15-22-46-596Z-c60e08c8-959d-4c97-b4eb-54f2d1687ee6.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0509L03U05",
+   "set": {
+    "known_text": "I'm sure, for a new bed",
+    "target_text": "tenho certeza, uma cama nova",
+    "known_audio_id": "08774bf4-001e-4672-a394-d9fa09e4f089",
+    "target1_audio_id": "aaf02ad0-d999-42f7-80c4-dcce64994157",
+    "target2_audio_id": "bd1ddccd-42a2-4bfa-aa7e-deb7bb04ce48"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0509L03U04",
+   "set": {
+    "known_text": "yes, I heard that you're going to pay for a new bed",
+    "target_text": "sim, eu ouvi dizer que você vai pagar uma cama nova",
+    "word_count": 51,
+    "lego_position": "end",
+    "known_audio_id": "c22ecaa0-79d8-4fbc-a28c-9af7de13a906",
+    "target1_audio_id": "0fd76280-3fb3-4cb9-a3eb-1c444e6142b2",
+    "target2_audio_id": "e132c4e0-b6f9-46d8-9dbc-a578deb2483a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0509L03U03",
+   "set": {
+    "known_text": "that's true, for a new bed",
+    "target_text": "isso é verdade, uma cama nova",
+    "word_count": 29,
+    "known_audio_id": "6be7ef39-53d8-4a73-bd25-b6b3397d625e",
+    "target1_audio_id": "adc0146a-95ea-430d-a995-276dd1b55abb",
+    "target2_audio_id": "4d97ab64-4bd1-43d6-ad45-c70aebd882e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0509L03U02",
+   "set": {
+    "known_text": "no, for a new bed",
+    "target_text": "não, uma cama nova",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "27d12e38-6133-4d2f-aa9a-025d3f1c9341",
+    "target1_audio_id": "163f6db4-21ba-4a1e-a415-327410dc625f",
+    "target2_audio_id": "3031bb7d-a163-4292-b097-87716e922ae9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0509L03B03",
+   "set": {
+    "known_text": "yes, for a new bed",
+    "target_text": "sim, uma cama nova",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "2204fc5e-d78f-4e51-b958-14e803a44882",
+    "target1_audio_id": "80116aa5-6332-4e8e-8214-1284b5a3ff2b",
+    "target2_audio_id": "4361aa18-3452-42c5-a035-fc52fff3d21e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L04U05",
+   "set": {
+    "known_text": "I'm sure, you're going to pay",
+    "target_text": "tenho certeza, você vai pagar",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "2968edbd-1fa9-46a1-91e2-eb39b6378548",
+    "target1_audio_id": "5f25a7e9-c1b0-4d68-81dd-be92ee7031c2",
+    "target2_audio_id": "c32211fd-c921-4813-b391-d138a5769ed8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L04U04",
+   "set": {
+    "known_text": "yes, there's no point worrying about how you're going to pay",
+    "target_text": "sim, não vale a pena se preocupar com a maneira como você vai pagar",
+    "word_count": 67,
+    "lego_position": "end",
+    "known_audio_id": "2e6b16d2-a832-4c44-8ea6-cadcf541eaf0",
+    "target1_audio_id": "4acb4ff9-e674-4279-8f7e-212e51fee94d",
+    "target2_audio_id": "44e0bcb4-c257-4f51-a595-a8f70416066e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L04U03",
+   "set": {
+    "known_text": "that's true, you're going to pay",
+    "target_text": "isso é verdade, você vai pagar",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "6995b810-2054-48a6-abd3-10eb5056f69b",
+    "target1_audio_id": "5fcf58aa-d051-4e5b-93c4-4d1e59a1c6a8",
+    "target2_audio_id": "22101a48-0f15-4c08-a48e-ee8f8fcfbf5f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L04U02",
+   "set": {
+    "known_text": "no, you're going to pay",
+    "target_text": "não, você vai pagar",
+    "word_count": 19,
+    "known_audio_id": "0432c0d8-5db2-4994-949e-651d19ac490e",
+    "target1_audio_id": "7b71614c-783b-4ec3-961b-77bdc4e70fe0",
+    "target2_audio_id": "cf97303b-735a-4622-a80e-6521dd8757b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L04B03",
+   "set": {
+    "known_text": "yes, you're going to pay",
+    "target_text": "sim, você vai pagar",
+    "word_count": 19,
+    "known_audio_id": "e7cb86af-a0a8-44b4-9302-5377ef4cb6ff",
+    "target1_audio_id": "5428b43c-ef11-4eb2-8b5d-62284e76bf16",
+    "target2_audio_id": "b003546f-dc48-4d7e-8384-8f81ab4d0248"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L03U05",
+   "set": {
+    "known_text": "there's no point worrying about the way",
+    "target_text": "não vale a pena se preocupar com a maneira como",
+    "word_count": 47,
+    "known_audio_id": "209579e3-e836-4413-8511-b3a3d8c57979",
+    "target1_audio_id": "2404baab-d136-4713-909b-f62a7f344837",
+    "target2_audio_id": "478ab4fd-31a8-473a-b297-8de890d065e5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L03U04",
+   "set": {
+    "known_text": "yes, worrying about the way",
+    "target_text": "sim, se preocupar com a maneira como",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "5fd4dc8a-68a2-453f-a3b3-97a9d1ddd569",
+    "target1_audio_id": "5cd213df-c69a-4f06-b098-e284b61895bb",
+    "target2_audio_id": "fc4ecf3a-1307-45b9-a995-515ffcc514ad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L03U03",
+   "set": {
+    "known_text": "I'm sure, the manner that",
+    "target_text": "tenho certeza, a maneira como",
+    "word_count": 29,
+    "lego_position": "end",
+    "known_audio_id": "a6bc10db-3145-4e56-a910-4e3cf273e2e2",
+    "target1_audio_id": "c4f6886b-0d49-42f1-afa8-868b459a0458",
+    "target2_audio_id": "ed6d00e3-6e20-4434-80f0-42fbca01340c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L03U02",
+   "set": {
+    "known_text": "that's true, the manner that",
+    "target_text": "isso é verdade, a maneira como",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "5ffeb895-f515-41dd-8962-f4369d02a820",
+    "target1_audio_id": "8d70ef83-fcb2-4563-b410-deb53f941d2d",
+    "target2_audio_id": "7d38c832-57d9-4683-bb9e-ce20a4ab02b7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L03U01",
+   "set": {
+    "known_text": "no, the manner that",
+    "target_text": "não, a maneira como",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "49c66d85-a6d1-4435-b659-e3305249eb8c",
+    "target1_audio_id": "bce69ced-03d0-45fb-be70-290262b49b21",
+    "target2_audio_id": "e940ed64-50f4-4baf-8680-f69800267a7b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L03B03",
+   "set": {
+    "known_text": "yes, the manner that",
+    "target_text": "sim, a maneira como",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "cee5274d-7ddf-4932-98f0-fa80b96c7fb7",
+    "target1_audio_id": "8200cfd0-ec0a-4ba6-bfef-395d07eb96cb",
+    "target2_audio_id": "bd66cffd-7f0b-429a-b973-4c4e9256d367"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L02U05",
+   "set": {
+    "known_text": "there's still no point worrying about",
+    "target_text": "ainda não vale a pena se preocupar com",
+    "word_count": 38,
+    "lego_position": "end",
+    "known_audio_id": "839ed620-e240-4bb8-84fa-162d1880fe60",
+    "target1_audio_id": "fa12cf8d-5f81-4bef-a82c-e245c0647703",
+    "target2_audio_id": "bd845ee7-a69a-4828-9ab5-9a6e666ce876"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L02U04",
+   "set": {
+    "known_text": "yes, there's no point worrying about",
+    "target_text": "sim, não vale a pena se preocupar com",
+    "word_count": 37,
+    "lego_position": "end",
+    "known_audio_id": "17894e06-1533-4e2c-9eaf-086bedf9c3b3",
+    "target1_audio_id": "5129f765-90df-4c62-a6f4-4296e6dcd311",
+    "target2_audio_id": "e557986f-d14c-4df5-bc69-a845b7083c5d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L02U03",
+   "set": {
+    "known_text": "I'm sure, worrying about",
+    "target_text": "tenho certeza, se preocupar com",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "87f7569c-064a-4954-b3b2-03070cd7e809",
+    "target1_audio_id": "d9d3bafc-f63d-4ca0-bb66-21804564c646",
+    "target2_audio_id": "1a8bfafb-7ece-4386-aba9-f5cda88363f9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L02U02",
+   "set": {
+    "known_text": "that's true, worrying about",
+    "target_text": "isso é verdade, se preocupar com",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "2215fd55-0d76-4c39-9948-ff62950d0af3",
+    "target1_audio_id": "c536c7be-2dbf-40e8-a26e-f75af188ef79",
+    "target2_audio_id": "bf854a06-81bf-4a19-a3fd-b54d9e1b4691"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L02U01",
+   "set": {
+    "known_text": "no, worrying about",
+    "target_text": "não, se preocupar com",
+    "word_count": 21,
+    "known_audio_id": "5b8822e0-3ab7-4568-a0fe-fdf16cb77167",
+    "target1_audio_id": "f12e1e4e-32fd-4829-99f3-5a29463d5547",
+    "target2_audio_id": "7f98d471-0b8c-439d-b636-3aaacae3d51b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L02B03",
+   "set": {
+    "known_text": "yes, worrying about",
+    "target_text": "sim, se preocupar com",
+    "word_count": 21,
+    "known_audio_id": "6f0a9eb2-5b8c-41a7-9783-682a459bbf2d",
+    "target1_audio_id": "51d6f078-c514-4788-b6b1-9f77407da131",
+    "target2_audio_id": "c81006a3-b162-4d75-9bd7-207b2f9080fb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01U05",
+   "set": {
+    "known_text": "there's still no point",
+    "target_text": "ainda não vale a pena",
+    "word_count": 21,
+    "known_audio_id": "ec37179f-c8a6-49b0-9444-1584fa184c96",
+    "target1_audio_id": "354f14e2-38e2-458b-9438-8c00e41ea3b8",
+    "target2_audio_id": "07e469ed-a2d5-48cf-beed-ac2cec4e4bc0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01U04",
+   "set": {
+    "known_text": "yes, that's true, there's no point",
+    "target_text": "sim, isso é verdade, não vale a pena",
+    "word_count": 36,
+    "lego_position": "end",
+    "known_audio_id": "842b4aa3-e5c6-4b8a-b1af-2b9ba70c7895",
+    "target1_audio_id": "a7c31980-68ca-43a3-ab9f-7949ecc68fb3",
+    "target2_audio_id": "a3fae779-f84d-4bf9-942a-955449f37957"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01U03",
+   "set": {
+    "known_text": "I'm sure, there's no point",
+    "target_text": "tenho certeza, não vale a pena",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "c85a75f8-5c10-49de-b5ea-f21bedfd3959",
+    "target1_audio_id": "74715440-c76a-4c85-970e-9ef4e20b3ab4",
+    "target2_audio_id": "c4a7d0cb-2a41-4ef6-a05c-37a227f226cf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01U02",
+   "set": {
+    "known_text": "that's true, there's no point",
+    "target_text": "isso é verdade, não vale a pena",
+    "word_count": 31,
+    "lego_position": "end",
+    "known_audio_id": "821b670d-5a6d-4b0b-90a3-efb9505c8aa5",
+    "target1_audio_id": "53660449-11bb-45d1-8279-20cd390bc12e",
+    "target2_audio_id": "57f3249c-e9d3-445b-b9b1-7617cf701a0d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01U01",
+   "set": {
+    "known_text": "no, there's no point",
+    "target_text": "não, não vale a pena",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "f5fd69b7-362b-47e8-b96c-680ff33479f0",
+    "target1_audio_id": "3fb82230-4fbf-468c-b916-7be36c7474b9",
+    "target2_audio_id": "772670a7-243d-4ced-9958-7d163f0ebb25"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01B03",
+   "set": {
+    "known_text": "yes, there's no point",
+    "target_text": "sim, não vale a pena",
+    "word_count": 20,
+    "lego_position": "middle",
+    "known_audio_id": "2e5efdc2-33c7-4c0b-b0f7-46b1644eaed3",
+    "target1_audio_id": "e032d876-cc1c-4ba3-9698-7af393b0b92c",
+    "target2_audio_id": "89405ba3-af11-4db3-880b-86d920572370"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0508L01B02",
+   "set": {
+    "known_text": "there's no point now",
+    "target_text": "não vale a pena agora",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "ac1c1ff2-4f28-47dc-a0cf-d1ad28f82841",
+    "target1_audio_id": "8a467481-8bcc-43dc-8d29-320635d2a964",
+    "target2_audio_id": "6d704b39-eb24-49bd-9f14-f33a8820ba07"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0509L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0508L04B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0508L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0508L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0508L01B04"
+  }
+ ]
+}

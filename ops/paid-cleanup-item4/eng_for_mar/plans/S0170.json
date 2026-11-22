@@ -1,0 +1,60 @@
+{
+ "seed": 170,
+ "legos": {
+  "L01": {
+   "update": {
+    "B03": [
+     "मला माहीत आहे तुम्हाला काय लागेल",
+     "I know what you need"
+    ],
+    "B04": [
+     "तुम्हाला काय लागेल ते मला शोधून काढायचं आहे",
+     "I want to find out what you need"
+    ],
+    "U04": [
+     "मला खात्री नाही तुम्हाला काय लागेल",
+     "I'm not sure what you need"
+    ],
+    "U05": [
+     "कारण मला माहित नाही तुम्हाला काय लागेल",
+     "because I don't know what you need"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्हाला आज काय लागेल",
+     "what you need today"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B04": [
+     "तुम्ही मला आता सांगावं असं मला वाटतं",
+     "I'd like you to tell me now"
+    ],
+    "U02": [
+     "तुम्ही मला त्याचं नाव सांगावं असं मला वाटतं",
+     "I'd like you to tell me his name"
+    ],
+    "U04": [
+     "उत्तर काय आहे ते तुम्ही मला सांगावं असं मला वाटतं",
+     "I'd like you to tell me what the answer is"
+    ],
+    "U05": [
+     "तुम्ही मला तिचं नाव सांगावं असं मला वाटतं",
+     "I'd like you to tell me her name"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "तुम्ही मला उद्या सांगावं असं मला वाटतं",
+     "I'd like you to tell me tomorrow"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks"
+}

@@ -1,0 +1,301 @@
+{
+ "ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0309L01B04",
+    "seed_number": 309,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I've never seen her here",
+    "target_text": "eu nunca a vi aqui",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 18,
+    "lego_count": 5,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0343L01B04",
+    "seed_number": 343,
+    "lego_index": 1,
+    "position": 11,
+    "known_text": "but she's concerned",
+    "target_text": "mas está preocupada",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 3,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0345L01B04",
+    "seed_number": 345,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "but he's not ready",
+    "target_text": "mas não está pronto",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 19,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0367L01B04",
+    "seed_number": 367,
+    "lego_index": 1,
+    "position": 13,
+    "known_text": "but nobody told me",
+    "target_text": "mas ninguém me disse",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 20,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0375L01B04",
+    "seed_number": 375,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "but I didn't know",
+    "target_text": "mas eu não sabia",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 16,
+    "lego_count": 4,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "por_br_for_eng:S0406L02B04",
+    "seed_number": 406,
+    "lego_index": 2,
+    "position": 13,
+    "known_text": "it will turn out okay tomorrow",
+    "target_text": "vai correr bem amanhã",
+    "phrase_role": "build",
+    "introduce": true,
+    "connected_lego_ids": [],
+    "status": "draft",
+    "metadata": {
+     "format": "build_use",
+     "pipeline": "cs700-item4-backfill"
+    },
+    "word_count": 21,
+    "lego_count": 6,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0309L01B02",
+   "expect": {
+    "known_text": "no, never seen her",
+    "target_text": "não, nunca a vi"
+   },
+   "set": {
+    "known_text": "but I've never seen her",
+    "target_text": "mas eu nunca a vi",
+    "decomposition": null,
+    "word_count": 17,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0309L01U02",
+   "expect": {
+    "known_text": "yes, I've never seen her before",
+    "target_text": "sim, eu nunca a vi antes"
+   },
+   "set": {
+    "known_text": "I've never seen her with him",
+    "target_text": "eu nunca a vi com ele",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0343L01U03",
+   "expect": {
+    "known_text": "yes, she's concerned",
+    "target_text": "sim, está preocupada"
+   },
+   "set": {
+    "known_text": "she said that she's concerned",
+    "target_text": "ela disse que está preocupada",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0345L01U02",
+   "expect": {
+    "known_text": "yes, he's not ready",
+    "target_text": "sim, não está pronto"
+   },
+   "set": {
+    "known_text": "he said that he's not ready",
+    "target_text": "ele disse que não está pronto",
+    "decomposition": null,
+    "word_count": 29,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0367L01U03",
+   "expect": {
+    "known_text": "yes, nobody told me",
+    "target_text": "sim, ninguém me disse"
+   },
+   "set": {
+    "known_text": "nobody told me where it was",
+    "target_text": "ninguém me disse onde estava",
+    "decomposition": null,
+    "word_count": 28,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0375L01U04",
+   "expect": {
+    "known_text": "yes, I didn't know",
+    "target_text": "sim, eu não sabia"
+   },
+   "set": {
+    "known_text": "I didn't know where it was",
+    "target_text": "eu não sabia onde estava",
+    "decomposition": null,
+    "word_count": 24,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0380L01B02",
+   "expect": {
+    "known_text": "I asked what happened",
+    "target_text": "perguntei o que estava acontecendo"
+   },
+   "set": {
+    "known_text": "I asked what was happening",
+    "target_text": "perguntei o que estava acontecendo",
+    "decomposition": null,
+    "word_count": 34,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0380L01U01",
+   "expect": {
+    "known_text": "yes, I asked",
+    "target_text": "sim, perguntei"
+   },
+   "set": {
+    "known_text": "I asked where it was",
+    "target_text": "perguntei onde estava",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0380L01U04",
+   "expect": {
+    "known_text": "no, I asked",
+    "target_text": "não, perguntei"
+   },
+   "set": {
+    "known_text": "I asked her name",
+    "target_text": "perguntei o nome dela",
+    "decomposition": null,
+    "word_count": 21,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0389L01U03",
+   "expect": {
+    "known_text": "yes, that person over there",
+    "target_text": "sim, aquela pessoa ali"
+   },
+   "set": {
+    "known_text": "I don't know that person over there",
+    "target_text": "eu não conheço aquela pessoa ali",
+    "decomposition": null,
+    "word_count": 32,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0406L02B03",
+   "expect": {
+    "known_text": "yes, it will turn out okay",
+    "target_text": "sim, vai correr bem"
+   },
+   "set": {
+    "known_text": "but it will turn out okay",
+    "target_text": "mas vai correr bem",
+    "decomposition": null,
+    "word_count": 18,
+    "lego_position": "middle"
+   }
+  }
+ ]
+}

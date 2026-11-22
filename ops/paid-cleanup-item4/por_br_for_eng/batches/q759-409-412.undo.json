@@ -1,0 +1,413 @@
+{
+ "event_id": "e4ab7b21-6aec-45f6-98a1-1940ed0b84bb",
+ "undo_file": "2026-11-18T15-01-49-113Z-e4ab7b21-6aec-45f6-98a1-1940ed0b84bb.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03U05",
+   "set": {
+    "known_text": "no, I want to win",
+    "target_text": "não, eu quero ganhar",
+    "word_count": 20,
+    "known_audio_id": "296c1651-7160-4ecb-b20a-6cfb3a2c584c",
+    "target1_audio_id": "3bbe2c05-76d9-44e7-99c4-06ee7ca69601",
+    "target2_audio_id": "e4aa2fdd-b9f3-4469-af23-ae740a5920c7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03U02",
+   "set": {
+    "known_text": "yes, I want to win",
+    "target_text": "sim, eu quero ganhar",
+    "word_count": 20,
+    "known_audio_id": "9284813f-4512-4a38-b406-7f1f4cd59d86",
+    "target1_audio_id": "51ff339d-3f34-4e1e-9bcc-67b2f4259be6",
+    "target2_audio_id": "c3d793d4-2880-4042-8a6a-67170f77aa6c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03B03",
+   "set": {
+    "known_text": "to win today",
+    "target_text": "ganhar hoje",
+    "word_count": 11,
+    "lego_position": "start",
+    "known_audio_id": "3f02353b-97f6-45ec-892e-4d15eb1303f9",
+    "target1_audio_id": "29ce0f05-bc23-4854-940c-926584e1c0b0",
+    "target2_audio_id": "f4d2f207-be45-45ee-ac23-4e1d18c6ab19"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L03B02",
+   "set": {
+    "known_text": "to win now",
+    "target_text": "ganhar agora",
+    "word_count": 12,
+    "lego_position": "start",
+    "known_audio_id": "7d27c3e2-d3f7-408d-8d99-b599d79d47dd",
+    "target1_audio_id": "cf8b2e11-a2f4-47fd-8106-dfa55330f290",
+    "target2_audio_id": "be3eecd8-c0cd-4547-8f01-159502f711d2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L02U05",
+   "set": {
+    "known_text": "we couldn't allow them now",
+    "target_text": "nós não podíamos deixá-los agora",
+    "word_count": 32,
+    "lego_position": "end",
+    "known_audio_id": "54bb7b68-52f8-4a3e-b3cd-69d4fb3874c2",
+    "target1_audio_id": "388dc243-8ab5-4494-a3a6-7b06f98c43da",
+    "target2_audio_id": "bf8c73a4-7212-40d2-b1f0-f62742a139b3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L02U04",
+   "set": {
+    "known_text": "yes, we couldn't allow them to reserve",
+    "target_text": "sim, nós não podíamos deixá-los reservar",
+    "word_count": 40,
+    "lego_position": "middle",
+    "known_audio_id": "aa2fb900-6972-4282-acd0-3895cdd05dc2",
+    "target1_audio_id": "359e07ea-842d-4337-b340-b3fb6a6b1733",
+    "target2_audio_id": "c4a55fb2-cf32-4f10-b50a-014a680c5a3f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L02B03",
+   "set": {
+    "known_text": "yes, allow them",
+    "target_text": "sim, deixá-los",
+    "word_count": 14,
+    "known_audio_id": "75916253-8187-4c94-a961-665f52674ae9",
+    "target1_audio_id": "a9a14489-1f4f-48c5-827b-c1b2c50cf341",
+    "target2_audio_id": "2914a7da-fec3-4010-af24-8f1f5d2425b2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L01U05",
+   "set": {
+    "known_text": "we couldn't reserve now",
+    "target_text": "nós não podíamos reservar agora",
+    "word_count": 31,
+    "known_audio_id": "fc59830a-fc91-41c8-85dd-49423c1188ba",
+    "target1_audio_id": "8bd36a7c-b4de-48f4-9396-216525bd390d",
+    "target2_audio_id": "b26d7249-b7d8-4dc8-aae8-2056c472f33c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L01U04",
+   "set": {
+    "known_text": "yes, we couldn't speak",
+    "target_text": "sim, nós não podíamos falar",
+    "word_count": 27,
+    "lego_position": "middle",
+    "known_audio_id": "0a6f9f6a-d007-442a-807e-3e38c54106d5",
+    "target1_audio_id": "216335ff-ea72-42a3-8158-143fec8ab711",
+    "target2_audio_id": "b4927ad8-be2d-40ef-b2ad-bb08ab480e43"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0412L01U01",
+   "set": {
+    "known_text": "no, we couldn't",
+    "target_text": "não, nós não podíamos",
+    "word_count": 21,
+    "known_audio_id": "fe09443f-b6b8-471b-98b2-e9ab7ed65e64",
+    "target1_audio_id": "9e802a3d-0f77-4668-ba2c-7a46ab873a85",
+    "target2_audio_id": "2f499644-c7fe-4dd4-b91c-bfcf5ac1e98c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02U05",
+   "set": {
+    "known_text": "I want to reserve now",
+    "target_text": "eu quero reservar agora",
+    "word_count": 23,
+    "known_audio_id": "643e00ae-9d8f-4914-ae7c-f6f4f09d424b",
+    "target1_audio_id": "cb88a8fa-ffc6-4d00-b18a-73f9621b967a",
+    "target2_audio_id": "9eaaf224-2567-43a3-83e5-68975862076c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02U04",
+   "set": {
+    "known_text": "no, I want to reserve",
+    "target_text": "não, eu quero reservar",
+    "word_count": 22,
+    "lego_position": "end",
+    "known_audio_id": "50003d16-e459-4971-bd78-020b814de304",
+    "target1_audio_id": "0d15f37c-c132-49b1-a2c8-5b2082ce3516",
+    "target2_audio_id": "c600aeb0-dac6-4b6a-ada9-144de38b0f4c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02U02",
+   "set": {
+    "known_text": "yes, I want to reserve",
+    "target_text": "sim, eu quero reservar",
+    "word_count": 22,
+    "known_audio_id": "ac2d9cbb-5761-4dcd-b2a0-898ff373aa36",
+    "target1_audio_id": "1f3972d2-0bb5-47d9-a897-1279bf99aaba",
+    "target2_audio_id": "245b10c1-9347-49aa-8e37-763ba9bc38cc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02B03",
+   "set": {
+    "known_text": "to reserve today",
+    "target_text": "reservar hoje",
+    "word_count": 13,
+    "lego_position": "start",
+    "known_audio_id": "98348790-9c64-4c68-9abd-a93c8461cd0c",
+    "target1_audio_id": "68177eef-16ed-4492-9d73-86d0b8c876a6",
+    "target2_audio_id": "119d66c0-610d-4d8e-b82a-ec73f7beaefd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0411L02B02",
+   "set": {
+    "known_text": "to reserve now",
+    "target_text": "reservar agora",
+    "word_count": 14,
+    "lego_position": "start",
+    "known_audio_id": "4a2fcc94-7342-4107-8d80-d7e6a3a4c4e1",
+    "target1_audio_id": "5b4b5763-5586-4cd6-be28-1e2170226abf",
+    "target2_audio_id": "5ea9ba76-8079-4472-8444-7fec1b36ca29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U05",
+   "set": {
+    "known_text": "they still fight, that's true",
+    "target_text": "eles ainda lutam, isso é verdade",
+    "word_count": 32,
+    "known_audio_id": "1185e464-e50b-4d73-88a9-489f607cc1c4",
+    "target1_audio_id": "18cc1cc6-76d6-443d-9b5f-24dc2304500a",
+    "target2_audio_id": "274cb52d-2ad5-4c4c-8587-98e8911f1ae1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U04",
+   "set": {
+    "known_text": "they still fight, I'm sure",
+    "target_text": "eles ainda lutam, tenho certeza",
+    "word_count": 31,
+    "known_audio_id": "d4c10088-2b48-4b55-a7a9-29652f1f41d5",
+    "target1_audio_id": "54bebc3a-ffb9-4a01-8909-3a53cb9aeabb",
+    "target2_audio_id": "05e9afc0-ed97-472c-bb5d-b11df84d9a0b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U03",
+   "set": {
+    "known_text": "no, they still fight",
+    "target_text": "não, eles ainda lutam",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "aae45732-1c25-4998-b226-699d9438091d",
+    "target1_audio_id": "1b7a1e19-67e9-45a5-8eaf-2f8ae71a44a5",
+    "target2_audio_id": "e024fa76-896d-4c91-b49f-4137eb7e6c13"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01U01",
+   "set": {
+    "known_text": "yes, they still fight",
+    "target_text": "sim, eles ainda lutam",
+    "word_count": 21,
+    "lego_position": "middle",
+    "known_audio_id": "00cc520f-fcb4-408f-a32e-34e3f01940a8",
+    "target1_audio_id": "bd1fea5f-0cb7-4294-a074-1fc171ae0463",
+    "target2_audio_id": "68715938-7821-4f3d-8496-f67414bacf14"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01B03",
+   "set": {
+    "known_text": "they still fight now",
+    "target_text": "eles ainda lutam agora",
+    "word_count": 22,
+    "known_audio_id": "572ed75c-71c1-4274-b5c5-61d8a4998dca",
+    "target1_audio_id": "86adb6a2-fea3-451a-946f-ff2f6c9010d9",
+    "target2_audio_id": "b178e88e-8bd1-49b9-bc9c-9db12cdc6c3d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0410L01B02",
+   "set": {
+    "known_text": "they still fight today",
+    "target_text": "eles ainda lutam hoje",
+    "word_count": 21,
+    "known_audio_id": "5d3d191c-3a6f-448f-94b0-5fe582dcb7b8",
+    "target1_audio_id": "b45ada1a-d5a6-4a3c-ae9c-cf0d09a116e2",
+    "target2_audio_id": "5766d8da-b37f-4064-be4d-8d0c4ca6b4fd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03U05",
+   "set": {
+    "known_text": "it doesn't matter what we do now",
+    "target_text": "não importa o que façamos agora",
+    "word_count": 31,
+    "lego_position": "middle",
+    "known_audio_id": "25e0604e-4b6d-4513-8de2-8367c784fd0a",
+    "target1_audio_id": "b23d6b79-df8a-4e39-948d-5163c3c6cfcf",
+    "target2_audio_id": "679a3f5f-de2e-46b9-bc07-10abd62717e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03U03",
+   "set": {
+    "known_text": "yes, it doesn't matter what we do",
+    "target_text": "sim, não importa o que façamos",
+    "word_count": 30,
+    "lego_position": "end",
+    "known_audio_id": "6ed1bbd6-2bbf-4116-98dc-63e3e26c227e",
+    "target1_audio_id": "4fdfb91c-f957-43c7-94a5-808cc3446a7d",
+    "target2_audio_id": "85280d52-281d-4f84-a5ad-f9da5516b4ec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03B03",
+   "set": {
+    "known_text": "what we do now",
+    "target_text": "o que façamos agora",
+    "word_count": 19,
+    "lego_position": "middle",
+    "known_audio_id": "eb4347cb-6dcc-4abd-9929-65bda9d42a25",
+    "target1_audio_id": "931604f6-fd29-4509-9b56-530bbf4a6d42",
+    "target2_audio_id": "141e93fa-afe0-429f-a5f8-9f62ab8439e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L03B02",
+   "set": {
+    "known_text": "what we do today",
+    "target_text": "o que façamos hoje",
+    "word_count": 18,
+    "lego_position": "middle",
+    "known_audio_id": "c18d5969-3eca-465c-aab0-46a69372674f",
+    "target1_audio_id": "67b7c773-3bde-43d5-9d23-857cef730acb",
+    "target2_audio_id": "920302e2-a50a-41c5-8bbe-dec90e418062"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02U05",
+   "set": {
+    "known_text": "no, it doesn't matter now",
+    "target_text": "não, não importa agora",
+    "word_count": 22,
+    "lego_position": "middle",
+    "known_audio_id": "476215d8-5ee3-4202-9bda-776e659bd2a2",
+    "target1_audio_id": "ac52701b-0bcb-4d67-a14c-7d2b15ea89ef",
+    "target2_audio_id": "54593e3f-fa3c-4e6d-b4a4-81370b660fdf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02U03",
+   "set": {
+    "known_text": "yes, it doesn't matter to me",
+    "target_text": "sim, não importa para mim",
+    "word_count": 25,
+    "lego_position": "middle",
+    "known_audio_id": "04815c8a-8f8e-4f91-8c8d-daf6a2dc1110",
+    "target1_audio_id": "08e5c09d-96f1-4220-bf8f-0ea2aedaffc4",
+    "target2_audio_id": "37d67eb6-ea40-4a73-b44b-3bca57a4697a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02U01",
+   "set": {
+    "known_text": "no, it doesn't matter",
+    "target_text": "não, não importa",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "d7060c96-e427-4620-b727-475082e95da8",
+    "target1_audio_id": "98f56592-c56a-4c2b-95bc-9cf87e9c84fb",
+    "target2_audio_id": "1d041246-9fd4-4ac1-9ab6-4db394e13316"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02B03",
+   "set": {
+    "known_text": "it doesn't matter today",
+    "target_text": "não importa hoje",
+    "word_count": 16,
+    "lego_position": "middle",
+    "known_audio_id": "78f0b1f9-2bd6-45e0-948e-5a261d0d4c35",
+    "target1_audio_id": "08d5dfb2-5adf-4e21-8448-70cec2283b23",
+    "target2_audio_id": "d5282900-32f3-4981-a4a1-1041970d749e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_br_for_eng:S0409L02B02",
+   "set": {
+    "known_text": "it doesn't matter now",
+    "target_text": "não importa agora",
+    "word_count": 17,
+    "lego_position": "start",
+    "known_audio_id": "9787568b-ffd8-4997-9d6b-492c31f0eca1",
+    "target1_audio_id": "144f383d-9e55-4de9-8e13-993627d6af7c",
+    "target2_audio_id": "7259fd93-d0f0-43f4-b671-cf06736564ee"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0412L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0412L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0412L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0411L02B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0410L01B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0409L03B04"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_br_for_eng:S0409L02B04"
+  }
+ ]
+}

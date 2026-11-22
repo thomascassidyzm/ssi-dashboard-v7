@@ -1,0 +1,22 @@
+PLAN-ONLY authoring slice of Paid cleanup ITEM 4 (filler/template practice rows), resumed under #759·AI after the 18 Nov DB hold. Already approved by Kai: do not re-ask anyone, do not widen scope. YOU WRITE NOTHING TO THE DATABASE: #759·AI validates, dry-runs and applies every batch itself, one at a time, because the shared DB is contended. Do the slice YOURSELF: do not dispatch sub-workers (the fan-out cap is spent).
+
+COURSE: __COURSE__   SEEDS: __SEEDS__
+(known side = __KNOWN__, target side = __TARGET__)
+
+SETUP: in your worktree run `git fetch origin && git merge --no-edit origin/cs/759-resume-700-item4-filler-rows`, then `cd ops/paid-cleanup-item4`. Read README.md there (short) and look at 3 existing plans in __COURSE__/plans/ (the highest-numbered ones) for the house style. __EXTRA__
+
+THE TOOLS (all read the local snapshot ~/ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/live/__COURSE__.json; none touches the DB):
+- `node tools/dump.cjs __COURSE__ <from> <to>` prints each basket with scan-row marks (*T1a, *T2b, *tag-glue, *'in ...) and writes seen/S####.json. REQUIRED before planning a seed.
+- `node tools/vocab.cjs __COURSE__ <seed> [regex]` lists every LEGO taught up to that seed.
+- write __COURSE__/plans/S####.json by hand (format: header comment of tools/build.cjs; for eng_for_mar you may use the compact plans-src text + mk-plans.cjs exactly as #708·AI did).
+- `node tools/build.cjs __COURSE__ w<yourjobdigits>-<from>-<to> <from> <to>` must end with 0 errors (it runs the course-builder's own containment / taught-vocab / ZUT / floor checks). Read every warning.
+FORBIDDEN: tools/fetch.sh and tools/fetch-light.cjs (they overwrite the shared snapshot and load the DB), tools/post.cjs and tools/run-queue.cjs in ANY mode, any curl to :3470 or :3471, any hand-written database access, any audio. Scratch in $CS_SCRATCH, never /tmp.
+
+WHAT TO DO PER SEED: every scan-marked row is filler the generator bolted on. Families: T1a fragment/contradiction behind yes/no ("no, never seen her"); T1b whole clause behind yes/no/that's true/I'm sure; T2a nonsense build ("if now"); T2b LEGO + now/today/here adding nothing; T3 so/ja artefacts; tag-glue (yet/already/very well/not sure bolted on); 'in English' tag on a non-speech fragment. Delete it, or (better, when the basket would drop below floor) REWRITE it in place ("update" keeps id/position) into a real, natural phrase. Also fix unflagged junk of the same kind in a basket you already touch. Do not touch untouched baskets, component rows, LEGOs or seeds.
+RULES (canon = course-methodology-canon.md at repo root; grep it for ZUT, P1/P2, P17, P25 if in doubt; never read it whole, it is 385k chars):
+- every new/rewritten row contains the whole LEGO, is not the bare LEGO, and uses only chunks TAUGHT up to that LEGO (vocab.cjs). The KNOWN side is controlled too: no known-language words the learner has not been given.
+- ZUT: one known prompt -> exactly one target form course-wide (build enforces it).
+- every touched NEW LEGO keeps 3+ real BUILDs and 5+ USEs (build enforces); if the floor truly cannot be met from taught words, "accept_gap" with the reason, never hidden.
+- grammatical, natural, something a person actually says; known and target mean the same; agreement right; Brazilian usage for por_br (voce etc.); for eng_for_mar natural English target and natural Marathi prompt.
+- quality over throughput; best effort from evidence, never hold a row for a native speaker. A held row gets its reason in the plan's "notes".
+COMMIT as you go: `git add` only __COURSE__/plans, __COURSE__/seen, __COURSE__/plans-src, __COURSE__/batches files you made, every ~10 seeds, then `git push origin HEAD`. Never merge to main. Your report: the seed range covered, deleted/rewritten/inserted counts from the final build check, any accept_gap or held rows with reasons, your branch and last sha. Landing line: your branch, not merged, not deployed.

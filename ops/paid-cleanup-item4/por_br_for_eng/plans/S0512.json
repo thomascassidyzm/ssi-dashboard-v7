@@ -1,0 +1,17 @@
+{"seed":512,"notes":"cs #707·AI; L04 rich basket: junk deleted; kept L01 B02, L02 U06-U08, L04 rest","legos":{
+"L01":{"update":{"B03":["can you hold my bag?","você pode segurar minha mala?"],
+ "U01":["can you hold this for a few minutes?","você pode segurar isso por uns minutos?"],"U02":["can you hold my coffee, please?","você pode segurar meu café, por favor?"],
+ "U03":["can you hold my keys?","você pode segurar minhas chaves?"],"U04":["can you hold the bag with both hands?","você pode segurar a mala com as duas mãos?"],
+ "U05":["can you hold the door?","você pode segurar a porta?"]},
+ "insert":[["build","can you hold the kitten?","você pode segurar o gatinho?"]]},
+"L02":{"update":{"B03":["to leave the door open","deixar a porta aberta"],
+ "U01":["I slept with the door open","dormi com a porta aberta"],"U02":["who left the door open?","quem deixou a porta aberta?"],
+ "U03":["I can't work with the door open","não consigo trabalhar com a porta aberta"],"U04":["she wants the door open","ela quer a porta aberta"],
+ "U05":["can you hold the door open for her?","você pode segurar a porta aberta para ela?"]},
+ "insert":[["build","with the door open","com a porta aberta"]]},
+"L03":{"update":{"B03":["while I fetch the car","enquanto eu vou pegar o carro"],
+ "U01":["you can wait here while I fetch the car","você pode esperar aqui enquanto eu vou pegar o carro"],"U02":["can you hold my coffee while I fetch my bag?","você pode segurar meu café enquanto eu vou pegar minha mala?"],
+ "U03":["you can sit down while I fetch something to eat","você pode se sentar enquanto eu vou pegar algo para comer"],"U04":["can you stay with the children while I fetch the car?","você pode ficar com as crianças enquanto eu vou pegar o carro?"],
+ "U05":["she's waiting at the door while I fetch the bag","ela está esperando na porta enquanto eu vou pegar a mala"]},
+ "insert":[["build","while I fetch my bag","enquanto eu vou pegar minha mala"]]},
+"L04":{"update":{"B03":["the car keys","as chaves do carro"]},"delete":["U02","U03","U04","U05"]}}}

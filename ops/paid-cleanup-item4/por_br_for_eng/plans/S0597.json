@@ -1,0 +1,110 @@
+{
+ "seed": 597,
+ "legos": {
+  "L01": {
+   "update": {
+    "B02": [
+     "I suspect that he knows",
+     "eu suspeito que ele sabe"
+    ],
+    "B03": [
+     "I suspect that she's here",
+     "eu suspeito que ela está aqui"
+    ],
+    "U03": [
+     "I suspect that he doesn't want to come",
+     "eu suspeito que ele não quer vir"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I suspect that they know",
+     "eu suspeito que eles sabem"
+    ]
+   ]
+  },
+  "L02": {
+   "update": {
+    "B03": [
+     "he's heard the story",
+     "ele já ouviu a história"
+    ],
+    "U04": [
+     "she said he's heard it",
+     "ela disse que ele já ouviu isso"
+    ],
+    "U05": [
+     "I think he's heard the story",
+     "acho que ele já ouviu a história"
+    ],
+    "U02": [
+     "I suspect that he's heard everything",
+     "eu suspeito que ele já ouviu tudo"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "he's heard everything",
+     "ele já ouviu tudo"
+    ]
+   ]
+  },
+  "L03": {
+   "update": {
+    "B03": [
+     "she knows a hundred stories",
+     "ela conhece cem histórias"
+    ],
+    "U02": [
+     "I think he's heard a hundred stories",
+     "acho que ele já ouviu cem histórias"
+    ],
+    "U03": [
+     "she's heard a hundred stories",
+     "ela já ouviu cem histórias"
+    ],
+    "U04": [
+     "you know he's heard a hundred stories",
+     "você sabe que ele já ouviu cem histórias"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "I know a hundred stories",
+     "eu conheço cem histórias"
+    ]
+   ]
+  },
+  "L04": {
+   "update": {
+    "B03": [
+     "the story about it",
+     "a história sobre isso"
+    ],
+    "U02": [
+     "I want to talk about it",
+     "quero falar sobre isso"
+    ],
+    "U03": [
+     "she doesn't want to talk about it",
+     "ela não quer falar sobre isso"
+    ],
+    "U04": [
+     "I think he's heard a hundred stories about it",
+     "acho que ele já ouviu cem histórias sobre isso"
+    ]
+   },
+   "insert": [
+    [
+     "build",
+     "to talk about it",
+     "falar sobre isso"
+    ]
+   ]
+  }
+ },
+ "notes": "cs #759·AI item 4: glued in-English/tag rows and unflagged junk in touched baskets rewritten from taught chunks | cs #759·AI: rows that split the LEGO with still/really rewritten (validator containment)"
+}
