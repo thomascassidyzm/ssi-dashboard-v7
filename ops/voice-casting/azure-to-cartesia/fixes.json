@@ -136,13 +136,14 @@
   {
    "id": "c0108-374",
    "what": "C0108 seed 108 hope -> expect (Kai yes 18 Nov 13:22Z, re-commissioned 22 Nov): audio back-fill for every seed-108 row the night apply changes, ~80 courses",
-   "chars": 110000,
-   "status": "approved",
+   "chars": 25487,
+   "status": "spent",
    "basis": "cs #374·AI cap 110,000 Cartesia (80k + every changed intro, Kai 22 Nov) (SIZING.md upper bound 66,532 if every touched voiced slot re-records; library hits free); audio starts after the a2c chain ends, so it reserves on 23 Nov",
    "doc": "ops/c0108-719/night-run.sh (main)",
    "day": 4,
    "utc_day": "2026-11-23",
-   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/c0108-719/cartesia-spend.json"
+   "spend_file": "ssi-evidence/ssi-dashboard-v7/ops/c0108-719/cartesia-spend.json",
+   "released": "23 Nov 01:46Z: done, reserve released to real 23 Nov spend 25,487 (job total 44,387 Cartesia: 18,900 on 22 Nov, 25,487 on 23 Nov; plus 8,487 Azure + 723 ElevenLabs)"
   }
  ]
 }
