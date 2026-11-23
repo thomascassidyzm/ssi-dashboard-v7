@@ -1,0 +1,153 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "53896aa6-1653-4854-9234-dd07fa78617c",
+  "actor": "kai-770",
+  "created_at": "2026-11-23T10:25:50.280Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-25-50-280Z-53896aa6-1653-4854-9234-dd07fa78617c.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02U06",
+      "set": {
+        "target_text": "dihr zeele aryets waermer kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02U05",
+      "set": {
+        "target_text": "ich schetz, dihr zeele mariye frieh kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02U04",
+      "set": {
+        "target_text": "dihr zeele an die Schtore kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02U03",
+      "set": {
+        "target_text": "sie hot mir gsaat, dihr zeele kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02U02",
+      "set": {
+        "target_text": "ich denk, dihr zeele kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02U01",
+      "set": {
+        "target_text": "ich hoff, dihr zeele kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02B03",
+      "set": {
+        "target_text": "dihr zeele mit mir kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02B02",
+      "set": {
+        "target_text": "dihr zeele heit kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02B01",
+      "set": {
+        "target_text": "dihr zeele nau kenne geh"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0668L02C02",
+      "set": {
+        "target_text": "zeele"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0590L01U02",
+      "set": {
+        "target_text": "zeele sie vum Schtation heem faahre kenne?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0545L02U06",
+      "set": {
+        "target_text": "sie zeele die sauber Gleeder draage kenne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0534L02U03",
+      "set": {
+        "target_text": "sie zeele seller Koffer in dem wiescht Wedder net draage kenne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0534L02U02",
+      "set": {
+        "target_text": "zeele sie in dem wiescht Wedder heem faahre kenne?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0532L02U01",
+      "set": {
+        "target_text": "sie zeele seller Koffer net draage kenne wann sie kee Glick hen"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0532L02B03",
+      "set": {
+        "target_text": "sie zeele net gwinne wann sie kee Glick hen"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 668,
+      "set": {
+        "target_text": "Ich hoff, dihr zeele kenne geh."
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "6d516cdd-d08c-4c88-9605-cf6491a136cd",
+      "set": {
+        "target_text": "dihr zeele kenne geh",
+        "components": [
+          {
+            "known": "you all",
+            "target": "dihr"
+          },
+          {
+            "known": "will",
+            "target": "zeele"
+          },
+          {
+            "known": "be able to",
+            "target": "kenne"
+          },
+          {
+            "known": "to go",
+            "target": "geh"
+          }
+        ]
+      }
+    }
+  ]
+}

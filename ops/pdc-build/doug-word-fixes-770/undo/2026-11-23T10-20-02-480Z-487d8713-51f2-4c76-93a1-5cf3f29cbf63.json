@@ -1,0 +1,156 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "487d8713-51f2-4c76-93a1-5cf3f29cbf63",
+  "actor": "kai-770",
+  "created_at": "2026-11-23T10:20:02.480Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-20-02-480Z-487d8713-51f2-4c76-93a1-5cf3f29cbf63.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0565L01U02",
+      "set": {
+        "target_text": "sette mir meh Achtsam gleddere?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0565L01U01",
+      "set": {
+        "target_text": "mir sette meh Achtsam uff yedes Watt hariche"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0563L02U04",
+      "set": {
+        "target_text": "mir sette net lenger schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0563L01U04",
+      "set": {
+        "target_text": "es iss schpot am waerre un mir sette net weidermache"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0562L02U02",
+      "set": {
+        "target_text": "es iss schpot am waerre un mir sette sicher datt aakumme"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0560L02U06",
+      "set": {
+        "target_text": "mir sette net in dem wiescht Wedder zum Beach faahre"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0559L02U04",
+      "set": {
+        "target_text": "sette mir darrich der Busch faahre?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0558L01U01",
+      "set": {
+        "target_text": "es iss so schpot, mir sette schtill sei"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0550L02U04",
+      "set": {
+        "target_text": "mir sette es End vum Schteddel sehne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0589L02U05",
+      "set": {
+        "target_text": "sette mir der letscht Bus griege?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0588L03U03",
+      "set": {
+        "target_text": "mir sette net vun deheem fattgeh mitaus die Maschien"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0586L01U05",
+      "set": {
+        "target_text": "mir sette gekochti Oier mache"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0585L01U04",
+      "set": {
+        "target_text": "wann du fattgeh witt sette mir sell Schlofschtubb-Fenschder zumache"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0585L01U01",
+      "set": {
+        "target_text": "mir sette es Schlofschtubb-Fenschder net zumache"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0584L03B04",
+      "set": {
+        "target_text": "sette mir am Dinschdaag die Bariye sehne?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0581L02U01",
+      "set": {
+        "target_text": "mir sette en bissel meh wisse eb mir schtoppe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0573L02U03",
+      "set": {
+        "target_text": "mir sette die Feierdaage net mitaus die Kinner verbringe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0539L01U05",
+      "set": {
+        "target_text": "es iss schpot am waerre, mir sette schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0533L02B02",
+      "set": {
+        "target_text": "mir sette uff yedes Watt hariche"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0531L02U04",
+      "set": {
+        "target_text": "mir sette net ennich-ebber traue"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0530L01U01",
+      "set": {
+        "target_text": "mir sette die Kinner zeele eb mir schtoppe"
+      }
+    }
+  ]
+}
