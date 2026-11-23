@@ -43,7 +43,10 @@ def plan(c):
 
 def live_dump(c):
     out = f'{SCR}/live-{c}.json'
-    subprocess.run([sys.executable, '-I', f'{ROOT}/ops/paid-cleanup-scan-447/dump-course.py', c, out, '700'], check=True)
+    # cs #868: ITEM6_FROM_COPY=1 = plan on the nightly copy; <SCR>/live-<c>.json was already written by
+    # ops/paid-cleanup-scan-447/copy-read.cjs dump (same shape), so no live read is made here
+    if not os.environ.get('ITEM6_FROM_COPY'):
+        subprocess.run([sys.executable, '-I', f'{ROOT}/ops/paid-cleanup-scan-447/dump-course.py', c, out, '700'], check=True)
     d = json.load(open(out)); idx = {}
     for s in d['seeds']:
         idx[f"SEED{s['n']}"] = ('seed', s, None, None)

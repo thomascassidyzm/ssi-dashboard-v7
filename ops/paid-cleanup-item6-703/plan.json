@@ -10823,6 +10823,31 @@
    "note": "added after review",
    "checks": "",
    "review": "#722: added"
+  },
+  {
+   "course": "kor_for_tam",
+   "row": "S0227L03U06",
+   "kind": "phrase",
+   "scope_n": null,
+   "current": {
+    "known": "அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்லப் போகிறார்.",
+    "target": "그 남자는 나에게 새로운 것을 말해줄 거예요."
+   },
+   "defect": "plain 나/내 self-reference in a 해요체 sentence of a 저/제 course; the same Tamil already maps to 저/제 elsewhere (ZUT, register K10/S12)",
+   "action": "edit",
+   "new": {
+    "known": "அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்லப் போகிறார்.",
+    "target": "그 남자는 저에게 새로운 것을 말해줄 거예요."
+   },
+   "source": "National Institute of Korean Language, 표준 언어 예절 (2011), ch. \"자신을 가리키는 말\": 저/제 is the speaker's humble self-reference to a listener addressed in 해요체/하십시오체; 나/내 is for 해체/해라체. Course-internal: kor_for_tam already teaches நானே|제가 (S0025L01), என் நண்பரைப் பற்றி|제 친구에 대해 (S0084L01), என்னுடைய நண்பர்|제 친구가 (S0138L02), என் நண்பர்|제 친구는 (S0199L01), என்னைத் தனியாக விட்டு|저를 혼자 두고 (S0351L01), என்னிடத்தில்|저에게 (S0238L01) — the 나/내 rows give the same Tamil a second Korean answer (P16/K10).",
+   "confidence": "sure",
+   "note": "cs #868: found on the 23 Nov copy by the same 나/내 sweep (row added after #703 planned); same defect, same fix",
+   "checks": "",
+   "audio_slots": [
+    "target1",
+    "target2"
+   ],
+   "audio_chars_est": 50
   }
  ]
 }
