@@ -18,7 +18,7 @@
  * Intros: ops/fry-build/intros-411.json (#411·AI), role 'presentation' + legoId — Popty splices from Charlotte pieces and
  *   binds presentation_audio_id itself. The 3 held intros take Kai's 17 Nov ruling (heads-up shape, "it" inside the chunk).
  * Frisian target audio is never asked for (Auke records it).
- * A refusal is logged verbatim and skipped — never retried. A cap/stop refusal ends the run. Ledger (write-ahead, resumable): $LEDGER or ~/ssi-evidence/.../ops/fry-build/428/ledger.jsonl.
+ * A refusal is logged verbatim and skipped — never retried. A cap/stop refusal ends the run. Ledger (write-ahead, resumable): $LEDGER or ~/ssi-evidence/.../ops/fry-build/763/ledger.jsonl.
  *   node ops/fry-build/render-428.cjs --seeds 1-20 [--concurrency 2] [--stop-at 600000]
  */
 const fs = require('fs'), path = require('path')
@@ -34,7 +34,7 @@ const AGAIN = opt('--again', null), APPROVAL = opt('--approval', null)
 const againKeys = new Set()
 const DRY = argv.includes('--dry-run') // no POSTs: count + upper-bound price only
 const CONC = Number(opt('--concurrency', 2)), STOP_AT = Number(opt('--stop-at', 10000))
-const LEDGER = process.env.LEDGER || path.join(process.env.HOME, 'ssi-evidence/ssi-dashboard-v7/ops/fry-build/428/ledger.jsonl')
+const LEDGER = process.env.LEDGER || path.join(process.env.HOME, 'ssi-evidence/ssi-dashboard-v7/ops/fry-build/763/ledger.jsonl')
 fs.mkdirSync(path.dirname(LEDGER), { recursive: true })
 const PURPOSE_K = 'fry_for_eng English known cue now saying it (cs #763·AK, Kai it-reversal 23 Nov 09:32Z)'
 const PURPOSE_I = 'fry_for_eng English intro with it (cs #763·AK, Kai it-reversal 23 Nov 09:32Z)'
