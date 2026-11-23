@@ -1,0 +1,53 @@
+{
+ "seed": 96,
+ "legos": {
+  "1": {
+   "ok": true,
+   "build": [
+    {
+     "known": "아니, 나는 동의하지 않아",
+     "target": "na, dw i ddim yn cytuno"
+    },
+    {
+     "known": "하지만 아니, 나는 확실하지 않아",
+     "target": "ond na, dw i ddim yn siŵr"
+    },
+    {
+     "known": "아니, 나는 곧 준비가 될 거야",
+     "target": "na, fydda i’n barod cyn bo hir"
+    }
+   ],
+   "use": [
+    {
+     "known": "아니, 나는 네가 말한 것에 동의하지 않아",
+     "target": "na, dw i ddim yn cytuno efo be’ ddudest ti"
+    },
+    {
+     "known": "아니, 안타깝게도 그것은 가능하지 않았어",
+     "target": "na, yn anffodus doedd o ddim yn bosib"
+    },
+    {
+     "known": "하지만 아니, 나는 그 사람들을 알고 지내지 않아",
+     "target": "ond na, dw i ddim yn nabod y bobl ’na"
+    },
+    {
+     "known": "너 지금 집에 가고 싶어? 아니",
+     "target": "wyt ti isio mynd adre rŵan? na"
+    },
+    {
+     "known": "아니, 나는 그게 작동할 거라고 생각해",
+     "target": "na, dw i’n meddwl fydd o’n gweithio"
+    },
+    {
+     "known": "아니, 나는 더 천천히 이야기하면 좋겠어",
+     "target": "na, liciwn i siarad yn arafach"
+    },
+    {
+     "known": "아니, 그녀는 멈추고 싶어하지 않아",
+     "target": "na, dydy hi ddim isio stopio"
+    }
+   ]
+  }
+ },
+ "why": "Phrase door held S0096L01 'na' (HELD_FOR_REVIEW): its BUILD rows 'na, yn anffodus' and 'na, pam ddim' are LEGO + short trailing tag, which Popty's comma-tag gate rejects; the retry reason the model saw named only recombination, so it could not fix it. Kept the door's 2 passing BUILD rows and all 7 USE rows, dropped the 2 rejected rows, added 'na, dw i ddim yn cytuno' (taught S0084 pieces). /api/seed/complete still validates the whole seed."
+}

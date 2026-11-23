@@ -47,7 +47,7 @@ def http(method, url, body=None, ctype='application/json', timeout=900):
 
 
 def log(rec):
-    rec['at'] = datetime.datetime.utcnow().isoformat(timespec='seconds') + 'Z'
+    rec['at'] = datetime.datetime.now(datetime.UTC).replace(tzinfo=None).isoformat(timespec='seconds') + 'Z'
     with open(EVID / 'run.jsonl', 'a') as f:
         f.write(json.dumps(rec, ensure_ascii=False) + '\n')
     print(json.dumps(rec, ensure_ascii=False)[:400], flush=True)
@@ -123,12 +123,12 @@ def main():
     stop_at = None
     if '--stop-at' in sys.argv:
         hh, mm = sys.argv[sys.argv.index('--stop-at') + 1].split(':')
-        now = datetime.datetime.utcnow()
+        now = datetime.datetime.now(datetime.UTC).replace(tzinfo=None)
         stop_at = now.replace(hour=int(hh), minute=int(mm), second=0, microsecond=0)
     plan = load_plan()
     seeds = {s['seed_number']: s for s in json.load(open(HERE.parent / 'seeds-ko-draft.json'))['seeds']}
     for n in range(lo, hi + 1):
-        if stop_at and datetime.datetime.utcnow() >= stop_at:
+        if stop_at and datetime.datetime.now(datetime.UTC).replace(tzinfo=None) >= stop_at:
             log({'stop': 'time', 'next_seed': n}); return 3
         plan = load_plan()  # re-read every seed: planners keep pushing fixes while the build runs
         _, st = http('GET', f'{CB}/stats/{COURSE}')
@@ -142,8 +142,13 @@ def main():
         gate()
         t0 = time.time()
         sets = {}
+        # A LEGO the door held is settled by a committed override (overrides/sNNN.json, with its reason)
+        # rather than by clearing the hold; /api/seed/complete still validates the whole seed.
+        ov_file = HERE / 'overrides' / f's{n:03d}.json'
+        if ov_file.exists():
+            sets.update({int(k): v for k, v in json.load(open(ov_file))['legos'].items()})
         with ThreadPoolExecutor(DOOR_PAR) as ex:
-            futs = {i: ex.submit(door, n, i, legos[i - 1]) for i in new_idx}
+            futs = {i: ex.submit(door, n, i, legos[i - 1]) for i in new_idx if i not in sets}
             for i, f in futs.items():
                 sets[i] = f.result()
         with open(EVID / f'door-s{n:03d}.json', 'w') as f:
