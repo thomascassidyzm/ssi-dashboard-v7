@@ -7,17 +7,17 @@
   "425:ydyn": "untiled; yes-answer to do they, distinct from yndw 응",
   "425:bo’ nhw’n dallt": "untiled; Korean 그들이 이해하는지 one unit",
   "426:bydden nhw’n licio": "untiled; one frame, sister of bydden ni’n licio (411)",
-  "427:fydden nhw ddim yn licio": "untiled; one frame, negative sister of bydden nhw’n licio (426)",
+  "427:fydden nhw ddim yn licio": "Popty counts it over 8 syllables; split into fydden nhw ddim yn + licio (#813·AK)",
   "428:fydden nhw’n licio": "untiled; taught bydden nhw’n licio (426), mutated form",
   "429:bydden": "untiled; yes-answer to would, distinct from yndw 응",
   "429:byddai hynna’n berffaith": "untiled; one unit like fyddai hynna’n wych (90)",
   "429:iddyn nhw": "그들에게 is taken by wrthyn nhw (250), so 그들한테",
-  "430:fyddai hynna ddim yn bosib": "source hynna alone; one unit like fyddai hynna ddim yn broblem (415)",
+  "430:fyddai hynna ddim yn bosib": "Popty counts it over 8 syllables; split into fyddai hynna ddim yn + bosib (#813·AK)",
   "431:dydyn nhw ddim yn barod": "untiled; yn barod alone is 이미 (244), so one unit",
   "431:yn fuan": "untiled (older seeds)",
   "432:mi fydden nhw’n medru": "untiled; one frame, sister of mi fydden ni’n medru disgyn (413)",
   "432:bo’ nhw isio i ti": "untiled; Korean 그들이 네가 ~하기를 원한다고 one frame",
-  "433:pryd oedd y ffilm yn dechrau": "untiled; embedded question one unit",
+  "433:pryd oedd y ffilm yn dechrau": "Popty counts it over 8 syllables; split into pryd + oedd y ffilm yn + dechrau (#813·AK)",
   "434:maen nhw’n cymryd": "untiled; Korean relative 그들이 받는 one unit",
   "436:maen nhw angen": "untiled in source split; taught (418)",
   "437:cymaint â phosib": "source cymaint â + untiled phosib",
@@ -33,7 +33,11 @@
   "447:fyddan nhw’n medru": "untiled; taught byddan nhw’n medru (445), mutated form",
   "447:dreifio ni adre": "source dreifio + untiled ni adre; Korean 우리를 집까지 차로 데려다주다 one unit",
   "448:byddan": "untiled; yes-answer to will they, distinct from bydden 응 그럴 거야",
-  "449:bo’ nhw bron yn barod": "untiled; Korean 그들이 거의 준비가 됐다고 one unit"
+  "449:bo’ nhw bron yn barod": "untiled; Korean 그들이 거의 준비가 됐다고 one unit",
+  "433:doeddan nhw ddim yn medru": "Popty counts it over 8 syllables; split into doeddan nhw ddim yn + medru (#813·AK)",
+  "440:tra maen nhw dal yn ifanc": "Popty counts it over 8 syllables; split into tra maen nhw + dal yn ifanc (#813·AK)",
+  "446:fyddan nhw ddim yn medru": "Popty counts it over 8 syllables; split into fyddan nhw ddim yn + medru (#813·AK)",
+  "448:byddan nhw’n hapus i helpu": "Popty counts it over 8 syllables; split into byddan nhw’n + hapus i helpu (#813·AK)"
  },
  "seeds": {
   "421": {
@@ -158,8 +162,13 @@
   "427": {
    "legos": [
     {
-     "cy": "fydden nhw ddim yn licio",
-     "ko": "그들은 ~를 원하지 않을 거야",
+     "cy": "fydden nhw ddim yn",
+     "ko": "그들은 ~지 않을 것 같아",
+     "type": "A"
+    },
+    {
+     "cy": "licio",
+     "ko": "좋아하다",
      "type": "A"
     },
     {
@@ -220,8 +229,13 @@
      "type": "A"
     },
     {
-     "cy": "fyddai hynna ddim yn bosib",
-     "ko": "그건 가능하지 않을 거야",
+     "cy": "fyddai hynna ddim yn",
+     "ko": "그건 ~지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "bosib",
+     "ko": "가능한",
      "type": "A"
     }
    ]
@@ -282,8 +296,13 @@
   "433": {
    "legos": [
     {
-     "cy": "doeddan nhw ddim yn medru",
-     "ko": "그들은 ~ㄹ 수 없었어",
+     "cy": "doeddan nhw ddim yn",
+     "ko": "그들은 ~지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "medru",
+     "ko": "~ㄹ 수 있다",
      "type": "A"
     },
     {
@@ -292,8 +311,18 @@
      "type": "A"
     },
     {
-     "cy": "pryd oedd y ffilm yn dechrau",
-     "ko": "영화가 언제 시작하는지",
+     "cy": "pryd",
+     "ko": "언제",
+     "type": "A"
+    },
+    {
+     "cy": "oedd y ffilm yn",
+     "ko": "영화가 ~하는지",
+     "type": "A"
+    },
+    {
+     "cy": "dechrau",
+     "ko": "시작하다",
      "type": "A"
     }
    ]
@@ -420,8 +449,13 @@
      "type": "A"
     },
     {
-     "cy": "tra maen nhw dal yn ifanc",
-     "ko": "그들이 아직 젊을 때",
+     "cy": "tra maen nhw",
+     "ko": "그들이 ~ㄹ 때",
+     "type": "A"
+    },
+    {
+     "cy": "dal yn ifanc",
+     "ko": "아직 젊은",
      "type": "A"
     }
    ]
@@ -524,8 +558,13 @@
   "446": {
    "legos": [
     {
-     "cy": "fyddan nhw ddim yn medru",
-     "ko": "그들은 ~ㄹ 수 없을 거야",
+     "cy": "fyddan nhw ddim yn",
+     "ko": "그들은 ~지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "medru",
+     "ko": "~ㄹ 수 있다",
      "type": "A"
     },
     {
@@ -562,8 +601,13 @@
      "type": "A"
     },
     {
-     "cy": "byddan nhw’n hapus i helpu",
-     "ko": "그들은 기꺼이 도와줄 거야",
+     "cy": "byddan nhw’n",
+     "ko": "그들은 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "hapus i helpu",
+     "ko": "기꺼이 돕다",
      "type": "A"
     }
    ]
