@@ -566,6 +566,9 @@ async function main() {
     // SKIP_TAGS: units an earlier partial apply already committed (see `tags` mode), never sent twice
     const skip = new Set((process.env.SKIP_TAGS || '').split('|').filter(Boolean));
     const held = HELD();
+    // HOLD_SEEDS: seeds held after an apply refusal (e.g. SPOKEN_WORDS_MISMATCH on a library clip) — never forced; listed in apply-scope
+    const holdNow = new Set((process.env.HOLD_SEEDS || '').split(',').filter(Boolean).map(Number));
+    for (const n of holdNow) bad.add(n);
     const U = per.filter((u) => !bad.has(u.seed) && !held.has(u.seed) && (!only || only.has(u.seed)) && !skip.has(u.tag));
     console.log(`seeds held for audio: ${[...bad].sort((a, b) => a - b).join(',') || 'none'}; units going ${U.length}/${per.length}`);
     save('apply-scope.json', { heldPrecheck: [...held].sort((a, b) => a - b), held: [...bad].sort((a, b) => a - b), going: [...new Set(U.map((u) => u.seed))].sort((a, b) => a - b) });

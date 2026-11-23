@@ -1,0 +1,5028 @@
+[
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "3788a9ce-ada4-4c7a-937d-6d850454f88a",
+  "undo_file": "2026-11-23T22-49-33-330Z-3788a9ce-ada4-4c7a-937d-6d850454f88a.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 248,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 248,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 248,
+    "set": {
+     "target_text": "あの映画、ひどかった。お金返してほしい",
+     "target1_audio_id": "181f76ba-1103-4f3e-a641-afba46a535a3",
+     "target2_audio_id": "976627df-c9c8-476c-9eb9-98c2971de21f",
+     "target_text_roman": "ano eiga hidokatta okane kaeshite hoshii"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 240,
+    "set": {
+     "known_text": "my father doesn't like to stop talking",
+     "known_audio_id": "41e55883-de57-4628-b087-fbfd2735410f"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 193,
+    "set": {
+     "target_text": "今日は忙しすぎる。ごめん",
+     "target1_audio_id": "1212b063-8d7e-474b-97b1-5b80655ced48",
+     "target2_audio_id": "9965b4b5-c360-48a7-9ef3-6168e0cb9b9a",
+     "target_text_roman": "kyoo wa isogashisugiru. gomen."
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 173,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 173,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 173,
+    "set": {
+     "target_text": "大丈夫。自分でできる",
+     "target1_audio_id": "545c0428-6630-4c64-b7f7-fb76a29019bf",
+     "target2_audio_id": "e3f7db37-8fd4-4e51-8f1e-d201a9b0c432",
+     "target_text_roman": "daijoobu. jibun de dekiru."
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 130,
+    "set": {
+     "known_text": "that was a surprise, because he's my friend",
+     "target_text": "驚いた。でも、友だちだ。",
+     "known_audio_id": "e672ea88-6a8e-4498-b7a9-8d757848ca31",
+     "target1_audio_id": "16a0420e-41e5-4444-a5e2-21050370542a",
+     "target2_audio_id": "ac026735-811a-4914-8f1c-7159bbecfea3",
+     "target_text_roman": "odoroita. demo, tomodachi da."
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 96,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 96,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 96,
+    "set": {
+     "target_text": "まだ準備できてない。もう少し時間がいる",
+     "target1_audio_id": "94c1dcad-8d8a-4c24-a7ce-0d2d91034830",
+     "target2_audio_id": "59162cb2-fec2-4653-b591-9a4562127dae",
+     "target_text_roman": "mada junbi dekite nai. moo sukoshi jikan ga iru."
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 73,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 73,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 73,
+    "set": {
+     "target_text": "ありがとう。でも、まだ学ぶことがある",
+     "target1_audio_id": "1bbdb378-c13e-4fbd-9635-33b9672667d6",
+     "target2_audio_id": "154277de-8f4f-4bf7-b147-2155d296d319",
+     "target_text_roman": "arigatoo demo mada manabu koto ga aru"
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "event_id": "b52b8bac-8446-49c1-b266-d0db2ffd73e1",
+  "undo_file": "2026-11-23T22-50-17-087Z-b52b8bac-8446-49c1-b266-d0db2ffd73e1.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01B02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01B01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "思",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "う",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0256L01U07",
+    "set": {
+     "decomposition": [
+      {
+       "known": "an hour",
+       "legoId": "S0256L01",
+       "target": "一時間",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "manage",
+       "legoId": "S0173L02",
+       "target": "できる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01U06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "why do you",
+       "legoId": "S0067L01",
+       "target": "なんで",
+       "isGhost": false
+      },
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01U08",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "け",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ど",
+       "isGhost": true
+      },
+      {
+       "known": "it's important to",
+       "legoId": "S0065L01",
+       "target": "大事",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0270L01U08",
+    "set": {
+     "decomposition": [
+      {
+       "known": "going to be late",
+       "legoId": "S0270L01",
+       "target": "遅れそう",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "だ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "け",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ど",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "先",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "生",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "about that",
+       "legoId": "S0037L02",
+       "target": "それについて",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "she didn't want to",
+       "legoId": "S0070L01",
+       "target": "彼女はしたくなかった",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L02B03",
+     "seed_number": 70,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "tell me where it was",
+     "target_text": "場所を言う",
+     "word_count": 5,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.773Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "546d2790-6b06-4481-b497-bb9ef7c2f1d4",
+     "target1_audio_id": "2fc6658f-f65a-4883-a3b9-be41289ec1f7",
+     "target2_audio_id": "58dc641b-da65-4e0e-8589-467a6bcd6c64",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 2160,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": "basho o iu",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "場所",
+       "r": "basho",
+       "salient": true
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": true
+      },
+      {
+       "n": "言う",
+       "r": "iu",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "76b75cfb-847b-42a8-ab77-055911ff65d2",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "76b75cfb-847b-42a8-ab77-055911ff65d2",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "jpn_for_eng:S0268L03C03"
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03C02",
+    "set": {
+     "known_text": "came",
+     "target_text": "来た",
+     "known_audio_id": "9e8dc79c-0c01-4933-8283-bfd18c8438bd",
+     "target1_audio_id": "28c3aae0-193b-46d8-b790-561afbd45045",
+     "target2_audio_id": "b01b7c57-8c89-499e-a956-d5fd94a1587e",
+     "target_text_roman": "kita",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "来",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03C01",
+    "set": {
+     "known_text": "email",
+     "target_text": "メール",
+     "known_audio_id": "a556d7a0-074f-4237-82fe-ab924bdf4d49",
+     "target1_audio_id": "345cdbf8-08a9-4229-987e-b7b428055100",
+     "target2_audio_id": "1322759c-12a2-462c-8bc8-4f97abef7c8b",
+     "target_text_roman": "meeru",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "メ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ー",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ル",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "76b75cfb-847b-42a8-ab77-055911ff65d2",
+    "set": {
+     "known_text": "emails came",
+     "target_text": "メールが来た",
+     "components": [
+      {
+       "known": "email",
+       "target": "メール"
+      },
+      {
+       "known": "came",
+       "target": "来た"
+      }
+     ],
+     "known_audio_id": "cfcdf2fb-abae-412e-8afb-dfa027a5eea5",
+     "target1_audio_id": "08e057aa-c23c-4e5c-ae95-9c7fc05be518",
+     "target2_audio_id": "28810909-901b-4eb3-9724-d7036cada41a",
+     "presentation_audio_id": "7fd1fa91-5b4a-49ee-91b8-9ef0a75b40ac",
+     "target_text_roman": "meeru ga kita"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "30ad2911-13b2-4dc3-b4cf-2753ee8afa64",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "30ad2911-13b2-4dc3-b4cf-2753ee8afa64",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "30ad2911-13b2-4dc3-b4cf-2753ee8afa64",
+    "set": {
+     "type": "M",
+     "known_text": "find out",
+     "target_text": "知る",
+     "components": [
+      {
+       "known": "find out",
+       "target": "知る"
+      }
+     ],
+     "known_audio_id": "0590f891-3bae-42c7-a2ba-31a740d4be22",
+     "target1_audio_id": "a26f5d4c-059a-4fed-98ba-f5b4e245aa8f",
+     "target2_audio_id": "02276cee-69df-4b74-972c-8d91a6fe1c5e",
+     "presentation_audio_id": "8c151b27-2969-4ba9-b563-7aa1305ad2f3",
+     "target_text_roman": "shiru"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "0bae7eb2-0a7c-4d2c-af82-4d7491a89a54",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "0bae7eb2-0a7c-4d2c-af82-4d7491a89a54",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02C02",
+    "set": {
+     "known_text": "stop",
+     "target_text": "止める",
+     "known_audio_id": "cd163493-bd91-4bf2-be02-cfe56ee65bd5",
+     "target1_audio_id": "49ba20b5-301a-486f-9bfc-1c45c806fa64",
+     "target2_audio_id": "755e9749-6440-447e-91a9-3b415ad96a77",
+     "target_text_roman": "yameru",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "止",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "め",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02C01",
+    "set": {
+     "target_text": "話す",
+     "target1_audio_id": "0def4627-0cdc-427b-9baf-94e2661d4ba2",
+     "target2_audio_id": "d996bb4b-4202-4efa-9203-b645da0cc675",
+     "target_text_roman": "hanasu",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "話",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "す",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "0bae7eb2-0a7c-4d2c-af82-4d7491a89a54",
+    "set": {
+     "known_text": "stop talking",
+     "target_text": "話すのを止める",
+     "components": [
+      {
+       "known": "talking",
+       "target": "話す"
+      },
+      {
+       "known": "stop",
+       "target": "止める"
+      }
+     ],
+     "known_audio_id": "0fbe7299-8e15-4baa-a5a4-3a9e796241eb",
+     "target1_audio_id": "a53bd4c0-eb51-41b0-82ee-8fac596c7a07",
+     "target2_audio_id": "036a568f-5632-44e8-8f70-f5c5f1cc86f2",
+     "presentation_audio_id": "8c05340c-5054-4d71-8127-9f78fe89028c",
+     "target_text_roman": "hanasu no o tomeru"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "fbf6fac3-94a4-4780-8c79-bafb60286ca0",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "fbf6fac3-94a4-4780-8c79-bafb60286ca0",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02C02",
+    "set": {
+     "known_text": "tell",
+     "target_text": "言う",
+     "known_audio_id": "604b4428-7e25-4085-9e14-db62bee3bfe5",
+     "target1_audio_id": "c1875590-ccab-40de-adac-500f02af2ce9",
+     "target2_audio_id": "c48377d2-301f-4125-8799-4a641e349f83",
+     "target_text_roman": "iu",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "言",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "う",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02C01",
+    "set": {
+     "known_text": "where",
+     "target_text": "場所",
+     "known_audio_id": "13745fc8-fff5-4893-97a8-ee36cb4c20dc",
+     "target1_audio_id": "4f8a5472-1f28-4649-aa97-574d29f74361",
+     "target2_audio_id": "23ed6e4b-08ac-4803-bb81-50930700404b",
+     "target_text_roman": "basho",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "場",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "所",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "fbf6fac3-94a4-4780-8c79-bafb60286ca0",
+    "set": {
+     "known_text": "tell me where it was",
+     "target_text": "場所を言う",
+     "components": [
+      {
+       "known": "where",
+       "target": "場所"
+      },
+      {
+       "known": "tell",
+       "target": "言う"
+      }
+     ],
+     "known_audio_id": "546d2790-6b06-4481-b497-bb9ef7c2f1d4",
+     "target1_audio_id": "2fc6658f-f65a-4883-a3b9-be41289ec1f7",
+     "target2_audio_id": "58dc641b-da65-4e0e-8589-467a6bcd6c64",
+     "presentation_audio_id": "06571e13-fde2-4c6b-9e0f-fbf475ea1207",
+     "target_text_roman": "basho o iu"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "741931c9-7c9d-44fe-9404-00940aa69561",
+    "set": {
+     "target2_audio_id": "62b2fb77-6f94-438c-8d01-598e9bba3a53"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "741931c9-7c9d-44fe-9404-00940aa69561",
+    "set": {
+     "target1_audio_id": "c9dabe8d-ee5d-422e-82af-ac3aa71ce0ac"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01C02",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "didn't want to",
+     "target_text": "したくなかった",
+     "word_count": 7,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 1
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "386a92f9-1c7a-4e1b-8036-9b5eee1775bc",
+     "target1_audio_id": "3ca95c68-9eaa-4234-b327-8c877ddaab0b",
+     "target2_audio_id": "1e544ccd-aca7-4686-a070-d266eceaf610",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2376,
+     "lego_id": null,
+     "target_text_roman": "shitaku nakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": "d0c7c755-09e9-4d8e-a28c-5a36eef7fedc",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "したく",
+       "r": "shitaku",
+       "salient": false
+      },
+      {
+       "n": "なかった",
+       "r": "nakatta",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01C01",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "she",
+     "target_text": "彼女は",
+     "word_count": 3,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "component",
+      "component_index": 0
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "component",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "043af4f9-e21e-4ba7-9035-ba88bb2e0d1b",
+     "target1_audio_id": "2b51336d-a6ef-4c60-a0bc-7bfaac00b748",
+     "target2_audio_id": "f21863b7-99db-42da-ba76-2a27eb4e5a3c",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 2040,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa",
+     "target_phrase_id": null,
+     "presentation_audio_id": "8fa3c6fa-c39f-4312-906c-246390b7b53f",
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L03",
+       "target": "彼女は",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": false
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "741931c9-7c9d-44fe-9404-00940aa69561",
+    "set": {
+     "type": "M",
+     "is_new": true,
+     "known_text": "she didn't want to",
+     "target_text": "彼女はしたくなかった",
+     "components": [
+      {
+       "known": "she",
+       "target": "彼女は"
+      },
+      {
+       "known": "didn't want to",
+       "target": "したくなかった"
+      }
+     ],
+     "known_audio_id": "b7eb96a8-f706-4122-b723-2856c9b4438e",
+     "target1_audio_id": "80a644ae-5c43-4733-8a91-fceb3538ea87",
+     "target2_audio_id": "1b28bf61-da0e-4e71-850c-6d56587f1613",
+     "presentation_audio_id": "9e8465b5-9ee4-4521-b741-d4d0630e294a",
+     "target_text_roman": "kanojo wa shitakunakatta"
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "event_id": "e4186779-933b-4d9d-ba2e-72e307d1059f",
+  "undo_file": "2026-11-23T22-51-48-098Z-e4186779-933b-4d9d-ba2e-72e307d1059f.json",
+  "undo": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L02U08",
+     "seed_number": 70,
+     "lego_index": 2,
+     "position": 14,
+     "known_text": "I think it's important to tell you where it is",
+     "target_text": "場所を言うのは大事だと思う",
+     "word_count": 14,
+     "lego_count": 10,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:31.708Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.773Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8a962f66-68fd-4be2-8a46-298b14464503",
+     "target1_audio_id": "afde635b-8efe-4c88-9d02-eb43e33a9f0f",
+     "target2_audio_id": "c1965a2c-8182-4771-8e90-69976bd5aa36",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 2080,
+     "lego_id": null,
+     "target_text_roman": "basho o iu no wa daiji da to omou",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "の",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "it's important to",
+       "legoId": "S0065L01",
+       "target": "大事",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "だ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "思",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "う",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "場所",
+       "r": "basho",
+       "salient": true
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": true
+      },
+      {
+       "n": "言う",
+       "r": "iu",
+       "salient": true
+      },
+      {
+       "n": "の",
+       "r": "no",
+       "salient": false
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": false
+      },
+      {
+       "n": "大事",
+       "r": "daiji",
+       "salient": false
+      },
+      {
+       "n": "だ",
+       "r": "da",
+       "salient": false
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "思う。",
+       "r": "omou",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L02U05",
+     "seed_number": 70,
+     "lego_index": 2,
+     "position": 11,
+     "known_text": "I like to tell you where it is",
+     "target_text": "場所を言うのが好き",
+     "word_count": 10,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:31.708Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.773Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a483a220-e4ea-4908-a8e8-709af03a0de9",
+     "target1_audio_id": "55c88ce5-dab2-4340-afb4-5f0ee9427d10",
+     "target2_audio_id": "c7b6facb-b4a4-4330-ad3b-010ce24d4cbb",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 2736,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": "basho o iu no ga suki",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "の",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "好",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "場所",
+       "r": "basho",
+       "salient": true
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": true
+      },
+      {
+       "n": "言う",
+       "r": "iu",
+       "salient": true
+      },
+      {
+       "n": "の",
+       "r": "no",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "好き。",
+       "r": "suki",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U01",
+    "set": {
+     "target2_audio_id": "c9207e0f-ec12-4c67-aee5-efcedbc2fb78"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U01",
+    "set": {
+     "target1_audio_id": "6ee7205d-65fc-4742-8807-710d3a784aa3"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U01",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U01",
+    "set": {
+     "known_text": "I need to tell you where it is",
+     "target_text": "場所を言う必要がある",
+     "word_count": 11,
+     "known_audio_id": "ccd58de8-ce76-4a5d-b425-6ef3c6873060",
+     "target1_audio_id": "86933c45-5445-4fc1-884a-39f55b81a851",
+     "target2_audio_id": "15dfdf34-2b8a-410e-b68c-98e34ed0aea0",
+     "target_text_roman": "basho o iu hitsuyoo ga aru",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U06",
+    "set": {
+     "known_text": "do I need to tell you where it is?",
+     "target_text": "場所を言う必要がある？",
+     "word_count": 11,
+     "known_audio_id": "1e0075a3-9aab-46f1-9f41-0bedad6bc545",
+     "target1_audio_id": "dc8c683e-644e-4cd5-8ecf-e6639d611099",
+     "target2_audio_id": "3ee3e865-2e7b-4a3d-8b4c-1f9c1ef0787d",
+     "target_text_roman": "basho o iu hitsuyoo ga aru?",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U02",
+    "set": {
+     "known_text": "I think I need to tell you where it is",
+     "target_text": "場所を言う必要があると思う",
+     "word_count": 14,
+     "known_audio_id": "e8106c36-86cd-4657-93a0-9c1bb6c21117",
+     "target1_audio_id": "39cc1d31-8362-4955-aa59-5e97ba469199",
+     "target2_audio_id": "99a945d8-d5a0-4aa9-b04a-5c00b36f2448",
+     "target_text_roman": "basho o iu hitsuyoo ga aru to omou",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "思",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "う",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02U03",
+    "set": {
+     "known_text": "can I tell you where it is?",
+     "target_text": "場所を言うことができる？",
+     "word_count": 12,
+     "known_audio_id": "4df92885-01d9-4892-8754-03555557f7bb",
+     "target1_audio_id": "ccba8787-b470-4646-b868-44df01388fe5",
+     "target2_audio_id": "058a4fff-66c1-4483-a625-b7ac1b454074",
+     "target_text_roman": "basho o iu koto ga dekiru?",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B04",
+    "set": {
+     "known_text": "can you tell me where",
+     "target_text": "場所を言うことができる",
+     "word_count": 11,
+     "known_audio_id": "6764e900-5be7-46af-882b-0b8247da3b80",
+     "target1_audio_id": "501f457a-83f3-4aa1-b98f-1e6af30bbca1",
+     "target2_audio_id": "f9ddb1cc-5cfc-474e-b712-9cc3449a8b9c",
+     "target_text_roman": "basho o iu koto ga dekiru",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B02",
+    "set": {
+     "known_text": "tell me where",
+     "target_text": "場所を言う",
+     "word_count": 5,
+     "known_audio_id": "67409d68-f61e-4527-8e98-f19850e66cac",
+     "target1_audio_id": "2fc6658f-f65a-4883-a3b9-be41289ec1f7",
+     "target2_audio_id": "58dc641b-da65-4e0e-8589-467a6bcd6c64",
+     "target_text_roman": "basho o iu",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0070L02B01",
+    "set": {
+     "known_text": "tell me where it was",
+     "target_text": "場所を言う",
+     "word_count": 5,
+     "known_audio_id": "546d2790-6b06-4481-b497-bb9ef7c2f1d4",
+     "target1_audio_id": "2fc6658f-f65a-4883-a3b9-be41289ec1f7",
+     "target2_audio_id": "58dc641b-da65-4e0e-8589-467a6bcd6c64",
+     "target_text_roman": "basho o iu",
+     "decomposition": [
+      {
+       "known": "tell me where it was",
+       "legoId": "S0070L02",
+       "target": "場所を言う",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "event_id": "f4725a66-9817-4066-a766-630cbdd6bc3c",
+  "undo_file": "2026-11-23T22-52-17-024Z-f4725a66-9817-4066-a766-630cbdd6bc3c.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B01",
+    "set": {
+     "known_text": "stop talking",
+     "target_text": "話すのを止める",
+     "word_count": 7,
+     "known_audio_id": "0fbe7299-8e15-4baa-a5a4-3a9e796241eb",
+     "target1_audio_id": "a53bd4c0-eb51-41b0-82ee-8fac596c7a07",
+     "target2_audio_id": "036a568f-5632-44e8-8f70-f5c5f1cc86f2",
+     "target_text_roman": "hanasu no o tomeru",
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0193L01U11",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0193L01U11",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0193L01U11",
+    "set": {
+     "target_text": "今日は忙しすぎる。ごめん",
+     "target1_audio_id": "83a1e8a4-e2c7-443d-8c37-5392e621ed27",
+     "target2_audio_id": "c43a5549-ef84-45cf-b6da-508aa92e77d2",
+     "target_text_roman": "kyoo wa isogashisugiru. gomen.",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0176L02B03",
+     "seed_number": 176,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "ask if. I'll",
+     "target_text": "か聞いてみる",
+     "word_count": 7,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:55:54.811Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "aca08393-f573-4e48-b15e-d2e78e24f619",
+     "target1_audio_id": "e7451381-7866-44c9-95f4-47dd40523a02",
+     "target2_audio_id": "ae7419fc-7468-47f4-b34f-b41dcac393be",
+     "qa_checked": "2026-02-11T16:30:46.933Z",
+     "target1_duration_ms": 2328,
+     "target2_duration_ms": 2304,
+     "lego_id": null,
+     "target_text_roman": "ka kiite miru",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "I'll ask if",
+       "legoId": "S0176L02",
+       "target": "か聞いてみる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "か",
+       "r": "ka",
+       "salient": true
+      },
+      {
+       "n": "聞いて",
+       "r": "kiite",
+       "salient": true
+      },
+      {
+       "n": "みる。",
+       "r": "miru",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0173L02U11",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0173L02U11",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0173L02U11",
+    "set": {
+     "target_text": "大丈夫。自分でできる",
+     "target1_audio_id": "545c0428-6630-4c64-b7f7-fb76a29019bf",
+     "target2_audio_id": "e3f7db37-8fd4-4e51-8f1e-d201a9b0c432",
+     "target_text_roman": "daijoobu. jibun de dekiru.",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0173L02B03",
+     "seed_number": 173,
+     "lego_index": 2,
+     "position": 3,
+     "known_text": "manage. I can",
+     "target_text": "できる",
+     "word_count": 4,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:55:53.693Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "2a966e21-7afb-4159-bb08-016f7d547da0",
+     "target1_audio_id": "714d05fb-4a3f-441a-bfa3-41733031b5ee",
+     "target2_audio_id": "f4e7390f-1c38-4745-96e8-fd3b55124c8e",
+     "qa_checked": "2026-02-11T16:30:46.933Z",
+     "target1_duration_ms": 1896,
+     "target2_duration_ms": 1800,
+     "lego_id": null,
+     "target_text_roman": "dekiru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "manage",
+       "legoId": "S0173L02",
+       "target": "できる",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "できる。",
+       "r": "dekiru.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0096L02U09",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0096L02U09",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0096L02U09",
+    "set": {
+     "target_text": "まだ準備できてない。もう少し時間がいる",
+     "target1_audio_id": "05a4255a-befa-49f9-a470-f255c9139052",
+     "target2_audio_id": "3b065743-f946-4c52-9b61-f9f298f5bc23",
+     "target_text_roman": "mada junbi dekite nai. moo sukoshi jikan ga iru.",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0073L03U09",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0073L03U09",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0073L03U09",
+    "set": {
+     "target_text": "ありがとう。でも、まだ学ぶことがある",
+     "target1_audio_id": "85e3924d-93e5-44cb-a0a8-7d73fec191b8",
+     "target2_audio_id": "1a1daa91-1774-4f93-a372-4185b8fc8692",
+     "target_text_roman": "arigatoo demo mada manabu koto ga aru",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01U01",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "she didn't want to",
+     "target_text": "彼女はしたくなかった",
+     "word_count": 11,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:31.576Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b7eb96a8-f706-4122-b723-2856c9b4438e",
+     "target1_audio_id": "80a644ae-5c43-4733-8a91-fceb3538ea87",
+     "target2_audio_id": "1b28bf61-da0e-4e71-850c-6d56587f1613",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった。",
+       "r": "shitakunakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01U06",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "why didn't she want to do it?",
+     "target_text": "なんで彼女はしたくなかった？",
+     "word_count": 14,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:31.577Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ab6013b7-fa5e-433e-a1f4-ff4c938f2fa1",
+     "target1_audio_id": "46782dd1-a4ac-4eec-a8b3-e3a9775c3971",
+     "target2_audio_id": "57354f0d-47e7-4ac9-bec7-58668df035e6",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 2080,
+     "lego_id": null,
+     "target_text_roman": "nande kanojo wa shitakunakatta?",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "why",
+       "legoId": "S0021L02",
+       "target": "なんで",
+       "isGhost": false
+      },
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "なんで",
+       "r": "nande",
+       "salient": false
+      },
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった？",
+       "r": "shitakunakatta?",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01U08",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "she didn't want to but it's important",
+     "target_text": "彼女はしたくなかったけど大事",
+     "word_count": 15,
+     "lego_count": 7,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:31.577Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "7115233a-2f12-480b-98f9-9cb7793d5a3e",
+     "target1_audio_id": "07633703-23b8-475d-9f44-aa2b5c9d6421",
+     "target2_audio_id": "bfd00c4a-3e76-43c8-be97-639690e24487",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 2080,
+     "target2_duration_ms": 2160,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta kedo daiji.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "け",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ど",
+       "isGhost": true
+      },
+      {
+       "known": "it's important to",
+       "legoId": "S0065L01",
+       "target": "大事",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった",
+       "r": "shitakunakatta",
+       "salient": true
+      },
+      {
+       "n": "けど",
+       "r": "kedo",
+       "salient": false
+      },
+      {
+       "n": "大事。",
+       "r": "daiji.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01U02",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "she didn't want to do it",
+     "target_text": "彼女はしたくなかった",
+     "word_count": 11,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 6,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:40:31.577Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "eb57fc9f-ed81-43af-b977-34320313e80b",
+     "target1_audio_id": "80a644ae-5c43-4733-8a91-fceb3538ea87",
+     "target2_audio_id": "1b28bf61-da0e-4e71-850c-6d56587f1613",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった。",
+       "r": "shitakunakatta.",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01B02",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "she didn't want to",
+     "target_text": "彼女はしたくなかった",
+     "word_count": 10,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b7eb96a8-f706-4122-b723-2856c9b4438e",
+     "target1_audio_id": "80a644ae-5c43-4733-8a91-fceb3538ea87",
+     "target2_audio_id": "1b28bf61-da0e-4e71-850c-6d56587f1613",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった",
+       "r": "shitakunakatta",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01B01",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "she didn't want to",
+     "target_text": "彼女はしたくなかった",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "b7eb96a8-f706-4122-b723-2856c9b4438e",
+     "target1_audio_id": "80a644ae-5c43-4733-8a91-fceb3538ea87",
+     "target2_audio_id": "1b28bf61-da0e-4e71-850c-6d56587f1613",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった",
+       "r": "shitakunakatta",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01B04",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "I think she didn't want to",
+     "target_text": "彼女はしたくなかったと思う",
+     "word_count": 13,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "fd532758-8fed-4e98-a037-cb3fd685abdf",
+     "target1_audio_id": "ac2e1ad4-08f6-4731-89ef-c6fd30fda9d7",
+     "target2_audio_id": "0675b761-fcc9-45c1-a618-6afa10fba20d",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 2000,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta to omou",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "思",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "う",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった",
+       "r": "shitakunakatta",
+       "salient": true
+      },
+      {
+       "n": "と",
+       "r": "to",
+       "salient": false
+      },
+      {
+       "n": "思う",
+       "r": "omou",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0070L01B03",
+     "seed_number": 70,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "she didn't want to do it",
+     "target_text": "彼女はしたくなかった",
+     "word_count": 10,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:40:31.615Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "eb57fc9f-ed81-43af-b977-34320313e80b",
+     "target1_audio_id": "80a644ae-5c43-4733-8a91-fceb3538ea87",
+     "target2_audio_id": "1b28bf61-da0e-4e71-850c-6d56587f1613",
+     "qa_checked": "2026-02-11T16:30:25.416Z",
+     "target1_duration_ms": 3120,
+     "target2_duration_ms": 2952,
+     "lego_id": null,
+     "target_text_roman": "kanojo wa shitakunakatta",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0070L01",
+       "target": "彼女",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "は",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": 2165,
+     "display_tiling": [
+      {
+       "n": "彼女",
+       "r": "kanojo",
+       "salient": true
+      },
+      {
+       "n": "は",
+       "r": "wa",
+       "salient": true
+      },
+      {
+       "n": "したくなかった",
+       "r": "shitakunakatta",
+       "salient": true
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "event_id": "0c595880-dbed-4d8e-888e-5067b9376443",
+  "undo_file": "2026-11-23T22-53-02-572Z-0c595880-dbed-4d8e-888e-5067b9376443.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0248L02U08",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0248L02U08",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0248L02U08",
+    "set": {
+     "target_text": "あの映画、ひどかった。お金返してほしい",
+     "target1_audio_id": "854ae158-119f-488e-bc61-07877a5fb801",
+     "target2_audio_id": "67ff8493-7226-495a-a83e-4d4129ef7f56",
+     "target_text_roman": "ano eiga hidokatta okane kaeshite hoshii",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0240L02U03",
+     "seed_number": 240,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "I have to stop talking",
+     "target_text": "話すのを止めるしかない",
+     "word_count": 12,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-11T15:56:09.232Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:56:09.267Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ad2624f7-16ed-4610-af14-35a64c44fac2",
+     "target1_audio_id": "f9726d2c-c435-4451-b330-f63972e11b8a",
+     "target2_audio_id": "2a500b28-54a6-423e-af79-722a49b192a2",
+     "qa_checked": "2026-02-11T16:31:42.228Z",
+     "target1_duration_ms": 1680,
+     "target2_duration_ms": 1840,
+     "lego_id": null,
+     "target_text_roman": "hanasu no o tomeru shika nai.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "話す",
+       "r": "hanasu",
+       "salient": true
+      },
+      {
+       "n": "の",
+       "r": "no",
+       "salient": true
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": true
+      },
+      {
+       "n": "止める",
+       "r": "tomeru",
+       "salient": true
+      },
+      {
+       "n": "しか",
+       "r": "shika",
+       "salient": false
+      },
+      {
+       "n": "ない。",
+       "r": "nai.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02U02",
+    "set": {
+     "known_text": "I need to stop talking",
+     "target_text": "話すのを止める必要がある",
+     "word_count": 13,
+     "known_audio_id": "16be9739-ffe2-4840-946f-9485c7cf8edd",
+     "target1_audio_id": "9bb0f4ae-f87d-47d4-b257-9d86f9d09a34",
+     "target2_audio_id": "44cfa75d-3fbc-4882-bc1c-ae179972cf1d",
+     "target_text_roman": "hanasu no o tomeru hitsuyoo ga aru.",
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02U04",
+    "set": {
+     "known_text": "I can stop talking",
+     "target_text": "話すのを止めることができる",
+     "word_count": 14,
+     "known_audio_id": "cb3ef403-4766-4003-bd2a-80e0f49e087d",
+     "target1_audio_id": "213df69f-06ad-4be0-8a6b-7350dfeab1ed",
+     "target2_audio_id": "6b1cff4b-c867-47d5-a4dd-d9dced8fe2b9",
+     "target_text_roman": "hanasu no o tomeru koto ga dekiru.",
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "manage",
+       "legoId": "S0173L02",
+       "target": "できる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02U07",
+    "set": {
+     "known_text": "I really need to stop talking",
+     "target_text": "本当に話すのを止める必要がある",
+     "word_count": 16,
+     "known_audio_id": "86ae0037-8051-48a6-a345-7fb3816c0bdf",
+     "target1_audio_id": "cc997aa7-fa24-4133-b445-db636e22c4e0",
+     "target2_audio_id": "5cd00606-1e4a-47fb-a034-03ad9f0cd884",
+     "target_text_roman": "hontoo ni hanasu no o tomeru hitsuyoo ga aru.",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "本",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "当",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "に",
+       "isGhost": true
+      },
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02U01",
+    "set": {
+     "known_text": "I'll stop talking now",
+     "target_text": "今、話すのを止める",
+     "known_audio_id": "e45a9f77-af61-4159-bc57-d1fff0fbfa71",
+     "target1_audio_id": "b1e00f32-fc15-43e7-913f-d68b41991a82",
+     "target2_audio_id": "fc5893a5-4f89-4f09-a5f6-c15e99317c37",
+     "target_text_roman": "ima, hanasu no o yameru.",
+     "decomposition": [
+      {
+       "known": "now",
+       "legoId": "S0001L04",
+       "target": "今",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B03",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B03",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B03",
+    "set": {
+     "known_text": "I'll stop talking",
+     "target_text": "話すのを止める",
+     "word_count": 8,
+     "known_audio_id": "7fdce951-0344-4f21-9a97-ca6de65b2da6",
+     "target1_audio_id": "03e699a7-a5c5-459a-90c1-cb2ab81b533f",
+     "target2_audio_id": "0404dde2-00e7-44c3-bd5b-86660c0c2e99",
+     "target_text_roman": "hanasu no o tomeru.",
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "jpn_for_eng:S0240L02B04",
+     "seed_number": 240,
+     "lego_index": 2,
+     "position": 6,
+     "known_text": "I need to stop talking",
+     "target_text": "話すのを止める必要がある",
+     "word_count": 13,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T15:56:09.267Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "16be9739-ffe2-4840-946f-9485c7cf8edd",
+     "target1_audio_id": "9bb0f4ae-f87d-47d4-b257-9d86f9d09a34",
+     "target2_audio_id": "44cfa75d-3fbc-4882-bc1c-ae179972cf1d",
+     "qa_checked": "2026-02-11T16:31:42.228Z",
+     "target1_duration_ms": 1920,
+     "target2_duration_ms": 2080,
+     "lego_id": null,
+     "target_text_roman": "hanasu no o tomeru hitsuyoo ga aru.",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": [
+      {
+       "n": "話す",
+       "r": "hanasu",
+       "salient": true
+      },
+      {
+       "n": "の",
+       "r": "no",
+       "salient": true
+      },
+      {
+       "n": "を",
+       "r": "o",
+       "salient": true
+      },
+      {
+       "n": "止める",
+       "r": "tomeru",
+       "salient": true
+      },
+      {
+       "n": "必要",
+       "r": "hitsuyoo",
+       "salient": false
+      },
+      {
+       "n": "が",
+       "r": "ga",
+       "salient": false
+      },
+      {
+       "n": "ある。",
+       "r": "aru.",
+       "salient": false
+      }
+     ],
+     "display_tiling_version": 22,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0240L02B02",
+    "set": {
+     "known_text": "stop talking",
+     "target_text": "話すのを止める",
+     "word_count": 7,
+     "known_audio_id": "0fbe7299-8e15-4baa-a5a4-3a9e796241eb",
+     "target1_audio_id": "a53bd4c0-eb51-41b0-82ee-8fac596c7a07",
+     "target2_audio_id": "036a568f-5632-44e8-8f70-f5c5f1cc86f2",
+     "target_text_roman": "hanasu no o tomeru",
+     "decomposition": [
+      {
+       "known": "stop talking",
+       "legoId": "S0240L02",
+       "target": "話すのを止める",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "event_id": "829d5b5c-2537-4c90-8b9b-94b8f33ba23d",
+  "undo_file": "2026-11-23T22-54-31-053Z-829d5b5c-2537-4c90-8b9b-94b8f33ba23d.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02U01",
+    "set": {
+     "known_text": "how will she find out?",
+     "target_text": "彼女はどうやって知る？",
+     "word_count": 11,
+     "known_audio_id": "932c4931-f569-48db-acda-bb360d6d3779",
+     "target1_audio_id": "f3c20bde-a93c-4a64-ad3f-aaeefc298cd3",
+     "target2_audio_id": "24ed7837-fb8d-4999-b51d-d01b0064d010",
+     "target_text_roman": "kanojo wa doo yatte shiru?",
+     "decomposition": [
+      {
+       "known": "she",
+       "legoId": "S0017L03",
+       "target": "彼女は",
+       "isGhost": false
+      },
+      {
+       "known": "how",
+       "legoId": "S0043L02",
+       "target": "どう",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "や",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02U06",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02U06",
+    "set": {
+     "known_text": "how can we find out the answer?",
+     "target_text": "どうやって答えを知ることができる？",
+     "word_count": 17,
+     "known_audio_id": "b01e275b-3d80-42d6-8a64-efde431fd65e",
+     "target1_audio_id": "3f9915e2-26ce-4b6c-987c-ac3591fb6a2f",
+     "target2_audio_id": "6174d53a-297e-4986-9b49-0a567799c71b",
+     "target_text_roman": "doo yatte kotae o shiru koto dekiru?",
+     "decomposition": [
+      {
+       "known": "how",
+       "legoId": "S0043L02",
+       "target": "どう",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "や",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "the answer",
+       "legoId": "S0017L02",
+       "target": "答えを",
+       "isGhost": false
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "manage",
+       "legoId": "S0173L02",
+       "target": "できる",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02U04",
+    "set": {
+     "known_text": "did you find out what to do?",
+     "target_text": "何をするか知ることができた？",
+     "word_count": 14,
+     "known_audio_id": "83c6e2b8-f48d-4012-9ca4-ae6b2dc8140e",
+     "target1_audio_id": "a928c561-a54d-4d49-aec9-9c22af001859",
+     "target2_audio_id": "4a3d73fa-79de-4c72-ad66-7f9bf07936b8",
+     "target_text_roman": "nani o suru ka shiru koto ga dekita?",
+     "decomposition": [
+      {
+       "known": "what to do",
+       "legoId": "S0059L03",
+       "target": "何をするか",
+       "isGhost": false
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "こ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "き",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02U03",
+    "set": {
+     "known_text": "I need to find out if it's true",
+     "target_text": "本当かどうか知る必要がある",
+     "word_count": 14,
+     "known_audio_id": "c6793206-51ba-47d7-821b-de4c3ff5f8fd",
+     "target1_audio_id": "c59b8234-84a9-4c9e-83c1-ac88d62349ff",
+     "target2_audio_id": "6e644698-126a-4404-9c20-df7d1c70fba8",
+     "target_text_roman": "hontoo ka doo ka shiru hitsuyoo ga aru.",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "本",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "当",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "how",
+       "legoId": "S0043L02",
+       "target": "どう",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "必",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "要",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "る",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B01",
+    "set": {
+     "known_text": "find out now?",
+     "target_text": "今知る？",
+     "word_count": 4,
+     "known_audio_id": "08e38a45-4e55-4ffb-bc44-5c6c785c4b8a",
+     "target1_audio_id": "300fdbec-fa11-4cee-a684-d4365e4685a0",
+     "target2_audio_id": "d1cbb494-272f-4d15-94aa-b8bf9b83a390",
+     "target_text_roman": "ima shiru?",
+     "decomposition": [
+      {
+       "known": "now",
+       "legoId": "S0001L04",
+       "target": "今",
+       "isGhost": false
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B02",
+    "set": {
+     "known_text": "when will you find out?",
+     "target_text": "いつ知る？",
+     "word_count": 5,
+     "known_audio_id": "45d6e3e2-df9c-4169-aa1d-6133bcdc536d",
+     "target1_audio_id": "55f504a5-59e5-4f4b-905e-d1eef94616b2",
+     "target2_audio_id": "cf44ee9d-3529-4c4e-8600-0377e5cf2793",
+     "target_text_roman": "itsu shiru?",
+     "decomposition": [
+      {
+       "known": "when",
+       "legoId": "S0081L01",
+       "target": "いつ",
+       "isGhost": false
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B03",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B03",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0251L02B03",
+    "set": {
+     "known_text": "let's find out together",
+     "target_text": "一緒に知る",
+     "word_count": 6,
+     "known_audio_id": "f7b0ed6b-3b79-445e-8c14-86b8dde0580c",
+     "target1_audio_id": "9b598c31-924a-4dfc-b193-847fbe3bb25b",
+     "target2_audio_id": "3cdd15fa-1694-4155-b4a6-51a0342ab91d",
+     "target_text_roman": "issho ni shiru.",
+     "decomposition": [
+      {
+       "known": "together",
+       "legoId": "S0001L03",
+       "target": "一緒に",
+       "isGhost": false
+      },
+      {
+       "known": "find out",
+       "legoId": "S0251L02",
+       "target": "知る",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 7,
+  "status": 200,
+  "event_id": "c6e7af25-8404-4a8c-8019-9c84a515c98c",
+  "undo_file": "2026-11-23T22-55-39-617Z-c6e7af25-8404-4a8c-8019-9c84a515c98c.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U06",
+    "set": {
+     "known_text": "my mother said an email came about something important",
+     "target_text": "母が大事なことについてメールが来たと言った",
+     "word_count": 22,
+     "known_audio_id": "553621bc-db1c-41b5-b8a7-bbe1eacdf128",
+     "target1_audio_id": "9037f1d8-f943-4ee4-ba36-2adb65586595",
+     "target2_audio_id": "63b2e0c8-d72a-4c78-8098-1e2e6513c655",
+     "target_text_roman": "haha ga daiji na koto ni tsuite meeru ga kita to itta.",
+     "decomposition": [
+      {
+       "known": "mother",
+       "legoId": "S0181L02",
+       "target": "母",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "something important",
+       "legoId": "S0261L01",
+       "target": "大事なこと",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "に",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "つ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "言",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "っ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U08",
+    "set": {
+     "known_text": "my father told me an email came from you yesterday",
+     "target_text": "父が昨日、あなたからメールが来たと教えてくれた",
+     "word_count": 24,
+     "known_audio_id": "2a9073cc-e0ed-40a3-97c2-bd7219a3290c",
+     "target1_audio_id": "9a532d3b-cba5-455d-801c-b49eff9de36b",
+     "target2_audio_id": "05909714-5f8c-4b5c-bcaa-4268c7bf98d6",
+     "target_text_roman": "chichi ga kinoo, anata kara meeru ga kita to oshiete kureta.",
+     "decomposition": [
+      {
+       "known": "father",
+       "legoId": "S0240L01",
+       "target": "父",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "が",
+       "isGhost": true
+      },
+      {
+       "known": "yesterday",
+       "legoId": "S0030L02",
+       "target": "昨日",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "な",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "教",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "え",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "く",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "れ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U09",
+    "set": {
+     "known_text": "I think an email came from that woman I was talking to at the restaurant",
+     "target_text": "レストランで話してたあの女性からメールが来たと思う",
+     "word_count": 26,
+     "known_audio_id": "5997c5a4-9b07-4bca-b584-32d7d1fc6d42",
+     "target1_audio_id": "9de49eda-6d24-4f87-a31c-780be7571c5e",
+     "target2_audio_id": "021c07e5-2838-4d6f-b9a4-10fe646e3a7c",
+     "target_text_roman": "resutoran de hanashiteta ano josei kara meeru ga kita to omou.",
+     "decomposition": [
+      {
+       "known": "restaurant",
+       "legoId": "S0156L01",
+       "target": "レストラン",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "で",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "話",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "し",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "の",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "女",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "性",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I think that",
+       "legoId": "S0163L01",
+       "target": "と思う",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B01",
+    "set": {
+     "known_text": "emails came",
+     "target_text": "メールが来た",
+     "word_count": 6,
+     "known_audio_id": "cfcdf2fb-abae-412e-8afb-dfa027a5eea5",
+     "target1_audio_id": "08e057aa-c23c-4e5c-ae95-9c7fc05be518",
+     "target2_audio_id": "28810909-901b-4eb3-9724-d7036cada41a",
+     "target_text_roman": "meeru ga kita",
+     "decomposition": [
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B04",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B04",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B04",
+    "set": {
+     "known_text": "an email came from my teacher",
+     "target_text": "先生からメールが来た",
+     "word_count": 11,
+     "known_audio_id": "ca35ea05-a91d-4607-81bd-6e50e94f6c4f",
+     "target1_audio_id": "8876d127-479c-4f13-8fc2-c0218e1b18c1",
+     "target2_audio_id": "85975577-76ad-4eaa-a694-e5f2bccf2d76",
+     "target_text_roman": "sensei kara meeru ga kita.",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "先",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "生",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B02",
+    "set": {
+     "known_text": "an email came",
+     "target_text": "メールが来た",
+     "word_count": 7,
+     "known_audio_id": "03a9b830-65fb-4d75-82e4-0d16528dd72d",
+     "target1_audio_id": "08e057aa-c23c-4e5c-ae95-9c7fc05be518",
+     "target2_audio_id": "28810909-901b-4eb3-9724-d7036cada41a",
+     "target_text_roman": "meeru ga kita.",
+     "decomposition": [
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B03",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B03",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03B03",
+    "set": {
+     "known_text": "did an email come?",
+     "target_text": "メールが来た？",
+     "word_count": 7,
+     "known_audio_id": "adf95309-9124-4ede-95dd-9b0ed0a7f449",
+     "target1_audio_id": "5a84990a-f480-486b-b58f-f1efa08e84d5",
+     "target2_audio_id": "cc93a8e8-d36e-48be-b43d-af8971b1540f",
+     "target_text_roman": "meeru ga kita?",
+     "decomposition": [
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 8,
+  "status": 200,
+  "event_id": "fe165d84-8f54-4e01-84ef-75e3e811573a",
+  "undo_file": "2026-11-23T22-56-55-945Z-fe165d84-8f54-4e01-84ef-75e3e811573a.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 193,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 173,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 130,
+    "set": {
+     "approved_at": "2026-07-03T14:07:19.450Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 96,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 73,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "jpn_for_eng:S0130L02U07"
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U02",
+    "set": {
+     "known_text": "I want to know if an email came from my friend",
+     "target_text": "友だちからメールが来たか知りたい",
+     "word_count": 17,
+     "known_audio_id": "c341efa0-de85-4d96-9a8a-4b51b09f7317",
+     "target1_audio_id": "3f86da34-5b5f-4b7f-9ac0-25c43f09d942",
+     "target2_audio_id": "2190f737-a2b4-4bd4-9eea-fa9391a4e53e",
+     "target_text_roman": "tomodachi kara meeru ga kita ka shiritai.",
+     "decomposition": [
+      {
+       "known": "friends",
+       "legoId": "S0110L01",
+       "target": "友だち",
+       "isGhost": false
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "か",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "知",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "り",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "た",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U01",
+    "set": {
+     "known_text": "an email came from my old friend yesterday",
+     "target_text": "昨日、古い友だちからメールが来た",
+     "word_count": 17,
+     "known_audio_id": "3f9abba4-dfa8-4e4e-9e0c-fba69ed313ed",
+     "target1_audio_id": "f930e203-8f39-4aef-a0a7-7fb3fce360d4",
+     "target2_audio_id": "1ee9d736-639f-4b67-8534-ff6f8e0226f0",
+     "target_text_roman": "kinoo furui tomodachi kara meeru ga kita",
+     "decomposition": [
+      {
+       "known": "yesterday",
+       "legoId": "S0030L02",
+       "target": "昨日",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "old friend",
+       "legoId": "S0266L01",
+       "target": "古い友だち",
+       "isGhost": false
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U04",
+    "set": {
+     "known_text": "I heard that an email came from the old man",
+     "target_text": "年配の男性からメールが来たと聞いた",
+     "word_count": 18,
+     "known_audio_id": "c5771423-c131-4a8c-8484-6592f2d53f9d",
+     "target1_audio_id": "53aed64b-bea3-4a15-bb05-ea1c5bf0c2b5",
+     "target2_audio_id": "9c527484-2077-41ba-9d1f-040acf415531",
+     "target_text_roman": "nenpai no dansei kara meeru ga kita to kiita",
+     "decomposition": [
+      {
+       "known": "old man",
+       "legoId": "S0264L01",
+       "target": "年配の男性",
+       "isGhost": false
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "と",
+       "isGhost": true
+      },
+      {
+       "known": "heard",
+       "legoId": "S0196L01",
+       "target": "聞いた",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U03",
+    "set": {
+     "known_text": "did an email come from your friend about the plan?",
+     "target_text": "友だちから予定についてメールが来た？",
+     "word_count": 18,
+     "known_audio_id": "e14cbdd6-5ab8-4147-b636-871008f8b64d",
+     "target1_audio_id": "b6351ff8-dc38-48b8-b359-3a4d6da9cac2",
+     "target2_audio_id": "e2934fb8-31ea-4b03-be9b-df9976b86e3b",
+     "target_text_roman": "tomodachi kara yotee ni tsuite meeru ga kita?",
+     "decomposition": [
+      {
+       "known": "friends",
+       "legoId": "S0110L01",
+       "target": "友だち",
+       "isGhost": false
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "予",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "定",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "に",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "つ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "？",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U05",
+    "set": {
+     "known_text": "an email came from my teacher about work yesterday",
+     "target_text": "昨日、先生から仕事についてメールが来た",
+     "word_count": 20,
+     "known_audio_id": "e7f0b271-3e68-4631-919c-48dec456c6df",
+     "target1_audio_id": "3ac47c91-61f3-4ad2-bcfd-e17f123da9b6",
+     "target2_audio_id": "6d3aade6-d71d-4f90-9a72-249b51519e86",
+     "target_text_roman": "kinoo sensee kara shigoto ni tsuite meeru ga kita",
+     "decomposition": [
+      {
+       "known": "yesterday",
+       "legoId": "S0030L02",
+       "target": "昨日",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "先",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "生",
+       "isGhost": true
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "仕",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "事",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "に",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "つ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "い",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "て",
+       "isGhost": true
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0268L03U07",
+    "set": {
+     "known_text": "I think an email came from that old man last week",
+     "target_text": "先週、あの年配の男性からメールが来たと思う",
+     "word_count": 22,
+     "known_audio_id": "ffaeecb7-5cf4-4bd3-944b-9d037c4d513a",
+     "target1_audio_id": "9c6392ef-c3e9-4dbf-a597-bf7cf9c47610",
+     "target2_audio_id": "3feef57e-3124-4236-b6b9-6500e4572799",
+     "target_text_roman": "senshuu, ano nenpai no dansei kara meeru ga kita to omou.",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "先",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "週",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "、",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "あ",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "の",
+       "isGhost": true
+      },
+      {
+       "known": "old man",
+       "legoId": "S0264L01",
+       "target": "年配の男性",
+       "isGhost": false
+      },
+      {
+       "known": "because",
+       "legoId": "S0022L02",
+       "target": "から",
+       "isGhost": false
+      },
+      {
+       "known": "emails came",
+       "legoId": "S0268L03",
+       "target": "メールが来た",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I think that",
+       "legoId": "S0163L01",
+       "target": "と思う",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "。",
+       "isGhost": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 9,
+  "status": 200,
+  "event_id": "2b4808ef-5353-4f26-87c2-93d0824634a2",
+  "undo_file": "2026-11-23T22-57-01-320Z-2b4808ef-5353-4f26-87c2-93d0824634a2.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 268,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 248,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 240,
+    "set": {
+     "approved_at": "2026-06-17T22:02:21.188Z"
+    }
+   }
+  ],
+  "ops": 3
+ }
+]

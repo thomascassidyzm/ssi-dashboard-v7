@@ -1,0 +1,406 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p18-s264-300.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T22:58:01.513Z",
+ "seeds": {
+  "264": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "265": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "266": {
+   "before": [
+    "L3: 1 phrase(s) fail containment",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"he was an old man who was trying to tell me something important\""
+   ],
+   "after": [
+    "L3: 1 phrase(s) fail containment",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"he was an old man who was trying to tell me something important\""
+   ],
+   "newFailures": []
+  },
+  "270": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "274": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"do you have to leave?\""
+   ],
+   "after": [
+    "L2: USE: need 5+, got 3"
+   ],
+   "newFailures": [
+    "L2: USE: need 5+, got 3"
+   ]
+  },
+  "275": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "276": {
+   "before": [
+    "L3: 3 duplicate phrase(s) within this LEGO: \"I can stay\", \"I can stay today but I have to leave tomorrow\", \"no I can stay here for a little longer\""
+   ],
+   "after": [
+    "L3: 3 duplicate phrase(s) within this LEGO: \"I can stay\", \"I can stay today but I have to leave tomorrow\", \"no I can stay here for a little longer\""
+   ],
+   "newFailures": []
+  },
+  "277": {
+   "before": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I've got\""
+   ],
+   "after": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I've got\""
+   ],
+   "newFailures": []
+  },
+  "288": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"most people I know like watching television\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"most people I know like watching television\""
+   ],
+   "newFailures": []
+  },
+  "291": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I hope I'll be able to speak better soon\", \"I hope I'll be able to speak better soon. do you know my sister's friend?\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I hope I'll be able to speak better soon\", \"I hope I'll be able to speak better soon. do you know my sister's friend?\""
+   ],
+   "newFailures": []
+  },
+  "294": {
+   "before": [
+    "L1: BUILD: need 3+, got 1"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1"
+   ],
+   "newFailures": []
+  },
+  "297": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "299": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "300": {
+   "before": [
+    "L1: USE: need 5+, got 4 (7 component phrases excluded)"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 4 (7 component phrases excluded)"
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0264L01U02",
+   "seed": 264,
+   "role": "use",
+   "target": "that man you were talking to yesterday was an old man who wanted to ask for help",
+   "old": "昨日話していたあの方は年配の男の人で助けが必要でした",
+   "new": "昨日あなたが話していたあの男の人は、助けを求めたかった年配の男の人でした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0265L01U02",
+   "seed": 265,
+   "role": "use",
+   "target": "a friend was trying to say something important yesterday but I don't know what",
+   "old": "友達が昨日大事なことを言おうとしていたがわからなかった",
+   "new": "友達が昨日大事なことを言おうとしていましたが、何かわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0265L01U10",
+   "seed": 265,
+   "role": "use",
+   "target": "an old man who is a friend of my father, I met him yesterday",
+   "old": "年配の男の人は父の友達で昨日会いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0266L03U04",
+   "seed": 266,
+   "role": "use",
+   "target": "he was a friend of my father but I have not seen him for a while",
+   "old": "彼は父の友達でしたがしばらく会っていませんでした",
+   "new": "彼は父の友達でしたが、しばらく会っていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0266L03U05",
+   "seed": 266,
+   "role": "use",
+   "target": "he was trying to say something important but I don't know what",
+   "old": "彼は大事なことを話そうとしていましたが私にはわかりませんでした",
+   "new": "彼は大事なことを言おうとしていましたが、何かわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0266L03U11",
+   "seed": 266,
+   "role": "use",
+   "target": "he was a friend of my father but I met him yesterday",
+   "old": "彼は父の友達でしたが昨日初めてお会いしました",
+   "new": "彼は父の友達でしたが、昨日会いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0266L03U12",
+   "seed": 266,
+   "role": "use",
+   "target": "he was someone I was looking for but I don't know who you mean",
+   "old": "彼は私が探していた人でしたが誰のことかわかりませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0270L02U05",
+   "seed": 270,
+   "role": "use",
+   "target": "I'm worried that I'm going to be late to the meeting",
+   "old": "心配だから、会議に遅れると思います",
+   "new": "会議に遅れるのが心配です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0274L01B06",
+   "seed": 274,
+   "role": "build",
+   "target": "are you going to meet me in a few days?",
+   "old": "数日後に会えますか？",
+   "new": "数日後に私に会うつもりですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0274L01U08",
+   "seed": 274,
+   "role": "use",
+   "target": "I think I'll be ready in a few days and I'd like to practise speaking with you",
+   "old": "数日後に準備ができると思います。一緒に練習しましょう",
+   "new": "数日後に準備ができると思いますし、あなたと話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0274L02U02",
+   "seed": 274,
+   "role": "use",
+   "target": "do you have to leave in a few days because I'll be able to help you?",
+   "old": "数日後に出発しなければなりませんか？それまでにお手伝いできます",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "id": "S0274L02U06",
+   "seed": 274,
+   "role": "use",
+   "target": "do you have to leave now because I wanted to help you?",
+   "old": "もう出発しなければなりませんか？手伝いたかったのですが",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "id": "S0275L01U06",
+   "seed": 275,
+   "role": "use",
+   "target": "I'm not going to wait longer because I've got too much work today",
+   "old": "もっと長く待てません。今日は仕事が多すぎます",
+   "new": "今日は仕事が多すぎるので、もっと長く待つつもりはありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0276L01B05",
+   "seed": 276,
+   "role": "build",
+   "target": "I want to practise speaking here",
+   "old": "ここで一緒に練習したいです",
+   "new": "ここで話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0276L01B06",
+   "seed": 276,
+   "role": "build",
+   "target": "I want to talk with you here",
+   "old": "ここで一緒に話しましょう",
+   "new": "ここであなたと話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0276L03U05",
+   "seed": 276,
+   "role": "use",
+   "target": "I can stay here for a little longer because I'm going to leave in a few days",
+   "old": "ここにもう少し長くいられます。数日後に出発する予定です",
+   "new": "数日後に出るつもりなので、ここにもう少し長くいられます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0276L03U06",
+   "seed": 276,
+   "role": "use",
+   "target": "I can stay today so I'd like to practise speaking with you",
+   "old": "今日はいられます。一緒に練習しましょう",
+   "new": "今日はいられるので、あなたと話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0277L04U07",
+   "seed": 277,
+   "role": "use",
+   "target": "I've got something important to tell you can you stay here for a little longer?",
+   "old": "言いたいことがあります。ここで待っていられますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0288L01U07",
+   "seed": 288,
+   "role": "use",
+   "target": "most people I know like watching television. she speaks English so she likes people who like speaking English",
+   "old": "私が知っている人のほとんどはテレビを見るのが好きです。彼女は英語を話しますし、英語を話すのが好きな人たちが好きです",
+   "new": "私が知っている人のほとんどはテレビを見るのが好きです。彼女は英語を話すので、英語を話すのが好きな人たちが好きです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0291L01U07",
+   "seed": 291,
+   "role": "use",
+   "target": "I hope I'll be able to speak better soon. she speaks English so I want to speak with her",
+   "old": "もうすぐもっと上手に話せるようになるといいです。彼女は英語を話しますし、一緒に英語で話したいです",
+   "new": "もうすぐもっと上手に話せるようになるといいです。彼女は英語を話すので、彼女と話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0291L01U10",
+   "seed": 291,
+   "role": "use",
+   "target": "I hope I'll be able to speak better soon. if she's going to be there this afternoon we can speak together",
+   "old": "もうすぐもっと上手に話せるようになるといいです。今日の午後彼女がそこにいると一緒に話す練習ができます",
+   "new": "もうすぐもっと上手に話せるようになるといいです。今日の午後彼女がそこにいるなら、一緒に話せます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0294L01B01",
+   "seed": 294,
+   "role": "build",
+   "target": "I don't have enough time to call you tonight",
+   "old": "今夜あなたに電話する時間がありません",
+   "new": "今夜あなたに電話する十分な時間がありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0294L02U02",
+   "seed": 294,
+   "role": "use",
+   "target": "do you have enough time to practise speaking?",
+   "old": "英語を練習する十分な時間がありますか",
+   "new": "話す練習をする十分な時間がありますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0297L01B04",
+   "seed": 297,
+   "role": "build",
+   "target": "I don't know many people who speak English and I want to meet some",
+   "old": "英語を話す人をあまり知らないので会いたいです",
+   "new": "英語を話す人をあまり知りませんし、何人かに会いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0297L01U02",
+   "seed": 297,
+   "role": "use",
+   "target": "I don't know many people who speak English and I want to meet some",
+   "old": "英語を話す人をあまり知らないので会いたいです",
+   "new": "英語を話す人をあまり知りませんし、何人かに会いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0299L01U06",
+   "seed": 299,
+   "role": "use",
+   "target": "I said he wants to pay half",
+   "old": "彼は半分払いたいと言いました",
+   "new": "彼は半分払いたいと私は言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0300L01U10",
+   "seed": 300,
+   "role": "use",
+   "target": "she seems to know what you mean",
+   "old": "あなたの言っていることがわかっているように見えます",
+   "new": "彼女はあなたの言っていることがわかっているように見えます",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}
