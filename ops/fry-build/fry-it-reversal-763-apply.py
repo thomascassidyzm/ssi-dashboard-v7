@@ -1,7 +1,7 @@
 # cs job #763·AK (23 Nov 2026): Kai's 09:32Z reversal — fry_for_eng ENGLISH cues SAY "it" wherever the Frisian it-frame
 # carries it ("I know it" | ik wit it). English (known) side only; Frisian untouched. Copied from auke-409-apply.py.
 #   python3 ops/fry-build/fry-it-reversal-763-apply.py <family> [--apply]   (rows from fry-it-reversal-763-rows.json,
-#   posted in chunks of <=90 ops — edit-batch refuses BULK_EDIT over 100; one undo file per chunk)
+#   posted in chunks of <=30 ops (90 hit statement timeouts 23 Nov) — edit-batch refuses BULK_EDIT over 100; one undo file per chunk)
 # Everything goes through Popty: live rows are read from GET /api/production/fry_for_eng/seeds, the write is
 # POST /api/production/fry_for_eng/edit-batch (dry run first; --apply commits). No database access.
 #
@@ -79,8 +79,13 @@ def main():
     fam = sys.argv[1]; apply = '--apply' in sys.argv
     allrows = [r for r in json.load(open(f'{HERE}/fry-it-reversal-763-rows.json')) if r['family'] == fam]
     L = live()
-    for ci in range(0, len(allrows), 90):
-      texts = {'family': fam, 'rows': allrows[ci:ci + 90]}; chunk = f'{fam}-{ci // 90 + 1}'
+    # resumable: a row already carrying its new text is skipped (a batch can commit server-side under a client failure)
+    done = [r for r in allrows if L.get(r['key']) and [L[r['key']]['k'], L[r['key']]['t']] == r['new']]
+    allrows = [r for r in allrows if r not in done]
+    tag = sys.argv[sys.argv.index('--tag') + 1] if '--tag' in sys.argv else ''
+    print(f'{fam}: {len(done)} rows already live, {len(allrows)} to post')
+    for ci in range(0, len(allrows), 30):
+      texts = {'family': fam, 'rows': allrows[ci:ci + 30]}; chunk = f'{fam}{tag}-{ci // 30 + 1}'
       ops, takes = build(texts, L)
       run(texts, ops, takes, chunk, apply, L)
 

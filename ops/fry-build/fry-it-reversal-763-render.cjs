@@ -1,0 +1,139 @@
+#!/usr/bin/env node
+/**
+ * cs #763·AK (Kai's 23 Nov 09:32Z "it" reversal): voice the English rows fry-it-reversal-763-apply.py changed, and the 23
+ * it-frame intros. A copy of #428·AI/#246·AK's render-428.cjs (branch cs/246-finish-428-ai-fry-for-eng-englis) narrowed to
+ * THIS job's rows: only slots named in fry-it-reversal-763-rows.json (known, Tom-006 cast) and the 23 LEGOs in INTROS
+ * (presentation, Charlotte splice; Popty binds presentation_audio_id itself). Cap 10,000 Cartesia chars (--stop-at).
+ * S0008L04 carries Kai's own explanation; it is hard-marked human-authored after the render (authorship route).
+ * The original header follows.
+ */
+/**
+ * cs #428·AI (Kai, approved 17 Nov 2026 12:30Z, ~465k Cartesia chars, HARD STOP 600,000): render fry_for_eng's English side.
+ * POPTY HTTP ONLY — no database access of any kind:
+ *   read   GET  /api/production/fry_for_eng/seeds                      (the live rows)
+ *   audio  POST /api/audio/render                                      (library first, spend guard, one render, write-back)
+ *   link   POST /api/production/fry_for_eng/link-clip                  (fill-only: known slots → the clip the render answered)
+ * Known cues: one render per distinct text (normalizeForAudio + foldTypography), role 'known' (the course cast = Tom-006),
+ *   then every empty known slot holding those words is linked to it.
+ * Intros: ops/fry-build/intros-411.json (#411·AI), role 'presentation' + legoId — Popty splices from Charlotte pieces and
+ *   binds presentation_audio_id itself. The 3 held intros take Kai's 17 Nov ruling (heads-up shape, "it" inside the chunk).
+ * Frisian target audio is never asked for (Auke records it).
+ * A refusal is logged verbatim and skipped — never retried. A cap/stop refusal ends the run. Ledger (write-ahead, resumable): $LEDGER or ~/ssi-evidence/.../ops/fry-build/428/ledger.jsonl.
+ *   node ops/fry-build/render-428.cjs --seeds 1-20 [--concurrency 2] [--stop-at 600000]
+ */
+const fs = require('fs'), path = require('path')
+const { normalizeForAudio, foldTypography } = require('../../services/shared/text-normalize.cjs')
+const COURSE = 'fry_for_eng', POPTY = 'http://localhost:3470', WHO = 'kai-763-fry-it-reversal'
+const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
+const [lo, hi] = String(opt('--seeds', '1-668')).split('-').map(Number)
+// --again EXISTS_IN_LANGUAGE --approval 'kai:2026-11-17:<reason>': the second pass Kai approved 17 Nov 13:18Z. The voice-blind
+// EXISTS_IN_LANGUAGE refusal is deliberate (a33c9be16): a second performance in Tom-006 needs re-record authority, i.e. Kai's
+// approval token, whose ORIGIN Popty verifies from this conversation's x-cs-conv (env CS_CONV_TOKEN, never on argv). The
+// approval rides ONLY on items previously refused with --again's code; nothing else in the run carries it.
+const AGAIN = opt('--again', null), APPROVAL = opt('--approval', null)
+const againKeys = new Set()
+const DRY = argv.includes('--dry-run') // no POSTs: count + upper-bound price only
+const CONC = Number(opt('--concurrency', 2)), STOP_AT = Number(opt('--stop-at', 10000))
+const LEDGER = process.env.LEDGER || path.join(process.env.HOME, 'ssi-evidence/ssi-dashboard-v7/ops/fry-build/428/ledger.jsonl')
+fs.mkdirSync(path.dirname(LEDGER), { recursive: true })
+const PURPOSE_K = 'fry_for_eng English known cue now saying it (cs #763·AK, Kai it-reversal 23 Nov 09:32Z)'
+const PURPOSE_I = 'fry_for_eng English intro with it (cs #763·AK, Kai it-reversal 23 Nov 09:32Z)'
+// Kai 17 Nov: the three held intros use the heads-up shape with the "it" inside the chunk.
+const HELD = {
+  S0060L01: "The Frisian for: 'I don't know yet', as in — 'I don't know it yet', is:",
+  S0113L01: "The Frisian for: 'why don't I know any more', as in — 'why don't I know it any more', is:",
+  S0606L01: "The Frisian for: 'if I'd known then', as in — 'if I'd known it then', is:",
+}
+// A cap or stop refusal ends the run (the guard says "do not retry and do not split the job"): logged, reported, nothing re-asked.
+const STOP_CODES = ['DAILY_TOTAL_CAP', 'DAILY_CAP', 'POOL_SHARE', 'STOPPED_BY_TOM', 'TRIPPED']
+const stopCode = (out) => STOP_CODES.find(c => out.code === c || String(out.error || '').includes(`(402) ${c}`))
+const done = new Map(); let spent = 0
+if (fs.existsSync(LEDGER)) for (const l of fs.readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean)) {
+  const e = JSON.parse(l); if (e.kind === 'render' || (e.kind === 'refused' && e.code !== AGAIN)) { done.set(e.key, e); againKeys.delete(e.key) } else if (e.kind === 'refused' && !(done.get(e.key) || {}).audioId) { done.delete(e.key); againKeys.add(e.key) }; if (e.kind === 'render') spent += e.charsSpent || 0
+}
+const log = (e) => fs.appendFileSync(LEDGER, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n')
+const hdr = { 'Content-Type': 'application/json', 'x-agent-id': WHO, 'x-agent-role': 'audio-render' }
+async function post(p, body) {
+  const h = body.approval ? { ...hdr, 'x-cs-conv': process.env.CS_CONV_TOKEN || '' } : hdr
+  const r = await fetch(POPTY + p, { method: 'POST', headers: h, body: JSON.stringify(body) })
+  let j; try { j = await r.json() } catch { j = { ok: false, error: `non-JSON ${r.status}` } }
+  return { status: r.status, j }
+}
+
+;(async () => {
+  const seeds = (await (await fetch(`${POPTY}/api/production/${COURSE}/seeds`, { headers: { 'x-agent-id': WHO } })).json()).seeds
+  const introOf = new Map(Object.entries(JSON.parse(fs.readFileSync(path.join(__dirname, 'fry-it-reversal-763-intros.json'), 'utf8'))))
+  const mine = new Set(JSON.parse(fs.readFileSync(path.join(__dirname, 'fry-it-reversal-763-rows.json'), 'utf8')).map(r => r.key))
+  const jobs = [], groups = new Map()
+  for (const s of seeds.sort((a, b) => a.seed_number - b.seed_number)) {
+    if (s.seed_number < lo || s.seed_number > hi) continue
+    const add = (slot, text, cur) => {
+      if (cur) return; const k = 'known:' + normalizeForAudio(foldTypography(text))
+      if (!groups.has(k)) { groups.set(k, { key: k, kind: 'known', text, slots: [] }); jobs.push(groups.get(k)) }
+      groups.get(k).slots.push(slot)
+    }
+    if (mine.has('SEED' + s.seed_number)) add({ seedNumber: s.seed_number }, s.known_text, s.known_audio_id)
+    for (const l of s.legos) {
+      if (mine.has('LEGO:' + l.lego_id)) add({ legoId: l.lego_id }, l.known_text, l.known_audio_id)
+      for (const p of l.basket_phrases) if (mine.has(p.id.split(':').pop())) add({ phraseId: p.id }, p.known_text, p.known_audio_id)
+      if (l.is_new && !l.presentation_audio_id && introOf.has(l.lego_id)) jobs.push({ key: 'intro:' + l.lego_id, kind: 'intro', legoId: l.lego_id, text: introOf.get(l.lego_id) })
+    }
+  }
+  console.log(`seeds ${lo}-${hi}: ${jobs.filter(j => j.kind === 'known').length} known texts, ${jobs.filter(j => j.kind === 'intro').length} intros; ledger has ${done.size} done, ${spent} chars spent`)
+  if (DRY) {
+    // cs #763: EXACT price — every job asked of the render door with dryRun:true (library-first answers say 0).
+    let lib = 0, ren = 0, chars = 0; const refused = []
+    for (const j of jobs) {
+      const body = { courseCode: COURSE, role: j.kind === 'known' ? 'known' : 'presentation', text: j.text, purpose: j.kind === 'known' ? PURPOSE_K : PURPOSE_I, dryRun: true, ...(j.legoId ? { legoId: j.legoId } : {}) }
+      const { status, j: out } = await post('/api/audio/render', body)
+      if (!out.ok) { refused.push({ key: j.key, status, code: out.code, error: String(out.error || '').slice(0, 200) }); continue }
+      if (out.source === 'library') lib++; else ren++
+      chars += out.charsSpent || out.estimatedChars || (out.source === 'library' ? 0 : j.text.length)
+      console.log(j.kind, out.source, out.charsSpent ?? '', out.provider || out.voiceId || '', JSON.stringify(j.text))
+    }
+    console.log(JSON.stringify({ jobs: jobs.length, library: lib, toRender: ren, chars, refused }, null, 1)); return
+  }
+  let i = 0, stopped = false, why = ''
+  // A Popty restart (deploys happen under us) closes the socket mid-call. That is not a refusal: wait for health, put the
+  // item back at the end of the queue (library-first answers it free if the clip was stored), and give up after 30.
+  let transport = 0
+  const waitHealthy = async () => { for (let t = 0; t < 60; t++) { try { if ((await fetch(POPTY + '/api/audio/health')).ok) return } catch {} await new Promise(r => setTimeout(r, 5000)) } }
+  const work = async () => {
+    while (!stopped && i < jobs.length) {
+      const j = jobs[i++]
+      try { await one(j); transport = 0 } catch (e) {
+        transport++; log({ kind: 'transport', key: j.key, error: String(e && (e.cause?.code || e.message)) })
+        if (transport >= 30) { stopped = true; why = '30 transport errors in a row'; console.log('STOPPED:', why); return }
+        await waitHealthy(); await new Promise(r => setTimeout(r, 15000)); jobs.push(j)
+      }
+    }
+  }
+  const one = async (j) => {
+    {
+      const prior = done.get(j.key)
+      if (prior && prior.kind === 'refused') return
+      let audioId = prior && prior.audioId
+      if (!prior) {
+        if (spent + j.text.length * 1.2 > STOP_AT) { stopped = true; why = 'HARD STOP ' + STOP_AT; log({ kind: 'hard-stop', spent, next: j.key }); console.log('HARD STOP at', spent); return }
+        const body = { courseCode: COURSE, role: j.kind === 'known' ? 'known' : 'presentation', text: j.text, purpose: j.kind === 'known' ? PURPOSE_K : PURPOSE_I, ...(j.legoId ? { legoId: j.legoId } : {}), ...(APPROVAL && againKeys.has(j.key) ? { approval: APPROVAL } : {}) }
+        let { status, j: out } = await post('/api/audio/render', body)
+        if (!out.ok && stopCode(out)) { stopped = true; why = 'cap/stop refusal'; log({ kind: 'cap-stop', key: j.key, status, code: stopCode(out), error: out.error }); console.log('STOPPED by', stopCode(out), out.error); return }
+        if (status >= 500 && !out.code) throw new Error(`popty ${status}: ${out.error}`)
+        if (!out.ok) { log({ kind: 'refused', key: j.key, text: j.text, status, code: out.code || null, error: out.error || null, slots: j.slots || [j.legoId] }); done.set(j.key, { kind: 'refused' }); return }
+        spent += out.charsSpent || 0; audioId = out.audioId
+        const e = { kind: 'render', key: j.key, ...(body.approval ? { approval: body.approval } : {}), text: j.text, legoId: j.legoId || null, source: out.source, charsSpent: out.charsSpent || 0, audioId, voiceId: out.voiceId || null, linked: out.linked ?? null, ...(out.pieces ? { pieces: out.pieces } : {}) }
+        log(e); done.set(j.key, e)
+      }
+      if (j.kind === 'known' && audioId) {
+        for (let b = 0; b < j.slots.length; b += 500) {
+          const links = j.slots.slice(b, b + 500).map(s => ({ ...s, role: 'known', audioId }))
+          const { status, j: out } = await post(`/api/production/${COURSE}/link-clip`, { links })
+          const bad = (out.results || []).filter(r => !r.ok)
+          log({ kind: 'link', key: j.key, audioId, status, linked: out.linked ?? 0, failed: bad.length ? bad : undefined, error: out.ok === false && !out.results ? out.error : undefined })
+        }
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: CONC }, work))
+  console.log(`finished seeds ${lo}-${hi}: ${spent} chars spent in ledger total${stopped ? ` (STOPPED: ${why})` : ''}`)
+})().catch(e => { console.error(e); process.exit(1) })
