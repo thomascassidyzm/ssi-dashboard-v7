@@ -2007,12 +2007,17 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // the cast-on English reader when somebody asked for that reader by name, and to nobody by gender.
   const wantCourses = new Map([...knownSideCourses.entries(), ...byCourse.entries()])
   const wanted = await fetchRerecordWanted(db, [...wantCourses.keys()])
+  // Every clip carrying a NAMED RE-QUEUE GRANT, by clip id, for the seed and LEGO sources below
+  // (cs #896·AK): a grant on the clip a seed or LEGO slot holds puts that line back on the named
+  // reader's list, exactly as it does a pod line (podLineByClip).
+  const grantByClip = new Map()
   for (const w of wanted) {
     if (!byCourse.has(w.course_code) && !wantNamedVoiceId(w, register)) continue
     // A NAMED RE-QUEUE GRANT puts this one pod line back on one reader's list
     // (see requeueGrant). Read before every filter below, because it is about
     // the pod line this clip serves, not about the clip as a queue item.
     const grant = requeueGrant(w.rerecord_wanted)
+    if (grant) grantByClip.set(w.id, grant)
     if (grant && podLineByClip.has(w.id)) {
       const pl = podLineByClip.get(w.id)
       pl.requeueFor = grant.voiceId
@@ -2114,6 +2119,20 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // the two look identical on screen and are different rows to fill.
   const { policyVoices } = register
   let knownLinkable = 0
+  // THE GRANT ON A SEED OR LEGO SLOT'S CLIP, when it names the voice cast on that slot (Kai,
+  // 23 Nov, cs #896·AK: fifteen of Dan's cym_sv2 seed takes had no full clip and go back on his
+  // list). Without one a filled slot is a recording, as ever. The old take keeps serving until
+  // his new one lands (the take seam swaps it in place, revision kept); the grant is retired by
+  // retireRequeueGrants once it has.
+  const requeuedClips = new Set()
+  const slotGrant = (clipId, voiceId) => {
+    const g = clipId ? grantByClip.get(clipId) : null
+    if (!g) return null
+    const owner = register.aliasOwner.get(g.voiceId)
+    if ((owner ? owner.voiceId : g.voiceId) !== voiceId) return null
+    requeuedClips.add(clipId)
+    return { requeueFor: g.voiceId, requeueBy: g.by }
+  }
   if (policyVoices.length) {
     // Every course whose seeds this language reads: its own (target side) and
     // the courses a castOn names for the KNOWN side (castOnKnownSideCourses).
@@ -2213,7 +2232,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             isReplaceableStandIn({ courseCode, role, voiceId: clipVoice.get(seed[`${role}_audio_id`]) }))
           const syntheticHeld = standInHeld || !!(cast.fillOnly && cast.synthetic &&
             (syntheticIds.has(seed[`${role}_audio_id`]) || (cast.syntheticSeeds && cast.syntheticSeeds.has(seed.id))))
-          if (cast.fillOnly && seed[`${role}_audio_id`] && !syntheticHeld) continue
+          const requeue = slotGrant(seed[`${role}_audio_id`], voiceId)
+          if (cast.fillOnly && seed[`${role}_audio_id`] && !syntheticHeld && !requeue) continue
           // A synthetic-held line is queued even where some other human take of
           // the text exists: that take is another speaker's, and the slot is
           // asking for this voice (Aran reads the North English prompts).
@@ -2230,6 +2250,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // that is linked while its duplicate is not would otherwise read as
             // done and leave the duplicate empty for good.
             rep.seedFilledBy.push(fkVoice)
+            if (requeue && !rep.requeueFor) Object.assign(rep, requeue)
             // One copy still new makes the shared line new.
             if (seed.status !== 'released') rep.seedExisting = false
             if (syntheticHeld) { rep.syntheticHeld = (rep.syntheticHeld || 0) + 1; rep.knownByText = role === 'known' || rep.knownByText }
@@ -2277,6 +2298,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // key set vouches for the words (job #198: "he needs to look for work", read for North
             // at 11:00 and asked for again on the South card at 11:07, 27 Oct).
             ...(crossCourse ? { knownByText: true } : {}),
+            ...(requeue || {}),
           }
           seedSeen.set(key, line)
           byBucket.get(bucket).push(line)
@@ -2338,9 +2360,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         if (clip && !legoTakeIsCastVoices(heldBy, cast[role])) continue
         // His voice but not these words (job #818): listed, and still to record.
         const held = !!clip && legoClipSaysText(clip.text, text)
+        const requeue = slotGrant(lego[`${role}_audio_id`], voiceId)
         const key = `${voiceId}\u0000${role} ${spokenWordsKey(text)}`
         if (legoSeen.has(key)) {
           const rep = legoSeen.get(key)
+          if (requeue && !rep.requeueFor) Object.assign(rep, requeue)
           rep.duplicateOf.push({ legoRowId: lego.id, courseCode: lego.course_code, role })
           if (held) legoFills.get(rep).fills.push(heldBy); else legoFills.get(rep).empty += 1
           duplicatesCollapsed += 1
@@ -2368,6 +2392,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           // take of exactly these words — a seed, a phrase, another course — records this LEGO too.
           byWords: true,
           rerecordWanted: false,
+          ...(requeue || {}),
         }
         legoSeen.set(key, line)
         legoFills.set(line, held ? { fills: [heldBy], empty: 0 } : { fills: [], empty: 1 })
@@ -2376,6 +2401,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       }
     }
     for (const [line, { fills, empty }] of legoFills) line.slotFilledBy = empty ? [] : fills
+    // A granted clip now stands on its seed / LEGO line; the second source's stand-alone
+    // 're-record' line for the same clip would be the same work listed twice.
+    if (requeuedClips.size) {
+      for (const [b, lines] of byBucket) byBucket.set(b, lines.filter((l) => !(l.kind === 'rerecord' && requeuedClips.has(l.id))))
+    }
 
     // ── THE MINIMAL PHRASE SET ──────────────────────────────────────────────
     // Tom, 2026-09-02: "ideally I just want the minimal phrase set, that I can
@@ -4372,6 +4402,8 @@ async function linkSeedSlotsByWords({ db, recordist, role, text, audioId, fillOn
     const voices = await audioVoicesById(db, held)
     for (const [id, voice] of voices.entries()) owners.set(id, voice)
   }
+  // A slot whose clip carries a re-queue grant for THIS reader asked for his new take (cs #896·AK).
+  const granted = await clipsGrantedTo(db, held, recordist)
 
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
@@ -4379,10 +4411,11 @@ async function linkSeedSlotsByWords({ db, recordist, role, text, audioId, fillOn
     // A STAND-IN (Aran's clone on the nv2/sv2 English known side, job #557) is the one filled slot a take
     // replaces even here — on a conditional write against that exact clip, the clone kept in course_audio.
     const standIn = !!current && isReplaceableStandIn({ courseCode: row.course_code, role, voiceId: owners.get(current) })
-    if (current && fillOnly && !standIn) continue
+    const asked = !!current && granted.has(current)
+    if (current && fillOnly && !standIn && !asked) continue
     // FILL-ONLY (castOnEntries): a policy-side cast fills empty slots and moves
     // nothing — not an imported clip, not a synthesised one, not anybody's.
-    if (current && fillOnlyCourses.has(row.course_code) && !standIn) continue
+    if (current && fillOnlyCourses.has(row.course_code) && !standIn && !asked) continue
     const holder = owners.get(current) || null
     if (current && !recordist.spellings.includes(holder)) {
       // ANOTHER RECORDIST'S CLIP IS NOT OURS TO MOVE, and that is still the
@@ -4405,8 +4438,8 @@ async function linkSeedSlotsByWords({ db, recordist, role, text, audioId, fillOn
     let upd = db.from('course_seeds').update({ [`${role}_audio_id`]: audioId }).eq('id', row.id)
     // A cross-kind fill is conditional on the slot still being empty: a take landing at the same
     // moment is never overwritten.
-    const conditional = fillOnly || standIn
-    if (standIn) upd = upd.eq(`${role}_audio_id`, current).select('id')
+    const conditional = fillOnly || standIn || asked
+    if (standIn || asked) upd = upd.eq(`${role}_audio_id`, current).select('id')
     else if (fillOnly) upd = upd.is(`${role}_audio_id`, null).select('id')
     const { data, error } = await upd
     if (error) { logger.error(`[Recordist] seed link failed for ${row.id}: ${error.message}`); continue }
@@ -4468,7 +4501,9 @@ async function linkLegoSlotsByWords({ db, recordist, role, text, audioId, inCour
   // the learner hears. A slot held by anybody else's clip is still never moved,
   // and the update is conditional on the slot still holding what was read.
   const heldVoice = fillOnly ? new Map() : await audioVoicesById(db, sameText.map((r) => r[col]))
-  const copies = sameText.filter((r) => !r[col] || (!fillOnly && recordist.spellings.includes(heldVoice.get(r[col]))))
+  // ...and a slot whose clip carries a re-queue grant for this reader, fill-only or not (cs #896·AK).
+  const granted = await clipsGrantedTo(db, sameText.map((r) => r[col]), recordist)
+  const copies = sameText.filter((r) => !r[col] || granted.has(r[col]) || (!fillOnly && recordist.spellings.includes(heldVoice.get(r[col]))))
   for (const row of copies) {
     let upd = db.from('course_legos').update({ [col]: audioId }).eq('id', row.id)
     upd = row[col] ? upd.eq(col, row[col]) : upd.is(col, null)
@@ -4477,6 +4512,78 @@ async function linkLegoSlotsByWords({ db, recordist, role, text, audioId, inCour
     for (const r of data || []) out.linked.push({ legoRowId: r.id, courseCode: r.course_code })
   }
   if (out.linked.length) invalidateLanguageQueueCache(recordist.language)
+  return out
+}
+
+/** The clip ids among `ids` whose want carries a re-queue grant (requeueGrant) for this reader. */
+async function clipsGrantedTo(db, ids, recordist) {
+  const want = [...new Set((ids || []).filter(Boolean).map(String))]
+  if (!want.length) return new Set()
+  const { data, error } = await db.from('course_audio').select('id, rerecord_wanted')
+    .in('id', want).not('rerecord_wanted', 'is', null)
+  if (error) throw new Error(`re-queue grant read failed: ${error.message}`)
+  return new Set((data || []).filter((r) => {
+    const g = requeueGrant(r.rerecord_wanted)
+    return !!g && recordist.spellings.includes(g.voiceId)
+  }).map((r) => r.id))
+}
+
+const GRANT_SLOT_TABLES = [['course_seeds', ['target1_audio_id', 'target2_audio_id']], ['course_legos', ['target1_audio_id', 'target2_audio_id']]]
+
+/**
+ * RETIRE A SEED / LEGO RE-QUEUE GRANT once the reader's new take has landed (cs #896·AK, Kai
+ * 23 Nov: "just delete them and add the phrases back to Dan's queue" -- delete meaning the bad
+ * take serves until the new one exists, then is archived, never destroyed).
+ *
+ * Run after the take is stored and linked. For every clip of this voice and these words whose
+ * want grants a re-queue to this reader:
+ *   - the take IS that clip (the script-take seam swapped it in place; course_audio_revisions
+ *     keeps the old object): the grant is cleared, and that is all -- every slot already plays it;
+ *   - the take is another clip and NO seed/LEGO target slot points at the old one any more: the
+ *     old clip is archived as Re-record all archives (recordist-rerecord-all.cjs: voice_id tagged
+ *     'human_archived-<id>-<voice>', row and bytes kept) and its grant cleared;
+ *   - a slot still points at it: the grant STAYS, so the line stays on the list. Never forced.
+ * Never fails the take: an error is logged and the grants are left in place.
+ */
+async function retireRequeueGrants({ db, recordist, text, audioId, logger = console }) {
+  const out = { cleared: [], archived: [], kept: [] }
+  const keys = audioKeyCandidates(String(text || '').trim())
+  if (!audioId || !keys.length) return out
+  try {
+    const { data: clips, error } = await db.from('course_audio')
+      .select('id, voice_id, rerecord_wanted')
+      .eq('language', recordist.language)
+      .in('voice_id', recordist.spellings)
+      .in('text_normalized', keys)
+      .not('rerecord_wanted', 'is', null)
+    if (error) throw new Error(`grant lookup failed: ${error.message}`)
+    const mine = (clips || []).filter((c) => { const g = requeueGrant(c.rerecord_wanted); return !!g && recordist.spellings.includes(g.voiceId) })
+    if (!mine.length) return out
+    const others = mine.filter((c) => c.id !== audioId).map((c) => c.id)
+    const stillHeld = new Set()
+    for (const [table, cols] of GRANT_SLOT_TABLES) {
+      for (const col of cols) {
+        if (!others.length) continue
+        const { data, error: refErr } = await db.from(table).select(col).in(col, others)
+        if (refErr) throw new Error(`${table}.${col} read failed: ${refErr.message}`)
+        for (const r of data || []) stillHeld.add(r[col])
+      }
+    }
+    for (const c of mine) {
+      if (c.id !== audioId && stillHeld.has(c.id)) { out.kept.push(c.id); continue }
+      const set = { rerecord_wanted: null }
+      if (c.id !== audioId) set.voice_id = `human_archived-${String(c.id).slice(0, 8)}-${c.voice_id}`
+      const { error: upErr } = await db.from('course_audio').update(set).eq('id', c.id).eq('voice_id', c.voice_id)
+      if (upErr) { logger.error(`[Recordist] re-queue grant on ${c.id} not retired: ${upErr.message}`); out.kept.push(c.id); continue }
+      if (c.id === audioId) out.cleared.push(c.id); else out.archived.push(c.id)
+    }
+  } catch (err) {
+    logger.error(`[Recordist] re-queue grant retirement failed (take is stored; grants kept): ${err.message}`)
+  }
+  if (out.cleared.length || out.archived.length) {
+    invalidateLanguageQueueCache(recordist.language)
+    logger.log(`[Recordist] re-queue grants retired for ${recordist.voiceId}: ${out.cleared.length} swapped in place, ${out.archived.length} archived, ${out.kept.length} kept`)
+  }
   return out
 }
 
@@ -4600,6 +4707,7 @@ module.exports = {
   assignedLanguages,
   voiceTakes,
   clearRerecordWants,
+  retireRequeueGrants,
   isTestFixtureCourse,
   takeGLineId,
   parseTakeGLineId,
