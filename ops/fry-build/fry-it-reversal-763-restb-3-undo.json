@@ -1,0 +1,249 @@
+{
+ "family": "restb-3",
+ "event_id": "127c4cd1-481e-4c90-ad3a-3901459c83ad",
+ "undo_file_on_popty": "2026-11-23T09-52-11-140Z-127c4cd1-481e-4c90-ad3a-3901459c83ad.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L05U05",
+   "set": {
+    "known_text": "I'm trying but it's difficult to answer in time",
+    "known_audio_id": "a70ef74a-b090-41c6-a4e3-4962a95dff22"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0089L02U06",
+   "set": {
+    "known_text": "I'm trying but I can't read everything in a short time",
+    "known_audio_id": "444efe3e-0865-4cff-8c0a-2422de2521d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0088L01B02",
+   "set": {
+    "known_text": "I'm not ready yet but I'm trying",
+    "known_audio_id": "a2963c24-e57e-4068-ad12-63f414c38f54"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0085L02B02",
+   "set": {
+    "known_text": "I don't know those people but I'm trying",
+    "known_audio_id": "08d96327-fad3-4f6c-8bfb-7ae243cc8b49"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0080L01U01",
+   "set": {
+    "known_text": "I'm not sure when I'll be ready but I'm trying",
+    "known_audio_id": "56fd68c5-85b1-42a4-a599-a07d8f1ffa15"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0078L01B02",
+   "set": {
+    "known_text": "I'm trying but I don't understand it",
+    "known_audio_id": "6e7ed973-2294-4687-98e3-679fcc455d88"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0077L03U01",
+   "set": {
+    "known_text": "I'm not sure if I'm starting to understand but I'm trying",
+    "known_audio_id": "ce88d2bc-2f08-4de7-a590-96898d2ea6f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U05",
+   "set": {
+    "known_text": "I'm trying but I don't know yet how to say",
+    "known_audio_id": "bec47186-ca2e-4216-b6f0-a71e50ce8532"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0055L03B03",
+   "set": {
+    "known_text": "I'm tired when I didn't sleep very well but I'm trying",
+    "known_audio_id": "39953f6b-c673-4c15-99b4-8f21e52f431e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L03B02",
+   "set": {
+    "known_text": "I'm trying, if you know what I mean",
+    "known_audio_id": "076f059c-063b-491c-b31b-6a38cb859a42"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0042L03U01",
+   "set": {
+    "known_text": "I don't speak better than last night but I'm trying",
+    "known_audio_id": "596898ae-86be-405a-8f90-7d7a5f021120"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L02B03",
+   "set": {
+    "known_text": "I'm trying and she wants to know",
+    "known_audio_id": "fbd60e9a-0b43-44d9-9550-589668d24741"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 77,
+   "set": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand.",
+    "known_audio_id": "f1447fb3-8170-4da6-9086-a9249ab3dfca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0270L01B03",
+   "set": {
+    "known_text": "because I'm worried I can't remember",
+    "known_audio_id": "4e2186a7-4eb2-41f6-8eed-2dfd3bd3b1b8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U06",
+   "set": {
+    "known_text": "I'll ask him because I don't understand",
+    "known_audio_id": "99bfba71-e250-4587-bc75-b1ada455d91f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0105L01B02",
+   "set": {
+    "known_text": "that is why we're not trying",
+    "known_audio_id": "37cc8f6d-4537-46ae-b235-37d4d84ae128"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B04",
+   "set": {
+    "known_text": "after you finish talking I'm going to try",
+    "known_audio_id": "872db971-7acc-40a6-b1b3-4e4640e7843c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0183L01B01",
+   "set": {
+    "known_text": "I'm afraid I can't remember",
+    "known_audio_id": "8166f9c0-e4f5-4e83-b13e-d28158b6ee3f"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 425,
+   "set": {
+    "known_text": "Yes they need to make sure they understand.",
+    "known_audio_id": "ea6daab1-d82a-47d5-be36-378c8e513887"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 607,
+   "set": {
+    "known_text": "If I'd known I'd have done things differently.",
+    "known_audio_id": "7a5f7aa8-55af-44e2-9ab9-922ae8c8f3c7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0639L02U01",
+   "set": {
+    "known_text": "I'd have driven with you, sir, if I'd known",
+    "known_audio_id": "50888ae6-0648-40ac-8ab9-27f20c5306d8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01U01",
+   "set": {
+    "known_text": "I'd have thought about it if I'd known",
+    "known_audio_id": "bc2752a4-f644-41fa-8268-47e5f4479f25"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01U04",
+   "set": {
+    "known_text": "if I'd known, I'd have told you",
+    "known_audio_id": "aa22d331-3496-4132-b1e3-53562b225eae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01U03",
+   "set": {
+    "known_text": "if I'd known, I'd have helped you",
+    "known_audio_id": "2a993f68-219f-4821-9e2f-75209be119be"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01U02",
+   "set": {
+    "known_text": "I'd have thought more if I'd known that it was stupid",
+    "known_audio_id": "16efaf90-d0a3-4761-8092-7900b2f2c0cd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01U05",
+   "set": {
+    "known_text": "I'd have come if I'd known",
+    "known_audio_id": "a84ac617-357b-47d5-902c-a47d5162349d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01B02",
+   "set": {
+    "known_text": "I'd have thought more if I'd known",
+    "known_audio_id": "d9a83363-607b-4891-9c62-aea25e322c6b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01B01",
+   "set": {
+    "known_text": "if I'd known that it would be difficult",
+    "known_audio_id": "70435254-ebfb-40f0-a61c-84ce2e695d69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L01B03",
+   "set": {
+    "known_text": "if I'd known that it was stupid",
+    "known_audio_id": "830a2e75-09a3-4ffc-8710-f4746273e874"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L02U02",
+   "set": {
+    "known_text": "if I'd known, I'd have done things differently",
+    "known_audio_id": "351feec5-4d17-4418-8bb7-e2c676078935"
+   }
+  }
+ ]
+}

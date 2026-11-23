@@ -1,0 +1,90 @@
+{
+ "family": "s0008l04-1",
+ "event_id": "78655942-7a14-4042-95ae-9c0060b38778",
+ "undo_file_on_popty": "2026-11-23T09-41-14-931Z-78655942-7a14-4042-95ae-9c0060b38778.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04U04",
+   "set": {
+    "known_text": "today I'm going to try",
+    "known_audio_id": "58504c80-41ba-4804-86d5-1b0173a525f8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04U02",
+   "set": {
+    "known_text": "I'm going to try in Frisian",
+    "known_audio_id": "4f9f8cf7-4df2-40c4-976d-4973e769924f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04U01",
+   "set": {
+    "known_text": "I'm going to try as much as possible",
+    "known_audio_id": "d25b84b0-6701-4a17-9a50-058a794fcd22"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04U05",
+   "set": {
+    "known_text": "I'm going to try now, I want to say what I mean",
+    "known_audio_id": "e88e3a05-8814-408e-a5fb-35ab423a4e01"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04B02",
+   "set": {
+    "known_text": "I'm going to try today",
+    "known_audio_id": "e647f144-b789-4985-9c92-6803fd3899e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04B01",
+   "set": {
+    "known_text": "I'm going to try now",
+    "known_audio_id": "98dbce53-c08d-4293-91fc-4661125b0f9a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L04B03",
+   "set": {
+    "known_text": "I'm going to try with you",
+    "known_audio_id": "22b930a6-dc5f-4ebb-af91-134c60052079"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L01U04",
+   "set": {
+    "known_text": "I wouldn't like to guess but I'm going to try",
+    "known_audio_id": "d65afb4e-8105-4d47-9344-6a2dc178aec0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L04U02",
+   "set": {
+    "known_text": "I'm going to try, I'm not sure if I still know the whole sentence",
+    "known_audio_id": "abb5f52f-bbac-48b8-9261-ad7ec0fa75e4"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "36c2d745-f858-4af4-90f9-a9b9eb1c3668",
+   "set": {
+    "known_text": "I'm going to try",
+    "known_audio_id": "ddba94ac-853a-4d0d-a2b9-c06a8632a19d",
+    "presentation_audio_id": "a855ffc1-edce-43b2-b58b-fb1663a51895"
+   }
+  }
+ ]
+}

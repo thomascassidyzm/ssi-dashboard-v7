@@ -1,0 +1,49 @@
+{
+ "family": "restb-4",
+ "event_id": "cf513aad-0e8c-4017-a425-73db74fe7373",
+ "undo_file_on_popty": "2026-11-23T09-52-50-151Z-cf513aad-0e8c-4017-a425-73db74fe7373.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L01U01",
+   "set": {
+    "known_text": "I'm trying but nothing seems to be working",
+    "known_audio_id": "5f8490db-1993-4a2e-80b7-9f6352e53435"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0137L03U04",
+   "set": {
+    "known_text": "I'm trying but being perfect is difficult",
+    "known_audio_id": "0f475a36-0b48-443e-bffd-918457d26c90"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01U02",
+   "set": {
+    "known_text": "I'm trying but it's difficult to find the answer",
+    "known_audio_id": "a05dd818-4a87-48cc-b284-bd0e2cf8cd97"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01B03",
+   "set": {
+    "known_text": "I'm trying but it's difficult",
+    "known_audio_id": "c3fa9ea8-8adc-4cf5-8a58-2fb7d62ad07d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L03U01",
+   "set": {
+    "known_text": "I'm trying but it's difficult to think quickly enough",
+    "known_audio_id": "cf42293e-245d-4d45-9079-038723cc481f"
+   }
+  }
+ ]
+}

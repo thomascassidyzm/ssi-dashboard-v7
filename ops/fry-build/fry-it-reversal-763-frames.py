@@ -1,0 +1,27 @@
+import re
+# lego, old_en, new_en, frisian frame (contiguous)
+FR = [
+("S0008L04","I'm going to try","I'm going to try it","sil it besykje"),
+("S0049L02","if you know","if you know it","astû it witst"),
+("S0050L01","I'm not trying","I'm not trying it","besykje it net"),
+("S0057L01","I can't remember","I can't remember it","wit it net mear"),
+("S0059L01","I know","I know it","wit it"),
+("S0060L01","I don't know yet","I don't know it yet","wit it noch net"),
+("S0074L02","to understand","to understand it","om it te begripen"),
+("S0078L01","I don't understand","I don't understand it","begryp it net"),
+("S0103L01","we're not trying","we're not trying it","wy besykje it net"),
+("S0113L01","why don't I know any more","why don't I know it any more","wêrom wit ik it net mear"),
+("S0135L01","I don't know","I don't know it","wit it net"),
+("S0146L02","since we tried","since we tried it","sûnt wy it besocht hawwe"),
+("S0152L02","if I had known","if I had known it","as ik it witten hie"),
+("S0174L01","can you understand","can you understand it","kinstû it begripe"),
+("S0213L01","we don't know","we don't know it","wy witte it net"),
+("S0251L01","I only want to know","I only want to know it","ik wol it pas witte"),
+("S0346L01","I wanted her to know","I wanted her to know it","dat se it wist"),
+("S0421L01","because they already know","because they already know it","om't se it no al witte"),
+("S0425L04","that they understand","that they understand it","dat se it begripe"),
+("S0521L02","that you'll forget","that you'll forget it","datstû it ferjitte silst"),
+("S0579L01","we've often tried","we've often tried it","wy hawwe it faak besocht"),
+("S0606L01","if I'd known then","if I'd known it then","as ik it doe witten hie"),
+("S0607L01","if I'd known","if I'd known it","as ik it witten hie"),
+]
