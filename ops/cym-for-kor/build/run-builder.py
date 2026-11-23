@@ -44,6 +44,33 @@ def http(method, url, body=None, ctype='application/json', timeout=900):
             return e.code, json.load(e)
         except Exception:
             return e.code, {'error': str(e)}
+    except (urllib.error.URLError, ConnectionError, TimeoutError, OSError) as e:
+        # Popty restarting (a deploy): not a content failure. The caller waits for /health and decides.
+        return 0, {'error': f'unreachable: {e}', 'unreachable': True}
+
+
+def wait_up(max_min=40):
+    """Wait (bounded) for Popty to answer /health again after a restart."""
+    for _ in range(max_min * 2):
+        try:
+            urllib.request.urlopen('http://localhost:3470/health', timeout=10)
+            urllib.request.urlopen(f'{CB}/stats/{COURSE}', timeout=30)
+            return True
+        except Exception:
+            time.sleep(30)
+    return False
+
+
+def call(method, url, body=None, ctype='application/json'):
+    """http() that rides out a Popty restart: an unreachable answer waits for /health and asks again."""
+    for _ in range(3):
+        code, r = http(method, url, body, ctype)
+        if not r.get('unreachable'):
+            return code, r
+        log({'unreachable': url.split('/api/')[-1][:60], 'note': 'waiting for Popty'})
+        if not wait_up():
+            break
+    return code, r
 
 
 def log(rec):
@@ -87,7 +114,7 @@ def taught_before(plan, n):
 def door(n, idx, l):
     body = {'seed': n, 'lego': idx, 'lego_known': l['ko'], 'lego_target': l['cy'], 'lego_type': l.get('type', 'A')}
     for attempt in (1, 2):
-        code, r = http('POST', f'{CB}/phrases/v3/generate/{COURSE}', body)
+        code, r = call('POST', f'{CB}/phrases/v3/generate/{COURSE}', body)
         if code == 200 and r.get('ok'):
             return r
         if r.get('held') or r.get('blocked'):
@@ -152,7 +179,7 @@ def main():
         if stop_at and datetime.datetime.now(datetime.UTC).replace(tzinfo=None) >= stop_at:
             log({'stop': 'time', 'next_seed': n}); return 3
         plan = load_plan()  # re-read every seed: planners keep pushing fixes while the build runs
-        _, st = http('GET', f'{CB}/stats/{COURSE}')
+        _, st = call('GET', f'{CB}/stats/{COURSE}')
         if n <= (st.get('seeds_with_legos') or 0):  # built in order, so a contiguous prefix is done
             continue
         if n not in plan:
@@ -181,6 +208,14 @@ def main():
         md = markdown(n, {'ko': seeds[n]['korean'], 'cy': seeds[n]['welsh']}, legos, sets)
         (EVID / f'seed-{n:03d}.md').write_text(md)
         code, r = http('POST', f'{CB}/seed/complete?course={COURSE}', md, ctype='text/markdown; charset=utf-8')
+        if r.get('unreachable'):
+            # Cut off mid-submit by a restart: the write may or may not have landed. Ask Popty, never re-post blind.
+            log({'seed': n, 'unreachable': 'seed/complete', 'note': 'waiting for Popty, then checking'})
+            wait_up()
+            _, st = call('GET', f'{CB}/stats/{COURSE}')
+            if n <= (st.get('seeds_with_legos') or 0):
+                log({'seed': n, 'ok': True, 'note': 'landed before the restart'}); continue
+            code, r = call('POST', f'{CB}/seed/complete?course={COURSE}', md, ctype='text/markdown; charset=utf-8')
         if not r.get('ok'):
             r.pop('introduced_vocab', None)
             (EVID / f'reject-{n:03d}.json').write_text(json.dumps(r, ensure_ascii=False, indent=1))
