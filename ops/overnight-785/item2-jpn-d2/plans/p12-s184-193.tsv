@@ -1,0 +1,71 @@
+# eng_for_jpn seeds 184-193: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0184L01B05 build → "something different in the office" | was: オフィスで違うことをする — English "something different in the office" is a verbless fragment with no frame
+S0184L01B05	DELETE
+# S0184L02U08 use → "I saw her in the office a while ago so I think she's there" | was: さっきオフィスで彼女を見たのでまだいると思います — prompt added まだ (still)
+S0184L02U08	さっきオフィスで彼女を見たので、そこにいると思います
+# S0184L02U12 use → "I'm thinking about what you said a while ago" | was: さっきのことが今でも気になっています — prompt said "what happened … still bothers me"
+S0184L02U12	さっきあなたが言ったことについて考えています
+# S0184L02U14 use → "that was a while ago and I'd like to talk about it more" | was: さっきのことについてもっと話したいです — prompt lacked "that was a while ago"
+S0184L02U14	それはさっきのことですが、それについてもっと話したいです
+# S0185L02U09 use → "I think I left something but I can't remember what it was" | was: 何かを置いてきましたが思い出せません — prompt lacked "I think … what it was"
+S0185L02U09	何かを置いてきたと思いますが、それが何か思い出せません
+# S0186L02U04 use → "I need to do something different because this isn't easy" | was: うまくいかないので違うことをする必要があります — prompt said "not going well"
+S0186L02U04	これは簡単ではないので、違うことをする必要があります
+# S0186L02U10 use → "we need to change what we're doing and do something different" | was: やっていることを変えて違うことをしましょう — prompt said "let's"
+S0186L02U10	やっていることを変えて、違うことをする必要があります
+# S0187L01B03 build → "I'm happy so far with how it's going" | was: 今のところうまくいっています — prompt lacked "I'm happy"
+S0187L01B03	今のところ、どう進んでいるかに満足しています
+# S0187L01B06 build → "I'm happy so far and I think it's going very well" | was: 今のところうまくいっていると思います — prompt lacked "I'm happy … very"
+S0187L01B06	今のところ満足していて、とてもうまくいっていると思います
+# S0187L01U02 use → "I'm happy so far and I think it's going very well" | was: 今のところうまくいっていると思います — prompt lacked "I'm happy … very" (same English as B06)
+S0187L01U02	今のところ満足していて、とてもうまくいっていると思います
+# S0187L01U11 use → "I'm happy so far but I'd like to do something different" | was: 今のところ違うことをしてみたいと思います — prompt lacked "I'm happy"
+S0187L01U11	今のところ満足していますが、違うことをしてみたいです
+# S0190L01U04 use → "there are some new words I need to learn" | was: いくつかの新しい言葉があります — prompt lacked "I need to learn"
+S0190L01U04	学ぶ必要がある新しい言葉がいくつかあります
+# S0190L01U05 use → "have you got some new words to learn?" | was: いくつかの新しい言葉はありますか — prompt lacked "to learn"
+S0190L01U05	学ぶ新しい言葉がいくつかありますか？
+# KEEP S0190L02U11 | 今日、違うことについていくつか質問してもいいですか？ | can I ask you some questions about something different today? — prompt is a question "may I ask … today?" — matches (false flag)
+# S0190L02U15 use → "can I ask you some questions about that before you leave?" | was: いくつか質問があって、離れる前に聞いてもいいですか — prompt lacked "about that"
+S0190L02U15	あなたが出る前に、それについていくつか質問してもいいですか？
+# S0190L03U02 use → "do you mind if I ask you something about how it's going?" | was: 今やっていることについて何か聞いてもいいですか — prompt said "what we're doing now"
+S0190L03U02	どう進んでいるかについて何か聞いてもいいですか？
+# S0190L03U08 use → "do you mind if I take a little more time to answer?" | was: 少し時間をかけてもいいですか — prompt lacked "more … to answer"
+S0190L03U08	答えるのにもう少し時間をかけてもいいですか？
+# S0190L03U11 use → "do you mind if I take a little time to think?" | was: 少し時間をとってもいいですか — prompt lacked "to think"
+S0190L03U11	考えるのに少し時間をとってもいいですか？
+# S0191L01B06 build → "hear at all" | was: 全然聞こえません — English "hear at all" is a fragment missing its negation
+S0191L01B06	DELETE
+# S0191L01U02 use → "Do you think you're not ready to have a conversation at all?" | was: あなたは全然準備できていないと思いますか？ — prompt lacked "to have a conversation"
+S0191L01U02	会話をする準備が全然できていないと思いますか？
+# S0191L01U07 use → "I don't feel as if I can remember it at all" | was: 私は全然覚えられません — prompt lacked "I don't feel as if" (seed 115's shape)
+S0191L01U07	全然覚えられるようには感じません
+# S0191L01U08 use → "Are you sure you don't mind at all if we take a little more time?" | was: あなたは全然気にしないと確認していますか？ — prompt lacked "if we take a little more time"
+S0191L01U08	本当に、もう少し時間をかけても全然構いませんか？
+# S0191L01U09 use → "this isn't very difficult at all so I hope you'll finish soon" | was: それは全然難しくありません — English "this isn't very difficult at all so I hope you'll finish soon" is unnatural ("very … at all")
+S0191L01U09	DELETE
+# S0191L01U15 use → "I don't understand at all, could you say that again a little more slowly?" | was: 私は全然わかりません、もう一度言ってもらえますか？ — prompt lacked "a little more slowly"; いただけますか = "could you" (seed 61)
+S0191L01U15	全然わかりません。もう少しゆっくりもう一度言っていただけますか？
+# S0192L01U06 use → "He was very busy all day and didn't want to talk to anyone" | was: 彼は一日中忙しかったです — prompt lacked "very" and the second clause
+S0192L01U06	彼は一日中とても忙しくて、誰とも話したくありませんでした
+# S0192L01U11 use → "She was busy all morning today and couldn't come to meet us" | was: 彼女は今日の午前中ずっと忙しかったです — prompt lacked the second clause
+S0192L01U11	彼女は今日午前中ずっと忙しくて、私たちに会いに来られませんでした
+# S0192L01U15 use → "we were all very busy but we were able to do it together in time" | was: 私たちはみんな忙しかったのに、なんとかやり遂げました — English "we were all very busy but we were able to do it together in time" is unnatural
+S0192L01U15	DELETE
+# S0192L02U02 use → "I'm sorry but I'm busy tomorrow night and I can't come" | was: 私は明日の夜忙しいのですみません — prompt lacked "and I can't come"
+S0192L02U02	すみませんが、明日の夜は忙しいので行けません
+# S0192L02U05 use → "She said she's going to be here tomorrow night so you can ask her" | was: 彼女は明日の夜ここにいると言っていました — prompt lacked "so you can ask her"
+S0192L02U05	彼女は明日の夜ここにいると言っていたので、彼女に聞けます
+# S0192L02U08 use → "where do you want to meet tomorrow night, at six o'clock?" | was: 明日の夜、どこで会いたいですか？ — English "where do you want to meet tomorrow night, at six o'clock?" uses untaught "six o'clock"; tacked-on
+S0192L02U08	DELETE
+# S0192L02U10 use → "can you come early tomorrow night so we can talk for a while?" | was: 明日の夜は早く来られますか？ — prompt lacked the purpose clause
+S0192L02U10	しばらく話せるように、明日の夜早く来られますか？
+# S0192L02U12 use → "He said he didn't want to come tomorrow night but I hope you'll be there" | was: 彼は明日の夜来たくないと言っていました — English "He said he didn't want to come tomorrow night but I hope you'll be there" is a chain
+S0192L02U12	DELETE
+# S0193L01U02 use → "She said I'm sorry but I'm too busy today and I wasn't expecting it" | was: 彼女はすみませんが、今日は忙しすぎますと言いました — English "She said I'm sorry but I'm too busy today and I wasn't expecting it" is a garbled chain
+S0193L01U02	DELETE
+# S0193L01U03 use → "I'm sorry but I'm too busy today to help you look for it" | was: すみませんが、今日は忙しすぎて、あなたを助けることができません — prompt lacked "look for it"
+S0193L01U03	すみませんが、今日は忙しすぎて、それを探すのを手伝えません
+# S0193L01U05 use → "I'm sorry but I'm too busy today and I didn't have time to ask her" | was: すみませんが、今日は忙しすぎて電話できませんでした — English "I'm sorry but I'm too busy today and I didn't have time to ask her" mixes tenses — unnatural
+S0193L01U05	DELETE
