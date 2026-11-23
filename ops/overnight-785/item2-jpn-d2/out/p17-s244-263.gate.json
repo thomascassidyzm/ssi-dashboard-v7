@@ -1,0 +1,386 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p17-s244-263.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T22:57:59.849Z",
+ "seeds": {
+  "248": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "249": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "250": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "251": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I don't want to find out until after we finish\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I don't want to find out until after we finish\""
+   ],
+   "newFailures": []
+  },
+  "253": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "254": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I've been ready since this morning\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I've been ready since this morning\""
+   ],
+   "newFailures": []
+  },
+  "256": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "257": {
+   "before": [
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "258": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what's that blue thing over there?\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what's that blue thing over there?\""
+   ],
+   "newFailures": []
+  },
+  "261": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"he might be an old friend of my father\", \"he might be that man you were talking to yesterday\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"he might be an old friend of my father\", \"he might be that man you were talking to yesterday\""
+   ],
+   "newFailures": []
+  },
+  "262": {
+   "before": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "after": [
+    "L1: USE: need 5+, got 0"
+   ],
+   "newFailures": [
+    "L1: USE: need 5+, got 0"
+   ]
+  }
+ },
+ "rows": [
+  {
+   "id": "S0248L01U05",
+   "seed": 248,
+   "role": "use",
+   "target": "I thought the film was complete rubbish so I want my money back",
+   "old": "その映画は全くひどかったので、お金を返してほしいです",
+   "new": "その映画は全くひどいと思ったので、お金を返してほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0248L02U06",
+   "seed": 248,
+   "role": "use",
+   "target": "I thought the film was complete rubbish so I want my money back",
+   "old": "その映画は全くひどかったので、お金を返してほしいです",
+   "new": "その映画は全くひどいと思ったので、お金を返してほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0249L01U04",
+   "seed": 249,
+   "role": "use",
+   "target": "I want you to help me before you go so let's not take too much time",
+   "old": "行く前に私を手伝ってほしいですが、時間をかけすぎないようにしましょう",
+   "new": "行く前に私を手伝ってほしいので、時間をかけすぎないようにしましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0250L01B03",
+   "seed": 250,
+   "role": "build",
+   "target": "I want a glass or two of water before I answer",
+   "old": "答える前に水を一杯飲みたいです",
+   "new": "答える前に水を一、二杯飲みたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0250L01U02",
+   "seed": 250,
+   "role": "use",
+   "target": "I need a little more time before I answer",
+   "old": "答える前に少し時間が必要です",
+   "new": "答える前にもう少し時間が必要です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0250L03U04",
+   "seed": 250,
+   "role": "use",
+   "target": "can you tell me something else because I need a little more time?",
+   "old": "もう少し時間が必要なので、何か他のことを話してくれますか？",
+   "new": "もう少し時間が必要なので、何か他のことを教えてくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0250L03U06",
+   "seed": 250,
+   "role": "use",
+   "target": "can you tell me what you want to talk about because I want to talk about something different next week?",
+   "old": "何について話したいか教えてくれますか？来週別のことについて話しましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0251L02U06",
+   "seed": 251,
+   "role": "use",
+   "target": "let's wait until next month because it's difficult",
+   "old": "来月まで待ちましょう。今月は難しいです",
+   "new": "難しいので、来月まで待ちましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0251L02U09",
+   "seed": 251,
+   "role": "use",
+   "target": "can you wait until next year so we have time to learn?",
+   "old": "来年まで待てますか？その間勉強できますよ",
+   "new": "学ぶ時間があるように、来年まで待てますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0253L02U09",
+   "seed": 253,
+   "role": "use",
+   "target": "I'll be ready in a few minutes and I can work hard",
+   "old": "数分で準備できます。一緒に一生懸命頑張りましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0254L01U05",
+   "seed": 254,
+   "role": "use",
+   "target": "I've been ready since this morning but are you ready?",
+   "old": "今朝からずっと準備ができていますが、あなたはまだですか？",
+   "new": "今朝からずっと準備ができていますが、あなたは準備ができていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0254L01U06",
+   "seed": 254,
+   "role": "use",
+   "target": "I've been ready since this morning and I want to speak tonight",
+   "old": "今朝からずっと準備ができています。今夜話しましょう",
+   "new": "今朝からずっと準備ができていて、今夜話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0254L01U07",
+   "seed": 254,
+   "role": "use",
+   "target": "I've been ready since this morning and I want to work hard",
+   "old": "今朝からずっと準備ができています。一生懸命頑張りましょう",
+   "new": "今朝からずっと準備ができていて、一生懸命頑張りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0256L02U05",
+   "seed": 256,
+   "role": "use",
+   "target": "I need an hour before I leave tonight so I'll be ready soon",
+   "old": "今夜出発前に一時間必要ですが、すぐに準備ができます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0256L02U07",
+   "seed": 256,
+   "role": "use",
+   "target": "she said she can do it in less than an hour if you help her",
+   "old": "手伝ってくれれば彼女は一時間以内に終えられます",
+   "new": "手伝ってくれれば一時間以内にできると、彼女は言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0257L01U07",
+   "seed": 257,
+   "role": "use",
+   "target": "that was a surprise because he's my friend and I didn't know what to say",
+   "old": "それは驚きでした。彼は私の友達なのに何を言えばいいかわかりませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0257L01U09",
+   "seed": 257,
+   "role": "use",
+   "target": "I thought that was a good idea because she wanted to tell me what's going to happen",
+   "old": "明日何が起こるか聞いたのでそれはとても良い考えだと思いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0258L01U05",
+   "seed": 258,
+   "role": "use",
+   "target": "he wanted me to tell you that the man over there wanted to speak with me this evening",
+   "old": "あそこにいる男性が今夜私に話しかけたいと思っていることを伝えてほしかったのです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0258L02U01",
+   "seed": 258,
+   "role": "use",
+   "target": "what's that blue thing over there and do you know why it's so interesting?",
+   "old": "あそこにある青いものはなぜそんなに面白いのですか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0261L01B07",
+   "seed": 261,
+   "role": "build",
+   "target": "it might be something difficult to explain",
+   "old": "難しいことを説明するかもしれない",
+   "new": "説明するのが難しいことかもしれない",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0261L01U11",
+   "seed": 261,
+   "role": "use",
+   "target": "it might be something difficult but I think it might be something important",
+   "old": "それは難しいことかもしれないが大事なことだと思う",
+   "new": "難しいことかもしれませんが、大事なことかもしれないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0262L01B05",
+   "seed": 262,
+   "role": "build",
+   "target": "can I ask, who was that man you were talking to yesterday?",
+   "old": "昨日話していたあの男の人のことを聞いてもいいですか",
+   "new": "聞いてもいいですか、昨日話していたあの男の人は誰でしたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0262L01B06",
+   "seed": 262,
+   "role": "build",
+   "target": "who was that man you were talking to yesterday, was he a friend of my father?",
+   "old": "昨日話していたあの男の人は父の友達ですか",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "id": "S0262L01U05",
+   "seed": 262,
+   "role": "use",
+   "target": "who was that man you were talking to yesterday, was he a friend of my father?",
+   "old": "昨日話していたあの男の人は父の友達だったのでしょうか",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "id": "S0262L01U09",
+   "seed": 262,
+   "role": "use",
+   "target": "I was going to ask you who was that man you were talking to yesterday",
+   "old": "昨日話していたあの男の人に聞こうと思っていた",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "id": "S0262L01U10",
+   "seed": 262,
+   "role": "use",
+   "target": "I asked a friend who was that man you were talking to yesterday",
+   "old": "昨日話していたあの男の人について友達に聞いた",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "id": "S0262L01U11",
+   "seed": 262,
+   "role": "use",
+   "target": "can you tell me who was that man you were talking to yesterday?",
+   "old": "昨日話していたあの男の人のことを教えてもらえますか",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 0"
+   ]
+  }
+ ]
+}
