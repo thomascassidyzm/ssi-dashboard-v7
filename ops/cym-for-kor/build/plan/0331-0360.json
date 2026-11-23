@@ -1,0 +1,657 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 331-360: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules (shortest new LEGO where the source leaned on its older seeds or Korean needs a different unit), glosses in 반말; changes listed in \"changed\" (cs #816·AK for #813·AK)",
+ "changed": {
+  "333:bod hi ddim yn medru": "source ddudodd hi bod split at the clause; Korean 그녀가 ~ㄹ 수 없다고 one frame",
+  "333:treulio llawer o amser": "treulio, amser untiled (older seeds); one unit, sister of treulio mwy o amser (209)",
+  "333:efo’r grŵp": "efo’r, grŵp untiled (older seeds)",
+  "334:fod o’n medru": "fod, o’n untiled; Korean 그가 ~ㄹ 수 있다고 one frame",
+  "335:rhai syniadau gwerthfawr": "source also had rhai syniadau; one LEGO only, since Korean puts 가치 있는 inside",
+  "336:bod hi’n medru": "bod, hi’n untiled; sister of fod o’n medru (334)",
+  "337:cario ymlaen i": "source cario ymlaen + untiled i; taught gario ymlaen i (92)",
+  "337:chwarae": "chwarae untiled (older seeds)",
+  "340:fod o’n mynd i": "fod, o’n, mynd, i untiled; sister of bod hi’n mynd i (236)",
+  "340:fod yn iawn": "fod, yn untiled; Korean 괜찮다 one unit, like fod yn hwyr (270)",
+  "341:ychydig o ddiwrnodiau": "untiled (older seeds); split from yn ôl to stay within the 8-syllable cap",
+  "341:yn ôl": "untiled (older seeds)",
+  "343:ddudodd": "ddudodd untiled; fragment seed, Korean ~라고 말한 사람",
+  "343:bod hi’n poeni": "bod, hi’n untiled; Korean 그녀가 걱정한다고 one unit",
+  "344:fod o’n hapus i": "fod, o’n, hapus, i untiled; Korean 기꺼이 ~겠다고 one frame",
+  "345:fod o ddim yn barod": "fod, o, ddim untiled; yn barod alone is 이미 (244), so one unit",
+  "346:o’n i isio iddi hi": "iddi hi untiled in source split; taught frame (204)",
+  "346:bo’ fi’n licio": "bo’, fi’n untiled; Korean 내가 ~를 좋아한다고 one unit",
+  "346:ei llyfr hi": "ei, hi untiled; Korean 그녀의 책 one unit, like ei henw hi (21)",
+  "347:be’ oedd yn digwydd": "untiled; one unit, sister of be’ oedd yn mynd i ddigwydd (201)",
+  "348:be’ oedd yn mynd i ddigwydd": "source be’ oedd yn mynd leaves i ddigwydd untiled; taught unit (201)",
+  "352:fyddai fo ddim yn medru": "untiled (older seeds); one unit, the slot is filled by the first half",
+  "353:oedd hi angen": "oedd, hi, angen untiled; past sister of mae hi angen (319)",
+  "354:doedd o ddim angen": "doedd, o, ddim, angen untiled; past sister of dydy o ddim angen (320)",
+  "355:efo’r ddynas ’na": "efo’r, ’na untiled; Korean 그 여자와 one unit",
+  "355:ti’n nabod": "ti’n is taught as 너는 ~해 (49); Korean relative 네가 아는 one unit",
+  "356:rywbeth pwysig": "source rywbeth + untiled pwysig; taught rhywbeth pwysig (261), mutated form",
+  "357:oedd hi jesd isio": "oedd, hi, jesd, isio untiled; one frame, sister of oedd hi isio (53)",
+  "358:nad oedd hi’n medru": "nad, oedd, hi’n untiled; sister of nad oedd o’n medru (315)",
+  "360:ddudodd dy ffrind": "ddudodd untiled; taught (358)"
+ },
+ "seeds": {
+  "331": {
+   "legos": [
+    {
+     "cy": "fedrith hi ddim",
+     "ko": "그녀는 ~ㄹ 수 없을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "darparu’r atebion i gyd",
+     "ko": "모든 답을 제공하다",
+     "type": "A"
+    }
+   ]
+  },
+  "332": {
+   "legos": [
+    {
+     "cy": "mi fedrith o",
+     "ko": "그는 ~ㄹ 수 있을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "adeiladu bywyd newydd",
+     "ko": "새로운 삶을 세우다",
+     "type": "A"
+    },
+    {
+     "cy": "i’w chwaer",
+     "ko": "그의 자매를 위해",
+     "type": "A"
+    }
+   ]
+  },
+  "333": {
+   "legos": [
+    {
+     "cy": "ddudodd hi",
+     "ko": "그녀는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "bod hi ddim yn medru",
+     "ko": "그녀가 ~ㄹ 수 없다고",
+     "type": "A"
+    },
+    {
+     "cy": "treulio llawer o amser",
+     "ko": "많은 시간을 보내다",
+     "type": "A"
+    },
+    {
+     "cy": "efo’r grŵp",
+     "ko": "그룹과",
+     "type": "A"
+    }
+   ]
+  },
+  "334": {
+   "legos": [
+    {
+     "cy": "ddudodd o",
+     "ko": "그는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n medru",
+     "ko": "그가 ~ㄹ 수 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "gadael i ti ddal",
+     "ko": "네가 ~를 안게 해 주다",
+     "type": "A"
+    },
+    {
+     "cy": "y gath fach",
+     "ko": "새끼 고양이",
+     "type": "A"
+    }
+   ]
+  },
+  "335": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n medru",
+     "ko": "그가 ~ㄹ 수 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "ychwanegu",
+     "ko": "더하다",
+     "type": "A"
+    },
+    {
+     "cy": "rhai syniadau gwerthfawr",
+     "ko": "몇 가지 가치 있는 아이디어",
+     "type": "A"
+    }
+   ]
+  },
+  "336": {
+   "legos": [
+    {
+     "cy": "dw i ddim yn meddwl",
+     "ko": "나는 ~라고 생각하지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "bod hi’n medru",
+     "ko": "그녀가 ~ㄹ 수 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "agor",
+     "ko": "열다",
+     "type": "A"
+    },
+    {
+     "cy": "y drws",
+     "ko": "문",
+     "type": "A"
+    }
+   ]
+  },
+  "337": {
+   "legos": [
+    {
+     "cy": "wyt ti’n meddwl",
+     "ko": "너 ~라고 생각해?",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n medru",
+     "ko": "그가 ~ㄹ 수 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "cario ymlaen i",
+     "ko": "~를 계속하다",
+     "type": "A"
+    },
+    {
+     "cy": "chwarae",
+     "ko": "경기하다",
+     "type": "A"
+    }
+   ]
+  },
+  "338": {
+   "legos": [
+    {
+     "cy": "yn wael",
+     "ko": "심하게",
+     "type": "A"
+    }
+   ]
+  },
+  "339": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "fod o wedi brifo ei hun",
+     "ko": "그가 다쳤다고",
+     "type": "A"
+    },
+    {
+     "cy": "yn eitha’ gwael",
+     "ko": "꽤 심하게",
+     "type": "A"
+    }
+   ]
+  },
+  "340": {
+   "legos": [
+    {
+     "cy": "yndw",
+     "ko": "응",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n siŵr",
+     "ko": "나는 ~라고 확신해",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n mynd i",
+     "ko": "그가 ~ㄹ 거라고",
+     "type": "A"
+    },
+    {
+     "cy": "fod yn iawn",
+     "ko": "괜찮다",
+     "type": "A"
+    }
+   ]
+  },
+  "341": {
+   "legos": [
+    {
+     "cy": "wnes i gyfarfod",
+     "ko": "나는 ~를 만났어",
+     "type": "A"
+    },
+    {
+     "cy": "rhywun",
+     "ko": "누군가",
+     "type": "A"
+    },
+    {
+     "cy": "ychydig o ddiwrnodiau",
+     "ko": "며칠",
+     "type": "A"
+    },
+    {
+     "cy": "yn ôl",
+     "ko": "~ 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "342": {
+   "legos": [
+    {
+     "cy": "wnes i gyfarfod",
+     "ko": "나는 ~를 만났어",
+     "type": "A"
+    },
+    {
+     "cy": "rhywun ddudodd",
+     "ko": "~라고 말한 누군가",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth",
+     "ko": "무언가",
+     "type": "A"
+    }
+   ]
+  },
+  "343": {
+   "legos": [
+    {
+     "cy": "ddudodd",
+     "ko": "~라고 말한 사람",
+     "type": "A"
+    },
+    {
+     "cy": "bod hi’n poeni",
+     "ko": "그녀가 걱정한다고",
+     "type": "A"
+    },
+    {
+     "cy": "am",
+     "ko": "~에 대해",
+     "type": "A"
+    },
+    {
+     "cy": "yr economi",
+     "ko": "경제",
+     "type": "A"
+    }
+   ]
+  },
+  "344": {
+   "legos": [
+    {
+     "cy": "ddudodd",
+     "ko": "~라고 말한 사람",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n hapus i",
+     "ko": "그가 기꺼이 ~겠다고",
+     "type": "A"
+    },
+    {
+     "cy": "helpu chdi",
+     "ko": "너를 돕다",
+     "type": "A"
+    }
+   ]
+  },
+  "345": {
+   "legos": [
+    {
+     "cy": "ddudodd",
+     "ko": "~라고 말한 사람",
+     "type": "A"
+    },
+    {
+     "cy": "fod o ddim yn barod",
+     "ko": "그가 준비가 안 됐다고",
+     "type": "A"
+    },
+    {
+     "cy": "i adael",
+     "ko": "떠날",
+     "type": "A"
+    },
+    {
+     "cy": "hyd yn hyn",
+     "ko": "아직",
+     "type": "A"
+    }
+   ]
+  },
+  "346": {
+   "legos": [
+    {
+     "cy": "o’n i isio iddi hi",
+     "ko": "나는 그녀가 ~하기를 원했어",
+     "type": "A"
+    },
+    {
+     "cy": "wybod",
+     "ko": "알다",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ fi’n licio",
+     "ko": "내가 ~를 좋아한다고",
+     "type": "A"
+    },
+    {
+     "cy": "ei llyfr hi",
+     "ko": "그녀의 책",
+     "type": "A"
+    }
+   ]
+  },
+  "347": {
+   "legos": [
+    {
+     "cy": "oedd o isio",
+     "ko": "그는 ~고 싶어했어",
+     "type": "A"
+    },
+    {
+     "cy": "gwybod",
+     "ko": "알다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd yn digwydd",
+     "ko": "무슨 일이 일어나고 있었는지",
+     "type": "A"
+    },
+    {
+     "cy": "wythnos yn ôl",
+     "ko": "일주일 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "348": {
+   "legos": [
+    {
+     "cy": "doedd hi ddim isio",
+     "ko": "그녀는 ~고 싶어하지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "gwybod",
+     "ko": "알다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd yn mynd i ddigwydd",
+     "ko": "무슨 일이 일어나려고 했는지",
+     "type": "A"
+    }
+   ]
+  },
+  "349": {
+   "legos": [
+    {
+     "cy": "oedd o isio",
+     "ko": "그는 ~고 싶어했어",
+     "type": "A"
+    },
+    {
+     "cy": "mynd allan",
+     "ko": "나가다",
+     "type": "A"
+    },
+    {
+     "cy": "nos Wener",
+     "ko": "금요일 밤에",
+     "type": "A"
+    }
+   ]
+  },
+  "350": {
+   "legos": [
+    {
+     "cy": "oedd",
+     "ko": "응 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "oedd o isio",
+     "ko": "그는 ~고 싶어했어",
+     "type": "A"
+    },
+    {
+     "cy": "gweld",
+     "ko": "보다",
+     "type": "A"
+    },
+    {
+     "cy": "rhai hen ffrindiau",
+     "ko": "오랜 친구 몇 명",
+     "type": "A"
+    }
+   ]
+  },
+  "351": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "doedd o ddim isio",
+     "ko": "그는 ~고 싶어하지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "fy ngadael i",
+     "ko": "나를 두다",
+     "type": "A"
+    },
+    {
+     "cy": "ar fy mhen fy hun",
+     "ko": "혼자서",
+     "type": "A"
+    }
+   ]
+  },
+  "352": {
+   "legos": [
+    {
+     "cy": "hyd yn oed tasai fo isio",
+     "ko": "그가 원한다고 해도",
+     "type": "A"
+    },
+    {
+     "cy": "fyddai fo ddim yn medru",
+     "ko": "그는 할 수 없을 텐데",
+     "type": "A"
+    }
+   ]
+  },
+  "353": {
+   "legos": [
+    {
+     "cy": "oedd hi angen",
+     "ko": "그녀는 ~ㄹ 필요가 있었어",
+     "type": "A"
+    },
+    {
+     "cy": "rhedeg",
+     "ko": "달리다",
+     "type": "A"
+    },
+    {
+     "cy": "o gwmpas y cae",
+     "ko": "들판 주위를",
+     "type": "A"
+    }
+   ]
+  },
+  "354": {
+   "legos": [
+    {
+     "cy": "doedd o ddim angen",
+     "ko": "그는 ~ㄹ 필요가 없었어",
+     "type": "A"
+    },
+    {
+     "cy": "ymddangos yn flin",
+     "ko": "화나 보이다",
+     "type": "A"
+    }
+   ]
+  },
+  "355": {
+   "legos": [
+    {
+     "cy": "oedd hi angen",
+     "ko": "그녀는 ~ㄹ 필요가 있었어",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "efo’r ddynas ’na",
+     "ko": "그 여자와",
+     "type": "A"
+    },
+    {
+     "cy": "ti’n nabod",
+     "ko": "네가 아는",
+     "type": "A"
+    }
+   ]
+  },
+  "356": {
+   "legos": [
+    {
+     "cy": "oedd",
+     "ko": "응 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "oedd gynnyn nhw",
+     "ko": "그들은 ~가 있었어",
+     "type": "A"
+    },
+    {
+     "cy": "rywbeth pwysig",
+     "ko": "중요한 것",
+     "type": "A"
+    },
+    {
+     "cy": "i’w drafod",
+     "ko": "논의할",
+     "type": "A"
+    }
+   ]
+  },
+  "357": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "oedd hi jesd isio",
+     "ko": "그녀는 그냥 ~고 싶어했어",
+     "type": "A"
+    },
+    {
+     "cy": "gyrru neges iddi hi",
+     "ko": "그녀에게 메시지를 보내다",
+     "type": "A"
+    }
+   ]
+  },
+  "358": {
+   "legos": [
+    {
+     "cy": "ddudodd dy ffrind",
+     "ko": "네 친구는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "nad oedd hi’n medru",
+     "ko": "그녀가 ~ㄹ 수 없었다고",
+     "type": "A"
+    },
+    {
+     "cy": "cyrraedd y copa",
+     "ko": "정상에 도달하다",
+     "type": "A"
+    }
+   ]
+  },
+  "359": {
+   "legos": [
+    {
+     "cy": "ddudodd dy ffrind",
+     "ko": "네 친구는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n medru",
+     "ko": "그가 ~ㄹ 수 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "troi i’r chwith",
+     "ko": "왼쪽으로 돌다",
+     "type": "A"
+    }
+   ]
+  },
+  "360": {
+   "legos": [
+    {
+     "cy": "ddudodd dy ffrind",
+     "ko": "네 친구는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "unrhyw beth arall",
+     "ko": "다른 무엇이라도",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}
