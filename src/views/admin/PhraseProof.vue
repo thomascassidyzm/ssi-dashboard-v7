@@ -9,6 +9,7 @@
       </div>
       <div class="bar">
         <button class="pill" :class="{ on: flaggedOnly }" @click="setFlaggedOnly(!flaggedOnly)">⚑ Flagged only</button>
+        <button class="pill" :class="{ on: showEnglish }" :aria-pressed="showEnglish" @click="setShowEnglish(!showEnglish)">Show English</button>
         <span class="count"><b>{{ flaggedCount }}</b> flagged · {{ total }}</span>
         <button class="pill" @click="exportFlags">Export</button>
       </div>
@@ -40,7 +41,7 @@
             <!-- The last word and the flag never part, so the flag cannot wrap onto a line of its own. -->
             <span class="cy" @click="toggle(r.p.id)">{{ r.head }}<span class="tail">{{ r.tail }}<button class="flag" :class="{ on: flagOf(r.p).flagged }"
               :aria-pressed="flagOf(r.p).flagged" :aria-label="(flagOf(r.p).flagged ? 'Unflag ' : 'Flag ') + r.p.id" @click.stop="flip(r.p)">{{ flagOf(r.p).flagged ? '⚑' : '⚐' }}</button></span></span>
-            <div v-if="open[r.p.id]" class="en" @click="toggle(r.p.id)">{{ r.p.en || '— no English —' }}</div>
+            <div v-if="showEnglish || open[r.p.id]" class="en" @click="toggle(r.p.id)">{{ r.p.en || '— no English —' }}</div>
             <div v-if="flagOf(r.p).flagged || flagOf(r.p).note" class="notewrap">
               <input class="noteinp" type="text" :value="flagOf(r.p).note" maxlength="1000" placeholder="Note (optional)"
                      enterkeyhint="done" @input="onNote(r.p, $event.target.value)" @blur="saveNow(r.p)" @keyup.enter="$event.target.blur()" />
@@ -79,6 +80,11 @@ const total = ref(0)
 const loading = ref(false)
 const loadError = ref('')
 const flaggedOnly = ref(false)
+// "Show English" pill: the English under every row at once, for a proofreader who wants both lines throughout.
+// Off by default; one remembered choice shared with the LEGO proof page.
+const SHOW_EN_KEY = 'proof:showEnglish'
+const showEnglish = ref(readShowEnglish())
+function readShowEnglish() { try { return localStorage.getItem(SHOW_EN_KEY) === '1' } catch { return false } }
 const flags = reactive({})         // id -> { flagged, note }, only for rows that have ever had one
 const open = reactive({})
 const state = reactive({})
@@ -111,7 +117,8 @@ const keyOf2 = (p, marker) => `${p.id}|${marker ? 1 : 0}`
 function estimate(p, marker, f) {
   const textW = Math.max(120, width.value - 52)       // stripe + number column + flag
   const lines = Math.max(1, Math.ceil((p.cy.length * 8.6 + 26) / textW))
-  return 2 + lines * 22 + (marker ? 16 : 0) + (f && (f.flagged || f.note) ? 36 : 0)
+  const enLines = showEnglish.value ? Math.max(1, Math.ceil(((p.en || '').length * 7.4) / textW)) : 0
+  return 2 + lines * 22 + enLines * 20 + (marker ? 16 : 0) + (f && (f.flagged || f.note) ? 36 : 0)
 }
 const tops = computed(() => {
   void measureTick.value
@@ -249,8 +256,16 @@ function setFlaggedOnly(v) {
   flaggedOnly.value = v
   nextTick(() => { if (v) window.scrollTo(0, 0); else restorePlace() })
 }
+// Every row changes height at once, so the old measurements are dropped and the row being read is put back on screen.
+function setShowEnglish(v) {
+  const i = window.scrollY > 0 && shown.value.length ? rowAt(tops.value, viewTop.value + coveredTop()) : -1
+  showEnglish.value = v
+  try { localStorage.setItem(SHOW_EN_KEY, v ? '1' : '0') } catch { /* private mode */ }
+  measured.clear(); measureTick.value++
+  if (i > 0) nextTick(() => { window.scrollTo(0, listTop() + tops.value[i] - coveredTop()); readView() })
+}
 
-function toggle(id) { open[id] = !open[id] }
+function toggle(id) { if (!showEnglish.value) open[id] = !open[id] }
 
 // ---- saving (as the LEGO page: one save per row at a time, keyed by course + id, course captured at the change) -----
 const inflight = {}

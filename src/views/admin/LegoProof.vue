@@ -12,6 +12,7 @@
           <button v-for="p in PARTS" :key="p.key" :class="{ on: part === p.key }" @click="part = p.key">{{ p.label }}</button>
         </div>
         <button class="pill" :class="{ on: flaggedOnly }" @click="flaggedOnly = !flaggedOnly">⚑ Flagged only</button>
+        <button class="pill" :class="{ on: showEnglish }" :aria-pressed="showEnglish" @click="setShowEnglish(!showEnglish)">Show English</button>
         <button class="pill" :class="{ on: showTaught }" @click="showTaught = !showTaught">Show taught</button>
         <span class="count"><b>{{ flaggedCount }}</b> flagged · {{ newCount }} new</span>
         <button class="pill" @click="exportFlags">Export flags</button>
@@ -48,7 +49,7 @@
               {{ l.flagged ? '⚑' : '⚐' }}
             </button>
           </div>
-          <div v-if="open[l.id]" class="en">{{ l.en || '— no English —' }}</div>
+          <div v-if="showEnglish || open[l.id]" class="en">{{ l.en || '— no English —' }}</div>
           <div v-if="l.flagged || l.note" class="notewrap" @click.stop>
             <input class="noteinp" type="text" :value="l.note" maxlength="1000" placeholder="Note (optional)"
                    enterkeyhint="done" @input="onNote(l, $event.target.value)" @blur="saveNow(l)" @keyup.enter="$event.target.blur()" />
@@ -88,6 +89,15 @@ const loadError = ref('')
 const showTaught = ref(false)
 const part = ref('all')
 const flaggedOnly = ref(false)
+// "Show English" pill: the English under every row at once. Off by default; one remembered choice shared with the
+// phrase proof page.
+const SHOW_EN_KEY = 'proof:showEnglish'
+const showEnglish = ref(readShowEnglish())
+function readShowEnglish() { try { return localStorage.getItem(SHOW_EN_KEY) === '1' } catch { return false } }
+function setShowEnglish(v) {
+  showEnglish.value = v
+  try { localStorage.setItem(SHOW_EN_KEY, v ? '1' : '0') } catch { /* private mode */ }
+}
 const open = reactive({})
 const state = reactive({})
 const msg = ref('')
