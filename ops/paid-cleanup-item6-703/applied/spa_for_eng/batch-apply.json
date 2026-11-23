@@ -1,0 +1,1962 @@
+{
+ "status": 200,
+ "request": {
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0055L01B03",
+    "set": {
+     "known_text": "I don't like waking up",
+     "target_text": "No me gusta despertarme",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't enjoy waking up",
+     "target_text": "No disfruto despertarme"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0055L01B05",
+    "set": {
+     "known_text": "I like waking up",
+     "target_text": "Me gusta despertarme",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I enjoy waking up",
+     "target_text": "Disfruto despertarme"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0055L01U01",
+    "set": {
+     "known_text": "I don't like waking up when I'm very tired",
+     "target_text": "No me gusta despertarme cuando estoy muy cansado",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't enjoy waking up when I'm tired",
+     "target_text": "No disfruto despertarme cuando estoy cansado"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0055L01U03",
+    "set": {
+     "known_text": "I don't like waking up when I'm starting to feel tired",
+     "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't enjoy waking up when I'm starting to feel tired",
+     "target_text": "No disfruto despertarme cuando estoy empezando a sentirme cansado"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0108L02U09",
+    "set": {
+     "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+     "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I do not enjoy stopping in the middle of something I am just beginning to understand",
+     "target_text": "No disfruto parar en medio de algo que estoy empezando a entender"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "spa_for_eng:S0216L04U14",
+    "expect": {
+     "known_text": "I really enjoy being able to talk with my friends at the weekend",
+     "target_text": "Disfruto mucho poder hablar con mis amigos el fin de semana"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0243L03U08",
+    "set": {
+     "known_text": "I don't like eating when I'm feeling tired",
+     "target_text": "No me gusta comer cuando me siento cansado",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't enjoy eating when I'm feeling tired",
+     "target_text": "No disfruto comer cuando me siento cansado"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0586L01U01",
+    "set": {
+     "target_text": "¿podría pedir unos huevos cocidos, por favor?",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "could I have some boiled eggs please?",
+     "target_text": "¿podría tener unos huevos cocidos por favor?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0586L02U02",
+    "set": {
+     "target_text": "¿podría pedir veinte huevos cocidos?",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "could I have twenty boiled eggs?",
+     "target_text": "¿podría tener veinte huevos cocidos?"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0156L02U02",
+    "set": {
+     "known_text": "I need a moment to think before I answer",
+     "target_text": "Necesito un momento para pensar antes de contestar",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "Can I have a moment to think before I answer?",
+     "target_text": "¿Puedo tener un momento para pensar antes de contestar?"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "spa_for_eng:S0189L01U03",
+    "expect": {
+     "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
+     "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "spa_for_eng:S0060L01U11",
+    "set": {
+     "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I need to practise saying different words when I speak Spanish",
+     "target_text": "Necesito practicar decir palabras diferentes cuando hablo español"
+    }
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "phrase_id": "spa_for_eng:S0055L01B03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "phrase_id": "spa_for_eng:S0055L01B03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "phrase_id": "spa_for_eng:S0055L01B03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "phrase_id": "spa_for_eng:S0055L01B05"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "phrase_id": "spa_for_eng:S0055L01B05"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "phrase_id": "spa_for_eng:S0055L01B05"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "phrase_id": "spa_for_eng:S0055L01U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "phrase_id": "spa_for_eng:S0055L01U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "phrase_id": "spa_for_eng:S0055L01U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "phrase_id": "spa_for_eng:S0055L01U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "phrase_id": "spa_for_eng:S0055L01U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "phrase_id": "spa_for_eng:S0055L01U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "phrase_id": "spa_for_eng:S0108L02U09"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "phrase_id": "spa_for_eng:S0108L02U09"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "phrase_id": "spa_for_eng:S0108L02U09"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "phrase_id": "spa_for_eng:S0243L03U08"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "phrase_id": "spa_for_eng:S0243L03U08"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "phrase_id": "spa_for_eng:S0243L03U08"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "b1f088e5-0961-4d7e-9d70-4e61ad75ab3e",
+    "phrase_id": "spa_for_eng:S0586L01U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "54a89641-526b-4cd9-aa40-a83a8794a5b9",
+    "phrase_id": "spa_for_eng:S0586L01U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "1a2ebb74-0827-4065-9013-3b07089bc95b",
+    "phrase_id": "spa_for_eng:S0586L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "3bb5394e-1770-439b-8139-82064df28133",
+    "phrase_id": "spa_for_eng:S0586L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "phrase_id": "spa_for_eng:S0156L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "phrase_id": "spa_for_eng:S0156L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "phrase_id": "spa_for_eng:S0156L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "83cbe5d0-ccaa-4805-b9ba-3284755cdb0e",
+    "phrase_id": "spa_for_eng:S0060L01U11"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "bf79bd08-f1fa-4f3f-9a39-938f9dce6ad1",
+    "phrase_id": "spa_for_eng:S0060L01U11"
+   }
+  ],
+  "apply": true
+ },
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "0a68f7ca-a019-4d3e-8a09-9a8a4ac4635e",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up",
+    "target_text": "No disfruto despertarme",
+    "target_text_roman": null,
+    "known_audio_id": "13b9d177-ac65-4f1d-bb02-91368248acff",
+    "target1_audio_id": "348d3f6e-d49b-4570-88f8-ed5cc476b664",
+    "target2_audio_id": "ec479f7f-c3f8-469e-a89c-5397457fd2d4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "target_text_roman": null,
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B05"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I enjoy waking up",
+    "target_text": "Disfruto despertarme",
+    "target_text_roman": null,
+    "known_audio_id": "ef44b5bf-bf9b-4635-b5f4-e3e293f054ea",
+    "target1_audio_id": "faa46c50-b496-4a25-9d83-19c42c3bd586",
+    "target2_audio_id": "90422392-1f02-4d91-953e-57e24512116e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "target_text_roman": null,
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up when I'm tired",
+    "target_text": "No disfruto despertarme cuando estoy cansado",
+    "target_text_roman": null,
+    "known_audio_id": "03e30dd5-d0e9-4c65-90e5-a6e9a73f08a2",
+    "target1_audio_id": "d57f823f-2dc1-45ba-bbb0-e52dd031f1da",
+    "target2_audio_id": "09ef2a3b-ee2e-493d-8260-591559818536",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "target_text_roman": null,
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't enjoy waking up when I'm starting to feel tired",
+    "target_text": "No disfruto despertarme cuando estoy empezando a sentirme cansado",
+    "target_text_roman": null,
+    "known_audio_id": "fa94b1b5-0d33-419f-979d-f58e8555ddaf",
+    "target1_audio_id": "4b11a979-5657-4843-8674-ddb34f4eaad6",
+    "target2_audio_id": "d4c0119f-bbe1-4dcb-aaa3-780e9e54ce2c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "target_text_roman": null,
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L02U09"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I do not enjoy stopping in the middle of something I am just beginning to understand",
+    "target_text": "No disfruto parar en medio de algo que estoy empezando a entender",
+    "target_text_roman": null,
+    "known_audio_id": "af39ba1a-f46d-415b-8a15-9562438a1fa9",
+    "target1_audio_id": "9cda1c2c-b920-4adc-912f-9aed8404786b",
+    "target2_audio_id": "c15984aa-d0f5-4259-8007-b43475d0dbbb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "target_text_roman": null,
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0216L04U14"
+   },
+   "before": {
+    "id": "spa_for_eng:S0216L04U14",
+    "seed_number": 216,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "I really enjoy being able to talk with my friends at the weekend",
+    "target_text": "Disfruto mucho poder hablar con mis amigos el fin de semana",
+    "known_audio_id": "5346f56f-6260-41c9-8603-ced975e0a1ed",
+    "target1_audio_id": "e2a4de22-42fc-4f33-98ff-77fdb970f2cf",
+    "target2_audio_id": "ad918a67-d0cc-4c29-8192-e3dd9ce583eb",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0243L03U08"
+   },
+   "before": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't enjoy eating when I'm feeling tired",
+    "target_text": "No disfruto comer cuando me siento cansado",
+    "target_text_roman": null,
+    "known_audio_id": "d816beff-c533-4bf7-b91d-e8f3c5b1115a",
+    "target1_audio_id": "bbd0e358-2dd4-4d0d-98cf-b8d72a149786",
+    "target2_audio_id": "fef4727f-30d8-432e-9707-950ba5bb7d82",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "target_text_roman": null,
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0586L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0586L01U01",
+    "seed_number": 586,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "¿podría tener unos huevos cocidos por favor?",
+    "target_text_roman": null,
+    "known_text": "could I have some boiled eggs please?",
+    "known_audio_id": "344511f0-cba5-4dd5-b769-71bca769cfdb",
+    "target1_audio_id": "c77f79fd-829c-4406-bba0-d4dae5121138",
+    "target2_audio_id": "a02e2d2f-2a79-4fe3-9e96-1da771d76f69",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0586L01U01",
+    "seed_number": 586,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "¿podría pedir unos huevos cocidos, por favor?",
+    "target_text_roman": null,
+    "known_text": "could I have some boiled eggs please?",
+    "known_audio_id": "344511f0-cba5-4dd5-b769-71bca769cfdb",
+    "target1_audio_id": "b1f088e5-0961-4d7e-9d70-4e61ad75ab3e",
+    "target2_audio_id": "54a89641-526b-4cd9-aa40-a83a8794a5b9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0586L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0586L02U02",
+    "seed_number": 586,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "¿podría tener veinte huevos cocidos?",
+    "target_text_roman": null,
+    "known_text": "could I have twenty boiled eggs?",
+    "known_audio_id": "3db1f74e-1072-4342-b144-6f075b78930b",
+    "target1_audio_id": "a92a7c4e-ea72-4d29-8cee-b920b09fe7b1",
+    "target2_audio_id": "788214bc-84b2-4eba-8714-087842b76274",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0586L02U02",
+    "seed_number": 586,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "¿podría pedir veinte huevos cocidos?",
+    "target_text_roman": null,
+    "known_text": "could I have twenty boiled eggs?",
+    "known_audio_id": "3db1f74e-1072-4342-b144-6f075b78930b",
+    "target1_audio_id": "1a2ebb74-0827-4065-9013-3b07089bc95b",
+    "target2_audio_id": "3bb5394e-1770-439b-8139-82064df28133",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0156L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "Can I have a moment to think before I answer?",
+    "target_text": "¿Puedo tener un momento para pensar antes de contestar?",
+    "target_text_roman": null,
+    "known_audio_id": "da14c788-f02b-49af-be5b-e00f3031706a",
+    "target1_audio_id": "0bb495ed-ac33-494d-8c7e-04cddbc7ad45",
+    "target2_audio_id": "e857b442-d425-4a42-b117-d00cb62bb657",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "target_text_roman": null,
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0189L01U03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0189L01U03",
+    "seed_number": 189,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
+    "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar",
+    "known_audio_id": "f40c9450-efa7-4ff5-b136-f28a72a1a2d7",
+    "target1_audio_id": "ef24c37a-5931-4bdc-abfa-44518ac92b6f",
+    "target2_audio_id": "547c7baa-a045-43f7-b45d-14122fad54ef",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0060L01U11"
+   },
+   "before": {
+    "id": "spa_for_eng:S0060L01U11",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Necesito practicar decir palabras diferentes cuando hablo español",
+    "target_text_roman": null,
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "known_audio_id": "ebf4ec54-b9ba-4e5d-84e4-65578c384233",
+    "target1_audio_id": "c4aad8ff-8554-4bb3-872b-3fa4572fab29",
+    "target2_audio_id": "d28006a9-ae13-4f54-97a2-6978780d75ca",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0060L01U11",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español",
+    "target_text_roman": null,
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "known_audio_id": "ebf4ec54-b9ba-4e5d-84e4-65578c384233",
+    "target1_audio_id": "83cbe5d0-ccaa-4805-b9ba-3284755cdb0e",
+    "target2_audio_id": "bf79bd08-f1fa-4f3f-9a39-938f9dce6ad1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "6be12eb7-94c6-4201-a91f-702c19e87ddc",
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme",
+    "known_audio_id": "1ad46407-b05e-44db-ad99-243e991ee17a",
+    "target1_audio_id": "fb57b993-6da1-42cc-8610-e590c545e59e",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B05"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B05"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01B05"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01B05",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "2c7799b0-31b6-430e-bbab-973690aec687",
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme",
+    "known_audio_id": "a72f8102-5f71-4240-9db0-c9276df9fb2f",
+    "target1_audio_id": "ab4418a1-c2cc-452a-9d1a-6f682420e05a",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U01",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "4645a9cd-22b7-4d05-b445-fab7f035bf47",
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado",
+    "known_audio_id": "812c9a40-f907-40b2-ad1e-d405fb8e7361",
+    "target1_audio_id": "a956aec8-ec45-49a2-8bf7-517309b5af7d",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0055L01U03"
+   },
+   "before": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0055L01U03",
+    "seed_number": 55,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "44e7b27e-0195-4540-89bf-4ed6bb7af8a1",
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado",
+    "known_audio_id": "dc854a82-bd1f-420e-9261-18beb4b3ee9b",
+    "target1_audio_id": "0f658683-5ac4-4b0c-8171-d8f209741252",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L02U09"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L02U09"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0108L02U09"
+   },
+   "before": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0108L02U09",
+    "seed_number": 108,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "9c7a16f4-9294-4397-af6e-a32ea0b86c36",
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender",
+    "known_audio_id": "6055ac37-de7a-43f5-9f6c-07a18ae1e7dd",
+    "target1_audio_id": "1ab2a754-59e9-4882-b5a1-a66a5d60f816",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 27,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0243L03U08"
+   },
+   "before": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 28,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0243L03U08"
+   },
+   "before": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 29,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0243L03U08"
+   },
+   "before": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0243L03U08",
+    "seed_number": 243,
+    "lego_index": 3,
+    "lego_id": null,
+    "target2_audio_id": "31b02a74-f970-40b3-a3f5-3fe1f534faed",
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado",
+    "known_audio_id": "fe8fa944-7214-45a3-9e2e-078c6da6700f",
+    "target1_audio_id": "66a66693-6b62-4671-b4fc-ea0804bab180",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 30,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0586L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0586L01U01",
+    "seed_number": 586,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "b1f088e5-0961-4d7e-9d70-4e61ad75ab3e",
+    "known_text": "could I have some boiled eggs please?",
+    "target_text": "¿podría pedir unos huevos cocidos, por favor?",
+    "known_audio_id": "344511f0-cba5-4dd5-b769-71bca769cfdb",
+    "target2_audio_id": "54a89641-526b-4cd9-aa40-a83a8794a5b9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0586L01U01",
+    "seed_number": 586,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "b1f088e5-0961-4d7e-9d70-4e61ad75ab3e",
+    "known_text": "could I have some boiled eggs please?",
+    "target_text": "¿podría pedir unos huevos cocidos, por favor?",
+    "known_audio_id": "344511f0-cba5-4dd5-b769-71bca769cfdb",
+    "target2_audio_id": "54a89641-526b-4cd9-aa40-a83a8794a5b9",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 31,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0586L01U01"
+   },
+   "before": {
+    "id": "spa_for_eng:S0586L01U01",
+    "seed_number": 586,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "54a89641-526b-4cd9-aa40-a83a8794a5b9",
+    "known_text": "could I have some boiled eggs please?",
+    "target_text": "¿podría pedir unos huevos cocidos, por favor?",
+    "known_audio_id": "344511f0-cba5-4dd5-b769-71bca769cfdb",
+    "target1_audio_id": "b1f088e5-0961-4d7e-9d70-4e61ad75ab3e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0586L01U01",
+    "seed_number": 586,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "54a89641-526b-4cd9-aa40-a83a8794a5b9",
+    "known_text": "could I have some boiled eggs please?",
+    "target_text": "¿podría pedir unos huevos cocidos, por favor?",
+    "known_audio_id": "344511f0-cba5-4dd5-b769-71bca769cfdb",
+    "target1_audio_id": "b1f088e5-0961-4d7e-9d70-4e61ad75ab3e",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 32,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0586L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0586L02U02",
+    "seed_number": 586,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "1a2ebb74-0827-4065-9013-3b07089bc95b",
+    "known_text": "could I have twenty boiled eggs?",
+    "target_text": "¿podría pedir veinte huevos cocidos?",
+    "known_audio_id": "3db1f74e-1072-4342-b144-6f075b78930b",
+    "target2_audio_id": "3bb5394e-1770-439b-8139-82064df28133",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0586L02U02",
+    "seed_number": 586,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "1a2ebb74-0827-4065-9013-3b07089bc95b",
+    "known_text": "could I have twenty boiled eggs?",
+    "target_text": "¿podría pedir veinte huevos cocidos?",
+    "known_audio_id": "3db1f74e-1072-4342-b144-6f075b78930b",
+    "target2_audio_id": "3bb5394e-1770-439b-8139-82064df28133",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 33,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0586L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0586L02U02",
+    "seed_number": 586,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "3bb5394e-1770-439b-8139-82064df28133",
+    "known_text": "could I have twenty boiled eggs?",
+    "target_text": "¿podría pedir veinte huevos cocidos?",
+    "known_audio_id": "3db1f74e-1072-4342-b144-6f075b78930b",
+    "target1_audio_id": "1a2ebb74-0827-4065-9013-3b07089bc95b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0586L02U02",
+    "seed_number": 586,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "3bb5394e-1770-439b-8139-82064df28133",
+    "known_text": "could I have twenty boiled eggs?",
+    "target_text": "¿podría pedir veinte huevos cocidos?",
+    "known_audio_id": "3db1f74e-1072-4342-b144-6f075b78930b",
+    "target1_audio_id": "1a2ebb74-0827-4065-9013-3b07089bc95b",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 34,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0156L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 35,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0156L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 36,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0156L02U02"
+   },
+   "before": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0156L02U02",
+    "seed_number": 156,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "373547eb-8d34-47b9-9ab8-2ea83510fcd2",
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar",
+    "known_audio_id": "a2407e8d-8129-476e-bad3-19f1e7af95d3",
+    "target1_audio_id": "f245935f-ebbe-4fc4-8054-87d924e04c6c",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 37,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0060L01U11"
+   },
+   "before": {
+    "id": "spa_for_eng:S0060L01U11",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "83cbe5d0-ccaa-4805-b9ba-3284755cdb0e",
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español",
+    "known_audio_id": "ebf4ec54-b9ba-4e5d-84e4-65578c384233",
+    "target2_audio_id": "bf79bd08-f1fa-4f3f-9a39-938f9dce6ad1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0060L01U11",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "83cbe5d0-ccaa-4805-b9ba-3284755cdb0e",
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español",
+    "known_audio_id": "ebf4ec54-b9ba-4e5d-84e4-65578c384233",
+    "target2_audio_id": "bf79bd08-f1fa-4f3f-9a39-938f9dce6ad1",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 38,
+   "op": "audio.link",
+   "key": {
+    "course_code": "spa_for_eng",
+    "id": "spa_for_eng:S0060L01U11"
+   },
+   "before": {
+    "id": "spa_for_eng:S0060L01U11",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "bf79bd08-f1fa-4f3f-9a39-938f9dce6ad1",
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español",
+    "known_audio_id": "ebf4ec54-b9ba-4e5d-84e4-65578c384233",
+    "target1_audio_id": "83cbe5d0-ccaa-4805-b9ba-3284755cdb0e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "spa_for_eng:S0060L01U11",
+    "seed_number": 60,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "bf79bd08-f1fa-4f3f-9a39-938f9dce6ad1",
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español",
+    "known_audio_id": "ebf4ec54-b9ba-4e5d-84e4-65578c384233",
+    "target1_audio_id": "83cbe5d0-ccaa-4805-b9ba-3284755cdb0e",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0060L01U11",
+   "set": {
+    "target_text": "Necesito practicar decir palabras diferentes cuando hablo español",
+    "target1_audio_id": "c4aad8ff-8554-4bb3-872b-3fa4572fab29",
+    "target2_audio_id": "d28006a9-ae13-4f54-97a2-6978780d75ca"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0189L01U03",
+    "seed_number": 189,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
+    "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar",
+    "word_count": 90,
+    "lego_count": 19,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-17T20:48:20.533Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:48:20.573Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "f40c9450-efa7-4ff5-b136-f28a72a1a2d7",
+    "target1_audio_id": "ef24c37a-5931-4bdc-abfa-44518ac92b6f",
+    "target2_audio_id": "547c7baa-a045-43f7-b45d-14122fad54ef",
+    "qa_checked": "2026-02-17T21:56:38.220Z",
+    "target1_duration_ms": 4960,
+    "target2_duration_ms": 4960,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "Es",
+      "isGhost": true
+     },
+     {
+      "known": "a good idea",
+      "legoId": "S0189L01",
+      "target": " una buena idea",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " tomar",
+      "isGhost": true
+     },
+     {
+      "known": "something",
+      "legoId": "S0004L02",
+      "target": " algo",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " tiempo",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " para",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pensar",
+      "isGhost": true
+     },
+     {
+      "known": "carefully",
+      "legoId": "S0037L03",
+      "target": " con cuidado",
+      "isGhost": false
+     },
+     {
+      "known": "before",
+      "legoId": "S0128L05",
+      "target": " antes",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " de",
+      "isGhost": true
+     },
+     {
+      "known": "to try",
+      "legoId": "S0007L01",
+      "target": " intentar",
+      "isGhost": false
+     },
+     {
+      "known": "to answer",
+      "legoId": "S0043L02",
+      "target": " contestar",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0156L02U02",
+   "set": {
+    "known_text": "Can I have a moment to think before I answer?",
+    "target_text": "¿Puedo tener un momento para pensar antes de contestar?",
+    "known_audio_id": "da14c788-f02b-49af-be5b-e00f3031706a",
+    "target1_audio_id": "0bb495ed-ac33-494d-8c7e-04cddbc7ad45",
+    "target2_audio_id": "e857b442-d425-4a42-b117-d00cb62bb657"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0586L02U02",
+   "set": {
+    "target_text": "¿podría tener veinte huevos cocidos?",
+    "target1_audio_id": "a92a7c4e-ea72-4d29-8cee-b920b09fe7b1",
+    "target2_audio_id": "788214bc-84b2-4eba-8714-087842b76274"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0586L01U01",
+   "set": {
+    "target_text": "¿podría tener unos huevos cocidos por favor?",
+    "target1_audio_id": "c77f79fd-829c-4406-bba0-d4dae5121138",
+    "target2_audio_id": "a02e2d2f-2a79-4fe3-9e96-1da771d76f69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0243L03U08",
+   "set": {
+    "known_text": "I don't enjoy eating when I'm feeling tired",
+    "target_text": "No disfruto comer cuando me siento cansado",
+    "known_audio_id": "d816beff-c533-4bf7-b91d-e8f3c5b1115a",
+    "target1_audio_id": "bbd0e358-2dd4-4d0d-98cf-b8d72a149786",
+    "target2_audio_id": "fef4727f-30d8-432e-9707-950ba5bb7d82"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "spa_for_eng:S0216L04U14",
+    "seed_number": 216,
+    "lego_index": 4,
+    "position": 19,
+    "known_text": "I really enjoy being able to talk with my friends at the weekend",
+    "target_text": "Disfruto mucho poder hablar con mis amigos el fin de semana",
+    "word_count": 59,
+    "lego_count": 13,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "pipeline": "v2",
+     "scored_at": "2026-02-17T20:36:45.813Z",
+     "known_score": 8,
+     "target_score": 8
+    },
+    "status": "released",
+    "release_batch": null,
+    "created_at": "2026-02-17T20:36:45.850Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "5346f56f-6260-41c9-8603-ced975e0a1ed",
+    "target1_audio_id": "e2a4de22-42fc-4f33-98ff-77fdb970f2cf",
+    "target2_audio_id": "ad918a67-d0cc-4c29-8192-e3dd9ce583eb",
+    "qa_checked": "2026-02-17T21:57:03.984Z",
+    "target1_duration_ms": 3200,
+    "target2_duration_ms": 3040,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I enjoy",
+      "legoId": "S0206L01",
+      "target": "Disfruto",
+      "isGhost": false
+     },
+     {
+      "known": "a lot",
+      "legoId": "S0089L02",
+      "target": " mucho",
+      "isGhost": false
+     },
+     {
+      "known": "to be able to",
+      "legoId": "S0011L02",
+      "target": " poder",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " hablar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " con",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mis",
+      "isGhost": true
+     },
+     {
+      "known": "friends",
+      "legoId": "S0216L04",
+      "target": " amigos",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "at the weekend",
+      "legoId": "S0214L02",
+      "target": " el fin de semana",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L02U09",
+   "set": {
+    "known_text": "I do not enjoy stopping in the middle of something I am just beginning to understand",
+    "target_text": "No disfruto parar en medio de algo que estoy empezando a entender",
+    "known_audio_id": "af39ba1a-f46d-415b-8a15-9562438a1fa9",
+    "target1_audio_id": "9cda1c2c-b920-4adc-912f-9aed8404786b",
+    "target2_audio_id": "c15984aa-d0f5-4259-8007-b43475d0dbbb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01U03",
+   "set": {
+    "known_text": "I don't enjoy waking up when I'm starting to feel tired",
+    "target_text": "No disfruto despertarme cuando estoy empezando a sentirme cansado",
+    "known_audio_id": "fa94b1b5-0d33-419f-979d-f58e8555ddaf",
+    "target1_audio_id": "4b11a979-5657-4843-8674-ddb34f4eaad6",
+    "target2_audio_id": "d4c0119f-bbe1-4dcb-aaa3-780e9e54ce2c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01U01",
+   "set": {
+    "known_text": "I don't enjoy waking up when I'm tired",
+    "target_text": "No disfruto despertarme cuando estoy cansado",
+    "known_audio_id": "03e30dd5-d0e9-4c65-90e5-a6e9a73f08a2",
+    "target1_audio_id": "d57f823f-2dc1-45ba-bbb0-e52dd031f1da",
+    "target2_audio_id": "09ef2a3b-ee2e-493d-8260-591559818536"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01B05",
+   "set": {
+    "known_text": "I enjoy waking up",
+    "target_text": "Disfruto despertarme",
+    "known_audio_id": "ef44b5bf-bf9b-4635-b5f4-e3e293f054ea",
+    "target1_audio_id": "faa46c50-b496-4a25-9d83-19c42c3bd586",
+    "target2_audio_id": "90422392-1f02-4d91-953e-57e24512116e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01B03",
+   "set": {
+    "known_text": "I don't enjoy waking up",
+    "target_text": "No disfruto despertarme",
+    "known_audio_id": "13b9d177-ac65-4f1d-bb02-91368248acff",
+    "target1_audio_id": "348d3f6e-d49b-4570-88f8-ed5cc476b664",
+    "target2_audio_id": "ec479f7f-c3f8-469e-a89c-5397457fd2d4"
+   }
+  }
+ ],
+ "undo_file": "2026-11-18T14-47-15-110Z-0a68f7ca-a019-4d3e-8a09-9a8a4ac4635e.json"
+}

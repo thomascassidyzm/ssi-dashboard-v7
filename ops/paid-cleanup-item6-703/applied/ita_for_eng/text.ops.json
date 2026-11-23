@@ -1,0 +1,121 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0479L02B03",
+   "set": {
+    "known_text": "it was the least I could do",
+    "target_text": "era il minimo che potessi fare"
+   },
+   "expect": {
+    "known_text": "all I could do",
+    "target_text": "tutto quello che potessi fare"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0479L02U02",
+   "set": {
+    "known_text": "it was the least I could do for you",
+    "target_text": "era il minimo che potessi fare per te"
+   },
+   "expect": {
+    "known_text": "it's not the least I could do",
+    "target_text": "non è il minimo che potessi fare"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0479L02U04",
+   "set": {
+    "known_text": "it's the least I could do for her",
+    "target_text": "è il minimo che potessi fare per lei"
+   },
+   "expect": {
+    "known_text": "there are many reasons for what I could do",
+    "target_text": "ci sono molte ragioni per quello che potessi fare"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0479L02U05",
+   "set": {
+    "known_text": "I think it's the least I could do",
+    "target_text": "penso che sia il minimo che potessi fare"
+   },
+   "expect": {
+    "known_text": "I asked her about what I could do",
+    "target_text": "le ho chiesto di quello che potessi fare"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0497L03U03",
+   "set": {
+    "target_text": "sembra che potrebbe essere importante"
+   },
+   "expect": {
+    "known_text": "it seems that it could be important",
+    "target_text": "sembra che possa essere importante"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0117L01U04",
+   "set": {
+    "target_text": "ho sicuramente bisogno di più tempo"
+   },
+   "expect": {
+    "known_text": "I definitely need more time",
+    "target_text": "devo sicuramente più tempo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0642L02U05",
+   "set": {
+    "known_text": "how do you feel after all this, madam?",
+    "target_text": "come si sente dopo tutto questo, signora?"
+   },
+   "expect": {
+    "known_text": "how do you feel after that?",
+    "target_text": "come si sente dopo tutto questo?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0657L01B03",
+   "set": {
+    "known_text": "how do you all feel after all this?"
+   },
+   "expect": {
+    "known_text": "how do you all feel after that?",
+    "target_text": "come vi sentite dopo tutto questo?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0642L01U07",
+   "set": {
+    "known_text": "I want to speak with you as soon as I can, madam",
+    "target_text": "voglio parlare con lei appena posso, signora"
+   },
+   "expect": {
+    "known_text": "I want to speak with you, madam, as soon as I can",
+    "target_text": "voglio parlare con lei, signora, appena posso"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ita_for_eng:S0639L02U05",
+   "set": {
+    "known_text": "today I want to speak with you sir",
+    "target_text": "oggi voglio parlare con lei, signore"
+   },
+   "expect": {
+    "known_text": "I want to speak with you sir today",
+    "target_text": "voglio parlare con lei, signore, oggi"
+   }
+  }
+ ]
+}

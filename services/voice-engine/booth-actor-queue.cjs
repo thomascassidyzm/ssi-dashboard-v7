@@ -45,6 +45,9 @@ const POD_KINDS = new Set(['pod', 'takeg', 'podswap'])
 const ACTOR_QUEUES = {
   human_dan_cym_s: [
     { key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' },
+    // Kai, 2026-11-23 (cs #907): one live Southern practice phrase whose male slot is empty, named in
+    // booth-wanted-phrases.cjs. A one-line step; it disappears from his queue once his take fills the slot.
+    { key: 'wanted', title: 'One phrase for the live course', courseCode: 'cym_s_for_eng', kind: 'wantedphrase' },
     { key: 'sv2-seeds', title: 'New course: seed sentences', courseCode: 'cym_sv2_for_eng', kind: 'seed' },
     { key: 'sv2-legos', title: 'New course: LEGOs', courseCode: 'cym_sv2_for_eng', kind: 'lego' },
     { key: 'sv2-phrases', title: 'New course: practice phrases', courseCode: 'cym_sv2_for_eng', kind: 'phrase' },

@@ -1,0 +1,113 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 20,
+   "set": {
+    "target_text": "你想快点记住他的名字。"
+   },
+   "expect": {
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "target_text": "你想快点学他的名字。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0020L03U01",
+   "set": {
+    "target_text": "你想快点记住他的名字"
+   },
+   "expect": {
+    "known_text": "彼の名前を早く覚えたいですね",
+    "target_text": "你想快点学他的名字"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 92,
+   "set": {
+    "target_text": "我想继续做一会儿这个。"
+   },
+   "expect": {
+    "known_text": "しばらくこれを続けたいです。",
+    "target_text": "我想继续做这个一会儿。"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0092L03B03",
+   "set": {
+    "target_text": "做一会儿这个。"
+   },
+   "expect": {
+    "known_text": "これをしばらくやる。",
+    "target_text": "做这个一会儿。"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 283,
+   "set": {
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？"
+   },
+   "expect": {
+    "known_text": "Chineseを話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说Chinese？"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0283L02",
+   "set": {
+    "target_text": "中文",
+    "is_new": false
+   },
+   "expect": {
+    "known_text": "中国語",
+    "target_text": "chinese"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U01",
+   "set": {
+    "target_text": "我想说中文"
+   },
+   "expect": {
+    "known_text": "中国語を話したいです",
+    "target_text": "我想说chinese"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U02",
+   "set": {
+    "target_text": "我在学中文"
+   },
+   "expect": {
+    "known_text": "中国語を勉強しています",
+    "target_text": "我在学chinese"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U03",
+   "set": {
+    "target_text": "我喜欢中文"
+   },
+   "expect": {
+    "known_text": "中国語が好きです",
+    "target_text": "我喜欢chinese"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "zho_for_jpn:S0283L02U04",
+   "expect": {
+    "known_text": "中国語を話せますか？",
+    "target_text": "你会说chinese吗？"
+   }
+  }
+ ]
+}

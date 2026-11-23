@@ -1,0 +1,592 @@
+{
+ "known|she said we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 74,
+  "status": 200
+ },
+ "known|he said we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 73,
+  "status": 200
+ },
+ "known|they said we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 75,
+  "status": 200
+ },
+ "known|she said we were talking about how it started": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 45,
+  "status": 200
+ },
+ "known|he said we were talking about how it all started": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 48,
+  "status": 200
+ },
+ "known|they said we were talking about it": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 34,
+  "status": 200
+ },
+ "known|she said we didn't have anywhere to live at the time": {
+  "ok": true,
+  "source": "library",
+  "audioId": "856830dd-ada6-454d-884a-e9176233bdb2",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|he said we didn't have anywhere to live at the time": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 51,
+  "status": 200
+ },
+ "known|she said we would have bought something": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"she said we would have bought something\" is already recorded in eng — 4 clip(s): 0fdbc55c-334c-4d87-bb80-358c897a895e (voice xai_bedd6226, eng_for_ben target1); 45a7aa96-d65f-4a19-8358-7b7a2a6b1314 (voice xai_gfzdpspr5fdp, eng_for_ben target2); 4401cd14-16db-44e0-aed1-b03d76bdf943 (voice xai_bedd6226, eng_for_sin target1); ed5da041-7526-4afc-bb29-c8c35c1f2d4b (voice xai_gfzdpspr5fdp, eng_for_sin target2). Recordings are per language: link an existing clip (POST /api/production/por_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for por_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "0fdbc55c-334c-4d87-bb80-358c897a895e",
+   "45a7aa96-d65f-4a19-8358-7b7a2a6b1314",
+   "4401cd14-16db-44e0-aed1-b03d76bdf943",
+   "ed5da041-7526-4afc-bb29-c8c35c1f2d4b",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "0fdbc55c-334c-4d87-bb80-358c897a895e",
+   "45a7aa96-d65f-4a19-8358-7b7a2a6b1314",
+   "4401cd14-16db-44e0-aed1-b03d76bdf943",
+   "ed5da041-7526-4afc-bb29-c8c35c1f2d4b"
+  ]
+ },
+ "known|he said we would have bought something": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"he said we would have bought something\" is already recorded in eng — 2 clip(s): bf8fafff-b596-40b4-bdab-14f3129b3c29 (voice xai_bedd6226, eng_for_sin target1); f05746cc-2681-437e-a498-308a4d822957 (voice xai_gfzdpspr5fdp, eng_for_sin target2). Recordings are per language: link an existing clip (POST /api/production/por_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for por_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "bf8fafff-b596-40b4-bdab-14f3129b3c29",
+   "f05746cc-2681-437e-a498-308a4d822957",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "bf8fafff-b596-40b4-bdab-14f3129b3c29",
+   "f05746cc-2681-437e-a498-308a4d822957"
+  ]
+ },
+ "known|they said we would have bought something": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 40,
+  "status": 200
+ },
+ "known|she said it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "library",
+  "audioId": "608f62ad-8ad2-4021-923b-48da59c3ea21",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|he said it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 58,
+  "status": 200
+ },
+ "known|they said it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 60,
+  "status": 200
+ },
+ "known|she said it's near where your family live": {
+  "ok": true,
+  "source": "library",
+  "audioId": "de90ac44-293b-4cc0-b548-ca7c9702dec2",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|he said it's near where your family live": {
+  "ok": true,
+  "source": "library",
+  "audioId": "76accb66-4b9e-4df4-8a0b-10dd27de2a81",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|they said it's near where your family live": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 42,
+  "status": 200
+ },
+ "known|she said today we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 80,
+  "status": 200
+ },
+ "target1|ela disse hoje que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 94,
+  "status": 200
+ },
+ "target2|ela disse hoje que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 94,
+  "status": 200
+ },
+ "known|she said today we were talking about how it started": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 51,
+  "status": 200
+ },
+ "target1|ela disse hoje que estávamos a falar sobre como começou": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 55,
+  "status": 200
+ },
+ "target2|ela disse hoje que estávamos a falar sobre como começou": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 55,
+  "status": 200
+ },
+ "known|they said we didn't have anywhere to live": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 41,
+  "status": 200
+ },
+ "target1|disseram que nós não tínhamos onde viver": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 40,
+  "status": 200
+ },
+ "target2|disseram que nós não tínhamos onde viver": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 40,
+  "status": 200
+ },
+ "known|she said yesterday we didn't have anywhere to live at the time": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 62,
+  "status": 200
+ },
+ "target1|ela disse ontem que nós não tínhamos onde viver na altura": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 57,
+  "status": 200
+ },
+ "target2|ela disse ontem que nós não tínhamos onde viver na altura": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 57,
+  "status": 200
+ },
+ "known|she said that because we needed help": {
+  "ok": true,
+  "source": "library",
+  "audioId": "f3669506-71f2-4d88-987f-2684c3cd2da2",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|ela disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 47,
+  "status": 200
+ },
+ "target2|ela disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 47,
+  "status": 200
+ },
+ "known|he said that because we needed help": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 35,
+  "status": 200
+ },
+ "target1|ele disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 47,
+  "status": 200
+ },
+ "target2|ele disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 47,
+  "status": 200
+ },
+ "known|they said that because we needed help": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 37,
+  "status": 200
+ },
+ "target1|disseram isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "target2|disseram isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "known|she said that yesterday because we needed help": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "target1|ela disse isso ontem porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "target2|ela disse isso ontem porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "known|she said yesterday we would have bought something": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 49,
+  "status": 200
+ },
+ "target1|ela disse ontem que nós teríamos comprado algo": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "target2|ela disse ontem que nós teríamos comprado algo": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "known|she said today it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 65,
+  "status": 200
+ },
+ "target1|ela disse hoje que já passou muito tempo desde a última vez que nos vimos": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 73,
+  "status": 200
+ },
+ "target2|ela disse hoje que já passou muito tempo desde a última vez que nos vimos": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 73,
+  "status": 200
+ },
+ "known|she said today it's near where your family live": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 47,
+  "status": 200
+ },
+ "target1|ela disse hoje que é perto de onde a tua família vive": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "target2|ela disse hoje que é perto de onde a tua família vive": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "known|she said you're willing to pay for your ticket": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "target1|ela disse que estás disposto a pagar pelo teu bilhete": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "target2|ela disse que estás disposto a pagar pelo teu bilhete": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "known|she wants to know if you've forgotten what happened the last time they visited us": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 81,
+  "status": 200
+ },
+ "target1|ela quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 85,
+  "status": 200
+ },
+ "target2|ela quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 85,
+  "status": 200
+ },
+ "known|he wants to know if you've forgotten what happened the last time they visited us": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 80,
+  "status": 200
+ },
+ "target1|ele quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 85,
+  "status": 200
+ },
+ "target2|ele quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 85,
+  "status": 200
+ },
+ "known|I hope they aren't talking seriously": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 36,
+  "status": 200
+ },
+ "target1|espero que eles não estejam a falar a sério": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 43,
+  "status": 200
+ },
+ "target2|espero que eles não estejam a falar a sério": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 43,
+  "status": 200
+ },
+ "known|I hope they aren't talking seriously this time": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 46,
+  "status": 200
+ },
+ "target1|espero que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "target2|espero que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 53,
+  "status": 200
+ },
+ "known|I hope they aren't talking seriously now": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 40,
+  "status": 200
+ },
+ "target1|espero que eles não estejam a falar a sério agora": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 49,
+  "status": 200
+ },
+ "target2|espero que eles não estejam a falar a sério agora": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 49,
+  "status": 200
+ },
+ "known|the only hope is that they aren't talking seriously this time": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 61,
+  "status": 200
+ },
+ "target1|a única esperança é que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 66,
+  "status": 200
+ },
+ "target2|a única esperança é que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 66,
+  "status": 200
+ },
+ "known|I need several hours": {
+  "ok": true,
+  "source": "library",
+  "audioId": "983e761a-91d1-4b29-8d62-22689d10e009",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|preciso de várias horas": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 23,
+  "status": 200
+ },
+ "target2|preciso de várias horas": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 23,
+  "status": 200
+ },
+ "known|we have to wait several hours": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ },
+ "target1|temos de esperar várias horas": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ },
+ "target2|temos de esperar várias horas": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ },
+ "known|still didn't say what they wanted": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 33,
+  "status": 200
+ },
+ "target1|ainda não disseram o que queriam": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 32,
+  "status": 200
+ },
+ "target2|ainda não disseram o que queriam": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 32,
+  "status": 200
+ },
+ "target1|estou entusiasmado por ver-te": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ },
+ "target2|estou entusiasmado por ver-te": {
+  "ok": true,
+  "source": "would-render",
+  "charsSpent": 0,
+  "wouldSpendChars": 29,
+  "status": 200
+ }
+}

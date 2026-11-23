@@ -1,0 +1,120 @@
+{
+ "known|I don't think she could come": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "97433770-dbd2-4de8-b88b-bad53c30716d",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "target1|je ne pense pas qu'elle pourrait venir": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "cb148131-9185-4eb4-94a4-005644e98941",
+  "charsSpent": 38,
+  "status": 200
+ },
+ "target2|je ne pense pas qu'elle pourrait venir": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "915250ff-df43-4945-bf17-847ac7f23acf",
+  "charsSpent": 38,
+  "status": 200
+ },
+ "known|I don't think she could stay": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "target1|je ne pense pas qu'elle pourrait rester": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "dee6933f-082f-4db1-a345-82308894d8ce",
+  "charsSpent": 39,
+  "status": 200
+ },
+ "target2|je ne pense pas qu'elle pourrait rester": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "32b326eb-506c-4b61-8771-98a3797e09a5",
+  "charsSpent": 39,
+  "status": 200
+ },
+ "known|I don't think she could help": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "target1|je ne pense pas qu'elle pourrait aider": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "fd3a32dd-2971-428f-9a23-df4005be793e",
+  "charsSpent": 38,
+  "status": 200
+ },
+ "target2|je ne pense pas qu'elle pourrait aider": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7d01a5e9-90c4-4efa-a2b2-58e689a09120",
+  "charsSpent": 38,
+  "status": 200
+ },
+ "known|I don't think she could do it": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I don't think she could do it\" is already recorded in eng — 2 clip(s): 2005efbc-d043-4831-8fff-f9aa4463e989 (voice xai_bedd6226, eng_for_sin target1); 2c198cb3-ae2f-451b-ae7c-723db2d8e2d7 (voice xai_gfzdpspr5fdp, eng_for_sin target2). Recordings are per language: link an existing clip (POST /api/production/fra_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for fra_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "2005efbc-d043-4831-8fff-f9aa4463e989",
+   "2c198cb3-ae2f-451b-ae7c-723db2d8e2d7",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "2005efbc-d043-4831-8fff-f9aa4463e989",
+   "2c198cb3-ae2f-451b-ae7c-723db2d8e2d7"
+  ]
+ },
+ "target1|je ne pense pas qu'elle pourrait le faire": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9e6d7a1d-732c-49f4-8866-19fa89492f4e",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "target2|je ne pense pas qu'elle pourrait le faire": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a8128496-a7aa-4b63-8ab4-bb7e564f1d66",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "known|I don't think she could wait": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "target1|je ne pense pas qu'elle pourrait attendre": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "695832b4-02a0-41cf-b7dc-8195d4e59467",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "target2|je ne pense pas qu'elle pourrait attendre": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9dcf1cf5-b1ea-4a05-8272-a64923ae0a5a",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "known|that doesn't really mean much": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b5c2cf68-2c44-4112-bf09-c417f6fa0e11",
+  "charsSpent": 29,
+  "status": 200
+ }
+}

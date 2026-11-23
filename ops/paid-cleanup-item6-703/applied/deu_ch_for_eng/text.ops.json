@@ -1,0 +1,16 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "deu_ch_for_eng:S0642L01U03",
+   "set": {
+    "known_text": "can you help me, madam?",
+    "target_text": "chönd Sie mir hälfe?"
+   },
+   "expect": {
+    "known_text": "I can help you",
+    "target_text": "ich cha Sie hälfe"
+   }
+  }
+ ]
+}

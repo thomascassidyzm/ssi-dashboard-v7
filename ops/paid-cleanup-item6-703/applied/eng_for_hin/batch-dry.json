@@ -1,0 +1,70 @@
+{
+ "status": 200,
+ "request": {
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_hin:S0001L01C02",
+    "set": {
+     "known_text": "चाहती हूँ"
+    },
+    "expect": {
+     "known_text": "चाहता हूँ",
+     "target_text": "want"
+    }
+   }
+  ],
+  "apply": false
+ },
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "eng_for_hin",
+    "id": "eng_for_hin:S0001L01C02"
+   },
+   "before": {
+    "id": "eng_for_hin:S0001L01C02",
+    "seed_number": 1,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "चाहता हूँ",
+    "target_text": "want",
+    "known_audio_id": "e63b42f5-542e-458f-94fb-7d80475c6419",
+    "target1_audio_id": "5b172b05-84e2-44aa-8158-f1dc937b27f0",
+    "target2_audio_id": "86e51542-77d0-4b6b-8efd-df15126e175d",
+    "presentation_audio_id": "007c7b58-c0c3-44ed-adb1-5e5e06196177"
+   },
+   "after": {
+    "id": "eng_for_hin:S0001L01C02",
+    "seed_number": 1,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "चाहती हूँ",
+    "target_text": "want",
+    "known_audio_id": null,
+    "target1_audio_id": "5b172b05-84e2-44aa-8158-f1dc937b27f0",
+    "target2_audio_id": "86e51542-77d0-4b6b-8efd-df15126e175d",
+    "presentation_audio_id": "007c7b58-c0c3-44ed-adb1-5e5e06196177"
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_hin:S0001L01C02",
+   "set": {
+    "known_text": "चाहता हूँ",
+    "known_audio_id": "e63b42f5-542e-458f-94fb-7d80475c6419"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

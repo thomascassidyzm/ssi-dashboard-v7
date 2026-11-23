@@ -1,0 +1,95 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U02",
+   "set": {
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir"
+   },
+   "expect": {
+    "known_text": "I don't think it's true",
+    "target_text": "je ne pense pas que c'est vrai"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U03",
+   "set": {
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester"
+   },
+   "expect": {
+    "known_text": "I don't think it's the same thing",
+    "target_text": "je ne pense pas que c'est la même chose"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U04",
+   "set": {
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider"
+   },
+   "expect": {
+    "known_text": "I don't think it's useful",
+    "target_text": "je ne pense pas que c'est utile"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U05",
+   "set": {
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire"
+   },
+   "expect": {
+    "known_text": "I don't think it's a good idea",
+    "target_text": "je ne pense pas que c'est une bonne idée"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U06",
+   "set": {
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre"
+   },
+   "expect": {
+    "known_text": "I don't think it's better",
+    "target_text": "je ne pense pas que c'est mieux"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0469L01B02",
+   "set": {
+    "known_text": "that doesn't really mean much",
+    "target_text": "ça ne veut pas dire grand-chose"
+   },
+   "expect": {
+    "known_text": "that doesn't mean anything",
+    "target_text": "ça ne veut pas dire grand chose"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0555L04B02",
+   "set": {
+    "target_text": "et je suis trop fatigué pour faire grand-chose"
+   },
+   "expect": {
+    "known_text": "and I'm too tired to do much",
+    "target_text": "et je suis trop fatigué pour faire grand chose"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fra_for_eng:S0413L01B03",
+   "expect": {
+    "known_text": "no we could",
+    "target_text": "non nous pourrions"
+   }
+  }
+ ]
+}

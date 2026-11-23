@@ -1,0 +1,590 @@
+{
+ "status": 200,
+ "request": {
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "ara_eg_for_eng:S0441L01U02",
+    "set": {
+     "known_text": "this really is a hard approach",
+     "target_text": "بجد ده أسلوب صعب",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "this approach is really hard",
+     "target_text": "بجد أسلوب صعب"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "ara_eg_for_eng:S0441L01U04",
+    "set": {
+     "known_text": "this is still a hard approach",
+     "target_text": "ده لسه أسلوب صعب",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "this approach is still hard",
+     "target_text": "لسه أسلوب صعب"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "ara_eg_for_eng:S0047L02U03",
+    "expect": {
+     "known_text": "this is a good thing",
+     "target_text": "دي حاجة كويس"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "ara_eg_for_eng:S0047L02U04",
+    "expect": {
+     "known_text": "I think that this is a good thing",
+     "target_text": "بفكر إن دي حاجة كويس"
+    }
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "a6c91cfe-ef67-4e50-aa53-527f22d35ed5",
+    "phrase_id": "ara_eg_for_eng:S0441L01U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "phrase_id": "ara_eg_for_eng:S0441L01U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "phrase_id": "ara_eg_for_eng:S0441L01U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "61fca56d-79e2-4119-9b40-b3f768766238",
+    "phrase_id": "ara_eg_for_eng:S0441L01U04"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "phrase_id": "ara_eg_for_eng:S0441L01U04"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "phrase_id": "ara_eg_for_eng:S0441L01U04"
+   }
+  ],
+  "apply": false
+ },
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "this approach is really hard",
+    "target_text": "بجد أسلوب صعب",
+    "target_text_roman": "bi-gadd usluub sa'b",
+    "known_audio_id": "01425484-294d-4267-a706-08414329442a",
+    "target1_audio_id": "af6e7794-4bdb-410f-bb99-76ac2a12ef59",
+    "target2_audio_id": "5eb4b0f2-2514-457a-b078-4905de6f8f4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "target_text_roman": null,
+    "known_audio_id": null,
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U04"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "this approach is still hard",
+    "target_text": "لسه أسلوب صعب",
+    "target_text_roman": "lissa usluub sa'b",
+    "known_audio_id": "8649e4c6-ab4f-4ccc-a9ad-d5db2404a6c1",
+    "target1_audio_id": "690a0bf4-fb0f-4c10-b599-7427838e7371",
+    "target2_audio_id": "51b6658f-bce3-4d00-b63f-29572fef4132",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "target_text_roman": null,
+    "known_audio_id": null,
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0047L02U03"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0047L02U03",
+    "seed_number": 47,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "this is a good thing",
+    "target_text": "دي حاجة كويس",
+    "known_audio_id": "c605e640-5fd8-4990-a335-4a53c53bd2c8",
+    "target1_audio_id": "2d7004c5-a89d-49e5-a553-6b3ec47849f6",
+    "target2_audio_id": "b636f7f1-7cd2-42c9-8e8d-556cdeee97a6",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0047L02U04"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0047L02U04",
+    "seed_number": 47,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think that this is a good thing",
+    "target_text": "بفكر إن دي حاجة كويس",
+    "known_audio_id": "6eee07a3-8416-4034-a6e6-a96607969dfd",
+    "target1_audio_id": "f4ce0dc6-7573-4a2a-8d2b-d621d57cc1a4",
+    "target2_audio_id": "72b852ee-bf95-4951-adc3-2fb5671a0205",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.link",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "a6c91cfe-ef67-4e50-aa53-527f22d35ed5",
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.link",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "known_audio_id": "a6c91cfe-ef67-4e50-aa53-527f22d35ed5",
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "known_audio_id": "a6c91cfe-ef67-4e50-aa53-527f22d35ed5",
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 6,
+   "op": "audio.link",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U02"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "known_audio_id": "a6c91cfe-ef67-4e50-aa53-527f22d35ed5",
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U02",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "d3a2f621-fe10-493d-901b-512bb76d6e8c",
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب",
+    "known_audio_id": "a6c91cfe-ef67-4e50-aa53-527f22d35ed5",
+    "target1_audio_id": "ac3f54a0-edf2-4e32-b133-66564d91cf5d",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 7,
+   "op": "audio.link",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U04"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "61fca56d-79e2-4119-9b40-b3f768766238",
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.link",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U04"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "known_audio_id": "61fca56d-79e2-4119-9b40-b3f768766238",
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "known_audio_id": "61fca56d-79e2-4119-9b40-b3f768766238",
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "ara_eg_for_eng",
+    "id": "ara_eg_for_eng:S0441L01U04"
+   },
+   "before": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "known_audio_id": "61fca56d-79e2-4119-9b40-b3f768766238",
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_eg_for_eng:S0441L01U04",
+    "seed_number": 441,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "731c4213-5b4f-4bca-a940-64c48c4ef876",
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب",
+    "known_audio_id": "61fca56d-79e2-4119-9b40-b3f768766238",
+    "target1_audio_id": "da7adc26-6f00-4eda-8930-7b36fc0f31b4",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0441L01U04",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0441L01U02",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0047L02U04",
+    "seed_number": 47,
+    "lego_index": 2,
+    "position": 7,
+    "known_text": "I think that this is a good thing",
+    "target_text": "بفكر إن دي حاجة كويس",
+    "word_count": 20,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "scored_at": "2026-05-15T09:32:02.110Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-15T09:32:02.150Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "6eee07a3-8416-4034-a6e6-a96607969dfd",
+    "target1_audio_id": "f4ce0dc6-7573-4a2a-8d2b-d621d57cc1a4",
+    "target2_audio_id": "72b852ee-bf95-4951-adc3-2fb5671a0205",
+    "qa_checked": null,
+    "target1_duration_ms": 2996,
+    "target2_duration_ms": 3768,
+    "lego_id": null,
+    "target_text_roman": "bafakkar inn di haaga kwayis",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "i'm thinking",
+      "legoId": "S0043L02",
+      "target": "بفكر",
+      "isGhost": false
+     },
+     {
+      "known": "that",
+      "legoId": "S0047L01",
+      "target": " إن",
+      "isGhost": false
+     },
+     {
+      "known": "this",
+      "legoId": "S0047L02",
+      "target": " دي",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "something",
+      "legoId": "S0004L02",
+      "target": " حاجة",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " كويس",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_eg_for_eng:S0047L02U03",
+    "seed_number": 47,
+    "lego_index": 2,
+    "position": 6,
+    "known_text": "this is a good thing",
+    "target_text": "دي حاجة كويس",
+    "word_count": 12,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use",
+     "scored_at": "2026-05-15T09:32:02.110Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-15T09:32:02.150Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "c605e640-5fd8-4990-a335-4a53c53bd2c8",
+    "target1_audio_id": "2d7004c5-a89d-49e5-a553-6b3ec47849f6",
+    "target2_audio_id": "b636f7f1-7cd2-42c9-8e8d-556cdeee97a6",
+    "qa_checked": null,
+    "target1_duration_ms": 2189,
+    "target2_duration_ms": 3048,
+    "lego_id": null,
+    "target_text_roman": "di haaga kuwayyes",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "this",
+      "legoId": "S0047L02",
+      "target": "دي",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "something",
+      "legoId": "S0004L02",
+      "target": " حاجة",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " كويس",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0441L01U04",
+   "set": {
+    "known_text": "this approach is still hard",
+    "target_text": "لسه أسلوب صعب",
+    "known_audio_id": "8649e4c6-ab4f-4ccc-a9ad-d5db2404a6c1",
+    "target1_audio_id": "690a0bf4-fb0f-4c10-b599-7427838e7371",
+    "target2_audio_id": "51b6658f-bce3-4d00-b63f-29572fef4132",
+    "target_text_roman": "lissa usluub sa'b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0441L01U02",
+   "set": {
+    "known_text": "this approach is really hard",
+    "target_text": "بجد أسلوب صعب",
+    "known_audio_id": "01425484-294d-4267-a706-08414329442a",
+    "target1_audio_id": "af6e7794-4bdb-410f-bb99-76ac2a12ef59",
+    "target2_audio_id": "5eb4b0f2-2514-457a-b078-4905de6f8f4b",
+    "target_text_roman": "bi-gadd usluub sa'b"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

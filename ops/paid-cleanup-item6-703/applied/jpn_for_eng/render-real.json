@@ -1,0 +1,1118 @@
+{
+ "known|I wanted to ask my mother for help": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8838ae51-232a-451d-8e87-1fc253736683",
+  "charsSpent": 34,
+  "status": 200
+ },
+ "known|we want to pay half": {
+  "ok": true,
+  "source": "library",
+  "audioId": "278b5687-0f7a-4143-aca7-2187ab9474ee",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|we don't want to seem unfriendly": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"we don't want to seem unfriendly\" is already recorded in eng — 3 clip(s): ac5aee12-c85d-49be-a0da-f82923389231 (voice xai_bedd6226, eng_for_tel target1); 6f21c301-3f57-4ed8-b8d2-4a582e13b45a (voice xai_gfzdpspr5fdp, eng_for_tel target2); ff2593c1-e2f5-4cad-b9bd-a5ad107dd0e7 (voice xai_gfzdpspr5fdp, fra_ca_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "ac5aee12-c85d-49be-a0da-f82923389231",
+   "6f21c301-3f57-4ed8-b8d2-4a582e13b45a",
+   "ff2593c1-e2f5-4cad-b9bd-a5ad107dd0e7",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "ac5aee12-c85d-49be-a0da-f82923389231",
+   "6f21c301-3f57-4ed8-b8d2-4a582e13b45a",
+   "ff2593c1-e2f5-4cad-b9bd-a5ad107dd0e7"
+  ]
+ },
+ "known|don't want to seem unfriendly": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a0c625ac-61d7-49eb-aaf4-e15e915f4f8e",
+  "charsSpent": 29,
+  "status": 200
+ },
+ "known|I want to make sure that we finish in time": {
+  "ok": true,
+  "source": "library",
+  "audioId": "0a626ee9-6ca0-4254-ae20-49d21c76307d",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|I don't want to explain right now": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "026da80d-3dcb-45fc-aaec-a20d5480a154",
+  "charsSpent": 33,
+  "status": 200
+ },
+ "known|I don't want to explain the reason": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "396d3b91-fadb-4b83-ac28-84166bab798d",
+  "charsSpent": 34,
+  "status": 200
+ },
+ "known|I don't want to explain more": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "fce63505-dd2c-44e3-96c7-10559a60efb2",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "known|I don't want to explain again": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a45340ba-e02b-425a-a50c-dc1d69de2319",
+  "charsSpent": 29,
+  "status": 200
+ },
+ "known|I don't want to be quiet when other people are here": {
+  "ok": true,
+  "source": "library",
+  "audioId": "4feb318a-355a-4bce-9fc5-afbd6df8129d",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|他の人がいると、静かにしたくない": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"他の人がいると、静かにしたくない\" is already recorded in jpn — 1 clip(s): f8dd4b45-af3b-451e-802d-fd233f38e322 (voice azure_ja-JP-MayuNeural, jpn_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_cb21b4af-0e46-44f7-9128-51be7f898311 needs a re-record grant for jpn_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "f8dd4b45-af3b-451e-802d-fd233f38e322",
+   "cb21b4af-0e46-44f7-9128-51be7f898311",
+   "f8dd4b45-af3b-451e-802d-fd233f38e322"
+  ]
+ },
+ "target2|他の人がいると、静かにしたくない": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"他の人がいると、静かにしたくない\" is already recorded in jpn — 1 clip(s): bad7b11c-09a7-4e79-89d5-02ccdde1f401 (voice azure_ja-JP-NaokiNeural, jpn_for_eng target2). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_33658a29-5982-44c5-9114-0b2c31e100b4 needs a re-record grant for jpn_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "bad7b11c-09a7-4e79-89d5-02ccdde1f401",
+   "33658a29-5982-44c5-9114-0b2c31e100b4",
+   "bad7b11c-09a7-4e79-89d5-02ccdde1f401"
+  ]
+ },
+ "known|I don't want to read anything this afternoon": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I don't want to read anything this afternoon\" is already recorded in eng — 11 clip(s): d40d1daf-5824-433c-b20d-4fe7827f6eb8 (voice azure_en-GB-OliverNeural, eng_for_tam target2); 4093c321-151d-4b75-81b5-80bc09ac975a (voice azure_en-GB-RyanNeural, eng_for_spa target2); 391b2900-2db0-4efe-8d5c-2d533aa410bf (voice en-GB-SoniaNeural, eng_for_kor target1); c1cea254-b247-439d-a9b4-626feff1b30a (voice bedd6226, eng_for_tam target1); ebdb2075-89f6-4718-91f4-51c7fd667267 (voice gfzdpspr5fdp, eng_for_tam target2); 4853af4b-922c-4634-97a5-289a3ad09448 (voice azure_en-GB-SoniaNeural, gle_for_eng known); 6b243ae4-31a5-4c78-8667-c66ec95b0491 (voice azure_en-GB-SoniaNeural, ukr_for_eng known); 8525b7c2-5e81-471b-b8b1-9c25b7f8f512 (voice azure_en-GB-SoniaNeural, eng_for_tam target1); 8ed51bd7-dae5-4087-8c74-bcb648dc5279 (voice azure_en-GB-RyanNeural, eng_for_kor target2); 9bdd29ca-32cd-4415-944a-abcd60a74465 (voice azure_en-GB-SoniaNeural, eng_for_spa target1); a6f8925b-07e4-45e7-a843-47006d87ae86 (voice azure_en-GB-SoniaNeural, swa_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "d40d1daf-5824-433c-b20d-4fe7827f6eb8",
+   "4093c321-151d-4b75-81b5-80bc09ac975a",
+   "391b2900-2db0-4efe-8d5c-2d533aa410bf",
+   "c1cea254-b247-439d-a9b4-626feff1b30a",
+   "ebdb2075-89f6-4718-91f4-51c7fd667267",
+   "4853af4b-922c-4634-97a5-289a3ad09448",
+   "6b243ae4-31a5-4c78-8667-c66ec95b0491",
+   "8525b7c2-5e81-471b-b8b1-9c25b7f8f512",
+   "8ed51bd7-dae5-4087-8c74-bcb648dc5279",
+   "9bdd29ca-32cd-4415-944a-abcd60a74465",
+   "a6f8925b-07e4-45e7-a843-47006d87ae86",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "d40d1daf-5824-433c-b20d-4fe7827f6eb8",
+   "4093c321-151d-4b75-81b5-80bc09ac975a",
+   "391b2900-2db0-4efe-8d5c-2d533aa410bf",
+   "c1cea254-b247-439d-a9b4-626feff1b30a",
+   "ebdb2075-89f6-4718-91f4-51c7fd667267",
+   "4853af4b-922c-4634-97a5-289a3ad09448",
+   "6b243ae4-31a5-4c78-8667-c66ec95b0491",
+   "8525b7c2-5e81-471b-b8b1-9c25b7f8f512",
+   "8ed51bd7-dae5-4087-8c74-bcb648dc5279",
+   "9bdd29ca-32cd-4415-944a-abcd60a74465",
+   "a6f8925b-07e4-45e7-a843-47006d87ae86"
+  ]
+ },
+ "target1|今日の午後、何も読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "12d00cf7-e40c-44b2-ad6b-c7975aedaf17",
+  "charsSpent": 14,
+  "status": 200
+ },
+ "target2|今日の午後、何も読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b5f579e2-f3c2-4379-ad0c-a8cadae2dbe5",
+  "charsSpent": 14,
+  "status": 200
+ },
+ "known|he'll go back later": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7025083d-f877-4c06-92e9-998a505c375a",
+  "charsSpent": 19,
+  "status": 200
+ },
+ "target1|彼はあとで戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6aa38876-d14b-4301-be2b-4f9b107cfc9e",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target2|彼はあとで戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "cab903ef-da9c-4e77-a153-f2ac9aa83e18",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "known|he'll go back with everyone": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "cd76157d-8952-47f6-ad92-def8f3bd776e",
+  "charsSpent": 27,
+  "status": 200
+ },
+ "target1|彼はみんなと戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6d5437a1-4f41-4200-a55f-dc3c9a1893d3",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|彼はみんなと戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7a4ae855-476d-48c3-993e-7ccadac0776f",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "known|he'll go back with everyone later": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ddcafedd-895e-4c8e-9530-642851c881a1",
+  "charsSpent": 33,
+  "status": 200
+ },
+ "target1|彼はあとでみんなと戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2ad628a0-9862-47ff-b187-33e3393c4e9b",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|彼はあとでみんなと戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "e21e2fd1-45a7-4c66-8b53-8ef4d0f5001d",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|she'll go back later": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b176e5a7-100d-4585-9406-2eaa3a5f3943",
+  "charsSpent": 20,
+  "status": 200
+ },
+ "target1|彼女はあとで戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "60d50844-d6ef-41c6-9bf3-3a2128b15dad",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|彼女はあとで戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "3170ac43-19f1-4b33-b61e-7df2830ffb7d",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "known|he'll go back this evening": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "1c5e6d39-cd90-4e7e-90de-0cbeddccf5d1",
+  "charsSpent": 26,
+  "status": 200
+ },
+ "target1|彼は今夜戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "e684a85b-04a5-4d1b-b190-e649d573ca08",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "target2|彼は今夜戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "05ed8fdd-e4e4-4334-a81a-16c19eedc85e",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "known|he'll go back quickly": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b4443c04-0605-47d6-acf5-bae96d270651",
+  "charsSpent": 21,
+  "status": 200
+ },
+ "target1|彼は早く戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "dd4e6046-00e0-4a5d-a4da-0c790bebdd9b",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "target2|彼は早く戻る": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "099f130f-92f3-4081-8d90-3a696a2fee37",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "known|I want to meet everyone": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I want to meet everyone\" is already recorded in eng — 2 clip(s): fadb9d3b-4d1d-4ba1-8c08-8d132586d13f (voice azure_en-GB-SoniaNeural, nep_for_eng known); ff1be8e9-2c68-4305-9553-4f53167c54fd (voice azure_en-GB-SoniaNeural, cat_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "fadb9d3b-4d1d-4ba1-8c08-8d132586d13f",
+   "ff1be8e9-2c68-4305-9553-4f53167c54fd",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "fadb9d3b-4d1d-4ba1-8c08-8d132586d13f",
+   "ff1be8e9-2c68-4305-9553-4f53167c54fd"
+  ]
+ },
+ "target1|みんなと会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a8bc0e8d-fcf2-49f0-b1e5-5edfe8ff9821",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|みんなと会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "e253ab1b-35e2-48d7-bc8e-8f9a0d786702",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "known|I really want to meet": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ed434782-d32a-44ab-ac33-63cb7590396c",
+  "charsSpent": 21,
+  "status": 200
+ },
+ "target1|すごく会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "99597b51-d5a8-4ea8-b1d3-670390df3fec",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target2|すごく会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6c72b4d6-27a2-4727-b632-5d3f103be0b5",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "known|I don't want to stop tomorrow either": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "01b6e94c-e23c-42ba-870b-5e74afd5a25e",
+  "charsSpent": 36,
+  "status": 200
+ },
+ "target1|明日もやめたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f5c64645-9fa3-4145-91b0-7d9f636f02cc",
+  "charsSpent": 9,
+  "status": 200
+ },
+ "target2|明日もやめたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a0bef884-3d77-4737-b047-6ff5dc8f1ec6",
+  "charsSpent": 9,
+  "status": 200
+ },
+ "known|I want to meet people tomorrow": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I want to meet people tomorrow\" is already recorded in eng — 10 clip(s): 5fcc39da-f596-47d7-87f7-bb90b5bffe88 (voice azure_en-GB-RyanNeural, eng_for_por target2); 0f98e3df-7416-4eb9-935d-466b7f30b431 (voice azure_en-GB-SoniaNeural, ara_eg_for_eng known); c4d9feb6-f149-436f-8d6a-cf56c8489b34 (voice xai_eve, deu_at_for_eng known); f99663f2-0420-4f56-928c-7df5f434afd6 (voice xai_gfzdpspr5fdp, fra_ca_for_eng known); 22fc5460-fddc-4a57-9e4b-5d637372ab1a (voice azure_en-GB-SoniaNeural, bul_for_eng known); 2e79b6fc-2c35-4248-bbb2-48e894a6ac28 (voice azure_en-GB-SoniaNeural, eus_for_eng known); 5fd07deb-ee3e-498b-9c18-87d096c32f26 (voice azure_en-GB-SoniaNeural, rus_for_eng known); 68c1f2b9-ad79-43e3-b83b-d7d206b6855a (voice azure_en-GB-SoniaNeural, cat_for_eng known); a567b802-61eb-4670-9642-ab6592008cc2 (voice azure_en-GB-SoniaNeural, eng_for_por target1); fae221ef-1fd1-4878-8932-4c7843bd70c4 (voice azure_en-GB-SoniaNeural, pol_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "5fcc39da-f596-47d7-87f7-bb90b5bffe88",
+   "0f98e3df-7416-4eb9-935d-466b7f30b431",
+   "c4d9feb6-f149-436f-8d6a-cf56c8489b34",
+   "f99663f2-0420-4f56-928c-7df5f434afd6",
+   "22fc5460-fddc-4a57-9e4b-5d637372ab1a",
+   "2e79b6fc-2c35-4248-bbb2-48e894a6ac28",
+   "5fd07deb-ee3e-498b-9c18-87d096c32f26",
+   "68c1f2b9-ad79-43e3-b83b-d7d206b6855a",
+   "a567b802-61eb-4670-9642-ab6592008cc2",
+   "fae221ef-1fd1-4878-8932-4c7843bd70c4",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "5fcc39da-f596-47d7-87f7-bb90b5bffe88",
+   "0f98e3df-7416-4eb9-935d-466b7f30b431",
+   "c4d9feb6-f149-436f-8d6a-cf56c8489b34",
+   "f99663f2-0420-4f56-928c-7df5f434afd6",
+   "22fc5460-fddc-4a57-9e4b-5d637372ab1a",
+   "2e79b6fc-2c35-4248-bbb2-48e894a6ac28",
+   "5fd07deb-ee3e-498b-9c18-87d096c32f26",
+   "68c1f2b9-ad79-43e3-b83b-d7d206b6855a",
+   "a567b802-61eb-4670-9642-ab6592008cc2",
+   "fae221ef-1fd1-4878-8932-4c7843bd70c4"
+  ]
+ },
+ "target1|明日人に会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "15ce6da9-5e2e-4efe-8132-89300df9702e",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|明日人に会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f5561ce9-aad3-4ea3-8573-ca9e96d61f99",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "known|I want to meet people quickly": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I want to meet people quickly\" is already recorded in eng — 8 clip(s): 363f868a-5c1c-4aa3-8225-67d5a4a0dd59 (voice azure_en-GB-RyanNeural, eng_for_zho target2); 4e784c5a-9daf-4dff-9fb1-36df57c86df7 (voice azure_en-GB-SoniaNeural, eng_for_zho target1); 8ae905e8-169d-4dbc-9232-ce1a8c1abca5 (voice bedd6226, eng_for_zho target1); 70b06026-ad4f-4f23-a129-c28cd0b475b5 (voice gfzdpspr5fdp, eng_for_zho target2); ae3f2ba1-838f-4e71-b2a0-8fbbbaf534fb (voice azure_en-GB-RyanNeural, eng_for_kor target2); b778e16b-da16-4ab1-9a44-bbd6deee4077 (voice azure_en-GB-SoniaNeural, ces_for_eng known); d82de853-dc76-4ccb-b1bb-26b5e3d3bc0f (voice azure_en-GB-SoniaNeural, eus_for_eng known); ee8bfcfb-b1da-45e2-b12d-0cee6b46aa8c (voice en-GB-SoniaNeural, eng_for_kor target1). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "363f868a-5c1c-4aa3-8225-67d5a4a0dd59",
+   "4e784c5a-9daf-4dff-9fb1-36df57c86df7",
+   "8ae905e8-169d-4dbc-9232-ce1a8c1abca5",
+   "70b06026-ad4f-4f23-a129-c28cd0b475b5",
+   "ae3f2ba1-838f-4e71-b2a0-8fbbbaf534fb",
+   "b778e16b-da16-4ab1-9a44-bbd6deee4077",
+   "d82de853-dc76-4ccb-b1bb-26b5e3d3bc0f",
+   "ee8bfcfb-b1da-45e2-b12d-0cee6b46aa8c",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "363f868a-5c1c-4aa3-8225-67d5a4a0dd59",
+   "4e784c5a-9daf-4dff-9fb1-36df57c86df7",
+   "8ae905e8-169d-4dbc-9232-ce1a8c1abca5",
+   "70b06026-ad4f-4f23-a129-c28cd0b475b5",
+   "ae3f2ba1-838f-4e71-b2a0-8fbbbaf534fb",
+   "b778e16b-da16-4ab1-9a44-bbd6deee4077",
+   "d82de853-dc76-4ccb-b1bb-26b5e3d3bc0f",
+   "ee8bfcfb-b1da-45e2-b12d-0cee6b46aa8c"
+  ]
+ },
+ "target1|早く人に会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "15dce3e1-604f-4abb-be51-d7b688c947f2",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|早く人に会いたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8c1e3897-ee47-4106-be1c-cd465f62e8c9",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "known|don't want to be quiet today": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a40e2695-1c17-4c8e-a511-e2c989b7a662",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "target1|今日は静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b89f9b8a-f892-49d1-99b1-7228faf714ed",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|今日は静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b7fd4ef6-eb90-4021-8d81-ab5c0fd6c224",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|don't want to be quiet later": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "3488bdff-bec4-4b55-ba92-0989af01a220",
+  "charsSpent": 28,
+  "status": 200
+ },
+ "target1|あとで静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "60ec3e9d-58bb-4049-9c27-be41cd2e9fad",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|あとで静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "92c14da5-393a-4873-8143-69aeda1b4167",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|I don't want to be quiet tonight": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c85de8dd-5f11-4bc7-8dbc-aebe5149ee86",
+  "charsSpent": 32,
+  "status": 200
+ },
+ "target1|今夜静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6beb6c2b-b556-431a-af46-0652a1b9fcf7",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target2|今夜静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f97353a2-af6d-4618-86d1-cdc21cebb57b",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "known|I don't want to be quiet tomorrow either": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "cc485aaf-69b4-4614-834d-206046a3cfbf",
+  "charsSpent": 40,
+  "status": 200
+ },
+ "target1|明日も静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "557fef1b-29d9-4a3e-a071-7375120db0c0",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|明日も静かにしたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7079e298-7d51-4f69-a4e3-c271c3af985e",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|I don't want to read today": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "84a636db-ee49-4efd-bc79-ae3652d1a8d9",
+  "charsSpent": 26,
+  "status": 200
+ },
+ "target1|今日は読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "01d44190-e03c-4037-9194-d3f4d84cebee",
+  "charsSpent": 9,
+  "status": 200
+ },
+ "target2|今日は読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a00daa26-8f63-422c-83f4-07ab63915430",
+  "charsSpent": 9,
+  "status": 200
+ },
+ "known|I don't want to read the sentence now": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b08a1719-d9a1-44eb-9e52-9862cda4edf5",
+  "charsSpent": 37,
+  "status": 200
+ },
+ "target1|今、文を読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "15e859c6-6940-44ec-b67b-cc92ca5c965b",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target2|今、文を読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9af3709f-be82-433d-acfc-077ba57138a3",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "known|I don't want to read anything today": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I don't want to read anything today\" is already recorded in eng — 2 clip(s): 66f6d5a8-587d-4b1e-9768-bd279c3af5b4 (voice azure_en-GB-SoniaNeural, ces_for_eng known); d0740c9a-a317-48f1-a659-bafdcfa31801 (voice azure_en-GB-SoniaNeural, rus_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "66f6d5a8-587d-4b1e-9768-bd279c3af5b4",
+   "d0740c9a-a317-48f1-a659-bafdcfa31801",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "66f6d5a8-587d-4b1e-9768-bd279c3af5b4",
+   "d0740c9a-a317-48f1-a659-bafdcfa31801"
+  ]
+ },
+ "target1|今日は何も読みたくない": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"今日は何も読みたくない\" is already recorded in jpn — 1 clip(s): f969034b-778d-4fde-9084-bd6453f4e61e (voice azure_ja-JP-ShioriNeural, deu_for_jpn known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_cb21b4af-0e46-44f7-9128-51be7f898311 needs a re-record grant for jpn_for_eng target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "f969034b-778d-4fde-9084-bd6453f4e61e",
+   "cb21b4af-0e46-44f7-9128-51be7f898311",
+   "f969034b-778d-4fde-9084-bd6453f4e61e"
+  ]
+ },
+ "target2|今日は何も読みたくない": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"今日は何も読みたくない\" is already recorded in jpn — 1 clip(s): f969034b-778d-4fde-9084-bd6453f4e61e (voice azure_ja-JP-ShioriNeural, deu_for_jpn known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_33658a29-5982-44c5-9114-0b2c31e100b4 needs a re-record grant for jpn_for_eng target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "f969034b-778d-4fde-9084-bd6453f4e61e",
+   "33658a29-5982-44c5-9114-0b2c31e100b4",
+   "f969034b-778d-4fde-9084-bd6453f4e61e"
+  ]
+ },
+ "known|I don't want to read this afternoon": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c522e931-c6a8-4d28-905e-823393c81152",
+  "charsSpent": 35,
+  "status": 200
+ },
+ "target1|今日の午後読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a8b112ea-da78-4d9d-976b-eec8f6bc7f25",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|今日の午後読みたくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d94bf137-3cd1-4f3b-887c-5e82fd81927a",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|I don't want to interrupt today": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"I don't want to interrupt today\" is already recorded in eng — 7 clip(s): 9dfc455a-d05f-4477-8329-a04f25ac1a0a (voice azure_en-GB-OliverNeural, eng_for_tam target2); c4370d48-cb52-44b1-8fb8-8b1760a0aee9 (voice azure_en-GB-RyanNeural, eng_for_spa target2); 2579a56d-526d-413d-8d18-0e714372c584 (voice azure_en-GB-SoniaNeural, ces_for_eng known); 0f71549e-b91e-4c6a-961d-e300bf517e20 (voice xai_bedd6226, eng_for_tam target1); 190d151c-6f4c-43dc-b551-b26810358c42 (voice xai_gfzdpspr5fdp, eng_for_tam target2); 30f11236-7ff2-4435-8df7-ccca7a2abe20 (voice azure_en-GB-SoniaNeural, eng_for_tam target1); 9f7d6bad-1698-476c-862b-404b77307114 (voice azure_en-GB-SoniaNeural, eng_for_spa target1). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "9dfc455a-d05f-4477-8329-a04f25ac1a0a",
+   "c4370d48-cb52-44b1-8fb8-8b1760a0aee9",
+   "2579a56d-526d-413d-8d18-0e714372c584",
+   "0f71549e-b91e-4c6a-961d-e300bf517e20",
+   "190d151c-6f4c-43dc-b551-b26810358c42",
+   "30f11236-7ff2-4435-8df7-ccca7a2abe20",
+   "9f7d6bad-1698-476c-862b-404b77307114",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "9dfc455a-d05f-4477-8329-a04f25ac1a0a",
+   "c4370d48-cb52-44b1-8fb8-8b1760a0aee9",
+   "2579a56d-526d-413d-8d18-0e714372c584",
+   "0f71549e-b91e-4c6a-961d-e300bf517e20",
+   "190d151c-6f4c-43dc-b551-b26810358c42",
+   "30f11236-7ff2-4435-8df7-ccca7a2abe20",
+   "9f7d6bad-1698-476c-862b-404b77307114"
+  ]
+ },
+ "target1|今日は邪魔したくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "974378c6-46d6-4f0c-8f97-6064090bae2b",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target2|今日は邪魔したくない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9e5b2aef-603d-4402-8a86-b4532aa19112",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target1|ううん、問題ない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "91659158-0d91-4909-a93a-f2e8c2461192",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|ううん、問題ない": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "090eb0b0-3da6-43e2-9363-45a401dffd31",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target1|ううん": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "be0b094c-5376-447d-b51d-e2719f0fb00a",
+  "charsSpent": 3,
+  "status": 200
+ },
+ "target2|ううん": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d8bd1860-1441-4c16-af42-da5ed97f3f0a",
+  "charsSpent": 3,
+  "status": 200
+ },
+ "target1|ううん、好き": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ecb3cbbe-9f52-4b50-8b09-9ff9f669f0e5",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "target2|ううん、好き": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "3f129599-c9bd-46c4-850e-d7e982e358ab",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "target1|ううん、完璧": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "002b03e5-4bfc-4baa-b84c-5fec8c8b5755",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "target2|ううん、完璧": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "e3c721d7-4b23-4b80-8007-eca38e08e5e8",
+  "charsSpent": 6,
+  "status": 200
+ },
+ "target1|ううん、いいね": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "952855c1-b794-4a9c-a548-2334792816bb",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target2|ううん、いいね": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "0d00c1fd-7458-4026-aa17-60c4ae1862f5",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target1|ううん、分かる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "06702cf0-a579-433c-baf5-ec301d48f1a3",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target2|ううん、分かる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "21420a31-83c8-4043-b388-54625cd3c6c3",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target1|ううん、知ってる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8749edd4-9fe9-4dce-b322-709df69409e9",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|ううん、知ってる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "509502db-71bf-454d-a13b-1e45004698f9",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target1|ううん、行きたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "498239a8-ce29-4cf6-9285-ad7f8e575f0f",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|ううん、行きたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6af921be-8737-4dae-aae1-5d8cf075a6ee",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target1|ううん、手伝える": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c0fcef4b-8a5b-4bff-826f-ac86f32a3d9d",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target2|ううん、手伝える": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8d05e590-a8f3-488b-af10-6dc17bd729b3",
+  "charsSpent": 8,
+  "status": 200
+ },
+ "target1|ううん、今テレビ見てる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9a29b176-59c4-444c-b194-ebfce046c8f1",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|ううん、今テレビ見てる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f6bebe72-ee53-400f-bafd-b43e08b2200a",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target1|ううん、友だち知ってる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "5eeaa63e-200f-4c55-bbc6-38533c172556",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|ううん、友だち知ってる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "df76245f-c20e-4576-94d1-580d5c72fb1b",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|no, I want to go tomorrow": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "50c79a05-017c-42c3-957f-6926a2e20fa2",
+  "charsSpent": 25,
+  "status": 200
+ },
+ "target1|ううん、明日行きたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "77c13071-d835-46e2-888d-d7724e9b568d",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target2|ううん、明日行きたい": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d49da687-f6bf-41a7-b61e-26c7d44c9ff6",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target1|ううん、帰る前に仕事終わらせる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d0e3914a-2845-44a3-8b9a-b0e69c9d9ba4",
+  "charsSpent": 15,
+  "status": 200
+ },
+ "target2|ううん、帰る前に仕事終わらせる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ea78eba5-1614-44a7-ac8c-743563d58213",
+  "charsSpent": 15,
+  "status": 200
+ },
+ "known|we didn't expect to wake up in the middle of the night": {
+  "ok": true,
+  "source": "library",
+  "audioId": "b19e4561-fbec-418b-ae33-0a88f1c5b7d7",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|didn't expect to": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7d1e7c7f-8bda-4177-bac5-626634e01dbc",
+  "charsSpent": 16,
+  "status": 200
+ },
+ "known|I didn't expect to do it": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "3b97d8ef-01da-4be8-87f5-7b8a6cded856",
+  "charsSpent": 24,
+  "status": 200
+ },
+ "known|I didn't expect to see it": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "e881c638-efc7-46c8-aa7a-2dbc489d5018",
+  "charsSpent": 25,
+  "status": 200
+ },
+ "known|I didn't expect to know it": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9dad04bb-81b6-44f0-b7fe-f765a8e666e7",
+  "charsSpent": 26,
+  "status": 200
+ },
+ "known|I didn't expect to change my way of doing it": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c1dbf437-1934-435e-90ec-61ffcbac04c6",
+  "charsSpent": 44,
+  "status": 200
+ },
+ "known|I didn't expect to see what you were doing": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "765dd5fd-d6ba-4abf-87fd-45be62aabcd7",
+  "charsSpent": 42,
+  "status": 200
+ },
+ "known|I didn't expect to find the answer": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "76c5031b-1cd6-4bb7-a385-e5defd5c8e5d",
+  "charsSpent": 34,
+  "status": 200
+ },
+ "known|that is why I didn't expect to feel happy": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ca69686f-9e16-4cc8-8482-5e4f74e263f0",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "known|I'd like to relax": {
+  "ok": true,
+  "source": "library",
+  "audioId": "643c7724-982c-4e96-ba1f-665d52f7a434",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|want to keep on doing": {
+  "ok": true,
+  "source": "library",
+  "audioId": "c6dd6f42-dec1-417a-95b3-59fdfbb8dde1",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|want to make sure": {
+  "ok": true,
+  "source": "library",
+  "audioId": "9e876ee3-a300-4e5b-adcd-c67e35b441d1",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|with other people too": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "fabc3c33-b00e-4e3f-9e36-7ac30ad96395",
+  "charsSpent": 21,
+  "status": 200
+ },
+ "known|how does he feel now?": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "018f9a0a-52b3-4ed2-8b93-27ba7f9aeb26",
+  "charsSpent": 21,
+  "status": 200
+ },
+ "target1|彼は今、どんな気分？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d6390f0b-3977-4cfb-8749-21f7fad56b54",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "target2|彼は今、どんな気分？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "68208f1d-f53d-4474-9b25-9943f09f95e0",
+  "charsSpent": 10,
+  "status": 200
+ },
+ "known|how does he feel today?": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "878cb107-3c9a-4287-b962-c7a1f1221254",
+  "charsSpent": 23,
+  "status": 200
+ },
+ "target1|彼は今日はどんな気分？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "4498870e-30c0-4f64-96ec-dcf87345bf57",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|彼は今日はどんな気分？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "0b38566e-1807-48c4-af5a-20a2dfc2a3a2",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|how does he feel this morning?": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "05b76ad0-83e5-4f3b-a6ac-e3157fc33120",
+  "charsSpent": 30,
+  "status": 200
+ },
+ "target1|彼は今朝はどんな気分？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "227a0c6b-8c82-480f-9462-d36543e38889",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|彼は今朝はどんな気分？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c4d8a7ef-856c-4cfe-9755-da9e16d6758c",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "known|why don't I remember what you said?": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ed2e2cdd-d5a6-42e7-9d82-ac6f53a681f1",
+  "charsSpent": 35,
+  "status": 200
+ },
+ "known|I don't remember": {
+  "ok": true,
+  "source": "library",
+  "audioId": "2c2bcb9d-7806-4148-bbcb-cec419cc4e52",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|I don't remember it": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "467ac1eb-3341-43a0-a797-6a33449763e0",
+  "charsSpent": 19,
+  "status": 200
+ },
+ "known|I don't remember that": {
+  "ok": true,
+  "source": "library",
+  "audioId": "95b7a9c2-d669-4c66-922a-c03ba488b227",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|I don't remember what I learned last week": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2ddccce9-2c78-4ae8-aca4-7e4e39858e7e",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "known|I don't remember anything about that day": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f8945e6e-aea0-46fc-ad06-52a57da9889c",
+  "charsSpent": 40,
+  "status": 200
+ },
+ "known|if he could": {
+  "ok": true,
+  "source": "library",
+  "audioId": "c66d3b6d-6698-44ce-8b1b-bf030f95420e",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|what's that blue thing over there?": {
+  "ok": true,
+  "source": "library",
+  "audioId": "ad6704ab-c143-457d-ba04-ff8084b519c3",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|大丈夫、でも、疲れてきてる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "05183446-a831-4923-a5af-1c692c826220",
+  "charsSpent": 13,
+  "status": 200
+ },
+ "target2|大丈夫、でも、疲れてきてる": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2fbed221-e6aa-45ef-9ce5-77eb7caf2d4a",
+  "charsSpent": 13,
+  "status": 200
+ },
+ "known|don't want to be quiet": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"don't want to be quiet\" is already recorded in eng — 5 clip(s): 26d3c6c2-1065-4e8e-b355-e582f6b2cf0b (voice azure_en-GB-RyanNeural, eng_for_zho target2); 42e4aa51-5fbc-4ec1-97c5-729ea7629709 (voice azure_en-GB-SoniaNeural, eng_for_zho target1); 9d82ba88-797a-408b-ae38-a549d6c79c57 (voice bedd6226, eng_for_zho target1); 9c6b64d8-a205-4d59-b1ed-4d240c6decea (voice gfzdpspr5fdp, eng_for_zho target2); 527c09c8-ab62-434c-97d7-9db19a2d25aa (voice azure_en-GB-SoniaNeural, tha_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "26d3c6c2-1065-4e8e-b355-e582f6b2cf0b",
+   "42e4aa51-5fbc-4ec1-97c5-729ea7629709",
+   "9d82ba88-797a-408b-ae38-a549d6c79c57",
+   "9c6b64d8-a205-4d59-b1ed-4d240c6decea",
+   "527c09c8-ab62-434c-97d7-9db19a2d25aa",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "26d3c6c2-1065-4e8e-b355-e582f6b2cf0b",
+   "42e4aa51-5fbc-4ec1-97c5-729ea7629709",
+   "9d82ba88-797a-408b-ae38-a549d6c79c57",
+   "9c6b64d8-a205-4d59-b1ed-4d240c6decea",
+   "527c09c8-ab62-434c-97d7-9db19a2d25aa"
+  ]
+ },
+ "known|don't want to be quiet now": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "fa115419-1467-4417-be63-fa2411d49637",
+  "charsSpent": 26,
+  "status": 200
+ },
+ "known|don't want to read": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"don't want to read\" is already recorded in eng — 3 clip(s): 3f6262d0-80fd-4d07-8d20-0d770b8391c0 (voice azure_en-GB-SoniaNeural, eus_for_eng known); 4986c575-ac02-48b2-8a5f-e0ba11ccd1d4 (voice azure_en-GB-SoniaNeural, tha_for_eng known); f56e2b20-f6e3-40e5-b3d3-6bd6e3abbd70 (voice azure_en-GB-SoniaNeural, rus_for_eng known). Recordings are per language: link an existing clip (POST /api/production/jpn_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for jpn_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "3f6262d0-80fd-4d07-8d20-0d770b8391c0",
+   "4986c575-ac02-48b2-8a5f-e0ba11ccd1d4",
+   "f56e2b20-f6e3-40e5-b3d3-6bd6e3abbd70",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "3f6262d0-80fd-4d07-8d20-0d770b8391c0",
+   "4986c575-ac02-48b2-8a5f-e0ba11ccd1d4",
+   "f56e2b20-f6e3-40e5-b3d3-6bd6e3abbd70"
+  ]
+ },
+ "known|don't want to read now": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "5bfeed72-cdc3-473a-93b4-6e6fcfecce86",
+  "charsSpent": 22,
+  "status": 200
+ },
+ "known|don't want to read the sentence": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c56e98f8-7b37-41dd-a85c-4b355cd392d4",
+  "charsSpent": 31,
+  "status": 200
+ },
+ "known|don't want to read more": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "926354ea-416c-4a0b-8424-0ede9d350633",
+  "charsSpent": 23,
+  "status": 200
+ }
+}
