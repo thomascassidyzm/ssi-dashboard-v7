@@ -30,7 +30,9 @@
  * Pure: no Vue, no DOM, no I/O.
  */
 
-export const AGAIN_AFTER_AUTO_MS = 4000
+// Kai, 2026-11-23 15:49Z: 1 s, not 4 s — long enough for a tap straight after the
+// advance, short enough that a fluff on the NEW line is still re-read where it is.
+export const AGAIN_AFTER_AUTO_MS = 1000
 
 /**
  * @param {object} s

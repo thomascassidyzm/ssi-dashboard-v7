@@ -16,6 +16,10 @@ describe('againReopensFiledLine', () => {
   it('once he has read the new line and the grace is over, Again means the new line', () => {
     expect(againReopensFiledLine({ lastAuto: auto, index: 8, now: at + AGAIN_AFTER_AUTO_MS, lineHasSpeech: true })).toBe(-1)
   })
+  it('the grace after an auto-advance is 1 s (Kai, 2026-11-23): at 1.5 s with speech on the new line, Again stays put', () => {
+    expect(AGAIN_AFTER_AUTO_MS).toBe(1000)
+    expect(againReopensFiledLine({ lastAuto: auto, index: 8, now: at + 1500, lineHasSpeech: true })).toBe(-1)
+  })
   it('a tapped Next (no lastAuto) keeps Again on the line on screen', () => {
     expect(againReopensFiledLine({ lastAuto: null, index: 8, now: at + 10, lineHasSpeech: false })).toBe(-1)
   })
