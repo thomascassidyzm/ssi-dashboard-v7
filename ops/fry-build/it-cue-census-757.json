@@ -1,0 +1,386 @@
+{
+ "job": "cs #757 (Kai, 23 Nov item 6)",
+ "read": "live Popty GET /api/production/fry_for_eng/seeds 23 Nov + intro/known clip texts from QA copy ssi_copy_20261123t033000z via tools/voice/clip-provenance.cjs",
+ "main_intros": [
+  {
+   "lego": "S0008L04",
+   "seed": 8,
+   "known": "I'm going to try",
+   "target": "ik sil it besykje",
+   "live_intro": "The Frisian for: 'I'm going to try', as in — 'I'm going to try it', is:",
+   "proposed_intro": "The Frisian for: 'I'm going to try', is:",
+   "chars": 40,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0049L02",
+   "seed": 49,
+   "known": "if you know",
+   "target": "astû it witst",
+   "live_intro": "The Frisian for: 'if you know', as in — 'if you know it', is:",
+   "proposed_intro": "The Frisian for: 'if you know', is:",
+   "chars": 35,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0050L01",
+   "seed": 50,
+   "known": "I'm not trying",
+   "target": "ik besykje it net",
+   "live_intro": "The Frisian for: 'I'm not trying', as in — 'I'm not trying it', is:",
+   "proposed_intro": "The Frisian for: 'I'm not trying', is:",
+   "chars": 38,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0057L01",
+   "seed": 57,
+   "known": "I can't remember",
+   "target": "ik wit it net mear",
+   "live_intro": "The Frisian for: 'I can't remember', as in — 'I can't remember it', is:",
+   "proposed_intro": "The Frisian for: 'I can't remember', is:",
+   "chars": 40,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0059L01",
+   "seed": 59,
+   "known": "I know",
+   "target": "ik wit it",
+   "live_intro": "The Frisian for: 'I know', as in — 'I know it', is:",
+   "proposed_intro": "The Frisian for: 'I know', is:",
+   "chars": 30,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0060L01",
+   "seed": 60,
+   "known": "I don't know yet",
+   "target": "ik wit it noch net",
+   "live_intro": "The Frisian for: 'I don't know yet', as in — 'I don't know it yet', is:",
+   "proposed_intro": "The Frisian for: 'I don't know yet', is:",
+   "chars": 40,
+   "held_by_411": true
+  },
+  {
+   "lego": "S0074L02",
+   "seed": 74,
+   "known": "to understand",
+   "target": "om it te begripen",
+   "live_intro": "The Frisian for: 'to understand', as in — 'to understand it', is:",
+   "proposed_intro": "The Frisian for: 'to understand', is:",
+   "chars": 37,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0078L01",
+   "seed": 78,
+   "known": "I don't understand",
+   "target": "ik begryp it net",
+   "live_intro": "The Frisian for: 'I don't understand', as in — 'I don't understand it', is:",
+   "proposed_intro": "The Frisian for: 'I don't understand', is:",
+   "chars": 42,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0103L01",
+   "seed": 103,
+   "known": "we're not trying",
+   "target": "wy besykje it net",
+   "live_intro": "The Frisian for: 'we're not trying', as in — 'we're not trying it', is:",
+   "proposed_intro": "The Frisian for: 'we're not trying', is:",
+   "chars": 40,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0113L01",
+   "seed": 113,
+   "known": "why don't I know any more",
+   "target": "wêrom wit ik it net mear",
+   "live_intro": "The Frisian for: 'why don't I know any more', as in — 'why don't I know it any more', is:",
+   "proposed_intro": "The Frisian for: 'why don't I know any more', is:",
+   "chars": 49,
+   "held_by_411": true
+  },
+  {
+   "lego": "S0135L01",
+   "seed": 135,
+   "known": "I don't know",
+   "target": "ik wit it net",
+   "live_intro": "The Frisian for: 'I don't know', as in — 'I don't know it', is:",
+   "proposed_intro": "The Frisian for: 'I don't know', is:",
+   "chars": 36,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0146L02",
+   "seed": 146,
+   "known": "since we tried",
+   "target": "sûnt wy it besocht hawwe",
+   "live_intro": "The Frisian for: 'since we tried', as in — 'since we tried it', is:",
+   "proposed_intro": "The Frisian for: 'since we tried', is:",
+   "chars": 38,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0152L02",
+   "seed": 152,
+   "known": "if I had known",
+   "target": "as ik it witten hie",
+   "live_intro": "The Frisian for: 'if I had known', as in — 'if I had known it', is:",
+   "proposed_intro": "The Frisian for: 'if I had known', is:",
+   "chars": 38,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0174L01",
+   "seed": 174,
+   "known": "can you understand",
+   "target": "kinstû it begripe",
+   "live_intro": "The Frisian for: 'can you understand', as in — 'can you understand it', is:",
+   "proposed_intro": "The Frisian for: 'can you understand', is:",
+   "chars": 42,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0213L01",
+   "seed": 213,
+   "known": "we don't know",
+   "target": "wy witte it net",
+   "live_intro": "The Frisian for: 'we don't know', as in — 'we don't know it', is:",
+   "proposed_intro": "The Frisian for: 'we don't know', is:",
+   "chars": 37,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0251L01",
+   "seed": 251,
+   "known": "I only want to know",
+   "target": "ik wol it pas witte",
+   "live_intro": "The Frisian for: 'I only want to know', as in — 'I only want to know it', is:",
+   "proposed_intro": "The Frisian for: 'I only want to know', is:",
+   "chars": 43,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0346L01",
+   "seed": 346,
+   "known": "I wanted her to know",
+   "target": "ik woe dat se it wist",
+   "live_intro": "The Frisian for: 'I wanted her to know', as in — 'I wanted her to know it', is:",
+   "proposed_intro": "The Frisian for: 'I wanted her to know', is:",
+   "chars": 44,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0421L01",
+   "seed": 421,
+   "known": "because they already know",
+   "target": "om't se it no al witte",
+   "live_intro": "The Frisian for: 'because they already know', as in — 'because they already know it', is:",
+   "proposed_intro": "The Frisian for: 'because they already know', is:",
+   "chars": 49,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0425L04",
+   "seed": 425,
+   "known": "that they understand",
+   "target": "dat se it begripe",
+   "live_intro": "The Frisian for: 'that they understand', as in — 'that they understand it', is:",
+   "proposed_intro": "The Frisian for: 'that they understand', is:",
+   "chars": 44,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0521L02",
+   "seed": 521,
+   "known": "that you'll forget",
+   "target": "datstû it ferjitte silst",
+   "live_intro": "The Frisian for: 'that you'll forget', as in — 'that you'll forget it', is:",
+   "proposed_intro": "The Frisian for: 'that you'll forget', is:",
+   "chars": 42,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0579L01",
+   "seed": 579,
+   "known": "we've often tried",
+   "target": "wy hawwe it faak besocht",
+   "live_intro": "The Frisian for: 'we've often tried', as in — 'we've often tried it', is:",
+   "proposed_intro": "The Frisian for: 'we've often tried', is:",
+   "chars": 41,
+   "held_by_411": false
+  },
+  {
+   "lego": "S0606L01",
+   "seed": 606,
+   "known": "if I'd known then",
+   "target": "as ik it doe witten hie",
+   "live_intro": "The Frisian for: 'if I'd known then', as in — 'if I'd known it then', is:",
+   "proposed_intro": "The Frisian for: 'if I'd known then', is:",
+   "chars": 41,
+   "held_by_411": true
+  },
+  {
+   "lego": "S0607L01",
+   "seed": 607,
+   "known": "if I'd known",
+   "target": "as ik it witten hie",
+   "live_intro": "The Frisian for: 'if I'd known', as in — 'if I'd known it', is:",
+   "proposed_intro": "The Frisian for: 'if I'd known', is:",
+   "chars": 36,
+   "held_by_411": false
+  }
+ ],
+ "main_recues": [
+  {
+   "key": "S0078L01B02",
+   "live": "I'm trying but I don't understand it",
+   "target": "ik besykje it, mar ik begryp it net",
+   "proposed": "I'm trying but I don't understand",
+   "chars": 33
+  },
+  {
+   "key": "S0078L01U01",
+   "live": "he wants to come back later on but I don't understand it",
+   "target": "hy wol letter weromkomme mar ik begryp it net",
+   "proposed": "he wants to come back later on but I don't understand",
+   "chars": 53
+  },
+  {
+   "key": "S0078L01U04",
+   "live": "you speak very well but I don't understand it",
+   "target": "dû praatst hiel goed mar ik begryp it net",
+   "proposed": "you speak very well but I don't understand",
+   "chars": 42
+  },
+  {
+   "key": "S0078L01U05",
+   "live": "I'm not sure if I still know the whole sentence and I don't understand it",
+   "target": "ik bin der net wis fan oft ik de hiele sin noch wit en ik begryp it net",
+   "proposed": "I'm not sure if I still know the whole sentence and I don't understand",
+   "chars": 70
+  },
+  {
+   "key": "S0078L01U06",
+   "live": "I'm a little tired this afternoon and I don't understand it",
+   "target": "ik bin fan 'e middei in bytsje wurch en ik begryp it net",
+   "proposed": "I'm a little tired this afternoon and I don't understand",
+   "chars": 56
+  },
+  {
+   "key": "S0078L01U07",
+   "live": "I don't understand it and I don't care",
+   "target": "ik begryp it net en it makket my neat út",
+   "proposed": "I don't understand and I don't care",
+   "chars": 35
+  }
+ ],
+ "borderline": [
+  {
+   "key": "SEED464",
+   "known": "I told her once what my room number was, but she didn't know it any more.",
+   "target": "Ik haw har ien kear sein wat myn keamernûmer wie, mar se wist it net mear."
+  },
+  {
+   "key": "S0464L03",
+   "known": "but she didn't know it any more",
+   "target": "mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03B03",
+   "known": "he wanted to know, but she didn't know it any more",
+   "target": "hy woe witte, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03B01",
+   "known": "I asked, but she didn't know it any more",
+   "target": "ik frege, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03B02",
+   "known": "I asked last night, but she didn't know it any more",
+   "target": "ik frege justerjûn, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03B04",
+   "known": "I asked after you left, but she didn't know it any more",
+   "target": "ik frege nei'tstû fuortgien wiest, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03U05",
+   "known": "I told her once what my room number was, but she didn't know it any more",
+   "target": "ik haw har ien kear sein wat myn keamernûmer wie, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03U03",
+   "known": "I thought it was very beautiful, but she didn't know it any more",
+   "target": "ik fûn it hiel moai, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03U02",
+   "known": "I asked that young woman who's sitting over there, but she didn't know it any more",
+   "target": "ik frege dy jonge frou dy't dêre sit, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03U01",
+   "known": "I said that I needed more time, but she didn't know it any more",
+   "target": "ik haw sein dat ik mear tiid nedich hie, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03U04",
+   "known": "I told her my room number, but she didn't know it any more",
+   "target": "ik haw har myn keamernûmer sein, mar se wist it net mear"
+  },
+  {
+   "key": "S0464L03U06",
+   "known": "she knew it last year, but she didn't know it any more",
+   "target": "sy wist it ferline jier, mar se wist it net mear"
+  },
+  {
+   "key": "S0514L03U03",
+   "known": "I found the perfect house but she didn't know it any more",
+   "target": "ik haw it perfekte hûs fûn mar se wist it net mear"
+  },
+  {
+   "key": "S0521L03U04",
+   "known": "I told her once why we needed to stay here but she didn't know it any more",
+   "target": "ik haw har ien kear sein wêrom't wy hjir bliuwe moasten mar se wist it net mear"
+  },
+  {
+   "key": "S0521L01U05",
+   "known": "I'm afraid that she doesn't know it any more",
+   "target": "ik bin benaud dat se it net mear wit"
+  },
+  {
+   "key": "S0522L02U01",
+   "known": "I told her once that it was stupid but she didn't know it any more",
+   "target": "ik haw har ien kear sein dat it dom wie mar se wist it net mear"
+  },
+  {
+   "key": "S0536L03U05",
+   "known": "he said that being crazy was bad but she didn't know it any more",
+   "target": "hy sei dat gek wêze slim wie mar se wist it net mear"
+  },
+  {
+   "key": "S0544L03U02",
+   "known": "that person over there was absolutely right but she didn't know it any more",
+   "target": "dy persoan dêre hie hielendal gelyk mar se wist it net mear"
+  },
+  {
+   "key": "S0565L02U01",
+   "known": "I'd have thought about it but she didn't know it any more",
+   "target": "ik hie der oer neitocht mar se wist it net mear"
+  },
+  {
+   "key": "S0622L01B03",
+   "known": "I knew it",
+   "target": "ik wist it"
+  }
+ ],
+ "explanation_line": {
+  "lego": "S0008L04",
+  "text": "Frisian often says 'it' here where English doesn't, so 'I'm going to try' is 'ik sil it besykje'."
+ }
+}
