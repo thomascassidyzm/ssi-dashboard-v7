@@ -1114,6 +1114,51 @@
    }
   },
   {
+   "id": "S0111L01U06",
+   "op": "update",
+   "lego": "S0111L01",
+   "known": "when did you start to learn?",
+   "target": "quando é que começaste a aprender?",
+   "decomposition": [
+    {
+     "legoId": "S0111L01",
+     "target": "quando",
+     "known": "when",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " é",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " que",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0079L02",
+     "target": " começaste a aprender",
+     "known": "you started to learn",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "?",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "when did you start to learn?",
+    "target": "quando começaste a aprender?"
+   }
+  },
+  {
    "id": "S0111L01U05",
    "op": "update",
    "lego": "S0111L01",
@@ -1168,51 +1213,6 @@
    "before": {
     "known": "when are you going to talk to me?",
     "target": "quando vais falar comigo?"
-   }
-  },
-  {
-   "id": "S0111L01U06",
-   "op": "update",
-   "lego": "S0111L01",
-   "known": "when did you start to learn?",
-   "target": "quando é que começaste a aprender?",
-   "decomposition": [
-    {
-     "legoId": "S0111L01",
-     "target": "quando",
-     "known": "when",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " é",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " que",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0079L02",
-     "target": " começaste a aprender",
-     "known": "you started to learn",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": "?",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when did you start to learn?",
-    "target": "quando começaste a aprender?"
    }
   },
   {
@@ -2224,33 +2224,6 @@
    }
   },
   {
-   "id": "S0379L01B02",
-   "op": "update",
-   "lego": "S0379L01",
-   "known": "I was lucky enough to go",
-   "target": "tive a sorte de ir",
-   "decomposition": [
-    {
-     "legoId": "S0379L01",
-     "target": "tive a sorte de",
-     "known": "I was lucky enough to",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " ir",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I was lucky enough",
-    "target": "tive sorte suficiente"
-   }
-  },
-  {
    "id": "S0379L01B03",
    "op": "update",
    "lego": "S0379L01",
@@ -2296,11 +2269,11 @@
    }
   },
   {
-   "id": "S0379L01U01",
+   "id": "S0379L01B02",
    "op": "update",
    "lego": "S0379L01",
-   "known": "I was lucky enough to go somewhere last year",
-   "target": "tive a sorte de ir a algum lugar no ano passado",
+   "known": "I was lucky enough to go",
+   "target": "tive a sorte de ir",
    "decomposition": [
     {
      "legoId": "S0379L01",
@@ -2314,16 +2287,85 @@
      "target": " ir",
      "known": "",
      "isGhost": true
-    },
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I was lucky enough",
+    "target": "tive sorte suficiente"
+   }
+  },
+  {
+   "id": "S0379L01U06",
+   "op": "update",
+   "lego": "S0379L01",
+   "known": "yes I was lucky enough to go",
+   "target": "sim, tive a sorte de ir",
+   "decomposition": [
     {
-     "legoId": "S0074L02",
-     "target": " a",
-     "known": "to",
+     "legoId": "S0097L01",
+     "target": "sim",
+     "known": "yes",
      "isGhost": false
     },
     {
      "legoId": null,
-     "target": " algum",
+     "target": ",",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0379L01",
+     "target": " tive a sorte de",
+     "known": "I was lucky enough to",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " ir",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I was lucky enough to go somewhere last year",
+    "target": "tive sorte suficiente para ir a algum lugar no ano passado"
+   }
+  },
+  {
+   "id": "S0379L01U03",
+   "op": "delete",
+   "lego": "S0379L01",
+   "before": {
+    "known": "I'm not sure if I was lucky enough",
+    "target": "não tenho a certeza se tive sorte suficiente"
+   }
+  },
+  {
+   "id": "S0379L01U05",
+   "op": "update",
+   "lego": "S0379L01",
+   "known": "I was lucky enough to find a good place",
+   "target": "tive a sorte de encontrar um lugar bom",
+   "decomposition": [
+    {
+     "legoId": "S0379L01",
+     "target": "tive a sorte de",
+     "known": "I was lucky enough to",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " encontrar",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": " um",
      "known": "",
      "isGhost": true
     },
@@ -2334,16 +2376,16 @@
      "isGhost": false
     },
     {
-     "legoId": "S0377L02",
-     "target": " no ano passado",
-     "known": "last year",
-     "isGhost": false
+     "legoId": null,
+     "target": " bom",
+     "known": "",
+     "isGhost": true
     }
    ],
    "decKind": "exact",
    "before": {
-    "known": "I was lucky enough to go somewhere",
-    "target": "tive sorte suficiente para ir a algum lugar"
+    "known": "I was lucky to find a good place",
+    "target": "tive sorte de encontrar um lugar bom"
    }
   },
   {
@@ -2398,12 +2440,54 @@
    }
   },
   {
-   "id": "S0379L01U03",
-   "op": "delete",
+   "id": "S0379L01U01",
+   "op": "update",
    "lego": "S0379L01",
+   "known": "I was lucky enough to go somewhere last year",
+   "target": "tive a sorte de ir a algum lugar no ano passado",
+   "decomposition": [
+    {
+     "legoId": "S0379L01",
+     "target": "tive a sorte de",
+     "known": "I was lucky enough to",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": " ir",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0074L02",
+     "target": " a",
+     "known": "to",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": " algum",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0364L02",
+     "target": " lugar",
+     "known": "place",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0377L02",
+     "target": " no ano passado",
+     "known": "last year",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
    "before": {
-    "known": "I'm not sure if I was lucky enough",
-    "target": "não tenho a certeza se tive sorte suficiente"
+    "known": "I was lucky enough to go somewhere",
+    "target": "tive sorte suficiente para ir a algum lugar"
    }
   },
   {
@@ -2455,90 +2539,6 @@
    "before": {
     "known": "she said she was lucky to be there",
     "target": "ela disse que tive sorte de estar lá"
-   }
-  },
-  {
-   "id": "S0379L01U05",
-   "op": "update",
-   "lego": "S0379L01",
-   "known": "I was lucky enough to find a good place",
-   "target": "tive a sorte de encontrar um lugar bom",
-   "decomposition": [
-    {
-     "legoId": "S0379L01",
-     "target": "tive a sorte de",
-     "known": "I was lucky enough to",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " encontrar",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " um",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0364L02",
-     "target": " lugar",
-     "known": "place",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " bom",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I was lucky to find a good place",
-    "target": "tive sorte de encontrar um lugar bom"
-   }
-  },
-  {
-   "id": "S0379L01U06",
-   "op": "update",
-   "lego": "S0379L01",
-   "known": "yes I was lucky enough to go",
-   "target": "sim, tive a sorte de ir",
-   "decomposition": [
-    {
-     "legoId": "S0097L01",
-     "target": "sim",
-     "known": "yes",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": ",",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0379L01",
-     "target": " tive a sorte de",
-     "known": "I was lucky enough to",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " ir",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I was lucky enough to go somewhere last year",
-    "target": "tive sorte suficiente para ir a algum lugar no ano passado"
    }
   },
   {
@@ -3807,8 +3807,8 @@
   "untiled S0054L04U06 [S0054L04] \"nós queríamos dar-te um pouco mais de tempo\": nós",
   "untiled S0059L04U05 [S0059L04] \"eu sei como fazer o que preciso de fazer na próxima semana\": eu",
   "untiled S0060L04U05 [S0060L04] \"eu ainda não sei como dizer palavras diferentes suficientes\": eu",
-  "untiled S0111L01U05 [S0111L01] \"quando é que vais falar comigo?\": é | que",
   "untiled S0111L01U06 [S0111L01] \"quando é que começaste a aprender?\": é | que",
+  "untiled S0111L01U05 [S0111L01] \"quando é que vais falar comigo?\": é | que",
   "untiled S0125L02U07 [S0125L02] \"eu acredito que a tua ideia era muito boa\": eu | que | muito | boa",
   "untiled S0212L03U08 [S0212L03] \"eles queriam pedir ajuda\": eles",
   "untiled S0213L02U06 [S0213L02] \"nós não sabemos o que eles estão a tentar alcançar\": nós | não | eles | estão",
@@ -3826,13 +3826,13 @@
   "untiled S0375L01U01 [S0375L01] \"não, eu não sabia o que ela estava a fazer\": não, | eu | estava",
   "untiled S0376L01U01 [S0376L01] \"eu não fui a lado nenhum no mês passado\": eu | não | fui",
   "untiled S0378L02U01 [S0378L02] \"não, eu não tinha dinheiro suficiente para férias\": não, | eu | suficiente | para",
-  "untiled S0379L01B02 [S0379L01] \"tive a sorte de ir\": ir",
   "untiled S0379L01B03 [S0379L01] \"tive a sorte de ir a algum lugar\": ir | algum",
-  "untiled S0379L01U01 [S0379L01] \"tive a sorte de ir a algum lugar no ano passado\": ir | algum",
-  "untiled S0379L01U02 [S0379L01] \"acho que tive a sorte de encontrar um lugar bom\": encontrar | um | bom",
-  "untiled S0379L01U04 [S0379L01] \"ela disse que tive a sorte de estar lá\": que | estar",
-  "untiled S0379L01U05 [S0379L01] \"tive a sorte de encontrar um lugar bom\": encontrar | um | bom",
+  "untiled S0379L01B02 [S0379L01] \"tive a sorte de ir\": ir",
   "untiled S0379L01U06 [S0379L01] \"sim, tive a sorte de ir\": ir",
+  "untiled S0379L01U05 [S0379L01] \"tive a sorte de encontrar um lugar bom\": encontrar | um | bom",
+  "untiled S0379L01U02 [S0379L01] \"acho que tive a sorte de encontrar um lugar bom\": encontrar | um | bom",
+  "untiled S0379L01U01 [S0379L01] \"tive a sorte de ir a algum lugar no ano passado\": ir | algum",
+  "untiled S0379L01U04 [S0379L01] \"ela disse que tive a sorte de estar lá\": que | estar",
   "untiled S0380L02U01 [S0380L02] \"eu perguntei o que ela queria incluir\": eu",
   "untiled S0381L01U01 [S0381L01] \"eu não perguntei se ele queria seguir-nos\": eu | não",
   "untiled S0384L02U01 [S0384L02] \"eu não conseguia concordar com o que ele disse há um momento\": eu | com",
@@ -4178,42 +4178,6 @@
   },
   {
    "role": "target1",
-   "text": "tive a sorte de ir",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0379L01B02",
-     "slot": "target1"
-    }
-   ],
-   "seed": 379
-  },
-  {
-   "role": "target2",
-   "text": "tive a sorte de ir",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0379L01B02",
-     "slot": "target2"
-    }
-   ],
-   "seed": 379
-  },
-  {
-   "role": "known",
-   "text": "I was lucky enough to go",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0379L01B02",
-     "slot": "known"
-    }
-   ],
-   "seed": 379
-  },
-  {
-   "role": "target1",
    "text": "tive a sorte de ir a algum lugar",
    "where": [
     {
@@ -4250,11 +4214,11 @@
   },
   {
    "role": "target1",
-   "text": "tive a sorte de ir a algum lugar no ano passado",
+   "text": "tive a sorte de ir",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U01",
+     "id": "S0379L01B02",
      "slot": "target1"
     }
    ],
@@ -4262,11 +4226,11 @@
   },
   {
    "role": "target2",
-   "text": "tive a sorte de ir a algum lugar no ano passado",
+   "text": "tive a sorte de ir",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U01",
+     "id": "S0379L01B02",
      "slot": "target2"
     }
    ],
@@ -4274,11 +4238,11 @@
   },
   {
    "role": "known",
-   "text": "I was lucky enough to go somewhere last year",
+   "text": "I was lucky enough to go",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U01",
+     "id": "S0379L01B02",
      "slot": "known"
     }
    ],
@@ -4286,11 +4250,11 @@
   },
   {
    "role": "target1",
-   "text": "acho que tive a sorte de encontrar um lugar bom",
+   "text": "sim, tive a sorte de ir",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U02",
+     "id": "S0379L01U06",
      "slot": "target1"
     }
    ],
@@ -4298,11 +4262,11 @@
   },
   {
    "role": "target2",
-   "text": "acho que tive a sorte de encontrar um lugar bom",
+   "text": "sim, tive a sorte de ir",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U02",
+     "id": "S0379L01U06",
      "slot": "target2"
     }
    ],
@@ -4310,47 +4274,11 @@
   },
   {
    "role": "known",
-   "text": "I think I was lucky enough to find a good place",
+   "text": "yes I was lucky enough to go",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U02",
-     "slot": "known"
-    }
-   ],
-   "seed": 379
-  },
-  {
-   "role": "target1",
-   "text": "ela disse que tive a sorte de estar lá",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0379L01U04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 379
-  },
-  {
-   "role": "target2",
-   "text": "ela disse que tive a sorte de estar lá",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0379L01U04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 379
-  },
-  {
-   "role": "known",
-   "text": "she said I was lucky enough to be there",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0379L01U04",
+     "id": "S0379L01U06",
      "slot": "known"
     }
    ],
@@ -4394,11 +4322,11 @@
   },
   {
    "role": "target1",
-   "text": "sim, tive a sorte de ir",
+   "text": "acho que tive a sorte de encontrar um lugar bom",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U06",
+     "id": "S0379L01U02",
      "slot": "target1"
     }
    ],
@@ -4406,11 +4334,11 @@
   },
   {
    "role": "target2",
-   "text": "sim, tive a sorte de ir",
+   "text": "acho que tive a sorte de encontrar um lugar bom",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U06",
+     "id": "S0379L01U02",
      "slot": "target2"
     }
    ],
@@ -4418,11 +4346,83 @@
   },
   {
    "role": "known",
-   "text": "yes I was lucky enough to go",
+   "text": "I think I was lucky enough to find a good place",
    "where": [
     {
      "kind": "phrase",
-     "id": "S0379L01U06",
+     "id": "S0379L01U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 379
+  },
+  {
+   "role": "target1",
+   "text": "tive a sorte de ir a algum lugar no ano passado",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0379L01U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 379
+  },
+  {
+   "role": "target2",
+   "text": "tive a sorte de ir a algum lugar no ano passado",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0379L01U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 379
+  },
+  {
+   "role": "known",
+   "text": "I was lucky enough to go somewhere last year",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0379L01U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 379
+  },
+  {
+   "role": "target1",
+   "text": "ela disse que tive a sorte de estar lá",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0379L01U04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 379
+  },
+  {
+   "role": "target2",
+   "text": "ela disse que tive a sorte de estar lá",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0379L01U04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 379
+  },
+  {
+   "role": "known",
+   "text": "she said I was lucky enough to be there",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0379L01U04",
      "slot": "known"
     }
    ],
