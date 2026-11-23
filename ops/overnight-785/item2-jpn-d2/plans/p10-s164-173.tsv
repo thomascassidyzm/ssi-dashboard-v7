@@ -1,0 +1,383 @@
+# eng_for_jpn seeds 164-173: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 7 flagged rows no longer exist; seeds 171-172 have no flags.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0164L01B05 build → "did you want to show me an interesting book?" | was: 面白い本を見せてもらいたいですか — prompt said "do you want to be shown"; English is "did you want to show me"
+S0164L01B05	私に面白い本を見せたかったですか？
+# S0164L01U02 use → "he was trying to show me an interesting book that he thought was very good" | was: 彼は面白い本を見せようとしていました — prompt lacked "me" and "that he thought was very good"
+S0164L01U02	彼はとても良いと思った面白い本を私に見せようとしていました
+# S0164L01U04 use → "I think that it's not difficult to find an interesting book when you know what you want" | was: 面白い本を探すのは難しくないと思います — prompt lacked "when you know what you want"
+S0164L01U04	何が欲しいかわかっていれば、面白い本を見つけるのは難しくないと思います
+# S0164L01U08 use → "I'd like to find an interesting book as soon as I can so I can start to enjoy it" | was: 面白い本を見つけたら、読みたいです — prompt said "if I find one I want to read"
+S0164L01U08	楽しみ始められるように、できるだけすぐ面白い本を見つけたいです
+# S0164L01U09 use → "she said she's looking for an interesting book to enjoy this afternoon" | was: 彼女は面白い本を探すのが好きだと言っていました — prompt said "she likes searching"
+S0164L01U09	彼女は今日の午後楽しむ面白い本を探していると言いました
+# S0164L01U11 use → "I think that it's important to find an interesting book to help you learn new words" | was: 面白い本を見つけることは大切だと思います — prompt lacked "to help you learn new words"
+S0164L01U11	新しい言葉を学ぶのを手伝う面白い本を見つけることは大切だと思います
+# S0164L01U13 use → "I want you to show me an interesting book that you think is very good" | was: 面白い本を友達に見せてほしいです — prompt said "show my friend"; English is "show me … that you think is very good"
+S0164L01U13	あなたがとても良いと思う面白い本を見せてほしいです
+# S0164L01U14 use → "do you enjoy looking for an interesting book when you have a little more time?" | was: 面白い本を探すのが好きですか？ — prompt lacked "when you have a little more time"
+S0164L01U14	もう少し時間があるとき、面白い本を探すのを楽しんでいますか？
+# S0164L01U15 use → "I want to find an interesting book as soon as I can because I'd like to start soon" | was: 面白い本を早く見つけたいと思っています — prompt lacked "because I'd like to start soon"
+S0164L01U15	もうすぐ始めたいので、できるだけすぐ面白い本を見つけたいです
+# S0165L01U04 use → "I want to know if it's true but I don't know how to find the answer yet" | was: 本当のことを知りたいのですが、難しいです — prompt said "I want to know the truth but it's difficult"
+S0165L01U04	本当かどうか知りたいですが、まだ答えの見つけ方がわかりません
+# S0165L01U05 use → "I'm not sure if what my friend said is true and I'd like to find out as soon as I can" | was: 友達が言ったことが本当かどうか確かめたいです — prompt lacked "I'm not sure … as soon as I can"
+S0165L01U05	友達が言ったことが本当かどうかわからないので、できるだけすぐ知りたいです
+# S0165L01U07 use → "I'm not sure if it's true so I want to ask my friend what she said about it" | was: 本当かどうかわからないので、聞いてみます — prompt lacked "what she said about it"
+S0165L01U07	本当かどうかわからないので、友達にそれについて彼女が何と言ったか聞きたいです
+# S0165L01U08 use → "I want to find out if it's true because I don't want to say something that isn't easy to understand" | was: 彼女が言ったことが本当か確かめたいです — English "…because I don't want to say something that isn't easy to understand" is incoherent
+S0165L01U08	DELETE
+# S0165L01U09 use → "I'd like you to tell me something true because I'm not sure if I can remember what you said" | was: 本当のことを言ってくれれば助かります — English "I'd like you to tell me something true because I'm not sure if I can remember what you said" is incoherent
+S0165L01U09	DELETE
+# S0165L01U10 use → "if it's true I'm very happy about it because I wasn't sure if it would happen" | was: それが本当なら、もっとうれしいです — English "if it's true I'm very happy about it because I wasn't sure if it would happen" mixes tenses — unnatural
+S0165L01U10	DELETE
+# S0165L01U12 use → "I think that it's true because he doesn't want to say something that isn't easy to explain" | was: 彼は本当のことを言っていると思います — English "I think that it's true because he doesn't want to say something that isn't easy to explain" is incoherent
+S0165L01U12	DELETE
+# S0165L01U13 use → "I'm not sure if it's true but I think that it's interesting and I want to find out more" | was: 本当かどうかわからないけど、興味があります — prompt lacked "and I want to find out more"
+S0165L01U13	本当かどうかわかりませんが、面白いと思いますし、もっと知りたいです
+# S0165L01U14 use → "it would be great if it's true because I've been hoping that it would happen for a while" | was: それが本当だったら、とてもいいですね — English "it would be great if it's true because I've been hoping that it would happen for a while" uses untaught structures and mixes conditionals
+S0165L01U14	DELETE
+# S0165L01U15 use → "I think that it's important to say something true when you're talking with people you know" | was: 本当のことを言うのは大切だと思います — prompt lacked "when you're talking with people you know"
+S0165L01U15	知っている人たちと話しているとき、本当のことを言うのは大切だと思います
+# S0165L02U01 use → "I'm not sure if it's true but I think that it's a good idea to ask someone" | was: 彼が言ったことが本当かどうかわかりません — prompt said "whether what he said is true" and lacked the second clause
+S0165L02U01	本当かどうかわかりませんが、誰かに聞くのはいい考えだと思います
+# S0165L02U02 use → "I'm not sure if it's true because I didn't know what my friend was trying to say" | was: 友達が言ったことが本当かどうかわかりません — English "I'm not sure if it's true because I didn't know what my friend was trying to say" is incoherent
+S0165L02U02	DELETE
+# S0165L02U04 use → "I'm not sure if it's true and I wanted to ask you about it before you leave" | was: 本当かどうかわからなかったので、確かめました — prompt was past and lacked "before you leave"
+S0165L02U04	本当かどうかわからないので、あなたが帰る前にそれについて聞きたかったです
+# S0165L02U05 use → "I'm not sure if it's true but I want to find out as soon as I can" | was: 何が本当かわからないので、友達に聞きます — prompt said "ask my friend"
+S0165L02U05	本当かどうかわかりませんが、できるだけすぐ知りたいです
+# S0165L02U07 use → "I'm not sure if it's true but I think that it's important to find out" | was: 本当かどうかわかりませんが、大切なことだと思います — prompt lacked "to find out"
+S0165L02U07	本当かどうかわかりませんが、知ることが大切だと思います
+# S0165L02U09 use → "I'm not sure if it's true so I wanted to ask my friend what she thought about it" | was: それが本当かどうか、友達に聞いてみました — prompt said "I asked my friend"
+S0165L02U09	本当かどうかわからないので、友達にそれについてどう思ったか聞きたかったです
+# S0165L02U10 use → "I'm not sure if it's true but I think that it's interesting and I want to know more" | was: 本当かどうかわかりませんが、面白いと思います — near-duplicate of S0165L01U13 ("find out more" vs "know more"); one prompt cannot serve both (ZUT)
+S0165L02U10	DELETE
+# S0165L02U11 use → "I'm not sure if it's true but I'm hoping that it is because it would be great" | was: それが本当ならいいのですが、確信はありません — English "I'm not sure if it's true but I'm hoping that it is because it would be great" is unnatural
+S0165L02U11	DELETE
+# S0166L01U02 use → "do you know my name or do you need me to tell you what it is?" | was: 私の名前を覚えていますか？ — English "do you know my name or do you need me to tell you what it is?" is near-duplicate of S0166L02U01 (…again) — one prompt cannot serve both
+S0166L01U02	DELETE
+# S0166L01U05 use → "my name is not very unusual but I think that it's a good name" | was: 私の名前はあまり珍しくありません — prompt lacked "but I think that it's a good name"
+S0166L01U05	私の名前はあまり珍しくありませんが、いい名前だと思います
+# S0166L01U06 use → "I want to tell you my idea because I think that it's a good thing to do" | was: 私の考えをあなたに話したいです — prompt lacked "because I think that it's a good thing to do"
+S0166L01U06	するのはいいことだと思うので、私の考えをあなたに話したいです
+# S0166L01U07 use → "my friend wanted to meet you and I hope you can come this afternoon" | was: 私の友達があなたに会いたがっています — prompt was present and lacked "I hope you can come this afternoon"
+S0166L01U07	私の友達はあなたに会いたかったです。今日の午後来られるといいですね
+# S0166L01U08 use → "my brain is doing something new and I can feel it changing as I learn" | was: 私の脳は英語を学ぶのに一生懸命働いています — English "my brain is doing something new and I can feel it changing as I learn" is unnatural
+S0166L01U08	DELETE
+# S0166L01U10 use → "do you know my name or do you need me to say it so you can remember?" | was: 私の名前を知っていましたか？ — English "do you know my name or do you need me to say it so you can remember?" duplicates the L02U01 shape
+S0166L01U10	DELETE
+# S0166L01U11 use → "my friend didn't want to tell me the truth and I'm not sure if I understand why" | was: 私の友達は本当のことを言いたがりませんでした — prompt lacked the second clause
+S0166L01U11	私の友達は私に本当のことを言いたくありませんでした。なぜかわかるかどうかわかりません
+# S0166L01U13 use → "I wanted to show my friend something that was in my bag this morning" | was: 私のバッグを友達に見せてしまいました — prompt said "I showed my bag"
+S0166L01U13	今朝、私のバッグに入っていたものを友達に見せたかったです
+# S0166L01U15 use → "I'm not sure if my idea is good but I'd like to tell you what I think" | was: 私の考えが正しいかどうかわかりません — prompt said "correct" and lacked the second clause
+S0166L01U15	私の考えがいいかどうかわかりませんが、私が思うことを話したいです
+# KEEP S0166L02B05 | 私の名前が何か教えてくれますか？ | can you tell me what my name is? — KEEP-equivalent: prompt already a question matching the English (false flag)
+# S0166L02U01 use → "do you know my name or do you need me to tell you what it is again?" | was: 私の名前を知っていますか？それとも、もう一度言う必要がありますか？ — prompt lacked "what it is"
+S0166L02U01	私の名前を知っていますか？それとも、それが何かもう一度言う必要がありますか？
+# S0166L02U02 use → "my name is not very unusual and I think that a lot of people have it" | was: 私の名前はあまり珍しくなく、多くの人が持っていると思います — prompt matched loosely; reordered to the English
+S0166L02U02	私の名前はあまり珍しくありませんし、多くの人が持っていると思います
+# KEEP S0166L02U03 | 彼女にとって大切だと思うので、友達に私の名前を知ってほしいです | I want my friend to know my name because I think it's important to her — prompt matches "I want my friend to know my name because I think it's important to her" (false flag)
+# S0166L02U06 use → "did you know my name before I said it or did you need someone to tell you?" | was: 私の名前を知っていましたか？ — English "did you know my name before I said it or did you need someone to tell you?" is unnatural
+S0166L02U06	DELETE
+# S0166L02U09 use → "do you think my name is similar to your name or is it very different?" | was: 私の名前はあなたの名前に似ていますか？ — prompt lacked "do you think … or is it very different?"
+S0166L02U09	私の名前はあなたの名前に似ていると思いますか？それとも、とても違いますか？
+# S0166L02U10 use → "my friend wanted to know my name and I was happy to say it to her" | was: 私の名前を友達が知りたがっていました — prompt lacked "and I was happy to say it to her"
+S0166L02U10	私の友達は私の名前を知りたかったので、喜んで彼女に言いました
+# S0166L02U11 use → "how do you say my name in English because I'm not sure if I know?" | was: 私の名前を英語でどう言いますか？ — English "how do you say my name in English because I'm not sure if I know?" is ungrammatical
+S0166L02U11	DELETE
+# S0166L02U12 use → "I think that my name is not very unusual but it is important to me" | was: 私の名前はとても珍しくありません — prompt said "very unusual" wrongly and lacked "but it is important to me"
+S0166L02U12	私の名前はあまり珍しくないと思いますが、私には大切です
+# S0166L02U13 use → "I'm happy that you know my name because I feel like we are friends" | was: 私の名前を知ってほしいです — English "I'm happy that you know my name because I feel like we are friends" uses untaught "feel like"; marginal
+S0166L02U13	DELETE
+# S0166L02U14 use → "do you think that my name is easy to remember or is it difficult for you?" | was: 私の名前はあなたにとって覚えやすいですか？ — prompt lacked "or is it difficult for you?"
+S0166L02U14	私の名前は覚えやすいと思いますか？それとも、あなたには難しいですか？
+# S0166L02U15 use → "I want you to say my name and tell me if you find it difficult" | was: 私の名前を言ってみてください — prompt said "please try saying my name"
+S0166L02U15	私の名前を言って、難しいかどうか教えてほしいです
+# KEEP S0166L03B01 | あまり | very — bare LEGO あまり = "very": LEGO-level gloss
+# S0166L03U01 use → "I think that it is not very difficult when you know what you want to do" | was: それはあまり難しくないと思います — prompt lacked "when you know what you want to do"
+S0166L03U01	何をしたいかわかっていれば、それはあまり難しくないと思います
+# S0166L03U02 use → "he wasn't very patient when I couldn't answer and I was feeling nervous" | was: 彼はあまり辛抱強くありませんでした — English "he wasn't very patient when I couldn't answer and I was feeling nervous" uses untaught words (patient, nervous)
+S0166L03U02	DELETE
+# S0166L03U07 use → "I think that it is not very unusual and a lot of people feel the same way" | was: それはあまり珍しくないです — prompt lacked "a lot of people feel the same way"
+S0166L03U07	それはあまり珍しくないと思いますし、多くの人が同じように感じています
+# S0166L03U09 use → "do you think that it is not very important to know the answer?" | was: それはあまり大切ではないと思いますか？ — prompt lacked "to know the answer"
+S0166L03U09	答えを知るのはあまり大切ではないと思いますか？
+# S0166L03U11 use → "she wasn't very happy about it but she didn't want to make a problem" | was: 彼女はあまり心配していませんでした — English "she wasn't very happy about it but she didn't want to make a problem" is unnatural
+S0166L03U11	DELETE
+# S0166L03U12 use → "it is not very difficult so I'd like to keep on doing this for a while" | was: あまり難しくはないので、続けましょう — prompt said "let's continue"
+S0166L03U12	あまり難しくないので、しばらくこれを続けたいです
+# S0166L03U15 use → "I think that it is not very difficult so I want to try as hard as I can" | was: それはあまり難しくないと思うので、やってみます — prompt lacked "as hard as I can"
+S0166L03U15	あまり難しくないと思うので、できるだけ頑張ってやってみたいです
+# KEEP S0166L04B01 | 珍しくありません | unusual — bare LEGO 珍しくありません = "unusual": LEGO-level gloss (negative vs positive)
+# S0166L04U01 use → "I think that it's not unusual to find it difficult when you start to learn English" | was: それは珍しくないと思います。英語を学ぶのは大変ですから — prompt was two sentences and lacked "when you start"
+S0166L04U01	英語を学び始めるとき、難しく感じるのは珍しくないと思います
+# S0166L04U02 use → "I think that what he is doing is not very unusual for someone who is new to it" | was: 彼のやり方はあまり珍しくないと思います — English "…not very unusual for someone who is new to it" uses untaught "new to it"; marginal
+S0166L04U02	DELETE
+# S0166L04U03 use → "I think that your name is not very unusual and a lot of people have it" | was: あなたの名前は珍しくないと思います — prompt lacked "very" and "a lot of people have it"
+S0166L04U03	あなたの名前はあまり珍しくないと思いますし、多くの人が持っています
+# S0166L04U06 use → "it's not unusual to find it difficult to learn English when you start" | was: 英語を学ぶのが難しいのは珍しくないです — prompt lacked "when you start"
+S0166L04U06	学び始めるとき、英語を学ぶのが難しいのは珍しくないです
+# S0166L04U07 use → "I think that it's not very unusual and you shouldn't worry about it" | was: それはあまり珍しくないと思います — prompt lacked "you shouldn't worry about it"
+S0166L04U07	それはあまり珍しくないと思いますし、心配しなくてもいいです
+# S0166L04U09 use → "it's not unusual and I think that you're doing very well with it" | was: それは珍しくないので、大丈夫です — prompt said "so it's OK"
+S0166L04U09	それは珍しくないですし、あなたはとてもうまくやっていると思います
+# S0166L04U10 use → "I think that what he was doing is not unusual for someone who wants to learn" | was: 彼は珍しくないことをしていました — English "I think that what he was doing is not unusual for someone who wants to learn" mixes tenses — marginal
+S0166L04U10	DELETE
+# S0166L04U11 use → "it's not unusual to make mistakes and I don't think you should worry about it" | was: あなたが間違いをするのは珍しくないです — prompt lacked the second clause
+S0166L04U11	間違えるのは珍しくないですし、心配しなくてもいいと思います
+# S0166L04U12 use → "I think that it's not very unusual but I'm not sure if I agree with that" | was: それはあまり珍しくないと思いますが、確かめます — prompt said "I'll check"
+S0166L04U12	それはあまり珍しくないと思いますが、それに同意するかわかりません
+# S0166L04U13 use → "it's not unusual to find it difficult to speak English when you start" | was: 英語で話すのが難しいのは珍しくないです — prompt lacked "when you start"
+S0166L04U13	始めるとき、英語を話すのが難しいのは珍しくないです
+# S0166L04U14 use → "it's not unusual to do it that way so you shouldn't worry about making mistakes" | was: あなたのやり方は珍しくないので心配しないでください — prompt lacked "about making mistakes"
+S0166L04U14	そういうやり方は珍しくないので、間違えることを心配しなくてもいいです
+# S0166L04U15 use → "my friend said that it's not very unusual and I think she's doing very well" | was: それはあまり珍しくないと友達が言いました — English "my friend said that it's not very unusual and I think she's doing very well" is a chain
+S0166L04U15	DELETE
+# S0166L05U01 use → "my name is not very unusual and I think that a lot of people have the same name" | was: 私の名前はあまり珍しくないと思います — prompt lacked the second clause
+S0166L05U01	私の名前はあまり珍しくありませんし、多くの人が同じ名前を持っていると思います
+# S0166L05U02 use → "I think that it's not very unusual and you shouldn't worry about it" | was: それはあまり珍しくないと思います — same English as S0166L04U07 bar "is"/"'s"; one prompt cannot serve both — duplicate row
+S0166L05U02	DELETE
+# S0166L05U03 use → "what he is doing is not very unusual for someone who is new to this" | was: 彼のやり方はあまり珍しくないですよ — English "…for someone who is new to this" uses untaught "new to"; marginal
+S0166L05U03	DELETE
+# S0166L05U04 use → "your name is not very unusual but I think it is a very good name" | was: あなたの名前はあまり珍しくないと思います — prompt lacked the second clause
+S0166L05U04	あなたの名前はあまり珍しくありませんが、とてもいい名前だと思います
+# S0166L05U05 use → "my friend said that it is not very unusual and I'm happy she said it" | was: それはあまり珍しくないと友達が言いました — English "my friend said that it is not very unusual and I'm happy she said it" is a chain
+S0166L05U05	DELETE
+# S0166L05U06 use → "it is not very unusual to make mistakes and you shouldn't worry about it" | was: 間違いをするのはあまり珍しくないです — prompt lacked "you shouldn't worry about it"
+S0166L05U06	間違えるのはあまり珍しくないですし、心配しなくてもいいです
+# S0166L05U07 use → "it is not very unusual so you shouldn't worry about making mistakes" | was: あまり珍しくないので、間違いを気にしなくてもいいです — prompt said 気にしなくても; matched to "worry about making mistakes"
+S0166L05U07	あまり珍しくないので、間違えることを心配しなくてもいいです
+# S0166L05U08 use → "what she is doing is not very unusual and I think she is doing very well" | was: 彼女のやり方はあまり珍しくないですよ — English "what she is doing is not very unusual and I think she is doing very well" is a chain
+S0166L05U08	DELETE
+# S0166L05U09 use → "I think that it is not very unusual but I'm not sure if I agree" | was: それはあまり珍しくないと思うのですが、確かめます — English "I think that it is not very unusual but I'm not sure if I agree" contradicts itself
+S0166L05U09	DELETE
+# S0166L05U10 use → "I think that your name is not very unusual and a lot of people have it" | was: あなたの名前はあまり珍しくないと思いますよ — same English as S0166L04U03 ("I think that your name is not very unusual and a lot of people have it") — duplicate row
+S0166L05U10	DELETE
+# S0166L05U11 use → "it is not very unusual to find it difficult to learn English when you start" | was: 英語を学ぶのが難しいのはあまり珍しくないです — same English as S0166L04U06 bar "is/'s" — duplicate row
+S0166L05U11	DELETE
+# S0166L05U12 use → "I've started to understand that it is not very unusual to feel this way" | was: あまり珍しくないことに気づきました — English "I've started to understand that it is not very unusual to feel this way" is unnatural
+S0166L05U12	DELETE
+# S0166L05U13 use → "someone said to me that it is not very unusual and I didn't know that before" | was: それはあまり珍しくないと言われました — English "someone said to me that it is not very unusual and I didn't know that before" is unnatural
+S0166L05U13	DELETE
+# S0166L05U14 use → "what he was doing is not very unusual for someone who is trying to improve" | was: 彼はあまり珍しくないことをしていました — English "…for someone who is trying to improve" uses untaught "improve"; mixes tenses
+S0166L05U14	DELETE
+# S0166L05U15 use → "it is not very unusual so I'd like to keep on doing this for a while" | was: あまり珍しくないので、続けましょう — prompt said "let's continue"
+S0166L05U15	あまり珍しくないので、しばらくこれを続けたいです
+# S0167L01B05 build → "let's meet this afternoon" | was: 午後に会いましょう — prompt lacked "this"
+S0167L01B05	今日の午後に会いましょう
+# S0167L01B06 build → "I want to start this afternoon" | was: 今日の午後に始めます — prompt said "I'll start"
+S0167L01B06	今日の午後に始めたいです
+# S0167L01U01 use → "I'm going to meet my friend this afternoon and I'm looking forward to it" | was: 今日の午後、友達に会う予定です — prompt lacked "and I'm looking forward to it"
+S0167L01U01	今日の午後、友達に会うつもりで、楽しみにしています
+# S0167L01U02 use → "he didn't want to look after the young dog all afternoon and I understand why" | was: 彼は午後ずっと待っていたくありませんでした — English "he didn't want to look after the young dog all afternoon and I understand why" is a chain; prompt said "wait"
+S0167L01U02	DELETE
+# S0167L01U03 use → "she doesn't want to read anything this afternoon and I think it's a good idea" | was: 彼女は今日の午後、何も読みたくありません — prompt lacked the second clause
+S0167L01U03	彼女は今日の午後何も読みたくありませんし、それはいい考えだと思います
+# S0167L01U04 use → "do you want to meet this afternoon because I'd like to talk with you?" | was: 今日の午後、友達と会いませんか？ — English "do you want to meet this afternoon because I'd like to talk with you?" — question + because is unnatural
+S0167L01U04	DELETE
+# S0167L01U05 use → "I was doing hard work all afternoon and I don't want to do any more today" | was: 午後ずっと仕事をしていました — English "I was doing hard work all afternoon…" is unnatural
+S0167L01U05	DELETE
+# S0167L01U06 use → "let's meet tomorrow afternoon because I'd like to talk about what you said" | was: 明日の午後、会いましょう — prompt lacked the "because" clause
+S0167L01U06	あなたが言ったことについて話したいので、明日の午後会いましょう
+# S0167L01U07 use → "I want to start this afternoon because I'd like to finish as quickly as possible" | was: 今日の午後に始めたいと思います — prompt lacked the "because" clause
+S0167L01U07	できるだけ早く終わりたいので、今日の午後に始めたいです
+# S0167L01U08 use → "I was trying to practise speaking English all afternoon and I started to feel better" | was: 午後ずっと英語を練習していました — prompt lacked "trying" and the second clause
+S0167L01U08	午後ずっと英語を話す練習をしようとしていて、気分がよくなり始めました
+# S0167L01U09 use → "what do you want to do this afternoon because I've got a little more time?" | was: 今日の午後、何をしたいですか？ — English "what do you want to do this afternoon because I've got a little more time?" — question + because is unnatural
+S0167L01U09	DELETE
+# S0167L01U10 use → "I'd like to meet my friend this afternoon if you can come with me" | was: 今日の午後、友達に会いたいと思っています — prompt lacked "if you can come with me"
+S0167L01U10	一緒に来られるなら、今日の午後友達に会いたいです
+# S0167L01U11 use → "I was waiting for my friend all afternoon and I don't mind waiting for a few more" | was: 午後ずっと、友達を待っていました — English "…and I don't mind waiting for a few more" is a broken fragment
+S0167L01U11	DELETE
+# S0167L01U12 use → "I'm looking forward to this afternoon because I'd like to relax with my friends" | was: 今日の午後が楽しみです — prompt lacked the "because" clause
+S0167L01U12	友達とリラックスしたいので、今日の午後を楽しみにしています
+# S0167L01U13 use → "I want to finish this afternoon so I can start something new tomorrow morning" | was: 今日の午後に終わらせたいと思います — prompt lacked the "so I can" clause
+S0167L01U13	明日の朝何か新しいことを始められるように、今日の午後終わりたいです
+# S0167L01U15 use → "I want to practise speaking English this afternoon as often as possible" | was: 今日の午後、英語を話す練習をしたいと思います — prompt lacked "as often as possible"
+S0167L01U15	今日の午後、できるだけ何度も英語を話す練習をしたいです
+# S0167L02B04 build → "I want to start tomorrow afternoon" | was: 明日の午後に始めます — prompt said "I'll start"
+S0167L02B04	明日の午後に始めたいです
+# S0167L02U01 use → "do you want to meet tomorrow afternoon because I'd like to talk with you?" | was: 明日の午後に会いませんか？ — English "do you want to meet tomorrow afternoon because I'd like to talk with you?" — question + because is unnatural
+S0167L02U01	DELETE
+# S0167L02U02 use → "I'm looking forward to tomorrow afternoon because I'd like to relax with my friends" | was: 明日の午後が楽しみです — prompt lacked the "because" clause
+S0167L02U02	友達とリラックスしたいので、明日の午後を楽しみにしています
+# S0167L02U03 use → "I'm going to meet my friend tomorrow afternoon and I'm excited about it" | was: 明日の午後に友達と会う予定です — prompt lacked "and I'm excited about it"
+S0167L02U03	明日の午後友達に会うつもりで、それにワクワクしています
+# S0167L02U04 use → "I want to finish tomorrow afternoon so I can start something new after that" | was: 明日の午後に終わらせたいと思います — prompt lacked the "so I can" clause
+S0167L02U04	その後何か新しいことを始められるように、明日の午後終わりたいです
+# S0167L02U05 use → "I want to start tomorrow afternoon because I'd like to finish as quickly as possible" | was: 明日の午後に始めたいと思います — prompt lacked the "because" clause
+S0167L02U05	できるだけ早く終わりたいので、明日の午後に始めたいです
+# S0167L02U06 use → "I want to practise speaking English tomorrow afternoon as often as possible" | was: 明日の午後に英語を練習したいと思います — prompt lacked "as often as possible"
+S0167L02U06	明日の午後、できるだけ何度も英語を話す練習をしたいです
+# S0167L02U07 use → "where do you want to meet tomorrow afternoon because I need to know soon?" | was: 明日の午後にどこで会いましょうか？ — English "where do you want to meet tomorrow afternoon because I need to know soon?" — question + because is unnatural
+S0167L02U07	DELETE
+# S0167L02U09 use → "is it okay if I come with my friend tomorrow afternoon to meet you?" | was: 明日の午後に友達を連れてきても大丈夫ですか？ — prompt lacked "to meet you"
+S0167L02U09	明日の午後、あなたに会うために友達と一緒に来ても大丈夫ですか？
+# S0167L02U10 use → "I'm looking forward to tomorrow afternoon and I want to start as soon as I can" | was: 明日の午後が待ち遠しいです — prompt lacked the second clause
+S0167L02U10	明日の午後を楽しみにしていて、できるだけすぐ始めたいです
+# KEEP S0167L02U11 | 明日の午後に会いましょう。どこに行きたいか教えてください | let's meet tomorrow afternoon and you can tell me where you want to go — KEEP-equivalent: prompt matches "let's meet tomorrow afternoon and you can tell me where you want to go" (loose but faithful)
+# S0167L02U12 use → "I want to do something new tomorrow afternoon because I'd like to enjoy it" | was: 明日の午後に何かをしたいと思います — prompt lacked "new" and the "because" clause
+S0167L02U12	楽しみたいので、明日の午後何か新しいことをしたいです
+# S0167L02U13 use → "I want to speak with my friend tomorrow afternoon if I have enough time" | was: 明日の午後に友達に電話したいと思います — prompt said "phone" and lacked "if I have enough time"
+S0167L02U13	十分な時間があれば、明日の午後友達と話したいです
+# S0167L02U14 use → "I'd like to speak English tomorrow afternoon as often as I can" | was: 明日の午後に英語を話す機会があれば嬉しいです — prompt said "glad if there is a chance"
+S0167L02U14	明日の午後、できるだけ何度も英語を話したいです
+# S0167L02U15 use → "I'm going to try to practise speaking English tomorrow afternoon if I can" | was: 明日の午後には英語の練習をするつもりです — prompt lacked "try … if I can"
+S0167L02U15	できれば、明日の午後英語を話す練習をしてみるつもりです
+# S0167L03B07 build → "what do you need to do next week?" | was: 今週、何をする必要がありますか — prompt said 今週 (this week)
+S0167L03B07	来週、何をする必要がありますか
+# S0167L03U09 use → "what do you need to do to finish that work before you leave today?" | was: 仕事を終わらせるために何をする必要がありますか — prompt lacked "before you leave today"
+S0167L03U09	今日帰る前に、その仕事を終えるために何をする必要がありますか？
+# S0168L02U03 use → "come and speak English with me as often as possible" | was: 来て私と一緒に英語で話してください — prompt lacked "as often as possible"
+S0168L02U03	来て、できるだけ何度も私と英語で話してください
+# S0168L02U04 use → "it would be great if you could come and help me with this" | was: あなたが来て私を助けてくれれば素晴らしいでしょう — prompt lacked "with this"
+S0168L02U04	来て、これを手伝ってくれたら素晴らしいでしょう
+# S0168L02U07 use → "I hope she's going to come and work with us this afternoon" | was: 彼女が来て私たちと勉強することを望んでいます — prompt lacked "this afternoon"
+S0168L02U07	彼女が今日の午後来て、私たちと一緒に頑張るといいですね
+# S0168L02U08 use → "come and show me that book when you're ready to go" | was: 来て、その本を私に見せてください — prompt lacked "when you're ready to go"
+S0168L02U08	行く準備ができたら、来てその本を私に見せてください
+# S0168L02U11 use → "come and do something new with me today" | was: 来て私と一緒に何か新しいことを試しましょう — prompt said "let's try" and lacked "today"
+S0168L02U11	今日来て、私と何か新しいことをしてください
+# S0168L02U13 use → "come and speak with me before you leave this morning" | was: 来てください、出発する前にお話したいです — prompt lacked "this morning"
+S0168L02U13	今朝あなたが出る前に、来て私と話してください
+# S0168L02U14 use → "I'd like it if you could come and speak English with me as often as possible" | was: あなたが来て一緒に英語を練習できたら嬉しいです — prompt lacked "as often as possible"
+S0168L02U14	来て、できるだけ何度も私と英語を話してくれたら嬉しいです
+# S0168L02U15 use → "come and work together with me today" | was: 来て、今日の仕事を一緒に始めましょう — prompt said "let's start today's work"
+S0168L02U15	今日来て、私と一緒に頑張ってください
+# S0168L03B06 build → "come and help with this" | was: 来て手伝う、一緒に — prompt said 一緒に; English is "with this"
+S0168L03B06	来てこれを手伝う
+# S0168L03U04 use → "it would be great if you could come and help me this morning" | was: あなたが来て手伝ってくれれば素晴らしいでしょう — prompt lacked "this morning"
+S0168L03U04	今朝、来て手伝ってくれたら素晴らしいでしょう
+# S0168L03U05 use → "can you come and help me this afternoon if you have time?" | was: 今日の午後に来て手伝うことができますか — prompt lacked "if you have time"
+S0168L03U05	時間があれば、今日の午後に来て手伝ってくれますか？
+# S0168L03U06 use → "can you come and help me because I need to speak with you today?" | was: 今日あなたと話す必要があるので、来て手伝ってくれますか？ — English "can you come and help me because I need to speak with you today?" — question + because is unnatural
+S0168L03U06	DELETE
+# S0168L03U07 use → "she wants to come and help us but she isn't sure when" | was: 彼女は来て手伝うことを望んでいます — prompt lacked "us … but she isn't sure when"
+S0168L03U07	彼女は来て私たちを手伝いたいですが、いつかはわかりません
+# S0168L03U08 use → "can you come and help me next week when you have more time?" | was: 来週来て手伝ってもらえますか — prompt lacked "when you have more time"
+S0168L03U08	時間がもっとあるとき、来週来て手伝ってくれますか？
+# S0168L03U09 use → "I want you to come and help me before you leave this morning" | was: 出発する前に来て手伝ってください — prompt lacked "this morning"
+S0168L03U09	今朝あなたが出る前に、来て手伝ってほしいです
+# S0168L03U10 use → "he said he wanted to come and help us later on this afternoon" | was: 彼は来て手伝うと言いました — prompt lacked "later on this afternoon … us"
+S0168L03U10	彼は今日の午後、後で来て私たちを手伝いたいと言いました
+# S0168L03U11 use → "I need my friend to come and help me as soon as you can" | was: 来て手伝ってくれる友達が必要です — English "I need my friend to come and help me as soon as you can" mixes persons — garbled
+S0168L03U11	DELETE
+# S0168L03U12 use → "my friend wanted to come and help but couldn't be there" | was: 私の友達は来て手伝うつもりでした — English "my friend wanted to come and help but couldn't be there" — "couldn't be there" untaught; marginal
+S0168L03U12	DELETE
+# S0168L03U13 use → "I'm so grateful that you're going to come and help me today" | was: あなたが来て手伝ってくれることに感謝します — prompt lacked "today"
+S0168L03U13	今日来て手伝ってくれることにとても感謝しています
+# S0168L03U15 use → "I'd like you to come and help me if you have time today" | was: もし時間があれば来て手伝ってください — prompt lacked "today"
+S0168L03U15	今日時間があれば、来て手伝ってほしいです
+# S0168L04U02 use → "I'll be able to come and help after we finish this work this evening" | was: 仕事が終わったら来て手伝うことができます — prompt lacked "this evening"
+S0168L04U02	今晩この仕事が終わったら、来て手伝うことができます
+# S0168L04U03 use → "I'll be able to come and help you before you leave if you want" | was: あなたが出発する前に来て手伝うことができます — prompt lacked "if you want"
+S0168L04U03	よければ、あなたが出る前に来て手伝うことができます
+# S0168L04U06 use → "wait a few minutes and then I'll be able to come and help you" | was: 少し待てば来て手伝うことができます — prompt said "if I wait a little"
+S0168L04U06	数分待ってください。そしたら来て手伝うことができます
+# S0168L04U07 use → "I'm not sure when but I'll be able to come and help you soon" | was: いつになるかわかりませんが来て手伝うことができます — English "I'm not sure when but I'll be able to come and help you soon" contradicts itself
+S0168L04U07	DELETE
+# S0168L04U10 use → "I'll be able to come and help tomorrow morning if not today" | was: 今日ではなくても、明日は来て手伝うことができます — prompt lacked "morning"
+S0168L04U10	今日ではなくても、明日の朝来て手伝うことができます
+# S0168L04U12 use → "I'll be able to come and help later on when she's ready to go" | was: 彼女が終わったら来て手伝うことができます — English "I'll be able to come and help later on when she's ready to go" is unnatural
+S0168L04U12	DELETE
+# S0168L04U13 use → "I'll be able to come and help if you can give me a little more time" | was: もう少し時間があれば来て手伝うことができます — prompt said "if there is a little more time"
+S0168L04U13	もう少し時間をくれれば、来て手伝うことができます
+# S0169L01U01 use → "can you tell me what your friend wants me to do this morning?" | was: 今朝、友達が私に何をしてほしいか教えてくれますか？ — prompt said "my friend" and lacked "this morning"
+S0169L01U01	今朝、あなたの友達が私に何をしてほしいか教えてくれますか？
+# S0169L01U03 use → "what do you want me to do to help you today?" | was: あなたは私に何をしてほしいですか — prompt lacked "to help you today"
+S0169L01U03	今日あなたを手伝うために、私に何をしてほしいですか？
+# S0169L01U04 use → "she wanted me to wait for her before we started talking" | was: 彼女は私に待ってほしかったです — prompt lacked "before we started talking"
+S0169L01U04	彼女は話し始める前に、私に待ってほしかったです
+# S0169L01U05 use → "my friend wants me to come with her to meet someone new" | was: 友達は私に一緒に来てほしいと思っています — prompt lacked "to meet someone new"
+S0169L01U05	友達は、誰か新しい人に会うために私に一緒に来てほしいです
+# S0169L01U06 use → "he wanted me to find the answer as quickly as I can" | was: 彼は私に答えを見つけてほしかったです — English "he wanted me to find the answer as quickly as I can" mixes tenses
+S0169L01U06	DELETE
+# S0169L01U08 use → "she wanted me to speak English with her as often as possible" | was: 彼女は私に英語で話してほしかったです — prompt lacked "as often as possible"
+S0169L01U08	彼女はできるだけ何度も私に英語で話してほしかったです
+# S0169L01U09 use → "my friend wants me to start something new with her today" | was: 友達は私に何か新しいことを始めてほしいと思っています — prompt lacked "with her today"
+S0169L01U09	友達は今日私に一緒に何か新しいことを始めてほしいです
+# S0169L01U10 use → "he wanted me to finish the work before he had to leave" | was: 彼は私に仕事を終えてほしかったです — prompt lacked "before he had to leave"
+S0169L01U10	彼は出なければならない前に、私に仕事を終えてほしかったです
+# S0169L01U12 use → "she wanted me to stop and talk with her for a while" | was: 彼女は私に話してほしかったです — prompt lacked "stop … for a while"
+S0169L01U12	彼女は私に止まってしばらく話してほしかったです
+# S0169L01U14 use → "he wanted me to be quiet when he was trying to say something" | was: 彼は私に静かにしてほしかったです — prompt lacked the "when" clause
+S0169L01U14	彼は何か言おうとしているとき、私に静かにしてほしかったです
+# S0169L01U15 use → "I want you to tell me what you want me to do and I'm going to start" | was: あなたは私に何をしてほしいか教えてください — English "I want you to tell me what you want me to do and I'm going to start" is a chain
+S0169L01U15	DELETE
+# S0169L02U03 use → "what do you want me to do before your friend is going to leave this morning?" | was: 友達が去る前に私に何をしてほしいですか — English "…before your friend is going to leave this morning?" is ungrammatical
+S0169L02U03	DELETE
+# S0169L02U04 use → "what do you want me to do before we start work together today?" | was: 仕事を始める前に私に何をしてほしいですか — prompt lacked "together today"
+S0169L02U04	今日一緒に仕事を始める前に、私に何をしてほしいですか？
+# S0169L02U05 use → "could you say that again a little more slowly what do you want me to do?" | was: 私に何をしてほしいか、もう少しゆっくり言ってもらえますか — English "could you say that again a little more slowly what do you want me to do?" is a run-on
+S0169L02U05	DELETE
+# S0169L02U06 use → "what do you want me to do before you are going to go home today?" | was: あなたが帰る前に私に何をしてほしいですか — English "…before you are going to go home today?" is ungrammatical
+S0169L02U06	DELETE
+# S0169L02U10 use → "what do you want me to do after we finish this work today?" | was: 仕事が終わったら私に何をしてほしいですか — prompt lacked "today"
+S0169L02U10	今日この仕事が終わったら、私に何をしてほしいですか？
+# S0170L01U01 use → "I need your help today so can we work together this afternoon?" | was: 私はあなたの助けが必要です、今日一緒に働けますか — prompt lacked "this afternoon"
+S0170L01U01	今日あなたの助けが必要なので、今日の午後一緒に頑張れますか？
+# S0170L01U03 use → "I need to practise speaking English as often as possible to speak better" | was: 英語を上手に話すためにたくさん練習が必要です — prompt lacked "as often as possible"
+S0170L01U03	もっと上手に話すために、できるだけ何度も英語を話す練習をする必要があります
+# S0170L01U05 use → "tell me what you need now and I'm going to come and help" | was: 今何が必要か教えてください — prompt lacked "and I'm going to come and help"
+S0170L01U05	今何が必要か教えてください。来て手伝うつもりです
+# S0170L01U06 use → "I need more time to learn all the new words in English" | was: 新しい言葉を覚えるためにもっと時間が必要です — prompt lacked "all … in English"
+S0170L01U06	英語の新しい言葉を全部覚えるのに、もっと時間が必要です
+# S0170L01U07 use → "I need a little more time before I need to leave this morning" | was: 出発する前に少し時間が必要です — English "I need a little more time before I need to leave this morning" is unnatural (need … need)
+S0170L01U07	DELETE
+# S0170L01U08 use → "tell me what you need for today and we can work together on it" | was: 今日の仕事のために何が必要かを教えてください — prompt lacked "and we can work together on it"
+S0170L01U08	今日何が必要か教えてください。一緒に頑張れます
+# S0170L01U10 use → "I want to know what you need so I can help you today" | was: あなたが何を必要としているか知りたいです — prompt lacked "so I can help you today"
+S0170L01U10	今日あなたを手伝えるように、何が必要か知りたいです
+# S0170L01U11 use → "I think I need to practise more but I'm definitely doing better than yesterday" | was: もっと練習が必要だと思います — English "…but I'm definitely doing better than yesterday" uses untaught "definitely"; chain
+S0170L01U11	DELETE
+# S0170L01U13 use → "we must work hard to learn a lot of new words and I need to start" | was: 多くのことを学ぶために頑張ることが必要です — English "we must work hard to learn a lot of new words and I need to start" is a chain
+S0170L01U13	DELETE
+# S0170L01U14 use → "tell me what you need this afternoon and I'm going to come and help" | was: 今日の午後に何が必要か教えてください — prompt lacked "and I'm going to come and help"
+S0170L01U14	今日の午後何が必要か教えてください。来て手伝うつもりです
+# S0170L01U15 use → "I need your help so I'm going to ask you to come today" | was: 私はあなたの助けが必要です — prompt lacked the "so" clause
+S0170L01U15	あなたの助けが必要なので、今日来てくれるように頼むつもりです
+# KEEP S0170L02U01 | 話し始められるように、今日何が必要か教えてくれますか？ | can you tell me what you need for today so we can start talking? — KEEP-equivalent: prompt matches (false flag)
+# S0170L02U02 use → "do you know what you need to do to speak English as often as possible?" | was: あなたが英語で上手くなるために何が必要か知っていますか — English "do you know what you need to do to speak English as often as possible?" is unnatural
+S0170L02U02	DELETE
+# S0170L02U04 use → "tell me what you need before you leave this morning" | was: 出発する前に何が必要か教えてください — prompt lacked "this morning"
+S0170L02U04	今朝あなたが出る前に、何が必要か教えてください
+# S0170L02U05 use → "I know exactly what you need to start talking in English" | was: 私はあなたが何を必要としているか正確にわかります — prompt lacked "to start talking in English"
+S0170L02U05	英語で話し始めるのに何が必要か、正確にわかります
+# S0170L02U07 use → "can you tell me what you need this afternoon if you have time?" | was: 今日の午後に何が必要か教えてください — prompt lacked "if you have time"
+S0170L02U07	時間があれば、今日の午後何が必要か教えてくれますか？
+# S0170L02U08 use → "tell me what you need next and I'm going to try as hard as I can" | was: 次に何が必要かを教えてください — prompt lacked the second clause
+S0170L02U08	次に何が必要か教えてください。できるだけ頑張ってみるつもりです
+# S0170L02U10 use → "let's think about what you need to do this week to be ready" | was: 今週何が必要かを一緒に考えましょう — prompt lacked "to do … to be ready"
+S0170L02U10	準備ができるように、今週何をする必要があるか一緒に考えましょう
+# S0170L02U11 use → "he said exactly what you need to do to finish the work quickly" | was: 彼は何が必要か正確に言っていました — English "he said exactly what you need to do to finish the work quickly" is unnatural
+S0170L02U11	DELETE
+# S0170L02U12 use → "can you tell me what you need to practise speaking English?" | was: 英語を話す練習に何が必要か教えてくれますか？ — prompt lacked "practise"
+S0170L02U12	英語を話す練習をするのに何が必要か教えてくれますか？
+# S0170L02U13 use → "it's important to know what you need before you start talking" | was: 何を必要としているかを知ることが大切です — prompt lacked "before you start talking"
+S0170L02U13	話し始める前に、何が必要か知ることが大切です
+# S0170L02U15 use → "let's talk about what you need to do this afternoon together" | was: 今日の午後に何が必要か話しましょう — prompt lacked "to do … together"
+S0170L02U15	今日の午後一緒に何をする必要があるか話しましょう
+# S0170L03U01 use → "tell me what you need and I'm going to come and help as soon as I can" | was: 何が必要か私に教えてください、私はすぐに行きます — prompt said "I'll go right away"
+S0170L03U01	何が必要か教えてください。できるだけすぐ来て手伝うつもりです
+# S0170L03U03 use → "tell me where you want to meet on saturday night" | was: どこで友達に会いたいか教えてください — prompt said "meet a friend" and lacked "on Saturday night"
+S0170L03U03	土曜日の夜どこで会いたいか教えてください
+# S0170L03U06 use → "tell me when you want to start and I'm going to be ready" | was: いつ行けるか教えてください — prompt said "when you can go"
+S0170L03U06	いつ始めたいか教えてください。準備するつもりです
+# S0170L03U07 use → "tell me how to say this word in English so I can remember it" | was: その言葉を英語でどう言うか教えてください — prompt said "that word" and lacked "so I can remember it"
+S0170L03U07	覚えられるように、この言葉を英語でどう言うか教えてください
+# S0170L03U09 use → "tell me what I need to do this afternoon so I can come and help" | was: 今日の午後に何をすべきか教えてください — prompt lacked the purpose clause
+S0170L03U09	来て手伝えるように、今日の午後私が何をする必要があるか教えてください
+# S0170L03U10 use → "tell me what you know and we can find the answer together" | was: あなたが知っていることを教えてください — prompt lacked the second clause
+S0170L03U10	あなたが知っていることを教えてください。一緒に答えを見つけられます
+# S0170L03U11 use → "tell me where you want to go and we can go together tonight" | was: どこに行きたいか教えてください、一緒に行きましょう — prompt said "let's go together" and lacked "tonight"
+S0170L03U11	どこに行きたいか教えてください。今夜一緒に行けます
+# S0170L03U12 use → "tell me what I need to do next and I'm going to try as hard as I can" | was: 次に何をすべきか教えてください — prompt lacked the second clause
+S0170L03U12	次に私が何をする必要があるか教えてください。できるだけ頑張ってみるつもりです
+# S0170L03U13 use → "tell me how well you can speak English and we can start talking" | was: 英語でどのくらいうまく話せるか教えてください — prompt lacked "and we can start talking"
+S0170L03U13	英語をどのくらい上手に話せるか教えてください。話し始められます
+# S0170L03U14 use → "tell me where you want to go after we finish the work today" | was: 仕事が終わったらどこに行くか教えてください — prompt lacked "today" and "want to"
+S0170L03U14	今日仕事が終わったらどこに行きたいか教えてください
+# S0170L03U15 use → "tell me what you think and I'm going to tell you what I need to do" | was: あなたが何を考えているか教えてください — English "tell me what you think and I'm going to tell you what I need to do" is a chain
+S0170L03U15	DELETE
+# KEEP S0173L01B04 | いいえ、大丈夫です、一人でできます。 | no thank you I can manage on my own — prompt is the seed's own Japanese (いいえ = "no") and matches (false flag)
