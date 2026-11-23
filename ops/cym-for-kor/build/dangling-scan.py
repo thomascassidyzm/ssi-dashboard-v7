@@ -3,7 +3,15 @@
 (Kai's Watson, 23 Nov: 'bydden, achos maen nhw angen' is broken, not a fragment). Reads a snapshot file
 written by GET :3470/api/production/cym_for_kor/seeds?status=all — never the database. Flags are candidates
 for a person to read; complete short fragments ('dylen, am mor hir â phosib') must not be flagged.
-Usage: dangling-scan.py SNAPSHOT.json [--json OUT]"""
+Usage: dangling-scan.py SNAPSHOT.json [--json OUT]
+
+CALIBRATION (23 Nov, seeds 1-433, 47 flags): an open end is NOT by itself a defect. The source course
+cym_nv2_for_eng carries 73 of 6,953 BUILD rows ending open, with the known side mirroring it ('stopio rŵan hyn
+achos' = 'to stop right now because', 'bo’ ti’n mynd i' = 'you were going to'); canon P7 allows incomplete
+BUILD rows and L32 bars only GAPPED LEGOs. In this course '~' is how the Korean prompt marks the open slot.
+46/47 were legitimate open frames; the one defect was a prompt that did NOT mirror the slot (S0296L03B01
+'내가 필요하다고' = 'that I am needed'). So this is a reading list, never an auto-drop (run-builder keeps
+DANGLE_AUTODROP = False): the defect is a prompt/target mismatch, which needs a reader."""
 import json, re, sys
 
 # Last words that cannot end a Welsh utterance: needing, conjunctions and linkers, prepositions, the
