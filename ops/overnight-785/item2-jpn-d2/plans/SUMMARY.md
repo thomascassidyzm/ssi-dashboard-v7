@@ -17,7 +17,8 @@ Rows whose English target uses a word the copy's vocab replay says is untaught a
 | p06-s124-133.tsv | 80 | 72 | 17 | 0 | 1860 |
 | p07-s134-143.tsv | 29 | 13 | 7 | 0 | 625 |
 | p08-s144-153.tsv | 32 | 10 | 5 | 0 | 878 |
-| **total** | **395** | **173** | **65** | **0** | **9174** |
+| p09-s154-163.tsv | 82 | 32 | 14 | 0 | 1457 |
+| **total** | **477** | **205** | **79** | **0** | **10631** |
 
 ## Notes for Kai (seed-level, outside a row pass)
 
