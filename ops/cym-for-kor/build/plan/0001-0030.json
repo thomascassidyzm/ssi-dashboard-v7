@@ -1,0 +1,741 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 1-30: calibration d/2259576a (#786·AK) splits and glosses, in the seed's own surface (mutated) forms, with the changes Popty's validator forces listed in \"changed\" (cs #813·AK)",
+ "changed": {
+  "5:efo": "calibration gloss ~와/과 refused by Popty (slash = non-example text); now ~와",
+  "9:dw i’n": "calibration gloss \"나는 ~해 (지금, 평소)\" refused (brackets); now 나는 ~해",
+  "10:os": "calibration gloss \"~(할)지\" refused (brackets); now ~지",
+  "10:gofio’r frawddeg gyfan": "surface (mutated) form, because Popty tiles the seed word by word",
+  "13:ti’n siarad": "calibration gloss \"너는 ~(말)해\" refused (brackets); now 너는 ~를 해",
+  "14:wyt ti’n siarad": "calibration \"wyt\" = \"(질문) ~해?\" refused (brackets); taught as one LEGO wyt ti’n siarad = 너 ~를 해? (the alternative calibration Q named)",
+  "16:isio": "calibration gloss \"~고 싶어(하다)\" refused (brackets); now ~고 싶어하다",
+  "21:wyt ti’n": "calibration gloss \"너 ~하고 있어? / 너 ~해?\" refused (slash); now 너 ~하고 있어?",
+  "23:mwy": "calibration gloss \"더 (많이)\" refused (brackets); now 더",
+  "24:dw i ddim yn mynd i": "calibration gloss had \"/ ~ㄹ 수 없을 거야\" (slash); now 나는 ~지 않을 거야",
+  "25:wyt ti’n mynd i": "calibration ti’n mynd i left \"wyt\" untiled (Popty tiles every word); one LEGO wyt ti’n mynd i = 너 ~ㄹ 거야?",
+  "26:i fynd": "calibration gloss \"갈 (준비)\" refused (brackets); now 갈",
+  "27:dw i ddim yn": "calibration dw i ddim left \"yn\" untiled; shortest cut that tiles is dw i ddim yn",
+  "27:cymryd": "calibration gloss \"(시간을) 들이다\" refused (brackets); now 들이다"
+ },
+ "seeds": {
+  "1": {
+   "legos": [
+    {
+     "cy": "dw i isio",
+     "ko": "나는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "Cymraeg",
+     "ko": "웨일스어",
+     "type": "A"
+    },
+    {
+     "cy": "efo chdi",
+     "ko": "너와",
+     "type": "A"
+    },
+    {
+     "cy": "rŵan",
+     "ko": "지금",
+     "type": "A"
+    }
+   ]
+  },
+  "2": {
+   "legos": [
+    {
+     "cy": "dw i’n trio",
+     "ko": "나는 ~려고 노력하고 있어",
+     "type": "A"
+    },
+    {
+     "cy": "dysgu",
+     "ko": "배우다",
+     "type": "A"
+    }
+   ]
+  },
+  "3": {
+   "legos": [
+    {
+     "cy": "sut i",
+     "ko": "~하는 방법",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "mor aml â phosib",
+     "ko": "가능한 한 자주",
+     "type": "A"
+    }
+   ]
+  },
+  "4": {
+   "legos": [
+    {
+     "cy": "sut i",
+     "ko": "~하는 방법",
+     "type": "A"
+    },
+    {
+     "cy": "ddeud",
+     "ko": "말하다",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth",
+     "ko": "무언가",
+     "type": "A"
+    },
+    {
+     "cy": "yn y Gymraeg",
+     "ko": "웨일스어로",
+     "type": "A"
+    }
+   ]
+  },
+  "5": {
+   "legos": [
+    {
+     "cy": "dw i’n mynd i",
+     "ko": "나는 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "ymarfer siarad",
+     "ko": "이야기하는 연습을 하다",
+     "type": "A"
+    },
+    {
+     "cy": "efo",
+     "ko": "~와",
+     "type": "A"
+    },
+    {
+     "cy": "rhywun arall",
+     "ko": "다른 사람",
+     "type": "A"
+    }
+   ]
+  },
+  "6": {
+   "legos": [
+    {
+     "cy": "dw i’n trio",
+     "ko": "나는 ~려고 노력하고 있어",
+     "type": "A"
+    },
+    {
+     "cy": "cofio",
+     "ko": "기억하다",
+     "type": "A"
+    },
+    {
+     "cy": "gair",
+     "ko": "단어 하나",
+     "type": "A"
+    }
+   ]
+  },
+  "7": {
+   "legos": [
+    {
+     "cy": "dw i isio",
+     "ko": "나는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "trio",
+     "ko": "노력하다",
+     "type": "A"
+    },
+    {
+     "cy": "mor galed ag y medra i",
+     "ko": "내가 할 수 있는 만큼 열심히",
+     "type": "A"
+    },
+    {
+     "cy": "heddiw",
+     "ko": "오늘",
+     "type": "A"
+    }
+   ]
+  },
+  "8": {
+   "legos": [
+    {
+     "cy": "dw i’n mynd i",
+     "ko": "나는 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "drio",
+     "ko": "노력하다",
+     "type": "A"
+    },
+    {
+     "cy": "esbonio",
+     "ko": "설명하다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ dw i’n ei olygu",
+     "ko": "내 말이 무슨 뜻인지",
+     "type": "A"
+    }
+   ]
+  },
+  "9": {
+   "legos": [
+    {
+     "cy": "dw i’n",
+     "ko": "나는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "tipyn bach o Gymraeg",
+     "ko": "웨일스어를 조금",
+     "type": "A"
+    },
+    {
+     "cy": "rŵan",
+     "ko": "지금",
+     "type": "A"
+    }
+   ]
+  },
+  "10": {
+   "legos": [
+    {
+     "cy": "dw i ddim yn siŵr",
+     "ko": "나는 확실하지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "os",
+     "ko": "~지",
+     "type": "A"
+    },
+    {
+     "cy": "medra i",
+     "ko": "나는 ~ㄹ 수 있어",
+     "type": "A"
+    },
+    {
+     "cy": "gofio’r frawddeg gyfan",
+     "ko": "문장 전체를 기억하다",
+     "type": "A"
+    }
+   ]
+  },
+  "11": {
+   "legos": [
+    {
+     "cy": "liciwn i fedru",
+     "ko": "나는 ~ㄹ 수 있으면 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "ar ôl i ti orffen",
+     "ko": "네가 끝낸 후에",
+     "type": "A"
+    }
+   ]
+  },
+  "12": {
+   "legos": [
+    {
+     "cy": "fyddwn i ddim yn",
+     "ko": "나는 ~지 않을 것 같아",
+     "type": "A"
+    },
+    {
+     "cy": "licio",
+     "ko": "좋아하다",
+     "type": "A"
+    },
+    {
+     "cy": "dyfalu",
+     "ko": "추측하다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ sy’n mynd i ddigwydd",
+     "ko": "무슨 일이 일어날지",
+     "type": "A"
+    },
+    {
+     "cy": "’fory",
+     "ko": "내일",
+     "type": "A"
+    }
+   ]
+  },
+  "13": {
+   "legos": [
+    {
+     "cy": "ti’n siarad",
+     "ko": "너는 ~를 해",
+     "type": "A"
+    },
+    {
+     "cy": "Cymraeg",
+     "ko": "웨일스어",
+     "type": "A"
+    },
+    {
+     "cy": "yn dda iawn",
+     "ko": "아주 잘",
+     "type": "A"
+    }
+   ]
+  },
+  "14": {
+   "legos": [
+    {
+     "cy": "wyt ti’n siarad",
+     "ko": "너 ~를 해?",
+     "type": "A"
+    },
+    {
+     "cy": "Cymraeg",
+     "ko": "웨일스어",
+     "type": "A"
+    },
+    {
+     "cy": "trwy’r dydd",
+     "ko": "하루 종일",
+     "type": "A"
+    }
+   ]
+  },
+  "15": {
+   "legos": [
+    {
+     "cy": "a",
+     "ko": "그리고",
+     "type": "A"
+    },
+    {
+     "cy": "dw i isio i ti siarad",
+     "ko": "나는 네가 ~ 이야기하기를 원해",
+     "type": "A"
+    },
+    {
+     "cy": "Cymraeg",
+     "ko": "웨일스어",
+     "type": "A"
+    },
+    {
+     "cy": "efo fi",
+     "ko": "나와",
+     "type": "A"
+    },
+    {
+     "cy": "’fory",
+     "ko": "내일",
+     "type": "A"
+    }
+   ]
+  },
+  "16": {
+   "legos": [
+    {
+     "cy": "mae o",
+     "ko": "그는",
+     "type": "A"
+    },
+    {
+     "cy": "isio",
+     "ko": "~고 싶어하다",
+     "type": "A"
+    },
+    {
+     "cy": "dod yn ôl",
+     "ko": "돌아오다",
+     "type": "A"
+    },
+    {
+     "cy": "efo",
+     "ko": "~와",
+     "type": "A"
+    },
+    {
+     "cy": "pawb arall",
+     "ko": "다른 모든 사람들",
+     "type": "A"
+    },
+    {
+     "cy": "nes ymlaen",
+     "ko": "나중에",
+     "type": "A"
+    }
+   ]
+  },
+  "17": {
+   "legos": [
+    {
+     "cy": "mae hi isio",
+     "ko": "그녀는 ~고 싶어해",
+     "type": "A"
+    },
+    {
+     "cy": "ffeindio allan",
+     "ko": "알아내다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ ydy’r ateb",
+     "ko": "답이 무엇인지",
+     "type": "A"
+    }
+   ]
+  },
+  "18": {
+   "legos": [
+    {
+     "cy": "dan ni isio",
+     "ko": "우리는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "cyfarfod",
+     "ko": "만나다",
+     "type": "A"
+    },
+    {
+     "cy": "am chwech o’r gloch",
+     "ko": "여섯 시에",
+     "type": "A"
+    },
+    {
+     "cy": "heno",
+     "ko": "오늘 저녁",
+     "type": "A"
+    }
+   ]
+  },
+  "19": {
+   "legos": [
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "dw i ddim isio",
+     "ko": "나는 ~고 싶지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "stopio",
+     "ko": "멈추다",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    }
+   ]
+  },
+  "20": {
+   "legos": [
+    {
+     "cy": "ti isio",
+     "ko": "너는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "dysgu",
+     "ko": "배우다",
+     "type": "A"
+    },
+    {
+     "cy": "ei enw fo’n gyflym",
+     "ko": "그의 이름을 빨리",
+     "type": "A"
+    }
+   ]
+  },
+  "21": {
+   "legos": [
+    {
+     "cy": "pam",
+     "ko": "왜",
+     "type": "A"
+    },
+    {
+     "cy": "wyt ti’n",
+     "ko": "너 ~하고 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "dysgu",
+     "ko": "배우다",
+     "type": "A"
+    },
+    {
+     "cy": "ei henw hi",
+     "ko": "그녀의 이름",
+     "type": "A"
+    }
+   ]
+  },
+  "22": {
+   "legos": [
+    {
+     "cy": "achos",
+     "ko": "왜냐하면",
+     "type": "A"
+    },
+    {
+     "cy": "dw i isio",
+     "ko": "나는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "cyfarfod",
+     "ko": "만나다",
+     "type": "A"
+    },
+    {
+     "cy": "pobl sy’n siarad",
+     "ko": "~하는 사람들",
+     "type": "A"
+    },
+    {
+     "cy": "Cymraeg",
+     "ko": "웨일스어",
+     "type": "A"
+    }
+   ]
+  },
+  "23": {
+   "legos": [
+    {
+     "cy": "dw i’n mynd i",
+     "ko": "나는 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "ddechrau",
+     "ko": "시작하다",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "mwy",
+     "ko": "더",
+     "type": "A"
+    },
+    {
+     "cy": "cyn bo hir",
+     "ko": "곧",
+     "type": "A"
+    }
+   ]
+  },
+  "24": {
+   "legos": [
+    {
+     "cy": "dw i ddim yn mynd i",
+     "ko": "나는 ~지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "fedru",
+     "ko": "~ㄹ 수 있다",
+     "type": "A"
+    },
+    {
+     "cy": "cofio’n hawdd",
+     "ko": "쉽게 기억하다",
+     "type": "A"
+    }
+   ]
+  },
+  "25": {
+   "legos": [
+    {
+     "cy": "wyt ti’n mynd i",
+     "ko": "너 ~ㄹ 거야?",
+     "type": "A"
+    },
+    {
+     "cy": "helpu fi",
+     "ko": "나를 도와주다",
+     "type": "A"
+    },
+    {
+     "cy": "cyn i mi orfod",
+     "ko": "내가 ~해야 하기 전에",
+     "type": "A"
+    },
+    {
+     "cy": "mynd",
+     "ko": "가다",
+     "type": "A"
+    }
+   ]
+  },
+  "26": {
+   "legos": [
+    {
+     "cy": "dw i’n licio",
+     "ko": "나는 ~는 것을 좋아해",
+     "type": "A"
+    },
+    {
+     "cy": "teimlo",
+     "ko": "느끼다",
+     "type": "A"
+    },
+    {
+     "cy": "fel taswn i",
+     "ko": "마치 내가 ~인 것처럼",
+     "type": "A"
+    },
+    {
+     "cy": "bron yn barod",
+     "ko": "거의 준비가 된",
+     "type": "A"
+    },
+    {
+     "cy": "i fynd",
+     "ko": "갈",
+     "type": "A"
+    }
+   ]
+  },
+  "27": {
+   "legos": [
+    {
+     "cy": "dw i ddim yn",
+     "ko": "나는 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "licio",
+     "ko": "좋아하다",
+     "type": "A"
+    },
+    {
+     "cy": "cymryd",
+     "ko": "들이다",
+     "type": "A"
+    },
+    {
+     "cy": "gormod o amser",
+     "ko": "너무 많은 시간",
+     "type": "A"
+    },
+    {
+     "cy": "i ateb",
+     "ko": "대답하는 데",
+     "type": "A"
+    }
+   ]
+  },
+  "28": {
+   "legos": [
+    {
+     "cy": "mae’n ddefnyddiol",
+     "ko": "~것이 유용해",
+     "type": "A"
+    },
+    {
+     "cy": "dechrau",
+     "ko": "시작하다",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "cyn gynted ag y medri di",
+     "ko": "네가 할 수 있는 한 빨리",
+     "type": "A"
+    }
+   ]
+  },
+  "29": {
+   "legos": [
+    {
+     "cy": "dw i’n edrych ymlaen at",
+     "ko": "나는 ~기를 기대하고 있어",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "yn well",
+     "ko": "더 잘",
+     "type": "A"
+    },
+    {
+     "cy": "cyn gynted ag y medra i",
+     "ko": "내가 할 수 있는 한 빨리",
+     "type": "A"
+    }
+   ]
+  },
+  "30": {
+   "legos": [
+    {
+     "cy": "o’n i isio",
+     "ko": "나는 ~고 싶었어",
+     "type": "A"
+    },
+    {
+     "cy": "gofyn",
+     "ko": "묻다",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth",
+     "ko": "무언가",
+     "type": "A"
+    },
+    {
+     "cy": "i ti",
+     "ko": "너에게",
+     "type": "A"
+    },
+    {
+     "cy": "ddoe",
+     "ko": "어제",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}
