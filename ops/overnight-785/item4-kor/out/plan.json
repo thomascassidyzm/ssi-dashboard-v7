@@ -1,0 +1,57 @@
+{
+ "phr": [
+  {
+   "id": "S0082L01B02",
+   "op": "delete",
+   "lego": "S0082L01",
+   "before": {
+    "known": "not going to wait",
+    "target": "기다리지 않을 거예요"
+   }
+  },
+  {
+   "id": "S0082L01U01",
+   "op": "delete",
+   "lego": "S0082L01",
+   "before": {
+    "known": "I'm not going to wait",
+    "target": "기다리지 않을 거예요"
+   }
+  },
+  {
+   "id": "S0082L01U05",
+   "op": "delete",
+   "lego": "S0082L01",
+   "before": {
+    "known": "but I'm not going to wait",
+    "target": "하지만 기다리지 않을 거예요"
+   }
+  },
+  {
+   "id": "S0082L02B02",
+   "op": "delete",
+   "lego": "S0082L02",
+   "before": {
+    "known": "why not",
+    "target": "왜요"
+   }
+  },
+  {
+   "id": "S0082L02B03",
+   "op": "delete",
+   "lego": "S0082L02",
+   "before": {
+    "known": "but why not",
+    "target": "하지만 왜요"
+   }
+  }
+ ],
+ "notes": [],
+ "problems": [],
+ "outside": [],
+ "zut": [],
+ "touched": [
+  82
+ ],
+ "asks": []
+}

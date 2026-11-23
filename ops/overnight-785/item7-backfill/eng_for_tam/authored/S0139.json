@@ -1,0 +1,34 @@
+{
+ "seed": 139,
+ "legos": {
+  "L01": {
+   "insert": [
+    [
+     "build",
+     "சீக்கிரம் வர",
+     "to come early"
+    ],
+    [
+     "use",
+     "நான் நாளை சீக்கிரம் வருவேன்",
+     "I'll come early tomorrow"
+    ]
+   ]
+  },
+  "L02": {
+   "insert": [
+    [
+     "build",
+     "மன்னிக்கவும், எனக்கு தெரியாது",
+     "sorry, I don't know"
+    ],
+    [
+     "use",
+     "மன்னிக்கவும், நீங்கள் சொன்னது எனக்கு புரியவில்லை",
+     "sorry, I don't understand what you said"
+    ]
+   ]
+  }
+ },
+ "notes": "seed 139 (and 140) known side does not match its target: Tamil says \"I came early, sorry\", English says \"I'm sorry that I need to leave so early\" (140: \"I thought I would be very late\" vs \"I'm sorry that I can't see what you're trying to show me\"). Rows here follow the LEGO glosses only; the seed pair needs Kai."
+}

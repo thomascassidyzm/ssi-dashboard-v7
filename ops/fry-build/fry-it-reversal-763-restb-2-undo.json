@@ -1,0 +1,253 @@
+{
+ "family": "restb-2",
+ "event_id": "00a3e058-1965-4ef2-a41a-8afd42c30f61",
+ "undo_file_on_popty": "2026-11-23T09-51-31-890Z-00a3e058-1965-4ef2-a41a-8afd42c30f61.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "35eb2ee9-9480-4c34-bb98-7e366c109a2e",
+   "set": {
+    "known_text": "if I'd known",
+    "known_audio_id": "73bb8386-9fad-492a-a8df-a4fe183e0ecd",
+    "presentation_audio_id": "69475c3c-d529-4c29-a929-594c06f52e36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0642L01U01",
+   "set": {
+    "known_text": "if I'd known then, madam, I'd have waited",
+    "known_audio_id": "ed76f096-575c-4192-baa0-7a7d3b5958a4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0607L02U05",
+   "set": {
+    "known_text": "if I'd known then, I'd have done things differently",
+    "known_audio_id": "fa11cd1a-ad14-48ca-961c-774e41a65949"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0606L01U05",
+   "set": {
+    "known_text": "if I'd known then, I'd have helped you",
+    "known_audio_id": "a7d0bb59-0ec5-4abc-8583-f8cc3902a41b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0606L01U01",
+   "set": {
+    "known_text": "if I'd known then, I'd have thought more carefully",
+    "known_audio_id": "c83aec9c-d1a3-4b4e-83e5-7a4a0df8aafd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0606L01B02",
+   "set": {
+    "known_text": "I'd have thought more if I'd known then",
+    "known_audio_id": "070bdb1f-1aec-40dc-bf9b-1de39de8ad85"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4d13af19-ad22-43fa-9bcc-cb05a2845fcf",
+   "set": {
+    "known_text": "if I'd known then",
+    "known_audio_id": "07e1d14e-f6f6-47ff-9ae2-fe480920bdf6",
+    "presentation_audio_id": "c4e554ca-d361-45d5-8190-9d070504d821"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01U05",
+   "set": {
+    "known_text": "we've often tried, but they don't want to listen",
+    "known_audio_id": "9f22ee78-f500-4202-91dd-e8dd7459976d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01U04",
+   "set": {
+    "known_text": "we've often tried with our children",
+    "known_audio_id": "c3dbe1e0-d1ca-46ae-a018-630f93ec276f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01U02",
+   "set": {
+    "known_text": "it's a good idea to breathe slowly and we've often tried",
+    "known_audio_id": "51bc26e8-20b0-405a-b95e-1f8ab35420f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01U03",
+   "set": {
+    "known_text": "we've often tried, but it's too difficult",
+    "known_audio_id": "a082999e-960a-4f32-9427-7c02f51b125f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01U01",
+   "set": {
+    "known_text": "we want to become more patient and we've often tried",
+    "known_audio_id": "0b4e150e-16b3-4f57-a4f3-9acdf2352191"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01B03",
+   "set": {
+    "known_text": "we've often tried with each other",
+    "known_audio_id": "93c4833c-2161-4e12-a7f1-ca886196457d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01B02",
+   "set": {
+    "known_text": "we've often tried without the car",
+    "known_audio_id": "4d7258cb-adff-4edb-8bbb-09e1fd4d72dc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0579L01B01",
+   "set": {
+    "known_text": "we've often tried late at night",
+    "known_audio_id": "c9521b1e-7d06-4736-b5a4-08870400940e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "51adcf26-2255-4a4a-808c-0fe2a654c068",
+   "set": {
+    "known_text": "we've often tried",
+    "known_audio_id": "30e487f8-830b-4fd8-9c99-0e5ed58248e4",
+    "presentation_audio_id": "a98e639a-c994-4895-ba4f-2caf1b65e7cd"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 579,
+   "set": {
+    "known_text": "We've often tried.",
+    "known_audio_id": "30e487f8-830b-4fd8-9c99-0e5ed58248e4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0544L01U03",
+   "set": {
+    "known_text": "whoever said that you'll forget was wrong",
+    "known_audio_id": "592eb4b8-4c92-4db5-90f1-ac51202b3362"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0523L02U04",
+   "set": {
+    "known_text": "he's standing alone over there instead of giving an excuse because they already know",
+    "known_audio_id": "4334a661-2f6a-4ae8-89f7-56ed72a5aa35"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02U06",
+   "set": {
+    "known_text": "they didn't say that you'll forget",
+    "known_audio_id": "88f0087c-8999-41fc-b599-b7e8967d9e8b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02U05",
+   "set": {
+    "known_text": "your friend said that you'll forget",
+    "known_audio_id": "7c623894-aac1-43e6-bab3-14296082b125"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02B04",
+   "set": {
+    "known_text": "that doesn't mean that you'll forget",
+    "known_audio_id": "e7333841-e1a9-4575-adcf-0c95e1ae74bd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02B02",
+   "set": {
+    "known_text": "I'm sure that you'll forget",
+    "known_audio_id": "4412257d-696e-4f0b-b39a-e7de53edec33"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0521L02B03",
+   "set": {
+    "known_text": "they said that you'll forget",
+    "known_audio_id": "e11fa1d7-467e-4f42-b84d-22db5da93fbf"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cf40456d-a129-4c78-9f00-ee78bf5331bb",
+   "set": {
+    "known_text": "that you'll forget",
+    "known_audio_id": "dfa66b99-60bb-4ded-8e82-d8f9221ceedb",
+    "presentation_audio_id": "51ec0eb8-a571-4651-9475-de06f640525e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0511L02B02",
+   "set": {
+    "known_text": "I wanted her to know before everyone knew the news",
+    "known_audio_id": "cc423939-178d-4a06-95e3-3ae2472cb216"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0458L04U06",
+   "set": {
+    "known_text": "it's much easier because they already know",
+    "known_audio_id": "d543f8f8-af82-46a1-9f0b-561fb7977b39"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0456L01U05",
+   "set": {
+    "known_text": "he might be there, I don't know",
+    "known_audio_id": "91f5ed87-ba4d-40e3-ac4a-5ca8caae4054"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0455L01U01",
+   "set": {
+    "known_text": "we had to leave because they already know",
+    "known_audio_id": "b78ae78d-877a-4410-bc33-853df545dacb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0449L01U03",
+   "set": {
+    "known_text": "I think that they said that they understand",
+    "known_audio_id": "807817c6-1ca5-4281-8938-7d479a87bb9f"
+   }
+  }
+ ]
+}

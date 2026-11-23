@@ -1,0 +1,385 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0454L03U05",
+   "set": {
+    "known_text": "she knows he came to us",
+    "target_text": "تَعْرِفُ أَنَّهُ جاءَ إِلَيْنا"
+   },
+   "expect": {
+    "known_text": "she knows our friends came to us",
+    "target_text": "تَعْرِفُ أَنَّ أَصْدِقاؤُنا جاءوا إِلَيْنا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0454L04U02",
+   "set": {
+    "known_text": "she thinks he came at about six",
+    "target_text": "تَظُنُّ أَنَّهُ جاءَ حَوالَيِ السّاعَةِ السّادِسَةِ"
+   },
+   "expect": {
+    "known_text": "she thinks our friends came at about six",
+    "target_text": "تَظُنَّ أَنَّ أَصْدِقاؤُنا جاءوا حَوالَيِ السّاعَةِ السّادِسَةِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0454L04U05",
+   "set": {
+    "known_text": "she says he came at about six o'clock",
+    "target_text": "تَقولُ إِنَّهُ جاءَ حَوالَيِ السّاعَةِ السّادِسَةِ"
+   },
+   "expect": {
+    "known_text": "she says they arrived at about six o'clock",
+    "target_text": "تَقولُ إِنَّ أَصْدِقاؤُنا جاءوا حَوالَيِ السّاعَةِ السّادِسَةِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01B03",
+   "set": {
+    "target_text": "قالَتْ إِنَّها لَيْسَتْ جاهِزَةً"
+   },
+   "expect": {
+    "known_text": "she said it's not ready",
+    "target_text": "قالَتْ إِنَّها لَيْسَتْ جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U02",
+   "set": {
+    "target_text": "قالَ إِنَّها لَيْسَتْ جاهِزَةً"
+   },
+   "expect": {
+    "known_text": "he said it's not ready",
+    "target_text": "قالَ إِنَّها لَيْسَتْ جاهِزَةٌ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0627L01U04",
+   "set": {
+    "target_text": "هَلْ تَعْرِفُ إِنْ كانَتْ جاهِزَةً؟"
+   },
+   "expect": {
+    "known_text": "do you know if it's ready?",
+    "target_text": "هَلْ تَعْرِفُ إِنْ كانَتْ جاهِزَةٌ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02B01",
+   "set": {
+    "known_text": "everybody will be ready",
+    "target_text": "سَيَكونُ الجَميعُ مُسْتَعِدّينَ"
+   },
+   "expect": {
+    "known_text": "they are ready",
+    "target_text": "هُمْ مُسْتَعِدّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02B02",
+   "set": {
+    "known_text": "everybody was ready",
+    "target_text": "كانَ الجَميعُ مُسْتَعِدّينَ"
+   },
+   "expect": {
+    "known_text": "everybody is ready",
+    "target_text": "الجَميعُ مُسْتَعِدّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02B03",
+   "set": {
+    "known_text": "was everybody ready?",
+    "target_text": "هَلْ كانَ الجَميعُ مُسْتَعِدّينَ؟"
+   },
+   "expect": {
+    "known_text": "are they ready?",
+    "target_text": "هَلْ هُمْ مُسْتَعِدّينَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02B04",
+   "set": {
+    "known_text": "when everybody is ready",
+    "target_text": "عِنْدَما يَكونُ الجَميعُ مُسْتَعِدّينَ"
+   },
+   "expect": {
+    "known_text": "I know they are ready",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مُسْتَعِدّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02U01",
+   "set": {
+    "known_text": "will everybody be ready on Friday night?",
+    "target_text": "هَلْ سَيَكونُ الجَميعُ مُسْتَعِدّينَ لَيْلَةَ الجُمُعَةِ؟"
+   },
+   "expect": {
+    "known_text": "is everybody ready?",
+    "target_text": "هَلِ الجَميعُ مُسْتَعِدّينَ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02U02",
+   "set": {
+    "known_text": "I think everybody will be ready",
+    "target_text": "أَظُنُّ أَنَّهُ سَيَكونُ الجَميعُ مُسْتَعِدّينَ"
+   },
+   "expect": {
+    "known_text": "I think everybody is ready",
+    "target_text": "أَظُنُّ أَنَّ الجَميعَ مُسْتَعِدّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02U04",
+   "set": {
+    "known_text": "was everybody ready at the entrance?",
+    "target_text": "هَلْ كانَ الجَميعُ مُسْتَعِدّينَ عِنْدَ المَدْخَلِ؟"
+   },
+   "expect": {
+    "known_text": "I think the people at the entrance are ready",
+    "target_text": "أَظُنُّ أَنَّ الناسَ عِنْدَ المَدْخَلِ مُسْتَعِدّينَ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0396L02U05",
+   "set": {
+    "known_text": "everybody will be ready for Friday night",
+    "target_text": "سَيَكونُ الجَميعُ مُسْتَعِدّينَ لَيْلَةَ الجُمُعَةِ"
+   },
+   "expect": {
+    "known_text": "I know they are ready for Friday night",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مُسْتَعِدّينَ لَيْلَةَ الجُمُعَةِ"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0134L01U01",
+   "set": {
+    "known_text": "it's not a problem because he's here",
+    "target_text": "لَيْسَتْ مُشْكِلَةً لِأَنَّهُ هُنا"
+   },
+   "expect": {
+    "known_text": "I think that's not a problem",
+    "target_text": "أَظُنُّ أَنَّ ذٰلِكَ لَيْسَتْ مُشْكِلَةً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0134L01B03",
+   "set": {
+    "known_text": "that's why it's not a problem",
+    "target_text": "لِذٰلِكَ لَيْسَتْ مُشْكِلَةً"
+   },
+   "expect": {
+    "known_text": "that's not a problem",
+    "target_text": "ذٰلِكَ لَيْسَتْ مُشْكِلَةً"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0134L01U03",
+   "expect": {
+    "known_text": "I believe it's not a problem at all",
+    "target_text": "أَعْتَقِدُ أَنَّ ذٰلِكَ لَيْسَتْ مُشْكِلَةً"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0665L01U05",
+   "expect": {
+    "known_text": "I hope you all can go",
+    "target_text": "أَرْجو أَنْ يُمْكِنُكُمْ تَذْهَبوا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0668L01B01",
+   "set": {
+    "known_text": "she wants you all to be able to",
+    "target_text": "هِيَ تُريدُ أَنْ تَسْتَطيعوا"
+   },
+   "expect": {
+    "known_text": "you all can",
+    "target_text": "تَسْتَطيعوا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0668L01B03",
+   "set": {
+    "known_text": "you all want to be able to",
+    "target_text": "تُريدونَ أَنْ تَسْتَطيعوا"
+   },
+   "expect": {
+    "known_text": "do you all think you can?",
+    "target_text": "هَلْ تَظُنّونَ أَنَّهُ تَسْتَطيعوا؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0668L01U02",
+   "set": {
+    "known_text": "I hope you all can say that",
+    "target_text": "أَرْجو أَنْ تَسْتَطيعوا أَنْ تَقولوا ذلِكَ"
+   },
+   "expect": {
+    "known_text": "can you all do that?",
+    "target_text": "هَلْ تَسْتَطيعوا ذلِكَ؟"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0668L01U04",
+   "expect": {
+    "known_text": "I don't know if you all can",
+    "target_text": "لا أَعْرِفُ هَلْ تَسْتَطيعوا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0668L01U05",
+   "set": {
+    "known_text": "do you all want to be able to say that?",
+    "target_text": "هَلْ تُريدونَ أَنْ تَسْتَطيعوا أَنْ تَقولوا ذلِكَ؟"
+   },
+   "expect": {
+    "known_text": "yes, you all can do something",
+    "target_text": "نَعَمْ، تَسْتَطيعوا أَنْ تَفْعَلونَ شَيْئاً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0438L01B01",
+   "set": {
+    "known_text": "they didn't want that",
+    "target_text": "لَمْ يُريدوا ذلِكَ"
+   },
+   "expect": {
+    "known_text": "they want",
+    "target_text": "يُريدوا"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0438L01U04",
+   "expect": {
+    "known_text": "do you think they didn't want to collect?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ لَمْ يُريدوا أَنْ يَجْمَعوا؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0427L02B01",
+   "set": {
+    "known_text": "I don't want you to think",
+    "target_text": "لا أُريدُ أَنْ تَظُنَّ"
+   },
+   "expect": {
+    "known_text": "you think",
+    "target_text": "تَظُنَّ"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_for_eng:S0427L02U05",
+   "expect": {
+    "known_text": "do you think they understand each other?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ يَفْهَمونَ بَعْضَهُمْ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0427L02U03",
+   "set": {
+    "known_text": "he doesn't want you to think they would like to lead",
+    "target_text": "لا يُريدُ أَنْ تَظُنَّ أَنَّهُمْ يَوَدّونَ أَنْ يَقودوا"
+   },
+   "expect": {
+    "known_text": "do you think they would like to lead?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ يَوَدّونَ أَنْ يَقودوا؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0154L01B02",
+   "set": {
+    "target_text": "أَيْنَ نَلْتَقي لَيْلَةَ السَّبْت؟"
+   },
+   "expect": {
+    "known_text": "where do we meet Saturday night?",
+    "target_text": "أَيْنَ نَلْتَقِيَ لَيْلَةَ السَّبْت"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0154L01B03",
+   "set": {
+    "target_text": "نَلْتَقي لَيْلَةَ السَّبْت"
+   },
+   "expect": {
+    "known_text": "we meet Saturday night",
+    "target_text": "نَلْتَقِيَ لَيْلَةَ السَّبْت"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0635L01U05",
+   "set": {
+    "known_text": "she said she wants a bag",
+    "target_text": "قالَتْ إِنَّها تُريدُ حَقيبَةً"
+   },
+   "expect": {
+    "known_text": "she said the bag will be fine",
+    "target_text": "قالَتْ إِنَّ حَقيبَةً سَتَكونُ جَيِّدَةً"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0630L01U05",
+   "set": {
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَفْهَمَ ما تَقولُهُ؟"
+   },
+   "expect": {
+    "known_text": "can I understand what you're saying?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَتَعَلَّمَ ما تَقولُهُ؟"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0415L01U04",
+   "set": {
+    "known_text": "I asked about a problem here"
+   },
+   "expect": {
+    "known_text": "I asked about the problem here",
+    "target_text": "سَأَلْتُ عَنْ مُشْكِلَةٍ هُنا"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_for_eng:S0136L02B04",
+   "set": {
+    "known_text": "can you ask?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تَسْأَلَ؟"
+   },
+   "expect": {
+    "known_text": "can you?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ"
+   }
+  }
+ ]
+}

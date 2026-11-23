@@ -1,0 +1,61 @@
+{
+ "course": "eng_for_ara",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 50,
+ "on_copy": 50,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0049L01U06",
+   "src": "#957 changeset",
+   "known": "الأمر هكذا، إذا كنت تفهم ما أقصده.",
+   "target": "It's like this, if you know what I mean.",
+   "twin": "S0049L01U03",
+   "twin_known": "الأمر هكذا إذا كنت تعرف ما أعنيه"
+  },
+  {
+   "id": "S0105L02U06",
+   "src": "#957 changeset",
+   "known": "لهذا لم يكن يعرف الإجابة.",
+   "target": "That is why he didn't know the answer.",
+   "twin": "S0105L02B02",
+   "twin_known": "لهذا السبب لم يكن يعرف الإجابة"
+  },
+  {
+   "id": "S0144L02U06",
+   "src": "#957 changeset",
+   "known": "استيقظت هذا الصباح مبكراً أكثر مما أردت.",
+   "target": "I woke earlier than I wanted to this morning.",
+   "twin": "S0144L02U01",
+   "twin_known": "استيقظت مبكراً أكثر مما أردت هذا الصباح"
+  },
+  {
+   "id": "S0193L02U06",
+   "src": "#957 changeset",
+   "known": "آسف لكنني مشغول جداً اليوم.",
+   "target": "I'm sorry but I'm too busy today.",
+   "twin": "S0193L02U01",
+   "twin_known": "أنا آسف ولكنني مشغول جداً اليوم"
+  },
+  {
+   "id": "S0223L01U06",
+   "src": "#957 changeset",
+   "known": "سيسألك غداً.",
+   "target": "He's going to ask you tomorrow.",
+   "twin": "S0223L01B03",
+   "twin_known": "هو سيسألك غداً"
+  },
+  {
+   "id": "S0224L01U06",
+   "src": "#957 changeset",
+   "known": "لقد بدأ للتو في التعلم.",
+   "target": "He's just started to learn.",
+   "twin": "S0224L01B02",
+   "twin_known": "هو لقد بدأ للتو في التعلم"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 44,
+ "missing": []
+}

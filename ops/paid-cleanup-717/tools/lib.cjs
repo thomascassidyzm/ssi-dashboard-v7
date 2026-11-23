@@ -14,7 +14,8 @@ const { isChinese } = req('services/course-builder/lib/language-config.cjs');
 const { makePhraseId, computeLegoPosition } = req('services/course-builder/lib/phrase-structure.cjs');
 
 const EVID = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-717');
-const SNAP = path.join(EVID, 'snap');
+// cs #791·AK (overnight #785 item 8): P717_SNAP reads snapshots of a newer copy without overwriting the 19 Nov ones.
+const SNAP = process.env.P717_SNAP ? path.resolve(process.env.P717_SNAP) : path.join(EVID, 'snap');
 const ITEM_DIR = path.resolve(__dirname, '..');
 const COURSES = ['ara_eg_for_eng', 'ara_for_eng', 'ara_lb_for_eng', 'deu_at_for_eng', 'deu_ch_for_eng', 'deu_for_eng', 'deu_for_jpn', 'deu_for_zho',
   'eng_for_ara', 'eng_for_ben', 'eng_for_deu', 'eng_for_fra', 'eng_for_guj', 'eng_for_hin', 'eng_for_ita', 'eng_for_jpn', 'eng_for_kan', 'eng_for_kor',

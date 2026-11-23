@@ -1,0 +1,244 @@
+# eng_for_jpn seeds 104-113: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0104L02U10 use → "we need to change what we're doing so I can remember how to say a few words" | was: 少しの言葉を覚えられるので、やっていることを変える必要があります — English "we need to change what we're doing so I can remember how to say a few words" is incoherent
+S0104L02U10	DELETE
+# S0104L02U11 use → "I want you to speak because we need to change what we're doing" | was: 英語を話してほしいのは、やっていることを変える必要があるからです — prompt added "English"
+S0104L02U11	話してほしいのは、やっていることを変える必要があるからです
+# S0105L01U03 use → "I know that is why I don't know what the answer is" | was: だから答えが何か知らない — English "I know that is why I don't know what the answer is" is incoherent
+S0105L01U03	DELETE
+# S0105L01U05 use → "I think that is why I didn't want to speak with you" | was: だからあなたと話したくなかった — English "I think that is why I didn't want to speak with you" adds a hedge onto "that is why" — unnatural
+S0105L01U05	DELETE
+# S0105L01U06 use → "that is why I want to speak English with you now" | was: だから今英語を話したいです — prompt lacked "with you"
+S0105L01U06	だから今あなたと英語を話したいです
+# S0105L01U07 use → "I understand that is why I'm not ready to talk" | was: だからまだ話す準備ができていない — English "I understand that is why I'm not ready to talk" is incoherent
+S0105L01U07	DELETE
+# S0105L01U08 use → "I don't understand that is why I need to find out more" | was: だからもっと知る必要がある — English "I don't understand that is why I need to find out more" is incoherent
+S0105L01U08	DELETE
+# S0105L01U10 use → "yes I think that is why she wants to find out what the answer is" | was: そうです、彼女が答えを知りたい理由はだからです — English "yes I think that is why she wants to find out…" is unnatural; prompt was garbled too
+S0105L01U10	DELETE
+# S0105L02U05 use → "I think that is why I didn't know what to say" | was: だから言い方が分からなかった — English "I think that is why I didn't know what to say" — "I think that is why" without "that" clause is unnatural
+S0105L02U05	DELETE
+# S0105L02U10 use → "we didn't know what the answer is when we want to speak" | was: 話すとき、答えが何か知りませんでした — English "we didn't know what the answer is when we want to speak" mixes tenses — garbled
+S0105L02U10	DELETE
+# S0105L02U15 use → "I didn't know those people I don't know and I'm not ready to talk yet" | was: 知りませんでしたし、まだ準備ができていない — English "I didn't know those people I don't know…" is garbled
+S0105L02U15	DELETE
+# S0105L03U07 use → "I don't understand that is why he didn't know the answer" | was: だから彼は答えを知りませんでしたが分かりません — English "I don't understand that is why he didn't know the answer" is incoherent
+S0105L03U07	DELETE
+# S0105L03U11 use → "I can't remember how to say what I wanted to say and that is why he didn't know the answer" | was: 言い方を覚えられなくて、だから彼は答えを知りませんでした — English "I can't remember how to say what I wanted to say and that is why he didn't know the answer" is incoherent
+S0105L03U11	DELETE
+# S0105L03U13 use → "I want you to speak because that is why he didn't know the answer" | was: だから彼は答えを知りませんでしたので英語を話してほしい — English "I want you to speak because that is why he didn't know the answer" is incoherent
+S0105L03U13	DELETE
+# S0105L03U15 use → "I know that is why he didn't know the answer because he didn't want to look after the young dog all afternoon" | was: だから彼は答えを知りませんでしたのは、午後中ずっと若い犬の世話をしたくなかったからです — English "I know that is why he didn't know the answer because…" is garbled
+S0105L03U15	DELETE
+# KEEP S0106L01B02 | 感じる | feel happy — bare LEGO row for 幸せを感じる; prompt 感じる vs LEGO is a LEGO/BUILD shape question, gate decides — UNSURE minimal
+# S0106L01U01 use → "I want to feel happy when I do this" | was: 幸せを感じたいです — prompt lacked "when I do this"
+S0106L01U01	これをするとき、幸せを感じたいです
+# S0106L01U02 use → "you can feel happy with what you are doing" | was: 幸せを感じることができます — prompt lacked "with what you are doing"
+S0106L01U02	やっていることに幸せを感じることができます
+# S0106L01U03 use → "I don't need to feel happy about this" | was: 幸せを感じる必要はありません — prompt lacked "about this"
+S0106L01U03	これについて幸せを感じる必要はありません
+# S0106L01U04 use → "It's important to feel happy with your friends" | was: 幸せを感じることが大切です — prompt lacked "with your friends"
+S0106L01U04	友達といて幸せを感じることが大切です
+# S0106L01U06 use → "I like to feel happy about things" | was: 幸せを感じるのが好きです — prompt lacked "about things"
+S0106L01U06	いろいろなことに幸せを感じるのが好きです
+# S0106L01U07 use → "you're doing well and you should feel happy" | was: あなたは頑張っているので幸せを感じるべきです — prompt said "because"; English is "you're doing well and"
+S0106L01U07	よく頑張っていますし、幸せを感じるべきです
+# S0106L01U12 use → "Are you ready to feel happy with what you know?" | was: 知っていることに幸せを感じていますか — prompt lacked "ready to"
+S0106L01U12	知っていることに幸せを感じる準備はできていますか？
+# S0106L01U14 use → "We want to feel happy with how things are, so we do this" | was: 私たちは物事がどう進んでいるかについて幸せを感じたい — English "We want to feel happy with how things are, so we do this" is unnatural
+S0106L01U14	DELETE
+# S0106L02U10 use → "I should just start talking and not wait" | was: 今すぐ話し始めて、待たないでください — prompt was an imperative to "you"; English is "I should just start talking and not wait"
+S0106L02U10	ただ話し始めて、待たない方がいいです
+# S0106L02U14 use → "you should just start doing this today" | was: 今日からやり始めましょう — prompt was "let's start"; English is "you should just start doing this today"
+S0106L02U14	今日、ただこれをやり始めた方がいいです
+# S0106L02U15 use → "I like to just speak English with you now" | was: あなたと英語で話すのが好きです — prompt lacked "now" and "just"
+S0106L02U15	今、ただあなたと英語で話すのが好きです
+# S0106L03B06 build → "you work hard" | was: 一生懸命頑張ってください — prompt was a request; English is the statement "you work hard" (pronoun dropped)
+S0106L03B06	一生懸命頑張ります
+# S0106L03U09 use → "I want to work hard and not wait to start" | was: もっと話し始めるために一生懸命頑張りたい — prompt said "to start talking more"; English is "work hard and not wait to start"
+S0106L03U09	一生懸命頑張って、始めるのを待ちたくありません
+# S0106L03U10 use → "Are you ready to work hard and speak English more?" | was: もっと英語を話せるように準備はできていますか — prompt lacked "work hard"
+S0106L03U10	一生懸命頑張って、もっと英語を話す準備はできていますか？
+# S0107L01B02 build → "hoped to see" | was: 見たいと思う — prompt was present; English is "hoped to see"
+S0107L01B02	見たいと思いました
+# S0107L01B06 build → "they hoped to see you" | was: 彼らは見たいと思っていました — prompt lacked "you"
+S0107L01B06	彼らはあなたに会いたいと思っていました
+# S0107L01U05 use → "I hoped to see you and ask you something yesterday" | was: 昨日あなたに会いたいと思っていました — prompt lacked "and ask you something"
+S0107L01U05	昨日あなたに会って何か聞きたいと思っていました
+# S0107L01U06 use → "She hoped to see her friends and speak English" | was: 友達に会いたいと思っていました — prompt lacked "and speak English" and "she"
+S0107L01U06	彼女は友達に会って英語を話したいと思っていました
+# S0107L01U07 use → "We hoped to see you but you didn't want to speak" | was: あなたと話せなかったので残念でした — prompt said "sorry we couldn't talk"
+S0107L01U07	あなたに会いたいと思っていましたが、あなたは話したくありませんでした
+# S0107L01U09 use → "He hoped to see you this afternoon" | was: 彼はあなたに会いたいと思っていました — prompt lacked "this afternoon"
+S0107L01U09	彼は今日の午後あなたに会いたいと思っていました
+# S0107L01U13 use → "we hoped to see you and your friends today" | was: あなたの友達に今日会いたいと思っていました — prompt lacked "you and"
+S0107L01U13	今日あなたとあなたの友達に会いたいと思っていました
+# S0107L01U14 use → "She hoped to see what you are doing with English today" | was: 今日あなたのやっていることを見たいと思っていました — prompt lacked "she" and "with English"
+S0107L01U14	彼女は今日あなたが英語でやっていることを見たいと思っていました
+# S0107L01U15 use → "I hoped to see you about this and speak English this week" | was: 今週これについてあなたと話したいと思っていました — English "I hoped to see you about this and speak English this week" is unnatural
+S0107L01U15	DELETE
+# S0107L02B05 build → "ask about what you were doing" | was: あなたがやっていることについて聞きたかった — prompt added "wanted to"
+S0107L02B05	あなたがやっていることについて聞く
+# S0107L02B06 build → "I know what you were doing" | was: あなたがやっていることを知っていました — English "I know what you were doing" mixes the LEGO's past into a present frame unnaturally; prompt would need 知っています — kept thin
+S0107L02B06	DELETE
+# S0107L02U03 use → "I don't understand what you were doing with that" | was: あなたがやっていることを理解しません — prompt lacked "with that"
+S0107L02U03	あなたがそれでやっていることがわかりません
+# S0107L02U07 use → "We wanted to understand what you were doing at the time" | was: あなたがやっていることを理解したかった — prompt lacked "at the time"
+S0107L02U07	その時、あなたがやっていることを理解したかったです
+# S0107L02U11 use → "I don't like what you were doing with the young dog" | was: あなたがやっていることが好きではありません — prompt lacked "with the young dog" (English "I don't like … were doing" → past frame in Japanese)
+S0107L02U11	あなたがその若い犬とやっていることが好きではありませんでした
+# S0107L02U12 use → "I was surprised at what you were doing with your English" | was: あなたがやっていることに驚いていました — prompt lacked "with your English"
+S0107L02U12	あなたが英語でやっていることに驚いていました
+# S0107L02U14 use → "I wanted you to change what you were doing at that time" | was: あなたがやっていることを変えてほしかった — prompt lacked "at that time"
+S0107L02U14	その時、あなたがやっていることを変えてほしかったです
+# S0107L02U15 use → "I wanted to speak to you about what you were doing yesterday" | was: あなたがやっていることについて話したかった — prompt lacked "yesterday"
+S0107L02U15	昨日あなたがやっていることについて、あなたと話したかったです
+# S0108L01B04 build → "not waking in the middle of the night" | was: 夜中に起きたくない — English "not waking in the middle of the night" is a fragment with no frame
+S0108L01B04	DELETE
+# S0108L01U05 use → "It's difficult, waking in the middle of the night" | was: 夜中に起きるのは難しいです — English "It's difficult, waking in the middle of the night" is comma-spliced
+S0108L01U05	DELETE
+# S0108L01U10 use → "I can't remember not waking in the middle of the night last night" | was: 昨夜も夜中に起きました — English "I can't remember not waking in the middle of the night last night" is incoherent
+S0108L01U10	DELETE
+# S0109L01U03 use → "You must take time to test yourself and not worry" | was: テストして心配しないようにしなければなりません — prompt lacked "take time"
+S0109L01U03	自分をテストする時間を取って、心配しないようにしなければなりません
+# S0109L01U04 use → "She must speak English with you today" | was: 今日英語を彼女と話さなければなりません — prompt said "with her"; English is "she … with you"
+S0109L01U04	彼女は今日あなたと英語を話さなければなりません
+# S0109L01U09 use → "I must do this today and speak English with people" | was: 英語を話すために今日やらなければなりません — prompt said "in order to speak English"
+S0109L01U09	今日これをやって、人たちと英語を話さなければなりません
+# S0109L01U11 use → "You must take time to remember words and not worry" | was: 言葉を覚えるために時間をかけなければなりません — prompt lacked "and not worry"
+S0109L01U11	言葉を覚えるのに時間をかけて、心配しないようにしなければなりません
+# S0109L01U12 use → "I must find people to speak English with today" | was: 英語を話す人を見つけなければなりません — prompt lacked "today"
+S0109L01U12	今日、英語を一緒に話す人たちを見つけなければなりません
+# S0109L01U14 use → "I must start talking now and not wait" | was: 話し始めなければなりません、今すぐです — prompt lacked "and not wait"
+S0109L01U14	今話し始めて、待たないようにしなければなりません
+# S0109L01U15 use → "You must ask yourself if you are ready to start today" | was: 準備ができているかどうか自分に聞かなければなりません — prompt lacked "to start today"
+S0109L01U15	今日始める準備ができているか、自分に聞かなければなりません
+# S0109L02U04 use → "I need to do something new to understand this better" | was: 英語でもっとうまく話すために何か新しいことをする必要があります — prompt said "to speak English better"
+S0109L02U04	これをもっとよく理解するために、何か新しいことをする必要があります
+# S0109L02U11 use → "I want to find new friends to speak English with today" | was: 英語で話す新しい友達を作りたいです — prompt said "make friends" and lacked "today"
+S0109L02U11	今日、英語を一緒に話す新しい友達を見つけたいです
+# S0109L02U12 use → "I enjoy doing something new to speak English today" | was: 英語で新しいことを話すのが楽しいです — English "I enjoy doing something new to speak English today" is unnatural
+S0109L02U12	DELETE
+# S0109L02U13 use → "I'm ready to speak a new language and do this well" | was: 新しい言語を話す準備ができています — prompt lacked "and do this well"
+S0109L02U13	新しい言語を話して、これをうまくやる準備ができています
+# S0109L02U15 use → "you should do something new and speak English with people" | was: 何か新しいことをして英語をうまく話しましょう — prompt was "let's … well"; English is "you should … with people"
+S0109L02U15	何か新しいことをして、人たちと英語を話した方がいいです
+# S0109L03B03 build → "I need to remember a lot of new words" | was: たくさんの新しい言葉がある — prompt said "there are many new words"
+S0109L03B03	たくさんの新しい言葉を覚える必要があります
+# S0109L03B05 build → "it's difficult when I find a lot of new words" | was: たくさんの新しい言葉があって難しい — prompt lacked "when I find"
+S0109L03B05	たくさんの新しい言葉を見つけると難しいです
+# S0109L03B06 build → "I want to be able to say a lot of new words" | was: たくさんの新しい言葉を言いたい — prompt lacked "be able to"
+S0109L03B06	たくさんの新しい言葉を言えるようになりたいです
+# S0109L03B07 build → "it's interesting to find a lot of new words" | was: たくさんの新しい言葉を学ぶ — prompt was a fragment "to learn"
+S0109L03B07	たくさんの新しい言葉を見つけるのは面白いです
+# S0109L03U01 use → "I need to remember a lot of new words" | was: 覚えるためにたくさんの新しい言葉があります — prompt said "there are many words to remember"
+S0109L03U01	たくさんの新しい言葉を覚える必要があります
+# S0109L03U02 use → "it's difficult when I find a lot of new words" | was: たくさんの新しい言葉があって、難しいですね — prompt lacked "when I find" (same English as B05)
+S0109L03U02	たくさんの新しい言葉を見つけると難しいです
+# S0109L03U04 use → "I'm enjoying it when I find a lot of new words" | was: たくさんの新しい言葉があって楽しんでいます — prompt lacked "when I find"
+S0109L03U04	たくさんの新しい言葉を見つけると楽しいです
+# S0109L03U05 use → "I learnt a lot of new words today and I want to remember more" | was: 今日はたくさんの新しい言葉を覚えています — prompt lacked "I learnt … I want to remember more"
+S0109L03U05	今日たくさんの新しい言葉を学びました。もっと覚えたいです
+# S0109L03U09 use → "it's interesting to find a lot of new words" | was: たくさんの新しい言葉を学ぶのが面白いです — prompt said "learn"; English is "find" (same English as B07)
+S0109L03U09	たくさんの新しい言葉を見つけるのは面白いです
+# S0109L03U10 use → "I find a lot of new words and I need more time" | was: たくさんの新しい言葉があって、もっと時間が必要です — prompt said "there are many"
+S0109L03U10	たくさんの新しい言葉を見つけて、もっと時間が必要です
+# S0109L03U11 use → "it's difficult to remember a lot of new words" | was: たくさんの新しい言葉を覚えることは今は難しい — prompt added 今は
+S0109L03U11	たくさんの新しい言葉を覚えるのは難しいです
+# S0109L03U12 use → "I want to be able to say a lot of new words as soon as I can" | was: たくさんの新しい言葉がありますが、できる限り早く言えるようになりたいです — prompt added "there are many, but"
+S0109L03U12	できるだけすぐ、たくさんの新しい言葉を言えるようになりたいです
+# S0109L03U14 use → "I want to work hard to learn a lot of new words" | was: たくさんの新しい言葉を一生懸命勉強しています — prompt said "I'm studying hard"
+S0109L03U14	たくさんの新しい言葉を学ぶために一生懸命頑張りたいです
+# S0109L03U15 use → "it's difficult but it's interesting to find a lot of new words" | was: たくさんの新しい言葉を覚えるのが大変ですが、面白いです — prompt said "remember"; English is "find"
+S0109L03U15	難しいですが、たくさんの新しい言葉を見つけるのは面白いです
+# KEEP S0110L01B01 | 私たちは | we're — bare LEGO 私たちは = we're (false flag)
+# KEEP S0110L01B02 | 私たちは | we're — bare LEGO (false flag)
+# S0110L01B07 build → "we're going to practise speaking with someone else" | was: 私たちは今準備ができています — prompt said "we're ready now"
+S0110L01B07	私たちは他の人と話す練習をするつもりです
+# KEEP S0110L01U04 | そうではないと言おうとしています。 | we're trying to say that it's not like that — prompt is seed 102's own Japanese and matches (false flag)
+# KEEP S0110L01U05 | もっとたくさんの言葉を聞こうとしているわけではありません。 | we're not trying to hear many more words — prompt is seed 103's own Japanese and matches (false flag)
+# S0110L01U11 use → "we're trying to speak as often as possible" | was: 私たちは英語でできるだけ多く話そうとしています — prompt said "in English as much as possible"; English is "as often as possible"
+S0110L01U11	私たちはできるだけ何度も話そうとしています
+# S0110L01U13 use → "we're going to practise speaking with someone else" | was: 私たちは話すことを練習しようとしています — prompt said "trying to practise" (same English as B07)
+S0110L01U13	私たちは他の人と話す練習をするつもりです
+# S0110L01U14 use → "we're not ready because I've got more to learn" | was: 私たちはまだたくさん学ぶことがあります — English "we're not ready because I've got more to learn" mixes we/I — garbled
+S0110L01U14	DELETE
+# S0110L02U03 use → "I'd like to relax now if you don't mind" | was: 私は今リラックスしたい気分です — prompt lacked "if you don't mind"
+S0110L02U03	よければ、今リラックスしたいです
+# S0110L02U04 use → "I'd like to relax after this" | was: 今日の後でリラックスしたいです — prompt said "after today"
+S0110L02U04	この後リラックスしたいです
+# S0110L02U05 use → "I'd like to relax but I want to keep on doing this" | was: 少しリラックスしたいですが、これを続けたいとも思います — prompt added 少し and "also"
+S0110L02U05	リラックスしたいですが、これを続けたいです
+# S0110L02U07 use → "I'd like to relax but I must work hard to learn a lot of new words" | was: リラックスしたいですが、もっと勉強しなければなりません — English "I'd like to relax but I must work hard to learn a lot of new words" is unnatural
+S0110L02U07	DELETE
+# S0110L02U10 use → "I'd like to relax a little this morning" | was: 今日は少しリラックスしたい気持ちです — prompt said "today"; English is "this morning"
+S0110L02U10	今朝は少しリラックスしたいです
+# S0110L02U11 use → "I'd like to relax for a while and start again soon" | was: 少しリラックスしてから、また始めたいです — prompt said 少し; English is "for a while … soon"
+S0110L02U11	しばらくリラックスして、すぐにまた始めたいです
+# S0110L02U15 use → "I think I'd like to relax now" | was: リラックスするのはいいことだと思います — prompt said "relaxing is good"
+S0110L02U15	今リラックスしたいと思います
+# S0110L03U01 use → "after we finish I'd like to relax for a while" | was: 終わったらリラックスしたいです — prompt lacked "for a while"
+S0110L03U01	終わったら、しばらくリラックスしたいです
+# S0110L03U03 use → "I'd like to relax after we finish talking" | was: 終わったら、少し休みたいです — prompt said "rest a little"; English is "relax after we finish talking"
+S0110L03U03	話し終わったら、リラックスしたいです
+# S0110L03U09 use → "can you speak with me after we finish?" | was: 終わったらすぐに話すことができますか — prompt added すぐに
+S0110L03U09	終わったら、私と話せますか？
+# S0110L03U11 use → "I want to work hard after we finish" | was: 終わったら少し頑張りたいです — prompt said "try a bit"
+S0110L03U11	終わったら一生懸命頑張りたいです
+# S0111L01B03 build → "it's interesting that when we learn something new it changes our brain" | was: それは面白いです — prompt was a fragment
+S0111L01B03	新しいことを学ぶと脳が変わるのは面白いです
+# S0111L01B04 build → "it's a good thing that when we learn something new it changes our brain" | was: 良いことです — prompt was a fragment
+S0111L01B04	新しいことを学ぶと脳が変わるのはいいことです
+# S0111L01B05 build → "did you know that when we learn something new it changes our brain?" | was: 知っていましたか — prompt was a fragment
+S0111L01B05	新しいことを学ぶと脳が変わることを知っていましたか？
+# S0111L01B06 build → "I'd like to think about how when we learn something new it changes our brain" | was: これについて考えたい — English "I'd like to think about how when we learn something new it changes our brain" is garbled
+S0111L01B06	DELETE
+# S0111L01B07 build → "I think it's interesting that when we learn something new it changes our brain" | was: それはなぜかわかります — prompt said "I understand why"
+S0111L01B07	新しいことを学ぶと脳が変わるのは面白いと思います
+# S0111L01U02 use → "when we learn something new it changes our brain and that is a good thing" | was: 新しい言語を学ぶと、脳が変わります — prompt said "a new language" and lacked "and that is a good thing"
+S0111L01U02	新しいことを学ぶと脳が変わります。それはいいことです
+# S0111L01U04 use → "it's interesting to think about how when we learn something new it changes our brain" | was: 新しいことを学んで脳が変わるのは大切なことです — English "it's interesting to think about how when we learn…" is garbled
+S0111L01U04	DELETE
+# S0111L01U15 use → "it's a good thing that when we learn something new it changes our brain and I enjoy it" | was: 新しいことを学ぶと脳が変わるのは素晴らしいことです — prompt said "wonderful" and lacked "and I enjoy it"
+S0111L01U15	新しいことを学ぶと脳が変わるのはいいことで、楽しいです
+# S0112L01B03 build → "that was very interesting and I wasn't expecting it at all" | was: 全く予想外でした — prompt lacked the LEGO's "that was very interesting"
+S0112L01B03	それはとても面白かったです、そして全く予想していませんでした
+# S0112L01B04 build → "that was very interesting and I wasn't expecting it when you said it" | was: あなたが言ったとき予想していませんでした — prompt lacked the LEGO's first half
+S0112L01B04	それはとても面白かったです、そしてあなたが言ったとき予想していませんでした
+# S0112L01B05 build → "that was very interesting and I wasn't expecting it to be so good" | was: こんなに良いとは予想していませんでした — prompt lacked the LEGO's first half
+S0112L01B05	それはとても面白かったです、そしてこんなに良いとは予想していませんでした
+# S0112L01B06 build → "that was very interesting and I wasn't expecting it to be so different" | was: こんなに違うとは予想していませんでした — prompt lacked the LEGO's first half
+S0112L01B06	それはとても面白かったです、そしてこんなに違うとは予想していませんでした
+# S0112L01B07 build → "that was very interesting and I wasn't expecting it like that" | was: それは確かに予想外でした — prompt lacked the LEGO's first half and "like that"
+S0112L01B07	それはとても面白かったです、そしてそんなふうになるとは予想していませんでした
+# S0112L01U02 use → "that was very interesting and I wasn't expecting it when you said it" | was: 予想していませんでしたが、それはとても面白かったです — same English as B04 ("…when you said it"); one prompt per English — duplicate row in the basket
+S0112L01U02	DELETE
+# S0112L01U03 use → "that was very interesting and I wasn't expecting it to be so good" | was: それはとても面白かったです。予想していませんでした — same English as B05 ("…to be so good"); duplicate row
+S0112L01U03	DELETE
+# S0112L01U04 use → "that was very interesting and I wasn't expecting it to be so different" | was: それはとても面白かった — same English as B06 ("…to be so different"); duplicate row
+S0112L01U04	DELETE
+# S0112L01U05 use → "that was very interesting and I wasn't expecting it when you said it to me" | was: あなたの話はとても面白かったし、予想していませんでした — prompt said "your story"; English adds "to me"
+S0112L01U05	それはとても面白かったです、そしてあなたが私に言ったとき予想していませんでした
+# S0112L01U07 use → "that was very interesting and I wasn't expecting it to happen" | was: それはとても面白い話でしたし、全く予想していませんでした — prompt said "at all"; English is "to happen"
+S0112L01U07	それはとても面白かったです、そしてそれが起きるとは予想していませんでした
+# S0112L01U08 use → "that was very interesting and I wasn't expecting it today" | was: それはとても面白かった。全く予想していませんでした — prompt said "at all"; English is "today"
+S0112L01U08	それはとても面白かったです、そして今日は予想していませんでした
+# S0112L01U09 use → "that was very interesting and I wasn't expecting it when you said what you said" | was: 今日あなたが話してくれたことはとても面白くて、予想していませんでした — English "…when you said what you said" is unnatural
+S0112L01U09	DELETE
+# S0112L01U10 use → "that was very interesting and I wasn't expecting it to change like that" | was: それを知ったとき、とても面白かったし予想していませんでした — prompt lacked "to change like that"
+S0112L01U10	それはとても面白かったです、そしてそんなふうに変わるとは予想していませんでした
+# S0112L01U12 use → "that was very interesting and I wasn't expecting it to be so good to hear" | was: それはとても面白かったし、こんなに違うとは予想していませんでした — English "…I wasn't expecting it to be so good to hear" is unnatural
+S0112L01U12	DELETE
+# S0112L01U14 use → "that was very interesting and I wasn't expecting it to be as interesting as it was" | was: それはとても面白かったし、聞いてこんなに良いとは予想していませんでした — English "…I wasn't expecting it to be as interesting as it was" after "very interesting" is redundant
+S0112L01U14	DELETE
+# S0112L01U15 use → "that was very interesting and I wasn't expecting it when you said it again" | was: あなたが言ったとき、とても面白かったし予想していませんでした — prompt lacked "again"
+S0112L01U15	それはとても面白かったです、そしてあなたがもう一度言ったとき予想していませんでした
+# S0113L01B07 build → "that was very interesting so why can't I remember what you said?" | was: あなたが言ったことがとても面白かったのに、なぜ思い出せないのですか — English "that was very interesting so why can't I remember…" — "so" is illogical (should be "but")
+S0113L01B07	DELETE
+# KEEP S0113L01U01 | とても面白かったのに、なぜあなたが言ったことを思い出せないのでしょう？ | why can't I remember what you said when it was so interesting? — prompt matches "why can't I remember what you said when it was so interesting?" (false flag)
+# S0113L01U03 use → "why can't I remember what you said just now?" | was: あなたが言ったことを思い出せないのはなぜですか — prompt lacked "just now"
+S0113L01U03	さっきあなたが言ったことを、なぜ思い出せないのですか？
+# S0113L01U05 use → "that was very interesting so why can't I remember what you said?" | was: あなたが言ったことがとても面白かったのに、なぜ思い出せないのですか — same illogical English as B07 ("so why can't I…")
+S0113L01U05	DELETE
+# S0113L01U12 use → "why can't I remember what you said when I think about it carefully?" | was: よく考えると、なぜあなたが言ったことを思い出せないのでしょう？ — prompt matches but phrased as wondering; made a direct question with the seed's own ending
+S0113L01U12	よく考えると、なぜあなたが言ったことを思い出せないのですか？

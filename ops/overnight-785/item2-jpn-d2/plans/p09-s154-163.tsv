@@ -1,0 +1,244 @@
+# eng_for_jpn seeds 154-163: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 2 flagged rows no longer exist.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0154L01U01 use → "do you know where it was?" | was: それがどこにあるか知っていますか？ — prompt was present; English is "where it was" (あったか as b5 S0070L02U07)
+S0154L01U01	それがどこにあったか知っていますか？
+# S0154L01U02 use → "she didn't want to tell me where it was" | was: 彼女はそれがどこにあるか教えたくありませんでした。 — prompt said "where it is"; English is "where it was"
+S0154L01U02	彼女はそれがどこにあったか私に教えたくありませんでした
+# S0154L01U04 use → "I don't know where it was" | was: それがどこにあるかわかりません — prompt was present; English is "where it was"
+S0154L01U04	それがどこにあったかわかりません
+# KEEP S0154L01U05 | ここは友達が私たちに会いたかった場所です。 | this was where my friend wanted to meet us — prompt is seed 138's own Japanese and matches (false flag)
+# S0154L01U07 use → "that is why he didn't know where it was" | was: 彼はどこにいるのか誰も知りませんでした — English "that is why he didn't know where it was" is a chain of seeds with no antecedent
+S0154L01U07	DELETE
+# S0154L01U08 use → "I'd like to meet you where you want to go" | was: あなたが行きたいところへ一緒に行きましょう — prompt said "let's go together"
+S0154L01U08	あなたが行きたいところで会いたいです
+# S0154L01U09 use → "do you know where to practise speaking in English?" | was: どこで英語を練習すればいいですか？ — prompt lacked "do you know"
+S0154L01U09	英語で話す練習をどこですればいいか知っていますか？
+# S0154L01U10 use → "where do you want to meet?" | was: どこで会えますか？ — prompt said "where can we meet"
+S0154L01U10	どこで会いたいですか？
+# S0154L01U11 use → "could you tell me where you want to go?" | was: どこへ行くのか教えてください — prompt said "where you are going"; English is "could you tell me where you want to go?"
+S0154L01U11	どこへ行きたいか教えていただけますか？
+# S0154L01U13 use → "do you know where it is good to practise speaking?" | was: どこで練習するのが一番良いですか？ — English "do you know where it is good to practise speaking?" is unnatural
+S0154L01U13	DELETE
+# S0154L01U14 use → "we want to meet at six o'clock this evening, but I don't know where" | was: それがどこにあるか、みんなに聞いてみましょう — English "we want to meet at six o'clock this evening, but I don't know where" has nothing in common with its prompt and uses untaught words
+S0154L01U14	DELETE
+# S0154L01U15 use → "could you tell me where you are at the moment?" | was: どこにいるか教えてもらえますか？ — prompt lacked "at the moment" and used もらえますか for "could you"
+S0154L01U15	今どこにいるか教えていただけますか？
+# KEEP S0154L02B02 | 土曜日に | on Saturday night — "on Saturday night" BUILD with prompt 土曜日に — BUILD fragment; fix needs 土曜日の夜に which equals the LEGO itself — UNSURE, left for the gate
+# S0154L02U03 use → "I'm going to use English on Saturday night" | was: 土曜日の夜に英語を練習する予定です — prompt said "practise"
+S0154L02U03	土曜日の夜に英語を使うつもりです
+# S0154L02U04 use → "I was starting to feel better on Saturday night" | was: 土曜日の夜にあなたに会えてうれしかったです — prompt said "glad to meet you"
+S0154L02U04	土曜日の夜に気分がよくなり始めていました
+# S0154L02U05 use → "he wanted to write a letter to his friend on Saturday night" | was: 先週の土曜日の夜に、彼は手紙を書いていました — English "he wanted to write a letter to his friend on Saturday night" is a chain of seeds; prompt said something else
+S0154L02U05	DELETE
+# S0154L02U06 use → "I want to speak with you on Saturday night" | was: 土曜日の夜に話す良い機会だと思います — prompt said "a good opportunity to talk"
+S0154L02U06	土曜日の夜にあなたと話したいです
+# S0154L02U07 use → "we want to work together on Saturday night" | was: 土曜日の夜に友達と一緒に勉強しましょう — prompt said "let's study with friends"; English is "we want to work together"
+S0154L02U07	土曜日の夜に一緒に頑張りたいです
+# S0154L02U09 use → "she wanted to show me something on Saturday night" | was: 彼女は土曜日の夜に何かを見せたかったようです — prompt hedged ("it seems")
+S0154L02U09	彼女は土曜日の夜に私に何かを見せたかったです
+# S0154L02U10 use → "I want to practise speaking with someone else on Saturday night" | was: 土曜日の夜、私は他の人と一緒に英語を話す練習をしました — prompt was past
+S0154L02U10	土曜日の夜に他の人と話す練習をしたいです
+# S0154L02U11 use → "are you ready to meet on Saturday night?" | was: 土曜日の夜に会えますか？ — prompt said "can we meet"
+S0154L02U11	土曜日の夜に会う準備はできていますか？
+# S0154L02U12 use → "I want to start talking on Saturday night" | was: 土曜日の夜に話し始めましょう — prompt said "let's start"
+S0154L02U12	土曜日の夜に話し始めたいです
+# S0154L02U13 use → "it wasn't possible to meet everyone else on Saturday night" | was: 土曜日の夜に友達に会う予定でしたが、できませんでした — English "it wasn't possible to meet everyone else on Saturday night" is unnatural
+S0154L02U13	DELETE
+# S0154L02U14 use → "I'm looking forward to talking to you on Saturday night" | was: 土曜日の夜のことが楽しみです — prompt lacked "talking to you"
+S0154L02U14	土曜日の夜にあなたと話すのを楽しみにしています
+# KEEP S0155L01U05 | 彼が話したくなくても、本当に構いませんか？ | are you sure you don't mind if he doesn't want to talk? — KEEP-equivalent: prompt already a question matching the English (false flag)
+# S0155L01U10 use → "I don't mind waiting for a little more" | was: 待つことは気にしません — prompt lacked "for a little more"
+S0155L01U10	もう少し待つのは構いません
+# S0155L01U11 use → "I think you don't mind if I need a little more time" | was: 彼は全く気にしないと思います — English "I think you don't mind if I need a little more time" is unnatural
+S0155L01U11	DELETE
+# S0155L01U12 use → "if you don't mind, I'd like to keep on doing this for a while" | was: あなたが気にしないならば、私はこのままでいいです — prompt said "I'm fine as I am"
+S0155L01U12	構わなければ、しばらくこれを続けたいです
+# S0155L01U13 use → "I don't mind when you want to start talking" | was: 私はいつ話しても構いません — prompt said "whenever I talk"
+S0155L01U13	あなたがいつ話し始めたくても構いません
+# KEEP S0155L02B01 | 待っても | waiting for — bare LEGO 待っても = "waiting for": LEGO-level gloss
+# KEEP S0155L02B04 | 待っても | waiting for — bare LEGO row: LEGO-level gloss
+# KEEP S0155L02B05 | 待っていても | waiting for — bare LEGO variant: LEGO-level gloss
+# S0155L02U02 use → "are you sure you don't mind waiting for me?" | was: ここで待っていても大丈夫ですか？ — prompt said "is it OK if I wait here"
+S0155L02U02	本当に私を待っても構いませんか？
+# S0155L02U03 use → "it's difficult to be waiting for you for a while" | was: 長い間待っているのは難しいです — English "it's difficult to be waiting for you for a while" is unnatural
+S0155L02U03	DELETE
+# S0155L02U04 use → "I was waiting for you to say something" | was: 私はあなたの返事を待っていました — prompt said "your reply"
+S0155L02U04	あなたが何か言うのを待っていました
+# S0155L02U06 use → "it's not a problem to be waiting for someone you know" | was: 私はずっとあなたを待っています — English "it's not a problem to be waiting for someone you know" is unnatural
+S0155L02U06	DELETE
+# S0155L02U08 use → "I'm waiting for my friend but she doesn't want to talk" | was: 友達を待っていますが、彼女は来ません — prompt said "she isn't coming"
+S0155L02U08	友達を待っていますが、彼女は話したくありません
+# S0155L02U11 use → "he wants to be waiting for me" | was: 彼は私を待っていると言っています — English "he wants to be waiting for me" is unnatural
+S0155L02U11	DELETE
+# S0155L02U12 use → "are you sure you don't mind waiting for a little more?" | was: もう少し待っていていただけますか？ — prompt lacked "are you sure you don't mind"
+S0155L02U12	本当にもう少し待っても構いませんか？
+# S0155L02U13 use → "waiting for someone is not a problem if you don't mind" | was: 誰かを待つのは問題ないこともあります — prompt said "sometimes"
+S0155L02U13	構わなければ、誰かを待つのは問題ありません
+# S0155L02U14 use → "I was waiting for my friend and I was starting to feel okay" | was: 友達を待っている間、疲れてきました — English "I was waiting for my friend and I was starting to feel okay" is incoherent
+S0155L02U14	DELETE
+# S0155L02U15 use → "I'm waiting for you, there isn't a problem" | was: ここで待っています、急がなくて大丈夫ですよ — English "I'm waiting for you, there isn't a problem" is a comma-splice
+S0155L02U15	DELETE
+# KEEP S0155L03B01 | 少し | a few minutes — bare LEGO row: prompt 少し vs "a few minutes" is the LEGO's own gloss — LEGO-level
+# S0155L03U02 use → "I'll be ready in a few minutes" | was: あと数分で終わります — prompt said "finish"
+S0155L03U02	数分で準備ができます
+# S0155L03U03 use → "it's not difficult if you work on it for a few minutes" | was: 数分間練習するだけで良くなります — English "it's not difficult if you work on it for a few minutes" is unnatural
+S0155L03U03	DELETE
+# S0155L03U04 use → "could you wait a few minutes?" | was: 数分待っていただけますか？構いませんか？ — prompt added "do you mind?"
+S0155L03U04	数分待っていただけますか？
+# S0155L03U06 use → "I'll be ready in a few minutes, no problem" | was: もう数分で準備できます — English "I'll be ready in a few minutes, no problem" is a comma-splice duplicate of U02
+S0155L03U06	DELETE
+# S0155L03U07 use → "I think I can remember in a few minutes" | was: 数分で返事ができると思います — English "I think I can remember in a few minutes" is unnatural
+S0155L03U07	DELETE
+# S0155L03U08 use → "she wants to find out what to do in a few minutes" | was: 彼女は数分で戻ると言っていました — English "she wants to find out what to do in a few minutes" is unnatural
+S0155L03U08	DELETE
+# S0155L03U09 use → "I want to practise speaking English for a few minutes" | was: 数分間英語を練習しましょう — prompt said "let's practise"
+S0155L03U09	数分間、英語を話す練習をしたいです
+# S0155L03U10 use → "I think if you wait a few minutes it will work" | was: 数分待てば分かると思います — prompt said "you'll understand"
+S0155L03U10	数分待てば、うまくいくと思います
+# S0155L03U12 use → "I want to start talking in a few minutes" | was: 数分後に始めましょう — prompt said "let's start"
+S0155L03U12	数分後に話し始めたいです
+# S0155L03U14 use → "I think it will work in a few minutes" | was: 数分で良くなると思います — prompt said "it will get better"
+S0155L03U14	数分でうまくいくと思います
+# S0155L03U15 use → "are you sure you don't mind waiting for a few minutes?" | was: 数分間待っても構いませんか？ — prompt lacked "are you sure"
+S0155L03U15	本当に数分待っても構いませんか？
+# S0155L04U01 use → "I want to start talking again tomorrow morning" | was: 明日の朝また話しましょう — prompt said "let's talk again"
+S0155L04U01	明日の朝また話し始めたいです
+# S0155L04U03 use → "it's difficult to feel ready early tomorrow morning" | was: 明日の朝は早く起きることが難しいです — English "it's difficult to feel ready early tomorrow morning" is unnatural
+S0155L04U03	DELETE
+# KEEP S0155L04U04 | 明日の朝あなたに会いたいです | I'd like to meet you tomorrow morning — KEEP-equivalent: prompt already matches (false flag)
+# S0155L04U06 use → "I'd like you to come back tomorrow morning" | was: 明日の朝ここに来てもらいたいです — prompt said "come here"
+S0155L04U06	明日の朝、戻ってきてほしいです
+# S0155L04U10 use → "are you sure you don't mind talking tomorrow morning?" | was: 明日の朝に話せますか？ — prompt said "can we talk"
+S0155L04U10	本当に明日の朝話しても構いませんか？
+# S0155L04U11 use → "I'm sorry that I need to leave so early tomorrow morning" | was: 明日の朝は疲れるかもしれません — English "I'm sorry that I need to leave so early tomorrow morning" is a chain of seed 139 with a different prompt
+S0155L04U11	DELETE
+# S0155L04U13 use → "I'd like to practise speaking tomorrow morning" | was: 明日の朝ここで練習しましょう — prompt said "let's practise here"
+S0155L04U13	明日の朝、話す練習をしたいです
+# S0155L04U15 use → "I'm going to start talking with my friend tomorrow morning" | was: 明日の朝、友達と一緒に話す予定です — prompt lacked "start"
+S0155L04U15	明日の朝、友達と話し始めるつもりです
+# KEEP S0156L01B04 | レストランへ行こう | want to go to a restaurant — "want to go to a restaurant" BUILD fragment; prompt 行こう ("let's go") — loose; UNSURE, left
+# S0156L01U04 use → "he wants to go to a restaurant tonight" | was: 彼は今夜レストランに行きたいと言っていました — prompt reported past speech; English is "he wants to"
+S0156L01U04	彼は今夜レストランに行きたいです
+# S0156L01U09 use → "I want to go to a restaurant tonight, not tomorrow morning" | was: 今夜はレストランに行きましょう — prompt was "let's go tonight"
+S0156L01U09	明日の朝ではなく、今夜レストランに行きたいです
+# KEEP S0156L01U11 | できれば、レストランに行きたいです | if you can, I'd like to go to a restaurant — KEEP-equivalent: prompt matches "if you can, I'd like to go to a restaurant" (false flag)
+# S0156L01U12 use → "he wants to come back with everyone else and go to a restaurant" | was: みんなでレストランに行きましょう — English "he wants to come back with everyone else and go to a restaurant" is unnatural and unrelated to its prompt
+S0156L01U12	DELETE
+# S0156L01U15 use → "I want to go to a restaurant before we start talking in English" | was: レストランに行く前に練習しましょう — prompt said "let's practise before going"
+S0156L01U15	英語で話し始める前に、レストランに行きたいです
+# KEEP S0157L01B01 | ないでしょう | won't be able to — bare LEGO stub ないでしょう = "won't be able to": LEGO-level gloss
+# S0157L01B03 build → "won't be able to" | was: できないと思います — prompt added "I think"
+S0157L01B03	できないでしょう
+# S0157L01B04 build → "won't be able to" | was: できないかもしれません — prompt said "may not" (same English as B03)
+S0157L01B04	できないでしょう
+# S0157L01B07 build → "you won't be able to" | was: あなたはできないかもしれません — prompt said "may not"
+S0157L01B07	あなたはできないでしょう
+# S0157L01U04 use → "he won't be able to help me" | was: 彼はあなたを助けられないでしょう — prompt said "help you"
+S0157L01U04	彼は私を助けられないでしょう
+# S0157L01U05 use → "I won't be able to meet you tomorrow morning" | was: 私は明日の朝ここに来られないでしょう — prompt said "come here"
+S0157L01U05	明日の朝あなたに会えないでしょう
+# S0157L01U06 use → "I won't be able to remember easily" | was: 簡単には覚えられないと思います — prompt added "I think"
+S0157L01U06	簡単には覚えることができないでしょう
+# S0157L01U08 use → "I won't be able to tell you the answer in time" | was: 私は今すぐには答えられないでしょう — prompt said "right now"
+S0157L01U08	間に合うように答えを教えられないでしょう
+# S0157L01U09 use → "I won't be able to finish in a few minutes" | was: 数分では終わらないでしょう — prompt said "it won't finish"
+S0157L01U09	数分では終えられないでしょう
+# S0157L01U10 use → "I won't be able to talk to you today" | was: 今日は話すことができないかもしれません — prompt said "might not" and lacked "to you"
+S0157L01U10	今日はあなたと話せないでしょう
+# S0157L01U11 use → "I won't be able to be ready in time" | was: 準備ができないでしょう — English "I won't be able to be ready in time" is unnatural
+S0157L01U11	DELETE
+# S0157L01U13 use → "are you sure you won't be able to speak English very well?" | was: あなたは英語を話せるようになると思いますか？ — English "are you sure you won't be able to speak English very well?" is unnatural
+S0157L01U13	DELETE
+# S0157L01U14 use → "I won't be able to do it exactly the same way" | was: 私は全く同じことはできないでしょう — prompt said "the same thing"; English is "the same way"
+S0157L01U14	全く同じやり方ではできないでしょう
+# S0157L02U11 use → "I don't think I'm going to go there" | was: 私はそこには行かないつもりです — prompt said "I intend not to go"
+S0157L02U11	そこには行かないと思います
+# S0157L02U12 use → "did you want to go there?" | was: 私たちはそこに行くつもりでしたか？ — prompt said "were we going to"
+S0157L02U12	あなたはそこに行きたかったですか？
+# S0157L02U13 use → "he was saying he wanted to be there" | was: 彼はそこにいたと言っていました — English "he was saying he wanted to be there" is unnatural
+S0157L02U13	DELETE
+# S0157L02U14 use → "it wasn't possible unfortunately for you to be there" | was: あなたがそこにいなかったのは残念です — English "it wasn't possible unfortunately for you to be there" is garbled word order
+S0157L02U14	DELETE
+# KEEP S0157L03B01 | いること | be there — bare LEGO いること = "be there": LEGO-level gloss
+# KEEP S0157L03B02 | いること | be there — bare LEGO row: LEGO-level gloss
+# S0157L03U04 use → "he doesn't want to be there" | was: 彼はそこにいることを望んでいないと言っています — prompt added "he says"
+S0157L03U04	彼はそこにいたくありません
+# S0157L03U12 use → "I want you to be able to be there" | was: あなたがそこにいることができればよかったのに — English "I want you to be able to be there" is unnatural
+S0157L03U12	DELETE
+# S0157L03U14 use → "do you think you are going to be able to be there?" | was: あなたはそこにいることができますか？ — English "do you think you are going to be able to be there?" is unnatural
+S0157L03U14	DELETE
+# S0157L04U06 use → "I'm going to practise speaking with someone else next month" | was: 来月私はもっと英語を練習するつもりです — prompt said "practise English more"
+S0157L04U06	来月、他の人と話す練習をするつもりです
+# S0157L04U07 use → "she wants to come back next month" | was: 来月彼女は戻ってきます — prompt said "she will come back"
+S0157L04U07	来月、彼女は戻ってきたいです
+# S0157L04U10 use → "I'm going to think about it more carefully next month" | was: 来月はもっと注意深く考えるつもりです — prompt lacked "about it"
+S0157L04U10	来月、それについてもっと注意深く考えるつもりです
+# S0157L04U12 use → "I think I'm going to do better next month" | was: 来月までにもっと上手になれると思います — prompt said "by next month … be able to"
+S0157L04U12	来月はもっとうまくやるつもりだと思います
+# S0157L04U14 use → "I'm happy with how we can talk again next month" | was: 来月また練習できることを嬉しく思います — English "I'm happy with how we can talk again next month" is garbled
+S0157L04U14	DELETE
+# S0158L01U07 use → "let's talk today because I want to practise speaking in English" | was: 今日話しましょう英語の練習がしたいです — prompt juxtaposed two clauses with no link
+S0158L01U07	英語で話す練習をしたいので、今日話しましょう
+# S0158L01U10 use → "let's talk this morning if you don't mind" | was: よければ、今朝話しましょう — prompt said "if it's OK"; English is "if you don't mind" (構わなければ as seed 155)
+S0158L01U10	構わなければ、今朝話しましょう
+# S0158L02U02 use → "I'd like to do something else" | was: 私は何か他のことを試したいと思います — prompt said "try"
+S0158L02U02	何か他のことをしたいです
+# S0158L02U03 use → "I don't want to talk about this any more let's talk about something else" | was: もうこれについては話さないで何か他のことを話しましょう — English "I don't want to talk about this any more let's talk about something else" is a run-on
+S0158L02U03	DELETE
+# KEEP S0158L02U07 | 何か他のことを考えた方がいいです | I should consider something else — KEEP-equivalent: prompt already says "I should consider something else" (false flag)
+# S0158L02U08 use → "she doesn't want to do this she wants to do something else" | was: 彼女は何か他のことをしたいと言っています — English "she doesn't want to do this she wants to do something else" is a run-on
+S0158L02U08	DELETE
+# S0158L02U10 use → "I think I should ask about something else" | was: 私は何か他のことを試すべきだと思います — prompt said "try"
+S0158L02U10	何か他のことについて聞いた方がいいと思います
+# S0158L02U12 use → "he doesn't want this he wants something else" | was: 彼は何か他のことに興味があります — English "he doesn't want this he wants something else" is a run-on
+S0158L02U12	DELETE
+# S0158L02U15 use → "why don't you ask about something else?" | was: 何か他のことをしてみたらどうですか？ — prompt said "try"
+S0158L02U15	何か他のことについて聞いたらどうですか？
+# S0159L01B05 build → "what he's trying to say" | was: 彼が言おうとしている — prompt lacked こと ("what")
+S0159L01B05	彼が言おうとしていること
+# S0159L01B07 build → "understand what you're trying to say" | was: 言おうとしていることを理解した — prompt was past
+S0159L01B07	言おうとしていることを理解する
+# S0159L01U05 use → "can you hear what she's trying to say?" | was: 彼女が言おうとしていることを聞いてください — prompt was an imperative
+S0159L01U05	彼女が言おうとしていることが聞こえますか？
+# S0159L01U12 use → "did you understand what she was trying to say?" | was: 彼女が言おうとしていることが分かりましたか？ — prompt was present
+S0159L01U12	彼女が言おうとしていたことが分かりましたか？
+# S0159L02U04 use → "this isn't very difficult so I hope you'll finish soon" | was: これはそれほど難しくないのでもうすぐ終わると思います — prompt said "I think it'll finish soon"; English is "I hope you'll finish soon"
+S0159L02U04	これはそれほど難しくないので、もうすぐ終わるといいですね
+# S0159L02U09 use → "he isn't as patient as you said" | was: 彼はあなたが言ったほど辛抱強くありませんでした — English uses "patient", untaught in this course; prompt also past
+S0159L02U09	DELETE
+# S0159L02U15 use → "it isn't easy to learn a new language" | was: 日本語を学ぶことは難しいですね — prompt said "learning Japanese is difficult"
+S0159L02U15	新しい言語を学ぶのは簡単ではありません
+# S0160L01U07 use → "I can't say this word in exactly the same way" | was: この言葉を正確に言うことができません — prompt said "accurately"
+S0160L01U07	この言葉を全く同じ言い方で言うことができません
+# S0160L01U14 use → "I want to know what this word is in English" | was: 私はこの言葉を前に聞いたことがあります — prompt said "I've heard this word before"
+S0160L01U14	この言葉が英語で何か知りたいです
+# S0160L01U15 use → "you use this word a lot when you speak English" | was: この言葉は英語を話す上でよく使われます — prompt said "the word is used"
+S0160L01U15	英語を話すとき、この言葉をよく使います
+# S0161L01U03 use → "I want to speak English with you on Sunday" | was: 日曜日は英語を話したい — prompt lacked "with you"
+S0161L01U03	日曜日にあなたと英語を話したいです
+# S0161L01U06 use → "let's talk again on Sunday next week" | was: 日曜日にまた話しましょう来週 — prompt tacked 来週 on with no particle
+S0161L01U06	来週の日曜日にまた話しましょう
+# S0161L01U15 use → "let's talk about that on Sunday morning" | was: 日曜日の朝一番にそれについて話しましょう — prompt added 一番 (first thing)
+S0161L01U15	日曜日の朝、それについて話しましょう
+# S0161L02U04 use → "I'd like to relax after we finish on Sunday morning" | was: 日曜日の朝が終わったらリラックスしたいです — prompt said "after Sunday morning ends"
+S0161L02U04	日曜日の朝、終わったらリラックスしたいです
+# S0161L02U06 use → "I'm not sure if I can remember everything on Sunday morning" | was: 日曜日の朝までにすべて覚えられるか分かりません — prompt said "by Sunday morning"
+S0161L02U06	日曜日の朝に全部覚えられるかわかりません
+# S0161L02U11 use → "let's meet on Sunday morning to talk" | was: 日曜日の朝に会いに行きましょう — prompt lacked "to talk"
+S0161L02U11	日曜日の朝に会って話しましょう
+# S0161L02U15 use → "I'm going to try to speak English as often as possible on Sunday morning" | was: 日曜日の朝にできるだけよく英語を話そうとします — prompt said "as well as possible"
+S0161L02U15	日曜日の朝、できるだけ何度も英語を話してみるつもりです
+# S0161L04U13 use → "I can't remember how to say what I wanted to say about that book" | was: その本について言いたかったことを思い出せません — prompt lacked "how to say"
+S0161L04U13	その本について言いたかったことをどう言うか思い出せません
+# S0161L04U14 use → "I enjoy doing interesting things with my friends and I'd like to read that book" | was: 友達と面白いことをしたいし、その本を読みたいです — English "I enjoy doing interesting things with my friends and I'd like to read that book" is a chain
+S0161L04U14	DELETE
+# S0162L04B07 build → "what do you think I should consider?" | was: どれを選べば良いと思いますか — prompt said "choose"; English is "consider" (考える as seed 98)
+S0162L04B07	何を考えた方がいいと思いますか
+# S0162L04U05 use → "let's talk and what do you think about that?" | was: 話しましょう、それについてどう思いますか — English "let's talk and what do you think about that?" is ungrammatical
+S0162L04U05	DELETE
+# S0162L04U10 use → "what do you think I should consider?" | was: どれを選べば良いと思いますか — prompt said "choose" (same English as B07)
+S0162L04U10	何を考えた方がいいと思いますか？
+# S0162L04U15 use → "what do you think it's a good thing to talk as often as possible?" | was: それはできるだけよく話すことが良いことだと思います、どう思いますか — English "what do you think it's a good thing to talk as often as possible?" is garbled
+S0162L04U15	DELETE
+# S0163L02U12 use → "I think that it's interesting but could you say that again a little more slowly?" | was: 面白いと思いますが、もう少しゆっくり言ってもらえますか — prompt lacked "again"; いただけますか = "could you" (seed 61)
+S0163L02U12	面白いと思いますが、もう少しゆっくりもう一度言っていただけますか？

@@ -1,0 +1,34 @@
+# eng_for_jpn seeds 174-183: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 2 flagged rows no longer exist.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0174L01U06 use → "can you understand what I'm saying when I speak quickly?" | was: 私が急いで話しても私が言っていることがわかりますか？ — prompt said "even if I speak quickly"; English is "when" (急いで → 早く, "quickly")
+S0174L01U06	早く話すとき、私が言っていることがわかりますか？
+# S0174L01U13 use → "can you understand what I'm saying in a different way?" | was: 同じことを違う言い方で言っても私が言っていることがわかりますか？ — prompt said "even if I say the same thing differently"
+S0174L01U13	違う言い方で、私が言っていることがわかりますか？
+# S0176L01B06 build → "I'm looking forward to next year" | was: 来年もよろしくお願いします — prompt was a New Year greeting
+S0176L01B06	来年を楽しみにしています
+# S0176L01U06 use → "I'd like to be able to speak well next year" | was: 来年までには話せるようになりたいです — prompt said "by next year" and lacked "well"
+S0176L01U06	来年は上手に話せるようになりたいです
+# S0176L03U10 use → "I'll ask him about that again" | was: それについても彼に聞いてみます — prompt said "also"; English is "again"
+S0176L03U10	もう一度それについて彼に聞いてみます
+# S0177L01U10 use → "I'll ask where she wants to go on Saturday night" | was: 土曜日にどこに行きたいか聞いてみます — prompt lacked "night"
+S0177L01U10	土曜日の夜にどこに行きたいか聞いてみます
+# S0179L01U10 use → "let's work together on Sunday afternoon" | was: 日曜日の午後に一緒に勉強しましょう — prompt said "study"; "work together" is 頑張る elsewhere in this plan
+S0179L01U10	日曜日の午後に一緒に頑張りましょう
+# S0180L01U12 use → "I'd like to read my book for a while but let's speak English" | was: しばらく本を読みたいですが、まず英語を話しましょう — prompt added まず (first)
+S0180L01U12	しばらく本を読みたいですが、英語を話しましょう
+# S0180L01U15 use → "I'd like to read my book for a while but I'd like you to be here with me" | was: しばらく本を読みたいですが、あなたがいて欲しいです — prompt lacked "with me"
+S0180L01U15	しばらく本を読みたいですが、私とここにいてほしいです
+# S0181L01U01 use → "but I have to take my mother to the doctor today" | was: 今日は母を医者に連れて行かなければなりません — prompt lacked "but"
+S0181L01U01	でも今日は母を医者に連れて行かなければなりません
+# S0181L01U02 use → "my mother wants to meet you" | was: 母が会いたいと言っています — prompt added "is saying"
+S0181L01U02	母があなたに会いたいです
+# S0181L03U01 use → "but I have to take my mother to the doctor today" | was: 今日は母を医者に連れて行かなければなりません — prompt lacked "but" (same English as L01U01)
+S0181L03U01	でも今日は母を医者に連れて行かなければなりません
+# S0182L02U10 use → "have you seen the young dog today?" | was: 犬を今日見ましたか — prompt lacked "young"
+S0182L02U10	今日その若い犬を見ましたか？
+# KEEP S0182L03B02 | どこかで見ましたか | seen it anywhere? — "seen it anywhere?" — a BUILD fragment; the full-question prompt is the natural cue (false flag)
+# KEEP S0182L03B03 | どこかで見ましたか | seen it anywhere? — "seen it anywhere?" — BUILD fragment (false flag; same as B02)
+# KEEP S0182L03B06 | 鍵をどこかで見ましたか | seen my keys anywhere? — "seen my keys anywhere?" — BUILD fragment (false flag)
+# S0182L03U08 use → "have you seen the young dog anywhere?" | was: 犬をどこかで見ましたか — prompt lacked "young"
+S0182L03U08	その若い犬をどこかで見ましたか？
+# KEEP S0183L01U15 | あなたも見ていないということですね。いいえ、残念ながら見ていません | so you haven't seen them? no, I'm afraid I haven't seen them — KEEP-equivalent: "so you haven't seen them?" is a confirming question in both (false flag)

@@ -1,0 +1,1974 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p10-s164-173.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:16.203Z",
+ "seeds": {
+  "164": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"an interesting book\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"an interesting book\""
+   ],
+   "newFailures": []
+  },
+  "165": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I'm not sure if it's true\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I'm not sure if it's true\""
+   ],
+   "newFailures": []
+  },
+  "166": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"my name\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"not very unusual\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"my name\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"not very unusual\""
+   ],
+   "newFailures": []
+  },
+  "167": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"tomorrow afternoon\"",
+    "L3: USE: need 5+, got 2"
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"tomorrow afternoon\"",
+    "L3: USE: need 5+, got 2"
+   ],
+   "newFailures": []
+  },
+  "168": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"come and help\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I'll be able to come and help\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"come and help\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I'll be able to come and help\""
+   ],
+   "newFailures": []
+  },
+  "169": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what do you want me to do?\""
+   ],
+   "after": [
+    "L2: USE: need 5+, got 2"
+   ],
+   "newFailures": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  "170": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what you need\"",
+    "L4: 1 phrase(s) fail containment",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"I'd like you to tell me this afternoon\", \"I'd like you to tell me as soon as you can\"",
+    "L5: 4 duplicate phrase(s) within this LEGO: \"I'd like you to tell me what you need\", \"I'd like you to tell me what you need this afternoon\", \"I'd like you to tell me what you need next month\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what you need\"",
+    "L4: 1 phrase(s) fail containment",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"I'd like you to tell me this afternoon\", \"I'd like you to tell me as soon as you can\"",
+    "L5: 4 duplicate phrase(s) within this LEGO: \"I'd like you to tell me what you need\", \"I'd like you to tell me what you need this afternoon\", \"I'd like you to tell me what you need next month\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0164L01B05",
+   "seed": 164,
+   "role": "build",
+   "target": "did you want to show me an interesting book?",
+   "old": "面白い本を見せてもらいたいですか",
+   "new": "私に面白い本を見せたかったですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U02",
+   "seed": 164,
+   "role": "use",
+   "target": "he was trying to show me an interesting book that he thought was very good",
+   "old": "彼は面白い本を見せようとしていました",
+   "new": "彼はとても良いと思った面白い本を私に見せようとしていました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U04",
+   "seed": 164,
+   "role": "use",
+   "target": "I think that it's not difficult to find an interesting book when you know what you want",
+   "old": "面白い本を探すのは難しくないと思います",
+   "new": "何が欲しいかわかっていれば、面白い本を見つけるのは難しくないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U08",
+   "seed": 164,
+   "role": "use",
+   "target": "I'd like to find an interesting book as soon as I can so I can start to enjoy it",
+   "old": "面白い本を見つけたら、読みたいです",
+   "new": "楽しみ始められるように、できるだけすぐ面白い本を見つけたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U09",
+   "seed": 164,
+   "role": "use",
+   "target": "she said she's looking for an interesting book to enjoy this afternoon",
+   "old": "彼女は面白い本を探すのが好きだと言っていました",
+   "new": "彼女は今日の午後楽しむ面白い本を探していると言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U11",
+   "seed": 164,
+   "role": "use",
+   "target": "I think that it's important to find an interesting book to help you learn new words",
+   "old": "面白い本を見つけることは大切だと思います",
+   "new": "新しい言葉を学ぶのを手伝う面白い本を見つけることは大切だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U13",
+   "seed": 164,
+   "role": "use",
+   "target": "I want you to show me an interesting book that you think is very good",
+   "old": "面白い本を友達に見せてほしいです",
+   "new": "あなたがとても良いと思う面白い本を見せてほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U14",
+   "seed": 164,
+   "role": "use",
+   "target": "do you enjoy looking for an interesting book when you have a little more time?",
+   "old": "面白い本を探すのが好きですか？",
+   "new": "もう少し時間があるとき、面白い本を探すのを楽しんでいますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0164L01U15",
+   "seed": 164,
+   "role": "use",
+   "target": "I want to find an interesting book as soon as I can because I'd like to start soon",
+   "old": "面白い本を早く見つけたいと思っています",
+   "new": "もうすぐ始めたいので、できるだけすぐ面白い本を見つけたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U04",
+   "seed": 165,
+   "role": "use",
+   "target": "I want to know if it's true but I don't know how to find the answer yet",
+   "old": "本当のことを知りたいのですが、難しいです",
+   "new": "本当かどうか知りたいですが、まだ答えの見つけ方がわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U05",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if what my friend said is true and I'd like to find out as soon as I can",
+   "old": "友達が言ったことが本当かどうか確かめたいです",
+   "new": "友達が言ったことが本当かどうかわからないので、できるだけすぐ知りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U07",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true so I want to ask my friend what she said about it",
+   "old": "本当かどうかわからないので、聞いてみます",
+   "new": "本当かどうかわからないので、友達にそれについて彼女が何と言ったか聞きたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U08",
+   "seed": 165,
+   "role": "use",
+   "target": "I want to find out if it's true because I don't want to say something that isn't easy to understand",
+   "old": "彼女が言ったことが本当か確かめたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U09",
+   "seed": 165,
+   "role": "use",
+   "target": "I'd like you to tell me something true because I'm not sure if I can remember what you said",
+   "old": "本当のことを言ってくれれば助かります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U10",
+   "seed": 165,
+   "role": "use",
+   "target": "if it's true I'm very happy about it because I wasn't sure if it would happen",
+   "old": "それが本当なら、もっとうれしいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U12",
+   "seed": 165,
+   "role": "use",
+   "target": "I think that it's true because he doesn't want to say something that isn't easy to explain",
+   "old": "彼は本当のことを言っていると思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U13",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true but I think that it's interesting and I want to find out more",
+   "old": "本当かどうかわからないけど、興味があります",
+   "new": "本当かどうかわかりませんが、面白いと思いますし、もっと知りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U14",
+   "seed": 165,
+   "role": "use",
+   "target": "it would be great if it's true because I've been hoping that it would happen for a while",
+   "old": "それが本当だったら、とてもいいですね",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L01U15",
+   "seed": 165,
+   "role": "use",
+   "target": "I think that it's important to say something true when you're talking with people you know",
+   "old": "本当のことを言うのは大切だと思います",
+   "new": "知っている人たちと話しているとき、本当のことを言うのは大切だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U01",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true but I think that it's a good idea to ask someone",
+   "old": "彼が言ったことが本当かどうかわかりません",
+   "new": "本当かどうかわかりませんが、誰かに聞くのはいい考えだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U02",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true because I didn't know what my friend was trying to say",
+   "old": "友達が言ったことが本当かどうかわかりません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U04",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true and I wanted to ask you about it before you leave",
+   "old": "本当かどうかわからなかったので、確かめました",
+   "new": "本当かどうかわからないので、あなたが帰る前にそれについて聞きたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U05",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true but I want to find out as soon as I can",
+   "old": "何が本当かわからないので、友達に聞きます",
+   "new": "本当かどうかわかりませんが、できるだけすぐ知りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U07",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true but I think that it's important to find out",
+   "old": "本当かどうかわかりませんが、大切なことだと思います",
+   "new": "本当かどうかわかりませんが、知ることが大切だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U09",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true so I wanted to ask my friend what she thought about it",
+   "old": "それが本当かどうか、友達に聞いてみました",
+   "new": "本当かどうかわからないので、友達にそれについてどう思ったか聞きたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U10",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true but I think that it's interesting and I want to know more",
+   "old": "本当かどうかわかりませんが、面白いと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0165L02U11",
+   "seed": 165,
+   "role": "use",
+   "target": "I'm not sure if it's true but I'm hoping that it is because it would be great",
+   "old": "それが本当ならいいのですが、確信はありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U02",
+   "seed": 166,
+   "role": "use",
+   "target": "do you know my name or do you need me to tell you what it is?",
+   "old": "私の名前を覚えていますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U05",
+   "seed": 166,
+   "role": "use",
+   "target": "my name is not very unusual but I think that it's a good name",
+   "old": "私の名前はあまり珍しくありません",
+   "new": "私の名前はあまり珍しくありませんが、いい名前だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U06",
+   "seed": 166,
+   "role": "use",
+   "target": "I want to tell you my idea because I think that it's a good thing to do",
+   "old": "私の考えをあなたに話したいです",
+   "new": "するのはいいことだと思うので、私の考えをあなたに話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U07",
+   "seed": 166,
+   "role": "use",
+   "target": "my friend wanted to meet you and I hope you can come this afternoon",
+   "old": "私の友達があなたに会いたがっています",
+   "new": "私の友達はあなたに会いたかったです。今日の午後来られるといいですね",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U08",
+   "seed": 166,
+   "role": "use",
+   "target": "my brain is doing something new and I can feel it changing as I learn",
+   "old": "私の脳は英語を学ぶのに一生懸命働いています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U10",
+   "seed": 166,
+   "role": "use",
+   "target": "do you know my name or do you need me to say it so you can remember?",
+   "old": "私の名前を知っていましたか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U11",
+   "seed": 166,
+   "role": "use",
+   "target": "my friend didn't want to tell me the truth and I'm not sure if I understand why",
+   "old": "私の友達は本当のことを言いたがりませんでした",
+   "new": "私の友達は私に本当のことを言いたくありませんでした。なぜかわかるかどうかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U13",
+   "seed": 166,
+   "role": "use",
+   "target": "I wanted to show my friend something that was in my bag this morning",
+   "old": "私のバッグを友達に見せてしまいました",
+   "new": "今朝、私のバッグに入っていたものを友達に見せたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L01U15",
+   "seed": 166,
+   "role": "use",
+   "target": "I'm not sure if my idea is good but I'd like to tell you what I think",
+   "old": "私の考えが正しいかどうかわかりません",
+   "new": "私の考えがいいかどうかわかりませんが、私が思うことを話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U01",
+   "seed": 166,
+   "role": "use",
+   "target": "do you know my name or do you need me to tell you what it is again?",
+   "old": "私の名前を知っていますか？それとも、もう一度言う必要がありますか？",
+   "new": "私の名前を知っていますか？それとも、それが何かもう一度言う必要がありますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U02",
+   "seed": 166,
+   "role": "use",
+   "target": "my name is not very unusual and I think that a lot of people have it",
+   "old": "私の名前はあまり珍しくなく、多くの人が持っていると思います",
+   "new": "私の名前はあまり珍しくありませんし、多くの人が持っていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U06",
+   "seed": 166,
+   "role": "use",
+   "target": "did you know my name before I said it or did you need someone to tell you?",
+   "old": "私の名前を知っていましたか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U09",
+   "seed": 166,
+   "role": "use",
+   "target": "do you think my name is similar to your name or is it very different?",
+   "old": "私の名前はあなたの名前に似ていますか？",
+   "new": "私の名前はあなたの名前に似ていると思いますか？それとも、とても違いますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U10",
+   "seed": 166,
+   "role": "use",
+   "target": "my friend wanted to know my name and I was happy to say it to her",
+   "old": "私の名前を友達が知りたがっていました",
+   "new": "私の友達は私の名前を知りたかったので、喜んで彼女に言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U11",
+   "seed": 166,
+   "role": "use",
+   "target": "how do you say my name in English because I'm not sure if I know?",
+   "old": "私の名前を英語でどう言いますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U12",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that my name is not very unusual but it is important to me",
+   "old": "私の名前はとても珍しくありません",
+   "new": "私の名前はあまり珍しくないと思いますが、私には大切です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U13",
+   "seed": 166,
+   "role": "use",
+   "target": "I'm happy that you know my name because I feel like we are friends",
+   "old": "私の名前を知ってほしいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U14",
+   "seed": 166,
+   "role": "use",
+   "target": "do you think that my name is easy to remember or is it difficult for you?",
+   "old": "私の名前はあなたにとって覚えやすいですか？",
+   "new": "私の名前は覚えやすいと思いますか？それとも、あなたには難しいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L02U15",
+   "seed": 166,
+   "role": "use",
+   "target": "I want you to say my name and tell me if you find it difficult",
+   "old": "私の名前を言ってみてください",
+   "new": "私の名前を言って、難しいかどうか教えてほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U01",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it is not very difficult when you know what you want to do",
+   "old": "それはあまり難しくないと思います",
+   "new": "何をしたいかわかっていれば、それはあまり難しくないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U02",
+   "seed": 166,
+   "role": "use",
+   "target": "he wasn't very patient when I couldn't answer and I was feeling nervous",
+   "old": "彼はあまり辛抱強くありませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U07",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it is not very unusual and a lot of people feel the same way",
+   "old": "それはあまり珍しくないです",
+   "new": "それはあまり珍しくないと思いますし、多くの人が同じように感じています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U09",
+   "seed": 166,
+   "role": "use",
+   "target": "do you think that it is not very important to know the answer?",
+   "old": "それはあまり大切ではないと思いますか？",
+   "new": "答えを知るのはあまり大切ではないと思いますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U11",
+   "seed": 166,
+   "role": "use",
+   "target": "she wasn't very happy about it but she didn't want to make a problem",
+   "old": "彼女はあまり心配していませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U12",
+   "seed": 166,
+   "role": "use",
+   "target": "it is not very difficult so I'd like to keep on doing this for a while",
+   "old": "あまり難しくはないので、続けましょう",
+   "new": "あまり難しくないので、しばらくこれを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L03U15",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it is not very difficult so I want to try as hard as I can",
+   "old": "それはあまり難しくないと思うので、やってみます",
+   "new": "あまり難しくないと思うので、できるだけ頑張ってやってみたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U01",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it's not unusual to find it difficult when you start to learn English",
+   "old": "それは珍しくないと思います。英語を学ぶのは大変ですから",
+   "new": "英語を学び始めるとき、難しく感じるのは珍しくないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U02",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that what he is doing is not very unusual for someone who is new to it",
+   "old": "彼のやり方はあまり珍しくないと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U03",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that your name is not very unusual and a lot of people have it",
+   "old": "あなたの名前は珍しくないと思います",
+   "new": "あなたの名前はあまり珍しくないと思いますし、多くの人が持っています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U06",
+   "seed": 166,
+   "role": "use",
+   "target": "it's not unusual to find it difficult to learn English when you start",
+   "old": "英語を学ぶのが難しいのは珍しくないです",
+   "new": "学び始めるとき、英語を学ぶのが難しいのは珍しくないです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U07",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it's not very unusual and you shouldn't worry about it",
+   "old": "それはあまり珍しくないと思います",
+   "new": "それはあまり珍しくないと思いますし、心配しなくてもいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U09",
+   "seed": 166,
+   "role": "use",
+   "target": "it's not unusual and I think that you're doing very well with it",
+   "old": "それは珍しくないので、大丈夫です",
+   "new": "それは珍しくないですし、あなたはとてもうまくやっていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U10",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that what he was doing is not unusual for someone who wants to learn",
+   "old": "彼は珍しくないことをしていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U11",
+   "seed": 166,
+   "role": "use",
+   "target": "it's not unusual to make mistakes and I don't think you should worry about it",
+   "old": "あなたが間違いをするのは珍しくないです",
+   "new": "間違えるのは珍しくないですし、心配しなくてもいいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U12",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it's not very unusual but I'm not sure if I agree with that",
+   "old": "それはあまり珍しくないと思いますが、確かめます",
+   "new": "それはあまり珍しくないと思いますが、それに同意するかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U13",
+   "seed": 166,
+   "role": "use",
+   "target": "it's not unusual to find it difficult to speak English when you start",
+   "old": "英語で話すのが難しいのは珍しくないです",
+   "new": "始めるとき、英語を話すのが難しいのは珍しくないです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U14",
+   "seed": 166,
+   "role": "use",
+   "target": "it's not unusual to do it that way so you shouldn't worry about making mistakes",
+   "old": "あなたのやり方は珍しくないので心配しないでください",
+   "new": "そういうやり方は珍しくないので、間違えることを心配しなくてもいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L04U15",
+   "seed": 166,
+   "role": "use",
+   "target": "my friend said that it's not very unusual and I think she's doing very well",
+   "old": "それはあまり珍しくないと友達が言いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U01",
+   "seed": 166,
+   "role": "use",
+   "target": "my name is not very unusual and I think that a lot of people have the same name",
+   "old": "私の名前はあまり珍しくないと思います",
+   "new": "私の名前はあまり珍しくありませんし、多くの人が同じ名前を持っていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U02",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it's not very unusual and you shouldn't worry about it",
+   "old": "それはあまり珍しくないと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U03",
+   "seed": 166,
+   "role": "use",
+   "target": "what he is doing is not very unusual for someone who is new to this",
+   "old": "彼のやり方はあまり珍しくないですよ",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U04",
+   "seed": 166,
+   "role": "use",
+   "target": "your name is not very unusual but I think it is a very good name",
+   "old": "あなたの名前はあまり珍しくないと思います",
+   "new": "あなたの名前はあまり珍しくありませんが、とてもいい名前だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U05",
+   "seed": 166,
+   "role": "use",
+   "target": "my friend said that it is not very unusual and I'm happy she said it",
+   "old": "それはあまり珍しくないと友達が言いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U06",
+   "seed": 166,
+   "role": "use",
+   "target": "it is not very unusual to make mistakes and you shouldn't worry about it",
+   "old": "間違いをするのはあまり珍しくないです",
+   "new": "間違えるのはあまり珍しくないですし、心配しなくてもいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U07",
+   "seed": 166,
+   "role": "use",
+   "target": "it is not very unusual so you shouldn't worry about making mistakes",
+   "old": "あまり珍しくないので、間違いを気にしなくてもいいです",
+   "new": "あまり珍しくないので、間違えることを心配しなくてもいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U08",
+   "seed": 166,
+   "role": "use",
+   "target": "what she is doing is not very unusual and I think she is doing very well",
+   "old": "彼女のやり方はあまり珍しくないですよ",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U09",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that it is not very unusual but I'm not sure if I agree",
+   "old": "それはあまり珍しくないと思うのですが、確かめます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U10",
+   "seed": 166,
+   "role": "use",
+   "target": "I think that your name is not very unusual and a lot of people have it",
+   "old": "あなたの名前はあまり珍しくないと思いますよ",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U11",
+   "seed": 166,
+   "role": "use",
+   "target": "it is not very unusual to find it difficult to learn English when you start",
+   "old": "英語を学ぶのが難しいのはあまり珍しくないです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U12",
+   "seed": 166,
+   "role": "use",
+   "target": "I've started to understand that it is not very unusual to feel this way",
+   "old": "あまり珍しくないことに気づきました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U13",
+   "seed": 166,
+   "role": "use",
+   "target": "someone said to me that it is not very unusual and I didn't know that before",
+   "old": "それはあまり珍しくないと言われました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U14",
+   "seed": 166,
+   "role": "use",
+   "target": "what he was doing is not very unusual for someone who is trying to improve",
+   "old": "彼はあまり珍しくないことをしていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0166L05U15",
+   "seed": 166,
+   "role": "use",
+   "target": "it is not very unusual so I'd like to keep on doing this for a while",
+   "old": "あまり珍しくないので、続けましょう",
+   "new": "あまり珍しくないので、しばらくこれを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01B05",
+   "seed": 167,
+   "role": "build",
+   "target": "let's meet this afternoon",
+   "old": "午後に会いましょう",
+   "new": "今日の午後に会いましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01B06",
+   "seed": 167,
+   "role": "build",
+   "target": "I want to start this afternoon",
+   "old": "今日の午後に始めます",
+   "new": "今日の午後に始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U01",
+   "seed": 167,
+   "role": "use",
+   "target": "I'm going to meet my friend this afternoon and I'm looking forward to it",
+   "old": "今日の午後、友達に会う予定です",
+   "new": "今日の午後、友達に会うつもりで、楽しみにしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U02",
+   "seed": 167,
+   "role": "use",
+   "target": "he didn't want to look after the young dog all afternoon and I understand why",
+   "old": "彼は午後ずっと待っていたくありませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U03",
+   "seed": 167,
+   "role": "use",
+   "target": "she doesn't want to read anything this afternoon and I think it's a good idea",
+   "old": "彼女は今日の午後、何も読みたくありません",
+   "new": "彼女は今日の午後何も読みたくありませんし、それはいい考えだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U04",
+   "seed": 167,
+   "role": "use",
+   "target": "do you want to meet this afternoon because I'd like to talk with you?",
+   "old": "今日の午後、友達と会いませんか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U05",
+   "seed": 167,
+   "role": "use",
+   "target": "I was doing hard work all afternoon and I don't want to do any more today",
+   "old": "午後ずっと仕事をしていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U06",
+   "seed": 167,
+   "role": "use",
+   "target": "let's meet tomorrow afternoon because I'd like to talk about what you said",
+   "old": "明日の午後、会いましょう",
+   "new": "あなたが言ったことについて話したいので、明日の午後会いましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U07",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to start this afternoon because I'd like to finish as quickly as possible",
+   "old": "今日の午後に始めたいと思います",
+   "new": "できるだけ早く終わりたいので、今日の午後に始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U08",
+   "seed": 167,
+   "role": "use",
+   "target": "I was trying to practise speaking English all afternoon and I started to feel better",
+   "old": "午後ずっと英語を練習していました",
+   "new": "午後ずっと英語を話す練習をしようとしていて、気分がよくなり始めました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U09",
+   "seed": 167,
+   "role": "use",
+   "target": "what do you want to do this afternoon because I've got a little more time?",
+   "old": "今日の午後、何をしたいですか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U10",
+   "seed": 167,
+   "role": "use",
+   "target": "I'd like to meet my friend this afternoon if you can come with me",
+   "old": "今日の午後、友達に会いたいと思っています",
+   "new": "一緒に来られるなら、今日の午後友達に会いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U11",
+   "seed": 167,
+   "role": "use",
+   "target": "I was waiting for my friend all afternoon and I don't mind waiting for a few more",
+   "old": "午後ずっと、友達を待っていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U12",
+   "seed": 167,
+   "role": "use",
+   "target": "I'm looking forward to this afternoon because I'd like to relax with my friends",
+   "old": "今日の午後が楽しみです",
+   "new": "友達とリラックスしたいので、今日の午後を楽しみにしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U13",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to finish this afternoon so I can start something new tomorrow morning",
+   "old": "今日の午後に終わらせたいと思います",
+   "new": "明日の朝何か新しいことを始められるように、今日の午後終わりたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L01U15",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to practise speaking English this afternoon as often as possible",
+   "old": "今日の午後、英語を話す練習をしたいと思います",
+   "new": "今日の午後、できるだけ何度も英語を話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02B04",
+   "seed": 167,
+   "role": "build",
+   "target": "I want to start tomorrow afternoon",
+   "old": "明日の午後に始めます",
+   "new": "明日の午後に始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U01",
+   "seed": 167,
+   "role": "use",
+   "target": "do you want to meet tomorrow afternoon because I'd like to talk with you?",
+   "old": "明日の午後に会いませんか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U02",
+   "seed": 167,
+   "role": "use",
+   "target": "I'm looking forward to tomorrow afternoon because I'd like to relax with my friends",
+   "old": "明日の午後が楽しみです",
+   "new": "友達とリラックスしたいので、明日の午後を楽しみにしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U03",
+   "seed": 167,
+   "role": "use",
+   "target": "I'm going to meet my friend tomorrow afternoon and I'm excited about it",
+   "old": "明日の午後に友達と会う予定です",
+   "new": "明日の午後友達に会うつもりで、それにワクワクしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U04",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to finish tomorrow afternoon so I can start something new after that",
+   "old": "明日の午後に終わらせたいと思います",
+   "new": "その後何か新しいことを始められるように、明日の午後終わりたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U05",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to start tomorrow afternoon because I'd like to finish as quickly as possible",
+   "old": "明日の午後に始めたいと思います",
+   "new": "できるだけ早く終わりたいので、明日の午後に始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U06",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to practise speaking English tomorrow afternoon as often as possible",
+   "old": "明日の午後に英語を練習したいと思います",
+   "new": "明日の午後、できるだけ何度も英語を話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U07",
+   "seed": 167,
+   "role": "use",
+   "target": "where do you want to meet tomorrow afternoon because I need to know soon?",
+   "old": "明日の午後にどこで会いましょうか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U09",
+   "seed": 167,
+   "role": "use",
+   "target": "is it okay if I come with my friend tomorrow afternoon to meet you?",
+   "old": "明日の午後に友達を連れてきても大丈夫ですか？",
+   "new": "明日の午後、あなたに会うために友達と一緒に来ても大丈夫ですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U10",
+   "seed": 167,
+   "role": "use",
+   "target": "I'm looking forward to tomorrow afternoon and I want to start as soon as I can",
+   "old": "明日の午後が待ち遠しいです",
+   "new": "明日の午後を楽しみにしていて、できるだけすぐ始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U12",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to do something new tomorrow afternoon because I'd like to enjoy it",
+   "old": "明日の午後に何かをしたいと思います",
+   "new": "楽しみたいので、明日の午後何か新しいことをしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U13",
+   "seed": 167,
+   "role": "use",
+   "target": "I want to speak with my friend tomorrow afternoon if I have enough time",
+   "old": "明日の午後に友達に電話したいと思います",
+   "new": "十分な時間があれば、明日の午後友達と話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U14",
+   "seed": 167,
+   "role": "use",
+   "target": "I'd like to speak English tomorrow afternoon as often as I can",
+   "old": "明日の午後に英語を話す機会があれば嬉しいです",
+   "new": "明日の午後、できるだけ何度も英語を話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L02U15",
+   "seed": 167,
+   "role": "use",
+   "target": "I'm going to try to practise speaking English tomorrow afternoon if I can",
+   "old": "明日の午後には英語の練習をするつもりです",
+   "new": "できれば、明日の午後英語を話す練習をしてみるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L03B07",
+   "seed": 167,
+   "role": "build",
+   "target": "what do you need to do next week?",
+   "old": "今週、何をする必要がありますか",
+   "new": "来週、何をする必要がありますか",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0167L03U09",
+   "seed": 167,
+   "role": "use",
+   "target": "what do you need to do to finish that work before you leave today?",
+   "old": "仕事を終わらせるために何をする必要がありますか",
+   "new": "今日帰る前に、その仕事を終えるために何をする必要がありますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U03",
+   "seed": 168,
+   "role": "use",
+   "target": "come and speak English with me as often as possible",
+   "old": "来て私と一緒に英語で話してください",
+   "new": "来て、できるだけ何度も私と英語で話してください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U04",
+   "seed": 168,
+   "role": "use",
+   "target": "it would be great if you could come and help me with this",
+   "old": "あなたが来て私を助けてくれれば素晴らしいでしょう",
+   "new": "来て、これを手伝ってくれたら素晴らしいでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U07",
+   "seed": 168,
+   "role": "use",
+   "target": "I hope she's going to come and work with us this afternoon",
+   "old": "彼女が来て私たちと勉強することを望んでいます",
+   "new": "彼女が今日の午後来て、私たちと一緒に頑張るといいですね",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U08",
+   "seed": 168,
+   "role": "use",
+   "target": "come and show me that book when you're ready to go",
+   "old": "来て、その本を私に見せてください",
+   "new": "行く準備ができたら、来てその本を私に見せてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U11",
+   "seed": 168,
+   "role": "use",
+   "target": "come and do something new with me today",
+   "old": "来て私と一緒に何か新しいことを試しましょう",
+   "new": "今日来て、私と何か新しいことをしてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U13",
+   "seed": 168,
+   "role": "use",
+   "target": "come and speak with me before you leave this morning",
+   "old": "来てください、出発する前にお話したいです",
+   "new": "今朝あなたが出る前に、来て私と話してください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U14",
+   "seed": 168,
+   "role": "use",
+   "target": "I'd like it if you could come and speak English with me as often as possible",
+   "old": "あなたが来て一緒に英語を練習できたら嬉しいです",
+   "new": "来て、できるだけ何度も私と英語を話してくれたら嬉しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L02U15",
+   "seed": 168,
+   "role": "use",
+   "target": "come and work together with me today",
+   "old": "来て、今日の仕事を一緒に始めましょう",
+   "new": "今日来て、私と一緒に頑張ってください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03B06",
+   "seed": 168,
+   "role": "build",
+   "target": "come and help with this",
+   "old": "来て手伝う、一緒に",
+   "new": "来てこれを手伝う",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U04",
+   "seed": 168,
+   "role": "use",
+   "target": "it would be great if you could come and help me this morning",
+   "old": "あなたが来て手伝ってくれれば素晴らしいでしょう",
+   "new": "今朝、来て手伝ってくれたら素晴らしいでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U05",
+   "seed": 168,
+   "role": "use",
+   "target": "can you come and help me this afternoon if you have time?",
+   "old": "今日の午後に来て手伝うことができますか",
+   "new": "時間があれば、今日の午後に来て手伝ってくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U06",
+   "seed": 168,
+   "role": "use",
+   "target": "can you come and help me because I need to speak with you today?",
+   "old": "今日あなたと話す必要があるので、来て手伝ってくれますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U07",
+   "seed": 168,
+   "role": "use",
+   "target": "she wants to come and help us but she isn't sure when",
+   "old": "彼女は来て手伝うことを望んでいます",
+   "new": "彼女は来て私たちを手伝いたいですが、いつかはわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U08",
+   "seed": 168,
+   "role": "use",
+   "target": "can you come and help me next week when you have more time?",
+   "old": "来週来て手伝ってもらえますか",
+   "new": "時間がもっとあるとき、来週来て手伝ってくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U09",
+   "seed": 168,
+   "role": "use",
+   "target": "I want you to come and help me before you leave this morning",
+   "old": "出発する前に来て手伝ってください",
+   "new": "今朝あなたが出る前に、来て手伝ってほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U10",
+   "seed": 168,
+   "role": "use",
+   "target": "he said he wanted to come and help us later on this afternoon",
+   "old": "彼は来て手伝うと言いました",
+   "new": "彼は今日の午後、後で来て私たちを手伝いたいと言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U11",
+   "seed": 168,
+   "role": "use",
+   "target": "I need my friend to come and help me as soon as you can",
+   "old": "来て手伝ってくれる友達が必要です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U12",
+   "seed": 168,
+   "role": "use",
+   "target": "my friend wanted to come and help but couldn't be there",
+   "old": "私の友達は来て手伝うつもりでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U13",
+   "seed": 168,
+   "role": "use",
+   "target": "I'm so grateful that you're going to come and help me today",
+   "old": "あなたが来て手伝ってくれることに感謝します",
+   "new": "今日来て手伝ってくれることにとても感謝しています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L03U15",
+   "seed": 168,
+   "role": "use",
+   "target": "I'd like you to come and help me if you have time today",
+   "old": "もし時間があれば来て手伝ってください",
+   "new": "今日時間があれば、来て手伝ってほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U02",
+   "seed": 168,
+   "role": "use",
+   "target": "I'll be able to come and help after we finish this work this evening",
+   "old": "仕事が終わったら来て手伝うことができます",
+   "new": "今晩この仕事が終わったら、来て手伝うことができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U03",
+   "seed": 168,
+   "role": "use",
+   "target": "I'll be able to come and help you before you leave if you want",
+   "old": "あなたが出発する前に来て手伝うことができます",
+   "new": "よければ、あなたが出る前に来て手伝うことができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U06",
+   "seed": 168,
+   "role": "use",
+   "target": "wait a few minutes and then I'll be able to come and help you",
+   "old": "少し待てば来て手伝うことができます",
+   "new": "数分待ってください。そしたら来て手伝うことができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U07",
+   "seed": 168,
+   "role": "use",
+   "target": "I'm not sure when but I'll be able to come and help you soon",
+   "old": "いつになるかわかりませんが来て手伝うことができます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U10",
+   "seed": 168,
+   "role": "use",
+   "target": "I'll be able to come and help tomorrow morning if not today",
+   "old": "今日ではなくても、明日は来て手伝うことができます",
+   "new": "今日ではなくても、明日の朝来て手伝うことができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U12",
+   "seed": 168,
+   "role": "use",
+   "target": "I'll be able to come and help later on when she's ready to go",
+   "old": "彼女が終わったら来て手伝うことができます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0168L04U13",
+   "seed": 168,
+   "role": "use",
+   "target": "I'll be able to come and help if you can give me a little more time",
+   "old": "もう少し時間があれば来て手伝うことができます",
+   "new": "もう少し時間をくれれば、来て手伝うことができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U01",
+   "seed": 169,
+   "role": "use",
+   "target": "can you tell me what your friend wants me to do this morning?",
+   "old": "今朝、友達が私に何をしてほしいか教えてくれますか？",
+   "new": "今朝、あなたの友達が私に何をしてほしいか教えてくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U03",
+   "seed": 169,
+   "role": "use",
+   "target": "what do you want me to do to help you today?",
+   "old": "あなたは私に何をしてほしいですか",
+   "new": "今日あなたを手伝うために、私に何をしてほしいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U04",
+   "seed": 169,
+   "role": "use",
+   "target": "she wanted me to wait for her before we started talking",
+   "old": "彼女は私に待ってほしかったです",
+   "new": "彼女は話し始める前に、私に待ってほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U05",
+   "seed": 169,
+   "role": "use",
+   "target": "my friend wants me to come with her to meet someone new",
+   "old": "友達は私に一緒に来てほしいと思っています",
+   "new": "友達は、誰か新しい人に会うために私に一緒に来てほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U06",
+   "seed": 169,
+   "role": "use",
+   "target": "he wanted me to find the answer as quickly as I can",
+   "old": "彼は私に答えを見つけてほしかったです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "id": "S0169L01U08",
+   "seed": 169,
+   "role": "use",
+   "target": "she wanted me to speak English with her as often as possible",
+   "old": "彼女は私に英語で話してほしかったです",
+   "new": "彼女はできるだけ何度も私に英語で話してほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U09",
+   "seed": 169,
+   "role": "use",
+   "target": "my friend wants me to start something new with her today",
+   "old": "友達は私に何か新しいことを始めてほしいと思っています",
+   "new": "友達は今日私に一緒に何か新しいことを始めてほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U10",
+   "seed": 169,
+   "role": "use",
+   "target": "he wanted me to finish the work before he had to leave",
+   "old": "彼は私に仕事を終えてほしかったです",
+   "new": "彼は出なければならない前に、私に仕事を終えてほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U12",
+   "seed": 169,
+   "role": "use",
+   "target": "she wanted me to stop and talk with her for a while",
+   "old": "彼女は私に話してほしかったです",
+   "new": "彼女は私に止まってしばらく話してほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U14",
+   "seed": 169,
+   "role": "use",
+   "target": "he wanted me to be quiet when he was trying to say something",
+   "old": "彼は私に静かにしてほしかったです",
+   "new": "彼は何か言おうとしているとき、私に静かにしてほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L01U15",
+   "seed": 169,
+   "role": "use",
+   "target": "I want you to tell me what you want me to do and I'm going to start",
+   "old": "あなたは私に何をしてほしいか教えてください",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "id": "S0169L02U03",
+   "seed": 169,
+   "role": "use",
+   "target": "what do you want me to do before your friend is going to leave this morning?",
+   "old": "友達が去る前に私に何をしてほしいですか",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "id": "S0169L02U04",
+   "seed": 169,
+   "role": "use",
+   "target": "what do you want me to do before we start work together today?",
+   "old": "仕事を始める前に私に何をしてほしいですか",
+   "new": "今日一緒に仕事を始める前に、私に何をしてほしいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0169L02U05",
+   "seed": 169,
+   "role": "use",
+   "target": "could you say that again a little more slowly what do you want me to do?",
+   "old": "私に何をしてほしいか、もう少しゆっくり言ってもらえますか",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "id": "S0169L02U06",
+   "seed": 169,
+   "role": "use",
+   "target": "what do you want me to do before you are going to go home today?",
+   "old": "あなたが帰る前に私に何をしてほしいですか",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "id": "S0169L02U10",
+   "seed": 169,
+   "role": "use",
+   "target": "what do you want me to do after we finish this work today?",
+   "old": "仕事が終わったら私に何をしてほしいですか",
+   "new": "今日この仕事が終わったら、私に何をしてほしいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U01",
+   "seed": 170,
+   "role": "use",
+   "target": "I need your help today so can we work together this afternoon?",
+   "old": "私はあなたの助けが必要です、今日一緒に働けますか",
+   "new": "今日あなたの助けが必要なので、今日の午後一緒に頑張れますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U03",
+   "seed": 170,
+   "role": "use",
+   "target": "I need to practise speaking English as often as possible to speak better",
+   "old": "英語を上手に話すためにたくさん練習が必要です",
+   "new": "もっと上手に話すために、できるだけ何度も英語を話す練習をする必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U05",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you need now and I'm going to come and help",
+   "old": "今何が必要か教えてください",
+   "new": "今何が必要か教えてください。来て手伝うつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U06",
+   "seed": 170,
+   "role": "use",
+   "target": "I need more time to learn all the new words in English",
+   "old": "新しい言葉を覚えるためにもっと時間が必要です",
+   "new": "英語の新しい言葉を全部覚えるのに、もっと時間が必要です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U07",
+   "seed": 170,
+   "role": "use",
+   "target": "I need a little more time before I need to leave this morning",
+   "old": "出発する前に少し時間が必要です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U08",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you need for today and we can work together on it",
+   "old": "今日の仕事のために何が必要かを教えてください",
+   "new": "今日何が必要か教えてください。一緒に頑張れます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U10",
+   "seed": 170,
+   "role": "use",
+   "target": "I want to know what you need so I can help you today",
+   "old": "あなたが何を必要としているか知りたいです",
+   "new": "今日あなたを手伝えるように、何が必要か知りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U11",
+   "seed": 170,
+   "role": "use",
+   "target": "I think I need to practise more but I'm definitely doing better than yesterday",
+   "old": "もっと練習が必要だと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U13",
+   "seed": 170,
+   "role": "use",
+   "target": "we must work hard to learn a lot of new words and I need to start",
+   "old": "多くのことを学ぶために頑張ることが必要です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U14",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you need this afternoon and I'm going to come and help",
+   "old": "今日の午後に何が必要か教えてください",
+   "new": "今日の午後何が必要か教えてください。来て手伝うつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L01U15",
+   "seed": 170,
+   "role": "use",
+   "target": "I need your help so I'm going to ask you to come today",
+   "old": "私はあなたの助けが必要です",
+   "new": "あなたの助けが必要なので、今日来てくれるように頼むつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U02",
+   "seed": 170,
+   "role": "use",
+   "target": "do you know what you need to do to speak English as often as possible?",
+   "old": "あなたが英語で上手くなるために何が必要か知っていますか",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U04",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you need before you leave this morning",
+   "old": "出発する前に何が必要か教えてください",
+   "new": "今朝あなたが出る前に、何が必要か教えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U05",
+   "seed": 170,
+   "role": "use",
+   "target": "I know exactly what you need to start talking in English",
+   "old": "私はあなたが何を必要としているか正確にわかります",
+   "new": "英語で話し始めるのに何が必要か、正確にわかります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U07",
+   "seed": 170,
+   "role": "use",
+   "target": "can you tell me what you need this afternoon if you have time?",
+   "old": "今日の午後に何が必要か教えてください",
+   "new": "時間があれば、今日の午後何が必要か教えてくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U08",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you need next and I'm going to try as hard as I can",
+   "old": "次に何が必要かを教えてください",
+   "new": "次に何が必要か教えてください。できるだけ頑張ってみるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U10",
+   "seed": 170,
+   "role": "use",
+   "target": "let's think about what you need to do this week to be ready",
+   "old": "今週何が必要かを一緒に考えましょう",
+   "new": "準備ができるように、今週何をする必要があるか一緒に考えましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U11",
+   "seed": 170,
+   "role": "use",
+   "target": "he said exactly what you need to do to finish the work quickly",
+   "old": "彼は何が必要か正確に言っていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U12",
+   "seed": 170,
+   "role": "use",
+   "target": "can you tell me what you need to practise speaking English?",
+   "old": "英語を話す練習に何が必要か教えてくれますか？",
+   "new": "英語を話す練習をするのに何が必要か教えてくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U13",
+   "seed": 170,
+   "role": "use",
+   "target": "it's important to know what you need before you start talking",
+   "old": "何を必要としているかを知ることが大切です",
+   "new": "話し始める前に、何が必要か知ることが大切です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L02U15",
+   "seed": 170,
+   "role": "use",
+   "target": "let's talk about what you need to do this afternoon together",
+   "old": "今日の午後に何が必要か話しましょう",
+   "new": "今日の午後一緒に何をする必要があるか話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U01",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you need and I'm going to come and help as soon as I can",
+   "old": "何が必要か私に教えてください、私はすぐに行きます",
+   "new": "何が必要か教えてください。できるだけすぐ来て手伝うつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U03",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me where you want to meet on saturday night",
+   "old": "どこで友達に会いたいか教えてください",
+   "new": "土曜日の夜どこで会いたいか教えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U06",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me when you want to start and I'm going to be ready",
+   "old": "いつ行けるか教えてください",
+   "new": "いつ始めたいか教えてください。準備するつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U07",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me how to say this word in English so I can remember it",
+   "old": "その言葉を英語でどう言うか教えてください",
+   "new": "覚えられるように、この言葉を英語でどう言うか教えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U09",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what I need to do this afternoon so I can come and help",
+   "old": "今日の午後に何をすべきか教えてください",
+   "new": "来て手伝えるように、今日の午後私が何をする必要があるか教えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U10",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you know and we can find the answer together",
+   "old": "あなたが知っていることを教えてください",
+   "new": "あなたが知っていることを教えてください。一緒に答えを見つけられます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U11",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me where you want to go and we can go together tonight",
+   "old": "どこに行きたいか教えてください、一緒に行きましょう",
+   "new": "どこに行きたいか教えてください。今夜一緒に行けます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U12",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what I need to do next and I'm going to try as hard as I can",
+   "old": "次に何をすべきか教えてください",
+   "new": "次に私が何をする必要があるか教えてください。できるだけ頑張ってみるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U13",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me how well you can speak English and we can start talking",
+   "old": "英語でどのくらいうまく話せるか教えてください",
+   "new": "英語をどのくらい上手に話せるか教えてください。話し始められます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U14",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me where you want to go after we finish the work today",
+   "old": "仕事が終わったらどこに行くか教えてください",
+   "new": "今日仕事が終わったらどこに行きたいか教えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0170L03U15",
+   "seed": 170,
+   "role": "use",
+   "target": "tell me what you think and I'm going to tell you what I need to do",
+   "old": "あなたが何を考えているか教えてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  }
+ ]
+}

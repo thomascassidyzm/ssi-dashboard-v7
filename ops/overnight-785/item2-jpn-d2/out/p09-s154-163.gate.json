@@ -1,0 +1,1274 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p09-s154-163.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:10.899Z",
+ "seeds": {
+  "154": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (4 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (4 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "155": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"waiting for\", \"waiting for\", \"waiting for\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"a few minutes\", \"a few minutes\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"tomorrow morning\", \"tomorrow morning\", \"tomorrow morning again\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (5 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"waiting for\", \"waiting for\", \"waiting for\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"a few minutes\", \"a few minutes\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"tomorrow morning\", \"tomorrow morning\", \"tomorrow morning again\""
+   ],
+   "newFailures": []
+  },
+  "156": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"go to a restaurant\", \"go to a restaurant\", \"want to go to a restaurant\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"go to a restaurant\", \"go to a restaurant\", \"want to go to a restaurant\""
+   ],
+   "newFailures": []
+  },
+  "157": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"won't be able to\", \"won't be able to\", \"won't be able to\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"are you there?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"be there\", \"be there\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"next month\", \"next month\", \"I won't be able to be there next month\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"won't be able to\", \"won't be able to\", \"won't be able to\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"are you there?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"be there\", \"be there\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"next month\", \"next month\", \"I won't be able to be there next month\""
+   ],
+   "newFailures": []
+  },
+  "158": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"let's talk\", \"let's talk\", \"let's talk about that\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"let's talk\", \"let's talk\", \"let's talk about that\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\""
+   ],
+   "newFailures": []
+  },
+  "159": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"trying to say\"",
+    "L2: 1 phrase(s) fail containment",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"isn't\", \"that isn't what I wanted to say\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"trying to say\"",
+    "L2: 1 phrase(s) fail containment",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"isn't\", \"that isn't what I wanted to say\""
+   ],
+   "newFailures": []
+  },
+  "160": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this word\", \"how do you say this word in English?\", \"I use this word a lot\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"how do you say?\", \"how do you say this in English?\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this word\", \"how do you say this word in English?\", \"I use this word a lot\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"how do you say?\", \"how do you say this in English?\""
+   ],
+   "newFailures": []
+  },
+  "161": {
+   "before": [
+    "L2: 4 duplicate phrase(s) within this LEGO: \"on Sunday morning\", \"I want to speak English with you on Sunday morning\", \"are you going to be there on Sunday morning?\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"I'd like to read that book\", \"it's a good thing to read a book\", \"I think that book is very interesting\"",
+    "L4: 5 duplicate phrase(s) within this LEGO: \"that book\", \"let's talk about that book\", \"what do you think about that book?\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"give me something new to think about\"",
+    "L6: 4 duplicate phrase(s) within this LEGO: \"can you give me that book?\", \"can you give me that book on sunday morning because I want to read it?\", \"can you give me that book later on?\""
+   ],
+   "after": [
+    "L2: 4 duplicate phrase(s) within this LEGO: \"on Sunday morning\", \"I want to speak English with you on Sunday morning\", \"are you going to be there on Sunday morning?\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"I'd like to read that book\", \"it's a good thing to read a book\", \"I think that book is very interesting\"",
+    "L4: 5 duplicate phrase(s) within this LEGO: \"that book\", \"let's talk about that book\", \"what do you think about that book?\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"give me something new to think about\"",
+    "L6: 4 duplicate phrase(s) within this LEGO: \"can you give me that book?\", \"can you give me that book on sunday morning because I want to read it?\", \"can you give me that book later on?\""
+   ],
+   "newFailures": []
+  },
+  "162": {
+   "before": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"about that\", \"I don't understand what you said about that\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"what do you want to do?\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"what do you think?\", \"what do you think about that?\", \"what do you think I should consider?\""
+   ],
+   "after": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"about that\", \"I don't understand what you said about that\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"what do you want to do?\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"what do you think?\", \"what do you think about that?\", \"what do you think I should consider?\""
+   ],
+   "newFailures": []
+  },
+  "163": {
+   "before": [
+    "L2: 4 duplicate phrase(s) within this LEGO: \"I think that it's interesting\", \"I think that it's interesting that you like to go by bus\", \"I think that it's interesting when you understand enough words\""
+   ],
+   "after": [
+    "L2: 4 duplicate phrase(s) within this LEGO: \"I think that it's interesting\", \"I think that it's interesting that you like to go by bus\", \"I think that it's interesting when you understand enough words\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0154L01U01",
+   "seed": 154,
+   "role": "use",
+   "target": "do you know where it was?",
+   "old": "それがどこにあるか知っていますか？",
+   "new": "それがどこにあったか知っていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U02",
+   "seed": 154,
+   "role": "use",
+   "target": "she didn't want to tell me where it was",
+   "old": "彼女はそれがどこにあるか教えたくありませんでした。",
+   "new": "彼女はそれがどこにあったか私に教えたくありませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U04",
+   "seed": 154,
+   "role": "use",
+   "target": "I don't know where it was",
+   "old": "それがどこにあるかわかりません",
+   "new": "それがどこにあったかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U07",
+   "seed": 154,
+   "role": "use",
+   "target": "that is why he didn't know where it was",
+   "old": "彼はどこにいるのか誰も知りませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U08",
+   "seed": 154,
+   "role": "use",
+   "target": "I'd like to meet you where you want to go",
+   "old": "あなたが行きたいところへ一緒に行きましょう",
+   "new": "あなたが行きたいところで会いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U09",
+   "seed": 154,
+   "role": "use",
+   "target": "do you know where to practise speaking in English?",
+   "old": "どこで英語を練習すればいいですか？",
+   "new": "英語で話す練習をどこですればいいか知っていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U10",
+   "seed": 154,
+   "role": "use",
+   "target": "where do you want to meet?",
+   "old": "どこで会えますか？",
+   "new": "どこで会いたいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U11",
+   "seed": 154,
+   "role": "use",
+   "target": "could you tell me where you want to go?",
+   "old": "どこへ行くのか教えてください",
+   "new": "どこへ行きたいか教えていただけますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U13",
+   "seed": 154,
+   "role": "use",
+   "target": "do you know where it is good to practise speaking?",
+   "old": "どこで練習するのが一番良いですか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U14",
+   "seed": 154,
+   "role": "use",
+   "target": "we want to meet at six o'clock this evening, but I don't know where",
+   "old": "それがどこにあるか、みんなに聞いてみましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L01U15",
+   "seed": 154,
+   "role": "use",
+   "target": "could you tell me where you are at the moment?",
+   "old": "どこにいるか教えてもらえますか？",
+   "new": "今どこにいるか教えていただけますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U03",
+   "seed": 154,
+   "role": "use",
+   "target": "I'm going to use English on Saturday night",
+   "old": "土曜日の夜に英語を練習する予定です",
+   "new": "土曜日の夜に英語を使うつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U04",
+   "seed": 154,
+   "role": "use",
+   "target": "I was starting to feel better on Saturday night",
+   "old": "土曜日の夜にあなたに会えてうれしかったです",
+   "new": "土曜日の夜に気分がよくなり始めていました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U05",
+   "seed": 154,
+   "role": "use",
+   "target": "he wanted to write a letter to his friend on Saturday night",
+   "old": "先週の土曜日の夜に、彼は手紙を書いていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U06",
+   "seed": 154,
+   "role": "use",
+   "target": "I want to speak with you on Saturday night",
+   "old": "土曜日の夜に話す良い機会だと思います",
+   "new": "土曜日の夜にあなたと話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U07",
+   "seed": 154,
+   "role": "use",
+   "target": "we want to work together on Saturday night",
+   "old": "土曜日の夜に友達と一緒に勉強しましょう",
+   "new": "土曜日の夜に一緒に頑張りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U09",
+   "seed": 154,
+   "role": "use",
+   "target": "she wanted to show me something on Saturday night",
+   "old": "彼女は土曜日の夜に何かを見せたかったようです",
+   "new": "彼女は土曜日の夜に私に何かを見せたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U10",
+   "seed": 154,
+   "role": "use",
+   "target": "I want to practise speaking with someone else on Saturday night",
+   "old": "土曜日の夜、私は他の人と一緒に英語を話す練習をしました",
+   "new": "土曜日の夜に他の人と話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U11",
+   "seed": 154,
+   "role": "use",
+   "target": "are you ready to meet on Saturday night?",
+   "old": "土曜日の夜に会えますか？",
+   "new": "土曜日の夜に会う準備はできていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U12",
+   "seed": 154,
+   "role": "use",
+   "target": "I want to start talking on Saturday night",
+   "old": "土曜日の夜に話し始めましょう",
+   "new": "土曜日の夜に話し始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U13",
+   "seed": 154,
+   "role": "use",
+   "target": "it wasn't possible to meet everyone else on Saturday night",
+   "old": "土曜日の夜に友達に会う予定でしたが、できませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0154L02U14",
+   "seed": 154,
+   "role": "use",
+   "target": "I'm looking forward to talking to you on Saturday night",
+   "old": "土曜日の夜のことが楽しみです",
+   "new": "土曜日の夜にあなたと話すのを楽しみにしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L01U10",
+   "seed": 155,
+   "role": "use",
+   "target": "I don't mind waiting for a little more",
+   "old": "待つことは気にしません",
+   "new": "もう少し待つのは構いません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L01U11",
+   "seed": 155,
+   "role": "use",
+   "target": "I think you don't mind if I need a little more time",
+   "old": "彼は全く気にしないと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L01U12",
+   "seed": 155,
+   "role": "use",
+   "target": "if you don't mind, I'd like to keep on doing this for a while",
+   "old": "あなたが気にしないならば、私はこのままでいいです",
+   "new": "構わなければ、しばらくこれを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L01U13",
+   "seed": 155,
+   "role": "use",
+   "target": "I don't mind when you want to start talking",
+   "old": "私はいつ話しても構いません",
+   "new": "あなたがいつ話し始めたくても構いません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U02",
+   "seed": 155,
+   "role": "use",
+   "target": "are you sure you don't mind waiting for me?",
+   "old": "ここで待っていても大丈夫ですか？",
+   "new": "本当に私を待っても構いませんか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U03",
+   "seed": 155,
+   "role": "use",
+   "target": "it's difficult to be waiting for you for a while",
+   "old": "長い間待っているのは難しいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U04",
+   "seed": 155,
+   "role": "use",
+   "target": "I was waiting for you to say something",
+   "old": "私はあなたの返事を待っていました",
+   "new": "あなたが何か言うのを待っていました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U06",
+   "seed": 155,
+   "role": "use",
+   "target": "it's not a problem to be waiting for someone you know",
+   "old": "私はずっとあなたを待っています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U08",
+   "seed": 155,
+   "role": "use",
+   "target": "I'm waiting for my friend but she doesn't want to talk",
+   "old": "友達を待っていますが、彼女は来ません",
+   "new": "友達を待っていますが、彼女は話したくありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U11",
+   "seed": 155,
+   "role": "use",
+   "target": "he wants to be waiting for me",
+   "old": "彼は私を待っていると言っています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U12",
+   "seed": 155,
+   "role": "use",
+   "target": "are you sure you don't mind waiting for a little more?",
+   "old": "もう少し待っていていただけますか？",
+   "new": "本当にもう少し待っても構いませんか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U13",
+   "seed": 155,
+   "role": "use",
+   "target": "waiting for someone is not a problem if you don't mind",
+   "old": "誰かを待つのは問題ないこともあります",
+   "new": "構わなければ、誰かを待つのは問題ありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U14",
+   "seed": 155,
+   "role": "use",
+   "target": "I was waiting for my friend and I was starting to feel okay",
+   "old": "友達を待っている間、疲れてきました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L02U15",
+   "seed": 155,
+   "role": "use",
+   "target": "I'm waiting for you, there isn't a problem",
+   "old": "ここで待っています、急がなくて大丈夫ですよ",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U02",
+   "seed": 155,
+   "role": "use",
+   "target": "I'll be ready in a few minutes",
+   "old": "あと数分で終わります",
+   "new": "数分で準備ができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U03",
+   "seed": 155,
+   "role": "use",
+   "target": "it's not difficult if you work on it for a few minutes",
+   "old": "数分間練習するだけで良くなります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U04",
+   "seed": 155,
+   "role": "use",
+   "target": "could you wait a few minutes?",
+   "old": "数分待っていただけますか？構いませんか？",
+   "new": "数分待っていただけますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U06",
+   "seed": 155,
+   "role": "use",
+   "target": "I'll be ready in a few minutes, no problem",
+   "old": "もう数分で準備できます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U07",
+   "seed": 155,
+   "role": "use",
+   "target": "I think I can remember in a few minutes",
+   "old": "数分で返事ができると思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U08",
+   "seed": 155,
+   "role": "use",
+   "target": "she wants to find out what to do in a few minutes",
+   "old": "彼女は数分で戻ると言っていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U09",
+   "seed": 155,
+   "role": "use",
+   "target": "I want to practise speaking English for a few minutes",
+   "old": "数分間英語を練習しましょう",
+   "new": "数分間、英語を話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U10",
+   "seed": 155,
+   "role": "use",
+   "target": "I think if you wait a few minutes it will work",
+   "old": "数分待てば分かると思います",
+   "new": "数分待てば、うまくいくと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U12",
+   "seed": 155,
+   "role": "use",
+   "target": "I want to start talking in a few minutes",
+   "old": "数分後に始めましょう",
+   "new": "数分後に話し始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U14",
+   "seed": 155,
+   "role": "use",
+   "target": "I think it will work in a few minutes",
+   "old": "数分で良くなると思います",
+   "new": "数分でうまくいくと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L03U15",
+   "seed": 155,
+   "role": "use",
+   "target": "are you sure you don't mind waiting for a few minutes?",
+   "old": "数分間待っても構いませんか？",
+   "new": "本当に数分待っても構いませんか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U01",
+   "seed": 155,
+   "role": "use",
+   "target": "I want to start talking again tomorrow morning",
+   "old": "明日の朝また話しましょう",
+   "new": "明日の朝また話し始めたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U03",
+   "seed": 155,
+   "role": "use",
+   "target": "it's difficult to feel ready early tomorrow morning",
+   "old": "明日の朝は早く起きることが難しいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U06",
+   "seed": 155,
+   "role": "use",
+   "target": "I'd like you to come back tomorrow morning",
+   "old": "明日の朝ここに来てもらいたいです",
+   "new": "明日の朝、戻ってきてほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U10",
+   "seed": 155,
+   "role": "use",
+   "target": "are you sure you don't mind talking tomorrow morning?",
+   "old": "明日の朝に話せますか？",
+   "new": "本当に明日の朝話しても構いませんか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U11",
+   "seed": 155,
+   "role": "use",
+   "target": "I'm sorry that I need to leave so early tomorrow morning",
+   "old": "明日の朝は疲れるかもしれません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U13",
+   "seed": 155,
+   "role": "use",
+   "target": "I'd like to practise speaking tomorrow morning",
+   "old": "明日の朝ここで練習しましょう",
+   "new": "明日の朝、話す練習をしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0155L04U15",
+   "seed": 155,
+   "role": "use",
+   "target": "I'm going to start talking with my friend tomorrow morning",
+   "old": "明日の朝、友達と一緒に話す予定です",
+   "new": "明日の朝、友達と話し始めるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0156L01U04",
+   "seed": 156,
+   "role": "use",
+   "target": "he wants to go to a restaurant tonight",
+   "old": "彼は今夜レストランに行きたいと言っていました",
+   "new": "彼は今夜レストランに行きたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0156L01U09",
+   "seed": 156,
+   "role": "use",
+   "target": "I want to go to a restaurant tonight, not tomorrow morning",
+   "old": "今夜はレストランに行きましょう",
+   "new": "明日の朝ではなく、今夜レストランに行きたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0156L01U12",
+   "seed": 156,
+   "role": "use",
+   "target": "he wants to come back with everyone else and go to a restaurant",
+   "old": "みんなでレストランに行きましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0156L01U15",
+   "seed": 156,
+   "role": "use",
+   "target": "I want to go to a restaurant before we start talking in English",
+   "old": "レストランに行く前に練習しましょう",
+   "new": "英語で話し始める前に、レストランに行きたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01B03",
+   "seed": 157,
+   "role": "build",
+   "target": "won't be able to",
+   "old": "できないと思います",
+   "new": "できないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01B04",
+   "seed": 157,
+   "role": "build",
+   "target": "won't be able to",
+   "old": "できないかもしれません",
+   "new": "できないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01B07",
+   "seed": 157,
+   "role": "build",
+   "target": "you won't be able to",
+   "old": "あなたはできないかもしれません",
+   "new": "あなたはできないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U04",
+   "seed": 157,
+   "role": "use",
+   "target": "he won't be able to help me",
+   "old": "彼はあなたを助けられないでしょう",
+   "new": "彼は私を助けられないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U05",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to meet you tomorrow morning",
+   "old": "私は明日の朝ここに来られないでしょう",
+   "new": "明日の朝あなたに会えないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U06",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to remember easily",
+   "old": "簡単には覚えられないと思います",
+   "new": "簡単には覚えることができないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U08",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to tell you the answer in time",
+   "old": "私は今すぐには答えられないでしょう",
+   "new": "間に合うように答えを教えられないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U09",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to finish in a few minutes",
+   "old": "数分では終わらないでしょう",
+   "new": "数分では終えられないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U10",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to talk to you today",
+   "old": "今日は話すことができないかもしれません",
+   "new": "今日はあなたと話せないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U11",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to be ready in time",
+   "old": "準備ができないでしょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U13",
+   "seed": 157,
+   "role": "use",
+   "target": "are you sure you won't be able to speak English very well?",
+   "old": "あなたは英語を話せるようになると思いますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L01U14",
+   "seed": 157,
+   "role": "use",
+   "target": "I won't be able to do it exactly the same way",
+   "old": "私は全く同じことはできないでしょう",
+   "new": "全く同じやり方ではできないでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L02U11",
+   "seed": 157,
+   "role": "use",
+   "target": "I don't think I'm going to go there",
+   "old": "私はそこには行かないつもりです",
+   "new": "そこには行かないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L02U12",
+   "seed": 157,
+   "role": "use",
+   "target": "did you want to go there?",
+   "old": "私たちはそこに行くつもりでしたか？",
+   "new": "あなたはそこに行きたかったですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L02U13",
+   "seed": 157,
+   "role": "use",
+   "target": "he was saying he wanted to be there",
+   "old": "彼はそこにいたと言っていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L02U14",
+   "seed": 157,
+   "role": "use",
+   "target": "it wasn't possible unfortunately for you to be there",
+   "old": "あなたがそこにいなかったのは残念です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L03U04",
+   "seed": 157,
+   "role": "use",
+   "target": "he doesn't want to be there",
+   "old": "彼はそこにいることを望んでいないと言っています",
+   "new": "彼はそこにいたくありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L03U12",
+   "seed": 157,
+   "role": "use",
+   "target": "I want you to be able to be there",
+   "old": "あなたがそこにいることができればよかったのに",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L03U14",
+   "seed": 157,
+   "role": "use",
+   "target": "do you think you are going to be able to be there?",
+   "old": "あなたはそこにいることができますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L04U06",
+   "seed": 157,
+   "role": "use",
+   "target": "I'm going to practise speaking with someone else next month",
+   "old": "来月私はもっと英語を練習するつもりです",
+   "new": "来月、他の人と話す練習をするつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L04U07",
+   "seed": 157,
+   "role": "use",
+   "target": "she wants to come back next month",
+   "old": "来月彼女は戻ってきます",
+   "new": "来月、彼女は戻ってきたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L04U10",
+   "seed": 157,
+   "role": "use",
+   "target": "I'm going to think about it more carefully next month",
+   "old": "来月はもっと注意深く考えるつもりです",
+   "new": "来月、それについてもっと注意深く考えるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L04U12",
+   "seed": 157,
+   "role": "use",
+   "target": "I think I'm going to do better next month",
+   "old": "来月までにもっと上手になれると思います",
+   "new": "来月はもっとうまくやるつもりだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0157L04U14",
+   "seed": 157,
+   "role": "use",
+   "target": "I'm happy with how we can talk again next month",
+   "old": "来月また練習できることを嬉しく思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L01U07",
+   "seed": 158,
+   "role": "use",
+   "target": "let's talk today because I want to practise speaking in English",
+   "old": "今日話しましょう英語の練習がしたいです",
+   "new": "英語で話す練習をしたいので、今日話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L01U10",
+   "seed": 158,
+   "role": "use",
+   "target": "let's talk this morning if you don't mind",
+   "old": "よければ、今朝話しましょう",
+   "new": "構わなければ、今朝話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L02U02",
+   "seed": 158,
+   "role": "use",
+   "target": "I'd like to do something else",
+   "old": "私は何か他のことを試したいと思います",
+   "new": "何か他のことをしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L02U03",
+   "seed": 158,
+   "role": "use",
+   "target": "I don't want to talk about this any more let's talk about something else",
+   "old": "もうこれについては話さないで何か他のことを話しましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L02U08",
+   "seed": 158,
+   "role": "use",
+   "target": "she doesn't want to do this she wants to do something else",
+   "old": "彼女は何か他のことをしたいと言っています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L02U10",
+   "seed": 158,
+   "role": "use",
+   "target": "I think I should ask about something else",
+   "old": "私は何か他のことを試すべきだと思います",
+   "new": "何か他のことについて聞いた方がいいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L02U12",
+   "seed": 158,
+   "role": "use",
+   "target": "he doesn't want this he wants something else",
+   "old": "彼は何か他のことに興味があります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0158L02U15",
+   "seed": 158,
+   "role": "use",
+   "target": "why don't you ask about something else?",
+   "old": "何か他のことをしてみたらどうですか？",
+   "new": "何か他のことについて聞いたらどうですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L01B05",
+   "seed": 159,
+   "role": "build",
+   "target": "what he's trying to say",
+   "old": "彼が言おうとしている",
+   "new": "彼が言おうとしていること",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L01B07",
+   "seed": 159,
+   "role": "build",
+   "target": "understand what you're trying to say",
+   "old": "言おうとしていることを理解した",
+   "new": "言おうとしていることを理解する",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L01U05",
+   "seed": 159,
+   "role": "use",
+   "target": "can you hear what she's trying to say?",
+   "old": "彼女が言おうとしていることを聞いてください",
+   "new": "彼女が言おうとしていることが聞こえますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L01U12",
+   "seed": 159,
+   "role": "use",
+   "target": "did you understand what she was trying to say?",
+   "old": "彼女が言おうとしていることが分かりましたか？",
+   "new": "彼女が言おうとしていたことが分かりましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L02U04",
+   "seed": 159,
+   "role": "use",
+   "target": "this isn't very difficult so I hope you'll finish soon",
+   "old": "これはそれほど難しくないのでもうすぐ終わると思います",
+   "new": "これはそれほど難しくないので、もうすぐ終わるといいですね",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L02U09",
+   "seed": 159,
+   "role": "use",
+   "target": "he isn't as patient as you said",
+   "old": "彼はあなたが言ったほど辛抱強くありませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0159L02U15",
+   "seed": 159,
+   "role": "use",
+   "target": "it isn't easy to learn a new language",
+   "old": "日本語を学ぶことは難しいですね",
+   "new": "新しい言語を学ぶのは簡単ではありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0160L01U07",
+   "seed": 160,
+   "role": "use",
+   "target": "I can't say this word in exactly the same way",
+   "old": "この言葉を正確に言うことができません",
+   "new": "この言葉を全く同じ言い方で言うことができません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0160L01U14",
+   "seed": 160,
+   "role": "use",
+   "target": "I want to know what this word is in English",
+   "old": "私はこの言葉を前に聞いたことがあります",
+   "new": "この言葉が英語で何か知りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0160L01U15",
+   "seed": 160,
+   "role": "use",
+   "target": "you use this word a lot when you speak English",
+   "old": "この言葉は英語を話す上でよく使われます",
+   "new": "英語を話すとき、この言葉をよく使います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L01U03",
+   "seed": 161,
+   "role": "use",
+   "target": "I want to speak English with you on Sunday",
+   "old": "日曜日は英語を話したい",
+   "new": "日曜日にあなたと英語を話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L01U06",
+   "seed": 161,
+   "role": "use",
+   "target": "let's talk again on Sunday next week",
+   "old": "日曜日にまた話しましょう来週",
+   "new": "来週の日曜日にまた話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L01U15",
+   "seed": 161,
+   "role": "use",
+   "target": "let's talk about that on Sunday morning",
+   "old": "日曜日の朝一番にそれについて話しましょう",
+   "new": "日曜日の朝、それについて話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L02U04",
+   "seed": 161,
+   "role": "use",
+   "target": "I'd like to relax after we finish on Sunday morning",
+   "old": "日曜日の朝が終わったらリラックスしたいです",
+   "new": "日曜日の朝、終わったらリラックスしたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L02U06",
+   "seed": 161,
+   "role": "use",
+   "target": "I'm not sure if I can remember everything on Sunday morning",
+   "old": "日曜日の朝までにすべて覚えられるか分かりません",
+   "new": "日曜日の朝に全部覚えられるかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L02U11",
+   "seed": 161,
+   "role": "use",
+   "target": "let's meet on Sunday morning to talk",
+   "old": "日曜日の朝に会いに行きましょう",
+   "new": "日曜日の朝に会って話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L02U15",
+   "seed": 161,
+   "role": "use",
+   "target": "I'm going to try to speak English as often as possible on Sunday morning",
+   "old": "日曜日の朝にできるだけよく英語を話そうとします",
+   "new": "日曜日の朝、できるだけ何度も英語を話してみるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L04U13",
+   "seed": 161,
+   "role": "use",
+   "target": "I can't remember how to say what I wanted to say about that book",
+   "old": "その本について言いたかったことを思い出せません",
+   "new": "その本について言いたかったことをどう言うか思い出せません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0161L04U14",
+   "seed": 161,
+   "role": "use",
+   "target": "I enjoy doing interesting things with my friends and I'd like to read that book",
+   "old": "友達と面白いことをしたいし、その本を読みたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0162L04B07",
+   "seed": 162,
+   "role": "build",
+   "target": "what do you think I should consider?",
+   "old": "どれを選べば良いと思いますか",
+   "new": "何を考えた方がいいと思いますか",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0162L04U05",
+   "seed": 162,
+   "role": "use",
+   "target": "let's talk and what do you think about that?",
+   "old": "話しましょう、それについてどう思いますか",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0162L04U10",
+   "seed": 162,
+   "role": "use",
+   "target": "what do you think I should consider?",
+   "old": "どれを選べば良いと思いますか",
+   "new": "何を考えた方がいいと思いますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0162L04U15",
+   "seed": 162,
+   "role": "use",
+   "target": "what do you think it's a good thing to talk as often as possible?",
+   "old": "それはできるだけよく話すことが良いことだと思います、どう思いますか",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0163L02U12",
+   "seed": 163,
+   "role": "use",
+   "target": "I think that it's interesting but could you say that again a little more slowly?",
+   "old": "面白いと思いますが、もう少しゆっくり言ってもらえますか",
+   "new": "面白いと思いますが、もう少しゆっくりもう一度言っていただけますか？",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}

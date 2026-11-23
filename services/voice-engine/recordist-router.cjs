@@ -43,6 +43,7 @@ const {
   languageName,
   propagateTakeToDuplicates,
   clearRerecordWants,
+  retireRequeueGrants,
   castEntryFor,
   isTestFixtureCourse,
   parseSeedLineId,
@@ -75,6 +76,7 @@ const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./r
 const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs')
 const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const wantedPhrases = require('./booth-wanted-phrases.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
 const videoVoiceovers = require('./video-voiceover-lines.cjs')
@@ -1152,6 +1154,8 @@ module.exports = function createRecordistRouter({
       // ...and every LEGO / phrase slot of the same spoken words, in any course (job #198: the LEGO
       // of exactly a seed's words was asked for again straight after the seed, 10 times on 27 Oct).
       await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
+      // A re-queued seed/LEGO line (a grant on the clip its slot held, cs #896·AK) is done: retire the grant.
+      await retireRequeueGrants({ db: db(), recordist, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] seed take for ${resolved.seed.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -1938,6 +1942,14 @@ module.exports = function createRecordistRouter({
       'id, course_code, seed_number, phrase_role, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id',
       parsed.phraseId, 'phrase lookup')
     if (!phrase) { res.status(404).json({ error: `No phrase ${parsed.phraseId}` }); return null }
+    // ONE NAMED LIVE SLOT asked of this reader by hand (cs #907, booth-wanted-phrases.cjs): it passes the sandbox-only
+    // and cast checks below for exactly that row, side and words. The link stays fill-only (linkPhraseTake).
+    const wanted = wantedPhrases.wantedFor({ phraseId: phrase.id, role: parsed.role, spellings: recordist.spellings, rowText: phraseQueue.roleText(phrase, parsed.role) })
+    if (wanted) {
+      const wantedCourse = await readCourse(phrase.course_code)
+      if (!wantedCourse) { res.status(404).json({ error: `No course ${phrase.course_code}` }); return null }
+      return { phrase, course: wantedCourse, text: phraseQueue.roleText(phrase, parsed.role), role: parsed.role }
+    }
     if (!phraseQueue.isPhraseQueueCourse(phrase.course_code)) {
       res.status(403).json({
         error: `Practice phrases of ${phrase.course_code} are not recorded in the booth.`,
@@ -2034,6 +2046,8 @@ module.exports = function createRecordistRouter({
       }
       // ...and every seed / LEGO slot of the same spoken words (job #198).
       await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
+      // A re-queued seed/LEGO line (a grant on the clip its slot held, cs #896·AK) is done: retire the grant.
+      await retireRequeueGrants({ db: db(), recordist, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] phrase take for ${resolved.phrase.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -2153,6 +2167,8 @@ module.exports = function createRecordistRouter({
       }
       // ...and every seed / phrase slot of the same spoken words (job #198).
       await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
+      // A re-queued seed/LEGO line (a grant on the clip its slot held, cs #896·AK) is done: retire the grant.
+      await retireRequeueGrants({ db: db(), recordist, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] lego take for ${resolved.lego.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }

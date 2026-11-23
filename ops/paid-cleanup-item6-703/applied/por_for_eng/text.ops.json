@@ -1,0 +1,625 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0580L01U02",
+   "set": {
+    "known_text": "she said we've often wanted to take the children somewhere a little warmer"
+   },
+   "expect": {
+    "known_text": "she said they've often wanted to take the children somewhere a little warmer",
+    "target_text": "ela disse que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0580L01U03",
+   "set": {
+    "known_text": "he said we've often wanted to take the children somewhere a little warmer"
+   },
+   "expect": {
+    "known_text": "he said they've often wanted to take the children somewhere a little warmer",
+    "target_text": "ele disse que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0580L01U04",
+   "set": {
+    "known_text": "they said we've often wanted to take the children somewhere a little warmer"
+   },
+   "expect": {
+    "known_text": "they said they've often wanted to take the children somewhere a little warmer",
+    "target_text": "disseram que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0601L02U02",
+   "set": {
+    "known_text": "she said we were talking about how it started"
+   },
+   "expect": {
+    "known_text": "she said they were talking about how it started",
+    "target_text": "ela disse que estávamos a falar sobre como começou"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0601L02U03",
+   "set": {
+    "known_text": "he said we were talking about how it all started"
+   },
+   "expect": {
+    "known_text": "he said they were talking about how it all started",
+    "target_text": "ele disse que estávamos a falar sobre como tudo começou"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0601L02U04",
+   "set": {
+    "known_text": "they said we were talking about it"
+   },
+   "expect": {
+    "known_text": "they said they were talking about it",
+    "target_text": "disseram que estávamos a falar sobre isso"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0603L03U02",
+   "set": {
+    "known_text": "she said we didn't have anywhere to live at the time"
+   },
+   "expect": {
+    "known_text": "she said they didn't have anywhere to live at the time",
+    "target_text": "ela disse que nós não tínhamos onde viver na altura"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0603L03U03",
+   "set": {
+    "known_text": "he said we didn't have anywhere to live at the time"
+   },
+   "expect": {
+    "known_text": "he said they didn't have anywhere to live at the time",
+    "target_text": "ele disse que nós não tínhamos onde viver na altura"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0612L01U01",
+   "set": {
+    "known_text": "she said we would have bought something"
+   },
+   "expect": {
+    "known_text": "she said they would have bought something",
+    "target_text": "ela disse que nós teríamos comprado algo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0612L01U02",
+   "set": {
+    "known_text": "he said we would have bought something"
+   },
+   "expect": {
+    "known_text": "he said they would have bought something",
+    "target_text": "ele disse que nós teríamos comprado algo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0612L01U03",
+   "set": {
+    "known_text": "they said we would have bought something"
+   },
+   "expect": {
+    "known_text": "they said they would have bought something",
+    "target_text": "disseram que nós teríamos comprado algo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0620L02U02",
+   "set": {
+    "known_text": "she said it's a very long time since we last saw each other"
+   },
+   "expect": {
+    "known_text": "she said it's a very long time since they last saw each other",
+    "target_text": "ela disse que já passou muito tempo desde a última vez que nos vimos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0620L02U03",
+   "set": {
+    "known_text": "he said it's a very long time since we last saw each other"
+   },
+   "expect": {
+    "known_text": "he said it's a very long time since they last saw each other",
+    "target_text": "ele disse que já passou muito tempo desde a última vez que nos vimos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0620L02U04",
+   "set": {
+    "known_text": "they said it's a very long time since we last saw each other"
+   },
+   "expect": {
+    "known_text": "they said it's a very long time since they last saw each other",
+    "target_text": "disseram que já passou muito tempo desde a última vez que nos vimos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0614L03U02",
+   "set": {
+    "known_text": "she said it's near where your family live"
+   },
+   "expect": {
+    "known_text": "she said it's near where her family live",
+    "target_text": "ela disse que é perto de onde a tua família vive"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0614L03U03",
+   "set": {
+    "known_text": "he said it's near where your family live"
+   },
+   "expect": {
+    "known_text": "he said it's near where his family live",
+    "target_text": "ele disse que é perto de onde a tua família vive"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0614L03U04",
+   "set": {
+    "known_text": "they said it's near where your family live"
+   },
+   "expect": {
+    "known_text": "they said it's near where their family live",
+    "target_text": "disseram que é perto de onde a tua família vive"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0580L01U05",
+   "set": {
+    "known_text": "she said today we've often wanted to take the children somewhere a little warmer",
+    "target_text": "ela disse hoje que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente"
+   },
+   "expect": {
+    "known_text": "she said they've often wanted to take the children somewhere a little warmer today",
+    "target_text": "ela disse que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente hoje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0601L02U05",
+   "set": {
+    "known_text": "she said today we were talking about how it started",
+    "target_text": "ela disse hoje que estávamos a falar sobre como começou"
+   },
+   "expect": {
+    "known_text": "she said they were talking about how it started today",
+    "target_text": "ela disse que estávamos a falar sobre como começou hoje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0603L03U04",
+   "set": {
+    "known_text": "they said we didn't have anywhere to live",
+    "target_text": "disseram que nós não tínhamos onde viver"
+   },
+   "expect": {
+    "known_text": "they said they didn't have anything",
+    "target_text": "disseram que nós não tínhamos"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0603L03U05",
+   "set": {
+    "known_text": "she said yesterday we didn't have anywhere to live at the time",
+    "target_text": "ela disse ontem que nós não tínhamos onde viver na altura"
+   },
+   "expect": {
+    "known_text": "she said they didn't have anywhere to live at the time yesterday",
+    "target_text": "ela disse que nós não tínhamos onde viver na altura ontem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0605L02U02",
+   "set": {
+    "known_text": "she said that because we needed help",
+    "target_text": "ela disse isso porque nós precisávamos de ajuda"
+   },
+   "expect": {
+    "known_text": "she said because they needed help",
+    "target_text": "ela disse porque nós precisávamos de ajuda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0605L02U03",
+   "set": {
+    "known_text": "he said that because we needed help",
+    "target_text": "ele disse isso porque nós precisávamos de ajuda"
+   },
+   "expect": {
+    "known_text": "he said because they needed help",
+    "target_text": "ele disse porque nós precisávamos de ajuda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0605L02U04",
+   "set": {
+    "known_text": "they said that because we needed help",
+    "target_text": "disseram isso porque nós precisávamos de ajuda"
+   },
+   "expect": {
+    "known_text": "they said because they needed help",
+    "target_text": "disseram porque nós precisávamos de ajuda"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0605L02U05",
+   "set": {
+    "known_text": "she said that yesterday because we needed help",
+    "target_text": "ela disse isso ontem porque nós precisávamos de ajuda"
+   },
+   "expect": {
+    "known_text": "she said because they needed help yesterday",
+    "target_text": "ela disse porque nós precisávamos de ajuda ontem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0612L01U04",
+   "set": {
+    "known_text": "she said yesterday we would have bought something",
+    "target_text": "ela disse ontem que nós teríamos comprado algo"
+   },
+   "expect": {
+    "known_text": "she said they would have bought something yesterday",
+    "target_text": "ela disse que nós teríamos comprado algo ontem"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0620L02U05",
+   "set": {
+    "known_text": "she said today it's a very long time since we last saw each other",
+    "target_text": "ela disse hoje que já passou muito tempo desde a última vez que nos vimos"
+   },
+   "expect": {
+    "known_text": "she said it's a very long time since they last saw each other today",
+    "target_text": "ela disse que já passou muito tempo desde a última vez que nos vimos hoje"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0614L03U05",
+   "set": {
+    "known_text": "she said today it's near where your family live",
+    "target_text": "ela disse hoje que é perto de onde a tua família vive"
+   },
+   "expect": {
+    "known_text": "she said it's near where her family live today",
+    "target_text": "ela disse que é perto de onde a tua família vive hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0570L03U02",
+   "expect": {
+    "known_text": "she asked how much he was willing to pay for his ticket",
+    "target_text": "ela perguntou quanto estás disposto a pagar pelo teu bilhete"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0570L03U03",
+   "expect": {
+    "known_text": "he asked how much she was willing to pay for her ticket",
+    "target_text": "ele perguntou quanto estás disposto a pagar pelo teu bilhete"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0570L03U04",
+   "expect": {
+    "known_text": "they asked how much she was willing to pay for her ticket",
+    "target_text": "perguntaram quanto estás disposto a pagar pelo teu bilhete"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0570L03U05",
+   "set": {
+    "known_text": "she said you're willing to pay for your ticket",
+    "target_text": "ela disse que estás disposto a pagar pelo teu bilhete"
+   },
+   "expect": {
+    "known_text": "she said she's willing to pay for her ticket",
+    "target_text": "ela disse que está disposto a pagar pelo teu bilhete"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0572L03U02",
+   "set": {
+    "known_text": "she wants to know if you've forgotten what happened the last time they visited us",
+    "target_text": "ela quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram"
+   },
+   "expect": {
+    "known_text": "she asked if he had forgotten what happened the last time they visited",
+    "target_text": "ela disse se esqueceste-te do que aconteceu da última vez que eles nos visitaram"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0572L03U03",
+   "set": {
+    "known_text": "he wants to know if you've forgotten what happened the last time they visited us",
+    "target_text": "ele quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram"
+   },
+   "expect": {
+    "known_text": "he asked if she had forgotten what happened the last time they visited",
+    "target_text": "ele disse se esqueceste-te do que aconteceu da última vez que eles nos visitaram"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0572L03U04",
+   "expect": {
+    "known_text": "they asked what happened the last time they visited",
+    "target_text": "disseram do que aconteceu da última vez que eles nos visitaram"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0572L03U05",
+   "expect": {
+    "known_text": "she said she had forgotten what happened the last time they visited",
+    "target_text": "ela disse que esqueceste-te do que aconteceu da última vez que eles nos visitaram"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0501L04U04",
+   "expect": {
+    "known_text": "they said if only they could trust you to play together without arguing",
+    "target_text": "disseram se ao menos pudesse confiar em ti para brincarem juntos sem discutir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0501L04U05",
+   "expect": {
+    "known_text": "she said if only she could trust them to play together without arguing",
+    "target_text": "ela disse se ao menos pudesse confiar em ti para brincarem juntos sem discutir hoje"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0508L01U05",
+   "expect": {
+    "known_text": "he said there's no point worrying about the way",
+    "target_text": "ele disse que não vale a pena preocupar-te com a maneira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0175L01U01",
+   "expect": {
+    "known_text": "want to do on Sunday morning",
+    "target_text": "queres fazer no domingo de manhã"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0482L03B02",
+   "set": {
+    "known_text": "I hope they aren't talking seriously",
+    "target_text": "espero que eles não estejam a falar a sério"
+   },
+   "expect": {
+    "known_text": "they aren't talking seriously",
+    "target_text": "eles não estejam a falar a sério"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0482L03U02",
+   "set": {
+    "known_text": "I hope they aren't talking seriously this time",
+    "target_text": "espero que eles não estejam a falar a sério desta vez"
+   },
+   "expect": {
+    "known_text": "he said she said they aren't talking seriously",
+    "target_text": "ele disse que ela disse que eles não estejam a falar a sério"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0482L03U04",
+   "set": {
+    "known_text": "I hope they aren't talking seriously now",
+    "target_text": "espero que eles não estejam a falar a sério agora"
+   },
+   "expect": {
+    "known_text": "she said they aren't really talking seriously",
+    "target_text": "ela disse que eles não estejam a falar a sério mesmo"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0482L03U05",
+   "set": {
+    "known_text": "the only hope is that they aren't talking seriously this time",
+    "target_text": "a única esperança é que eles não estejam a falar a sério desta vez"
+   },
+   "expect": {
+    "known_text": "he said they aren't talking seriously this time",
+    "target_text": "ele disse que eles não estejam a falar a sério desta vez"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0511L01U04",
+   "set": {
+    "known_text": "I need several hours",
+    "target_text": "preciso de várias horas"
+   },
+   "expect": {
+    "known_text": "she said it took several hours to arrive",
+    "target_text": "ela disse que são várias horas a chegar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0511L01U05",
+   "set": {
+    "known_text": "we have to wait several hours",
+    "target_text": "temos de esperar várias horas"
+   },
+   "expect": {
+    "known_text": "he said the news took several hours to arrive",
+    "target_text": "ele disse que são várias horas a chegar ao escritório"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0123L01U07",
+   "expect": {
+    "known_text": "I thought that was a good idea",
+    "target_text": "eu acho que era uma boa ideia"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0453L02U05",
+   "expect": {
+    "known_text": "did they say who they saw?",
+    "target_text": "disseram quem viram já?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0452L01B04",
+   "set": {
+    "known_text": "still didn't say what they wanted",
+    "target_text": "ainda não disseram o que queriam"
+   },
+   "expect": {
+    "known_text": "didn't say what they wanted at all",
+    "target_text": "não disseram o que queriam nunca"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0094L01U04",
+   "expect": {
+    "known_text": "I need the way",
+    "target_text": "eu preciso da maneira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0094L01U07",
+   "expect": {
+    "known_text": "I can help you with the way",
+    "target_text": "eu consigo ajudar-te com a maneira"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0094L03U03",
+   "expect": {
+    "known_text": "I need the way to work",
+    "target_text": "eu preciso da maneira de funcionar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0094L03U04",
+   "expect": {
+    "known_text": "I know the way to work",
+    "target_text": "eu sei a maneira de funcionar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0094L03U06",
+   "expect": {
+    "known_text": "I want to know the way to work",
+    "target_text": "eu quero saber a maneira de funcionar"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0122L02U04",
+   "expect": {
+    "known_text": "I'm excited to see you",
+    "target_text": "estou entusiasmado para te ver"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0127L02U07",
+   "set": {
+    "target_text": "estou entusiasmado por ver-te"
+   },
+   "expect": {
+    "known_text": "I'm excited to see you",
+    "target_text": "estou entusiasmado para ver-te"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0311L03U06",
+   "expect": {
+    "known_text": "she wants to know all the facts",
+    "target_text": "ela quer saber factos"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0450L01U05",
+   "expect": {
+    "known_text": "he said they need to take the train",
+    "target_text": "ele disse que precisam de tomar o comboio"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "por_for_eng:S0434L05B01",
+   "set": {
+    "target_text": "podiam reduzir?"
+   },
+   "expect": {
+    "known_text": "could they reduce?",
+    "target_text": "podiam reduzir"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "por_for_eng:S0453L02B01",
+   "expect": {
+    "known_text": "did they say who they saw?",
+    "target_text": "disseram quem viram"
+   }
+  }
+ ]
+}

@@ -1,0 +1,219 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p11-s174-183.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:20.821Z",
+ "seeds": {
+  "174": {
+   "before": [
+    "L1: 4 duplicate phrase(s) within this LEGO: \"can you understand what I'm saying?\", \"can you understand what I'm saying in English?\", \"can you understand what I'm saying today?\""
+   ],
+   "after": [
+    "L1: 4 duplicate phrase(s) within this LEGO: \"can you understand what I'm saying?\", \"can you understand what I'm saying in English?\", \"can you understand what I'm saying today?\""
+   ],
+   "newFailures": []
+  },
+  "176": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"if he'll be able to help\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"I'll ask him\", \"I'll ask him as soon as I can\", \"I'll ask him this evening\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"if he'll be able to help\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"I'll ask him\", \"I'll ask him as soon as I can\", \"I'll ask him this evening\""
+   ],
+   "newFailures": []
+  },
+  "177": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I'll ask where she wants to go\", \"I'll ask where she wants to go tonight\", \"I'll ask where she wants to go as soon as I can\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I'll ask where she wants to go\", \"I'll ask where she wants to go tonight\", \"I'll ask where she wants to go as soon as I can\""
+   ],
+   "newFailures": []
+  },
+  "179": {
+   "before": [
+    "L1: 7 duplicate phrase(s) within this LEGO: \"on Sunday afternoon\", \"on Sunday afternoon\", \"can we meet on Sunday afternoon?\""
+   ],
+   "after": [
+    "L1: 7 duplicate phrase(s) within this LEGO: \"on Sunday afternoon\", \"on Sunday afternoon\", \"can we meet on Sunday afternoon?\""
+   ],
+   "newFailures": []
+  },
+  "180": {
+   "before": [
+    "L1: 6 duplicate phrase(s) within this LEGO: \"I'd like to read my book for a while\", \"I'd like to read my book for a while tonight\", \"I'd like to read my book for a while on Sunday afternoon\""
+   ],
+   "after": [
+    "L1: 6 duplicate phrase(s) within this LEGO: \"I'd like to read my book for a while\", \"I'd like to read my book for a while tonight\", \"I'd like to read my book for a while on Sunday afternoon\""
+   ],
+   "newFailures": []
+  },
+  "181": {
+   "before": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"take\", \"I'm going to take\""
+   ],
+   "after": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"take\", \"I'm going to take\""
+   ],
+   "newFailures": []
+  },
+  "182": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"my keys\", \"have you seen my keys anywhere?\", \"have you seen my keys?\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"have you seen\", \"have you seen my keys anywhere?\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"seen it anywhere?\", \"have you seen my bag anywhere?\", \"Have you seen my keys anywhere?\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"my keys\", \"have you seen my keys anywhere?\", \"have you seen my keys?\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"have you seen\", \"have you seen my keys anywhere?\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"seen it anywhere?\", \"have you seen my bag anywhere?\", \"Have you seen my keys anywhere?\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0174L01U06",
+   "seed": 174,
+   "role": "use",
+   "target": "can you understand what I'm saying when I speak quickly?",
+   "old": "私が急いで話しても私が言っていることがわかりますか？",
+   "new": "早く話すとき、私が言っていることがわかりますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0174L01U13",
+   "seed": 174,
+   "role": "use",
+   "target": "can you understand what I'm saying in a different way?",
+   "old": "同じことを違う言い方で言っても私が言っていることがわかりますか？",
+   "new": "違う言い方で、私が言っていることがわかりますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0176L01B06",
+   "seed": 176,
+   "role": "build",
+   "target": "I'm looking forward to next year",
+   "old": "来年もよろしくお願いします",
+   "new": "来年を楽しみにしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0176L01U06",
+   "seed": 176,
+   "role": "use",
+   "target": "I'd like to be able to speak well next year",
+   "old": "来年までには話せるようになりたいです",
+   "new": "来年は上手に話せるようになりたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0176L03U10",
+   "seed": 176,
+   "role": "use",
+   "target": "I'll ask him about that again",
+   "old": "それについても彼に聞いてみます",
+   "new": "もう一度それについて彼に聞いてみます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0177L01U10",
+   "seed": 177,
+   "role": "use",
+   "target": "I'll ask where she wants to go on Saturday night",
+   "old": "土曜日にどこに行きたいか聞いてみます",
+   "new": "土曜日の夜にどこに行きたいか聞いてみます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0179L01U10",
+   "seed": 179,
+   "role": "use",
+   "target": "let's work together on Sunday afternoon",
+   "old": "日曜日の午後に一緒に勉強しましょう",
+   "new": "日曜日の午後に一緒に頑張りましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0180L01U12",
+   "seed": 180,
+   "role": "use",
+   "target": "I'd like to read my book for a while but let's speak English",
+   "old": "しばらく本を読みたいですが、まず英語を話しましょう",
+   "new": "しばらく本を読みたいですが、英語を話しましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0180L01U15",
+   "seed": 180,
+   "role": "use",
+   "target": "I'd like to read my book for a while but I'd like you to be here with me",
+   "old": "しばらく本を読みたいですが、あなたがいて欲しいです",
+   "new": "しばらく本を読みたいですが、私とここにいてほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0181L01U01",
+   "seed": 181,
+   "role": "use",
+   "target": "but I have to take my mother to the doctor today",
+   "old": "今日は母を医者に連れて行かなければなりません",
+   "new": "でも今日は母を医者に連れて行かなければなりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0181L01U02",
+   "seed": 181,
+   "role": "use",
+   "target": "my mother wants to meet you",
+   "old": "母が会いたいと言っています",
+   "new": "母があなたに会いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0181L03U01",
+   "seed": 181,
+   "role": "use",
+   "target": "but I have to take my mother to the doctor today",
+   "old": "今日は母を医者に連れて行かなければなりません",
+   "new": "でも今日は母を医者に連れて行かなければなりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0182L02U10",
+   "seed": 182,
+   "role": "use",
+   "target": "have you seen the young dog today?",
+   "old": "犬を今日見ましたか",
+   "new": "今日その若い犬を見ましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0182L03U08",
+   "seed": 182,
+   "role": "use",
+   "target": "have you seen the young dog anywhere?",
+   "old": "犬をどこかで見ましたか",
+   "new": "その若い犬をどこかで見ましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}

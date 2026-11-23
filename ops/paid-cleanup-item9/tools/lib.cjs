@@ -16,7 +16,9 @@ const { isChinese } = req('services/course-builder/lib/language-config.cjs');
 // cs #960: ITEM9_LIVE_DIR points the tools at a snapshot rebuilt from the NIGHTLY COPY (copy-live.cjs) instead of the
 // 18 Nov live reads; every op's expect then carries what the copy holds.
 const LIVE_DIR = process.env.ITEM9_LIVE_DIR || path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item9/live');
-const ITEM_DIR = path.resolve(__dirname, '..');
+// cs #791·AK (overnight #785 item 7): ITEM9_ITEM_DIR points the kit at another work dir (ops/overnight-785/item7-backfill),
+// so the 17-course back-fill reuses dump/vocab/build unchanged without writing into this pass's folders.
+const ITEM_DIR = process.env.ITEM9_ITEM_DIR ? path.resolve(process.env.ITEM9_ITEM_DIR) : path.resolve(__dirname, '..');
 const TODAY = '2026-11-18';
 
 function loadLive(course) {
@@ -33,7 +35,9 @@ function loadLive(course) {
 }
 
 function scanRows(course) {
-  const all = JSON.parse(fs.readFileSync(path.join(ITEM_DIR, 'scan-rows-2026-11-17.json'), 'utf8'));
+  const f = path.join(ITEM_DIR, 'scan-rows-2026-11-17.json');
+  if (!fs.existsSync(f)) return new Map(); // a back-fill work dir touches no scan rows (inserts only)
+  const all = JSON.parse(fs.readFileSync(f, 'utf8'));
   const m = new Map();
   for (const r of all) if (r.course === course) m.set(r.row, r);
   return m;

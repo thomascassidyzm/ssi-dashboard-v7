@@ -1,0 +1,66 @@
+# eng_for_jpn seeds 244-263: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# KEEP S0248L01B01 | その映画は全くひどかったので | I thought the film was complete rubbish — bare LEGO: その映画は全くひどかったので is glossed "I thought the film was complete rubbish" — LEGO-level gloss
+# KEEP S0248L01B02 | 残念ながら、その映画は全くひどかったので | I'm afraid I thought the film was complete rubbish — BUILD on the LEGO's own Japanese; LEGO-level gloss
+# S0248L01U05 use → "I thought the film was complete rubbish so I want my money back" | was: その映画は全くひどかったので、お金を返してほしいです — prompt lacked "I thought"
+S0248L01U05	その映画は全くひどいと思ったので、お金を返してほしいです
+# KEEP S0248L02U04 | すみませんが、お金を返してほしいです | I'm sorry but I want my money back — prompt matches "I'm sorry but I want my money back" (false flag)
+# S0248L02U06 use → "I thought the film was complete rubbish so I want my money back" | was: その映画は全くひどかったので、お金を返してほしいです — prompt lacked "I thought" (same English as L01U05)
+S0248L02U06	その映画は全くひどいと思ったので、お金を返してほしいです
+# S0249L01U04 use → "I want you to help me before you go so let's not take too much time" | was: 行く前に私を手伝ってほしいですが、時間をかけすぎないようにしましょう — prompt said "but"; English is "so"
+S0249L01U04	行く前に私を手伝ってほしいので、時間をかけすぎないようにしましょう
+# S0250L01B03 build → "I want a glass or two of water before I answer" | was: 答える前に水を一杯飲みたいです — prompt lacked "or two"
+S0250L01B03	答える前に水を一、二杯飲みたいです
+# S0250L01U02 use → "I need a little more time before I answer" | was: 答える前に少し時間が必要です — prompt lacked "more"
+S0250L01U02	答える前にもう少し時間が必要です
+# KEEP S0250L01U04 | 答える前に何か他のことを教えてくれますか？ | can you tell me something else before I answer? — prompt is the seed's own Japanese (何か他のこと = "something else") — false flag
+# KEEP S0250L03B03 | 答える前に何か他のことを教えてくれますか？ | can you tell me something else before I answer? — prompt is the seed's own Japanese — false flag
+# S0250L03U04 use → "can you tell me something else because I need a little more time?" | was: もう少し時間が必要なので、何か他のことを話してくれますか？ — prompt said "talk about" in two sentences
+S0250L03U04	もう少し時間が必要なので、何か他のことを教えてくれますか？
+# S0250L03U06 use → "can you tell me what you want to talk about because I want to talk about something different next week?" | was: 何について話したいか教えてくれますか？来週別のことについて話しましょう — English "can you tell me what you want to talk about because I want to talk about something different next week?" is unnatural
+S0250L03U06	DELETE
+# S0251L02U06 use → "let's wait until next month because it's difficult" | was: 来月まで待ちましょう。今月は難しいです — prompt said "this month is difficult" as a second sentence
+S0251L02U06	難しいので、来月まで待ちましょう
+# S0251L02U09 use → "can you wait until next year so we have time to learn?" | was: 来年まで待てますか？その間勉強できますよ — prompt said "you can study in that time"
+S0251L02U09	学ぶ時間があるように、来年まで待てますか？
+# S0253L02U09 use → "I'll be ready in a few minutes and I can work hard" | was: 数分で準備できます。一緒に一生懸命頑張りましょう — English "I'll be ready in a few minutes and I can work hard" is incoherent
+S0253L02U09	DELETE
+# S0254L01U05 use → "I've been ready since this morning but are you ready?" | was: 今朝からずっと準備ができていますが、あなたはまだですか？ — prompt said "aren't you yet?"
+S0254L01U05	今朝からずっと準備ができていますが、あなたは準備ができていますか？
+# S0254L01U06 use → "I've been ready since this morning and I want to speak tonight" | was: 今朝からずっと準備ができています。今夜話しましょう — prompt said "let's talk tonight"
+S0254L01U06	今朝からずっと準備ができていて、今夜話したいです
+# S0254L01U07 use → "I've been ready since this morning and I want to work hard" | was: 今朝からずっと準備ができています。一生懸命頑張りましょう — prompt said "let's work hard"
+S0254L01U07	今朝からずっと準備ができていて、一生懸命頑張りたいです
+# S0256L02U05 use → "I need an hour before I leave tonight so I'll be ready soon" | was: 今夜出発前に一時間必要ですが、すぐに準備ができます — English "I need an hour before I leave tonight so I'll be ready soon" is illogical
+S0256L02U05	DELETE
+# S0256L02U07 use → "she said she can do it in less than an hour if you help her" | was: 手伝ってくれれば彼女は一時間以内に終えられます — prompt lacked "she said"
+S0256L02U07	手伝ってくれれば一時間以内にできると、彼女は言いました
+# S0257L01U07 use → "that was a surprise because he's my friend and I didn't know what to say" | was: それは驚きでした。彼は私の友達なのに何を言えばいいかわかりませんでした — English "that was a surprise because he's my friend and I didn't know what to say" is a chain
+S0257L01U07	DELETE
+# S0257L01U09 use → "I thought that was a good idea because she wanted to tell me what's going to happen" | was: 明日何が起こるか聞いたのでそれはとても良い考えだと思いました — English "I thought that was a good idea because she wanted to tell me what's going to happen" is a garbled chain
+S0257L01U09	DELETE
+# KEEP S0257L02U01 | あの青いものが何か知っていますか | do you know what that blue thing is — prompt matches "do you know what that blue thing is" (false flag)
+# KEEP S0257L03U01 | あそこにある青いものは何なのか知りたいです | I want to know what that blue thing over there is — prompt matches "I want to know what that blue thing over there is" (false flag; "over" is a forward reference the gate may refuse anyway)
+# S0258L01U05 use → "he wanted me to tell you that the man over there wanted to speak with me this evening" | was: あそこにいる男性が今夜私に話しかけたいと思っていることを伝えてほしかったのです — English "he wanted me to tell you that the man over there wanted to speak with me this evening" is a garbled chain
+S0258L01U05	DELETE
+# KEEP S0258L02B01 | は何ですか | what's? — bare LEGO は何ですか = "what's": LEGO-level gloss
+# S0258L02U01 use → "what's that blue thing over there and do you know why it's so interesting?" | was: あそこにある青いものはなぜそんなに面白いのですか？ — English "what's that blue thing over there and do you know why it's so interesting?" is a chain
+S0258L02U01	DELETE
+# S0261L01B07 build → "it might be something difficult to explain" | was: 難しいことを説明するかもしれない — prompt said "might explain something difficult"
+S0261L01B07	説明するのが難しいことかもしれない
+# S0261L01U11 use → "it might be something difficult but I think it might be something important" | was: それは難しいことかもしれないが大事なことだと思う — prompt said "is important"
+S0261L01U11	難しいことかもしれませんが、大事なことかもしれないと思います
+# KEEP S0262L01B04 | 教えてください、昨日話していたあの男の人は誰でしたか？ | tell me, who was that man you were talking to yesterday? — prompt matches "tell me, who was that man…" (false flag)
+# S0262L01B05 build → "can I ask, who was that man you were talking to yesterday?" | was: 昨日話していたあの男の人のことを聞いてもいいですか — prompt said "may I ask about the man"
+S0262L01B05	聞いてもいいですか、昨日話していたあの男の人は誰でしたか？
+# S0262L01B06 build → "who was that man you were talking to yesterday, was he a friend of my father?" | was: 昨日話していたあの男の人は父の友達ですか — English "who was that man you were talking to yesterday, was he a friend of my father?" is a comma-spliced double question
+S0262L01B06	DELETE
+# S0262L01U05 use → "who was that man you were talking to yesterday, was he a friend of my father?" | was: 昨日話していたあの男の人は父の友達だったのでしょうか — same garbled double question as B06
+S0262L01U05	DELETE
+# S0262L01U09 use → "I was going to ask you who was that man you were talking to yesterday" | was: 昨日話していたあの男の人に聞こうと思っていた — English "I was going to ask you who was that man…" has un-inverted embedded question — ungrammatical
+S0262L01U09	DELETE
+# S0262L01U10 use → "I asked a friend who was that man you were talking to yesterday" | was: 昨日話していたあの男の人について友達に聞いた — English "I asked a friend who was that man…" — ungrammatical embedded question
+S0262L01U10	DELETE
+# S0262L01U11 use → "can you tell me who was that man you were talking to yesterday?" | was: 昨日話していたあの男の人のことを教えてもらえますか — English "can you tell me who was that man…" — ungrammatical embedded question
+S0262L01U11	DELETE
+# KEEP S0263L02B01 | 言っているのかわかりません | I don't know — bare LEGO 言っているのかわかりません = "I don't know": LEGO-level gloss

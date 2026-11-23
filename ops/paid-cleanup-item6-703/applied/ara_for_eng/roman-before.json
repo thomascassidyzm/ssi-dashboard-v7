@@ -1,0 +1,1325 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0454L03U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0454L03U05",
+    "seed_number": 454,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she knows our friends came to us",
+    "target_text": "تَعْرِفُ أَنَّ أَصْدِقاؤُنا جاءوا إِلَيْنا",
+    "known_audio_id": "8a2a7f52-5fbb-46b2-beda-15cc4143b9c8",
+    "target1_audio_id": "b0eb7ffc-31dc-430e-80dd-e1a0c0fe8216",
+    "target2_audio_id": "b22c9159-0205-438f-af5a-ac7bfefee65f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0454L03U05",
+    "seed_number": 454,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "she knows our friends came to us",
+    "target_text": "تَعْرِفُ أَنَّ أَصْدِقاؤُنا جاءوا إِلَيْنا",
+    "known_audio_id": "8a2a7f52-5fbb-46b2-beda-15cc4143b9c8",
+    "target1_audio_id": "b0eb7ffc-31dc-430e-80dd-e1a0c0fe8216",
+    "target2_audio_id": "b22c9159-0205-438f-af5a-ac7bfefee65f",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0454L04U02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0454L04U02",
+    "seed_number": 454,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "she thinks our friends came at about six",
+    "target_text": "تَظُنَّ أَنَّ أَصْدِقاؤُنا جاءوا حَوالَيِ السّاعَةِ السّادِسَةِ",
+    "known_audio_id": "36447973-3370-4d84-adc9-35378d224237",
+    "target1_audio_id": "0c745ad7-d2d3-416f-824f-73c0daf48cd0",
+    "target2_audio_id": "9257596a-e93f-435b-bba1-793b4470db5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0454L04U02",
+    "seed_number": 454,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "she thinks our friends came at about six",
+    "target_text": "تَظُنَّ أَنَّ أَصْدِقاؤُنا جاءوا حَوالَيِ السّاعَةِ السّادِسَةِ",
+    "known_audio_id": "36447973-3370-4d84-adc9-35378d224237",
+    "target1_audio_id": "0c745ad7-d2d3-416f-824f-73c0daf48cd0",
+    "target2_audio_id": "9257596a-e93f-435b-bba1-793b4470db5c",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0454L04U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0454L04U05",
+    "seed_number": 454,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "she says they arrived at about six o'clock",
+    "target_text": "تَقولُ إِنَّ أَصْدِقاؤُنا جاءوا حَوالَيِ السّاعَةِ السّادِسَةِ",
+    "known_audio_id": "aa1ad7b7-605a-486a-ad8a-b7ae389b63c0",
+    "target1_audio_id": "be7c4b9e-dc12-4721-b951-3612f1a12706",
+    "target2_audio_id": "b1c0e221-5065-4736-a150-e2b96bc3aeb1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0454L04U05",
+    "seed_number": 454,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "she says they arrived at about six o'clock",
+    "target_text": "تَقولُ إِنَّ أَصْدِقاؤُنا جاءوا حَوالَيِ السّاعَةِ السّادِسَةِ",
+    "known_audio_id": "aa1ad7b7-605a-486a-ad8a-b7ae389b63c0",
+    "target1_audio_id": "be7c4b9e-dc12-4721-b951-3612f1a12706",
+    "target2_audio_id": "b1c0e221-5065-4736-a150-e2b96bc3aeb1",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0627L01B03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0627L01B03",
+    "seed_number": 627,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she said it's not ready",
+    "target_text": "قالَتْ إِنَّها لَيْسَتْ جاهِزَةٌ",
+    "known_audio_id": "5de17f46-1fdc-4354-bc78-f14b6a930f81",
+    "target1_audio_id": "cf88e787-6241-46a8-b4ac-1c7bc382ccf0",
+    "target2_audio_id": "37e4134e-14ac-4d34-b2ea-539f0bc68587",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0627L01B03",
+    "seed_number": 627,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she said it's not ready",
+    "target_text": "قالَتْ إِنَّها لَيْسَتْ جاهِزَةٌ",
+    "known_audio_id": "5de17f46-1fdc-4354-bc78-f14b6a930f81",
+    "target1_audio_id": "cf88e787-6241-46a8-b4ac-1c7bc382ccf0",
+    "target2_audio_id": "37e4134e-14ac-4d34-b2ea-539f0bc68587",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0627L01U02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0627L01U02",
+    "seed_number": 627,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "he said it's not ready",
+    "target_text": "قالَ إِنَّها لَيْسَتْ جاهِزَةٌ",
+    "known_audio_id": "6b4f0d66-310e-4309-89ea-e6e7ef29d50c",
+    "target1_audio_id": "73a38d27-d77f-4fd6-9629-08112b7efbeb",
+    "target2_audio_id": "b7185af2-2453-4f0d-bdb5-fe17f695ca81",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0627L01U02",
+    "seed_number": 627,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "he said it's not ready",
+    "target_text": "قالَ إِنَّها لَيْسَتْ جاهِزَةٌ",
+    "known_audio_id": "6b4f0d66-310e-4309-89ea-e6e7ef29d50c",
+    "target1_audio_id": "73a38d27-d77f-4fd6-9629-08112b7efbeb",
+    "target2_audio_id": "b7185af2-2453-4f0d-bdb5-fe17f695ca81",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0627L01U04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0627L01U04",
+    "seed_number": 627,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "do you know if it's ready?",
+    "target_text": "هَلْ تَعْرِفُ إِنْ كانَتْ جاهِزَةٌ؟",
+    "known_audio_id": "c8ab5863-51d6-418d-a92d-8912a108ff2f",
+    "target1_audio_id": "b56b5fc0-6892-4b7b-aa6d-5eb7323ca837",
+    "target2_audio_id": "19de96f9-f271-4e88-85cc-64f653a95ec3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0627L01U04",
+    "seed_number": 627,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "do you know if it's ready?",
+    "target_text": "هَلْ تَعْرِفُ إِنْ كانَتْ جاهِزَةٌ؟",
+    "known_audio_id": "c8ab5863-51d6-418d-a92d-8912a108ff2f",
+    "target1_audio_id": "b56b5fc0-6892-4b7b-aa6d-5eb7323ca837",
+    "target2_audio_id": "19de96f9-f271-4e88-85cc-64f653a95ec3",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02B01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02B01",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they are ready",
+    "target_text": "هُمْ مُسْتَعِدّينَ",
+    "known_audio_id": "4306e441-6246-4560-a7ed-6a1c20e950cd",
+    "target1_audio_id": "2df9bf41-5240-432e-aff5-507464c5a57d",
+    "target2_audio_id": "23e4a9e7-caea-4bde-b5cd-3ffd60e58f42",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02B01",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "they are ready",
+    "target_text": "هُمْ مُسْتَعِدّينَ",
+    "known_audio_id": "4306e441-6246-4560-a7ed-6a1c20e950cd",
+    "target1_audio_id": "2df9bf41-5240-432e-aff5-507464c5a57d",
+    "target2_audio_id": "23e4a9e7-caea-4bde-b5cd-3ffd60e58f42",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02B02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02B02",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "everybody is ready",
+    "target_text": "الجَميعُ مُسْتَعِدّينَ",
+    "known_audio_id": "49e023b0-a73d-4bd8-822a-5735d03f5b2b",
+    "target1_audio_id": "19c61ec9-bdd8-4f41-8194-d595d43c84de",
+    "target2_audio_id": "43d6832e-9a97-4185-9be5-4aba6eceec0a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02B02",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "everybody is ready",
+    "target_text": "الجَميعُ مُسْتَعِدّينَ",
+    "known_audio_id": "49e023b0-a73d-4bd8-822a-5735d03f5b2b",
+    "target1_audio_id": "19c61ec9-bdd8-4f41-8194-d595d43c84de",
+    "target2_audio_id": "43d6832e-9a97-4185-9be5-4aba6eceec0a",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02B03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02B03",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "are they ready?",
+    "target_text": "هَلْ هُمْ مُسْتَعِدّينَ؟",
+    "known_audio_id": "3182c5a2-003b-4cd8-a374-57ba0b8b9496",
+    "target1_audio_id": "8de9394e-a6e9-48d0-ad58-fc7b3354e4ca",
+    "target2_audio_id": "8ed82d03-8532-4074-aeb5-bac7c7ab572b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02B03",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "are they ready?",
+    "target_text": "هَلْ هُمْ مُسْتَعِدّينَ؟",
+    "known_audio_id": "3182c5a2-003b-4cd8-a374-57ba0b8b9496",
+    "target1_audio_id": "8de9394e-a6e9-48d0-ad58-fc7b3354e4ca",
+    "target2_audio_id": "8ed82d03-8532-4074-aeb5-bac7c7ab572b",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02B04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02B04",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I know they are ready",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مُسْتَعِدّينَ",
+    "known_audio_id": "1adddfec-16df-4a55-8629-c167bb6f92b7",
+    "target1_audio_id": "6fc8b927-48e2-4933-876a-827823a9af40",
+    "target2_audio_id": "50153a84-2850-4ea4-90b3-32d5b092ac4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02B04",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I know they are ready",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مُسْتَعِدّينَ",
+    "known_audio_id": "1adddfec-16df-4a55-8629-c167bb6f92b7",
+    "target1_audio_id": "6fc8b927-48e2-4933-876a-827823a9af40",
+    "target2_audio_id": "50153a84-2850-4ea4-90b3-32d5b092ac4b",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02U01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02U01",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "is everybody ready?",
+    "target_text": "هَلِ الجَميعُ مُسْتَعِدّينَ؟",
+    "known_audio_id": "c815a8b4-af4d-44a8-84f6-6c20d56ae319",
+    "target1_audio_id": "3e239444-db07-4ed2-8cb0-8fc9ca46d7b3",
+    "target2_audio_id": "d1a5732d-73da-4554-a89c-898acbf27722",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02U01",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "is everybody ready?",
+    "target_text": "هَلِ الجَميعُ مُسْتَعِدّينَ؟",
+    "known_audio_id": "c815a8b4-af4d-44a8-84f6-6c20d56ae319",
+    "target1_audio_id": "3e239444-db07-4ed2-8cb0-8fc9ca46d7b3",
+    "target2_audio_id": "d1a5732d-73da-4554-a89c-898acbf27722",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02U02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02U02",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think everybody is ready",
+    "target_text": "أَظُنُّ أَنَّ الجَميعَ مُسْتَعِدّينَ",
+    "known_audio_id": "904c984b-fab1-4f11-9613-54bd307d829e",
+    "target1_audio_id": "c2819921-2ad7-4598-b35d-8798d9b1db96",
+    "target2_audio_id": "89d6158e-2aef-45e9-bdb6-6efda89392f4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02U02",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think everybody is ready",
+    "target_text": "أَظُنُّ أَنَّ الجَميعَ مُسْتَعِدّينَ",
+    "known_audio_id": "904c984b-fab1-4f11-9613-54bd307d829e",
+    "target1_audio_id": "c2819921-2ad7-4598-b35d-8798d9b1db96",
+    "target2_audio_id": "89d6158e-2aef-45e9-bdb6-6efda89392f4",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02U04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02U04",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think the people at the entrance are ready",
+    "target_text": "أَظُنُّ أَنَّ الناسَ عِنْدَ المَدْخَلِ مُسْتَعِدّينَ",
+    "known_audio_id": "5c0e9297-00ac-4030-84f3-117415c304c7",
+    "target1_audio_id": "68ec837a-4c58-4561-984f-13d7c0a0157e",
+    "target2_audio_id": "9f393b18-1d56-4670-a7bc-99ecf8ac3997",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02U04",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I think the people at the entrance are ready",
+    "target_text": "أَظُنُّ أَنَّ الناسَ عِنْدَ المَدْخَلِ مُسْتَعِدّينَ",
+    "known_audio_id": "5c0e9297-00ac-4030-84f3-117415c304c7",
+    "target1_audio_id": "68ec837a-4c58-4561-984f-13d7c0a0157e",
+    "target2_audio_id": "9f393b18-1d56-4670-a7bc-99ecf8ac3997",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0396L02U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0396L02U05",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I know they are ready for Friday night",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مُسْتَعِدّينَ لَيْلَةَ الجُمُعَةِ",
+    "known_audio_id": "1fb95955-728a-4a19-874f-8c7ba616e142",
+    "target1_audio_id": "c86a8ee9-55b0-4ecd-9bc1-30767f41b653",
+    "target2_audio_id": "6ef977d4-20ed-4671-81ff-197320dbdb86",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0396L02U05",
+    "seed_number": 396,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "I know they are ready for Friday night",
+    "target_text": "أَعْرِفُ أَنَّهُمْ مُسْتَعِدّينَ لَيْلَةَ الجُمُعَةِ",
+    "known_audio_id": "1fb95955-728a-4a19-874f-8c7ba616e142",
+    "target1_audio_id": "c86a8ee9-55b0-4ecd-9bc1-30767f41b653",
+    "target2_audio_id": "6ef977d4-20ed-4671-81ff-197320dbdb86",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0134L01U01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0134L01U01",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think that's not a problem",
+    "target_text": "أَظُنُّ أَنَّ ذٰلِكَ لَيْسَتْ مُشْكِلَةً",
+    "known_audio_id": "12424879-b519-4653-ab13-4f187f9f700c",
+    "target1_audio_id": "037a1123-38ea-4001-b1c7-7d8a8a3fdb52",
+    "target2_audio_id": "ca1db7f5-6676-4cee-b1e8-4498e7390f6c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0134L01U01",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I think that's not a problem",
+    "target_text": "أَظُنُّ أَنَّ ذٰلِكَ لَيْسَتْ مُشْكِلَةً",
+    "known_audio_id": "12424879-b519-4653-ab13-4f187f9f700c",
+    "target1_audio_id": "037a1123-38ea-4001-b1c7-7d8a8a3fdb52",
+    "target2_audio_id": "ca1db7f5-6676-4cee-b1e8-4498e7390f6c",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0134L01B03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0134L01B03",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that's not a problem",
+    "target_text": "ذٰلِكَ لَيْسَتْ مُشْكِلَةً",
+    "known_audio_id": "0a81c5f6-5faf-4858-ae77-26cf9b67d8d7",
+    "target1_audio_id": "39c90fb3-4a35-4885-b915-8b19630e1963",
+    "target2_audio_id": "ea20ef19-c9c3-4226-87de-3b3c3a47ae96",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0134L01B03",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that's not a problem",
+    "target_text": "ذٰلِكَ لَيْسَتْ مُشْكِلَةً",
+    "known_audio_id": "0a81c5f6-5faf-4858-ae77-26cf9b67d8d7",
+    "target1_audio_id": "39c90fb3-4a35-4885-b915-8b19630e1963",
+    "target2_audio_id": "ea20ef19-c9c3-4226-87de-3b3c3a47ae96",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 16,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0134L01U03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0134L01U03",
+    "seed_number": 134,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I believe it's not a problem at all",
+    "target_text": "أَعْتَقِدُ أَنَّ ذٰلِكَ لَيْسَتْ مُشْكِلَةً",
+    "known_audio_id": "fecdb1af-6320-4cb3-a433-864d17d79023",
+    "target1_audio_id": "445819a1-e7db-4c04-98da-80c8fefe327e",
+    "target2_audio_id": "dd0100ed-623e-402e-8f16-fcabed2377f9",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0665L01U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0665L01U05",
+    "seed_number": 665,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I hope you all can go",
+    "target_text": "أَرْجو أَنْ يُمْكِنُكُمْ تَذْهَبوا",
+    "known_audio_id": "50a9487c-71dd-4dcb-a0b5-79e254fa5de2",
+    "target1_audio_id": "29f5f375-5ed0-4a9c-b737-d755973a428c",
+    "target2_audio_id": "7c272dfe-b7bb-4e2c-9c05-bcecf888db06",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0668L01B01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0668L01B01",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "you all can",
+    "target_text": "تَسْتَطيعوا",
+    "known_audio_id": "9b36c220-b1e9-433c-a36d-6efd65de4bcd",
+    "target1_audio_id": "52f15f02-5879-4c96-a76d-d899626b6bfd",
+    "target2_audio_id": "e8ca1bb8-4f92-4772-894a-99b2d8306c45",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0668L01B01",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "you all can",
+    "target_text": "تَسْتَطيعوا",
+    "known_audio_id": "9b36c220-b1e9-433c-a36d-6efd65de4bcd",
+    "target1_audio_id": "52f15f02-5879-4c96-a76d-d899626b6bfd",
+    "target2_audio_id": "e8ca1bb8-4f92-4772-894a-99b2d8306c45",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0668L01B03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0668L01B03",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "do you all think you can?",
+    "target_text": "هَلْ تَظُنّونَ أَنَّهُ تَسْتَطيعوا؟",
+    "known_audio_id": "eab7a98c-834d-4a61-9304-8d70378a4b9f",
+    "target1_audio_id": "abd641a0-0ffd-406a-a6c7-ab0a44a10788",
+    "target2_audio_id": "ba9222b9-ecbd-4a7e-a2df-e2b8f0927d54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0668L01B03",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "do you all think you can?",
+    "target_text": "هَلْ تَظُنّونَ أَنَّهُ تَسْتَطيعوا؟",
+    "known_audio_id": "eab7a98c-834d-4a61-9304-8d70378a4b9f",
+    "target1_audio_id": "abd641a0-0ffd-406a-a6c7-ab0a44a10788",
+    "target2_audio_id": "ba9222b9-ecbd-4a7e-a2df-e2b8f0927d54",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0668L01U02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0668L01U02",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can you all do that?",
+    "target_text": "هَلْ تَسْتَطيعوا ذلِكَ؟",
+    "known_audio_id": "b845c061-f0a4-470e-b18b-6d7b5acaeec8",
+    "target1_audio_id": "ae0808cb-6299-4418-b6d3-a3aef7636017",
+    "target2_audio_id": "2bcd9bf4-096e-4f77-94f9-d76cfbc0a9d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0668L01U02",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can you all do that?",
+    "target_text": "هَلْ تَسْتَطيعوا ذلِكَ؟",
+    "known_audio_id": "b845c061-f0a4-470e-b18b-6d7b5acaeec8",
+    "target1_audio_id": "ae0808cb-6299-4418-b6d3-a3aef7636017",
+    "target2_audio_id": "2bcd9bf4-096e-4f77-94f9-d76cfbc0a9d0",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 21,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0668L01U04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0668L01U04",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't know if you all can",
+    "target_text": "لا أَعْرِفُ هَلْ تَسْتَطيعوا",
+    "known_audio_id": "4d3dab86-d9f3-474d-827b-5f72b637a7e2",
+    "target1_audio_id": "eae6d10d-f167-4339-ad64-ce20230d751c",
+    "target2_audio_id": "a424599f-63b3-466b-a534-7e817c936821",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0668L01U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0668L01U05",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "yes, you all can do something",
+    "target_text": "نَعَمْ، تَسْتَطيعوا أَنْ تَفْعَلونَ شَيْئاً",
+    "known_audio_id": "2fcf1219-736c-4db7-a36a-89d447f7f895",
+    "target1_audio_id": "1a2ebf6c-0f93-4506-bc5a-51996dfc24f3",
+    "target2_audio_id": "b7cd5fd5-343f-4645-8823-5c974dc7247a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0668L01U05",
+    "seed_number": 668,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "yes, you all can do something",
+    "target_text": "نَعَمْ، تَسْتَطيعوا أَنْ تَفْعَلونَ شَيْئاً",
+    "known_audio_id": "2fcf1219-736c-4db7-a36a-89d447f7f895",
+    "target1_audio_id": "1a2ebf6c-0f93-4506-bc5a-51996dfc24f3",
+    "target2_audio_id": "b7cd5fd5-343f-4645-8823-5c974dc7247a",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0438L01B01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0438L01B01",
+    "seed_number": 438,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "they want",
+    "target_text": "يُريدوا",
+    "known_audio_id": "2da41079-3e6a-4be3-b8de-274dfc2ce87b",
+    "target1_audio_id": "6bfc6187-6316-47cc-a94f-da096455790a",
+    "target2_audio_id": "1983e2a2-ee99-4356-aa8c-00eaaac7c207",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0438L01B01",
+    "seed_number": 438,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "they want",
+    "target_text": "يُريدوا",
+    "known_audio_id": "2da41079-3e6a-4be3-b8de-274dfc2ce87b",
+    "target1_audio_id": "6bfc6187-6316-47cc-a94f-da096455790a",
+    "target2_audio_id": "1983e2a2-ee99-4356-aa8c-00eaaac7c207",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 24,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0438L01U04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0438L01U04",
+    "seed_number": 438,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "do you think they didn't want to collect?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ لَمْ يُريدوا أَنْ يَجْمَعوا؟",
+    "known_audio_id": "3e7fc4dc-c341-4a6d-84ba-46224ca8e2cf",
+    "target1_audio_id": "1258bfd1-d079-41de-b0dd-c29217f2b136",
+    "target2_audio_id": "5df30a48-479c-413a-a4c5-c50e97965427",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0427L02B01"
+   },
+   "before": {
+    "id": "ara_for_eng:S0427L02B01",
+    "seed_number": 427,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "you think",
+    "target_text": "تَظُنَّ",
+    "known_audio_id": "23780b8b-683a-4122-9e15-e8f97a661305",
+    "target1_audio_id": "7f621fdc-f9b9-4156-813b-ac57f8ade24b",
+    "target2_audio_id": "f3b12b24-21d0-4bed-860c-d7443122113b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0427L02B01",
+    "seed_number": 427,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "you think",
+    "target_text": "تَظُنَّ",
+    "known_audio_id": "23780b8b-683a-4122-9e15-e8f97a661305",
+    "target1_audio_id": "7f621fdc-f9b9-4156-813b-ac57f8ade24b",
+    "target2_audio_id": "f3b12b24-21d0-4bed-860c-d7443122113b",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 26,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0427L02U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0427L02U05",
+    "seed_number": 427,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "do you think they understand each other?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ يَفْهَمونَ بَعْضَهُمْ؟",
+    "known_audio_id": "e2c79db4-59e2-4f90-aa11-3d8f13eeab47",
+    "target1_audio_id": "5816b47e-8809-4e01-a6d7-7792442ca953",
+    "target2_audio_id": "ebcfb8dd-9b74-4b27-8ab5-94ff13422f1e",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0427L02U03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0427L02U03",
+    "seed_number": 427,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "do you think they would like to lead?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ يَوَدّونَ أَنْ يَقودوا؟",
+    "known_audio_id": "22f09043-f688-4102-aa19-560f1956f014",
+    "target1_audio_id": "a9f7fdfb-1964-4e48-a1f7-9d3dc485866f",
+    "target2_audio_id": "1e3914e3-a1ae-436f-b469-afedec78bd77",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0427L02U03",
+    "seed_number": 427,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "do you think they would like to lead?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ يَوَدّونَ أَنْ يَقودوا؟",
+    "known_audio_id": "22f09043-f688-4102-aa19-560f1956f014",
+    "target1_audio_id": "a9f7fdfb-1964-4e48-a1f7-9d3dc485866f",
+    "target2_audio_id": "1e3914e3-a1ae-436f-b469-afedec78bd77",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0154L01B02"
+   },
+   "before": {
+    "id": "ara_for_eng:S0154L01B02",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "where do we meet Saturday night?",
+    "target_text": "أَيْنَ نَلْتَقِيَ لَيْلَةَ السَّبْت",
+    "known_audio_id": "f38f9f64-3ce9-4177-97be-a1907c2168ad",
+    "target1_audio_id": "ac609ae9-fc9e-4080-99a5-ac89f14905b1",
+    "target2_audio_id": "09132d0f-c6aa-4458-824a-f0f0c5a348ed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0154L01B02",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "where do we meet Saturday night?",
+    "target_text": "أَيْنَ نَلْتَقِيَ لَيْلَةَ السَّبْت",
+    "known_audio_id": "f38f9f64-3ce9-4177-97be-a1907c2168ad",
+    "target1_audio_id": "ac609ae9-fc9e-4080-99a5-ac89f14905b1",
+    "target2_audio_id": "09132d0f-c6aa-4458-824a-f0f0c5a348ed",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0154L01B03"
+   },
+   "before": {
+    "id": "ara_for_eng:S0154L01B03",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we meet Saturday night",
+    "target_text": "نَلْتَقِيَ لَيْلَةَ السَّبْت",
+    "known_audio_id": "8764b570-fd2e-4c01-8de9-cc302498d5de",
+    "target1_audio_id": "495f2378-ab86-423d-9559-3c224dab9398",
+    "target2_audio_id": "6b1b66cf-47ff-4fa5-b2c7-e0eb1ff216fe",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0154L01B03",
+    "seed_number": 154,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we meet Saturday night",
+    "target_text": "نَلْتَقِيَ لَيْلَةَ السَّبْت",
+    "known_audio_id": "8764b570-fd2e-4c01-8de9-cc302498d5de",
+    "target1_audio_id": "495f2378-ab86-423d-9559-3c224dab9398",
+    "target2_audio_id": "6b1b66cf-47ff-4fa5-b2c7-e0eb1ff216fe",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0635L01U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0635L01U05",
+    "seed_number": 635,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she said the bag will be fine",
+    "target_text": "قالَتْ إِنَّ حَقيبَةً سَتَكونُ جَيِّدَةً",
+    "known_audio_id": "f19b262f-9c25-4a31-a9aa-52ef6d510743",
+    "target1_audio_id": "db677811-64b8-4c45-bda2-9b7ec22fc747",
+    "target2_audio_id": "db66cf3b-a25b-434c-bab4-c965ce66486a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0635L01U05",
+    "seed_number": 635,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "she said the bag will be fine",
+    "target_text": "قالَتْ إِنَّ حَقيبَةً سَتَكونُ جَيِّدَةً",
+    "known_audio_id": "f19b262f-9c25-4a31-a9aa-52ef6d510743",
+    "target1_audio_id": "db677811-64b8-4c45-bda2-9b7ec22fc747",
+    "target2_audio_id": "db66cf3b-a25b-434c-bab4-c965ce66486a",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0630L01U05"
+   },
+   "before": {
+    "id": "ara_for_eng:S0630L01U05",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I understand what you're saying?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَتَعَلَّمَ ما تَقولُهُ؟",
+    "known_audio_id": "37d9c9a8-04bd-49fd-919a-82c5b2aa4477",
+    "target1_audio_id": "6b998cf3-bfee-4ff5-bed2-77c703424bd6",
+    "target2_audio_id": "134f1770-281c-4d15-aadb-db99acb78cad",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0630L01U05",
+    "seed_number": 630,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "can I understand what you're saying?",
+    "target_text": "هَلْ يُمْكِنُني أَنْ أَتَعَلَّمَ ما تَقولُهُ؟",
+    "known_audio_id": "37d9c9a8-04bd-49fd-919a-82c5b2aa4477",
+    "target1_audio_id": "6b998cf3-bfee-4ff5-bed2-77c703424bd6",
+    "target2_audio_id": "134f1770-281c-4d15-aadb-db99acb78cad",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0415L01U04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0415L01U04",
+    "seed_number": 415,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I asked about the problem here",
+    "target_text": "سَأَلْتُ عَنْ مُشْكِلَةٍ هُنا",
+    "known_audio_id": "f0674f53-5bc1-49b8-8c61-7968c75d889d",
+    "target1_audio_id": "b4d23424-c0f1-4ab8-8ce5-3d6b24fa126c",
+    "target2_audio_id": "b541b20a-f279-4861-8ed5-b627dd1dca04",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0415L01U04",
+    "seed_number": 415,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I asked about the problem here",
+    "target_text": "سَأَلْتُ عَنْ مُشْكِلَةٍ هُنا",
+    "known_audio_id": "f0674f53-5bc1-49b8-8c61-7968c75d889d",
+    "target1_audio_id": "b4d23424-c0f1-4ab8-8ce5-3d6b24fa126c",
+    "target2_audio_id": "b541b20a-f279-4861-8ed5-b627dd1dca04",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "ara_for_eng",
+    "id": "ara_for_eng:S0136L02B04"
+   },
+   "before": {
+    "id": "ara_for_eng:S0136L02B04",
+    "seed_number": 136,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "can you?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ",
+    "known_audio_id": "00d8644c-d05a-4571-a8ea-fcf6f558d518",
+    "target1_audio_id": "b263b1bd-dfbc-4751-87b0-43678e695448",
+    "target2_audio_id": "29d342ce-91fb-4dee-b74e-2a00e7f45e2a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "ara_for_eng:S0136L02B04",
+    "seed_number": 136,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "can you?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ",
+    "known_audio_id": "00d8644c-d05a-4571-a8ea-fcf6f558d518",
+    "target1_audio_id": "b263b1bd-dfbc-4751-87b0-43678e695448",
+    "target2_audio_id": "29d342ce-91fb-4dee-b74e-2a00e7f45e2a",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0427L02U05",
+    "seed_number": 427,
+    "lego_index": 2,
+    "position": 8,
+    "known_text": "do you think they understand each other?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ يَفْهَمونَ بَعْضَهُمْ؟",
+    "word_count": 45,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-06-10T20:37:57.748Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-10T20:37:57.796Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": "e2c79db4-59e2-4f90-aa11-3d8f13eeab47",
+    "target1_audio_id": "5816b47e-8809-4e01-a6d7-7792442ca953",
+    "target2_audio_id": "ebcfb8dd-9b74-4b27-8ab5-94ff13422f1e",
+    "qa_checked": null,
+    "target1_duration_ms": 4200,
+    "target2_duration_ms": 3888,
+    "lego_id": null,
+    "target_text_roman": "hal tazunna annahum yafhamoona ba'dahum?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0438L01U04",
+    "seed_number": 438,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "do you think they didn't want to collect?",
+    "target_text": "هَلْ تَظُنَّ أَنَّهُمْ لَمْ يُريدوا أَنْ يَجْمَعوا؟",
+    "word_count": 51,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-06-10T20:52:14.784Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-10T20:52:14.827Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "3e7fc4dc-c341-4a6d-84ba-46224ca8e2cf",
+    "target1_audio_id": "1258bfd1-d079-41de-b0dd-c29217f2b136",
+    "target2_audio_id": "5df30a48-479c-413a-a4c5-c50e97965427",
+    "qa_checked": null,
+    "target1_duration_ms": 4392,
+    "target2_duration_ms": 4104,
+    "lego_id": null,
+    "target_text_roman": "hal tazunna annahum lam yureedoo an yajma'oo?",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0668L01U04",
+    "seed_number": 668,
+    "lego_index": 1,
+    "position": 7,
+    "known_text": "I don't know if you all can",
+    "target_text": "لا أَعْرِفُ هَلْ تَسْتَطيعوا",
+    "word_count": 28,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-06-11T01:41:51.306Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-11T01:41:51.343Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "4d3dab86-d9f3-474d-827b-5f72b637a7e2",
+    "target1_audio_id": "eae6d10d-f167-4339-ad64-ce20230d751c",
+    "target2_audio_id": "a424599f-63b3-466b-a534-7e817c936821",
+    "qa_checked": null,
+    "target1_duration_ms": 3336,
+    "target2_duration_ms": 3240,
+    "lego_id": null,
+    "target_text_roman": "laa a'rifu hal tastatee'oo",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0665L01U05",
+    "seed_number": 665,
+    "lego_index": 1,
+    "position": 8,
+    "known_text": "I hope you all can go",
+    "target_text": "أَرْجو أَنْ يُمْكِنُكُمْ تَذْهَبوا",
+    "word_count": 34,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-06-11T01:40:18.174Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-06-11T01:40:18.213Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "50a9487c-71dd-4dcb-a0b5-79e254fa5de2",
+    "target1_audio_id": "29f5f375-5ed0-4a9c-b737-d755973a428c",
+    "target2_audio_id": "7c272dfe-b7bb-4e2c-9c05-bcecf888db06",
+    "qa_checked": null,
+    "target1_duration_ms": 3744,
+    "target2_duration_ms": 3264,
+    "lego_id": null,
+    "target_text_roman": "arjoo an yumkinukum tadhhaboo",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "ara_for_eng:S0134L01U03",
+    "seed_number": 134,
+    "lego_index": 1,
+    "position": 9,
+    "known_text": "I believe it's not a problem at all",
+    "target_text": "أَعْتَقِدُ أَنَّ ذٰلِكَ لَيْسَتْ مُشْكِلَةً",
+    "word_count": 43,
+    "lego_count": 8,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-02-24T22:12:10.079Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-02-24T22:12:10.121Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": "fecdb1af-6320-4cb3-a433-864d17d79023",
+    "target1_audio_id": "445819a1-e7db-4c04-98da-80c8fefe327e",
+    "target2_audio_id": "dd0100ed-623e-402e-8f16-fcabed2377f9",
+    "qa_checked": null,
+    "target1_duration_ms": 4176,
+    "target2_duration_ms": 3480,
+    "lego_id": null,
+    "target_text_roman": "a'taqidu anna dhaalika laysat mushkilatan",
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "I believe",
+      "legoId": "S0125L02",
+      "target": "أَعْتَقِدُ",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " أَنَّ",
+      "isGhost": true
+     },
+     {
+      "known": "that",
+      "legoId": "S0112L01",
+      "target": " ذٰلِكَ",
+      "isGhost": false
+     },
+     {
+      "known": "it's not a problem",
+      "legoId": "S0134L01",
+      "target": " لَيْسَتْ مُشْكِلَةً",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

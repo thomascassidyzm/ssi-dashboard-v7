@@ -1,0 +1,153 @@
+{
+ "target1|你想快点记住他的名字。": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|你想快点记住他的名字。": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target1|你想快点记住他的名字": {
+  "ok": true,
+  "source": "library",
+  "audioId": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|你想快点记住他的名字": {
+  "ok": true,
+  "source": "library",
+  "audioId": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|我想继续做一会儿这个。": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6d4b4f10-a555-4f15-8fe1-f7e3850d383f",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target2|我想继续做一会儿这个。": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c44a972f-44e0-4623-8d78-3dabb7ee7b2e",
+  "charsSpent": 11,
+  "status": 200
+ },
+ "target1|做一会儿这个。": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "06a0aadd-dc89-4cd5-a003-d66f82561cba",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "target2|做一会儿这个。": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "27a9022e-c491-4926-98fb-b18dc06332d8",
+  "charsSpent": 7,
+  "status": 200
+ },
+ "known|中国語を話す友だち、誰がいる？": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+  "charsSpent": 15,
+  "status": 200
+ },
+ "target1|你哪些朋友会说中文？": {
+  "ok": true,
+  "source": "library",
+  "audioId": "1a654aab-afef-47b6-b8a9-3067523b14af",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|你哪些朋友会说中文？": {
+  "ok": true,
+  "source": "library",
+  "audioId": "64cf479a-aba0-4495-b808-383b5343e360",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|中文": {
+  "ok": true,
+  "source": "library",
+  "audioId": "e0dbcbc8-008a-4f4d-b9e2-fb350d99606a",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|中文": {
+  "ok": true,
+  "source": "library",
+  "audioId": "f8edaeeb-dfa9-46ae-bcac-d5138048835e",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|我想说中文": {
+  "ok": true,
+  "source": "library",
+  "audioId": "e3bf5779-5cc6-4421-9536-aa0fbb7bedb2",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target2|我想说中文": {
+  "ok": true,
+  "source": "library",
+  "audioId": "d254947e-f1d1-4cfd-a69f-09907d84efdc",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|我在学中文": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"我在学中文\" is already recorded in zho — 4 clip(s): 1d934465-65b9-4bce-b9ab-be3dcf01a916 (voice jpi39icg, zho_for_jpn target1); f383e98a-a595-402a-b4ba-1b9acb4d5538 (voice azure_zh-CN-XiaochenNeural, zho_for_jpn target1); 85a77692-5e69-4228-849b-516431d530e7 (voice azure_zh-CN-XiaochenNeural, deu_for_zho known); 3e19e7e1-bf7f-4a69-b9bb-965b10e10260 (voice jpi39icg, zho_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/zho_for_jpn/link-clip), or take the voice question to a person. A second performance in cartesia_f9a4b3a6-b44b-469f-90e3-c8e19bd30e99 needs a re-record grant for zho_for_jpn target1 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+   "f383e98a-a595-402a-b4ba-1b9acb4d5538",
+   "85a77692-5e69-4228-849b-516431d530e7",
+   "3e19e7e1-bf7f-4a69-b9bb-965b10e10260",
+   "f9a4b3a6-b44b-469f-90e3-c8e19bd30e99",
+   "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+   "f383e98a-a595-402a-b4ba-1b9acb4d5538",
+   "85a77692-5e69-4228-849b-516431d530e7",
+   "3e19e7e1-bf7f-4a69-b9bb-965b10e10260"
+  ]
+ },
+ "target2|我在学中文": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"我在学中文\" is already recorded in zho — 3 clip(s): a46ff6a6-0c28-465b-80c0-7999962dc13a (voice azure_zh-CN-YunfengNeural, zho_for_jpn target2); 85a77692-5e69-4228-849b-516431d530e7 (voice azure_zh-CN-XiaochenNeural, deu_for_zho known); 3e19e7e1-bf7f-4a69-b9bb-965b10e10260 (voice jpi39icg, zho_for_eng target1). Recordings are per language: link an existing clip (POST /api/production/zho_for_jpn/link-clip), or take the voice question to a person. A second performance in cartesia_16212f18-4955-4be9-a6cd-2196ce2c11d1 needs a re-record grant for zho_for_jpn target2 (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+   "85a77692-5e69-4228-849b-516431d530e7",
+   "3e19e7e1-bf7f-4a69-b9bb-965b10e10260",
+   "16212f18-4955-4be9-a6cd-2196ce2c11d1",
+   "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+   "85a77692-5e69-4228-849b-516431d530e7",
+   "3e19e7e1-bf7f-4a69-b9bb-965b10e10260"
+  ]
+ },
+ "target1|我喜欢中文": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6655b3b6-bc8f-42fc-b0ef-c89800ab695c",
+  "charsSpent": 5,
+  "status": 200
+ },
+ "target2|我喜欢中文": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d7055d12-2604-4593-8c61-81786816ff47",
+  "charsSpent": 5,
+  "status": 200
+ }
+}

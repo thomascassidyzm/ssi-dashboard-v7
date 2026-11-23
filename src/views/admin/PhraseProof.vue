@@ -9,10 +9,17 @@
       </div>
       <div class="bar">
         <button class="pill" :class="{ on: flaggedOnly }" @click="setFlaggedOnly(!flaggedOnly)">⚑ Flagged only</button>
+        <button class="pill" :class="{ on: showEnglish }" :aria-pressed="showEnglish" @click="setShowEnglish(!showEnglish)">Show English</button>
         <span class="count"><b>{{ flaggedCount }}</b> flagged · {{ total }}</span>
         <button class="pill" @click="exportFlags">Export</button>
       </div>
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
+      <!-- Shown when a load put the reader back at a remembered row: the row it went to, and the way out to the top. -->
+      <p v-if="cameBack" class="back">
+        Back to where you were: <a href="#" @click.prevent="goBack">#{{ cameBack.n }}</a>
+        · <a href="#" @click.prevent="goTop">Go to top</a>
+        <button class="x" aria-label="Hide this line" @click="cameBack = null">×</button>
+      </p>
     </header>
 
     <!-- Fixed overlay, as on the LEGO page (#551): always on screen whatever the scroll position. -->
@@ -40,7 +47,7 @@
             <!-- The last word and the flag never part, so the flag cannot wrap onto a line of its own. -->
             <span class="cy" @click="toggle(r.p.id)">{{ r.head }}<span class="tail">{{ r.tail }}<button class="flag" :class="{ on: flagOf(r.p).flagged }"
               :aria-pressed="flagOf(r.p).flagged" :aria-label="(flagOf(r.p).flagged ? 'Unflag ' : 'Flag ') + r.p.id" @click.stop="flip(r.p)">{{ flagOf(r.p).flagged ? '⚑' : '⚐' }}</button></span></span>
-            <div v-if="open[r.p.id]" class="en" @click="toggle(r.p.id)">{{ r.p.en || '— no English —' }}</div>
+            <div v-if="showEnglish || open[r.p.id]" class="en" @click="toggle(r.p.id)">{{ r.p.en || '— no English —' }}</div>
             <div v-if="flagOf(r.p).flagged || flagOf(r.p).note" class="notewrap">
               <input class="noteinp" type="text" :value="flagOf(r.p).note" maxlength="1000" placeholder="Note (optional)"
                      enterkeyhint="done" @input="onNote(r.p, $event.target.value)" @blur="saveNow(r.p)" @keyup.enter="$event.target.blur()" />
@@ -79,6 +86,11 @@ const total = ref(0)
 const loading = ref(false)
 const loadError = ref('')
 const flaggedOnly = ref(false)
+// "Show English" pill: the English under every row at once, for a proofreader who wants both lines throughout.
+// Off by default; one remembered choice shared with the LEGO proof page.
+const SHOW_EN_KEY = 'proof:showEnglish'
+const showEnglish = ref(readShowEnglish())
+function readShowEnglish() { try { return localStorage.getItem(SHOW_EN_KEY) === '1' } catch { return false } }
 const flags = reactive({})         // id -> { flagged, note }, only for rows that have ever had one
 const open = reactive({})
 const state = reactive({})
@@ -111,7 +123,8 @@ const keyOf2 = (p, marker) => `${p.id}|${marker ? 1 : 0}`
 function estimate(p, marker, f) {
   const textW = Math.max(120, width.value - 52)       // stripe + number column + flag
   const lines = Math.max(1, Math.ceil((p.cy.length * 8.6 + 26) / textW))
-  return 2 + lines * 22 + (marker ? 16 : 0) + (f && (f.flagged || f.note) ? 36 : 0)
+  const enLines = showEnglish.value ? Math.max(1, Math.ceil(((p.en || '').length * 7.4) / textW)) : 0
+  return 2 + lines * 22 + enLines * 20 + (marker ? 16 : 0) + (f && (f.flagged || f.note) ? 36 : 0)
 }
 const tops = computed(() => {
   void measureTick.value
@@ -188,30 +201,48 @@ function onWindowResize() {
   readView()
 }
 
-// Keep his place: the id of the top row, per course, so a reload lands on the same phrase.
+// Keep the reader's place (cs #864, for Deborah's Welsh proofread): the id of the top row, per course, in localStorage,
+// so a reload lands on the same phrase. It lives in this browser only — there is no server-side per-user place yet.
+// The top of the list is never saved as a place, so "Go to top" does not wipe the place the reader came back to.
 const placeKey = (code) => `phraseProof:place:${code}`
+const cameBack = ref(null)         // { id, n } of the row a load scrolled back to; null = nothing to announce
 // How much of the viewport's top the two sticky bars (Popty's navbar + this page's header) cover once scrolled.
 const navbarH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-navbar-height')) || 0
 const coveredTop = () => navbarH() + (topEl.value?.offsetHeight || 0)
 let placeTimer = 0
+function savePlace(code) {
+  if (course.value !== code || flaggedOnly.value || loading.value || !shown.value.length) return
+  const i = rowAt(tops.value, viewTop.value + coveredTop())
+  if (i <= 0) return
+  try { localStorage.setItem(placeKey(code), shown.value[i].id) } catch { /* private mode */ }
+}
 function rememberPlace() {
-  if (flaggedOnly.value || loading.value || !shown.value.length) return
   clearTimeout(placeTimer)
   const code = course.value
-  placeTimer = setTimeout(() => {
-    const p = shown.value[rowAt(tops.value, viewTop.value + coveredTop())]
-    try { if (p && course.value === code) localStorage.setItem(placeKey(code), p.id) } catch { /* private mode */ }
-  }, 400)
+  placeTimer = setTimeout(() => savePlace(code), 400)
 }
-async function restorePlace() {
+// Closing the tab or switching app inside the 400 ms must not lose the last scroll.
+function flushPlace() { clearTimeout(placeTimer); readView(); savePlace(course.value) }
+function scrollToRow(i) {
+  window.scrollTo(0, i > 0 ? listTop() + tops.value[i] - coveredTop() : 0)
+  readView()
+}
+// `announce` (a fresh load) shows the "Back to where you were" line; leaving Flagged only restores quietly.
+async function restorePlace(announce = false) {
   let id = null
   try { id = localStorage.getItem(placeKey(course.value)) } catch { /* ignore */ }
   const i = id ? shown.value.findIndex((p) => p.id === id) : -1
-  await nextTick()
-  if (i > 0) window.scrollTo(0, listTop() + tops.value[i] - coveredTop())
-  else window.scrollTo(0, 0)
-  readView()
+  if (announce) cameBack.value = i > 0 ? { id, n: shown.value[i].n } : null
+  await nextTick()             // the line above changes the sticky header's height; scroll after it is laid out
+  scrollToRow(i)
 }
+async function goBack() {
+  const id = cameBack.value?.id
+  if (!id) return
+  if (flaggedOnly.value) { flaggedOnly.value = false; await nextTick() }
+  scrollToRow(shown.value.findIndex((p) => p.id === id))
+}
+function goTop() { window.scrollTo(0, 0); readView() }
 
 // ---- loading ------------------------------------------------------------------------------------------------------
 // Each load gets a generation number; a response for an older one (a slow North list landing after South) is dropped.
@@ -219,7 +250,7 @@ let loadGen = 0
 async function load() {
   const gen = ++loadGen
   const code = course.value
-  loading.value = true; loadError.value = ''; phrases.value = []; legos.value = []; total.value = 0
+  loading.value = true; loadError.value = ''; phrases.value = []; legos.value = []; total.value = 0; cameBack.value = null
   for (const k of Object.keys(flags)) delete flags[k]
   measured.clear()
   try {
@@ -234,7 +265,7 @@ async function load() {
   } catch (e) {
     if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
   } finally { if (gen === loadGen) loading.value = false }
-  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace() }
+  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace(true) }
 }
 
 function pick(code) {
@@ -249,8 +280,16 @@ function setFlaggedOnly(v) {
   flaggedOnly.value = v
   nextTick(() => { if (v) window.scrollTo(0, 0); else restorePlace() })
 }
+// Every row changes height at once, so the old measurements are dropped and the row being read is put back on screen.
+function setShowEnglish(v) {
+  const i = window.scrollY > 0 && shown.value.length ? rowAt(tops.value, viewTop.value + coveredTop()) : -1
+  showEnglish.value = v
+  try { localStorage.setItem(SHOW_EN_KEY, v ? '1' : '0') } catch { /* private mode */ }
+  measured.clear(); measureTick.value++
+  if (i > 0) nextTick(() => { window.scrollTo(0, listTop() + tops.value[i] - coveredTop()); readView() })
+}
 
-function toggle(id) { open[id] = !open[id] }
+function toggle(id) { if (!showEnglish.value) open[id] = !open[id] }
 
 // ---- saving (as the LEGO page: one save per row at a time, keyed by course + id, course captured at the change) -----
 const inflight = {}
@@ -344,12 +383,15 @@ onMounted(() => {
   if (typeof ResizeObserver !== 'undefined') ro = new ResizeObserver(onResized)
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onWindowResize)
+  window.addEventListener('pagehide', flushPlace)
   load()
 })
 onBeforeUnmount(() => {
   ro?.disconnect()
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onWindowResize)
+  window.removeEventListener('pagehide', flushPlace)
+  flushPlace()
 })
 </script>
 
@@ -377,6 +419,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .count b { color: var(--pp-amber); font-size: 1rem; }
 .msg { font-size: 0.85rem; color: var(--pp-good); margin: 0.25rem 0 0; }
 .msg.bad { color: var(--pp-bad); }
+.back { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--pp-muted); margin: 0.2rem 0 0; }
+.back a { color: var(--pp-en); text-decoration: underline; padding: 0.35rem 0; font-variant-numeric: tabular-nums; }
+.back .x { margin-left: auto; border: 0; background: transparent; color: var(--pp-muted); font-size: 1.1rem; line-height: 1; min-width: 36px; min-height: 32px; }
 .note { color: var(--pp-muted); padding: 1rem 0.25rem; }
 .export-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 0.75rem; }
 .export { background: #fff; color: var(--pp-ink); border-radius: 12px; padding: 0.75rem; width: min(900px, 100%); max-height: 100%; display: flex; flex-direction: column; }

@@ -1,0 +1,90 @@
+# eng_for_jpn seeds 114-123: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 2 flagged rows no longer exist.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0114L01U06 use → "I feel as if I'm doing worse today than yesterday but I don't worry about it" | was: 昨日より今日の方がうまくいっていないように感じますが、心配しないようにします — prompt said "I'll try not to worry"; English is "I don't worry about it"
+S0114L01U06	昨日より今日の方がうまくいっていないように感じますが、それについて心配していません
+# S0114L01U08 use → "I feel as if I'm doing worse today than yesterday so I want to practise more" | was: 昨日より今日の方がうまくいっていないように感じますが、練習を続けます — prompt said "but I'll keep practising"; English is "so I want to practise more"
+S0114L01U08	昨日より今日の方がうまくいっていないように感じるので、もっと練習したいです
+# S0114L01U14 use → "I feel as if I'm doing worse today than yesterday but this is the only way it will work" | was: 昨日より今日の方がうまくいっていないように感じますが、これが唯一の方法です — prompt lacked "it will work" (seed 94's own Japanese for the tail)
+S0114L01U14	昨日より今日の方がうまくいっていないように感じますが、これがうまくいく唯一の方法です
+# S0114L01U15 use → "I feel as if I'm doing worse today than yesterday but it's a good thing to try" | was: 昨日より今日の方がうまくいっていないように感じますが、大丈夫です — prompt said "it's fine"; English is "it's a good thing to try"
+S0114L01U15	昨日より今日の方がうまくいっていないように感じますが、やってみるのはいいことです
+# S0115L01B03 build → "I don't feel as if I'm ready to have a conversation yet" | was: まだ準備ができているようには感じません — prompt lacked 会話をする
+S0115L01B03	まだ会話をする準備ができているようには感じません
+# S0115L01B04 build → "I don't feel as if I'm ready to have a conversation at the moment" | was: まだ準備ができていません — prompt lacked "feel" and "conversation"; English has "at the moment"
+S0115L01B04	今は会話をする準備ができているようには感じません
+# S0115L01B05 build → "I don't feel as if I'm ready to have a conversation at all" | was: まだ準備ができているようには全く感じません — prompt lacked 会話をする and added まだ
+S0115L01B05	会話をする準備ができているようには全く感じません
+# S0115L01B06 build → "I don't feel as if I'm ready to have a conversation with anyone yet" | was: まだ準備ができているようには全くには感じません — prompt was garbled (全くには) and lacked "with anyone"
+S0115L01B06	まだ誰とも会話をする準備ができているようには感じません
+# S0115L01B07 build → "I don't feel as if I'm ready to have a conversation but I want to keep on" | was: まだ会話をする準備ができているようには感じません — prompt added まだ and lacked "but I want to keep on"
+S0115L01B07	会話をする準備ができているようには感じませんが、続けたいです
+# S0115L01U06 use → "I don't feel as if I'm ready to have a conversation but I'm doing better today" | was: 会話をする準備ができているようには感じませんが、昨日より今日の方がうまくなっています — prompt added "than yesterday"
+S0115L01U06	会話をする準備ができているようには感じませんが、今日はうまくなっています
+# S0115L01U14 use → "I don't feel as if I'm ready to have a conversation now but I think I'll be ready soon" | was: 今は会話をする準備ができているようには感じませんが、いつかできると思います — prompt said いつか; English is "soon"
+S0115L01U14	今は会話をする準備ができているようには感じませんが、もうすぐできると思います
+# S0116L01B02 build → "this isn't the best choice I could make" | was: これは最善の選択ではありません — prompt lacked 私ができる ("I could make") — the seed's own Japanese
+S0116L01B02	これは私ができる最善の選択ではありません
+# S0116L01B03 build → "this isn't the best choice I could make for me" | was: 私にとって最善の選択ではありません — English "this isn't the best choice I could make for me" is redundant/unnatural
+S0116L01B03	DELETE
+# S0116L01B04 build → "I think this isn't the best choice I could make" | was: これは最善の選択ではないと思います — prompt lacked 私ができる
+S0116L01B04	これは私ができる最善の選択ではないと思います
+# S0116L01B05 build → "I know this isn't the best choice I could make" | was: これが最善の選択でないことはわかっています — prompt lacked 私ができる
+S0116L01B05	これが私ができる最善の選択でないことはわかっています
+# S0116L01B06 build → "I think this isn't the best choice I could make but it's a good thing" | was: これは最善の選択ではないかもしれません — English "I think this isn't the best choice I could make but it's a good thing" is incoherent
+S0116L01B06	DELETE
+# S0116L01B07 build → "I know this isn't the best choice I could make but I need to try" | was: これが最善の選択でないことを認めます — prompt said "admit" and lacked "but I need to try"
+S0116L01B07	これが私ができる最善の選択でないことはわかっていますが、やってみる必要があります
+# S0116L01U01 use → "this isn't the best choice I could make but it's the only way it will work" | was: これは最善の選択ではありませんが、今はこれしかできません — prompt said "the only thing I can do now"
+S0116L01U01	これは私ができる最善の選択ではありませんが、うまくいく唯一の方法です
+# S0116L01U03 use → "I think this isn't the best choice I could make but it's all I can do now" | was: これは最善の選択ではないと思いますが、今はこれしかありません — prompt lacked 私ができる and said "this is all there is"
+S0116L01U03	これは私ができる最善の選択ではないと思いますが、今はこれしかできません
+# S0116L01U04 use → "this isn't the best choice I could make but I'd like to keep on" | was: これは私ができる最善の選択ではないかもしれませんが、続けます — prompt said "might not … I'll continue"
+S0116L01U04	これは私ができる最善の選択ではありませんが、続けたいです
+# S0116L01U06 use → "I know this isn't the best choice I could make but I need to do it now" | was: これが最善の選択ではないことはわかっていますが、今はこれが必要です — prompt lacked 私ができる and said "I need this"
+S0116L01U06	これが私ができる最善の選択でないことはわかっていますが、今それをする必要があります
+# S0116L01U07 use → "this isn't the best choice I could make but it's very interesting to try" | was: これは最善の選択ではないかもしれませんが、面白い経験です — prompt said "might not … interesting experience"
+S0116L01U07	これは私ができる最善の選択ではありませんが、やってみるのはとても面白いです
+# S0116L01U09 use → "I think this isn't the best choice I could make but I want to try" | was: これは最善の選択ではないと思いますが、やってみます — prompt lacked 私ができる and said "I'll try"
+S0116L01U09	これは私ができる最善の選択ではないと思いますが、やってみたいです
+# S0116L01U10 use → "this isn't the best choice I could make but I'll be ready" | was: これは私ができる最善の選択ではないと思いますが、準備はできています — prompt said "I think" and "I'm ready"; English is "I'll be ready"
+S0116L01U10	これは私ができる最善の選択ではありませんが、準備はできるでしょう
+# S0116L01U11 use → "I know this isn't the best choice I could make but I think it's a good thing" | was: これが最善の選択でないことは分かっていますが、それで良いと思っています — prompt lacked 私ができる
+S0116L01U11	これが私ができる最善の選択でないことはわかっていますが、それはいいことだと思います
+# S0116L01U12 use → "this isn't the best choice I could make but I'm going to work hard today" | was: これは最善の選択ではないかもしれませんが、今日は頑張ります — prompt said "might not"
+S0116L01U12	これは私ができる最善の選択ではありませんが、今日は一生懸命頑張るつもりです
+# S0116L01U14 use → "this isn't the best choice I could make but I want to do everything I need to do" | was: これは最善の選択ではないかもしれませんが、今の私にできる限りのことです — English "…but I want to do everything I need to do" is unnatural
+S0116L01U14	DELETE
+# S0116L01U15 use → "this isn't the best choice I could make but I think I'll be able to do better soon" | was: これは最善の選択ではないと思いますが、今後はもっと良い選択ができると思います — prompt said "I think … a better choice in future"
+S0116L01U15	これは私ができる最善の選択ではありませんが、もうすぐもっとうまくできるようになると思います
+# S0118L01U04 use → "I think I feel better than I felt when we were in the pub" | was: パブにいた時より確実に気分がいいと思います — prompt added 確実に (definitely)
+S0118L01U04	パブにいた時より気分がいいと思います
+# S0119L01U03 use → "I said can I ask you something before you leave" | was: 帰る前に何か聞いてもいいですかと彼女に言いました — English "I said can I ask you something before you leave" lacks quotation — ungrammatical reported question
+S0119L01U03	DELETE
+# KEEP S0120L01U04 | 同意します、バスで行くのが好きなのは面白いですね | I agree, it's interesting that you like to go by bus — prompt matches "I agree, it's interesting that you like to go by bus" (false flag)
+# KEEP S0121L04U01 | はい、車を使うのが好きじゃないのは珍しいとわかっています | yes, it's unusual that you don't like to use your car — prompt says "I know it's unusual"; English "yes, it's unusual…" — loose but faithful
+# KEEP S0122L03B03 | 簡単に感じ始めていて、どう進んでいるかにワクワクしています。 | it's starting to feel easier and I'm excited about how it's going — prompt is the seed's own Japanese and says the whole English (false flag)
+# S0122L03B08 build → "it's starting to feel easier so I don't want to stop" | was: やめたくないので簡単に感じ始めています — prompt reversed the cause
+S0122L03B08	簡単に感じ始めているので、やめたくありません
+# S0122L03B10 build → "it's starting to feel easier and it is fun" | was: 楽しくなってきたので簡単に感じ始めています — prompt said "because it's fun"
+S0122L03B10	簡単に感じ始めていて、楽しいです
+# S0122L03U04 use → "it's starting to feel easier the more I speak English with you" | was: もっと英語を話す機会を持つにつれて、より簡単に感じ始めています — prompt lacked "with you"
+S0122L03U04	あなたと英語を話せば話すほど、簡単に感じ始めています
+# S0122L03U05 use → "it's starting to feel easier today than it was yesterday" | was: 今日は何かが簡単に感じ始めています — prompt lacked "than it was yesterday"
+S0122L03U05	昨日より今日の方が簡単に感じ始めています
+# S0122L03U15 use → "it's starting to feel easier and I'm enjoying finding out more" | was: 今よりももっと英語が簡単に感じ始めています — prompt said "English is starting to feel easier than now"; English adds "I'm enjoying finding out more"
+S0122L03U15	簡単に感じ始めていて、もっと知るのを楽しんでいます
+# S0123L02B04 build → "I think that's a good idea and it will work" | was: それはいい考えだと思います — prompt lacked "and it will work"
+S0123L02B04	それはいい考えだと思いますし、うまくいくと思います
+# S0123L02U05 use → "I think that's a good idea to do it as soon as you can" | was: できるだけ早く試してみることはいい考えだと思います — English "I think that's a good idea to do it as soon as you can" is ungrammatical ("that's a good idea to")
+S0123L02U05	DELETE
+# S0123L02U06 use → "I think that's a good idea to do it today" | was: 今日試みることはいい考えだと思います — English "I think that's a good idea to do it today" is ungrammatical
+S0123L02U06	DELETE
+# S0123L02U10 use → "I think that's a good idea to do something different" | was: 何か新しいことを試みることはいい考えだと思います — English "I think that's a good idea to do something different" is ungrammatical
+S0123L02U10	DELETE
+# S0123L02U12 use → "I think that's a good idea because I don't want to worry about making mistakes" | was: 間違いを気にしないことはいい考えだと思います — English "I think that's a good idea because I don't want to worry about making mistakes" is unnatural
+S0123L02U12	DELETE
+# S0123L02U13 use → "I think that's a good idea and I want to keep on doing it" | was: それはいい考えだと思いますが、難しくても続けます — prompt said "even if it's difficult I'll continue"
+S0123L02U13	それはいい考えだと思いますし、それを続けたいです
+# S0123L02U14 use → "I think that's a good idea to speak English with me now" | was: 英語を話すことはいい考えだと思います、今すぐ始めましょう — English "I think that's a good idea to speak English with me now" is ungrammatical
+S0123L02U14	DELETE
+# KEEP S0120L01U05 | 帰る時にバスで行くのが好きなのは面白いですね | it's interesting that you like to go by bus when you go home — prompt matches; the flag misread a 'but'

@@ -1,6 +1,6 @@
 <template>
   <div class="lp">
-    <header class="top">
+    <header class="top" ref="topEl">
       <div class="bar">
         <h1>LEGO proof</h1>
         <div class="seg" role="tablist">
@@ -12,11 +12,18 @@
           <button v-for="p in PARTS" :key="p.key" :class="{ on: part === p.key }" @click="part = p.key">{{ p.label }}</button>
         </div>
         <button class="pill" :class="{ on: flaggedOnly }" @click="flaggedOnly = !flaggedOnly">⚑ Flagged only</button>
+        <button class="pill" :class="{ on: showEnglish }" :aria-pressed="showEnglish" @click="setShowEnglish(!showEnglish)">Show English</button>
         <button class="pill" :class="{ on: showTaught }" @click="showTaught = !showTaught">Show taught</button>
         <span class="count"><b>{{ flaggedCount }}</b> flagged · {{ newCount }} new</span>
         <button class="pill" @click="exportFlags">Export flags</button>
       </div>
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
+      <!-- Shown when a load put the reader back at a remembered row: the row it went to, and the way out to the top. -->
+      <p v-if="cameBack" class="back">
+        Back to where you were: <a href="#" @click.prevent="goBack">{{ cameBack }}</a>
+        · <a href="#" @click.prevent="goTop">Go to top</a>
+        <button class="x" aria-label="Hide this line" @click="cameBack = null">×</button>
+      </p>
     </header>
 
     <!-- A fixed overlay, not an inline block: inline it opened above a long list and, with the page scrolled, was off screen
@@ -33,8 +40,8 @@
     <p v-else-if="loadError" class="msg bad">{{ loadError }}</p>
     <p v-else-if="!shown.length" class="note">{{ flaggedOnly ? 'Nothing flagged yet.' : 'No LEGOs.' }}</p>
 
-    <ol class="list">
-      <li v-for="l in shown" :key="l.id" class="row" :class="{ taught: !l.isNew, flagged: l.flagged }">
+    <ol class="list" ref="listEl">
+      <li v-for="l in shown" :key="l.id" class="row" :data-id="l.id" :class="{ taught: !l.isNew, flagged: l.flagged }">
         <div class="num">
           <span class="id">{{ l.id }}</span>
           <small v-if="l.n">#{{ l.n }}</small>
@@ -48,7 +55,7 @@
               {{ l.flagged ? '⚑' : '⚐' }}
             </button>
           </div>
-          <div v-if="open[l.id]" class="en">{{ l.en || '— no English —' }}</div>
+          <div v-if="showEnglish || open[l.id]" class="en">{{ l.en || '— no English —' }}</div>
           <div v-if="l.flagged || l.note" class="notewrap" @click.stop>
             <input class="noteinp" type="text" :value="l.note" maxlength="1000" placeholder="Note (optional)"
                    enterkeyhint="done" @input="onNote(l, $event.target.value)" @blur="saveNow(l)" @keyup.enter="$event.target.blur()" />
@@ -65,7 +72,7 @@
 // tick when there is an issue; tap the Welsh to see the English. Job #522: the default list is the WHOLE course in the
 // order a learner meets it (row #1 = seed 1's first LEGO), HC-block rows badged, with an All / HC only / Old only filter. Every tick and note saves at once (no Submit, so nothing
 // is lost on a phone). Server side: services/lego-proof/lego-proof-router.cjs.
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiBaseUrl } from '../../services/api'
 
@@ -88,6 +95,15 @@ const loadError = ref('')
 const showTaught = ref(false)
 const part = ref('all')
 const flaggedOnly = ref(false)
+// "Show English" pill: the English under every row at once. Off by default; one remembered choice shared with the
+// phrase proof page.
+const SHOW_EN_KEY = 'proof:showEnglish'
+const showEnglish = ref(readShowEnglish())
+function readShowEnglish() { try { return localStorage.getItem(SHOW_EN_KEY) === '1' } catch { return false } }
+function setShowEnglish(v) {
+  showEnglish.value = v
+  try { localStorage.setItem(SHOW_EN_KEY, v ? '1' : '0') } catch { /* private mode */ }
+}
 const open = reactive({})
 const state = reactive({})
 const msg = ref('')
@@ -108,7 +124,7 @@ let loadGen = 0
 async function load() {
   const gen = ++loadGen
   const code = course.value
-  loading.value = true; loadError.value = ''; legos.value = []
+  loading.value = true; loadError.value = ''; legos.value = []; cameBack.value = null
   try {
     const r = await fetch(base(code) + '/')
     const body = await r.json().catch(() => ({}))
@@ -118,7 +134,81 @@ async function load() {
   } catch (e) {
     if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
   } finally { if (gen === loadGen) loading.value = false }
+  if (gen === loadGen && !loadError.value) await restorePlace()
 }
+
+// ---- keep the reader's place (cs #864, for Deborah's Welsh proofread) ------------------------------------------------
+// The id of the top visible row, per course, in localStorage; a load scrolls back to it and says so, with a way to the
+// top instead. It lives in this browser only — there is no server-side per-user place yet. The top of the list is never
+// saved as a place, so "Go to top" does not wipe the place the reader came back to. Same shape as the phrase proof page.
+const placeKey = (code) => `legoProof:place:${code}`
+const topEl = ref(null)
+const listEl = ref(null)
+const cameBack = ref(null)         // id of the row a load scrolled back to; null = nothing to announce
+// How much of the viewport's top the two sticky bars (Popty's navbar + this page's header) cover once scrolled.
+const navbarH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-navbar-height')) || 0
+const coveredTop = () => navbarH() + (topEl.value?.offsetHeight || 0)
+function topRowId() {
+  const box = listEl.value?.getBoundingClientRect()
+  if (!box) return null
+  return document.elementFromPoint(box.left + box.width / 2, coveredTop() + 4)?.closest?.('.row')?.dataset.id || null
+}
+function savePlace(code) {
+  if (course.value !== code || flaggedOnly.value || loading.value || !shown.value.length) return
+  const id = topRowId()
+  if (!id || id === shown.value[0].id) return
+  try { localStorage.setItem(placeKey(code), id) } catch { /* private mode */ }
+}
+let placeTimer = 0
+let raf = 0
+function onScroll() {
+  if (raf) return
+  raf = requestAnimationFrame(() => {
+    raf = 0
+    clearTimeout(placeTimer)
+    const code = course.value
+    placeTimer = setTimeout(() => savePlace(code), 400)
+  })
+}
+// Closing the tab or switching app inside the 400 ms must not lose the last scroll.
+function flushPlace() { clearTimeout(placeTimer); savePlace(course.value) }
+// The saved row if it is on screen under the current filters, else the next row after it that is (a taught row saved
+// with "Show taught" on is hidden on the next load, where that pill starts off).
+function rowFor(id) {
+  const from = legos.value.findIndex((l) => l.id === id)
+  if (from < 0) return null
+  const at = new Map(legos.value.map((l, i) => [l.id, i]))
+  return shown.value.find((l) => at.get(l.id) >= from) || null
+}
+// Rows off screen hold an estimated height (content-visibility), so the first jump can land a little off once the rows
+// around the target are laid out; two more frames put it right.
+function scrollToId(id) {
+  let tries = 3
+  const go = () => {
+    const el = listEl.value?.querySelector(`[data-id="${id}"]`)
+    if (!el) return
+    const d = el.getBoundingClientRect().top - coveredTop()
+    if (Math.abs(d) > 1) window.scrollBy(0, d)
+    if (--tries > 0) requestAnimationFrame(go)
+  }
+  go()
+}
+async function restorePlace() {
+  let id = null
+  try { id = localStorage.getItem(placeKey(course.value)) } catch { /* ignore */ }
+  const row = id ? rowFor(id) : null
+  cameBack.value = row && row !== shown.value[0] ? row.id : null
+  await nextTick()             // the list, and the line in the sticky header, must be laid out before the scroll
+  if (cameBack.value) scrollToId(cameBack.value)
+  else window.scrollTo(0, 0)
+}
+async function goBack() {
+  if (!cameBack.value) return
+  if (flaggedOnly.value) { flaggedOnly.value = false; await nextTick() }
+  const row = rowFor(cameBack.value)
+  if (row) scrollToId(row.id)
+}
+function goTop() { window.scrollTo(0, 0) }
 
 function pick(code) {
   if (code === course.value) return
@@ -217,7 +307,16 @@ function downloadExport() {
   } catch (e) { say(`Download failed: ${e.message} — copy the text instead.`, true) }
 }
 
-onMounted(load)
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('pagehide', flushPlace)
+  load()
+})
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('pagehide', flushPlace)
+  flushPlace()
+})
 </script>
 
 <style scoped>
@@ -244,6 +343,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .count b { color: var(--lp-amber); font-size: 1rem; }
 .msg { font-size: 0.85rem; color: var(--lp-good); margin: 0.25rem 0 0; }
 .msg.bad { color: var(--lp-bad); }
+.back { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--lp-muted); margin: 0.2rem 0 0; }
+.back a { color: var(--lp-en); text-decoration: underline; padding: 0.35rem 0; font-variant-numeric: tabular-nums; }
+.back .x { margin-left: auto; border: 0; background: transparent; color: var(--lp-muted); font-size: 1.1rem; line-height: 1; min-width: 36px; min-height: 32px; }
 .note { color: var(--lp-muted); padding: 1rem 0.25rem; }
 .export-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 0.75rem; }
 .export { background: #fff; color: var(--lp-ink); border-radius: 12px; padding: 0.75rem; width: min(900px, 100%); max-height: 100%; display: flex; flex-direction: column; }

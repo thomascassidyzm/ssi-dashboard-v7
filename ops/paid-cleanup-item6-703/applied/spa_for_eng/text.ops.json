@@ -1,0 +1,137 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01B03",
+   "set": {
+    "known_text": "I don't like waking up",
+    "target_text": "No me gusta despertarme"
+   },
+   "expect": {
+    "known_text": "I don't enjoy waking up",
+    "target_text": "No disfruto despertarme"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01B05",
+   "set": {
+    "known_text": "I like waking up",
+    "target_text": "Me gusta despertarme"
+   },
+   "expect": {
+    "known_text": "I enjoy waking up",
+    "target_text": "Disfruto despertarme"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01U01",
+   "set": {
+    "known_text": "I don't like waking up when I'm very tired",
+    "target_text": "No me gusta despertarme cuando estoy muy cansado"
+   },
+   "expect": {
+    "known_text": "I don't enjoy waking up when I'm tired",
+    "target_text": "No disfruto despertarme cuando estoy cansado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0055L01U03",
+   "set": {
+    "known_text": "I don't like waking up when I'm starting to feel tired",
+    "target_text": "No me gusta despertarme cuando estoy empezando a sentirme cansado"
+   },
+   "expect": {
+    "known_text": "I don't enjoy waking up when I'm starting to feel tired",
+    "target_text": "No disfruto despertarme cuando estoy empezando a sentirme cansado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0108L02U09",
+   "set": {
+    "known_text": "I don't like stopping in the middle of something I'm just beginning to understand",
+    "target_text": "No me gusta parar en medio de algo que estoy empezando a entender"
+   },
+   "expect": {
+    "known_text": "I do not enjoy stopping in the middle of something I am just beginning to understand",
+    "target_text": "No disfruto parar en medio de algo que estoy empezando a entender"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0216L04U14",
+   "expect": {
+    "known_text": "I really enjoy being able to talk with my friends at the weekend",
+    "target_text": "Disfruto mucho poder hablar con mis amigos el fin de semana"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0243L03U08",
+   "set": {
+    "known_text": "I don't like eating when I'm feeling tired",
+    "target_text": "No me gusta comer cuando me siento cansado"
+   },
+   "expect": {
+    "known_text": "I don't enjoy eating when I'm feeling tired",
+    "target_text": "No disfruto comer cuando me siento cansado"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0586L01U01",
+   "set": {
+    "target_text": "¿podría pedir unos huevos cocidos, por favor?"
+   },
+   "expect": {
+    "known_text": "could I have some boiled eggs please?",
+    "target_text": "¿podría tener unos huevos cocidos por favor?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0586L02U02",
+   "set": {
+    "target_text": "¿podría pedir veinte huevos cocidos?"
+   },
+   "expect": {
+    "known_text": "could I have twenty boiled eggs?",
+    "target_text": "¿podría tener veinte huevos cocidos?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0156L02U02",
+   "set": {
+    "known_text": "I need a moment to think before I answer",
+    "target_text": "Necesito un momento para pensar antes de contestar"
+   },
+   "expect": {
+    "known_text": "Can I have a moment to think before I answer?",
+    "target_text": "¿Puedo tener un momento para pensar antes de contestar?"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "spa_for_eng:S0189L01U03",
+   "expect": {
+    "known_text": "It is a good idea to take a bit of time to think carefully before you try to answer",
+    "target_text": "Es una buena idea tomar algo de tiempo para pensar con cuidado antes de intentar contestar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_for_eng:S0060L01U11",
+   "set": {
+    "target_text": "Necesito practicar cómo decir palabras diferentes cuando hablo español"
+   },
+   "expect": {
+    "known_text": "I need to practise saying different words when I speak Spanish",
+    "target_text": "Necesito practicar decir palabras diferentes cuando hablo español"
+   }
+  }
+ ]
+}

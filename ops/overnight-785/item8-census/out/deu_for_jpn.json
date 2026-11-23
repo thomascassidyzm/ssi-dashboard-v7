@@ -1,0 +1,133 @@
+{
+ "course": "deu_for_jpn",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 47,
+ "on_copy": 47,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0011L02U07",
+   "src": "#957 changeset",
+   "known": "あなたが終わったら話せるようになりたいです。",
+   "target": "Ich möchte sprechen können, nachdem du fertig bist.",
+   "twin": "S0011L02U01",
+   "twin_known": "終わったら話せるようになりたいです"
+  },
+  {
+   "id": "S0023L02U07",
+   "src": "#957 changeset",
+   "known": "もうすぐもっと話し始めるつもりです。",
+   "target": "Ich werde bald mehr sprechen.",
+   "twin": "S0023L02U04",
+   "twin_known": "もうすぐもっと話せます"
+  },
+  {
+   "id": "S0024L01U07",
+   "src": "#957 changeset",
+   "known": "簡単には覚えられないでしょう。",
+   "target": "Ich werde nicht leicht erinnern können.",
+   "twin": "S0024L01U01",
+   "twin_known": "簡単に覚えられません"
+  },
+  {
+   "id": "S0045L02U06",
+   "src": "#957 changeset",
+   "known": "すべてを知る必要はありません。",
+   "target": "Ich muss nicht alles wissen.",
+   "twin": "S0045L02U05",
+   "twin_known": "すべてを知る必要はない"
+  },
+  {
+   "id": "S0050L01U06",
+   "src": "#957 changeset",
+   "known": "できるだけ早く終わらせようとしているわけではありません。",
+   "target": "Ich versuche nicht so schnell wie möglich fertig zu werden.",
+   "twin": "S0050L01U03",
+   "twin_known": "できるだけ早く終わらせたくない"
+  },
+  {
+   "id": "S0052L05U06",
+   "src": "#957 changeset",
+   "known": "彼は先週友達に手紙を書きたかったです。",
+   "target": "Er wollte letzte Woche einen Brief an seinen Freund schreiben.",
+   "twin": "S0052L05U01",
+   "twin_known": "先週友達に手紙を書きたかった"
+  },
+  {
+   "id": "S0127L01U06",
+   "src": "#957 changeset",
+   "known": "それはあなたに会いたかった理由ではありません。",
+   "target": "Das ist nicht der Grund, warum ich dich sehen wollte.",
+   "twin": "S0127L01U02",
+   "twin_known": "私があなたに会いたかった理由ではありません。"
+  },
+  {
+   "id": "S0151L02U06",
+   "src": "#957 changeset",
+   "known": "それは私が起こると期待していたことではありませんでした。",
+   "target": "Das war nicht das, was ich gehofft hatte, dass es passieren würde.",
+   "twin": "S0151L02U01",
+   "twin_known": "それは私が期待していたことではありませんでした"
+  },
+  {
+   "id": "S0184L02U06",
+   "src": "#957 changeset",
+   "known": "はい、しばらく前にオフィスで見ました。",
+   "target": "Ja, ich habe sie vor einer Weile im Büro gesehen.",
+   "twin": "S0184L02U01",
+   "twin_known": "はい、さっきオフィスで見ました"
+  },
+  {
+   "id": "S0210L01U06",
+   "src": "#957 changeset",
+   "known": "彼らは私たちが問題について話し合う必要があると思っています。",
+   "target": "Sie denken, dass wir das Problem besprechen müssen.",
+   "twin": "S0210L01U03",
+   "twin_known": "彼らは私たちが問題を話し合う必要があると思っています。"
+  },
+  {
+   "id": "S0259L01U06",
+   "src": "#957 changeset",
+   "known": "アイデア。",
+   "target": "Eine Idee.",
+   "twin": "S0259L01B01",
+   "twin_known": "一つのアイデア"
+  },
+  {
+   "id": "S0287L01U06",
+   "src": "#957 changeset",
+   "known": "テレビ見るのが好きな人、何人知ってる？",
+   "target": "Wie viele Menschen kennst du, die gerne fernsehen?",
+   "twin": "S0287L01U01",
+   "twin_known": "テレビを見るのが好きな人を何人知っていますか？"
+  },
+  {
+   "id": "S0294L01U05",
+   "src": "#957 changeset",
+   "known": "今夜は電話する時間がない。",
+   "target": "Ich habe heute Abend nicht genug Zeit, um dich anzurufen.",
+   "twin": "S0294L01U01",
+   "twin_known": "今夜電話する時間がありません"
+  },
+  {
+   "id": "S0299L02U05",
+   "src": "#964 seed fix",
+   "known": "彼は半分払いたいです。",
+   "target": "Er möchte die Hälfte bezahlen.",
+   "twin": "S0299L02U01",
+   "twin_known": "彼は半分を払いたいです"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [
+  {
+   "id": "S0007L04B01",
+   "src": "#964 seed fix",
+   "known": "頑張る",
+   "target": "mein Bestes geben",
+   "lego": "S0007L04"
+  }
+ ],
+ "clean": 33,
+ "missing": []
+}

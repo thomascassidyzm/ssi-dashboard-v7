@@ -1,0 +1,93 @@
+# eng_for_jpn seeds 134-143: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 2 flagged rows no longer exist; seeds 134-135 have no flags.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0136L01U06 use → "of course I want to go with them it's not a problem" | was: もちろん私は彼らと一緒に行きます。問題ありません — English "of course I want to go with them it's not a problem" is a run-on
+S0136L01U06	DELETE
+# S0136L01U10 use → "of course you can ask her she wants to find out what the answer is" | was: もちろん彼女に聞いてください。彼女は答えを知っています — English "of course you can ask her she wants to find out what the answer is" is a run-on
+S0136L01U10	DELETE
+# S0136L01U13 use → "of course you can get to practise speaking English with someone you know" | was: もちろんあなたは誰かと英語を練習するようになれます。友達に頼んでみてください — English "of course you can get to practise speaking English with someone you know" is unnatural
+S0136L01U13	DELETE
+# S0137L01U06 use → "I think it is more important to practise" | was: 毎日練習する方がより大切だと思います — prompt added 毎日 (every day)
+S0137L01U06	練習する方がより大切だと思います
+# S0137L01U13 use → "talking often is more important than to be perfect, I'd like to keep on doing this" | was: 頻繁に話すことの方が完璧であることよりより大切だということを覚えてください — English "talking often is more important than to be perfect, I'd like to keep on doing this" is a comma-spliced chain (and "than to be" is ungrammatical after "talking")
+S0137L01U13	DELETE
+# KEEP S0137L01U14 | 私にとってより大切なのは楽しむことです | what is more important to me is to enjoy it — prompt matches "what is more important to me is to enjoy it" (false flag)
+# S0137L01U15 use → "talking often is the more important thing" | was: 頻繁に話す方が、一番大切なことです — prompt said "the most important"
+S0137L01U15	頻繁に話すことの方が、より大切なことです
+# S0137L02U03 use → "I think talking often is the way to remember English" | was: 頻繁に話すことが英語を覚える一番の方法だと思います — prompt said "the best way"
+S0137L02U03	頻繁に話すことが英語を覚える方法だと思います
+# S0137L02U07 use → "I'm going to use English as often as possible" | was: できるだけ頻繁に英語を使うようにしています — prompt said "trying to"; English is "going to"
+S0137L02U07	できるだけ頻繁に英語を使うつもりです
+# S0137L03U06 use → "I don't think you need to be perfect to do well" | was: 完璧であることが最も大切だとは思いません — prompt said "being perfect is not the most important thing"
+S0137L03U06	うまくやるために完璧である必要はないと思います
+# S0137L03U08 use → "talking often is more important than to be perfect, I know that" | was: 頻繁に話す方が、完璧であるよりずっとより大切です — English "talking often is more important than to be perfect, I know that" is a comma-splice and ungrammatical
+S0137L03U08	DELETE
+# S0137L03U14 use → "You don't need to be perfect, so speak English" | was: 完璧でなくていいので、英語で話してみてください — prompt said "try speaking"
+S0137L03U14	完璧でなくていいので、英語を話してください
+# S0138L01U03 use → "I think this was where you wanted to show me something" | was: あなたが私に何かを見せたかった場所はここです — prompt lacked "I think"
+S0138L01U03	ここはあなたが私に何かを見せたかった場所だと思います
+# S0138L01U04 use → "this was where I used to explain what I mean" | was: ここは私が自分の考えを説明しようとした場所です — English "this was where I used to explain what I mean" is unnatural
+S0138L01U04	DELETE
+# S0138L01U06 use → "This was where I was doing better than I was last time we talked to each other" | was: ここは私が以前よりうまく話せた場所です — English "This was where I was doing better than I was last time we talked to each other" is unnatural
+S0138L01U06	DELETE
+# S0138L01U10 use → "I think this was where he used to be all afternoon" | was: ここは彼が午後を過ごした場所ではないかと思います — prompt said "spent the afternoon … I wonder"; English is "I think … used to be all afternoon" (closest natural Japanese)
+S0138L01U10	ここは彼が午後ずっといた場所だと思います
+# KEEP S0138L01U11 | ここはあなたが私に会いたいと言っていた場所です | This was where you said you wanted to meet me — prompt is a statement and matches (false flag)
+# S0138L01U14 use → "I think this was where you used to speak English" | was: あなたが英語で話そうとしていた場所はここです — English "I think this was where you used to speak English" — "used to" misreads the seed; unnatural
+S0138L01U14	DELETE
+# S0138L02U10 use → "I'm so happy that you wanted to meet us" | was: 私たちに会いに来てくれたことを嬉しく思います — prompt said "came to meet us"
+S0138L02U10	あなたが私たちに会いたかったのがとても嬉しいです
+# KEEP S0138L02U13 | あなたの友達がいつ私たちに会いたいのか知りたいです | I want to know when your friend wants to meet us — prompt matches "I want to know when your friend wants to meet us" (false flag)
+# S0138L02U14 use → "He was so happy to meet us" | was: 彼は私たちに会うことができてとても嬉しかったです — prompt said "was able to"; できて→会えて is the natural "happy to meet"
+S0138L02U14	彼は私たちに会えてとても嬉しかったです
+# KEEP S0139L01B01 | すみません | I'm sorry that — bare LEGO すみません = "I'm sorry that" (false flag)
+# KEEP S0139L01B02 | すみません | I'm sorry that — bare LEGO (false flag)
+# S0139L01B06 build → "I'm sorry that I didn't tell you" | was: すみません、伝えられなかった — prompt said "couldn't tell"; English is "didn't tell you"
+S0139L01B06	すみません、あなたに言いませんでした
+# S0139L01U02 use → "I'm sorry that I didn't get to see you" | was: 昨夜あなたを見られなかったことをすみません — prompt added 昨夜 (last night)
+S0139L01U02	あなたに会えなかったことをすみません
+# S0139L02U05 use → "I need to leave for a while" | was: もう少ししたら出る必要があります — prompt said "in a little while"; English is "for a while"
+S0139L02U05	しばらく出る必要があります
+# S0139L02U11 use → "I don't know why she would need to leave so early" | was: 彼女はなぜそんなに早く出る必要があったのですか？ — prompt was a direct question; English is "I don't know why she would need to"
+S0139L02U11	彼女がなぜそんなに早く出る必要があるのかわかりません
+# S0139L03U03 use → "I wanted to come early today" | was: もっと早く来ればよかったです — prompt was a regret
+S0139L03U03	今日早く来たかったです
+# S0139L03U07 use → "I don't know why she had to leave so early" | was: 彼女はなぜこんなに早く出なければならなかったのですか？ — prompt was a direct question
+S0139L03U07	彼女がなぜそんなに早く出なければならなかったのかわかりません
+# S0139L03U14 use → "I need to leave early because of the bus" | was: 私は早く出る必要があります、バスがあります — prompt lacked the cause link
+S0139L03U14	バスがあるので、早く出る必要があります
+# KEEP S0140L01U13 | なぜかよく見えません | I can't see it well — なぜか is filler here; "I can't see it well" — loose but faithful
+# S0140L02U11 use → "did you want to show her the same thing you're trying to show me?" | was: あなたが私に見せようとしていることと同じものを彼女に見せましたか？ — prompt asked "did you show her"
+S0140L02U11	あなたが私に見せようとしているものと同じものを彼女に見せたかったですか？
+# S0141L02U07 use → "I feel okay about this but I need more time to be ready" | was: これについて大丈夫に感じますが、もっと時間が必要です — prompt lacked "to be ready"
+S0141L02U07	これについて大丈夫に感じますが、準備ができるのにもっと時間が必要です
+# S0141L02U12 use → "you are doing okay with this language" | was: この言語でとてもよくできています — prompt said "very well"; English is "doing okay"
+S0141L02U12	この言語で大丈夫にできています
+# S0141L02U13 use → "I feel okay and I want to speak more" | was: もっと話したいですが、大丈夫に感じます — prompt said "but"
+S0141L02U13	大丈夫に感じますし、もっと話したいです
+# S0141L03U08 use → "slowly is no problem for me" | was: ゆっくり話すことは私には問題ありません — English "slowly is no problem for me" is ungrammatical
+S0141L03U08	DELETE
+# S0141L03U13 use → "no problem, we do this together often" | was: 私たちはよく一緒にこれをしています — prompt lacked "no problem"
+S0141L03U13	問題ありません、私たちはよく一緒にこれをしています
+# S0141L03U14 use → "that is no problem because we need so little time" | was: 問題ありません、時間がほとんど要りません — prompt lacked "because"
+S0141L03U14	問題ありません、時間がほとんど要りませんから
+# S0141L03U15 use → "no problem, you are ready to do this" | was: 問題ありません、あなたは準備ができています — prompt lacked "to do this"
+S0141L03U15	問題ありません、あなたはこれをする準備ができています
+# KEEP S0142L01B06 | あなたは親切な方 | kind of you — "kind of you" is a BUILD fragment; あなたは親切な方 is a fair cue — UNSURE, left
+# S0142L01U07 use → "you are kind to give me more time" | was: もう少し時間をくれてありがとう、とても親切です — prompt added "thank you"
+S0142L01U07	もう少し時間をくれて、あなたは親切です
+# S0142L01U10 use → "that is very kind of all of you" | was: あなた全員にとても感謝します — English "that is very kind of all of you" is unnatural
+S0142L01U10	DELETE
+# S0142L01U13 use → "you are kind to do this with us today" | was: これを一緒にやってくれてとても親切です — prompt lacked "today"
+S0142L01U13	今日私たちとこれをしてくれて、あなたは親切です
+# S0143L02U07 use → "we were talking about this the same way" | was: 私たちは同じように話していた — prompt lacked "about this"
+S0143L02U07	私たちは同じようにこれについて話していました
+# S0143L03U03 use → "I'm more ready now than I was earlier" | was: 今よりも前に準備ができていました — prompt said "I was ready earlier than now"
+S0143L03U03	前より今の方が準備ができています
+# S0143L03U07 use → "we were talking about the same earlier" | was: 私たちは前に同じように話していた — English "we were talking about the same earlier" is garbled
+S0143L03U07	DELETE
+# S0143L03U08 use → "we were talking and doing the same earlier" | was: 前に話していたことについて同じです — English "we were talking and doing the same earlier" is garbled
+S0143L03U08	DELETE
+# S0143L03U12 use → "we all feel the same way, just earlier" | was: 私たち全員が前と同じように今感じます — English "we all feel the same way, just earlier" is garbled
+S0143L03U12	DELETE
+# S0143L03U15 use → "I need to talk about what you said earlier" | was: 前に話していたことを覚えています — prompt said "I remember what we talked about"
+S0143L03U15	あなたが前に言ったことについて話す必要があります

@@ -1,0 +1,2570 @@
+[
+ {
+  "role": "target1",
+  "text": "eu quero tentar o máximo que puder hoje",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 7,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0007L03U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 7,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "baa2f557-2eac-4299-8568-5aebcfdcf89c",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu quero tentar o máximo que puder hoje",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 7,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0007L03U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 7,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1d61c670-98c4-4340-8a9b-ed4b05b31235",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "to feel",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0041L03",
+    "slot": "known"
+   }
+  ],
+  "seed": 41,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "1242c571-2dd9-4f24-afd0-b270090908d8",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é interessante quando você entende palavras suficientes",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 58,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L03B04",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L03U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e5dca2a7-80b0-42c3-b908-508088bf9393",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é interessante quando você entende palavras suficientes",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 58,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L03B04",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L03U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2a46677d-109a-4f24-b630-374c5be1e9c1",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quando você entende",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0058L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8859e94c-7a4e-4e33-850d-46d7dd0153ab",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quando você entende",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0058L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ae19f961-b3ad-4256-a449-6ab2e655439b",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "when you understand",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0058L02",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0058L02B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "d56081a4-ca3e-43c2-b1db-ca0bbda5324e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quando você entende algo",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "336f2173-0f1f-4063-aca1-f246c88019db",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quando você entende algo",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f563af01-fc78-4395-a14b-a1fe5543a073",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "when you understand something",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1990cfff-dcc0-4ee5-a5f3-00adeca4b087",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quando você entende o que queria dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B09",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "53ed4f54-6939-4651-917f-9a58f80c8c98",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quando você entende o que queria dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B09",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f4decb11-914c-4ca3-ba83-44ed53361e5b",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "when you understand what I wanted to say",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B09",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b693ac7c-6e74-49f2-800a-0720224044f8",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é interessante quando você entende algo",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3f8c1b99-3141-4a66-b036-9cbe955ccf1f",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é interessante quando você entende algo",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "717eca2e-183e-4ac8-86ac-c83b784ab43c",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting when you understand something",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B06",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "b2a520de-87dd-470f-8dd2-eeba752dcdfc",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quando você entende o que quero dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "45433df0-4f6a-4ec2-8602-e89226028cb2",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quando você entende o que quero dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9c004095-ce45-46d4-82f0-535295cb1925",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "known",
+  "text": "when you understand what I mean",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B07",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "33dd4006-094c-4491-be16-47a711e19578",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é interessante quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "027847ca-3e60-4e11-9afe-2189d0b14248",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é interessante quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7c6933c7-c88d-4747-a053-4ad3ccb8401c",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting when you understand",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "270dc086-80ca-4660-9ec9-7f588d400c65",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não é interessante quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B08",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f951c069-70b4-4823-a330-3fa2496f3c28",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não é interessante quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B08",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5a693cdc-9fb2-456d-98d0-622a23e83059",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's not interesting when you understand",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B08",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "22eda84b-a423-4b59-b084-aaa02e968097",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é útil quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4c656e26-232a-4e58-b286-1ef2cfcefc94",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é útil quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d65388f9-18db-44ec-beed-a92ba580b9e0",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's useful when you understand",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B05",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "be0c1949-d643-44c0-bb5f-fbeebe96b248",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é bom quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e7db768b-a7df-4357-9324-8827af6b61a4",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é bom quando você entende",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9d2e34a9-d6af-450f-8804-7e879853af7a",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's a good thing when you understand",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02B04",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9f94ae8a-7a92-4f48-9fd5-4168e41fab10",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quando você entende algo é interessante",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "340a0d8c-d700-411b-8dc5-3bb568fc4538",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quando você entende algo é interessante",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "33a1ce7f-d0af-4c31-9419-fc12f4bda420",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "when you understand something it's interesting",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "88477f4b-d88f-473c-88f2-85447aa033ab",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é útil quando você entende o que quero dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7cdfe100-81ca-48bc-9d20-b0ae50bae44b",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é útil quando você entende o que quero dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "966577f8-1563-4a5d-8b4c-f5c1faee33d4",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's useful when you understand what I mean",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fd1467d2-092f-44a6-9c7b-c0078f7300fe",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é interessante quando você entende tudo",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "053794bf-4d05-4fa0-a54b-96c6a0e203c8",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é interessante quando você entende tudo",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "583e7259-d124-4b7c-b6d9-f0b28a1d73a7",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting when you understand everything",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "ffcd66d1-06c6-4278-aee7-d9570ccaa8f6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é bom quando você entende o que queria dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "87367b4c-02d2-47f8-a123-8340dc30ae20",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é bom quando você entende o que queria dizer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "70765e87-c175-4f8a-9448-73ba10cd712d",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's a good thing when you understand what I wanted to say",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "883ada04-a600-4cbc-a586-e4d43d648563",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é interessante quando você entende coisas interessantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9fabab7c-bb01-4d06-a889-df4e8e563587",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é interessante quando você entende coisas interessantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f6938426-427f-456a-a5de-4ecd8d88b403",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting when you understand interesting things",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L02U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "93f3dab4-1331-481d-ab3a-d71ab046e5c3",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quando você entende palavras suficientes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "73fde01e-a82a-4fb5-bfa9-4d045d24f99d",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quando você entende palavras suficientes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f3a5ebec-1583-4e6e-94b3-1f94d3f17995",
+   "charsSpent": 40
+  }
+ },
+ {
+  "role": "known",
+  "text": "when you understand enough words",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "16e70759-75e0-41a2-b04a-88e5ae6716e9",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você entende palavras suficientes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d1b53cf-47c1-46b6-923e-7f504bdc9ec5",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você entende palavras suficientes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cfc61857-b339-4011-9ab5-2f96238e2a5e",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "you understand enough words",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7d3e3bf2-d4b5-4634-a84f-3492075c2fa3",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting when you understand enough words",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03B04",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "12920430-92ba-43bf-8541-2b81c00a616c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é interessante quando você entende palavras suficientes em português",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fa794d46-f0da-43c5-b1e9-41e4bb4f1599",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é interessante quando você entende palavras suficientes em português",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "843c0231-c3a9-4d5f-8f63-7e1e4373d823",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "known",
+  "text": "it's interesting when you understand enough words in Portuguese",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0058L03U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 58,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c5d7231d-6a01-4d98-baee-dcb2c005b887",
+   "charsSpent": 63
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é difícil dedicar tempo para se testar a tarde toda",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0069L04U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 69,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "de874b4a-7164-4a86-8425-1a67d614cbe9",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é difícil dedicar tempo para se testar a tarde toda",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0069L04U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 69,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5232e584-3aa4-4aa4-b176-0b5272409d00",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "known",
+  "text": "it was",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L02",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3ebc92c4-efa3-438b-a80a-51bcf102a3d2",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "onde era",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L03",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L03B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4f8876e2-32d0-4e0b-8d08-b5b50f10d612",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target2",
+  "text": "onde era",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L03",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L03B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3008ee87-5ebb-4d4a-990a-1ea42cf6b94f",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target1",
+  "text": "onde era?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "43a0d21a-0a2d-4a54-9c42-42f31558e2fc",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "target2",
+  "text": "onde era?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1228ba4a-75b5-45ac-a759-0a1e22d74b68",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "known",
+  "text": "where was it?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "986d1635-5dbc-4bef-abf3-b9d7b8aeae1a",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela queria me dizer onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ae6a07e0-9280-4396-bbbd-b194ccfaa064",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela queria me dizer onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "81b95b1b-e660-46f8-8a7a-3d167ae8820d",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela queria saber onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e9eabad9-0b54-47d8-a38f-82de598cc989",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela queria saber onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "58547a12-0f4d-4701-b254-217e88626099",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "she wanted to know where it was",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "16f08295-f0f8-4814-8b7a-c3f66626260b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não sei onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "58e5b09d-f89b-4cf4-8ae7-44b0050b16f8",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não sei onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cfbafccb-5f23-4123-9ac6-ed9b66aad9a2",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't know where it was",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "34d120f5-447a-42f8-a934-d0ce0b39db21",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acho que sei onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d2deacc-f228-4aef-8273-36be3f040f38",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acho que sei onde era",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e583f428-9819-4cff-94aa-91b5775d80d2",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think I know where it was",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U06",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5b0f02b7-e1db-40a4-9802-0bbe7c4ceff2",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você sabe onde era?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e95f6f32-5b74-4104-91c3-e0d2b26825d5",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você sabe onde era?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "145d80ba-a337-43b9-99dc-52cb2c7ea329",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "do you know where it was?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L03U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2affd6c5-ce82-4c0a-aeb8-4459864d9b3e",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0079L01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3579354e-814a-4d5a-ad27-7706edf1d6be",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0079L01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "63953674-10ae-47eb-9baf-529a7d49cd5c",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0079L01",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "74be1029-f3cc-4c0c-bc4b-f2526d6d077b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou a aprender ontem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "40d138a9-660c-4f78-8419-8fb0c874b36e",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou a aprender ontem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "12f05277-f443-40f7-9f37-b187c99a1561",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started to learn yesterday",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "2d3a7a27-7589-4614-914f-fd6d88555637",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou a falar português rapidamente",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d5bf839-98a6-4ca3-835c-e23d1eeb9689",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou a falar português rapidamente",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "22bf06cc-6503-4a09-bb4f-b6c364f2633b",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started to speak Portuguese quickly",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4fa23859-e9a6-48bb-9984-1eff1f71bd4c",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou a escrever uma carta na semana passada",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U08",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "280e0452-ad11-4fb1-9ce2-9960a74b9230",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou a escrever uma carta na semana passada",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U08",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "89215b5b-5c4d-451f-b1c3-e92978cea7fa",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started to write a letter last week",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U08",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "85993a00-b157-4f09-955f-0f1cbb5dad0a",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou ontem e não é fácil",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2bfd4327-460d-4dfa-9023-46c836afe1dd",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou ontem e não é fácil",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d4c6036-cb87-4ef5-85a6-9fe3817eba24",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started yesterday and it's not easy",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "31ce7eed-143f-42f3-bc79-0a95d44561a0",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou bem mas agora é difícil",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U10",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e28555da-ee8c-4934-8c55-a224f0f6da09",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou bem mas agora é difícil",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U10",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "56ad80d6-0ef9-469b-90f5-59daaf7d61c9",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started well but now it's difficult",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U10",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c1703051-f4a6-4ab6-91f0-378549edb2bb",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você começou a fazer algo interessante",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U09",
+    "slot": "target1"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f15d639b-1b19-4622-8612-24e7883cc31b",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você começou a fazer algo interessante",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U09",
+    "slot": "target2"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fdcc8e2f-fb08-4155-b9fa-94f0338da00a",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "you started to do something interesting",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U09",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9bd6808e-0801-40c4-8db0-ada303aaab30",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "isso foi muito interessante, e eu não estava esperando",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 112,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0112L01U09",
+    "slot": "target1"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c6e6f3af-95c6-4c1d-bdce-ac2c1143b463",
+   "charsSpent": 54
+  }
+ },
+ {
+  "role": "target2",
+  "text": "isso foi muito interessante, e eu não estava esperando",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 112,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0112L01U09",
+    "slot": "target2"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "db05141f-7dd0-49a2-a247-93accf01efde",
+   "charsSpent": 54
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele estava esperando falar com você",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "38f12ee1-ff37-4a3b-813e-f8d2a249df43",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele estava esperando falar com você",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "beca095b-5658-476c-a438-32ab7803bf4b",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "estava esperando falar com você",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "edcde5d0-0b14-49fd-9603-ee0c48c989fd",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "estava esperando falar com você",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cd2952df-d3f0-4b49-8bce-060a5ae15358",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não estava esperando te ver aqui",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "49aacfea-63cb-43fc-bde6-867654b958e8",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não estava esperando te ver aqui",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1b572b6a-2191-44f6-8d2b-3a4d20aa0544",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela não estava esperando ver isso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "086d0eb9-f6fa-4152-9685-153a0136d227",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela não estava esperando ver isso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0112L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 112,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b665bc24-df8f-4d55-8604-c3ac7a6e0dab",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "that wasn't why I wanted to see you",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 127,
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0127L02U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 127,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "72f6ce45-ed83-4ec1-bede-bef8b5777a6d",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "that was why",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0127L01",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0127L01B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 127,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b10dba1c-67c2-4760-9389-824b8fe74147",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você é como",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0128L01",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0128L01B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dd50a101-4b74-422b-a974-7f5ad72d91d4",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você é como",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0128L01",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0128L01B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "255ba9c3-1802-4c67-a450-2c21d72ce0cf",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "known",
+  "text": "you're like",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0128L01",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0128L01B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "df046c91-646b-4400-8a86-8e1e5662a573",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "alguém que eu conhecia",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0128L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0128L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "21cf4e75-7b25-4373-941d-8c1fcaf18634",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "alguém que eu conhecia",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0128L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0128L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "194c53bc-bc7d-44f4-80d8-48297bb9d795",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "someone I used to know",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0128L02",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0128L02B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "3f762bd6-83c4-4f13-85c9-8321dafa1595",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você é como eu",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5a97c36b-06d2-42f7-a179-331e123094af",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você é como eu",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f7e5b08a-dd7d-4053-8761-7836408e10b3",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "known",
+  "text": "you're like me",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "769bfc11-8722-415f-b668-b074e7912da3",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você é como ele",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a5270aa0-2e3c-43da-8573-0e63d64374c2",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você é como ele",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dc7ae104-1bfc-4e87-ac6f-badd6bc79280",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "known",
+  "text": "you're like him",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e1457564-92d8-44df-91ba-36a3167e5710",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acho que você é como eu",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "16b7cc14-1aeb-4cbb-a043-12cbb2ec477b",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acho que você é como eu",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "009d76b8-524c-48ea-9825-abdac13bd7bd",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think you're like me",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L01U06",
+    "slot": "known"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8c78bc6f-229f-45f4-9edd-30de696c6630",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela é como alguém que eu conhecia",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "478f7c0f-14ac-403f-97a3-fc82d90a1f16",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela é como alguém que eu conhecia",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "67207144-28b7-4bd7-863b-8fe15b6204c9",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "she's like someone I used to know",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0128L02U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 128,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "482ab016-9d66-4ecf-bd48-f93cb6b5a305",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sem problema",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0141L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0141L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 141,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c19f3c28-697d-44b1-895b-35dcfe97e611",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sem problema",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0141L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0141L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 141,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c780e27b-d317-4713-b929-908a6e3d896e",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "known",
+  "text": "no problem",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0141L02",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0141L02B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 141,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "1645172c-81ee-4bc5-acc3-853437bd5a37",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não estou mais grato",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bd945cd6-598a-4071-a0aa-5d65037f3282",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não estou mais grato",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4e68aa4f-aa80-431a-8366-dcc97f145f43",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não estou mais contente",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 503,
+   "charsSpent": 0,
+   "code": "GENDER_PREP_MISSING",
+   "error": "gender prep for \"não estou mais contente\" could not be made (the expansion model failed) — not rendered in the unprepared form; try again later"
+  }
+ }
+]

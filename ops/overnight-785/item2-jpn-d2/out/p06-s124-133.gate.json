@@ -1,0 +1,1700 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p06-s124-133.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:32:51.781Z",
+ "seeds": {
+  "124": {
+   "before": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I thought that was a good idea\", \"I thought that was a good idea when she said it\", \"I thought that was a good idea\""
+   ],
+   "after": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I thought that was a good idea\", \"I thought that was a good idea when she said it\", \"I thought that was a good idea\""
+   ],
+   "newFailures": []
+  },
+  "125": {
+   "before": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I believe that your idea was very good\", \"I believe that your idea was very good\", \"I believe that your idea was very good and I want to keep on\""
+   ],
+   "after": [
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I believe that your idea was very good\", \"I believe that your idea was very good\", \"I believe that your idea was very good and I want to keep on\""
+   ],
+   "newFailures": []
+  },
+  "126": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"we don't need to feel happy we just need to work hard\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"when we learn something new it changes our brain\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the shape of my brain\", \"this work is changing the shape of my brain\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"is changing\"",
+    "L5: 5 duplicate phrase(s) within this LEGO: \"this work is changing the shape of my brain\", \"I believe this work is changing the shape of my brain\", \"this work is changing the shape of my brain now\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"we don't need to feel happy we just need to work hard\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"when we learn something new it changes our brain\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the shape of my brain\", \"this work is changing the shape of my brain\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"is changing\"",
+    "L5: 5 duplicate phrase(s) within this LEGO: \"this work is changing the shape of my brain\", \"I believe this work is changing the shape of my brain\", \"this work is changing the shape of my brain now\""
+   ],
+   "newFailures": []
+  },
+  "127": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"wanted to see\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"that isn't why I wanted to see you\", \"that isn't why I wanted to see you at all\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"wanted to see\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"that isn't why I wanted to see you\", \"that isn't why I wanted to see you at all\""
+   ],
+   "newFailures": []
+  },
+  "128": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"used to know\", \"I used to know many words\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"like\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"you're like someone I used to know\", \"you're like someone I used to know but you are different\", \"you're like someone I used to know very much\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"used to know\", \"I used to know many words\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"like\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"you're like someone I used to know\", \"you're like someone I used to know but you are different\", \"you're like someone I used to know very much\""
+   ],
+   "newFailures": []
+  },
+  "129": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"doing so well\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"I'm so happy that you're doing so well\", \"I'm so happy that you're doing so well in a short time\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"doing so well\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"I'm so happy that you're doing so well\", \"I'm so happy that you're doing so well in a short time\""
+   ],
+   "newFailures": []
+  },
+  "130": {
+   "before": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"that was a surprise, because he's my friend\", \"that was a surprise, because he's my friend and I want to speak English with you now\""
+   ],
+   "after": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  "131": {
+   "before": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"going around\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"in my head\""
+   ],
+   "after": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"going around\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"in my head\""
+   ],
+   "newFailures": []
+  },
+  "132": {
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0124L01B04",
+   "seed": 124,
+   "role": "build",
+   "target": "I thought about it carefully",
+   "old": "それについて考えました",
+   "new": "それについてよく考えました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02B05",
+   "seed": 124,
+   "role": "build",
+   "target": "I thought that was a good idea and I was excited",
+   "old": "あなたのいい考えだと思いました",
+   "new": "いい考えだと思いましたし、ワクワクしました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02B07",
+   "seed": 124,
+   "role": "build",
+   "target": "I thought that was a good idea and I agree",
+   "old": "それはいい考えだと同意しました",
+   "new": "いい考えだと思いましたし、同意します",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02B08",
+   "seed": 124,
+   "role": "build",
+   "target": "I thought that was a good idea when she said it",
+   "old": "彼女がいい考えだと思いました",
+   "new": "彼女がそれを言ったとき、いい考えだと思いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02B09",
+   "seed": 124,
+   "role": "build",
+   "target": "I thought that was a good idea to do it today",
+   "old": "今日それはいい考えだと思いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02B10",
+   "seed": 124,
+   "role": "build",
+   "target": "I thought that was a good idea and I want to keep on",
+   "old": "難しくてもいい考えだと思いました",
+   "new": "いい考えだと思いましたし、続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U02",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea when you said it",
+   "old": "あなたが最初にそれを言ったとき、いい考えだと思いました",
+   "new": "あなたがそれを言ったとき、いい考えだと思いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U05",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea but now it's starting to feel more difficult",
+   "old": "そのアイデアはいい考えだと思いましたが、今は難しく感じます",
+   "new": "いい考えだと思いましたが、今はもっと難しく感じ始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U08",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea and I was excited to hear it",
+   "old": "あなたが提案したとき、それはいい考えだと思いました",
+   "new": "いい考えだと思いましたし、それを聞いてワクワクしました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U10",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea when she said it",
+   "old": "彼女がそれをしたとき、いい考えだと思いました",
+   "new": "彼女がそれを言ったとき、いい考えだと思いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U12",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea so I agree with what you said",
+   "old": "その考えに同意しました、とてもいい考えだと思ったからです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U13",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea and I wanted to know more",
+   "old": "あなたの考えについて、もっと知りたいと思いました",
+   "new": "いい考えだと思いましたし、もっと知りたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U14",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea yesterday when you said it",
+   "old": "昨日あなたに会ったとき、それはいい考えだと思いました",
+   "new": "昨日あなたがそれを言ったとき、いい考えだと思いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0124L02U15",
+   "seed": 124,
+   "role": "use",
+   "target": "I thought that was a good idea because I wanted to hear more",
+   "old": "また聞きたかったので、それはいい考えだと思いました",
+   "new": "もっと聞きたかったので、いい考えだと思いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L01U02",
+   "seed": 125,
+   "role": "use",
+   "target": "I thought the answer was good but I think I can do better",
+   "old": "その答えは良かったと思います、でももっと良くできます",
+   "new": "その答えは良かったと思いましたが、もっとうまくできると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L01U03",
+   "seed": 125,
+   "role": "use",
+   "target": "yesterday was good and I'd like to keep on doing this for a while",
+   "old": "昨日の練習はとても良かったです。また続けましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L01U04",
+   "seed": 125,
+   "role": "use",
+   "target": "his idea was good but I thought your idea was better",
+   "old": "彼のアイデアは良かったですが、あなたのほうが良かったと思います",
+   "new": "彼の考えは良かったですが、あなたの考えの方が良かったと思いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L01U05",
+   "seed": 125,
+   "role": "use",
+   "target": "today was good and I think the English was very interesting",
+   "old": "今日の英語の練習は良かったと思います",
+   "new": "今日は良かったですし、英語はとても面白かったと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L01U08",
+   "seed": 125,
+   "role": "use",
+   "target": "what you said was good, thank you very much for helping me",
+   "old": "あなたのアドバイスは良かったと思います。ありがとうございます",
+   "new": "あなたが言ったことは良かったです。手伝ってくれてどうもありがとうございます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L01U09",
+   "seed": 125,
+   "role": "use",
+   "target": "what you said was good and I want to hear more",
+   "old": "あなたが言ったことは本当に良かったです。もっと話してください",
+   "new": "あなたが言ったことは良かったですし、もっと聞きたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02B03",
+   "seed": 125,
+   "role": "build",
+   "target": "I believe that your idea was very good and it will work",
+   "old": "あなたの考えはとても良かったと信じています",
+   "new": "あなたの考えはとても良かったと思いますし、うまくいくと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02B04",
+   "seed": 125,
+   "role": "build",
+   "target": "I believe that your idea was very good and I want to use it",
+   "old": "本当に、あなたの考えはとても良かった",
+   "new": "あなたの考えはとても良かったと思いますし、それを使いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02B05",
+   "seed": 125,
+   "role": "build",
+   "target": "I believe that your idea was very good",
+   "old": "あなたのアドバイスはとても良かった",
+   "new": "あなたの考えはとても良かったと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02B06",
+   "seed": 125,
+   "role": "build",
+   "target": "I believe that your idea was very good and it's important",
+   "old": "あなたの考えはとても良かったと完全に信じています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02B07",
+   "seed": 125,
+   "role": "build",
+   "target": "I believe that your idea was very good and I want to keep on",
+   "old": "それはとても良かったと確信しています",
+   "new": "あなたの考えはとても良かったと思いますし、続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U01",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good and we should do it",
+   "old": "あなたの考えはとても良かったと思います。ぜひ試してみましょう",
+   "new": "あなたの考えはとても良かったと思いますし、それをした方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U03",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good and my friend said it was good",
+   "old": "友人もあなたの考えはとても良かったと言っています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U04",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good and I want to keep on doing it",
+   "old": "あなたの考えはとても良かったです、今もそう思います",
+   "new": "あなたの考えはとても良かったと思いますし、それを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U05",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good and I don't want to stop",
+   "old": "私はあなたの考えはとても良かったと思います。難しかったですが",
+   "new": "あなたの考えはとても良かったと思いますし、やめたくありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U07",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good after thinking about it carefully",
+   "old": "もう一度考えてみたとき、あなたの考えはとても良かったと思いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U10",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good and I agree with what you said",
+   "old": "あなたが言ったことに同意します、あなたの考えはとても良かった",
+   "new": "あなたの考えはとても良かったと思いますし、あなたが言ったことに同意します",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U11",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good but I wanted a little more time",
+   "old": "あなたの考えはとても良かったと思います、もっと時間があれば良かった",
+   "new": "あなたの考えはとても良かったと思いますが、もう少し時間が欲しかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U12",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good, I'd like to keep on doing it",
+   "old": "あなたの考えはとても良かったと思います、この方法でやり続けましょう",
+   "new": "あなたの考えはとても良かったと思います、それを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0125L02U15",
+   "seed": 125,
+   "role": "use",
+   "target": "I believe that your idea was very good and I want to keep on",
+   "old": "あなたの考えはとても良かったと思います、難しくてもやり続けましょう",
+   "new": "あなたの考えはとても良かったと思いますし、続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02B05",
+   "seed": 126,
+   "role": "build",
+   "target": "it changes our brain when we learn",
+   "old": "脳が変わる",
+   "new": "学ぶと脳が変わります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U05",
+   "seed": 126,
+   "role": "use",
+   "target": "when we learn something new it changes our brain and that is why it's important",
+   "old": "英語を練習するたびに、私たちの脳が変わります。それは良いことです",
+   "new": "新しいことを学ぶと脳が変わります。だから大切です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U06",
+   "seed": 126,
+   "role": "use",
+   "target": "when we work hard and learn something new it changes our brain",
+   "old": "一生懸命勉強すると、私たちの脳が変わります",
+   "new": "一生懸命頑張って新しいことを学ぶと、脳が変わります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U07",
+   "seed": 126,
+   "role": "use",
+   "target": "it changes our brain and that is why it's important to work hard",
+   "old": "これが私たちの脳を変えるので、大切です",
+   "new": "脳が変わります。だから一生懸命頑張ることが大切です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U08",
+   "seed": 126,
+   "role": "use",
+   "target": "it's difficult but when we learn something new it changes our brain",
+   "old": "難しいですが、一生懸命勉強すると私たちの脳が変わります",
+   "new": "難しいですが、新しいことを学ぶと脳が変わります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U09",
+   "seed": 126,
+   "role": "use",
+   "target": "when we learn something new it changes our brain, slowly",
+   "old": "ゆっくり学んでいても、私たちの脳は変わります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U10",
+   "seed": 126,
+   "role": "use",
+   "target": "I'm excited because it changes our brain when we learn",
+   "old": "私たちの脳が変わることに興奮しています",
+   "new": "学ぶと脳が変わるので、ワクワクしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U12",
+   "seed": 126,
+   "role": "use",
+   "target": "when we learn something new it changes our brain and it's starting to feel easier",
+   "old": "英語の勉強が楽しくなってきました、私たちの脳が変わっているからです",
+   "new": "新しいことを学ぶと脳が変わりますし、簡単に感じ始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U13",
+   "seed": 126,
+   "role": "use",
+   "target": "it changes our brain so I want to learn something new as often as possible",
+   "old": "こうやって脳が変わるので、できるだけ多くのことを学びたいです",
+   "new": "脳が変わるので、できるだけ何度も新しいことを学びたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U14",
+   "seed": 126,
+   "role": "use",
+   "target": "our brain is important and that is why I want to speak English as often as possible",
+   "old": "私たちの脳のことを考えると、英語を練習したいと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L02U15",
+   "seed": 126,
+   "role": "use",
+   "target": "when we learn something new it changes our brain and it's a good thing",
+   "old": "この方法で学ぶと私たちの脳が変わります、それが大切です",
+   "new": "新しいことを学ぶと脳が変わりますし、それはいいことです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U02",
+   "seed": 126,
+   "role": "use",
+   "target": "I know this work is changing the shape of my brain",
+   "old": "英語を一生懸命勉強することが、私の脳の形を変えています",
+   "new": "この勉強は脳の形を変えているとわかっています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U03",
+   "seed": 126,
+   "role": "use",
+   "target": "I think that this work is changing the shape of my brain",
+   "old": "毎日練習することで、脳の形が変わっていると思います",
+   "new": "この勉強は脳の形を変えていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U04",
+   "seed": 126,
+   "role": "use",
+   "target": "I believe that this work is changing the shape of my brain",
+   "old": "この難しい勉強が私の脳の形を変えていると信じています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U06",
+   "seed": 126,
+   "role": "use",
+   "target": "this work is changing the shape of my brain and it's starting to feel easier",
+   "old": "英語の勉強が楽しくなっています、なぜなら脳の形が変わっているからです",
+   "new": "この勉強は脳の形を変えていて、簡単に感じ始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U08",
+   "seed": 126,
+   "role": "use",
+   "target": "this work is changing the shape of my brain and that is a good thing",
+   "old": "一生懸命勉強すると、脳の形が変わりより簡単に感じ始めます",
+   "new": "この勉強は脳の形を変えていて、それはいいことです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U11",
+   "seed": 126,
+   "role": "use",
+   "target": "I think this work is changing the shape of my brain and it's important",
+   "old": "新しい言語を学ぶことが、私の脳の形を変えているのです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U13",
+   "seed": 126,
+   "role": "use",
+   "target": "I think this work is changing the shape of my brain when I work hard",
+   "old": "私の脳の形について考えると、英語を練習したいと思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L03U15",
+   "seed": 126,
+   "role": "use",
+   "target": "I know this work is changing the shape of my brain and I want to work hard",
+   "old": "脳の形が変わっていることを知っているので、一生懸命勉強したいです",
+   "new": "この勉強は脳の形を変えているとわかっていますし、一生懸命頑張りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L04B06",
+   "seed": 126,
+   "role": "build",
+   "target": "this is changing everything",
+   "old": "これが変えています",
+   "new": "これが全部を変えています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L05B05",
+   "seed": 126,
+   "role": "build",
+   "target": "I believe this work is changing the shape of my brain",
+   "old": "この勉強は脳の形を変えています、本当に",
+   "new": "この勉強は脳の形を変えていると信じています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L05U06",
+   "seed": 126,
+   "role": "use",
+   "target": "I can feel that this work is changing the shape of my brain",
+   "old": "この勉強は脳の形を変えています、と確かに感じます",
+   "new": "この勉強は脳の形を変えていると感じることができます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L05U11",
+   "seed": 126,
+   "role": "use",
+   "target": "this work is changing the shape of my brain and I'm happy with that",
+   "old": "この勉強は脳の形を変えています、とても嬉しいです",
+   "new": "この勉強は脳の形を変えていて、それに満足しています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0126L05U15",
+   "seed": 126,
+   "role": "use",
+   "target": "this work is changing the shape of my brain more and more quickly",
+   "old": "この勉強は脳の形を変えています、もっと速く",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L01U02",
+   "seed": 127,
+   "role": "use",
+   "target": "tell me why you don't want to wait",
+   "old": "理由を教えてください、それが待てない理由を",
+   "new": "待ちたくない理由を教えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L01U11",
+   "seed": 127,
+   "role": "use",
+   "target": "that is why what he said was different",
+   "old": "それが理由です、彼が違う言葉を言った理由が",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L01U13",
+   "seed": 127,
+   "role": "use",
+   "target": "that is why she is with me now",
+   "old": "それが理由です、彼女が私と一緒にいる理由が",
+   "new": "だから彼女は今私と一緒にいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L01U15",
+   "seed": 127,
+   "role": "use",
+   "target": "that is why I want to meet people who speak English",
+   "old": "それが理由です、英語を話す人に会いたかった理由が",
+   "new": "だから英語を話す人たちに会いたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L02U03",
+   "seed": 127,
+   "role": "use",
+   "target": "she wanted to see me all afternoon",
+   "old": "彼女に会いたかった、午後ずっと",
+   "new": "彼女は午後ずっと私に会いたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L02U13",
+   "seed": 127,
+   "role": "use",
+   "target": "I wanted to see you because I don't want to stop talking",
+   "old": "あなたに会いたかった、もっと話したくて",
+   "new": "話すのをやめたくないので、あなたに会いたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L03B04",
+   "seed": 127,
+   "role": "build",
+   "target": "that isn't why I wanted to see you I want to tell you something",
+   "old": "それはあなたに会いたかった理由ではありません、別の理由です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L03B07",
+   "seed": 127,
+   "role": "build",
+   "target": "that isn't why I wanted to see you again",
+   "old": "本当にそれはあなたに会いたかった理由ではありません",
+   "new": "それはもう一度あなたに会いたかった理由ではありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0127L03U10",
+   "seed": 127,
+   "role": "use",
+   "target": "that isn't why I wanted to see you you said something different",
+   "old": "それはあなたに会いたかった理由ではありません、と私に言いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L01U13",
+   "seed": 128,
+   "role": "use",
+   "target": "the things I used to know are different now",
+   "old": "前に知っていたものが違います",
+   "new": "前に知っていたことは、今は違います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L01U14",
+   "seed": 128,
+   "role": "use",
+   "target": "I wanted to speak the way I used to know",
+   "old": "前に知っていた方法で話してみました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02B06",
+   "seed": 128,
+   "role": "build",
+   "target": "you're like someone",
+   "old": "あなたは前の人に似ています",
+   "new": "あなたは誰かに似ています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U02",
+   "seed": 128,
+   "role": "use",
+   "target": "it's not like that now",
+   "old": "それは以前と似ていません",
+   "new": "今はそれに似ていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U03",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like a friend I used to know",
+   "old": "あなたは似ています、友達に",
+   "new": "あなたは前に知っていた友達に似ています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U04",
+   "seed": 128,
+   "role": "use",
+   "target": "it's not like that I thought something different",
+   "old": "私が思っていたこととは似ていません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U07",
+   "seed": 128,
+   "role": "use",
+   "target": "this language is like something difficult",
+   "old": "この言語は似ています、難しいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U11",
+   "seed": 128,
+   "role": "use",
+   "target": "this is like something I used to know",
+   "old": "この感覚は似ています、以前と",
+   "new": "これは前に知っていた何かに似ています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U13",
+   "seed": 128,
+   "role": "use",
+   "target": "it's like the way I used to know",
+   "old": "それは似ています、最初の感覚と",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L02U15",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like someone I used to know and that is interesting",
+   "old": "あなたは以前知っていた人に似ています",
+   "new": "あなたは前に知っていた人に似ていて、それは面白いです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L03U03",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like someone I used to know a good friend",
+   "old": "あなたは前に知っていた人に似ています、昔の友達みたいに",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L03U05",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like someone I used to know and that is interesting",
+   "old": "あなたは前に知っていた人に似ています、おかしいですね",
+   "new": "あなたは前に知っていた人に似ていて、それは面白いです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L03U07",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like someone I used to know and I want to speak English",
+   "old": "あなたは前に知っていた人に似ています、英語が上手な人みたいに",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L03U08",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like someone I used to know and I'm happy with that",
+   "old": "あなたは前に知っていた人に似ています、良い意味で",
+   "new": "あなたは前に知っていた人に似ていて、それに満足しています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0128L03U10",
+   "seed": 128,
+   "role": "use",
+   "target": "you're like someone I used to know and I wanted to see you again",
+   "old": "あなたは前に知っていた人に似ています、また会えてよかった",
+   "new": "あなたは前に知っていた人に似ていて、またあなたに会いたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L01U01",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm happy to speak with you now",
+   "old": "嬉しいです、あなたと話せて",
+   "new": "今あなたと話せて嬉しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L01U05",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm happy to see you today",
+   "old": "嬉しいです、あなたに会えて",
+   "new": "今日あなたに会えて嬉しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L01U12",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm happy with how it's going",
+   "old": "嬉しいです、英語がうまくなってきて",
+   "new": "どう進んでいるかに嬉しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02B07",
+   "seed": 129,
+   "role": "build",
+   "target": "you are doing so well today",
+   "old": "本当にうまくやっています",
+   "new": "今日こんなにうまくやっています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02U03",
+   "seed": 129,
+   "role": "use",
+   "target": "I think that you are doing so well today",
+   "old": "こんなにうまくやっている、今日も",
+   "new": "今日はこんなにうまくやっていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02U04",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm surprised at how well you are doing so well",
+   "old": "こんなにうまくやっているのが驚きです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02U10",
+   "seed": 129,
+   "role": "use",
+   "target": "you are doing so well and I'd like you to keep on",
+   "old": "こんなにうまくやっている、もっと続けましょう",
+   "new": "こんなにうまくやっていますし、続けてほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02U12",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm surprised at how quickly you are doing so well",
+   "old": "こんなにうまくやっている、驚いています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02U14",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm happy with how well you are doing so well",
+   "old": "こんなにうまくやっている、誇りに思います",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L02U15",
+   "seed": 129,
+   "role": "use",
+   "target": "I believe you are doing so well and that is interesting",
+   "old": "こんなにうまくやっている、と信じます、本当に",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03B03",
+   "seed": 129,
+   "role": "build",
+   "target": "I'm so happy that you're doing so well, I think that you're doing very well",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、とても",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03B06",
+   "seed": 129,
+   "role": "build",
+   "target": "I'm so happy that you're doing so well and I'd like to keep on",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです。私も続けたいです",
+   "new": "あなたがこんなにうまくやっていてとても嬉しいです。続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U02",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well, I agree with what you said about your friend",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、あなたの友達のことも教えてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U05",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well and I want you to speak English with me tomorrow",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、今日英語をたくさん話しましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U06",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well, I wasn't expecting it",
+   "old": "あなたが英語をこんなにうまく話しているとは驚きました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U07",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well and enjoying finding out more about this language",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、そして英語を楽しんでいます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U08",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well, I'm very happy with how much I've learnt already",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、どれだけ学んだかよく分かります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U10",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well because I want to meet people who speak English",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、英語を話す人に会えますよ",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U12",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well, I'd like to keep on doing this for a while",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、続けてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U13",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well, that was very interesting and I wasn't expecting it",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、とても驚きました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0129L03U15",
+   "seed": 129,
+   "role": "use",
+   "target": "I'm so happy that you're doing so well, I'm surprised at how quickly I'm starting to understand",
+   "old": "あなたがこんなにうまくやっていてとても嬉しいです、どれだけ速く理解できるようになっているか",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0130L01U04",
+   "seed": 130,
+   "role": "use",
+   "target": "this is a good surprise, I'm so happy that you're doing so well",
+   "old": "これは嬉しい驚きです、あなたに会えてとても嬉しいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L01U06",
+   "seed": 130,
+   "role": "use",
+   "target": "no surprise because I think that's a good idea",
+   "old": "全く驚きではありません、あなたの考えはとても良かったです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L01U07",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, I'm very happy with how much I've learnt already",
+   "old": "それは驚きでした、とても喜びました",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L01U09",
+   "seed": 130,
+   "role": "use",
+   "target": "what a surprise, I'm so happy that you're doing so well",
+   "old": "驚きでした、あなたに会えてとても嬉しいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L01U10",
+   "seed": 130,
+   "role": "use",
+   "target": "no surprise at all, we don't need to feel happy we just need to work hard",
+   "old": "全く驚きではありませんでした、あなたはいつも一生懸命頑張っていましたから",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L01U13",
+   "seed": 130,
+   "role": "use",
+   "target": "what a surprise, I'm surprised at how quickly I'm starting to understand",
+   "old": "驚きでした、理解できるのがどれほど速いかとても驚いています",
+   "new": "驚きです、どれだけ速く理解し始めているか驚いています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0130L01U14",
+   "seed": 130,
+   "role": "use",
+   "target": "no surprise because I believe that your idea was very good",
+   "old": "全く驚きではありませんでした、あなたの考えはとても良かったです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L01U15",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise because I want to meet people who speak English",
+   "old": "それは驚きでした、英語を話す人に会えて嬉しいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02B04",
+   "seed": 130,
+   "role": "build",
+   "target": "that was a surprise, because he's my friend and he's here today",
+   "old": "それは驚きでした、彼は私の友達ですから、一緒に",
+   "new": "それは驚きでした、彼は私の友達ですし、今日ここにいますから",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0130L02B05",
+   "seed": 130,
+   "role": "build",
+   "target": "that was a surprise, because he's my friend and I want to speak English with you now",
+   "old": "それは驚きでした、彼は私の友達ですから、英語で",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02B06",
+   "seed": 130,
+   "role": "build",
+   "target": "that was a surprise, because he's my friend and it is fun",
+   "old": "それは驚きでした、彼は私の友達ですから、楽しかったです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02B07",
+   "seed": 130,
+   "role": "build",
+   "target": "that was a surprise, because he's my friend and he's my friend",
+   "old": "それは驚きでした、彼は私の友達ですから、また来ます",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U01",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I want to speak English with you now",
+   "old": "それは驚きでした、彼は私の友達ですから、英語で話したいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U02",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I enjoy doing interesting things with my friends",
+   "old": "それは驚きでした、彼は私の友達ですから、友達と楽しんでいます",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U03",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I don't agree with what he said about my friend",
+   "old": "それは驚きでした、彼は私の友達ですから、彼が言ったことには同意できません",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U04",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I agree with what you said about your friend",
+   "old": "それは驚きでした、彼は私の友達ですから、あなたの言ったことには同意します",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U06",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and we're friends and after we finish I'd like to relax",
+   "old": "それは驚きでした、彼は私の友達ですから、終わったら休みたいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U07",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I think that I've done a lot in a short time",
+   "old": "それは驚きでした、彼は私の友達ですから、短い時間でたくさん学びました",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U09",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and that was very interesting and I wasn't expecting it",
+   "old": "それは驚きでした、彼は私の友達ですから、とても面白かったです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U10",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and he wanted to write a letter to his friend last week",
+   "old": "それは驚きでした、彼は私の友達ですから、先週手紙を書きました",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U13",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I want to speak with you now",
+   "old": "それは驚きでした、彼は私の友達ですから、英語を話したいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U14",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I want to meet people who speak English",
+   "old": "それは驚きでした、彼は私の友達ですから、英語であなたに会いたいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0130L02U15",
+   "seed": 130,
+   "role": "use",
+   "target": "that was a surprise, because he's my friend and I'm so happy that you're doing so well",
+   "old": "それは驚きでした、彼は私の友達ですから、英語での会話をしたいです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0131L01B04",
+   "seed": 131,
+   "role": "build",
+   "target": "there are many things to do",
+   "old": "多くのことがある",
+   "new": "することがたくさんある",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U01",
+   "seed": 131,
+   "role": "use",
+   "target": "there are a lot of things I need to learn but I enjoy doing interesting things with my friends",
+   "old": "覚えなければならないことがたくさんあります、でも楽しんでいます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U03",
+   "seed": 131,
+   "role": "use",
+   "target": "there are people here and I don't know those people",
+   "old": "あなたが知らない人がここにいます",
+   "new": "ここに人たちがいますが、私はあの人たちを知りません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U08",
+   "seed": 131,
+   "role": "use",
+   "target": "there are a lot of new things to remember and I need to keep on going",
+   "old": "一度に覚えなければならないことがたくさんあります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U09",
+   "seed": 131,
+   "role": "use",
+   "target": "there are so many things I want to tell you, I'd like to keep on doing this for a while",
+   "old": "あなたに話したいことがたくさんあります、続けてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U10",
+   "seed": 131,
+   "role": "use",
+   "target": "there are a lot of things to learn and I think that I've done a lot in a short time",
+   "old": "まだ学ぶべきことがたくさんあります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U12",
+   "seed": 131,
+   "role": "use",
+   "target": "there are a few things I'd like to ask you before you leave",
+   "old": "あなたに聞きたいことがいくつかあります",
+   "new": "帰る前に、あなたに聞きたいことがいくつかあります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L01U15",
+   "seed": 131,
+   "role": "use",
+   "target": "there are a lot of things I want to say but I'm not ready to talk to people I don't know yet",
+   "old": "言いたいことがたくさんありますが、まだ準備ができていません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L02B03",
+   "seed": 131,
+   "role": "build",
+   "target": "too many people here",
+   "old": "多すぎる人",
+   "new": "ここに多すぎる人たち",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L02B06",
+   "seed": 131,
+   "role": "build",
+   "target": "too many to remember",
+   "old": "多すぎて分からない",
+   "new": "多すぎて覚えられない",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L02U13",
+   "seed": 131,
+   "role": "use",
+   "target": "there are too many things I need to do before you leave",
+   "old": "準備しなければならないことが多すぎます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L02U15",
+   "seed": 131,
+   "role": "use",
+   "target": "there are too many things I don't know yet but I want to start talking",
+   "old": "準備していないことが多すぎます、でも始めます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U02",
+   "seed": 131,
+   "role": "use",
+   "target": "I have a lot of ideas and I'd like to keep on doing this for a while",
+   "old": "新しいアイデアがたくさんあります、続けていきたいです",
+   "new": "アイデアがたくさんあって、しばらくこれを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U03",
+   "seed": 131,
+   "role": "use",
+   "target": "your ideas were very good, thank you very much for helping me to understand",
+   "old": "あなたのアイデアはとても良かったです、感謝します",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U07",
+   "seed": 131,
+   "role": "use",
+   "target": "I believe that your ideas were very good",
+   "old": "あなたのアイデアは本当に良かったです",
+   "new": "あなたのアイデアはとても良かったと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U08",
+   "seed": 131,
+   "role": "use",
+   "target": "I have a lot of ideas I want to try to speak English with you now",
+   "old": "試したいアイデアがたくさんあります",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U10",
+   "seed": 131,
+   "role": "use",
+   "target": "your ideas were so good, I enjoy doing interesting things with my friends",
+   "old": "あなたのアイデアはとても良かったです、また一緒にやりましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U11",
+   "seed": 131,
+   "role": "use",
+   "target": "the ideas are good but this isn't the best choice I could make",
+   "old": "アイデアは良いと思います、でも最善の選択をしなければなりません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U14",
+   "seed": 131,
+   "role": "use",
+   "target": "your ideas were good, thank you very much for helping me",
+   "old": "あなたのアイデアは良かったです、ありがとうございます",
+   "new": "あなたのアイデアは良かったです、手伝ってくれてどうもありがとうございます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L03U15",
+   "seed": 131,
+   "role": "use",
+   "target": "I have too many ideas going around and I want to speak English with you now",
+   "old": "アイデアがたくさんありますが、何から始めるか話し合いましょう",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L04U11",
+   "seed": 131,
+   "role": "use",
+   "target": "English words going around in my head and I want to speak English with you now",
+   "old": "英語の言葉が頭の中でぐるぐる回っています、英語で話したいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L04U15",
+   "seed": 131,
+   "role": "use",
+   "target": "there are ideas going around in my head and I'd like to keep on doing this for a while",
+   "old": "言いたいことが頭の中でぐるぐる回っています、続けていきます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L05U03",
+   "seed": 131,
+   "role": "use",
+   "target": "it's not difficult to find the answer in my head, but I can't say it",
+   "old": "頭の中で練習していますが、声に出すのが難しいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0131L05U15",
+   "seed": 131,
+   "role": "use",
+   "target": "there are ideas going around in my head and I want to speak English with you now",
+   "old": "頭の中にアイデアがたくさんあります、でも英語でどう言うか分かりません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0132L02U01",
+   "seed": 132,
+   "role": "use",
+   "target": "English is exciting when you start to understand it",
+   "old": "英語を理解し始めると面白いです",
+   "new": "英語は理解し始めるとワクワクします",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0132L02U02",
+   "seed": 132,
+   "role": "use",
+   "target": "I find it exciting to speak English",
+   "old": "英語を話すのが面白いと思います",
+   "new": "英語を話すのはワクワクすると思います",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}

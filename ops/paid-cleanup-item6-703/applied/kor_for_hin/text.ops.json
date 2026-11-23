@@ -1,0 +1,315 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 54,
+   "set": {
+    "target_text": "우리는 당신에게 시간을 조금 더 주고 싶었어요."
+   },
+   "expect": {
+    "known_text": "हम आपको थोड़ा और समय देना चाहते थे।",
+    "target_text": "우리는 당신에게 시간을 조금 더 주고 싶어했어요."
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 107,
+   "set": {
+    "target_text": "우리는 당신이 무엇을 하고 있는지 보고 싶었어요."
+   },
+   "expect": {
+    "known_text": "हम देखना चाहते थे कि आप क्या कर रहे थे।",
+    "target_text": "우리는 당신이 무엇을 하고 있는지 보고 싶어했어요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0107L03",
+   "set": {
+    "target_text": "보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "देखना चाहते थे",
+    "target_text": "보고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0107L03B01",
+   "set": {
+    "target_text": "보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "देखना चाहते थे",
+    "target_text": "보고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0107L03B02",
+   "set": {
+    "target_text": "이것을 보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "यह देखना चाहते थे",
+    "target_text": "이것을 보고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0107L03B03",
+   "set": {
+    "target_text": "당신을 보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "आपको देखना चाहते थे",
+    "target_text": "당신을 보고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0107L03U02",
+   "set": {
+    "known_text": "हम आपको देखना चाहते थे",
+    "target_text": "우리는 당신을 보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "वह आपको देखना चाहता था",
+    "target_text": "그는 당신을 보고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0107L03U04",
+   "set": {
+    "known_text": "हम कल आपको देखना चाहते थे",
+    "target_text": "우리는 어제 당신을 보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "वह (स्त्री) आपको देखना चाहती थी",
+    "target_text": "그녀는 당신을 보고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0107L03U05",
+   "set": {
+    "known_text": "हम आज यह देखना चाहते थे",
+    "target_text": "우리는 오늘 이것을 보고 싶었어요"
+   },
+   "expect": {
+    "known_text": "वे आपको देखना चाहते थे",
+    "target_text": "그들은 당신을 보고 싶어했어요"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 201,
+   "set": {
+    "target_text": "우리는 무슨 일이 일어날지 알고 싶었어요."
+   },
+   "expect": {
+    "known_text": "हम जानना चाहते थे कि क्या होने वाला है।",
+    "target_text": "우리는 무슨 일이 일어날지 알고 싶어했어요."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0201L01",
+   "set": {
+    "target_text": "알고 싶었어요"
+   },
+   "expect": {
+    "known_text": "जानना चाहते थे",
+    "target_text": "알고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0201L01C02",
+   "set": {
+    "target_text": "싶었어요"
+   },
+   "expect": {
+    "known_text": "चाहते थे",
+    "target_text": "싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0201L01B01",
+   "set": {
+    "target_text": "알고 싶었어요"
+   },
+   "expect": {
+    "known_text": "जानना चाहते थे",
+    "target_text": "알고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0201L01B02",
+   "set": {
+    "target_text": "그것을 알고 싶었어요"
+   },
+   "expect": {
+    "known_text": "यह जानना चाहते थे",
+    "target_text": "그것을 알고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0201L01B03",
+   "set": {
+    "known_text": "क्या जानना चाहते थे",
+    "target_text": "무엇을 알고 싶었어요"
+   },
+   "expect": {
+    "known_text": "सच जानना चाहते थे",
+    "target_text": "무엇을 알고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0201L01U03",
+   "set": {
+    "known_text": "हम कल जानना चाहते थे कि क्या होने वाला है",
+    "target_text": "우리는 어제 무슨 일이 일어날지 알고 싶었어요"
+   },
+   "expect": {
+    "known_text": "वह जानना चाहती थी कि क्या होने वाला है",
+    "target_text": "그녀는 무슨 일이 일어날지 알고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0201L01U05",
+   "set": {
+    "known_text": "हम उसका नाम जानना चाहते थे",
+    "target_text": "우리는 그의 이름을 알고 싶었어요"
+   },
+   "expect": {
+    "known_text": "वे जानना चाहते थे कि क्या होने वाला है",
+    "target_text": "그들은 무슨 일이 일어날지 알고 싶어했어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0096L02U04",
+   "set": {
+    "known_text": "वह अभी तैयार नहीं हुई है"
+   },
+   "expect": {
+    "known_text": "वह (स्त्री) अभी तैयार नहीं है",
+    "target_text": "그녀는 아직 준비가 안 됐어요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0096L05U05",
+   "set": {
+    "known_text": "क्या आपको आज थोड़ा और समय चाहिए?",
+    "target_text": "오늘 시간이 조금 더 필요해요?"
+   },
+   "expect": {
+    "known_text": "उसे (स्त्री) थोड़ा और समय चाहिए",
+    "target_text": "그녀는 시간이 조금 더 필요해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0102L02U05",
+   "set": {
+    "known_text": "वह कहती है कि यह ऐसा नहीं है"
+   },
+   "expect": {
+    "known_text": "वह (स्त्री) कहती है कि यह ऐसा नहीं है",
+    "target_text": "그녀는 그렇지 않다고 말해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0110L01U04",
+   "set": {
+    "known_text": "वह मेरी दोस्त है"
+   },
+   "expect": {
+    "known_text": "वह (स्त्री) मेरी दोस्त है",
+    "target_text": "그녀는 제 친구예요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_hin:S0128L02U03",
+   "expect": {
+    "known_text": "वह अच्छे इंसान की तरह है (स्त्री)",
+    "target_text": "그녀는 좋은 사람 같아요"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "kor_for_hin:S0128L04U05",
+   "expect": {
+    "known_text": "वह किसी ऐसे इंसान की तरह है जिसे मैं जानता था (स्त्री)",
+    "target_text": "그녀는 제가 알던 사람 같아요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0017L03C01",
+   "set": {
+    "known_text": "वह"
+   },
+   "expect": {
+    "known_text": "वह (स्त्री)",
+    "target_text": "그녀는"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0030L01C01",
+   "set": {
+    "known_text": "कल"
+   },
+   "expect": {
+    "known_text": "कल (बीता)",
+    "target_text": "어제"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0152L01U01",
+   "set": {
+    "known_text": "आप क्या सीखने की कोशिश कर रहे हैं?",
+    "target_text": "당신이 무엇을 배우려고 해요?"
+   },
+   "expect": {
+    "known_text": "आप क्या सीखना चाहते हैं",
+    "target_text": "당신이 무엇을 배우려고 해요"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0156L02U02",
+   "set": {
+    "target_text": "어디 가고 싶어요?"
+   },
+   "expect": {
+    "known_text": "आप कहाँ जाना चाहते हैं?",
+    "target_text": "어디서 가고 싶어요?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "kor_for_hin:S0196L03B01",
+   "set": {
+    "known_text": "अभी सबसे नया विचार सुना है",
+    "target_text": "지금 최신 아이디어를 들었어요"
+   },
+   "expect": {
+    "known_text": "सबसे नया सुना है",
+    "target_text": "최신 들었어요"
+   }
+  }
+ ]
+}

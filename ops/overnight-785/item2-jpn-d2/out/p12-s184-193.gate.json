@@ -1,0 +1,426 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p12-s184-193.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:25.783Z",
+ "seeds": {
+  "184": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"yes I saw them in the office a while ago\"",
+    "L2: 4 duplicate phrase(s) within this LEGO: \"a while ago\", \"yes I saw them in the office a while ago\", \"I saw her in the office a while ago\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"yes I saw them in the office a while ago\"",
+    "L2: 4 duplicate phrase(s) within this LEGO: \"a while ago\", \"yes I saw them in the office a while ago\", \"I saw her in the office a while ago\""
+   ],
+   "newFailures": []
+  },
+  "185": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "186": {
+   "before": [
+    "L2: 6 duplicate phrase(s) within this LEGO: \"something different\", \"do you want to talk about something different next week?\", \"I'd like to do something different today\""
+   ],
+   "after": [
+    "L2: 6 duplicate phrase(s) within this LEGO: \"something different\", \"do you want to talk about something different next week?\", \"I'd like to do something different today\""
+   ],
+   "newFailures": []
+  },
+  "187": {
+   "before": [
+    "L1: 5 duplicate phrase(s) within this LEGO: \"I'm happy so far\", \"I'm happy so far with how much I've learnt already\", \"I'm happy so far and I think it's going very well\""
+   ],
+   "after": [
+    "L1: 5 duplicate phrase(s) within this LEGO: \"I'm happy so far\", \"I'm happy so far with how much I've learnt already\", \"I'm happy so far and I think it's going very well\""
+   ],
+   "newFailures": []
+  },
+  "190": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I'd like to learn some new words\", \"do you mind if I ask some questions?\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"do you mind if I ask some questions?\", \"can I ask you some questions before you leave?\", \"do you mind if I ask you some questions now?\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"do you mind if\", \"do you mind if I ask you something before you leave?\", \"do you mind if I speak English now?\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I'd like to learn some new words\", \"do you mind if I ask some questions?\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"do you mind if I ask some questions?\", \"can I ask you some questions before you leave?\", \"do you mind if I ask you some questions now?\"",
+    "L3: 6 duplicate phrase(s) within this LEGO: \"do you mind if\", \"do you mind if I ask you something before you leave?\", \"do you mind if I speak English now?\""
+   ],
+   "newFailures": []
+  },
+  "191": {
+   "before": [],
+   "after": [],
+   "newFailures": []
+  },
+  "192": {
+   "before": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"tomorrow night\", \"tomorrow night\""
+   ],
+   "after": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"tomorrow night\", \"tomorrow night\""
+   ],
+   "newFailures": []
+  },
+  "193": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0184L01B05",
+   "seed": 184,
+   "role": "build",
+   "target": "something different in the office",
+   "old": "オフィスで違うことをする",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0184L02U08",
+   "seed": 184,
+   "role": "use",
+   "target": "I saw her in the office a while ago so I think she's there",
+   "old": "さっきオフィスで彼女を見たのでまだいると思います",
+   "new": "さっきオフィスで彼女を見たので、そこにいると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0184L02U12",
+   "seed": 184,
+   "role": "use",
+   "target": "I'm thinking about what you said a while ago",
+   "old": "さっきのことが今でも気になっています",
+   "new": "さっきあなたが言ったことについて考えています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0184L02U14",
+   "seed": 184,
+   "role": "use",
+   "target": "that was a while ago and I'd like to talk about it more",
+   "old": "さっきのことについてもっと話したいです",
+   "new": "それはさっきのことですが、それについてもっと話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0185L02U09",
+   "seed": 185,
+   "role": "use",
+   "target": "I think I left something but I can't remember what it was",
+   "old": "何かを置いてきましたが思い出せません",
+   "new": "何かを置いてきたと思いますが、それが何か思い出せません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0186L02U04",
+   "seed": 186,
+   "role": "use",
+   "target": "I need to do something different because this isn't easy",
+   "old": "うまくいかないので違うことをする必要があります",
+   "new": "これは簡単ではないので、違うことをする必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0186L02U10",
+   "seed": 186,
+   "role": "use",
+   "target": "we need to change what we're doing and do something different",
+   "old": "やっていることを変えて違うことをしましょう",
+   "new": "やっていることを変えて、違うことをする必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0187L01B03",
+   "seed": 187,
+   "role": "build",
+   "target": "I'm happy so far with how it's going",
+   "old": "今のところうまくいっています",
+   "new": "今のところ、どう進んでいるかに満足しています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0187L01B06",
+   "seed": 187,
+   "role": "build",
+   "target": "I'm happy so far and I think it's going very well",
+   "old": "今のところうまくいっていると思います",
+   "new": "今のところ満足していて、とてもうまくいっていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0187L01U02",
+   "seed": 187,
+   "role": "use",
+   "target": "I'm happy so far and I think it's going very well",
+   "old": "今のところうまくいっていると思います",
+   "new": "今のところ満足していて、とてもうまくいっていると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0187L01U11",
+   "seed": 187,
+   "role": "use",
+   "target": "I'm happy so far but I'd like to do something different",
+   "old": "今のところ違うことをしてみたいと思います",
+   "new": "今のところ満足していますが、違うことをしてみたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0190L01U04",
+   "seed": 190,
+   "role": "use",
+   "target": "there are some new words I need to learn",
+   "old": "いくつかの新しい言葉があります",
+   "new": "学ぶ必要がある新しい言葉がいくつかあります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0190L01U05",
+   "seed": 190,
+   "role": "use",
+   "target": "have you got some new words to learn?",
+   "old": "いくつかの新しい言葉はありますか",
+   "new": "学ぶ新しい言葉がいくつかありますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0190L02U15",
+   "seed": 190,
+   "role": "use",
+   "target": "can I ask you some questions about that before you leave?",
+   "old": "いくつか質問があって、離れる前に聞いてもいいですか",
+   "new": "あなたが出る前に、それについていくつか質問してもいいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0190L03U02",
+   "seed": 190,
+   "role": "use",
+   "target": "do you mind if I ask you something about how it's going?",
+   "old": "今やっていることについて何か聞いてもいいですか",
+   "new": "どう進んでいるかについて何か聞いてもいいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0190L03U08",
+   "seed": 190,
+   "role": "use",
+   "target": "do you mind if I take a little more time to answer?",
+   "old": "少し時間をかけてもいいですか",
+   "new": "答えるのにもう少し時間をかけてもいいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0190L03U11",
+   "seed": 190,
+   "role": "use",
+   "target": "do you mind if I take a little time to think?",
+   "old": "少し時間をとってもいいですか",
+   "new": "考えるのに少し時間をとってもいいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0191L01B06",
+   "seed": 191,
+   "role": "build",
+   "target": "hear at all",
+   "old": "全然聞こえません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0191L01U02",
+   "seed": 191,
+   "role": "use",
+   "target": "Do you think you're not ready to have a conversation at all?",
+   "old": "あなたは全然準備できていないと思いますか？",
+   "new": "会話をする準備が全然できていないと思いますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0191L01U07",
+   "seed": 191,
+   "role": "use",
+   "target": "I don't feel as if I can remember it at all",
+   "old": "私は全然覚えられません",
+   "new": "全然覚えられるようには感じません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0191L01U08",
+   "seed": 191,
+   "role": "use",
+   "target": "Are you sure you don't mind at all if we take a little more time?",
+   "old": "あなたは全然気にしないと確認していますか？",
+   "new": "本当に、もう少し時間をかけても全然構いませんか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0191L01U09",
+   "seed": 191,
+   "role": "use",
+   "target": "this isn't very difficult at all so I hope you'll finish soon",
+   "old": "それは全然難しくありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0191L01U15",
+   "seed": 191,
+   "role": "use",
+   "target": "I don't understand at all, could you say that again a little more slowly?",
+   "old": "私は全然わかりません、もう一度言ってもらえますか？",
+   "new": "全然わかりません。もう少しゆっくりもう一度言っていただけますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L01U06",
+   "seed": 192,
+   "role": "use",
+   "target": "He was very busy all day and didn't want to talk to anyone",
+   "old": "彼は一日中忙しかったです",
+   "new": "彼は一日中とても忙しくて、誰とも話したくありませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L01U11",
+   "seed": 192,
+   "role": "use",
+   "target": "She was busy all morning today and couldn't come to meet us",
+   "old": "彼女は今日の午前中ずっと忙しかったです",
+   "new": "彼女は今日午前中ずっと忙しくて、私たちに会いに来られませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L01U15",
+   "seed": 192,
+   "role": "use",
+   "target": "we were all very busy but we were able to do it together in time",
+   "old": "私たちはみんな忙しかったのに、なんとかやり遂げました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L02U02",
+   "seed": 192,
+   "role": "use",
+   "target": "I'm sorry but I'm busy tomorrow night and I can't come",
+   "old": "私は明日の夜忙しいのですみません",
+   "new": "すみませんが、明日の夜は忙しいので行けません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L02U05",
+   "seed": 192,
+   "role": "use",
+   "target": "She said she's going to be here tomorrow night so you can ask her",
+   "old": "彼女は明日の夜ここにいると言っていました",
+   "new": "彼女は明日の夜ここにいると言っていたので、彼女に聞けます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L02U08",
+   "seed": 192,
+   "role": "use",
+   "target": "where do you want to meet tomorrow night, at six o'clock?",
+   "old": "明日の夜、どこで会いたいですか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L02U10",
+   "seed": 192,
+   "role": "use",
+   "target": "can you come early tomorrow night so we can talk for a while?",
+   "old": "明日の夜は早く来られますか？",
+   "new": "しばらく話せるように、明日の夜早く来られますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0192L02U12",
+   "seed": 192,
+   "role": "use",
+   "target": "He said he didn't want to come tomorrow night but I hope you'll be there",
+   "old": "彼は明日の夜来たくないと言っていました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0193L01U02",
+   "seed": 193,
+   "role": "use",
+   "target": "She said I'm sorry but I'm too busy today and I wasn't expecting it",
+   "old": "彼女はすみませんが、今日は忙しすぎますと言いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0193L01U03",
+   "seed": 193,
+   "role": "use",
+   "target": "I'm sorry but I'm too busy today to help you look for it",
+   "old": "すみませんが、今日は忙しすぎて、あなたを助けることができません",
+   "new": "すみませんが、今日は忙しすぎて、それを探すのを手伝えません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0193L01U05",
+   "seed": 193,
+   "role": "use",
+   "target": "I'm sorry but I'm too busy today and I didn't have time to ask her",
+   "old": "すみませんが、今日は忙しすぎて電話できませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  }
+ ]
+}

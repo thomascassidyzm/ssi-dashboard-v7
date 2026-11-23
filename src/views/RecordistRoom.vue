@@ -763,6 +763,7 @@ import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecor
 // The take decisions (when a line ends itself, which takes are filed) live in the capture path, so
 // the sample gate's recorder hash covers them and not this screen (job #575).
 import { autoAdvanceDue, takeIsSilent, fileTakeOnAdvance, fileTakeOnStop } from '@/composables/boothTakePolicy'
+import { againReopensFiledLine } from '@/composables/boothAgainTarget'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
@@ -2521,6 +2522,9 @@ async function onNext(source = 'tap', to = 'next') {
     }
     // ONE LINE ON, never a scan (THE ONE CURSOR). On the last line this is Done.
     const n = to === 'unrecorded' ? nextIndexFrom(i) : nextFlowFrom(i)
+    // Remember an AUTOMATIC step, so an Again that follows it can mean the
+    // line just filed (boothAgainTarget.js). A tapped Next forgets it.
+    lastAuto = (source === 'auto' && n !== -1) ? { from: i, to: n, at: Date.now() } : null
     if (n !== -1) {
       index.value = n
       // Wherever he lands, that line gets its step forward: he may have left it
@@ -2614,8 +2618,20 @@ watch(() => recorder.quietMs.value, (ms) => {
   if (autoAdvanceDue({ quietMs: ms, lineHasSpeech: recorder.lineHasSpeech.value, voicedMs: recorder.voicedMs.value })) onNext('auto')
 })
 
+// The last advance, if the booth made it by itself: { from, to, at }. Read
+// only by onAgain (boothAgainTarget.js says why); every other move clears it.
+let lastAuto = null
+
 async function onAgain() {
-  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value || paused.value) return
+  // AGAIN RIGHT AFTER THE BOOTH MOVED ON BY ITSELF re-reads the line it just
+  // filed (Dan, 2026-11-23, cs #865): checked BEFORE the bounce guard, because
+  // the auto-advance stamps that guard too and would swallow a quick Again.
+  const back = againReopensFiledLine({
+    lastAuto, index: index.value, now: Date.now(), lineHasSpeech: recorder.lineHasSpeech.value,
+  })
+  if (back !== -1) return goToLine(back, { fromAgain: true })
+  if (!debounced()) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
@@ -2639,6 +2655,7 @@ function pauseTake() {
   // fighting over the same flag.
   if (playingId.value) stopPlayback()
   if (micHeld.value) return
+  lastAuto = null
   paused.value = true
   micHeld.value = true
   try { recorder.discardLine() } catch { micHeld.value = false; paused.value = false }
@@ -2689,9 +2706,12 @@ async function onBack() {
 
 // THE CURSOR GOES STRAIGHT TO A LINE: ‹ (one back) and a tap on the rail. Both
 // discard the open capture and file nothing, for the reasons Back always has.
-async function goToLine(prev) {
-  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value || !backDebounced()) return
+async function goToLine(prev, { fromAgain = false } = {}) {
+  if (sampleHeld.value || phase.value !== 'recording' || arming.value || busy.value) return
+  // Again has its own guard (onAgain); a Back within 250 ms of it is still a fresh tap.
+  if (!fromAgain && !backDebounced()) return
   if (!(prev >= 0 && prev < lines.value.length) || prev === index.value) return
+  lastAuto = null
   busy.value = true
   try {
     await recorder.discardLine()
@@ -2743,6 +2763,7 @@ async function onFinish() {
 }
 
 async function finish(next = nextFlowFrom(index.value)) {
+  lastAuto = null
   await Promise.all([...closingTakes.values()])
   if (sampleGate.value.gated && sampleIds.value.length) {
     await holdSample(next)

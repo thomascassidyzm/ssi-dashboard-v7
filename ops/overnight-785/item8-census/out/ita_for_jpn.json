@@ -1,0 +1,405 @@
+{
+ "course": "ita_for_jpn",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 107,
+ "on_copy": 107,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0001L04U05",
+   "src": "#957 changeset",
+   "known": "今あなたとイタリア語を話したいです。",
+   "target": "Voglio parlare italiano con te adesso.",
+   "twin": "S0001L04U04",
+   "twin_known": "今あなたとイタリア語を話したい"
+  },
+  {
+   "id": "S0005L03U06",
+   "src": "#957 changeset",
+   "known": "他の人と話す練習をするつもりです。",
+   "target": "Vado a esercitarmi a parlare con qualcun altro.",
+   "twin": "S0005L03U05",
+   "twin_known": "他の人と話す練習をするつもり"
+  },
+  {
+   "id": "S0008L02U06",
+   "src": "#957 changeset",
+   "known": "私が言いたいことを説明しようとします。",
+   "target": "Vado a provare a spiegare cosa intendo.",
+   "twin": "S0008L02B03",
+   "twin_known": "言いたいことを説明してみるつもり"
+  },
+  {
+   "id": "S0010L04U06",
+   "src": "#957 changeset",
+   "known": "文全体を覚えられるかどうかわかりません。",
+   "target": "Non sono sicuro se riesco a ricordare tutta la frase.",
+   "twin": "S0010L04U02",
+   "twin_known": "文全体を思い出せるかどうかわからない"
+  },
+  {
+   "id": "S0011L03U06",
+   "src": "#957 changeset",
+   "known": "あなたが終わったら話せるようになりたいです。",
+   "target": "Mi piacerebbe riuscire a parlare dopo che hai finito.",
+   "twin": "S0011L03B04",
+   "twin_known": "終わったら話せるようになりたいです"
+  },
+  {
+   "id": "S0012L03U06",
+   "src": "#957 changeset",
+   "known": "明日何が起こるか当てたくありません。",
+   "target": "Non mi piacerebbe indovinare cosa succederà domani.",
+   "twin": "S0012L03U03",
+   "twin_known": "明日何が起こるか当てたくない"
+  },
+  {
+   "id": "S0013L03U06",
+   "src": "#957 changeset",
+   "known": "イタリア語がとても上手ですね。",
+   "target": "Parli italiano molto bene.",
+   "twin": "S0013L03U01",
+   "twin_known": "あなたはイタリア語がとても上手"
+  },
+  {
+   "id": "S0016L05U06",
+   "src": "#957 changeset",
+   "known": "彼は後で皆と一緒に戻りたいです。",
+   "target": "Lui vuole tornare con tutti gli altri più tardi.",
+   "twin": "S0016L05U01",
+   "twin_known": "彼は後で皆と一緒に戻りたい"
+  },
+  {
+   "id": "S0018L04U06",
+   "src": "#957 changeset",
+   "known": "今晩6時に会いたいです。",
+   "target": "Vogliamo incontrarci alle sei stasera.",
+   "twin": "S0018L04U01",
+   "twin_known": "私たちは今晩6時に会いたい"
+  },
+  {
+   "id": "S0022L02U06",
+   "src": "#957 changeset",
+   "known": "イタリア語を話す人に会いたいからです。",
+   "target": "Perché voglio incontrare persone che parlano italiano.",
+   "twin": "S0022L02U03",
+   "twin_known": "なぜならイタリア語を話す人に出会いたいから"
+  },
+  {
+   "id": "S0023L03U06",
+   "src": "#957 changeset",
+   "known": "もうすぐもっと話し始めるつもりです。",
+   "target": "Vado a iniziare a parlare di più presto.",
+   "twin": "S0023L03U05",
+   "twin_known": "もうすぐもっと話し始めるつもり"
+  },
+  {
+   "id": "S0033L02U06",
+   "src": "#957 changeset",
+   "known": "イタリア語をどのくらい学んでいますか？",
+   "target": "Da quanto tempo stai imparando l'italiano?",
+   "twin": "S0033L02B02",
+   "twin_known": "どのくらいイタリア語を学んでいますか"
+  },
+  {
+   "id": "S0037L04U06",
+   "src": "#957 changeset",
+   "known": "先月それについて慎重に考え始めました。",
+   "target": "Ho iniziato a pensarci con cura il mese scorso.",
+   "twin": "S0037L04U02",
+   "twin_known": "先月慎重にそれについて考え始めました。"
+  },
+  {
+   "id": "S0047L03U06",
+   "src": "#957 changeset",
+   "known": "間違えることは良いことだと思うからです。",
+   "target": "Perché penso che fare errori sia una buona cosa.",
+   "twin": "S0047L03U01",
+   "twin_known": "間違いをするのは良いことだと思うからです。"
+  },
+  {
+   "id": "S0052L05U06",
+   "src": "#957 changeset",
+   "known": "彼は先週友達に手紙を書きたかったです。",
+   "target": "Lui voleva scrivere una lettera al suo amico la settimana scorsa.",
+   "twin": "S0052L05B03",
+   "twin_known": "先週彼の友達に手紙を書きたかった"
+  },
+  {
+   "id": "S0062L03U06",
+   "src": "#957 changeset",
+   "known": "同時にあなたを手伝えるかどうかわかりません。",
+   "target": "Non sono sicuro se riesco ad aiutarti allo stesso tempo.",
+   "twin": "S0062L03U05",
+   "twin_known": "同時に手伝えるかどうかわかりません。"
+  },
+  {
+   "id": "S0073L01U07",
+   "src": "#957 changeset",
+   "known": "どうもありがとうございます、でももっと学ぶことがあります。",
+   "target": "Grazie mille, ma ho ancora molto da imparare.",
+   "twin": "S0073L01U01",
+   "twin_known": "どうもありがとう、でももっと学ぶことがあります。"
+  },
+  {
+   "id": "S0083L02U06",
+   "src": "#957 changeset",
+   "known": "あなたの友達について言ったことに同意します。",
+   "target": "Sono d'accordo con quello che hai detto del tuo amico.",
+   "twin": "S0083L02B02",
+   "twin_known": "あなたの友達について言ったことに同意する"
+  },
+  {
+   "id": "S0084L02U06",
+   "src": "#957 changeset",
+   "known": "彼が私の友達について言ったことに同意しません。",
+   "target": "Non sono d'accordo con quello che ha detto del mio amico.",
+   "twin": "S0084L02U01",
+   "twin_known": "私の友達について言ったことに同意しません"
+  },
+  {
+   "id": "S0085L02U06",
+   "src": "#957 changeset",
+   "known": "あの人たちを知りません。",
+   "target": "Non conosco quelle persone.",
+   "twin": "S0085L02B02",
+   "twin_known": "あの人たちを知らない"
+  },
+  {
+   "id": "S0086L01U06",
+   "src": "#957 changeset",
+   "known": "残念ながら、それは不可能でした。",
+   "target": "Non era possibile, purtroppo.",
+   "twin": "S0086L01B01",
+   "twin_known": "残念ながら不可能だった"
+  },
+  {
+   "id": "S0095L02U06",
+   "src": "#957 changeset",
+   "known": "次のバスで家に帰る準備はできていますか？",
+   "target": "Sei pronto ad andare a casa con il prossimo autobus?",
+   "twin": "S0095L02B03",
+   "twin_known": "次のバスで帰る準備ができていますか"
+  },
+  {
+   "id": "S0098L03U06",
+   "src": "#957 changeset",
+   "known": "何か他のものをやることを考えた方がいいです。",
+   "target": "Dovrei considerare di fare qualcos'altro.",
+   "twin": "S0098L03U01",
+   "twin_known": "何か他のことをやることを検討した方がいい"
+  },
+  {
+   "id": "S0100L02U05",
+   "src": "#957 changeset",
+   "known": "似たようなことをすることを心配しなくてもいいです。",
+   "target": "Non dovresti preoccuparti di fare qualcosa di simile.",
+   "twin": "S0100L02B03",
+   "twin_known": "似たようなことを心配しなくていい"
+  },
+  {
+   "id": "S0104L03U06",
+   "src": "#957 changeset",
+   "known": "やっていることを変える必要があります。",
+   "target": "Abbiamo bisogno di cambiare quello che stiamo facendo.",
+   "twin": "S0104L03U05",
+   "twin_known": "やっていることを変える必要がある"
+  },
+  {
+   "id": "S0108L02U06",
+   "src": "#957 changeset",
+   "known": "夜中に起きることを望んでいませんでした。",
+   "target": "Non speravamo di svegliarci nel mezzo della notte.",
+   "twin": "S0108L02B04",
+   "twin_known": "夜中に起きたくなかった"
+  },
+  {
+   "id": "S0109L01U06",
+   "src": "#957 changeset",
+   "known": "たくさんの新しい言葉を学ぶために一生懸命働かなければなりません。",
+   "target": "Dobbiamo lavorare sodo per imparare molte nuove parole.",
+   "twin": "S0109L01U01",
+   "twin_known": "たくさんの新しい言葉を学ぶために一生懸命働かなければならない"
+  },
+  {
+   "id": "S0120L02U06",
+   "src": "#957 changeset",
+   "known": "バスで行くのが好きなのは面白いですね。",
+   "target": "È interessante che ti piaccia andare in autobus.",
+   "twin": "S0120L02U01",
+   "twin_known": "バスで行くのが好きなのは面白い"
+  },
+  {
+   "id": "S0128L02U06",
+   "src": "#957 changeset",
+   "known": "あなたは以前知っていた人に似ています。",
+   "target": "Sei come qualcuno che conoscevo.",
+   "twin": "S0128L02B02",
+   "twin_known": "知っていた人に似ている"
+  },
+  {
+   "id": "S0129L01U06",
+   "src": "#957 changeset",
+   "known": "あなたがこんなにうまくやっていてとても嬉しいです。",
+   "target": "Sono così felice che tu stia andando così bene.",
+   "twin": "S0129L01U01",
+   "twin_known": "あなたがこんなにうまくやっていてとても嬉しい"
+  },
+  {
+   "id": "S0132L03U06",
+   "src": "#957 changeset",
+   "known": "それは彼女が言っていたことより面白くないです。",
+   "target": "È meno emozionante di quello che lei stava dicendo.",
+   "twin": "S0132L03U01",
+   "twin_known": "それは彼女が言っていたことより面白くない"
+  },
+  {
+   "id": "S0133L03U06",
+   "src": "#957 changeset",
+   "known": "一緒に働くと誰かをとてもよく知るようになります。",
+   "target": "Si conosce qualcuno molto bene quando si lavora insieme.",
+   "twin": "S0133L03U01",
+   "twin_known": "一緒に働くと誰かをとてもよく知るようになる"
+  },
+  {
+   "id": "S0135L02U06",
+   "src": "#957 changeset",
+   "known": "なぜそんなにいいと思うのかわかりません。",
+   "target": "Non so perché pensi che sia così buono.",
+   "twin": "S0135L02U01",
+   "twin_known": "なぜそんなにいいと思うのかわからない"
+  },
+  {
+   "id": "S0137L01U06",
+   "src": "#957 changeset",
+   "known": "完璧であるより頻繁に話す方が大切です。",
+   "target": "È più importante parlare spesso che essere perfetti.",
+   "twin": "S0137L01U01",
+   "twin_known": "頻繁に話す方が完璧であるより大切だ"
+  },
+  {
+   "id": "S0138L01U07",
+   "src": "#957 changeset",
+   "known": "ここは友達が私たちに会いたかった場所です。",
+   "target": "Questo era il posto dove il mio amico voleva incontrarci.",
+   "twin": "S0138L01U01",
+   "twin_known": "ここは友達が私たちに会いたかった場所だった"
+  },
+  {
+   "id": "S0141L02U06",
+   "src": "#957 changeset",
+   "known": "大丈夫です。全部大丈夫です。",
+   "target": "Nessun problema. Va tutto bene.",
+   "twin": "S0141L02B04",
+   "twin_known": "問題なし、全部大丈夫"
+  },
+  {
+   "id": "S0143L02U06",
+   "src": "#957 changeset",
+   "known": "それは前に話していたことと同じです。",
+   "target": "È la stessa cosa di cui stavamo parlando prima.",
+   "twin": "S0143L02U01",
+   "twin_known": "前に話していたのと同じことだ"
+  },
+  {
+   "id": "S0151L02U05",
+   "src": "#957 changeset",
+   "known": "それは私が起こると期待していたことではありませんでした。",
+   "target": "Non era quello che speravo accadesse.",
+   "twin": "S0151L02B03",
+   "twin_known": "起こると期待していたことではなかった"
+  },
+  {
+   "id": "S0152L03U06",
+   "src": "#957 changeset",
+   "known": "あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう。",
+   "target": "L'avrei fatto diversamente se avessi saputo cosa volevi.",
+   "twin": "S0152L03U01",
+   "twin_known": "何を望んでいたか知っていたら違うやり方でやったでしょう"
+  },
+  {
+   "id": "S0155L02U05",
+   "src": "#957 changeset",
+   "known": "明日の朝数分待っても構いません。",
+   "target": "Non mi dispiace aspettare qualche minuto domani mattina.",
+   "twin": "S0155L02U01",
+   "twin_known": "明日の朝数分待っても構わない"
+  },
+  {
+   "id": "S0156L01U07",
+   "src": "#957 changeset",
+   "known": "今夜レストランに行きたいですか？",
+   "target": "Vuoi andare a un ristorante stasera?",
+   "twin": "S0156L01U01",
+   "twin_known": "今夜レストランに行きたい？"
+  },
+  {
+   "id": "S0161L04U06",
+   "src": "#957 changeset",
+   "known": "日曜日の朝その本をくれますか？",
+   "target": "Puoi darmi quel libro domenica mattina?",
+   "twin": "S0161L04U01",
+   "twin_known": "日曜日の朝にその本をくれる？"
+  },
+  {
+   "id": "S0167L02U06",
+   "src": "#957 changeset",
+   "known": "明日の午後何をする必要がありますか？",
+   "target": "Cosa devi fare domani pomeriggio?",
+   "twin": "S0167L02B03",
+   "twin_known": "明日の午後何をしなければなりませんか"
+  },
+  {
+   "id": "S0178L02U06",
+   "src": "#957 changeset",
+   "known": "あなたに会いたかったけど、時間がありませんでした。",
+   "target": "Non ho avuto tempo, anche se volevo vederti.",
+   "twin": "S0178L02U03",
+   "twin_known": "会いたかったけど時間がありませんでした"
+  },
+  {
+   "id": "S0209L03U06",
+   "src": "#957 changeset",
+   "known": "彼らはグループとして集まってもっと時間を過ごしたいです。",
+   "target": "Vogliono passare più tempo a incontrarsi come gruppo.",
+   "twin": "S0209L03U05",
+   "twin_known": "グループとして集まってもっと時間を過ごしたいです。"
+  },
+  {
+   "id": "S0210L02U06",
+   "src": "#957 changeset",
+   "known": "彼らは私たちが問題について話し合う必要があると思っています。",
+   "target": "Pensano che dobbiamo discutere il problema.",
+   "twin": "S0210L02U02",
+   "twin_known": "問題について話し合う必要があると思っています。"
+  },
+  {
+   "id": "S0221L02U06",
+   "src": "#957 changeset",
+   "known": "サッカーを見て、それから映画を見ました。",
+   "target": "Ho guardato il calcio e poi ho guardato un film.",
+   "twin": "S0221L02U04",
+   "twin_known": "サッカーを見てから映画を見ました。"
+  },
+  {
+   "id": "S0292L02U06",
+   "src": "#957 changeset",
+   "known": "パーティーに来られるといいな。",
+   "target": "Spero che tu riesca a venire alla festa.",
+   "twin": "S0292L02U01",
+   "twin_known": "パーティーに来られるといいです。"
+  },
+  {
+   "id": "S0020L03U06",
+   "src": "#964 seed fix",
+   "known": "あなたは彼の名前を早く覚えたいですね。",
+   "target": "Vuoi imparare il suo nome velocemente.",
+   "twin": "S0020L03B03",
+   "twin_known": "早く彼の名前を学びたい"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 58,
+ "missing": []
+}

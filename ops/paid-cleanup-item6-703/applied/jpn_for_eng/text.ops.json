@@ -1,0 +1,1133 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0212L01U02",
+   "set": {
+    "known_text": "I wanted to ask my mother for help"
+   },
+   "expect": {
+    "known_text": "she wanted to ask for help from her mother",
+    "target_text": "母に助けを求めたかった"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 299,
+   "set": {
+    "known_text": "we want to pay half"
+   },
+   "expect": {
+    "known_text": "he wants to pay half",
+    "target_text": "半分払いたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0299L02B03",
+   "set": {
+    "known_text": "we want to pay half"
+   },
+   "expect": {
+    "known_text": "he wants to pay half",
+    "target_text": "半分払いたい"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 300,
+   "set": {
+    "known_text": "we don't want to seem unfriendly"
+   },
+   "expect": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "冷たく見られたくない"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0300L02",
+   "set": {
+    "known_text": "don't want to seem unfriendly"
+   },
+   "expect": {
+    "known_text": "doesn't want to seem unfriendly",
+    "target_text": "冷たく見られたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0300L02B01",
+   "set": {
+    "known_text": "don't want to seem unfriendly"
+   },
+   "expect": {
+    "known_text": "doesn't want to seem unfriendly",
+    "target_text": "冷たく見られたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0300L02B03",
+   "set": {
+    "known_text": "we don't want to seem unfriendly"
+   },
+   "expect": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "冷たく見られたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0200L02B03",
+   "set": {
+    "known_text": "I want to make sure that we finish in time"
+   },
+   "expect": {
+    "known_text": "they want to make sure that we finish in time",
+    "target_text": "時間通り終わるようにしたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0211L02B04",
+   "set": {
+    "known_text": "I don't want to explain right now"
+   },
+   "expect": {
+    "known_text": "they don't want to explain right now",
+    "target_text": "今は説明したくない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0211L02U02",
+   "expect": {
+    "known_text": "she doesn't want to explain the method",
+    "target_text": "方法を説明したくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0211L02U03",
+   "set": {
+    "known_text": "I don't want to explain the reason"
+   },
+   "expect": {
+    "known_text": "he doesn't want to explain the reason",
+    "target_text": "理由を説明したくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0211L02U05",
+   "set": {
+    "known_text": "I don't want to explain more"
+   },
+   "expect": {
+    "known_text": "he doesn't want to explain more",
+    "target_text": "もっと説明したくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0211L02U07",
+   "set": {
+    "known_text": "I don't want to explain again"
+   },
+   "expect": {
+    "known_text": "she doesn't want to explain again",
+    "target_text": "もう一度説明したくない"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 34,
+   "set": {
+    "known_text": "I don't want to be quiet when other people are here",
+    "target_text": "他の人がいると、静かにしたくない"
+   },
+   "expect": {
+    "known_text": "he doesn't want to be quiet when other people are here",
+    "target_text": "他の人がいると、彼は静かにしたくない"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 35,
+   "set": {
+    "known_text": "I don't want to read anything this afternoon",
+    "target_text": "今日の午後、何も読みたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to read anything this afternoon",
+    "target_text": "彼女は今日の午後、何も読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0016L03B01",
+   "set": {
+    "known_text": "he'll go back later",
+    "target_text": "彼はあとで戻る"
+   },
+   "expect": {
+    "known_text": "he wants to go back",
+    "target_text": "彼は戻りたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0016L03U01",
+   "set": {
+    "known_text": "he'll go back with everyone",
+    "target_text": "彼はみんなと戻る"
+   },
+   "expect": {
+    "known_text": "he wants to go back",
+    "target_text": "彼は戻りたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0016L03U04",
+   "set": {
+    "known_text": "he'll go back with everyone later",
+    "target_text": "彼はあとでみんなと戻る"
+   },
+   "expect": {
+    "known_text": "he wants to go back with everyone later",
+    "target_text": "彼はあとでみんなと戻りたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0017L03U05",
+   "set": {
+    "known_text": "she'll go back later",
+    "target_text": "彼女はあとで戻る"
+   },
+   "expect": {
+    "known_text": "she wants to go back later",
+    "target_text": "彼女はあとで戻りたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0018L03U03",
+   "set": {
+    "known_text": "he'll go back this evening",
+    "target_text": "彼は今夜戻る"
+   },
+   "expect": {
+    "known_text": "he wants to go back this evening",
+    "target_text": "彼は今夜戻りたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0020L02U03",
+   "set": {
+    "known_text": "he'll go back quickly",
+    "target_text": "彼は早く戻る"
+   },
+   "expect": {
+    "known_text": "he wants to go back quickly",
+    "target_text": "彼は早く戻りたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0018L01U03",
+   "set": {
+    "known_text": "I want to meet everyone",
+    "target_text": "みんなと会いたい"
+   },
+   "expect": {
+    "known_text": "he wants to meet everyone",
+    "target_text": "彼はみんなと会いたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0018L01U04",
+   "set": {
+    "known_text": "I really want to meet",
+    "target_text": "すごく会いたい"
+   },
+   "expect": {
+    "known_text": "she really wants to meet",
+    "target_text": "彼女はすごく会いたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0019L01U03",
+   "set": {
+    "known_text": "I don't want to stop tomorrow either",
+    "target_text": "明日もやめたくない"
+   },
+   "expect": {
+    "known_text": "he doesn't want to stop",
+    "target_text": "彼はやめたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0022L01U03",
+   "set": {
+    "known_text": "I want to meet people tomorrow",
+    "target_text": "明日人に会いたい"
+   },
+   "expect": {
+    "known_text": "she wants to meet people",
+    "target_text": "彼女は人に会いたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0022L01U05",
+   "set": {
+    "known_text": "I want to meet people quickly",
+    "target_text": "早く人に会いたい"
+   },
+   "expect": {
+    "known_text": "he wants to meet people quickly",
+    "target_text": "彼は早く人に会いたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L01B02",
+   "set": {
+    "known_text": "don't want to be quiet today",
+    "target_text": "今日は静かにしたくない"
+   },
+   "expect": {
+    "known_text": "he doesn't want to be quiet",
+    "target_text": "彼は静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L01B03",
+   "set": {
+    "known_text": "don't want to be quiet later",
+    "target_text": "あとで静かにしたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to be quiet",
+    "target_text": "彼女は静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L01U01",
+   "set": {
+    "known_text": "I don't want to be quiet tonight",
+    "target_text": "今夜静かにしたくない"
+   },
+   "expect": {
+    "known_text": "he doesn't want to be quiet",
+    "target_text": "彼は静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L01U02",
+   "set": {
+    "known_text": "I don't want to be quiet tomorrow either",
+    "target_text": "明日も静かにしたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to be quiet",
+    "target_text": "彼女は静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L01U02",
+   "set": {
+    "known_text": "I don't want to read today",
+    "target_text": "今日は読みたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to read",
+    "target_text": "彼女は読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L01U03",
+   "set": {
+    "known_text": "I don't want to read the sentence now",
+    "target_text": "今、文を読みたくない"
+   },
+   "expect": {
+    "known_text": "he doesn't want to read the sentence",
+    "target_text": "彼は文を読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L02U03",
+   "set": {
+    "known_text": "I don't want to read anything today",
+    "target_text": "今日は何も読みたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to read anything",
+    "target_text": "彼女は何も読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L03U02",
+   "set": {
+    "known_text": "I don't want to read this afternoon",
+    "target_text": "今日の午後読みたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to read this afternoon",
+    "target_text": "彼女は今日の午後読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0036L01U04",
+   "set": {
+    "known_text": "I don't want to interrupt today",
+    "target_text": "今日は邪魔したくない"
+   },
+   "expect": {
+    "known_text": "he doesn't want to interrupt",
+    "target_text": "彼は邪魔したくない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0265L01U05",
+   "expect": {
+    "known_text": "my friend wants to help you with something important",
+    "target_text": "友だちは大事なことであなたを助けたい"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0269L02U01",
+   "expect": {
+    "known_text": "my mother doesn't want to wait for two days",
+    "target_text": "母は二日間待ちたくない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0019L01U04",
+   "expect": {
+    "known_text": "she doesn't want to stop",
+    "target_text": "彼女はやめたくない"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 282,
+   "set": {
+    "target_text": "ううん、問題ない"
+   },
+   "expect": {
+    "known_text": "no that's not a problem",
+    "target_text": "うん、問題ない"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0282L01",
+   "set": {
+    "target_text": "ううん"
+   },
+   "expect": {
+    "known_text": "no",
+    "target_text": "うん"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01B01",
+   "set": {
+    "target_text": "ううん、好き"
+   },
+   "expect": {
+    "known_text": "no, I like it",
+    "target_text": "うん、好き"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01B02",
+   "set": {
+    "target_text": "ううん、完璧"
+   },
+   "expect": {
+    "known_text": "no, that's perfect",
+    "target_text": "うん、完璧"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01B03",
+   "set": {
+    "target_text": "ううん、いいね"
+   },
+   "expect": {
+    "known_text": "no, that's good",
+    "target_text": "うん、いいね"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U01",
+   "set": {
+    "target_text": "ううん、分かる"
+   },
+   "expect": {
+    "known_text": "no, I understand",
+    "target_text": "うん、分かる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U02",
+   "set": {
+    "target_text": "ううん、知ってる"
+   },
+   "expect": {
+    "known_text": "no, I know",
+    "target_text": "うん、知ってる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U03",
+   "set": {
+    "target_text": "ううん、行きたい"
+   },
+   "expect": {
+    "known_text": "no, I want to go",
+    "target_text": "うん、行きたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U04",
+   "set": {
+    "target_text": "ううん、手伝える"
+   },
+   "expect": {
+    "known_text": "no, I can help you",
+    "target_text": "うん、手伝える"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U05",
+   "set": {
+    "target_text": "ううん、今テレビ見てる"
+   },
+   "expect": {
+    "known_text": "no, I'm watching television now",
+    "target_text": "うん、今テレビ見てる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U06",
+   "set": {
+    "target_text": "ううん、友だち知ってる"
+   },
+   "expect": {
+    "known_text": "no, I know your friend",
+    "target_text": "うん、友だち知ってる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U07",
+   "set": {
+    "known_text": "no, I want to go tomorrow",
+    "target_text": "ううん、明日行きたい"
+   },
+   "expect": {
+    "known_text": "no, I want coffee",
+    "target_text": "うん、コーヒー飲みたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U09",
+   "set": {
+    "target_text": "ううん、帰る前に仕事終わらせる"
+   },
+   "expect": {
+    "known_text": "no, I'm going to finish my work before I leave",
+    "target_text": "うん、帰る前に仕事終わらせる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0282L01U10",
+   "set": {
+    "target_text": "ううん、問題ない"
+   },
+   "expect": {
+    "known_text": "no that's not a problem",
+    "target_text": "うん、問題ない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0282L01U08",
+   "expect": {
+    "known_text": "no, do you mind if I wait here?",
+    "target_text": "うん、ここで待っていい？"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0110L03",
+   "set": {
+    "known_text": "I'd like to relax"
+   },
+   "expect": {
+    "known_text": "to relax",
+    "target_text": "休みたい"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0110L03B01",
+   "set": {
+    "known_text": "I'd like to relax"
+   },
+   "expect": {
+    "known_text": "to relax",
+    "target_text": "休みたい"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0092L02",
+   "set": {
+    "known_text": "want to keep on doing"
+   },
+   "expect": {
+    "known_text": "keep on doing",
+    "target_text": "続けたい"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0200L02",
+   "set": {
+    "known_text": "want to make sure"
+   },
+   "expect": {
+    "known_text": "make sure that",
+    "target_text": "ようにしたい"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0200L02U08",
+   "expect": {
+    "known_text": "they say we need to make sure that people can work in time",
+    "target_text": "人が時間通り働けるようにしたい必要があるらしい"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0005L02",
+   "set": {
+    "known_text": "with other people too"
+   },
+   "expect": {
+    "known_text": "with other people",
+    "target_text": "他の人とも"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0040L01B01",
+   "set": {
+    "known_text": "how does he feel now?",
+    "target_text": "彼は今、どんな気分？"
+   },
+   "expect": {
+    "known_text": "what kind of feeling now",
+    "target_text": "今、どんな気分"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0040L01B02",
+   "set": {
+    "known_text": "how does he feel today?",
+    "target_text": "彼は今日はどんな気分？"
+   },
+   "expect": {
+    "known_text": "what kind of feeling today",
+    "target_text": "今日はどんな気分"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0040L01B03",
+   "set": {
+    "known_text": "how does he feel this morning?",
+    "target_text": "彼は今朝はどんな気分？"
+   },
+   "expect": {
+    "known_text": "what kind of feeling this morning",
+    "target_text": "今朝はどんな気分"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 113,
+   "set": {
+    "known_text": "why don't I remember what you said?"
+   },
+   "expect": {
+    "known_text": "why can't I remember what you said?",
+    "target_text": "なんで今のを覚えてないんだろう"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0113L03",
+   "set": {
+    "known_text": "I don't remember"
+   },
+   "expect": {
+    "known_text": "I can't remember",
+    "target_text": "覚えてない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0113L03B01",
+   "set": {
+    "known_text": "I don't remember"
+   },
+   "expect": {
+    "known_text": "I can't remember",
+    "target_text": "覚えてない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0113L03B02",
+   "expect": {
+    "known_text": "I can't remember",
+    "target_text": "覚えてない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0113L03B03",
+   "set": {
+    "known_text": "I don't remember it"
+   },
+   "expect": {
+    "known_text": "I can't remember it",
+    "target_text": "覚えてない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0113L03B04",
+   "set": {
+    "known_text": "I don't remember that"
+   },
+   "expect": {
+    "known_text": "I can't remember that",
+    "target_text": "それを覚えてない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0113L03U01",
+   "expect": {
+    "known_text": "when I'm tired, I can't remember things well",
+    "target_text": "疲れた時、よく覚えてない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0113L03U02",
+   "set": {
+    "known_text": "I don't remember what I learned last week"
+   },
+   "expect": {
+    "known_text": "I can't remember what I learned last week",
+    "target_text": "先週学んだことを覚えてない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0113L03U03",
+   "set": {
+    "known_text": "I don't remember anything about that day"
+   },
+   "expect": {
+    "known_text": "I can't remember anything about that day",
+    "target_text": "その日のことを何も覚えてない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0113L03U05",
+   "expect": {
+    "known_text": "I can't remember what I was trying to do",
+    "target_text": "何をしようとしてたか覚えてない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0113L03U06",
+   "expect": {
+    "known_text": "I can't remember the explanation he gave yesterday",
+    "target_text": "昨日彼が言った説明を覚えてない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0113L03U07",
+   "expect": {
+    "known_text": "when I try to speak, I can't remember the words",
+    "target_text": "話そうとすると、言葉を覚えてない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0113L03U08",
+   "expect": {
+    "known_text": "I can't remember why I wanted to do that",
+    "target_text": "なんでそれをしたかったか覚えてない"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0225L01",
+   "set": {
+    "known_text": "if he could"
+   },
+   "expect": {
+    "known_text": "if I could",
+    "target_text": "できたら"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0225L01B01",
+   "set": {
+    "known_text": "if he could"
+   },
+   "expect": {
+    "known_text": "if I could",
+    "target_text": "できたら"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0151L02U02",
+   "expect": {
+    "known_text": "I was hoping to see you last night",
+    "target_text": "昨夜会ってほしかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0151L02U07",
+   "expect": {
+    "known_text": "I was hoping we could talk about it tomorrow",
+    "target_text": "明日それについて話してほしかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0154L01U03",
+   "expect": {
+    "known_text": "I was hoping to see you Saturday night",
+    "target_text": "土曜の夜に会ってほしかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0156L01U03",
+   "expect": {
+    "known_text": "I was hoping we could go to a restaurant",
+    "target_text": "レストランに行ってほしかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0107L02B03",
+   "expect": {
+    "known_text": "I hoped to see you",
+    "target_text": "あなたを見たかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0107L02U02",
+   "expect": {
+    "known_text": "I hoped to see you yesterday",
+    "target_text": "昨日あなたを見たかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0107L02U07",
+   "expect": {
+    "known_text": "that is why I hoped to see you",
+    "target_text": "だからあなたを見たかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0107L02U08",
+   "expect": {
+    "known_text": "even if I'm working hard, I hoped to see you",
+    "target_text": "頑張っていても見たかった"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0061L01U08",
+   "expect": {
+    "known_text": "I want you to say that again",
+    "target_text": "もう一度言って"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0067L01B04",
+   "expect": {
+    "known_text": "why do you want",
+    "target_text": "なんで"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0121L01B03",
+   "expect": {
+    "known_text": "I want the car",
+    "target_text": "車を"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0258L01U04",
+   "set": {
+    "known_text": "what's that blue thing over there?"
+   },
+   "expect": {
+    "known_text": "that blue thing over there",
+    "target_text": "あそこにある青いの、何？"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 41,
+   "set": {
+    "target_text": "大丈夫、でも、疲れてきてる"
+   },
+   "expect": {
+    "known_text": "I feel okay, but I'm starting to feel tired",
+    "target_text": "大丈夫。でも、疲れてきてる"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0041L02U04",
+   "set": {
+    "target_text": "大丈夫、でも、疲れてきてる"
+   },
+   "expect": {
+    "known_text": "I'm okay, but starting to get tired",
+    "target_text": "大丈夫。でも、疲れてきてる"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0041L01B02",
+   "expect": {
+    "known_text": "okay but",
+    "target_text": "大丈夫。でも"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0127L02U06",
+   "expect": {
+    "known_text": "I wanted to meet her today, but I'm not going to wait",
+    "target_text": "今日は会いたかった。でも、待たない"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0163L01U06",
+   "expect": {
+    "known_text": "I am trying it, and I think it's interesting",
+    "target_text": "やってみてる。面白いと思う"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0249L01U06",
+   "expect": {
+    "known_text": "I'm not going to wait, I want you to help me now",
+    "target_text": "待たない。今、手伝ってほしい"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0249L01U07",
+   "expect": {
+    "known_text": "I must learn quickly, I want you to help me",
+    "target_text": "早く学ばないといけない。手伝ってほしい"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "jpn_for_eng:S0249L01U08",
+   "expect": {
+    "known_text": "I want you to help me, I'm not sure if I can",
+    "target_text": "手伝ってほしい。できるか分からない"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0034L01",
+   "set": {
+    "known_text": "don't want to be quiet"
+   },
+   "expect": {
+    "known_text": "doesn't want to be quiet",
+    "target_text": "静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L01B01",
+   "set": {
+    "known_text": "don't want to be quiet"
+   },
+   "expect": {
+    "known_text": "doesn't want to be quiet",
+    "target_text": "静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L01B04",
+   "set": {
+    "known_text": "don't want to be quiet now"
+   },
+   "expect": {
+    "known_text": "doesn't want to be quiet now",
+    "target_text": "今、静かにしたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0034L02U04",
+   "set": {
+    "known_text": "I don't want to be quiet when other people are here",
+    "target_text": "他の人がいると、静かにしたくない"
+   },
+   "expect": {
+    "known_text": "when other people are here, he doesn't want to be quiet",
+    "target_text": "他の人がいると、彼は静かにしたくない"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0035L01",
+   "set": {
+    "known_text": "don't want to read"
+   },
+   "expect": {
+    "known_text": "doesn't want to read",
+    "target_text": "読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L01B01",
+   "set": {
+    "known_text": "don't want to read"
+   },
+   "expect": {
+    "known_text": "doesn't want to read",
+    "target_text": "読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L01B02",
+   "set": {
+    "known_text": "don't want to read now"
+   },
+   "expect": {
+    "known_text": "doesn't want to read now",
+    "target_text": "今、読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L01B03",
+   "set": {
+    "known_text": "don't want to read the sentence"
+   },
+   "expect": {
+    "known_text": "doesn't want to read the sentence",
+    "target_text": "文を読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L01B04",
+   "set": {
+    "known_text": "don't want to read more"
+   },
+   "expect": {
+    "known_text": "doesn't want to read more",
+    "target_text": "もっと読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0035L03U08",
+   "set": {
+    "known_text": "I don't want to read anything this afternoon",
+    "target_text": "今日の午後、何も読みたくない"
+   },
+   "expect": {
+    "known_text": "she doesn't want to read anything this afternoon",
+    "target_text": "彼女は今日の午後、何も読みたくない"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "jpn_for_eng:S0113L03U09",
+   "set": {
+    "known_text": "why don't I remember what you said?"
+   },
+   "expect": {
+    "known_text": "why can't I remember what you said?",
+    "target_text": "なんで今のを覚えてないんだろう"
+   }
+  }
+ ]
+}

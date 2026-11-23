@@ -1,0 +1,3375 @@
+{
+ "phr": [
+  {
+   "id": "S0070L01B01",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "she didn't want to",
+    "target": "彼女はしたくなかった"
+   }
+  },
+  {
+   "id": "S0070L01B02",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "she didn't want to",
+    "target": "彼女はしたくなかった"
+   }
+  },
+  {
+   "id": "S0070L01B03",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "she didn't want to do it",
+    "target": "彼女はしたくなかった"
+   }
+  },
+  {
+   "id": "S0070L01B04",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "I think she didn't want to",
+    "target": "彼女はしたくなかったと思う"
+   }
+  },
+  {
+   "id": "S0070L01U01",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "she didn't want to",
+    "target": "彼女はしたくなかった"
+   }
+  },
+  {
+   "id": "S0070L01U02",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "she didn't want to do it",
+    "target": "彼女はしたくなかった"
+   }
+  },
+  {
+   "id": "S0070L01U06",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "why didn't she want to do it?",
+    "target": "なんで彼女はしたくなかった？"
+   }
+  },
+  {
+   "id": "S0070L01U08",
+   "op": "delete",
+   "lego": "S0070L01",
+   "before": {
+    "known": "she didn't want to but it's important",
+    "target": "彼女はしたくなかったけど大事"
+   }
+  },
+  {
+   "id": "S0070L02B01",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "didn't want to tell me where it was",
+   "target": "場所を言いたくなかった",
+   "decomposition": [
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "tell me where it was",
+    "target": "場所を言う"
+   }
+  },
+  {
+   "id": "S0070L02B02",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "I didn't want to tell you where it was",
+   "target": "場所を言いたくなかった",
+   "decomposition": [
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "tell me where",
+    "target": "場所を言う"
+   }
+  },
+  {
+   "id": "S0070L02B03",
+   "op": "delete",
+   "lego": "S0070L02",
+   "before": {
+    "known": "tell me where it was",
+    "target": "場所を言う"
+   }
+  },
+  {
+   "id": "S0070L02B04",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "he didn't want to tell me where it was",
+   "target": "彼は場所を言いたくなかった",
+   "decomposition": [
+    {
+     "legoId": "S0016L03",
+     "target": "彼は",
+     "known": "he",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "can you tell me where",
+    "target": "場所を言うことができる"
+   }
+  },
+  {
+   "id": "S0070L02U01",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "she didn't want to tell me where it was",
+   "target": "彼女は場所を言いたくなかった",
+   "decomposition": [
+    {
+     "legoId": "S0017L03",
+     "target": "彼女",
+     "known": "she",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I need to tell you where it is",
+    "target": "場所を言う必要がある"
+   }
+  },
+  {
+   "id": "S0070L02U02",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "I think she didn't want to tell me where it was",
+   "target": "彼女は場所を言いたくなかったと思う",
+   "decomposition": [
+    {
+     "legoId": "S0017L03",
+     "target": "彼女",
+     "known": "she",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "と",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "思",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "う",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I think I need to tell you where it is",
+    "target": "場所を言う必要があると思う"
+   }
+  },
+  {
+   "id": "S0070L02U03",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "why didn't she want to tell me where it was?",
+   "target": "なんで彼女は場所を言いたくなかった？",
+   "decomposition": [
+    {
+     "legoId": "S0021L02",
+     "target": "なんで",
+     "known": "why",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0017L03",
+     "target": "彼女",
+     "known": "she",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "？",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "can I tell you where it is?",
+    "target": "場所を言うことができる？"
+   }
+  },
+  {
+   "id": "S0070L02U05",
+   "op": "delete",
+   "lego": "S0070L02",
+   "before": {
+    "known": "I like to tell you where it is",
+    "target": "場所を言うのが好き"
+   }
+  },
+  {
+   "id": "S0070L02U06",
+   "op": "update",
+   "lego": "S0070L02",
+   "known": "why didn't you want to tell me where it was?",
+   "target": "なんで場所を言いたくなかった？",
+   "decomposition": [
+    {
+     "legoId": "S0021L02",
+     "target": "なんで",
+     "known": "why",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0070L02",
+     "target": "場所を言いたくなかった",
+     "known": "didn't want to tell me where it was",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "？",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "do I need to tell you where it is?",
+    "target": "場所を言う必要がある？"
+   }
+  },
+  {
+   "id": "S0070L02U08",
+   "op": "delete",
+   "lego": "S0070L02",
+   "before": {
+    "known": "I think it's important to tell you where it is",
+    "target": "場所を言うのは大事だと思う"
+   }
+  },
+  {
+   "id": "S0073L03U09",
+   "op": "update",
+   "lego": "S0073L03",
+   "known": "thank you very much, but I've got more to learn",
+   "target": "ありがとう、でも、まだ学ぶことがある",
+   "decomposition": [
+    {
+     "legoId": "S0073L01",
+     "target": "ありがとう",
+     "known": "thank you very much",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0019L03",
+     "target": "でも",
+     "known": "but",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0073L03",
+     "target": "まだ学ぶことがある",
+     "known": "I've got more to learn",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "thank you very much, but I've got more to learn",
+    "target": "ありがとう。でも、まだ学ぶことがある"
+   }
+  },
+  {
+   "id": "S0096L02U09",
+   "op": "update",
+   "lego": "S0096L02",
+   "known": "no I'm not ready yet, I need a little more time",
+   "target": "まだ準備できてない、もう少し時間がいる",
+   "decomposition": [
+    {
+     "legoId": "S0060L01",
+     "target": "まだ",
+     "known": "yet",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0096L02",
+     "target": "準備できてない",
+     "known": "not ready",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "、もう少し時間がいる",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "no I'm not ready yet, I need a little more time",
+    "target": "まだ準備できてない。もう少し時間がいる"
+   }
+  },
+  {
+   "id": "S0173L02B03",
+   "op": "delete",
+   "lego": "S0173L02",
+   "before": {
+    "known": "manage. I can",
+    "target": "できる"
+   }
+  },
+  {
+   "id": "S0173L02U11",
+   "op": "update",
+   "lego": "S0173L02",
+   "known": "no thank you I can manage on my own",
+   "target": "大丈夫、自分でできる",
+   "decomposition": [
+    {
+     "legoId": "S0041L01",
+     "target": "大丈夫",
+     "known": "okay",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0173L01",
+     "target": "自分で",
+     "known": "on my own",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0173L02",
+     "target": "できる",
+     "known": "manage",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "no thank you I can manage on my own",
+    "target": "大丈夫。自分でできる"
+   }
+  },
+  {
+   "id": "S0176L02B03",
+   "op": "delete",
+   "lego": "S0176L02",
+   "before": {
+    "known": "ask if. I'll",
+    "target": "か聞いてみる"
+   }
+  },
+  {
+   "id": "S0193L01U11",
+   "op": "update",
+   "lego": "S0193L01",
+   "known": "I'm sorry but I'm too busy today",
+   "target": "ごめん、今日は忙しすぎる",
+   "decomposition": [
+    {
+     "legoId": "S0139L01",
+     "target": "ごめん",
+     "known": "sorry",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0007L02",
+     "target": "今日は",
+     "known": "today",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0193L01",
+     "target": "忙しすぎる",
+     "known": "too busy",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I'm sorry but I'm too busy today",
+    "target": "今日は忙しすぎる。ごめん"
+   }
+  },
+  {
+   "id": "S0240L02B01",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "doesn't stop talking",
+   "target": "話すのを止めない",
+   "decomposition": [
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "stop talking",
+    "target": "話すのを止める"
+   }
+  },
+  {
+   "id": "S0240L02B02",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "he doesn't stop talking",
+   "target": "彼は話すのを止めない",
+   "decomposition": [
+    {
+     "legoId": "S0016L03",
+     "target": "彼は",
+     "known": "he",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "stop talking",
+    "target": "話すのを止める"
+   }
+  },
+  {
+   "id": "S0240L02B03",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "she doesn't stop talking",
+   "target": "彼女は話すのを止めない",
+   "decomposition": [
+    {
+     "legoId": "S0017L03",
+     "target": "彼女",
+     "known": "she",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I'll stop talking",
+    "target": "話すのを止める"
+   }
+  },
+  {
+   "id": "S0240L02B04",
+   "op": "delete",
+   "lego": "S0240L02",
+   "before": {
+    "known": "I need to stop talking",
+    "target": "話すのを止める必要がある"
+   }
+  },
+  {
+   "id": "S0240L02U01",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "my father doesn't stop talking",
+   "target": "父は話すのを止めない",
+   "decomposition": [
+    {
+     "legoId": "S0240L01",
+     "target": "父",
+     "known": "father",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I'll stop talking now",
+    "target": "今、話すのを止める"
+   }
+  },
+  {
+   "id": "S0240L02U02",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "why doesn't he stop talking?",
+   "target": "なんで彼は話すのを止めない？",
+   "decomposition": [
+    {
+     "legoId": "S0021L02",
+     "target": "なんで",
+     "known": "why",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0016L03",
+     "target": "彼は",
+     "known": "he",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "？",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I need to stop talking",
+    "target": "話すのを止める必要がある"
+   }
+  },
+  {
+   "id": "S0240L02U03",
+   "op": "delete",
+   "lego": "S0240L02",
+   "before": {
+    "known": "I have to stop talking",
+    "target": "話すのを止めるしかない"
+   }
+  },
+  {
+   "id": "S0240L02U04",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "my mother doesn't stop talking",
+   "target": "母は話すのを止めない",
+   "decomposition": [
+    {
+     "legoId": "S0181L02",
+     "target": "母",
+     "known": "mother",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I can stop talking",
+    "target": "話すのを止めることができる"
+   }
+  },
+  {
+   "id": "S0240L02U07",
+   "op": "update",
+   "lego": "S0240L02",
+   "known": "I think he doesn't stop talking",
+   "target": "彼は話すのを止めないと思う",
+   "decomposition": [
+    {
+     "legoId": "S0016L03",
+     "target": "彼は",
+     "known": "he",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0240L02",
+     "target": "話すのを止めない",
+     "known": "doesn't stop talking",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0072L01",
+     "target": "と思う",
+     "known": "I think that",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I really need to stop talking",
+    "target": "本当に話すのを止める必要がある"
+   }
+  },
+  {
+   "id": "S0248L02U08",
+   "op": "update",
+   "lego": "S0248L02",
+   "known": "I thought the film was complete rubbish and I want my money back",
+   "target": "あの映画、ひどかった、お金返してほしい",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "あ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "の",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "映",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "画",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0248L01",
+     "target": "ひどかった",
+     "known": "was terrible",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0195L01",
+     "target": "お金",
+     "known": "money",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0248L02",
+     "target": "返してほしい",
+     "known": "want back",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I thought the film was complete rubbish and I want my money back",
+    "target": "あの映画、ひどかった。お金返してほしい"
+   }
+  },
+  {
+   "id": "S0251L02B01",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "I don't want to find out now",
+   "target": "今知りたくない",
+   "decomposition": [
+    {
+     "legoId": "S0001L04",
+     "target": "今",
+     "known": "now",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "find out now?",
+    "target": "今知る？"
+   }
+  },
+  {
+   "id": "S0251L02B02",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "why don't you want to find out?",
+   "target": "なんで知りたくない？",
+   "decomposition": [
+    {
+     "legoId": "S0021L02",
+     "target": "なんで",
+     "known": "why",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "？",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "when will you find out?",
+    "target": "いつ知る？"
+   }
+  },
+  {
+   "id": "S0251L02B03",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "she doesn't want to find out",
+   "target": "彼女は知りたくない",
+   "decomposition": [
+    {
+     "legoId": "S0017L03",
+     "target": "彼女",
+     "known": "she",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "は",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "let's find out together",
+    "target": "一緒に知る"
+   }
+  },
+  {
+   "id": "S0251L02U01",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "he doesn't want to find out",
+   "target": "彼は知りたくない",
+   "decomposition": [
+    {
+     "legoId": "S0016L03",
+     "target": "彼は",
+     "known": "he",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "how will she find out?",
+    "target": "彼女はどうやって知る？"
+   }
+  },
+  {
+   "id": "S0251L02U03",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "I don't want to find out if it's true",
+   "target": "本当かどうか知りたくない",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "本",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "当",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "か",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0043L02",
+     "target": "どう",
+     "known": "how",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "か",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I need to find out if it's true",
+    "target": "本当かどうか知る必要がある"
+   }
+  },
+  {
+   "id": "S0251L02U04",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "I don't want to find out the answer",
+   "target": "答えを知りたくない",
+   "decomposition": [
+    {
+     "legoId": "S0017L02",
+     "target": "答えを",
+     "known": "the answer",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "did you find out what to do?",
+    "target": "何をするか知ることができた？"
+   }
+  },
+  {
+   "id": "S0251L02U06",
+   "op": "update",
+   "lego": "S0251L02",
+   "known": "I don't want to find out until after we finish",
+   "target": "終わるまで知りたくない",
+   "decomposition": [
+    {
+     "legoId": "S0251L01",
+     "target": "終わるまで",
+     "known": "until after we finish",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0251L02",
+     "target": "知りたくない",
+     "known": "don't want to find out",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "how can we find out the answer?",
+    "target": "どうやって答えを知ることができる？"
+   }
+  },
+  {
+   "id": "S0268L03B01",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "two emails came",
+   "target": "メールが二通来た",
+   "decomposition": [
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "emails came",
+    "target": "メールが来た"
+   }
+  },
+  {
+   "id": "S0268L03B02",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "two emails came yesterday",
+   "target": "昨日メールが二通来た",
+   "decomposition": [
+    {
+     "legoId": "S0030L02",
+     "target": "昨日",
+     "known": "yesterday",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "an email came",
+    "target": "メールが来た"
+   }
+  },
+  {
+   "id": "S0268L03B03",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "did two emails come?",
+   "target": "メールが二通来た？",
+   "decomposition": [
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "？",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "did an email come?",
+    "target": "メールが来た？"
+   }
+  },
+  {
+   "id": "S0268L03B04",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "two emails came from my teacher",
+   "target": "先生からメールが二通来た",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "先",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "生",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "an email came from my teacher",
+    "target": "先生からメールが来た"
+   }
+  },
+  {
+   "id": "S0268L03U01",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "two emails came from my old friend yesterday",
+   "target": "昨日、古い友だちからメールが二通来た",
+   "decomposition": [
+    {
+     "legoId": "S0030L02",
+     "target": "昨日",
+     "known": "yesterday",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0266L01",
+     "target": "古い友だち",
+     "known": "old friend",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "an email came from my old friend yesterday",
+    "target": "昨日、古い友だちからメールが来た"
+   }
+  },
+  {
+   "id": "S0268L03U02",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "I want to know if two emails came from my friend",
+   "target": "友だちからメールが二通来たか知りたい",
+   "decomposition": [
+    {
+     "legoId": "S0110L01",
+     "target": "友だち",
+     "known": "friends",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "か",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "知",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "り",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "た",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "い",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I want to know if an email came from my friend",
+    "target": "友だちからメールが来たか知りたい"
+   }
+  },
+  {
+   "id": "S0268L03U03",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "did two emails come from your friend about the plan?",
+   "target": "友だちから予定についてメールが二通来た？",
+   "decomposition": [
+    {
+     "legoId": "S0110L01",
+     "target": "友だち",
+     "known": "friends",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "予",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "定",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "に",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "つ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "い",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "て",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "？",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "did an email come from your friend about the plan?",
+    "target": "友だちから予定についてメールが来た？"
+   }
+  },
+  {
+   "id": "S0268L03U04",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "I heard that two emails came from the old man",
+   "target": "年配の男性からメールが二通来たと聞いた",
+   "decomposition": [
+    {
+     "legoId": "S0264L01",
+     "target": "年配の男性",
+     "known": "elderly man",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "と",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0196L01",
+     "target": "聞いた",
+     "known": "heard",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I heard that an email came from the old man",
+    "target": "年配の男性からメールが来たと聞いた"
+   }
+  },
+  {
+   "id": "S0268L03U05",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "two emails came from my teacher about work yesterday",
+   "target": "昨日、先生から仕事についてメールが二通来た",
+   "decomposition": [
+    {
+     "legoId": "S0030L02",
+     "target": "昨日",
+     "known": "yesterday",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "先",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "生",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "仕",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "事",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "に",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "つ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "い",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "て",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "an email came from my teacher about work yesterday",
+    "target": "昨日、先生から仕事についてメールが来た"
+   }
+  },
+  {
+   "id": "S0268L03U06",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "my mother said two emails came about something important",
+   "target": "母が大事なことについてメールが二通来たと言った",
+   "decomposition": [
+    {
+     "legoId": "S0181L02",
+     "target": "母",
+     "known": "mother",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "が",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0261L01",
+     "target": "大事なこと",
+     "known": "something important",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "に",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "つ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "い",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "て",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "と",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "言",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "っ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "た",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "my mother said an email came about something important",
+    "target": "母が大事なことについてメールが来たと言った"
+   }
+  },
+  {
+   "id": "S0268L03U07",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "I think two emails came from that old man last week",
+   "target": "先週、あの年配の男性からメールが二通来たと思う",
+   "decomposition": [
+    {
+     "legoId": null,
+     "target": "先",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "週",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "あ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "の",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0264L01",
+     "target": "年配の男性",
+     "known": "elderly man",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0072L01",
+     "target": "と思う",
+     "known": "I think that",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I think an email came from that old man last week",
+    "target": "先週、あの年配の男性からメールが来たと思う"
+   }
+  },
+  {
+   "id": "S0268L03U08",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "my father told me two emails came from you yesterday",
+   "target": "父が昨日、あなたからメールが二通来たと教えてくれた",
+   "decomposition": [
+    {
+     "legoId": "S0240L01",
+     "target": "父",
+     "known": "father",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "が",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0030L02",
+     "target": "昨日",
+     "known": "yesterday",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "あ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "な",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "た",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": null,
+     "target": "と",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "教",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "え",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "て",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "く",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "れ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "た",
+     "known": "",
+     "isGhost": true
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "my father told me an email came from you yesterday",
+    "target": "父が昨日、あなたからメールが来たと教えてくれた"
+   }
+  },
+  {
+   "id": "S0268L03U09",
+   "op": "update",
+   "lego": "S0268L03",
+   "known": "I think two emails came from that woman I was talking to at the restaurant",
+   "target": "レストランで話してたあの女性からメールが二通来たと思う",
+   "decomposition": [
+    {
+     "legoId": "S0156L01",
+     "target": "レストラン",
+     "known": "restaurant",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "で",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "話",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "し",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "て",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "た",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "あ",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": null,
+     "target": "の",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0232L02",
+     "target": "女性",
+     "known": "woman",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    },
+    {
+     "legoId": "S0268L03",
+     "target": "メールが二通来た",
+     "known": "two emails came",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0072L01",
+     "target": "と思う",
+     "known": "I think that",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact",
+   "before": {
+    "known": "I think an email came from that woman I was talking to at the restaurant",
+    "target": "レストランで話してたあの女性からメールが来たと思う"
+   }
+  },
+  {
+   "id": "S0130L02U07",
+   "op": "insert",
+   "lego": "S0130L02",
+   "role": "use",
+   "known": "I was surprised, because he's a friend",
+   "target": "驚いた、友だちだから",
+   "position": 12,
+   "decomposition": [
+    {
+     "legoId": "S0130L01",
+     "target": "驚いた",
+     "known": "was surprised",
+     "isGhost": false
+    },
+    {
+     "legoId": null,
+     "target": "、",
+     "known": "",
+     "isGhost": true
+    },
+    {
+     "legoId": "S0130L02",
+     "target": "友だちだ",
+     "known": "is a friend",
+     "isGhost": false,
+     "isSalient": true
+    },
+    {
+     "legoId": "S0022L02",
+     "target": "から",
+     "known": "because",
+     "isGhost": false
+    }
+   ],
+   "decKind": "exact"
+  }
+ ],
+ "notes": [
+  "untiled S0070L02U01 [S0070L02] \"彼女は場所を言いたくなかった\": は",
+  "untiled S0070L02U02 [S0070L02] \"彼女は場所を言いたくなかったと思う\": は | と | 思 | う",
+  "untiled S0070L02U03 [S0070L02] \"なんで彼女は場所を言いたくなかった？\": は",
+  "untiled S0096L02U09 [S0096L02] \"まだ準備できてない、もう少し時間がいる\": 、もう少し時間がいる",
+  "untiled S0240L02B03 [S0240L02] \"彼女は話すのを止めない\": は",
+  "untiled S0240L02U01 [S0240L02] \"父は話すのを止めない\": は",
+  "untiled S0240L02U04 [S0240L02] \"母は話すのを止めない\": は",
+  "untiled S0248L02U08 [S0248L02] \"あの映画、ひどかった、お金返してほしい\": あ | の | 映 | 画",
+  "untiled S0251L02B03 [S0251L02] \"彼女は知りたくない\": は",
+  "untiled S0251L02U03 [S0251L02] \"本当かどうか知りたくない\": 本 | 当 | か | か",
+  "untiled S0268L03B04 [S0268L03] \"先生からメールが二通来た\": 先 | 生",
+  "untiled S0268L03U02 [S0268L03] \"友だちからメールが二通来たか知りたい\": か | 知 | り | た | い",
+  "untiled S0268L03U03 [S0268L03] \"友だちから予定についてメールが二通来た？\": 予 | 定 | に | つ | い | て",
+  "untiled S0268L03U04 [S0268L03] \"年配の男性からメールが二通来たと聞いた\": と",
+  "untiled S0268L03U05 [S0268L03] \"昨日、先生から仕事についてメールが二通来た\": 先 | 生 | 仕 | 事 | に | つ | い | て",
+  "untiled S0268L03U06 [S0268L03] \"母が大事なことについてメールが二通来たと言った\": が | に | つ | い | て | と | 言 | っ | た",
+  "untiled S0268L03U07 [S0268L03] \"先週、あの年配の男性からメールが二通来たと思う\": 先 | 週 | あ | の",
+  "untiled S0268L03U08 [S0268L03] \"父が昨日、あなたからメールが二通来たと教えてくれた\": が | あ | な | た | と | 教 | え | て | く | れ | た",
+  "untiled S0268L03U09 [S0268L03] \"レストランで話してたあの女性からメールが二通来たと思う\": で | 話 | し | て | た | あ | の"
+ ],
+ "problems": [],
+ "outside": [],
+ "zut": [],
+ "touched": [
+  70,
+  73,
+  96,
+  130,
+  173,
+  176,
+  193,
+  240,
+  248,
+  251,
+  268
+ ],
+ "asks": [
+  {
+   "role": "target1",
+   "text": "彼女",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "彼女",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "she",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L01",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "presentation",
+   "text": "The Japanese for: 'she', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L01",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "場所を言いたくなかった",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L02",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0070L02B01",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0070L02B02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "場所を言いたくなかった",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L02",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0070L02B01",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0070L02B02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "didn't want to tell me where it was",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L02",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0070L02B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "presentation",
+   "text": "The Japanese for: 'didn't want to tell me where it was', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0070L02",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "I didn't want to tell you where it was",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02B02",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "彼は場所を言いたくなかった",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02B04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "彼は場所を言いたくなかった",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02B04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "he didn't want to tell me where it was",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02B04",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "彼女は場所を言いたくなかった",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "彼女は場所を言いたくなかった",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "she didn't want to tell me where it was",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "彼女は場所を言いたくなかったと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "彼女は場所を言いたくなかったと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "I think she didn't want to tell me where it was",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "なんで彼女は場所を言いたくなかった？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U03",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "なんで彼女は場所を言いたくなかった？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U03",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "why didn't she want to tell me where it was?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U03",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "なんで場所を言いたくなかった？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U06",
+     "slot": "target1"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target2",
+   "text": "なんで場所を言いたくなかった？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U06",
+     "slot": "target2"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "known",
+   "text": "why didn't you want to tell me where it was?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0070L02U06",
+     "slot": "known"
+    }
+   ],
+   "seed": 70
+  },
+  {
+   "role": "target1",
+   "text": "驚いた、友だちだから",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 130,
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0130L02U07",
+     "slot": "target1"
+    }
+   ],
+   "seed": 130
+  },
+  {
+   "role": "target2",
+   "text": "驚いた、友だちだから",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 130,
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0130L02U07",
+     "slot": "target2"
+    }
+   ],
+   "seed": 130
+  },
+  {
+   "role": "known",
+   "text": "I was surprised, because he's a friend",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 130,
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0130L02U07",
+     "slot": "known"
+    }
+   ],
+   "seed": 130
+  },
+  {
+   "role": "target1",
+   "text": "ごめん、今日は忙しすぎる",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 193,
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0193L01U11",
+     "slot": "target1"
+    }
+   ],
+   "seed": 193
+  },
+  {
+   "role": "target2",
+   "text": "ごめん、今日は忙しすぎる",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 193,
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0193L01U11",
+     "slot": "target2"
+    }
+   ],
+   "seed": 193
+  },
+  {
+   "role": "known",
+   "text": "my father doesn't stop talking",
+   "where": [
+    {
+     "kind": "seed",
+     "id": 240,
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0240L02U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "話すのを止めない",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0240L02",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0240L02B01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "話すのを止めない",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0240L02",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0240L02B01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "known",
+   "text": "doesn't stop talking",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0240L02",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0240L02B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "presentation",
+   "text": "The Japanese for: 'doesn't stop talking', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0240L02",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "彼は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02B02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "彼は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02B02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "known",
+   "text": "he doesn't stop talking",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02B02",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "彼女は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02B03",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "彼女は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02B03",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "known",
+   "text": "she doesn't stop talking",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02B03",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "父は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "父は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "なんで彼は話すのを止めない？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "なんで彼は話すのを止めない？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "known",
+   "text": "why doesn't he stop talking?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "母は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "母は話すのを止めない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "known",
+   "text": "my mother doesn't stop talking",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U04",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "彼は話すのを止めないと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U07",
+     "slot": "target1"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target2",
+   "text": "彼は話すのを止めないと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U07",
+     "slot": "target2"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "known",
+   "text": "I think he doesn't stop talking",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0240L02U07",
+     "slot": "known"
+    }
+   ],
+   "seed": 240
+  },
+  {
+   "role": "target1",
+   "text": "知りたくない",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0251L02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "知りたくない",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0251L02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "don't want to find out",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0251L02",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "presentation",
+   "text": "The Japanese for: 'don't want to find out', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0251L02",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "今知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "今知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "I don't want to find out now",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "なんで知りたくない？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "なんで知りたくない？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "why don't you want to find out?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B02",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "彼女は知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B03",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "彼女は知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B03",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "she doesn't want to find out",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02B03",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "彼は知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "彼は知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "he doesn't want to find out",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "本当かどうか知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U03",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "本当かどうか知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U03",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "I don't want to find out if it's true",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U03",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "答えを知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "答えを知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "I don't want to find out the answer",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U04",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "終わるまで知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U06",
+     "slot": "target1"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target2",
+   "text": "終わるまで知りたくない",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U06",
+     "slot": "target2"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "known",
+   "text": "I don't want to find out until after we finish",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0251L02U06",
+     "slot": "known"
+    }
+   ],
+   "seed": 251
+  },
+  {
+   "role": "target1",
+   "text": "メールが二通来た",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0268L03",
+     "slot": "target1"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0268L03B01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "メールが二通来た",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0268L03",
+     "slot": "target2"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0268L03B01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "two emails came",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0268L03",
+     "slot": "known"
+    },
+    {
+     "kind": "phrase",
+     "id": "S0268L03B01",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "presentation",
+   "text": "The Japanese for: 'two emails came', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
+   "where": [
+    {
+     "kind": "lego",
+     "id": "S0268L03",
+     "slot": "presentation"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "昨日メールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "昨日メールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "two emails came yesterday",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B02",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "メールが二通来た？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B03",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "メールが二通来た？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B03",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "did two emails come?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B03",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "先生からメールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "先生からメールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "two emails came from my teacher",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03B04",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "昨日、古い友だちからメールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U01",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "昨日、古い友だちからメールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U01",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "two emails came from my old friend yesterday",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U01",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "友だちからメールが二通来たか知りたい",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "友だちからメールが二通来たか知りたい",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "I want to know if two emails came from my friend",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U02",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "友だちから予定についてメールが二通来た？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U03",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "友だちから予定についてメールが二通来た？",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U03",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "did two emails come from your friend about the plan?",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U03",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "年配の男性からメールが二通来たと聞いた",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U04",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "年配の男性からメールが二通来たと聞いた",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U04",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "I heard that two emails came from the old man",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U04",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "昨日、先生から仕事についてメールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U05",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "昨日、先生から仕事についてメールが二通来た",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U05",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "two emails came from my teacher about work yesterday",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U05",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "母が大事なことについてメールが二通来たと言った",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U06",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "母が大事なことについてメールが二通来たと言った",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U06",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "my mother said two emails came about something important",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U06",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "先週、あの年配の男性からメールが二通来たと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U07",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "先週、あの年配の男性からメールが二通来たと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U07",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "I think two emails came from that old man last week",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U07",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "父が昨日、あなたからメールが二通来たと教えてくれた",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U08",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "父が昨日、あなたからメールが二通来たと教えてくれた",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U08",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "my father told me two emails came from you yesterday",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U08",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target1",
+   "text": "レストランで話してたあの女性からメールが二通来たと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U09",
+     "slot": "target1"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "target2",
+   "text": "レストランで話してたあの女性からメールが二通来たと思う",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U09",
+     "slot": "target2"
+    }
+   ],
+   "seed": 268
+  },
+  {
+   "role": "known",
+   "text": "I think two emails came from that woman I was talking to at the restaurant",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0268L03U09",
+     "slot": "known"
+    }
+   ],
+   "seed": 268
+  }
+ ]
+}

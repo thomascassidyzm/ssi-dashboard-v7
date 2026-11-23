@@ -47,7 +47,8 @@ for (const course of courses) {
       if (seenCourse.has(k)) out.item18_cross.push({ id: p.sid, first: seenCourse.get(k) }); else seenCourse.set(k, p.sid);
     }
   }
-  L.wr(path.join(L.ITEM_DIR, 'recount', `${course}.json`), out);
+  // cs #791·AK: P717_RECOUNT_OUT writes elsewhere (the 19 Nov recount/ stays as committed).
+  L.wr(path.join(process.env.P717_RECOUNT_OUT || path.join(L.ITEM_DIR, 'recount'), `${course}.json`), out);
   const n = { i12: out.item12.length, i14: out.item14.length, i15: out.item15.length, i16: out.item16.length, i18s: out.item18_same.length, i18x: out.item18_cross.length };
   for (const [k, v] of Object.entries(n)) tot[k] = (tot[k] || 0) + v;
   console.log(course.padEnd(16), JSON.stringify(n));

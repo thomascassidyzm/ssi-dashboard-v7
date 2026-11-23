@@ -1,0 +1,322 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p16-s224-243.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:38.282Z",
+ "seeds": {
+  "224": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"just started\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"just started\""
+   ],
+   "newFailures": []
+  },
+  "225": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  "232": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"woman who\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"woman who\""
+   ],
+   "newFailures": []
+  },
+  "233": {
+   "before": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"a young woman\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"your sister\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"who knows\""
+   ],
+   "after": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"a young woman\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"your sister\"",
+    "L5: 1 duplicate phrase(s) within this LEGO: \"who knows\""
+   ],
+   "newFailures": []
+  },
+  "234": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I met someone last night who works with your brother\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I met someone last night who works with your brother\""
+   ],
+   "newFailures": []
+  },
+  "237": {
+   "before": [],
+   "after": [
+    "L1: USE: need 5+, got 4"
+   ],
+   "newFailures": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  "242": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0224L01U02",
+   "seed": 224,
+   "role": "use",
+   "target": "I've just started to learn English and I'm enjoying it",
+   "old": "私は英語を始めたばかりです",
+   "new": "英語を学び始めたばかりで、楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0224L01U03",
+   "seed": 224,
+   "role": "use",
+   "target": "she's just started to speak English more often",
+   "old": "彼女は話し始めたばかりです",
+   "new": "彼女はもっと頻繁に英語を話し始めたばかりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0224L01U07",
+   "seed": 224,
+   "role": "use",
+   "target": "I've just started but I'm already enjoying finding out more",
+   "old": "始めたばかりですが楽しんでいます",
+   "new": "始めたばかりですが、もっと知るのをもう楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0224L01U10",
+   "seed": 224,
+   "role": "use",
+   "target": "I've just started so I don't mind making mistakes yet",
+   "old": "始めたばかりだから間違えても大丈夫です",
+   "new": "始めたばかりなので、まだ間違えても構いません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0224L01U11",
+   "seed": 224,
+   "role": "use",
+   "target": "she's just started to learn this language this month",
+   "old": "彼女はこの言語を始めたばかりです",
+   "new": "彼女は今月この言語を学び始めたばかりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0224L01U13",
+   "seed": 224,
+   "role": "use",
+   "target": "I've just started talking more and it is fun",
+   "old": "話すことを始めたばかりです",
+   "new": "もっと話し始めたばかりで、楽しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L01B02",
+   "seed": 225,
+   "role": "build",
+   "target": "if he could he",
+   "old": "できれば彼は",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "id": "S0225L02U02",
+   "seed": 225,
+   "role": "use",
+   "target": "it's not difficult to find the answer if you think about it",
+   "old": "答えを見つけるのは難しくありません",
+   "new": "よく考えれば、答えを見つけるのは難しくありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L02U04",
+   "seed": 225,
+   "role": "use",
+   "target": "that is why he didn't know the answer to the question",
+   "old": "それが彼が答えを知らなかった理由です",
+   "new": "だから彼はその質問の答えを知りませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L02U08",
+   "seed": 225,
+   "role": "use",
+   "target": "I don't know what the answer is at the moment",
+   "old": "私は答えがわかりません",
+   "new": "今、答えが何かわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L02U11",
+   "seed": 225,
+   "role": "use",
+   "target": "could you give me the answer if you know what it is?",
+   "old": "答えを教えていただけませんか",
+   "new": "答えを知っていたら、私に答えをくれませんか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L02U13",
+   "seed": 225,
+   "role": "use",
+   "target": "I know the answer but I can't remember how to say it",
+   "old": "答えはわかっているのに言えません",
+   "new": "答えはわかっていますが、どう言うか思い出せません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L02U15",
+   "seed": 225,
+   "role": "use",
+   "target": "do you want me to help you look for the answer?",
+   "old": "答えを見つけるのを手伝ってもらえますか",
+   "new": "答えを探すのを手伝ってほしいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L03U01",
+   "seed": 225,
+   "role": "use",
+   "target": "he would give you the answer if he could",
+   "old": "できれば彼はあなたに答えを教えてくれるでしょう",
+   "new": "できれば彼はあなたに答えをくれるでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0225L03U03",
+   "seed": 225,
+   "role": "use",
+   "target": "I know he would give you what you need",
+   "old": "彼はあなたが必要なものをくれるでしょう",
+   "new": "彼はあなたが必要なものをくれるとわかっています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0232L01B03",
+   "seed": 232,
+   "role": "build",
+   "target": "do you know the woman who works here?",
+   "old": "その女性を知っていますか",
+   "new": "ここで働いている女性を知っていますか",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0233L03B05",
+   "seed": 233,
+   "role": "build",
+   "target": "do you know a young woman who works here?",
+   "old": "若い女性を知っていますか",
+   "new": "ここで働いている若い女性を知っていますか",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0233L03U07",
+   "seed": 233,
+   "role": "use",
+   "target": "there is a young woman here who wants to meet you",
+   "old": "あなたに会いたいと言っている若い女性がいます",
+   "new": "ここにあなたに会いたいと言っている若い女性がいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0234L01B06",
+   "seed": 234,
+   "role": "build",
+   "target": "I met your sister yesterday",
+   "old": "あなたのお姉さんに会いました",
+   "new": "昨日あなたのお姉さんに会いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0237L01U01",
+   "seed": 237,
+   "role": "use",
+   "target": "he wanted me to help but I'm too busy today",
+   "old": "彼は私に手伝ってほしかったが、私は今日忙しかった",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "id": "S0237L01U05",
+   "seed": 237,
+   "role": "use",
+   "target": "he wanted me to remember but I've forgotten the word I was trying to say",
+   "old": "彼は私に覚えてほしかったが、私はその言葉を忘れてしまった",
+   "new": "彼は私に覚えてほしかったですが、言おうとしていた言葉を忘れました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0237L01U10",
+   "seed": 237,
+   "role": "use",
+   "target": "he wanted me to speak with her and I wanted to help but I wasn't ready",
+   "old": "彼は私に彼女と話してほしかったが、私は準備ができていなかった",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "id": "S0242L02U01",
+   "seed": 242,
+   "role": "use",
+   "target": "I want to give her a good answer",
+   "old": "彼女に良い答えを教えたいです",
+   "new": "彼女にいい答えをあげたいです",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}

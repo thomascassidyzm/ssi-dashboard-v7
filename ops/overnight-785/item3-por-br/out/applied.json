@@ -1,0 +1,5322 @@
+[
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "f0483abe-46e9-44b5-bf0d-38f64993722f",
+  "undo_file": "2026-11-23T22-12-52-126Z-f0483abe-46e9-44b5-bf0d-38f64993722f.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 127,
+    "set": {
+     "known_text": "that isn't why I wanted to see you",
+     "known_audio_id": "7a597d9d-e92e-4722-85ad-45b733b5a5bb"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 122,
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 122,
+    "set": {
+     "known_text": "it's starting to feel easier and I'm excited about how it's going",
+     "known_audio_id": "6e068e6d-cfb3-4778-bede-b2d04fd35375"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 112,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 112,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 112,
+    "set": {
+     "target_text": "isso foi muito interessante, e eu não estava à espera",
+     "target1_audio_id": "65de4aed-ac2c-4eaa-bea8-f9ef7f079f4a",
+     "target2_audio_id": "d8179d6f-d3fa-4186-a83f-de8b0e90c4e2"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 69,
+    "set": {
+     "target_text": "ele não queria tomar conta do cachorro novo a tarde toda",
+     "target1_audio_id": "f10011f8-4e60-4363-91a0-f77bf4c47f79",
+     "target2_audio_id": "a46c9da6-18aa-45f6-92a2-7bfccb23285e"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 65,
+    "set": {
+     "target_text": "é importante dedicar tempo a se testar",
+     "target1_audio_id": "71cfa09a-6418-4e4b-a036-d644a4062bbf",
+     "target2_audio_id": "e9237c9a-1bd8-4387-a282-aa3a2c5e5b61"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 58,
+    "set": {
+     "target_text": "é interessante quando você percebe palavras suficientes",
+     "target1_audio_id": "020249f6-d565-4df9-943a-ac1ffd3673ea",
+     "target2_audio_id": "68c15450-b291-45c9-a298-5bdfdba7954b"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 7,
+    "set": {
+     "target_text": "eu quero tentar com toda a força que puder hoje",
+     "target1_audio_id": "15039dfd-d68e-4a9b-878d-764d79ea71f4",
+     "target2_audio_id": "0e4c6347-21d4-4606-948f-789f2e354e18"
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "event_id": "bb25edf5-1db7-4f6e-b18e-5f7047cfaf48",
+  "undo_file": "2026-11-23T22-13-11-499Z-bb25edf5-1db7-4f6e-b18e-5f7047cfaf48.json",
+  "undo": [
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0141L02U01"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0141L02B01"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0141L02C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0141L02C01"
+   },
+   {
+    "op": "lego.delete",
+    "id": "1bd117a3-43a7-4e28-938f-3496d141ee64"
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 620,
+    "set": {
+     "known_text": "it's a very long time since we last saw each other",
+     "known_audio_id": "4c70c187-2617-43a4-a5c7-5e8de28ab555"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 517,
+    "set": {
+     "known_text": "but they left with each other",
+     "known_audio_id": "e2877f6a-7a09-4a0d-8dbd-32b19d27f08e"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 433,
+    "set": {
+     "known_text": "they couldn't find out when the film started",
+     "known_audio_id": "29fac157-11f8-47d0-9c89-e193b6482d1b"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 331,
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 331,
+    "set": {
+     "known_text": "she can't provide all the answers",
+     "known_audio_id": "f46b6ed1-e291-48d8-a4b2-dfe6f861b63b"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 141,
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 141,
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 141,
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 141,
+    "set": {
+     "known_text": "no problem. Everything is okay",
+     "target_text": "sem problema. Está tudo bem",
+     "known_audio_id": "4d6384d2-8a4b-4df4-b059-69e4c59adace",
+     "target1_audio_id": "0b16d0c0-81c6-47d5-a467-b5c3bf0a219d",
+     "target2_audio_id": "4d1f565a-f54b-4738-bcf2-26af4e52104b"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 132,
+    "set": {
+     "target_text": "isso é menos entusiasmante do que o que ela estava dizendo",
+     "target1_audio_id": "2081eae5-e069-4a4a-b3c6-40a39ced6b7a",
+     "target2_audio_id": "207991d1-85a2-4b6e-88d4-617ab207fcfc"
+    }
+   }
+  ],
+  "ops": 29
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "event_id": "dafd4006-636a-43a4-b2dd-b87112c07a36",
+  "undo_file": "2026-11-23T22-13-26-102Z-dafd4006-636a-43a4-b2dd-b87112c07a36.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it's useful to",
+       "legoId": "S0028L01",
+       "target": "é útil",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "you are learning",
+       "legoId": "S0021L02",
+       "target": " você está aprendendo",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      },
+      {
+       "known": "at the moment",
+       "legoId": "S0040L03",
+       "target": " neste momento",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B10",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm starting to",
+       "legoId": "S0041L02",
+       "target": "estou começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "i'd like to",
+       "legoId": "S0011L01",
+       "target": "gostaria de",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      },
+      {
+       "known": "at the moment",
+       "legoId": "S0040L03",
+       "target": " neste momento",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm going to",
+       "legoId": "S0005L01",
+       "target": "vou",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      },
+      {
+       "known": "today",
+       "legoId": "S0007L03",
+       "target": " hoje",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B08",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm trying to",
+       "legoId": "S0002L02",
+       "target": "estou tentando",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "better",
+       "legoId": "S0029L02",
+       "target": " melhor",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": "me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "i'd like to",
+       "legoId": "S0011L01",
+       "target": "gostaria de",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0128L02U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "you're like",
+       "legoId": "S0128L01",
+       "target": "você é como",
+       "isGhost": false
+      },
+      {
+       "known": "someone I used to know",
+       "legoId": "S0128L02",
+       "target": " alguém que eu conhecia",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0079L01B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": "quando",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "started",
+       "legoId": "S0079L01",
+       "target": " começou",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L01B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0044L03U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I need to",
+       "legoId": "S0044L03",
+       "target": "preciso",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "better than",
+       "legoId": "S0042L02",
+       "target": " melhor do que",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0042L03",
+       "target": " ontem à noite",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L03U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      },
+      {
+       "known": "last night",
+       "legoId": "S0042L03",
+       "target": " ontem à noite",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "quero",
+       "isGhost": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0079L01B02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "started",
+       "legoId": "S0079L01",
+       "target": " começou",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B09",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm starting to",
+       "legoId": "S0041L02",
+       "target": "estou começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": "me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0084L02U06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "my",
+       "legoId": "S0084L02",
+       "target": "meu",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " amigo",
+       "isGhost": true
+      },
+      {
+       "known": "started",
+       "legoId": "S0079L01",
+       "target": " começou",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      },
+      {
+       "known": "Portuguese",
+       "legoId": "S0001L03",
+       "target": " português",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0079L01U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": "quando",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "started",
+       "legoId": "S0079L01",
+       "target": " começou",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "understand",
+       "legoId": "S0074L03",
+       "target": " entender",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0043L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I started to",
+       "legoId": "S0037L01",
+       "target": "comecei a",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " pensar",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " em",
+       "isGhost": true
+      },
+      {
+       "known": "how to",
+       "legoId": "S0043L02",
+       "target": " como",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": "me sentir",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I don't want to",
+       "legoId": "S0019L02",
+       "target": "não quero",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "other people",
+       "legoId": "S0034L03",
+       "target": " outras pessoas",
+       "isGhost": false
+      },
+      {
+       "known": "are here",
+       "legoId": "S0034L05",
+       "target": " estão aqui",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L01B06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03B07",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I don't want to",
+       "legoId": "S0019L02",
+       "target": "não quero",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0079L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": "quando",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "started",
+       "legoId": "S0079L01",
+       "target": " começou",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      },
+      {
+       "known": "Portuguese",
+       "legoId": "S0001L03",
+       "target": " português",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0079L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": " sei",
+       "isGhost": false
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "started",
+       "legoId": "S0079L01",
+       "target": " começou",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0052L04B05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "better",
+       "legoId": "S0029L02",
+       "target": " melhor",
+       "isGhost": false
+      },
+      {
+       "known": "last week",
+       "legoId": "S0052L04",
+       "target": " na semana passada",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0046L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I don't worry about",
+       "legoId": "S0046L01",
+       "target": "não me preocupo em",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "other people",
+       "legoId": "S0034L03",
+       "target": " outras pessoas",
+       "isGhost": false
+      },
+      {
+       "known": "are here",
+       "legoId": "S0034L05",
+       "target": " estão aqui",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0045L01U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I need to",
+       "legoId": "S0044L03",
+       "target": "preciso",
+       "isGhost": false
+      },
+      {
+       "known": "to know things",
+       "legoId": "S0045L01",
+       "target": " saber",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "if",
+       "legoId": "S0044L02",
+       "target": " se",
+       "isGhost": false
+      },
+      {
+       "known": "I'm going to",
+       "legoId": "S0005L01",
+       "target": " vou",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      },
+      {
+       "known": "this morning",
+       "legoId": "S0039L02",
+       "target": " esta manhã",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L02U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "better than",
+       "legoId": "S0042L02",
+       "target": " melhor do que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "yesterday",
+       "legoId": "S0030L03",
+       "target": " ontem",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      },
+      {
+       "known": "this afternoon",
+       "legoId": "S0035L03",
+       "target": " esta tarde",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L03B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I was starting to",
+       "legoId": "S0042L01",
+       "target": "estava começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "better than",
+       "legoId": "S0042L02",
+       "target": " melhor do que",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0042L03",
+       "target": " ontem à noite",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm starting to",
+       "legoId": "S0041L02",
+       "target": "estou começando a",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tired",
+       "legoId": "S0039L01",
+       "target": " cansado",
+       "isGhost": false
+      },
+      {
+       "known": "but",
+       "legoId": "S0019L01",
+       "target": " mas",
+       "isGhost": false
+      },
+      {
+       "known": "I don't want to",
+       "legoId": "S0019L02",
+       "target": " não quero",
+       "isGhost": false
+      },
+      {
+       "known": "to stop talking",
+       "legoId": "S0019L03",
+       "target": " parar de falar",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0041L03U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm going to",
+       "legoId": "S0005L01",
+       "target": "vou",
+       "isGhost": false
+      },
+      {
+       "known": "to try",
+       "legoId": "S0007L01",
+       "target": " tentar",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bem",
+       "isGhost": true
+      },
+      {
+       "known": "this afternoon",
+       "legoId": "S0035L03",
+       "target": " esta tarde",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0042L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I'm going to",
+       "legoId": "S0005L01",
+       "target": "vou",
+       "isGhost": false
+      },
+      {
+       "known": "to try",
+       "legoId": "S0007L01",
+       "target": " tentar",
+       "isGhost": false
+      },
+      {
+       "known": "to feel a certain way",
+       "legoId": "S0041L03",
+       "target": " me sentir",
+       "isGhost": false
+      },
+      {
+       "known": "better than",
+       "legoId": "S0042L02",
+       "target": " melhor do que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "yesterday",
+       "legoId": "S0030L03",
+       "target": " ontem",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0065L03C01",
+    "set": {
+     "target_text": "a",
+     "target1_audio_id": "e08ef441-43ef-400f-9a83-beab4d7fc3d6",
+     "target2_audio_id": "6942afdf-2153-4c2f-b59f-a519a8ae0948",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "95c67d14-6534-4221-91d3-e848eab890da",
+    "set": {
+     "components": [
+      {
+       "known": "to",
+       "target": "a"
+      },
+      {
+       "known": "yourself",
+       "target": "se"
+      },
+      {
+       "known": "test",
+       "target": "testar"
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0007L02C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0007L02C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "51db06c4-b291-4977-a3c4-7f9608508d69",
+    "set": {
+     "components": [
+      {
+       "known": "hard",
+       "target": "força"
+      },
+      {
+       "known": "as hard as I can",
+       "target": "com toda a força que puder"
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0079L01C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0079L01C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "33f140b7-e567-447b-97ba-2f80dd9324ef",
+    "set": {
+     "type": "A",
+     "known_text": "started",
+     "target_text": "começou",
+     "components": null,
+     "known_audio_id": "c2c64c81-b87a-4d20-bba2-a3b88d25329d",
+     "target1_audio_id": "7f0e0ff0-c306-4597-a10a-ce44231f41dd",
+     "target2_audio_id": "ed6c3c3c-f3de-4bde-87cb-a37b4760c573",
+     "presentation_audio_id": "e9a64060-7301-450a-a660-bd0e443fcecb"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "a7370a96-d65a-49cd-8ab4-f26bd8b8cc16",
+    "set": {
+     "known_text": "to feel a certain way",
+     "known_audio_id": "ea9ede43-aee5-4db5-b5e3-5ac6ff870509",
+     "presentation_audio_id": "56552ee4-1049-4668-896f-dda32a740511"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L02U02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L02U01"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L02B01"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L02C03"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L02C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L02C01"
+   },
+   {
+    "op": "lego.delete",
+    "id": "a126b420-000f-4362-b76c-b39f83bb5ce3"
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "event_id": "3f82c03d-32bd-4dc3-bcb8-4debc14bde0e",
+  "undo_file": "2026-11-23T22-13-45-958Z-3f82c03d-32bd-4dc3-bcb8-4debc14bde0e.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " assim",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L02",
+       "target": " falar",
+       "isGhost": false
+      },
+      {
+       "known": "Portuguese",
+       "legoId": "S0001L03",
+       "target": " português",
+       "isGhost": false
+      },
+      {
+       "known": "with you",
+       "legoId": "S0001L04",
+       "target": " com você",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0234L04U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "met",
+       "legoId": "S0234L01",
+       "target": "conheci",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0042L03",
+       "target": " ontem à noite",
+       "isGhost": false
+      },
+      {
+       "known": "who works with",
+       "legoId": "S0234L04",
+       "target": " que trabalha com",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": " o",
+       "isGhost": false
+      },
+      {
+       "known": "your brother",
+       "legoId": "S0234L03",
+       "target": " teu irmão",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0234L03U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "met",
+       "legoId": "S0234L01",
+       "target": "conheci",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "who works with",
+       "legoId": "S0234L04",
+       "target": " que trabalha com",
+       "isGhost": false
+      },
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": " o",
+       "isGhost": false
+      },
+      {
+       "known": "your brother",
+       "legoId": "S0234L03",
+       "target": " teu irmão",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": "o",
+       "isGhost": false
+      },
+      {
+       "known": "film",
+       "legoId": "S0221L02",
+       "target": " filme",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "a",
+       "legoId": "S0134L01",
+       "target": " um",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false
+      },
+      {
+       "known": "complete",
+       "legoId": "S0248L02",
+       "target": " completo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L02U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": "o",
+       "isGhost": false
+      },
+      {
+       "known": "book",
+       "legoId": "S0180L01",
+       "target": " livro",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "a",
+       "legoId": "S0134L01",
+       "target": " um",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false
+      },
+      {
+       "known": "complete",
+       "legoId": "S0248L02",
+       "target": " completo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L03U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": " o",
+       "isGhost": false
+      },
+      {
+       "known": "film",
+       "legoId": "S0221L02",
+       "target": " filme",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "a",
+       "legoId": "S0134L01",
+       "target": " um",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false
+      },
+      {
+       "known": "complete",
+       "legoId": "S0248L02",
+       "target": " completo",
+       "isGhost": false
+      },
+      {
+       "known": "and",
+       "legoId": "S0015L01",
+       "target": " e",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " quero",
+       "isGhost": true
+      },
+      {
+       "known": "my money back",
+       "legoId": "S0248L03",
+       "target": " o meu dinheiro de volta",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0247L04U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "that book",
+       "legoId": "S0247L02",
+       "target": " aquele livro",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "fairly",
+       "legoId": "S0247L04",
+       "target": " razoavelmente",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0211L01U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "eles",
+       "isGhost": true
+      },
+      {
+       "known": "told us",
+       "legoId": "S0211L01",
+       "target": " nos disseram",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "important",
+       "legoId": "S0065L01",
+       "target": " importante",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0266L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "he",
+       "legoId": "S0069L01",
+       "target": "ele",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "a",
+       "legoId": "S0134L01",
+       "target": " um",
+       "isGhost": false
+      },
+      {
+       "known": "old",
+       "legoId": "S0266L01",
+       "target": " velho",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " amigo",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02B01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0236L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "know",
+       "legoId": "S0085L01",
+       "target": "conheço",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " disse",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "was going to",
+       "legoId": "S0236L01",
+       "target": " ia",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to try",
+       "legoId": "S0007L01",
+       "target": " tentar",
+       "isGhost": false
+      },
+      {
+       "known": "to help",
+       "legoId": "S0226L02",
+       "target": " ajudar",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0235L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "met",
+       "legoId": "S0234L01",
+       "target": "conheci",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "who said that he wanted",
+       "legoId": "S0235L01",
+       "target": " que disse que queria",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to you",
+       "legoId": "S0054L03",
+       "target": " te",
+       "isGhost": false
+      },
+      {
+       "known": "to tell",
+       "legoId": "S0222L01",
+       "target": " dizer",
+       "isGhost": false
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L02",
+       "target": " algo",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0202L03U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "was sure",
+       "legoId": "S0202L03",
+       "target": " tinha",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": "S0202L03",
+       "target": " certeza",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "of",
+       "legoId": "S0200L03",
+       "target": " de",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " uma",
+       "isGhost": true
+      },
+      {
+       "known": "good idea",
+       "legoId": "S0123L01",
+       "target": " boa ideia",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": 1099
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": "o",
+       "isGhost": false
+      },
+      {
+       "known": "book",
+       "legoId": "S0180L01",
+       "target": " livro",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0205L03U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false
+      },
+      {
+       "known": "the",
+       "legoId": "S0196L01",
+       "target": " a",
+       "isGhost": false
+      },
+      {
+       "known": "word",
+       "legoId": "S0205L03",
+       "target": " palavra",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0136L04U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " minha",
+       "isGhost": true
+      },
+      {
+       "known": "friend",
+       "legoId": "S0136L04",
+       "target": " amiga",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0132L02U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "that",
+       "legoId": "S0061L03",
+       "target": "isso",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "less",
+       "legoId": "S0132L01",
+       "target": " menos",
+       "isGhost": false
+      },
+      {
+       "known": "exciting",
+       "legoId": "S0132L02",
+       "target": " empolgante",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " estava",
+       "isGhost": true
+      },
+      {
+       "known": "thinking",
+       "legoId": "S0043L01",
+       "target": " pensando",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0133L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "get to know",
+       "legoId": "S0133L01",
+       "target": " fica conhecendo",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "very well",
+       "legoId": "S0013L02",
+       "target": " muito bem",
+       "isGhost": false
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "work together",
+       "legoId": "S0133L02",
+       "target": " trabalha em conjunto",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0105L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "he didn't know",
+       "legoId": "S0105L02",
+       "target": "ele não sabia",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "where",
+       "legoId": "S0070L01",
+       "target": " onde",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0123L01B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " uma",
+       "isGhost": true
+      },
+      {
+       "known": "good idea",
+       "legoId": "S0123L01",
+       "target": " boa ideia",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0153L01B05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "eu",
+       "isGhost": true
+      },
+      {
+       "known": "wouldn't have said",
+       "legoId": "S0153L01",
+       "target": " não teria dito",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0272L02U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " disse",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "a great idea",
+       "legoId": "S0272L02",
+       "target": " uma ótima ideia",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0143L01B05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "the same thing",
+       "legoId": "S0143L01",
+       "target": " a mesma coisa",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0133L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "get to know",
+       "legoId": "S0133L01",
+       "target": " fica conhecendo",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "very well",
+       "legoId": "S0013L02",
+       "target": " muito bem",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " aqui",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0133L02U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "know",
+       "legoId": "S0085L01",
+       "target": "conheço",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " estava",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dizendo",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "work together",
+       "legoId": "S0133L02",
+       "target": " trabalha em conjunto",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0124L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "important",
+       "legoId": "S0065L01",
+       "target": " importante",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0124L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " o",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " seu",
+       "isGhost": true
+      },
+      {
+       "known": "car",
+       "legoId": "S0121L01",
+       "target": " carro",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " muito",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " assim",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0133L01B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "get to know",
+       "legoId": "S0133L01",
+       "target": "fica conhecendo",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L01U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0125L02U06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "your idea",
+       "legoId": "S0125L02",
+       "target": " sua ideia",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " uma",
+       "isGhost": true
+      },
+      {
+       "known": "good idea",
+       "legoId": "S0123L01",
+       "target": " boa ideia",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0124L01B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0124L01B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "unusual",
+       "legoId": "S0121L03",
+       "target": " incomum",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " não",
+       "isGhost": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "to tell",
+       "legoId": "S0061L02",
+       "target": " dizer",
+       "isGhost": false
+      },
+      {
+       "known": "where",
+       "legoId": "S0070L01",
+       "target": " onde",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0235L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": "alguém",
+       "isGhost": false
+      },
+      {
+       "known": "who said that he wanted",
+       "legoId": "S0235L01",
+       "target": " que disse que queria",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to know things",
+       "legoId": "S0045L01",
+       "target": " saber",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0247L04U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false
+      },
+      {
+       "known": "fairly",
+       "legoId": "S0247L04",
+       "target": " razoavelmente",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0133L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "get to know",
+       "legoId": "S0133L01",
+       "target": " fica conhecendo",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " está",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tentando",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0247L02U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "that book",
+       "legoId": "S0247L02",
+       "target": "aquele livro",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0262L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": " sei",
+       "isGhost": false
+      },
+      {
+       "known": "who",
+       "legoId": "S0262L01",
+       "target": " quem",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0262L01B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "who",
+       "legoId": "S0262L01",
+       "target": "quem",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0125L02U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "a",
+       "isGhost": true
+      },
+      {
+       "known": "your idea",
+       "legoId": "S0125L02",
+       "target": " sua ideia",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "unusual",
+       "legoId": "S0121L03",
+       "target": " incomum",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "the",
+       "legoId": "S0195L01",
+       "target": "o",
+       "isGhost": false
+      },
+      {
+       "known": "film",
+       "legoId": "S0221L02",
+       "target": " filme",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0132L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "that",
+       "legoId": "S0061L03",
+       "target": "isso",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " muito",
+       "isGhost": true
+      },
+      {
+       "known": "exciting",
+       "legoId": "S0132L02",
+       "target": " empolgante",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " para",
+       "isGhost": true
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0234L01U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "met",
+       "legoId": "S0234L01",
+       "target": "conheci",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "who wanted",
+       "legoId": "S0231L02",
+       "target": " que queria",
+       "isGhost": false
+      },
+      {
+       "known": "to help",
+       "legoId": "S0226L02",
+       "target": " ajudar",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0134L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "that",
+       "legoId": "S0061L03",
+       "target": "isso",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " o",
+       "isGhost": true
+      },
+      {
+       "known": "problem",
+       "legoId": "S0134L02",
+       "target": " problema",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0234L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "met",
+       "legoId": "S0234L01",
+       "target": "conheci",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "yesterday",
+       "legoId": "S0030L03",
+       "target": " ontem",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0153L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "wouldn't have said",
+       "legoId": "S0153L01",
+       "target": "não teria dito",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0061L03",
+       "target": " isso",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " o",
+       "isGhost": true
+      },
+      {
+       "known": "better",
+       "legoId": "S0029L02",
+       "target": " melhor",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0247L04U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "aquele",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "fairly",
+       "legoId": "S0247L04",
+       "target": " razoavelmente",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " bom",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0125L01B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I believe",
+       "legoId": "S0125L01",
+       "target": "acredito",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " uma",
+       "isGhost": true
+      },
+      {
+       "known": "good idea",
+       "legoId": "S0123L01",
+       "target": " boa ideia",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fácil",
+       "isGhost": true
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      },
+      {
+       "known": "Portuguese",
+       "legoId": "S0001L03",
+       "target": " português",
+       "isGhost": false
+      },
+      {
+       "known": "with you",
+       "legoId": "S0001L04",
+       "target": " com você",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "to know things",
+       "legoId": "S0045L01",
+       "target": " saber",
+       "isGhost": false
+      },
+      {
+       "known": "how",
+       "legoId": "S0040L01",
+       "target": " como",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      },
+      {
+       "known": "Portuguese",
+       "legoId": "S0001L03",
+       "target": " português",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02U06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "to tell",
+       "legoId": "S0061L02",
+       "target": " dizer",
+       "isGhost": false
+      },
+      {
+       "known": "how",
+       "legoId": "S0040L01",
+       "target": " como",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L02B02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fácil",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0124L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I thought",
+       "legoId": "S0124L01",
+       "target": "achei",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " uma",
+       "isGhost": true
+      },
+      {
+       "known": "good idea",
+       "legoId": "S0123L01",
+       "target": " boa ideia",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0262L01U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "who",
+       "legoId": "S0262L01",
+       "target": "quem",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "that man",
+       "legoId": "S0227L01",
+       "target": " aquele homem",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "aquele",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "a",
+       "legoId": "S0134L01",
+       "target": " um",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false
+      },
+      {
+       "known": "complete",
+       "legoId": "S0248L02",
+       "target": " completo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L02U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false
+      },
+      {
+       "known": "a",
+       "legoId": "S0134L01",
+       "target": " um",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false
+      },
+      {
+       "known": "complete",
+       "legoId": "S0248L02",
+       "target": " completo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0277L02U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ela",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " disse",
+       "isGhost": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " no",
+       "isGhost": true
+      },
+      {
+       "known": "beginning",
+       "legoId": "S0277L02",
+       "target": " início",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0134L03U06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "you work",
+       "legoId": "S0134L03",
+       "target": " trabalha",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " com",
+       "isGhost": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " é",
+       "isGhost": true
+      },
+      {
+       "known": "exciting",
+       "legoId": "S0132L02",
+       "target": " empolgante",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0205L03U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": "era",
+       "isGhost": false
+      },
+      {
+       "known": "the",
+       "legoId": "S0196L01",
+       "target": " a",
+       "isGhost": false
+      },
+      {
+       "known": "word",
+       "legoId": "S0205L03",
+       "target": " palavra",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "that",
+       "legoId": "S0194L01",
+       "target": " que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " estava",
+       "isGhost": true
+      },
+      {
+       "known": "looking for",
+       "legoId": "S0068L01",
+       "target": " procurando",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0133L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "get to know",
+       "legoId": "S0133L01",
+       "target": " fica conhecendo",
+       "isGhost": false
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "when",
+       "legoId": "S0034L04",
+       "target": " quando",
+       "isGhost": false
+      },
+      {
+       "known": "work together",
+       "legoId": "S0133L02",
+       "target": " trabalha em conjunto",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0125L02U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I believe",
+       "legoId": "S0125L01",
+       "target": "acredito",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "your idea",
+       "legoId": "S0125L02",
+       "target": " sua ideia",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " muito",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " boa",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0132L01U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "that",
+       "legoId": "S0061L03",
+       "target": "isso",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "less",
+       "legoId": "S0132L01",
+       "target": " menos",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " interessante",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " estava",
+       "isGhost": true
+      },
+      {
+       "known": "thinking",
+       "legoId": "S0043L01",
+       "target": " pensando",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0125L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I think that",
+       "legoId": "S0047L01",
+       "target": "acho que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "your idea",
+       "legoId": "S0125L02",
+       "target": " sua ideia",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " muito",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " boa",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0248L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "aquele",
+       "isGhost": true
+      },
+      {
+       "known": "film",
+       "legoId": "S0221L02",
+       "target": " filme",
+       "isGhost": false
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "rubbish",
+       "legoId": "S0248L01",
+       "target": " lixo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0262L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "quero",
+       "isGhost": true
+      },
+      {
+       "known": "to know things",
+       "legoId": "S0045L01",
+       "target": " saber",
+       "isGhost": false
+      },
+      {
+       "known": "who",
+       "legoId": "S0262L01",
+       "target": " quem",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0070L02",
+       "target": " era",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0234L01U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "met",
+       "legoId": "S0234L01",
+       "target": "conheci",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are",
+       "legoId": "S0128L01",
+       "target": " alguém",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0042L03",
+       "target": " ontem à noite",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L01U06"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L01U05"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L01B02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L01B01"
+   },
+   {
+    "op": "lego.update",
+    "id": "870e6abc-483a-4c26-90cc-8ced657410cc",
+    "set": {
+     "target2_audio_id": "6d3ef8ff-0d34-4b8e-844f-4c50e0f1e1d9"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "870e6abc-483a-4c26-90cc-8ced657410cc",
+    "set": {
+     "target1_audio_id": "26de4b24-3da5-476b-9dc7-76443098224a"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L01C02"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0128L01C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "870e6abc-483a-4c26-90cc-8ced657410cc",
+    "set": {
+     "type": "A",
+     "known_text": "you are",
+     "target_text": "alguém",
+     "components": null,
+     "known_audio_id": "71f55d76-34bd-47e9-b99f-c96aebb6062c",
+     "target1_audio_id": "6acf6025-5613-4de7-9261-f36583e812fc",
+     "target2_audio_id": "f959a0d3-5672-4bf2-b303-94b0b7cf8c4f",
+     "presentation_audio_id": "75614a27-a9bc-4421-bbe1-d606c19b80f4"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "1e9bc07d-f23d-404b-b6b3-953a4b3c9f8c",
+    "set": {
+     "presentation_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0070L03C02",
+    "set": {
+     "target_text": "estava",
+     "target1_audio_id": "afde75b1-bcab-402c-be38-5ac6e86c4489",
+     "target2_audio_id": "aa496611-8b46-470a-a3c6-dd3be4a5de51",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "estava",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "1e9bc07d-f23d-404b-b6b3-953a4b3c9f8c",
+    "set": {
+     "target_text": "onde estava",
+     "components": [
+      {
+       "known": "where",
+       "target": "onde",
+       "introduce": false
+      },
+      {
+       "known": "it was",
+       "target": "estava",
+       "introduce": false
+      }
+     ],
+     "target1_audio_id": "84359c06-3b30-4708-8538-704257902fdf",
+     "target2_audio_id": "348954ee-ca61-4455-9924-81b78c799aaa",
+     "presentation_audio_id": "7da489ed-cf7b-4f60-9932-74647d9d7763"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "539ca081-3a4d-4479-a662-145c61571589",
+    "set": {
+     "known_text": "tell me",
+     "known_audio_id": "f8ed3fa0-3dc1-4634-89a3-ef1740921ef1",
+     "presentation_audio_id": "9f3b3154-fbfe-4fb0-adc0-5bf65abb344a"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02C02",
+    "set": {
+     "known_text": "you notice",
+     "target_text": "você nota",
+     "known_audio_id": "5a7a800e-37f7-46b6-8360-be72803ab332",
+     "target1_audio_id": "7f94facc-6f86-47e0-9e8d-b45929f3b646",
+     "target2_audio_id": "3d709af2-14ef-40bc-af69-9901a996096b",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "você",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " nota",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "f86f173f-4bf4-4928-862f-1a9ca1fec45f",
+    "set": {
+     "known_text": "when you notice",
+     "target_text": "quando você nota",
+     "components": [
+      {
+       "known": "when",
+       "target": "quando"
+      },
+      {
+       "known": "you notice",
+       "target": "você percebe"
+      }
+     ],
+     "known_audio_id": "c3349289-95c8-4eee-aec8-240718691e3c",
+     "target1_audio_id": "69c9a90d-90ae-44f6-98c3-9233d1081c9e",
+     "target2_audio_id": "45f19117-501a-4116-8ced-9f5ac1363229",
+     "presentation_audio_id": "19e3dd55-1b5c-4530-a738-1550003729da"
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "56056b3f-fc51-4247-a0c7-ebff2e4a24f2",
+    "set": {
+     "components": [
+      {
+       "known": "dog",
+       "target": "cachorro"
+      },
+      {
+       "known": "young",
+       "target": "novo"
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "event_id": "7903c797-64a3-450a-8bd7-d8f987f86cf2",
+  "undo_file": "2026-11-23T22-14-01-075Z-7903c797-64a3-450a-8bd7-d8f987f86cf2.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "what",
+       "legoId": "S0194L03",
+       "target": "o que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " você",
+       "isGhost": true
+      },
+      {
+       "known": "is doing",
+       "legoId": "S0072L01",
+       "target": " está fazendo",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0154L03",
+       "target": " à noite",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01B03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": "foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " eu",
+       "isGhost": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": "foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      },
+      {
+       "known": "Portuguese",
+       "legoId": "S0001L03",
+       "target": " português",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": "sei",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " não",
+       "isGhost": true
+      },
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": " foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "went out",
+       "legoId": "S0215L01",
+       "target": "saí",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": "foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "to learn",
+       "legoId": "S0002L01",
+       "target": " aprender",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02B02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01B01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": "foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02B01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": "sábado",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02U04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "quero",
+       "isGhost": true
+      },
+      {
+       "known": "to leave",
+       "legoId": "S0139L03",
+       "target": " sair",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01B04",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": "foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " comecei",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01U06",
+    "set": {
+     "decomposition": [
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": "foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "to do",
+       "legoId": "S0051L01",
+       "target": " fazer",
+       "isGhost": false
+      },
+      {
+       "known": "that",
+       "legoId": "S0061L03",
+       "target": " isso",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02U05",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "went out",
+       "legoId": "S0215L01",
+       "target": " saí",
+       "isGhost": false
+      },
+      {
+       "known": "early",
+       "legoId": "S0139L04",
+       "target": " cedo",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0219L02U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "during",
+       "legoId": "S0219L02",
+       "target": "durante",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "the",
+       "legoId": "S0196L01",
+       "target": " a",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " noite",
+       "isGhost": true
+      },
+      {
+       "known": "of",
+       "legoId": "S0200L03",
+       "target": " de",
+       "isGhost": false
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0215L02U01",
+    "set": {
+     "decomposition": [
+      {
+       "known": "went out",
+       "legoId": "S0215L01",
+       "target": "saí",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " no",
+       "isGhost": true
+      },
+      {
+       "known": "saturday",
+       "legoId": "S0215L02",
+       "target": " sábado",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "night",
+       "legoId": "S0154L03",
+       "target": " à noite",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01U03",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": " foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ajudar",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0127L01U02",
+    "set": {
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "it was why",
+       "legoId": "S0127L01",
+       "target": " foi por isso que",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": " queria",
+       "isGhost": false
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L02",
+       "target": " falar",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B03",
+    "set": {
+     "known_text": "when you notice something",
+     "target_text": "quando você nota algo",
+     "known_audio_id": "1c451dbf-c211-4d3f-8063-3d8fbf78bb96",
+     "target1_audio_id": "fd21b5e7-49cb-4f8b-8eee-cdf9471d5d48",
+     "target2_audio_id": "ea9c406c-36ff-4fc9-9ebf-f667c8ceb4a4",
+     "decomposition": [
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": "quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L02",
+       "target": " algo",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_br_for_eng:S0041L03B01",
+     "seed_number": 41,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "to feel a certain way",
+     "target_text": "me sentir",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "buildup": "lego"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-03-12T18:04:46.293Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "ea9ede43-aee5-4db5-b5e3-5ac6ff870509",
+     "target1_audio_id": "ca616925-1f65-477d-b047-e59f9e243f77",
+     "target2_audio_id": "732fee6b-2db4-4e2a-ae31-15bacae71b2d",
+     "qa_checked": null,
+     "target1_duration_ms": 840,
+     "target2_duration_ms": 840,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "to feel",
+       "legoId": "S0041L03",
+       "target": "me sentir",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": 1110,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0007L03U06",
+    "set": {
+     "target_text": "eu quero tentar com toda a força que puder hoje",
+     "word_count": 47,
+     "target1_audio_id": "15039dfd-d68e-4a9b-878d-764d79ea71f4",
+     "target2_audio_id": "0e4c6347-21d4-4606-948f-789f2e354e18",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "869b8494-2b02-4300-a131-91c2403242d0",
+    "set": {
+     "known_text": "saturday"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_br_for_eng:S0112L02C01"
+   },
+   {
+    "op": "lego.update",
+    "id": "997829ce-ea76-4188-b9a8-18c1036735d4",
+    "set": {
+     "components": [
+      {
+       "known": "expecting",
+       "target": "à espera"
+      }
+     ]
+    }
+   },
+   {
+    "op": "lego.update",
+    "id": "973bde45-5196-440d-8c2a-bbb860dc2ad4",
+    "set": {
+     "known_text": "it was why",
+     "known_audio_id": "718cbde6-ccc5-4df6-87ba-351bd9b88b01",
+     "presentation_audio_id": "d8505ef1-7227-4651-962f-04606f4a1ef1"
+    }
+   }
+  ],
+  "ops": 27
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "event_id": "62055b2b-43b3-401c-9235-8c04654b772b",
+  "undo_file": "2026-11-23T22-15-31-730Z-62055b2b-43b3-401c-9235-8c04654b772b.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B05",
+    "set": {
+     "known_text": "it's useful when you notice",
+     "target_text": "é útil quando você nota",
+     "known_audio_id": "4d4238c4-2976-4167-ace2-203df685e735",
+     "target1_audio_id": "3758df46-219d-4b90-bcba-325254799c0f",
+     "target2_audio_id": "2f115b2e-dad6-40f0-88d8-e3cbc2fd9ecd",
+     "decomposition": [
+      {
+       "known": "it's useful to",
+       "legoId": "S0028L01",
+       "target": "é útil",
+       "isGhost": false
+      },
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": " quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B08",
+    "set": {
+     "known_text": "it's not interesting when you notice",
+     "target_text": "não é interessante quando você nota",
+     "known_audio_id": "c9d08649-6d2d-4fc8-8f9e-81d77cfd6575",
+     "target1_audio_id": "f4e11a1f-a114-47e1-a016-ae9ea4fce2e7",
+     "target2_audio_id": "ff4a27c3-a84d-4c58-9798-4221acc6512a",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "it's interesting",
+       "legoId": "S0058L01",
+       "target": " é interessante",
+       "isGhost": false
+      },
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": " quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B02",
+    "set": {
+     "known_text": "it's interesting when you notice",
+     "target_text": "é interessante quando você nota",
+     "known_audio_id": "2fb1b1ce-81d9-4f93-bf86-e9289d75505a",
+     "target1_audio_id": "536d9618-ddc0-4433-b4c5-52918c2f4c85",
+     "target2_audio_id": "7d75b579-f4d3-40b8-aa07-323382907d94",
+     "decomposition": [
+      {
+       "known": "it's interesting",
+       "legoId": "S0058L01",
+       "target": "é interessante",
+       "isGhost": false
+      },
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": " quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B01",
+    "set": {
+     "known_text": "when you notice",
+     "target_text": "quando você nota",
+     "known_audio_id": "c3349289-95c8-4eee-aec8-240718691e3c",
+     "target1_audio_id": "69c9a90d-90ae-44f6-98c3-9233d1081c9e",
+     "target2_audio_id": "45f19117-501a-4116-8ced-9f5ac1363229",
+     "decomposition": [
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": "quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B07",
+    "set": {
+     "known_text": "when you notice what I mean",
+     "target_text": "quando você nota o que quero dizer",
+     "known_audio_id": "bd570d08-b5f2-402e-9d16-419074320e39",
+     "target1_audio_id": "0f50cefd-ab10-423c-93fa-cb508e27ec82",
+     "target2_audio_id": "82cbaa98-8978-41f2-a9db-dbe1b4cd5df0",
+     "decomposition": [
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": "quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "what I mean",
+       "legoId": "S0008L02",
+       "target": " o que quero dizer",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B06",
+    "set": {
+     "known_text": "it's interesting when you notice something",
+     "target_text": "é interessante quando você nota algo",
+     "known_audio_id": "c66d6101-ed07-493c-8c56-c2982f76ec1e",
+     "target1_audio_id": "b2468c99-85f5-4d23-827f-d6930ee57866",
+     "target2_audio_id": "e996c5e3-4eb5-4ce4-ba01-c8e400428006",
+     "decomposition": [
+      {
+       "known": "it's interesting",
+       "legoId": "S0058L01",
+       "target": "é interessante",
+       "isGhost": false
+      },
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": " quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L02",
+       "target": " algo",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_br_for_eng:S0058L02B09",
+    "set": {
+     "known_text": "when you notice what I wanted to say",
+     "target_text": "quando você nota o que queria dizer",
+     "known_audio_id": "48283dee-1210-4b87-bd0b-74ecf9af13b9",
+     "target1_audio_id": "6ad639e7-00d2-42cc-b982-01e2162eb538",
+     "target2_audio_id": "0c6930c1-3160-4566-8b5f-3e5be1c866dc",
+     "decomposition": [
+      {
+       "known": "when you notice",
+       "legoId": "S0058L02",
+       "target": "quando você nota",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "what I wanted to say",
+       "legoId": "S0057L02",
+       "target": " o que queria dizer",
+       "isGhost": false
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 28
+ }
+]

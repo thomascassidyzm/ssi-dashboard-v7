@@ -1,0 +1,634 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p14-s204-213.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:32.669Z",
+ "seeds": {
+  "204": {
+   "before": [
+    "L1: USE: need 5+, got 4",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\", \"I wanted her to tell me what was going to happen\""
+   ],
+   "after": [
+    "L1: USE: need 5+, got 3",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\""
+   ],
+   "newFailures": [
+    "L1: USE: need 5+, got 3",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\""
+   ]
+  },
+  "205": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I was trying to say\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I've forgotten\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I was trying to say\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I've forgotten\""
+   ],
+   "newFailures": []
+  },
+  "206": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I enjoy the chance to\", \"I enjoy the chance to practise speaking with you\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I enjoy the chance to\", \"I enjoy the chance to practise speaking with you\""
+   ],
+   "newFailures": []
+  },
+  "207": {
+   "before": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"you've done\", \"you've done what you needed to do\""
+   ],
+   "after": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"you've done\", \"you've done what you needed to do\""
+   ],
+   "newFailures": []
+  },
+  "208": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"how to say it\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I didn't want to ask you\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"how to say it\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I didn't want to ask you\""
+   ],
+   "newFailures": []
+  },
+  "209": {
+   "before": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "210": {
+   "before": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"discuss\", \"they think that we need to discuss the problem\"",
+    "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L3: 2 duplicate phrase(s) within this LEGO: \"discuss\", \"they think that we need to discuss the problem\"",
+    "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "211": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"they told us that\", \"they told us that they didn't want to explain\", \"they told us that it was a good idea\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"they told us that\", \"they told us that they didn't want to explain\", \"they told us that it was a good idea\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "213": {
+   "before": [
+    "L2: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: BUILD: need 3+, got 0 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0204L01B03",
+   "seed": 204,
+   "role": "build",
+   "target": "to deal with the arrangements for us",
+   "old": "準備を手伝ってほしい",
+   "new": "私たちのために準備を手伝う",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L01B06",
+   "seed": 204,
+   "role": "build",
+   "target": "asked her to deal with the arrangements",
+   "old": "準備を手伝うのを頼んだ",
+   "new": "準備を手伝うように彼女に頼みました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L01U03",
+   "seed": 204,
+   "role": "use",
+   "target": "can you help to deal with the arrangements for us?",
+   "old": "その準備を手伝ってくれますか？",
+   "new": "私たちのために準備を手伝ってくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L01U08",
+   "seed": 204,
+   "role": "use",
+   "target": "I'd like you to deal with the arrangements for me",
+   "old": "準備はあなたに任せたい",
+   "new": "私のために準備を手伝ってほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L01U13",
+   "seed": 204,
+   "role": "use",
+   "target": "it was hard to deal with the arrangements but everything is okay",
+   "old": "その準備は大変でしたが、終わりました",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 3",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\""
+   ]
+  },
+  {
+   "id": "S0204L02B07",
+   "seed": 204,
+   "role": "build",
+   "target": "I wanted her to come and help",
+   "old": "彼女に一緒に来てほしかったです",
+   "new": "彼女に来て手伝ってほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L02U01",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to come and help",
+   "old": "彼女に一緒に来てほしかったです",
+   "new": "彼女に来て手伝ってほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L02U03",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to tell me what was going to happen",
+   "old": "何が起こるのか、彼女に教えてほしかったです",
+   "new": "彼女に何が起きるか教えてほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L02U04",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to help me but she was busy today",
+   "old": "彼女に手伝ってほしかったですが、忙しそうでした",
+   "new": "彼女に手伝ってほしかったですが、今日は忙しかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L02U06",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to wait here for a while",
+   "old": "彼女にここで私を待ってほしかったです",
+   "new": "彼女にしばらくここで待ってほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L02U07",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to tell me what was going to happen",
+   "old": "彼女に何が起きたか教えてほしかったです",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L1: USE: need 5+, got 3",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I wanted her to\", \"I wanted her to come and help\""
+   ]
+  },
+  {
+   "id": "S0204L02U09",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to come a little earlier this morning",
+   "old": "彼女に早めに来てほしかったです",
+   "new": "彼女に今朝もう少し早く来てほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0204L02U13",
+   "seed": 204,
+   "role": "use",
+   "target": "I wanted her to deal with the arrangements for us",
+   "old": "彼女に準備を全部やってほしかったです",
+   "new": "彼女に私たちのために準備を手伝ってほしかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L01B04",
+   "seed": 205,
+   "role": "build",
+   "target": "I was trying to say something",
+   "old": "何を言おうとしていた",
+   "new": "何か言おうとしていた",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L01B05",
+   "seed": 205,
+   "role": "build",
+   "target": "I was trying to say what I mean",
+   "old": "ちゃんと言おうとしていた",
+   "new": "言いたいことを言おうとしていた",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L01U05",
+   "seed": 205,
+   "role": "use",
+   "target": "I was trying to say it well but it's not working",
+   "old": "うまく言おうとしていたのですが、うまくいきませんでした",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L01U08",
+   "seed": 205,
+   "role": "use",
+   "target": "I was trying to say what I mean but it wasn't easy",
+   "old": "言おうとしていましたが、うまく表現できませんでした",
+   "new": "言いたいことを言おうとしていましたが、簡単ではありませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L01U12",
+   "seed": 205,
+   "role": "use",
+   "target": "I've forgotten what I was trying to say to you",
+   "old": "言おうとしていたのを忘れてしまいました",
+   "new": "あなたに言おうとしていたことを忘れました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L02U08",
+   "seed": 205,
+   "role": "use",
+   "target": "I've forgotten what you said to me earlier",
+   "old": "あなたが言ったことを忘れてしまいました",
+   "new": "さっきあなたが私に言ったことを忘れました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0205L02U10",
+   "seed": 205,
+   "role": "use",
+   "target": "I've forgotten how to say what I mean in English",
+   "old": "言い方が分からなくなってしまいました",
+   "new": "言いたいことを英語でどう言うか忘れました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0206L01U09",
+   "seed": 206,
+   "role": "use",
+   "target": "I enjoy the chance to speak English with someone new",
+   "old": "誰かと英語で話す機会があると嬉しいです",
+   "new": "新しい人と英語で話す機会を楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0206L01U11",
+   "seed": 206,
+   "role": "use",
+   "target": "I enjoy the chance to speak English with you as often as possible",
+   "old": "英語を話す機会があるたびに楽しんでいます",
+   "new": "できるだけ何度も、あなたと英語を話す機会を楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0206L01U14",
+   "seed": 206,
+   "role": "use",
+   "target": "I enjoy the chance to use English as often as possible",
+   "old": "何でもいいので英語を使う機会が好きです",
+   "new": "できるだけ何度も英語を使う機会を楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U01",
+   "seed": 207,
+   "role": "use",
+   "target": "have you done what you needed to do for today?",
+   "old": "やる必要があったことは全部終わりましたか？",
+   "new": "今日のためにやる必要があったことをやりましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U02",
+   "seed": 207,
+   "role": "use",
+   "target": "did you know what you needed to do next?",
+   "old": "やる必要があったことが分かっていましたか？",
+   "new": "次にやる必要があったことがわかっていましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U03",
+   "seed": 207,
+   "role": "use",
+   "target": "was it difficult to do what you needed to do in time?",
+   "old": "やる必要があったことが大変でしたか？",
+   "new": "間に合うように、やる必要があったことをするのは難しかったですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U04",
+   "seed": 207,
+   "role": "use",
+   "target": "did you remember what you needed to do this morning?",
+   "old": "やる必要があったことを全部覚えていましたか？",
+   "new": "今朝やる必要があったことを覚えていましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U06",
+   "seed": 207,
+   "role": "use",
+   "target": "did you do what you needed to do before you leave?",
+   "old": "やる必要があったことをやり終えましたか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U09",
+   "seed": 207,
+   "role": "use",
+   "target": "it was hard to do what you needed to do in time",
+   "old": "やる必要があったことをするのに時間がかかりました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U10",
+   "seed": 207,
+   "role": "use",
+   "target": "were you able to do what you needed to do in time?",
+   "old": "やる必要があったことを一人でできましたか？",
+   "new": "間に合うように、やる必要があったことができましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U11",
+   "seed": 207,
+   "role": "use",
+   "target": "I'm happy you know what you needed to do next",
+   "old": "やる必要があったことが分かってよかったです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U13",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done what you needed to do this week",
+   "old": "あなたはやる必要があったことを全部やりましたね",
+   "new": "今週、やる必要があったことをやりましたね",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L01U14",
+   "seed": 207,
+   "role": "use",
+   "target": "was it hard to do what you needed to do this morning?",
+   "old": "一人でやる必要があったことが大変でしたか？",
+   "new": "今朝やる必要があったことをするのは難しかったですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L02U01",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done everything you needed to do today",
+   "old": "必要なことを全部やりましたね",
+   "new": "今日、やる必要があったことを全部やりましたね",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L02U03",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done very well this week, I'm happy for you",
+   "old": "とてもよくやりましたね",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L02U05",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done what you needed to do before you left",
+   "old": "今日やる必要があったことを全部やりましたね",
+   "new": "あなたが出る前に、やる必要があったことをやりましたね",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L02U06",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done very well today, I'm happy for you",
+   "old": "一人でよくやりましたね",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L02U09",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done your work for this week, well done",
+   "old": "今週の仕事はもう終わりましたね。よくできました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0207L02U14",
+   "seed": 207,
+   "role": "use",
+   "target": "you've done it so quickly, I'm surprised",
+   "old": "そんなに早くやり遂げましたね",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0208L02B03",
+   "seed": 208,
+   "role": "build",
+   "target": "I didn't want to ask you that",
+   "old": "あなたに聞きたくありませんでした",
+   "new": "あなたにそれを聞きたくありませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0209L01U02",
+   "seed": 209,
+   "role": "use",
+   "target": "Do they speak English all day?",
+   "old": "彼らは毎日英語を話しますか？",
+   "new": "彼らは一日中英語を話しますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0209L01U08",
+   "seed": 209,
+   "role": "use",
+   "target": "they are waiting for you so you should go soon",
+   "old": "彼らはあなたを待っているので、急いだほうがいいです",
+   "new": "彼らはあなたを待っているので、もうすぐ行った方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0209L01U10",
+   "seed": 209,
+   "role": "use",
+   "target": "Are they all going to come back later on with everyone else?",
+   "old": "彼らは全員後で戻ってくる予定ですか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0209L01U14",
+   "seed": 209,
+   "role": "use",
+   "target": "Are they going to come with us?",
+   "old": "彼らは私たちと一緒に来ることができますか？",
+   "new": "彼らは私たちと一緒に来るつもりですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0209L01U15",
+   "seed": 209,
+   "role": "use",
+   "target": "Do they like to speak English with you?",
+   "old": "彼らは英語で話すことが好きですか？",
+   "new": "彼らはあなたと英語で話すのが好きですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0210L03U05",
+   "seed": 210,
+   "role": "use",
+   "target": "before we discuss the problem, let's hear what you think",
+   "old": "問題を話し合う前に、まず全員の意見を聞いてみましょう",
+   "new": "問題を話し合う前に、あなたがどう思うか聞きましょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0210L03U13",
+   "seed": 210,
+   "role": "use",
+   "target": "Do you know how to discuss the problem in a way that works?",
+   "old": "その問題をどのように話し合えばいいか、わかりますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0210L03U15",
+   "seed": 210,
+   "role": "use",
+   "target": "I think it's a good thing that we can discuss that together",
+   "old": "私はそのことをあなたと話し合えて良かったと思います",
+   "new": "一緒にそれを話し合えるのはいいことだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0211L01U06",
+   "seed": 211,
+   "role": "use",
+   "target": "they told us that we needed to come early",
+   "old": "彼らは私たちに早く来るように言いました",
+   "new": "彼らは、私たちが早く来る必要があると言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0211L02B02",
+   "seed": 211,
+   "role": "build",
+   "target": "I didn't want to explain",
+   "old": "私は説明したくない",
+   "new": "私は説明したくありませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0211L02B03",
+   "seed": 211,
+   "role": "build",
+   "target": "they didn't want to explain",
+   "old": "彼らは説明したくない",
+   "new": "彼らは説明したくありませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0213L01U10",
+   "seed": 213,
+   "role": "use",
+   "target": "I started to think about what I want to achieve",
+   "old": "何を達成したいのかを考えました",
+   "new": "何を達成したいか考え始めました",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}

@@ -1,0 +1,526 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p07-s134-143.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:32:59.299Z",
+ "seeds": {
+  "136": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"of course\", \"of course you can ask her because she's my friend\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"of course\", \"of course you can ask her because she's my friend\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "137": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"more important\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"be perfect\", \"It's more important to talk often than to be perfect\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"more important\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"be perfect\", \"It's more important to talk often than to be perfect\""
+   ],
+   "newFailures": []
+  },
+  "138": {
+   "before": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this was where\", \"this was where my friend wanted to meet us\", \"this was where I wanted to meet you\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"meet us\", \"Do you want to meet us?\""
+   ],
+   "after": [
+    "L1: 1 phrase(s) fail containment",
+    "L1: 3 duplicate phrase(s) within this LEGO: \"this was where\", \"this was where my friend wanted to meet us\", \"this was where I wanted to meet you\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"meet us\", \"Do you want to meet us?\""
+   ],
+   "newFailures": []
+  },
+  "139": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I'm sorry that\", \"I'm sorry that I need to leave so early\", \"I'm sorry that I need to leave so early\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"need to leave\", \"I'm sorry that I need to leave so early\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm sorry that I need to leave so early\"",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"I'm sorry that\", \"I'm sorry that I need to leave so early\", \"I'm sorry that I need to leave so early\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"need to leave\", \"I'm sorry that I need to leave so early\"",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm sorry that I need to leave so early\"",
+    "L3: vocab violations in 1 phrase(s)"
+   ],
+   "newFailures": []
+  },
+  "140": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"can't see\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"you're trying to show me\", \"I can't see what you're trying to show me\", \"what is it you're trying to show me?\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"can't see\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"you're trying to show me\", \"I can't see what you're trying to show me\", \"what is it you're trying to show me?\""
+   ],
+   "newFailures": []
+  },
+  "141": {
+   "before": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"okay\", \"is that okay?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"no problem\", \"that is no problem\""
+   ],
+   "after": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"okay\", \"is that okay?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"no problem\", \"that is no problem\""
+   ],
+   "newFailures": []
+  },
+  "142": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"very kind\", \"you are very kind to help me\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"very grateful\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"very kind\", \"you are very kind to help me\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"very grateful\""
+   ],
+   "newFailures": []
+  },
+  "143": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"were talking\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"earlier\", \"earlier\", \"It's the same thing as we were talking about earlier\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"were talking\"",
+    "L3: 3 duplicate phrase(s) within this LEGO: \"earlier\", \"earlier\", \"It's the same thing as we were talking about earlier\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0136L01U06",
+   "seed": 136,
+   "role": "use",
+   "target": "of course I want to go with them it's not a problem",
+   "old": "もちろん私は彼らと一緒に行きます。問題ありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0136L01U10",
+   "seed": 136,
+   "role": "use",
+   "target": "of course you can ask her she wants to find out what the answer is",
+   "old": "もちろん彼女に聞いてください。彼女は答えを知っています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0136L01U13",
+   "seed": 136,
+   "role": "use",
+   "target": "of course you can get to practise speaking English with someone you know",
+   "old": "もちろんあなたは誰かと英語を練習するようになれます。友達に頼んでみてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L01U06",
+   "seed": 137,
+   "role": "use",
+   "target": "I think it is more important to practise",
+   "old": "毎日練習する方がより大切だと思います",
+   "new": "練習する方がより大切だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L01U13",
+   "seed": 137,
+   "role": "use",
+   "target": "talking often is more important than to be perfect, I'd like to keep on doing this",
+   "old": "頻繁に話すことの方が完璧であることよりより大切だということを覚えてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L01U15",
+   "seed": 137,
+   "role": "use",
+   "target": "talking often is the more important thing",
+   "old": "頻繁に話す方が、一番大切なことです",
+   "new": "頻繁に話すことの方が、より大切なことです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L02U03",
+   "seed": 137,
+   "role": "use",
+   "target": "I think talking often is the way to remember English",
+   "old": "頻繁に話すことが英語を覚える一番の方法だと思います",
+   "new": "頻繁に話すことが英語を覚える方法だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L02U07",
+   "seed": 137,
+   "role": "use",
+   "target": "I'm going to use English as often as possible",
+   "old": "できるだけ頻繁に英語を使うようにしています",
+   "new": "できるだけ頻繁に英語を使うつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L03U06",
+   "seed": 137,
+   "role": "use",
+   "target": "I don't think you need to be perfect to do well",
+   "old": "完璧であることが最も大切だとは思いません",
+   "new": "うまくやるために完璧である必要はないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L03U08",
+   "seed": 137,
+   "role": "use",
+   "target": "talking often is more important than to be perfect, I know that",
+   "old": "頻繁に話す方が、完璧であるよりずっとより大切です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0137L03U14",
+   "seed": 137,
+   "role": "use",
+   "target": "You don't need to be perfect, so speak English",
+   "old": "完璧でなくていいので、英語で話してみてください",
+   "new": "完璧でなくていいので、英語を話してください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L01U03",
+   "seed": 138,
+   "role": "use",
+   "target": "I think this was where you wanted to show me something",
+   "old": "あなたが私に何かを見せたかった場所はここです",
+   "new": "ここはあなたが私に何かを見せたかった場所だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L01U04",
+   "seed": 138,
+   "role": "use",
+   "target": "this was where I used to explain what I mean",
+   "old": "ここは私が自分の考えを説明しようとした場所です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L01U06",
+   "seed": 138,
+   "role": "use",
+   "target": "This was where I was doing better than I was last time we talked to each other",
+   "old": "ここは私が以前よりうまく話せた場所です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L01U10",
+   "seed": 138,
+   "role": "use",
+   "target": "I think this was where he used to be all afternoon",
+   "old": "ここは彼が午後を過ごした場所ではないかと思います",
+   "new": "ここは彼が午後ずっといた場所だと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L01U14",
+   "seed": 138,
+   "role": "use",
+   "target": "I think this was where you used to speak English",
+   "old": "あなたが英語で話そうとしていた場所はここです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L02U10",
+   "seed": 138,
+   "role": "use",
+   "target": "I'm so happy that you wanted to meet us",
+   "old": "私たちに会いに来てくれたことを嬉しく思います",
+   "new": "あなたが私たちに会いたかったのがとても嬉しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0138L02U14",
+   "seed": 138,
+   "role": "use",
+   "target": "He was so happy to meet us",
+   "old": "彼は私たちに会うことができてとても嬉しかったです",
+   "new": "彼は私たちに会えてとても嬉しかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L01B06",
+   "seed": 139,
+   "role": "build",
+   "target": "I'm sorry that I didn't tell you",
+   "old": "すみません、伝えられなかった",
+   "new": "すみません、あなたに言いませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L01U02",
+   "seed": 139,
+   "role": "use",
+   "target": "I'm sorry that I didn't get to see you",
+   "old": "昨夜あなたを見られなかったことをすみません",
+   "new": "あなたに会えなかったことをすみません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L02U05",
+   "seed": 139,
+   "role": "use",
+   "target": "I need to leave for a while",
+   "old": "もう少ししたら出る必要があります",
+   "new": "しばらく出る必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L02U11",
+   "seed": 139,
+   "role": "use",
+   "target": "I don't know why she would need to leave so early",
+   "old": "彼女はなぜそんなに早く出る必要があったのですか？",
+   "new": "彼女がなぜそんなに早く出る必要があるのかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L03U03",
+   "seed": 139,
+   "role": "use",
+   "target": "I wanted to come early today",
+   "old": "もっと早く来ればよかったです",
+   "new": "今日早く来たかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L03U07",
+   "seed": 139,
+   "role": "use",
+   "target": "I don't know why she had to leave so early",
+   "old": "彼女はなぜこんなに早く出なければならなかったのですか？",
+   "new": "彼女がなぜそんなに早く出なければならなかったのかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0139L03U14",
+   "seed": 139,
+   "role": "use",
+   "target": "I need to leave early because of the bus",
+   "old": "私は早く出る必要があります、バスがあります",
+   "new": "バスがあるので、早く出る必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0140L02U11",
+   "seed": 140,
+   "role": "use",
+   "target": "did you want to show her the same thing you're trying to show me?",
+   "old": "あなたが私に見せようとしていることと同じものを彼女に見せましたか？",
+   "new": "あなたが私に見せようとしているものと同じものを彼女に見せたかったですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L02U07",
+   "seed": 141,
+   "role": "use",
+   "target": "I feel okay about this but I need more time to be ready",
+   "old": "これについて大丈夫に感じますが、もっと時間が必要です",
+   "new": "これについて大丈夫に感じますが、準備ができるのにもっと時間が必要です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L02U12",
+   "seed": 141,
+   "role": "use",
+   "target": "you are doing okay with this language",
+   "old": "この言語でとてもよくできています",
+   "new": "この言語で大丈夫にできています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L02U13",
+   "seed": 141,
+   "role": "use",
+   "target": "I feel okay and I want to speak more",
+   "old": "もっと話したいですが、大丈夫に感じます",
+   "new": "大丈夫に感じますし、もっと話したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L03U08",
+   "seed": 141,
+   "role": "use",
+   "target": "slowly is no problem for me",
+   "old": "ゆっくり話すことは私には問題ありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L03U13",
+   "seed": 141,
+   "role": "use",
+   "target": "no problem, we do this together often",
+   "old": "私たちはよく一緒にこれをしています",
+   "new": "問題ありません、私たちはよく一緒にこれをしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L03U14",
+   "seed": 141,
+   "role": "use",
+   "target": "that is no problem because we need so little time",
+   "old": "問題ありません、時間がほとんど要りません",
+   "new": "問題ありません、時間がほとんど要りませんから",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0141L03U15",
+   "seed": 141,
+   "role": "use",
+   "target": "no problem, you are ready to do this",
+   "old": "問題ありません、あなたは準備ができています",
+   "new": "問題ありません、あなたはこれをする準備ができています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0142L01U07",
+   "seed": 142,
+   "role": "use",
+   "target": "you are kind to give me more time",
+   "old": "もう少し時間をくれてありがとう、とても親切です",
+   "new": "もう少し時間をくれて、あなたは親切です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0142L01U10",
+   "seed": 142,
+   "role": "use",
+   "target": "that is very kind of all of you",
+   "old": "あなた全員にとても感謝します",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0142L01U13",
+   "seed": 142,
+   "role": "use",
+   "target": "you are kind to do this with us today",
+   "old": "これを一緒にやってくれてとても親切です",
+   "new": "今日私たちとこれをしてくれて、あなたは親切です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0143L02U07",
+   "seed": 143,
+   "role": "use",
+   "target": "we were talking about this the same way",
+   "old": "私たちは同じように話していた",
+   "new": "私たちは同じようにこれについて話していました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0143L03U03",
+   "seed": 143,
+   "role": "use",
+   "target": "I'm more ready now than I was earlier",
+   "old": "今よりも前に準備ができていました",
+   "new": "前より今の方が準備ができています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0143L03U07",
+   "seed": 143,
+   "role": "use",
+   "target": "we were talking about the same earlier",
+   "old": "私たちは前に同じように話していた",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0143L03U08",
+   "seed": 143,
+   "role": "use",
+   "target": "we were talking and doing the same earlier",
+   "old": "前に話していたことについて同じです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0143L03U12",
+   "seed": 143,
+   "role": "use",
+   "target": "we all feel the same way, just earlier",
+   "old": "私たち全員が前と同じように今感じます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0143L03U15",
+   "seed": 143,
+   "role": "use",
+   "target": "I need to talk about what you said earlier",
+   "old": "前に話していたことを覚えています",
+   "new": "あなたが前に言ったことについて話す必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}
