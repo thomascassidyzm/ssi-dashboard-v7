@@ -51,3 +51,10 @@ Asked by Kai's assistant after cold-verify #867·AK. Item 12's runner applied wi
 | spa_for_zho | 12 | 264 | 264 | 0 | 0 | 0 | 111 | 153 | 0 | 0 |
 | spa_mx_for_eng | 12 | 408 | 408 | 0 | 0 | 0 | 408 | 0 | 0 | 3 |
 Nothing was repaired. The 9 silent slots and the 2 stale seed-sentence rows are the candidates for a fix, on Kai's word.
+
+## Fix run, 24 Nov (Kai, 23 Nov 18:06Z: fold these into the 24 Nov run): `fix-plan.json`
+Each item: a live pre-check of the row, its LEGO and its seed (Popty script-view); any mismatch is held. Load gate green or amber. Render dry run first.
+- eng_for_hin ×6, target1: the female seat's stored gender expansion turns third-person "his/he/him" into "her/she". That is not about the speaker, so it is the kind of pair #941·H removed. The route would speak that wrong form again, so: dry-run the render; if it echoes the female form, `gender.delete` that pair through the edit door (dry run, then apply), render again, and link fill-only.
+- fra_for_eng ×2, target1 "Je suis désolé…": SETTLED (Kai's assistant, 23 Nov, under the speaker-gender rule; precedents #435·AI, #984·AI): the female seat keeps the existing "désolée" clips (e361b089…, 7f214ae5…, which carry their clip_spoken_text verdict). After the live pre-check, link them through edit-batch `audio.link` with `allow_text_mismatch: true` (the #984 shape). 0 chars.
+- eng_for_ben ×1, target2: render "how to say something in English" (no "?"), library first, then link.
+- eng_for_pan S0108L03U06 and spa_mx_for_eng S0377L03U10: `phrase.update` to the current seed text (expect = copy text), then link the seed's clips through the render route (library first, so 0 chars).
