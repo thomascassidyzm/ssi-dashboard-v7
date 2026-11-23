@@ -31,6 +31,7 @@ import importlib.util as _ilu
 _sp = _ilu.spec_from_file_location('dangling_scan', HERE / 'dangling-scan.py')
 DANGLE = _ilu.module_from_spec(_sp); _sp.loader.exec_module(DANGLE)
 DOOR_PAR = 4
+DANGLE_AUTODROP = False
 
 
 def http(method, url, body=None, ctype='application/json', timeout=900):
@@ -250,7 +251,9 @@ def main():
         # A BUILD row that stops where Welsh needs more ('bydden, achos maen nhw angen') is broken, not a
         # fragment (Kai's Watson, 23 Nov). Drop it while 3 BUILD rows remain; otherwise leave it for the
         # post-pass (dangling-scan.py), so this never stalls the build. Never top up from USE (canon P18).
-        for i, st_ in sets.items():
+        # OFF until the detector is calibrated (Kai's Watson, 23 Nov 21:3xZ: open-frame chunks like
+        # 'mae fy ffrindiau isio' may be legitimate). Turn on only for the class shown to be truly broken.
+        for i, st_ in (sets.items() if DANGLE_AUTODROP else []):
             if not st_.get('ok'):
                 continue
             keep = [p for p in st_.get('build', []) if not DANGLE.dangles(p['target'], p['known'])]
