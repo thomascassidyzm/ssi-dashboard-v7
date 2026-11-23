@@ -23,6 +23,7 @@
 //   UK night (22:00-07:00) closes.
 // usage: node night-audio.cjs <course> [...]   log: <course>/changesets/audio-374.jsonl (resumable)
 const fs = require('fs');
+const { landed } = require('./landed.cjs');
 const path = require('path');
 const os = require('os');
 const { execFileSync } = require('child_process');
@@ -50,10 +51,10 @@ const allRecs = () => allCourses().flatMap((c) => readLog(logOf(c)));
 
 function slotsFor(file) {
   const { ops } = cs.read(file);
-  const ledger = loadLedger(`${file}.applied.jsonl`);
+  const ledger = landed(`${file}.applied.jsonl`);   // applied, already, or insert-already-exists (see landed.cjs)
   const slots = [];
   ops.forEach((o, i) => {
-    if (ledger.get(i) !== 'applied') return;
+    if (!ledger.has(i)) return;
     const sides = [];
     if (o.op === 'phrase.insert' || o.op === 'lego.insert') sides.push(['known', o.row.known_text], ['target1', o.row.target_text], ['target2', o.row.target_text]);
     else if (['phrase.update', 'lego.update', 'seed.update'].includes(o.op)) {

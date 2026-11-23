@@ -18,6 +18,7 @@
 const fs = require('fs');
 const cs = require('../../../services/shared/changeset.cjs');
 const { loadLedger } = require('../../../tools/changeset/apply-changeset.cjs');
+const { landed } = require('./landed.cjs');
 const [mode, file] = process.argv.slice(2);
 const { header, ops } = cs.read(file);
 const course = header.course;
@@ -64,8 +65,8 @@ async function precheck() {
 }
 
 async function readback() {
-  const done = loadLedger(ledgerFile);
-  const applied = ops.map((o, i) => [o, i]).filter(([, i]) => done.get(i) === 'applied');
+  const done = landed(ledgerFile);   // applied, already, or insert-already-exists (see landed.cjs)
+  const applied = ops.map((o, i) => [o, i]).filter(([, i]) => done.has(i));
   const L = await live(applied.map(([o]) => seedOf(o)));
   const phr = new Map(), leg = new Map();
   for (const s of L.values()) for (const l of s.legos || []) { leg.set(l.lego_id, l); for (const p of l.phrases || []) phr.set(p.id, p); }
