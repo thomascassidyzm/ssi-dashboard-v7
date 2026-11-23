@@ -20,8 +20,8 @@ Text only. Nothing written to Popty, no audio. **No native speaker has read any 
 ## Where everything came from
 
 - **Welsh source:** cym_nv2_for_eng S1001-S1030. Its Welsh matches HC 1-30 word for word. It was read live through Popty on 23 Nov. Its older seeds 1-316 supplied the LEGOs and phrases it relies on.
-- **Korean seeds:** branch cs/780 @9a68ac155. #780 was still running when I took it. For seeds 1-30 it is identical to cs/764 (none of #780's 7 fixes touch 1-30). I did not change any seed Korean.
-- **Reuse:** ‘reuse’ means the source row has both Welsh voices linked. It is not a check that the clip still plays.
+- **Korean seeds:** the proofread version (step 3, #780·AK) on cs/764 @bd80cd4c5. None of its 38 rewritten prompts fall in seeds 1-30, so the Korean here is unchanged from the step-2 text. I did not change any seed Korean.
+- **Reuse:** ♻ means the source row has both Welsh voices linked. The source has Welsh clips for all its LEGOs, so every LEGO that keeps its source split reuses one. The 🆕 LEGOs are splits the source never had, so no clip exists for them. Seed 13 is weave-dropped in the source and has only one of its two Welsh voices, so it counts as new. Nothing here checks that a linked clip still plays.
 
 ## Gaps (honest)
 

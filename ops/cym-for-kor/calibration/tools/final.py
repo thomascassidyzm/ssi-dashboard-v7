@@ -42,7 +42,7 @@ for n in range(1,31):
       rows.append(dict(base,kind='phrase_dropped',welsh=w,korean=None,same_or_changed='swapped_out',reason=why,reuse='n/a'))
   else:
     rows.append(dict(base,kind='phrase_note',welsh=None,korean=None,same_or_changed='not built',reason=f'phrases not built in this slice; {surv.get(n,0)} source phrases pass the auto vocabulary check at this seed',reuse='unknown'))
-json.dump(dict(about=dict(course='cym_for_kor',slice='HC seeds 1-30, text only',korean_from='origin/cs/780-cym-for-kor-step-3-proofread-kor @9a68ac155 (seeds 1-30 identical to cs/764; #780 still running)',source='cym_nv2_for_eng S1001-S1030 (Welsh identical to HC 1-30) + its older seeds 1-316 for LEGOs it relies on; read 23 Nov via GET :3470/api/production/cym_nv2_for_eng/seeds?status=all',reuse_note='reuse = an audio id present on the source row (t1+t2); not a clip-alive check'),rows=rows),open('seeds-1-30.json','w'),ensure_ascii=False,indent=1)
+json.dump(dict(about=dict(course='cym_for_kor',slice='HC seeds 1-30, text only',korean_from='origin/cs/764-cym-for-kor-step-1-korean-seeds- @bd80cd4c5 (step 3 proofread landed; none of its 38 rewrites touch seeds 1-30)',source='cym_nv2_for_eng S1001-S1030 (Welsh identical to HC 1-30) + its older seeds 1-316 for LEGOs it relies on; read 23 Nov via GET :3470/api/production/cym_nv2_for_eng/seeds?status=all',reuse_note='reuse = an audio id present on the source row (t1+t2); not a clip-alive check'),rows=rows),open('seeds-1-30.json','w'),ensure_ascii=False,indent=1)
 import collections
 c=collections.Counter((r['kind'],r['same_or_changed']) for r in rows); print(c)
 rc=collections.Counter((r['kind'],r['reuse'].split('(')[0].strip()) for r in rows); print(rc)
