@@ -1,0 +1,194 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "2e7456b5-5c01-4bf8-be9d-70dc33395c0d",
+  "actor": "kai-777",
+  "created_at": "2026-11-23T10:51:40.484Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-51-40-484Z-2e7456b5-5c01-4bf8-be9d-70dc33395c0d.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0405L02B01",
+      "set": {
+        "target_text": "eb mir buche misse fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0397L01U03",
+      "set": {
+        "target_text": "was brauche mir fer Vacation kaafe?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02U05",
+      "set": {
+        "target_text": "ich bin sicher, sie braucht Geld fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02U04",
+      "set": {
+        "target_text": "sie wolle meh Zeit fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02U03",
+      "set": {
+        "target_text": "dei Freind hot gsaat, er braucht Geld fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02U02",
+      "set": {
+        "target_text": "kenner hot Geld fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02U01",
+      "set": {
+        "target_text": "brauchscht du Geld fer Vacation, eb du gehscht?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02B03",
+      "set": {
+        "target_text": "sie braucht Geld fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02B02",
+      "set": {
+        "target_text": "meh Zeit fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02B01",
+      "set": {
+        "target_text": "fer Vacation des Yaahr"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0378L02C02",
+      "set": {
+        "target_text": "Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0326L02U05",
+      "set": {
+        "target_text": "ich will's verkaafe, eb du gehscht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02U06",
+      "set": {
+        "target_text": "ich will's net saage"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02U05",
+      "set": {
+        "target_text": "ich will's dir gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02U04",
+      "set": {
+        "target_text": "ich will's net sehne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02U03",
+      "set": {
+        "target_text": "ich will's heit gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02U02",
+      "set": {
+        "target_text": "ich will's ihm net gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02U01",
+      "set": {
+        "target_text": "ich will's net gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02B03",
+      "set": {
+        "target_text": "ich will's saage"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02B02",
+      "set": {
+        "target_text": "ich will's sehne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0241L02B01",
+      "set": {
+        "target_text": "ich will's gewwe"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 378,
+      "set": {
+        "target_text": "Nee, ich hab net genunk Geld ghatt fer Vacation."
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 241,
+      "set": {
+        "target_text": "Ich will's ihm net gewwe."
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "5483ac66-25de-4ad3-96ac-a3a86d3aed9e",
+      "set": {
+        "target_text": "fer Vacation",
+        "components": [
+          {
+            "known": "for",
+            "target": "fer"
+          },
+          {
+            "known": "holidays",
+            "target": "Vacation"
+          }
+        ]
+      }
+    },
+    {
+      "op": "lego.update",
+      "id": "437c6a3b-7738-4302-ac91-e6ed11b26f06",
+      "set": {
+        "target_text": "ich will's"
+      }
+    }
+  ]
+}

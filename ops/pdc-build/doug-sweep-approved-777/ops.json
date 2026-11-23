@@ -1,0 +1,2061 @@
+{
+ "batches": {
+  "1-A1.1": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0407L02U02",
+    "set": {
+     "target_text": "mir sedde en gut Beischpiel weise"
+    },
+    "expect": {
+     "target_text": "mir sette en gut Beischpiel weise"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 407,
+    "_before": "mir sette en gut Beischpiel weise",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0407L03B03",
+    "set": {
+     "target_text": "mir sedde en gut Beischpiel gewwe"
+    },
+    "expect": {
+     "target_text": "mir sette en gut Beischpiel gewwe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 407,
+    "_before": "mir sette en gut Beischpiel gewwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0411L02U01",
+    "set": {
+     "target_text": "mir sedde en Disch fer vier kaafe"
+    },
+    "expect": {
+     "target_text": "mir sette en Disch fer vier kaafe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 411,
+    "_before": "mir sette en Disch fer vier kaafe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0411L04B02",
+    "set": {
+     "target_text": "mir sedde der Disch bschtelle"
+    },
+    "expect": {
+     "target_text": "mir sette der Disch bschtelle"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 411,
+    "_before": "mir sette der Disch bschtelle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0411L04U01",
+    "set": {
+     "target_text": "mir sedde am Mittwoch der Disch bschtelle"
+    },
+    "expect": {
+     "target_text": "mir sette am Mittwoch der Disch bschtelle"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 411,
+    "_before": "mir sette am Mittwoch der Disch bschtelle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0412L03B01",
+    "set": {
+     "target_text": "mir sedde sie net alles gwinne losse"
+    },
+    "expect": {
+     "target_text": "mir sette sie net alles gwinne losse"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 412,
+    "_before": "mir sette sie net alles gwinne losse",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0412L03U01",
+    "set": {
+     "target_text": "sie hen uns gsaat, mir sedde sie net alles gwinne losse"
+    },
+    "expect": {
+     "target_text": "sie hen uns gsaat, mir sette sie net alles gwinne losse"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 412,
+    "_before": "sie hen uns gsaat, mir sette sie net alles gwinne losse",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0415L02B03",
+    "set": {
+     "target_text": "mir sedde, wann du mich frogscht, ruhich bleiwe"
+    },
+    "expect": {
+     "target_text": "mir sette, wann du mich frogscht, schtill bleiwe"
+    },
+    "_fam": [
+     "A1 sette>sedde",
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 415,
+    "_before": "mir sette, wann du mich frogscht, schtill bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0417L03B02",
+    "set": {
+     "target_text": "mir sedde net dodmache"
+    },
+    "expect": {
+     "target_text": "mir sette net dodmache"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 417,
+    "_before": "mir sette net dodmache",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0417L03U04",
+    "set": {
+     "target_text": "mir sedde selle Iemense net dodmache"
+    },
+    "expect": {
+     "target_text": "mir sette selle Iemense net dodmache"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 417,
+    "_before": "mir sette selle Iemense net dodmache",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0419L01B02",
+    "set": {
+     "target_text": "mir sedde lenger bleiwe, wann sie wolle"
+    },
+    "expect": {
+     "target_text": "mir sette lenger bleiwe, wann sie wolle"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 419,
+    "_before": "mir sette lenger bleiwe, wann sie wolle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0419L01U03",
+    "set": {
+     "target_text": "sedde mir en Disch fer vier bschtelle, wann sie wolle?"
+    },
+    "expect": {
+     "target_text": "sette mir en Disch fer vier bschtelle, wann sie wolle?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 419,
+    "_before": "sette mir en Disch fer vier bschtelle, wann sie wolle?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0419L01U06",
+    "set": {
+     "target_text": "mir sedde so lang wie meeglich bleiwe, wann sie wolle"
+    },
+    "expect": {
+     "target_text": "mir sette so lang wie meeglich bleiwe, wann sie wolle"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 419,
+    "_before": "mir sette so lang wie meeglich bleiwe, wann sie wolle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0420L02U03",
+    "set": {
+     "target_text": "sedde mir froge, wie alt er iss?"
+    },
+    "expect": {
+     "target_text": "sette mir froge, wie alt er iss?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 420,
+    "_before": "sette mir froge, wie alt er iss?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0421L01B01",
+    "set": {
+     "target_text": "mir sedde net browiere, weil sie schunn wisse"
+    },
+    "expect": {
+     "target_text": "mir sette net browiere, weil sie schunn wisse"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 421,
+    "_before": "mir sette net browiere, weil sie schunn wisse",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0425L01U03",
+    "set": {
+     "target_text": "sedde mir sicher mache as sie verschtehne?"
+    },
+    "expect": {
+     "target_text": "sette mir sicher mache as sie verschtehne?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 425,
+    "_before": "sette mir sicher mache as sie verschtehne?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0429L02U03",
+    "set": {
+     "target_text": "mir sedde net alles fer sie kaafe"
+    },
+    "expect": {
+     "target_text": "mir sette net alles fer sie kaafe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 429,
+    "_before": "mir sette net alles fer sie kaafe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0433L02U04",
+    "set": {
+     "target_text": "sedde mir froge wann der Movie aagfange hot?"
+    },
+    "expect": {
+     "target_text": "sette mir froge wann der Movie aagfange hot?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 433,
+    "_before": "sette mir froge wann der Movie aagfange hot?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0437L01B03",
+    "set": {
+     "target_text": "mir sedde so viel wie meeglich verkaafe"
+    },
+    "expect": {
+     "target_text": "mir sette so viel wie meeglich verkaafe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 437,
+    "_before": "mir sette so viel wie meeglich verkaafe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0437L01U05",
+    "set": {
+     "target_text": "wann sie wolle sedde mir so viel wie meeglich verkaafe"
+    },
+    "expect": {
+     "target_text": "wann sie wolle sette mir so viel wie meeglich verkaafe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 437,
+    "_before": "wann sie wolle sette mir so viel wie meeglich verkaafe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0437L01U06",
+    "set": {
+     "target_text": "mir sedde es Schwetze so viel wie meeglich iewe"
+    },
+    "expect": {
+     "target_text": "mir sette es Schwetze so viel wie meeglich iewe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 437,
+    "_before": "mir sette es Schwetze so viel wie meeglich iewe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0437L02U02",
+    "set": {
+     "target_text": "mir sedde fer Charity in die Schul laafe"
+    },
+    "expect": {
+     "target_text": "mir sette fer Charity in die Schul laafe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 437,
+    "_before": "mir sette fer Charity in die Schul laafe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0441L01U03",
+    "set": {
+     "target_text": "er hot gsaat mir sedde en Approach bedenke"
+    },
+    "expect": {
+     "target_text": "er hot gsaat mir sette en Approach bedenke"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 441,
+    "_before": "er hot gsaat mir sette en Approach bedenke",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0441L01U05",
+    "set": {
+     "target_text": "mir sedde vor Dunnerschdaag en Approach browiere"
+    },
+    "expect": {
+     "target_text": "mir sette vor Dunnerschdaag en Approach browiere"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 441,
+    "_before": "mir sette vor Dunnerschdaag en Approach browiere",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0457L02U05",
+    "set": {
+     "target_text": "mir sedde verschiddene Gegende bsuche"
+    },
+    "expect": {
+     "target_text": "mir sette verschiddene Gegende bsuche"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 457,
+    "_before": "mir sette verschiddene Gegende bsuche",
+    "_audio": {}
+   }
+  ],
+  "1-A1.2": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0459L02U02",
+    "set": {
+     "target_text": "sedde mir vannich em blohe Schild schtehe?"
+    },
+    "expect": {
+     "target_text": "sette mir vannich em blohe Schild schtehe?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 459,
+    "_before": "sette mir vannich em blohe Schild schtehe?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0459L02U03",
+    "set": {
+     "target_text": "mir sedde net am Dinschdaag vannich em blohe Schild schtehe"
+    },
+    "expect": {
+     "target_text": "mir sette net am Dinschdaag vannich em blohe Schild schtehe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 459,
+    "_before": "mir sette net am Dinschdaag vannich em blohe Schild schtehe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0465L01U05",
+    "set": {
+     "target_text": "mir sedde es naegscht Mol net lenger bleiwe"
+    },
+    "expect": {
+     "target_text": "mir sette es naegscht Mol net lenger bleiwe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 465,
+    "_before": "mir sette es naegscht Mol net lenger bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0466L02B02",
+    "set": {
+     "target_text": "mir sedde sell net schmeisse"
+    },
+    "expect": {
+     "target_text": "mir sette sell net schmeisse"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 466,
+    "_before": "mir sette sell net schmeisse",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0466L02U05",
+    "set": {
+     "target_text": "mir sedde seller Koffer net schmeisse"
+    },
+    "expect": {
+     "target_text": "mir sette seller Koffer net schmeisse"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 466,
+    "_before": "mir sette seller Koffer net schmeisse",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0495L01U02",
+    "set": {
+     "target_text": "sedde mir net browiere wann's ebbes ausmacht?"
+    },
+    "expect": {
+     "target_text": "sette mir net browiere wann's ebbes ausmacht?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 495,
+    "_before": "sette mir net browiere wann's ebbes ausmacht?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0495L01U03",
+    "set": {
+     "target_text": "mir sedde ausmache wann's ebbes ausmacht"
+    },
+    "expect": {
+     "target_text": "mir sette ausmache wann's ebbes ausmacht"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 495,
+    "_before": "mir sette ausmache wann's ebbes ausmacht",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0500L03U02",
+    "set": {
+     "target_text": "sedde mir es naegscht Mol uff der anner Seit hocke?"
+    },
+    "expect": {
+     "target_text": "sette mir es naegscht Mol uff der anner Seit hocke?"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 500,
+    "_before": "sette mir es naegscht Mol uff der anner Seit hocke?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0502L03U01",
+    "set": {
+     "target_text": "velleicht schtatts rechts sedde mir links drehe"
+    },
+    "expect": {
+     "target_text": "verleicht schtatts rechts sette mir links drehe"
+    },
+    "_fam": [
+     "A1 sette>sedde",
+     "A4 verleicht>velleicht"
+    ],
+    "_seed": 502,
+    "_before": "verleicht schtatts rechts sette mir links drehe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0502L03U05",
+    "set": {
+     "target_text": "sie hen gsaat mir sedde schtatts rechts uff der anner Seit links drehe"
+    },
+    "expect": {
+     "target_text": "sie hen gsaat mir sette schtatts rechts uff der anner Seit links drehe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 502,
+    "_before": "sie hen gsaat mir sette schtatts rechts uff der anner Seit links drehe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0507L01U06",
+    "set": {
+     "target_text": "mir sedde am Freidaag Owed net in die Schtadt faahre"
+    },
+    "expect": {
+     "target_text": "mir sette am Freidaag Owed net in die Schtadt faahre"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 507,
+    "_before": "mir sette am Freidaag Owed net in die Schtadt faahre",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0516L01U02",
+    "set": {
+     "target_text": "mir sedde allebeed ruhich bleiwe"
+    },
+    "expect": {
+     "target_text": "mir sette allebeed schtill bleiwe"
+    },
+    "_fam": [
+     "A1 sette>sedde",
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 516,
+    "_before": "mir sette allebeed schtill bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L04B01",
+    "set": {
+     "target_text": "mir sedde die Maschien halde"
+    },
+    "expect": {
+     "target_text": "mir sette die Maschien halde"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 528,
+    "_before": "mir sette die Maschien halde",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0529L03U02",
+    "set": {
+     "target_text": "mir sedde es Fenschder nuff duh eb mir schtoppe"
+    },
+    "expect": {
+     "target_text": "mir sette es Fenschder nuff duh eb mir schtoppe"
+    },
+    "_fam": [
+     "A1 sette>sedde"
+    ],
+    "_seed": 529,
+    "_before": "mir sette es Fenschder nuff duh eb mir schtoppe",
+    "_audio": {}
+   }
+  ],
+  "2-A2.1": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0365L02U05",
+    "set": {
+     "target_text": "er waar ruhich, wann er gheert hot, was sie zu ihm gsaat hot"
+    },
+    "expect": {
+     "target_text": "er waar schtill, wann er gheert hot, was sie zu ihm gsaat hot"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 365,
+    "_before": "er waar schtill, wann er gheert hot, was sie zu ihm gsaat hot",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0370L02U01",
+    "set": {
+     "target_text": "der Mann, as ich gekennt hab, waar zimmlich ruhich"
+    },
+    "expect": {
+     "target_text": "der Mann, as ich gekennt hab, waar zimmlich schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 370,
+    "_before": "der Mann, as ich gekennt hab, waar zimmlich schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0370L02U05",
+    "set": {
+     "target_text": "sie hot gsaat, ebber, as ich gekennt hab, waar zimmlich ruhich"
+    },
+    "expect": {
+     "target_text": "sie hot gsaat, ebber, as ich gekennt hab, waar zimmlich schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 370,
+    "_before": "sie hot gsaat, ebber, as ich gekennt hab, waar zimmlich schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0371L03U01",
+    "set": {
+     "target_text": "er waar ruhich, wann ich naus gange bin"
+    },
+    "expect": {
+     "target_text": "er waar schtill, wann ich naus gange bin"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 371,
+    "_before": "er waar schtill, wann ich naus gange bin",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0374L01B01",
+    "set": {
+     "target_text": "ich hab gedenkt er waar ruhich"
+    },
+    "expect": {
+     "target_text": "ich hab gedenkt er waar schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 374,
+    "_before": "ich hab gedenkt er waar schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0389L01U05",
+    "set": {
+     "target_text": "er hot gsaat, selli Person datt driwwe iss zimmlich ruhich"
+    },
+    "expect": {
+     "target_text": "er hot gsaat, selli Person datt driwwe iss zimmlich schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 389,
+    "_before": "er hot gsaat, selli Person datt driwwe iss zimmlich schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0410L02B02",
+    "set": {
+     "target_text": "noch zimmlich ruhich"
+    },
+    "expect": {
+     "target_text": "noch zimmlich schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 410,
+    "_before": "noch zimmlich schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0410L02U04",
+    "set": {
+     "target_text": "geschder Owed waar er noch zimmlich ruhich"
+    },
+    "expect": {
+     "target_text": "geschder Owed waar er noch zimmlich schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 410,
+    "_before": "geschder Owed waar er noch zimmlich schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0411L01U02",
+    "set": {
+     "target_text": "mir deede gleiche so lang wie meeglich ruhich bleiwe"
+    },
+    "expect": {
+     "target_text": "mir deede gleiche so lang wie meeglich schtill bleiwe"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 411,
+    "_before": "mir deede gleiche so lang wie meeglich schtill bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0412L01U01",
+    "set": {
+     "target_text": "mir kennte so lang wie meeglich ruhich bleiwe"
+    },
+    "expect": {
+     "target_text": "mir kennte so lang wie meeglich schtill bleiwe"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 412,
+    "_before": "mir kennte so lang wie meeglich schtill bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0426L01B04",
+    "set": {
+     "target_text": "sie deede gleiche ruhich bleiwe"
+    },
+    "expect": {
+     "target_text": "sie deede gleiche schtill bleiwe"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 426,
+    "_before": "sie deede gleiche schtill bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0439L01B02",
+    "set": {
+     "target_text": "sie wolle net ruhich bleiwe"
+    },
+    "expect": {
+     "target_text": "sie wolle net schtill bleiwe"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 439,
+    "_before": "sie wolle net schtill bleiwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0455L02B01",
+    "set": {
+     "target_text": "er waar ruhich weil die Kinner mied waare"
+    },
+    "expect": {
+     "target_text": "er waar schtill weil die Kinner mied waare"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 455,
+    "_before": "er waar schtill weil die Kinner mied waare",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0455L02U02",
+    "set": {
+     "target_text": "er waar ruhich weil die Kinner mied waare nooch em Esse"
+    },
+    "expect": {
+     "target_text": "er waar schtill weil die Kinner mied waare nooch em Esse"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 455,
+    "_before": "er waar schtill weil die Kinner mied waare nooch em Esse",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0455L02U04",
+    "set": {
+     "target_text": "sie hen gedenkt er waar ruhich weil die Kinner mied waare"
+    },
+    "expect": {
+     "target_text": "sie hen gedenkt er waar schtill weil die Kinner mied waare"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 455,
+    "_before": "sie hen gedenkt er waar schtill weil die Kinner mied waare",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0458L03B02",
+    "set": {
+     "target_text": "frieher waar er zimmlich ruhich"
+    },
+    "expect": {
+     "target_text": "frieher waar er zimmlich schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 458,
+    "_before": "frieher waar er zimmlich schtill",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0527L03U05",
+    "set": {
+     "target_text": "ich hab en Schtori verzaehlt un er waar ruhich"
+    },
+    "expect": {
+     "target_text": "ich hab en Schtori verzaehlt un er waar schtill"
+    },
+    "_fam": [
+     "A2 schtill>ruhich"
+    ],
+    "_seed": 527,
+    "_before": "ich hab en Schtori verzaehlt un er waar schtill",
+    "_audio": {}
+   }
+  ],
+  "3-A4a.1": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0494L03U02",
+    "set": {
+     "target_text": "er iss grank sidder em zwette Daag vun der Show"
+    },
+    "expect": {
+     "target_text": "er iss krank sidder em zwette Daag vun der Show"
+    },
+    "_fam": [
+     "A4 krank>grank"
+    ],
+    "_seed": 494,
+    "_before": "er iss krank sidder em zwette Daag vun der Show",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0500L01B01",
+    "set": {
+     "target_text": "fer was witt du net graddle?"
+    },
+    "expect": {
+     "target_text": "fer was witt du net gleddere?"
+    },
+    "_fam": [
+     "A4 gleddere>graddle"
+    ],
+    "_seed": 500,
+    "_before": "fer was witt du net gleddere?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0502L02B01",
+    "set": {
+     "target_text": "velleicht weil sie links gedreht hot"
+    },
+    "expect": {
+     "target_text": "verleicht weil sie links gedreht hot"
+    },
+    "_fam": [
+     "A4 verleicht>velleicht"
+    ],
+    "_seed": 502,
+    "_before": "verleicht weil sie links gedreht hot",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0502L02B04",
+    "set": {
+     "target_text": "velleicht weil sie links gedreht hot vannich em blohe Schild"
+    },
+    "expect": {
+     "target_text": "verleicht weil sie links gedreht hot vannich em blohe Schild"
+    },
+    "_fam": [
+     "A4 verleicht>velleicht"
+    ],
+    "_seed": 502,
+    "_before": "verleicht weil sie links gedreht hot vannich em blohe Schild",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0506L01U02",
+    "set": {
+     "target_text": "er waar Yaahre zerick net grank"
+    },
+    "expect": {
+     "target_text": "er waar Yaahre zerick net krank"
+    },
+    "_fam": [
+     "A4 krank>grank"
+    ],
+    "_seed": 506,
+    "_before": "er waar Yaahre zerick net krank",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0513L03B02",
+    "set": {
+     "target_text": "nuff un nunner graddle"
+    },
+    "expect": {
+     "target_text": "nuff un nunner gleddere"
+    },
+    "_fam": [
+     "A4 gleddere>graddle"
+    ],
+    "_seed": 513,
+    "_before": "nuff un nunner gleddere",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0513L03U02",
+    "set": {
+     "target_text": "sie kann net nuff un nunner graddle"
+    },
+    "expect": {
+     "target_text": "sie kann net nuff un nunner gleddere"
+    },
+    "_fam": [
+     "A4 gleddere>graddle"
+    ],
+    "_seed": 513,
+    "_before": "sie kann net nuff un nunner gleddere",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0513L03U06",
+    "set": {
+     "target_text": "sie misse nuff un nunner graddle"
+    },
+    "expect": {
+     "target_text": "sie misse nuff un nunner gleddere"
+    },
+    "_fam": [
+     "A4 gleddere>graddle"
+    ],
+    "_seed": 513,
+    "_before": "sie misse nuff un nunner gleddere",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0513L04U01",
+    "set": {
+     "target_text": "velleicht wann ich mei Kopp beweeg dann waer ich falle"
+    },
+    "expect": {
+     "target_text": "verleicht wann ich mei Kopp beweeg dann waer ich falle"
+    },
+    "_fam": [
+     "A4 verleicht>velleicht"
+    ],
+    "_seed": 513,
+    "_before": "verleicht wann ich mei Kopp beweeg dann waer ich falle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0514L01U06",
+    "set": {
+     "target_text": "velleicht kennte mir es perfect Haus baue"
+    },
+    "expect": {
+     "target_text": "verleicht kennte mir es perfect Haus baue"
+    },
+    "_fam": [
+     "A4 verleicht>velleicht"
+    ],
+    "_seed": 514,
+    "_before": "verleicht kennte mir es perfect Haus baue",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0514L02B03",
+    "set": {
+     "target_text": "er waar am erschte Daag grank"
+    },
+    "expect": {
+     "target_text": "er waar am erschte Daag krank"
+    },
+    "_fam": [
+     "A4 krank>grank"
+    ],
+    "_seed": 514,
+    "_before": "er waar am erschte Daag krank",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0515L01U01",
+    "set": {
+     "target_text": "er iss grank sidder em zwette Daag vum neie Yaahr"
+    },
+    "expect": {
+     "target_text": "er iss krank sidder em zwette Daag vum neie Yaahr"
+    },
+    "_fam": [
+     "A4 krank>grank"
+    ],
+    "_seed": 515,
+    "_before": "er iss krank sidder em zwette Daag vum neie Yaahr",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L01U02",
+    "set": {
+     "target_text": "er iss grank un ich soll waarscheinlich faahre"
+    },
+    "expect": {
+     "target_text": "er iss krank un ich soll waarscheinlich faahre"
+    },
+    "_fam": [
+     "A4 krank>grank"
+    ],
+    "_seed": 528,
+    "_before": "er iss krank un ich soll waarscheinlich faahre",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L01U05",
+    "set": {
+     "target_text": "ich soll waarscheinlich die Deer uff halde deweil ich die Schlissel hol"
+    },
+    "expect": {
+     "target_text": "ich soll waarscheinlich die Deer uff halde dieweil ich die Schlissel hol"
+    },
+    "_fam": [
+     "A4 dieweil>deweil"
+    ],
+    "_seed": 528,
+    "_before": "ich soll waarscheinlich die Deer uff halde dieweil ich die Schlissel hol",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0529L01B03",
+    "set": {
+     "target_text": "kennt dihr all iwwer die Mauer graddle?"
+    },
+    "expect": {
+     "target_text": "kennt dihr all iwwer die Mauer gleddere?"
+    },
+    "_fam": [
+     "A4 gleddere>graddle"
+    ],
+    "_seed": 529,
+    "_before": "kennt dihr all iwwer die Mauer gleddere?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0529L01B04",
+    "set": {
+     "target_text": "kennt dihr all net graddle?"
+    },
+    "expect": {
+     "target_text": "kennt dihr all net gleddere?"
+    },
+    "_fam": [
+     "A4 gleddere>graddle"
+    ],
+    "_seed": 529,
+    "_before": "kennt dihr all net gleddere?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0529L03B03",
+    "set": {
+     "target_text": "en paar Poschtkaarde nuff duh deweil ich die Schlissel hol"
+    },
+    "expect": {
+     "target_text": "en paar Poschtkaarde nuff duh dieweil ich die Schlissel hol"
+    },
+    "_fam": [
+     "A4 dieweil>deweil"
+    ],
+    "_seed": 529,
+    "_before": "en paar Poschtkaarde nuff duh dieweil ich die Schlissel hol",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0529L03U04",
+    "set": {
+     "target_text": "velleicht kennte sie en paar Poschtkaarde fer Charity nuff duh"
+    },
+    "expect": {
+     "target_text": "verleicht kennte sie en paar Poschtkaarde fer Charity nuff duh"
+    },
+    "_fam": [
+     "A4 verleicht>velleicht"
+    ],
+    "_seed": 529,
+    "_before": "verleicht kennte sie en paar Poschtkaarde fer Charity nuff duh",
+    "_audio": {}
+   }
+  ],
+  "4-A4b.1": [
+   {
+    "op": "lego.update",
+    "lego_id": "S0241L02",
+    "set": {
+     "target_text": "ich will es"
+    },
+    "expect": {
+     "target_text": "ich will's"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's"
+   },
+   {
+    "op": "lego.update",
+    "lego_id": "S0378L02",
+    "set": {
+     "target_text": "fer Feierdaage",
+     "components": [
+      {
+       "known": "for",
+       "target": "fer"
+      },
+      {
+       "known": "holidays",
+       "target": "Feierdaage"
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "fer Vacation"
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 241,
+    "set": {
+     "target_text": "Ich will es ihm net gewwe."
+    },
+    "expect": {
+     "target_text": "Ich will's ihm net gewwe."
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "Ich will's ihm net gewwe."
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 378,
+    "set": {
+     "target_text": "Nee, ich hab net genunk Geld ghatt fer Feierdaage."
+    },
+    "expect": {
+     "target_text": "Nee, ich hab net genunk Geld ghatt fer Vacation."
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "Nee, ich hab net genunk Geld ghatt fer Vacation."
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02B01",
+    "set": {
+     "target_text": "ich will es gewwe"
+    },
+    "expect": {
+     "target_text": "ich will's gewwe"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's gewwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02B02",
+    "set": {
+     "target_text": "ich will es sehne"
+    },
+    "expect": {
+     "target_text": "ich will's sehne"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's sehne",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02B03",
+    "set": {
+     "target_text": "ich will es saage"
+    },
+    "expect": {
+     "target_text": "ich will's saage"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's saage",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02U01",
+    "set": {
+     "target_text": "ich will es net gewwe"
+    },
+    "expect": {
+     "target_text": "ich will's net gewwe"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's net gewwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02U02",
+    "set": {
+     "target_text": "ich will es ihm net gewwe"
+    },
+    "expect": {
+     "target_text": "ich will's ihm net gewwe"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's ihm net gewwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02U03",
+    "set": {
+     "target_text": "ich will es heit gewwe"
+    },
+    "expect": {
+     "target_text": "ich will's heit gewwe"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's heit gewwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02U04",
+    "set": {
+     "target_text": "ich will es net sehne"
+    },
+    "expect": {
+     "target_text": "ich will's net sehne"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's net sehne",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02U05",
+    "set": {
+     "target_text": "ich will es dir gewwe"
+    },
+    "expect": {
+     "target_text": "ich will's dir gewwe"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's dir gewwe",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0241L02U06",
+    "set": {
+     "target_text": "ich will es net saage"
+    },
+    "expect": {
+     "target_text": "ich will's net saage"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 241,
+    "_before": "ich will's net saage",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0326L02U05",
+    "set": {
+     "target_text": "ich will es verkaafe, eb du gehscht"
+    },
+    "expect": {
+     "target_text": "ich will's verkaafe, eb du gehscht"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 326,
+    "_before": "ich will's verkaafe, eb du gehscht",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02C02",
+    "set": {
+     "target_text": "Feierdaage"
+    },
+    "expect": {
+     "target_text": "Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02B01",
+    "set": {
+     "target_text": "fer Feierdaage des Yaahr"
+    },
+    "expect": {
+     "target_text": "fer Vacation des Yaahr"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "fer Vacation des Yaahr",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02B02",
+    "set": {
+     "target_text": "meh Zeit fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "meh Zeit fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "meh Zeit fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02B03",
+    "set": {
+     "target_text": "sie braucht Geld fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "sie braucht Geld fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "sie braucht Geld fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02U01",
+    "set": {
+     "target_text": "brauchscht du Geld fer Feierdaage, eb du gehscht?"
+    },
+    "expect": {
+     "target_text": "brauchscht du Geld fer Vacation, eb du gehscht?"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "brauchscht du Geld fer Vacation, eb du gehscht?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02U02",
+    "set": {
+     "target_text": "kenner hot Geld fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "kenner hot Geld fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "kenner hot Geld fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02U03",
+    "set": {
+     "target_text": "dei Freind hot gsaat, er braucht Geld fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "dei Freind hot gsaat, er braucht Geld fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "dei Freind hot gsaat, er braucht Geld fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02U04",
+    "set": {
+     "target_text": "sie wolle meh Zeit fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "sie wolle meh Zeit fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "sie wolle meh Zeit fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0378L02U05",
+    "set": {
+     "target_text": "ich bin sicher, sie braucht Geld fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "ich bin sicher, sie braucht Geld fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 378,
+    "_before": "ich bin sicher, sie braucht Geld fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0397L01U03",
+    "set": {
+     "target_text": "was brauche mir fer Feierdaage kaafe?"
+    },
+    "expect": {
+     "target_text": "was brauche mir fer Vacation kaafe?"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 397,
+    "_before": "was brauche mir fer Vacation kaafe?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0405L02B01",
+    "set": {
+     "target_text": "eb mir buche misse fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "eb mir buche misse fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 405,
+    "_before": "eb mir buche misse fer Vacation",
+    "_audio": {}
+   }
+  ],
+  "4-A4b.2": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0405L02U01",
+    "set": {
+     "target_text": "hoscht du gfroogt eb mir buche misse fer Feierdaage?"
+    },
+    "expect": {
+     "target_text": "hoscht du gfroogt eb mir buche misse fer Vacation?"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 405,
+    "_before": "hoscht du gfroogt eb mir buche misse fer Vacation?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0436L01U03",
+    "set": {
+     "target_text": "dei Freind hot gsaat es gebt genunk Geld fer Feierdaage"
+    },
+    "expect": {
+     "target_text": "dei Freind hot gsaat es gebt genunk Geld fer Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 436,
+    "_before": "dei Freind hot gsaat es gebt genunk Geld fer Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0437L03U06",
+    "set": {
+     "target_text": "sie hen genunk Geld fer Feierdaage uffbringe wolle"
+    },
+    "expect": {
+     "target_text": "sie hen genunk Geld fer Vacation uffbringe wolle"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 437,
+    "_before": "sie hen genunk Geld fer Vacation uffbringe wolle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0514L02B01",
+    "set": {
+     "target_text": "am erschte Daag vun de Feierdaage"
+    },
+    "expect": {
+     "target_text": "am erschte Daag vun der Vacation"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 514,
+    "_before": "am erschte Daag vun der Vacation",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0514L03B01",
+    "set": {
+     "target_text": "en neies Bett gfunne"
+    },
+    "expect": {
+     "target_text": "en nei Bett gfunne"
+    },
+    "_fam": [
+     "A4 nei Bett>neies Bett"
+    ],
+    "_seed": 514,
+    "_before": "en nei Bett gfunne",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0522L02U02",
+    "set": {
+     "target_text": "dei Freind hot gsaat as es dumm waar fer en neies Bett bezaahle"
+    },
+    "expect": {
+     "target_text": "dei Freind hot gsaat as es dumm waar fer en nei Bett bezaahle"
+    },
+    "_fam": [
+     "A4 nei Bett>neies Bett"
+    ],
+    "_seed": 522,
+    "_before": "dei Freind hot gsaat as es dumm waar fer en nei Bett bezaahle",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0522L02U07",
+    "set": {
+     "target_text": "hoscht du gheert as es dumm waar fer en neies Bett bezaahle?"
+    },
+    "expect": {
+     "target_text": "hoscht du gheert as es dumm waar fer en nei Bett bezaahle?"
+    },
+    "_fam": [
+     "A4 nei Bett>neies Bett"
+    ],
+    "_seed": 522,
+    "_before": "hoscht du gheert as es dumm waar fer en nei Bett bezaahle?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L01U06",
+    "set": {
+     "target_text": "ich soll waarscheinlich fer en neies Bett bezaahle as sie brauche"
+    },
+    "expect": {
+     "target_text": "ich soll waarscheinlich fer en nei Bett bezaahle as sie brauche"
+    },
+    "_fam": [
+     "A4 nei Bett>neies Bett"
+    ],
+    "_seed": 528,
+    "_before": "ich soll waarscheinlich fer en nei Bett bezaahle as sie brauche",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L03B02",
+    "set": {
+     "target_text": "en neies Bett in en anneri Schtubb"
+    },
+    "expect": {
+     "target_text": "en nei Bett in en anneri Schtubb"
+    },
+    "_fam": [
+     "A4 nei Bett>neies Bett"
+    ],
+    "_seed": 528,
+    "_before": "en nei Bett in en anneri Schtubb",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L04U03",
+    "set": {
+     "target_text": "ich will es net halde"
+    },
+    "expect": {
+     "target_text": "ich will's net halde"
+    },
+    "_fam": [
+     "A4 will's>will es"
+    ],
+    "_seed": 528,
+    "_before": "ich will's net halde",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L04U05",
+    "set": {
+     "target_text": "ich waer genunk Geld fer Feierdaage halde"
+    },
+    "expect": {
+     "target_text": "ich waer genunk Geld fer Vacation halde"
+    },
+    "_fam": [
+     "A4 Vacation>Feierdaage"
+    ],
+    "_seed": 528,
+    "_before": "ich waer genunk Geld fer Vacation halde",
+    "_audio": {}
+   }
+  ],
+  "5-A3.1": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0449L01U01",
+    "set": {
+     "target_text": "sie hen gsaat sie waerre boll reddi sei"
+    },
+    "expect": {
+     "target_text": "sie hen gsaat sie zeele boll reddi sei"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 449,
+    "_before": "sie hen gsaat sie zeele boll reddi sei",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0450L02U02",
+    "set": {
+     "target_text": "waerre sie am Freidaag Owed der Train selwert griege?"
+    },
+    "expect": {
+     "target_text": "zeele sie am Freidaag Owed der Train selwert griege?"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 450,
+    "_before": "zeele sie am Freidaag Owed der Train selwert griege?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0453L01U04",
+    "set": {
+     "target_text": "hen sie gsaat sie waerre boll reddi sei?"
+    },
+    "expect": {
+     "target_text": "hen sie gsaat sie zeele boll reddi sei?"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 453,
+    "_before": "hen sie gsaat sie zeele boll reddi sei?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0453L02U04",
+    "set": {
+     "target_text": "sie hen net ausfinne kenne wem sie am Dinschdaag dreffe waerre"
+    },
+    "expect": {
+     "target_text": "sie hen net ausfinne kenne wem sie am Dinschdaag dreffe zeele"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 453,
+    "_before": "sie hen net ausfinne kenne wem sie am Dinschdaag dreffe zeele",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0465L01U01",
+    "set": {
+     "target_text": "waerre sie es naegscht Mol riwwerkumme?"
+    },
+    "expect": {
+     "target_text": "zeele sie es naegscht Mol riwwerkumme?"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 465,
+    "_before": "zeele sie es naegscht Mol riwwerkumme?",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0465L01U02",
+    "set": {
+     "target_text": "es naegscht Mol waerre sie heem faahre kenne"
+    },
+    "expect": {
+     "target_text": "es naegscht Mol zeele sie heem faahre kenne"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 465,
+    "_before": "es naegscht Mol zeele sie heem faahre kenne",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0466L03U02",
+    "set": {
+     "target_text": "sie waerre seller Koffer iwwer die Mauer draage kenne"
+    },
+    "expect": {
+     "target_text": "sie zeele seller Koffer iwwer die Mauer draage kenne"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 466,
+    "_before": "sie zeele seller Koffer iwwer die Mauer draage kenne",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0495L01U04",
+    "set": {
+     "target_text": "sie waerre reddi sei, wann's ebbes ausmacht"
+    },
+    "expect": {
+     "target_text": "sie zeele reddi sei, wann's ebbes ausmacht"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 495,
+    "_before": "sie zeele reddi sei, wann's ebbes ausmacht",
+    "_audio": {}
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "pdc_for_eng:S0528L02B03",
+    "set": {
+     "target_text": "sie waerre selle Sache draage kenne"
+    },
+    "expect": {
+     "target_text": "sie zeele selle Sache draage kenne"
+    },
+    "_fam": [
+     "A3 zeele>waerre (will only)"
+    ],
+    "_seed": 528,
+    "_before": "sie zeele selle Sache draage kenne",
+    "_audio": {}
+   }
+  ]
+ },
+ "holds": [
+  {
+   "row": "S0499L02",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir"
+  },
+  {
+   "row": "seed 499",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "Velleicht sette mir die Dier uffmache un es Fenschder zumache."
+  },
+  {
+   "row": "pdc_for_eng:S0489L03U02",
+   "family": [
+    "A4 Vacation>Feierdaage"
+   ],
+   "reason": "Doug redid seed 489 after his switch and kept the old form: [('A4 Vacation>Feierdaage', '2026-11-16T13:43', 'Change Kupp to Koppche')]",
+   "_before": "machscht du genunk Geld fer Vacation?"
+  },
+  {
+   "row": "pdc_for_eng:S0490L03U04",
+   "family": [
+    "A4 will's>will es"
+   ],
+   "reason": "Doug redid seed 490 after his switch and kept the old form: [(\"A4 will's>will es\", '2026-11-16T13:45', 'Change SEED to: Dann waer ich nimmi ennich epper verdraue.')]",
+   "_before": "ich will's net, weil ich net ennich epper verdraue kann"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02C02",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "sette"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02B01",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir browiere"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02B02",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir schtoppe"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02B03",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir waarde"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02B04",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir froge"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02U01",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir net browiere"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02U02",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir ruhich bleiwe"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02U03",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir froge, eb mir buche misse"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02U04",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir en gut Beischpiel gewwe"
+  },
+  {
+   "row": "pdc_for_eng:S0499L02U05",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir mit ebber anners schwetze iewe"
+  },
+  {
+   "row": "pdc_for_eng:S0499L04U06",
+   "family": [
+    "A1 sette>sedde"
+   ],
+   "reason": "Doug redid seed 499 after his switch and kept the old form: [('A1 sette>sedde', '2026-11-17T13:37', 'Change verleicht to velleicht')]",
+   "_before": "velleicht sette mir die Dier uffmache un es Fenschder zumache"
+  },
+  {
+   "row": "pdc_for_eng:S0526L01U04",
+   "family": [
+    "A4 Vacation>Feierdaage"
+   ],
+   "reason": "Doug redid seed 526 after his switch and kept the old form: [('A4 Vacation>Feierdaage', '2026-11-17T13:52', 'Change gesse to rode')]",
+   "_before": "ich find's hatt sidder em zwette Daag vun der Vacation"
+  }
+ ]
+}

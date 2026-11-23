@@ -1,0 +1,128 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "cfc52059-b43d-4c46-895f-3438098c4949",
+  "actor": "kai-777",
+  "created_at": "2026-11-23T10:55:28.048Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-55-28-047Z-cfc52059-b43d-4c46-895f-3438098c4949.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0527L03U05",
+      "set": {
+        "target_text": "ich hab en Schtori verzaehlt un er waar schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0458L03B02",
+      "set": {
+        "target_text": "frieher waar er zimmlich schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0455L02U04",
+      "set": {
+        "target_text": "sie hen gedenkt er waar schtill weil die Kinner mied waare"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0455L02U02",
+      "set": {
+        "target_text": "er waar schtill weil die Kinner mied waare nooch em Esse"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0455L02B01",
+      "set": {
+        "target_text": "er waar schtill weil die Kinner mied waare"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0439L01B02",
+      "set": {
+        "target_text": "sie wolle net schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0426L01B04",
+      "set": {
+        "target_text": "sie deede gleiche schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0412L01U01",
+      "set": {
+        "target_text": "mir kennte so lang wie meeglich schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0411L01U02",
+      "set": {
+        "target_text": "mir deede gleiche so lang wie meeglich schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0410L02U04",
+      "set": {
+        "target_text": "geschder Owed waar er noch zimmlich schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0410L02B02",
+      "set": {
+        "target_text": "noch zimmlich schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0389L01U05",
+      "set": {
+        "target_text": "er hot gsaat, selli Person datt driwwe iss zimmlich schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0374L01B01",
+      "set": {
+        "target_text": "ich hab gedenkt er waar schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0371L03U01",
+      "set": {
+        "target_text": "er waar schtill, wann ich naus gange bin"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0370L02U05",
+      "set": {
+        "target_text": "sie hot gsaat, ebber, as ich gekennt hab, waar zimmlich schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0370L02U01",
+      "set": {
+        "target_text": "der Mann, as ich gekennt hab, waar zimmlich schtill"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0365L02U05",
+      "set": {
+        "target_text": "er waar schtill, wann er gheert hot, was sie zu ihm gsaat hot"
+      }
+    }
+  ]
+}

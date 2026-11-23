@@ -1,0 +1,72 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "04eec014-22f1-44d4-9f5e-e51970eae166",
+  "actor": "kai-777",
+  "created_at": "2026-11-23T10:49:00.465Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-49-00-465Z-04eec014-22f1-44d4-9f5e-e51970eae166.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0528L02B03",
+      "set": {
+        "target_text": "sie zeele selle Sache draage kenne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0495L01U04",
+      "set": {
+        "target_text": "sie zeele reddi sei, wann's ebbes ausmacht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0466L03U02",
+      "set": {
+        "target_text": "sie zeele seller Koffer iwwer die Mauer draage kenne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0465L01U02",
+      "set": {
+        "target_text": "es naegscht Mol zeele sie heem faahre kenne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0465L01U01",
+      "set": {
+        "target_text": "zeele sie es naegscht Mol riwwerkumme?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0453L02U04",
+      "set": {
+        "target_text": "sie hen net ausfinne kenne wem sie am Dinschdaag dreffe zeele"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0453L01U04",
+      "set": {
+        "target_text": "hen sie gsaat sie zeele boll reddi sei?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0450L02U02",
+      "set": {
+        "target_text": "zeele sie am Freidaag Owed der Train selwert griege?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0449L01U01",
+      "set": {
+        "target_text": "sie hen gsaat sie zeele boll reddi sei"
+      }
+    }
+  ]
+}

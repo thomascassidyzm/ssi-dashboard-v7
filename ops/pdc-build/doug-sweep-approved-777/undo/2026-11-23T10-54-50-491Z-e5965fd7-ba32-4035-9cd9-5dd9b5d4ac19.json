@@ -1,0 +1,107 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "e5965fd7-ba32-4035-9cd9-5dd9b5d4ac19",
+  "actor": "kai-777",
+  "created_at": "2026-11-23T10:54:50.492Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-54-50-491Z-e5965fd7-ba32-4035-9cd9-5dd9b5d4ac19.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0529L03U02",
+      "set": {
+        "target_text": "mir sette es Fenschder nuff duh eb mir schtoppe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0528L04B01",
+      "set": {
+        "target_text": "mir sette die Maschien halde"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0516L01U02",
+      "set": {
+        "target_text": "mir sette allebeed schtill bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0507L01U06",
+      "set": {
+        "target_text": "mir sette am Freidaag Owed net in die Schtadt faahre"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0502L03U05",
+      "set": {
+        "target_text": "sie hen gsaat mir sette schtatts rechts uff der anner Seit links drehe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0502L03U01",
+      "set": {
+        "target_text": "verleicht schtatts rechts sette mir links drehe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0500L03U02",
+      "set": {
+        "target_text": "sette mir es naegscht Mol uff der anner Seit hocke?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0495L01U03",
+      "set": {
+        "target_text": "mir sette ausmache wann's ebbes ausmacht"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0495L01U02",
+      "set": {
+        "target_text": "sette mir net browiere wann's ebbes ausmacht?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0466L02U05",
+      "set": {
+        "target_text": "mir sette seller Koffer net schmeisse"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0466L02B02",
+      "set": {
+        "target_text": "mir sette sell net schmeisse"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0465L01U05",
+      "set": {
+        "target_text": "mir sette es naegscht Mol net lenger bleiwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0459L02U03",
+      "set": {
+        "target_text": "mir sette net am Dinschdaag vannich em blohe Schild schtehe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0459L02U02",
+      "set": {
+        "target_text": "sette mir vannich em blohe Schild schtehe?"
+      }
+    }
+  ]
+}

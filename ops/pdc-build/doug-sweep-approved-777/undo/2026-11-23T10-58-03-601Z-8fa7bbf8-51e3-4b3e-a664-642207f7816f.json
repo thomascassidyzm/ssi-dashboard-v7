@@ -1,0 +1,184 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "8fa7bbf8-51e3-4b3e-a664-642207f7816f",
+  "actor": "kai-777",
+  "created_at": "2026-11-23T10:58:03.601Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-58-03-601Z-8fa7bbf8-51e3-4b3e-a664-642207f7816f.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "seed.update",
+      "seed_number": 437,
+      "set": {
+        "approved_at": "2026-11-13T00:52:37.404Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 436,
+      "set": {
+        "approved_at": "2026-11-13T00:52:16.710Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 433,
+      "set": {
+        "approved_at": "2026-11-13T00:50:02.191Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 429,
+      "set": {
+        "approved_at": "2026-11-13T00:03:20.455Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 426,
+      "set": {
+        "approved_at": "2026-11-13T00:00:31.079Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 425,
+      "set": {
+        "approved_at": "2026-11-13T00:00:10.899Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 421,
+      "set": {
+        "approved_at": "2026-11-12T23:58:05.878Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 420,
+      "set": {
+        "approved_at": "2026-11-12T23:57:43.656Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 419,
+      "set": {
+        "approved_at": "2026-11-12T23:57:29.361Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 417,
+      "set": {
+        "approved_at": "2026-11-12T23:56:06.201Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 415,
+      "set": {
+        "approved_at": "2026-11-12T23:55:18.152Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 412,
+      "set": {
+        "approved_at": "2026-11-12T23:53:51.811Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 411,
+      "set": {
+        "approved_at": "2026-11-12T23:53:36.204Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 410,
+      "set": {
+        "approved_at": "2026-11-12T23:52:42.396Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 407,
+      "set": {
+        "approved_at": "2026-11-12T23:51:19.306Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 405,
+      "set": {
+        "approved_at": "2026-11-12T23:49:44.921Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 397,
+      "set": {
+        "approved_at": "2026-11-12T23:45:28.876Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 389,
+      "set": {
+        "approved_at": "2026-11-12T23:38:34.171Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 378,
+      "set": {
+        "approved_at": "2026-11-12T22:40:49.908Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 374,
+      "set": {
+        "approved_at": "2026-11-12T22:38:47.972Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 371,
+      "set": {
+        "approved_at": "2026-11-12T22:37:30.947Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 370,
+      "set": {
+        "approved_at": "2026-11-12T22:37:09.121Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 365,
+      "set": {
+        "approved_at": "2026-11-12T22:34:54.269Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 326,
+      "set": {
+        "approved_at": "2026-11-10T14:46:33.244Z"
+      }
+    },
+    {
+      "op": "seed.update",
+      "seed_number": 241,
+      "set": {
+        "approved_at": "2026-10-12T11:16:21.669Z"
+      }
+    }
+  ]
+}

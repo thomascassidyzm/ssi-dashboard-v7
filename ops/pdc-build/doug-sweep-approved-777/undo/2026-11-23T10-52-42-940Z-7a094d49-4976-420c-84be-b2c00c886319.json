@@ -1,0 +1,86 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "7a094d49-4976-420c-84be-b2c00c886319",
+  "actor": "kai-777",
+  "created_at": "2026-11-23T10:52:42.940Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-52-42-940Z-7a094d49-4976-420c-84be-b2c00c886319.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0528L04U05",
+      "set": {
+        "target_text": "ich waer genunk Geld fer Vacation halde"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0528L04U03",
+      "set": {
+        "target_text": "ich will's net halde"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0528L03B02",
+      "set": {
+        "target_text": "en nei Bett in en anneri Schtubb"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0528L01U06",
+      "set": {
+        "target_text": "ich soll waarscheinlich fer en nei Bett bezaahle as sie brauche"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0522L02U07",
+      "set": {
+        "target_text": "hoscht du gheert as es dumm waar fer en nei Bett bezaahle?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0522L02U02",
+      "set": {
+        "target_text": "dei Freind hot gsaat as es dumm waar fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0514L03B01",
+      "set": {
+        "target_text": "en nei Bett gfunne"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0514L02B01",
+      "set": {
+        "target_text": "am erschte Daag vun der Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0437L03U06",
+      "set": {
+        "target_text": "sie hen genunk Geld fer Vacation uffbringe wolle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0436L01U03",
+      "set": {
+        "target_text": "dei Freind hot gsaat es gebt genunk Geld fer Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0405L02U01",
+      "set": {
+        "target_text": "hoscht du gfroogt eb mir buche misse fer Vacation?"
+      }
+    }
+  ]
+}
