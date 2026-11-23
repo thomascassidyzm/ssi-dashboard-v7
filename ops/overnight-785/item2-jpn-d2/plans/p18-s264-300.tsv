@@ -1,0 +1,61 @@
+# eng_for_jpn seeds 264-300: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0264L01U02 use → "that man you were talking to yesterday was an old man who wanted to ask for help" | was: 昨日話していたあの方は年配の男の人で助けが必要でした — prompt said "needed help"
+S0264L01U02	昨日あなたが話していたあの男の人は、助けを求めたかった年配の男の人でした
+# S0265L01U02 use → "a friend was trying to say something important yesterday but I don't know what" | was: 友達が昨日大事なことを言おうとしていたがわからなかった — prompt was past "didn't know"
+S0265L01U02	友達が昨日大事なことを言おうとしていましたが、何かわかりません
+# S0265L01U10 use → "an old man who is a friend of my father, I met him yesterday" | was: 年配の男の人は父の友達で昨日会いました — English "an old man who is a friend of my father, I met him yesterday" is a comma-spliced fragment
+S0265L01U10	DELETE
+# S0266L03U04 use → "he was a friend of my father but I have not seen him for a while" | was: 彼は父の友達でしたがしばらく会っていませんでした — prompt was past
+S0266L03U04	彼は父の友達でしたが、しばらく会っていません
+# S0266L03U05 use → "he was trying to say something important but I don't know what" | was: 彼は大事なことを話そうとしていましたが私にはわかりませんでした — prompt was past
+S0266L03U05	彼は大事なことを言おうとしていましたが、何かわかりません
+# S0266L03U11 use → "he was a friend of my father but I met him yesterday" | was: 彼は父の友達でしたが昨日初めてお会いしました — prompt added 初めて ("for the first time")
+S0266L03U11	彼は父の友達でしたが、昨日会いました
+# S0266L03U12 use → "he was someone I was looking for but I don't know who you mean" | was: 彼は私が探していた人でしたが誰のことかわかりませんでした — English "he was someone I was looking for but I don't know who you mean" is incoherent
+S0266L03U12	DELETE
+# KEEP S0270L01B01 | 心配だから | I'm worried that — bare LEGO 心配だから = "I'm worried that": LEGO-level gloss
+# S0270L02U05 use → "I'm worried that I'm going to be late to the meeting" | was: 心配だから、会議に遅れると思います — prompt said "because I'm worried, I think I'll be late"
+S0270L02U05	会議に遅れるのが心配です
+# KEEP S0273L02U02 | 今週は仕事が多すぎると思うので、手伝ってほしいです | I think I've got too much work this week and I want you to help me — prompt says "I want you to help me" (手伝ってほしいです) — matches (false flag)
+# S0274L01B06 build → "are you going to meet me in a few days?" | was: 数日後に会えますか？ — prompt asked "can you"
+S0274L01B06	数日後に私に会うつもりですか？
+# KEEP S0274L01U01 | 数日で準備ができると思うので、待っていてほしいです | I think I'll be ready in a few days so I'd like you to wait for me — prompt matches "…so I'd like you to wait for me" (false flag)
+# S0274L01U08 use → "I think I'll be ready in a few days and I'd like to practise speaking with you" | was: 数日後に準備ができると思います。一緒に練習しましょう — prompt said "let's practise"
+S0274L01U08	数日後に準備ができると思いますし、あなたと話す練習をしたいです
+# S0274L02U02 use → "do you have to leave in a few days because I'll be able to help you?" | was: 数日後に出発しなければなりませんか？それまでにお手伝いできます — English "do you have to leave in a few days because I'll be able to help you?" is incoherent
+S0274L02U02	DELETE
+# S0274L02U06 use → "do you have to leave now because I wanted to help you?" | was: もう出発しなければなりませんか？手伝いたかったのですが — English "do you have to leave now because I wanted to help you?" is incoherent
+S0274L02U06	DELETE
+# S0275L01U06 use → "I'm not going to wait longer because I've got too much work today" | was: もっと長く待てません。今日は仕事が多すぎます — prompt said "can't wait"
+S0275L01U06	今日は仕事が多すぎるので、もっと長く待つつもりはありません
+# S0276L01B05 build → "I want to practise speaking here" | was: ここで一緒に練習したいです — prompt added 一緒に and lacked "speaking"
+S0276L01B05	ここで話す練習をしたいです
+# S0276L01B06 build → "I want to talk with you here" | was: ここで一緒に話しましょう — prompt said "let's talk"
+S0276L01B06	ここであなたと話したいです
+# S0276L03U05 use → "I can stay here for a little longer because I'm going to leave in a few days" | was: ここにもう少し長くいられます。数日後に出発する予定です — prompt lacked the "because" link
+S0276L03U05	数日後に出るつもりなので、ここにもう少し長くいられます
+# S0276L03U06 use → "I can stay today so I'd like to practise speaking with you" | was: 今日はいられます。一緒に練習しましょう — prompt said "let's practise together"
+S0276L03U06	今日はいられるので、あなたと話す練習をしたいです
+# KEEP S0277L02B05 | 月の初めに来られますか？ | are you going to come early? — "are you going to come early?" BUILD; a prompt carrying the LEGO の初めに cannot say just "early" — UNSURE, left for the gate
+# S0277L04U07 use → "I've got something important to tell you can you stay here for a little longer?" | was: 言いたいことがあります。ここで待っていられますか？ — English "I've got something important to tell you can you stay here for a little longer?" is a run-on
+S0277L04U07	DELETE
+# KEEP S0286L01U07 | 英語を話すのが好きな人たちと話す機会を楽しんでいます | I enjoy the chance to talk to people who like speaking English — prompt matches "I enjoy the chance to talk to people who like speaking English" (false flag)
+# S0288L01U07 use → "most people I know like watching television. she speaks English so she likes people who like speaking English" | was: 私が知っている人のほとんどはテレビを見るのが好きです。彼女は英語を話しますし、英語を話すのが好きな人たちが好きです — prompt listed facts; English is "so"
+S0288L01U07	私が知っている人のほとんどはテレビを見るのが好きです。彼女は英語を話すので、英語を話すのが好きな人たちが好きです
+# S0291L01U07 use → "I hope I'll be able to speak better soon. she speaks English so I want to speak with her" | was: もうすぐもっと上手に話せるようになるといいです。彼女は英語を話しますし、一緒に英語で話したいです — prompt listed facts; English is "so … with her"
+S0291L01U07	もうすぐもっと上手に話せるようになるといいです。彼女は英語を話すので、彼女と話したいです
+# S0291L01U10 use → "I hope I'll be able to speak better soon. if she's going to be there this afternoon we can speak together" | was: もうすぐもっと上手に話せるようになるといいです。今日の午後彼女がそこにいると一緒に話す練習ができます — prompt said "practise"
+S0291L01U10	もうすぐもっと上手に話せるようになるといいです。今日の午後彼女がそこにいるなら、一緒に話せます
+# S0294L01B01 build → "I don't have enough time to call you tonight" | was: 今夜あなたに電話する時間がありません — prompt lacked "enough"
+S0294L01B01	今夜あなたに電話する十分な時間がありません
+# S0294L02U02 use → "do you have enough time to practise speaking?" | was: 英語を練習する十分な時間がありますか — prompt said "practise English"
+S0294L02U02	話す練習をする十分な時間がありますか？
+# S0297L01B04 build → "I don't know many people who speak English and I want to meet some" | was: 英語を話す人をあまり知らないので会いたいです — prompt said "so"; English is "and … some"
+S0297L01B04	英語を話す人をあまり知りませんし、何人かに会いたいです
+# S0297L01U02 use → "I don't know many people who speak English and I want to meet some" | was: 英語を話す人をあまり知らないので会いたいです — same English as B04
+S0297L01U02	英語を話す人をあまり知りませんし、何人かに会いたいです
+# S0299L01U06 use → "I said he wants to pay half" | was: 彼は半分払いたいと言いました — prompt lacked "I"
+S0299L01U06	彼は半分払いたいと私は言いました
+# S0300L01U10 use → "she seems to know what you mean" | was: あなたの言っていることがわかっているように見えます — prompt lacked "she"
+S0300L01U10	彼女はあなたの言っていることがわかっているように見えます

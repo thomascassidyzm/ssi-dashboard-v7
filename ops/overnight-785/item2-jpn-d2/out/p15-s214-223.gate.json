@@ -1,0 +1,303 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p15-s214-223.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:35.337Z",
+ "seeds": {
+  "216": {
+   "before": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I saw a few friends\", \"I saw a few friends\""
+   ],
+   "after": [
+    "L2: 2 duplicate phrase(s) within this LEGO: \"I saw a few friends\", \"I saw a few friends\""
+   ],
+   "newFailures": []
+  },
+  "218": {
+   "before": [
+    "L2: 4 duplicate phrase(s) within this LEGO: \"didn't do much\", \"didn't do much\", \"I didn't do much at the weekend\"",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: 4 duplicate phrase(s) within this LEGO: \"didn't do much\", \"didn't do much\", \"I didn't do much at the weekend\"",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "219": {
+   "before": [
+    "L2: 2 phrase(s) fail containment",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it was nice to relax for a while\"",
+    "L3: 1 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L2: 2 phrase(s) fail containment",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it was nice to relax for a while\"",
+    "L3: 1 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "222": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"trying to tell\", \"he's trying to tell me what he wants\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"trying to tell\", \"he's trying to tell me what he wants\""
+   ],
+   "newFailures": []
+  },
+  "223": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"going to ask\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"going to ask\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0216L02B07",
+   "seed": 216,
+   "role": "build",
+   "target": "I saw a few friends today and we had a good time",
+   "old": "今日友達に何人か会いました",
+   "new": "今日友達に何人か会って、楽しい時間を過ごしました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0218L02U08",
+   "seed": 218,
+   "role": "use",
+   "target": "I didn't do much, I just wanted to relax",
+   "old": "あまり何もしませんでした。ただリラックスしていました",
+   "new": "あまり何もしませんでした。ただリラックスしたかったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0218L03B02",
+   "seed": 218,
+   "role": "build",
+   "target": "no I didn't do much on sunday",
+   "old": "私は日曜日はあまり何もしませんでした",
+   "new": "いいえ、日曜日はあまり何もしませんでした",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L01U06",
+   "seed": 219,
+   "role": "use",
+   "target": "it was nice to relax for a while together",
+   "old": "しばらくリラックスできて良かったです",
+   "new": "しばらく一緒にリラックスできて良かったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L01U12",
+   "seed": 219,
+   "role": "use",
+   "target": "it was nice to relax with my friends for a while",
+   "old": "友達と一緒にリラックスできて良かったです",
+   "new": "しばらく友達と一緒にリラックスできて良かったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L01U13",
+   "seed": 219,
+   "role": "use",
+   "target": "I'm going to relax for a while today",
+   "old": "今日はリラックスするつもりです",
+   "new": "今日はしばらくリラックスするつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L01U14",
+   "seed": 219,
+   "role": "use",
+   "target": "I think we should all relax for a while",
+   "old": "みんなリラックスすべきだと思います",
+   "new": "みんなしばらくリラックスした方がいいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L02U10",
+   "seed": 219,
+   "role": "use",
+   "target": "it was nice to be with you for a while",
+   "old": "あなたと一緒にいられて良かったです",
+   "new": "しばらくあなたと一緒にいられて良かったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L02U11",
+   "seed": 219,
+   "role": "use",
+   "target": "it was nice to relax for a while and I'd like to do it again",
+   "old": "しばらくリラックスするのは良かったです。また来週やりましょう",
+   "new": "しばらくリラックスするのは良かったです。またやりたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0219L02U13",
+   "seed": 219,
+   "role": "use",
+   "target": "it was nice to do nothing for a while",
+   "old": "何もしない時間があって良かったです",
+   "new": "しばらく何もしないのは良かったです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0222L01U03",
+   "seed": 222,
+   "role": "use",
+   "target": "he is trying to tell you something in English",
+   "old": "彼は英語で伝えようとしています",
+   "new": "彼は英語であなたに何か伝えようとしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0222L01U04",
+   "seed": 222,
+   "role": "use",
+   "target": "I'm not sure what he is trying to tell us at the moment",
+   "old": "何を伝えようとしているのかわかりません",
+   "new": "今、彼が私たちに何を伝えようとしているのかわかりません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0222L01U06",
+   "seed": 222,
+   "role": "use",
+   "target": "that isn't what I'm trying to tell you at the moment",
+   "old": "それは私が伝えようとしていることではありません",
+   "new": "それは今私があなたに伝えようとしていることではありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0222L01U08",
+   "seed": 222,
+   "role": "use",
+   "target": "I'm trying to tell you that I think it's a good thing",
+   "old": "私はあなたに良いことを伝えようとしています",
+   "new": "それはいいことだと思うと、あなたに伝えようとしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0222L01U10",
+   "seed": 222,
+   "role": "use",
+   "target": "my friend was trying to tell me something a while ago",
+   "old": "友達が何かを伝えようとしていました",
+   "new": "さっき友達が私に何か伝えようとしていました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0222L01U14",
+   "seed": 222,
+   "role": "use",
+   "target": "I want to know what he is trying to tell us about that",
+   "old": "彼は何を伝えようとしているのか気になります",
+   "new": "それについて彼が私たちに何を伝えようとしているのか知りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01B05",
+   "seed": 223,
+   "role": "build",
+   "target": "going to ask where she wants to go",
+   "old": "どこで会いたいか聞くつもりです",
+   "new": "どこに行きたいか聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U05",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask my friend about that this evening",
+   "old": "友達に聞くつもりです",
+   "new": "今晩それについて友達に聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U07",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask her about it tomorrow morning",
+   "old": "明日午前中に聞くつもりです",
+   "new": "明日の朝それについて彼女に聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U08",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask you something before you leave this morning",
+   "old": "出発前に何か聞くつもりです",
+   "new": "今朝あなたが出る前に、あなたに何か聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U09",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask where she wants to meet on saturday night",
+   "old": "彼女はどこで会いたいか聞くつもりです",
+   "new": "土曜日の夜、彼女がどこで会いたいか聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U11",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask my teacher what to do next week",
+   "old": "先生に聞くつもりです",
+   "new": "来週何をすればいいか先生に聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U12",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask when you want to start talking more",
+   "old": "いつ始めるか聞くつもりです",
+   "new": "いつもっと話し始めたいか聞くつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0223L01U15",
+   "seed": 223,
+   "role": "use",
+   "target": "I'm going to ask her to speak English with me more often",
+   "old": "彼女に英語で話してもらうように聞くつもりです",
+   "new": "もっと頻繁に私と英語で話してくれるように彼女に頼むつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}

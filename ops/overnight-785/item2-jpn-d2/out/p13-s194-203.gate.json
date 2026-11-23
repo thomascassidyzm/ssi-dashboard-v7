@@ -1,0 +1,223 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p13-s194-203.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:33:27.996Z",
+ "seeds": {
+  "197": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"my son\", \"my son\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"my son\", \"my son\"",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "199": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"used to\", \"my friend used to work in an office\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"used to\", \"my friend used to work in an office\""
+   ],
+   "newFailures": []
+  },
+  "203": {
+   "before": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what would you do?\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 1 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"what would you do?\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0197L01U01",
+   "seed": 197,
+   "role": "use",
+   "target": "My son wants to be able to speak English as soon as he can",
+   "old": "私の息子は英語を話せるようになりたいと思っています",
+   "new": "私の息子はできるだけすぐ英語を話せるようになりたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0197L01U03",
+   "seed": 197,
+   "role": "use",
+   "target": "I think my son is not ready to have a conversation in English yet",
+   "old": "私の息子はまだ準備ができていないと思います",
+   "new": "私の息子はまだ英語で会話をする準備ができていないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0197L01U15",
+   "seed": 197,
+   "role": "use",
+   "target": "my son said he wanted to ask you something when he saw you yesterday",
+   "old": "私の息子はあなたに何か聞きたいことがあると言っていました",
+   "new": "私の息子は、昨日あなたに会ったとき、何か聞きたかったと言いました",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0199L01U13",
+   "seed": 199,
+   "role": "use",
+   "target": "he used to work in an office but now he works as a teacher",
+   "old": "彼は以前毎日オフィスで働いていましたが、今は先生をしています",
+   "new": "彼は以前オフィスで働いていましたが、今は教師として働いています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L01U03",
+   "seed": 203,
+   "role": "use",
+   "target": "if I asked you to help me with anything, would you come?",
+   "old": "もし頼んだら、何でも手伝ってくれますか？",
+   "new": "何でも手伝ってと頼んだら、来てくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L01U05",
+   "seed": 203,
+   "role": "use",
+   "target": "if I asked you to help me before you leave, would you come?",
+   "old": "もし頼んだら、仕事の前に来てもらえますか？",
+   "new": "あなたが出る前に手伝ってと頼んだら、来てくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L01U07",
+   "seed": 203,
+   "role": "use",
+   "target": "do you think you can help if I asked you to help me?",
+   "old": "もし頼んだら、来てもらえると思いますか？",
+   "new": "手伝ってと頼んだら、手伝えると思いますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L01U09",
+   "seed": 203,
+   "role": "use",
+   "target": "if I asked you to help me tomorrow morning, could you come?",
+   "old": "明日手伝ってと頼んだら、来られますか？",
+   "new": "明日の朝手伝ってと頼んだら、来られますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L01U15",
+   "seed": 203,
+   "role": "use",
+   "target": "if I asked you to help me, would you wait for a few minutes?",
+   "old": "もし頼んだら、待ってもらえますか？",
+   "new": "手伝ってと頼んだら、数分待ってくれますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U01",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if I asked you to help me with this?",
+   "old": "もし私が手伝ってと頼んだら、何をしますか？",
+   "new": "これを手伝ってと頼んだら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U03",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if he didn't come to help?",
+   "old": "もし彼が来なかったら、何をしますか？",
+   "new": "彼が手伝いに来なかったら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U06",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if she didn't want to come?",
+   "old": "もし彼女が来なかったら、何をしますか？",
+   "new": "彼女が来たくなかったら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U08",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if I asked you something important?",
+   "old": "もし私が聞いたら、何をしますか？",
+   "new": "私が何か大切なことを聞いたら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U09",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if there was a problem with it?",
+   "old": "もし問題があったら、何をしますか？",
+   "new": "それに問題があったら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U12",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if you didn't know what to say?",
+   "old": "もし分からなかったら、何をしますか？",
+   "new": "何を言えばいいかわからなかったら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U13",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if you couldn't finish in time?",
+   "old": "もし仕事が終わらなかったら、何をしますか？",
+   "new": "間に合うように終えられなかったら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U14",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if she didn't want to talk about it?",
+   "old": "もし彼女が話さなかったら、何をしますか？",
+   "new": "彼女がそれについて話したくなかったら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0203L02U15",
+   "seed": 203,
+   "role": "use",
+   "target": "what would you do if I asked you to help me next week?",
+   "old": "もし手伝ってと頼んだら、何をしますか？",
+   "new": "来週手伝ってと頼んだら、何をしますか？",
+   "del": false,
+   "verdict": "PENDING"
+  }
+ ]
+}
