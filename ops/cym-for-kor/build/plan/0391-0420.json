@@ -1,0 +1,584 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 391-420: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules (shortest new LEGO where the source leaned on its older seeds or Korean needs a different unit), glosses in 반말; changes listed in \"changed\" (cs #816·AK for #813·AK)",
+ "changed": {
+  "391:yr un sy’n cerdded": "yr un, sy’n untiled; one unit, sister of yr un sy’n sefyll (390)",
+  "395:dan ni angen": "untiled in source split; taught (104)",
+  "396:bod pawb arall yn barod": "bod, yn untiled and yn barod alone is 이미 (244); Korean 다른 모든 사람이 준비되다 one unit",
+  "400:ydan ni isio": "ydan, ni, isio untiled; question sister of dan ni isio (18)",
+  "400:yn nes ymlaen": "source nes ymlaen + untiled yn; nes ymlaen 나중에 (16) is a different LEGO, so 이따가",
+  "402:ydan": "untiled; yes-answer to do we want, distinct from yndw 응",
+  "402:yn rhywle": "untiled in source split; taught (182)",
+  "403:aros yn ddistaw": "untiled; 조용히 있다 is taken by bod yn ddistaw (34), so 계속 조용히 있다",
+  "403:am mor hir â phosib": "untiled; one unit, like mor aml â phosib (3)",
+  "405:ddylen ni": "ddylen, ni untiled; taught dylen ni (403), mutated form",
+  "407:ddylen ni ddim": "untiled; taught (404)",
+  "408:dylen": "untiled; yes-answer to should we, distinct from yndw 응",
+  "409:be’ dan ni’n gwneud": "untiled; one unit, sister of be’ oeddat ti’n gwneud (107)",
+  "410:efo’i gilydd": "서로 is taken by efo’n gilydd (117), so 자기들끼리",
+  "413:os dan ni’n mynd": "source os + untiled dan ni’n mynd; os is taught as ~지 (10), Korean if-clause 우리가 가면 one unit",
+  "413:yn rhy agos at yr ymyl": "source also had yn rhy agos; one LEGO only",
+  "415:os ti’n gofyn i mi": "source os + untiled ti’n gofyn i mi; Korean if-clause one unit",
+  "417:ydyn nhw isio": "untiled; ydyn nhw is taught as 그들은 ~이야 (87), so question sister of maen nhw isio (209)",
+  "418:maen nhw angen": "untiled; one frame like dan ni angen (104)",
+  "419:os ydyn nhw isio i": "source os + untiled; Korean if-clause frame one unit",
+  "419:licio nhw": "untiled; Korean 그들을 좋아하다 one unit",
+  "420:pa mor hen ydy o": "source pa mor hen + untiled ydy o; Korean 그가 몇 살인지 one unit"
+ },
+ "seeds": {
+  "391": {
+   "legos": [
+    {
+     "cy": "yr un sy’n cerdded",
+     "ko": "걸어가고 있는 사람",
+     "type": "A"
+    },
+    {
+     "cy": "tuag at y bws",
+     "ko": "버스 쪽으로",
+     "type": "A"
+    }
+   ]
+  },
+  "392": {
+   "legos": [
+    {
+     "cy": "y plentyn ’na",
+     "ko": "그 아이",
+     "type": "A"
+    },
+    {
+     "cy": "efo’r gwallt du",
+     "ko": "검은 머리의",
+     "type": "A"
+    },
+    {
+     "cy": "gyferbyn â’r swyddfa bost",
+     "ko": "우체국 맞은편에 있는",
+     "type": "A"
+    }
+   ]
+  },
+  "393": {
+   "legos": [
+    {
+     "cy": "yr hogyn ’na",
+     "ko": "그 남자아이",
+     "type": "A"
+    },
+    {
+     "cy": "efo’r crys gwyrdd",
+     "ko": "초록색 셔츠를 입은",
+     "type": "A"
+    }
+   ]
+  },
+  "394": {
+   "legos": [
+    {
+     "cy": "yr hogan ’na",
+     "ko": "그 여자아이",
+     "type": "A"
+    },
+    {
+     "cy": "efo’r ffrog felen",
+     "ko": "노란 원피스를 입은",
+     "type": "A"
+    }
+   ]
+  },
+  "395": {
+   "legos": [
+    {
+     "cy": "dan ni angen",
+     "ko": "우리는 ~ㄹ 필요가 있어",
+     "type": "A"
+    },
+    {
+     "cy": "troi i’r chwith",
+     "ko": "왼쪽으로 돌다",
+     "type": "A"
+    },
+    {
+     "cy": "wrth y gornel nesa’",
+     "ko": "다음 모퉁이에서",
+     "type": "A"
+    }
+   ]
+  },
+  "396": {
+   "legos": [
+    {
+     "cy": "dan ni ddim angen",
+     "ko": "우리는 ~ㄹ 필요가 없어",
+     "type": "A"
+    },
+    {
+     "cy": "sefyll",
+     "ko": "서 있다",
+     "type": "A"
+    },
+    {
+     "cy": "tan",
+     "ko": "~까지",
+     "type": "A"
+    },
+    {
+     "cy": "bod pawb arall yn barod",
+     "ko": "다른 모든 사람이 준비되다",
+     "type": "A"
+    }
+   ]
+  },
+  "397": {
+   "legos": [
+    {
+     "cy": "ydan ni angen",
+     "ko": "우리 ~ㄹ 필요가 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "paratoi’n fuan",
+     "ko": "머지않아 준비하다",
+     "type": "A"
+    }
+   ]
+  },
+  "398": {
+   "legos": [
+    {
+     "cy": "dan ni isio",
+     "ko": "우리는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "dod yn fwy amyneddgar",
+     "ko": "더 참을성 있는 사람이 되다",
+     "type": "A"
+    },
+    {
+     "cy": "efo’n plant ni",
+     "ko": "우리 아이들에게",
+     "type": "A"
+    }
+   ]
+  },
+  "399": {
+   "legos": [
+    {
+     "cy": "dan ni ddim isio",
+     "ko": "우리는 ~고 싶지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "colli gobaith",
+     "ko": "희망을 잃다",
+     "type": "A"
+    }
+   ]
+  },
+  "400": {
+   "legos": [
+    {
+     "cy": "ydan ni isio",
+     "ko": "우리 ~고 싶어?",
+     "type": "A"
+    },
+    {
+     "cy": "bwyta",
+     "ko": "먹다",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth",
+     "ko": "무언가",
+     "type": "A"
+    },
+    {
+     "cy": "yn nes ymlaen",
+     "ko": "이따가",
+     "type": "A"
+    }
+   ]
+  },
+  "401": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "byddai’n well",
+     "ko": "~는 게 더 좋을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "mynd yn syth adre",
+     "ko": "곧장 집에 가다",
+     "type": "A"
+    }
+   ]
+  },
+  "402": {
+   "legos": [
+    {
+     "cy": "ydan",
+     "ko": "응 그러자",
+     "type": "A"
+    },
+    {
+     "cy": "byddai’n braf",
+     "ko": "~면 좋을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "stopio",
+     "ko": "멈추다",
+     "type": "A"
+    },
+    {
+     "cy": "yn rhywle",
+     "ko": "어디선가",
+     "type": "A"
+    },
+    {
+     "cy": "am fwyd",
+     "ko": "밥 먹으러",
+     "type": "A"
+    }
+   ]
+  },
+  "403": {
+   "legos": [
+    {
+     "cy": "dylen ni",
+     "ko": "우리는 ~하는 게 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "aros yn ddistaw",
+     "ko": "계속 조용히 있다",
+     "type": "A"
+    },
+    {
+     "cy": "am mor hir â phosib",
+     "ko": "가능한 한 오래",
+     "type": "A"
+    }
+   ]
+  },
+  "404": {
+   "legos": [
+    {
+     "cy": "ddylen ni ddim",
+     "ko": "우리는 ~지 않는 게 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "disgwyl",
+     "ko": "예상하다",
+     "type": "A"
+    },
+    {
+     "cy": "gorffen",
+     "ko": "끝내다",
+     "type": "A"
+    },
+    {
+     "cy": "cyn dydd Iau",
+     "ko": "목요일 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "405": {
+   "legos": [
+    {
+     "cy": "ddylen ni",
+     "ko": "우리는 ~하는 게 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "ofyn",
+     "ko": "묻다",
+     "type": "A"
+    },
+    {
+     "cy": "os oes rhaid i ni archebu",
+     "ko": "우리가 예약해야 하는지",
+     "type": "A"
+    }
+   ]
+  },
+  "406": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n siŵr",
+     "ko": "나는 ~라고 확신해",
+     "type": "A"
+    },
+    {
+     "cy": "y bydd o’n iawn",
+     "ko": "괜찮을 거라고",
+     "type": "A"
+    }
+   ]
+  },
+  "407": {
+   "legos": [
+    {
+     "cy": "ddylen ni ddim",
+     "ko": "우리는 ~지 않는 게 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "trio",
+     "ko": "노력하다",
+     "type": "A"
+    },
+    {
+     "cy": "gosod esiampl dda",
+     "ko": "좋은 본보기를 보이다",
+     "type": "A"
+    }
+   ]
+  },
+  "408": {
+   "legos": [
+    {
+     "cy": "dylen",
+     "ko": "응 그래야지",
+     "type": "A"
+    },
+    {
+     "cy": "dyna’r ffordd orau",
+     "ko": "그게 가장 좋은 방법이야",
+     "type": "A"
+    },
+    {
+     "cy": "i greu teulu hapus",
+     "ko": "행복한 가족을 만드는",
+     "type": "A"
+    }
+   ]
+  },
+  "409": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "does dim ots",
+     "ko": "상관없어",
+     "type": "A"
+    },
+    {
+     "cy": "be’ dan ni’n gwneud",
+     "ko": "우리가 무엇을 하든",
+     "type": "A"
+    }
+   ]
+  },
+  "410": {
+   "legos": [
+    {
+     "cy": "maen nhw’n dal i gwffio",
+     "ko": "그들은 아직도 싸워",
+     "type": "A"
+    },
+    {
+     "cy": "efo’i gilydd",
+     "ko": "자기들끼리",
+     "type": "A"
+    }
+   ]
+  },
+  "411": {
+   "legos": [
+    {
+     "cy": "bydden ni’n licio",
+     "ko": "우리는 ~면 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "archebu bwrdd",
+     "ko": "자리를 예약하다",
+     "type": "A"
+    },
+    {
+     "cy": "i bedwar",
+     "ko": "네 명",
+     "type": "A"
+    },
+    {
+     "cy": "heno",
+     "ko": "오늘 저녁",
+     "type": "A"
+    }
+   ]
+  },
+  "412": {
+   "legos": [
+    {
+     "cy": "fydden ni ddim yn medru",
+     "ko": "우리는 ~ㄹ 수는 없을 텐데",
+     "type": "A"
+    },
+    {
+     "cy": "gadael iddyn nhw ennill",
+     "ko": "그들이 ~를 이기게 두다",
+     "type": "A"
+    },
+    {
+     "cy": "popeth",
+     "ko": "모든 것",
+     "type": "A"
+    }
+   ]
+  },
+  "413": {
+   "legos": [
+    {
+     "cy": "mi fydden ni’n medru disgyn",
+     "ko": "우리는 떨어질 수 있을 텐데",
+     "type": "A"
+    },
+    {
+     "cy": "os dan ni’n mynd",
+     "ko": "우리가 가면",
+     "type": "A"
+    },
+    {
+     "cy": "yn rhy agos at yr ymyl",
+     "ko": "가장자리에 너무 가까이",
+     "type": "A"
+    }
+   ]
+  },
+  "414": {
+   "legos": [
+    {
+     "cy": "gawn ni",
+     "ko": "우리 ~ 받을 수 있을까?",
+     "type": "A"
+    },
+    {
+     "cy": "botel o win coch",
+     "ko": "레드 와인 한 병",
+     "type": "A"
+    },
+    {
+     "cy": "os gwelwch yn dda",
+     "ko": "부탁해",
+     "type": "A"
+    }
+   ]
+  },
+  "415": {
+   "legos": [
+    {
+     "cy": "fyddai hynna ddim yn broblem",
+     "ko": "그건 문제가 되지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "os ti’n gofyn i mi",
+     "ko": "네가 나에게 물어본다면",
+     "type": "A"
+    }
+   ]
+  },
+  "416": {
+   "legos": [
+    {
+     "cy": "maen nhw isio",
+     "ko": "그들은 ~고 싶어해",
+     "type": "A"
+    },
+    {
+     "cy": "arwain y ffordd",
+     "ko": "길을 이끌다",
+     "type": "A"
+    },
+    {
+     "cy": "flwyddyn nesa’",
+     "ko": "내년에",
+     "type": "A"
+    }
+   ]
+  },
+  "417": {
+   "legos": [
+    {
+     "cy": "ydyn nhw isio",
+     "ko": "그들 ~고 싶어해?",
+     "type": "A"
+    },
+    {
+     "cy": "lladd y morgrug ’na",
+     "ko": "그 개미들을 죽이다",
+     "type": "A"
+    }
+   ]
+  },
+  "418": {
+   "legos": [
+    {
+     "cy": "maen nhw angen",
+     "ko": "그들은 ~ㄹ 필요가 있어",
+     "type": "A"
+    },
+    {
+     "cy": "gwasanaethu’r gymuned",
+     "ko": "지역 사회에 봉사하다",
+     "type": "A"
+    }
+   ]
+  },
+  "419": {
+   "legos": [
+    {
+     "cy": "os ydyn nhw isio i",
+     "ko": "만약 그들이 ~하기를 원한다면",
+     "type": "A"
+    },
+    {
+     "cy": "bobl",
+     "ko": "사람들",
+     "type": "A"
+    },
+    {
+     "cy": "licio nhw",
+     "ko": "그들을 좋아하다",
+     "type": "A"
+    }
+   ]
+  },
+  "420": {
+   "legos": [
+    {
+     "cy": "dydyn nhw ddim angen",
+     "ko": "그들은 ~ㄹ 필요가 없어",
+     "type": "A"
+    },
+    {
+     "cy": "gofyn",
+     "ko": "묻다",
+     "type": "A"
+    },
+    {
+     "cy": "pa mor hen ydy o",
+     "ko": "그가 몇 살인지",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}
