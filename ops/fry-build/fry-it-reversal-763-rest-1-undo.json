@@ -1,0 +1,745 @@
+{
+ "course_code": "fry_for_eng",
+ "event_id": "1bb5108d-e521-4c43-ba6e-8e6ae2dab781",
+ "actor": "kai-763-fry-it-reversal",
+ "created_at": "2026-11-23T09:46:45.353Z",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"undo_file\":\"2026-11-23T09-46-45-353Z-1bb5108d-e521-4c43-ba6e-8e6ae2dab781.json\",\"apply\":true}",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01U05",
+   "set": {
+    "known_text": "I only want to know when he's ready",
+    "known_audio_id": "557f2075-fb2d-4379-b66b-80e9107c7166"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01U02",
+   "set": {
+    "known_text": "I only want to know after we finish and then I'll relax",
+    "known_audio_id": "a44f53d9-96c3-40be-882a-af6c8d3c4053"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01U04",
+   "set": {
+    "known_text": "I only want to know when it's time to go",
+    "known_audio_id": "374b734c-a9bf-4275-bf47-04777be8458a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01U03",
+   "set": {
+    "known_text": "I only want to know when I'm ready",
+    "known_audio_id": "8fab5a4f-bf40-4c46-a547-89edfc0c8d29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01U01",
+   "set": {
+    "known_text": "I'm too busy and I only want to know before you leave",
+    "known_audio_id": "f097e14b-1736-4356-9c32-5678e8f21598"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01B02",
+   "set": {
+    "known_text": "I only want to know before you leave",
+    "known_audio_id": "a4da9c01-72df-41c3-a62d-b45970386b48"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01B03",
+   "set": {
+    "known_text": "I only want to know when you're ready",
+    "known_audio_id": "3e6bc927-b84c-4752-bc8c-a84644d0e504"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L01B01",
+   "set": {
+    "known_text": "I only want to know after we finish",
+    "known_audio_id": "039c9e2d-4399-4475-b76c-3ff5384dce50"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cd5075be-ce93-476a-bb9d-14f7b7015b48",
+   "set": {
+    "known_text": "I only want to know",
+    "known_audio_id": "c868a208-85d9-47c0-a525-6a2796643750",
+    "presentation_audio_id": "48e64205-88fc-40d8-a172-e53f33b832d8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 251,
+   "set": {
+    "known_text": "I only want to know once we're finished.",
+    "known_audio_id": "e80b1ec3-5456-4500-9645-a65eadacc895"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0244L01U02",
+   "set": {
+    "known_text": "this isn't very difficult and I've learnt a lot already since we tried",
+    "known_audio_id": "9b25e8d3-3450-4e7b-8cbe-471273d14dd3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0244L01B01",
+   "set": {
+    "known_text": "I've learnt a lot already since we tried",
+    "known_audio_id": "aa2c6c04-73e8-4148-b856-8becfc77b975"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0236L01U03",
+   "set": {
+    "known_text": "I don't know yet but I know someone",
+    "known_audio_id": "ba72ed6d-5d51-45ab-a48e-0a18363ae87c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0221L01U03",
+   "set": {
+    "known_text": "I would have seen the football if I had known",
+    "known_audio_id": "549ead6d-9b96-4ca6-9a4b-993b569f2e9b"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "10d948fc-0d3e-4489-9ac3-34832134b64a",
+   "set": {
+    "known_text": "we don't know",
+    "known_audio_id": "5c73a436-0d5b-4248-acd6-ea949a00ae61",
+    "presentation_audio_id": "34992ebb-41fd-4bb9-872e-b90620235e45"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0196L02B03",
+   "set": {
+    "known_text": "I don't know yet, have you heard the latest idea?",
+    "known_audio_id": "595b0474-1919-4192-92c0-5af2599e35f3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0190L02U05",
+   "set": {
+    "known_text": "I don't know yet but I have some questions",
+    "known_audio_id": "65077ed8-2591-45e1-8f03-d253f0979e4f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0179L02U01",
+   "set": {
+    "known_text": "I don't know yet, what are you going to do?",
+    "known_audio_id": "af3ba315-9481-4a7a-a554-baf73b92b8eb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L01U01",
+   "set": {
+    "known_text": "I don't know yet but I'll ask her",
+    "known_audio_id": "a794613f-03f8-42f0-8951-b1ee5d9015bf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U02",
+   "set": {
+    "known_text": "I can't remember but I'll ask him where it was",
+    "known_audio_id": "50df2689-ace1-463f-b173-73b2c75bdcc6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U01",
+   "set": {
+    "known_text": "I don't know yet but I'll ask him what I need to do",
+    "known_audio_id": "bb2646c2-3015-42a7-8590-a25a73c36a21"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0176L02U03",
+   "set": {
+    "known_text": "I don't understand but I'll ask him what the answer is",
+    "known_audio_id": "f5dce30a-93a5-4fde-950b-15ef9f8122ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0175L01U03",
+   "set": {
+    "known_text": "I don't know yet, what do you want to do?",
+    "known_audio_id": "1ea8716c-0704-404c-9635-8afbf8dcf1d9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01U02",
+   "set": {
+    "known_text": "I'm trying to explain what I mean can you understand?",
+    "known_audio_id": "1c59239b-ffb0-42ca-b916-756d33f6494a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01B03",
+   "set": {
+    "known_text": "it's difficult can you understand?",
+    "known_audio_id": "894ab6da-0f4b-43dc-92f2-c8d264e98603"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "8a5a2835-9ead-4ff7-9946-6bf4dccfd17c",
+   "set": {
+    "known_text": "can you understand",
+    "known_audio_id": "96ae50f5-fd3f-4f58-8e99-1bf8b54aaf81",
+    "presentation_audio_id": "c17d558f-b04c-4f4e-827e-4dcf91b95d82"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0170L01U02",
+   "set": {
+    "known_text": "I don't understand, I would like that you speak a little more slowly",
+    "known_audio_id": "3228fbc4-e29f-43ef-8a10-49fc72a66c1a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0169L03U02",
+   "set": {
+    "known_text": "I don't understand, what do you want that I do?",
+    "known_audio_id": "f7b1497b-01b7-47d8-98cb-603c10dafa25"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0154L02U05",
+   "set": {
+    "known_text": "I don't know yet, where do you want to meet?",
+    "known_audio_id": "0bcb9ef7-e597-4e15-b8de-21fd4b9c3343"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0153L02U05",
+   "set": {
+    "known_text": "I wouldn't have said it if I had known",
+    "known_audio_id": "015fce4a-f57e-4478-a999-b93c213509e7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L02U05",
+   "set": {
+    "known_text": "I would have helped you if I had known",
+    "known_audio_id": "f25d0673-b11e-4d88-b8f2-120114755b69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L02U01",
+   "set": {
+    "known_text": "I would have done it differently if I had known",
+    "known_audio_id": "2160e87b-1ae1-45fd-85a0-7a3c7a002e6e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0152L02U02",
+   "set": {
+    "known_text": "if I had known, I would have done it differently",
+    "known_audio_id": "13af7830-bb32-4677-9b08-d171c6ab6fcd"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "151a7608-9e00-4c14-9d31-7ef48030abe4",
+   "set": {
+    "known_text": "if I had known",
+    "known_audio_id": "973298c8-9872-4d98-967d-a5cc6c4f232c",
+    "presentation_audio_id": "7e7ea766-6297-4b7d-b456-994cc4fb22ab"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0151L01U05",
+   "set": {
+    "known_text": "I don't understand, that wasn't what you said",
+    "known_audio_id": "9342a76a-e0a4-4ad8-986a-7b58cd37d941"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L02U03",
+   "set": {
+    "known_text": "if you know can you tell me where it was",
+    "known_audio_id": "b49398ad-60af-4947-a505-a397b1423265"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L02B04",
+   "set": {
+    "known_text": "if you know can you tell me",
+    "known_audio_id": "06a6a8cc-ae5b-4c10-9b5a-e20f775f01e4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0150L02B03",
+   "set": {
+    "known_text": "I don't understand but can you tell me",
+    "known_audio_id": "78506a52-57fb-4864-8196-c6b51920828e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02U05",
+   "set": {
+    "known_text": "it's getting easier since we tried",
+    "known_audio_id": "3a6c198f-44a4-42cd-b1e7-19e2cc84b17f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02U04",
+   "set": {
+    "known_text": "I've learnt a lot since we tried",
+    "known_audio_id": "0dfeeb0c-ba29-45d9-9da6-b211846d2807"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02U03",
+   "set": {
+    "known_text": "I think that I've done a lot since we tried",
+    "known_audio_id": "a8d0edc8-46d5-4173-bda0-7a8394ba5c96"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02B01",
+   "set": {
+    "known_text": "I feel better since we tried",
+    "known_audio_id": "67afe9e4-c12a-44ea-b9eb-02eec121f563"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02B04",
+   "set": {
+    "known_text": "I don't worry about it since we tried",
+    "known_audio_id": "73ebf382-2393-4a8a-84da-cb2f0622a740"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L02B03",
+   "set": {
+    "known_text": "I'm definitely doing better since we tried",
+    "known_audio_id": "19f4e5ca-381f-4244-8ce9-6f908ba0c981"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "e72857c9-b146-4be1-9a24-d66f54c6d0ab",
+   "set": {
+    "known_text": "since we tried",
+    "known_audio_id": "7b2652c3-2f6b-414d-b389-51a0aaf84587",
+    "presentation_audio_id": "22d78660-90cc-430f-8d58-2c3e93cd7111"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0146L01U05",
+   "set": {
+    "known_text": "I don't understand, nothing seems to be working",
+    "known_audio_id": "721078e2-f91d-40a2-98bf-057119b0bee9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0145L01U04",
+   "set": {
+    "known_text": "I don't understand, why are you not happy any more?",
+    "known_audio_id": "ad073c6e-c45b-41f7-91af-c279a89d4ce6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L02B03",
+   "set": {
+    "known_text": "I can't remember but of course you can ask her",
+    "known_audio_id": "2a5b04c7-a49c-4312-ba84-dbe9117b6775"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0136L02B02",
+   "set": {
+    "known_text": "I don't know yet but of course you can ask her",
+    "known_audio_id": "7dda0f82-27e7-40ac-ad18-aa868fd0ee2b"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c03b5489-96f8-4056-b809-59ed968887a0",
+   "set": {
+    "known_text": "I don't know",
+    "known_audio_id": "86c49931-9b02-4a69-b292-3be7cfcfe293",
+    "presentation_audio_id": "4305672c-99ef-4879-bec4-aab50e1c4b43"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0113L01U02",
+   "set": {
+    "known_text": "I have learnt a few new words but why don't I know any more",
+    "known_audio_id": "f7e3b254-65c4-4a23-b239-a3ffe264f066"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0113L01B02",
+   "set": {
+    "known_text": "and why don't I know any more?",
+    "known_audio_id": "c4ad73c3-58e6-48bb-86a2-38247dc280ae"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "841d8a58-cd47-4083-8156-1965cfb6b117",
+   "set": {
+    "known_text": "why don't I know any more",
+    "known_audio_id": "c8055750-7ba9-4174-9857-c59e96a0a7ab",
+    "presentation_audio_id": "703932d0-eaaa-4460-b4d6-230c2efb065d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0104L01U02",
+   "set": {
+    "known_text": "I don't understand but we need to ask",
+    "known_audio_id": "847fbcdd-4c7d-4b8c-861e-988631af525d"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7d51dcb9-147c-42bc-b37d-2bc022b99c69",
+   "set": {
+    "known_text": "we're not trying",
+    "known_audio_id": "3c90d3d9-d0f4-4e55-859a-73a47447ccbd",
+    "presentation_audio_id": "1c6adc2d-f221-483f-811f-120f09980f62"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0092L03U01",
+   "set": {
+    "known_text": "I don't know yet but I would like to try again",
+    "known_audio_id": "6ce8837a-43e8-46ad-b44b-0427ddd08ec0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L01U01",
+   "set": {
+    "known_text": "I don't know yet but it's difficult",
+    "known_audio_id": "fd398e76-7459-44d8-8566-c8d72f6b7c5a"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "762bbd9d-00f1-4113-8f57-a6c9a8d35374",
+   "set": {
+    "known_text": "I don't understand",
+    "known_audio_id": "2b6ed3ce-a6ac-403c-84a5-ad68e28d5d32",
+    "presentation_audio_id": "8f45b636-710b-44d1-ae78-eab772211268"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U01",
+   "set": {
+    "known_text": "I'm not trying to understand",
+    "known_audio_id": "b146515b-f94e-481b-9c4f-4db8ce9c3dcd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U02",
+   "set": {
+    "known_text": "I'm trying to understand but I'm a little tired",
+    "known_audio_id": "0a9f3f3c-6d54-4c1d-aa9b-13ea2e19edd0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U06",
+   "set": {
+    "known_text": "are you going to help me to understand after you finish talking?",
+    "known_audio_id": "dbadd55c-978b-4bcd-b43c-35dda9322cd7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U04",
+   "set": {
+    "known_text": "I'd like to read the story to understand",
+    "known_audio_id": "a7b69559-17ce-460a-ad7b-1285129ef5f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U03",
+   "set": {
+    "known_text": "I'm trying to understand before I have to go",
+    "known_audio_id": "6f3cde93-5813-4d76-a4c1-23cef0edf373"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U05",
+   "set": {
+    "known_text": "to understand I'm going to read the story this evening",
+    "known_audio_id": "79c1ea00-1864-47ce-9478-e427d9643db3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02B03",
+   "set": {
+    "known_text": "I'm going to do my best to understand",
+    "known_audio_id": "cba0d300-cc67-485c-9089-03d164590b9a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02B04",
+   "set": {
+    "known_text": "to understand I'm going to ask now",
+    "known_audio_id": "3bbb7e12-7cfd-482b-adc1-a0a593cd2230"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02B02",
+   "set": {
+    "known_text": "are you going to help me to understand?",
+    "known_audio_id": "587fea02-a79f-40fa-9276-0ec7e66afcc9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02B01",
+   "set": {
+    "known_text": "I'm trying to understand",
+    "known_audio_id": "41bc54b1-b04d-463c-94e8-0ed5ce97d242"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "38c5ff61-99ae-4e31-a08d-376186a92691",
+   "set": {
+    "known_text": "to understand",
+    "known_audio_id": "87cf3e22-972c-4b0d-a77b-b93610f30e15",
+    "presentation_audio_id": "0d140e49-126c-46e3-ab46-a17a16dc8b4c"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 74,
+   "set": {
+    "known_text": "Thank you very much for helping me to understand.",
+    "known_audio_id": "8636b4a6-4273-4515-beb4-5bf26bec1878"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0068L02U01",
+   "set": {
+    "known_text": "I don't know yet, what are you looking for here?",
+    "known_audio_id": "b0850b09-d35b-4955-a394-45235d0822fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0067L01U06",
+   "set": {
+    "known_text": "I don't know yet, do you want to come back later on?",
+    "known_audio_id": "d144295b-b9c3-41da-b67d-11984b4742dd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0066L02U06",
+   "set": {
+    "known_text": "I'm trying to find the answer but I can't remember",
+    "known_audio_id": "4272685f-5dd2-46ef-9a92-d40ea496ce98"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01B03",
+   "set": {
+    "known_text": "I can't remember, are you sure?",
+    "known_audio_id": "c9af7d7b-5c94-4c24-b370-0ca20379e139"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U03",
+   "set": {
+    "known_text": "she wants to know but I don't know yet",
+    "known_audio_id": "d860306d-51ee-4157-9692-93880549de7a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U04",
+   "set": {
+    "known_text": "I don't know yet but I'm going to do my best",
+    "known_audio_id": "b308b158-24cb-4a2e-93b5-513e53a69dd6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U02",
+   "set": {
+    "known_text": "I don't know yet and I don't care",
+    "known_audio_id": "a9ebd140-cdbc-4721-87e4-4563b0d7b7a7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U06",
+   "set": {
+    "known_text": "I can't remember and I don't know yet what the answer is",
+    "known_audio_id": "324686b1-16a3-4919-860a-325e4bb7365d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U07",
+   "set": {
+    "known_text": "I don't know yet but I'd like a little more time",
+    "known_audio_id": "6baac725-cfd1-443e-8e31-2d07358b1c1e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U01",
+   "set": {
+    "known_text": "I've been learning for about a week but I don't know yet",
+    "known_audio_id": "dbc5d2de-9734-4171-8232-c16889f3a955"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01B03",
+   "set": {
+    "known_text": "I'm trying but I don't know yet",
+    "known_audio_id": "19740ce2-5a5d-4356-af4e-e5cafd381af0"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c84281b1-cdec-4b61-9bcf-d311ae36ff0a",
+   "set": {
+    "known_text": "I don't know yet",
+    "known_audio_id": "900c64ac-f996-418d-be19-e9732910ee80",
+    "presentation_audio_id": "1e56a47e-614f-413b-ba28-f33ca197c3b7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L01B01",
+   "set": {
+    "known_text": "I don't know",
+    "known_audio_id": "86c49931-9b02-4a69-b292-3be7cfcfe293"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "eb35d70f-f0e9-4974-9616-eece3a19ab73",
+   "set": {
+    "known_text": "I know",
+    "known_audio_id": "1b6f34c4-8f12-442b-a7ea-4ba97c24ce68",
+    "presentation_audio_id": "a5e8b734-1c93-435e-8ec8-6497c7a1cd2d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0057L01B04",
+   "set": {
+    "known_text": "I'm tired and I can't remember",
+    "known_audio_id": "8131dfe3-12aa-49e2-8826-f01fa80caa8b"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "ac8c86ba-170e-4a1d-95c0-537b6f2734fe",
+   "set": {
+    "known_text": "I can't remember",
+    "known_audio_id": "09e51021-18c5-44c3-9d9b-81cc42af8a8f",
+    "presentation_audio_id": "2ca2979a-b3c3-4b21-8512-e9e7053cc9bf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0050L01B01",
+   "set": {
+    "known_text": "but I'm not trying",
+    "known_audio_id": "48a94544-89f5-4e6c-812d-41bdf6f0063e"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2a19027f-f522-46c2-8bae-c473e23bb845",
+   "set": {
+    "known_text": "I'm not trying",
+    "known_audio_id": "e7587d26-03e2-4714-9a93-65560189a558",
+    "presentation_audio_id": "8c04f7f1-482c-42ac-af52-321ef98fd930"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0049L02U02",
+   "set": {
+    "known_text": "she wants to know what the answer is, if you know",
+    "known_audio_id": "74297aaf-896e-494f-88ec-53289fcdefb6"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "9cb9b81a-83a1-47e1-96c9-b24075b78244",
+   "set": {
+    "known_text": "if you know",
+    "known_audio_id": "1edd3e3c-36c1-4ae7-8d13-5bef2952904e",
+    "presentation_audio_id": "4c68ffb8-35e0-4116-904a-4c292560205c"
+   }
+  }
+ ],
+ "note": "cs #763·AK rest chunk 1 (90 ops): committed server-side while the client saw a failure; copied from Popty undo dir"
+}
