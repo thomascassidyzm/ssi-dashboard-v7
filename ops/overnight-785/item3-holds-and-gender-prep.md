@@ -31,3 +31,9 @@ fails twice ('llm-failed'), the route refuses rather than speaking a possibly-ma
    ONE `course_gender_expansions` row for "não estou mais contente" with expanded_f = expanded_m = null ("no different
    form"). The route then reads it as 'stored' and speaks the text as written, which is correct here. This is a
    Kai-approved content write, not something to do tonight.
+
+## Ruling for the re-run (Kai's Watson, 23 Nov ~22:55Z; settled on Kai's behalf, one sensible option)
+On a later night: first retry with `kit/resume-item3.sh`. If GENDER_PREP_MISSING repeats on S0145L01B03
+"não estou mais contente", store the single "no different form" entry for that exact text (expanded_f = expanded_m =
+null) through Popty's edit route. Do the live pre-check of row + LEGO + seed first, then resume. Any OTHER refusal
+still stops the run and is reported.
