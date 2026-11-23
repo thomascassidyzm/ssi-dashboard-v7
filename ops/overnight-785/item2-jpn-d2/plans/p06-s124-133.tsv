@@ -1,0 +1,324 @@
+# eng_for_jpn seeds 124-133: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 18 flagged rows no longer exist; seed 133 has no flags.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0124L01B04 build → "I thought about it carefully" | was: それについて考えました — prompt lacked "carefully"
+S0124L01B04	それについてよく考えました
+# S0124L02B05 build → "I thought that was a good idea and I was excited" | was: あなたのいい考えだと思いました — prompt said "your good idea" and lacked "and I was excited"
+S0124L02B05	いい考えだと思いましたし、ワクワクしました
+# S0124L02B07 build → "I thought that was a good idea and I agree" | was: それはいい考えだと同意しました — prompt said "agreed"; English is "I thought … and I agree"
+S0124L02B07	いい考えだと思いましたし、同意します
+# S0124L02B08 build → "I thought that was a good idea when she said it" | was: 彼女がいい考えだと思いました — prompt was garbled and lacked "when she said it"
+S0124L02B08	彼女がそれを言ったとき、いい考えだと思いました
+# S0124L02B09 build → "I thought that was a good idea to do it today" | was: 今日それはいい考えだと思いました — English "I thought that was a good idea to do it today" is ungrammatical
+S0124L02B09	DELETE
+# S0124L02B10 build → "I thought that was a good idea and I want to keep on" | was: 難しくてもいい考えだと思いました — prompt said "even if difficult"; English is "and I want to keep on"
+S0124L02B10	いい考えだと思いましたし、続けたいです
+# S0124L02U02 use → "I thought that was a good idea when you said it" | was: あなたが最初にそれを言ったとき、いい考えだと思いました — prompt added 最初に (first)
+S0124L02U02	あなたがそれを言ったとき、いい考えだと思いました
+# S0124L02U05 use → "I thought that was a good idea but now it's starting to feel more difficult" | was: そのアイデアはいい考えだと思いましたが、今は難しく感じます — prompt lacked "starting to … more"
+S0124L02U05	いい考えだと思いましたが、今はもっと難しく感じ始めています
+# S0124L02U08 use → "I thought that was a good idea and I was excited to hear it" | was: あなたが提案したとき、それはいい考えだと思いました — prompt said "when you suggested it"
+S0124L02U08	いい考えだと思いましたし、それを聞いてワクワクしました
+# S0124L02U10 use → "I thought that was a good idea when she said it" | was: 彼女がそれをしたとき、いい考えだと思いました — prompt said "did it"; English is "said it" (same English as B08)
+S0124L02U10	彼女がそれを言ったとき、いい考えだと思いました
+# S0124L02U12 use → "I thought that was a good idea so I agree with what you said" | was: その考えに同意しました、とてもいい考えだと思ったからです — English "I thought that was a good idea so I agree with what you said" mixes tenses — unnatural
+S0124L02U12	DELETE
+# S0124L02U13 use → "I thought that was a good idea and I wanted to know more" | was: あなたの考えについて、もっと知りたいと思いました — prompt lacked "that was a good idea"
+S0124L02U13	いい考えだと思いましたし、もっと知りたかったです
+# S0124L02U14 use → "I thought that was a good idea yesterday when you said it" | was: 昨日あなたに会ったとき、それはいい考えだと思いました — prompt said "when I met you"
+S0124L02U14	昨日あなたがそれを言ったとき、いい考えだと思いました
+# S0124L02U15 use → "I thought that was a good idea because I wanted to hear more" | was: また聞きたかったので、それはいい考えだと思いました — prompt said また (again); English is "more"
+S0124L02U15	もっと聞きたかったので、いい考えだと思いました
+# S0125L01U02 use → "I thought the answer was good but I think I can do better" | was: その答えは良かったと思います、でももっと良くできます — prompt was present "I think"; English is past "I thought"
+S0125L01U02	その答えは良かったと思いましたが、もっとうまくできると思います
+# S0125L01U03 use → "yesterday was good and I'd like to keep on doing this for a while" | was: 昨日の練習はとても良かったです。また続けましょう — English "yesterday was good and I'd like to keep on doing this for a while" is unnatural
+S0125L01U03	DELETE
+# S0125L01U04 use → "his idea was good but I thought your idea was better" | was: 彼のアイデアは良かったですが、あなたのほうが良かったと思います — prompt was present "I think"; English is "I thought"
+S0125L01U04	彼の考えは良かったですが、あなたの考えの方が良かったと思いました
+# S0125L01U05 use → "today was good and I think the English was very interesting" | was: 今日の英語の練習は良かったと思います — prompt lacked "very interesting"
+S0125L01U05	今日は良かったですし、英語はとても面白かったと思います
+# S0125L01U08 use → "what you said was good, thank you very much for helping me" | was: あなたのアドバイスは良かったと思います。ありがとうございます — prompt said "your advice" and lacked "for helping me" (seed 74's own Japanese for the tail)
+S0125L01U08	あなたが言ったことは良かったです。手伝ってくれてどうもありがとうございます
+# S0125L01U09 use → "what you said was good and I want to hear more" | was: あなたが言ったことは本当に良かったです。もっと話してください — prompt asked the listener to talk more
+S0125L01U09	あなたが言ったことは良かったですし、もっと聞きたいです
+# S0125L02B03 build → "I believe that your idea was very good and it will work" | was: あなたの考えはとても良かったと信じています — prompt said 信じています; seed's own 思います used, plus "and it will work"
+S0125L02B03	あなたの考えはとても良かったと思いますし、うまくいくと思います
+# S0125L02B04 build → "I believe that your idea was very good and I want to use it" | was: 本当に、あなたの考えはとても良かった — prompt lacked "I believe" and "I want to use it"
+S0125L02B04	あなたの考えはとても良かったと思いますし、それを使いたいです
+# S0125L02B05 build → "I believe that your idea was very good" | was: あなたのアドバイスはとても良かった — prompt said "advice"; English is "idea" (seed's own Japanese)
+S0125L02B05	あなたの考えはとても良かったと思います
+# S0125L02B06 build → "I believe that your idea was very good and it's important" | was: あなたの考えはとても良かったと完全に信じています — English "I believe that your idea was very good and it's important" is incoherent
+S0125L02B06	DELETE
+# S0125L02B07 build → "I believe that your idea was very good and I want to keep on" | was: それはとても良かったと確信しています — prompt said "that was very good" and lacked "I want to keep on"
+S0125L02B07	あなたの考えはとても良かったと思いますし、続けたいです
+# S0125L02U01 use → "I believe that your idea was very good and we should do it" | was: あなたの考えはとても良かったと思います。ぜひ試してみましょう — prompt said "let's definitely try"; English is "we should do it"
+S0125L02U01	あなたの考えはとても良かったと思いますし、それをした方がいいです
+# S0125L02U03 use → "I believe that your idea was very good and my friend said it was good" | was: 友人もあなたの考えはとても良かったと言っています — English "I believe that your idea was very good and my friend said it was good" is unnatural
+S0125L02U03	DELETE
+# S0125L02U04 use → "I believe that your idea was very good and I want to keep on doing it" | was: あなたの考えはとても良かったです、今もそう思います — prompt said "I still think so"
+S0125L02U04	あなたの考えはとても良かったと思いますし、それを続けたいです
+# S0125L02U05 use → "I believe that your idea was very good and I don't want to stop" | was: 私はあなたの考えはとても良かったと思います。難しかったですが — prompt said "it was difficult"
+S0125L02U05	あなたの考えはとても良かったと思いますし、やめたくありません
+# S0125L02U07 use → "I believe that your idea was very good after thinking about it carefully" | was: もう一度考えてみたとき、あなたの考えはとても良かったと思いました — English "I believe that your idea was very good after thinking about it carefully" is unnatural word order
+S0125L02U07	DELETE
+# S0125L02U10 use → "I believe that your idea was very good and I agree with what you said" | was: あなたが言ったことに同意します、あなたの考えはとても良かった — prompt lacked "I believe"; reordered to the English
+S0125L02U10	あなたの考えはとても良かったと思いますし、あなたが言ったことに同意します
+# S0125L02U11 use → "I believe that your idea was very good but I wanted a little more time" | was: あなたの考えはとても良かったと思います、もっと時間があれば良かった — prompt said "if there had been more time"
+S0125L02U11	あなたの考えはとても良かったと思いますが、もう少し時間が欲しかったです
+# S0125L02U12 use → "I believe that your idea was very good, I'd like to keep on doing it" | was: あなたの考えはとても良かったと思います、この方法でやり続けましょう — prompt said "let's keep doing it this way"
+S0125L02U12	あなたの考えはとても良かったと思います、それを続けたいです
+# S0125L02U15 use → "I believe that your idea was very good and I want to keep on" | was: あなたの考えはとても良かったと思います、難しくてもやり続けましょう — prompt said "even if difficult, let's continue" (same English as B07)
+S0125L02U15	あなたの考えはとても良かったと思いますし、続けたいです
+# KEEP S0126L01B01 | 勉強 | work — bare LEGO 勉強 = "work": the LEGO's own gloss (study vs work) is a LEGO-level question
+# KEEP S0126L01U01 | たくさんの新しい言葉を学ぶために一生懸命頑張らなければなりません。 | we must work hard to learn a lot of new words — prompt is seed 109's own Japanese and matches (false flag)
+# S0126L02B05 build → "it changes our brain when we learn" | was: 脳が変わる — prompt lacked "when we learn"
+S0126L02B05	学ぶと脳が変わります
+# S0126L02U05 use → "when we learn something new it changes our brain and that is why it's important" | was: 英語を練習するたびに、私たちの脳が変わります。それは良いことです — prompt said "every time we practise English … good thing"
+S0126L02U05	新しいことを学ぶと脳が変わります。だから大切です
+# S0126L02U06 use → "when we work hard and learn something new it changes our brain" | was: 一生懸命勉強すると、私たちの脳が変わります — prompt lacked "learn something new"
+S0126L02U06	一生懸命頑張って新しいことを学ぶと、脳が変わります
+# S0126L02U07 use → "it changes our brain and that is why it's important to work hard" | was: これが私たちの脳を変えるので、大切です — prompt lacked "to work hard"
+S0126L02U07	脳が変わります。だから一生懸命頑張ることが大切です
+# S0126L02U08 use → "it's difficult but when we learn something new it changes our brain" | was: 難しいですが、一生懸命勉強すると私たちの脳が変わります — prompt said "study hard"
+S0126L02U08	難しいですが、新しいことを学ぶと脳が変わります
+# S0126L02U09 use → "when we learn something new it changes our brain, slowly" | was: ゆっくり学んでいても、私たちの脳は変わります — English "when we learn something new it changes our brain, slowly" is a comma-tacked fragment
+S0126L02U09	DELETE
+# S0126L02U10 use → "I'm excited because it changes our brain when we learn" | was: 私たちの脳が変わることに興奮しています — prompt lacked "because … when we learn"
+S0126L02U10	学ぶと脳が変わるので、ワクワクしています
+# S0126L02U12 use → "when we learn something new it changes our brain and it's starting to feel easier" | was: 英語の勉強が楽しくなってきました、私たちの脳が変わっているからです — prompt said "fun because"
+S0126L02U12	新しいことを学ぶと脳が変わりますし、簡単に感じ始めています
+# S0126L02U13 use → "it changes our brain so I want to learn something new as often as possible" | was: こうやって脳が変わるので、できるだけ多くのことを学びたいです — prompt said "as many things as possible"
+S0126L02U13	脳が変わるので、できるだけ何度も新しいことを学びたいです
+# S0126L02U14 use → "our brain is important and that is why I want to speak English as often as possible" | was: 私たちの脳のことを考えると、英語を練習したいと思います — English "our brain is important and that is why I want to speak English as often as possible" is incoherent
+S0126L02U14	DELETE
+# S0126L02U15 use → "when we learn something new it changes our brain and it's a good thing" | was: この方法で学ぶと私たちの脳が変わります、それが大切です — prompt said "this way … that is important"
+S0126L02U15	新しいことを学ぶと脳が変わりますし、それはいいことです
+# S0126L03U02 use → "I know this work is changing the shape of my brain" | was: 英語を一生懸命勉強することが、私の脳の形を変えています — prompt said "studying English hard" and lacked "I know"
+S0126L03U02	この勉強は脳の形を変えているとわかっています
+# S0126L03U03 use → "I think that this work is changing the shape of my brain" | was: 毎日練習することで、脳の形が変わっていると思います — prompt added 毎日 (every day)
+S0126L03U03	この勉強は脳の形を変えていると思います
+# S0126L03U04 use → "I believe that this work is changing the shape of my brain" | was: この難しい勉強が私の脳の形を変えていると信じています — English "I believe that this work is changing…" duplicates S0126L05B05 bar "that"; one prompt cannot serve both (ZUT)
+S0126L03U04	DELETE
+# S0126L03U06 use → "this work is changing the shape of my brain and it's starting to feel easier" | was: 英語の勉強が楽しくなっています、なぜなら脳の形が変わっているからです — prompt said "fun because"
+S0126L03U06	この勉強は脳の形を変えていて、簡単に感じ始めています
+# S0126L03U08 use → "this work is changing the shape of my brain and that is a good thing" | was: 一生懸命勉強すると、脳の形が変わりより簡単に感じ始めます — prompt said "easier"
+S0126L03U08	この勉強は脳の形を変えていて、それはいいことです
+# S0126L03U11 use → "I think this work is changing the shape of my brain and it's important" | was: 新しい言語を学ぶことが、私の脳の形を変えているのです — English "I think this work is changing the shape of my brain and it's important" is incoherent
+S0126L03U11	DELETE
+# S0126L03U13 use → "I think this work is changing the shape of my brain when I work hard" | was: 私の脳の形について考えると、英語を練習したいと思います — English "I think this work is changing the shape of my brain when I work hard" is unnatural
+S0126L03U13	DELETE
+# S0126L03U15 use → "I know this work is changing the shape of my brain and I want to work hard" | was: 脳の形が変わっていることを知っているので、一生懸命勉強したいです — prompt said "because"; English is "and"
+S0126L03U15	この勉強は脳の形を変えているとわかっていますし、一生懸命頑張りたいです
+# KEEP S0126L04B03 | が変えています | is changing everything — "is changing everything" vs が変えています — LEGO-fragment BUILD; English has an object the fragment lacks: UNSURE, left for the gate
+# S0126L04B06 build → "this is changing everything" | was: これが変えています — prompt lacked "everything"
+S0126L04B06	これが全部を変えています
+# S0126L05B05 build → "I believe this work is changing the shape of my brain" | was: この勉強は脳の形を変えています、本当に — prompt said 本当に (really); English is "I believe"
+S0126L05B05	この勉強は脳の形を変えていると信じています
+# S0126L05U06 use → "I can feel that this work is changing the shape of my brain" | was: この勉強は脳の形を変えています、と確かに感じます — prompt said 確かに (definitely); English is "I can feel"
+S0126L05U06	この勉強は脳の形を変えていると感じることができます
+# S0126L05U11 use → "this work is changing the shape of my brain and I'm happy with that" | was: この勉強は脳の形を変えています、とても嬉しいです — prompt said "very happy"; English is "I'm happy with that" (満足 as seed 76)
+S0126L05U11	この勉強は脳の形を変えていて、それに満足しています
+# S0126L05U15 use → "this work is changing the shape of my brain more and more quickly" | was: この勉強は脳の形を変えています、もっと速く — English "…more and more quickly" is unnatural
+S0126L05U15	DELETE
+# S0127L01U02 use → "tell me why you don't want to wait" | was: 理由を教えてください、それが待てない理由を — prompt said "can't wait" and was garbled
+S0127L01U02	待ちたくない理由を教えてください
+# S0127L01U11 use → "that is why what he said was different" | was: それが理由です、彼が違う言葉を言った理由が — English "that is why what he said was different" is unnatural
+S0127L01U11	DELETE
+# S0127L01U13 use → "that is why she is with me now" | was: それが理由です、彼女が私と一緒にいる理由が — prompt was garbled ("that's the reason, the reason she is with me") and lacked "now"
+S0127L01U13	だから彼女は今私と一緒にいます
+# S0127L01U15 use → "that is why I want to meet people who speak English" | was: それが理由です、英語を話す人に会いたかった理由が — prompt was garbled and past
+S0127L01U15	だから英語を話す人たちに会いたいです
+# S0127L02U03 use → "she wanted to see me all afternoon" | was: 彼女に会いたかった、午後ずっと — prompt said "I wanted to see her"
+S0127L02U03	彼女は午後ずっと私に会いたかったです
+# S0127L02U13 use → "I wanted to see you because I don't want to stop talking" | was: あなたに会いたかった、もっと話したくて — prompt said "wanted to talk more"
+S0127L02U13	話すのをやめたくないので、あなたに会いたかったです
+# S0127L03B04 build → "that isn't why I wanted to see you I want to tell you something" | was: それはあなたに会いたかった理由ではありません、別の理由です — English "that isn't why I wanted to see you I want to tell you something" is a run-on
+S0127L03B04	DELETE
+# S0127L03B07 build → "that isn't why I wanted to see you again" | was: 本当にそれはあなたに会いたかった理由ではありません — prompt said 本当に; English has "again"
+S0127L03B07	それはもう一度あなたに会いたかった理由ではありません
+# S0127L03U10 use → "that isn't why I wanted to see you you said something different" | was: それはあなたに会いたかった理由ではありません、と私に言いました — English "that isn't why I wanted to see you you said something different" is a run-on
+S0127L03U10	DELETE
+# S0128L01U13 use → "the things I used to know are different now" | was: 前に知っていたものが違います — prompt lacked "now"
+S0128L01U13	前に知っていたことは、今は違います
+# S0128L01U14 use → "I wanted to speak the way I used to know" | was: 前に知っていた方法で話してみました — English "I wanted to speak the way I used to know" is unnatural
+S0128L01U14	DELETE
+# S0128L02B06 build → "you're like someone" | was: あなたは前の人に似ています — prompt said "the previous person"
+S0128L02B06	あなたは誰かに似ています
+# S0128L02U02 use → "it's not like that now" | was: それは以前と似ていません — prompt said "than before"; English is "it's not like that now"
+S0128L02U02	今はそれに似ていません
+# S0128L02U03 use → "you're like a friend I used to know" | was: あなたは似ています、友達に — prompt was garbled and lacked "I used to know"
+S0128L02U03	あなたは前に知っていた友達に似ています
+# S0128L02U04 use → "it's not like that I thought something different" | was: 私が思っていたこととは似ていません — English "it's not like that I thought something different" is garbled
+S0128L02U04	DELETE
+# S0128L02U07 use → "this language is like something difficult" | was: この言語は似ています、難しいです — English "this language is like something difficult" is unnatural
+S0128L02U07	DELETE
+# S0128L02U11 use → "this is like something I used to know" | was: この感覚は似ています、以前と — prompt said "this feeling … compared with before"
+S0128L02U11	これは前に知っていた何かに似ています
+# S0128L02U13 use → "it's like the way I used to know" | was: それは似ています、最初の感覚と — English "it's like the way I used to know" is garbled
+S0128L02U13	DELETE
+# S0128L02U15 use → "you're like someone I used to know and that is interesting" | was: あなたは以前知っていた人に似ています — prompt lacked "and that is interesting"
+S0128L02U15	あなたは前に知っていた人に似ていて、それは面白いです
+# S0128L03U03 use → "you're like someone I used to know a good friend" | was: あなたは前に知っていた人に似ています、昔の友達みたいに — English "you're like someone I used to know a good friend" is a run-on
+S0128L03U03	DELETE
+# S0128L03U05 use → "you're like someone I used to know and that is interesting" | was: あなたは前に知っていた人に似ています、おかしいですね — prompt said おかしい (odd); English is "and that is interesting" (same English as L02U15)
+S0128L03U05	あなたは前に知っていた人に似ていて、それは面白いです
+# S0128L03U07 use → "you're like someone I used to know and I want to speak English" | was: あなたは前に知っていた人に似ています、英語が上手な人みたいに — English "you're like someone I used to know and I want to speak English" is incoherent
+S0128L03U07	DELETE
+# S0128L03U08 use → "you're like someone I used to know and I'm happy with that" | was: あなたは前に知っていた人に似ています、良い意味で — prompt said "in a good way"
+S0128L03U08	あなたは前に知っていた人に似ていて、それに満足しています
+# S0128L03U10 use → "you're like someone I used to know and I wanted to see you again" | was: あなたは前に知っていた人に似ています、また会えてよかった — prompt said "glad to see you again"
+S0128L03U10	あなたは前に知っていた人に似ていて、またあなたに会いたかったです
+# KEEP S0129L01B05 | 嬉しいです、本当に | I'm happy with — "I'm happy with" is a BUILD fragment; prompt 嬉しいです、本当に has an extra 本当に but no better fragment prompt exists without re-glossing — UNSURE, left
+# KEEP S0129L01B06 | もう学んだことにとても満足しています。 | I'm very happy with how much I've learnt already — prompt is seed 76's own Japanese and matches (false flag)
+# S0129L01U01 use → "I'm happy to speak with you now" | was: 嬉しいです、あなたと話せて — prompt lacked "now" and was in English order
+S0129L01U01	今あなたと話せて嬉しいです
+# S0129L01U05 use → "I'm happy to see you today" | was: 嬉しいです、あなたに会えて — prompt lacked "today" and was in English order
+S0129L01U05	今日あなたに会えて嬉しいです
+# S0129L01U12 use → "I'm happy with how it's going" | was: 嬉しいです、英語がうまくなってきて — prompt said "English is getting better"; English is "happy with how it's going"
+S0129L01U12	どう進んでいるかに嬉しいです
+# S0129L02B07 build → "you are doing so well today" | was: 本当にうまくやっています — prompt said 本当に; English has "today"
+S0129L02B07	今日こんなにうまくやっています
+# S0129L02U03 use → "I think that you are doing so well today" | was: こんなにうまくやっている、今日も — prompt was a fragment and lacked "I think"
+S0129L02U03	今日はこんなにうまくやっていると思います
+# S0129L02U04 use → "I'm surprised at how well you are doing so well" | was: こんなにうまくやっているのが驚きです — English "I'm surprised at how well you are doing so well" is garbled
+S0129L02U04	DELETE
+# S0129L02U10 use → "you are doing so well and I'd like you to keep on" | was: こんなにうまくやっている、もっと続けましょう — prompt said "let's continue"
+S0129L02U10	こんなにうまくやっていますし、続けてほしいです
+# S0129L02U12 use → "I'm surprised at how quickly you are doing so well" | was: こんなにうまくやっている、驚いています — English "I'm surprised at how quickly you are doing so well" is garbled
+S0129L02U12	DELETE
+# S0129L02U14 use → "I'm happy with how well you are doing so well" | was: こんなにうまくやっている、誇りに思います — English "I'm happy with how well you are doing so well" is garbled
+S0129L02U14	DELETE
+# S0129L02U15 use → "I believe you are doing so well and that is interesting" | was: こんなにうまくやっている、と信じます、本当に — English "I believe you are doing so well and that is interesting" is incoherent
+S0129L02U15	DELETE
+# S0129L03B03 build → "I'm so happy that you're doing so well, I think that you're doing very well" | was: あなたがこんなにうまくやっていてとても嬉しいです、とても — English "I'm so happy that you're doing so well, I think that you're doing very well" is redundant comma-splice
+S0129L03B03	DELETE
+# S0129L03B06 build → "I'm so happy that you're doing so well and I'd like to keep on" | was: あなたがこんなにうまくやっていてとても嬉しいです。私も続けたいです — prompt said "I also want to continue"; English is "and I'd like to keep on"
+S0129L03B06	あなたがこんなにうまくやっていてとても嬉しいです。続けたいです
+# S0129L03U02 use → "I'm so happy that you're doing so well, I agree with what you said about your friend" | was: あなたがこんなにうまくやっていてとても嬉しいです、あなたの友達のことも教えてください — English "…, I agree with what you said about your friend" is a comma-spliced chain of seeds
+S0129L03U02	DELETE
+# S0129L03U05 use → "I'm so happy that you're doing so well and I want you to speak English with me tomorrow" | was: あなたがこんなにうまくやっていてとても嬉しいです、今日英語をたくさん話しましょう — English "…and I want you to speak English with me tomorrow" is incoherent
+S0129L03U05	DELETE
+# S0129L03U06 use → "I'm so happy that you're doing so well, I wasn't expecting it" | was: あなたが英語をこんなにうまく話しているとは驚きました — English "…, I wasn't expecting it" is a comma-splice and the prompt said "surprised"
+S0129L03U06	DELETE
+# S0129L03U07 use → "I'm so happy that you're doing so well and enjoying finding out more about this language" | was: あなたがこんなにうまくやっていてとても嬉しいです、そして英語を楽しんでいます — English "…and enjoying finding out more about this language" is garbled
+S0129L03U07	DELETE
+# S0129L03U08 use → "I'm so happy that you're doing so well, I'm very happy with how much I've learnt already" | was: あなたがこんなにうまくやっていてとても嬉しいです、どれだけ学んだかよく分かります — English "…, I'm very happy with how much I've learnt already" is a comma-spliced chain
+S0129L03U08	DELETE
+# S0129L03U10 use → "I'm so happy that you're doing so well because I want to meet people who speak English" | was: あなたがこんなにうまくやっていてとても嬉しいです、英語を話す人に会えますよ — English "…because I want to meet people who speak English" is incoherent
+S0129L03U10	DELETE
+# S0129L03U12 use → "I'm so happy that you're doing so well, I'd like to keep on doing this for a while" | was: あなたがこんなにうまくやっていてとても嬉しいです、続けてください — English "…, I'd like to keep on doing this for a while" is a comma-spliced chain
+S0129L03U12	DELETE
+# S0129L03U13 use → "I'm so happy that you're doing so well, that was very interesting and I wasn't expecting it" | was: あなたがこんなにうまくやっていてとても嬉しいです、とても驚きました — English "…, that was very interesting and I wasn't expecting it" is a comma-spliced chain
+S0129L03U13	DELETE
+# S0129L03U15 use → "I'm so happy that you're doing so well, I'm surprised at how quickly I'm starting to understand" | was: あなたがこんなにうまくやっていてとても嬉しいです、どれだけ速く理解できるようになっているか — English "…, I'm surprised at how quickly I'm starting to understand" is a comma-spliced chain
+S0129L03U15	DELETE
+# S0130L01U04 use → "this is a good surprise, I'm so happy that you're doing so well" | was: これは嬉しい驚きです、あなたに会えてとても嬉しいです — English "this is a good surprise, I'm so happy that you're doing so well" is a comma-spliced chain
+S0130L01U04	DELETE
+# S0130L01U06 use → "no surprise because I think that's a good idea" | was: 全く驚きではありません、あなたの考えはとても良かったです — English "no surprise because I think that's a good idea" is unnatural
+S0130L01U06	DELETE
+# S0130L01U07 use → "that was a surprise, I'm very happy with how much I've learnt already" | was: それは驚きでした、とても喜びました — English "that was a surprise, I'm very happy with how much I've learnt already" is a comma-spliced chain
+S0130L01U07	DELETE
+# S0130L01U09 use → "what a surprise, I'm so happy that you're doing so well" | was: 驚きでした、あなたに会えてとても嬉しいです — English "what a surprise, I'm so happy that you're doing so well" is a comma-spliced chain whose prompt says something else
+S0130L01U09	DELETE
+# S0130L01U10 use → "no surprise at all, we don't need to feel happy we just need to work hard" | was: 全く驚きではありませんでした、あなたはいつも一生懸命頑張っていましたから — English "no surprise at all, we don't need to feel happy…" is incoherent
+S0130L01U10	DELETE
+# S0130L01U13 use → "what a surprise, I'm surprised at how quickly I'm starting to understand" | was: 驚きでした、理解できるのがどれほど速いかとても驚いています — prompt said "how fast YOU can understand"; English is "I'm surprised at how quickly I'm starting to understand"
+S0130L01U13	驚きです、どれだけ速く理解し始めているか驚いています
+# S0130L01U14 use → "no surprise because I believe that your idea was very good" | was: 全く驚きではありませんでした、あなたの考えはとても良かったです — English "no surprise because I believe that your idea was very good" is unnatural
+S0130L01U14	DELETE
+# S0130L01U15 use → "that was a surprise because I want to meet people who speak English" | was: それは驚きでした、英語を話す人に会えて嬉しいです — English "that was a surprise because I want to meet people who speak English" is incoherent
+S0130L01U15	DELETE
+# S0130L02B04 build → "that was a surprise, because he's my friend and he's here today" | was: それは驚きでした、彼は私の友達ですから、一緒に — prompt had a dangling 一緒に; English is "and he's here today"
+S0130L02B04	それは驚きでした、彼は私の友達ですし、今日ここにいますから
+# S0130L02B05 build → "that was a surprise, because he's my friend and I want to speak English with you now" | was: それは驚きでした、彼は私の友達ですから、英語で — English "…because he's my friend and I want to speak English with you now" is incoherent
+S0130L02B05	DELETE
+# S0130L02B06 build → "that was a surprise, because he's my friend and it is fun" | was: それは驚きでした、彼は私の友達ですから、楽しかったです — English "…because he's my friend and it is fun" is incoherent
+S0130L02B06	DELETE
+# S0130L02B07 build → "that was a surprise, because he's my friend and he's my friend" | was: それは驚きでした、彼は私の友達ですから、また来ます — English "…because he's my friend and he's my friend" is garbled repetition
+S0130L02B07	DELETE
+# S0130L02U01 use → "that was a surprise, because he's my friend and I want to speak English with you now" | was: それは驚きでした、彼は私の友達ですから、英語で話したいです — English "…and I want to speak English with you now" is incoherent
+S0130L02U01	DELETE
+# S0130L02U02 use → "that was a surprise, because he's my friend and I enjoy doing interesting things with my friends" | was: それは驚きでした、彼は私の友達ですから、友達と楽しんでいます — English "…and I enjoy doing interesting things with my friends" is incoherent
+S0130L02U02	DELETE
+# S0130L02U03 use → "that was a surprise, because he's my friend and I don't agree with what he said about my friend" | was: それは驚きでした、彼は私の友達ですから、彼が言ったことには同意できません — English "…and I don't agree with what he said about my friend" is a chain of seeds, incoherent as a sentence
+S0130L02U03	DELETE
+# S0130L02U04 use → "that was a surprise, because he's my friend and I agree with what you said about your friend" | was: それは驚きでした、彼は私の友達ですから、あなたの言ったことには同意します — English "…and I agree with what you said about your friend" is a chain of seeds
+S0130L02U04	DELETE
+# S0130L02U06 use → "that was a surprise, because he's my friend and we're friends and after we finish I'd like to relax" | was: それは驚きでした、彼は私の友達ですから、終わったら休みたいです — English "…and we're friends and after we finish I'd like to relax" is a chain of seeds
+S0130L02U06	DELETE
+# S0130L02U07 use → "that was a surprise, because he's my friend and I think that I've done a lot in a short time" | was: それは驚きでした、彼は私の友達ですから、短い時間でたくさん学びました — English "…and I think that I've done a lot in a short time" is a chain of seeds
+S0130L02U07	DELETE
+# S0130L02U09 use → "that was a surprise, because he's my friend and that was very interesting and I wasn't expecting it" | was: それは驚きでした、彼は私の友達ですから、とても面白かったです — English "…and that was very interesting and I wasn't expecting it" is a chain of seeds
+S0130L02U09	DELETE
+# S0130L02U10 use → "that was a surprise, because he's my friend and he wanted to write a letter to his friend last week" | was: それは驚きでした、彼は私の友達ですから、先週手紙を書きました — English "…and he wanted to write a letter to his friend last week" is a chain of seeds
+S0130L02U10	DELETE
+# S0130L02U13 use → "that was a surprise, because he's my friend and I want to speak with you now" | was: それは驚きでした、彼は私の友達ですから、英語を話したいです — English "…and I want to speak with you now" is incoherent
+S0130L02U13	DELETE
+# S0130L02U14 use → "that was a surprise, because he's my friend and I want to meet people who speak English" | was: それは驚きでした、彼は私の友達ですから、英語であなたに会いたいです — English "…and I want to meet people who speak English" is incoherent
+S0130L02U14	DELETE
+# S0130L02U15 use → "that was a surprise, because he's my friend and I'm so happy that you're doing so well" | was: それは驚きでした、彼は私の友達ですから、英語での会話をしたいです — English "…and I'm so happy that you're doing so well" is a chain of seeds
+S0130L02U15	DELETE
+# Seed 131 (ideas going around in my head): most BUILD rows use LEGOs from later in the seed (ideas/around/head before they are taught — P2 forward reference, the vocab gate refuses them) and the seed's own Japanese (たくさんの考え) does not match its English ("too many ideas"). Recommended: rebuild seed 131 as 226-230 were. Only rows a prompt edit can fix are planned here.
+# S0131L01B04 build → "there are many things to do" | was: 多くのことがある — prompt lacked "to do"
+S0131L01B04	することがたくさんある
+# KEEP S0131L01B05 | アイデアがある | there are ideas going around — seed-131 rebuild: forward-reference BUILD (ideas/around taught later in the seed)
+# KEEP S0131L01B06 | ここにある | there are ideas here — seed-131 rebuild: forward-reference BUILD
+# S0131L01U01 use → "there are a lot of things I need to learn but I enjoy doing interesting things with my friends" | was: 覚えなければならないことがたくさんあります、でも楽しんでいます — English "there are a lot of things I need to learn but I enjoy doing interesting things with my friends" is incoherent
+S0131L01U01	DELETE
+# S0131L01U03 use → "there are people here and I don't know those people" | was: あなたが知らない人がここにいます — prompt said "people you don't know"
+S0131L01U03	ここに人たちがいますが、私はあの人たちを知りません
+# KEEP S0131L01U07 | 頭の中にたくさんのアイデアがあります | there are too many ideas going around in my head — seed-131 rebuild: forward-reference USE (ideas/around/head)
+# S0131L01U08 use → "there are a lot of new things to remember and I need to keep on going" | was: 一度に覚えなければならないことがたくさんあります — English "there are a lot of new things to remember and I need to keep on going" is unnatural
+S0131L01U08	DELETE
+# S0131L01U09 use → "there are so many things I want to tell you, I'd like to keep on doing this for a while" | was: あなたに話したいことがたくさんあります、続けてください — English "…, I'd like to keep on doing this for a while" is a comma-spliced chain
+S0131L01U09	DELETE
+# S0131L01U10 use → "there are a lot of things to learn and I think that I've done a lot in a short time" | was: まだ学ぶべきことがたくさんあります — English "…and I think that I've done a lot in a short time" is a chain of seeds
+S0131L01U10	DELETE
+# S0131L01U12 use → "there are a few things I'd like to ask you before you leave" | was: あなたに聞きたいことがいくつかあります — prompt lacked "before you leave"
+S0131L01U12	帰る前に、あなたに聞きたいことがいくつかあります
+# S0131L01U15 use → "there are a lot of things I want to say but I'm not ready to talk to people I don't know yet" | was: 言いたいことがたくさんありますが、まだ準備ができていません — English "…but I'm not ready to talk to people I don't know yet" is a chain of seeds
+S0131L01U15	DELETE
+# S0131L02B03 build → "too many people here" | was: 多すぎる人 — prompt lacked "here"
+S0131L02B03	ここに多すぎる人たち
+# KEEP S0131L02B05 | 多すぎるアイデア | too many ideas going around — seed-131 rebuild: forward-reference BUILD
+# S0131L02B06 build → "too many to remember" | was: 多すぎて分からない — prompt said "can't understand"; English is "too many to remember"
+S0131L02B06	多すぎて覚えられない
+# KEEP S0131L02U04 | 頭の中に多すぎるアイデアがあります | there are too many ideas going around in my head — seed-131 rebuild: forward-reference USE
+# KEEP S0131L02U09 | 話したいことが多すぎて、どこから始めればいいかわかりません | there are too many things I want to talk about, I don't know where to start — KEEP-equivalent: prompt already matches (false flag) — listed unchanged
+# S0131L02U13 use → "there are too many things I need to do before you leave" | was: 準備しなければならないことが多すぎます — English "there are too many things I need to do before you leave" is unnatural
+S0131L02U13	DELETE
+# S0131L02U15 use → "there are too many things I don't know yet but I want to start talking" | was: 準備していないことが多すぎます、でも始めます — English "…but I want to start talking" after "too many things I don't know yet" is incoherent
+S0131L02U15	DELETE
+# KEEP S0131L03B01 | アイデア | there are ideas going around — seed-131 rebuild: bare LEGO row with forward-reference English
+# KEEP S0131L03B03 | たくさんのアイデア | a lot of ideas in my head — seed-131 rebuild: forward-reference BUILD
+# KEEP S0131L03B04 | 新しいアイデア | new ideas going around in my head — seed-131 rebuild: forward-reference BUILD
+# S0131L03U02 use → "I have a lot of ideas and I'd like to keep on doing this for a while" | was: 新しいアイデアがたくさんあります、続けていきたいです — prompt added "new" and said "I want to continue"
+S0131L03U02	アイデアがたくさんあって、しばらくこれを続けたいです
+# S0131L03U03 use → "your ideas were very good, thank you very much for helping me to understand" | was: あなたのアイデアはとても良かったです、感謝します — English "your ideas were very good, thank you very much for helping me to understand" is a comma-spliced chain
+S0131L03U03	DELETE
+# S0131L03U07 use → "I believe that your ideas were very good" | was: あなたのアイデアは本当に良かったです — prompt said 本当に; English is "I believe … very good" (seed 125's 思います)
+S0131L03U07	あなたのアイデアはとても良かったと思います
+# S0131L03U08 use → "I have a lot of ideas I want to try to speak English with you now" | was: 試したいアイデアがたくさんあります — English "I have a lot of ideas I want to try to speak English with you now" is garbled
+S0131L03U08	DELETE
+# S0131L03U10 use → "your ideas were so good, I enjoy doing interesting things with my friends" | was: あなたのアイデアはとても良かったです、また一緒にやりましょう — English "your ideas were so good, I enjoy doing interesting things with my friends" is incoherent
+S0131L03U10	DELETE
+# S0131L03U11 use → "the ideas are good but this isn't the best choice I could make" | was: アイデアは良いと思います、でも最善の選択をしなければなりません — English "the ideas are good but this isn't the best choice I could make" is incoherent
+S0131L03U11	DELETE
+# KEEP S0131L03U13 | 新しいアイデアが頭の中でぐるぐる回っています | there are too many ideas going around in my head today — seed-131 rebuild: forward-reference USE
+# S0131L03U14 use → "your ideas were good, thank you very much for helping me" | was: あなたのアイデアは良かったです、ありがとうございます — prompt lacked "thank you very much for helping me"
+S0131L03U14	あなたのアイデアは良かったです、手伝ってくれてどうもありがとうございます
+# S0131L03U15 use → "I have too many ideas going around and I want to speak English with you now" | was: アイデアがたくさんありますが、何から始めるか話し合いましょう — English "I have too many ideas going around and I want to speak English with you now" is incoherent
+S0131L03U15	DELETE
+# KEEP S0131L04U04 | 質問がたくさん頭の中でぐるぐる回っています | I have so many things going around in my head today — seed-131 rebuild: forward-reference USE (head)
+# S0131L04U11 use → "English words going around in my head and I want to speak English with you now" | was: 英語の言葉が頭の中でぐるぐる回っています、英語で話したいです — English "English words going around in my head and I want to speak English with you now" is garbled
+S0131L04U11	DELETE
+# S0131L04U15 use → "there are ideas going around in my head and I'd like to keep on doing this for a while" | was: 言いたいことが頭の中でぐるぐる回っています、続けていきます — English "there are ideas going around in my head and I'd like to keep on doing this for a while" is a chain
+S0131L04U15	DELETE
+# S0131L05U03 use → "it's not difficult to find the answer in my head, but I can't say it" | was: 頭の中で練習していますが、声に出すのが難しいです — English "it's not difficult to find the answer in my head, but I can't say it" is incoherent
+S0131L05U03	DELETE
+# S0131L05U15 use → "there are ideas going around in my head and I want to speak English with you now" | was: 頭の中にアイデアがたくさんあります、でも英語でどう言うか分かりません — English "there are ideas going around in my head and I want to speak English with you now" is incoherent
+S0131L05U15	DELETE
+# KEEP S0132L01U04 | 私たちは先月ほど話しません | we talk less than we did last month — KEEP-ish: prompt matches; flag misread — listed unchanged
+# S0132L02U01 use → "English is exciting when you start to understand it" | was: 英語を理解し始めると面白いです — prompt said 面白い (interesting); English is "exciting"
+S0132L02U01	英語は理解し始めるとワクワクします
+# S0132L02U02 use → "I find it exciting to speak English" | was: 英語を話すのが面白いと思います — prompt said 面白い; English is "exciting"
+S0132L02U02	英語を話すのはワクワクすると思います

@@ -1,0 +1,56 @@
+{
+ "course": "fra_for_eng",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 12,
+ "on_copy": 12,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0139L04U06",
+   "src": "#957 changeset",
+   "known": "I'm sorry that I need to leave so early",
+   "target": "Je suis désolé de devoir partir si tôt",
+   "twin": "S0139L04U01",
+   "twin_known": "I'm sorry to have to leave so early"
+  },
+  {
+   "id": "S0140L02U09",
+   "src": "#957 changeset",
+   "known": "I'm sorry that I can't see what you're trying to show me",
+   "target": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer",
+   "twin": "S0140L02U06",
+   "twin_known": "I'm sorry I can't see what you're trying to show me"
+  },
+  {
+   "id": "S0614L03U10",
+   "src": "#957 changeset",
+   "known": "It's near where your family live",
+   "target": "C'est près de là où ta famille habite",
+   "twin": "S0614L03U01",
+   "twin_known": "it is near where your family lives"
+  }
+ ],
+ "cross_basket": [
+  {
+   "id": "S0170L01U11",
+   "src": "#957 changeset",
+   "known": "I'd like you to tell me what you need",
+   "target": "Je voudrais que vous me disiez ce dont vous avez besoin",
+   "first": "S0170L02U08",
+   "n": 1,
+   "others_item12": 0
+  },
+  {
+   "id": "S0326L02U17",
+   "src": "#957 changeset",
+   "known": "I don't think that she needs to sell the company",
+   "target": "Je ne pense pas qu'elle ait besoin de vendre l'entreprise",
+   "first": "S0326L03U01",
+   "n": 1,
+   "others_item12": 0
+  }
+ ],
+ "with_seed_lego": [],
+ "clean": 7,
+ "missing": []
+}

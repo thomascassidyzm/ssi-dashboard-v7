@@ -1,0 +1,10 @@
+{
+ "what": "night Cartesia budget, Kai overnight run 23-24 Nov (cs #785·AK); Azure counted separately",
+ "nightCap": 1000000,
+ "items": {
+  "item4-timer": {"cap": 420000, "source": "~/ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json (night = total minus 129,914 already spent before 07:00Z 23 Nov)"},
+  "items2-6-childA": {"cap": 80000, "source": "ops/overnight-785/item*/spend.json (#789·AK)"},
+  "item1-tel": {"cap": 500000, "source": "~/ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia/day8-results.jsonl (run-day --cap 500000)"}
+ },
+ "spaForZhoNote": "Tom's run is cs-long-keep-zho-rerecord9s (day 9, grant #184), still active at 11:07Z (ask ~10140/10866); the brief's cs-long-keep-zho-rerecord7 was already inactive. Tel waits for BOTH."
+}

@@ -210,6 +210,9 @@ for (const s of seeds) {
       if (v.length) E(w, `untaught: ${v.map(x => x.unknown).join(', ')} in "${a.target}"`);
       const z = zut.get(zk(a.known));
       if (z) for (const [t, who] of z) if (t !== key) E(w, `ZUT: "${a.known}" already means "${t}" at ${who}; this row says "${a.target}"`);
+      // cs #791·AK (item 7 back-fill): ITEM9_COURSE_DUP=1 also refuses a fresh row whose known+target pair already exists
+      // ANYWHERE in the course (another basket, a LEGO, a seed) — item 12 showed how such duplicates pile up.
+      if (process.env.ITEM9_COURSE_DUP === '1' && z && z.has(key)) E(w, `duplicate of ${z.get(key)} elsewhere in the course: "${a.known}" | "${a.target}"`);
       addZ(a.known, a.target, w);
     }
     const legoForCheck = (rows) => ({ idx: l.lego_index, type: l.type, known: l.known_text, target: l.target_text,

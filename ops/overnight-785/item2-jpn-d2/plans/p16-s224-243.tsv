@@ -1,0 +1,59 @@
+# eng_for_jpn seeds 224-243 (226-230 were rebuilt by #726 and carry no flags here): D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0224L01U02 use → "I've just started to learn English and I'm enjoying it" | was: 私は英語を始めたばかりです — prompt lacked "to learn … and I'm enjoying it"
+S0224L01U02	英語を学び始めたばかりで、楽しんでいます
+# S0224L01U03 use → "she's just started to speak English more often" | was: 彼女は話し始めたばかりです — prompt lacked "English more often"
+S0224L01U03	彼女はもっと頻繁に英語を話し始めたばかりです
+# S0224L01U07 use → "I've just started but I'm already enjoying finding out more" | was: 始めたばかりですが楽しんでいます — prompt lacked "finding out more"
+S0224L01U07	始めたばかりですが、もっと知るのをもう楽しんでいます
+# S0224L01U10 use → "I've just started so I don't mind making mistakes yet" | was: 始めたばかりだから間違えても大丈夫です — prompt said "it's OK"; English is "I don't mind … yet"
+S0224L01U10	始めたばかりなので、まだ間違えても構いません
+# S0224L01U11 use → "she's just started to learn this language this month" | was: 彼女はこの言語を始めたばかりです — prompt lacked "this month"
+S0224L01U11	彼女は今月この言語を学び始めたばかりです
+# S0224L01U13 use → "I've just started talking more and it is fun" | was: 話すことを始めたばかりです — prompt lacked "more and it is fun"
+S0224L01U13	もっと話し始めたばかりで、楽しいです
+# S0225L01B02 build → "if he could he" | was: できれば彼は — English "if he could he" is a garbled fragment
+S0225L01B02	DELETE
+# S0225L02U02 use → "it's not difficult to find the answer if you think about it" | was: 答えを見つけるのは難しくありません — prompt lacked "if you think about it"
+S0225L02U02	よく考えれば、答えを見つけるのは難しくありません
+# S0225L02U04 use → "that is why he didn't know the answer to the question" | was: それが彼が答えを知らなかった理由です — prompt lacked "to the question" (だから = "that is why", seed 105)
+S0225L02U04	だから彼はその質問の答えを知りませんでした
+# S0225L02U08 use → "I don't know what the answer is at the moment" | was: 私は答えがわかりません — prompt lacked "at the moment"
+S0225L02U08	今、答えが何かわかりません
+# KEEP S0225L02U09 | 間に合うように答えるほど早く考えるのは難しいです。 | it's difficult to think quickly enough to answer in time — prompt is seed 91's own Japanese and matches (false flag)
+# S0225L02U11 use → "could you give me the answer if you know what it is?" | was: 答えを教えていただけませんか — prompt lacked "if you know what it is"
+S0225L02U11	答えを知っていたら、私に答えをくれませんか？
+# S0225L02U13 use → "I know the answer but I can't remember how to say it" | was: 答えはわかっているのに言えません — prompt said "can't say it"
+S0225L02U13	答えはわかっていますが、どう言うか思い出せません
+# S0225L02U15 use → "do you want me to help you look for the answer?" | was: 答えを見つけるのを手伝ってもらえますか — prompt asked "can you help me"
+S0225L02U15	答えを探すのを手伝ってほしいですか？
+# S0225L03U01 use → "he would give you the answer if he could" | was: できれば彼はあなたに答えを教えてくれるでしょう — prompt said 教えて ("tell"); English is "give you"
+S0225L03U01	できれば彼はあなたに答えをくれるでしょう
+# S0225L03U03 use → "I know he would give you what you need" | was: 彼はあなたが必要なものをくれるでしょう — prompt lacked "I know"
+S0225L03U03	彼はあなたが必要なものをくれるとわかっています
+# KEEP S0231L02B01 | 男性を | man who — bare LEGO 男性を = "man who": LEGO-level gloss
+# KEEP S0231L02B02 | 男性を | man who — bare LEGO: LEGO-level gloss
+# KEEP S0232L01B01 | 女性を | woman who — bare LEGO 女性を = "woman who": LEGO-level gloss
+# S0232L01B03 build → "do you know the woman who works here?" | was: その女性を知っていますか — prompt lacked "who works here"
+S0232L01B03	ここで働いている女性を知っていますか
+# S0233L03B05 build → "do you know a young woman who works here?" | was: 若い女性を知っていますか — prompt lacked "who works here"
+S0233L03B05	ここで働いている若い女性を知っていますか
+# S0233L03U07 use → "there is a young woman here who wants to meet you" | was: あなたに会いたいと言っている若い女性がいます — prompt lacked "here"
+S0233L03U07	ここにあなたに会いたいと言っている若い女性がいます
+# S0234L01B06 build → "I met your sister yesterday" | was: あなたのお姉さんに会いました — prompt lacked "yesterday"
+S0234L01B06	昨日あなたのお姉さんに会いました
+# KEEP S0234L01U02 | あなたに何か伝えたいと言った人に会いました。 | I met someone who said that he wanted to tell you something — prompt says "tell YOU" (あなたに) and matches (false flag)
+# KEEP S0235L01U01 | あなたに何か伝えたいと言った人に会いました。 | I met someone who said that he wanted to tell you something — prompt is the seed's own Japanese and matches (false flag)
+# KEEP S0236L01U01 | あなたに何か伝えたいと言った人に会いました。 | I met someone who said that he wanted to tell you something — prompt is seed 235's own Japanese and matches (false flag)
+# KEEP S0236L01U06 | 全く同じ言い方はしなかったでしょう。 | I wouldn't have said it in exactly the same way — prompt is seed 153's own Japanese and matches (false flag)
+# S0237L01U01 use → "he wanted me to help but I'm too busy today" | was: 彼は私に手伝ってほしかったが、私は今日忙しかった — English "he wanted me to help but I'm too busy today" mixes tenses
+S0237L01U01	DELETE
+# S0237L01U05 use → "he wanted me to remember but I've forgotten the word I was trying to say" | was: 彼は私に覚えてほしかったが、私はその言葉を忘れてしまった — prompt lacked "I was trying to say"
+S0237L01U05	彼は私に覚えてほしかったですが、言おうとしていた言葉を忘れました
+# S0237L01U10 use → "he wanted me to speak with her and I wanted to help but I wasn't ready" | was: 彼は私に彼女と話してほしかったが、私は準備ができていなかった — English "he wanted me to speak with her and I wanted to help but I wasn't ready" is a chain
+S0237L01U10	DELETE
+# KEEP S0238L01U03 | 彼は本当のことを教えてほしいと思っていました | he wanted you to tell me the truth — prompt matches "he wanted you to tell me the truth" (the flag's "always" is not in either)
+# KEEP S0239L01U02 | 母は読書が好きだと彼に言いました | I told him my mother likes to read — KEEP-equivalent: subject dropped; "I told him" is the natural reading (false flag)
+# S0242L02U01 use → "I want to give her a good answer" | was: 彼女に良い答えを教えたいです — prompt said 教えたい ("tell"); English is "give her"
+S0242L02U01	彼女にいい答えをあげたいです
+# KEEP S0243L03B03 | 同じものを頼むつもりです | going to ask for the same thing — "going to ask for the same thing" — prompt matches (false flag)

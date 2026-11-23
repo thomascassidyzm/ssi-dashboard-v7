@@ -1,0 +1,55 @@
+# eng_for_jpn seeds 214-223: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0216L02B07 build → "I saw a few friends today and we had a good time" | was: 今日友達に何人か会いました — prompt lacked "and we had a good time"
+S0216L02B07	今日友達に何人か会って、楽しい時間を過ごしました
+# KEEP S0218L02B02 | あまり何も | didn't do much — "didn't do much" BUILD fragment; あまり何も is a stub of the LEGO — gate decides; UNSURE
+# S0218L02U08 use → "I didn't do much, I just wanted to relax" | was: あまり何もしませんでした。ただリラックスしていました — prompt said "I was just relaxing"
+S0218L02U08	あまり何もしませんでした。ただリラックスしたかったです
+# S0218L03B02 build → "no I didn't do much on sunday" | was: 私は日曜日はあまり何もしませんでした — prompt lacked "no"
+S0218L03B02	いいえ、日曜日はあまり何もしませんでした
+# S0219L01U06 use → "it was nice to relax for a while together" | was: しばらくリラックスできて良かったです — prompt lacked "together"
+S0219L01U06	しばらく一緒にリラックスできて良かったです
+# S0219L01U12 use → "it was nice to relax with my friends for a while" | was: 友達と一緒にリラックスできて良かったです — prompt lacked "for a while"
+S0219L01U12	しばらく友達と一緒にリラックスできて良かったです
+# S0219L01U13 use → "I'm going to relax for a while today" | was: 今日はリラックスするつもりです — prompt lacked "for a while"
+S0219L01U13	今日はしばらくリラックスするつもりです
+# S0219L01U14 use → "I think we should all relax for a while" | was: みんなリラックスすべきだと思います — prompt lacked "for a while"
+S0219L01U14	みんなしばらくリラックスした方がいいと思います
+# S0219L02U10 use → "it was nice to be with you for a while" | was: あなたと一緒にいられて良かったです — prompt lacked "for a while"
+S0219L02U10	しばらくあなたと一緒にいられて良かったです
+# S0219L02U11 use → "it was nice to relax for a while and I'd like to do it again" | was: しばらくリラックスするのは良かったです。また来週やりましょう — prompt said "let's do it again next week"
+S0219L02U11	しばらくリラックスするのは良かったです。またやりたいです
+# S0219L02U13 use → "it was nice to do nothing for a while" | was: 何もしない時間があって良かったです — prompt lacked "for a while"
+S0219L02U13	しばらく何もしないのは良かったです
+# KEEP S0220L02B01 | 少し見ましたか | watch a bit? — "watch a bit?" BUILD fragment of the LEGO (false flag)
+# KEEP S0220L02B02 | 少し見ました | watch a bit — "watch a bit" — LEGO-shaped fragment; past 見ました is the LEGO's own known (LEGO-level)
+# KEEP S0220L02B03 | テレビを少し見ました | watch a bit of television — "watch a bit of television" — LEGO-level tense of 見ました
+# S0222L01U03 use → "he is trying to tell you something in English" | was: 彼は英語で伝えようとしています — prompt lacked "you something"
+S0222L01U03	彼は英語であなたに何か伝えようとしています
+# S0222L01U04 use → "I'm not sure what he is trying to tell us at the moment" | was: 何を伝えようとしているのかわかりません — prompt lacked "us … at the moment"
+S0222L01U04	今、彼が私たちに何を伝えようとしているのかわかりません
+# S0222L01U06 use → "that isn't what I'm trying to tell you at the moment" | was: それは私が伝えようとしていることではありません — prompt lacked "you … at the moment"
+S0222L01U06	それは今私があなたに伝えようとしていることではありません
+# S0222L01U08 use → "I'm trying to tell you that I think it's a good thing" | was: 私はあなたに良いことを伝えようとしています — prompt said "something good"
+S0222L01U08	それはいいことだと思うと、あなたに伝えようとしています
+# S0222L01U10 use → "my friend was trying to tell me something a while ago" | was: 友達が何かを伝えようとしていました — prompt lacked "me … a while ago"
+S0222L01U10	さっき友達が私に何か伝えようとしていました
+# S0222L01U14 use → "I want to know what he is trying to tell us about that" | was: 彼は何を伝えようとしているのか気になります — prompt said "I wonder"; English is "I want to know … about that"
+S0222L01U14	それについて彼が私たちに何を伝えようとしているのか知りたいです
+# S0223L01B05 build → "going to ask where she wants to go" | was: どこで会いたいか聞くつもりです — prompt said 会いたい (meet); English is "go"
+S0223L01B05	どこに行きたいか聞くつもりです
+# S0223L01U05 use → "I'm going to ask my friend about that this evening" | was: 友達に聞くつもりです — prompt lacked "about that this evening"
+S0223L01U05	今晩それについて友達に聞くつもりです
+# KEEP S0223L01U06 | どう言うか思い出せなかったら、助けを求めるつもりです | I'm going to ask for help if I can't remember how to say it — KEEP-equivalent: prompt matches (false flag)
+# S0223L01U07 use → "I'm going to ask her about it tomorrow morning" | was: 明日午前中に聞くつもりです — prompt lacked "her … about it"
+S0223L01U07	明日の朝それについて彼女に聞くつもりです
+# S0223L01U08 use → "I'm going to ask you something before you leave this morning" | was: 出発前に何か聞くつもりです — prompt lacked "this morning"
+S0223L01U08	今朝あなたが出る前に、あなたに何か聞くつもりです
+# S0223L01U09 use → "I'm going to ask where she wants to meet on saturday night" | was: 彼女はどこで会いたいか聞くつもりです — prompt lacked "on Saturday night"
+S0223L01U09	土曜日の夜、彼女がどこで会いたいか聞くつもりです
+# S0223L01U11 use → "I'm going to ask my teacher what to do next week" | was: 先生に聞くつもりです — prompt lacked "what to do next week"
+S0223L01U11	来週何をすればいいか先生に聞くつもりです
+# S0223L01U12 use → "I'm going to ask when you want to start talking more" | was: いつ始めるか聞くつもりです — prompt lacked "talking more"
+S0223L01U12	いつもっと話し始めたいか聞くつもりです
+# S0223L01U15 use → "I'm going to ask her to speak English with me more often" | was: 彼女に英語で話してもらうように聞くつもりです — prompt lacked "with me more often"
+S0223L01U15	もっと頻繁に私と英語で話してくれるように彼女に頼むつもりです

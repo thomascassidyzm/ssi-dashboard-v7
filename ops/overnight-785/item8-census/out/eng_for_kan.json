@@ -1,0 +1,405 @@
+{
+ "course": "eng_for_kan",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 271,
+ "on_copy": 271,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0003L02U06",
+   "src": "#957 changeset",
+   "known": "ಸಾಧ್ಯವಾದಷ್ಟು ಹೆಚ್ಚು ಬಾರಿ ಹೇಗೆ ಮಾತಾಡೋದು.",
+   "target": "how to speak as often as possible.",
+   "twin": "S0003L02U01",
+   "twin_known": "ಹೇಗೆ ಸಾಧ್ಯವಾದಷ್ಟು ಹೆಚ್ಚು ಬಾರಿ ಮಾತಾಡೋದು"
+  },
+  {
+   "id": "S0004L03U06",
+   "src": "#957 changeset",
+   "known": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಏನಾದರೂ ಹೇಗೆ ಹೇಳೋದು",
+   "target": "how to say something in English",
+   "twin": "S0004L03B04",
+   "twin_known": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೇಗೆ ಏನಾದರೂ ಹೇಳೋದು"
+  },
+  {
+   "id": "S0005L03U06",
+   "src": "#957 changeset",
+   "known": "ನಾನು ಬೇರೆ ಯಾರ ಜೊತೆಯಾದರೂ ಮಾತಾಡೋ ಅಭ್ಯಾಸ ಮಾಡ್ತೀನಿ.",
+   "target": "I'm going to practise speaking with someone else.",
+   "twin": "S0005L03U02",
+   "twin_known": "ಬೇರೆ ಯಾರ ಜೊತೆಯಾದರೂ ಮಾತಾಡೋ ಅಭ್ಯಾಸ ಮಾಡ್ತೀನಿ"
+  },
+  {
+   "id": "S0032L01U06",
+   "src": "#957 changeset",
+   "known": "ನೀವು ನನಗೆ ಏನಾದರೂ ತೋರಿಸಬೇಕಿತ್ತಾ?",
+   "target": "Did you want to show me something?",
+   "twin": "S0032L01U01",
+   "twin_known": "ನನಗೆ ಏನಾದರೂ ತೋರಿಸಬೇಕಿತ್ತಾ?"
+  },
+  {
+   "id": "S0033L01U06",
+   "src": "#957 changeset",
+   "known": "ನೀವು ಎಷ್ಟು ಕಾಲದಿಂದ ಇಂಗ್ಲಿಷ್ ಕಲಿಯ್ತಿದ್ದೀರಿ?",
+   "target": "How long have you been learning English?",
+   "twin": "S0033L01U01",
+   "twin_known": "ಎಷ್ಟು ಕಾಲದಿಂದ ಇಂಗ್ಲಿಷ್ ಕಲಿಯ್ತಿದ್ದೀರಿ?"
+  },
+  {
+   "id": "S0034L03U06",
+   "src": "#957 changeset",
+   "known": "ಬೇರೆ ಜನ ಇಲ್ಲಿ ಇರೋವಾಗ ಅವನಿಗೆ ಸುಮ್ಮನಿರೋದು ಬೇಡ.",
+   "target": "He doesn't want to be quiet when other people are here.",
+   "twin": "S0034L03U05",
+   "twin_known": "ಅವನಿಗೆ ಬೇರೆ ಜನ ಇಲ್ಲಿ ಇರೋವಾಗ ಸುಮ್ಮನಿರೋದು ಬೇಡ"
+  },
+  {
+   "id": "S0037L05U06",
+   "src": "#957 changeset",
+   "known": "ಕಳೆದ ತಿಂಗಳು ನಾನು ಅದರ ಬಗ್ಗೆ ಜಾಗ್ರತೆಯಾಗಿ ಯೋಚಿಸೋಕೆ ಶುರು ಮಾಡಿದೆ.",
+   "target": "I started to think about it carefully last month.",
+   "twin": "S0037L05U05",
+   "twin_known": "ಕಳೆದ ತಿಂಗಳು ಜಾಗ್ರತೆಯಾಗಿ ಅದರ ಬಗ್ಗೆ ಯೋಚಿಸೋಕೆ ಶುರು ಮಾಡಿದೆ"
+  },
+  {
+   "id": "S0040L02U06",
+   "src": "#957 changeset",
+   "known": "ಈಗ ನಿಮಗೆ ಹೇಗನಿಸ್ತಿದೆ?",
+   "target": "How do you feel at the moment?",
+   "twin": "S0040L02U02",
+   "twin_known": "ಈಗ ಹೇಗನಿಸ್ತಿದೆ?"
+  },
+  {
+   "id": "S0043L02U06",
+   "src": "#957 changeset",
+   "known": "ಹೇಗೆ ಉತ್ತರ ಕೊಡೋದು ಅಂತ ನಾನು ಯೋಚಿಸ್ತಿರಲಿಲ್ಲ.",
+   "target": "I wasn't thinking about how to answer.",
+   "twin": "S0043L02U02",
+   "twin_known": "ಹೇಗೆ ಉತ್ತರ ಕೊಡೋದು ಅಂತ ಯೋಚಿಸ್ತಿರಲಿಲ್ಲ"
+  },
+  {
+   "id": "S0048L01U06",
+   "src": "#957 changeset",
+   "known": "ತಪ್ಪು ಮಾಡೋ ಬಗ್ಗೆ ನಾನು ತಲೆಕೆಡಿಸಿಕೊಳ್ಳಲ್ಲ.",
+   "target": "I don't care about making mistakes.",
+   "twin": "S0048L01U01",
+   "twin_known": "ತಪ್ಪು ಮಾಡೋ ಬಗ್ಗೆ ತಲೆಕೆಡಿಸಿಕೊಳ್ಳಲ್ಲ"
+  },
+  {
+   "id": "S0067L01U06",
+   "src": "#957 changeset",
+   "known": "ನಿಮಗೆ ಯಾಕೆ ನಿಲ್ಲಿಸಬೇಕು?",
+   "target": "Why do you want to stop?",
+   "twin": "S0067L01U01",
+   "twin_known": "ಯಾಕೆ ನಿಮಗೆ ನಿಲ್ಲಿಸಬೇಕು?"
+  },
+  {
+   "id": "S0113L01U06",
+   "src": "#957 changeset",
+   "known": "ನೀವು ಏನು ಹೇಳಿದ್ರಿ ಅಂತ ನನಗೆ ಯಾಕೆ ನೆನಪಾಗ್ತಿಲ್ಲ?",
+   "target": "Why can't I remember what you said?",
+   "twin": "S0113L01U04",
+   "twin_known": "ನೀವು ಹೇಳಿದ್ದು ಯಾಕೆ ನನಗೆ ನೆನಪಾಗ್ತಿಲ್ಲ?"
+  },
+  {
+   "id": "S0144L02U06",
+   "src": "#957 changeset",
+   "known": "ಇವತ್ತು ಬೆಳಿಗ್ಗೆ ನಾನು ಬಯಸಿದ್ದಕ್ಕಿಂತ ಬೇಗ ಎಚ್ಚರ ಆದೆ.",
+   "target": "I woke earlier than I wanted to this morning.",
+   "twin": "S0144L02U05",
+   "twin_known": "ನಾನು ಇವತ್ತು ಬೆಳಿಗ್ಗೆ ಬಯಸಿದ್ದಕ್ಕಿಂತ ಬೇಗ ಎಚ್ಚರ ಆದೆ"
+  },
+  {
+   "id": "S0151L02U06",
+   "src": "#957 changeset",
+   "known": "ನಾನು ಆಗುತ್ತೆ ಅಂತ ಆಶಿಸ್ತಿದ್ದದ್ದು ಅದಲ್ಲ.",
+   "target": "That wasn't what I was hoping would happen.",
+   "twin": "S0151L02U01",
+   "twin_known": "ಅದು ನಾನು ಆಗುತ್ತೆ ಅಂತ ಆಶಿಸ್ತಿದ್ದದ್ದಲ್ಲ"
+  },
+  {
+   "id": "S0192L02U06",
+   "src": "#957 changeset",
+   "known": "ನಾಳೆ ರಾತ್ರಿ ನನಗೆ ಕೆಲಸ ಇದೆ.",
+   "target": "I'm busy tomorrow night.",
+   "twin": "S0192L02U03",
+   "twin_known": "ನನಗೆ ನಾಳೆ ರಾತ್ರಿ ಕೆಲಸ ಇದೆ"
+  },
+  {
+   "id": "S0196L02U06",
+   "src": "#957 changeset",
+   "known": "ಇತ್ತೀಚಿನ ಆಲೋಚನೆ ಕೇಳಿದ್ರಾ?",
+   "target": "Have you heard the latest idea?",
+   "twin": "S0196L02U01",
+   "twin_known": "ನೀವು ಇತ್ತೀಚಿನ ಆಲೋಚನೆ ಕೇಳಿದ್ರಾ?"
+  },
+  {
+   "id": "S0214L02U06",
+   "src": "#957 changeset",
+   "known": "ವಾರಾಂತ್ಯದಲ್ಲಿ ನಿಮಗೆ ಚೆನ್ನಾಗಿ ಸಮಯ ಕಳೀತಾ?",
+   "target": "Did you have a good time at the weekend?",
+   "twin": "S0214L02U02",
+   "twin_known": "ನಿಮಗೆ ವಾರಾಂತ್ಯದಲ್ಲಿ ಚೆನ್ನಾಗಿ ಸಮಯ ಕಳೀತಾ?"
+  },
+  {
+   "id": "S0251L02U06",
+   "src": "#957 changeset",
+   "known": "ನಾವು ಮುಗಿಸೋ ತನಕ ನನಗೆ ತಿಳಿದುಕೊಳ್ಳೋದು ಬೇಡ.",
+   "target": "I don't want to find out until after we finish.",
+   "twin": "S0251L02U02",
+   "twin_known": "ನಾವು ಮುಗಿಸೋ ತನಕ ತಿಳಿದುಕೊಳ್ಳೋದು ಬೇಡ"
+  },
+  {
+   "id": "S0257L01U06",
+   "src": "#957 changeset",
+   "known": "ಆ ನೀಲಿ ವಸ್ತು ನನಗೆ ಇಷ್ಟ.",
+   "target": "I like that blue thing.",
+   "twin": "S0257L01U02",
+   "twin_known": "ನನಗೆ ಆ ನೀಲಿ ವಸ್ತು ಇಷ್ಟ"
+  },
+  {
+   "id": "S0269L02U06",
+   "src": "#957 changeset",
+   "known": "ನಿಮ್ಮ ಅಪ್ಪಂಗೋಸ್ಕರ ಕಾಯೋದು ನಿಮಗೆ ಯಾಕೆ ಬೇಡ?",
+   "target": "Why don't you want to wait for your father?",
+   "twin": "S0269L02U02",
+   "twin_known": "ನಿಮಗೆ ನಿಮ್ಮ ಅಪ್ಪಂಗೋಸ್ಕರ ಕಾಯೋದು ಯಾಕೆ ಬೇಡ?"
+  },
+  {
+   "id": "S0280L02U06",
+   "src": "#957 changeset",
+   "known": "ಇಲ್ಲ ನಾನು ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ ಮಾತ್ರ ಮಾಡಬೇಕಿತ್ತು.",
+   "target": "No I only had to do the most important job.",
+   "twin": "S0280L02U04",
+   "twin_known": "ಇಲ್ಲ ನಾನು ಮಾತ್ರ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ಕೆಲಸ ಮಾಡಬೇಕಿತ್ತು"
+  },
+  {
+   "id": "S0284L02U06",
+   "src": "#957 changeset",
+   "known": "ನನ್ನ ಸಹೋದರಿಯ ಸ್ನೇಹಿತೆ ನಿಮಗೆ ಗೊತ್ತಾ?",
+   "target": "Do you know my sister's friend?",
+   "twin": "S0284L02U02",
+   "twin_known": "ನಿಮಗೆ ನನ್ನ ಸಹೋದರಿಯ ಸ್ನೇಹಿತೆ ಗೊತ್ತಾ?"
+  },
+  {
+   "id": "S0296L02U08",
+   "src": "#957 changeset",
+   "known": "ನನಗೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ಸಮಯ ಬೇಕು ಅಂತ ನಾನು ಹೇಳಿದೆ.",
+   "target": "I said that I needed a little more time.",
+   "twin": "S0296L02U01",
+   "twin_known": "ನನಗೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ಸಮಯ ಬೇಕಿತ್ತು ಅಂತ ನಾನು ಹೇಳಿದೆ"
+  },
+  {
+   "id": "S0312L02U06",
+   "src": "#957 changeset",
+   "known": "ನಾಳೆ ರಾತ್ರಿ ತಾನು ಬೇರೆ ಕೋಣೆ ಬಳಸಬಹುದು ಅಂತ ಅವಳು ಹೇಳಿದಳು.",
+   "target": "She said that she could use the other room tomorrow night.",
+   "twin": "S0312L02U05",
+   "twin_known": "ಅವಳಿಗೆ ನಾಳೆ ರಾತ್ರಿ ಬೇರೆ ಕೋಣೆ ಬಳಸಬಹುದು ಅಂತ ಅವಳು ಹೇಳಿದಳು"
+  },
+  {
+   "id": "S0313L03U06",
+   "src": "#957 changeset",
+   "known": "ತನ್ನಿಂದ ಎಲ್ಲಾ ಐದು ಆಟ ನೋಡೋಕೆ ಆಗಲಿಲ್ಲ ಅಂತ ಅವನು ಹೇಳಿದ.",
+   "target": "He said that he couldn't watch all five games.",
+   "twin": "S0313L03U01",
+   "twin_known": "ಅವನಿಗೆ ಎಲ್ಲಾ ಐದು ಆಟ ನೋಡೋಕೆ ಆಗಲಿಲ್ಲ ಅಂತ ಅವನು ಹೇಳಿದ"
+  },
+  {
+   "id": "S0316L04U06",
+   "src": "#957 changeset",
+   "known": "ಸೋಮವಾರ ಅವಳು ತನ್ನ ಸಹೋದರನನ್ನ ಕರ್ಕೊಂಡು ಬರಬಹುದಾ ಅಂತ ನಿಮಗೆ ಅನಿಸುತ್ತಾ?",
+   "target": "Do you think that she could bring her brother on Monday?",
+   "twin": "S0316L04U01",
+   "twin_known": "ಅವಳು ಸೋಮವಾರ ತನ್ನ ಸಹೋದರನನ್ನ ಕರ್ಕೊಂಡು ಬರಬಹುದಾ ಅಂತ ನಿಮಗೆ ಅನಿಸುತ್ತಾ?"
+  },
+  {
+   "id": "S0317L04U06",
+   "src": "#957 changeset",
+   "known": "ಹೌದು ಅವಳಿಗೆ ಬೇಕಿದ್ರೆ ಅವಳಿಂದ ಆಗುತ್ತೆ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ.",
+   "target": "Yes I think she could if she wanted to.",
+   "twin": "S0317L04U01",
+   "twin_known": "ಹೌದು ಅವಳಿಂದ ಆಗುತ್ತೆ ಅವಳಿಗೆ ಬೇಕಿದ್ರೆ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ"
+  },
+  {
+   "id": "S0322L02U10",
+   "src": "#957 changeset",
+   "known": "ತಾನು ಅದೇ ಪುಸ್ತಕ ಓದಬೇಕಾಗಿದೆ ಅಂತ ಅವಳು ಹೇಳಿದಳು.",
+   "target": "She said that she needs to read the same book.",
+   "twin": "S0322L02U03",
+   "twin_known": "ಅವಳು ಅದೇ ಪುಸ್ತಕ ಓದಬೇಕಾಗಿದೆ ಅಂತ ಅವಳು ಹೇಳಿದಳು"
+  },
+  {
+   "id": "S0333L02U08",
+   "src": "#957 changeset",
+   "known": "ತನ್ನಿಂದ ಗುಂಪಿನ ಜೊತೆ ಹೆಚ್ಚು ಸಮಯ ಕಳೆಯೋಕೆ ಆಗಲ್ಲ ಅಂತ ಅವಳು ಹೇಳಿದಳು.",
+   "target": "She said that she can't spend much time with the group.",
+   "twin": "S0333L02U03",
+   "twin_known": "ಅವಳಿಂದ ಗುಂಪಿನ ಜೊತೆ ಹೆಚ್ಚು ಸಮಯ ಕಳೆಯೋಕೆ ಆಗಲ್ಲ ಅಂತ ಅವಳು ಹೇಳಿದಳು"
+  },
+  {
+   "id": "S0334L02U06",
+   "src": "#957 changeset",
+   "known": "ನೀವು ಬೆಕ್ಕಿನ ಮರಿಯನ್ನ ಹಿಡಿಯೋಕೆ ತಾನು ಬಿಡ್ತೀನಿ ಅಂತ ಅವನು ಹೇಳಿದ",
+   "target": "He said that he can let you hold the kitten",
+   "twin": "S0334L02U03",
+   "twin_known": "ಅವನು ಬೆಕ್ಕಿನ ಮರಿಯನ್ನ ಹಿಡಿಯೋಕೆ ತಾನು ಬಿಡ್ತೀನಿ ಅಂತ ಅವನು ಹೇಳಿದ"
+  },
+  {
+   "id": "S0342L02U07",
+   "src": "#957 changeset",
+   "known": "ಏನೋ ಹೇಳಿದ ಒಬ್ಬರನ್ನ ನಾನು ಭೇಟಿಯಾದೆ.",
+   "target": "I met someone who said something.",
+   "twin": "S0342L02U01",
+   "twin_known": "ನಾನು ಏನೋ ಹೇಳಿದ ಒಬ್ಬರನ್ನ ಭೇಟಿಯಾದೆ"
+  },
+  {
+   "id": "S0343L03U06",
+   "src": "#957 changeset",
+   "known": "ತನಗೆ ಆರ್ಥಿಕತೆ ಬಗ್ಗೆ ಚಿಂತೆ ಅಂತ ಹೇಳಿದವಳು.",
+   "target": "Who said that she's worried about the economy.",
+   "twin": "S0343L03B03",
+   "twin_known": "ಆರ್ಥಿಕತೆ ಬಗ್ಗೆ ಚಿಂತೆ ಅಂತ ಹೇಳಿದವಳು"
+  },
+  {
+   "id": "S0344L03U06",
+   "src": "#957 changeset",
+   "known": "ನಿಮಗೆ ಸಹಾಯ ಮಾಡೋಕೆ ತಾನು ಸಂತೋಷ ಅಂತ ಹೇಳಿದವನು.",
+   "target": "Who said that he's happy to help you.",
+   "twin": "S0344L03B03",
+   "twin_known": "ತಾನು ನಿಮಗೆ ಸಹಾಯ ಮಾಡೋಕೆ ಸಂತೋಷ ಅಂತ ಹೇಳಿದವನು"
+  },
+  {
+   "id": "S0347L03U07",
+   "src": "#957 changeset",
+   "known": "ಒಂದು ವಾರದ ಹಿಂದೆ ಏನಾಗ್ತಿತ್ತು ಅಂತ ತಿಳಿದುಕೊಳ್ಳೋದು ಅವನಿಗೆ ಬೇಕಿತ್ತು.",
+   "target": "He wanted to know what was happening a week ago.",
+   "twin": "S0347L03U02",
+   "twin_known": "ಏನಾಗ್ತಿತ್ತು ಅಂತ ತಿಳಿದುಕೊಳ್ಳೋದು ಒಂದು ವಾರದ ಹಿಂದೆ ಅವನಿಗೆ ಬೇಕಿತ್ತು"
+  },
+  {
+   "id": "S0396L03U06",
+   "src": "#957 changeset",
+   "known": "ಉಳಿದವರೆಲ್ಲ ಸಿದ್ಧ ಆಗೋ ತನಕ ನಾವು ನಿಂತಿರಬೇಕಾಗಿಲ್ಲ.",
+   "target": "We don't need to stand until everybody else is ready.",
+   "twin": "S0396L03U01",
+   "twin_known": "ನಾವು ಉಳಿದವರೆಲ್ಲ ಸಿದ್ಧ ಆಗೋ ತನಕ ನಿಂತಿರಬೇಕಾಗಿಲ್ಲ"
+  },
+  {
+   "id": "S0405L02U06",
+   "src": "#957 changeset",
+   "known": "ನಾವು ಮುಂಚಿತವಾಗಿ ಕಾಯ್ದಿರಿಸಬೇಕಾ ಅಂತ ಕೇಳಬೇಕಾ?",
+   "target": "Should we ask if we have to book?",
+   "twin": "S0405L02U01",
+   "twin_known": "ನಾವು ಕಾಯ್ದಿರಿಸಬೇಕಾ ಅಂತ ಕೇಳಬೇಕಾ?"
+  },
+  {
+   "id": "S0412L02U06",
+   "src": "#957 changeset",
+   "known": "ಅವರು ಎಲ್ಲವನ್ನೂ ಗೆಲ್ಲೋಕೆ ನಾವು ಬಿಡೋಕೆ ಆಗಲಿಲ್ಲ.",
+   "target": "We couldn't allow them to win everything.",
+   "twin": "S0412L02U01",
+   "twin_known": "ನಾವು ಅವರನ್ನ ಎಲ್ಲವನ್ನೂ ಗೆಲ್ಲೋಕೆ ಬಿಡೋಕೆ ಆಗಲಿಲ್ಲ"
+  },
+  {
+   "id": "S0415L02U06",
+   "src": "#957 changeset",
+   "known": "ನನ್ನನ್ನ ಕೇಳಿದ್ರೆ, ಅದು ಸಮಸ್ಯೆ ಆಗಲ್ಲ.",
+   "target": "That wouldn't be a problem if you ask me.",
+   "twin": "S0415L02U01",
+   "twin_known": "ಅದು ಸಮಸ್ಯೆ ಆಗಲ್ಲ ನನ್ನನ್ನ ಕೇಳಿದ್ರೆ"
+  },
+  {
+   "id": "S0420L02U07",
+   "src": "#957 changeset",
+   "known": "ಅವನಿಗೆ ಎಷ್ಟು ವಯಸ್ಸು ಅಂತ ಅವರು ಕೇಳಬೇಕಾಗಿಲ್ಲ.",
+   "target": "They don't need to ask how old he is.",
+   "twin": "S0420L02U01",
+   "twin_known": "ಅವರು ಅವನಿಗೆ ಎಷ್ಟು ವಯಸ್ಸು ಅಂತ ಕೇಳಬೇಕಾಗಿಲ್ಲ"
+  },
+  {
+   "id": "S0428L04U06",
+   "src": "#957 changeset",
+   "known": "ಮಂಗಳವಾರ ಅವರು ನಮ್ಮನ್ನ ಭೇಟಿ ಮಾಡೋಕೆ ಬಯಸ್ತಾರಾ?",
+   "target": "Would they like to visit us on Tuesday?",
+   "twin": "S0428L04U01",
+   "twin_known": "ಅವರು ಮಂಗಳವಾರ ನಮ್ಮನ್ನ ಭೇಟಿ ಮಾಡೋಕೆ ಬಯಸ್ತಾರಾ?"
+  },
+  {
+   "id": "S0470L03U06",
+   "src": "#957 changeset",
+   "known": "ನಾವು ನಿಲ್ಲಿಸೋ ಮೊದಲು ನಿಮಗೆ ಎಷ್ಟು ಎತ್ತರ ಹತ್ತಬೇಕು?",
+   "target": "How high do you want to climb before we stop?",
+   "twin": "S0470L03U01",
+   "twin_known": "ಎಷ್ಟು ಎತ್ತರ ನಿಮಗೆ ಹತ್ತಬೇಕು ನಾವು ನಿಲ್ಲಿಸೋ ಮೊದಲು?"
+  },
+  {
+   "id": "S0482L02U06",
+   "src": "#957 changeset",
+   "known": "ಅವರು ಗಂಭೀರವಾಗಿಲ್ಲ ಅನ್ನೋದೇ ಏಕೈಕ ನಿಜವಾದ ಭರವಸೆ.",
+   "target": "The only real hope is that they're not serious.",
+   "twin": "S0482L02U01",
+   "twin_known": "ಏಕೈಕ ನಿಜವಾದ ಭರವಸೆ ಅನ್ನೋದೇ ಅವರು ಗಂಭೀರವಾಗಿಲ್ಲ"
+  },
+  {
+   "id": "S0501L03U05",
+   "src": "#957 changeset",
+   "known": "ನೀವು ಜಗಳ ಆಡದೆ ಒಟ್ಟಿಗೆ ಆಡ್ತೀರಿ ಅಂತ ನಾನು ನಂಬಬಹುದಾಗಿದ್ರೆ ಎಷ್ಟು ಚೆನ್ನ.",
+   "target": "If only I could trust you to play together without arguing.",
+   "twin": "S0501L03U01",
+   "twin_known": "ಜಗಳ ಆಡದೆ ಒಟ್ಟಿಗೆ ಆಡ್ತೀರಿ ಅಂತ ನಾನು ನಂಬಬಹುದಾಗಿದ್ರೆ ಎಷ್ಟು ಚೆನ್ನ"
+  },
+  {
+   "id": "S0504L02U05",
+   "src": "#957 changeset",
+   "known": "ನಾನು ಹುಲ್ಲಿನ ಮೇಲೆ ಓಡಿ ಆಚೆ ಹೋಗ್ತೀನಿ.",
+   "target": "I'm going to run across the grass.",
+   "twin": "S0504L02U01",
+   "twin_known": "ಹುಲ್ಲಿನ ಮೇಲೆ ನಾನು ಓಡಿ ಆಚೆ ಹೋಗ್ತೀನಿ"
+  },
+  {
+   "id": "S0507L02U05",
+   "src": "#957 changeset",
+   "known": "ನಾವು ನಗರಕ್ಕೆ ಸ್ಥಳಾಂತರ ಆದೆವು.",
+   "target": "We moved to the city.",
+   "twin": "S0507L02U01",
+   "twin_known": "ನಗರಕ್ಕೆ ನಾವು ಸ್ಥಳಾಂತರ ಆದೆವು"
+  },
+  {
+   "id": "S0508L02U05",
+   "src": "#957 changeset",
+   "known": "ನೀವು ಹೇಗೆ ಪಾವತಿಸ್ತೀರಿ ಅಂತ ಚಿಂತಿಸಿ ಪ್ರಯೋಜನ ಇಲ್ಲ.",
+   "target": "There's no point worrying about how you're going to pay.",
+   "twin": "S0508L02U01",
+   "twin_known": "ಹೇಗೆ ಪಾವತಿಸ್ತೀರಿ ಅಂತ ಚಿಂತಿಸಿ ಪ್ರಯೋಜನ ಇಲ್ಲ"
+  },
+  {
+   "id": "S0524L02U07",
+   "src": "#957 changeset",
+   "known": "ನಾನು ಮೂರು ನಾಲ್ಕು ನಿಮಿಷದಲ್ಲಿ ನಿಮಗೆ ಮತ್ತೆ ಕರೆ ಮಾಡ್ತೀನಿ.",
+   "target": "I'll call you back in three or four minutes.",
+   "twin": "S0524L02U01",
+   "twin_known": "ಮೂರು ನಾಲ್ಕು ನಿಮಿಷದಲ್ಲಿ ನಾನು ನಿಮಗೆ ಮತ್ತೆ ಕರೆ ಮಾಡ್ತೀನಿ"
+  },
+  {
+   "id": "S0529L02U05",
+   "src": "#957 changeset",
+   "known": "ನೀವೆಲ್ಲ ನಿಮ್ಮ ಕೈಗಳನ್ನ ಮೇಲೆ ಎತ್ತ್ತೀರಾ?",
+   "target": "Can you all put your hands up?",
+   "twin": "S0529L02U01",
+   "twin_known": "ನಿಮ್ಮ ಕೈಗಳನ್ನ ನೀವೆಲ್ಲ ಮೇಲೆ ಎತ್ತ್ತೀರಾ?"
+  },
+  {
+   "id": "S0579L03U06",
+   "src": "#957 changeset",
+   "known": "ನಾವು ಆಗಾಗ ಪ್ರಯತ್ನಿಸಿದ್ದೇವೆ.",
+   "target": "We've often tried.",
+   "twin": "S0579L03B01",
+   "twin_known": "ಆಗಾಗ ಪ್ರಯತ್ನಿಸಿದ್ದೇವೆ"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 222,
+ "missing": []
+}

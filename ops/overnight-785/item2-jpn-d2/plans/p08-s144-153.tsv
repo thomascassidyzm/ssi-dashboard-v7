@@ -1,0 +1,91 @@
+# eng_for_jpn seeds 144-153: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists; seeds 145-149, 151 have no flags.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# KEEP S0144L01B01 | 今朝起きたかった時間 | I wanted to this morning — bare LEGO row: prompt is the LEGO's own Japanese; the LEGO pairing (起きたかった時間 = "I wanted to this morning") is a LEGO-level question
+# S0144L01U09 use → "I talk to someone earlier than I wanted to this morning" | was: 前に今朝したかったことを話す — English "I talk to someone earlier than I wanted to this morning" is unnatural
+S0144L01U09	DELETE
+# S0144L02U15 use → "they woke earlier than us" | was: 今日私たちよりも早く起きました — prompt added 今日 and lacked "they"
+S0144L02U15	彼らは私たちより早く起きました
+# S0150L03B05 build → "can you say that again a little more slowly?" | was: もう少しゆっくり言っていただけますか — prompt lacked "again"; いただけますか + this sentence is already "could you …" at S0061L03B06 (ZUT), so the plainer もらえますか carries "can you"
+S0150L03B05	もう少しゆっくりもう一度言ってもらえますか
+# S0150L03U03 use → "can you say that again a little more slowly so I can understand it?" | was: もう少しゆっくり言っていただけますか？ — prompt lacked "again … so I can understand it"
+S0150L03U03	理解できるように、もう少しゆっくりもう一度言っていただけますか？
+# S0150L03U06 use → "can you say what you mean again because I didn't understand it?" | was: もう一度説明していただけますか？ — prompt said "explain again"; English is "say what you mean again because I didn't understand it"
+S0150L03U06	わからなかったので、言いたいことをもう一度言っていただけますか？
+# S0150L03U07 use → "can you speak more slowly because I'm trying to learn?" | was: もっとゆっくり話していただけますか？ — prompt lacked "because I'm trying to learn"
+S0150L03U07	学ぼうとしているので、もっとゆっくり話していただけますか？
+# S0152L01U02 use → "I would have done it differently if I had known what you wanted" | was: 私はそれを違うやり方でしたでしょう。もし知っていたら — prompt lacked "what you wanted" (the seed's own Japanese)
+S0152L01U02	あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう
+# S0152L01U08 use → "I would have done the same thing if I had known what you know" | was: 私は同じことをしたでしょう。あなたが知っていたことを知っていたら — prompt said "what you knew"; English is "what you know"
+S0152L01U08	あなたが知っていることを知っていたら、同じことをしたでしょう
+# S0152L01U09 use → "she would have done it differently if she had had more time to think" | was: 彼女は違うやり方でしたでしょう。もし選べたなら — prompt said "if she could have chosen"
+S0152L01U09	考える時間がもっとあったら、彼女は違うやり方でやったでしょう
+# S0152L01U10 use → "I think you would have done something different when nothing seems to be working" | was: あなたならどうしたでしょうか？何もうまくいきませんでした — English "I think you would have done something different when nothing seems to be working" mixes tenses — garbled
+S0152L01U10	DELETE
+# S0152L01U11 use → "we would have done it better if we had had more time to work together" | was: 私たちはもっと良い仕事をしたでしょう。一緒に取り組んでいたら — prompt lacked "more time"
+S0152L01U11	一緒に取り組む時間がもっとあったら、私たちはもっとうまくやったでしょう
+# KEEP S0152L03B06 | あなたは違うやり方でやりますか | would you do it differently? — "would you do it differently?" — the present-tense question is the natural Japanese cue (false flag)
+# S0152L03U02 use → "we should do it differently next time because nothing seems to be working" | was: 次は違うやり方でやるべきです。今回はうまくいきませんでした — English "we should do it differently next time because nothing seems to be working" mixes tenses — unnatural
+S0152L03U02	DELETE
+# S0152L03U03 use → "I would have done it differently if I had known what you wanted" | was: 私は違うやり方でやったでしょう。もし知っていたら — prompt lacked "what you wanted" (seed's own Japanese; same English as L01U02)
+S0152L03U03	あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう
+# S0152L03U07 use → "why do you want to do it differently when it's going so well?" | was: なぜ違うやり方でやりたいのですか？ — prompt lacked "when it's going so well"
+S0152L03U07	こんなにうまくいっているのに、なぜ違うやり方でやりたいのですか？
+# S0152L03U08 use → "he said he would do it differently next time because he wasn't happy" | was: 彼は次は違うやり方でやると言いました — prompt lacked "because he wasn't happy"
+S0152L03U08	彼は満足していなかったので、次は違うやり方でやると言いました
+# S0152L03U10 use → "I would have done it differently if I had known it wasn't going to work" | was: あなたが違うやり方でやっていたら、もっとうまくいったでしょう — prompt said "if YOU had done it differently it would have gone better"
+S0152L03U10	うまくいかないと知っていたら、違うやり方でやったでしょう
+# S0152L03U11 use → "I'm thinking about doing it differently so I can get better at English" | was: 私は練習の仕方を違うやり方でやりたいと思っています — prompt said "how I practise"
+S0152L03U11	英語がうまくなるように、違うやり方でやることを考えています
+# S0152L03U12 use → "she wanted to show me how to do it differently so I could do it well" | was: 彼女は私に違うやり方でやる方法を教えてくれました — prompt said "she taught me"
+S0152L03U12	彼女は、私がうまくできるように、違うやり方でやる方法を見せたかったです
+# S0152L03U13 use → "I'm doing it differently now so I can do it better next time" | was: 次は違うやり方でやれるように、今頑張っています — prompt said "I'm working hard so I can do it differently next time"
+S0152L03U13	次はもっとうまくできるように、今は違うやり方でやっています
+# S0152L03U14 use → "I would have done it differently if I had known it wasn't going to work" | was: 知っていたら違うやり方でやっていたのですが — same English as U10; prompt lacked "it wasn't going to work"
+S0152L03U14	うまくいかないと知っていたら、違うやり方でやったでしょう
+# KEEP S0152L04B01 | 〜たら | if I had known — bare LEGO stub 〜たら = "if I had known": LEGO-level gloss
+# KEEP S0153L01B01 | 〜しなかったでしょう | wouldn't have said — bare LEGO stub 〜しなかったでしょう: LEGO-level gloss
+# KEEP S0153L01B02 | 〜しなかったでしょう | wouldn't have said — bare LEGO stub: LEGO-level gloss
+# S0153L01U01 use → "I wouldn't have said that if I had known it would make you feel this way" | was: 知っていたら、私はそれを言わなかったでしょう — prompt lacked "it would make you feel this way"
+S0153L01U01	あなたがこう感じると知っていたら、それを言わなかったでしょう
+# S0153L01U02 use → "he wouldn't have said that if he had thought about it more carefully" | was: 彼はそんなことを言わなかったでしょう。もし考えていたら — prompt lacked "more carefully"
+S0153L01U02	もっとよく考えていたら、彼はそれを言わなかったでしょう
+# S0153L01U03 use → "I wouldn't have said anything if I had known what was going on" | was: 私は何も言わなかったでしょう。もし知っていたら — prompt lacked "what was going on"
+S0153L01U03	何が起きているか知っていたら、何も言わなかったでしょう
+# S0153L01U05 use → "she wouldn't have said anything if she had had more time to think" | was: 彼女は何も言わなかったでしょう。もし時間があったら — prompt lacked "to think"
+S0153L01U05	考える時間がもっとあったら、彼女は何も言わなかったでしょう
+# S0153L01U06 use → "I wouldn't have said that if I had known you were there with us" | was: 私はそれを言わなかったでしょう。もしあなたがそこにいたら — prompt said "if you had been there"
+S0153L01U06	あなたが私たちとそこにいると知っていたら、それを言わなかったでしょう
+# S0153L01U07 use → "he wouldn't have said it to her if he had known she didn't want to hear it" | was: 彼はそれを言わなかったでしょう。もし彼女が知っていたら — prompt said "if she had known"
+S0153L01U07	彼女が聞きたくないと知っていたら、彼は彼女にそれを言わなかったでしょう
+# S0153L01U09 use → "you wouldn't have said something like that if you had known the truth" | was: あなたはそんなことを言わなかったでしょう。もし知っていたら — prompt lacked "the truth"
+S0153L01U09	本当のことを知っていたら、あなたはそんなことを言わなかったでしょう
+# S0153L01U11 use → "I wouldn't have said that if I had known things were going to change" | was: 私はそれを言わなかったでしょう。もし違っていたら — English "I wouldn't have said that if I had known things were going to change" — prompt cannot be both natural and exact; marginal row
+S0153L01U11	DELETE
+# S0153L01U12 use → "he wouldn't have said it to her if he had known she could remember it" | was: 彼はそれを彼女に言わなかったでしょう。もし彼女が覚えていなかったら — English "he wouldn't have said it to her if he had known she could remember it" is illogical
+S0153L01U12	DELETE
+# S0153L01U13 use → "I wouldn't have said anything if I had known I didn't need to ask for help" | was: 私は何も言わなかったでしょう。もし一人でやれなかったら — English "I wouldn't have said anything if I had known I didn't need to ask for help" is unnatural
+S0153L01U13	DELETE
+# S0153L01U14 use → "you wouldn't have said that if you didn't want to know what was going on" | was: あなたはそれを言わなかったでしょう。もし気にしていなかったら — English "you wouldn't have said that if you didn't want to know what was going on" mixes conditionals — ungrammatical
+S0153L01U14	DELETE
+# S0153L02U05 use → "exactly what you said is important" | was: あなたが言ったことはまさに正しいです — English "exactly what you said is important" is ambiguous/unnatural
+S0153L02U05	DELETE
+# S0153L02U07 use → "exactly, it's difficult when you don't know enough" | was: まさに、それは難しいですね — prompt lacked "when you don't know enough"
+S0153L02U07	まさに、十分知らないと難しいですね
+# S0153L02U10 use → "exactly, that is why I'm starting to understand English" | was: まさに、それがなぜ私が英語を学んでいるかです — prompt said "why I'm studying English"
+S0153L02U10	まさに、だから英語がわかり始めています
+# S0153L02U11 use → "exactly, I think that is why he didn't know the answer" | was: まさにそれが問題だと思います — English "exactly, I think that is why he didn't know the answer" is a chain of seeds
+S0153L02U11	DELETE
+# S0153L02U12 use → "exactly, I believe that your idea was very good" | was: まさに、あなたの考えは良いと思います — prompt was present and lacked "very" (seed 125's Japanese)
+S0153L02U12	まさに、あなたの考えはとても良かったと思います
+# S0153L03U01 use → "could you say that again the same way?" | was: それと同じように言ってもらえますか？ — prompt lacked "again"
+S0153L03U01	同じ言い方でもう一度言ってもらえますか？
+# S0153L03U02 use → "I want to speak English the same way you do, very well" | was: 私は同じように英語を話せるようになりたいです — prompt lacked "you do, very well"
+S0153L03U02	あなたと同じように、とても上手に英語を話せるようになりたいです
+# S0153L03U03 use → "you're doing it the same way, that is good" | was: あなたはいつも同じように言うと思います — English "you're doing it the same way, that is good" is a comma-splice
+S0153L03U03	DELETE
+# S0153L03U10 use → "I feel the same way about this language" | was: 私も同じように感じています — prompt lacked "about this language"
+S0153L03U10	この言語について、私も同じように感じています
+# S0153L03U12 use → "he doesn't want to say it the same way" | was: 彼は同じように言いたくないと言いました — prompt added "he said"
+S0153L03U12	彼は同じように言いたくありません
+# S0153L03U14 use → "I don't know how to say it the same way" | was: 私には同じようには言えません — prompt said "can't"; English is "don't know how"
+S0153L03U14	同じようにどう言うかわかりません

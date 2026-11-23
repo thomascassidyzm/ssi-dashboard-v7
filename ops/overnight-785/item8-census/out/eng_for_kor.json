@@ -1,0 +1,301 @@
+{
+ "course": "eng_for_kor",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 54,
+ "on_copy": 54,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0004L03U06",
+   "src": "#957 changeset",
+   "known": "영어로 무언가를 말하는 방법",
+   "target": "how to say something in English",
+   "twin": "S0004L03B03",
+   "twin_known": "영어로 무언가를 말하는 법"
+  },
+  {
+   "id": "S0009L02U06",
+   "src": "#957 changeset",
+   "known": "저는 지금 영어를 조금 해요",
+   "target": "I speak a little English now",
+   "twin": "S0009L02U02",
+   "twin_known": "저는 지금 조금 영어로 해요"
+  },
+  {
+   "id": "S0011L03U08",
+   "src": "#957 changeset",
+   "known": "당신이 끝난 후에 말할 수 있으면 좋겠어요",
+   "target": "I'd like to be able to speak after you finish",
+   "twin": "S0011L03U01",
+   "twin_known": "저는 당신이 끝난 후에 말할 수 있으면 좋겠어요"
+  },
+  {
+   "id": "S0016L04U08",
+   "src": "#957 changeset",
+   "known": "그는 나중에 다른 모든 사람들과 함께 돌아오고 싶어해요",
+   "target": "He wants to come back with everyone else later on",
+   "twin": "S0016L04U04",
+   "twin_known": "그는 나중에 모든 사람들과 함께 돌아오고 싶어해요"
+  },
+  {
+   "id": "S0073L02U11",
+   "src": "#957 changeset",
+   "known": "정말 감사해요, 하지만 저는 더 배울 것이 있어요",
+   "target": "Thank you very much, but I've got more to learn",
+   "twin": "S0073L02U01",
+   "twin_known": "감사해요 하지만 저는 더 배울 것이 있어요"
+  },
+  {
+   "id": "S0123L01U06",
+   "src": "#957 changeset",
+   "known": "저는 그것이 좋은 생각이라고 생각해요",
+   "target": "I think that's a good idea",
+   "twin": "S0123L01B01",
+   "twin_known": "좋은 생각이라고 생각해요"
+  },
+  {
+   "id": "S0124L01U06",
+   "src": "#957 changeset",
+   "known": "저는 그것이 좋은 생각이라고 생각했어요",
+   "target": "I thought that was a good idea",
+   "twin": "S0124L01B01",
+   "twin_known": "좋은 생각이라고 생각했어요"
+  },
+  {
+   "id": "S0141L02U06",
+   "src": "#957 changeset",
+   "known": "괜찮아요. 모든 것이 좋아요",
+   "target": "No problem. Everything is okay",
+   "twin": "S0141L02U01",
+   "twin_known": "문제없어요, 모든 것이 좋아요"
+  },
+  {
+   "id": "S0163L01U06",
+   "src": "#957 changeset",
+   "known": "저는 그것이 흥미롭다고 생각해요",
+   "target": "I think that it's interesting",
+   "twin": "S0163L01B01",
+   "twin_known": "그것이 흥미롭다고 생각해요"
+  },
+  {
+   "id": "S0165L01U06",
+   "src": "#957 changeset",
+   "known": "하지만 저는 그것이 사실인지 모르겠어요",
+   "target": "But I'm not sure if it's true",
+   "twin": "S0165L01B02",
+   "twin_known": "하지만 그것이 사실인지 모르겠어요"
+  },
+  {
+   "id": "S0169L01U06",
+   "src": "#957 changeset",
+   "known": "당신은 제가 무엇을 하기를 원해요?",
+   "target": "What do you want me to do?",
+   "twin": "S0169L01B01",
+   "twin_known": "제가 무엇을 하기를 원해요"
+  },
+  {
+   "id": "S0170L02U05",
+   "src": "#957 changeset",
+   "known": "당신이 필요한 것을 말해주기를 바라요",
+   "target": "I'd like you to tell me what you need",
+   "twin": "S0170L02B02",
+   "twin_known": "필요한 것을 말해주기를 바라요"
+  },
+  {
+   "id": "S0177L02U06",
+   "src": "#957 changeset",
+   "known": "그녀에게 어디 가고 싶은지 물어볼게요",
+   "target": "I'll ask her where she wants to go",
+   "twin": "S0177L02U01",
+   "twin_known": "어디 가고 싶은지 그녀에게 물어볼게요"
+  },
+  {
+   "id": "S0178L02U02",
+   "src": "#957 changeset",
+   "known": "시간이 없었어요, 당신을 만나고 싶었는데도",
+   "target": "I didn't have time, although I wanted to see you",
+   "twin": "S0178L02U01",
+   "twin_known": "시간이 없었어요, 만나고 싶었는데도"
+  },
+  {
+   "id": "S0180L01U06",
+   "src": "#957 changeset",
+   "known": "저는 잠시 책을 읽고 싶어요",
+   "target": "I'd like to read my book for a while",
+   "twin": "S0180L01U01",
+   "twin_known": "잠시 책을 읽고 싶어요"
+  },
+  {
+   "id": "S0181L03U06",
+   "src": "#957 changeset",
+   "known": "하지만 저는 어머니를 병원에 데려가야 해요",
+   "target": "But I have to take my mother to the doctor",
+   "twin": "S0181L03U01",
+   "twin_known": "하지만 어머니를 병원에 데려가야 해요"
+  },
+  {
+   "id": "S0184L02U05",
+   "src": "#957 changeset",
+   "known": "네, 조금 전에 사무실에서 봤어요",
+   "target": "Yes I saw them in the office a while ago",
+   "twin": "S0184L02U01",
+   "twin_known": "네, 사무실에서 조금 전에 봤어요"
+  },
+  {
+   "id": "S0187L01U07",
+   "src": "#957 changeset",
+   "known": "저는 지금까지 행복해요",
+   "target": "I'm happy so far",
+   "twin": "S0187L01B01",
+   "twin_known": "지금까지 행복해요"
+  },
+  {
+   "id": "S0188L01U06",
+   "src": "#957 changeset",
+   "known": "그래서 저는 바꿀 필요가 없어요",
+   "target": "So I don't need to change",
+   "twin": "S0188L01B02",
+   "twin_known": "그래서 바꿀 필요가 없어요"
+  },
+  {
+   "id": "S0195L04U06",
+   "src": "#957 changeset",
+   "known": "저는 테이블에 두고 온 돈을 찾으려고 해요",
+   "target": "I'm trying to find the money I left on the table",
+   "twin": "S0195L04B03",
+   "twin_known": "테이블에 두고 온 돈을 찾으려고 해요"
+  },
+  {
+   "id": "S0204L03U06",
+   "src": "#957 changeset",
+   "known": "저는 그녀가 준비를 처리하는 데 당신을 도와주기를 원했어요",
+   "target": "I wanted her to help you to deal with the arrangements",
+   "twin": "S0204L03U01",
+   "twin_known": "준비를 처리하는 데 그녀가 도와주기를 원했어요"
+  },
+  {
+   "id": "S0212L01U06",
+   "src": "#957 changeset",
+   "known": "그들은 도움을 요청하고 싶었어요",
+   "target": "They wanted to ask for help",
+   "twin": "S0212L01B01",
+   "twin_known": "도움을 요청하고 싶었어요"
+  },
+  {
+   "id": "S0213L01U06",
+   "src": "#957 changeset",
+   "known": "우리는 그들이 무엇을 달성하려는지 몰라요",
+   "target": "We don't know what they're trying to achieve",
+   "twin": "S0213L01B03",
+   "twin_known": "우리는 무엇을 달성하려는지 몰라요"
+  },
+  {
+   "id": "S0222L02U06",
+   "src": "#957 changeset",
+   "known": "그는 저에게 원하는 것을 말하려고 해요",
+   "target": "He's trying to tell me what he wants",
+   "twin": "S0222L02B03",
+   "twin_known": "저에게 원하는 것을 말하려고 해요"
+  },
+  {
+   "id": "S0223L01U06",
+   "src": "#957 changeset",
+   "known": "그는 내일 당신에게 물어볼 거예요",
+   "target": "He's going to ask you tomorrow",
+   "twin": "S0223L01B01",
+   "twin_known": "내일 당신에게 물어볼 거예요"
+  },
+  {
+   "id": "S0225L02U06",
+   "src": "#957 changeset",
+   "known": "그는 할 수 있으면 당신에게 답을 줄 거예요",
+   "target": "He would give you an answer if he could",
+   "twin": "S0225L02B03",
+   "twin_known": "할 수 있으면 답을 줄 거예요"
+  },
+  {
+   "id": "S0234L03U06",
+   "src": "#957 changeset",
+   "known": "저는 어젯밤 당신의 남동생과 함께 일하는 사람을 만났어요",
+   "target": "I met someone last night who works with your brother",
+   "twin": "S0234L03B03",
+   "twin_known": "어젯밤에 남동생과 일하는 사람을 만났어요"
+  },
+  {
+   "id": "S0236L01U06",
+   "src": "#957 changeset",
+   "known": "저는 도우려고 할 거라고 말한 사람을 알아요",
+   "target": "I know someone who said that she was going to try to help",
+   "twin": "S0236L01B03",
+   "twin_known": "도우려고 할 거라고 말한 사람을 알아요"
+  },
+  {
+   "id": "S0237L01U06",
+   "src": "#957 changeset",
+   "known": "그는 주말 전에 당신에게 말해달라고 했어요",
+   "target": "He wanted me to tell you before the weekend",
+   "twin": "S0237L01B03",
+   "twin_known": "그는 주말 전에 말해달라고 했어요"
+  },
+  {
+   "id": "S0241L01U06",
+   "src": "#957 changeset",
+   "known": "저는 그에게 그것을 주고 싶지 않아요",
+   "target": "I don't want to give it to him",
+   "twin": "S0241L01B02",
+   "twin_known": "저는 그에게 주고 싶지 않아요"
+  },
+  {
+   "id": "S0245L01U06",
+   "src": "#957 changeset",
+   "known": "저는 짧은 시간에 많이 한 것에 만족해요",
+   "target": "I'm happy with how much I've done in a short time",
+   "twin": "S0245L01U01",
+   "twin_known": "저는 짧은 시간에 제가 한 것에 만족해요"
+  },
+  {
+   "id": "S0256L01U05",
+   "src": "#957 changeset",
+   "known": "한 시간 안에 준비가 될 것 같아요",
+   "target": "I think I'll be ready in less than an hour",
+   "twin": "S0256L01U01",
+   "twin_known": "저는 한 시간 안에 준비가 될 것 같아요"
+  },
+  {
+   "id": "S0276L01U06",
+   "src": "#957 changeset",
+   "known": "아니요, 조금 더 오래 있을 수 있어요",
+   "target": "No I can stay here for a little longer",
+   "twin": "S0276L01U01",
+   "twin_known": "아니요, 여기 조금 더 오래 있을 수 있어요"
+  },
+  {
+   "id": "S0281L01U06",
+   "src": "#957 changeset",
+   "known": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+   "target": "Do you mind if I finish my coffee before you start?",
+   "twin": "S0281L01B03",
+   "twin_known": "시작하기 전에 커피를 다 마셔도 괜찮을까요?"
+  },
+  {
+   "id": "S0283L01U06",
+   "src": "#957 changeset",
+   "known": "당신 친구들 중 누가 영어를 해요?",
+   "target": "Which of your friends speak English?",
+   "twin": "S0283L01B03",
+   "twin_known": "당신 친구들 중 누가 영어를 하나요?"
+  },
+  {
+   "id": "S0297L01U06",
+   "src": "#957 changeset",
+   "known": "저는 영어를 하는 사람을 많이 알지 못해요",
+   "target": "I don't know many people who speak English",
+   "twin": "S0297L01B03",
+   "twin_known": "영어를 하는 사람을 많이 알지 못해요"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 18,
+ "missing": []
+}

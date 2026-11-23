@@ -1,0 +1,56 @@
+{
+ "course": "spa_mx_for_eng",
+ "copy_db": "ssi_copy_20261123t033000z",
+ "copy_built": "2026-11-23T03:40:54Z",
+ "from": "ops/paid-cleanup-item9/THIN-BASKETS.json (#972·AI)",
+ "legos": [
+  {
+   "lego": "S0150L02",
+   "seed": 150,
+   "is_new": true,
+   "known": "your name is",
+   "target": "te llamas",
+   "build": 1,
+   "use": 10,
+   "need_build": 2,
+   "need_use": 0,
+   "state": "short"
+  },
+  {
+   "lego": "S0201L01",
+   "seed": 201,
+   "is_new": true,
+   "known": "was going",
+   "target": "iba",
+   "build": 3,
+   "use": 4,
+   "need_build": 0,
+   "need_use": 1,
+   "state": "short"
+  },
+  {
+   "lego": "S0204L01",
+   "seed": 204,
+   "is_new": true,
+   "known": "she would help",
+   "target": "ayudara",
+   "build": 3,
+   "use": 4,
+   "need_build": 0,
+   "need_use": 1,
+   "state": "short"
+  },
+  {
+   "lego": "S0662L01",
+   "seed": 662,
+   "is_new": true,
+   "known": "they speak",
+   "target": "hablan",
+   "build": 2,
+   "use": 16,
+   "need_build": 1,
+   "need_use": 0,
+   "state": "short"
+  }
+ ]
+}

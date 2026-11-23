@@ -1,0 +1,252 @@
+{
+ "family": "restb-1",
+ "event_id": "2ce68d1d-e97a-4755-92eb-80c2c5dc428c",
+ "undo_file_on_popty": "2026-11-23T09-50-30-418Z-2ce68d1d-e97a-4755-92eb-80c2c5dc428c.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0438L01U01",
+   "set": {
+    "known_text": "they didn't want to ask such an obvious question because they already know",
+    "known_audio_id": "86b7d9a2-31c8-4eb5-82af-892d2f5d8eec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0435L02U01",
+   "set": {
+    "known_text": "they could because they already know",
+    "known_audio_id": "7bc2a61a-010e-452c-b762-ff1010163bdf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0432L04U02",
+   "set": {
+    "known_text": "it's better that you ask because they already know",
+    "known_audio_id": "e9fe58d8-53b9-46d0-aa13-5185e3929082"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04U05",
+   "set": {
+    "known_text": "do you think that they understand?",
+    "known_audio_id": "b9797b1f-c688-483d-8a66-45f72a321ceb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04U03",
+   "set": {
+    "known_text": "I'm sure that they understand if you ask me",
+    "known_audio_id": "0d29291f-16d9-43ff-8deb-dd1ea8bc3a9b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04U06",
+   "set": {
+    "known_text": "they need to make sure that they understand",
+    "known_audio_id": "6b5183f5-928d-4a27-961e-3c1ab469f1d3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04U04",
+   "set": {
+    "known_text": "she said that they understand",
+    "known_audio_id": "87ebd9b5-3305-4050-b0da-04639e589750"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04U01",
+   "set": {
+    "known_text": "I don't think that they understand",
+    "known_audio_id": "eb395c69-a6f8-4008-92d5-3b1cc1bd8201"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04U02",
+   "set": {
+    "known_text": "did your friend say that they understand?",
+    "known_audio_id": "0b743804-0817-484f-a13e-4980804b792d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04B01",
+   "set": {
+    "known_text": "I think that they understand",
+    "known_audio_id": "e49300b5-5c0e-4df6-a6ab-57187c4c2995"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04B03",
+   "set": {
+    "known_text": "it's better that they understand",
+    "known_audio_id": "56aabc96-dcdc-438f-902b-a175317021b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0425L04B02",
+   "set": {
+    "known_text": "I hope that they understand",
+    "known_audio_id": "67cacad8-dfaa-4eb3-9e40-2570e8e83801"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7c13c882-7fda-4fcb-9b5a-6aaa3a1ae36c",
+   "set": {
+    "known_text": "that they understand",
+    "known_audio_id": "fc1fa826-6218-4aff-8f9d-f77513dde8fc",
+    "presentation_audio_id": "55a2bf32-2f4d-400b-9dcb-53bbcb7da44f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0421L01U05",
+   "set": {
+    "known_text": "they're quiet because they already know",
+    "known_audio_id": "f854441d-2c17-479d-9099-18691a2bb410"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0421L01U04",
+   "set": {
+    "known_text": "we don't need to ask because they already know",
+    "known_audio_id": "f88877d0-732c-4c8e-86ff-445ef7df6cc4"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "77fbcb97-1b5d-4b26-a82c-4c4e6fe3122f",
+   "set": {
+    "known_text": "because they already know",
+    "known_audio_id": "341bcc58-933b-4722-a516-f07abd168cbb",
+    "presentation_audio_id": "a7c6360c-d274-43a9-8b12-e7d54d054e55"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0396L03B03",
+   "set": {
+    "known_text": "I only want to know once everyone else is ready",
+    "known_audio_id": "534efcf7-ff18-451d-93d8-b232befd59df"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0346L01U03",
+   "set": {
+    "known_text": "I didn't have time although I wanted her to know",
+    "known_audio_id": "5a67d929-70f6-4062-bfa9-b13e5225a2b0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0346L01B03",
+   "set": {
+    "known_text": "although I wanted her to know",
+    "known_audio_id": "8fa3a382-78c1-4589-8706-2273658654d2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0346L01B01",
+   "set": {
+    "known_text": "because I wanted her to know",
+    "known_audio_id": "4c9801c8-194b-4bf0-a93d-bbf3bfda40a1"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2994dd13-7004-47ec-8533-987fc51a724f",
+   "set": {
+    "known_text": "I wanted her to know",
+    "known_audio_id": "65307d02-93e7-4919-8afc-2fb76a4add6c",
+    "presentation_audio_id": "0d620bf6-301b-456b-a157-af23c81050bb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0287L01U02",
+   "set": {
+    "known_text": "I don't know, how many people do you know?",
+    "known_audio_id": "8ed36f49-3624-4f59-b588-44ccd1e82d52"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0280L01U05",
+   "set": {
+    "known_text": "I would have done the most important job if I had known",
+    "known_audio_id": "d3a77ead-d6ad-4d8d-915b-8b6b4b60de85"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0269L03B03",
+   "set": {
+    "known_text": "I don't understand, why don't you want to change?",
+    "known_audio_id": "6e002c66-f0ef-4323-8ddf-63ee41fb9fcc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0268L02U05",
+   "set": {
+    "known_text": "she sent me two emails but I don't understand",
+    "known_audio_id": "96a20a33-b412-474c-a2c2-4df0da31e2e9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0262L01U01",
+   "set": {
+    "known_text": "I can't remember, who was that man yesterday?",
+    "known_audio_id": "8cb473d2-2239-4322-9f24-10de9bf326d6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0261L02U04",
+   "set": {
+    "known_text": "I think that it's something important but I don't know yet",
+    "known_audio_id": "20a3db54-b973-44f4-9fb2-c8812a0f2a25"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0258L02U03",
+   "set": {
+    "known_text": "I don't know, what's that blue thing over there?",
+    "known_audio_id": "b3f2a748-54c3-4508-b6fb-6f707036bb61"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0255L01U04",
+   "set": {
+    "known_text": "I don't know, when do you think?",
+    "known_audio_id": "d874b797-ec0b-4fb5-9de6-faf25cb853f7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0251L02U06",
+   "set": {
+    "known_text": "I only want to know once we're finished",
+    "known_audio_id": "e80b1ec3-5456-4500-9645-a65eadacc895"
+   }
+  }
+ ]
+}
