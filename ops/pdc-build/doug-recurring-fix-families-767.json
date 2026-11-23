@@ -1,0 +1,23 @@
+{
+  "job": "cs #767", "course": "pdc_for_eng", "read_at": "2026-11-23",
+  "note": "Read-only analysis. Evidence = Doug's redo notes (GET /api/build/redo-snapshots) + current text via course-builder GET routes. Drafted seeds = 530-668 (seed grid). Counts are rows in drafted seeds whose target_text matches; regenerate rather than trust after any edit.",
+  "pre_draft_candidates": [
+    {"id":"A1","from":"\\bsette\\b","to":"sedde","doug_seeds":[403,404,405,407,413],"counter_example":"S0499L02 velleicht sette mir (approved 17 Nov)","draft_rows":21,"draft_seeds":[530,531,533,539,550,558,559,560,562,563,565,573,581,584,585,586,588,589]},
+    {"id":"A2","from":"\\bschtill\\b","to":"ruhich","doug_seeds":[34,361,362,403,413],"draft_rows":20,"draft_seeds":[539,549,556,558,562,563,576,593,596],"touches_lego_text":"S0549L01 (text, not cut)"},
+    {"id":"A3","from":"\\bzeele\\b","to":"waerre","gate":"known_text matches /\\bwill\\b|'ll\\b|won't/i (zeele also = 'count')","doug_seeds":[431,445,446,447,448],"draft_rows":18,"draft_seeds":[532,534,545,590,668]},
+    {"id":"A4","swaps":[
+      {"from":"\\bdieweil\\b","to":"deweil","doug":[512],"draft_rows":7},
+      {"from":"\\b([Vv])erleicht\\b","to":"$1elleicht","doug":[499],"draft_rows":6},
+      {"from":"\\b([Kk])rank\\b","to":"grank (keep case)","doug":[477],"draft_rows":6},
+      {"from":"\\bKupp\\b","to":"Koppche","doug":[489],"draft_rows":8},
+      {"from":"\\bgleddere\\b","to":"graddle","doug":[470],"draft_rows":3},
+      {"from":"\\bExcuse\\b","to":"Ausrett","doug":[523],"draft_rows":4},
+      {"from":"\\bwill's\\b","to":"will es","doug":[473,474],"draft_rows":7},
+      {"from":"\\bnei Bett\\b","to":"neies Bett","doug":[509,519],"draft_rows":12},
+      {"from":"\\btraue\\b","to":"verdraue","doug":[490,501],"draft_rows":6},
+      {"from":"\\bVacation\\b","to":"Feierdaage","doug":[477],"draft_rows":3}
+    ]}
+  ],
+  "union_A1_A2_A4": {"draft_rows":97,"draft_seeds":48},
+  "judgement_flag_only": ["B1 gewollt/modal-perfect placement (S536,569,580,584,588)","B2 verb position","B3 adjective -e after der/die (only ganz held)","B4 loanwords per word","B5 whole-seed retranslation"]
+}
