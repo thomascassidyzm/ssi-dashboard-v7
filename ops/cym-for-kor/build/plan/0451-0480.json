@@ -1,6 +1,8 @@
 {
  "about": "cym_for_kor LEGO plan, seeds 451-480: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules, glosses in 반말; changes in \"changed\" (cs #828·AK for #813·AK)",
  "changed": {
+  "454:daeth ein ffrindiau ni": "source daeth ein ffrindiau ni draw is 10 syllables over the cap; split off draw",
+  "454:draw": "split from the source LEGO for the syllable cap",
   "454:tua chwech o’r gloch": "tua, chwech, o’r, gloch untiled; Korean 여섯 시쯤 one unit, like am chwech o’r gloch (18)",
   "455:oedd y plant wedi blino": "y, plant, wedi untiled and oedd alone is 응 그랬어 (279); one clause",
   "456:efallai bod o": "efallai, bod, o untiled (older seeds); shortest frame",
@@ -13,12 +15,13 @@
   "464:wnaeth hi anghofio fo": "source wnaeth hi anghofio + untiled fo; one unit",
   "466:daflu fo": "source daflu + untiled fo; Korean 그걸 던지다 one unit, like ddeud o (208)",
   "466:dros y wal": "source dros + wal with y untiled; one unit",
-  "472:nad ydan ni ddim yn gwybod": "source nad ydan ni ddim + untiled yn; Korean 우리가 모른다는 것 one unit",
+  "472:nad ydan ni ddim yn": "source nad ydan ni ddim + untiled yn",
   "472:y ffeithiau": "source ffeithiau + untiled y",
   "473:dw i ddim isio fo": "fo untiled; one unit, 나는 ~고 싶지 않아 (dw i ddim isio) needs a verb",
   "474:fel cynnig": "fel untiled and cynnig is taught as the verb 제안하다 (327); noun unit",
   "475:aros": "untiled (older seeds)",
-  "479:dyna’r lleia’": "source lleia’ + untiled dyna’r; one unit like dyna’r ffordd orau (408)"
+  "479:dyna’r lleia’": "source lleia’ + untiled dyna’r; one unit like dyna’r ffordd orau (408)",
+  "480:beth bynnag": "source beth bynnag mae o’n ddeud is 9 syllables over the cap; split"
  },
  "seeds": {
   "451": {
@@ -91,8 +94,13 @@
   "454": {
    "legos": [
     {
-     "cy": "daeth ein ffrindiau ni draw",
-     "ko": "우리 친구들이 놀러 왔어",
+     "cy": "daeth ein ffrindiau ni",
+     "ko": "우리 친구들이 왔어",
+     "type": "A"
+    },
+    {
+     "cy": "draw",
+     "ko": "놀러",
      "type": "A"
     },
     {
@@ -473,8 +481,13 @@
      "type": "A"
     },
     {
-     "cy": "nad ydan ni ddim yn gwybod",
-     "ko": "우리가 모른다는 것",
+     "cy": "nad ydan ni ddim yn",
+     "ko": "우리가 ~지 않는다는 것",
+     "type": "A"
+    },
+    {
+     "cy": "gwybod",
+     "ko": "알다",
      "type": "A"
     },
     {
@@ -635,8 +648,13 @@
   "480": {
    "legos": [
     {
-     "cy": "beth bynnag mae o’n ddeud",
-     "ko": "그가 뭐라고 말하든",
+     "cy": "beth bynnag",
+     "ko": "무엇이든",
+     "type": "A"
+    },
+    {
+     "cy": "mae o’n ddeud",
+     "ko": "그가 말하다",
      "type": "A"
     },
     {
