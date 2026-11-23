@@ -1,0 +1,516 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p05-s114-123.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:32:42.490Z",
+ "seeds": {
+  "114": {
+   "before": [
+    "L1: 5 duplicate phrase(s) within this LEGO: \"I feel as if I'm doing worse today than yesterday\", \"I feel as if I'm doing worse today than yesterday but I want to keep on\", \"I feel as if I'm doing worse today than yesterday and it's difficult\""
+   ],
+   "after": [
+    "L1: 5 duplicate phrase(s) within this LEGO: \"I feel as if I'm doing worse today than yesterday\", \"I feel as if I'm doing worse today than yesterday but I want to keep on\", \"I feel as if I'm doing worse today than yesterday and it's difficult\""
+   ],
+   "newFailures": []
+  },
+  "115": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I don't feel as if I'm ready to have a conversation\", \"I don't feel as if I'm ready to have a conversation but I'm trying as hard as I can\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"I don't feel as if I'm ready to have a conversation\", \"I don't feel as if I'm ready to have a conversation but I'm trying as hard as I can\""
+   ],
+   "newFailures": []
+  },
+  "116": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"this isn't the best choice I could make\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"this isn't the best choice I could make\""
+   ],
+   "newFailures": []
+  },
+  "118": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "119": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ],
+   "newFailures": []
+  },
+  "122": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 8 duplicate phrase(s) within this LEGO: \"it's starting to feel easier\", \"it's starting to feel easier to speak English\", \"it's starting to feel easier than it was last night\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L3: 8 duplicate phrase(s) within this LEGO: \"it's starting to feel easier\", \"it's starting to feel easier to speak English\", \"it's starting to feel easier than it was last night\""
+   ],
+   "newFailures": []
+  },
+  "123": {
+   "before": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\"",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I think that's a good idea\", \"I think that's a good idea to do it as soon as you can\", \"I think that's a good idea to do it today\""
+   ],
+   "after": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ],
+   "newFailures": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ]
+  }
+ },
+ "rows": [
+  {
+   "id": "S0114L01U06",
+   "seed": 114,
+   "role": "use",
+   "target": "I feel as if I'm doing worse today than yesterday but I don't worry about it",
+   "old": "昨日より今日の方がうまくいっていないように感じますが、心配しないようにします",
+   "new": "昨日より今日の方がうまくいっていないように感じますが、それについて心配していません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0114L01U08",
+   "seed": 114,
+   "role": "use",
+   "target": "I feel as if I'm doing worse today than yesterday so I want to practise more",
+   "old": "昨日より今日の方がうまくいっていないように感じますが、練習を続けます",
+   "new": "昨日より今日の方がうまくいっていないように感じるので、もっと練習したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0114L01U14",
+   "seed": 114,
+   "role": "use",
+   "target": "I feel as if I'm doing worse today than yesterday but this is the only way it will work",
+   "old": "昨日より今日の方がうまくいっていないように感じますが、これが唯一の方法です",
+   "new": "昨日より今日の方がうまくいっていないように感じますが、これがうまくいく唯一の方法です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0114L01U15",
+   "seed": 114,
+   "role": "use",
+   "target": "I feel as if I'm doing worse today than yesterday but it's a good thing to try",
+   "old": "昨日より今日の方がうまくいっていないように感じますが、大丈夫です",
+   "new": "昨日より今日の方がうまくいっていないように感じますが、やってみるのはいいことです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01B03",
+   "seed": 115,
+   "role": "build",
+   "target": "I don't feel as if I'm ready to have a conversation yet",
+   "old": "まだ準備ができているようには感じません",
+   "new": "まだ会話をする準備ができているようには感じません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01B04",
+   "seed": 115,
+   "role": "build",
+   "target": "I don't feel as if I'm ready to have a conversation at the moment",
+   "old": "まだ準備ができていません",
+   "new": "今は会話をする準備ができているようには感じません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01B05",
+   "seed": 115,
+   "role": "build",
+   "target": "I don't feel as if I'm ready to have a conversation at all",
+   "old": "まだ準備ができているようには全く感じません",
+   "new": "会話をする準備ができているようには全く感じません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01B06",
+   "seed": 115,
+   "role": "build",
+   "target": "I don't feel as if I'm ready to have a conversation with anyone yet",
+   "old": "まだ準備ができているようには全くには感じません",
+   "new": "まだ誰とも会話をする準備ができているようには感じません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01B07",
+   "seed": 115,
+   "role": "build",
+   "target": "I don't feel as if I'm ready to have a conversation but I want to keep on",
+   "old": "まだ会話をする準備ができているようには感じません",
+   "new": "会話をする準備ができているようには感じませんが、続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01U06",
+   "seed": 115,
+   "role": "use",
+   "target": "I don't feel as if I'm ready to have a conversation but I'm doing better today",
+   "old": "会話をする準備ができているようには感じませんが、昨日より今日の方がうまくなっています",
+   "new": "会話をする準備ができているようには感じませんが、今日はうまくなっています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0115L01U14",
+   "seed": 115,
+   "role": "use",
+   "target": "I don't feel as if I'm ready to have a conversation now but I think I'll be ready soon",
+   "old": "今は会話をする準備ができているようには感じませんが、いつかできると思います",
+   "new": "今は会話をする準備ができているようには感じませんが、もうすぐできると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01B02",
+   "seed": 116,
+   "role": "build",
+   "target": "this isn't the best choice I could make",
+   "old": "これは最善の選択ではありません",
+   "new": "これは私ができる最善の選択ではありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01B03",
+   "seed": 116,
+   "role": "build",
+   "target": "this isn't the best choice I could make for me",
+   "old": "私にとって最善の選択ではありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01B04",
+   "seed": 116,
+   "role": "build",
+   "target": "I think this isn't the best choice I could make",
+   "old": "これは最善の選択ではないと思います",
+   "new": "これは私ができる最善の選択ではないと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01B05",
+   "seed": 116,
+   "role": "build",
+   "target": "I know this isn't the best choice I could make",
+   "old": "これが最善の選択でないことはわかっています",
+   "new": "これが私ができる最善の選択でないことはわかっています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01B06",
+   "seed": 116,
+   "role": "build",
+   "target": "I think this isn't the best choice I could make but it's a good thing",
+   "old": "これは最善の選択ではないかもしれません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01B07",
+   "seed": 116,
+   "role": "build",
+   "target": "I know this isn't the best choice I could make but I need to try",
+   "old": "これが最善の選択でないことを認めます",
+   "new": "これが私ができる最善の選択でないことはわかっていますが、やってみる必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U01",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but it's the only way it will work",
+   "old": "これは最善の選択ではありませんが、今はこれしかできません",
+   "new": "これは私ができる最善の選択ではありませんが、うまくいく唯一の方法です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U03",
+   "seed": 116,
+   "role": "use",
+   "target": "I think this isn't the best choice I could make but it's all I can do now",
+   "old": "これは最善の選択ではないと思いますが、今はこれしかありません",
+   "new": "これは私ができる最善の選択ではないと思いますが、今はこれしかできません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U04",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but I'd like to keep on",
+   "old": "これは私ができる最善の選択ではないかもしれませんが、続けます",
+   "new": "これは私ができる最善の選択ではありませんが、続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U06",
+   "seed": 116,
+   "role": "use",
+   "target": "I know this isn't the best choice I could make but I need to do it now",
+   "old": "これが最善の選択ではないことはわかっていますが、今はこれが必要です",
+   "new": "これが私ができる最善の選択でないことはわかっていますが、今それをする必要があります",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U07",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but it's very interesting to try",
+   "old": "これは最善の選択ではないかもしれませんが、面白い経験です",
+   "new": "これは私ができる最善の選択ではありませんが、やってみるのはとても面白いです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U09",
+   "seed": 116,
+   "role": "use",
+   "target": "I think this isn't the best choice I could make but I want to try",
+   "old": "これは最善の選択ではないと思いますが、やってみます",
+   "new": "これは私ができる最善の選択ではないと思いますが、やってみたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U10",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but I'll be ready",
+   "old": "これは私ができる最善の選択ではないと思いますが、準備はできています",
+   "new": "これは私ができる最善の選択ではありませんが、準備はできるでしょう",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U11",
+   "seed": 116,
+   "role": "use",
+   "target": "I know this isn't the best choice I could make but I think it's a good thing",
+   "old": "これが最善の選択でないことは分かっていますが、それで良いと思っています",
+   "new": "これが私ができる最善の選択でないことはわかっていますが、それはいいことだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U12",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but I'm going to work hard today",
+   "old": "これは最善の選択ではないかもしれませんが、今日は頑張ります",
+   "new": "これは私ができる最善の選択ではありませんが、今日は一生懸命頑張るつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U14",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but I want to do everything I need to do",
+   "old": "これは最善の選択ではないかもしれませんが、今の私にできる限りのことです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0116L01U15",
+   "seed": 116,
+   "role": "use",
+   "target": "this isn't the best choice I could make but I think I'll be able to do better soon",
+   "old": "これは最善の選択ではないと思いますが、今後はもっと良い選択ができると思います",
+   "new": "これは私ができる最善の選択ではありませんが、もうすぐもっとうまくできるようになると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0118L01U04",
+   "seed": 118,
+   "role": "use",
+   "target": "I think I feel better than I felt when we were in the pub",
+   "old": "パブにいた時より確実に気分がいいと思います",
+   "new": "パブにいた時より気分がいいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0119L01U03",
+   "seed": 119,
+   "role": "use",
+   "target": "I said can I ask you something before you leave",
+   "old": "帰る前に何か聞いてもいいですかと彼女に言いました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0122L03B08",
+   "seed": 122,
+   "role": "build",
+   "target": "it's starting to feel easier so I don't want to stop",
+   "old": "やめたくないので簡単に感じ始めています",
+   "new": "簡単に感じ始めているので、やめたくありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0122L03B10",
+   "seed": 122,
+   "role": "build",
+   "target": "it's starting to feel easier and it is fun",
+   "old": "楽しくなってきたので簡単に感じ始めています",
+   "new": "簡単に感じ始めていて、楽しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0122L03U04",
+   "seed": 122,
+   "role": "use",
+   "target": "it's starting to feel easier the more I speak English with you",
+   "old": "もっと英語を話す機会を持つにつれて、より簡単に感じ始めています",
+   "new": "あなたと英語を話せば話すほど、簡単に感じ始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0122L03U05",
+   "seed": 122,
+   "role": "use",
+   "target": "it's starting to feel easier today than it was yesterday",
+   "old": "今日は何かが簡単に感じ始めています",
+   "new": "昨日より今日の方が簡単に感じ始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0122L03U15",
+   "seed": 122,
+   "role": "use",
+   "target": "it's starting to feel easier and I'm enjoying finding out more",
+   "old": "今よりももっと英語が簡単に感じ始めています",
+   "new": "簡単に感じ始めていて、もっと知るのを楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0123L02B04",
+   "seed": 123,
+   "role": "build",
+   "target": "I think that's a good idea and it will work",
+   "old": "それはいい考えだと思います",
+   "new": "それはいい考えだと思いますし、うまくいくと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0123L02U05",
+   "seed": 123,
+   "role": "use",
+   "target": "I think that's a good idea to do it as soon as you can",
+   "old": "できるだけ早く試してみることはいい考えだと思います",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ]
+  },
+  {
+   "id": "S0123L02U06",
+   "seed": 123,
+   "role": "use",
+   "target": "I think that's a good idea to do it today",
+   "old": "今日試みることはいい考えだと思います",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ]
+  },
+  {
+   "id": "S0123L02U10",
+   "seed": 123,
+   "role": "use",
+   "target": "I think that's a good idea to do something different",
+   "old": "何か新しいことを試みることはいい考えだと思います",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ]
+  },
+  {
+   "id": "S0123L02U12",
+   "seed": 123,
+   "role": "use",
+   "target": "I think that's a good idea because I don't want to worry about making mistakes",
+   "old": "間違いを気にしないことはいい考えだと思います",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ]
+  },
+  {
+   "id": "S0123L02U13",
+   "seed": 123,
+   "role": "use",
+   "target": "I think that's a good idea and I want to keep on doing it",
+   "old": "それはいい考えだと思いますが、難しくても続けます",
+   "new": "それはいい考えだと思いますし、それを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0123L02U14",
+   "seed": 123,
+   "role": "use",
+   "target": "I think that's a good idea to speak English with me now",
+   "old": "英語を話すことはいい考えだと思います、今すぐ始めましょう",
+   "new": null,
+   "del": true,
+   "verdict": "FAIL",
+   "why": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
+   ]
+  }
+ ]
+}
