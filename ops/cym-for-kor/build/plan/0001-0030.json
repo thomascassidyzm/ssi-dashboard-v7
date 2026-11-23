@@ -14,7 +14,9 @@
   "25:wyt ti’n mynd i": "calibration ti’n mynd i left \"wyt\" untiled (Popty tiles every word); one LEGO wyt ti’n mynd i = 너 ~ㄹ 거야?",
   "26:i fynd": "calibration gloss \"갈 (준비)\" refused (brackets); now 갈",
   "27:dw i ddim yn": "calibration dw i ddim left \"yn\" untiled; shortest cut that tiles is dw i ddim yn",
-  "27:cymryd": "calibration gloss \"(시간을) 들이다\" refused (brackets); now 들이다"
+  "27:cymryd": "calibration gloss \"(시간을) 들이다\" refused (brackets); now 들이다",
+  "28:cyn gynted ag y medri di": "Popty counts 9 syllables (cap 8): split into cyn gynted ag y = ~ㄹ 수 있는 한 빨리 + medri di = 너는 ~ㄹ 수 있어 (parallel to medra i)",
+  "29:cyn gynted ag y medra i": "same split as 28; medra i already taught at 10"
  },
  "seeds": {
   "1": {
@@ -678,8 +680,13 @@
      "type": "A"
     },
     {
-     "cy": "cyn gynted ag y medri di",
-     "ko": "네가 할 수 있는 한 빨리",
+     "cy": "cyn gynted ag y",
+     "ko": "~ㄹ 수 있는 한 빨리",
+     "type": "A"
+    },
+    {
+     "cy": "medri di",
+     "ko": "너는 ~ㄹ 수 있어",
      "type": "A"
     }
    ]
@@ -702,8 +709,13 @@
      "type": "A"
     },
     {
-     "cy": "cyn gynted ag y medra i",
-     "ko": "내가 할 수 있는 한 빨리",
+     "cy": "cyn gynted ag y",
+     "ko": "~ㄹ 수 있는 한 빨리",
+     "type": "A"
+    },
+    {
+     "cy": "medra i",
+     "ko": "나는 ~ㄹ 수 있어",
      "type": "A"
     }
    ]

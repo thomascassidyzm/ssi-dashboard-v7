@@ -153,6 +153,11 @@ def check(lo=None, hi=None):
     for cy, gs in c2g.items():
         if len(gs) > 1:
             probs.append(f'two glosses for "{cy}": {sorted(gs)}')
+    # Popty's OWN syllable counter (the rough count above misses some): syllables.cjs
+    import subprocess
+    r = subprocess.run(['node', str(HERE / 'syllables.cjs')], capture_output=True, text=True)
+    if r.returncode:
+        probs += [x for x in r.stdout.splitlines() if ' > ' in x]
     print('\n'.join(probs) if probs else 'clean')
     print(f'{len(plan)} seeds planned', file=sys.stderr)
     return 1 if probs else 0
