@@ -1,0 +1,27 @@
+cym_for_kor (Welsh for Korean speakers) LEGO PLAN for seeds FROM-TO. Files only — you write NO database rows, call NO Popty write route, render NO audio, run NO tests. Parent: #813·AK (it runs the Popty builder from your plan).
+
+PURPOSE: Kai approved building cym_for_kor in Popty (23 Nov ~13:22Z). The parent's driver (ops/cym-for-kor/build/run-builder.py) feeds a per-seed LEGO plan to Popty's phrase door and /api/seed/complete. The plan is the judgement; you author it for seeds FROM-TO. Failure = drifting from Kai's approved calibration (d/2259576a, seeds 1-30): different splits than needed, polite Korean in prompts, ZUT clashes, untiled words.
+
+SETUP: you are in your own worktree off origin/main. FIRST: git fetch origin cs/813-cym-for-kor-build-in-popty-hidde && git merge origin/cs/813-cym-for-kor-build-in-popty-hidde. PRIOR_PLAN_NOTE. Everything is under ops/cym-for-kor/: seeds-ko-draft.json (668 seeds: welsh = HC North target, korean = FINAL proofread known side — never change it), build/source-splits.json (source course cym_nv2_for_eng LEGO splits per seed + older-seed LEGOs), build/plan/*.json (the plan so far), build/plan-tool.py, calibration/calibration.md (read its seeds 1-10 to see the standard). Scratch files go in $CS_SCRATCH, never bare /tmp.
+
+WORKFLOW, in chunks of 30 seeds:
+1. python3 ops/cym-for-kor/build/plan-tool.py draft A B > $CS_SCRATCH/draft.json  — proposed tiling per seed in surface words; src=plan tiles already carry the Korean gloss (keep it exactly); src=source/source-old carry the English gloss you turn into Korean; src=GAP = a word nothing covers.
+2. Write ops/cym-for-kor/build/plan/NNNN-MMMM.json (zero-padded seed range, e.g. 0241-0270.json), same shape as plan/0001-0030.json: {"about": "...", "changed": {"<seed>:<welsh>": "<why it differs from the source split>"}, "seeds": {"241": {"legos": [{"cy": "...", "ko": "...", "type": "A"}, ...]}, ...}}. LEGOs in seed order, covering EVERY word of the seed.
+3. python3 ops/cym-for-kor/build/plan-tool.py check  — must print "clean" for all plan files together. Fix, re-run.
+4. git add that file, commit, git push origin HEAD:cs/813-cym-for-kor-build-in-popty-hidde (fast-forward; if rejected, fetch+merge then push). Push EACH chunk as it is done — the builder consumes the plan behind you.
+
+THE RULES (Kai's approved calibration + Popty's validator):
+- Keep the source split wherever it works (calibration kept 70 of 93). Use the source LEGO's Welsh text in this seed's own surface form.
+- Make the SHORTEST new LEGO only (a) where the source relied on its 316 older seeds this course lacks, or (b) where Korean needs a different unit (rhywun arall = 다른 사람 as one). Record every change in "changed" with a one-line reason.
+- Popty tiles WORD BY WORD: every seed word must appear in that seed's LEGO targets, in the seed's own (mutated) form. A soft-mutated form of a taught LEGO (drio for trio) is the SAME LEGO: give it the identical Korean gloss and Popty links it.
+- A LEGO is at most 8 syllables (Popty's cap) — split longer ones.
+- Korean glosses: dictionary form for verbs (이야기하다), plain nouns (웨일스어, 오늘), and frames with ~ for the slot, in casual 반말 when the frame is a whole clause ending (나는 ~고 싶어, 너 ~하고 있어?). The learner's lines are 반말; never 해요/합니다 in a gloss. Use the wording of the seed's Korean where you can.
+- NEVER brackets, parentheses or a slash in a gloss (Popty refuses them). No notes in glosses.
+- ZUT: one Korean gloss = exactly one Welsh LEGO; the same Welsh LEGO always keeps one gloss. When two Welsh LEGOs want the same Korean, change the NEW one's Korean minimally to be distinct and still natural. plan-tool check enforces both directions.
+- LEGO texts have no trailing punctuation. Type is "A" for every LEGO; no components.
+- Weave-dropped seeds (empty source split: 244, 329 in later ranges) still get built: use source-old splits and the inventory.
+- You are the Korean speaker here: glosses must be natural Korean a proofreader would accept.
+
+WORK STEADILY; quality over speed, but push every chunk. If you run past ~50 minutes, push what is clean and stop; say exactly the last seed planned.
+
+REPORT (one short paragraph): seed range planned and pushed (file names, last commit sha), number of new LEGOs and "changed" splits, any seed you could not plan cleanly (number + why), and judgement calls Kai should know. Then the landing line: commits on cs/813-cym-for-kor-build-in-popty-hidde (pushed, not merged, not deployed).
