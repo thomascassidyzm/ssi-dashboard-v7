@@ -1,0 +1,190 @@
+# eng_for_jpn seeds 94-103: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 4 flagged rows no longer exist.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# KEEP S0094L03U06 | 彼は英語を話す方法を覚えようとしていました | He was trying to remember the way to speak English — 覚える is this course's "remember" (seed 63 ff.) — prompt matches (false flag)
+# S0094L03U11 use → "I think that I'm going to find the way to say it well in English" | was: 私はいつか英語でうまく言う方法が分かると思います — prompt added いつか and said "know"; English is "going to find the way"
+S0094L03U11	英語でそれをうまく言う方法を見つけるつもりだと思います
+# S0094L04U07 use → "I think that it will work and I'd like to keep on doing this" | was: うまくいくと思うので、これを続けたいです — prompt said "because"; English is "and"
+S0094L04U07	うまくいくと思いますし、これを続けたいです
+# S0095L01U07 use → "are you ready to speak with people today?" | was: 今日友達と話す準備はできていますか？ — prompt said 友達 (friends); English is "people"
+S0095L01U07	今日、人たちと話す準備はできていますか？
+# S0095L01U08 use → "are you ready to answer now?" | was: 答える前に準備はできていますか？ — prompt said "before answering"; English is "now"
+S0095L01U08	今答える準備はできていますか？
+# S0095L02B06 build → "I'd like to go home soon" | was: 帰りたいです — prompt lacked "soon"
+S0095L02B06	もうすぐ帰りたいです
+# S0095L02U04 use → "I'm not ready to go home today" | was: 今日は帰る準備がまだできていません — prompt added まだ
+S0095L02U04	今日は帰る準備ができていません
+# S0095L02U11 use → "I want to go home on the next bus when I'm ready" | was: 次のバスで帰ります、準備できたら — prompt said "I'll go home"; English is "I want to"
+S0095L02U11	準備ができたら、次のバスで帰りたいです
+# S0095L02U13 use → "are you going to go home before you speak tomorrow?" | was: また明日話す前に帰りますか？ — English "are you going to go home before you speak tomorrow?" is unnatural
+S0095L02U13	DELETE
+# S0095L03U11 use → "I'm ready to speak the next time" | was: 次の機会には準備ができています — prompt lacked "to speak"
+S0095L03U11	次回は話す準備ができています
+# S0095L03U12 use → "I think I can speak better the next time we meet" | was: 次の機会にはもっと自信を持って話せます — prompt said "with more confidence"; English is "I think … better … the next time we meet"
+S0095L03U12	次に会う時は、もっと上手に話せると思います
+# S0095L03U13 use → "I can remember the answer the next time" | was: 次の機会には答えを覚えています — prompt lacked "can"
+S0095L03U13	次回は答えを思い出せます
+# S0095L04U13 use → "are you ready for the next bus?" | was: 次のバスは準備ができていますか？ — prompt said "is the next bus ready"; English is "are you ready for the next bus"
+S0095L04U13	次のバスの準備はできていますか？
+# S0096L01U01 use → "no, I'm not ready yet, I need a little more time" | was: いいえ、まだ準備ができていません — prompt lacked "I need a little more time" (seed's own Japanese)
+S0096L01U01	いいえ、まだ準備ができていません、もう少し時間が必要です
+# S0096L02B04 build → "I'm not ready to talk" | was: 準備ができていません、話す — prompt was comma-dumped words
+S0096L02B04	話す準備ができていません
+# S0096L02B05 build → "I'm not ready to go home" | was: 準備ができていません、帰る — prompt was comma-dumped words
+S0096L02B05	帰る準備ができていません
+# KEEP S0096L02B06 | まだ知らない人と話す準備ができていません。 | I'm not ready to talk to people I don't know yet — prompt is seed 88's own Japanese and matches (false flag)
+# KEEP S0096L02U02 | まだ知らない人と話す準備ができていません。 | I'm not ready to talk to people I don't know yet — prompt matches (false flag)
+# S0096L02U03 use → "I'm not ready to speak English yet" | was: まだ準備ができていません、英語で話す — prompt was comma-dumped words
+S0096L02U03	まだ英語を話す準備ができていません
+# S0096L02U04 use → "I'm not ready to start talking yet" | was: 今はまだ準備ができていません — prompt lacked "to start talking"
+S0096L02U04	まだ話し始める準備ができていません
+# S0096L02U12 use → "I'm not ready to speak this morning" | was: 今朝はまだ準備ができていません — prompt lacked "to speak"
+S0096L02U12	今朝は話す準備ができていません
+# S0096L02U14 use → "I'm not ready today, I need more time to practise" | was: 今日は準備ができていません、もっと時間が必要です — prompt lacked "to practise"
+S0096L02U14	今日は準備ができていません、練習するのにもっと時間が必要です
+# KEEP S0096L06U09 | 自分をテストする時間を取ることは大切です。 | it's important to take time to test yourself — prompt matches "it's important to take time to test yourself" (false flag)
+# S0096L06U10 use → "how much time do you need?" | was: どのくらいの時間があればいいですか？ — prompt asked "how much would be good"; English is "how much time do you need?"
+S0096L06U10	どのくらいの時間が必要ですか？
+# S0097L02B06 build → "now I'm ready to go" | was: 今、準備ができています — prompt lacked "to go"
+S0097L02B06	今、行く準備ができています
+# S0097L02U02 use → "I'm ready to speak English now" | was: 準備ができています、英語で話す — prompt was comma-dumped words and lacked "now"
+S0097L02U02	今、英語を話す準備ができています
+# KEEP S0097L04B01 | すぐ | as soon as — bare LEGO row (prompt = LEGO's own Japanese); a re-gloss is LEGO-level
+# KEEP S0097L04U06 | できるだけ早くもっと上手に話せるようになるのを楽しみにしています。 | I'm looking forward to speaking better as soon as I can — prompt says "looking forward to being able to speak better as soon as possible" (false flag)
+# S0097L04U09 use → "I'd like to speak as soon as you can" | was: できるだけすぐ話せるようになりたいです — English "I'd like to speak as soon as you can" is a garbled swap of I/you
+S0097L04U09	DELETE
+# S0097L04U10 use → "I'm starting to understand a little more as soon as I can" | was: できるだけすぐ理解できるようになりたいです — English "I'm starting to understand a little more as soon as I can" is incoherent
+S0097L04U10	DELETE
+# S0097L04U13 use → "I'd like to keep on doing this as soon as I can" | was: できるだけすぐ話す練習をしたいです — English "I'd like to keep on doing this as soon as I can" is unnatural
+S0097L04U13	DELETE
+# S0097L05U13 use → "do you want to take more time to think about it?" | was: もっと時間をとりたいですか？ — prompt lacked "to think about it"
+S0097L05U13	それについて考えるのに、もっと時間をとりたいですか？
+# KEEP S0098L01B01 | 考えた | consider — bare LEGO 考えた = "consider": the LEGO's own gloss is past-tense; re-gloss is LEGO-level (O2). Seed 98 note in SUMMARY
+# S0098L01B02 build → "consider something else" | was: 別のことを考えた — prompt was past (考えた); English is base "consider"
+S0098L01B02	別のことを考える
+# S0098L01B03 build → "consider taking time" | was: 時間をかけて考えた — prompt was past and lacked "taking time" shape
+S0098L01B03	時間をかけることを考える
+# S0098L01B04 build → "consider doing it" | was: それをすることを考えた — prompt was past
+S0098L01B04	それをすることを考える
+# S0098L01B05 build → "consider a different way" | was: 別の方法を考えた — prompt was past
+S0098L01B05	違う方法を考える
+# S0098L01B06 build → "consider doing it more carefully" | was: 注意深くやることを考えた — prompt was past and lacked "more"
+S0098L01B06	もっと注意深くそれをすることを考える
+# S0098L01U05 use → "did you consider doing something else with me?" | was: 私と話すことを考えましたか？ — prompt lacked "something else"
+S0098L01U05	私と何か他のことをすることを考えましたか？
+# S0098L01U07 use → "did you consider taking more time to think about it?" | was: もっと時間をかけることを考えましたか？ — prompt lacked "to think about it"
+S0098L01U07	それについて考えるために、もっと時間をかけることを考えましたか？
+# S0098L01U09 use → "did you want to consider what you want to do?" | was: それについてよく考えてみましたか？ — English "did you want to consider what you want to do?" is unnatural
+S0098L01U09	DELETE
+# S0098L01U11 use → "did you want to consider it again?" | was: やめることを考えましたか？ — English "did you want to consider it again?" is unnatural
+S0098L01U11	DELETE
+# S0098L02B03 build → "do something else" | was: 他のことをしてみる — prompt added "try" (してみる)
+S0098L02B03	他のことをする
+# S0098L02U07 use → "I'm trying to remember something else" | was: また別のことを覚えようとしています — prompt added また (again)
+S0098L02U07	他のことを覚えようとしています
+# S0098L02U10 use → "I'd like to practise something else for a while" | was: 他のことをもっと練習したいです — prompt said "more"; English is "for a while"
+S0098L02U10	しばらく他のことを練習したいです
+# S0098L02U11 use → "did you want to show me something else?" | was: 別のことを見せてくれますか？ — prompt was a request; English is "did you want to show me"
+S0098L02U11	私に他のことを見せたかったですか？
+# S0098L02U12 use → "I enjoy doing something else" | was: 他のことを覚えるのが楽しいです — prompt said "remembering"; English is "doing"
+S0098L02U12	他のことをするのを楽しんでいます
+# S0098L03B06 build → "playing with someone else" | was: 友達とすること — prompt said 友達 (friend); English is "someone else" (すること = the seed's own "playing" gloss)
+S0098L03B06	他の人とすること
+# S0098L03U04 use → "I'm going to consider playing something else now" | was: 今は別のものをすることにします — prompt was a decision; English is "going to consider playing something else now"
+S0098L03U04	今は他のことをすることを考えるつもりです
+# S0098L03U08 use → "I'd like to keep on playing something else today" | was: 今日は別のものをすることを試してみましょう — prompt was "let's try"; English is "I'd like to keep on"
+S0098L03U08	今日は他のことをし続けたいです
+# S0098L03U10 use → "I enjoy playing things with my friends" | was: することがとても楽しかったです — English "I enjoy playing things with my friends" is unnatural
+S0098L03U10	DELETE
+# S0098L03U13 use → "it's useful to keep on playing to practise" | was: するのを続けることが役に立ちます — English "it's useful to keep on playing to practise" is unnatural
+S0098L03U13	DELETE
+# S0098L03U14 use → "I'd like to keep on playing with someone else" | was: 別の人とすることを試してみましょう — prompt was "let's try"; English is "I'd like to keep on playing with someone else"
+S0098L03U14	他の人とすることを続けたいです
+# S0098L03U15 use → "it's important to consider playing more carefully" | was: することをもっと注意深くやってみることが大事です — English "it's important to consider playing more carefully" is unnatural
+S0098L03U15	DELETE
+# S0098L04U04 use → "you should consider playing something else" | was: 別のことを試した方がいいかもしれません — prompt said "try" and "maybe"; English is "you should consider playing something else"
+S0098L04U04	他のことをすることを考えた方がいいです
+# S0098L04U05 use → "I think you should speak more as soon as you can" | was: もっと話した方がいいと思います — prompt lacked "as soon as you can"
+S0098L04U05	できるだけすぐ、もっと話した方がいいと思います
+# S0098L04U06 use → "you should consider it again before you want to stop" | was: 今はやめた方がいいかもしれません — English "you should consider it again before you want to stop" is garbled
+S0098L04U06	DELETE
+# S0098L04U13 use → "you should speak with someone else" | was: 誰かと一緒に話した方がいいです — prompt said "with someone together"; English is "someone else"
+S0098L04U13	他の人と話した方がいいです
+# S0098L04U14 use → "I think you should start talking as soon as you can" | was: 今すぐ始めた方がいいと思います — prompt said "right now"; English is "start talking as soon as you can"
+S0098L04U14	できるだけすぐ話し始めた方がいいと思います
+# S0099L01B05 build → "you should ask why" | was: なぜ聞いた方がいいですか — prompt was a question; English is a statement
+S0099L01B05	なぜか聞いた方がいいです
+# S0099L01U01 use → "you should ask yourself why it's not working" | was: うまくいかなければ自分に聞いた方がいいです — prompt said "if it doesn't work"; English is "why it's not working" (the seed's own Japanese)
+S0099L01U01	なぜうまくいかないのか自分に聞いた方がいいです
+# S0099L01U15 use → "you should ask yourself if you understand enough" | was: もっと理解できるように自分に聞いた方がいいです — prompt said "so that you understand more"; English is "if you understand enough"
+S0099L01U15	十分理解しているか自分に聞いた方がいいです
+# KEEP S0099L02U02 | 自分をテストする時間を取ることは大切です。 | it's important to take time to test yourself — prompt matches "it's important to take time to test yourself" (false flag)
+# S0099L02U08 use → "I think it's a good thing to test yourself" | was: 自分をテストすることが上達への道だと思います — prompt said "the road to improvement"; English is "a good thing"
+S0099L02U08	自分をテストするのはいいことだと思います
+# S0099L02U11 use → "when it's not working, ask yourself why" | was: うまくいかないときは自分に聞いてみることが大事です — prompt said "it's important to try asking"; English is the imperative "ask yourself why"
+S0099L02U11	うまくいかないときは、なぜか自分に聞いてください
+# S0099L04U05 use → "I'm starting to feel like it's not working yet" | was: まだうまくいかないと感じています — prompt lacked "starting to"
+S0099L04U05	まだうまくいかないと感じ始めています
+# S0099L04U10 use → "ask yourself why when it's not working" | was: うまくいかないと感じたときは自分に聞いてみてください — English "ask yourself why when it's not working" duplicates S0099L02U11 in a worse order; one prompt cannot serve both (ZUT)
+S0099L04U10	DELETE
+# S0099L04U11 use → "it's not working yet but I'm starting to feel better" | was: まだうまくいかないけど、よくなっています — prompt said "it is getting better"; English is "I'm starting to feel better"
+S0099L04U11	まだうまくいきませんが、気分がよくなり始めています
+# S0099L04U15 use → "when it's not working, consider playing something else" | was: うまくいかないときは別のものをすることを考えた方がいいです — prompt said "you should"; English is the imperative "consider playing something else"
+S0099L04U15	うまくいかないときは、他のことをすることを考えてください
+# S0100L01U12 use → "you shouldn't worry about talking to people you don't know" | was: 知らない人と話すのが怖くても心配しなくてもいいです — prompt added "even if it is scary"
+S0100L01U12	知らない人と話すことを心配しなくてもいいです
+# KEEP S0100L04B07 | 似たようなことをすることを心配しなくてもいいです。 | you shouldn't worry about doing something similar — prompt is the seed's own Japanese (false flag)
+# KEEP S0100L04U01 | 似たようなことをすることを心配しなくてもいいです。 | you shouldn't worry about doing something similar — prompt is the seed's own Japanese (false flag)
+# S0100L04U04 use → "it's difficult to say similar words in a different way" | was: 似たような言葉が難しいとは思わない — prompt said "I don't think similar words are difficult"
+S0100L04U04	似たような言葉を違う方法で言うのは難しいです
+# S0100L04U05 use → "you should ask yourself why doing something similar is interesting" | was: 似たようなことをしてみてください — English "you should ask yourself why doing something similar is interesting" is unnatural
+S0100L04U05	DELETE
+# S0100L04U07 use → "I don't like taking too much time to find similar things" | was: 似たようなものを探すのに時間をかけすぎない — prompt was advice; English is "I don't like taking too much time to find similar things"
+S0100L04U07	似たようなものを見つけるのに時間をかけすぎるのは好きではありません
+# S0100L04U08 use → "it's a good thing to find something similar to this" | was: 似たようなものを見つけるのが楽しい — prompt said "fun"; English is "a good thing … similar to this"
+S0100L04U08	これに似たものを見つけるのはいいことです
+# S0100L04U09 use → "I enjoy doing something similar to this in English" | was: 似たような言語を英語で学ぶのが好き — prompt said "learning similar languages"
+S0100L04U09	英語でこれに似たようなことをするのを楽しんでいます
+# S0100L04U10 use → "you shouldn't worry about doing something similar, it is fun" | was: 似たようなことが心配ですか — prompt was a question; English is a statement plus "it is fun"
+S0100L04U10	似たようなことをするのを心配しなくてもいいです、楽しいです
+# S0100L04U13 use → "it's interesting when you find something similar" | was: 似たようなことを理解するのは楽しいです — prompt said "understanding"; English is "when you find something similar"
+S0100L04U13	似たようなものを見つけると面白いです
+# S0100L04U14 use → "I think it is fun to do something similar in a short time" | was: 似たようなことをするのはいいことだと思います — prompt said "a good thing"; English is "fun … in a short time"
+S0100L04U14	短い時間で似たようなことをするのは楽しいと思います
+# S0100L04U15 use → "it's difficult to speak about something similar to this" | was: 似たようなことを話すのが難しい — prompt lacked "to this"
+S0100L04U15	これに似たようなことについて話すのは難しいです
+# S0101L01B03 build → "enjoying finding out more" | was: もっと楽しんで知る — prompt was garbled (楽しんで知る)
+S0101L01B03	もっと知るのを楽しんでいます
+# S0101L01B06 build → "you are enjoying finding out about this language" | was: この言語について楽しんで知っていますか — prompt was a question; English is a statement
+S0101L01B06	この言語について知るのを楽しんでいます
+# S0101L01U05 use → "I think it's interesting enjoying finding out about this" | was: これについて楽しんで知るのが面白い — English "I think it's interesting enjoying finding out about this" is garbled
+S0101L01U05	DELETE
+# S0101L01U07 use → "I started to think about enjoying finding out more about this language" | was: 先月この言語についてもっと楽しんで知ることを考えました — English "I started to think about enjoying finding out more about this language" is garbled
+S0101L01U07	DELETE
+# S0101L01U10 use → "I like to keep on enjoying finding out more about this language" | was: この言語についてもっと楽しんで知り続けたい — English "I like to keep on enjoying finding out more…" is garbled
+S0101L01U10	DELETE
+# S0101L02U04 use → "I'm looking forward to speaking better as soon as I can about this language" | was: この言語についてもっと楽しんで話すことを楽しみにしています — English "I'm looking forward to speaking better as soon as I can about this language" is garbled
+S0101L02U04	DELETE
+# S0101L02U07 use → "I started to think about it carefully last month to know more about this language" | was: 先月この言語についてもっと知ることを丁寧に考え始めました — English "I started to think about it carefully last month to know more…" is garbled
+S0101L02U07	DELETE
+# S0101L02U09 use → "I like to find out more about this language as often as possible" | was: できるだけ早くこの言語についてもっと知ることが好き — prompt said "as early as possible"; English is "as often as possible"
+S0101L02U09	できるだけ何度も、この言語についてもっと知るのが好きです
+# S0101L02U11 use → "I don't worry about this language because I enjoy finding out more about this language" | was: この言語が好きだから心配していません — English "I don't worry about this language because I enjoy finding out more about this language" is garbled
+S0101L02U11	DELETE
+# S0102L01U10 use → "we're trying to say that it's not like that so I can remember how to say a few words" | was: そうではないと言おうとしているので、少しの言葉を覚えられます — English "…it's not like that so I can remember how to say a few words" is incoherent
+S0102L01U10	DELETE
+# S0102L01U15 use → "I can't remember how to say what I wanted to say because we're trying to say that it's not like that" | was: 言いたいことを思い出せないのは、そうではないと言おうとしているからです — English "I can't remember how to say what I wanted to say because we're trying to say that it's not like that" is incoherent
+S0102L01U15	DELETE
+# S0103L02B04 build → "I don't know how to say enough different words yet many words" | was: たくさんの言葉をまだ言い方がわからない — English "I don't know how to say enough different words yet many words" is garbled
+S0103L02B04	DELETE
+# S0103L02U02 use → "I don't know how to say enough different words yet many words" | was: たくさんの言葉をまだ言い方がわからない — English "I don't know how to say enough different words yet many words" is garbled
+S0103L02U02	DELETE
+# S0103L02U06 use → "I want you to speak English with many different words with me tomorrow" | was: 明日たくさんの違う言葉で英語を話してほしい — prompt lacked "with me"
+S0103L02U06	明日、私とたくさんの違う言葉で英語を話してほしいです
+# S0103L03U10 use → "we're not trying to hear many more words so I can remember how to say a few words" | was: もっとたくさんの言葉を聞こうとしているわけではないので、少しの言葉を覚えられます — English "…so I can remember how to say a few words" is incoherent
+S0103L03U10	DELETE
+# S0103L03U11 use → "I want you to speak and we're not trying to hear many more words" | was: 英語を話してほしいし、もっとたくさんの言葉を聞こうとしているわけではありません — English "I want you to speak and we're not trying to hear many more words" is incoherent
+S0103L03U11	DELETE
+# S0103L03U13 use → "it's not difficult to find the answer when we're not trying to hear many more words" | was: 答えを見つけるのは難しくなくて、もっとたくさんの言葉を聞こうとしているわけではありません — English "it's not difficult to find the answer when we're not trying to hear…" is incoherent
+S0103L03U13	DELETE
+# S0103L03U15 use → "I can't remember how to say what I wanted to say because we're not trying to hear many more words" | was: 言いたいことを覚えられないのは、もっとたくさんの言葉を聞こうとしているわけではないからです — English "I can't remember how to say what I wanted to say because we're not trying…" is incoherent
+S0103L03U15	DELETE

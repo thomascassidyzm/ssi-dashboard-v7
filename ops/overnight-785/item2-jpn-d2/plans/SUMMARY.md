@@ -10,5 +10,17 @@ Rows whose English target uses a word the copy's vocab replay says is untaught a
 | file | changed | deleted | kept (false flag / LEGO-level) | unsure | chars |
 |---|---|---|---|---|---|
 | p01-s074-083.tsv | 31 | 3 | 7 | 0 | 609 |
-| **total** | **31** | **3** | **7** | **0** | **609** |
+| p02-s084-093.tsv | 41 | 8 | 9 | 0 | 911 |
+| p03-s094-103.tsv | 63 | 26 | 10 | 0 | 1181 |
+| p04-s104-113.tsv | 86 | 32 | 6 | 0 | 2101 |
+| p05-s114-123.tsv | 33 | 9 | 4 | 0 | 1009 |
+| p06-s124-133.tsv | 80 | 72 | 17 | 0 | 1860 |
+| **total** | **334** | **150** | **53** | **0** | **7671** |
 
+## Notes for Kai (seed-level, outside a row pass)
+
+- **Seed 98 needs a rebuild, not row fixes** — its LEGOs gloss 考えた (past) as "consider" and すること as "playing"; prompts here are made consistent with those glosses, but 考える is also this course's "think about" (S0098L02B05, S0158L02B06), so "consider" vs "think about" is not distinguishable from the Japanese. Recommendation: rebuild seed 98 the way seeds 226-230 were rebuilt.
+- **Bare LEGO rows are KEPT** where the flag is really about the LEGO's own gloss (S0076L02B01 学んだことに = "how much I've learnt", S0097L04B01, S0098L01B01): fixing them is a LEGO re-gloss with its presentation clip (O2/O13).
+- **DELETEs** are USE/BUILD rows whose ENGLISH is garbled, incoherent or unnatural (the b1 precedent); no prompt can fix those. Thin baskets over bad phrases (Kai 19 Nov). Popty's gate re-runs the seed sweep on every delete and refuses one that breaks a BUILD/USE floor.
+- **Seed 131 needs a rebuild** — BUILD/USE rows use "ideas / going around / head" before those LEGOs are taught in the seed (P2 forward reference; the vocab gate refuses any edit of them), and the seed's own Japanese (たくさんの考え) says "many thoughts" while the English says "too many ideas". Those rows are KEPT, labelled "seed-131 rebuild".
+- **Seeds 129-131 carry many "chain" rows** — English that glues two earlier seed sentences with a comma or "and" ("I'm so happy that you're doing so well, I'm very happy with how much I've learnt already"). No prompt can make those natural; they are DELETEd. If the gate refuses a delete because a BUILD/USE floor would break, that row stays HELD for the rebuild.
