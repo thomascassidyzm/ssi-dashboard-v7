@@ -164,7 +164,12 @@ def settle_comma_tag(r, lego):
     gates = set((r.get('gate') or {}).get('failingGates') or [])
     if not r.get('held') or not reasons or gates - {'buildRecombination'} or any(not x.startswith('buildRecombination') for x in reasons):
         return None
-    build = [p for p in r.get('build') or [] if not comma_tag(p['target'], lego['cy'])]
+    # The same gate also rejects '<one of this LEGO's own USE stems>, <short tag>' (class use-stem+tag).
+    use_stems = {norm(p['target']) for p in r.get('use') or []}
+    def stamped(t):
+        t = t.strip()
+        return comma_tag(t, lego['cy']) or (bool(TAG_RE.search(t)) and norm(re.sub(r',[^,]*$', '', t)) in use_stems)
+    build = [p for p in r.get('build') or [] if not stamped(p['target'])]
     use = list(r.get('use') or [])
     dropped = len(r.get('build') or []) - len(build)
     if not dropped:
