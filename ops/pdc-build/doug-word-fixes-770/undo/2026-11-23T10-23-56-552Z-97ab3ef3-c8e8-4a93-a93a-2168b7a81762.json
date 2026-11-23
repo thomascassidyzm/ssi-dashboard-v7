@@ -1,0 +1,226 @@
+{
+  "course_code": "pdc_for_eng",
+  "event_id": "97ab3ef3-c8e8-4a93-a93a-2168b7a81762",
+  "actor": "kai-770",
+  "created_at": "2026-11-23T10:23:56.552Z",
+  "how_to_undo": "POST /api/production/pdc_for_eng/edit-batch {\"undo_file\":\"2026-11-23T10-23-56-552Z-97ab3ef3-c8e8-4a93-a93a-2168b7a81762.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0566L03U02",
+      "set": {
+        "target_text": "ich hett meh gedenkt im Blatz vun en Excuse gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0563L02U01",
+      "set": {
+        "target_text": "ich will's net lenger"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0557L03U02",
+      "set": {
+        "target_text": "sie hen gsaat sie deede net fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0550L01U01",
+      "set": {
+        "target_text": "ich bin am waarde uff es End vun der Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0550L01B02",
+      "set": {
+        "target_text": "es End vun der Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0629L03U02",
+      "set": {
+        "target_text": "ich will's net mitaus Zucker"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0629L02U02",
+      "set": {
+        "target_text": "ich will's net mit Millich"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0626L03U03",
+      "set": {
+        "target_text": "ich bin net daschdich, denki, ich will's net emol"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0626L02U03",
+      "set": {
+        "target_text": "ich bin net daschdich un ich will's net"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0604L01U06",
+      "set": {
+        "target_text": "sie hot aagebodde fer en neies hole un ich will's net emol"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0604L01U05",
+      "set": {
+        "target_text": "ich bin net iwwerzeicht sie hot aagebodde fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0604L01U01",
+      "set": {
+        "target_text": "sie hot aagebodde fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0587L03U04",
+      "set": {
+        "target_text": "ich will's net fer's Owedesse"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0575L02U02",
+      "set": {
+        "target_text": "sie hen gsaat es iss verdriesslich gewest sidder em zwette Daag vun der Vacation"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0570L02B01",
+      "set": {
+        "target_text": "fer dei Kaarde odder en nei Bett"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0570L01U02",
+      "set": {
+        "target_text": "wie viel witt du fer en nei Bett bezaahle?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0568L01B03",
+      "set": {
+        "target_text": "ich bin am expecte fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0545L03U05",
+      "set": {
+        "target_text": "ich find's hatt en nei Bett nuffzunemme"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0545L03B02",
+      "set": {
+        "target_text": "es waer schee en nei Bett nuffzunemme"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0545L01U01",
+      "set": {
+        "target_text": "sell meent net du bischt draa fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0535L01U05",
+      "set": {
+        "target_text": "ich hab gheert, er hot en Verschprech gemacht, fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0535L01U04",
+      "set": {
+        "target_text": "dei Freind hot gsaat, er hot en Verschprech gemacht im Blatz vun en Excuse gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0535L01U03",
+      "set": {
+        "target_text": "hen sie gsaat, er hot en Verschprech gemacht, fer en nei Bett bezaahle?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0535L01B03",
+      "set": {
+        "target_text": "er hot en Verschprech gemacht im Blatz vun en Excuse gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0534L01U04",
+      "set": {
+        "target_text": "loss uns net en Excuse gewwe"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0533L03U02",
+      "set": {
+        "target_text": "sie hen gsaat sie waerd net fer en nei Bett bezaahle"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0531L02U06",
+      "set": {
+        "target_text": "ich kennt net ennich-ebber traue"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0531L02U03",
+      "set": {
+        "target_text": "fer was witt du net ennich-ebber traue?"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0531L02U01",
+      "set": {
+        "target_text": "ich find's hatt fer ennich-ebber traue"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0531L02B03",
+      "set": {
+        "target_text": "nie widder ennich-ebber traue"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "pdc_for_eng:S0531L02B02",
+      "set": {
+        "target_text": "ennich-ebber traue kennt?"
+      }
+    }
+  ]
+}
