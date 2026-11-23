@@ -349,18 +349,21 @@ const spentNow = () => { const f = path.join(ITEM, 'spend.json'); if (!fs.exists
 // seeds the live pre-check held (out/precheck.json): never rendered, never applied
 // clips this plan reuses on purpose (no render): a seed's OWN clips for a row set to the seed text (D.seedClips = [n,...]),
 // plus explicit [role, text, audioId] triples (D.preset). Read from the dump in hand, so at night they are the LIVE ids.
+// DROP_PRESET="26:target1": a seed clip Popty refused to link to a row (SPOKEN_WORDS_MISMATCH — e.g. a female-form re-record
+// carrying a clip_spoken_text verdict) is NOT reused for that seat; the seat's clip is asked of /api/audio/render instead
+const DROP_PRESET = new Set((process.env.DROP_PRESET || '').split(',').filter(Boolean));
 function presets(db) {
   const m = new Map();
   for (const n of D.seedClips || []) {
     const s = db.seeds.get(n); if (!s) continue;
-    if (s.target1_audio_id) m.set(`target1\u0000${s.target_text}`, s.target1_audio_id);
-    if (s.target2_audio_id) m.set(`target2\u0000${s.target_text}`, s.target2_audio_id);
+    if (s.target1_audio_id && !DROP_PRESET.has(`${n}:target1`)) m.set(`target1\u0000${s.target_text}`, s.target1_audio_id);
+    if (s.target2_audio_id && !DROP_PRESET.has(`${n}:target2`)) m.set(`target2\u0000${s.target_text}`, s.target2_audio_id);
     if (s.known_audio_id) m.set(`known\u0000${s.known_text}`, s.known_audio_id);
   }
   // a seed whose text changes by punctuation only keeps its clips (canon A7): a row set to the NEW text plays them too
   for (const [n, c] of Object.entries(D.seeds)) {
     const s = db.seeds.get(+n); if (!s) continue;
-    if (c.target_text && !wd(c.target_text, s.target_text)) { if (s.target1_audio_id) m.set(`target1\u0000${c.target_text}`, s.target1_audio_id); if (s.target2_audio_id) m.set(`target2\u0000${c.target_text}`, s.target2_audio_id); }
+    if (c.target_text && !wd(c.target_text, s.target_text)) { if (s.target1_audio_id && !DROP_PRESET.has(`${n}:target1`)) m.set(`target1\u0000${c.target_text}`, s.target1_audio_id); if (s.target2_audio_id && !DROP_PRESET.has(`${n}:target2`)) m.set(`target2\u0000${c.target_text}`, s.target2_audio_id); }
     if (c.known_text && !wd(c.known_text, s.known_text) && s.known_audio_id) m.set(`known\u0000${c.known_text}`, s.known_audio_id);
   }
   // a phrase whose words a seed (or another row) takes over lends it its clips: D.rowClips = ['S0390L03U01', ...]

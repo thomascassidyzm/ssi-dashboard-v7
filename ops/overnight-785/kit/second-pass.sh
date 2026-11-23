@@ -17,20 +17,20 @@ spent_all() { node -e 'const fs=require("fs");let t=0;for(const d of ["item3-por
 while [ $# -ge 3 ]; do
   D="$1" C="$2" CAP="$3"; shift 3
   DIR="ops/overnight-785/$D"; L1="$EV/live-$C-p2a.json"; L2="$EV/live-$C-p2b.json"
-  if [ "$(date -u +%s)" -ge "$(date -u -d "$STOP_AT" +%s)" ]; then wake "PASS2 $D: not started, STOP_AT passed"; continue; fi
+  if [ "$(date -u +%s)" -ge "$(date -u -d "$STOP_AT" +%s)" ]; then wake "${LABEL:-PASS2} $D: not started, STOP_AT passed"; continue; fi
   # MAX_CHARS is cumulative per item (render counts spend from audio-real.json); keep the night total under 80k
   ITEM=$(node -e 'const s=require(process.argv[1]);console.log((s.cartesia||0)+(s.azure||0)+(s.other||0))' "$REPO/$DIR/spend.json")
   LEFT=$(( NIGHT_CAP - $(spent_all) )); MAXC=$(( ITEM + LEFT )); [ "$MAXC" -gt "$CAP" ] && MAXC="$CAP"
   echo "=== pass 2 $D ($C) max $MAXC $(date -u +%FT%TZ)"
   node -e 'const fs=require("fs"),f=process.argv[1]+"/out/audio-real.json",a=JSON.parse(fs.readFileSync(f,"utf8"));const keep=a.filter(x=>!(x.real&&x.real.code)),drop=a.filter(x=>x.real&&x.real.code);fs.writeFileSync(process.argv[1]+"/out/audio-refused-pass1.json",JSON.stringify(drop,null,1));fs.writeFileSync(f,JSON.stringify(keep,null,1));console.log("refusals moved aside:",drop.length)' "$DIR"
-  node $KIT "$DIR" read "$L1" --live-ok "$WHY" || { wake "PASS2 $D: live read FAILED"; continue; }
-  node $KIT "$DIR" precheck "$EV/$C.snap.json" "$L1" | cut -c1-400 || { wake "PASS2 $D: precheck crashed"; continue; }
-  node $KIT "$DIR" plan "$L1" > "$DIR/out/plan-live-pass2.txt" 2>&1 || { wake "PASS2 $D: plan crashed"; continue; }
+  node $KIT "$DIR" read "$L1" --live-ok "$WHY" || { wake "${LABEL:-PASS2} $D: live read FAILED"; continue; }
+  node $KIT "$DIR" precheck "$EV/$C.snap.json" "$L1" | cut -c1-400 || { wake "${LABEL:-PASS2} $D: precheck crashed"; continue; }
+  node $KIT "$DIR" plan "$L1" > "$DIR/out/plan-live-pass2.txt" 2>&1 || { wake "${LABEL:-PASS2} $D: plan crashed"; continue; }
   APPLY_CONFIRM=1 MAX_CHARS="$MAXC" node $KIT "$DIR" render "$L1" --live-ok "$WHY"; RC=$?
   APPLY_CONFIRM=1 node $KIT "$DIR" apply "$L1" --live-ok "$WHY"; AC=$?
   APPLY_CONFIRM=1 node $KIT "$DIR" intros "$L1" --live-ok "$WHY"
   node $KIT "$DIR" read "$L2" --live-ok "$WHY" && node $KIT "$DIR" verify "$L2" --live-ok "$WHY"
   V=$(node -e 'const v=require(process.argv[1]);console.log(`${v.ok.length} ok / ${v.bad.length} bad`)' "$REPO/$DIR/out/verify.json" 2>/dev/null || echo "no verify")
-  wake "PASS2 $D finished: render exit $RC, apply exit $AC, verify (this pass's plan) $V, item spend $(tr -d '\n ' < $DIR/spend.json | head -c 200)"
+  wake "${LABEL:-PASS2} $D finished: render exit $RC, apply exit $AC, verify (this pass's plan) $V, item spend $(tr -d '\n ' < $DIR/spend.json | head -c 200)"
 done
-wake "PASS2 DONE at $(date -u +%FT%TZ); items 2-6 spend $(spent_all)"
+wake "${LABEL:-PASS2} DONE at $(date -u +%FT%TZ); items 2-6 spend $(spent_all)"
