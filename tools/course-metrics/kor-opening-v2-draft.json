@@ -1,0 +1,2418 @@
+{
+ "course": "kor_for_eng",
+ "scope": "first 20 intro items (v2, Aran rulings 2026-11-23)",
+ "builtFrom": "GET /api/production/kor_for_eng/course-editor, 2026-11-23",
+ "lines": [
+  {
+   "pos": 1,
+   "intro": 1,
+   "id": "S0002L01",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "해요",
+   "known": "to do",
+   "current": {
+    "target": "해요",
+    "known": "do",
+    "intro": 5
+   },
+   "why": "R1: infinitive English (was \"do\")",
+   "explain": "해요 can also mean \"I do\", \"I'm doing\" or \"let's do\". The situation tells you which."
+  },
+  {
+   "pos": 2,
+   "intro": 2,
+   "id": "S0001L02",
+   "kind": "lego",
+   "change": "keep",
+   "moved": false,
+   "target": "지금",
+   "known": "now",
+   "current": {
+    "target": "지금",
+    "known": "now",
+    "intro": 2
+   },
+   "why": ""
+  },
+  {
+   "pos": 3,
+   "intro": 2,
+   "id": "S0002L01B03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "지금 해요",
+   "known": "I'm doing it now",
+   "current": {
+    "target": "지금 해요",
+    "known": "I'm doing it now",
+    "intro": 5
+   },
+   "why": ""
+  },
+  {
+   "pos": 4,
+   "intro": 3,
+   "id": "S0001L03",
+   "kind": "lego",
+   "change": "keep",
+   "moved": false,
+   "target": "같이",
+   "known": "together",
+   "current": {
+    "target": "같이",
+    "known": "together",
+    "intro": 3
+   },
+   "why": ""
+  },
+  {
+   "pos": 5,
+   "intro": 3,
+   "id": "S0002L01U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "같이 해요",
+   "known": "let's do it together",
+   "current": {
+    "target": "같이 해요",
+    "known": "let's do it together",
+    "intro": 5
+   },
+   "why": ""
+  },
+  {
+   "pos": 6,
+   "intro": 3,
+   "id": "S0002L01U04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "지금 같이 해요",
+   "known": "let's do it together now",
+   "current": {
+    "target": "지금 같이 해요",
+    "known": "let's do it together now",
+    "intro": 5
+   },
+   "why": ""
+  },
+  {
+   "pos": 7,
+   "intro": 4,
+   "id": "S0003L01",
+   "kind": "lego",
+   "change": "keep",
+   "moved": true,
+   "target": "자주",
+   "known": "often",
+   "current": {
+    "target": "자주",
+    "known": "often",
+    "intro": 7
+   },
+   "why": ""
+  },
+  {
+   "pos": 8,
+   "intro": 4,
+   "id": "S0003L01B02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "자주 해요",
+   "known": "I do it often",
+   "current": {
+    "target": "자주 해요",
+    "known": "I do it often",
+    "intro": 7
+   },
+   "why": ""
+  },
+  {
+   "pos": 9,
+   "intro": 4,
+   "id": "S0003L01B03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "자주 같이 해요",
+   "known": "we do it together often",
+   "current": {
+    "target": "자주 같이 해요",
+    "known": "we do it together often",
+    "intro": 7
+   },
+   "why": ""
+  },
+  {
+   "pos": 10,
+   "intro": 5,
+   "id": "NEW",
+   "kind": "lego",
+   "change": "new",
+   "moved": false,
+   "target": "하고 싶어요",
+   "known": "to want to do",
+   "current": null,
+   "why": "R3: \"I want to do\" after \"I do\"; also makes 말하고 싶어요 later cost one new syllable",
+   "explain": "하고 싶어요 can also mean \"I want to do\". 해요 is \"I do\"; 하고 싶어요 is \"I want to do\"."
+  },
+  {
+   "pos": 11,
+   "intro": 5,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 하고 싶어요",
+   "known": "I want to do it now",
+   "current": null,
+   "why": "R3"
+  },
+  {
+   "pos": 12,
+   "intro": 5,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 하고 싶어요",
+   "known": "I want to do it together",
+   "current": null,
+   "why": "R3"
+  },
+  {
+   "pos": 13,
+   "intro": 5,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "자주 하고 싶어요",
+   "known": "I want to do it often",
+   "current": null,
+   "why": "R3"
+  },
+  {
+   "pos": 14,
+   "intro": 5,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 같이 하고 싶어요",
+   "known": "I want to do it together now",
+   "current": null,
+   "why": "R3"
+  },
+  {
+   "pos": 15,
+   "intro": 6,
+   "id": "S0001L04",
+   "kind": "lego",
+   "change": "keep",
+   "moved": true,
+   "target": "한국어로",
+   "known": "Korean",
+   "current": {
+    "target": "한국어로",
+    "known": "Korean",
+    "intro": 4
+   },
+   "why": ""
+  },
+  {
+   "pos": 16,
+   "intro": 6,
+   "id": "S0002L01U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "한국어로 해요",
+   "known": "I do it in Korean",
+   "current": {
+    "target": "한국어로 해요",
+    "known": "I do it in Korean",
+    "intro": 5
+   },
+   "why": ""
+  },
+  {
+   "pos": 17,
+   "intro": 6,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "한국어로 하고 싶어요",
+   "known": "I want to do it in Korean",
+   "current": null,
+   "why": "R3: switch between \"I do\" and \"I want to do\""
+  },
+  {
+   "pos": 18,
+   "intro": 6,
+   "id": "S0002L01U05",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "지금 한국어로 해요",
+   "known": "I'm doing it in Korean now",
+   "current": {
+    "target": "지금 한국어로 해요",
+    "known": "I'm doing it in Korean now",
+    "intro": 5
+   },
+   "why": ""
+  },
+  {
+   "pos": 19,
+   "intro": 6,
+   "id": "S0003L01U04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "한국어로 자주 해요",
+   "known": "I do it in Korean often",
+   "current": {
+    "target": "한국어로 자주 해요",
+    "known": "I do it in Korean often",
+    "intro": 7
+   },
+   "why": ""
+  },
+  {
+   "pos": 20,
+   "intro": 6,
+   "id": "S0002L01U06",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "같이 한국어로 해요",
+   "known": "let's do it in Korean together",
+   "current": {
+    "target": "같이 한국어로 해요",
+    "known": "let's do it in Korean together",
+    "intro": 5
+   },
+   "why": ""
+  },
+  {
+   "pos": 21,
+   "intro": 7,
+   "id": "S0009L01",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "말해요",
+   "known": "to speak",
+   "current": {
+    "target": "말해요",
+    "known": "speak",
+    "intro": 22
+   },
+   "why": "R1: infinitive English (was \"speak\")",
+   "explain": "말해요 can also mean \"I speak\" or \"I'm speaking\". It is 말 (words) plus the 해요 you already know."
+  },
+  {
+   "pos": 22,
+   "intro": 7,
+   "id": "S0009L01B01",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": false,
+   "target": "지금 말해요",
+   "known": "I'm speaking now",
+   "current": {
+    "target": "지금 말해요",
+    "known": "speak now",
+    "intro": 22
+   },
+   "why": "R4: a whole sentence (was \"speak now\"); Korean recording kept"
+  },
+  {
+   "pos": 23,
+   "intro": 7,
+   "id": "S0009L01B02",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": false,
+   "target": "한국어로 말해요",
+   "known": "I speak Korean",
+   "current": {
+    "target": "한국어로 말해요",
+    "known": "speak Korean",
+    "intro": 22
+   },
+   "why": "R4: a whole sentence (was \"speak Korean\"); Korean recording kept"
+  },
+  {
+   "pos": 24,
+   "intro": 7,
+   "id": "S0009L01U02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "자주 말해요",
+   "known": "I speak often",
+   "current": {
+    "target": "자주 말해요",
+    "known": "I speak often",
+    "intro": 22
+   },
+   "why": ""
+  },
+  {
+   "pos": 25,
+   "intro": 7,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 말해요",
+   "known": "let's talk together",
+   "current": null,
+   "why": "R4: a short line with known words"
+  },
+  {
+   "pos": 26,
+   "intro": 8,
+   "id": "S0001L01",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "말하고 싶어요",
+   "known": "to want to speak",
+   "current": {
+    "target": "말하고 싶어요",
+    "known": "want to speak",
+    "intro": 1
+   },
+   "why": "R1: infinitive English (was \"want to speak\")",
+   "explain": "말하고 싶어요 can also mean \"I want to speak\". Same ending as 하고 싶어요."
+  },
+  {
+   "pos": 27,
+   "intro": 8,
+   "id": "S0001L01B02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "말하고 싶어요",
+   "known": "I want to speak",
+   "current": {
+    "target": "말하고 싶어요",
+    "known": "I want to speak",
+    "intro": 1
+   },
+   "why": ""
+  },
+  {
+   "pos": 28,
+   "intro": 8,
+   "id": "S0001L02B01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "지금 말하고 싶어요",
+   "known": "I want to speak now",
+   "current": {
+    "target": "지금 말하고 싶어요",
+    "known": "I want to speak now",
+    "intro": 2
+   },
+   "why": ""
+  },
+  {
+   "pos": 29,
+   "intro": 8,
+   "id": "S0009L01U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "지금 한국어로 말해요",
+   "known": "I speak Korean now",
+   "current": {
+    "target": "지금 한국어로 말해요",
+    "known": "I speak Korean now",
+    "intro": 22
+   },
+   "why": ""
+  },
+  {
+   "pos": 30,
+   "intro": 8,
+   "id": "S0001L04B02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "한국어로 말하고 싶어요",
+   "known": "I want to speak Korean",
+   "current": {
+    "target": "한국어로 말하고 싶어요",
+    "known": "I want to speak Korean",
+    "intro": 4
+   },
+   "why": ""
+  },
+  {
+   "pos": 31,
+   "intro": 8,
+   "id": "S0003L01U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "자주 말하고 싶어요",
+   "known": "I want to speak often",
+   "current": {
+    "target": "자주 말하고 싶어요",
+    "known": "I want to speak often",
+    "intro": 7
+   },
+   "why": ""
+  },
+  {
+   "pos": 32,
+   "intro": 8,
+   "id": "S0001L03B02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "같이 말하고 싶어요",
+   "known": "I want to speak together",
+   "current": {
+    "target": "같이 말하고 싶어요",
+    "known": "I want to speak together",
+    "intro": 3
+   },
+   "why": ""
+  },
+  {
+   "pos": 33,
+   "intro": 8,
+   "id": "S0009L01U05",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": true,
+   "target": "지금 같이 한국어로 말해요",
+   "known": "let's speak Korean together now",
+   "current": {
+    "target": "지금 같이 한국어로 말해요",
+    "known": "I speak Korean together now",
+    "intro": 22
+   },
+   "why": "R4: the English said \"I speak Korean together now\"; Korean recording kept"
+  },
+  {
+   "pos": 34,
+   "intro": 8,
+   "id": "S0001L04U06",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "지금 같이 한국어로 말하고 싶어요",
+   "known": "I want to speak Korean with you now",
+   "current": {
+    "target": "지금 같이 한국어로 말하고 싶어요",
+    "known": "I want to speak Korean with you now",
+    "intro": 4
+   },
+   "why": "keep: the whole first seed sentence (14 syllables, nothing new)"
+  },
+  {
+   "pos": 35,
+   "intro": 9,
+   "id": "NEW",
+   "kind": "lego",
+   "change": "new",
+   "moved": false,
+   "target": "배워요",
+   "known": "to learn",
+   "current": null,
+   "why": "R5: \"I learn\" before \"I'm trying to learn\". Not in the course at all today",
+   "explain": "배워요 can also mean \"I learn\" or \"I'm learning\"."
+  },
+  {
+   "pos": 36,
+   "intro": 9,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 배워요",
+   "known": "I'm learning now",
+   "current": null,
+   "why": "R5"
+  },
+  {
+   "pos": 37,
+   "intro": 9,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 배워요",
+   "known": "let's learn together",
+   "current": null,
+   "why": "R5"
+  },
+  {
+   "pos": 38,
+   "intro": 10,
+   "id": "S0002L02",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "배우려고 해요",
+   "known": "to try to learn",
+   "current": {
+    "target": "배우려고 해요",
+    "known": "I'm trying to learn",
+    "intro": 6
+   },
+   "why": "R1: infinitive English (was \"I'm trying to learn\")",
+   "explain": "배우려고 해요 can also mean \"I'm trying to learn\". 배워요 is \"I learn\"; 배우려고 해요 is \"I'm trying to learn\"."
+  },
+  {
+   "pos": 39,
+   "intro": 10,
+   "id": "S0002L02B04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 배우려고 해요",
+   "known": "I'm trying to learn now",
+   "current": {
+    "target": "지금 배우려고 해요",
+    "known": "I'm trying to learn now",
+    "intro": 6
+   },
+   "why": ""
+  },
+  {
+   "pos": 40,
+   "intro": 10,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "자주 배워요",
+   "known": "I learn often",
+   "current": null,
+   "why": "R5: switch between \"I learn\" and \"I'm trying to learn\". check with a native speaker"
+  },
+  {
+   "pos": 41,
+   "intro": 10,
+   "id": "S0003L01U02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "자주 배우려고 해요",
+   "known": "I'm trying to learn often",
+   "current": {
+    "target": "자주 배우려고 해요",
+    "known": "I'm trying to learn often",
+    "intro": 7
+   },
+   "why": ""
+  },
+  {
+   "pos": 42,
+   "intro": 10,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 같이 배워요",
+   "known": "let's learn together now",
+   "current": null,
+   "why": "R5"
+  },
+  {
+   "pos": 43,
+   "intro": 10,
+   "id": "S0002L02U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "같이 배우려고 해요",
+   "known": "I'm trying to learn together",
+   "current": {
+    "target": "같이 배우려고 해요",
+    "known": "I'm trying to learn together",
+    "intro": 6
+   },
+   "why": ""
+  },
+  {
+   "pos": 44,
+   "intro": 10,
+   "id": "S0002L02U02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "한국어로 배우려고 해요",
+   "known": "I'm trying to learn in Korean",
+   "current": {
+    "target": "한국어로 배우려고 해요",
+    "known": "I'm trying to learn in Korean",
+    "intro": 6
+   },
+   "why": ""
+  },
+  {
+   "pos": 45,
+   "intro": 10,
+   "id": "S0002L02U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 같이 배우려고 해요",
+   "known": "I'm trying to learn together now",
+   "current": {
+    "target": "지금 같이 배우려고 해요",
+    "known": "I'm trying to learn together now",
+    "intro": 6
+   },
+   "why": ""
+  },
+  {
+   "pos": 46,
+   "intro": 10,
+   "id": "S0002L02U04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 한국어로 배우려고 해요",
+   "known": "I'm trying to learn in Korean now",
+   "current": {
+    "target": "지금 한국어로 배우려고 해요",
+    "known": "I'm trying to learn in Korean now",
+    "intro": 6
+   },
+   "why": ""
+  },
+  {
+   "pos": 47,
+   "intro": 11,
+   "id": "S0003L03",
+   "kind": "lego",
+   "change": "keep",
+   "moved": true,
+   "target": "말하는 방법",
+   "known": "how to speak",
+   "current": {
+    "target": "말하는 방법",
+    "known": "how to speak",
+    "intro": 9
+   },
+   "why": "",
+   "explain": "말하는 방법 means \"the way to speak\". It names a thing; it is not a sentence. 말해요 says \"I speak\"; 말하는 방법 sits inside a sentence, as in \"I'm trying to learn how to speak\"."
+  },
+  {
+   "pos": 48,
+   "intro": 11,
+   "id": "S0003L03B02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "한국어로 말하는 방법",
+   "known": "how to speak Korean",
+   "current": {
+    "target": "한국어로 말하는 방법",
+    "known": "how to speak Korean",
+    "intro": 9
+   },
+   "why": ""
+  },
+  {
+   "pos": 49,
+   "intro": 11,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "말하는 방법 배워요",
+   "known": "I'm learning how to speak",
+   "current": null,
+   "why": "R5 alternation. check with a native speaker: 방법을 (with the object marker) may sound more natural"
+  },
+  {
+   "pos": 50,
+   "intro": 11,
+   "id": "S0003L03B03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "말하는 방법 배우려고 해요",
+   "known": "I'm trying to learn how to speak",
+   "current": {
+    "target": "말하는 방법 배우려고 해요",
+    "known": "I'm trying to learn how to speak",
+    "intro": 9
+   },
+   "why": "check with a native speaker: 방법을 may sound more natural"
+  },
+  {
+   "pos": 51,
+   "intro": 12,
+   "id": "S0004L01",
+   "kind": "lego",
+   "change": "keep",
+   "moved": true,
+   "target": "뭔가를",
+   "known": "something",
+   "current": {
+    "target": "뭔가를",
+    "known": "something",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 52,
+   "intro": 12,
+   "id": "S0004L01B01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "뭔가를 해요",
+   "known": "I'm doing something",
+   "current": {
+    "target": "뭔가를 해요",
+    "known": "I'm doing something",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 53,
+   "intro": 12,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "뭔가를 하고 싶어요",
+   "known": "I want to do something",
+   "current": null,
+   "why": "R3: switch between \"I do\" and \"I want to do\""
+  },
+  {
+   "pos": 54,
+   "intro": 12,
+   "id": "S0004L01B02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "같이 뭔가를 해요",
+   "known": "let's do something together",
+   "current": {
+    "target": "같이 뭔가를 해요",
+    "known": "let's do something together",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 55,
+   "intro": 12,
+   "id": "S0004L01B03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 뭔가를 해요",
+   "known": "I'm doing something now",
+   "current": {
+    "target": "지금 뭔가를 해요",
+    "known": "I'm doing something now",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 56,
+   "intro": 12,
+   "id": "S0004L01U02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "뭔가를 말하고 싶어요",
+   "known": "I want to say something",
+   "current": {
+    "target": "뭔가를 말하고 싶어요",
+    "known": "I want to say something",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 57,
+   "intro": 12,
+   "id": "S0004L01U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "뭔가를 배우려고 해요",
+   "known": "I'm trying to learn something",
+   "current": {
+    "target": "뭔가를 배우려고 해요",
+    "known": "I'm trying to learn something",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 58,
+   "intro": 12,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "뭔가를 배워요",
+   "known": "I'm learning something",
+   "current": null,
+   "why": "R5: switch between \"I learn\" and \"I'm trying to learn\""
+  },
+  {
+   "pos": 59,
+   "intro": 12,
+   "id": "S0004L01U04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "한국어로 뭔가를 해요",
+   "known": "I'm doing something in Korean",
+   "current": {
+    "target": "한국어로 뭔가를 해요",
+    "known": "I'm doing something in Korean",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 60,
+   "intro": 12,
+   "id": "S0004L01U05",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 뭔가를 말하고 싶어요",
+   "known": "I want to say something now",
+   "current": {
+    "target": "지금 뭔가를 말하고 싶어요",
+    "known": "I want to say something now",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 61,
+   "intro": 12,
+   "id": "S0004L01U08",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "한국어로 뭔가를 말하는 방법",
+   "known": "how to say something in Korean",
+   "current": {
+    "target": "한국어로 뭔가를 말하는 방법",
+    "known": "how to say something in Korean",
+    "intro": 10
+   },
+   "why": ""
+  },
+  {
+   "pos": 62,
+   "intro": 13,
+   "id": "S0005L01",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "할 거예요",
+   "known": "to be going to do",
+   "current": {
+    "target": "할 거예요",
+    "known": "I'm going to do",
+    "intro": 11
+   },
+   "why": "R1: infinitive English (was \"I'm going to do\")",
+   "explain": "할 거예요 can also mean \"I'm going to do\" or \"I will do\"."
+  },
+  {
+   "pos": 63,
+   "intro": 13,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 할 거예요",
+   "known": "I'm going to do it now",
+   "current": null,
+   "why": "short line first (as #552)"
+  },
+  {
+   "pos": 64,
+   "intro": 13,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 할 거예요",
+   "known": "we're going to do it together",
+   "current": null,
+   "why": "short line first (as #552)"
+  },
+  {
+   "pos": 65,
+   "intro": 13,
+   "id": "S0005L01B03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "뭔가를 할 거예요",
+   "known": "I'm going to do something",
+   "current": {
+    "target": "뭔가를 할 거예요",
+    "known": "I'm going to do something",
+    "intro": 11
+   },
+   "why": ""
+  },
+  {
+   "pos": 66,
+   "intro": 13,
+   "id": "S0005L01U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 뭔가를 할 거예요",
+   "known": "I'm going to do something now",
+   "current": {
+    "target": "지금 뭔가를 할 거예요",
+    "known": "I'm going to do something now",
+    "intro": 11
+   },
+   "why": ""
+  },
+  {
+   "pos": 67,
+   "intro": 13,
+   "id": "S0005L01U02",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "같이 뭔가를 할 거예요",
+   "known": "we're going to do something together",
+   "current": {
+    "target": "같이 뭔가를 할 거예요",
+    "known": "we're going to do something together",
+    "intro": 11
+   },
+   "why": ""
+  },
+  {
+   "pos": 68,
+   "intro": 13,
+   "id": "S0005L01U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "뭔가를 자주 할 거예요",
+   "known": "I'm going to do something often",
+   "current": {
+    "target": "뭔가를 자주 할 거예요",
+    "known": "I'm going to do something often",
+    "intro": 11
+   },
+   "why": ""
+  },
+  {
+   "pos": 69,
+   "intro": 13,
+   "id": "S0005L01U05",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "한국어로 뭔가를 할 거예요",
+   "known": "I'm going to do something in Korean",
+   "current": {
+    "target": "한국어로 뭔가를 할 거예요",
+    "known": "I'm going to do something in Korean",
+    "intro": 11
+   },
+   "why": ""
+  },
+  {
+   "pos": 70,
+   "intro": 14,
+   "id": "NEW",
+   "kind": "lego",
+   "change": "new",
+   "moved": false,
+   "target": "사람과",
+   "known": "with people",
+   "current": null,
+   "why": "#552: splits 다른 사람과 (5 new at once) into 3 + 2. check with a native speaker: 사람들과 may sound more natural"
+  },
+  {
+   "pos": 71,
+   "intro": 14,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "사람과 말하고 싶어요",
+   "known": "I want to talk with people",
+   "current": null,
+   "why": "check with a native speaker (사람들과?)"
+  },
+  {
+   "pos": 72,
+   "intro": 14,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "사람과 말해요",
+   "known": "I talk with people",
+   "current": null,
+   "why": "R4 alternation. check with a native speaker (사람들과?)"
+  },
+  {
+   "pos": 73,
+   "intro": 15,
+   "id": "S0005L02",
+   "kind": "lego",
+   "change": "keep",
+   "moved": true,
+   "target": "다른 사람과",
+   "known": "with someone else",
+   "current": {
+    "target": "다른 사람과",
+    "known": "with someone else",
+    "intro": 12
+   },
+   "why": ""
+  },
+  {
+   "pos": 74,
+   "intro": 15,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "다른 사람과 해요",
+   "known": "I do it with someone else",
+   "current": null,
+   "why": "short line first (as #552)"
+  },
+  {
+   "pos": 75,
+   "intro": 15,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "다른 사람과 같이 해요",
+   "known": "let's do it together with someone else",
+   "current": null,
+   "why": "as #552"
+  },
+  {
+   "pos": 76,
+   "intro": 15,
+   "id": "S0005L02B04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "다른 사람과 말하고 싶어요",
+   "known": "I want to speak with someone else",
+   "current": {
+    "target": "다른 사람과 말하고 싶어요",
+    "known": "I want to speak with someone else",
+    "intro": 12
+   },
+   "why": ""
+  },
+  {
+   "pos": 77,
+   "intro": 15,
+   "id": "S0009L01U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": true,
+   "target": "다른 사람과 한국어로 말해요",
+   "known": "I speak Korean with someone else",
+   "current": {
+    "target": "다른 사람과 한국어로 말해요",
+    "known": "I speak Korean with someone else",
+    "intro": 22
+   },
+   "why": ""
+  },
+  {
+   "pos": 78,
+   "intro": 15,
+   "id": "S0005L02U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "다른 사람과 배우려고 해요",
+   "known": "I'm trying to learn with someone else",
+   "current": {
+    "target": "다른 사람과 배우려고 해요",
+    "known": "I'm trying to learn with someone else",
+    "intro": 12
+   },
+   "why": ""
+  },
+  {
+   "pos": 79,
+   "intro": 15,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "다른 사람과 배워요",
+   "known": "I learn with someone else",
+   "current": null,
+   "why": "R5: switch between \"I learn\" and \"I'm trying to learn\""
+  },
+  {
+   "pos": 80,
+   "intro": 15,
+   "id": "S0005L02U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "다른 사람과 뭔가를 할 거예요",
+   "known": "I'm going to do something with someone else",
+   "current": {
+    "target": "다른 사람과 뭔가를 할 거예요",
+    "known": "I'm going to do something with someone else",
+    "intro": 12
+   },
+   "why": ""
+  },
+  {
+   "pos": 81,
+   "intro": 16,
+   "id": "S0005L03",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "말하는 연습을",
+   "known": "practise speaking",
+   "current": {
+    "target": "말하는 연습을",
+    "known": "practice speaking",
+    "intro": 13
+   },
+   "why": "UK spelling of the verb (was \"practice\"); spoken words unchanged, recordings kept"
+  },
+  {
+   "pos": 82,
+   "intro": 16,
+   "id": "S0005L03B03",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": false,
+   "target": "말하는 연습을 해요",
+   "known": "I practise speaking",
+   "current": {
+    "target": "말하는 연습을 해요",
+    "known": "I practice speaking",
+    "intro": 13
+   },
+   "why": "UK spelling of the verb (was \"practice\"); spoken words unchanged, recordings kept"
+  },
+  {
+   "pos": 83,
+   "intro": 16,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "말하는 연습을 하고 싶어요",
+   "known": "I want to practise speaking",
+   "current": null,
+   "why": "R3: switch between \"I do\" and \"I want to do\""
+  },
+  {
+   "pos": 84,
+   "intro": 16,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 말하는 연습을 해요",
+   "known": "let's practise speaking together",
+   "current": null,
+   "why": "as #552"
+  },
+  {
+   "pos": 85,
+   "intro": 16,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "자주 말하는 연습을 해요",
+   "known": "I practise speaking often",
+   "current": null,
+   "why": "as #552"
+  },
+  {
+   "pos": 86,
+   "intro": 16,
+   "id": "S0005L03U01",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": false,
+   "target": "말하는 연습을 할 거예요",
+   "known": "I'm going to practise speaking",
+   "current": {
+    "target": "말하는 연습을 할 거예요",
+    "known": "I'm going to practice speaking",
+    "intro": 13
+   },
+   "why": "UK spelling of the verb (was \"practice\"); spoken words unchanged, recordings kept"
+  },
+  {
+   "pos": 87,
+   "intro": 16,
+   "id": "S0005L03U02",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": false,
+   "target": "지금 말하는 연습을 할 거예요",
+   "known": "I'm going to practise speaking now",
+   "current": {
+    "target": "지금 말하는 연습을 할 거예요",
+    "known": "I'm going to practice speaking now",
+    "intro": 13
+   },
+   "why": "UK spelling of the verb (was \"practice\"); spoken words unchanged, recordings kept"
+  },
+  {
+   "pos": 88,
+   "intro": 16,
+   "id": "S0005L03U05",
+   "kind": "phrase",
+   "change": "edit",
+   "moved": false,
+   "target": "다른 사람과 말하는 연습을 할 거예요",
+   "known": "I'm going to practise speaking with someone else",
+   "current": {
+    "target": "다른 사람과 말하는 연습을 할 거예요",
+    "known": "I'm going to practice speaking with someone else",
+    "intro": 13
+   },
+   "why": "the whole seed sentence; UK spelling of the verb (was \"practice\"); spoken words unchanged, recordings kept"
+  },
+  {
+   "pos": 89,
+   "intro": 17,
+   "id": "S0006L01",
+   "kind": "lego",
+   "change": "keep",
+   "moved": true,
+   "target": "단어 하나를",
+   "known": "a word",
+   "current": {
+    "target": "단어 하나를",
+    "known": "a word",
+    "intro": 14
+   },
+   "why": ""
+  },
+  {
+   "pos": 90,
+   "intro": 17,
+   "id": "S0006L01B04",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "단어 하나를 배우려고 해요",
+   "known": "I'm trying to learn a word",
+   "current": {
+    "target": "단어 하나를 배우려고 해요",
+    "known": "I'm trying to learn a word",
+    "intro": 14
+   },
+   "why": ""
+  },
+  {
+   "pos": 91,
+   "intro": 17,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "단어 하나를 배워요",
+   "known": "I'm learning a word",
+   "current": null,
+   "why": "R5: switch between \"I learn\" and \"I'm trying to learn\""
+  },
+  {
+   "pos": 92,
+   "intro": 17,
+   "id": "S0006L01U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "단어 하나를 말하고 싶어요",
+   "known": "I want to say a word",
+   "current": {
+    "target": "단어 하나를 말하고 싶어요",
+    "known": "I want to say a word",
+    "intro": 14
+   },
+   "why": ""
+  },
+  {
+   "pos": 93,
+   "intro": 17,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "단어 하나를 말해요",
+   "known": "I'm saying a word",
+   "current": null,
+   "why": "R4: switch between \"I say\" and \"I want to say\". check with a native speaker"
+  },
+  {
+   "pos": 94,
+   "intro": 18,
+   "id": "S0020L03",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "배우고 싶어요",
+   "known": "to want to learn",
+   "current": {
+    "target": "배우고 싶어요",
+    "known": "want to learn",
+    "intro": 55
+   },
+   "why": "R1: infinitive English (was \"want to learn\"); R6: moved up from intro 55",
+   "explain": "배우고 싶어요 can also mean \"I want to learn\". You now have three: 배워요 (I learn), 배우려고 해요 (I'm trying to learn), 배우고 싶어요 (I want to learn)."
+  },
+  {
+   "pos": 95,
+   "intro": 18,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 배우고 싶어요",
+   "known": "I want to learn now",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 96,
+   "intro": 18,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 배우고 싶어요",
+   "known": "I want to learn together",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 97,
+   "intro": 18,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "뭔가를 배우고 싶어요",
+   "known": "I want to learn something",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 98,
+   "intro": 18,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "다른 사람과 배우고 싶어요",
+   "known": "I want to learn with someone else",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 99,
+   "intro": 18,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "말하는 방법 배우고 싶어요",
+   "known": "I want to learn how to speak",
+   "current": null,
+   "why": "R6. check with a native speaker: 방법을 may sound more natural"
+  },
+  {
+   "pos": 100,
+   "intro": 19,
+   "id": "NEW",
+   "kind": "lego",
+   "change": "new",
+   "moved": false,
+   "target": "말하려고 해요",
+   "known": "to try to speak",
+   "current": null,
+   "why": "R6: the second crossover. Not a LEGO in the course today",
+   "explain": "말하려고 해요 can also mean \"I'm trying to speak\". Same ending as 배우려고 해요."
+  },
+  {
+   "pos": 101,
+   "intro": 19,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "지금 말하려고 해요",
+   "known": "I'm trying to speak now",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 102,
+   "intro": 19,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "한국어로 말하려고 해요",
+   "known": "I'm trying to speak Korean",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 103,
+   "intro": 19,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "자주 말하려고 해요",
+   "known": "I'm trying to speak often",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 104,
+   "intro": 19,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "뭔가를 말하려고 해요",
+   "known": "I'm trying to say something",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 105,
+   "intro": 19,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "다른 사람과 말하려고 해요",
+   "known": "I'm trying to speak with someone else",
+   "current": null,
+   "why": "R6"
+  },
+  {
+   "pos": 106,
+   "intro": 20,
+   "id": "S0006L02",
+   "kind": "lego",
+   "change": "edit",
+   "moved": true,
+   "target": "기억하려고 해요",
+   "known": "to try to remember",
+   "current": {
+    "target": "기억하려고 해요",
+    "known": "trying to remember",
+    "intro": 15
+   },
+   "why": "R1: infinitive English (was \"trying to remember\")",
+   "explain": "기억하려고 해요 can also mean \"I'm trying to remember\". Same ending as 배우려고 해요 and 말하려고 해요."
+  },
+  {
+   "pos": 107,
+   "intro": 20,
+   "id": "NEW",
+   "kind": "phrase",
+   "change": "new",
+   "moved": false,
+   "target": "같이 기억하려고 해요",
+   "known": "we're trying to remember together",
+   "current": null,
+   "why": "short line first (as #552)"
+  },
+  {
+   "pos": 108,
+   "intro": 20,
+   "id": "S0006L02B03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "지금 기억하려고 해요",
+   "known": "I'm trying to remember now",
+   "current": {
+    "target": "지금 기억하려고 해요",
+    "known": "I'm trying to remember now",
+    "intro": 15
+   },
+   "why": ""
+  },
+  {
+   "pos": 109,
+   "intro": 20,
+   "id": "S0006L02U01",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "뭔가를 기억하려고 해요",
+   "known": "I'm trying to remember something",
+   "current": {
+    "target": "뭔가를 기억하려고 해요",
+    "known": "I'm trying to remember something",
+    "intro": 15
+   },
+   "why": ""
+  },
+  {
+   "pos": 110,
+   "intro": 20,
+   "id": "S0006L02U03",
+   "kind": "phrase",
+   "change": "keep",
+   "moved": false,
+   "target": "단어 하나를 기억하려고 해요",
+   "known": "I'm trying to remember a word",
+   "current": {
+    "target": "단어 하나를 기억하려고 해요",
+    "known": "I'm trying to remember a word",
+    "intro": 15
+   },
+   "why": "keep: the whole seed sentence"
+  }
+ ],
+ "outOfOpening": [
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0001L01B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "말하고 싶어요",
+   "known": "want to speak",
+   "current": {
+    "target": "말하고 싶어요",
+    "known": "want to speak",
+    "intro": 1
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0002L02B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "배우려고 해요",
+   "known": "I'm trying to learn",
+   "current": {
+    "target": "배우려고 해요",
+    "known": "I'm trying to learn",
+    "intro": 6
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L03B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "말하는 방법",
+   "known": "how to speak",
+   "current": {
+    "target": "말하는 방법",
+    "known": "how to speak",
+    "intro": 9
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L03B04",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 말하는 방법",
+   "known": "how to speak as often as possible",
+   "current": {
+    "target": "가능한 한 자주 말하는 방법",
+    "known": "how to speak as often as possible",
+    "intro": 9
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L03U01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "지금 말하는 방법 배우려고 해요",
+   "known": "I'm trying to learn how to speak now",
+   "current": {
+    "target": "지금 말하는 방법 배우려고 해요",
+    "known": "I'm trying to learn how to speak now",
+    "intro": 9
+   },
+   "why": "13 syllables; the same pattern is practised in B03 (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L03U02",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "같이 말하는 방법 배우려고 해요",
+   "known": "I'm trying to learn how to speak together",
+   "current": {
+    "target": "같이 말하는 방법 배우려고 해요",
+    "known": "I'm trying to learn how to speak together",
+    "intro": 9
+   },
+   "why": "13 syllables, and \"learn how to speak together\" is an odd thing to say (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L03U03",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "한국어로 말하는 방법 배우려고 해요",
+   "known": "I'm trying to learn how to speak Korean",
+   "current": {
+    "target": "한국어로 말하는 방법 배우려고 해요",
+    "known": "I'm trying to learn how to speak Korean",
+    "intro": 9
+   },
+   "why": "15 syllables; the pattern is already practised (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L03U04",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 말하는 방법 배우려고 해요",
+   "known": "I'm trying to learn how to speak as often as possible",
+   "current": {
+    "target": "가능한 한 자주 말하는 방법 배우려고 해요",
+    "known": "I'm trying to learn how to speak as often as possible",
+    "intro": 9
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0004L01U07",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "한국어로 뭔가를 말하고 싶어요",
+   "known": "I want to say something in Korean",
+   "current": {
+    "target": "한국어로 뭔가를 말하고 싶어요",
+    "known": "I want to say something in Korean",
+    "intro": 10
+   },
+   "why": "13 syllables; 뭔가를 already has nine shorter lines (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L01B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "할 거예요",
+   "known": "I'm going to do",
+   "current": {
+    "target": "할 거예요",
+    "known": "I'm going to do",
+    "intro": 11
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L02B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "다른 사람과",
+   "known": "with someone else",
+   "current": {
+    "target": "다른 사람과",
+    "known": "with someone else",
+    "intro": 12
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L02U04",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "지금 다른 사람과 말하고 싶어요",
+   "known": "I want to speak with someone else now",
+   "current": {
+    "target": "지금 다른 사람과 말하고 싶어요",
+    "known": "I want to speak with someone else now",
+    "intro": 12
+   },
+   "why": "13 syllables; B04 already practises it (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L02U05",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "다른 사람과 같이 배우려고 해요",
+   "known": "I'm trying to learn with someone else together",
+   "current": {
+    "target": "다른 사람과 같이 배우려고 해요",
+    "known": "I'm trying to learn with someone else together",
+    "intro": 12
+   },
+   "why": "13 syllables, and \"with someone else together\" says the same thing twice (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L03B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "말하는 연습을",
+   "known": "practice speaking",
+   "current": {
+    "target": "말하는 연습을",
+    "known": "practice speaking",
+    "intro": 13
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L03U03",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "다른 사람과 말하는 연습을 해요",
+   "known": "I practice speaking with someone else",
+   "current": {
+    "target": "다른 사람과 말하는 연습을 해요",
+    "known": "I practice speaking with someone else",
+    "intro": 13
+   },
+   "why": "13 syllables; the seed line just after it says nearly the same (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L03U04",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "한국어로 말하는 연습을 할 거예요",
+   "known": "I'm going to practice speaking Korean",
+   "current": {
+    "target": "한국어로 말하는 연습을 할 거예요",
+    "known": "I'm going to practice speaking Korean",
+    "intro": 13
+   },
+   "why": "14 syllables; nothing in it is new (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0005L03U06",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 말하는 연습을 할 거예요",
+   "known": "I'm going to practice speaking as often as possible",
+   "current": {
+    "target": "가능한 한 자주 말하는 연습을 할 거예요",
+    "known": "I'm going to practice speaking as often as possible",
+    "intro": 13
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L01B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "단어 하나를",
+   "known": "a word",
+   "current": {
+    "target": "단어 하나를",
+    "known": "a word",
+    "intro": 14
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L01U02",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "지금 단어 하나를 말하고 싶어요",
+   "known": "I want to say a word now",
+   "current": {
+    "target": "지금 단어 하나를 말하고 싶어요",
+    "known": "I want to say a word now",
+    "intro": 14
+   },
+   "why": "13 syllables; nothing in it is new (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L01U04",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "한국어로 단어 하나를 말하고 싶어요",
+   "known": "I want to say a word in Korean",
+   "current": {
+    "target": "한국어로 단어 하나를 말하고 싶어요",
+    "known": "I want to say a word in Korean",
+    "intro": 14
+   },
+   "why": "15 syllables (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L01U05",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "다른 사람과 단어 하나를 배우려고 해요",
+   "known": "I'm trying to learn a word with someone else",
+   "current": {
+    "target": "다른 사람과 단어 하나를 배우려고 해요",
+    "known": "I'm trying to learn a word with someone else",
+    "intro": 14
+   },
+   "why": "15 syllables; nothing in it is new (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L02B01",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "기억하려고 해요",
+   "known": "trying to remember",
+   "current": {
+    "target": "기억하려고 해요",
+    "known": "trying to remember",
+    "intro": 15
+   },
+   "why": "same words as its LEGO; the player already skips it"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L02U04",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 기억하려고 해요",
+   "known": "I'm trying to remember as often as possible",
+   "current": {
+    "target": "가능한 한 자주 기억하려고 해요",
+    "known": "I'm trying to remember as often as possible",
+    "intro": 15
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0006L02U05",
+   "kind": "phrase",
+   "change": "remove",
+   "moved": false,
+   "target": "한국어로 단어 하나를 기억하려고 해요",
+   "known": "I'm trying to remember a word in Korean",
+   "current": {
+    "target": "한국어로 단어 하나를 기억하려고 해요",
+    "known": "I'm trying to remember a word in Korean",
+    "intro": 15
+   },
+   "why": "16 syllables; nothing in it is new (as #552)"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02",
+   "kind": "lego",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주",
+   "known": "as often as possible",
+   "current": {
+    "target": "가능한 한 자주",
+    "known": "as often as possible",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02B01",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주",
+   "known": "as often as possible",
+   "current": {
+    "target": "가능한 한 자주",
+    "known": "as often as possible",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02B03",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 해요",
+   "known": "I do it as often as possible",
+   "current": {
+    "target": "가능한 한 자주 해요",
+    "known": "I do it as often as possible",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02B04",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "같이 가능한 한 자주 해요",
+   "known": "let's do it as often as possible together",
+   "current": {
+    "target": "같이 가능한 한 자주 해요",
+    "known": "let's do it as often as possible together",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02U02",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 말하고 싶어요",
+   "known": "I want to speak as often as possible",
+   "current": {
+    "target": "가능한 한 자주 말하고 싶어요",
+    "known": "I want to speak as often as possible",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02U03",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "한국어로 가능한 한 자주 해요",
+   "known": "I do it in Korean as often as possible",
+   "current": {
+    "target": "한국어로 가능한 한 자주 해요",
+    "known": "I do it in Korean as often as possible",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0003L02U04",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 배우려고 해요",
+   "known": "I'm trying to learn as often as possible",
+   "current": {
+    "target": "가능한 한 자주 배우려고 해요",
+    "known": "I'm trying to learn as often as possible",
+    "intro": 8
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0009L01U04",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 한국어로 말해요",
+   "known": "I speak Korean as often as possible",
+   "current": {
+    "target": "가능한 한 자주 한국어로 말해요",
+    "known": "I speak Korean as often as possible",
+    "intro": 22
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0011L02U05",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 말할 수 있으면 좋겠어요",
+   "known": "I'd like to be able to speak as often as possible",
+   "current": {
+    "target": "가능한 한 자주 말할 수 있으면 좋겠어요",
+    "known": "I'd like to be able to speak as often as possible",
+    "intro": 29
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  },
+  {
+   "pos": null,
+   "intro": null,
+   "id": "S0015L03U08",
+   "kind": "phrase",
+   "change": "defer",
+   "moved": false,
+   "target": "가능한 한 자주 저와 말해 주면 좋겠어요",
+   "known": "I want you to speak with me as often as possible",
+   "current": {
+    "target": "가능한 한 자주 저와 말해 주면 좋겠어요",
+    "known": "I want you to speak with me as often as possible",
+    "intro": 38
+   },
+   "why": "R2: \"as often as possible\" waits until after seed 50"
+  }
+ ],
+ "after20": [
+  {
+   "id": "S0001L03U01",
+   "kind": "phrase",
+   "target": "지금 같이 말하고 싶어요",
+   "known": "I want to speak together now",
+   "todayIntro": 3
+  },
+  {
+   "id": "S0001L04U02",
+   "kind": "phrase",
+   "target": "같이 한국어로 말하고 싶어요",
+   "known": "I want to speak Korean together",
+   "todayIntro": 4
+  },
+  {
+   "id": "S0001L04U03",
+   "kind": "phrase",
+   "target": "지금 한국어로 말하고 싶어요",
+   "known": "I want to speak Korean now",
+   "todayIntro": 4
+  },
+  {
+   "id": "S0001L04U04",
+   "kind": "phrase",
+   "target": "지금 같이 한국어로 말하고 싶어요",
+   "known": "I want to speak Korean together now",
+   "todayIntro": 4
+  },
+  {
+   "id": "S0001L04U05",
+   "kind": "phrase",
+   "target": "한국어로 지금 같이 말하고 싶어요",
+   "known": "right now I want to speak Korean together",
+   "todayIntro": 4
+  },
+  {
+   "id": "S0003L01U05",
+   "kind": "phrase",
+   "target": "한국어로 자주 말하고 싶어요",
+   "known": "I want to speak Korean often",
+   "todayIntro": 7
+  },
+  {
+   "id": "S0007L01",
+   "kind": "lego",
+   "target": "오늘",
+   "known": "today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01B01",
+   "kind": "phrase",
+   "target": "오늘 같이",
+   "known": "today together",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01B02",
+   "kind": "phrase",
+   "target": "오늘 배우려고 해요",
+   "known": "I'm trying to learn today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01U01",
+   "kind": "phrase",
+   "target": "오늘 한국어로 말하고 싶어요",
+   "known": "I want to speak Korean today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01U02",
+   "kind": "phrase",
+   "target": "오늘 말하는 연습을 할 거예요",
+   "known": "I'm going to practice speaking today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01U03",
+   "kind": "phrase",
+   "target": "오늘 단어 하나를 기억하려고 해요",
+   "known": "I'm trying to remember a word today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01U04",
+   "kind": "phrase",
+   "target": "오늘 다른 사람과 뭔가를 할 거예요",
+   "known": "I'm going to do something with someone else today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L01U05",
+   "kind": "phrase",
+   "target": "오늘 뭔가를 배우려고 해요",
+   "known": "I'm trying to learn something today",
+   "todayIntro": 16
+  },
+  {
+   "id": "S0007L02",
+   "kind": "lego",
+   "target": "열심히",
+   "known": "hard",
+   "todayIntro": 17
+  },
+  {
+   "id": "S0007L02B01",
+   "kind": "phrase",
+   "target": "열심히 해요",
+   "known": "work hard",
+   "todayIntro": 17
+  },
+  {
+   "id": "S0007L02B02",
+   "kind": "phrase",
+   "target": "오늘 열심히 해요",
+   "known": "work hard today",
+   "todayIntro": 17
+  },
+  {
+   "id": "S0007L02U02",
+   "kind": "phrase",
+   "target": "열심히 배우려고 해요",
+   "known": "I'm trying hard to learn",
+   "todayIntro": 17
+  },
+  {
+   "id": "S0007L02U03",
+   "kind": "phrase",
+   "target": "다른 사람과 열심히 할 거예요",
+   "known": "I'm going to work hard with someone else",
+   "todayIntro": 17
+  },
+  {
+   "id": "S0007L02U05",
+   "kind": "phrase",
+   "target": "오늘 같이 열심히 할 거예요",
+   "known": "I'm going to work hard together today",
+   "todayIntro": 17
+  },
+  {
+   "id": "S0007L03",
+   "kind": "lego",
+   "target": "최대한 열심히",
+   "known": "as hard as I can",
+   "todayIntro": 18
+  },
+  {
+   "id": "S0007L03B02",
+   "kind": "phrase",
+   "target": "최대한 열심히",
+   "known": "as hard as I can",
+   "todayIntro": 18
+  },
+  {
+   "id": "S0007L03U02",
+   "kind": "phrase",
+   "target": "최대한 열심히 배우려고 해요",
+   "known": "I'm trying as hard as I can to learn",
+   "todayIntro": 18
+  },
+  {
+   "id": "S0007L03U03",
+   "kind": "phrase",
+   "target": "최대한 열심히 말하는 연습을 할 거예요",
+   "known": "I'm going to practice speaking as hard as I can",
+   "todayIntro": 18
+  },
+  {
+   "id": "S0007L03U05",
+   "kind": "phrase",
+   "target": "오늘 같이 최대한 열심히 할 거예요",
+   "known": "I'm going to work as hard as I can together today",
+   "todayIntro": 18
+  },
+  {
+   "id": "S0007L04",
+   "kind": "lego",
+   "target": "해 보고 싶어요",
+   "known": "want to try",
+   "todayIntro": 19
+  },
+  {
+   "id": "S0007L04B02",
+   "kind": "phrase",
+   "target": "해 보고 싶어요",
+   "known": "want to try",
+   "todayIntro": 19
+  },
+  {
+   "id": "S0007L04U01",
+   "kind": "phrase",
+   "target": "말하는 연습을 해 보고 싶어요",
+   "known": "I want to try practicing speaking",
+   "todayIntro": 19
+  },
+  {
+   "id": "S0007L04U03",
+   "kind": "phrase",
+   "target": "뭔가를 해 보고 싶어요",
+   "known": "I want to try doing something",
+   "todayIntro": 19
+  },
+  {
+   "id": "S0007L04U05",
+   "kind": "phrase",
+   "target": "오늘 최대한 열심히 해 보고 싶어요",
+   "known": "I want to try as hard as I can today",
+   "todayIntro": 19
+  },
+  {
+   "id": "S0008L01",
+   "kind": "lego",
+   "target": "무슨 뜻인지",
+   "known": "what I mean",
+   "todayIntro": 20
+  },
+  {
+   "id": "S0008L01B02",
+   "kind": "phrase",
+   "target": "무슨 뜻인지",
+   "known": "what I mean",
+   "todayIntro": 20
+  },
+  {
+   "id": "S0008L01U01",
+   "kind": "phrase",
+   "target": "무슨 뜻인지 기억하려고 해요",
+   "known": "I'm trying to remember what it means",
+   "todayIntro": 20
+  },
+  {
+   "id": "S0008L01U03",
+   "kind": "phrase",
+   "target": "무슨 뜻인지 배우려고 해요",
+   "known": "I'm trying to learn what it means",
+   "todayIntro": 20
+  },
+  {
+   "id": "S0008L01U04",
+   "kind": "phrase",
+   "target": "무슨 뜻인지 기억해 보고 싶어요",
+   "known": "I want to try to remember what it means",
+   "todayIntro": 20
+  },
+  {
+   "id": "S0008L01U05",
+   "kind": "phrase",
+   "target": "오늘 무슨 뜻인지 배우려고 해요",
+   "known": "I'm going to learn what it means today",
+   "todayIntro": 20
+  }
+ ]
+}
