@@ -53,7 +53,7 @@ KAI'S STANDING RULES FOR APPLIES
 - Only `POST http://localhost:3470/api/audio/render` (or `node tools/audio/render.cjs`). Library-first. No retries.
 - A refusal is the answer (402, NOT_IN_CHAIN, DAILY_TOTAL_CAP, REPEAT, EXISTS_IN_LANGUAGE, quota): record it, stop that run.
 - Kai's approval token `kai:2026-11-23:<reason>` covers his approved fixes within budget. Never a `tom:` token.
-- No transcript is evidence. Listening pages via `node ~/command-surface/tools/clip-page.cjs`, marked UNHEARD.
+- Audio proof = served clip ids + Kai's ear on a listening page. Listening pages via `node ~/command-surface/tools/clip-page.cjs`, marked UNHEARD.
 
 ## Night budget (Cartesia; Azure counted and reported separately)
 | Item | Cap | Note |

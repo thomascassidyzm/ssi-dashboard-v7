@@ -5,7 +5,7 @@
 - Read by Kai tomorrow (Tue 24 Nov) via his Watson; he works Mon-Thu, so anything HELD needs a one-word answer tomorrow.
 - Failure: night Cartesia > budget; >3 DB writers or a write while Popty's load gate is not green; forcing a row whose live
   state no longer matches the plan; real work dying as a background task; touching spa_for_zho; a report that hides a gap.
-- Does NOT matter: tests (off estate-wide, run none), typechecks/builds/previews, transcribing audio (never evidence),
+- Does NOT matter: tests (off estate-wide, run none), typechecks/builds/previews, speech-to-text of clips (banned: audio proof is served clip ids + Kai's ear),
   re-measuring what #779·AK verified, polishing documents, cym_for_kor (NOT part of this run — do not touch it).
 - Price: Claude time is deliberately large (Kai is burning a usage reset: Claude-heavy work is wanted). Wall clock until
   ~07:00 UK 24 Nov. Shared box watson-1 (16 cores) and live learners on the DB.
