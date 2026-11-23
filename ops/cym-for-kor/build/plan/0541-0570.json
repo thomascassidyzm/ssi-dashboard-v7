@@ -1,0 +1,624 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 541-570: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules, glosses in 반말; changes in \"changed\" (cs #828·AK for #813·AK)",
+ "changed": {
+  "542:teimlo’n flin": "untiled; Korean 화가 나다 one unit",
+  "543:oedd hi’n iawn": "untiled; oedd alone is 응 그랬어 and iawn alone is 아주, so one clause like bod hi’n iawn (387)",
+  "544:y byddai fo’n anodd": "source anodd + untiled y byddai fo’n; one clause unit",
+  "544:oedd yn hollol iawn": "source yn hollol iawn; oedd alone is 응 그랬어, so one unit",
+  "547:yn chwarae": "yn untiled and chwarae is taught as 경기하다 (337); play-as-children 놀고 있다",
+  "549:mae’n rhaid i mi": "kept source; 나는 ~해야 해 is taken by rhaid i mi (293)",
+  "552:ym mhen arall y pentref": "source ym mhen arall + untiled y pentref; Korean 마을 반대편 끝에 one unit",
+  "553:bod yr eglwys fach": "untiled; frame like bod y ffilm yn (248)",
+  "556:maen nhw’n chwarae": "maen nhw’n untiled and chwarae is taught as 경기하다; play-music frame like maen nhw’n trio (213)",
+  "557:’swn i’n licio": "kept source; 나는 ~면 좋겠어 is taken by liciwn i (92)",
+  "557:tasen nhw ddim yn": "source tasen nhw ddim yn chwarae is 9 syllables over the cap; frame + chwarae cerddoriaeth + mor uchel",
+  "558:yn y nos": "untiled",
+  "559:wyt ti ’di": "untiled; perfect question frame; 너 ~했어? is taken by wyt ti wedi (267), so 너 ~한 거야?",
+  "559:ffeindio’r": "untiled; ffeindio (460) with the article",
+  "560:mae o’n mynd": "mae o’n mynd i is 그는 ~ㄹ 거야 (223); here go, not going-to",
+  "560:i lawr": "untiled",
+  "561:ydy o’n": "untiled; ydy alone is ~은 ~이야 (482)",
+  "562:dw i jesd isio": "untiled; frame like oedd hi jesd isio (357)",
+  "566:tasai fo wedi bod yn": "source tasai fo wedi bod + untiled yn",
+  "567:mae hi wedi bod yn": "source mae hi wedi bod yn hyfryd is 9 syllables over the cap; split off hyfryd",
+  "567:treulio amser": "untiled",
+  "567:yn gwylio’r plant": "untiled"
+ },
+ "seeds": {
+  "541": {
+   "legos": [
+    {
+     "cy": "mae’n",
+     "ko": "그것은 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "syniad da",
+     "ko": "좋은 아이디어",
+     "type": "A"
+    },
+    {
+     "cy": "trio",
+     "ko": "노력하다",
+     "type": "A"
+    },
+    {
+     "cy": "anadlu’n araf",
+     "ko": "천천히 숨 쉬다",
+     "type": "A"
+    }
+   ]
+  },
+  "542": {
+   "legos": [
+    {
+     "cy": "pryd bynnag",
+     "ko": "~할 때마다",
+     "type": "A"
+    },
+    {
+     "cy": "ti’n",
+     "ko": "너는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "teimlo’n flin",
+     "ko": "화가 나다",
+     "type": "A"
+    }
+   ]
+  },
+  "543": {
+   "legos": [
+    {
+     "cy": "oedd hi’n iawn",
+     "ko": "그녀는 옳았어",
+     "type": "A"
+    }
+   ]
+  },
+  "544": {
+   "legos": [
+    {
+     "cy": "pwy bynnag ddudodd",
+     "ko": "~라고 말한 사람이 누구든",
+     "type": "A"
+    },
+    {
+     "cy": "y byddai fo’n anodd",
+     "ko": "그게 어려울 거라고",
+     "type": "A"
+    },
+    {
+     "cy": "oedd yn hollol iawn",
+     "ko": "완전히 옳았어",
+     "type": "A"
+    }
+   ]
+  },
+  "545": {
+   "legos": [
+    {
+     "cy": "dy dro di ydy hi",
+     "ko": "네 차례야",
+     "type": "A"
+    },
+    {
+     "cy": "i fynd â’r dillad glân",
+     "ko": "깨끗한 옷을 가져가다",
+     "type": "A"
+    },
+    {
+     "cy": "fyny grisiau",
+     "ko": "위층으로",
+     "type": "A"
+    }
+   ]
+  },
+  "546": {
+   "legos": [
+    {
+     "cy": "mae’r ci’n",
+     "ko": "개가 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "fudr ac yn wlyb",
+     "ko": "더럽고 젖은",
+     "type": "A"
+    }
+   ]
+  },
+  "547": {
+   "legos": [
+    {
+     "cy": "achos",
+     "ko": "왜냐하면",
+     "type": "A"
+    },
+    {
+     "cy": "mae o",
+     "ko": "그는",
+     "type": "A"
+    },
+    {
+     "cy": "wedi bod",
+     "ko": "~였다",
+     "type": "A"
+    },
+    {
+     "cy": "yn chwarae",
+     "ko": "놀고 있다",
+     "type": "A"
+    },
+    {
+     "cy": "yn y mwd",
+     "ko": "진흙에서",
+     "type": "A"
+    }
+   ]
+  },
+  "548": {
+   "legos": [
+    {
+     "cy": "dw i’n",
+     "ko": "나는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "teimlo’n drist",
+     "ko": "슬프다",
+     "type": "A"
+    },
+    {
+     "cy": "ar hyn o bryd",
+     "ko": "지금 이 순간",
+     "type": "A"
+    }
+   ]
+  },
+  "549": {
+   "legos": [
+    {
+     "cy": "achos",
+     "ko": "왜냐하면",
+     "type": "A"
+    },
+    {
+     "cy": "mae’n rhaid i mi",
+     "ko": "나는 꼭 ~해야 해",
+     "type": "A"
+    },
+    {
+     "cy": "fod yn ddistaw",
+     "ko": "조용히 있다",
+     "type": "A"
+    }
+   ]
+  },
+  "550": {
+   "legos": [
+    {
+     "cy": "pen y pentref",
+     "ko": "마을 끝",
+     "type": "A"
+    }
+   ]
+  },
+  "551": {
+   "legos": [
+    {
+     "cy": "mae’r eglwys",
+     "ko": "교회가 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "yn hyll",
+     "ko": "흉한",
+     "type": "A"
+    }
+   ]
+  },
+  "552": {
+   "legos": [
+    {
+     "cy": "mae’r eglwys",
+     "ko": "교회가 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "ym mhen arall y pentref",
+     "ko": "마을 반대편 끝에",
+     "type": "A"
+    },
+    {
+     "cy": "yn hyll",
+     "ko": "흉한",
+     "type": "A"
+    }
+   ]
+  },
+  "553": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "bod yr eglwys fach",
+     "ko": "작은 교회가 ~다고",
+     "type": "A"
+    },
+    {
+     "cy": "yn hyll",
+     "ko": "흉한",
+     "type": "A"
+    },
+    {
+     "cy": "iawn",
+     "ko": "아주",
+     "type": "A"
+    }
+   ]
+  },
+  "554": {
+   "legos": [
+    {
+     "cy": "dydy’r tywel ’ma ddim",
+     "ko": "이 수건은 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "yn sych",
+     "ko": "마른",
+     "type": "A"
+    }
+   ]
+  },
+  "555": {
+   "legos": [
+    {
+     "cy": "a",
+     "ko": "그리고",
+     "type": "A"
+    },
+    {
+     "cy": "dw i wedi blino",
+     "ko": "나는 피곤해",
+     "type": "A"
+    },
+    {
+     "cy": "gormod",
+     "ko": "~하기에는 너무",
+     "type": "A"
+    },
+    {
+     "cy": "i nôl un newydd",
+     "ko": "새것을 가져오다",
+     "type": "A"
+    }
+   ]
+  },
+  "556": {
+   "legos": [
+    {
+     "cy": "maen nhw’n chwarae",
+     "ko": "그들은 ~를 틀어",
+     "type": "A"
+    },
+    {
+     "cy": "cerddoriaeth",
+     "ko": "음악",
+     "type": "A"
+    },
+    {
+     "cy": "yn hwyr yn y nos",
+     "ko": "밤늦게",
+     "type": "A"
+    }
+   ]
+  },
+  "557": {
+   "legos": [
+    {
+     "cy": "’swn i’n licio",
+     "ko": "나는 ~했으면 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "tasen nhw ddim yn",
+     "ko": "그들이 ~지 않으면",
+     "type": "A"
+    },
+    {
+     "cy": "chwarae cerddoriaeth",
+     "ko": "음악을 틀다",
+     "type": "A"
+    },
+    {
+     "cy": "mor uchel",
+     "ko": "그렇게 크게",
+     "type": "A"
+    }
+   ]
+  },
+  "558": {
+   "legos": [
+    {
+     "cy": "mae hi mor hwyr",
+     "ko": "정말 늦었어",
+     "type": "A"
+    },
+    {
+     "cy": "yn y nos",
+     "ko": "밤에",
+     "type": "A"
+    }
+   ]
+  },
+  "559": {
+   "legos": [
+    {
+     "cy": "wyt ti ’di",
+     "ko": "너 ~한 거야?",
+     "type": "A"
+    },
+    {
+     "cy": "ffeindio’r",
+     "ko": "~를 찾아내다",
+     "type": "A"
+    },
+    {
+     "cy": "llwybr trwy’r coed",
+     "ko": "숲을 지나는 오솔길",
+     "type": "A"
+    }
+   ]
+  },
+  "560": {
+   "legos": [
+    {
+     "cy": "mae o’n mynd",
+     "ko": "그건 ~로 가",
+     "type": "A"
+    },
+    {
+     "cy": "i lawr",
+     "ko": "아래로",
+     "type": "A"
+    },
+    {
+     "cy": "i’r traeth",
+     "ko": "해변으로",
+     "type": "A"
+    }
+   ]
+  },
+  "561": {
+   "legos": [
+    {
+     "cy": "does dim ots gen i",
+     "ko": "나는 상관없어",
+     "type": "A"
+    },
+    {
+     "cy": "os",
+     "ko": "~지",
+     "type": "A"
+    },
+    {
+     "cy": "ydy o’n",
+     "ko": "그게 ~인지",
+     "type": "A"
+    },
+    {
+     "cy": "gar cyflym",
+     "ko": "빠른 차",
+     "type": "A"
+    }
+   ]
+  },
+  "562": {
+   "legos": [
+    {
+     "cy": "dw i jesd isio",
+     "ko": "나는 그냥 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "cyrraedd yno’n ddiogel",
+     "ko": "거기에 안전하게 도착하다",
+     "type": "A"
+    }
+   ]
+  },
+  "563": {
+   "legos": [
+    {
+     "cy": "fyswn i ddim wedi medru",
+     "ko": "나는 ~ㄹ 수 없었을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "dal ati’n hirach",
+     "ko": "더 오래 버티다",
+     "type": "A"
+    }
+   ]
+  },
+  "564": {
+   "legos": [
+    {
+     "cy": "fyswn i ddim wedi medru",
+     "ko": "나는 ~ㄹ 수 없었을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "heb dy help di",
+     "ko": "네 도움 없이",
+     "type": "A"
+    }
+   ]
+  },
+  "565": {
+   "legos": [
+    {
+     "cy": "fyswn i wedi meddwl",
+     "ko": "나는 ~ 생각했을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "amdano fo’n fwy gofalus",
+     "ko": "그것에 대해 더 신중하게",
+     "type": "A"
+    }
+   ]
+  },
+  "566": {
+   "legos": [
+    {
+     "cy": "fyswn i wedi meddwl",
+     "ko": "나는 ~ 생각했을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "mwy",
+     "ko": "더",
+     "type": "A"
+    },
+    {
+     "cy": "tasai fo wedi bod yn",
+     "ko": "그게 ~였다면",
+     "type": "A"
+    },
+    {
+     "cy": "fy newis i",
+     "ko": "내 선택",
+     "type": "A"
+    }
+   ]
+  },
+  "567": {
+   "legos": [
+    {
+     "cy": "mae hi wedi bod yn",
+     "ko": "그동안 ~였어",
+     "type": "A"
+    },
+    {
+     "cy": "hyfryd",
+     "ko": "멋진",
+     "type": "A"
+    },
+    {
+     "cy": "treulio amser",
+     "ko": "시간을 보내다",
+     "type": "A"
+    },
+    {
+     "cy": "tu allan",
+     "ko": "밖에서",
+     "type": "A"
+    },
+    {
+     "cy": "yn gwylio’r plant",
+     "ko": "아이들을 보면서",
+     "type": "A"
+    },
+    {
+     "cy": "yn chwarae",
+     "ko": "놀고 있다",
+     "type": "A"
+    }
+   ]
+  },
+  "568": {
+   "legos": [
+    {
+     "cy": "dw i’n",
+     "ko": "나는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "disgwyl",
+     "ko": "예상하다",
+     "type": "A"
+    },
+    {
+     "cy": "gweld",
+     "ko": "보다",
+     "type": "A"
+    },
+    {
+     "cy": "gwelliant",
+     "ko": "나아진 것",
+     "type": "A"
+    },
+    {
+     "cy": "tro nesa’",
+     "ko": "다음번에",
+     "type": "A"
+    },
+    {
+     "cy": "byddwn ni’n cyfarfod",
+     "ko": "우리가 만날",
+     "type": "A"
+    }
+   ]
+  },
+  "569": {
+   "legos": [
+    {
+     "cy": "wyt ti ’di",
+     "ko": "너 ~한 거야?",
+     "type": "A"
+    },
+    {
+     "cy": "penderfynu",
+     "ko": "결정하다",
+     "type": "A"
+    },
+    {
+     "cy": "faint",
+     "ko": "얼마나 많이",
+     "type": "A"
+    },
+    {
+     "cy": "ti’n",
+     "ko": "너는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "fodlon talu",
+     "ko": "낼 의향이 있다",
+     "type": "A"
+    }
+   ]
+  },
+  "570": {
+   "legos": [
+    {
+     "cy": "faint",
+     "ko": "얼마나 많이",
+     "type": "A"
+    },
+    {
+     "cy": "wyt ti’n",
+     "ko": "너 ~하고 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "fodlon talu",
+     "ko": "낼 의향이 있다",
+     "type": "A"
+    },
+    {
+     "cy": "am dy docyn",
+     "ko": "네 표에",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}
