@@ -14,6 +14,12 @@
         <button class="pill" @click="exportFlags">Export</button>
       </div>
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
+      <!-- Shown when a load put the reader back at a remembered row: the row it went to, and the way out to the top. -->
+      <p v-if="cameBack" class="back">
+        Back to where you were: <a href="#" @click.prevent="goBack">#{{ cameBack.n }}</a>
+        · <a href="#" @click.prevent="goTop">Go to top</a>
+        <button class="x" aria-label="Hide this line" @click="cameBack = null">×</button>
+      </p>
     </header>
 
     <!-- Fixed overlay, as on the LEGO page (#551): always on screen whatever the scroll position. -->
@@ -195,30 +201,48 @@ function onWindowResize() {
   readView()
 }
 
-// Keep his place: the id of the top row, per course, so a reload lands on the same phrase.
+// Keep the reader's place (cs #864, for Deborah's Welsh proofread): the id of the top row, per course, in localStorage,
+// so a reload lands on the same phrase. It lives in this browser only — there is no server-side per-user place yet.
+// The top of the list is never saved as a place, so "Go to top" does not wipe the place the reader came back to.
 const placeKey = (code) => `phraseProof:place:${code}`
+const cameBack = ref(null)         // { id, n } of the row a load scrolled back to; null = nothing to announce
 // How much of the viewport's top the two sticky bars (Popty's navbar + this page's header) cover once scrolled.
 const navbarH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-navbar-height')) || 0
 const coveredTop = () => navbarH() + (topEl.value?.offsetHeight || 0)
 let placeTimer = 0
+function savePlace(code) {
+  if (course.value !== code || flaggedOnly.value || loading.value || !shown.value.length) return
+  const i = rowAt(tops.value, viewTop.value + coveredTop())
+  if (i <= 0) return
+  try { localStorage.setItem(placeKey(code), shown.value[i].id) } catch { /* private mode */ }
+}
 function rememberPlace() {
-  if (flaggedOnly.value || loading.value || !shown.value.length) return
   clearTimeout(placeTimer)
   const code = course.value
-  placeTimer = setTimeout(() => {
-    const p = shown.value[rowAt(tops.value, viewTop.value + coveredTop())]
-    try { if (p && course.value === code) localStorage.setItem(placeKey(code), p.id) } catch { /* private mode */ }
-  }, 400)
+  placeTimer = setTimeout(() => savePlace(code), 400)
 }
-async function restorePlace() {
+// Closing the tab or switching app inside the 400 ms must not lose the last scroll.
+function flushPlace() { clearTimeout(placeTimer); readView(); savePlace(course.value) }
+function scrollToRow(i) {
+  window.scrollTo(0, i > 0 ? listTop() + tops.value[i] - coveredTop() : 0)
+  readView()
+}
+// `announce` (a fresh load) shows the "Back to where you were" line; leaving Flagged only restores quietly.
+async function restorePlace(announce = false) {
   let id = null
   try { id = localStorage.getItem(placeKey(course.value)) } catch { /* ignore */ }
   const i = id ? shown.value.findIndex((p) => p.id === id) : -1
-  await nextTick()
-  if (i > 0) window.scrollTo(0, listTop() + tops.value[i] - coveredTop())
-  else window.scrollTo(0, 0)
-  readView()
+  if (announce) cameBack.value = i > 0 ? { id, n: shown.value[i].n } : null
+  await nextTick()             // the line above changes the sticky header's height; scroll after it is laid out
+  scrollToRow(i)
 }
+async function goBack() {
+  const id = cameBack.value?.id
+  if (!id) return
+  if (flaggedOnly.value) { flaggedOnly.value = false; await nextTick() }
+  scrollToRow(shown.value.findIndex((p) => p.id === id))
+}
+function goTop() { window.scrollTo(0, 0); readView() }
 
 // ---- loading ------------------------------------------------------------------------------------------------------
 // Each load gets a generation number; a response for an older one (a slow North list landing after South) is dropped.
@@ -226,7 +250,7 @@ let loadGen = 0
 async function load() {
   const gen = ++loadGen
   const code = course.value
-  loading.value = true; loadError.value = ''; phrases.value = []; legos.value = []; total.value = 0
+  loading.value = true; loadError.value = ''; phrases.value = []; legos.value = []; total.value = 0; cameBack.value = null
   for (const k of Object.keys(flags)) delete flags[k]
   measured.clear()
   try {
@@ -241,7 +265,7 @@ async function load() {
   } catch (e) {
     if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
   } finally { if (gen === loadGen) loading.value = false }
-  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace() }
+  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace(true) }
 }
 
 function pick(code) {
@@ -359,12 +383,15 @@ onMounted(() => {
   if (typeof ResizeObserver !== 'undefined') ro = new ResizeObserver(onResized)
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onWindowResize)
+  window.addEventListener('pagehide', flushPlace)
   load()
 })
 onBeforeUnmount(() => {
   ro?.disconnect()
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onWindowResize)
+  window.removeEventListener('pagehide', flushPlace)
+  flushPlace()
 })
 </script>
 
@@ -392,6 +419,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .count b { color: var(--pp-amber); font-size: 1rem; }
 .msg { font-size: 0.85rem; color: var(--pp-good); margin: 0.25rem 0 0; }
 .msg.bad { color: var(--pp-bad); }
+.back { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--pp-muted); margin: 0.2rem 0 0; }
+.back a { color: var(--pp-en); text-decoration: underline; padding: 0.35rem 0; font-variant-numeric: tabular-nums; }
+.back .x { margin-left: auto; border: 0; background: transparent; color: var(--pp-muted); font-size: 1.1rem; line-height: 1; min-width: 36px; min-height: 32px; }
 .note { color: var(--pp-muted); padding: 1rem 0.25rem; }
 .export-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 0.75rem; }
 .export { background: #fff; color: var(--pp-ink); border-radius: 12px; padding: 0.75rem; width: min(900px, 100%); max-height: 100%; display: flex; flex-direction: column; }
