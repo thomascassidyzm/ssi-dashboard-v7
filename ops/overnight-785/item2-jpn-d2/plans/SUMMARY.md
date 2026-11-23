@@ -10,5 +10,6 @@ Rows whose English target uses a word the copy's vocab replay says is untaught a
 | file | changed | deleted | kept (false flag / LEGO-level) | unsure | chars |
 |---|---|---|---|---|---|
 | p01-s074-083.tsv | 31 | 3 | 7 | 0 | 609 |
-| **total** | **31** | **3** | **7** | **0** | **609** |
+| p02-s084-093.tsv | 41 | 8 | 9 | 0 | 911 |
+| **total** | **72** | **11** | **16** | **0** | **1520** |
 
