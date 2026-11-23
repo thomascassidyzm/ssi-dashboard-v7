@@ -1,0 +1,44 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0441L01U02",
+   "set": {
+    "known_text": "this really is a hard approach",
+    "target_text": "بجد ده أسلوب صعب"
+   },
+   "expect": {
+    "known_text": "this approach is really hard",
+    "target_text": "بجد أسلوب صعب"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "ara_eg_for_eng:S0441L01U04",
+   "set": {
+    "known_text": "this is still a hard approach",
+    "target_text": "ده لسه أسلوب صعب"
+   },
+   "expect": {
+    "known_text": "this approach is still hard",
+    "target_text": "لسه أسلوب صعب"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0047L02U03",
+   "expect": {
+    "known_text": "this is a good thing",
+    "target_text": "دي حاجة كويس"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "ara_eg_for_eng:S0047L02U04",
+   "expect": {
+    "known_text": "I think that this is a good thing",
+    "target_text": "بفكر إن دي حاجة كويس"
+   }
+  }
+ ]
+}

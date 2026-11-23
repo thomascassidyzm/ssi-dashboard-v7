@@ -1,0 +1,38 @@
+{
+ "known|this really is a hard approach": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-703-item6-wrong-target-form: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|بجد ده أسلوب صعب": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-703-item6-wrong-target-form: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|بجد ده أسلوب صعب": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-703-item6-wrong-target-form: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "known|this is still a hard approach": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-703-item6-wrong-target-form: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target1|ده لسه أسلوب صعب": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-703-item6-wrong-target-form: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ },
+ "target2|ده لسه أسلوب صعب": {
+  "ok": false,
+  "code": "BULK_DRY_RUN_ON_LIVE",
+  "error": "cs-703-item6-wrong-target-form: 100 dry-run calls in the last hour. Bulk dry runs do not run against the live shared DB (Tom, 2026-11-05): plan from the nightly QA copy with a committed tool (e.g. set -a; . ~/ssi-restore/qa-copy.env; set +a; node tools/audio/plan-first-render.cjs), then send only the real renders here. Real renders are not affected.",
+  "status": 429
+ }
+}

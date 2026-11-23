@@ -1,0 +1,1470 @@
+{
+ "status": 200,
+ "request": {
+  "ops": [
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "target_text": "你想快点记住他的名字。",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね。",
+     "target_text": "你想快点学他的名字。"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_jpn:S0020L03U01",
+    "set": {
+     "target_text": "你想快点记住他的名字",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "彼の名前を早く覚えたいですね",
+     "target_text": "你想快点学他的名字"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 92,
+    "set": {
+     "target_text": "我想继续做一会儿这个。",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "しばらくこれを続けたいです。",
+     "target_text": "我想继续做这个一会儿。"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_jpn:S0092L03B03",
+    "set": {
+     "target_text": "做一会儿这个。",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "これをしばらくやる。",
+     "target_text": "做这个一会儿。"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 283,
+    "set": {
+     "known_text": "中国語を話す友だち、誰がいる？",
+     "target_text": "你哪些朋友会说中文？",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "Chineseを話す友だち、誰がいる？",
+     "target_text": "你哪些朋友会说Chinese？"
+    }
+   },
+   {
+    "op": "lego.update",
+    "lego_id": "S0283L02",
+    "set": {
+     "target_text": "中文",
+     "is_new": false,
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "中国語",
+     "target_text": "chinese"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_jpn:S0283L02U01",
+    "set": {
+     "target_text": "我想说中文",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "中国語を話したいです",
+     "target_text": "我想说chinese"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_jpn:S0283L02U02",
+    "set": {
+     "target_text": "我在学中文",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "中国語を勉強しています",
+     "target_text": "我在学chinese"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "zho_for_jpn:S0283L02U03",
+    "set": {
+     "target_text": "我喜欢中文",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "中国語が好きです",
+     "target_text": "我喜欢chinese"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "zho_for_jpn:S0283L02U04",
+    "expect": {
+     "known_text": "中国語を話せますか？",
+     "target_text": "你会说chinese吗？"
+    }
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target1",
+    "audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+    "seed_number": 20
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target2",
+    "audio_id": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+    "seed_number": 20
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+    "phrase_id": "zho_for_jpn:S0020L03U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+    "phrase_id": "zho_for_jpn:S0020L03U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target1",
+    "audio_id": "6d4b4f10-a555-4f15-8fe1-f7e3850d383f",
+    "seed_number": 92
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target2",
+    "audio_id": "c44a972f-44e0-4623-8d78-3dabb7ee7b2e",
+    "seed_number": 92
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "06a0aadd-dc89-4cd5-a003-d66f82561cba",
+    "phrase_id": "zho_for_jpn:S0092L03B03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "27a9022e-c491-4926-98fb-b18dc06332d8",
+    "phrase_id": "zho_for_jpn:S0092L03B03"
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "known",
+    "audio_id": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+    "seed_number": 283
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target1",
+    "audio_id": "1a654aab-afef-47b6-b8a9-3067523b14af",
+    "seed_number": 283
+   },
+   {
+    "op": "audio.link",
+    "target": "seed",
+    "slot": "target2",
+    "audio_id": "64cf479a-aba0-4495-b808-383b5343e360",
+    "seed_number": 283
+   },
+   {
+    "op": "audio.link",
+    "target": "lego",
+    "slot": "target1",
+    "audio_id": "e0dbcbc8-008a-4f4d-b9e2-fb350d99606a",
+    "lego_id": "S0283L02"
+   },
+   {
+    "op": "audio.link",
+    "target": "lego",
+    "slot": "target2",
+    "audio_id": "f8edaeeb-dfa9-46ae-bcac-d5138048835e",
+    "lego_id": "S0283L02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "e3bf5779-5cc6-4421-9536-aa0fbb7bedb2",
+    "phrase_id": "zho_for_jpn:S0283L02U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "d254947e-f1d1-4cfd-a69f-09907d84efdc",
+    "phrase_id": "zho_for_jpn:S0283L02U01"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+    "phrase_id": "zho_for_jpn:S0283L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+    "phrase_id": "zho_for_jpn:S0283L02U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "6655b3b6-bc8f-42fc-b0ef-c89800ab695c",
+    "phrase_id": "zho_for_jpn:S0283L02U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "d7055d12-2604-4593-8c61-81786816ff47",
+    "phrase_id": "zho_for_jpn:S0283L02U03"
+   }
+  ],
+  "apply": false
+ },
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 20
+   },
+   "before": {
+    "id": "c89b8d85-4bb0-445b-8282-58fa68f5f890",
+    "seed_number": 20,
+    "target_text": "你想快点学他的名字。",
+    "target_text_roman": null,
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": "30cdaf0a-1e39-45e2-82fc-60fdd4405f1f",
+    "target2_audio_id": "1996c1c2-dcc6-4dab-8a46-7409b01b6419"
+   },
+   "after": {
+    "id": "c89b8d85-4bb0-445b-8282-58fa68f5f890",
+    "seed_number": 20,
+    "target_text": "你想快点记住他的名字。",
+    "target_text_roman": null,
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0020L03U01"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0020L03U01",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "你想快点学他的名字",
+    "target_text_roman": null,
+    "known_text": "彼の名前を早く覚えたいですね",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": "30cdaf0a-1e39-45e2-82fc-60fdd4405f1f",
+    "target2_audio_id": "1996c1c2-dcc6-4dab-8a46-7409b01b6419",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0020L03U01",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "你想快点记住他的名字",
+    "target_text_roman": null,
+    "known_text": "彼の名前を早く覚えたいですね",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "seed.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 92
+   },
+   "before": {
+    "id": "0700c3db-1662-4716-bb2d-8d991373da81",
+    "seed_number": 92,
+    "target_text": "我想继续做这个一会儿。",
+    "target_text_roman": null,
+    "known_text": "しばらくこれを続けたいです。",
+    "known_audio_id": "f87fbe80-f1f3-4e51-b478-bcaa6d8e1ef7",
+    "target1_audio_id": "38e3a1b1-21e9-4b4b-a6bd-d746b2ea56c1",
+    "target2_audio_id": "84d930a0-5718-4d22-bd94-ffe347ec84e6"
+   },
+   "after": {
+    "id": "0700c3db-1662-4716-bb2d-8d991373da81",
+    "seed_number": 92,
+    "target_text": "我想继续做一会儿这个。",
+    "target_text_roman": null,
+    "known_text": "しばらくこれを続けたいです。",
+    "known_audio_id": "f87fbe80-f1f3-4e51-b478-bcaa6d8e1ef7",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0092L03B03"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0092L03B03",
+    "seed_number": 92,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "做这个一会儿。",
+    "target_text_roman": null,
+    "known_text": "これをしばらくやる。",
+    "known_audio_id": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+    "target1_audio_id": "1fa9f0ac-c0cd-499b-8e60-8ab462fe2d5f",
+    "target2_audio_id": "8e7f1f88-71c6-4990-b7ce-a7c532c1ff26",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0092L03B03",
+    "seed_number": 92,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "做一会儿这个。",
+    "target_text_roman": null,
+    "known_text": "これをしばらくやる。",
+    "known_audio_id": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "seed.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 283
+   },
+   "before": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "known_text": "Chineseを話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说Chinese？",
+    "target_text_roman": null,
+    "known_audio_id": "d24edce0-1fcb-44ab-bc4f-262b158cfccc",
+    "target1_audio_id": "9aa890e1-15a8-4da9-a097-b14fbfc6e4ea",
+    "target2_audio_id": "9c63ff6d-f389-4bda-a24b-96c532c788f0"
+   },
+   "after": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "target_text_roman": null,
+    "known_audio_id": null,
+    "target1_audio_id": "8d7521ab-ce3f-4092-b610-0ee7ceb214da",
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4"
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "lego.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "lego_id": "S0283L02"
+   },
+   "before": {
+    "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": "S0283L02",
+    "target_text": "chinese",
+    "is_new": true,
+    "target_text_roman": null,
+    "known_text": "中国語",
+    "known_audio_id": "9838fb47-c52a-47ff-9002-4b64c0ea1265",
+    "target1_audio_id": "f40ff136-c2c9-4098-99d5-3b4794bc226f",
+    "target2_audio_id": "2558ea90-7e4e-4278-9dd2-913da8818c44",
+    "presentation_audio_id": "b970f5e6-ed3a-475f-9c7b-5a8b45f30a93"
+   },
+   "after": {
+    "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": "S0283L02",
+    "target_text": "中文",
+    "is_new": false,
+    "target_text_roman": null,
+    "known_text": "中国語",
+    "known_audio_id": "9838fb47-c52a-47ff-9002-4b64c0ea1265",
+    "target1_audio_id": "4e7ed282-a584-46ab-9fdd-692fc406a5b4",
+    "target2_audio_id": "a1d0a36a-f14c-4df8-bb85-d81d3ec97de5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U01"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U01",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我想说chinese",
+    "target_text_roman": null,
+    "known_text": "中国語を話したいです",
+    "known_audio_id": "871d0ec0-2201-47be-aa0a-6cfef83a86ec",
+    "target1_audio_id": "cac766f2-36bd-41a8-9388-21aa937b98d7",
+    "target2_audio_id": "288d0db2-c1b8-442f-96cb-61e5d963624b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U01",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我想说中文",
+    "target_text_roman": null,
+    "known_text": "中国語を話したいです",
+    "known_audio_id": "871d0ec0-2201-47be-aa0a-6cfef83a86ec",
+    "target1_audio_id": "d03614e8-5ef9-457d-9c95-7610ce4ae966",
+    "target2_audio_id": "62c6aa1a-5f13-419e-a3dc-0578a30f946d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U02"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U02",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我在学chinese",
+    "target_text_roman": null,
+    "known_text": "中国語を勉強しています",
+    "known_audio_id": "5a1c09c1-43aa-4a17-b98f-171d7fcf93dd",
+    "target1_audio_id": "e9334081-01f9-413d-9f52-988a9b9cbcc3",
+    "target2_audio_id": "18dfcc19-dc2a-4c9a-9276-f6f5abaad3c5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U02",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我在学中文",
+    "target_text_roman": null,
+    "known_text": "中国語を勉強しています",
+    "known_audio_id": "5a1c09c1-43aa-4a17-b98f-171d7fcf93dd",
+    "target1_audio_id": "f383e98a-a595-402a-b4ba-1b9acb4d5538",
+    "target2_audio_id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U03"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我喜欢chinese",
+    "target_text_roman": null,
+    "known_text": "中国語が好きです",
+    "known_audio_id": "60e3b155-3267-4c96-88a1-86c49ed9e5b9",
+    "target1_audio_id": "600a5c3b-1ce8-4784-9895-2db515ff367b",
+    "target2_audio_id": "50957dd8-9026-480e-8da8-064b59a2d840",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "我喜欢中文",
+    "target_text_roman": null,
+    "known_text": "中国語が好きです",
+    "known_audio_id": "60e3b155-3267-4c96-88a1-86c49ed9e5b9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U04"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U04",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "known_text": "中国語を話せますか？",
+    "target_text": "你会说chinese吗？",
+    "known_audio_id": "eb5ddf9e-a2c3-45e2-966e-d5851445cb4d",
+    "target1_audio_id": "35007da4-3ec2-467d-8630-b0799b028078",
+    "target2_audio_id": "60f2fb0d-f56f-403a-8e76-24885a4e2a69",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 20
+   },
+   "before": {
+    "id": "c89b8d85-4bb0-445b-8282-58fa68f5f890",
+    "seed_number": 20,
+    "target1_audio_id": null,
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "target_text": "你想快点记住他的名字。",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "c89b8d85-4bb0-445b-8282-58fa68f5f890",
+    "seed_number": 20,
+    "target1_audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "target_text": "你想快点记住他的名字。",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 20
+   },
+   "before": {
+    "id": "c89b8d85-4bb0-445b-8282-58fa68f5f890",
+    "seed_number": 20,
+    "target2_audio_id": null,
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "target_text": "你想快点记住他的名字。",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63"
+   },
+   "after": {
+    "id": "c89b8d85-4bb0-445b-8282-58fa68f5f890",
+    "seed_number": 20,
+    "target2_audio_id": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+    "known_text": "彼の名前を早く覚えたいですね。",
+    "target_text": "你想快点记住他的名字。",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63"
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0020L03U01"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0020L03U01",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "彼の名前を早く覚えたいですね",
+    "target_text": "你想快点记住他的名字",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0020L03U01",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "target1_audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+    "known_text": "彼の名前を早く覚えたいですね",
+    "target_text": "你想快点记住他的名字",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0020L03U01"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0020L03U01",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "彼の名前を早く覚えたいですね",
+    "target_text": "你想快点记住他的名字",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0020L03U01",
+    "seed_number": 20,
+    "lego_index": 3,
+    "lego_id": null,
+    "target2_audio_id": "bc7c0f1b-74ef-40f0-8088-157365642c7b",
+    "known_text": "彼の名前を早く覚えたいですね",
+    "target_text": "你想快点记住他的名字",
+    "known_audio_id": "271b1401-a09c-4d65-b2bc-e2113c36836a",
+    "target1_audio_id": "30aabed5-b08d-4634-ae54-b4d634a40a63",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 92
+   },
+   "before": {
+    "id": "0700c3db-1662-4716-bb2d-8d991373da81",
+    "seed_number": 92,
+    "target1_audio_id": null,
+    "known_text": "しばらくこれを続けたいです。",
+    "target_text": "我想继续做一会儿这个。",
+    "known_audio_id": "f87fbe80-f1f3-4e51-b478-bcaa6d8e1ef7",
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "0700c3db-1662-4716-bb2d-8d991373da81",
+    "seed_number": 92,
+    "target1_audio_id": "6d4b4f10-a555-4f15-8fe1-f7e3850d383f",
+    "known_text": "しばらくこれを続けたいです。",
+    "target_text": "我想继续做一会儿这个。",
+    "known_audio_id": "f87fbe80-f1f3-4e51-b478-bcaa6d8e1ef7",
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 92
+   },
+   "before": {
+    "id": "0700c3db-1662-4716-bb2d-8d991373da81",
+    "seed_number": 92,
+    "target2_audio_id": null,
+    "known_text": "しばらくこれを続けたいです。",
+    "target_text": "我想继续做一会儿这个。",
+    "known_audio_id": "f87fbe80-f1f3-4e51-b478-bcaa6d8e1ef7",
+    "target1_audio_id": "6d4b4f10-a555-4f15-8fe1-f7e3850d383f"
+   },
+   "after": {
+    "id": "0700c3db-1662-4716-bb2d-8d991373da81",
+    "seed_number": 92,
+    "target2_audio_id": "c44a972f-44e0-4623-8d78-3dabb7ee7b2e",
+    "known_text": "しばらくこれを続けたいです。",
+    "target_text": "我想继续做一会儿这个。",
+    "known_audio_id": "f87fbe80-f1f3-4e51-b478-bcaa6d8e1ef7",
+    "target1_audio_id": "6d4b4f10-a555-4f15-8fe1-f7e3850d383f"
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0092L03B03"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0092L03B03",
+    "seed_number": 92,
+    "lego_index": 3,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "これをしばらくやる。",
+    "target_text": "做一会儿这个。",
+    "known_audio_id": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0092L03B03",
+    "seed_number": 92,
+    "lego_index": 3,
+    "lego_id": null,
+    "target1_audio_id": "06a0aadd-dc89-4cd5-a003-d66f82561cba",
+    "known_text": "これをしばらくやる。",
+    "target_text": "做一会儿这个。",
+    "known_audio_id": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0092L03B03"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0092L03B03",
+    "seed_number": 92,
+    "lego_index": 3,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "これをしばらくやる。",
+    "target_text": "做一会儿这个。",
+    "known_audio_id": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+    "target1_audio_id": "06a0aadd-dc89-4cd5-a003-d66f82561cba",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0092L03B03",
+    "seed_number": 92,
+    "lego_index": 3,
+    "lego_id": null,
+    "target2_audio_id": "27a9022e-c491-4926-98fb-b18dc06332d8",
+    "known_text": "これをしばらくやる。",
+    "target_text": "做一会儿这个。",
+    "known_audio_id": "ee994547-4d2a-494b-a2e1-4d7c41085105",
+    "target1_audio_id": "06a0aadd-dc89-4cd5-a003-d66f82561cba",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 283
+   },
+   "before": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "known_audio_id": null,
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "target1_audio_id": "8d7521ab-ce3f-4092-b610-0ee7ceb214da",
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4"
+   },
+   "after": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "known_audio_id": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "target1_audio_id": "8d7521ab-ce3f-4092-b610-0ee7ceb214da",
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4"
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 283
+   },
+   "before": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "target1_audio_id": "8d7521ab-ce3f-4092-b610-0ee7ceb214da",
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "known_audio_id": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4"
+   },
+   "after": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "target1_audio_id": "1a654aab-afef-47b6-b8a9-3067523b14af",
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "known_audio_id": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4"
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "seed_number": 283
+   },
+   "before": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4",
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "known_audio_id": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+    "target1_audio_id": "1a654aab-afef-47b6-b8a9-3067523b14af"
+   },
+   "after": {
+    "id": "e7f271a3-0816-4f71-affb-6089023e4c0a",
+    "seed_number": 283,
+    "target2_audio_id": "64cf479a-aba0-4495-b808-383b5343e360",
+    "known_text": "中国語を話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说中文？",
+    "known_audio_id": "8a89680c-4aca-412c-b626-daa6ed3c4ffb",
+    "target1_audio_id": "1a654aab-afef-47b6-b8a9-3067523b14af"
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "lego_id": "S0283L02"
+   },
+   "before": {
+    "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": "S0283L02",
+    "target1_audio_id": "4e7ed282-a584-46ab-9fdd-692fc406a5b4",
+    "known_text": "中国語",
+    "target_text": "中文",
+    "known_audio_id": "9838fb47-c52a-47ff-9002-4b64c0ea1265",
+    "target2_audio_id": "a1d0a36a-f14c-4df8-bb85-d81d3ec97de5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": "S0283L02",
+    "target1_audio_id": "e0dbcbc8-008a-4f4d-b9e2-fb350d99606a",
+    "known_text": "中国語",
+    "target_text": "中文",
+    "known_audio_id": "9838fb47-c52a-47ff-9002-4b64c0ea1265",
+    "target2_audio_id": "a1d0a36a-f14c-4df8-bb85-d81d3ec97de5",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "lego_id": "S0283L02"
+   },
+   "before": {
+    "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": "S0283L02",
+    "target2_audio_id": "a1d0a36a-f14c-4df8-bb85-d81d3ec97de5",
+    "known_text": "中国語",
+    "target_text": "中文",
+    "known_audio_id": "9838fb47-c52a-47ff-9002-4b64c0ea1265",
+    "target1_audio_id": "e0dbcbc8-008a-4f4d-b9e2-fb350d99606a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": "S0283L02",
+    "target2_audio_id": "f8edaeeb-dfa9-46ae-bcac-d5138048835e",
+    "known_text": "中国語",
+    "target_text": "中文",
+    "known_audio_id": "9838fb47-c52a-47ff-9002-4b64c0ea1265",
+    "target1_audio_id": "e0dbcbc8-008a-4f4d-b9e2-fb350d99606a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U01"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U01",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "d03614e8-5ef9-457d-9c95-7610ce4ae966",
+    "known_text": "中国語を話したいです",
+    "target_text": "我想说中文",
+    "known_audio_id": "871d0ec0-2201-47be-aa0a-6cfef83a86ec",
+    "target2_audio_id": "62c6aa1a-5f13-419e-a3dc-0578a30f946d",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U01",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "e3bf5779-5cc6-4421-9536-aa0fbb7bedb2",
+    "known_text": "中国語を話したいです",
+    "target_text": "我想说中文",
+    "known_audio_id": "871d0ec0-2201-47be-aa0a-6cfef83a86ec",
+    "target2_audio_id": "62c6aa1a-5f13-419e-a3dc-0578a30f946d",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U01"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U01",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "62c6aa1a-5f13-419e-a3dc-0578a30f946d",
+    "known_text": "中国語を話したいです",
+    "target_text": "我想说中文",
+    "known_audio_id": "871d0ec0-2201-47be-aa0a-6cfef83a86ec",
+    "target1_audio_id": "e3bf5779-5cc6-4421-9536-aa0fbb7bedb2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U01",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "d254947e-f1d1-4cfd-a69f-09907d84efdc",
+    "known_text": "中国語を話したいです",
+    "target_text": "我想说中文",
+    "known_audio_id": "871d0ec0-2201-47be-aa0a-6cfef83a86ec",
+    "target1_audio_id": "e3bf5779-5cc6-4421-9536-aa0fbb7bedb2",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U02"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U02",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "f383e98a-a595-402a-b4ba-1b9acb4d5538",
+    "known_text": "中国語を勉強しています",
+    "target_text": "我在学中文",
+    "known_audio_id": "5a1c09c1-43aa-4a17-b98f-171d7fcf93dd",
+    "target2_audio_id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U02",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+    "known_text": "中国語を勉強しています",
+    "target_text": "我在学中文",
+    "known_audio_id": "5a1c09c1-43aa-4a17-b98f-171d7fcf93dd",
+    "target2_audio_id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U02"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U02",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+    "known_text": "中国語を勉強しています",
+    "target_text": "我在学中文",
+    "known_audio_id": "5a1c09c1-43aa-4a17-b98f-171d7fcf93dd",
+    "target1_audio_id": "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U02",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+    "known_text": "中国語を勉強しています",
+    "target_text": "我在学中文",
+    "known_audio_id": "5a1c09c1-43aa-4a17-b98f-171d7fcf93dd",
+    "target1_audio_id": "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 27,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U03"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "中国語が好きです",
+    "target_text": "我喜欢中文",
+    "known_audio_id": "60e3b155-3267-4c96-88a1-86c49ed9e5b9",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target1_audio_id": "6655b3b6-bc8f-42fc-b0ef-c89800ab695c",
+    "known_text": "中国語が好きです",
+    "target_text": "我喜欢中文",
+    "known_audio_id": "60e3b155-3267-4c96-88a1-86c49ed9e5b9",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "audio.link",
+   "key": {
+    "course_code": "zho_for_jpn",
+    "id": "zho_for_jpn:S0283L02U03"
+   },
+   "before": {
+    "id": "zho_for_jpn:S0283L02U03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "中国語が好きです",
+    "target_text": "我喜欢中文",
+    "known_audio_id": "60e3b155-3267-4c96-88a1-86c49ed9e5b9",
+    "target1_audio_id": "6655b3b6-bc8f-42fc-b0ef-c89800ab695c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "zho_for_jpn:S0283L02U03",
+    "seed_number": 283,
+    "lego_index": 2,
+    "lego_id": null,
+    "target2_audio_id": "d7055d12-2604-4593-8c61-81786816ff47",
+    "known_text": "中国語が好きです",
+    "target_text": "我喜欢中文",
+    "known_audio_id": "60e3b155-3267-4c96-88a1-86c49ed9e5b9",
+    "target1_audio_id": "6655b3b6-bc8f-42fc-b0ef-c89800ab695c",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U02",
+   "set": {
+    "target1_audio_id": "f383e98a-a595-402a-b4ba-1b9acb4d5538"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U01",
+   "set": {
+    "target2_audio_id": "62c6aa1a-5f13-419e-a3dc-0578a30f946d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U01",
+   "set": {
+    "target1_audio_id": "d03614e8-5ef9-457d-9c95-7610ce4ae966"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+   "set": {
+    "target2_audio_id": "a1d0a36a-f14c-4df8-bb85-d81d3ec97de5"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+   "set": {
+    "target1_audio_id": "4e7ed282-a584-46ab-9fdd-692fc406a5b4"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 283,
+   "set": {
+    "target2_audio_id": "19d973e7-8c44-4e23-81ba-341cff7e2ee4"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 283,
+   "set": {
+    "target1_audio_id": "8d7521ab-ce3f-4092-b610-0ee7ceb214da"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 283,
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0092L03B03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0092L03B03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 92,
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 92,
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0020L03U01",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0020L03U01",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 20,
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 20,
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "zho_for_jpn:S0283L02U04",
+    "seed_number": 283,
+    "lego_index": 2,
+    "position": 4,
+    "known_text": "中国語を話せますか？",
+    "target_text": "你会说chinese吗？",
+    "word_count": 12,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 6,
+     "format": "build_use",
+     "pipeline": "backfill",
+     "scored_at": "2026-03-20T10:58:53.074Z",
+     "target_score": 6
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-03-20T10:58:53.135Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "eb5ddf9e-a2c3-45e2-966e-d5851445cb4d",
+    "target1_audio_id": "35007da4-3ec2-467d-8630-b0799b028078",
+    "target2_audio_id": "60f2fb0d-f56f-403a-8e76-24885a4e2a69",
+    "qa_checked": null,
+    "target1_duration_ms": 2880,
+    "target2_duration_ms": 2880,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "你",
+      "isGhost": true
+     },
+     {
+      "known": "〜するつもり",
+      "legoId": "S0177L01",
+      "target": "会",
+      "isGhost": false
+     },
+     {
+      "known": "話す",
+      "legoId": "S0001L02",
+      "target": "说",
+      "isGhost": false
+     },
+     {
+      "known": "中国語",
+      "legoId": "S0283L02",
+      "target": "chinese",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "〜か",
+      "legoId": "S0014L02",
+      "target": "吗",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "？",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U03",
+   "set": {
+    "target_text": "我喜欢chinese",
+    "target1_audio_id": "600a5c3b-1ce8-4784-9895-2db515ff367b",
+    "target2_audio_id": "50957dd8-9026-480e-8da8-064b59a2d840"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U02",
+   "set": {
+    "target_text": "我在学chinese",
+    "target1_audio_id": "e9334081-01f9-413d-9f52-988a9b9cbcc3",
+    "target2_audio_id": "18dfcc19-dc2a-4c9a-9276-f6f5abaad3c5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0283L02U01",
+   "set": {
+    "target_text": "我想说chinese",
+    "target1_audio_id": "cac766f2-36bd-41a8-9388-21aa937b98d7",
+    "target2_audio_id": "288d0db2-c1b8-442f-96cb-61e5d963624b"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "10dd282a-b6cd-416d-9a63-f1710600ab58",
+   "set": {
+    "is_new": true,
+    "target_text": "chinese",
+    "target1_audio_id": "f40ff136-c2c9-4098-99d5-3b4794bc226f",
+    "target2_audio_id": "2558ea90-7e4e-4278-9dd2-913da8818c44",
+    "presentation_audio_id": "b970f5e6-ed3a-475f-9c7b-5a8b45f30a93"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 283,
+   "set": {
+    "known_text": "Chineseを話す友だち、誰がいる？",
+    "target_text": "你哪些朋友会说Chinese？",
+    "known_audio_id": "d24edce0-1fcb-44ab-bc4f-262b158cfccc",
+    "target1_audio_id": "9aa890e1-15a8-4da9-a097-b14fbfc6e4ea",
+    "target2_audio_id": "9c63ff6d-f389-4bda-a24b-96c532c788f0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0092L03B03",
+   "set": {
+    "target_text": "做这个一会儿。",
+    "target1_audio_id": "1fa9f0ac-c0cd-499b-8e60-8ab462fe2d5f",
+    "target2_audio_id": "8e7f1f88-71c6-4990-b7ce-a7c532c1ff26"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 92,
+   "set": {
+    "target_text": "我想继续做这个一会儿。",
+    "target1_audio_id": "38e3a1b1-21e9-4b4b-a6bd-d746b2ea56c1",
+    "target2_audio_id": "84d930a0-5718-4d22-bd94-ffe347ec84e6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "zho_for_jpn:S0020L03U01",
+   "set": {
+    "target_text": "你想快点学他的名字",
+    "target1_audio_id": "30cdaf0a-1e39-45e2-82fc-60fdd4405f1f",
+    "target2_audio_id": "1996c1c2-dcc6-4dab-8a46-7409b01b6419"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 20,
+   "set": {
+    "target_text": "你想快点学他的名字。",
+    "target1_audio_id": "30cdaf0a-1e39-45e2-82fc-60fdd4405f1f",
+    "target2_audio_id": "1996c1c2-dcc6-4dab-8a46-7409b01b6419"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

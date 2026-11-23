@@ -1,0 +1,592 @@
+{
+ "known|she said we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "60b0d73b-29a6-4fc8-bd95-87c4d3150309",
+  "charsSpent": 74,
+  "status": 200
+ },
+ "known|he said we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d67bf90a-323b-418a-9a54-eeca39fed4eb",
+  "charsSpent": 73,
+  "status": 200
+ },
+ "known|they said we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "cbc8304c-88c5-4583-bb72-c7b00c2e91e1",
+  "charsSpent": 75,
+  "status": 200
+ },
+ "known|she said we were talking about how it started": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d81a0274-8e4f-4e83-b0be-aeffdc92ba20",
+  "charsSpent": 45,
+  "status": 200
+ },
+ "known|he said we were talking about how it all started": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "bb1d8168-5364-499d-bda2-b26a11ba3578",
+  "charsSpent": 48,
+  "status": 200
+ },
+ "known|they said we were talking about it": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "df6c48fc-6c1a-421b-9016-9b9a701db436",
+  "charsSpent": 34,
+  "status": 200
+ },
+ "known|she said we didn't have anywhere to live at the time": {
+  "ok": true,
+  "source": "library",
+  "audioId": "31893f9d-85b9-42ab-b5bf-e6c954c48780",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|he said we didn't have anywhere to live at the time": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2740129c-e1c2-4b6b-8290-a7b69b1ec571",
+  "charsSpent": 51,
+  "status": 200
+ },
+ "known|she said we would have bought something": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"she said we would have bought something\" is already recorded in eng — 4 clip(s): 0fdbc55c-334c-4d87-bb80-358c897a895e (voice xai_bedd6226, eng_for_ben target1); 45a7aa96-d65f-4a19-8358-7b7a2a6b1314 (voice xai_gfzdpspr5fdp, eng_for_ben target2); 4401cd14-16db-44e0-aed1-b03d76bdf943 (voice xai_bedd6226, eng_for_sin target1); ed5da041-7526-4afc-bb29-c8c35c1f2d4b (voice xai_gfzdpspr5fdp, eng_for_sin target2). Recordings are per language: link an existing clip (POST /api/production/por_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for por_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "0fdbc55c-334c-4d87-bb80-358c897a895e",
+   "45a7aa96-d65f-4a19-8358-7b7a2a6b1314",
+   "4401cd14-16db-44e0-aed1-b03d76bdf943",
+   "ed5da041-7526-4afc-bb29-c8c35c1f2d4b",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "0fdbc55c-334c-4d87-bb80-358c897a895e",
+   "45a7aa96-d65f-4a19-8358-7b7a2a6b1314",
+   "4401cd14-16db-44e0-aed1-b03d76bdf943",
+   "ed5da041-7526-4afc-bb29-c8c35c1f2d4b"
+  ]
+ },
+ "known|he said we would have bought something": {
+  "ok": false,
+  "code": "EXISTS_IN_LANGUAGE",
+  "error": "\"he said we would have bought something\" is already recorded in eng — 2 clip(s): bf8fafff-b596-40b4-bdab-14f3129b3c29 (voice xai_bedd6226, eng_for_sin target1); f05746cc-2681-437e-a498-308a4d822957 (voice xai_gfzdpspr5fdp, eng_for_sin target2). Recordings are per language: link an existing clip (POST /api/production/por_for_eng/link-clip), or take the voice question to a person. A second performance in cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9 needs a re-record grant for por_for_eng known (Tom's tts_rerecord_permissions row, or Kai's approval token sent from a Kai-seat conversation with its x-cs-conv header) — do not retry or route around this.",
+  "status": 409,
+  "existing": [
+   "bf8fafff-b596-40b4-bdab-14f3129b3c29",
+   "f05746cc-2681-437e-a498-308a4d822957",
+   "d293d509-eb96-4df4-8cfd-80a693aa49a9",
+   "bf8fafff-b596-40b4-bdab-14f3129b3c29",
+   "f05746cc-2681-437e-a498-308a4d822957"
+  ]
+ },
+ "known|they said we would have bought something": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "4a157887-a62c-4f5d-b4b9-4e2b97ba258b",
+  "charsSpent": 40,
+  "status": 200
+ },
+ "known|she said it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "library",
+  "audioId": "b614d3df-3b9d-4706-9305-9102a3700d1b",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|he said it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "1d5e78fd-b0b5-4a61-b433-dca06c486850",
+  "charsSpent": 58,
+  "status": 200
+ },
+ "known|they said it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "589a54ea-8165-41e8-9513-e6e0901ad990",
+  "charsSpent": 60,
+  "status": 200
+ },
+ "known|she said it's near where your family live": {
+  "ok": true,
+  "source": "library",
+  "audioId": "9a88039e-4752-4e9e-982b-1a9ec4c52874",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|he said it's near where your family live": {
+  "ok": true,
+  "source": "library",
+  "audioId": "7c9dfbbb-3789-470b-9fe0-df3d332915d5",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "known|they said it's near where your family live": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "901f85ea-af8d-45f5-9d4c-84d08ad90f79",
+  "charsSpent": 42,
+  "status": 200
+ },
+ "known|she said today we've often wanted to take the children somewhere a little warmer": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "303f0a84-c559-4fe4-be6b-8123304be35f",
+  "charsSpent": 80,
+  "status": 200
+ },
+ "target1|ela disse hoje que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f0a970ab-8645-461d-9e16-bb925a3a1b85",
+  "charsSpent": 94,
+  "status": 200
+ },
+ "target2|ela disse hoje que nós muitas vezes quisemos levar as crianças a um sítio um pouco mais quente": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "90e7f70c-9c5e-4196-8d68-4a398dfb7a27",
+  "charsSpent": 94,
+  "status": 200
+ },
+ "known|she said today we were talking about how it started": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "74bd3f13-35d0-407d-b089-338b9af93e87",
+  "charsSpent": 51,
+  "status": 200
+ },
+ "target1|ela disse hoje que estávamos a falar sobre como começou": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "89d12059-bba2-4c0c-b27d-e97157937384",
+  "charsSpent": 55,
+  "status": 200
+ },
+ "target2|ela disse hoje que estávamos a falar sobre como começou": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "4df58c77-1f75-41fc-8862-646df0329306",
+  "charsSpent": 55,
+  "status": 200
+ },
+ "known|they said we didn't have anywhere to live": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7c626126-cf8f-4514-9342-2786f53c9016",
+  "charsSpent": 41,
+  "status": 200
+ },
+ "target1|disseram que nós não tínhamos onde viver": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "15103cd6-b5af-436f-92ec-7cde0d8b0414",
+  "charsSpent": 40,
+  "status": 200
+ },
+ "target2|disseram que nós não tínhamos onde viver": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b4992866-3871-42d4-b6f3-085e06ec0ae5",
+  "charsSpent": 40,
+  "status": 200
+ },
+ "known|she said yesterday we didn't have anywhere to live at the time": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "40caf118-4c21-42a6-96b9-1cb86a37caca",
+  "charsSpent": 62,
+  "status": 200
+ },
+ "target1|ela disse ontem que nós não tínhamos onde viver na altura": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8318ad04-6000-4be1-8ec9-be815024941f",
+  "charsSpent": 57,
+  "status": 200
+ },
+ "target2|ela disse ontem que nós não tínhamos onde viver na altura": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c02721bb-93a6-4d6e-909a-8e103b745eaa",
+  "charsSpent": 57,
+  "status": 200
+ },
+ "known|she said that because we needed help": {
+  "ok": true,
+  "source": "library",
+  "audioId": "7ca20768-3caf-4486-acd2-22efebf65559",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|ela disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "48c95c4a-1213-4fd2-88dd-084edee0dd47",
+  "charsSpent": 47,
+  "status": 200
+ },
+ "target2|ela disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "e58313e9-1897-446b-9386-8bd1712dae90",
+  "charsSpent": 47,
+  "status": 200
+ },
+ "known|he said that because we needed help": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a3c26a8a-325f-4ce7-a7d8-75e3e5d2b035",
+  "charsSpent": 35,
+  "status": 200
+ },
+ "target1|ele disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a82a6476-4fc8-4ed7-b7b4-9059fb610049",
+  "charsSpent": 47,
+  "status": 200
+ },
+ "target2|ele disse isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "4349c5e5-f9f6-4010-be31-1858f7ff840b",
+  "charsSpent": 47,
+  "status": 200
+ },
+ "known|they said that because we needed help": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6061e02c-266f-4f8d-bef8-c4a2c83f181d",
+  "charsSpent": 37,
+  "status": 200
+ },
+ "target1|disseram isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c236d453-16a3-4c01-b949-e74edd4f13cb",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "target2|disseram isso porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "1bc12a67-000b-46cd-a28a-3fb6ee46fa0a",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "known|she said that yesterday because we needed help": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "5d0cb8a9-ebdc-4ac0-9f65-9422448071b0",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "target1|ela disse isso ontem porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a509bcff-9e49-4fac-b0f6-d00c57fcf286",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "target2|ela disse isso ontem porque nós precisávamos de ajuda": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "fb6ecf05-f0e0-4618-ae8b-6fbf1a49bc08",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "known|she said yesterday we would have bought something": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "379f2a62-8c14-456a-97ce-fd257a0bb8c4",
+  "charsSpent": 49,
+  "status": 200
+ },
+ "target1|ela disse ontem que nós teríamos comprado algo": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f20da29c-79f9-413a-abff-df0a16ae00fc",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "target2|ela disse ontem que nós teríamos comprado algo": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "424c7a5e-93b0-4585-9bc0-453ad1519d80",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "known|she said today it's a very long time since we last saw each other": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "085dfc85-6268-4a30-924c-3483f98ddfc9",
+  "charsSpent": 65,
+  "status": 200
+ },
+ "target1|ela disse hoje que já passou muito tempo desde a última vez que nos vimos": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2e6a5a37-ad11-41c8-8a77-09dd03c91471",
+  "charsSpent": 73,
+  "status": 200
+ },
+ "target2|ela disse hoje que já passou muito tempo desde a última vez que nos vimos": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c5cf9813-04cb-4dff-9341-cb3f167a5dc7",
+  "charsSpent": 73,
+  "status": 200
+ },
+ "known|she said today it's near where your family live": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "1d96f732-7f9b-48e4-9b26-34a02b8dbbc5",
+  "charsSpent": 47,
+  "status": 200
+ },
+ "target1|ela disse hoje que é perto de onde a tua família vive": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "4fc237e8-b53c-4057-8f39-42d2054fbde8",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "target2|ela disse hoje que é perto de onde a tua família vive": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6d1d8f41-94a4-4680-9a06-f923bb717e8d",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "known|she said you're willing to pay for your ticket": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "188cdb46-a111-4eac-a646-336b93afba1f",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "target1|ela disse que estás disposto a pagar pelo teu bilhete": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d655f50c-f2f6-4959-ae68-91fa576e8102",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "target2|ela disse que estás disposto a pagar pelo teu bilhete": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "a296452e-1bee-4eaf-9e03-a7005bf6662e",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "known|she wants to know if you've forgotten what happened the last time they visited us": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "d983c54b-38c9-4d01-a9a6-a83b20d2eeff",
+  "charsSpent": 81,
+  "status": 200
+ },
+ "target1|ela quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "cbbf0418-9afc-4f40-9188-4d26a0b20a64",
+  "charsSpent": 85,
+  "status": 200
+ },
+ "target2|ela quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "003b2a5b-4b85-48e2-b158-66774ca0ecb0",
+  "charsSpent": 85,
+  "status": 200
+ },
+ "known|he wants to know if you've forgotten what happened the last time they visited us": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "db5b875d-4e52-45a9-ac09-f8b4b64bdb84",
+  "charsSpent": 80,
+  "status": 200
+ },
+ "target1|ele quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "92e2bddb-793f-4008-9b9e-4aa204a1c23a",
+  "charsSpent": 85,
+  "status": 200
+ },
+ "target2|ele quer saber se te esqueceste do que aconteceu da última vez que eles nos visitaram": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "8a64ae9f-0de6-4dec-8b99-304d1ea5b5e6",
+  "charsSpent": 85,
+  "status": 200
+ },
+ "known|I hope they aren't talking seriously": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "067c3679-8530-486e-b1fa-4719e3bdd57a",
+  "charsSpent": 36,
+  "status": 200
+ },
+ "target1|espero que eles não estejam a falar a sério": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "769e5618-2076-4854-a63b-80defcbea6bc",
+  "charsSpent": 43,
+  "status": 200
+ },
+ "target2|espero que eles não estejam a falar a sério": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "9a199622-94c7-4a2a-8bb1-6481494eb442",
+  "charsSpent": 43,
+  "status": 200
+ },
+ "known|I hope they aren't talking seriously this time": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "ecc367aa-97ce-4449-afb2-c2cce8090c47",
+  "charsSpent": 46,
+  "status": 200
+ },
+ "target1|espero que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "75f2fd34-93fe-4759-9ee0-1fd9ef78bd07",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "target2|espero que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7883d9be-cf74-45de-8871-1ef65469ad9d",
+  "charsSpent": 53,
+  "status": 200
+ },
+ "known|I hope they aren't talking seriously now": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f9b9321e-e687-49cd-83d8-36b914c6b5b4",
+  "charsSpent": 40,
+  "status": 200
+ },
+ "target1|espero que eles não estejam a falar a sério agora": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "624398a2-902b-4eed-abbc-dcb3013744eb",
+  "charsSpent": 49,
+  "status": 200
+ },
+ "target2|espero que eles não estejam a falar a sério agora": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "0add1c6c-719b-4b83-9278-0030d1daa0b3",
+  "charsSpent": 49,
+  "status": 200
+ },
+ "known|the only hope is that they aren't talking seriously this time": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f40a23fc-0156-4694-b2d8-4be5b882916e",
+  "charsSpent": 61,
+  "status": 200
+ },
+ "target1|a única esperança é que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f72859fa-3982-4551-b5b7-70ad5fd49e2b",
+  "charsSpent": 66,
+  "status": 200
+ },
+ "target2|a única esperança é que eles não estejam a falar a sério desta vez": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "6326a3e0-14d5-4266-aace-f260ee96e5ca",
+  "charsSpent": 66,
+  "status": 200
+ },
+ "known|I need several hours": {
+  "ok": true,
+  "source": "library",
+  "audioId": "c9828a08-4fb3-4ea9-8545-1006c0472c15",
+  "charsSpent": 0,
+  "status": 200
+ },
+ "target1|preciso de várias horas": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "b7443416-65c3-4edb-8a4f-7497bedf2f9a",
+  "charsSpent": 23,
+  "status": 200
+ },
+ "target2|preciso de várias horas": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2a12b24d-5d49-40d8-a61b-44e9cbaaa46d",
+  "charsSpent": 23,
+  "status": 200
+ },
+ "known|we have to wait several hours": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "02a0128a-cece-4ed0-a0cc-1ae305578559",
+  "charsSpent": 29,
+  "status": 200
+ },
+ "target1|temos de esperar várias horas": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "76f8c008-bc3f-469a-988a-b30ed2280521",
+  "charsSpent": 29,
+  "status": 200
+ },
+ "target2|temos de esperar várias horas": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "423c1b27-fbb0-4ef7-bbd1-3cde473f92da",
+  "charsSpent": 29,
+  "status": 200
+ },
+ "known|still didn't say what they wanted": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "f3184c2c-0a09-4f93-946c-33f743fb3d3a",
+  "charsSpent": 33,
+  "status": 200
+ },
+ "target1|ainda não disseram o que queriam": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "7f648577-bdc5-4183-a7b5-bb031a29d832",
+  "charsSpent": 32,
+  "status": 200
+ },
+ "target2|ainda não disseram o que queriam": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "0cf98fd8-d00a-4a3a-a8b1-a2c3203ea3e7",
+  "charsSpent": 32,
+  "status": 200
+ },
+ "target1|estou entusiasmado por ver-te": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "c1951d24-4d30-4080-988a-6f65a81c154e",
+  "charsSpent": 29,
+  "status": 200
+ },
+ "target2|estou entusiasmado por ver-te": {
+  "ok": true,
+  "source": "rendered",
+  "audioId": "2f51dc76-d855-4db6-ba1c-5c5ab5f0f4e1",
+  "charsSpent": 29,
+  "status": 200
+ }
+}

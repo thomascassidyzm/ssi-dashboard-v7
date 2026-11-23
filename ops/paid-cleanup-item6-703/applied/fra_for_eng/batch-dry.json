@@ -1,0 +1,1383 @@
+{
+ "status": 200,
+ "request": {
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0318L01U02",
+    "set": {
+     "known_text": "I don't think she could come",
+     "target_text": "je ne pense pas qu'elle pourrait venir",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't think it's true",
+     "target_text": "je ne pense pas que c'est vrai"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0318L01U03",
+    "set": {
+     "known_text": "I don't think she could stay",
+     "target_text": "je ne pense pas qu'elle pourrait rester",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't think it's the same thing",
+     "target_text": "je ne pense pas que c'est la même chose"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0318L01U04",
+    "set": {
+     "known_text": "I don't think she could help",
+     "target_text": "je ne pense pas qu'elle pourrait aider",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't think it's useful",
+     "target_text": "je ne pense pas que c'est utile"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0318L01U05",
+    "set": {
+     "known_text": "I don't think she could do it",
+     "target_text": "je ne pense pas qu'elle pourrait le faire",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't think it's a good idea",
+     "target_text": "je ne pense pas que c'est une bonne idée"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0318L01U06",
+    "set": {
+     "known_text": "I don't think she could wait",
+     "target_text": "je ne pense pas qu'elle pourrait attendre",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "I don't think it's better",
+     "target_text": "je ne pense pas que c'est mieux"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0469L01B02",
+    "set": {
+     "known_text": "that doesn't really mean much",
+     "target_text": "ça ne veut pas dire grand-chose",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "that doesn't mean anything",
+     "target_text": "ça ne veut pas dire grand chose"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "fra_for_eng:S0555L04B02",
+    "set": {
+     "target_text": "et je suis trop fatigué pour faire grand-chose",
+     "target_text_roman": null
+    },
+    "expect": {
+     "known_text": "and I'm too tired to do much",
+     "target_text": "et je suis trop fatigué pour faire grand chose"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "fra_for_eng:S0413L01B03",
+    "expect": {
+     "known_text": "no we could",
+     "target_text": "non nous pourrions"
+    }
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "phrase_id": "fra_for_eng:S0318L01U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "cb148131-9185-4eb4-94a4-005644e98941",
+    "phrase_id": "fra_for_eng:S0318L01U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "915250ff-df43-4945-bf17-847ac7f23acf",
+    "phrase_id": "fra_for_eng:S0318L01U02"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "phrase_id": "fra_for_eng:S0318L01U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "dee6933f-082f-4db1-a345-82308894d8ce",
+    "phrase_id": "fra_for_eng:S0318L01U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "32b326eb-506c-4b61-8771-98a3797e09a5",
+    "phrase_id": "fra_for_eng:S0318L01U03"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "phrase_id": "fra_for_eng:S0318L01U04"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "fd3a32dd-2971-428f-9a23-df4005be793e",
+    "phrase_id": "fra_for_eng:S0318L01U04"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "7d01a5e9-90c4-4efa-a2b2-58e689a09120",
+    "phrase_id": "fra_for_eng:S0318L01U04"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "2005efbc-d043-4831-8fff-f9aa4463e989",
+    "phrase_id": "fra_for_eng:S0318L01U05"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "9e6d7a1d-732c-49f4-8866-19fa89492f4e",
+    "phrase_id": "fra_for_eng:S0318L01U05"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "a8128496-a7aa-4b63-8ab4-bb7e564f1d66",
+    "phrase_id": "fra_for_eng:S0318L01U05"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "known",
+    "audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "phrase_id": "fra_for_eng:S0318L01U06"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target1",
+    "audio_id": "695832b4-02a0-41cf-b7dc-8195d4e59467",
+    "phrase_id": "fra_for_eng:S0318L01U06"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "slot": "target2",
+    "audio_id": "9dcf1cf5-b1ea-4a05-8272-a64923ae0a5a",
+    "phrase_id": "fra_for_eng:S0318L01U06"
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "phrase_id": "fra_for_eng:S0469L01B02",
+    "slot": "target1",
+    "audio_id": "eeedec24-1127-45fc-903f-c7ae623461aa",
+    "allow_text_mismatch": true
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "phrase_id": "fra_for_eng:S0469L01B02",
+    "slot": "target2",
+    "audio_id": "903d76da-e2c3-426b-abfa-58b78727a2b7",
+    "allow_text_mismatch": true
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "phrase_id": "fra_for_eng:S0555L04B02",
+    "slot": "target1",
+    "audio_id": "a1d61dba-71f2-440d-9102-c8ca18796786",
+    "allow_text_mismatch": true
+   },
+   {
+    "op": "audio.link",
+    "target": "phrase",
+    "phrase_id": "fra_for_eng:S0555L04B02",
+    "slot": "target2",
+    "audio_id": "a8c6e907-13cd-40ac-b6b7-b71588e70a51",
+    "allow_text_mismatch": true
+   }
+  ],
+  "apply": false
+ },
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think it's true",
+    "target_text": "je ne pense pas que c'est vrai",
+    "target_text_roman": null,
+    "known_audio_id": "0ea2cde2-f5a2-4ed3-97e5-f460f6dadbe9",
+    "target1_audio_id": "73d52c1e-3547-4306-b7d5-b90948d22a11",
+    "target2_audio_id": "fc9aaf1f-6b21-405b-a796-402db595e1fe",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "target_text_roman": null,
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U03"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think it's the same thing",
+    "target_text": "je ne pense pas que c'est la même chose",
+    "target_text_roman": null,
+    "known_audio_id": "fb2af2de-6e8f-4de4-ba9c-a0593d78a34f",
+    "target1_audio_id": "09bed782-18c3-437a-bf9d-f932f833f52e",
+    "target2_audio_id": "9de6ee48-4d3a-44c8-9511-91152ac038d5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "target_text_roman": null,
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U04"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think it's useful",
+    "target_text": "je ne pense pas que c'est utile",
+    "target_text_roman": null,
+    "known_audio_id": "58b71c7b-7704-4b5a-9ce7-6e413437f027",
+    "target1_audio_id": "c0c50568-13a2-4455-b40d-6b50fb967621",
+    "target2_audio_id": "7e06c86a-1eb9-4bf1-b9a3-4f3114be26af",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "target_text_roman": null,
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U05"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think it's a good idea",
+    "target_text": "je ne pense pas que c'est une bonne idée",
+    "target_text_roman": null,
+    "known_audio_id": "acbdd1a3-c909-4ff4-a373-bf05fcd7383d",
+    "target1_audio_id": "450a1197-ec9f-43e4-8ee3-7de10e489dc4",
+    "target2_audio_id": "728ee365-1733-4070-b5e8-d9330a7edbe6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "target_text_roman": null,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U06"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think it's better",
+    "target_text": "je ne pense pas que c'est mieux",
+    "target_text_roman": null,
+    "known_audio_id": "151a8a97-4fc9-4ff1-a926-026d7e28a87f",
+    "target1_audio_id": "cd63922c-1dc5-4105-9531-da75fe1aa6a9",
+    "target2_audio_id": "7991ba4a-37c2-4a47-bde7-e2463c6d766b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "target_text_roman": null,
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0469L01B02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0469L01B02",
+    "seed_number": 469,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that doesn't mean anything",
+    "target_text": "ça ne veut pas dire grand chose",
+    "target_text_roman": null,
+    "known_audio_id": "4940806d-55e8-4014-ad61-50f8af4f70ca",
+    "target1_audio_id": "eeedec24-1127-45fc-903f-c7ae623461aa",
+    "target2_audio_id": "903d76da-e2c3-426b-abfa-58b78727a2b7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0469L01B02",
+    "seed_number": 469,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "that doesn't really mean much",
+    "target_text": "ça ne veut pas dire grand-chose",
+    "target_text_roman": null,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0555L04B02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0555L04B02",
+    "seed_number": 555,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "et je suis trop fatigué pour faire grand chose",
+    "target_text_roman": null,
+    "known_text": "and I'm too tired to do much",
+    "known_audio_id": "53452003-4aae-478c-9002-52418f539171",
+    "target1_audio_id": "a1d61dba-71f2-440d-9102-c8ca18796786",
+    "target2_audio_id": "a8c6e907-13cd-40ac-b6b7-b71588e70a51",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0555L04B02",
+    "seed_number": 555,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "et je suis trop fatigué pour faire grand-chose",
+    "target_text_roman": null,
+    "known_text": "and I'm too tired to do much",
+    "known_audio_id": "53452003-4aae-478c-9002-52418f539171",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.delete",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0413L01B03"
+   },
+   "before": {
+    "id": "fra_for_eng:S0413L01B03",
+    "seed_number": 413,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "no we could",
+    "target_text": "non nous pourrions",
+    "known_audio_id": "5d1448d0-5843-4ab0-af49-32a3a2664d65",
+    "target1_audio_id": "52517d5b-82c9-4cdf-901c-2d79f4f11430",
+    "target2_audio_id": "412141eb-8450-4217-8d0c-06dcb2dcd876",
+    "presentation_audio_id": null
+   },
+   "after": null,
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 9,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "cb148131-9185-4eb4-94a4-005644e98941",
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "target1_audio_id": "cb148131-9185-4eb4-94a4-005644e98941",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U02",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "915250ff-df43-4945-bf17-847ac7f23acf",
+    "known_text": "I don't think she could come",
+    "target_text": "je ne pense pas qu'elle pourrait venir",
+    "known_audio_id": "97433770-dbd2-4de8-b88b-bad53c30716d",
+    "target1_audio_id": "cb148131-9185-4eb4-94a4-005644e98941",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U03"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 12,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U03"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "dee6933f-082f-4db1-a345-82308894d8ce",
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U03"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "target1_audio_id": "dee6933f-082f-4db1-a345-82308894d8ce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U03",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "32b326eb-506c-4b61-8771-98a3797e09a5",
+    "known_text": "I don't think she could stay",
+    "target_text": "je ne pense pas qu'elle pourrait rester",
+    "known_audio_id": "9e396aeb-8751-4f28-bcdc-6c4c01eaa6e5",
+    "target1_audio_id": "dee6933f-082f-4db1-a345-82308894d8ce",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U04"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 15,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U04"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "fd3a32dd-2971-428f-9a23-df4005be793e",
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U04"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "target1_audio_id": "fd3a32dd-2971-428f-9a23-df4005be793e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U04",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "7d01a5e9-90c4-4efa-a2b2-58e689a09120",
+    "known_text": "I don't think she could help",
+    "target_text": "je ne pense pas qu'elle pourrait aider",
+    "known_audio_id": "7255cffa-cca1-41dd-ae95-6bb6971abde0",
+    "target1_audio_id": "fd3a32dd-2971-428f-9a23-df4005be793e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U05"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": null,
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "2005efbc-d043-4831-8fff-f9aa4463e989",
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U05"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "known_audio_id": "2005efbc-d043-4831-8fff-f9aa4463e989",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "9e6d7a1d-732c-49f4-8866-19fa89492f4e",
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "known_audio_id": "2005efbc-d043-4831-8fff-f9aa4463e989",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U05"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "known_audio_id": "2005efbc-d043-4831-8fff-f9aa4463e989",
+    "target1_audio_id": "9e6d7a1d-732c-49f4-8866-19fa89492f4e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U05",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "a8128496-a7aa-4b63-8ab4-bb7e564f1d66",
+    "known_text": "I don't think she could do it",
+    "target_text": "je ne pense pas qu'elle pourrait le faire",
+    "known_audio_id": "2005efbc-d043-4831-8fff-f9aa4463e989",
+    "target1_audio_id": "9e6d7a1d-732c-49f4-8866-19fa89492f4e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U06"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": false
+  },
+  {
+   "index": 21,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U06"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "695832b4-02a0-41cf-b7dc-8195d4e59467",
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0318L01U06"
+   },
+   "before": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "target1_audio_id": "695832b4-02a0-41cf-b7dc-8195d4e59467",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0318L01U06",
+    "seed_number": 318,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "9dcf1cf5-b1ea-4a05-8272-a64923ae0a5a",
+    "known_text": "I don't think she could wait",
+    "target_text": "je ne pense pas qu'elle pourrait attendre",
+    "known_audio_id": "17dadacd-4573-4b12-b2d6-579124c98f3f",
+    "target1_audio_id": "695832b4-02a0-41cf-b7dc-8195d4e59467",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0469L01B02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0469L01B02",
+    "seed_number": 469,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "that doesn't really mean much",
+    "target_text": "ça ne veut pas dire grand-chose",
+    "known_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0469L01B02",
+    "seed_number": 469,
+    "lego_index": 1,
+    "lego_id": null,
+    "target1_audio_id": "eeedec24-1127-45fc-903f-c7ae623461aa",
+    "known_text": "that doesn't really mean much",
+    "target_text": "ça ne veut pas dire grand-chose",
+    "known_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0469L01B02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0469L01B02",
+    "seed_number": 469,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "that doesn't really mean much",
+    "target_text": "ça ne veut pas dire grand-chose",
+    "known_audio_id": null,
+    "target1_audio_id": "eeedec24-1127-45fc-903f-c7ae623461aa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0469L01B02",
+    "seed_number": 469,
+    "lego_index": 1,
+    "lego_id": null,
+    "target2_audio_id": "903d76da-e2c3-426b-abfa-58b78727a2b7",
+    "known_text": "that doesn't really mean much",
+    "target_text": "ça ne veut pas dire grand-chose",
+    "known_audio_id": null,
+    "target1_audio_id": "eeedec24-1127-45fc-903f-c7ae623461aa",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0555L04B02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0555L04B02",
+    "seed_number": 555,
+    "lego_index": 4,
+    "lego_id": null,
+    "target1_audio_id": null,
+    "known_text": "and I'm too tired to do much",
+    "target_text": "et je suis trop fatigué pour faire grand-chose",
+    "known_audio_id": "53452003-4aae-478c-9002-52418f539171",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0555L04B02",
+    "seed_number": 555,
+    "lego_index": 4,
+    "lego_id": null,
+    "target1_audio_id": "a1d61dba-71f2-440d-9102-c8ca18796786",
+    "known_text": "and I'm too tired to do much",
+    "target_text": "et je suis trop fatigué pour faire grand-chose",
+    "known_audio_id": "53452003-4aae-478c-9002-52418f539171",
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "audio.link",
+   "key": {
+    "course_code": "fra_for_eng",
+    "id": "fra_for_eng:S0555L04B02"
+   },
+   "before": {
+    "id": "fra_for_eng:S0555L04B02",
+    "seed_number": 555,
+    "lego_index": 4,
+    "lego_id": null,
+    "target2_audio_id": null,
+    "known_text": "and I'm too tired to do much",
+    "target_text": "et je suis trop fatigué pour faire grand-chose",
+    "known_audio_id": "53452003-4aae-478c-9002-52418f539171",
+    "target1_audio_id": "a1d61dba-71f2-440d-9102-c8ca18796786",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "fra_for_eng:S0555L04B02",
+    "seed_number": 555,
+    "lego_index": 4,
+    "lego_id": null,
+    "target2_audio_id": "a8c6e907-13cd-40ac-b6b7-b71588e70a51",
+    "known_text": "and I'm too tired to do much",
+    "target_text": "et je suis trop fatigué pour faire grand-chose",
+    "known_audio_id": "53452003-4aae-478c-9002-52418f539171",
+    "target1_audio_id": "a1d61dba-71f2-440d-9102-c8ca18796786",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0555L04B02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0555L04B02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0469L01B02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0469L01B02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U06",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U06",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U05",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U05",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U05",
+   "set": {
+    "known_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U04",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U04",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U03",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U03",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U02",
+   "set": {
+    "target2_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U02",
+   "set": {
+    "target1_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fra_for_eng:S0413L01B03",
+    "seed_number": 413,
+    "lego_index": 1,
+    "position": 3,
+    "known_text": "no we could",
+    "target_text": "non nous pourrions",
+    "word_count": 18,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-05-23T01:12:02.769Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "5d1448d0-5843-4ab0-af49-32a3a2664d65",
+    "target1_audio_id": "52517d5b-82c9-4cdf-901c-2d79f4f11430",
+    "target2_audio_id": "412141eb-8450-4217-8d0c-06dcb2dcd876",
+    "qa_checked": null,
+    "target1_duration_ms": 1200,
+    "target2_duration_ms": 1200,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": [
+     {
+      "known": "no",
+      "legoId": "S0096L01",
+      "target": "non",
+      "isGhost": false
+     },
+     {
+      "known": "we could",
+      "legoId": "S0413L01",
+      "target": " nous pourrions",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "decomposition_course_version": 2321,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": 8
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0555L04B02",
+   "set": {
+    "target_text": "et je suis trop fatigué pour faire grand chose",
+    "target1_audio_id": "a1d61dba-71f2-440d-9102-c8ca18796786",
+    "target2_audio_id": "a8c6e907-13cd-40ac-b6b7-b71588e70a51"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0469L01B02",
+   "set": {
+    "known_text": "that doesn't mean anything",
+    "target_text": "ça ne veut pas dire grand chose",
+    "known_audio_id": "4940806d-55e8-4014-ad61-50f8af4f70ca",
+    "target1_audio_id": "eeedec24-1127-45fc-903f-c7ae623461aa",
+    "target2_audio_id": "903d76da-e2c3-426b-abfa-58b78727a2b7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U06",
+   "set": {
+    "known_text": "I don't think it's better",
+    "target_text": "je ne pense pas que c'est mieux",
+    "known_audio_id": "151a8a97-4fc9-4ff1-a926-026d7e28a87f",
+    "target1_audio_id": "cd63922c-1dc5-4105-9531-da75fe1aa6a9",
+    "target2_audio_id": "7991ba4a-37c2-4a47-bde7-e2463c6d766b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U05",
+   "set": {
+    "known_text": "I don't think it's a good idea",
+    "target_text": "je ne pense pas que c'est une bonne idée",
+    "known_audio_id": "acbdd1a3-c909-4ff4-a373-bf05fcd7383d",
+    "target1_audio_id": "450a1197-ec9f-43e4-8ee3-7de10e489dc4",
+    "target2_audio_id": "728ee365-1733-4070-b5e8-d9330a7edbe6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U04",
+   "set": {
+    "known_text": "I don't think it's useful",
+    "target_text": "je ne pense pas que c'est utile",
+    "known_audio_id": "58b71c7b-7704-4b5a-9ce7-6e413437f027",
+    "target1_audio_id": "c0c50568-13a2-4455-b40d-6b50fb967621",
+    "target2_audio_id": "7e06c86a-1eb9-4bf1-b9a3-4f3114be26af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U03",
+   "set": {
+    "known_text": "I don't think it's the same thing",
+    "target_text": "je ne pense pas que c'est la même chose",
+    "known_audio_id": "fb2af2de-6e8f-4de4-ba9c-a0593d78a34f",
+    "target1_audio_id": "09bed782-18c3-437a-bf9d-f932f833f52e",
+    "target2_audio_id": "9de6ee48-4d3a-44c8-9511-91152ac038d5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fra_for_eng:S0318L01U02",
+   "set": {
+    "known_text": "I don't think it's true",
+    "target_text": "je ne pense pas que c'est vrai",
+    "known_audio_id": "0ea2cde2-f5a2-4ed3-97e5-f460f6dadbe9",
+    "target1_audio_id": "73d52c1e-3547-4306-b7d5-b90948d22a11",
+    "target2_audio_id": "fc9aaf1f-6b21-405b-a796-402db595e1fe"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
