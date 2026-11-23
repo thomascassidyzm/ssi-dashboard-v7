@@ -125,6 +125,7 @@ const { isHumanClip } = require('../shared/human-take-guard.cjs')
 const { recordContentEdit } = require('../shared/content-edit-log.cjs')
 const { serviceIdentity } = require('../shared/editor-identity.cjs')
 const podTextSwaps = require('./pod-text-swaps.cjs')
+const wantedPhrases = require('./booth-wanted-phrases.cjs')
 const introSentences = require('./intro-sentence-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
@@ -3539,6 +3540,28 @@ async function podSwapLinesFor(db, recordist) {
 }
 
 /**
+ * THE NAMED LIVE PRACTICE-PHRASE SLOTS on this reader's booth (cs #907, booth-wanted-phrases.cjs): each row read
+ * by primary key, fresh, with the voice of whatever clip its slot holds. Fails as an absence, never as the booth.
+ */
+async function wantedPhraseLinesFor(db, recordist) {
+  const wants = wantedPhrases.wantsForVoice(recordist.spellings || [recordist.voiceId])
+  if (!wants.length) return []
+  try {
+    const { data, error } = await db.from('course_practice_phrases')
+      .select('id, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .in('id', wants.map((w) => w.phraseId))
+    if (error) throw new Error(error.message)
+    const rowsById = new Map((data || []).map((r) => [r.id, r]))
+    const held = wants.map((w) => rowsById.get(w.phraseId) && rowsById.get(w.phraseId)[`${w.role}_audio_id`]).filter(Boolean)
+    const voiceOfClip = held.length ? await clipVoicesById(db, held) : new Map()
+    return wantedPhrases.wantedPhraseLinesFor(recordist, { rowsById, voiceOfClip })
+  } catch (err) {
+    console.warn(`[Recordist] wanted phrase lines unavailable for ${recordist.voiceId}: ${err.message}`)
+    return []
+  }
+}
+
+/**
  * APPLY THE POD SWAPS THIS TAKE FULFILS (job #551). Rows are read FRESH; each pending swap of this voice, side and
  * spoken words is ONE conditional UPDATE — new words and this take together, only while the row still says the old
  * words (pod-text-swaps swapWrite) — so the pod never holds new words without audio. A row that has moved on is left
@@ -3642,7 +3665,9 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   const podSwapLines = await podSwapLinesFor(db, recordist)
   // The Introductions card (job #587, intro-sentence-lines.cjs): every LEGO intro read whole, in course running order.
   const introSentenceLines = introSentences.introSentenceLinesFor(recordist, await fetchIntroSentenceInputs(db, recordist))
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...videoVoiceovers.voiceoverLinesFor(recordist), ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
+  // One named live practice-phrase slot a reader is asked for by hand (cs #907, booth-wanted-phrases.cjs).
+  const wantedLines = await wantedPhraseLinesFor(db, recordist)
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...videoVoiceovers.voiceoverLinesFor(recordist), ...wantedLines, ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
