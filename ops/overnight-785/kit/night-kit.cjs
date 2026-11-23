@@ -575,7 +575,11 @@ async function main() {
     const appliedSeeds = new Set(fs.existsSync(path.join(OUT, 'applied-seeds.json')) ? read('applied-seeds.json') : []);
     console.log(`${batches.length} batches, ${batches.reduce((n, b) => n + b.length, 0)} ops`);
     const log = fs.existsSync(path.join(OUT, 'applied.json')) ? read('applied.json') : [];
-    for (let i = 0; i < batches.length; i++) {
+    // SKIP_BATCHES=N: resume after an interrupted apply on the SAME live read + audio-real + precheck (so the packing is
+    // identical); the first N batches already committed (out/applied.json) and are never sent twice
+    const skipN = Number(process.env.SKIP_BATCHES) || 0;
+    if (skipN) console.log(`resume: skipping batches 1-${skipN} (already applied)`);
+    for (let i = skipN; i < batches.length; i++) {
       if (process.env.STOP_AT && Date.now() > Date.parse(process.env.STOP_AT)) { console.log(`STOP_AT ${process.env.STOP_AT} reached: no new batch started (${i}/${batches.length} done)`); process.exitCode = 4; return; }
       const dry = await postSigned(`/api/admin/course-edit/${COURSE}/edit-batch`, { ops: batches[i] });
       if (dry.status !== 200) { console.log(`batch ${i + 1} DRY ${dry.status} ${dry.body.code || ''} ${dry.body.error || ''} op#${dry.body.index}`, JSON.stringify(batches[i][dry.body.index] || {}).slice(0, 300)); process.exitCode = 1; return; }
