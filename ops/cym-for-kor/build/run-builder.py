@@ -144,11 +144,12 @@ def agree(known, target, n=None):
 
 
 # A held LEGO whose ONLY refusal is the comma-tag rule ("na, heno": the LEGO + a short tag after a comma,
-# services/course-builder/lib/validation.cjs classifyBuildPhrase) is settled here instead of waking a person:
-# drop exactly the rows that rule rejects, then move the door's own USE rows that open with the LEGO into
-# BUILD until there are 3, keeping at least 5 USE. Nothing is written by hand; /api/seed/complete still
-# validates the whole seed, and a refusal there stops the run as before. Seeds 96 and 173 were settled by
-# committed overrides before this existed (overrides/).
+# services/course-builder/lib/validation.cjs classifyBuildPhrase) loses exactly the rows that rule rejects.
+# The rule stays a hard rejection (Kai, 23 Nov: "We definitely don't want tags"). If 3 BUILD rows are left the
+# seed goes on; otherwise the seed is HELD (run stops, a person writes new BUILD rows in overrides/).
+# NEVER top BUILD up from USE: canon P18 (HARD, Kai 2026-08-28) — "we don't move phrases from use to build
+# just to have build phrases". A '<LEGO>, <clause of taught LEGOs>' row is the seed's own shape for an
+# interjection LEGO (na / dim diolch / byddwn) and is recombination (P3, P19), not a tag.
 TAG_RE = re.compile(r',\s*¿?[^,]{1,18}$')
 
 
@@ -168,14 +169,9 @@ def settle_comma_tag(r, lego):
     dropped = len(r.get('build') or []) - len(build)
     if not dropped:
         return None
-    for p in list(use):
-        if len(build) >= 3 or len(use) <= 5:
-            break
-        if norm(p['target']).startswith(norm(lego['cy']) + ',') and not comma_tag(p['target'], lego['cy']) and '?' not in p['target']:
-            use.remove(p); build.append(p)
     if len(build) < 3:
         return None
-    return {'ok': True, 'build': build, 'use': use, 'settled': {'dropped': dropped, 'moved_from_use': len(build) - (len(r.get('build') or []) - dropped)}}
+    return {'ok': True, 'build': build, 'use': use, 'settled': {'dropped': dropped}}
 
 
 def line(p, n=None):
