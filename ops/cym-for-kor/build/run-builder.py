@@ -130,6 +130,7 @@ def main():
     for n in range(lo, hi + 1):
         if stop_at and datetime.datetime.utcnow() >= stop_at:
             log({'stop': 'time', 'next_seed': n}); return 3
+        plan = load_plan()  # re-read every seed: planners keep pushing fixes while the build runs
         _, st = http('GET', f'{CB}/stats/{COURSE}')
         if n <= (st.get('seeds_with_legos') or 0):  # built in order, so a contiguous prefix is done
             continue
