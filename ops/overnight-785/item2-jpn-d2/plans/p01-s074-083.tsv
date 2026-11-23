@@ -1,0 +1,77 @@
+# eng_for_jpn seeds 74-83: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 2 flagged rows no longer exist (S0081L01B05, S0083L02U01).
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0074L01U03 use → "I understand what you mean" | was: 私はあなたの言いたいことを理解できます — prompt said "can understand"; English is plain "understand"
+S0074L01U03	あなたの言いたいことを理解しています
+# KEEP S0074L01U05 | 十分な言葉がわかると面白いです。 | it's interesting when you understand enough words — prompt already says "it's interesting when you understand enough words" (false flag)
+# S0074L01U10 use → "I want to understand the answer" | was: 私は答えを理解しようとしていました — prompt was past "was trying to"; English is "want to understand"
+S0074L01U10	答えを理解したいです
+# S0074L01U11 use → "it's important to take time to understand English" | was: 英語を理解するのは時間がかかることが大切です — prompt said "it is important that it takes time"; English is "take time to understand"
+S0074L01U11	英語を理解するのに時間をかけることが大切です
+# S0074L01U13 use → "I want to understand more" | was: 私はもっと理解できるようになりたかったです — prompt was past "wanted to be able to"; English is present "want to"
+S0074L01U13	もっと理解したいです
+# S0074L02B07 build → "thank you very much for helping me" | was: 英語を学ぶのを手伝ってくれてありがとう — prompt added "learning English"; English has no object
+S0074L02B07	手伝ってくれてどうもありがとうございます
+# S0074L02U02 use → "thank you very much for helping me" | was: 英語を学ぶのを手伝ってくれてありがとうございます — prompt added "learning English"; English has no object
+S0074L02U02	手伝ってくれてどうもありがとうございます
+# S0074L02U07 use → "thank you very much for helping me" | was: 手伝ってくれてどうもありがとうございます、今日とても助かりました — prompt added "it helped a lot today"
+S0074L02U07	手伝ってくれてどうもありがとうございます
+# S0074L02U08 use → "thank you very much for helping me" | was: 英語を教えてくれて手伝ってくれてありがとうございます — prompt added "teaching English"
+S0074L02U08	手伝ってくれてどうもありがとうございます
+# S0074L02U13 use → "thank you very much for helping me but I've got more to learn" | was: 手伝ってくれてありがとうございます、でもまだ練習が必要です — prompt said "I still need practice"; English is "I've got more to learn" (seed 73's own Japanese for it)
+S0074L02U13	手伝ってくれてどうもありがとうございます、でももっと学ぶことがあります
+# S0074L02U14 use → "thank you very much for helping me" | was: 今日手伝ってくれてどうもありがとうございます — prompt added "today"
+S0074L02U14	手伝ってくれてどうもありがとうございます
+# S0075L01B05 build → "have you got more to learn in English?" | was: まだ英語で学ぶことがありますか？ — prompt said まだ (still), English says "more"
+S0075L01B05	英語でもっと学ぶことがありますか？
+# S0075L01B06 build → "have you got something?" | was: それがありますか — prompt said それ (that); English is "something"
+S0075L01B06	何かありますか？
+# S0075L01B07 build → "have you got something to say?" | was: あなたは何かありますか — prompt lacked "to say"
+S0075L01B07	何か言うことがありますか？
+# S0075L01U06 use → "have you got more to remember after a week?" | was: 一週間で、まだ覚えることがありますか？ — 一週間で = within a week; English is "after a week", and "more" was missing
+S0075L01U06	一週間後、もっと覚えることがありますか？
+# S0075L01U12 use → "have you got more to learn this week?" | was: 今週、覚えることがありますか？ — prompt said 覚える (remember); English is "learn", and "more" was missing
+S0075L01U12	今週、もっと学ぶことがありますか？
+# S0076L01B02 build → "I'm happy with how much I've learnt" | was: 学んだことに満足しています — 学んだこと = what I've learnt; English is "how much"
+S0076L01B02	どれだけ学んだかに満足しています
+# KEEP S0076L02B01 | 学んだことに | how much I've learnt — bare LEGO row: its prompt is the LEGO's own known text (学んだことに); fixing it is a LEGO re-gloss (O2/O13, presentation clip) — outside a row pass
+# KEEP S0076L02B02 | どれだけ学んだかを説明する | to explain how much I've learnt — prompt already says どれだけ学んだか (false flag)
+# S0076L02B03 build → "I'm happy with how much I've learnt already" | was: すでに学んだことに満足しています — 学んだこと = what I've learnt; English is "how much … already"
+S0076L02B03	どれだけ学んだかに、もう満足しています
+# KEEP S0076L02U01 | 英語でどれだけ学んだかに満足しています | I'm happy with how much I've learnt in English — prompt already says "in English … how much I've learnt" (false flag)
+# KEEP S0076L02U05 | どれだけ学んだか思い出そうとしています | I'm trying to remember how much I've learnt — prompt already says どれだけ学んだか (false flag)
+# S0079L01B01 build → "did you start to learn?" | was: 学び始めました — prompt was a statement; English is a question
+S0079L01B01	学び始めましたか？
+# S0079L01B02 build → "did you start to learn?" | was: 学び始めました — prompt was a statement; English is a question
+S0079L01B02	学び始めましたか？
+# S0079L01U12 use → "did you start to learn to remember his name quickly?" | was: 友達の名前を覚えるために学び始めましたか？ — prompt said "friend's name", lacked "quickly"
+S0079L01U12	彼の名前を早く覚えるために学び始めましたか？
+# S0079L01U15 use → "did you start to learn English this afternoon?" | was: あなたは午後に英語を学び始めましたか？ — prompt lacked "this" (today's) afternoon
+S0079L01U15	今日の午後、英語を学び始めましたか？
+# S0080L01B03 build → "I'm not sure when I'll be ready now" | was: いつ準備ができるかわかりません、今 — English "I'm not sure when I'll be ready now" is not natural English; thin basket over bad phrase
+S0080L01B03	DELETE
+# S0080L01B07 build → "I'm not sure when I'll be ready to help me" | was: あなたを助ける準備がいつできるかわかりません — English "ready to help me" is garbled (I'll be ready to help me)
+S0080L01B07	DELETE
+# S0080L01U09 use → "I'm not sure when I'll be ready, but I'm going to start talking more soon" | was: いつ準備ができるかわかりませんが、すぐに練習を始めます — prompt said "start practising"; English is "start talking more soon" (wording as landed in b4 S0060L03U02)
+S0080L01U09	いつ準備ができるかわかりませんが、もうすぐもっと話し始めるつもりです
+# S0080L01U11 use → "I'm not sure when I'll be ready, but I like feeling as if I'm nearly ready to go" | was: いつ準備ができるかわかりませんが、準備ができた気分になるのは好きです — prompt lacked "nearly ready to go"
+S0080L01U11	いつ準備ができるかわかりませんが、もうすぐ行く準備ができるような気分になるのが好きです
+# S0080L01U14 use → "I'm not sure when I'll be ready, but I'm going to try to explain what I mean" | was: いつ準備ができるかわかりませんが、できるだけ頑張ります — prompt said "I'll do my best"; English is "going to try to explain what I mean"
+S0080L01U14	いつ準備ができるかわかりませんが、言いたいことを説明してみるつもりです
+# S0081L01B04 build → "when you understand?" | was: いつ理解できますか — English "when you understand?" is a broken question
+S0081L01B04	DELETE
+# S0081L01U03 use → "when you understand enough words, it's interesting" | was: 言葉が十分わかるとき、もっと面白くなります — prompt said "more interesting"; English is "it's interesting"
+S0081L01U03	十分な言葉がわかるとき、面白いです
+# S0081L01U12 use → "I'm not sure when I'll be ready to remember the whole sentence" | was: いつ文全体を覚えられるかわかりません — prompt said "able to remember"; English is "ready to remember"
+S0081L01U12	いつ文全体を覚える準備ができるかわかりません
+# S0082L02U05 use → "are you going to wait for me tonight?" | was: 今夜あなたを待つつもりはありますか — prompt said "are YOU going to wait (with me waiting)"; English is "wait for me", question
+S0082L02U05	今夜私を待つつもりですか？
+# S0083L01B06 build → "I agree with you now" | was: 私はあなたに同意します — prompt lacked "now"
+S0083L01B06	今あなたに同意します
+# S0083L01U15 use → "I agree with you. why not?" | was: 完全に同意します。なぜですか？ — prompt said "completely agree"; なぜですか？ is this course's "Why not?" (seed 82)
+S0083L01U15	あなたに同意します。なぜですか？
+# S0083L02U07 use → "did you hear about your friend who wanted to write a letter last week?" | was: あなたの友達について先週書いた手紙のことを知っていますか？ — prompt said "do you know about the letter he wrote"; English is "did you hear about your friend who wanted to write a letter"
+S0083L02U07	先週手紙を書きたかったあなたの友達のことを聞きましたか？
+# S0083L03U04 use → "I agree with what you said. it's a good thing to make mistakes" | was: 間違いについてあなたが言ったことに同意します。間違いをすることが大切です — prompt added "about mistakes" and said "important"; English is "a good thing"
+S0083L03U04	あなたが言ったことに同意します。間違えるのはいいことです
+# KEEP S0083L03U10 | あなたの友達について言ったことに同意します。 | I agree with what you said about your friend — prompt already says "your friend" (あなたの友達; false flag)
+# KEEP S0083L03U15 | あなたが昨日言ったことに同意します。なぜですか？ | I agree with what you said yesterday. why not? — なぜですか？ is this course's "Why not?" (seed 82) — prompt matches
