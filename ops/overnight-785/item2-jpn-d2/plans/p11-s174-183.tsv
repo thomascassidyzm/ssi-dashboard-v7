@@ -27,6 +27,7 @@ S0181L03U01	でも今日は母を医者に連れて行かなければなりま�
 # S0182L02U10 use → "have you seen the young dog today?" | was: 犬を今日見ましたか — prompt lacked "young"
 S0182L02U10	今日その若い犬を見ましたか？
 # KEEP S0182L03B02 | どこかで見ましたか | seen it anywhere? — "seen it anywhere?" — a BUILD fragment; the full-question prompt is the natural cue (false flag)
+# KEEP S0182L03B03 | どこかで見ましたか | seen it anywhere? — "seen it anywhere?" — BUILD fragment (false flag; same as B02)
 # KEEP S0182L03B06 | 鍵をどこかで見ましたか | seen my keys anywhere? — "seen my keys anywhere?" — BUILD fragment (false flag)
 # S0182L03U08 use → "have you seen the young dog anywhere?" | was: 犬をどこかで見ましたか — prompt lacked "young"
 S0182L03U08	その若い犬をどこかで見ましたか？
