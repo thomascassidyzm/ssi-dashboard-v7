@@ -96,7 +96,9 @@ def door(n, idx, l):
 
 
 def line(p):
-    return f"- {p['known']} → {p['target']}"
+    # The phrase door sometimes writes Welsh with a straight apostrophe (dw i'n) while every seed and
+    # LEGO in this course uses ’ (dw i’n). One spelling per word keeps clip matching and dedup honest.
+    return f"- {p['known']} → {p['target'].replace(chr(39), chr(0x2019))}"
 
 
 def markdown(n, seed, legos, sets):
