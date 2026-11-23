@@ -43,6 +43,7 @@ const {
   languageName,
   propagateTakeToDuplicates,
   clearRerecordWants,
+  retireRequeueGrants,
   castEntryFor,
   isTestFixtureCourse,
   parseSeedLineId,
@@ -1152,6 +1153,8 @@ module.exports = function createRecordistRouter({
       // ...and every LEGO / phrase slot of the same spoken words, in any course (job #198: the LEGO
       // of exactly a seed's words was asked for again straight after the seed, 10 times on 27 Oct).
       await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
+      // A re-queued seed/LEGO line (a grant on the clip its slot held, cs #896·AK) is done: retire the grant.
+      await retireRequeueGrants({ db: db(), recordist, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] seed take for ${resolved.seed.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -2034,6 +2037,8 @@ module.exports = function createRecordistRouter({
       }
       // ...and every seed / LEGO slot of the same spoken words (job #198).
       await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
+      // A re-queued seed/LEGO line (a grant on the clip its slot held, cs #896·AK) is done: retire the grant.
+      await retireRequeueGrants({ db: db(), recordist, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] phrase take for ${resolved.phrase.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -2153,6 +2158,8 @@ module.exports = function createRecordistRouter({
       }
       // ...and every seed / phrase slot of the same spoken words (job #198).
       await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
+      // A re-queued seed/LEGO line (a grant on the clip its slot held, cs #896·AK) is done: retire the grant.
+      await retireRequeueGrants({ db: db(), recordist, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] lego take for ${resolved.lego.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
