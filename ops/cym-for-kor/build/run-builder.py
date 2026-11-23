@@ -18,7 +18,7 @@ Writes nothing to the DB except through /api/seed/complete. No audio, ever.
 
 Usage: run-builder.py FROM TO [--stop-at HH:MM]   (stop-at = UTC wall-clock; stops at a seed boundary)
 """
-import json, sys, time, pathlib, datetime, urllib.request, urllib.error
+import json, re, sys, time, pathlib, datetime, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor
 
 COURSE = 'cym_for_kor'
@@ -95,10 +95,31 @@ def door(n, idx, l):
     return r
 
 
-def line(p):
+# A 너 prompt takes the plain 반말 ending: 너는 배우고 싶어, never 싶어해 — the -어하다 form reports someone
+# ELSE's wish (그는 … 싶어해). The phrase door carries 싶어해 over from an -어하다 gloss (S0016L02 "~고
+# 싶어하다"), so the builder puts it right before it submits (Kai's settled ruling, 24 Nov), and logs each.
+YOU_FIRST = re.compile(r'^(?:\S+\s+)*?(너는|너도|너|네가)\s')
+OTHER_SUBJ = re.compile(r'(나는|내가|그는|그가|그녀는|그녀가|그들은|그들이|우리는|우리가)\s')
+WELSH_3P = re.compile(r"\b(mae|oedd|dydy|doedd|ydy|fydd|fasai|wnaeth|ydyn|dydyn|maen|oeddan) (o|hi|nhw)\b")
+AGREE = [('싶어해', '싶어'), ('싶어했', '싶었'), ('싶어하지', '싶지')]
+
+
+def agree(known, target, n=None):
+    m = YOU_FIRST.match(known)
+    if not m or OTHER_SUBJ.search(known[:m.start(1)]) or WELSH_3P.search(target):
+        return known
+    fixed = known
+    for a, b in AGREE:
+        fixed = fixed.replace(a, b)
+    if fixed != known:
+        log({'seed': n, 'agreement_fix': known, 'now': fixed, 'target': target})
+    return fixed
+
+
+def line(p, n=None):
     # The phrase door sometimes writes Welsh with a straight apostrophe (dw i'n) while every seed and
     # LEGO in this course uses ’ (dw i’n). One spelling per word keeps clip matching and dedup honest.
-    return f"- {p['known']} → {p['target'].replace(chr(39), chr(0x2019))}"
+    return f"- {agree(p['known'], p['target'], n)} → {p['target'].replace(chr(39), chr(0x2019))}"
 
 
 def markdown(n, seed, legos, sets):
@@ -110,10 +131,10 @@ def markdown(n, seed, legos, sets):
         s = sets.get(i)
         out.append('BUILD:')
         if s:
-            out += [line(p) for p in s.get('build', [])]
+            out += [line(p, n) for p in s.get('build', [])]
         out.append('USE:')
         if s:
-            out += [line(p) + ' [7]' for p in s.get('use', [])]
+            out += [line(p, n) + ' [7]' for p in s.get('use', [])]
         out.append('')
     return '\n'.join(out)
 
