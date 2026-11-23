@@ -95,3 +95,44 @@ Kai ruled on the 11 decisions on 23 Nov. His assistant took items 5, 8 and 9 on 
 **Weave drops.** There is no Popty read route for `course_seed_weave_drops`. The 13 HC drops come from the committed file `tools/course-optimization/weave-cym-nv2-2026-10-07.sql`, as that file's statement, not a live read. They are HC 2, 13, 33, 79, 179, 214, 215, 216, 219, 220, 224, 244 and 329. The later `weave-cym-nv2-keep-ten.sql` restores only old-seed drops (71 → 61), so these 13 still stand per the files. They are marked `weave_dropped: true`, and their Korean is kept. Each was dropped in `cym_nv2_for_eng` because an old seed from 1–137 already covered it. `cym_for_kor` is built on HC alone and has no such old seeds, so whether to drop them here is a LEGO-stage decision.
 
 **LEGO-stage notes** are in each seed's `step2_note`: the TENSE_COLLAPSE intros, the CONTEXT_PAIR notes, plus 133 (dach chi efo'ch gilydd = 너와 누군가가 함께) and 547 (걔).
+
+## Step 3 — proofread (cs #780, 23 Nov)
+
+**No native Korean speaker has read this Korean.** These three checks are machine reads.
+
+**Check 1: diff against eng_for_kor.** Live eng_for_kor known_text was read through `GET :3471/api/seeds/eng_for_kor?limit=1000`. HC seed n lines up with eng_for_kor S0n. 647 of the 668 English glosses are identical once Welsh is swapped for English, and 10 more differ only in a word. The remaining 21 share the slot with different wording: 639–655 are "sir/madam" in eng_for_kor, and 331, 332, 441, 442 and 557 are paraphrases. After register normalisation, 591 of 668 Korean prompts differ, almost all by design: explicit pronouns, siarad = 이야기하다, and the -ㄹ 필요가 있어 and 확실하지 않아 splits. I adopted eng_for_kor wording in 6 seeds: 33, 182, 618, 619, 620, and 414 (저희), whose wording was later replaced by the check-2 version. Full list: `step3/changes-check1.json`.
+
+**Check 2: second opinion.** The cross-family read (sol) was refused three times (#781·AK, #783·AK, #787·AK). The refusal text, verbatim: "sol cannot run now — Codex cloud is spent: weekly allowance used (100%) and credit balance 0 is below one task (~40). A named model is never substituted". That is an explicit gap. In its place a fresh Claude Opus worker, #784·AK, did a **same-family** read and flagged 38 items (25 unnatural, 6 ungrammatical, 0 register, 3 drift, 4 one-answer). I accepted 31 and rejected 4; the other 3 were already fixed by check 1. The rejections:
+- 26: 좋아 would cue da;
+- 20 and 21: 익히다 would give dysgu a second Korean word;
+- 491: 방식 is already dull.
+
+Two of its fixes were changed to avoid clashes:
+- 190, 281, 653 and 667 ("do you mind?") now use 불편해? rather than its suggested 신경 쓰여?, which would clash with malio = 신경 쓰다 in 538;
+- 662 now uses 그걸로 이야기해요 rather than 그 언어를 해요, which would clash with yr iaith in 101.
+
+Details: `step3/second-opinion.json` and `step3/second-opinion-fold.json`.
+
+**Check 3: blind back-translation.** A Sonnet worker, #782·AK, translated the Korean to English without seeing the Welsh or the English glosses (`step3/backtranslation.json`). Two drifts: 182 (fixed in check 1) and 299 (반 → 절반). Its register tags agree with ours except at 414 (우리, fixed). It also showed that the Welsh conditional byddai…tasai, "would … if he could", came back as a plain future. I fixed this in 225 and 229 with -ㄹ 텐데, and in 352, the byddai'n medru form that 310, 412, 413 and 432 already render with 텐데.
+
+**Applied:** 38 seeds changed in step 3. `korean_step2` keeps the previous prompt and `step3_note` cites the source. The Welsh was not touched: all 668 are identical to source-hc-north-668.json.
+
+**Whole-file checks re-run, 0 real problems:**
+- no two Welsh seeds share a Korean prompt;
+- 당신 appears 0 times, and 모두 appears 0 times in plural seeds;
+- every Welsh question is still a question in Korean, and no statement became one;
+- no 해요, 저/제가/저희 in a 반말 seed;
+- every formal seed opens with 실례지만, except the please seeds 414, 624 and 630, which follow their ruling;
+- every plural seed has 여러분 or 너희, except the fragments 656 and 663.
+
+**Welsh audio reuse**, read through `GET :3470/api/production/<course>/seeds?status=all` with one call per course. The Welsh of cym_nv2_for_eng S1001–S1668 is identical to this draft for all 668 seeds.
+- **Seeds:** 641 of 668 have both target voices and 665 have at least one.
+- **LEGOs:** 1,541, every one with both target voices.
+- **Practice phrases:** 10,222. 4,312 have both voices and 8,406 have at least one.
+- **Fully voiced seeds** (seed, every LEGO and every phrase, both voices): 151.
+- The 13 weave-dropped seeds have no LEGOs.
+- cym_n_for_eng adds only 6 more voiced phrase texts.
+
+These counts are audio ids present on the slots, not checks that each clip is alive.
+
+**Build-stage rule (Kai, 23 Nov 11:00Z):** keep the source Welsh phrases and the source LEGO splits. Where the Korean pairing genuinely needs a different split, list each seed with a one-line reason. That list can only be made once the Korean LEGO glosses exist. Start with the 45 CONTEXT_PAIR and 18 ONE_ANSWER seeds.
