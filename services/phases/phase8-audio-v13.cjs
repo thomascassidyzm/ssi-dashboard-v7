@@ -6200,6 +6200,42 @@ app.post('/render', async (req, res) => {
   }
 })
 
+// AN AGREED BATCH (cs #502·AK, r-2026-11-22-once-an-audio-job-is-agreed): one course, one job, up to 200 lines,
+// reserved ONCE and rendered 15 at a time, each line through the same renderClip chain as POST /render
+// (services/shared/audio-render-batch.cjs). Off unless TTS_SPEND_JOB_HOLDS=on (409 JOB_HOLDS_OFF), because its SQL
+// is Tom's to apply. Each line still passes this port's rate cap, so the shared-DB backstop is unchanged.
+const audioRenderBatch = require('../shared/audio-render-batch.cjs')
+app.post('/render-batch', async (req, res) => {
+  try {
+    const who = String(req.get('x-agent-id') || req.get('x-service-name') || (req.body && req.body.requestedBy) || 'anonymous').trim().slice(0, 120)
+    let verifiedApproval = null
+    if (audioRenderBatch.holdsOn() && req.body && req.body.approval) {
+      const v = await approvalOrigin.verifyApprovalOrigin(String(req.body.approval), req.get('x-cs-conv'))
+      logger.info(`[approval-origin] ${v.approver}: approval verified (seat ${v.seat}) who=${who} (render-batch)`)
+      verifiedApproval = String(req.body.approval)
+    }
+    const deps = buildRenderDeps({ verifiedApproval })
+    const out = await audioRenderBatch.renderBatch({ ...(req.body || {}), requestedBy: who }, {
+      guard: require('../shared/tts-spend-guard.cjs').spendGuard(),
+      renderOne: (input) => auditWriteLog.renderWithEditLog({ renderFn: renderClip, input, deps, supabase, logger }),
+      admit: async () => {
+        const cap = phase8RenderRateCap.admit(who, { dryRun: false })
+        if (!cap.ok) { phase8OpsEvent('agent-rate-cap', 'refuse', `phase8 /render-batch ${cap.code} who=${who}`); return cap }
+        if (cap.waitMs > 0) await new Promise(r => setTimeout(r, cap.waitMs))
+        return { ok: true }
+      },
+      logger,
+    })
+    res.json(out)
+  } catch (error) {
+    if (error instanceof audioRenderBatch.BatchError || error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
+    if (error && (error.code === 'RERECORD_NOT_PERMITTED' || error.code === 'APPROVAL_UNVERIFIED')) return res.status(403).json({ ok: false, code: error.code, error: error.message })
+    const refused = /\(402\)/.test(String(error && error.message))
+    logger.error('Render batch error:', error)
+    res.status(refused ? 402 : 500).json({ ok: false, code: (error && error.code) || (refused ? 'REFUSED' : 'RENDER_FAILED'), error: String((error && error.message) || error) })
+  }
+})
+
 // =============================================================================
 // POST REGENERATE-SINGLE - Regenerate a single audio file by UUID
 // =============================================================================

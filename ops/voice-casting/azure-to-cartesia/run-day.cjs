@@ -111,6 +111,27 @@ const LIMIT_TEXT = /quota|credit|insufficient|payment|\b402\b|limit (reached|exc
 const RENDER_TIMEOUT_MS = 120_000
 const LINK_TIMEOUT_MS = 60_000
 
+// --batch-route (cs #516·AK, for Kai's Indic round; OFF by default — the serial loop below stays the default path). Tom 22 Nov
+// (r-2026-11-22-once-an-audio-job-is-agreed): an agreed job need not run one clip at a time, but the concurrency lives INSIDE
+// Popty (POST :3470/api/audio/render-batch, services/shared/audio-render-batch.cjs: one job hold, up to 15 lines at once), never
+// in a home-made parallel loop here. This runner still sends ONE request at a time — now a chunk of up to --batch-size asks of
+// one course — and links each returned clip serially exactly as before. Measured 22 Nov (d/d2979cbb): a known-side ask costs
+// ~4.9 s end to end and nothing in it serialises across requests for long, so the gain is the route's concurrency.
+// Needs --cap (the list cap is then the only own pre-check, which also sidesteps #479's trap: --approver kai without --cap
+// reads the old four-day tally of 1,999,975 and stops at the first ask) and --job "#NNN" (the hold is filed under it).
+// Answers 409 JOB_HOLDS_OFF until Kai switches TTS_SPEND_JOB_HOLDS=on on phase8; that 409, like every refusal, stops the run.
+const BATCH_ROUTE = argv.includes('--batch-route')
+const BATCH_SIZE = Number(opt('--batch-size', 30))
+const BATCH_CONCURRENCY = Number(opt('--batch-concurrency', 15))
+const BATCH_JOB = opt('--job', null)
+// A chunk of 30 at 15 in flight answers in ~10-20 s; 15 min is far past any healthy chunk. A timeout is NEVER re-sent: the
+// lines it carried are not logged, so a later relaunch sends them again and library-first answers any that were stored (free).
+const BATCH_TIMEOUT_MS = 900_000
+if (BATCH_ROUTE && (LIST_CAP == null || !/^#\d+/.test(String(BATCH_JOB || '')) || LIBRARY_ONLY || REQUEUE_TIMEOUTS
+  || !(Number.isInteger(BATCH_SIZE) && BATCH_SIZE >= 1 && BATCH_SIZE <= 200) || !(Number.isInteger(BATCH_CONCURRENCY) && BATCH_CONCURRENCY >= 1 && BATCH_CONCURRENCY <= 15))) {
+  console.error('--batch-route needs --cap CHARS and --job "#NNN"; --batch-size 1-200, --batch-concurrency 1-15; not with --library-only or --requeue-timeouts'); process.exit(1)
+}
+
 if (!process.env.CS_CONV_TOKEN) { console.error('CS_CONV_TOKEN is not set: the approval cannot be verified, refusing to start'); process.exit(1) }
 
 const utcDay = (t) => new Date(t).toISOString().slice(0, 10)
@@ -124,6 +145,13 @@ function allLogged() {
   }
   return rows
 }
+/**
+ * This list's own spend today, for --cap: every logged render's charsSpent, PLUS every batch request that never answered
+ * (timeout, connection lost, a 5xx) at its full size (Fable review #756·AK fix 8). phase8 may have gone on rendering such a
+ * batch after we stopped listening, and none of its lines were logged, so counting them as nothing under-counted the cap by
+ * a chunk per timeout. Over-counting instead is the safe side; Popty's own caps are unaffected either way.
+ */
+const ownSpentToday = () => allLogged().filter((r) => r.day === DAY).reduce((s2, r) => s2 + (r.kind === 'render' ? (Number(r.charsSpent) || 0) : r.kind === 'batch' ? (Number(r.charsAtRisk) || 0) : 0), 0)
 function item9Armed() {
   try { return execFileSync('systemctl', ['--user', 'is-active', 'cs-long-keep-item9-night.timer'], { encoding: 'utf8' }).trim() === 'active' } catch { return false }
 }
@@ -230,6 +258,78 @@ async function linkSlots(idx, ask, audioId) {
     failed: (r.json.results || []).filter((x) => !x.ok).slice(0, 5).map((x) => ({ slot: x.slot, code: x.code, error: String(x.error || '').slice(0, 200) })) }
 }
 
+// THE BATCH PATH (--batch-route). Same list, same resume keys, same ledger rows (kind 'render' / 'link', plus one kind 'batch'
+// row per request), same stop rules: every line's answer goes through stopReason, and the batch's own stoppedBy stops the run.
+// A request that did not run as a batch at all (409 JOB_HOLDS_OFF, a 402/403 at the hold, connection lost, timeout) stops the
+// run and is never re-sent. Lines the batch did not send (NOT_SENT after an in-batch stop) are not logged, so they stay unsent.
+async function runBatched(items, rendered, linkedKey, append) {
+  let sent = 0, stop = null, chunk = [], chunkWant = 0
+  const ownSpent = ownSpentToday
+  async function flush() {
+    const lines = chunk
+    chunk = []; chunkWant = 0
+    if (!lines.length) return null
+    const course = lines[0].ask.course
+    const body = { courseCode: course, job: BATCH_JOB, purpose: PURPOSE, approval: APPROVAL, concurrency: BATCH_CONCURRENCY,
+      items: lines.map(({ ask }) => ({ role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language })) }
+    const r = await post(`${BASE}/api/audio/render-batch`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, BATCH_TIMEOUT_MS)
+    const j = r.json || {}
+    const at = new Date().toISOString()
+    // No per-line answer and not a clean refusal (a refused hold renders nothing): phase8 may still be rendering this batch.
+    const unanswered = !Array.isArray(j.results) && (r.http === 0 || r.http >= 500)
+    append({ kind: 'batch', day: DAY, at, course, lines: lines.length, http: r.http, ok: !!j.ok, stoppedBy: j.stoppedBy || null, ms: j.ms, hold: j.hold,
+      ...(unanswered ? { charsAtRisk: lines.reduce((s2, { ask }) => s2 + Math.ceil((ask.chars || ask.text.length) * 1.25) + 5, 0) } : {}),
+      counts: j.counts, charsSpent: Number(j.charsSpent) || 0, code: j.code, error: Array.isArray(j.results) ? undefined : String(j.error || '').slice(0, 300) })
+    if (!Array.isArray(j.results)) return `batch of ${lines.length} (${course}) answered HTTP ${r.http}: ${j.code || ''} ${String(j.error || '').slice(0, 300)}`
+    let why = null
+    for (let k = 0; k < lines.length; k++) {
+      const { ask, idx, requeue } = lines[k]
+      const x = j.results[k] || { ok: false, status: 500, code: 'NO_RESULT', error: 'the batch answer has no result for this line' }
+      if (x.ok === false && x.code === 'NOT_SENT') continue
+      const http = x.ok === false ? (Number(x.status) || 500) : 200
+      sent++
+      const rec = { kind: 'render', idx, key: askKey(ask), day: DAY, at, course: ask.course, role: ask.role, chars: ask.chars, http,
+        ok: !!x.ok, source: x.source, code: x.code, charsSpent: Number(x.charsSpent) || 0, audioId: x.audioId, voiceId: x.voiceId,
+        error: x.ok ? undefined : String(x.error || '').slice(0, 300), batch: true, hold: j.hold ? j.hold.id : null, ...(requeue ? { requeue: true } : {}) }
+      if (x.ok && x.source === 'rendered' && !(Number(x.charsSpent) > 0)) rec.charsSpent = ask.chars // never under-count a paid render
+      append(rec)
+      const w = stopReason(http, x)
+      if (w && !why) why = `ask ${idx}: ${w}`
+      // a clip that exists is linked even after a stop: it is paid for, and make-before-break needs it in place first
+      if (x.ok && x.audioId) {
+        const l = { ...(await linkSlots(idx, ask, x.audioId)), key: askKey(ask) }
+        append(l)
+        if ((l.http === 401 || l.http === 403) && !why) why = `link-clip refused identity (HTTP ${l.http}): ${l.error}`
+      }
+    }
+    if (j.stoppedBy && !why) why = `batch stopped by ${j.stoppedBy}`
+    console.log(`${at} batch ${course} ${lines.length} lines in ${j.ms} ms: ${JSON.stringify(j.counts || {})}`)
+    return why
+  }
+  for (let idx = 0; idx < items.length; idx++) {
+    const { ask, requeue } = items[idx]
+    const key = askKey(ask)
+    const prior = requeue ? null : rendered.get(key)
+    if (prior) {
+      if (prior.audioId && !linkedKey.has(key)) append({ ...(await linkSlots(idx, ask, prior.audioId)), key })
+      continue
+    }
+    if (sent + chunk.length >= MAX_ASKS) { stop = `--max-asks ${MAX_ASKS} reached`; break }
+    if (Date.now() >= UNTIL) { stop = `until ${new Date(UNTIL).toISOString()} reached`; break }
+    if (chunk.length && (chunk[0].ask.course !== ask.course || chunk.length >= BATCH_SIZE)) {
+      stop = await flush()
+      if (stop) break
+      idx--; continue // re-check this ask against the cap with the chunk's real spend now logged
+    }
+    const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // as the serial path: gender prep can lengthen a line
+    const spent = ownSpent()
+    if (spent + chunkWant + want > LIST_CAP) { stop = `list cap: day ${DAY} spent ${spent} + pending ${chunkWant} + next ask ${want} > ${LIST_CAP}`; break }
+    chunk.push({ ask, idx, requeue }); chunkWant += want
+  }
+  if (chunk.length) { const s2 = await flush(); stop = stop || s2 } // what is pending passed every check before the stop
+  return { stop, sent }
+}
+
 async function main() {
   const fileAsks = fs.readFileSync(BATCH, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
   const asks = ORDER === 'chars-desc'
@@ -255,7 +355,8 @@ async function main() {
   if (REQUEUE_TIMEOUTS) console.log(`--requeue-timeouts: ${timedOut.length} timed-out ask(s), one attempt each`)
   if (requeue.length) console.log(`${requeue.length} pre-rule connection failure(s) re-queued at the end of the list`)
   let timeouts = 0, sent = 0, nextCheckpoint = null, stop = null
-  for (let idx = 0; idx < items.length; idx++) {
+  if (BATCH_ROUTE) ({ stop, sent } = await runBatched(items, rendered, linkedKey, append))
+  for (let idx = 0; !BATCH_ROUTE && idx < items.length; idx++) {
     const ask = items[idx].ask
     const isRequeue = items[idx].requeue
     const key = askKey(ask)
@@ -273,7 +374,7 @@ async function main() {
     if (t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
     const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // gender prep can lengthen a line a little
     if (LIST_CAP != null) {
-      const ownSpent = allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0)
+      const ownSpent = ownSpentToday()
       if (ownSpent + want > LIST_CAP) { stop = `list cap: day ${DAY} spent ${ownSpent} + next ask ${want} > ${LIST_CAP}`; break }
     } else {
     if (t.today + t.reserve + want > DAY_CAP && WAIT_DAY_CAP && t.total + t.reserve + want <= TOTAL_CAP) {
