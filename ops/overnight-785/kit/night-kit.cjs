@@ -399,7 +399,41 @@ const CONV = process.env.CS_CONV_TOKEN ? { 'x-cs-conv': process.env.CS_CONV_TOKE
 
 async function main() {
   const [mode, file] = process.argv.slice(2);
-  if (!mode || !file) throw new Error('usage: plan|dry-text|audio-dry|render|apply|intros|verify <seeds.json>');
+  if (!mode || !file) throw new Error('usage: read|plan|precheck|dry-text|render|apply|intros|verify <seeds.json>');
+  if (mode === 'listen') {
+    // listening page spec (UNHEARD): every clip this item RENDERED (library reuses were already in use), fetched through
+    // Popty's signed-url route into <file> (a directory); then: node ~/command-surface/tools/clip-page.cjs <OUT>/listen-spec.json
+    const dir = file; fs.mkdirSync(dir, { recursive: true });
+    const real = fs.existsSync(path.join(OUT, 'audio-real.json')) ? read('audio-real.json') : [];
+    const intr = fs.existsSync(path.join(OUT, 'intros-real.json')) ? read('intros-real.json') : [];
+    const items = [...real.filter((a) => a.real && a.real.audioId && a.real.source !== 'library').map((a) => ({ id: a.real.audioId, label: `seed ${a.seed} · ${a.role} · ${a.text}` })),
+      ...intr.filter((a) => a.audioId && a.source !== 'library').map((a) => ({ id: a.audioId, label: `${a.legoId} · intro · ${a.text.replace(/<break[^>]*>/g, '').trim()}` }))];
+    const clips = [];
+    for (const it of items) {
+      const f = path.join(dir, `${it.id}.mp3`);
+      if (!fs.existsSync(f)) {
+        const u = await (await fetch(`${POPTY}/api/production/${COURSE}/audio/${it.id}/url`, { headers: { 'x-agent-id': AGENT } })).json();
+        if (!u.url) { console.log('no url for', it.id); continue; }
+        fs.writeFileSync(f, Buffer.from(await (await fetch(u.url)).arrayBuffer()));
+      }
+      clips.push({ label: `${it.label} · ${it.id.slice(0, 8)}`, file: f });
+    }
+    const sp = JSON.parse(fs.existsSync(path.join(ITEM, 'spend.json')) ? fs.readFileSync(path.join(ITEM, 'spend.json'), 'utf8') : '{}');
+    save('listen-spec.json', { title: `${COURSE}: new clips from Kai's overnight run (${D.job}) — UNHEARD`,
+      intro: `Every clip ${D.job} rendered on the night of 23-24 Nov 2026 and linked live. Nobody has heard them yet. Spend: Cartesia ${sp.cartesia || 0}, Azure ${sp.azure || 0} characters.`, clips });
+    console.log(`listen: ${clips.length} clips → ${path.join(OUT, 'listen-spec.json')}`);
+    return;
+  }
+  if (mode === 'read') {
+    // ONE governed whole-course read per item (GET /api/production/:course/seeds, the route #420/#432/#779 read with)
+    await waitGreen('seeds read');
+    const r = await fetch(`${POPTY}/api/production/${COURSE}/seeds`, { headers: { 'x-agent-id': AGENT }, signal: AbortSignal.timeout(300000) });
+    const t = await r.text();
+    if (r.status !== 200) throw new Error(`seeds read ${r.status}: ${t.slice(0, 300)}`);
+    fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, t);
+    const j = JSON.parse(t); console.log(`read ${COURSE}: ${j.seeds.length} seeds → ${file}`);
+    return;
+  }
   const db = load(file);
   const p = mode === 'verify' ? null : plan(db); // verify reads a post-apply dump, where deleted LEGOs are gone
   const confirm = process.env.APPLY_CONFIRM === '1';
@@ -499,6 +533,7 @@ async function main() {
       if (stopAt !== null && a.seed > stopAt) break;
       if (stopAt === null && spent >= MAX) { stopAt = a.seed - 1; if (a.seed > stopAt) break; }
       if (!confirm) { console.log('would ask', a.seed, a.role, a.text); continue; }
+      if (process.env.STOP_AT && Date.now() > Date.parse(process.env.STOP_AT)) { console.log(`STOP_AT reached: renders stop`); process.exitCode = 4; break; }
       const r = await post(`${POPTY}/api/audio/render`, renderBody(a, false), CONV);
       const real = { status: r.status, source: r.body.source, audioId: r.body.audioId, voiceId: r.body.voiceId, charsSpent: r.body.charsSpent || 0, code: r.status === 200 ? undefined : r.body.code, error: r.status === 200 ? undefined : (r.body.error || '').slice(0, 400) };
       spent += real.charsSpent;
@@ -535,9 +570,13 @@ async function main() {
     console.log(`seeds held for audio: ${[...bad].sort((a, b) => a - b).join(',') || 'none'}; units going ${U.length}/${per.length}`);
     save('apply-scope.json', { heldPrecheck: [...held].sort((a, b) => a - b), held: [...bad].sort((a, b) => a - b), going: [...new Set(U.map((u) => u.seed))].sort((a, b) => a - b) });
     const batches = pack(U);
+    // which seeds each batch carries (same packing as pack()), so intros bind only where the text really landed
+    const bSeeds = []; { let cur = new Set(), n = 0; const max = Number(process.env.BATCH) || 30; for (const u of U) { if (n && n + u.ops.length > max) { bSeeds.push([...cur]); cur = new Set(); n = 0; } n += u.ops.length; cur.add(u.seed); } if (n) bSeeds.push([...cur]); }
+    const appliedSeeds = new Set(fs.existsSync(path.join(OUT, 'applied-seeds.json')) ? read('applied-seeds.json') : []);
     console.log(`${batches.length} batches, ${batches.reduce((n, b) => n + b.length, 0)} ops`);
     const log = fs.existsSync(path.join(OUT, 'applied.json')) ? read('applied.json') : [];
     for (let i = 0; i < batches.length; i++) {
+      if (process.env.STOP_AT && Date.now() > Date.parse(process.env.STOP_AT)) { console.log(`STOP_AT ${process.env.STOP_AT} reached: no new batch started (${i}/${batches.length} done)`); process.exitCode = 4; return; }
       const dry = await postSigned(`/api/admin/course-edit/${COURSE}/edit-batch`, { ops: batches[i] });
       if (dry.status !== 200) { console.log(`batch ${i + 1} DRY ${dry.status} ${dry.body.code || ''} ${dry.body.error || ''} op#${dry.body.index}`, JSON.stringify(batches[i][dry.body.index] || {}).slice(0, 300)); process.exitCode = 1; return; }
       if (!confirm) continue;
@@ -545,6 +584,7 @@ async function main() {
       log.push({ batch: i + 1, status: ap.status, event_id: ap.body.event_id, undo_file: ap.body.undo_file, undo: ap.body.undo_ops || ap.body.undo, error: ap.body.error, code: ap.body.code, ops: batches[i].length });
       save('applied.json', log);
       console.log(`batch ${i + 1}/${batches.length} APPLY ${ap.status} event ${ap.body.event_id || ''} ${ap.body.code || ''} ${ap.body.error || ''}`);
+      if (ap.status === 200) { for (const n of bSeeds[i] || []) appliedSeeds.add(n); save('applied-seeds.json', [...appliedSeeds].sort((x, y) => x - y)); }
       if (ap.status !== 200) { process.exitCode = 1; return; }
     }
     if (!confirm) console.log('dry run clean for every batch (with clip links)');
@@ -566,8 +606,9 @@ async function main() {
   if (mode === 'intros') {
     const only = process.env.SEEDS ? new Set(process.env.SEEDS.split(',').map(Number)) : null; // held seeds get no intro
     const held = HELD();
-    const scope = fs.existsSync(path.join(OUT, 'apply-scope.json')) ? new Set(read('apply-scope.json').going) : null;
-    const need = asks(db, p).filter((a) => a.role === 'presentation' && !held.has(a.seed) && (!scope || scope.has(a.seed)) && (!only || only.has(a.seed)));
+    // only seeds whose batch really APPLIED (out/applied-seeds.json): an intro bound to a LEGO whose text did not change would be wrong
+    const scope = new Set(fs.existsSync(path.join(OUT, 'applied-seeds.json')) ? read('applied-seeds.json') : []);
+    const need = asks(db, p).filter((a) => a.role === 'presentation' && !held.has(a.seed) && scope.has(a.seed) && (!only || only.has(a.seed)));
     const out = [];
     for (const a of need) {
       const legoId = a.where[0].id;
@@ -615,4 +656,4 @@ async function main() {
   throw new Error(`unknown mode ${mode}`);
 }
 if (require.main === module) main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
-module.exports = { plan, asks, units };
+module.exports = { plan, asks, units, load, presets };

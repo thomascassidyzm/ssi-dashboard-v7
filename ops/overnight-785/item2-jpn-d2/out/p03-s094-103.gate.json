@@ -1,0 +1,1015 @@
+{
+ "course": "eng_for_jpn",
+ "plan": "p03-s094-103.tsv",
+ "copy": "ssi_copy_20261123t033000z",
+ "at": "2026-11-23T11:32:25.043Z",
+ "seeds": {
+  "94": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"the only\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"it will work\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"the only\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"it will work\""
+   ],
+   "newFailures": []
+  },
+  "95": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I'd like to go home soon\", \"are you going to go home after you finish?\", \"are you ready to go home on the next bus?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the next\", \"I'd like to practise more the next time\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"are you ready to go home on the next bus?\", \"I'm going to go home on the next bus\", \"when is the next bus?\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (2 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 3 duplicate phrase(s) within this LEGO: \"I'd like to go home soon\", \"are you going to go home after you finish?\", \"are you ready to go home on the next bus?\"",
+    "L3: 2 duplicate phrase(s) within this LEGO: \"the next\", \"I'd like to practise more the next time\"",
+    "L4: 3 duplicate phrase(s) within this LEGO: \"are you ready to go home on the next bus?\", \"I'm going to go home on the next bus\", \"when is the next bus?\""
+   ],
+   "newFailures": []
+  },
+  "96": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 4 duplicate phrase(s) within this LEGO: \"I'm not ready\", \"I'm not ready to talk to people I don't know yet\", \"I'm not ready to talk to people I don't know yet\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 4 duplicate phrase(s) within this LEGO: \"I'm not ready\", \"I'm not ready to talk to people I don't know yet\", \"I'm not ready to talk to people I don't know yet\""
+   ],
+   "newFailures": []
+  },
+  "97": {
+   "before": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I'm ready\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I'll be ready as soon as I can\""
+   ],
+   "after": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I'm ready\"",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I'll be ready as soon as I can\""
+   ],
+   "newFailures": []
+  },
+  "98": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"should\", \"you should do something else\""
+   ],
+   "after": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"something else\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"should\", \"you should do something else\""
+   ],
+   "newFailures": []
+  },
+  "99": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"you should ask\", \"you should ask as soon as you can\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it's important to take time to test yourself\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"it's not working\", \"you should ask yourself why it's not working\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"you should ask\", \"you should ask as soon as you can\"",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it's important to take time to test yourself\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"it's not working\", \"you should ask yourself why it's not working\""
+   ],
+   "newFailures": []
+  },
+  "100": {
+   "before": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"you shouldn't worry\", \"you shouldn't worry about making mistakes\", \"you shouldn't worry when it's not working\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"similar\", \"you shouldn't worry about doing something similar\""
+   ],
+   "after": [
+    "L1: 3 duplicate phrase(s) within this LEGO: \"you shouldn't worry\", \"you shouldn't worry about making mistakes\", \"you shouldn't worry when it's not working\"",
+    "L4: 2 duplicate phrase(s) within this LEGO: \"similar\", \"you shouldn't worry about doing something similar\""
+   ],
+   "newFailures": []
+  },
+  "101": {
+   "before": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"enjoying finding out\", \"I'm enjoying finding out more about this language\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"about this language\", \"I'm enjoying finding out more about this language\""
+   ],
+   "after": [
+    "L1: 2 duplicate phrase(s) within this LEGO: \"enjoying finding out\", \"I'm enjoying finding out more about this language\"",
+    "L2: 2 duplicate phrase(s) within this LEGO: \"about this language\", \"I'm enjoying finding out more about this language\""
+   ],
+   "newFailures": []
+  },
+  "102": {
+   "before": [
+    "L1: 5 duplicate phrase(s) within this LEGO: \"we're trying to say that it's not like that\", \"we're trying to say that it's not like that\", \"I think that we're trying to say that it's not like that\""
+   ],
+   "after": [
+    "L1: 5 duplicate phrase(s) within this LEGO: \"we're trying to say that it's not like that\", \"we're trying to say that it's not like that\", \"I think that we're trying to say that it's not like that\""
+   ],
+   "newFailures": []
+  },
+  "103": {
+   "before": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"I don't know how to say enough different words yet many words\"",
+    "L3: 4 duplicate phrase(s) within this LEGO: \"we're not trying to hear many more words\", \"we're not trying to hear many more words\", \"I think that we're not trying to hear many more words\""
+   ],
+   "after": [
+    "L3: 4 duplicate phrase(s) within this LEGO: \"we're not trying to hear many more words\", \"we're not trying to hear many more words\", \"I think that we're not trying to hear many more words\""
+   ],
+   "newFailures": []
+  }
+ },
+ "rows": [
+  {
+   "id": "S0094L03U11",
+   "seed": 94,
+   "role": "use",
+   "target": "I think that I'm going to find the way to say it well in English",
+   "old": "私はいつか英語でうまく言う方法が分かると思います",
+   "new": "英語でそれをうまく言う方法を見つけるつもりだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0094L04U07",
+   "seed": 94,
+   "role": "use",
+   "target": "I think that it will work and I'd like to keep on doing this",
+   "old": "うまくいくと思うので、これを続けたいです",
+   "new": "うまくいくと思いますし、これを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L01U07",
+   "seed": 95,
+   "role": "use",
+   "target": "are you ready to speak with people today?",
+   "old": "今日友達と話す準備はできていますか？",
+   "new": "今日、人たちと話す準備はできていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L01U08",
+   "seed": 95,
+   "role": "use",
+   "target": "are you ready to answer now?",
+   "old": "答える前に準備はできていますか？",
+   "new": "今答える準備はできていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L02B06",
+   "seed": 95,
+   "role": "build",
+   "target": "I'd like to go home soon",
+   "old": "帰りたいです",
+   "new": "もうすぐ帰りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L02U04",
+   "seed": 95,
+   "role": "use",
+   "target": "I'm not ready to go home today",
+   "old": "今日は帰る準備がまだできていません",
+   "new": "今日は帰る準備ができていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L02U11",
+   "seed": 95,
+   "role": "use",
+   "target": "I want to go home on the next bus when I'm ready",
+   "old": "次のバスで帰ります、準備できたら",
+   "new": "準備ができたら、次のバスで帰りたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L02U13",
+   "seed": 95,
+   "role": "use",
+   "target": "are you going to go home before you speak tomorrow?",
+   "old": "また明日話す前に帰りますか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L03U11",
+   "seed": 95,
+   "role": "use",
+   "target": "I'm ready to speak the next time",
+   "old": "次の機会には準備ができています",
+   "new": "次回は話す準備ができています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L03U12",
+   "seed": 95,
+   "role": "use",
+   "target": "I think I can speak better the next time we meet",
+   "old": "次の機会にはもっと自信を持って話せます",
+   "new": "次に会う時は、もっと上手に話せると思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L03U13",
+   "seed": 95,
+   "role": "use",
+   "target": "I can remember the answer the next time",
+   "old": "次の機会には答えを覚えています",
+   "new": "次回は答えを思い出せます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0095L04U13",
+   "seed": 95,
+   "role": "use",
+   "target": "are you ready for the next bus?",
+   "old": "次のバスは準備ができていますか？",
+   "new": "次のバスの準備はできていますか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L01U01",
+   "seed": 96,
+   "role": "use",
+   "target": "no, I'm not ready yet, I need a little more time",
+   "old": "いいえ、まだ準備ができていません",
+   "new": "いいえ、まだ準備ができていません、もう少し時間が必要です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L02B04",
+   "seed": 96,
+   "role": "build",
+   "target": "I'm not ready to talk",
+   "old": "準備ができていません、話す",
+   "new": "話す準備ができていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L02B05",
+   "seed": 96,
+   "role": "build",
+   "target": "I'm not ready to go home",
+   "old": "準備ができていません、帰る",
+   "new": "帰る準備ができていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L02U03",
+   "seed": 96,
+   "role": "use",
+   "target": "I'm not ready to speak English yet",
+   "old": "まだ準備ができていません、英語で話す",
+   "new": "まだ英語を話す準備ができていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L02U04",
+   "seed": 96,
+   "role": "use",
+   "target": "I'm not ready to start talking yet",
+   "old": "今はまだ準備ができていません",
+   "new": "まだ話し始める準備ができていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L02U12",
+   "seed": 96,
+   "role": "use",
+   "target": "I'm not ready to speak this morning",
+   "old": "今朝はまだ準備ができていません",
+   "new": "今朝は話す準備ができていません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L02U14",
+   "seed": 96,
+   "role": "use",
+   "target": "I'm not ready today, I need more time to practise",
+   "old": "今日は準備ができていません、もっと時間が必要です",
+   "new": "今日は準備ができていません、練習するのにもっと時間が必要です",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0096L06U10",
+   "seed": 96,
+   "role": "use",
+   "target": "how much time do you need?",
+   "old": "どのくらいの時間があればいいですか？",
+   "new": "どのくらいの時間が必要ですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0097L02B06",
+   "seed": 97,
+   "role": "build",
+   "target": "now I'm ready to go",
+   "old": "今、準備ができています",
+   "new": "今、行く準備ができています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0097L02U02",
+   "seed": 97,
+   "role": "use",
+   "target": "I'm ready to speak English now",
+   "old": "準備ができています、英語で話す",
+   "new": "今、英語を話す準備ができています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0097L04U09",
+   "seed": 97,
+   "role": "use",
+   "target": "I'd like to speak as soon as you can",
+   "old": "できるだけすぐ話せるようになりたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0097L04U10",
+   "seed": 97,
+   "role": "use",
+   "target": "I'm starting to understand a little more as soon as I can",
+   "old": "できるだけすぐ理解できるようになりたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0097L04U13",
+   "seed": 97,
+   "role": "use",
+   "target": "I'd like to keep on doing this as soon as I can",
+   "old": "できるだけすぐ話す練習をしたいです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0097L05U13",
+   "seed": 97,
+   "role": "use",
+   "target": "do you want to take more time to think about it?",
+   "old": "もっと時間をとりたいですか？",
+   "new": "それについて考えるのに、もっと時間をとりたいですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01B02",
+   "seed": 98,
+   "role": "build",
+   "target": "consider something else",
+   "old": "別のことを考えた",
+   "new": "別のことを考える",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01B03",
+   "seed": 98,
+   "role": "build",
+   "target": "consider taking time",
+   "old": "時間をかけて考えた",
+   "new": "時間をかけることを考える",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01B04",
+   "seed": 98,
+   "role": "build",
+   "target": "consider doing it",
+   "old": "それをすることを考えた",
+   "new": "それをすることを考える",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01B05",
+   "seed": 98,
+   "role": "build",
+   "target": "consider a different way",
+   "old": "別の方法を考えた",
+   "new": "違う方法を考える",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01B06",
+   "seed": 98,
+   "role": "build",
+   "target": "consider doing it more carefully",
+   "old": "注意深くやることを考えた",
+   "new": "もっと注意深くそれをすることを考える",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01U05",
+   "seed": 98,
+   "role": "use",
+   "target": "did you consider doing something else with me?",
+   "old": "私と話すことを考えましたか？",
+   "new": "私と何か他のことをすることを考えましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01U07",
+   "seed": 98,
+   "role": "use",
+   "target": "did you consider taking more time to think about it?",
+   "old": "もっと時間をかけることを考えましたか？",
+   "new": "それについて考えるために、もっと時間をかけることを考えましたか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01U09",
+   "seed": 98,
+   "role": "use",
+   "target": "did you want to consider what you want to do?",
+   "old": "それについてよく考えてみましたか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L01U11",
+   "seed": 98,
+   "role": "use",
+   "target": "did you want to consider it again?",
+   "old": "やめることを考えましたか？",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L02B03",
+   "seed": 98,
+   "role": "build",
+   "target": "do something else",
+   "old": "他のことをしてみる",
+   "new": "他のことをする",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L02U07",
+   "seed": 98,
+   "role": "use",
+   "target": "I'm trying to remember something else",
+   "old": "また別のことを覚えようとしています",
+   "new": "他のことを覚えようとしています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L02U10",
+   "seed": 98,
+   "role": "use",
+   "target": "I'd like to practise something else for a while",
+   "old": "他のことをもっと練習したいです",
+   "new": "しばらく他のことを練習したいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L02U11",
+   "seed": 98,
+   "role": "use",
+   "target": "did you want to show me something else?",
+   "old": "別のことを見せてくれますか？",
+   "new": "私に他のことを見せたかったですか？",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L02U12",
+   "seed": 98,
+   "role": "use",
+   "target": "I enjoy doing something else",
+   "old": "他のことを覚えるのが楽しいです",
+   "new": "他のことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03B06",
+   "seed": 98,
+   "role": "build",
+   "target": "playing with someone else",
+   "old": "友達とすること",
+   "new": "他の人とすること",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03U04",
+   "seed": 98,
+   "role": "use",
+   "target": "I'm going to consider playing something else now",
+   "old": "今は別のものをすることにします",
+   "new": "今は他のことをすることを考えるつもりです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03U08",
+   "seed": 98,
+   "role": "use",
+   "target": "I'd like to keep on playing something else today",
+   "old": "今日は別のものをすることを試してみましょう",
+   "new": "今日は他のことをし続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03U10",
+   "seed": 98,
+   "role": "use",
+   "target": "I enjoy playing things with my friends",
+   "old": "することがとても楽しかったです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03U13",
+   "seed": 98,
+   "role": "use",
+   "target": "it's useful to keep on playing to practise",
+   "old": "するのを続けることが役に立ちます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03U14",
+   "seed": 98,
+   "role": "use",
+   "target": "I'd like to keep on playing with someone else",
+   "old": "別の人とすることを試してみましょう",
+   "new": "他の人とすることを続けたいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L03U15",
+   "seed": 98,
+   "role": "use",
+   "target": "it's important to consider playing more carefully",
+   "old": "することをもっと注意深くやってみることが大事です",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L04U04",
+   "seed": 98,
+   "role": "use",
+   "target": "you should consider playing something else",
+   "old": "別のことを試した方がいいかもしれません",
+   "new": "他のことをすることを考えた方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L04U05",
+   "seed": 98,
+   "role": "use",
+   "target": "I think you should speak more as soon as you can",
+   "old": "もっと話した方がいいと思います",
+   "new": "できるだけすぐ、もっと話した方がいいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L04U06",
+   "seed": 98,
+   "role": "use",
+   "target": "you should consider it again before you want to stop",
+   "old": "今はやめた方がいいかもしれません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L04U13",
+   "seed": 98,
+   "role": "use",
+   "target": "you should speak with someone else",
+   "old": "誰かと一緒に話した方がいいです",
+   "new": "他の人と話した方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0098L04U14",
+   "seed": 98,
+   "role": "use",
+   "target": "I think you should start talking as soon as you can",
+   "old": "今すぐ始めた方がいいと思います",
+   "new": "できるだけすぐ話し始めた方がいいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L01B05",
+   "seed": 99,
+   "role": "build",
+   "target": "you should ask why",
+   "old": "なぜ聞いた方がいいですか",
+   "new": "なぜか聞いた方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L01U01",
+   "seed": 99,
+   "role": "use",
+   "target": "you should ask yourself why it's not working",
+   "old": "うまくいかなければ自分に聞いた方がいいです",
+   "new": "なぜうまくいかないのか自分に聞いた方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L01U15",
+   "seed": 99,
+   "role": "use",
+   "target": "you should ask yourself if you understand enough",
+   "old": "もっと理解できるように自分に聞いた方がいいです",
+   "new": "十分理解しているか自分に聞いた方がいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L02U08",
+   "seed": 99,
+   "role": "use",
+   "target": "I think it's a good thing to test yourself",
+   "old": "自分をテストすることが上達への道だと思います",
+   "new": "自分をテストするのはいいことだと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L02U11",
+   "seed": 99,
+   "role": "use",
+   "target": "when it's not working, ask yourself why",
+   "old": "うまくいかないときは自分に聞いてみることが大事です",
+   "new": "うまくいかないときは、なぜか自分に聞いてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L04U05",
+   "seed": 99,
+   "role": "use",
+   "target": "I'm starting to feel like it's not working yet",
+   "old": "まだうまくいかないと感じています",
+   "new": "まだうまくいかないと感じ始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L04U10",
+   "seed": 99,
+   "role": "use",
+   "target": "ask yourself why when it's not working",
+   "old": "うまくいかないと感じたときは自分に聞いてみてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L04U11",
+   "seed": 99,
+   "role": "use",
+   "target": "it's not working yet but I'm starting to feel better",
+   "old": "まだうまくいかないけど、よくなっています",
+   "new": "まだうまくいきませんが、気分がよくなり始めています",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0099L04U15",
+   "seed": 99,
+   "role": "use",
+   "target": "when it's not working, consider playing something else",
+   "old": "うまくいかないときは別のものをすることを考えた方がいいです",
+   "new": "うまくいかないときは、他のことをすることを考えてください",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L01U12",
+   "seed": 100,
+   "role": "use",
+   "target": "you shouldn't worry about talking to people you don't know",
+   "old": "知らない人と話すのが怖くても心配しなくてもいいです",
+   "new": "知らない人と話すことを心配しなくてもいいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U04",
+   "seed": 100,
+   "role": "use",
+   "target": "it's difficult to say similar words in a different way",
+   "old": "似たような言葉が難しいとは思わない",
+   "new": "似たような言葉を違う方法で言うのは難しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U05",
+   "seed": 100,
+   "role": "use",
+   "target": "you should ask yourself why doing something similar is interesting",
+   "old": "似たようなことをしてみてください",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U07",
+   "seed": 100,
+   "role": "use",
+   "target": "I don't like taking too much time to find similar things",
+   "old": "似たようなものを探すのに時間をかけすぎない",
+   "new": "似たようなものを見つけるのに時間をかけすぎるのは好きではありません",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U08",
+   "seed": 100,
+   "role": "use",
+   "target": "it's a good thing to find something similar to this",
+   "old": "似たようなものを見つけるのが楽しい",
+   "new": "これに似たものを見つけるのはいいことです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U09",
+   "seed": 100,
+   "role": "use",
+   "target": "I enjoy doing something similar to this in English",
+   "old": "似たような言語を英語で学ぶのが好き",
+   "new": "英語でこれに似たようなことをするのを楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U10",
+   "seed": 100,
+   "role": "use",
+   "target": "you shouldn't worry about doing something similar, it is fun",
+   "old": "似たようなことが心配ですか",
+   "new": "似たようなことをするのを心配しなくてもいいです、楽しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U13",
+   "seed": 100,
+   "role": "use",
+   "target": "it's interesting when you find something similar",
+   "old": "似たようなことを理解するのは楽しいです",
+   "new": "似たようなものを見つけると面白いです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U14",
+   "seed": 100,
+   "role": "use",
+   "target": "I think it is fun to do something similar in a short time",
+   "old": "似たようなことをするのはいいことだと思います",
+   "new": "短い時間で似たようなことをするのは楽しいと思います",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0100L04U15",
+   "seed": 100,
+   "role": "use",
+   "target": "it's difficult to speak about something similar to this",
+   "old": "似たようなことを話すのが難しい",
+   "new": "これに似たようなことについて話すのは難しいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L01B03",
+   "seed": 101,
+   "role": "build",
+   "target": "enjoying finding out more",
+   "old": "もっと楽しんで知る",
+   "new": "もっと知るのを楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L01B06",
+   "seed": 101,
+   "role": "build",
+   "target": "you are enjoying finding out about this language",
+   "old": "この言語について楽しんで知っていますか",
+   "new": "この言語について知るのを楽しんでいます",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L01U05",
+   "seed": 101,
+   "role": "use",
+   "target": "I think it's interesting enjoying finding out about this",
+   "old": "これについて楽しんで知るのが面白い",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L01U07",
+   "seed": 101,
+   "role": "use",
+   "target": "I started to think about enjoying finding out more about this language",
+   "old": "先月この言語についてもっと楽しんで知ることを考えました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L01U10",
+   "seed": 101,
+   "role": "use",
+   "target": "I like to keep on enjoying finding out more about this language",
+   "old": "この言語についてもっと楽しんで知り続けたい",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L02U04",
+   "seed": 101,
+   "role": "use",
+   "target": "I'm looking forward to speaking better as soon as I can about this language",
+   "old": "この言語についてもっと楽しんで話すことを楽しみにしています",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L02U07",
+   "seed": 101,
+   "role": "use",
+   "target": "I started to think about it carefully last month to know more about this language",
+   "old": "先月この言語についてもっと知ることを丁寧に考え始めました",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L02U09",
+   "seed": 101,
+   "role": "use",
+   "target": "I like to find out more about this language as often as possible",
+   "old": "できるだけ早くこの言語についてもっと知ることが好き",
+   "new": "できるだけ何度も、この言語についてもっと知るのが好きです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0101L02U11",
+   "seed": 101,
+   "role": "use",
+   "target": "I don't worry about this language because I enjoy finding out more about this language",
+   "old": "この言語が好きだから心配していません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0102L01U10",
+   "seed": 102,
+   "role": "use",
+   "target": "we're trying to say that it's not like that so I can remember how to say a few words",
+   "old": "そうではないと言おうとしているので、少しの言葉を覚えられます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0102L01U15",
+   "seed": 102,
+   "role": "use",
+   "target": "I can't remember how to say what I wanted to say because we're trying to say that it's not like that",
+   "old": "言いたいことを思い出せないのは、そうではないと言おうとしているからです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L02B04",
+   "seed": 103,
+   "role": "build",
+   "target": "I don't know how to say enough different words yet many words",
+   "old": "たくさんの言葉をまだ言い方がわからない",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L02U02",
+   "seed": 103,
+   "role": "use",
+   "target": "I don't know how to say enough different words yet many words",
+   "old": "たくさんの言葉をまだ言い方がわからない",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L02U06",
+   "seed": 103,
+   "role": "use",
+   "target": "I want you to speak English with many different words with me tomorrow",
+   "old": "明日たくさんの違う言葉で英語を話してほしい",
+   "new": "明日、私とたくさんの違う言葉で英語を話してほしいです",
+   "del": false,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L03U10",
+   "seed": 103,
+   "role": "use",
+   "target": "we're not trying to hear many more words so I can remember how to say a few words",
+   "old": "もっとたくさんの言葉を聞こうとしているわけではないので、少しの言葉を覚えられます",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L03U11",
+   "seed": 103,
+   "role": "use",
+   "target": "I want you to speak and we're not trying to hear many more words",
+   "old": "英語を話してほしいし、もっとたくさんの言葉を聞こうとしているわけではありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L03U13",
+   "seed": 103,
+   "role": "use",
+   "target": "it's not difficult to find the answer when we're not trying to hear many more words",
+   "old": "答えを見つけるのは難しくなくて、もっとたくさんの言葉を聞こうとしているわけではありません",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  },
+  {
+   "id": "S0103L03U15",
+   "seed": 103,
+   "role": "use",
+   "target": "I can't remember how to say what I wanted to say because we're not trying to hear many more words",
+   "old": "言いたいことを覚えられないのは、もっとたくさんの言葉を聞こうとしているわけではないからです",
+   "new": null,
+   "del": true,
+   "verdict": "PENDING"
+  }
+ ]
+}
