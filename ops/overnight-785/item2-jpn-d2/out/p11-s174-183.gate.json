@@ -2,7 +2,7 @@
  "course": "eng_for_jpn",
  "plan": "p11-s174-183.tsv",
  "copy": "ssi_copy_20261123t033000z",
- "at": "2026-11-23T11:33:20.821Z",
+ "at": "2026-11-23T23:06:34.746Z",
  "seeds": {
   "174": {
    "before": [
@@ -83,7 +83,7 @@
    "old": "私が急いで話しても私が言っていることがわかりますか？",
    "new": "早く話すとき、私が言っていることがわかりますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0174L01U13",
@@ -93,7 +93,7 @@
    "old": "同じことを違う言い方で言っても私が言っていることがわかりますか？",
    "new": "違う言い方で、私が言っていることがわかりますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0176L01B06",
@@ -103,7 +103,7 @@
    "old": "来年もよろしくお願いします",
    "new": "来年を楽しみにしています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0176L01U06",
@@ -113,7 +113,7 @@
    "old": "来年までには話せるようになりたいです",
    "new": "来年は上手に話せるようになりたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0176L03U10",
@@ -123,7 +123,7 @@
    "old": "それについても彼に聞いてみます",
    "new": "もう一度それについて彼に聞いてみます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0177L01U10",
@@ -133,7 +133,7 @@
    "old": "土曜日にどこに行きたいか聞いてみます",
    "new": "土曜日の夜にどこに行きたいか聞いてみます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0179L01U10",
@@ -143,7 +143,7 @@
    "old": "日曜日の午後に一緒に勉強しましょう",
    "new": "日曜日の午後に一緒に頑張りましょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0180L01U12",
@@ -153,7 +153,7 @@
    "old": "しばらく本を読みたいですが、まず英語を話しましょう",
    "new": "しばらく本を読みたいですが、英語を話しましょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0180L01U15",
@@ -163,7 +163,7 @@
    "old": "しばらく本を読みたいですが、あなたがいて欲しいです",
    "new": "しばらく本を読みたいですが、私とここにいてほしいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0181L01U01",
@@ -173,7 +173,10 @@
    "old": "今日は母を医者に連れて行かなければなりません",
    "new": "でも今日は母を医者に連れて行かなければなりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"but I have to take my mother to the doctor today\",\"unknown\":\"doctor\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0181L01U02",
@@ -183,7 +186,7 @@
    "old": "母が会いたいと言っています",
    "new": "母があなたに会いたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0181L03U01",
@@ -193,7 +196,7 @@
    "old": "今日は母を医者に連れて行かなければなりません",
    "new": "でも今日は母を医者に連れて行かなければなりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0182L02U10",
@@ -203,7 +206,7 @@
    "old": "犬を今日見ましたか",
    "new": "今日その若い犬を見ましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0182L03U08",
@@ -213,7 +216,8 @@
    "old": "犬をどこかで見ましたか",
    "new": "その若い犬をどこかで見ましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   }
- ]
+ ],
+ "nightgateAt": "2026-11-23T23:12:40.262Z"
 }

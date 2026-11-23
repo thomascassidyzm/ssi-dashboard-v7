@@ -2,7 +2,7 @@
  "course": "eng_for_jpn",
  "plan": "p05-s114-123.tsv",
  "copy": "ssi_copy_20261123t033000z",
- "at": "2026-11-23T11:32:42.490Z",
+ "at": "2026-11-23T23:05:58.648Z",
  "seeds": {
   "114": {
    "before": [
@@ -85,7 +85,7 @@
    "old": "昨日より今日の方がうまくいっていないように感じますが、心配しないようにします",
    "new": "昨日より今日の方がうまくいっていないように感じますが、それについて心配していません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0114L01U08",
@@ -95,7 +95,7 @@
    "old": "昨日より今日の方がうまくいっていないように感じますが、練習を続けます",
    "new": "昨日より今日の方がうまくいっていないように感じるので、もっと練習したいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0114L01U14",
@@ -105,7 +105,7 @@
    "old": "昨日より今日の方がうまくいっていないように感じますが、これが唯一の方法です",
    "new": "昨日より今日の方がうまくいっていないように感じますが、これがうまくいく唯一の方法です",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0114L01U15",
@@ -115,7 +115,7 @@
    "old": "昨日より今日の方がうまくいっていないように感じますが、大丈夫です",
    "new": "昨日より今日の方がうまくいっていないように感じますが、やってみるのはいいことです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0115L01B03",
@@ -125,7 +125,10 @@
    "old": "まだ準備ができているようには感じません",
    "new": "まだ会話をする準備ができているようには感じません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "ZUT whole course: \"まだ会話をする準備ができているようには感じません\" is \"I don't feel as if I'm ready to have a conversation but I want to keep on\" at seed 115"
+   ]
   },
   {
    "id": "S0115L01B04",
@@ -135,7 +138,7 @@
    "old": "まだ準備ができていません",
    "new": "今は会話をする準備ができているようには感じません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0115L01B05",
@@ -145,7 +148,7 @@
    "old": "まだ準備ができているようには全く感じません",
    "new": "会話をする準備ができているようには全く感じません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0115L01B06",
@@ -155,7 +158,7 @@
    "old": "まだ準備ができているようには全くには感じません",
    "new": "まだ誰とも会話をする準備ができているようには感じません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0115L01B07",
@@ -165,7 +168,7 @@
    "old": "まだ会話をする準備ができているようには感じません",
    "new": "会話をする準備ができているようには感じませんが、続けたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0115L01U06",
@@ -175,7 +178,7 @@
    "old": "会話をする準備ができているようには感じませんが、昨日より今日の方がうまくなっています",
    "new": "会話をする準備ができているようには感じませんが、今日はうまくなっています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0115L01U14",
@@ -185,7 +188,7 @@
    "old": "今は会話をする準備ができているようには感じませんが、いつかできると思います",
    "new": "今は会話をする準備ができているようには感じませんが、もうすぐできると思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01B02",
@@ -195,7 +198,10 @@
    "old": "これは最善の選択ではありません",
    "new": "これは私ができる最善の選択ではありません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
   },
   {
    "id": "S0116L01B03",
@@ -205,7 +211,7 @@
    "old": "私にとって最善の選択ではありません",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01B04",
@@ -215,7 +221,7 @@
    "old": "これは最善の選択ではないと思います",
    "new": "これは私ができる最善の選択ではないと思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01B05",
@@ -225,7 +231,7 @@
    "old": "これが最善の選択でないことはわかっています",
    "new": "これが私ができる最善の選択でないことはわかっています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01B06",
@@ -235,7 +241,7 @@
    "old": "これは最善の選択ではないかもしれません",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01B07",
@@ -245,7 +251,7 @@
    "old": "これが最善の選択でないことを認めます",
    "new": "これが私ができる最善の選択でないことはわかっていますが、やってみる必要があります",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U01",
@@ -255,7 +261,7 @@
    "old": "これは最善の選択ではありませんが、今はこれしかできません",
    "new": "これは私ができる最善の選択ではありませんが、うまくいく唯一の方法です",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U03",
@@ -265,7 +271,7 @@
    "old": "これは最善の選択ではないと思いますが、今はこれしかありません",
    "new": "これは私ができる最善の選択ではないと思いますが、今はこれしかできません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U04",
@@ -275,7 +281,7 @@
    "old": "これは私ができる最善の選択ではないかもしれませんが、続けます",
    "new": "これは私ができる最善の選択ではありませんが、続けたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U06",
@@ -285,7 +291,7 @@
    "old": "これが最善の選択ではないことはわかっていますが、今はこれが必要です",
    "new": "これが私ができる最善の選択でないことはわかっていますが、今それをする必要があります",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U07",
@@ -295,7 +301,7 @@
    "old": "これは最善の選択ではないかもしれませんが、面白い経験です",
    "new": "これは私ができる最善の選択ではありませんが、やってみるのはとても面白いです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U09",
@@ -305,7 +311,7 @@
    "old": "これは最善の選択ではないと思いますが、やってみます",
    "new": "これは私ができる最善の選択ではないと思いますが、やってみたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U10",
@@ -315,7 +321,7 @@
    "old": "これは私ができる最善の選択ではないと思いますが、準備はできています",
    "new": "これは私ができる最善の選択ではありませんが、準備はできるでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U11",
@@ -325,7 +331,7 @@
    "old": "これが最善の選択でないことは分かっていますが、それで良いと思っています",
    "new": "これが私ができる最善の選択でないことはわかっていますが、それはいいことだと思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U12",
@@ -335,7 +341,7 @@
    "old": "これは最善の選択ではないかもしれませんが、今日は頑張ります",
    "new": "これは私ができる最善の選択ではありませんが、今日は一生懸命頑張るつもりです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U14",
@@ -345,7 +351,7 @@
    "old": "これは最善の選択ではないかもしれませんが、今の私にできる限りのことです",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0116L01U15",
@@ -355,7 +361,7 @@
    "old": "これは最善の選択ではないと思いますが、今後はもっと良い選択ができると思います",
    "new": "これは私ができる最善の選択ではありませんが、もうすぐもっとうまくできるようになると思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0118L01U04",
@@ -365,7 +371,7 @@
    "old": "パブにいた時より確実に気分がいいと思います",
    "new": "パブにいた時より気分がいいと思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0119L01U03",
@@ -375,7 +381,7 @@
    "old": "帰る前に何か聞いてもいいですかと彼女に言いました",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0122L03B08",
@@ -385,7 +391,7 @@
    "old": "やめたくないので簡単に感じ始めています",
    "new": "簡単に感じ始めているので、やめたくありません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0122L03B10",
@@ -395,7 +401,7 @@
    "old": "楽しくなってきたので簡単に感じ始めています",
    "new": "簡単に感じ始めていて、楽しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0122L03U04",
@@ -405,7 +411,7 @@
    "old": "もっと英語を話す機会を持つにつれて、より簡単に感じ始めています",
    "new": "あなたと英語を話せば話すほど、簡単に感じ始めています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0122L03U05",
@@ -415,7 +421,7 @@
    "old": "今日は何かが簡単に感じ始めています",
    "new": "昨日より今日の方が簡単に感じ始めています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0122L03U15",
@@ -425,7 +431,7 @@
    "old": "今よりももっと英語が簡単に感じ始めています",
    "new": "簡単に感じ始めていて、もっと知るのを楽しんでいます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0123L02B04",
@@ -435,7 +441,7 @@
    "old": "それはいい考えだと思います",
    "new": "それはいい考えだと思いますし、うまくいくと思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0123L02U05",
@@ -497,7 +503,7 @@
    "old": "それはいい考えだと思いますが、難しくても続けます",
    "new": "それはいい考えだと思いますし、それを続けたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0123L02U14",
@@ -512,5 +518,6 @@
     "L2: 1 duplicate phrase(s) within this LEGO: \"I think that's a good idea\""
    ]
   }
- ]
+ ],
+ "nightgateAt": "2026-11-23T23:09:54.592Z"
 }

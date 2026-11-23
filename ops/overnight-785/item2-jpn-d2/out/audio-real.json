@@ -1,0 +1,904 @@
+[
+ {
+  "role": "known",
+  "text": "もっと理解したいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0074L01U13",
+    "slot": "known"
+   }
+  ],
+  "seed": 74,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "94340788-1a63-4174-83f0-a9afb58b7baa",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "あなたの言いたいことを理解しています",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0074L01U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 74,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "af9045cc-d558-4442-b86c-4973d55d7190",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "答えを理解したいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0074L01U10",
+    "slot": "known"
+   }
+  ],
+  "seed": 74,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2dfb2490-070c-48c4-b4c6-373e3e65f71d",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "英語を理解するのに時間をかけることが大切です",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0074L01U11",
+    "slot": "known"
+   }
+  ],
+  "seed": 74,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0145fd3b-ac83-4b38-92bd-84d32e80cfa7",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "手伝ってくれてどうもありがとうございます",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0074L02B07",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0074L02U08",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0074L02U02",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0074L02U14",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0074L02U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 74,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c038c738-b245-4ae8-8a47-4a081bbe346b",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "known",
+  "text": "手伝ってくれてどうもありがとうございます、でももっと学ぶことがあります",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0074L02U13",
+    "slot": "known"
+   }
+  ],
+  "seed": 74,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b7190697-46c4-475a-8391-829895b054fd",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "英語でもっと学ぶことがありますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0075L01B05",
+    "slot": "known"
+   }
+  ],
+  "seed": 75,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7013a029-5373-4f9c-866c-e0a191c4f300",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "何かありますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0075L01B06",
+    "slot": "known"
+   }
+  ],
+  "seed": 75,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "925300b5-26dd-4f3d-aafc-52938cbd5a22",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "known",
+  "text": "何か言うことがありますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0075L01B07",
+    "slot": "known"
+   }
+  ],
+  "seed": 75,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "961c0aa1-b9b3-4011-a592-b6268c28b7aa",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "known",
+  "text": "今週、もっと学ぶことがありますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0075L01U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 75,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b382a989-8d2f-49c3-9d9f-c10653cc293e",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "一週間後、もっと覚えることがありますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0075L01U06",
+    "slot": "known"
+   }
+  ],
+  "seed": 75,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ea8ee6fc-00a1-4af0-b88a-e9e0653368ed",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "known",
+  "text": "今日の午後、英語を学び始めましたか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U15",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "22a4d7f8-ce86-4b90-aae4-a2c4a4810e50",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "彼の名前を早く覚えるために学び始めましたか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0079L01U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 79,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c179873d-6582-4b1e-a8bf-4353e73169fb",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "いつ準備ができるかわかりませんが、もうすぐ行く準備ができるような気分になるのが好きです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0080L01U11",
+    "slot": "known"
+   }
+  ],
+  "seed": 80,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7fe2d467-c3c8-49fd-abfe-0ca6bdb96235",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "known",
+  "text": "いつ準備ができるかわかりませんが、もうすぐもっと話し始めるつもりです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0080L01U09",
+    "slot": "known"
+   }
+  ],
+  "seed": 80,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fd1dbc00-4601-44de-b476-c095fa236185",
+   "charsSpent": 34
+  }
+ },
+ {
+  "role": "known",
+  "text": "いつ準備ができるかわかりませんが、言いたいことを説明してみるつもりです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0080L01U14",
+    "slot": "known"
+   }
+  ],
+  "seed": 80,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5bb36d06-2518-4d70-9502-5b8ab8b52b37",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "いつ文全体を覚える準備ができるかわかりません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0081L01U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 81,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "811e134e-a21b-464d-a03d-eb5abc1ad947",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "十分な言葉がわかるとき、面白いです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0081L01U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 81,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5602e262-b75e-4157-a3d9-d477a1d95eb1",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "今夜私を待つつもりですか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0082L02U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 82,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "480c0b9b-f538-43e7-b1b0-1b3958aa49bd",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "known",
+  "text": "先週手紙を書きたかったあなたの友達のことを聞きましたか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0083L02U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 83,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cce3aaa6-91dc-4f5e-9549-adb1ddefb76c",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "今あなたに同意します",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0083L01B06",
+    "slot": "known"
+   }
+  ],
+  "seed": 83,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7de25dee-1171-412f-ae9e-50268fbc87eb",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "あなたに同意します。なぜですか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0083L01U15",
+    "slot": "known"
+   }
+  ],
+  "seed": 83,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d2072e64-777e-4e04-927e-c439b6af5095",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "あなたが言ったことに同意します。間違えるのはいいことです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0083L03U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 83,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3db84b46-1482-436e-84f8-9b7a42affbca",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "彼があなたの友達について言ったことに同意しません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0084L01U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 84,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "06683edd-d561-4e66-99f6-24a64933ed1f",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "彼が言ったことがわかりません。もう少しゆっくりもう一度言っていただけますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0084L01U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 84,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "992853b7-2f3a-41f2-b78f-8a716841ad52",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "known",
+  "text": "彼が言ったことについてあなたに聞きたいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0084L01U09",
+    "slot": "known"
+   }
+  ],
+  "seed": 84,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4a7988a1-d0d4-4c28-94f0-8fe21142db3e",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "あの人たちと話したいですが、いつ準備ができるかわかりません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0085L01U09",
+    "slot": "known"
+   }
+  ],
+  "seed": 85,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fb4f4566-27bb-48fb-a870-2cc3b6088ad5",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "彼女はあの人たちについて私に教えたくありませんでした",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0085L01U13",
+    "slot": "known"
+   }
+  ],
+  "seed": 85,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "10690196-6582-4336-adee-03feb3094d99",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "残念ながら、その文全体を覚えられるかわかりません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0086L01U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 86,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f38aae3c-99ad-41df-b171-6d74126b8a35",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "残念ながら、彼女は今日の午後何も読みたくありません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0086L01U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 86,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d53d6f20-72f5-40a6-8bdc-8f6e8a3502f5",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "私が知らない人たちと話すのに十分な言葉を知りません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0087L02U15",
+    "slot": "known"
+   }
+  ],
+  "seed": 87,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "13348f86-ad83-4757-9fb8-061d0d7cc4fa",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "私が知らない人たちと英語で話せるようになりたいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0087L02U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 87,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3f22df31-8392-4116-8f65-78eaead6bf6f",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "私が知らない人たちを助けるのは簡単ではありません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0087L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 87,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "34b4adf4-607f-4338-bcb0-0f54bb1c6092",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "私が知らない人たちと英語で話すのは難しいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0087L02U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 87,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0cdd31bc-c50b-44d9-90f9-a9332efb2dd5",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "まだ知らない人たちに言いたいことをどう言えばいいかわかりません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0088L01U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 88,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "831da2f0-1985-4939-924c-61a11f8a6ddb",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "まだ知らない人たちと面白いことをするのを楽しんでいます",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0088L01U15",
+    "slot": "known"
+   }
+  ],
+  "seed": 88,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0b9666f5-b8cf-4d95-ab05-8ee407c31cfb",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "まだ知らない人たちに言いたいことを説明したいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0088L01U08",
+    "slot": "known"
+   }
+  ],
+  "seed": 88,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a61d7e23-bd0e-4345-9311-b7fa43558651",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "そのことについて、まだあなたと話す準備ができていません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0088L02B07",
+    "slot": "known"
+   }
+  ],
+  "seed": 88,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3ed1695b-6cd3-474f-8482-5fefa1383ce7",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "まだ話す準備ができていませんし、いつ準備ができるかわかりません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0088L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 88,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b8331379-0649-436c-a83d-c8c2018aed56",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "known",
+  "text": "難しかったことはもうやりました",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0089L01U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 89,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7de3610a-d736-43be-ad89-5d85e74078d4",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "known",
+  "text": "短い時間でこれができるとは思っていませんでした",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0089L03U12",
+    "slot": "known"
+   }
+  ],
+  "seed": 89,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9e18eb06-e608-4a84-8e84-60fe27bc2d6d",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "known",
+  "text": "短い時間でたくさんやって、とても嬉しいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0089L03U06",
+    "slot": "known"
+   }
+  ],
+  "seed": 89,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a2c5b023-17ce-4c58-bc6e-a780e0fbb613",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "難しいので、してくれたら嬉しいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0090L02B04",
+    "slot": "known"
+   }
+  ],
+  "seed": 90,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7d1f96bc-a866-4d5c-aab6-574ee303c488",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "私には難しいので、してくれたら嬉しいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0090L02U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 90,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d71d65a0-0490-4314-b4a0-0d54b3475b26",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "known",
+  "text": "もっとゆっくりもう一度言ってくれませんか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0090L01U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 90,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ba58114b-092d-4d4a-96be-236887b03d57",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "まだ準備ができていないので、もっとゆっくり話してほしいです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0090L01U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 90,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8abb552e-835d-455b-b680-c922568add17",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "known",
+  "text": "もっとゆっくり話してくださいとあなたに頼みたかったです",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0090L01U08",
+    "slot": "known"
+   }
+  ],
+  "seed": 90,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "21880e3b-2fb4-4dfb-806b-c31046bf7677",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "答えについて考えようとするのを楽しんでいますか？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0091L02U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 91,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c1101f43-e3ab-4746-b296-ed46a6c594f0",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "それについて考えようとするのをやめたくありません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0091L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 91,
+  "real": {
+   "status": 403,
+   "charsSpent": 0,
+   "code": "APPROVAL_UNVERIFIED",
+   "error": "approval refused — its origin could not be verified: the Command Surface could not be reached to confirm the seat (ECONNREFUSED). Send the approval from a Command Surface conversation on the seat it names, with header x-cs-conv set to that conversation's own token (tools pick it up from env CS_CONV_TOKEN). Kai's seat signs kai:…, Tom's seat signs tom:…. Do not retry or route around this."
+  }
+ }
+]

@@ -2,7 +2,7 @@
  "course": "eng_for_jpn",
  "plan": "p14-s204-213.tsv",
  "copy": "ssi_copy_20261123t033000z",
- "at": "2026-11-23T11:33:32.669Z",
+ "at": "2026-11-23T23:06:46.057Z",
  "seeds": {
   "204": {
    "before": [
@@ -110,7 +110,7 @@
    "old": "準備を手伝ってほしい",
    "new": "私たちのために準備を手伝う",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L01B06",
@@ -120,7 +120,7 @@
    "old": "準備を手伝うのを頼んだ",
    "new": "準備を手伝うように彼女に頼みました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L01U03",
@@ -130,7 +130,7 @@
    "old": "その準備を手伝ってくれますか？",
    "new": "私たちのために準備を手伝ってくれますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L01U08",
@@ -140,7 +140,7 @@
    "old": "準備はあなたに任せたい",
    "new": "私のために準備を手伝ってほしいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L01U13",
@@ -164,7 +164,7 @@
    "old": "彼女に一緒に来てほしかったです",
    "new": "彼女に来て手伝ってほしかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L02U01",
@@ -174,7 +174,7 @@
    "old": "彼女に一緒に来てほしかったです",
    "new": "彼女に来て手伝ってほしかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L02U03",
@@ -184,7 +184,7 @@
    "old": "何が起こるのか、彼女に教えてほしかったです",
    "new": "彼女に何が起きるか教えてほしかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L02U04",
@@ -194,7 +194,7 @@
    "old": "彼女に手伝ってほしかったですが、忙しそうでした",
    "new": "彼女に手伝ってほしかったですが、今日は忙しかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L02U06",
@@ -204,7 +204,7 @@
    "old": "彼女にここで私を待ってほしかったです",
    "new": "彼女にしばらくここで待ってほしかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L02U07",
@@ -228,7 +228,7 @@
    "old": "彼女に早めに来てほしかったです",
    "new": "彼女に今朝もう少し早く来てほしかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0204L02U13",
@@ -238,7 +238,7 @@
    "old": "彼女に準備を全部やってほしかったです",
    "new": "彼女に私たちのために準備を手伝ってほしかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0205L01B04",
@@ -248,7 +248,7 @@
    "old": "何を言おうとしていた",
    "new": "何か言おうとしていた",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0205L01B05",
@@ -258,7 +258,7 @@
    "old": "ちゃんと言おうとしていた",
    "new": "言いたいことを言おうとしていた",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0205L01U05",
@@ -268,7 +268,7 @@
    "old": "うまく言おうとしていたのですが、うまくいきませんでした",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0205L01U08",
@@ -278,7 +278,7 @@
    "old": "言おうとしていましたが、うまく表現できませんでした",
    "new": "言いたいことを言おうとしていましたが、簡単ではありませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0205L01U12",
@@ -288,7 +288,10 @@
    "old": "言おうとしていたのを忘れてしまいました",
    "new": "あなたに言おうとしていたことを忘れました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I've forgotten what I was trying to say to you\",\"unknown\":\"forgotten\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0205L02U08",
@@ -298,7 +301,7 @@
    "old": "あなたが言ったことを忘れてしまいました",
    "new": "さっきあなたが私に言ったことを忘れました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0205L02U10",
@@ -308,7 +311,7 @@
    "old": "言い方が分からなくなってしまいました",
    "new": "言いたいことを英語でどう言うか忘れました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0206L01U09",
@@ -318,7 +321,7 @@
    "old": "誰かと英語で話す機会があると嬉しいです",
    "new": "新しい人と英語で話す機会を楽しんでいます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0206L01U11",
@@ -328,7 +331,7 @@
    "old": "英語を話す機会があるたびに楽しんでいます",
    "new": "できるだけ何度も、あなたと英語を話す機会を楽しんでいます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0206L01U14",
@@ -338,7 +341,7 @@
    "old": "何でもいいので英語を使う機会が好きです",
    "new": "できるだけ何度も英語を使う機会を楽しんでいます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U01",
@@ -348,7 +351,7 @@
    "old": "やる必要があったことは全部終わりましたか？",
    "new": "今日のためにやる必要があったことをやりましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U02",
@@ -358,7 +361,7 @@
    "old": "やる必要があったことが分かっていましたか？",
    "new": "次にやる必要があったことがわかっていましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U03",
@@ -368,7 +371,7 @@
    "old": "やる必要があったことが大変でしたか？",
    "new": "間に合うように、やる必要があったことをするのは難しかったですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U04",
@@ -378,7 +381,7 @@
    "old": "やる必要があったことを全部覚えていましたか？",
    "new": "今朝やる必要があったことを覚えていましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U06",
@@ -388,7 +391,7 @@
    "old": "やる必要があったことをやり終えましたか？",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U09",
@@ -398,7 +401,7 @@
    "old": "やる必要があったことをするのに時間がかかりました",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U10",
@@ -408,7 +411,7 @@
    "old": "やる必要があったことを一人でできましたか？",
    "new": "間に合うように、やる必要があったことができましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U11",
@@ -418,7 +421,7 @@
    "old": "やる必要があったことが分かってよかったです",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L01U13",
@@ -428,7 +431,10 @@
    "old": "あなたはやる必要があったことを全部やりましたね",
    "new": "今週、やる必要があったことをやりましたね",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"you've done what you needed to do this week\",\"unknown\":\"you've\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0207L01U14",
@@ -438,7 +444,7 @@
    "old": "一人でやる必要があったことが大変でしたか？",
    "new": "今朝やる必要があったことをするのは難しかったですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L02U01",
@@ -448,7 +454,7 @@
    "old": "必要なことを全部やりましたね",
    "new": "今日、やる必要があったことを全部やりましたね",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L02U03",
@@ -458,7 +464,7 @@
    "old": "とてもよくやりましたね",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L02U05",
@@ -468,7 +474,7 @@
    "old": "今日やる必要があったことを全部やりましたね",
    "new": "あなたが出る前に、やる必要があったことをやりましたね",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L02U06",
@@ -478,7 +484,7 @@
    "old": "一人でよくやりましたね",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L02U09",
@@ -488,7 +494,7 @@
    "old": "今週の仕事はもう終わりましたね。よくできました",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0207L02U14",
@@ -498,7 +504,7 @@
    "old": "そんなに早くやり遂げましたね",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0208L02B03",
@@ -508,7 +514,7 @@
    "old": "あなたに聞きたくありませんでした",
    "new": "あなたにそれを聞きたくありませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0209L01U02",
@@ -518,7 +524,7 @@
    "old": "彼らは毎日英語を話しますか？",
    "new": "彼らは一日中英語を話しますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0209L01U08",
@@ -528,7 +534,7 @@
    "old": "彼らはあなたを待っているので、急いだほうがいいです",
    "new": "彼らはあなたを待っているので、もうすぐ行った方がいいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0209L01U10",
@@ -538,7 +544,7 @@
    "old": "彼らは全員後で戻ってくる予定ですか？",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0209L01U14",
@@ -548,7 +554,7 @@
    "old": "彼らは私たちと一緒に来ることができますか？",
    "new": "彼らは私たちと一緒に来るつもりですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0209L01U15",
@@ -558,7 +564,7 @@
    "old": "彼らは英語で話すことが好きですか？",
    "new": "彼らはあなたと英語で話すのが好きですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0210L03U05",
@@ -568,7 +574,7 @@
    "old": "問題を話し合う前に、まず全員の意見を聞いてみましょう",
    "new": "問題を話し合う前に、あなたがどう思うか聞きましょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0210L03U13",
@@ -578,7 +584,7 @@
    "old": "その問題をどのように話し合えばいいか、わかりますか？",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0210L03U15",
@@ -588,7 +594,7 @@
    "old": "私はそのことをあなたと話し合えて良かったと思います",
    "new": "一緒にそれを話し合えるのはいいことだと思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0211L01U06",
@@ -598,7 +604,7 @@
    "old": "彼らは私たちに早く来るように言いました",
    "new": "彼らは、私たちが早く来る必要があると言いました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0211L02B02",
@@ -608,7 +614,7 @@
    "old": "私は説明したくない",
    "new": "私は説明したくありませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0211L02B03",
@@ -618,7 +624,7 @@
    "old": "彼らは説明したくない",
    "new": "彼らは説明したくありませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0213L01U10",
@@ -628,7 +634,8 @@
    "old": "何を達成したいのかを考えました",
    "new": "何を達成したいか考え始めました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   }
- ]
+ ],
+ "nightgateAt": "2026-11-23T23:13:14.783Z"
 }

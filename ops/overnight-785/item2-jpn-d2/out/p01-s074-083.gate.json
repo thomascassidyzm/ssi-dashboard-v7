@@ -2,7 +2,7 @@
  "course": "eng_for_jpn",
  "plan": "p01-s074-083.tsv",
  "copy": "ssi_copy_20261123t033000z",
- "at": "2026-11-23T11:32:03.042Z",
+ "at": "2026-11-23T23:05:19.221Z",
  "seeds": {
   "74": {
    "before": [
@@ -96,7 +96,7 @@
    "old": "私はあなたの言いたいことを理解できます",
    "new": "あなたの言いたいことを理解しています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L01U10",
@@ -106,7 +106,7 @@
    "old": "私は答えを理解しようとしていました",
    "new": "答えを理解したいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L01U11",
@@ -116,7 +116,7 @@
    "old": "英語を理解するのは時間がかかることが大切です",
    "new": "英語を理解するのに時間をかけることが大切です",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L01U13",
@@ -126,7 +126,7 @@
    "old": "私はもっと理解できるようになりたかったです",
    "new": "もっと理解したいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L02B07",
@@ -136,7 +136,7 @@
    "old": "英語を学ぶのを手伝ってくれてありがとう",
    "new": "手伝ってくれてどうもありがとうございます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L02U02",
@@ -146,7 +146,7 @@
    "old": "英語を学ぶのを手伝ってくれてありがとうございます",
    "new": "手伝ってくれてどうもありがとうございます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L02U07",
@@ -156,7 +156,7 @@
    "old": "手伝ってくれてどうもありがとうございます、今日とても助かりました",
    "new": "手伝ってくれてどうもありがとうございます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L02U08",
@@ -166,7 +166,7 @@
    "old": "英語を教えてくれて手伝ってくれてありがとうございます",
    "new": "手伝ってくれてどうもありがとうございます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L02U13",
@@ -176,7 +176,7 @@
    "old": "手伝ってくれてありがとうございます、でもまだ練習が必要です",
    "new": "手伝ってくれてどうもありがとうございます、でももっと学ぶことがあります",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0074L02U14",
@@ -186,7 +186,7 @@
    "old": "今日手伝ってくれてどうもありがとうございます",
    "new": "手伝ってくれてどうもありがとうございます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0075L01B05",
@@ -196,7 +196,7 @@
    "old": "まだ英語で学ぶことがありますか？",
    "new": "英語でもっと学ぶことがありますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0075L01B06",
@@ -206,7 +206,7 @@
    "old": "それがありますか",
    "new": "何かありますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0075L01B07",
@@ -216,7 +216,7 @@
    "old": "あなたは何かありますか",
    "new": "何か言うことがありますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0075L01U06",
@@ -226,7 +226,7 @@
    "old": "一週間で、まだ覚えることがありますか？",
    "new": "一週間後、もっと覚えることがありますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0075L01U12",
@@ -236,7 +236,7 @@
    "old": "今週、覚えることがありますか？",
    "new": "今週、もっと学ぶことがありますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0076L01B02",
@@ -246,7 +246,10 @@
    "old": "学んだことに満足しています",
    "new": "どれだけ学んだかに満足しています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I'm happy with how much I've learnt\",\"unknown\":\"learnt\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0076L02B03",
@@ -256,7 +259,10 @@
    "old": "すでに学んだことに満足しています",
    "new": "どれだけ学んだかに、もう満足しています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I'm happy with how much I've learnt already\",\"unknown\":\"already\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0079L01B01",
@@ -266,7 +272,10 @@
    "old": "学び始めました",
    "new": "学び始めましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
   },
   {
    "id": "S0079L01B02",
@@ -276,7 +285,10 @@
    "old": "学び始めました",
    "new": "学び始めましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
   },
   {
    "id": "S0079L01U12",
@@ -286,7 +298,7 @@
    "old": "友達の名前を覚えるために学び始めましたか？",
    "new": "彼の名前を早く覚えるために学び始めましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0079L01U15",
@@ -296,7 +308,7 @@
    "old": "あなたは午後に英語を学び始めましたか？",
    "new": "今日の午後、英語を学び始めましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0080L01B03",
@@ -306,7 +318,7 @@
    "old": "いつ準備ができるかわかりません、今",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0080L01B07",
@@ -316,7 +328,7 @@
    "old": "あなたを助ける準備がいつできるかわかりません",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0080L01U09",
@@ -326,7 +338,7 @@
    "old": "いつ準備ができるかわかりませんが、すぐに練習を始めます",
    "new": "いつ準備ができるかわかりませんが、もうすぐもっと話し始めるつもりです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0080L01U11",
@@ -336,7 +348,7 @@
    "old": "いつ準備ができるかわかりませんが、準備ができた気分になるのは好きです",
    "new": "いつ準備ができるかわかりませんが、もうすぐ行く準備ができるような気分になるのが好きです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0080L01U14",
@@ -346,7 +358,7 @@
    "old": "いつ準備ができるかわかりませんが、できるだけ頑張ります",
    "new": "いつ準備ができるかわかりませんが、言いたいことを説明してみるつもりです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0081L01B04",
@@ -356,7 +368,7 @@
    "old": "いつ理解できますか",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0081L01U03",
@@ -366,7 +378,7 @@
    "old": "言葉が十分わかるとき、もっと面白くなります",
    "new": "十分な言葉がわかるとき、面白いです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0081L01U12",
@@ -376,7 +388,7 @@
    "old": "いつ文全体を覚えられるかわかりません",
    "new": "いつ文全体を覚える準備ができるかわかりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0082L02U05",
@@ -386,7 +398,7 @@
    "old": "今夜あなたを待つつもりはありますか",
    "new": "今夜私を待つつもりですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0083L01B06",
@@ -396,7 +408,7 @@
    "old": "私はあなたに同意します",
    "new": "今あなたに同意します",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0083L01U15",
@@ -406,7 +418,7 @@
    "old": "完全に同意します。なぜですか？",
    "new": "あなたに同意します。なぜですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0083L02U07",
@@ -416,7 +428,7 @@
    "old": "あなたの友達について先週書いた手紙のことを知っていますか？",
    "new": "先週手紙を書きたかったあなたの友達のことを聞きましたか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0083L03U04",
@@ -426,7 +438,8 @@
    "old": "間違いについてあなたが言ったことに同意します。間違いをすることが大切です",
    "new": "あなたが言ったことに同意します。間違えるのはいいことです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   }
- ]
+ ],
+ "nightgateAt": "2026-11-23T23:07:20.003Z"
 }

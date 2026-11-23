@@ -2,7 +2,7 @@
  "course": "eng_for_jpn",
  "plan": "p02-s084-093.tsv",
  "copy": "ssi_copy_20261123t033000z",
- "at": "2026-11-23T11:32:14.112Z",
+ "at": "2026-11-23T23:05:30.303Z",
  "seeds": {
   "84": {
    "before": [
@@ -118,7 +118,7 @@
    "old": "彼が言ったことに同意しません。私の友達について正しくありません",
    "new": "彼があなたの友達について言ったことに同意しません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0084L01U03",
@@ -128,7 +128,7 @@
    "old": "彼が言ったことがわかりませんでした。もう一度言ってもらえますか？",
    "new": "彼が言ったことがわかりません。もう少しゆっくりもう一度言っていただけますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0084L01U09",
@@ -138,7 +138,7 @@
    "old": "彼が言ったことについて話したいです",
    "new": "彼が言ったことについてあなたに聞きたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0085L01U09",
@@ -148,7 +148,7 @@
    "old": "あの人たちと話したいですが、まだ準備ができていません",
    "new": "あの人たちと話したいですが、いつ準備ができるかわかりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0085L01U13",
@@ -158,7 +158,7 @@
    "old": "あの人たちについて彼女は何も言いませんでした",
    "new": "彼女はあの人たちについて私に教えたくありませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0086L01U05",
@@ -168,7 +168,7 @@
    "old": "残念ながら、その文全体を覚えることができません",
    "new": "残念ながら、その文全体を覚えられるかわかりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0086L01U12",
@@ -178,7 +178,7 @@
    "old": "残念ながら、彼女はそれを読みたくありません",
    "new": "残念ながら、彼女は今日の午後何も読みたくありません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0086L02U07",
@@ -188,7 +188,7 @@
    "old": "今日それを止めることはできませんでした、残念ながら",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0087L02U04",
@@ -198,7 +198,7 @@
    "old": "私が知らない人たちを助けるのはいつも簡単ではありません",
    "new": "私が知らない人たちを助けるのは簡単ではありません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0087L02U07",
@@ -208,7 +208,7 @@
    "old": "いつか私が知らない人たちと英語で話せるようになりたい",
    "new": "私が知らない人たちと英語で話せるようになりたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0087L02U12",
@@ -218,7 +218,7 @@
    "old": "私が知らない人たちと英語で話すのはまだ難しいです",
    "new": "私が知らない人たちと英語で話すのは難しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0087L02U15",
@@ -228,7 +228,7 @@
    "old": "私が知らない人たちと話すのに十分な言葉をまだ知りません",
    "new": "私が知らない人たちと話すのに十分な言葉を知りません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0088L01U08",
@@ -238,7 +238,7 @@
    "old": "まだ知らない人たちに自分のことを説明したい",
    "new": "まだ知らない人たちに言いたいことを説明したいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0088L01U12",
@@ -248,7 +248,7 @@
    "old": "まだ知らない人たちにどう言えばいいか分かりません",
    "new": "まだ知らない人たちに言いたいことをどう言えばいいかわかりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0088L01U15",
@@ -258,7 +258,7 @@
    "old": "まだ知らない人たちと話せることを楽しんでいます",
    "new": "まだ知らない人たちと面白いことをするのを楽しんでいます",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0088L02B04",
@@ -268,7 +268,10 @@
    "old": "今は話す準備ができていません",
    "new": "話す準備ができていません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}"
+   ]
   },
   {
    "id": "S0088L02B07",
@@ -278,7 +281,7 @@
    "old": "あなたに答える準備ができていません",
    "new": "そのことについて、まだあなたと話す準備ができていません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0088L02U04",
@@ -288,7 +291,7 @@
    "old": "いつ話す準備ができるか、まだ分かりません",
    "new": "まだ話す準備ができていませんし、いつ準備ができるかわかりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0089L01U07",
@@ -298,7 +301,7 @@
    "old": "今日の難しい部分はもうやりました",
    "new": "難しかったことはもうやりました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0089L01U09",
@@ -308,7 +311,7 @@
    "old": "あなたのためにやりたかったことはやりました",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0089L03U06",
@@ -318,7 +321,7 @@
    "old": "短い時間でたくさん学んで、とても嬉しいです",
    "new": "短い時間でたくさんやって、とても嬉しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0089L03U12",
@@ -328,7 +331,7 @@
    "old": "短い時間でこれほど学べると思っていませんでした",
    "new": "短い時間でこれができるとは思っていませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L01U02",
@@ -338,7 +341,7 @@
    "old": "もっとゆっくり言ってくれませんか？",
    "new": "もっとゆっくりもう一度言ってくれませんか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L01U04",
@@ -348,7 +351,7 @@
    "old": "もっとゆっくり話してほしいです、まだ英語に慣れていないので",
    "new": "まだ準備ができていないので、もっとゆっくり話してほしいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L01U08",
@@ -358,7 +361,7 @@
    "old": "もっとゆっくり話してほしいと言おうとしていました",
    "new": "もっとゆっくり話してくださいとあなたに頼みたかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L01U10",
@@ -368,7 +371,7 @@
    "old": "もっとゆっくり話してくれたら、覚えるのが簡単になります",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L01U15",
@@ -378,7 +381,7 @@
    "old": "もっとゆっくり話してくれたら、英語が上達すると思います",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L02B04",
@@ -388,7 +391,7 @@
    "old": "難しいですが、してくれたら嬉しいです",
    "new": "難しいので、してくれたら嬉しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L02U03",
@@ -398,7 +401,7 @@
    "old": "してくれたら嬉しいです、難しいので",
    "new": "私には難しいので、してくれたら嬉しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0090L02U12",
@@ -408,7 +411,7 @@
    "old": "もう少しゆっくり話してくれたら、理解できます",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L01B03",
@@ -418,7 +421,7 @@
    "old": "それは難しいです",
    "new": "するのは難しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L01B04",
@@ -428,7 +431,7 @@
    "old": "英語は難しいです",
    "new": "英語を学ぶのは難しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L01U12",
@@ -438,7 +441,7 @@
    "old": "同時にいくつかのことをするのは難しいです",
    "new": "同時に全部するのは難しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L01U15",
@@ -448,7 +451,7 @@
    "old": "難しいですが、続ければうまくなると思います",
    "new": "難しいですが、これよりうまくできると思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L02U02",
@@ -458,7 +461,7 @@
    "old": "答えについて素早く考えることが難しいです",
    "new": "答えるのに十分早く考えるのは難しいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L02U04",
@@ -468,7 +471,7 @@
    "old": "私はそれについて考えることをやめたくありません",
    "new": "それについて考えようとするのをやめたくありません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L02U05",
@@ -478,7 +481,7 @@
    "old": "あなたは答えを探すときに考えることを楽しみますか？",
    "new": "答えについて考えようとするのを楽しんでいますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L06U08",
@@ -488,7 +491,7 @@
    "old": "彼は間に合うように答えることを心配していませんでした",
    "new": "彼は間に合うようにどう答えるか心配したくありませんでした",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0091L06U09",
@@ -498,7 +501,7 @@
    "old": "私はいつも間に合うように言えるように練習するつもりです",
    "new": "間に合うように言えるように練習するつもりです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L01U05",
@@ -508,7 +511,7 @@
    "old": "間に合うように答えることを練習し続けたいです",
    "new": "間に合うように答えようとし続けたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L01U08",
@@ -518,7 +521,7 @@
    "old": "私は難しくてもこの練習を続けたいです",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L01U12",
@@ -528,7 +531,7 @@
    "old": "この物語をもっと理解し続けたいです、とても面白いです",
    "new": "とても面白いので、物語を理解しようとし続けたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L02U05",
@@ -538,7 +541,7 @@
    "old": "私はこれがとても面白いと感じています",
    "new": "これはとても面白いと感じ始めています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L04U06",
@@ -548,7 +551,7 @@
    "old": "英語の練習をしばらく続けることが重要です",
    "new": "しばらくこれを続けることが大切です",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L04U10",
@@ -558,7 +561,7 @@
    "old": "あなたはしばらく練習を続けますか？",
    "new": "しばらくこれを続けるつもりですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0092L04U13",
@@ -568,7 +571,7 @@
    "old": "彼はしばらく答えを待つことを楽しんでいませんでした",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0093L01B03",
@@ -578,7 +581,7 @@
    "old": "もう行く時間 - 残念",
    "new": "残念ながら、もう行く時間です",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0093L01B06",
@@ -588,7 +591,7 @@
    "old": "もう行く時間です - しばらくの後",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0093L01B07",
@@ -598,7 +601,8 @@
    "old": "もう行く時間です - 準備ができています",
    "new": "もう行く時間ですし、準備ができています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   }
- ]
+ ],
+ "nightgateAt": "2026-11-23T23:07:44.794Z"
 }

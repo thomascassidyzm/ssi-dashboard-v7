@@ -1,0 +1,3347 @@
+[
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "92370712-e416-4d2d-9ac2-57a6a18d4dac",
+  "undo_file": "2026-11-23T23-16-58-336Z-92370712-e416-4d2d-9ac2-57a6a18d4dac.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U02",
+    "set": {
+     "known_audio_id": "d4980a4c-4f39-49a1-b429-88ab37d95aa8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U02",
+    "set": {
+     "known_text": "英語を学ぶのを手伝ってくれてありがとうございます",
+     "known_audio_id": "4fdb66fb-3f99-4a49-9cb8-4eeba55475f6"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U08",
+    "set": {
+     "known_audio_id": "d4980a4c-4f39-49a1-b429-88ab37d95aa8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U08",
+    "set": {
+     "known_text": "英語を教えてくれて手伝ってくれてありがとうございます",
+     "known_audio_id": "77f766d5-bc2b-4f98-a031-995c35d481d1"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02B07",
+    "set": {
+     "known_audio_id": "d4980a4c-4f39-49a1-b429-88ab37d95aa8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02B07",
+    "set": {
+     "known_text": "英語を学ぶのを手伝ってくれてありがとう",
+     "known_audio_id": "4c318967-8bd2-4117-a43b-892c288916a3"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U11",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U11",
+    "set": {
+     "known_text": "英語を理解するのは時間がかかることが大切です",
+     "known_audio_id": "595d01c8-dfab-4326-9e1a-38d83a6e91db"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U10",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U10",
+    "set": {
+     "known_text": "私は答えを理解しようとしていました",
+     "known_audio_id": "8c4482ff-ec8b-41ba-87d0-1c3f829b6ec8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U03",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U03",
+    "set": {
+     "known_text": "私はあなたの言いたいことを理解できます",
+     "known_audio_id": "27889572-a714-406b-9564-9cf4ccc01d3d"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U13",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L01U13",
+    "set": {
+     "known_text": "私はもっと理解できるようになりたかったです",
+     "known_audio_id": "c6be8fe2-139c-4903-b39a-a47b67758ab8"
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 2,
+  "status": 200,
+  "event_id": "09726675-fe36-4e15-9b43-5a17f919add0",
+  "undo_file": "2026-11-23T23-17-23-468Z-09726675-fe36-4e15-9b43-5a17f919add0.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01U12",
+    "set": {
+     "known_text": "今週、覚えることがありますか？",
+     "known_audio_id": "034d15bc-1bc4-41b0-a594-3f0f1bd2e862"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01B07",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01B07",
+    "set": {
+     "known_text": "あなたは何かありますか",
+     "known_audio_id": "a277be34-c2ff-4239-b8ac-f2ad4b98285b"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01B06",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01B06",
+    "set": {
+     "known_text": "それがありますか",
+     "known_audio_id": "2266e7d2-8a22-4a70-905f-cea2163af1be"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01B05",
+    "set": {
+     "known_text": "まだ英語で学ぶことがありますか？",
+     "known_audio_id": "59a4e80e-c745-476a-8068-7d1c65496728"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U07",
+    "set": {
+     "known_audio_id": "d4980a4c-4f39-49a1-b429-88ab37d95aa8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U07",
+    "set": {
+     "known_text": "手伝ってくれてどうもありがとうございます、今日とても助かりました",
+     "known_audio_id": "1d1f017b-5615-4fad-adf3-b41ff62b0dc5"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U14",
+    "set": {
+     "known_audio_id": "d4980a4c-4f39-49a1-b429-88ab37d95aa8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U14",
+    "set": {
+     "known_text": "今日手伝ってくれてどうもありがとうございます",
+     "known_audio_id": "91206275-c57c-4cf8-ad97-106e724c680a"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U13",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0074L02U13",
+    "set": {
+     "known_text": "手伝ってくれてありがとうございます、でもまだ練習が必要です",
+     "known_audio_id": "162fe6e8-d72d-46c5-802f-da9ba440d6f4",
+     "decomposition": [
+      {
+       "known": "どうもありがとうございます",
+       "legoId": "S0073L01",
+       "target": "thank you very much",
+       "isGhost": false
+      },
+      {
+       "known": "手伝ってくれて",
+       "legoId": "S0074L02",
+       "target": " for helping me",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "もっと学ぶことがあります",
+       "legoId": "S0073L02",
+       "target": " I've got more to learn",
+       "isGhost": false
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 3,
+  "status": 200,
+  "event_id": "3995f009-9757-4a7a-8c17-55b0c0b12686",
+  "undo_file": "2026-11-23T23-17-50-908Z-3995f009-9757-4a7a-8c17-55b0c0b12686.json",
+  "undo": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0081L01B04",
+     "seed_number": 81,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "いつ理解できますか",
+     "target_text": "when you understand?",
+     "word_count": 19,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:45.870Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "70a57ce4-6565-489a-ab18-01ce99410f0b",
+     "target1_audio_id": "8d1b37d6-bd18-4b79-945d-070615a1b3d7",
+     "target2_audio_id": "18f46022-8c78-4bba-9dcb-b60193a319c5",
+     "qa_checked": "2026-02-17T12:24:43.539Z",
+     "target1_duration_ms": 1176,
+     "target2_duration_ms": 1344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ",
+       "legoId": "S0081L01",
+       "target": "when",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0080L01U14",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0080L01U14",
+    "set": {
+     "known_text": "いつ準備ができるかわかりませんが、できるだけ頑張ります",
+     "known_audio_id": "fea29096-ae63-485b-9518-26c099f85d07",
+     "decomposition": [
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": "I'm not sure when I'll be ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "するつもり",
+       "legoId": "S0005L04",
+       "target": " I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " try",
+       "isGhost": true
+      },
+      {
+       "known": "説明する",
+       "legoId": "S0008L01",
+       "target": " to explain",
+       "isGhost": false
+      },
+      {
+       "known": "言いたいこと",
+       "legoId": "S0008L02",
+       "target": " what I mean",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0080L01U09",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0080L01U09",
+    "set": {
+     "known_text": "いつ準備ができるかわかりませんが、すぐに練習を始めます",
+     "known_audio_id": "dcb03c1b-a2e6-40f0-8674-749d3da29fcc",
+     "decomposition": [
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": "I'm not sure when I'll be ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "するつもり",
+       "legoId": "S0005L04",
+       "target": " I'm going to",
+       "isGhost": false
+      },
+      {
+       "known": "話し始める",
+       "legoId": "S0023L03",
+       "target": " start talking",
+       "isGhost": false
+      },
+      {
+       "known": "もっと",
+       "legoId": "S0023L01",
+       "target": " more",
+       "isGhost": false
+      },
+      {
+       "known": "もうすぐ",
+       "legoId": "S0023L02",
+       "target": " soon",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0080L01U11",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0080L01U11",
+    "set": {
+     "known_text": "いつ準備ができるかわかりませんが、準備ができた気分になるのは好きです",
+     "known_audio_id": "2ad9553d-9a33-4a33-b045-21987b0002b5",
+     "decomposition": [
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": "I'm not sure when I'll be ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "好きです",
+       "legoId": "S0026L01",
+       "target": " I like",
+       "isGhost": false
+      },
+      {
+       "known": "気持ち",
+       "legoId": "S0026L02",
+       "target": " feeling",
+       "isGhost": false
+      },
+      {
+       "known": "まるでもうすぐ〜のような",
+       "legoId": "S0026L04",
+       "target": " as if I'm nearly",
+       "isGhost": false
+      },
+      {
+       "known": "準備ができている",
+       "legoId": "S0026L03",
+       "target": " ready",
+       "isGhost": false
+      },
+      {
+       "known": "行く",
+       "legoId": "S0025L01",
+       "target": " to go",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0080L01B07",
+     "seed_number": 80,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "あなたを助ける準備がいつできるかわかりません",
+     "target_text": "I'm not sure when I'll be ready to help me",
+     "word_count": 42,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:45.120Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "f4a66870-b9fb-41d8-a9f7-0177e94b9aab",
+     "target1_audio_id": "2613d7ff-f5f9-4085-82de-8f814aaa8373",
+     "target2_audio_id": "f076f311-5f52-49ac-a060-cdcf21fed7c0",
+     "qa_checked": "2026-02-17T12:24:30.398Z",
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2544,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": "I'm not sure when I'll be ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "手伝ってください",
+       "legoId": "S0025L02",
+       "target": " help me",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0080L01B03",
+     "seed_number": 80,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "いつ準備ができるかわかりません、今",
+     "target_text": "I'm not sure when I'll be ready now",
+     "word_count": 35,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:45.120Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6fa7ddfa-2e63-4b7e-8da5-4f64e5fd8524",
+     "target1_audio_id": "9ea20f7a-233b-43dd-bb4d-07e025bf5dc9",
+     "target2_audio_id": "a6640dfc-4500-4127-929c-b36de818e0dd",
+     "qa_checked": "2026-02-17T12:24:30.398Z",
+     "target1_duration_ms": 2280,
+     "target2_duration_ms": 2040,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": "I'm not sure when I'll be ready",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "今",
+       "legoId": "S0001L04",
+       "target": " now",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0079L01U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0079L01U12",
+    "set": {
+     "known_text": "友達の名前を覚えるために学び始めましたか？",
+     "known_audio_id": "b2b67c26-0117-435c-9805-b379b4361918"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0079L01U15",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0079L01U15",
+    "set": {
+     "known_text": "あなたは午後に英語を学び始めましたか？",
+     "known_audio_id": "0b201757-4692-4f64-90b7-b91e04671cf5"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01U06",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0075L01U06",
+    "set": {
+     "known_text": "一週間で、まだ覚えることがありますか？",
+     "known_audio_id": "19bec303-9159-4a32-83b8-5539952fa1b4"
+    }
+   }
+  ],
+  "ops": 27
+ },
+ {
+  "batch": 4,
+  "status": 200,
+  "event_id": "283e637e-16b5-4ac5-9ea5-dfb50b4db05c",
+  "undo_file": "2026-11-23T23-18-07-267Z-283e637e-16b5-4ac5-9ea5-dfb50b4db05c.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L03U04",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L03U04",
+    "set": {
+     "known_text": "間違いについてあなたが言ったことに同意します。間違いをすることが大切です",
+     "known_audio_id": "ff74337e-cf3c-464e-85d7-783aaaf13b6f"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L01U15",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L01U15",
+    "set": {
+     "known_text": "完全に同意します。なぜですか？",
+     "known_audio_id": "3b3624bb-a5f5-4c49-92b3-18c63fe68b56"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L01B06",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L01B06",
+    "set": {
+     "known_text": "私はあなたに同意します",
+     "known_audio_id": "28f29e5d-88e9-4748-b3d3-d2eb2e82d6df"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L02U07",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0083L02U07",
+    "set": {
+     "known_text": "あなたの友達について先週書いた手紙のことを知っていますか？",
+     "known_audio_id": "5de4b39e-64ec-4526-b8ea-af0e69926cee"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0082L02U05",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0082L02U05",
+    "set": {
+     "known_text": "今夜あなたを待つつもりはありますか",
+     "known_audio_id": "49fc6aec-57d0-4f7f-9f31-94561e075f94"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0081L01U03",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0081L01U03",
+    "set": {
+     "known_text": "言葉が十分わかるとき、もっと面白くなります",
+     "known_audio_id": "68c53063-e4e9-46e9-9071-bd08a4c7bfac"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0081L01U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0081L01U12",
+    "set": {
+     "known_text": "いつ文全体を覚えられるかわかりません",
+     "known_audio_id": "429bc030-56d3-404b-ad93-2e459fa2a4aa"
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "event_id": "0f87d36f-a5c9-45c8-a1b8-97af6705bbde",
+  "undo_file": "2026-11-23T23-18-23-455Z-0f87d36f-a5c9-45c8-a1b8-97af6705bbde.json",
+  "undo": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0086L02U07",
+     "seed_number": 86,
+     "lego_index": 2,
+     "position": 16,
+     "known_text": "今日それを止めることはできませんでした、残念ながら",
+     "target_text": "it wasn't possible unfortunately to stop talking today",
+     "word_count": 55,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:33:53.185Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:33:54.283Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "6fa5d77f-2efd-4968-beb7-deaaac077c65",
+     "target1_audio_id": "8d403068-bbc8-46da-b15c-42d075c79239",
+     "target2_audio_id": "2999f3ae-1ad6-44d5-9ea2-091b748c23d7",
+     "qa_checked": "2026-02-17T12:24:43.539Z",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3672,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "できませんでした",
+       "legoId": "S0086L02",
+       "target": "it wasn't possible",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "残念ながら",
+       "legoId": "S0086L01",
+       "target": " unfortunately",
+       "isGhost": false
+      },
+      {
+       "known": "やめる",
+       "legoId": "S0019L03",
+       "target": " to stop",
+       "isGhost": false
+      },
+      {
+       "known": "話すこと",
+       "legoId": "S0019L04",
+       "target": " talking",
+       "isGhost": false
+      },
+      {
+       "known": "今日",
+       "legoId": "S0007L02",
+       "target": " today",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0086L01U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0086L01U12",
+    "set": {
+     "known_text": "残念ながら、彼女はそれを読みたくありません",
+     "known_audio_id": "80dd4005-2827-4384-9534-119709eefb81"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0086L01U05",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0086L01U05",
+    "set": {
+     "known_text": "残念ながら、その文全体を覚えることができません",
+     "known_audio_id": "e5735cff-c31f-4e1f-8db6-04d2fc4ab4ef"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0085L01U13",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0085L01U13",
+    "set": {
+     "known_text": "あの人たちについて彼女は何も言いませんでした",
+     "known_audio_id": "4d1288c0-70f0-47c9-a3f7-aa63db13341e"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0085L01U09",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0085L01U09",
+    "set": {
+     "known_text": "あの人たちと話したいですが、まだ準備ができていません",
+     "known_audio_id": "2882251b-3ff1-41ed-b1d1-e3a98a3f3724",
+     "decomposition": [
+      {
+       "known": "話したい",
+       "legoId": "S0001L01",
+       "target": "I want to speak",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "あの人たち",
+       "legoId": "S0085L01",
+       "target": " those people",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "でも",
+       "legoId": "S0039L01",
+       "target": " but",
+       "isGhost": false
+      },
+      {
+       "known": "いつ準備ができるかわかりません",
+       "legoId": "S0080L01",
+       "target": " I'm not sure when I'll be ready",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0084L01U09",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0084L01U09",
+    "set": {
+     "known_text": "彼が言ったことについて話したいです",
+     "known_audio_id": "6290641f-dbc2-4ecb-976f-24fb0f84dbfd"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0084L01U03",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0084L01U03",
+    "set": {
+     "known_text": "彼が言ったことがわかりませんでした。もう一度言ってもらえますか？",
+     "known_audio_id": "7fb75e67-d9c7-4d3e-b428-e976c3096079"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0084L01U01",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0084L01U01",
+    "set": {
+     "known_text": "彼が言ったことに同意しません。私の友達について正しくありません",
+     "known_audio_id": "9d614ed2-0a20-4622-8760-ceea50e371a5"
+    }
+   }
+  ],
+  "ops": 29
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "event_id": "3791aa01-e252-47cb-b915-151d68a6c000",
+  "undo_file": "2026-11-23T23-18-39-262Z-3791aa01-e252-47cb-b915-151d68a6c000.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L01U08",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L01U08",
+    "set": {
+     "known_text": "まだ知らない人たちに自分のことを説明したい",
+     "known_audio_id": "081bd80a-4c39-4397-b0dd-d608cbe1dc3d"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L01U15",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L01U15",
+    "set": {
+     "known_text": "まだ知らない人たちと話せることを楽しんでいます",
+     "known_audio_id": "77b20094-1f6b-40ba-a60d-01f99afccaff"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L01U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L01U12",
+    "set": {
+     "known_text": "まだ知らない人たちにどう言えばいいか分かりません",
+     "known_audio_id": "65643b83-2e34-43b2-8e43-0f770e892d3a"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U12",
+    "set": {
+     "known_text": "私が知らない人たちと英語で話すのはまだ難しいです",
+     "known_audio_id": "67a8e58f-d1c1-4baf-9fe2-beb091f99262"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U04",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U04",
+    "set": {
+     "known_text": "私が知らない人たちを助けるのはいつも簡単ではありません",
+     "known_audio_id": "27fe4444-6a8f-4975-b199-fdfdb1b85c95"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U07",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U07",
+    "set": {
+     "known_text": "いつか私が知らない人たちと英語で話せるようになりたい",
+     "known_audio_id": "0fa1c7b4-ddf4-4f6f-b3c5-2d9ab35a990c"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U15",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0087L02U15",
+    "set": {
+     "known_text": "私が知らない人たちと話すのに十分な言葉をまだ知りません",
+     "known_audio_id": "8634eca0-884e-4abb-8db7-66c285c8b447"
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 7,
+  "status": 200,
+  "event_id": "6a85c66e-0c98-45c3-8556-e7e8e4b830af",
+  "undo_file": "2026-11-23T23-18-55-390Z-6a85c66e-0c98-45c3-8556-e7e8e4b830af.json",
+  "undo": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0090L02U12",
+     "seed_number": 90,
+     "lego_index": 2,
+     "position": 21,
+     "known_text": "もう少しゆっくり話してくれたら、理解できます",
+     "target_text": "if you can that would be great for me to understand what you said",
+     "word_count": 66,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:37:29.684Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:37:29.938Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "4a2673be-9c3a-4988-8c31-4c34070c4729",
+     "target1_audio_id": "caa51fa8-9dbc-4401-882e-2508d49bc398",
+     "target2_audio_id": "621bf6eb-2203-41b6-ad9e-2bb074b54388",
+     "qa_checked": "2026-02-17T12:24:43.539Z",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3912,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "してくれたら嬉しいです",
+       "legoId": "S0090L02",
+       "target": "if you can that would be great",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "理解する",
+       "legoId": "S0074L01",
+       "target": " understand",
+       "isGhost": false
+      },
+      {
+       "known": "言ったこと",
+       "legoId": "S0078L01",
+       "target": " what you said",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L02U03",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L02U03",
+    "set": {
+     "known_text": "してくれたら嬉しいです、難しいので",
+     "known_audio_id": "1ae78f91-cc0c-45fa-9217-a81c070c126d"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L02B04",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L02B04",
+    "set": {
+     "known_text": "難しいですが、してくれたら嬉しいです",
+     "known_audio_id": "0dc4b440-0f2e-43bf-8bf8-0fdfe9372fdf"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0089L03U06",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0089L03U06",
+    "set": {
+     "known_text": "短い時間でたくさん学んで、とても嬉しいです",
+     "known_audio_id": "71332d91-34ae-4434-99a0-ccddeea3b25e"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0089L03U12",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0089L03U12",
+    "set": {
+     "known_text": "短い時間でこれほど学べると思っていませんでした",
+     "known_audio_id": "245d52ee-8362-4392-902f-62adce6a9820"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0089L01U09",
+     "seed_number": 89,
+     "lego_index": 1,
+     "position": 17,
+     "known_text": "あなたのためにやりたかったことはやりました",
+     "target_text": "I've done what you wanted me to do for you",
+     "word_count": 43,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:35:40.580Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:35:05.537Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "e57cbcc6-17be-47e8-adaa-035c813f599e",
+     "target1_audio_id": "4644af82-6936-4cd7-aa10-2811a2d105fd",
+     "target2_audio_id": "bc0f9de1-dd4c-415b-bad3-60e666eecb4a",
+     "qa_checked": "2026-02-17T12:24:43.539Z",
+     "target1_duration_ms": 2304,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "やった",
+       "legoId": "S0089L01",
+       "target": "I've done",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " what",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wanted",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0089L01U07",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0089L01U07",
+    "set": {
+     "known_text": "今日の難しい部分はもうやりました",
+     "known_audio_id": "f847676b-97d0-4dac-85b8-11e13feb7705"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L02U04",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L02U04",
+    "set": {
+     "known_text": "いつ話す準備ができるか、まだ分かりません",
+     "known_audio_id": "bf30af1c-a78b-48cb-a303-b04ecd75a3a4"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L02B07",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0088L02B07",
+    "set": {
+     "known_text": "あなたに答える準備ができていません",
+     "known_audio_id": "4f800352-618d-4f1a-87c7-a49c41e7c149"
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 8,
+  "status": 200,
+  "event_id": "3d9ff8b1-a4bc-4c4c-877c-776db50bb04f",
+  "undo_file": "2026-11-23T23-19-09-229Z-3d9ff8b1-a4bc-4c4c-877c-776db50bb04f.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 74,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0277L04U07",
+     "seed_number": 277,
+     "lego_index": 4,
+     "position": 13,
+     "known_text": "言いたいことがあります。ここで待っていられますか？",
+     "target_text": "I've got something important to tell you can you stay here for a little longer?",
+     "word_count": 78,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 9,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:44.322Z",
+      "known_score": 9,
+      "target_score": 9
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:44.973Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "bf32b411-80bf-4719-9b26-a475b05fdd66",
+     "target1_audio_id": "880fa6f5-1eb8-44bc-b3c1-073a3fd4c472",
+     "target2_audio_id": "3e3b818a-269f-46f8-93ae-14fc0c8168c1",
+     "qa_checked": "2026-02-17T12:29:38.556Z",
+     "target1_duration_ms": 4320,
+     "target2_duration_ms": 4224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "があります",
+       "legoId": "S0277L04",
+       "target": "I've got",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "大事なこと",
+       "legoId": "S0261L02",
+       "target": " something important",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " to",
+       "isGhost": true
+      },
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": " tell",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "〜していただけますか",
+       "legoId": "S0150L03",
+       "target": " can you",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " stay",
+       "isGhost": true
+      },
+      {
+       "known": "ここに",
+       "legoId": "S0276L01",
+       "target": " here",
+       "isGhost": false
+      },
+      {
+       "known": "もう少し長く",
+       "legoId": "S0276L02",
+       "target": " for a little longer",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0258L02U01",
+     "seed_number": 258,
+     "lego_index": 2,
+     "position": 9,
+     "known_text": "あそこにある青いものはなぜそんなに面白いのですか？",
+     "target_text": "what's that blue thing over there and do you know why it's so interesting?",
+     "word_count": 73,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:46:00.400Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:46:00.514Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "8de61063-02f6-42b9-9616-9505c633dace",
+     "target1_audio_id": "614fd8d9-33a1-4265-b6b6-0bc7782fb688",
+     "target2_audio_id": "8960ce4c-84cc-4bd7-96ae-2ac4533a036c",
+     "qa_checked": "2026-02-17T12:29:21.510Z",
+     "target1_duration_ms": 3984,
+     "target2_duration_ms": 4224,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "は何ですか",
+       "legoId": "S0258L02",
+       "target": "what's",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "青い",
+       "legoId": "S0257L02",
+       "target": " blue",
+       "isGhost": false
+      },
+      {
+       "known": "もの",
+       "legoId": "S0257L03",
+       "target": " thing",
+       "isGhost": false
+      },
+      {
+       "known": "あそこ",
+       "legoId": "S0258L01",
+       "target": " over there",
+       "isGhost": false
+      },
+      {
+       "known": "そして",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " do",
+       "isGhost": true
+      },
+      {
+       "known": "わかる",
+       "legoId": "S0049L02",
+       "target": " you know",
+       "isGhost": false
+      },
+      {
+       "known": "理由",
+       "legoId": "S0127L01",
+       "target": " why",
+       "isGhost": false
+      },
+      {
+       "known": "それを",
+       "legoId": "S0152L02",
+       "target": " it",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "'s",
+       "isGhost": true
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "面白い",
+       "legoId": "S0051L03",
+       "target": " interesting",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0258L01U05",
+     "seed_number": 258,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "あそこにいる男性が今夜私に話しかけたいと思っていることを伝えてほしかったのです",
+     "target_text": "he wanted me to tell you that the man over there wanted to speak with me this evening",
+     "word_count": 85,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:45:45.067Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:45:45.174Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "e27d65f5-7cd0-4f50-99b1-2497777f90b3",
+     "target1_audio_id": "a12e9552-6a77-4d77-8906-ea8fb177bd7a",
+     "target2_audio_id": "b3870d21-b7fb-44c8-952b-923b8c245ce7",
+     "qa_checked": "2026-02-17T12:29:21.510Z",
+     "target1_duration_ms": 4560,
+     "target2_duration_ms": 4824,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": "he",
+       "isGhost": false
+      },
+      {
+       "known": "〜てほしかった",
+       "legoId": "S0237L01",
+       "target": " wanted me to",
+       "isGhost": false
+      },
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": " tell",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "それ",
+       "legoId": "S0162L01",
+       "target": " that",
+       "isGhost": false
+      },
+      {
+       "known": "その男性は",
+       "legoId": "S0226L01",
+       "target": " the man",
+       "isGhost": false
+      },
+      {
+       "known": "あそこ",
+       "legoId": "S0258L01",
+       "target": " over there",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "たかった",
+       "legoId": "S0052L02",
+       "target": " wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "私と",
+       "legoId": "S0015L02",
+       "target": " with me",
+       "isGhost": false
+      },
+      {
+       "known": "今晩",
+       "legoId": "S0018L04",
+       "target": " this evening",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0257L01U07",
+     "seed_number": 257,
+     "lego_index": 1,
+     "position": 13,
+     "known_text": "それは驚きでした。彼は私の友達なのに何を言えばいいかわかりませんでした",
+     "target_text": "that was a surprise because he's my friend and I didn't know what to say",
+     "word_count": 72,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:44:17.182Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:44:17.743Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "93ed4dca-85b2-401a-98ae-d327089b5720",
+     "target1_audio_id": "9590bdf8-a6c6-4772-9513-5eeb9777fc56",
+     "target2_audio_id": "51e9e415-b223-4772-bafc-a033bc884ae6",
+     "qa_checked": "2026-02-17T12:29:21.510Z",
+     "target1_duration_ms": 3864,
+     "target2_duration_ms": 4056,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "あの",
+       "legoId": "S0257L01",
+       "target": "that",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "驚き",
+       "legoId": "S0130L01",
+       "target": " surprise",
+       "isGhost": false
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "彼",
+       "legoId": "S0052L01",
+       "target": " he",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "'s",
+       "isGhost": true
+      },
+      {
+       "known": "私の",
+       "legoId": "S0166L01",
+       "target": " my",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " friend",
+       "isGhost": true
+      },
+      {
+       "known": "そして",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "知りませんでした",
+       "legoId": "S0105L02",
+       "target": " didn't know",
+       "isGhost": false
+      },
+      {
+       "known": "どう",
+       "legoId": "S0162L03",
+       "target": " what",
+       "isGhost": false
+      },
+      {
+       "known": "言う",
+       "legoId": "S0004L02",
+       "target": " to say",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0257L01U09",
+     "seed_number": 257,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "明日何が起こるか聞いたのでそれはとても良い考えだと思いました",
+     "target_text": "I thought that was a good idea because she wanted to tell me what's going to happen",
+     "word_count": 83,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:44:17.182Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:44:17.743Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "56c8a21c-34dc-474b-a83f-1c15920f0b33",
+     "target1_audio_id": "480361ee-c31e-4090-91ce-72913b3e1162",
+     "target2_audio_id": "c8c68223-7c98-473b-a872-fc9fb7f1b4da",
+     "qa_checked": "2026-02-17T12:29:21.510Z",
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 4344,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "思いました",
+       "legoId": "S0124L01",
+       "target": " thought",
+       "isGhost": false
+      },
+      {
+       "known": "あの",
+       "legoId": "S0257L01",
+       "target": " that",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " was",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " good",
+       "isGhost": true
+      },
+      {
+       "known": "考え",
+       "legoId": "S0189L01",
+       "target": " idea",
+       "isGhost": false
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "彼女",
+       "legoId": "S0053L01",
+       "target": " she",
+       "isGhost": false
+      },
+      {
+       "known": "たかった",
+       "legoId": "S0052L02",
+       "target": " wanted to",
+       "isGhost": false
+      },
+      {
+       "known": "教える",
+       "legoId": "S0070L01",
+       "target": " tell",
+       "isGhost": false
+      },
+      {
+       "known": "私に",
+       "legoId": "S0169L01",
+       "target": " me",
+       "isGhost": false
+      },
+      {
+       "known": "何が起こるか",
+       "legoId": "S0012L05",
+       "target": " what's going to happen",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0253L02U09",
+     "seed_number": 253,
+     "lego_index": 2,
+     "position": 17,
+     "known_text": "数分で準備できます。一緒に一生懸命頑張りましょう",
+     "target_text": "I'll be ready in a few minutes and I can work hard",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:49:57.692Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:49:57.839Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "c7304551-d394-461f-a239-579093840d86",
+     "target1_audio_id": "422d19b9-a922-4637-b631-cca5b1f8b0a2",
+     "target2_audio_id": "75c1224f-c525-43ac-b124-26abc8f0e143",
+     "qa_checked": "2026-02-17T12:29:21.510Z",
+     "target1_duration_ms": 3264,
+     "target2_duration_ms": 3048,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I'll",
+       "isGhost": true
+      },
+      {
+       "known": "準備ができます",
+       "legoId": "S0252L02",
+       "target": " be ready",
+       "isGhost": false
+      },
+      {
+       "known": "数分で",
+       "legoId": "S0253L02",
+       "target": " in a few minutes",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "そして",
+       "legoId": "S0015L01",
+       "target": " and",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "一生懸命頑張る",
+       "legoId": "S0106L03",
+       "target": " work hard",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0136L01U13",
+     "seed_number": 136,
+     "lego_index": 1,
+     "position": 22,
+     "known_text": "もちろんあなたは誰かと英語を練習するようになれます。友達に頼んでみてください",
+     "target_text": "of course you can get to practise speaking English with someone you know",
+     "word_count": 72,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:47.302Z",
+      "known_score": 8,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:48.067Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "9c2db7b0-a167-4410-bc75-cad6c3d6918c",
+     "target1_audio_id": "0334ca53-6d4f-4374-a039-fff6ca018eee",
+     "target2_audio_id": "4b77995b-efa0-4a23-8fb8-5b30595a2cb6",
+     "qa_checked": "2026-02-17T12:24:36.894Z",
+     "target1_duration_ms": 3528,
+     "target2_duration_ms": 3696,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もちろん",
+       "legoId": "S0136L01",
+       "target": "of course",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "〜するようになる",
+       "legoId": "S0133L01",
+       "target": " get to",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " practise",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speaking",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " with",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " someone",
+       "isGhost": true
+      },
+      {
+       "known": "わかる",
+       "legoId": "S0049L02",
+       "target": " you know",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0136L01U10",
+     "seed_number": 136,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "もちろん彼女に聞いてください。彼女は答えを知っています",
+     "target_text": "of course you can ask her she wants to find out what the answer is",
+     "word_count": 66,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:47.302Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:48.067Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "5cc09458-0dce-4614-98d9-b04f56520a99",
+     "target1_audio_id": "3790ce10-39f3-45ae-8e1d-c4f1c00aba50",
+     "target2_audio_id": "b52635e1-31cd-4049-a289-1f4b1d5afb3f",
+     "qa_checked": "2026-02-17T12:24:36.894Z",
+     "target1_duration_ms": 3888,
+     "target2_duration_ms": 3744,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もちろん",
+       "legoId": "S0136L01",
+       "target": "of course",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "聞いて",
+       "legoId": "S0136L02",
+       "target": " ask",
+       "isGhost": false
+      },
+      {
+       "known": "彼女の",
+       "legoId": "S0021L02",
+       "target": " her",
+       "isGhost": false
+      },
+      {
+       "known": "彼女は〜たい",
+       "legoId": "S0017L01",
+       "target": " she wants",
+       "isGhost": false
+      },
+      {
+       "known": "知る",
+       "legoId": "S0017L02",
+       "target": " to find out",
+       "isGhost": false
+      },
+      {
+       "known": "答えが何か",
+       "legoId": "S0017L03",
+       "target": " what the answer is",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0136L01U06",
+     "seed_number": 136,
+     "lego_index": 1,
+     "position": 15,
+     "known_text": "もちろん私は彼らと一緒に行きます。問題ありません",
+     "target_text": "of course I want to go with them it's not a problem",
+     "word_count": 51,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:43:47.302Z",
+      "known_score": 7,
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:43:48.067Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "a6808746-6336-4439-80e4-97efc6cda3c6",
+     "target1_audio_id": "53126f43-507f-4b43-91dc-b7e3b4714a94",
+     "target2_audio_id": "2187731a-eefe-42dc-af12-192b6d4d18ad",
+     "qa_checked": "2026-02-17T12:24:36.894Z",
+     "target1_duration_ms": 2856,
+     "target2_duration_ms": 3144,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もちろん",
+       "legoId": "S0136L01",
+       "target": "of course",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " want",
+       "isGhost": true
+      },
+      {
+       "known": "行く",
+       "legoId": "S0025L01",
+       "target": " to go",
+       "isGhost": false
+      },
+      {
+       "known": "彼らと一緒に",
+       "legoId": "S0134L01",
+       "target": " with them",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " it's",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " a",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " problem",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0119L01U03",
+     "seed_number": 119,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "帰る前に何か聞いてもいいですかと彼女に言いました",
+     "target_text": "I said can I ask you something before you leave",
+     "word_count": 47,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "pipeline": "backfill",
+      "scored_at": "2026-06-01T11:40:47.856Z",
+      "target_score": 7
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-01T11:40:47.916Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3b671087-217f-4ca2-8b19-813a3dc13566",
+     "target1_audio_id": "4f2f5cd7-4c4c-45e3-95c9-85c24f7cf8c6",
+     "target2_audio_id": "18049f37-7e0e-43b7-9204-4406a6e05c83",
+     "qa_checked": null,
+     "target1_duration_ms": 2904,
+     "target2_duration_ms": 2736,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "I",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " said",
+       "isGhost": true
+      },
+      {
+       "known": "帰る前に何か聞いてもいいですか",
+       "legoId": "S0119L01",
+       "target": " can I ask you something before you leave",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0108L01U05",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 14,
+     "known_text": "夜中に起きるのは難しいです",
+     "target_text": "It's difficult, waking in the middle of the night",
+     "word_count": 50,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:26.230Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:51:26.342Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0d06edea-b548-41b6-92ba-0a1721a62ccb",
+     "target1_audio_id": "b5f8f390-c1c5-4ae8-b5e0-8db5d52f5ef4",
+     "target2_audio_id": "671c26a5-a75d-413d-bf18-dfb1e4c0ddbc",
+     "qa_checked": "2026-02-17T12:23:36.835Z",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "難しいです",
+       "legoId": "S0091L01",
+       "target": "It's difficult",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": ",",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " waking",
+       "isGhost": true
+      },
+      {
+       "known": "夜中に",
+       "legoId": "S0108L01",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0108L01U10",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "昨夜も夜中に起きました",
+     "target_text": "I can't remember not waking in the middle of the night last night",
+     "word_count": 66,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:26.230Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:51:26.342Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "889df152-6417-40fd-a314-83ef50d93de7",
+     "target1_audio_id": "f18a9cc6-03f4-40cb-b7b7-eb7a823153ea",
+     "target2_audio_id": "0af92f5e-3895-4639-b296-d54443f4a82e",
+     "qa_checked": "2026-02-17T12:23:36.835Z",
+     "target1_duration_ms": 4056,
+     "target2_duration_ms": 4320,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": "I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " waking",
+       "isGhost": true
+      },
+      {
+       "known": "夜中に",
+       "legoId": "S0108L01",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "昨夜",
+       "legoId": "S0042L03",
+       "target": " last night",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0108L01B04",
+     "seed_number": 108,
+     "lego_index": 1,
+     "position": 6,
+     "known_text": "夜中に起きたくない",
+     "target_text": "not waking in the middle of the night",
+     "word_count": 37,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use",
+      "pipeline": "v2"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:51:26.342Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "6f3145df-4577-4e38-97d6-41edd0b26502",
+     "target1_audio_id": "51e4006f-dbd8-4f57-aa05-f7c2e4d37a5e",
+     "target2_audio_id": "e0086d66-9c93-4c9f-b93d-5c6b097b695f",
+     "qa_checked": "2026-02-17T12:23:36.835Z",
+     "target1_duration_ms": 2088,
+     "target2_duration_ms": 1920,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "not",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " waking",
+       "isGhost": true
+      },
+      {
+       "known": "夜中に",
+       "legoId": "S0108L01",
+       "target": " in the middle of the night",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0102L01U10",
+     "seed_number": 102,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "そうではないと言おうとしているので、少しの言葉を覚えられます",
+     "target_text": "we're trying to say that it's not like that so I can remember how to say a few words",
+     "word_count": 84,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:40.390Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:51:40.510Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "d3568769-a455-41f8-ab8c-08a8fb4334c0",
+     "target1_audio_id": "061d3a90-df5b-433b-8398-3506ae101b88",
+     "target2_audio_id": "0f6f4d7c-664b-4937-bd08-f3ce74f9bd77",
+     "qa_checked": "2026-02-17T12:23:36.835Z",
+     "target1_duration_ms": 4800,
+     "target2_duration_ms": 5520,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "そうではないと言おうとしています",
+       "legoId": "S0102L01",
+       "target": "we're trying to say that it's not like that",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "ように",
+       "legoId": "S0056L01",
+       "target": " so",
+       "isGhost": false
+      },
+      {
+       "known": "覚えられる",
+       "legoId": "S0010L03",
+       "target": " I can remember",
+       "isGhost": false
+      },
+      {
+       "known": "言う方法",
+       "legoId": "S0004L04",
+       "target": " how to say",
+       "isGhost": false
+      },
+      {
+       "known": "いくつかの言葉",
+       "legoId": "S0056L03",
+       "target": " a few words",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0102L01U15",
+     "seed_number": 102,
+     "lego_index": 1,
+     "position": 24,
+     "known_text": "言いたいことを思い出せないのは、そうではないと言おうとしているからです",
+     "target_text": "I can't remember how to say what I wanted to say because we're trying to say that it's not like that",
+     "word_count": 100,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:51:40.390Z",
+      "known_score": 7,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:51:40.510Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "555e3620-9219-40b3-bba9-5be88d3c58e5",
+     "target1_audio_id": "a4536f90-1262-489b-87c8-081c1d3b7e3c",
+     "target2_audio_id": "99fd4ae2-7929-44ab-b49d-2e4be0c16f47",
+     "qa_checked": "2026-02-17T12:23:36.835Z",
+     "target1_duration_ms": 5664,
+     "target2_duration_ms": 5904,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "思い出せません",
+       "legoId": "S0057L01",
+       "target": "I can't remember",
+       "isGhost": false
+      },
+      {
+       "known": "言う方法",
+       "legoId": "S0004L04",
+       "target": " how to say",
+       "isGhost": false
+      },
+      {
+       "known": "言いたかったこと",
+       "legoId": "S0057L02",
+       "target": " what I wanted to say",
+       "isGhost": false
+      },
+      {
+       "known": "から",
+       "legoId": "S0022L01",
+       "target": " because",
+       "isGhost": false
+      },
+      {
+       "known": "そうではないと言おうとしています",
+       "legoId": "S0102L01",
+       "target": " we're trying to say that it's not like that",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0090L01U15",
+     "seed_number": 90,
+     "lego_index": 1,
+     "position": 24,
+     "known_text": "もっとゆっくり話してくれたら、英語が上達すると思います",
+     "target_text": "if you can speak more slowly that would be great for my English",
+     "word_count": 64,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:35:44.840Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:35:08.701Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "8f3cae13-be77-495d-a377-f94a4f42a1dc",
+     "target1_audio_id": "fd67bf7b-6252-41d5-af9d-a5720afbb453",
+     "target2_audio_id": "7b72b6b4-862c-4c15-b4ae-d4b312219bca",
+     "qa_checked": "2026-02-17T12:24:43.539Z",
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 3624,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": "if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "もっとゆっくり",
+       "legoId": "S0090L01",
+       "target": " more slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " great",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " my",
+       "isGhost": true
+      },
+      {
+       "known": "英語",
+       "legoId": "S0001L02",
+       "target": " English",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "eng_for_jpn:S0090L01U10",
+     "seed_number": 90,
+     "lego_index": 1,
+     "position": 19,
+     "known_text": "もっとゆっくり話してくれたら、覚えるのが簡単になります",
+     "target_text": "if you can speak more slowly that would be great for me to remember",
+     "word_count": 68,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 8,
+      "format": "build_use",
+      "pipeline": "v2",
+      "scored_at": "2026-02-17T11:35:44.840Z",
+      "known_score": 8,
+      "target_score": 8
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-17T11:35:08.701Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "77277976-7cdd-4b3c-a50f-7bbddef71199",
+     "target1_audio_id": "b675b548-9ad2-4111-81a1-b914f06c8056",
+     "target2_audio_id": "e986722c-5cba-4f94-8c57-af7f06b4b054",
+     "qa_checked": "2026-02-17T12:24:43.539Z",
+     "target1_duration_ms": 3744,
+     "target2_duration_ms": 3480,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "もし",
+       "legoId": "S0044L02",
+       "target": "if",
+       "isGhost": false
+      },
+      {
+       "known": "あなた",
+       "legoId": "S0054L03",
+       "target": " you",
+       "isGhost": false
+      },
+      {
+       "known": "できる",
+       "legoId": "S0056L02",
+       "target": " can",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " speak",
+       "isGhost": true
+      },
+      {
+       "known": "もっとゆっくり",
+       "legoId": "S0090L01",
+       "target": " more slowly",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " that",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " would",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " be",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " great",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " for",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " me",
+       "isGhost": true
+      },
+      {
+       "known": "思い出す",
+       "legoId": "S0006L02",
+       "target": " to remember",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L01U08",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L01U08",
+    "set": {
+     "known_text": "もっとゆっくり話してほしいと言おうとしていました",
+     "known_audio_id": "e19e6643-8631-44f4-bf7a-a4ea75e731fd"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L01U04",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L01U04",
+    "set": {
+     "known_text": "もっとゆっくり話してほしいです、まだ英語に慣れていないので",
+     "known_audio_id": "10443d4b-6662-4134-b205-7b203e2968ef"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L01U02",
+    "set": {
+     "known_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "eng_for_jpn:S0090L01U02",
+    "set": {
+     "known_text": "もっとゆっくり言ってくれませんか？",
+     "known_audio_id": "c77bc290-bac5-4368-a48f-a577ea8018fc"
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 9,
+  "status": 200,
+  "event_id": "0d798751-cb74-4eb2-945c-b8131bb1143b",
+  "undo_file": "2026-11-23T23-19-16-029Z-0d798751-cb74-4eb2-945c-b8131bb1143b.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 277,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 258,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 257,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 253,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 136,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 119,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 108,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 102,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 90,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 89,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 88,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 87,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 86,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 85,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 84,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 83,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 82,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 81,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 80,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 79,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 75,
+    "set": {
+     "approved_at": "2026-06-01T13:02:14.222Z"
+    }
+   }
+  ],
+  "ops": 21
+ }
+]

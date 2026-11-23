@@ -2,7 +2,7 @@
  "course": "eng_for_jpn",
  "plan": "p08-s144-153.tsv",
  "copy": "ssi_copy_20261123t033000z",
- "at": "2026-11-23T11:33:03.304Z",
+ "at": "2026-11-23T23:06:17.699Z",
  "seeds": {
   "144": {
    "before": [
@@ -64,7 +64,7 @@
    "old": "前に今朝したかったことを話す",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0144L02U15",
@@ -74,7 +74,7 @@
    "old": "今日私たちよりも早く起きました",
    "new": "彼らは私たちより早く起きました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0150L03B05",
@@ -84,7 +84,7 @@
    "old": "もう少しゆっくり言っていただけますか",
    "new": "もう少しゆっくりもう一度言ってもらえますか",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0150L03U03",
@@ -94,7 +94,7 @@
    "old": "もう少しゆっくり言っていただけますか？",
    "new": "理解できるように、もう少しゆっくりもう一度言っていただけますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0150L03U06",
@@ -104,7 +104,7 @@
    "old": "もう一度説明していただけますか？",
    "new": "わからなかったので、言いたいことをもう一度言っていただけますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0150L03U07",
@@ -114,7 +114,7 @@
    "old": "もっとゆっくり話していただけますか？",
    "new": "学ぼうとしているので、もっとゆっくり話していただけますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L01U02",
@@ -124,7 +124,10 @@
    "old": "私はそれを違うやり方でしたでしょう。もし知っていたら",
    "new": "あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done it differently if I had known what you wanted\",\"unknown\":\"differently had known\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0152L01U08",
@@ -134,7 +137,10 @@
    "old": "私は同じことをしたでしょう。あなたが知っていたことを知っていたら",
    "new": "あなたが知っていることを知っていたら、同じことをしたでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done the same thing if I had known what you know\",\"unknown\":\"had known\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0152L01U09",
@@ -144,7 +150,10 @@
    "old": "彼女は違うやり方でしたでしょう。もし選べたなら",
    "new": "考える時間がもっとあったら、彼女は違うやり方でやったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"she would have done it differently if she had had more time to think\",\"unknown\":\"differently had had\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0152L01U10",
@@ -154,7 +163,7 @@
    "old": "あなたならどうしたでしょうか？何もうまくいきませんでした",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L01U11",
@@ -164,7 +173,10 @@
    "old": "私たちはもっと良い仕事をしたでしょう。一緒に取り組んでいたら",
    "new": "一緒に取り組む時間がもっとあったら、私たちはもっとうまくやったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"we would have done it better if we had had more time to work together\",\"unknown\":\"had had\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0152L03U02",
@@ -174,7 +186,7 @@
    "old": "次は違うやり方でやるべきです。今回はうまくいきませんでした",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L03U03",
@@ -184,7 +196,10 @@
    "old": "私は違うやり方でやったでしょう。もし知っていたら",
    "new": "あなたが何を望んでいたか知っていたら、違うやり方でやったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done it differently if I had known what you wanted\",\"unknown\":\"had known\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0152L03U07",
@@ -194,7 +209,7 @@
    "old": "なぜ違うやり方でやりたいのですか？",
    "new": "こんなにうまくいっているのに、なぜ違うやり方でやりたいのですか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L03U08",
@@ -204,7 +219,7 @@
    "old": "彼は次は違うやり方でやると言いました",
    "new": "彼は満足していなかったので、次は違うやり方でやると言いました",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L03U10",
@@ -214,7 +229,10 @@
    "old": "あなたが違うやり方でやっていたら、もっとうまくいったでしょう",
    "new": "うまくいかないと知っていたら、違うやり方でやったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done it differently if I had known it wasn't going to work\",\"unknown\":\"had known\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0152L03U11",
@@ -224,7 +242,7 @@
    "old": "私は練習の仕方を違うやり方でやりたいと思っています",
    "new": "英語がうまくなるように、違うやり方でやることを考えています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L03U12",
@@ -234,7 +252,7 @@
    "old": "彼女は私に違うやり方でやる方法を教えてくれました",
    "new": "彼女は、私がうまくできるように、違うやり方でやる方法を見せたかったです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L03U13",
@@ -244,7 +262,7 @@
    "old": "次は違うやり方でやれるように、今頑張っています",
    "new": "次はもっとうまくできるように、今は違うやり方でやっています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0152L03U14",
@@ -254,7 +272,10 @@
    "old": "知っていたら違うやり方でやっていたのですが",
    "new": "うまくいかないと知っていたら、違うやり方でやったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "FAIL",
+   "why": [
+    "popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"I would have done it differently if I had known it wasn't going to work\",\"unknown\":\"had known\"}],\"total\":1}"
+   ]
   },
   {
    "id": "S0153L01U01",
@@ -264,7 +285,7 @@
    "old": "知っていたら、私はそれを言わなかったでしょう",
    "new": "あなたがこう感じると知っていたら、それを言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U02",
@@ -274,7 +295,7 @@
    "old": "彼はそんなことを言わなかったでしょう。もし考えていたら",
    "new": "もっとよく考えていたら、彼はそれを言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U03",
@@ -284,7 +305,7 @@
    "old": "私は何も言わなかったでしょう。もし知っていたら",
    "new": "何が起きているか知っていたら、何も言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U05",
@@ -294,7 +315,7 @@
    "old": "彼女は何も言わなかったでしょう。もし時間があったら",
    "new": "考える時間がもっとあったら、彼女は何も言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U06",
@@ -304,7 +325,7 @@
    "old": "私はそれを言わなかったでしょう。もしあなたがそこにいたら",
    "new": "あなたが私たちとそこにいると知っていたら、それを言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U07",
@@ -314,7 +335,7 @@
    "old": "彼はそれを言わなかったでしょう。もし彼女が知っていたら",
    "new": "彼女が聞きたくないと知っていたら、彼は彼女にそれを言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U09",
@@ -324,7 +345,7 @@
    "old": "あなたはそんなことを言わなかったでしょう。もし知っていたら",
    "new": "本当のことを知っていたら、あなたはそんなことを言わなかったでしょう",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U11",
@@ -334,7 +355,7 @@
    "old": "私はそれを言わなかったでしょう。もし違っていたら",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U12",
@@ -344,7 +365,7 @@
    "old": "彼はそれを彼女に言わなかったでしょう。もし彼女が覚えていなかったら",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U13",
@@ -354,7 +375,7 @@
    "old": "私は何も言わなかったでしょう。もし一人でやれなかったら",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L01U14",
@@ -364,7 +385,7 @@
    "old": "あなたはそれを言わなかったでしょう。もし気にしていなかったら",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L02U05",
@@ -374,7 +395,7 @@
    "old": "あなたが言ったことはまさに正しいです",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L02U07",
@@ -384,7 +405,7 @@
    "old": "まさに、それは難しいですね",
    "new": "まさに、十分知らないと難しいですね",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L02U10",
@@ -394,7 +415,7 @@
    "old": "まさに、それがなぜ私が英語を学んでいるかです",
    "new": "まさに、だから英語がわかり始めています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L02U11",
@@ -404,7 +425,7 @@
    "old": "まさにそれが問題だと思います",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L02U12",
@@ -414,7 +435,7 @@
    "old": "まさに、あなたの考えは良いと思います",
    "new": "まさに、あなたの考えはとても良かったと思います",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L03U01",
@@ -424,7 +445,7 @@
    "old": "それと同じように言ってもらえますか？",
    "new": "同じ言い方でもう一度言ってもらえますか？",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L03U02",
@@ -434,7 +455,7 @@
    "old": "私は同じように英語を話せるようになりたいです",
    "new": "あなたと同じように、とても上手に英語を話せるようになりたいです",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L03U03",
@@ -444,7 +465,7 @@
    "old": "あなたはいつも同じように言うと思います",
    "new": null,
    "del": true,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L03U10",
@@ -454,7 +475,7 @@
    "old": "私も同じように感じています",
    "new": "この言語について、私も同じように感じています",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L03U12",
@@ -464,7 +485,7 @@
    "old": "彼は同じように言いたくないと言いました",
    "new": "彼は同じように言いたくありません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   },
   {
    "id": "S0153L03U14",
@@ -474,7 +495,8 @@
    "old": "私には同じようには言えません",
    "new": "同じようにどう言うかわかりません",
    "del": false,
-   "verdict": "PENDING"
+   "verdict": "PASS"
   }
- ]
+ ],
+ "nightgateAt": "2026-11-23T23:11:04.008Z"
 }
