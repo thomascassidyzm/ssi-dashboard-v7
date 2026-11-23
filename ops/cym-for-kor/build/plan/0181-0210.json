@@ -14,11 +14,11 @@
   "199:oedd fy ffrind yn arfer": "oedd, yn, arfer untiled; Korean 내 친구는 예전에 ~했어 one unit",
   "199:mewn swyddfa": "mewn untiled; joined to source swyddfa",
   "200:bo’ nhw isio": "bo’ untiled; Korean 그들이 ~고 싶다고 one unit",
-  "201:be’ oedd yn mynd i ddigwydd": "i untiled; one unit, glossed apart from be’ sy’n mynd i ddigwydd (12)",
+  "201:be’ oedd yn mynd i ddigwydd": "Popty counts it over 8 syllables; split into be’ oedd yn mynd i + ddigwydd (#813·AK)",
   "203:’swn i’n gofyn i ti": "source unit over the 8-syllable cap; helpu fi split out (taught, 25)",
   "204:o’n i isio iddi hi": "source unit over the 8-syllable cap; helpu chdi split out (taught, 62)",
   "204:i ddelio": "i untiled; joined to source ddelio",
-  "205:dw i wedi anghofio’r gair": "dw, i, wedi untiled; joined to source anghofio’r gair",
+  "205:dw i wedi anghofio’r gair": "Popty counts it over 8 syllables; split into dw i wedi + anghofio’r gair (#813·AK)",
   "206:dw i’n mwynhau’r cyfle i": "i untiled; joined to source unit",
   "207:oeddat ti angen": "oeddat untiled; Korean 네가 ~할 필요가 있었던 one unit",
   "208:ddeud o": "o untiled; Korean 그걸 말하다 one unit",
@@ -453,8 +453,13 @@
      "type": "A"
     },
     {
-     "cy": "be’ oedd yn mynd i ddigwydd",
-     "ko": "무슨 일이 일어나려고 했는지",
+     "cy": "be’ oedd yn mynd i",
+     "ko": "무엇이 ~려고 했는지",
+     "type": "A"
+    },
+    {
+     "cy": "ddigwydd",
+     "ko": "일어나다",
      "type": "A"
     }
    ]
@@ -529,8 +534,13 @@
   "205": {
    "legos": [
     {
-     "cy": "dw i wedi anghofio’r gair",
-     "ko": "나는 그 단어를 잊어버렸어",
+     "cy": "dw i wedi",
+     "ko": "나는 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "anghofio’r gair",
+     "ko": "그 단어를 잊어버리다",
      "type": "A"
     },
     {

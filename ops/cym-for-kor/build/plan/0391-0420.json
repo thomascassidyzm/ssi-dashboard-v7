@@ -22,7 +22,11 @@
   "418:maen nhw angen": "untiled; one frame like dan ni angen (104)",
   "419:os ydyn nhw isio i": "source os + untiled; Korean if-clause frame one unit",
   "419:licio nhw": "untiled; Korean 그들을 좋아하다 one unit",
-  "420:pa mor hen ydy o": "source pa mor hen + untiled ydy o; Korean 그가 몇 살인지 one unit"
+  "420:pa mor hen ydy o": "source pa mor hen + untiled ydy o; Korean 그가 몇 살인지 one unit",
+  "392:gyferbyn â’r swyddfa bost": "Popty counts it over 8 syllables; split into gyferbyn â’r + swyddfa bost (#813·AK)",
+  "405:os oes rhaid i ni archebu": "Popty counts it over 8 syllables; split into os oes rhaid i ni + archebu (#813·AK)",
+  "413:mi fydden ni’n medru disgyn": "Popty counts it over 8 syllables; split into mi fydden ni’n medru + disgyn (#813·AK)",
+  "415:fyddai hynna ddim yn broblem": "Popty counts it over 8 syllables; split into fyddai hynna ddim yn + broblem (#813·AK)"
  },
  "seeds": {
   "391": {
@@ -52,8 +56,13 @@
      "type": "A"
     },
     {
-     "cy": "gyferbyn â’r swyddfa bost",
-     "ko": "우체국 맞은편에 있는",
+     "cy": "gyferbyn â’r",
+     "ko": "~ 맞은편에 있는",
+     "type": "A"
+    },
+    {
+     "cy": "swyddfa bost",
+     "ko": "우체국",
      "type": "A"
     }
    ]
@@ -304,8 +313,13 @@
      "type": "A"
     },
     {
-     "cy": "os oes rhaid i ni archebu",
-     "ko": "우리가 예약해야 하는지",
+     "cy": "os oes rhaid i ni",
+     "ko": "우리가 ~해야 하는지",
+     "type": "A"
+    },
+    {
+     "cy": "archebu",
+     "ko": "예약하다",
      "type": "A"
     }
    ]
@@ -446,8 +460,13 @@
   "413": {
    "legos": [
     {
-     "cy": "mi fydden ni’n medru disgyn",
-     "ko": "우리는 떨어질 수 있을 텐데",
+     "cy": "mi fydden ni’n medru",
+     "ko": "우리는 ~ㄹ 수 있을 텐데",
+     "type": "A"
+    },
+    {
+     "cy": "disgyn",
+     "ko": "떨어지다",
      "type": "A"
     },
     {
@@ -484,8 +503,13 @@
   "415": {
    "legos": [
     {
-     "cy": "fyddai hynna ddim yn broblem",
-     "ko": "그건 문제가 되지 않을 거야",
+     "cy": "fyddai hynna ddim yn",
+     "ko": "그건 ~지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "broblem",
+     "ko": "문제",
      "type": "A"
     },
     {

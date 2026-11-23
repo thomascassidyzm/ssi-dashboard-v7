@@ -14,7 +14,7 @@
         - every seed word is tiled by that seed's LEGO targets (Popty's word-set rule, with Welsh ’n = yn)
         - no brackets / parentheses / slash in any gloss (Popty refuses them: NON_EXAMPLE_TEXT)
         - ZUT: one Korean gloss -> one Welsh LEGO (soft-mutated forms count as the same LEGO)
-        - the same Welsh LEGO keeps one Korean gloss (a second gloss makes a second LEGO)
+        - (note only) a Welsh LEGO with two Korean glosses — legal in Popty, listed for a human eye
         - every seed in range has a plan entry
         - no LEGO over 8 syllables (Popty's cap; counted roughly as Welsh vowel groups)
 """
@@ -150,9 +150,11 @@ def check(lo=None, hi=None):
         for n, cy in uses[1:]:
             if not same_lego(first, cy):
                 probs.append(f'ZUT S{n}: gloss "{g}" = "{cy}" but S{uses[0][0]} has "{first}"')
+    # One Welsh word with two meanings (rhoi = put / give) is legal: Popty's ZUT check is keyed on
+    # the KNOWN side only (validation.cjs checkLegoConflict). Shown as a note, not a failure.
     for cy, gs in c2g.items():
         if len(gs) > 1:
-            probs.append(f'two glosses for "{cy}": {sorted(gs)}')
+            print(f'note: two glosses for "{cy}": {sorted(gs)}', file=sys.stderr)
     # Popty's OWN syllable counter (the rough count above misses some): syllables.cjs
     import subprocess
     r = subprocess.run(['node', str(HERE / 'syllables.cjs')], capture_output=True, text=True)

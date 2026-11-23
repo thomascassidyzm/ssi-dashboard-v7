@@ -23,9 +23,15 @@
   "141:mae popeth yn iawn": "mae, yn untiled; Korean 모든 게 괜찮아 one unit",
   "142:mae hynna’n": "mae, hynna’n untiled; frame 그건 ~해",
   "142:helpu": "helpu alone untiled (older seeds)",
-  "143:oeddan ni’n siarad amdano": "amdano untiled; joined to source oeddan ni’n siarad",
+  "143:oeddan ni’n siarad amdano": "Popty counts it over 8 syllables; split into oeddan ni’n + siarad amdano (#813·AK)",
   "145:dwyt ti ddim yn hapus": "yn, hapus untiled; Korean 너 행복하지 않아 one unit",
-  "146:yn gweithio": "yn, gweithio untiled"
+  "146:yn gweithio": "yn, gweithio untiled",
+  "132:mae hynna’n llai cyffrous": "Popty counts it over 8 syllables; split into mae hynna’n + llai cyffrous (#813·AK)",
+  "133:dach chi’n gweithio efo’ch gilydd": "Popty counts it over 8 syllables; split into dach chi’n + gweithio + efo’ch gilydd (#813·AK)",
+  "144:wnes i ddeffro’n gynharach": "Popty counts it over 8 syllables; split into wnes i ddeffro + yn gynharach (#813·AK)",
+  "147:welodd hi fi’n teimlo’n nerfus": "Popty counts it over 8 syllables; split into welodd hi + fi’n teimlo’n nerfus (#813·AK)",
+  "148:do’n i ddim yn medru ateb": "Popty counts it over 8 syllables; split into do’n i ddim yn + medru + ateb (#813·AK)",
+  "149:dydy hwn ddim yn anodd iawn": "Popty counts it over 8 syllables; split into dydy hwn ddim yn + anodd iawn (#813·AK)"
  },
  "seeds": {
   "121": {
@@ -285,8 +291,13 @@
   "132": {
    "legos": [
     {
-     "cy": "mae hynna’n llai cyffrous",
-     "ko": "그건 덜 흥미진진해",
+     "cy": "mae hynna’n",
+     "ko": "그건 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "llai cyffrous",
+     "ko": "덜 흥미진진하다",
      "type": "A"
     },
     {
@@ -319,8 +330,18 @@
      "type": "A"
     },
     {
-     "cy": "dach chi’n gweithio efo’ch gilydd",
-     "ko": "너희가 함께 일하다",
+     "cy": "dach chi’n",
+     "ko": "너희는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "gweithio",
+     "ko": "일하다",
+     "type": "A"
+    },
+    {
+     "cy": "efo’ch gilydd",
+     "ko": "함께",
      "type": "A"
     }
    ]
@@ -599,8 +620,13 @@
      "type": "A"
     },
     {
-     "cy": "oeddan ni’n siarad amdano",
-     "ko": "우리가 이야기하고 있던",
+     "cy": "oeddan ni’n",
+     "ko": "우리는 ~하고 있었어",
+     "type": "A"
+    },
+    {
+     "cy": "siarad amdano",
+     "ko": "그것에 대해 이야기하다",
      "type": "A"
     },
     {
@@ -613,8 +639,13 @@
   "144": {
    "legos": [
     {
-     "cy": "wnes i ddeffro’n gynharach",
-     "ko": "나는 더 일찍 깼어",
+     "cy": "wnes i ddeffro",
+     "ko": "나는 깼어",
+     "type": "A"
+    },
+    {
+     "cy": "yn gynharach",
+     "ko": "더 일찍",
      "type": "A"
     },
     {
@@ -690,8 +721,13 @@
      "type": "A"
     },
     {
-     "cy": "welodd hi fi’n teimlo’n nerfus",
-     "ko": "그녀가 내가 긴장하는 걸 봤다",
+     "cy": "welodd hi",
+     "ko": "그녀가 봤다",
+     "type": "A"
+    },
+    {
+     "cy": "fi’n teimlo’n nerfus",
+     "ko": "내가 긴장하는 걸",
      "type": "A"
     }
    ]
@@ -714,8 +750,18 @@
      "type": "A"
     },
     {
-     "cy": "do’n i ddim yn medru ateb",
-     "ko": "내가 대답할 수 없었다",
+     "cy": "do’n i ddim yn",
+     "ko": "나는 ~하고 있지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "medru",
+     "ko": "~ㄹ 수 있다",
+     "type": "A"
+    },
+    {
+     "cy": "ateb",
+     "ko": "대답하다",
      "type": "A"
     }
    ]
@@ -723,8 +769,13 @@
   "149": {
    "legos": [
     {
-     "cy": "dydy hwn ddim yn anodd iawn",
-     "ko": "이건 아주 어렵지는 않아",
+     "cy": "dydy hwn ddim yn",
+     "ko": "이건 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "anodd iawn",
+     "ko": "아주 어려운",
      "type": "A"
     },
     {

@@ -31,7 +31,9 @@
   "326:dw i ddim yn meddwl": "taught frame (318)",
   "327:ffordd arall": "ffordd, arall untiled; Korean 다른 방법 one unit",
   "329:mae’n bwysig": "weave-dropped seed; taught LEGO (65)",
-  "330:fod o’n bwysig": "fod, o’n, bwysig untiled; Korean 그게 중요하다고 one unit"
+  "330:fod o’n bwysig": "fod, o’n, bwysig untiled; Korean 그게 중요하다고 one unit",
+  "309:dw i erioed wedi gweld hi": "Popty counts it over 8 syllables; split into dw i erioed wedi + gweld hi (#813·AK)",
+  "312:defnyddio’r ystafell arall": "Popty counts it over 8 syllables; split into defnyddio’r + ystafell arall (#813·AK)"
  },
  "seeds": {
   "301": {
@@ -224,8 +226,13 @@
      "type": "A"
     },
     {
-     "cy": "dw i erioed wedi gweld hi",
-     "ko": "나는 그녀를 본 적이 한 번도 없어",
+     "cy": "dw i erioed wedi",
+     "ko": "나는 ~ㄴ 적이 한 번도 없어",
+     "type": "A"
+    },
+    {
+     "cy": "gweld hi",
+     "ko": "그녀를 보다",
      "type": "A"
     },
     {
@@ -296,8 +303,13 @@
      "type": "A"
     },
     {
-     "cy": "defnyddio’r ystafell arall",
-     "ko": "다른 방을 쓰다",
+     "cy": "defnyddio’r",
+     "ko": "~를 쓰다",
+     "type": "A"
+    },
+    {
+     "cy": "ystafell arall",
+     "ko": "다른 방",
      "type": "A"
     },
     {

@@ -5,7 +5,7 @@
   "333:treulio llawer o amser": "treulio, amser untiled (older seeds); one unit, sister of treulio mwy o amser (209)",
   "333:efo’r grŵp": "efo’r, grŵp untiled (older seeds)",
   "334:fod o’n medru": "fod, o’n untiled; Korean 그가 ~ㄹ 수 있다고 one frame",
-  "335:rhai syniadau gwerthfawr": "source also had rhai syniadau; one LEGO only, since Korean puts 가치 있는 inside",
+  "335:rhai syniadau gwerthfawr": "Popty counts it over 8 syllables; split into rhai syniadau + gwerthfawr (#813·AK)",
   "336:bod hi’n medru": "bod, hi’n untiled; sister of fod o’n medru (334)",
   "337:cario ymlaen i": "source cario ymlaen + untiled i; taught gario ymlaen i (92)",
   "337:chwarae": "chwarae untiled (older seeds)",
@@ -21,7 +21,7 @@
   "346:bo’ fi’n licio": "bo’, fi’n untiled; Korean 내가 ~를 좋아한다고 one unit",
   "346:ei llyfr hi": "ei, hi untiled; Korean 그녀의 책 one unit, like ei henw hi (21)",
   "347:be’ oedd yn digwydd": "untiled; one unit, sister of be’ oedd yn mynd i ddigwydd (201)",
-  "348:be’ oedd yn mynd i ddigwydd": "source be’ oedd yn mynd leaves i ddigwydd untiled; taught unit (201)",
+  "348:be’ oedd yn mynd i ddigwydd": "Popty counts it over 8 syllables; split into be’ oedd yn mynd i + ddigwydd (#813·AK)",
   "352:fyddai fo ddim yn medru": "untiled (older seeds); one unit, the slot is filled by the first half",
   "353:oedd hi angen": "oedd, hi, angen untiled; past sister of mae hi angen (319)",
   "354:doedd o ddim angen": "doedd, o, ddim, angen untiled; past sister of dydy o ddim angen (320)",
@@ -30,7 +30,8 @@
   "356:rywbeth pwysig": "source rywbeth + untiled pwysig; taught rhywbeth pwysig (261), mutated form",
   "357:oedd hi jesd isio": "oedd, hi, jesd, isio untiled; one frame, sister of oedd hi isio (53)",
   "358:nad oedd hi’n medru": "nad, oedd, hi’n untiled; sister of nad oedd o’n medru (315)",
-  "360:ddudodd dy ffrind": "ddudodd untiled; taught (358)"
+  "360:ddudodd dy ffrind": "ddudodd untiled; taught (358)",
+  "352:hyd yn oed tasai fo isio": "Popty counts it over 8 syllables; split into hyd yn oed + tasai fo isio (#813·AK)"
  },
  "seeds": {
   "331": {
@@ -132,8 +133,13 @@
      "type": "A"
     },
     {
-     "cy": "rhai syniadau gwerthfawr",
-     "ko": "몇 가지 가치 있는 아이디어",
+     "cy": "rhai syniadau",
+     "ko": "몇 가지 아이디어",
+     "type": "A"
+    },
+    {
+     "cy": "gwerthfawr",
+     "ko": "가치 있는",
      "type": "A"
     }
    ]
@@ -414,8 +420,13 @@
      "type": "A"
     },
     {
-     "cy": "be’ oedd yn mynd i ddigwydd",
-     "ko": "무슨 일이 일어나려고 했는지",
+     "cy": "be’ oedd yn mynd i",
+     "ko": "무엇이 ~려고 했는지",
+     "type": "A"
+    },
+    {
+     "cy": "ddigwydd",
+     "ko": "일어나다",
      "type": "A"
     }
    ]
@@ -490,7 +501,12 @@
   "352": {
    "legos": [
     {
-     "cy": "hyd yn oed tasai fo isio",
+     "cy": "hyd yn oed",
+     "ko": "심지어",
+     "type": "A"
+    },
+    {
+     "cy": "tasai fo isio",
      "ko": "그가 원한다고 해도",
      "type": "A"
     },

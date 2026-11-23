@@ -11,8 +11,8 @@
   "279:oedd": "oedd untiled; yes-answer to was",
   "280:oedd rhaid i mi": "oedd, rhaid, i, mi untiled; one frame like oedd rhaid i ti (278)",
   "281:cyn i ti ddechrau": "cyn untiled; one unit like cyn i ti adael (119)",
-  "282:dydy hynna ddim yn broblem": "source dydy hynna ddim + untiled yn broblem; 그건 문제가 아니야 is taken by dydy hi ddim yn broblem (134), so one unit with the casual wording",
-  "283:pa rai o dy ffrindiau sy’n": "sy’n untiled; joined to source unit, Korean 누가 ~해? one frame",
+  "282:dydy hynna ddim yn broblem": "Popty counts it over 8 syllables; split into dydy hynna ddim yn + broblem (#813·AK)",
+  "283:pa rai o dy ffrindiau sy’n": "Popty counts it over 8 syllables; split into pa rai o dy ffrindiau + sy’n (#813·AK)",
   "284:wyt ti’n nabod": "source split leaned on older seeds; question sister of dw i’n nabod (230)",
   "285:mae hi’n": "mae, hi’n untiled (older seeds)",
   "286:sy’n licio": "sy’n untiled; Korean ~를 좋아하는 one unit, like sy’n nabod (233)",
@@ -31,7 +31,8 @@
   "296:angen": "angen untiled in source split (older seeds)",
   "297:dw i ddim yn nabod": "source dw i ddim + untiled yn nabod; negative sister of dw i’n nabod (230)",
   "297:llawer o": "o untiled; Korean 많은",
-  "298:i ddeud": "i untiled; Korean 말할 one unit, like i fynd 갈 (26)"
+  "298:i ddeud": "i untiled; Korean 말할 one unit, like i fynd 갈 (26)",
+  "274:mewn ychydig o ddiwrnodiau": "Popty counts it over 8 syllables; split into mewn + ychydig o ddiwrnodiau (#813·AK)"
  },
  "seeds": {
   "271": {
@@ -109,8 +110,13 @@
      "type": "A"
     },
     {
-     "cy": "mewn ychydig o ddiwrnodiau",
-     "ko": "며칠 후에",
+     "cy": "mewn",
+     "ko": "~ 안에",
+     "type": "A"
+    },
+    {
+     "cy": "ychydig o ddiwrnodiau",
+     "ko": "며칠",
      "type": "A"
     }
    ]
@@ -291,8 +297,13 @@
      "type": "A"
     },
     {
-     "cy": "dydy hynna ddim yn broblem",
-     "ko": "그거 문제 아니야",
+     "cy": "dydy hynna ddim yn",
+     "ko": "그게 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "broblem",
+     "ko": "문제",
      "type": "A"
     }
    ]
@@ -300,8 +311,13 @@
   "283": {
    "legos": [
     {
-     "cy": "pa rai o dy ffrindiau sy’n",
-     "ko": "네 친구들 중에 누가 ~해?",
+     "cy": "pa rai o dy ffrindiau",
+     "ko": "네 친구들 중에 누가",
+     "type": "A"
+    },
+    {
+     "cy": "sy’n",
+     "ko": "~하는",
      "type": "A"
     },
     {
