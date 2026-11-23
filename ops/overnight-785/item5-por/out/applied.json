@@ -681,5 +681,2005 @@
    }
   ],
   "ops": 28
+ },
+ {
+  "batch": 5,
+  "status": 200,
+  "event_id": "657b88ee-8131-4cb0-9dad-600abf51a0f6",
+  "undo_file": "2026-11-23T22-59-46-253Z-657b88ee-8131-4cb0-9dad-600abf51a0f6.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0037L03U01",
+    "set": {
+     "target_text": "comecei a pensar nisso com cuidado no mês passado",
+     "target1_audio_id": "3ae0cd2a-fa8b-4dd7-a788-67ab81e163ed",
+     "target2_audio_id": "541216ae-9b7e-4c97-86f7-cf5566463d19",
+     "decomposition": [
+      {
+       "known": "I started to",
+       "legoId": "S0037L01",
+       "target": "comecei a",
+       "isGhost": false
+      },
+      {
+       "known": "to think about it carefully",
+       "legoId": "S0037L02",
+       "target": " pensar nisso com cuidado",
+       "isGhost": false
+      },
+      {
+       "known": "last month",
+       "legoId": "S0037L03",
+       "target": " no mês passado",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0037L03B02",
+    "set": {
+     "target_text": "comecei a pensar nisso com cuidado no mês passado",
+     "word_count": 51,
+     "target1_audio_id": "3ae0cd2a-fa8b-4dd7-a788-67ab81e163ed",
+     "target2_audio_id": "541216ae-9b7e-4c97-86f7-cf5566463d19",
+     "decomposition": [
+      {
+       "known": "I started to",
+       "legoId": "S0037L01",
+       "target": "comecei a",
+       "isGhost": false
+      },
+      {
+       "known": "to think about it carefully",
+       "legoId": "S0037L02",
+       "target": " pensar nisso com cuidado",
+       "isGhost": false
+      },
+      {
+       "known": "last month",
+       "legoId": "S0037L03",
+       "target": " no mês passado",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0031L02U01",
+    "set": {
+     "target_text": "querias falar comigo esta noite",
+     "target1_audio_id": "3f79570d-7738-4d31-aaa7-f4747f31df21",
+     "target2_audio_id": "e40c68cf-3dba-447a-bccb-b0a183e0ead4",
+     "decomposition": [
+      {
+       "known": "you wanted to",
+       "legoId": "S0031L01",
+       "target": "querias",
+       "isGhost": false
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L02",
+       "target": " falar",
+       "isGhost": false
+      },
+      {
+       "known": "with me",
+       "legoId": "S0015L03",
+       "target": " comigo",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0031L02",
+       "target": " esta noite",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0030L03U01",
+    "set": {
+     "target_text": "queria perguntar-te algo ontem",
+     "target1_audio_id": "0dbf88ae-71fc-4c00-9ea8-36843632e753",
+     "target2_audio_id": "ed776e0a-4edf-4c6f-9bf0-a146c9dc2722",
+     "decomposition": [
+      {
+       "known": "I wanted to",
+       "legoId": "S0030L01",
+       "target": "queria",
+       "isGhost": false
+      },
+      {
+       "known": "to ask you",
+       "legoId": "S0030L02",
+       "target": " perguntar-te",
+       "isGhost": false
+      },
+      {
+       "known": "something",
+       "legoId": "S0004L02",
+       "target": " algo",
+       "isGhost": false
+      },
+      {
+       "known": "yesterday",
+       "legoId": "S0030L03",
+       "target": " ontem",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0027L02U01",
+    "set": {
+     "target_text": "não gosto de demorar demasiado tempo a responder",
+     "target1_audio_id": "ba00fbf2-6b33-4bc3-a6c3-8031f85639c6",
+     "target2_audio_id": "1e03d96b-2be0-4dee-b449-364a47ae6ff6",
+     "decomposition": [
+      {
+       "known": "I don't like",
+       "legoId": "S0027L01",
+       "target": "não gosto de",
+       "isGhost": false
+      },
+      {
+       "known": "taking too much time to answer",
+       "legoId": "S0027L02",
+       "target": " demorar demasiado tempo a responder",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0027L02B02",
+    "set": {
+     "target_text": "não gosto de demorar demasiado tempo a responder",
+     "word_count": 50,
+     "target1_audio_id": "ba00fbf2-6b33-4bc3-a6c3-8031f85639c6",
+     "target2_audio_id": "1e03d96b-2be0-4dee-b449-364a47ae6ff6",
+     "decomposition": [
+      {
+       "known": "I don't like",
+       "legoId": "S0027L01",
+       "target": "não gosto de",
+       "isGhost": false
+      },
+      {
+       "known": "taking too much time to answer",
+       "legoId": "S0027L02",
+       "target": " demorar demasiado tempo a responder",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0025L03U01",
+    "set": {
+     "target_text": "vais ajudar-me antes de eu ter de ir?",
+     "word_count": 39,
+     "target1_audio_id": "7b9fce95-aa54-432a-9427-23d1943b4d9b",
+     "target2_audio_id": "6bd6b067-b45b-4ae6-bd06-9bcbce02afb5",
+     "decomposition": [
+      {
+       "known": "you are going to",
+       "legoId": "S0025L01",
+       "target": "vais",
+       "isGhost": false
+      },
+      {
+       "known": "to help me",
+       "legoId": "S0025L02",
+       "target": " ajudar-me",
+       "isGhost": false
+      },
+      {
+       "known": "before I have to go",
+       "legoId": "S0025L03",
+       "target": " antes de eu ter de ir",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 6,
+  "status": 200,
+  "event_id": "f74aaca7-0b04-453d-8a7d-84c1035f4a86",
+  "undo_file": "2026-11-23T23-00-13-109Z-f74aaca7-0b04-453d-8a7d-84c1035f4a86.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0111L01U05",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0111L01U05",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0111L01U05",
+    "set": {
+     "target_text": "quando vais falar comigo?",
+     "word_count": 25,
+     "target1_audio_id": "8829784a-d94f-46ab-9551-cb47b607c0c6",
+     "target2_audio_id": "5e584d78-0d36-4b34-95a3-0741f3347dc7",
+     "decomposition": [
+      {
+       "known": "when",
+       "legoId": "S0111L01",
+       "target": "quando",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you are going to",
+       "legoId": "S0025L01",
+       "target": " vais",
+       "isGhost": false
+      },
+      {
+       "known": "to speak",
+       "legoId": "S0001L02",
+       "target": " falar",
+       "isGhost": false
+      },
+      {
+       "known": "with me",
+       "legoId": "S0015L03",
+       "target": " comigo",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0111L01U06",
+    "set": {
+     "target2_audio_id": "4e4d98b5-eba3-450d-9e2e-5af1233027b2"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0111L01U06",
+    "set": {
+     "target1_audio_id": "4a085e6e-c21b-4e14-b646-2c4ab4e062db"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0111L01U06",
+    "set": {
+     "target_text": "quando começaste a aprender?",
+     "word_count": 28,
+     "target1_audio_id": "e31953fc-1d7d-4145-9d39-1b332179458a",
+     "target2_audio_id": "09ed6520-3e70-40ef-9e17-5cd67d28e4c9",
+     "decomposition": [
+      {
+       "known": "when",
+       "legoId": "S0111L01",
+       "target": "quando",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "you started to learn",
+       "legoId": "S0079L02",
+       "target": " começaste a aprender",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0060L04U05",
+    "set": {
+     "target_text": "ainda não sei como dizer palavras diferentes suficientes",
+     "target1_audio_id": "fe00c3be-4c79-4f4f-acc3-bca31ef4aa7d",
+     "target2_audio_id": "62caf2d5-2b01-40e3-ba74-f22d906fe26e",
+     "decomposition": [
+      {
+       "known": "not yet",
+       "legoId": "S0060L01",
+       "target": "ainda não",
+       "isGhost": false
+      },
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": " sei",
+       "isGhost": false
+      },
+      {
+       "known": "how to say",
+       "legoId": "S0060L02",
+       "target": " como dizer",
+       "isGhost": false
+      },
+      {
+       "known": "enough different words",
+       "legoId": "S0060L04",
+       "target": " palavras diferentes suficientes",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0059L04U05",
+    "set": {
+     "target_text": "sei como fazer o que preciso de fazer na próxima semana",
+     "target1_audio_id": "53759056-2034-4c65-bbf9-d30830751558",
+     "target2_audio_id": "8277a0ac-a181-4c9a-ae37-c43b2d0640b6",
+     "decomposition": [
+      {
+       "known": "I know",
+       "legoId": "S0059L01",
+       "target": "sei",
+       "isGhost": false
+      },
+      {
+       "known": "how to do",
+       "legoId": "S0059L02",
+       "target": " como fazer",
+       "isGhost": false
+      },
+      {
+       "known": "what I need to do",
+       "legoId": "S0059L03",
+       "target": " o que preciso de fazer",
+       "isGhost": false
+      },
+      {
+       "known": "next week",
+       "legoId": "S0059L04",
+       "target": " na próxima semana",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0054L04U06",
+    "set": {
+     "target_text": "queríamos dar-te um pouco mais de tempo",
+     "word_count": 42,
+     "target1_audio_id": "5f6de2c5-9024-449a-8a2b-d004b8ba4ec0",
+     "target2_audio_id": "c5be3ab0-e1b0-4718-85d8-7d8ecc7b2e42",
+     "decomposition": [
+      {
+       "known": "we wanted",
+       "legoId": "S0054L01",
+       "target": "queríamos",
+       "isGhost": false
+      },
+      {
+       "known": "to you",
+       "legoId": "S0054L03",
+       "target": " dar-te",
+       "isGhost": false
+      },
+      {
+       "known": "a little more time",
+       "legoId": "S0054L04",
+       "target": " um pouco mais de tempo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0048L01U05",
+    "set": {
+     "target_text": "não me importo de cometer erros",
+     "target1_audio_id": "c2c7f103-b235-4d16-a61c-2aaccd0c1a79",
+     "target2_audio_id": "e4d3d2ca-e748-437c-b046-de235a06602a",
+     "decomposition": [
+      {
+       "known": "I don't care about",
+       "legoId": "S0048L01",
+       "target": "não me importo de",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "making mistakes",
+       "legoId": "S0046L02",
+       "target": " cometer erros",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0045L02U06",
+    "set": {
+     "target_text": "não preciso de saber tudo",
+     "target1_audio_id": "f7622b9d-3e8a-464a-8f00-5d2ffcc29ad9",
+     "target2_audio_id": "d2518a3c-818c-48f6-a77b-20184d1b757d",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "I need to",
+       "legoId": "S0044L02",
+       "target": " preciso de",
+       "isGhost": false
+      },
+      {
+       "known": "to know",
+       "legoId": "S0045L01",
+       "target": " saber",
+       "isGhost": false
+      },
+      {
+       "known": "everything",
+       "legoId": "S0045L02",
+       "target": " tudo",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 7,
+  "status": 200,
+  "event_id": "7bb6208d-fe0d-458b-9ef9-d7450363be41",
+  "undo_file": "2026-11-23T23-00-36-437Z-7bb6208d-fe0d-458b-9ef9-d7450363be41.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0315L01U01",
+    "set": {
+     "target_text": "acho que ele não conseguia pagar um carro que queria",
+     "word_count": 52,
+     "target1_audio_id": "c932e231-ae47-480c-a43a-426e9c56862f",
+     "target2_audio_id": "d2a6df3c-6fc3-40f2-8373-cfee837ba0bc",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0303L01U03",
+    "set": {
+     "target_text": "acho que ele quer sentar-se",
+     "word_count": 27,
+     "target1_audio_id": "90a86c75-aae8-4d19-b61f-db3f86d22a21",
+     "target2_audio_id": "25049b9a-4b62-4faf-9d98-c4acdbd0fa54",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0297L01B04",
+    "set": {
+     "target_text": "não conheço muitas pessoas que falam português",
+     "word_count": 46,
+     "target1_audio_id": "41dbe551-5330-41c5-b08f-5626b0dba2a8",
+     "target2_audio_id": "36cedeee-ae20-4c22-b205-5e5bb647977a",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "know",
+       "legoId": "S0085L01",
+       "target": " conheço",
+       "isGhost": false
+      },
+      {
+       "known": "many people who speak Portuguese",
+       "legoId": "S0297L01",
+       "target": " muitas pessoas que falam português",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0213L02U06",
+    "set": {
+     "target_text": "não sabemos o que estão a tentar alcançar",
+     "word_count": 44,
+     "target1_audio_id": "e85e2ded-3d4a-418e-bd19-106baeb7419e",
+     "target2_audio_id": "1625e2b0-96d1-4cc9-acf8-1604c54acc71",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "não",
+       "isGhost": true
+      },
+      {
+       "known": "we know what",
+       "legoId": "S0213L01",
+       "target": " sabemos o que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " estão",
+       "isGhost": true
+      },
+      {
+       "known": "to",
+       "legoId": "S0074L02",
+       "target": " a",
+       "isGhost": false
+      },
+      {
+       "known": "to try",
+       "legoId": "S0007L01",
+       "target": " tentar",
+       "isGhost": false
+      },
+      {
+       "known": "to achieve",
+       "legoId": "S0213L02",
+       "target": " alcançar",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0212L03U08",
+    "set": {
+     "target2_audio_id": "5d904537-7d77-421d-9442-7579131a9a02"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0212L03U08",
+    "set": {
+     "target_text": "queriam pedir ajuda",
+     "word_count": 22,
+     "target1_audio_id": "9fc8fe13-3e91-4cbc-84c6-b2445bdc2bb1",
+     "target2_audio_id": "add6dac3-b4d6-481a-b22a-a09325f76d59",
+     "decomposition": [
+      {
+       "known": "they wanted",
+       "legoId": "S0212L01",
+       "target": "queriam",
+       "isGhost": false
+      },
+      {
+       "known": "to ask for",
+       "legoId": "S0212L02",
+       "target": " pedir",
+       "isGhost": false
+      },
+      {
+       "known": "help",
+       "legoId": "S0212L03",
+       "target": " ajuda",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0162L01U02",
+    "set": {
+     "target_text": "o que é que tu achas disso?",
+     "word_count": 27,
+     "target1_audio_id": "406266d5-c685-4068-b2e0-b4bcf1941b53",
+     "target2_audio_id": "6906ced0-176c-4d47-9506-9955ee1f1551",
+     "decomposition": [
+      {
+       "known": "what",
+       "legoId": "S0068L01",
+       "target": "o que é que",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " tu",
+       "isGhost": true
+      },
+      {
+       "known": "you think",
+       "legoId": "S0135L01",
+       "target": " achas",
+       "isGhost": false
+      },
+      {
+       "known": "about that",
+       "legoId": "S0162L01",
+       "target": " disso",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": "?",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_for_eng:S0141L01B02",
+     "seed_number": 141,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "without problem",
+     "target_text": "sem problema",
+     "word_count": 12,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-11T04:21:34.155Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "d4ff7399-02f9-4ab9-8cde-c28a7de8cdff",
+     "target1_audio_id": "07d2cc01-0fae-40ec-aa6f-1f502d13d6df",
+     "target2_audio_id": "795ed637-2263-4b22-a523-a3b827ffa6f8",
+     "qa_checked": "2026-02-11T10:59:50.371Z",
+     "target1_duration_ms": 2592,
+     "target2_duration_ms": 2184,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "without",
+       "legoId": "S0141L01",
+       "target": "sem",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "problem",
+       "legoId": "S0134L01",
+       "target": " problema",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0125L02U07",
+    "set": {
+     "target_text": "acredito que a tua ideia era muito boa",
+     "word_count": 39,
+     "target1_audio_id": "dc9b7f04-dc2d-4e19-aa85-3e130fcd4d45",
+     "target2_audio_id": "6de5b5c4-0f26-466c-86c8-da4c9d07f0cb",
+     "decomposition": [
+      {
+       "known": "I believe",
+       "legoId": "S0125L01",
+       "target": "acredito",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " que",
+       "isGhost": true
+      },
+      {
+       "known": "to",
+       "legoId": "S0074L02",
+       "target": " a",
+       "isGhost": false
+      },
+      {
+       "known": "your",
+       "legoId": "S0125L02",
+       "target": " tua",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ideia",
+       "isGhost": true
+      },
+      {
+       "known": "it was",
+       "legoId": "S0070L04",
+       "target": " era",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " muito",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " boa",
+       "isGhost": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 29
+ },
+ {
+  "batch": 8,
+  "status": 200,
+  "event_id": "d3165e3d-1ee7-485c-93c9-b2909f438f20",
+  "undo_file": "2026-11-23T23-00-58-784Z-d3165e3d-1ee7-485c-93c9-b2909f438f20.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0368L01U01",
+    "set": {
+     "target_text": "sim, ouvi dizer que ele queria cultivar tomates",
+     "word_count": 47,
+     "target1_audio_id": "fd23807d-83c5-46d3-b632-b4ed4e1ea8b7",
+     "target2_audio_id": "b4dd89da-1594-46cc-aa84-fcf7fcfca99d",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0365L01U01",
+    "set": {
+     "target_text": "não ouvi o que ela lhe disse",
+     "word_count": 28,
+     "target1_audio_id": "c4757bfe-53ad-47e7-aa69-f307086f6ad5",
+     "target2_audio_id": "8b134703-6e4f-4cca-a605-87957b112c95",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0364L04U01",
+    "set": {
+     "target_text": "ouvi dizer que ele não gostava daquele lugar",
+     "word_count": 44,
+     "target1_audio_id": "02b50dde-2f2f-4c3e-a86b-5a6b464ffecb",
+     "target2_audio_id": "fae70a09-74c1-4487-b5cc-b76a3818aed1",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_for_eng:S0342L01U07",
+     "seed_number": 342,
+     "lego_index": 1,
+     "position": 12,
+     "known_text": "who said that he's happy to help you",
+     "target_text": "que disse que tem todo o gosto em ajudar-te",
+     "word_count": 43,
+     "lego_count": 9,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "job": "#357",
+      "why": "nearest earlier new LEGO (2 candidates)",
+      "format": "build_use",
+      "source": "por-seed-sentences-in-played-baskets-2026-10-02",
+      "seed_sentence_of": 344
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-10-02T11:13:23.276Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "e3e4d606-940a-476c-832d-33f45a0d1116",
+     "target1_audio_id": "d9c50d05-6ba3-4644-8fd5-1eedccd304e0",
+     "target2_audio_id": "5898e3ba-ed2d-4da9-abfb-366d6d3f4fa3",
+     "qa_checked": null,
+     "target1_duration_ms": 2400,
+     "target2_duration_ms": 2240,
+     "lego_id": "S0342L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0342L01U01",
+    "set": {
+     "target2_audio_id": "8b4cbf1d-0204-49d2-a713-e4b849f4c713"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0342L01U01",
+    "set": {
+     "target1_audio_id": "e962d8b4-f010-4980-a55b-b51cef3123c8"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0342L01U01",
+    "set": {
+     "target_text": "conheci alguém que disse algo",
+     "word_count": 29,
+     "target1_audio_id": "09d2a1bc-f0c9-4994-acb9-6d3af48e7379",
+     "target2_audio_id": "7b5d8986-5818-4748-8dfa-70fb9f997f56",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0336L02U01",
+    "set": {
+     "target_text": "não acho que ela consiga abrir a porta",
+     "word_count": 38,
+     "target1_audio_id": "f5efc065-b686-4def-a50c-fe2390300e9d",
+     "target2_audio_id": "bfd2e295-61ce-4262-b40f-c6a96f5014e4",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0327L01U01",
+    "set": {
+     "target_text": "achas que ela precisa de oferecer outra forma?",
+     "word_count": 46,
+     "target1_audio_id": "e6b0f67c-d7aa-4273-84b3-786e3d058288",
+     "target2_audio_id": "8c2b2b54-e73e-4a24-a0bc-fcdf6ca99298",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0325L04U01",
+    "set": {
+     "target_text": "acho que ele precisa de considerar dez problemas possíveis",
+     "word_count": 58,
+     "target1_audio_id": "94c58f8e-c80f-4988-b8e9-379bb374c4a3",
+     "target2_audio_id": "a1f3c2a6-0635-43d7-a031-13df937cb4a5",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 29
+ },
+ {
+  "batch": 9,
+  "status": 200,
+  "event_id": "f8d46aab-873a-490f-88ee-7f365502aafc",
+  "undo_file": "2026-11-23T23-01-58-339Z-f8d46aab-873a-490f-88ee-7f365502aafc.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B03",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B03",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B03",
+    "set": {
+     "known_text": "I was lucky enough to go",
+     "target_text": "tive sorte suficiente para ir",
+     "word_count": 29,
+     "known_audio_id": "1b0d7878-4ba5-48e0-b566-7fcf124711cc",
+     "target1_audio_id": "821528b8-1b53-4832-925e-01d2a21385cc",
+     "target2_audio_id": "ee315b36-57f5-4b75-8495-b9119716cb4d",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B01",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B01",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B01",
+    "set": {
+     "known_text": "I was lucky",
+     "target_text": "tive sorte",
+     "word_count": 10,
+     "known_audio_id": "fff9b63a-6a8c-461b-8e3e-0c77082bcd4a",
+     "target1_audio_id": "896f9ac2-9254-46c5-a1ee-8860b7f74400",
+     "target2_audio_id": "b3a5cb6c-5db1-4fca-ae70-8e51a9458179",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0378L02U01",
+    "set": {
+     "target_text": "não, não tinha dinheiro suficiente para as férias",
+     "target1_audio_id": "11139be5-76f1-4125-811c-9ae3f440ac69",
+     "target2_audio_id": "7fee8ed3-31e2-4eab-b414-cb972624b652",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0376L01U01",
+    "set": {
+     "target_text": "não fui a lado nenhum no mês passado",
+     "word_count": 36,
+     "target1_audio_id": "3b3c092e-598f-4520-931b-b4e8467e9f14",
+     "target2_audio_id": "3d21882f-f892-4824-8267-d8594b4eaa8c",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0375L01U01",
+    "set": {
+     "target_text": "não, não sabia o que ela estava a fazer",
+     "word_count": 39,
+     "target1_audio_id": "61c80149-6915-47d5-ba3d-3bc7857574aa",
+     "target2_audio_id": "7436eb5c-f28d-441b-89fe-437f0cfc7fea",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0374L01U01",
+    "set": {
+     "target2_audio_id": "7f327398-4d52-44d7-9e2f-59bf670cc265"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0374L01U01",
+    "set": {
+     "target1_audio_id": "51171104-a21d-44fe-a419-586bda6e7a1b"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0374L01U01",
+    "set": {
+     "target_text": "sim, achei que era muito bonito",
+     "word_count": 31,
+     "target1_audio_id": "af28e245-56c1-4b20-8af5-fde045f97e31",
+     "target2_audio_id": "58c33350-09ff-4159-a830-b98c90385835",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0371L02U01",
+    "set": {
+     "target_text": "fui ver um filme na quarta-feira",
+     "word_count": 32,
+     "target1_audio_id": "d5c8ddcb-b845-40bf-8797-ad4438139888",
+     "target2_audio_id": "a1ce466e-519a-473c-b2dc-1ba212662907",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 10,
+  "status": 200,
+  "event_id": "4d031e88-0271-4c88-bbad-d13a7687e41a",
+  "undo_file": "2026-11-23T23-02-54-750Z-4d031e88-0271-4c88-bbad-d13a7687e41a.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L02B03",
+    "set": {
+     "known_text": "lucky enough to travel",
+     "target_text": "tive sorte suficiente para viajar",
+     "word_count": 33,
+     "known_audio_id": "eb7e094f-e62e-4a2d-aa48-e08162ce6220",
+     "target1_audio_id": "b41548dc-75d7-4cfc-9b44-a6747ea7ecd2",
+     "target2_audio_id": "4e2eb756-9c8f-49db-9ac5-fd5a6ecae132",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U04",
+    "set": {
+     "known_text": "she said she was lucky to be there",
+     "target_text": "ela disse que tive sorte de estar lá",
+     "word_count": 36,
+     "known_audio_id": "347d6bc9-140e-4551-8f3c-f6a30bc181c5",
+     "target1_audio_id": "a187f91d-2cfa-4444-8376-7597c5b0bf0c",
+     "target2_audio_id": "76db3af2-4620-4320-874e-9b9d8d2865e9",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U01",
+    "set": {
+     "known_text": "I was lucky enough to go somewhere",
+     "target_text": "tive sorte suficiente para ir a algum lugar",
+     "word_count": 43,
+     "known_audio_id": "d4d5b865-1701-4474-a757-abe5a6c7b0c0",
+     "target1_audio_id": "952adb30-08fd-47f1-8f58-a8d86d1ae18b",
+     "target2_audio_id": "8fc8f5f8-48f9-4ace-ab0a-ae4a457c9631",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U02",
+    "set": {
+     "known_text": "I think I was lucky this time",
+     "target_text": "acho que tive sorte desta vez",
+     "word_count": 29,
+     "known_audio_id": "14fdef43-8b91-4dc2-9112-f3364949885e",
+     "target1_audio_id": "20df3950-8d5d-4a41-878e-10e1a690e3e5",
+     "target2_audio_id": "d08d6d3a-3031-42aa-8dc2-6d4d13f9ace7",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U05",
+    "set": {
+     "known_text": "I was lucky to find a good place",
+     "target_text": "tive sorte de encontrar um lugar bom",
+     "word_count": 36,
+     "known_audio_id": "a33d3a26-4235-4603-8f6a-8af85d7c82dd",
+     "target1_audio_id": "ef1ab6a1-e9e2-4ded-a1ae-edf1c007153c",
+     "target2_audio_id": "5379891c-9e11-42ea-97b7-1bb54fc5ab5f",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "por_for_eng:S0379L01U03",
+     "seed_number": 379,
+     "lego_index": 1,
+     "position": 8,
+     "known_text": "I'm not sure if I was lucky enough",
+     "target_text": "não tenho a certeza se tive sorte suficiente",
+     "word_count": 44,
+     "lego_count": 8,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-06-08T23:13:33.544Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-06-08T23:13:33.580Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "3495436d-18d6-4d92-94e4-4c9a45737eeb",
+     "target1_audio_id": "ab0e05bb-b225-40c5-a685-4fcf4f92eb90",
+     "target2_audio_id": "4c561329-bc1e-49e9-9e01-8f9e3c684374",
+     "qa_checked": null,
+     "target1_duration_ms": 2800,
+     "target2_duration_ms": 2640,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": null,
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01U06",
+    "set": {
+     "known_text": "I was lucky enough to go somewhere last year",
+     "target_text": "tive sorte suficiente para ir a algum lugar no ano passado",
+     "word_count": 58,
+     "known_audio_id": "9e25b04f-b237-494b-baca-d501ae03c645",
+     "target1_audio_id": "7076b18b-9388-4992-b2d2-d72df4b439d7",
+     "target2_audio_id": "c00f84db-e872-4a86-a13e-b2bbef8f19df",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B02",
+    "set": {
+     "target2_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B02",
+    "set": {
+     "target1_audio_id": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L01B02",
+    "set": {
+     "known_text": "I was lucky enough",
+     "target_text": "tive sorte suficiente",
+     "word_count": 21,
+     "known_audio_id": "9d7bdf70-9636-4e5e-a3ed-08a0771a0b6c",
+     "target1_audio_id": "8eb4d485-895f-48e5-b0b3-a53cfa7f899c",
+     "target2_audio_id": "7012178e-fe4a-4253-a722-3f7e98b2c29b",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 29
+ },
+ {
+  "batch": 11,
+  "status": 200,
+  "event_id": "c8e08345-9a2d-4aa6-b720-8dd834d7e7f5",
+  "undo_file": "2026-11-23T23-03-19-508Z-c8e08345-9a2d-4aa6-b720-8dd834d7e7f5.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0386L01U01",
+    "set": {
+     "target_text": "sim, concordei com ela",
+     "word_count": 22,
+     "target1_audio_id": "a44557a7-9f0c-47d5-a43f-9d295663298e",
+     "target2_audio_id": "221ed443-8d0d-4c0f-8e58-168365080d6a",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0384L02U01",
+    "set": {
+     "target_text": "não conseguia concordar com o que ele disse há um momento",
+     "word_count": 57,
+     "target1_audio_id": "597f2d43-8931-4b1f-8cb5-15ca67ddc5f0",
+     "target2_audio_id": "1d2e95cb-edb3-4f24-92fb-997a8057f4b7",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0381L01U01",
+    "set": {
+     "target_text": "não perguntei se ele queria seguir-nos",
+     "word_count": 38,
+     "target1_audio_id": "e77cd597-7150-4570-a42a-a32eaff6da57",
+     "target2_audio_id": "08fae1dc-28a8-4b39-ac52-830eb1aaacac",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0380L02U01",
+    "set": {
+     "target_text": "perguntei o que ela queria incluir",
+     "word_count": 34,
+     "target1_audio_id": "713c90a6-3b02-4257-82aa-5720bdc3d363",
+     "target2_audio_id": "bb0c2e69-ac96-484c-8ade-fc274e3b55d3",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L03U01",
+    "set": {
+     "target_text": "sim, tive sorte suficiente para viajar para África",
+     "word_count": 50,
+     "target1_audio_id": "ba1aa599-2700-4349-82c7-6d6025c769db",
+     "target2_audio_id": "bc4bdca1-27aa-4702-ba7c-2a6421bc7382",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L03B03",
+    "set": {
+     "known_text": "lucky enough to travel to Africa",
+     "target_text": "tive sorte suficiente para viajar para África",
+     "word_count": 45,
+     "known_audio_id": "cd8d8ab8-c359-429e-bb45-3025a16fa926",
+     "target1_audio_id": "ad4cff7b-eadb-45fc-9758-acb52c358702",
+     "target2_audio_id": "8e7500f8-0f80-47df-96fa-b454a4e62ffc",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0379L02U06",
+    "set": {
+     "target_text": "tive sorte suficiente para viajar no ano passado",
+     "word_count": 48,
+     "target1_audio_id": "13f5145d-aa8d-40a1-9de9-9f30fbba80a2",
+     "target2_audio_id": "4a2f30cd-b383-4512-b9c7-831a22477fc5",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 12,
+  "status": 200,
+  "event_id": "de8736eb-4b6e-438f-ac33-1c211c65e9b9",
+  "undo_file": "2026-11-23T23-03-43-803Z-de8736eb-4b6e-438f-ac33-1c211c65e9b9.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0447L02U01",
+    "set": {
+     "target_text": "vão conseguir levar-nos a casa depois da refeição?",
+     "word_count": 50,
+     "target1_audio_id": "c2f309fa-4693-4ab5-aaea-9a848e188f67",
+     "target2_audio_id": "0ca92ece-5daa-4a36-bb18-524b30d59917",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0439L01B01",
+    "set": {
+     "target_text": "não querem morrer",
+     "word_count": 17,
+     "target1_audio_id": "26a6bbb1-66d6-452b-a39b-40d62d69b961",
+     "target2_audio_id": "ffaf81b9-dcf9-4b75-9fbe-16cb48632964",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0438L02U01",
+    "set": {
+     "target_text": "não queriam decidir o que ele devia fazer",
+     "word_count": 41,
+     "target1_audio_id": "ba2a05a4-76f6-4eea-84e0-a13298449923",
+     "target2_audio_id": "c627acf6-9296-43a0-81eb-40b6884e7149",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0437L02U01",
+    "set": {
+     "target_text": "queriam angariar o máximo possível para caridade",
+     "word_count": 48,
+     "target1_audio_id": "8459cd87-1272-4d3b-b3b4-c38c2e1fab42",
+     "target2_audio_id": "37ac6879-daf3-45d1-bac0-11f5e32ced5d",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0428L01B01",
+    "set": {
+     "known_text": "tuesday",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0411L03U01",
+    "set": {
+     "target_text": "gostaríamos de reservar uma mesa para quatro esta noite",
+     "word_count": 55,
+     "target1_audio_id": "c6cc899b-b9bb-4e9e-bb4e-66e9f54b398a",
+     "target2_audio_id": "f8a0683b-42f7-4b14-9f02-05a743431880",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0395L02U01",
+    "set": {
+     "target_text": "precisamos de virar à esquerda na próxima esquina",
+     "word_count": 49,
+     "target1_audio_id": "772c9d88-d960-4411-acaf-212a55449c39",
+     "target2_audio_id": "5c2b000c-17b4-4256-8128-3dc12ae72bae",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 13,
+  "status": 200,
+  "event_id": "4f1258da-9b6c-4e88-aa81-13972ecbfdbd",
+  "undo_file": "2026-11-23T23-04-15-035Z-4f1258da-9b6c-4e88-aa81-13972ecbfdbd.json",
+  "undo": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0477L02U02",
+    "set": {
+     "target_text": "ele está doente desde o segundo dia de férias",
+     "word_count": 45,
+     "target1_audio_id": "a35008a4-3580-4ed0-8194-9727753aa3ba",
+     "target2_audio_id": "5da590ce-e685-4a50-8fc4-479a96487b3c",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0460L03U01",
+    "set": {
+     "target_text": "quero encontrar uma loja perto do hotel",
+     "word_count": 39,
+     "target1_audio_id": "0118f53f-0fa4-47be-9608-efb8d947babd",
+     "target2_audio_id": "9b48c675-a292-428d-8ba5-aa0313dec3da",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0455L03U01",
+    "set": {
+     "target_text": "tivemos de sair porque as crianças estavam cansadas",
+     "word_count": 51,
+     "target1_audio_id": "115b4be3-3a58-4528-84d2-0824794cdf61",
+     "target2_audio_id": "8f902812-ba55-4fdd-95d7-9ebfe7e0c835",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0453L02U01",
+    "set": {
+     "target_text": "disseram quem viram ontem à noite?",
+     "word_count": 34,
+     "target1_audio_id": "175818a5-2c0c-494c-b002-2f162a18dc9f",
+     "target2_audio_id": "f3bf64b5-f357-4d98-97b0-6f8b83d02cbf",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0452L01U01",
+    "set": {
+     "target_text": "não disseram o que queriam fazer",
+     "word_count": 32,
+     "target1_audio_id": "b0f45f0f-8ed6-4ea4-929d-a93c327b6afb",
+     "target2_audio_id": "ef336874-582b-4055-9c5f-3eb7eefd5a0b",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0451L01U01",
+    "set": {
+     "target2_audio_id": "ca0d0624-ff51-47f2-b83e-eb6bfe9f7ed5"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0451L01U01",
+    "set": {
+     "target1_audio_id": "5c1603b2-d842-4118-8de2-0bfd0ea6f131"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0451L01U01",
+    "set": {
+     "target_text": "disseram o que queriam fazer",
+     "word_count": 28,
+     "target1_audio_id": "c0749f62-c1f0-4ed9-8021-ea4c1157a15c",
+     "target2_audio_id": "7d31f0ee-edb7-4c94-baca-40322d74a2e0",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0449L02U01",
+    "set": {
+     "target_text": "disseram que estavam quase prontos",
+     "word_count": 34,
+     "target1_audio_id": "8a931eca-22dc-4956-ba7b-3777ecd38dfb",
+     "target2_audio_id": "99b9c0ad-644a-45f2-a110-fb834e49c94b",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 28
+ },
+ {
+  "batch": 14,
+  "status": 200,
+  "event_id": "c8536fb1-9113-4816-9890-cdb19eb68369",
+  "undo_file": "2026-11-23T23-04-28-212Z-c8536fb1-9113-4816-9890-cdb19eb68369.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 37,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 31,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 30,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 27,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 25,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 24,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 23,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 20,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 19,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 18,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 15,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 13,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 12,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 9,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 8,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 1,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_for_eng:S0344L01U07"
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "por_for_eng:S0406L01U07"
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0635L02B02",
+    "set": {
+     "known_text": "jane's",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0635L02B01",
+    "set": {
+     "known_text": "jane",
+     "target_text": "jane",
+     "decomposition": null
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0589L04U01",
+    "set": {
+     "target_text": "disse-me que tinha acabado de ver o último autocarro",
+     "word_count": 52,
+     "target1_audio_id": "4e1e8d60-f98f-4082-866d-d96e2696049c",
+     "target2_audio_id": "52a4ee4b-d2c4-4ebb-8ee8-33d60abd2da5",
+     "decomposition": null
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 15,
+  "status": 200,
+  "event_id": "3dfb41cb-2ec3-4e7e-8d81-a4560e83b6af",
+  "undo_file": "2026-11-23T23-04-38-231Z-3dfb41cb-2ec3-4e7e-8d81-a4560e83b6af.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 395,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 390,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 386,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 384,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 381,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 380,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 378,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 376,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 375,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 374,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 371,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 365,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 344,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 342,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 327,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 325,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 315,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 303,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 297,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 213,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 212,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 162,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 141,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 125,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 79,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 60,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 59,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 54,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 48,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 45,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   }
+  ],
+  "ops": 30
+ },
+ {
+  "batch": 16,
+  "status": 200,
+  "event_id": "aaf29dbf-d17c-4b29-b7e6-e994e861e000",
+  "undo_file": "2026-11-23T23-04-43-247Z-aaf29dbf-d17c-4b29-b7e6-e994e861e000.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 635,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 477,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 460,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 453,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 452,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 451,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 449,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 439,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 437,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 428,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 406,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 404,
+    "set": {
+     "approved_at": "2026-07-03T14:11:35.131Z"
+    }
+   }
+  ],
+  "ops": 12
  }
 ]
