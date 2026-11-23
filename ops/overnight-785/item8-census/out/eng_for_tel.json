@@ -1,0 +1,439 @@
+{
+ "course": "eng_for_tel",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 153,
+ "on_copy": 152,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0001L04U03",
+   "src": "#957 changeset",
+   "known": "నేను ఇప్పుడు నీతో ఇంగ్లీష్ మాట్లాడాలనుకుంటున్నాను.",
+   "target": "I want to speak English with you now.",
+   "twin": "S0001L04B02",
+   "twin_known": "ఇప్పుడు నీతో ఇంగ్లీష్ మాట్లాడాలనుకుంటున్నాను"
+  },
+  {
+   "id": "S0002L01U03",
+   "src": "#957 changeset",
+   "known": "నేను నేర్చుకోవడానికి ప్రయత్నిస్తున్నాను.",
+   "target": "I'm trying to learn.",
+   "twin": "S0002L01B01",
+   "twin_known": "నేర్చుకోవడానికి ప్రయత్నిస్తున్నాను"
+  },
+  {
+   "id": "S0006L02U06",
+   "src": "#957 changeset",
+   "known": "నేను ఒక పదాన్ని గుర్తుంచుకోవడానికి ప్రయత్నిస్తున్నాను.",
+   "target": "I'm trying to remember a word.",
+   "twin": "S0006L02B02",
+   "twin_known": "ఒక పదాన్ని గుర్తుంచుకోవడానికి ప్రయత్నిస్తున్నాను"
+  },
+  {
+   "id": "S0025L02U05",
+   "src": "#957 changeset",
+   "known": "నేను వెళ్ళాల్సి రాకముందే నువ్వు నాకు సహాయం చేయబోతున్నావా?",
+   "target": "Are you going to help me before I have to go?",
+   "twin": "S0025L02B03",
+   "twin_known": "నేను వెళ్ళాల్సి రాకముందే నాకు సహాయం చేయబోతున్నావా?"
+  },
+  {
+   "id": "S0026L03U06",
+   "src": "#957 changeset",
+   "known": "నేను దాదాపు వెళ్ళడానికి సిద్ధంగా ఉన్నట్టు అనిపించడం నాకు ఇష్టం.",
+   "target": "I like feeling as if I'm nearly ready to go.",
+   "twin": "S0026L03U03",
+   "twin_known": "దాదాపు వెళ్ళడానికి సిద్ధంగా ఉన్నట్టు అనిపించడం నాకు ఇష్టం"
+  },
+  {
+   "id": "S0027L03U06",
+   "src": "#957 changeset",
+   "known": "సమాధానం చెప్పడానికి మరీ ఎక్కువ సమయం తీసుకోవడం నాకు ఇష్టం లేదు.",
+   "target": "I don't like taking too much time to answer.",
+   "twin": "S0027L03U01",
+   "twin_known": "నాకు సమాధానం చెప్పడానికి మరీ ఎక్కువ సమయం తీసుకోవడం ఇష్టం లేదు"
+  },
+  {
+   "id": "S0048L01U06",
+   "src": "#957 changeset",
+   "known": "తప్పులు చేయడం గురించి నేను పట్టించుకోను.",
+   "target": "I don't care about making mistakes.",
+   "twin": "S0048L01U01",
+   "twin_known": "నేను తప్పులు చేయడం గురించి పట్టించుకోను"
+  },
+  {
+   "id": "S0051L03U06",
+   "src": "#957 changeset",
+   "known": "నా స్నేహితులతో కలిసి ఆసక్తికరమైన పనులు చేయడం నేను ఆనందిస్తాను.",
+   "target": "I enjoy doing interesting things with my friends.",
+   "twin": "S0051L03U03",
+   "twin_known": "నేను నా స్నేహితులతో కలిసి ఆసక్తికరమైన పనులు చేయడం ఆనందిస్తాను"
+  },
+  {
+   "id": "S0055L02U06",
+   "src": "#957 changeset",
+   "known": "నేను సరిగ్గా నిద్రపోనప్పుడు లేవడం ఆనందించను.",
+   "target": "I don't enjoy waking up when I didn't sleep very well.",
+   "twin": "S0055L02U03",
+   "twin_known": "సరిగ్గా నిద్రపోనప్పుడు నేను లేవడం ఆనందించను"
+  },
+  {
+   "id": "S0071L02U06",
+   "src": "#957 changeset",
+   "known": "మేము నిజాన్ని ఎవరికీ వినిపించాలని అనుకోలేదు.",
+   "target": "We didn't want to let anyone hear the truth.",
+   "twin": "S0071L02U05",
+   "twin_known": "మేము నిజాన్ని ఎవరికీ వినిపించాలనుకోలేదు"
+  },
+  {
+   "id": "S0076L02U06",
+   "src": "#957 changeset",
+   "known": "నేను ఇప్పటికే ఎంత నేర్చుకున్నానో దానితో చాలా సంతోషంగా ఉన్నాను.",
+   "target": "I'm very happy with how much I've learnt already.",
+   "twin": "S0076L02U01",
+   "twin_known": "ఇప్పటికే ఎంత నేర్చుకున్నానో దానితో నేను చాలా సంతోషంగా ఉన్నాను"
+  },
+  {
+   "id": "S0129L01U06",
+   "src": "#957 changeset",
+   "known": "నువ్వు ఇంత బాగా చేస్తున్నావు అని నేను చాలా సంతోషంగా ఉన్నాను.",
+   "target": "I'm so happy that you're doing so well.",
+   "twin": "S0129L01U01",
+   "twin_known": "నువ్వు ఇంత బాగా చేస్తున్నావని నేను ఇంత సంతోషంగా ఉన్నాను"
+  },
+  {
+   "id": "S0137L02U06",
+   "src": "#957 changeset",
+   "known": "పరిపూర్ణంగా ఉండటం కంటే తరచుగా మాట్లాడటం ఇంకా ముఖ్యం.",
+   "target": "It's more important to talk often than to be perfect.",
+   "twin": "S0137L02B01",
+   "twin_known": "తరచుగా మాట్లాడటం ఇంకా ముఖ్యం పరిపూర్ణంగా ఉండటం కంటే"
+  },
+  {
+   "id": "S0140L02U06",
+   "src": "#957 changeset",
+   "known": "నువ్వు నాకు చూపించడానికి ప్రయత్నిస్తున్నది నేను చూడలేకపోతున్నందుకు క్షమించు.",
+   "target": "I'm sorry that I can't see what you're trying to show me.",
+   "twin": "S0140L02B01",
+   "twin_known": "క్షమించు నువ్వు నాకు చూపించడానికి ప్రయత్నిస్తున్నది నేను చూడలేకపోతున్నందుకు"
+  },
+  {
+   "id": "S0175L01U06",
+   "src": "#957 changeset",
+   "known": "నువ్వు ఆదివారం ఉదయం ఏం చేయాలనుకుంటున్నావు?",
+   "target": "What do you want to do on Sunday morning?",
+   "twin": "S0175L01B02",
+   "twin_known": "ఆదివారం ఉదయం నువ్వు ఏం చేయాలనుకుంటున్నావు?"
+  },
+  {
+   "id": "S0185L01U06",
+   "src": "#957 changeset",
+   "known": "నువ్వు వాటిని పనిచోట వదిలేశావు అని నేను అనుకుంటున్నాను.",
+   "target": "I think you left them at work.",
+   "twin": "S0185L01U01",
+   "twin_known": "నువ్వు వాటిని పనిచోట వదిలేశావని నేను అనుకుంటాను"
+  },
+  {
+   "id": "S0193L01U06",
+   "src": "#957 changeset",
+   "known": "క్షమించు, కానీ నేను ఇవాళ మరీ బిజీగా ఉన్నాను.",
+   "target": "I'm sorry but I'm too busy today.",
+   "twin": "S0193L01U01",
+   "twin_known": "క్షమించు కానీ నేను ఈ రోజు మరీ బిజీగా ఉన్నాను"
+  },
+  {
+   "id": "S0199L01U06",
+   "src": "#957 changeset",
+   "known": "నా స్నేహితుడు ఒకప్పుడు ఆఫీసులో పని చేసేవాడు.",
+   "target": "My friend used to work in an office.",
+   "twin": "S0199L01B01",
+   "twin_known": "నా స్నేహితుడు ఆఫీసులో పని చేసేవాడు"
+  },
+  {
+   "id": "S0245L01U06",
+   "src": "#957 changeset",
+   "known": "నేను తక్కువ సమయంలో ఎంత చేశానో దానితో నేను సంతోషంగా ఉన్నాను",
+   "target": "I'm happy with how much I've done in a short time",
+   "twin": "S0245L01U01",
+   "twin_known": "నేను తక్కువ సమయంలో ఎంత చేశానో దానితో సంతోషంగా ఉన్నాను"
+  },
+  {
+   "id": "S0249L01U06",
+   "src": "#957 changeset",
+   "known": "నువ్వు వెళ్ళకముందు నాకు సహాయం చేయాలని నేను కోరుకుంటున్నాను.",
+   "target": "I want you to help me before you go.",
+   "twin": "S0249L01U01",
+   "twin_known": "నువ్వు వెళ్ళకముందు నువ్వు నాకు సహాయం చేయాలని నేను కోరుకుంటున్నాను"
+  },
+  {
+   "id": "S0268L01U06",
+   "src": "#957 changeset",
+   "known": "అవును, ఆమె గత వారం నాకు రెండు ఈమెయిల్‌లు పంపింది.",
+   "target": "Yes she sent me two emails last week.",
+   "twin": "S0268L01U01",
+   "twin_known": "అవును, ఆమె నాకు గత వారం రెండు ఈమెయిల్‌లు పంపింది"
+  },
+  {
+   "id": "S0304L02U07",
+   "src": "#957 changeset",
+   "known": "ఆమె ఇంటి నుంచి పని చేయాలని అనుకోవడం లేదని నేను అనుకుంటున్నాను.",
+   "target": "I think that she doesn't want to work from home.",
+   "twin": "S0304L02U03",
+   "twin_known": "తాను ఇంటి నుంచి పని చేయాలని అనుకోవడం లేదని నేను అనుకుంటున్నాను"
+  },
+  {
+   "id": "S0306L03U08",
+   "src": "#957 changeset",
+   "known": "నీ స్నేహితుడితో మాట్లాడుతున్న ఆ యువతి నాకు తెలుసు.",
+   "target": "I know that young woman who's talking to your friend.",
+   "twin": "S0306L03U03",
+   "twin_known": "నీ స్నేహితుడితో మాట్లాడుతున్న ఆ యువ స్త్రీ నాకు తెలుసు"
+  },
+  {
+   "id": "S0307L02U05",
+   "src": "#957 changeset",
+   "known": "అక్కడ కూర్చున్న ఆ యువకుడు నాకు తెలుసు.",
+   "target": "I know that young man who's sitting over there.",
+   "twin": "S0307L02U01",
+   "twin_known": "అక్కడ కూర్చున్న ఆ యువ వ్యక్తి నాకు తెలుసు"
+  },
+  {
+   "id": "S0342L01U06",
+   "src": "#957 changeset",
+   "known": "ఏదో చెప్పిన ఒకరిని నేను కలిశాను.",
+   "target": "I met someone who said something.",
+   "twin": "S0342L01U01",
+   "twin_known": "నేను ఏదో చెప్పిన ఒకరిని కలిశాను"
+  },
+  {
+   "id": "S0366L02U08",
+   "src": "#957 changeset",
+   "known": "అతను ఏం పండించాలనుకున్నాడో నువ్వు విన్నావా?",
+   "target": "Did you hear what he wanted to grow?",
+   "twin": "S0366L02U01",
+   "twin_known": "అతను ఏం పండించాలనుకున్నాడో నీవు విన్నావా?"
+  },
+  {
+   "id": "S0387L02U06",
+   "src": "#957 changeset",
+   "known": "లేదు, ఆమె చెప్పింది సరైనది అని నేను అనుకోలేదు.",
+   "target": "No I didn't think she was right.",
+   "twin": "S0387L02U01",
+   "twin_known": "లేదు, ఆమె సరైనది అని నేను అనుకోలేదు"
+  },
+  {
+   "id": "S0431L04U08",
+   "src": "#957 changeset",
+   "known": "వాళ్ళు ఇంకా సిద్ధంగా లేరు కానీ త్వరలో సిద్ధంగా ఉంటారు.",
+   "target": "They're not ready yet but they'll be ready soon.",
+   "twin": "S0431L04U05",
+   "twin_known": "వాళ్ళు ఇప్పటికీ సిద్ధంగా లేరు కానీ త్వరలో సిద్ధంగా ఉంటారు"
+  },
+  {
+   "id": "S0437L03U06",
+   "src": "#957 changeset",
+   "known": "వాళ్ళు దానం కోసం వీలైనంత ఎక్కువ సొమ్ము సేకరించాలనుకున్నారు.",
+   "target": "They wanted to raise as much as possible for charity.",
+   "twin": "S0437L03U04",
+   "twin_known": "వాళ్ళు దానం కోసం వీలైనంత ఎక్కువ సేకరించాలనుకున్నారు"
+  },
+  {
+   "id": "S0438L02U05",
+   "src": "#957 changeset",
+   "known": "అతను ఏం చేయాలో నిర్ణయించాలని వాళ్ళు అనుకోలేదు.",
+   "target": "They didn't want to decide what he should do.",
+   "twin": "S0438L02B03",
+   "twin_known": "అతను ఏం చేయాలో వాళ్ళు నిర్ణయించాలని అనుకోలేదు"
+  },
+  {
+   "id": "S0444L03U06",
+   "src": "#957 changeset",
+   "known": "అవును, దాన్ని ఇంకా సమర్థంగా చేయవచ్చని వాళ్ళు అనుకున్నారు.",
+   "target": "Yes they thought it could be done more efficiently.",
+   "twin": "S0444L03U04",
+   "twin_known": "అవును, దాన్ని మరింత సమర్థంగా చేయవచ్చని వాళ్ళు అనుకున్నారు"
+  },
+  {
+   "id": "S0449L03U07",
+   "src": "#957 changeset",
+   "known": "తాము దాదాపు సిద్ధంగా ఉన్నామని వాళ్ళు చెప్పారు.",
+   "target": "They said that they were almost ready.",
+   "twin": "S0449L03U01",
+   "twin_known": "వాళ్ళు దాదాపు సిద్ధంగా ఉన్నారని చెప్పారు"
+  },
+  {
+   "id": "S0485L02U05",
+   "src": "#957 changeset",
+   "known": "దూరంగా వెళ్ళిపోవడం కంటే నన్ను ఇంకేదీ ఎక్కువ సంతోషపెట్టదు.",
+   "target": "Nothing would make me happier than to get away.",
+   "twin": "S0485L02B02",
+   "twin_known": "ఇంకేదీ నన్ను ఎక్కువ సంతోషపెట్టదు దూరంగా వెళ్ళిపోవడం కంటే"
+  },
+  {
+   "id": "S0502L03U06",
+   "src": "#957 changeset",
+   "known": "ఆమె కుడివైపుకు బదులు ఎడమవైపు తిరగడం వల్ల దాదాపు దారి తప్పింది.",
+   "target": "She almost got lost because she turned left instead of right.",
+   "twin": "S0502L03U01",
+   "twin_known": "ఆమె దాదాపు దారి తప్పింది ఎడమవైపు తిరగడం వల్ల కుడివైపుకు బదులు"
+  },
+  {
+   "id": "S0503L03U06",
+   "src": "#957 changeset",
+   "known": "ఇబ్బంది కలిగించడం నాకు అస్సలు ఇష్టం లేదు కానీ అది నాది.",
+   "target": "I hate making trouble but that one's mine.",
+   "twin": "S0503L03U01",
+   "twin_known": "నాకు ఇబ్బంది కలిగించడం ఇష్టం లేదు కానీ అది నాది"
+  },
+  {
+   "id": "S0506L04U06",
+   "src": "#957 changeset",
+   "known": "మేము మారకముందు చాలా ఏళ్ళ క్రితం నేను ఇక్కడ చుట్టుపక్కల నివసించేవాడిని.",
+   "target": "I used to live around here years ago before we moved.",
+   "twin": "S0506L04U01",
+   "twin_known": "నేను ఇక్కడ చుట్టుపక్కల చాలా ఏళ్ళ క్రితం నివసించేవాడిని మేము మారకముందు"
+  },
+  {
+   "id": "S0533L03U05",
+   "src": "#957 changeset",
+   "known": "నువ్వు చెప్పే ప్రతి మాటను ఆమె వినదు.",
+   "target": "She won't listen to every word you say.",
+   "twin": "S0533L03U01",
+   "twin_known": "ఆమె నువ్వు చెప్పే ప్రతి మాటను వినదు"
+  },
+  {
+   "id": "S0535L03U05",
+   "src": "#957 changeset",
+   "known": "తాను తప్పు ఉద్యోగాన్ని ఎంచుకోనని అతను ఒక మాట ఇచ్చాడు.",
+   "target": "He made a promise that he wouldn't choose the wrong job.",
+   "twin": "S0535L03U01",
+   "twin_known": "అతను ఒక మాట ఇచ్చాడు తాను తప్పు ఉద్యోగాన్ని ఎంచుకోనని"
+  },
+  {
+   "id": "S0536L03U05",
+   "src": "#957 changeset",
+   "known": "పిచ్చిగా ఉండటం చెడ్డదని నేను ఒకప్పుడు అనుకునేవాడిని.",
+   "target": "I used to think that being crazy was bad.",
+   "twin": "S0536L03U01",
+   "twin_known": "నేను ఒకప్పుడు అనుకునేవాడిని పిచ్చిగా ఉండటం చెడ్డదని"
+  },
+  {
+   "id": "S0540L03U05",
+   "src": "#957 changeset",
+   "known": "నువ్వు కారు లేకుండా బయలుదేరాలనుకుంటే నాకు ఇబ్బంది లేదు.",
+   "target": "I don't mind if you want to leave without the car.",
+   "twin": "S0540L03U01",
+   "twin_known": "నాకు ఇబ్బంది లేదు నువ్వు బయలుదేరాలనుకుంటే కారు లేకుండా"
+  },
+  {
+   "id": "S0544L03U05",
+   "src": "#957 changeset",
+   "known": "అది కష్టంగా ఉంటుందని ఎవరు చెప్పారో వాళ్ళు పూర్తిగా సరిగ్గా చెప్పారు.",
+   "target": "Whoever said it would be difficult was absolutely right.",
+   "twin": "S0544L03U01",
+   "twin_known": "ఎవరు చెప్పారో అది కష్టంగా ఉంటుందని వాళ్ళు పూర్తిగా సరిగ్గా చెప్పారు"
+  },
+  {
+   "id": "S0559L04U04",
+   "src": "#957 changeset",
+   "known": "నువ్వు అడవి గుండా వెళ్ళే దారిని కనుక్కున్నావా?",
+   "target": "Have you found the path through the wood?",
+   "twin": "S0559L04U01",
+   "twin_known": "నువ్వు అడవి గుండా దారిని కనుక్కున్నావా?"
+  },
+  {
+   "id": "S0561L02U04",
+   "src": "#957 changeset",
+   "known": "అది వేగమైన కారో కాదో నేను పట్టించుకోను.",
+   "target": "I don't care if it's a fast car.",
+   "twin": "S0561L02U01",
+   "twin_known": "నేను వేగమైన అది కారో కాదో పట్టించుకోను"
+  },
+  {
+   "id": "S0566L02U05",
+   "src": "#957 changeset",
+   "known": "అది నా ఎంపిక అయ్యుంటే నేను ఇంకా ఎక్కువ ఆలోచించేవాడిని.",
+   "target": "I'd have thought more if it had been my choice.",
+   "twin": "S0566L02U01",
+   "twin_known": "నేను ఇంకా ఎక్కువ ఆలోచించేవాడిని అది నా ఎంపిక అయ్యుంటే"
+  },
+  {
+   "id": "S0570L04U05",
+   "src": "#957 changeset",
+   "known": "నీ టికెట్ కోసం నువ్వు ఎంత చెల్లించడానికి సిద్ధంగా ఉన్నావు?",
+   "target": "How much are you willing to pay for your ticket?",
+   "twin": "S0570L04B02",
+   "twin_known": "నీ టికెట్ కోసం ఎంత చెల్లించడానికి నువ్వు సిద్ధంగా ఉన్నావు?"
+  },
+  {
+   "id": "S0572L03U08",
+   "src": "#957 changeset",
+   "known": "వాళ్ళు గత సారి మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో నువ్వు మర్చిపోయావా?",
+   "target": "Have you forgotten what happened the last time they visited us?",
+   "twin": "S0572L03U01",
+   "twin_known": "నువ్వు గత సారి వాళ్ళు మమ్మల్ని చూడటానికి వచ్చినప్పుడు ఏం జరిగిందో మర్చిపోయావా?"
+  },
+  {
+   "id": "S0573L05U05",
+   "src": "#957 changeset",
+   "known": "సెలవులను చాలా ప్రత్యేకంగా చేసే అలాంటి విషయం ఇది.",
+   "target": "It's the kind of thing that makes the holidays very special.",
+   "twin": "S0573L05U01",
+   "twin_known": "అలాంటి విషయం ఇది సెలవులను చాలా ప్రత్యేకంగా చేసే"
+  },
+  {
+   "id": "S0578L03U05",
+   "src": "#957 changeset",
+   "known": "ఎక్కడైనా ఇంకా వెచ్చని చోటు.",
+   "target": "Somewhere warmer.",
+   "twin": "S0578L03U01",
+   "twin_known": "ఎక్కడైనా చోటు ఇంకా వెచ్చని"
+  },
+  {
+   "id": "S0608L04U05",
+   "src": "#957 changeset",
+   "known": "అది చేయడానికి తెలివైన పని అయ్యుండేది.",
+   "target": "It would have been the sensible thing to do.",
+   "twin": "S0608L04U01",
+   "twin_known": "అది అయ్యుండేది తెలివైన పని చేయడానికి"
+  },
+  {
+   "id": "S0609L04U06",
+   "src": "#957 changeset",
+   "known": "చేయడానికి తెలివైన పని అడగడం అయ్యుండేది.",
+   "target": "The sensible thing to do would have been to ask.",
+   "twin": "S0609L04U01",
+   "twin_known": "తెలివైన పని చేయడానికి అడగడం అయ్యుండేది"
+  },
+  {
+   "id": "S0638L01U05",
+   "src": "#957 changeset",
+   "known": "నేను ఆలోచించడానికి ప్రయత్నిస్తున్నాను.",
+   "target": "I'm trying to think.",
+   "twin": "S0638L01B01",
+   "twin_known": "ఆలోచించడానికి ప్రయత్నిస్తున్నాను"
+  },
+  {
+   "id": "S0642L02U13",
+   "src": "#957 changeset",
+   "known": "మీకు ఎలా అనిపిస్తోంది మేడం?",
+   "target": "how do you feel madam?",
+   "twin": "S0642L02U02",
+   "twin_known": "మేడం, మీకు ఎలా అనిపిస్తోంది?"
+  },
+  {
+   "id": "S0654L01U07",
+   "src": "#957 changeset",
+   "known": "నేను మీకు సహాయం చేయగలనో లేదో నాకు ఖచ్చితంగా తెలియదు, సార్.",
+   "target": "I'm not sure if I can help you, sir.",
+   "twin": "S0654L01U02",
+   "twin_known": "మీకు సహాయం చేయగలనో లేదో నాకు ఖచ్చితంగా తెలియదు, సార్"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 99,
+ "missing": [
+  "S0108L02U06"
+ ]
+}
