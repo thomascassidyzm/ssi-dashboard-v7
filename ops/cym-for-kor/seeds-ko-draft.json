@@ -572,9 +572,9 @@
    "seed_number": 69,
    "welsh": "doedd o ddim isio edrych ar ôl y ci ifanc trwy’r pnawn",
    "english": "he didn't want to look after the young dog all afternoon",
-   "korean": "그는 오후 내내 그 어린 개를 돌보고 싶어하지 않았어요",
+   "korean": "그는 오후 내내 어린 개를 돌보고 싶어하지 않았어요",
    "flags": [],
-   "note": ""
+   "note": "y X (the) = bare Korean noun; y X 'na (that) = 그 X; y X 'ma (this) = 이 X"
   },
   {
    "seed_number": 70,
@@ -748,9 +748,9 @@
    "seed_number": 90,
    "welsh": "os medri di siarad yn arafach, fyddai hynna’n wych",
    "english": "if you can speak more slowly that would be great",
-   "korean": "당신이 더 천천히 이야기할 수 있으면, 그건 정말 좋을 거예요",
+   "korean": "당신이 더 천천히 이야기할 수 있으면, 그건 훌륭할 거예요",
    "flags": [],
-   "note": ""
+   "note": "gwych = 훌륭하다"
   },
   {
    "seed_number": 91,
@@ -1659,6 +1659,856 @@
    "welsh": "maen nhw’n deud bo’ nhw isio gwneud yn siŵr bo’ ni’n gorffen popeth mewn pryd",
    "english": "they say they want to make sure that we finish everything in time",
    "korean": "그들은 우리가 모든 것을 제때 끝내도록 확실히 하고 싶다고 말해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 201,
+   "welsh": "oeddan ni isio gwybod be’ oedd yn mynd i ddigwydd",
+   "english": "we wanted to know what was going to happen",
+   "korean": "우리는 무슨 일이 일어날지 알고 싶었어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 202,
+   "welsh": "doedd neb yn siŵr sut i ateb y cwestiwn",
+   "english": "nobody was sure how to answer the question",
+   "korean": "아무도 질문에 어떻게 대답할지 확실하지 않았어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 203,
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti helpu fi?",
+   "english": "what would you do if I asked you to help me?",
+   "korean": "제가 당신에게 저를 도와 달라고 부탁한다면 당신은 무엇을 할 거예요?",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "fyddet ti (would) and future both = -ㄹ 거예요; the if-clause carries the conditional. gofyn = 물어보다 or 부탁하다 by sense (harmless direction)"
+  },
+  {
+   "seed_number": 204,
+   "welsh": "o’n i isio iddi hi helpu chdi i ddelio efo’r trefniadau",
+   "english": "I wanted her to help you to deal with the arrangements",
+   "korean": "저는 그녀가 당신이 준비 사항들을 처리하는 것을 돕기를 원했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 205,
+   "welsh": "dw i wedi anghofio’r gair o’n i’n trio deud",
+   "english": "I've forgotten the word I was trying to say",
+   "korean": "저는 제가 말하려고 하던 단어를 잊어버렸어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 206,
+   "welsh": "dw i’n mwynhau’r cyfle i ymarfer siarad efo chdi",
+   "english": "I enjoy the chance to practise speaking with you",
+   "korean": "저는 당신과 이야기하는 연습을 할 기회를 즐겨요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 207,
+   "welsh": "ti wedi gwneud be’ oeddat ti angen gwneud",
+   "english": "you've done what you needed to do",
+   "korean": "당신은 당신이 할 필요가 있었던 것을 했어요",
+   "flags": [
+    "REGISTER",
+    "LOST_DISTINCTION"
+   ],
+   "note": "perfect (ti wedi gwneud) = 했어요, same as preterite; 당신 twice"
+  },
+  {
+   "seed_number": 208,
+   "welsh": "do’n i ddim isio gofyn i ti sut i ddeud o",
+   "english": "I didn't want to ask you how to say it",
+   "korean": "저는 당신에게 그걸 어떻게 말하는지 묻고 싶지 않았어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 209,
+   "welsh": "maen nhw isio treulio mwy o amser yn cyfarfod fel grŵp",
+   "english": "they want to spend more time meeting as a group",
+   "korean": "그들은 그룹으로 만나는 데 더 많은 시간을 보내고 싶어해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 210,
+   "welsh": "maen nhw’n meddwl bo’ ni angen trafod y broblem",
+   "english": "they think that we need to discuss the problem",
+   "korean": "그들은 우리가 문제를 논의할 필요가 있다고 생각해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 211,
+   "welsh": "ddudon nhw wrthon ni bo’ nhw ddim isio esbonio",
+   "english": "they told us that they didn't want to explain",
+   "korean": "그들은 우리에게 설명하고 싶지 않다고 말했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 212,
+   "welsh": "oeddan nhw isio gofyn am help",
+   "english": "they wanted to ask for help",
+   "korean": "그들은 도움을 요청하고 싶어했어요",
+   "flags": [],
+   "note": "gofyn am = 요청하다"
+  },
+  {
+   "seed_number": 213,
+   "welsh": "dan ni ddim yn gwybod be’ maen nhw’n trio cyflawni",
+   "english": "we don't know what they're trying to achieve",
+   "korean": "우리는 그들이 무엇을 이루려고 노력하고 있는지 몰라요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 214,
+   "welsh": "gest ti amser da ar y penwythnos?",
+   "english": "did you have a good time at the weekend?",
+   "korean": "당신은 주말에 좋은 시간을 보냈나요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 215,
+   "welsh": "es i allan nos Sadwrn",
+   "english": "I went out on Saturday night",
+   "korean": "저는 토요일 밤에 나갔어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 216,
+   "welsh": "weles i ychydig o ffrindiau",
+   "english": "I saw a few friends",
+   "korean": "저는 친구 몇 명을 봤어요",
+   "flags": [],
+   "note": "gweld = 보다 (만나다 is cyfarfod)"
+  },
+  {
+   "seed_number": 217,
+   "welsh": "ges i wydrad neu ddau o ddŵr",
+   "english": "I had a glass or two of water",
+   "korean": "저는 물을 한두 잔 마셨어요",
+   "flags": [
+    "ONE_ANSWER"
+   ],
+   "note": "ges i (I had/got) has no neutral Korean for a drink; 마셨어요 would also fit yfais i / wnes i yfed. 받았어요 would be wrong sense"
+  },
+  {
+   "seed_number": 218,
+   "welsh": "wnes i ddim gwneud llawer ddydd Sul",
+   "english": "I didn't do much on Sunday",
+   "korean": "저는 일요일에 별로 많이 하지 않았어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 219,
+   "welsh": "oedd hi’n braf ymlacio am dipyn",
+   "english": "it was nice to relax for a while",
+   "korean": "한동안 느긋하게 쉬니까 좋았어요",
+   "flags": [
+    "ONE_ANSWER"
+   ],
+   "note": "braf (nice) and da (good) both = 좋다; low risk in context"
+  },
+  {
+   "seed_number": 220,
+   "welsh": "wnest ti wylio bach o deledu?",
+   "english": "did you watch a bit of television?",
+   "korean": "당신은 텔레비전을 조금 봤나요?",
+   "flags": [
+    "ONE_ANSWER"
+   ],
+   "note": "gwylio (watch) and gweld (see) are both 보다; the object (TV, film, football) decides. Course-wide"
+  },
+  {
+   "seed_number": 221,
+   "welsh": "wnes i wylio’r pêl-droed ac wedyn wnes i wylio ffilm",
+   "english": "I watched the football and then I watched a film",
+   "korean": "저는 축구를 봤고 그다음에 영화를 봤어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 222,
+   "welsh": "mae o’n trio deud wrtha i be’ mae o isio",
+   "english": "he's trying to tell me what he wants",
+   "korean": "그는 저에게 자기가 원하는 것을 말하려고 노력하고 있어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 223,
+   "welsh": "mae o’n mynd i ofyn i ti ’fory",
+   "english": "he's going to ask you tomorrow",
+   "korean": "그는 내일 당신에게 물어볼 거예요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 224,
+   "welsh": "mae o newydd ddechrau dysgu",
+   "english": "he's just started to learn",
+   "korean": "그는 막 배우기 시작했어요",
+   "flags": [],
+   "note": "newydd + verb = 막 -했어요"
+  },
+  {
+   "seed_number": 225,
+   "welsh": "mi fyddai fo’n rhoi ateb i ti tasai fo’n medru",
+   "english": "he would give you an answer if he could",
+   "korean": "그가 할 수 있다면 그는 당신에게 답을 줄 거예요",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "byddai (would) = -ㄹ 거예요, same as future; the if-clause carries it"
+  },
+  {
+   "seed_number": 226,
+   "welsh": "mae’r dyn yn trio helpu fi",
+   "english": "the man is trying to help me",
+   "korean": "남자가 저를 도우려고 노력하고 있어요",
+   "flags": [
+    "ONE_ANSWER"
+   ],
+   "note": "y dyn = bare 남자, y dyn 'na = 그 남자 (227); Korean has no article, so this split is a course rule the learner must be shown"
+  },
+  {
+   "seed_number": 227,
+   "welsh": "mae’r dyn ’na’n mynd i ddeud rhywbeth newydd wrtha i",
+   "english": "that man is going to tell me something new",
+   "korean": "그 남자는 저에게 새로운 것을 말해 줄 거예요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 228,
+   "welsh": "mae’r dyn ’na newydd ddechrau ymarfer siarad",
+   "english": "that man has just started to practise speaking",
+   "korean": "그 남자는 막 이야기하는 연습을 시작했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 229,
+   "welsh": "mi fyddai’r ddynas ’na’n helpu chdi tasai hi’n medru",
+   "english": "that woman would help you if she could",
+   "korean": "그 여자는 할 수 있다면 당신을 도와줄 거예요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 230,
+   "welsh": "dw i’n nabod dyn ifanc sydd isio gweithio efo chdi",
+   "english": "I know a young man who wants to work with you",
+   "korean": "저는 당신과 함께 일하고 싶어하는 젊은 남자를 알아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 231,
+   "welsh": "dw i’n nabod hen ddyn oedd isio gofyn am help",
+   "english": "I know an old man who wanted to ask for help",
+   "korean": "저는 도움을 요청하고 싶어했던 나이 든 남자를 알아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 232,
+   "welsh": "dw i’n nabod hen ddynas sy’n medru cofio’r ateb",
+   "english": "I know an old woman who can remember the answer",
+   "korean": "저는 답을 기억할 수 있는 나이 든 여자를 알아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 233,
+   "welsh": "dw i’n nabod dynas ifanc sy’n nabod dy chwaer",
+   "english": "I know a young woman who knows your sister",
+   "korean": "저는 당신의 자매를 아는 젊은 여자를 알아요",
+   "flags": [
+    "LOST_DISTINCTION",
+    "REGISTER"
+   ],
+   "note": "chwaer has no age; Korean sister words (언니/누나/여동생) force older/younger and the speaker's sex. 자매 is neutral but stiff. Decision for Kai"
+  },
+  {
+   "seed_number": 234,
+   "welsh": "wnes i gyfarfod rhywun neithiwr sy’n gweithio efo dy frawd",
+   "english": "I met someone last night who works with your brother",
+   "korean": "저는 어젯밤에 당신의 형제와 함께 일하는 사람을 만났어요",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "brawd = 형제 (neutral); 형/오빠/남동생 would add age and speaker sex"
+  },
+  {
+   "seed_number": 235,
+   "welsh": "wnes i gyfarfod rhywun ddudodd fod o isio deud rhywbeth wrthot ti",
+   "english": "I met someone who said that he wanted to tell you something",
+   "korean": "저는 자기가 당신에게 뭔가 말하고 싶다고 말한 사람을 만났어요",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "fod o (he) vs 236 bod hi (she) after rhywun: 자기 is genderless; 그가/그녀가 would read as a third person"
+  },
+  {
+   "seed_number": 236,
+   "welsh": "dw i’n nabod rhywun ddudodd bod hi’n mynd i drio helpu",
+   "english": "I know someone who said that she was going to try to help",
+   "korean": "저는 자기가 도우려고 노력할 거라고 말한 사람을 알아요",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "bod hi (she) lost in 자기; see 235"
+  },
+  {
+   "seed_number": 237,
+   "welsh": "oedd o isio i mi ddeud wrthot ti cyn y penwythnos",
+   "english": "he wanted me to tell you before the weekend",
+   "korean": "그는 제가 주말 전에 당신에게 말하기를 원했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 238,
+   "welsh": "oedd o isio i ti ddeud wrtha i ddoe",
+   "english": "he wanted you to tell me yesterday",
+   "korean": "그는 당신이 어제 저에게 말하기를 원했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 239,
+   "welsh": "mae fy mam yn licio darllen",
+   "english": "my mother likes to read",
+   "korean": "제 어머니는 읽는 것을 좋아해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 240,
+   "welsh": "dydy fy nhad ddim yn licio stopio siarad",
+   "english": "my father doesn't like to stop talking",
+   "korean": "제 아버지는 이야기하는 것을 멈추는 걸 좋아하지 않아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 241,
+   "welsh": "dw i ddim isio rhoi o iddo fo",
+   "english": "I don't want to give it to him",
+   "korean": "저는 그걸 그에게 주고 싶지 않아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 242,
+   "welsh": "dw i isio rhoi mwy o amser iddi hi",
+   "english": "I want to give her more time",
+   "korean": "저는 그녀에게 시간을 더 주고 싶어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 243,
+   "welsh": "dw i’n mynd i ofyn am yr un peth i fwyta",
+   "english": "I'm going to ask for the same thing to eat",
+   "korean": "저는 먹을 것으로 같은 것을 요청할 거예요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 244,
+   "welsh": "dw i wedi dysgu llawer yn barod",
+   "english": "I've learnt a lot already",
+   "korean": "저는 이미 많이 배웠어요",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "dw i wedi dysgu = 배웠어요, same as wnes i ddysgu; 이미 helps here"
+  },
+  {
+   "seed_number": 245,
+   "welsh": "dw i’n hapus efo faint dw i wedi gwneud mewn amser byr",
+   "english": "I'm happy with how much I've done in a short time",
+   "korean": "저는 짧은 시간에 제가 얼마나 많이 했는지에 만족해요",
+   "flags": [],
+   "note": "hapus efo = 만족하다 (as 76)"
+  },
+  {
+   "seed_number": 246,
+   "welsh": "o’n i isio iddi hi helpu chdi ond oedd hi’n rhy brysur",
+   "english": "I wanted her to help you but she was too busy",
+   "korean": "저는 그녀가 당신을 도와주기를 원했지만 그녀는 너무 바빴어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 247,
+   "welsh": "o’n i’n meddwl bod y llyfr ’na’n eitha’ da",
+   "english": "I thought that book was fairly good",
+   "korean": "저는 그 책이 꽤 좋다고 생각했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 248,
+   "welsh": "o’n i’n meddwl bod y ffilm yn sothach llwyr a dw i isio fy mhres yn ôl",
+   "english": "I thought the film was complete rubbish and I want my money back",
+   "korean": "저는 영화가 완전 쓰레기라고 생각했어요, 그리고 저는 제 돈을 돌려받고 싶어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 249,
+   "welsh": "dw i isio i ti helpu fi cyn i ti fynd",
+   "english": "I want you to help me before you go",
+   "korean": "저는 당신이 가기 전에 저를 도와주기를 원해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 250,
+   "welsh": "fedri di ddeud rhywbeth arall wrthyn nhw cyn i mi ateb?",
+   "english": "can you tell them something else before I answer?",
+   "korean": "당신은 제가 대답하기 전에 그들에게 다른 것을 말해 줄 수 있나요?",
+   "flags": [],
+   "note": "HC English and Welsh agree (\"tell them\"); the original 668 English said \"tell me\""
+  },
+  {
+   "seed_number": 251,
+   "welsh": "dw i ddim isio ffeindio allan tan ar ôl i ni orffen",
+   "english": "I don't want to find out until after we finish",
+   "korean": "저는 우리가 끝낸 후까지는 알아내고 싶지 않아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 252,
+   "welsh": "pryd fyddi di’n barod i ddechrau?",
+   "english": "when will you be ready to start?",
+   "korean": "당신은 언제 시작할 준비가 될 거예요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 253,
+   "welsh": "dylwn i fod yn barod mewn ychydig funudau",
+   "english": "I should be ready in a few minutes",
+   "korean": "저는 몇 분 안에 준비가 될 것 같아요",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "dylwn here is \"should\" of expectation, not advice; -는 게 좋겠어요 (the advice rule) would be wrong. -ㄹ 것 같아요 used"
+  },
+  {
+   "seed_number": 254,
+   "welsh": "dw i wedi bod yn barod ers bore ’ma",
+   "english": "I've been ready since this morning",
+   "korean": "저는 오늘 아침부터 준비가 되어 있었어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 255,
+   "welsh": "pryd wyt ti’n meddwl fyddi di’n barod i adael?",
+   "english": "when do you think you'll be ready to leave?",
+   "korean": "당신은 언제 떠날 준비가 될 거라고 생각해요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 256,
+   "welsh": "dw i’n meddwl bydda i’n barod mewn llai nag awr",
+   "english": "I think I'll be ready in less than an hour",
+   "korean": "저는 한 시간도 안 돼서 준비가 될 거라고 생각해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 257,
+   "welsh": "dw i’n licio’r peth glas ’na",
+   "english": "I like that blue thing",
+   "korean": "저는 그 파란 것을 좋아해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 258,
+   "welsh": "be’ ydy’r peth glas ’na draw acw?",
+   "english": "what's that blue thing over there?",
+   "korean": "저기 있는 그 파란 건 뭐예요?",
+   "flags": [],
+   "note": "draw acw = 저기"
+  },
+  {
+   "seed_number": 259,
+   "welsh": "syniad",
+   "english": "an idea",
+   "korean": "아이디어",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "fragment"
+  },
+  {
+   "seed_number": 260,
+   "welsh": "sgen i ddim syniad o gwbl",
+   "english": "I don't have the faintest idea",
+   "korean": "저는 아이디어가 전혀 없어요",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "keeps syniad; natural Korean for \"no idea\" is 전혀 모르겠어요, which would map to gwybod"
+  },
+  {
+   "seed_number": 261,
+   "welsh": "dw i’n meddwl efallai fod o’n rhywbeth pwysig",
+   "english": "I think it might be something important",
+   "korean": "저는 그게 어쩌면 중요한 것일지도 모른다고 생각해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 262,
+   "welsh": "pwy oedd y dyn ’na oeddat ti’n siarad efo fo ddoe?",
+   "english": "who was that man you were talking to yesterday?",
+   "korean": "당신이 어제 이야기하고 있던 그 남자는 누구였어요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 263,
+   "welsh": "dw i ddim yn gwybod pwy ti’n ei olygu",
+   "english": "I don't know who you mean",
+   "korean": "저는 당신이 누구를 뜻하는지 몰라요",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "golygu = 뜻하다; the natural 누구 말하는 거예요 would map to deud"
+  },
+  {
+   "seed_number": 264,
+   "welsh": "hen ddyn",
+   "english": "an old man",
+   "korean": "나이 든 남자",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "fragment"
+  },
+  {
+   "seed_number": 265,
+   "welsh": "ffrind",
+   "english": "a friend",
+   "korean": "친구",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "fragment"
+  },
+  {
+   "seed_number": 266,
+   "welsh": "oedd o’n hen ffrind i fy nhad",
+   "english": "he was an old friend of my father",
+   "korean": "그는 제 아버지의 오랜 친구였어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 267,
+   "welsh": "wyt ti wedi clywed gan dy ffrind?",
+   "english": "have you heard from your friend?",
+   "korean": "당신은 당신의 친구에게서 소식을 들었나요?",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "perfect question = 들었나요, same as preterite"
+  },
+  {
+   "seed_number": 268,
+   "welsh": "do, wnaeth hi yrru dau e-bost i mi wythnos diwetha’",
+   "english": "yes she sent me two emails last week",
+   "korean": "네, 그녀는 지난주에 저에게 이메일을 두 통 보냈어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 269,
+   "welsh": "pam dwyt ti ddim isio aros am dy dad?",
+   "english": "why don't you want to wait for your father?",
+   "korean": "당신은 왜 당신의 아버지를 기다리고 싶지 않아요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 270,
+   "welsh": "achos dw i’n poeni bo’ fi’n mynd i fod yn hwyr",
+   "english": "because I'm worried that I'm going to be late",
+   "korean": "왜냐하면 저는 제가 늦을까 봐 걱정되기 때문이에요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 271,
+   "welsh": "fyddet ti’n licio dod efo ni mis nesa’?",
+   "english": "would you like to come with us next month?",
+   "korean": "당신은 다음 달에 우리와 함께 올래요?",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "fyddet ti'n licio (would you like) = -ㄹ래요?, kept apart from wyt ti isio = -고 싶나요?; -ㄹ래요 is outside the -나요/-ㄹ까요 rule"
+  },
+  {
+   "seed_number": 272,
+   "welsh": "byddwn, mae hynna’n swnio fel syniad gwych",
+   "english": "yes that sounds like a great idea",
+   "korean": "네, 그건 훌륭한 아이디어처럼 들려요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 273,
+   "welsh": "na, yn anffodus mae gen i ormod o waith",
+   "english": "no unfortunately I've got too much work",
+   "korean": "아니요, 안타깝게도 저는 일이 너무 많아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 274,
+   "welsh": "oes rhaid i ti adael mewn ychydig o ddiwrnodiau?",
+   "english": "do you have to leave in a few days?",
+   "korean": "당신은 며칠 후에 떠나야 하나요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 275,
+   "welsh": "hirach",
+   "english": "longer",
+   "korean": "더 오래",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "fragment"
+  },
+  {
+   "seed_number": 276,
+   "welsh": "na, mi fedra i aros yma am ychydig bach hirach",
+   "english": "no I can stay here for a little longer",
+   "korean": "아니요, 저는 여기에 조금 더 오래 머물 수 있어요",
+   "flags": [],
+   "note": "aros = 기다리다 or 머물다 by sense"
+  },
+  {
+   "seed_number": 277,
+   "welsh": "oes, mae gen i gyfarfod pwysig yn gynnar wythnos nesa’",
+   "english": "yes I've got an important meeting early next week",
+   "korean": "네, 저는 다음 주 초에 중요한 회의가 있어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 278,
+   "welsh": "oedd rhaid i ti orffen popeth neithiwr?",
+   "english": "did you have to finish everything last night?",
+   "korean": "당신은 어젯밤에 모든 것을 끝내야 했나요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 279,
+   "welsh": "oedd, achos doedd ’na ddim llawer o amser ar ôl",
+   "english": "yes because there wasn't much time left",
+   "korean": "네, 왜냐하면 시간이 많이 남아 있지 않았기 때문이에요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 280,
+   "welsh": "na, dim ond y gwaith pwysica’ oedd rhaid i mi wneud",
+   "english": "no I only had to do the most important job",
+   "korean": "아니요, 저는 가장 중요한 일만 해야 했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 281,
+   "welsh": "oes ots gen ti os dw i’n gorffen fy nghoffi cyn i ti ddechrau?",
+   "english": "do you mind if I finish my coffee before you start?",
+   "korean": "당신은 당신이 시작하기 전에 제가 커피를 다 마시면 상관있나요?",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "gorffen fy nghoffi = 커피를 다 마시다 (Korean needs the verb)"
+  },
+  {
+   "seed_number": 282,
+   "welsh": "na, dydy hynna ddim yn broblem",
+   "english": "no that's not a problem",
+   "korean": "아니요, 그건 문제가 아니에요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 283,
+   "welsh": "pa rai o dy ffrindiau sy’n siarad Cymraeg?",
+   "english": "which of your friends speak Welsh?",
+   "korean": "당신의 친구들 중에 누가 웨일스어를 해요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 284,
+   "welsh": "wyt ti’n nabod ffrind fy chwaer?",
+   "english": "do you know my sister's friend?",
+   "korean": "당신은 제 자매의 친구를 아나요?",
+   "flags": [
+    "LOST_DISTINCTION"
+   ],
+   "note": "chwaer = 자매 (see 233)"
+  },
+  {
+   "seed_number": 285,
+   "welsh": "mae hi’n siarad Cymraeg",
+   "english": "she speaks Welsh",
+   "korean": "그녀는 웨일스어를 해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 286,
+   "welsh": "pobl sy’n licio siarad Cymraeg",
+   "english": "people who like speaking Welsh",
+   "korean": "웨일스어 하는 것을 좋아하는 사람들",
+   "flags": [
+    "REGISTER"
+   ],
+   "note": "fragment"
+  },
+  {
+   "seed_number": 287,
+   "welsh": "faint o bobl wyt ti’n nabod sy’n licio gwylio teledu?",
+   "english": "how many people do you know who like watching television?",
+   "korean": "당신은 텔레비전 보는 것을 좋아하는 사람을 몇 명이나 알아요?",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 288,
+   "welsh": "mae’r rhan fwya’ o’r bobl dw i’n nabod yn licio gwylio teledu",
+   "english": "most people I know like watching television",
+   "korean": "제가 아는 사람들 대부분은 텔레비전 보는 것을 좋아해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 289,
+   "welsh": "sgwn i ydy hi’n mynd i fod yno pnawn ’ma",
+   "english": "I wonder if she's going to be there this afternoon",
+   "korean": "저는 그녀가 오늘 오후에 거기에 있을지 궁금해요",
+   "flags": [],
+   "note": "sgwn i = 저는 ~ 궁금해요"
+  },
+  {
+   "seed_number": 290,
+   "welsh": "sgwn i ydy o’n gwybod yr ateb",
+   "english": "I wonder if he knows the answer",
+   "korean": "저는 그가 답을 아는지 궁금해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 291,
+   "welsh": "dw i’n gobeithio bydda i’n medru siarad yn well cyn bo hir",
+   "english": "I hope I'll be able to speak better soon",
+   "korean": "저는 곧 더 잘 이야기할 수 있기를 바라요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 292,
+   "welsh": "dw i’n gobeithio byddi di’n medru dod i’r parti",
+   "english": "I hope you'll be able to come to the party",
+   "korean": "저는 당신이 파티에 올 수 있기를 바라요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 293,
+   "welsh": "rhaid i mi ffeindio allan lle mae o’n mynd i gyfarfod fi",
+   "english": "I have to find out where he's going to meet me",
+   "korean": "저는 그가 어디에서 저를 만날 건지 알아내야 해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 294,
+   "welsh": "sgen i ddim digon o amser i ffonio chdi heno",
+   "english": "I don't have enough time to call you tonight",
+   "korean": "저는 오늘 밤 당신에게 전화할 시간이 충분하지 않아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 295,
+   "welsh": "ddudes i ddim bo’ fi isio gorffen mewn diwrnod",
+   "english": "I didn't say that I wanted to finish in a day",
+   "korean": "저는 하루 만에 끝내고 싶다고 말하지 않았어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 296,
+   "welsh": "ddudes i bo’ fi angen ychydig mwy o amser",
+   "english": "I said that I needed a little more time",
+   "korean": "저는 시간이 조금 더 필요하다고 말했어요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 297,
+   "welsh": "dw i ddim yn nabod llawer o bobl sy’n siarad Cymraeg",
+   "english": "I don't know many people who speak Welsh",
+   "korean": "저는 웨일스어를 하는 사람을 많이 알지 못해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 298,
+   "welsh": "sgen i ddim byd ar ôl i ddeud",
+   "english": "I've got nothing left to say",
+   "korean": "저는 말할 것이 아무것도 남아 있지 않아요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 299,
+   "welsh": "mae o isio talu hanner",
+   "english": "he wants to pay half",
+   "korean": "그는 반을 내고 싶어해요",
+   "flags": [],
+   "note": ""
+  },
+  {
+   "seed_number": 300,
+   "welsh": "dydy hi ddim isio edrych yn anghyfeillgar",
+   "english": "she doesn't want to seem unfriendly",
+   "korean": "그녀는 불친절해 보이고 싶어하지 않아요",
    "flags": [],
    "note": ""
   }
