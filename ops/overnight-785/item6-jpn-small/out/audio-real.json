@@ -1,0 +1,1941 @@
+[
+ {
+  "role": "target1",
+  "text": "場所を言いたくなかった",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L02B01",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1f8533ff-fe91-46f3-a4c0-90e1e095a5af",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "場所を言いたくなかった",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L02B01",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "606d6651-4c7f-4165-81c3-6695bb33f69d",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "known",
+  "text": "didn't want to tell me where it was",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L02",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0070L02B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fd065a15-1770-4ba3-8eac-15ee17977440",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼女",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8e02e484-f4e1-4271-9c95-6714c2aa7085",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼女",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "49eca16b-c490-485c-8177-4456d6fc3c4d",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "she",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0070L01",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "e08206cd-be5d-453c-8e23-9abe12c81970",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't want to tell you where it was",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a8611c86-49bf-4654-8c2b-1b5e4344f29a",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼は場所を言いたくなかった",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02B04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "80f021fb-c32c-45e2-8e0a-8ede68f1136d",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼は場所を言いたくなかった",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02B04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6b2e1804-0b04-45d3-9083-63ae48ad4e53",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "known",
+  "text": "he didn't want to tell me where it was",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02B04",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "dbf815a1-e769-4c81-b0b8-f84553ae6a1f",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "なんで彼女は場所を言いたくなかった？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f5d73daf-d299-480f-a212-c35a18d3bd39",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "なんで彼女は場所を言いたくなかった？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1cdc1cfc-f81f-4637-a7a2-3b0bdaf2c385",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "why didn't she want to tell me where it was?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "59920b36-e48a-4665-864e-bec1927ec5cb",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼女は場所を言いたくなかったと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "44469dbe-c5b3-4c08-ad1c-57d2437dbd00",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼女は場所を言いたくなかったと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c7a0eaf3-0135-4983-8422-95130a74092d",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think she didn't want to tell me where it was",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9545fe15-48bd-425e-883b-8d938581ded9",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "なんで場所を言いたくなかった？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "20d96562-1814-4ebf-9b25-b1bb7cc08671",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "target2",
+  "text": "なんで場所を言いたくなかった？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f637284f-128e-4e99-9805-72f3edf23daa",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "known",
+  "text": "why didn't you want to tell me where it was?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0070L02U06",
+    "slot": "known"
+   }
+  ],
+  "seed": 70,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4753775a-0f57-441b-b361-3a3fd6145994",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "驚いた、友だちだから",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 130,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0130L02U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 130,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "66d3472e-df49-4bf8-bdf6-d4ecee6083f4",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "驚いた、友だちだから",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 130,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0130L02U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 130,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8f28bc51-f198-45b2-9558-c8f5c27d6eda",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "I was surprised, because he's a friend",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 130,
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0130L02U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 130,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "679a4aa2-2209-47d6-b31a-a998d5c0eecc",
+   "charsSpent": 38
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ごめん、今日は忙しすぎる",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 193,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0193L01U11",
+    "slot": "target1"
+   }
+  ],
+  "seed": 193,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "002df248-05fd-4d56-8bea-b7df98a2ddaf",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ごめん、今日は忙しすぎる",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 193,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0193L01U11",
+    "slot": "target2"
+   }
+  ],
+  "seed": 193,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ae8d24b9-7d20-4870-86fd-1087417a21b8",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "known",
+  "text": "my father doesn't stop talking",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 240,
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0240L02U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7824cfc2-9030-43bc-8bc2-86cfb0165bb1",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "話すのを止めない",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0240L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0240L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b29c7f46-64a0-4e08-a494-290515b84f41",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target2",
+  "text": "話すのを止めない",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0240L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0240L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e2f3e71b-660e-49d9-9fe9-4658f809e534",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "known",
+  "text": "doesn't stop talking",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0240L02",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0240L02B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b4df1c53-d431-4136-ae7e-dc619feff55c",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼は話すのを止めない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "994b0250-10a8-4c2e-9c5f-ecdc302935d0",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼は話すのを止めない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1b4f6c97-fb49-4d2e-9b2f-4918c850140d",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "he doesn't stop talking",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "286653d1-a363-4081-b9f3-006940e21265",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼女は話すのを止めない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e39ec854-f119-4a1b-9d6c-7d6fa315a765",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼女は話すのを止めない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c04f41b6-f871-4f2c-8119-5175e41ee9c2",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "known",
+  "text": "she doesn't stop talking",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4cb5067d-36e1-4e64-a736-a76edde52521",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼は話すのを止めないと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c01a12e3-7d3d-406d-9bf6-6d34dd59f17b",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼は話すのを止めないと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "aa286dec-25fa-4b9c-9ad9-06171b9b600e",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think he doesn't stop talking",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0e0ca381-ee6c-47c3-ac4b-cc6c2c584022",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "母は話すのを止めない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "023f6f8c-19c1-45bd-82f0-ea65b3ec0275",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "母は話すのを止めない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b667496b-2ddd-4e8a-b39e-49952114aec9",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "my mother doesn't stop talking",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "589cc82a-3d53-49ea-bcec-d17e915ea9aa",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "なんで彼は話すのを止めない？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "28720bf7-1e53-41ee-9bc1-e5301335ae5e",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "target2",
+  "text": "なんで彼は話すのを止めない？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "eb700a70-7eb7-4a1a-8214-2c332edeb601",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "known",
+  "text": "why doesn't he stop talking?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0240L02U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 240,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6fd0c88c-2eca-4c60-8685-06829e7d5f61",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "知りたくない",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0251L02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "38e2ee3a-6162-4108-82df-4b89926a2cdc",
+   "charsSpent": 6
+  }
+ },
+ {
+  "role": "target2",
+  "text": "知りたくない",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0251L02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4deb281a-7f03-4cef-8f58-2d548bb044b5",
+   "charsSpent": 6
+  }
+ },
+ {
+  "role": "known",
+  "text": "don't want to find out",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0251L02",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dc37aaf9-2985-4fcd-a019-01a75712fe4b",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼女は知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "75ab740d-baf0-4a50-a96f-c337b1edac8b",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼女は知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e956550e-aade-4514-94d2-65a0f22cfe89",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "known",
+  "text": "she doesn't want to find out",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e6a66473-943d-41d8-852f-2c02bf443683",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "なんで知りたくない？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fe2fe5ca-4d1b-4ad3-91e8-63cc128a59da",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "なんで知りたくない？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "82bd0cf0-436e-47e6-94bf-cf9c44157bea",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "why don't you want to find out?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5cfef4fc-34a1-423f-92e9-b7912c0f04d0",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "今知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e3e96159-e20d-4cb9-9c24-bcb18cd8d594",
+   "charsSpent": 7
+  }
+ },
+ {
+  "role": "target2",
+  "text": "今知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "03fa138b-6e25-4531-bcb3-6554d1a92b6f",
+   "charsSpent": 7
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't want to find out now",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "7df28aac-a0dd-428b-bc85-6eda4e679d8b",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "本当かどうか知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e01acfaa-b8a4-421c-845c-cd9132deb59d",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target2",
+  "text": "本当かどうか知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bafb4df4-1cfe-42c7-b43a-bb3611000d52",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't want to find out if it's true",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1f0018cf-418d-46a4-a192-90674b00a461",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "答えを知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8fda69d2-c36a-4199-9716-f8bf499e8d70",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "target2",
+  "text": "答えを知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "96c6c7c8-e8f2-46b9-af94-8717203d300c",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "known",
+  "text": "I don't want to find out the answer",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "015f09ce-3442-4dee-8c8c-9c85214e2a38",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "彼は知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ab84e71b-d636-4d07-89ac-840d4a69efec",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target2",
+  "text": "彼は知りたくない",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d901447-ec81-401e-8777-c5ae1eded9e9",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "known",
+  "text": "he doesn't want to find out",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0251L02U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 251,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bbb01287-8f73-4faf-aa9d-b868a06e0848",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "メールが二通来た",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0268L03",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0268L03B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d7915674-9dbe-42aa-8e2c-333df1c1aea1",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target2",
+  "text": "メールが二通来た",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0268L03",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0268L03B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "79a09ea4-7bfd-462b-9f97-6bc6d9144974",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "known",
+  "text": "two emails came",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0268L03",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0268L03B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1db7a949-6e57-488a-84bc-7585e4aa135a",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "target1",
+  "text": "メールが二通来た？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0ee7f8fb-89b0-4061-88a2-ffb100d05755",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "target2",
+  "text": "メールが二通来た？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a536a526-ab11-4653-92b4-472751672c7f",
+   "charsSpent": 9
+  }
+ },
+ {
+  "role": "known",
+  "text": "did two emails come?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "19ced9e1-0873-41ee-8425-9dcefbe9f08e",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target1",
+  "text": "昨日メールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5c36f7ed-4396-4b54-ab00-924c249133f7",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "昨日メールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "88a96382-ca3b-4d79-868a-30b590c2f4c3",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "known",
+  "text": "two emails came yesterday",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ade4a26f-e9da-472a-9d9b-2d24e5f1088f",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "先生からメールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "adc4f57c-73c9-4642-8d42-823ce621f5cb",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target2",
+  "text": "先生からメールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "159fc859-a20d-46cd-8974-b46b6d3995fd",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "known",
+  "text": "two emails came from my teacher",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03B04",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "733cc8e9-d7fa-4d0e-928e-5ae7ae81b176",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "レストランで話してたあの女性からメールが二通来たと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U09",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "923dd20d-1431-40ae-9cf2-78e74da2a968",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "レストランで話してたあの女性からメールが二通来たと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U09",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ead1608c-389d-4a82-a911-ad9d07eab6d0",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think two emails came from that woman I was talking to at the restaurant",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U09",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b55a3d27-53b7-48d9-906e-529962cce9e1",
+   "charsSpent": 74
+  }
+ },
+ {
+  "role": "target1",
+  "text": "父が昨日、あなたからメールが二通来たと教えてくれた",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U08",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "68c442c3-295c-486e-87aa-5f2262ebaee3",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "父が昨日、あなたからメールが二通来たと教えてくれた",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U08",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "70648d48-7c03-4ec0-89af-ac35f0eb394b",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "known",
+  "text": "my father told me two emails came from you yesterday",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U08",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "61886c81-fe97-40b4-8ab3-1bca2ef29d16",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target1",
+  "text": "母が大事なことについてメールが二通来たと言った",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f792214b-5f48-4d10-a9d2-23eae18340da",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "母が大事なことについてメールが二通来たと言った",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "49cfd4d5-3c64-4d85-80a3-ff0e28a51914",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "known",
+  "text": "my mother said two emails came about something important",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U06",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5c875e6c-490e-46be-8d33-6d8f08f9018d",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "先週、あの年配の男性からメールが二通来たと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f772ccc5-bfe4-4261-bf31-1627fbda0e86",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "先週、あの年配の男性からメールが二通来たと思う",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ce4546dd-59e5-4bfc-95f6-462e386726f2",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think two emails came from that old man last week",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U07",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9b4b4d37-0d5a-4d06-8389-0598580c4413",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "昨日、先生から仕事についてメールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1dcb1e17-3821-4583-ac13-bdff6b412df8",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "target2",
+  "text": "昨日、先生から仕事についてメールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d11f889c-f7f4-45a7-bd74-cef105940b69",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "two emails came from my teacher about work yesterday",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a169fdeb-e0bd-4f2c-a8e1-1e73bdfe8388",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target1",
+  "text": "友だちから予定についてメールが二通来た？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "45c95367-4214-4657-a0b9-7b208ed4f6c1",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target2",
+  "text": "友だちから予定についてメールが二通来た？",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3520a08f-6fc3-44fe-97d0-b39dfefa2e3b",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "known",
+  "text": "did two emails come from your friend about the plan?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3477d5dc-8d79-4279-9b81-32c2fbac8aef",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target1",
+  "text": "年配の男性からメールが二通来たと聞いた",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "540e523f-144f-4be9-9fd4-31f041828bca",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "target2",
+  "text": "年配の男性からメールが二通来たと聞いた",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "23b6ffce-8463-46d5-a5b5-d24521318045",
+   "charsSpent": 19
+  }
+ },
+ {
+  "role": "known",
+  "text": "I heard that two emails came from the old man",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "93a832fe-abca-4477-b65e-92b9be709d7d",
+   "charsSpent": 45
+  }
+ },
+ {
+  "role": "target1",
+  "text": "昨日、古い友だちからメールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ff1b9102-0deb-42c5-bc81-a14182623354",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "昨日、古い友だちからメールが二通来た",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dd5b47ae-35ce-45b7-94d9-ad5b7bbd768c",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "two emails came from my old friend yesterday",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ce4e0ef3-d2bc-483c-ab35-898bf97b714c",
+   "charsSpent": 44
+  }
+ },
+ {
+  "role": "target1",
+  "text": "友だちからメールが二通来たか知りたい",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e7acfa9a-e755-4da2-8346-3fd21bde7e75",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "友だちからメールが二通来たか知りたい",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bbb39825-e2b0-487f-80e1-4a9d11671396",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to know if two emails came from my friend",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0268L03U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 268,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e9b76cf2-f1d4-48a4-8943-b230ad266cd8",
+   "charsSpent": 48
+  }
+ }
+]
