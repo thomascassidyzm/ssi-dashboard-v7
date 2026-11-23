@@ -1,0 +1,38 @@
+# eng_for_jpn seeds 194-203: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# S0197L01U01 use → "My son wants to be able to speak English as soon as he can" | was: 私の息子は英語を話せるようになりたいと思っています — prompt lacked "as soon as he can"
+S0197L01U01	私の息子はできるだけすぐ英語を話せるようになりたいです
+# S0197L01U03 use → "I think my son is not ready to have a conversation in English yet" | was: 私の息子はまだ準備ができていないと思います — prompt lacked "to have a conversation in English"
+S0197L01U03	私の息子はまだ英語で会話をする準備ができていないと思います
+# S0197L01U15 use → "my son said he wanted to ask you something when he saw you yesterday" | was: 私の息子はあなたに何か聞きたいことがあると言っていました — prompt lacked "when he saw you yesterday"
+S0197L01U15	私の息子は、昨日あなたに会ったとき、何か聞きたかったと言いました
+# S0199L01U13 use → "he used to work in an office but now he works as a teacher" | was: 彼は以前毎日オフィスで働いていましたが、今は先生をしています — prompt added 毎日 and said 先生をしています (seed 197's 教師として働いています)
+S0199L01U13	彼は以前オフィスで働いていましたが、今は教師として働いています
+# S0203L01U03 use → "if I asked you to help me with anything, would you come?" | was: もし頼んだら、何でも手伝ってくれますか？ — prompt asked "would you help with anything"; English is "… help me with anything, would you come?"
+S0203L01U03	何でも手伝ってと頼んだら、来てくれますか？
+# S0203L01U05 use → "if I asked you to help me before you leave, would you come?" | was: もし頼んだら、仕事の前に来てもらえますか？ — prompt said "before work"
+S0203L01U05	あなたが出る前に手伝ってと頼んだら、来てくれますか？
+# S0203L01U07 use → "do you think you can help if I asked you to help me?" | was: もし頼んだら、来てもらえると思いますか？ — prompt asked "can you come"
+S0203L01U07	手伝ってと頼んだら、手伝えると思いますか？
+# S0203L01U09 use → "if I asked you to help me tomorrow morning, could you come?" | was: 明日手伝ってと頼んだら、来られますか？ — prompt lacked "morning"
+S0203L01U09	明日の朝手伝ってと頼んだら、来られますか？
+# S0203L01U15 use → "if I asked you to help me, would you wait for a few minutes?" | was: もし頼んだら、待ってもらえますか？ — prompt lacked "for a few minutes"
+S0203L01U15	手伝ってと頼んだら、数分待ってくれますか？
+# S0203L02U01 use → "what would you do if I asked you to help me with this?" | was: もし私が手伝ってと頼んだら、何をしますか？ — prompt lacked "with this"
+S0203L02U01	これを手伝ってと頼んだら、何をしますか？
+# S0203L02U03 use → "what would you do if he didn't come to help?" | was: もし彼が来なかったら、何をしますか？ — prompt lacked "to help"
+S0203L02U03	彼が手伝いに来なかったら、何をしますか？
+# S0203L02U06 use → "what would you do if she didn't want to come?" | was: もし彼女が来なかったら、何をしますか？ — prompt lacked "want to"
+S0203L02U06	彼女が来たくなかったら、何をしますか？
+# S0203L02U08 use → "what would you do if I asked you something important?" | was: もし私が聞いたら、何をしますか？ — prompt lacked "something important"
+S0203L02U08	私が何か大切なことを聞いたら、何をしますか？
+# S0203L02U09 use → "what would you do if there was a problem with it?" | was: もし問題があったら、何をしますか？ — prompt lacked "with it"
+S0203L02U09	それに問題があったら、何をしますか？
+# S0203L02U12 use → "what would you do if you didn't know what to say?" | was: もし分からなかったら、何をしますか？ — prompt lacked "what to say"
+S0203L02U12	何を言えばいいかわからなかったら、何をしますか？
+# S0203L02U13 use → "what would you do if you couldn't finish in time?" | was: もし仕事が終わらなかったら、何をしますか？ — prompt said "if the work didn't finish"
+S0203L02U13	間に合うように終えられなかったら、何をしますか？
+# S0203L02U14 use → "what would you do if she didn't want to talk about it?" | was: もし彼女が話さなかったら、何をしますか？ — prompt said "didn't talk"
+S0203L02U14	彼女がそれについて話したくなかったら、何をしますか？
+# S0203L02U15 use → "what would you do if I asked you to help me next week?" | was: もし手伝ってと頼んだら、何をしますか？ — prompt lacked "next week"
+S0203L02U15	来週手伝ってと頼んだら、何をしますか？

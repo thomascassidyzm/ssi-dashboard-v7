@@ -1,0 +1,113 @@
+# eng_for_jpn seeds 204-213: D2 flags read by hand (cs #790, child C of #785·AK) against QA copy ssi_copy_20261123t033000z. 1 flagged row no longer exists.
+# Format: id<TAB>new known (Japanese prompt) | DELETE. "# KEEP" lines are flags judged false or not fixable by a known edit (not applied). Each row is preceded by its reason.
+# Seed 204 glosses 準備を手伝う as "to deal with the arrangements" (手伝う = help everywhere else in the course). Bare LEGO rows are KEPT as LEGO-level; other rows are made consistent with the LEGO as glossed. Recommended: re-gloss S0204L01 (e.g. 準備をする = deal with the arrangements) — Kai's call.
+# KEEP S0204L01B01 | 準備を手伝う | to deal with the arrangements — bare LEGO: LEGO-level gloss (手伝う vs "deal with")
+# KEEP S0204L01B02 | 準備を手伝う | to deal with the arrangements — bare LEGO: LEGO-level gloss
+# S0204L01B03 build → "to deal with the arrangements for us" | was: 準備を手伝ってほしい — prompt said "want you to"; English is "… for us"
+S0204L01B03	私たちのために準備を手伝う
+# S0204L01B06 build → "asked her to deal with the arrangements" | was: 準備を手伝うのを頼んだ — prompt was a fragment lacking "her"
+S0204L01B06	準備を手伝うように彼女に頼みました
+# S0204L01U03 use → "can you help to deal with the arrangements for us?" | was: その準備を手伝ってくれますか？ — prompt lacked "for us"
+S0204L01U03	私たちのために準備を手伝ってくれますか？
+# S0204L01U08 use → "I'd like you to deal with the arrangements for me" | was: 準備はあなたに任せたい — prompt said "leave it to you"; aligned to the LEGO + "for me"
+S0204L01U08	私のために準備を手伝ってほしいです
+# S0204L01U13 use → "it was hard to deal with the arrangements but everything is okay" | was: その準備は大変でしたが、終わりました — English "it was hard to deal with the arrangements but everything is okay" mixes tenses — unnatural
+S0204L01U13	DELETE
+# KEEP S0204L02B06 | 彼女に準備を手伝ってほしかったです | I wanted her to deal with the arrangements — prompt is the seed's own Japanese (LEGO-level gloss question)
+# S0204L02B07 build → "I wanted her to come and help" | was: 彼女に一緒に来てほしかったです — prompt said "come along"; English is "come and help" (来て手伝う, seed 168)
+S0204L02B07	彼女に来て手伝ってほしかったです
+# S0204L02U01 use → "I wanted her to come and help" | was: 彼女に一緒に来てほしかったです — same English as B07
+S0204L02U01	彼女に来て手伝ってほしかったです
+# S0204L02U03 use → "I wanted her to tell me what was going to happen" | was: 何が起こるのか、彼女に教えてほしかったです — prompt said "what will happen"; matched to "what was going to happen"
+S0204L02U03	彼女に何が起きるか教えてほしかったです
+# S0204L02U04 use → "I wanted her to help me but she was busy today" | was: 彼女に手伝ってほしかったですが、忙しそうでした — prompt said "seemed busy" and lacked "today"
+S0204L02U04	彼女に手伝ってほしかったですが、今日は忙しかったです
+# S0204L02U06 use → "I wanted her to wait here for a while" | was: 彼女にここで私を待ってほしかったです — prompt said "wait for me"; English is "for a while"
+S0204L02U06	彼女にしばらくここで待ってほしかったです
+# S0204L02U07 use → "I wanted her to tell me what was going to happen" | was: 彼女に何が起きたか教えてほしかったです — same English as U03 ("…what was going to happen"); duplicate row
+S0204L02U07	DELETE
+# S0204L02U09 use → "I wanted her to come a little earlier this morning" | was: 彼女に早めに来てほしかったです — prompt lacked "a little … this morning"
+S0204L02U09	彼女に今朝もう少し早く来てほしかったです
+# S0204L02U13 use → "I wanted her to deal with the arrangements for us" | was: 彼女に準備を全部やってほしかったです — prompt said "do all the arrangements"; aligned to the LEGO + "for us"
+S0204L02U13	彼女に私たちのために準備を手伝ってほしかったです
+# S0205L01B04 build → "I was trying to say something" | was: 何を言おうとしていた — prompt said 何を ("what")
+S0205L01B04	何か言おうとしていた
+# S0205L01B05 build → "I was trying to say what I mean" | was: ちゃんと言おうとしていた — prompt said ちゃんと ("properly")
+S0205L01B05	言いたいことを言おうとしていた
+# S0205L01U05 use → "I was trying to say it well but it's not working" | was: うまく言おうとしていたのですが、うまくいきませんでした — English "I was trying to say it well but it's not working" mixes tenses
+S0205L01U05	DELETE
+# S0205L01U08 use → "I was trying to say what I mean but it wasn't easy" | was: 言おうとしていましたが、うまく表現できませんでした — prompt said "couldn't express it well"
+S0205L01U08	言いたいことを言おうとしていましたが、簡単ではありませんでした
+# S0205L01U12 use → "I've forgotten what I was trying to say to you" | was: 言おうとしていたのを忘れてしまいました — prompt lacked "to you"
+S0205L01U12	あなたに言おうとしていたことを忘れました
+# S0205L02U08 use → "I've forgotten what you said to me earlier" | was: あなたが言ったことを忘れてしまいました — prompt lacked "to me earlier" (さっき = "a while ago/earlier")
+S0205L02U08	さっきあなたが私に言ったことを忘れました
+# S0205L02U10 use → "I've forgotten how to say what I mean in English" | was: 言い方が分からなくなってしまいました — prompt said "I've lost how to say it"
+S0205L02U10	言いたいことを英語でどう言うか忘れました
+# S0206L01U09 use → "I enjoy the chance to speak English with someone new" | was: 誰かと英語で話す機会があると嬉しいです — prompt said "glad when there's a chance" and lacked "someone new"
+S0206L01U09	新しい人と英語で話す機会を楽しんでいます
+# S0206L01U11 use → "I enjoy the chance to speak English with you as often as possible" | was: 英語を話す機会があるたびに楽しんでいます — prompt said "every time"
+S0206L01U11	できるだけ何度も、あなたと英語を話す機会を楽しんでいます
+# S0206L01U14 use → "I enjoy the chance to use English as often as possible" | was: 何でもいいので英語を使う機会が好きです — prompt said "anything is fine … I like"
+S0206L01U14	できるだけ何度も英語を使う機会を楽しんでいます
+# S0207L01U01 use → "have you done what you needed to do for today?" | was: やる必要があったことは全部終わりましたか？ — prompt lacked "for today"
+S0207L01U01	今日のためにやる必要があったことをやりましたか？
+# S0207L01U02 use → "did you know what you needed to do next?" | was: やる必要があったことが分かっていましたか？ — prompt lacked "next"
+S0207L01U02	次にやる必要があったことがわかっていましたか？
+# S0207L01U03 use → "was it difficult to do what you needed to do in time?" | was: やる必要があったことが大変でしたか？ — prompt lacked "in time"
+S0207L01U03	間に合うように、やる必要があったことをするのは難しかったですか？
+# S0207L01U04 use → "did you remember what you needed to do this morning?" | was: やる必要があったことを全部覚えていましたか？ — prompt lacked "this morning"
+S0207L01U04	今朝やる必要があったことを覚えていましたか？
+# S0207L01U06 use → "did you do what you needed to do before you leave?" | was: やる必要があったことをやり終えましたか？ — English "did you do what you needed to do before you leave?" mixes tenses
+S0207L01U06	DELETE
+# S0207L01U09 use → "it was hard to do what you needed to do in time" | was: やる必要があったことをするのに時間がかかりました — English "it was hard to do what you needed to do in time" — prompt said "it took time"; marginal English
+S0207L01U09	DELETE
+# S0207L01U10 use → "were you able to do what you needed to do in time?" | was: やる必要があったことを一人でできましたか？ — prompt said 一人で ("alone"); English is "in time"
+S0207L01U10	間に合うように、やる必要があったことができましたか？
+# S0207L01U11 use → "I'm happy you know what you needed to do next" | was: やる必要があったことが分かってよかったです — English "I'm happy you know what you needed to do next" mixes tenses
+S0207L01U11	DELETE
+# S0207L01U13 use → "you've done what you needed to do this week" | was: あなたはやる必要があったことを全部やりましたね — prompt lacked "this week"
+S0207L01U13	今週、やる必要があったことをやりましたね
+# S0207L01U14 use → "was it hard to do what you needed to do this morning?" | was: 一人でやる必要があったことが大変でしたか？ — prompt said "alone"; English is "this morning"
+S0207L01U14	今朝やる必要があったことをするのは難しかったですか？
+# S0207L02U01 use → "you've done everything you needed to do today" | was: 必要なことを全部やりましたね — prompt lacked "today"
+S0207L02U01	今日、やる必要があったことを全部やりましたね
+# S0207L02U03 use → "you've done very well this week, I'm happy for you" | was: とてもよくやりましたね — English "you've done very well this week, I'm happy for you" uses untaught "happy for you"; comma-splice
+S0207L02U03	DELETE
+# S0207L02U05 use → "you've done what you needed to do before you left" | was: 今日やる必要があったことを全部やりましたね — prompt said "today"; English is "before you left"
+S0207L02U05	あなたが出る前に、やる必要があったことをやりましたね
+# S0207L02U06 use → "you've done very well today, I'm happy for you" | was: 一人でよくやりましたね — English "you've done very well today, I'm happy for you" — comma-splice, untaught "happy for you"
+S0207L02U06	DELETE
+# S0207L02U09 use → "you've done your work for this week, well done" | was: 今週の仕事はもう終わりましたね。よくできました — English "you've done your work for this week, well done" — "well done" untaught; comma-splice
+S0207L02U09	DELETE
+# S0207L02U14 use → "you've done it so quickly, I'm surprised" | was: そんなに早くやり遂げましたね — English "you've done it so quickly, I'm surprised" is a comma-splice
+S0207L02U14	DELETE
+# KEEP S0208L01U05 | どう言うか忘れてしまいました。手伝っていただけますか？ | I've forgotten how to say it, could you help me? — KEEP-equivalent: prompt already asks "could you help me?" (false flag)
+# S0208L02B03 build → "I didn't want to ask you that" | was: あなたに聞きたくありませんでした — prompt lacked "that"
+S0208L02B03	あなたにそれを聞きたくありませんでした
+# S0209L01U02 use → "Do they speak English all day?" | was: 彼らは毎日英語を話しますか？ — prompt said 毎日 ("every day")
+S0209L01U02	彼らは一日中英語を話しますか？
+# S0209L01U08 use → "they are waiting for you so you should go soon" | was: 彼らはあなたを待っているので、急いだほうがいいです — prompt said "hurry"
+S0209L01U08	彼らはあなたを待っているので、もうすぐ行った方がいいです
+# S0209L01U10 use → "Are they all going to come back later on with everyone else?" | was: 彼らは全員後で戻ってくる予定ですか？ — English "Are they all going to come back later on with everyone else?" is unnatural
+S0209L01U10	DELETE
+# S0209L01U14 use → "Are they going to come with us?" | was: 彼らは私たちと一緒に来ることができますか？ — prompt said "can they"
+S0209L01U14	彼らは私たちと一緒に来るつもりですか？
+# S0209L01U15 use → "Do they like to speak English with you?" | was: 彼らは英語で話すことが好きですか？ — prompt lacked "with you"
+S0209L01U15	彼らはあなたと英語で話すのが好きですか？
+# S0210L03U05 use → "before we discuss the problem, let's hear what you think" | was: 問題を話し合う前に、まず全員の意見を聞いてみましょう — prompt said "everyone's opinion"
+S0210L03U05	問題を話し合う前に、あなたがどう思うか聞きましょう
+# S0210L03U13 use → "Do you know how to discuss the problem in a way that works?" | was: その問題をどのように話し合えばいいか、わかりますか？ — English "Do you know how to discuss the problem in a way that works?" is unnatural
+S0210L03U13	DELETE
+# S0210L03U15 use → "I think it's a good thing that we can discuss that together" | was: 私はそのことをあなたと話し合えて良かったと思います — prompt was past
+S0210L03U15	一緒にそれを話し合えるのはいいことだと思います
+# S0211L01U06 use → "they told us that we needed to come early" | was: 彼らは私たちに早く来るように言いました — prompt was a request
+S0211L01U06	彼らは、私たちが早く来る必要があると言いました
+# KEEP S0211L02B01 | 説明したくない | didn't want to explain — bare LEGO 説明したくない = "didn't want to explain": LEGO-level gloss (present vs past)
+# S0211L02B02 build → "I didn't want to explain" | was: 私は説明したくない — prompt was present
+S0211L02B02	私は説明したくありませんでした
+# S0211L02B03 build → "they didn't want to explain" | was: 彼らは説明したくない — prompt was present
+S0211L02B03	彼らは説明したくありませんでした
+# S0213L01U10 use → "I started to think about what I want to achieve" | was: 何を達成したいのかを考えました — prompt lacked "started to"
+S0213L01U10	何を達成したいか考え始めました
+# KEEP S0213L02U08 | 彼らが何を達成しようとしているか全然わかりません | we don't know what they're trying to achieve at all yet — 全然 + negative = "at all"; "yet" is a loose add — the prompt is the nearest natural Japanese (false flag)

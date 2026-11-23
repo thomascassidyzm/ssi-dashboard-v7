@@ -21,7 +21,9 @@ Rows whose English target uses a word the copy's vocab replay says is untaught a
 | p10-s164-173.tsv | 135 | 52 | 7 | 0 | 3740 |
 | p11-s174-183.tsv | 14 | 0 | 3 | 0 | 272 |
 | p12-s184-193.tsv | 26 | 8 | 1 | 0 | 652 |
-| **total** | **652** | **265** | **90** | **0** | **15295** |
+| p13-s194-203.tsv | 18 | 0 | 0 | 0 | 421 |
+| p14-s204-213.tsv | 40 | 12 | 6 | 0 | 834 |
+| **total** | **710** | **277** | **96** | **0** | **16550** |
 
 ## Notes for Kai (seed-level, outside a row pass)
 
@@ -31,3 +33,4 @@ Rows whose English target uses a word the copy's vocab replay says is untaught a
 - **Seed 131 needs a rebuild** — BUILD/USE rows use "ideas / going around / head" before those LEGOs are taught in the seed (P2 forward reference; the vocab gate refuses any edit of them), and the seed's own Japanese (たくさんの考え) says "many thoughts" while the English says "too many ideas". Those rows are KEPT, labelled "seed-131 rebuild".
 - **Seeds 129-131 carry many "chain" rows** — English that glues two earlier seed sentences with a comma or "and" ("I'm so happy that you're doing so well, I'm very happy with how much I've learnt already"). No prompt can make those natural; they are DELETEd. If the gate refuses a delete because a BUILD/USE floor would break, that row stays HELD for the rebuild.
 - **P28 clash, course-wide: 〜いただけますか** is "could you" in seed 61 and "can you" in seed 150 (LEGO S0150L03). Prompts are kept apart where a whole sentence would collide (S0150L03B05 uses もらえますか). A one-word ruling would settle it: which English does いただけますか carry?
+- **Seed 204 LEGO gloss** — 準備を手伝う is glossed "to deal with the arrangements" (手伝う is "help" everywhere else). Bare LEGO rows KEPT; others aligned to the LEGO as glossed. Re-gloss is Kai's call.
