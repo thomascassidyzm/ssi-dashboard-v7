@@ -1,5 +1,5 @@
 {
- "about": "cym_for_kor step 2 (cs #772, 23 Nov): Korean known-side prompts for Hadau Creiddiol North 1-668, rewritten to Kai's 23 Nov rulings: ti = 반말 with 너/네가 (나/내가 for I), formal chi = 해요 with 실례지만 and -시-, plural chi = 여러분 (해요, no 모두), let's = -자, every no-addressee seed in 반말. korean_step1 keeps the step-1 (cs #764) 해요/당신 prompt. DRAFT; no seeds, LEGOs, phrases or audio written. Course row cym_for_kor created as draft via POST /api/courses/create.",
+ "about": "cym_for_kor step 2 (cs #772, 23 Nov): Korean known-side prompts for Hadau Creiddiol North 1-668, rewritten to Kai's 23 Nov rulings: ti = 반말 with 너/네가 (나/내가 for I), formal chi = 해요 with 실례지만 and -시-, plural chi = 여러분 (해요, no 모두), let's = -자, every no-addressee seed in 반말. korean_step1 keeps the step-1 (cs #764) 해요/당신 prompt. DRAFT; no seeds, LEGOs, phrases or audio written. Course row cym_for_kor created as draft via POST /api/courses/create. STEP 3 (cs #780): proofread fixes applied; korean_step2 keeps the pre-step-3 prompt; step3_note cites the source.",
  "seeds": [
   {
    "seed_number": 1,
@@ -412,7 +412,7 @@
    "seed_number": 33,
    "welsh": "pa mor hir wyt ti ’di bod yn dysgu Cymraeg?",
    "english": "how long have you been learning Welsh?",
-   "korean": "너 웨일스어를 얼마나 오랫동안 배워 왔어?",
+   "korean": "너 웨일스어 배운 지 얼마나 됐어?",
    "note": "wedi bod yn + verb = -아/어 왔어요",
    "korean_step1": "당신은 웨일스어를 얼마나 오랫동안 배워 왔어요?",
    "addressee": "ti",
@@ -420,7 +420,9 @@
    "flags_step1": [],
    "flags": [],
    "weave_dropped": true,
-   "weave_drop_reason": "HC 33: exact repeat of old 41 (cym_nv2_for_eng, statement of tools/course-optimization/weave-cym-nv2-2026-10-07.sql, not a live read)"
+   "weave_drop_reason": "HC 33: exact repeat of old 41 (cym_nv2_for_eng, statement of tools/course-optimization/weave-cym-nv2-2026-10-07.sql, not a live read)",
+   "korean_step2": "너 웨일스어를 얼마나 오랫동안 배워 왔어?",
+   "step3_note": "natural Korean for 'how long have you been -ing' — eng_for_kor S0033 (영어를 배운 지 얼마나 됐어요?)"
   },
   {
    "seed_number": 34,
@@ -2409,7 +2411,7 @@
    "seed_number": 182,
    "welsh": "wyt ti wedi gweld fy ngoriadau i yn rhywle?",
    "english": "have you seen my keys anywhere?",
-   "korean": "너 어디에서 내 열쇠를 봤어?",
+   "korean": "너 어디선가 내 열쇠를 봤어?",
    "note": "perfect (wyt ti wedi gweld) and preterite (welaist ti) both = 봤나요. Course-wide",
    "korean_step1": "당신은 어디에서 제 열쇠를 봤나요?",
    "addressee": "ti",
@@ -2422,7 +2424,9 @@
     "LOST_DISTINCTION",
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e); LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e); LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)",
+   "korean_step2": "너 어디에서 내 열쇠를 봤어?",
+   "step3_note": "meaning drift: 어디에서 asks WHERE; Welsh yn rhywle = anywhere/somewhere, a yes/no question — eng_for_kor S0182 (어디선가 제 열쇠를 봤어요?)"
   },
   {
    "seed_number": 183,
@@ -4051,13 +4055,15 @@
    "seed_number": 299,
    "welsh": "mae o isio talu hanner",
    "english": "he wants to pay half",
-   "korean": "그는 반을 내고 싶어해",
+   "korean": "그는 절반을 내고 싶어해",
    "note": "",
    "korean_step1": "그는 반을 내고 싶어해요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그는 반을 내고 싶어해",
+   "step3_note": "ambiguity — blind back-translation #782·AK (read 반 two ways) + eng_for_kor S0299 (절반)"
   },
   {
    "seed_number": 300,
@@ -5691,7 +5697,7 @@
    "seed_number": 414,
    "welsh": "gawn ni botel o win coch, os gwelwch yn dda?",
    "english": "could we have a bottle of red wine please?",
-   "korean": "부탁인데요, 우리가 레드 와인 한 병을 받아도 될까요?",
+   "korean": "부탁인데요, 저희가 레드 와인 한 병을 받아도 될까요?",
    "note": "os gwelwch yn dda (please) has no 해요 slot; 부탁해요 tagged on. gawn ni = -아도 될까요?",
    "korean_step1": "우리가 레드 와인 한 병을 받아도 될까요? 부탁해요",
    "addressee": "formal_chi",
@@ -5702,7 +5708,9 @@
    "flags": [
     "REGISTER_JUDGED"
    ],
-   "step2_note": "os gwelwch yn dda is a chi form, so this seed stays in 해요 (formal chi, ruling b): 부탁해요 closing a statement (624), 부탁인데요 opening a question so it still ends in ? (414, 630); 624 answers a ti question but keeps the chi formula"
+   "step2_note": "os gwelwch yn dda is a chi form, so this seed stays in 해요 (formal chi, ruling b): 부탁해요 closing a statement (624), 부탁인데요 opening a question so it still ends in ? (414, 630); 624 answers a ti question but keeps the chi formula",
+   "korean_step2": "부탁인데요, 우리가 레드 와인 한 병을 받아도 될까요?",
+   "step3_note": "register slip: humble 저희 in a 해요 request to staff — own reasoning (eng_for_kor S0411 uses 저희 in polite)"
   },
   {
    "seed_number": 415,
@@ -8511,19 +8519,21 @@
    "seed_number": 618,
    "welsh": "dydy o ddim yn teimlo fel amser hir",
    "english": "it doesn't feel like a long time",
-   "korean": "긴 시간처럼 느껴지지 않아",
+   "korean": "오랜 시간처럼 느껴지지 않아",
    "note": "",
    "korean_step1": "긴 시간처럼 느껴지지 않아요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "긴 시간처럼 느껴지지 않아",
+   "step3_note": "time takes 오랜, not 긴 — eng_for_kor S0618 (오랜 시간이 지난 것 같지 않아요), teimlo kept as 느껴지다"
   },
   {
    "seed_number": 619,
    "welsh": "mae’n amser hir ers i ni weld ein gilydd",
    "english": "it's a long time since we saw each other",
-   "korean": "우리가 서로 본 지 오랜 시간이 됐어",
+   "korean": "우리가 서로 본 지 오랜 시간이 지났어",
    "note": "",
    "korean_step1": "우리가 서로 본 지 오랜 시간이 됐어요",
    "addressee": "none",
@@ -8532,13 +8542,15 @@
    "flags": [
     "CONTEXT_PAIR"
    ],
-   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)"
+   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)",
+   "korean_step2": "우리가 서로 본 지 오랜 시간이 됐어",
+   "step3_note": "-ㄴ 지 + 지나다 is the natural frame; amser hir kept as 오랜 시간 — eng_for_kor S0619 (우리가 서로를 본 지 오래됐어요)"
   },
   {
    "seed_number": 620,
    "welsh": "mae’n amser hir iawn ers i ni weld ein gilydd ddiwetha’",
    "english": "it's a very long time since we last saw each other",
-   "korean": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어",
+   "korean": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 지났어",
    "note": "",
    "korean_step1": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어요",
    "addressee": "none",
@@ -8547,7 +8559,9 @@
    "flags": [
     "CONTEXT_PAIR"
    ],
-   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)"
+   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)",
+   "korean_step2": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어",
+   "step3_note": "as 619 — eng_for_kor S0620"
   },
   {
    "seed_number": 621,
