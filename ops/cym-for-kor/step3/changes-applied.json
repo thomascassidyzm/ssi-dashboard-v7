@@ -1,0 +1,53 @@
+{
+ "changes": [
+  {
+   "seed": 33,
+   "from": "너 웨일스어를 얼마나 오랫동안 배워 왔어?",
+   "to": "너 웨일스어 배운 지 얼마나 됐어?",
+   "source": "eng_for_kor S0033 (영어를 배운 지 얼마나 됐어요?)",
+   "why": "natural Korean for 'how long have you been -ing'"
+  },
+  {
+   "seed": 182,
+   "from": "너 어디에서 내 열쇠를 봤어?",
+   "to": "너 어디선가 내 열쇠를 봤어?",
+   "source": "eng_for_kor S0182 (어디선가 제 열쇠를 봤어요?)",
+   "why": "meaning drift: 어디에서 asks WHERE; Welsh yn rhywle = anywhere/somewhere, a yes/no question"
+  },
+  {
+   "seed": 618,
+   "from": "긴 시간처럼 느껴지지 않아",
+   "to": "오랜 시간처럼 느껴지지 않아",
+   "source": "eng_for_kor S0618 (오랜 시간이 지난 것 같지 않아요), teimlo kept as 느껴지다",
+   "why": "time takes 오랜, not 긴"
+  },
+  {
+   "seed": 619,
+   "from": "우리가 서로 본 지 오랜 시간이 됐어",
+   "to": "우리가 서로 본 지 오랜 시간이 지났어",
+   "source": "eng_for_kor S0619 (우리가 서로를 본 지 오래됐어요)",
+   "why": "-ㄴ 지 + 지나다 is the natural frame; amser hir kept as 오랜 시간"
+  },
+  {
+   "seed": 620,
+   "from": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어",
+   "to": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 지났어",
+   "source": "eng_for_kor S0620",
+   "why": "as 619"
+  },
+  {
+   "seed": 414,
+   "from": "부탁인데요, 우리가 레드 와인 한 병을 받아도 될까요?",
+   "to": "부탁인데요, 저희가 레드 와인 한 병을 받아도 될까요?",
+   "source": "own reasoning (eng_for_kor S0411 uses 저희 in polite)",
+   "why": "register slip: humble 저희 in a 해요 request to staff"
+  },
+  {
+   "seed": 299,
+   "from": "그는 반을 내고 싶어해",
+   "to": "그는 절반을 내고 싶어해",
+   "source": "blind back-translation #782·AK (read 반 two ways) + eng_for_kor S0299 (절반)",
+   "why": "ambiguity"
+  }
+ ]
+}

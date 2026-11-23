@@ -1,5 +1,5 @@
 {
- "about": "cym_for_kor step 2 (cs #772, 23 Nov): Korean known-side prompts for Hadau Creiddiol North 1-668, rewritten to Kai's 23 Nov rulings: ti = 반말 with 너/네가 (나/내가 for I), formal chi = 해요 with 실례지만 and -시-, plural chi = 여러분 (해요, no 모두), let's = -자, every no-addressee seed in 반말. korean_step1 keeps the step-1 (cs #764) 해요/당신 prompt. DRAFT; no seeds, LEGOs, phrases or audio written. Course row cym_for_kor created as draft via POST /api/courses/create.",
+ "about": "cym_for_kor step 2 (cs #772, 23 Nov): Korean known-side prompts for Hadau Creiddiol North 1-668, rewritten to Kai's 23 Nov rulings: ti = 반말 with 너/네가 (나/내가 for I), formal chi = 해요 with 실례지만 and -시-, plural chi = 여러분 (해요, no 모두), let's = -자, every no-addressee seed in 반말. korean_step1 keeps the step-1 (cs #764) 해요/당신 prompt. DRAFT; no seeds, LEGOs, phrases or audio written. Course row cym_for_kor created as draft via POST /api/courses/create. STEP 3 (cs #780): proofread fixes applied; korean_step2 keeps the pre-step-3 prompt; step3_note cites the source.",
  "seeds": [
   {
    "seed_number": 1,
@@ -412,7 +412,7 @@
    "seed_number": 33,
    "welsh": "pa mor hir wyt ti ’di bod yn dysgu Cymraeg?",
    "english": "how long have you been learning Welsh?",
-   "korean": "너 웨일스어를 얼마나 오랫동안 배워 왔어?",
+   "korean": "너 웨일스어 배운 지 얼마나 됐어?",
    "note": "wedi bod yn + verb = -아/어 왔어요",
    "korean_step1": "당신은 웨일스어를 얼마나 오랫동안 배워 왔어요?",
    "addressee": "ti",
@@ -420,7 +420,9 @@
    "flags_step1": [],
    "flags": [],
    "weave_dropped": true,
-   "weave_drop_reason": "HC 33: exact repeat of old 41 (cym_nv2_for_eng, statement of tools/course-optimization/weave-cym-nv2-2026-10-07.sql, not a live read)"
+   "weave_drop_reason": "HC 33: exact repeat of old 41 (cym_nv2_for_eng, statement of tools/course-optimization/weave-cym-nv2-2026-10-07.sql, not a live read)",
+   "korean_step2": "너 웨일스어를 얼마나 오랫동안 배워 왔어?",
+   "step3_note": "natural Korean for 'how long have you been -ing' — eng_for_kor S0033 (영어를 배운 지 얼마나 됐어요?)"
   },
   {
    "seed_number": 34,
@@ -762,7 +764,7 @@
    "seed_number": 58,
    "welsh": "mae’n ddiddorol pan ti’n dallt digon o eiriau",
    "english": "it's interesting when you understand enough words",
-   "korean": "네가 충분한 단어를 이해할 때 흥미로워",
+   "korean": "네가 단어를 충분히 이해할 때 흥미로워",
    "note": "generic you as 당신",
    "korean_step1": "당신이 충분한 단어를 이해할 때 흥미로워요",
    "addressee": "ti",
@@ -770,7 +772,9 @@
    "flags_step1": [
     "REGISTER"
    ],
-   "flags": []
+   "flags": [],
+   "korean_step2": "네가 충분한 단어를 이해할 때 흥미로워",
+   "step3_note": "second opinion #784·AK (same-family Claude)"
   },
   {
    "seed_number": 59,
@@ -936,7 +940,7 @@
    "seed_number": 71,
    "welsh": "doeddan ni ddim isio gadael i neb glywed y gwir",
    "english": "we didn't want to let anyone hear the truth",
-   "korean": "우리는 아무도 진실을 듣게 하고 싶지 않았어",
+   "korean": "우리는 아무에게도 진실을 듣게 하고 싶지 않았어",
    "note": "",
    "korean_step1": "우리는 아무도 진실을 듣게 하고 싶지 않았어요",
    "addressee": "none",
@@ -945,7 +949,9 @@
    "flags": [
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)",
+   "korean_step2": "우리는 아무도 진실을 듣게 하고 싶지 않았어",
+   "step3_note": "second opinion #784·AK (same-family Claude): causative needs dative"
   },
   {
    "seed_number": 72,
@@ -1017,13 +1023,15 @@
    "seed_number": 77,
    "welsh": "dw i’n synnu pa mor gyflym dw i’n dechrau dallt",
    "english": "I'm surprised at how quickly I'm starting to understand",
-   "korean": "나는 내가 얼마나 빨리 이해하기 시작하고 있는지 놀라워",
+   "korean": "내가 얼마나 빨리 이해하기 시작하고 있는지 나도 놀라워",
    "note": "",
    "korean_step1": "저는 제가 얼마나 빨리 이해하기 시작하고 있는지 놀라워요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "나는 내가 얼마나 빨리 이해하기 시작하고 있는지 놀라워",
+   "step3_note": "second opinion #784·AK (same-family Claude): 나는…놀라워 ill-formed"
   },
   {
    "seed_number": 78,
@@ -1278,7 +1286,7 @@
    "seed_number": 97,
    "welsh": "yndw, dw i’n barod i fynd cyn gynted â ti isio",
    "english": "yes I'm ready to go as soon as you want",
-   "korean": "응, 나는 네가 원하는 대로 바로 갈 준비가 됐어",
+   "korean": "응, 나는 네가 원하면 바로 갈 준비가 됐어",
    "note": "Welsh yes/no echoes the verb (yndw, do, oes, ydy...); Korean 네/아니요 cannot carry which one. Course-wide",
    "korean_step1": "네, 저는 당신이 원하는 대로 바로 갈 준비가 됐어요",
    "addressee": "ti",
@@ -1288,7 +1296,9 @@
    ],
    "flags": [
     "LOST_DISTINCTION"
-   ]
+   ],
+   "korean_step2": "응, 나는 네가 원하는 대로 바로 갈 준비가 됐어",
+   "step3_note": "second opinion #784·AK (same-family Claude): 원하는 대로 = 'the way you want', lost cyn gynted â"
   },
   {
    "seed_number": 98,
@@ -1503,13 +1513,15 @@
    "seed_number": 114,
    "welsh": "dw i’n teimlo fel taswn i’n gwneud yn waeth heddiw na ddoe",
    "english": "I feel as if I'm doing worse today than yesterday",
-   "korean": "나는 오늘 어제보다 더 못하고 있는 것처럼 느껴",
+   "korean": "나는 오늘 어제보다 더 못하고 있는 것처럼 느껴져",
    "note": "",
    "korean_step1": "저는 오늘 어제보다 더 못하고 있는 것처럼 느껴요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "나는 오늘 어제보다 더 못하고 있는 것처럼 느껴",
+   "step3_note": "second opinion #784·AK (same-family Claude): 느껴져 is the natural form"
   },
   {
    "seed_number": 115,
@@ -1527,7 +1539,7 @@
    "seed_number": 116,
    "welsh": "dydy hwn ddim y dewis gorau fedrwn i wneud",
    "english": "this isn't the best choice I could make",
-   "korean": "이건 내가 할 수 있을 최고의 선택이 아니야",
+   "korean": "이건 내가 할 수 있는 최고의 선택이 아니야",
    "note": "fedrwn i (could, conditional) vs medra i (can) both sit on -ㄹ 수 있다; -ㄹ 수 있을 is the nearest mark. Course-wide",
    "korean_step1": "이건 제가 할 수 있을 최고의 선택이 아니에요",
    "addressee": "none",
@@ -1537,7 +1549,9 @@
    ],
    "flags": [
     "LOST_DISTINCTION"
-   ]
+   ],
+   "korean_step2": "이건 내가 할 수 있을 최고의 선택이 아니야",
+   "step3_note": "second opinion #784·AK (same-family Claude): -을 wrong"
   },
   {
    "seed_number": 117,
@@ -1611,13 +1625,15 @@
    "seed_number": 122,
    "welsh": "mae’n dechrau teimlo’n haws a dw i’n gyffrous am sut mae’n mynd",
    "english": "it's starting to feel easier and I'm excited about how it's going",
-   "korean": "더 쉽게 느껴지기 시작하고 있고, 나는 그게 어떻게 되어 가는지 설레",
+   "korean": "더 쉽게 느껴지기 시작하고 있고, 나는 그게 되어 가는 모습에 설레",
    "note": "cyffrous (of a person) = 설레다",
    "korean_step1": "더 쉽게 느껴지기 시작하고 있고, 저는 그게 어떻게 되어 가는지 설레요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "더 쉽게 느껴지기 시작하고 있고, 나는 그게 어떻게 되어 가는지 설레",
+   "step3_note": "second opinion #784·AK (same-family Claude): 설레다 cannot take an embedded question"
   },
   {
    "seed_number": 123,
@@ -1781,13 +1797,15 @@
    "seed_number": 134,
    "welsh": "dydy hi ddim yn broblem pan ti’n gweithio ar rywbeth anodd efo nhw",
    "english": "it's not a problem when you work at something difficult with them",
-   "korean": "네가 그들과 함께 어려운 것을 작업할 때 그건 문제가 아니야",
+   "korean": "네가 그들과 함께 어려운 작업을 할 때 그건 문제가 아니야",
    "note": "gweithio ar = 작업하다",
    "korean_step1": "당신이 그들과 함께 어려운 것을 작업할 때 그건 문제가 아니에요",
    "addressee": "ti",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "네가 그들과 함께 어려운 것을 작업할 때 그건 문제가 아니야",
+   "step3_note": "second opinion #784·AK (same-family Claude)"
   },
   {
    "seed_number": 135,
@@ -1817,13 +1835,15 @@
    "seed_number": 137,
    "welsh": "mae’n bwysicach siarad yn aml na bod yn berffaith",
    "english": "it's more important to talk often than to be perfect",
-   "korean": "완벽한 것보다 자주 이야기하는 것이 더 중요해",
+   "korean": "완벽해지는 것보다 자주 이야기하는 것이 더 중요해",
    "note": "",
    "korean_step1": "완벽한 것보다 자주 이야기하는 것이 더 중요해요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "완벽한 것보다 자주 이야기하는 것이 더 중요해",
+   "step3_note": "second opinion #784·AK (same-family Claude)"
   },
   {
    "seed_number": 138,
@@ -1883,7 +1903,7 @@
    "seed_number": 142,
    "welsh": "mae hynna’n garedig iawn ohonot ti a dw i’n ddiolchgar i ti am helpu",
    "english": "that's very kind of you and I'm grateful to you for helping",
-   "korean": "그건 네가 정말 친절한 거야, 그리고 나는 도와줘서 너에게 고마워",
+   "korean": "너 정말 친절하구나, 그리고 나는 네가 도와준 것에 감사해",
    "note": "\"kind of you\" has no 해요 equivalent without -시- (친절하시네요); diolchgar = 고마워요, diolch = 감사해요",
    "korean_step1": "그건 당신이 정말 친절한 거예요, 그리고 저는 도와줘서 당신에게 고마워요",
    "addressee": "ti",
@@ -1891,7 +1911,9 @@
    "flags_step1": [
     "REGISTER"
    ],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그건 네가 정말 친절한 거야, 그리고 나는 도와줘서 너에게 고마워",
+   "step3_note": "second opinion #784·AK (same-family Claude): translationese; 감사하다 keeps diolchgar apart from diolch 고마워"
   },
   {
    "seed_number": 143,
@@ -1982,13 +2004,15 @@
    "seed_number": 149,
    "welsh": "dydy hwn ddim yn anodd iawn, felly dw i’n gobeithio byddi di’n gorffen cyn bo hir",
    "english": "this isn't very difficult, so I hope you'll finish soon",
-   "korean": "이건 아주 어렵지 않아, 그래서 나는 네가 곧 끝내기를 바라",
+   "korean": "이건 아주 어렵지는 않아, 그래서 나는 네가 곧 끝내기를 바라",
    "note": "",
    "korean_step1": "이건 아주 어렵지 않아요, 그래서 저는 당신이 곧 끝내기를 바라요",
    "addressee": "ti",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "이건 아주 어렵지 않아, 그래서 나는 네가 곧 끝내기를 바라",
+   "step3_note": "second opinion #784·AK (same-family Claude): -지는 for 'not very'"
   },
   {
    "seed_number": 150,
@@ -2266,13 +2290,15 @@
    "seed_number": 171,
    "welsh": "wyt ti isio i mi helpu chdi chwilio amdano fo?",
    "english": "do you want me to help you look for it?",
-   "korean": "너 내가 네가 그걸 찾는 것을 도와주기를 원해?",
+   "korean": "너 내가 그걸 찾는 것을 도와주기를 원해?",
    "note": "",
    "korean_step1": "당신은 제가 당신이 그걸 찾는 것을 도와주기를 원하나요?",
    "addressee": "ti",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "너 내가 네가 그걸 찾는 것을 도와주기를 원해?",
+   "step3_note": "second opinion #784·AK (same-family Claude): stacked subjects"
   },
   {
    "seed_number": 172,
@@ -2409,7 +2435,7 @@
    "seed_number": 182,
    "welsh": "wyt ti wedi gweld fy ngoriadau i yn rhywle?",
    "english": "have you seen my keys anywhere?",
-   "korean": "너 어디에서 내 열쇠를 봤어?",
+   "korean": "너 어디선가 내 열쇠를 봤어?",
    "note": "perfect (wyt ti wedi gweld) and preterite (welaist ti) both = 봤나요. Course-wide",
    "korean_step1": "당신은 어디에서 제 열쇠를 봤나요?",
    "addressee": "ti",
@@ -2422,7 +2448,9 @@
     "LOST_DISTINCTION",
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e); LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e); LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)",
+   "korean_step2": "너 어디에서 내 열쇠를 봤어?",
+   "step3_note": "meaning drift: 어디에서 asks WHERE; Welsh yn rhywle = anywhere/somewhere, a yes/no question — eng_for_kor S0182 (어디선가 제 열쇠를 봤어요?)"
   },
   {
    "seed_number": 183,
@@ -2532,13 +2560,15 @@
    "seed_number": 190,
    "welsh": "oes ots gen ti os dw i’n gofyn ychydig o gwestiynau i ti?",
    "english": "do you mind if I ask you some questions?",
-   "korean": "너 내가 너에게 질문을 몇 개 하면 상관있어?",
+   "korean": "너 내가 너에게 질문을 몇 개 하면 불편해?",
    "note": "oes ots gen ti = 상관있나요?",
    "korean_step1": "당신은 제가 당신에게 질문을 몇 개 하면 상관있나요?",
    "addressee": "ti",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "너 내가 너에게 질문을 몇 개 하면 상관있어?",
+   "step3_note": "second opinion #784·AK (same-family Claude) flagged -면 상관있어? as unnatural; its 신경 쓰여 would clash with malio = 신경 쓰다 (538), so 불편해? (same yes=mind polarity as oes ots)"
   },
   {
    "seed_number": 191,
@@ -3041,7 +3071,7 @@
    "seed_number": 225,
    "welsh": "mi fyddai fo’n rhoi ateb i ti tasai fo’n medru",
    "english": "he would give you an answer if he could",
-   "korean": "그가 할 수 있다면 그는 너에게 답을 줄 거야",
+   "korean": "그는 할 수 있다면 너에게 답을 줄 텐데",
    "note": "byddai (would) = -ㄹ 거예요, same as future; the if-clause carries it",
    "korean_step1": "그가 할 수 있다면 그는 당신에게 답을 줄 거예요",
    "addressee": "ti",
@@ -3051,7 +3081,9 @@
    ],
    "flags": [
     "LOST_DISTINCTION"
-   ]
+   ],
+   "korean_step2": "그가 할 수 있다면 그는 너에게 답을 줄 거야",
+   "step3_note": "second opinion #784·AK (same-family Claude) + back-translation #782·AK: byddai…tasai read as plain future; -ㄹ 텐데 marks would"
   },
   {
    "seed_number": 226,
@@ -3097,13 +3129,15 @@
    "seed_number": 229,
    "welsh": "mi fyddai’r ddynas ’na’n helpu chdi tasai hi’n medru",
    "english": "that woman would help you if she could",
-   "korean": "그 여자는 할 수 있다면 너를 도와줄 거야",
+   "korean": "그 여자는 할 수 있다면 너를 도와줄 텐데",
    "note": "",
    "korean_step1": "그 여자는 할 수 있다면 당신을 도와줄 거예요",
    "addressee": "ti",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그 여자는 할 수 있다면 너를 도와줄 거야",
+   "step3_note": "second opinion #784·AK (same-family Claude) + #782·AK, as 225"
   },
   {
    "seed_number": 230,
@@ -3813,7 +3847,7 @@
    "seed_number": 281,
    "welsh": "oes ots gen ti os dw i’n gorffen fy nghoffi cyn i ti ddechrau?",
    "english": "do you mind if I finish my coffee before you start?",
-   "korean": "너 네가 시작하기 전에 내가 커피를 다 마시면 상관있어?",
+   "korean": "너 네가 시작하기 전에 내가 커피를 다 마시면 불편해?",
    "note": "gorffen fy nghoffi = 커피를 다 마시다 (Korean needs the verb)",
    "korean_step1": "당신은 당신이 시작하기 전에 제가 커피를 다 마시면 상관있나요?",
    "addressee": "ti",
@@ -3821,7 +3855,9 @@
    "flags_step1": [
     "REGISTER"
    ],
-   "flags": []
+   "flags": [],
+   "korean_step2": "너 네가 시작하기 전에 내가 커피를 다 마시면 상관있어?",
+   "step3_note": "as 190"
   },
   {
    "seed_number": 282,
@@ -4051,13 +4087,15 @@
    "seed_number": 299,
    "welsh": "mae o isio talu hanner",
    "english": "he wants to pay half",
-   "korean": "그는 반을 내고 싶어해",
+   "korean": "그는 절반을 내고 싶어해",
    "note": "",
    "korean_step1": "그는 반을 내고 싶어해요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그는 반을 내고 싶어해",
+   "step3_note": "ambiguity — blind back-translation #782·AK (read 반 two ways) + eng_for_kor S0299 (절반)"
   },
   {
    "seed_number": 300,
@@ -4791,13 +4829,15 @@
    "seed_number": 352,
    "welsh": "hyd yn oed tasai fo isio fyddai fo ddim yn medru",
    "english": "even if he wanted to he wouldn't be able to",
-   "korean": "그가 원한다고 해도 그는 할 수 없을 거야",
+   "korean": "그가 원한다고 해도 그는 할 수 없을 텐데",
    "note": "",
    "korean_step1": "그가 원한다고 해도 그는 할 수 없을 거예요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그가 원한다고 해도 그는 할 수 없을 거야",
+   "step3_note": "own reasoning: fyddai…ddim yn medru is the byddai'n medru form, which 310/412/413/432 already render -ㄹ 수 있을 텐데"
   },
   {
    "seed_number": 353,
@@ -5189,7 +5229,7 @@
    "seed_number": 378,
    "welsh": "naddo, doedd gen i ddim digon o bres ar gyfer gwyliau",
    "english": "no I didn't have enough money for holidays",
-   "korean": "아니, 나는 휴가를 위한 돈이 충분하지 않았어",
+   "korean": "아니, 나는 휴가 갈 돈이 충분하지 않았어",
    "note": "",
    "korean_step1": "아니요, 저는 휴가를 위한 돈이 충분하지 않았어요",
    "addressee": "none",
@@ -5198,7 +5238,9 @@
    "flags": [
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)",
+   "korean_step2": "아니, 나는 휴가를 위한 돈이 충분하지 않았어",
+   "step3_note": "second opinion #784·AK (same-family Claude): translationese"
   },
   {
    "seed_number": 379,
@@ -5491,13 +5533,15 @@
    "seed_number": 398,
    "welsh": "dan ni isio dod yn fwy amyneddgar efo’n plant ni",
    "english": "we want to become more patient with our children",
-   "korean": "우리는 우리 아이들에게 더 참을성 있게 되고 싶어",
+   "korean": "우리는 우리 아이들에게 더 참을성 있는 사람이 되고 싶어",
    "note": "",
    "korean_step1": "우리는 우리 아이들에게 더 참을성 있게 되고 싶어요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "우리는 우리 아이들에게 더 참을성 있게 되고 싶어",
+   "step3_note": "second opinion #784·AK (same-family Claude)"
   },
   {
    "seed_number": 399,
@@ -5691,7 +5735,7 @@
    "seed_number": 414,
    "welsh": "gawn ni botel o win coch, os gwelwch yn dda?",
    "english": "could we have a bottle of red wine please?",
-   "korean": "부탁인데요, 우리가 레드 와인 한 병을 받아도 될까요?",
+   "korean": "저희가 레드 와인 한 병 받을 수 있을까요? 부탁해요",
    "note": "os gwelwch yn dda (please) has no 해요 slot; 부탁해요 tagged on. gawn ni = -아도 될까요?",
    "korean_step1": "우리가 레드 와인 한 병을 받아도 될까요? 부탁해요",
    "addressee": "formal_chi",
@@ -5702,7 +5746,9 @@
    "flags": [
     "REGISTER_JUDGED"
    ],
-   "step2_note": "os gwelwch yn dda is a chi form, so this seed stays in 해요 (formal chi, ruling b): 부탁해요 closing a statement (624), 부탁인데요 opening a question so it still ends in ? (414, 630); 624 answers a ti question but keeps the chi formula"
+   "step2_note": "os gwelwch yn dda is a chi form, so this seed stays in 해요 (formal chi, ruling b): 부탁해요 closing a statement (624), 부탁인데요 opening a question so it still ends in ? (414, 630); 624 answers a ti question but keeps the chi formula",
+   "korean_step2": "부탁인데요, 우리가 레드 와인 한 병을 받아도 될까요?",
+   "step3_note": "second opinion #784·AK (same-family Claude): 부탁인데요 opener reads 'I have a favour'; please moved after the question as in the Welsh, 부탁해요 as 624"
   },
   {
    "seed_number": 415,
@@ -6264,13 +6310,15 @@
    "seed_number": 456,
    "welsh": "efallai bod o yno ond dydy o ddim yn debygol iawn",
    "english": "he might be there but it's not very likely",
-   "korean": "그가 거기에 있을지도 모르지만 그럴 가능성은 아주 높지 않아",
+   "korean": "그가 거기에 있을지도 모르지만 그럴 가능성이 아주 높지는 않아",
    "note": "",
    "korean_step1": "그가 거기에 있을지도 모르지만 그럴 가능성은 아주 높지 않아요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그가 거기에 있을지도 모르지만 그럴 가능성은 아주 높지 않아",
+   "step3_note": "second opinion #784·AK (same-family Claude): -지는 for 'not very'"
   },
   {
    "seed_number": 457,
@@ -6501,13 +6549,15 @@
    "seed_number": 474,
    "welsh": "dw i ddim isio fo hyd yn oed fel cynnig rhad ac am ddim",
    "english": "I don't even want it as a free offer",
-   "korean": "나는 그걸 무료 제공으로도 원하지 않아",
+   "korean": "나는 그걸 공짜로 준다고 해도 원하지 않아",
    "note": "",
    "korean_step1": "저는 그걸 무료 제공으로도 원하지 않아요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "나는 그걸 무료 제공으로도 원하지 않아",
+   "step3_note": "second opinion #784·AK (same-family Claude): translationese"
   },
   {
    "seed_number": 475,
@@ -6576,13 +6626,15 @@
    "seed_number": 480,
    "welsh": "beth bynnag mae o’n ddeud, dydy o ddim yn bell o’n blaenau ni rŵan",
    "english": "whatever he says it's not far ahead now",
-   "korean": "그가 뭐라고 말하든, 그건 이제 우리 앞에서 멀지 않아",
+   "korean": "그가 뭐라고 말하든, 그건 이제 우리 앞에 멀리 있지 않아",
    "note": "",
    "korean_step1": "그가 뭐라고 말하든, 그건 이제 우리 앞에서 멀지 않아요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "그가 뭐라고 말하든, 그건 이제 우리 앞에서 멀지 않아",
+   "step3_note": "second opinion #784·AK (same-family Claude)"
   },
   {
    "seed_number": 481,
@@ -6814,13 +6866,15 @@
    "seed_number": 499,
    "welsh": "efallai dylen ni agor y drws a chau’r ffenest",
    "english": "maybe we should open the door and close the window",
-   "korean": "어쩌면 우리는 문을 열고 창문을 닫는 게 좋겠어",
+   "korean": "어쩌면 우리는 문을 열고 창문을 닫는 게 좋을지도 몰라",
    "note": "",
    "korean_step1": "어쩌면 우리는 문을 열고 창문을 닫는 게 좋겠어요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "어쩌면 우리는 문을 열고 창문을 닫는 게 좋겠어",
+   "step3_note": "second opinion #784·AK (same-family Claude): hedge belongs in the ending"
   },
   {
    "seed_number": 500,
@@ -6911,7 +6965,7 @@
    "seed_number": 506,
    "welsh": "o’n i’n arfer byw yn yr ardal hon flynyddoedd yn ôl cyn i ni symud",
    "english": "I used to live around here years ago before we moved",
-   "korean": "나는 우리가 이사하기 전, 몇 년 전까지 이 지역에 살았었어",
+   "korean": "나는 몇 년 전, 우리가 이사하기 전에 이 지역에 살았었어",
    "note": "arfer (past) = -었었어요 / 예전에",
    "korean_step1": "저는 우리가 이사하기 전, 몇 년 전까지 이 지역에 살았었어요",
    "addressee": "none",
@@ -6920,7 +6974,9 @@
    "flags": [
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)",
+   "korean_step2": "나는 우리가 이사하기 전, 몇 년 전까지 이 지역에 살았었어",
+   "step3_note": "second opinion #784·AK (same-family Claude): 몇 년 전까지 = 'until'; kept 이 지역 for yr ardal hon"
   },
   {
    "seed_number": 507,
@@ -8464,7 +8520,7 @@
    "seed_number": 615,
    "welsh": "o’n i’n meddwl bo’ ti’n ddewr iawn i ddeud hynna",
    "english": "I thought you were very brave to say that",
-   "korean": "나는 네가 그걸 말하다니 아주 용감하다고 생각했어",
+   "korean": "나는 네가 그걸 말할 만큼 아주 용감하다고 생각했어",
    "note": "",
    "korean_step1": "저는 당신이 그걸 말하다니 아주 용감하다고 생각했어요",
    "addressee": "ti",
@@ -8473,13 +8529,15 @@
    "flags": [
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)",
+   "korean_step2": "나는 네가 그걸 말하다니 아주 용감하다고 생각했어",
+   "step3_note": "second opinion #784·AK (same-family Claude): -다니 ungrammatical here"
   },
   {
    "seed_number": 616,
    "welsh": "oeddat ti’n ddewr iawn i ddeud bo’ ti’n meddwl hynna",
    "english": "you were very brave to say you thought that",
-   "korean": "너는 네가 그렇게 생각한다고 말하다니 아주 용감했어",
+   "korean": "너는 네가 그렇게 생각한다고 말할 만큼 아주 용감했어",
    "note": "당신 twice",
    "korean_step1": "당신은 당신이 그렇게 생각한다고 말하다니 아주 용감했어요",
    "addressee": "ti",
@@ -8490,7 +8548,9 @@
    "flags": [
     "TENSE_COLLAPSE"
    ],
-   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)"
+   "step2_note": "LEGO intro: Welsh perfect/preterite/imperfect all come out as -었어; teach which Welsh past form this is (Kai ruling e)",
+   "korean_step2": "너는 네가 그렇게 생각한다고 말하다니 아주 용감했어",
+   "step3_note": "second opinion #784·AK (same-family Claude): -다니 ungrammatical here"
   },
   {
    "seed_number": 617,
@@ -8511,19 +8571,21 @@
    "seed_number": 618,
    "welsh": "dydy o ddim yn teimlo fel amser hir",
    "english": "it doesn't feel like a long time",
-   "korean": "긴 시간처럼 느껴지지 않아",
+   "korean": "오랜 시간처럼 느껴지지 않아",
    "note": "",
    "korean_step1": "긴 시간처럼 느껴지지 않아요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "긴 시간처럼 느껴지지 않아",
+   "step3_note": "time takes 오랜, not 긴 — eng_for_kor S0618 (오랜 시간이 지난 것 같지 않아요), teimlo kept as 느껴지다"
   },
   {
    "seed_number": 619,
    "welsh": "mae’n amser hir ers i ni weld ein gilydd",
    "english": "it's a long time since we saw each other",
-   "korean": "우리가 서로 본 지 오랜 시간이 됐어",
+   "korean": "우리가 서로 본 지 오랜 시간이 지났어",
    "note": "",
    "korean_step1": "우리가 서로 본 지 오랜 시간이 됐어요",
    "addressee": "none",
@@ -8532,13 +8594,15 @@
    "flags": [
     "CONTEXT_PAIR"
    ],
-   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)"
+   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)",
+   "korean_step2": "우리가 서로 본 지 오랜 시간이 됐어",
+   "step3_note": "-ㄴ 지 + 지나다 is the natural frame; amser hir kept as 오랜 시간 — eng_for_kor S0619 (우리가 서로를 본 지 오래됐어요)"
   },
   {
    "seed_number": 620,
    "welsh": "mae’n amser hir iawn ers i ni weld ein gilydd ddiwetha’",
    "english": "it's a very long time since we last saw each other",
-   "korean": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어",
+   "korean": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 지났어",
    "note": "",
    "korean_step1": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어요",
    "addressee": "none",
@@ -8547,7 +8611,9 @@
    "flags": [
     "CONTEXT_PAIR"
    ],
-   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)"
+   "step2_note": "LEGO note: gwylio and gweld are both 보다; object/context decides (ruling j)",
+   "korean_step2": "우리가 마지막으로 서로 본 지 아주 오랜 시간이 됐어",
+   "step3_note": "as 619 — eng_for_kor S0620"
   },
   {
    "seed_number": 621,
@@ -8662,19 +8728,21 @@
    "seed_number": 629,
    "welsh": "dw i’n licio fo efo llefrith ond heb siwgr",
    "english": "I like it with milk but without sugar",
-   "korean": "나는 그걸 우유와 함께, 하지만 설탕 없이 좋아해",
+   "korean": "나는 그걸 우유는 넣되 설탕은 없이 좋아해",
    "note": "",
    "korean_step1": "저는 그걸 우유와 함께, 하지만 설탕 없이 좋아해요",
    "addressee": "none",
    "register": "banmal",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "나는 그걸 우유와 함께, 하지만 설탕 없이 좋아해",
+   "step3_note": "second opinion #784·AK (same-family Claude) (calque); its fix added 마시다, not in the Welsh, so 넣되…없이 keeps licio = 좋아하다 only"
   },
   {
    "seed_number": 630,
    "welsh": "ga i rywbeth i yfed, os gwelwch yn dda?",
    "english": "can I have something to drink please?",
-   "korean": "부탁인데요, 제가 마실 것을 받아도 될까요?",
+   "korean": "제가 마실 것 좀 받을 수 있을까요? 부탁해요",
    "note": "please tagged on as 414",
    "korean_step1": "제가 마실 것을 받아도 될까요? 부탁해요",
    "addressee": "formal_chi",
@@ -8685,7 +8753,9 @@
    "flags": [
     "REGISTER_JUDGED"
    ],
-   "step2_note": "os gwelwch yn dda is a chi form, so this seed stays in 해요 (formal chi, ruling b): 부탁해요 closing a statement (624), 부탁인데요 opening a question so it still ends in ? (414, 630); 624 answers a ti question but keeps the chi formula"
+   "step2_note": "os gwelwch yn dda is a chi form, so this seed stays in 해요 (formal chi, ruling b): 부탁해요 closing a statement (624), 부탁인데요 opening a question so it still ends in ? (414, 630); 624 answers a ti question but keeps the chi formula",
+   "korean_step2": "부탁인데요, 제가 마실 것을 받아도 될까요?",
+   "step3_note": "as 414"
   },
   {
    "seed_number": 631,
@@ -8993,7 +9063,7 @@
    "seed_number": 653,
    "welsh": "esgusodwch fi, oes ots gynnoch chi?",
    "english": "excuse me, do you mind?",
-   "korean": "실례지만, 상관있으세요?",
+   "korean": "실례지만, 불편하세요?",
    "note": "당신 + -시-",
    "korean_step1": "실례지만, 당신은 상관있으신가요?",
    "addressee": "formal_chi",
@@ -9001,7 +9071,9 @@
    "flags_step1": [
     "REGISTER"
    ],
-   "flags": []
+   "flags": [],
+   "korean_step2": "실례지만, 상관있으세요?",
+   "step3_note": "as 190"
   },
   {
    "seed_number": 654,
@@ -9111,7 +9183,7 @@
    "seed_number": 662,
    "welsh": "dach chi gyd yn siarad hi",
    "english": "you all speak it",
-   "korean": "여러분은 그걸 해요",
+   "korean": "여러분은 그걸로 이야기해요",
    "note": "hi = it (the language, feminine in Welsh); 그걸 해요 is vague Korean but has no other Welsh reading",
    "korean_step1": "여러분 모두 그걸 해요",
    "addressee": "plural_chi",
@@ -9119,7 +9191,9 @@
    "flags_step1": [
     "REGISTER"
    ],
-   "flags": []
+   "flags": [],
+   "korean_step2": "여러분은 그걸 해요",
+   "step3_note": "second opinion #784·AK (same-family Claude) flagged 그걸 해요 cues gwneud; its fix 그 언어 would clash with yr iaith (101), so siarad = 이야기하다 + 그걸로 (as seed 1 웨일스어로 이야기하다)"
   },
   {
    "seed_number": 663,
@@ -9177,13 +9251,15 @@
    "seed_number": 667,
    "welsh": "oes ots gynnoch chi gyd?",
    "english": "do you all mind?",
-   "korean": "여러분 상관있어요?",
+   "korean": "여러분 불편해요?",
    "note": "",
    "korean_step1": "여러분 모두 상관있나요?",
    "addressee": "plural_chi",
    "register": "haeyo",
    "flags_step1": [],
-   "flags": []
+   "flags": [],
+   "korean_step2": "여러분 상관있어요?",
+   "step3_note": "as 190"
   },
   {
    "seed_number": 668,
