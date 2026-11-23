@@ -1,0 +1,4 @@
+{"ops":[{"op":"phrase.update","phrase_id":"cym_for_kor:S0429L01B01",
+ "expect":{"known_text":"응 그럴 거야, 왜냐하면 그들은 ~ㄹ 필요가 있어","target_text":"bydden, achos maen nhw angen"},
+ "set":{"known_text":"응 그럴 거야, 왜냐하면 그들은 도울 필요가 있어","target_text":"bydden, achos maen nhw angen helpu"}}],
+ "why":"BUILD row stopped on 'angen' with no complement (Kai's Watson, 23 Nov: broken, not a fragment). Completed with helpu (S0142L06, 돕다), taught by seed 142. No USE row moved."}

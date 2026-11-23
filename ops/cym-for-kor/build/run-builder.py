@@ -27,6 +27,9 @@ CB = 'http://localhost:3471/api'
 HERE = pathlib.Path(__file__).resolve().parent
 EVID = pathlib.Path.home() / 'ssi-evidence/ssi-dashboard-v7/ops/cym-for-kor/build'
 EVID.mkdir(parents=True, exist_ok=True)
+import importlib.util as _ilu
+_sp = _ilu.spec_from_file_location('dangling_scan', HERE / 'dangling-scan.py')
+DANGLE = _ilu.module_from_spec(_sp); _sp.loader.exec_module(DANGLE)
 DOOR_PAR = 4
 
 
@@ -244,6 +247,19 @@ def main():
                     log({'seed': n, 'lego': i, 'comma_tag_settled': fixed['settled'],
                          'build': [p['target'] for p in fixed['build']]})
                     sets[i] = fixed
+        # A BUILD row that stops where Welsh needs more ('bydden, achos maen nhw angen') is broken, not a
+        # fragment (Kai's Watson, 23 Nov). Drop it while 3 BUILD rows remain; otherwise leave it for the
+        # post-pass (dangling-scan.py), so this never stalls the build. Never top up from USE (canon P18).
+        for i, st_ in sets.items():
+            if not st_.get('ok'):
+                continue
+            keep = [p for p in st_.get('build', []) if not DANGLE.dangles(p['target'], p['known'])]
+            gone = len(st_.get('build', [])) - len(keep)
+            if gone and len(keep) >= 3:
+                log({'seed': n, 'lego': i, 'dangling_dropped': [p['target'] for p in st_['build'] if p not in keep]})
+                st_['build'] = keep
+            elif gone:
+                log({'seed': n, 'lego': i, 'dangling_left_for_postpass': [p['target'] for p in st_['build'] if p not in keep]})
         bad = {i: s for i, s in sets.items() if not s.get('ok')}
         if bad:
             log({'seed': n, 'stop': 'door', 'legos': {i: (s.get('code') or s.get('error') or 'not ok') for i, s in bad.items()}})
