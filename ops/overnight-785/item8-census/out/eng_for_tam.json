@@ -1,0 +1,714 @@
+{
+ "course": "eng_for_tam",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 200,
+ "on_copy": 199,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0006L02U06",
+   "src": "#957 changeset",
+   "known": "நான் ஒரு வார்த்தை நினைவில் கொள்ள முயற்சிக்கிறேன்.",
+   "target": "I'm trying to remember a word.",
+   "twin": "S0006L02B02",
+   "twin_known": "ஒரு வார்த்தை நினைவில் கொள்ள முயற்சிக்கிறேன்"
+  },
+  {
+   "id": "S0009L01U06",
+   "src": "#957 changeset",
+   "known": "நான் இப்போது கொஞ்சம் ஆங்கிலம் பேசுகிறேன்.",
+   "target": "I speak a little English now.",
+   "twin": "S0009L01U03",
+   "twin_known": "நான் கொஞ்சம் ஆங்கிலம் இப்போது பேசுகிறேன்"
+  },
+  {
+   "id": "S0010L02U06",
+   "src": "#957 changeset",
+   "known": "நான் முழு வாக்கியத்தையும் நினைவில் கொள்ள முடியுமா என்று தெரியவில்லை.",
+   "target": "I'm not sure if I can remember the whole sentence.",
+   "twin": "S0010L02U01",
+   "twin_known": "நான் முழு வாக்கியம் நினைவில் கொள்ள முடியுமா என்று தெரியவில்லை"
+  },
+  {
+   "id": "S0023L03U06",
+   "src": "#957 changeset",
+   "known": "நான் விரைவில் அதிகமாக பேசத் தொடங்கப் போகிறேன்.",
+   "target": "I'm going to start talking more soon.",
+   "twin": "S0023L03U02",
+   "twin_known": "நான் விரைவில் அதிகமாக பேசிக்கொண்டிருக்கத் தொடங்க போகிறேன்"
+  },
+  {
+   "id": "S0024L02U07",
+   "src": "#957 changeset",
+   "known": "என்னால் எளிதாக நினைவில் கொள்ள முடியாது போகிறது.",
+   "target": "I'm not going to be able to remember easily.",
+   "twin": "S0024L02U01",
+   "twin_known": "நான் எளிதாக நினைவில் கொள்ள முடியாது போகிறது"
+  },
+  {
+   "id": "S0028L03U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் முடிந்தவரை விரைவில் பேசத் தொடங்குவது பயனுள்ளது.",
+   "target": "It's useful to start talking as soon as you can.",
+   "twin": "S0028L03U03",
+   "twin_known": "பேசத் தொடங்குவது பயனுள்ளது முடிந்தவரை விரைவில்"
+  },
+  {
+   "id": "S0029L03U07",
+   "src": "#957 changeset",
+   "known": "நான் முடிந்தவரை விரைவில் சிறப்பாக பேசுவதை ஆர்வமாக எதிர்நோக்குகிறேன்.",
+   "target": "I'm looking forward to speaking better as soon as I can.",
+   "twin": "S0029L03U04",
+   "twin_known": "நான் என்னால் முடிந்தவரை விரைவில் சிறப்பாக பேசுவதை ஆர்வமாக எதிர்நோக்குகிறேன்"
+  },
+  {
+   "id": "S0030L03U06",
+   "src": "#957 changeset",
+   "known": "நேற்று உங்களிடம் ஏதாவது கேட்க விரும்பினேன்.",
+   "target": "I wanted to ask you something yesterday.",
+   "twin": "S0030L03U04",
+   "twin_known": "நேற்று நான் உங்களிடம் ஏதாவது கேட்க விரும்பினேன்"
+  },
+  {
+   "id": "S0035L04U06",
+   "src": "#957 changeset",
+   "known": "இந்த பிற்பகல் அவள் எதுவும் படிக்க விரும்புவதில்லை.",
+   "target": "She doesn't want to read anything this afternoon.",
+   "twin": "S0035L04U04",
+   "twin_known": "அவள் இந்த பிற்பகல் எதுவும் படிக்க விரும்புவதில்லை"
+  },
+  {
+   "id": "S0037L05U06",
+   "src": "#957 changeset",
+   "known": "கடந்த மாதம் அதை கவனமாக யோசிக்கத் தொடங்கினேன்.",
+   "target": "I started to think about it carefully last month.",
+   "twin": "S0037L05U05",
+   "twin_known": "நான் அதைப் பற்றி கவனமாக யோசிக்கத் தொடங்கினேன் கடந்த மாதம்"
+  },
+  {
+   "id": "S0039L03U06",
+   "src": "#957 changeset",
+   "known": "ஆனால் இந்த காலையில் நான் கொஞ்சம் சோர்வாக இருக்கிறேன்.",
+   "target": "But I'm a little tired this morning.",
+   "twin": "S0039L03U01",
+   "twin_known": "ஆனால் நான் கொஞ்சம் சோர்வாக இருக்கிறேன் இந்த காலையில்"
+  },
+  {
+   "id": "S0040L03U06",
+   "src": "#957 changeset",
+   "known": "இந்த நேரத்தில் நீங்கள் எப்படி உணர்கிறீர்கள்?",
+   "target": "How do you feel at the moment?",
+   "twin": "S0040L03U01",
+   "twin_known": "நீங்கள் எப்படி உணர்கிறீர்கள் இந்த நேரத்தில்?"
+  },
+  {
+   "id": "S0042L03U06",
+   "src": "#957 changeset",
+   "known": "கடந்த இரவை விட நன்றாக உணரத் தொடங்கினேன்.",
+   "target": "I was starting to feel better than last night.",
+   "twin": "S0042L03U01",
+   "twin_known": "நான் இரவை விட நன்றாக உணரத் தொடங்கினேன்"
+  },
+  {
+   "id": "S0045L03U06",
+   "src": "#957 changeset",
+   "known": "எனக்கு எல்லாவற்றையும் தெரிய வேண்டியதில்லை.",
+   "target": "I don't need to know everything.",
+   "twin": "S0045L03U01",
+   "twin_known": "நான் எல்லாவற்றையும் தெரிய வேண்டியதில்லை"
+  },
+  {
+   "id": "S0046L04U06",
+   "src": "#957 changeset",
+   "known": "ஆனால் தவறுகள் செய்வதைப் பற்றி கவலைப்படுவதில்லை.",
+   "target": "But I don't worry about making mistakes.",
+   "twin": "S0046L04U01",
+   "twin_known": "ஆனால் நான் தவறுகள் செய்வதைப் பற்றி கவலைப்படுவதில்லை"
+  },
+  {
+   "id": "S0047L05U07",
+   "src": "#957 changeset",
+   "known": "ஏனென்றால் தவறுகள் செய்வது நல்ல விஷயம் என்று நினைக்கிறேன்.",
+   "target": "Because I think that it's a good thing to make mistakes.",
+   "twin": "S0047L05U02",
+   "twin_known": "ஏனென்றால் நான் நினைக்கிறேன் நல்ல விஷயம் தவறுகள் செய்வது"
+  },
+  {
+   "id": "S0048L02U06",
+   "src": "#957 changeset",
+   "known": "தவறுகள் செய்வது பற்றி அக்கறைப்படுவதில்லை.",
+   "target": "I don't care about making mistakes.",
+   "twin": "S0048L02U01",
+   "twin_known": "நான் தவறுகள் செய்வது பற்றி அக்கறைப்படுவதில்லை"
+  },
+  {
+   "id": "S0049L02U06",
+   "src": "#957 changeset",
+   "known": "இது இப்படித்தான் இருக்கும், நான் சொல்வது புரிகிறதா.",
+   "target": "It's like this, if you know what I mean.",
+   "twin": "S0049L02U01",
+   "twin_known": "இது இப்படித்தான் நான் சொல்வது புரிகிறதா"
+  },
+  {
+   "id": "S0051L05U06",
+   "src": "#957 changeset",
+   "known": "என்னுடைய நண்பர்களுடன் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்.",
+   "target": "I enjoy doing interesting things with my friends.",
+   "twin": "S0051L05U01",
+   "twin_known": "நான் என்னுடைய நண்பர்களுடன் சுவாரஸ்யமான விஷயங்கள் செய்வதை ரசிக்கிறேன்"
+  },
+  {
+   "id": "S0059L04U07",
+   "src": "#957 changeset",
+   "known": "அடுத்த வாரம் நான் என்ன செய்ய வேண்டும் என்று எனக்கு தெரியும்.",
+   "target": "I know how to do what I need to do next week.",
+   "twin": "S0059L04U01",
+   "twin_known": "நான் அடுத்த வாரம் என்ன செய்ய வேண்டும் என்று தெரியும்"
+  },
+  {
+   "id": "S0063L04U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என்னுக்கு உதவுவதில் ஆட்சேபனை இல்லை என்று உறுதியா?",
+   "target": "Are you sure you don't mind helping me?",
+   "twin": "S0063L04U01",
+   "twin_known": "நீங்கள் உறுதியா ஆட்சேபனை இல்லை உதவுவதில் என்னுக்கு?"
+  },
+  {
+   "id": "S0068L02U07",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+   "target": "What are you looking for?",
+   "twin": "S0068L02B01",
+   "twin_known": "என்ன தேடுகிறீர்கள்?"
+  },
+  {
+   "id": "S0072L02U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள் என்று நான் நினைக்கிறேன்.",
+   "target": "I think that you're doing very well.",
+   "twin": "S0072L02U01",
+   "twin_known": "நான் நினைக்கிறேன் நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்"
+  },
+  {
+   "id": "S0078L02U07",
+   "src": "#957 changeset",
+   "known": "நீங்கள் சொன்னது என்னவென்று புரியவில்லை.",
+   "target": "I don't understand what you said.",
+   "twin": "S0078L02B01",
+   "twin_known": "புரியவில்லை நீங்கள் சொன்னது"
+  },
+  {
+   "id": "S0079L02U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் எப்போது கற்க ஆரம்பித்தீர்கள்?",
+   "target": "When did you start to learn?",
+   "twin": "S0079L02B01",
+   "twin_known": "எப்போது ஆரம்பித்தீர்கள் கற்க?"
+  },
+  {
+   "id": "S0080L02U06",
+   "src": "#957 changeset",
+   "known": "நான் எப்போது தயாராவேன் என்று தெரியவில்லை.",
+   "target": "I'm not sure when I'll be ready.",
+   "twin": "S0080L02U01",
+   "twin_known": "தெரியவில்லை எப்போது தயாராவேன்"
+  },
+  {
+   "id": "S0081L01U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் எப்போது ஆரம்பிக்க விரும்புகிறீர்கள்?",
+   "target": "When do you want to start?",
+   "twin": "S0081L01U01",
+   "twin_known": "எப்போது நீங்கள் விரும்புகிறீர்கள் ஆரம்பிக்க?"
+  },
+  {
+   "id": "S0084L03U06",
+   "src": "#957 changeset",
+   "known": "அவர் என் நண்பரைப் பற்றி சொன்னதனோடு நான் உடன்படவில்லை.",
+   "target": "I don't agree with what he said about my friend.",
+   "twin": "S0084L03U03",
+   "twin_known": "நான் என் நண்பரைப் பற்றி அவர் சொன்னதனோடு உடன்படவில்லை"
+  },
+  {
+   "id": "S0092L02U06",
+   "src": "#957 changeset",
+   "known": "நான் இதை இன்னும் கொஞ்ச நேரம் தொடர்ந்து செய்ய விரும்புகிறேன்.",
+   "target": "I'd like to keep on doing this for a while.",
+   "twin": "S0092L02U04",
+   "twin_known": "நான் இதை சிறிது நேரம் தொடர்ந்து செய்ய விரும்புகிறேன்"
+  },
+  {
+   "id": "S0097L02U06",
+   "src": "#957 changeset",
+   "known": "ஆமாம், நீங்கள் விரும்பும்போதே நான் போக தயார்.",
+   "target": "Yes I'm ready to go as soon as you want.",
+   "twin": "S0097L02U04",
+   "twin_known": "ஆமாம், நீங்கள் விரும்பும்போதே போக தயார்"
+  },
+  {
+   "id": "S0098L04U06",
+   "src": "#957 changeset",
+   "known": "நான் வேறு ஏதாவது விளையாடுவதை கருத்தில் கொள்ள வேண்டும்.",
+   "target": "I should consider playing something else.",
+   "twin": "S0098L04U01",
+   "twin_known": "நான் ஏதாவது வேற்றது விளையாடுவதை கருத்தில் கொள்ள வேண்டும்"
+  },
+  {
+   "id": "S0100L03U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் இதே போன்ற ஏதாவது செய்வதில் கவலைப்படக்கூடாது.",
+   "target": "You shouldn't worry about doing something similar.",
+   "twin": "S0100L03U01",
+   "twin_known": "நீங்கள் ஒத்த ஏதாவது செய்வதில் கவலைப்படக்கூடாது"
+  },
+  {
+   "id": "S0106L05U06",
+   "src": "#957 changeset",
+   "known": "நாங்கள் மகிழ்ச்சியாக உணர வேண்டியதில்லை, நாங்கள் கஷ்டப்பட்டு வேலை செய்ய வேண்டும்.",
+   "target": "We don't need to feel happy, we just need to work hard.",
+   "twin": "S0106L05U01",
+   "twin_known": "நாங்கள் மகிழ்ச்சியாக உணர வேண்டியதில்லை மட்டும் கஷ்டமாக வேலை செய்ய வேண்டும்"
+  },
+  {
+   "id": "S0107L03U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என்ன செய்கிறீர்கள் என்று பார்க்க நாங்கள் நம்பிக்கை வைத்தோம்.",
+   "target": "We hoped to see what you were doing.",
+   "twin": "S0107L03B03",
+   "twin_known": "நாங்கள் பார்க்க என்ன நீங்கள் செய்கிறீர்கள்"
+  },
+  {
+   "id": "S0129L03U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் இவ்வளவு நன்றாக செய்கிறீர்கள் என்று நான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்.",
+   "target": "I'm so happy that you're doing so well.",
+   "twin": "S0129L03U01",
+   "twin_known": "நான் மிகவும் மகிழ்ச்சியாக நீங்கள் நன்றாக செய்கிறீர்கள்"
+  },
+  {
+   "id": "S0132L04U06",
+   "src": "#957 changeset",
+   "known": "அவள் சொல்கிறதை விட இது குறைவாக சுவாரஸ்யமாக இருக்கிறது.",
+   "target": "That's less exciting than what she was saying.",
+   "twin": "S0132L04U01",
+   "twin_known": "அவள் சொன்னதை விட குறைவாக சுவாரஸ்யமாக உள்ளது"
+  },
+  {
+   "id": "S0136L02U07",
+   "src": "#957 changeset",
+   "known": "நிச்சயமாக நீங்கள் அவளிடம் கேட்கலாம், ஏனென்றால் அவள் என் நண்பன்.",
+   "target": "Of course you can ask her because she's my friend.",
+   "twin": "S0136L02U01",
+   "twin_known": "நிச்சயமாக நீங்கள் கேட்கலாம் அவளிடம் ஏனென்றால் அவள் என் நண்பன்"
+  },
+  {
+   "id": "S0138L04U06",
+   "src": "#957 changeset",
+   "known": "என் நண்பன் நம்மை சந்திக்க விரும்பிய இடம் இது தான்.",
+   "target": "This was where my friend wanted to meet us.",
+   "twin": "S0138L04U01",
+   "twin_known": "இது தான் என் நண்பன் நம்மை சந்திக்க விரும்பினான்"
+  },
+  {
+   "id": "S0161L04U09",
+   "src": "#957 changeset",
+   "known": "நீங்கள் அந்த புத்தகத்தை ஞாயிற்றுக்கிழமை காலை என்னிடம் தர முடியுமா?",
+   "target": "Can you give me that book on Sunday morning?",
+   "twin": "S0161L04U05",
+   "twin_known": "ஞாயிற்றுக்கிழமை காலை அந்த புத்தகம் தர முடியுமா?"
+  },
+  {
+   "id": "S0163L01U06",
+   "src": "#957 changeset",
+   "known": "நான் அது சுவாரஸ்யமானது என்று நினைக்கிறேன்.",
+   "target": "I think that it's interesting.",
+   "twin": "S0163L01B01",
+   "twin_known": "நான் நினைக்கிறேன் அது சுவாரஸ்யமானது"
+  },
+  {
+   "id": "S0164L01U06",
+   "src": "#957 changeset",
+   "known": "ஒரு சுவாரஸ்யமான புத்தகம்",
+   "target": "An interesting book",
+   "twin": "S0164L01B01",
+   "twin_known": "சுவாரஸ்யமான புத்தகம்"
+  },
+  {
+   "id": "S0173L02U06",
+   "src": "#957 changeset",
+   "known": "இல்லை நன்றி நான் என்னாலேயே சமாளிக்க முடியும்.",
+   "target": "No thank you I can manage on my own.",
+   "twin": "S0173L02U04",
+   "twin_known": "வேண்டாம் நன்றி, என்னாலேயே சமாளிக்க முடியும்"
+  },
+  {
+   "id": "S0182L02U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என் சாவிகளை எங்காவது பார்த்தீர்களா?",
+   "target": "Have you seen my keys anywhere?",
+   "twin": "S0182L02U04",
+   "twin_known": "என் சாவிகளை எங்காவது பார்த்தீர்களா?"
+  },
+  {
+   "id": "S0187L01U04",
+   "src": "#957 changeset",
+   "known": "நான் இதுவரை மகிழ்ச்சியாக இருக்கிறேன்.",
+   "target": "I'm happy so far.",
+   "twin": "S0187L01B01",
+   "twin_known": "நான் மகிழ்ச்சியாக இதுவரை"
+  },
+  {
+   "id": "S0194L01U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+   "target": "What are you looking for?",
+   "twin": "S0194L01B01",
+   "twin_known": "என்ன நீங்கள் தேடுகிறீர்கள்?"
+  },
+  {
+   "id": "S0199L01U06",
+   "src": "#957 changeset",
+   "known": "என் நண்பர் ஒரு அலுவலகத்தில் வேலை செய்வார்.",
+   "target": "My friend used to work in an office.",
+   "twin": "S0199L01U01",
+   "twin_known": "என் நண்பர் ஒரு அலுவலகத்தில் வேலை செய்து வந்தார்"
+  },
+  {
+   "id": "S0217L03U08",
+   "src": "#957 changeset",
+   "known": "நான் ஒன்று அல்லது இரண்டு கிளாஸ் தண்ணீர் குடித்தேன்.",
+   "target": "I had a glass or two of water.",
+   "twin": "S0217L03U04",
+   "twin_known": "நான் ஒரு கிளாஸ் அல்லது இரண்டு தண்ணீர் குடித்தேன்"
+  },
+  {
+   "id": "S0224L01U07",
+   "src": "#957 changeset",
+   "known": "அவன் இப்போதுதான் கற்க ஆரம்பித்தான்.",
+   "target": "He's just started to learn.",
+   "twin": "S0224L01B01",
+   "twin_known": "அவன் இப்போதுதான் ஆரம்பித்தான் கற்க"
+  },
+  {
+   "id": "S0225L01U09",
+   "src": "#957 changeset",
+   "known": "அவன் முடிந்தால் உங்களுக்கு ஒரு பதில் கொடுப்பான்.",
+   "target": "He would give you an answer if he could.",
+   "twin": "S0225L01U05",
+   "twin_known": "முடிந்தால் உங்களுக்கு பதில் தருவான்"
+  },
+  {
+   "id": "S0278L01U06",
+   "src": "#957 changeset",
+   "known": "நேற்று இரவு எல்லாவற்றையும் முடிக்க வேண்டியதா?",
+   "target": "Did you have to finish everything last night?",
+   "twin": "S0278L01U01",
+   "twin_known": "நேற்று இரவு எல்லாவற்றையும் முடிக்க வேண்டியிருந்ததா?"
+  },
+  {
+   "id": "S0298L01U06",
+   "src": "#957 changeset",
+   "known": "என்னிடம் சொல்ல இனி எதுவும் இல்லை.",
+   "target": "I've got nothing left to say.",
+   "twin": "S0298L01U01",
+   "twin_known": "நான் சொல்ல எதுவும் இல்லை"
+  },
+  {
+   "id": "S0312L03U08",
+   "src": "#957 changeset",
+   "known": "நாளை இரவு தான் மற்ற அறையைப் பயன்படுத்த முடியும் என்று அவள் சொன்னாள்.",
+   "target": "She said that she could use the other room tomorrow night.",
+   "twin": "S0312L03U01",
+   "twin_known": "அவள் நாளை இரவு மற்ற அறையை பயன்படுத்த முடியும் என்று சொன்னாள்"
+  },
+  {
+   "id": "S0313L02U06",
+   "src": "#957 changeset",
+   "known": "எல்லா ஐந்து விளையாட்டுகளையும் பார்க்க முடியவில்லை என்று அவன் சொன்னான்.",
+   "target": "He said that he couldn't watch all five games.",
+   "twin": "S0313L02U02",
+   "twin_known": "அவனால் எல்லா ஐந்து விளையாட்டுகளையும் பார்க்க முடியவில்லை என்று அவன் சொன்னான்"
+  },
+  {
+   "id": "S0315L02U07",
+   "src": "#957 changeset",
+   "known": "அவன் விரும்பிய காரை வாங்க அவனால் முடியவில்லை என்று நினைக்கிறேன்.",
+   "target": "I think that he couldn't afford the car that he wanted.",
+   "twin": "S0315L02U01",
+   "twin_known": "அவன் விரும்பிய காரை அவனால் வாங்க முடியவில்லை என்று நினைக்கிறேன்"
+  },
+  {
+   "id": "S0316L04U06",
+   "src": "#957 changeset",
+   "known": "திங்கள்கிழமை அவள் தன் தம்பியை அழைத்து வர முடியும் என்று நினைக்கிறாயா?",
+   "target": "Do you think that she could bring her brother on Monday?",
+   "twin": "S0316L04U01",
+   "twin_known": "அவள் திங்கள்கிழமை தன் தம்பியை அழைத்து வர முடியும் என்று நினைக்கிறாயா?"
+  },
+  {
+   "id": "S0318L02U09",
+   "src": "#957 changeset",
+   "known": "இல்லை, இந்த முறை அவளால் முடியும் என்று நினைக்கவில்லை.",
+   "target": "No I don't think she could this time.",
+   "twin": "S0318L02U01",
+   "twin_known": "இல்லை, அவளால் இந்த முறை முடியும் என்று நினைக்கவில்லை"
+  },
+  {
+   "id": "S0322L02U07",
+   "src": "#957 changeset",
+   "known": "அதே புத்தகத்தை படிக்க வேண்டும் என்று அவள் சொன்னாள்.",
+   "target": "She said that she needs to read the same book.",
+   "twin": "S0322L02U01",
+   "twin_known": "அவள் அதே புத்தகத்தை படிக்க வேண்டும் என்று சொன்னாள்"
+  },
+  {
+   "id": "S0323L02U07",
+   "src": "#957 changeset",
+   "known": "பள்ளிக்கு நடந்து செல்ல வேண்டியதில்லை என்று அவன் சொன்னான்.",
+   "target": "He said that he doesn't need to walk to school.",
+   "twin": "S0323L02U01",
+   "twin_known": "அவன் பள்ளிக்கு நடந்து செல்ல வேண்டியதில்லை என்று சொன்னான்"
+  },
+  {
+   "id": "S0325L03U06",
+   "src": "#957 changeset",
+   "known": "அவன் சாத்தியமான பத்து பிரச்சினைகளை பரிசீலிக்க வேண்டும் என்று நினைக்கிறேன்.",
+   "target": "I think that he needs to consider ten possible problems.",
+   "twin": "S0325L03U01",
+   "twin_known": "அவன் பத்து சாத்தியமான பிரச்சினைகளை பரிசீலிக்க வேண்டும் என்று நினைக்கிறேன்"
+  },
+  {
+   "id": "S0333L02U07",
+   "src": "#957 changeset",
+   "known": "குழுவுடன் அதிக நேரம் செலவிட முடியாது என்று அவள் சொன்னாள்.",
+   "target": "She said that she can't spend much time with the group.",
+   "twin": "S0333L02U01",
+   "twin_known": "அவளால் குழுவுடன் அதிக நேரம் செலவிட முடியாது என்று சொன்னாள்"
+  },
+  {
+   "id": "S0334L02U06",
+   "src": "#957 changeset",
+   "known": "பூனைக்குட்டியை உன்னை பிடிக்க விட முடியும் என்று அவன் சொன்னான்.",
+   "target": "He said that he can let you hold the kitten",
+   "twin": "S0334L02U01",
+   "twin_known": "அவன் உன்னை பூனைக்குட்டியை பிடிக்க விட முடியும் என்று சொன்னான்"
+  },
+  {
+   "id": "S0341L02U07",
+   "src": "#957 changeset",
+   "known": "சில நாட்களுக்கு முன்பு நான் ஒருவரை சந்தித்தேன்.",
+   "target": "I met someone a few days ago.",
+   "twin": "S0341L02B02",
+   "twin_known": "நான் சில நாட்களுக்கு முன்பு ஒருவரை சந்தித்தேன்"
+  },
+  {
+   "id": "S0342L01U06",
+   "src": "#957 changeset",
+   "known": "ஏதோ சொன்ன ஒருவரை நான் சந்தித்தேன்.",
+   "target": "I met someone who said something.",
+   "twin": "S0342L01U01",
+   "twin_known": "நான் ஏதோ சொன்ன ஒருவரை சந்தித்தேன்"
+  },
+  {
+   "id": "S0343L03U06",
+   "src": "#957 changeset",
+   "known": "பொருளாதாரத்தைப் பற்றி கவலைப்படுவதாக சொன்னவர்.",
+   "target": "Who said that she's worried about the economy.",
+   "twin": "S0343L03U03",
+   "twin_known": "அவள் பொருளாதாரத்தைப் பற்றி கவலைப்படுவதாக சொன்னவர்"
+  },
+  {
+   "id": "S0344L02U06",
+   "src": "#957 changeset",
+   "known": "உனக்கு உதவ மகிழ்ச்சி என்று சொன்னவர்.",
+   "target": "Who said that he's happy to help you.",
+   "twin": "S0344L02B03",
+   "twin_known": "அவன் மகிழ்ச்சி என்று சொன்னவர்"
+  },
+  {
+   "id": "S0345L01U06",
+   "src": "#957 changeset",
+   "known": "இன்னும் கிளம்பத் தயாராக இல்லை என்று சொன்னவர்.",
+   "target": "Who said that he's not ready to leave yet.",
+   "twin": "S0345L01U05",
+   "twin_known": "அவன் இன்னும் கிளம்பத் தயாராக இல்லை என்று சொன்னவர்"
+  },
+  {
+   "id": "S0346L02U06",
+   "src": "#957 changeset",
+   "known": "அவளுடைய புத்தகம் எனக்கு பிடித்திருந்தது என்பதை அவள் அறிய வேண்டும் என்று விரும்பினேன்.",
+   "target": "I wanted her to know that I liked her book.",
+   "twin": "S0346L02U01",
+   "twin_known": "நான் அவளுடைய புத்தகம் பிடித்தது என்பதை அவள் அறிய வேண்டும் என்று விரும்பினேன்"
+  },
+  {
+   "id": "S0347L03U06",
+   "src": "#957 changeset",
+   "known": "ஒரு வாரத்திற்கு முன்பு என்ன நடந்தது என்பதை அறிய அவன் விரும்பினான்.",
+   "target": "He wanted to know what was happening a week ago.",
+   "twin": "S0347L03U01",
+   "twin_known": "அவன் ஒரு வாரத்திற்கு முன்பு என்ன நடந்தது என்பதை அறிய விரும்பினான்"
+  },
+  {
+   "id": "S0349L02U06",
+   "src": "#957 changeset",
+   "known": "வெள்ளி இரவு அவன் வெளியே செல்ல விரும்பினானா?",
+   "target": "Did he want to go out on Friday night?",
+   "twin": "S0349L02U01",
+   "twin_known": "அவன் வெள்ளி இரவு வெளியே செல்ல விரும்பினானா?"
+  },
+  {
+   "id": "S0354L02U06",
+   "src": "#957 changeset",
+   "known": "அவன் கோபமாக காட்டிக்கொள்ள வேண்டியதில்லை.",
+   "target": "He didn't need to appear angry.",
+   "twin": "S0354L02B02",
+   "twin_known": "கோபமாக காட்டிக்கொள்ள வேண்டியதில்லை"
+  },
+  {
+   "id": "S0355L03U08",
+   "src": "#957 changeset",
+   "known": "உனக்குத் தெரிந்த அந்த பெண்ணிடம் அவள் பேச வேண்டியிருந்ததா?",
+   "target": "Did she need to talk to that woman you know?",
+   "twin": "S0355L03U01",
+   "twin_known": "நீ அறிந்த அந்த பெண்ணிடம் அவள் பேச வேண்டியிருந்ததா?"
+  },
+  {
+   "id": "S0381L02U06",
+   "src": "#957 changeset",
+   "known": "அவன் எங்களைப் பின்தொடர விரும்பினானா என்று நான் கேட்கவில்லை.",
+   "target": "I didn't ask if he wanted to follow us.",
+   "twin": "S0381L02U01",
+   "twin_known": "அவன் எங்களைப் பின்தொடர விரும்பினானா என்று நான் வினவவில்லை"
+  },
+  {
+   "id": "S0391L02U06",
+   "src": "#957 changeset",
+   "known": "பேருந்தை நோக்கி நடந்து செல்பவர்.",
+   "target": "The one who is walking towards the bus.",
+   "twin": "S0391L02U01",
+   "twin_known": "பேருந்தை நோக்கி நடந்து செல்லும் ஒருவர்"
+  },
+  {
+   "id": "S0393L03U08",
+   "src": "#957 changeset",
+   "known": "பச்சை சட்டை அணிந்த அந்த சிறுவன்.",
+   "target": "That boy with the green shirt.",
+   "twin": "S0393L03U01",
+   "twin_known": "பச்சை சட்டையுடன் இருக்கும் அந்த சிறுவன்"
+  },
+  {
+   "id": "S0394L03U06",
+   "src": "#957 changeset",
+   "known": "மஞ்சள் உடை அணிந்த அந்த சிறுமி.",
+   "target": "That girl with the yellow dress.",
+   "twin": "S0394L03U01",
+   "twin_known": "மஞ்சள் உடையுடன் இருக்கும் அந்த சிறுமி"
+  },
+  {
+   "id": "S0411L03U06",
+   "src": "#957 changeset",
+   "known": "இன்று இரவு நான்கு பேருக்கு ஒரு மேசையை முன்பதிவு செய்ய விரும்புகிறோம்.",
+   "target": "We would like to reserve a table for four tonight.",
+   "twin": "S0411L03U01",
+   "twin_known": "இன்று இரவு நான்கு பேருக்கு ஒரு மேசையை பதிவு செய்ய விரும்புகிறோம்"
+  },
+  {
+   "id": "S0416L03U06",
+   "src": "#957 changeset",
+   "known": "அடுத்த வருடம் அவர்கள் வழிநடத்த விரும்புகிறார்கள்.",
+   "target": "They want to lead the way next year.",
+   "twin": "S0416L03U01",
+   "twin_known": "அவர்கள் அடுத்த வருடம் வழிநடத்த விரும்புகிறார்கள்"
+  },
+  {
+   "id": "S0420L01U06",
+   "src": "#957 changeset",
+   "known": "அவனுக்கு எத்தனை வயது என்று அவர்கள் கேட்க வேண்டியதில்லை.",
+   "target": "They don't need to ask how old he is.",
+   "twin": "S0420L01U01",
+   "twin_known": "அவர்கள் அவனுக்கு எத்தனை வயது என்று கேட்க வேண்டியதில்லை"
+  },
+  {
+   "id": "S0428L03U06",
+   "src": "#957 changeset",
+   "known": "செவ்வாய்க்கிழமை அவர்கள் எங்களை பார்க்க வர விரும்புவார்களா?",
+   "target": "Would they like to visit us on Tuesday?",
+   "twin": "S0428L03U01",
+   "twin_known": "அவர்கள் எங்களை பார்க்க வர விரும்புவார்களா செவ்வாய்க்கிழமை?"
+  },
+  {
+   "id": "S0496L02U06",
+   "src": "#957 changeset",
+   "known": "அது உண்மையிலேயே முக்கியமாக இருக்கும்போது தோற்க நான் திட்டமிடவில்லை.",
+   "target": "I'm not planning to lose when it really matters.",
+   "twin": "S0496L02U05",
+   "twin_known": "அது உண்மையில் முக்கியமாகும்போது நான் தோற்க திட்டமிடவில்லை"
+  },
+  {
+   "id": "S0503L02U06",
+   "src": "#957 changeset",
+   "known": "சிக்கல் உண்டாக்குவதை நான் வெறுக்கிறேன் ஆனால் அது என்னுடையது.",
+   "target": "I hate making trouble but that one's mine.",
+   "twin": "S0503L02U01",
+   "twin_known": "நான் சிக்கல் உண்டாக்குவதை வெறுக்கிறேன் ஆனால் அது என்னுடையது"
+  },
+  {
+   "id": "S0508L02U06",
+   "src": "#957 changeset",
+   "known": "நீ எப்படி பணம் செலுத்தப் போகிறாய் என்று கவலைப்படுவதில் அர்த்தமில்லை.",
+   "target": "There's no point worrying about how you're going to pay.",
+   "twin": "S0508L02U01",
+   "twin_known": "எப்படி நீ பணம் செலுத்தப் போகிறாய் என்று கவலைப்படுவதில் அர்த்தமில்லை"
+  },
+  {
+   "id": "S0564L01U07",
+   "src": "#957 changeset",
+   "known": "உன் உதவி இல்லாமல் என்னால் முடிந்திருக்காது.",
+   "target": "I wouldn't have been able to without your help.",
+   "twin": "S0564L01U01",
+   "twin_known": "என்னால் முடிந்திருக்காது உன் உதவி இல்லாமல்"
+  },
+  {
+   "id": "S0622L02U06",
+   "src": "#957 changeset",
+   "known": "குழந்தைகள் அதை உடைத்துவிட்டார்கள் என்று எனக்குத் தெரியும்.",
+   "target": "I knew that the children had broken it.",
+   "twin": "S0622L02U01",
+   "twin_known": "குழந்தைகள் அதை உடைத்துவிட்டார்கள் என்று எனக்குத் தெரிந்தது"
+  },
+  {
+   "id": "S0638L01U08",
+   "src": "#957 changeset",
+   "known": "நான் யோசிக்க முயற்சிக்கிறேன்.",
+   "target": "I'm trying to think.",
+   "twin": "S0638L01B01",
+   "twin_known": "யோசிக்க முயற்சிக்கிறேன்"
+  }
+ ],
+ "cross_basket": [
+  {
+   "id": "S0068L02U07",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+   "target": "What are you looking for?",
+   "first": "S0194L01U06",
+   "n": 1,
+   "others_item12": 1
+  },
+  {
+   "id": "S0194L01U06",
+   "src": "#957 changeset",
+   "known": "நீங்கள் என்ன தேடுகிறீர்கள்?",
+   "target": "What are you looking for?",
+   "first": "S0068L02U07",
+   "n": 1,
+   "others_item12": 1
+  }
+ ],
+ "with_seed_lego": [],
+ "clean": 114,
+ "missing": [
+  "S0108L03U06"
+ ]
+}

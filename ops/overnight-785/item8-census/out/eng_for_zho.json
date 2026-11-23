@@ -1,0 +1,613 @@
+{
+ "course": "eng_for_zho",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 100,
+ "on_copy": 100,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0011L05U09",
+   "src": "#957 changeset",
+   "known": "我想在你说完以后能说话",
+   "target": "I'd like to be able to speak after you finish",
+   "twin": "S0011L05U01",
+   "twin_known": "我想能在你说完以后说"
+  },
+  {
+   "id": "S0013L02U09",
+   "src": "#957 changeset",
+   "known": "你英语说得很好",
+   "target": "You speak English very well",
+   "twin": "S0013L02U01",
+   "twin_known": "你说英语很好"
+  },
+  {
+   "id": "S0026L04U06",
+   "src": "#957 changeset",
+   "known": "我喜欢那种快要准备好出发的感觉",
+   "target": "I like feeling as if I'm nearly ready to go",
+   "twin": "S0026L04U05",
+   "twin_known": "我喜欢感觉好像我快要准备好走"
+  },
+  {
+   "id": "S0030L03U06",
+   "src": "#957 changeset",
+   "known": "我昨天想问你一件事",
+   "target": "I wanted to ask you something yesterday",
+   "twin": "S0030L03U02",
+   "twin_known": "我昨天想问你一些东西"
+  },
+  {
+   "id": "S0034L05U06",
+   "src": "#957 changeset",
+   "known": "他不想在别人在的时候保持安静",
+   "target": "He doesn't want to be quiet when other people are here",
+   "twin": "S0034L05U02",
+   "twin_known": "他不想安静的时候其他人在这里"
+  },
+  {
+   "id": "S0040L02U06",
+   "src": "#957 changeset",
+   "known": "你现在感觉怎么样？",
+   "target": "How do you feel at the moment?",
+   "twin": "S0040L02U02",
+   "twin_known": "你这个时候感觉怎么样"
+  },
+  {
+   "id": "S0064L02U06",
+   "src": "#957 changeset",
+   "known": "学英语不容易，但是很有趣",
+   "target": "Learning English isn't easy but it is fun",
+   "twin": "S0064L02U01",
+   "twin_known": "说英文不容易但很有趣"
+  },
+  {
+   "id": "S0076L02U06",
+   "src": "#957 changeset",
+   "known": "我对自己已经学到的东西很满意",
+   "target": "I'm very happy with how much I've learnt already",
+   "twin": "S0076L02U01",
+   "twin_known": "我对我已经学了这么多非常满意"
+  },
+  {
+   "id": "S0080L01U07",
+   "src": "#957 changeset",
+   "known": "我不确定我什么时候能准备好",
+   "target": "I'm not sure when I'll be ready",
+   "twin": "S0080L01U01",
+   "twin_known": "我不确定什么时候我会准备好"
+  },
+  {
+   "id": "S0088L01U06",
+   "src": "#957 changeset",
+   "known": "我还没准备好和不认识的人说话",
+   "target": "I'm not ready to talk to people I don't know yet",
+   "twin": "S0088L01U01",
+   "twin_known": "我还没准备好和陌生人说话"
+  },
+  {
+   "id": "S0090L02U06",
+   "src": "#957 changeset",
+   "known": "如果你能说慢一点就好了",
+   "target": "If you can speak more slowly that would be great",
+   "twin": "S0090L02U01",
+   "twin_known": "如果你能说得慢一点那就太好了"
+  },
+  {
+   "id": "S0091L01U06",
+   "src": "#957 changeset",
+   "known": "要想得够快来及时回答是很难的",
+   "target": "It's difficult to think quickly enough to answer in time",
+   "twin": "S0091L01U01",
+   "twin_known": "想得够快来得及回答挺难的"
+  },
+  {
+   "id": "S0092L02U06",
+   "src": "#957 changeset",
+   "known": "我想继续这样做一会儿",
+   "target": "I'd like to keep on doing this for a while",
+   "twin": "S0092L02U01",
+   "twin_known": "我想再继续做这个一会儿"
+  },
+  {
+   "id": "S0094L02U06",
+   "src": "#957 changeset",
+   "known": "这是唯一能行得通的办法",
+   "target": "This is the only way it will work",
+   "twin": "S0094L02U01",
+   "twin_known": "这是让它成功的唯一方法"
+  },
+  {
+   "id": "S0095L02U06",
+   "src": "#957 changeset",
+   "known": "你准备好坐下一班车回家了吗？",
+   "target": "Are you ready to go home on the next bus?",
+   "twin": "S0095L02U01",
+   "twin_known": "你准备好坐下一班公共汽车回家了吗？"
+  },
+  {
+   "id": "S0099L02U06",
+   "src": "#957 changeset",
+   "known": "你应该问问自己为什么不行",
+   "target": "You should ask yourself why it's not working",
+   "twin": "S0099L02U01",
+   "twin_known": "你应该问问自己为什么没有成效"
+  },
+  {
+   "id": "S0115L01U06",
+   "src": "#957 changeset",
+   "known": "我觉得我还没准备好进行对话",
+   "target": "I don't feel as if I'm ready to have a conversation",
+   "twin": "S0115L01U01",
+   "twin_known": "我感觉还没准备好进行对话"
+  },
+  {
+   "id": "S0117L02U06",
+   "src": "#957 changeset",
+   "known": "我肯定比上次我们聊天的时候做得好了",
+   "target": "I'm definitely doing better than I was last time we talked to each other",
+   "twin": "S0117L02U01",
+   "twin_known": "我肯定比我们上次互相交谈时表现更好了"
+  },
+  {
+   "id": "S0119L02U06",
+   "src": "#957 changeset",
+   "known": "你走之前我能问你一件事吗？",
+   "target": "Can I ask you something before you leave?",
+   "twin": "S0119L02U01",
+   "twin_known": "在你离开之前我能问你一些事吗？"
+  },
+  {
+   "id": "S0121L03U06",
+   "src": "#957 changeset",
+   "known": "你不喜欢用你的车，这很不寻常",
+   "target": "It's unusual that you don't like to use your car",
+   "twin": "S0121L03U01",
+   "twin_known": "你不喜欢开车，这不寻常"
+  },
+  {
+   "id": "S0122L02U06",
+   "src": "#957 changeset",
+   "known": "开始觉得容易了，我对进展很兴奋",
+   "target": "It's starting to feel easier and I'm excited about how it's going",
+   "twin": "S0122L02U01",
+   "twin_known": "开始感觉更容易了，我对进展感到很兴奋"
+  },
+  {
+   "id": "S0124L01U06",
+   "src": "#957 changeset",
+   "known": "我那时候觉得那是个好主意",
+   "target": "I thought that was a good idea",
+   "twin": "S0124L01U01",
+   "twin_known": "我觉得那是个好主意"
+  },
+  {
+   "id": "S0126L02U06",
+   "src": "#957 changeset",
+   "known": "这项工作正在改变我的大脑结构",
+   "target": "This work is changing the shape of my brain",
+   "twin": "S0126L02U01",
+   "twin_known": "这项工作正在改变我大脑的形状"
+  },
+  {
+   "id": "S0129L02U06",
+   "src": "#957 changeset",
+   "known": "你做得这么好，我太高兴了",
+   "target": "I'm so happy that you're doing so well",
+   "twin": "S0129L02U01",
+   "twin_known": "我这么开心你表现得这么好"
+  },
+  {
+   "id": "S0132L02U06",
+   "src": "#957 changeset",
+   "known": "那没有她说的那么令人兴奋",
+   "target": "That's less exciting than what she was saying",
+   "twin": "S0132L02U01",
+   "twin_known": "那比她说的没那么令人兴奋"
+  },
+  {
+   "id": "S0133L02U06",
+   "src": "#957 changeset",
+   "known": "一起工作的时候你会很了解一个人",
+   "target": "You get to know someone very well when you work together",
+   "twin": "S0133L02U01",
+   "twin_known": "当你们一起努力时，你会很好地认识某个人"
+  },
+  {
+   "id": "S0134L03U06",
+   "src": "#957 changeset",
+   "known": "和他们一起做困难的事情不是问题",
+   "target": "It's not a problem when you work at something difficult with them",
+   "twin": "S0134L03U01",
+   "twin_known": "当你和他们一起努力做困难的事时，没有问题"
+  },
+  {
+   "id": "S0138L03U06",
+   "src": "#957 changeset",
+   "known": "这就是我朋友想和我们见面的地方",
+   "target": "This was where my friend wanted to meet us",
+   "twin": "S0138L03U01",
+   "twin_known": "这就是我的朋友想见我们的地方"
+  },
+  {
+   "id": "S0139L02U06",
+   "src": "#957 changeset",
+   "known": "对不起，我需要这么早就走",
+   "target": "I'm sorry that I need to leave so early",
+   "twin": "S0139L02U01",
+   "twin_known": "我很抱歉我需要这么早就离开"
+  },
+  {
+   "id": "S0140L02U06",
+   "src": "#957 changeset",
+   "known": "对不起，我看不到你想给我看的东西",
+   "target": "I'm sorry that I can't see what you're trying to show me",
+   "twin": "S0140L02U01",
+   "twin_known": "我很抱歉我看不到你想让我看的东西"
+  },
+  {
+   "id": "S0142L02U07",
+   "src": "#957 changeset",
+   "known": "你真好，我很感谢你的帮助",
+   "target": "That's very kind of you and I'm grateful to you for helping",
+   "twin": "S0142L02U01",
+   "twin_known": "你真的很好心，我感激你帮助我"
+  },
+  {
+   "id": "S0144L01U06",
+   "src": "#957 changeset",
+   "known": "我今天早上醒得比我想的早",
+   "target": "I woke earlier than I wanted to this morning",
+   "twin": "S0144L01U01",
+   "twin_known": "我今天早上比想要的更早醒来"
+  },
+  {
+   "id": "S0146L02U06",
+   "src": "#957 changeset",
+   "known": "自从我们试着修好它以后，好像什么都不行了",
+   "target": "Nothing seems to be working since we tried to fix it",
+   "twin": "S0146L02U01",
+   "twin_known": "自从我们试着修复它以来，似乎什么都不管用"
+  },
+  {
+   "id": "S0147L02U06",
+   "src": "#957 changeset",
+   "known": "她看到我紧张的时候很友好",
+   "target": "She was very kind when she saw me feeling nervous",
+   "twin": "S0147L02U01",
+   "twin_known": "她看到我紧张时非常好心"
+  },
+  {
+   "id": "S0152L02U06",
+   "src": "#957 changeset",
+   "known": "如果我知道你想要什么，我会做得不一样",
+   "target": "I would have done it differently if I had known what you wanted",
+   "twin": "S0152L02U01",
+   "twin_known": "如果我知道你想要什么，我会换一种方式做"
+  },
+  {
+   "id": "S0153L02U06",
+   "src": "#957 changeset",
+   "known": "我不会用完全一样的方式说",
+   "target": "I wouldn't have said it in exactly the same way",
+   "twin": "S0153L02U01",
+   "twin_known": "我不会完全以同样的方式说那话"
+  },
+  {
+   "id": "S0154L01U06",
+   "src": "#957 changeset",
+   "known": "你星期六晚上想在哪里见面？",
+   "target": "Where do you want to meet on Saturday night?",
+   "twin": "S0154L01U01",
+   "twin_known": "你想在星期六晚上在哪里见面？"
+  },
+  {
+   "id": "S0157L02U06",
+   "src": "#957 changeset",
+   "known": "下个月我不能去那里",
+   "target": "I won't be able to be there next month",
+   "twin": "S0157L02U01",
+   "twin_known": "我下个月没法过去"
+  },
+  {
+   "id": "S0161L02U06",
+   "src": "#957 changeset",
+   "known": "星期天早上你能把那本书给我吗？",
+   "target": "Can you give me that book on Sunday morning?",
+   "twin": "S0161L02U01",
+   "twin_known": "你能在星期天早上把那本书给我吗？"
+  },
+  {
+   "id": "S0162L01U06",
+   "src": "#957 changeset",
+   "known": "你觉得那个怎么样？",
+   "target": "What do you think about that?",
+   "twin": "S0162L01U01",
+   "twin_known": "你对那个怎么看？"
+  },
+  {
+   "id": "S0168L02U06",
+   "src": "#957 changeset",
+   "known": "然后我晚一点就能来帮忙了",
+   "target": "And then I'll be able to come and help later on",
+   "twin": "S0168L02U01",
+   "twin_known": "然后我稍后能来帮忙"
+  },
+  {
+   "id": "S0173L01U06",
+   "src": "#957 changeset",
+   "known": "不用了谢谢，我自己能行",
+   "target": "No thank you I can manage on my own",
+   "twin": "S0173L01U01",
+   "twin_known": "不用了，谢谢，我自己能应付"
+  },
+  {
+   "id": "S0180L01U06",
+   "src": "#957 changeset",
+   "known": "我想看一会儿书",
+   "target": "I'd like to read my book for a while",
+   "twin": "S0180L01U01",
+   "twin_known": "我想读一会儿我的书"
+  },
+  {
+   "id": "S0182L03U06",
+   "src": "#957 changeset",
+   "known": "你在哪里看到过我的钥匙吗？",
+   "target": "Have you seen my keys anywhere?",
+   "twin": "S0182L03U01",
+   "twin_known": "你有没有在任何地方看到我的钥匙？"
+  },
+  {
+   "id": "S0183L02U06",
+   "src": "#957 changeset",
+   "known": "没有，恐怕我没看到过",
+   "target": "No I'm afraid I haven't seen them",
+   "twin": "S0183L02U01",
+   "twin_known": "不，恐怕我没看到他们"
+  },
+  {
+   "id": "S0184L02U06",
+   "src": "#957 changeset",
+   "known": "看到过，刚才在办公室看到了",
+   "target": "Yes I saw them in the office a while ago",
+   "twin": "S0184L02U01",
+   "twin_known": "是的，我刚才在办公室看到他们了"
+  },
+  {
+   "id": "S0185L01U06",
+   "src": "#957 changeset",
+   "known": "我觉得你把它们落在公司了",
+   "target": "I think you left them at work",
+   "twin": "S0185L01U01",
+   "twin_known": "我想你把它们放在工作单位了"
+  },
+  {
+   "id": "S0186L01U06",
+   "src": "#957 changeset",
+   "known": "你下个星期想说点不同的东西吗？",
+   "target": "Do you want to talk about something different next week?",
+   "twin": "S0186L01U01",
+   "twin_known": "你想下周谈谈别的事情吗？"
+  },
+  {
+   "id": "S0195L02U06",
+   "src": "#957 changeset",
+   "known": "我在试着找我放在桌子上的钱",
+   "target": "I'm trying to find the money I left on the table",
+   "twin": "S0195L02U01",
+   "twin_known": "我在努力找我放在桌子上的那笔钱"
+  },
+  {
+   "id": "S0196L02U06",
+   "src": "#957 changeset",
+   "known": "你听说最新的想法了吗？",
+   "target": "Have you heard the latest idea?",
+   "twin": "S0196L02U01",
+   "twin_known": "你有没有听说最新的想法？"
+  },
+  {
+   "id": "S0198L02U06",
+   "src": "#957 changeset",
+   "known": "我女儿在政府工作",
+   "target": "My daughter works for the council",
+   "twin": "S0198L02U01",
+   "twin_known": "我的女儿在委员会工作"
+  },
+  {
+   "id": "S0200L01U06",
+   "src": "#957 changeset",
+   "known": "他们说他们想确保我们按时完成所有的事情",
+   "target": "They say they want to make sure that we finish everything in time",
+   "twin": "S0200L01U01",
+   "twin_known": "他们说他们想确保我们按时完成一切"
+  },
+  {
+   "id": "S0202L02U06",
+   "src": "#957 changeset",
+   "known": "没有人确定怎么回答这个问题",
+   "target": "Nobody was sure how to answer the question",
+   "twin": "S0202L02U01",
+   "twin_known": "没有人知道怎么回答那个问题"
+  },
+  {
+   "id": "S0209L02U06",
+   "src": "#957 changeset",
+   "known": "他们想花更多时间作为一个团体见面",
+   "target": "They want to spend more time meeting as a group",
+   "twin": "S0209L02U01",
+   "twin_known": "他们想花更多时间以小组形式开会"
+  },
+  {
+   "id": "S0213L01U06",
+   "src": "#957 changeset",
+   "known": "我们不知道他们想要达到什么",
+   "target": "We don't know what they're trying to achieve",
+   "twin": "S0213L01U01",
+   "twin_known": "我们不知道他们想实现什么"
+  },
+  {
+   "id": "S0214L02U06",
+   "src": "#957 changeset",
+   "known": "你周末过得好吗？",
+   "target": "Did you have a good time at the weekend?",
+   "twin": "S0214L02U01",
+   "twin_known": "你周末玩得开心吗？"
+  },
+  {
+   "id": "S0218L02U06",
+   "src": "#957 changeset",
+   "known": "星期天我没做什么",
+   "target": "I didn't do much on Sunday",
+   "twin": "S0218L02U01",
+   "twin_known": "我星期天没做多少"
+  },
+  {
+   "id": "S0223L01U06",
+   "src": "#957 changeset",
+   "known": "他打算明天问你",
+   "target": "He's going to ask you tomorrow",
+   "twin": "S0223L01U01",
+   "twin_known": "他明天要问你"
+  },
+  {
+   "id": "S0226L01U06",
+   "src": "#957 changeset",
+   "known": "那个男人在试着帮我",
+   "target": "The man is trying to help me",
+   "twin": "S0226L01U01",
+   "twin_known": "那个男人想帮我"
+  },
+  {
+   "id": "S0229L01U06",
+   "src": "#957 changeset",
+   "known": "如果那个女人能帮你的话，她会帮的",
+   "target": "That woman would help you if she could",
+   "twin": "S0229L01U01",
+   "twin_known": "那个女人如果可以的话会帮你"
+  },
+  {
+   "id": "S0230L02U06",
+   "src": "#957 changeset",
+   "known": "我认识一个想和你一起工作的年轻人",
+   "target": "I know a young man who wants to work with you",
+   "twin": "S0230L02U01",
+   "twin_known": "我认识一个年轻男人，他想和你一起工作"
+  },
+  {
+   "id": "S0231L02U06",
+   "src": "#957 changeset",
+   "known": "我认识一个想请求帮助的老人",
+   "target": "I know an old man who wanted to ask for help",
+   "twin": "S0231L02U01",
+   "twin_known": "我认识一个老男人，他想寻求帮助"
+  },
+  {
+   "id": "S0232L01U06",
+   "src": "#957 changeset",
+   "known": "我认识一个能记住答案的老太太",
+   "target": "I know an old woman who can remember the answer",
+   "twin": "S0232L01U01",
+   "twin_known": "我认识一个老女人，她能记住答案"
+  },
+  {
+   "id": "S0233L02U06",
+   "src": "#957 changeset",
+   "known": "我认识一个认识你姐姐的年轻女人",
+   "target": "I know a young woman who knows your sister",
+   "twin": "S0233L02U01",
+   "twin_known": "我认识一个年轻女人，她认识你的姐妹"
+  },
+  {
+   "id": "S0234L03U06",
+   "src": "#957 changeset",
+   "known": "我昨晚遇到了一个和你哥哥一起工作的人",
+   "target": "I met someone last night who works with your brother",
+   "twin": "S0234L03U01",
+   "twin_known": "我昨晚遇到了一个和你的兄弟一起工作的人"
+  },
+  {
+   "id": "S0243L01U06",
+   "src": "#957 changeset",
+   "known": "我打算点一样的东西吃",
+   "target": "I'm going to ask for the same thing to eat",
+   "twin": "S0243L01U01",
+   "twin_known": "我要点同样的东西吃"
+  },
+  {
+   "id": "S0248L02U06",
+   "src": "#957 changeset",
+   "known": "我觉得那部电影太烂了，我要退钱",
+   "target": "I thought the film was complete rubbish and I want my money back",
+   "twin": "S0248L02U01",
+   "twin_known": "我觉得那部电影完全是垃圾，我想要退款"
+  },
+  {
+   "id": "S0256L01U06",
+   "src": "#957 changeset",
+   "known": "我觉得不到一个小时就能准备好",
+   "target": "I think I'll be ready in less than an hour",
+   "twin": "S0256L01U01",
+   "twin_known": "我觉得不到一小时我就准备好了"
+  },
+  {
+   "id": "S0260L01U06",
+   "src": "#957 changeset",
+   "known": "我一点都不知道",
+   "target": "I don't have the faintest idea",
+   "twin": "S0260L01U01",
+   "twin_known": "我完全不知道"
+  },
+  {
+   "id": "S0261L01U06",
+   "src": "#957 changeset",
+   "known": "我觉得那可能是很重要的东西",
+   "target": "I think it might be something important",
+   "twin": "S0261L01U01",
+   "twin_known": "我觉得可能是重要的事情"
+  },
+  {
+   "id": "S0268L01U06",
+   "src": "#957 changeset",
+   "known": "是的，她上个星期给我发了两封邮件",
+   "target": "Yes she sent me two emails last week",
+   "twin": "S0268L01U01",
+   "twin_known": "是的，她上周给我发了两封邮件"
+  },
+  {
+   "id": "S0274L01U06",
+   "src": "#957 changeset",
+   "known": "你是不是几天后就得走了？",
+   "target": "Do you have to leave in a few days?",
+   "twin": "S0274L01U01",
+   "twin_known": "你需要几天内离开吗"
+  },
+  {
+   "id": "S0281L01U06",
+   "src": "#957 changeset",
+   "known": "你介意在你开始之前让我喝完咖啡吗？",
+   "target": "Do you mind if I finish my coffee before you start?",
+   "twin": "S0281L01U01",
+   "twin_known": "你介意让我在你开始之前喝完我的咖啡吗"
+  },
+  {
+   "id": "S0295L01U06",
+   "src": "#957 changeset",
+   "known": "我没说过我想一天之内完成",
+   "target": "I didn't say that I wanted to finish in a day",
+   "twin": "S0295L01B04",
+   "twin_known": "我没有说我想一天内完成"
+  },
+  {
+   "id": "S0300L02U06",
+   "src": "#957 changeset",
+   "known": "她不想显得不友好",
+   "target": "She doesn't want to seem unfriendly",
+   "twin": "S0300L02B02",
+   "twin_known": "她不想看起来不友好"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 25,
+ "missing": []
+}

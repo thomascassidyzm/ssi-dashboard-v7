@@ -1,0 +1,557 @@
+{
+ "course": "eng_for_pan",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 194,
+ "on_copy": 194,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0001L05U04",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਹੁਣ ਤੁਹਾਡੇ ਨਾਲ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣਾ ਚਾਹੁੰਦਾ ਹਾਂ।",
+   "target": "I want to speak English with you now.",
+   "twin": "S0001L05U01",
+   "twin_known": "ਮੈਂ ਹੁਣ ਅੰਗਰੇਜ਼ੀ ਬੋਲਣਾ ਚਾਹੁੰਦਾ ਹਾਂ ਤੁਹਾਡੇ ਨਾਲ"
+  },
+  {
+   "id": "S0003L02U06",
+   "src": "#957 changeset",
+   "known": "ਜਿੰਨਾ ਹੋ ਸਕੇ ਅਕਸਰ ਬੋਲਣਾ ਕਿਵੇਂ।",
+   "target": "how to speak as often as possible.",
+   "twin": "S0003L02B03",
+   "twin_known": "ਕਿਵੇਂ ਬੋਲਣਾ ਜਿੰਨਾ ਹੋ ਸਕੇ ਅਕਸਰ"
+  },
+  {
+   "id": "S0004L03U06",
+   "src": "#957 changeset",
+   "known": "ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਕੁਝ ਕਿਵੇਂ ਕਹਿਣਾ।",
+   "target": "how to say something in English",
+   "twin": "S0004L03B03",
+   "twin_known": "ਕਿਵੇਂ ਕਹਿਣਾ ਕੁਝ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ"
+  },
+  {
+   "id": "S0005L04U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਕਿਸੇ ਹੋਰ ਨਾਲ ਬੋਲਣ ਦੀ ਪ੍ਰੈਕਟਿਸ ਕਰਨ ਜਾ ਰਿਹਾ ਹਾਂ।",
+   "target": "I'm going to practise speaking with someone else.",
+   "twin": "S0005L04U01",
+   "twin_known": "ਮੈਂ ਜਾ ਰਿਹਾ ਹਾਂ ਪ੍ਰੈਕਟਿਸ ਕਰਨਾ ਬੋਲਣ ਕਿਸੇ ਹੋਰ ਨਾਲ"
+  },
+  {
+   "id": "S0006L02U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਇੱਕ ਸ਼ਬਦ ਯਾਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ।",
+   "target": "I'm trying to remember a word.",
+   "twin": "S0006L02U01",
+   "twin_known": "ਮੈਂ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਿਹਾ ਹਾਂ ਸ਼ਬਦ ਯਾਦ ਕਰਨਾ"
+  },
+  {
+   "id": "S0007L03U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਅੱਜ ਜਿੰਨੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਸਕਦਾ ਹਾਂ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ।",
+   "target": "I want to try as hard as I can today.",
+   "twin": "S0007L03U01",
+   "twin_known": "ਮੈਂ ਕੋਸ਼ਿਸ਼ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ ਜਿੰਨੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਸਕਦਾ ਹਾਂ ਅੱਜ"
+  },
+  {
+   "id": "S0013L02U06",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਅੰਗਰੇਜ਼ੀ ਬਹੁਤ ਵਧੀਆ ਬੋਲਦੇ ਹੋ।",
+   "target": "You speak English very well.",
+   "twin": "S0013L02U01",
+   "twin_known": "ਤੁਸੀਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲਦੇ ਹੋ ਬਹੁਤ ਵਧੀਆ"
+  },
+  {
+   "id": "S0014L02U06",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਤੁਸੀਂ ਸਾਰਾ ਦਿਨ ਅੰਗਰੇਜ਼ੀ ਬੋਲਦੇ ਹੋ?",
+   "target": "Do you speak English all day?",
+   "twin": "S0014L02U01",
+   "twin_known": "ਕੀ ਤੁਸੀਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲਦੇ ਹੋ ਸਾਰਾ ਦਿਨ?"
+  },
+  {
+   "id": "S0015L03U06",
+   "src": "#957 changeset",
+   "known": "ਅਤੇ ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਕੱਲ੍ਹ ਮੇਰੇ ਨਾਲ ਅੰਗਰੇਜ਼ੀ ਬੋਲੋ।",
+   "target": "And I want you to speak English with me tomorrow.",
+   "twin": "S0015L03U01",
+   "twin_known": "ਅਤੇ ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਤੁਸੀਂ ਅੰਗਰੇਜ਼ੀ ਬੋਲੋ ਮੇਰੇ ਨਾਲ ਕੱਲ੍ਹ"
+  },
+  {
+   "id": "S0016L04U06",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਬਾਅਦ ਵਿੱਚ ਬਾਕੀ ਸਾਰਿਆਂ ਨਾਲ ਵਾਪਸ ਆਉਣਾ ਚਾਹੁੰਦਾ ਹੈ।",
+   "target": "He wants to come back with everyone else later on.",
+   "twin": "S0016L04U01",
+   "twin_known": "ਉਹ ਵਾਪਸ ਆਉਣਾ ਚਾਹੁੰਦਾ ਹੈ ਬਾਕੀ ਸਾਰਿਆਂ ਨਾਲ ਬਾਅਦ ਵਿੱਚ"
+  },
+  {
+   "id": "S0017L03U06",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਜਾਣਨਾ ਚਾਹੁੰਦੀ ਹੈ ਕਿ ਜਵਾਬ ਕੀ ਹੈ।",
+   "target": "She wants to find out what the answer is.",
+   "twin": "S0017L03U01",
+   "twin_known": "ਉਹ ਪਤਾ ਕਰਨਾ ਚਾਹੁੰਦੀ ਹੈ ਜਵਾਬ ਕੀ ਹੈ"
+  },
+  {
+   "id": "S0018L04U06",
+   "src": "#957 changeset",
+   "known": "ਅਸੀਂ ਅੱਜ ਸ਼ਾਮ ਛੇ ਵਜੇ ਮਿਲਣਾ ਚਾਹੁੰਦੇ ਹਾਂ।",
+   "target": "We want to meet at six o'clock this evening.",
+   "twin": "S0018L04U01",
+   "twin_known": "ਅਸੀਂ ਮਿਲਣਾ ਚਾਹੁੰਦੇ ਹਾਂ ਛੇ ਵਜੇ ਅੱਜ ਸ਼ਾਮ"
+  },
+  {
+   "id": "S0024L03U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਆਸਾਨੀ ਨਾਲ ਯਾਦ ਨਹੀਂ ਕਰ ਪਾਵਾਂਗਾ।",
+   "target": "I'm not going to be able to remember easily.",
+   "twin": "S0024L03U01",
+   "twin_known": "ਮੈਂ ਨਹੀਂ ਜਾਵਾਂਗਾ ਯਾਦ ਕਰ ਸਕਣਾ ਆਸਾਨੀ ਨਾਲ"
+  },
+  {
+   "id": "S0025L03U06",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਤੁਸੀਂ ਮੈਨੂੰ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਮਦਦ ਕਰੋਗੇ?",
+   "target": "Are you going to help me before I have to go?",
+   "twin": "S0025L03U01",
+   "twin_known": "ਕੀ ਤੁਸੀਂ ਜਾ ਰਹੇ ਹੋ ਮਦਦ ਕਰਨਾ ਮੈਨੂੰ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ?"
+  },
+  {
+   "id": "S0028L02U08",
+   "src": "#957 changeset",
+   "known": "ਜਿੰਨੀ ਜਲਦੀ ਹੋ ਸਕੇ ਬੋਲਣਾ ਸ਼ੁਰੂ ਕਰਨਾ ਫਾਇਦੇਮੰਦ ਹੈ।",
+   "target": "It's useful to start talking as soon as you can.",
+   "twin": "S0028L02U01",
+   "twin_known": "ਫਾਇਦੇਮੰਦ ਹੈ ਸ਼ੁਰੂ ਕਰਨਾ ਗੱਲਾਂ ਕਰਨਾ ਜਿੰਨੀ ਜਲਦੀ ਹੋ ਸਕੇ"
+  },
+  {
+   "id": "S0030L03U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਕੱਲ੍ਹ ਤੁਹਾਨੂੰ ਕੁਝ ਪੁੱਛਣਾ ਚਾਹੁੰਦਾ ਸੀ।",
+   "target": "I wanted to ask you something yesterday.",
+   "twin": "S0030L03U01",
+   "twin_known": "ਮੈਂ ਚਾਹੁੰਦਾ ਸੀ ਪੁੱਛਣਾ ਤੁਹਾਨੂੰ ਕੁਝ ਕੱਲ੍ਹ"
+  },
+  {
+   "id": "S0033L02U06",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਕਿੰਨੇ ਸਮੇਂ ਤੋਂ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖ ਰਹੇ ਹੋ?",
+   "target": "How long have you been learning English?",
+   "twin": "S0033L02B04",
+   "twin_known": "ਕਿੰਨੇ ਸਮੇਂ ਤੋਂ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖ ਰਹੇ ਹੋ?"
+  },
+  {
+   "id": "S0035L04U08",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਅੱਜ ਦੁਪਹਿਰ ਕੁਝ ਵੀ ਪੜ੍ਹਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ।",
+   "target": "She doesn't want to read anything this afternoon.",
+   "twin": "S0035L04U01",
+   "twin_known": "ਉਹ ਕੁਝ ਵੀ ਪੜ੍ਹਨਾ ਨਹੀਂ ਚਾਹੁੰਦੀ ਅੱਜ ਦੁਪਹਿਰ"
+  },
+  {
+   "id": "S0043L02U07",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਨਹੀਂ ਸੋਚ ਰਿਹਾ ਸੀ ਕਿ ਜਵਾਬ ਕਿਵੇਂ ਦੇਣਾ ਹੈ।",
+   "target": "I wasn't thinking about how to answer.",
+   "twin": "S0043L02U01",
+   "twin_known": "ਮੈਂ ਕਿਵੇਂ ਜਵਾਬ ਦੇਣਾ ਬਾਰੇ ਨਹੀਂ ਸੋਚ ਰਿਹਾ ਸੀ"
+  },
+  {
+   "id": "S0044L03U07",
+   "src": "#957 changeset",
+   "known": "ਜਾਂ ਕਿ ਮੈਨੂੰ ਸੁਧਾਰ ਕਰਨ ਦੀ ਲੋੜ ਹੈ ਕਿ ਨਹੀਂ।",
+   "target": "Or if I need to improve.",
+   "twin": "S0044L03U01",
+   "twin_known": "ਜਾਂ ਕਿ ਮੈਨੂੰ ਸੁਧਾਰ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"
+  },
+  {
+   "id": "S0049L03U07",
+   "src": "#957 changeset",
+   "known": "ਇਹ ਇਸ ਤਰ੍ਹਾਂ ਹੈ, ਜੇ ਤੁਸੀਂ ਸਮਝਦੇ ਹੋ ਮੇਰਾ ਕੀ ਮਤਲਬ ਹੈ।",
+   "target": "It's like this, if you know what I mean.",
+   "twin": "S0049L03U01",
+   "twin_known": "ਇਹ ਇਸ ਤਰ੍ਹਾਂ ਹੈ ਜੇ ਤੁਸੀਂ ਸਮਝਦੇ ਹੋ ਮੇਰਾ ਕੀ ਮਤਲਬ"
+  },
+  {
+   "id": "S0051L06U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਨੂੰ ਆਪਣੇ ਦੋਸਤਾਂ ਨਾਲ ਦਿਲਚਸਪ ਕੰਮ ਕਰਨਾ ਪਸੰਦ ਹੈ।",
+   "target": "I enjoy doing interesting things with my friends.",
+   "twin": "S0051L06U04",
+   "twin_known": "ਮੈਨੂੰ ਮੇਰੇ ਦੋਸਤਾਂ ਨਾਲ ਦਿਲਚਸਪ ਕੰਮ ਕਰਨਾ ਪਸੰਦ ਹੈ"
+  },
+  {
+   "id": "S0065L04U08",
+   "src": "#957 changeset",
+   "known": "ਆਪਣੇ ਆਪ ਨੂੰ ਪਰਖਣ ਲਈ ਸਮਾਂ ਕੱਢਣਾ ਜ਼ਰੂਰੀ ਹੈ।",
+   "target": "It's important to take time to test yourself.",
+   "twin": "S0065L04U06",
+   "twin_known": "ਇਹ ਜ਼ਰੂਰੀ ਹੈ ਕਿ ਸਮਾਂ ਕੱਢਣਾ ਆਪਣੇ ਆਪ ਪਰਖਣ ਲਈ"
+  },
+  {
+   "id": "S0067L01U07",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਕਿਉਂ ਰੁਕਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+   "target": "Why do you want to stop?",
+   "twin": "S0067L01U03",
+   "twin_known": "ਕਿਉਂ ਤੁਸੀਂ ਰੁਕਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+  },
+  {
+   "id": "S0076L02U07",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿ ਮੈਂ ਹੁਣ ਤੱਕ ਕਿੰਨਾ ਕੁਝ ਸਿੱਖਿਆ ਹੈ।",
+   "target": "I'm very happy with how much I've learnt already.",
+   "twin": "S0076L02U05",
+   "twin_known": "ਮੈਂ ਬਹੁਤ ਖੁਸ਼ ਹਾਂ ਕਿ ਮੈਂ ਹੁਣ ਤੱਕ ਕਿੰਨਾ ਕੁਝ ਸਿੱਖਿਆ ਹੈ"
+  },
+  {
+   "id": "S0087L01U07",
+   "src": "#957 changeset",
+   "known": "ਇਹ ਉਹ ਲੋਕ ਹਨ ਜਿਨ੍ਹਾਂ ਨੂੰ ਮੈਂ ਨਹੀਂ ਜਾਣਦਾ।",
+   "target": "They are people I don't know.",
+   "twin": "S0087L01U01",
+   "twin_known": "ਉਹ ਲੋਕ ਹਨ ਜੋ ਮੈਂ ਨਹੀਂ ਜਾਣਦਾ"
+  },
+  {
+   "id": "S0107L03U07",
+   "src": "#957 changeset",
+   "known": "ਅਸੀਂ ਦੇਖਣ ਦੀ ਉਮੀਦ ਕੀਤੀ ਸੀ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਹੋ।",
+   "target": "We hoped to see what you were doing.",
+   "twin": "S0107L03U02",
+   "twin_known": "ਅਸੀਂ ਉਮੀਦ ਕੀਤੀ ਸੀ ਦੇਖਣਾ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ"
+  },
+  {
+   "id": "S0121L03U06",
+   "src": "#957 changeset",
+   "known": "ਇਹ ਅਜੀਬ ਗੱਲ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਆਪਣੀ ਕਾਰ ਵਰਤਣਾ ਪਸੰਦ ਨਹੀਂ।",
+   "target": "It's unusual that you don't like to use your car.",
+   "twin": "S0121L03U01",
+   "twin_known": "ਇਹ ਅਜੀਬ ਗੱਲ ਹੈ ਕਿ ਤੁਸੀਂ ਕਾਰ ਵਰਤਣਾ ਪਸੰਦ ਨਹੀਂ ਕਰਦੇ"
+  },
+  {
+   "id": "S0128L02U07",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਕਿਸੇ ਅਜਿਹੇ ਵਿਅਕਤੀ ਵਰਗੇ ਹੋ ਜਿਸਨੂੰ ਮੈਂ ਪਹਿਲਾਂ ਜਾਣਦਾ ਸੀ।",
+   "target": "You're like someone I used to know.",
+   "twin": "S0128L02U01",
+   "twin_known": "ਤੁਸੀਂ ਉਸ ਵਰਗੇ ਹੋ ਜਿਸਨੂੰ ਮੈਂ ਪਹਿਲਾਂ ਜਾਣਦਾ ਸੀ"
+  },
+  {
+   "id": "S0144L03U07",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਅੱਜ ਸਵੇਰੇ ਜਿੰਨਾ ਚਾਹੁੰਦਾ ਸੀ ਉਸ ਨਾਲੋਂ ਜਲਦੀ ਜਾਗਿਆ।",
+   "target": "I woke earlier than I wanted to this morning.",
+   "twin": "S0144L03U06",
+   "twin_known": "ਮੈਂ ਅੱਜ ਸਵੇਰੇ ਜਾਗਿਆ ਉਸ ਨਾਲੋਂ ਜਲਦੀ ਜਿੰਨਾ ਚਾਹੁੰਦਾ ਸੀ"
+  },
+  {
+   "id": "S0145L02U06",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਹੁਣ ਖੁਸ਼ ਕਿਉਂ ਨਹੀਂ ਹੋ?",
+   "target": "Why are you not happy any more?",
+   "twin": "S0145L02B04",
+   "twin_known": "ਕਿਉਂ ਤੁਸੀਂ ਹੁਣ ਖੁਸ਼ ਨਹੀਂ ਹੋ?"
+  },
+  {
+   "id": "S0146L02U07",
+   "src": "#957 changeset",
+   "known": "ਜਦੋਂ ਤੋਂ ਅਸੀਂ ਇਸਨੂੰ ਠੀਕ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ ਉਦੋਂ ਤੋਂ ਕੁਝ ਵੀ ਕੰਮ ਨਹੀਂ ਕਰ ਰਿਹਾ ਲੱਗਦਾ।",
+   "target": "Nothing seems to be working since we tried to fix it.",
+   "twin": "S0146L02U03",
+   "twin_known": "ਕੁਝ ਵੀ ਕੰਮ ਨਹੀਂ ਜਦੋਂ ਤੋਂ ਅਸੀਂ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ"
+  },
+  {
+   "id": "S0148L03U07",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਬਹੁਤਾ ਸਬਰ ਨਹੀਂ ਕਰਦਾ ਸੀ ਜਦੋਂ ਮੈਂ ਜਵਾਬ ਨਹੀਂ ਦੇ ਸਕਦਾ ਸੀ।",
+   "target": "He wasn't very patient when I couldn't answer.",
+   "twin": "S0148L03U03",
+   "twin_known": "ਉਹ ਬਹੁਤਾ ਸਬਰ ਨਹੀਂ ਸੀ ਜਦੋਂ ਮੈਂ ਜਵਾਬ ਨਹੀਂ ਦੇ ਸਕਦਾ ਸੀ"
+  },
+  {
+   "id": "S0150L02U06",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਤੁਸੀਂ ਮੈਨੂੰ ਦੱਸ ਸਕਦੇ ਹੋ ਕਿ ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?",
+   "target": "Can you tell me what your name is?",
+   "twin": "S0150L02U01",
+   "twin_known": "ਦੱਸ ਸਕਦੇ ਹੋ ਕਿ ਤੁਹਾਡਾ ਨਾਂ ਕੀ ਹੈ?"
+  },
+  {
+   "id": "S0158L02U06",
+   "src": "#957 changeset",
+   "known": "ਆਓ ਕਿਸੇ ਹੋਰ ਗੱਲ ਬਾਰੇ ਗੱਲ ਕਰੀਏ।",
+   "target": "Let's talk about something else.",
+   "twin": "S0158L02B04",
+   "twin_known": "ਆਓ ਗੱਲ ਕਰੀਏ ਕਿਸੇ ਹੋਰ ਗੱਲ ਬਾਰੇ"
+  },
+  {
+   "id": "S0162L01U06",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਉਸ ਬਾਰੇ ਕੀ ਸੋਚਦੇ ਹੋ?",
+   "target": "What do you think about that?",
+   "twin": "S0162L01U01",
+   "twin_known": "ਤੁਸੀਂ ਕੀ ਸੋਚਦੇ ਹੋ ਉਸ ਬਾਰੇ?"
+  },
+  {
+   "id": "S0176L02U07",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਉਸਨੂੰ ਪੁੱਛਾਂਗਾ ਕਿ ਕੀ ਉਹ ਅਗਲੇ ਸਾਲ ਮਦਦ ਕਰ ਸਕੇਗਾ।",
+   "target": "I'll ask him if he'll be able to help next year.",
+   "twin": "S0176L02U06",
+   "twin_known": "ਮੈਂ ਪੁੱਛਾਂਗਾ ਕਿ ਕੀ ਉਹ ਅਗਲੇ ਸਾਲ ਮਦਦ ਕਰ ਸਕੇਗਾ"
+  },
+  {
+   "id": "S0190L02U06",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਤੁਹਾਨੂੰ ਕੋਈ ਇਤਰਾਜ਼ ਹੈ ਜੇ ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਕੁਝ ਸਵਾਲ ਪੁੱਛਾਂ?",
+   "target": "Do you mind if I ask you some questions?",
+   "twin": "S0190L02U01",
+   "twin_known": "ਕੀ ਤੁਹਾਨੂੰ ਕੋਈ ਇਤਰਾਜ਼ ਹੈ ਜੇ ਮੈਂ ਕੁਝ ਸਵਾਲ ਪੁੱਛਾਂ?"
+  },
+  {
+   "id": "S0201L02U05",
+   "src": "#957 changeset",
+   "known": "ਅਸੀਂ ਜਾਣਨਾ ਚਾਹੁੰਦੇ ਸੀ ਕਿ ਕੀ ਹੋਣ ਵਾਲਾ ਸੀ।",
+   "target": "We wanted to know what was going to happen.",
+   "twin": "S0201L02U04",
+   "twin_known": "ਅਸੀਂ ਜਾਣਨਾ ਚਾਹੁੰਦੇ ਸੀ ਕੀ ਹੋਣ ਵਾਲਾ ਸੀ"
+  },
+  {
+   "id": "S0203L02U05",
+   "src": "#957 changeset",
+   "known": "ਜੇ ਮੈਂ ਤੁਹਾਨੂੰ ਮੇਰੀ ਮਦਦ ਕਰਨ ਲਈ ਕਹਿੰਦਾ ਤਾਂ ਤੁਸੀਂ ਕੀ ਕਰਦੇ?",
+   "target": "What would you do if I asked you to help me?",
+   "twin": "S0203L02U03",
+   "twin_known": "ਤੁਸੀਂ ਕੀ ਕਰਦੇ ਜੇ ਮੈਂ ਤੁਹਾਨੂੰ ਕਹਿੰਦਾ ਮਦਦ ਕਰਨ ਲਈ?"
+  },
+  {
+   "id": "S0206L03U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਨੂੰ ਤੁਹਾਡੇ ਨਾਲ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਦਾ ਮੌਕਾ ਮਿਲ ਕੇ ਚੰਗਾ ਲੱਗਦਾ ਹੈ।",
+   "target": "I enjoy the chance to practise speaking with you.",
+   "twin": "S0206L03U01",
+   "twin_known": "ਮੈਂ ਪਸੰਦ ਕਰਦਾ ਹਾਂ ਮੌਕਾ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਦਾ ਤੁਹਾਡੇ ਨਾਲ"
+  },
+  {
+   "id": "S0209L02U06",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ।",
+   "target": "They want to spend more time meeting as a group.",
+   "twin": "S0209L02U04",
+   "twin_known": "ਉਹ ਹੋਰ ਸਮਾਂ ਬਿਤਾਉਣਾ ਚਾਹੁੰਦੇ ਹਨ ਗਰੁੱਪ ਵਜੋਂ ਮਿਲਣ ਵਿੱਚ"
+  },
+  {
+   "id": "S0219L02U07",
+   "src": "#957 changeset",
+   "known": "ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ ਚੰਗਾ ਲੱਗਿਆ।",
+   "target": "It was nice to relax for a while.",
+   "twin": "S0219L02U03",
+   "twin_known": "ਚੰਗਾ ਲੱਗਿਆ ਕੁਝ ਸਮੇਂ ਲਈ ਆਰਾਮ ਕਰਨਾ"
+  },
+  {
+   "id": "S0225L02U06",
+   "src": "#957 changeset",
+   "known": "ਜੇ ਉਹ ਕਰ ਸਕਦਾ ਤਾਂ ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ।",
+   "target": "He would give you an answer if he could.",
+   "twin": "S0225L02U03",
+   "twin_known": "ਉਹ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇ ਦਿੰਦਾ ਜੇ ਉਹ ਕਰ ਸਕਦਾ"
+  },
+  {
+   "id": "S0229L03U06",
+   "src": "#957 changeset",
+   "known": "ਜੇ ਉਹ ਕਰ ਸਕਦੀ ਤਾਂ ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ।",
+   "target": "That woman would help you if she could.",
+   "twin": "S0229L03U02",
+   "twin_known": "ਉਹ ਔਰਤ ਤੁਹਾਡੀ ਮਦਦ ਕਰਦੀ ਜੇ ਉਹ ਕਰ ਸਕਦੀ"
+  },
+  {
+   "id": "S0236L01U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਮਦਦ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੇਗੀ।",
+   "target": "I know someone who said that she was going to try to help.",
+   "twin": "S0236L01U03",
+   "twin_known": "ਮੈਂ ਕਿਸੇ ਨੂੰ ਜਾਣਦਾ ਹਾਂ ਜਿਸਨੇ ਕਿਹਾ ਕਿ ਉਹ ਮਦਦ ਕਰੇਗੀ"
+  },
+  {
+   "id": "S0245L01U06",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿ ਮੈਂ ਥੋੜੇ ਸਮੇਂ ਵਿੱਚ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਹੈ।",
+   "target": "I'm happy with how much I've done in a short time",
+   "twin": "S0245L01U05",
+   "twin_known": "ਮੈਂ ਖੁਸ਼ ਹਾਂ ਕਿੰਨਾ ਕੁਝ ਕੀਤਾ ਇੱਕ ਛੋਟੇ ਸਮੇਂ ਵਿੱਚ"
+  },
+  {
+   "id": "S0250L01U06",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਤੁਸੀਂ ਮੈਨੂੰ ਜਵਾਬ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਕੁਝ ਹੋਰ ਦੱਸ ਸਕਦੇ ਹੋ?",
+   "target": "Can you tell me something else before I answer?",
+   "twin": "S0250L01U05",
+   "twin_known": "ਕੀ ਤੁਸੀਂ ਮੈਨੂੰ ਕੁਝ ਹੋਰ ਦੱਸ ਸਕਦੇ ਹੋ ਜਵਾਬ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ"
+  },
+  {
+   "id": "S0262L01U06",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਕਿਹੜਾ ਬੰਦਾ ਸੀ ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਕੱਲ੍ਹ ਗੱਲ ਕਰ ਰਹੇ ਸੀ?",
+   "target": "Who was that man you were talking to yesterday?",
+   "twin": "S0262L01U01",
+   "twin_known": "ਉਹ ਬੰਦਾ ਕਿਹੜਾ ਸੀ ਜਿਸ ਨਾਲ ਤੁਸੀਂ ਕੱਲ੍ਹ ਗੱਲ ਕਰ ਰਹੇ ਸੀ?"
+  },
+  {
+   "id": "S0287L01U07",
+   "src": "#957 changeset",
+   "known": "ਤੁਸੀਂ ਕਿੰਨੇ ਅਜਿਹੇ ਲੋਕਾਂ ਨੂੰ ਜਾਣਦੇ ਹੋ ਜਿਨ੍ਹਾਂ ਨੂੰ ਟੀਵੀ ਦੇਖਣਾ ਪਸੰਦ ਹੈ?",
+   "target": "How many people do you know who like watching television?",
+   "twin": "S0287L01U03",
+   "twin_known": "ਤੁਸੀਂ ਕਿੰਨੇ ਲੋਕਾਂ ਨੂੰ ਜਾਣਦੇ ਹੋ ਜਿਨ੍ਹਾਂ ਨੂੰ ਟੀਵੀ ਦੇਖਣਾ ਪਸੰਦ ਹੈ?"
+  },
+  {
+   "id": "S0326L03U09",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਨਹੀਂ ਸੋਚਦਾ ਕਿ ਉਸਨੂੰ ਕੰਪਨੀ ਵੇਚਣ ਦੀ ਲੋੜ ਹੈ।",
+   "target": "I don't think that she needs to sell the company.",
+   "twin": "S0326L03U01",
+   "twin_known": "ਮੈਂ ਨਹੀਂ ਸੋਚਦਾ ਕਿ ਉਸਨੂੰ ਕੰਪਨੀ ਵੇਚਣੀ ਹੈ"
+  },
+  {
+   "id": "S0328L01U06",
+   "src": "#957 changeset",
+   "known": "ਹਾਂ, ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਕਿ ਉਸਨੂੰ ਚਾਹੀਦਾ ਹੈ।",
+   "target": "Yes I think she ought to.",
+   "twin": "S0328L01U01",
+   "twin_known": "ਹਾਂ ਮੈਂ ਸੋਚਦਾ ਹਾਂ ਉਸਨੂੰ ਚਾਹੀਦਾ"
+  },
+  {
+   "id": "S0352L02U06",
+   "src": "#957 changeset",
+   "known": "ਭਾਵੇਂ ਉਹ ਚਾਹੁੰਦਾ ਵੀ, ਤਾਂ ਵੀ ਉਹ ਨਹੀਂ ਕਰ ਸਕਦਾ ਸੀ।",
+   "target": "Even if he wanted to he wouldn't be able to.",
+   "twin": "S0352L02U01",
+   "twin_known": "ਭਾਵੇਂ ਉਹ ਚਾਹੁੰਦਾ, ਤਾਂ ਵੀ ਉਹ ਨਹੀਂ ਕਰ ਸਕਦਾ ਸੀ"
+  },
+  {
+   "id": "S0357L03U06",
+   "src": "#957 changeset",
+   "known": "ਨਹੀਂ, ਉਹ ਬੱਸ ਉਸਨੂੰ ਸੁਨੇਹਾ ਭੇਜਣਾ ਚਾਹੁੰਦੀ ਸੀ।",
+   "target": "No she just wanted to send her a message.",
+   "twin": "S0357L03U01",
+   "twin_known": "ਨਹੀਂ ਉਹ ਬੱਸ ਉਸਨੂੰ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜਣਾ ਚਾਹੁੰਦੀ ਸੀ"
+  },
+  {
+   "id": "S0371L03U08",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਬੁੱਧਵਾਰ ਨੂੰ ਫ਼ਿਲਮ ਦੇਖਣ ਗਿਆ।",
+   "target": "I went to see a film on Wednesday.",
+   "twin": "S0371L03U01",
+   "twin_known": "ਮੈਂ ਬੁੱਧਵਾਰ ਨੂੰ ਇੱਕ ਫ਼ਿਲਮ ਦੇਖਣ ਗਿਆ"
+  },
+  {
+   "id": "S0392L03U10",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਬੱਚਾ ਜਿਸਦੇ ਕਾਲੇ ਵਾਲ ਹਨ ਅਤੇ ਜੋ ਡਾਕਖ਼ਾਨੇ ਦੇ ਸਾਹਮਣੇ ਖੜ੍ਹਾ ਹੈ।",
+   "target": "That child with the black hair opposite the post office.",
+   "twin": "S0392L03U01",
+   "twin_known": "ਉਹ ਬੱਚਾ ਜਿਸਦੇ ਕਾਲੇ ਵਾਲ ਹਨ ਡਾਕਖ਼ਾਨੇ ਦੇ ਸਾਹਮਣੇ"
+  },
+  {
+   "id": "S0409L02U06",
+   "src": "#957 changeset",
+   "known": "ਨਹੀਂ, ਅਸੀਂ ਜੋ ਵੀ ਕਰੀਏ, ਕੋਈ ਫ਼ਰਕ ਨਹੀਂ ਪੈਂਦਾ।",
+   "target": "No it doesn't matter what we do.",
+   "twin": "S0409L02U01",
+   "twin_known": "ਨਹੀਂ, ਕੋਈ ਫ਼ਰਕ ਨਹੀਂ ਪੈਂਦਾ ਜੋ ਵੀ ਅਸੀਂ ਕਰੀਏ"
+  },
+  {
+   "id": "S0421L03U08",
+   "src": "#957 changeset",
+   "known": "ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਨੂੰ ਪਹਿਲਾਂ ਤੋਂ ਪਤਾ ਹੈ ਕਿ ਉਹ ਕਮਜ਼ੋਰ ਹੁੰਦਾ ਜਾ ਰਿਹਾ ਹੈ।",
+   "target": "Because they already know he's getting weak.",
+   "twin": "S0421L03U05",
+   "twin_known": "ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਨੂੰ ਪਹਿਲਾਂ ਤੋਂ ਪਤਾ ਹੈ ਉਹ ਕਮਜ਼ੋਰ ਹੁੰਦਾ ਜਾ ਰਿਹਾ ਹੈ"
+  },
+  {
+   "id": "S0428L03U10",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਉਹ ਮੰਗਲਵਾਰ ਨੂੰ ਸਾਨੂੰ ਮਿਲਣ ਆਉਣਾ ਚਾਹੁਣਗੇ?",
+   "target": "Would they like to visit us on Tuesday?",
+   "twin": "S0428L03U01",
+   "twin_known": "ਕੀ ਉਹ ਮੰਗਲਵਾਰ ਨੂੰ ਸਾਨੂੰ ਮਿਲਣ ਚਾਹੁਣਗੇ?"
+  },
+  {
+   "id": "S0434L03U06",
+   "src": "#957 changeset",
+   "known": "ਕੀ ਉਹ ਜਿੰਨੇ ਵਿਦਿਆਰਥੀ ਲੈਂਦੇ ਹਨ ਉਨ੍ਹਾਂ ਦੀ ਗਿਣਤੀ ਘਟਾ ਸਕਦੇ ਹਨ?",
+   "target": "Could they cut the number of students they take?",
+   "twin": "S0434L03U05",
+   "twin_known": "ਕੀ ਉਹ ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਗਿਣਤੀ ਘਟਾ ਸਕਦੇ ਹਨ ਜੋ ਉਹ ਲੈਂਦੇ ਹਨ?"
+  },
+  {
+   "id": "S0440L03U06",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਉਦੋਂ ਤੱਕ ਸਫ਼ਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ ਜਦੋਂ ਤੱਕ ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ।",
+   "target": "They want to travel while they're still young.",
+   "twin": "S0440L03U05",
+   "twin_known": "ਉਹ ਸਫ਼ਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਨ ਜਦੋਂ ਤੱਕ ਉਹ ਅਜੇ ਜਵਾਨ ਹਨ"
+  },
+  {
+   "id": "S0446L03U07",
+   "src": "#957 changeset",
+   "known": "ਉਹ ਉਹ ਖਿੜਕੀ ਤੋੜ ਨਹੀਂ ਸਕਣਗੇ।",
+   "target": "They won't be able to break that window.",
+   "twin": "S0446L03U01",
+   "twin_known": "ਉਹ ਉਹ ਖਿੜਕੀ ਨਹੀਂ ਤੋੜ ਸਕਣਗੇ"
+  },
+  {
+   "id": "S0456L02U06",
+   "src": "#957 changeset",
+   "known": "ਹੋ ਸਕਦਾ ਹੈ ਉਹ ਉੱਥੇ ਹੋਵੇ ਪਰ ਇਹ ਬਹੁਤ ਘੱਟ ਸੰਭਾਵਨਾ ਹੈ।",
+   "target": "He might be there but it's not very likely.",
+   "twin": "S0456L02U05",
+   "twin_known": "ਉਹ ਉੱਥੇ ਹੋ ਸਕਦਾ ਹੈ ਪਰ ਇਹ ਬਹੁਤ ਘੱਟ ਸੰਭਾਵਨਾ ਹੈ"
+  },
+  {
+   "id": "S0458L01U06",
+   "src": "#957 changeset",
+   "known": "ਪਹਿਲਾਂ ਸਭ ਕੁਝ ਬਹੁਤ ਆਸਾਨ ਸੀ।",
+   "target": "It was all much easier in the past.",
+   "twin": "S0458L01U01",
+   "twin_known": "ਇਹ ਪਹਿਲਾਂ ਸਭ ਕੁਝ ਬਹੁਤ ਆਸਾਨ ਸੀ"
+  },
+  {
+   "id": "S0478L02U08",
+   "src": "#957 changeset",
+   "known": "ਉਸਦਾ ਦਿਲ ਬਹੁਤ ਦਿਆਲੂ ਹੈ।",
+   "target": "She has such a kind heart.",
+   "twin": "S0478L02U01",
+   "twin_known": "ਉਸਦਾ ਬਹੁਤ ਦਿਆਲੂ ਦਿਲ ਹੈ"
+  },
+  {
+   "id": "S0496L02U05",
+   "src": "#957 changeset",
+   "known": "ਜਦੋਂ ਸੱਚਮੁੱਚ ਜ਼ਰੂਰੀ ਹੋਵੇ ਤਾਂ ਮੈਂ ਹਾਰਨ ਦਾ ਇਰਾਦਾ ਨਹੀਂ ਰੱਖਦਾ।",
+   "target": "I'm not planning to lose when it really matters.",
+   "twin": "S0496L02U01",
+   "twin_known": "ਮੈਂ ਹਾਰਨ ਦਾ ਇਰਾਦਾ ਨਹੀਂ ਰੱਖਦਾ ਜਦੋਂ ਸੱਚਮੁੱਚ ਜ਼ਰੂਰੀ ਹੋਵੇ"
+  },
+  {
+   "id": "S0497L02U06",
+   "src": "#957 changeset",
+   "known": "ਇਹ ਸੁਣ ਕੇ ਲੱਗਦਾ ਹੈ ਤੈਨੂੰ ਕੁਝ ਨੀਂਦ ਲੈਣੀ ਚਾਹੀਦੀ ਹੈ।",
+   "target": "That sounds as though you need to get some sleep.",
+   "twin": "S0497L02U01",
+   "twin_known": "ਇਹ ਸੁਣ ਕੇ ਲੱਗਦਾ ਹੈ ਤੁਹਾਨੂੰ ਕੁਝ ਨੀਂਦ ਲੈਣੀ ਚਾਹੀਦੀ ਹੈ"
+  },
+  {
+   "id": "S0518L03U07",
+   "src": "#957 changeset",
+   "known": "ਮੈਂ ਕਲਪਨਾ ਨਹੀਂ ਕਰ ਸਕਦਾ ਸੀ ਕਿ ਮੈਨੂੰ ਵੀ ਬਿਲਕੁਲ ਇਹੀ ਸਮੱਸਿਆ ਹੋਵੇਗੀ।",
+   "target": "I couldn't imagine myself having exactly the same problem.",
+   "twin": "S0518L03U01",
+   "twin_known": "ਮੈਂ ਕਲਪਨਾ ਨਹੀਂ ਕਰ ਸਕਦਾ ਸੀ ਕਿ ਮੈਨੂੰ ਬਿਲਕੁਲ ਇਹੀ ਸਮੱਸਿਆ ਹੋਵੇਗੀ"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 126,
+ "missing": []
+}

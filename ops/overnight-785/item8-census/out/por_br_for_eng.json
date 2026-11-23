@@ -1,0 +1,51 @@
+{
+ "course": "por_br_for_eng",
+ "db": "ssi_copy_20261123t033000z",
+ "planned_inserts": 38,
+ "on_copy": 33,
+ "same_basket": [],
+ "same_target": [
+  {
+   "id": "S0058L03U06",
+   "src": "#957 changeset",
+   "known": "it's interesting when you understand enough words",
+   "target": "é interessante quando você percebe palavras suficientes",
+   "twin": "S0058L03B04",
+   "twin_known": "it's interesting when you notice enough words"
+  },
+  {
+   "id": "S0137L03U06",
+   "src": "#957 changeset",
+   "known": "it's more important to talk often than to be perfect",
+   "target": "É mais importante falar muitas vezes do que ser perfeito",
+   "twin": "S0137L03U05",
+   "twin_known": "it's more important to talk many times than to be perfect"
+  },
+  {
+   "id": "S0331L02U06",
+   "src": "#957 changeset",
+   "known": "she can't provide all the answers",
+   "target": "ela não consegue dar todas as respostas",
+   "twin": "S0331L02B03",
+   "twin_known": "she can't give all the answers"
+  },
+  {
+   "id": "S0507L02U10",
+   "src": "#957 changeset",
+   "known": "we moved to the city",
+   "target": "nos mudamos para a cidade",
+   "twin": "S0507L02U01",
+   "twin_known": "we then moved to the city"
+  }
+ ],
+ "cross_basket": [],
+ "with_seed_lego": [],
+ "clean": 29,
+ "missing": [
+  "S0450L05B01",
+  "S0450L05B02",
+  "S0450L05U01",
+  "S0450L05U02",
+  "S0450L05U03"
+ ]
+}
