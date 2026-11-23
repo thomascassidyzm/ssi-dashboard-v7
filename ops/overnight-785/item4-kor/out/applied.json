@@ -1,0 +1,277 @@
+[
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "b70a4593-5866-4b36-b74c-0a4b0792d8c6",
+  "undo_file": "2026-11-23T22-40-43-044Z-b70a4593-5866-4b36-b74c-0a4b0792d8c6.json",
+  "undo": [
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0082L02B03",
+     "seed_number": 82,
+     "lego_index": 2,
+     "position": 5,
+     "known_text": "but why not",
+     "target_text": "하지만 왜요",
+     "word_count": 6,
+     "lego_count": 3,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-13T13:17:04.371Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "0b929ca1-096b-4c0b-9de5-43040ca9e0e9",
+     "target1_audio_id": "ee6ca0d4-a054-408f-9330-03bf426ae7ba",
+     "target2_audio_id": "c8ee473c-6bb6-46f4-aeb7-b79c453b5796",
+     "qa_checked": "2026-02-14T19:49:34.515Z",
+     "target1_duration_ms": 1040,
+     "target2_duration_ms": 1120,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "but",
+       "legoId": "S0019L01",
+       "target": "하지만",
+       "isGhost": false
+      },
+      {
+       "known": "why not",
+       "legoId": "S0082L02",
+       "target": " 왜요",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0082L02B02",
+     "seed_number": 82,
+     "lego_index": 2,
+     "position": 4,
+     "known_text": "why not",
+     "target_text": "왜요",
+     "word_count": 2,
+     "lego_count": 2,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-13T13:17:04.371Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "5043ad33-d6ea-4fa1-a834-401d5a93faad",
+     "target1_audio_id": "56d75a62-a688-4b37-b589-6911aa098ee8",
+     "target2_audio_id": "eb090b0b-c716-4c31-91c8-91f188ca39d6",
+     "qa_checked": "2026-02-14T19:49:34.515Z",
+     "target1_duration_ms": 960,
+     "target2_duration_ms": 806,
+     "lego_id": null,
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "why not",
+       "legoId": "S0082L02",
+       "target": "왜요",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0082L01U05",
+     "seed_number": 82,
+     "lego_index": 1,
+     "position": 11,
+     "known_text": "but I'm not going to wait",
+     "target_text": "하지만 기다리지 않을 거예요",
+     "word_count": 15,
+     "lego_count": 6,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-13T13:17:04.066Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-13T13:17:04.162Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "75d2e7fe-8bd5-4961-8380-051983030fd7",
+     "target1_audio_id": "afa5d678-1ec1-4310-9715-700cf85e80f8",
+     "target2_audio_id": "cdf4340b-9939-4729-a3ba-693c5b547cd8",
+     "qa_checked": "2026-02-14T19:49:34.515Z",
+     "target1_duration_ms": 2080,
+     "target2_duration_ms": 1964,
+     "lego_id": null,
+     "target_text_roman": "ha-ji-man gi-da-ri-ji a-neul geo-ye-yo",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "but",
+       "legoId": "S0019L01",
+       "target": "하지만",
+       "isGhost": false
+      },
+      {
+       "known": "not going to wait",
+       "legoId": "S0082L01",
+       "target": " 기다리지 않을 거예요",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0082L01U01",
+     "seed_number": 82,
+     "lego_index": 1,
+     "position": 7,
+     "known_text": "I'm not going to wait",
+     "target_text": "기다리지 않을 거예요",
+     "word_count": 11,
+     "lego_count": 5,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "score": 7,
+      "format": "build_use",
+      "scored_at": "2026-02-13T13:17:04.066Z"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-13T13:17:04.162Z",
+     "target_syllable_count": null,
+     "phrase_role": "use",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "47f99619-4013-4bdb-9750-bd4a464cc01e",
+     "target1_audio_id": "ff063717-6792-4a72-b081-c035d44f4733",
+     "target2_audio_id": "71e290bd-8cad-4bb6-9d6b-dd5394974b49",
+     "qa_checked": "2026-02-14T19:49:34.515Z",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": "gi-da-ri-ji a-neul geo-ye-yo",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not going to wait",
+       "legoId": "S0082L01",
+       "target": "기다리지 않을 거예요",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "kor_for_eng:S0082L01B02",
+     "seed_number": 82,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "not going to wait",
+     "target_text": "기다리지 않을 거예요",
+     "word_count": 11,
+     "lego_count": 4,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "format": "build_use"
+     },
+     "status": "draft",
+     "release_batch": null,
+     "created_at": "2026-02-13T13:17:04.162Z",
+     "target_syllable_count": null,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "middle",
+     "known_audio_id": "189eb8f4-1a12-4dd0-a0a3-4daa83aa9b45",
+     "target1_audio_id": "ff063717-6792-4a72-b081-c035d44f4733",
+     "target2_audio_id": "71e290bd-8cad-4bb6-9d6b-dd5394974b49",
+     "qa_checked": "2026-02-14T19:49:34.515Z",
+     "target1_duration_ms": 3024,
+     "target2_duration_ms": 3456,
+     "lego_id": null,
+     "target_text_roman": "gi-da-ri-ji a-neul geo-ye-yo",
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "not going to wait",
+       "legoId": "S0082L01",
+       "target": "기다리지 않을 거예요",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null
+    }
+   }
+  ],
+  "ops": 5
+ }
+]
