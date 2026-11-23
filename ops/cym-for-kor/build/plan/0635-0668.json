@@ -1,0 +1,621 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 635-668: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules, glosses in 반말 (the chi seeds glossed as plural 너희, never 요); changes in \"changed\" (cs #828·AK for #813·AK)",
+ "changed": {
+  "637:lle mae ei bag hi": "mae, ei, bag, hi untiled; one question",
+  "639:esgusodwch fi": "source esgusodwch fi ga i eistedd efo chi is over the cap; split into excuse me + may-I-sit + with you",
+  "639:ga i eistedd": "ga i is 내가 ~ 받을 수 있을까? (630); may-I-sit one unit",
+  "639:efo chi": "split from the source LEGO; plural sister of efo chdi 너와 (1)",
+  "641:mai’r un coch": "untiled; like mai bag Siân ydy hwnna (636)",
+  "641:ydy o": "untiled; 그건 ~야 is taken by ydy hwnnw (503)",
+  "643:dach chi isio": "source esgusodwch fi dach chi isio split as in 650",
+  "644:fedrwch chi": "source esgusodwch fi fedrwch chi ddeud hynna is over the cap; split",
+  "645:mi fedra i": "source esgusodwch fi mi fedra i helpu chi is over the cap; split; 나는 ~ㄹ 수 있어 is taken by medra i (10)",
+  "645:helpu chi": "split from the source LEGO; chi untiled alone",
+  "646:dach chi’n": "source esgusodwch fi dach chi’n gwneud rhywbeth is over the cap; split",
+  "647:dach chi’n": "source LEGO is the whole seed; split into taught LEGOs",
+  "648:be’ ddudoch chi": "source LEGO is the whole seed; split",
+  "649:barod": "source LEGO is the whole seed; split; yn barod alone is 이미 (244), barod taught (96)",
+  "652:dach chi angen": "untiled; sister of dach chi isio (643)",
+  "653:oes ots gynnoch chi": "source LEGO is the whole seed; split",
+  "655:bo’ chi’n": "untiled; plural sister of bo’ ti’n (616)",
+  "657:dach chi gyd yn": "source chi gyd + untiled dach, yn; one frame",
+  "658:dach chi gyd isio": "source chi gyd + untiled dach; one frame like dach chi isio (643)",
+  "662:siarad hi": "hi untiled; Korean 그걸로 이야기하다 one unit",
+  "663:be’ ddudoch chi gyd": "source ddudoch chi + untiled gyd; one unit",
+  "667:oes ots gynnoch chi gyd": "source chi gyd + untiled oes ots gynnoch; oes alone is 응 있어, so one unit like oes ots gynnoch chi (653)",
+  "668:y byddwch chi gyd yn": "source y byddwch chi gyd yn medru is 9 syllables over the cap; frame + taught medru"
+ },
+ "seeds": {
+  "635": {
+   "legos": [
+    {
+     "cy": "bag Siân ydy hwnna",
+     "ko": "그건 샨의 가방이야",
+     "type": "A"
+    }
+   ]
+  },
+  "636": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "mai bag Siân ydy hwnna",
+     "ko": "그게 샨의 가방이라고",
+     "type": "A"
+    }
+   ]
+  },
+  "637": {
+   "legos": [
+    {
+     "cy": "lle mae ei bag hi",
+     "ko": "그녀의 가방은 어디에 있어?",
+     "type": "A"
+    }
+   ]
+  },
+  "638": {
+   "legos": [
+    {
+     "cy": "dw i’n trio",
+     "ko": "나는 ~려고 노력하고 있어",
+     "type": "A"
+    },
+    {
+     "cy": "meddwl",
+     "ko": "생각하다",
+     "type": "A"
+    }
+   ]
+  },
+  "639": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "ga i eistedd",
+     "ko": "내가 앉아도 될까?",
+     "type": "A"
+    },
+    {
+     "cy": "efo chi",
+     "ko": "너희와",
+     "type": "A"
+    }
+   ]
+  },
+  "640": {
+   "legos": [
+    {
+     "cy": "yr un coch ydy o",
+     "ko": "그건 빨간 거야",
+     "type": "A"
+    }
+   ]
+  },
+  "641": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "mai’r un coch",
+     "ko": "빨간 거라고",
+     "type": "A"
+    },
+    {
+     "cy": "ar y gadair yna",
+     "ko": "그 의자 위에 있는",
+     "type": "A"
+    },
+    {
+     "cy": "ydy o",
+     "ko": "그게 ~이야",
+     "type": "A"
+    }
+   ]
+  },
+  "642": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "sut",
+     "ko": "어떻게",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi’n",
+     "ko": "너희는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "teimlo",
+     "ko": "느끼다",
+     "type": "A"
+    }
+   ]
+  },
+  "643": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi isio",
+     "ko": "너희 ~고 싶어?",
+     "type": "A"
+    }
+   ]
+  },
+  "644": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "fedrwch chi",
+     "ko": "너희 ~ㄹ 수 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "ddeud",
+     "ko": "말하다",
+     "type": "A"
+    },
+    {
+     "cy": "hynna",
+     "ko": "그것",
+     "type": "A"
+    }
+   ]
+  },
+  "645": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "mi fedra i",
+     "ko": "난 ~ㄹ 수 있어",
+     "type": "A"
+    },
+    {
+     "cy": "helpu chi",
+     "ko": "너희를 돕다",
+     "type": "A"
+    }
+   ]
+  },
+  "646": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi’n",
+     "ko": "너희는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth",
+     "ko": "무언가",
+     "type": "A"
+    }
+   ]
+  },
+  "647": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi’n",
+     "ko": "너희는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "Cymraeg",
+     "ko": "웨일스어",
+     "type": "A"
+    }
+   ]
+  },
+  "648": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "be’ ddudoch chi",
+     "ko": "너희가 뭐라고 했어?",
+     "type": "A"
+    }
+   ]
+  },
+  "649": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi’n",
+     "ko": "너희는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "barod",
+     "ko": "준비가 된",
+     "type": "A"
+    }
+   ]
+  },
+  "650": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi isio",
+     "ko": "너희 ~고 싶어?",
+     "type": "A"
+    },
+    {
+     "cy": "mynd",
+     "ko": "가다",
+     "type": "A"
+    }
+   ]
+  },
+  "651": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi’n",
+     "ko": "너희는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "meddwl",
+     "ko": "생각하다",
+     "type": "A"
+    }
+   ]
+  },
+  "652": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi angen",
+     "ko": "너희 ~ㄹ 필요가 있어?",
+     "type": "A"
+    }
+   ]
+  },
+  "653": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "oes ots gynnoch chi",
+     "ko": "너희 불편해?",
+     "type": "A"
+    }
+   ]
+  },
+  "654": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dw i ddim yn siŵr",
+     "ko": "나는 확실하지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "os",
+     "ko": "~지",
+     "type": "A"
+    },
+    {
+     "cy": "medra i",
+     "ko": "나는 ~ㄹ 수 있어",
+     "type": "A"
+    },
+    {
+     "cy": "helpu chi",
+     "ko": "너희를 돕다",
+     "type": "A"
+    }
+   ]
+  },
+  "655": {
+   "legos": [
+    {
+     "cy": "esgusodwch fi",
+     "ko": "실례지만",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ chi’n",
+     "ko": "너희가 ~하고 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    },
+    {
+     "cy": "yn dda iawn",
+     "ko": "아주 잘",
+     "type": "A"
+    }
+   ]
+  },
+  "656": {
+   "legos": [
+    {
+     "cy": "efo chi gyd",
+     "ko": "너희 모두와",
+     "type": "A"
+    }
+   ]
+  },
+  "657": {
+   "legos": [
+    {
+     "cy": "sut",
+     "ko": "어떻게",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi gyd yn",
+     "ko": "너희 모두 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "teimlo",
+     "ko": "느끼다",
+     "type": "A"
+    }
+   ]
+  },
+  "658": {
+   "legos": [
+    {
+     "cy": "dach chi gyd isio",
+     "ko": "너희 모두 ~고 싶어?",
+     "type": "A"
+    }
+   ]
+  },
+  "659": {
+   "legos": [
+    {
+     "cy": "fedrwch chi gyd",
+     "ko": "너희 모두 ~ㄹ 수 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "ddeud",
+     "ko": "말하다",
+     "type": "A"
+    },
+    {
+     "cy": "hynna",
+     "ko": "그것",
+     "type": "A"
+    }
+   ]
+  },
+  "660": {
+   "legos": [
+    {
+     "cy": "mi fedra i",
+     "ko": "난 ~ㄹ 수 있어",
+     "type": "A"
+    },
+    {
+     "cy": "helpu",
+     "ko": "돕다",
+     "type": "A"
+    },
+    {
+     "cy": "chi gyd",
+     "ko": "너희 모두",
+     "type": "A"
+    }
+   ]
+  },
+  "661": {
+   "legos": [
+    {
+     "cy": "dach chi gyd yn",
+     "ko": "너희 모두 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth",
+     "ko": "무언가",
+     "type": "A"
+    }
+   ]
+  },
+  "662": {
+   "legos": [
+    {
+     "cy": "dach chi gyd yn",
+     "ko": "너희 모두 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "siarad hi",
+     "ko": "그걸로 이야기하다",
+     "type": "A"
+    }
+   ]
+  },
+  "663": {
+   "legos": [
+    {
+     "cy": "be’ ddudoch chi gyd",
+     "ko": "너희 모두가 말한 것",
+     "type": "A"
+    }
+   ]
+  },
+  "664": {
+   "legos": [
+    {
+     "cy": "dach chi gyd yn",
+     "ko": "너희 모두 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "barod",
+     "ko": "준비가 된",
+     "type": "A"
+    }
+   ]
+  },
+  "665": {
+   "legos": [
+    {
+     "cy": "dach chi gyd isio",
+     "ko": "너희 모두 ~고 싶어?",
+     "type": "A"
+    },
+    {
+     "cy": "mynd",
+     "ko": "가다",
+     "type": "A"
+    }
+   ]
+  },
+  "666": {
+   "legos": [
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "dach chi gyd yn",
+     "ko": "너희 모두 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "meddwl",
+     "ko": "생각하다",
+     "type": "A"
+    }
+   ]
+  },
+  "667": {
+   "legos": [
+    {
+     "cy": "oes ots gynnoch chi gyd",
+     "ko": "너희 모두 불편해?",
+     "type": "A"
+    }
+   ]
+  },
+  "668": {
+   "legos": [
+    {
+     "cy": "dw i’n gobeithio",
+     "ko": "나는 ~기를 바라",
+     "type": "A"
+    },
+    {
+     "cy": "y byddwch chi gyd yn",
+     "ko": "너희 모두가 ~기를",
+     "type": "A"
+    },
+    {
+     "cy": "medru",
+     "ko": "~ㄹ 수 있다",
+     "type": "A"
+    },
+    {
+     "cy": "mynd",
+     "ko": "가다",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}
