@@ -79,6 +79,10 @@ const UNTIL = opt('--until', null) ? Date.parse(opt('--until')) : Infinity
 const WAIT_DAY_CAP = argv.includes('--wait-day-cap')
 // --requeue-timeouts (Kai 20 Nov): send ONLY the asks of this list whose latest row is a 120 s TIMEOUT, once each, nothing else.
 const REQUEUE_TIMEOUTS = argv.includes('--requeue-timeouts')
+// --gate-wait (cs #785·AK; Tom 18 Nov "Kai's Watson needs to never do any hammering. Ever."): before EVERY ask read Popty's
+// load gate (GET /health -> dbLoadGate.level) and send nothing while it is not green; re-read every 30 s, and stop the run
+// after 2 h of non-green (or an unreadable gate) rather than wait forever. Off by default, so older lists behave as before.
+const GATE_WAIT = argv.includes('--gate-wait')
 if (!['file', 'chars-desc'].includes(ORDER) || Number.isNaN(UNTIL)) { console.error('bad --order or --until'); process.exit(1) }
 const askKey = (a) => [a.course, a.role, a.voiceId, a.text].join('|')
 const EVID = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/voice-casting/azure-to-cartesia')
@@ -94,8 +98,12 @@ const RESERVE = 450_000
 const ITEM9_RESERVE = 52_000
 const CHECKPOINT = 50_000
 const AGENT = APPROVER === 'kai' ? 'kai-azure-to-cartesia' : `${APPROVER}-azure-to-cartesia`
-const PURPOSE = APPROVER === 'kai' ? `azure-to-cartesia day ${DAY} (cs #35 plan, Kai approved 19 Nov)` : `azure-to-cartesia day ${DAY}: ${REASON}`
-const APPROVAL = APPROVER === 'kai' ? 'kai:2026-11-19:azure-to-cartesia four-day plan, Kai approved all batches 16:01Z'
+const PURPOSE = APPROVER === 'kai' && REASON ? `azure-to-cartesia day ${DAY}: ${REASON}`
+  : APPROVER === 'kai' ? `azure-to-cartesia day ${DAY} (cs #35 plan, Kai approved 19 Nov)` : `azure-to-cartesia day ${DAY}: ${REASON}`
+// cs #785·AK: --approver kai WITH --reason signs kai:<today>:<reason> (a later Kai approval, e.g. round 2 on 23 Nov);
+// without --reason it keeps the 19 Nov four-day-plan token it always sent.
+const APPROVAL = APPROVER === 'kai' && REASON ? `kai:${new Date().toISOString().slice(0, 10)}:${REASON}`
+  : APPROVER === 'kai' ? 'kai:2026-11-19:azure-to-cartesia four-day plan, Kai approved all batches 16:01Z'
   : `${APPROVER}:${new Date().toISOString().slice(0, 10)}:${REASON}`
 const STOP_CODES = new Set(['DAILY_TOTAL_CAP', 'DAILY_CAP', 'POOL_SHARE', 'POOL_OVERAGE', 'PROVIDER_POOL', 'USAGE_UNREADABLE', 'LEDGER',
   'TRIPPED', 'STOPPED_BY_TOM', 'NOT_IN_CHAIN', 'APPROVAL_UNVERIFIED', 'RATE_CAPPED', 'IDENTITY_REQUIRED'])
@@ -182,6 +190,20 @@ async function poptyGreen() {
   try { const res = await fetch(BASE + '/health', { signal: AbortSignal.timeout(5000) }); const j = await res.json(); return res.ok && j.status === 'ok' && j.supabase === 'connected' } catch { return false }
 }
 // Up to 10 min of /health polls every 15 s; true once Popty answers green.
+async function gateLevel() {
+  try { const res = await fetch(BASE + '/health', { signal: AbortSignal.timeout(5000) }); const j = await res.json(); return (j.dbLoadGate && j.dbLoadGate.level) || 'unreadable' } catch { return 'unreachable' }
+}
+// Resolves null once the gate is green, else the reason to stop after 2 h of waiting.
+async function waitGateGreen(onWait) {
+  const end = Date.now() + 7_200_000
+  let lvl = await gateLevel(), told = false
+  while (lvl !== 'green') {
+    if (Date.now() >= end) return `load gate not green for 2 h (last: ${lvl})`
+    if (!told) { onWait(lvl); told = true }
+    await sleep(30_000); lvl = await gateLevel()
+  }
+  return null
+}
 async function waitPoptyGreen() {
   const end = Date.now() + 600_000
   while (Date.now() < end) { await sleep(15_000); if (await poptyGreen()) return true }
@@ -267,6 +289,10 @@ async function main() {
     if (CYCLE_CREDIT - (t.total + t.reserve + want) < RESERVE) { stop = `credit reserve: 2.45M − ${t.total + t.reserve + want} < 450k` ; break }
     }
 
+    if (GATE_WAIT) {
+      const g = await waitGateGreen((lvl) => { append({ kind: 'gate-wait', idx, key, at: new Date().toISOString(), level: lvl }); console.log(`load gate ${lvl} at ask ${idx}: waiting`) })
+      if (g) { stop = g; break }
+    }
     if (LIBRARY_ONLY && gapKey.has(key)) continue
     const body = LIBRARY_ONLY
       ? { courseCode: ask.course, role: ask.role, text: ask.text, voiceId: ask.voiceId, language: ask.language, purpose: PURPOSE } // no approval: cannot pass EXISTS_IN_LANGUAGE

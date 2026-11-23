@@ -21,6 +21,12 @@ DAYS = [  # (label, UTC window, replacement courses) — fixes come from fixes.j
     ('Day 2', '20 Nov UTC', ['eng_for_tam']),
     ('Day 3', '21 Nov UTC', []),
     ('Day 4', '22 Nov UTC (Popty\'s Cartesia cycle restarts 23 Nov 00:00 UTC: tts-spend-guard cycleStartDay 23)', ['por_for_eng']),
+    # Days 5-7 and 9 are hand-filtered spa_for_zho lists (cs #468·AK / #486·AK), never built here; kept empty so day N = DAYS[N-1].
+    ('Day 5', 'spa_for_zho (built by hand, cs #468)', []),
+    ('Day 6', 'spa_for_zho (built by hand, cs #486)', []),
+    ('Day 7', 'spa_for_zho (built by hand, cs #486)', []),
+    # cs #785·AK: A2C round 2, Kai Y 23 Nov 11:02Z ("Yes on tonight's run"), 500k Cartesia cap, from the day-of tel census.
+    ('Day 8', '23 Nov ~13:00Z to 24 Nov 07:00Z', ['eng_for_tel']),
 ]
 TOTAL_CAP, DAY_CAP = 2_000_000, 600_000
 
@@ -46,10 +52,12 @@ def main(census_path, outdir, batch_day=1):
     seen, running, plan = set(), 0, []
     fixes = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fixes.json')))['fixes']
     for n, (label, window, courses) in enumerate(DAYS, 1):
-        dayFixes = [f for f in fixes if f['day'] == n]
+        dayFixes = [f for f in fixes if f.get('day') == n]  # later fixes carry utc_day, not day (cs #785·AK)
         fixChars = sum(f['chars'] for f in dayFixes)
         rows, day = [], 0
         for code in courses:
+            if code not in by:  # cs #785·AK: a one-course day-of census carries only that day's course
+                continue
             c = by[code]
             asks = [a for a in c['asks'] if not a['freeInCourse']]
             charged = 0
