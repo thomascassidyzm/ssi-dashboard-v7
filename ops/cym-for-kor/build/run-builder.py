@@ -143,6 +143,41 @@ def agree(known, target, n=None):
     return fixed
 
 
+# A held LEGO whose ONLY refusal is the comma-tag rule ("na, heno": the LEGO + a short tag after a comma,
+# services/course-builder/lib/validation.cjs classifyBuildPhrase) is settled here instead of waking a person:
+# drop exactly the rows that rule rejects, then move the door's own USE rows that open with the LEGO into
+# BUILD until there are 3, keeping at least 5 USE. Nothing is written by hand; /api/seed/complete still
+# validates the whole seed, and a refusal there stops the run as before. Seeds 96 and 173 were settled by
+# committed overrides before this existed (overrides/).
+TAG_RE = re.compile(r',\s*¿?[^,]{1,18}$')
+
+
+def comma_tag(target, lego):
+    t = target.strip()
+    return bool(TAG_RE.search(t)) and norm(re.sub(r',[^,]*$', '', t)) == norm(lego)
+
+
+def settle_comma_tag(r, lego):
+    # A fresh refusal carries attempts[].reasons; a re-asked held LEGO carries them in hold.reasons.
+    reasons = [x for a in (r.get('attempts') or []) for x in (a.get('reasons') or [])] or list((r.get('hold') or {}).get('reasons') or [])
+    gates = set((r.get('gate') or {}).get('failingGates') or [])
+    if not r.get('held') or not reasons or gates - {'buildRecombination'} or any(not x.startswith('buildRecombination') for x in reasons):
+        return None
+    build = [p for p in r.get('build') or [] if not comma_tag(p['target'], lego['cy'])]
+    use = list(r.get('use') or [])
+    dropped = len(r.get('build') or []) - len(build)
+    if not dropped:
+        return None
+    for p in list(use):
+        if len(build) >= 3 or len(use) <= 5:
+            break
+        if norm(p['target']).startswith(norm(lego['cy']) + ',') and not comma_tag(p['target'], lego['cy']) and '?' not in p['target']:
+            use.remove(p); build.append(p)
+    if len(build) < 3:
+        return None
+    return {'ok': True, 'build': build, 'use': use, 'settled': {'dropped': dropped, 'moved_from_use': len(build) - (len(r.get('build') or []) - dropped)}}
+
+
 def line(p, n=None):
     # The phrase door sometimes writes Welsh with a straight apostrophe (dw i'n) while every seed and
     # LEGO in this course uses ’ (dw i’n). One spelling per word keeps clip matching and dedup honest.
@@ -201,6 +236,13 @@ def main():
                 sets[i] = f.result()
         with open(EVID / f'door-s{n:03d}.json', 'w') as f:
             json.dump({str(k): {kk: v.get(kk) for kk in ('ok', 'held', 'blocked', 'code', 'error', 'build', 'use', 'attempts')} for k, v in sets.items()}, f, ensure_ascii=False)
+        for i, st_ in list(sets.items()):
+            if not st_.get('ok'):
+                fixed = settle_comma_tag(st_, legos[i - 1])
+                if fixed:
+                    log({'seed': n, 'lego': i, 'comma_tag_settled': fixed['settled'],
+                         'build': [p['target'] for p in fixed['build']]})
+                    sets[i] = fixed
         bad = {i: s for i, s in sets.items() if not s.get('ok')}
         if bad:
             log({'seed': n, 'stop': 'door', 'legos': {i: (s.get('code') or s.get('error') or 'not ok') for i, s in bad.items()}})
