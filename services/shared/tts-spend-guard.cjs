@@ -463,6 +463,18 @@ function readBudgetFile(p) {
 // provider, in this process or any other.
 
 /**
+ * A RAISED JOB'S SPEND TODAY COUNTS ITS LIVE HOLDS (Fable review #756·AK fix 6): jobToday adds the undrawn remainder of
+ * the job's live holds to its ledger rows, so a signed raise's allowance sees chars a batch has taken but not yet drawn
+ * (cached 30 s in the guard; a ledger-only read forgot them once the cache refreshed). Before the job-holds migration
+ * the table does not exist, so no hold can either: an undefined-table error reads as zero held. Any other error is
+ * thrown and the guard refuses (LEDGER), as for the ledger read itself.
+ */
+function holdsTableMissing(e) {
+  const code = e && e.code
+  return code === '42P01' || code === 'PGRST205' || /tts_spend_job_holds.*(does not exist|schema cache)/i.test(String(e && e.message))
+}
+
+/**
  * The authoritative store: the shared DB over PostgREST (service role). Every
  * host that renders reads and writes the same rows.
  */
@@ -501,6 +513,11 @@ function supabaseSpendStore({ client, url = process.env.SUPABASE_URL, key = proc
         for (const r of data || []) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + (Number(r.chars) || 0)
         if (!data || data.length < 1000) break
       }
+      const nowIso = new Date().toISOString()
+      const { data: held, error: heldErr } = await db().from('tts_spend_job_holds').select('provider,job,reserved_chars,drawn_chars')
+        .is('released_at', null).eq('day', dayKey(Date.now())).gt('expires_at', nowIso).gt('heartbeat_at', new Date(Date.now() - JOB_HOLD_STALE_MS).toISOString()).ilike('job', `%${token}%`)
+      if (heldErr && !holdsTableMissing(heldErr)) throw new Error(`tts_spend_job_holds: ${heldErr.message}`)
+      for (const r of held || []) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + Math.max(0, (Number(r.reserved_chars) || 0) - (Number(r.drawn_chars) || 0))
       return byProvider
     },
     /** Calls under a job token today on ONE repeat key (a repeat exemption's once-each count). */
@@ -552,6 +569,12 @@ function pgSpendStore({ pool, connectionString = process.env.DATABASE_URL } = {}
       const { rows } = await db().query(`select provider, job, chars from public.tts_spend_ledger where at >= date_trunc('day', now() at time zone 'UTC') at time zone 'UTC' and job like $1`, [`%${token}%`])
       const byProvider = {}
       for (const r of rows) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + (Number(r.chars) || 0)
+      let held = []
+      try {
+        held = (await db().query(`select provider, job, greatest(reserved_chars - drawn_chars, 0) as chars from public.tts_spend_job_holds
+          where released_at is null and day = (now() at time zone 'UTC')::date and expires_at > now() and heartbeat_at > now() - public.tts_spend_hold_stale_after() and job like $1`, [`%${token}%`])).rows
+      } catch (e) { if (!holdsTableMissing(e)) throw e }
+      for (const r of held) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + (Number(r.chars) || 0)
       return byProvider
     },
     async keyJobCallsToday(key, token, sinceMs = 0) {
@@ -672,6 +695,9 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
         }
         if (g.max_clips != null && (g.used || 0) >= g.max_clips) return { ok: false, code: 'RERECORD_NOT_PERMITTED', message: `${r.course}: Tom's permission #${g.id} is spent (${g.used} of ${g.max_clips} clips). Do not retry or route around this` }
       }
+      if (r.limits && r.limits.exclusiveJob && holds.some(hd => holdLive(hd, t) && jobMatches(hd.job, r.limits.exclusiveJob))) {
+        return { ok: false, code: 'JOB_HOLD_LIVE', message: `job ${r.limits.exclusiveJob} runs under Tom's signed raise and already has a live batch reservation; one batch at a time for a raised job — send the next batch when this one answers` }
+      }
       const capped = capCheck(r, t, 0)
       if (!capped.ok) return capped
       const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
@@ -716,6 +742,7 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
       const from = Date.parse(dayKey(now()) + 'T00:00:00Z')
       const byProvider = {}
       for (const r of rows) if (r.at >= from && jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + r.chars
+      for (const hd of holds) if (holdLive(hd, now()) && jobMatches(hd.job, token)) byProvider[hd.provider] = (byProvider[hd.provider] || 0) + Math.max(0, hd.reserved - hd.drawn)
       return byProvider
     },
     async keyJobCallsToday(key, token, sinceMs = 0) {
@@ -892,10 +919,15 @@ function createSpendGuard(opts = {}) {
           await store.trip(provider, 'PROVIDER_POOL', msg).catch(() => {})
           refuse('PROVIDER_POOL', provider, msg, { usedChars: u.usedChars, pool, course: who.course, job: who.job })
         }
-        if (!st.base) st.base = { used: u.usedChars, ledger: Number(t.cycle) || 0 }
+        // The ledger side is what was actually SENT this cycle: tts_spend_totals.cycle also counts live job holds'
+        // undrawn remainder (cs #502·AK), which the provider has not billed. Fable review #756·AK fix 2: a baseline taken
+        // while a hold was live fell by the remainder when the hold ended (a false PROVIDER_DIVERGENCE once R > ~16k),
+        // and a live hold masked real outside-the-door spend. `held` is absent (0) before the job-holds migration.
+        const sent = Math.max(0, (Number(t.cycle) || 0) - (Number(t.held) || 0))
+        if (!st.base) st.base = { used: u.usedChars, ledger: sent }
         else {
           const providerDelta = u.usedChars - st.base.used
-          const ledgerDelta = (Number(t.cycle) || 0) - st.base.ledger
+          const ledgerDelta = sent - st.base.ledger
           if (providerDelta > cfg.divergence.factor * ledgerDelta + cfg.divergence.slackChars) {
             const msg = `provider billed ${providerDelta.toLocaleString()} chars since this process's baseline but the ledger recorded ${ledgerDelta.toLocaleString()} — something is spending outside the door`
             await store.trip(provider, 'PROVIDER_DIVERGENCE', msg).catch(() => {})
@@ -1110,6 +1142,8 @@ function createSpendGuard(opts = {}) {
       if (combined + chars > combinedCap) refuse('DAILY_CAP', provider, `today's spend across all TTS providers is ${combined} chars; this batch (${chars}) would pass the combined daily cap of ${combinedCap}. HELD: ${cfg.hold.message}`, { today: combined, ...who })
     }
     let holdLimits = b
+    // One live hold at a time for a raised job (Fable review #756·AK fix 6), refused atomically by the store (JOB_HOLD_LIVE).
+    if (raisedJob) holdLimits = { ...b, exclusiveJob: raisedJob.job }
     if (!raisedJob && commissionedJob) { holdLimits = { ...b, maxPerKey: COMMISSIONED_REPEAT_MAX, commissioned: true }; dailyCap = Number.MAX_SAFE_INTEGER }
 
     const base = { at: new Date(now()).toISOString(), provider, chars, course, job, roles: ctx.roles || null, grant: ctx.grantId ?? null, pid: process.pid }

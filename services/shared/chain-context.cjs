@@ -23,8 +23,18 @@ const { AsyncLocalStorage } = require('async_hooks')
 
 const als = new AsyncLocalStorage()
 
-/** Run fn inside the chain. `origin` names the entry (route, tool) for the ledger. */
-function run(origin, fn) { return als.run({ origin: String(origin || 'unnamed') }, fn) }
+/**
+ * Run fn inside the chain. `origin` names the entry (route, tool) for the ledger.
+ * A JOB HOLD already on the flow is CARRIED into the new store (Fable review #756·AK, fix 1): the batch route runs each
+ * line as withJobHold(hold, () => renderClip(...)), and renderClip opens its own run(); a fresh store here dropped the
+ * hold, so every clip in a batch took the per-call reserve while the whole hold still counted. Nothing else is carried:
+ * run() names a new origin, it does not inherit one. A request's flow starts from middleware with no store, so a hold
+ * can only ever reach a render that the batch route itself started.
+ */
+function run(origin, fn) {
+  const hold = als.getStore()?.jobHold
+  return als.run(hold ? { origin: String(origin || 'unnamed'), jobHold: hold } : { origin: String(origin || 'unnamed') }, fn)
+}
 
 /** The origin string when the current async flow is inside the chain, else null. */
 let testMode = false

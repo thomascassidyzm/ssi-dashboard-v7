@@ -4,6 +4,10 @@
 # Order on the day: (1) the code that reads the new functions is on main and deployed, (2) this `apply`, (3) the flag stays off
 # until Kai turns it on. The SQL is one transaction with lock_timeout 5s and a guard that refuses if the live
 # tts_spend_reserve / tts_spend_totals are not the 20261025 rollup text. With no hold rows, both answer exactly as before.
+# Since cs #761 (Fable review #756·AK fix 5) that guard compares md5(pg_get_functiondef) to two constants that are NOT YET
+# FILLED: the first `apply` anywhere refuses and prints the md5s it found. Rehearse on the nightly QA copy first
+# (SSI_OWNER_ENV=<qa-copy env> … apply), put the printed md5s into the guard after checking that copy's text is the
+# 20261025 rollup, land that, rehearse again, and only then apply on live.
 #   sudo -u popty -H tools/migrations-20261122-tts-spend-job-holds.sh apply
 #   sudo -u popty -H tools/migrations-20261122-tts-spend-job-holds.sh rollback
 # Owner login read from /etc/popty/owner.env inside this process and passed as PG* env (never argv), as

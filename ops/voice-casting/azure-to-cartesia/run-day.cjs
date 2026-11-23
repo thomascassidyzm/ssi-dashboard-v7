@@ -137,6 +137,13 @@ function allLogged() {
   }
   return rows
 }
+/**
+ * This list's own spend today, for --cap: every logged render's charsSpent, PLUS every batch request that never answered
+ * (timeout, connection lost, a 5xx) at its full size (Fable review #756·AK fix 8). phase8 may have gone on rendering such a
+ * batch after we stopped listening, and none of its lines were logged, so counting them as nothing under-counted the cap by
+ * a chunk per timeout. Over-counting instead is the safe side; Popty's own caps are unaffected either way.
+ */
+const ownSpentToday = () => allLogged().filter((r) => r.day === DAY).reduce((s2, r) => s2 + (r.kind === 'render' ? (Number(r.charsSpent) || 0) : r.kind === 'batch' ? (Number(r.charsAtRisk) || 0) : 0), 0)
 function item9Armed() {
   try { return execFileSync('systemctl', ['--user', 'is-active', 'cs-long-keep-item9-night.timer'], { encoding: 'utf8' }).trim() === 'active' } catch { return false }
 }
@@ -235,7 +242,7 @@ async function linkSlots(idx, ask, audioId) {
 // run and is never re-sent. Lines the batch did not send (NOT_SENT after an in-batch stop) are not logged, so they stay unsent.
 async function runBatched(items, rendered, linkedKey, append) {
   let sent = 0, stop = null, chunk = [], chunkWant = 0
-  const ownSpent = () => allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0)
+  const ownSpent = ownSpentToday
   async function flush() {
     const lines = chunk
     chunk = []; chunkWant = 0
@@ -246,7 +253,10 @@ async function runBatched(items, rendered, linkedKey, append) {
     const r = await post(`${BASE}/api/audio/render-batch`, body, { 'x-cs-conv': process.env.CS_CONV_TOKEN }, BATCH_TIMEOUT_MS)
     const j = r.json || {}
     const at = new Date().toISOString()
+    // No per-line answer and not a clean refusal (a refused hold renders nothing): phase8 may still be rendering this batch.
+    const unanswered = !Array.isArray(j.results) && (r.http === 0 || r.http >= 500)
     append({ kind: 'batch', day: DAY, at, course, lines: lines.length, http: r.http, ok: !!j.ok, stoppedBy: j.stoppedBy || null, ms: j.ms, hold: j.hold,
+      ...(unanswered ? { charsAtRisk: lines.reduce((s2, { ask }) => s2 + Math.ceil((ask.chars || ask.text.length) * 1.25) + 5, 0) } : {}),
       counts: j.counts, charsSpent: Number(j.charsSpent) || 0, code: j.code, error: Array.isArray(j.results) ? undefined : String(j.error || '').slice(0, 300) })
     if (!Array.isArray(j.results)) return `batch of ${lines.length} (${course}) answered HTTP ${r.http}: ${j.code || ''} ${String(j.error || '').slice(0, 300)}`
     let why = null
@@ -342,7 +352,7 @@ async function main() {
     if (t.total >= nextCheckpoint) { append({ kind: 'checkpoint', at: new Date().toISOString(), idx, tally: t, creditLeft: CYCLE_CREDIT - t.total - t.reserve }); console.log(`checkpoint at ask ${idx}: today ${t.today}, total ${t.total}`); nextCheckpoint += CHECKPOINT }
     const want = Math.ceil((ask.chars || ask.text.length) * 1.25) + 5 // gender prep can lengthen a line a little
     if (LIST_CAP != null) {
-      const ownSpent = allLogged().filter((r) => r.kind === 'render' && r.day === DAY).reduce((s2, r) => s2 + (Number(r.charsSpent) || 0), 0)
+      const ownSpent = ownSpentToday()
       if (ownSpent + want > LIST_CAP) { stop = `list cap: day ${DAY} spent ${ownSpent} + next ask ${want} > ${LIST_CAP}`; break }
     } else {
     if (t.today + t.reserve + want > DAY_CAP && WAIT_DAY_CAP && t.total + t.reserve + want <= TOTAL_CAP) {

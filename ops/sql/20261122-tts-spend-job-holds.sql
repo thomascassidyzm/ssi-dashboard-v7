@@ -54,16 +54,31 @@
 -- ============================================================================
 BEGIN;
 SET LOCAL lock_timeout = '5s';
--- The live reserve must still be the 20261025 rollup text: this migration was
--- generated from it. A worker cannot read the live md5 (no hand-written DB code),
--- so the guard checks content. The rollup reads must be present and no hold term
--- may be there yet.
+-- The live reserve and totals must still be EXACTLY the text this migration was generated from (the 20261025 rollup):
+-- CREATE OR REPLACE below overwrites them whole, so any hand-applied change since would be lost silently.
+-- Fable review #756·AK fix 5: the guard compares an md5 of pg_get_functiondef to a constant, not marker substrings.
+-- THE CONSTANTS ARE NOT FILLED IN YET, on purpose: cs #761 could not read the live or nightly QA copy's function text
+-- (no hand-written DB code, Tom's HARD RULE 2026-10-14, and no committed tool reads it). Until they are, this guard
+-- REFUSES and its message prints the md5s it found. To fill them: rehearse on the nightly QA copy with the committed
+-- runner (SSI_OWNER_ENV=<qa-copy env> tools/migrations-20261122-tts-spend-job-holds.sh apply), check that the QA
+-- copy's tts_spend_reserve / tts_spend_totals are the 20261025 text, copy the two md5s from the refusal into
+-- v_reserve_md5 / v_totals_md5, land that commit, and rehearse again. A live DB whose functions differ from the
+-- QA copy's is then refused, which is the point. The marker checks stay as a second, cheaper statement of the same.
 DO $guard$
+DECLARE
+  v_reserve_md5 constant text := 'FILL-FROM-NIGHTLY-QA-COPY';
+  v_totals_md5  constant text := 'FILL-FROM-NIGHTLY-QA-COPY';
+  v_reserve_live text := md5(pg_get_functiondef('public.tts_spend_reserve'::regproc));
+  v_totals_live  text := md5(pg_get_functiondef('public.tts_spend_totals'::regproc));
 BEGIN
   IF position('tts_spend_daily where kind = ''call''' in pg_get_functiondef('public.tts_spend_reserve'::regproc)) = 0
      OR position('tts_spend_held' in pg_get_functiondef('public.tts_spend_reserve'::regproc)) > 0
      OR position('tts_spend_daily where provider' in pg_get_functiondef('public.tts_spend_totals'::regproc)) = 0 THEN
     RAISE EXCEPTION 'tts_spend_reserve/totals are not the 20261025 rollup text: regenerate this migration from the live text';
+  END IF;
+  IF v_reserve_live IS DISTINCT FROM v_reserve_md5 OR v_totals_live IS DISTINCT FROM v_totals_md5 THEN
+    RAISE EXCEPTION 'tts_spend_reserve/totals text is not the one this migration was generated from: live md5 reserve=% totals=%, expected reserve=% totals=%. If this is the nightly QA copy rehearsal and its text is the 20261025 rollup, put the live md5s into the guard constants; otherwise regenerate this migration from the live text',
+      v_reserve_live, v_totals_live, v_reserve_md5, v_totals_md5;
   END IF;
 END
 $guard$;
@@ -307,6 +322,19 @@ begin
       'message', format('renders are stopped for %s since %s: %s. Clear: delete from tts_spend_trips where provider = %L — once a human has looked', p_provider, v_trip.at, v_trip.message, p_provider));
   end if;
 
+  -- A SIGNED JOB RAISE holds ONE batch at a time (Fable review #756·AK fix 6). Its allowance is checked in the guard
+  -- from the ledger plus live holds (jobToday), and a raised job skips the provider daily cap, so a second concurrent
+  -- hold could pass the allowance by the first one's remainder if both read before either was taken. The guard names
+  -- the raise in p_limits.exclusiveJob; under __total__ that check-then-insert cannot interleave with another reserve.
+  if p_limits ? 'exclusiveJob' and exists (
+       select 1 from public.tts_spend_job_holds h
+        where h.released_at is null and h.day = (v_now at time zone 'UTC')::date and h.expires_at > v_now
+          and h.heartbeat_at > v_now - public.tts_spend_hold_stale_after()
+          and h.job ~ ((p_limits->>'exclusiveJob') || '(?![0-9])')) then
+    return jsonb_build_object('ok', false, 'code', 'JOB_HOLD_LIVE',
+      'message', format('job %s runs under Tom''s signed raise and already has a live batch reservation; one batch at a time for a raised job — send the next batch when this one answers', p_limits->>'exclusiveJob'));
+  end if;
+
   -- THE RE-RECORD GRANT, up front (Tom 2026-10-11: no re-recording without his express permission). A batch
   -- that says it re-records, or names a grant, is held only on a grant that is Tom's, in date, unrevoked, for
   -- this course, covering every role the batch names, and not spent. Each clip still passes the per-clip gate
@@ -420,6 +448,12 @@ begin
   if not found or v_h.provider is distinct from p_provider then
     return jsonb_build_object('ok', false, 'code', 'JOB_RESERVATION_GONE', 'message', format('no %s job reservation #%s — refusing a clip with no reservation behind it', p_provider, p_hold_id));
   end if;
+  -- The clock is read AGAIN now the locks are held (Fable review #756·AK fix 4): v_now was taken at entry, before the
+  -- wait on the provider lock and the row lock. A reserve that ran meanwhile, with a later clock, may already have
+  -- judged this hold stale and counted its remainder as free; judging liveness (and writing heartbeat_at) with the
+  -- entry time would revive it. Everything below — liveness, the repeat window, the ledger row, the totals — uses this time.
+  v_now := clock_timestamp();
+  v_day := date_trunc('day', v_now at time zone 'UTC') at time zone 'UTC';
   if v_h.released_at is not null or v_h.expires_at <= v_now or v_h.heartbeat_at <= v_now - public.tts_spend_hold_stale_after()
      or v_h.day <> (v_now at time zone 'UTC')::date then
     return jsonb_build_object('ok', false, 'code', 'JOB_RESERVATION_EXPIRED',
@@ -458,14 +492,25 @@ $function$;
 
 -- ── HEARTBEAT: keep a live hold live while its renders are slow. A dead hold stays dead. ──
 CREATE OR REPLACE FUNCTION public.tts_spend_job_heartbeat(p_hold_id bigint)
- RETURNS boolean LANGUAGE sql SET search_path = public, pg_temp AS $function$
-  with u as (
-    update public.tts_spend_job_holds set heartbeat_at = clock_timestamp()
-     where id = p_hold_id and released_at is null and expires_at > clock_timestamp()
-       and heartbeat_at > clock_timestamp() - public.tts_spend_hold_stale_after() and day = (clock_timestamp() at time zone 'UTC')::date
-     returning id)
-  select exists (select 1 from u)
-$function$;
+ RETURNS boolean
+ LANGUAGE plpgsql
+ SET search_path TO 'public', 'pg_temp'
+AS $function$
+declare
+  v_h record; v_now timestamptz;
+begin
+  select * into v_h from public.tts_spend_job_holds where id = p_hold_id for update;
+  if not found then return false; end if;
+  -- One clock, read after the row lock (Fable review #756·AK fix 4), so a beat that waited on a draw cannot judge
+  -- liveness with a time from before the wait.
+  v_now := clock_timestamp();
+  if v_h.released_at is not null or v_h.expires_at <= v_now or v_h.heartbeat_at <= v_now - public.tts_spend_hold_stale_after()
+     or v_h.day <> (v_now at time zone 'UTC')::date then
+    return false;
+  end if;
+  update public.tts_spend_job_holds set heartbeat_at = v_now where id = p_hold_id;
+  return true;
+end $function$;
 
 -- Functions: service_role only.
 REVOKE ALL ON FUNCTION public.tts_spend_hold_stale_after() FROM PUBLIC, anon, authenticated;

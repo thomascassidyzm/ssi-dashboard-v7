@@ -19,6 +19,14 @@
  * A refusal that stops everyone (Tom's stop, a trip, the daily total cap, the rate cap) stops the batch taking new
  * lines: a refusal is the answer, never retried.
  *
+ * WHAT THE HOLD IS NOT SIZED FOR (Fable review #756·AK, fix 7) — both fail closed or count twice, never spend past a cap:
+ *   - A spliced English intro (role presentation, phase8 spliceIntro) renders its missing Charlotte pieces through a
+ *     NESTED renderClip, which runs inside this hold (chain.run carries it) and draws from it. The hold is sized from
+ *     the batch's own line texts, so a batch of intros whose pieces are not yet in the library can stop on
+ *     JOB_RESERVATION_EXCEEDED. Send such intros one at a time to POST /render, or in a smaller batch.
+ *   - A clip that falls to ANOTHER provider than the hold's takes the per-call reserve (tts-spend-guard
+ *     beforeProviderCall) while the hold still counts that line's chars until release: a temporary double count.
+ *
  * SWITCH: TTS_SPEND_JOB_HOLDS=on on the phase8 service. Off (the default), the route answers 409 JOB_HOLDS_OFF and
  * nothing here runs, because the SQL (ops/sql/20261122-tts-spend-job-holds.sql) needs Tom's go to apply.
  * The per-call POST /render path never comes through this file.
@@ -97,15 +105,19 @@ async function renderBatch(body, { guard, renderOne, admit = async () => ({ ok: 
   const results = new Array(batch.items.length)
   let next = 0
   let stoppedBy = null
+  let released = null
   const started = Date.now()
   try {
-    // 2. RENDER, up to `concurrency` at once.
+    // 2. RENDER, up to `concurrency` at once. A worker never throws (Fable review #756·AK fix 3): anything that goes
+    // wrong for a line — the rate gate, the render — becomes that line's answer, and a gate that cannot answer stops
+    // the batch taking new lines. So the other workers never keep rendering for a caller that has already had a 500.
     const worker = async () => {
       for (;;) {
         const i = next++
         if (i >= batch.items.length) return
         if (stoppedBy || dead) { results[i] = { ok: false, idx: i, status: 409, code: 'NOT_SENT', error: `not sent: the batch stopped (${stoppedBy || 'its job reservation is no longer live'})` }; continue }
-        const gate = await admit()
+        let gate
+        try { gate = await admit() } catch (e) { gate = { ok: false, status: 503, code: 'ADMIT_FAILED', error: `the rate gate could not answer (${(e && e.message) || e}) — the batch takes no new lines` } }
         if (!gate.ok) { stoppedBy = gate.code || 'RATE_CAPPED'; results[i] = { ok: false, idx: i, status: gate.status || 429, code: gate.code || 'RATE_CAPPED', error: gate.error }; continue }
         const input = { ...batch.items[i], courseCode: batch.courseCode, job: batch.job, purpose: batch.purpose, requestedBy: batch.requestedBy, ...(batch.approval ? { approval: batch.approval } : {}) }
         try {
@@ -121,9 +133,14 @@ async function renderBatch(body, { guard, renderOne, admit = async () => ({ ok: 
     await Promise.all(Array.from({ length: Math.min(batch.concurrency, batch.items.length) }, worker))
   } finally {
     clearInterval(beat)
+    // 3. RELEASE the remainder, whatever happened above (best effort; an unreleased hold goes stale on its own in
+    // JOB_HOLD_STALE_MS, and a release that fails is said in the answer as releaseOk:false, never thrown over the results).
+    try {
+      released = await guard.releaseJob(hold, `batch of ${batch.items.length} done${stoppedBy ? `, stopped by ${stoppedBy}` : ''}`)
+    } catch (e) {
+      logger.warn && logger.warn(`[render-batch] ${batch.courseCode} ${batch.job} hold #${hold.id}: release failed (${(e && e.message) || e}); it stops counting by itself once stale`)
+    }
   }
-  // 3. RELEASE the remainder (best effort; an unreleased hold goes stale on its own).
-  const released = await guard.releaseJob(hold, `batch of ${batch.items.length} done${stoppedBy ? `, stopped by ${stoppedBy}` : ''}`)
   const counts = {}
   for (const r of results) { const k = r.ok === false ? `refused:${r.code}` : (r.source || 'done'); counts[k] = (counts[k] || 0) + 1 }
   const ms = Date.now() - started
