@@ -8,7 +8,6 @@
 # unit); ledgers <file>.applied.jsonl / .audio.jsonl / .verify.json live beside each changeset there. Unit failure wakes
 # the job (OnFailure). Kai's live pre-check (precheck-guards.cjs: seed + LEGO text; the applier's expect covers the row)
 # before every file; mismatch = drift in the ledger, held, never forced. Governed applier, 25 ops per transaction.
-#   Start gate: the jpn_for_eng open-end apply (#234·AL, cs-long-keep-234-night) must have finished writing.
 #   Writer cap: at most 2 OTHER DB writers active (Kai's cap of 3 after the 18 Nov hold); /health gate green per file.
 #   Gives up for the night at 05:30 UK; the next night resumes from the ledgers. Token from a 0600 file, never argv.
 set -u
@@ -24,11 +23,8 @@ echo "main=$(git rev-parse --short HEAD)"
 T=ops/paid-cleanup-236/tools; P=ops/paid-cleanup-item9/tools
 curl -s -m 20 http://localhost:3470/health | grep -q '"governed":true' || { say "[236 night] skipped: Popty /health not governed:true (log $LOG)"; exit 0; }
 
-# Start gate: #234·AL's jpn apply first (Kai: "after the Japanese fix").
-while systemctl --user is-active -q cs-long-keep-234-night.service; do
-  late && { say "[236 night] skipped tonight: #234·AL jpn apply still writing at $(ukh)h UK (log $LOG)"; exit 0; }
-  echo "$(date -u +%T) waiting on #234·AL"; sleep 120
-done
+# Start gate: #234·AL (jpn apply) was STOOD DOWN for 24 Nov (Kai's Watson, 17:2xZ), so no wait on it; the writer cap
+# and the load gate below are the only gates.
 writers() { systemctl --user list-units --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
   | grep -E 'a2c|item|apply|night|tiles|relink|render|fill|record|8b' | grep -v -E '236|cohort' | wc -l; }
 waitw() { while [ "$(writers)" -ge 2 ]; do late && return 1; echo "$(date -u +%T) $(writers) other writers; waiting"; sleep 180; done; return 0; }
