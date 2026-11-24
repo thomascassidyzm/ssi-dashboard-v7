@@ -423,7 +423,7 @@ async function main() {
     }
     const sp = JSON.parse(fs.existsSync(path.join(ITEM, 'spend.json')) ? fs.readFileSync(path.join(ITEM, 'spend.json'), 'utf8') : '{}');
     save('listen-spec.json', { title: `${COURSE}: new clips from Kai's overnight run (${D.job}) — UNHEARD`,
-      intro: `Every clip ${D.job} rendered on the night of 23-24 Nov 2026 and linked live. Nobody has heard them yet. Spend: Cartesia ${sp.cartesia || 0}, Azure ${sp.azure || 0} characters.`, clips });
+      intro: `Every clip ${D.job} rendered on the night of 23-24 Nov 2026 and linked live. Nobody has heard them yet. Spend: ${(sp.cartesia || 0) + (sp.azure || 0) + (sp.other || 0)} characters (the render answers did not name the provider).`, clips });
     console.log(`listen: ${clips.length} clips → ${path.join(OUT, 'listen-spec.json')}`);
     return;
   }
