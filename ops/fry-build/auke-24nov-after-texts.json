@@ -1,0 +1,759 @@
+{
+ "family": "after",
+ "rows": [
+  {
+   "key": "LEGO:S0011L03",
+   "old": [
+    "after you finish talking",
+    "astû útpraat bist"
+   ],
+   "new": [
+    "after you finish talking",
+    "nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't",
+   "components": [
+    {
+     "known": "after you",
+     "target": "nei'tstû"
+    },
+    {
+     "known": "have finished talking",
+     "target": "útpraat bist"
+    }
+   ]
+  },
+  {
+   "key": "S0011L03B01",
+   "old": [
+    "to practise after you finish talking",
+    "oefenje astû útpraat bist"
+   ],
+   "new": [
+    "to practise after you finish talking",
+    "oefenje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03B02",
+   "old": [
+    "today after you finish talking",
+    "hjoed astû útpraat bist"
+   ],
+   "new": [
+    "today after you finish talking",
+    "hjoed nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03B03",
+   "old": [
+    "I'm going to practise after you finish talking",
+    "ik sil oefenje astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to practise after you finish talking",
+    "ik sil oefenje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03B04",
+   "old": [
+    "after you finish talking I'm going to try it",
+    "astû útpraat bist sil ik it besykje"
+   ],
+   "new": [
+    "after you finish talking I'm going to try it",
+    "nei'tstû útpraat bist sil ik it besykje"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03U01",
+   "old": [
+    "after you finish talking I'm going to try to explain what I mean",
+    "astû útpraat bist sil ik besykje út te lizzen wat ik bedoel"
+   ],
+   "new": [
+    "after you finish talking I'm going to try to explain what I mean",
+    "nei'tstû útpraat bist sil ik besykje út te lizzen wat ik bedoel"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03U02",
+   "old": [
+    "I want to practise speaking with someone else after you finish talking",
+    "ik wol mei in oar it praten oefenje astû útpraat bist"
+   ],
+   "new": [
+    "I want to practise speaking with someone else after you finish talking",
+    "ik wol mei in oar it praten oefenje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03U03",
+   "old": [
+    "I can speak a little after you finish talking",
+    "ik kin in bytsje prate astû útpraat bist"
+   ],
+   "new": [
+    "I can speak a little after you finish talking",
+    "ik kin in bytsje prate nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03U04",
+   "old": [
+    "I'm going to try as hard as I can after you finish talking",
+    "ik sil myn uterste bêst dwaan astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to try as hard as I can after you finish talking",
+    "ik sil myn uterste bêst dwaan nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03U05",
+   "old": [
+    "I'm going to practise speaking as much as possible after you finish talking",
+    "ik sil safolle mooglik it praten oefenje astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to practise speaking as much as possible after you finish talking",
+    "ik sil safolle mooglik it praten oefenje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0012L02U02",
+   "old": [
+    "I want to guess after you finish talking",
+    "ik wol riede astû útpraat bist"
+   ],
+   "new": [
+    "I want to guess after you finish talking",
+    "ik wol riede nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0012L04U03",
+   "old": [
+    "after you finish talking I'm going to say what's going to happen tomorrow",
+    "astû útpraat bist sil ik sizze wat der moarn bart"
+   ],
+   "new": [
+    "after you finish talking I'm going to say what's going to happen tomorrow",
+    "nei'tstû útpraat bist sil ik sizze wat der moarn bart"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0014L02U04",
+   "old": [
+    "after you finish talking I'm going to practise all day",
+    "astû útpraat bist sil ik de hiele dei oefenje"
+   ],
+   "new": [
+    "after you finish talking I'm going to practise all day",
+    "nei'tstû útpraat bist sil ik de hiele dei oefenje"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0015L03U04",
+   "old": [
+    "you speak Frisian with me after you finish talking",
+    "dû praatst Frysk mei my astû útpraat bist"
+   ],
+   "new": [
+    "you speak Frisian with me after you finish talking",
+    "dû praatst Frysk mei my nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0016L02U04",
+   "old": [
+    "I'm going to come back after you finish talking",
+    "ik sil weromkomme astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to come back after you finish talking",
+    "ik sil weromkomme nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0016L03U05",
+   "old": [
+    "I'm going to speak with you later on after you finish talking",
+    "ik sil letter mei dy prate astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to speak with you later on after you finish talking",
+    "ik sil letter mei dy prate nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0016L04U05",
+   "old": [
+    "I'd like to speak with everyone else after you finish talking",
+    "ik wol graach mei eltsenien prate astû útpraat bist"
+   ],
+   "new": [
+    "I'd like to speak with everyone else after you finish talking",
+    "ik wol graach mei eltsenien prate nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0017L03U06",
+   "old": [
+    "I'm going to say the answer after you finish talking",
+    "ik sil it antwurd sizze astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to say the answer after you finish talking",
+    "ik sil it antwurd sizze nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0017L04U03",
+   "old": [
+    "I'm going to say what the answer is after you finish talking",
+    "ik sil sizze wat it antwurd is astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to say what the answer is after you finish talking",
+    "ik sil sizze wat it antwurd is nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0018L02U04",
+   "old": [
+    "I want to meet everyone else after you finish talking",
+    "ik wol eltsenien moetsje astû útpraat bist"
+   ],
+   "new": [
+    "I want to meet everyone else after you finish talking",
+    "ik wol eltsenien moetsje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0018L03U03",
+   "old": [
+    "after you finish talking, he and I practise with each other in Frisian",
+    "astû útpraat bist, oefenje hy en ik mei inoar yn it Frysk"
+   ],
+   "new": [
+    "after you finish talking, he and I practise with each other in Frisian",
+    "nei'tstû útpraat bist, oefenje hy en ik mei inoar yn it Frysk"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0019L03U05",
+   "old": [
+    "after you finish talking I'm going to stop talking",
+    "astû útpraat bist sil ik ophâlde mei praten"
+   ],
+   "new": [
+    "after you finish talking I'm going to stop talking",
+    "nei'tstû útpraat bist sil ik ophâlde mei praten"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0020L02U08",
+   "old": [
+    "I'm going to say his name after you finish talking",
+    "ik sil syn namme sizze astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to say his name after you finish talking",
+    "ik sil syn namme sizze nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0020L03U03",
+   "old": [
+    "I'd like to come back quickly after you finish talking",
+    "ik wol graach fluch weromkomme astû útpraat bist"
+   ],
+   "new": [
+    "I'd like to come back quickly after you finish talking",
+    "ik wol graach fluch weromkomme nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0020L04U04",
+   "old": [
+    "after you finish talking I'm going to learn quickly",
+    "astû útpraat bist sil ik fluch leare"
+   ],
+   "new": [
+    "after you finish talking I'm going to learn quickly",
+    "nei'tstû útpraat bist sil ik fluch leare"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0021L03U03",
+   "old": [
+    "after you finish talking I'm going to say her name",
+    "astû útpraat bist, sil ik har namme sizze"
+   ],
+   "new": [
+    "after you finish talking I'm going to say her name",
+    "nei'tstû útpraat bist, sil ik har namme sizze"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0022L02U05",
+   "old": [
+    "after you finish talking I'm going to meet people",
+    "astû útpraat bist sil ik minsken moetsje"
+   ],
+   "new": [
+    "after you finish talking I'm going to meet people",
+    "nei'tstû útpraat bist sil ik minsken moetsje"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0023L01U06",
+   "old": [
+    "we want to meet each other soon after you finish talking",
+    "wy wolle inoar aanst moetsje astû útpraat bist"
+   ],
+   "new": [
+    "we want to meet each other soon after you finish talking",
+    "wy wolle inoar aanst moetsje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0023L02U04",
+   "old": [
+    "I'm going to start talking after you finish talking",
+    "ik begjin te praten astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to start talking after you finish talking",
+    "ik begjin te praten nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0024L02U05",
+   "old": [
+    "I'm going to memorise the answer after you finish talking",
+    "ik sil it antwurd ûnthâlde astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to memorise the answer after you finish talking",
+    "ik sil it antwurd ûnthâlde nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0025L02U05",
+   "old": [
+    "after you finish talking someone else is going to help me",
+    "astû útpraat bist sil in oar my helpe"
+   ],
+   "new": [
+    "after you finish talking someone else is going to help me",
+    "nei'tstû útpraat bist sil in oar my helpe"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0025L03U08",
+   "old": [
+    "after you finish talking I must go",
+    "astû útpraat bist moat ik gean"
+   ],
+   "new": [
+    "after you finish talking I must go",
+    "nei'tstû útpraat bist moat ik gean"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0027L03U05",
+   "old": [
+    "after you finish talking I don't like taking too much time",
+    "astû útpraat bist doch ik der net graach te lang oer"
+   ],
+   "new": [
+    "after you finish talking I don't like taking too much time",
+    "nei'tstû útpraat bist doch ik der net graach te lang oer"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0027L04U03",
+   "old": [
+    "after you finish talking I'm ready to answer",
+    "astû útpraat bist bin ik klear om te antwurdzjen"
+   ],
+   "new": [
+    "after you finish talking I'm ready to answer",
+    "nei'tstû útpraat bist bin ik klear om te antwurdzjen"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0030L03U04",
+   "old": [
+    "I'm going to ask after you finish talking",
+    "ik sil freegje astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to ask after you finish talking",
+    "ik sil freegje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0037L04U04",
+   "old": [
+    "after you finish talking I'm going to try to think about it carefully",
+    "astû útpraat bist sil ik besykje der goed oer nei te tinken"
+   ],
+   "new": [
+    "after you finish talking I'm going to try to think about it carefully",
+    "nei'tstû útpraat bist sil ik besykje der goed oer nei te tinken"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0040L02U04",
+   "old": [
+    "how do you feel after you finish talking?",
+    "hoe fielstû dy astû útpraat bist?"
+   ],
+   "new": [
+    "how do you feel after you finish talking?",
+    "hoe fielstû dy nei'tstû útpraat bist?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0045L02U02",
+   "old": [
+    "I don't need to talk after you finish talking",
+    "ik hoech net te praten astû útpraat bist"
+   ],
+   "new": [
+    "I don't need to talk after you finish talking",
+    "ik hoech net te praten nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0051L04U07",
+   "old": [
+    "after you finish talking I'm going to practise with my friends",
+    "astû útpraat bist sil ik mei myn freonen oefenje"
+   ],
+   "new": [
+    "after you finish talking I'm going to practise with my friends",
+    "nei'tstû útpraat bist sil ik mei myn freonen oefenje"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0059L02U07",
+   "old": [
+    "I'm going to read the story next week after you finish talking",
+    "ik sil takommende wike it ferhaal lêze astû útpraat bist"
+   ],
+   "new": [
+    "I'm going to read the story next week after you finish talking",
+    "ik sil takommende wike it ferhaal lêze nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0061L01U01",
+   "old": [
+    "after you finish talking could you show me something?",
+    "astû útpraat bist, kinstû my wat sjen litte?"
+   ],
+   "new": [
+    "after you finish talking could you show me something?",
+    "nei'tstû útpraat bist, kinstû my wat sjen litte?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0063L01U01",
+   "old": [
+    "after you finish talking, are you sure that you want to help me?",
+    "astû útpraat bist, bistû der wis fan datstû my helpe wolst?"
+   ],
+   "new": [
+    "after you finish talking, are you sure that you want to help me?",
+    "nei'tstû útpraat bist, bistû der wis fan datstû my helpe wolst?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0067L01U02",
+   "old": [
+    "after you finish talking, do you want to show me something?",
+    "astû útpraat bist, wolstû my wat sjen litte?"
+   ],
+   "new": [
+    "after you finish talking, do you want to show me something?",
+    "nei'tstû útpraat bist, wolstû my wat sjen litte?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0070L01U05",
+   "old": [
+    "I'd like to tell the story after you finish talking",
+    "ik wol it ferhaal graach fertelle astû útpraat bist"
+   ],
+   "new": [
+    "I'd like to tell the story after you finish talking",
+    "ik wol it ferhaal graach fertelle nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0074L02U06",
+   "old": [
+    "are you going to help me to understand it after you finish talking?",
+    "silstû my helpe om it te begripen astû útpraat bist?"
+   ],
+   "new": [
+    "are you going to help me to understand it after you finish talking?",
+    "silstû my helpe om it te begripen nei'tstû útpraat bist?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0075L01U03",
+   "old": [
+    "after you finish talking have you got the answer?",
+    "astû útpraat bist, hastû it antwurd?"
+   ],
+   "new": [
+    "after you finish talking have you got the answer?",
+    "nei'tstû útpraat bist, hastû it antwurd?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0075L02U05",
+   "old": [
+    "after you finish talking, have you got more to learn?",
+    "astû útpraat bist, hastû noch mear te learen?"
+   ],
+   "new": [
+    "after you finish talking, have you got more to learn?",
+    "nei'tstû útpraat bist, hastû noch mear te learen?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0081L01U04",
+   "old": [
+    "we want to start after you finish talking",
+    "wy wolle begjinne astû útpraat bist"
+   ],
+   "new": [
+    "we want to start after you finish talking",
+    "wy wolle begjinne nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0081L02U05",
+   "old": [
+    "after you finish talking, when do you want to start?",
+    "astû útpraat bist, wannear wolstû begjinne?"
+   ],
+   "new": [
+    "after you finish talking, when do you want to start?",
+    "nei'tstû útpraat bist, wannear wolstû begjinne?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0088L02U04",
+   "old": [
+    "I'm ready to talk after you finish talking",
+    "ik bin klear om te praten astû útpraat bist"
+   ],
+   "new": [
+    "I'm ready to talk after you finish talking",
+    "ik bin klear om te praten nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0090L02B01",
+   "old": [
+    "after you finish talking, that would be great",
+    "astû útpraat bist, soe dat noflik wêze"
+   ],
+   "new": [
+    "after you finish talking, that would be great",
+    "nei'tstû útpraat bist, soe dat noflik wêze"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0092L02U03",
+   "old": [
+    "we want to keep on doing this after you finish talking",
+    "wy wolle hjir mei trochgean astû útpraat bist"
+   ],
+   "new": [
+    "we want to keep on doing this after you finish talking",
+    "wy wolle hjir mei trochgean nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0106L03U04",
+   "old": [
+    "we just need to work hard after you finish talking",
+    "wy moatte gewoan hurd wurkje astû útpraat bist"
+   ],
+   "new": [
+    "we just need to work hard after you finish talking",
+    "wy moatte gewoan hurd wurkje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0154L02B03",
+   "old": [
+    "where do you want to meet after you finish talking?",
+    "wêr wolstû moetsje astû útpraat bist?"
+   ],
+   "new": [
+    "where do you want to meet after you finish talking?",
+    "wêr wolstû moetsje nei'tstû útpraat bist?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0158L03U02",
+   "old": [
+    "after you finish talking, let's talk about something else",
+    "astû útpraat bist, litte wy oer wat oars prate"
+   ],
+   "new": [
+    "after you finish talking, let's talk about something else",
+    "nei'tstû útpraat bist, litte wy oer wat oars prate"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0161L03B04",
+   "old": [
+    "after you finish talking can you give me that book?",
+    "astû útpraat bist, kinstû my dat boek jaan?"
+   ],
+   "new": [
+    "after you finish talking can you give me that book?",
+    "nei'tstû útpraat bist, kinstû my dat boek jaan?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0161L03U02",
+   "old": [
+    "after you finish talking can you give me that book before I have to go?",
+    "astû útpraat bist, kinstû my dat boek jaan foar't ik gean moat?"
+   ],
+   "new": [
+    "after you finish talking can you give me that book before I have to go?",
+    "nei'tstû útpraat bist, kinstû my dat boek jaan foar't ik gean moat?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0167L02B03",
+   "old": [
+    "what do you need to do after you finish talking?",
+    "wat moatstû dwaan astû útpraat bist?"
+   ],
+   "new": [
+    "what do you need to do after you finish talking?",
+    "wat moatstû dwaan nei'tstû útpraat bist?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0174L01U01",
+   "old": [
+    "after you finish talking can you understand what I wanted to say?",
+    "astû útpraat bist, kinstû begripe wat ik sizze woe?"
+   ],
+   "new": [
+    "after you finish talking can you understand what I wanted to say?",
+    "nei'tstû útpraat bist, kinstû begripe wat ik sizze woe?"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0177L01U03",
+   "old": [
+    "I'll ask her after you finish talking",
+    "ik sil har freegje astû útpraat bist"
+   ],
+   "new": [
+    "I'll ask her after you finish talking",
+    "ik sil har freegje nei'tstû útpraat bist"
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "SEED11",
+   "old": [
+    "I'd like to be able to speak after you finish talking.",
+    "Ik wol graach prate astû útpraat bist."
+   ],
+   "new": [
+    "I'd like to be able to speak after you finish talking.",
+    "Ik wol graach prate nei'tstû útpraat bist."
+   ],
+   "why": "item 4: as = when; after = nei't"
+  },
+  {
+   "key": "S0011L03C01",
+   "old": [
+    "when you",
+    "astû"
+   ],
+   "new": [
+    "after you",
+    "nei'tstû"
+   ],
+   "why": "item 4: the component row the LEGO shows"
+  }
+ ]
+}
