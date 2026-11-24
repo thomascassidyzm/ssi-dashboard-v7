@@ -1,0 +1,20 @@
+[
+ {
+  "role": "known",
+  "text": "それについて考えようとするのをやめたくありません",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0091L02U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 91,
+  "real": {
+   "status": 403,
+   "charsSpent": 0,
+   "code": "APPROVAL_UNVERIFIED",
+   "error": "approval refused — its origin could not be verified: the Command Surface could not be reached to confirm the seat (ECONNREFUSED). Send the approval from a Command Surface conversation on the seat it names, with header x-cs-conv set to that conversation's own token (tools pick it up from env CS_CONV_TOKEN). Kai's seat signs kai:…, Tom's seat signs tom:…. Do not retry or route around this."
+  }
+ }
+]
