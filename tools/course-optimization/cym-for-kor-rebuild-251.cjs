@@ -132,6 +132,8 @@ async function korean(rng, conc, assignPath, korPath) {
           fs.mkdirSync(EV, { recursive: true }); fs.writeFileSync(path.join(EV, `ko-raw-${sid(s)}.txt`), raw);
           const j = raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1);
           const parsed = JSON.parse(j);
+          // the model sometimes keys a LEGO "cym_for_kor:S0090L04": re-key by the S####L## inside
+          parsed.legos = Object.fromEntries(Object.entries(parsed.legos || {}).map(([k, v]) => [(String(k).match(/S\d{4}L\d{2}/) || [k])[0], v]));
           // completeness: every original of every LEGO answered with Korean
           const miss = legos.filter((g) => g.originals.length && (!parsed.legos?.[g.lego] || (parsed.legos[g.lego].originals || []).filter((x) => x.ko || x.ok === false).length < g.originals.length));
           if (miss.length) throw new Error(`incomplete: ${miss.map((g) => g.lego).join(',')}`);
