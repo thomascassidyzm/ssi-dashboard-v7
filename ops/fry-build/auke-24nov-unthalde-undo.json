@@ -1,0 +1,227 @@
+{
+ "family": "unthalde",
+ "event_id": "9994635e-6605-4bfa-8c56-1967641c34d4",
+ "undo_file_on_popty": "2026-11-24T15-05-11-326Z-9994635e-6605-4bfa-8c56-1967641c34d4.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "LEGO:S0056L02",
+  "S0056L02B01",
+  "S0056L02B02",
+  "S0056L02B03",
+  "S0056L02U01",
+  "S0056L02U02",
+  "S0056L02U03",
+  "S0056L02U05",
+  "S0056L02U06",
+  "S0056L02U07",
+  "S0161L03B03",
+  "S0172L01U01",
+  "S0168L03U04",
+  "S0024L03B03",
+  "S0024L03B04",
+  "S0026L02U05",
+  "S0091L02B01",
+  "S0091L02U01"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L02U01",
+   "set": {
+    "known_text": "I'm not going to be able to memorise quickly enough",
+    "target_text": "ik sil net fluch genôch ûnthâlde kinne",
+    "known_audio_id": "b6b99093-9171-41b7-8930-5099f514d21f",
+    "target1_audio_id": "746a53ab-4b21-4dd8-ab51-8a0c381bbcad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0091L02B01",
+   "set": {
+    "known_text": "to be able to memorise quickly enough",
+    "target_text": "fluch genôch ûnthâlde kinne",
+    "known_audio_id": "f2c5b7e3-ec54-452e-8683-8e1c30441cce",
+    "target1_audio_id": "b8bba04c-b9fb-435a-8ce6-94a2ec9b3bb9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U05",
+   "set": {
+    "known_text": "I like it when I have the feeling that I can memorise easily",
+    "target_text": "ik fyn it noflik as ik it gefoel ha dat ik maklik ûnthâlde kin",
+    "known_audio_id": "ee4a7e00-b128-4364-8525-eb8e07e782a5",
+    "target1_audio_id": "dcf0b170-a7ef-40d9-afae-c5963d3a2fae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03B04",
+   "set": {
+    "known_text": "we want to be able to memorise",
+    "target_text": "wy wolle ûnthâlde kinne",
+    "known_audio_id": "95c7599c-6b01-4dd1-9037-56869bbb3cc1",
+    "target1_audio_id": "6327891a-7553-4c27-bb74-09984f70fbb4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L03B03",
+   "set": {
+    "known_text": "I'm going to be able to memorise",
+    "target_text": "ik sil ûnthâlde kinne",
+    "known_audio_id": "d5275a98-2eb8-43c9-a345-02c7f8454628",
+    "target1_audio_id": "3ebb0ae6-9cf0-446d-83f9-dc1d2868342b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0168L03U04",
+   "set": {
+    "known_text": "could you say that again a little more slowly and then I'll be able to memorise?",
+    "target_text": "kinstû dat noch in kear in bytsje stadiger sizze en dan sil ik ûnthâlde kinne?",
+    "known_audio_id": "dec3d944-1f6d-47f3-8cd9-02d9ac705ba7",
+    "target1_audio_id": "3dcc7d0d-bd32-4730-8682-95694877d018"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0172L01U01",
+   "set": {
+    "known_text": "that would help me a lot so I can memorise",
+    "target_text": "dat soe my tige helpe sadat ik ûnthâlde kin",
+    "known_audio_id": "0ad33534-e254-400d-b1eb-d9b2010d8990",
+    "target1_audio_id": "9ce97baf-3365-4a7d-b929-c21348f17506"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03B03",
+   "set": {
+    "known_text": "can you give me that book so I can memorise?",
+    "target_text": "kinstû my dat boek jaan sadat ik ûnthâlde kin?",
+    "known_audio_id": "9fb8979d-157f-469d-9007-6721476aea43",
+    "target1_audio_id": "897b2966-948e-445a-8be0-f674ef37fabc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U07",
+   "set": {
+    "known_text": "I'm going to try as hard as I can so I can memorise",
+    "target_text": "ik sil myn uterste bêst dwaan sadat ik ûnthâlde kin",
+    "known_audio_id": "342c36e9-bd1c-4bdb-8ce4-32f71eae73e7",
+    "target1_audio_id": "a9a263da-599c-49f2-af83-83f55b8f086f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U06",
+   "set": {
+    "known_text": "I'm going to write a letter today so I can memorise",
+    "target_text": "ik sil hjoed in brief skriuwe sadat ik ûnthâlde kin",
+    "known_audio_id": "fbb82c19-6ca0-4883-865a-98b3047a79ca",
+    "target1_audio_id": "0dffaa68-fda8-4943-9a3e-15364a6ec0f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U05",
+   "set": {
+    "known_text": "I want you to speak with me so I can memorise",
+    "target_text": "ik wol datstû mei my praatst sadat ik ûnthâlde kin",
+    "known_audio_id": "e698db0d-8d26-4dda-95d5-f3b32daad9ca",
+    "target1_audio_id": "19ff4e47-7872-48d9-87d4-ef6df4ea67b5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U03",
+   "set": {
+    "known_text": "I'd like a little more time so I can memorise",
+    "target_text": "ik wol graach in bytsje mear tiid sadat ik ûnthâlde kin",
+    "known_audio_id": "855c2118-9894-4532-af64-a2e1ae0db445",
+    "target1_audio_id": "152a578e-cb9d-4ddd-90b7-6803e2860504"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U02",
+   "set": {
+    "known_text": "I'm not trying to finish as quickly as possible so I can memorise",
+    "target_text": "ik besykje net sa fluch mooglik klear te wêzen sadat ik ûnthâlde kin",
+    "known_audio_id": "b136421a-d42f-4758-b658-4e105763b2f8",
+    "target1_audio_id": "ad8db406-d897-4ca2-a76b-0d50658efa62"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U01",
+   "set": {
+    "known_text": "are you going to help me so I can memorise?",
+    "target_text": "silstû my helpe sadat ik ûnthâlde kin?",
+    "known_audio_id": "5035ea84-db80-4247-b0f9-92f9b4a4f503",
+    "target1_audio_id": "3487b640-8f68-401c-9a5e-2d323a646ade"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02B03",
+   "set": {
+    "known_text": "I'd like to practise so I can memorise",
+    "target_text": "ik wol graach oefenje sadat ik ûnthâlde kin",
+    "known_audio_id": "617bb9b5-b409-4ac4-9d17-f9ff81be043c",
+    "target1_audio_id": "4f3758ac-9bf3-4b9a-b8d5-5039981f244e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02B02",
+   "set": {
+    "known_text": "I'm trying to learn so I can memorise",
+    "target_text": "ik besykje te learen sadat ik ûnthâlde kin",
+    "known_audio_id": "8d8b7897-bbb8-4eca-90b0-d8f6c89d9a89",
+    "target1_audio_id": "d6d09b6a-c350-42dd-b90f-bcdf4068363f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02B01",
+   "set": {
+    "known_text": "I'm going to practise so I can memorise",
+    "target_text": "ik sil oefenje sadat ik ûnthâlde kin",
+    "known_audio_id": "d8ed282f-acbb-467f-9a20-23aa74b2d37b",
+    "target1_audio_id": "819d1735-08e5-4083-90c2-2c8ef8c7fb0d"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "28939483-49d0-41f4-8ecb-13f676998bb7",
+   "set": {
+    "known_text": "so I can memorise",
+    "target_text": "sadat ik ûnthâlde kin",
+    "components": [
+     {
+      "known": "so that",
+      "target": "sadat"
+     },
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "to memorise",
+      "target": "ûnthâlde"
+     },
+     {
+      "known": "can",
+      "target": "kin"
+     }
+    ],
+    "known_audio_id": "5dcc62d9-9048-4ad8-bb1c-fbb92a121319",
+    "target1_audio_id": "c66c5610-01af-4610-9936-b853a5ae10fd",
+    "presentation_audio_id": "53c212f4-0b47-45a8-a079-ab2a135282c5"
+   }
+  }
+ ]
+}

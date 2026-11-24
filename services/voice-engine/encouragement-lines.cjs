@@ -145,10 +145,18 @@ const MAX_SUPERSEDE_HOPS = 8
 /**
  * shared_audio's unique key is (text_normalized, language, audio_type) as of 2026-11-24. A replace inserts a live row
  * of the same type beside the one it retires, so a fresh take of UNCHANGED words collides with it (23505) until that
- * key leaves the encouragement types out. The router answers that plainly rather than as a bare database error.
+ * key leaves retired rows out (learning-app migration 20261124b; the router now swaps through its one-transaction function). The router answers that plainly rather than as a bare database error.
  */
 function isUniqueClash(error) {
   return !!error && (error.code === '23505' || /unique_shared_audio|duplicate key/i.test(String(error.message || '')))
+}
+
+/** The swap function is not in the database yet (migration 20261124b not applied): PostgREST PGRST202 / pg 42883. */
+function isMissingSwapFunction(error) {
+  if (!error) return false
+  if (error.code === 'PGRST202' || error.code === '42883') return true
+  const msg = String(error.message || '')
+  return /encouragement_replace_take/i.test(msg) && /could not find|does not exist/i.test(msg)
 }
 
 /**
@@ -173,7 +181,19 @@ function planEncouragementSwap(row, clip, recordist, now = new Date().toISOStrin
   return {
     mode: 'replace',
     newId,
-    // INSERT FIRST, RETIRE SECOND: the worst moment is one duplicate line, never a missing one.
+    // THE ONE-TRANSACTION SWAP (job #194·AL, learning-app migration 20261124b_encouragements_fresh_take.sql):
+    // public.encouragement_replace_take retires the old row and inserts this one in a single statement, so no reader
+    // sees the line missing or twice, and a take of UNCHANGED words no longer hits the unique key. It returns the new
+    // id, or null when the old row was no longer that live row (nothing written).
+    rpc: {
+      fn: 'encouragement_replace_take',
+      args: {
+        p_old_id: row.id, p_old_type: row.audio_type, p_new_id: newId, p_text: words, p_s3_key: clip.s3Key,
+        p_duration_ms: clip.durationMs ?? null, p_voice_id: recordist.voiceId, p_updated_by: by,
+      },
+    },
+    // FALLBACK, only until that migration is applied: INSERT FIRST, RETIRE SECOND — the worst moment is one duplicate
+    // line, never a missing one. Unchanged words still collide on the old full key (23505) on this path.
     insert: { id: newId, line_key: row.line_key || row.id, language: MASTER_LANGUAGE, sequence: row.sequence ?? null, ...filled },
     retire: { id: row.id, whereType: row.audio_type, set: { audio_type: `${kind}_retired`, superseded_by: newId, updated_at: now, updated_by: by } },
   }
@@ -182,5 +202,5 @@ function planEncouragementSwap(row, clip, recordist, now = new Date().toISOStrin
 module.exports = {
   ENCOURAGEMENT_PREFIX, ENCOURAGEMENT_KIND, ENCOURAGEMENT_VOICES, FILE_UNDER, MASTER_LANGUAGE, READ_TYPES,
   MAX_SUPERSEDE_HOPS, encouragementLineId, parseEncouragementLineId, hasCard, isCardRow, isDraft, encouragementLinesFor,
-  resolveEncouragementLine, planEncouragementSwap, isUniqueClash,
+  resolveEncouragementLine, planEncouragementSwap, isUniqueClash, isMissingSwapFunction,
 }

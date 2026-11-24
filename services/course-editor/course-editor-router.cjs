@@ -12,7 +12,7 @@
  *
  *   GET    /                    { items, total, proposals, audioMode } — new LEGOs + their build/use phrases, running order
  *   PUT    /flag                { kind: lego|phrase, id, flagged, note } — the proof pages' flag tables, unchanged
- *   POST   /proposals           { kind, id, action: edit|remove, known?, target? } — store a pending change (no course write)
+ *   POST   /proposals           { kind, id, action: edit|remove, known?, target?, note? } — store a pending change (no course write)
  *   DELETE /proposals/:pid      discard a pending proposal
  *   POST   /proposals/:pid/apply   make it real (content write — listed in shared/content-write-surfaces.cjs)
  *   POST   /proposals/:pid/undo    post the door's undo back (content write — listed there too)
@@ -49,6 +49,15 @@ const INTRO_MAX = 1000
  */
 const FINE_TUNE_EDITORS = (process.env.FINE_TUNE_EDITORS || 'aran@hey.com').split(',').map((e) => e.trim().toLowerCase()).filter(Boolean)
 const isFineTuner = (req) => !!req.editorSignedIn && FINE_TUNE_EDITORS.includes(String(req.editorWho || '').toLowerCase())
+/**
+ * AN AGENT MAY PROPOSE, NEVER APPLY (cs #178·AL, 2026-11-24: Aran's Watson loads draft proposals for him to review). A
+ * named same-host agent (x-agent-id, loopback only) may store a PENDING proposal — a note, no course write — filed as
+ * "<agent> for <first fine-tune editor>", so the page says whose draft it is and for whom. Apply, undo, discard and
+ * render stay the fine-tuning editors' alone (writer below).
+ */
+const proposerName = (req) => (isFineTuner(req) ? req.editorWho : req.editorAgent ? `${req.editorAgent} for ${FINE_TUNE_EDITORS[0] || 'the editor'}` : null)
+// A proposal's optional NOTE: plain text (rendered as text, never HTML) — the reasoning, or a "native-speaker check".
+const NOTE_MAX = 1000
 
 /**
  * A NEW LINE'S SLOT ID (copy / add). Learner progress is filed by the phrase id (its slot), so a hand-added line is an
@@ -109,7 +118,13 @@ function buildEditorList(courseCode, legos, phrases, order, legoFlags, phraseFla
   return { total: items.length, items, usesTarget2: usesT2 }
 }
 
-/** Validate a proposal body. Returns { p } or { error }. */
+/** Validate a proposal body. Returns { p } or { error }. The optional note is checked and added by the caller. */
+function proposalNote(body) {
+  if (body == null || body.note == null || body.note === '') return { note: null }
+  const v = String(body.note).replace(/[\u0000-\u0008\u000b-\u001f]/g, '').replace(/[ \t]+/g, ' ').trim()
+  if (v.length > NOTE_MAX) return { error: `the note is over ${NOTE_MAX} characters` }
+  return { note: v || null }
+}
 function proposalInput(body) {
   const kind = body && body.kind
   const clean = (v, max) => String(v).replace(/\s+/g, ' ').trim().slice(0, max + 1)
@@ -198,6 +213,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         const agent = String(req.get('x-agent-id') || '').trim()
         if (!agent) return res.status(401).json({ error: 'same-host caller: send x-agent-id' })
         req.editorWho = agent
+        req.editorAgent = agent
         return next()
       }
       const user = await requireAdmin(req, res)
@@ -516,9 +532,12 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
   router.post('/proposals', express.json({ limit: '16kb' }), async (req, res) => {
     try {
       const { courseCode } = req.params
-      if (!writer(req, res)) return
+      const proposedBy = proposerName(req)
+      if (!proposedBy) { req.contentEdit?.wroteNothing(); return res.status(403).json({ error: 'Only Aran can change the course here for now — you can look at everything.', code: 'FINE_TUNE_EDITOR_ONLY' }) }
       const { p, error } = proposalInput(req.body)
       if (error) return res.status(400).json({ error })
+      const { note, error: noteError } = proposalNote(req.body)
+      if (noteError) return res.status(400).json({ error: noteError })
       const ready = await lockReady()
       // Order and copy only exist with the lock: without it they could be overwritten unseen. (An intro edit, like a text
       // edit, lands without it — unprotected, and the page says so.)
@@ -563,12 +582,12 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         if (list.some((x) => x.kind === p.kind && x.key === key && inflight.has(x.id))) return { busy: true }
         // One open proposal per line: a new one replaces a pending one.
         for (let i = list.length - 1; i >= 0; i--) if (list[i].kind === p.kind && list[i].key === key && ['pending', 'stale', 'failed'].includes(list[i].status)) list.splice(i, 1)
-        const rec = { id: proposals.newId(), kind: p.kind, key, line: p.id, lego: legoOfLine, action: p.action, before, after, proposedBy: req.editorWho, proposedAt: new Date().toISOString(), status: 'pending' }
+        const rec = { id: proposals.newId(), kind: p.kind, key, line: p.id, lego: legoOfLine, action: p.action, before, after, ...(note ? { note } : {}), proposedBy, proposedAt: new Date().toISOString(), status: 'pending' }
         list.push(rec)
         return rec
       })
       if (saved.busy) return res.status(409).json({ error: 'a change to this line is being applied or undone — wait a moment and reload', code: 'IN_PROGRESS' })
-      log.info(`[course-editor] ${courseCode}: proposed ${p.action} ${p.kind} ${p.id} by ${req.editorWho}`)
+      log.info(`[course-editor] ${courseCode}: proposed ${p.action} ${p.kind} ${p.id} by ${proposedBy}`)
       res.json({ ok: true, proposal: saved })
     } catch (e) {
       log.error(`[course-editor] propose ${req.params.courseCode}: ${e.message}`)

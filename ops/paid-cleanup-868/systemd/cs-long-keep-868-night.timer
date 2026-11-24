@@ -1,0 +1,9 @@
+[Unit]
+Description=cs #868 night runner 22:10 UTC (24 + 25 Nov windows)
+
+[Timer]
+OnCalendar=*-*-* 22:10:00 UTC
+Persistent=false
+
+[Install]
+WantedBy=timers.target

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # cs #868 night runner (Kai's paid-cleanup limbo finish; approved families). Fired by cs-long-keep-868-night.timer
-# (22:10 UTC). Runs from the job's own checkout (ledgers <file>.applied.jsonl live beside each changeset there).
+# (22:10 UTC). Runs from the DURABLE checkout ~/.cs-long/868/popty (detached worktree, ff-only to origin/main by the unit
+# before exec), never the job worktree, which can be removed overnight; ledgers <file>.applied.jsonl live beside each
+# changeset there and are committed to main from it the next morning. Unit failure wakes the job (OnFailure).
 #   a) Popty /health must say governed:true; waits while 2+ other DB writers run (cap 3), gives up at 05:30 UK;
 #   b) builds kor_for_tam's item-6 changeset once (text + audio.link to clips rendered by day: make-before-break);
 #   c) per changeset, in Kai's order (item 6 before item 4): Kai's live pre-check of seed + LEGO text
@@ -8,7 +10,7 @@
 #      governed applier, 25 ops per transaction, never --urgent. 75 = window closed; 1 = stopped on an error;
 #   d) wakes the job with the numbers. Token from a 0600 file, never argv.
 set -u
-W=/home/tomcassidy/.cs-worktrees/ssi-dashboard-v7-clean/868-paid-cleanup-limbo-finish-item5-
+W=${W868:-$HOME/.cs-long/868/popty}
 D=$HOME/.cs-long/868; LOG="$D/night-$(date -u +%Y%m%d).log"; exec >>"$LOG" 2>&1
 SELF=1a7af9ed-9077-4f45-9354-1a5218876914
 say() { node "$HOME/command-surface/tools/cs-wake-send.cjs" "$SELF" "$(cat $D/.tok)" "$1"; }
