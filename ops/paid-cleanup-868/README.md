@@ -24,3 +24,5 @@ Item 5 FILLED 24 Nov 08:1xZ: 250/250 slots linked (library 32, rendered 218), 8,
 | L5 item 8 | planning by #877·AK (brief `item8/BRIEF.md`) | `item8/slots.json` | tbd |
 
 `ops/paid-cleanup-item6-703/apply.py` gained `ITEM6_FROM_COPY=1` (prepare from a copy dump instead of a live read).
+
+OWED after the pan/guj fill (Kai's Watson, 24 Nov): guj S0559L02U08 known was refused APPROVAL_UNVERIFIED in the 08:30Z surface restart (an outage, not a guard verdict). Send it ONCE to /api/audio/render with dryRun:true; if accepted, one real ask with the live pre-check; if refused, record the reason. No retry loop.
