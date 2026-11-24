@@ -25,11 +25,15 @@ const AGENT = opt('--agent', 'kai-868');
 const PURPOSE = opt('--purpose', 'cs #868 paid-cleanup limbo finish (Kai-approved fix, its audio)');
 const APPROVAL = opt('--approval', null);
 if (!file || !CAP) { console.error('usage: fill.cjs <slots.json> --cap <chars> [...]'); process.exit(2); }
-const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT|APPROVAL_UNVERIFIED/i;
+const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT|APPROVAL_UNVERIFIED/i; // APPROVAL_UNVERIFIED is a real refusal now
+// cs #43·AL: APPROVAL_CHECK_UNAVAILABLE (surface down past render.cjs's back-off) is not logged: slot stays unanswered, run stops.
+// An old-route outage record (APPROVAL_UNVERIFIED "could not be reached") counts as unanswered and is asked again.
+const { isOutageRefusal } = require('../../../services/shared/approval-origin.cjs');
 const ledger = file.replace(/\.json$/, '') + '.ledger.jsonl';
 const recs = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
 const key = (s) => `${s.course}|${s.target}|${s.id}|${s.role}`;
-const answered = new Set(recs.map((r) => r.key));
+const lastRec = new Map(recs.map((r) => [r.key, r]));
+const answered = new Set([...lastRec].filter(([, r]) => !isOutageRefusal(r)).map(([k]) => k));
 const isCartesia = (v) => !v || !/^azure|^eleven|^google|^human|^xai/i.test(String(v));
 let spent = recs.filter((r) => r.ok && isCartesia(r.voiceId)).reduce((a, r) => a + (Number(r.charsSpent) || 0), 0);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -62,6 +66,7 @@ async function gate() {
     if (APPROVAL && process.env.CS_CONV_TOKEN) args.push('--approval', APPROVAL);
     let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
     let r; try { r = JSON.parse(out); } catch { r = null; }
+    if (r && r.code === 'APPROVAL_CHECK_UNAVAILABLE') { bump('try_later'); stop = 'try later: Command Surface down past render.cjs back-off'; break; }
     if (!r || !(r.ok || r.code)) { bump('no_answer'); console.log(k, 'NO_ANSWER:', String(out).slice(0, 200)); continue; }
     const rec = { at: new Date().toISOString(), key: k, ...s, ok: !!r.ok, source: r.source, code: r.code, audioId: r.audioId,
       voiceId: r.voiceId || r.voice || null, charsSpent: r.charsSpent || 0, error: r.error && String(r.error).slice(0, 400) };
