@@ -5,7 +5,7 @@ OnFailure=cs-long-keep-868-night-fail.service
 [Service]
 Type=oneshot
 Slice=cs-workers.slice
-RuntimeMaxSec=9h
+TimeoutStartSec=9h
 Nice=10
 Environment=CS_DB_WORKER=1
 Environment=PATH=/home/tomcassidy/command-surface/ops/db-shims:/usr/local/bin:/usr/bin:/bin
