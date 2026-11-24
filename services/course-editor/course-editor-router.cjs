@@ -663,7 +663,8 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       // NEW INTRO AUDIO speaks Aran's intro wording (course_legos.intro_text). The render door files the clip and, for a
       // presentation render that names its LEGO, points the LEGO at it itself — the old clip is kept (make-before-break).
       if (presentation && !nul(live.intro_text)) return res.status(409).json({ error: 'set the intro wording first — new intro audio speaks that text' })
-      const text = presentation ? live.intro_text : b.role === 'known' ? live.known_text : live.target_text
+      // The editor shows the clip's SSML pauses as ‹pause› (LiveCourseEditor readable()); they go back to SSML for TTS.
+      const text = presentation ? live.intro_text.replace(/\s*‹pause›\s*/g, ' <break time="300ms"/> ').trim() : b.role === 'known' ? live.known_text : live.target_text
       const r = await fetch(renderUrl(req), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-agent-id': `course-editor:${req.editorWho}` },

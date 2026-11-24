@@ -72,7 +72,7 @@
             <div v-if="introText" class="introtext">{{ introText }}</div>
             <div v-else class="introtext none">{{ lego.clip === null ? 'No spoken introduction is linked to this item.' : 'The introduction clip carries no text.' }}</div>
             <div v-if="lego.intro != null && lego.clip != null && lego.intro !== lego.clip" class="introold">
-              The intro audio still says: “{{ lego.clip }}”
+              The intro audio still says: “{{ readable(lego.clip) }}”
               <button v-if="canEdit && audioMode === 'tts'" class="mini" @click="renderAsk('lego', open.l, 'presentation')">Make new intro audio</button>
             </div>
             <div v-if="renderState[`lego:${open.l}:presentation`]" class="render">
@@ -231,7 +231,9 @@ const pageFrom = computed(() => (listed.value.length ? page.value * PAGE + 1 : 0
 const pageTo = computed(() => Math.min(listed.value.length, page.value * PAGE + PAGE))
 const open = computed(() => { const n = Number(route.query.round); return n ? roundByN.value.get(n) || null : null })
 const lego = computed(() => (open.value ? L(open.value) : NONE))
-const introText = computed(() => lego.value.intro ?? lego.value.clip ?? '')
+// The intro clip's text is the TTS script, SSML and all ("…, is: <break time="300ms"/>"): shown readable, pauses marked.
+const readable = (s) => String(s || '').replace(/<break[^>]*\/?>/g, ' ‹pause› ').replace(/<[^>]+>/g, '').replace(/(\s*‹pause›\s*)+/g, ' ‹pause› ').replace(/\s+/g, ' ').trim()
+const introText = computed(() => lego.value.intro ?? readable(lego.value.clip))
 const practice = computed(() => localOrder.value || (open.value ? open.value.p : []))
 
 // ---- proposals: which one belongs to which line ---------------------------------------------------------------------
@@ -385,7 +387,7 @@ async function call(method, path, body) {
 function startEdit(kind, id, line) {
   const k = `${kind}:${id}`
   if (editing[k]) return
-  const orig = { tx: line.tx, kn: line.kn || '', ro: line.ro || '', intro: kind === 'lego' ? (line.intro ?? line.clip ?? '') : '' }
+  const orig = { tx: line.tx, kn: line.kn || '', ro: line.ro || '', intro: kind === 'lego' ? (line.intro ?? readable(line.clip)) : '' }
   editing[k] = { ...orig, orig }
 }
 async function propose(k, body, okText) {
@@ -498,7 +500,7 @@ if (course.value) load()
   --ink: #0b1220; --muted: #475569; --line: #cbd5e1; --en: #1e40af; --violet: #6d28d9; --amber: #b45309; --good: #047857; --bad: #b91c1c;
   max-width: 980px; min-height: 100vh; margin: 0 auto; padding: 0 0.5rem 5rem; background: #fff; color: var(--ink); color-scheme: light;
 }
-.top { position: sticky; top: var(--app-navbar-height, 0px); z-index: 5; background: #fff; padding: 0.5rem 0.25rem 0.35rem; border-bottom: 1px solid var(--line); }
+.top { background: #fff; padding: 0.5rem 0.25rem 0.35rem; border-bottom: 1px solid var(--line); }
 .bar { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.2rem 0; }
 h1 { font-size: 1.35rem; margin: 0; flex: 1; }
 button { font: inherit; color: inherit; cursor: pointer; }
