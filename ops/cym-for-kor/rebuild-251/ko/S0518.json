@@ -55,7 +55,27 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0518L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L01B01",
+     "keep": false,
+     "why": "Only 2 needed. 이사하다 also narrows symud (move) to moving house."
+    },
+    {
+     "id": "cym_for_kor:S0518L01B04",
+     "keep": false,
+     "why": "Only 2 needed. The Korean tense of 원한다고 해도 does not mirror tasai hi isio, and the row is long for a BUILD."
+    }
+   ]
   },
   "S0518L02": {
    "originals": [
@@ -299,7 +319,52 @@
      "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0518L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03B01",
+     "keep": false,
+     "why": "Only 2 needed; the two complete sentences were kept instead of this fragment."
+    },
+    {
+     "id": "cym_for_kor:S0518L03B03",
+     "keep": false,
+     "why": "Only 2 needed; the two complete sentences were kept instead of this fragment."
+    },
+    {
+     "id": "cym_for_kor:S0518L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L03U05",
+     "keep": false,
+     "why": "Odd meaning (I help myself when I worry), and only 5 needed."
+    }
+   ]
   },
   "S0518L04": {
    "originals": [
@@ -388,7 +453,37 @@
      "why": "'dw i'n cael hi'n anodd' is the idiom 'find it hard', not 겪다."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0518L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L04U01",
+     "keep": false,
+     "why": "Only 2 needed."
+    },
+    {
+     "id": "cym_for_kor:S0518L04U02",
+     "keep": false,
+     "why": "Only 2 needed."
+    },
+    {
+     "id": "cym_for_kor:S0518L04U04",
+     "keep": false,
+     "why": "Only 2 needed."
+    },
+    {
+     "id": "cym_for_kor:S0518L04U06",
+     "keep": false,
+     "why": "Only 2 needed."
+    }
+   ]
   },
   "S0518L05": {
    "originals": [
@@ -566,7 +661,38 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0518L06U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L06U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0518L06U01",
+     "keep": false,
+     "why": "Only 2 needed. North Welsh more naturally says ddaeth."
+    },
+    {
+     "id": "cym_for_kor:S0518L06U02",
+     "keep": false,
+     "why": "Only 2 needed. 예전에 살았어 does not clearly mark arfer, so plain past is a second possible answer."
+    },
+    {
+     "id": "cym_for_kor:S0518L06U04",
+     "keep": false,
+     "why": "Only 2 needed."
+    },
+    {
+     "id": "cym_for_kor:S0518L06U05",
+     "keep": false,
+     "why": "Only 2 needed, and the row is long."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:20:43.049Z"
 }

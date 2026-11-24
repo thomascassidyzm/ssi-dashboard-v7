@@ -116,7 +116,39 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0263L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0263L02U04",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0263L02U06",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0263L02U02",
+     "keep": false,
+     "why": "The Korean '미안해 하지만' reads stiffly, and the slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0263L02U03",
+     "keep": false,
+     "why": "'알지 못했어' is a stilted way to say 'didn't know', and the slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0263L02U05",
+     "keep": false,
+     "why": "Long and clunky in Korean, and the slot is already filled"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:04:27.063Z"
 }

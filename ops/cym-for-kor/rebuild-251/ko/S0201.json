@@ -132,7 +132,44 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0201L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0201L04U05",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed and U03 is shorter and cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U04",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U01",
+     "keep": false,
+     "why": "들었어 could mean either 'wyt ti wedi clywed' or 'glywaist ti', so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U02",
+     "keep": false,
+     "why": "Only one USE was needed; this one is longer and its reported-speech structure is weaker"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U06",
+     "keep": false,
+     "why": "Only one USE was needed; 유감이지만 is a loose rendering of 'mae arna i ofn'"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U07",
+     "keep": false,
+     "why": "Only one USE was needed; 상관없어 could also be 'dim ots gen i' without 'does', so it is a weaker ZUT fit"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:01:06.089Z"
 }

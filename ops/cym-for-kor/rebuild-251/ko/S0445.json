@@ -62,6 +62,22 @@
      "keep": false,
      "why": "Fine, but surplus, and too long for this seed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0445L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0445L01U01",
+     "keep": false,
+     "why": "Good phrase, but only one USE slot is open and U03 is shorter and closer to this seed's length."
+    },
+    {
+     "id": "cym_for_kor:S0445L01U04",
+     "keep": false,
+     "why": "Too long for this seed, and the one open slot is already filled."
+    }
    ]
   },
   "S0445L02": {
@@ -128,5 +144,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:15:36.078Z"
 }

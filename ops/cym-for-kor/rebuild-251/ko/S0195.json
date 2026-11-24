@@ -155,7 +155,39 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0195L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L04U01",
+     "keep": false,
+     "why": "봤어 could be either 'welaist ti' or 'wyt ti wedi gweld', so the prompt has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U03",
+     "keep": false,
+     "why": "Good, but only 1 USE is needed and U02 is the stronger choice"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U04",
+     "keep": false,
+     "why": "Good, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U05",
+     "keep": false,
+     "why": "Good, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U06",
+     "keep": false,
+     "why": "The Korean order 사무실에서 탁자 위에 also allows 'yn y swyddfa ar y bwrdd', and 'yn y swyddfa' qualifies the table rather than where the seeing happened"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:00:47.403Z"
 }

@@ -63,6 +63,27 @@
      "keep": false,
      "why": "Clumsy: the Korean 왜냐하면 clause has no -니까 ending, and the full sentence is unnatural."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0387L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0387L02B01",
+     "keep": false,
+     "why": "Only one BUILD was needed and B02 is better. B02 also uses the seed's own bod-clause form; B01 switches to fod o."
+    },
+    {
+     "id": "cym_for_kor:S0387L02B03",
+     "keep": false,
+     "why": "Only one BUILD was needed. The extra ond (하지만) also makes it a weaker drill of the LEGO."
+    },
+    {
+     "id": "cym_for_kor:S0387L02B04",
+     "keep": false,
+     "why": "Only one BUILD was needed. This one is long, and with 그 the learner can't tell from the Korean whether the Welsh is fod o or fod e."
+    }
    ]
   },
   "S0387L03": {
@@ -117,5 +138,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:45.126Z"
 }

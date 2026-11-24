@@ -76,6 +76,26 @@
      "keep": false,
      "why": "Fine, but the quota is already filled by better rows."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0108L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U05",
+     "keep": false,
+     "why": "In Korean, '이해하지 않았어' sounds like 'we refused to understand'. The natural form '이해하지 못했어' moves away from the ~지 않았어 gloss and could also be read as 'couldn't understand' (gallu), giving two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0108L01U04",
+     "keep": false,
+     "why": "'알고 지내지 않았으니까' is awkward Korean for nabod. With two clauses, the line is too long for a USE row."
+    }
    ]
   },
   "S0108L02": {
@@ -188,5 +208,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:56:22.084Z"
 }

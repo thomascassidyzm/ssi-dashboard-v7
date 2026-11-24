@@ -1,0 +1,113 @@
+{
+ "seed": 590,
+ "at": "2026-11-24T19:55:43.178Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0590L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0590L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01B02",
+     "keep": false,
+     "why": "Weakest BUILD and not needed. A bare 그래 could also be read as ia or ie, not just the past-tense do, so it is a less clean prompt than the other three."
+    },
+    {
+     "id": "cym_for_kor:S0590L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0590L01U05",
+     "keep": false,
+     "why": "The two clauses don't connect logically. 'I saw the last bus but it's getting late' has no real contrast, so the sentence reads as unnatural."
+    }
+   ]
+  },
+  "S0590L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "밤늦게 정류장을 떠나는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "버스가 정류장을 떠나는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "기차가 정류장을 떠나는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "남자아이가 첫날에 정류장을 떠나는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 아무도 정류장을 떠나는 걸 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 우리 친구들이 정류장을 떠나는 걸 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "어젯밤 그들이 누가 정류장을 떠나는 걸 봤는지 추측해 봐",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 어젯밤 우리 친구들이 정류장을 떠나는 걸 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 아무도 정류장을 떠나는 걸 못 봤어 하지만 정말 늦었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

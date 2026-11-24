@@ -169,6 +169,53 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0133L06B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L06B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L06B01",
+     "keep": false,
+     "why": "Grammatical, but B03 and B04 are better and only 2 BUILD rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0133L06B02",
+     "keep": false,
+     "why": "Only 2 BUILD rows were needed; the bare Korean infinitive is the weaker prompt"
+    },
+    {
+     "id": "cym_for_kor:S0133L06U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L06U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L06U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L06U03",
+     "keep": false,
+     "why": "Only 3 USE rows were needed; it adds little beyond the seed"
+    },
+    {
+     "id": "cym_for_kor:S0133L06U04",
+     "keep": false,
+     "why": "'아주 잘 일하고 있다고' is stilted Korean, since a native speaker would say '일을 아주 잘하고', which drifts from the gloss"
+    },
+    {
+     "id": "cym_for_kor:S0133L06U06",
+     "keep": false,
+     "why": "'재미있어' could map to more than one Welsh adjective (hwyl or diddorol), so the answer is not certain"
+    }
    ]
   },
   "S0133L07": {
@@ -229,5 +276,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:58:27.449Z"
 }

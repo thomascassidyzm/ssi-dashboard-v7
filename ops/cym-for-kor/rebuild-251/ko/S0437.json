@@ -157,7 +157,43 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0437L02U02",
+     "keep": true,
+     "ko": "그들이 원한다면 그들은 많이 모금할 수 있을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0437L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0437L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0437L02U03",
+     "keep": false,
+     "ko": "그들은 많이 모금하고 싶어해?",
+     "why": "Good once the missing topic particle is added, but not picked: only 3 USE rows were needed and three stronger rows fill them."
+    },
+    {
+     "id": "cym_for_kor:S0437L02U06",
+     "keep": false,
+     "why": "Fine, but not picked: the 3 USE rows are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0437L02U04",
+     "keep": false,
+     "why": "Saying we don't need to raise enough money is an odd thing to say, and the 3 USE rows are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0437L02U05",
+     "keep": false,
+     "why": "좋을 거야 reads as future 'will be nice' (bydd), not 'would be nice' (byddai), so a learner could give either Welsh answer; the 3 USE rows are already filled anyway."
+    }
+   ]
   },
   "S0437L03": {
    "originals": [
@@ -325,5 +361,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:15:06.146Z"
 }

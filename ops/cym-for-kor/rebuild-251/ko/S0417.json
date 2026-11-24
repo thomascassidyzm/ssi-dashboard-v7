@@ -63,6 +63,22 @@
      "keep": false,
      "why": "'Lead the way next year' is an odd thing to say, and 길을 이끌다 is not natural Korean."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0417L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0417L01U05",
+     "keep": false,
+     "why": "Good, but not needed: U01 fills the one USE slot."
+    },
+    {
+     "id": "cym_for_kor:S0417L01U02",
+     "keep": false,
+     "why": "'Lead the way next year' is an odd thing to say, and 길을 이끌다 is not natural Korean."
+    }
    ]
   },
   "S0417L02": {
@@ -123,5 +139,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:24.238Z"
 }

@@ -60,6 +60,35 @@
      "ok": false,
      "why": "Here torri tomatos means slicing tomatoes. 줄이다 is the wrong sense and the Korean is unnatural."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0434L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L01U05",
+     "keep": false,
+     "why": "Sound, but only 3 USE rows are needed and it repeats U03's pattern (dorri hynna plus a time phrase)."
+    },
+    {
+     "id": "cym_for_kor:S0434L01U04",
+     "keep": false,
+     "why": "'Cut everyone's time tonight' does not make sense, and 'ond' starts a yes/no question with nothing before it."
+    },
+    {
+     "id": "cym_for_kor:S0434L01U06",
+     "keep": false,
+     "why": "Weaker than U01, which uses the same be' fedran nhw dorri question pattern; 'yn fuan' fits awkwardly after an open 'what'."
+    }
    ]
   },
   "S0434L02": {
@@ -167,5 +196,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:14:41.783Z"
 }

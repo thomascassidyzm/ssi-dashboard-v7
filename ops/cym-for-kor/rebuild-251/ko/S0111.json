@@ -62,6 +62,17 @@
      "keep": false,
      "why": "'i ddysgu' without 'i'w' is less idiomatic; the USE count is already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0111L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04B02",
+     "keep": false,
+     "why": "Only one BUILD was needed. B04 is a complete, natural sentence, while 'rhywbeth newydd i ddysgu' is a weaker fragment without 'i'w'."
+    }
    ]
   },
   "S0111L05": {
@@ -132,6 +143,37 @@
      "ok": false,
      "why": "Here 'mae'n' is part of the obligation phrase 'mae'n rhaid i mi' (I must), not 'it is …', so it is the wrong sense. The Korean would also fit 'ond rhaid i mi fynd rŵan', which gives two possible Welsh answers."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0111L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L05U03",
+     "keep": false,
+     "why": "Sound, but only one USE was needed and U01 matches the seed's own frame better."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U02",
+     "keep": false,
+     "why": "Sound, but only one USE was needed."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U04",
+     "keep": false,
+     "why": "'mae'n bron yn barod' is awkward: the reduced 'n before 'bron' reads oddly, and 'mae o bron yn barod' is the natural form."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U05",
+     "keep": false,
+     "why": "Only one USE was needed, and the Korean '해 왜냐하면' splice is clumsy."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U06",
+     "keep": false,
+     "why": "Only one USE was needed, and the Korean '좋겠어 왜냐하면' splice is clumsy."
+    }
    ]
   },
   "S0111L07": {
@@ -192,5 +234,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:56:42.826Z"
 }

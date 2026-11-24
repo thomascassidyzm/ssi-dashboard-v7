@@ -57,6 +57,25 @@
      "keep": false,
      "why": "Sound, but five better candidates fill the count."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0421L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02B03",
+     "keep": false,
+     "why": "Only 3 BUILD rows were needed, and this one is the weakest: 그가 몇 살인지 could also prompt 'faint ydy ei oed o', so it may have two answers"
+    }
    ]
   },
   "S0421L04": {
@@ -117,5 +136,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:43.225Z"
 }

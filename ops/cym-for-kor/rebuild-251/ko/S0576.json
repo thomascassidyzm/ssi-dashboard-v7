@@ -84,7 +84,55 @@
      "keep": false,
      "why": "Too close to the seed sentence itself: it only adds 'ond'. Lowest priority."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0576L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01B04",
+     "keep": false,
+     "why": "A good row, but it is almost the same as B03 and the BUILD quota of 3 is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01U02",
+     "keep": true,
+     "ko": "나는 피곤해 왜냐하면 그건 도전이었거든"
+    },
+    {
+     "id": "cym_for_kor:S0576L01U03",
+     "keep": true,
+     "ko": "네 도움 없이 그건 도전이었어"
+    },
+    {
+     "id": "cym_for_kor:S0576L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01U05",
+     "keep": false,
+     "why": "A good row, but the USE quota of 4 is already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U04",
+     "keep": false,
+     "why": "Too close to the seed sentence: it only adds 'ond'."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:25:36.866Z"
 }

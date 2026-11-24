@@ -135,7 +135,29 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0530L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0530L02B03",
+     "keep": false,
+     "why": "A good phrase, but only 1 BUILD is needed and B01 is the stronger, more useful sentence"
+    },
+    {
+     "id": "cym_for_kor:S0530L02B02",
+     "keep": false,
+     "why": "A loose fragment with an infinitive and a trailing time word; the Korean 지금 그것들을 세다 reads unnaturally"
+    },
+    {
+     "id": "cym_for_kor:S0530L02B04",
+     "keep": false,
+     "why": "The Korean -자 has more than one possible Welsh answer (gad i ni / gadewch i ni / awn ni), and gadewch is plural or formal while the line is 반말"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:21:38.181Z"
 }

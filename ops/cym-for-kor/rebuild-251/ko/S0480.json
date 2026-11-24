@@ -148,6 +148,37 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0480L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0480L02U02",
+     "keep": false,
+     "why": "Only one USE needed. The bare 그걸 could be heard as hynny or hynna, and the Welsh has no question mark."
+    },
+    {
+     "id": "cym_for_kor:S0480L02U03",
+     "keep": false,
+     "why": "Only one USE needed. 보고 싶다 is ambiguous between 'wants to see' and 'misses', so it does not point to one Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0480L02U04",
+     "keep": false,
+     "why": "Only one USE needed. 도울 거라고 could be either mynd i helpu or neith helpu."
+    },
+    {
+     "id": "cym_for_kor:S0480L02U05",
+     "keep": false,
+     "why": "Only one USE needed. The sentence is good, but U01 is simpler and reuses the seed's 뭐라고 frame."
+    },
+    {
+     "id": "cym_for_kor:S0480L02U06",
+     "keep": false,
+     "why": "Only one USE needed. -해서 could be either achos or felly, and fod o ddim yn barod is weaker than nad ydy o'n barod."
+    }
    ]
   },
   "S0480L04": {
@@ -217,5 +248,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:17:51.489Z"
 }

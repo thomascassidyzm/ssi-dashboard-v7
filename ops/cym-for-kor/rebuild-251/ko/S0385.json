@@ -144,7 +144,42 @@
      "keep": false,
      "why": "Fine but long; four USE rows are already kept"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0385L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0385L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0385L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0385L02B03",
+     "keep": false,
+     "why": "Good phrase, but three BUILD rows are already kept and B01 already uses siarad efo hi"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U05",
+     "keep": true,
+     "ko": "너 그녀와 파티에 가고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U06",
+     "keep": false,
+     "why": "Fine, but only one USE row is needed and U05 is simpler and clearer"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U07",
+     "keep": false,
+     "why": "Long, and only one USE row is needed"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:36.819Z"
 }

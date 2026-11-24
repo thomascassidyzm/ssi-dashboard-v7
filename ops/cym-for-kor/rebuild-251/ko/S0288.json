@@ -114,7 +114,37 @@
      "why": "'fyddet ti'n licio' means 'would you like to' (asking what someone wants). It is not the 'like' sense this LEGO teaches."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0288L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0288L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0288L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0288L03U06",
+     "keep": false,
+     "why": "Sound, but not kept: the three USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0288L03U05",
+     "keep": false,
+     "why": "Sound, but not kept: the three USE slots are filled, and this row nests two clauses, which makes it heavier than the kept rows."
+    },
+    {
+     "id": "cym_for_kor:S0288L03U03",
+     "keep": false,
+     "why": "Sound, but not kept: the three USE slots are filled, and 좋아했어 for imperfect oedd is less clear-cut than the kept present-tense rows."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:06:07.350Z"
 }

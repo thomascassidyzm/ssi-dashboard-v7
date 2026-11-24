@@ -66,6 +66,22 @@
      "keep": false,
      "why": "Very long two-clause line, and the 4 USE slots are already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0439L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0439L01U03",
+     "keep": false,
+     "why": "Only one USE slot is needed. U07 is the better line, and here 자리 for bwrdd and 오늘 저녁 for heno could each have another Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0439L01U06",
+     "keep": false,
+     "why": "This two-clause line is too long, and its run-on Korean (그들은 used twice, no connective) reads badly."
+    }
    ]
   },
   "S0439L02": {
@@ -124,7 +140,30 @@
      "ok": true,
      "why": "Here 'mae arna i ofn' means real fear ('afraid to die'), not the regret sense of the gloss 유감이지만. Using 유감이지만 would make nonsense, so the Korean follows the source English. Worth Kai checking the gloss for this sense."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0439L02B03",
+     "keep": true,
+     "ko": "그들은 죽고 싶어해?"
+    },
+    {
+     "id": "cym_for_kor:S0439L02B01",
+     "keep": false,
+     "why": "Only one BUILD slot is needed. It is acceptable but weaker than B03."
+    },
+    {
+     "id": "cym_for_kor:S0439L02B02",
+     "keep": false,
+     "why": "혼자서 죽다 has no person, so it does not pin down ar fy mhen fy hun (it could be dy/ei/ein …)."
+    },
+    {
+     "id": "cym_for_kor:S0439L02B04",
+     "keep": false,
+     "why": "죽을 수 있을 텐데 does not clearly give the conditional mi fydden nhw'n medru marw. It could also be gallu, the future, or a modal."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:15:18.181Z"
 }

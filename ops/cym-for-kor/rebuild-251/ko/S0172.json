@@ -131,7 +131,34 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0172L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0172L02U05",
+     "keep": false,
+     "why": "Good phrase, but only one USE slot was needed and U01 is the better fit."
+    },
+    {
+     "id": "cym_for_kor:S0172L02U02",
+     "keep": false,
+     "why": "Acceptable, but only one USE slot was needed and U01 is cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0172L02U04",
+     "keep": false,
+     "why": "Its Korean puts the reason first, the reverse of the Welsh, and the double 'i' in 'liciwn i i ti' reads awkwardly; only one slot was needed anyway."
+    },
+    {
+     "id": "cym_for_kor:S0172L02U07",
+     "keep": false,
+     "why": "'pnawn fory' tacked onto 'fyddai hynna'n help mawr' is an odd, unnatural pairing."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:00:11.474Z"
 }

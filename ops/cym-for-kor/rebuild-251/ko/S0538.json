@@ -127,7 +127,37 @@
      "why": "edrych ymlaen at means 'look forward to', not 보이다 'look/appear', which this LEGO teaches"
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0538L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0538L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0538L02U06",
+     "keep": false,
+     "why": "Good phrase, but only two were needed and U02 already covers the same isio edrych yn ddwl pattern"
+    },
+    {
+     "id": "cym_for_kor:S0538L02U05",
+     "keep": false,
+     "why": "Good phrase, but only two were needed and U04 already covers edrych yn sâl"
+    },
+    {
+     "id": "cym_for_kor:S0538L02U03",
+     "keep": false,
+     "why": "Good phrase, but only two were needed and it repeats the U02 pattern"
+    },
+    {
+     "id": "cym_for_kor:S0538L02U01",
+     "keep": false,
+     "why": "그건 could mean 'that' (hynny) as well as 'it' (o), so the Korean allows two Welsh answers"
+    }
+   ]
   },
   "S0538L03": {
    "originals": [
@@ -188,5 +218,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:22:33.407Z"
 }

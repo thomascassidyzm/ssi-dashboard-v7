@@ -64,6 +64,23 @@
      "keep": false,
      "why": "The two clauses don't connect logically: nobody being sure doesn't follow from wanting her to answer."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0204L01U03",
+     "keep": true,
+     "ko": "그게 내가 그녀가 너와 이야기하기를 원했던 이유는 아니야"
+    },
+    {
+     "id": "cym_for_kor:S0204L01U02",
+     "keep": false,
+     "why": "Almost the same as the seed. U03 fills the one USE slot with more variety."
+    },
+    {
+     "id": "cym_for_kor:S0204L01U05",
+     "keep": false,
+     "why": "The two clauses don't follow from each other: nobody being sure has nothing to do with wanting her to answer."
+    }
    ]
   },
   "S0204L03": {
@@ -210,7 +227,44 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0204L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L04U03",
+     "keep": false,
+     "why": "Good, but U04 is cleaner and only one USE slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U02",
+     "keep": false,
+     "why": "The Korean '준비 사항들로 너를 돕기를' is awkward, and the gloss '준비 사항들을' doesn't fit naturally when 너를 is also the object."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U05",
+     "keep": false,
+     "why": "The Korean '준비 사항들로 나를 도와줘서' is awkward, and only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U06",
+     "keep": false,
+     "why": "Long and complex for a top-up. Only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U01",
+     "keep": false,
+     "why": "In 'cytuno efo', efo means 'with' (agree with), not 'help with the arrangements', so the gloss '준비 사항들을' doesn't fit. The Korean needs 에."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U07",
+     "keep": false,
+     "why": "In 'hapus efo', efo means 'happy with', not this sense, so the gloss '준비 사항들을' doesn't fit."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:01:21.047Z"
 }

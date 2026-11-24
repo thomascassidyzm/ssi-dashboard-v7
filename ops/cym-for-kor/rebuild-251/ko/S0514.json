@@ -201,7 +201,49 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0514L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L03U02",
+     "keep": false,
+     "why": "Only one USE slot is needed and U01 is a cleaner fit; this one is fine but not kept."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U03",
+     "keep": false,
+     "why": "Not needed; U01 is a better fit."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U04",
+     "keep": false,
+     "why": "Not needed; 정말 for reit is loose, so the Korean is less exact than U01."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U05",
+     "keep": false,
+     "why": "Not needed; 'not intending to lose on the first day' is an odd thing to say."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U06",
+     "keep": false,
+     "why": "Korean 왜냐하면…피곤했어 is clunky, and it is unclear whether the answer should use wedi blino or oedd wedi blino."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U07",
+     "keep": false,
+     "why": "The Korean reorders the clauses and doesn't mark bu bron iddi or achos iddi clearly; too heavy for this slot."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U08",
+     "keep": false,
+     "why": "Not needed; U01 is a better fit."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:20:14.032Z"
 }

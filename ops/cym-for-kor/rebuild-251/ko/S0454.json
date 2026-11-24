@@ -130,6 +130,50 @@
      "ok": false,
      "why": "draw acw = over there, wrong sense for draw = 놀러"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0454L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02B01",
+     "keep": false,
+     "why": "Only 3 BUILD rows were needed. The bare 'dod draw' teaches less than B02, B03 and B04."
+    },
+    {
+     "id": "cym_for_kor:S0454L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L02U05",
+     "keep": false,
+     "why": "Only 5 USE rows were needed. This one is the longest and weakest; it stacks a reported clause on a long time phrase."
+    }
    ]
   },
   "S0454L03": {
@@ -181,5 +225,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:16:14.114Z"
 }

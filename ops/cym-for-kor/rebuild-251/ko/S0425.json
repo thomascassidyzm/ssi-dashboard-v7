@@ -102,6 +102,47 @@
      "keep": false,
      "why": "Korean is broken ('그들 멈출', no subject particle) and the Welsh question has no question mark"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0425L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01U05",
+     "keep": true,
+     "ko": "응 그렇지, 그들은 그가 약해지고 있다는 걸 알아"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01U06",
+     "keep": false,
+     "why": "A good line, but it ranks fifth and only 4 USE slots are needed; '길을 이끌다' is also the least natural Korean of the set"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U04",
+     "keep": false,
+     "why": "The Korean is broken: '그들 멈출' has no subject particle, and the Welsh question has no question mark"
+    }
    ]
   },
   "S0425L04": {
@@ -152,5 +193,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:54.717Z"
 }

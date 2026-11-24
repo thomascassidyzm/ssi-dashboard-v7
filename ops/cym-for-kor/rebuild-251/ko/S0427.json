@@ -62,6 +62,17 @@
      "keep": false,
      "why": "Weaker sense ('wouldn't move next year'); quota already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0427L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01B04",
+     "keep": false,
+     "why": "Only one BUILD is needed. B02 is shorter and closer to the LEGO's own frame."
+    }
    ]
   },
   "S0427L03": {
@@ -139,6 +150,52 @@
      "keep": false,
      "why": "Only 1 USE top-up needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0427L03B02",
+     "keep": true,
+     "ko": "나는 네가 ~라고 생각하는 걸 원하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0427L03B01",
+     "keep": false,
+     "why": "Only one BUILD is needed. B02 is a fuller frame and lets the learner practise the LEGO in a real sentence."
+    },
+    {
+     "id": "cym_for_kor:S0427L03B03",
+     "keep": false,
+     "why": "Only one BUILD is needed, and B02 is shorter."
+    },
+    {
+     "id": "cym_for_kor:S0427L03B04",
+     "keep": false,
+     "why": "The Welsh stops open after feddwl, but the Korean reads as a closed question. B02 already fills the slot."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L03U01",
+     "keep": false,
+     "why": "Nearly duplicates original o5."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U04",
+     "keep": false,
+     "why": "Only one USE is needed. U03 is better because it mirrors the seed's bydden nhw'n licio frame."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U05",
+     "keep": false,
+     "why": "Awkward sequence of tenses: past oedd o isio followed by future y bydd. A Welsh speaker would expect y byddai or y basai."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U06",
+     "keep": false,
+     "why": "Nearly duplicates original o4."
+    }
    ]
   },
   "S0427L04": {
@@ -203,7 +260,34 @@
      "ok": false,
      "why": "'Doedd o ddim yn medru golygu' says he was unable to mean it, which is unnatural. The intended sense, 'he couldn't have meant', needs 'fedrai o ddim fod wedi golygu'."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0427L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L04U02",
+     "keep": false,
+     "why": "Only one USE is needed. U01 is cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0427L04U04",
+     "keep": false,
+     "why": "Only one USE is needed, and this one is long with a clumsy contrast."
+    },
+    {
+     "id": "cym_for_kor:S0427L04U05",
+     "keep": false,
+     "why": "Only one USE is needed, and this one is long."
+    },
+    {
+     "id": "cym_for_kor:S0427L04U06",
+     "keep": false,
+     "why": "Only one USE is needed. U01 is better."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:14:10.784Z"
 }

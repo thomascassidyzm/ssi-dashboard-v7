@@ -126,7 +126,36 @@
      "ok": false,
      "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해), not the taught sense 나쁜"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0536L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U06",
+     "keep": true,
+     "ko": "그건 나쁘지 않을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0536L04U02",
+     "keep": false,
+     "why": "'원래 쉬운 게 아니야' does not pin down 'i fod' (supposed to), so it could equally be the answer for 'dydy o ddim yn hawdd'. That gives the prompt two Welsh answers, and no natural Korean wording isolates the 'supposed to' sense."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:22:24.016Z"
 }

@@ -54,6 +54,58 @@
      "ok": false,
      "why": "Here ydan is the question verb in 'ydan ni angen', not the answer-word 'yes'. Wrong sense."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0402L01B03",
+     "keep": true,
+     "ko": "응, 그러자. 곧장 집에 가는 게 더 좋을 거야"
+    },
+    {
+     "id": "cym_for_kor:S0402L01B01",
+     "keep": false,
+     "why": "Welsh 'ydan, bwyta rhywbeth yn nes ymlaen' puts a bare verbnoun after ydan, which is not a natural Welsh utterance, and the Korean dictionary form 먹다 is not natural Korean either"
+    },
+    {
+     "id": "cym_for_kor:S0402L01B02",
+     "keep": false,
+     "why": "Same problem: ydan followed by a bare verbnoun (troi …) is not natural Welsh, and the Korean dictionary-form fragment is not natural Korean"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U03",
+     "keep": true,
+     "ko": "응, 그러자. 하지만 우리는 곧장 집에 가고 싶지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U05",
+     "keep": true,
+     "ko": "응, 그러자. 하지만 다음 모퉁이에서 왼쪽으로 도는 게 더 좋을 거야"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U02",
+     "keep": true,
+     "ko": "응, 그러자. 우리는 이따가 무언가를 먹고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U07",
+     "keep": true,
+     "ko": "응, 그러자. 너 이따가 우리와 함께 오고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U04",
+     "keep": true,
+     "ko": "응, 그러자. 왜냐하면 우리는 머지않아 준비할 필요가 있어"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U06",
+     "keep": false,
+     "why": "The USE quota is already full with stronger rows; this one is grammatical but too long and less natural as a reply"
+    },
+    {
+     "id": "cym_for_kor:S0402L01U01",
+     "keep": false,
+     "why": "The USE quota is already full; here ydan is a bare yes to a question, so the gloss 응 그러자 reads oddly"
+    }
    ]
   },
   "S0402L02": {
@@ -172,5 +224,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:12:43.560Z"
 }

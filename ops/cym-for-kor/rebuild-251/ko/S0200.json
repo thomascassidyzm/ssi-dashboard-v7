@@ -194,6 +194,32 @@
      "id": "cym_for_kor:S0200L02U01",
      "keep": true
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0200L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0200L02U04",
+     "keep": false,
+     "why": "Only one USE was needed and U03 is cleaner and shorter; this one is not faulty"
+    },
+    {
+     "id": "cym_for_kor:S0200L02U02",
+     "keep": false,
+     "why": "Only one USE was needed; 지방 의회에서 일하다 does not mirror gweithio i'r cyngor (work for the council) as closely as the kept row mirrors its Welsh"
+    },
+    {
+     "id": "cym_for_kor:S0200L02U05",
+     "keep": false,
+     "why": "Only one USE was needed; U03 was preferred"
+    },
+    {
+     "id": "cym_for_kor:S0200L02U07",
+     "keep": false,
+     "why": "Only one USE was needed; U03 was preferred"
+    }
    ]
   },
   "S0200L03": {
@@ -312,5 +338,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:00:55.099Z"
 }

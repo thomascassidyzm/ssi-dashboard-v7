@@ -135,6 +135,22 @@
      "keep": false,
      "why": "'네 자매' does not clearly fix a single sister, and only 3 USE rows are needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0235L03U03",
+     "keep": true,
+     "ko": "너는 그가 내일 떠나고 싶다고 확신해?"
+    },
+    {
+     "id": "cym_for_kor:S0235L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L03U05",
+     "keep": false,
+     "why": "'네 자매' is unnatural Korean for 'your sister' and could mean several sisters; the gloss gives no clear single Korean word for it"
+    }
    ]
   },
   "S0235L06": {
@@ -255,5 +271,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:58.472Z"
 }

@@ -55,7 +55,53 @@
      "why": "This is 'he didn't want' (doedd o ddim isio), not the taught sense 'it wasn't located at'."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0459L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0459L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0459L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0459L01B04",
+     "keep": false,
+     "why": "Sound, but the 3 BUILD slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0459L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0459L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0459L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0459L01U02",
+     "keep": true,
+     "ko": "미안해 하지만 그건 사무실에 있지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0459L01U03",
+     "keep": true,
+     "ko": "그건 정원에 있지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0459L01U05",
+     "keep": false,
+     "why": "'yn y gorffennol' tacked on is stilted; the 5 USE slots are already filled by more natural rows."
+    }
+   ]
   },
   "S0459L02": {
    "originals": [
@@ -110,5 +156,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:16:40.223Z"
 }

@@ -69,6 +69,31 @@
      "keep": false,
      "why": "'No, we could let them win everything' is an odd thing to say, and the slots are already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0413L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0413L01B04",
+     "keep": false,
+     "why": "Good phrase, but only 1 BUILD was needed and B03 is a fuller example."
+    },
+    {
+     "id": "cym_for_kor:S0413L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0413L01U05",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE was needed and U03 took it."
+    },
+    {
+     "id": "cym_for_kor:S0413L01U04",
+     "keep": false,
+     "why": "'No, we could let them win everything' is an odd thing to say in context."
+    }
    ]
   },
   "S0413L02": {
@@ -240,5 +265,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:12.229Z"
 }

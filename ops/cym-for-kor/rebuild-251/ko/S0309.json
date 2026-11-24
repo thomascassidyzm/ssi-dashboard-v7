@@ -142,6 +142,32 @@
      "keep": false,
      "why": "Only 2 USE needed"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0309L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0309L03U02",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE was needed and U01 already fills it"
+    },
+    {
+     "id": "cym_for_kor:S0309L03U07",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE was needed and U01 already fills it"
+    },
+    {
+     "id": "cym_for_kor:S0309L03U04",
+     "keep": false,
+     "why": "Only 1 USE was needed; this one is also a weaker fit, since 생각해 + 싶어한다고 nests two clauses"
+    },
+    {
+     "id": "cym_for_kor:S0309L03U05",
+     "keep": false,
+     "why": "그녀 stands for two different people, so the Korean is confusing"
+    }
    ]
   },
   "S0309L04": {
@@ -202,5 +228,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:08:01.898Z"
 }

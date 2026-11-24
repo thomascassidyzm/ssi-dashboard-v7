@@ -55,7 +55,27 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0547L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0547L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0547L04B04",
+     "keep": true,
+     "ko": "걔는 놀고 있었어"
+    },
+    {
+     "id": "cym_for_kor:S0547L04B03",
+     "keep": false,
+     "why": "자기들끼리 means 'by themselves', not 'with each other' (efo'i gilydd), so it could also be read as ar eu pennau eu hunain"
+    }
+   ]
   },
   "S0547L05": {
    "originals": [
@@ -116,5 +136,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:23:10.928Z"
 }

@@ -70,6 +70,58 @@
      "keep": false,
      "why": "Only 1 BUILD was needed. A fragment that adds little."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0277L01B01",
+     "keep": true,
+     "ko": "응 있어, 나는 아이디어가 있어"
+    },
+    {
+     "id": "cym_for_kor:S0277L01B03",
+     "keep": true,
+     "ko": "응 있어, 안타깝게도"
+    },
+    {
+     "id": "cym_for_kor:S0277L01B02",
+     "keep": false,
+     "why": "'oes ond' is a weak fragment. B01 and B03 already fill the two BUILD slots."
+    },
+    {
+     "id": "cym_for_kor:S0277L01U07",
+     "keep": true,
+     "ko": "응 있어, 하지만 나는 그것에 대해 이야기하고 싶지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0277L01U04",
+     "keep": true,
+     "ko": "응 있어, 안타깝게도 나는 일이 너무 많아"
+    },
+    {
+     "id": "cym_for_kor:S0277L01U02",
+     "keep": true,
+     "ko": "응 있어, 나는 다음 주에 중요한 게 있어"
+    },
+    {
+     "id": "cym_for_kor:S0277L01U01",
+     "keep": true,
+     "ko": "응 있어, 하지만 나는 걱정돼"
+    },
+    {
+     "id": "cym_for_kor:S0277L01U06",
+     "keep": true,
+     "ko": "응 있어, 하지만 나는 여기에 조금 더 오래 머물 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0277L01U03",
+     "keep": false,
+     "why": "Sound, but it nearly duplicates U02 and the five USE slots are full."
+    },
+    {
+     "id": "cym_for_kor:S0277L01U05",
+     "keep": false,
+     "why": "'Yes there is, because I'm worried I'll be late' reads as a non-sequitur. 'oes' followed by 'achos' gives an odd line to answer."
+    }
    ]
   },
   "S0277L03": {
@@ -191,5 +243,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:05:13.434Z"
 }

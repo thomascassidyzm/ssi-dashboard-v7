@@ -79,6 +79,32 @@
      "keep": false,
      "why": "Not kept: only one USE top-up was needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0153L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L01U03",
+     "keep": false,
+     "why": "Grammatical, but only one USE top-up is needed and U05 is the cleaner row."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U01",
+     "keep": false,
+     "why": "''swn i wedi gwybod' means 'I would have known', not 'if I had known' (that would be taswn i wedi gwybod), so the Welsh does not match the Korean conditional."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U06",
+     "keep": false,
+     "why": "Same problem as U01: ''swn i wedi gwybod' cannot carry 'if I had known'."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U04",
+     "keep": false,
+     "why": "Two loosely joined clauses in different tenses make an awkward sentence, and it isn't needed."
+    }
    ]
   },
   "S0153L03": {
@@ -133,5 +159,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:59:23.892Z"
 }

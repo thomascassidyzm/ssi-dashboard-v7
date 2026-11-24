@@ -60,6 +60,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0281L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0281L04U01",
+     "keep": false,
+     "why": "The quota is already filled by U02, and without a question mark 봤어 could be read as a statement, so the Welsh answer isn't certain"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U03",
+     "keep": false,
+     "why": "The quota is already filled; 원하지 않아 for isio is also stiff"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U04",
+     "keep": false,
+     "why": "No question mark, and 'why do you want my coffee' is an odd thing to say"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U05",
+     "keep": false,
+     "why": "The quota is already filled by a stronger candidate"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U06",
+     "keep": false,
+     "why": "It's almost the seed sentence again, and without a question mark the Korean reads as a statement"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U07",
+     "keep": false,
+     "why": "'He wanted my coffee yesterday' is semantically odd"
+    }
    ]
   },
   "S0281L05": {
@@ -122,5 +158,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:05:34.311Z"
 }

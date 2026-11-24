@@ -241,6 +241,18 @@
      "keep": false,
      "why": "same problem: 'byddai'n well i chwarae' is unnatural without 'i chi'"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0501L03U04",
+     "keep": false,
+     "why": "The Welsh 'byddai'n well i chwarae' is ungrammatical: 'well i' needs a subject ('i chi chwarae'), or else a bare 'well chwarae'. The Korean also drops the plural 'you' that efo'ch gilydd carries."
+    },
+    {
+     "id": "cym_for_kor:S0501L03U06",
+     "keep": false,
+     "why": "Same fault: 'byddai'n well i chwarae' has no subject after 'i', so it is unnatural Welsh. The Korean also has no plural 'you' to match efo'ch gilydd."
+    }
    ]
   },
   "S0501L04": {
@@ -331,5 +343,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:19:19.635Z"
 }

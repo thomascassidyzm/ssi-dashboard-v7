@@ -72,7 +72,32 @@
      "keep": false,
      "why": "'그건 아름다웠어' could be 'oedd o'n hardd' or 'oedd hi'n hardd', and the 'beautiful but I don't want it' pairing is weak"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0473L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01B03",
+     "keep": false,
+     "why": "A clause that starts with achos and stands alone is a weak fragment in both languages, and '왜냐하면 … 원하지 않아' is unnatural Korean without -거든/-기 때문이야."
+    },
+    {
+     "id": "cym_for_kor:S0473L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01U02",
+     "keep": false,
+     "why": "'그건 아름다웠어' could be either 'oedd o'n hardd' or 'oedd hi'n hardd', so the prompt has two possible Welsh answers."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:17:14.957Z"
 }

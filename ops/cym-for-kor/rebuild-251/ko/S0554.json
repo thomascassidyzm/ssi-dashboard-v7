@@ -120,7 +120,39 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0554L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0554L02U06",
+     "keep": false,
+     "why": "Only one USE was needed and U05 is the stronger choice; this one is long, and 마른 채로 보관하기로 되어 있어 is heavy for a prompt"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U01",
+     "keep": false,
+     "why": "A church that is dry is an odd thing to say, and 교회가 말라 있다 is not natural Korean (a building would be 건조하다, not 마르다)"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U02",
+     "keep": false,
+     "why": "Same odd church-is-dry idea, and the Korean 말라 있다 for a building is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U03",
+     "keep": false,
+     "why": "Same odd church-is-dry idea, and the Korean 말라 있다 for a building is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U04",
+     "keep": false,
+     "why": "Same odd church-is-dry idea, and the Korean 말라 있다 for a building is unnatural"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:23:39.786Z"
 }

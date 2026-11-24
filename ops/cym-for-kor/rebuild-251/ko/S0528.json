@@ -160,6 +160,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0528L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0528L02U07",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is already filled by U03."
+    },
+    {
+     "id": "cym_for_kor:S0528L02U01",
+     "keep": false,
+     "why": "Not needed: the one USE slot is filled. Also, the Korean has no question ending, so it doesn't clearly match the Welsh question."
+    },
+    {
+     "id": "cym_for_kor:S0528L02U02",
+     "keep": false,
+     "why": "Not needed: the one USE slot is filled. Also, the Korean has no question ending, so it doesn't clearly match the Welsh question."
+    },
+    {
+     "id": "cym_for_kor:S0528L02U04",
+     "keep": false,
+     "why": "Not needed: the one USE slot is filled. The sentence is also long and heavy for this phrase."
+    },
+    {
+     "id": "cym_for_kor:S0528L02U05",
+     "keep": false,
+     "why": "Not needed: the one USE slot is filled. Also, 문을 열린 채로 잡고 있기로 sounds awkward in Korean."
+    },
+    {
+     "id": "cym_for_kor:S0528L02U06",
+     "keep": false,
+     "why": "Not needed: the one USE slot is filled. Also, 후반전 끝까지 is too free a match for the Welsh tan ddiwedd yr ail hanner."
+    }
    ]
   },
   "S0528L03": {
@@ -279,5 +315,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:21:24.178Z"
 }

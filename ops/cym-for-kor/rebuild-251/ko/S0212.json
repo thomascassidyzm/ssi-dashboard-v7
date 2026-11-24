@@ -138,7 +138,29 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0212L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0212L02B02",
+     "keep": false,
+     "why": "방법 is a noun and does not mirror 'sut i', so the prompt could also give 'y ffordd i ofyn am help'"
+    },
+    {
+     "id": "cym_for_kor:S0212L02B03",
+     "keep": false,
+     "why": "A bare infinitive with an adverb is a weak fragment; B01 is better and only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0212L02B04",
+     "keep": false,
+     "why": "Grammatical, but only one BUILD is needed and B01 is closer to the seed"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:10.303Z"
 }

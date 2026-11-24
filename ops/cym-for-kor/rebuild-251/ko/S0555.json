@@ -78,6 +78,41 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0555L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0555L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0555L03U01",
+     "keep": false,
+     "why": "Grammatical, but 열쇠 does not mark number, so it could be y goriad or y goriadau; basket already full with stronger picks"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U02",
+     "keep": false,
+     "why": "Fine, but the basket is already full; the past-tense row is a weaker fit than the present-tense picks"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U04",
+     "keep": false,
+     "why": "Too long and complex for a USE top-up; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U05",
+     "keep": false,
+     "why": "The embedded bod clause adds load the row doesn't need; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U07",
+     "keep": false,
+     "why": "'Not too tired to help' reads oddly; the basket is already full"
+    }
    ]
   },
   "S0555L04": {
@@ -156,5 +191,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:23:50.164Z"
 }

@@ -116,7 +116,28 @@
      "keep": false,
      "why": "'helpu ni' without 'ein' is colloquial and less clean than the others. Enough USE rows already kept."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0289L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02B03",
+     "keep": false,
+     "why": "Only one BUILD row is needed, and B02 is better. 웨일스어로 이야기할지 might not match the course's gloss for siarad Cymraeg."
+    },
+    {
+     "id": "cym_for_kor:S0289L02U03",
+     "keep": false,
+     "why": "Only one USE row is needed, and U04 is better. 웨일스어로 이야기할지 might not match the course's gloss for siarad Cymraeg."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:06:18.014Z"
 }

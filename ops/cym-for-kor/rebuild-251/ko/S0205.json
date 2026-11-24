@@ -90,6 +90,43 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0205L01U06",
+     "keep": true,
+     "ko": "나는 오늘 새로운 단어를 많이 배웠어"
+    },
+    {
+     "id": "cym_for_kor:S0205L01U07",
+     "keep": false,
+     "why": "Good, but the one USE slot went to U06. 열쇠 leaves it open whether the Welsh is goriad or goriadau."
+    },
+    {
+     "id": "cym_for_kor:S0205L01U02",
+     "keep": false,
+     "why": "Acceptable, but U06 is stronger, and 최신 for diweddara' reads stiffly."
+    },
+    {
+     "id": "cym_for_kor:S0205L01U05",
+     "keep": false,
+     "why": "Acceptable, but the one USE slot is filled."
+    },
+    {
+     "id": "cym_for_kor:S0205L01U01",
+     "keep": false,
+     "why": "준비 사항들을 처리했어 is stiff, and the Korean does not lead clearly to delio efo."
+    },
+    {
+     "id": "cym_for_kor:S0205L01U03",
+     "keep": false,
+     "why": "Joining two clauses with 하지만 after 대답했어 sounds clunky, and the one USE slot is filled."
+    },
+    {
+     "id": "cym_for_kor:S0205L01U04",
+     "keep": false,
+     "why": "The Korean is ungrammatical: 왜냐하면 needs -거든 or -기 때문이야. It also does not show that 피곤해 is dw i wedi blino."
+    }
    ]
   },
   "S0205L02": {
@@ -202,5 +239,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:01:32.693Z"
 }

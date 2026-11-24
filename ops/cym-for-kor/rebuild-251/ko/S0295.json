@@ -55,7 +55,60 @@
      "why": "This is affirmative 'I said that…' with the reported clause negated. It does not use ddudes i ddim."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0295L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0295L01B02",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed and B01 is the cleaner core frame."
+    },
+    {
+     "id": "cym_for_kor:S0295L01B03",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0295L01B04",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0295L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0295L01U04",
+     "keep": true,
+     "ko": "나는 그가 너와 같이 일하고 싶다고 말하지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0295L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0295L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0295L01U03",
+     "keep": true,
+     "ko": "미안하지만 나는 그 영화가 완전 쓰레기라고 말하지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0295L01U01",
+     "keep": false,
+     "why": "Sound, but the 5 USE slots are filled by richer clause-taking uses of the LEGO."
+    },
+    {
+     "id": "cym_for_kor:S0295L01U06",
+     "keep": false,
+     "why": "The Korean '그것이 내가 그걸 말하지 않은 이유야' reads stiffly, and the 5 USE slots are already filled."
+    }
+   ]
   },
   "S0295L02": {
    "originals": [
@@ -205,5 +258,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:07:00.176Z"
 }

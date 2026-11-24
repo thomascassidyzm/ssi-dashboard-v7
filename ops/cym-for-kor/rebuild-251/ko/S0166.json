@@ -114,7 +114,20 @@
      "keep": false,
      "why": "The Korean has no subject, so it could be 'dydy o' or 'dydy hynna'. Elsewhere this course uses 그건 for hynna, so the answer is not unique."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0166L03B03",
+     "keep": false,
+     "why": "The Welsh 'ond ddim yn anarferol iawn' only works as a tail after an earlier clause, so the Korean has to be a dangling fragment. Any natural Korean sentence for it, such as 하지만 아주 특이하지는 않아, would lead the learner to 'ond dydy o ddim yn anarferol iawn', so there are two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0166L03B04",
+     "keep": false,
+     "why": "A Welsh sentence starting with bare 'ddim yn …' and no subject or 'dydy' is not a natural standalone. The Korean 아주 특이하지 않지만 흥미로워 drops the subject, so the learner would reasonably say 'dydy o ddim yn anarferol iawn ond mae'n ddiddorol', giving two possible answers."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:00:02.982Z"
 }

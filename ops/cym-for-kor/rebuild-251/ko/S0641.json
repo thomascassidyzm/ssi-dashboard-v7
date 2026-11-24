@@ -206,7 +206,27 @@
      "keep": false,
      "why": "not needed; quota filled"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0641L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0641L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0641L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0641L04B04",
+     "keep": false,
+     "why": "The Welsh breaks off on 'ond', so it is weaker than the other three, and the Korean '그게 내 선택이야 하지만' puts 하지만 after a finished sentence, which is unnatural; the three needed are already filled"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:28:26.521Z"
 }

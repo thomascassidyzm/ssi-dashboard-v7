@@ -191,6 +191,37 @@
      "keep": false,
      "why": "Only one slot was needed"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0483L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L02U04",
+     "keep": false,
+     "why": "Good, but only one USE slot is needed; U07 is the stronger phrase."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U06",
+     "keep": false,
+     "why": "Only one slot is needed. Also, 그게 could stand for either 'hynna' or 'o', so the Korean allows two Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U05",
+     "keep": false,
+     "why": "Only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U03",
+     "keep": false,
+     "why": "Only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U02",
+     "keep": false,
+     "why": "'fyddai' means 'would', but 않을 거야 reads as future 'fydd', so the Korean allows two Welsh answers."
+    }
    ]
   },
   "S0483L04": {
@@ -235,6 +266,18 @@
      "id": "cym_for_kor:S0483L04U05",
      "keep": false,
      "why": "The conditional 'tasai' paired with present 'dydy o ddim i fod' is unnatural"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0483L04U03",
+     "keep": false,
+     "why": "'I don't want it because it isn't meant to be valuable' makes no sense as a sentence."
+    },
+    {
+     "id": "cym_for_kor:S0483L04U05",
+     "keep": false,
+     "why": "Hypothetical 'tasai' next to present 'dydy o ddim i fod' is unnatural, and the sentence means little."
     }
    ]
   },
@@ -290,7 +333,29 @@
      "keep": false,
      "why": "'fyddai' is conditional ('would'), but '않을 거야' reads as future 'fydd', so there are two possible answers"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0483L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05B02",
+     "keep": false,
+     "why": "Only one BUILD slot is needed; B01 is the cleanest build toward the seed."
+    },
+    {
+     "id": "cym_for_kor:S0483L05B04",
+     "keep": false,
+     "why": "Only one BUILD slot is needed. This fragment is also weaker than B01."
+    },
+    {
+     "id": "cym_for_kor:S0483L05B03",
+     "keep": false,
+     "why": "'fyddai' means 'would', but 않을 거야 reads as future 'fydd'. Also, 그건 here stands for 'hynna', not 'o', so the Korean is ambiguous."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:18:05.800Z"
 }

@@ -77,6 +77,50 @@
      "keep": false,
      "why": "Very close to the seed and long; not needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0561L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03B01",
+     "keep": false,
+     "why": "Now that 'os' has been taught, 그게 쉬운지 could be answered with 'ydy o'n hawdd' or with 'os ydy o'n hawdd', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0561L03B03",
+     "keep": false,
+     "why": "It is the seed sentence with only the adjective changed, and B02 and B04 give a better spread."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03U05",
+     "keep": true,
+     "ko": "다음번에 나는 그녀에게 그게 틀렸는지 물어볼 거야"
+    },
+    {
+     "id": "cym_for_kor:S0561L03U03",
+     "keep": false,
+     "why": "A bare 'wnest ti' statement is odd in Welsh, and the Korean reads like a question."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U06",
+     "keep": false,
+     "why": "After 'do'n i ddim yn gwybod', North Welsh normally uses 'os oedd o'n', so the present 'ydy o'n' is unnatural here."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U07",
+     "keep": false,
+     "why": "It is long and almost repeats the seed."
+    }
    ]
   },
   "S0561L04": {
@@ -155,5 +199,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:24:48.655Z"
 }

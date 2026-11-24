@@ -106,7 +106,29 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0297L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L02B04",
+     "keep": false,
+     "why": "Good phrase, but only 1 BUILD was needed and B01 is the cleaner building block"
+    },
+    {
+     "id": "cym_for_kor:S0297L02B03",
+     "keep": false,
+     "why": "Grammatical, but only 1 BUILD was needed"
+    },
+    {
+     "id": "cym_for_kor:S0297L02B02",
+     "keep": false,
+     "why": "Only 1 BUILD was needed, and B01 fits seed 297 more closely"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:07:13.879Z"
 }

@@ -61,7 +61,38 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0412L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0412L01U03",
+     "keep": false,
+     "why": "Sound, but only 1 USE is needed and U05 is stronger"
+    },
+    {
+     "id": "cym_for_kor:S0412L01U02",
+     "keep": false,
+     "why": "Only 1 USE is needed; the bare opening 'na' (아니) reads awkwardly on its own"
+    },
+    {
+     "id": "cym_for_kor:S0412L01U04",
+     "keep": false,
+     "why": "Only 1 USE is needed; long and clunky (계속 조용히 있을 for aros yn ddistaw)"
+    },
+    {
+     "id": "cym_for_kor:S0412L01U06",
+     "keep": false,
+     "why": "Odd meaning: 'we wouldn't be able to turn left at the next corner' is a weak fit for this frame"
+    },
+    {
+     "id": "cym_for_kor:S0412L01U07",
+     "keep": false,
+     "why": "The Welsh has bare 'medru' with no verb, but the Korean 할 수는 adds one, so 'medru gwneud' is also a possible answer"
+    }
+   ]
   },
   "S0412L02": {
    "originals": [
@@ -116,5 +147,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:04.422Z"
 }

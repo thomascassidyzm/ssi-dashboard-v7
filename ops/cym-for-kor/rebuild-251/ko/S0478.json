@@ -90,6 +90,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0478L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0478L01U04",
+     "keep": false,
+     "why": "Grammatical, but only one USE is needed and U05 is the cleaner fit; the Korean clause after 왜냐하면 also reads awkwardly."
+    },
+    {
+     "id": "cym_for_kor:S0478L01U01",
+     "keep": false,
+     "why": "Only one USE is needed; U05 is preferred."
+    },
+    {
+     "id": "cym_for_kor:S0478L01U02",
+     "keep": false,
+     "why": "'너무 많은 일을 가지고 있어' is unnatural Korean for having too much work."
+    },
+    {
+     "id": "cym_for_kor:S0478L01U03",
+     "keep": false,
+     "why": "The Korean is a long run-on: two 그녀는 clauses joined by a bare 왜냐하면 with no causal ending. '회의를 가지고 있어' is also unnatural."
+    },
+    {
+     "id": "cym_for_kor:S0478L01U06",
+     "keep": false,
+     "why": "'너에게 질문을 가지고 있어' is not natural Korean."
+    },
+    {
+     "id": "cym_for_kor:S0478L01U07",
+     "keep": false,
+     "why": "Only one USE is needed. '웨일스어를 이야기하는' is awkward Korean for speaking Welsh."
+    }
    ]
   },
   "S0478L02": {
@@ -178,7 +214,20 @@
      "keep": false,
      "why": "'그 여학생' does not show the demonstrative 'na, so 'y fyfyrwraig' and 'y fyfyrwraig 'na' are both possible answers."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0478L02U01",
+     "keep": false,
+     "why": "The meaning is odd ('I have such a kind heart but I don't want to help you'). The Korean '있지만' also drops the 가지고 있어 gloss for mae gen i."
+    },
+    {
+     "id": "cym_for_kor:S0478L02U05",
+     "keep": false,
+     "why": "'그 여학생' does not show the demonstrative 'na, so both y fyfyrwraig and y fyfyrwraig 'na are possible answers. The Korean '있지만' also drops the 가지고 있어 gloss."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:17:34.682Z"
 }

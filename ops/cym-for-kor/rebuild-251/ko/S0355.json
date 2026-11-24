@@ -116,7 +116,28 @@
      "keep": false,
      "why": "Sound, but the four USE slots are already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0355L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04B04",
+     "keep": false,
+     "why": "Sound, but only one BUILD slot is open and B03 is the shorter, cleaner build."
+    },
+    {
+     "id": "cym_for_kor:S0355L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04U04",
+     "keep": false,
+     "why": "Sound, but only one USE slot is open and '너 … 네가' says 'you' twice, which is clumsy; U05 reads better."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:09:59.206Z"
 }

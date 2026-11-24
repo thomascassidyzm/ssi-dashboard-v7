@@ -143,6 +143,36 @@
      "keep": false,
      "why": "Valid, but only 2 USE were needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0572L04B04",
+     "keep": true,
+     "ko": "지난번에 사무실에서"
+    },
+    {
+     "id": "cym_for_kor:S0572L04B02",
+     "keep": false,
+     "why": "약속했어 has two possible answers (wnaeth o addo / wnaeth o addewid), and 'mi wnaeth o addewid' is a stilted calque."
+    },
+    {
+     "id": "cym_for_kor:S0572L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04U04",
+     "keep": true,
+     "ko": "너 지난번에 그녀에게 동의했어?"
+    },
+    {
+     "id": "cym_for_kor:S0572L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04U02",
+     "keep": false,
+     "why": "The Welsh reads most naturally as the fragment 'the last time they left together', which is the same relative structure as the seed. Also, 자기들끼리 ('among themselves') does not mean efo'i gilydd ('together')."
+    }
    ]
   },
   "S0572L05": {
@@ -209,5 +239,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:24:59.817Z"
 }

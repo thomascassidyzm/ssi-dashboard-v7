@@ -167,6 +167,50 @@
      "keep": false,
      "why": "'그건' could be 'mae o'n' or 'mae hi'n', so the Korean has two possible Welsh answers"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0580L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L03B01",
+     "keep": false,
+     "why": "'그건' could be either 'mae o'n' or 'mae hi'n', so the prompt has two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0580L03B03",
+     "keep": false,
+     "why": "'그건' could be either 'mae o'n' or 'mae hi'n', so the prompt has two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0580L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L03U01",
+     "keep": false,
+     "ko": "너 어딘가로 가고 싶어?",
+     "why": "Good once the question mark is added, but the 2 USE places are already filled by stronger phrases"
+    },
+    {
+     "id": "cym_for_kor:S0580L03U02",
+     "keep": false,
+     "why": "In both languages the natural negative is 'nowhere': Welsh says 'i nunlle' and Korean says '아무 데도', so 'ddim … i rywle' and '어딘가로 가고 싶지 않아' sound unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0580L03U07",
+     "keep": false,
+     "why": "'그건' could be either 'mae o'n' or 'mae hi'n', so the prompt has two Welsh answers"
+    }
    ]
   },
   "S0580L04": {
@@ -227,5 +271,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:25:50.086Z"
 }

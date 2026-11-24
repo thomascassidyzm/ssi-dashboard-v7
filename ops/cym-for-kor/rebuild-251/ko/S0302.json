@@ -160,6 +160,21 @@
      "keep": false,
      "why": "USE limit reached. Its 보다 = gwylio also clashes with 보다 = gweld in U04."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0302L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02B04",
+     "keep": false,
+     "why": "The Welsh and Korean are both sound, but B02 and B03 already fill the two BUILD slots."
+    }
    ]
   },
   "S0302L03": {
@@ -308,5 +323,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:07:32.823Z"
 }

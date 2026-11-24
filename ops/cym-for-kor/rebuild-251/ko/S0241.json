@@ -55,7 +55,41 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0241L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U05",
+     "keep": false,
+     "why": "Grammatical but it repeats U01's negative third-person frame, and the four slots are already filled with more varied rows"
+    },
+    {
+     "id": "cym_for_kor:S0241L02U06",
+     "keep": false,
+     "why": "Grammatical but it is the same third-person 'isio' frame as U01, and the four slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0241L02U04",
+     "keep": false,
+     "why": "줄 거야 could also mean a plain future (wna i roi / rhoddaf i), so the Korean has more than one Welsh answer"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:03:16.234Z"
 }

@@ -54,6 +54,22 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0382L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L01B01",
+     "keep": false,
+     "why": "Fine, but only one BUILD was needed and B03 practises the embedded question that seed 382 leads to."
+    },
+    {
+     "id": "cym_for_kor:S0382L01B04",
+     "keep": false,
+     "why": "Only one BUILD was needed; B03 was the stronger pick. 따라오다 could also suggest dod ar ôl, which is less certain than dilyn."
+    }
    ]
   },
   "S0382L02": {
@@ -115,7 +131,19 @@
      "keep": false,
      "why": "USE quota filled; near-duplicate of U01"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0382L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02B03",
+     "keep": false,
+     "why": "앉다 could be either eistedd or eistedd i lawr, so the Korean has two possible Welsh answers."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:28.823Z"
 }

@@ -85,7 +85,39 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0351L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0351L03U04",
+     "keep": false,
+     "why": "Good phrase, but it is too close to the seed sentence and only one USE slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U02",
+     "keep": false,
+     "why": "Grammatical, but the one USE slot is already filled by the better candidate U01."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U06",
+     "keep": false,
+     "why": "Grammatical, but the one USE slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U03",
+     "keep": false,
+     "why": "Past tense oedd o isio with heno reads oddly, and the slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U05",
+     "keep": false,
+     "why": "Colloquial bod hi ddim is fine but less clean, and the slot is already filled."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:09:45.431Z"
 }

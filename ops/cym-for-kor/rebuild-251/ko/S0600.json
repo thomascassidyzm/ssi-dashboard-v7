@@ -51,7 +51,20 @@
      "keep": false,
      "why": "'기꺼이 운전했을 거야' could also be answered with 'fyswn i wedi dreifio', so it does not pin down 'fyswn i wedi bod yn hapus i ddreifio'. A Korean that mirrors 'hapus' closely would sound unnatural."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0600L06U01",
+     "keep": true,
+     "ko": "너는 어젯밤에 피곤했어"
+    },
+    {
+     "id": "cym_for_kor:S0600L06U06",
+     "keep": false,
+     "why": "'기꺼이 운전했을 거야' could also be answered 'fyswn i wedi dreifio', so it does not force 'fyswn i wedi bod yn hapus i ddreifio'. A Korean line that mirrors 'hapus' word for word would sound unnatural."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:26:27.963Z"
 }

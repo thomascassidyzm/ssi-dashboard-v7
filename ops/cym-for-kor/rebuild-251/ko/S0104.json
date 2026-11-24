@@ -142,6 +142,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0104L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L02U01",
+     "keep": false,
+     "why": "Sound, but only 1 USE slot was needed and U02 fits better"
+    },
+    {
+     "id": "cym_for_kor:S0104L02U07",
+     "keep": false,
+     "why": "Sound, but only 1 USE slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0104L02U06",
+     "keep": false,
+     "why": "Not needed; 일들을 is a stiff rendering of pethau"
+    },
+    {
+     "id": "cym_for_kor:S0104L02U04",
+     "keep": false,
+     "why": "Not needed; 바꾸지 않아 is a weaker match for the habitual present than U02"
+    },
+    {
+     "id": "cym_for_kor:S0104L02U03",
+     "keep": false,
+     "why": "Not needed; 바꾸는 게 좋겠어 could also be heard as liciwn i, so dylwn i is not the only answer"
+    },
+    {
+     "id": "cym_for_kor:S0104L02U05",
+     "keep": false,
+     "why": "Not needed; 바꾸면 좋겠어 overlaps with dylwn i, so liciwn i is not the only answer"
+    }
    ]
   },
   "S0104L04": {
@@ -202,5 +238,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:56:06.787Z"
 }

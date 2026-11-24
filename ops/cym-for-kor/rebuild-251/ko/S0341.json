@@ -67,7 +67,43 @@
      "why": "This line has 'ar ôl' (after), not 'yn ôl' (ago). It does not use the LEGO at all."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0341L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0341L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0341L04U03",
+     "keep": false,
+     "why": "Not needed: two stronger USE rows already fill the basket, and 영화를 시청했어 reads stiff where 봤어 would be natural."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U04",
+     "keep": false,
+     "why": "Not needed: the basket is full, and this nested 'wedi brifo ei hun' row is longer than the LEGO needs."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U05",
+     "keep": false,
+     "why": "In the Welsh, 'yn ôl' sits between 'ddudodd o' and the 'fod' clause, so the time phrase is ambiguous and the word order is awkward."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U06",
+     "keep": false,
+     "why": "The Welsh puts the time phrase in the middle of the reported speech, so it is unclear which verb it belongs to. The basket is already full."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U07",
+     "keep": false,
+     "why": "Not needed: the basket is full with simpler rows that copy the seed's pattern."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:09:18.711Z"
 }

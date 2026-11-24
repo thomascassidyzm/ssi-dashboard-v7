@@ -150,6 +150,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0403L01U02",
+     "keep": true,
+     "ko": "아니 우리는 곧장 집에 가는 게 좋겠어"
+    },
+    {
+     "id": "cym_for_kor:S0403L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0403L01U04",
+     "keep": false,
+     "why": "Sound, but the two USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0403L01U03",
+     "keep": false,
+     "why": "Sound, but the two USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0403L01U01",
+     "keep": false,
+     "why": "In Korean, 밥 먹으러 멈추는 게 reads awkwardly, and the two slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0403L01U05",
+     "keep": false,
+     "why": "The Korean drops 는 from the gloss 우리는, so it drifts from the gloss wording; slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0403L01U07",
+     "keep": false,
+     "why": "'am ychydig bach hirach' is unnatural; idiomatic Welsh is 'ychydig bach yn hirach'."
+    }
    ]
   },
   "S0403L02": {
@@ -263,5 +299,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:12:55.963Z"
 }

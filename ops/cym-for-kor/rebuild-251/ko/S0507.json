@@ -55,7 +55,42 @@
      "why": "Welsh does not contain the LEGO wnaethon ni (wnaethon nhw + oeddan ni); it does not practise this LEGO"
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0507L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0507L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0507L01U05",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled by stronger rows: U02 reuses the seed verb as a question, U03 adds the negative."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U01",
+     "keep": false,
+     "why": "Sound, but only two slots are needed and U02/U03 give more variety (question, negation)."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U04",
+     "keep": false,
+     "why": "그러면 means 'in that case', while wedyn here means 'then/afterwards' (그 다음에), so the Korean misleads; also surplus to the count."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U06",
+     "keep": false,
+     "why": "Surplus to the count; the pan-clause plus pluperfect is heavy for a USE top-up."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U07",
+     "keep": false,
+     "why": "Surplus to the count, and too long, with the second clause drifting away from the LEGO."
+    }
+   ]
   },
   "S0507L03": {
    "originals": [
@@ -133,5 +168,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:19:44.383Z"
 }

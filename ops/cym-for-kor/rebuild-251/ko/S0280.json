@@ -60,6 +60,41 @@
      "ok": false,
      "why": "MOVED: here 'ond' is 'but' and 'dim hynna' is 'not that'. This is not 'dim ond' ('only'), so the LEGO is used in the wrong sense."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0280L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0280L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0280L02U01",
+     "keep": false,
+     "why": "Good phrase, but only two USE rows were needed and U04 and U06 show the fronted 'dim ond' focus better"
+    },
+    {
+     "id": "cym_for_kor:S0280L02U05",
+     "keep": false,
+     "why": "Good phrase, but only two USE rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0280L02U02",
+     "keep": false,
+     "why": "The Welsh question 'wyt ti angen dim ond ychydig funudau' reads awkwardly; 'ychydig o funudau' or a fronted 'dim ond' would be more natural"
+    },
+    {
+     "id": "cym_for_kor:S0280L02U03",
+     "keep": false,
+     "why": "The Korean '하지만 한동안만' tacked onto the end of the sentence is not natural Korean"
+    },
+    {
+     "id": "cym_for_kor:S0280L02U07",
+     "keep": false,
+     "why": "The Korean '너와만' tacked onto the end of the sentence is unnatural, and the Welsh is a run-on with no 'ond'"
+    }
    ]
   },
   "S0280L03": {
@@ -171,5 +206,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:05:24.682Z"
 }

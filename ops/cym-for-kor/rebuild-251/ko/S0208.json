@@ -54,6 +54,37 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0208L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0208L01U03",
+     "keep": false,
+     "why": "Good, but only 1 USE needed; U01 chosen"
+    },
+    {
+     "id": "cym_for_kor:S0208L01U06",
+     "keep": false,
+     "why": "Good, but only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0208L01U04",
+     "keep": false,
+     "why": "Only 1 USE needed; '미안해 하지만' reads stiffly"
+    },
+    {
+     "id": "cym_for_kor:S0208L01U05",
+     "keep": false,
+     "why": "Korean '왜냐하면 … 않았어' is an unnatural fragment"
+    },
+    {
+     "id": "cym_for_kor:S0208L01U02",
+     "keep": false,
+     "why": "Korean is unclear: 'practise talking with you' and 'practise talking to you' are both readings"
+    }
    ]
   },
   "S0208L02": {
@@ -170,7 +201,44 @@
      "ok": false,
      "why": "The Welsh is 'ddeud be’ ddudest ti' and never contains 'ddeud o' (say it), so the LEGO is not used here."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0208L04U02",
+     "keep": true,
+     "ko": "너는 그걸 어떻게 말하는지 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0208L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0208L04U04",
+     "keep": true,
+     "ko": "아무도 그걸 어떻게 말하는지 확실히 몰랐어"
+    },
+    {
+     "id": "cym_for_kor:S0208L04U05",
+     "keep": false,
+     "why": "Good, but only 3 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0208L04U03",
+     "keep": false,
+     "why": "Only 3 needed; 'yn y Gymraeg' is less idiomatic than 'yn Gymraeg' here"
+    },
+    {
+     "id": "cym_for_kor:S0208L04U06",
+     "keep": false,
+     "why": "Only 3 needed; Korean '내가 그걸 말할 수 있을지' could also be taken as 'os bydda i'n gallu'"
+    },
+    {
+     "id": "cym_for_kor:S0208L04U01",
+     "keep": false,
+     "why": "'gadewch i ni' is plural/formal but '-자' is 반말, so the Korean could also mean 'gad i ni'"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:01:48.183Z"
 }

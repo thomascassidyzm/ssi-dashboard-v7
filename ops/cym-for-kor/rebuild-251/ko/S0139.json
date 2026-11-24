@@ -64,6 +64,37 @@
      "keep": false,
      "why": "Only 1 BUILD was needed; the fragment is weaker than B04"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0139L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0139L01U01",
+     "keep": false,
+     "why": "Acceptable, but only one USE slot is needed and U02 is the more natural sentence"
+    },
+    {
+     "id": "cym_for_kor:S0139L01U03",
+     "keep": false,
+     "why": "Starting with 'ond' before the apology makes an awkward stand-alone line, and only one slot is needed"
+    },
+    {
+     "id": "cym_for_kor:S0139L01U04",
+     "keep": false,
+     "why": "Acceptable, but only one USE slot is needed"
+    },
+    {
+     "id": "cym_for_kor:S0139L01U05",
+     "keep": false,
+     "why": "Unnatural order: an apology tacked onto 'it's not a problem but' makes an odd utterance"
+    },
+    {
+     "id": "cym_for_kor:S0139L01U06",
+     "keep": false,
+     "why": "'ddim yn barod hyd yn hyn' is stilted; a native speaker would say 'eto'. The Korean '준비가 된 게 아니야' is also unnatural"
+    }
    ]
   },
   "S0139L02": {
@@ -194,7 +225,28 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0139L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0139L03B04",
+     "keep": false,
+     "why": "Good phrase, but only one BUILD slot is needed and B02 builds straight toward the seed"
+    },
+    {
+     "id": "cym_for_kor:S0139L03B01",
+     "keep": false,
+     "why": "A bare 'gadael rŵan' as a verbnoun fragment is weak, and '지금 떠나다' in dictionary form is not a natural prompt"
+    },
+    {
+     "id": "cym_for_kor:S0139L03B03",
+     "keep": false,
+     "why": "The fragment has no subject, and '떠나고 싶어하다' is third-person in dictionary form, which does not match a bare 'isio'"
+    }
+   ]
   },
   "S0139L04": {
    "originals": [
@@ -249,5 +301,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T19:58:46.987Z"
 }

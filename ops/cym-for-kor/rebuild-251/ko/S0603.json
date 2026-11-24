@@ -164,7 +164,41 @@
      "ok": false,
      "why": "Here pryd means 'meal'. The phrase does not contain the LEGO ar y pryd ('at the time'), so the sense is wrong."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0603L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0603L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0603L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0603L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0603L03U06",
+     "keep": false,
+     "why": "Good, but the 4 USE slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0603L03U03",
+     "keep": false,
+     "why": "Good, but the 4 USE slots are already filled; 'ar y pryd' at the front is less typical than at the end"
+    },
+    {
+     "id": "cym_for_kor:S0603L03U07",
+     "keep": false,
+     "why": "Good, but the 4 USE slots are already filled; the Korean '왜냐하면 … 피곤했어' reads clunky and would need rewording"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:26:37.775Z"
 }

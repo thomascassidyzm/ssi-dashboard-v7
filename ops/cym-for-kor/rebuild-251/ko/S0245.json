@@ -102,7 +102,34 @@
      "keep": false,
      "why": "Opens with a bare 'ond', which is weaker as a standalone USE row, and the slots are filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0245L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0245L01U07",
+     "keep": false,
+     "why": "Only one USE slot is needed. U05 is stronger, and this row opens with a bare 'ond' that leaves it hanging as a standalone USE line."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U02",
+     "keep": false,
+     "why": "It is almost a copy of the seed sentence: only gwneud changes to dysgu, so it gives no real new practice."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U01",
+     "keep": false,
+     "why": "It repeats the seed's 'faint dw i wedi' frame almost word for word, and its Korean '얼마나 많이 이미 배웠는지' has awkward word order."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U06",
+     "keep": false,
+     "why": "The Korean '만족해 그리고 그다음에' is an unnatural run-on, and U05 is the better row anyway."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:03:38.085Z"
 }

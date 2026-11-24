@@ -127,7 +127,33 @@
      "keep": false,
      "why": "'wrthaf fi' sounds stilted next to the usual North Welsh 'wrtha i'."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0388L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02B02",
+     "keep": false,
+     "why": "Grammatical and natural, but only one BUILD is needed and B04 is closer to the seed's structure."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02U03",
+     "keep": false,
+     "why": "The Welsh 'welest ti y dyn' should be contracted to 'welest ti'r dyn'. The Korean '봤어?' also fits 'wyt ti wedi gweld', so the prompt has two answers."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U06",
+     "keep": false,
+     "why": "'wrthaf fi' sounds stilted where North Welsh would normally say 'wrtha i'."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:53.223Z"
 }

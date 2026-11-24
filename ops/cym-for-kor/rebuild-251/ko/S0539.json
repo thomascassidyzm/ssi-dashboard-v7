@@ -66,7 +66,20 @@
      "keep": false,
      "why": "Ends on a dangling 'ond', which is weaker as a BUILD, and the Korean -지만 doesn't mark the open end with ~."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0539L02B03",
+     "keep": true,
+     "ko": "왜냐하면 지금 점점 늦어지고 있거든"
+    },
+    {
+     "id": "cym_for_kor:S0539L02B04",
+     "keep": false,
+     "why": "The Welsh ends on a hanging 'ond' that adds nothing to practise, and the Korean -지만 hides that the sentence is unfinished, so the BUILD is weak and its open end is unclear."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:22:39.777Z"
 }

@@ -141,6 +141,37 @@
      "keep": false,
      "why": "Korean reads as an embedded clause, while the Welsh is a bare question fragment"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0221L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0221L03U03",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE is needed and U05 is the better fit"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U01",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U02",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U04",
+     "keep": false,
+     "why": "Going out and then watching TV reads oddly; the count is also already filled"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U06",
+     "keep": false,
+     "why": "'bach o deledu am dipyn' says 'a bit' twice, which is awkward"
+    }
    ]
   },
   "S0221L04": {
@@ -298,5 +329,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:38.219Z"
 }

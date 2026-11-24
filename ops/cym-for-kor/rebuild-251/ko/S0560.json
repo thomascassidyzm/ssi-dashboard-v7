@@ -54,6 +54,60 @@
      "ok": false,
      "why": "Uses the 'going to' future (그는 ~ㄹ 거야), not the motion sense this LEGO teaches."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0560L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01B03",
+     "keep": false,
+     "why": "In Korean, 왜냐하면 needs an ending like -거든 or -기 때문이야, so this line sounds awkward. The other three BUILD rows already fill the quota."
+    },
+    {
+     "id": "cym_for_kor:S0560L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0560L01U07",
+     "keep": false,
+     "why": "Good phrase, but the five USE slots are already full."
+    },
+    {
+     "id": "cym_for_kor:S0560L01U05",
+     "keep": false,
+     "why": "Good phrase, but the five USE slots are already full."
+    },
+    {
+     "id": "cym_for_kor:S0560L01U03",
+     "keep": false,
+     "why": "Asking where \"it\" goes at night is an odd thing to say, and the quota is already full."
+    }
    ]
   },
   "S0560L02": {
@@ -184,5 +238,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:24:36.101Z"
 }

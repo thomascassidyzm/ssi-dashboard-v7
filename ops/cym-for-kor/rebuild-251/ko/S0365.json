@@ -164,6 +164,32 @@
      "keep": false,
      "why": "Only 3 USE needed; the meaning is odd."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0365L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0365L02U01",
+     "keep": false,
+     "why": "Grammatical and natural, but only 1 USE was needed and U02 is the better choice: this one is just the seed sentence without the negative."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U05",
+     "keep": false,
+     "why": "The Korean for 'teimlo fel siarad' is clumsy, and the count is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U06",
+     "keep": false,
+     "why": "Acceptable, but the count is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U08",
+     "keep": false,
+     "why": "The meaning is odd: something said being 'less exciting' than another thing."
+    }
    ]
   },
   "S0365L03": {
@@ -224,5 +250,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:10:15.577Z"
 }

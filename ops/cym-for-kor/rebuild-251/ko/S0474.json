@@ -53,6 +53,18 @@
      "keep": false,
      "why": "The Korean '되지 않을 거야' fits both 'fydd hynna ddim' and 'fyddai hynna ddim', so it has two possible answers. 'Would' has no clean Korean form here, and five USE rows are kept without it."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0474L03B03",
+     "keep": false,
+     "why": "Putting 'fel cynnig' at the front of 'mae hynna'n swnio' is unnatural Welsh; the normal order is 'mae hynna'n swnio fel cynnig'. The phrase also breaks off with the verb unfinished, and '제안으로 그건 ~ 들려' is not natural Korean."
+    },
+    {
+     "id": "cym_for_kor:S0474L03B04",
+     "keep": false,
+     "why": "'fel cynnig flwyddyn nesa'' ('as an offer next year') means nothing on its own, and '내년에 제안으로' cannot point to a single natural Welsh phrase."
+    }
    ]
   },
   "S0474L04": {
@@ -192,5 +204,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:17:20.471Z"
 }

@@ -72,6 +72,35 @@
      "ok": false,
      "why": "Wrong sense: 'took the train' is not the time sense (~가 걸렸어) this LEGO teaches."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0511L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L01U06",
+     "keep": true,
+     "ko": "내 어머니는 웨일스어를 배우는 데 여러 해가 걸렸어"
+    },
+    {
+     "id": "cym_for_kor:S0511L01U02",
+     "keep": false,
+     "why": "'We moved to the city but it took years' is odd, and 몇 년 suggests 'ychydig flynyddoedd' rather than 'flynyddoedd'."
+    },
+    {
+     "id": "cym_for_kor:S0511L01U04",
+     "keep": false,
+     "why": "The Welsh has no question mark, and a mutated gymerodd can be a statement or a question, so the Korean question prompt does not settle which one the learner should say."
+    }
    ]
   },
   "S0511L02": {
@@ -271,6 +300,37 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0511L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L03U01",
+     "keep": false,
+     "why": "Not needed; only one is required."
+    },
+    {
+     "id": "cym_for_kor:S0511L03U02",
+     "keep": false,
+     "why": "Not needed; only one is required."
+    },
+    {
+     "id": "cym_for_kor:S0511L03U03",
+     "keep": false,
+     "why": "피곤했어 does not show the pluperfect 'wedi blino' clearly."
+    },
+    {
+     "id": "cym_for_kor:S0511L03U04",
+     "keep": false,
+     "why": "Not needed; only one is required."
+    },
+    {
+     "id": "cym_for_kor:S0511L03U05",
+     "keep": false,
+     "why": "Not needed; only one is required."
+    }
    ]
   },
   "S0511L04": {
@@ -367,6 +427,46 @@
      "keep": false,
      "why": "Ambiguous sense: they physically reaching the girls does not fit ~에게 전해지는 데."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0511L04B02",
+     "keep": true,
+     "ko": "모든 사람에게 전해지는 데 충분한 시간"
+    },
+    {
+     "id": "cym_for_kor:S0511L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L04B01",
+     "keep": false,
+     "why": "Here i gyrraedd could mean physically reaching the mother, which does not match the 전해지는 데 sense."
+    },
+    {
+     "id": "cym_for_kor:S0511L04B04",
+     "keep": false,
+     "why": "'시간을 조금 더' is awkward as a fragment, and reaching the father reads as physically getting there."
+    },
+    {
+     "id": "cym_for_kor:S0511L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L04U04",
+     "keep": true,
+     "ko": "모든 사람에게 전해지는 데 가장 좋은 방법은 뭐야"
+    },
+    {
+     "id": "cym_for_kor:S0511L04U05",
+     "keep": false,
+     "why": "Here i gyrraedd means her physically reaching the father, which does not match the 전해지는 데 sense."
+    },
+    {
+     "id": "cym_for_kor:S0511L04U06",
+     "keep": false,
+     "why": "Here i gyrraedd means them physically reaching the girls, which does not match the 전해지는 데 sense."
+    }
    ]
   },
   "S0511L05": {
@@ -421,5 +521,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:20:06.086Z"
 }

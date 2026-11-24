@@ -96,6 +96,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0499L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0499L01U03",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U01 is clearer. '어쩌면 … 좋겠어' is a bit awkward, and the course's Korean wording for dylen ni is unconfirmed."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U02",
+     "keep": false,
+     "why": "'그건' could be Welsh 'o' or 'hi', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U04",
+     "keep": false,
+     "why": "'어쩌면 너 … 싶어?' is unnatural Korean. Putting efallai at the end of the question also isn't clear from the Korean."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U05",
+     "keep": false,
+     "why": "'그게' could be Welsh 'o' or 'hi'. The Korean also blurs whether cyfri' means 'matter' or 'count'."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U06",
+     "keep": false,
+     "why": "The Korean reorders words awkwardly, and '물어볼 거야' could be Welsh 'bydda i'n gofyn' or a different future form."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U07",
+     "keep": false,
+     "why": "'피곤했어' doesn't show the pluperfect 'oedd … wedi blino' and could equally be 'roedden nhw wedi blino' or the simple past. '어쩌면 … 했어' also reads oddly."
+    }
    ]
   },
   "S0499L05": {
@@ -302,5 +338,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:19:13.949Z"
 }

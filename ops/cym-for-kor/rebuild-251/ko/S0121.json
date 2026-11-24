@@ -129,6 +129,21 @@
      "keep": false,
      "why": "Acceptable row, but the USE quota of 5 is filled; its Korean also repeats 그가, which is clumsy."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0121L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0121L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0121L02B02",
+     "keep": false,
+     "why": "Sound, but only 2 BUILD slots are open and the two complete sentences use the LEGO better than this fragment, whose 기분이 더 낫지 is also a bit stiff."
+    }
    ]
   },
   "S0121L04": {
@@ -247,5 +262,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:57:19.421Z"
 }

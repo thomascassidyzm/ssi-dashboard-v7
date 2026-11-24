@@ -61,7 +61,42 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0124L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0124L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0124L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0124L01U05",
+     "keep": false,
+     "why": "Sound, but the three slots are already filled by stronger, more varied rows."
+    },
+    {
+     "id": "cym_for_kor:S0124L01U01",
+     "keep": false,
+     "why": "Only adds ond to the seed sentence, so it gives little new practice."
+    },
+    {
+     "id": "cym_for_kor:S0124L01U06",
+     "keep": false,
+     "why": "It is the seed sentence plus a long clause, and the count is already met."
+    },
+    {
+     "id": "cym_for_kor:S0124L01U04",
+     "keep": false,
+     "why": "The Korean 그것이 내가 ~한 이유야 is stiff, and Korean speakers would more naturally say 그래서, which would weaken the link to dyna pam."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:57:29.043Z"
 }

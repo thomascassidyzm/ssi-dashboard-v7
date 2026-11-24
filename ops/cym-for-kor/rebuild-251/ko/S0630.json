@@ -73,7 +73,68 @@
      "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0630L01B03",
+     "keep": true,
+     "ko": "내가 마실 것 좀 받을 수 있을까"
+    },
+    {
+     "id": "cym_for_kor:S0630L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01B02",
+     "keep": false,
+     "why": "Only 2 BUILD needed; B03 and B01 are stronger, and the bare 'rywbeth' fragment adds little."
+    },
+    {
+     "id": "cym_for_kor:S0630L01B04",
+     "keep": false,
+     "why": "'na ga i de' reads as 'no, may I have tea', an odd and ambiguous opener with no clear meaning as a BUILD line."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01U08",
+     "keep": true,
+     "ko": "제가 도움을 받을 수 있을까요 부탁해요",
+     "why": "'os gwelwch yn dda' is the formal chi form, so the line needs 해요 with 제가 and 부탁해요, as in the seed. 반말 plus 부탁해 broke the register rule."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U03",
+     "keep": true,
+     "ko": "제가 레드 와인 한 병 받을 수 있을까요 부탁해요",
+     "why": "Formal 'os gwelwch yn dda' needs 해요 and 부탁해요, as in the seed, not 반말."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U05",
+     "keep": false,
+     "why": "Only 5 USE needed; 'panad cryf o goffi' is the least idiomatic word order of the set."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U06",
+     "keep": false,
+     "why": "Only 5 USE needed; stronger ones were kept."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U07",
+     "keep": false,
+     "why": "Only 5 USE needed; stronger ones were kept."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:27:59.631Z"
 }

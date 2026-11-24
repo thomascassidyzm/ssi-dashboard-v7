@@ -66,6 +66,54 @@
      "ok": false,
      "why": "Here 'yn barod' means 'already'. The 'ready to' LEGO is absent."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0611L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0611L02B01",
+     "keep": false,
+     "why": "Only 1 BUILD is needed; B04 is the better build because it rebuilds the seed's own frame (fyswn i wedi bod yn barod i …)."
+    },
+    {
+     "id": "cym_for_kor:S0611L02B02",
+     "keep": false,
+     "why": "Only 1 BUILD is needed; B04 already covers yn barod i aros inside the seed frame."
+    },
+    {
+     "id": "cym_for_kor:S0611L02B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed; this is the same sentence as U06 without i'r ddinas, so it adds little."
+    },
+    {
+     "id": "cym_for_kor:S0611L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0611L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0611L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0611L02U01",
+     "keep": false,
+     "why": "'mae o wedi bod yn barod' is the perfect tense, which reads awkwardly here. The Korean 준비가 되어 있었어 points to 'roedd o'n barod', so the prompt has two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0611L02U02",
+     "keep": false,
+     "why": "'hyd yn hyn' means 'so far', not 'yet' (that would be 'eto'). The Welsh is unnatural and does not match 아직."
+    },
+    {
+     "id": "cym_for_kor:S0611L02U05",
+     "keep": false,
+     "why": "The perfect 'mae o wedi bod yn barod' sits badly beside the imperfect 'oeddan ni angen help', and 준비가 되어 있었어 points to 'roedd o'n barod'. The prompt has two possible Welsh answers."
+    }
    ]
   },
   "S0611L03": {
@@ -121,5 +169,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:27:06.095Z"
 }

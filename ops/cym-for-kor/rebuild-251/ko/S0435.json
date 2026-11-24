@@ -60,6 +60,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0435L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0435L01U05",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot went to U03."
+    },
+    {
+     "id": "cym_for_kor:S0435L01U01",
+     "keep": false,
+     "why": "자리 is a loose rendering of bwrdd (table), so the Korean may not lead to this Welsh; the slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0435L01U02",
+     "keep": false,
+     "why": "'Arwain y ffordd flwyddyn nesa' (lead the way next year) is an odd thing to say after a yes-answer; the slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0435L01U04",
+     "keep": false,
+     "why": "'Yes, they can help, but they're not ready' contradicts itself."
+    },
+    {
+     "id": "cym_for_kor:S0435L01U06",
+     "keep": false,
+     "why": "'Ond medran, mi fedran nhw' (but yes, they can) is unnatural with 'ond' before the yes-answer."
+    },
+    {
+     "id": "cym_for_kor:S0435L01U07",
+     "keep": false,
+     "why": "Long and awkward, and the slot is already filled."
+    }
    ]
   },
   "S0435L02": {
@@ -120,5 +156,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:14:53.184Z"
 }

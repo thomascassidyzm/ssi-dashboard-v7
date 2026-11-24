@@ -133,6 +133,37 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0248L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L03U04",
+     "keep": false,
+     "why": "Good phrase, but the basket only needs one USE and U02 is the closest to the seed's frame."
+    },
+    {
+     "id": "cym_for_kor:S0248L03U01",
+     "keep": false,
+     "why": "Acceptable, but the basket only needs one USE."
+    },
+    {
+     "id": "cym_for_kor:S0248L03U03",
+     "keep": false,
+     "why": "Acceptable, but the basket only needs one USE."
+    },
+    {
+     "id": "cym_for_kor:S0248L03U05",
+     "keep": false,
+     "why": "그건 could be either mae'n or mae hynna'n, so the Korean allows two Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0248L03U06",
+     "keep": false,
+     "why": "Acceptable, but the basket only needs one USE."
+    }
    ]
   },
   "S0248L06": {
@@ -217,5 +248,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:03:46.458Z"
 }

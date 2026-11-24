@@ -179,7 +179,45 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0381L03U01",
+     "keep": true,
+     "ko": "너는 왜 우리를 따라오고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0381L03U03",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed and U01 is the better choice."
+    },
+    {
+     "id": "cym_for_kor:S0381L03U02",
+     "keep": false,
+     "why": "Only one USE was needed; 'wythnos yn ôl' with oeddan nhw isio is weaker than U01."
+    },
+    {
+     "id": "cym_for_kor:S0381L03U04",
+     "keep": false,
+     "why": "Almost the same as the seed sentence (only the negation is dropped), so it adds little variety."
+    },
+    {
+     "id": "cym_for_kor:S0381L03U05",
+     "keep": false,
+     "why": "Only one USE was needed; 그가 could mean the friend or someone else, which the Welsh 'fod o' leaves open."
+    },
+    {
+     "id": "cym_for_kor:S0381L03U06",
+     "keep": false,
+     "why": "'dilyn ni o gwmpas y cae' is an odd scenario, and 들판 주위를 우리를 따라오다 is clumsy Korean."
+    },
+    {
+     "id": "cym_for_kor:S0381L03U07",
+     "keep": false,
+     "why": "Too complex for a top-up, and the bare 'tasai fo isio' leaves the Korean 원한다고 해도 open to more than one Welsh answer."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:20.910Z"
 }

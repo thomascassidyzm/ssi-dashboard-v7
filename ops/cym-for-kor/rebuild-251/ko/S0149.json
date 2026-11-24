@@ -83,6 +83,32 @@
      "keep": false,
      "why": "past the count"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0149L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L01U01",
+     "keep": true,
+     "ko": "왜 이건 작동하지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U06",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U03",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U07",
+     "keep": false,
+     "why": "It uses 'anodd iawn', which is taught in the next LEGO (L02), so the learner doesn't have it yet at L01"
+    }
    ]
   },
   "S0149L02": {
@@ -150,6 +176,26 @@
      "id": "cym_for_kor:S0149L02U07",
      "keep": false,
      "why": "past the count"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0149L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U07",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0149L02U01",
+     "keep": false,
+     "why": "'anodd iawn ond mae'n hwyl' has no subject, so it is a weak fragment for a USE phrase"
     }
    ]
   },
@@ -333,5 +379,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:59:07.648Z"
 }

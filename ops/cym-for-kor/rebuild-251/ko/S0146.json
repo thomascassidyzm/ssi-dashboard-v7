@@ -108,7 +108,58 @@
      "why": "gweithio here means to work (labour), not the sense this LEGO teaches, which is to function (작동하다)"
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0146L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0146L02B02",
+     "keep": true,
+     "ko": "그건 지금 작동해"
+    },
+    {
+     "id": "cym_for_kor:S0146L02B01",
+     "keep": false,
+     "why": "Not needed: B04 and B02 fill the two BUILD slots, and B02 already contains this phrase."
+    },
+    {
+     "id": "cym_for_kor:S0146L02B03",
+     "keep": false,
+     "why": "The Korean fragment 그게 작동한다고 has no clear ending, and 그게 could also be ei fod o'n gweithio, so there are two Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0146L02U01",
+     "keep": true,
+     "ko": "그건 아주 잘 작동해"
+    },
+    {
+     "id": "cym_for_kor:S0146L02U02",
+     "keep": false,
+     "why": "Only one USE slot is needed. 그게 also leaves hynna versus ei fod o open."
+    },
+    {
+     "id": "cym_for_kor:S0146L02U03",
+     "keep": false,
+     "why": "Only one USE slot is needed. 그게 also leaves hynna versus ei fod o open."
+    },
+    {
+     "id": "cym_for_kor:S0146L02U04",
+     "keep": false,
+     "why": "작동하는지 means 'whether it works', but the Welsh says bod ('that it works'). 그게 also leaves hynna versus ei fod o open."
+    },
+    {
+     "id": "cym_for_kor:S0146L02U05",
+     "keep": false,
+     "why": "Only one USE slot is needed. Also, 정말 does not clearly fix mor, and the 작동해서 ('because it works') clause is loose against bod."
+    },
+    {
+     "id": "cym_for_kor:S0146L02U06",
+     "keep": false,
+     "why": "Only one USE slot is needed. 그게 also leaves hynna versus ei fod o open."
+    }
+   ]
   },
   "S0146L03": {
    "originals": [
@@ -234,5 +285,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T19:58:57.945Z"
 }

@@ -66,6 +66,28 @@
      "keep": false,
      "why": "'o' does not match the plural nhw it seems to point to, and 그는 has no clear referent."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0544L01U01",
+     "keep": false,
+     "why": "The 'pwy bynnag ddudodd …' clause is itself the subject, so adding 'hi' to make 'oedd hi'n iawn' gives two subjects and the Welsh doesn't hold together. The natural form is 'pwy bynnag … oedd yn iawn'."
+    },
+    {
+     "id": "cym_for_kor:S0544L01U02",
+     "keep": false,
+     "why": "The 'o' in 'oedd o'n anghywir' could mean the person who spoke or the man who isn't ready, and 그는 is just as unclear, so the learner can't tell which Welsh is meant. The natural form drops the pronoun: 'oedd yn anghywir'."
+    },
+    {
+     "id": "cym_for_kor:S0544L01U04",
+     "keep": false,
+     "why": "'oedd o'n anghywir' adds a subject pronoun the 'pwy bynnag' pattern doesn't take, and it assumes the speaker is male. The natural form is 'oedd yn anghywir'."
+    },
+    {
+     "id": "cym_for_kor:S0544L01U06",
+     "keep": false,
+     "why": "'o' doesn't agree with the plural 'nhw' it seems to point back to, and 그는 has no clear referent. The pronoun subject is also wrong in the 'pwy bynnag … oedd yn …' pattern."
+    }
    ]
   },
   "S0544L02": {
@@ -167,5 +189,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:22:59.280Z"
 }

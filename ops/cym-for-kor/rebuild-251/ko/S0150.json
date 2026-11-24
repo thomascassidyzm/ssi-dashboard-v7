@@ -106,7 +106,24 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0150L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0150L02B01",
+     "keep": false,
+     "why": "Only one BUILD is needed, and B04 is the fuller, more natural sentence; this bare verb-noun fragment is weaker."
+    },
+    {
+     "id": "cym_for_kor:S0150L02B02",
+     "keep": false,
+     "why": "'be' ydy dy enw di eto' only works as the direct question 'what's your name again?'. The Korean '네 이름이 뭔지 다시' reads it as an embedded clause, which is not natural Korean and does not match the Welsh."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:59:15.846Z"
 }

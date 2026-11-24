@@ -127,7 +127,38 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0296L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0296L01U01",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U04",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U03",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U02",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U06",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    }
+   ]
   },
   "S0296L03": {
    "originals": [
@@ -242,5 +273,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:07:07.486Z"
 }

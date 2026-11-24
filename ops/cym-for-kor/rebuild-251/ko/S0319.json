@@ -179,6 +179,45 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0319L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0319L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0319L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0319L02U04",
+     "keep": false,
+     "why": "Good phrase, but only 3 USE rows are needed and the three kept give more variety (angen, reported speech, negative question)."
+    },
+    {
+     "id": "cym_for_kor:S0319L02U05",
+     "keep": false,
+     "why": "Grammatical, but only 3 are needed and this one is weaker. 할 수 있을 텐데 maps loosely to the bare conditional fyddai."
+    },
+    {
+     "id": "cym_for_kor:S0319L02U07",
+     "keep": false,
+     "why": "Fine, but surplus to the 3 needed."
+    },
+    {
+     "id": "cym_for_kor:S0319L02U01",
+     "keep": false,
+     "why": "이사할 수 있을 거라고 equally gives 'y bydd hi'n medru' (will) and 'y byddai' (would), so it has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0319L02U08",
+     "keep": false,
+     "why": "Surplus to the 3 needed. Also, without a question mark the Korean reads as a statement but the Welsh is a question."
+    }
    ]
   },
   "S0319L03": {
@@ -239,5 +278,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:08:33.730Z"
 }

@@ -140,6 +140,41 @@
      "keep": false,
      "why": "Sound, but the 4 USE slots are already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0109L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0109L03B01",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed and B03 sits closer to the seed's own frame."
+    },
+    {
+     "id": "cym_for_kor:S0109L03B02",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0109L03B04",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0109L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0109L03U01",
+     "keep": false,
+     "why": "Sound, but it nearly repeats the seed. Only 1 USE is needed, and U02 adds a negation."
+    },
+    {
+     "id": "cym_for_kor:S0109L03U07",
+     "keep": false,
+     "why": "Sound, but only 1 USE is needed."
+    }
    ]
   },
   "S0109L04": {
@@ -195,5 +230,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:56:31.183Z"
 }

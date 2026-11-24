@@ -80,6 +80,38 @@
      "keep": false,
      "why": "Only one USE row was needed"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0218L01U06",
+     "keep": true,
+     "ko": "나는 어제 많이 하지 않았어 왜냐하면 나는 너무 바빴거든"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U02",
+     "keep": false,
+     "why": "Only one USE row was needed; U06 uses the seed's own 'gwneud llawer' and is better"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U03",
+     "keep": false,
+     "why": "Only one USE row was needed"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U04",
+     "keep": false,
+     "why": "Only one USE row was needed, and '시간이 나지 않았어' is a loose fit for 'ches i ddim amser'"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U05",
+     "keep": false,
+     "why": "'너는 모든 것을 했어' has two possible Welsh answers: 'ti wedi gwneud popeth' or 'nest ti wneud popeth'"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U07",
+     "keep": false,
+     "why": "Only one USE row was needed"
+    }
    ]
   },
   "S0218L03": {
@@ -134,5 +166,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:20.156Z"
 }

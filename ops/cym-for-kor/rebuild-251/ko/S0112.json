@@ -150,7 +150,38 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0112L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0112L03U01",
+     "keep": false,
+     "why": "good, but only 1 USE needed and U03 is a fuller sentence"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U02",
+     "keep": false,
+     "why": "good, but only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U04",
+     "keep": false,
+     "why": "only 1 USE needed; the 'i ddysgu' after anodd is weaker"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U05",
+     "keep": false,
+     "why": "only 1 USE needed; the Korean '배워 왜냐하면' reads stiffly"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U06",
+     "keep": false,
+     "why": "good, but only 1 USE needed"
+    }
+   ]
   },
   "S0112L05": {
    "originals": [
@@ -205,5 +236,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T19:56:52.374Z"
 }

@@ -72,6 +72,45 @@
      "keep": false,
      "why": "Acceptable, but U03 and U04 are better, and only two are needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0490L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L01B02",
+     "keep": true,
+     "ko": "그러면 그건 완벽할 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0490L01B04",
+     "keep": false,
+     "why": "A clumsy fragment: '물어본다면 그러면' doubles up the condition, and the three kept rows are better."
+    },
+    {
+     "id": "cym_for_kor:S0490L01U06",
+     "keep": true,
+     "ko": "그러면 너는 떠날 준비가 될 거야"
+    },
+    {
+     "id": "cym_for_kor:S0490L01U05",
+     "keep": true,
+     "ko": "그러면 너 우리와 함께 오고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0490L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L01U01",
+     "keep": false,
+     "why": "The Welsh puts a present-tense 'if' clause with 'would', and the Korean '물어본다면 그러면' is clumsy. Three better rows are kept."
+    }
    ]
   },
   "S0490L02": {
@@ -295,6 +334,57 @@
      "ok": false,
      "why": "The LEGO 'yn neb' does not appear; this is 'ddudodd neb' with neb as the subject."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0490L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L04B03",
+     "keep": false,
+     "why": "Only two BUILD rows are needed, and B01 and B02 are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0490L04B04",
+     "keep": false,
+     "why": "Only two BUILD rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0490L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L04U03",
+     "keep": true,
+     "ko": "그녀는 자기가 지금 아무도 믿지 않는다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0490L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L04U05",
+     "keep": false,
+     "why": "The Welsh is a statement but the Korean is a question, and five stronger rows are kept."
+    },
+    {
+     "id": "cym_for_kor:S0490L04U06",
+     "keep": false,
+     "why": "Sound, but five stronger rows already fill the basket."
+    }
    ]
   },
   "S0490L05": {
@@ -379,5 +469,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:18:50.667Z"
 }

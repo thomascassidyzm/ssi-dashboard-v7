@@ -72,6 +72,27 @@
      "keep": false,
      "why": "The 2 USE slots are already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0131L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L01U03",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U02 is the better phrase."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U05",
+     "keep": false,
+     "why": "The Korean word order is awkward, and the one open slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U06",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U02 is the better phrase."
+    }
    ]
   },
   "S0131L02": {
@@ -192,7 +213,33 @@
      "keep": false,
      "why": "The Korean '내 머릿속에 무언가가 있어' could also be 'mae ’na rywbeth', so it does not lock 'mae gen i'. It also reads oddly."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0131L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03B04",
+     "keep": false,
+     "why": "'내 머릿속에 좋은 아이디어가 있어' could equally be 'mae ’na syniad da yn fy mhen', so it does not lock 'mae gen i'."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03U05",
+     "keep": false,
+     "why": "'아직' could be either 'eto' or 'hyd yn hyn', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U06",
+     "keep": false,
+     "why": "'내 머릿속에 무언가가 있어' could be either 'mae ’na rywbeth' or 'mae gen i rywbeth', and the reason clause reads oddly."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:58:15.884Z"
 }

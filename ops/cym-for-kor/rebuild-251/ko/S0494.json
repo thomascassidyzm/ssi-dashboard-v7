@@ -154,6 +154,40 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0494L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0494L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0494L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0494L02U01",
+     "keep": false,
+     "why": "Sound, but all three slots are already filled by stronger rows; the bare 'oedd o' opening is also weaker than 'roedd o'."
+    },
+    {
+     "id": "cym_for_kor:S0494L02U03",
+     "keep": false,
+     "why": "Grammatical, but 'stopping after the second half' is an odd thing to say, since the match ends there anyway."
+    },
+    {
+     "id": "cym_for_kor:S0494L02U05",
+     "keep": false,
+     "why": "'They'll be ready after the second half' makes little sense."
+    },
+    {
+     "id": "cym_for_kor:S0494L02U07",
+     "keep": false,
+     "why": "'symud' means 'move' in general, while 이사하다 means only 'move house', so this sense of symud may not be the one the course taught."
+    }
    ]
   },
   "S0494L03": {
@@ -232,5 +266,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:19:01.513Z"
 }

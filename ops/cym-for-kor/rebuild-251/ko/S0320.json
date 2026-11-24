@@ -70,6 +70,27 @@
      "keep": false,
      "why": "Good, but the 3 USE slots are already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0320L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01U04",
+     "keep": true,
+     "ko": "아니, 그는 그 남자에 대해 이야기를 쓸 필요가 없어"
+    },
+    {
+     "id": "cym_for_kor:S0320L01U05",
+     "keep": false,
+     "why": "Only 2 USE slots are needed. This row is fine with 왜 그는 절반을 낼 필요가 없어?, but U07 and U04 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0320L01U06",
+     "keep": false,
+     "why": "Only 2 USE slots are needed, and 나는 행복해 왜냐하면 … 없어 sounds stiff in Korean. 이사하다 also narrows symud, which can mean any kind of moving."
+    }
    ]
   },
   "S0320L02": {
@@ -272,5 +293,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:08:45.389Z"
 }

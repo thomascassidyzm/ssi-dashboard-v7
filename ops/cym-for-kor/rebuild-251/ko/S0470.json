@@ -254,7 +254,38 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0470L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0470L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0470L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0470L04U05",
+     "keep": false,
+     "why": "Sound phrase, but only 3 USE slots were needed and three stronger ones fill them."
+    },
+    {
+     "id": "cym_for_kor:S0470L04U03",
+     "keep": false,
+     "ko": "우리가 이사하기 전에 우리는 그 문제를 논의할 필요가 있어?",
+     "why": "The original Korean has no subject for 필요가 있어, so 'we' is not pinned down. The Korean is fixed here, but it is still left out because only 3 slots were needed."
+    },
+    {
+     "id": "cym_for_kor:S0470L04U06",
+     "keep": false,
+     "why": "'byddai'n well' is literary or southern; North Welsh says 'basai'n well', so this is not natural North Welsh."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:17:01.663Z"
 }

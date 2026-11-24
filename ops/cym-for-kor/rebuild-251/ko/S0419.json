@@ -60,6 +60,25 @@
      "keep": false,
      "why": "The tenses clash: 'byddai'n braf' (would be nice) next to present-tense 'os ydyn nhw isio' is unnatural Welsh."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0419L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01B03",
+     "keep": false,
+     "why": "Bare 'symud' means move in general, but 이사하기 fixes 'move house'. The Korean also invites 'symud tŷ', so it does not give one Welsh answer."
+    }
    ]
   },
   "S0419L03": {
@@ -115,7 +134,27 @@
      "keep": false,
      "why": "A fine row, but not needed: five rows are already kept."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0419L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03B02",
+     "keep": false,
+     "why": "Grammatical, but 'we want to like them' is the weakest of the four semantically, and the basket is already full with three better ones."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:34.187Z"
 }

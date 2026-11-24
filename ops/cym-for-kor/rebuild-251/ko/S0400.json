@@ -81,6 +81,32 @@
      "keep": false,
      "why": "paratoi'n fuan as a question with 머지않아 is awkward in both languages"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0400L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01U01",
+     "keep": false,
+     "why": "The Welsh is fine, but the basket needs only one and U05 is the more natural question"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U03",
+     "keep": false,
+     "why": "Asking 'do we want to prepare soon?' is awkward in both languages"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U07",
+     "keep": false,
+     "why": "텔레비전을 보다 could be gwylio teledu or gweld teledu, so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U08",
+     "keep": false,
+     "why": "영화를 보다 allows both gweld and gwylio, so the Korean has two possible Welsh answers"
+    }
    ]
   },
   "S0400L02": {
@@ -275,7 +301,42 @@
      "ok": false,
      "why": "Uses bare 'nes ymlaen' (나중에), not this LEGO 'yn nes ymlaen'"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0400L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L04U02",
+     "keep": false,
+     "why": "Acceptable, but the count is already filled by stronger phrases"
+    },
+    {
+     "id": "cym_for_kor:S0400L04U03",
+     "keep": false,
+     "why": "만날 거라고 could also be the future 'byddai/bydd o'n', so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0400L04U04",
+     "keep": false,
+     "why": "Putting yn nes ymlaen before efo'n plant ni is awkward, and the phrase is long for a USE row"
+    },
+    {
+     "id": "cym_for_kor:S0400L04U07",
+     "keep": false,
+     "why": "Too long and complex for this point (gobeithio plus bydda i'n medru), and the Korean tense of 수 있기를 is loose"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:12:26.358Z"
 }

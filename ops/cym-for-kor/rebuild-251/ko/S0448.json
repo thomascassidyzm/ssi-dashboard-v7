@@ -251,7 +251,44 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0448L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0448L03U06",
+     "keep": false,
+     "why": "Good, but only one USE row was needed and U01 is simpler and more natural"
+    },
+    {
+     "id": "cym_for_kor:S0448L03U07",
+     "keep": false,
+     "why": "Natural, but only one USE row was needed"
+    },
+    {
+     "id": "cym_for_kor:S0448L03U02",
+     "keep": false,
+     "why": "Only one USE row was needed and U01 is the better choice"
+    },
+    {
+     "id": "cym_for_kor:S0448L03U04",
+     "keep": false,
+     "why": "'pam oedd o'n hapus i helpu' is a strange question, and '도우려고 했어' reads as 'tried to help'"
+    },
+    {
+     "id": "cym_for_kor:S0448L03U03",
+     "keep": false,
+     "why": "Saying they won't be happy to help after the meal makes little sense"
+    },
+    {
+     "id": "cym_for_kor:S0448L03U05",
+     "keep": false,
+     "why": "'준비 사항들을 기꺼이 도와' is unnatural Korean; it should be 준비 사항들을 돕는 걸, which forces a rewrite"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:15:54.310Z"
 }

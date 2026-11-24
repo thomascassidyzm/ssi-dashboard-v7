@@ -71,6 +71,31 @@
      "keep": false,
      "why": "Fine, but four USE top-ups are already kept."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0318L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0318L02B02",
+     "keep": false,
+     "why": "Only one BUILD is needed, and B04 adds more variety than B02, which nearly repeats the seed."
+    },
+    {
+     "id": "cym_for_kor:S0318L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0318L02U07",
+     "keep": false,
+     "why": "Fine, but only one USE is needed and U06 is the simpler, cleaner row."
+    },
+    {
+     "id": "cym_for_kor:S0318L02U04",
+     "keep": false,
+     "why": "The double negative ('I don't think she doesn't want to') is unnatural and confusing in both languages."
+    }
    ]
   },
   "S0318L04": {
@@ -131,5 +156,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:08:21.260Z"
 }

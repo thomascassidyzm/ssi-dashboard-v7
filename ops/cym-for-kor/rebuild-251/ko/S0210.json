@@ -215,7 +215,48 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0210L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0210L03U03",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0210L03U04",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0210L03U06",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0210L03U08",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0210L03U05",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0210L03U07",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0210L03U02",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    }
+   ]
   },
   "S0210L04": {
    "originals": [
@@ -270,5 +311,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:04.673Z"
 }

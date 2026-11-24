@@ -70,6 +70,27 @@
      "keep": false,
      "why": "The quota is met."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0118L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L02U07",
+     "keep": false,
+     "why": "The phrase is good, but the one USE slot is already taken by U06."
+    },
+    {
+     "id": "cym_for_kor:S0118L02U04",
+     "keep": false,
+     "why": "The one USE slot is taken, and 나아지기를 drifts from the gloss 기분이 더 낫다."
+    },
+    {
+     "id": "cym_for_kor:S0118L02U05",
+     "keep": false,
+     "why": "Feeling better because we are friends reads oddly."
+    }
    ]
   },
   "S0118L03": {
@@ -170,6 +191,37 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0118L06U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L06U05",
+     "keep": false,
+     "why": "The phrase is good, but the one USE slot is already taken by U06."
+    },
+    {
+     "id": "cym_for_kor:S0118L06U01",
+     "keep": false,
+     "why": "The Korean 행복하다고 느끼고 있었어 is clunky, and the one USE slot is taken."
+    },
+    {
+     "id": "cym_for_kor:S0118L06U02",
+     "keep": false,
+     "why": "The Korean does not clearly mark a question; it could read as a statement."
+    },
+    {
+     "id": "cym_for_kor:S0118L06U03",
+     "keep": false,
+     "why": "The one USE slot is taken. The Welsh is also loose: a 'whether' clause usually takes oeddan ni without os."
+    },
+    {
+     "id": "cym_for_kor:S0118L06U04",
+     "keep": false,
+     "why": "The one USE slot is taken, and 우리는 ~였어 does not clearly lead to oeddan ni isio."
+    }
    ]
   },
   "S0118L07": {
@@ -224,5 +276,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:57:11.361Z"
 }

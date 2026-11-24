@@ -127,6 +127,23 @@
      "keep": false,
      "why": "The tenses clash: future 'fydda i' after 'tasai fo isio'. It should be 'fyddwn i'."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0352L02U02",
+     "keep": false,
+     "why": "Tense clash: 'tasai fo isio' needs a conditional main clause ('fedrwn i ddim'); present 'fedra i ddim' is unnatural Welsh."
+    },
+    {
+     "id": "cym_for_kor:S0352L02U04",
+     "keep": false,
+     "why": "Tense clash: after 'tasai fo isio' the reported clause should be conditional ('y basai fo'n medru'); present 'fod o'n medru' is unnatural."
+    },
+    {
+     "id": "cym_for_kor:S0352L02U06",
+     "keep": false,
+     "why": "Tense clash: future 'fydda i ddim' after conditional 'tasai fo isio'; it should be 'fyddwn i ddim'."
+    }
    ]
   },
   "S0352L03": {
@@ -189,5 +206,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:09:51.382Z"
 }

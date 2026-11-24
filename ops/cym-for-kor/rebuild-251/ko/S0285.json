@@ -55,7 +55,54 @@
      "why": "Impersonal hi ('it's getting late') is not the 'she' sense of mae hi'n that this LEGO teaches."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0285L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0285L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0285L01B01",
+     "keep": false,
+     "why": "Grammatical, but B03 and B02 were better and only 2 BUILD rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0285L01B04",
+     "keep": false,
+     "why": "siarad is shown as 이야기하는 here but as 웨일스어를 해 in the seed, so the Korean for siarad is inconsistent; 2 BUILD rows were already kept"
+    },
+    {
+     "id": "cym_for_kor:S0285L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0285L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0285L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0285L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0285L01U04",
+     "keep": false,
+     "why": "aros means 기다리다 in this basket (B02) but 머물러 here, and 조금 더 오래 could just as well be ychydig hirach without bach, so the Korean has more than one Welsh answer"
+    },
+    {
+     "id": "cym_for_kor:S0285L01U05",
+     "keep": false,
+     "why": "Valid, but the 4 USE rows were already filled by better ones and this one is long"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:05:58.160Z"
 }

@@ -108,6 +108,28 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0154L01B01",
+     "keep": true,
+     "ko": "너 어디에 가고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0154L01B02",
+     "keep": true,
+     "ko": "너 어디에 가고 싶었어?"
+    },
+    {
+     "id": "cym_for_kor:S0154L01B03",
+     "keep": false,
+     "why": "The Welsh is grammatical, but only two BUILD rows are needed and B01 and B02 cover lle more cleanly; the bare 'dw i ddim yn gwybod lle' also reads clipped without 'mae o'."
+    },
+    {
+     "id": "cym_for_kor:S0154L01B04",
+     "keep": false,
+     "why": "The Korean makes it an embedded clause ('where she wants to meet'), but the Welsh is a direct question ('lle mae hi isio cyfarfod?'), so the Korean is ambiguous. The open ~ ending would also not fit a complete question."
+    }
    ]
   },
   "S0154L04": {
@@ -163,5 +185,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:59:32.038Z"
 }

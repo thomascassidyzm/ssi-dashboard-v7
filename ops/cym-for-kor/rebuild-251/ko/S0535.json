@@ -60,6 +60,18 @@
      "keep": false,
      "why": "'cynta' y flwyddyn' should be 'cynta'r flwyddyn' (the article after a vowel). As written it is unnatural."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0535L01B02",
+     "keep": true,
+     "ko": "하지만 그는 약속했어"
+    },
+    {
+     "id": "cym_for_kor:S0535L01B04",
+     "keep": false,
+     "why": "'addewid i mi' sounds stiff; native speech would say 'mi wnaeth o addo i mi'. Only one BUILD row is needed, and B02 is clean."
+    }
    ]
   },
   "S0535L02": {
@@ -130,6 +142,28 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0535L02B03",
+     "keep": true,
+     "ko": "그는 오지 않겠다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0535L02B01",
+     "keep": false,
+     "why": "Grammatical, but only one BUILD row is needed and B03 is a full natural sentence."
+    },
+    {
+     "id": "cym_for_kor:S0535L02B02",
+     "keep": false,
+     "why": "Grammatical, but only one BUILD row is needed and B03 is better."
+    },
+    {
+     "id": "cym_for_kor:S0535L02B04",
+     "keep": false,
+     "why": "Acceptable, but only one BUILD row is needed and B03 is better."
+    }
    ]
   },
   "S0535L03": {
@@ -187,6 +221,48 @@
      "ko": "나는 고르고 싶지 않아 왜냐하면 네 차례거든",
      "ok": true,
      "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0535L03U03",
+     "keep": true,
+     "ko": "너는 왜 고르고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0535L03U08",
+     "keep": true,
+     "ko": "너는 그녀가 고를 수 있다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0535L03U04",
+     "keep": false,
+     "why": "Good, but only two USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0535L03U05",
+     "keep": false,
+     "why": "Good, but only two USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0535L03U02",
+     "keep": false,
+     "why": "Only two USE rows are needed, and the kept rows are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0535L03U06",
+     "keep": false,
+     "why": "Only two USE rows are needed, and the conditional plus 'rhwng y ddwy hogan' makes this row heavier than the kept ones."
+    },
+    {
+     "id": "cym_for_kor:S0535L03U07",
+     "keep": false,
+     "why": "Only two USE rows are needed, and the Korean could equally be read as 'roedd rhaid i ni'."
+    },
+    {
+     "id": "cym_for_kor:S0535L03U01",
+     "keep": false,
+     "why": "The Korean '어느 것을 고르는 게' is loose for 'pa un o'r llefydd yna', and the row is not needed."
     }
    ]
   },
@@ -347,5 +423,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:22:09.446Z"
 }

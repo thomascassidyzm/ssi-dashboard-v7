@@ -70,6 +70,22 @@
      "keep": false,
      "why": "Five stronger USE rows are already kept."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0585L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05B02",
+     "keep": false,
+     "why": "'fy ystafell' is stiff next to the course's spoken 'stafell', and '내 방' could be answered as either 'fy stafell' or 'fy ystafell', so it has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0585L05B04",
+     "keep": false,
+     "why": "It uses the same stiff 'fy ystafell', so '내 방' could be either 'stafell' or 'ystafell', and it is long for a BUILD row."
+    }
    ]
   },
   "S0585L06": {
@@ -130,5 +146,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:25:57.069Z"
 }

@@ -115,6 +115,22 @@
      "keep": false,
      "why": "'Why do you want to give an answer now?' is an odd thing to ask; it is the weakest candidate."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0225L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0225L02U04",
+     "keep": false,
+     "why": "줬어 could equally be answered with a simple past (mi wnes i roi ateb i ti), so the Korean has two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0225L02U07",
+     "keep": false,
+     "why": "'Why do you want to give an answer now?' is an unnatural question, and only one USE row is needed."
+    }
    ]
   },
   "S0225L04": {
@@ -169,5 +185,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:51.148Z"
 }

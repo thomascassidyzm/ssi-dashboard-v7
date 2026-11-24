@@ -90,6 +90,42 @@
      "ok": false,
      "why": "Wrong sense. Here cynnig means handing someone a physical thing (a glass of water), which Korean says with 권하다. The course taught cynnig as 제안하다 (to propose), and '물을 제안했어' is not natural Korean."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0327L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L03U02",
+     "keep": false,
+     "why": "Grammatical and natural, but only one USE slot was needed and U01 was the better fit for the seed."
+    },
+    {
+     "id": "cym_for_kor:S0327L03U03",
+     "keep": false,
+     "why": "The Korean uses 색다른 for gwahanol where the gloss wording is 다른, and only one slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0327L03U04",
+     "keep": false,
+     "why": "The second 그녀가 is clumsy Korean, and 'ddudodd hi y byddai hi'n medru' is heavy for a USE row; only one slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0327L03U05",
+     "keep": false,
+     "why": "Doedd o ddim yn medru fits both 할 수 없었어 and 할 수 없었지 readings; only one slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0327L03U06",
+     "keep": false,
+     "why": "Acceptable, but only one USE slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0327L03U07",
+     "keep": false,
+     "why": "Acceptable, but only one USE slot was needed."
+    }
    ]
   },
   "S0327L04": {
@@ -145,5 +181,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:08:59.589Z"
 }

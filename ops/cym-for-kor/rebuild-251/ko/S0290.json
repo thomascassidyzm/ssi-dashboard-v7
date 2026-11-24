@@ -55,7 +55,53 @@
      "why": "Wrong sense: 'o’n i’n gwybod' means 'I knew' (o’n = I was), not the taught 'o’n gwybod' = 'he knows'."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0290L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02B04",
+     "keep": false,
+     "why": "Good, but there is no room left: only 3 BUILD slots were needed and B02, B01 and B03 are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0290L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U05",
+     "keep": true,
+     "ko": "나는 그가 무엇이 일어날 거였는지 아는지 궁금해"
+    },
+    {
+     "id": "cym_for_kor:S0290L02U03",
+     "keep": false,
+     "why": "Not needed after the other five. '웨일스어를 이야기하는지' is also unnatural Korean, and two nested 아는지 clauses are too heavy."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:06:33.986Z"
 }

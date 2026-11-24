@@ -206,7 +206,24 @@
      "keep": false,
      "why": "Quota already filled"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0134L06B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0134L06B01",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 is the better fit because it uses the seed's own verb gweithio with efo nhw."
+    },
+    {
+     "id": "cym_for_kor:S0134L06B03",
+     "keep": false,
+     "why": "Only 1 BUILD needed. Also, 재미있어 could take another Welsh adjective in place of hwyl, so the answer is less certain than B02."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:58:34.517Z"
 }

@@ -54,6 +54,54 @@
      "ok": false,
      "why": "It does not contain 'oedd o'n' (he was). It only has 'oedd hynna'n' and 'o'n i', so it does not practise this LEGO."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0266L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01B01",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 is the better fit and mirrors the LEGO more cleanly."
+    },
+    {
+     "id": "cym_for_kor:S0266L01B03",
+     "keep": false,
+     "why": "This seed glosses 'hen' as 오랜, so '나이 든' changes the gloss wording, and 'old man' could be cued in more than one way."
+    },
+    {
+     "id": "cym_for_kor:S0266L01B04",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 was chosen first."
+    },
+    {
+     "id": "cym_for_kor:S0266L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01U02",
+     "keep": false,
+     "why": "The Korean is a question but the Welsh is a statement, so it breaks question vs statement; U01, U03 and U04 already fill the 3 USE slots."
+    },
+    {
+     "id": "cym_for_kor:S0266L01U05",
+     "keep": false,
+     "why": "'나와 있을 때' is an unnatural rendering of 'efo fi' and makes the prompt unclear; the USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0266L01U06",
+     "keep": false,
+     "why": "'He was working today' after an apology is semantically odd; the stronger candidates fill the USE slots."
+    }
    ]
   },
   "S0266L02": {
@@ -108,5 +156,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:04:40.544Z"
 }

@@ -202,6 +202,53 @@
      "ok": false,
      "why": "The Welsh is 'dydy o ddim isio bod yn', so the 'dydy o ddim yn' LEGO is not there"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0456L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0456L04B02",
+     "keep": false,
+     "why": "Fine, but only 1 BUILD is needed and B01 is the simpler one"
+    },
+    {
+     "id": "cym_for_kor:S0456L04B03",
+     "keep": false,
+     "why": "Fine, but over the 1-BUILD quota; B01 is the cleaner bare frame"
+    },
+    {
+     "id": "cym_for_kor:S0456L04B04",
+     "keep": false,
+     "why": "'hyd yn hyn' sounds stilted here; North Welsh would say 'dydy o ddim yn barod eto'"
+    },
+    {
+     "id": "cym_for_kor:S0456L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0456L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0456L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0456L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0456L04U03",
+     "keep": false,
+     "why": "Standard Welsh asks 'pam nad ydy o'n bosib'; the Korean also has no question marker, so it could be read as a statement"
+    },
+    {
+     "id": "cym_for_kor:S0456L04U05",
+     "keep": false,
+     "why": "Mixes past and present ('it was beautiful but it isn't important'), which makes an odd sentence to drill"
+    }
    ]
   },
   "S0456L05": {
@@ -262,5 +309,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:16:28.818Z"
 }

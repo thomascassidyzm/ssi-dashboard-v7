@@ -126,6 +126,39 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0525L01U02",
+     "keep": true,
+     "ko": "우리는 무슨 일이 일어나고 있었는지 보려고 멈췄어"
+    },
+    {
+     "id": "cym_for_kor:S0525L01U04",
+     "keep": true,
+     "ko": "너는 왜 다음에 무엇이 올지 보려고 기다리고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0525L01U01",
+     "keep": false,
+     "ko": "나는 우리가 예약해야 하는지 보려고 너에게 다시 전화할 거야",
+     "why": "Good phrase, but not needed: both USE slots are filled by better picks. The Korean also lacked 나는 for 'bydda i'."
+    },
+    {
+     "id": "cym_for_kor:S0525L01U03",
+     "keep": false,
+     "why": "'He didn't want to wait to see who they saw' makes little sense."
+    },
+    {
+     "id": "cym_for_kor:S0525L01U05",
+     "keep": false,
+     "why": "Grammatical, but long and clunky. Not needed: the USE slots are full."
+    },
+    {
+     "id": "cym_for_kor:S0525L01U06",
+     "keep": false,
+     "why": "Says nearly the same as U04, which is kept. Not needed: the USE slots are full."
+    }
    ]
   },
   "S0525L02": {
@@ -217,5 +250,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:21:14.540Z"
 }

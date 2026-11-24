@@ -79,7 +79,56 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0244L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04B02",
+     "keep": false,
+     "why": "Almost the same as the seed itself, and only one BUILD is needed; B03 gives more variety"
+    },
+    {
+     "id": "cym_for_kor:S0244L04B04",
+     "keep": false,
+     "why": "Fine, but only one BUILD is needed and B03 was chosen"
+    },
+    {
+     "id": "cym_for_kor:S0244L04B01",
+     "keep": false,
+     "why": "Fragment adds little and only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0244L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04U01",
+     "keep": true,
+     "ko": "너는 이미 최신 아이디어를 들었어?"
+    },
+    {
+     "id": "cym_for_kor:S0244L04U05",
+     "keep": false,
+     "why": "The Korean '왜냐하면 … 배웠어' is clumsy, and four stronger USE rows already fill the quota"
+    },
+    {
+     "id": "cym_for_kor:S0244L04U06",
+     "keep": false,
+     "why": "Bare 'ti wedi' as a statement can be confused with the 'wyt ti wedi' question form, so the answer is not certain; quota already filled"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:03:30.931Z"
 }

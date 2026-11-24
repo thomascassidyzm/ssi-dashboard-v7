@@ -296,7 +296,45 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0519L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0519L03U07",
+     "keep": false,
+     "why": "good, but not needed: only one USE slot is open and U04 is the better phrase"
+    },
+    {
+     "id": "cym_for_kor:S0519L03U01",
+     "keep": false,
+     "why": "good, but not needed: only one USE slot is open"
+    },
+    {
+     "id": "cym_for_kor:S0519L03U02",
+     "keep": false,
+     "ko": "그들은 새 아기를 원해?",
+     "why": "good, but not needed: only one USE slot is open (Korean fixed by adding the missing particle 은)"
+    },
+    {
+     "id": "cym_for_kor:S0519L03U03",
+     "keep": false,
+     "why": "'symud efo babi newydd i'r ddinas' has awkward word order; 'i'r ddinas' would sit more naturally before 'efo babi newydd'"
+    },
+    {
+     "id": "cym_for_kor:S0519L03U05",
+     "keep": false,
+     "why": "'dydy o ddim i fod yn hawdd' is not the same as '원래 쉬운 게 아니야', so the Korean could lead to a different Welsh answer"
+    },
+    {
+     "id": "cym_for_kor:S0519L03U06",
+     "keep": false,
+     "why": "'chwilio am rywle diogel efo babi newydd' is unclear (is she searching with the baby, or for a place that has one?) and the line is long and unnatural"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:20:53.404Z"
 }

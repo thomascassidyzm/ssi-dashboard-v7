@@ -125,6 +125,47 @@
      "ok": false,
      "why": "'dod â' means bring, not come. Also, brawd has no single Korean word (오빠 or 남동생)."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0292L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L03U01",
+     "keep": true,
+     "ko": "왜 너는 오고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U07",
+     "keep": false,
+     "why": "Good, but the two USE slots are taken by stronger rows; also, 오기를 바라 with no subject could be read as hoping someone else comes"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U04",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U02",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U08",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U05",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U06",
+     "keep": false,
+     "why": "올 거야 has more than one possible Welsh answer: mae o'n mynd i ddod or bydd o'n dod"
+    }
    ]
   },
   "S0292L04": {
@@ -185,5 +226,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:06:45.551Z"
 }

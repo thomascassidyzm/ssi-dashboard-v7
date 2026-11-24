@@ -113,6 +113,28 @@
      "keep": false,
      "why": "Quota already filled by stronger rows."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0531L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02B02",
+     "keep": false,
+     "ko": "누구나 웨일스어로 이야기할 수 있다는 것",
+     "why": "Good once the Korean is fixed, but only one BUILD is needed and B04 is a stronger complete sentence"
+    },
+    {
+     "id": "cym_for_kor:S0531L02B01",
+     "keep": false,
+     "why": "Acceptable but weak, and only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0531L02B03",
+     "keep": false,
+     "why": "Acceptable but weak, and only one BUILD is needed"
+    }
    ]
   },
   "S0531L03": {
@@ -282,5 +304,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:21:46.481Z"
 }

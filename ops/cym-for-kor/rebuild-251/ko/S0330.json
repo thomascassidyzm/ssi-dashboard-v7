@@ -1,0 +1,58 @@
+{
+ "seed": 330,
+ "at": "2026-11-24T19:55:38.437Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0330L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "어떤 사람들은 네 엄마를 기다리는 게 중요하다고 생각해",
+     "ok": true,
+     "why": "The Welsh is natural North Welsh: fod o'n bwysig introduces the infinitive aros am dy fam. It is the same Welsh chunk the course teaches. The Korean names the waiting directly because 그게 cannot stand before the infinitive in natural Korean."
+    },
+    {
+     "n": 2,
+     "ko": "어떤 사람들은 그게 중요하다고 생각해",
+     "ok": true,
+     "why": "The Welsh is natural North Welsh and uses the LEGO in exactly the taught sense, \"that it's important\"."
+    },
+    {
+     "n": 3,
+     "ko": "어떤 사람들은 네 자매를 기다리는 게 중요하다고 생각해",
+     "ok": true,
+     "why": "Same structure as o1. The Welsh is natural and idiomatic, and the Korean uses the gloss 네 자매 for dy chwaer."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0330L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0330L03U03",
+     "keep": true,
+     "ko": "너는 그게 아주 중요하다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0330L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0330L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0330L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0330L03U05",
+     "keep": false,
+     "why": "The Korean is a run-on ('믿어 왜냐하면 그녀는 내 친구야') that reads unnaturally. The five kept candidates are stronger, so this one is not needed."
+    }
+   ]
+  }
+ }
+}

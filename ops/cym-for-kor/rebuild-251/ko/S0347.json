@@ -115,7 +115,40 @@
      "ok": false,
      "why": "Does not contain wythnos yn ôl (it uses wythnos nesa'), so it does not practise this LEGO"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0347L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L04U03",
+     "keep": false,
+     "why": "In the Welsh, 'wythnos yn ôl' could belong to 'met' or to 'said', but the Korean ties it only to 말한. The sentence is also long and clumsy for a USE phrase."
+    },
+    {
+     "id": "cym_for_kor:S0347L04U06",
+     "keep": false,
+     "why": "The Welsh has no question mark, so 'wnest ti wylio…' could be a statement or a question. The Korean asks a question, so the learner cannot tell which one is meant."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:09:37.313Z"
 }

@@ -60,6 +60,42 @@
      "ok": true,
      "why": "natural; amau in the 'suspect' sense"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0597L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0597L01U02",
+     "keep": false,
+     "why": "Grammatical, but 다쳤다 does not show the reflexive 'ei hun', so 'wedi brifo' alone would also fit the Korean; U07 is a closer match."
+    },
+    {
+     "id": "cym_for_kor:S0597L01U03",
+     "keep": false,
+     "why": "The double negative 'nad ... ddim' is colloquial and makes a weaker model sentence; the one needed slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0597L01U04",
+     "keep": false,
+     "why": "일 거라고 could prompt 'y bydd' (will) as well as 'y byddai' (would), so the Korean has two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0597L01U01",
+     "keep": false,
+     "why": "'Suspect she has just seen the last bus' reads oddly; the one needed slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0597L01U05",
+     "keep": false,
+     "why": "Acceptable, but the one needed slot is already filled by a cleaner candidate."
+    },
+    {
+     "id": "cym_for_kor:S0597L01U06",
+     "keep": false,
+     "why": "Acceptable, but the one needed slot is already filled by a cleaner candidate."
+    }
    ]
   },
   "S0597L02": {
@@ -220,5 +256,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:26:16.361Z"
 }

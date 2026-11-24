@@ -84,6 +84,44 @@
      "ok": false,
      "why": "'beth i wneud heno' has no object 'o', so the phrase does not contain the LEGO 'wneud o'."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0443L04U03",
+     "keep": true,
+     "ko": "나는 그걸 어떻게 하는지 몰라",
+     "why": "Korean fixed: sut = 어떻게. 방법 is the word for ffordd in this seed, so it could also point to 'y ffordd i wneud o'"
+    },
+    {
+     "id": "cym_for_kor:S0443L04U02",
+     "keep": false,
+     "why": "Sound, but only one USE row is needed and U03 is kept instead"
+    },
+    {
+     "id": "cym_for_kor:S0443L04U01",
+     "keep": false,
+     "why": "Only one USE row is needed and stronger candidates exist"
+    },
+    {
+     "id": "cym_for_kor:S0443L04U04",
+     "keep": false,
+     "why": "Only one USE row is needed"
+    },
+    {
+     "id": "cym_for_kor:S0443L04U05",
+     "keep": false,
+     "why": "Long chain of embedded clauses, a heavy prompt; only one USE row is needed anyway"
+    },
+    {
+     "id": "cym_for_kor:S0443L04U06",
+     "keep": false,
+     "why": "좋겠어 sounds like a wish, not 'should' (dylwn), so the Korean is ambiguous"
+    },
+    {
+     "id": "cym_for_kor:S0443L04U07",
+     "keep": false,
+     "why": "그와 함께 could be 'efo fo' or 'efo fe/hefo fo', and the prompt is heavy; only one USE row is needed"
+    }
    ]
   },
   "S0443L05": {
@@ -140,5 +178,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:15:30.698Z"
 }

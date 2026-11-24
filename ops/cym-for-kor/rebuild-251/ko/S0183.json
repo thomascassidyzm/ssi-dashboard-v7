@@ -73,7 +73,43 @@
      "why": "'mae arna i ofn' + verbnoun means 'I'm afraid to (fear)', not the polite-regret sense this LEGO teaches; can't be prompted with 유감이지만"
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0183L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0183L02U06",
+     "keep": false,
+     "why": "good, but the one USE slot is already filled by U01"
+    },
+    {
+     "id": "cym_for_kor:S0183L02U03",
+     "keep": false,
+     "why": "the one USE slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0183L02U02",
+     "keep": false,
+     "why": "the one USE slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0183L02U04",
+     "keep": false,
+     "why": "the one USE slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0183L02U05",
+     "keep": false,
+     "why": "the one USE slot is already filled; '그건 그렇지 않아' could also be answered with other Welsh forms (e.g. 'dydi o ddim fel 'na')"
+    },
+    {
+     "id": "cym_for_kor:S0183L02U07",
+     "keep": false,
+     "why": "the one USE slot is already filled"
+    }
+   ]
   },
   "S0183L03": {
    "originals": [
@@ -128,5 +164,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T20:00:19.247Z"
 }

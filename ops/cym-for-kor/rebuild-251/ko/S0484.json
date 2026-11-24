@@ -80,6 +80,34 @@
      "keep": false,
      "why": "Grammatical, but only 2 USE top-ups are needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0484L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed, and B04 is the cleaner frame."
+    },
+    {
+     "id": "cym_for_kor:S0484L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01U05",
+     "keep": false,
+     "why": "The Welsh 'ydy y ffeithiau' is ungrammatical (it should be ''r ffeithiau'), and 사실이야 ('is true') doesn't match 'the facts'."
+    }
    ]
   },
   "S0484L02": {
@@ -182,5 +210,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:18:17.699Z"
 }

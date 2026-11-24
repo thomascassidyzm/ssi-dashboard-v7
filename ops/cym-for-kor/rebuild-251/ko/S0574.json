@@ -120,7 +120,24 @@
      "keep": false,
      "why": "'원래 도전인 거야' does not clearly give 'mae o i fod yn her'; the known side is uncertain"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0574L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0574L03B01",
+     "keep": false,
+     "why": "Only 1 BUILD needed; this just repeats the seed's own words, while B02 uses i bawb in a new, natural noun phrase"
+    },
+    {
+     "id": "cym_for_kor:S0574L03B03",
+     "keep": false,
+     "why": "'완벽할 거야' fits both 'bydd hynna'n berffaith' and 'byddai hynna'n berffaith', so the Korean has two possible Welsh answers"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:25:17.692Z"
 }

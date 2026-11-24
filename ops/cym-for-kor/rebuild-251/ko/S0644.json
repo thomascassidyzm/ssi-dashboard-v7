@@ -54,7 +54,72 @@
      "ok": false,
      "why": "Same problem as o6: symud is taught as 이사하다 (move house), not as moving your hands."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0644L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0644L02B02",
+     "keep": false,
+     "why": "Not needed: only one BUILD is required and B01 is the cleaner choice."
+    },
+    {
+     "id": "cym_for_kor:S0644L02B03",
+     "keep": false,
+     "why": "Not needed: B01 already fills the one BUILD slot."
+    },
+    {
+     "id": "cym_for_kor:S0644L02B04",
+     "keep": false,
+     "why": "Not needed, and the 어떻게 question reads as a challenge rather than a real question."
+    },
+    {
+     "id": "cym_for_kor:S0644L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0644L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0644L02U08",
+     "keep": false,
+     "why": "Good, but only two USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0644L02U01",
+     "keep": false,
+     "why": "Breaks the register rule: formal esgusodwch fi/실례지만 is paired with 반말 너희 ~있어?"
+    },
+    {
+     "id": "cym_for_kor:S0644L02U03",
+     "keep": false,
+     "why": "'Where can you drink a cuppa' is an odd thing to ask; U02 and U06 are more natural."
+    },
+    {
+     "id": "cym_for_kor:S0644L02U04",
+     "keep": false,
+     "why": "산을 does not mark the plural y mynyddoedd, and the sentence is awkward as a question to 너희."
+    },
+    {
+     "id": "cym_for_kor:S0644L02U05",
+     "keep": false,
+     "why": "슬플 수 있어 drops teimlo (feel), so the Korean does not lead to the Welsh."
+    },
+    {
+     "id": "cym_for_kor:S0644L02U07",
+     "keep": false,
+     "why": "Unnatural: 'can you find a shop without the car' is a strange question."
+    },
+    {
+     "id": "cym_for_kor:S0644L02U09",
+     "keep": false,
+     "why": "Unnatural to ask a group whether they can lie down in the garden."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:28:41.742Z"
 }

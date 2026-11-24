@@ -54,6 +54,27 @@
      "ok": true,
      "why": "'fod o ddim yn wir' is acceptable colloquial North Welsh."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0340L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L02B02",
+     "keep": false,
+     "why": "경기하다 is a weak fit for chwarae, and only 1 BUILD row is needed; B01 is cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0340L02B03",
+     "keep": false,
+     "why": "It uses 'bod hi' where the LEGO and seed use 'fod', so the form is inconsistent; 1 row is already kept."
+    },
+    {
+     "id": "cym_for_kor:S0340L02B04",
+     "keep": false,
+     "why": "'brifo ei hun' adds a reflexive that 다쳤다 doesn't fix, so the Welsh answer is uncertain."
+    }
    ]
   },
   "S0340L03": {
@@ -122,6 +143,22 @@
      "keep": false,
      "why": "Enough better rows were available."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0340L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L03B02",
+     "keep": false,
+     "why": "Only 1 BUILD row is needed, and B04 is a full, natural sentence."
+    },
+    {
+     "id": "cym_for_kor:S0340L03B03",
+     "keep": false,
+     "why": "경기하다 is a weak fit for chwarae, and the row isn't needed."
+    }
    ]
   },
   "S0340L04": {
@@ -172,5 +209,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:09:09.415Z"
 }

@@ -426,6 +426,22 @@
      "keep": false,
      "why": "Not needed; four stronger USE rows kept"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0589L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0589L03U05",
+     "keep": false,
+     "why": "'newydd weld ffilm' with no article is unidiomatic, and 영화를 봤다 leaves both the article and gwylio/gweld open"
+    },
+    {
+     "id": "cym_for_kor:S0589L03U06",
+     "keep": false,
+     "why": "Too long for a USE row, and 산 does not show that y mynyddoedd is plural, so the Welsh answer is not certain"
+    }
    ]
   },
   "S0589L04": {
@@ -486,5 +502,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:26:04.313Z"
 }

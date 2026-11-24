@@ -58,7 +58,24 @@
      "keep": false,
      "why": "The 4 USE slots are filled by stronger candidates, and '조금' could equally prompt 'tipyn' or 'bach o', so the Korean risks more than one Welsh answer."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0239L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01U03",
+     "keep": false,
+     "why": "Only one USE slot is needed and U02 is stronger. This one's Korean ('왜냐하면 … 배우거든') is clunky, and the LEGO sits in an 'achos' clause, not the main frame."
+    },
+    {
+     "id": "cym_for_kor:S0239L01U05",
+     "keep": false,
+     "why": "'조금' could prompt either 'bach o' or 'tipyn o', so the Korean has two possible Welsh answers."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:03:05.797Z"
 }

@@ -233,7 +233,37 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0633L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0633L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0633L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0633L04U01",
+     "keep": false,
+     "why": "Sound, but over the count of 3, and its 'bod y plant yn iawn' frame is the same as U05's."
+    },
+    {
+     "id": "cym_for_kor:S0633L04U06",
+     "keep": false,
+     "why": "Sound, but over the count of 3, and it repeats the frame of U05 with a longer tail."
+    },
+    {
+     "id": "cym_for_kor:S0633L04U04",
+     "keep": false,
+     "why": "Mixes byddai with the North Welsh 'set; North Welsh would say basai/fysai fo here, so it reads unnaturally."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:28:09.419Z"
 }

@@ -79,7 +79,58 @@
      "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0610L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04B02",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0610L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U02",
+     "keep": true,
+     "ko": "너는 일자리를 찾고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0610L04U06",
+     "keep": false,
+     "why": "Sound, but the five USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0610L04U01",
+     "keep": false,
+     "why": "갔어 has two Welsh answers: 'aeth hi i chwilio am waith' (went) and 'mae hi wedi mynd i chwilio am waith' (has gone)"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:26:51.383Z"
 }

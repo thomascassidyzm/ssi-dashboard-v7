@@ -123,6 +123,26 @@
      "keep": false,
      "why": "USE count is already filled."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0366L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02B03",
+     "keep": false,
+     "why": "Weaker fragment, and the one BUILD slot goes to B01."
+    },
+    {
+     "id": "cym_for_kor:S0366L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02U04",
+     "keep": false,
+     "why": "It is unclear which verb eleni goes with, and the one USE slot goes to U06."
+    }
    ]
   },
   "S0366L03": {
@@ -211,7 +231,42 @@
      "ok": false,
      "why": "Here tyfu means 'grow (as a group)' with no object, not the 기르다 sense. 기르다 cannot render it."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0366L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U01",
+     "keep": false,
+     "ko": "너 무언가를 기르고 싶어?",
+     "why": "Good once ko is marked as a question (wyt ti isio is a question), but all four USE slots are filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0366L03U06",
+     "keep": false,
+     "why": "Fine, but all four USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0366L03U07",
+     "keep": false,
+     "why": "After a negative, natural Welsh says dim byd newydd, not rhywbeth newydd. Also the Welsh has bod hi ddim where fod hi ddim would be more natural."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:10:29.228Z"
 }

@@ -137,6 +137,30 @@
      "keep": false,
      "why": "makes odd sense (saying it would be no problem if they did NOT play music)"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0557L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U05",
+     "keep": false,
+     "why": "Good, but the 3 slots are already filled by stronger phrases; 'it'd be better if they didn't travel without the car' is a slightly odd thing to say"
+    },
+    {
+     "id": "cym_for_kor:S0557L02U02",
+     "keep": false,
+     "why": "Doesn't make sense: it says it would be no problem if they did NOT play music late at night"
+    }
    ]
   },
   "S0557L03": {
@@ -277,7 +301,60 @@
      "ok": false,
      "why": "MOVED 'pa mor uchel' means 'how high' (climbing), not the 'so loud' sense taught here"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0557L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04B02",
+     "keep": false,
+     "why": "A weak adverb-only fragment ('so loud late at night') that is awkward to say in Korean; the 3 BUILD slots are filled by better ones"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04U01",
+     "keep": true,
+     "ko": "그들은 음악을 그렇게 크게 틀고 있지 않았어",
+     "why": "Korean changed: 'doeddan nhw ddim yn' is the ongoing past ('weren't playing'); plain 틀지 않았어 could also be answered with 'naethon nhw ddim chwarae'"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U03",
+     "keep": false,
+     "why": "Almost the same as B04 with 'they' instead of 'you'; adds little, and the 4 USE slots are filled"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U04",
+     "keep": false,
+     "why": "The Korean '나는 피곤해 왜냐하면 …' is awkward; the 4 USE slots are filled by better ones"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U06",
+     "keep": false,
+     "why": "Fine, but the 4 USE slots are filled by better ones"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:24:10.608Z"
 }

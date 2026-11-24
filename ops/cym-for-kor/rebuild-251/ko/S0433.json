@@ -72,6 +72,41 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0433L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L01U01",
+     "keep": false,
+     "why": "그걸 뜻하지 않았어 reads as translationese; a cleaner candidate fills the slot"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U02",
+     "keep": false,
+     "why": "자기들끼리 does not clearly mean efo'i gilydd (서로); the basket is already full with cleaner rows"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U04",
+     "keep": false,
+     "why": "an imperfect with one particular day (ddydd Mawrth) is awkward; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U05",
+     "keep": false,
+     "why": "a weaker choice than the kept rows; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U07",
+     "keep": false,
+     "why": "good but not needed; the basket is already full"
+    }
    ]
   },
   "S0433L05": {
@@ -128,7 +163,28 @@
      "keep": false,
      "why": "hardd (beautiful) is an odd word for a film; weakest candidate"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0433L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05B01",
+     "keep": false,
+     "why": "the bare fragment 영화가 좋았는지 matches the LEGO gloss without os, so the learner could say 'oedd y ffilm yn dda' or 'os oedd y ffilm yn dda': two possible answers"
+    },
+    {
+     "id": "cym_for_kor:S0433L05B02",
+     "keep": false,
+     "why": "same problem: a bare ~는지 fragment, so it is unclear whether to say os"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:14:33.753Z"
 }

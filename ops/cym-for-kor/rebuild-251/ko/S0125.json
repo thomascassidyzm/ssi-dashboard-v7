@@ -203,7 +203,38 @@
      "keep": false,
      "why": "Only 1 USE slot was needed"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0125L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0125L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0125L03U06",
+     "keep": false,
+     "why": "Good row, but only 2 USE slots are needed and U05 and U07 are the stronger uses of wedi bod"
+    },
+    {
+     "id": "cym_for_kor:S0125L03U04",
+     "keep": false,
+     "why": "Only 2 slots are needed; '아주 좋지 않았어' can also be read as 'was very bad', so it would need to say '아주 좋지는 않았어'"
+    },
+    {
+     "id": "cym_for_kor:S0125L03U03",
+     "keep": false,
+     "why": "'Why has he been in the pub' is less natural than the picks, and '왜 펍에 있었어?' could just as well be answered 'pam oedd o yn y dafarn'"
+    },
+    {
+     "id": "cym_for_kor:S0125L03U02",
+     "keep": false,
+     "why": "'그게 더 나았다고 생각했어' has two possible Welsh answers, since 'o'n i'n meddwl bod hynna'n well' fits it equally well, so the prompt fails the one-answer rule"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:57:42.898Z"
 }

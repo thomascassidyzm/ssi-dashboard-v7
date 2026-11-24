@@ -61,7 +61,49 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0550L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0550L01U01",
+     "keep": false,
+     "why": "Good Welsh, but only one USE is needed and 'seeing the end of the village' reads oddly next to U05"
+    },
+    {
+     "id": "cym_for_kor:S0550L01U02",
+     "keep": false,
+     "why": "Not wanting to 'see the end of the village' in bad weather is a strange idea, and only one slot is needed"
+    },
+    {
+     "id": "cym_for_kor:S0550L01U03",
+     "keep": false,
+     "why": "'Used to see the end of the village' is semantically odd"
+    },
+    {
+     "id": "cym_for_kor:S0550L01U04",
+     "keep": false,
+     "why": "Strange meaning, and the reported-speech Korean could also map to a 'fod hi ddim' variant"
+    },
+    {
+     "id": "cym_for_kor:S0550L01U06",
+     "keep": false,
+     "why": "Searching for the end of a village is unnatural, and plural 'gadewch i ni' against Korean -자 doesn't settle which form is meant"
+    },
+    {
+     "id": "cym_for_kor:S0550L01U07",
+     "keep": false,
+     "why": "Semantically odd ('want to see the end of the village with him')"
+    },
+    {
+     "id": "cym_for_kor:S0550L01U08",
+     "keep": false,
+     "why": "Semantically odd. 'mynd i weld' is a weak fit for 볼 거야, and only one slot is needed"
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:23:29.697Z"
 }

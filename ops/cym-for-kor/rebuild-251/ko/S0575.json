@@ -54,6 +54,26 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0575L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0575L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0575L01B01",
+     "keep": false,
+     "why": "The Welsh and Korean are fine, but it isn't needed: B02 and B03 fill both BUILD slots and add more variety."
+    },
+    {
+     "id": "cym_for_kor:S0575L01B04",
+     "keep": false,
+     "why": "The Welsh is fine (it's been lovely outside), but 밖에서 계속 멋졌어 is unnatural Korean for the weather, and both BUILD slots are already filled."
+    }
    ]
   },
   "S0575L02": {
@@ -138,5 +158,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:25:25.187Z"
 }

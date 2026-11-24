@@ -114,7 +114,55 @@
      "why": "Uses 'ffrind fel fy mrawd', with no 'ffrind i', so the LEGO is not practised."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0308L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0308L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0308L03B01",
+     "keep": false,
+     "why": "Only two BUILD rows were needed. B03 and B02 are stronger, and B03 mirrors the seed."
+    },
+    {
+     "id": "cym_for_kor:S0308L03B04",
+     "keep": false,
+     "why": "Only two BUILD rows were needed. This one is longer than a build step should be."
+    },
+    {
+     "id": "cym_for_kor:S0308L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0308L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0308L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0308L03U04",
+     "keep": false,
+     "why": "Only three USE rows were needed. The three kept rows cover a wider range."
+    },
+    {
+     "id": "cym_for_kor:S0308L03U06",
+     "keep": false,
+     "why": "Only three USE rows were needed. The three kept rows cover a wider range."
+    },
+    {
+     "id": "cym_for_kor:S0308L03U03",
+     "keep": false,
+     "why": "Only three USE rows were needed. '알지 못해' is also stiffer than the other options."
+    }
+   ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:07:55.466Z"
 }

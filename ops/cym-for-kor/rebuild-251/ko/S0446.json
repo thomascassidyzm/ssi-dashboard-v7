@@ -60,6 +60,27 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0446L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0446L01B01",
+     "keep": false,
+     "why": "Good phrase, but only one BUILD slot was open, and B04 does the same job with the 'ond' clause added."
+    },
+    {
+     "id": "cym_for_kor:S0446L01B02",
+     "keep": false,
+     "why": "Good phrase, but only one BUILD slot was open."
+    },
+    {
+     "id": "cym_for_kor:S0446L01B03",
+     "keep": false,
+     "why": "Good phrase, but only one BUILD slot was open, and I can't confirm 방식 is the course's gloss for dull."
+    }
    ]
   },
   "S0446L03": {
@@ -114,5 +135,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:15:43.110Z"
 }

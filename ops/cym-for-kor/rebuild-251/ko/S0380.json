@@ -121,6 +121,22 @@
      "keep": false,
      "why": "Unclear whether llynedd belongs to 'wanted' or 'didn't know'; the USE slots are already filled"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0380L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0380L02U01",
+     "keep": false,
+     "why": "Only one USE slot is needed, and this repeats the B04 frame (do'n i ddim yn gwybod be' oedd hi isio …); U04 adds more variety"
+    },
+    {
+     "id": "cym_for_kor:S0380L02U05",
+     "keep": false,
+     "why": "llynedd could belong to 'wanted' or to 'didn't know', so the Korean 작년에 placement does not settle one reading; this breaks zero uncertainty"
+    }
    ]
   },
   "S0380L03": {
@@ -181,5 +197,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:11.396Z"
 }

@@ -54,6 +54,27 @@
      "ok": true,
      "why": "Pairing 'fyddai' with the future-perfect 'os byddi di wedi medru' is colloquial but natural North Welsh, and the LEGO keeps the sense it was taught in."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0415L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0415L01B02",
+     "keep": false,
+     "why": "Grammatical and natural, but only 1 BUILD was needed and B01 is the closer, cleaner fit."
+    },
+    {
+     "id": "cym_for_kor:S0415L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD was needed. Also, 아니 is a weak match for 'na' here, and some learners might say 'na, fyddai…' while others leave out the interjection."
+    },
+    {
+     "id": "cym_for_kor:S0415L01B04",
+     "keep": false,
+     "why": "Only 1 BUILD was needed. B01 is better."
+    }
    ]
   },
   "S0415L03": {
@@ -109,5 +130,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:13:19.536Z"
 }

@@ -55,7 +55,61 @@
      "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0128L01B02",
+     "keep": true,
+     "ko": "너는 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L01B03",
+     "keep": true,
+     "ko": "너는 오늘 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01B01",
+     "keep": false,
+     "why": "BUILD quota of 3 already filled by stronger rows; 'you're like my friend' is semantically odd"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U01",
+     "keep": true,
+     "ko": "왜 너는 오늘 다른 누군가 같아?"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U02",
+     "keep": true,
+     "ko": "우리가 웨일스어를 할 때 너는 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L01U03",
+     "keep": true,
+     "ko": "너는 펍에서 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U04",
+     "keep": false,
+     "why": "clunky two-clause sentence; 'disgwyl o' tail reads unnaturally after the comparison"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U06",
+     "keep": false,
+     "why": "'because you're like my friend' is semantically odd in both languages"
+    }
+   ]
   },
   "S0128L02": {
    "originals": [
@@ -108,7 +162,38 @@
      "why": ""
     }
    ],
-   "topups": []
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0128L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L02U01",
+     "keep": false,
+     "why": "quota of 1 filled; near-duplicate of U02"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U03",
+     "keep": false,
+     "why": "quota of 1 filled"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U04",
+     "keep": false,
+     "why": "quota of 1 filled"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U05",
+     "keep": false,
+     "why": "quota of 1 filled"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U06",
+     "keep": false,
+     "why": "quota of 1 filled"
+    }
+   ]
   },
   "S0128L03": {
    "originals": [
@@ -175,5 +260,6 @@
    ],
    "topups": []
   }
- }
+ },
+ "refill_at": "2026-11-24T19:58:02.724Z"
 }

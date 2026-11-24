@@ -83,6 +83,22 @@
      "keep": false,
      "why": "Korean is awkward, and only 3 USE needed"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0220L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0220L01B03",
+     "keep": false,
+     "why": "In Korean, 그것을 could mean either hynna or fo, so the learner could say wylio fo or wylio hynna. That is two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0220L01B04",
+     "keep": false,
+     "why": "Same problem: 그것을 could mean hynna or fo, so 왜 그것을 시청했어? has two possible Welsh answers (pam wnest ti wylio hynna or pam wnest ti wylio fo)."
+    }
    ]
   },
   "S0220L02": {
@@ -137,5 +153,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:02:29.469Z"
 }

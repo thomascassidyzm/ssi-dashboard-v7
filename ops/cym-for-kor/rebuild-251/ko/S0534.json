@@ -121,7 +121,19 @@
      "keep": false,
      "why": "USE count already met; long and heavy"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0534L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed and B04 is the better one. B03's Korean also puts 오늘 저녁 before the phrase while the Welsh ends with heno, and heno may have a 오늘 밤 gloss."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:21:53.406Z"
 }

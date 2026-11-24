@@ -54,6 +54,42 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0378L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0378L02U07",
+     "keep": false,
+     "why": "Good row, but only one USE was needed and U05 was ranked higher; 미안해 could also stand for sori"
+    },
+    {
+     "id": "cym_for_kor:S0378L02U04",
+     "keep": false,
+     "why": "Good row, but only one USE was needed; U05 was ranked higher"
+    },
+    {
+     "id": "cym_for_kor:S0378L02U01",
+     "keep": false,
+     "why": "Only one USE was needed; 충분한 시간이 없었어 could also lead the learner to the seed's 충분하지 않았어 wording"
+    },
+    {
+     "id": "cym_for_kor:S0378L02U06",
+     "keep": false,
+     "why": "Only one USE was needed; same 충분한 risk as U01, and 너에게 전화할 is less natural than 너한테 전화할"
+    },
+    {
+     "id": "cym_for_kor:S0378L02U02",
+     "keep": false,
+     "why": "아니 안 그랬어 is an awkward rendering of naddo, and the line runs together without punctuation"
+    },
+    {
+     "id": "cym_for_kor:S0378L02U03",
+     "keep": false,
+     "why": "보고 싶었는데도 is past tense but the Welsh isio is present, and it could also be rendered as o'n i isio"
+    }
    ]
   },
   "S0378L03": {
@@ -190,5 +226,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:11:04.259Z"
 }

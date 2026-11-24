@@ -253,7 +253,24 @@
      "keep": false,
      "why": "The 4 USE slots are already filled"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0325L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05U05",
+     "keep": false,
+     "why": "Only one USE slot is needed and U06 is the better choice. The Korean is also awkward: 그녀는 그녀가 should be 그녀는 자기가."
+    },
+    {
+     "id": "cym_for_kor:S0325L05U04",
+     "keep": false,
+     "why": "Only one USE slot is needed. The Korean 그는 그가 is awkward, and 'doesn't need to consider a possible problem' is less natural than U06."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:08:51.738Z"
 }

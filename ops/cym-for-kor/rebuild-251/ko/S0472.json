@@ -60,6 +60,17 @@
      "keep": false,
      "why": "Weakest of the six; 'dringo yno' / '거기에 올라가다' is an odd pairing, and only 5 are needed."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0472L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L02B03",
+     "keep": false,
+     "why": "Only one BUILD slot is left and B01 is the better fragment for it; B03 is a full clause with a reporting verb on top, so it suits USE better than BUILD."
+    }
    ]
   },
   "S0472L04": {
@@ -135,5 +146,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:17:07.218Z"
 }

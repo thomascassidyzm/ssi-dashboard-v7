@@ -122,6 +122,21 @@
      "keep": false,
      "why": "그건 could be 'fo' or 'hynna' (mi allai hynna fod wedi …), so the Korean has two possible Welsh answers"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0573L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0573L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0573L04B01",
+     "keep": false,
+     "why": "Only 2 BUILD slots are needed. B02 already covers this same 'y gwyliau'n hyfryd' frame and adds iawn, so B01 is redundant."
+    }
    ]
   },
   "S0573L05": {
@@ -182,5 +197,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:25:08.838Z"
 }

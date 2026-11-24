@@ -257,7 +257,24 @@
      "keep": false,
      "why": "Wrong mutation: 'yn lawer haws' should be 'yn llawer haws' (ll does not mutate after predicative yn)."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0485L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03U03",
+     "keep": false,
+     "why": "Only 1 USE needed, and this one reads awkwardly: 'yn y gorffennol' at the end could attach to 'dianc', and 'oedd o i gyd' is clumsy."
+    },
+    {
+     "id": "cym_for_kor:S0485L03U04",
+     "keep": false,
+     "why": "Wrong mutation: 'yn lawer haws' should be 'yn llawer haws', because ll does not soft-mutate after predicative yn."
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:18:26.751Z"
 }

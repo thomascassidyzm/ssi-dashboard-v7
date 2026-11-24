@@ -174,7 +174,24 @@
      "keep": false,
      "why": "the opening 'ond' with no earlier clause is weaker than the kept candidates, and the USE slots are filled"
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0432L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03U04",
+     "keep": false,
+     "why": "Sound, but only one USE slot is open and U03 is cleaner; '네 명 자리' may not use the gloss of bwrdd"
+    },
+    {
+     "id": "cym_for_kor:S0432L03U07",
+     "keep": false,
+     "why": "Opening 'ond' has no earlier clause to follow, and the one open slot is filled by U03"
+    }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:14:16.948Z"
 }

@@ -54,6 +54,57 @@
      "ok": false,
      "why": "Has no 'dw i isio i ti'. Here 'i ti' belongs to 'cyn i ti adael'."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0249L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L01B03",
+     "keep": false,
+     "why": "good, but both BUILD slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0249L01B04",
+     "keep": false,
+     "why": "good, but both BUILD slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0249L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L01U01",
+     "keep": false,
+     "why": "good, but all four USE slots are filled by stronger rows; 형제 could also mean siblings rather than one brother"
+    },
+    {
+     "id": "cym_for_kor:S0249L01U02",
+     "keep": false,
+     "why": "good, but all four USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0249L01U07",
+     "keep": false,
+     "why": "the Korean runs on with no break before 왜냐하면, which reads awkwardly; all four USE slots are already filled"
+    }
    ]
   },
   "S0249L03": {
@@ -120,5 +171,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:03:59.209Z"
 }

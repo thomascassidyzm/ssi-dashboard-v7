@@ -106,6 +106,38 @@
      "ok": true,
      "why": ""
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0377L02U01",
+     "keep": true,
+     "ko": "너 세계에서 어디에 가고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0377L02U02",
+     "keep": false,
+     "why": "Only one USE slot is needed. The Welsh is fine, but this is a long clause stacked on a clause, and U01 is the cleaner, more natural question."
+    },
+    {
+     "id": "cym_for_kor:S0377L02U03",
+     "keep": false,
+     "why": "'그가 세계에서 무엇을 보고 싶어했는지' is awkward Korean, and the Welsh meaning ('what he wanted to see in the world') sounds strange here."
+    },
+    {
+     "id": "cym_for_kor:S0377L02U04",
+     "keep": false,
+     "why": "Only one USE slot is needed. '세계에서 아무 데도' is stiff Korean, and the phrase only restates the seed in the negative."
+    },
+    {
+     "id": "cym_for_kor:S0377L02U05",
+     "keep": false,
+     "why": "'세계에서 새로운 것을 보고 싶어해' is an odd thing to say in both languages, and 새로운 것 could equally be rhywbeth newydd or pethau newydd."
+    },
+    {
+     "id": "cym_for_kor:S0377L02U06",
+     "keep": false,
+     "why": "'볼래' does not match the conditional 'fyddet ti'n licio' ('would you like'), so the Korean allows more than one Welsh answer."
+    }
    ]
   },
   "S0377L03": {
@@ -160,5 +192,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T20:10:52.658Z"
 }

@@ -64,6 +64,22 @@
      "keep": false,
      "why": "The meaning 'I'd like to feel as if I were relaxing' is odd and unnatural."
     }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0114L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0114L03U01",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U04 is the cleaner phrase. Here '마치 내가 네가 말한 것을' stacks two subjects awkwardly."
+    },
+    {
+     "id": "cym_for_kor:S0114L03U07",
+     "keep": false,
+     "why": "'I'd like to feel as if I were relaxing' is an odd thing to say, and the Korean reads stilted too."
+    }
    ]
   },
   "S0114L04": {
@@ -182,5 +198,6 @@
     }
    ]
   }
- }
+ },
+ "refill_at": "2026-11-24T19:56:58.775Z"
 }
