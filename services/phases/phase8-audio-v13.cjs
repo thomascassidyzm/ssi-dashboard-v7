@@ -6192,7 +6192,9 @@ app.post('/render', async (req, res) => {
     if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}), ...(error.existing ? { existing: error.existing } : {}) })
     if (error && error.name === 'TrialRefusal') return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
     if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
-    if (error && error.code === 'APPROVAL_UNVERIFIED') { logger.warn(`[approval-origin] REFUSED: ${error.message.slice(0, 200)}`); return res.status(403).json({ ok: false, code: error.code, error: error.message }) }
+    // APPROVAL_UNVERIFIED (403) is final; APPROVAL_CHECK_UNAVAILABLE (503 + Retry-After) means the surface was down: ask again.
+    const ao = approvalOrigin.approvalErrorResponse(error)
+    if (ao) { logger.warn(`[approval-origin] ${error.code}: ${error.message.slice(0, 200)}`); return res.status(ao.status).set(ao.headers).json(ao.json) }
     // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.
     const refused = /\(402\)/.test(error.message)
     logger.error('Render error:', error)
@@ -6229,7 +6231,9 @@ app.post('/render-batch', async (req, res) => {
     res.json(out)
   } catch (error) {
     if (error instanceof audioRenderBatch.BatchError || error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
-    if (error && (error.code === 'RERECORD_NOT_PERMITTED' || error.code === 'APPROVAL_UNVERIFIED')) return res.status(403).json({ ok: false, code: error.code, error: error.message })
+    const ao = approvalOrigin.approvalErrorResponse(error)
+    if (ao) return res.status(ao.status).set(ao.headers).json(ao.json)
+    if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
     const refused = /\(402\)/.test(String(error && error.message))
     logger.error('Render batch error:', error)
     res.status(refused ? 402 : 500).json({ ok: false, code: (error && error.code) || (refused ? 'REFUSED' : 'RENDER_FAILED'), error: String((error && error.message) || error) })

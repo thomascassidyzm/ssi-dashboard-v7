@@ -17,8 +17,12 @@
  *   CAREFUL: /api/whoami with NO header answers "tom" (loopback default). So a missing or malformed token is refused HERE and
  *   never sent — otherwise a request with no header would read as Tom.
  *
- * FAILS CLOSED: no header, a bad token, a mismatched seat, or a surface that cannot be reached → refused with code
- * APPROVAL_UNVERIFIED (403) and a message naming why and how a genuine approval is sent. Not knowing is not permission.
+ * FAILS CLOSED: no header, a bad token, or a mismatched seat → refused with code APPROVAL_UNVERIFIED (403, FINAL) and a
+ * message naming why and how a genuine approval is sent. Not knowing is not permission.
+ * BUT NOT KNOWING IS NOT A NO EITHER (cs #43·AL, 24 Nov): a surface that cannot be reached (ECONNREFUSED, timeout, reset) or
+ * that answers 5xx is an OUTAGE, not a verdict → APPROVAL_CHECK_UNAVAILABLE (503, retryable, retryAfterSec). Nothing is
+ * rendered either way; the caller backs off and asks again (tools/audio/render.cjs does). The specimen: the 23-24 Nov surface
+ * restarts left 249 item-4 slots and 1 Gujarati slot silent, each logged as a final APPROVAL_UNVERIFIED and never re-asked.
  *
  * NEVER LOG THE TOKEN: it is a bearer credential for the caller's conversation. Nothing here prints it; it travels only to the
  * loopback surface.
@@ -34,8 +38,18 @@ const CONV_TOKEN = /^c1\.[0-9a-f-]{36}\.[A-Za-z0-9_-]{20,}$/
 const HOW = 'Send the approval from a Command Surface conversation on the seat it names, with header x-cs-conv set to that conversation\'s own token '
   + '(tools pick it up from env CS_CONV_TOKEN). Kai\'s seat signs kai:…, Tom\'s seat signs tom:…. Do not retry or route around this.'
 
+const RETRY_AFTER_SEC = 60
+
 class ApprovalUnverified extends Error {
   constructor(why) { super(`approval refused — its origin could not be verified: ${why}. ${HOW}`); this.name = 'ApprovalUnverified'; this.code = 'APPROVAL_UNVERIFIED'; this.status = 403 }
+}
+
+/** The surface could not be asked (down, restarting, timed out, 5xx): try later. Never a verdict on the approval. */
+class ApprovalCheckUnavailable extends Error {
+  constructor(why) {
+    super(`approval not yet checked — the Command Surface is unavailable: ${why}. Nothing was rendered. Ask again in ${RETRY_AFTER_SEC}s or more.`)
+    this.name = 'ApprovalCheckUnavailable'; this.code = 'APPROVAL_CHECK_UNAVAILABLE'; this.status = 503; this.retryable = true; this.retryAfterSec = RETRY_AFTER_SEC
+  }
 }
 
 /** Pure decision: does the seat the surface answered speak for this approval? → null (yes) or the reason it does not. */
@@ -61,8 +75,9 @@ async function verifyApprovalOrigin(approval, convToken, { fetchImpl = fetch, su
     r = await fetchImpl(`${surface}/api/whoami`, { headers: { 'x-cs-conv': tok, 'x-service-name': 'popty-approval-origin' }, signal: AbortSignal.timeout(5000) })
     body = await r.json().catch(() => ({}))
   } catch (e) {
-    throw new ApprovalUnverified(`the Command Surface could not be reached to confirm the seat (${e.cause ? e.cause.code || e.cause.message : e.message})`)
+    throw new ApprovalCheckUnavailable(`it could not be reached to confirm the seat (${e.cause ? e.cause.code || e.cause.message : e.name === 'TimeoutError' ? 'timeout' : e.message})`)
   }
+  if (r.status >= 500) throw new ApprovalCheckUnavailable(`it answered HTTP ${r.status}`)
   if (!r.ok) throw new ApprovalUnverified(`the Command Surface refused the x-cs-conv token (HTTP ${r.status}${body && body.error ? `: ${String(body.error).slice(0, 80)}` : ''})`)
   const seat = body && typeof body.id === 'string' ? body.id : null
   const why = originMismatch(approval, seat)
@@ -70,9 +85,21 @@ async function verifyApprovalOrigin(approval, convToken, { fetchImpl = fetch, su
   return { approver: approverOf(approval), seat }
 }
 
+/** Express answer for either error (or null if it is neither). */
+function approvalErrorResponse(error) {
+  if (!error) return null
+  if (error.code === 'APPROVAL_CHECK_UNAVAILABLE') return { status: 503, headers: { 'Retry-After': String(error.retryAfterSec) }, json: { ok: false, code: error.code, retryable: true, retryAfterSec: error.retryAfterSec, error: error.message } }
+  if (error.code === 'APPROVAL_UNVERIFIED') return { status: 403, headers: {}, json: { ok: false, code: error.code, error: error.message } }
+  return null
+}
+
+/** A logged answer that was really an outage under the old code: APPROVAL_UNVERIFIED because the surface could not be reached.
+ *  Runners treat such a record as unanswered and ask again. */
+const isOutageRefusal = (rec) => !!rec && rec.code === 'APPROVAL_UNVERIFIED' && /could not be reached|unavailable/i.test(String(rec.error || ''))
+
 /** Headers a committed tool adds to a render request that carries an approval: its own conversation token, from env. */
 function approvalHeaders(body, env = process.env) {
   return body && body.approval && env.CS_CONV_TOKEN ? { 'x-cs-conv': env.CS_CONV_TOKEN } : {}
 }
 
-module.exports = { verifyApprovalOrigin, originMismatch, approvalHeaders, ApprovalUnverified, CONV_TOKEN }
+module.exports = { verifyApprovalOrigin, originMismatch, approvalHeaders, approvalErrorResponse, isOutageRefusal, ApprovalUnverified, ApprovalCheckUnavailable, CONV_TOKEN }

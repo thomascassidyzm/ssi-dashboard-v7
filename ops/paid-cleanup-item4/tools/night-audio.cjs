@@ -16,7 +16,11 @@
 // logged verbatim; any other refusal (EXISTS_IN_LANGUAGE, VOICE_*, REPEAT…) is logged verbatim for that slot and that
 // slot is never sent again. Kai's 18 Nov rule "fill now, mismatch OK" is passed as the --approval grant (needs
 // CS_CONV_TOKEN in env; never on argv). The run also stops when the UK night window (22:00-07:00) closes.
-// usage: node night-audio.cjs <course> [<course> …]   log: <course>/changesets/audio-358.jsonl (resumable)
+// SURFACE OUTAGES (cs #43·AL): a render answered APPROVAL_CHECK_UNAVAILABLE (render.cjs exit 3, after its own back-off) is NOT
+// logged — the slot stays unanswered and the run stops for the night (asked again next run). Records the old route logged as
+// APPROVAL_UNVERIFIED "could not be reached" were outages too, so they count as unanswered and are asked again.
+// --outage-reask: ask ONLY those outage-refused slots, by day too (a small re-run; the window check is for the bulk).
+// usage: node night-audio.cjs [--outage-reask] <course> [<course> …]   log: <course>/changesets/audio-358.jsonl (resumable)
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -30,8 +34,10 @@ const AGENT = process.env.AGENT_ID || 'kai-358-item4';
 const APPROVAL = 'kai:2026-11-18:paid-cleanup item 4 filler rows, Kai approved incl. audio (550k Cartesia cap); fill now, mismatch OK (cs #358)';
 const PURPOSE = 'cs #358 paid cleanup item 4 (filler/template practice rows re-said or back-filled), Kai approved 18 Nov';
 const SPEND = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json');
-const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT/i;
-const courses = process.argv.slice(2);
+const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT/i; // never matches APPROVAL_CHECK_UNAVAILABLE (handled above)
+const { isOutageRefusal } = require('../../../services/shared/approval-origin.cjs');
+const OUTAGE_REASK = process.argv.includes('--outage-reask');
+const courses = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const readLog = (f) => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
 const logOf = (c) => path.join(ITEM, c, 'changesets', 'audio-358.jsonl');
 const isCartesia = (v) => !v || !/^azure|^eleven|^google|^human|^xai/i.test(String(v));
@@ -64,19 +70,24 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
     if (fs.existsSync(bf)) for (const s of JSON.parse(fs.readFileSync(bf, 'utf8')).slots) if (!seen.has(s.key)) { seen.add(s.key); queue.push({ ...s, course: c, from: 'backlog' }); }
   }
   queue.sort((a, b) => a.seed - b.seed || a.course.localeCompare(b.course) || a.key.localeCompare(b.key));
-  const answered = new Set(allRecs().map((r) => `${r.course}|${r.key}`));
+  // last record per slot decides: an outage refusal is no answer
+  const last = new Map(); for (const r of allRecs()) last.set(`${r.course}|${r.key}`, r);
+  const outage = new Set([...last].filter(([, r]) => isOutageRefusal(r)).map(([k]) => k));
+  const answered = new Set([...last.keys()].filter((k) => !outage.has(k)));
+  if (OUTAGE_REASK) { const keep = queue.filter((s) => outage.has(`${s.course}|${s.key}`)); queue.length = 0; queue.push(...keep); }
   let spent = writeSpend();
   const tally = {}; const bump = (k) => { tally[k] = (tally[k] || 0) + 1; };
   let stop = null;
   for (const s of queue) {
     if (answered.has(`${s.course}|${s.key}`)) { bump('already_answered'); continue; }
-    if (!night()) { stop = 'UK night window closed'; break; }
+    if (!OUTAGE_REASK && !night()) { stop = 'UK night window closed'; break; }
     if (spent + s.text.length > CAP) { stop = `item-4 cap: ${spent} spent + next ${s.text.length} > ${CAP}`; break; }
     const args = [path.join(ROOT, 'tools/audio/render.cjs'), '--course', s.course, '--role', s.role, '--text', s.text, '--purpose', PURPOSE, '--job', '#358'];
     if (process.env.CS_CONV_TOKEN) args.push('--approval', APPROVAL);
     await up(s.course);
     let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
     let r; try { r = JSON.parse(out); } catch { r = null; }
+    if (r && r.code === 'APPROVAL_CHECK_UNAVAILABLE') { bump('try_later'); stop = 'Command Surface down past render.cjs back-off: slot left unanswered, asked next run'; break; }
     if (!r || !(r.ok || r.code)) { bump('no_answer'); console.log(s.course, s.key, 'NO_ANSWER (not logged; asked again next run):', String(out).slice(0, 200)); continue; }
     const rec = { at: new Date().toISOString(), course: s.course, key: s.key, id: s.id, role: s.role, text: s.text, from: s.from, seed: s.seed,
       ok: !!r.ok, source: r.source, code: r.code, audioId: r.audioId, voiceId: r.voiceId || r.voice || null, charsSpent: r.charsSpent || 0,
