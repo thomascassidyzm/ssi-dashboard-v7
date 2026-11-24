@@ -22,8 +22,9 @@ export const batchTickId = (trackKey, n) => `${trackKey}#${n}`
 // The Introductions card (job #587) is new work too: every intro of the new Welsh courses.
 // Pod 1 English (job #537) is new reading too: its card sits with the new work, after the phrases.
 // Pod lines waiting on new words (job #551) are new reading too, and go first: the pod changes when they are read.
+// The Encouragements card (job #104·AL) is new reading too: lines edited on the learner app's admin page, owed a take.
 export const isNewWork = (t) =>
-  t.kind === 'phrase' || t.kind === 'podknown' || t.kind === 'podswap' || t.kind === 'introsentence' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
+  t.kind === 'phrase' || t.kind === 'podknown' || t.kind === 'podswap' || t.kind === 'introsentence' || t.kind === 'encouragement' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
 
 /** A piece of work cut into batches the reader ticks one by one (sentences, LEGOs, introductions). */
 export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego' || t.kind === 'introsentence') && (t.batches || []).length > 1

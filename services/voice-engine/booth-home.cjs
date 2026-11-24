@@ -270,7 +270,12 @@ function selectBatch(lines, trackKey, batchN, ctx = {}) {
  * The answer now says it is partial, so nothing downstream reads an absence as "not cast".
  */
 function partialKinds(queue) {
-  return queue && queue.phrases && queue.phrases.unavailable ? ['phrase'] : []
+  const out = []
+  if (queue && queue.phrases && queue.phrases.unavailable) out.push('phrase')
+  // The Encouragements card (job #104·AL) is read from the learner app's shared_audio on its own; a failed read is
+  // "not counted this time", never "no such card".
+  if (queue && queue.encouragementsUnavailable) out.push('encouragement')
+  return out
 }
 
 /**
