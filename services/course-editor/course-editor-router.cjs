@@ -31,6 +31,7 @@ const { flagRow: legoFlagRow } = require('../lego-proof/lego-proof-router.cjs')
 const { buildOps, needsNewAudio, isDrift, AUDIO_COLS } = require('./course-editor-ops.cjs')
 const { createProposalStore } = require('./proposal-store.cjs')
 const { buildRounds } = require('./round-view.cjs')
+const { phraseFloor } = require('../course-builder/lib/phrase-structure.cjs')
 
 const EDITOR_COURSES = ['kor_for_eng']
 const PLAYED_ROLES = ['build', 'use']
@@ -63,6 +64,11 @@ function nextHandPhraseId(legoId, existingShortIds) {
   return null
 }
 const nul = (v) => (v == null || v === '' ? null : v)
+// An intro clip's text is its TTS script, SSML and all ("…, is: <break time="300ms"/>"). Aran reads and writes it with
+// the pauses marked ‹pause› (LiveCourseEditor.vue mirrors readableIntro); they go back to SSML for the render.
+const readableIntro = (s) => String(s || '').replace(/<break[^>]*\/?>/g, ' ‹pause› ').replace(/<[^>]+>/g, '')
+  .replace(/(\s*‹pause›\s*)+/g, ' ‹pause› ').replace(/\s+/g, ' ').trim()
+const introScript = (s) => String(s || '').replace(/\s*‹pause›\s*/g, ' <break time="300ms"/> ').replace(/\s+/g, ' ').trim()
 const lockOf = (r) => (r && r.hand_edited_at ? { by: r.hand_edited_by, at: r.hand_edited_at } : null)
 
 /**
@@ -149,12 +155,16 @@ function proposalInput(body) {
       out[side] = v
     }
     if (body.roman != null) out.roman = clean(body.roman, TEXT_MAX)
+    // THE INTRO WORDING is its own change (action 'intro'): its words live only on the presentation clip, so changing
+    // them is making a new clip, which is never mixed into a text edit's transaction.
     if (kind === 'lego' && body.intro != null) {
-      const v = String(body.intro).replace(/[ \t]+/g, ' ').trim()
+      const v = readableIntro(body.intro)
+      if (!v) return { error: 'the introduction cannot be empty' }
       if (v.length > INTRO_MAX) return { error: `the introduction is over ${INTRO_MAX} characters` }
-      out.intro = v
+      if (out.known != null || out.target != null || out.roman != null) return { error: 'change the intro wording on its own, after the LEGO\'s words' }
+      return { p: { kind, id, action: 'intro', intro: v } }
     }
-    if (out.known == null && out.target == null && out.roman == null && out.intro == null) return { error: 'an edit needs some text to change' }
+    if (out.known == null && out.target == null && out.roman == null) return { error: 'an edit needs some text to change' }
   }
   return { p: out }
 }
@@ -225,8 +235,26 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     return false
   }
   const LOCK_NOT_SET_UP = { error: 'The hand-edit lock is not set up yet (its database change is waiting for Tom\'s go), so this kind of change is not available yet.', code: 'LOCK_NOT_SET_UP' }
-  const LEGO_LOCK_COLS = 'intro_text,hand_edited_by,hand_edited_at,phrase_order_hand_by,phrase_order_hand_at,hand_edit_held'
-  const PHRASE_LOCK_COLS = 'hand_edited_by,hand_edited_at,hand_order,hand_edit_held'
+  const LEGO_LOCK_COLS = 'hand_edited_by,hand_edited_at,intro_hand_by,intro_hand_at,phrase_order_hand_by,phrase_order_hand_at,hand_edit_held,hand_lock_overrides'
+  const PHRASE_LOCK_COLS = 'hand_edited_by,hand_edited_at,hand_order,hand_edit_held,hand_lock_overrides'
+
+  /**
+   * THE WORDS OF A SPOKEN INTRODUCTION have ONE home: the text of the LEGO's presentation clip (course_audio.text). The
+   * "Introductions Editor" page (IntroductionsViewer.vue) reads and writes a VFS file, <VFS_ROOT>/<course>/introductions.json,
+   * through the orchestrator's phase-outputs route; on watson-1 that folder does not exist for any course (404 for
+   * kor_for_eng, checked 2026-11-24) and nothing on the learner path reads it, so it is not a source. An intro edit here
+   * is therefore a NEW presentation clip of Aran's words (apply, action 'intro'); there is no intro-text column.
+   */
+  async function clipTexts(ids) {
+    const out = new Map()
+    const uniq = [...new Set(ids.filter(Boolean))]
+    for (let i = 0; i < uniq.length; i += 150) {
+      const { data, error } = await db().from('course_audio').select('id,text').in('id', uniq.slice(i, i + 150))
+      if (error) throw new Error(error.message)
+      for (const c of data || []) out.set(c.id, c.text)
+    }
+    return out
+  }
 
   async function liveRow(courseCode, kind, id) {
     const ready = await lockReady()
@@ -279,7 +307,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     return out
   }
 
-  const view = (r) => r && ({ tx: r.target_text, kn: r.known_text || '', ro: r.target_text_roman || '', intro: r.intro_text ?? null, lock: lockOf(r), audio: Object.fromEntries(AUDIO_COLS.map((c) => [c.replace('_audio_id', ''), r[c] || null])) })
+  const view = (r) => r && ({ tx: r.target_text, kn: r.known_text || '', ro: r.target_text_roman || '', lock: lockOf(r), audio: Object.fromEntries(AUDIO_COLS.map((c) => [c.replace('_audio_id', ''), r[c] || null])) })
 
   /**
    * THE ROUND VIEW (cs #128·AL): every intro item in learner order (course_round_index — the round map the player walks),
@@ -326,13 +354,8 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
 
       // The words of each spoken introduction: the presentation clip's own text (course_audio.text). Until now nothing in
       // the editor read it, which is why Aran could not see it anywhere (cs #128·AL).
-      const presIds = [...new Set(rounds.map((r) => legoById.get(r.legoId).presentation_audio_id).filter(Boolean))]
-      const clipText = new Map()
-      for (let i = 0; i < presIds.length; i += 150) {
-        const { data, error } = await db().from('course_audio').select('id,text').in('id', presIds.slice(i, i + 150))
-        if (error) throw new Error(error.message)
-        for (const c of data || []) clipText.set(c.id, c.text)
-      }
+      const clipText = await clipTexts(rounds.map((r) => legoById.get(r.legoId).presentation_audio_id))
+      const introWords = { items: rounds.length, withWords: 0, noClip: 0, clipWithoutText: 0 }
 
       const usesT2 = legos.some((l) => l.target2_audio_id) || phrases.some((p) => p.target2_audio_id)
       const missing = (r) => ['known', 'target1', ...(usesT2 ? ['target2'] : [])].filter((sl) => !r[`${sl}_audio_id`])
@@ -355,8 +378,13 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const outRounds = rounds.map((r) => {
         const l = legoById.get(r.legoId)
         const m = missing(l)
+        const clip = l.presentation_audio_id ? (clipText.get(l.presentation_audio_id) ?? '') : null
+        if (clip === null) introWords.noClip++; else if (!clip.trim()) introWords.clipWithoutText++; else introWords.withWords++
         outLegos[l.lego_id] = { tx: l.target_text, kn: l.known_text || '', ro: l.target_text_roman || '',
-          intro: l.intro_text ?? null, clip: l.presentation_audio_id ? (clipText.get(l.presentation_audio_id) ?? '') : null,
+          clip, ...(l.intro_hand_at ? { introHand: { by: l.intro_hand_by, at: l.intro_hand_at } } : {}),
+          // The phrase floor this LEGO is held to (course-builder phraseFloor): the editor WARNS when a change takes a
+          // round below it, and never blocks Aran's edit for it.
+          floor: phraseFloor(l.seed_number, l.lego_index),
           ...(m.length ? { m } : {}), ...(lockOf(l) ? { lock: lockOf(l) } : {}), ...(l.hand_edit_held ? { held: l.hand_edit_held } : {}),
           ...(l.phrase_order_hand_at ? { order: { by: l.phrase_order_hand_by, at: l.phrase_order_hand_at } } : {}),
           ...(flagOf(lf.get(l.lego_id)) ? { f: flagOf(lf.get(l.lego_id)) } : {}) }
@@ -369,6 +397,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         audioMode: isHumanVoiceCourse(courseCode) ? 'booth' : 'tts',
         usesTarget2: usesT2,
         lockReady: ready,
+        introWords,
         canEdit: isFineTuner(req),
         rounds: outRounds, legos: outLegos, phrases: outPhrases,
         proposals: proposals.list(courseCode).filter((p) => p.status !== 'undone'),
@@ -409,20 +438,27 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const { p, error } = proposalInput(req.body)
       if (error) return res.status(400).json({ error })
       const ready = await lockReady()
-      // Order, copy, add and intro wording only exist with the lock: without it they could be overwritten unseen.
-      if (!ready && (p.kind === 'round' || p.action === 'copy' || p.intro != null)) return res.status(409).json(LOCK_NOT_SET_UP)
+      // Order and copy only exist with the lock: without it they could be overwritten unseen. (An intro edit, like a text
+      // edit, lands without it — unprotected, and the page says so.)
+      if (!ready && (p.kind === 'round' || p.action === 'copy')) return res.status(409).json(LOCK_NOT_SET_UP)
       const live = await liveRow(courseCode, p.kind === 'round' ? 'lego' : p.kind, p.id)
       if (!live) return res.status(404).json({ error: `${p.id} is not in ${courseCode}` })
       const legoOfLine = p.kind === 'phrase' ? p.id.match(/^S\d+L\d+/)[0] : p.id
       let before = { known: live.known_text || '', target: live.target_text, roman: live.target_text_roman || '' }
-      if (p.kind === 'lego' && ready) before.intro = live.intro_text ?? null
       let after = null
       // The line a proposal is about. An order is one per round; every add and copy is its own new line.
       let key = p.id
-      if (p.action === 'edit') {
+      if (p.action === 'intro') {
+        if (isHumanVoiceCourse(courseCode)) return res.status(409).json({ error: 'a human-voice course records its intros in the booth' })
+        const clip = live.presentation_audio_id || null
+        const text = clip ? ((await clipTexts([clip])).get(clip) ?? '') : ''
+        if (readableIntro(text) === p.intro) return res.status(400).json({ error: 'that is what the intro already says' })
+        before = { intro: readableIntro(text), clip }
+        after = { intro: p.intro }
+        key = `intro:${p.id}`
+      } else if (p.action === 'edit') {
         after = { known: p.known ?? before.known, target: p.target ?? before.target, roman: p.roman ?? before.roman }
-        if (p.kind === 'lego' && ready) after.intro = p.intro ?? before.intro
-        const same = after.known === before.known && after.target === before.target && nul(after.roman) === nul(before.roman) && nul(after.intro) === nul(before.intro)
+        const same = after.known === before.known && after.target === before.target && nul(after.roman) === nul(before.roman)
         if (same) return res.status(400).json({ error: 'that is the text it already has' })
       } else if (p.action === 'order') {
         const rows = (await legoPhrases(courseCode, live)).filter((r) => PLAYED_ROLES.includes(r.phrase_role))
@@ -499,6 +535,55 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     return rec
   })
 
+  /**
+   * APPLY AN INTRO WORDING (Aran's room, 2026-11-24: one source, no copy). The intro's words live only on its clip, so the
+   * change is a new presentation clip of Aran's words, made make-before-break:
+   *   1. Popty's one audio route, a DRY RUN first (library first, cost shown) — Apply without confirm:true writes nothing;
+   *   2. on confirm, ONE render (or a library hit) of his words, filed WITHOUT legoId so the door does not link it itself;
+   *   3. the edit door links it to the LEGO, `expect`ing the clip the proposal was made against, in the fine-tuning
+   *      editor's own transaction — the hand-edit trigger stamps intro_hand_by/at, so a regeneration that later tries
+   *      to point the LEGO at an intro with other words is held. The old clip is untouched; the door's derived Undo
+   *      links it straight back.
+   * A render the door refuses is the answer: passed back, never retried.
+   */
+  async function applyIntro(req, res, { courseCode, pid, rec, line, live, ready, stale }) {
+    const oldClip = live.presentation_audio_id || null
+    if (oldClip !== (rec.before.clip || null)) return stale('the intro clip changed since this was proposed', { clip: oldClip })
+    if (isHumanVoiceCourse(courseCode)) { req.contentEdit?.wroteNothing(); return res.status(409).json({ error: 'a human-voice course records its intros in the booth' }) }
+    const confirmed = !!req.body && req.body.confirm === true
+    const r = await fetch(renderUrl(req), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-agent-id': `course-editor:${req.editorWho}` },
+      body: JSON.stringify({ courseCode, role: 'presentation', text: introScript(rec.after.intro), purpose: `course editor: hand-set intro wording for ${line}`, dryRun: !confirmed }),
+    })
+    const made = await r.json().catch(() => ({ ok: false, error: `HTTP ${r.status}` }))
+    log.info(`[course-editor] ${courseCode}: intro ${confirmed ? 'render' : 'dry run'} ${line} by ${req.editorWho} → ${r.status} ${made.code || made.source || ''}`)
+    if (!r.ok || made.ok === false) {
+      req.contentEdit?.wroteNothing()
+      const p = await patchProposal(courseCode, pid, { error: `The audio route said no: ${made.code || r.status} — ${made.error || ''}`.trim() })
+      return res.status(r.status >= 400 ? r.status : 502).json({ error: p.error, code: made.code, proposal: p })
+    }
+    if (!confirmed) {
+      req.contentEdit?.wroteNothing()
+      return res.json({ ok: true, needsConfirm: true, render: { source: made.source || null, wouldSpendChars: made.wouldSpendChars ?? made.chars ?? null } })
+    }
+    if (!made.audioId) { req.contentEdit?.wroteNothing(); return res.status(502).json({ error: 'the audio route answered without a clip id' }) }
+    const ops = [{ op: 'audio.link', target: 'lego', lego_id: line, slot: 'presentation', audio_id: made.audioId, expect: { presentation_audio_id: oldClip } }]
+    const { status, body } = await captureEdit(runCourseEdit, req, ops, { apply: true, handEditor: ready ? req.editorWho : null })
+    if (status !== 200 || !body.applied) {
+      const p = await patchProposal(courseCode, pid, { status: isDrift(body) ? 'stale' : 'pending', errorCode: body.code || null, madeClip: made.audioId,
+        error: `${body.error || `HTTP ${status}`} — the new intro clip was made (${made.audioId}) but not linked; the old one still plays` })
+      return res.status(status === 200 ? 500 : status).json({ error: p.error, code: body.code, proposal: p })
+    }
+    const p = await applyLanded(courseCode, rec, {
+      status: 'applied', appliedBy: req.editorWho, appliedAt: new Date().toISOString(), eventId: body.event_id || null,
+      undoOps: body.undo_ops, undoFile: body.undo_file || null, change: { intro: 'words' }, plan: [], needsAudio: false, locked: ready,
+      newClip: { id: made.audioId, source: made.source || null, charsSpent: made.charsSpent ?? 0 }, oldClip, error: null,
+    })
+    log.info(`[course-editor] ${courseCode}: intro of ${line} now clip ${made.audioId} (was ${oldClip}) by ${req.editorWho}, event ${body.event_id}`)
+    return res.json({ ok: true, proposal: p })
+  }
+
   // APPLY: the one place a proposal touches the course. Content write — the content gate has already resolved who.
   router.post('/proposals/:pid/apply', express.json({ limit: '4kb' }), async (req, res) => {
     const { courseCode, pid } = req.params
@@ -519,12 +604,13 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         return res.status(409).json({ error: p.error, code: 'STALE', proposal: p })
       }
       if (!live) return stale('the line is gone from the course', null)
+      if (rec.action === 'intro') return await applyIntro(req, res, { courseCode, pid, rec, line, live, ready, stale })
       const key = rec.kind === 'phrase' ? fullPhraseId(courseCode, line) : line
       let ops, change = null, plan = [], wantsAudio = false, newId = null, audioRow = key
       if (rec.action === 'edit' || rec.action === 'remove' || rec.action === 'copy') {
-        const now = { known: live.known_text || '', target: live.target_text, roman: live.target_text_roman || '', ...('intro' in rec.before ? { intro: live.intro_text ?? null } : {}) }
+        const now = { known: live.known_text || '', target: live.target_text, roman: live.target_text_roman || '' }
         const moved = now.known !== rec.before.known || now.target !== rec.before.target
-          || ('roman' in rec.before && nul(now.roman) !== nul(rec.before.roman)) || ('intro' in rec.before && nul(now.intro) !== nul(rec.before.intro))
+          || ('roman' in rec.before && nul(now.roman) !== nul(rec.before.roman))
         if (moved) return stale('the live line changed since this was proposed', now)
       }
       if (rec.action === 'edit' || rec.action === 'remove') {
@@ -589,10 +675,8 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
           if (!wantsAudio) return
           // Words changed: the trigger has emptied the slot. A TTS course gets an audio pass queued (never a render
           // here); a human-voice course is refused by queueAudioPass itself and the booth's Re-record card takes it.
-          // An intro-wording change is queued too, but phase8 renders from the clip's own words, so its new audio is
-          // made by "Make new intro audio" (render, role presentation, from intro_text) — the plan says which.
           queued = await queueAudioPass(getDb(), { courseCode, reason: rec.action === 'edit' ? 'course editor: spoken words changed' : `course editor: ${rec.action} a practice phrase`, requestedBy: req.editorWho,
-            metadata: { rows: [audioRow], ...(change && change.intro ? { intro_text: [line] } : {}) }, append: true, metadataKey: 'course_editor' })
+            metadata: { rows: [audioRow] }, append: true, metadataKey: 'course_editor' })
         },
       })
       if (status !== 200 || !body.applied) {
@@ -655,16 +739,12 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const kind = b.kind === 'lego' ? 'lego' : 'phrase'
       if (b.confirm !== true) req.contentEdit?.wroteNothing() // a dry run writes nothing, whatever it answers
       else if (!writer(req, res)) return
-      const presentation = kind === 'lego' && b.role === 'presentation'
-      if (!presentation && !['known', 'target1', 'target2'].includes(b.role)) return res.status(400).json({ error: 'role must be known, target1, target2 or (an intro item) presentation' })
+      // An intro's NEW WORDS are an intro proposal (applyIntro), never this button: this one re-makes a line's own words.
+      if (!['known', 'target1', 'target2'].includes(b.role)) return res.status(400).json({ error: 'role must be known, target1 or target2 (a new intro wording is proposed on the intro item, and Apply makes its audio)' })
       if (isHumanVoiceCourse(courseCode)) return res.status(409).json({ error: 'a human-voice course is re-recorded in the booth, never rendered' })
       const live = await liveRow(courseCode, kind, String(b.id || ''))
       if (!live) return res.status(404).json({ error: `${b.id} is not in ${courseCode}` })
-      // NEW INTRO AUDIO speaks Aran's intro wording (course_legos.intro_text). The render door files the clip and, for a
-      // presentation render that names its LEGO, points the LEGO at it itself — the old clip is kept (make-before-break).
-      if (presentation && !nul(live.intro_text)) return res.status(409).json({ error: 'set the intro wording first — new intro audio speaks that text' })
-      // The editor shows the clip's SSML pauses as ‹pause› (LiveCourseEditor readable()); they go back to SSML for TTS.
-      const text = presentation ? live.intro_text.replace(/\s*‹pause›\s*/g, ' <break time="300ms"/> ').trim() : b.role === 'known' ? live.known_text : live.target_text
+      const text = b.role === 'known' ? live.known_text : live.target_text
       const r = await fetch(renderUrl(req), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-agent-id': `course-editor:${req.editorWho}` },

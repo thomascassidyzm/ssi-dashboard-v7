@@ -15,7 +15,7 @@
       </div>
       <p v-if="course && !loading && !lockReady" class="lockwarn">
         The hand-edit lock is not set up yet (its database change is waiting for Tom's go). Text edits still apply, but are
-        not yet protected from regeneration; drag order, copy, add and the intro wording open once it is.
+        not yet protected from regeneration; drag order, copy and add open once it is.
       </p>
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
     </header>
@@ -71,14 +71,8 @@
             <div class="introlab">Full introduction</div>
             <div v-if="introText" class="introtext">{{ introText }}</div>
             <div v-else class="introtext none">{{ lego.clip === null ? 'No spoken introduction is linked to this item.' : 'The introduction clip carries no text.' }}</div>
-            <div v-if="lego.intro != null && lego.clip != null && lego.intro !== lego.clip" class="introold">
-              The intro audio still says: “{{ readable(lego.clip) }}”
-              <button v-if="canEdit && audioMode === 'tts'" class="mini" @click="renderAsk('lego', open.l, 'presentation')">Make new intro audio</button>
-            </div>
-            <div v-if="renderState[`lego:${open.l}:presentation`]" class="render">
-              <span>{{ renderState[`lego:${open.l}:presentation`].text }}</span>
-              <button v-if="renderState[`lego:${open.l}:presentation`].canConfirm" class="mini go" @click="renderConfirm('lego', open.l, 'presentation')">{{ renderState[`lego:${open.l}:presentation`].lib ? 'Link it' : 'Confirm render' }}</button>
-            </div>
+            <div v-if="lego.introHand" class="tags"><span class="tag hand">✎ Intro wording hand-set · {{ fmtWhen(lego.introHand.at) }}</span></div>
+            <PropBox :p="propIntro" />
           </div>
           <LineTags :line="lego" />
           <AudioNeed v-if="lego.m" kind="lego" :id="open.l" :line="lego" />
@@ -92,14 +86,15 @@
       <div class="row quiet"><div class="main"><div class="words"><span class="dash">–</span><span class="ko" lang="ko">{{ lego.tx }}</span><span v-if="lego.ro" class="ro">{{ lego.ro }}</span><span class="en">{{ lego.kn }}</span></div></div></div>
 
       <!-- PRACTICE -->
-      <h2>Practice phrases <span class="cnt">{{ practice.length }}</span><small v-if="canEdit && lockReady">drag ⠿ to reorder</small></h2>
+      <h2>Practice phrases <span class="cnt">{{ practice.length }}</span><small v-if="canEdit && lockReady">drag ⠿ to reorder · B = BUILD, U = USE; BUILD always plays first</small></h2>
+      <p v-if="open && floorWarning(open)" class="hint warn floorw">{{ floorWarning(open) }}</p>
       <div v-if="lego.order" class="ordertag">✎ Order hand-set · overrides seed rules</div>
       <PropBox v-if="propOrder" :p="propOrder" />
       <div class="dlist" ref="dlist">
         <div v-for="(id, i) in practice" :key="id" class="row" :data-id="id"
              :class="{ hand: !!P(id).lock, dragging: drag && drag.id === id }">
           <button v-if="canEdit && lockReady" class="handle" aria-label="Drag to reorder" @pointerdown="dragStart($event, id)">⠿</button>
-          <span class="num">{{ i + 1 }}</span>
+          <span class="num">{{ i + 1 }}<span class="role" :title="P(id).role === 'use' ? 'USE phrase' : 'BUILD phrase'">{{ P(id).role === 'use' ? 'U' : 'B' }}</span></span>
           <div class="main">
             <div class="words"><span class="ko" lang="ko">{{ P(id).tx }}</span><span v-if="P(id).ro" class="ro">{{ P(id).ro }}</span><span class="en">{{ P(id).kn }}</span></div>
             <LineTags :line="P(id)" :prop="newLineProp(id)" />
@@ -233,7 +228,8 @@ const open = computed(() => { const n = Number(route.query.round); return n ? ro
 const lego = computed(() => (open.value ? L(open.value) : NONE))
 // The intro clip's text is the TTS script, SSML and all ("…, is: <break time="300ms"/>"): shown readable, pauses marked.
 const readable = (s) => String(s || '').replace(/<break[^>]*\/?>/g, ' ‹pause› ').replace(/<[^>]+>/g, '').replace(/(\s*‹pause›\s*)+/g, ' ‹pause› ').replace(/\s+/g, ' ').trim()
-const introText = computed(() => lego.value.intro ?? readable(lego.value.clip))
+// The words of the spoken introduction have ONE home, the presentation clip itself (course-editor-router.cjs clipTexts).
+const introText = computed(() => readable(lego.value.clip))
 const practice = computed(() => localOrder.value || (open.value ? open.value.p : []))
 
 // ---- proposals: which one belongs to which line ---------------------------------------------------------------------
@@ -244,6 +240,7 @@ function propFor(kind, id) {
   for (const p of proposals.value) if (live(p) && p.kind === kind && (p.action === 'edit' || p.action === 'remove') && lineOf(p) === id) out = p
   return out
 }
+const propIntro = computed(() => open.value && proposals.value.filter((p) => live(p) && p.action === 'intro' && lineOf(p) === open.value.l).pop())
 const propOrder = computed(() => open.value && proposals.value.filter((p) => live(p) && p.action === 'order' && lineOf(p) === open.value.l).pop())
 // An applied add/copy shows its Undo on the line it made; a pending one is listed under the practice phrases.
 const newLineProp = (id) => proposals.value.find((p) => live(p) && p.status === 'applied' && p.newId === id) || null
@@ -278,7 +275,8 @@ const EditForm = (props) => {
     field('Romanisation', 'ro'),
     romanStale ? h('div', { class: 'hint warn' }, 'The Korean changed but the romanisation did not: unless you change it, it will be cleared.') : null,
     field('English', 'kn'),
-    props.kind === 'lego' ? (lockReady.value ? field('Full introduction (what the spoken intro says)', 'intro', { area: true }) : h('div', { class: 'hint' }, 'The intro wording can be edited once the hand-edit lock is set up.')) : null,
+    props.kind === 'lego' && audioMode.value === 'tts' ? field('Full introduction (what the spoken intro says; ‹pause› marks a pause)', 'intro', { area: true }) : null,
+    ...editWarnings(props.kind, props.id, e).map((w) => h('div', { class: 'hint warn' }, w)),
     h('div', { class: 'btns' }, [
       h('button', { class: 'mini go', disabled: !!busy[props.k], onClick: () => proposeEdit(props.kind, props.id) }, 'Propose change'),
       props.kind === 'phrase' ? h('button', { class: 'mini warn', disabled: !!busy[props.k], onClick: () => proposeRemove(props.id) }, 'Propose removal') : null,
@@ -288,7 +286,7 @@ const EditForm = (props) => {
 }
 EditForm.props = ['k', 'kind', 'id']
 function statusLabel(p) {
-  const what = { order: 'New order', add: 'New phrase', copy: 'Copy', remove: 'Remove this line' }[p.action]
+  const what = { order: 'New order', add: 'New phrase', copy: 'Copy', remove: 'Remove this line', intro: 'New intro wording' }[p.action]
   if (p.status === 'pending') return `${what || 'Proposed'} — not applied yet`
   if (p.status === 'applied') return 'Applied'
   if (p.status === 'stale') return 'Stale — the live line changed'
@@ -307,8 +305,14 @@ const PropBox = (props) => {
     diffs.push(h('div', { class: 'diff' }, [h('ins', null, p.after.target), p.after.roman ? ` · ${p.after.roman}` : '', ' · ', h('span', { class: 'en' }, p.after.known)]))
   } else if (p.action === 'order') {
     diffs.push(h('div', { class: 'hint' }, `Practice order: ${p.after.order.length} phrases in the order you set.`))
+  } else if (p.action === 'intro') {
+    diffs.push(h('div', { class: 'diff intro' }, [h('s', null, p.before.intro || '—'), ' → ', h('ins', null, p.after.intro)]))
   }
-  const hint = p.status === 'applied'
+  const hint = p.action === 'intro'
+    ? (p.status === 'applied'
+      ? `New intro clip linked (${p.newClip && p.newClip.source === 'library' ? 'found in the library, no cost' : `rendered${p.newClip && p.newClip.charsSpent ? `, ${p.newClip.charsSpent} characters` : ''}`}). The old clip is kept: Undo links it back.`
+      : 'Apply makes a new intro clip of these words (the cost is shown first). The old clip is kept.')
+    : p.status === 'applied'
     ? (p.needsAudio ? (audioMode.value === 'tts' ? (p.audioQueued ? 'New audio queued for the next audio pass.' : 'Needs new audio.') : 'On the booth\'s Re-record card.') : (p.action === 'edit' ? 'Same spoken words: the recording was kept.' : ''))
     : (p.action === 'edit' ? (sameWords(p) ? 'Capitals/punctuation only: the recording is kept.' : 'Spoken words change: this line will need new audio.') : '')
   const k = `prop:${p.id}`
@@ -316,6 +320,7 @@ const PropBox = (props) => {
     h('div', { class: 'ph' }, [h('b', null, statusLabel(p)), h('small', null, p.status === 'applied' ? `by ${p.appliedBy} · ${fmtWhen(p.appliedAt)}` : `by ${p.proposedBy}`)]),
     ...diffs,
     hint ? h('div', { class: 'hint' }, hint) : null,
+    ...(p.status === 'pending' ? proposalWarnings(p).map((w) => h('div', { class: 'hint warn' }, w)) : []),
     p.status === 'applied' && p.locked === false ? h('div', { class: 'hint warn' }, 'Applied before the hand-edit lock was set up: not protected from regeneration.') : null,
     p.error ? h('p', { class: 'msg bad' }, p.error) : null,
     canEdit.value ? h('div', { class: 'btns' }, p.status === 'pending'
@@ -328,7 +333,57 @@ const PropBox = (props) => {
 PropBox.props = ['p']
 // The server's spokenForm (course-editor-ops.cjs), mirrored for the hint only — Apply decides on the server.
 const spoken = (s) => String(s || '').toLowerCase().replace(/(?<=[\p{L}\p{N}])['‘’ʼ\-‐‑]+(?=[\p{L}\p{N}])/gu, '').replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
-const sameWords = (p) => spoken(p.before.target) === spoken(p.after.target) && spoken(p.before.known) === spoken(p.after.known) && (p.after.intro === undefined || (p.after.intro ?? '') === (p.before.intro ?? ''))
+const sameWords = (p) => spoken(p.before.target) === spoken(p.after.target) && spoken(p.before.known) === spoken(p.after.known)
+
+// ---- warnings (Tom's Watson's impact check #129·AL, verified 2026-11-24): they WARN and never block Aran's edit -------
+// The phrase floor is the course builder's (phraseFloor, sent per LEGO as `floor`): S1L1 none, S1–S3 one of each, from
+// S4 three BUILD + five USE. "Taught" is a word-level check against the intro items and phrases of rounds up to this one:
+// Korean particles make it approximate, so it says "may", and it is for BUILD phrases only (BUILD uses taught words only).
+const roundRows = (r) => [...new Set([...r.p, ...r.o, ...r.u])]
+function floorWarning(r, removing) {
+  const f = L(r).floor
+  if (!f) return null
+  const rows = roundRows(r).filter((id) => id !== removing)
+  const b = rows.filter((id) => P(id).role !== 'use').length, u = rows.filter((id) => P(id).role === 'use').length
+  const short = [b < f.minBuild ? `${b} BUILD (floor ${f.minBuild})` : null, u < f.minUse ? `${u} USE (floor ${f.minUse})` : null].filter(Boolean)
+  return short.length ? `This round would have ${short.join(' and ')} — below the course builder's floor.` : null
+}
+const tokens = (s) => String(s || '').replace(/[\p{P}\p{S}]+/gu, ' ').split(/\s+/).filter(Boolean)
+let taughtCache = { n: 0, set: null, src: null }
+function taughtBy(n) {
+  if (taughtCache.n === n && taughtCache.src === rounds.value && taughtCache.set) return taughtCache.set
+  const set = new Set()
+  for (const r of rounds.value) {
+    if (r.n > n) continue
+    for (const w of tokens(L(r).tx)) set.add(w)
+    if (r.n < n) for (const id of [...r.p, ...r.o]) for (const w of tokens(P(id).tx)) set.add(w)
+  }
+  taughtCache = { n, set, src: rounds.value }
+  return set
+}
+function untaught(target, r) {
+  if (!r) return []
+  const taught = taughtBy(r.n)
+  return [...new Set(tokens(target).filter((w) => !taught.has(w)))]
+}
+const roundOfLego = (legoId) => rounds.value.find((r) => r.l === legoId) || null
+function vocabWarning(target, role, r) {
+  if (role === 'use' || !r) return null
+  const odd = untaught(target, r)
+  return odd.length ? `BUILD phrases use taught words only — these may not be taught by round ${r.n}: ${odd.join(', ')}` : null
+}
+function editWarnings(kind, id, e) {
+  if (kind !== 'phrase' || !open.value || e.tx.trim() === e.orig.tx) return []
+  return [vocabWarning(e.tx.trim(), P(id).role, open.value)].filter(Boolean)
+}
+function proposalWarnings(p) {
+  const r = roundOfLego(p.lego || (p.kind === 'lego' ? lineOf(p) : null))
+  if (!r) return []
+  if (p.action === 'remove' && p.kind === 'phrase') return [floorWarning(r, lineOf(p))].filter(Boolean)
+  if (p.action === 'add') return [vocabWarning(p.after.target, 'build', r)].filter(Boolean)
+  if (p.action === 'edit' && p.kind === 'phrase' && p.after.target !== p.before.target) return [vocabWarning(p.after.target, P(lineOf(p)).role, r)].filter(Boolean)
+  return []
+}
 
 // ---- loading & navigation -----------------------------------------------------------------------------------------
 let loadGen = 0
@@ -387,7 +442,7 @@ async function call(method, path, body) {
 function startEdit(kind, id, line) {
   const k = `${kind}:${id}`
   if (editing[k]) return
-  const orig = { tx: line.tx, kn: line.kn || '', ro: line.ro || '', intro: kind === 'lego' ? (line.intro ?? readable(line.clip)) : '' }
+  const orig = { tx: line.tx, kn: line.kn || '', ro: line.ro || '', intro: kind === 'lego' ? readable(line.clip) : '' }
   editing[k] = { ...orig, orig }
 }
 async function propose(k, body, okText) {
@@ -409,9 +464,15 @@ async function proposeEdit(kind, id) {
   if (kn !== e.orig.kn) body.known = kn
   if (ro !== e.orig.ro) body.roman = ro
   else if (body.target != null && e.orig.ro) body.roman = ''   // the old romanisation would spell the old words
-  if (kind === 'lego' && lockReady.value && e.intro.trim() !== e.orig.intro.trim()) body.intro = e.intro.trim()
-  if (body.target == null && body.known == null && body.roman == null && body.intro == null) return say('Nothing changed.', true)
-  if (await propose(k, body)) delete editing[k]
+  // The intro wording is its own proposal (its Apply makes a new intro clip), proposed alongside any text change.
+  const introChanged = kind === 'lego' && readable(e.intro) !== readable(e.orig.intro)
+  const textChanged = body.target != null || body.known != null || body.roman != null
+  if (!textChanged && !introChanged) return say('Nothing changed.', true)
+  let ok = true
+  if (textChanged) ok = await propose(k, body)
+  if (ok && introChanged) ok = await propose(k, { kind, id, action: 'edit', intro: readable(e.intro) },
+    textChanged ? 'Both proposed — apply the words first, then the intro.' : 'Intro wording proposed — Apply shows the cost of its new audio first.')
+  if (ok) delete editing[k]
 }
 async function proposeRemove(id) { if (await propose(`phrase:${id}`, { kind: 'phrase', id, action: 'remove' })) delete editing[`phrase:${id}`] }
 function copy(id) { propose(`copy:${id}`, { kind: 'phrase', id, action: 'copy' }, 'Copy proposed — Apply adds it as a new line (an exact copy plays once per round until you edit it).') }
@@ -425,7 +486,15 @@ async function act(p, what) {
   if (what === 'apply' && !confirm('Apply this change to the live course?')) return
   busy[k] = true
   try {
-    const r = what === 'discard' ? await call('DELETE', `/proposals/${p.id}`) : await call('POST', `/proposals/${p.id}/${what}`)
+    let r = what === 'discard' ? await call('DELETE', `/proposals/${p.id}`) : await call('POST', `/proposals/${p.id}/${what}`)
+    // A NEW INTRO WORDING's Apply is a dry run first: the audio route says whether the library has it or what it costs.
+    if (r.ok && what === 'apply' && r.body.needsConfirm) {
+      const d = r.body.render || {}
+      const cost = d.source === 'library' ? 'The library already has a clip of these words: no cost.'
+        : `This renders a new intro clip: ${d.wouldSpendChars == null ? 'an unknown number of' : Number(d.wouldSpendChars).toLocaleString()} characters.`
+      if (!confirm(`${cost}\n\nMake the new intro and link it? The old clip is kept, and Undo links it back.`)) return say('Not applied — nothing changed.')
+      r = await call('POST', `/proposals/${p.id}/apply`, { confirm: true })
+    }
     if (!r.ok) {
       if (r.body.proposal) proposals.value = proposals.value.map((x) => (x.id === p.id ? r.body.proposal : x))
       throw new Error(r.body.error || `HTTP ${r.status}`)
@@ -453,6 +522,10 @@ function dragMove(ev) {
   let to = rows.findIndex((el) => { const b = el.getBoundingClientRect(); return ev.clientY < b.top + b.height / 2 })
   if (to < 0) to = rows.length - 1
   else if (to > from) to -= 1
+  // BUILD before USE, always (the player keeps them apart): a phrase moves only among phrases of its own kind.
+  const role = (id) => (P(id).role === 'use' ? 'use' : 'build')
+  const mine = order.map((id, i) => (role(id) === role(drag.value.id) ? i : -1)).filter((i) => i >= 0)
+  to = Math.min(Math.max(to, mine[0]), mine[mine.length - 1])
   if (to !== from && to >= 0) { const next = order.slice(); next.splice(from, 1); next.splice(to, 0, drag.value.id); localOrder.value = next }
   if (ev.clientY < 60) window.scrollBy(0, -12); else if (ev.clientY > window.innerHeight - 60) window.scrollBy(0, 12)
 }
@@ -462,7 +535,7 @@ async function dragEnd() {
   drag.value = null
   if (!moved) { localOrder.value = null; return }
   const ok = await propose(`order:${open.value.l}`, { kind: 'round', id: open.value.l, action: 'order', order: localOrder.value },
-    'New order proposed — Apply makes the player use it for this round (practice phrases only).')
+    'New order proposed — Apply makes the player use it for this round (practice phrases only; BUILD stays before USE).')
   if (!ok) localOrder.value = null
 }
 onBeforeUnmount(() => window.removeEventListener('pointermove', dragMove))
@@ -573,6 +646,8 @@ h2.grey { color: #64748b; }
 .introlab { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #334155; }
 .introtext { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 2px; }
 .introtext.none { color: var(--muted); font-style: italic; }
+.num .role { display: block; font-size: 0.62rem; font-weight: 800; color: #64748b; letter-spacing: 0.04em; }
+.floorw { margin: 0 0.3rem 0.3rem; font-size: 0.82rem; color: var(--amber); }
 .introold { font-size: 0.82rem; color: var(--amber); margin-top: 0.3rem; display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
 
 .ordertag { display: inline-block; margin: 0 0.2rem 0.35rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; color: var(--violet); background: #f3e8ff; border: 1px solid #c4b5fd; border-radius: 999px; padding: 0.12rem 0.65rem; text-transform: uppercase; }

@@ -8,8 +8,8 @@
  *   intro -> debut -> PRACTICE (BUILD phrases, then USE phrases, up to 7) -> REVISITS (≤12) -> ROUND-OFF (2 USE)
  *
  *   - PRACTICE pools are sorted SHORTEST FIRST by target syllables (stable: ties keep DB position order) — UNLESS the
- *     round's order was set by hand (course_legos.phrase_order_hand_at): then the phrases Aran placed (hand_order) come
- *     first, in his order, and anything unplaced follows in the usual order. The hand order covers PRACTICE ONLY
+ *     round's order was set by hand (course_legos.phrase_order_hand_at): then, WITHIN the builds and WITHIN the uses, the
+ *     phrases Aran placed (hand_order) come first, in his order, and anything unplaced follows in the usual order. The hand order covers PRACTICE ONLY
  *     (Aran's default, 2026-11-24): round-off and revisits keep shortest-first, so no other round's revisits move.
  *   - A phrase whose known+target words repeat one already played this round (the debut included) is skipped ("claim").
  *   - REVISITS: the round 1 back gives three USE phrases, the rounds 2, 3, 5, 8, 13, 21, 34, 55 back one each, drawn from
@@ -44,6 +44,9 @@ const keyOf = (r) => `${normalizeForKey(r.known_text)}|${normalizeForKey(shownTa
 const shortestFirst = (list) => list.map((p, i) => ({ p, i, s: countTargetSyllables(p.target_text) }))
   .sort((a, b) => a.s - b.s || a.i - b.i).map((x) => x.p)
 const fullAudio = (p) => !!(p.known_audio_id && p.target1_audio_id && p.target2_audio_id)
+/** A hand-set round's pool: the phrases Aran placed (hand_order), in his order, then the rest in their usual order. */
+const byHand = (list) => [...list.filter((p) => p.hand_order != null).sort((a, b) => a.hand_order - b.hand_order),
+  ...list.filter((p) => p.hand_order == null)]
 const reviewCursor = (k, n) => (k <= 0 || n <= 0 ? 0 : Math.min(N1_PHRASE_COUNT, n) + (k - 1))
 
 /**
@@ -74,12 +77,10 @@ function buildRounds(roundMap, legoById, phrasesByKey) {
     const claimed = new Set([keyOf(lego)])
     const claim = (p) => { const k = keyOf(p); if (claimed.has(k)) return false; claimed.add(k); return true }
     const handOrder = !!lego.phrase_order_hand_at
-    let seq = [...builds, ...uses]
-    if (handOrder) {
-      const placed = rows.filter((p) => p.hand_order != null).sort((a, b) => a.hand_order - b.hand_order)
-      const ids = new Set(placed.map((p) => p.id))
-      seq = [...placed, ...seq.filter((p) => !ids.has(p.id))]
-    }
+    // BUILD stays before USE whatever the hand order says (Tom's Watson's impact check #129·AL, verified 2026-11-24):
+    // Aran's order is applied WITHIN the builds and WITHIN the uses, never across. USE membership and the revisit pools
+    // (usesOf, shortest-first) are untouched, so no other round's revisits move.
+    const seq = handOrder ? [...byHand(builds), ...byHand(uses)] : [...builds, ...uses]
     const practice = []
     for (const p of seq) { if (practice.length >= MAX_BUILD_PHRASES) break; if (claim(p)) practice.push(p.id) }
 

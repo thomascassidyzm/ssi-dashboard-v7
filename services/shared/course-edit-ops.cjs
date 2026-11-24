@@ -53,7 +53,7 @@ const UPDATABLE = {
     // The hand-edit lock (database/migrations/20261124_hand_edit_lock.sql, cs #128·AL). Listed so the derived undo of a
     // fine-tuning edit puts the previous lock state back; the a0_hand_edit_lock trigger holds them for anybody who is
     // not the fine-tuning editor (runPlans handEditor), whatever this list says.
-    'intro_text', 'hand_edited_by', 'hand_edited_at', 'phrase_order_hand_by', 'phrase_order_hand_at', 'hand_edit_held'],
+    'hand_edited_by', 'hand_edited_at', 'intro_hand_by', 'intro_hand_at', 'phrase_order_hand_by', 'phrase_order_hand_at', 'hand_edit_held'],
   course_practice_phrases: ['known_text', 'target_text', 'phrase_role', 'position', 'introduce',
     'status', 'register', 'difficulty', 'lego_id', 'connected_lego_ids', 'lego_position',
     'target_text_roman', 'metadata', 'known_gloss_segments', 'word_count', 'lego_count',
@@ -485,8 +485,20 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
         continue;
       }
       if (plan.kind === 'reorder') {
-        const r = await legoReorder.runReorder(client, plan, courseCode, { evId, apply, types,
-          fail: (msg, code) => { throw new EditOpError(plan.index, msg, code); } });
+        // A REORDER MOVES HAND-EDITED ROWS ON PURPOSE (Tom's Watson's impact check #129·AL, verified 2026-11-24): the
+        // a0_hand_edit_lock trigger refuses to move a hand-edited or hand-placed LEGO/phrase unless the transaction names
+        // the path that must. Declared for this op only, and every row it moves logs it (hand_lock_overrides); a no-op
+        // before the lock migration exists. Cleared after, so the batch's other ops never inherit it.
+        await client.query(`SELECT set_config('popty.hand_lock_override', $1, true)`,
+          [`lego.reorder seed ${plan.where.seed_number} (course-edit door${evId ? `, event ${evId}` : ''})`]);
+        let r;
+        try {
+          r = await legoReorder.runReorder(client, plan, courseCode, { evId, apply, types,
+            fail: (msg, code) => { throw new EditOpError(plan.index, msg, code); } });
+        } finally {
+          // A failed statement aborts the transaction; the reset then fails too, harmlessly (it is rolled back anyway).
+          await client.query(`SELECT set_config('popty.hand_lock_override', '', true)`).catch(() => {});
+        }
         touched.legos = true;
         touched.seed_numbers.add(plan.where.seed_number);
         for (const id of r.lego_ids) touched.lego_ids.add(id);
