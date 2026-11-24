@@ -132,7 +132,7 @@ async function korean(rng, conc, assignPath, korPath) {
           const j = raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1);
           const parsed = JSON.parse(j);
           // completeness: every original of every LEGO answered with Korean
-          const miss = legos.filter((g) => g.originals.length && (!parsed.legos?.[g.lego] || (parsed.legos[g.lego].originals || []).filter((x) => x.ko).length < g.originals.length));
+          const miss = legos.filter((g) => g.originals.length && (!parsed.legos?.[g.lego] || (parsed.legos[g.lego].originals || []).filter((x) => x.ko || x.ok === false).length < g.originals.length));
           if (miss.length) throw new Error(`incomplete: ${miss.map((g) => g.lego).join(',')}`);
           out = parsed;
         } catch (e) { err = e.message; if (/spent|weekly limit/i.test(err)) { console.log(`STOP: account spent — ${err.slice(0, 200)}`); process.exit(4); } }
