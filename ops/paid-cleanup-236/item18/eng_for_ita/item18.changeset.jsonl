@@ -1,0 +1,4 @@
+{"format":"ssi-changeset/1","id":"eng_for_ita-item18-cs236","course":"eng_for_ita","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:34.092Z","ops":3,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_ita:S0027L01B02","expect":{"known_text":"non mi piace","target_text":"I don't like"}}
+{"op":"phrase.delete","phrase_id":"eng_for_ita:S0145L01B03","expect":{"known_text":"non sei più felice?","target_text":"not happy any more"}}
+{"op":"phrase.delete","phrase_id":"eng_for_ita:S0202L02B03","expect":{"known_text":"non capiva la domanda","target_text":"she didn't understand the question"}}

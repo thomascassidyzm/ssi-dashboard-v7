@@ -1,0 +1,431 @@
+{"format":"ssi-changeset/1","id":"ita_for_eng-item18-cs236","course":"ita_for_eng","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:35.989Z","ops":430,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0001L03B02","expect":{"known_text":"I want to speak Italian","target_text":"voglio parlare italiano"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0002L01B03","expect":{"known_text":"I'm trying to speak Italian","target_text":"sto provando a parlare italiano"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0012L02B03","expect":{"known_text":"I want to try to guess","target_text":"voglio provare a indovinare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0017L01B03","expect":{"known_text":"I'm trying to find out","target_text":"sto provando a scoprire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0018L02B02","expect":{"known_text":"we want to meet up tomorrow","target_text":"vogliamo incontrarci domani"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0018L02B03","expect":{"known_text":"we want to meet up later on","target_text":"vogliamo incontrarci più tardi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0025L01B02","expect":{"known_text":"will you help me tomorrow?","target_text":"mi aiuterai domani?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0026L01B03","expect":{"known_text":"I like to speak Italian","target_text":"mi piace parlare italiano"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0027L02B03","expect":{"known_text":"I don't want to take too much time","target_text":"non voglio prendere troppo tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0035L02B01","expect":{"known_text":"he doesn't want to say anything","target_text":"non vuole dire niente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0051L03B02","expect":{"known_text":"with my friends","target_text":"con i miei amici"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0052L03B02","expect":{"known_text":"a letter","target_text":"una lettera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0052L03B04","expect":{"known_text":"I want to write a letter","target_text":"voglio scrivere una lettera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0052L04B02","expect":{"known_text":"to his friend","target_text":"al suo amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0052L04B03","expect":{"known_text":"he wanted to speak to his friend","target_text":"voleva parlare al suo amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0052L05B02","expect":{"known_text":"last week","target_text":"la settimana scorsa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0053L03B02","expect":{"known_text":"his letter","target_text":"la sua lettera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0053L03B03","expect":{"known_text":"I want to read his letter","target_text":"voglio leggere la sua lettera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0053L04B02","expect":{"known_text":"in her bag","target_text":"nella sua borsa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0053L04B03","expect":{"known_text":"I want to put it in her bag","target_text":"voglio mettere questo nella sua borsa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0055L01B03","expect":{"known_text":"I don't like to wake up","target_text":"non mi piace svegliarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0056L02B02","expect":{"known_text":"how to say","target_text":"come dire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0056L03B02","expect":{"known_text":"a few words","target_text":"alcune parole"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0056L03B04","expect":{"known_text":"so I can remember how to say a few words","target_text":"così posso ricordare come dire alcune parole"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0057L01B02","expect":{"known_text":"I can't remember","target_text":"non riesco a ricordare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0057L02B02","expect":{"known_text":"what I wanted to say","target_text":"quello che volevo dire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0057L02B04","expect":{"known_text":"I can't remember how to say what I wanted to say","target_text":"non riesco a ricordare come dire quello che volevo dire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L01B01","expect":{"known_text":"it's interesting","target_text":"è interessante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L01B02","expect":{"known_text":"it's interesting","target_text":"è interessante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L02B02","expect":{"known_text":"when you understand","target_text":"quando capisci"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L02B03","expect":{"known_text":"it's interesting when you understand","target_text":"è interessante quando capisci"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L02B04","expect":{"known_text":"I like it when you understand","target_text":"mi piace quando capisci"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L03B02","expect":{"known_text":"enough words","target_text":"abbastanza parole"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0058L03B04","expect":{"known_text":"it's interesting when you understand enough words","target_text":"è interessante quando capisci abbastanza parole"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0059L01B02","expect":{"known_text":"I know how to","target_text":"so come"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0059L02B02","expect":{"known_text":"what I need to do","target_text":"quello che devo fare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0059L02B03","expect":{"known_text":"I know what I need to do","target_text":"so quello che devo fare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0059L02B04","expect":{"known_text":"I know how to do what I need to do","target_text":"so come fare quello che devo fare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0059L03B02","expect":{"known_text":"next week","target_text":"la settimana prossima"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0059L03B03","expect":{"known_text":"I need to do it next week","target_text":"devo fare questo la settimana prossima"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0060L01B02","expect":{"known_text":"I don't know how to","target_text":"non so come"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0060L02B03","expect":{"known_text":"I don't know yet","target_text":"non so ancora"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0060L03B02","expect":{"known_text":"different words","target_text":"parole diverse"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0062L01B02","expect":{"known_text":"I want to help you","target_text":"voglio aiutarti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0062L02B02","expect":{"known_text":"at the same time","target_text":"allo stesso tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0063L02B01","expect":{"known_text":"you don't mind helping me?","target_text":"non ti dispiace aiutarmi?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0064L01B02","expect":{"known_text":"it isn't easy","target_text":"non è facile"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0064L02B01","expect":{"known_text":"it is fun","target_text":"è divertente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L01B01","expect":{"known_text":"it's important","target_text":"è importante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L01B02","expect":{"known_text":"that's important","target_text":"quello è importante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L02B02","expect":{"known_text":"to take time","target_text":"prendersi il tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L02B03","expect":{"known_text":"to take time","target_text":"prendersi il tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L03B02","expect":{"known_text":"to test yourself","target_text":"mettersi alla prova"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0065L03B03","expect":{"known_text":"to test yourself","target_text":"mettersi alla prova"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0066L01B02","expect":{"known_text":"it's not difficult","target_text":"non è difficile"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0068L01B04","expect":{"known_text":"what are you looking for?","target_text":"che cosa stai cercando?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0069L02B02","expect":{"known_text":"to look after","target_text":"badare al"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0069L02B03","expect":{"known_text":"to look after","target_text":"badare al"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0069L03B02","expect":{"known_text":"young dog","target_text":"cane giovane"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0073L01B01","expect":{"known_text":"thank you very much","target_text":"grazie mille"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0073L02B02","expect":{"known_text":"I've got more to learn","target_text":"ho ancora di più da imparare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0073L02B03","expect":{"known_text":"I've got more to learn now","target_text":"ho ancora di più da imparare adesso"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0073L02B04","expect":{"known_text":"I've got more to learn today","target_text":"ho ancora di più da imparare oggi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0075L01B01","expect":{"known_text":"have you got more to learn?","target_text":"hai di più da imparare?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0075L01B02","expect":{"known_text":"have you got more to learn?","target_text":"hai di più da imparare?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0075L01B03","expect":{"known_text":"have you got more to learn today?","target_text":"hai di più da imparare oggi?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0075L01U06","expect":{"known_text":"have you got more to learn now?","target_text":"hai di più da imparare adesso?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0076L01B02","expect":{"known_text":"I'm very happy with it","target_text":"sono molto contento di quello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0076L02B02","expect":{"known_text":"how much I've learnt","target_text":"quanto ho già imparato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0077L01B02","expect":{"known_text":"I'm surprised at it","target_text":"sono sorpreso di quello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0077L01B03","expect":{"known_text":"I'm surprised at something","target_text":"sono sorpreso di qualcosa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0077L02B04","expect":{"known_text":"how quickly","target_text":"quanto velocemente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0077L03B01","expect":{"known_text":"I'm starting to understand","target_text":"sto cominciando a capire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0077L03B02","expect":{"known_text":"I'm starting to understand","target_text":"sto cominciando a capire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0078L01B02","expect":{"known_text":"I don't understand it","target_text":"non capisco quello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0078L01B03","expect":{"known_text":"I don't understand something","target_text":"non capisco qualcosa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0078L02B02","expect":{"known_text":"what you said","target_text":"quello che hai detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0078L02B03","expect":{"known_text":"I don't understand what you said","target_text":"non capisco quello che hai detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0079L01B02","expect":{"known_text":"when did you start to learn?","target_text":"quando hai cominciato a imparare?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0079L01B03","expect":{"known_text":"when did you start to speak?","target_text":"quando hai cominciato a parlare?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0079L01B04","expect":{"known_text":"when did you start to understand?","target_text":"quando hai cominciato a capire?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0080L02B02","expect":{"known_text":"when I'll be ready","target_text":"quando sarò pronto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0080L02B03","expect":{"known_text":"I'm not sure when I'll be ready","target_text":"non sono sicuro di quando sarò pronto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0082L01B02","expect":{"known_text":"wait for you","target_text":"ti aspetto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0082L02B02","expect":{"known_text":"why not?","target_text":"perché no?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0083L01B02","expect":{"known_text":"I agree","target_text":"sono d'accordo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0083L02B02","expect":{"known_text":"about your friend","target_text":"del tuo amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0084L01B02","expect":{"known_text":"what he said","target_text":"quello che ha detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0084L02B02","expect":{"known_text":"about my friend","target_text":"del mio amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0084L02B04","expect":{"known_text":"I don't agree with what he said about my friend","target_text":"non sono d'accordo con quello che ha detto del mio amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0085L01B02","expect":{"known_text":"I don't know","target_text":"non conosco"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0085L02B02","expect":{"known_text":"those people","target_text":"quelle persone"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0086L01B02","expect":{"known_text":"it wasn't","target_text":"non era"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0087L01B02","expect":{"known_text":"people I don't know","target_text":"persone che non conosco"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0089L01B02","expect":{"known_text":"I've done","target_text":"aver fatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0089L02B02","expect":{"known_text":"in a short time","target_text":"in poco tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0090L01B02","expect":{"known_text":"if you can","target_text":"se puoi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0090L02B02","expect":{"known_text":"that would be great","target_text":"sarebbe fantastico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0090L02B04","expect":{"known_text":"I think that would be great","target_text":"penso che sarebbe fantastico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0091L02B02","expect":{"known_text":"quickly enough","target_text":"abbastanza velocemente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0091L03B02","expect":{"known_text":"in time","target_text":"in tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0092L01B02","expect":{"known_text":"to keep on","target_text":"continuare a"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0093L01B02","expect":{"known_text":"it's time to","target_text":"è ora di"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0094L01B02","expect":{"known_text":"the only way","target_text":"l'unico modo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0094L02B02","expect":{"known_text":"in which","target_text":"in cui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0095L01B02","expect":{"known_text":"to go home","target_text":"tornare a casa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0095L02B02","expect":{"known_text":"the next bus","target_text":"il prossimo autobus"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0099L02B02","expect":{"known_text":"to ask yourself","target_text":"chiederti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0100L01B02","expect":{"known_text":"you shouldn't","target_text":"non dovresti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0100L02B02","expect":{"known_text":"to worry about","target_text":"preoccuparti di"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0100L03B02","expect":{"known_text":"something similar","target_text":"qualcosa di simile"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0102L02B01","expect":{"known_text":"it's not like that","target_text":"non è così"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0102L02B03","expect":{"known_text":"it's not like that at all","target_text":"non è così per niente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0104L02B02","expect":{"known_text":"what we're doing","target_text":"quello che stiamo facendo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0105L01B02","expect":{"known_text":"that is why","target_text":"ecco perché"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0105L02B02","expect":{"known_text":"he didn't know","target_text":"non conosceva"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0106L01B02","expect":{"known_text":"we don't need to feel","target_text":"non dobbiamo sentirci"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0106L03B02","expect":{"known_text":"we just need to work hard","target_text":"dobbiamo solo lavorare sodo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0106L03B03","expect":{"known_text":"we just need to work hard now","target_text":"dobbiamo solo lavorare sodo adesso"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0107L01B02","expect":{"known_text":"we hoped to see","target_text":"speravamo di vedere"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0107L02B02","expect":{"known_text":"what you were doing","target_text":"che cosa stavi facendo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0108L01B02","expect":{"known_text":"we didn't expect to wake up","target_text":"non ci aspettavamo di svegliarci"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0108L02B02","expect":{"known_text":"in the middle of the night","target_text":"nel mezzo della notte"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0110L01B01","expect":{"known_text":"we're friends","target_text":"siamo amici"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0110L01B02","expect":{"known_text":"we're friends","target_text":"siamo amici"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0110L02B02","expect":{"known_text":"after we finish","target_text":"dopo che finiamo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0110L03B01","expect":{"known_text":"I'd like to relax","target_text":"mi piacerebbe rilassarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0110L03B02","expect":{"known_text":"I'd like to relax","target_text":"mi piacerebbe rilassarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0111L02B02","expect":{"known_text":"something new","target_text":"qualcosa di nuovo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0111L04B02","expect":{"known_text":"our brain","target_text":"il nostro cervello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0112L01B02","expect":{"known_text":"it was","target_text":"era"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0112L02B02","expect":{"known_text":"I wasn't expecting it","target_text":"non me lo aspettavo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0113L01B02","expect":{"known_text":"I can't","target_text":"non riesco a"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0114L01B02","expect":{"known_text":"as if I were speaking","target_text":"come se stessi parlando"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0115L01B02","expect":{"known_text":"as if I were ready","target_text":"come se fossi pronto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0115L02B02","expect":{"known_text":"to have a conversation","target_text":"a fare una conversazione"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0116L02B02","expect":{"known_text":"the best choice","target_text":"la scelta migliore"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0116L03B02","expect":{"known_text":"I could make","target_text":"potrei fare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0117L02B02","expect":{"known_text":"we talked to each other","target_text":"abbiamo parlato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0117L03B02","expect":{"known_text":"last time","target_text":"l'ultima volta"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0118L01B02","expect":{"known_text":"we were","target_text":"eravamo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0118L02B02","expect":{"known_text":"I felt","target_text":"mi sentivo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0118L03B02","expect":{"known_text":"in the pub","target_text":"al pub"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0119L01B02","expect":{"known_text":"before you leave","target_text":"prima che tu vada via"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0120L01B02","expect":{"known_text":"by bus","target_text":"in autobus"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0124L01B02","expect":{"known_text":"I thought that","target_text":"pensavo che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0124L01B04","expect":{"known_text":"I thought that was good","target_text":"pensavo che fosse buona"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0124L01U06","expect":{"known_text":"I thought that was a good idea","target_text":"pensavo che fosse una buona idea"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0125L01B02","expect":{"known_text":"I believe that","target_text":"credo che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0125L01B03","expect":{"known_text":"I believe that","target_text":"credo che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0125L01U08","expect":{"known_text":"I believe that your idea was very good","target_text":"credo che la tua idea fosse molto buona"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0126L03B02","expect":{"known_text":"it is changing","target_text":"sta cambiando"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0126L04B02","expect":{"known_text":"the shape","target_text":"la forma"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0126L05B02","expect":{"known_text":"of my brain","target_text":"del mio cervello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0127L02B02","expect":{"known_text":"that isn't why I wanted","target_text":"non è per questo che volevo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0127L02B04","expect":{"known_text":"that isn't why I wanted to talk","target_text":"non è per questo che volevo parlare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0128L01B02","expect":{"known_text":"someone I used to know","target_text":"qualcuno che conoscevo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0128L02B02","expect":{"known_text":"you're like","target_text":"sei come"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0128L02B04","expect":{"known_text":"you're like me","target_text":"sei come me"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0129L01B02","expect":{"known_text":"happy that you're speaking so well","target_text":"felice che tu stia parlando così bene"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0129L01B03","expect":{"known_text":"I'm happy that you're speaking so well","target_text":"sono felice che tu stia parlando così bene"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0130L01B02","expect":{"known_text":"it was a surprise because","target_text":"è stata una sorpresa perché"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0130L02B02","expect":{"known_text":"he's my friend","target_text":"è un mio amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0130L02B03","expect":{"known_text":"he's my friend","target_text":"è un mio amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0130L02U02","expect":{"known_text":"I know he's my friend","target_text":"so che è un mio amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0131L03B02","expect":{"known_text":"in my head","target_text":"in testa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0131L04B02","expect":{"known_text":"they're going around in my head","target_text":"mi girano in testa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0133L02B03","expect":{"known_text":"you work together","target_text":"lavorate insieme"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0134L01B03","expect":{"known_text":"that's a problem","target_text":"è un problema"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0134L02B04","expect":{"known_text":"you work at something","target_text":"lavori a qualcosa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0134L03B02","expect":{"known_text":"with them","target_text":"con loro"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0135L01B02","expect":{"known_text":"you think that","target_text":"pensi che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0135L02B02","expect":{"known_text":"so good","target_text":"così bello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L01B02","expect":{"known_text":"of course","target_text":"certo che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L01B04","expect":{"known_text":"of course you can","target_text":"certo che puoi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L01U02","expect":{"known_text":"of course I can","target_text":"certo che posso"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L02B02","expect":{"known_text":"to ask her","target_text":"chiederlo a lei"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L02B04","expect":{"known_text":"you can ask her","target_text":"puoi chiederlo a lei"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L03B02","expect":{"known_text":"she's my friend","target_text":"è una mia amica"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0136L03B03","expect":{"known_text":"she's my friend","target_text":"è una mia amica"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0137L02B02","expect":{"known_text":"more important","target_text":"più importante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0137L03B02","expect":{"known_text":"than to be","target_text":"che essere"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0139L01B02","expect":{"known_text":"so early","target_text":"così presto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0140L01B02","expect":{"known_text":"you're trying to show me","target_text":"stai provando a mostrarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0142L03U05","expect":{"known_text":"I'm grateful to you for helping me","target_text":"ti sono grato per aiutarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0144L01B02","expect":{"known_text":"I woke up","target_text":"mi sono svegliato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0144L01B04","expect":{"known_text":"I woke up this morning","target_text":"mi sono svegliato stamattina"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0146L01B02","expect":{"known_text":"nothing seems to work","target_text":"niente sembra funzionare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0146L01B03","expect":{"known_text":"nothing seems to work","target_text":"niente sembra funzionare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0146L02B02","expect":{"known_text":"since we tried to fix it","target_text":"da quando abbiamo provato a sistemarlo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0148L01B02","expect":{"known_text":"very patient","target_text":"molto paziente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0148L02B02","expect":{"known_text":"I couldn't answer","target_text":"non potevo rispondere"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0148L02B03","expect":{"known_text":"I couldn't answer","target_text":"non potevo rispondere"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0149L01B02","expect":{"known_text":"so I hope","target_text":"quindi spero"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0149L02B02","expect":{"known_text":"you'll finish","target_text":"finirai"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0149L02B04","expect":{"known_text":"you'll finish soon","target_text":"finirai presto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0150L01B02","expect":{"known_text":"can you tell me","target_text":"puoi dirmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0150L01B03","expect":{"known_text":"can you tell me?","target_text":"puoi dirmi?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0151L02B02","expect":{"known_text":"I was hoping would happen","target_text":"speravo succedesse"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0152L01B02","expect":{"known_text":"I would have done it","target_text":"l'avrei fatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0152L01B03","expect":{"known_text":"I would have done it","target_text":"l'avrei fatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0152L03B02","expect":{"known_text":"if I had known","target_text":"se avessi saputo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0152L03B04","expect":{"known_text":"if I had known","target_text":"se avessi saputo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0153L01B02","expect":{"known_text":"I wouldn't have said it","target_text":"non l'avrei detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0153L01B03","expect":{"known_text":"I wouldn't have said it","target_text":"non l'avrei detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0153L01B04","expect":{"known_text":"I wouldn't have said it","target_text":"non l'avrei detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0153L01U01","expect":{"known_text":"I wouldn't have said it","target_text":"non l'avrei detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0153L03B02","expect":{"known_text":"in the same way","target_text":"nello stesso modo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0155L01B01","expect":{"known_text":"I don't mind","target_text":"non mi dispiace"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0155L01B02","expect":{"known_text":"I don't mind","target_text":"non mi dispiace"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0155L01B03","expect":{"known_text":"I don't mind","target_text":"non mi dispiace"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0155L02U04","expect":{"known_text":"I don't mind waiting","target_text":"non mi dispiace aspettare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0155L03B02","expect":{"known_text":"a few minutes","target_text":"qualche minuto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0155L04B02","expect":{"known_text":"tomorrow morning","target_text":"domani mattina"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0156L01B02","expect":{"known_text":"to a restaurant","target_text":"a un ristorante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0158L01B02","expect":{"known_text":"let's talk","target_text":"parliamo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0158L01U02","expect":{"known_text":"let's talk about it","target_text":"parliamo di quello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0159L01B02","expect":{"known_text":"that isn't","target_text":"non è"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0159L02B02","expect":{"known_text":"I'm trying to say","target_text":"sto provando a dire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0159L02U05","expect":{"known_text":"that isn't what I'm trying to say","target_text":"non è quello che sto provando a dire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0160L01B02","expect":{"known_text":"how do you say","target_text":"come si dice"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0160L01B04","expect":{"known_text":"how do you say this?","target_text":"come si dice questo?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0160L01U03","expect":{"known_text":"how do you say this word?","target_text":"come si dice questa parola?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0162L01B03","expect":{"known_text":"I think about it","target_text":"ne penso"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0163L01B02","expect":{"known_text":"I think that it is","target_text":"penso che sia"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0164L01B02","expect":{"known_text":"an interesting book","target_text":"un libro interessante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0164L01B03","expect":{"known_text":"an interesting book","target_text":"un libro interessante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0166L01B02","expect":{"known_text":"my name","target_text":"il mio nome"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0169L01B02","expect":{"known_text":"what do you want me to do?","target_text":"che cosa vuoi che faccia?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0169L01B03","expect":{"known_text":"what do you want me to do?","target_text":"che cosa vuoi che faccia?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0170L01B02","expect":{"known_text":"I'd like you to tell me","target_text":"vorrei che mi dicessi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0170L02B02","expect":{"known_text":"what you need","target_text":"di cosa hai bisogno"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0173L01B02","expect":{"known_text":"to manage on my own","target_text":"cavarmela da solo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0173L01B04","expect":{"known_text":"I can manage on my own","target_text":"posso cavarmela da solo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0174L02B02","expect":{"known_text":"what I'm saying","target_text":"quello che sto dicendo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0174L02U08","expect":{"known_text":"can you understand what I'm saying?","target_text":"riesci a capire quello che sto dicendo?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0175L01B02","expect":{"known_text":"what do you want?","target_text":"che cosa vuoi?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0175L02B02","expect":{"known_text":"on Sunday morning","target_text":"domenica mattina"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0176L03B02","expect":{"known_text":"next year","target_text":"l'anno prossimo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0178L01B02","expect":{"known_text":"I didn't have","target_text":"non avevo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0178L01B04","expect":{"known_text":"I didn't have anything","target_text":"non avevo niente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0179L01B02","expect":{"known_text":"what are you going to do?","target_text":"che cosa farai?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0179L01B03","expect":{"known_text":"what are you going to do?","target_text":"che cosa farai?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0179L01U05","expect":{"known_text":"what are you going to do now?","target_text":"che cosa farai adesso?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0179L02B02","expect":{"known_text":"on Sunday afternoon","target_text":"domenica pomeriggio"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0180L01U05","expect":{"known_text":"I want to read my book","target_text":"voglio leggere il mio libro"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0180L02B02","expect":{"known_text":"for a while","target_text":"per un po'"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0181L01B02","expect":{"known_text":"my mother","target_text":"mia madre"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0181L03B02","expect":{"known_text":"to the doctor","target_text":"dal medico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0182L01B02","expect":{"known_text":"my keys","target_text":"le mie chiavi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0182L02B02","expect":{"known_text":"anywhere","target_text":"da qualche parte"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0183L01B02","expect":{"known_text":"I'm afraid","target_text":"temo di"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0184L02B02","expect":{"known_text":"a while ago","target_text":"un po' di tempo fa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0185L01B02","expect":{"known_text":"that you left them","target_text":"che tu le abbia lasciate"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0186L01B02","expect":{"known_text":"something different","target_text":"qualcosa di diverso"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0189L01B02","expect":{"known_text":"that's a good idea","target_text":"è una buona idea"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0189L01B03","expect":{"known_text":"that's a good idea","target_text":"è una buona idea"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0191L01B01","expect":{"known_text":"no I don't mind at all","target_text":"no non mi dispiace affatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0191L01B02","expect":{"known_text":"no I don't mind at all","target_text":"no non mi dispiace affatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0191L01B03","expect":{"known_text":"no I don't mind at all today","target_text":"no non mi dispiace affatto oggi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0192L02B02","expect":{"known_text":"tomorrow night","target_text":"domani sera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0193L01B02","expect":{"known_text":"I'm sorry but I'm too busy","target_text":"mi dispiace, ma sono troppo occupato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0194L01B01","expect":{"known_text":"what are you looking for?","target_text":"che cosa stai cercando?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0194L01B02","expect":{"known_text":"what are you looking for?","target_text":"che cosa stai cercando?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0194L01B03","expect":{"known_text":"what are you looking for today?","target_text":"che cosa stai cercando oggi?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0194L01U03","expect":{"known_text":"what are you looking for now?","target_text":"che cosa stai cercando adesso?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0195L03B02","expect":{"known_text":"on the table","target_text":"sul tavolo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0195L03B04","expect":{"known_text":"it's on the table","target_text":"è sul tavolo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0196L01B02","expect":{"known_text":"have you heard?","target_text":"hai sentito?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0197L01B03","expect":{"known_text":"my son is here","target_text":"mio figlio è qui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0197L03B02","expect":{"known_text":"works as","target_text":"lavora come"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0198L01B03","expect":{"known_text":"my daughter is here","target_text":"mia figlia è qui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0198L02B02","expect":{"known_text":"works for the council","target_text":"lavora per il comune"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0198L02U03","expect":{"known_text":"my daughter works for the council","target_text":"mia figlia lavora per il comune"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0200L01B02","expect":{"known_text":"they say it's good","target_text":"dicono che è bello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0200L01B03","expect":{"known_text":"they say it's easy","target_text":"dicono che è facile"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0200L02B02","expect":{"known_text":"they want to go","target_text":"vogliono andare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0200L03B02","expect":{"known_text":"to make sure","target_text":"assicurarsi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0200L03U02","expect":{"known_text":"they want to make sure","target_text":"vogliono assicurarsi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0203L01B02","expect":{"known_text":"what would you do?","target_text":"che cosa faresti?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0203L02B02","expect":{"known_text":"if I asked you","target_text":"se ti chiedessi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0203L03B02","expect":{"known_text":"to help me","target_text":"di aiutarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0204L02B02","expect":{"known_text":"her to help you","target_text":"che lei ti aiutasse"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0204L03B02","expect":{"known_text":"to deal with","target_text":"a occuparti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0204L03B03","expect":{"known_text":"to deal with","target_text":"a occuparti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0205L01B02","expect":{"known_text":"I've forgotten","target_text":"ho dimenticato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0205L02B02","expect":{"known_text":"I was trying to","target_text":"stavo provando a"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0205L02B03","expect":{"known_text":"I was trying to","target_text":"stavo provando a"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0205L02B04","expect":{"known_text":"I was trying to","target_text":"stavo provando a"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0206L01B02","expect":{"known_text":"I enjoy the chance to practise speaking","target_text":"mi piace l'occasione di fare pratica parlando"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0206L01B04","expect":{"known_text":"I enjoy the chance to practise speaking with you","target_text":"mi piace l'occasione di fare pratica parlando con te"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0207L01B02","expect":{"known_text":"you've done","target_text":"hai fatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0207L02B02","expect":{"known_text":"you needed to","target_text":"dovevi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0208L01B02","expect":{"known_text":"I didn't want to","target_text":"non volevo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0208L01B03","expect":{"known_text":"I didn't want to","target_text":"non volevo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0208L02B02","expect":{"known_text":"how to say it","target_text":"come dirlo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0208L02B03","expect":{"known_text":"how to say it","target_text":"come dirlo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0208L02B04","expect":{"known_text":"how to say it","target_text":"come dirlo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0209L02B02","expect":{"known_text":"to spend more time","target_text":"passare più tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0209L02B03","expect":{"known_text":"to spend more time","target_text":"passare più tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0209L03B02","expect":{"known_text":"meeting together as a group","target_text":"incontrandosi come gruppo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0210L01B02","expect":{"known_text":"they think that","target_text":"pensano che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0210L01B03","expect":{"known_text":"they think that","target_text":"pensano che"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0210L03B02","expect":{"known_text":"to discuss","target_text":"discutere"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0211L01B02","expect":{"known_text":"they told us","target_text":"ci hanno detto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0212L01U03","expect":{"known_text":"I wanted to ask for help","target_text":"volevo chiedere aiuto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0214L01B02","expect":{"known_text":"have a good time","target_text":"ti sei divertito"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0214L01B04","expect":{"known_text":"did you have a good time?","target_text":"ti sei divertito?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0214L02B02","expect":{"known_text":"at the weekend","target_text":"nel fine settimana"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0215L01B02","expect":{"known_text":"I went out","target_text":"sono uscito"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0215L01B03","expect":{"known_text":"I went out","target_text":"sono uscito"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0215L01B04","expect":{"known_text":"I went out yesterday","target_text":"sono uscito ieri"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0216L01U02","expect":{"known_text":"I saw a few friends","target_text":"ho visto alcuni amici"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0218L01B02","expect":{"known_text":"I didn't do much","target_text":"non ho fatto molto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0218L01B03","expect":{"known_text":"I didn't do much","target_text":"non ho fatto molto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0218L01B04","expect":{"known_text":"I didn't do much today","target_text":"non ho fatto molto oggi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0219L01B02","expect":{"known_text":"it was","target_text":"è stato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0219L01U03","expect":{"known_text":"it was nice to see you","target_text":"è stato bello vederti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0220L01B02","expect":{"known_text":"did you watch?","target_text":"hai guardato?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0220L01B04","expect":{"known_text":"did you watch it?","target_text":"hai guardato questo?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0220L01U03","expect":{"known_text":"did you watch it yesterday?","target_text":"hai guardato questo ieri?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0220L02B02","expect":{"known_text":"a bit of","target_text":"un po' di"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0220L02U07","expect":{"known_text":"I need a bit of time","target_text":"ho bisogno di un po' di tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0224L01U02","expect":{"known_text":"he's just started to learn Italian","target_text":"ha appena cominciato a imparare italiano"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0226L01B03","expect":{"known_text":"the man is here","target_text":"l'uomo è qui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0226L01U02","expect":{"known_text":"I know the man","target_text":"conosco l'uomo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0227L01B03","expect":{"known_text":"that man is here","target_text":"quell'uomo è qui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0227L01U02","expect":{"known_text":"I know that man","target_text":"conosco quell'uomo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0228L01B02","expect":{"known_text":"started to practise speaking","target_text":"cominciato a fare pratica parlando"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0229L01B03","expect":{"known_text":"that woman is here","target_text":"quella donna è qui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0229L01U02","expect":{"known_text":"I know that woman","target_text":"conosco quella donna"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0229L02U02","expect":{"known_text":"I think she would help you","target_text":"penso che ti aiuterebbe"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0230L01B03","expect":{"known_text":"I know a young man who wants to work","target_text":"conosco un giovane uomo che vuole lavorare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0232L01B02","expect":{"known_text":"an old woman","target_text":"una donna anziana"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0232L02B02","expect":{"known_text":"who can remember","target_text":"che può ricordare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0233L01B02","expect":{"known_text":"a young woman","target_text":"una giovane donna"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0233L02B02","expect":{"known_text":"who knows your sister","target_text":"che conosce tua sorella"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0234L01B02","expect":{"known_text":"I met someone","target_text":"ho incontrato qualcuno"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0234L01B04","expect":{"known_text":"I met someone last night","target_text":"ho incontrato qualcuno ieri sera"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0234L02B02","expect":{"known_text":"who works with your brother","target_text":"che lavora con tuo fratello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0235L01B02","expect":{"known_text":"who said that he wanted to tell you","target_text":"che ha detto che voleva dirti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0237L01B02","expect":{"known_text":"he wanted me to tell you","target_text":"voleva che te lo dicessi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0237L02B02","expect":{"known_text":"before the weekend","target_text":"prima del fine settimana"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0239L01B02","expect":{"known_text":"my mother likes to","target_text":"a mia madre piace"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0241L01B02","expect":{"known_text":"to give it to him","target_text":"darglielo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0242L01B02","expect":{"known_text":"to give her","target_text":"darle"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0245L01B02","expect":{"known_text":"how much","target_text":"quanto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0246L01B02","expect":{"known_text":"too busy","target_text":"troppo occupata"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0247L02B02","expect":{"known_text":"I thought that book was","target_text":"pensavo che quel libro fosse"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0248L01B02","expect":{"known_text":"complete rubbish","target_text":"una schifezza totale"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0248L02B02","expect":{"known_text":"my money back","target_text":"indietro i miei soldi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0249L01B02","expect":{"known_text":"before you go","target_text":"prima che tu vada"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0249L02B02","expect":{"known_text":"I want you to help me","target_text":"voglio che tu mi aiuti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0250L02B02","expect":{"known_text":"before I answer","target_text":"prima che io risponda"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0251L02B02","expect":{"known_text":"until after","target_text":"fino a dopo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0252L01U07","expect":{"known_text":"when will you be ready?","target_text":"quando sarai pronto?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0254L01U06","expect":{"known_text":"I've been ready since this morning","target_text":"sono pronto da stamattina"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0258L01B03","expect":{"known_text":"what's that?","target_text":"che cos'è quello?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0258L01U06","expect":{"known_text":"what's that blue thing?","target_text":"che cos'è quella cosa blu?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0260L01B02","expect":{"known_text":"the faintest idea","target_text":"la minima idea"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0260L01U02","expect":{"known_text":"I don't have the faintest idea","target_text":"non ho la minima idea"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0262L01B02","expect":{"known_text":"who was","target_text":"chi era"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0262L01B04","expect":{"known_text":"who was that man?","target_text":"chi era quell'uomo?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0262L02B02","expect":{"known_text":"you were talking to","target_text":"con cui parlavi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0263L01B02","expect":{"known_text":"I don't know who","target_text":"non so chi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0263L01B04","expect":{"known_text":"I don't know who that was","target_text":"non so chi era quello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0263L01U02","expect":{"known_text":"I don't know who the woman was","target_text":"non so chi era la donna"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0263L02U02","expect":{"known_text":"I don't know who you mean","target_text":"non so chi intendi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0264L01B02","expect":{"known_text":"an old man","target_text":"un uomo anziano"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0265L01B02","expect":{"known_text":"a friend","target_text":"un amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0266L01B02","expect":{"known_text":"an old friend","target_text":"un vecchio amico"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0267L01B02","expect":{"known_text":"have you heard from","target_text":"hai avuto notizie da"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0267L01B03","expect":{"known_text":"have you heard from your father?","target_text":"hai avuto notizie da tuo padre?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0267L01B04","expect":{"known_text":"have you heard from your friend?","target_text":"hai avuto notizie dal tuo amico?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0268L01B02","expect":{"known_text":"she sent me","target_text":"mi ha mandato"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0268L01U03","expect":{"known_text":"she sent me something important","target_text":"mi ha mandato qualcosa di importante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0268L02B02","expect":{"known_text":"two emails","target_text":"due email"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0269L01B02","expect":{"known_text":"why don't you want to","target_text":"perché non vuoi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0269L01U05","expect":{"known_text":"why don't you want to wait for your father?","target_text":"perché non vuoi aspettare tuo padre?"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0271L01B02","expect":{"known_text":"with us","target_text":"con noi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0272L01B02","expect":{"known_text":"sounds like","target_text":"sembra"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0272L02B02","expect":{"known_text":"great idea","target_text":"ottima idea"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0273L02B02","expect":{"known_text":"too much","target_text":"troppo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0274L01B02","expect":{"known_text":"in a few days","target_text":"tra qualche giorno"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0275L01B02","expect":{"known_text":"longer","target_text":"più a lungo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0276L02B02","expect":{"known_text":"for a little longer","target_text":"ancora per un po'"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0277L01B02","expect":{"known_text":"important meeting","target_text":"riunione importante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0277L02B02","expect":{"known_text":"early next week","target_text":"all'inizio della prossima settimana"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0279L01B02","expect":{"known_text":"time left","target_text":"tempo rimasto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0280L02B02","expect":{"known_text":"most important","target_text":"più importante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0283L01B02","expect":{"known_text":"your friends","target_text":"tuoi amici"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0283L02B02","expect":{"known_text":"which of","target_text":"quali dei"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0283L03B02","expect":{"known_text":"they speak Italian","target_text":"parlano italiano"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0287L01B03","expect":{"known_text":"how many","target_text":"quante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0289L03B02","expect":{"known_text":"I wonder if she's here","target_text":"mi chiedo se lei è qui"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0289L03B03","expect":{"known_text":"I wonder if this is good","target_text":"mi chiedo se questo è buono"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0292L02B02","expect":{"known_text":"I hope you'll be able to","target_text":"spero che tu possa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0293L01B02","expect":{"known_text":"to find out where he's going to","target_text":"scoprire dove ha intenzione di"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0293L02B02","expect":{"known_text":"to meet me","target_text":"incontrarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0293L02B03","expect":{"known_text":"to meet me","target_text":"incontrarmi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0294L01B02","expect":{"known_text":"to call you","target_text":"chiamarti"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0295L01B02","expect":{"known_text":"in a day","target_text":"in un giorno"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0297L01B02","expect":{"known_text":"many people","target_text":"molte persone"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0298L01B02","expect":{"known_text":"nothing left","target_text":"più niente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0299L01B02","expect":{"known_text":"to pay","target_text":"pagare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0299L01U02","expect":{"known_text":"I want to pay","target_text":"voglio pagare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0299L02U02","expect":{"known_text":"I want to pay half","target_text":"voglio pagare metà"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0300L01U04","expect":{"known_text":"I don't want to seem nervous","target_text":"non voglio sembrare nervoso"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0300L02U03","expect":{"known_text":"I don't want to seem unfriendly","target_text":"non voglio sembrare scortese"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0315L02B04","expect":{"known_text":"I think that he couldn't wait","target_text":"penso che non potesse aspettare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0315L03B02","expect":{"known_text":"I think that he couldn't afford the car","target_text":"penso che non potesse permettersi la macchina"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0315L03B03","expect":{"known_text":"I think that he couldn't afford anything","target_text":"penso che non potesse permettersi niente"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0326L01B04","expect":{"known_text":"I don't think that she needs to wait","target_text":"non penso che lei debba aspettare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0326L03B03","expect":{"known_text":"I don't think that she needs to sell the company","target_text":"non penso che lei debba vendere l'azienda"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0336L01B04","expect":{"known_text":"I don't think that she can wait","target_text":"non penso che lei possa aspettare"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0341L01B03","expect":{"known_text":"I met someone a few days ago","target_text":"ho incontrato qualcuno qualche giorno fa"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0343L02B03","expect":{"known_text":"she said she's worried about the economy","target_text":"ha detto che è preoccupata per l'economia"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0355L01B03","expect":{"known_text":"she needed to talk to that woman you know","target_text":"doveva parlare con quella donna che conosci"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0357L02B02","expect":{"known_text":"she just wanted to send her a message","target_text":"voleva solo mandarle un messaggio"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0369L03B03","expect":{"known_text":"I saw several horses on the road","target_text":"ho visto diversi cavalli sulla strada"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0372L02B02","expect":{"known_text":"she was trying to go out","target_text":"stava provando a uscire"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0419L01B02","expect":{"known_text":"people to like them","target_text":"che la gente li apprezzi"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0478L03B03","expect":{"known_text":"she has such a kind heart","target_text":"ha un cuore così gentile"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0506L02B02","expect":{"known_text":"before we moved","target_text":"prima che ci trasferissimo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0513L01B03","expect":{"known_text":"it really hurts when I move","target_text":"fa davvero male quando muovo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0539L01B04","expect":{"known_text":"it's getting difficult","target_text":"si sta facendo difficile"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0607L02B02","expect":{"known_text":"I would have done","target_text":"avrei fatto"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0618L02B03","expect":{"known_text":"a lot of time has passed","target_text":"è passato molto tempo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0636L02B03","expect":{"known_text":"I think that that is Jane's bag","target_text":"penso che quella sia la borsa di Jane"}}
+{"op":"phrase.delete","phrase_id":"ita_for_eng:S0647L01B01","expect":{"known_text":"you speak it madam","target_text":"lei lo parla, signora"}}

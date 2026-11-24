@@ -1,0 +1,1 @@
+Regenerate (offline, after one snapshot read of each course via `GET /api/production/<course>/seeds?status=all`): `node match.cjs kor.json nv2.json match.json` → `python3 bands.py match.json nv2.json` (band table) and `python3 fill.py match.json` (minimum new Welsh per option).

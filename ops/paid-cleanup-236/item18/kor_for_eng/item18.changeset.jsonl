@@ -1,0 +1,828 @@
+{"format":"ssi-changeset/1","id":"kor_for_eng-item18-cs236","course":"kor_for_eng","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:36.366Z","ops":827,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0021L03B02","expect":{"known_text":"are learning","target_text":"배우고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0022L02B02","expect":{"known_text":"because I want to meet","target_text":"만나고 싶어서요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0023L03B02","expect":{"known_text":"start talking","target_text":"말하기 시작할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0024L02B02","expect":{"known_text":"not going to be able to remember","target_text":"기억하지 못할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0025L01B02","expect":{"known_text":"before I have to go","target_text":"제가 가야 하기 전에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0025L02B02","expect":{"known_text":"going to help","target_text":"도와줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L01B01","expect":{"known_text":"Korean is good","target_text":"한국어가 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0026L03U05","expect":{"known_text":"I like the feeling as if I speak well","target_text":"잘 말하는 것 같은 느낌이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L02B02","expect":{"known_text":"taking too long","target_text":"너무 오래 걸리는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0027L03B02","expect":{"known_text":"to answer","target_text":"대답하는 데"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L01B02","expect":{"known_text":"is useful","target_text":"도움이 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L02B02","expect":{"known_text":"as soon as you can","target_text":"가능한 한 빨리"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L03B02","expect":{"known_text":"starting to talk","target_text":"말하기 시작하는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0028L03B03","expect":{"known_text":"starting to talk is good","target_text":"말하기 시작하는 게 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0029L02B02","expect":{"known_text":"I hope I can speak","target_text":"말할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0030L01B02","expect":{"known_text":"wanted to ask you something","target_text":"뭔가 물어보고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0031L01B02","expect":{"known_text":"tonight","target_text":"오늘 밤에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0031L02B02","expect":{"known_text":"wanted to speak with me","target_text":"저와 말하고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0032L01B02","expect":{"known_text":"to me","target_text":"저한테"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0032L02B02","expect":{"known_text":"wanted to show something","target_text":"뭔가 보여 주고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0033L02B02","expect":{"known_text":"since learning Korean","target_text":"한국어를 배운 지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0034L01B02","expect":{"known_text":"other people","target_text":"다른 사람들이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0034L02B02","expect":{"known_text":"when they are here","target_text":"여기 있을 때"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0034L03B02","expect":{"known_text":"doesn't want to be quiet","target_text":"조용히 하고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0034L03B04","expect":{"known_text":"she doesn't want to be quiet","target_text":"그녀는 조용히 하고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0035L01B02","expect":{"known_text":"this afternoon","target_text":"오늘 오후에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0035L03B02","expect":{"known_text":"doesn't want to read","target_text":"읽고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0036L02B02","expect":{"known_text":"the story","target_text":"이야기를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0037L01B02","expect":{"known_text":"last month","target_text":"지난달에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0037L02B02","expect":{"known_text":"about it","target_text":"그것에 대해"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0037L03B02","expect":{"known_text":"started to think carefully","target_text":"신중하게 생각하기 시작했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0038L01B02","expect":{"known_text":"about a week","target_text":"일주일 정도"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0039L01B02","expect":{"known_text":"this morning","target_text":"오늘 아침에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0040L02B02","expect":{"known_text":"how do you feel","target_text":"기분이 어때요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0041L01B02","expect":{"known_text":"I'm okay","target_text":"괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0041L01B03","expect":{"known_text":"he is okay","target_text":"그는 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0041L02B02","expect":{"known_text":"starting to feel tired","target_text":"피곤해지기 시작하고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0042L01B02","expect":{"known_text":"than last night","target_text":"어젯밤보다"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0042L02B02","expect":{"known_text":"was starting to feel better","target_text":"나아지기 시작하고 있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0042L02B03","expect":{"known_text":"he was starting to feel better","target_text":"그는 나아지기 시작하고 있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0042L02B04","expect":{"known_text":"she was starting to feel better","target_text":"그녀는 나아지기 시작하고 있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0043L01B02","expect":{"known_text":"how to answer","target_text":"어떻게 대답할지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0043L02B02","expect":{"known_text":"wasn't thinking","target_text":"생각하고 있지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0043L02B04","expect":{"known_text":"he wasn't thinking","target_text":"그는 생각하고 있지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0044L02B02","expect":{"known_text":"if I need to improve","target_text":"제가 나아져야 하는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0045L01B02","expect":{"known_text":"everything","target_text":"모든 걸"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0045L02B02","expect":{"known_text":"don't need to know","target_text":"알 필요는 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0046L02B02","expect":{"known_text":"don't worry about","target_text":"걱정하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0047L01B02","expect":{"known_text":"it's a good thing to make mistakes","target_text":"실수하는 게 좋은 거라고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0047L02B02","expect":{"known_text":"because I think","target_text":"생각하니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0048L01B02","expect":{"known_text":"I don't care","target_text":"상관없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0048L01B03","expect":{"known_text":"he doesn't care","target_text":"그는 상관없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0048L02B02","expect":{"known_text":"the fact of making mistakes","target_text":"실수하는 건"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0048L02B04","expect":{"known_text":"making mistakes is okay","target_text":"실수하는 건 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0049L01B01","expect":{"known_text":"it's like this","target_text":"이런 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0049L01B02","expect":{"known_text":"it's like this","target_text":"이런 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0049L01B04","expect":{"known_text":"but it's like this","target_text":"하지만 이런 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0049L02B02","expect":{"known_text":"if you know what I mean","target_text":"무슨 뜻인지 알면요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0049L02B03","expect":{"known_text":"it's like this, if you know what I mean","target_text":"이런 거예요, 무슨 뜻인지 알면요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0049L02B04","expect":{"known_text":"it's okay if you know what I mean","target_text":"괜찮아요, 무슨 뜻인지 알면요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0050L01B02","expect":{"known_text":"not trying to finish","target_text":"끝내려고 하는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0050L01B03","expect":{"known_text":"he's not trying to finish","target_text":"그는 끝내려고 하는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0050L01B04","expect":{"known_text":"but I'm not trying to finish","target_text":"하지만 끝내려고 하는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0050L02B02","expect":{"known_text":"as quickly as possible","target_text":"가능한 한 빨리"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0051L01B02","expect":{"known_text":"it's enjoyable","target_text":"즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0051L01B03","expect":{"known_text":"it's very enjoyable","target_text":"아주 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0051L02B02","expect":{"known_text":"doing interesting things","target_text":"재미있는 걸 하는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0051L02B03","expect":{"known_text":"doing interesting things is enjoyable","target_text":"재미있는 걸 하는 게 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0051L02B04","expect":{"known_text":"doing interesting things is good","target_text":"재미있는 걸 하는 게 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0051L03B02","expect":{"known_text":"with my friends","target_text":"친구들과"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0052L01B02","expect":{"known_text":"wanted to write","target_text":"쓰고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0052L01B03","expect":{"known_text":"he wanted to write","target_text":"그는 쓰고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0052L01B04","expect":{"known_text":"she wanted to write","target_text":"그녀는 쓰고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0052L02B02","expect":{"known_text":"last week","target_text":"지난주에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0052L03B02","expect":{"known_text":"a letter to his friend","target_text":"친구한테 편지를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0053L01B02","expect":{"known_text":"his letter","target_text":"그의 편지를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0053L02B02","expect":{"known_text":"wanted to put","target_text":"넣고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0053L03B02","expect":{"known_text":"in her bag","target_text":"자기 가방에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0054L01B02","expect":{"known_text":"wanted to give","target_text":"주고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0054L01B03","expect":{"known_text":"we wanted to give","target_text":"우리는 주고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0054L01B04","expect":{"known_text":"I wanted to give more","target_text":"더 주고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0054L02B02","expect":{"known_text":"time","target_text":"시간을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L01B02","expect":{"known_text":"don't enjoy","target_text":"즐겁지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L02B02","expect":{"known_text":"waking up","target_text":"일어나는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L02B03","expect":{"known_text":"waking up is not enjoyable","target_text":"일어나는 게 즐겁지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L02B04","expect":{"known_text":"waking up is enjoyable","target_text":"일어나는 게 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0055L03B02","expect":{"known_text":"when I didn't sleep very well","target_text":"잠을 잘 못 잤을 때"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0056L01B02","expect":{"known_text":"so it's enjoyable","target_text":"그래서 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0056L01B03","expect":{"known_text":"so it's like this","target_text":"그래서 이런 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0056L02B02","expect":{"known_text":"a few words","target_text":"단어 몇 개를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0056L03B02","expect":{"known_text":"how to say","target_text":"어떻게 말하는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0057L01B02","expect":{"known_text":"can't remember","target_text":"기억하지 못해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0057L01B03","expect":{"known_text":"I can't remember","target_text":"기억하지 못해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0057L01B04","expect":{"known_text":"she can't remember","target_text":"그녀는 기억하지 못해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0057L02B02","expect":{"known_text":"what I wanted to say","target_text":"말하고 싶었던 걸"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L01B01","expect":{"known_text":"it's interesting","target_text":"재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L01B02","expect":{"known_text":"Korean is interesting","target_text":"한국어는 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L01U03","expect":{"known_text":"it's very interesting","target_text":"아주 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L02B02","expect":{"known_text":"when you understand","target_text":"이해하면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L02B03","expect":{"known_text":"when you understand, it's interesting","target_text":"이해하면 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0058L03B02","expect":{"known_text":"enough words","target_text":"단어를 충분히"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0059L01B02","expect":{"known_text":"I know how to do","target_text":"어떻게 하는지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0059L02B02","expect":{"known_text":"what I need to do","target_text":"해야 하는 걸"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0059L02B03","expect":{"known_text":"I know how to do what I need to do","target_text":"해야 하는 걸 어떻게 하는지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0059L03B02","expect":{"known_text":"next week","target_text":"다음 주에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0060L01B03","expect":{"known_text":"she doesn't know","target_text":"그녀는 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0061L02B03","expect":{"known_text":"could you say that again","target_text":"그거 다시 말해 줄 수 있어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0062L01B01","expect":{"known_text":"I'm not sure","target_text":"모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0062L01B02","expect":{"known_text":"I'm not sure","target_text":"모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0062L01B03","expect":{"known_text":"I'm still not sure","target_text":"아직 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0062L01U05","expect":{"known_text":"but I'm not sure","target_text":"하지만 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0062L02B03","expect":{"known_text":"I'm not sure if I can help","target_text":"도와줄 수 있을지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0062L03B02","expect":{"known_text":"at the same time","target_text":"동시에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0063L02B02","expect":{"known_text":"helping me","target_text":"저를 도와주는 거"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0063L02B03","expect":{"known_text":"helping me is good","target_text":"저를 도와주는 거 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0064L01B02","expect":{"known_text":"isn't easy but","target_text":"쉽지 않지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L01B01","expect":{"known_text":"it's important","target_text":"중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L01B02","expect":{"known_text":"it's important","target_text":"중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L01U08","expect":{"known_text":"it's important","target_text":"중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L01B03","expect":{"known_text":"it's really important","target_text":"정말 중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L01U03","expect":{"known_text":"learning Korean is important","target_text":"한국어를 배우는 게 중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L02B02","expect":{"known_text":"to test yourself","target_text":"자신을 시험해 보는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L02B03","expect":{"known_text":"testing yourself is important","target_text":"자신을 시험해 보는 게 중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L02B04","expect":{"known_text":"testing yourself is interesting","target_text":"자신을 시험해 보는 게 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0065L03B02","expect":{"known_text":"to take time","target_text":"시간을 내서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L01B02","expect":{"known_text":"is not difficult","target_text":"어렵지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L01B03","expect":{"known_text":"learning Korean is not difficult","target_text":"한국어를 배우는 게 어렵지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L01B04","expect":{"known_text":"speaking Korean is not difficult","target_text":"한국어를 말하는 게 어렵지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L02B02","expect":{"known_text":"to find the answer","target_text":"답을 찾는 건"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L02B03","expect":{"known_text":"finding the answer is not difficult","target_text":"답을 찾는 건 어렵지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0066L02B04","expect":{"known_text":"finding the answer is important","target_text":"답을 찾는 건 중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0067L01B02","expect":{"known_text":"want to stop","target_text":"멈추고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0067L01B04","expect":{"known_text":"she wants to stop","target_text":"그녀는 멈추고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0069L01B02","expect":{"known_text":"didn't want to look after","target_text":"돌보고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0069L02B02","expect":{"known_text":"the young dog","target_text":"어린 개를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0069L02B03","expect":{"known_text":"he didn't want to look after the young dog","target_text":"그는 어린 개를 돌보고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0069L02B04","expect":{"known_text":"she is looking for the young dog","target_text":"그녀는 어린 개를 찾고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0069L03B02","expect":{"known_text":"all afternoon","target_text":"오후 내내"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0070L01B02","expect":{"known_text":"where it was","target_text":"그게 어디에 있었는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0070L01B03","expect":{"known_text":"he knows where it was","target_text":"그는 그게 어디에 있었는지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0070L01B04","expect":{"known_text":"I'm not sure where it was","target_text":"그게 어디에 있었는지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0070L02B02","expect":{"known_text":"didn't want to tell me","target_text":"저한테 말하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0070L02B03","expect":{"known_text":"he didn't want to tell me","target_text":"그는 저한테 말하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0070L02B04","expect":{"known_text":"she didn't want to tell me where it was","target_text":"그녀는 그게 어디에 있었는지 저한테 말하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0071L01B02","expect":{"known_text":"nobody knows","target_text":"아무도 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0071L01B03","expect":{"known_text":"nobody is here","target_text":"아무도 여기 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0071L02B02","expect":{"known_text":"the truth","target_text":"진실을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0071L02B03","expect":{"known_text":"nobody knows the truth","target_text":"아무도 진실을 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0071L02B04","expect":{"known_text":"he is looking for the truth","target_text":"그는 진실을 찾고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0073L01B01","expect":{"known_text":"thank you","target_text":"고마워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0073L01B02","expect":{"known_text":"thank you very much","target_text":"정말 고마워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0073L01U03","expect":{"known_text":"but thank you","target_text":"하지만 고마워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0073L02B02","expect":{"known_text":"still more to learn","target_text":"아직 더 배울 게 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0074L01B02","expect":{"known_text":"for helping me to understand","target_text":"이해하게 도와줘서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0074L01B03","expect":{"known_text":"thank you for helping me to understand","target_text":"이해하게 도와줘서 고마워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0074L01B04","expect":{"known_text":"thank you very much for helping me to understand","target_text":"이해하게 도와줘서 정말 고마워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0076L01B03","expect":{"known_text":"I'm happy","target_text":"기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0076L02B02","expect":{"known_text":"already learnt this much","target_text":"벌써 이렇게 많이 배워서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0077L01B01","expect":{"known_text":"I'm surprised","target_text":"놀라워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0077L01B02","expect":{"known_text":"I'm really surprised","target_text":"정말 놀라워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0078L01B02","expect":{"known_text":"don't understand","target_text":"이해 못 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0078L01B03","expect":{"known_text":"I don't understand","target_text":"이해 못 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0078L01B04","expect":{"known_text":"but I don't understand","target_text":"하지만 이해 못 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0078L02B02","expect":{"known_text":"what you said","target_text":"뭐라고 했는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0078L02B03","expect":{"known_text":"I don't understand what you said","target_text":"뭐라고 했는지 이해 못 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0078L02B04","expect":{"known_text":"he doesn't know what you said","target_text":"그는 뭐라고 했는지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0079L02B02","expect":{"known_text":"did you start to learn","target_text":"배우기 시작했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0079L02B04","expect":{"known_text":"she started to learn","target_text":"그녀는 배우기 시작했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0080L01B02","expect":{"known_text":"when I'll be ready","target_text":"언제 준비될지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0080L01B03","expect":{"known_text":"I'm not sure when I'll be ready","target_text":"언제 준비될지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0080L01B04","expect":{"known_text":"he doesn't know when he'll be ready","target_text":"그는 언제 준비될지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0081L01B02","expect":{"known_text":"want to start","target_text":"시작하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0081L01B03","expect":{"known_text":"I want to start now","target_text":"지금 시작하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0083L01B02","expect":{"known_text":"I agree","target_text":"동의해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0083L01B04","expect":{"known_text":"but I agree","target_text":"하지만 동의해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0083L02B02","expect":{"known_text":"about your friend","target_text":"친구에 대해"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0084L01B03","expect":{"known_text":"I don't agree","target_text":"동의하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0084L01B04","expect":{"known_text":"but I don't agree","target_text":"하지만 동의하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0084L02B02","expect":{"known_text":"what he said about my friend","target_text":"그가 제 친구에 대해 한 말에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0084L02B03","expect":{"known_text":"I don't agree with what he said about my friend","target_text":"그가 제 친구에 대해 한 말에 동의하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0084L02B04","expect":{"known_text":"she doesn't agree with what he said about my friend","target_text":"그녀는 그가 제 친구에 대해 한 말에 동의하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0085L01B02","expect":{"known_text":"those people","target_text":"그 사람들을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0085L01B04","expect":{"known_text":"she knows those people","target_text":"그녀는 그 사람들을 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0086L02B01","expect":{"known_text":"it wasn't possible","target_text":"가능하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0086L02B02","expect":{"known_text":"it wasn't possible","target_text":"가능하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0086L02B03","expect":{"known_text":"unfortunately it wasn't possible","target_text":"안타깝게도 가능하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0086L02U03","expect":{"known_text":"but it wasn't possible","target_text":"하지만 가능하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0087L01B02","expect":{"known_text":"people I don't know","target_text":"제가 모르는 사람들이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0087L01B03","expect":{"known_text":"they are people I don't know","target_text":"그들은 제가 모르는 사람들이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0087L01B04","expect":{"known_text":"but they are people I don't know","target_text":"하지만 그들은 제가 모르는 사람들이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0088L01B02","expect":{"known_text":"not ready to talk to","target_text":"말할 준비가 안 됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0088L02B02","expect":{"known_text":"to people I don't know yet","target_text":"아직 모르는 사람들한테"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0089L01B02","expect":{"known_text":"I've done a lot","target_text":"많이 했다고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0089L01B03","expect":{"known_text":"I think I've done a lot","target_text":"많이 했다고 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0089L01B04","expect":{"known_text":"she thinks I've done a lot","target_text":"그녀는 많이 했다고 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0089L02B02","expect":{"known_text":"in a short time","target_text":"짧은 시간에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0089L02B04","expect":{"known_text":"I think I've done a lot in a short time","target_text":"짧은 시간에 많이 했다고 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L01B01","expect":{"known_text":"if you can speak more slowly","target_text":"더 천천히 말할 수 있으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L01B02","expect":{"known_text":"if you can speak more slowly","target_text":"더 천천히 말할 수 있으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L01U02","expect":{"known_text":"but if you can speak more slowly","target_text":"하지만 더 천천히 말할 수 있으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L02B01","expect":{"known_text":"that would be great","target_text":"좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L02B02","expect":{"known_text":"that would be great","target_text":"좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L02B03","expect":{"known_text":"if you can speak more slowly that would be great","target_text":"더 천천히 말할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0090L02U03","expect":{"known_text":"that would be really great","target_text":"정말 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0091L01B02","expect":{"known_text":"difficult to think quickly","target_text":"빨리 생각하기 어려워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0091L01B03","expect":{"known_text":"it's difficult to think quickly","target_text":"빨리 생각하기 어려워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0091L01B04","expect":{"known_text":"but it's difficult to think quickly","target_text":"하지만 빨리 생각하기 어려워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0091L02B02","expect":{"known_text":"enough to answer in time","target_text":"제시간에 대답할 만큼"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0092L01B02","expect":{"known_text":"keep on doing this","target_text":"이걸 계속하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0092L01B03","expect":{"known_text":"I'd like to keep on doing this","target_text":"이걸 계속하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0092L02B02","expect":{"known_text":"for a while","target_text":"잠시 동안"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0092L02B04","expect":{"known_text":"I'd like to keep on doing this for a while","target_text":"잠시 동안 이걸 계속하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0093L01B01","expect":{"known_text":"it's time to go now","target_text":"이제 갈 시간이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0093L01B02","expect":{"known_text":"it's time to go now","target_text":"이제 갈 시간이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0093L01B03","expect":{"known_text":"but it's time to go now","target_text":"하지만 이제 갈 시간이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0093L01U05","expect":{"known_text":"so it's time to go now","target_text":"그래서 이제 갈 시간이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0094L01B02","expect":{"known_text":"the only way","target_text":"유일한 방법이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0094L01B03","expect":{"known_text":"this is the only way","target_text":"이게 유일한 방법이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0094L01B04","expect":{"known_text":"but it's the only way","target_text":"하지만 유일한 방법이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0094L02B02","expect":{"known_text":"it will work","target_text":"될 수 있는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0094L02B04","expect":{"known_text":"this is the only way it will work","target_text":"이게 될 수 있는 유일한 방법이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0094L02U05","expect":{"known_text":"this is the only way it will work","target_text":"이게 될 수 있는 유일한 방법이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0095L01B02","expect":{"known_text":"ready to go home","target_text":"집에 갈 준비됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0095L01B03","expect":{"known_text":"are you ready to go home","target_text":"집에 갈 준비됐어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0095L01B04","expect":{"known_text":"but are you ready to go home","target_text":"하지만 집에 갈 준비됐어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0095L02B02","expect":{"known_text":"on the next bus","target_text":"다음 버스로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L01B02","expect":{"known_text":"not ready yet","target_text":"아직 준비 안 됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L01B03","expect":{"known_text":"no I'm not ready yet","target_text":"아니요 아직 준비 안 됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L02B02","expect":{"known_text":"no I'm not ready yet","target_text":"아니요 아직 준비 안 됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L03B01","expect":{"known_text":"I need a little more time","target_text":"시간이 좀 더 필요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L03B02","expect":{"known_text":"I need a little more time","target_text":"시간이 좀 더 필요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L03B03","expect":{"known_text":"but I need a little more time","target_text":"하지만 시간이 좀 더 필요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0096L03U03","expect":{"known_text":"he needs a little more time","target_text":"그는 시간이 좀 더 필요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0097L01B02","expect":{"known_text":"yes I'm ready","target_text":"네 준비됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0097L01B03","expect":{"known_text":"yes I understand","target_text":"네 이해해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0098L01B02","expect":{"known_text":"should consider","target_text":"생각해 봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0098L02B02","expect":{"known_text":"playing something else","target_text":"다른 걸 할지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0098L02B03","expect":{"known_text":"I should consider playing something else","target_text":"다른 걸 할지 생각해 봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L01B02","expect":{"known_text":"should ask yourself","target_text":"자신한테 물어봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L01B03","expect":{"known_text":"you should ask yourself","target_text":"자신한테 물어봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L01U06","expect":{"known_text":"you should ask yourself","target_text":"자신한테 물어봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L01B04","expect":{"known_text":"but you should ask yourself","target_text":"하지만 자신한테 물어봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L02B02","expect":{"known_text":"why it's not working","target_text":"왜 안 되는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L02B03","expect":{"known_text":"you should ask yourself why it's not working","target_text":"왜 안 되는지 자신한테 물어봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0099L02B04","expect":{"known_text":"I don't know why it's not working","target_text":"왜 안 되는지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0100L01B02","expect":{"known_text":"shouldn't worry about","target_text":"걱정하면 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0100L01U06","expect":{"known_text":"you shouldn't worry","target_text":"걱정하면 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0100L02B02","expect":{"known_text":"doing something similar","target_text":"비슷한 걸 하는 것에 대해"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0101L01B02","expect":{"known_text":"finding out more about this language","target_text":"이 언어에 대해서 더 알아가는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0101L01B03","expect":{"known_text":"I'm enjoying finding out more about this language","target_text":"이 언어에 대해서 더 알아가는 게 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0102L01B02","expect":{"known_text":"it's not like that","target_text":"그렇지 않다고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0102L01B04","expect":{"known_text":"he says it's not like that","target_text":"그는 그렇지 않다고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0103L01B02","expect":{"known_text":"not trying to hear","target_text":"들으려고 하는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0103L01B03","expect":{"known_text":"we're not trying to hear","target_text":"우리는 들으려고 하는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0103L01B04","expect":{"known_text":"but we're not trying to hear","target_text":"하지만 우리는 들으려고 하는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0103L02B02","expect":{"known_text":"many more words","target_text":"더 많은 단어를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0104L01B02","expect":{"known_text":"need to change","target_text":"바꿔야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0104L01B04","expect":{"known_text":"but we need to change","target_text":"하지만 바꿔야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0104L01U07","expect":{"known_text":"we need to change","target_text":"바꿔야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0104L02B02","expect":{"known_text":"what we're doing","target_text":"우리가 하고 있는 걸"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0104L02B04","expect":{"known_text":"she doesn't know what we're doing","target_text":"그녀는 우리가 하고 있는 걸 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0105L01B02","expect":{"known_text":"didn't know the answer","target_text":"답을 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0105L01B03","expect":{"known_text":"he didn't know the answer","target_text":"그는 답을 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0105L01B04","expect":{"known_text":"that is why he didn't know the answer","target_text":"그래서 그는 답을 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0106L01B02","expect":{"known_text":"don't need to feel happy","target_text":"행복할 필요는 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0106L01B03","expect":{"known_text":"we don't need to feel happy","target_text":"행복할 필요는 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0106L01U08","expect":{"known_text":"we don't need to feel happy","target_text":"행복할 필요는 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0106L01B04","expect":{"known_text":"but we don't need to feel happy","target_text":"하지만 행복할 필요는 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0106L02B02","expect":{"known_text":"just need to work hard","target_text":"그냥 열심히 하면 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0106L02U07","expect":{"known_text":"we just need to work hard","target_text":"그냥 열심히 하면 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0107L01B02","expect":{"known_text":"hoped to see","target_text":"보고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0107L01B03","expect":{"known_text":"we hoped to see","target_text":"우리는 보고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0107L01B04","expect":{"known_text":"but we hoped to see","target_text":"하지만 보고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0107L02B02","expect":{"known_text":"what you were doing","target_text":"뭘 하고 있었는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0107L02B04","expect":{"known_text":"I don't know what you were doing","target_text":"뭘 하고 있었는지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0108L01B03","expect":{"known_text":"we didn't expect to wake up","target_text":"일어날 줄 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0108L01B04","expect":{"known_text":"but we didn't expect to wake up","target_text":"하지만 일어날 줄 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0108L02B02","expect":{"known_text":"in the middle of the night","target_text":"한밤중에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0109L01B02","expect":{"known_text":"must work hard","target_text":"열심히 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0109L01B04","expect":{"known_text":"but we must work hard","target_text":"하지만 열심히 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0109L01U05","expect":{"known_text":"we must work hard","target_text":"열심히 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0109L02B02","expect":{"known_text":"to learn a lot of new words","target_text":"새 단어를 많이 배우려면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0109L02U05","expect":{"known_text":"we must work hard to learn a lot of new words","target_text":"새 단어를 많이 배우려면 열심히 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L01B01","expect":{"known_text":"we're friends","target_text":"우리는 친구예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L01B02","expect":{"known_text":"we're friends","target_text":"우리는 친구예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L01U08","expect":{"known_text":"we're friends","target_text":"우리는 친구예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L01B03","expect":{"known_text":"but we're friends","target_text":"하지만 우리는 친구예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L01U06","expect":{"known_text":"and we're friends","target_text":"그리고 우리는 친구예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L02B01","expect":{"known_text":"after we finish I'd like to relax","target_text":"끝나면 쉬고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L02B02","expect":{"known_text":"after we finish I'd like to relax","target_text":"끝나면 쉬고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0110L02B03","expect":{"known_text":"but after we finish I'd like to relax","target_text":"하지만 끝나면 쉬고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L01B01","expect":{"known_text":"when we learn something new","target_text":"새로운 걸 배우면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L01B02","expect":{"known_text":"when we learn something new","target_text":"새로운 걸 배우면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L01B03","expect":{"known_text":"it's good when we learn something new","target_text":"새로운 걸 배우면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L01U03","expect":{"known_text":"but when we learn something new","target_text":"하지만 새로운 걸 배우면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L02B01","expect":{"known_text":"it changes our brain","target_text":"우리 뇌가 바뀌어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L02B02","expect":{"known_text":"it changes our brain","target_text":"우리 뇌가 바뀌어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L02B03","expect":{"known_text":"when we learn something new it changes our brain","target_text":"새로운 걸 배우면 우리 뇌가 바뀌어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0111L02U05","expect":{"known_text":"but it changes our brain","target_text":"하지만 우리 뇌가 바뀌어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0112L01B01","expect":{"known_text":"that was very interesting","target_text":"아주 재미있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0112L01B02","expect":{"known_text":"that was very interesting","target_text":"아주 재미있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0112L01U07","expect":{"known_text":"that was very interesting","target_text":"아주 재미있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0112L01U02","expect":{"known_text":"but that was very interesting","target_text":"하지만 아주 재미있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0112L02B02","expect":{"known_text":"wasn't expecting it","target_text":"예상하지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0112L02B03","expect":{"known_text":"I wasn't expecting it","target_text":"예상하지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0114L01B01","expect":{"known_text":"I feel as if I'm doing worse","target_text":"더 못하고 있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0114L01B02","expect":{"known_text":"I feel as if I'm doing worse","target_text":"더 못하고 있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0114L01B03","expect":{"known_text":"but I feel as if I'm doing worse","target_text":"하지만 더 못하고 있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0114L01U02","expect":{"known_text":"he feels as if he's doing worse","target_text":"그는 더 못하고 있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0114L02B02","expect":{"known_text":"today than yesterday","target_text":"오늘은 어제보다"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0115L01B02","expect":{"known_text":"don't feel as if I'm ready to have a conversation","target_text":"대화할 준비가 된 것 같지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0116L01B02","expect":{"known_text":"this isn't the best choice I could make","target_text":"이건 제가 할 수 있는 최고의 선택이 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0116L01U05","expect":{"known_text":"this isn't the best choice I could make","target_text":"이건 제가 할 수 있는 최고의 선택이 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0117L01B02","expect":{"known_text":"definitely doing better","target_text":"확실히 더 잘하고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0117L01B03","expect":{"known_text":"I'm definitely doing better","target_text":"확실히 더 잘하고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0117L01U07","expect":{"known_text":"I'm definitely doing better","target_text":"확실히 더 잘하고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0117L02B02","expect":{"known_text":"than last time we talked to each other","target_text":"저번에 서로 말했을 때보다"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0118L01B01","expect":{"known_text":"I feel better","target_text":"기분이 더 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0118L01B04","expect":{"known_text":"he feels better","target_text":"그는 기분이 더 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0119L02B02","expect":{"known_text":"before you leave","target_text":"떠나기 전에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0119L02B04","expect":{"known_text":"but before you leave","target_text":"하지만 떠나기 전에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0120L01B02","expect":{"known_text":"that you like to go by bus","target_text":"버스로 가는 걸 좋아하는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0120L01B03","expect":{"known_text":"it's interesting that you like to go by bus","target_text":"버스로 가는 걸 좋아하는 게 재미있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0121L01B02","expect":{"known_text":"it's unusual","target_text":"특이해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0121L01B03","expect":{"known_text":"but it's unusual","target_text":"하지만 특이해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0121L02B02","expect":{"known_text":"don't like to use your car","target_text":"차를 쓰는 걸 안 좋아하는 게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0122L02B03","expect":{"known_text":"it's starting to feel easier and I'm excited about how it's going","target_text":"더 쉬워지기 시작하고 있고 어떻게 되고 있는지 신나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0122L02U05","expect":{"known_text":"but I'm excited about how it's going","target_text":"하지만 어떻게 되고 있는지 신나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0123L01B03","expect":{"known_text":"I think that's a good idea","target_text":"그건 좋은 생각인 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0126L01B02","expect":{"known_text":"this work is changing","target_text":"이 일이 바꾸고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0126L02B02","expect":{"known_text":"the shape of my brain","target_text":"뇌의 모양을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0126L02B03","expect":{"known_text":"this work is changing the shape of my brain","target_text":"이 일이 뇌의 모양을 바꾸고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0128L01B02","expect":{"known_text":"like someone I used to know","target_text":"예전에 알던 사람 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0128L01B03","expect":{"known_text":"you're like someone I used to know","target_text":"예전에 알던 사람 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0128L01U07","expect":{"known_text":"you're like someone I used to know","target_text":"예전에 알던 사람 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0129L01B02","expect":{"known_text":"so happy that you're doing so well","target_text":"이렇게 잘하고 있어서 너무 기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0129L01B03","expect":{"known_text":"but I'm so happy that you're doing so well","target_text":"하지만 이렇게 잘하고 있어서 너무 기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L01B01","expect":{"known_text":"that was a surprise","target_text":"그건 놀라웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L01B02","expect":{"known_text":"that was a surprise","target_text":"그건 놀라웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L01B03","expect":{"known_text":"but that was a surprise","target_text":"하지만 그건 놀라웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L01U05","expect":{"known_text":"yes that was a surprise","target_text":"네 그건 놀라웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L02B01","expect":{"known_text":"because he's my friend","target_text":"그는 제 친구니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L02B02","expect":{"known_text":"because he's my friend","target_text":"그는 제 친구니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L02B03","expect":{"known_text":"that was a surprise because he's my friend","target_text":"그건 놀라웠어요, 그는 제 친구니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0130L02U03","expect":{"known_text":"but because he's my friend","target_text":"하지만 그는 제 친구니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0131L01B02","expect":{"known_text":"it's in my head","target_text":"머리에 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0131L02B02","expect":{"known_text":"there are too many ideas going around in my head","target_text":"머리에 생각이 너무 많아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0132L01B01","expect":{"known_text":"that's less exciting","target_text":"그건 덜 신나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0132L01B02","expect":{"known_text":"that's less exciting","target_text":"그건 덜 신나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0132L01B03","expect":{"known_text":"but that's less exciting","target_text":"하지만 그건 덜 신나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0132L01U03","expect":{"known_text":"so that's less exciting","target_text":"그래서 그건 덜 신나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0132L02B02","expect":{"known_text":"than what she was saying","target_text":"그녀가 말했던 것보다"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0133L01B02","expect":{"known_text":"get to know someone very well","target_text":"누군가를 아주 잘 알게 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0133L01B04","expect":{"known_text":"he gets to know someone very well","target_text":"그는 누군가를 아주 잘 알게 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0133L02B02","expect":{"known_text":"when you work together","target_text":"같이 일하면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0134L01B01","expect":{"known_text":"it's not a problem","target_text":"문제가 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0134L01B02","expect":{"known_text":"it's not a problem","target_text":"문제가 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0134L01B03","expect":{"known_text":"but it's not a problem","target_text":"하지만 문제가 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0134L01U03","expect":{"known_text":"that's not a problem","target_text":"그건 문제가 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0134L02B02","expect":{"known_text":"when you work at something difficult with them","target_text":"그들과 어려운 걸 같이 하면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0134L02B03","expect":{"known_text":"it's not a problem when you work at something difficult with them","target_text":"그들과 어려운 걸 같이 하면 문제가 안 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0135L01B01","expect":{"known_text":"I don't know","target_text":"모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0135L01B02","expect":{"known_text":"I don't know","target_text":"모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0135L01B03","expect":{"known_text":"but I don't know","target_text":"하지만 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0135L01U03","expect":{"known_text":"really I don't know","target_text":"정말 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0135L02B02","expect":{"known_text":"why you think that it's so good","target_text":"왜 그게 그렇게 좋다고 생각하는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0135L02B03","expect":{"known_text":"I don't know why you think that it's so good","target_text":"왜 그게 그렇게 좋다고 생각하는지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L01B01","expect":{"known_text":"of course","target_text":"물론"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L01B02","expect":{"known_text":"of course that's good","target_text":"물론 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L02B01","expect":{"known_text":"you can ask her","target_text":"그녀한테 물어봐도 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L02B02","expect":{"known_text":"you can ask her","target_text":"그녀한테 물어봐도 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L02B03","expect":{"known_text":"of course you can ask her","target_text":"물론 그녀한테 물어봐도 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L02U03","expect":{"known_text":"but you can ask her","target_text":"하지만 그녀한테 물어봐도 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L03B02","expect":{"known_text":"because she's my friend","target_text":"제 친구니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0136L03B04","expect":{"known_text":"of course because she's my friend","target_text":"물론 제 친구니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0137L01B02","expect":{"known_text":"more important to talk often","target_text":"자주 말하는 게 더 중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0137L02B02","expect":{"known_text":"than to be perfect","target_text":"완벽한 것보다"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0138L01B02","expect":{"known_text":"where my friend wanted to meet us","target_text":"친구가 우리를 만나고 싶어했던 곳이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0138L01B04","expect":{"known_text":"that's where my friend wanted to meet us","target_text":"그건 친구가 우리를 만나고 싶어했던 곳이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0138L02B02","expect":{"known_text":"this was where my friend wanted to meet us","target_text":"여기가 친구가 우리를 만나고 싶어했던 곳이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0138L02B03","expect":{"known_text":"here it's good","target_text":"여기가 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0139L01B01","expect":{"known_text":"I'm sorry","target_text":"미안해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0139L01B02","expect":{"known_text":"but I'm sorry","target_text":"하지만 미안해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0139L01U03","expect":{"known_text":"really I'm sorry","target_text":"정말 미안해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0139L02B02","expect":{"known_text":"that I need to leave so early","target_text":"이렇게 일찍 떠나야 해서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0139L02B03","expect":{"known_text":"I'm sorry that I need to leave so early","target_text":"이렇게 일찍 떠나야 해서 미안해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0140L01B02","expect":{"known_text":"can't see","target_text":"볼 수 없어서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0140L01B03","expect":{"known_text":"I'm sorry that I can't see","target_text":"볼 수 없어서 미안해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0140L02B02","expect":{"known_text":"what you're trying to show me","target_text":"보여주려는 걸"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L01B02","expect":{"known_text":"no problem","target_text":"문제없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L01B03","expect":{"known_text":"but no problem","target_text":"하지만 문제없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L01U03","expect":{"known_text":"really no problem","target_text":"정말 문제없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L02B01","expect":{"known_text":"everything is okay","target_text":"다 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L02B02","expect":{"known_text":"everything is okay","target_text":"다 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L02B03","expect":{"known_text":"no problem everything is okay","target_text":"문제없어요 다 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0141L02U03","expect":{"known_text":"but everything is okay","target_text":"하지만 다 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0142L01B02","expect":{"known_text":"that's very kind of you and","target_text":"아주 친절하시네요 그리고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0142L02B01","expect":{"known_text":"I'm grateful to you for helping","target_text":"도와줘서 감사해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0142L02B02","expect":{"known_text":"I'm grateful to you for helping","target_text":"도와줘서 감사해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0143L01B02","expect":{"known_text":"the same thing","target_text":"같은 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0143L01B04","expect":{"known_text":"that's the same thing","target_text":"그건 같은 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0143L02B02","expect":{"known_text":"as we were talking about earlier","target_text":"아까 말했던 것과"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0143L02B03","expect":{"known_text":"it's the same thing as we were talking about earlier","target_text":"아까 말했던 것과 같은 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0144L01B02","expect":{"known_text":"woke earlier","target_text":"일찍 일어났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0144L02B02","expect":{"known_text":"than I wanted to this morning","target_text":"오늘 아침에 원했던 것보다"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0145L01B01","expect":{"known_text":"why are you not happy","target_text":"왜 행복하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0145L01B02","expect":{"known_text":"why are you not happy","target_text":"왜 행복하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0145L01U02","expect":{"known_text":"but why are you not happy","target_text":"하지만 왜 행복하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0145L02B02","expect":{"known_text":"any more","target_text":"더 이상"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0145L02B04","expect":{"known_text":"why are you not happy any more","target_text":"왜 더 이상 행복하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0146L01B01","expect":{"known_text":"nothing seems to be working","target_text":"아무것도 안 되는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0146L01B02","expect":{"known_text":"nothing seems to be working","target_text":"아무것도 안 되는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0146L01B03","expect":{"known_text":"but nothing seems to be working","target_text":"하지만 아무것도 안 되는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0146L01U03","expect":{"known_text":"really nothing seems to be working","target_text":"정말 아무것도 안 되는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0146L02B02","expect":{"known_text":"since we tried to fix it","target_text":"고치려고 한 이후로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0147L01B01","expect":{"known_text":"she was very kind","target_text":"그녀는 아주 친절했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0147L01B02","expect":{"known_text":"she was very kind","target_text":"그녀는 아주 친절했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0147L01B03","expect":{"known_text":"but she was very kind","target_text":"하지만 그녀는 아주 친절했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0147L01U03","expect":{"known_text":"really she was very kind","target_text":"정말 그녀는 아주 친절했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0147L02B02","expect":{"known_text":"when she saw me feeling nervous","target_text":"제가 긴장하는 걸 봤을 때"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0148L01B01","expect":{"known_text":"he wasn't very patient","target_text":"그는 참을성이 별로 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0148L01B02","expect":{"known_text":"he wasn't very patient","target_text":"그는 참을성이 별로 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0148L01B03","expect":{"known_text":"but he wasn't very patient","target_text":"하지만 그는 참을성이 별로 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0148L01U03","expect":{"known_text":"really he wasn't patient","target_text":"정말 그는 참을성이 별로 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0148L02B02","expect":{"known_text":"when I couldn't answer","target_text":"제가 대답하지 못했을 때"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0149L02B03","expect":{"known_text":"this isn't very difficult, so I hope you'll finish soon","target_text":"이건 별로 어렵지 않으니까, 곧 끝나면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0150L01B01","expect":{"known_text":"can you tell me","target_text":"말해 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0150L01B02","expect":{"known_text":"can you tell me","target_text":"말해 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0150L01B03","expect":{"known_text":"but can you tell me","target_text":"하지만 말해 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0150L02B02","expect":{"known_text":"what your name is","target_text":"이름이 뭔지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0150L02B03","expect":{"known_text":"can you tell me what your name is","target_text":"이름이 뭔지 말해 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0151L01B02","expect":{"known_text":"wasn't what I was hoping","target_text":"바란 게 아니었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0151L02B02","expect":{"known_text":"would happen like that","target_text":"그렇게 되기를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0152L01B01","expect":{"known_text":"I would have done it differently","target_text":"다르게 했을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0152L01B02","expect":{"known_text":"I would have done it differently","target_text":"다르게 했을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0152L01B03","expect":{"known_text":"but I would have done it differently","target_text":"하지만 다르게 했을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0152L01U03","expect":{"known_text":"really I would have done it differently","target_text":"정말 다르게 했을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0152L02B02","expect":{"known_text":"if I had known what you wanted","target_text":"뭘 원했는지 알았더라면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0153L01B01","expect":{"known_text":"I wouldn't have said it","target_text":"말하지 않았을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0153L01B02","expect":{"known_text":"I wouldn't have said it","target_text":"말하지 않았을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0153L01B03","expect":{"known_text":"but I wouldn't have said it","target_text":"하지만 말하지 않았을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0153L01U03","expect":{"known_text":"really I wouldn't have said it","target_text":"정말 말하지 않았을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0153L02B02","expect":{"known_text":"in exactly the same way","target_text":"정확히 같은 방식으로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0153L02B03","expect":{"known_text":"I wouldn't have said it in exactly the same way","target_text":"정확히 같은 방식으로 말하지 않았을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0154L01B01","expect":{"known_text":"where do you want to meet","target_text":"어디에서 만나고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0154L01B02","expect":{"known_text":"where do you want to meet","target_text":"어디에서 만나고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0154L01B03","expect":{"known_text":"but where do you want to meet","target_text":"하지만 어디에서 만나고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0154L01U03","expect":{"known_text":"so where do you want to meet","target_text":"그래서 어디에서 만나고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0154L02B02","expect":{"known_text":"on Saturday night","target_text":"토요일 밤에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0154L02B03","expect":{"known_text":"where do you want to meet on Saturday night","target_text":"토요일 밤에 어디에서 만나고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0155L01B01","expect":{"known_text":"I don't mind waiting for a few minutes","target_text":"몇 분 기다리는 건 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0155L01B02","expect":{"known_text":"I don't mind waiting for a few minutes","target_text":"몇 분 기다리는 건 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0155L01B03","expect":{"known_text":"but I don't mind waiting for a few minutes","target_text":"하지만 몇 분 기다리는 건 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0155L02B02","expect":{"known_text":"tomorrow morning","target_text":"내일 아침에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0155L02B03","expect":{"known_text":"I don't mind waiting for a few minutes tomorrow morning","target_text":"내일 아침에 몇 분 기다리는 건 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0156L01B01","expect":{"known_text":"do you want to go to a restaurant","target_text":"식당에 가고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0156L01B02","expect":{"known_text":"do you want to go to a restaurant","target_text":"식당에 가고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0156L01B03","expect":{"known_text":"but do you want to go to a restaurant","target_text":"하지만 식당에 가고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0156L01U03","expect":{"known_text":"we want to go to a restaurant","target_text":"우리는 식당에 가고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0157L01B02","expect":{"known_text":"won't be able to be there","target_text":"거기에 있지 못할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0157L02B02","expect":{"known_text":"next month","target_text":"다음 달에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0158L01B01","expect":{"known_text":"let's talk about something else","target_text":"다른 것에 대해 이야기해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0158L01B02","expect":{"known_text":"let's talk about something else","target_text":"다른 것에 대해 이야기해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0158L01B03","expect":{"known_text":"but let's talk about something else","target_text":"하지만 다른 것에 대해 이야기해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0158L01U03","expect":{"known_text":"so let's talk about something else","target_text":"그래서 다른 것에 대해 이야기해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0159L01B01","expect":{"known_text":"that isn't what I'm trying to say","target_text":"그건 제가 말하려는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0159L01B02","expect":{"known_text":"that isn't what I'm trying to say","target_text":"그건 제가 말하려는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0159L01B03","expect":{"known_text":"but that isn't what I'm trying to say","target_text":"하지만 그건 제가 말하려는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0159L01U03","expect":{"known_text":"no that isn't what I'm trying to say","target_text":"아니요 그건 제가 말하려는 게 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0160L01B02","expect":{"known_text":"how do you say","target_text":"어떻게 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0160L02B02","expect":{"known_text":"this word in Korean","target_text":"이 단어를 한국어로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0160L02B03","expect":{"known_text":"how do you say this word in Korean","target_text":"이 단어를 한국어로 어떻게 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0161L01B01","expect":{"known_text":"can you give me that book","target_text":"그 책을 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0161L01B02","expect":{"known_text":"can you give me that book","target_text":"그 책을 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0161L01B03","expect":{"known_text":"but can you give me that book","target_text":"하지만 그 책을 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0161L01U03","expect":{"known_text":"really can you give me that book","target_text":"정말 그 책을 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0161L02B02","expect":{"known_text":"on Sunday morning","target_text":"일요일 아침에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0161L02B03","expect":{"known_text":"can you give me that book on Sunday morning","target_text":"일요일 아침에 그 책을 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0162L01B01","expect":{"known_text":"what do you think about that","target_text":"그거에 대해서 어떻게 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0162L01B02","expect":{"known_text":"what do you think about that","target_text":"그거에 대해서 어떻게 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0162L01B03","expect":{"known_text":"but what do you think about that","target_text":"하지만 그거에 대해서 어떻게 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0162L01U03","expect":{"known_text":"so what do you think about that","target_text":"그래서 그거에 대해서 어떻게 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0163L01B01","expect":{"known_text":"I think that it's interesting","target_text":"그건 재미있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0163L01B02","expect":{"known_text":"I think that it's interesting","target_text":"그건 재미있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0163L01U02","expect":{"known_text":"but I think that it's interesting","target_text":"하지만 그건 재미있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0164L01B02","expect":{"known_text":"an interesting book","target_text":"재미있는 책"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0165L01B02","expect":{"known_text":"not sure if it's true","target_text":"그게 사실인지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0166L01B01","expect":{"known_text":"my name is not very unusual","target_text":"제 이름은 별로 특이하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0166L01B02","expect":{"known_text":"my name is not very unusual","target_text":"제 이름은 별로 특이하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0166L01B04","expect":{"known_text":"really my name is not unusual","target_text":"정말 제 이름은 별로 특이하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0167L01B01","expect":{"known_text":"what do you need to do","target_text":"뭘 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0167L01B02","expect":{"known_text":"what do you need to do","target_text":"뭘 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0167L01B03","expect":{"known_text":"but what do you need to do","target_text":"하지만 뭘 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0167L01U03","expect":{"known_text":"so what do you need to do","target_text":"그래서 뭘 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0167L02B02","expect":{"known_text":"tomorrow afternoon","target_text":"내일 오후에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0167L02B03","expect":{"known_text":"what do you need to do tomorrow afternoon","target_text":"내일 오후에 뭘 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0168L01B01","expect":{"known_text":"I'll be able to come and help","target_text":"와서 도와줄 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0168L01B02","expect":{"known_text":"I'll be able to come and help","target_text":"와서 도와줄 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0168L01B03","expect":{"known_text":"but I'll be able to come and help","target_text":"하지만 와서 도와줄 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0168L02B02","expect":{"known_text":"and then later on","target_text":"그러면 나중에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0169L01B01","expect":{"known_text":"what do you want me to do","target_text":"제가 뭘 해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0169L01B02","expect":{"known_text":"what do you want me to do","target_text":"제가 뭘 해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0169L01B03","expect":{"known_text":"but what do you want me to do","target_text":"하지만 제가 뭘 해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0169L01U03","expect":{"known_text":"so what do you want me to do","target_text":"그래서 제가 뭘 해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0170L01B01","expect":{"known_text":"I'd like you to tell me","target_text":"말해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0170L01B02","expect":{"known_text":"I'd like you to tell me","target_text":"말해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0170L01B03","expect":{"known_text":"but I'd like you to tell me","target_text":"하지만 말해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0170L01U03","expect":{"known_text":"really I'd like you to tell me","target_text":"정말 말해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0170L02B02","expect":{"known_text":"what you need","target_text":"뭐가 필요한지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0170L02B03","expect":{"known_text":"I'd like you to tell me what you need","target_text":"뭐가 필요한지 말해 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0171L01B01","expect":{"known_text":"do you want me to help you look for it","target_text":"찾는 거 도와줄까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0171L01B02","expect":{"known_text":"do you want me to help you look for it","target_text":"찾는 거 도와줄까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0171L01B03","expect":{"known_text":"but shall I help you look for it","target_text":"하지만 찾는 거 도와줄까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0171L01U03","expect":{"known_text":"really shall I help look for it","target_text":"정말 찾는 거 도와줄까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0172L01B01","expect":{"known_text":"that would be very helpful","target_text":"아주 도움이 될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0172L01B02","expect":{"known_text":"that would be very helpful","target_text":"아주 도움이 될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0172L01B03","expect":{"known_text":"but that would be very helpful","target_text":"하지만 아주 도움이 될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0172L01U03","expect":{"known_text":"really that would be very helpful","target_text":"정말 아주 도움이 될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0172L02B02","expect":{"known_text":"yes then","target_text":"네 그러면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0172L02B04","expect":{"known_text":"yes then it's okay","target_text":"네 그러면 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0173L01B01","expect":{"known_text":"I can manage on my own","target_text":"혼자서 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0173L01B02","expect":{"known_text":"I can manage on my own","target_text":"혼자서 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0173L01B03","expect":{"known_text":"but I can manage on my own","target_text":"하지만 혼자서 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0173L01U03","expect":{"known_text":"really I can manage on my own","target_text":"정말 혼자서 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0173L02B02","expect":{"known_text":"no thank you","target_text":"아니요 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0174L01B01","expect":{"known_text":"can you understand what I'm saying","target_text":"제가 말하는 거 이해할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0174L01B02","expect":{"known_text":"can you understand what I'm saying","target_text":"제가 말하는 거 이해할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0174L01B03","expect":{"known_text":"but can you understand what I'm saying","target_text":"하지만 제가 말하는 거 이해할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0175L01B01","expect":{"known_text":"what do you want to do on Sunday morning","target_text":"일요일 아침에 뭘 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0175L01B02","expect":{"known_text":"what do you want to do on Sunday morning","target_text":"일요일 아침에 뭘 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0175L01B03","expect":{"known_text":"but what do you want to do on Sunday morning","target_text":"하지만 일요일 아침에 뭘 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0175L01U03","expect":{"known_text":"so what do you want to do on Sunday morning","target_text":"그래서 일요일 아침에 뭘 하고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0176L01B01","expect":{"known_text":"I'll ask him","target_text":"그한테 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0176L01B02","expect":{"known_text":"I'll ask him","target_text":"그한테 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0176L01B03","expect":{"known_text":"but I'll ask him","target_text":"하지만 그한테 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0176L01U03","expect":{"known_text":"so I'll ask him","target_text":"그래서 그한테 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0176L02B02","expect":{"known_text":"if he'll be able to help next year","target_text":"내년에 도와줄 수 있는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0177L01B01","expect":{"known_text":"I'll ask her where she wants to go","target_text":"그녀한테 어디에 가고 싶은지 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0177L01B02","expect":{"known_text":"I'll ask her where she wants to go","target_text":"그녀한테 어디에 가고 싶은지 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0177L01B03","expect":{"known_text":"but I'll ask her where she wants to go","target_text":"하지만 그녀한테 어디에 가고 싶은지 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0177L01U03","expect":{"known_text":"so I'll ask her where she wants to go","target_text":"그래서 그녀한테 어디에 가고 싶은지 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0178L01B01","expect":{"known_text":"I didn't have time","target_text":"시간이 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0178L01B02","expect":{"known_text":"I didn't have time","target_text":"시간이 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0178L01B03","expect":{"known_text":"but I didn't have time","target_text":"하지만 시간이 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0178L01U03","expect":{"known_text":"unfortunately I didn't have time","target_text":"안타깝게도 시간이 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0178L02B02","expect":{"known_text":"although I wanted to see you","target_text":"만나고 싶었지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0179L01B01","expect":{"known_text":"what are you going to do on Sunday afternoon","target_text":"일요일 오후에 뭘 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0179L01B02","expect":{"known_text":"what are you going to do on Sunday afternoon","target_text":"일요일 오후에 뭘 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0179L01B03","expect":{"known_text":"but what are you going to do on Sunday afternoon","target_text":"하지만 일요일 오후에 뭘 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0179L01U03","expect":{"known_text":"so what are you going to do on Sunday afternoon","target_text":"그래서 일요일 오후에 뭘 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0180L01B01","expect":{"known_text":"I'd like to read my book for a while","target_text":"잠시 동안 책을 읽고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0180L01B02","expect":{"known_text":"I'd like to read my book for a while","target_text":"잠시 동안 책을 읽고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0180L01B04","expect":{"known_text":"really I'd like to read my book","target_text":"정말 잠시 동안 책을 읽고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0183L01B01","expect":{"known_text":"I'm afraid I haven't seen them","target_text":"안타깝지만 못 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0183L01B02","expect":{"known_text":"I'm afraid I haven't seen them","target_text":"안타깝지만 못 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0183L01B03","expect":{"known_text":"really I'm afraid I haven't seen them","target_text":"정말 안타깝지만 못 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0183L01U03","expect":{"known_text":"so I'm afraid I haven't seen them","target_text":"그래서 안타깝지만 못 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0184L01B01","expect":{"known_text":"I saw them in the office a while ago","target_text":"아까 사무실에서 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0184L01B02","expect":{"known_text":"I saw them in the office a while ago","target_text":"아까 사무실에서 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0184L01B03","expect":{"known_text":"but I saw them in the office a while ago","target_text":"하지만 아까 사무실에서 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0185L01B01","expect":{"known_text":"I think you left them at work","target_text":"직장에 놓고 온 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0185L01B02","expect":{"known_text":"I think you left them at work","target_text":"직장에 놓고 온 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0185L01B03","expect":{"known_text":"but I think you left them at work","target_text":"하지만 직장에 놓고 온 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0185L01U03","expect":{"known_text":"really I think you left them at work","target_text":"정말 직장에 놓고 온 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0187L01B01","expect":{"known_text":"I'm happy so far","target_text":"지금까지는 행복해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0187L01B02","expect":{"known_text":"I'm happy so far","target_text":"지금까지는 행복해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0187L01B03","expect":{"known_text":"but I'm happy so far","target_text":"하지만 지금까지는 행복해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0187L01U03","expect":{"known_text":"really I'm happy so far","target_text":"정말 지금까지는 행복해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0188L01B01","expect":{"known_text":"I don't need to change","target_text":"바꿀 필요 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0188L01B02","expect":{"known_text":"I don't need to change","target_text":"바꿀 필요 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0188L01B03","expect":{"known_text":"but I don't need to change","target_text":"하지만 바꿀 필요 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0188L01U03","expect":{"known_text":"really I don't need to change","target_text":"정말 바꿀 필요 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0190L01B01","expect":{"known_text":"do you mind if I ask you some questions","target_text":"질문 몇 개 해도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0190L01B02","expect":{"known_text":"do you mind if I ask you some questions","target_text":"질문 몇 개 해도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0190L01B03","expect":{"known_text":"but do you mind if I ask some questions","target_text":"하지만 질문 몇 개 해도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0190L01U06","expect":{"known_text":"really do you mind if I ask some questions","target_text":"정말 질문 몇 개 해도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0191L01B01","expect":{"known_text":"I don't mind at all","target_text":"전혀 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0191L01B02","expect":{"known_text":"I don't mind at all","target_text":"전혀 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0191L01B03","expect":{"known_text":"but I don't mind at all","target_text":"하지만 전혀 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0191L01U03","expect":{"known_text":"really I don't mind at all","target_text":"정말 전혀 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0192L01B01","expect":{"known_text":"I'm busy tomorrow night","target_text":"내일 밤에 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0192L01B02","expect":{"known_text":"I'm busy tomorrow night","target_text":"내일 밤에 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0192L01B03","expect":{"known_text":"but I'm busy tomorrow night","target_text":"하지만 내일 밤에 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0192L01U03","expect":{"known_text":"unfortunately I'm busy tomorrow night","target_text":"안타깝게도 내일 밤에 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0193L01B01","expect":{"known_text":"I'm too busy today","target_text":"오늘 너무 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0193L01B02","expect":{"known_text":"I'm too busy today","target_text":"오늘 너무 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0193L01B03","expect":{"known_text":"but I'm too busy today","target_text":"하지만 오늘 너무 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0193L01U03","expect":{"known_text":"really I'm too busy today","target_text":"정말 오늘 너무 바빠요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0193L02B02","expect":{"known_text":"I'm sorry but","target_text":"미안하지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0195L01B01","expect":{"known_text":"I'm trying to find the money I left on the table","target_text":"탁자 위에 놓고 온 돈을 찾으려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0195L01B02","expect":{"known_text":"I'm trying to find the money I left on the table","target_text":"탁자 위에 놓고 온 돈을 찾으려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0195L01B03","expect":{"known_text":"but I'm trying to find the money I left on the table","target_text":"하지만 탁자 위에 놓고 온 돈을 찾으려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0195L01U03","expect":{"known_text":"really I'm trying to find the money I left on the table","target_text":"정말 탁자 위에 놓고 온 돈을 찾으려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0197L01B01","expect":{"known_text":"my son works as a teacher","target_text":"제 아들은 선생님으로 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0197L01B02","expect":{"known_text":"my son works as a teacher","target_text":"제 아들은 선생님으로 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0197L01B03","expect":{"known_text":"but my son works as a teacher","target_text":"하지만 제 아들은 선생님으로 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0197L01U03","expect":{"known_text":"really my son works as a teacher","target_text":"정말 제 아들은 선생님으로 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0198L01B01","expect":{"known_text":"my daughter works for the council","target_text":"제 딸은 구청에서 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0198L01B02","expect":{"known_text":"my daughter works for the council","target_text":"제 딸은 구청에서 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0198L01B03","expect":{"known_text":"but my daughter works for the council","target_text":"하지만 제 딸은 구청에서 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0198L01U03","expect":{"known_text":"really my daughter works for the council","target_text":"정말 제 딸은 구청에서 일해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0199L01B01","expect":{"known_text":"my friend used to work in an office","target_text":"제 친구는 사무실에서 일했었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0199L01B02","expect":{"known_text":"my friend used to work in an office","target_text":"제 친구는 사무실에서 일했었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0199L01B03","expect":{"known_text":"but my friend used to work in an office","target_text":"하지만 제 친구는 사무실에서 일했었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0199L01U03","expect":{"known_text":"really my friend used to work in an office","target_text":"정말 제 친구는 사무실에서 일했었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0200L01B02","expect":{"known_text":"want to make sure that we finish everything in time","target_text":"우리가 제시간에 다 끝내는지 확인하고 싶다고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0201L01B01","expect":{"known_text":"we wanted to know what was going to happen","target_text":"무슨 일이 일어날지 알고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0201L01B02","expect":{"known_text":"we wanted to know what was going to happen","target_text":"무슨 일이 일어날지 알고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0201L01B03","expect":{"known_text":"but we wanted to know what was going to happen","target_text":"하지만 무슨 일이 일어날지 알고 싶었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0202L01B01","expect":{"known_text":"nobody was sure how to answer the question","target_text":"아무도 질문에 어떻게 대답해야 하는지 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0202L01B02","expect":{"known_text":"nobody was sure how to answer the question","target_text":"아무도 질문에 어떻게 대답해야 하는지 몰랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0203L01B01","expect":{"known_text":"what would you do if I asked you to help me","target_text":"제가 도와달라고 하면 어떻게 하겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0203L01B02","expect":{"known_text":"what would you do if I asked you to help me","target_text":"제가 도와달라고 하면 어떻게 하겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0205L01B01","expect":{"known_text":"I've forgotten the word I was trying to say","target_text":"말하려고 했던 단어를 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0205L01B02","expect":{"known_text":"I've forgotten the word I was trying to say","target_text":"말하려고 했던 단어를 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0206L01B01","expect":{"known_text":"I enjoy the chance to practise speaking with you","target_text":"같이 말하는 연습을 할 기회가 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0206L01B02","expect":{"known_text":"I enjoy the chance to practise speaking with you","target_text":"같이 말하는 연습을 할 기회가 즐거워요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0207L01B01","expect":{"known_text":"you've done what you needed to do","target_text":"해야 했던 걸 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0207L01U02","expect":{"known_text":"but you've done what you needed to do","target_text":"하지만 해야 했던 걸 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0208L01B02","expect":{"known_text":"I didn't want to ask you how to say it","target_text":"어떻게 말하는지 물어보고 싶지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0209L01B01","expect":{"known_text":"they want to spend more time meeting as a group","target_text":"그들은 같이 모여서 더 많은 시간을 보내고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0209L01B02","expect":{"known_text":"they want to spend more time meeting as a group","target_text":"그들은 같이 모여서 더 많은 시간을 보내고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0210L01B03","expect":{"known_text":"but they think we need to discuss the problem","target_text":"하지만 그들은 우리가 문제를 논의해야 한다고 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0211L01B02","expect":{"known_text":"they told us they didn't want to explain","target_text":"설명하고 싶지 않다고 우리한테 말했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0212L01B02","expect":{"known_text":"they wanted to ask for help","target_text":"그들은 도움을 요청하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0212L01B03","expect":{"known_text":"but they wanted to ask for help","target_text":"하지만 그들은 도움을 요청하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0212L01U03","expect":{"known_text":"really they wanted to ask for help","target_text":"정말 그들은 도움을 요청하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0213L01B02","expect":{"known_text":"we don't know what they're trying to achieve","target_text":"그들이 뭘 이루려고 하는지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0213L01B03","expect":{"known_text":"but we don't know what they're trying to achieve","target_text":"하지만 그들이 뭘 이루려고 하는지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0214L01B02","expect":{"known_text":"did you have a good time at the weekend","target_text":"주말에 즐거운 시간 보냈어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0215L01B02","expect":{"known_text":"I went out on Saturday night","target_text":"토요일 밤에 나갔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0215L01B03","expect":{"known_text":"but I went out on Saturday night","target_text":"하지만 토요일 밤에 나갔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0215L01U03","expect":{"known_text":"really I went out on Saturday night","target_text":"정말 토요일 밤에 나갔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0216L01B02","expect":{"known_text":"I saw a few friends","target_text":"친구 몇 명을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0216L01B03","expect":{"known_text":"but I saw a few friends","target_text":"하지만 친구 몇 명을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0216L01U03","expect":{"known_text":"really I saw a few friends","target_text":"정말 친구 몇 명을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0217L01B02","expect":{"known_text":"I had a glass or two of water","target_text":"물 한두 잔 마셨어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0217L01B03","expect":{"known_text":"but I had a glass or two of water","target_text":"하지만 물 한두 잔 마셨어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0218L01B02","expect":{"known_text":"I didn't do much on Sunday","target_text":"일요일에 별로 안 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0218L01B03","expect":{"known_text":"but I didn't do much on Sunday","target_text":"하지만 일요일에 별로 안 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0219L01B02","expect":{"known_text":"it was nice to relax for a while","target_text":"잠시 쉬니까 좋았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0219L01B04","expect":{"known_text":"really it was nice to relax","target_text":"정말 잠시 쉬니까 좋았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0220L01B01","expect":{"known_text":"did you watch a bit of television","target_text":"TV를 좀 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0220L01B03","expect":{"known_text":"but did you watch a bit of television","target_text":"하지만 TV를 좀 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0221L01B02","expect":{"known_text":"I watched the football and then I watched a film","target_text":"축구를 보고 그 다음에 영화를 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0221L01U03","expect":{"known_text":"really I watched football and then a film","target_text":"정말 축구를 보고 그 다음에 영화를 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0222L01B01","expect":{"known_text":"he's trying to tell me what he wants","target_text":"그는 뭘 원하는지 말하려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0223L01B02","expect":{"known_text":"he's going to ask you tomorrow","target_text":"그는 내일 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0224L01B02","expect":{"known_text":"he's just started to learn","target_text":"그는 막 배우기 시작했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0224L01B03","expect":{"known_text":"but he's just started to learn","target_text":"하지만 그는 막 배우기 시작했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0225L01B02","expect":{"known_text":"he would give you an answer if he could","target_text":"그는 할 수 있다면 답을 줄 텐데요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0225L01B03","expect":{"known_text":"but he would give an answer if he could","target_text":"하지만 그는 할 수 있다면 답을 줄 텐데요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0226L01B01","expect":{"known_text":"the man is trying to help me","target_text":"그 남자가 도와주려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0226L01B04","expect":{"known_text":"really the man is trying to help","target_text":"정말 그 남자가 도와주려고 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0227L01B02","expect":{"known_text":"that man is going to tell me something new","target_text":"그 남자가 새로운 거 말해 줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0228L01B02","expect":{"known_text":"that man has just started to practise speaking","target_text":"그 남자는 막 말하기 연습을 시작했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0229L01B02","expect":{"known_text":"that woman would help you if she could","target_text":"그 여자는 할 수 있다면 도와줄 텐데요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0230L01B02","expect":{"known_text":"I know a young man who wants to work with you","target_text":"같이 일하고 싶어하는 젊은 남자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0231L01B01","expect":{"known_text":"I know an old man who wanted to ask for help","target_text":"도움을 요청하고 싶어했던 늙은 남자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0231L01B02","expect":{"known_text":"I know an old man who wanted to ask for help","target_text":"도움을 요청하고 싶어했던 늙은 남자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0232L01B01","expect":{"known_text":"I know an old woman who can remember the answer","target_text":"답을 기억할 수 있는 나이 든 여자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0232L01B02","expect":{"known_text":"I know an old woman who can remember the answer","target_text":"답을 기억할 수 있는 나이 든 여자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0233L01B01","expect":{"known_text":"I know a young woman who knows your sister","target_text":"여동생을 아는 젊은 여자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0233L01B02","expect":{"known_text":"I know a young woman who knows your sister","target_text":"여동생을 아는 젊은 여자를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0234L01B01","expect":{"known_text":"I met someone last night who works with your brother","target_text":"어젯밤에 남동생과 같이 일하는 사람을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0234L01B02","expect":{"known_text":"I met someone last night who works with your brother","target_text":"어젯밤에 남동생과 같이 일하는 사람을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0235L01B02","expect":{"known_text":"I met someone who said he wanted to tell you something","target_text":"뭔가 말하고 싶다고 한 사람을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0235L01B03","expect":{"known_text":"but I met someone who said","target_text":"하지만 뭔가 말하고 싶다고 한 사람을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0235L01B04","expect":{"known_text":"really I met someone who said","target_text":"정말 뭔가 말하고 싶다고 한 사람을 만났어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0236L01B01","expect":{"known_text":"I know someone who said she was going to try to help","target_text":"도와주려고 할 거라고 한 사람을 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0236L01U02","expect":{"known_text":"but I know someone who said she was going to try to help","target_text":"하지만 도와주려고 할 거라고 한 사람을 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0238L01B01","expect":{"known_text":"he wanted you to tell me yesterday","target_text":"그는 어제 말해 주길 바랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0238L01B02","expect":{"known_text":"he wanted you to tell me yesterday","target_text":"그는 어제 말해 주길 바랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0238L01B04","expect":{"known_text":"unfortunately he wanted you to tell me","target_text":"안타깝게도 그는 어제 말해 주길 바랐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0239L01B01","expect":{"known_text":"my mother likes to read","target_text":"제 어머니는 읽는 것을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0239L01B02","expect":{"known_text":"my mother likes to read","target_text":"제 어머니는 읽는 것을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0239L01B03","expect":{"known_text":"but my mother likes to read","target_text":"하지만 제 어머니는 읽는 것을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0239L01U03","expect":{"known_text":"of course my mother likes to read","target_text":"물론 제 어머니는 읽는 것을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0240L01B01","expect":{"known_text":"my father doesn't like to stop talking","target_text":"제 아버지는 말하는 걸 멈추는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0240L01B02","expect":{"known_text":"my father doesn't like to stop talking","target_text":"제 아버지는 말하는 걸 멈추는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0240L01B04","expect":{"known_text":"unfortunately my father doesn't like to stop","target_text":"안타깝게도 제 아버지는 말하는 걸 멈추는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0241L01B01","expect":{"known_text":"I don't want to give it to him","target_text":"그한테 주고 싶지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0241L01B02","expect":{"known_text":"I don't want to give it to him","target_text":"그한테 주고 싶지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0241L01B03","expect":{"known_text":"but I don't want to give it to him","target_text":"하지만 그한테 주고 싶지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0242L01B01","expect":{"known_text":"I want to give her more time","target_text":"그녀한테 시간을 더 주고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0242L01B02","expect":{"known_text":"I want to give her more time","target_text":"그녀한테 시간을 더 주고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0242L01B03","expect":{"known_text":"but I want to give her more time","target_text":"하지만 그녀한테 시간을 더 주고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0242L01U03","expect":{"known_text":"of course I want to give her more time","target_text":"물론 그녀한테 시간을 더 주고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0243L01B01","expect":{"known_text":"I'm going to ask for the same thing to eat","target_text":"같은 걸 달라고 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0243L01B02","expect":{"known_text":"I'm going to ask for the same thing to eat","target_text":"같은 걸 달라고 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0243L01B04","expect":{"known_text":"of course I'm going to ask for the same","target_text":"물론 같은 걸 달라고 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0244L01B01","expect":{"known_text":"I've learnt a lot already","target_text":"벌써 많이 배웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0244L01B02","expect":{"known_text":"I've learnt a lot already","target_text":"벌써 많이 배웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0244L01B03","expect":{"known_text":"but I've learnt a lot already","target_text":"하지만 벌써 많이 배웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0245L01B01","expect":{"known_text":"I'm happy with how much I've done in a short time","target_text":"짧은 시간에 이만큼 해서 기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0245L01B02","expect":{"known_text":"I'm happy with how much I've done in a short time","target_text":"짧은 시간에 이만큼 해서 기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0245L01B03","expect":{"known_text":"but I'm happy with how much I've done","target_text":"하지만 짧은 시간에 이만큼 해서 기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0245L01U03","expect":{"known_text":"of course I'm happy with how much I've done","target_text":"물론 짧은 시간에 이만큼 해서 기뻐요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0246L01B02","expect":{"known_text":"she was too busy","target_text":"너무 바빴어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0247L01B01","expect":{"known_text":"I thought that book was fairly good","target_text":"그 책이 꽤 좋았다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0247L01B02","expect":{"known_text":"I thought that book was fairly good","target_text":"그 책이 꽤 좋았다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0247L01B03","expect":{"known_text":"but I thought that book was fairly good","target_text":"하지만 그 책이 꽤 좋았다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0248L01B03","expect":{"known_text":"I thought the film was complete rubbish","target_text":"그 영화는 완전 쓰레기라고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0248L02B02","expect":{"known_text":"I want my money back","target_text":"돈을 돌려받고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0248L02B03","expect":{"known_text":"but I want my money back","target_text":"하지만 돈을 돌려받고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0248L02B04","expect":{"known_text":"of course I want my money back","target_text":"물론 돈을 돌려받고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0249L01B01","expect":{"known_text":"I want you to help me before you go","target_text":"가기 전에 도와주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0249L01B02","expect":{"known_text":"I want you to help me before you go","target_text":"가기 전에 도와주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0249L01B03","expect":{"known_text":"but I want you to help me before you go","target_text":"하지만 가기 전에 도와주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0250L01B01","expect":{"known_text":"can you tell me something else before I answer","target_text":"제가 대답하기 전에 다른 것도 말해 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0250L01B02","expect":{"known_text":"can you tell me something else before I answer","target_text":"제가 대답하기 전에 다른 것도 말해 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0251L01B01","expect":{"known_text":"I don't want to find out until after we finish","target_text":"끝난 후까지 알고 싶지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0252L01B01","expect":{"known_text":"when will you be ready to start","target_text":"언제 시작할 준비가 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0252L01B03","expect":{"known_text":"but when will you be ready to start","target_text":"하지만 언제 시작할 준비가 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0252L01U08","expect":{"known_text":"really when will you be ready to start","target_text":"정말 언제 시작할 준비가 돼요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0253L01B02","expect":{"known_text":"I should be ready in a few minutes","target_text":"몇 분 안에 준비될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0253L01B03","expect":{"known_text":"but I should be ready in a few minutes","target_text":"하지만 몇 분 안에 준비될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0253L01U08","expect":{"known_text":"really I should be ready in a few minutes","target_text":"정말 몇 분 안에 준비될 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0254L01B01","expect":{"known_text":"I've been ready since this morning","target_text":"오늘 아침부터 준비됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0254L01B03","expect":{"known_text":"but I've been ready since this morning","target_text":"하지만 오늘 아침부터 준비됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0254L01U08","expect":{"known_text":"really I've been ready since this morning","target_text":"정말 오늘 아침부터 준비됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0255L01B01","expect":{"known_text":"when do you think you'll be ready to leave","target_text":"언제쯤 떠날 준비가 될 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0256L01B01","expect":{"known_text":"I think I'll be ready in less than an hour","target_text":"한 시간도 안 돼서 준비될 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0256L01B03","expect":{"known_text":"but I think I'll be ready in less than an hour","target_text":"하지만 한 시간도 안 돼서 준비될 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0257L01B01","expect":{"known_text":"I like that blue thing","target_text":"그 파란 거 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0257L01U02","expect":{"known_text":"but I like that blue thing","target_text":"하지만 그 파란 거 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0258L01B01","expect":{"known_text":"what's that blue thing over there","target_text":"저기 그 파란 것은 뭐예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0258L01B03","expect":{"known_text":"but what's that blue thing over there","target_text":"하지만 저기 그 파란 것은 뭐예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0258L01U08","expect":{"known_text":"really what's that blue thing over there","target_text":"정말 저기 그 파란 것은 뭐예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0259L01B03","expect":{"known_text":"but an idea","target_text":"하지만 생각이요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0259L01U03","expect":{"known_text":"a good idea","target_text":"좋은 생각이요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0260L01B03","expect":{"known_text":"but I don't have the faintest idea","target_text":"하지만 전혀 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0260L01B04","expect":{"known_text":"really I don't have the faintest idea","target_text":"정말 전혀 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0261L01B01","expect":{"known_text":"I think it might be something important","target_text":"중요한 거일 수도 있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0262L01B01","expect":{"known_text":"who was that man you were talking to yesterday","target_text":"어제 이야기하고 있던 그 남자는 누구였어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0263L01B01","expect":{"known_text":"I don't know who you mean","target_text":"누구를 말하는지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0263L01B03","expect":{"known_text":"but I don't know who you mean","target_text":"하지만 누구를 말하는지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0263L01U08","expect":{"known_text":"really I don't know who you mean","target_text":"정말 누구를 말하는지 모르겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0264L01B01","expect":{"known_text":"an old man","target_text":"나이 든 남자"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0264L01B03","expect":{"known_text":"that old man","target_text":"그 나이 든 남자"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0266L01B01","expect":{"known_text":"he was an old friend of my father","target_text":"그는 제 아버지의 오래된 친구였어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0266L01B03","expect":{"known_text":"but he was an old friend of my father","target_text":"하지만 그는 제 아버지의 오래된 친구였어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0266L01U06","expect":{"known_text":"really he was an old friend of my father","target_text":"정말 그는 제 아버지의 오래된 친구였어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0267L01B01","expect":{"known_text":"have you heard from your friend","target_text":"친구한테서 연락 받았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0267L01B03","expect":{"known_text":"but have you heard from your friend","target_text":"하지만 친구한테서 연락 받았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0269L01B01","expect":{"known_text":"why don't you want to wait for your father","target_text":"왜 아버지를 기다리고 싶지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0270L01B01","expect":{"known_text":"because I'm worried that I'm going to be late","target_text":"늦을까 봐 걱정돼서요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0270L01B03","expect":{"known_text":"but I'm worried that I'm going to be late","target_text":"하지만 늦을까 봐 걱정돼서요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0270L01U08","expect":{"known_text":"really I'm worried that I'm going to be late","target_text":"정말 늦을까 봐 걱정돼서요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0271L01B02","expect":{"known_text":"would you like to come with us next month","target_text":"다음 달에 우리와 같이 오고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0271L01U01","expect":{"known_text":"would you like to come with us next month?","target_text":"다음 달에 우리와 같이 오고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0272L01B01","expect":{"known_text":"yes that sounds like a great idea","target_text":"네 아주 좋은 생각인 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0272L01B02","expect":{"known_text":"yes that sounds like a great idea","target_text":"네 아주 좋은 생각인 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0272L01U02","expect":{"known_text":"but yes that sounds like a great idea","target_text":"하지만 네 아주 좋은 생각인 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0273L01B01","expect":{"known_text":"no unfortunately I've got too much work","target_text":"아니요 안타깝게도 일이 너무 많아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0273L01B02","expect":{"known_text":"no unfortunately I've got too much work","target_text":"아니요 안타깝게도 일이 너무 많아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0274L01B01","expect":{"known_text":"do you have to leave in a few days","target_text":"며칠 안에 떠나야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0274L01B02","expect":{"known_text":"do you have to leave in a few days","target_text":"며칠 안에 떠나야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0274L01B03","expect":{"known_text":"but do you have to leave in a few days","target_text":"하지만 며칠 안에 떠나야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0275L01B02","expect":{"known_text":"longer","target_text":"더 오래"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0276L01B01","expect":{"known_text":"no I can stay here for a little longer","target_text":"아니요 조금 더 여기 있을 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0276L01B02","expect":{"known_text":"no I can stay here for a little longer","target_text":"아니요 조금 더 여기 있을 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0277L01B01","expect":{"known_text":"yes I've got an important meeting early next week","target_text":"네 다음 주 초에 중요한 회의가 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0277L01B02","expect":{"known_text":"yes I've got an important meeting early next week","target_text":"네 다음 주 초에 중요한 회의가 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0278L01B01","expect":{"known_text":"did you have to finish everything last night","target_text":"어젯밤에 다 끝내야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0278L01B02","expect":{"known_text":"did you have to finish everything last night","target_text":"어젯밤에 다 끝내야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0279L01B01","expect":{"known_text":"yes because there wasn't much time left","target_text":"네 시간이 별로 안 남았으니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0279L01B02","expect":{"known_text":"yes because there wasn't much time left","target_text":"네 시간이 별로 안 남았으니까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0280L01B01","expect":{"known_text":"no I only had to do the most important job","target_text":"아니요 제일 중요한 일만 하면 됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0280L01B02","expect":{"known_text":"no I only had to do the most important job","target_text":"아니요 제일 중요한 일만 하면 됐어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0281L01B01","expect":{"known_text":"do you mind if I finish my coffee before you start","target_text":"시작하기 전에 커피를 다 마셔도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0281L01B02","expect":{"known_text":"do you mind if I finish my coffee before you start","target_text":"시작하기 전에 커피를 다 마셔도 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0282L01B02","expect":{"known_text":"no that's not a problem","target_text":"아니요 문제 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0282L01U01","expect":{"known_text":"no that's not a problem","target_text":"아니요 문제 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0283L01B01","expect":{"known_text":"which of your friends speak Korean","target_text":"친구들 중에 누가 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0283L01B02","expect":{"known_text":"which of your friends speak Korean","target_text":"친구들 중에 누가 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0283L01B03","expect":{"known_text":"but which of your friends speak Korean","target_text":"하지만 친구들 중에 누가 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0284L01B01","expect":{"known_text":"do you know my sister's friend","target_text":"제 여동생 친구를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0284L01B02","expect":{"known_text":"do you know my sister's friend","target_text":"제 여동생 친구를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0284L01B03","expect":{"known_text":"but do you know my sister's friend","target_text":"하지만 제 여동생 친구를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0285L01B01","expect":{"known_text":"she speaks Korean","target_text":"그녀는 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0285L01B02","expect":{"known_text":"she speaks Korean","target_text":"그녀는 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0285L01B03","expect":{"known_text":"but she speaks Korean","target_text":"하지만 그녀는 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0285L01U08","expect":{"known_text":"really she speaks Korean","target_text":"정말 그녀는 한국어를 말해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0287L01B02","expect":{"known_text":"how many people do you know who like watching television","target_text":"TV 보는 것을 좋아하는 사람을 몇 명이나 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0287L01U01","expect":{"known_text":"how many people do you know who like watching television","target_text":"TV 보는 것을 좋아하는 사람을 몇 명이나 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0288L01B01","expect":{"known_text":"most people I know like watching television","target_text":"제가 아는 대부분의 사람들은 TV 보는 것을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0288L01B02","expect":{"known_text":"most people I know like watching television","target_text":"제가 아는 대부분의 사람들은 TV 보는 것을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0289L01B01","expect":{"known_text":"I wonder if she's going to be there this afternoon","target_text":"그녀가 오늘 오후에 거기 있을지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0289L01B02","expect":{"known_text":"I wonder if she's going to be there this afternoon","target_text":"그녀가 오늘 오후에 거기 있을지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0289L01B04","expect":{"known_text":"really I wonder if she's going to be there","target_text":"정말 그녀가 오늘 오후에 거기 있을지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0290L01B01","expect":{"known_text":"I wonder if he knows the answer","target_text":"그가 답을 알고 있는지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0290L01B02","expect":{"known_text":"I wonder if he knows the answer","target_text":"그가 답을 알고 있는지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0290L01B03","expect":{"known_text":"but I wonder if he knows the answer","target_text":"하지만 그가 답을 알고 있는지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0290L01U08","expect":{"known_text":"really I wonder if he knows the answer","target_text":"정말 그가 답을 알고 있는지 궁금해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0291L01B01","expect":{"known_text":"I hope I'll be able to speak better soon","target_text":"곧 더 잘 말할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0291L01B02","expect":{"known_text":"I hope I'll be able to speak better soon","target_text":"곧 더 잘 말할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0292L01B01","expect":{"known_text":"I hope you'll be able to come to the party","target_text":"파티에 올 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0292L01B02","expect":{"known_text":"I hope you'll be able to come to the party","target_text":"파티에 올 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0293L01B01","expect":{"known_text":"I have to find out where he's going to meet me","target_text":"그가 어디서 만날 건지 알아내야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0293L01B02","expect":{"known_text":"I have to find out where he's going to meet me","target_text":"그가 어디서 만날 건지 알아내야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0294L01B01","expect":{"known_text":"I don't have enough time to call you tonight","target_text":"오늘 밤에 전화할 시간이 충분하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0294L01B02","expect":{"known_text":"I don't have enough time to call you tonight","target_text":"오늘 밤에 전화할 시간이 충분하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0295L01B01","expect":{"known_text":"I didn't say that I wanted to finish in a day","target_text":"하루 만에 끝내고 싶다고 말한 적 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0295L01B02","expect":{"known_text":"I didn't say that I wanted to finish in a day","target_text":"하루 만에 끝내고 싶다고 말한 적 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0296L01B01","expect":{"known_text":"I said that I needed a little more time","target_text":"시간이 조금 더 필요하다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0296L01B02","expect":{"known_text":"I said that I needed a little more time","target_text":"시간이 조금 더 필요하다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0297L01B01","expect":{"known_text":"I don't know many people who speak Korean","target_text":"한국어를 말하는 사람을 많이 알지 못해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0297L01B02","expect":{"known_text":"I don't know many people who speak Korean","target_text":"한국어를 말하는 사람을 많이 알지 못해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0298L01B01","expect":{"known_text":"I've got nothing left to say","target_text":"더 이상 할 말이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0298L01B02","expect":{"known_text":"I've got nothing left to say","target_text":"더 이상 할 말이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0298L01B03","expect":{"known_text":"but I've got nothing left to say","target_text":"하지만 더 이상 할 말이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0298L01U08","expect":{"known_text":"really I've got nothing left to say","target_text":"정말 더 이상 할 말이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0299L01B01","expect":{"known_text":"he wants to pay half","target_text":"그는 반만 내고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0299L01B02","expect":{"known_text":"he wants to pay half","target_text":"그는 반만 내고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0299L01B03","expect":{"known_text":"but he wants to pay half","target_text":"하지만 그는 반만 내고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0299L01U08","expect":{"known_text":"really he wants to pay half","target_text":"정말 그는 반만 내고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0300L01B01","expect":{"known_text":"she doesn't want to seem unfriendly","target_text":"그녀는 불친절해 보이고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0300L01B02","expect":{"known_text":"she doesn't want to seem unfriendly","target_text":"그녀는 불친절해 보이고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0300L01B03","expect":{"known_text":"but she doesn't want to seem unfriendly","target_text":"하지만 그녀는 불친절해 보이고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0300L01U08","expect":{"known_text":"really she doesn't want to seem unfriendly","target_text":"정말 그녀는 불친절해 보이고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0558L02B01","expect":{"known_text":"it's so late at night","target_text":"밤이 너무 늦었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0618L02B02","expect":{"known_text":"it doesn't feel like a long time","target_text":"오래된 것 같지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0624L02U01","expect":{"known_text":"yes, that would be great","target_text":"네, 그러면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0631L02B02","expect":{"known_text":"what would you like?","target_text":"뭘 드릴까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0633L02B02","expect":{"known_text":"a large glass of water would be fine","target_text":"큰 컵으로 물 한 잔이면 괜찮아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0662L02B02","expect":{"known_text":"you all speak it","target_text":"여러분 다 그거 말해요"}}

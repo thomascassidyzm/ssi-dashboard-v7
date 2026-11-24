@@ -1,0 +1,1308 @@
+{
+ "changeset": "ara_lb_for_eng-item14-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 316,
+   "seed": {
+    "known_text": "Do you think that she could bring her brother on Monday?",
+    "target_text": "بتفكر إنها فيها تجيب أخوها يوم الاثنين؟"
+   },
+   "lego_id": "S0316L01",
+   "lego": [
+    {
+     "known_text": "to bring",
+     "target_text": "تجيب"
+    }
+   ]
+  },
+  {
+   "seed_number": 316,
+   "seed": {
+    "known_text": "Do you think that she could bring her brother on Monday?",
+    "target_text": "بتفكر إنها فيها تجيب أخوها يوم الاثنين؟"
+   },
+   "lego_id": "S0316L03",
+   "lego": [
+    {
+     "known_text": "on Monday",
+     "target_text": "يوم الاثنين"
+    }
+   ]
+  },
+  {
+   "seed_number": 327,
+   "seed": {
+    "known_text": "Do you think that she needs to offer another way?",
+    "target_text": "بتفكر إنها لازمها تعرض طريقة تانية؟"
+   },
+   "lego_id": "S0327L02",
+   "lego": [
+    {
+     "known_text": "way",
+     "target_text": "طريقة"
+    }
+   ]
+  },
+  {
+   "seed_number": 337,
+   "seed": {
+    "known_text": "Do you think that he can continue to play?",
+    "target_text": "بتفكر إنو فيو يكمل يلعب؟"
+   },
+   "lego_id": "S0337L02",
+   "lego": [
+    {
+     "known_text": "he plays",
+     "target_text": "يلعب"
+    }
+   ]
+  },
+  {
+   "seed_number": 339,
+   "seed": {
+    "known_text": "No I think he's hurt himself quite badly.",
+    "target_text": "لا بفكر إنو جرح حالو كتير."
+   },
+   "lego_id": "S0339L02",
+   "lego": [
+    {
+     "known_text": "himself",
+     "target_text": "حالو"
+    }
+   ]
+  },
+  {
+   "seed_number": 349,
+   "seed": {
+    "known_text": "Did he want to go out on Friday night?",
+    "target_text": "كان بدو يطلع ليلة الجمعة؟"
+   },
+   "lego_id": "S0349L02",
+   "lego": [
+    {
+     "known_text": "friday night",
+     "target_text": "ليلة الجمعة"
+    }
+   ]
+  },
+  {
+   "seed_number": 355,
+   "seed": {
+    "known_text": "Did she need to talk to that woman you know?",
+    "target_text": "كان لازمها تحكي مع هالمرأة اللي بتعرفها؟"
+   },
+   "lego_id": "S0355L01",
+   "lego": [
+    {
+     "known_text": "you know her",
+     "target_text": "بتعرفها"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "Did your friend say anything else?",
+    "target_text": "قال صاحبك شي تاني؟"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "did your friend say",
+     "target_text": "قال صاحبك"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "Did your friend say anything else?",
+    "target_text": "قال صاحبك شي تاني؟"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "did your friend say",
+     "target_text": "قال صاحبك"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "Did your friend say anything else?",
+    "target_text": "قال صاحبك شي تاني؟"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "did your friend say",
+     "target_text": "قال صاحبك"
+    }
+   ]
+  },
+  {
+   "seed_number": 366,
+   "seed": {
+    "known_text": "Did you hear what he wanted to grow?",
+    "target_text": "سمعت شو كان بدو يزرع؟"
+   },
+   "lego_id": "S0366L01",
+   "lego": [
+    {
+     "known_text": "he grows",
+     "target_text": "يزرع"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L01",
+   "lego": [
+    {
+     "known_text": "you found",
+     "target_text": "لقيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L01",
+   "lego": [
+    {
+     "known_text": "you found",
+     "target_text": "لقيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L01",
+   "lego": [
+    {
+     "known_text": "you found",
+     "target_text": "لقيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L01",
+   "lego": [
+    {
+     "known_text": "you found",
+     "target_text": "لقيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L01",
+   "lego": [
+    {
+     "known_text": "you found",
+     "target_text": "لقيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L03",
+   "lego": [
+    {
+     "known_text": "the path",
+     "target_text": "المسار"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L03",
+   "lego": [
+    {
+     "known_text": "the path",
+     "target_text": "المسار"
+    }
+   ]
+  },
+  {
+   "seed_number": 559,
+   "seed": {
+    "known_text": "Have you found the path through the wood?",
+    "target_text": "لقيت المسار اللي بيعدي من الغابة؟"
+   },
+   "lego_id": "S0559L04",
+   "lego": [
+    {
+     "known_text": "the wood",
+     "target_text": "الغابة"
+    }
+   ]
+  },
+  {
+   "seed_number": 569,
+   "seed": {
+    "known_text": "Have you decided how much you are willing to pay?",
+    "target_text": "قررت قديش مستعد تدفع؟"
+   },
+   "lego_id": "S0569L01",
+   "lego": [
+    {
+     "known_text": "you decided",
+     "target_text": "قررت"
+    }
+   ]
+  },
+  {
+   "seed_number": 569,
+   "seed": {
+    "known_text": "Have you decided how much you are willing to pay?",
+    "target_text": "قررت قديش مستعد تدفع؟"
+   },
+   "lego_id": "S0569L01",
+   "lego": [
+    {
+     "known_text": "you decided",
+     "target_text": "قررت"
+    }
+   ]
+  },
+  {
+   "seed_number": 569,
+   "seed": {
+    "known_text": "Have you decided how much you are willing to pay?",
+    "target_text": "قررت قديش مستعد تدفع؟"
+   },
+   "lego_id": "S0569L03",
+   "lego": [
+    {
+     "known_text": "willing",
+     "target_text": "مستعد"
+    }
+   ]
+  },
+  {
+   "seed_number": 569,
+   "seed": {
+    "known_text": "Have you decided how much you are willing to pay?",
+    "target_text": "قررت قديش مستعد تدفع؟"
+   },
+   "lego_id": "S0569L03",
+   "lego": [
+    {
+     "known_text": "willing",
+     "target_text": "مستعد"
+    }
+   ]
+  },
+  {
+   "seed_number": 570,
+   "seed": {
+    "known_text": "How much are you willing to pay for your ticket?",
+    "target_text": "قديش مستعد تدفع على تذكرتك؟"
+   },
+   "lego_id": "S0570L01",
+   "lego": [
+    {
+     "known_text": "your ticket",
+     "target_text": "تذكرتك"
+    }
+   ]
+  },
+  {
+   "seed_number": 570,
+   "seed": {
+    "known_text": "How much are you willing to pay for your ticket?",
+    "target_text": "قديش مستعد تدفع على تذكرتك؟"
+   },
+   "lego_id": "S0570L01",
+   "lego": [
+    {
+     "known_text": "your ticket",
+     "target_text": "تذكرتك"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L01",
+   "lego": [
+    {
+     "known_text": "happened",
+     "target_text": "صار"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L01",
+   "lego": [
+    {
+     "known_text": "happened",
+     "target_text": "صار"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L01",
+   "lego": [
+    {
+     "known_text": "happened",
+     "target_text": "صار"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L02",
+   "lego": [
+    {
+     "known_text": "occasion",
+     "target_text": "مرة"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L04",
+   "lego": [
+    {
+     "known_text": "you forgot",
+     "target_text": "نسيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L04",
+   "lego": [
+    {
+     "known_text": "you forgot",
+     "target_text": "نسيت"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "Have you forgotten what happened the last time they visited us?",
+    "target_text": "نسيت شو صار آخر مرة جوا علينا؟"
+   },
+   "lego_id": "S0572L05",
+   "lego": [
+    {
+     "known_text": "on us",
+     "target_text": "علينا"
+    }
+   ]
+  },
+  {
+   "seed_number": 581,
+   "seed": {
+    "known_text": "He'd like to know a little more about what it's like.",
+    "target_text": "بدو يعرف شوي أكتر كيف هو الحال."
+   },
+   "lego_id": "S0581L05",
+   "lego": [
+    {
+     "known_text": "the state",
+     "target_text": "الحال"
+    }
+   ]
+  },
+  {
+   "seed_number": 582,
+   "seed": {
+    "known_text": "What's it like to grow up here?",
+    "target_text": "كيف هو الحال تكبر هون؟"
+   },
+   "lego_id": "S0582L01",
+   "lego": [
+    {
+     "known_text": "you grow up",
+     "target_text": "تكبر"
+    }
+   ]
+  },
+  {
+   "seed_number": 582,
+   "seed": {
+    "known_text": "What's it like to grow up here?",
+    "target_text": "كيف هو الحال تكبر هون؟"
+   },
+   "lego_id": "S0582L01",
+   "lego": [
+    {
+     "known_text": "you grow up",
+     "target_text": "تكبر"
+    }
+   ]
+  },
+  {
+   "seed_number": 583,
+   "seed": {
+    "known_text": "What's it like in this part of the world?",
+    "target_text": "كيف هو الحال بهالجزء من الدني؟"
+   },
+   "lego_id": "S0583L02",
+   "lego": [
+    {
+     "known_text": "in this part",
+     "target_text": "بهالجزء"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "What's it like to wake up every morning and see the mountains?",
+    "target_text": "كيف هو الحال تصحى كل صبح وتشوف الجبال؟"
+   },
+   "lego_id": "S0584L02",
+   "lego": [
+    {
+     "known_text": "you wake up",
+     "target_text": "تصحى"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "What's it like to wake up every morning and see the mountains?",
+    "target_text": "كيف هو الحال تصحى كل صبح وتشوف الجبال؟"
+   },
+   "lego_id": "S0584L05",
+   "lego": [
+    {
+     "known_text": "the mountains",
+     "target_text": "الجبال"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "Do you want a cup of coffee or tea?",
+    "target_text": "بدك فنجان قهوة أو شاي؟"
+   },
+   "lego_id": "S0623L03",
+   "lego": [
+    {
+     "known_text": "tea",
+     "target_text": "شاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "Do you want a cup of coffee or tea?",
+    "target_text": "بدك فنجان قهوة أو شاي؟"
+   },
+   "lego_id": "S0623L03",
+   "lego": [
+    {
+     "known_text": "tea",
+     "target_text": "شاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "Do you want a cup of coffee or tea?",
+    "target_text": "بدك فنجان قهوة أو شاي؟"
+   },
+   "lego_id": "S0623L03",
+   "lego": [
+    {
+     "known_text": "tea",
+     "target_text": "شاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "Do you want a cup of coffee or tea?",
+    "target_text": "بدك فنجان قهوة أو شاي؟"
+   },
+   "lego_id": "S0623L03",
+   "lego": [
+    {
+     "known_text": "tea",
+     "target_text": "شاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 625,
+   "seed": {
+    "known_text": "Do you want something to drink?",
+    "target_text": "بدك إشي تشرب؟"
+   },
+   "lego_id": "S0625L01",
+   "lego": [
+    {
+     "known_text": "you drink",
+     "target_text": "تشرب"
+    }
+   ]
+  },
+  {
+   "seed_number": 628,
+   "seed": {
+    "known_text": "Do you like tea?",
+    "target_text": "بتحب الشاي؟"
+   },
+   "lego_id": "S0628L02",
+   "lego": [
+    {
+     "known_text": "the tea",
+     "target_text": "الشاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 628,
+   "seed": {
+    "known_text": "Do you like tea?",
+    "target_text": "بتحب الشاي؟"
+   },
+   "lego_id": "S0628L02",
+   "lego": [
+    {
+     "known_text": "the tea",
+     "target_text": "الشاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 628,
+   "seed": {
+    "known_text": "Do you like tea?",
+    "target_text": "بتحب الشاي؟"
+   },
+   "lego_id": "S0628L02",
+   "lego": [
+    {
+     "known_text": "the tea",
+     "target_text": "الشاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 628,
+   "seed": {
+    "known_text": "Do you like tea?",
+    "target_text": "بتحب الشاي؟"
+   },
+   "lego_id": "S0628L02",
+   "lego": [
+    {
+     "known_text": "the tea",
+     "target_text": "الشاي"
+    }
+   ]
+  },
+  {
+   "seed_number": 630,
+   "seed": {
+    "known_text": "Can I have something to drink please?",
+    "target_text": "فيني آخد إشي أشرب، لو سمحت؟"
+   },
+   "lego_id": "S0630L01",
+   "lego": [
+    {
+     "known_text": "I grab",
+     "target_text": "آخد"
+    }
+   ]
+  },
+  {
+   "seed_number": 630,
+   "seed": {
+    "known_text": "Can I have something to drink please?",
+    "target_text": "فيني آخد إشي أشرب، لو سمحت؟"
+   },
+   "lego_id": "S0630L01",
+   "lego": [
+    {
+     "known_text": "I grab",
+     "target_text": "آخد"
+    }
+   ]
+  },
+  {
+   "seed_number": 630,
+   "seed": {
+    "known_text": "Can I have something to drink please?",
+    "target_text": "فيني آخد إشي أشرب، لو سمحت؟"
+   },
+   "lego_id": "S0630L01",
+   "lego": [
+    {
+     "known_text": "I grab",
+     "target_text": "آخد"
+    }
+   ]
+  },
+  {
+   "seed_number": 630,
+   "seed": {
+    "known_text": "Can I have something to drink please?",
+    "target_text": "فيني آخد إشي أشرب، لو سمحت؟"
+   },
+   "lego_id": "S0630L02",
+   "lego": [
+    {
+     "known_text": "I drink",
+     "target_text": "أشرب"
+    }
+   ]
+  },
+  {
+   "seed_number": 630,
+   "seed": {
+    "known_text": "Can I have something to drink please?",
+    "target_text": "فيني آخد إشي أشرب، لو سمحت؟"
+   },
+   "lego_id": "S0630L03",
+   "lego": [
+    {
+     "known_text": "you allow",
+     "target_text": "سمحت"
+    }
+   ]
+  },
+  {
+   "seed_number": 631,
+   "seed": {
+    "known_text": "What would you like?",
+    "target_text": "شو بدك؟"
+   },
+   "lego_id": "S0631L01",
+   "lego": [
+    {
+     "known_text": "what would you like",
+     "target_text": "شو بدك"
+    }
+   ]
+  },
+  {
+   "seed_number": 631,
+   "seed": {
+    "known_text": "What would you like?",
+    "target_text": "شو بدك؟"
+   },
+   "lego_id": "S0631L01",
+   "lego": [
+    {
+     "known_text": "what would you like",
+     "target_text": "شو بدك"
+    }
+   ]
+  },
+  {
+   "seed_number": 631,
+   "seed": {
+    "known_text": "What would you like?",
+    "target_text": "شو بدك؟"
+   },
+   "lego_id": "S0631L01",
+   "lego": [
+    {
+     "known_text": "what would you like",
+     "target_text": "شو بدك"
+    }
+   ]
+  },
+  {
+   "seed_number": 631,
+   "seed": {
+    "known_text": "What would you like?",
+    "target_text": "شو بدك؟"
+   },
+   "lego_id": "S0631L01",
+   "lego": [
+    {
+     "known_text": "what would you like",
+     "target_text": "شو بدك"
+    }
+   ]
+  },
+  {
+   "seed_number": 631,
+   "seed": {
+    "known_text": "What would you like?",
+    "target_text": "شو بدك؟"
+   },
+   "lego_id": "S0631L01",
+   "lego": [
+    {
+     "known_text": "what would you like",
+     "target_text": "شو بدك"
+    }
+   ]
+  },
+  {
+   "seed_number": 631,
+   "seed": {
+    "known_text": "What would you like?",
+    "target_text": "شو بدك؟"
+   },
+   "lego_id": "S0631L01",
+   "lego": [
+    {
+     "known_text": "what would you like",
+     "target_text": "شو بدك"
+    }
+   ]
+  },
+  {
+   "seed_number": 632,
+   "seed": {
+    "known_text": "A glass of water.",
+    "target_text": "كاسة مي."
+   },
+   "lego_id": "S0632L02",
+   "lego": [
+    {
+     "known_text": "glass",
+     "target_text": "كاسة"
+    }
+   ]
+  },
+  {
+   "seed_number": 635,
+   "seed": {
+    "known_text": "That is Jane's bag.",
+    "target_text": "هيدي شنطة جاين."
+   },
+   "lego_id": "S0635L03",
+   "lego": [
+    {
+     "known_text": "jane",
+     "target_text": "جاين"
+    }
+   ]
+  },
+  {
+   "seed_number": 637,
+   "seed": {
+    "known_text": "Where is her bag?",
+    "target_text": "وين شنطتها؟"
+   },
+   "lego_id": "S0637L01",
+   "lego": [
+    {
+     "known_text": "her bag",
+     "target_text": "شنطتها"
+    }
+   ]
+  },
+  {
+   "seed_number": 639,
+   "seed": {
+    "known_text": "with you sir",
+    "target_text": "معك يا أستاذ"
+   },
+   "lego_id": "S0639L02",
+   "lego": [
+    {
+     "known_text": "sir",
+     "target_text": "أستاذ"
+    }
+   ]
+  },
+  {
+   "seed_number": 642,
+   "seed": {
+    "known_text": "how do you feel madam?",
+    "target_text": "كيفك يا مدام؟"
+   },
+   "lego_id": "S0642L02",
+   "lego": [
+    {
+     "known_text": "how are you",
+     "target_text": "كيفك"
+    }
+   ]
+  },
+  {
+   "seed_number": 642,
+   "seed": {
+    "known_text": "how do you feel madam?",
+    "target_text": "كيفك يا مدام؟"
+   },
+   "lego_id": "S0642L02",
+   "lego": [
+    {
+     "known_text": "how are you",
+     "target_text": "كيفك"
+    }
+   ]
+  },
+  {
+   "seed_number": 642,
+   "seed": {
+    "known_text": "how do you feel madam?",
+    "target_text": "كيفك يا مدام؟"
+   },
+   "lego_id": "S0642L02",
+   "lego": [
+    {
+     "known_text": "how are you",
+     "target_text": "كيفك"
+    }
+   ]
+  },
+  {
+   "seed_number": 643,
+   "seed": {
+    "known_text": "Do you want sir?",
+    "target_text": "بدك يا أستاذ"
+   },
+   "lego_id": "S0643L01",
+   "lego": [
+    {
+     "known_text": "do you want sir",
+     "target_text": "بدك يا أستاذ"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "Could you say that sir?",
+    "target_text": "فيك تقول هيك يا أستاذ؟"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "you can",
+     "target_text": "فيك"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "Could you say that sir?",
+    "target_text": "فيك تقول هيك يا أستاذ؟"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "you can",
+     "target_text": "فيك"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "Could you say that sir?",
+    "target_text": "فيك تقول هيك يا أستاذ؟"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "you can",
+     "target_text": "فيك"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "Could you say that sir?",
+    "target_text": "فيك تقول هيك يا أستاذ؟"
+   },
+   "lego_id": "S0644L01",
+   "lego": [
+    {
+     "known_text": "you can",
+     "target_text": "فيك"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "Could you say that sir?",
+    "target_text": "فيك تقول هيك يا أستاذ؟"
+   },
+   "lego_id": "S0644L02",
+   "lego": [
+    {
+     "known_text": "you say",
+     "target_text": "تقول"
+    }
+   ]
+  },
+  {
+   "seed_number": 644,
+   "seed": {
+    "known_text": "Could you say that sir?",
+    "target_text": "فيك تقول هيك يا أستاذ؟"
+   },
+   "lego_id": "S0644L02",
+   "lego": [
+    {
+     "known_text": "you say",
+     "target_text": "تقول"
+    }
+   ]
+  },
+  {
+   "seed_number": 649,
+   "seed": {
+    "known_text": "Are you ready sir?",
+    "target_text": "مستعد يا أستاذ؟"
+   },
+   "lego_id": "S0649L01",
+   "lego": [
+    {
+     "known_text": "are you ready sir",
+     "target_text": "مستعد يا أستاذ"
+    }
+   ]
+  },
+  {
+   "seed_number": 649,
+   "seed": {
+    "known_text": "Are you ready sir?",
+    "target_text": "مستعد يا أستاذ؟"
+   },
+   "lego_id": "S0649L01",
+   "lego": [
+    {
+     "known_text": "are you ready sir",
+     "target_text": "مستعد يا أستاذ"
+    }
+   ]
+  },
+  {
+   "seed_number": 650,
+   "seed": {
+    "known_text": "Do you want to go madam?",
+    "target_text": "بدك تروحي يا مدام؟"
+   },
+   "lego_id": "S0650L01",
+   "lego": [
+    {
+     "known_text": "you'll head off",
+     "target_text": "تروحي"
+    }
+   ]
+  },
+  {
+   "seed_number": 650,
+   "seed": {
+    "known_text": "Do you want to go madam?",
+    "target_text": "بدك تروحي يا مدام؟"
+   },
+   "lego_id": "S0650L01",
+   "lego": [
+    {
+     "known_text": "you'll head off",
+     "target_text": "تروحي"
+    }
+   ]
+  },
+  {
+   "seed_number": 650,
+   "seed": {
+    "known_text": "Do you want to go madam?",
+    "target_text": "بدك تروحي يا مدام؟"
+   },
+   "lego_id": "S0650L01",
+   "lego": [
+    {
+     "known_text": "you'll head off",
+     "target_text": "تروحي"
+    }
+   ]
+  },
+  {
+   "seed_number": 650,
+   "seed": {
+    "known_text": "Do you want to go madam?",
+    "target_text": "بدك تروحي يا مدام؟"
+   },
+   "lego_id": "S0650L01",
+   "lego": [
+    {
+     "known_text": "you'll head off",
+     "target_text": "تروحي"
+    }
+   ]
+  },
+  {
+   "seed_number": 652,
+   "seed": {
+    "known_text": "What do you need sir?",
+    "target_text": "شو محتاج يا أستاذ؟"
+   },
+   "lego_id": "S0652L01",
+   "lego": [
+    {
+     "known_text": "you need",
+     "target_text": "محتاج"
+    }
+   ]
+  },
+  {
+   "seed_number": 657,
+   "seed": {
+    "known_text": "how do you all feel?",
+    "target_text": "كيفكون كلكون؟"
+   },
+   "lego_id": "S0657L01",
+   "lego": [
+    {
+     "known_text": "how are you all",
+     "target_text": "كيفكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 657,
+   "seed": {
+    "known_text": "how do you all feel?",
+    "target_text": "كيفكون كلكون؟"
+   },
+   "lego_id": "S0657L01",
+   "lego": [
+    {
+     "known_text": "how are you all",
+     "target_text": "كيفكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 657,
+   "seed": {
+    "known_text": "how do you all feel?",
+    "target_text": "كيفكون كلكون؟"
+   },
+   "lego_id": "S0657L01",
+   "lego": [
+    {
+     "known_text": "how are you all",
+     "target_text": "كيفكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 658,
+   "seed": {
+    "known_text": "Do you all want?",
+    "target_text": "بدكون كلكون؟"
+   },
+   "lego_id": "S0658L01",
+   "lego": [
+    {
+     "known_text": "you all want",
+     "target_text": "بدكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 658,
+   "seed": {
+    "known_text": "Do you all want?",
+    "target_text": "بدكون كلكون؟"
+   },
+   "lego_id": "S0658L01",
+   "lego": [
+    {
+     "known_text": "you all want",
+     "target_text": "بدكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 658,
+   "seed": {
+    "known_text": "Do you all want?",
+    "target_text": "بدكون كلكون؟"
+   },
+   "lego_id": "S0658L01",
+   "lego": [
+    {
+     "known_text": "you all want",
+     "target_text": "بدكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 658,
+   "seed": {
+    "known_text": "Do you all want?",
+    "target_text": "بدكون كلكون؟"
+   },
+   "lego_id": "S0658L01",
+   "lego": [
+    {
+     "known_text": "you all want",
+     "target_text": "بدكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 664,
+   "seed": {
+    "known_text": "Are you all ready?",
+    "target_text": "مستعدين كلكون؟"
+   },
+   "lego_id": "S0664L01",
+   "lego": [
+    {
+     "known_text": "primed",
+     "target_text": "مستعدين"
+    }
+   ]
+  },
+  {
+   "seed_number": 664,
+   "seed": {
+    "known_text": "Are you all ready?",
+    "target_text": "مستعدين كلكون؟"
+   },
+   "lego_id": "S0664L01",
+   "lego": [
+    {
+     "known_text": "primed",
+     "target_text": "مستعدين"
+    }
+   ]
+  },
+  {
+   "seed_number": 665,
+   "seed": {
+    "known_text": "Do you all want to go?",
+    "target_text": "بدكون كلكون تروحوا؟"
+   },
+   "lego_id": "S0665L01",
+   "lego": [
+    {
+     "known_text": "you all go",
+     "target_text": "تروحوا"
+    }
+   ]
+  },
+  {
+   "seed_number": 666,
+   "seed": {
+    "known_text": "What do you all think?",
+    "target_text": "شو رأيكون كلكون؟"
+   },
+   "lego_id": "S0666L01",
+   "lego": [
+    {
+     "known_text": "your all's view",
+     "target_text": "رأيكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 666,
+   "seed": {
+    "known_text": "What do you all think?",
+    "target_text": "شو رأيكون كلكون؟"
+   },
+   "lego_id": "S0666L01",
+   "lego": [
+    {
+     "known_text": "your all's view",
+     "target_text": "رأيكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 667,
+   "seed": {
+    "known_text": "Do you all mind?",
+    "target_text": "مش مشكلة كلكون؟"
+   },
+   "lego_id": "S0667L01",
+   "lego": [
+    {
+     "known_text": "not a problem, all of you",
+     "target_text": "مش مشكلة كلكون"
+    }
+   ]
+  },
+  {
+   "seed_number": 667,
+   "seed": {
+    "known_text": "Do you all mind?",
+    "target_text": "مش مشكلة كلكون؟"
+   },
+   "lego_id": "S0667L01",
+   "lego": [
+    {
+     "known_text": "not a problem, all of you",
+     "target_text": "مش مشكلة كلكون"
+    }
+   ]
+  }
+ ]
+}

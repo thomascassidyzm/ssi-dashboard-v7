@@ -1,0 +1,6026 @@
+{
+ "changeset": "ita_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 1,
+   "seed": {
+    "known_text": "I want to speak Italian with you now",
+    "target_text": "voglio parlare italiano con te adesso"
+   },
+   "lego_id": "S0001L03",
+   "lego": [
+    {
+     "known_text": "Italian",
+     "target_text": "italiano"
+    }
+   ]
+  },
+  {
+   "seed_number": 2,
+   "seed": {
+    "known_text": "I'm trying to learn",
+    "target_text": "sto provando a imparare"
+   },
+   "lego_id": "S0002L01",
+   "lego": [
+    {
+     "known_text": "I'm trying to",
+     "target_text": "sto provando a"
+    }
+   ]
+  },
+  {
+   "seed_number": 12,
+   "seed": {
+    "known_text": "I wouldn't like to guess what's going to happen tomorrow",
+    "target_text": "non mi piacerebbe indovinare cosa succederà domani"
+   },
+   "lego_id": "S0012L02",
+   "lego": [
+    {
+     "known_text": "to guess",
+     "target_text": "indovinare"
+    }
+   ]
+  },
+  {
+   "seed_number": 17,
+   "seed": {
+    "known_text": "she wants to find out what the answer is",
+    "target_text": "vuole scoprire qual è la risposta"
+   },
+   "lego_id": "S0017L01",
+   "lego": [
+    {
+     "known_text": "to find out",
+     "target_text": "scoprire"
+    }
+   ]
+  },
+  {
+   "seed_number": 18,
+   "seed": {
+    "known_text": "we want to meet at six o'clock this evening",
+    "target_text": "vogliamo incontrarci alle sei questa sera"
+   },
+   "lego_id": "S0018L02",
+   "lego": [
+    {
+     "known_text": "to meet up",
+     "target_text": "incontrarci"
+    }
+   ]
+  },
+  {
+   "seed_number": 18,
+   "seed": {
+    "known_text": "we want to meet at six o'clock this evening",
+    "target_text": "vogliamo incontrarci alle sei questa sera"
+   },
+   "lego_id": "S0018L02",
+   "lego": [
+    {
+     "known_text": "to meet up",
+     "target_text": "incontrarci"
+    }
+   ]
+  },
+  {
+   "seed_number": 25,
+   "seed": {
+    "known_text": "will you help me before I go?",
+    "target_text": "mi aiuterai prima di andare?"
+   },
+   "lego_id": "S0025L01",
+   "lego": [
+    {
+     "known_text": "will you help me",
+     "target_text": "mi aiuterai"
+    }
+   ]
+  },
+  {
+   "seed_number": 26,
+   "seed": {
+    "known_text": "I like feeling nearly ready to go",
+    "target_text": "mi piace sentirmi quasi pronto ad andare"
+   },
+   "lego_id": "S0026L01",
+   "lego": [
+    {
+     "known_text": "I like",
+     "target_text": "mi piace"
+    }
+   ]
+  },
+  {
+   "seed_number": 27,
+   "seed": {
+    "known_text": "I don't like taking too much time to answer",
+    "target_text": "non mi piace prendere troppo tempo per rispondere"
+   },
+   "lego_id": "S0027L02",
+   "lego": [
+    {
+     "known_text": "taking too much time",
+     "target_text": "prendere troppo tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 35,
+   "seed": {
+    "known_text": "she doesn't want to read anything this afternoon",
+    "target_text": "non vuole leggere niente questo pomeriggio"
+   },
+   "lego_id": "S0035L02",
+   "lego": [
+    {
+     "known_text": "anything",
+     "target_text": "niente"
+    }
+   ]
+  },
+  {
+   "seed_number": 51,
+   "seed": {
+    "known_text": "I enjoy doing interesting things with my friends",
+    "target_text": "mi piace fare cose interessanti con i miei amici"
+   },
+   "lego_id": "S0051L03",
+   "lego": [
+    {
+     "known_text": "with my friends",
+     "target_text": "con i miei amici"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "voleva scrivere una lettera al suo amico la settimana scorsa"
+   },
+   "lego_id": "S0052L03",
+   "lego": [
+    {
+     "known_text": "a letter",
+     "target_text": "una lettera"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "voleva scrivere una lettera al suo amico la settimana scorsa"
+   },
+   "lego_id": "S0052L03",
+   "lego": [
+    {
+     "known_text": "a letter",
+     "target_text": "una lettera"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "voleva scrivere una lettera al suo amico la settimana scorsa"
+   },
+   "lego_id": "S0052L04",
+   "lego": [
+    {
+     "known_text": "to his friend",
+     "target_text": "al suo amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "voleva scrivere una lettera al suo amico la settimana scorsa"
+   },
+   "lego_id": "S0052L04",
+   "lego": [
+    {
+     "known_text": "to his friend",
+     "target_text": "al suo amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "voleva scrivere una lettera al suo amico la settimana scorsa"
+   },
+   "lego_id": "S0052L05",
+   "lego": [
+    {
+     "known_text": "last week",
+     "target_text": "la settimana scorsa"
+    }
+   ]
+  },
+  {
+   "seed_number": 53,
+   "seed": {
+    "known_text": "she wanted to put his letter in her bag",
+    "target_text": "voleva mettere la sua lettera nella sua borsa"
+   },
+   "lego_id": "S0053L03",
+   "lego": [
+    {
+     "known_text": "his letter",
+     "target_text": "la sua lettera"
+    }
+   ]
+  },
+  {
+   "seed_number": 53,
+   "seed": {
+    "known_text": "she wanted to put his letter in her bag",
+    "target_text": "voleva mettere la sua lettera nella sua borsa"
+   },
+   "lego_id": "S0053L03",
+   "lego": [
+    {
+     "known_text": "his letter",
+     "target_text": "la sua lettera"
+    }
+   ]
+  },
+  {
+   "seed_number": 53,
+   "seed": {
+    "known_text": "she wanted to put his letter in her bag",
+    "target_text": "voleva mettere la sua lettera nella sua borsa"
+   },
+   "lego_id": "S0053L04",
+   "lego": [
+    {
+     "known_text": "in her bag",
+     "target_text": "nella sua borsa"
+    }
+   ]
+  },
+  {
+   "seed_number": 53,
+   "seed": {
+    "known_text": "she wanted to put his letter in her bag",
+    "target_text": "voleva mettere la sua lettera nella sua borsa"
+   },
+   "lego_id": "S0053L04",
+   "lego": [
+    {
+     "known_text": "in her bag",
+     "target_text": "nella sua borsa"
+    }
+   ]
+  },
+  {
+   "seed_number": 55,
+   "seed": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "non mi piace svegliarmi quando non ho dormito molto bene"
+   },
+   "lego_id": "S0055L01",
+   "lego": [
+    {
+     "known_text": "to wake up",
+     "target_text": "svegliarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 56,
+   "seed": {
+    "known_text": "so I can remember how to say a few words",
+    "target_text": "così posso ricordare come dire alcune parole"
+   },
+   "lego_id": "S0056L02",
+   "lego": [
+    {
+     "known_text": "how to say",
+     "target_text": "come dire"
+    }
+   ]
+  },
+  {
+   "seed_number": 56,
+   "seed": {
+    "known_text": "so I can remember how to say a few words",
+    "target_text": "così posso ricordare come dire alcune parole"
+   },
+   "lego_id": "S0056L03",
+   "lego": [
+    {
+     "known_text": "a few words",
+     "target_text": "alcune parole"
+    }
+   ]
+  },
+  {
+   "seed_number": 56,
+   "seed": {
+    "known_text": "so I can remember how to say a few words",
+    "target_text": "così posso ricordare come dire alcune parole"
+   },
+   "lego_id": "S0056L03",
+   "lego": [
+    {
+     "known_text": "a few words",
+     "target_text": "alcune parole"
+    }
+   ]
+  },
+  {
+   "seed_number": 57,
+   "seed": {
+    "known_text": "I can't remember how to say what I wanted to say",
+    "target_text": "non riesco a ricordare come dire quello che volevo dire"
+   },
+   "lego_id": "S0057L01",
+   "lego": [
+    {
+     "known_text": "I can't remember",
+     "target_text": "non riesco a ricordare"
+    }
+   ]
+  },
+  {
+   "seed_number": 57,
+   "seed": {
+    "known_text": "I can't remember how to say what I wanted to say",
+    "target_text": "non riesco a ricordare come dire quello che volevo dire"
+   },
+   "lego_id": "S0057L02",
+   "lego": [
+    {
+     "known_text": "what I wanted to say",
+     "target_text": "quello che volevo dire"
+    }
+   ]
+  },
+  {
+   "seed_number": 57,
+   "seed": {
+    "known_text": "I can't remember how to say what I wanted to say",
+    "target_text": "non riesco a ricordare come dire quello che volevo dire"
+   },
+   "lego_id": "S0057L02",
+   "lego": [
+    {
+     "known_text": "what I wanted to say",
+     "target_text": "quello che volevo dire"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L01",
+   "lego": [
+    {
+     "known_text": "it's interesting",
+     "target_text": "è interessante"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L01",
+   "lego": [
+    {
+     "known_text": "it's interesting",
+     "target_text": "è interessante"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L02",
+   "lego": [
+    {
+     "known_text": "when you understand",
+     "target_text": "quando capisci"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L02",
+   "lego": [
+    {
+     "known_text": "when you understand",
+     "target_text": "quando capisci"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L02",
+   "lego": [
+    {
+     "known_text": "when you understand",
+     "target_text": "quando capisci"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L03",
+   "lego": [
+    {
+     "known_text": "enough words",
+     "target_text": "abbastanza parole"
+    }
+   ]
+  },
+  {
+   "seed_number": 58,
+   "seed": {
+    "known_text": "it's interesting when you understand enough words",
+    "target_text": "è interessante quando capisci abbastanza parole"
+   },
+   "lego_id": "S0058L03",
+   "lego": [
+    {
+     "known_text": "enough words",
+     "target_text": "abbastanza parole"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "so come fare quello che devo fare la settimana prossima"
+   },
+   "lego_id": "S0059L01",
+   "lego": [
+    {
+     "known_text": "I know how to",
+     "target_text": "so come"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "so come fare quello che devo fare la settimana prossima"
+   },
+   "lego_id": "S0059L02",
+   "lego": [
+    {
+     "known_text": "what I need to do",
+     "target_text": "quello che devo fare"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "so come fare quello che devo fare la settimana prossima"
+   },
+   "lego_id": "S0059L02",
+   "lego": [
+    {
+     "known_text": "what I need to do",
+     "target_text": "quello che devo fare"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "so come fare quello che devo fare la settimana prossima"
+   },
+   "lego_id": "S0059L02",
+   "lego": [
+    {
+     "known_text": "what I need to do",
+     "target_text": "quello che devo fare"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "so come fare quello che devo fare la settimana prossima"
+   },
+   "lego_id": "S0059L03",
+   "lego": [
+    {
+     "known_text": "next week",
+     "target_text": "la settimana prossima"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "so come fare quello che devo fare la settimana prossima"
+   },
+   "lego_id": "S0059L03",
+   "lego": [
+    {
+     "known_text": "next week",
+     "target_text": "la settimana prossima"
+    }
+   ]
+  },
+  {
+   "seed_number": 60,
+   "seed": {
+    "known_text": "I don't know how to say enough different words yet",
+    "target_text": "non so ancora come dire abbastanza parole diverse"
+   },
+   "lego_id": "S0060L01",
+   "lego": [
+    {
+     "known_text": "I don't know how to",
+     "target_text": "non so come"
+    }
+   ]
+  },
+  {
+   "seed_number": 60,
+   "seed": {
+    "known_text": "I don't know how to say enough different words yet",
+    "target_text": "non so ancora come dire abbastanza parole diverse"
+   },
+   "lego_id": "S0060L02",
+   "lego": [
+    {
+     "known_text": "yet",
+     "target_text": "ancora"
+    }
+   ]
+  },
+  {
+   "seed_number": 60,
+   "seed": {
+    "known_text": "I don't know how to say enough different words yet",
+    "target_text": "non so ancora come dire abbastanza parole diverse"
+   },
+   "lego_id": "S0060L03",
+   "lego": [
+    {
+     "known_text": "different words",
+     "target_text": "parole diverse"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "I'm not sure if I can help you at the same time",
+    "target_text": "non sono sicuro se posso aiutarti allo stesso tempo"
+   },
+   "lego_id": "S0062L01",
+   "lego": [
+    {
+     "known_text": "to help you",
+     "target_text": "aiutarti"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "I'm not sure if I can help you at the same time",
+    "target_text": "non sono sicuro se posso aiutarti allo stesso tempo"
+   },
+   "lego_id": "S0062L02",
+   "lego": [
+    {
+     "known_text": "at the same time",
+     "target_text": "allo stesso tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 63,
+   "seed": {
+    "known_text": "are you sure you don't mind helping me?",
+    "target_text": "sei sicuro che non ti dispiace aiutarmi?"
+   },
+   "lego_id": "S0063L02",
+   "lego": [
+    {
+     "known_text": "helping me",
+     "target_text": "aiutarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 64,
+   "seed": {
+    "known_text": "learning Italian isn't easy but it is fun",
+    "target_text": "imparare l'italiano non è facile, ma è divertente"
+   },
+   "lego_id": "S0064L01",
+   "lego": [
+    {
+     "known_text": "easy",
+     "target_text": "facile"
+    }
+   ]
+  },
+  {
+   "seed_number": 64,
+   "seed": {
+    "known_text": "learning Italian isn't easy but it is fun",
+    "target_text": "imparare l'italiano non è facile, ma è divertente"
+   },
+   "lego_id": "S0064L02",
+   "lego": [
+    {
+     "known_text": "fun",
+     "target_text": "divertente"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "è importante prendersi il tempo per mettersi alla prova"
+   },
+   "lego_id": "S0065L01",
+   "lego": [
+    {
+     "known_text": "important",
+     "target_text": "importante"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "è importante prendersi il tempo per mettersi alla prova"
+   },
+   "lego_id": "S0065L01",
+   "lego": [
+    {
+     "known_text": "important",
+     "target_text": "importante"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "è importante prendersi il tempo per mettersi alla prova"
+   },
+   "lego_id": "S0065L02",
+   "lego": [
+    {
+     "known_text": "to take time",
+     "target_text": "prendersi il tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "è importante prendersi il tempo per mettersi alla prova"
+   },
+   "lego_id": "S0065L02",
+   "lego": [
+    {
+     "known_text": "to take time",
+     "target_text": "prendersi il tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "è importante prendersi il tempo per mettersi alla prova"
+   },
+   "lego_id": "S0065L03",
+   "lego": [
+    {
+     "known_text": "to test yourself",
+     "target_text": "mettersi alla prova"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "è importante prendersi il tempo per mettersi alla prova"
+   },
+   "lego_id": "S0065L03",
+   "lego": [
+    {
+     "known_text": "to test yourself",
+     "target_text": "mettersi alla prova"
+    }
+   ]
+  },
+  {
+   "seed_number": 66,
+   "seed": {
+    "known_text": "it's not difficult to find the answer",
+    "target_text": "non è difficile trovare la risposta"
+   },
+   "lego_id": "S0066L01",
+   "lego": [
+    {
+     "known_text": "difficult",
+     "target_text": "difficile"
+    }
+   ]
+  },
+  {
+   "seed_number": 68,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "che cosa stai cercando?"
+   },
+   "lego_id": "S0068L01",
+   "lego": [
+    {
+     "known_text": "you're looking for",
+     "target_text": "stai cercando"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "non voleva badare al cane giovane tutto il pomeriggio"
+   },
+   "lego_id": "S0069L02",
+   "lego": [
+    {
+     "known_text": "to look after",
+     "target_text": "badare al"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "non voleva badare al cane giovane tutto il pomeriggio"
+   },
+   "lego_id": "S0069L02",
+   "lego": [
+    {
+     "known_text": "to look after",
+     "target_text": "badare al"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "non voleva badare al cane giovane tutto il pomeriggio"
+   },
+   "lego_id": "S0069L03",
+   "lego": [
+    {
+     "known_text": "young dog",
+     "target_text": "cane giovane"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "grazie mille, ma ho ancora di più da imparare"
+   },
+   "lego_id": "S0073L01",
+   "lego": [
+    {
+     "known_text": "thank you very much",
+     "target_text": "grazie mille"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "grazie mille, ma ho ancora di più da imparare"
+   },
+   "lego_id": "S0073L02",
+   "lego": [
+    {
+     "known_text": "I've got more to learn",
+     "target_text": "ho ancora di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "grazie mille, ma ho ancora di più da imparare"
+   },
+   "lego_id": "S0073L02",
+   "lego": [
+    {
+     "known_text": "I've got more to learn",
+     "target_text": "ho ancora di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "grazie mille, ma ho ancora di più da imparare"
+   },
+   "lego_id": "S0073L02",
+   "lego": [
+    {
+     "known_text": "I've got more to learn",
+     "target_text": "ho ancora di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 75,
+   "seed": {
+    "known_text": "have you got more to learn?",
+    "target_text": "hai di più da imparare?"
+   },
+   "lego_id": "S0075L01",
+   "lego": [
+    {
+     "known_text": "have you got more to learn",
+     "target_text": "hai di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 75,
+   "seed": {
+    "known_text": "have you got more to learn?",
+    "target_text": "hai di più da imparare?"
+   },
+   "lego_id": "S0075L01",
+   "lego": [
+    {
+     "known_text": "have you got more to learn",
+     "target_text": "hai di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 75,
+   "seed": {
+    "known_text": "have you got more to learn?",
+    "target_text": "hai di più da imparare?"
+   },
+   "lego_id": "S0075L01",
+   "lego": [
+    {
+     "known_text": "have you got more to learn",
+     "target_text": "hai di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 75,
+   "seed": {
+    "known_text": "have you got more to learn?",
+    "target_text": "hai di più da imparare?"
+   },
+   "lego_id": "S0075L01",
+   "lego": [
+    {
+     "known_text": "have you got more to learn",
+     "target_text": "hai di più da imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "sono molto contento di quanto ho già imparato"
+   },
+   "lego_id": "S0076L01",
+   "lego": [
+    {
+     "known_text": "I'm very happy with",
+     "target_text": "sono molto contento di"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "sono molto contento di quanto ho già imparato"
+   },
+   "lego_id": "S0076L02",
+   "lego": [
+    {
+     "known_text": "how much I've learnt",
+     "target_text": "quanto ho già imparato"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand",
+    "target_text": "sono sorpreso di quanto velocemente sto cominciando a capire"
+   },
+   "lego_id": "S0077L01",
+   "lego": [
+    {
+     "known_text": "I'm surprised at",
+     "target_text": "sono sorpreso di"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand",
+    "target_text": "sono sorpreso di quanto velocemente sto cominciando a capire"
+   },
+   "lego_id": "S0077L01",
+   "lego": [
+    {
+     "known_text": "I'm surprised at",
+     "target_text": "sono sorpreso di"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand",
+    "target_text": "sono sorpreso di quanto velocemente sto cominciando a capire"
+   },
+   "lego_id": "S0077L02",
+   "lego": [
+    {
+     "known_text": "how quickly",
+     "target_text": "quanto velocemente"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand",
+    "target_text": "sono sorpreso di quanto velocemente sto cominciando a capire"
+   },
+   "lego_id": "S0077L03",
+   "lego": [
+    {
+     "known_text": "I'm starting to understand",
+     "target_text": "sto cominciando a capire"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand",
+    "target_text": "sono sorpreso di quanto velocemente sto cominciando a capire"
+   },
+   "lego_id": "S0077L03",
+   "lego": [
+    {
+     "known_text": "I'm starting to understand",
+     "target_text": "sto cominciando a capire"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "non capisco quello che hai detto"
+   },
+   "lego_id": "S0078L01",
+   "lego": [
+    {
+     "known_text": "I don't understand",
+     "target_text": "non capisco"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "non capisco quello che hai detto"
+   },
+   "lego_id": "S0078L01",
+   "lego": [
+    {
+     "known_text": "I don't understand",
+     "target_text": "non capisco"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "non capisco quello che hai detto"
+   },
+   "lego_id": "S0078L02",
+   "lego": [
+    {
+     "known_text": "what you said",
+     "target_text": "quello che hai detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "non capisco quello che hai detto"
+   },
+   "lego_id": "S0078L02",
+   "lego": [
+    {
+     "known_text": "what you said",
+     "target_text": "quello che hai detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 79,
+   "seed": {
+    "known_text": "when did you start to learn?",
+    "target_text": "quando hai cominciato a imparare?"
+   },
+   "lego_id": "S0079L01",
+   "lego": [
+    {
+     "known_text": "when did you start to",
+     "target_text": "quando hai cominciato a"
+    }
+   ]
+  },
+  {
+   "seed_number": 79,
+   "seed": {
+    "known_text": "when did you start to learn?",
+    "target_text": "quando hai cominciato a imparare?"
+   },
+   "lego_id": "S0079L01",
+   "lego": [
+    {
+     "known_text": "when did you start to",
+     "target_text": "quando hai cominciato a"
+    }
+   ]
+  },
+  {
+   "seed_number": 79,
+   "seed": {
+    "known_text": "when did you start to learn?",
+    "target_text": "quando hai cominciato a imparare?"
+   },
+   "lego_id": "S0079L01",
+   "lego": [
+    {
+     "known_text": "when did you start to",
+     "target_text": "quando hai cominciato a"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "non sono sicuro di quando sarò pronto"
+   },
+   "lego_id": "S0080L02",
+   "lego": [
+    {
+     "known_text": "when I'll be ready",
+     "target_text": "quando sarò pronto"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "non sono sicuro di quando sarò pronto"
+   },
+   "lego_id": "S0080L02",
+   "lego": [
+    {
+     "known_text": "when I'll be ready",
+     "target_text": "quando sarò pronto"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "I'm not going to wait for you. Why not?",
+    "target_text": "non ti aspetto. Perché no?"
+   },
+   "lego_id": "S0082L01",
+   "lego": [
+    {
+     "known_text": "wait for you",
+     "target_text": "ti aspetto"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "I'm not going to wait for you. Why not?",
+    "target_text": "non ti aspetto. Perché no?"
+   },
+   "lego_id": "S0082L02",
+   "lego": [
+    {
+     "known_text": "why not",
+     "target_text": "perché no"
+    }
+   ]
+  },
+  {
+   "seed_number": 83,
+   "seed": {
+    "known_text": "I agree with what you said about your friend",
+    "target_text": "sono d'accordo con quello che hai detto del tuo amico"
+   },
+   "lego_id": "S0083L01",
+   "lego": [
+    {
+     "known_text": "I agree",
+     "target_text": "sono d'accordo"
+    }
+   ]
+  },
+  {
+   "seed_number": 83,
+   "seed": {
+    "known_text": "I agree with what you said about your friend",
+    "target_text": "sono d'accordo con quello che hai detto del tuo amico"
+   },
+   "lego_id": "S0083L02",
+   "lego": [
+    {
+     "known_text": "about your friend",
+     "target_text": "del tuo amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 84,
+   "seed": {
+    "known_text": "I don't agree with what he said about my friend",
+    "target_text": "non sono d'accordo con quello che ha detto del mio amico"
+   },
+   "lego_id": "S0084L01",
+   "lego": [
+    {
+     "known_text": "what he said",
+     "target_text": "quello che ha detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 84,
+   "seed": {
+    "known_text": "I don't agree with what he said about my friend",
+    "target_text": "non sono d'accordo con quello che ha detto del mio amico"
+   },
+   "lego_id": "S0084L02",
+   "lego": [
+    {
+     "known_text": "about my friend",
+     "target_text": "del mio amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 84,
+   "seed": {
+    "known_text": "I don't agree with what he said about my friend",
+    "target_text": "non sono d'accordo con quello che ha detto del mio amico"
+   },
+   "lego_id": "S0084L02",
+   "lego": [
+    {
+     "known_text": "about my friend",
+     "target_text": "del mio amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 85,
+   "seed": {
+    "known_text": "I don't know those people",
+    "target_text": "non conosco quelle persone"
+   },
+   "lego_id": "S0085L01",
+   "lego": [
+    {
+     "known_text": "I don't know",
+     "target_text": "non conosco"
+    }
+   ]
+  },
+  {
+   "seed_number": 85,
+   "seed": {
+    "known_text": "I don't know those people",
+    "target_text": "non conosco quelle persone"
+   },
+   "lego_id": "S0085L02",
+   "lego": [
+    {
+     "known_text": "those people",
+     "target_text": "quelle persone"
+    }
+   ]
+  },
+  {
+   "seed_number": 86,
+   "seed": {
+    "known_text": "it wasn't possible, unfortunately",
+    "target_text": "non era possibile, purtroppo"
+   },
+   "lego_id": "S0086L01",
+   "lego": [
+    {
+     "known_text": "it wasn't",
+     "target_text": "non era"
+    }
+   ]
+  },
+  {
+   "seed_number": 87,
+   "seed": {
+    "known_text": "they are people I don't know",
+    "target_text": "sono persone che non conosco"
+   },
+   "lego_id": "S0087L01",
+   "lego": [
+    {
+     "known_text": "people I don't know",
+     "target_text": "persone che non conosco"
+    }
+   ]
+  },
+  {
+   "seed_number": 89,
+   "seed": {
+    "known_text": "I think that I've done a lot in a short time",
+    "target_text": "penso di aver fatto molto in poco tempo"
+   },
+   "lego_id": "S0089L01",
+   "lego": [
+    {
+     "known_text": "I've done",
+     "target_text": "aver fatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 89,
+   "seed": {
+    "known_text": "I think that I've done a lot in a short time",
+    "target_text": "penso di aver fatto molto in poco tempo"
+   },
+   "lego_id": "S0089L02",
+   "lego": [
+    {
+     "known_text": "in a short time",
+     "target_text": "in poco tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 90,
+   "seed": {
+    "known_text": "if you can speak more slowly that would be great",
+    "target_text": "se puoi parlare più lentamente, sarebbe fantastico"
+   },
+   "lego_id": "S0090L01",
+   "lego": [
+    {
+     "known_text": "if you can",
+     "target_text": "se puoi"
+    }
+   ]
+  },
+  {
+   "seed_number": 90,
+   "seed": {
+    "known_text": "if you can speak more slowly that would be great",
+    "target_text": "se puoi parlare più lentamente, sarebbe fantastico"
+   },
+   "lego_id": "S0090L02",
+   "lego": [
+    {
+     "known_text": "that would be great",
+     "target_text": "sarebbe fantastico"
+    }
+   ]
+  },
+  {
+   "seed_number": 90,
+   "seed": {
+    "known_text": "if you can speak more slowly that would be great",
+    "target_text": "se puoi parlare più lentamente, sarebbe fantastico"
+   },
+   "lego_id": "S0090L02",
+   "lego": [
+    {
+     "known_text": "that would be great",
+     "target_text": "sarebbe fantastico"
+    }
+   ]
+  },
+  {
+   "seed_number": 91,
+   "seed": {
+    "known_text": "it's difficult to think quickly enough to answer in time",
+    "target_text": "è difficile pensare abbastanza velocemente per rispondere in tempo"
+   },
+   "lego_id": "S0091L02",
+   "lego": [
+    {
+     "known_text": "quickly enough",
+     "target_text": "abbastanza velocemente"
+    }
+   ]
+  },
+  {
+   "seed_number": 91,
+   "seed": {
+    "known_text": "it's difficult to think quickly enough to answer in time",
+    "target_text": "è difficile pensare abbastanza velocemente per rispondere in tempo"
+   },
+   "lego_id": "S0091L03",
+   "lego": [
+    {
+     "known_text": "in time",
+     "target_text": "in tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 92,
+   "seed": {
+    "known_text": "I'd like to keep on doing this for a while",
+    "target_text": "mi piacerebbe continuare a farlo per un po'"
+   },
+   "lego_id": "S0092L01",
+   "lego": [
+    {
+     "known_text": "to keep on",
+     "target_text": "continuare a"
+    }
+   ]
+  },
+  {
+   "seed_number": 93,
+   "seed": {
+    "known_text": "it's time to go now",
+    "target_text": "è ora di andare adesso"
+   },
+   "lego_id": "S0093L01",
+   "lego": [
+    {
+     "known_text": "it's time to",
+     "target_text": "è ora di"
+    }
+   ]
+  },
+  {
+   "seed_number": 94,
+   "seed": {
+    "known_text": "this is the only way it will work",
+    "target_text": "questo è l'unico modo in cui funzionerà"
+   },
+   "lego_id": "S0094L01",
+   "lego": [
+    {
+     "known_text": "the only way",
+     "target_text": "l'unico modo"
+    }
+   ]
+  },
+  {
+   "seed_number": 94,
+   "seed": {
+    "known_text": "this is the only way it will work",
+    "target_text": "questo è l'unico modo in cui funzionerà"
+   },
+   "lego_id": "S0094L02",
+   "lego": [
+    {
+     "known_text": "in which",
+     "target_text": "in cui"
+    }
+   ]
+  },
+  {
+   "seed_number": 95,
+   "seed": {
+    "known_text": "are you ready to go home on the next bus?",
+    "target_text": "sei pronto a tornare a casa con il prossimo autobus?"
+   },
+   "lego_id": "S0095L01",
+   "lego": [
+    {
+     "known_text": "to go home",
+     "target_text": "tornare a casa"
+    }
+   ]
+  },
+  {
+   "seed_number": 95,
+   "seed": {
+    "known_text": "are you ready to go home on the next bus?",
+    "target_text": "sei pronto a tornare a casa con il prossimo autobus?"
+   },
+   "lego_id": "S0095L02",
+   "lego": [
+    {
+     "known_text": "the next bus",
+     "target_text": "il prossimo autobus"
+    }
+   ]
+  },
+  {
+   "seed_number": 99,
+   "seed": {
+    "known_text": "you should ask yourself why it's not working",
+    "target_text": "dovresti chiederti perché non funziona"
+   },
+   "lego_id": "S0099L02",
+   "lego": [
+    {
+     "known_text": "to ask yourself",
+     "target_text": "chiederti"
+    }
+   ]
+  },
+  {
+   "seed_number": 100,
+   "seed": {
+    "known_text": "you shouldn't worry about doing something similar",
+    "target_text": "non dovresti preoccuparti di fare qualcosa di simile"
+   },
+   "lego_id": "S0100L01",
+   "lego": [
+    {
+     "known_text": "you shouldn't",
+     "target_text": "non dovresti"
+    }
+   ]
+  },
+  {
+   "seed_number": 100,
+   "seed": {
+    "known_text": "you shouldn't worry about doing something similar",
+    "target_text": "non dovresti preoccuparti di fare qualcosa di simile"
+   },
+   "lego_id": "S0100L02",
+   "lego": [
+    {
+     "known_text": "to worry about",
+     "target_text": "preoccuparti di"
+    }
+   ]
+  },
+  {
+   "seed_number": 100,
+   "seed": {
+    "known_text": "you shouldn't worry about doing something similar",
+    "target_text": "non dovresti preoccuparti di fare qualcosa di simile"
+   },
+   "lego_id": "S0100L03",
+   "lego": [
+    {
+     "known_text": "something similar",
+     "target_text": "qualcosa di simile"
+    }
+   ]
+  },
+  {
+   "seed_number": 102,
+   "seed": {
+    "known_text": "we're trying to say that it's not like that",
+    "target_text": "stiamo provando a dire che non è così"
+   },
+   "lego_id": "S0102L02",
+   "lego": [
+    {
+     "known_text": "it's not like that",
+     "target_text": "non è così"
+    }
+   ]
+  },
+  {
+   "seed_number": 102,
+   "seed": {
+    "known_text": "we're trying to say that it's not like that",
+    "target_text": "stiamo provando a dire che non è così"
+   },
+   "lego_id": "S0102L02",
+   "lego": [
+    {
+     "known_text": "it's not like that",
+     "target_text": "non è così"
+    }
+   ]
+  },
+  {
+   "seed_number": 104,
+   "seed": {
+    "known_text": "we need to change what we're doing",
+    "target_text": "dobbiamo cambiare quello che stiamo facendo"
+   },
+   "lego_id": "S0104L02",
+   "lego": [
+    {
+     "known_text": "what we're doing",
+     "target_text": "quello che stiamo facendo"
+    }
+   ]
+  },
+  {
+   "seed_number": 105,
+   "seed": {
+    "known_text": "that is why he didn't know the answer",
+    "target_text": "ecco perché non conosceva la risposta"
+   },
+   "lego_id": "S0105L01",
+   "lego": [
+    {
+     "known_text": "that is why",
+     "target_text": "ecco perché"
+    }
+   ]
+  },
+  {
+   "seed_number": 105,
+   "seed": {
+    "known_text": "that is why he didn't know the answer",
+    "target_text": "ecco perché non conosceva la risposta"
+   },
+   "lego_id": "S0105L02",
+   "lego": [
+    {
+     "known_text": "he didn't know",
+     "target_text": "non conosceva"
+    }
+   ]
+  },
+  {
+   "seed_number": 106,
+   "seed": {
+    "known_text": "we don't need to feel happy, we just need to work hard",
+    "target_text": "non dobbiamo sentirci felici, dobbiamo solo lavorare sodo"
+   },
+   "lego_id": "S0106L01",
+   "lego": [
+    {
+     "known_text": "we don't need to feel",
+     "target_text": "non dobbiamo sentirci"
+    }
+   ]
+  },
+  {
+   "seed_number": 106,
+   "seed": {
+    "known_text": "we don't need to feel happy, we just need to work hard",
+    "target_text": "non dobbiamo sentirci felici, dobbiamo solo lavorare sodo"
+   },
+   "lego_id": "S0106L03",
+   "lego": [
+    {
+     "known_text": "we just need to work hard",
+     "target_text": "dobbiamo solo lavorare sodo"
+    }
+   ]
+  },
+  {
+   "seed_number": 106,
+   "seed": {
+    "known_text": "we don't need to feel happy, we just need to work hard",
+    "target_text": "non dobbiamo sentirci felici, dobbiamo solo lavorare sodo"
+   },
+   "lego_id": "S0106L03",
+   "lego": [
+    {
+     "known_text": "we just need to work hard",
+     "target_text": "dobbiamo solo lavorare sodo"
+    }
+   ]
+  },
+  {
+   "seed_number": 107,
+   "seed": {
+    "known_text": "we hoped to see what you were doing",
+    "target_text": "speravamo di vedere che cosa stavi facendo"
+   },
+   "lego_id": "S0107L01",
+   "lego": [
+    {
+     "known_text": "we hoped to see",
+     "target_text": "speravamo di vedere"
+    }
+   ]
+  },
+  {
+   "seed_number": 107,
+   "seed": {
+    "known_text": "we hoped to see what you were doing",
+    "target_text": "speravamo di vedere che cosa stavi facendo"
+   },
+   "lego_id": "S0107L02",
+   "lego": [
+    {
+     "known_text": "what you were doing",
+     "target_text": "che cosa stavi facendo"
+    }
+   ]
+  },
+  {
+   "seed_number": 108,
+   "seed": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "non ci aspettavamo di svegliarci nel mezzo della notte"
+   },
+   "lego_id": "S0108L01",
+   "lego": [
+    {
+     "known_text": "we didn't expect to wake up",
+     "target_text": "non ci aspettavamo di svegliarci"
+    }
+   ]
+  },
+  {
+   "seed_number": 108,
+   "seed": {
+    "known_text": "we didn't expect to wake up in the middle of the night",
+    "target_text": "non ci aspettavamo di svegliarci nel mezzo della notte"
+   },
+   "lego_id": "S0108L02",
+   "lego": [
+    {
+     "known_text": "in the middle of the night",
+     "target_text": "nel mezzo della notte"
+    }
+   ]
+  },
+  {
+   "seed_number": 110,
+   "seed": {
+    "known_text": "we're friends, and after we finish I'd like to relax",
+    "target_text": "siamo amici, e dopo che finiamo mi piacerebbe rilassarmi"
+   },
+   "lego_id": "S0110L01",
+   "lego": [
+    {
+     "known_text": "we're friends",
+     "target_text": "siamo amici"
+    }
+   ]
+  },
+  {
+   "seed_number": 110,
+   "seed": {
+    "known_text": "we're friends, and after we finish I'd like to relax",
+    "target_text": "siamo amici, e dopo che finiamo mi piacerebbe rilassarmi"
+   },
+   "lego_id": "S0110L01",
+   "lego": [
+    {
+     "known_text": "we're friends",
+     "target_text": "siamo amici"
+    }
+   ]
+  },
+  {
+   "seed_number": 110,
+   "seed": {
+    "known_text": "we're friends, and after we finish I'd like to relax",
+    "target_text": "siamo amici, e dopo che finiamo mi piacerebbe rilassarmi"
+   },
+   "lego_id": "S0110L02",
+   "lego": [
+    {
+     "known_text": "after we finish",
+     "target_text": "dopo che finiamo"
+    }
+   ]
+  },
+  {
+   "seed_number": 110,
+   "seed": {
+    "known_text": "we're friends, and after we finish I'd like to relax",
+    "target_text": "siamo amici, e dopo che finiamo mi piacerebbe rilassarmi"
+   },
+   "lego_id": "S0110L03",
+   "lego": [
+    {
+     "known_text": "I'd like to relax",
+     "target_text": "mi piacerebbe rilassarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 110,
+   "seed": {
+    "known_text": "we're friends, and after we finish I'd like to relax",
+    "target_text": "siamo amici, e dopo che finiamo mi piacerebbe rilassarmi"
+   },
+   "lego_id": "S0110L03",
+   "lego": [
+    {
+     "known_text": "I'd like to relax",
+     "target_text": "mi piacerebbe rilassarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 111,
+   "seed": {
+    "known_text": "when we learn something new it changes our brain",
+    "target_text": "quando impariamo qualcosa di nuovo, cambia il nostro cervello"
+   },
+   "lego_id": "S0111L02",
+   "lego": [
+    {
+     "known_text": "something new",
+     "target_text": "qualcosa di nuovo"
+    }
+   ]
+  },
+  {
+   "seed_number": 111,
+   "seed": {
+    "known_text": "when we learn something new it changes our brain",
+    "target_text": "quando impariamo qualcosa di nuovo, cambia il nostro cervello"
+   },
+   "lego_id": "S0111L04",
+   "lego": [
+    {
+     "known_text": "our brain",
+     "target_text": "il nostro cervello"
+    }
+   ]
+  },
+  {
+   "seed_number": 112,
+   "seed": {
+    "known_text": "that was very interesting, and I wasn't expecting it",
+    "target_text": "era molto interessante, e non me lo aspettavo"
+   },
+   "lego_id": "S0112L01",
+   "lego": [
+    {
+     "known_text": "it was",
+     "target_text": "era"
+    }
+   ]
+  },
+  {
+   "seed_number": 112,
+   "seed": {
+    "known_text": "that was very interesting, and I wasn't expecting it",
+    "target_text": "era molto interessante, e non me lo aspettavo"
+   },
+   "lego_id": "S0112L02",
+   "lego": [
+    {
+     "known_text": "I wasn't expecting it",
+     "target_text": "non me lo aspettavo"
+    }
+   ]
+  },
+  {
+   "seed_number": 113,
+   "seed": {
+    "known_text": "why can't I remember what you said?",
+    "target_text": "perché non riesco a ricordare quello che hai detto?"
+   },
+   "lego_id": "S0113L01",
+   "lego": [
+    {
+     "known_text": "I can't",
+     "target_text": "non riesco a"
+    }
+   ]
+  },
+  {
+   "seed_number": 114,
+   "seed": {
+    "known_text": "I feel as if I'm speaking worse today than yesterday",
+    "target_text": "mi sento come se stessi parlando peggio oggi di ieri"
+   },
+   "lego_id": "S0114L01",
+   "lego": [
+    {
+     "known_text": "as if I were speaking",
+     "target_text": "come se stessi parlando"
+    }
+   ]
+  },
+  {
+   "seed_number": 115,
+   "seed": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "non mi sento come se fossi pronto a fare una conversazione"
+   },
+   "lego_id": "S0115L01",
+   "lego": [
+    {
+     "known_text": "as if I were ready",
+     "target_text": "come se fossi pronto"
+    }
+   ]
+  },
+  {
+   "seed_number": 115,
+   "seed": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "non mi sento come se fossi pronto a fare una conversazione"
+   },
+   "lego_id": "S0115L02",
+   "lego": [
+    {
+     "known_text": "to have a conversation",
+     "target_text": "a fare una conversazione"
+    }
+   ]
+  },
+  {
+   "seed_number": 116,
+   "seed": {
+    "known_text": "this isn't the best choice I could make",
+    "target_text": "questa non è la scelta migliore che potrei fare"
+   },
+   "lego_id": "S0116L02",
+   "lego": [
+    {
+     "known_text": "the best choice",
+     "target_text": "la scelta migliore"
+    }
+   ]
+  },
+  {
+   "seed_number": 116,
+   "seed": {
+    "known_text": "this isn't the best choice I could make",
+    "target_text": "questa non è la scelta migliore che potrei fare"
+   },
+   "lego_id": "S0116L03",
+   "lego": [
+    {
+     "known_text": "I could make",
+     "target_text": "potrei fare"
+    }
+   ]
+  },
+  {
+   "seed_number": 117,
+   "seed": {
+    "known_text": "I'm definitely doing better than I was last time we talked to each other",
+    "target_text": "sto sicuramente andando meglio di quando abbiamo parlato l'ultima volta"
+   },
+   "lego_id": "S0117L02",
+   "lego": [
+    {
+     "known_text": "we talked to each other",
+     "target_text": "abbiamo parlato"
+    }
+   ]
+  },
+  {
+   "seed_number": 117,
+   "seed": {
+    "known_text": "I'm definitely doing better than I was last time we talked to each other",
+    "target_text": "sto sicuramente andando meglio di quando abbiamo parlato l'ultima volta"
+   },
+   "lego_id": "S0117L03",
+   "lego": [
+    {
+     "known_text": "last time",
+     "target_text": "l'ultima volta"
+    }
+   ]
+  },
+  {
+   "seed_number": 118,
+   "seed": {
+    "known_text": "I feel better than I felt when we were in the pub",
+    "target_text": "mi sento meglio di come mi sentivo quando eravamo al pub"
+   },
+   "lego_id": "S0118L01",
+   "lego": [
+    {
+     "known_text": "we were",
+     "target_text": "eravamo"
+    }
+   ]
+  },
+  {
+   "seed_number": 118,
+   "seed": {
+    "known_text": "I feel better than I felt when we were in the pub",
+    "target_text": "mi sento meglio di come mi sentivo quando eravamo al pub"
+   },
+   "lego_id": "S0118L02",
+   "lego": [
+    {
+     "known_text": "I felt",
+     "target_text": "mi sentivo"
+    }
+   ]
+  },
+  {
+   "seed_number": 118,
+   "seed": {
+    "known_text": "I feel better than I felt when we were in the pub",
+    "target_text": "mi sento meglio di come mi sentivo quando eravamo al pub"
+   },
+   "lego_id": "S0118L03",
+   "lego": [
+    {
+     "known_text": "in the pub",
+     "target_text": "al pub"
+    }
+   ]
+  },
+  {
+   "seed_number": 119,
+   "seed": {
+    "known_text": "can I ask you something before you leave?",
+    "target_text": "posso chiederti qualcosa prima che tu vada via?"
+   },
+   "lego_id": "S0119L01",
+   "lego": [
+    {
+     "known_text": "before you leave",
+     "target_text": "prima che tu vada via"
+    }
+   ]
+  },
+  {
+   "seed_number": 120,
+   "seed": {
+    "known_text": "it's interesting that you like to go by bus",
+    "target_text": "è interessante che ti piace andare in autobus"
+   },
+   "lego_id": "S0120L01",
+   "lego": [
+    {
+     "known_text": "by bus",
+     "target_text": "in autobus"
+    }
+   ]
+  },
+  {
+   "seed_number": 124,
+   "seed": {
+    "known_text": "I thought that was a good idea",
+    "target_text": "pensavo che fosse una buona idea"
+   },
+   "lego_id": "S0124L01",
+   "lego": [
+    {
+     "known_text": "I thought that",
+     "target_text": "pensavo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 124,
+   "seed": {
+    "known_text": "I thought that was a good idea",
+    "target_text": "pensavo che fosse una buona idea"
+   },
+   "lego_id": "S0124L01",
+   "lego": [
+    {
+     "known_text": "I thought that",
+     "target_text": "pensavo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 124,
+   "seed": {
+    "known_text": "I thought that was a good idea",
+    "target_text": "pensavo che fosse una buona idea"
+   },
+   "lego_id": "S0124L01",
+   "lego": [
+    {
+     "known_text": "I thought that",
+     "target_text": "pensavo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 125,
+   "seed": {
+    "known_text": "I believe that your idea was very good",
+    "target_text": "credo che la tua idea fosse molto buona"
+   },
+   "lego_id": "S0125L01",
+   "lego": [
+    {
+     "known_text": "I believe that",
+     "target_text": "credo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 125,
+   "seed": {
+    "known_text": "I believe that your idea was very good",
+    "target_text": "credo che la tua idea fosse molto buona"
+   },
+   "lego_id": "S0125L01",
+   "lego": [
+    {
+     "known_text": "I believe that",
+     "target_text": "credo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 125,
+   "seed": {
+    "known_text": "I believe that your idea was very good",
+    "target_text": "credo che la tua idea fosse molto buona"
+   },
+   "lego_id": "S0125L01",
+   "lego": [
+    {
+     "known_text": "I believe that",
+     "target_text": "credo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 126,
+   "seed": {
+    "known_text": "this work is changing the shape of my brain",
+    "target_text": "questo lavoro sta cambiando la forma del mio cervello"
+   },
+   "lego_id": "S0126L03",
+   "lego": [
+    {
+     "known_text": "it is changing",
+     "target_text": "sta cambiando"
+    }
+   ]
+  },
+  {
+   "seed_number": 126,
+   "seed": {
+    "known_text": "this work is changing the shape of my brain",
+    "target_text": "questo lavoro sta cambiando la forma del mio cervello"
+   },
+   "lego_id": "S0126L04",
+   "lego": [
+    {
+     "known_text": "the shape",
+     "target_text": "la forma"
+    }
+   ]
+  },
+  {
+   "seed_number": 126,
+   "seed": {
+    "known_text": "this work is changing the shape of my brain",
+    "target_text": "questo lavoro sta cambiando la forma del mio cervello"
+   },
+   "lego_id": "S0126L05",
+   "lego": [
+    {
+     "known_text": "of my brain",
+     "target_text": "del mio cervello"
+    }
+   ]
+  },
+  {
+   "seed_number": 127,
+   "seed": {
+    "known_text": "that isn't why I wanted to see you",
+    "target_text": "non è per questo che volevo vederti"
+   },
+   "lego_id": "S0127L02",
+   "lego": [
+    {
+     "known_text": "that isn't why I wanted",
+     "target_text": "non è per questo che volevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 127,
+   "seed": {
+    "known_text": "that isn't why I wanted to see you",
+    "target_text": "non è per questo che volevo vederti"
+   },
+   "lego_id": "S0127L02",
+   "lego": [
+    {
+     "known_text": "that isn't why I wanted",
+     "target_text": "non è per questo che volevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 128,
+   "seed": {
+    "known_text": "you're like someone I used to know",
+    "target_text": "sei come qualcuno che conoscevo una volta"
+   },
+   "lego_id": "S0128L01",
+   "lego": [
+    {
+     "known_text": "someone I used to know",
+     "target_text": "qualcuno che conoscevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 128,
+   "seed": {
+    "known_text": "you're like someone I used to know",
+    "target_text": "sei come qualcuno che conoscevo una volta"
+   },
+   "lego_id": "S0128L02",
+   "lego": [
+    {
+     "known_text": "you're like",
+     "target_text": "sei come"
+    }
+   ]
+  },
+  {
+   "seed_number": 128,
+   "seed": {
+    "known_text": "you're like someone I used to know",
+    "target_text": "sei come qualcuno che conoscevo una volta"
+   },
+   "lego_id": "S0128L02",
+   "lego": [
+    {
+     "known_text": "you're like",
+     "target_text": "sei come"
+    }
+   ]
+  },
+  {
+   "seed_number": 129,
+   "seed": {
+    "known_text": "I'm so happy that you're speaking so well",
+    "target_text": "sono così felice che tu stia parlando così bene"
+   },
+   "lego_id": "S0129L01",
+   "lego": [
+    {
+     "known_text": "happy that you're speaking so well",
+     "target_text": "felice che tu stia parlando così bene"
+    }
+   ]
+  },
+  {
+   "seed_number": 129,
+   "seed": {
+    "known_text": "I'm so happy that you're speaking so well",
+    "target_text": "sono così felice che tu stia parlando così bene"
+   },
+   "lego_id": "S0129L01",
+   "lego": [
+    {
+     "known_text": "happy that you're speaking so well",
+     "target_text": "felice che tu stia parlando così bene"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "that was a surrpise, because he's my friend",
+    "target_text": "è stata una sorpresa, perché è un mio amico"
+   },
+   "lego_id": "S0130L01",
+   "lego": [
+    {
+     "known_text": "it was a surprise because",
+     "target_text": "è stata una sorpresa perché"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "that was a surrpise, because he's my friend",
+    "target_text": "è stata una sorpresa, perché è un mio amico"
+   },
+   "lego_id": "S0130L02",
+   "lego": [
+    {
+     "known_text": "he's my friend",
+     "target_text": "è un mio amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "that was a surrpise, because he's my friend",
+    "target_text": "è stata una sorpresa, perché è un mio amico"
+   },
+   "lego_id": "S0130L02",
+   "lego": [
+    {
+     "known_text": "he's my friend",
+     "target_text": "è un mio amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "that was a surrpise, because he's my friend",
+    "target_text": "è stata una sorpresa, perché è un mio amico"
+   },
+   "lego_id": "S0130L02",
+   "lego": [
+    {
+     "known_text": "he's my friend",
+     "target_text": "è un mio amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 131,
+   "seed": {
+    "known_text": "there are too many ideas going around in my head",
+    "target_text": "ci sono troppe idee che mi girano in testa"
+   },
+   "lego_id": "S0131L03",
+   "lego": [
+    {
+     "known_text": "in my head",
+     "target_text": "in testa"
+    }
+   ]
+  },
+  {
+   "seed_number": 131,
+   "seed": {
+    "known_text": "there are too many ideas going around in my head",
+    "target_text": "ci sono troppe idee che mi girano in testa"
+   },
+   "lego_id": "S0131L04",
+   "lego": [
+    {
+     "known_text": "they're going around in my head",
+     "target_text": "mi girano in testa"
+    }
+   ]
+  },
+  {
+   "seed_number": 133,
+   "seed": {
+    "known_text": "you get to know someone very well when you work together",
+    "target_text": "conosci molto bene qualcuno quando lavorate insieme"
+   },
+   "lego_id": "S0133L02",
+   "lego": [
+    {
+     "known_text": "you work together",
+     "target_text": "lavorate insieme"
+    }
+   ]
+  },
+  {
+   "seed_number": 134,
+   "seed": {
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "non è un problema quando lavori con loro a qualcosa di difficile"
+   },
+   "lego_id": "S0134L01",
+   "lego": [
+    {
+     "known_text": "problem",
+     "target_text": "problema"
+    }
+   ]
+  },
+  {
+   "seed_number": 134,
+   "seed": {
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "non è un problema quando lavori con loro a qualcosa di difficile"
+   },
+   "lego_id": "S0134L02",
+   "lego": [
+    {
+     "known_text": "you work at",
+     "target_text": "lavori a"
+    }
+   ]
+  },
+  {
+   "seed_number": 134,
+   "seed": {
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "non è un problema quando lavori con loro a qualcosa di difficile"
+   },
+   "lego_id": "S0134L03",
+   "lego": [
+    {
+     "known_text": "with them",
+     "target_text": "con loro"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "non so perché pensi che sia così bello"
+   },
+   "lego_id": "S0135L01",
+   "lego": [
+    {
+     "known_text": "you think that",
+     "target_text": "pensi che"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "non so perché pensi che sia così bello"
+   },
+   "lego_id": "S0135L02",
+   "lego": [
+    {
+     "known_text": "so good",
+     "target_text": "così bello"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L01",
+   "lego": [
+    {
+     "known_text": "of course",
+     "target_text": "certo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L01",
+   "lego": [
+    {
+     "known_text": "of course",
+     "target_text": "certo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L01",
+   "lego": [
+    {
+     "known_text": "of course",
+     "target_text": "certo che"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L02",
+   "lego": [
+    {
+     "known_text": "to ask her",
+     "target_text": "chiederlo a lei"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L02",
+   "lego": [
+    {
+     "known_text": "to ask her",
+     "target_text": "chiederlo a lei"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L03",
+   "lego": [
+    {
+     "known_text": "she's my friend",
+     "target_text": "è una mia amica"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "certo che puoi chiederlo a lei, perché è una mia amica"
+   },
+   "lego_id": "S0136L03",
+   "lego": [
+    {
+     "known_text": "she's my friend",
+     "target_text": "è una mia amica"
+    }
+   ]
+  },
+  {
+   "seed_number": 137,
+   "seed": {
+    "known_text": "it's more important to talk often than to be perfect",
+    "target_text": "è più importante parlare spesso che essere perfetti"
+   },
+   "lego_id": "S0137L02",
+   "lego": [
+    {
+     "known_text": "more important",
+     "target_text": "più importante"
+    }
+   ]
+  },
+  {
+   "seed_number": 137,
+   "seed": {
+    "known_text": "it's more important to talk often than to be perfect",
+    "target_text": "è più importante parlare spesso che essere perfetti"
+   },
+   "lego_id": "S0137L03",
+   "lego": [
+    {
+     "known_text": "than to be",
+     "target_text": "che essere"
+    }
+   ]
+  },
+  {
+   "seed_number": 139,
+   "seed": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "mi dispiace che devo andare via così presto"
+   },
+   "lego_id": "S0139L01",
+   "lego": [
+    {
+     "known_text": "so early",
+     "target_text": "così presto"
+    }
+   ]
+  },
+  {
+   "seed_number": 140,
+   "seed": {
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "mi dispiace che non riesco a vedere quello che stai provando a mostrarmi"
+   },
+   "lego_id": "S0140L01",
+   "lego": [
+    {
+     "known_text": "you're trying to show me",
+     "target_text": "stai provando a mostrarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 142,
+   "seed": {
+    "known_text": "that's very kind of you and I'm grateful to you for helping",
+    "target_text": "è molto gentile da parte tua e ti sono grato per l'aiuto"
+   },
+   "lego_id": "S0142L03",
+   "lego": [
+    {
+     "known_text": "I'm grateful to you",
+     "target_text": "ti sono grato"
+    }
+   ]
+  },
+  {
+   "seed_number": 144,
+   "seed": {
+    "known_text": "I woke earlier than I wanted to this morning",
+    "target_text": "mi sono svegliato prima di quanto volevo stamattina"
+   },
+   "lego_id": "S0144L01",
+   "lego": [
+    {
+     "known_text": "I woke up",
+     "target_text": "mi sono svegliato"
+    }
+   ]
+  },
+  {
+   "seed_number": 144,
+   "seed": {
+    "known_text": "I woke earlier than I wanted to this morning",
+    "target_text": "mi sono svegliato prima di quanto volevo stamattina"
+   },
+   "lego_id": "S0144L01",
+   "lego": [
+    {
+     "known_text": "I woke up",
+     "target_text": "mi sono svegliato"
+    }
+   ]
+  },
+  {
+   "seed_number": 146,
+   "seed": {
+    "known_text": "nothing seems to be working since we tried to fix it",
+    "target_text": "niente sembra funzionare da quando abbiamo provato a sistemarlo"
+   },
+   "lego_id": "S0146L01",
+   "lego": [
+    {
+     "known_text": "nothing seems to work",
+     "target_text": "niente sembra funzionare"
+    }
+   ]
+  },
+  {
+   "seed_number": 146,
+   "seed": {
+    "known_text": "nothing seems to be working since we tried to fix it",
+    "target_text": "niente sembra funzionare da quando abbiamo provato a sistemarlo"
+   },
+   "lego_id": "S0146L01",
+   "lego": [
+    {
+     "known_text": "nothing seems to work",
+     "target_text": "niente sembra funzionare"
+    }
+   ]
+  },
+  {
+   "seed_number": 146,
+   "seed": {
+    "known_text": "nothing seems to be working since we tried to fix it",
+    "target_text": "niente sembra funzionare da quando abbiamo provato a sistemarlo"
+   },
+   "lego_id": "S0146L02",
+   "lego": [
+    {
+     "known_text": "since we tried to fix it",
+     "target_text": "da quando abbiamo provato a sistemarlo"
+    }
+   ]
+  },
+  {
+   "seed_number": 148,
+   "seed": {
+    "known_text": "he wasn't very patient when I couldn't answer",
+    "target_text": "non era molto paziente quando non potevo rispondere"
+   },
+   "lego_id": "S0148L01",
+   "lego": [
+    {
+     "known_text": "very patient",
+     "target_text": "molto paziente"
+    }
+   ]
+  },
+  {
+   "seed_number": 148,
+   "seed": {
+    "known_text": "he wasn't very patient when I couldn't answer",
+    "target_text": "non era molto paziente quando non potevo rispondere"
+   },
+   "lego_id": "S0148L02",
+   "lego": [
+    {
+     "known_text": "I couldn't answer",
+     "target_text": "non potevo rispondere"
+    }
+   ]
+  },
+  {
+   "seed_number": 148,
+   "seed": {
+    "known_text": "he wasn't very patient when I couldn't answer",
+    "target_text": "non era molto paziente quando non potevo rispondere"
+   },
+   "lego_id": "S0148L02",
+   "lego": [
+    {
+     "known_text": "I couldn't answer",
+     "target_text": "non potevo rispondere"
+    }
+   ]
+  },
+  {
+   "seed_number": 149,
+   "seed": {
+    "known_text": "this isn't very difficult, so I hope you'll finish soon",
+    "target_text": "questo non è molto difficile, quindi spero che finirai presto"
+   },
+   "lego_id": "S0149L01",
+   "lego": [
+    {
+     "known_text": "so I hope",
+     "target_text": "quindi spero"
+    }
+   ]
+  },
+  {
+   "seed_number": 149,
+   "seed": {
+    "known_text": "this isn't very difficult, so I hope you'll finish soon",
+    "target_text": "questo non è molto difficile, quindi spero che finirai presto"
+   },
+   "lego_id": "S0149L02",
+   "lego": [
+    {
+     "known_text": "you'll finish",
+     "target_text": "finirai"
+    }
+   ]
+  },
+  {
+   "seed_number": 149,
+   "seed": {
+    "known_text": "this isn't very difficult, so I hope you'll finish soon",
+    "target_text": "questo non è molto difficile, quindi spero che finirai presto"
+   },
+   "lego_id": "S0149L02",
+   "lego": [
+    {
+     "known_text": "you'll finish",
+     "target_text": "finirai"
+    }
+   ]
+  },
+  {
+   "seed_number": 150,
+   "seed": {
+    "known_text": "can you tell me what your name is?",
+    "target_text": "puoi dirmi come ti chiami?"
+   },
+   "lego_id": "S0150L01",
+   "lego": [
+    {
+     "known_text": "can you tell me",
+     "target_text": "puoi dirmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 150,
+   "seed": {
+    "known_text": "can you tell me what your name is?",
+    "target_text": "puoi dirmi come ti chiami?"
+   },
+   "lego_id": "S0150L01",
+   "lego": [
+    {
+     "known_text": "can you tell me",
+     "target_text": "puoi dirmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 151,
+   "seed": {
+    "known_text": "it wasn't what I was hoping would happen",
+    "target_text": "non era quello che speravo succedesse"
+   },
+   "lego_id": "S0151L02",
+   "lego": [
+    {
+     "known_text": "I was hoping would happen",
+     "target_text": "speravo succedesse"
+    }
+   ]
+  },
+  {
+   "seed_number": 152,
+   "seed": {
+    "known_text": "I would have done it differently if I had known what you wanted",
+    "target_text": "l'avrei fatto diversamente se avessi saputo cosa volevi"
+   },
+   "lego_id": "S0152L01",
+   "lego": [
+    {
+     "known_text": "I would have done it",
+     "target_text": "l'avrei fatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 152,
+   "seed": {
+    "known_text": "I would have done it differently if I had known what you wanted",
+    "target_text": "l'avrei fatto diversamente se avessi saputo cosa volevi"
+   },
+   "lego_id": "S0152L01",
+   "lego": [
+    {
+     "known_text": "I would have done it",
+     "target_text": "l'avrei fatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 152,
+   "seed": {
+    "known_text": "I would have done it differently if I had known what you wanted",
+    "target_text": "l'avrei fatto diversamente se avessi saputo cosa volevi"
+   },
+   "lego_id": "S0152L03",
+   "lego": [
+    {
+     "known_text": "if I had known",
+     "target_text": "se avessi saputo"
+    }
+   ]
+  },
+  {
+   "seed_number": 152,
+   "seed": {
+    "known_text": "I would have done it differently if I had known what you wanted",
+    "target_text": "l'avrei fatto diversamente se avessi saputo cosa volevi"
+   },
+   "lego_id": "S0152L03",
+   "lego": [
+    {
+     "known_text": "if I had known",
+     "target_text": "se avessi saputo"
+    }
+   ]
+  },
+  {
+   "seed_number": 153,
+   "seed": {
+    "known_text": "I wouldn't have said it in exactly the same way",
+    "target_text": "non l'avrei detto esattamente nello stesso modo"
+   },
+   "lego_id": "S0153L01",
+   "lego": [
+    {
+     "known_text": "I wouldn't have said it",
+     "target_text": "non l'avrei detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 153,
+   "seed": {
+    "known_text": "I wouldn't have said it in exactly the same way",
+    "target_text": "non l'avrei detto esattamente nello stesso modo"
+   },
+   "lego_id": "S0153L01",
+   "lego": [
+    {
+     "known_text": "I wouldn't have said it",
+     "target_text": "non l'avrei detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 153,
+   "seed": {
+    "known_text": "I wouldn't have said it in exactly the same way",
+    "target_text": "non l'avrei detto esattamente nello stesso modo"
+   },
+   "lego_id": "S0153L01",
+   "lego": [
+    {
+     "known_text": "I wouldn't have said it",
+     "target_text": "non l'avrei detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 153,
+   "seed": {
+    "known_text": "I wouldn't have said it in exactly the same way",
+    "target_text": "non l'avrei detto esattamente nello stesso modo"
+   },
+   "lego_id": "S0153L01",
+   "lego": [
+    {
+     "known_text": "I wouldn't have said it",
+     "target_text": "non l'avrei detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 153,
+   "seed": {
+    "known_text": "I wouldn't have said it in exactly the same way",
+    "target_text": "non l'avrei detto esattamente nello stesso modo"
+   },
+   "lego_id": "S0153L03",
+   "lego": [
+    {
+     "known_text": "in the same way",
+     "target_text": "nello stesso modo"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "non mi dispiace aspettare qualche minuto domani mattina"
+   },
+   "lego_id": "S0155L01",
+   "lego": [
+    {
+     "known_text": "I don't mind",
+     "target_text": "non mi dispiace"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "non mi dispiace aspettare qualche minuto domani mattina"
+   },
+   "lego_id": "S0155L01",
+   "lego": [
+    {
+     "known_text": "I don't mind",
+     "target_text": "non mi dispiace"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "non mi dispiace aspettare qualche minuto domani mattina"
+   },
+   "lego_id": "S0155L01",
+   "lego": [
+    {
+     "known_text": "I don't mind",
+     "target_text": "non mi dispiace"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "non mi dispiace aspettare qualche minuto domani mattina"
+   },
+   "lego_id": "S0155L02",
+   "lego": [
+    {
+     "known_text": "waiting",
+     "target_text": "aspettare"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "non mi dispiace aspettare qualche minuto domani mattina"
+   },
+   "lego_id": "S0155L03",
+   "lego": [
+    {
+     "known_text": "a few minutes",
+     "target_text": "qualche minuto"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "non mi dispiace aspettare qualche minuto domani mattina"
+   },
+   "lego_id": "S0155L04",
+   "lego": [
+    {
+     "known_text": "tomorrow morning",
+     "target_text": "domani mattina"
+    }
+   ]
+  },
+  {
+   "seed_number": 156,
+   "seed": {
+    "known_text": "do you want to go to a restaurant tonight?",
+    "target_text": "vuoi andare a un ristorante stasera?"
+   },
+   "lego_id": "S0156L01",
+   "lego": [
+    {
+     "known_text": "to a restaurant",
+     "target_text": "a un ristorante"
+    }
+   ]
+  },
+  {
+   "seed_number": 158,
+   "seed": {
+    "known_text": "let's talk about something else",
+    "target_text": "parliamo di qualcos'altro"
+   },
+   "lego_id": "S0158L01",
+   "lego": [
+    {
+     "known_text": "let's talk",
+     "target_text": "parliamo"
+    }
+   ]
+  },
+  {
+   "seed_number": 158,
+   "seed": {
+    "known_text": "let's talk about something else",
+    "target_text": "parliamo di qualcos'altro"
+   },
+   "lego_id": "S0158L01",
+   "lego": [
+    {
+     "known_text": "let's talk",
+     "target_text": "parliamo"
+    }
+   ]
+  },
+  {
+   "seed_number": 159,
+   "seed": {
+    "known_text": "that isn't what I'm trying to say",
+    "target_text": "non è quello che sto provando a dire"
+   },
+   "lego_id": "S0159L01",
+   "lego": [
+    {
+     "known_text": "that isn't",
+     "target_text": "non è"
+    }
+   ]
+  },
+  {
+   "seed_number": 159,
+   "seed": {
+    "known_text": "that isn't what I'm trying to say",
+    "target_text": "non è quello che sto provando a dire"
+   },
+   "lego_id": "S0159L02",
+   "lego": [
+    {
+     "known_text": "I'm trying to say",
+     "target_text": "sto provando a dire"
+    }
+   ]
+  },
+  {
+   "seed_number": 159,
+   "seed": {
+    "known_text": "that isn't what I'm trying to say",
+    "target_text": "non è quello che sto provando a dire"
+   },
+   "lego_id": "S0159L02",
+   "lego": [
+    {
+     "known_text": "I'm trying to say",
+     "target_text": "sto provando a dire"
+    }
+   ]
+  },
+  {
+   "seed_number": 160,
+   "seed": {
+    "known_text": "how do you say this word in Italian?",
+    "target_text": "come si dice questa parola in italiano?"
+   },
+   "lego_id": "S0160L01",
+   "lego": [
+    {
+     "known_text": "how do you say",
+     "target_text": "come si dice"
+    }
+   ]
+  },
+  {
+   "seed_number": 160,
+   "seed": {
+    "known_text": "how do you say this word in Italian?",
+    "target_text": "come si dice questa parola in italiano?"
+   },
+   "lego_id": "S0160L01",
+   "lego": [
+    {
+     "known_text": "how do you say",
+     "target_text": "come si dice"
+    }
+   ]
+  },
+  {
+   "seed_number": 160,
+   "seed": {
+    "known_text": "how do you say this word in Italian?",
+    "target_text": "come si dice questa parola in italiano?"
+   },
+   "lego_id": "S0160L01",
+   "lego": [
+    {
+     "known_text": "how do you say",
+     "target_text": "come si dice"
+    }
+   ]
+  },
+  {
+   "seed_number": 162,
+   "seed": {
+    "known_text": "what do you think about that?",
+    "target_text": "che cosa ne pensi?"
+   },
+   "lego_id": "S0162L01",
+   "lego": [
+    {
+     "known_text": "about it",
+     "target_text": "ne"
+    }
+   ]
+  },
+  {
+   "seed_number": 163,
+   "seed": {
+    "known_text": "I think that it's interesting",
+    "target_text": "penso che sia interessante"
+   },
+   "lego_id": "S0163L01",
+   "lego": [
+    {
+     "known_text": "I think that it's",
+     "target_text": "penso che sia"
+    }
+   ]
+  },
+  {
+   "seed_number": 164,
+   "seed": {
+    "known_text": "an interesting book",
+    "target_text": "un libro interessante"
+   },
+   "lego_id": "S0164L01",
+   "lego": [
+    {
+     "known_text": "an interesting book",
+     "target_text": "un libro interessante"
+    }
+   ]
+  },
+  {
+   "seed_number": 164,
+   "seed": {
+    "known_text": "an interesting book",
+    "target_text": "un libro interessante"
+   },
+   "lego_id": "S0164L01",
+   "lego": [
+    {
+     "known_text": "an interesting book",
+     "target_text": "un libro interessante"
+    }
+   ]
+  },
+  {
+   "seed_number": 166,
+   "seed": {
+    "known_text": "my name is not very unusual",
+    "target_text": "il mio nome non è molto insolito"
+   },
+   "lego_id": "S0166L01",
+   "lego": [
+    {
+     "known_text": "my name",
+     "target_text": "il mio nome"
+    }
+   ]
+  },
+  {
+   "seed_number": 169,
+   "seed": {
+    "known_text": "what do you want me to do?",
+    "target_text": "che cosa vuoi che faccia?"
+   },
+   "lego_id": "S0169L01",
+   "lego": [
+    {
+     "known_text": "what do you want me to do",
+     "target_text": "che cosa vuoi che faccia"
+    }
+   ]
+  },
+  {
+   "seed_number": 169,
+   "seed": {
+    "known_text": "what do you want me to do?",
+    "target_text": "che cosa vuoi che faccia?"
+   },
+   "lego_id": "S0169L01",
+   "lego": [
+    {
+     "known_text": "what do you want me to do",
+     "target_text": "che cosa vuoi che faccia"
+    }
+   ]
+  },
+  {
+   "seed_number": 170,
+   "seed": {
+    "known_text": "I'd like you to tell me what you need",
+    "target_text": "vorrei che mi dicessi di cosa hai bisogno"
+   },
+   "lego_id": "S0170L01",
+   "lego": [
+    {
+     "known_text": "I'd like you to tell me",
+     "target_text": "vorrei che mi dicessi"
+    }
+   ]
+  },
+  {
+   "seed_number": 170,
+   "seed": {
+    "known_text": "I'd like you to tell me what you need",
+    "target_text": "vorrei che mi dicessi di cosa hai bisogno"
+   },
+   "lego_id": "S0170L02",
+   "lego": [
+    {
+     "known_text": "what you need",
+     "target_text": "di cosa hai bisogno"
+    }
+   ]
+  },
+  {
+   "seed_number": 173,
+   "seed": {
+    "known_text": "no thank you I can manage on my own",
+    "target_text": "no grazie, posso cavarmela da solo"
+   },
+   "lego_id": "S0173L01",
+   "lego": [
+    {
+     "known_text": "to manage on my own",
+     "target_text": "cavarmela da solo"
+    }
+   ]
+  },
+  {
+   "seed_number": 173,
+   "seed": {
+    "known_text": "no thank you I can manage on my own",
+    "target_text": "no grazie, posso cavarmela da solo"
+   },
+   "lego_id": "S0173L01",
+   "lego": [
+    {
+     "known_text": "to manage on my own",
+     "target_text": "cavarmela da solo"
+    }
+   ]
+  },
+  {
+   "seed_number": 174,
+   "seed": {
+    "known_text": "can you understand what I'm saying?",
+    "target_text": "riesci a capire quello che sto dicendo?"
+   },
+   "lego_id": "S0174L02",
+   "lego": [
+    {
+     "known_text": "what I'm saying",
+     "target_text": "quello che sto dicendo"
+    }
+   ]
+  },
+  {
+   "seed_number": 174,
+   "seed": {
+    "known_text": "can you understand what I'm saying?",
+    "target_text": "riesci a capire quello che sto dicendo?"
+   },
+   "lego_id": "S0174L02",
+   "lego": [
+    {
+     "known_text": "what I'm saying",
+     "target_text": "quello che sto dicendo"
+    }
+   ]
+  },
+  {
+   "seed_number": 175,
+   "seed": {
+    "known_text": "what do you want to do on Sunday morning?",
+    "target_text": "che cosa vuoi fare domenica mattina?"
+   },
+   "lego_id": "S0175L01",
+   "lego": [
+    {
+     "known_text": "what do you want",
+     "target_text": "che cosa vuoi"
+    }
+   ]
+  },
+  {
+   "seed_number": 175,
+   "seed": {
+    "known_text": "what do you want to do on Sunday morning?",
+    "target_text": "che cosa vuoi fare domenica mattina?"
+   },
+   "lego_id": "S0175L02",
+   "lego": [
+    {
+     "known_text": "on Sunday morning",
+     "target_text": "domenica mattina"
+    }
+   ]
+  },
+  {
+   "seed_number": 176,
+   "seed": {
+    "known_text": "I'll ask him if he'll be able to help next year",
+    "target_text": "gli chiederò se potrà aiutare l'anno prossimo"
+   },
+   "lego_id": "S0176L03",
+   "lego": [
+    {
+     "known_text": "next year",
+     "target_text": "l'anno prossimo"
+    }
+   ]
+  },
+  {
+   "seed_number": 178,
+   "seed": {
+    "known_text": "I didn't have time, although I wanted to see you",
+    "target_text": "non avevo tempo, anche se volevo vederti"
+   },
+   "lego_id": "S0178L01",
+   "lego": [
+    {
+     "known_text": "I didn't have",
+     "target_text": "non avevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 178,
+   "seed": {
+    "known_text": "I didn't have time, although I wanted to see you",
+    "target_text": "non avevo tempo, anche se volevo vederti"
+   },
+   "lego_id": "S0178L01",
+   "lego": [
+    {
+     "known_text": "I didn't have",
+     "target_text": "non avevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 179,
+   "seed": {
+    "known_text": "what are you going to do on Sunday afternoon?",
+    "target_text": "che cosa farai domenica pomeriggio?"
+   },
+   "lego_id": "S0179L01",
+   "lego": [
+    {
+     "known_text": "what are you going to do",
+     "target_text": "che cosa farai"
+    }
+   ]
+  },
+  {
+   "seed_number": 179,
+   "seed": {
+    "known_text": "what are you going to do on Sunday afternoon?",
+    "target_text": "che cosa farai domenica pomeriggio?"
+   },
+   "lego_id": "S0179L01",
+   "lego": [
+    {
+     "known_text": "what are you going to do",
+     "target_text": "che cosa farai"
+    }
+   ]
+  },
+  {
+   "seed_number": 179,
+   "seed": {
+    "known_text": "what are you going to do on Sunday afternoon?",
+    "target_text": "che cosa farai domenica pomeriggio?"
+   },
+   "lego_id": "S0179L01",
+   "lego": [
+    {
+     "known_text": "what are you going to do",
+     "target_text": "che cosa farai"
+    }
+   ]
+  },
+  {
+   "seed_number": 179,
+   "seed": {
+    "known_text": "what are you going to do on Sunday afternoon?",
+    "target_text": "che cosa farai domenica pomeriggio?"
+   },
+   "lego_id": "S0179L02",
+   "lego": [
+    {
+     "known_text": "on Sunday afternoon",
+     "target_text": "domenica pomeriggio"
+    }
+   ]
+  },
+  {
+   "seed_number": 180,
+   "seed": {
+    "known_text": "I'd like to read my book for a while",
+    "target_text": "mi piacerebbe leggere il mio libro per un po'"
+   },
+   "lego_id": "S0180L01",
+   "lego": [
+    {
+     "known_text": "my",
+     "target_text": "mio"
+    }
+   ]
+  },
+  {
+   "seed_number": 180,
+   "seed": {
+    "known_text": "I'd like to read my book for a while",
+    "target_text": "mi piacerebbe leggere il mio libro per un po'"
+   },
+   "lego_id": "S0180L02",
+   "lego": [
+    {
+     "known_text": "for a while",
+     "target_text": "per un po'"
+    }
+   ]
+  },
+  {
+   "seed_number": 181,
+   "seed": {
+    "known_text": "but I have to take my mother to the doctor",
+    "target_text": "ma devo portare mia madre dal medico"
+   },
+   "lego_id": "S0181L01",
+   "lego": [
+    {
+     "known_text": "my mother",
+     "target_text": "mia madre"
+    }
+   ]
+  },
+  {
+   "seed_number": 181,
+   "seed": {
+    "known_text": "but I have to take my mother to the doctor",
+    "target_text": "ma devo portare mia madre dal medico"
+   },
+   "lego_id": "S0181L03",
+   "lego": [
+    {
+     "known_text": "to the doctor",
+     "target_text": "dal medico"
+    }
+   ]
+  },
+  {
+   "seed_number": 182,
+   "seed": {
+    "known_text": "have you seen my keys anywhere?",
+    "target_text": "hai visto le mie chiavi da qualche parte?"
+   },
+   "lego_id": "S0182L01",
+   "lego": [
+    {
+     "known_text": "my keys",
+     "target_text": "le mie chiavi"
+    }
+   ]
+  },
+  {
+   "seed_number": 182,
+   "seed": {
+    "known_text": "have you seen my keys anywhere?",
+    "target_text": "hai visto le mie chiavi da qualche parte?"
+   },
+   "lego_id": "S0182L02",
+   "lego": [
+    {
+     "known_text": "anywhere",
+     "target_text": "da qualche parte"
+    }
+   ]
+  },
+  {
+   "seed_number": 183,
+   "seed": {
+    "known_text": "no I'm afraid I haven't seen them",
+    "target_text": "no, temo di non averle viste"
+   },
+   "lego_id": "S0183L01",
+   "lego": [
+    {
+     "known_text": "I'm afraid to",
+     "target_text": "temo di"
+    }
+   ]
+  },
+  {
+   "seed_number": 184,
+   "seed": {
+    "known_text": "yes I saw them in the office a while ago",
+    "target_text": "sì, le ho viste in ufficio un po' di tempo fa"
+   },
+   "lego_id": "S0184L02",
+   "lego": [
+    {
+     "known_text": "a while ago",
+     "target_text": "un po' di tempo fa"
+    }
+   ]
+  },
+  {
+   "seed_number": 185,
+   "seed": {
+    "known_text": "I think you left them at work",
+    "target_text": "penso che tu le abbia lasciate al lavoro"
+   },
+   "lego_id": "S0185L01",
+   "lego": [
+    {
+     "known_text": "that you left them",
+     "target_text": "che tu le abbia lasciate"
+    }
+   ]
+  },
+  {
+   "seed_number": 186,
+   "seed": {
+    "known_text": "do you want to talk about something different next week?",
+    "target_text": "vuoi parlare di qualcosa di diverso la prossima settimana?"
+   },
+   "lego_id": "S0186L01",
+   "lego": [
+    {
+     "known_text": "something different",
+     "target_text": "qualcosa di diverso"
+    }
+   ]
+  },
+  {
+   "seed_number": 189,
+   "seed": {
+    "known_text": "yes that's a good idea",
+    "target_text": "sì, è una buona idea"
+   },
+   "lego_id": "S0189L01",
+   "lego": [
+    {
+     "known_text": "that's a good idea",
+     "target_text": "è una buona idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 189,
+   "seed": {
+    "known_text": "yes that's a good idea",
+    "target_text": "sì, è una buona idea"
+   },
+   "lego_id": "S0189L01",
+   "lego": [
+    {
+     "known_text": "that's a good idea",
+     "target_text": "è una buona idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 191,
+   "seed": {
+    "known_text": "no I don't mind at all",
+    "target_text": "no, non mi dispiace affatto"
+   },
+   "lego_id": "S0191L01",
+   "lego": [
+    {
+     "known_text": "no I don't mind at all",
+     "target_text": "no non mi dispiace affatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 191,
+   "seed": {
+    "known_text": "no I don't mind at all",
+    "target_text": "no, non mi dispiace affatto"
+   },
+   "lego_id": "S0191L01",
+   "lego": [
+    {
+     "known_text": "no I don't mind at all",
+     "target_text": "no non mi dispiace affatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 191,
+   "seed": {
+    "known_text": "no I don't mind at all",
+    "target_text": "no, non mi dispiace affatto"
+   },
+   "lego_id": "S0191L01",
+   "lego": [
+    {
+     "known_text": "no I don't mind at all",
+     "target_text": "no non mi dispiace affatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 192,
+   "seed": {
+    "known_text": "I'm busy tomorrow night",
+    "target_text": "sono occupato domani sera"
+   },
+   "lego_id": "S0192L02",
+   "lego": [
+    {
+     "known_text": "tomorrow night",
+     "target_text": "domani sera"
+    }
+   ]
+  },
+  {
+   "seed_number": 193,
+   "seed": {
+    "known_text": "I'm sorry but I'm too busy today",
+    "target_text": "mi dispiace, ma oggi sono troppo occupato"
+   },
+   "lego_id": "S0193L01",
+   "lego": [
+    {
+     "known_text": "I'm sorry but I'm too busy",
+     "target_text": "mi dispiace, ma sono troppo occupato"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "che cosa stai cercando?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "what are you looking for",
+     "target_text": "che cosa stai cercando"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "che cosa stai cercando?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "what are you looking for",
+     "target_text": "che cosa stai cercando"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "che cosa stai cercando?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "what are you looking for",
+     "target_text": "che cosa stai cercando"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "che cosa stai cercando?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "what are you looking for",
+     "target_text": "che cosa stai cercando"
+    }
+   ]
+  },
+  {
+   "seed_number": 195,
+   "seed": {
+    "known_text": "I'm trying to find the money I left on the table",
+    "target_text": "sto provando a trovare i soldi che ho lasciato sul tavolo"
+   },
+   "lego_id": "S0195L03",
+   "lego": [
+    {
+     "known_text": "on the table",
+     "target_text": "sul tavolo"
+    }
+   ]
+  },
+  {
+   "seed_number": 195,
+   "seed": {
+    "known_text": "I'm trying to find the money I left on the table",
+    "target_text": "sto provando a trovare i soldi che ho lasciato sul tavolo"
+   },
+   "lego_id": "S0195L03",
+   "lego": [
+    {
+     "known_text": "on the table",
+     "target_text": "sul tavolo"
+    }
+   ]
+  },
+  {
+   "seed_number": 196,
+   "seed": {
+    "known_text": "have you heard the latest idea?",
+    "target_text": "hai sentito l'ultima idea?"
+   },
+   "lego_id": "S0196L01",
+   "lego": [
+    {
+     "known_text": "have you heard",
+     "target_text": "hai sentito"
+    }
+   ]
+  },
+  {
+   "seed_number": 197,
+   "seed": {
+    "known_text": "my son works as a teacher",
+    "target_text": "mio figlio lavora come insegnante"
+   },
+   "lego_id": "S0197L01",
+   "lego": [
+    {
+     "known_text": "son",
+     "target_text": "figlio"
+    }
+   ]
+  },
+  {
+   "seed_number": 197,
+   "seed": {
+    "known_text": "my son works as a teacher",
+    "target_text": "mio figlio lavora come insegnante"
+   },
+   "lego_id": "S0197L03",
+   "lego": [
+    {
+     "known_text": "works as",
+     "target_text": "lavora come"
+    }
+   ]
+  },
+  {
+   "seed_number": 198,
+   "seed": {
+    "known_text": "my daughter works for the council",
+    "target_text": "mia figlia lavora per il comune"
+   },
+   "lego_id": "S0198L01",
+   "lego": [
+    {
+     "known_text": "daughter",
+     "target_text": "figlia"
+    }
+   ]
+  },
+  {
+   "seed_number": 198,
+   "seed": {
+    "known_text": "my daughter works for the council",
+    "target_text": "mia figlia lavora per il comune"
+   },
+   "lego_id": "S0198L02",
+   "lego": [
+    {
+     "known_text": "works for the council",
+     "target_text": "lavora per il comune"
+    }
+   ]
+  },
+  {
+   "seed_number": 198,
+   "seed": {
+    "known_text": "my daughter works for the council",
+    "target_text": "mia figlia lavora per il comune"
+   },
+   "lego_id": "S0198L02",
+   "lego": [
+    {
+     "known_text": "works for the council",
+     "target_text": "lavora per il comune"
+    }
+   ]
+  },
+  {
+   "seed_number": 200,
+   "seed": {
+    "known_text": "they say they want to make sure that we finish everything in time",
+    "target_text": "dicono che vogliono assicurarsi che finiamo tutto in tempo"
+   },
+   "lego_id": "S0200L01",
+   "lego": [
+    {
+     "known_text": "they say",
+     "target_text": "dicono"
+    }
+   ]
+  },
+  {
+   "seed_number": 200,
+   "seed": {
+    "known_text": "they say they want to make sure that we finish everything in time",
+    "target_text": "dicono che vogliono assicurarsi che finiamo tutto in tempo"
+   },
+   "lego_id": "S0200L01",
+   "lego": [
+    {
+     "known_text": "they say",
+     "target_text": "dicono"
+    }
+   ]
+  },
+  {
+   "seed_number": 200,
+   "seed": {
+    "known_text": "they say they want to make sure that we finish everything in time",
+    "target_text": "dicono che vogliono assicurarsi che finiamo tutto in tempo"
+   },
+   "lego_id": "S0200L02",
+   "lego": [
+    {
+     "known_text": "they want",
+     "target_text": "vogliono"
+    }
+   ]
+  },
+  {
+   "seed_number": 200,
+   "seed": {
+    "known_text": "they say they want to make sure that we finish everything in time",
+    "target_text": "dicono che vogliono assicurarsi che finiamo tutto in tempo"
+   },
+   "lego_id": "S0200L03",
+   "lego": [
+    {
+     "known_text": "to make sure",
+     "target_text": "assicurarsi"
+    }
+   ]
+  },
+  {
+   "seed_number": 200,
+   "seed": {
+    "known_text": "they say they want to make sure that we finish everything in time",
+    "target_text": "dicono che vogliono assicurarsi che finiamo tutto in tempo"
+   },
+   "lego_id": "S0200L03",
+   "lego": [
+    {
+     "known_text": "to make sure",
+     "target_text": "assicurarsi"
+    }
+   ]
+  },
+  {
+   "seed_number": 203,
+   "seed": {
+    "known_text": "what would you do if I asked you to help me?",
+    "target_text": "che cosa faresti se ti chiedessi di aiutarmi?"
+   },
+   "lego_id": "S0203L01",
+   "lego": [
+    {
+     "known_text": "what would you do",
+     "target_text": "che cosa faresti"
+    }
+   ]
+  },
+  {
+   "seed_number": 203,
+   "seed": {
+    "known_text": "what would you do if I asked you to help me?",
+    "target_text": "che cosa faresti se ti chiedessi di aiutarmi?"
+   },
+   "lego_id": "S0203L02",
+   "lego": [
+    {
+     "known_text": "if I asked you",
+     "target_text": "se ti chiedessi"
+    }
+   ]
+  },
+  {
+   "seed_number": 203,
+   "seed": {
+    "known_text": "what would you do if I asked you to help me?",
+    "target_text": "che cosa faresti se ti chiedessi di aiutarmi?"
+   },
+   "lego_id": "S0203L03",
+   "lego": [
+    {
+     "known_text": "to help me",
+     "target_text": "di aiutarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 204,
+   "seed": {
+    "known_text": "I wanted her to help you to deal with the arrangements",
+    "target_text": "volevo che lei ti aiutasse a occuparti dell'organizzazione"
+   },
+   "lego_id": "S0204L02",
+   "lego": [
+    {
+     "known_text": "her to help you",
+     "target_text": "che lei ti aiutasse"
+    }
+   ]
+  },
+  {
+   "seed_number": 204,
+   "seed": {
+    "known_text": "I wanted her to help you to deal with the arrangements",
+    "target_text": "volevo che lei ti aiutasse a occuparti dell'organizzazione"
+   },
+   "lego_id": "S0204L03",
+   "lego": [
+    {
+     "known_text": "to deal with",
+     "target_text": "a occuparti"
+    }
+   ]
+  },
+  {
+   "seed_number": 204,
+   "seed": {
+    "known_text": "I wanted her to help you to deal with the arrangements",
+    "target_text": "volevo che lei ti aiutasse a occuparti dell'organizzazione"
+   },
+   "lego_id": "S0204L03",
+   "lego": [
+    {
+     "known_text": "to deal with",
+     "target_text": "a occuparti"
+    }
+   ]
+  },
+  {
+   "seed_number": 205,
+   "seed": {
+    "known_text": "I've forgotten the word I was trying to say",
+    "target_text": "ho dimenticato la parola che stavo provando a dire"
+   },
+   "lego_id": "S0205L01",
+   "lego": [
+    {
+     "known_text": "I've forgotten",
+     "target_text": "ho dimenticato"
+    }
+   ]
+  },
+  {
+   "seed_number": 205,
+   "seed": {
+    "known_text": "I've forgotten the word I was trying to say",
+    "target_text": "ho dimenticato la parola che stavo provando a dire"
+   },
+   "lego_id": "S0205L02",
+   "lego": [
+    {
+     "known_text": "I was trying to",
+     "target_text": "stavo provando a"
+    }
+   ]
+  },
+  {
+   "seed_number": 205,
+   "seed": {
+    "known_text": "I've forgotten the word I was trying to say",
+    "target_text": "ho dimenticato la parola che stavo provando a dire"
+   },
+   "lego_id": "S0205L02",
+   "lego": [
+    {
+     "known_text": "I was trying to",
+     "target_text": "stavo provando a"
+    }
+   ]
+  },
+  {
+   "seed_number": 205,
+   "seed": {
+    "known_text": "I've forgotten the word I was trying to say",
+    "target_text": "ho dimenticato la parola che stavo provando a dire"
+   },
+   "lego_id": "S0205L02",
+   "lego": [
+    {
+     "known_text": "I was trying to",
+     "target_text": "stavo provando a"
+    }
+   ]
+  },
+  {
+   "seed_number": 206,
+   "seed": {
+    "known_text": "I enjoy the chance to practise speaking with you",
+    "target_text": "mi piace l'occasione di fare pratica parlando con te"
+   },
+   "lego_id": "S0206L01",
+   "lego": [
+    {
+     "known_text": "I enjoy the chance to practise speaking",
+     "target_text": "mi piace l'occasione di fare pratica parlando"
+    }
+   ]
+  },
+  {
+   "seed_number": 206,
+   "seed": {
+    "known_text": "I enjoy the chance to practise speaking with you",
+    "target_text": "mi piace l'occasione di fare pratica parlando con te"
+   },
+   "lego_id": "S0206L01",
+   "lego": [
+    {
+     "known_text": "I enjoy the chance to practise speaking",
+     "target_text": "mi piace l'occasione di fare pratica parlando"
+    }
+   ]
+  },
+  {
+   "seed_number": 207,
+   "seed": {
+    "known_text": "you've done what you needed to do",
+    "target_text": "hai fatto quello che dovevi fare"
+   },
+   "lego_id": "S0207L01",
+   "lego": [
+    {
+     "known_text": "you've done",
+     "target_text": "hai fatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 207,
+   "seed": {
+    "known_text": "you've done what you needed to do",
+    "target_text": "hai fatto quello che dovevi fare"
+   },
+   "lego_id": "S0207L02",
+   "lego": [
+    {
+     "known_text": "you needed to",
+     "target_text": "dovevi"
+    }
+   ]
+  },
+  {
+   "seed_number": 208,
+   "seed": {
+    "known_text": "I didn't want to ask you how to say it",
+    "target_text": "non volevo chiederti come dirlo"
+   },
+   "lego_id": "S0208L01",
+   "lego": [
+    {
+     "known_text": "I didn't want to",
+     "target_text": "non volevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 208,
+   "seed": {
+    "known_text": "I didn't want to ask you how to say it",
+    "target_text": "non volevo chiederti come dirlo"
+   },
+   "lego_id": "S0208L01",
+   "lego": [
+    {
+     "known_text": "I didn't want to",
+     "target_text": "non volevo"
+    }
+   ]
+  },
+  {
+   "seed_number": 208,
+   "seed": {
+    "known_text": "I didn't want to ask you how to say it",
+    "target_text": "non volevo chiederti come dirlo"
+   },
+   "lego_id": "S0208L02",
+   "lego": [
+    {
+     "known_text": "how to say it",
+     "target_text": "come dirlo"
+    }
+   ]
+  },
+  {
+   "seed_number": 208,
+   "seed": {
+    "known_text": "I didn't want to ask you how to say it",
+    "target_text": "non volevo chiederti come dirlo"
+   },
+   "lego_id": "S0208L02",
+   "lego": [
+    {
+     "known_text": "how to say it",
+     "target_text": "come dirlo"
+    }
+   ]
+  },
+  {
+   "seed_number": 208,
+   "seed": {
+    "known_text": "I didn't want to ask you how to say it",
+    "target_text": "non volevo chiederti come dirlo"
+   },
+   "lego_id": "S0208L02",
+   "lego": [
+    {
+     "known_text": "how to say it",
+     "target_text": "come dirlo"
+    }
+   ]
+  },
+  {
+   "seed_number": 209,
+   "seed": {
+    "known_text": "they want to spend more time meeting as a group",
+    "target_text": "vogliono passare più tempo incontrandosi come gruppo"
+   },
+   "lego_id": "S0209L02",
+   "lego": [
+    {
+     "known_text": "to spend more time",
+     "target_text": "passare più tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 209,
+   "seed": {
+    "known_text": "they want to spend more time meeting as a group",
+    "target_text": "vogliono passare più tempo incontrandosi come gruppo"
+   },
+   "lego_id": "S0209L02",
+   "lego": [
+    {
+     "known_text": "to spend more time",
+     "target_text": "passare più tempo"
+    }
+   ]
+  },
+  {
+   "seed_number": 209,
+   "seed": {
+    "known_text": "they want to spend more time meeting as a group",
+    "target_text": "vogliono passare più tempo incontrandosi come gruppo"
+   },
+   "lego_id": "S0209L03",
+   "lego": [
+    {
+     "known_text": "meeting together as a group",
+     "target_text": "incontrandosi come gruppo"
+    }
+   ]
+  },
+  {
+   "seed_number": 210,
+   "seed": {
+    "known_text": "they think that we need to discuss the problem",
+    "target_text": "pensano che dobbiamo discutere il problema"
+   },
+   "lego_id": "S0210L01",
+   "lego": [
+    {
+     "known_text": "they think that",
+     "target_text": "pensano che"
+    }
+   ]
+  },
+  {
+   "seed_number": 210,
+   "seed": {
+    "known_text": "they think that we need to discuss the problem",
+    "target_text": "pensano che dobbiamo discutere il problema"
+   },
+   "lego_id": "S0210L01",
+   "lego": [
+    {
+     "known_text": "they think that",
+     "target_text": "pensano che"
+    }
+   ]
+  },
+  {
+   "seed_number": 210,
+   "seed": {
+    "known_text": "they think that we need to discuss the problem",
+    "target_text": "pensano che dobbiamo discutere il problema"
+   },
+   "lego_id": "S0210L03",
+   "lego": [
+    {
+     "known_text": "to discuss",
+     "target_text": "discutere"
+    }
+   ]
+  },
+  {
+   "seed_number": 211,
+   "seed": {
+    "known_text": "they told us that they didn't want to explain",
+    "target_text": "ci hanno detto che non volevano spiegare"
+   },
+   "lego_id": "S0211L01",
+   "lego": [
+    {
+     "known_text": "they told us",
+     "target_text": "ci hanno detto"
+    }
+   ]
+  },
+  {
+   "seed_number": 212,
+   "seed": {
+    "known_text": "they wanted to ask for help",
+    "target_text": "volevano chiedere aiuto"
+   },
+   "lego_id": "S0212L01",
+   "lego": [
+    {
+     "known_text": "to ask for",
+     "target_text": "chiedere"
+    }
+   ]
+  },
+  {
+   "seed_number": 214,
+   "seed": {
+    "known_text": "did you have a good time at the weekend?",
+    "target_text": "ti sei divertito nel fine settimana?"
+   },
+   "lego_id": "S0214L01",
+   "lego": [
+    {
+     "known_text": "have a good time",
+     "target_text": "ti sei divertito"
+    }
+   ]
+  },
+  {
+   "seed_number": 214,
+   "seed": {
+    "known_text": "did you have a good time at the weekend?",
+    "target_text": "ti sei divertito nel fine settimana?"
+   },
+   "lego_id": "S0214L01",
+   "lego": [
+    {
+     "known_text": "have a good time",
+     "target_text": "ti sei divertito"
+    }
+   ]
+  },
+  {
+   "seed_number": 214,
+   "seed": {
+    "known_text": "did you have a good time at the weekend?",
+    "target_text": "ti sei divertito nel fine settimana?"
+   },
+   "lego_id": "S0214L02",
+   "lego": [
+    {
+     "known_text": "at the weekend",
+     "target_text": "nel fine settimana"
+    }
+   ]
+  },
+  {
+   "seed_number": 215,
+   "seed": {
+    "known_text": "I went out on Saturday night",
+    "target_text": "sono uscito sabato sera"
+   },
+   "lego_id": "S0215L01",
+   "lego": [
+    {
+     "known_text": "I went out",
+     "target_text": "sono uscito"
+    }
+   ]
+  },
+  {
+   "seed_number": 215,
+   "seed": {
+    "known_text": "I went out on Saturday night",
+    "target_text": "sono uscito sabato sera"
+   },
+   "lego_id": "S0215L01",
+   "lego": [
+    {
+     "known_text": "I went out",
+     "target_text": "sono uscito"
+    }
+   ]
+  },
+  {
+   "seed_number": 215,
+   "seed": {
+    "known_text": "I went out on Saturday night",
+    "target_text": "sono uscito sabato sera"
+   },
+   "lego_id": "S0215L01",
+   "lego": [
+    {
+     "known_text": "I went out",
+     "target_text": "sono uscito"
+    }
+   ]
+  },
+  {
+   "seed_number": 216,
+   "seed": {
+    "known_text": "I saw a few friends",
+    "target_text": "ho visto alcuni amici"
+   },
+   "lego_id": "S0216L01",
+   "lego": [
+    {
+     "known_text": "a few",
+     "target_text": "alcuni"
+    }
+   ]
+  },
+  {
+   "seed_number": 218,
+   "seed": {
+    "known_text": "I didn't do much on Sunday",
+    "target_text": "non ho fatto molto domenica"
+   },
+   "lego_id": "S0218L01",
+   "lego": [
+    {
+     "known_text": "I didn't do much",
+     "target_text": "non ho fatto molto"
+    }
+   ]
+  },
+  {
+   "seed_number": 218,
+   "seed": {
+    "known_text": "I didn't do much on Sunday",
+    "target_text": "non ho fatto molto domenica"
+   },
+   "lego_id": "S0218L01",
+   "lego": [
+    {
+     "known_text": "I didn't do much",
+     "target_text": "non ho fatto molto"
+    }
+   ]
+  },
+  {
+   "seed_number": 218,
+   "seed": {
+    "known_text": "I didn't do much on Sunday",
+    "target_text": "non ho fatto molto domenica"
+   },
+   "lego_id": "S0218L01",
+   "lego": [
+    {
+     "known_text": "I didn't do much",
+     "target_text": "non ho fatto molto"
+    }
+   ]
+  },
+  {
+   "seed_number": 219,
+   "seed": {
+    "known_text": "it was nice to relax for a while",
+    "target_text": "è stato bello rilassarsi per un po'"
+   },
+   "lego_id": "S0219L01",
+   "lego": [
+    {
+     "known_text": "it was",
+     "target_text": "è stato"
+    }
+   ]
+  },
+  {
+   "seed_number": 219,
+   "seed": {
+    "known_text": "it was nice to relax for a while",
+    "target_text": "è stato bello rilassarsi per un po'"
+   },
+   "lego_id": "S0219L01",
+   "lego": [
+    {
+     "known_text": "it was",
+     "target_text": "è stato"
+    }
+   ]
+  },
+  {
+   "seed_number": 220,
+   "seed": {
+    "known_text": "did you watch a bit of television?",
+    "target_text": "hai guardato un po' di televisione?"
+   },
+   "lego_id": "S0220L01",
+   "lego": [
+    {
+     "known_text": "did you watch",
+     "target_text": "hai guardato"
+    }
+   ]
+  },
+  {
+   "seed_number": 220,
+   "seed": {
+    "known_text": "did you watch a bit of television?",
+    "target_text": "hai guardato un po' di televisione?"
+   },
+   "lego_id": "S0220L01",
+   "lego": [
+    {
+     "known_text": "did you watch",
+     "target_text": "hai guardato"
+    }
+   ]
+  },
+  {
+   "seed_number": 220,
+   "seed": {
+    "known_text": "did you watch a bit of television?",
+    "target_text": "hai guardato un po' di televisione?"
+   },
+   "lego_id": "S0220L01",
+   "lego": [
+    {
+     "known_text": "did you watch",
+     "target_text": "hai guardato"
+    }
+   ]
+  },
+  {
+   "seed_number": 220,
+   "seed": {
+    "known_text": "did you watch a bit of television?",
+    "target_text": "hai guardato un po' di televisione?"
+   },
+   "lego_id": "S0220L02",
+   "lego": [
+    {
+     "known_text": "a bit of",
+     "target_text": "un po' di"
+    }
+   ]
+  },
+  {
+   "seed_number": 220,
+   "seed": {
+    "known_text": "did you watch a bit of television?",
+    "target_text": "hai guardato un po' di televisione?"
+   },
+   "lego_id": "S0220L02",
+   "lego": [
+    {
+     "known_text": "a bit of",
+     "target_text": "un po' di"
+    }
+   ]
+  },
+  {
+   "seed_number": 224,
+   "seed": {
+    "known_text": "he's just started to learn",
+    "target_text": "ha appena cominciato a imparare"
+   },
+   "lego_id": "S0224L01",
+   "lego": [
+    {
+     "known_text": "he's just started to learn",
+     "target_text": "ha appena cominciato a imparare"
+    }
+   ]
+  },
+  {
+   "seed_number": 226,
+   "seed": {
+    "known_text": "the man is trying to help me",
+    "target_text": "l'uomo sta provando ad aiutarmi"
+   },
+   "lego_id": "S0226L01",
+   "lego": [
+    {
+     "known_text": "the man",
+     "target_text": "l'uomo"
+    }
+   ]
+  },
+  {
+   "seed_number": 226,
+   "seed": {
+    "known_text": "the man is trying to help me",
+    "target_text": "l'uomo sta provando ad aiutarmi"
+   },
+   "lego_id": "S0226L01",
+   "lego": [
+    {
+     "known_text": "the man",
+     "target_text": "l'uomo"
+    }
+   ]
+  },
+  {
+   "seed_number": 227,
+   "seed": {
+    "known_text": "that man is going to tell me something new",
+    "target_text": "quell'uomo mi dirà qualcosa di nuovo"
+   },
+   "lego_id": "S0227L01",
+   "lego": [
+    {
+     "known_text": "that man",
+     "target_text": "quell'uomo"
+    }
+   ]
+  },
+  {
+   "seed_number": 227,
+   "seed": {
+    "known_text": "that man is going to tell me something new",
+    "target_text": "quell'uomo mi dirà qualcosa di nuovo"
+   },
+   "lego_id": "S0227L01",
+   "lego": [
+    {
+     "known_text": "that man",
+     "target_text": "quell'uomo"
+    }
+   ]
+  },
+  {
+   "seed_number": 228,
+   "seed": {
+    "known_text": "that man has just started to practise speaking",
+    "target_text": "quell'uomo ha appena cominciato a fare pratica parlando"
+   },
+   "lego_id": "S0228L01",
+   "lego": [
+    {
+     "known_text": "started to practise speaking",
+     "target_text": "cominciato a fare pratica parlando"
+    }
+   ]
+  },
+  {
+   "seed_number": 229,
+   "seed": {
+    "known_text": "that woman would help you if she could",
+    "target_text": "quella donna ti aiuterebbe se potesse"
+   },
+   "lego_id": "S0229L01",
+   "lego": [
+    {
+     "known_text": "that woman",
+     "target_text": "quella donna"
+    }
+   ]
+  },
+  {
+   "seed_number": 229,
+   "seed": {
+    "known_text": "that woman would help you if she could",
+    "target_text": "quella donna ti aiuterebbe se potesse"
+   },
+   "lego_id": "S0229L01",
+   "lego": [
+    {
+     "known_text": "that woman",
+     "target_text": "quella donna"
+    }
+   ]
+  },
+  {
+   "seed_number": 229,
+   "seed": {
+    "known_text": "that woman would help you if she could",
+    "target_text": "quella donna ti aiuterebbe se potesse"
+   },
+   "lego_id": "S0229L02",
+   "lego": [
+    {
+     "known_text": "she would help you",
+     "target_text": "ti aiuterebbe"
+    }
+   ]
+  },
+  {
+   "seed_number": 230,
+   "seed": {
+    "known_text": "I know a young man who wants to work with you",
+    "target_text": "conosco un giovane uomo che vuole lavorare con te"
+   },
+   "lego_id": "S0230L01",
+   "lego": [
+    {
+     "known_text": "a young man who wants to work",
+     "target_text": "un giovane uomo che vuole lavorare"
+    }
+   ]
+  },
+  {
+   "seed_number": 232,
+   "seed": {
+    "known_text": "I know an old woman who can remember the answer",
+    "target_text": "conosco una donna anziana che può ricordare la risposta"
+   },
+   "lego_id": "S0232L01",
+   "lego": [
+    {
+     "known_text": "an old woman",
+     "target_text": "una donna anziana"
+    }
+   ]
+  },
+  {
+   "seed_number": 232,
+   "seed": {
+    "known_text": "I know an old woman who can remember the answer",
+    "target_text": "conosco una donna anziana che può ricordare la risposta"
+   },
+   "lego_id": "S0232L02",
+   "lego": [
+    {
+     "known_text": "who can remember",
+     "target_text": "che può ricordare"
+    }
+   ]
+  },
+  {
+   "seed_number": 233,
+   "seed": {
+    "known_text": "I know a young woman who knows your sister",
+    "target_text": "conosco una giovane donna che conosce tua sorella"
+   },
+   "lego_id": "S0233L01",
+   "lego": [
+    {
+     "known_text": "a young woman",
+     "target_text": "una giovane donna"
+    }
+   ]
+  },
+  {
+   "seed_number": 233,
+   "seed": {
+    "known_text": "I know a young woman who knows your sister",
+    "target_text": "conosco una giovane donna che conosce tua sorella"
+   },
+   "lego_id": "S0233L02",
+   "lego": [
+    {
+     "known_text": "who knows your sister",
+     "target_text": "che conosce tua sorella"
+    }
+   ]
+  },
+  {
+   "seed_number": 234,
+   "seed": {
+    "known_text": "I met someone last night who works with your brother",
+    "target_text": "ho incontrato qualcuno ieri sera che lavora con tuo fratello"
+   },
+   "lego_id": "S0234L01",
+   "lego": [
+    {
+     "known_text": "I met someone",
+     "target_text": "ho incontrato qualcuno"
+    }
+   ]
+  },
+  {
+   "seed_number": 234,
+   "seed": {
+    "known_text": "I met someone last night who works with your brother",
+    "target_text": "ho incontrato qualcuno ieri sera che lavora con tuo fratello"
+   },
+   "lego_id": "S0234L01",
+   "lego": [
+    {
+     "known_text": "I met someone",
+     "target_text": "ho incontrato qualcuno"
+    }
+   ]
+  },
+  {
+   "seed_number": 234,
+   "seed": {
+    "known_text": "I met someone last night who works with your brother",
+    "target_text": "ho incontrato qualcuno ieri sera che lavora con tuo fratello"
+   },
+   "lego_id": "S0234L02",
+   "lego": [
+    {
+     "known_text": "who works with your brother",
+     "target_text": "che lavora con tuo fratello"
+    }
+   ]
+  },
+  {
+   "seed_number": 235,
+   "seed": {
+    "known_text": "I met someone who said that he wanted to tell you something",
+    "target_text": "ho incontrato qualcuno che ha detto che voleva dirti qualcosa"
+   },
+   "lego_id": "S0235L01",
+   "lego": [
+    {
+     "known_text": "who said that he wanted to tell you",
+     "target_text": "che ha detto che voleva dirti"
+    }
+   ]
+  },
+  {
+   "seed_number": 237,
+   "seed": {
+    "known_text": "he wanted me to tell you before the weekend",
+    "target_text": "voleva che te lo dicessi prima del fine settimana"
+   },
+   "lego_id": "S0237L01",
+   "lego": [
+    {
+     "known_text": "he wanted me to tell you",
+     "target_text": "voleva che te lo dicessi"
+    }
+   ]
+  },
+  {
+   "seed_number": 237,
+   "seed": {
+    "known_text": "he wanted me to tell you before the weekend",
+    "target_text": "voleva che te lo dicessi prima del fine settimana"
+   },
+   "lego_id": "S0237L02",
+   "lego": [
+    {
+     "known_text": "before the weekend",
+     "target_text": "prima del fine settimana"
+    }
+   ]
+  },
+  {
+   "seed_number": 239,
+   "seed": {
+    "known_text": "my mother likes to read",
+    "target_text": "a mia madre piace leggere"
+   },
+   "lego_id": "S0239L01",
+   "lego": [
+    {
+     "known_text": "my mother likes to",
+     "target_text": "a mia madre piace"
+    }
+   ]
+  },
+  {
+   "seed_number": 241,
+   "seed": {
+    "known_text": "I don't want to give it to him",
+    "target_text": "non voglio darglielo"
+   },
+   "lego_id": "S0241L01",
+   "lego": [
+    {
+     "known_text": "to give it to him",
+     "target_text": "darglielo"
+    }
+   ]
+  },
+  {
+   "seed_number": 242,
+   "seed": {
+    "known_text": "I want to give her more time",
+    "target_text": "voglio darle più tempo"
+   },
+   "lego_id": "S0242L01",
+   "lego": [
+    {
+     "known_text": "to give her",
+     "target_text": "darle"
+    }
+   ]
+  },
+  {
+   "seed_number": 245,
+   "seed": {
+    "known_text": "I'm happy with how much I've done in a short time",
+    "target_text": "sono contento di quanto ho fatto in poco tempo"
+   },
+   "lego_id": "S0245L01",
+   "lego": [
+    {
+     "known_text": "how much",
+     "target_text": "quanto"
+    }
+   ]
+  },
+  {
+   "seed_number": 246,
+   "seed": {
+    "known_text": "I wanted her to help you but she was too busy",
+    "target_text": "volevo che lei ti aiutasse ma era troppo occupata"
+   },
+   "lego_id": "S0246L01",
+   "lego": [
+    {
+     "known_text": "too busy",
+     "target_text": "troppo occupata"
+    }
+   ]
+  },
+  {
+   "seed_number": 247,
+   "seed": {
+    "known_text": "I thought that book was fairly good",
+    "target_text": "pensavo che quel libro fosse abbastanza buono"
+   },
+   "lego_id": "S0247L02",
+   "lego": [
+    {
+     "known_text": "I thought that book was",
+     "target_text": "pensavo che quel libro fosse"
+    }
+   ]
+  },
+  {
+   "seed_number": 248,
+   "seed": {
+    "known_text": "I thought the film was complete rubbish and I want my money back",
+    "target_text": "pensavo che il film fosse una schifezza totale e voglio indietro i miei soldi"
+   },
+   "lego_id": "S0248L01",
+   "lego": [
+    {
+     "known_text": "complete rubbish",
+     "target_text": "una schifezza totale"
+    }
+   ]
+  },
+  {
+   "seed_number": 248,
+   "seed": {
+    "known_text": "I thought the film was complete rubbish and I want my money back",
+    "target_text": "pensavo che il film fosse una schifezza totale e voglio indietro i miei soldi"
+   },
+   "lego_id": "S0248L02",
+   "lego": [
+    {
+     "known_text": "my money back",
+     "target_text": "indietro i miei soldi"
+    }
+   ]
+  },
+  {
+   "seed_number": 249,
+   "seed": {
+    "known_text": "I want you to help me before you go",
+    "target_text": "voglio che tu mi aiuti prima che tu vada"
+   },
+   "lego_id": "S0249L01",
+   "lego": [
+    {
+     "known_text": "before you go",
+     "target_text": "prima che tu vada"
+    }
+   ]
+  },
+  {
+   "seed_number": 249,
+   "seed": {
+    "known_text": "I want you to help me before you go",
+    "target_text": "voglio che tu mi aiuti prima che tu vada"
+   },
+   "lego_id": "S0249L02",
+   "lego": [
+    {
+     "known_text": "I want you to help me",
+     "target_text": "voglio che tu mi aiuti"
+    }
+   ]
+  },
+  {
+   "seed_number": 250,
+   "seed": {
+    "known_text": "can you tell me something else before I answer?",
+    "target_text": "puoi dirmi qualcos'altro prima che io risponda?"
+   },
+   "lego_id": "S0250L02",
+   "lego": [
+    {
+     "known_text": "before I answer",
+     "target_text": "prima che io risponda"
+    }
+   ]
+  },
+  {
+   "seed_number": 251,
+   "seed": {
+    "known_text": "I don't want to find it out until after we finish",
+    "target_text": "non voglio scoprirlo fino a dopo che finiamo"
+   },
+   "lego_id": "S0251L02",
+   "lego": [
+    {
+     "known_text": "until after",
+     "target_text": "fino a dopo"
+    }
+   ]
+  },
+  {
+   "seed_number": 252,
+   "seed": {
+    "known_text": "when will you be ready to start?",
+    "target_text": "quando sarai pronto a cominciare?"
+   },
+   "lego_id": "S0252L01",
+   "lego": [
+    {
+     "known_text": "will you be",
+     "target_text": "sarai"
+    }
+   ]
+  },
+  {
+   "seed_number": 254,
+   "seed": {
+    "known_text": "I've been ready since this morning",
+    "target_text": "sono pronto da stamattina"
+   },
+   "lego_id": "S0254L01",
+   "lego": [
+    {
+     "known_text": "I've been",
+     "target_text": "sono"
+    }
+   ]
+  },
+  {
+   "seed_number": 258,
+   "seed": {
+    "known_text": "what's that blue thing over there?",
+    "target_text": "che cos'è quella cosa blu laggiù?"
+   },
+   "lego_id": "S0258L01",
+   "lego": [
+    {
+     "known_text": "what's",
+     "target_text": "che cos'è"
+    }
+   ]
+  },
+  {
+   "seed_number": 258,
+   "seed": {
+    "known_text": "what's that blue thing over there?",
+    "target_text": "che cos'è quella cosa blu laggiù?"
+   },
+   "lego_id": "S0258L01",
+   "lego": [
+    {
+     "known_text": "what's",
+     "target_text": "che cos'è"
+    }
+   ]
+  },
+  {
+   "seed_number": 260,
+   "seed": {
+    "known_text": "I don't have the faintest idea",
+    "target_text": "non ho la minima idea"
+   },
+   "lego_id": "S0260L01",
+   "lego": [
+    {
+     "known_text": "the faintest idea",
+     "target_text": "la minima idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 260,
+   "seed": {
+    "known_text": "I don't have the faintest idea",
+    "target_text": "non ho la minima idea"
+   },
+   "lego_id": "S0260L01",
+   "lego": [
+    {
+     "known_text": "the faintest idea",
+     "target_text": "la minima idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 262,
+   "seed": {
+    "known_text": "who was that man you were talking to yesterday?",
+    "target_text": "chi era quell'uomo con cui parlavi ieri?"
+   },
+   "lego_id": "S0262L01",
+   "lego": [
+    {
+     "known_text": "who was",
+     "target_text": "chi era"
+    }
+   ]
+  },
+  {
+   "seed_number": 262,
+   "seed": {
+    "known_text": "who was that man you were talking to yesterday?",
+    "target_text": "chi era quell'uomo con cui parlavi ieri?"
+   },
+   "lego_id": "S0262L01",
+   "lego": [
+    {
+     "known_text": "who was",
+     "target_text": "chi era"
+    }
+   ]
+  },
+  {
+   "seed_number": 262,
+   "seed": {
+    "known_text": "who was that man you were talking to yesterday?",
+    "target_text": "chi era quell'uomo con cui parlavi ieri?"
+   },
+   "lego_id": "S0262L02",
+   "lego": [
+    {
+     "known_text": "you were talking to",
+     "target_text": "con cui parlavi"
+    }
+   ]
+  },
+  {
+   "seed_number": 263,
+   "seed": {
+    "known_text": "I don't know who you mean",
+    "target_text": "non so chi intendi"
+   },
+   "lego_id": "S0263L01",
+   "lego": [
+    {
+     "known_text": "I don't know who",
+     "target_text": "non so chi"
+    }
+   ]
+  },
+  {
+   "seed_number": 263,
+   "seed": {
+    "known_text": "I don't know who you mean",
+    "target_text": "non so chi intendi"
+   },
+   "lego_id": "S0263L01",
+   "lego": [
+    {
+     "known_text": "I don't know who",
+     "target_text": "non so chi"
+    }
+   ]
+  },
+  {
+   "seed_number": 263,
+   "seed": {
+    "known_text": "I don't know who you mean",
+    "target_text": "non so chi intendi"
+   },
+   "lego_id": "S0263L01",
+   "lego": [
+    {
+     "known_text": "I don't know who",
+     "target_text": "non so chi"
+    }
+   ]
+  },
+  {
+   "seed_number": 263,
+   "seed": {
+    "known_text": "I don't know who you mean",
+    "target_text": "non so chi intendi"
+   },
+   "lego_id": "S0263L02",
+   "lego": [
+    {
+     "known_text": "you mean",
+     "target_text": "intendi"
+    }
+   ]
+  },
+  {
+   "seed_number": 264,
+   "seed": {
+    "known_text": "an old man",
+    "target_text": "un uomo anziano"
+   },
+   "lego_id": "S0264L01",
+   "lego": [
+    {
+     "known_text": "an old man",
+     "target_text": "un uomo anziano"
+    }
+   ]
+  },
+  {
+   "seed_number": 265,
+   "seed": {
+    "known_text": "a friend",
+    "target_text": "un amico"
+   },
+   "lego_id": "S0265L01",
+   "lego": [
+    {
+     "known_text": "a friend",
+     "target_text": "un amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 266,
+   "seed": {
+    "known_text": "he was an old friend of my father",
+    "target_text": "era un vecchio amico di mio padre"
+   },
+   "lego_id": "S0266L01",
+   "lego": [
+    {
+     "known_text": "an old friend",
+     "target_text": "un vecchio amico"
+    }
+   ]
+  },
+  {
+   "seed_number": 267,
+   "seed": {
+    "known_text": "have you heard from your friend?",
+    "target_text": "hai avuto notizie dal tuo amico?"
+   },
+   "lego_id": "S0267L01",
+   "lego": [
+    {
+     "known_text": "have you heard from",
+     "target_text": "hai avuto notizie da"
+    }
+   ]
+  },
+  {
+   "seed_number": 267,
+   "seed": {
+    "known_text": "have you heard from your friend?",
+    "target_text": "hai avuto notizie dal tuo amico?"
+   },
+   "lego_id": "S0267L01",
+   "lego": [
+    {
+     "known_text": "have you heard from",
+     "target_text": "hai avuto notizie da"
+    }
+   ]
+  },
+  {
+   "seed_number": 267,
+   "seed": {
+    "known_text": "have you heard from your friend?",
+    "target_text": "hai avuto notizie dal tuo amico?"
+   },
+   "lego_id": "S0267L01",
+   "lego": [
+    {
+     "known_text": "have you heard from",
+     "target_text": "hai avuto notizie da"
+    }
+   ]
+  },
+  {
+   "seed_number": 268,
+   "seed": {
+    "known_text": "yes she sent me two emails last week",
+    "target_text": "sì, mi ha mandato due email la settimana scorsa"
+   },
+   "lego_id": "S0268L01",
+   "lego": [
+    {
+     "known_text": "she sent me",
+     "target_text": "mi ha mandato"
+    }
+   ]
+  },
+  {
+   "seed_number": 268,
+   "seed": {
+    "known_text": "yes she sent me two emails last week",
+    "target_text": "sì, mi ha mandato due email la settimana scorsa"
+   },
+   "lego_id": "S0268L01",
+   "lego": [
+    {
+     "known_text": "she sent me",
+     "target_text": "mi ha mandato"
+    }
+   ]
+  },
+  {
+   "seed_number": 268,
+   "seed": {
+    "known_text": "yes she sent me two emails last week",
+    "target_text": "sì, mi ha mandato due email la settimana scorsa"
+   },
+   "lego_id": "S0268L02",
+   "lego": [
+    {
+     "known_text": "two emails",
+     "target_text": "due email"
+    }
+   ]
+  },
+  {
+   "seed_number": 269,
+   "seed": {
+    "known_text": "why don't you want to wait for your father?",
+    "target_text": "perché non vuoi aspettare tuo padre?"
+   },
+   "lego_id": "S0269L01",
+   "lego": [
+    {
+     "known_text": "why don't you want to",
+     "target_text": "perché non vuoi"
+    }
+   ]
+  },
+  {
+   "seed_number": 269,
+   "seed": {
+    "known_text": "why don't you want to wait for your father?",
+    "target_text": "perché non vuoi aspettare tuo padre?"
+   },
+   "lego_id": "S0269L01",
+   "lego": [
+    {
+     "known_text": "why don't you want to",
+     "target_text": "perché non vuoi"
+    }
+   ]
+  },
+  {
+   "seed_number": 271,
+   "seed": {
+    "known_text": "would you like to come with us next month?",
+    "target_text": "ti piacerebbe venire con noi il mese prossimo?"
+   },
+   "lego_id": "S0271L01",
+   "lego": [
+    {
+     "known_text": "with us",
+     "target_text": "con noi"
+    }
+   ]
+  },
+  {
+   "seed_number": 272,
+   "seed": {
+    "known_text": "yes that sounds like a great idea",
+    "target_text": "sì, sembra un'ottima idea"
+   },
+   "lego_id": "S0272L01",
+   "lego": [
+    {
+     "known_text": "sounds like",
+     "target_text": "sembra"
+    }
+   ]
+  },
+  {
+   "seed_number": 272,
+   "seed": {
+    "known_text": "yes that sounds like a great idea",
+    "target_text": "sì, sembra un'ottima idea"
+   },
+   "lego_id": "S0272L02",
+   "lego": [
+    {
+     "known_text": "great idea",
+     "target_text": "ottima idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 273,
+   "seed": {
+    "known_text": "no unfortunately I've got too much work",
+    "target_text": "no, purtroppo ho troppo lavoro"
+   },
+   "lego_id": "S0273L02",
+   "lego": [
+    {
+     "known_text": "too much",
+     "target_text": "troppo"
+    }
+   ]
+  },
+  {
+   "seed_number": 274,
+   "seed": {
+    "known_text": "do you have to leave in a few days?",
+    "target_text": "devi partire tra qualche giorno?"
+   },
+   "lego_id": "S0274L01",
+   "lego": [
+    {
+     "known_text": "in a few days",
+     "target_text": "tra qualche giorno"
+    }
+   ]
+  },
+  {
+   "seed_number": 275,
+   "seed": {
+    "known_text": "longer",
+    "target_text": "più a lungo"
+   },
+   "lego_id": "S0275L01",
+   "lego": [
+    {
+     "known_text": "longer",
+     "target_text": "più a lungo"
+    }
+   ]
+  },
+  {
+   "seed_number": 276,
+   "seed": {
+    "known_text": "no I can stay here for a little longer",
+    "target_text": "no, posso restare qui ancora per un po'"
+   },
+   "lego_id": "S0276L02",
+   "lego": [
+    {
+     "known_text": "for a little longer",
+     "target_text": "ancora per un po'"
+    }
+   ]
+  },
+  {
+   "seed_number": 277,
+   "seed": {
+    "known_text": "yes I've got an important meeting early next week",
+    "target_text": "sì, ho una riunione importante all'inizio della prossima settimana"
+   },
+   "lego_id": "S0277L01",
+   "lego": [
+    {
+     "known_text": "important meeting",
+     "target_text": "riunione importante"
+    }
+   ]
+  },
+  {
+   "seed_number": 277,
+   "seed": {
+    "known_text": "yes I've got an important meeting early next week",
+    "target_text": "sì, ho una riunione importante all'inizio della prossima settimana"
+   },
+   "lego_id": "S0277L02",
+   "lego": [
+    {
+     "known_text": "early next week",
+     "target_text": "all'inizio della prossima settimana"
+    }
+   ]
+  },
+  {
+   "seed_number": 279,
+   "seed": {
+    "known_text": "yes because there wasn't much time left",
+    "target_text": "sì, perché non c'era molto tempo rimasto"
+   },
+   "lego_id": "S0279L01",
+   "lego": [
+    {
+     "known_text": "time left",
+     "target_text": "tempo rimasto"
+    }
+   ]
+  },
+  {
+   "seed_number": 280,
+   "seed": {
+    "known_text": "no I only had to do the most important job",
+    "target_text": "no, dovevo fare solo il lavoro più importante"
+   },
+   "lego_id": "S0280L02",
+   "lego": [
+    {
+     "known_text": "most important",
+     "target_text": "più importante"
+    }
+   ]
+  },
+  {
+   "seed_number": 283,
+   "seed": {
+    "known_text": "which of your friends speak Italian?",
+    "target_text": "quali dei tuoi amici parlano italiano?"
+   },
+   "lego_id": "S0283L01",
+   "lego": [
+    {
+     "known_text": "your friends",
+     "target_text": "tuoi amici"
+    }
+   ]
+  },
+  {
+   "seed_number": 283,
+   "seed": {
+    "known_text": "which of your friends speak Italian?",
+    "target_text": "quali dei tuoi amici parlano italiano?"
+   },
+   "lego_id": "S0283L02",
+   "lego": [
+    {
+     "known_text": "which of",
+     "target_text": "quali dei"
+    }
+   ]
+  },
+  {
+   "seed_number": 283,
+   "seed": {
+    "known_text": "which of your friends speak Italian?",
+    "target_text": "quali dei tuoi amici parlano italiano?"
+   },
+   "lego_id": "S0283L03",
+   "lego": [
+    {
+     "known_text": "they speak",
+     "target_text": "parlano"
+    }
+   ]
+  },
+  {
+   "seed_number": 287,
+   "seed": {
+    "known_text": "how many people do you know who like watching television?",
+    "target_text": "quante persone conosci a cui piace guardare la televisione?"
+   },
+   "lego_id": "S0287L01",
+   "lego": [
+    {
+     "known_text": "how many",
+     "target_text": "quante"
+    }
+   ]
+  },
+  {
+   "seed_number": 289,
+   "seed": {
+    "known_text": "I wonder if she's going to be there this afternoon",
+    "target_text": "mi chiedo se sarà lì questo pomeriggio"
+   },
+   "lego_id": "S0289L03",
+   "lego": [
+    {
+     "known_text": "I wonder if",
+     "target_text": "mi chiedo se"
+    }
+   ]
+  },
+  {
+   "seed_number": 289,
+   "seed": {
+    "known_text": "I wonder if she's going to be there this afternoon",
+    "target_text": "mi chiedo se sarà lì questo pomeriggio"
+   },
+   "lego_id": "S0289L03",
+   "lego": [
+    {
+     "known_text": "I wonder if",
+     "target_text": "mi chiedo se"
+    }
+   ]
+  },
+  {
+   "seed_number": 292,
+   "seed": {
+    "known_text": "I hope you'll be able to come to the party",
+    "target_text": "spero che tu possa venire alla festa"
+   },
+   "lego_id": "S0292L02",
+   "lego": [
+    {
+     "known_text": "I hope you'll be able to",
+     "target_text": "spero che tu possa"
+    }
+   ]
+  },
+  {
+   "seed_number": 293,
+   "seed": {
+    "known_text": "I have to find out where he's going to meet me",
+    "target_text": "devo scoprire dove ha intenzione di incontrarmi"
+   },
+   "lego_id": "S0293L01",
+   "lego": [
+    {
+     "known_text": "to find out where he's going to",
+     "target_text": "scoprire dove ha intenzione di"
+    }
+   ]
+  },
+  {
+   "seed_number": 293,
+   "seed": {
+    "known_text": "I have to find out where he's going to meet me",
+    "target_text": "devo scoprire dove ha intenzione di incontrarmi"
+   },
+   "lego_id": "S0293L02",
+   "lego": [
+    {
+     "known_text": "to meet me",
+     "target_text": "incontrarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 293,
+   "seed": {
+    "known_text": "I have to find out where he's going to meet me",
+    "target_text": "devo scoprire dove ha intenzione di incontrarmi"
+   },
+   "lego_id": "S0293L02",
+   "lego": [
+    {
+     "known_text": "to meet me",
+     "target_text": "incontrarmi"
+    }
+   ]
+  },
+  {
+   "seed_number": 294,
+   "seed": {
+    "known_text": "I don't have enough time to call you tonight",
+    "target_text": "non ho abbastanza tempo per chiamarti stasera"
+   },
+   "lego_id": "S0294L01",
+   "lego": [
+    {
+     "known_text": "to call you",
+     "target_text": "chiamarti"
+    }
+   ]
+  },
+  {
+   "seed_number": 295,
+   "seed": {
+    "known_text": "I didn't say that I wanted to finish in a day",
+    "target_text": "non ho detto che volevo finire in un giorno"
+   },
+   "lego_id": "S0295L01",
+   "lego": [
+    {
+     "known_text": "in a day",
+     "target_text": "in un giorno"
+    }
+   ]
+  },
+  {
+   "seed_number": 297,
+   "seed": {
+    "known_text": "I don't know many people who speak Italian",
+    "target_text": "non conosco molte persone che parlano italiano"
+   },
+   "lego_id": "S0297L01",
+   "lego": [
+    {
+     "known_text": "many people",
+     "target_text": "molte persone"
+    }
+   ]
+  },
+  {
+   "seed_number": 298,
+   "seed": {
+    "known_text": "I've got nothing left to say",
+    "target_text": "non ho più niente da dire"
+   },
+   "lego_id": "S0298L01",
+   "lego": [
+    {
+     "known_text": "nothing left",
+     "target_text": "più niente"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "he wants to pay half",
+    "target_text": "vuole pagare metà"
+   },
+   "lego_id": "S0299L01",
+   "lego": [
+    {
+     "known_text": "to pay",
+     "target_text": "pagare"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "he wants to pay half",
+    "target_text": "vuole pagare metà"
+   },
+   "lego_id": "S0299L01",
+   "lego": [
+    {
+     "known_text": "to pay",
+     "target_text": "pagare"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "he wants to pay half",
+    "target_text": "vuole pagare metà"
+   },
+   "lego_id": "S0299L02",
+   "lego": [
+    {
+     "known_text": "half",
+     "target_text": "metà"
+    }
+   ]
+  },
+  {
+   "seed_number": 300,
+   "seed": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "non vuole sembrare scortese"
+   },
+   "lego_id": "S0300L01",
+   "lego": [
+    {
+     "known_text": "seem",
+     "target_text": "sembrare"
+    }
+   ]
+  },
+  {
+   "seed_number": 300,
+   "seed": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "non vuole sembrare scortese"
+   },
+   "lego_id": "S0300L02",
+   "lego": [
+    {
+     "known_text": "unfriendly",
+     "target_text": "scortese"
+    }
+   ]
+  },
+  {
+   "seed_number": 315,
+   "seed": {
+    "known_text": "I think that he couldn't afford the car that he wanted",
+    "target_text": "penso che non potesse permettersi la macchina che voleva"
+   },
+   "lego_id": "S0315L02",
+   "lego": [
+    {
+     "known_text": "I think that he couldn't",
+     "target_text": "penso che non potesse"
+    }
+   ]
+  },
+  {
+   "seed_number": 315,
+   "seed": {
+    "known_text": "I think that he couldn't afford the car that he wanted",
+    "target_text": "penso che non potesse permettersi la macchina che voleva"
+   },
+   "lego_id": "S0315L03",
+   "lego": [
+    {
+     "known_text": "to afford",
+     "target_text": "permettersi"
+    }
+   ]
+  },
+  {
+   "seed_number": 315,
+   "seed": {
+    "known_text": "I think that he couldn't afford the car that he wanted",
+    "target_text": "penso che non potesse permettersi la macchina che voleva"
+   },
+   "lego_id": "S0315L03",
+   "lego": [
+    {
+     "known_text": "to afford",
+     "target_text": "permettersi"
+    }
+   ]
+  },
+  {
+   "seed_number": 326,
+   "seed": {
+    "known_text": "I don't think that she needs to sell the company",
+    "target_text": "non penso che lei debba vendere l'azienda"
+   },
+   "lego_id": "S0326L01",
+   "lego": [
+    {
+     "known_text": "I don't think that she needs to",
+     "target_text": "non penso che lei debba"
+    }
+   ]
+  },
+  {
+   "seed_number": 326,
+   "seed": {
+    "known_text": "I don't think that she needs to sell the company",
+    "target_text": "non penso che lei debba vendere l'azienda"
+   },
+   "lego_id": "S0326L03",
+   "lego": [
+    {
+     "known_text": "the company",
+     "target_text": "l'azienda"
+    }
+   ]
+  },
+  {
+   "seed_number": 336,
+   "seed": {
+    "known_text": "I don't think that she can open the door",
+    "target_text": "non penso che lei possa aprire la porta"
+   },
+   "lego_id": "S0336L01",
+   "lego": [
+    {
+     "known_text": "I don't think that she can",
+     "target_text": "non penso che lei possa"
+    }
+   ]
+  },
+  {
+   "seed_number": 341,
+   "seed": {
+    "known_text": "I met someone a few days ago",
+    "target_text": "ho incontrato qualcuno qualche giorno fa"
+   },
+   "lego_id": "S0341L01",
+   "lego": [
+    {
+     "known_text": "a few days ago",
+     "target_text": "qualche giorno fa"
+    }
+   ]
+  },
+  {
+   "seed_number": 343,
+   "seed": {
+    "known_text": "who said that she's worried about the economy",
+    "target_text": "che ha detto che è preoccupata per l'economia"
+   },
+   "lego_id": "S0343L02",
+   "lego": [
+    {
+     "known_text": "worried about the economy",
+     "target_text": "preoccupata per l'economia"
+    }
+   ]
+  },
+  {
+   "seed_number": 355,
+   "seed": {
+    "known_text": "did she need to talk to that woman you know?",
+    "target_text": "doveva parlare con quella donna che conosci?"
+   },
+   "lego_id": "S0355L01",
+   "lego": [
+    {
+     "known_text": "that woman you know",
+     "target_text": "quella donna che conosci"
+    }
+   ]
+  },
+  {
+   "seed_number": 357,
+   "seed": {
+    "known_text": "no she just wanted to send her a message",
+    "target_text": "no, voleva solo mandarle un messaggio"
+   },
+   "lego_id": "S0357L02",
+   "lego": [
+    {
+     "known_text": "to send her a message",
+     "target_text": "mandarle un messaggio"
+    }
+   ]
+  },
+  {
+   "seed_number": 369,
+   "seed": {
+    "known_text": "I saw several horses on the road",
+    "target_text": "ho visto diversi cavalli sulla strada"
+   },
+   "lego_id": "S0369L03",
+   "lego": [
+    {
+     "known_text": "on the road",
+     "target_text": "sulla strada"
+    }
+   ]
+  },
+  {
+   "seed_number": 372,
+   "seed": {
+    "known_text": "did you see what she was trying to create?",
+    "target_text": "hai visto che cosa stava provando a creare?"
+   },
+   "lego_id": "S0372L02",
+   "lego": [
+    {
+     "known_text": "she was trying to",
+     "target_text": "stava provando a"
+    }
+   ]
+  },
+  {
+   "seed_number": 419,
+   "seed": {
+    "known_text": "if they want people to like them",
+    "target_text": "se vogliono che la gente li apprezzi"
+   },
+   "lego_id": "S0419L01",
+   "lego": [
+    {
+     "known_text": "people to like them",
+     "target_text": "che la gente li apprezzi"
+    }
+   ]
+  },
+  {
+   "seed_number": 478,
+   "seed": {
+    "known_text": "she has such a kind heart",
+    "target_text": "ha un cuore così gentile"
+   },
+   "lego_id": "S0478L03",
+   "lego": [
+    {
+     "known_text": "such a kind heart",
+     "target_text": "un cuore così gentile"
+    }
+   ]
+  },
+  {
+   "seed_number": 506,
+   "seed": {
+    "known_text": "I used to live around here years ago before we moved",
+    "target_text": "vivevo da queste parti anni fa prima che ci trasferissimo"
+   },
+   "lego_id": "S0506L02",
+   "lego": [
+    {
+     "known_text": "before we moved",
+     "target_text": "prima che ci trasferissimo"
+    }
+   ]
+  },
+  {
+   "seed_number": 513,
+   "seed": {
+    "known_text": "it hurts most when I move my head up and down",
+    "target_text": "fa più male quando muovo la testa su e giù"
+   },
+   "lego_id": "S0513L01",
+   "lego": [
+    {
+     "known_text": "when I move",
+     "target_text": "quando muovo"
+    }
+   ]
+  },
+  {
+   "seed_number": 539,
+   "seed": {
+    "known_text": "but it's getting late",
+    "target_text": "ma si sta facendo tardi"
+   },
+   "lego_id": "S0539L01",
+   "lego": [
+    {
+     "known_text": "it's getting",
+     "target_text": "si sta facendo"
+    }
+   ]
+  },
+  {
+   "seed_number": 607,
+   "seed": {
+    "known_text": "if I'd known I'd have done things differently",
+    "target_text": "se avessi saputo, avrei fatto le cose diversamente"
+   },
+   "lego_id": "S0607L02",
+   "lego": [
+    {
+     "known_text": "I would have done",
+     "target_text": "avrei fatto"
+    }
+   ]
+  },
+  {
+   "seed_number": 618,
+   "seed": {
+    "known_text": "it doesn't feel like a long time",
+    "target_text": "non sembra passato molto tempo"
+   },
+   "lego_id": "S0618L02",
+   "lego": [
+    {
+     "known_text": "passed",
+     "target_text": "passato"
+    }
+   ]
+  },
+  {
+   "seed_number": 636,
+   "seed": {
+    "known_text": "I think that that is Jane's bag",
+    "target_text": "penso che quella sia la borsa di Jane"
+   },
+   "lego_id": "S0636L02",
+   "lego": [
+    {
+     "known_text": "I think that that is",
+     "target_text": "penso che quella sia"
+    }
+   ]
+  },
+  {
+   "seed_number": 647,
+   "seed": {
+    "known_text": "you speak it madam",
+    "target_text": "lei lo parla, signora"
+   },
+   "lego_id": "S0647L01",
+   "lego": [
+    {
+     "known_text": "you speak it madam",
+     "target_text": "lei lo parla, signora"
+    }
+   ]
+  }
+ ]
+}

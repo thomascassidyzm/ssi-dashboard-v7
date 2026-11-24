@@ -1,0 +1,496 @@
+{"format":"ssi-changeset/1","id":"fra_for_eng-item18-cs236","course":"fra_for_eng","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:35.723Z","ops":495,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0011L01B03","expect":{"known_text":"I'd like to speak French","target_text":"j'aimerais parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0011L02B03","expect":{"known_text":"I'd like to be able to speak French","target_text":"j'aimerais pouvoir parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0011L03B03","expect":{"known_text":"I'd like to speak after you finish","target_text":"j'aimerais parler après que tu aies fini"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0011L03B05","expect":{"known_text":"I'd like to be able to speak after you finish","target_text":"j'aimerais pouvoir parler après que tu aies fini"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0012L02B04","expect":{"known_text":"I'm going to try to guess","target_text":"je vais essayer de deviner"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0012L03B03","expect":{"known_text":"I wouldn't like to guess what's going to happen","target_text":"je n'aimerais pas deviner ce qui va se passer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0012L03B04","expect":{"known_text":"I'd like to explain what's going to happen","target_text":"j'aimerais expliquer ce qui va se passer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0012L03B05","expect":{"known_text":"I'm not sure what's going to happen","target_text":"je ne suis pas sûr de ce qui va se passer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0012L04B02","expect":{"known_text":"I'd like to speak French tomorrow","target_text":"j'aimerais parler français demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0012L04B04","expect":{"known_text":"I wouldn't like to guess what's going to happen tomorrow","target_text":"je n'aimerais pas deviner ce qui va se passer demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0013L01B02","expect":{"known_text":"you speak French","target_text":"tu parles français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0013L01B03","expect":{"known_text":"you speak French now","target_text":"tu parles français maintenant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0013L01B04","expect":{"known_text":"you speak a little French","target_text":"tu parles un peu français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0013L01B05","expect":{"known_text":"you speak French today","target_text":"tu parles français aujourd'hui"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0013L02B02","expect":{"known_text":"you speak French very well","target_text":"tu parles français très bien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0013L02B05","expect":{"known_text":"I'd like to speak French very well","target_text":"j'aimerais parler français très bien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0014L01B04","expect":{"known_text":"I'd like to speak French all day","target_text":"j'aimerais parler français toute la journée"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0015L02B03","expect":{"known_text":"you speak French with me","target_text":"tu parles français avec moi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0015L03B02","expect":{"known_text":"I want you to speak French","target_text":"je veux que tu parles français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0015L03B03","expect":{"known_text":"I want you to speak French with me","target_text":"je veux que tu parles français avec moi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0015L03B05","expect":{"known_text":"and I want you to speak French with me tomorrow","target_text":"et je veux que tu parles français avec moi demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0016L01B03","expect":{"known_text":"he wants to speak French","target_text":"il veut parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0016L02B01","expect":{"known_text":"he wants to come back","target_text":"il veut revenir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0016L03B03","expect":{"known_text":"he wants to come back later on","target_text":"il veut revenir plus tard"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0016L03B05","expect":{"known_text":"I'd like to try later on","target_text":"j'aimerais essayer plus tard"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0016L04B03","expect":{"known_text":"he wants to come back with everyone later on","target_text":"il veut revenir plus tard avec tout le monde"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0017L01B03","expect":{"known_text":"she wants to speak French","target_text":"elle veut parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0017L02B01","expect":{"known_text":"she wants to find out","target_text":"elle veut découvrir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0017L02B03","expect":{"known_text":"I'd like to find out","target_text":"j'aimerais découvrir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0017L03B03","expect":{"known_text":"she wants to find out what the answer is","target_text":"elle veut découvrir quelle est la réponse"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0017L03B04","expect":{"known_text":"I'd like to find out what the answer is","target_text":"j'aimerais découvrir quelle est la réponse"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0017L03B05","expect":{"known_text":"he wants to find out what the answer is","target_text":"il veut découvrir quelle est la réponse"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0018L01B03","expect":{"known_text":"we want to speak French","target_text":"nous voulons parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0018L03B03","expect":{"known_text":"we want to meet at six o'clock","target_text":"nous voulons nous rencontrer à six heures"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0018L04B03","expect":{"known_text":"we want to meet at six o'clock this evening","target_text":"nous voulons nous rencontrer à six heures ce soir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0019L01B03","expect":{"known_text":"but I'm not sure","target_text":"mais je ne suis pas sûr"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0019L03B03","expect":{"known_text":"but I don't want to stop talking","target_text":"mais je ne veux pas arrêter de parler"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0019L03B05","expect":{"known_text":"he wants to stop talking","target_text":"il veut arrêter de parler"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0020L02B03","expect":{"known_text":"you want to learn his name","target_text":"tu veux apprendre son nom"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0020L03B02","expect":{"known_text":"you want to learn his name quickly","target_text":"tu veux apprendre son nom rapidement"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0022L03B04","expect":{"known_text":"because I want to meet people who speak French","target_text":"parce que je veux rencontrer des gens qui parlent français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0023L02B02","expect":{"known_text":"I'm going to start talking more","target_text":"je vais commencer à parler davantage"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0023L03B02","expect":{"known_text":"I'm going to start talking more soon","target_text":"je vais commencer à parler davantage bientôt"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0024L03B01","expect":{"known_text":"I'm not going to be able to remember easily","target_text":"je ne vais pas pouvoir me souvenir facilement"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0025L02B04","expect":{"known_text":"he wants to help me","target_text":"il veut m'aider"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0026L01B02","expect":{"known_text":"I like speaking French","target_text":"j'aime parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0026L02B03","expect":{"known_text":"I like feeling as if I'm learning","target_text":"j'aime avoir l'impression d'apprendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0026L02B04","expect":{"known_text":"I like feeling as if I can speak French","target_text":"j'aime avoir l'impression de pouvoir parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0026L03B03","expect":{"known_text":"I like feeling as if I'm nearly ready to go","target_text":"j'aime avoir l'impression d'être presque prêt à partir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0026L03B04","expect":{"known_text":"I like feeling as if I'm nearly ready to go now","target_text":"j'aime avoir l'impression d'être presque prêt à partir maintenant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0027L01B04","expect":{"known_text":"I don't like guessing","target_text":"je n'aime pas deviner"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0027L02B02","expect":{"known_text":"I don't like taking too much time","target_text":"je n'aime pas prendre trop de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0027L02B03","expect":{"known_text":"I don't want to take too much time","target_text":"je ne veux pas prendre trop de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0027L04B02","expect":{"known_text":"I don't like taking too much time to answer","target_text":"je n'aime pas prendre trop de temps pour répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0028L01B02","expect":{"known_text":"it's useful to speak French","target_text":"il est utile de parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0028L01B04","expect":{"known_text":"it's useful to start talking","target_text":"il est utile de commencer à parler"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0028L02B03","expect":{"known_text":"it's useful to start talking as soon as possible","target_text":"il est utile de commencer à parler dès que possible"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0029L01B03","expect":{"known_text":"I'm looking forward to speaking French","target_text":"j'ai hâte de parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0029L01B04","expect":{"known_text":"I'm looking forward to coming back","target_text":"j'ai hâte de revenir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0030L01B03","expect":{"known_text":"I wanted to try","target_text":"je voulais essayer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0030L01B04","expect":{"known_text":"I wanted to come back","target_text":"je voulais revenir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0030L02B03","expect":{"known_text":"I wanted to ask you something","target_text":"je voulais te demander quelque chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0030L03B01","expect":{"known_text":"I wanted to ask you something yesterday","target_text":"je voulais te demander quelque chose hier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0030L03B02","expect":{"known_text":"I wanted to speak French yesterday","target_text":"je voulais parler français hier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0030L03U03","expect":{"known_text":"I wanted to come back yesterday","target_text":"je voulais revenir hier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0031L01B03","expect":{"known_text":"you wanted to speak French","target_text":"tu voulais parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0031L01B05","expect":{"known_text":"you wanted to come back","target_text":"tu voulais revenir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0032L01B03","expect":{"known_text":"you wanted to show me something","target_text":"tu voulais me montrer quelque chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0034L02B02","expect":{"known_text":"he doesn't want to be quiet","target_text":"il ne veut pas se taire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0034L02B04","expect":{"known_text":"it's useful to be quiet","target_text":"il est utile de se taire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0034L04B03","expect":{"known_text":"he doesn't want to be quiet when other people are here","target_text":"il ne veut pas se taire quand d'autres personnes sont ici"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0035L01B01","expect":{"known_text":"she doesn't want anything","target_text":"elle ne veut rien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0035L01B02","expect":{"known_text":"I don't want anything","target_text":"je ne veux rien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0035L02B01","expect":{"known_text":"she doesn't want to read anything","target_text":"elle ne veut rien lire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0035L02B02","expect":{"known_text":"he wants to read","target_text":"il veut lire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0035L03B02","expect":{"known_text":"she doesn't want to read anything this afternoon","target_text":"elle ne veut rien lire cet après-midi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0035L03B03","expect":{"known_text":"he doesn't want to be quiet this afternoon","target_text":"il ne veut pas se taire cet après-midi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0036L01B01","expect":{"known_text":"we don't want to interrupt","target_text":"nous ne voulons pas interrompre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0036L01B02","expect":{"known_text":"he doesn't want to interrupt","target_text":"il ne veut pas interrompre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0036L01U03","expect":{"known_text":"I don't like to interrupt","target_text":"je n'aime pas interrompre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0036L02B02","expect":{"known_text":"we don't want to interrupt the story","target_text":"nous ne voulons pas interrompre l'histoire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0036L02B03","expect":{"known_text":"he doesn't want to interrupt the story","target_text":"il ne veut pas interrompre l'histoire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0036L02B04","expect":{"known_text":"I'd like to read the story","target_text":"j'aimerais lire l'histoire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L01B03","expect":{"known_text":"I started to speak French","target_text":"j'ai commencé à parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L01B04","expect":{"known_text":"I started to learn","target_text":"j'ai commencé à apprendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L02B02","expect":{"known_text":"I started to think about it","target_text":"j'ai commencé à y réfléchir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L02B03","expect":{"known_text":"I want to think about it","target_text":"je veux y réfléchir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L02B04","expect":{"known_text":"he wants to think about it","target_text":"il veut y réfléchir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L03B02","expect":{"known_text":"I started to think about it carefully","target_text":"j'ai commencé à y réfléchir attentivement"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L03B03","expect":{"known_text":"I want to read carefully","target_text":"je veux lire attentivement"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L04B02","expect":{"known_text":"I started to think about it carefully last month","target_text":"j'ai commencé à y réfléchir attentivement le mois dernier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L04B03","expect":{"known_text":"I started to learn French last month","target_text":"j'ai commencé à apprendre le français le mois dernier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0037L04B04","expect":{"known_text":"I started to read the story last month","target_text":"j'ai commencé à lire l'histoire le mois dernier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0038L01B02","expect":{"known_text":"I'm learning French","target_text":"j'apprends le français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0038L01B04","expect":{"known_text":"I'm learning to read","target_text":"j'apprends à lire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0038L02B02","expect":{"known_text":"I've been learning for about a month","target_text":"j'apprends depuis environ un mois"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0038L03B03","expect":{"known_text":"I've been learning for about a week","target_text":"j'apprends depuis environ une semaine"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0039L01B03","expect":{"known_text":"I'm tired","target_text":"je suis fatigué"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0039L02B03","expect":{"known_text":"but I'm a little tired this morning","target_text":"mais je suis un peu fatigué ce matin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0039L02B04","expect":{"known_text":"I'm learning this morning","target_text":"j'apprends ce matin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0040L02B03","expect":{"known_text":"I'm a little tired at the moment","target_text":"je suis un peu fatigué en ce moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0040L02B04","expect":{"known_text":"I'm learning French at the moment","target_text":"j'apprends le français en ce moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L01B02","expect":{"known_text":"I feel tired","target_text":"je me sens fatigué"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L01B03","expect":{"known_text":"I feel a little tired","target_text":"je me sens un peu fatigué"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L01B04","expect":{"known_text":"I feel ready","target_text":"je me sens prêt"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L02B01","expect":{"known_text":"I feel well","target_text":"je me sens bien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L02B03","expect":{"known_text":"I feel well today","target_text":"je me sens bien aujourd'hui"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L03B02","expect":{"known_text":"I'm starting to speak French","target_text":"je commence à parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L03B03","expect":{"known_text":"I'm starting to learn","target_text":"je commence à apprendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L04B02","expect":{"known_text":"I'm starting to feel tired","target_text":"je commence à me sentir fatigué"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L04B03","expect":{"known_text":"I'm starting to feel a little tired","target_text":"je commence à me sentir un peu fatigué"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0041L04B04","expect":{"known_text":"I'm starting to feel better","target_text":"je commence à me sentir mieux"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0042L01B02","expect":{"known_text":"I was starting to feel tired","target_text":"je commençais à me sentir fatigué"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0042L01B03","expect":{"known_text":"I was starting to speak French","target_text":"je commençais à parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0042L01B04","expect":{"known_text":"I was starting to learn","target_text":"je commençais à apprendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0042L02B02","expect":{"known_text":"I was starting to feel better than last night","target_text":"je commençais à me sentir mieux que la nuit dernière"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0042L02B03","expect":{"known_text":"I was starting to feel tired last night","target_text":"je commençais à me sentir fatigué la nuit dernière"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0042L02B04","expect":{"known_text":"I started to read last night","target_text":"j'ai commencé à lire la nuit dernière"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0043L01B02","expect":{"known_text":"I wasn't thinking about answering","target_text":"je ne pensais pas à répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0043L01B04","expect":{"known_text":"I didn't think I could answer","target_text":"je ne pensais pas pouvoir répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0043L02B02","expect":{"known_text":"I wasn't thinking about how to answer","target_text":"je ne pensais pas à la façon de répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0044L01B02","expect":{"known_text":"I want to answer or read","target_text":"je veux répondre ou lire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0044L03B02","expect":{"known_text":"I need to answer","target_text":"j'ai besoin de répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0044L03B03","expect":{"known_text":"I need to speak French","target_text":"j'ai besoin de parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0044L04B02","expect":{"known_text":"I need to improve","target_text":"j'ai besoin de m'améliorer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0044L04B03","expect":{"known_text":"or if I need to improve","target_text":"ou si j'ai besoin de m'améliorer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0044L04B04","expect":{"known_text":"I want to improve","target_text":"je veux m'améliorer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0045L01B02","expect":{"known_text":"I don't need to answer","target_text":"je n'ai pas besoin de répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0045L01B03","expect":{"known_text":"I don't need to speak French","target_text":"je n'ai pas besoin de parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0045L02B01","expect":{"known_text":"I don't need to know","target_text":"je n'ai pas besoin de savoir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0045L02B02","expect":{"known_text":"I don't need to know everything","target_text":"je n'ai pas besoin de tout savoir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0045L02U02","expect":{"known_text":"I want to know","target_text":"je veux savoir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0046L01B02","expect":{"known_text":"but I don't worry","target_text":"mais je ne m'inquiète pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0046L01B03","expect":{"known_text":"I don't worry now","target_text":"je ne m'inquiète pas maintenant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0046L01B04","expect":{"known_text":"I don't worry about speaking French","target_text":"je ne m'inquiète pas de parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0046L02B03","expect":{"known_text":"I need to make mistakes","target_text":"j'ai besoin de faire des erreurs"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0046L02B04","expect":{"known_text":"it's useful to make mistakes","target_text":"il est utile de faire des erreurs"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0047L01B02","expect":{"known_text":"I think that you speak well","target_text":"je pense que tu parles bien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0047L01B03","expect":{"known_text":"I think that making mistakes is useful","target_text":"je pense que faire des erreurs est utile"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0047L01B04","expect":{"known_text":"I think that we want to come back","target_text":"je pense que nous voulons revenir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0047L02B02","expect":{"known_text":"making mistakes is a good thing","target_text":"faire des erreurs est une bonne chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0047L02B04","expect":{"known_text":"speaking French is a good thing","target_text":"parler français est une bonne chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0048L01B02","expect":{"known_text":"I don't care about speaking French","target_text":"je me moque de parler français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0048L01B03","expect":{"known_text":"I don't care about making mistakes","target_text":"je me moque de faire des erreurs"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L01B02","expect":{"known_text":"it's a good thing","target_text":"c'est une bonne chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L01B03","expect":{"known_text":"that's useful","target_text":"c'est utile"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L01B04","expect":{"known_text":"that's good","target_text":"c'est bien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L02B02","expect":{"known_text":"it's like this","target_text":"c'est comme ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L02B03","expect":{"known_text":"but it's like this","target_text":"mais c'est comme ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L02B04","expect":{"known_text":"I think that it's like this","target_text":"je pense que c'est comme ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0049L03B04","expect":{"known_text":"you see what I mean","target_text":"tu vois ce que je veux dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0050L01B03","expect":{"known_text":"I'm not trying to answer","target_text":"je n'essaie pas de répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0050L02B01","expect":{"known_text":"I'm not trying to finish","target_text":"je n'essaie pas de finir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0050L02B02","expect":{"known_text":"I want to finish","target_text":"je veux finir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0050L02U03","expect":{"known_text":"I'd like to finish","target_text":"j'aimerais finir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0050L03B03","expect":{"known_text":"I'm not trying to finish as quickly as possible","target_text":"je n'essaie pas de finir aussi vite que possible"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0052L05B02","expect":{"known_text":"last week","target_text":"la semaine dernière"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0057L01B02","expect":{"known_text":"I can't remember how to say what I wanted to say","target_text":"je ne peux pas me souvenir de comment dire ce que je voulais dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0058L01B02","expect":{"known_text":"interesting when you understand","target_text":"intéressant quand tu comprends"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0059L02B04","expect":{"known_text":"I need to do it today","target_text":"je dois faire ça aujourd'hui"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0061L01B02","expect":{"known_text":"could you","target_text":"tu pourrais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0061L02B02","expect":{"known_text":"once","target_text":"une fois"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0063L01B02","expect":{"known_text":"are you","target_text":"tu es"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0065L02B02","expect":{"known_text":"some time","target_text":"du temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0065L03B02","expect":{"known_text":"to test yourself","target_text":"te tester"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0068L01B02","expect":{"known_text":"what are you","target_text":"qu'est-ce que tu"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0068L02B02","expect":{"known_text":"looking for","target_text":"cherches"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0069L03B02","expect":{"known_text":"to look after","target_text":"s'occuper"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0070L02B02","expect":{"known_text":"it was","target_text":"c'était"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0073L01B02","expect":{"known_text":"thank you very much for that","target_text":"merci beaucoup pour ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0073L01B03","expect":{"known_text":"thank you very much for everything","target_text":"merci beaucoup pour tout"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0074L01B02","expect":{"known_text":"thank you for helping me","target_text":"merci de m'avoir aidé"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0074L01B03","expect":{"known_text":"thank you very much for helping me","target_text":"merci beaucoup de m'avoir aidé"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0076L01B02","expect":{"known_text":"I'm very happy with that","target_text":"je suis très content de ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0076L01B03","expect":{"known_text":"I'm very happy now","target_text":"je suis très content maintenant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0077L01B03","expect":{"known_text":"I'm surprised now","target_text":"je suis surpris maintenant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0078L01B02","expect":{"known_text":"I don't understand that","target_text":"je ne comprends pas ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0078L01B03","expect":{"known_text":"I don't understand now","target_text":"je ne comprends pas maintenant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0078L02B03","expect":{"known_text":"I don't understand what you said","target_text":"je ne comprends pas ce que tu as dit"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0088L01B03","expect":{"known_text":"I think I'm not ready yet to talk to people I don't know","target_text":"je pense que je ne suis pas encore prêt à parler à des gens que je ne connais pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0090L01B04","expect":{"known_text":"I want you to speak a little more slowly","target_text":"je veux que tu parles un peu plus lentement"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0091L01B02","expect":{"known_text":"it's difficult to","target_text":"il est difficile de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0091L03B02","expect":{"known_text":"quickly enough","target_text":"assez vite"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0091L04B02","expect":{"known_text":"in time","target_text":"à temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0091L04B04","expect":{"known_text":"I want to finish in time","target_text":"je veux finir à temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0092L01B02","expect":{"known_text":"I'd like to","target_text":"j'aimerais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0092L02B02","expect":{"known_text":"to keep on","target_text":"continuer à"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0092L03B02","expect":{"known_text":"for a while","target_text":"pendant un moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0093L01B02","expect":{"known_text":"it's time to","target_text":"il est temps de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0093L02B02","expect":{"known_text":"to go","target_text":"y aller"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0094L01B02","expect":{"known_text":"the only","target_text":"la seule"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0094L02B02","expect":{"known_text":"way it will","target_text":"façon que ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0095L01B02","expect":{"known_text":"are you ready to","target_text":"es-tu prêt à"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0095L03B02","expect":{"known_text":"on the next","target_text":"avec le prochain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0096L02B02","expect":{"known_text":"I'm not ready yet","target_text":"je ne suis pas encore prêt"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0096L02B04","expect":{"known_text":"I'm not ready yet to do this","target_text":"je ne suis pas encore prêt à faire ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0096L03B02","expect":{"known_text":"a little more","target_text":"un peu plus"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0097L02B02","expect":{"known_text":"as soon as","target_text":"dès que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0098L01B02","expect":{"known_text":"I should","target_text":"je devrais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0098L02B02","expect":{"known_text":"to consider doing","target_text":"envisager de faire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0099L01B02","expect":{"known_text":"you should","target_text":"tu devrais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0099L02B02","expect":{"known_text":"to ask yourself","target_text":"te demander"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0099L03B02","expect":{"known_text":"it's not working","target_text":"ça ne marche pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0100L01B02","expect":{"known_text":"you shouldn't","target_text":"tu ne devrais pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0100L02B02","expect":{"known_text":"to worry about doing","target_text":"t'inquiéter de faire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0101L01B02","expect":{"known_text":"I'm enjoying finding out","target_text":"j'aime découvrir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0101L03B02","expect":{"known_text":"this language","target_text":"cette langue"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0102L01B02","expect":{"known_text":"we're trying to say","target_text":"nous essayons de dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0102L02B02","expect":{"known_text":"that it's not","target_text":"que ce n'est pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0102L03B02","expect":{"known_text":"like that","target_text":"comme ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0103L01B02","expect":{"known_text":"we're not trying to","target_text":"nous n'essayons pas d'"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0103L03B02","expect":{"known_text":"many more","target_text":"beaucoup plus"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0104L01B02","expect":{"known_text":"we need to","target_text":"nous devons"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0104L03B02","expect":{"known_text":"what we're doing","target_text":"ce que nous faisons"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0105L01B02","expect":{"known_text":"that is why","target_text":"c'est pour cela qu'"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0105L02B02","expect":{"known_text":"he didn't know","target_text":"il ne connaissait pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0105L02B04","expect":{"known_text":"he didn't know that","target_text":"il ne connaissait pas ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0105L03B02","expect":{"known_text":"the answer","target_text":"la réponse"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0106L01B02","expect":{"known_text":"we don't need to","target_text":"nous n'avons pas besoin de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0106L02B02","expect":{"known_text":"feel happy","target_text":"sentir heureux"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0106L03B02","expect":{"known_text":"we just need to work hard","target_text":"nous devons juste travailler dur"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0106L03B03","expect":{"known_text":"we just need to work hard","target_text":"nous devons juste travailler dur"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0107L01B02","expect":{"known_text":"we hoped to","target_text":"nous espérions"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0107L03B02","expect":{"known_text":"what you were doing","target_text":"ce que tu faisais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0108L01B02","expect":{"known_text":"we didn't expect to","target_text":"nous ne nous attendions pas à"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0108L03B02","expect":{"known_text":"in the middle of the night","target_text":"au milieu de la nuit"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0109L01B02","expect":{"known_text":"we must work hard","target_text":"nous devons travailler dur"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0109L01B03","expect":{"known_text":"we must work hard","target_text":"nous devons travailler dur"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0109L02B02","expect":{"known_text":"a lot of","target_text":"beaucoup de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0109L03B02","expect":{"known_text":"new words","target_text":"nouveaux mots"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0110L01B02","expect":{"known_text":"we're friends","target_text":"nous sommes amis"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0110L01B03","expect":{"known_text":"we're friends","target_text":"nous sommes amis"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0110L02B02","expect":{"known_text":"after we finish","target_text":"après avoir fini"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0110L03B02","expect":{"known_text":"I'd like to relax","target_text":"j'aimerais me détendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0110L03B03","expect":{"known_text":"I'd like to relax","target_text":"j'aimerais me détendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0111L01B02","expect":{"known_text":"when we learn","target_text":"quand nous apprenons"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0111L02B02","expect":{"known_text":"something new","target_text":"quelque chose de nouveau"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0111L03B02","expect":{"known_text":"changes our","target_text":"change notre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0112L01B02","expect":{"known_text":"I wasn't expecting","target_text":"je ne m'y attendais pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0113L01B02","expect":{"known_text":"why can't I","target_text":"pourquoi je n'arrive pas à"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0113L02B02","expect":{"known_text":"to remember what","target_text":"me souvenir de ce que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0113L02B03","expect":{"known_text":"to remember what","target_text":"me souvenir de ce que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0113L03B02","expect":{"known_text":"you said","target_text":"tu as dit"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0114L01B02","expect":{"known_text":"I feel as if I'm doing","target_text":"j'ai l'impression de faire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0114L03B02","expect":{"known_text":"than yesterday","target_text":"qu'hier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0115L01B02","expect":{"known_text":"I don't feel as if I'm ready","target_text":"je n'ai pas l'impression d'être prêt"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0115L02B02","expect":{"known_text":"to have a conversation","target_text":"à avoir une conversation"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0116L01B02","expect":{"known_text":"the best choice","target_text":"le meilleur choix"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0117L01B02","expect":{"known_text":"I'm definitely doing","target_text":"je fais clairement"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0117L02B02","expect":{"known_text":"last time","target_text":"la dernière fois"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0117L03B02","expect":{"known_text":"we talked","target_text":"nous avons parlé"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0118L01B02","expect":{"known_text":"when we were","target_text":"quand nous étions"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0118L01B03","expect":{"known_text":"when we were","target_text":"quand nous étions"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0118L02B02","expect":{"known_text":"in the pub","target_text":"au pub"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0119L01B02","expect":{"known_text":"before you leave","target_text":"avant que tu partes"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0120L01B02","expect":{"known_text":"it's interesting that","target_text":"c'est intéressant que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0120L02B02","expect":{"known_text":"you like","target_text":"tu aimes"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0120L03B02","expect":{"known_text":"to go by bus","target_text":"prendre le bus"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0121L01B02","expect":{"known_text":"it's unusual","target_text":"c'est inhabituel"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0121L03B02","expect":{"known_text":"you don't like","target_text":"tu n'aimes pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0121L05B02","expect":{"known_text":"your car","target_text":"ta voiture"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0122L01B02","expect":{"known_text":"starting to feel","target_text":"commence à sembler"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0123L01B02","expect":{"known_text":"I think","target_text":"je pense"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0123L02B02","expect":{"known_text":"a good idea","target_text":"une bonne idée"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0131L01B02","expect":{"known_text":"there are","target_text":"il y a"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0131L04B02","expect":{"known_text":"in my head","target_text":"dans ma tête"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0132L01B02","expect":{"known_text":"less than","target_text":"moins que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0132L03B02","expect":{"known_text":"what she was saying","target_text":"ce qu'elle disait"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0133L01B02","expect":{"known_text":"you get to know","target_text":"on apprend à connaître"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0133L03B02","expect":{"known_text":"when you work together","target_text":"quand on travaille ensemble"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0134L01B02","expect":{"known_text":"not a problem","target_text":"pas un problème"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0134L02B02","expect":{"known_text":"with them","target_text":"avec eux"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0134L03B02","expect":{"known_text":"at something difficult","target_text":"sur quelque chose de difficile"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0135L01B02","expect":{"known_text":"I don't know why","target_text":"je ne sais pas pourquoi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0135L02B02","expect":{"known_text":"you think that","target_text":"tu penses que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0135L03B02","expect":{"known_text":"so good","target_text":"si bien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0136L01B02","expect":{"known_text":"of course","target_text":"bien sûr que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0136L02B02","expect":{"known_text":"to ask her","target_text":"lui demander"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0136L03B02","expect":{"known_text":"she's my friend","target_text":"c'est mon amie"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0137L01B02","expect":{"known_text":"more important than","target_text":"plus important que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0137L02B02","expect":{"known_text":"to talk often","target_text":"de parler souvent"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0137L03B02","expect":{"known_text":"to be perfect","target_text":"d'être parfait"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0138L01B02","expect":{"known_text":"this was where","target_text":"c'est ici que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0138L02B02","expect":{"known_text":"my friend","target_text":"mon ami"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0138L03B02","expect":{"known_text":"to meet us","target_text":"nous retrouver"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0140L01B02","expect":{"known_text":"I can't see","target_text":"je ne peux pas voir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0140L02B02","expect":{"known_text":"what you're trying to show me","target_text":"ce que tu essaies de me montrer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0147L03B02","expect":{"known_text":"she saw me","target_text":"elle m'a vu"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0147L03B03","expect":{"known_text":"she saw me yesterday","target_text":"elle m'a vu hier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0148L01B02","expect":{"known_text":"wasn't","target_text":"n'était pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0148L03B02","expect":{"known_text":"I couldn't","target_text":"je n'ai pas pu"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0148L03B04","expect":{"known_text":"I couldn't answer","target_text":"je n'ai pas pu répondre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0149L02B02","expect":{"known_text":"so I hope","target_text":"alors j'espère que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0149L02B04","expect":{"known_text":"so I hope you understand","target_text":"alors j'espère que tu comprends"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0150L01B02","expect":{"known_text":"can you tell me","target_text":"peux-tu me dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0150L01B04","expect":{"known_text":"Can you tell me that?","target_text":"peux-tu me dire ça?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0151L01B02","expect":{"known_text":"that wasn't","target_text":"ce n'était pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0151L02B02","expect":{"known_text":"I was hoping","target_text":"j'espérais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0151L03B02","expect":{"known_text":"would happen","target_text":"se passerait"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0152L01B02","expect":{"known_text":"I would have","target_text":"j'aurais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0152L03B02","expect":{"known_text":"if I had known","target_text":"si j'avais su"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0152L04B02","expect":{"known_text":"what you wanted","target_text":"ce que vous vouliez"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0152L04B04","expect":{"known_text":"that's what you wanted","target_text":"c'est ce que vous vouliez"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0153L01B02","expect":{"known_text":"I wouldn't have","target_text":"je ne l'aurais pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0154L01B02","expect":{"known_text":"where do you want","target_text":"où voulez-vous"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0154L01B04","expect":{"known_text":"where do you want to go","target_text":"où voulez-vous aller"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0154L02B02","expect":{"known_text":"on Saturday","target_text":"samedi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0155L01B02","expect":{"known_text":"I don't mind","target_text":"ça ne me dérange pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0155L01B04","expect":{"known_text":"I don't mind","target_text":"ça ne me dérange pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0155L01U02","expect":{"known_text":"I don't mind waiting","target_text":"ça ne me dérange pas d'attendre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0155L02B02","expect":{"known_text":"a few minutes","target_text":"quelques minutes"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0155L03B02","expect":{"known_text":"tomorrow morning","target_text":"demain matin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0155L03U03","expect":{"known_text":"I want to go tomorrow morning","target_text":"je veux y aller demain matin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0156L01B02","expect":{"known_text":"to a restaurant","target_text":"au restaurant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0156L02U02","expect":{"known_text":"I want to go tonight","target_text":"je veux y aller ce soir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0157L01B02","expect":{"known_text":"I won't be able","target_text":"je ne pourrai pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0157L01B03","expect":{"known_text":"I won't be able to go","target_text":"je ne pourrai pas y aller"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0157L02B03","expect":{"known_text":"I will be there","target_text":"je serai là"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0157L03B02","expect":{"known_text":"next month","target_text":"le mois prochain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0157L03U03","expect":{"known_text":"I want to go next month","target_text":"je veux y aller le mois prochain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0158L01B02","expect":{"known_text":"let's talk","target_text":"parlons"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0158L01B03","expect":{"known_text":"let's talk","target_text":"parlons"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0158L01B04","expect":{"known_text":"let's talk about it","target_text":"parlons de ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0158L01U03","expect":{"known_text":"let's talk tomorrow","target_text":"parlons demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0158L02B02","expect":{"known_text":"something else","target_text":"d'autre chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0159L01B02","expect":{"known_text":"that isn't","target_text":"ce n'est pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0159L01B04","expect":{"known_text":"that isn't easy","target_text":"ce n'est pas facile"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0160L01B02","expect":{"known_text":"how do you say","target_text":"comment dit-on"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0160L01B04","expect":{"known_text":"how do you say that?","target_text":"comment dit-on ça?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0161L01B02","expect":{"known_text":"can you","target_text":"peux-tu"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0162L01B02","expect":{"known_text":"do you think","target_text":"tu penses"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0163L01B02","expect":{"known_text":"I think that it's interesting","target_text":"je pense que c'est intéressant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0164L01B02","expect":{"known_text":"an interesting book","target_text":"un livre intéressant"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0166L01B02","expect":{"known_text":"my name is not very unusual","target_text":"mon nom n'est pas très inhabituel"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0166L01B03","expect":{"known_text":"my name is not very unusual","target_text":"mon nom n'est pas très inhabituel"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0167L01B03","expect":{"known_text":"what do you need to do tomorrow afternoon?","target_text":"qu'est-ce que vous devez faire demain après-midi?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0168L01B02","expect":{"known_text":"and then","target_text":"et puis"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0168L02B02","expect":{"known_text":"to come","target_text":"venir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0169L01B02","expect":{"known_text":"what do you want","target_text":"qu'est-ce que vous voulez"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0169L01B03","expect":{"known_text":"what do you want to say","target_text":"qu'est-ce que vous voulez dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0169L01B04","expect":{"known_text":"what do you want to do","target_text":"qu'est-ce que vous voulez faire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0170L01B02","expect":{"known_text":"I'd like you to tell me","target_text":"je voudrais que vous me disiez"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0171L01B02","expect":{"known_text":"do you want me to","target_text":"voulez-vous que je"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0171L02B02","expect":{"known_text":"to look for","target_text":"chercher"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0172L01B02","expect":{"known_text":"that would be very helpful","target_text":"ça serait très utile"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0173L01B02","expect":{"known_text":"to manage","target_text":"débrouiller"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0175L01B02","expect":{"known_text":"Sunday morning","target_text":"dimanche matin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0176L01B02","expect":{"known_text":"I'll ask him","target_text":"je lui demanderai"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0176L01B04","expect":{"known_text":"I'll ask him tomorrow","target_text":"je lui demanderai demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0176L02B02","expect":{"known_text":"he'll be able","target_text":"il pourra"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0176L02B04","expect":{"known_text":"he'll be able to help","target_text":"il pourra aider"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0176L03B02","expect":{"known_text":"next year","target_text":"l'année prochaine"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0177L01B02","expect":{"known_text":"I'll ask her","target_text":"je lui demanderai"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0177L01B04","expect":{"known_text":"I'll ask her tomorrow","target_text":"je lui demanderai demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0178L01B02","expect":{"known_text":"didn't have","target_text":"n'ai pas eu"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0178L01B04","expect":{"known_text":"I didn't have time","target_text":"je n'ai pas eu le temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0178L02B02","expect":{"known_text":"although","target_text":"bien que"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0179L01B02","expect":{"known_text":"you are going to","target_text":"tu vas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0179L01B04","expect":{"known_text":"what are you going to do","target_text":"qu'est-ce que tu vas faire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0179L02B02","expect":{"known_text":"sunday afternoon","target_text":"dimanche après-midi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0181L03B02","expect":{"known_text":"to the doctor","target_text":"chez le médecin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0182L01B02","expect":{"known_text":"have you seen","target_text":"avez-vous vu"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0182L03B02","expect":{"known_text":"anywhere","target_text":"quelque part"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0184L01B02","expect":{"known_text":"in the office","target_text":"au bureau"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0184L02B02","expect":{"known_text":"a while ago","target_text":"il y a un moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0185L01B02","expect":{"known_text":"left them","target_text":"les avez laissés"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0186L01B02","expect":{"known_text":"something different","target_text":"quelque chose de différent"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0187L01B02","expect":{"known_text":"so far","target_text":"jusqu'ici"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0187L01U06","expect":{"known_text":"I'm happy so far","target_text":"je suis content jusqu'ici"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0189L01B02","expect":{"known_text":"yes that's a good idea","target_text":"oui c'est une bonne idée"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0189L01B03","expect":{"known_text":"yes that's a good idea","target_text":"oui c'est une bonne idée"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0189L01B04","expect":{"known_text":"yes that's a good idea I think","target_text":"oui c'est une bonne idée je pense"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0189L01U05","expect":{"known_text":"yes that's a good idea for me","target_text":"oui c'est une bonne idée pour moi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0189L01U06","expect":{"known_text":"yes that's a good idea for us","target_text":"oui c'est une bonne idée pour nous"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0190L02B02","expect":{"known_text":"some questions","target_text":"quelques questions"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0190L02B04","expect":{"known_text":"I have some questions","target_text":"j'ai quelques questions"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0196L01B03","expect":{"known_text":"have you heard that?","target_text":"as-tu entendu ça?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0198L02U02","expect":{"known_text":"she works for the council","target_text":"elle travaille pour la mairie"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0200L01B03","expect":{"known_text":"they say something","target_text":"ils disent quelque chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0200L02B03","expect":{"known_text":"they want to work","target_text":"ils veulent travailler"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0200L02U03","expect":{"known_text":"they want something","target_text":"ils veulent quelque chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0200L03B02","expect":{"known_text":"to make sure","target_text":"s'assurer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0200L04B03","expect":{"known_text":"we finish everything in time","target_text":"nous finissons tout à temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0200L04U02","expect":{"known_text":"we finish everything today","target_text":"nous finissons tout aujourd'hui"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0201L01U04","expect":{"known_text":"it was going to be difficult","target_text":"ça allait être difficile"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0201L02U03","expect":{"known_text":"we wanted to know how","target_text":"nous voulions savoir comment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0201L02U04","expect":{"known_text":"we wanted to know why","target_text":"nous voulions savoir pourquoi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0201L03B04","expect":{"known_text":"what was going to happen after?","target_text":"ce qui allait se passer après?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0201L03U04","expect":{"known_text":"I wanted to know what was going to happen","target_text":"je voulais savoir ce qui allait se passer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0202L02B04","expect":{"known_text":"nobody was sure why","target_text":"personne n'était sûr pourquoi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0202L03B04","expect":{"known_text":"I know how to answer the question","target_text":"je sais comment répondre à la question"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0203L01B03","expect":{"known_text":"what would you do?","target_text":"que feriez-vous?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0203L01U02","expect":{"known_text":"what would you do then?","target_text":"que feriez-vous alors?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0203L03B04","expect":{"known_text":"what would you do if I asked you to help me","target_text":"que feriez-vous si je vous demandais de m'aider"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0203L03U06","expect":{"known_text":"I wanted to know if I asked you to help me","target_text":"je voulais savoir si je vous demandais de m'aider"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0205L02B02","expect":{"known_text":"the word","target_text":"le mot"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0205L03B02","expect":{"known_text":"I was trying to say","target_text":"que j'essayais de dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0207L01B02","expect":{"known_text":"you've done","target_text":"vous avez fait"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0207L02B02","expect":{"known_text":"what you needed to do","target_text":"ce que vous deviez faire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0208L01B02","expect":{"known_text":"I didn't want to ask you","target_text":"je ne voulais pas vous demander"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0208L02B02","expect":{"known_text":"how to say it","target_text":"comment le dire"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0209L01B02","expect":{"known_text":"as a group","target_text":"en groupe"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0209L02B02","expect":{"known_text":"to spend more time","target_text":"passer plus de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0209L03B02","expect":{"known_text":"meeting","target_text":"à se rencontrer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0211L01B02","expect":{"known_text":"told us","target_text":"nous ont dit"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0211L02B02","expect":{"known_text":"that they","target_text":"qu'ils"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0211L03B02","expect":{"known_text":"didn't want to","target_text":"ne voulaient pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0212L01B02","expect":{"known_text":"to ask for","target_text":"demander de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0212L01B03","expect":{"known_text":"to ask for","target_text":"demander de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0213L01B02","expect":{"known_text":"we don't know","target_text":"nous ne savons pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0213L02B02","expect":{"known_text":"what they're","target_text":"ce qu'ils"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0213L03B02","expect":{"known_text":"trying to","target_text":"essaient d"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0213L04B02","expect":{"known_text":"to achieve","target_text":"accomplir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0214L01B02","expect":{"known_text":"have a good time","target_text":"passé un bon moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0214L02B02","expect":{"known_text":"at the weekend","target_text":"le week-end"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0215L01B02","expect":{"known_text":"went out","target_text":"suis sorti"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0215L02B02","expect":{"known_text":"on Saturday night","target_text":"samedi soir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0216L01B02","expect":{"known_text":"a few friends","target_text":"quelques amis"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0217L02B02","expect":{"known_text":"a glass or two","target_text":"un verre ou deux"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0217L03B02","expect":{"known_text":"of water","target_text":"d'eau"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0218L01B02","expect":{"known_text":"didn't do much","target_text":"n'ai pas fait grand-chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0219L01B02","expect":{"known_text":"it was nice to","target_text":"c'était agréable de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0219L02B02","expect":{"known_text":"to relax for a while","target_text":"se détendre pendant un moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0219L02B03","expect":{"known_text":"to relax for a while","target_text":"se détendre pendant un moment"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0220L01B02","expect":{"known_text":"a bit of","target_text":"un peu de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0222L01B02","expect":{"known_text":"he's trying to tell me what he wants","target_text":"il essaie de me dire ce qu'il veut"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0223L01B02","expect":{"known_text":"he's going to ask you tomorrow","target_text":"il va vous demander demain"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0227L01B02","expect":{"known_text":"that man is going to tell me something new","target_text":"cet homme va me dire quelque chose de nouveau"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0230L01B02","expect":{"known_text":"I know a young man who wants to work with you","target_text":"je connais un jeune homme qui veut travailler avec vous"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0241L01B02","expect":{"known_text":"it to him","target_text":"le lui"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0242L01B02","expect":{"known_text":"to give her more time","target_text":"lui donner plus de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0244L01B02","expect":{"known_text":"I've already learnt a lot","target_text":"j'ai déjà beaucoup appris"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0245L01B02","expect":{"known_text":"happy with how much I've done in a short time","target_text":"content de ce que j'ai fait en peu de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0245L01B04","expect":{"known_text":"I'm happy with how much I've done in a short time","target_text":"je suis content de ce que j'ai fait en peu de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0246L01B02","expect":{"known_text":"her to help you","target_text":"qu'elle t'aide"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0247L01B02","expect":{"known_text":"I thought that book was fairly good","target_text":"je pensais que ce livre était assez bon"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0247L01B03","expect":{"known_text":"I thought that book was fairly good","target_text":"je pensais que ce livre était assez bon"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0247L01B04","expect":{"known_text":"I thought that book was fairly good yesterday","target_text":"je pensais que ce livre était assez bon hier"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0247L01U03","expect":{"known_text":"I thought that book was fairly good too","target_text":"je pensais que ce livre était assez bon aussi"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0248L01U06","expect":{"known_text":"I think it's really good","target_text":"je pense que c'est vraiment bon"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0248L02U03","expect":{"known_text":"that's really rubbish","target_text":"c'est vraiment nul"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0249L01B02","expect":{"known_text":"you to help me","target_text":"que tu m'aides"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0250L01B02","expect":{"known_text":"to tell me something else","target_text":"me dire autre chose"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0250L02B02","expect":{"known_text":"before I answer","target_text":"avant que je réponde"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0253L01B02","expect":{"known_text":"I should be ready in a few minutes","target_text":"je devrais être prêt dans quelques minutes"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0254L01B02","expect":{"known_text":"I've been ready since this morning","target_text":"je suis prêt depuis ce matin"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0255L01B02","expect":{"known_text":"when do you think you'll be ready to leave","target_text":"quand est-ce que tu penses que tu seras prêt à partir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0256L01B02","expect":{"known_text":"I think I'll be ready in less than an hour","target_text":"je pense que je serai prêt dans moins d'une heure"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0259L01B02","expect":{"known_text":"an idea","target_text":"une idée"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0260L01B02","expect":{"known_text":"the faintest idea","target_text":"la moindre idée"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0261L01B02","expect":{"known_text":"it might be","target_text":"ça pourrait être"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0261L02B02","expect":{"known_text":"something important","target_text":"quelque chose d'important"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0262L02B02","expect":{"known_text":"you were talking to","target_text":"à qui tu parlais"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0263L01B02","expect":{"known_text":"who you mean","target_text":"de qui tu parles"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0264L01B02","expect":{"known_text":"an old man","target_text":"un vieil homme"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0265L01B02","expect":{"known_text":"a friend","target_text":"un ami"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0266L01B02","expect":{"known_text":"an old friend","target_text":"un vieil ami"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0267L01B02","expect":{"known_text":"have you heard from","target_text":"tu as eu des nouvelles de"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0267L01B03","expect":{"known_text":"have you heard from him","target_text":"tu as eu des nouvelles de lui"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0267L01B04","expect":{"known_text":"have you heard from your friend","target_text":"tu as eu des nouvelles de ton ami"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0268L02B03","expect":{"known_text":"she sent me two emails","target_text":"elle m'a envoyé deux emails"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0269L02B02","expect":{"known_text":"why don't you want to","target_text":"pourquoi tu ne veux pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0269L02B04","expect":{"known_text":"why don't you want to wait for your father","target_text":"pourquoi tu ne veux pas attendre ton père"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0270L01B03","expect":{"known_text":"I'm going to be late","target_text":"je vais être en retard"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0270L02B04","expect":{"known_text":"I'm worried that I'm going to be late","target_text":"j'ai peur d'être en retard"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0272L01B02","expect":{"known_text":"sounds like","target_text":"a l'air"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0277L01B02","expect":{"known_text":"an important meeting","target_text":"une réunion importante"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0277L02B02","expect":{"known_text":"early next week","target_text":"au début de la semaine prochaine"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0279L01B02","expect":{"known_text":"was left","target_text":"ne restait pas"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0279L01B04","expect":{"known_text":"there wasn't much time left","target_text":"il ne restait pas beaucoup de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0281L02B02","expect":{"known_text":"I finish","target_text":"je finis"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0281L02B03","expect":{"known_text":"I finish this","target_text":"je finis ça"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0281L03B02","expect":{"known_text":"do you mind","target_text":"ça te dérange"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0281L04B02","expect":{"known_text":"you start","target_text":"tu commences"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0282L01B04","expect":{"known_text":"I think that's not a problem","target_text":"je pense que ce n'est pas un problème"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0284L01U04","expect":{"known_text":"do you know my sister's friend?","target_text":"est-ce que tu connais l'ami de ma sœur?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0287L01B03","expect":{"known_text":"how many people do you know here?","target_text":"combien de gens est-ce que tu connais ici?"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0293L01B02","expect":{"known_text":"I have to find out","target_text":"je dois savoir"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0293L02B02","expect":{"known_text":"he's going to meet me","target_text":"il va me retrouver"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0294L01B02","expect":{"known_text":"enough time","target_text":"assez de temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0294L02B02","expect":{"known_text":"to call you","target_text":"t'appeler"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0295L01B02","expect":{"known_text":"in a day","target_text":"en un jour"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0297L01B02","expect":{"known_text":"many people","target_text":"beaucoup de gens"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0297L02B02","expect":{"known_text":"who speak French","target_text":"qui parlent français"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0298L01B02","expect":{"known_text":"nothing left","target_text":"plus rien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0298L01B04","expect":{"known_text":"I've got nothing left","target_text":"je n'ai plus rien"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0299L01B02","expect":{"known_text":"I want to pay","target_text":"je veux payer"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0299L02B03","expect":{"known_text":"to pay half","target_text":"payer la moitié"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0300L01B02","expect":{"known_text":"to seem","target_text":"avoir l'air"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0376L03B03","expect":{"known_text":"nowhere at all","target_text":"nulle part du tout"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0396L05B02","expect":{"known_text":"to stay standing","target_text":"rester debout"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0397L01B02","expect":{"known_text":"do we have time","target_text":"avons-nous le temps"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0397L01B03","expect":{"known_text":"do we have enough","target_text":"avons-nous assez"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0399L02B02","expect":{"known_text":"to lose","target_text":"perdre"}}
+{"op":"phrase.delete","phrase_id":"fra_for_eng:S0549L02B02","expect":{"known_text":"because I have got to be there","target_text":"parce que je dois être là"}}

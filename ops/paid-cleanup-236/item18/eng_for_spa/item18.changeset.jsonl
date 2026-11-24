@@ -1,0 +1,11 @@
+{"format":"ssi-changeset/1","id":"eng_for_spa-item18-cs236","course":"eng_for_spa","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:34.974Z","ops":10,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0009L01B03","expect":{"known_text":"hablo inglés con otra persona","target_text":"I speak English with someone else"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0014L02B04","expect":{"known_text":"¿hablas inglés con otra persona?","target_text":"do you speak English with someone else?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0020L03B02","expect":{"known_text":"quieres aprender inglés rápido esta tarde","target_text":"you want to learn English quickly this evening"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0021L02B02","expect":{"known_text":"¿estás aprendiendo inglés rápido?","target_text":"are you learning English quickly?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0057L01B02","expect":{"known_text":"no puedo recordar","target_text":"I can't remember"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0057L02B02","expect":{"known_text":"lo que quería decir","target_text":"what I wanted to say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0064L03U05","expect":{"known_text":"aprender inglés no es fácil pero sí es divertido","target_text":"learning English isn't easy but it is fun"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0172L01B03","expect":{"known_text":"eso es de mucha ayuda","target_text":"that's very helpful"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0245L01U05","expect":{"known_text":"estoy contenta con lo mucho que he hecho en poco tiempo","target_text":"I'm happy with how much I've done in a short time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_spa:S0299L01B02","expect":{"known_text":"quiere pagar la mitad","target_text":"he wants to pay half"}}

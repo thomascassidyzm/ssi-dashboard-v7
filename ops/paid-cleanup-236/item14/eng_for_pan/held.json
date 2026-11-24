@@ -1,0 +1,51 @@
+[
+ {
+  "row": "S0022L03U03",
+  "known": "ਕੀ ਤੁਸੀਂ ਮਿਲਣਾ ਚਾਹੁੰਦੇ ਹੋ ਲੋਕਾਂ ਜੋ ਅੰਗਰੇਜ਼ੀ ਬੋਲਦੇ ਹਨ",
+  "target": "you want to meet people who speak English?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0023L02U05",
+  "known": "ਕੀ ਤੁਸੀਂ ਹੋਰ ਸਿੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "target": "you want to learn more",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0023L03U05",
+  "known": "ਕੀ ਤੁਸੀਂ ਛੇਤੀ ਸ਼ੁਰੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "target": "you want to start soon",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0033L02B01",
+  "known": "ਸਿੱਖ ਰਹੇ ਹੋ",
+  "target": "have you been learning?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0058L01U05",
+  "known": "ਮੈਂ ਤੁਹਾਡੇ ਨਾਲ ਕੁਝ ਸਮਝਣਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+  "target": "I want to understand something with you?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0157L02U01",
+  "known": "ਮੈਂ ਅਗਲੇ ਮਹੀਨੇ ਕੀ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ?",
+  "target": "I want to do something next month",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0196L02B03",
+  "known": "ਕੀ ਤੁਸੀਂ ਸਭ ਤੋਂ ਨਵਾਂ ਵਿਚਾਰ ਸੁਣਿਆ?",
+  "target": "heard the latest idea",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ }
+]

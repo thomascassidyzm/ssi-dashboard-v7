@@ -1,0 +1,76 @@
+{
+ "changeset": "eng_for_por-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 63,
+   "seed": {
+    "known_text": "Tem a certeza de que não se importa de me ajudar?",
+    "target_text": "Are you sure you don't mind helping me?"
+   },
+   "lego_id": "S0063L01",
+   "lego": [
+    {
+     "known_text": "não se importa de",
+     "target_text": "you don't mind"
+    }
+   ]
+  },
+  {
+   "seed_number": 100,
+   "seed": {
+    "known_text": "Não te devias preocupar em fazer algo parecido.",
+    "target_text": "You shouldn't worry about doing something similar."
+   },
+   "lego_id": "S0100L02",
+   "lego": [
+    {
+     "known_text": "não se devia preocupar",
+     "target_text": "shouldn't worry"
+    }
+   ]
+  },
+  {
+   "seed_number": 120,
+   "seed": {
+    "known_text": "É interessante que goste de ir de autocarro.",
+    "target_text": "It's interesting that you like to go by bus."
+   },
+   "lego_id": "S0120L02",
+   "lego": [
+    {
+     "known_text": "que goste de ir de autocarro",
+     "target_text": "that you like going by bus"
+    }
+   ]
+  },
+  {
+   "seed_number": 153,
+   "seed": {
+    "known_text": "Eu não teria dito exatamente da mesma maneira.",
+    "target_text": "I wouldn't have said it in exactly the same way."
+   },
+   "lego_id": "S0153L03",
+   "lego": [
+    {
+     "known_text": "não teria dito",
+     "target_text": "I wouldn't have said it"
+    }
+   ]
+  },
+  {
+   "seed_number": 272,
+   "seed": {
+    "known_text": "Sim, parece uma ótima ideia.",
+    "target_text": "Yes that sounds like a great idea."
+   },
+   "lego_id": "S0272L01",
+   "lego": [
+    {
+     "known_text": "parece uma ótima ideia",
+     "target_text": "sounds like a good idea"
+    }
+   ]
+  }
+ ]
+}

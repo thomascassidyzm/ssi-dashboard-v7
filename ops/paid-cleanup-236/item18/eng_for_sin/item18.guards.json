@@ -1,0 +1,286 @@
+{
+ "changeset": "eng_for_sin-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 61,
+   "seed": {
+    "known_text": "ටිකක් හෙමින් ආයෙ කියන්න පුළුවන්ද?",
+    "target_text": "Could you say that again a little more slowly?"
+   },
+   "lego_id": "S0061L03",
+   "lego": [
+    {
+     "known_text": "කියන්න පුළුවන්ද",
+     "target_text": "could you say"
+    }
+   ]
+  },
+  {
+   "seed_number": 63,
+   "seed": {
+    "known_text": "ඔයාට මට උදව් කරන්න කමක් නෑද කියලා හිතෙනවාද?",
+    "target_text": "Are you sure you don't mind helping me?"
+   },
+   "lego_id": "S0063L02",
+   "lego": [
+    {
+     "known_text": "කමක් නෑද",
+     "target_text": "don't mind"
+    }
+   ]
+  },
+  {
+   "seed_number": 118,
+   "seed": {
+    "known_text": "ශාලාවේ ඉන්නකොට දැනෙනවාට වඩා හොඳ දැනෙනවා.",
+    "target_text": "I feel better than I felt when we were in the pub."
+   },
+   "lego_id": "S0118L01",
+   "lego": [
+    {
+     "known_text": "ශාලාවේ",
+     "target_text": "the pub"
+    }
+   ]
+  },
+  {
+   "seed_number": 121,
+   "seed": {
+    "known_text": "ඔයා ඔයාගේ ගාඩිය පාවිච්චි කරන්නේ ආසා නෑ කියලා අසාමාන්‍ය.",
+    "target_text": "It's unusual that you don't like to use your car."
+   },
+   "lego_id": "S0121L03",
+   "lego": [
+    {
+     "known_text": "අසාමාන්‍ය",
+     "target_text": "unusual"
+    }
+   ]
+  },
+  {
+   "seed_number": 131,
+   "seed": {
+    "known_text": "මගේ හිසේ ගොඩක් වැඩි අදහස් වටේට යනවා.",
+    "target_text": "There are too many ideas going around in my head."
+   },
+   "lego_id": "S0131L02",
+   "lego": [
+    {
+     "known_text": "වටේට",
+     "target_text": "around"
+    }
+   ]
+  },
+  {
+   "seed_number": 141,
+   "seed": {
+    "known_text": "ප්‍රශ්නයක් නෑ. ඔක්කොම හරි.",
+    "target_text": "No problem. Everything is okay."
+   },
+   "lego_id": "S0141L01",
+   "lego": [
+    {
+     "known_text": "ප්‍රශ්නයක් නෑ",
+     "target_text": "no problem"
+    }
+   ]
+  },
+  {
+   "seed_number": 146,
+   "seed": {
+    "known_text": "හදාගන්නට හැදූ දා ඉඳලා කිසිම දෙයක් ක්‍රියා නොකෙරෙනවා.",
+    "target_text": "Nothing seems to be working since we tried to fix it."
+   },
+   "lego_id": "S0146L01",
+   "lego": [
+    {
+     "known_text": "ක්‍රියා",
+     "target_text": "seems"
+    }
+   ]
+  },
+  {
+   "seed_number": 146,
+   "seed": {
+    "known_text": "හදාගන්නට හැදූ දා ඉඳලා කිසිම දෙයක් ක්‍රියා නොකෙරෙනවා.",
+    "target_text": "Nothing seems to be working since we tried to fix it."
+   },
+   "lego_id": "S0146L02",
+   "lego": [
+    {
+     "known_text": "කිසිම දෙයක් ක්‍රියා",
+     "target_text": "nothing seems"
+    }
+   ]
+  },
+  {
+   "seed_number": 148,
+   "seed": {
+    "known_text": "මට පිළිතුරු දෙන්න බැරි වුණු වෙලාවේ ඔහු ගොඩක් ඉවසිලිවන්ත වුණේ නෑ.",
+    "target_text": "He wasn't very patient when I couldn't answer."
+   },
+   "lego_id": "S0148L01",
+   "lego": [
+    {
+     "known_text": "ඉවසිලිවන්ත",
+     "target_text": "patient"
+    }
+   ]
+  },
+  {
+   "seed_number": 150,
+   "seed": {
+    "known_text": "ඔයාගේ නම මොකක්ද කියලා මට කියන්න පුළුවන්ද?",
+    "target_text": "Can you tell me what your name is?"
+   },
+   "lego_id": "S0150L01",
+   "lego": [
+    {
+     "known_text": "මට කියන්න",
+     "target_text": "tell me"
+    }
+   ]
+  },
+  {
+   "seed_number": 158,
+   "seed": {
+    "known_text": "වෙන දෙයක් ගැන කතා කරමු.",
+    "target_text": "Let's talk about something else."
+   },
+   "lego_id": "S0158L02",
+   "lego": [
+    {
+     "known_text": "කරමු",
+     "target_text": "let's"
+    }
+   ]
+  },
+  {
+   "seed_number": 185,
+   "seed": {
+    "known_text": "මම හිතන්නේ ඔයා ඒවා වැඩේදී අමතකවෙලා ගිය.",
+    "target_text": "I think you left them at work."
+   },
+   "lego_id": "S0185L01",
+   "lego": [
+    {
+     "known_text": "වැඩේදී අමතකවෙලා",
+     "target_text": "left at work"
+    }
+   ]
+  },
+  {
+   "seed_number": 192,
+   "seed": {
+    "known_text": "මම හෙට රෑ බිස්ස.",
+    "target_text": "I'm busy tomorrow night."
+   },
+   "lego_id": "S0192L01",
+   "lego": [
+    {
+     "known_text": "බිස්ස",
+     "target_text": "busy"
+    }
+   ]
+  },
+  {
+   "seed_number": 192,
+   "seed": {
+    "known_text": "මම හෙට රෑ බිස්ස.",
+    "target_text": "I'm busy tomorrow night."
+   },
+   "lego_id": "S0192L01",
+   "lego": [
+    {
+     "known_text": "බිස්ස",
+     "target_text": "busy"
+    }
+   ]
+  },
+  {
+   "seed_number": 193,
+   "seed": {
+    "known_text": "කනගාටුයි, මම අද ගොඩක් බිස්ස.",
+    "target_text": "I'm sorry but I'm too busy today."
+   },
+   "lego_id": "S0193L01",
+   "lego": [
+    {
+     "known_text": "ගොඩක් බිස්ස",
+     "target_text": "too busy"
+    }
+   ]
+  },
+  {
+   "seed_number": 195,
+   "seed": {
+    "known_text": "මම මේස පිට ලිහිල් කරලා ගිය සල්ලි හොයන්න උත්සාහ කරනවා.",
+    "target_text": "I'm trying to find the money I left on the table."
+   },
+   "lego_id": "S0195L01",
+   "lego": [
+    {
+     "known_text": "සල්ලි",
+     "target_text": "money"
+    }
+   ]
+  },
+  {
+   "seed_number": 195,
+   "seed": {
+    "known_text": "මම මේස පිට ලිහිල් කරලා ගිය සල්ලි හොයන්න උත්සාහ කරනවා.",
+    "target_text": "I'm trying to find the money I left on the table."
+   },
+   "lego_id": "S0195L02",
+   "lego": [
+    {
+     "known_text": "මේස පිට",
+     "target_text": "on the table"
+    }
+   ]
+  },
+  {
+   "seed_number": 195,
+   "seed": {
+    "known_text": "මම මේස පිට ලිහිල් කරලා ගිය සල්ලි හොයන්න උත්සාහ කරනවා.",
+    "target_text": "I'm trying to find the money I left on the table."
+   },
+   "lego_id": "S0195L02",
+   "lego": [
+    {
+     "known_text": "මේස පිට",
+     "target_text": "on the table"
+    }
+   ]
+  },
+  {
+   "seed_number": 219,
+   "seed": {
+    "known_text": "ටිකක් ලිහිල් කරගෙන ඉන්න ලැබීම හොඳ වුණා.",
+    "target_text": "It was nice to relax for a while."
+   },
+   "lego_id": "S0219L01",
+   "lego": [
+    {
+     "known_text": "හොඳ වුණා",
+     "target_text": "nice"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "ඔහු බාගය ගෙවන්නයි ඕනේ.",
+    "target_text": "He wants to pay half."
+   },
+   "lego_id": "S0299L02",
+   "lego": [
+    {
+     "known_text": "බාගය",
+     "target_text": "half"
+    }
+   ]
+  }
+ ]
+}

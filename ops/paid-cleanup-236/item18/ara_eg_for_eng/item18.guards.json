@@ -1,0 +1,34 @@
+{
+ "changeset": "ara_eg_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 13,
+   "seed": {
+    "known_text": "You speak Arabic very well.",
+    "target_text": "إنت بتتكلم عربي كويس جدًا."
+   },
+   "lego_id": "S0013L02",
+   "lego": [
+    {
+     "known_text": "very well",
+     "target_text": "كويس جدًا"
+    }
+   ]
+  },
+  {
+   "seed_number": 54,
+   "seed": {
+    "known_text": "We wanted to give you a little more time.",
+    "target_text": "إحنا كنا عايزين نديك شوية وقت زيادة."
+   },
+   "lego_id": "S0054L03",
+   "lego": [
+    {
+     "known_text": "extra",
+     "target_text": "زيادة"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{"format":"ssi-changeset/1","id":"ara_lb_for_eng-item18-cs236","course":"ara_lb_for_eng","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:32.845Z","ops":13,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0030L02B03","expect":{"known_text":"I wanted to ask you something","target_text":"كنت بدي أسألك شي"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0046L03B02","expect":{"known_text":"I don't worry about mistakes","target_text":"ما بقلق من الأغلاط"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0062L02B02","expect":{"known_text":"at the same time","target_text":"بنفس الوقت"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0083L04B03","expect":{"known_text":"I agree with what you said","target_text":"متفق مع شو قلتو"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0095L01B02","expect":{"known_text":"you go slowly","target_text":"تروح بشوي"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0096L01B02","expect":{"known_text":"no I'm not ready","target_text":"لا مش جاهز"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0097L02B02","expect":{"known_text":"I go whenever you want","target_text":"أروح متى ما بدك"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0126L04B03","expect":{"known_text":"this work is good","target_text":"هالشغل منيح"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0198L01B02","expect":{"known_text":"my daughter is here","target_text":"بنتي هون"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0202L02B02","expect":{"known_text":"how to answer the question","target_text":"كيف يجاوب على السؤال"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0208L02B03","expect":{"known_text":"I didn't want to ask you how to say it","target_text":"ما كنت بدي أسألك كيف تقولها"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0210L03B02","expect":{"known_text":"that we need to discuss the problem","target_text":"إننا لازم نناقش المشكلة"}}
+{"op":"phrase.delete","phrase_id":"ara_lb_for_eng:S0212L02B03","expect":{"known_text":"they wanted to ask for help","target_text":"كانوا بدون يطلبوا مساعدة"}}

@@ -1,0 +1,34 @@
+{
+ "changeset": "deu_at_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 639,
+   "seed": {
+    "known_text": "with you sir",
+    "target_text": "mit Ihnen, der Herr"
+   },
+   "lego_id": "S0639L02",
+   "lego": [
+    {
+     "known_text": "with you, sir",
+     "target_text": "mit Ihnen, der Herr"
+    }
+   ]
+  },
+  {
+   "seed_number": 640,
+   "seed": {
+    "known_text": "it's the red one",
+    "target_text": "es is des Rote"
+   },
+   "lego_id": "S0640L02",
+   "lego": [
+    {
+     "known_text": "it's the red one",
+     "target_text": "es is des Rote"
+    }
+   ]
+  }
+ ]
+}

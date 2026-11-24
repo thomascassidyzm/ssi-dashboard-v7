@@ -1,0 +1,24 @@
+{
+ "job": "cs #238",
+ "ruling": "Kai 24 Nov \"B is good\": S0234L02B02 -> I met someone and he's my friend | ik haw ien moete en hy is myn freon",
+ "event_id": "ea916bc2-8ff7-413a-bcb2-c2545da2e12c",
+ "undo_file_on_popty": "2026-11-24T17-06-21-829Z-ea916bc2-8ff7-413a-bcb2-c2545da2e12c.json",
+ "render_event_id": "cda292c6-5196-4bff-aeb6-9268ea71b0ab",
+ "new_known_clip": "372a0326-d5ac-4637-9a55-50932e1008f8",
+ "old_known_clip": "1446bb36-af09-46fa-aaea-2f884b22065a",
+ "old_target1_take_unlinked": "980fe6c0-3f81-4476-8ec4-e2ffb734ebf7",
+ "booth": "human_info_fry rerecord 145->146, why text_changed",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0234L02B02",
+   "set": {
+    "known_text": "I met someone and she's my friend",
+    "target_text": "ik haw ien moete en se is myn freon",
+    "known_audio_id": "1446bb36-af09-46fa-aaea-2f884b22065a",
+    "target1_audio_id": "980fe6c0-3f81-4476-8ec4-e2ffb734ebf7"
+   }
+  }
+ ]
+}

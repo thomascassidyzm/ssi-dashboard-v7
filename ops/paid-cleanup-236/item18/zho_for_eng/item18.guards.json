@@ -1,0 +1,104 @@
+{
+ "changeset": "zho_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 9,
+   "seed": {
+    "known_text": "I speak a little Chinese now",
+    "target_text": "我现在会说一点中文"
+   },
+   "lego_id": "S0009L01",
+   "lego": [
+    {
+     "known_text": "can",
+     "target_text": "会"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "非常感谢，但是我还有很多要学"
+   },
+   "lego_id": "S0073L01",
+   "lego": [
+    {
+     "known_text": "thank you very much",
+     "target_text": "非常感谢"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "我对自己已经学会的这么多很满意"
+   },
+   "lego_id": "S0076L02",
+   "lego": [
+    {
+     "known_text": "already",
+     "target_text": "已经"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "我对自己已经学会的这么多很满意"
+   },
+   "lego_id": "S0076L03",
+   "lego": [
+    {
+     "known_text": "satisfied",
+     "target_text": "满意"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "我不明白你说的是什么"
+   },
+   "lego_id": "S0078L01",
+   "lego": [
+    {
+     "known_text": "to understand clearly",
+     "target_text": "明白"
+    }
+   ]
+  },
+  {
+   "seed_number": 207,
+   "seed": {
+    "known_text": "you've done what you needed to do",
+    "target_text": "你已经做了你需要做的事"
+   },
+   "lego_id": "S0207L01",
+   "lego": [
+    {
+     "known_text": "you've done what you needed to do",
+     "target_text": "你已经做了你需要做的事"
+    }
+   ]
+  },
+  {
+   "seed_number": 275,
+   "seed": {
+    "known_text": "longer",
+    "target_text": "更久"
+   },
+   "lego_id": "S0275L01",
+   "lego": [
+    {
+     "known_text": "longer",
+     "target_text": "更久"
+    }
+   ]
+  }
+ ]
+}

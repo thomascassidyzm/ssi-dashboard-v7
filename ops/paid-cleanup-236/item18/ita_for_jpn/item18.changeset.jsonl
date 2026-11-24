@@ -1,0 +1,14 @@
+{"format":"ssi-changeset/1","id":"ita_for_jpn-item18-cs236","course":"ita_for_jpn","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:36.055Z","ops":13,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0108L02B02","expect":{"known_text":"夜中に","target_text":"nel mezzo della notte"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0111L03B02","expect":{"known_text":"新しいこと","target_text":"qualcosa di nuovo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0111L04B02","expect":{"known_text":"私たちの脳","target_text":"il nostro cervello"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0112L02B02","expect":{"known_text":"とても面白い","target_text":"molto interessante"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0112L03B02","expect":{"known_text":"予想していなかった","target_text":"non me lo aspettavo"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0116L01B02","expect":{"known_text":"最善の選択","target_text":"la scelta migliore"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0117L02B02","expect":{"known_text":"お互いに話した","target_text":"ci siamo parlati"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0117L03B02","expect":{"known_text":"前回","target_text":"l'ultima volta"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0118L03B02","expect":{"known_text":"パブで","target_text":"al pub"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0119L02B02","expect":{"known_text":"帰る前に","target_text":"prima che tu vada"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0120L02B02","expect":{"known_text":"バスで","target_text":"in autobus"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0121L03B02","expect":{"known_text":"あなたの車","target_text":"la tua macchina"}}
+{"op":"phrase.delete","phrase_id":"ita_for_jpn:S0126L04B02","expect":{"known_text":"私の脳","target_text":"del mio cervello"}}
