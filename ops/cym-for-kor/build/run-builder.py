@@ -96,6 +96,19 @@ def gate():
         time.sleep(60)
 
 
+def built_count():
+    """How many seeds Popty already has, asked live; never guessed. A stats call that fails or times out
+    (it hangs while the DB load gate is red) waits on the gate and asks again: treating a failed answer
+    as 0 would re-post seeds that are already built (cs #109, 24 Nov)."""
+    while True:
+        _, st = call('GET', f'{CB}/stats/{COURSE}')
+        if isinstance(st.get('seeds_with_legos'), int):
+            return st['seeds_with_legos']
+        log({'stats': 'no seeds_with_legos', 'error': str(st.get('error'))[:120], 'note': 'gate, then ask again'})
+        gate()
+        time.sleep(30)
+
+
 def load_plan():
     plan = {}
     for p in sorted((HERE / 'plan').glob('*.json')):
@@ -219,8 +232,8 @@ def main():
         if stop_at and datetime.datetime.now(datetime.UTC).replace(tzinfo=None) >= stop_at:
             log({'stop': 'time', 'next_seed': n}); return 3
         plan = load_plan()  # re-read every seed: planners keep pushing fixes while the build runs
-        _, st = call('GET', f'{CB}/stats/{COURSE}')
-        if n <= (st.get('seeds_with_legos') or 0):  # built in order, so a contiguous prefix is done
+        gate()  # stats itself hangs while the DB is red; ask only when green
+        if n <= built_count():  # built in order, so a contiguous prefix is done
             continue
         if n not in plan:
             log({'seed': n, 'stop': 'no plan entry'}); return 2
@@ -274,8 +287,7 @@ def main():
             # Cut off mid-submit by a restart: the write may or may not have landed. Ask Popty, never re-post blind.
             log({'seed': n, 'unreachable': 'seed/complete', 'note': 'waiting for Popty, then checking'})
             wait_up()
-            _, st = call('GET', f'{CB}/stats/{COURSE}')
-            if n <= (st.get('seeds_with_legos') or 0):
+            if n <= built_count():
                 log({'seed': n, 'ok': True, 'note': 'landed before the restart'}); continue
             code, r = call('POST', f'{CB}/seed/complete?course={COURSE}', md, ctype='text/markdown; charset=utf-8')
         if not r.get('ok'):
