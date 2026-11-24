@@ -177,7 +177,13 @@ function plan(rng, A, copy, live) {
   const { planInsert } = require('../../services/shared/phrase-v4-door.cjs');
   const C = liveIndex(copy), L = liveIndex(live);
   const all = A.legos;
-  const ko = (s) => { const f = path.join(DIR, 'ko', `${sid(s)}.json`); return fs.existsSync(f) ? loadJson(f) : null; };
+  const ko = (s) => {
+    const f = path.join(DIR, 'ko', `${sid(s)}.json`);
+    if (!fs.existsSync(f)) return null;
+    const k = loadJson(f); // files written before the re-key fix may key a LEGO "cym_for_kor:S####L##"
+    k.legos = Object.fromEntries(Object.entries(k.legos || {}).map(([x, v]) => [(String(x).match(/S\d{4}L\d{2}/) || [x])[0], v]));
+    return k;
+  };
   // course-wide Korean→Welsh map of everything that STAYS (outside the band: the snapshot as it is, or its plan if planned
   // already; inside: built below). Seeds first.
   const byK = new Map();
