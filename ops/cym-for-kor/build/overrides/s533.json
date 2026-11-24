@@ -1,0 +1,266 @@
+{
+ "seed": 533,
+ "why": "Door held S0533L02 'ar bob gair' (HELD_FOR_REVIEW): attempt 1 failed the vocab gate (its rows used bare 'gwrando', which is taught only inside L1 'fydd hi ddim yn gwrando'), attempt 2 returned 0 BUILD rows. Not a comma-tag hold, so nothing to drop: L2's set is written by hand from L1 whole plus LEGOs the door itself accepted in L1's rows (mwy na thebyg, ond, rŵan, heno, efallai, mae arna i ofn, dw i'n siŵr, pan dw i'n siarad, ar ôl i ti adael) and L3/L4 (ti'n, ddeud, taught earlier); no USE row moved (P18). L1 is the door's own passing set from the same run. /api/seed/complete validates the whole seed. (cs #109, 24 Nov)",
+ "legos": {
+  "1": {
+   "ok": true,
+   "build": [
+    {
+     "known": "아마 그녀는 귀 기울이지 않을 거야",
+     "target": "mwy na thebyg fydd hi ddim yn gwrando",
+     "tiles": [
+      {
+       "known": "아마",
+       "target": "mwy na thebyg",
+       "legoId": "S0528L01"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      }
+     ]
+    },
+    {
+     "known": "그녀는 지금 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando rŵan",
+     "tiles": [
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": "fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      },
+      {
+       "known": "지금",
+       "target": " rŵan",
+       "legoId": "S0480L05"
+      }
+     ]
+    },
+    {
+     "known": "하지만 그녀는 귀 기울이지 않을 거야",
+     "target": "ond fydd hi ddim yn gwrando",
+     "tiles": [
+      {
+       "known": "하지만",
+       "target": "ond",
+       "legoId": "S0517L01"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      }
+     ]
+    },
+    {
+     "known": "유감이지만 그녀는 오늘 저녁 귀 기울이지 않을 거야",
+     "target": "mae arna i ofn fydd hi ddim yn gwrando heno",
+     "tiles": [
+      {
+       "known": "유감이지만",
+       "target": "mae arna i ofn",
+       "legoId": "S0521L01"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      },
+      {
+       "known": "오늘 저녁",
+       "target": " heno",
+       "legoId": "S0411L04"
+      }
+     ]
+    }
+   ],
+   "use": [
+    {
+     "known": "왜 그녀는 귀 기울이지 않을 거야?",
+     "target": "pam fydd hi ddim yn gwrando",
+     "tiles": [
+      {
+       "known": "왜",
+       "target": "pam",
+       "legoId": "S0521L04"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      }
+     ]
+    },
+    {
+     "known": "내가 이야기할 때 그녀는 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando pan dw i’n siarad",
+     "tiles": [
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": "fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      },
+      {
+       "known": "~할 때",
+       "target": " pan",
+       "legoId": "S0513L02"
+      },
+      {
+       "known": "나는 ~해",
+       "target": " dw i’n",
+       "legoId": "S0513L03"
+      },
+      {
+       "known": "이야기하다",
+       "target": " siarad",
+       "legoId": "S0355L02"
+      }
+     ]
+    },
+    {
+     "known": "나는 그녀가 귀 기울이지 않을 거라고 확신해",
+     "target": "dw i’n siŵr fydd hi ddim yn gwrando",
+     "tiles": [
+      {
+       "known": "나는 ~라고 확신해",
+       "target": "dw i’n siŵr",
+       "legoId": "S0406L02"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      }
+     ]
+    },
+    {
+     "known": "걱정하는 건 소용없어 왜냐하면 그녀는 귀 기울이지 않을 거야",
+     "target": "does dim pwynt poeni achos fydd hi ddim yn gwrando",
+     "tiles": [
+      {
+       "known": "~하는 건 소용없어",
+       "target": "does dim pwynt",
+       "legoId": "S0508L01"
+      },
+      {
+       "known": "걱정하다",
+       "target": " poeni",
+       "legoId": "S0508L02"
+      },
+      {
+       "known": "왜냐하면",
+       "target": " achos",
+       "legoId": "S0455L02"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      }
+     ]
+    },
+    {
+     "known": "네가 떠난 후에 그녀는 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando ar ôl i ti adael",
+     "tiles": [
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": "fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      },
+      {
+       "known": "네가 떠난 후에",
+       "target": " ar ôl i ti adael",
+       "legoId": "S0362L03"
+      }
+     ]
+    },
+    {
+     "known": "어쩌면 그녀는 오늘 저녁 귀 기울이지 않을 거야",
+     "target": "efallai fydd hi ddim yn gwrando heno",
+     "tiles": [
+      {
+       "known": "어쩌면",
+       "target": "efallai",
+       "legoId": "S0499L01"
+      },
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": " fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      },
+      {
+       "known": "오늘 저녁",
+       "target": " heno",
+       "legoId": "S0411L04"
+      }
+     ]
+    },
+    {
+     "known": "네가 나에게 물어본다면 그녀는 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando os ti’n gofyn i mi",
+     "tiles": [
+      {
+       "known": "그녀는 귀 기울이지 않을 거야",
+       "target": "fydd hi ddim yn gwrando",
+       "legoId": "S0533L01"
+      },
+      {
+       "known": "네가 나에게 물어본다면",
+       "target": " os ti’n gofyn i mi",
+       "legoId": "S0415L03"
+      }
+     ]
+    }
+   ]
+  },
+  "2": {
+   "ok": true,
+   "build": [
+    {
+     "known": "그녀는 모든 말에 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando ar bob gair"
+    },
+    {
+     "known": "아마 그녀는 모든 말에 귀 기울이지 않을 거야",
+     "target": "mwy na thebyg fydd hi ddim yn gwrando ar bob gair"
+    },
+    {
+     "known": "하지만 그녀는 모든 말에 귀 기울이지 않을 거야",
+     "target": "ond fydd hi ddim yn gwrando ar bob gair"
+    },
+    {
+     "known": "그녀는 지금 모든 말에 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando ar bob gair rŵan"
+    }
+   ],
+   "use": [
+    {
+     "known": "내가 이야기할 때 그녀는 모든 말에 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando ar bob gair pan dw i’n siarad"
+    },
+    {
+     "known": "나는 그녀가 모든 말에 귀 기울이지 않을 거라고 확신해",
+     "target": "dw i’n siŵr fydd hi ddim yn gwrando ar bob gair"
+    },
+    {
+     "known": "어쩌면 그녀는 오늘 저녁 모든 말에 귀 기울이지 않을 거야",
+     "target": "efallai fydd hi ddim yn gwrando ar bob gair heno"
+    },
+    {
+     "known": "유감이지만 그녀는 오늘 저녁 모든 말에 귀 기울이지 않을 거야",
+     "target": "mae arna i ofn fydd hi ddim yn gwrando ar bob gair heno"
+    },
+    {
+     "known": "네가 떠난 후에 그녀는 모든 말에 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando ar bob gair ar ôl i ti adael"
+    },
+    {
+     "known": "그녀는 네가 말하는 모든 말에 귀 기울이지 않을 거야",
+     "target": "fydd hi ddim yn gwrando ar bob gair ti’n ddeud"
+    }
+   ]
+  }
+ }
+}
