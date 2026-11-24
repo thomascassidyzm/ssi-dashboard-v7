@@ -129,6 +129,7 @@ async function korean(rng, conc, assignPath, korPath) {
       for (let t = 0; t < 2 && !out; t++) {
         try {
           const raw = await claudeChat(prompt, { model: 'opus', system: SYSTEM, timeout: 900000, thinkingTokens: 8000 });
+          fs.mkdirSync(EV, { recursive: true }); fs.writeFileSync(path.join(EV, `ko-raw-${sid(s)}.txt`), raw);
           const j = raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1);
           const parsed = JSON.parse(j);
           // completeness: every original of every LEGO answered with Korean
