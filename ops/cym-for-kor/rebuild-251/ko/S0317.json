@@ -1,0 +1,57 @@
+{
+ "seed": 317,
+ "at": "2026-11-24T18:56:42.408Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0317L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0317L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0317L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0317L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0317L04B01",
+     "keep": false,
+     "why": "Weakest of the four BUILD candidates. Only 3 are needed, and the bare 오다 reads stiffly."
+    },
+    {
+     "id": "cym_for_kor:S0317L04U01",
+     "keep": true,
+     "ko": "그녀가 원한다면 그녀는 다음 달에 우리와 함께 올 수 있을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0317L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0317L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0317L04U04",
+     "keep": true,
+     "ko": "너는 그녀가 원한다면 월요일에 올 수 있을 거라고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0317L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0317L04U06",
+     "keep": false,
+     "why": "'fyddai hynna'n help mawr tasai hi isio' (that would be a big help if she wanted) makes little sense: the condition doesn't fit the clause it is attached to."
+    }
+   ]
+  }
+ }
+}

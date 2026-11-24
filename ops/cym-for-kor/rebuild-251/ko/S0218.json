@@ -1,0 +1,138 @@
+{
+ "seed": 218,
+ "at": "2026-11-24T18:41:38.949Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0218L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그것을 하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 주말에 많이 하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 토요일에 많이 하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 토요일 오후에 많이 하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지난달에 많이 하지 않았어 왜냐하면 내가 느긋하게 쉬려고 하던 중이었거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0218L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0218L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0218L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0218L01U06",
+     "keep": false,
+     "why": "Good, but only one USE row was needed and U01 is better"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U02",
+     "keep": false,
+     "why": "Only one USE row was needed"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U03",
+     "keep": false,
+     "why": "Only one USE row was needed"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U04",
+     "keep": false,
+     "why": "Only one USE row was needed"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U05",
+     "keep": false,
+     "why": "'너는 모든 것을 했어' could be either 'ti wedi gwneud popeth' or 'nest ti wneud popeth', so it has two answers"
+    },
+    {
+     "id": "cym_for_kor:S0218L01U07",
+     "keep": false,
+     "why": "Only one USE row was needed"
+    }
+   ]
+  },
+  "S0218L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "일요일 아침에",
+     "ok": true,
+     "why": "Natural Welsh. Note: it uses 'dydd Sul' inside 'fore dydd Sul', not the 'ddydd Sul' form this LEGO teaches"
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁 아니면 일요일 아침에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "일요일 아침 여섯 시에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 어머니는 일요일 오후에 느긋하게 쉬는 것을 좋아하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내 어머니는 일요일 아침에 많이 이야기하는 것을 좋아하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 일요일 아침에 어딘가에 갔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워 하지만 나는 일요일 아침에 만날 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 일요일 아침 여섯 시에 만나고 싶어",
+     "ok": true,
+     "why": "Natural Welsh. Note: none of the 8 originals contains the bare 'ddydd Sul' form; they all use 'fore/bnawn dydd Sul'"
+    }
+   ]
+  }
+ }
+}

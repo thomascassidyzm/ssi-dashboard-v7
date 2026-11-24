@@ -1,0 +1,71 @@
+{
+ "seed": 238,
+ "at": "2026-11-24T18:44:46.618Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0238L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 네가 무엇을 말하기를 원했어?",
+     "ok": true,
+     "why": "Natural North Welsh question; LEGO used in its taught sense."
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그는 네가 ~라고 말하기를 원했어",
+     "ok": true,
+     "why": "Open-ended BUILD fragment, natural; ~ mirrors the open object of ddeud."
+    },
+    {
+     "n": 3,
+     "ko": "그는 네가 정말 고맙다고 말하기를 원했어",
+     "ok": true,
+     "why": "Natural and idiomatic."
+    },
+    {
+     "n": 4,
+     "ko": "나는 그가 네가 정말 고맙다고 말하기를 원했는지 확실하지 않아",
+     "ok": true,
+     "why": "dw i ddim yn siŵr os oedd o... is natural colloquial North Welsh."
+    },
+    {
+     "n": 5,
+     "ko": "미안해, 하지만 그는 네가 정말 고맙다고 말하기를 원했어",
+     "ok": true,
+     "why": "Natural and idiomatic."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0238L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0238L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0238L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0238L01U05",
+     "keep": false,
+     "why": "Grammatical, but not needed: 3 better candidates already kept."
+    },
+    {
+     "id": "cym_for_kor:S0238L01U02",
+     "keep": false,
+     "why": "Bare 'gyfarfod' (meet, with no one named) is a little thin; not needed for the count."
+    },
+    {
+     "id": "cym_for_kor:S0238L01U04",
+     "keep": false,
+     "why": "'웨일스어를 이야기하기를' is unnatural Korean (it would need 말하다, which ddeud already holds), and the line is long and clunky."
+    }
+   ]
+  }
+ }
+}

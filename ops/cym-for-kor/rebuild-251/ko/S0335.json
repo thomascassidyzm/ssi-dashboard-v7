@@ -1,0 +1,213 @@
+{
+ "seed": 335,
+ "at": "2026-11-24T18:59:26.964Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0335L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 더하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 더하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "중요한 것을 더하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 모든 것을 더해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 제때 모든 것을 더하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 멋진 아이디어를 더하면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 중요한 것을 더하겠어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그는 중요한 것을 더할 수 있을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 오늘 저녁 모든 것을 더할 수 없을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0335L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그의 자매를 위한 몇 가지 아이디어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "몇 가지 아이디어를 더하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 몇 가지 아이디어를 더할 수 있을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 몇 가지 아이디어가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 몇 가지 아이디어가 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 오늘 저녁 몇 가지 아이디어를 더할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 다음 주에 몇 가지 아이디어를 논의해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 우리와 몇 가지 아이디어를 논의하고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0335L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0335L04U05",
+     "keep": false,
+     "why": "Only one top-up is needed and U02 is the better row."
+    },
+    {
+     "id": "cym_for_kor:S0335L04U03",
+     "keep": false,
+     "why": "Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0335L04U04",
+     "keep": false,
+     "why": "The Welsh is a question but has no question mark. The Korean is a question, so the two don't match."
+    },
+    {
+     "id": "cym_for_kor:S0335L04U06",
+     "keep": false,
+     "why": "Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0335L04U07",
+     "keep": false,
+     "why": "Only one top-up is needed. Also, 불편해 is a loose rendering of oes ots gen ti."
+    }
+   ]
+  },
+  "S0335L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "몇 가지 가치 있는 아이디어를 더하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 몇 가지 가치 있는 아이디어를 더할 수 있을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 몇 가지 가치 있는 아이디어를 찾다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그의 자매를 위한 몇 가지 가치 있는 아이디어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "몇 가지 가치 있는 아이디어를 기꺼이 고려하는",
+     "ok": true,
+     "why": "Moved row, checked: 'hapus i ystyried rhai syniadau gwerthfawr' is natural North Welsh, and ystyried is used in its taught sense (consider)."
+    },
+    {
+     "n": 6,
+     "ko": "나는 그의 자매를 위해 몇 가지 가치 있는 아이디어를 찾으려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 몇 가지 가치 있는 아이디어를 더하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 그냥 몇 가지 가치 있는 아이디어가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 몇 가지 가치 있는 아이디어를 기꺼이 고려해",
+     "ok": true,
+     "why": "Moved row, checked: natural and idiomatic, and ystyried is used in its taught sense."
+    },
+    {
+     "n": 10,
+     "ko": "그는 내일 밤 몇 가지 가치 있는 아이디어를 더할 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

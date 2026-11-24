@@ -1,0 +1,71 @@
+{
+ "seed": 667,
+ "at": "2026-11-24T19:55:05.913Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0667L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0667L01B02",
+     "keep": true,
+     "ko": "여러분 지금 불편해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01B01",
+     "keep": true,
+     "ko": "실례지만 여러분 불편하세요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01B04",
+     "keep": true,
+     "ko": "여러분 지금 이 순간 불편해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01B03",
+     "keep": false,
+     "why": "Only 3 BUILD rows are needed. This one is an open 'os' fragment and is weaker than the three complete questions kept."
+    },
+    {
+     "id": "cym_for_kor:S0667L01U02",
+     "keep": true,
+     "ko": "실례지만 여러분 지금 불편하세요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01U01",
+     "keep": true,
+     "ko": "저는 여러분이 불편한지 확실하지 않아요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01U03",
+     "keep": true,
+     "ko": "실례지만 저는 여러분이 불편하신지 확실하지 않아요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01U04",
+     "keep": true,
+     "ko": "저는 지금 여러분이 불편한지 확실하지 않아요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01U06",
+     "keep": true,
+     "ko": "하지만 저는 지금 이 순간 여러분이 불편한지 확실하지 않아요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0667L01U05",
+     "keep": false,
+     "why": "Only 5 USE rows are needed. 'Diolch ond oes ots gynnoch chi gyd' is a strange thing to say and weaker than the five kept."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "seed": 619,
+ "at": "2026-11-24T19:49:50.228Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0619L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 어젯밤 서로 본 후로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리가 서로 본 후로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 우리가 정원에서 서로 봤기 때문이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그동안 멋졌어, 왜냐하면 우리가 다시 서로 봤기 때문이야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0619L04U06",
+     "keep": true,
+     "ko": "",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0619L04U03",
+     "keep": true,
+     "ko": "너는 오늘 저녁에 우리가 서로 보기를 원해?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0619L04U01",
+     "keep": true,
+     "ko": "우리가 서로 본 지 오랜 시간이 된 것처럼 느껴져",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0619L04U04",
+     "keep": true,
+     "ko": "",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0619L04U02",
+     "keep": false,
+     "ko": "우리가 서로 본 지 오랜 시간이 된 것처럼 느껴지지 않아",
+     "why": "Sound, but it repeats U01's frame and all 4 slots are filled"
+    },
+    {
+     "id": "cym_for_kor:S0619L04U05",
+     "keep": false,
+     "why": "Sound, but all 4 slots are filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0619L04U07",
+     "keep": false,
+     "why": "Saying 'a long time since we saw each other in the garden' is a strange thing to say and adds little"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "seed": 529,
+ "at": "2026-11-24T19:35:38.194Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0529L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "여러분 그 일들에 대해 동의할 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "여러분 이야기할 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "여러분 아마 그 일들을 추측할 수 있어요",
+     "ok": false,
+     "why": "Missing soft mutation: after 'fedrwch chi gyd' it should be 'ddyfalu', not 'dyfalu' ('dyfalu'r pethau hynny' also expected)."
+    },
+    {
+     "n": 4,
+     "ko": "여러분 문을 열린 채로 잡을 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 할 수 없었지만 여러분은 할 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "여러분 다투지 않고 함께 경기할 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "여러분이 기차를 탈 수 있을지 궁금해요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "여러분 오늘 저녁 열쇠를 찾을 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "여러분 제가 열쇠를 가져오는 동안 문을 열린 채로 잡을 수 있어요?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0529L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "손을 들다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "여러분 손을 들 수 있어요?",
+     "ok": false,
+     "why": "Missing soft mutation: should be 'fedrwch chi gyd roi', as in the seed, not 'rhoi'. It also duplicates the seed sentence."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0529L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0529L02B02",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B01 is the better pick."
+    },
+    {
+     "id": "cym_for_kor:S0529L02B03",
+     "keep": false,
+     "why": "Only 1 BUILD needed."
+    },
+    {
+     "id": "cym_for_kor:S0529L02B04",
+     "keep": false,
+     "why": "A fragment with an odd meaning; weak."
+    },
+    {
+     "id": "cym_for_kor:S0529L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0529L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0529L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0529L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0529L02U04",
+     "keep": true,
+     "ko": "정말 중요할 때 손을 드는 게 중요해"
+    },
+    {
+     "id": "cym_for_kor:S0529L02U02",
+     "keep": false,
+     "why": "Mixes 'wyt ti' with 'eich dwylo'; a ti line would say 'dy ddwylo'. Unnatural agreement."
+    }
+   ]
+  }
+ }
+}

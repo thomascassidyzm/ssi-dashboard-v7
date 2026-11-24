@@ -1,0 +1,139 @@
+{
+ "seed": 247,
+ "at": "2026-11-24T18:46:28.148Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0247L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0247L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0247L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0247L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0247L02B02",
+     "keep": false,
+     "why": "BUILD count reached; the brain-shape line is the weakest of the four"
+    },
+    {
+     "id": "cym_for_kor:S0247L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0247L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0247L02U02",
+     "keep": true,
+     "ko": "너는 왜 그 책이 아주 어렵다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0247L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0247L02U05",
+     "keep": true,
+     "ko": "나는 그 책이 우리 뇌를 바꾼다고 믿어"
+    },
+    {
+     "id": "cym_for_kor:S0247L02U06",
+     "keep": false,
+     "why": "USE count reached; its Korean also needs a clause break (생각했어, 하지만 재미있어)"
+    }
+   ]
+  },
+  "S0247L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "꽤 좋았어",
+     "ok": true,
+     "why": "colloquial dropped-subject past; natural North Welsh"
+    },
+    {
+     "n": 2,
+     "ko": "너는 그게 꽤 좋다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 네가 그게 꽤 좋다고 생각한다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 그녀가 꽤 좋다고 말했어",
+     "ok": true,
+     "why": "bo' hi'n given as 그녀가 so it can't clash with fod o'n = 그게; the Welsh still reads naturally as 'she'"
+    },
+    {
+     "n": 5,
+     "ko": "꽤 좋아, 오늘은",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "이 일은 꽤 좋아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 꽤 좋아, 하지만 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그건 꽤 좋았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그건 꽤 잘 돼 가고 있어, 그렇지?",
+     "ok": true,
+     "why": "mynd yn eitha' da = going fairly well; idiomatic, and the same eitha' da"
+    },
+    {
+     "n": 10,
+     "ko": "나는 네가 그게 꽤 좋다고 말했다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 그게 꽤 좋다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 그게 꽤 좋다고 말하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 그녀가 꽤 좋다고 생각했어",
+     "ok": true,
+     "why": "bo' hi'n given as 그녀가 so it stays separate from n11 (fod o'n = 그게)"
+    }
+   ]
+  }
+ }
+}

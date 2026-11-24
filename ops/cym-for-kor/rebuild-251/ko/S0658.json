@@ -1,0 +1,77 @@
+{
+ "seed": 658,
+ "at": "2026-11-24T19:54:37.429Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0658L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0658L01B01",
+     "keep": true,
+     "ko": "여러분 가고 싶어요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01B03",
+     "keep": true,
+     "ko": "여러분 어디 가고 싶어요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01B02",
+     "keep": true,
+     "ko": "여러분 웨일스어로 이야기하고 싶어요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01B04",
+     "keep": false,
+     "ko": "여러분 이따가 먹고 싶어요?",
+     "why": "Sound, but the three BUILD slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0658L01U04",
+     "keep": true,
+     "ko": "여러분 왜 지금 가고 싶어요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01U06",
+     "keep": true,
+     "ko": "여러분 이따가 뭘 먹고 싶어요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01U07",
+     "keep": true,
+     "ko": "여러분 물 한 잔 원해요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01U01",
+     "keep": true,
+     "ko": "실례지만 여러분 뭘 원하세요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01U02",
+     "keep": true,
+     "ko": "실례지만 여러분 커피 한 잔이나 차 원하세요?"
+    },
+    {
+     "id": "cym_for_kor:S0658L01U03",
+     "keep": false,
+     "ko": "저는 여러분이 가고 싶은지 확실하지 않아요",
+     "why": "Sound, but the five USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0658L01U08",
+     "keep": false,
+     "ko": "여러분 다른 곳을 둘러보고 싶어요?",
+     "why": "Sound, but the five USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0658L01U05",
+     "keep": false,
+     "ko": "여러분 쉬려고 멈추고 싶어요?",
+     "why": "Sound, but the five USE slots are already filled; the door's 휴식을 위해 멈추다 also reads stiffly."
+    }
+   ]
+  }
+ }
+}

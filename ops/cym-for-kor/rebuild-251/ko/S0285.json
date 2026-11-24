@@ -1,0 +1,61 @@
+{
+ "seed": 285,
+ "at": "2026-11-24T18:51:47.347Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0285L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 그녀가 오늘 뭘 하고 싶다고 느끼는지 들었어?",
+     "ok": true,
+     "why": "Here mae hi'n means 'she', the sense this course teaches. 'teimlo fel gwneud' is natural North Welsh."
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 지금 늦어지고 있으니까",
+     "ok": false,
+     "why": "In 'mae hi'n mynd yn hwyr', hi means 'it' (it's getting late), not 'she'. The course taught mae hi'n as 그녀는 ~해, so this is the wrong sense. A Korean prompt that follows the gloss would give 'she is getting late', which is unnatural."
+    },
+    {
+     "n": 3,
+     "ko": "하지만 늦어지고 있어",
+     "ok": false,
+     "why": "Impersonal hi ('it's getting late') is not the 'she' sense of mae hi'n that this LEGO teaches."
+    },
+    {
+     "n": 4,
+     "ko": "늦어지고 있지만 우리는 나중에 만날 거야",
+     "ok": false,
+     "why": "Impersonal hi ('it's getting late') is not the 'she' sense of mae hi'n that this LEGO teaches."
+    },
+    {
+     "n": 5,
+     "ko": "응, 그녀는 네가 그녀가 옳다고 생각하길 원해",
+     "ok": true,
+     "why": "Both hi forms here mean 'she' ('she wants', 'she's right'). Natural and correct."
+    },
+    {
+     "n": 6,
+     "ko": "늦어지고 있지만 나는 멈추고 싶지 않아",
+     "ok": false,
+     "why": "Impersonal hi ('it's getting late') is not the 'she' sense of mae hi'n that this LEGO teaches."
+    },
+    {
+     "n": 7,
+     "ko": "나는 괜찮을 거라고 확신하지만 지금 늦어지고 있어",
+     "ok": false,
+     "why": "Impersonal hi ('it's getting late') is not the 'she' sense of mae hi'n that this LEGO teaches."
+    },
+    {
+     "n": 8,
+     "ko": "늦어지고 있지만 개는 행복해",
+     "ok": false,
+     "why": "Impersonal hi ('it's getting late') is not the 'she' sense of mae hi'n that this LEGO teaches."
+    }
+   ],
+   "topups": []
+  }
+ }
+}

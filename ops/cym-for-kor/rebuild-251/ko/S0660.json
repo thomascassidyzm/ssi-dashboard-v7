@@ -1,0 +1,62 @@
+{
+ "seed": 660,
+ "at": "2026-11-24T19:54:53.375Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0660L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 여러분은 할 수 있어요?",
+     "ok": true,
+     "why": "Moved line works here: 'ond fedrwch chi gyd?' is natural North Welsh and uses chi gyd to mean all of you."
+    },
+    {
+     "n": 2,
+     "ko": "여러분은 앉을 수 있어요?",
+     "ok": true,
+     "why": "Moved line works here: 'fedrwch chi gyd eistedd i lawr?' is natural North Welsh and uses chi gyd in the taught sense."
+    },
+    {
+     "n": 3,
+     "ko": "부탁해요, 여러분은 그 물건들을 보관할 수 있어요?",
+     "ok": true,
+     "why": "Moved line works here: the soft mutation in 'gadw’r' after fedrwch is correct, and chi gyd keeps the same sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0660L03U07",
+     "keep": true,
+     "ko": "저는 여러분을 사랑해요"
+    },
+    {
+     "id": "cym_for_kor:S0660L03U03",
+     "keep": true,
+     "ko": "저는 여러분을 잃고 싶지 않아요"
+    },
+    {
+     "id": "cym_for_kor:S0660L03U02",
+     "keep": true,
+     "ko": "저는 지금 당장 여러분을 보고 싶어요"
+    },
+    {
+     "id": "cym_for_kor:S0660L03U04",
+     "keep": true,
+     "ko": "그들은 여러분을 돕고 싶어해요?"
+    },
+    {
+     "id": "cym_for_kor:S0660L03U05",
+     "keep": false,
+     "why": "Welsh is fine, but only 4 USE top-ups are needed and the four above are better."
+    },
+    {
+     "id": "cym_for_kor:S0660L03U06",
+     "keep": false,
+     "why": "Welsh is fine, but only 4 are needed, and 기꺼이 for hapus i is a looser match to the Welsh."
+    }
+   ]
+  }
+ }
+}

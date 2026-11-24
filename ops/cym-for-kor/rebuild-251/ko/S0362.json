@@ -1,0 +1,176 @@
+{
+ "seed": 362,
+ "at": "2026-11-24T19:03:32.382Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0362L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "아니, 그는 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "아니, 나는 ~라고 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아니, 나는 ~고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 아니 안 그랬다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "아니, 나는 짧은 시간 동안 축구를 시청했어",
+     "ok": true,
+     "why": "Natural reply to a past-tense question. 'am amser byr' means 'for a short time', not the '~에 대해' gloss."
+    },
+    {
+     "n": 6,
+     "ko": "아니, 아무도 확실하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그리고 그다음에 그는 아니 안 그랬다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "아니, 나는 어젯밤에 시간이 나지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 너무 바빴기 때문에 아니 안 그랬다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0362L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0362L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02B04",
+     "keep": false,
+     "why": "Sound, but only 3 BUILD rows were needed and this one ranked fourth."
+    },
+    {
+     "id": "cym_for_kor:S0362L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L02U03",
+     "keep": true,
+     "ko": "왜 그는 어젯밤에 정말 조용했어?"
+    },
+    {
+     "id": "cym_for_kor:S0362L02U04",
+     "keep": false,
+     "why": "Sound, but only 5 USE rows were needed and this one ranked sixth."
+    }
+   ]
+  },
+  "S0362L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 네가 떠나기 전에 새끼 고양이를 돌볼 수 있을 거야",
+     "ok": false,
+     "why": "Does not contain 'ar ôl i ti adael'. 'ar ôl' only appears inside 'edrych ar ôl' (look after), and the clause is 'cyn i ti adael' (before you leave), so it uses the wrong sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0362L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L03B02",
+     "keep": false,
+     "why": "A bare verb-noun fragment, weaker than the full-clause rows; not needed."
+    },
+    {
+     "id": "cym_for_kor:S0362L03U01",
+     "keep": true,
+     "ko": "그는 네가 떠난 후에 왜 조용했어?"
+    },
+    {
+     "id": "cym_for_kor:S0362L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0362L03U04",
+     "keep": true,
+     "ko": "그녀는 네가 떠난 후에 그냥 나가고 싶어했지만 그녀는 너무 바빴어"
+    },
+    {
+     "id": "cym_for_kor:S0362L03U03",
+     "keep": false,
+     "why": "Uses 'na' to answer a past-tense statement where 'naddo' is expected. Korean '아니' could also give naddo, so there are two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0362L03U06",
+     "keep": false,
+     "why": "Sound, but long and only 4 USE rows were needed."
+    },
+    {
+     "id": "cym_for_kor:S0362L03U07",
+     "keep": false,
+     "why": "'oedd oedd gynnyn nhw' (doubled 'oedd') is unnatural Welsh, and '응 그랬어' does not fix one answer."
+    }
+   ]
+  }
+ }
+}

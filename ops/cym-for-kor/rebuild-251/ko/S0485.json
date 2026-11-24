@@ -1,0 +1,263 @@
+{
+ "seed": 485,
+ "at": "2026-11-24T19:24:44.251Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0485L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 아무것도 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁에는 아무것도 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아무것도 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "아무것도 일어나고 있는 일에 가깝지 않을 거야",
+     "ok": true,
+     "why": "Grammatical: 'nothing would come near what is happening'. It uses fyddai dim byd yn as taught."
+    },
+    {
+     "n": 5,
+     "ko": "아무것도 너무 가깝지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 아무것도 가장자리에 너무 가까이 있지 않을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들이 원한다면 아무것도 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그가 무엇을 말하든 그의 자매에게는 아무것도 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0485L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L01U06",
+     "keep": false,
+     "why": "Fine, but only 2 were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L01U04",
+     "keep": false,
+     "why": "Fine, but only 2 were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L01U02",
+     "keep": false,
+     "why": "The Korean '왜냐하면 … 않을 거야' is clunky, and only 2 were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L01U05",
+     "keep": false,
+     "why": "The tenses clash: conditional fyddai with present os ti'n gofyn reads unnaturally."
+    }
+   ]
+  },
+  "S0485L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 나를 더 행복하게 해 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 나를 더 행복하게 하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아무것도 나를 더 행복하게 하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 나를 더 행복하게 하고 있어",
+     "ok": true,
+     "why": "The Korean uses 그는 (the taught gloss for mae o), so the answer can't be heard as hynna."
+    },
+    {
+     "n": 5,
+     "ko": "휴식을 위해 아무것도 나를 더 행복하게 하지 않을 거야",
+     "ok": false,
+     "why": "This course taught am saib as 'for a break' (휴식을 위해). Here it means 'for a spell', so the sentence doesn't make sense with that gloss."
+    },
+    {
+     "n": 6,
+     "ko": "~ 웨일스어로 이야기하는 것보다 나를 더 행복하게 해",
+     "ok": true,
+     "why": "An open-start fragment. Here na means 'than', which matches the sense of this seed."
+    },
+    {
+     "n": 7,
+     "ko": "~ 이야기하는 것보다 나를 더 행복하게 해",
+     "ok": true,
+     "why": "An open-start fragment, natural as a BUILD row."
+    },
+    {
+     "n": 8,
+     "ko": "너는 나를 더 행복하게 하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그는 오늘 저녁 나를 더 행복하게 하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "지금 나를 더 행복하게 하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그게 나를 더 행복하게 하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그들은 나를 더 행복하게 하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그들은 나를 더 행복하게 할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그는 나를 더 행복하게 하고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그는 지금 나를 더 행복하게 하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 나를 더 행복하게 하고 싶어하는 젊은 남자를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "그녀는 올해 나를 더 행복하게 하고 싶어했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0485L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "아무것도 도망치는 것보다 나를 더 행복하게 하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 죽지 않도록 도망치고 싶어",
+     "ok": false,
+     "why": "Here na belongs to 'fel na' (so that … not), not to 'na dianc' (than escaping). The phrase doesn't use this LEGO in the sense it was taught."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0485L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03B02",
+     "keep": false,
+     "why": "Fine, but only 2 BUILD were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L03B04",
+     "keep": false,
+     "why": "Fine, but only 2 BUILD were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0485L03U02",
+     "keep": false,
+     "why": "It almost repeats the B03 build. Only 4 USE were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L03U03",
+     "keep": false,
+     "why": "Only 4 USE were needed."
+    },
+    {
+     "id": "cym_for_kor:S0485L03U04",
+     "keep": false,
+     "why": "Wrong mutation: 'yn lawer haws' should be 'yn llawer haws' (ll does not mutate after predicative yn)."
+    }
+   ]
+  }
+ }
+}

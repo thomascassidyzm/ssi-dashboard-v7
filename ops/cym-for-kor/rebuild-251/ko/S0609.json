@@ -1,0 +1,61 @@
+{
+ "seed": 609,
+ "at": "2026-11-24T19:48:32.726Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0609L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0609L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02B04",
+     "keep": false,
+     "why": "Grammatical, but 'the only real hope would have been stopping' reads oddly; the other BUILD rows are better."
+    },
+    {
+     "id": "cym_for_kor:S0609L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0609L02U01",
+     "keep": false,
+     "why": "Only adds 'ond' to BUILD row B03; we have enough stronger USE rows."
+    },
+    {
+     "id": "cym_for_kor:S0609L02U05",
+     "keep": false,
+     "ko": "왜냐하면 유일한 진짜 희망은 더 오래 버티는 것이었을 거니까",
+     "why": "Fine with the corrected Korean, but not needed: five stronger USE rows are already kept."
+    }
+   ]
+  }
+ }
+}

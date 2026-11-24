@@ -1,0 +1,60 @@
+{
+ "seed": 644,
+ "at": "2026-11-24T19:53:54.598Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0644L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "여러분 웨일스어로 이야기할 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "여러분 그 일들을 열 수 있어요?",
+     "ok": false,
+     "why": "pethau is taught as 일들 (tasks/matters), and you can't 'open' those. The Welsh only makes sense with 'things' meaning objects, so with this gloss the Korean prompt is unnatural."
+    },
+    {
+     "n": 3,
+     "ko": "여러분 문을 열 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "실례지만, 그걸 지금 다시 말해 주실 수 있어요? 저는 확실히 할 필요가 있어요.",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "실례지만, 그걸 다시 말해 주실 수 있어요? 저는 확실히 할 필요가 있어요.",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "여러분 손을 움직일 수 있어요?",
+     "ok": false,
+     "why": "symud is taught as 이사하다 (move house). Here it means moving your hands, which this course never taught. A Korean prompt that uses the gloss ('손을 이사하다') is nonsense, and using 움직이다 brings in a known word the learner never got."
+    },
+    {
+     "n": 7,
+     "ko": "부탁해요, 여러분 지금 앉을 수 있어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "여러분 손을 위아래로 움직일 수 있어요?",
+     "ok": false,
+     "why": "Same problem as o6: symud is taught as 이사하다 (move house), not as moving your hands."
+    }
+   ]
+  }
+ }
+}

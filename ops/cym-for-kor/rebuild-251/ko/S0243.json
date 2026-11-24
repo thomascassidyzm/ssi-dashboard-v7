@@ -1,0 +1,247 @@
+{
+ "seed": 243,
+ "at": "2026-11-24T18:46:06.299Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0243L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 도움을 요청하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 도움을 요청하는 방법을 알지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 내가 도움을 요청하고 싶지 않다는 걸 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 도움을 요청할 시간이 났어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 직장에서 도움을 요청하고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 도움을 요청하려고 하고 있었지만 그녀는 너무 바빴어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그들이 왜 도움을 요청하고 싶어했는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 하지만 나는 도움을 요청하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "완벽해지는 것보다 도움을 요청하는 것이 더 중요해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0243L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그것은 같은 것이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 그건 내가 뜻하는 것과 같은 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 어머니와 같은 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 같은 것을 하는 게 더 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 다음 주말에 같은 것을 하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "아무도 같은 것을 다시 하고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "물론 그것은 네가 말한 것과 같은 것이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 다음 주말에 같은 것을 할 거야?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0243L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0243L03U05",
+     "keep": true,
+     "ko": "너는 같은 것에 대해 다시 이야기하고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0243L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0243L03U01",
+     "keep": false,
+     "why": "surplus; fine but fewer needed"
+    },
+    {
+     "id": "cym_for_kor:S0243L03U02",
+     "keep": false,
+     "why": "원했어 departs from the isio gloss (~고 싶어하다); weaker than the others"
+    },
+    {
+     "id": "cym_for_kor:S0243L03U04",
+     "keep": false,
+     "why": "surplus"
+    },
+    {
+     "id": "cym_for_kor:S0243L03U07",
+     "keep": false,
+     "why": "surplus"
+    }
+   ]
+  },
+  "S0243L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 다른 것을 먹으면 좋겠다고 생각해",
+     "ok": false,
+     "why": "in 'liciwn i fwyta' the i is the pronoun I, not the purpose 'i' of i fwyta, so this is the wrong sense for the LEGO"
+    },
+    {
+     "n": 2,
+     "ko": "나는 다음 주말에 무언가를 먹을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 지금 무언가를 먹어야 해",
+     "ok": false,
+     "why": "'rhaid i mi fwyta' does not contain the LEGO i fwyta, only fwyta after 'i mi'; wrong sense for this basket"
+    },
+    {
+     "n": 4,
+     "ko": "나는 너무 많이 먹을 기회를 즐겨",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 너무 많이 먹을 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 너무 많이 먹을 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 지금 먹을 준비가 됐다고 느끼는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리 무언가 먹을 것을 구하는 게 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리 오늘 저녁에 무언가 색다른 먹을 것을 구하는 게 어때?",
+     "ok": true,
+     "why": "used 색다른 for gwahanol: the gloss 다양한 means 'various' and is wrong here, and 다른 would collide with arall"
+    },
+    {
+     "n": 10,
+     "ko": "우리 오늘 저녁에 무언가 먹을 것을 구하는 게 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너는 먹을 것을 충분히 먹었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 지금 먹을 것을 충분히 먹었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "응, 나는 지금 그것을 먹을 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너는 지금 무언가를 먹을 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "여러분은 무언가 먹을 것을 원해요?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

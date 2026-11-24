@@ -1,0 +1,107 @@
+{
+ "seed": 307,
+ "at": "2026-11-24T18:55:10.002Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0307L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0307L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L02B03",
+     "keep": true,
+     "ko": "그 젊은 남자는 누구였어?"
+    },
+    {
+     "id": "cym_for_kor:S0307L02B04",
+     "keep": false,
+     "why": "Fine, but the 3 BUILD slots are already filled by shorter rows."
+    },
+    {
+     "id": "cym_for_kor:S0307L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L02U02",
+     "keep": true,
+     "ko": "너는 네 형제와 일하는 그 젊은 남자를 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0307L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L02U05",
+     "keep": false,
+     "why": "The 5 USE slots are filled, and the Korean '이야기하고 있던' can mean talking about him as well as talking with him."
+    }
+   ]
+  },
+  "S0307L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0307L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L03B04",
+     "keep": false,
+     "why": "Fine, but the 3 BUILD slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0307L03U01",
+     "keep": true,
+     "ko": "너는 저기에 앉아 있는 그 남자를 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0307L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L03U03",
+     "keep": true,
+     "ko": "내 어머니는 저기에 앉아 있는 그 젊은 여자를 알아"
+    },
+    {
+     "id": "cym_for_kor:S0307L03U04",
+     "keep": true,
+     "ko": "나는 네 친구와 같이 앉아 있는 그 남자를 보고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0307L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0307L03U05",
+     "keep": false,
+     "why": "Splitting 'faint o bobl … sy'n eistedd' around the verb is awkward Welsh."
+    }
+   ]
+  }
+ }
+}

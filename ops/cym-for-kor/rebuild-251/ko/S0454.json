@@ -1,0 +1,185 @@
+{
+ "seed": 454,
+ "at": "2026-11-24T19:17:26.476Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0454L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리 친구들이 어젯밤 놀러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 우리 친구들이 나중에 놀러 왔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리 친구들이 화요일에 놀러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "왜냐하면 우리 친구들이 놀러 왔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "식사 후에 우리 친구들이 놀러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 아무 데도 가지 않았어, 왜냐하면 우리 친구들이 놀러 왔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리 친구들이 어젯밤 놀러 왔어, 하지만 아무도 나에게 말해 주지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 시간이 나지 않았어, 왜냐하면 우리 친구들이 금요일 밤에 놀러 왔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 지난달 아무도 못 봤어, 하지만 우리 친구들이 화요일에 놀러 왔어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0454L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "저기에 있는 누군가",
+     "ok": false,
+     "why": "uses draw in the 'draw acw = over there' sense, not the 'come round' sense this LEGO teaches (놀러)"
+    },
+    {
+     "n": 2,
+     "ko": "그 남자는 저기에 있어",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 3,
+     "ko": "그게 저기에 있었다고",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 4,
+     "ko": "아마 저기에",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 5,
+     "ko": "네가 왜 저기에 앉아 있지 않은지",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 6,
+     "ko": "저기에 남겨지다",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 7,
+     "ko": "너 저기에서 빠른 차를 봤어?",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 8,
+     "ko": "그들은 그 여행 가방을 저기로 들고 갈 수 없었어",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 9,
+     "ko": "나는 저기에 있는 두 여자아이를 알아",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 10,
+     "ko": "너 저기에서 내 열쇠 봤어?",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    },
+    {
+     "n": 11,
+     "ko": "나는 어젯밤 저기에서 누군가를 만났어",
+     "ok": false,
+     "why": "draw acw = over there, wrong sense for draw = 놀러"
+    }
+   ]
+  },
+  "S0454L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0454L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L03B04",
+     "keep": false,
+     "why": "BUILD quota filled by stronger rows; near-duplicate of B02"
+    },
+    {
+     "id": "cym_for_kor:S0454L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L03U03",
+     "keep": true,
+     "ko": "너 여섯 시쯤 준비될 거야?"
+    },
+    {
+     "id": "cym_for_kor:S0454L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0454L03U06",
+     "keep": true,
+     "ko": "우리는 오늘 저녁 여섯 시쯤 네 명 자리를 예약했으면 좋겠어"
+    },
+    {
+     "id": "cym_for_kor:S0454L03U05",
+     "keep": false,
+     "why": "USE quota filled; 'cyfarfod fi' is less natural than 'nghyfarfod i' or 'cwrdd â fi'"
+    }
+   ]
+  }
+ }
+}

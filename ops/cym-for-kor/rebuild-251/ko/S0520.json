@@ -1,0 +1,127 @@
+{
+ "seed": 520,
+ "at": "2026-11-24T19:33:14.618Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0520L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "어젯밤 그건 아팠을 수도 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 그는 좋은 본보기를 보였을 수도 있었으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 아팠을 수도 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그건 내 머리를 다치게 했을 수도 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 그게 네 눈을 다치게 했을 수도 있었다고 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그건 내 여동생을 다치게 했을 수도 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "전쟁 중에 그건 내 할아버지를 다치게 했을 수도 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 걱정돼 왜냐하면 그게 우리 친구들을 다치게 했을 수도 있었으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 떠나야 했어 왜냐하면 그게 내 어머니를 다치게 했을 수도 있었으니까",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0520L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "가족 전체에게 무슨 일이 일어났을 수도 있었는지에 대해",
+     "ok": true,
+     "why": "Natural Welsh: 'i'r teulu cyfan' means 'to the whole family', the same sense as the seed."
+    },
+    {
+     "n": 2,
+     "ko": "가족 전체에게 무슨 일이 일어났을 수도 있었는지",
+     "ok": true,
+     "why": "Natural Welsh as a building-block clause; same sense as the seed."
+    },
+    {
+     "n": 3,
+     "ko": "~ 가족 전체에게 일어나, 유감이지만",
+     "ok": true,
+     "why": "Open-ended fragment from a longer clause; fine as a BUILD row with the regretful 'I'm afraid' tag."
+    },
+    {
+     "n": 4,
+     "ko": "~ 가족 전체에게, 유감이지만",
+     "ok": true,
+     "why": "Fine as a BUILD fragment; same sense of i'r teulu cyfan."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0520L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0520L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0520L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0520L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0520L03U02",
+     "keep": true,
+     "ko": "그녀는 가족 전체에게 안전한 곳을 찾으러 가버렸어"
+    },
+    {
+     "id": "cym_for_kor:S0520L03U06",
+     "keep": false,
+     "why": "In this seed '그건' means 'fo', so '그건 … 않을 거야' allows both 'fyddai fo ddim' and 'fyddai hynna ddim'; also not needed, five already kept."
+    },
+    {
+     "id": "cym_for_kor:S0520L03U07",
+     "keep": false,
+     "why": "Same problem: '그건' allows both 'byddai fo'n' and 'byddai hynna'n'; also not needed."
+    }
+   ]
+  }
+ }
+}

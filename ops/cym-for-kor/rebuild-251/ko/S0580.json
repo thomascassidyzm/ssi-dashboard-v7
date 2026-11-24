@@ -1,0 +1,231 @@
+{
+ "seed": 580,
+ "at": "2026-11-24T19:44:24.438Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0580L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0580L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01B01",
+     "keep": false,
+     "why": "'보고 싶어 왔어' also reads as 'we came because we missed you'; the three kept rows already fill the BUILD quota"
+    },
+    {
+     "id": "cym_for_kor:S0580L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L01U04",
+     "keep": false,
+     "why": "Sound, but not needed: the five kept rows fill the USE quota, and 'they' has nobody to refer to here"
+    },
+    {
+     "id": "cym_for_kor:S0580L01U01",
+     "keep": false,
+     "why": "Not needed: the USE quota is full, and '바로' adds a word the Welsh does not have"
+    }
+   ]
+  },
+  "S0580L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0580L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02B03",
+     "keep": false,
+     "why": "Not needed: the BUILD quota is full"
+    },
+    {
+     "id": "cym_for_kor:S0580L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L02U05",
+     "keep": false,
+     "why": "Not needed: the USE quota is full"
+    },
+    {
+     "id": "cym_for_kor:S0580L02U07",
+     "keep": false,
+     "why": "Not needed: the USE quota is full"
+    }
+   ]
+  },
+  "S0580L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 어젯밤에 어딘가에 갔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "차를 주차할 곳을 찾다",
+     "ok": false,
+     "why": "The phrase has 'am rywle i barcio', not the LEGO 'i rywle' ('to somewhere'). Here rywle is the object of chwilio am and 'i' belongs to the infinitive, so this is the wrong sense"
+    },
+    {
+     "n": 3,
+     "ko": "나는 안전한 곳을 찾을 필요가 있어",
+     "ok": false,
+     "why": "No 'i rywle' at all: this is 'chwilio am rywle diogel' ('look for somewhere'), not 'to somewhere'"
+    },
+    {
+     "n": 4,
+     "ko": "너 작년에 세계의 이 지역에서 어딘가에 갔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 그 지역에서 안전한 곳을 찾아야 했어",
+     "ok": false,
+     "why": "No 'i rywle': this is 'chwilio am rywle diogel', a different sense from the LEGO's 'to somewhere'"
+    },
+    {
+     "n": 6,
+     "ko": "우리 이사하기 전에 안전한 곳을 찾을 필요가 있어?",
+     "ok": false,
+     "why": "No 'i rywle' ('to somewhere'). 'i ni' after cyn is not the LEGO, and rywle here is the object of chwilio am"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0580L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0580L03U01",
+     "keep": false,
+     "ko": "너 어딘가로 가고 싶어?",
+     "why": "Fine once the missing question mark is added, but not needed: the quota is 2"
+    },
+    {
+     "id": "cym_for_kor:S0580L03U07",
+     "keep": false,
+     "why": "'그건' could be 'mae o'n' or 'mae hi'n', so the Korean has two possible Welsh answers"
+    }
+   ]
+  },
+  "S0580L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "밤에 조금 더 따뜻한",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "날씨가 계속 조금 더 따뜻했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "밖에서 조금 더 따뜻한",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "날씨가 조금 더 따뜻해져 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "지금 이 순간 날씨가 조금 더 따뜻해져 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "하지만 밤에 날씨가 조금 더 따뜻해져 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "밖은 계속 조금 더 따뜻했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "개가 더럽고 젖었지만 날씨가 조금 더 따뜻해져 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 피곤하지만 밖은 조금 더 따뜻해져 가고 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "seed": 298,
+ "at": "2026-11-24T18:54:06.813Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0298L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 오늘 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 지금 이 순간 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 남은 게 전혀 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "물론 나는 지금 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 하지만 나는 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 이 세상에 남은 게 아무것도 없어",
+     "ok": true,
+     "why": "Natural North Welsh. 'yn y byd' adds emphasis to 'nothing left' and the LEGO keeps its taught sense."
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 하지만 나는 오늘 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0298L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 말하는 방법을 기억할 수 없어",
+     "ok": true,
+     "why": "Natural Welsh. 'sut i ddeud' is the taught sense, 'to say'."
+    },
+    {
+     "n": 2,
+     "ko": "무언가를 말하는 방법을 알다",
+     "ok": true,
+     "why": "Natural Welsh. 'i ddeud' is used as 'to say'."
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 그게 흥미로웠다고 말했다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense. This is 'i ti ddeud', the past-tense clause 'that you said', not the LEGO 'i ddeud' ('to say'). The LEGO does not even appear as one unit here."
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 말하고 싶은 것을 말하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": "Natural Welsh. 'sut i ddeud' is the taught sense."
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 말하고 싶었던 것을 말하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": "Natural Welsh. Taught sense."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 말하고 싶었던 것을 말하는 방법을 잊어버렸어",
+     "ok": false,
+     "why": "Breaks ZUT against o5. It has the same meaning and differs only in the spoken forms 'dw i 'di' and 'be'', which the Korean cannot show. One Korean prompt would have two Welsh answers."
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 말하고 싶은 것을 말하는 방법을 잊어버렸어",
+     "ok": false,
+     "why": "Breaks ZUT against o4. It differs only in 'dw i 'di' vs 'dw i wedi' and 'be'' vs 'beth', which the Korean cannot show."
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 한동안 느긋하게 쉬는 게 좋다고 말했다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense. 'i ti ddeud' means 'that you said', not the LEGO 'i ddeud' ('to say')."
+    },
+    {
+     "n": 9,
+     "ko": "하지만 나는 내가 말하고 싶은 것을 말하는 방법을 기억할 수 없어",
+     "ok": true,
+     "why": "Natural Welsh. Taught sense."
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 말하고 싶은 것을 말하는 방법을 기억하려고 노력하는 게 좋겠어",
+     "ok": true,
+     "why": "Natural Welsh. Taught sense."
+    },
+    {
+     "n": 11,
+     "ko": "나는 내가 원하는 것을 말하는 방법을 기억하려고 노력하는 게 좋겠어",
+     "ok": true,
+     "why": "Natural Welsh. 'isio' here means 'want' with an object, so the Korean uses 원하는 것 to keep it apart from o10."
+    },
+    {
+     "n": 12,
+     "ko": "나는 네가 준비 사항들을 처리하고 싶다고 말했다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense. 'i ti ddeud' means 'that you said', not the LEGO 'i ddeud' ('to say')."
+    },
+    {
+     "n": 13,
+     "ko": "나는 네가 그게 꽤 좋았다고 말했다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense. 'i ti ddeud' means 'that you said', not the LEGO 'i ddeud' ('to say')."
+    }
+   ]
+  }
+ }
+}

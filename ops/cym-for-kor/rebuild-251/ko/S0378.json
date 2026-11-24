@@ -1,0 +1,194 @@
+{
+ "seed": 378,
+ "at": "2026-11-24T19:05:33.757Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0378L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 책이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 아이디어가 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 나는 ~가 없었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "미안해, 하지만 그것은 가능하지 않았어",
+     "ok": false,
+     "why": "The Welsh is natural, but this line doesn't contain doedd gen i ddim, so it can't serve as a USE phrase for this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "지난달 나는 책이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 나는 아이디어가 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "미안해, 하지만 충분한 돈이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 수요일에 남은 시간이 많이 없었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0378L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "충분한 돈이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 충분한 돈이 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "올해 충분한 돈",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "충분한 돈을 찾아내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 주말 전에 충분한 돈을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 우리가 올해 충분한 돈이 필요하다고 믿어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 다음 주에 충분한 돈을 찾아내기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0378L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0378L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0378L03U03",
+     "keep": false,
+     "why": "The Welsh and Korean are fine. Only 2 USE top-ups were needed, and the two kept are better fits."
+    },
+    {
+     "id": "cym_for_kor:S0378L03U04",
+     "keep": false,
+     "why": "Only 2 USE top-ups were needed. This one is also too close to original o6."
+    },
+    {
+     "id": "cym_for_kor:S0378L03U05",
+     "keep": false,
+     "why": "Only 2 USE top-ups were needed."
+    },
+    {
+     "id": "cym_for_kor:S0378L03U06",
+     "keep": false,
+     "why": "Only 2 USE top-ups were needed. In Korean, 그가 could also be read as the friend, so the prompt is ambiguous."
+    }
+   ]
+  },
+  "S0378L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "휴가를 위한 돈이 얼마나 많이",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "올해 휴가를 위해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "휴가를 위한 돈을 찾아내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내년에 휴가를 위한 충분한 돈",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 휴가를 위해 남은 게 아무것도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 휴가를 위한 충분한 돈을 갖고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 올해 휴가를 위한 돈을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 작년에 휴가를 위한 충분한 돈을 갖고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 그냥 휴가를 위한 충분한 돈이 필요해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

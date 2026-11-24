@@ -1,0 +1,120 @@
+{
+ "seed": 308,
+ "at": "2026-11-24T18:55:27.379Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0308L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "맞아, 하지만 우리는 아직 몰라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "맞아, 나는 네 아버지를 보러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "맞아, 그건 ~하게 들려",
+     "ok": true,
+     "why": "The Welsh stops before the describing word, so the Korean leaves the same gap with ~. Fine as a BUILD row."
+    },
+    {
+     "n": 4,
+     "ko": "맞아, 그건 큰 세상이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "맞아, 그들은 돈을 찾아낼 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "맞아, 그건 꽤 좋아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "맞아, 그는 좋은 선생님이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "맞아, 그들은 그게 좋은 일이라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "맞아, 저 남자는 아주 친절해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0308L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 그는 내 친구야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지난달에 친구를 만났어",
+     "ok": false,
+     "why": "Only plain 'ffrind' appears, never 'ffrind i', so the row does not practise the LEGO it is filed under."
+    },
+    {
+     "n": 3,
+     "ko": "하지만 나는 내 자매의 친구가 ~인지 궁금해",
+     "ok": false,
+     "why": "'ffrind fy chwaer' says 'my sister's friend' without 'i'. Since this LEGO teaches ~의 친구 = ffrind i, the prompt 내 자매의 친구 now has two possible Welsh answers."
+    },
+    {
+     "n": 4,
+     "ko": "그건 문제가 아니야, 왜냐하면 그는 내 친구니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 정말 행복해, 왜냐하면 물론 그는 내 친구니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 네 자매 같은 친구가 필요한지 확실하지 않아",
+     "ok": false,
+     "why": "Uses 'ffrind fel' (a friend like), with no 'ffrind i', so the LEGO is not practised."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그녀가 친구에게 보내는 편지를 보여주고 싶어하는지 확실하지 않아",
+     "ok": false,
+     "why": "Only plain 'ffrind' appears (after 'llythyr at'), never 'ffrind i', so the LEGO is not practised."
+    },
+    {
+     "n": 8,
+     "ko": "나는 행복해, 왜냐하면 나는 내 형제 같은 친구가 있으니까",
+     "ok": false,
+     "why": "Uses 'ffrind fel fy mrawd', with no 'ffrind i', so the LEGO is not practised."
+    }
+   ],
+   "topups": []
+  }
+ }
+}

@@ -1,0 +1,174 @@
+{
+ "seed": 270,
+ "at": "2026-11-24T18:49:26.774Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0270L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 지금 걱정돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 나는 걱정되기 때문이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그것에 대해 걱정돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "응, 나는 그것에 대해 걱정돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 걱정돼, 왜냐하면 나는 일이 너무 많이 있기 때문이야",
+     "ok": true,
+     "why": "Natural North Welsh. 'Poeni achos…' uses poeni in the same sense as this LEGO."
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 하지만 나는 그것에 대해 걱정돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "미안해, 하지만 나는 지금 걱정돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "왜냐하면 나는 내가 그것들을 못 봤을까 봐 걱정되기 때문이야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0270L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 노력할 거라고 생각해",
+     "ok": true,
+     "why": "Natural. 'Dw i'n meddwl bo' fi'n mynd i drio' uses bo' fi'n mynd i in exactly the sense taught here."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0270L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0270L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0270L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0270L03B02",
+     "keep": false,
+     "why": "The Welsh is fine, but the 3 BUILD slots are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0270L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0270L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0270L03U05",
+     "keep": true,
+     "ko": "왜냐하면 나는 내가 거기에 있을 거라고 생각하기 때문이야"
+    },
+    {
+     "id": "cym_for_kor:S0270L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0270L03U04",
+     "keep": false,
+     "why": "Grammatical, but the 4 USE slots are filled, and it repeats the B01 frame (adael)."
+    },
+    {
+     "id": "cym_for_kor:S0270L03U01",
+     "keep": false,
+     "why": "The 4 USE slots are filled. Also 'cyfarfod' without 'â' is less clean than the alternatives."
+    }
+   ]
+  },
+  "S0270L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁에 늦다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 늦어야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 늦기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "늦기로 되어 있는",
+     "ok": false,
+     "why": "On its own, 'i fod yn hwyr' only means 'meant to be late' through the 'i fod' LEGO from source seed 483, which this basket never teaches. Without that sense the fragment is just 'to be late' and can't be told apart from the bare LEGO 'fod yn hwyr', so no Korean prompt gives it exactly one answer."
+    },
+    {
+     "n": 5,
+     "ko": "누가 늦을 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "응, 나는 오늘 저녁에 늦을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "미안해, 하지만 나는 늦을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 늦을 거야, 왜냐하면 나는 바쁘기 때문이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 오늘 저녁에 늦어야 해, 왜냐하면 나는 내 어머니를 의사에게 데려가야 하기 때문이야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

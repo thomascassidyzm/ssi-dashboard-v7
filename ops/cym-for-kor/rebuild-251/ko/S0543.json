@@ -1,0 +1,76 @@
+{
+ "seed": 543,
+ "at": "2026-11-24T19:37:49.828Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0543L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 어젯밤 그녀는 아주 친절했으니까",
+     "ok": false,
+     "why": "Here iawn means 'very' (garedig iawn = very kind). The phrase doesn't contain the LEGO 'oedd hi'n iawn' (she was right) in the sense this seed teaches."
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 아주 참을성 있었어",
+     "ok": false,
+     "why": "iawn is the intensifier 'very' (amyneddgar iawn), not 'right'. It practises a different LEGO, not 'she was right'."
+    },
+    {
+     "n": 3,
+     "ko": "그건 아주 좋았어",
+     "ok": false,
+     "why": "dda iawn means 'very good', so this is not the LEGO 'she was right'. 그건 also allows other answers (oedd o'n / oedd hynna'n dda iawn), so the Korean prompt has more than one possible answer."
+    },
+    {
+     "n": 4,
+     "ko": "나는 정말 행복해, 왜냐하면 그녀는 아주 친절했으니까",
+     "ok": false,
+     "why": "garedig iawn means 'very kind'. The seed's 'oedd hi'n iawn' (she was right) is not used here."
+    },
+    {
+     "n": 5,
+     "ko": "나는 놀라워, 왜냐하면 어젯밤 그녀는 아주 친절했으니까",
+     "ok": false,
+     "why": "garedig iawn means 'very kind'. The seed's 'oedd hi'n iawn' (she was right) is not used here."
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 아주 친절했어, 왜냐하면 내가 긴장하는 걸 그녀가 봤으니까",
+     "ok": false,
+     "why": "garedig iawn means 'very kind'. The seed's 'oedd hi'n iawn' (she was right) is not used here."
+    },
+    {
+     "n": 7,
+     "ko": "그건 놀라운 일이었어, 왜냐하면 그녀는 아주 참을성 있었으니까",
+     "ok": false,
+     "why": "amyneddgar iawn means 'very patient'. The seed's 'oedd hi'n iawn' (she was right) is not used here."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0543L01B02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0543L01B01",
+     "keep": false,
+     "why": "Only 1 BUILD is needed and B02 is the better fit (short, and its only new word is ond)."
+    },
+    {
+     "id": "cym_for_kor:S0543L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed. 'am y gêm' adds more new material than B02."
+    },
+    {
+     "id": "cym_for_kor:S0543L01B04",
+     "keep": false,
+     "why": "The Korean is unclear about what 어젯밤 attaches to, and the Welsh 'achos ... neithiwr' reads awkwardly when it stands alone."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "seed": 592,
+ "at": "2026-11-24T19:45:57.735Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0592L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0592L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01B03",
+     "keep": false,
+     "why": "'wnaeth hi ddilyn fi ac ar hyd y lôn fawr' joins a finished clause to a bare place phrase with 'ac', so it is unnatural Welsh"
+    },
+    {
+     "id": "cym_for_kor:S0592L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0592L01U01",
+     "keep": false,
+     "why": "Good Welsh, but five USE rows are already kept and this Korean reads awkwardly as an afterthought"
+    },
+    {
+     "id": "cym_for_kor:S0592L01U06",
+     "keep": false,
+     "why": "Five USE rows are already kept, and this is the same frame as U01 with the Korean made even more awkward by the added clause"
+    }
+   ]
+  }
+ }
+}

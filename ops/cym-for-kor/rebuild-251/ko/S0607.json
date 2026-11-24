@@ -1,0 +1,83 @@
+{
+ "seed": 607,
+ "at": "2026-11-24T19:48:21.021Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0607L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 일을 다르게",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 일을 다르게 결정할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 일을 다르게 개발하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리 내년에 일을 다르게 결정할 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 일을 다르게 개발하고 싶어해, 왜냐하면 그들은 불행하거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 과거에 일을 다르게 상상하곤 했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0607L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0607L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0607L04U07",
+     "keep": false,
+     "why": "Good row, but only 2 USE top-ups are needed and U02/U04 are simpler and cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0607L04U03",
+     "keep": false,
+     "why": "Fine with a question mark added (왜 너는 일을 다르게 봐?), but only 2 are needed"
+    },
+    {
+     "id": "cym_for_kor:S0607L04U05",
+     "keep": false,
+     "why": "Nearly a copy of the seed sentence, so it adds little practice"
+    },
+    {
+     "id": "cym_for_kor:S0607L04U06",
+     "keep": false,
+     "why": "'wrthaf fi' is literary; North Welsh speech says 'wrtha i'"
+    },
+    {
+     "id": "cym_for_kor:S0607L04U01",
+     "keep": false,
+     "why": "Learner may confuse 'ar hyn o bryd' with 'rŵan' (지금), so the answer may not be certain"
+    }
+   ]
+  }
+ }
+}

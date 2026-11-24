@@ -1,0 +1,223 @@
+{
+ "seed": 276,
+ "at": "2026-11-24T18:50:30.621Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0276L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0276L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L02B04",
+     "keep": true,
+     "ko": "하지만 나는 집에 머물 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0276L02B02",
+     "keep": false,
+     "why": "Good, but the 3 BUILD slots are filled and it repeats the seed's opening word for word"
+    },
+    {
+     "id": "cym_for_kor:S0276L02U01",
+     "keep": true,
+     "ko": "아니, 나는 너와 한동안 머물 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0276L02U03",
+     "keep": true,
+     "ko": "안타깝게도 나는 일이 너무 많아, 하지만 나는 오늘 저녁 머물 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0276L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L02U04",
+     "keep": true,
+     "ko": "나는 정말 행복해, 왜냐하면 나는 다음 달까지 머물 수 있거든"
+    },
+    {
+     "id": "cym_for_kor:S0276L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L02U05",
+     "keep": false,
+     "why": "Korean 머물러서 도와줄 수 있어 could be heard as 'stay in order to help', which is not 'a helpu'; also the 5 USE slots are already filled"
+    }
+   ]
+  },
+  "S0276L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 다른 사람들이 여기 있거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 이 순간 다른 사람들이 여기 있어, 하지만 그는 말을 끊고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 그것에 대해 걱정하고 싶어하지 않아, 왜냐하면 다른 사람들이 여기 있거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0276L03B02",
+     "keep": true,
+     "ko": "여기에 머물다"
+    },
+    {
+     "id": "cym_for_kor:S0276L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L03B01",
+     "keep": false,
+     "why": "Only 2 BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L03B04",
+     "keep": false,
+     "why": "Only 2 BUILD needed, and it overlaps B02"
+    },
+    {
+     "id": "cym_for_kor:S0276L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L03U05",
+     "keep": true,
+     "ko": "너는 왜 여기에 오고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0276L03U01",
+     "keep": false,
+     "why": "Only 3 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L03U02",
+     "keep": false,
+     "why": "Only 3 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L03U03",
+     "keep": false,
+     "why": "Only 3 USE needed; 여기에 일이 많아 is also slightly awkward Korean"
+    },
+    {
+     "id": "cym_for_kor:S0276L03U07",
+     "keep": false,
+     "why": "Only 3 USE needed"
+    }
+   ]
+  },
+  "S0276L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "조금 더 오래 기다리다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네 아버지를 조금 더 오래 기다리다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네 아버지를 조금 더 오래 기다리고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 조금 더 오래 기다려야 해, 왜냐하면 나는 걱정되거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 하지만 나는 조금 더 오래 기다릴 수 없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0276L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L04B02",
+     "keep": false,
+     "why": "Fragment ordering is awkward; B04 is the better BUILD"
+    },
+    {
+     "id": "cym_for_kor:S0276L04B03",
+     "keep": false,
+     "why": "Only 1 BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0276L04U01",
+     "keep": false,
+     "why": "너 ~기다릴래? fits 'wyt ti isio' or a future just as well as 'fyddet ti'n licio' (two possible answers)"
+    },
+    {
+     "id": "cym_for_kor:S0276L04U02",
+     "keep": false,
+     "why": "Nearly the same as original o3"
+    },
+    {
+     "id": "cym_for_kor:S0276L04U03",
+     "keep": false,
+     "why": "Only 2 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L04U06",
+     "keep": false,
+     "why": "Only 2 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L04U07",
+     "keep": false,
+     "why": "Only 2 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0276L04U08",
+     "keep": false,
+     "why": "Only 2 USE needed"
+    }
+   ]
+  }
+ }
+}

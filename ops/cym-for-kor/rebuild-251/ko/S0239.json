@@ -1,0 +1,64 @@
+{
+ "seed": 239,
+ "at": "2026-11-24T18:45:00.129Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0239L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 유감이지만 나는 내 어머니를 볼 수 없어",
+     "ok": false,
+     "why": "The phrase does not contain the LEGO 'mae fy mam yn'. It only has 'fy mam' as an object after 'gweld', so it does not practise this LEGO in this basket."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0239L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01B04",
+     "keep": false,
+     "why": "Grammatical, but only 2 BUILD top-ups are needed and B01 and B03 are shorter, cleaner builds."
+    },
+    {
+     "id": "cym_for_kor:S0239L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0239L01U03",
+     "keep": false,
+     "why": "The 4 USE slots are filled by stronger candidates, and the Korean '왜냐하면 … 배우거든' is clunky."
+    },
+    {
+     "id": "cym_for_kor:S0239L01U02",
+     "keep": false,
+     "why": "The 4 USE slots are filled by stronger candidates, and here the LEGO sits inside a 'pan' subordinate clause rather than as the main frame."
+    },
+    {
+     "id": "cym_for_kor:S0239L01U05",
+     "keep": false,
+     "why": "The 4 USE slots are filled by stronger candidates, and '조금' could equally prompt 'tipyn' or 'bach o', so the Korean risks more than one Welsh answer."
+    }
+   ]
+  }
+ }
+}

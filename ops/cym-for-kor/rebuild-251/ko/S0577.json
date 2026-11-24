@@ -1,0 +1,115 @@
+{
+ "seed": 577,
+ "at": "2026-11-24T19:43:26.236Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0577L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0577L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0577L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0577L01B03",
+     "keep": true,
+     "ko": "우리는 이 지역에서 살아 왔어"
+    },
+    {
+     "id": "cym_for_kor:S0577L01B04",
+     "keep": false,
+     "why": "Only 3 BUILD rows are needed; the 3 shorter ones are better builds, and this Korean would need 왔거든 to sound natural after 왜냐하면"
+    },
+    {
+     "id": "cym_for_kor:S0577L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0577L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0577L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0577L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0577L01U03",
+     "keep": true,
+     "ko": "왜냐하면 우리는 밤늦게 음악을 틀어 왔거든"
+    },
+    {
+     "id": "cym_for_kor:S0577L01U05",
+     "keep": false,
+     "why": "도시에서 could be either mewn dinas or yn y ddinas, so the Korean has two possible Welsh answers"
+    }
+   ]
+  },
+  "S0577L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "병원에서 오는 소식",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "병원에서 오는 누군가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "어젯밤에 병원에서 온",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어젯밤에 병원에서 온 메시지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "아마 병원에서 오는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리 친구들이 어젯밤에 병원에서 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "누군가 어젯밤에 병원에서 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 어젯밤에 병원에서 온 소식을 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 병원에서 온 무슨 소식이라도 들었어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

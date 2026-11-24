@@ -1,0 +1,166 @@
+{
+ "seed": 505,
+ "at": "2026-11-24T19:29:30.626Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0505L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 이야기하지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 ~을 찾지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 추측하지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 남겨지지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 예전에 내가 남겨지지 않도록 이야기하곤 했어",
+     "ok": false,
+     "why": "Tense clash: past habitual o'n i'n arfer followed by future fel na fydda i'n. Natural Welsh would use fel na faswn i'n, and the English source has the same mismatch."
+    },
+    {
+     "n": 6,
+     "ko": "내가 오늘 저녁에 남겨지지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 떨어지지 않도록 우리 휴식 시간을 받을 수 있을까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 남겨지지 않도록 입구 가까이에 앉아 있을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내가 많은 시간을 잃지 않도록 곧장 집에 가고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 떨어지지 않도록 앉을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0505L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L01U04",
+     "keep": false,
+     "why": "Good row, but only 1 USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0505L01U02",
+     "keep": false,
+     "why": "Good row, but only 1 USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0505L01U05",
+     "keep": false,
+     "why": "Good row, but only 1 USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0505L01U03",
+     "keep": false,
+     "why": "Only 1 USE top-up is needed, and this one is weaker: an awkward 'want you to help me so I don't lose'."
+    },
+    {
+     "id": "cym_for_kor:S0505L01U06",
+     "keep": false,
+     "why": "Unnatural: paratoi'n fuan does not mean 머지않아 준비하다, and the Korean is clumsy."
+    },
+    {
+     "id": "cym_for_kor:S0505L01U01",
+     "keep": false,
+     "why": "Unnatural Welsh word order: the purpose clause is fronted before the main clause."
+    }
+   ]
+  },
+  "S0505L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0505L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02B04",
+     "keep": true,
+     "ko": "나는 한 번 뒤에 남겨진 적이 있어"
+    },
+    {
+     "id": "cym_for_kor:S0505L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02B03",
+     "keep": false,
+     "why": "Good row, but only 3 BUILD top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0505L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0505L02U05",
+     "keep": false,
+     "why": "Good row, but only 5 USE top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0505L02U06",
+     "keep": false,
+     "why": "Good row, but only 5 USE top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0505L02U08",
+     "keep": false,
+     "why": "Only 5 USE top-ups are needed, and this one is weaker: yn y gorffennol after wedi is redundant."
+    }
+   ]
+  }
+ }
+}

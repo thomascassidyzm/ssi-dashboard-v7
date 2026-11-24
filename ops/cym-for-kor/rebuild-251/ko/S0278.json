@@ -1,0 +1,61 @@
+{
+ "seed": 278,
+ "at": "2026-11-24T18:50:23.551Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0278L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0278L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01B04",
+     "keep": false,
+     "why": "sound, but the three BUILD slots are filled by candidates closer to the seed"
+    },
+    {
+     "id": "cym_for_kor:S0278L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0278L01U06",
+     "keep": true,
+     "ko": "너 왜 그와 이야기하는 걸 멈춰야 했어?"
+    },
+    {
+     "id": "cym_for_kor:S0278L01U05",
+     "keep": false,
+     "why": "sound, but the five USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0278L01U03",
+     "keep": false,
+     "why": "'aros am ychydig bach hirach' reads awkwardly; 'aros ychydig bach yn hirach' would be more natural"
+    }
+   ]
+  }
+ }
+}

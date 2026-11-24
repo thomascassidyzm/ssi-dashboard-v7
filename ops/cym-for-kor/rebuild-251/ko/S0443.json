@@ -1,0 +1,144 @@
+{
+ "seed": 443,
+ "at": "2026-11-24T19:15:36.779Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0443L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내일 그걸 하는 게 더 좋아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 내가 무엇을 할 건지 알고 싶어하지 않아",
+     "ok": false,
+     "why": "Bare 'wneud' (what I'm going to do) has no object 'o', so the LEGO 'wneud o' (그걸 하다) never appears in this phrase."
+    },
+    {
+     "n": 3,
+     "ko": "너는 그걸 다시 할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 그걸 할 시간 났어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 이미 나에게 무엇을 할지 말했어",
+     "ok": false,
+     "why": "'beth i wneud' (what to do) has no object 'o', so the phrase does not contain the LEGO 'wneud o'."
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 나에게 내가 그걸 할 시간이 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그걸 할 더 좋은 방법",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 그걸 할 시간 충분히 났어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 그걸 다시 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너 어디에서 그걸 하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "우리 모두 그들이 그걸 할 더 좋은 방법을 찾아야 한다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "내가 너에게 화요일에 그걸 하도록 나를 도와달라고 부탁한다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그는 오늘 저녁에 무엇을 할지 나에게 말하고 싶어해",
+     "ok": false,
+     "why": "'beth i wneud heno' has no object 'o', so the phrase does not contain the LEGO 'wneud o'."
+    }
+   ]
+  },
+  "S0443L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0443L05B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05B02",
+     "keep": false,
+     "why": "Only 3 BUILD rows are needed, and this bare adverbial fragment is the weakest of the four."
+    },
+    {
+     "id": "cym_for_kor:S0443L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0443L05U05",
+     "keep": true,
+     "ko": "그들은 같은 방법으로 일하는 걸 좋아하지 않을 텐데",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0443L05U02",
+     "keep": false,
+     "why": "Sound, but only 5 USE rows are needed. If used, the Korean needs a subject particle: 그들은 같은 방법으로 지역 사회에 봉사하고 싶어해?"
+    },
+    {
+     "id": "cym_for_kor:S0443L05U06",
+     "keep": false,
+     "why": "'byddai'n well' is literary/Southern; colloquial North Welsh would say 'fysa'n well', so this is not natural North Welsh."
+    }
+   ]
+  }
+ }
+}

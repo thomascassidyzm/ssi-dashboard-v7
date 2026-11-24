@@ -1,0 +1,121 @@
+{
+ "seed": 322,
+ "at": "2026-11-24T18:57:30.075Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0322L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 오늘 여러분에게 무언가를 물을 필요가 있다고 말했어요",
+     "ok": true,
+     "why": "Natural North Welsh. bod hi angen is used in the same sense as this seed. Plural chi is rendered as 여러분 in 해요."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0322L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02B01",
+     "keep": false,
+     "why": "Not needed: 2 BUILD already kept, and B02 and B04 are fuller sentences."
+    },
+    {
+     "id": "cym_for_kor:S0322L02B03",
+     "keep": false,
+     "why": "Not needed: 2 BUILD already kept."
+    },
+    {
+     "id": "cym_for_kor:S0322L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L02U02",
+     "keep": false,
+     "why": "Not needed: 5 USE already kept."
+    }
+   ]
+  },
+  "S0322L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0322L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04B03",
+     "keep": false,
+     "why": "Not needed: 3 BUILD already kept."
+    },
+    {
+     "id": "cym_for_kor:S0322L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04U06",
+     "keep": true,
+     "ko": "그는 같은 책에 대해 이야기하고 싶어하지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0322L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0322L04U03",
+     "keep": false,
+     "why": "Not needed: 5 USE already kept, and it is close to B04."
+    },
+    {
+     "id": "cym_for_kor:S0322L04U07",
+     "keep": false,
+     "why": "Not needed: 5 USE already kept."
+    },
+    {
+     "id": "cym_for_kor:S0322L04U08",
+     "keep": false,
+     "why": "Not needed: 5 USE already kept, and it is close to U02."
+    }
+   ]
+  }
+ }
+}

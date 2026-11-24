@@ -1,0 +1,221 @@
+{
+ "seed": 248,
+ "at": "2026-11-24T18:46:49.869Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0248L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0248L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L02B04",
+     "keep": false,
+     "why": "Sound, but only 3 BUILD rows are needed and the other three are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0248L02U02",
+     "keep": true,
+     "ko": "왜 너는 영화가 덜 흥미진진하다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0248L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L02U03",
+     "keep": true,
+     "ko": "그들은 영화가 꽤 좋다고 말하지만, 나는 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0248L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0248L02U04",
+     "keep": false,
+     "why": "'Less exciting than what she was saying' is a muddled comparison in both Welsh and Korean, so the line is not natural."
+    }
+   ]
+  },
+  "S0248L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 그게 완전 쓰레기였으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "완전 쓰레기였어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 그게 완전 쓰레기라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 네가 그게 완전 쓰레기라고 생각한다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그게 완전 쓰레기라고 생각하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "완전 쓰레기지만 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그건 완전 쓰레기였어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "오늘 완전 쓰레기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 그게 완전 쓰레기라고 생각했어",
+     "ok": false,
+     "why": "Breaks ZUT with o10: 'bo' hi'n' and 'fod o'n' only differ by the gender of 'it', which Korean cannot show, so one Korean prompt would have two Welsh answers. Keep o10 and drop this one."
+    },
+    {
+     "n": 10,
+     "ko": "나는 그게 완전 쓰레기라고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 네가 그게 완전 쓰레기라고 말했다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "응, 그건 완전 쓰레기야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "어젯밤 그건 완전 쓰레기였어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0248L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그래서 나는 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내 돈을 돌려받고 싶어, 왜냐하면 그게 완전 쓰레기였으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 내 돈을 돌려받아도 돼?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 내 돈을 돌려받아도 되는지 묻지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 내 돈을 돌려받고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "오늘 내 돈을 돌려받기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내 돈을 돌려받을 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "완전 쓰레기였어, 그래서 내가 내 돈을 돌려받아도 돼?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "응, 나는 오늘 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "미안해, 하지만 나는 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "정말 고마워, 하지만 나는 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "이번에는 나는 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

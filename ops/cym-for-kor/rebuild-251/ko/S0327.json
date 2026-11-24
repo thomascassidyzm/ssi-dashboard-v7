@@ -1,0 +1,149 @@
+{
+ "seed": 327,
+ "at": "2026-11-24T18:58:30.423Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0327L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 제안하고 싶어하지 않아",
+     "ok": true,
+     "why": "Natural Welsh. cynnig is used in the sense the course taught (to offer or propose)."
+    },
+    {
+     "n": 2,
+     "ko": "내가 제안할 수 있었던 것보다",
+     "ok": true,
+     "why": "Natural fragment. Here 'na' means 'than', not 'no', and the Korean -보다 shows that. cynnig has the taught sense."
+    },
+    {
+     "n": 3,
+     "ko": "나에게 무언가를 제안하다",
+     "ok": true,
+     "why": "Natural. Proposing something to someone fits the taught sense."
+    },
+    {
+     "n": 4,
+     "ko": "좋은 아이디어를 제안하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 제안하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 시간을 조금 더 제안하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 제안할 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 그녀가 제안했다고 말했어",
+     "ok": true,
+     "why": "Natural North Welsh. cynnig has the taught sense."
+    },
+    {
+     "n": 9,
+     "ko": "나는 그녀가 제안했다고 확신해",
+     "ok": true,
+     "why": "Natural. cynnig has the taught sense."
+    },
+    {
+     "n": 10,
+     "ko": "나는 모든 것을 제안하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너 오늘 저녁 좋은 아이디어를 제안할 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그들은 우리가 중요한 것을 제안할 필요가 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 그녀가 왜 제안했는지 상관없어",
+     "ok": true,
+     "why": "Natural Welsh, and the mutation in 'wnaeth hi gynnig' is correct. cynnig has the taught sense."
+    },
+    {
+     "n": 14,
+     "ko": "그녀는 큰 잔으로 물을 제안했어",
+     "ok": false,
+     "why": "Wrong sense. Here cynnig means handing someone a physical thing (a glass of water), which Korean says with 권하다. The course taught cynnig as 제안하다 (to propose), and '물을 제안했어' is not natural Korean."
+    }
+   ]
+  },
+  "S0327L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0327L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04B03",
+     "keep": true,
+     "ko": "웨일스어를 배우는 다른 방법"
+    },
+    {
+     "id": "cym_for_kor:S0327L04B04",
+     "keep": false,
+     "why": "The 3 BUILD slots are already filled by stronger candidates, and '이번에는 나는 ~이 있어' reads awkwardly in Korean."
+    },
+    {
+     "id": "cym_for_kor:S0327L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0327L04U03",
+     "keep": false,
+     "why": "The 5 USE slots are filled. This one is a near-copy of the seed sentence and adds little variety."
+    },
+    {
+     "id": "cym_for_kor:S0327L04U04",
+     "keep": false,
+     "why": "Almost word-for-word the seed sentence (only 'cynnig' is missing), so it adds no variety."
+    }
+   ]
+  }
+ }
+}

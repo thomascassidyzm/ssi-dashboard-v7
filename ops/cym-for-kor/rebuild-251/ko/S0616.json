@@ -1,0 +1,58 @@
+{
+ "seed": 616,
+ "at": "2026-11-24T19:49:33.567Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0616L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0616L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0616L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0616L01B02",
+     "keep": true,
+     "ko": "왜냐하면 너는 아주 용감했으니까"
+    },
+    {
+     "id": "cym_for_kor:S0616L01B04",
+     "keep": false,
+     "why": "'oedd hi'n iawn' could mean 'she was right' or 'she was fine', so the Korean doesn't fix one answer. Putting it next to 'ddewr iawn' also reads oddly."
+    },
+    {
+     "id": "cym_for_kor:S0616L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0616L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0616L01U03",
+     "keep": true,
+     "ko": "너는 피곤했지만 너는 아주 용감했어"
+    },
+    {
+     "id": "cym_for_kor:S0616L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0616L01U06",
+     "keep": true,
+     "ko": "아마 그때 너는 아주 용감했을 거야"
+    },
+    {
+     "id": "cym_for_kor:S0616L01U04",
+     "keep": false,
+     "why": "The logic doesn't hold: she was right because you were brave. 'oedd hi'n iawn' is also ambiguous (right or fine)."
+    }
+   ]
+  }
+ }
+}

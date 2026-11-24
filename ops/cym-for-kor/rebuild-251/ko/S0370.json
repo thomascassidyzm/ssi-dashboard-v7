@@ -1,0 +1,116 @@
+{
+ "seed": 370,
+ "at": "2026-11-24T19:04:31.095Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0370L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 아무도 전혀 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 나는 아무도 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 저기에 있는 사람을 아무도 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 알아내고 싶었어, 하지만 나는 펍에서 아무도 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "맞아, 하지만 나는 오늘 직장에서 아무도 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 아무도 못 봤어, 왜냐하면 우리는 떠나야 했으니까",
+     "ok": true,
+     "why": "Natural North Welsh; 'achos oedd rhaid i ni adael' is idiomatic and fits here."
+    },
+    {
+     "n": 7,
+     "ko": "나는 빠른 차 소리를 들었어, 하지만 나는 아무도 못 봤어",
+     "ok": true,
+     "why": "Natural Welsh; clywes i is used for literal hearing, which is a normal use."
+    },
+    {
+     "n": 8,
+     "ko": "나는 아무도 못 봤어, 하지만 나는 빠른 차 소리를 들었어",
+     "ok": true,
+     "why": "Natural Welsh; the mirror image of o7."
+    }
+   ]
+  },
+  "S0370L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그가 뭘 하려고 노력하고 있는지 나한테 말한 누군가를 알아",
+     "ok": false,
+     "why": "The Welsh does not contain the LEGO o'n i'n nabod (it has present dw i'n nabod), so it cannot be a BUILD row for this LEGO. Also 'wrthaf fi' is a stiff literary form, not natural North Welsh speech."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0370L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0370L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0370L02B02",
+     "keep": false,
+     "why": "Good, but only 2 BUILD were needed and B04 and B01 are better."
+    },
+    {
+     "id": "cym_for_kor:S0370L02B03",
+     "keep": false,
+     "why": "Good, but only 2 BUILD were needed."
+    },
+    {
+     "id": "cym_for_kor:S0370L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0370L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0370L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0370L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0370L02U06",
+     "keep": true,
+     "ko": "네 친구는 그가 내가 알던 누군가를 보고 싶어 한다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0370L02U02",
+     "keep": false,
+     "why": "The Korean has no question form for the 'wyt ti wedi gweld' question, and it cannot tell perfect from preterite (welest ti). Pairing a perfect question with past o'n i'n nabod is also awkward."
+    }
+   ]
+  }
+ }
+}

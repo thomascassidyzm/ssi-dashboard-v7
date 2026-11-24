@@ -1,0 +1,200 @@
+{
+ "seed": 353,
+ "at": "2026-11-24T19:02:09.550Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0353L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0353L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01B02",
+     "keep": false,
+     "why": "Only 3 BUILD rows are needed; this is a sound row, but the three kept show the LEGO more clearly"
+    },
+    {
+     "id": "cym_for_kor:S0353L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01U02",
+     "keep": true,
+     "ko": "왜 그녀는 이사할 필요가 있었어?"
+    },
+    {
+     "id": "cym_for_kor:S0353L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0353L01U04",
+     "keep": false,
+     "why": "Only 5 USE rows are needed; this is a sound row, but the others are stronger"
+    },
+    {
+     "id": "cym_for_kor:S0353L01U05",
+     "keep": false,
+     "why": "The opening 'na' before a positive clause reads oddly on its own, and the count is already met"
+    },
+    {
+     "id": "cym_for_kor:S0353L01U08",
+     "keep": false,
+     "why": "Only 5 USE rows are needed; this is a sound row, but the others are stronger"
+    }
+   ]
+  },
+  "S0353L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 ~를 가로질러 달리려고 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 달릴 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 거를 쫓아 달릴 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 혼자서 달릴 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "학교에 달려가다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 금요일 밤에 달리고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 달리고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 오늘 저녁 달릴 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 그냥 지금 달릴 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "왜 너는 학교에 달려가고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 월요일에 달릴 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 한밤중에 달리지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0353L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 들판 주위를",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 들판 주위를 이사하고 싶어해",
+     "ok": false,
+     "why": "'symud' here means moving about the field, but the course glosses it only as 이사하다 (to relocate). Korean built from that gloss makes no sense, and any other Korean word breaks the gloss."
+    },
+    {
+     "n": 3,
+     "ko": "나는 금요일 밤에 들판 주위를 걸어가려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 들판 주위를 걸어가고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 오늘 저녁 들판 주위를 걸어가고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 혼자서 들판 주위를 걸어가고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "왜 그는 들판 주위를 걸어가고 싶어하지 않았어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 오늘 오후 들판 주위에서 아무도 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 한밤중에 들판 주위를 걸어가고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

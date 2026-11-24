@@ -1,0 +1,572 @@
+{
+ "seed": 518,
+ "at": "2026-11-24T19:34:22.386Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0518L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그 여행 가방을 들고 갈 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 할 수 있겠지만 나는 할 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 밤에 거기에 안전하게 도착할 수 없었을 거야",
+     "ok": false,
+     "why": "This is 'fyswn i ddim wedi medru' (wouldn't have been able), a different construction. The LEGO 'fyswn i ddim yn medru' does not appear, so the row doesn't practise it."
+    },
+    {
+     "n": 4,
+     "ko": "그들은 알아낼 수 있겠지만 나는 할 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 혼자서 그 지역에서 살 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 심지어 그게 어젯밤이었더라도 도망칠 수 없었을 거야",
+     "ok": false,
+     "why": "This uses 'fyswn i ddim wedi medru', not the LEGO 'fyswn i ddim yn medru', so the LEGO is never practised."
+    },
+    {
+     "n": 7,
+     "ko": "나는 다시는 아무도 신뢰할 수 없을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 혼자서 그것들을 셀 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0518L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나 자신이 정확히 같은 것을 겪는 걸 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그가 ~ㄹ 거라고 상상하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 상상하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 무언가를 상상할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 다른 것을 상상할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그가 멀리 있을 거라고 상상하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 상상할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나 자신이 좋은 시간을 보내는 걸 상상하다",
+     "ok": false,
+     "why": "This course teaches 'yn cael' as 겪다 (experience a problem). 'cael amser da' means 'have a good time', a different sense, so the 겪다 gloss can't produce it."
+    },
+    {
+     "n": 9,
+     "ko": "나 자신이 그 기회를 얻는 걸 상상하다",
+     "ok": false,
+     "why": "'cael y cyfle' means 'get the chance', not the 겪다 sense of 'yn cael' this course teaches."
+    },
+    {
+     "n": 10,
+     "ko": "이 지역에 있는 나 자신을 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 나 자신이 ~하는 걸 상상하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 이 지역에 있는 나 자신을 상상하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나 자신이 ~하는 걸 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 나 자신이 ~하는 걸 상상할 수 없을 것 같아",
+     "ok": false,
+     "why": "'fyddwn i ddim yn medru' means the same as this seed's 'fyswn i ddim yn medru' (나는 ~ㄹ 수 없을 텐데). No natural Korean tells the two apart, so this is a ZUT trap."
+    },
+    {
+     "n": 15,
+     "ko": "유감이지만 너는 같은 ~을 상상할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "유감이지만 너는 ~을 상상할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "유감이지만 너는 같은 문제를 상상할 거야",
+     "ok": false,
+     "why": "Missing soft mutation. 'problem' is feminine, so it must be 'yr un broblem', as in the seed itself."
+    },
+    {
+     "n": 18,
+     "ko": "우리는 가족 전체를 상상할 필요가 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "상상하는 대신에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "나 자신이 ~을 겪는 걸 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "모든 것을 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 22,
+     "ko": "새로운 삶을 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 23,
+     "ko": "그들은 상상할 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 24,
+     "ko": "내가 상상할 수만 있다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 25,
+     "ko": "다음번에 일들을 다르게 상상하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 26,
+     "ko": "그녀는 새로운 삶을 상상하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 27,
+     "ko": "그들은 완벽한 집을 상상하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 28,
+     "ko": "내가 모든 것을 상상할 수만 있다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 29,
+     "ko": "나는 지금 일들을 다르게 상상하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 30,
+     "ko": "우리는 내 여동생이 완벽한 집을 갖는 걸 상상할 수는 없을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0518L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 혼자서 느긋하게 쉬다",
+     "ok": false,
+     "why": "'fy hun' appears only inside the chunk the learner already holds, 'ar fy mhen fy hun' (혼자서). The Korean never says 나 자신, so the LEGO is not practised in its reflexive sense."
+    },
+    {
+     "n": 2,
+     "ko": "준비 사항들을 혼자서",
+     "ok": false,
+     "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
+    },
+    {
+     "n": 3,
+     "ko": "나 자신을 준비시키는",
+     "ok": false,
+     "why": "'yn cael' here means 'get', not the 겪다 sense this course teaches. 'yn barod' is held as 이미 (already), not 'ready', so no Korean prompt fits."
+    },
+    {
+     "n": 4,
+     "ko": "나 자신을 다치게 하는 대신에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 준비 사항들을 혼자서 처리하면 좋겠어",
+     "ok": false,
+     "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 절대 혼자 있지 않을 거라고 확신해",
+     "ok": false,
+     "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워 하지만 나는 준비 사항들을 혼자서 처리하면 좋겠어",
+     "ok": false,
+     "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
+    },
+    {
+     "n": 8,
+     "ko": "나는 모든 것을 혼자서 이루고 싶지 않아",
+     "ok": false,
+     "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
+    },
+    {
+     "n": 9,
+     "ko": "정말 고마워 하지만 나는 혼자서 살고 싶지 않아",
+     "ok": false,
+     "why": "'fy hun' appears only inside the held chunk 'ar fy mhen fy hun' (혼자서), so 나 자신 is not practised."
+    }
+   ],
+   "topups": []
+  },
+  "S0518L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "정확히 같은 것을 겪는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내 돈을 돌려받다",
+     "ok": false,
+     "why": "This is 'cael' meaning 'get back', not 'yn cael' in the 겪다 sense. Wrong sense for this LEGO."
+    },
+    {
+     "n": 3,
+     "ko": "나는 올해 힘들어",
+     "ok": false,
+     "why": "'dw i'n cael hi'n anodd' is a fixed idiom meaning 'find it hard', not 겪다."
+    },
+    {
+     "n": 4,
+     "ko": "나는 그 식당에 남겨지고 싶어",
+     "ok": false,
+     "why": "'cael fy ngadael' is a passive ('get left'), not 'yn cael' in the 겪다 sense."
+    },
+    {
+     "n": 5,
+     "ko": "좋은 시간을 보내는",
+     "ok": false,
+     "why": "'having a good time' is not the 겪다 sense this course teaches for 'yn cael'."
+    },
+    {
+     "n": 6,
+     "ko": "더 적은 시간을 받는",
+     "ok": false,
+     "why": "'getting less time' is not the 겪다 sense this course teaches for 'yn cael'."
+    },
+    {
+     "n": 7,
+     "ko": "휴식을 취하고 있는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "내 어머니가 그 식사를 하는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 지금 힘들어",
+     "ok": false,
+     "why": "'dw i'n cael hi'n anodd' is the idiom 'find it hard', not 겪다."
+    },
+    {
+     "n": 10,
+     "ko": "나는 자라는 게 힘들어",
+     "ok": false,
+     "why": "'cael hi'n anodd' is the idiom 'find it hard', not 겪다. Also, 'tyfu i fyny' is glossed 기르다 (raise), the wrong sense for 'grow up'."
+    },
+    {
+     "n": 11,
+     "ko": "그들은 왜 아직도 휴식을 취하고 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 그녀가 휴식을 취하는 걸 본 적이 한 번도 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 끝내고 싶지만 그들은 아직도 휴식을 취하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 끝내고 싶지만 힘들어",
+     "ok": false,
+     "why": "'dw i'n cael hi'n anodd' is the idiom 'find it hard', not 겪다."
+    }
+   ],
+   "topups": []
+  },
+  "S0518L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "정확히 같은 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 정확히 같은 것이 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 정확히 같은 것을 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정확히 동시에",
+     "ok": false,
+     "why": "'ar yn union yr un pryd' puts the adverb inside the prepositional phrase, which is unnatural. Natural Welsh is 'yn union ar yr un pryd'."
+    },
+    {
+     "n": 5,
+     "ko": "정확히 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정확히 네가 말한 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 정확히 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 말한 것을 정확히 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "맞아 하지만 그게 정확히 내 말의 뜻은 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "문제없어 나는 내 말이 무슨 뜻인지 정확히 설명할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 그가 말한 것을 정확히 듣고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "왜 나는 네가 말한 것을 정확히 기억할 수 없어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0518L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "같은 시간",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내 아버지는 네 형제와 같은 것을 하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 아버지와 같은 것을 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어떤 사람들은 같은 것을 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어떤 사람들은 내 어머니와 같은 것을 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내가 그걸 같은 것 위로 던지게 해 줘",
+     "ok": false,
+     "why": "Grammatical but meaningless ('throw it over the same thing'); not a sentence anyone would say."
+    },
+    {
+     "n": 7,
+     "ko": "가장 큰 것이 다리 반대편에 있어?",
+     "ok": false,
+     "why": "Here 'yr un' means 'the one', not 같은 (same). Wrong sense."
+    },
+    {
+     "n": 8,
+     "ko": "동시에 보고 쓰다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "반대편에 서 있는 사람",
+     "ok": false,
+     "why": "Here 'yr un' means 'the one (who)', not 같은. Wrong sense."
+    },
+    {
+     "n": 10,
+     "ko": "그게 가장 흥미로운 거야",
+     "ok": false,
+     "why": "Here 'yr un' means 'the one', not 같은. Wrong sense."
+    },
+    {
+     "n": 11,
+     "ko": "가장 흥미로운 것과 함께",
+     "ok": false,
+     "why": "Here 'yr un' means 'the one', not 같은. Wrong sense."
+    },
+    {
+     "n": 12,
+     "ko": "그게 가장 흥미로운 거라고 너는 생각해?",
+     "ok": false,
+     "why": "Here 'yr un' means 'the one', not 같은. Wrong sense."
+    },
+    {
+     "n": 13,
+     "ko": "그녀는 가장 흥미로운 것 때문에 너무 바빴어",
+     "ok": false,
+     "why": "Here 'yr un' means 'the one', not 같은. Wrong sense."
+    },
+    {
+     "n": 14,
+     "ko": "정말 고마워 하지만 나는 동시에 너를 도울 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 모든 것을 동시에 바꿀 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "그녀는 동시에 느긋하게 쉬고 텔레비전을 조금 보고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

@@ -1,0 +1,228 @@
+{
+ "seed": 365,
+ "at": "2026-11-24T19:03:49.378Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0365L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀가 뭘 원하는지 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그 나이 든 여자가 뭘 원했는지 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그가 뭘 하려고 노력하고 있는지 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그가 말한 것을 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 말한 것을 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 말한 것을 아주 잘 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 너를 도우러 가고 있었어, 하지만 나는 네가 말한 것을 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 나는 제때 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 단어 하나도 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "안타깝게도 나는 네가 말한 것을 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 그녀가 무엇을 말하고 있었는지 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 그가 조금 전에 말한 것을 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "몇 살? 나는 듣지 못했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0365L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀가 그들에게 말한 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그녀가 그들에게 말한 것에 동의해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 앉을 거야, 왜냐하면 그녀가 그가 말한 것을 알아내러 갔거든",
+     "ok": false,
+     "why": "The Welsh has be’ ddudodd o, not be’ ddudodd hi, so the phrase never uses this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0365L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0365L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0365L02B03",
+     "keep": false,
+     "why": "Only 2 BUILD needed; B02 and B01 are tighter extensions."
+    },
+    {
+     "id": "cym_for_kor:S0365L02B04",
+     "keep": false,
+     "why": "Only 2 BUILD needed."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U03",
+     "keep": true,
+     "ko": "너는 그녀가 말한 것을 기억해?"
+    },
+    {
+     "id": "cym_for_kor:S0365L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0365L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0365L02U02",
+     "keep": false,
+     "why": "Only 3 USE needed."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U01",
+     "keep": false,
+     "why": "Only 3 USE needed."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U06",
+     "keep": false,
+     "why": "Only 3 USE needed."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U05",
+     "keep": false,
+     "why": "Only 3 USE needed; the Korean for teimlo fel is clumsy."
+    },
+    {
+     "id": "cym_for_kor:S0365L02U08",
+     "keep": false,
+     "why": "Only 3 USE needed; the meaning is odd."
+    }
+   ]
+  },
+  "S0365L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "어젯밤 그에게",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 그에게 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네 친구는 그에게 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그에게 ~라고 말한 누군가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네 친구는 그에게 내가 그것들을 못 봤다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그에게 내가 그것들을 못 봤다고 말한 누군가를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "아니 안 그랬어, 그녀는 일주일 전에 그에게 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그에게 내가 시간이 조금 더 필요하다고 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 그에게 우리가 시간이 조금 더 필요하다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

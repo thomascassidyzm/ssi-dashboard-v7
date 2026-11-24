@@ -1,0 +1,244 @@
+{
+ "seed": 230,
+ "at": "2026-11-24T18:43:37.101Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0230L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 ~하는 사람들을 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 내가 아는 사람들이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 젊은 여자를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 좋은 일이라고 말한 누군가를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그 영화를 좋아하는 누군가를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 젊은 여자를 아는 누군가를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 토요일 밤에 일하는 젊은 여자를 알아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0230L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0230L01U01",
+     "keep": false,
+     "why": "Not needed: it is nearly the same as o1"
+    },
+    {
+     "id": "cym_for_kor:S0230L01U02",
+     "keep": false,
+     "why": "The Korean '직장에 누군가를 알아' is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0230L01U03",
+     "keep": false,
+     "why": "Not needed: only one slot"
+    },
+    {
+     "id": "cym_for_kor:S0230L01U04",
+     "keep": false,
+     "why": "Not needed: only one slot"
+    },
+    {
+     "id": "cym_for_kor:S0230L01U05",
+     "keep": false,
+     "why": "The Korean '알고 지내지 않아' is awkward and the line is too long"
+    }
+   ]
+  },
+  "S0230L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "젊은 남자에 대해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 그 젊은 남자에 대해 기분이 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네 엄마는 그 젊은 남자를 좋아하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 어젯밤 흥미로운 젊은 남자를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 행복해, 왜냐하면 여기가 그 젊은 남자가 바꾸고 싶어했던 곳이었으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 어젯밤 그 젊은 남자를 만났어, 왜냐하면 그는 내가 정말 고맙다고 말하기를 원했거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 왜 그 젊은 남자를 돌보고 싶어했어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0230L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0230L02U01",
+     "keep": false,
+     "why": "'봤어' could be weles i or wnes i weld, so there are two possible answers"
+    },
+    {
+     "id": "cym_for_kor:S0230L02U02",
+     "keep": false,
+     "why": "Not needed: only one slot"
+    },
+    {
+     "id": "cym_for_kor:S0230L02U03",
+     "keep": false,
+     "why": "The Welsh has no question mark, and 봤어 could be the perfect or the past tense"
+    },
+    {
+     "id": "cym_for_kor:S0230L02U04",
+     "keep": false,
+     "why": "Not needed: only one slot"
+    },
+    {
+     "id": "cym_for_kor:S0230L02U05",
+     "keep": false,
+     "why": "Not needed: only one slot"
+    },
+    {
+     "id": "cym_for_kor:S0230L02U07",
+     "keep": false,
+     "why": "'보지 않았어' could be wnes i ddim gweld or weles i ddim, so there are two possible answers"
+    }
+   ]
+  },
+  "S0230L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너를 돕고 싶어하는 그 젊은 남자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "~하고 싶어하는 젊은 남자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "더 이야기하고 싶어하는 남자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "무언가를 알고 싶어하는 젊은 남자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "다른 것을 말하고 싶어하는 그 남자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 저녁 그것을 보고 싶어하는 누군가를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "돌아오고 싶어하는 그 어린 개",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "웨일스어를 배우고 싶어하는 젊은 남자에 대한 영화",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 그 영화를 보고 싶어하는 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 오늘 저녁 그 영화를 보고 싶어하는 친구가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 내일 아침 너를 돕고 싶어하는 친구가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 이 책을 읽고 싶어하는 친구가 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

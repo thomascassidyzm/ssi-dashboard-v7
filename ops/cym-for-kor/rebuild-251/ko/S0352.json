@@ -1,0 +1,193 @@
+{
+ "seed": 352,
+ "at": "2026-11-24T19:01:59.677Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0352L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "심지어 그녀의 이름이 뭔지",
+     "ok": true,
+     "why": "Natural fragment, as in 'dw i ddim yn gwybod beth ydy ei henw hi hyd yn oed'; hyd yn oed means 'even' here."
+    },
+    {
+     "n": 2,
+     "ko": "심지어 그녀의 이름이 뭔지 알다",
+     "ok": true,
+     "why": "Natural fragment where the verb-noun (infinitive) gwybod takes a trailing hyd yn oed; sense 'even'."
+    },
+    {
+     "n": 3,
+     "ko": "심지어 내가 대답하기 전에",
+     "ok": true,
+     "why": "Natural; 'even before I answer'."
+    },
+    {
+     "n": 4,
+     "ko": "하지만 심지어 그가 원한다고 해도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "심지어 네가 지금 내 커피를 만들지 않아도",
+     "ok": true,
+     "why": "Colloquial and natural; hyd yn oed os keeps the 'even if' sense."
+    },
+    {
+     "n": 6,
+     "ko": "나는 심지어 그가 원한다고 해도 다른 나라로 이사하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 심지어 그가 원한다고 해도 그가 회사를 팔지 않을 거라고 믿어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 심지어 그가 원한다고 해도 회사를 팔지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "맞아, 하지만 심지어 그가 원한다고 해도 나는 그가 차를 살 여유가 될 수 없을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 심지어 그가 원한다고 해도 그가 새로운 삶을 세울 수 없을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0352L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 심지어 그가 원한다고 해도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "심지어 그가 회사를 팔기를 원한다고 해도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "심지어 그가 이사하기를 원한다고 해도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 심지어 그가 원한다고 해도 그가 다른 나라로 이사할 수 없을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0352L02U05",
+     "keep": true,
+     "ko": "나는 그가 원한다고 해도 그가 오늘 저녁 나갈 수 없을 거라고 확신해",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L02U01",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L02U03",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L02U02",
+     "keep": false,
+     "why": "The tenses clash: present 'fedra i ddim' after 'tasai fo isio' reads as unnatural Welsh."
+    },
+    {
+     "id": "cym_for_kor:S0352L02U04",
+     "keep": false,
+     "why": "The tenses clash: present 'fod o'n medru' after 'tasai fo isio'. It should be 'y basai fo'n medru'."
+    },
+    {
+     "id": "cym_for_kor:S0352L02U06",
+     "keep": false,
+     "why": "The tenses clash: future 'fydda i' after 'tasai fo isio'. It should be 'fyddwn i'."
+    }
+   ]
+  },
+  "S0352L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0352L03B01",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03B04",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03B02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03B03",
+     "keep": false,
+     "why": "Not needed: the 3 BUILD slots are already filled with stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0352L03U01",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03U03",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03U02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03U07",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03U06",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0352L03U04",
+     "keep": false,
+     "why": "The Korean is a question (없을까) but the Welsh is a statement. Not needed: the 5 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0352L03U05",
+     "keep": false,
+     "why": "The Korean drops medru ('can') with 없을 테니까. Not needed: the 5 USE slots are already filled."
+    }
+   ]
+  }
+ }
+}

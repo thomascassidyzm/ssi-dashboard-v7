@@ -1,0 +1,208 @@
+{
+ "seed": 316,
+ "at": "2026-11-24T18:56:51.096Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0316L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀의 형제를 데려오고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 그녀의 형제를 데려오고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 그녀의 형제를 데려오다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그녀의 형제를 데려오고 싶었어, 하지만 그녀는 너무 바빴어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "맞아, 그녀는 오늘 저녁 그녀의 형제를 데려오고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그가 내일 밤 그녀의 형제를 데려올 수 있다면 그건 훌륭할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 내일 밤 의사에게 그녀의 형제를 데려올 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0316L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0316L03U07",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0316L03U01",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0316L03U05",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0316L03U03",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0316L03U04",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0316L03U06",
+     "keep": false,
+     "why": "only 1 USE needed"
+    }
+   ]
+  },
+  "S0316L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 월요일에 같은 것을 하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 월요일에 그걸 하지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "월요일 오후에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "월요일 아침에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 월요일에 그걸 그에게 주지 않을 것 같아",
+     "ok": true,
+     "why": "rhoi fo iddo fo here means give it to him; the gloss 놓다 (put) would mislead, so this uses 주다"
+    },
+    {
+     "n": 6,
+     "ko": "내가 너라면 나는 월요일에 그걸 그에게 주지 않을 것 같아",
+     "ok": true,
+     "why": "rhoi = give here; uses 주다, not the gloss 놓다"
+    },
+    {
+     "n": 7,
+     "ko": "너는 네가 월요일에 그걸 그에게 주고 싶다고 말했어",
+     "ok": true,
+     "why": "rhoi = give here; uses 주다, not the gloss 놓다"
+    },
+    {
+     "n": 8,
+     "ko": "월요일에 너와 무언가를 가져오다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "월요일까지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 월요일에 무엇을 할 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "월요일에 그녀의 형제를 데려오다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 월요일에 만날 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 월요일에 바빠",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "월요일에 나는 중요한 회의가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "너는 내가 월요일에 너와 가고 싶어한다는 걸 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "월요일에 그걸 그에게 주다",
+     "ok": true,
+     "why": "rhoi = give here; uses 주다, not the gloss 놓다"
+    },
+    {
+     "n": 17,
+     "ko": "너 월요일에 그걸 그에게 주고 싶어?",
+     "ok": true,
+     "why": "rhoi = give here; uses 주다, not the gloss 놓다"
+    },
+    {
+     "n": 18,
+     "ko": "너 월요일에 우리와 함께 올래?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "월요일에 그녀는 그녀의 형제를 데려올 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

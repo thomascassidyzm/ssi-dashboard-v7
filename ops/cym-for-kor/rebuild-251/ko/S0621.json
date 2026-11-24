@@ -1,0 +1,198 @@
+{
+ "seed": 621,
+ "at": "2026-11-24T19:50:30.684Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0621L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "당시에 나는 감히 그러지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 나는 감히 멈추지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 감히 올라가지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "하지만 나는 감히 그러지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네 도움 없이 나는 감히 그러지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 감히 그 창문을 깨지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 알았더라면 나는 감히 그러지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 감히 두 여자아이 사이에 앉지 못했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "당시에 나는 감히 그 여행 가방을 들고 가지 못했을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0621L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 우리와 함께 올 수 있다면 나는 그녀에게 말할 텐데",
+     "ok": true,
+     "why": "Conditional 'byddwn i'n deud wrthi hi' with ''set ti'n medru' is grammatical and uses deud wrthi hi in its taught sense"
+    },
+    {
+     "n": 2,
+     "ko": "네가 도울 수 있다면 나는 그녀에게 말할 텐데",
+     "ok": true,
+     "why": "Natural conditional; deud wrthi hi used in the taught sense"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0621L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L03B03",
+     "keep": false,
+     "why": "BUILD quota (1) filled by B02"
+    },
+    {
+     "id": "cym_for_kor:S0621L03B01",
+     "keep": false,
+     "why": "BUILD quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0621L03B04",
+     "keep": false,
+     "why": "BUILD quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0621L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L03U04",
+     "keep": true,
+     "ko": "그는 그녀에게 그게 실수였다고 말하고 싶어했어"
+    },
+    {
+     "id": "cym_for_kor:S0621L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L03U03",
+     "keep": false,
+     "why": "USE quota filled; too close to U02"
+    },
+    {
+     "id": "cym_for_kor:S0621L03U05",
+     "keep": false,
+     "why": "USE quota filled"
+    }
+   ]
+  },
+  "S0621L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그게 깨졌다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 그게 어젯밤 깨졌다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 그게 깨졌다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "유감이지만 그게 당시에 깨졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그게 깨졌다고 확신하지만 그들은 말하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0621L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L04U06",
+     "keep": true,
+     "ko": "네가 나에게 그게 깨졌다고 말했더라면 나는 기다렸을 거야"
+    },
+    {
+     "id": "cym_for_kor:S0621L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0621L04U04",
+     "keep": false,
+     "why": "USE quota filled; near-duplicate of BUILD o1"
+    },
+    {
+     "id": "cym_for_kor:S0621L04U02",
+     "keep": false,
+     "why": "Duplicates original o2 minus neithiwr"
+    },
+    {
+     "id": "cym_for_kor:S0621L04U05",
+     "keep": false,
+     "why": "Near-duplicate of original o3"
+    }
+   ]
+  }
+ }
+}

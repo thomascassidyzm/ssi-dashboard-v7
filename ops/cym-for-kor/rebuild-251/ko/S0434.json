@@ -1,0 +1,171 @@
+{
+ "seed": 434,
+ "at": "2026-11-24T19:14:11.937Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0434L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 머리를 줄일 수 있어?",
+     "ok": false,
+     "why": "Here torri gwallt means cutting hair. The LEGO is taught as 줄이다 (reduce), so the Korean comes out unnatural and the sense is wrong."
+    },
+    {
+     "n": 2,
+     "ko": "그들은 절반을 줄일 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그들은 모든 것을 줄일 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그들이 ~를 줄일 수 있을지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 오늘 저녁 머리를 줄일 수 있어?",
+     "ok": false,
+     "why": "Here torri gwallt means cutting hair, not reducing, so 줄이다 is the wrong sense."
+    },
+    {
+     "n": 6,
+     "ko": "그들은 하루 만에 모든 것을 줄일 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "고마워, 그들은 절반을 줄일 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 정원의 일부를 줄일 수 있어?",
+     "ok": false,
+     "why": "Here torri means physically cutting or mowing part of the garden, not 줄이다, so the LEGO is used in the wrong sense."
+    },
+    {
+     "n": 9,
+     "ko": "너는 그들이 토마토를 줄일 수 있다고 생각해?",
+     "ok": false,
+     "why": "Here torri tomatos means slicing tomatoes. 줄이다 is the wrong sense and the Korean is unnatural."
+    }
+   ]
+  },
+  "S0434L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "학생 수를 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "올해 학생 수",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 학생 수를 줄일 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 올해 학생 수를 줄일 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "학생 수 부탁해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 학생 수를 바꿀 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 학생 수를 알아낼 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 내년에 학생 수를 바꾸고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0434L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0434L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03B01",
+     "keep": false,
+     "why": "In Welsh, 'finding the money they take' makes little sense. The Korean 찾아내다 belongs to ffeindio allan, while this line has bare ffeindio, so the prompt is ambiguous."
+    },
+    {
+     "id": "cym_for_kor:S0434L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03U04",
+     "keep": true,
+     "ko": "너 그들이 받는 돈이 얼마나 많은지 나한테 말해 줄 수 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0434L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0434L03U06",
+     "keep": false,
+     "why": "Fine, but not needed: all 5 USE slots are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0434L03U07",
+     "keep": false,
+     "why": "Fine, but not needed: all 5 USE slots are already filled by stronger candidates."
+    }
+   ]
+  }
+ }
+}

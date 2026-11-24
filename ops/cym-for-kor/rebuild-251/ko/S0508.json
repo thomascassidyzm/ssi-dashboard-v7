@@ -1,0 +1,215 @@
+{
+ "seed": 508,
+ "at": "2026-11-24T19:30:38.993Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0508L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "이사하는 것에 대해 걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그게 어떻게 들리는지에 대해 걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "무슨 일이 일어나는지에 대해 걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "달리는 것에 대해 걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "도시로 다시 이사하는 건 소용없어",
+     "ok": true,
+     "why": "Here yn ôl means 'back'. The gloss '~ 전에' is wrong for this phrase, so the Korean follows the source English."
+    },
+    {
+     "n": 7,
+     "ko": "이 지역에 사는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "풀을 먹는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "도시로 이사하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "네가 어떻게 이야기할지 걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "네가 어떻게 돈을 낼지 걱정하는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "텔레비전을 보는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "소란을 피우는 건 소용없어",
+     "ok": true,
+     "why": "Here codi twrw means 'make trouble'. The gloss 모금하다 does not fit, so the Korean follows the source English."
+    },
+    {
+     "n": 14,
+     "ko": "저기에 서 있는 건 소용없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "지금은 소용없어, 왜냐하면 우리는 떠나야 했거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "하지만 지금 소란을 피우는 건 소용없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0508L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0508L01U04",
+     "keep": false,
+     "why": "Only 1 USE top-up is needed; U02 is the better pick."
+    },
+    {
+     "id": "cym_for_kor:S0508L01U01",
+     "keep": false,
+     "why": "This uses the i ti + mutated verb construction, which is not part of this LEGO's pattern, and its Korean sits very close to o1."
+    },
+    {
+     "id": "cym_for_kor:S0508L01U03",
+     "keep": false,
+     "why": "Only 1 USE top-up is needed, and this one is long."
+    },
+    {
+     "id": "cym_for_kor:S0508L01U06",
+     "keep": false,
+     "why": "Only 1 USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0508L01U07",
+     "keep": false,
+     "why": "Only 1 USE top-up is needed."
+    }
+   ]
+  },
+  "S0508L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 어떻게 ~할지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 뭐 할 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 ~할 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 금요일 오후에 뭐 할 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 금요일에 뭐 할 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 다른 걸 받을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "네가 ~할 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 내일 그 책 읽을 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 토요일 오후에 그 책 읽을 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너 내일 그 영화 볼 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 네가 오늘 너 자신을 시험해 볼 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너 내일 그거 볼 거야?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

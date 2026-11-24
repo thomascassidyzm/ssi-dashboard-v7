@@ -1,0 +1,143 @@
+{
+ "seed": 310,
+ "at": "2026-11-24T18:55:45.566Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0310L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 오늘 저녁 자기 오빠를 데려올 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 앉을 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 쓸 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 ~을 의미할 수 있을 텐데",
+     "ok": false,
+     "why": "When the subject is a person and nothing follows, 'mi fyddai hi'n medru golygu' naturally reads as 'she could edit', not 'mean'. The 'mean' sense needs an object, so in this basket the line is ambiguous and unnatural."
+    },
+    {
+     "n": 5,
+     "ko": "물론 그녀는 모든 것을 설명할 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "맞아, 그녀는 그럴 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 내 어머니에게 보내는 편지를 쓸 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 오늘 오후에 도움을 요청할 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 한 시간도 안 돼서 답을 찾아낼 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0310L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 그 이야기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 그 이야기에 대해 어떻게 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 오늘 저녁 그 이야기를 끝낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 그 이야기를 웨일스어로 보여주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 나는 그 이야기를 기대하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 그 이야기를 끊지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 오늘 저녁 어려운 이야기를 끝내고 싶어했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0310L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0310L03U02",
+     "keep": false,
+     "why": "Only one USE top-up is needed; U01 is a better fit."
+    },
+    {
+     "id": "cym_for_kor:S0310L03U03",
+     "keep": false,
+     "why": "Only one USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0310L03U04",
+     "keep": false,
+     "why": "Only one USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0310L03U05",
+     "keep": false,
+     "why": "Only one USE top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0310L03U06",
+     "keep": false,
+     "why": "Only one USE top-up is needed."
+    }
+   ]
+  }
+ }
+}

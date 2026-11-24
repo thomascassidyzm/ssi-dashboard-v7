@@ -1,0 +1,227 @@
+{
+ "seed": 182,
+ "at": "2026-11-24T18:36:19.151Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0182L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 ~ 봤는지 나는 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 네 차 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 내 어머니 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 펍에서 그 사람들 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네가 웨일스어로 이 단어를 봤는지 나는 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "하지만 너 오늘 그의 편지 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "네가 펍에서 누군가를 봤는지 내가 물어봐도 될까?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0182L01U03",
+     "keep": true,
+     "why": "new frame (dw i ddim yn gwybod os), natural, unambiguous"
+    },
+    {
+     "id": "cym_for_kor:S0182L01U06",
+     "keep": false,
+     "why": "good but only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0182L01U01",
+     "keep": false,
+     "why": "only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0182L01U02",
+     "keep": false,
+     "why": "near-duplicate of original o5 frame"
+    },
+    {
+     "id": "cym_for_kor:S0182L01U04",
+     "keep": false,
+     "why": "near-duplicate of original o6"
+    },
+    {
+     "id": "cym_for_kor:S0182L01U05",
+     "keep": false,
+     "why": "only 1 needed; 어린 개 reads oddly"
+    },
+    {
+     "id": "cym_for_kor:S0182L01U07",
+     "keep": false,
+     "why": "near-duplicate of original o5"
+    }
+   ]
+  },
+  "S0182L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 내 열쇠가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내 열쇠를 찾을 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 내 열쇠",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 내일 오후에 내 열쇠를 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내 열쇠를 찾을 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 오늘 저녁 내 열쇠 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 하지만 나는 내 열쇠가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내 열쇠를 그녀의 가방에 넣고 싶었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0182L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 어디선가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 어디선가 책 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "어디선가 내 열쇠",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 어디선가 내 어머니",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 어디선가 내 어머니 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 오늘 오후에 어디선가 내 열쇠 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 하지만 너 오늘 저녁 어디선가 내 어머니 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 하지만 너 어디선가 내 열쇠 봤어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0182L03U02",
+     "keep": true,
+     "why": "idiomatic North Welsh (bo' fi wedi gweld chdi), clear Korean"
+    },
+    {
+     "id": "cym_for_kor:S0182L03U01",
+     "keep": false,
+     "why": "only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0182L03U04",
+     "keep": false,
+     "why": "only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0182L03U03",
+     "keep": false,
+     "why": "Korean 어디선가 한동안 ~면 좋겠어 is awkward"
+    },
+    {
+     "id": "cym_for_kor:S0182L03U05",
+     "keep": false,
+     "why": "long; 시간이 나지 않았어 for ches i ddim amser is loose"
+    },
+    {
+     "id": "cym_for_kor:S0182L03U06",
+     "keep": false,
+     "why": "찾다 collides with ffeindio, so chwilio am is not uniquely recoverable"
+    }
+   ]
+  }
+ }
+}

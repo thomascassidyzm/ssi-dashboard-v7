@@ -1,0 +1,117 @@
+{
+ "seed": 562,
+ "at": "2026-11-24T19:40:56.878Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0562L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0562L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0562L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0562L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0562L01B04",
+     "keep": false,
+     "why": "Sound, but three BUILD rows are already kept, which is all this LEGO needs"
+    },
+    {
+     "id": "cym_for_kor:S0562L01U01",
+     "keep": true,
+     "ko": "나는 피곤해, 그리고 나는 그냥 곧장 집에 가고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0562L01U04",
+     "keep": true,
+     "ko": "나는 그걸 원하지 않아, 나는 그냥 너를 돕고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0562L01U06",
+     "keep": true,
+     "ko": "나는 상관없어, 나는 그냥 진실을 알아내고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0562L01U02",
+     "keep": true,
+     "ko": "정말 늦었어, 하지만 나는 그냥 나가고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0562L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0562L01U03",
+     "keep": false,
+     "why": "Sound, but five USE rows are already kept; it also risks confusion because 찾아내다 is close to 알아내다 (ffeindio allan)"
+    }
+   ]
+  },
+  "S0562L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "거기에 안전하게 도착하는 게 더 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 오늘 저녁 거기에 안전하게 도착하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 거기에 안전하게 도착하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 저녁 거기에 안전하게 도착하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "목요일 전에 거기에 안전하게 도착하면 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "유감이지만 그들은 거기에 안전하게 도착하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 거기에 안전하게 도착하려고 자주 노력했어",
+     "ok": true,
+     "why": "Natural colloquial North Welsh: trio'n aml + verb-noun is fine, and cyrraedd yno'n ddiogel keeps the sense this course taught"
+    },
+    {
+     "n": 8,
+     "ko": "그들은 거기에 안전하게 도착하고 싶어해, 왜냐하면 점점 늦어지고 있거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "유감이지만 그녀는 오늘 저녁 거기에 안전하게 도착하지 않을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,276 @@
+{
+ "seed": 320,
+ "at": "2026-11-24T18:57:43.741Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0320L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 시간이 조금 더 필요해 왜냐하면 그게 아직 작동하지 않아",
+     "ok": false,
+     "why": "This line does not contain the LEGO 'dydy o ddim angen'. It uses 'dydy o ddim yn gweithio' and, separately, 'dw i angen', so it does not practise this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "그게 작동하지 않으면 우리는 그냥 바꿀 필요가 있어",
+     "ok": false,
+     "why": "This line does not contain the LEGO 'dydy o ddim angen'. Its only 'angen' is in 'dan ni jesd angen', so it does not practise this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0320L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01B03",
+     "keep": false,
+     "why": "Weaker than the others: '아니 그는 필요 없어' reads as a finished statement, not an open infinitive. It is not needed because three better BUILD rows are kept."
+    },
+    {
+     "id": "cym_for_kor:S0320L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L01U07",
+     "keep": false,
+     "why": "Good, but the 3 USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0320L01U05",
+     "keep": false,
+     "ko": "왜 그는 절반을 낼 필요가 없어?",
+     "why": "Fine once the question mark is added, but the 3 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0320L01U06",
+     "keep": false,
+     "why": "Good, but the 3 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0320L01U04",
+     "keep": false,
+     "why": "Good, but the 3 USE slots are already filled."
+    }
+   ]
+  },
+  "S0320L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 어디서 ~를 살 수 있어?",
+     "ok": true,
+     "why": "'brynu' is the soft mutation of 'prynu', used in the same sense. '~를' marks the open object and keeps '살' from being read as 살다 (to live)."
+    },
+    {
+     "n": 2,
+     "ko": "나는 ~를 살 수 있어",
+     "ok": true,
+     "why": "Same word, mutated. The open '~를' keeps the 'buy' meaning clear."
+    },
+    {
+     "n": 3,
+     "ko": "나는 그걸 살 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 어디서 무언가를 살 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그녀에게 그걸 사 달라고 부탁할 거야",
+     "ok": true,
+     "why": "Natural North Welsh. Here gofyn means asking someone to do something, so it is rendered as a request (사 달라고 부탁하다) rather than the question sense of the 묻다 gloss."
+    },
+    {
+     "n": 6,
+     "ko": "네가 나에게 다른 것을 사 주지 않으면",
+     "ok": true,
+     "why": "Natural Welsh. Same verb, same sense."
+    },
+    {
+     "n": 7,
+     "ko": "책을 사다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 ~를 살 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "네 차를 사다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그는 모든 것을 사려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 오늘 책을 살 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그녀는 오늘 저녁 책을 사고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "너는 왜 텔레비전을 사고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그는 텔레비전을 살 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "우리는 그냥 중요한 것을 살 필요가 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0320L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0320L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03B01",
+     "keep": false,
+     "why": "A fragment that is weaker than the full-sentence rows, and the 3 BUILD slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0320L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03U02",
+     "keep": true,
+     "ko": "너는 텔레비전이 하나 더 필요해?"
+    },
+    {
+     "id": "cym_for_kor:S0320L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0320L03U06",
+     "keep": false,
+     "why": "Good, but the 5 USE slots are already filled. It is also long, and its Korean clause order is reversed from the Welsh."
+    }
+   ]
+  },
+  "S0320L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "올해 나는 ~하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 올해 바빠",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "올해 텔레비전을 보다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "올해 다른 나라로 이사하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 올해 알아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워 하지만 나는 올해 바빠",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "올해 나는 다섯 경기를 모두 보기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 올해 더 참을성 있게 되려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural North Welsh, and 'eleni' is used in its normal sense. Here 'dod yn' means 'become', so the Korean uses 되다."
+    },
+    {
+     "n": 9,
+     "ko": "우리가 올해 다른 방을 쓰면 너 불편해?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

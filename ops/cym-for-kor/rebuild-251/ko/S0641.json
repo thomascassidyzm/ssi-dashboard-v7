@@ -1,0 +1,212 @@
+{
+ "seed": 641,
+ "at": "2026-11-24T19:53:36.967Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0641L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 아마 빨간 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그게 빨간 거라고 짐작해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 그게 빨간 거라고 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 빨간 거라고 믿기가 어려워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "누가 그게 빨간 거라고 말했는지 추측해 봐",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0641L02U02",
+     "keep": true,
+     "ko": "나는 그건 빨간 거라고 생각하지 않아",
+     "why": "ydy hwnnw takes its own gloss 그건, so 그게 (ydy o) cannot also produce it"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U03",
+     "keep": true,
+     "ko": "그녀는 그건 빨간 거라고 말했어",
+     "why": "Korean changed to the hwnnw gloss 그건"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U06",
+     "keep": true,
+     "ko": "나는 그건 빨간 거라고 들었어",
+     "why": "Korean changed to the hwnnw gloss 그건"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U01",
+     "keep": false,
+     "why": "the Korean matches o3, whose Welsh has ydy o, so one prompt gives two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U04",
+     "keep": false,
+     "why": "the Korean matches o2, whose Welsh has ydy o, so one prompt gives two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U05",
+     "keep": false,
+     "why": "not needed; quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U07",
+     "keep": false,
+     "why": "the Korean is 반말 but esgusodwch fi needs 해요"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U08",
+     "keep": false,
+     "why": "not needed; quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0641L02U09",
+     "keep": false,
+     "why": "not needed; quota filled"
+    }
+   ]
+  },
+  "S0641L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그 의자 위에 앉아 있다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그 의자 위에 있는 빨간 거",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "정원에 있는 그 의자 위에 있는 시안의 가방",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정원에 있는 그 의자 위에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그 의자 위에요 부탁해요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 저기에 있는 그 의자 위에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그 의자 위에 앉고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그 의자 위에 앉고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "저는 그 의자 위에 앉으면 좋겠어요 부탁해요",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0641L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "유일한 진짜 희망은 그들이 진지하지 않다는 거야",
+     "ok": false,
+     "why": "ydy o is not in this phrase: ydy is followed by nad, and the o belongs to o ddifri'"
+    },
+    {
+     "n": 2,
+     "ko": "저기에 있는 그건 진지해?",
+     "ok": false,
+     "why": "the phrase has ydy hwnnw, not ydy o; the o belongs to o ddifri'"
+    },
+    {
+     "n": 3,
+     "ko": "그 사람 진지해?",
+     "ok": false,
+     "why": "the phrase has ydy hwnnw, not ydy o; the o belongs to o ddifri'"
+    },
+    {
+     "n": 4,
+     "ko": "나는 그것들 중 하나를 원하지 않아 왜냐하면 그게 빨간 거거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0641L04U01",
+     "keep": true,
+     "ko": "너 그게 좋은 아이디어라고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0641L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0641L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0641L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0641L04U03",
+     "keep": false,
+     "why": "not needed; quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0641L04U06",
+     "keep": false,
+     "why": "guessing that it is a cup of coffee is an odd thing to say"
+    },
+    {
+     "id": "cym_for_kor:S0641L04U07",
+     "keep": false,
+     "why": "not needed; quota filled"
+    }
+   ]
+  }
+ }
+}

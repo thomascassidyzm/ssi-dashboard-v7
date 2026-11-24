@@ -1,0 +1,153 @@
+{
+ "seed": 313,
+ "at": "2026-11-24T18:56:11.736Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0313L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 알아낼 수 없을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그가 앉을 수 없을 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그가 오늘 저녁 너에게 전화할 수 없을 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그가 그 질문에 대답할 수 없을 거라고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그가 우리와 함께 올 수 없을 거라고 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 오늘 저녁 그 문제를 논의할 수 없을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 그가 내일 밤 다른 방을 쓸 수 없을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0313L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0313L02U01",
+     "keep": false,
+     "why": "Only 1 needed; also near-duplicate of o7"
+    },
+    {
+     "id": "cym_for_kor:S0313L02U02",
+     "keep": false,
+     "why": "Only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0313L02U03",
+     "keep": false,
+     "why": "Only 1 needed; 'couldn't speak Welsh better' reads oddly"
+    },
+    {
+     "id": "cym_for_kor:S0313L02U04",
+     "keep": false,
+     "why": "Only 1 needed; 생각해? could also be 'ti'n meddwl' instead of 'wyt ti'n meddwl', so two answers are possible"
+    },
+    {
+     "id": "cym_for_kor:S0313L02U05",
+     "keep": false,
+     "why": "Only 1 needed; same frame as o4"
+    },
+    {
+     "id": "cym_for_kor:S0313L02U07",
+     "keep": false,
+     "why": "Only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0313L02U08",
+     "keep": false,
+     "why": "Only 1 needed"
+    }
+   ]
+  },
+  "S0313L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 다섯 경기를 모두 보고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 내일 밤 다섯 경기를 모두 볼 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 다섯 경기를 모두 보다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리와 함께 다섯 경기를 모두 보다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 하루 만에 다섯 경기를 모두 보려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 다섯 경기를 모두 볼 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 왜 다섯 경기를 모두 보고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 다음 주에 다섯 경기를 모두 보기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그는 어젯밤 다섯 경기를 모두 볼 수 없었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

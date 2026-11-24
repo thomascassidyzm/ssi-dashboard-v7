@@ -1,0 +1,299 @@
+{
+ "seed": 567,
+ "at": "2026-11-24T19:41:59.040Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0567L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0567L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01B04",
+     "keep": false,
+     "why": "BUILD quota filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0567L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L01U06",
+     "keep": false,
+     "why": "USE quota filled; Korean is clumsy as a calque"
+    },
+    {
+     "id": "cym_for_kor:S0567L01U07",
+     "keep": false,
+     "why": "USE quota filled; near-duplicate of U02/U04"
+    }
+   ]
+  },
+  "S0567L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "아이들과 함께 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "새해 이후로 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정원에서 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "휴가 둘째 날 이후로 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 피곤하지만 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그동안 멋졌지만 점점 늦어지고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정말 늦었지만 아이들과 함께 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그가 무엇을 말하든 정원에서 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0567L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 막 더 많은 시간을 보내기 시작했었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너와 더 많은 시간을 보내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 오늘 더 많은 시간을 보낼 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 집에서 일하는 데 시간을 보내고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 더 적은 시간을 보내고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 일하는 데 더 적은 시간을 보내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그룹으로 만나는 데 더 많은 시간을 보내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 막 학교에서 더 적은 시간을 보내기 시작했었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 집에서 일하는 데 시간을 보내고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그 소년은 집에서 일하는 데 시간을 보내고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그들은 식당에서 더 적은 시간을 보내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0567L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "밖에서라면 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 밖에서 앉아 있고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "밤에 밖에서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 저녁 밖에서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "휴식을 위해 밖에서 멈추는 게 더 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 저녁 밖에서 앉아 있고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 밖에서 앉아 있고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 밖에서 앉아 있고 싶어하지 않았어 왜냐하면 점점 늦어지고 있으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 그게 밖에서 멋졌었다고 생각했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0567L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0567L05B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05B03",
+     "keep": false,
+     "why": "BUILD quota filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0567L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05U03",
+     "keep": true,
+     "ko": "너는 왜 아이들을 보면서 앉아 있고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0567L05U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0567L05U05",
+     "keep": false,
+     "why": "USE quota filled; overlong conditional-perfect prompt"
+    },
+    {
+     "id": "cym_for_kor:S0567L05U07",
+     "keep": false,
+     "why": "USE quota filled"
+    }
+   ]
+  }
+ }
+}

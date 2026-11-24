@@ -1,0 +1,210 @@
+{
+ "seed": 512,
+ "at": "2026-11-24T19:31:11.819Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0512L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 당장 문을 열린 채로 잡아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 문을 열린 채로 잡는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 어젯밤 문을 열린 채로 잡았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 오늘 저녁 문을 열린 채로 잡을 수 있을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그녀가 문을 열린 채로 잡는 게 좋겠다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀가 문을 열린 채로 잡는 게 좋겠어, 왜냐하면 나는 걱정돼",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0512L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0512L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0512L02U03",
+     "keep": false,
+     "why": "only 2 needed; U02 and U06 are better"
+    },
+    {
+     "id": "cym_for_kor:S0512L02U01",
+     "keep": false,
+     "why": "너에게 is a loose rendering of i ti (for you); not needed"
+    },
+    {
+     "id": "cym_for_kor:S0512L02U07",
+     "keep": false,
+     "why": "not needed; 나에게 is a loose rendering of i mi"
+    },
+    {
+     "id": "cym_for_kor:S0512L02U04",
+     "keep": false,
+     "why": "not needed"
+    },
+    {
+     "id": "cym_for_kor:S0512L02U05",
+     "keep": false,
+     "why": "not needed"
+    },
+    {
+     "id": "cym_for_kor:S0512L02U08",
+     "keep": false,
+     "why": "not needed"
+    }
+   ]
+  },
+  "S0512L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그가 열린 가게를 찾으려고 노력하고 있는 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들이 아직 아플 때",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들이 아직 진지할 때",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 노력하고 있는 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그가 노력하고 있는 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 아직 젊을 때 경제의 일부를 개발하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 아직 젊을 때 이탈리아에서 살고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들이 아직 젊을 때 아프리카로 여행할 이유가 많이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 아직 아플 때 올라갈 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그들은 아직 젊을 때 도망치고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0512L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 열쇠를 가져와",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그가 서 있는 동안 열쇠를 가져와",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 열쇠를 가져오는 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 내가 열쇠를 가져오는 동안 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그가 무엇을 말하든 나는 열쇠를 가져와",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 내가 열쇠를 가져오는 동안 저기에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 열쇠를 가져오는 동안 그는 저기에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 내가 열쇠를 가져오는 동안 가게를 찾으러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내가 열쇠를 가져오는 동안 그녀는 가게를 찾으러 갔어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

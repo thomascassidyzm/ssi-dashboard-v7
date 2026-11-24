@@ -1,0 +1,75 @@
+{
+ "seed": 652,
+ "at": "2026-11-24T19:54:16.192Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0652L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너희는 가기 전에 그걸 할 필요가 있어.",
+     "ok": true,
+     "why": "Natural colloquial North Welsh. It uses dach chi angen + verbnoun in the sense this LEGO teaches; the source English is a statement, so the Korean is a statement too."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0652L03B02",
+     "keep": true,
+     "ko": "너희 무엇이 필요해?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03B01",
+     "keep": true,
+     "ko": "너희 도움이 필요해?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03B03",
+     "keep": false,
+     "why": "BUILD needs only 2. Also, '가야 해' could equally prompt 'rhaid i chi fynd'."
+    },
+    {
+     "id": "cym_for_kor:S0652L03B04",
+     "keep": false,
+     "why": "BUILD needs only 2. B01 and B02 are the cleaner open-ended builds."
+    },
+    {
+     "id": "cym_for_kor:S0652L03U04",
+     "keep": true,
+     "ko": "너희 물 한 잔이 필요해?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03U01",
+     "keep": true,
+     "ko": "너희 얼마나 많이 필요해?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03U07",
+     "keep": true,
+     "ko": "너희 새 침대가 필요해?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03U06",
+     "keep": true,
+     "ko": "너희 그것에 대해 생각할 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03U02",
+     "keep": true,
+     "ko": "너희 어디로 갈 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0652L03U03",
+     "keep": false,
+     "why": "The '~해야 해' wording could also prompt 'rhaid i chi'. Five stronger USE rows were already kept."
+    },
+    {
+     "id": "cym_for_kor:S0652L03U05",
+     "keep": false,
+     "why": "'머물러야 해' clashes with 'rhaid'. It also glosses aros differently from the 기다리다 sense, so the learner could hesitate."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "seed": 493,
+ "at": "2026-11-24T19:25:38.882Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0493L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 다음에 무엇이 올지 절대 알지 않을 거야",
+     "ok": true,
+     "why": "Moved here from another seed. The Welsh is still natural: 'fydda i byth yn gwybod beth ddaw nesa’' correctly pairs byth with the future form fydda i, and it uses the LEGO in the same sense this course teaches."
+    },
+    {
+     "n": 2,
+     "ko": "다음에 무엇이 오든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내일 밤 다음에 무엇이 오든, 나는 알아내고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "다음에 무엇이 오든, 나는 괜찮을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0493L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0493L01B01",
+     "keep": false,
+     "why": "'그러면' could also be said as felly in Welsh, so the prompt allows two answers where only wedyn is meant."
+    },
+    {
+     "id": "cym_for_kor:S0493L01B02",
+     "keep": false,
+     "why": "Asking what comes next 'after the meal' is an odd, unnatural combination."
+    },
+    {
+     "id": "cym_for_kor:S0493L01B04",
+     "keep": false,
+     "why": "A bare 'to find out … now' fragment is unnatural, and the Korean dictionary form reads badly as a prompt."
+    },
+    {
+     "id": "cym_for_kor:S0493L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0493L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0493L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0493L01U06",
+     "keep": false,
+     "why": "It is a reasonable line, but the three USE top-ups are already filled with stronger ones. Also, the present-tense ddaw sits awkwardly with the past-tense oeddan."
+    },
+    {
+     "id": "cym_for_kor:S0493L01U04",
+     "keep": false,
+     "why": "'mae o i fod yn her' is unidiomatic here, and '원래 도전인 거야' is a strained Korean equivalent."
+    },
+    {
+     "id": "cym_for_kor:S0493L01U05",
+     "keep": false,
+     "why": "'Not finding out until the end of the second half' is a contrived meaning, and the Korean '끝까지' does not clearly match tan ddiwedd ('until the end')."
+    }
+   ]
+  }
+ }
+}

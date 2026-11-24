@@ -1,0 +1,121 @@
+{
+ "seed": 347,
+ "at": "2026-11-24T19:01:07.244Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0347L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 무슨 일이 일어나고 있었는지 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 우리가 무슨 일이 일어나고 있었는지 논의할 필요가 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 우리에게 그들이 무슨 일이 일어나고 있었는지 설명하고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 텔레비전에서 무슨 일이 일어나고 있었는지 시청했어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0347L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0347L03U05",
+     "keep": false,
+     "why": "Fine, but almost the same as the seed sentence, and four better rows are already kept"
+    },
+    {
+     "id": "cym_for_kor:S0347L03U06",
+     "keep": false,
+     "why": "Fine, but not needed: four rows are already kept"
+    },
+    {
+     "id": "cym_for_kor:S0347L03U02",
+     "keep": false,
+     "why": "The Korean 아무도 확실하지 않았어 sounds awkward, and four rows are already kept"
+    }
+   ]
+  },
+  "S0347L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 일주일 전에 시작했어?",
+     "ok": true,
+     "why": "Natural North Welsh, and wythnos yn ôl is used in the sense this course teaches"
+    },
+    {
+     "n": 2,
+     "ko": "나는 일주일 전에 다른 것을 배우고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 일주일 전에 무언가 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 다음 주에 돌아오고 싶어해",
+     "ok": false,
+     "why": "Does not contain wythnos yn ôl (it uses wythnos nesa'), so it does not practise this LEGO"
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 다음 주에 돌아올 필요가 있는지 확실하지 않아",
+     "ok": false,
+     "why": "Does not contain wythnos yn ôl (it uses wythnos nesa'), so it does not practise this LEGO"
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 나는 다음 주에 돌아올 필요가 있어",
+     "ok": false,
+     "why": "Does not contain wythnos yn ôl (it uses wythnos nesa'), so it does not practise this LEGO"
+    },
+    {
+     "n": 7,
+     "ko": "나는 다음 주에 식당에 돌아오기를 바라",
+     "ok": false,
+     "why": "Does not contain wythnos yn ôl (it uses wythnos nesa'), so it does not practise this LEGO"
+    },
+    {
+     "n": 8,
+     "ko": "나는 다음 주에 내 여동생을 돌보고 싶은지 확실하지 않아",
+     "ok": false,
+     "why": "Does not contain wythnos yn ôl (it uses wythnos nesa'), so it does not practise this LEGO"
+    }
+   ]
+  }
+ }
+}

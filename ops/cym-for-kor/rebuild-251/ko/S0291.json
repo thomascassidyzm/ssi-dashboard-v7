@@ -1,0 +1,64 @@
+{
+ "seed": 291,
+ "at": "2026-11-24T18:52:36.888Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0291L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그리고 그다음에 나는 ~ㄹ 수 있을 거야",
+     "ok": true,
+     "why": "In this course's North Welsh, 'ac wedyn mi fydda i'n medru' is natural and idiomatic. 'fydda' is just 'bydda' after soft mutation, and the LEGO keeps its sense of 'I'll be able to'. The open end is mirrored with ~."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0291L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0291L02B04",
+     "keep": true,
+     "ko": "나는 내가 여기에 머물 수 있게 될 거라고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0291L02B01",
+     "keep": false,
+     "why": "Surplus to the 2 BUILD needed. The bare dictionary form '~되다' with no ending is also weaker Korean than the embedded clauses in B03 and B04."
+    },
+    {
+     "id": "cym_for_kor:S0291L02B02",
+     "keep": false,
+     "why": "Surplus to the 2 BUILD needed, and it has the same bare dictionary-form Korean problem as B01."
+    },
+    {
+     "id": "cym_for_kor:S0291L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0291L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0291L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0291L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0291L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0291L02U04",
+     "keep": false,
+     "why": "Surplus to the 5 USE needed. It was the weakest of the six because the Korean '이야기하는 연습을 하다' for 'ymarfer siarad' rests on no gloss."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "seed": 606,
+ "at": "2026-11-24T19:48:22.792Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0606L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그때 고집하곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그때 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그때 나는 ~고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 그때 알았더라면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 그때 우리를 방문하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 그때 떠나야 했어, 왜냐하면 우리는 살 곳이 아무 데도 없었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 그때 알아낼 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그때 고집하곤 했어, 하지만 지금 나는 상관없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0606L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0606L02U04",
+     "keep": false,
+     "why": "Only one top-up is needed and U01 is shorter and cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0606L02U02",
+     "keep": false,
+     "why": "This repeats the clause already used in original o6."
+    },
+    {
+     "id": "cym_for_kor:S0606L02U03",
+     "keep": false,
+     "why": "Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0606L02U05",
+     "keep": false,
+     "why": "Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0606L02U06",
+     "keep": false,
+     "why": "Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0606L02U07",
+     "keep": false,
+     "why": "The Korean '나를 두고' is a poor match for 'gadael' (leave) here."
+    }
+   ]
+  }
+ }
+}

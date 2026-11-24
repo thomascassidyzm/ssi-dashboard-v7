@@ -1,0 +1,77 @@
+{
+ "seed": 177,
+ "at": "2026-11-24T18:35:18.346Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0177L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "물론 너는 그녀에게 물어봐도 돼",
+     "ok": true,
+     "why": "Gei di ofyn iddi hi means 'you may ask her'. It is natural North Welsh and uses the LEGO in its taught sense, asking her."
+    },
+    {
+     "n": 2,
+     "ko": "그건 문제가 아니야, 너는 네가 떠나기 전에 그녀에게 물어봐도 돼",
+     "ok": true,
+     "why": "This is natural, idiomatic Welsh, and ofyn iddi hi keeps the same sense of asking her."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0177L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0177L02B04",
+     "keep": true,
+     "ko": "너는 내가 그녀에게 물어보기를 원해?",
+     "why": "Fixed the Korean: it must read as a question, and the 너 pronoun is now marked with 는."
+    },
+    {
+     "id": "cym_for_kor:S0177L02B03",
+     "keep": false,
+     "why": "Valid, but B02 and B04 give a better spread for the 2 slots."
+    },
+    {
+     "id": "cym_for_kor:S0177L02B01",
+     "keep": false,
+     "why": "Valid fragment, but B02 and B04 are stronger and the role is already full."
+    },
+    {
+     "id": "cym_for_kor:S0177L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0177L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0177L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0177L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0177L02U03",
+     "keep": false,
+     "why": "The prompt has two possible answers: 물어보지 않을 거야 fits both 'dw i ddim yn mynd i ofyn' and 'wna i ddim gofyn'."
+    },
+    {
+     "id": "cym_for_kor:S0177L02U05",
+     "keep": false,
+     "why": "The prompt has two possible answers: '…물어볼 거야?' fits both 'wyt ti'n mynd i' and 'wnei di'. The Korean was also missing its question mark."
+    },
+    {
+     "id": "cym_for_kor:S0177L02U07",
+     "keep": false,
+     "why": "The Korean reverses the Welsh clause order, and 내 친구 could be either 'ffrind i mi' or 'fy ffrind'."
+    }
+   ]
+  }
+ }
+}

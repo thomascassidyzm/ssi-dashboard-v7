@@ -1,0 +1,261 @@
+{
+ "seed": 429,
+ "at": "2026-11-24T19:13:42.779Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0429L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 여러분을 도우면 좋겠어요",
+     "ok": false,
+     "why": "Wrong sense: here bydden is only the auxiliary inside the chunk 'bydden ni'n licio' (we'd like), not the answer 'yes, they/we would' that this LEGO teaches"
+    },
+    {
+     "n": 2,
+     "ko": "우리는 무엇이 일어나려고 했는지 설명하면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary in the 'bydden ni'n licio' chunk, not the answer 'yes, they would'"
+    },
+    {
+     "n": 3,
+     "ko": "우리는 도우면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary in the 'bydden ni'n licio' chunk, not the answer 'yes, they would'"
+    },
+    {
+     "n": 4,
+     "ko": "우리는 도시에서 새로운 삶을 세우면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary in the 'bydden ni'n licio' chunk, not the answer 'yes, they would'"
+    },
+    {
+     "n": 5,
+     "ko": "우리는 우리 아이들에게 더 참을성 있는 사람이 되면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary in the 'bydden ni'n licio' chunk, not the answer 'yes, they would'"
+    },
+    {
+     "n": 6,
+     "ko": "고마워 하지만 우리는 오늘 저녁 그녀에게 메시지를 보내면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary in the 'bydden ni'n licio' chunk, not the answer 'yes, they would'"
+    },
+    {
+     "n": 7,
+     "ko": "밥 먹으러 멈추면 좋을 거야 하지만 우리는 곧장 집에 가면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary in the 'bydden ni'n licio' chunk, not the answer 'yes, they would'"
+    },
+    {
+     "n": 8,
+     "ko": "우리는 자리를 예약할 텐데 그녀는 너무 바빴어",
+     "ok": false,
+     "why": "Wrong sense: bydden is the auxiliary 'we would', which can't come from the gloss '응 그럴 거야' (yes, it would)"
+    }
+   ]
+  },
+  "S0429L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0429L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02B02",
+     "keep": false,
+     "why": "Fine, but BUILD count already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0429L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02U01",
+     "keep": true,
+     "ko": "맞아 그건 화요일에 너에게 완벽할 거야"
+    },
+    {
+     "id": "cym_for_kor:S0429L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0429L02U04",
+     "keep": false,
+     "why": "The meaning doesn't hang together well (perfect because we need to book a table), and USE count already filled"
+    },
+    {
+     "id": "cym_for_kor:S0429L02U06",
+     "keep": false,
+     "why": "The meaning doesn't hang together well (perfect but they still fight), and USE count already filled"
+    }
+   ]
+  },
+  "S0429L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 화요일에 우리를 방문해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들한테 묻기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그들한테 물을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 그들이 그룹으로 만나는 데 시간을 덜 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 그들이 시간을 더 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 그들이 집에서 일하는 데 시간을 더 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 그들이 ~를 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 그들이 시간을 덜 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 모두 그들이 집에서 시간을 덜 보내게 하고 싶다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "우리는 그들이 네가 모든 것을 했다는 걸 확실히 하게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "우리는 그들이 네가 시작했다는 걸 확실히 하게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "우리는 그들이 우리가 오늘 저녁 끝내도록 확실히 하게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "우리는 그들이 우리가 제때 끝내도록 확실히 하게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너는 우리가 그들이 학교에서 시간을 더 보내게 하고 싶다는 거 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "우리는 그들한테 도움을 요청하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "우리는 그들이 다음 주에 집에서 시간을 더 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "우리는 그들이 집에서 시간을 더 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "우리는 그들이 집에서 시간을 덜 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "우리는 그들한테 무엇이 일어나려고 했는지 묻고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "우리는 그들한테 무슨 일이 일어나고 있었는지 묻고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "우리는 그들이 학교에서 시간을 더 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 22,
+     "ko": "우리는 그들이 주말을 집에서 일하며 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 23,
+     "ko": "우리는 그들이 일하는 데 시간을 덜 보내게 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 24,
+     "ko": "너는 내가 그들한테 묻는 게 좋겠다고 생각해?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "seed": 245,
+ "at": "2026-11-24T18:46:04.893Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0245L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 얼마나 많이 했는지에 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 얼마나 많이 했는지에 아주 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 이미 얼마나 많이 했는지에 아주 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 기꺼이 너와 갈게",
+     "ok": false,
+     "why": "Here hapus means 'happy to (go)' and efo belongs to efo chdi. The phrase never uses the LEGO 'hapus efo' in its taught sense, '~에 만족해'."
+    },
+    {
+     "n": 5,
+     "ko": "나는 그가 원하는 것에 만족해",
+     "ok": true,
+     "why": "Natural North Welsh, and hapus efo is used in the taught sense."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 배운 것에 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 한 것에 충분히 만족해",
+     "ok": true,
+     "why": "'dw i'n ddigon hapus efo' is idiomatic, and hapus efo keeps the '만족해' sense."
+    },
+    {
+     "n": 8,
+     "ko": "나는 지금 그 장소에 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 준비 사항들에 만족해, 하지만 나는 시간이 조금 더 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 기뻐, 왜냐하면 나는 지금 내 형제에게 동의하거든",
+     "ok": false,
+     "why": "Bare 'hapus' means happy/glad here and efo belongs to 'cytuno efo'. The phrase never uses the LEGO 'hapus efo', which means '~에 만족해'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0245L01U04",
+     "keep": true,
+     "ko": "나는 바꾸고 싶지 않아, 왜냐하면 나는 모든 것에 만족해"
+    },
+    {
+     "id": "cym_for_kor:S0245L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0245L01U05",
+     "keep": false,
+     "why": "A good row, but the two USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U01",
+     "keep": false,
+     "why": "Almost identical to o3 and the seed, and the slots are filled."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U02",
+     "keep": false,
+     "why": "Almost a copy of the seed sentence (only gwneud→dysgu), and the slots are filled."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U06",
+     "keep": false,
+     "why": "The slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0245L01U07",
+     "keep": false,
+     "why": "Opens with a bare 'ond', which is weaker as a standalone USE row, and the slots are filled."
+    }
+   ]
+  }
+ }
+}

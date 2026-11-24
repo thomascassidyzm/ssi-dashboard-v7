@@ -1,0 +1,180 @@
+{
+ "seed": 432,
+ "at": "2026-11-24T19:13:50.187Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0432L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0432L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L01B04",
+     "keep": false,
+     "why": "fine, but the three BUILD slots are already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0432L01U02",
+     "keep": true,
+     "ko": "그들은 아직 준비가 안 됐지만 머지않아 너를 도울 수 있을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0432L01U03",
+     "keep": true,
+     "ko": "그들은 불행하지만 서로 사랑할 수 있을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0432L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L01U06",
+     "keep": false,
+     "why": "fine, but the five USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0432L01U07",
+     "keep": false,
+     "why": "fine, but the five USE slots are already filled; U02 has the same shape"
+    }
+   ]
+  },
+  "S0432L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 우리가 ~ㄹ 수 없다는 뜻은 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 네가 누구를 뜻하는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 누구를 뜻하는지 물어봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 말이 무슨 뜻인지 정확히 설명하는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내 말이 무슨 뜻인지 설명하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내 말이 무슨 뜻인지 설명하려고 하던 중이었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 내 말이 무슨 뜻인지 설명해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내 말이 무슨 뜻인지 조금 더 천천히 설명할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 네가 누구를 뜻하는지 알아내고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0432L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 그들이 지루해한다고 생각하는 걸 원하지 않아",
+     "ok": false,
+     "why": "Natural Welsh, but it does not contain the LEGO 'bo’ nhw isio i ti': 'isio i ti' and 'bo’ nhw' are separate pieces in another construction, so it does not practise this LEGO"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0432L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03B02",
+     "keep": false,
+     "why": "fine, but the three BUILD slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0432L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0432L03U03",
+     "keep": false,
+     "why": "fine, but the four USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0432L03U04",
+     "keep": false,
+     "why": "fine, but the four USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0432L03U07",
+     "keep": false,
+     "why": "the opening 'ond' with no earlier clause is weaker than the kept candidates, and the USE slots are filled"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "seed": 179,
+ "at": "2026-11-24T18:35:45.350Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0179L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 토요일에 무엇을 할 거야?",
+     "ok": true,
+     "why": "Natural Welsh. The soft-mutated ddydd Sadwrn is used correctly as an adverbial, and be’ wnei di keeps the same future-question sense."
+    },
+    {
+     "n": 2,
+     "ko": "너 일요일에 무엇을 할 거야?",
+     "ok": true,
+     "why": "Natural Welsh. Without pnawn, 일요일에 cannot be confused with the seed's 일요일 오후에."
+    },
+    {
+     "n": 3,
+     "ko": "너 다음으로 무엇을 할 거야?",
+     "ok": true,
+     "why": "Natural Welsh. 다음으로 is used so the prompt is not confused with 그다음에, which this course uses for wedyn."
+    },
+    {
+     "n": 4,
+     "ko": "너 다음 일요일에 무엇을 할 거야?",
+     "ok": true,
+     "why": "Natural Welsh. ddydd Sul nesa’ is idiomatic."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0179L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0179L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0179L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0179L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0179L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0179L01U02",
+     "keep": false,
+     "why": "The Korean repeats 너 (네가 … 너), which sounds clumsy. The five slots are filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0179L01U06",
+     "keep": false,
+     "why": "알지 않아 is unnatural Korean (a native speaker says 몰라). The five slots are already filled."
+    }
+   ]
+  },
+  "S0179L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 한동안 느긋하게 쉬고 일요일 오후에 이 책을 읽을 거야",
+     "ok": true,
+     "why": "Natural Welsh, with bnawn dydd Sul used correctly as an adverbial."
+    },
+    {
+     "n": 2,
+     "ko": "너 일요일 오후에 무엇을 하고 싶어?",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 일요일 오후에 나와 웨일스어로 이야기하기를 원해",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 4,
+     "ko": "나는 일요일 오후에 많이 하지 않았어",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 5,
+     "ko": "너는 일요일 오후에 흥미로운 무언가를 하고 싶어",
+     "ok": true,
+     "why": "Natural Welsh. The statement form is mirrored in the Korean."
+    },
+    {
+     "n": 6,
+     "ko": "나는 일요일 오후에 집에 가면 좋겠어",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 일요일 오후에 돌아오고 싶어해",
+     "ok": true,
+     "why": "Natural Welsh."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0179L02U03",
+     "keep": true
+    }
+   ]
+  }
+ }
+}

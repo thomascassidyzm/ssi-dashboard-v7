@@ -1,0 +1,127 @@
+{
+ "seed": 375,
+ "at": "2026-11-24T19:05:17.317Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0375L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 웨일스어를 한다는 걸 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그들이 막 시작했다는 걸 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그들이 막 축구를 보기 시작했다는 걸 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "미안해, 하지만 나는 네가 웨일스어를 한다는 걸 몰랐어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0375L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0375L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0375L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0375L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0375L02U07",
+     "keep": false,
+     "why": "Sound, but not needed because the four USE slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0375L02U03",
+     "keep": false,
+     "why": "Long and awkward, and the four USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0375L02U02",
+     "keep": false,
+     "why": "'wrthaf fi' mixes a literary form with a colloquial one; spoken North Welsh says 'wrtha fi' or 'wrtha i'"
+    }
+   ]
+  },
+  "S0375L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀가 어젯밤에 무엇을 하고 있었는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 그녀가 무엇을 하고 있었는지 물었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀가 수요일에 무엇을 하고 있었는지 알아내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그녀가 무엇을 하고 있었는지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 그녀가 무엇을 하고 있었는지 알아낼 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 그녀가 어젯밤에 무엇을 하고 있었는지 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 그녀가 수요일에 무엇을 하고 있었는지 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "내가 그녀가 무엇을 말하고 있었는지 알았더라면 나는 그걸 했을 거야",
+     "ok": false,
+     "why": "The Welsh has 'be’ oedd hi’n deud', not 'be’ oedd hi’n gwneud', so this phrase does not contain this LEGO and does not practise it"
+    },
+    {
+     "n": 9,
+     "ko": "너는 그녀가 지난달에 무엇을 하고 있었는지 물었어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

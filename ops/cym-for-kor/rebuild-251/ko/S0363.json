@@ -1,0 +1,78 @@
+{
+ "seed": 363,
+ "at": "2026-11-24T19:03:11.850Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0363L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "많이 이야기하고 싶은 기분이다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리와 이야기하고 싶은 기분이다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 이야기하고 싶은 기분이었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어젯밤에는 아무도 이야기하고 싶은 기분이 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 조용했어, 왜냐하면 아무도 많이 이야기하고 싶은 기분이 아니었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "금요일 밤에 그녀는 많이 이야기하고 싶은 기분이었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0363L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0363L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0363L03U02",
+     "keep": false,
+     "why": "Only 2 USE top-ups are needed, and U01 and U05 give more variety."
+    },
+    {
+     "id": "cym_for_kor:S0363L03U03",
+     "keep": false,
+     "why": "Only 2 USE top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0363L03U04",
+     "keep": false,
+     "why": "Only 2 USE top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0363L03U06",
+     "keep": false,
+     "why": "Only 2 USE top-ups are needed."
+    }
+   ]
+  }
+ }
+}

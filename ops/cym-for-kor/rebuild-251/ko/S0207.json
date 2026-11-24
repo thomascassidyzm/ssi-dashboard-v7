@@ -1,0 +1,111 @@
+{
+ "seed": 207,
+ "at": "2026-11-24T18:39:53.601Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0207L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 아주 잘 했다고 말하다",
+     "ok": true,
+     "why": "Natural Welsh. Uses ti wedi gwneud in the sense this course taught, 'you have done'."
+    },
+    {
+     "n": 2,
+     "ko": "내가 네가 아주 잘 했다고 생각한다고",
+     "ok": true,
+     "why": "Natural Welsh. The 'that' clause is an open fragment, which is fine for a BUILD row."
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 아주 잘 했다고 말하고 싶어",
+     "ok": true,
+     "why": "Natural North Welsh. Same sense of ti wedi gwneud."
+    },
+    {
+     "n": 4,
+     "ko": "너는 잘 했어",
+     "ok": true,
+     "why": "Idiomatic Welsh for 'you've done well'."
+    },
+    {
+     "n": 5,
+     "ko": "너는 내가 하고 싶었던 것을 했어",
+     "ok": true,
+     "why": "Natural Welsh, and it sits well next to this seed's 'what you needed to do'."
+    },
+    {
+     "n": 6,
+     "ko": "너는 무언가를 했어",
+     "ok": true,
+     "why": "Natural Welsh. Same sense."
+    },
+    {
+     "n": 7,
+     "ko": "너는 다시 아주 잘 했어",
+     "ok": true,
+     "why": "Natural Welsh. Same sense."
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 아주 잘 했다고 생각한다고 말하고 싶었어",
+     "ok": true,
+     "why": "Natural Welsh. The one subject 나는 covers both 'I wanted' and 'I think', as in the Welsh."
+    }
+   ]
+  },
+  "S0207L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0207L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0207L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0207L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0207L03B01",
+     "keep": false,
+     "why": "Sound, but only 3 BUILD rows are needed and B03 already practises the same words with be'."
+    },
+    {
+     "id": "cym_for_kor:S0207L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0207L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0207L03U04",
+     "keep": true,
+     "ko": "나는 네가 왜 이렇게 일찍 떠날 필요가 있었는지 몰라",
+     "why": "Changed 모르겠어 to 몰라 to match 'dw i ddim yn gwybod' directly."
+    },
+    {
+     "id": "cym_for_kor:S0207L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0207L03U03",
+     "keep": true,
+     "ko": "너는 네가 들을 필요가 있었던 것을 들었어?",
+     "why": "Added the topic marker 는 so the line reads as natural 반말 with the pronoun explicit."
+    },
+    {
+     "id": "cym_for_kor:S0207L03U02",
+     "keep": false,
+     "why": "'아무도 … 확실하지 않았어' is stiff Korean, and only 5 USE rows are needed."
+    }
+   ]
+  }
+ }
+}

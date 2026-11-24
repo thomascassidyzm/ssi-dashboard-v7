@@ -1,0 +1,138 @@
+{
+ "seed": 242,
+ "at": "2026-11-24T18:45:30.273Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0242L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 그에게 시간을 더 줄 때까지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그에게 시간을 더 주지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 그에게 시간을 조금 더 주고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그에게 시간을 더 주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀에게 시간을 더 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀에게 시간을 조금 더 주다",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0242L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0242L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0242L02B02",
+     "keep": false,
+     "why": "Only 2 BUILD rows are needed. Also, 줄 텐데 is a weak match for 'would give' when o2 uses ~것 같아 for the same conditional."
+    },
+    {
+     "id": "cym_for_kor:S0242L02B04",
+     "keep": false,
+     "why": "Only 2 BUILD rows are needed, and B03 and B01 are cleaner."
+    }
+   ]
+  },
+  "S0242L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그것을 그녀에게 주고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 우리가 이것을 끝낸 후에 그녀에게 무언가를 줄 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그 책을 그녀에게 주고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그 책을 그녀에게 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그녀에게 준비 사항들을 처리할 시간을 줄 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그 영화를 그녀에게 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 그 영화를 그녀에게 주고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀에게 다른 것을 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀에게 그녀가 원하는 것을 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 그녀에게 무언가를 주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그녀는 오늘 저녁 문장 전체를 기억하는 게 좋겠어",
+     "ok": false,
+     "why": "Wrong sense. Here iddi hi marks the subject in the 'well i X' (she'd better) construction, not the recipient '그녀에게' this LEGO teaches. The Korean can't contain 그녀에게 naturally, so it doesn't practise this LEGO."
+    }
+   ]
+  }
+ }
+}

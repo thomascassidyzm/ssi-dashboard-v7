@@ -1,0 +1,58 @@
+{
+ "seed": 187,
+ "at": "2026-11-24T18:36:55.580Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0187L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0187L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0187L01B03",
+     "keep": true,
+     "ko": "나는 지금까지는 직장에서 행복해"
+    },
+    {
+     "id": "cym_for_kor:S0187L01B04",
+     "keep": true,
+     "ko": "왜냐하면 나는 지금까지는 직장에서 행복해"
+    },
+    {
+     "id": "cym_for_kor:S0187L01B02",
+     "keep": false,
+     "why": "응 could be either ie or yndw, so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0187L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0187L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0187L01U03",
+     "keep": true,
+     "ko": "나는 지금까지는 행복해 너는 기분이 어때?"
+    },
+    {
+     "id": "cym_for_kor:S0187L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0187L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0187L01U04",
+     "keep": false,
+     "why": "Five stronger USE rows were kept; this one pairs 'happy so far' with a past-tense reason, which reads oddly"
+    }
+   ]
+  }
+ }
+}

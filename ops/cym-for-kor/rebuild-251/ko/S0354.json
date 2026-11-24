@@ -1,0 +1,124 @@
+{
+ "seed": 354,
+ "at": "2026-11-24T19:01:56.389Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0354L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0354L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01B03",
+     "keep": false,
+     "why": "Sound, but the 3 BUILD slots are already filled by stronger, shorter frames"
+    },
+    {
+     "id": "cym_for_kor:S0354L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0354L01U07",
+     "keep": false,
+     "why": "Grammatical (gwlad fem. → wahanol), but the 5 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0354L01U05",
+     "keep": false,
+     "why": "Sound, but the 5 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0354L01U06",
+     "keep": false,
+     "why": "The question on a negative statement frame is weaker than the plain statements; the 5 USE slots are already filled"
+    }
+   ]
+  },
+  "S0354L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 화나 보이다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 화나 보이고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 펍에서 화나 보이지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 화나 보이려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 오늘 저녁 그냥 화나 보일 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 금요일 밤에 화나 보이고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 왜 화나 보이려고 노력하고 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내일 밤 화나 보이지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "미안해, 하지만 나는 화나 보이고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

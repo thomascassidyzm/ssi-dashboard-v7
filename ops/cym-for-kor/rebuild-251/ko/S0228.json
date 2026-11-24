@@ -1,0 +1,134 @@
+{
+ "seed": 228,
+ "at": "2026-11-24T18:42:58.762Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0228L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0228L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01B03",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are filled by better candidates"
+    },
+    {
+     "id": "cym_for_kor:S0228L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L01U03",
+     "keep": false,
+     "why": "Sound, but the five USE slots are filled by better candidates"
+    },
+    {
+     "id": "cym_for_kor:S0228L01U07",
+     "keep": false,
+     "why": "Too long and dense for this early LEGO; the five USE slots are already filled"
+    }
+   ]
+  },
+  "S0228L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 막 다시 느긋하게 쉬기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그들이 막 느긋하게 쉬기 시작했다는 걸 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그들이 막 배우기 시작했다는 걸 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그들이 막 시작했을 때를 마치 어제였던 것처럼 기억해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 막 걱정하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그들이 막 웨일스어를 배우기 시작했을 때를 기억해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 막 기억하기 시작했었어",
+     "ok": true,
+     "why": "Uses 했었어 so the prompt points to oeddan nhw, not maen nhw"
+    },
+    {
+     "n": 8,
+     "ko": "나는 그들이 막 시작했을 때를 기억해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 그들이 막 지방 의회에서 일하기 시작했을 때를 마치 어제였던 것처럼 기억해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0228L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0228L02U01",
+     "keep": false,
+     "why": "Sound, but only one USE slot was needed and U05 fits the seed better"
+    },
+    {
+     "id": "cym_for_kor:S0228L02U06",
+     "keep": false,
+     "why": "The Korean leaves out the 'it' in mae'n hwyl, so the prompt doesn't pin down the Welsh"
+    }
+   ]
+  }
+ }
+}

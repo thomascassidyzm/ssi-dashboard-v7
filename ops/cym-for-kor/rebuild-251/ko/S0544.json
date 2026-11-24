@@ -1,0 +1,171 @@
+{
+ "seed": 544,
+ "at": "2026-11-24T19:38:13.669Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0544L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀가 옳다고 말한 사람이 누구든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 괜찮을 거라고 말한 사람이 누구든 찾아내야 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 ~라고 말한 사람이 누구든 찾아내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 그들이 진지하지 않다고 말한 사람이 누구든 찾아낼 수 있을까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리가 이사하기 전에 나는 괜찮을 거라고 말한 사람이 누구든 찾아내고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0544L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L01U01",
+     "keep": false,
+     "why": "Adding hi after the 'pwy bynnag ddudodd …' clause gives 'whoever said …, she was right', which does not hold together; the seed's pattern is 'pwy bynnag … oedd yn iawn'."
+    },
+    {
+     "id": "cym_for_kor:S0544L01U02",
+     "keep": false,
+     "why": "In 'oedd o'n anghywir' the o could mean the speaker or the man who isn't ready, so the Welsh and the Korean 그는 are both unclear."
+    },
+    {
+     "id": "cym_for_kor:S0544L01U04",
+     "keep": false,
+     "why": "The o in 'oedd o'n anghywir' is unclear and assumes the speaker is male; 'pwy bynnag … oedd yn anghywir' is the natural form."
+    },
+    {
+     "id": "cym_for_kor:S0544L01U06",
+     "keep": false,
+     "why": "'o' does not match the plural nhw it seems to point to, and 그는 has no clear referent."
+    }
+   ]
+  },
+  "S0544L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0544L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02B01",
+     "keep": false,
+     "why": "'ddudodd y byddai fo'n anodd' means '(someone) said it would be hard', not 'the person who said'. The Korean does not match, and a Korean version without a subject would allow more than one Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0544L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L02U01",
+     "keep": false,
+     "why": "Fine, but the five slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0544L02U06",
+     "keep": false,
+     "why": "Fine, but the five slots are already filled."
+    }
+   ]
+  },
+  "S0544L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0544L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03B04",
+     "keep": false,
+     "why": "Fine, but the three slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0544L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0544L03U04",
+     "keep": false,
+     "why": "A fronted focus right after achos is unnatural; it should be 'achos bod y ddynas ifanc 'na yn hollol iawn'. The Korean '왜냐하면 … 옳았어' is also clumsy."
+    }
+   ]
+  }
+ }
+}

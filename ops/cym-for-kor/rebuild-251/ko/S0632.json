@@ -1,0 +1,85 @@
+{
+ "seed": 632,
+ "at": "2026-11-24T19:52:19.515Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0632L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 큰 잔으로 한 잔이 필요했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 금요일에 물을 한두 잔 마셨어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 지금 큰 잔으로 한 잔 하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그 영화를 봤고 한두 잔을 마셨어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그 영화를 봤고 물을 한두 잔 마셨어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 물을 큰 잔으로 한 잔 할래?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 큰 잔으로 물 한 잔이 필요해, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0632L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0632L01U05",
+     "keep": false,
+     "why": "Good row, but only one USE top-up is needed and U04 is the better fit"
+    },
+    {
+     "id": "cym_for_kor:S0632L01U06",
+     "keep": false,
+     "why": "Only one top-up is needed, and 했으면 좋겠어 for ’swn i’n licio overlaps with the 할래 and 싶어 wordings"
+    },
+    {
+     "id": "cym_for_kor:S0632L01U03",
+     "keep": false,
+     "why": "The Welsh can be read two ways: a glass of milk or of tea, or a glass of milk or a tea"
+    },
+    {
+     "id": "cym_for_kor:S0632L01U01",
+     "keep": false,
+     "why": "The Welsh uses formal os gwelwch yn dda but the Korean is 반말 부탁해, which breaks the register rule"
+    },
+    {
+     "id": "cym_for_kor:S0632L01U02",
+     "keep": false,
+     "why": "The Korean is ungrammatical (받을 수 있을까 부탁해), and formal os gwelwch yn dda needs a 해요 Korean"
+    }
+   ]
+  }
+ }
+}

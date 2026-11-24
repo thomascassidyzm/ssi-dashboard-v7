@@ -1,0 +1,79 @@
+{
+ "seed": 630,
+ "at": "2026-11-24T19:51:57.273Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0630L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 네가 말한 것을 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This uses the earlier chunk 'ga i ofyn' (may I ask), not 'ga i' = can I have, so it does not practise this LEGO, and its Korean does not use this LEGO's gloss 받을 수 있을까. It belongs in the 'ga i ofyn' basket."
+    },
+    {
+     "n": 2,
+     "ko": "내가 너에게 그 영화에 대해 네가 어떻게 생각했는지 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    },
+    {
+     "n": 3,
+     "ko": "그래서 내가 내 돈을 돌려받을 수 있을까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "제가 차와 함께 드실 우유를 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'. The gloss 내가 ~ 받을 수 있을까 cannot express it."
+    },
+    {
+     "n": 5,
+     "ko": "제가 커피와 함께 드실 우유를 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'."
+    },
+    {
+     "n": 6,
+     "ko": "제가 우유랑 설탕을 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'."
+    },
+    {
+     "n": 7,
+     "ko": "미안하지만 내가 왜인지 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    },
+    {
+     "n": 8,
+     "ko": "제가 드실 무언가를 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl rhywbeth i chi yfed' offers to fetch a drink. It reverses the seed's 'can I have something to drink', and the gloss 받을 수 있을까 would mislead the learner."
+    },
+    {
+     "n": 9,
+     "ko": "제가 커피와 함께 드실 우유랑 설탕을 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'."
+    },
+    {
+     "n": 10,
+     "ko": "내가 나중에 무슨 일이 일어날지 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    },
+    {
+     "n": 11,
+     "ko": "네가 떠나기 전에 내가 질문 몇 개 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    }
+   ],
+   "topups": []
+  }
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "seed": 645,
+ "at": "2026-11-24T19:54:04.054Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0645L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "난 노력할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "난 웨일스어로 이야기하는 방법을 기억할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "난 생각할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "난 다른 것을 기억할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "난 그들이 막 학교에 다니기 시작했을 때를 마치 어제 일처럼 기억할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "실례지만, 제가 도와드릴 수 있어요, 하지만 그들이 도와드릴 수 있을까요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "실례지만, 제가 도와드릴 수 있어요, 하지만 점점 늦어지고 있어요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "실례지만, 제가 도와드릴 수 있어요, 왜냐하면 정말 늦었으니까요",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0645L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "실례지만, 제가 도와드릴 수 있어요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "실례지만, 제가 지금 도와드릴 수 있어요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "실례지만, 제가 오늘 저녁에 도와드릴 수 있어요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "응, 우리는 너희를 도울 시간이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "실례지만, 아마 제가 지금 당장 도와드릴 수 있을 거예요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "실례지만, 식사 후에 제가 도와드릴 수 있어요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "실례지만, 제가 지금은 도와드릴 수 있어요, 당시에는 그럴 수 없었을 거예요",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0645L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0645L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0645L03U03",
+     "keep": false,
+     "why": "fine but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0645L03U04",
+     "keep": false,
+     "why": "fine but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0645L03U05",
+     "keep": false,
+     "why": "기꺼이 does not pin down 'wedi bod yn hapus i'; several Welsh answers fit"
+    },
+    {
+     "id": "cym_for_kor:S0645L03U06",
+     "keep": false,
+     "why": "wrthaf fi is a stiff form, and the line mixes ti with plural chi, which is confusing"
+    },
+    {
+     "id": "cym_for_kor:S0645L03U07",
+     "keep": false,
+     "why": "long, and not needed"
+    }
+   ]
+  }
+ }
+}

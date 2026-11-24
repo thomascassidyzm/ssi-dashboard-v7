@@ -1,0 +1,122 @@
+{
+ "seed": 263,
+ "at": "2026-11-24T18:48:24.524Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0263L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀의 이름이 뭔지 몰라",
+     "ok": true,
+     "why": "Natural North Welsh. It uses 'dw i ddim yn gwybod' in the same sense with an indirect question, so it fits this basket."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0263L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0263L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0263L01B02",
+     "keep": false,
+     "why": "Surplus: two BUILD rows already kept, and B01 has the same shape."
+    },
+    {
+     "id": "cym_for_kor:S0263L01B04",
+     "keep": false,
+     "why": "Surplus: two BUILD rows already kept."
+    },
+    {
+     "id": "cym_for_kor:S0263L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0263L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0263L01U05",
+     "keep": true,
+     "ko": "나는 네가 뭐가 필요한지 몰라"
+    },
+    {
+     "id": "cym_for_kor:S0263L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0263L01U01",
+     "keep": true,
+     "ko": "미안해, 나는 몰라"
+    },
+    {
+     "id": "cym_for_kor:S0263L01U06",
+     "keep": false,
+     "why": "Surplus: it repeats the kept BUILD row B03 with only 'ond' added."
+    },
+    {
+     "id": "cym_for_kor:S0263L01U04",
+     "keep": false,
+     "why": "Surplus and very long. Its Korean '그와 이야기하고 있던' is an awkward resumptive pronoun."
+    }
+   ]
+  },
+  "S0263L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 누구를 뜻하는지 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 지금 누구를 뜻하는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 누구를 뜻하는지 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 누구를 뜻하는지 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 네가 누구를 뜻하는지 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 주말 전에 네가 누구를 뜻하는지 알아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 하지만 나는 네가 누구를 뜻하는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 네가 누구를 뜻하는지 몰라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

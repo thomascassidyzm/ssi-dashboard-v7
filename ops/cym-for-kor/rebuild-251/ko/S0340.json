@@ -1,0 +1,176 @@
+{
+ "seed": 340,
+ "at": "2026-11-24T19:00:21.421Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0340L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그리고 나는 내가 뭘 말하려고 하던 건지 확실하지 않아",
+     "ok": false,
+     "why": "This row uses the negative 'dw i ddim yn siŵr', not 'dw i'n siŵr', so it does not practise this LEGO. It belongs in the 'dw i ddim yn siŵr' basket."
+    },
+    {
+     "n": 3,
+     "ko": "나는 그녀가 맞다고 확신해",
+     "ok": true,
+     "why": "'bod hi'n iawn' here means 'she's right' (from the source prompt), so 맞다 is used. 괜찮다 would point to the 'fod yn iawn' LEGO instead."
+    },
+    {
+     "n": 4,
+     "ko": "물론 나는 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그 둘이 도우러 왔다고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "응, 나는 그게 괜찮을 거라고 확신해",
+     "ok": true,
+     "why": "'y bydd o'n iawn' is natural. 그게 ('it') keeps this apart from the seed's 그가 line."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그녀가 잊어버렸다고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그게 사실이 아니라고 확신해",
+     "ok": true,
+     "why": "'fod o ddim yn wir' is acceptable colloquial North Welsh."
+    }
+   ]
+  },
+  "S0340L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그게 오늘 저녁 일어날 거라는 걸 알지 못했어",
+     "ok": true,
+     "why": "Here 'o' means 'it', but the 'fod o'n mynd i' structure is the same, and the Welsh is natural."
+    },
+    {
+     "n": 2,
+     "ko": "그는 내일 오후 늦을 거야",
+     "ok": false,
+     "why": "The Welsh has 'mae o'n mynd i', a main clause, not 'fod o'n mynd i', so it does not contain this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0340L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L03B02",
+     "keep": false,
+     "why": "Only 1 BUILD row was needed and B01 is the cleaner one."
+    },
+    {
+     "id": "cym_for_kor:S0340L03B03",
+     "keep": false,
+     "why": "Not needed. 경기하다 is also a weak fit for 'chwarae'."
+    },
+    {
+     "id": "cym_for_kor:S0340L03B04",
+     "keep": false,
+     "why": "Only 1 BUILD row was needed."
+    },
+    {
+     "id": "cym_for_kor:S0340L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L03U01",
+     "keep": true,
+     "ko": "나는 그가 아이디어를 몇 가지 더할 거라고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0340L03U05",
+     "keep": false,
+     "why": "In Korean, 그의 자매 is clumsy and does not say whether she is older or younger. The row is also heavy, and enough better rows were available."
+    },
+    {
+     "id": "cym_for_kor:S0340L03U07",
+     "keep": false,
+     "why": "Enough better rows were available."
+    }
+   ]
+  },
+  "S0340L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0340L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04B02",
+     "keep": false,
+     "why": "'fod yn iawn heno' is an unnatural bare-infinitive fragment, and 오늘 저녁 괜찮다 reads oddly in Korean."
+    },
+    {
+     "id": "cym_for_kor:S0340L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0340L04U03",
+     "keep": true,
+     "ko": "너는 내가 괜찮을 거라고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0340L04U05",
+     "keep": false,
+     "why": "Only 5 USE rows were needed. The Korean 왜냐하면 clause also has no subject."
+    }
+   ]
+  }
+ }
+}

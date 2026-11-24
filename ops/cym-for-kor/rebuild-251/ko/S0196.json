@@ -1,0 +1,117 @@
+{
+ "seed": 196,
+ "at": "2026-11-24T18:37:44.130Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0196L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0196L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L01B03",
+     "keep": true,
+     "ko": "너 그거 어디서 들었어?"
+    },
+    {
+     "id": "cym_for_kor:S0196L01B04",
+     "keep": false,
+     "why": "Sound, but the 3 BUILD slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0196L01U01",
+     "keep": true,
+     "ko": "너 내일 밤에 무슨 일이 일어날지 들었어?"
+    },
+    {
+     "id": "cym_for_kor:S0196L01U07",
+     "keep": true,
+     "ko": "너 그가 그 이야기에 대해 뭐라고 말했는지 들었어?"
+    },
+    {
+     "id": "cym_for_kor:S0196L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L01U05",
+     "keep": false,
+     "why": "Its Welsh is close to B02's and it adds little; the USE slots are filled."
+    },
+    {
+     "id": "cym_for_kor:S0196L01U04",
+     "keep": false,
+     "why": "'Sorry, but have you heard the answer' is an odd thing to say; the USE slots are filled."
+    }
+   ]
+  },
+  "S0196L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0196L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L02B02",
+     "keep": false,
+     "why": "'The latest idea on the table' as a literal object on a table is an unnatural fragment."
+    },
+    {
+     "id": "cym_for_kor:S0196L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0196L02U02",
+     "keep": true,
+     "ko": "너 최신 아이디어에 대해 어떻게 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0196L02U07",
+     "keep": true,
+     "ko": "나는 내일 밤에 최신 아이디어에 대해 이야기하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0196L02U01",
+     "keep": false,
+     "why": "The Korean is a statement but the Welsh is a question, so the Welsh could be 'wyt ti' or 'rwyt ti'; the USE slots are filled anyway."
+    },
+    {
+     "id": "cym_for_kor:S0196L02U04",
+     "keep": false,
+     "why": "Acceptable, but weaker than the five kept; the USE slots are filled."
+    }
+   ]
+  }
+ }
+}

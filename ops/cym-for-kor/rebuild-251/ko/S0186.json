@@ -1,0 +1,81 @@
+{
+ "seed": 186,
+ "at": "2026-11-24T18:36:50.719Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0186L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 다음 주에 뭔가 색다른 것을 할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리 오늘 저녁에 뭔가 색다른 걸 먹는 게 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 네가 뭔가 색다른 것을 생각하고 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 뭔가 색다른 것을 하고 싶은 기분이 들어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 토요일에 뭔가 색다른 것을 하고 싶은 기분이 들어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0186L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0186L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0186L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0186L04U08",
+     "keep": false,
+     "why": "Fine, but only 3 needed"
+    },
+    {
+     "id": "cym_for_kor:S0186L04U05",
+     "keep": false,
+     "why": "Fine, but only 3 needed"
+    },
+    {
+     "id": "cym_for_kor:S0186L04U06",
+     "keep": false,
+     "why": "Fine, but only 3 needed"
+    },
+    {
+     "id": "cym_for_kor:S0186L04U03",
+     "keep": false,
+     "why": "Fine, but only 3 needed"
+    },
+    {
+     "id": "cym_for_kor:S0186L04U01",
+     "keep": false,
+     "why": "Only 3 needed; plural gadewch under a plain 반말 -자 prompt sits awkwardly with the gad/gadewch distinction"
+    }
+   ]
+  }
+ }
+}

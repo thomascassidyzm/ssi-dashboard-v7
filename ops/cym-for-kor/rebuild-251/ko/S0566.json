@@ -1,0 +1,135 @@
+{
+ "seed": 566,
+ "at": "2026-11-24T19:41:57.609Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0566L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 늦었다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "심지어 그게 ~였다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "심지어 그게 오늘 저녁이었다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "심지어 그게 늦었다면 나는 그것에 대해 생각했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그게 늦었다면 나는 더 오래 버틸 수 없었을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0566L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0566L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0566L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0566L03U03",
+     "keep": false,
+     "why": "Almost the same sentence as original o5; adds little variety"
+    },
+    {
+     "id": "cym_for_kor:S0566L03U05",
+     "keep": false,
+     "why": "'byddai'n well' means 'it would be better', but the Korean 좋았을 거라고 means 'would have been better', so the tense does not match"
+    },
+    {
+     "id": "cym_for_kor:S0566L03U06",
+     "keep": false,
+     "why": "'byddai'n braf' means 'it would be nice', but the Korean 좋았을 거야 means 'would have been nice', so the tense does not match"
+    }
+   ]
+  },
+  "S0566L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내 선택을 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네 도움 없이 한 내 선택",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 선택 없이",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "지금 내 선택을 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "아마 그건 내 선택처럼 느껴지지 않아",
+     "ok": true,
+     "why": "Natural North Welsh; 'fy newis i' keeps the sense of 'my choice'"
+    },
+    {
+     "n": 6,
+     "ko": "나는 내 선택을 바꿀 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 내 선택을 바꿀 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 어젯밤 내 선택을 바꾸고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내 선택을 바꾸지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 지금 당장 내 선택을 바꾸고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "seed": 663,
+ "at": "2026-11-24T19:54:52.203Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0663L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0663L01B04",
+     "keep": true,
+     "ko": "저는 여러분이 말한 것에 대해 생각하고 있어요"
+    },
+    {
+     "id": "cym_for_kor:S0663L01B03",
+     "keep": true,
+     "ko": "어젯밤 여러분이 말한 것"
+    },
+    {
+     "id": "cym_for_kor:S0663L01B01",
+     "keep": true,
+     "ko": "여러분이 말한 것에 대해"
+    },
+    {
+     "id": "cym_for_kor:S0663L01B02",
+     "keep": false,
+     "ko": "여러분이 말한 것에 동의하다",
+     "why": "Not needed: the three BUILD slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0663L01U02",
+     "keep": true,
+     "ko": "저는 어젯밤 여러분이 말한 것에 동의할 수 없었어요"
+    },
+    {
+     "id": "cym_for_kor:S0663L01U05",
+     "keep": true,
+     "ko": "저는 여러분이 말한 것을 잊어버리고 싶지 않아요"
+    },
+    {
+     "id": "cym_for_kor:S0663L01U04",
+     "keep": true,
+     "ko": "저는 여러분이 말한 것을 알고 있었어요"
+    },
+    {
+     "id": "cym_for_kor:S0663L01U01",
+     "keep": true,
+     "ko": "여러분이 말한 것은 완전히 옳았어요"
+    },
+    {
+     "id": "cym_for_kor:S0663L01U03",
+     "keep": true,
+     "ko": "저는 여러분이 말한 것에 대해 확실하지 않아요"
+    },
+    {
+     "id": "cym_for_kor:S0663L01U06",
+     "keep": false,
+     "why": "The line speaks to one person (ti, so 반말 with 너) but also needs 여러분 in 해요 for chi gyd. The Korean can't follow both register rules and still read naturally."
+    }
+   ]
+  }
+ }
+}

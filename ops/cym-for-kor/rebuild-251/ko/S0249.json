@@ -1,0 +1,124 @@
+{
+ "seed": 249,
+ "at": "2026-11-24T18:46:41.355Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0249L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 생각하기를 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 네가 끝낸 후에 느긋하게 쉬고 싶어",
+     "ok": false,
+     "why": "Has no 'dw i isio i ti'. This is 'dw i isio' plus 'ar ôl i ti orffen', so it doesn't practise this LEGO."
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 가기 전에 질문을 묻고 싶어",
+     "ok": false,
+     "why": "Has no 'dw i isio i ti'. Here 'i ti' belongs to 'cyn i ti fynd', so it doesn't practise 'I want you to'."
+    },
+    {
+     "n": 4,
+     "ko": "나는 멈추고 싶지 않아, 하지만 너는 꼭 그래야 해?",
+     "ok": false,
+     "why": "Has no 'dw i isio i ti'. 'dw i ddim isio' and 'oes rhaid i ti' are separate pieces and neither one is this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 그것에 대해 더 신중하게 생각하기를 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 너를 기다리고 싶은지 확실하지 않아",
+     "ok": false,
+     "why": "Has no 'dw i isio i ti'. It only uses 'dw i isio' plus 'aros amdanat ti'."
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 저녁 네가 떠나기 전에 웨일스어로 이야기하고 싶어",
+     "ok": false,
+     "why": "Has no 'dw i isio i ti'. Here 'i ti' belongs to 'cyn i ti adael'."
+    },
+    {
+     "n": 8,
+     "ko": "네가 떠나기 전에, 나는 내 말이 무슨 뜻인지 설명하고 싶어",
+     "ok": false,
+     "why": "Has no 'dw i isio i ti'. Here 'i ti' belongs to 'cyn i ti adael'."
+    }
+   ]
+  },
+  "S0249L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 나에게 네가 가기 전에 무엇을 하고 싶은지 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 나에게 네가 가기 전에 내가 무엇을 하는 게 좋겠는지 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 네가 가기 전에 나한테 무언가 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 네가 가기 전에 이야기하고 싶겠어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0249L03U03",
+     "keep": true,
+     "ko": "너는 네가 가기 전에 내가 너를 도와주기를 원해?"
+    },
+    {
+     "id": "cym_for_kor:S0249L03U07",
+     "keep": true,
+     "ko": "나는 네가 가기 전에 너와 이야기하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0249L03U01",
+     "keep": true,
+     "ko": "나는 네가 가기 전에 내 돈을 돌려받고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0249L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0249L03U04",
+     "keep": false,
+     "why": "Sound, but only 4 USE rows are needed and this one ranks lower."
+    },
+    {
+     "id": "cym_for_kor:S0249L03U05",
+     "keep": false,
+     "why": "Sound, but not needed. Four better rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0249L03U06",
+     "keep": false,
+     "why": "Sound, but not needed. Four better rows are already kept."
+    }
+   ]
+  }
+ }
+}

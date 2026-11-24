@@ -1,0 +1,156 @@
+{
+ "seed": 425,
+ "at": "2026-11-24T19:12:36.454Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0425L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 사람들이야",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are', but this basket teaches ydyn as the answer word 'yes' (응 그렇지), so the phrase never practises that sense"
+    },
+    {
+     "n": 2,
+     "ko": "그들은 다른 사람들이야",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 3,
+     "ko": "나는 그들이 그렇지 않다고 확신해",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are not', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 4,
+     "ko": "그들은 지금 몇 살이야?",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'how old are they', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 5,
+     "ko": "그래서, 그들은 몇 살이야?",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'how old are they', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 6,
+     "ko": "그들은 그렇지 않다고 말했어",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are not', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 7,
+     "ko": "그들은 새로운 사람들이야",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 8,
+     "ko": "나는 그들이 오늘 저녁 늦지 않기를 바라",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are not', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 9,
+     "ko": "아무도 나에게 그들이 우리와 함께 있지 않다고 말해 주지 않았어",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are not', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    },
+    {
+     "n": 10,
+     "ko": "그게 그들이 우리와 함께 있지 않다는 뜻은 아니야",
+     "ok": false,
+     "why": "Here ydyn is the verb in 'they are not', but this basket teaches ydyn as the answer word 'yes' (응 그렇지)"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0425L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L01U07",
+     "keep": false,
+     "why": "Good, but the one needed slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U02",
+     "keep": false,
+     "why": "Good, but the one needed slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U03",
+     "keep": false,
+     "why": "Good, but the one needed slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U05",
+     "keep": false,
+     "why": "Good, but the one needed slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U06",
+     "keep": false,
+     "why": "Good, but the one needed slot is already filled"
+    },
+    {
+     "id": "cym_for_kor:S0425L01U04",
+     "keep": false,
+     "why": "Korean is broken ('그들 멈출', no subject particle) and the Welsh question has no question mark"
+    }
+   ]
+  },
+  "S0425L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0425L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04B03",
+     "keep": false,
+     "why": "Good, but the three BUILD slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0425L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04U02",
+     "keep": true,
+     "ko": "우리는 그들이 그 질문을 이해하는지 확실히 할 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0425L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0425L04U03",
+     "keep": false,
+     "why": "The Korean 확실하지 않아 does not use the 확신해 gloss for dw i'n siŵr; also the five USE slots are already filled"
+    }
+   ]
+  }
+ }
+}

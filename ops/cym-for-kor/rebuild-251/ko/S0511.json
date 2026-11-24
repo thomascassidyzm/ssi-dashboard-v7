@@ -1,0 +1,425 @@
+{
+ "seed": 511,
+ "at": "2026-11-24T19:31:57.608Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0511L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "이 지역에서는 시간이 덜 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "시간이 덜 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 어머니는 ~가 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 할아버지가 기차를 탔어",
+     "ok": false,
+     "why": "Wrong sense: here cymerodd means 'took' an object (the train), but this LEGO teaches 'took' as time (~가 걸렸어). The gloss cannot express it."
+    },
+    {
+     "n": 5,
+     "ko": "하지만 그 사람은 ~가 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "네 친구는 몇 분이 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그 여자아이가 내 커피를 가져갔어",
+     "ok": false,
+     "why": "Wrong sense: 'took my coffee' is taking an object, not time (~가 걸렸어)."
+    },
+    {
+     "n": 8,
+     "ko": "내 여동생이 어젯밤 버스를 탔어",
+     "ok": false,
+     "why": "Wrong sense: 'took the bus' is not the time sense (~가 걸렸어) this LEGO teaches."
+    },
+    {
+     "n": 9,
+     "ko": "네 친구가 버스를 타서 나는 안 갔어",
+     "ok": false,
+     "why": "Wrong sense: 'took the bus' is not the time sense (~가 걸렸어) this LEGO teaches."
+    },
+    {
+     "n": 10,
+     "ko": "나는 걸어가고 싶었지만 내 어머니가 기차를 탔어",
+     "ok": false,
+     "why": "Wrong sense: 'took the train' is not the time sense (~가 걸렸어) this LEGO teaches."
+    },
+    {
+     "n": 11,
+     "ko": "내 여동생이 기차를 타서 우리는 떠나야 했어",
+     "ok": false,
+     "why": "Wrong sense: 'took the train' is not the time sense (~가 걸렸어) this LEGO teaches."
+    }
+   ]
+  },
+  "S0511L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "소식은 시간이 덜 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "소식은 ~가 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "차를 주차하는 것에 대한 소식",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 소식 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "새해의 가장 큰 소식",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "안전한 곳에 대한 소식",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "두 여자아이에 대한 소식",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "전쟁 후로 내 할아버지한테서 소식이 없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0511L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0511L02U03",
+     "keep": false,
+     "why": "Good row, but the two needed are already filled by better ones."
+    },
+    {
+     "id": "cym_for_kor:S0511L02U04",
+     "keep": false,
+     "why": "Good row, but the two needed are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0511L02U05",
+     "keep": false,
+     "why": "Good row, but the two needed are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0511L02U06",
+     "keep": false,
+     "why": "~할 거야 could also be the future tense (mi wna i), so the Korean has two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0511L02U07",
+     "keep": false,
+     "why": "Good row, but the two needed are already filled."
+    }
+   ]
+  },
+  "S0511L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "~에게 전해지는 데 몇 시간이 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "~에게 전해지는 데 몇 시간",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그 쇼에 도착하는 데 몇 시간이 걸렸어",
+     "ok": false,
+     "why": "i gyrraedd here means reaching a place (the show). The course teaches it as reaching people (~에게 전해지는 데), and that gloss cannot express this without an untaught verb."
+    },
+    {
+     "n": 4,
+     "ko": "그 사무실에서 몇 시간",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내가 몇 시간을 잃지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 몇 시간을 잃었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "소식은 몇 시간이 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "몇 시간을 잃다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "몇 시간이 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "~에게 전해지는 데 몇 시간이 걸렸어",
+     "ok": false,
+     "why": "ZUT clash with o1: the Korean is identical, but the Welsh differs (rai vs rhai), so one prompt has two target forms. The seed uses unmutated rhai."
+    },
+    {
+     "n": 11,
+     "ko": "몇 시간 후에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "버스는 몇 시간이 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "우리가 멈추기 몇 시간 전",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "혼자 몇 시간",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "정상에 도착하는 데 몇 시간이 걸렸어",
+     "ok": false,
+     "why": "i gyrraedd here means reaching a place (the top). The gloss ~에게 전해지는 데 cannot express it."
+    },
+    {
+     "n": 16,
+     "ko": "몇 시간 후에 우리 친구들이 놀러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "내 할아버지는 오늘 오후 몇 시간이 걸렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "어젯밤 식사는 몇 시간이 걸렸어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0511L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "정상에 도착하는 데",
+     "ok": false,
+     "why": "Reaching a place (the top) is not the sense taught by ~에게 전해지는 데 (news or a message reaching people). The Korean would need an untaught verb."
+    },
+    {
+     "n": 2,
+     "ko": "~에게 전해지는 데 많은 시간이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "문을 연 가게에 도착하는 데",
+     "ok": false,
+     "why": "Wrong sense: reaching a place (a shop) cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 4,
+     "ko": "흥미로운 부분에 이르는 데",
+     "ok": false,
+     "why": "Wrong sense: reaching a point cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 5,
+     "ko": "그 부분에 이르는 데",
+     "ok": false,
+     "why": "Wrong sense: reaching a point cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 6,
+     "ko": "그 사무실에 도착하는 데",
+     "ok": false,
+     "why": "Wrong sense: reaching a place (the office) cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 7,
+     "ko": "새해에 이르는 데",
+     "ok": false,
+     "why": "Wrong sense: reaching a time (the new year) cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 8,
+     "ko": "정상에 도착하려고 우리는 어젯밤 떠나야 했어",
+     "ok": false,
+     "why": "Wrong sense: reaching a place (the top) cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 9,
+     "ko": "너 네 아버지가 주차장에 도착하기를 기다려야 해?",
+     "ok": false,
+     "why": "Wrong sense: this is a person physically arriving at a car park, which cannot be said with ~에게 전해지는 데."
+    },
+    {
+     "n": 10,
+     "ko": "버스가 입구에 도착하는 데 몇 분이 걸렸어",
+     "ok": false,
+     "why": "Wrong sense: the bus reaching the entrance cannot be said with ~에게 전해지는 데."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0511L04U02",
+     "keep": true,
+     "ko": "모든 사람에게 전해지는 데 충분한 시간이 없었어"
+    },
+    {
+     "id": "cym_for_kor:S0511L04U01",
+     "keep": true,
+     "ko": "그게 모든 사람에게 전해지는 데 가장 좋은 방법이야"
+    },
+    {
+     "id": "cym_for_kor:S0511L04U03",
+     "keep": false,
+     "why": "Fine row, but the two needed are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0511L04U04",
+     "keep": false,
+     "why": "Fine row (would need 모두 changed to 모든 사람), but the two needed are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0511L04U05",
+     "keep": false,
+     "why": "Ambiguous sense: she physically reaching your father does not fit ~에게 전해지는 데."
+    },
+    {
+     "id": "cym_for_kor:S0511L04U06",
+     "keep": false,
+     "why": "Ambiguous sense: they physically reaching the girls does not fit ~에게 전해지는 데."
+    }
+   ]
+  },
+  "S0511L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "모든 사람이 내 아버지에게 묻고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "모든 사람이 나한테 내가 네 어머니를 도우면 안 된다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "모든 사람이 나한테 내가 내 어머니에게 물으면 안 된다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "모든 사람이 돕기 위해 충분히 할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "모든 사람이 충분히 할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "모든 사람이 네 어머니에게 묻고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 모든 사람에게 말하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "모든 사람이 내일 아침 축구를 보고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

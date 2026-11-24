@@ -1,0 +1,209 @@
+{
+ "seed": 295,
+ "at": "2026-11-24T18:53:33.222Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0295L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 가기 전에 대답하고 싶지 않다고 말했어",
+     "ok": false,
+     "why": "This line says 'I said that…' (ddudes i … bo' fi ddim). It never uses ddudes i ddim ('I didn't say'), so it does not practise this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "나는 네가 그것들을 두고 왔다고 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그게 좋은 일이라고 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그가 우리가 끝낼 때까지 가고 싶어하지 않는다고 말했어",
+     "ok": false,
+     "why": "In 'ddudes i fod o ddim' the ddim negates the reported clause, not the saying. The phrase means 'I said that…', so it does not use ddudes i ddim."
+    },
+    {
+     "n": 5,
+     "ko": "나는 그가 가고 싶어하지 않는다고 말했어",
+     "ok": false,
+     "why": "This is affirmative 'I said that he doesn't…'. It does not use the LEGO ddudes i ddim ('I didn't say')."
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 그가 뭘 하려고 노력하고 있는지 나에게 말하지 않았다고 말했어",
+     "ok": false,
+     "why": "This is affirmative 'I said that…' with the reported clause negated. It does not use ddudes i ddim."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그가 그들이 뭘 하고 싶어했는지 나에게 말하지 않았다고 말했어",
+     "ok": false,
+     "why": "This is affirmative 'I said that…' with the reported clause negated. It does not use ddudes i ddim."
+    },
+    {
+     "n": 8,
+     "ko": "나는 그가 다음 주까지 나와 이야기하고 싶어하지 않는다고 말했어",
+     "ok": false,
+     "why": "This is affirmative 'I said that…' with the reported clause negated. It does not use ddudes i ddim."
+    }
+   ],
+   "topups": []
+  },
+  "S0295L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 네가 그걸 아주 잘 말한다고 생각한다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 거의 준비가 됐다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 네가 아주 잘했다고 생각한다고 말하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 무언가를 말하고 싶다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내가 무언가를 말하려고 노력하고 있다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내가 잊어버렸다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 생각하고 싶다고 말할 수 있는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그녀가 너를 돕기를 원한다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 내가 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 아주 잘했다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 내가 무언가를 원한다고 말하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 내가 웨일스어로 이야기하는 걸 즐긴다고 말하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 내가 웨일스어를 연습하려고 노력하는 걸 즐긴다고 말하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "내가 가고 싶다고 말하는 걸 멈추기",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0295L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하루 만에 알아내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하루 만에 모든 것을 바꾸기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "모든 것을 하루 만에 아니면 다음 주에 설명하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "하루 만에 아니면 며칠 만에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 하루 만에 알아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 하루 만에 모든 것을 바꾸고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 하루 만에 모든 것을 설명하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 하루 만에 알아낼 수 없어, 왜냐하면 나는 너무 많은 일이 있거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 하루 만에 알아내야 해?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "seed": 517,
+ "at": "2026-11-24T19:32:16.579Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0517L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 어젯밤에 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜 그들이 전쟁 중에 떠났는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그들은 새해 첫날에 떠났어",
+     "ok": true,
+     "why": "Natural North Welsh. It uses wnaethon nhw adael in the same 'they left' sense, and 'ond … ar ddiwrnod cyntaf y flwyddyn newydd' sits well in this seed's 'ond …' frame."
+    },
+    {
+     "n": 4,
+     "ko": "너 그들이 어젯밤에 왜 떠났는지 물어봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 떠났지만 아무도 나에게 말해 주지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 떠났어 왜냐하면 그들은 결정하고 싶어하지 않았거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그들이 왜 각자 혼자 떠났는지 물어봤어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0517L02U02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0517L02U01",
+     "keep": false,
+     "why": "Only one top-up is needed, and the Welsh has no question mark, so it could be the open fragment 'why they left' rather than a question."
+    },
+    {
+     "id": "cym_for_kor:S0517L02U03",
+     "keep": false,
+     "why": "Only one top-up is needed; U02 fits the seed's 'ond' frame better."
+    },
+    {
+     "id": "cym_for_kor:S0517L02U04",
+     "keep": false,
+     "why": "Only one top-up is needed; also 정말 is a loose gloss for reit."
+    },
+    {
+     "id": "cym_for_kor:S0517L02U05",
+     "keep": false,
+     "why": "The Korean 'X 왜냐하면 Y했어' is awkward, and o6 already uses this structure."
+    },
+    {
+     "id": "cym_for_kor:S0517L02U06",
+     "keep": false,
+     "why": "Only one top-up is needed, and o7 already uses ar eu pennau eu hunain."
+    },
+    {
+     "id": "cym_for_kor:S0517L02U07",
+     "keep": false,
+     "why": "Almost the same as o3, and the bare 첫날 gives no clear context."
+    }
+   ]
+  }
+ }
+}

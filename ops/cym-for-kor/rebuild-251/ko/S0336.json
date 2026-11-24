@@ -1,0 +1,250 @@
+{
+ "seed": 336,
+ "at": "2026-11-24T19:00:07.823Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0336L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0336L02B03",
+     "keep": true,
+     "ko": "나는 그녀가 걸을 수 있다고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0336L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0336L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0336L02B04",
+     "keep": false,
+     "why": "A bare 'ychwanegu' with no object sounds unnatural, and Korean 더하다 could map to more than one Welsh verb."
+    },
+    {
+     "id": "cym_for_kor:S0336L02U01",
+     "keep": true,
+     "ko": "나는 그녀가 학교에 걸어갈 수 있다고 생각하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0336L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0336L02U06",
+     "keep": true,
+     "ko": "그녀는 자기가 웨일스어를 이야기할 수 있다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0336L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0336L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0336L02U03",
+     "keep": false,
+     "why": "Valid, but the 5 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0336L02U08",
+     "keep": false,
+     "why": "Valid, but the 5 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0336L02U05",
+     "keep": false,
+     "why": "'darparu'r atebion i gyd' is stilted, and the 5 USE slots are already filled."
+    }
+   ]
+  },
+  "S0336L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 네가 다른 것을 열어 주는 게 필요해",
+     "ok": true,
+     "why": "'mae o angen i ti agor' is natural colloquial North Welsh and uses agor as a verb."
+    },
+    {
+     "n": 2,
+     "ko": "너는 왜 열고 싶어?",
+     "ok": true,
+     "why": "A natural question that uses agor as a verb."
+    },
+    {
+     "n": 3,
+     "ko": "열려 있는 사무실",
+     "ok": false,
+     "why": "'ar agor' is the state 'open', not the verb 열다 this LEGO teaches. As a noun phrase it also reads like a sign ('office open'), not 'an open office'."
+    },
+    {
+     "n": 4,
+     "ko": "오늘 오후에 네 차를 열다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 열 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "책을 열다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네 차를 열려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 오늘 오후에 책을 여는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 오늘 저녁에 네 차를 열 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 네 차를 열고 싶었어 하지만 그녀는 너무 바빴어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "우리는 월요일에 이메일 두 통을 열어야 해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0336L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 당장 문을 열겠다고 제안하다",
+     "ok": true,
+     "why": "'cynnig agor y drws rŵan hyn' is natural."
+    },
+    {
+     "n": 2,
+     "ko": "문을 열다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아마 나는 문을 여는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 문을 열지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "여러분은 함께 문을 열고 싶어요?",
+     "ok": true,
+     "why": "Natural plural chi with 'efo'ch gilydd'."
+    },
+    {
+     "n": 6,
+     "ko": "너는 문을 잡아 줄 수 있어?",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 7,
+     "ko": "너는 문을 열 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 문을 옮길 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "오늘 저녁에 문을 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "저기에 있는 문",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "문을 옮기다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "문 아래",
+     "ok": true,
+     "why": "'o dan y drws' is natural."
+    },
+    {
+     "n": 13,
+     "ko": "그들은 네가 문을 열린 채로 잡고 있게 해 주고 싶어해",
+     "ok": true,
+     "why": "Natural, and y drws is used in its normal sense."
+    },
+    {
+     "n": 14,
+     "ko": "우리는 월요일에 문을 바꿔야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 문을 옮기고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 저기에 있는 문을 옮기고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "너는 어젯밤에 문을 열린 채로 잡아 줬어?",
+     "ok": true,
+     "why": "Natural past-tense question."
+    },
+    {
+     "n": 18,
+     "ko": "너는 왜 문을 열린 채로 잡아 줬어?",
+     "ok": true,
+     "why": "Natural."
+    }
+   ]
+  }
+ }
+}

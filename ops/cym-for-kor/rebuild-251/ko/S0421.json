@@ -1,0 +1,121 @@
+{
+ "seed": 421,
+ "at": "2026-11-24T19:11:52.348Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0421L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그들이 무엇을 이루려고 노력하고 있는지 몰라",
+     "ok": false,
+     "why": "The phrase never says 'maen nhw'n gwybod'. 'gwybod' goes with 'dan ni ddim yn' (we don't know) and 'maen nhw'n' goes with 'trio' (they're trying). It only matches the LEGO word by word, not as 'they know'."
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그들이 무엇을 이루려고 노력하고 있는지 알고 싶었어",
+     "ok": false,
+     "why": "'gwybod' goes with 'oeddan ni isio' (we wanted to know) and 'maen nhw'n' goes with 'trio', so the phrase never practises 'maen nhw'n gwybod' (they know)."
+    },
+    {
+     "n": 3,
+     "ko": "우리는 지금 이 순간 그들이 무엇을 이루려고 노력하고 있는지 몰라",
+     "ok": false,
+     "why": "Same as o1: 'maen nhw'n' belongs to 'trio', not 'gwybod', so the phrase does not teach 'they know'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0421L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02U03",
+     "keep": true,
+     "ko": "하지만 그들은 그가 무엇을 말했는지 알아"
+    },
+    {
+     "id": "cym_for_kor:S0421L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0421L02U07",
+     "keep": false,
+     "why": "Sound, but five better candidates fill the count."
+    },
+    {
+     "id": "cym_for_kor:S0421L02U01",
+     "keep": false,
+     "why": "Sound, but five better candidates fill the count."
+    }
+   ]
+  },
+  "S0421L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 그가 약해지고 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그가 약해지고 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 그가 약해지고 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그가 약해지고 있다고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네 친구는 어젯밤 그가 약해지고 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그가 약해지고 있다니 미안해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "아무도 나에게 그가 약해지고 있다고 말해 주지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 그가 약해지고 있다고 생각하게 하고 싶지 않았어",
+     "ok": true,
+     "why": "Natural North Welsh, and it uses 'fod o'n mynd yn wan' in the sense this course taught."
+    },
+    {
+     "n": 9,
+     "ko": "나는 그가 약해지고 있다는 걸 알아내고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,383 @@
+{
+ "seed": 490,
+ "at": "2026-11-24T19:26:09.360Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0490L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 느긋하게 쉴 거야 그리고 그다음에 ~",
+     "ok": false,
+     "why": "Uses the separate chunk 'ac wedyn' in its time sense ('and then'). It does not drill wedyn as 그러면 ('in that case'), which is what this LEGO teaches."
+    },
+    {
+     "n": 2,
+     "ko": "그리고 그다음에 나는 동의했어",
+     "ok": false,
+     "why": "Uses 'ac wedyn' to mean 'and then' in time, not wedyn as 그러면. It is the wrong sense for this basket."
+    },
+    {
+     "n": 3,
+     "ko": "그리고 그다음에 너는 무엇을 하겠어?",
+     "ok": false,
+     "why": "Uses 'ac wedyn' to mean 'and then' in time, not wedyn as 그러면. It is the wrong sense for this basket."
+    },
+    {
+     "n": 4,
+     "ko": "나는 내 어머니를 의사에게 데려가야 해 그리고 그다음에 나는 느긋하게 쉬면 좋겠어",
+     "ok": false,
+     "why": "Uses 'ac wedyn' to mean 'and then' in time, not wedyn as 그러면. It is the wrong sense for this basket."
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 오늘 저녁 누군가를 만나고 싶어해 그리고 그다음에 그녀는 느긋하게 쉬고 싶어해",
+     "ok": false,
+     "why": "Uses 'ac wedyn' to mean 'and then' in time, not wedyn as 그러면. It is the wrong sense for this basket."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내년에 이야기하는 연습을 할 거야 그리고 그다음에 나는 느긋하게 쉬면 좋겠어",
+     "ok": false,
+     "why": "Uses 'ac wedyn' to mean 'and then' in time, not wedyn as 그러면. It is the wrong sense for this basket."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0490L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L01U02",
+     "keep": false,
+     "why": "Fine, but U03 and U04 match the seed's 'then = in that case' sense better, and only two are needed."
+    },
+    {
+     "id": "cym_for_kor:S0490L01U01",
+     "keep": false,
+     "why": "The Korean says 'won't' (않을 거야) where the Welsh fyddai means 'wouldn't', and the Welsh mixes a present-tense 'if' clause with 'would'."
+    },
+    {
+     "id": "cym_for_kor:S0490L01U05",
+     "keep": false,
+     "why": "The Welsh is a question but the Korean has no question form, so the prompt reads as a statement."
+    },
+    {
+     "id": "cym_for_kor:S0490L01U06",
+     "keep": false,
+     "why": "Acceptable, but U03 and U04 are better, and only two are needed."
+    }
+   ]
+  },
+  "S0490L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 다시는 절대 그 노란 선을 사랑하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 다시는 절대 사랑하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 절대 사랑하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 절대 ~를 고려할 준비가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 당장 절대 준비가 되지 않을 거야",
+     "ok": false,
+     "why": "'Never' combined with 'right now' (byth … rŵan hyn) contradicts itself, so the line is unnatural."
+    },
+    {
+     "n": 6,
+     "ko": "나는 절대 멀리 도망치고 싶지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 절대 늦지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 절대 불친절하지 않기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "하지만 나는 절대 화나지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 절대 가장자리에 너무 가까이 있지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "우리가 예약해야 한다면 나는 절대 늦지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "밥 먹으러 멈추면 좋을 거야 왜냐하면 나는 절대 화나지 않을 거니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 호텔 가까이에 있는 가게를 찾아내고 싶어 왜냐하면 나는 절대 늦지 않을 거니까",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0490L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0490L02U01",
+     "keep": false,
+     "why": "Good, but only one is needed and U06 uses a taught phrase (colli gobaith)."
+    },
+    {
+     "id": "cym_for_kor:S0490L02U02",
+     "keep": false,
+     "why": "Only one is needed."
+    },
+    {
+     "id": "cym_for_kor:S0490L02U03",
+     "keep": false,
+     "why": "The two halves don't follow logically, so it reads unnaturally."
+    },
+    {
+     "id": "cym_for_kor:S0490L02U04",
+     "keep": false,
+     "why": "Only one is needed."
+    },
+    {
+     "id": "cym_for_kor:S0490L02U05",
+     "keep": false,
+     "why": "Too long and contrived for a top-up; only one is needed."
+    }
+   ]
+  },
+  "S0490L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 아무도 신뢰하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 아무도 신뢰할 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 당장 아무도 신뢰하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 아무도 신뢰하지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 아무도 신뢰할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 지금 당장 아무도 신뢰하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 아무도 신뢰할 수 없다고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 아무도 신뢰할 수 없을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0490L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 아무도 확실하지 않았어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' ('in anyone', the object of ymddiried) does not appear. 'doedd neb yn siŵr' is a different chunk where neb is the subject."
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁 아무도 이야기하고 싶은 기분이 아니었어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear. This line has neb as the subject ('doedd neb yn teimlo')."
+    },
+    {
+     "n": 3,
+     "ko": "전쟁 후로 아무도 신뢰하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "아무도 얼마나 나이 들었는지 확실하지 않았어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear; this is 'doedd neb yn siŵr' with neb as the subject."
+    },
+    {
+     "n": 5,
+     "ko": "아무도 그걸 할 수 있는지 확실하지 않았어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear; this is 'doedd neb yn siŵr' with neb as the subject."
+    },
+    {
+     "n": 6,
+     "ko": "미안해 하지만 아무도 그것이 어디에 있었는지 확실하지 않았어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear; this is 'doedd neb yn siŵr' with neb as the subject."
+    },
+    {
+     "n": 7,
+     "ko": "아무도 확실하지 않았어 왜냐하면 그들은 말하지 않았거든",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear; this is 'doedd neb yn siŵr' with neb as the subject."
+    },
+    {
+     "n": 8,
+     "ko": "그들은 그 질문에 대답하고 싶어했어 하지만 아무도 확실하지 않았어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear; this is 'doedd neb yn siŵr' with neb as the subject."
+    },
+    {
+     "n": 9,
+     "ko": "유감이지만 그가 약해지고 있어 하지만 아무도 나에게 말해 주지 않았어",
+     "ok": false,
+     "why": "The LEGO 'yn neb' does not appear; this is 'ddudodd neb' with neb as the subject."
+    }
+   ]
+  },
+  "S0490L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 다시는 너와 이야기하고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 다시는 그 다리 밑에 있기로 되어 있지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 다시는 이 화난 눈을 지켜보고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "아무것도 다시는 나를 더 행복하게 하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내가 다시는 남겨지지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 다시는 올라갈 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "다시는 올라가다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "다시는 ~ 왜냐하면 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그는 다시는 올라가고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 다시는 희망을 잃고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그녀는 다시는 그 여행 가방을 들고 갈 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 그들이 다시는 그 창문을 깰 수 없을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "우리는 다시는 그들이 이기게 둘 수는 없을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}
