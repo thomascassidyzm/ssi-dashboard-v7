@@ -1,0 +1,30 @@
+[
+ {
+  "row": "S0040L03U03",
+  "known": "நீங்கள் எப்படி உணர்கிறீர்கள் கடந்த மாதம்",
+  "target": "how do you feel last month?",
+  "fix": "add \"?\" to the known text; re-record the known clip",
+  "reason": "row text changed since the #447 read"
+ },
+ {
+  "row": "S0099L04U05",
+  "known": "நீங்கள் ஏன் வேலை செய்யவில்லை என்று உங்களை நீங்களே கேட்க விரும்புகிறீர்களா?",
+  "target": "you want to ask yourself why it's not working",
+  "fix": "target is not a question but known has \"?\": reword English as the question or drop the \"?\"",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0124L01U03",
+  "known": "நீங்கள் நினைத்தீர்களா",
+  "target": "you thought today?",
+  "fix": "add \"?\" to the known text; re-record the known clip",
+  "reason": "row text changed since the #447 read"
+ },
+ {
+  "row": "S0125L02U02",
+  "known": "நீங்கள் நம்புகிறீர்களா?",
+  "target": "you believe today",
+  "fix": "target is not a question but known has \"?\": reword English as the question or drop the \"?\"",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ }
+]

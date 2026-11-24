@@ -1,0 +1,89 @@
+[
+ {
+  "lego": "S0062L03",
+  "earlier": "S0062L01",
+  "kind": "dup_debut_same_seed",
+  "reason": "plan rule 2: same-seed twins are read by hand"
+ },
+ {
+  "lego": "S0135L03",
+  "earlier": "S0010L01",
+  "kind": "dup_debut_untaught_at_earlier",
+  "reason": "moving would put words not yet taught at S0010L01 into its basket (P25 re-home is judgement)",
+  "rows": [
+   {
+    "id": "S0135L03B02",
+    "words": [
+     "don't why"
+    ]
+   },
+   {
+    "id": "S0135L03B03",
+    "words": [
+     "don't why think"
+    ]
+   },
+   {
+    "id": "S0135L03U01",
+    "words": [
+     "don't very well"
+    ]
+   },
+   {
+    "id": "S0135L03U03",
+    "words": [
+     "don't if it's problem"
+    ]
+   },
+   {
+    "id": "S0135L03U04",
+    "words": [
+     "don't when more"
+    ]
+   },
+   {
+    "id": "S0135L03U05",
+    "words": [
+     "don't if well"
+    ]
+   },
+   {
+    "id": "S0135L03U06",
+    "words": [
+     "don't why think that it's so good"
+    ]
+   }
+  ]
+ },
+ {
+  "lego": "S0257L01",
+  "kind": "notnew_untaught",
+  "reason": "plan: not a flag sweep; reader pass (pieces / make NEW / re-home, L30/P25) first"
+ },
+ {
+  "lego": "S0281L02",
+  "earlier": "S0190L02",
+  "kind": "dup_debut_untaught_at_earlier",
+  "reason": "moving would put words not yet taught at S0190L02 into its basket (P25 re-home is judgement)",
+  "rows": [
+   {
+    "id": "S0281L02U01",
+    "words": [
+     "coffee"
+    ]
+   },
+   {
+    "id": "S0281L02U03",
+    "words": [
+     "stay longer"
+    ]
+   },
+   {
+    "id": "S0281L02U05",
+    "words": [
+     "coffee"
+    ]
+   }
+  ]
+ }
+]

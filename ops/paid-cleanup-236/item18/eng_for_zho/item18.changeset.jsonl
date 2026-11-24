@@ -1,0 +1,8 @@
+{"format":"ssi-changeset/1","id":"eng_for_zho-item18-cs236","course":"eng_for_zho","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:35.461Z","ops":7,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0004L01B02","expect":{"known_text":"说一些东西","target_text":"To say something"}}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0005L01B03","expect":{"known_text":"练习说","target_text":"Practise speaking"}}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0012L04B02","expect":{"known_text":"会发生什么","target_text":"What's going to happen?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0061L02B02","expect":{"known_text":"你能再说一遍慢一点吗","target_text":"Could you say that again a little more slowly?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0065L02B04","expect":{"known_text":"今天花时间测试一下自己","target_text":"To take time to test yourself today"}}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0131L01B03","expect":{"known_text":"有很多","target_text":"There are a lot"}}
+{"op":"phrase.delete","phrase_id":"eng_for_zho:S0131L03U04","expect":{"known_text":"我脑海里转来转去的想法太多了","target_text":"I've got too many ideas going around in my head"}}

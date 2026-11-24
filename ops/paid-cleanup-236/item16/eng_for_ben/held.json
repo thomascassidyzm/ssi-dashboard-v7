@@ -1,0 +1,65 @@
+[
+ {
+  "lego": "S0177L01",
+  "kind": "notnew_untaught",
+  "reason": "plan: not a flag sweep; reader pass (pieces / make NEW / re-home, L30/P25) first"
+ },
+ {
+  "lego": "S0404L02",
+  "earlier": "S0108L01",
+  "kind": "dup_debut_untaught_at_earlier",
+  "reason": "moving would put words not yet taught at S0108L01 into its basket (P25 re-home is judgement)",
+  "rows": [
+   {
+    "id": "S0404L02B03",
+    "words": [
+     "them"
+    ]
+   },
+   {
+    "id": "S0404L02U01",
+    "words": [
+     "shouldn't thursday"
+    ]
+   },
+   {
+    "id": "S0404L02U02",
+    "words": [
+     "didn't"
+    ]
+   },
+   {
+    "id": "S0404L02U04",
+    "words": [
+     "didn't them"
+    ]
+   },
+   {
+    "id": "S0404L02U05",
+    "words": [
+     "thursday"
+    ]
+   }
+  ]
+ },
+ {
+  "lego": "S0626L02",
+  "earlier": "S0173L01",
+  "kind": "dup_debut_untaught_at_earlier",
+  "reason": "moving would put words not yet taught at S0173L01 into its basket (P25 re-home is judgement)",
+  "rows": [
+   {
+    "id": "S0626L02U01",
+    "words": [
+     "i'm thirsty"
+    ]
+   },
+   {
+    "id": "S0626L02U04",
+    "words": [
+     "father"
+    ]
+   }
+  ]
+ }
+]

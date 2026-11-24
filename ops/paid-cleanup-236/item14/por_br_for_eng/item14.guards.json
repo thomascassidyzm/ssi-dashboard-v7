@@ -1,0 +1,244 @@
+{
+ "changeset": "por_br_for_eng-item14-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "do you want a cup of coffee or tea?",
+    "target_text": "você quer uma xícara de café ou chá?"
+   },
+   "lego_id": "S0623L01",
+   "lego": [
+    {
+     "known_text": "do you want",
+     "target_text": "você quer"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "do you want a cup of coffee or tea?",
+    "target_text": "você quer uma xícara de café ou chá?"
+   },
+   "lego_id": "S0623L03",
+   "lego": [
+    {
+     "known_text": "or tea",
+     "target_text": "ou chá"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "do you want a cup of coffee or tea?",
+    "target_text": "você quer uma xícara de café ou chá?"
+   },
+   "lego_id": "S0623L03",
+   "lego": [
+    {
+     "known_text": "or tea",
+     "target_text": "ou chá"
+    }
+   ]
+  },
+  {
+   "seed_number": 625,
+   "seed": {
+    "known_text": "do you want something to drink?",
+    "target_text": "você quer algo para beber?"
+   },
+   "lego_id": "S0625L03",
+   "lego": [
+    {
+     "known_text": "to drink",
+     "target_text": "para beber"
+    }
+   ]
+  },
+  {
+   "seed_number": 625,
+   "seed": {
+    "known_text": "do you want something to drink?",
+    "target_text": "você quer algo para beber?"
+   },
+   "lego_id": "S0625L03",
+   "lego": [
+    {
+     "known_text": "to drink",
+     "target_text": "para beber"
+    }
+   ]
+  },
+  {
+   "seed_number": 630,
+   "seed": {
+    "known_text": "can I have something to drink please?",
+    "target_text": "posso beber algo, por favor?"
+   },
+   "lego_id": "S0630L02",
+   "lego": [
+    {
+     "known_text": "something to drink",
+     "target_text": "beber algo"
+    }
+   ]
+  },
+  {
+   "seed_number": 637,
+   "seed": {
+    "known_text": "where is her bag?",
+    "target_text": "onde está a bolsa dela?"
+   },
+   "lego_id": "S0637L02",
+   "lego": [
+    {
+     "known_text": "is her bag",
+     "target_text": "está a bolsa dela"
+    }
+   ]
+  },
+  {
+   "seed_number": 642,
+   "seed": {
+    "known_text": "how do you feel madam?",
+    "target_text": "como a senhora se sente?"
+   },
+   "lego_id": "S0642L02",
+   "lego": [
+    {
+     "known_text": "do you feel madam",
+     "target_text": "a senhora se sente"
+    }
+   ]
+  },
+  {
+   "seed_number": 650,
+   "seed": {
+    "known_text": "do you want to go madam?",
+    "target_text": "a senhora quer ir?"
+   },
+   "lego_id": "S0650L02",
+   "lego": [
+    {
+     "known_text": "do you want to go",
+     "target_text": "quer ir"
+    }
+   ]
+  },
+  {
+   "seed_number": 651,
+   "seed": {
+    "known_text": "what do you think madam?",
+    "target_text": "o que a senhora acha?"
+   },
+   "lego_id": "S0651L02",
+   "lego": [
+    {
+     "known_text": "do you think madam",
+     "target_text": "a senhora acha"
+    }
+   ]
+  },
+  {
+   "seed_number": 652,
+   "seed": {
+    "known_text": "what do you need sir?",
+    "target_text": "o que o senhor precisa?"
+   },
+   "lego_id": "S0652L02",
+   "lego": [
+    {
+     "known_text": "do you need sir",
+     "target_text": "o senhor precisa"
+    }
+   ]
+  },
+  {
+   "seed_number": 653,
+   "seed": {
+    "known_text": "do you mind madam?",
+    "target_text": "a senhora se importa?"
+   },
+   "lego_id": "S0653L02",
+   "lego": [
+    {
+     "known_text": "would you mind",
+     "target_text": "se importa"
+    }
+   ]
+  },
+  {
+   "seed_number": 657,
+   "seed": {
+    "known_text": "how do you all feel?",
+    "target_text": "como vocês se sentem?"
+   },
+   "lego_id": "S0657L02",
+   "lego": [
+    {
+     "known_text": "do you all feel",
+     "target_text": "vocês se sentem"
+    }
+   ]
+  },
+  {
+   "seed_number": 658,
+   "seed": {
+    "known_text": "do you all want?",
+    "target_text": "vocês querem?"
+   },
+   "lego_id": "S0658L01",
+   "lego": [
+    {
+     "known_text": "do you all want",
+     "target_text": "vocês querem"
+    }
+   ]
+  },
+  {
+   "seed_number": 664,
+   "seed": {
+    "known_text": "are you all ready?",
+    "target_text": "vocês estão prontos?"
+   },
+   "lego_id": "S0664L02",
+   "lego": [
+    {
+     "known_text": "all ready",
+     "target_text": "prontos"
+    }
+   ]
+  },
+  {
+   "seed_number": 665,
+   "seed": {
+    "known_text": "do you all want to go?",
+    "target_text": "vocês querem ir?"
+   },
+   "lego_id": "S0665L02",
+   "lego": [
+    {
+     "known_text": "go",
+     "target_text": "ir"
+    }
+   ]
+  },
+  {
+   "seed_number": 666,
+   "seed": {
+    "known_text": "what do you all think?",
+    "target_text": "o que vocês acham?"
+   },
+   "lego_id": "S0666L02",
+   "lego": [
+    {
+     "known_text": "do you all think",
+     "target_text": "vocês acham"
+    }
+   ]
+  }
+ ]
+}

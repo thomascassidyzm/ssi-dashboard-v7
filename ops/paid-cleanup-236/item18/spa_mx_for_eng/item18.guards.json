@@ -1,0 +1,34 @@
+{
+ "changeset": "spa_mx_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 33,
+   "seed": {
+    "known_text": "how long have you been learning Spanish?",
+    "target_text": "¿Cuánto tiempo llevas aprendiendo español?"
+   },
+   "lego_id": "S0033L01",
+   "lego": [
+    {
+     "known_text": "you have been learning",
+     "target_text": "llevas aprendiendo"
+    }
+   ]
+  },
+  {
+   "seed_number": 339,
+   "seed": {
+    "known_text": "no I think he's hurt himself quite badly",
+    "target_text": "no, creo que se ha hecho bastante daño"
+   },
+   "lego_id": "S0339L01",
+   "lego": [
+    {
+     "known_text": "he's hurt himself",
+     "target_text": "se ha hecho daño"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+[
+ {
+  "row": "S0017L02B01",
+  "known": "উত্তরটা কী?",
+  "target": "what the answer is",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0021L02B01",
+  "known": "তুমি শিখছ",
+  "target": "are you learning?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0021L02B03",
+  "known": "তুমি দ্রুত শিখছ",
+  "target": "are you learning quickly?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0033L02B01",
+  "known": "তুমি শিখছিলে",
+  "target": "have you been learning?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0033L02B02",
+  "known": "তুমি সারাদিন শিখছিলে",
+  "target": "have you been learning all day?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0075L01B01",
+  "known": "তোমার আছে",
+  "target": "have you got?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0278L01B03",
+  "known": "গত রাতে শেষ করতে হয়েছিল",
+  "target": "did you have to finish last night?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ }
+]

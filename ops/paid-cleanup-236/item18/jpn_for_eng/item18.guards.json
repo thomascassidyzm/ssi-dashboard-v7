@@ -1,0 +1,1490 @@
+{
+ "changeset": "jpn_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 11,
+   "seed": {
+    "known_text": "it would be good if I could speak later",
+    "target_text": "あとで、話せたらいい"
+   },
+   "lego_id": "S0011L01",
+   "lego": [
+    {
+     "known_text": "it would be good if I could speak",
+     "target_text": "話せたらいい"
+    }
+   ]
+  },
+  {
+   "seed_number": 11,
+   "seed": {
+    "known_text": "it would be good if I could speak later",
+    "target_text": "あとで、話せたらいい"
+   },
+   "lego_id": "S0011L01",
+   "lego": [
+    {
+     "known_text": "it would be good if I could speak",
+     "target_text": "話せたらいい"
+    }
+   ]
+  },
+  {
+   "seed_number": 17,
+   "seed": {
+    "known_text": "she wants to find out what the answer is",
+    "target_text": "彼女は、答えを知りたがってる"
+   },
+   "lego_id": "S0017L03",
+   "lego": [
+    {
+     "known_text": "she",
+     "target_text": "彼女"
+    }
+   ]
+  },
+  {
+   "seed_number": 24,
+   "seed": {
+    "known_text": "I think I can't remember easily",
+    "target_text": "簡単には覚えられないと思う"
+   },
+   "lego_id": "S0024L01",
+   "lego": [
+    {
+     "known_text": "I think I can't remember",
+     "target_text": "覚えられないと思う"
+    }
+   ]
+  },
+  {
+   "seed_number": 24,
+   "seed": {
+    "known_text": "I think I can't remember easily",
+    "target_text": "簡単には覚えられないと思う"
+   },
+   "lego_id": "S0024L01",
+   "lego": [
+    {
+     "known_text": "I think I can't remember",
+     "target_text": "覚えられないと思う"
+    }
+   ]
+  },
+  {
+   "seed_number": 27,
+   "seed": {
+    "known_text": "I don't like taking too much time to answer",
+    "target_text": "答えるのに時間がかかるのは好きじゃない"
+   },
+   "lego_id": "S0027L02",
+   "lego": [
+    {
+     "known_text": "it takes time",
+     "target_text": "時間がかかる"
+    }
+   ]
+  },
+  {
+   "seed_number": 27,
+   "seed": {
+    "known_text": "I don't like taking too much time to answer",
+    "target_text": "答えるのに時間がかかるのは好きじゃない"
+   },
+   "lego_id": "S0027L03",
+   "lego": [
+    {
+     "known_text": "to answer",
+     "target_text": "答えるのに"
+    }
+   ]
+  },
+  {
+   "seed_number": 28,
+   "seed": {
+    "known_text": "it's useful to start talking as soon as you can",
+    "target_text": "できるだけ早く話し始めるのが大事"
+   },
+   "lego_id": "S0028L01",
+   "lego": [
+    {
+     "known_text": "is important",
+     "target_text": "のが大事"
+    }
+   ]
+  },
+  {
+   "seed_number": 28,
+   "seed": {
+    "known_text": "it's useful to start talking as soon as you can",
+    "target_text": "できるだけ早く話し始めるのが大事"
+   },
+   "lego_id": "S0028L01",
+   "lego": [
+    {
+     "known_text": "is important",
+     "target_text": "のが大事"
+    }
+   ]
+  },
+  {
+   "seed_number": 48,
+   "seed": {
+    "known_text": "even if I make mistakes, it's okay",
+    "target_text": "間違えても大丈夫"
+   },
+   "lego_id": "S0048L01",
+   "lego": [
+    {
+     "known_text": "even if I make mistakes",
+     "target_text": "間違えても"
+    }
+   ]
+  },
+  {
+   "seed_number": 48,
+   "seed": {
+    "known_text": "even if I make mistakes, it's okay",
+    "target_text": "間違えても大丈夫"
+   },
+   "lego_id": "S0048L01",
+   "lego": [
+    {
+     "known_text": "even if I make mistakes",
+     "target_text": "間違えても"
+    }
+   ]
+  },
+  {
+   "seed_number": 51,
+   "seed": {
+    "known_text": "I enjoy doing interesting things with my friends",
+    "target_text": "友だちと面白いことをするのが好き"
+   },
+   "lego_id": "S0051L01",
+   "lego": [
+    {
+     "known_text": "enjoy doing",
+     "target_text": "するのが好き"
+    }
+   ]
+  },
+  {
+   "seed_number": 51,
+   "seed": {
+    "known_text": "I enjoy doing interesting things with my friends",
+    "target_text": "友だちと面白いことをするのが好き"
+   },
+   "lego_id": "S0051L02",
+   "lego": [
+    {
+     "known_text": "interesting things",
+     "target_text": "面白いこと"
+    }
+   ]
+  },
+  {
+   "seed_number": 51,
+   "seed": {
+    "known_text": "I enjoy doing interesting things with my friends",
+    "target_text": "友だちと面白いことをするのが好き"
+   },
+   "lego_id": "S0051L03",
+   "lego": [
+    {
+     "known_text": "with my friends",
+     "target_text": "友だちと"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "先週、彼は友だちに手紙を書きたかった"
+   },
+   "lego_id": "S0052L01",
+   "lego": [
+    {
+     "known_text": "wanted to",
+     "target_text": "たかった"
+    }
+   ]
+  },
+  {
+   "seed_number": 52,
+   "seed": {
+    "known_text": "he wanted to write a letter to his friend last week",
+    "target_text": "先週、彼は友だちに手紙を書きたかった"
+   },
+   "lego_id": "S0052L02",
+   "lego": [
+    {
+     "known_text": "write a letter",
+     "target_text": "手紙を書く"
+    }
+   ]
+  },
+  {
+   "seed_number": 53,
+   "seed": {
+    "known_text": "she wanted to put his letter in her bag",
+    "target_text": "彼女はその手紙をバッグに入れたかった"
+   },
+   "lego_id": "S0053L02",
+   "lego": [
+    {
+     "known_text": "that letter",
+     "target_text": "その手紙"
+    }
+   ]
+  },
+  {
+   "seed_number": 55,
+   "seed": {
+    "known_text": "I don't enjoy waking up when I didn't sleep very well",
+    "target_text": "よく眠れなかった朝は好きじゃない"
+   },
+   "lego_id": "S0055L01",
+   "lego": [
+    {
+     "known_text": "sleep well",
+     "target_text": "よく眠れる"
+    }
+   ]
+  },
+  {
+   "seed_number": 59,
+   "seed": {
+    "known_text": "I know how to do what I need to do next week",
+    "target_text": "来週、何をするか分かってる"
+   },
+   "lego_id": "S0059L03",
+   "lego": [
+    {
+     "known_text": "what to do",
+     "target_text": "何をするか"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "I'm not sure if I can help you at the same time",
+    "target_text": "同時に手伝えるか分からない"
+   },
+   "lego_id": "S0062L02",
+   "lego": [
+    {
+     "known_text": "help you at the same time",
+     "target_text": "同時に手伝える"
+    }
+   ]
+  },
+  {
+   "seed_number": 63,
+   "seed": {
+    "known_text": "are you sure you don't mind helping me?",
+    "target_text": "手伝っても大丈夫？"
+   },
+   "lego_id": "S0063L02",
+   "lego": [
+    {
+     "known_text": "helping me",
+     "target_text": "手伝っても"
+    }
+   ]
+  },
+  {
+   "seed_number": 64,
+   "seed": {
+    "known_text": "learning Japanese isn't easy but it is fun",
+    "target_text": "日本語は難しいけど、楽しい"
+   },
+   "lego_id": "S0064L01",
+   "lego": [
+    {
+     "known_text": "learning Japanese",
+     "target_text": "日本語"
+    }
+   ]
+  },
+  {
+   "seed_number": 64,
+   "seed": {
+    "known_text": "learning Japanese isn't easy but it is fun",
+    "target_text": "日本語は難しいけど、楽しい"
+   },
+   "lego_id": "S0064L01",
+   "lego": [
+    {
+     "known_text": "learning Japanese",
+     "target_text": "日本語"
+    }
+   ]
+  },
+  {
+   "seed_number": 64,
+   "seed": {
+    "known_text": "learning Japanese isn't easy but it is fun",
+    "target_text": "日本語は難しいけど、楽しい"
+   },
+   "lego_id": "S0064L02",
+   "lego": [
+    {
+     "known_text": "isn't easy but it is fun",
+     "target_text": "難しいけど、楽しい"
+    }
+   ]
+  },
+  {
+   "seed_number": 64,
+   "seed": {
+    "known_text": "learning Japanese isn't easy but it is fun",
+    "target_text": "日本語は難しいけど、楽しい"
+   },
+   "lego_id": "S0064L02",
+   "lego": [
+    {
+     "known_text": "isn't easy but it is fun",
+     "target_text": "難しいけど、楽しい"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "自分を試す時間は大事"
+   },
+   "lego_id": "S0065L01",
+   "lego": [
+    {
+     "known_text": "it's important to",
+     "target_text": "大事"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "自分を試す時間は大事"
+   },
+   "lego_id": "S0065L01",
+   "lego": [
+    {
+     "known_text": "it's important to",
+     "target_text": "大事"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "自分を試す時間は大事"
+   },
+   "lego_id": "S0065L01",
+   "lego": [
+    {
+     "known_text": "it's important to",
+     "target_text": "大事"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "it's important to take time to test yourself",
+    "target_text": "自分を試す時間は大事"
+   },
+   "lego_id": "S0065L02",
+   "lego": [
+    {
+     "known_text": "take time to test yourself",
+     "target_text": "自分を試す時間"
+    }
+   ]
+  },
+  {
+   "seed_number": 66,
+   "seed": {
+    "known_text": "it's not difficult to find the answer",
+    "target_text": "答えを見つけるのは難しくない"
+   },
+   "lego_id": "S0066L01",
+   "lego": [
+    {
+     "known_text": "it's not difficult to",
+     "target_text": "難しくない"
+    }
+   ]
+  },
+  {
+   "seed_number": 66,
+   "seed": {
+    "known_text": "it's not difficult to find the answer",
+    "target_text": "答えを見つけるのは難しくない"
+   },
+   "lego_id": "S0066L01",
+   "lego": [
+    {
+     "known_text": "it's not difficult to",
+     "target_text": "難しくない"
+    }
+   ]
+  },
+  {
+   "seed_number": 66,
+   "seed": {
+    "known_text": "it's not difficult to find the answer",
+    "target_text": "答えを見つけるのは難しくない"
+   },
+   "lego_id": "S0066L02",
+   "lego": [
+    {
+     "known_text": "find the answer",
+     "target_text": "答えを見つける"
+    }
+   ]
+  },
+  {
+   "seed_number": 67,
+   "seed": {
+    "known_text": "why do you want to stop?",
+    "target_text": "なんで止めたいの？"
+   },
+   "lego_id": "S0067L01",
+   "lego": [
+    {
+     "known_text": "why do you",
+     "target_text": "なんで"
+    }
+   ]
+  },
+  {
+   "seed_number": 67,
+   "seed": {
+    "known_text": "why do you want to stop?",
+    "target_text": "なんで止めたいの？"
+   },
+   "lego_id": "S0067L02",
+   "lego": [
+    {
+     "known_text": "want to stop",
+     "target_text": "止めたい"
+    }
+   ]
+  },
+  {
+   "seed_number": 68,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "何を探してる？"
+   },
+   "lego_id": "S0068L01",
+   "lego": [
+    {
+     "known_text": "what are you",
+     "target_text": "何を"
+    }
+   ]
+  },
+  {
+   "seed_number": 68,
+   "seed": {
+    "known_text": "what are you looking for?",
+    "target_text": "何を探してる？"
+   },
+   "lego_id": "S0068L02",
+   "lego": [
+    {
+     "known_text": "looking for",
+     "target_text": "探してる"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "彼は午後ずっと子犬を世話したくなかった"
+   },
+   "lego_id": "S0069L02",
+   "lego": [
+    {
+     "known_text": "look after the young dog",
+     "target_text": "子犬を世話する"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "彼は午後ずっと子犬を世話したくなかった"
+   },
+   "lego_id": "S0069L02",
+   "lego": [
+    {
+     "known_text": "look after the young dog",
+     "target_text": "子犬を世話する"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "彼は午後ずっと子犬を世話したくなかった"
+   },
+   "lego_id": "S0069L03",
+   "lego": [
+    {
+     "known_text": "all afternoon",
+     "target_text": "午後ずっと"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "he didn't want to look after the young dog all afternoon",
+    "target_text": "彼は午後ずっと子犬を世話したくなかった"
+   },
+   "lego_id": "S0069L03",
+   "lego": [
+    {
+     "known_text": "all afternoon",
+     "target_text": "午後ずっと"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "ありがとう、でも、まだ学ぶことがある"
+   },
+   "lego_id": "S0073L03",
+   "lego": [
+    {
+     "known_text": "I've got more to learn",
+     "target_text": "まだ学ぶことがある"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "thank you very much, but I've got more to learn",
+    "target_text": "ありがとう、でも、まだ学ぶことがある"
+   },
+   "lego_id": "S0073L03",
+   "lego": [
+    {
+     "known_text": "I've got more to learn",
+     "target_text": "まだ学ぶことがある"
+    }
+   ]
+  },
+  {
+   "seed_number": 74,
+   "seed": {
+    "known_text": "thank you very much for helping me to understand",
+    "target_text": "理解するのを手伝ってくれてありがとう"
+   },
+   "lego_id": "S0074L02",
+   "lego": [
+    {
+     "known_text": "helping me to understand",
+     "target_text": "理解するのを手伝ってくれて"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "I'm very happy with how much I've learnt already",
+    "target_text": "もう学んだことには満足してる"
+   },
+   "lego_id": "S0076L02",
+   "lego": [
+    {
+     "known_text": "how much I've learnt",
+     "target_text": "もう学んだこと"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "I'm surprised at how quickly I'm starting to understand",
+    "target_text": "分かるのが早くなってきて驚いてる"
+   },
+   "lego_id": "S0077L02",
+   "lego": [
+    {
+     "known_text": "how quickly",
+     "target_text": "早く"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "今の、分からなかった"
+   },
+   "lego_id": "S0078L01",
+   "lego": [
+    {
+     "known_text": "I don't understand",
+     "target_text": "分からなかった"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "I don't understand what you said",
+    "target_text": "今の、分からなかった"
+   },
+   "lego_id": "S0078L01",
+   "lego": [
+    {
+     "known_text": "I don't understand",
+     "target_text": "分からなかった"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "いつ準備できるか分からない"
+   },
+   "lego_id": "S0080L01",
+   "lego": [
+    {
+     "known_text": "I'm not sure",
+     "target_text": "分からない"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "いつ準備できるか分からない"
+   },
+   "lego_id": "S0080L01",
+   "lego": [
+    {
+     "known_text": "I'm not sure",
+     "target_text": "分からない"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "いつ準備できるか分からない"
+   },
+   "lego_id": "S0080L01",
+   "lego": [
+    {
+     "known_text": "I'm not sure",
+     "target_text": "分からない"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "いつ準備できるか分からない"
+   },
+   "lego_id": "S0080L01",
+   "lego": [
+    {
+     "known_text": "I'm not sure",
+     "target_text": "分からない"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "いつ準備できるか分からない"
+   },
+   "lego_id": "S0080L02",
+   "lego": [
+    {
+     "known_text": "when I'll be ready",
+     "target_text": "いつ準備できるか"
+    }
+   ]
+  },
+  {
+   "seed_number": 80,
+   "seed": {
+    "known_text": "I'm not sure when I'll be ready",
+    "target_text": "いつ準備できるか分からない"
+   },
+   "lego_id": "S0080L02",
+   "lego": [
+    {
+     "known_text": "when I'll be ready",
+     "target_text": "いつ準備できるか"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "I'm not going to wait for you. Why not?",
+    "target_text": "待たない。なんで？"
+   },
+   "lego_id": "S0082L01",
+   "lego": [
+    {
+     "known_text": "not going to wait",
+     "target_text": "待たない"
+    }
+   ]
+  },
+  {
+   "seed_number": 85,
+   "seed": {
+    "known_text": "I don't know those people",
+    "target_text": "あの人たちを知らない"
+   },
+   "lego_id": "S0085L01",
+   "lego": [
+    {
+     "known_text": "those people",
+     "target_text": "あの人たち"
+    }
+   ]
+  },
+  {
+   "seed_number": 85,
+   "seed": {
+    "known_text": "I don't know those people",
+    "target_text": "あの人たちを知らない"
+   },
+   "lego_id": "S0085L01",
+   "lego": [
+    {
+     "known_text": "those people",
+     "target_text": "あの人たち"
+    }
+   ]
+  },
+  {
+   "seed_number": 86,
+   "seed": {
+    "known_text": "it wasn't possible, unfortunately",
+    "target_text": "残念だけど、無理だった"
+   },
+   "lego_id": "S0086L01",
+   "lego": [
+    {
+     "known_text": "wasn't possible",
+     "target_text": "無理だった"
+    }
+   ]
+  },
+  {
+   "seed_number": 86,
+   "seed": {
+    "known_text": "it wasn't possible, unfortunately",
+    "target_text": "残念だけど、無理だった"
+   },
+   "lego_id": "S0086L01",
+   "lego": [
+    {
+     "known_text": "wasn't possible",
+     "target_text": "無理だった"
+    }
+   ]
+  },
+  {
+   "seed_number": 86,
+   "seed": {
+    "known_text": "it wasn't possible, unfortunately",
+    "target_text": "残念だけど、無理だった"
+   },
+   "lego_id": "S0086L02",
+   "lego": [
+    {
+     "known_text": "unfortunately",
+     "target_text": "残念だけど"
+    }
+   ]
+  },
+  {
+   "seed_number": 87,
+   "seed": {
+    "known_text": "they are people I don't know",
+    "target_text": "知らない人たちだ"
+   },
+   "lego_id": "S0087L01",
+   "lego": [
+    {
+     "known_text": "people I don't know",
+     "target_text": "知らない人たち"
+    }
+   ]
+  },
+  {
+   "seed_number": 87,
+   "seed": {
+    "known_text": "they are people I don't know",
+    "target_text": "知らない人たちだ"
+   },
+   "lego_id": "S0087L01",
+   "lego": [
+    {
+     "known_text": "people I don't know",
+     "target_text": "知らない人たち"
+    }
+   ]
+  },
+  {
+   "seed_number": 88,
+   "seed": {
+    "known_text": "I'm not ready to talk to people I don't know yet",
+    "target_text": "知らない人とは、まだ話したくない"
+   },
+   "lego_id": "S0088L01",
+   "lego": [
+    {
+     "known_text": "not ready to talk yet",
+     "target_text": "まだ話したくない"
+    }
+   ]
+  },
+  {
+   "seed_number": 89,
+   "seed": {
+    "known_text": "I think that I've done a lot in a short time",
+    "target_text": "短い時間で、たくさんやったと思う"
+   },
+   "lego_id": "S0089L01",
+   "lego": [
+    {
+     "known_text": "done a lot",
+     "target_text": "たくさんやった"
+    }
+   ]
+  },
+  {
+   "seed_number": 89,
+   "seed": {
+    "known_text": "I think that I've done a lot in a short time",
+    "target_text": "短い時間で、たくさんやったと思う"
+   },
+   "lego_id": "S0089L02",
+   "lego": [
+    {
+     "known_text": "in a short time",
+     "target_text": "短い時間で"
+    }
+   ]
+  },
+  {
+   "seed_number": 90,
+   "seed": {
+    "known_text": "if you can speak more slowly that would be great",
+    "target_text": "もっとゆっくり話してくれると助かる"
+   },
+   "lego_id": "S0090L01",
+   "lego": [
+    {
+     "known_text": "speak more slowly",
+     "target_text": "もっとゆっくり話してくれる"
+    }
+   ]
+  },
+  {
+   "seed_number": 91,
+   "seed": {
+    "known_text": "it's difficult to quickly answer",
+    "target_text": "すぐ答えるのは難しい"
+   },
+   "lego_id": "S0091L01",
+   "lego": [
+    {
+     "known_text": "quickly answer",
+     "target_text": "すぐ答える"
+    }
+   ]
+  },
+  {
+   "seed_number": 92,
+   "seed": {
+    "known_text": "I want to keep on doing a little more",
+    "target_text": "もう少し続けたい"
+   },
+   "lego_id": "S0092L02",
+   "lego": [
+    {
+     "known_text": "want to keep on doing",
+     "target_text": "続けたい"
+    }
+   ]
+  },
+  {
+   "seed_number": 96,
+   "seed": {
+    "known_text": "no I'm not ready yet, I need a little more time",
+    "target_text": "まだ準備できてない、もう少し時間がいる"
+   },
+   "lego_id": "S0096L01",
+   "lego": [
+    {
+     "known_text": "not yet",
+     "target_text": "まだ"
+    }
+   ]
+  },
+  {
+   "seed_number": 97,
+   "seed": {
+    "known_text": "yes I'm ready to go as soon as you want",
+    "target_text": "いつでも行ける"
+   },
+   "lego_id": "S0097L01",
+   "lego": [
+    {
+     "known_text": "as soon as you want",
+     "target_text": "いつでも"
+    }
+   ]
+  },
+  {
+   "seed_number": 97,
+   "seed": {
+    "known_text": "yes I'm ready to go as soon as you want",
+    "target_text": "いつでも行ける"
+   },
+   "lego_id": "S0097L01",
+   "lego": [
+    {
+     "known_text": "as soon as you want",
+     "target_text": "いつでも"
+    }
+   ]
+  },
+  {
+   "seed_number": 98,
+   "seed": {
+    "known_text": "we should consider something else",
+    "target_text": "別のことを考えたほうがいい"
+   },
+   "lego_id": "S0098L01",
+   "lego": [
+    {
+     "known_text": "something else",
+     "target_text": "別のこと"
+    }
+   ]
+  },
+  {
+   "seed_number": 100,
+   "seed": {
+    "known_text": "you shouldn't worry about doing something similar",
+    "target_text": "似たことを心配しなくていい"
+   },
+   "lego_id": "S0100L01",
+   "lego": [
+    {
+     "known_text": "something similar",
+     "target_text": "似たこと"
+    }
+   ]
+  },
+  {
+   "seed_number": 105,
+   "seed": {
+    "known_text": "that's why the answer wasn't clear",
+    "target_text": "だから答えが分からなかった"
+   },
+   "lego_id": "S0105L01",
+   "lego": [
+    {
+     "known_text": "that's why the answer",
+     "target_text": "だから答えが"
+    }
+   ]
+  },
+  {
+   "seed_number": 105,
+   "seed": {
+    "known_text": "that's why the answer wasn't clear",
+    "target_text": "だから答えが分からなかった"
+   },
+   "lego_id": "S0105L01",
+   "lego": [
+    {
+     "known_text": "that's why the answer",
+     "target_text": "だから答えが"
+    }
+   ]
+  },
+  {
+   "seed_number": 105,
+   "seed": {
+    "known_text": "that's why the answer wasn't clear",
+    "target_text": "だから答えが分からなかった"
+   },
+   "lego_id": "S0105L01",
+   "lego": [
+    {
+     "known_text": "that's why the answer",
+     "target_text": "だから答えが"
+    }
+   ]
+  },
+  {
+   "seed_number": 112,
+   "seed": {
+    "known_text": "that was very interesting, and I wasn't expecting it",
+    "target_text": "面白かったけど、予想してなかった"
+   },
+   "lego_id": "S0112L01",
+   "lego": [
+    {
+     "known_text": "I wasn't expecting",
+     "target_text": "予想してなかった"
+    }
+   ]
+  },
+  {
+   "seed_number": 115,
+   "seed": {
+    "known_text": "I don't feel as if I'm ready to have a conversation",
+    "target_text": "まだ会話する準備ができてない"
+   },
+   "lego_id": "S0115L02",
+   "lego": [
+    {
+     "known_text": "have a conversation",
+     "target_text": "会話する"
+    }
+   ]
+  },
+  {
+   "seed_number": 116,
+   "seed": {
+    "known_text": "this isn't the best choice I could make",
+    "target_text": "これが一番いい選択じゃない"
+   },
+   "lego_id": "S0116L02",
+   "lego": [
+    {
+     "known_text": "the best",
+     "target_text": "一番いい"
+    }
+   ]
+  },
+  {
+   "seed_number": 118,
+   "seed": {
+    "known_text": "I feel better than I felt when we were in the pub",
+    "target_text": "あの時より、今のほうがいい"
+   },
+   "lego_id": "S0118L01",
+   "lego": [
+    {
+     "known_text": "at that time",
+     "target_text": "あの時"
+    }
+   ]
+  },
+  {
+   "seed_number": 122,
+   "seed": {
+    "known_text": "it's starting to feel easier and I'm excited about how it's going",
+    "target_text": "だんだん楽になってきて、ワクワクしてる"
+   },
+   "lego_id": "S0122L02",
+   "lego": [
+    {
+     "known_text": "excited",
+     "target_text": "ワクワク"
+    }
+   ]
+  },
+  {
+   "seed_number": 129,
+   "seed": {
+    "known_text": "it's going well, so I'm really happy",
+    "target_text": "うまくいってて、すごく嬉しい"
+   },
+   "lego_id": "S0129L02",
+   "lego": [
+    {
+     "known_text": "going well",
+     "target_text": "うまくいってて"
+    }
+   ]
+  },
+  {
+   "seed_number": 129,
+   "seed": {
+    "known_text": "it's going well, so I'm really happy",
+    "target_text": "うまくいってて、すごく嬉しい"
+   },
+   "lego_id": "S0129L02",
+   "lego": [
+    {
+     "known_text": "going well",
+     "target_text": "うまくいってて"
+    }
+   ]
+  },
+  {
+   "seed_number": 138,
+   "seed": {
+    "known_text": "this was the place we were planning to meet",
+    "target_text": "ここが会う予定だった場所"
+   },
+   "lego_id": "S0138L02",
+   "lego": [
+    {
+     "known_text": "was planning to",
+     "target_text": "予定だった"
+    }
+   ]
+  },
+  {
+   "seed_number": 178,
+   "seed": {
+    "known_text": "I didn't have time, although I wanted to see you",
+    "target_text": "会いたかったけど、時間なかった"
+   },
+   "lego_id": "S0178L02",
+   "lego": [
+    {
+     "known_text": "didn't have time",
+     "target_text": "時間なかった"
+    }
+   ]
+  },
+  {
+   "seed_number": 187,
+   "seed": {
+    "known_text": "I'm happy so far",
+    "target_text": "今のところ、満足してる"
+   },
+   "lego_id": "S0187L02",
+   "lego": [
+    {
+     "known_text": "I'm happy",
+     "target_text": "満足してる"
+    }
+   ]
+  },
+  {
+   "seed_number": 210,
+   "seed": {
+    "known_text": "we need to discuss the problem",
+    "target_text": "この問題、話し合う必要がある"
+   },
+   "lego_id": "S0210L02",
+   "lego": [
+    {
+     "known_text": "the problem",
+     "target_text": "この問題"
+    }
+   ]
+  },
+  {
+   "seed_number": 217,
+   "seed": {
+    "known_text": "I had a glass or two of water",
+    "target_text": "水を一、二杯飲んだ"
+   },
+   "lego_id": "S0217L01",
+   "lego": [
+    {
+     "known_text": "water",
+     "target_text": "水"
+    }
+   ]
+  },
+  {
+   "seed_number": 222,
+   "seed": {
+    "known_text": "he's trying to tell me what he wants",
+    "target_text": "彼は何が欲しいか伝えようとしてる"
+   },
+   "lego_id": "S0222L02",
+   "lego": [
+    {
+     "known_text": "wants",
+     "target_text": "欲しいか"
+    }
+   ]
+  },
+  {
+   "seed_number": 237,
+   "seed": {
+    "known_text": "he wanted me to tell you before the weekend",
+    "target_text": "週末前に伝えてほしかった"
+   },
+   "lego_id": "S0237L02",
+   "lego": [
+    {
+     "known_text": "wanted me to tell you",
+     "target_text": "伝えてほしかった"
+    }
+   ]
+  },
+  {
+   "seed_number": 272,
+   "seed": {
+    "known_text": "yes that sounds like a great idea",
+    "target_text": "うん、それ最高"
+   },
+   "lego_id": "S0272L01",
+   "lego": [
+    {
+     "known_text": "yes that sounds like a great idea",
+     "target_text": "うん、それ最高"
+    }
+   ]
+  },
+  {
+   "seed_number": 275,
+   "seed": {
+    "known_text": "longer",
+    "target_text": "もっと長く"
+   },
+   "lego_id": "S0275L01",
+   "lego": [
+    {
+     "known_text": "longer",
+     "target_text": "もっと長く"
+    }
+   ]
+  },
+  {
+   "seed_number": 277,
+   "seed": {
+    "known_text": "yes I've got an important meeting early next week",
+    "target_text": "来週早めに大事な会議がある"
+   },
+   "lego_id": "S0277L01",
+   "lego": [
+    {
+     "known_text": "early next week",
+     "target_text": "来週早めに"
+    }
+   ]
+  },
+  {
+   "seed_number": 277,
+   "seed": {
+    "known_text": "yes I've got an important meeting early next week",
+    "target_text": "来週早めに大事な会議がある"
+   },
+   "lego_id": "S0277L02",
+   "lego": [
+    {
+     "known_text": "important meeting",
+     "target_text": "大事な会議"
+    }
+   ]
+  },
+  {
+   "seed_number": 277,
+   "seed": {
+    "known_text": "yes I've got an important meeting early next week",
+    "target_text": "来週早めに大事な会議がある"
+   },
+   "lego_id": "S0277L03",
+   "lego": [
+    {
+     "known_text": "yes I've got an important meeting early next week",
+     "target_text": "来週早めに大事な会議がある"
+    }
+   ]
+  },
+  {
+   "seed_number": 285,
+   "seed": {
+    "known_text": "she speaks Japanese",
+    "target_text": "彼女、日本語話せる"
+   },
+   "lego_id": "S0285L01",
+   "lego": [
+    {
+     "known_text": "she can speak Japanese",
+     "target_text": "彼女、日本語話せる"
+    }
+   ]
+  },
+  {
+   "seed_number": 285,
+   "seed": {
+    "known_text": "she speaks Japanese",
+    "target_text": "彼女、日本語話せる"
+   },
+   "lego_id": "S0285L01",
+   "lego": [
+    {
+     "known_text": "she can speak Japanese",
+     "target_text": "彼女、日本語話せる"
+    }
+   ]
+  },
+  {
+   "seed_number": 291,
+   "seed": {
+    "known_text": "I hope I'll be able to speak better soon",
+    "target_text": "もっと上手に話せるようになりたい"
+   },
+   "lego_id": "S0291L02",
+   "lego": [
+    {
+     "known_text": "I hope I'll be able to speak better",
+     "target_text": "上手に話せるようになりたい"
+    }
+   ]
+  },
+  {
+   "seed_number": 294,
+   "seed": {
+    "known_text": "I don't have enough time to call you tonight",
+    "target_text": "今夜は電話する時間がない"
+   },
+   "lego_id": "S0294L01",
+   "lego": [
+    {
+     "known_text": "don't have time to call",
+     "target_text": "電話する時間がない"
+    }
+   ]
+  },
+  {
+   "seed_number": 294,
+   "seed": {
+    "known_text": "I don't have enough time to call you tonight",
+    "target_text": "今夜は電話する時間がない"
+   },
+   "lego_id": "S0294L01",
+   "lego": [
+    {
+     "known_text": "don't have time to call",
+     "target_text": "電話する時間がない"
+    }
+   ]
+  },
+  {
+   "seed_number": 298,
+   "seed": {
+    "known_text": "I've got nothing left to say",
+    "target_text": "もう言うことがない"
+   },
+   "lego_id": "S0298L01",
+   "lego": [
+    {
+     "known_text": "nothing left to say anymore",
+     "target_text": "もう言うことがない"
+    }
+   ]
+  },
+  {
+   "seed_number": 470,
+   "seed": {
+    "known_text": "how high do you want to climb?",
+    "target_text": "どこまで登りたい？"
+   },
+   "lego_id": "S0470L02",
+   "lego": [
+    {
+     "known_text": "want to climb",
+     "target_text": "登りたい"
+    }
+   ]
+  },
+  {
+   "seed_number": 490,
+   "seed": {
+    "known_text": "then I will never trust anyone ever again",
+    "target_text": "二度と誰も信じない"
+   },
+   "lego_id": "S0490L01",
+   "lego": [
+    {
+     "known_text": "never again",
+     "target_text": "二度と"
+    }
+   ]
+  },
+  {
+   "seed_number": 557,
+   "seed": {
+    "known_text": "I wish they wouldn't play such loud music",
+    "target_text": "あんなに大きな音でかけなければいいのに"
+   },
+   "lego_id": "S0557L04",
+   "lego": [
+    {
+     "known_text": "I wish",
+     "target_text": "いいのに"
+    }
+   ]
+  },
+  {
+   "seed_number": 574,
+   "seed": {
+    "known_text": "the holidays are very special for everyone",
+    "target_text": "休みはみんなにとって特別"
+   },
+   "lego_id": "S0574L02",
+   "lego": [
+    {
+     "known_text": "the holidays are very special for everyone",
+     "target_text": "休みはみんなにとって特別"
+    }
+   ]
+  },
+  {
+   "seed_number": 578,
+   "seed": {
+    "known_text": "somewhere warmer",
+    "target_text": "もっと暖かい場所"
+   },
+   "lego_id": "S0578L02",
+   "lego": [
+    {
+     "known_text": "somewhere warmer",
+     "target_text": "もっと暖かい場所"
+    }
+   ]
+  },
+  {
+   "seed_number": 656,
+   "seed": {
+    "known_text": "with you all",
+    "target_text": "ご一緒に"
+   },
+   "lego_id": "S0656L01",
+   "lego": [
+    {
+     "known_text": "with you all",
+     "target_text": "ご一緒に"
+    }
+   ]
+  }
+ ]
+}

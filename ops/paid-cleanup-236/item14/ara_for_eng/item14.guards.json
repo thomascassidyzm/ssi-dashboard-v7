@@ -1,0 +1,944 @@
+{
+ "changeset": "ara_for_eng-item14-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L01",
+   "lego": [
+    {
+     "known_text": "how",
+     "target_text": "كَيْفَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L01",
+   "lego": [
+    {
+     "known_text": "how",
+     "target_text": "كَيْفَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L01",
+   "lego": [
+    {
+     "known_text": "how",
+     "target_text": "كَيْفَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L01",
+   "lego": [
+    {
+     "known_text": "how",
+     "target_text": "كَيْفَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L02",
+   "lego": [
+    {
+     "known_text": "I speak",
+     "target_text": "أَتَكَلَّمُ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L02",
+   "lego": [
+    {
+     "known_text": "I speak",
+     "target_text": "أَتَكَلَّمُ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L02",
+   "lego": [
+    {
+     "known_text": "I speak",
+     "target_text": "أَتَكَلَّمُ"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L03",
+   "lego": [
+    {
+     "known_text": "as often as possible",
+     "target_text": "قَدْرَ الإِمْكان"
+    }
+   ]
+  },
+  {
+   "seed_number": 3,
+   "seed": {
+    "known_text": "how to speak as often as possible",
+    "target_text": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان"
+   },
+   "lego_id": "S0003L03",
+   "lego": [
+    {
+     "known_text": "as often as possible",
+     "target_text": "قَدْرَ الإِمْكان"
+    }
+   ]
+  },
+  {
+   "seed_number": 10,
+   "seed": {
+    "known_text": "I'm not sure if I can remember the whole sentence",
+    "target_text": "لَسْتُ مُتَأَكِّداً هَلْ أَسْتَطيعُ أَنْ أَتَذَكَّرَ الجُمْلَةَ كُلَّها"
+   },
+   "lego_id": "S0010L03",
+   "lego": [
+    {
+     "known_text": "I'm not sure",
+     "target_text": "لَسْتُ مُتَأَكِّداً"
+    }
+   ]
+  },
+  {
+   "seed_number": 14,
+   "seed": {
+    "known_text": "do you speak Arabic all day?",
+    "target_text": "هَلْ تَتَكَلَّمُ العَرَبِيَّةَ طَوالَ اليَوْم؟"
+   },
+   "lego_id": "S0014L01",
+   "lego": [
+    {
+     "known_text": "all day",
+     "target_text": "طَوالَ اليَوْمِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 127,
+   "seed": {
+    "known_text": "that isn't why I wanted to see you",
+    "target_text": "لَيْسَ لِهٰذا السَّبَبِ أَرَدْتُ أَنْ أَراك"
+   },
+   "lego_id": "S0127L01",
+   "lego": [
+    {
+     "known_text": "for this reason",
+     "target_text": "لِهٰذا السَّبَبِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 131,
+   "seed": {
+    "known_text": "there are too many ideas going around in my head",
+    "target_text": "هُناكَ أَفْكارٌ كَثيرَةٌ جِدّاً تَدورُ في رَأْسي"
+   },
+   "lego_id": "S0131L01",
+   "lego": [
+    {
+     "known_text": "there is",
+     "target_text": "هُناكَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 132,
+   "seed": {
+    "known_text": "that's less exciting than what she was saying",
+    "target_text": "ذٰلِكَ أَقَلُّ إِثارَةً مِمّا كانَتْ تَقولُه"
+   },
+   "lego_id": "S0132L01",
+   "lego": [
+    {
+     "known_text": "less exciting",
+     "target_text": "أَقَلُّ إِثارَةً"
+    }
+   ]
+  },
+  {
+   "seed_number": 133,
+   "seed": {
+    "known_text": "you get to know someone very well when you work together",
+    "target_text": "تَتَعَرَّفُ عَلى شَخْصٍ جَيِّداً عِنْدَما تَعْمَلونَ مَعاً"
+   },
+   "lego_id": "S0133L01",
+   "lego": [
+    {
+     "known_text": "you get to know someone",
+     "target_text": "تَتَعَرَّفُ عَلى شَخْصٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 133,
+   "seed": {
+    "known_text": "you get to know someone very well when you work together",
+    "target_text": "تَتَعَرَّفُ عَلى شَخْصٍ جَيِّداً عِنْدَما تَعْمَلونَ مَعاً"
+   },
+   "lego_id": "S0133L02",
+   "lego": [
+    {
+     "known_text": "you work together",
+     "target_text": "تَعْمَلونَ مَعاً"
+    }
+   ]
+  },
+  {
+   "seed_number": 133,
+   "seed": {
+    "known_text": "you get to know someone very well when you work together",
+    "target_text": "تَتَعَرَّفُ عَلى شَخْصٍ جَيِّداً عِنْدَما تَعْمَلونَ مَعاً"
+   },
+   "lego_id": "S0133L02",
+   "lego": [
+    {
+     "known_text": "you work together",
+     "target_text": "تَعْمَلونَ مَعاً"
+    }
+   ]
+  },
+  {
+   "seed_number": 134,
+   "seed": {
+    "known_text": "it's not a problem when you work at something difficult with them",
+    "target_text": "لَيْسَتْ مُشْكِلَةً عِنْدَما تَعْمَلُ عَلى شَيْءٍ صَعْبٍ مَعَهُم"
+   },
+   "lego_id": "S0134L02",
+   "lego": [
+    {
+     "known_text": "you work at something difficult",
+     "target_text": "تَعْمَلُ عَلى شَيْءٍ صَعْبٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "لا أَعْرِفُ لِماذا تَظُنُّ أَنَّهُ جَيِّدٌ جِدّاً"
+   },
+   "lego_id": "S0135L01",
+   "lego": [
+    {
+     "known_text": "you think that",
+     "target_text": "تَظُنُّ أَنَّ"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "لا أَعْرِفُ لِماذا تَظُنُّ أَنَّهُ جَيِّدٌ جِدّاً"
+   },
+   "lego_id": "S0135L01",
+   "lego": [
+    {
+     "known_text": "you think that",
+     "target_text": "تَظُنُّ أَنَّ"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "لا أَعْرِفُ لِماذا تَظُنُّ أَنَّهُ جَيِّدٌ جِدّاً"
+   },
+   "lego_id": "S0135L02",
+   "lego": [
+    {
+     "known_text": "that it",
+     "target_text": "أَنَّهُ"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "I don't know why you think that it's so good",
+    "target_text": "لا أَعْرِفُ لِماذا تَظُنُّ أَنَّهُ جَيِّدٌ جِدّاً"
+   },
+   "lego_id": "S0135L02",
+   "lego": [
+    {
+     "known_text": "that it",
+     "target_text": "أَنَّهُ"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "طَبْعاً يُمْكِنُكَ أَنْ تَسْأَلَها لِأَنَّها صَديقَتي"
+   },
+   "lego_id": "S0136L02",
+   "lego": [
+    {
+     "known_text": "you can",
+     "target_text": "يُمْكِنُكَ أَنْ"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "of course you can ask her because she's my friend",
+    "target_text": "طَبْعاً يُمْكِنُكَ أَنْ تَسْأَلَها لِأَنَّها صَديقَتي"
+   },
+   "lego_id": "S0136L03",
+   "lego": [
+    {
+     "known_text": "ask her",
+     "target_text": "تَسْأَلَها"
+    }
+   ]
+  },
+  {
+   "seed_number": 139,
+   "seed": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "أَنا آسِفٌ لِأَنَّني أَحْتاجُ أَنْ أُغادِرَ مُبَكِّراً جِدّاً"
+   },
+   "lego_id": "S0139L02",
+   "lego": [
+    {
+     "known_text": "I leave",
+     "target_text": "أُغادِرَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 139,
+   "seed": {
+    "known_text": "I'm sorry that I need to leave so early",
+    "target_text": "أَنا آسِفٌ لِأَنَّني أَحْتاجُ أَنْ أُغادِرَ مُبَكِّراً جِدّاً"
+   },
+   "lego_id": "S0139L03",
+   "lego": [
+    {
+     "known_text": "early",
+     "target_text": "مُبَكِّراً"
+    }
+   ]
+  },
+  {
+   "seed_number": 140,
+   "seed": {
+    "known_text": "I'm sorry that I can't see what you're trying to show me",
+    "target_text": "أَنا آسِفٌ لِأَنَّني لا أَسْتَطيعُ أَنْ أَرى ما تُحاوِلُ أَنْ تُريَني"
+   },
+   "lego_id": "S0140L01",
+   "lego": [
+    {
+     "known_text": "you're trying to",
+     "target_text": "تُحاوِلُ أَنْ"
+    }
+   ]
+  },
+  {
+   "seed_number": 141,
+   "seed": {
+    "known_text": "no problem. Everything is okay",
+    "target_text": "لا مُشْكِلَة. كُلُّ شَيْءٍ عَلى ما يُرام"
+   },
+   "lego_id": "S0141L02",
+   "lego": [
+    {
+     "known_text": "okay",
+     "target_text": "عَلى ما يُرام"
+    }
+   ]
+  },
+  {
+   "seed_number": 145,
+   "seed": {
+    "known_text": "why are you not happy any more?",
+    "target_text": "لِماذا لَمْ تَعُدْ سَعيداً؟"
+   },
+   "lego_id": "S0145L01",
+   "lego": [
+    {
+     "known_text": "you are no longer happy",
+     "target_text": "لَمْ تَعُدْ سَعيداً"
+    }
+   ]
+  },
+  {
+   "seed_number": 145,
+   "seed": {
+    "known_text": "why are you not happy any more?",
+    "target_text": "لِماذا لَمْ تَعُدْ سَعيداً؟"
+   },
+   "lego_id": "S0145L01",
+   "lego": [
+    {
+     "known_text": "you are no longer happy",
+     "target_text": "لَمْ تَعُدْ سَعيداً"
+    }
+   ]
+  },
+  {
+   "seed_number": 150,
+   "seed": {
+    "known_text": "can you tell me what your name is?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُخْبِرَني ما اسْمُك؟"
+   },
+   "lego_id": "S0150L01",
+   "lego": [
+    {
+     "known_text": "your name",
+     "target_text": "اسْمُكَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 150,
+   "seed": {
+    "known_text": "can you tell me what your name is?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُخْبِرَني ما اسْمُك؟"
+   },
+   "lego_id": "S0150L01",
+   "lego": [
+    {
+     "known_text": "your name",
+     "target_text": "اسْمُكَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 150,
+   "seed": {
+    "known_text": "can you tell me what your name is?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُخْبِرَني ما اسْمُك؟"
+   },
+   "lego_id": "S0150L01",
+   "lego": [
+    {
+     "known_text": "your name",
+     "target_text": "اسْمُكَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 154,
+   "seed": {
+    "known_text": "where do you want to meet on Saturday night?",
+    "target_text": "أَيْنَ تُريدُ أَنْ نَلْتَقِيَ لَيْلَةَ السَّبْت؟"
+   },
+   "lego_id": "S0154L01",
+   "lego": [
+    {
+     "known_text": "Saturday night",
+     "target_text": "لَيْلَةَ السَّبْت"
+    }
+   ]
+  },
+  {
+   "seed_number": 154,
+   "seed": {
+    "known_text": "where do you want to meet on Saturday night?",
+    "target_text": "أَيْنَ تُريدُ أَنْ نَلْتَقِيَ لَيْلَةَ السَّبْت؟"
+   },
+   "lego_id": "S0154L01",
+   "lego": [
+    {
+     "known_text": "Saturday night",
+     "target_text": "لَيْلَةَ السَّبْت"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "I don't mind waiting for a few minutes tomorrow morning",
+    "target_text": "لا أُمانِعُ الانْتِظارَ لِبِضْعِ دَقائِقَ صَباحَ الغَد"
+   },
+   "lego_id": "S0155L03",
+   "lego": [
+    {
+     "known_text": "for a few minutes",
+     "target_text": "لِبِضْعِ دَقائِقَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 156,
+   "seed": {
+    "known_text": "do you want to go to a restaurant tonight?",
+    "target_text": "هَلْ تُريدُ أَنْ تَذْهَبَ إِلى مَطْعَمٍ اللَّيْلَة؟"
+   },
+   "lego_id": "S0156L01",
+   "lego": [
+    {
+     "known_text": "a restaurant",
+     "target_text": "مَطْعَمٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 156,
+   "seed": {
+    "known_text": "do you want to go to a restaurant tonight?",
+    "target_text": "هَلْ تُريدُ أَنْ تَذْهَبَ إِلى مَطْعَمٍ اللَّيْلَة؟"
+   },
+   "lego_id": "S0156L01",
+   "lego": [
+    {
+     "known_text": "a restaurant",
+     "target_text": "مَطْعَمٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 156,
+   "seed": {
+    "known_text": "do you want to go to a restaurant tonight?",
+    "target_text": "هَلْ تُريدُ أَنْ تَذْهَبَ إِلى مَطْعَمٍ اللَّيْلَة؟"
+   },
+   "lego_id": "S0156L01",
+   "lego": [
+    {
+     "known_text": "a restaurant",
+     "target_text": "مَطْعَمٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 160,
+   "seed": {
+    "known_text": "how do you say this word in Arabic?",
+    "target_text": "كَيْفَ تَقولُ هٰذِهِ الكَلِمَةَ بِالعَرَبِيَّة؟"
+   },
+   "lego_id": "S0160L01",
+   "lego": [
+    {
+     "known_text": "the word",
+     "target_text": "الكَلِمَةَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 160,
+   "seed": {
+    "known_text": "how do you say this word in Arabic?",
+    "target_text": "كَيْفَ تَقولُ هٰذِهِ الكَلِمَةَ بِالعَرَبِيَّة؟"
+   },
+   "lego_id": "S0160L02",
+   "lego": [
+    {
+     "known_text": "this",
+     "target_text": "هٰذِهِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 160,
+   "seed": {
+    "known_text": "how do you say this word in Arabic?",
+    "target_text": "كَيْفَ تَقولُ هٰذِهِ الكَلِمَةَ بِالعَرَبِيَّة؟"
+   },
+   "lego_id": "S0160L02",
+   "lego": [
+    {
+     "known_text": "this",
+     "target_text": "هٰذِهِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 161,
+   "seed": {
+    "known_text": "can you give me that book on Sunday morning?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟"
+   },
+   "lego_id": "S0161L01",
+   "lego": [
+    {
+     "known_text": "you give me",
+     "target_text": "تُعْطِيَني"
+    }
+   ]
+  },
+  {
+   "seed_number": 161,
+   "seed": {
+    "known_text": "can you give me that book on Sunday morning?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟"
+   },
+   "lego_id": "S0161L01",
+   "lego": [
+    {
+     "known_text": "you give me",
+     "target_text": "تُعْطِيَني"
+    }
+   ]
+  },
+  {
+   "seed_number": 161,
+   "seed": {
+    "known_text": "can you give me that book on Sunday morning?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟"
+   },
+   "lego_id": "S0161L01",
+   "lego": [
+    {
+     "known_text": "you give me",
+     "target_text": "تُعْطِيَني"
+    }
+   ]
+  },
+  {
+   "seed_number": 161,
+   "seed": {
+    "known_text": "can you give me that book on Sunday morning?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟"
+   },
+   "lego_id": "S0161L02",
+   "lego": [
+    {
+     "known_text": "the book",
+     "target_text": "الكِتابَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 161,
+   "seed": {
+    "known_text": "can you give me that book on Sunday morning?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟"
+   },
+   "lego_id": "S0161L02",
+   "lego": [
+    {
+     "known_text": "the book",
+     "target_text": "الكِتابَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 161,
+   "seed": {
+    "known_text": "can you give me that book on Sunday morning?",
+    "target_text": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟"
+   },
+   "lego_id": "S0161L03",
+   "lego": [
+    {
+     "known_text": "sunday",
+     "target_text": "الأَحَد"
+    }
+   ]
+  },
+  {
+   "seed_number": 266,
+   "seed": {
+    "known_text": "he was an old friend of my father",
+    "target_text": "كانَ صَديقاً قَديماً لِأَبي"
+   },
+   "lego_id": "S0266L01",
+   "lego": [
+    {
+     "known_text": "he was an old friend",
+     "target_text": "كان صديقا قديما"
+    }
+   ]
+  },
+  {
+   "seed_number": 292,
+   "seed": {
+    "known_text": "I hope you'll be able to come to the party",
+    "target_text": "أَرْجو أَنْ تَسْتَطيعَ أَنْ تَأْتِيَ إِلى الحَفْلَة"
+   },
+   "lego_id": "S0292L02",
+   "lego": [
+    {
+     "known_text": "to the party",
+     "target_text": "إلى الحفلة"
+    }
+   ]
+  },
+  {
+   "seed_number": 293,
+   "seed": {
+    "known_text": "I have to find out where he's going to meet me",
+    "target_text": "يَجِبُ أَنْ أَعْرِفَ أَيْنَ سَيَلْتَقي بي"
+   },
+   "lego_id": "S0293L01",
+   "lego": [
+    {
+     "known_text": "he will meet me",
+     "target_text": "سيلتقي بي"
+    }
+   ]
+  },
+  {
+   "seed_number": 294,
+   "seed": {
+    "known_text": "I don't have enough time to call you tonight",
+    "target_text": "لَيْسَ لَدَيَّ وَقْتٌ كافٍ لِأَتَّصِلَ بِكَ اللَّيْلَة"
+   },
+   "lego_id": "S0294L01",
+   "lego": [
+    {
+     "known_text": "enough time",
+     "target_text": "وقت كافٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 294,
+   "seed": {
+    "known_text": "I don't have enough time to call you tonight",
+    "target_text": "لَيْسَ لَدَيَّ وَقْتٌ كافٍ لِأَتَّصِلَ بِكَ اللَّيْلَة"
+   },
+   "lego_id": "S0294L01",
+   "lego": [
+    {
+     "known_text": "enough time",
+     "target_text": "وقت كافٍ"
+    }
+   ]
+  },
+  {
+   "seed_number": 298,
+   "seed": {
+    "known_text": "I've got nothing left to say",
+    "target_text": "لَيْسَ لَدَيَّ شَيْءٌ مُتَبَقٍّ لِأَقولَه"
+   },
+   "lego_id": "S0298L01",
+   "lego": [
+    {
+     "known_text": "nothing left to say",
+     "target_text": "شيء متبق لأقوله"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "he wants to pay half",
+    "target_text": "يُريدُ أَنْ يَدْفَعَ النِّصْف"
+   },
+   "lego_id": "S0299L01",
+   "lego": [
+    {
+     "known_text": "he pays",
+     "target_text": "يدفع"
+    }
+   ]
+  },
+  {
+   "seed_number": 300,
+   "seed": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "لا تُريدُ أَنْ تَبْدوَ غَيْرَ وَدّيَة"
+   },
+   "lego_id": "S0300L01",
+   "lego": [
+    {
+     "known_text": "unfriendly",
+     "target_text": "غير ودية"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "هَلْ قالَ صَديقُكَ شَيْئاً آخَرَ؟"
+   },
+   "lego_id": "S0360L02",
+   "lego": [
+    {
+     "known_text": "did your friend say anything else?",
+     "target_text": "هَلْ قالَ صَديقُكَ أَيَّ شَيْءٍ آخَرَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 482,
+   "seed": {
+    "known_text": "the only real hope is that they're not serious",
+    "target_text": "الأَمَلُ الحَقيقِيُّ الوَحيدُ هُوَ أَنَّهُمْ لَيْسوا جادّينَ"
+   },
+   "lego_id": "S0482L01",
+   "lego": [
+    {
+     "known_text": "that they're not serious",
+     "target_text": "أَنَّهُمْ لَيْسوا جادّينَ"
+    }
+   ]
+  },
+  {
+   "seed_number": 487,
+   "seed": {
+    "known_text": "it's under the bridge",
+    "target_text": "إِنَّهُ تَحْتَ الجِسْرِ"
+   },
+   "lego_id": "S0487L01",
+   "lego": [
+    {
+     "known_text": "under the bridge",
+     "target_text": "تَحْتَ الجِسْرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 487,
+   "seed": {
+    "known_text": "it's under the bridge",
+    "target_text": "إِنَّهُ تَحْتَ الجِسْرِ"
+   },
+   "lego_id": "S0487L01",
+   "lego": [
+    {
+     "known_text": "under the bridge",
+     "target_text": "تَحْتَ الجِسْرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 487,
+   "seed": {
+    "known_text": "it's under the bridge",
+    "target_text": "إِنَّهُ تَحْتَ الجِسْرِ"
+   },
+   "lego_id": "S0487L01",
+   "lego": [
+    {
+     "known_text": "under the bridge",
+     "target_text": "تَحْتَ الجِسْرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 488,
+   "seed": {
+    "known_text": "it's on the other side of that yellow line",
+    "target_text": "إِنَّهُ عَلى الجانِبِ الآخَرِ مِنْ ذلِكَ الخَطِّ الأَصْفَرِ"
+   },
+   "lego_id": "S0488L01",
+   "lego": [
+    {
+     "known_text": "on the other side",
+     "target_text": "عَلى الجانِبِ الآخَرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 488,
+   "seed": {
+    "known_text": "it's on the other side of that yellow line",
+    "target_text": "إِنَّهُ عَلى الجانِبِ الآخَرِ مِنْ ذلِكَ الخَطِّ الأَصْفَرِ"
+   },
+   "lego_id": "S0488L01",
+   "lego": [
+    {
+     "known_text": "on the other side",
+     "target_text": "عَلى الجانِبِ الآخَرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 488,
+   "seed": {
+    "known_text": "it's on the other side of that yellow line",
+    "target_text": "إِنَّهُ عَلى الجانِبِ الآخَرِ مِنْ ذلِكَ الخَطِّ الأَصْفَرِ"
+   },
+   "lego_id": "S0488L02",
+   "lego": [
+    {
+     "known_text": "of that yellow line",
+     "target_text": "مِنْ ذلِكَ الخَطِّ الأَصْفَرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 488,
+   "seed": {
+    "known_text": "it's on the other side of that yellow line",
+    "target_text": "إِنَّهُ عَلى الجانِبِ الآخَرِ مِنْ ذلِكَ الخَطِّ الأَصْفَرِ"
+   },
+   "lego_id": "S0488L02",
+   "lego": [
+    {
+     "known_text": "of that yellow line",
+     "target_text": "مِنْ ذلِكَ الخَطِّ الأَصْفَرِ"
+    }
+   ]
+  },
+  {
+   "seed_number": 643,
+   "seed": {
+    "known_text": "do you want sir?",
+    "target_text": "هَلْ تُريدُ سَيِّدي؟"
+   },
+   "lego_id": "S0643L01",
+   "lego": [
+    {
+     "known_text": "do you want sir",
+     "target_text": "هَلْ تُريدُ سَيِّدي"
+    }
+   ]
+  },
+  {
+   "seed_number": 658,
+   "seed": {
+    "known_text": "do you all want?",
+    "target_text": "هَلْ تُريدونَ؟"
+   },
+   "lego_id": "S0658L01",
+   "lego": [
+    {
+     "known_text": "you all want",
+     "target_text": "تُريدونَ"
+    }
+   ]
+  }
+ ]
+}

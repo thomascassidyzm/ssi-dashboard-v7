@@ -1,0 +1,8 @@
+{"format":"ssi-changeset/1","id":"eng_for_kor-item18-cs236","course":"eng_for_kor","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:34.432Z","ops":7,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0025L01B03","expect":{"known_text":"오늘 저를 도와줄 거예요?","target_text":"are you going to help me today?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0045L01B02","expect":{"known_text":"모든 것을","target_text":"everything"}}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0087L01B02","expect":{"known_text":"제가 모르는 사람들이에요","target_text":"they are people I don't know"}}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0091L02B02","expect":{"known_text":"충분히 빠르게 생각하는 것은 어려워요","target_text":"it's difficult to think quickly enough"}}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0100L02B03","expect":{"known_text":"비슷한 것에 대해 걱정하지 않아도 돼요","target_text":"you shouldn't worry about something similar"}}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0136L02B02","expect":{"known_text":"그녀에게 물어볼 수 있어요","target_text":"you can ask her"}}
+{"op":"phrase.delete","phrase_id":"eng_for_kor:S0210L02B02","expect":{"known_text":"그들은 생각해요","target_text":"they think that"}}

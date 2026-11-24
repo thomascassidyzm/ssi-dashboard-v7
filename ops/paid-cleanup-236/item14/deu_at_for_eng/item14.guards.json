@@ -1,0 +1,3772 @@
+{
+ "changeset": "deu_at_for_eng-item14-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 190,
+   "seed": {
+    "known_text": "do you mind if I ask you some questions?",
+    "target_text": "mocht's da wos aus, wenn i da a poar Frogn stell?"
+   },
+   "lego_id": "S0190L01",
+   "lego": [
+    {
+     "known_text": "do you mind",
+     "target_text": "mocht's da wos aus"
+    }
+   ]
+  },
+  {
+   "seed_number": 190,
+   "seed": {
+    "known_text": "do you mind if I ask you some questions?",
+    "target_text": "mocht's da wos aus, wenn i da a poar Frogn stell?"
+   },
+   "lego_id": "S0190L01",
+   "lego": [
+    {
+     "known_text": "do you mind",
+     "target_text": "mocht's da wos aus"
+    }
+   ]
+  },
+  {
+   "seed_number": 255,
+   "seed": {
+    "known_text": "when do you think you'll be ready to leave?",
+    "target_text": "wann glaubst denn, dass'd fertig bist zum gehn?"
+   },
+   "lego_id": "S0255L01",
+   "lego": [
+    {
+     "known_text": "when do you think",
+     "target_text": "wann glaubst denn"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "he wants to pay half",
+    "target_text": "er wü de Hälfte zohln"
+   },
+   "lego_id": "S0299L01",
+   "lego": [
+    {
+     "known_text": "to pay",
+     "target_text": "zohln"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "he wants to pay half",
+    "target_text": "er wü de Hälfte zohln"
+   },
+   "lego_id": "S0299L02",
+   "lego": [
+    {
+     "known_text": "half",
+     "target_text": "hälfte"
+    }
+   ]
+  },
+  {
+   "seed_number": 300,
+   "seed": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "sie wü ned unfreindlich rüberkumman"
+   },
+   "lego_id": "S0300L01",
+   "lego": [
+    {
+     "known_text": "to come across",
+     "target_text": "rüberkumman"
+    }
+   ]
+  },
+  {
+   "seed_number": 300,
+   "seed": {
+    "known_text": "she doesn't want to seem unfriendly",
+    "target_text": "sie wü ned unfreindlich rüberkumman"
+   },
+   "lego_id": "S0300L02",
+   "lego": [
+    {
+     "known_text": "unfriendly",
+     "target_text": "unfreindlich"
+    }
+   ]
+  },
+  {
+   "seed_number": 301,
+   "seed": {
+    "known_text": "he said that he wants to show you something",
+    "target_text": "er hot gsogt, dass er da wos zeign wü"
+   },
+   "lego_id": "S0301L01",
+   "lego": [
+    {
+     "known_text": "he said",
+     "target_text": "er hot gsogt"
+    }
+   ]
+  },
+  {
+   "seed_number": 302,
+   "seed": {
+    "known_text": "she said that she doesn't want to live in a city",
+    "target_text": "sie hot gsogt, dass s' ned in ana Stodt wohnen wü"
+   },
+   "lego_id": "S0302L01",
+   "lego": [
+    {
+     "known_text": "to live",
+     "target_text": "wohnen"
+    }
+   ]
+  },
+  {
+   "seed_number": 302,
+   "seed": {
+    "known_text": "she said that she doesn't want to live in a city",
+    "target_text": "sie hot gsogt, dass s' ned in ana Stodt wohnen wü"
+   },
+   "lego_id": "S0302L02",
+   "lego": [
+    {
+     "known_text": "city",
+     "target_text": "stodt"
+    }
+   ]
+  },
+  {
+   "seed_number": 303,
+   "seed": {
+    "known_text": "I think that he wants to sit down",
+    "target_text": "i glaub, dass er si hinsetzn wü"
+   },
+   "lego_id": "S0303L01",
+   "lego": [
+    {
+     "known_text": "to sit down",
+     "target_text": "hinsetzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 304,
+   "seed": {
+    "known_text": "I think that she doesn't want to work from home",
+    "target_text": "i glaub, dass s' ned von dahoam aus arbeiten wü"
+   },
+   "lego_id": "S0304L01",
+   "lego": [
+    {
+     "known_text": "at home",
+     "target_text": "dahoam"
+    }
+   ]
+  },
+  {
+   "seed_number": 307,
+   "seed": {
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "i kenn den jungen Mann, der wos do drübn sitzt"
+   },
+   "lego_id": "S0307L02",
+   "lego": [
+    {
+     "known_text": "the young man",
+     "target_text": "den jungen Mann"
+    }
+   ]
+  },
+  {
+   "seed_number": 307,
+   "seed": {
+    "known_text": "I know that young man who's sitting over there",
+    "target_text": "i kenn den jungen Mann, der wos do drübn sitzt"
+   },
+   "lego_id": "S0307L02",
+   "lego": [
+    {
+     "known_text": "the young man",
+     "target_text": "den jungen Mann"
+    }
+   ]
+  },
+  {
+   "seed_number": 311,
+   "seed": {
+    "known_text": "he couldn't believe the three most important facts",
+    "target_text": "er hot de drei wichtigsten Fakten ned glauben können"
+   },
+   "lego_id": "S0311L02",
+   "lego": [
+    {
+     "known_text": "facts",
+     "target_text": "fakten"
+    }
+   ]
+  },
+  {
+   "seed_number": 312,
+   "seed": {
+    "known_text": "she said that she could use the other room tomorrow night",
+    "target_text": "sie hot gsogt, dass s' morgen auf d'Nocht des andere Zimmer benutzen kunnt"
+   },
+   "lego_id": "S0312L01",
+   "lego": [
+    {
+     "known_text": "room",
+     "target_text": "zimmer"
+    }
+   ]
+  },
+  {
+   "seed_number": 312,
+   "seed": {
+    "known_text": "she said that she could use the other room tomorrow night",
+    "target_text": "sie hot gsogt, dass s' morgen auf d'Nocht des andere Zimmer benutzen kunnt"
+   },
+   "lego_id": "S0312L03",
+   "lego": [
+    {
+     "known_text": "to use",
+     "target_text": "benutzen"
+    }
+   ]
+  },
+  {
+   "seed_number": 312,
+   "seed": {
+    "known_text": "she said that she could use the other room tomorrow night",
+    "target_text": "sie hot gsogt, dass s' morgen auf d'Nocht des andere Zimmer benutzen kunnt"
+   },
+   "lego_id": "S0312L03",
+   "lego": [
+    {
+     "known_text": "to use",
+     "target_text": "benutzen"
+    }
+   ]
+  },
+  {
+   "seed_number": 314,
+   "seed": {
+    "known_text": "I think that she could put it on the table",
+    "target_text": "i glaub, dass s' es aufn Tisch legen kunnt"
+   },
+   "lego_id": "S0314L01",
+   "lego": [
+    {
+     "known_text": "to lay",
+     "target_text": "legen"
+    }
+   ]
+  },
+  {
+   "seed_number": 314,
+   "seed": {
+    "known_text": "I think that she could put it on the table",
+    "target_text": "i glaub, dass s' es aufn Tisch legen kunnt"
+   },
+   "lego_id": "S0314L01",
+   "lego": [
+    {
+     "known_text": "to lay",
+     "target_text": "legen"
+    }
+   ]
+  },
+  {
+   "seed_number": 315,
+   "seed": {
+    "known_text": "I think that he couldn't afford the car that he wanted",
+    "target_text": "i glaub, dass er si des Auto, des wos er wollt, ned leisten hot können"
+   },
+   "lego_id": "S0315L01",
+   "lego": [
+    {
+     "known_text": "to afford",
+     "target_text": "leisten"
+    }
+   ]
+  },
+  {
+   "seed_number": 316,
+   "seed": {
+    "known_text": "do you think that she could bring her brother on Monday?",
+    "target_text": "glaubst, dass s' am Montog ian Bruada mitbringen kunnt?"
+   },
+   "lego_id": "S0316L01",
+   "lego": [
+    {
+     "known_text": "monday",
+     "target_text": "montog"
+    }
+   ]
+  },
+  {
+   "seed_number": 316,
+   "seed": {
+    "known_text": "do you think that she could bring her brother on Monday?",
+    "target_text": "glaubst, dass s' am Montog ian Bruada mitbringen kunnt?"
+   },
+   "lego_id": "S0316L01",
+   "lego": [
+    {
+     "known_text": "monday",
+     "target_text": "montog"
+    }
+   ]
+  },
+  {
+   "seed_number": 316,
+   "seed": {
+    "known_text": "do you think that she could bring her brother on Monday?",
+    "target_text": "glaubst, dass s' am Montog ian Bruada mitbringen kunnt?"
+   },
+   "lego_id": "S0316L02",
+   "lego": [
+    {
+     "known_text": "to bring",
+     "target_text": "mitbringen"
+    }
+   ]
+  },
+  {
+   "seed_number": 316,
+   "seed": {
+    "known_text": "do you think that she could bring her brother on Monday?",
+    "target_text": "glaubst, dass s' am Montog ian Bruada mitbringen kunnt?"
+   },
+   "lego_id": "S0316L02",
+   "lego": [
+    {
+     "known_text": "to bring",
+     "target_text": "mitbringen"
+    }
+   ]
+  },
+  {
+   "seed_number": 319,
+   "seed": {
+    "known_text": "she needs to move to a different country",
+    "target_text": "sie muass in a anders Land ziagn"
+   },
+   "lego_id": "S0319L01",
+   "lego": [
+    {
+     "known_text": "country",
+     "target_text": "land"
+    }
+   ]
+  },
+  {
+   "seed_number": 319,
+   "seed": {
+    "known_text": "she needs to move to a different country",
+    "target_text": "sie muass in a anders Land ziagn"
+   },
+   "lego_id": "S0319L02",
+   "lego": [
+    {
+     "known_text": "to move",
+     "target_text": "ziagn"
+    }
+   ]
+  },
+  {
+   "seed_number": 320,
+   "seed": {
+    "known_text": "he doesn't need to buy another television this year",
+    "target_text": "er braucht heuer ned no an Fernseher kaufen"
+   },
+   "lego_id": "S0320L04",
+   "lego": [
+    {
+     "known_text": "to buy",
+     "target_text": "kaufen"
+    }
+   ]
+  },
+  {
+   "seed_number": 349,
+   "seed": {
+    "known_text": "did he want to go out on Friday night?",
+    "target_text": "hot er am Freitog auf d'Nocht fortgehn wolln?"
+   },
+   "lego_id": "S0349L02",
+   "lego": [
+    {
+     "known_text": "to go out",
+     "target_text": "fortgehn"
+    }
+   ]
+  },
+  {
+   "seed_number": 349,
+   "seed": {
+    "known_text": "did he want to go out on Friday night?",
+    "target_text": "hot er am Freitog auf d'Nocht fortgehn wolln?"
+   },
+   "lego_id": "S0349L02",
+   "lego": [
+    {
+     "known_text": "to go out",
+     "target_text": "fortgehn"
+    }
+   ]
+  },
+  {
+   "seed_number": 353,
+   "seed": {
+    "known_text": "she needed to run around the field",
+    "target_text": "sie hot ums Feld ummadum rennen miassn"
+   },
+   "lego_id": "S0353L01",
+   "lego": [
+    {
+     "known_text": "to run",
+     "target_text": "rennen"
+    }
+   ]
+  },
+  {
+   "seed_number": 353,
+   "seed": {
+    "known_text": "she needed to run around the field",
+    "target_text": "sie hot ums Feld ummadum rennen miassn"
+   },
+   "lego_id": "S0353L02",
+   "lego": [
+    {
+     "known_text": "around the field",
+     "target_text": "ums Feld ummadum"
+    }
+   ]
+  },
+  {
+   "seed_number": 354,
+   "seed": {
+    "known_text": "he didn't need to appear angry",
+    "target_text": "er hot ned grantig wirken miassn"
+   },
+   "lego_id": "S0354L01",
+   "lego": [
+    {
+     "known_text": "angry",
+     "target_text": "grantig"
+    }
+   ]
+  },
+  {
+   "seed_number": 354,
+   "seed": {
+    "known_text": "he didn't need to appear angry",
+    "target_text": "er hot ned grantig wirken miassn"
+   },
+   "lego_id": "S0354L02",
+   "lego": [
+    {
+     "known_text": "to appear",
+     "target_text": "wirken"
+    }
+   ]
+  },
+  {
+   "seed_number": 355,
+   "seed": {
+    "known_text": "did she need to talk to that woman you know?",
+    "target_text": "hot sie mit dera Frau reden miassn, de wost du kennst?"
+   },
+   "lego_id": "S0355L01",
+   "lego": [
+    {
+     "known_text": "with that woman",
+     "target_text": "mit dera Frau"
+    }
+   ]
+  },
+  {
+   "seed_number": 355,
+   "seed": {
+    "known_text": "did she need to talk to that woman you know?",
+    "target_text": "hot sie mit dera Frau reden miassn, de wost du kennst?"
+   },
+   "lego_id": "S0355L02",
+   "lego": [
+    {
+     "known_text": "who you know",
+     "target_text": "de wost du kennst"
+    }
+   ]
+  },
+  {
+   "seed_number": 357,
+   "seed": {
+    "known_text": "no she just wanted to send her a message",
+    "target_text": "na, sie hot ia nur a Nochricht schicken wolln"
+   },
+   "lego_id": "S0357L01",
+   "lego": [
+    {
+     "known_text": "message",
+     "target_text": "nochricht"
+    }
+   ]
+  },
+  {
+   "seed_number": 357,
+   "seed": {
+    "known_text": "no she just wanted to send her a message",
+    "target_text": "na, sie hot ia nur a Nochricht schicken wolln"
+   },
+   "lego_id": "S0357L02",
+   "lego": [
+    {
+     "known_text": "to send",
+     "target_text": "schicken"
+    }
+   ]
+  },
+  {
+   "seed_number": 358,
+   "seed": {
+    "known_text": "your friend said that she couldn't reach the top",
+    "target_text": "dei Freindin hot gsogt, dass sie ned bis ganz auffi kummen is"
+   },
+   "lego_id": "S0358L01",
+   "lego": [
+    {
+     "known_text": "your",
+     "target_text": "dei"
+    }
+   ]
+  },
+  {
+   "seed_number": 358,
+   "seed": {
+    "known_text": "your friend said that she couldn't reach the top",
+    "target_text": "dei Freindin hot gsogt, dass sie ned bis ganz auffi kummen is"
+   },
+   "lego_id": "S0358L02",
+   "lego": [
+    {
+     "known_text": "all the way up",
+     "target_text": "bis ganz auffi"
+    }
+   ]
+  },
+  {
+   "seed_number": 359,
+   "seed": {
+    "known_text": "your friend said that he could turn left",
+    "target_text": "dei Freind hot gsogt, dass er links obbiagn kunnt"
+   },
+   "lego_id": "S0359L01",
+   "lego": [
+    {
+     "known_text": "left",
+     "target_text": "links"
+    }
+   ]
+  },
+  {
+   "seed_number": 359,
+   "seed": {
+    "known_text": "your friend said that he could turn left",
+    "target_text": "dei Freind hot gsogt, dass er links obbiagn kunnt"
+   },
+   "lego_id": "S0359L01",
+   "lego": [
+    {
+     "known_text": "left",
+     "target_text": "links"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "hot dei Freind sunst no wos gsogt?"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "anything else",
+     "target_text": "sunst no wos"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "hot dei Freind sunst no wos gsogt?"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "anything else",
+     "target_text": "sunst no wos"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "hot dei Freind sunst no wos gsogt?"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "anything else",
+     "target_text": "sunst no wos"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "hot dei Freind sunst no wos gsogt?"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "anything else",
+     "target_text": "sunst no wos"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "hot dei Freind sunst no wos gsogt?"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "anything else",
+     "target_text": "sunst no wos"
+    }
+   ]
+  },
+  {
+   "seed_number": 360,
+   "seed": {
+    "known_text": "did your friend say anything else?",
+    "target_text": "hot dei Freind sunst no wos gsogt?"
+   },
+   "lego_id": "S0360L01",
+   "lego": [
+    {
+     "known_text": "anything else",
+     "target_text": "sunst no wos"
+    }
+   ]
+  },
+  {
+   "seed_number": 361,
+   "seed": {
+    "known_text": "he was quiet",
+    "target_text": "er is leise gwesn"
+   },
+   "lego_id": "S0361L01",
+   "lego": [
+    {
+     "known_text": "was quiet",
+     "target_text": "leise gwesn"
+    }
+   ]
+  },
+  {
+   "seed_number": 361,
+   "seed": {
+    "known_text": "he was quiet",
+    "target_text": "er is leise gwesn"
+   },
+   "lego_id": "S0361L01",
+   "lego": [
+    {
+     "known_text": "was quiet",
+     "target_text": "leise gwesn"
+    }
+   ]
+  },
+  {
+   "seed_number": 362,
+   "seed": {
+    "known_text": "no he was rather quiet after you left",
+    "target_text": "na, er is eher leise gwesn, wiast gangen bist"
+   },
+   "lego_id": "S0362L02",
+   "lego": [
+    {
+     "known_text": "when you left",
+     "target_text": "wiast gangen bist"
+    }
+   ]
+  },
+  {
+   "seed_number": 363,
+   "seed": {
+    "known_text": "yes he felt like talking a lot",
+    "target_text": "jo, er hot richtig Lust zum reden ghobt"
+   },
+   "lego_id": "S0363L01",
+   "lego": [
+    {
+     "known_text": "in the mood to talk",
+     "target_text": "lust zum reden"
+    }
+   ]
+  },
+  {
+   "seed_number": 363,
+   "seed": {
+    "known_text": "yes he felt like talking a lot",
+    "target_text": "jo, er hot richtig Lust zum reden ghobt"
+   },
+   "lego_id": "S0363L01",
+   "lego": [
+    {
+     "known_text": "in the mood to talk",
+     "target_text": "lust zum reden"
+    }
+   ]
+  },
+  {
+   "seed_number": 364,
+   "seed": {
+    "known_text": "I heard that he didn't like that place",
+    "target_text": "i hob ghört, dass eahm des Platzl ned gfoin hot"
+   },
+   "lego_id": "S0364L01",
+   "lego": [
+    {
+     "known_text": "place",
+     "target_text": "platzl"
+    }
+   ]
+  },
+  {
+   "seed_number": 364,
+   "seed": {
+    "known_text": "I heard that he didn't like that place",
+    "target_text": "i hob ghört, dass eahm des Platzl ned gfoin hot"
+   },
+   "lego_id": "S0364L01",
+   "lego": [
+    {
+     "known_text": "place",
+     "target_text": "platzl"
+    }
+   ]
+  },
+  {
+   "seed_number": 365,
+   "seed": {
+    "known_text": "I didn't hear what she said to him",
+    "target_text": "i hob ned ghört, wos sie eahm gsogt hot"
+   },
+   "lego_id": "S0365L01",
+   "lego": [
+    {
+     "known_text": "I didn't hear",
+     "target_text": "hob ned ghört"
+    }
+   ]
+  },
+  {
+   "seed_number": 366,
+   "seed": {
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "host ghört, wos er anbaun hot wolln?"
+   },
+   "lego_id": "S0366L01",
+   "lego": [
+    {
+     "known_text": "to grow",
+     "target_text": "anbaun"
+    }
+   ]
+  },
+  {
+   "seed_number": 366,
+   "seed": {
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "host ghört, wos er anbaun hot wolln?"
+   },
+   "lego_id": "S0366L01",
+   "lego": [
+    {
+     "known_text": "to grow",
+     "target_text": "anbaun"
+    }
+   ]
+  },
+  {
+   "seed_number": 366,
+   "seed": {
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "host ghört, wos er anbaun hot wolln?"
+   },
+   "lego_id": "S0366L01",
+   "lego": [
+    {
+     "known_text": "to grow",
+     "target_text": "anbaun"
+    }
+   ]
+  },
+  {
+   "seed_number": 366,
+   "seed": {
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "host ghört, wos er anbaun hot wolln?"
+   },
+   "lego_id": "S0366L01",
+   "lego": [
+    {
+     "known_text": "to grow",
+     "target_text": "anbaun"
+    }
+   ]
+  },
+  {
+   "seed_number": 366,
+   "seed": {
+    "known_text": "did you hear what he wanted to grow?",
+    "target_text": "host ghört, wos er anbaun hot wolln?"
+   },
+   "lego_id": "S0366L01",
+   "lego": [
+    {
+     "known_text": "to grow",
+     "target_text": "anbaun"
+    }
+   ]
+  },
+  {
+   "seed_number": 368,
+   "seed": {
+    "known_text": "yes I heard that he wanted to grow tomatoes",
+    "target_text": "jo, i hob ghört, dass er Paradeiser anbaun hot wolln"
+   },
+   "lego_id": "S0368L01",
+   "lego": [
+    {
+     "known_text": "tomatoes",
+     "target_text": "paradeiser"
+    }
+   ]
+  },
+  {
+   "seed_number": 369,
+   "seed": {
+    "known_text": "I saw several horses on the road",
+    "target_text": "i hob auf der Stroßn a paar Rösser gsehn"
+   },
+   "lego_id": "S0369L01",
+   "lego": [
+    {
+     "known_text": "a couple of horses",
+     "target_text": "a paar Rösser"
+    }
+   ]
+  },
+  {
+   "seed_number": 369,
+   "seed": {
+    "known_text": "I saw several horses on the road",
+    "target_text": "i hob auf der Stroßn a paar Rösser gsehn"
+   },
+   "lego_id": "S0369L01",
+   "lego": [
+    {
+     "known_text": "a couple of horses",
+     "target_text": "a paar Rösser"
+    }
+   ]
+  },
+  {
+   "seed_number": 369,
+   "seed": {
+    "known_text": "I saw several horses on the road",
+    "target_text": "i hob auf der Stroßn a paar Rösser gsehn"
+   },
+   "lego_id": "S0369L02",
+   "lego": [
+    {
+     "known_text": "on the road",
+     "target_text": "auf der Stroßn"
+    }
+   ]
+  },
+  {
+   "seed_number": 369,
+   "seed": {
+    "known_text": "I saw several horses on the road",
+    "target_text": "i hob auf der Stroßn a paar Rösser gsehn"
+   },
+   "lego_id": "S0369L02",
+   "lego": [
+    {
+     "known_text": "on the road",
+     "target_text": "auf der Stroßn"
+    }
+   ]
+  },
+  {
+   "seed_number": 369,
+   "seed": {
+    "known_text": "I saw several horses on the road",
+    "target_text": "i hob auf der Stroßn a paar Rösser gsehn"
+   },
+   "lego_id": "S0369L02",
+   "lego": [
+    {
+     "known_text": "on the road",
+     "target_text": "auf der Stroßn"
+    }
+   ]
+  },
+  {
+   "seed_number": 370,
+   "seed": {
+    "known_text": "I didn't see anyone that I knew",
+    "target_text": "i hob neamd gsehn, den wos i kennt hob"
+   },
+   "lego_id": "S0370L01",
+   "lego": [
+    {
+     "known_text": "knew",
+     "target_text": "kennt"
+    }
+   ]
+  },
+  {
+   "seed_number": 370,
+   "seed": {
+    "known_text": "I didn't see anyone that I knew",
+    "target_text": "i hob neamd gsehn, den wos i kennt hob"
+   },
+   "lego_id": "S0370L01",
+   "lego": [
+    {
+     "known_text": "knew",
+     "target_text": "kennt"
+    }
+   ]
+  },
+  {
+   "seed_number": 371,
+   "seed": {
+    "known_text": "I went to see a film on Wednesday",
+    "target_text": "i bin am Mittwoch an Film schaun gangen"
+   },
+   "lego_id": "S0371L01",
+   "lego": [
+    {
+     "known_text": "wednesday",
+     "target_text": "mittwoch"
+    }
+   ]
+  },
+  {
+   "seed_number": 371,
+   "seed": {
+    "known_text": "I went to see a film on Wednesday",
+    "target_text": "i bin am Mittwoch an Film schaun gangen"
+   },
+   "lego_id": "S0371L01",
+   "lego": [
+    {
+     "known_text": "wednesday",
+     "target_text": "mittwoch"
+    }
+   ]
+  },
+  {
+   "seed_number": 372,
+   "seed": {
+    "known_text": "did you see what she was trying to create?",
+    "target_text": "host gsehn, wos sie vasuacht hot zum mochn?"
+   },
+   "lego_id": "S0372L01",
+   "lego": [
+    {
+     "known_text": "was trying",
+     "target_text": "vasuacht"
+    }
+   ]
+  },
+  {
+   "seed_number": 372,
+   "seed": {
+    "known_text": "did you see what she was trying to create?",
+    "target_text": "host gsehn, wos sie vasuacht hot zum mochn?"
+   },
+   "lego_id": "S0372L01",
+   "lego": [
+    {
+     "known_text": "was trying",
+     "target_text": "vasuacht"
+    }
+   ]
+  },
+  {
+   "seed_number": 372,
+   "seed": {
+    "known_text": "did you see what she was trying to create?",
+    "target_text": "host gsehn, wos sie vasuacht hot zum mochn?"
+   },
+   "lego_id": "S0372L01",
+   "lego": [
+    {
+     "known_text": "was trying",
+     "target_text": "vasuacht"
+    }
+   ]
+  },
+  {
+   "seed_number": 373,
+   "seed": {
+    "known_text": "it was beautiful",
+    "target_text": "des is schen gwesn"
+   },
+   "lego_id": "S0373L01",
+   "lego": [
+    {
+     "known_text": "beautiful",
+     "target_text": "schen"
+    }
+   ]
+  },
+  {
+   "seed_number": 376,
+   "seed": {
+    "known_text": "I didn't go anywhere last month",
+    "target_text": "i bin letztn Monat nirgends higangen"
+   },
+   "lego_id": "S0376L02",
+   "lego": [
+    {
+     "known_text": "went there",
+     "target_text": "higangen"
+    }
+   ]
+  },
+  {
+   "seed_number": 376,
+   "seed": {
+    "known_text": "I didn't go anywhere last month",
+    "target_text": "i bin letztn Monat nirgends higangen"
+   },
+   "lego_id": "S0376L02",
+   "lego": [
+    {
+     "known_text": "went there",
+     "target_text": "higangen"
+    }
+   ]
+  },
+  {
+   "seed_number": 377,
+   "seed": {
+    "known_text": "did you go anywhere in the world last year?",
+    "target_text": "bist letztes Johr irgendwo auf der Welt gwesn?"
+   },
+   "lego_id": "S0377L01",
+   "lego": [
+    {
+     "known_text": "last year",
+     "target_text": "letztes Johr"
+    }
+   ]
+  },
+  {
+   "seed_number": 377,
+   "seed": {
+    "known_text": "did you go anywhere in the world last year?",
+    "target_text": "bist letztes Johr irgendwo auf der Welt gwesn?"
+   },
+   "lego_id": "S0377L01",
+   "lego": [
+    {
+     "known_text": "last year",
+     "target_text": "letztes Johr"
+    }
+   ]
+  },
+  {
+   "seed_number": 377,
+   "seed": {
+    "known_text": "did you go anywhere in the world last year?",
+    "target_text": "bist letztes Johr irgendwo auf der Welt gwesn?"
+   },
+   "lego_id": "S0377L02",
+   "lego": [
+    {
+     "known_text": "world",
+     "target_text": "welt"
+    }
+   ]
+  },
+  {
+   "seed_number": 377,
+   "seed": {
+    "known_text": "did you go anywhere in the world last year?",
+    "target_text": "bist letztes Johr irgendwo auf der Welt gwesn?"
+   },
+   "lego_id": "S0377L02",
+   "lego": [
+    {
+     "known_text": "world",
+     "target_text": "welt"
+    }
+   ]
+  },
+  {
+   "seed_number": 378,
+   "seed": {
+    "known_text": "no I didn't have enough money for holidays",
+    "target_text": "na, i hob ned gnua Geld für an Urlaub ghobt"
+   },
+   "lego_id": "S0378L01",
+   "lego": [
+    {
+     "known_text": "holiday",
+     "target_text": "urlaub"
+    }
+   ]
+  },
+  {
+   "seed_number": 378,
+   "seed": {
+    "known_text": "no I didn't have enough money for holidays",
+    "target_text": "na, i hob ned gnua Geld für an Urlaub ghobt"
+   },
+   "lego_id": "S0378L01",
+   "lego": [
+    {
+     "known_text": "holiday",
+     "target_text": "urlaub"
+    }
+   ]
+  },
+  {
+   "seed_number": 379,
+   "seed": {
+    "known_text": "yes I was lucky enough to travel to Africa",
+    "target_text": "jo, i hob des Glück ghobt und bin noch Afrika greist"
+   },
+   "lego_id": "S0379L01",
+   "lego": [
+    {
+     "known_text": "was lucky",
+     "target_text": "des Glück ghobt"
+    }
+   ]
+  },
+  {
+   "seed_number": 379,
+   "seed": {
+    "known_text": "yes I was lucky enough to travel to Africa",
+    "target_text": "jo, i hob des Glück ghobt und bin noch Afrika greist"
+   },
+   "lego_id": "S0379L02",
+   "lego": [
+    {
+     "known_text": "travelled to Africa",
+     "target_text": "noch Afrika greist"
+    }
+   ]
+  },
+  {
+   "seed_number": 380,
+   "seed": {
+    "known_text": "I asked what she wanted to include",
+    "target_text": "i hob gfrogt, wos sie olles dabei hobn wollt"
+   },
+   "lego_id": "S0380L01",
+   "lego": [
+    {
+     "known_text": "asked",
+     "target_text": "gfrogt"
+    }
+   ]
+  },
+  {
+   "seed_number": 380,
+   "seed": {
+    "known_text": "I asked what she wanted to include",
+    "target_text": "i hob gfrogt, wos sie olles dabei hobn wollt"
+   },
+   "lego_id": "S0380L01",
+   "lego": [
+    {
+     "known_text": "asked",
+     "target_text": "gfrogt"
+    }
+   ]
+  },
+  {
+   "seed_number": 380,
+   "seed": {
+    "known_text": "I asked what she wanted to include",
+    "target_text": "i hob gfrogt, wos sie olles dabei hobn wollt"
+   },
+   "lego_id": "S0380L02",
+   "lego": [
+    {
+     "known_text": "to include",
+     "target_text": "dabei hobn"
+    }
+   ]
+  },
+  {
+   "seed_number": 380,
+   "seed": {
+    "known_text": "I asked what she wanted to include",
+    "target_text": "i hob gfrogt, wos sie olles dabei hobn wollt"
+   },
+   "lego_id": "S0380L02",
+   "lego": [
+    {
+     "known_text": "to include",
+     "target_text": "dabei hobn"
+    }
+   ]
+  },
+  {
+   "seed_number": 381,
+   "seed": {
+    "known_text": "I didn't ask if he wanted to follow us",
+    "target_text": "i hob ned gfrogt, ob er uns nochkummen wollt"
+   },
+   "lego_id": "S0381L01",
+   "lego": [
+    {
+     "known_text": "to follow",
+     "target_text": "nochkummen"
+    }
+   ]
+  },
+  {
+   "seed_number": 381,
+   "seed": {
+    "known_text": "I didn't ask if he wanted to follow us",
+    "target_text": "i hob ned gfrogt, ob er uns nochkummen wollt"
+   },
+   "lego_id": "S0381L01",
+   "lego": [
+    {
+     "known_text": "to follow",
+     "target_text": "nochkummen"
+    }
+   ]
+  },
+  {
+   "seed_number": 382,
+   "seed": {
+    "known_text": "did you ask where he wanted to put it?",
+    "target_text": "host gfrogt, wo er des hintan wollt?"
+   },
+   "lego_id": "S0382L01",
+   "lego": [
+    {
+     "known_text": "to put there",
+     "target_text": "hintan"
+    }
+   ]
+  },
+  {
+   "seed_number": 382,
+   "seed": {
+    "known_text": "did you ask where he wanted to put it?",
+    "target_text": "host gfrogt, wo er des hintan wollt?"
+   },
+   "lego_id": "S0382L01",
+   "lego": [
+    {
+     "known_text": "to put there",
+     "target_text": "hintan"
+    }
+   ]
+  },
+  {
+   "seed_number": 382,
+   "seed": {
+    "known_text": "did you ask where he wanted to put it?",
+    "target_text": "host gfrogt, wo er des hintan wollt?"
+   },
+   "lego_id": "S0382L01",
+   "lego": [
+    {
+     "known_text": "to put there",
+     "target_text": "hintan"
+    }
+   ]
+  },
+  {
+   "seed_number": 383,
+   "seed": {
+    "known_text": "yes he said he wanted to put it in the garden",
+    "target_text": "jo, er hot gsogt, er mechat des in Gortn tan"
+   },
+   "lego_id": "S0383L01",
+   "lego": [
+    {
+     "known_text": "to put in the garden",
+     "target_text": "in Gortn tan"
+    }
+   ]
+  },
+  {
+   "seed_number": 384,
+   "seed": {
+    "known_text": "I couldn't agree with what he said a moment ago",
+    "target_text": "i hob dem ned zuastimmen kennan, wos er grod gsogt hot"
+   },
+   "lego_id": "S0384L01",
+   "lego": [
+    {
+     "known_text": "to agree",
+     "target_text": "zuastimmen"
+    }
+   ]
+  },
+  {
+   "seed_number": 384,
+   "seed": {
+    "known_text": "I couldn't agree with what he said a moment ago",
+    "target_text": "i hob dem ned zuastimmen kennan, wos er grod gsogt hot"
+   },
+   "lego_id": "S0384L01",
+   "lego": [
+    {
+     "known_text": "to agree",
+     "target_text": "zuastimmen"
+    }
+   ]
+  },
+  {
+   "seed_number": 384,
+   "seed": {
+    "known_text": "I couldn't agree with what he said a moment ago",
+    "target_text": "i hob dem ned zuastimmen kennan, wos er grod gsogt hot"
+   },
+   "lego_id": "S0384L02",
+   "lego": [
+    {
+     "known_text": "been able to",
+     "target_text": "kennan"
+    }
+   ]
+  },
+  {
+   "seed_number": 384,
+   "seed": {
+    "known_text": "I couldn't agree with what he said a moment ago",
+    "target_text": "i hob dem ned zuastimmen kennan, wos er grod gsogt hot"
+   },
+   "lego_id": "S0384L02",
+   "lego": [
+    {
+     "known_text": "been able to",
+     "target_text": "kennan"
+    }
+   ]
+  },
+  {
+   "seed_number": 385,
+   "seed": {
+    "known_text": "did you agree with her?",
+    "target_text": "host ia zuagstimmt?"
+   },
+   "lego_id": "S0385L01",
+   "lego": [
+    {
+     "known_text": "agreed",
+     "target_text": "zuagstimmt"
+    }
+   ]
+  },
+  {
+   "seed_number": 385,
+   "seed": {
+    "known_text": "did you agree with her?",
+    "target_text": "host ia zuagstimmt?"
+   },
+   "lego_id": "S0385L01",
+   "lego": [
+    {
+     "known_text": "agreed",
+     "target_text": "zuagstimmt"
+    }
+   ]
+  },
+  {
+   "seed_number": 386,
+   "seed": {
+    "known_text": "yes I agreed with her",
+    "target_text": "jo, i hob ia zuagstimmt"
+   },
+   "lego_id": "S0386L01",
+   "lego": [
+    {
+     "known_text": "agreed with her",
+     "target_text": "ia zuagstimmt"
+    }
+   ]
+  },
+  {
+   "seed_number": 387,
+   "seed": {
+    "known_text": "no I didn't think she was right",
+    "target_text": "na, i hob ned glaubt, dass sie recht hot"
+   },
+   "lego_id": "S0387L01",
+   "lego": [
+    {
+     "known_text": "right",
+     "target_text": "recht"
+    }
+   ]
+  },
+  {
+   "seed_number": 388,
+   "seed": {
+    "known_text": "that person you work with",
+    "target_text": "de Person, mit der wost arbeitest"
+   },
+   "lego_id": "S0388L01",
+   "lego": [
+    {
+     "known_text": "person",
+     "target_text": "person"
+    }
+   ]
+  },
+  {
+   "seed_number": 388,
+   "seed": {
+    "known_text": "that person you work with",
+    "target_text": "de Person, mit der wost arbeitest"
+   },
+   "lego_id": "S0388L01",
+   "lego": [
+    {
+     "known_text": "person",
+     "target_text": "person"
+    }
+   ]
+  },
+  {
+   "seed_number": 388,
+   "seed": {
+    "known_text": "that person you work with",
+    "target_text": "de Person, mit der wost arbeitest"
+   },
+   "lego_id": "S0388L02",
+   "lego": [
+    {
+     "known_text": "with the one you",
+     "target_text": "mit der wost"
+    }
+   ]
+  },
+  {
+   "seed_number": 415,
+   "seed": {
+    "known_text": "that wouldn't be a problem if you ask me",
+    "target_text": "des warat koa Problem, wennst mi frogst"
+   },
+   "lego_id": "S0415L01",
+   "lego": [
+    {
+     "known_text": "you ask",
+     "target_text": "frogst"
+    }
+   ]
+  },
+  {
+   "seed_number": 415,
+   "seed": {
+    "known_text": "that wouldn't be a problem if you ask me",
+    "target_text": "des warat koa Problem, wennst mi frogst"
+   },
+   "lego_id": "S0415L01",
+   "lego": [
+    {
+     "known_text": "you ask",
+     "target_text": "frogst"
+    }
+   ]
+  },
+  {
+   "seed_number": 416,
+   "seed": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "sie wolln nächstes Johr vorangehn"
+   },
+   "lego_id": "S0416L01",
+   "lego": [
+    {
+     "known_text": "to lead the way",
+     "target_text": "vorangehn"
+    }
+   ]
+  },
+  {
+   "seed_number": 416,
+   "seed": {
+    "known_text": "they want to lead the way next year",
+    "target_text": "sie wolln nächstes Johr vorangehn"
+   },
+   "lego_id": "S0416L01",
+   "lego": [
+    {
+     "known_text": "to lead the way",
+     "target_text": "vorangehn"
+    }
+   ]
+  },
+  {
+   "seed_number": 417,
+   "seed": {
+    "known_text": "do they want to kill those ants?",
+    "target_text": "wolln sie de Omeisn umbringen?"
+   },
+   "lego_id": "S0417L01",
+   "lego": [
+    {
+     "known_text": "to kill the ants",
+     "target_text": "de Omeisn umbringen"
+    }
+   ]
+  },
+  {
+   "seed_number": 417,
+   "seed": {
+    "known_text": "do they want to kill those ants?",
+    "target_text": "wolln sie de Omeisn umbringen?"
+   },
+   "lego_id": "S0417L01",
+   "lego": [
+    {
+     "known_text": "to kill the ants",
+     "target_text": "de Omeisn umbringen"
+    }
+   ]
+  },
+  {
+   "seed_number": 417,
+   "seed": {
+    "known_text": "do they want to kill those ants?",
+    "target_text": "wolln sie de Omeisn umbringen?"
+   },
+   "lego_id": "S0417L01",
+   "lego": [
+    {
+     "known_text": "to kill the ants",
+     "target_text": "de Omeisn umbringen"
+    }
+   ]
+  },
+  {
+   "seed_number": 417,
+   "seed": {
+    "known_text": "do they want to kill those ants?",
+    "target_text": "wolln sie de Omeisn umbringen?"
+   },
+   "lego_id": "S0417L01",
+   "lego": [
+    {
+     "known_text": "to kill the ants",
+     "target_text": "de Omeisn umbringen"
+    }
+   ]
+  },
+  {
+   "seed_number": 418,
+   "seed": {
+    "known_text": "they need to serve the community",
+    "target_text": "sie miassn der Gemeinschoft dienen"
+   },
+   "lego_id": "S0418L01",
+   "lego": [
+    {
+     "known_text": "to serve the community",
+     "target_text": "der Gemeinschoft dienen"
+    }
+   ]
+  },
+  {
+   "seed_number": 418,
+   "seed": {
+    "known_text": "they need to serve the community",
+    "target_text": "sie miassn der Gemeinschoft dienen"
+   },
+   "lego_id": "S0418L01",
+   "lego": [
+    {
+     "known_text": "to serve the community",
+     "target_text": "der Gemeinschoft dienen"
+    }
+   ]
+  },
+  {
+   "seed_number": 418,
+   "seed": {
+    "known_text": "they need to serve the community",
+    "target_text": "sie miassn der Gemeinschoft dienen"
+   },
+   "lego_id": "S0418L01",
+   "lego": [
+    {
+     "known_text": "to serve the community",
+     "target_text": "der Gemeinschoft dienen"
+    }
+   ]
+  },
+  {
+   "seed_number": 419,
+   "seed": {
+    "known_text": "if they want people to like them",
+    "target_text": "wenn sie wolln, dass de Leit sie mögen"
+   },
+   "lego_id": "S0419L01",
+   "lego": [
+    {
+     "known_text": "to like",
+     "target_text": "mögen"
+    }
+   ]
+  },
+  {
+   "seed_number": 419,
+   "seed": {
+    "known_text": "if they want people to like them",
+    "target_text": "wenn sie wolln, dass de Leit sie mögen"
+   },
+   "lego_id": "S0419L01",
+   "lego": [
+    {
+     "known_text": "to like",
+     "target_text": "mögen"
+    }
+   ]
+  },
+  {
+   "seed_number": 420,
+   "seed": {
+    "known_text": "they don't need to ask how old he is",
+    "target_text": "sie miassn ned frogn, wia oid er is"
+   },
+   "lego_id": "S0420L01",
+   "lego": [
+    {
+     "known_text": "old",
+     "target_text": "oid"
+    }
+   ]
+  },
+  {
+   "seed_number": 420,
+   "seed": {
+    "known_text": "they don't need to ask how old he is",
+    "target_text": "sie miassn ned frogn, wia oid er is"
+   },
+   "lego_id": "S0420L01",
+   "lego": [
+    {
+     "known_text": "old",
+     "target_text": "oid"
+    }
+   ]
+  },
+  {
+   "seed_number": 420,
+   "seed": {
+    "known_text": "they don't need to ask how old he is",
+    "target_text": "sie miassn ned frogn, wia oid er is"
+   },
+   "lego_id": "S0420L01",
+   "lego": [
+    {
+     "known_text": "old",
+     "target_text": "oid"
+    }
+   ]
+  },
+  {
+   "seed_number": 421,
+   "seed": {
+    "known_text": "because they already know he's getting weak",
+    "target_text": "weil s' eh scho wissen, dass er schwoch wird"
+   },
+   "lego_id": "S0421L01",
+   "lego": [
+    {
+     "known_text": "weak",
+     "target_text": "schwoch"
+    }
+   ]
+  },
+  {
+   "seed_number": 421,
+   "seed": {
+    "known_text": "because they already know he's getting weak",
+    "target_text": "weil s' eh scho wissen, dass er schwoch wird"
+   },
+   "lego_id": "S0421L01",
+   "lego": [
+    {
+     "known_text": "weak",
+     "target_text": "schwoch"
+    }
+   ]
+  },
+  {
+   "seed_number": 422,
+   "seed": {
+    "known_text": "a question",
+    "target_text": "a Frog"
+   },
+   "lego_id": "S0422L01",
+   "lego": [
+    {
+     "known_text": "a question",
+     "target_text": "a Frog"
+    }
+   ]
+  },
+  {
+   "seed_number": 422,
+   "seed": {
+    "known_text": "a question",
+    "target_text": "a Frog"
+   },
+   "lego_id": "S0422L01",
+   "lego": [
+    {
+     "known_text": "a question",
+     "target_text": "a Frog"
+    }
+   ]
+  },
+  {
+   "seed_number": 422,
+   "seed": {
+    "known_text": "a question",
+    "target_text": "a Frog"
+   },
+   "lego_id": "S0422L01",
+   "lego": [
+    {
+     "known_text": "a question",
+     "target_text": "a Frog"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L01",
+   "lego": [
+    {
+     "known_text": "actually",
+     "target_text": "wirklich"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L01",
+   "lego": [
+    {
+     "known_text": "actually",
+     "target_text": "wirklich"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L01",
+   "lego": [
+    {
+     "known_text": "actually",
+     "target_text": "wirklich"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L01",
+   "lego": [
+    {
+     "known_text": "actually",
+     "target_text": "wirklich"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L02",
+   "lego": [
+    {
+     "known_text": "an obvious question",
+     "target_text": "a offensichtliche Frog"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L02",
+   "lego": [
+    {
+     "known_text": "an obvious question",
+     "target_text": "a offensichtliche Frog"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L03",
+   "lego": [
+    {
+     "known_text": "to pose",
+     "target_text": "stelln"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L03",
+   "lego": [
+    {
+     "known_text": "to pose",
+     "target_text": "stelln"
+    }
+   ]
+  },
+  {
+   "seed_number": 423,
+   "seed": {
+    "known_text": "do they need to ask such an obvious question?",
+    "target_text": "miassn s' wirklich so a offensichtliche Frog stelln?"
+   },
+   "lego_id": "S0423L03",
+   "lego": [
+    {
+     "known_text": "to pose",
+     "target_text": "stelln"
+    }
+   ]
+  },
+  {
+   "seed_number": 424,
+   "seed": {
+    "known_text": "no they're wasting everybody's time",
+    "target_text": "na, de vaschwendn nur de Zeit von olle Leit"
+   },
+   "lego_id": "S0424L01",
+   "lego": [
+    {
+     "known_text": "to waste",
+     "target_text": "vaschwendn"
+    }
+   ]
+  },
+  {
+   "seed_number": 424,
+   "seed": {
+    "known_text": "no they're wasting everybody's time",
+    "target_text": "na, de vaschwendn nur de Zeit von olle Leit"
+   },
+   "lego_id": "S0424L01",
+   "lego": [
+    {
+     "known_text": "to waste",
+     "target_text": "vaschwendn"
+    }
+   ]
+  },
+  {
+   "seed_number": 425,
+   "seed": {
+    "known_text": "yes they need to make sure they understand",
+    "target_text": "jo, de miassn sichergehn, dass s' as vastehn"
+   },
+   "lego_id": "S0425L01",
+   "lego": [
+    {
+     "known_text": "to understand it",
+     "target_text": "as vastehn"
+    }
+   ]
+  },
+  {
+   "seed_number": 426,
+   "seed": {
+    "known_text": "they would like to love each other but they're unhappy",
+    "target_text": "de mechatn einander liebn, oba de san unglücklich"
+   },
+   "lego_id": "S0426L01",
+   "lego": [
+    {
+     "known_text": "to love each other",
+     "target_text": "einander liebn"
+    }
+   ]
+  },
+  {
+   "seed_number": 426,
+   "seed": {
+    "known_text": "they would like to love each other but they're unhappy",
+    "target_text": "de mechatn einander liebn, oba de san unglücklich"
+   },
+   "lego_id": "S0426L01",
+   "lego": [
+    {
+     "known_text": "to love each other",
+     "target_text": "einander liebn"
+    }
+   ]
+  },
+  {
+   "seed_number": 426,
+   "seed": {
+    "known_text": "they would like to love each other but they're unhappy",
+    "target_text": "de mechatn einander liebn, oba de san unglücklich"
+   },
+   "lego_id": "S0426L02",
+   "lego": [
+    {
+     "known_text": "unhappy",
+     "target_text": "unglücklich"
+    }
+   ]
+  },
+  {
+   "seed_number": 426,
+   "seed": {
+    "known_text": "they would like to love each other but they're unhappy",
+    "target_text": "de mechatn einander liebn, oba de san unglücklich"
+   },
+   "lego_id": "S0426L02",
+   "lego": [
+    {
+     "known_text": "unhappy",
+     "target_text": "unglücklich"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L01",
+   "lego": [
+    {
+     "known_text": "you suppose",
+     "target_text": "denkst"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L01",
+   "lego": [
+    {
+     "known_text": "you suppose",
+     "target_text": "denkst"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L01",
+   "lego": [
+    {
+     "known_text": "you suppose",
+     "target_text": "denkst"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L01",
+   "lego": [
+    {
+     "known_text": "you suppose",
+     "target_text": "denkst"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L02",
+   "lego": [
+    {
+     "known_text": "boring",
+     "target_text": "fad"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L02",
+   "lego": [
+    {
+     "known_text": "boring",
+     "target_text": "fad"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L03",
+   "lego": [
+    {
+     "known_text": "to them",
+     "target_text": "eana"
+    }
+   ]
+  },
+  {
+   "seed_number": 427,
+   "seed": {
+    "known_text": "they wouldn't like you to think that they're bored",
+    "target_text": "de mechatn ned, dass'd denkst, dass eana fad is"
+   },
+   "lego_id": "S0427L03",
+   "lego": [
+    {
+     "known_text": "to them",
+     "target_text": "eana"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L01",
+   "lego": [
+    {
+     "known_text": "tuesday",
+     "target_text": "dienstag"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L01",
+   "lego": [
+    {
+     "known_text": "tuesday",
+     "target_text": "dienstag"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L01",
+   "lego": [
+    {
+     "known_text": "tuesday",
+     "target_text": "dienstag"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L01",
+   "lego": [
+    {
+     "known_text": "tuesday",
+     "target_text": "dienstag"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L02",
+   "lego": [
+    {
+     "known_text": "to visit",
+     "target_text": "bsuachn"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L02",
+   "lego": [
+    {
+     "known_text": "to visit",
+     "target_text": "bsuachn"
+    }
+   ]
+  },
+  {
+   "seed_number": 428,
+   "seed": {
+    "known_text": "would they like to visit us on Tuesday?",
+    "target_text": "mechatn s' uns am Dienstag bsuachn?"
+   },
+   "lego_id": "S0428L02",
+   "lego": [
+    {
+     "known_text": "to visit",
+     "target_text": "bsuachn"
+    }
+   ]
+  },
+  {
+   "seed_number": 429,
+   "seed": {
+    "known_text": "yes that would be perfect for them",
+    "target_text": "jo, des warat perfekt für sie"
+   },
+   "lego_id": "S0429L01",
+   "lego": [
+    {
+     "known_text": "would be perfect",
+     "target_text": "warat perfekt"
+    }
+   ]
+  },
+  {
+   "seed_number": 430,
+   "seed": {
+    "known_text": "no that wouldn't be possible",
+    "target_text": "na, des warat ned möglich"
+   },
+   "lego_id": "S0430L01",
+   "lego": [
+    {
+     "known_text": "not possible",
+     "target_text": "ned möglich"
+    }
+   ]
+  },
+  {
+   "seed_number": 430,
+   "seed": {
+    "known_text": "no that wouldn't be possible",
+    "target_text": "na, des warat ned möglich"
+   },
+   "lego_id": "S0430L01",
+   "lego": [
+    {
+     "known_text": "not possible",
+     "target_text": "ned möglich"
+    }
+   ]
+  },
+  {
+   "seed_number": 431,
+   "seed": {
+    "known_text": "they're not ready yet but they'll be ready soon",
+    "target_text": "de san no ned fertig, oba boid san s' so weit"
+   },
+   "lego_id": "S0431L01",
+   "lego": [
+    {
+     "known_text": "not finished yet",
+     "target_text": "no ned fertig"
+    }
+   ]
+  },
+  {
+   "seed_number": 431,
+   "seed": {
+    "known_text": "they're not ready yet but they'll be ready soon",
+    "target_text": "de san no ned fertig, oba boid san s' so weit"
+   },
+   "lego_id": "S0431L01",
+   "lego": [
+    {
+     "known_text": "not finished yet",
+     "target_text": "no ned fertig"
+    }
+   ]
+  },
+  {
+   "seed_number": 432,
+   "seed": {
+    "known_text": "they could mean that they want you to ask",
+    "target_text": "de kenntn moanan, dass s' wolln, dass'd frogst"
+   },
+   "lego_id": "S0432L01",
+   "lego": [
+    {
+     "known_text": "they could",
+     "target_text": "kenntn"
+    }
+   ]
+  },
+  {
+   "seed_number": 432,
+   "seed": {
+    "known_text": "they could mean that they want you to ask",
+    "target_text": "de kenntn moanan, dass s' wolln, dass'd frogst"
+   },
+   "lego_id": "S0432L02",
+   "lego": [
+    {
+     "known_text": "to mean",
+     "target_text": "moanan"
+    }
+   ]
+  },
+  {
+   "seed_number": 432,
+   "seed": {
+    "known_text": "they could mean that they want you to ask",
+    "target_text": "de kenntn moanan, dass s' wolln, dass'd frogst"
+   },
+   "lego_id": "S0432L02",
+   "lego": [
+    {
+     "known_text": "to mean",
+     "target_text": "moanan"
+    }
+   ]
+  },
+  {
+   "seed_number": 432,
+   "seed": {
+    "known_text": "they could mean that they want you to ask",
+    "target_text": "de kenntn moanan, dass s' wolln, dass'd frogst"
+   },
+   "lego_id": "S0432L02",
+   "lego": [
+    {
+     "known_text": "to mean",
+     "target_text": "moanan"
+    }
+   ]
+  },
+  {
+   "seed_number": 433,
+   "seed": {
+    "known_text": "they couldn't find out when the film started",
+    "target_text": "de hobn ned aussafindn kennan, wann da Film angfangt hot"
+   },
+   "lego_id": "S0433L01",
+   "lego": [
+    {
+     "known_text": "when it started",
+     "target_text": "wann angfangt hot"
+    }
+   ]
+  },
+  {
+   "seed_number": 433,
+   "seed": {
+    "known_text": "they couldn't find out when the film started",
+    "target_text": "de hobn ned aussafindn kennan, wann da Film angfangt hot"
+   },
+   "lego_id": "S0433L01",
+   "lego": [
+    {
+     "known_text": "when it started",
+     "target_text": "wann angfangt hot"
+    }
+   ]
+  },
+  {
+   "seed_number": 434,
+   "seed": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "kenntn s' de Zohl von de Studentn, de s' nehman, kürzn?"
+   },
+   "lego_id": "S0434L01",
+   "lego": [
+    {
+     "known_text": "the number of students",
+     "target_text": "de Zohl von de Studentn"
+    }
+   ]
+  },
+  {
+   "seed_number": 434,
+   "seed": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "kenntn s' de Zohl von de Studentn, de s' nehman, kürzn?"
+   },
+   "lego_id": "S0434L02",
+   "lego": [
+    {
+     "known_text": "to take on",
+     "target_text": "nehman"
+    }
+   ]
+  },
+  {
+   "seed_number": 434,
+   "seed": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "kenntn s' de Zohl von de Studentn, de s' nehman, kürzn?"
+   },
+   "lego_id": "S0434L02",
+   "lego": [
+    {
+     "known_text": "to take on",
+     "target_text": "nehman"
+    }
+   ]
+  },
+  {
+   "seed_number": 434,
+   "seed": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "kenntn s' de Zohl von de Studentn, de s' nehman, kürzn?"
+   },
+   "lego_id": "S0434L03",
+   "lego": [
+    {
+     "known_text": "to cut",
+     "target_text": "kürzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 434,
+   "seed": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "kenntn s' de Zohl von de Studentn, de s' nehman, kürzn?"
+   },
+   "lego_id": "S0434L03",
+   "lego": [
+    {
+     "known_text": "to cut",
+     "target_text": "kürzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 434,
+   "seed": {
+    "known_text": "could they cut the number of students they take?",
+    "target_text": "kenntn s' de Zohl von de Studentn, de s' nehman, kürzn?"
+   },
+   "lego_id": "S0434L03",
+   "lego": [
+    {
+     "known_text": "to cut",
+     "target_text": "kürzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 436,
+   "seed": {
+    "known_text": "no there's a minimum number they need",
+    "target_text": "na, do gibt's a Mindestzohl, de s' brauchn"
+   },
+   "lego_id": "S0436L01",
+   "lego": [
+    {
+     "known_text": "there is",
+     "target_text": "gibt's"
+    }
+   ]
+  },
+  {
+   "seed_number": 436,
+   "seed": {
+    "known_text": "no there's a minimum number they need",
+    "target_text": "na, do gibt's a Mindestzohl, de s' brauchn"
+   },
+   "lego_id": "S0436L01",
+   "lego": [
+    {
+     "known_text": "there is",
+     "target_text": "gibt's"
+    }
+   ]
+  },
+  {
+   "seed_number": 436,
+   "seed": {
+    "known_text": "no there's a minimum number they need",
+    "target_text": "na, do gibt's a Mindestzohl, de s' brauchn"
+   },
+   "lego_id": "S0436L02",
+   "lego": [
+    {
+     "known_text": "minimum number",
+     "target_text": "mindestzohl"
+    }
+   ]
+  },
+  {
+   "seed_number": 436,
+   "seed": {
+    "known_text": "no there's a minimum number they need",
+    "target_text": "na, do gibt's a Mindestzohl, de s' brauchn"
+   },
+   "lego_id": "S0436L02",
+   "lego": [
+    {
+     "known_text": "minimum number",
+     "target_text": "mindestzohl"
+    }
+   ]
+  },
+  {
+   "seed_number": 436,
+   "seed": {
+    "known_text": "no there's a minimum number they need",
+    "target_text": "na, do gibt's a Mindestzohl, de s' brauchn"
+   },
+   "lego_id": "S0436L03",
+   "lego": [
+    {
+     "known_text": "they need",
+     "target_text": "brauchn"
+    }
+   ]
+  },
+  {
+   "seed_number": 437,
+   "seed": {
+    "known_text": "they wanted to raise as much as possible for charity",
+    "target_text": "de wolltn so viel wie möglich für an guatn Zweck sammeln"
+   },
+   "lego_id": "S0437L02",
+   "lego": [
+    {
+     "known_text": "a good cause",
+     "target_text": "an guatn Zweck"
+    }
+   ]
+  },
+  {
+   "seed_number": 437,
+   "seed": {
+    "known_text": "they wanted to raise as much as possible for charity",
+    "target_text": "de wolltn so viel wie möglich für an guatn Zweck sammeln"
+   },
+   "lego_id": "S0437L03",
+   "lego": [
+    {
+     "known_text": "to raise",
+     "target_text": "sammeln"
+    }
+   ]
+  },
+  {
+   "seed_number": 438,
+   "seed": {
+    "known_text": "they didn't want to decide what he should do",
+    "target_text": "de wolltn ned entscheidn, wos er mochn soit"
+   },
+   "lego_id": "S0438L01",
+   "lego": [
+    {
+     "known_text": "to decide",
+     "target_text": "entscheidn"
+    }
+   ]
+  },
+  {
+   "seed_number": 438,
+   "seed": {
+    "known_text": "they didn't want to decide what he should do",
+    "target_text": "de wolltn ned entscheidn, wos er mochn soit"
+   },
+   "lego_id": "S0438L02",
+   "lego": [
+    {
+     "known_text": "should do",
+     "target_text": "mochn soit"
+    }
+   ]
+  },
+  {
+   "seed_number": 439,
+   "seed": {
+    "known_text": "they don't want to die",
+    "target_text": "de wolln ned sterbn"
+   },
+   "lego_id": "S0439L01",
+   "lego": [
+    {
+     "known_text": "to die",
+     "target_text": "sterbn"
+    }
+   ]
+  },
+  {
+   "seed_number": 439,
+   "seed": {
+    "known_text": "they don't want to die",
+    "target_text": "de wolln ned sterbn"
+   },
+   "lego_id": "S0439L01",
+   "lego": [
+    {
+     "known_text": "to die",
+     "target_text": "sterbn"
+    }
+   ]
+  },
+  {
+   "seed_number": 440,
+   "seed": {
+    "known_text": "they want to travel while they're still young",
+    "target_text": "de wolln reisn, solang s' no jung san"
+   },
+   "lego_id": "S0440L01",
+   "lego": [
+    {
+     "known_text": "to travel",
+     "target_text": "reisn"
+    }
+   ]
+  },
+  {
+   "seed_number": 470,
+   "seed": {
+    "known_text": "how high do you want to climb before we stop?",
+    "target_text": "wia hoch wüst aufikraxln, bevor mir stehnbleibn?"
+   },
+   "lego_id": "S0470L03",
+   "lego": [
+    {
+     "known_text": "to come to a stop",
+     "target_text": "stehnbleibn"
+    }
+   ]
+  },
+  {
+   "seed_number": 471,
+   "seed": {
+    "known_text": "do you want to stop for a rest?",
+    "target_text": "wüst stehnbleibn und a Pause mochn?"
+   },
+   "lego_id": "S0471L01",
+   "lego": [
+    {
+     "known_text": "to take a break",
+     "target_text": "a Pause mochn"
+    }
+   ]
+  },
+  {
+   "seed_number": 471,
+   "seed": {
+    "known_text": "do you want to stop for a rest?",
+    "target_text": "wüst stehnbleibn und a Pause mochn?"
+   },
+   "lego_id": "S0471L01",
+   "lego": [
+    {
+     "known_text": "to take a break",
+     "target_text": "a Pause mochn"
+    }
+   ]
+  },
+  {
+   "seed_number": 481,
+   "seed": {
+    "known_text": "it's the only real hope we have left",
+    "target_text": "des is de oanzige echte Hoffnung, de mir no hobn"
+   },
+   "lego_id": "S0481L01",
+   "lego": [
+    {
+     "known_text": "the only",
+     "target_text": "de oanzige"
+    }
+   ]
+  },
+  {
+   "seed_number": 481,
+   "seed": {
+    "known_text": "it's the only real hope we have left",
+    "target_text": "des is de oanzige echte Hoffnung, de mir no hobn"
+   },
+   "lego_id": "S0481L02",
+   "lego": [
+    {
+     "known_text": "real hope",
+     "target_text": "echte Hoffnung"
+    }
+   ]
+  },
+  {
+   "seed_number": 482,
+   "seed": {
+    "known_text": "the only real hope is that they're not serious",
+    "target_text": "de oanzige echte Hoffnung is, dass s' des ned ernst moanan"
+   },
+   "lego_id": "S0482L01",
+   "lego": [
+    {
+     "known_text": "serious",
+     "target_text": "ernst"
+    }
+   ]
+  },
+  {
+   "seed_number": 482,
+   "seed": {
+    "known_text": "the only real hope is that they're not serious",
+    "target_text": "de oanzige echte Hoffnung is, dass s' des ned ernst moanan"
+   },
+   "lego_id": "S0482L01",
+   "lego": [
+    {
+     "known_text": "serious",
+     "target_text": "ernst"
+    }
+   ]
+  },
+  {
+   "seed_number": 483,
+   "seed": {
+    "known_text": "life isn't easy but it's not meant to be easy",
+    "target_text": "s'Lebn is ned leicht, oba es soit a ned leicht sein"
+   },
+   "lego_id": "S0483L01",
+   "lego": [
+    {
+     "known_text": "life",
+     "target_text": "s'Lebn"
+    }
+   ]
+  },
+  {
+   "seed_number": 483,
+   "seed": {
+    "known_text": "life isn't easy but it's not meant to be easy",
+    "target_text": "s'Lebn is ned leicht, oba es soit a ned leicht sein"
+   },
+   "lego_id": "S0483L02",
+   "lego": [
+    {
+     "known_text": "is meant to",
+     "target_text": "soit"
+    }
+   ]
+  },
+  {
+   "seed_number": 484,
+   "seed": {
+    "known_text": "it's meant to be a challenge",
+    "target_text": "es soit jo a Herausforderung sein"
+   },
+   "lego_id": "S0484L01",
+   "lego": [
+    {
+     "known_text": "challenge",
+     "target_text": "herausforderung"
+    }
+   ]
+  },
+  {
+   "seed_number": 485,
+   "seed": {
+    "known_text": "nothing would make me happier than to get away",
+    "target_text": "nix warat mir liaba, ois amoi wegzukumman"
+   },
+   "lego_id": "S0485L02",
+   "lego": [
+    {
+     "known_text": "to get away",
+     "target_text": "wegzukumman"
+    }
+   ]
+  },
+  {
+   "seed_number": 486,
+   "seed": {
+    "known_text": "I think your eyes are beautiful",
+    "target_text": "i find, deine Augn san wunderschen"
+   },
+   "lego_id": "S0486L01",
+   "lego": [
+    {
+     "known_text": "eyes",
+     "target_text": "augn"
+    }
+   ]
+  },
+  {
+   "seed_number": 486,
+   "seed": {
+    "known_text": "I think your eyes are beautiful",
+    "target_text": "i find, deine Augn san wunderschen"
+   },
+   "lego_id": "S0486L02",
+   "lego": [
+    {
+     "known_text": "gorgeous",
+     "target_text": "wunderschen"
+    }
+   ]
+  },
+  {
+   "seed_number": 487,
+   "seed": {
+    "known_text": "it's under the bridge",
+    "target_text": "es is unter da Bruckn"
+   },
+   "lego_id": "S0487L01",
+   "lego": [
+    {
+     "known_text": "bridge",
+     "target_text": "bruckn"
+    }
+   ]
+  },
+  {
+   "seed_number": 487,
+   "seed": {
+    "known_text": "it's under the bridge",
+    "target_text": "es is unter da Bruckn"
+   },
+   "lego_id": "S0487L02",
+   "lego": [
+    {
+     "known_text": "under",
+     "target_text": "unter"
+    }
+   ]
+  },
+  {
+   "seed_number": 487,
+   "seed": {
+    "known_text": "it's under the bridge",
+    "target_text": "es is unter da Bruckn"
+   },
+   "lego_id": "S0487L02",
+   "lego": [
+    {
+     "known_text": "under",
+     "target_text": "unter"
+    }
+   ]
+  },
+  {
+   "seed_number": 488,
+   "seed": {
+    "known_text": "it's on the other side of that yellow line",
+    "target_text": "es is auf da ondern Seitn von dera gelbn Linie"
+   },
+   "lego_id": "S0488L01",
+   "lego": [
+    {
+     "known_text": "the other side",
+     "target_text": "da ondern Seitn"
+    }
+   ]
+  },
+  {
+   "seed_number": 488,
+   "seed": {
+    "known_text": "it's on the other side of that yellow line",
+    "target_text": "es is auf da ondern Seitn von dera gelbn Linie"
+   },
+   "lego_id": "S0488L02",
+   "lego": [
+    {
+     "known_text": "that yellow line",
+     "target_text": "dera gelbn Linie"
+    }
+   ]
+  },
+  {
+   "seed_number": 489,
+   "seed": {
+    "known_text": "if you don't make me a strong cup of coffee right now",
+    "target_text": "wennst mir ned glei iatz an starkn Kaffee mochst"
+   },
+   "lego_id": "S0489L01",
+   "lego": [
+    {
+     "known_text": "a strong coffee",
+     "target_text": "an starkn Kaffee"
+    }
+   ]
+  },
+  {
+   "seed_number": 489,
+   "seed": {
+    "known_text": "if you don't make me a strong cup of coffee right now",
+    "target_text": "wennst mir ned glei iatz an starkn Kaffee mochst"
+   },
+   "lego_id": "S0489L01",
+   "lego": [
+    {
+     "known_text": "a strong coffee",
+     "target_text": "an starkn Kaffee"
+    }
+   ]
+  },
+  {
+   "seed_number": 490,
+   "seed": {
+    "known_text": "then I will never trust anyone ever again",
+    "target_text": "dann trau i nia wieder irgendwem"
+   },
+   "lego_id": "S0490L02",
+   "lego": [
+    {
+     "known_text": "never again",
+     "target_text": "nia wieder"
+    }
+   ]
+  },
+  {
+   "seed_number": 490,
+   "seed": {
+    "known_text": "then I will never trust anyone ever again",
+    "target_text": "dann trau i nia wieder irgendwem"
+   },
+   "lego_id": "S0490L03",
+   "lego": [
+    {
+     "known_text": "anyone",
+     "target_text": "irgendwem"
+    }
+   ]
+  },
+  {
+   "seed_number": 490,
+   "seed": {
+    "known_text": "then I will never trust anyone ever again",
+    "target_text": "dann trau i nia wieder irgendwem"
+   },
+   "lego_id": "S0490L03",
+   "lego": [
+    {
+     "known_text": "anyone",
+     "target_text": "irgendwem"
+    }
+   ]
+  },
+  {
+   "seed_number": 492,
+   "seed": {
+    "known_text": "which of those places do you think is the most interesting?",
+    "target_text": "wos glaubst, welcher von dene Orte am interessantestn is?"
+   },
+   "lego_id": "S0492L01",
+   "lego": [
+    {
+     "known_text": "which of those places",
+     "target_text": "welcher von dene Orte"
+    }
+   ]
+  },
+  {
+   "seed_number": 492,
+   "seed": {
+    "known_text": "which of those places do you think is the most interesting?",
+    "target_text": "wos glaubst, welcher von dene Orte am interessantestn is?"
+   },
+   "lego_id": "S0492L01",
+   "lego": [
+    {
+     "known_text": "which of those places",
+     "target_text": "welcher von dene Orte"
+    }
+   ]
+  },
+  {
+   "seed_number": 492,
+   "seed": {
+    "known_text": "which of those places do you think is the most interesting?",
+    "target_text": "wos glaubst, welcher von dene Orte am interessantestn is?"
+   },
+   "lego_id": "S0492L01",
+   "lego": [
+    {
+     "known_text": "which of those places",
+     "target_text": "welcher von dene Orte"
+    }
+   ]
+  },
+  {
+   "seed_number": 492,
+   "seed": {
+    "known_text": "which of those places do you think is the most interesting?",
+    "target_text": "wos glaubst, welcher von dene Orte am interessantestn is?"
+   },
+   "lego_id": "S0492L02",
+   "lego": [
+    {
+     "known_text": "the most interesting",
+     "target_text": "am interessantestn"
+    }
+   ]
+  },
+  {
+   "seed_number": 493,
+   "seed": {
+    "known_text": "what's going to come next?",
+    "target_text": "wos kummt ois nächstes?"
+   },
+   "lego_id": "S0493L01",
+   "lego": [
+    {
+     "known_text": "comes",
+     "target_text": "kummt"
+    }
+   ]
+  },
+  {
+   "seed_number": 493,
+   "seed": {
+    "known_text": "what's going to come next?",
+    "target_text": "wos kummt ois nächstes?"
+   },
+   "lego_id": "S0493L01",
+   "lego": [
+    {
+     "known_text": "comes",
+     "target_text": "kummt"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L01",
+   "lego": [
+    {
+     "known_text": "first part",
+     "target_text": "erstn Teil"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L01",
+   "lego": [
+    {
+     "known_text": "first part",
+     "target_text": "erstn Teil"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L01",
+   "lego": [
+    {
+     "known_text": "first part",
+     "target_text": "erstn Teil"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L01",
+   "lego": [
+    {
+     "known_text": "first part",
+     "target_text": "erstn Teil"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L01",
+   "lego": [
+    {
+     "known_text": "first part",
+     "target_text": "erstn Teil"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L02",
+   "lego": [
+    {
+     "known_text": "show",
+     "target_text": "show"
+    }
+   ]
+  },
+  {
+   "seed_number": 494,
+   "seed": {
+    "known_text": "what happens after the first part of the show?",
+    "target_text": "wos passiert noch'm erstn Teil von da Show?"
+   },
+   "lego_id": "S0494L02",
+   "lego": [
+    {
+     "known_text": "show",
+     "target_text": "show"
+    }
+   ]
+  },
+  {
+   "seed_number": 497,
+   "seed": {
+    "known_text": "that sounds as though you need to get some sleep",
+    "target_text": "des klingt, ois obst a bissl schlofn miassast"
+   },
+   "lego_id": "S0497L02",
+   "lego": [
+    {
+     "known_text": "to sleep",
+     "target_text": "schlofn"
+    }
+   ]
+  },
+  {
+   "seed_number": 499,
+   "seed": {
+    "known_text": "maybe we should open the door and close the window",
+    "target_text": "vielleicht soitn mir de Tür aufmochn und s'Fenster zuamochn"
+   },
+   "lego_id": "S0499L02",
+   "lego": [
+    {
+     "known_text": "we should",
+     "target_text": "soitn mir"
+    }
+   ]
+  },
+  {
+   "seed_number": 499,
+   "seed": {
+    "known_text": "maybe we should open the door and close the window",
+    "target_text": "vielleicht soitn mir de Tür aufmochn und s'Fenster zuamochn"
+   },
+   "lego_id": "S0499L02",
+   "lego": [
+    {
+     "known_text": "we should",
+     "target_text": "soitn mir"
+    }
+   ]
+  },
+  {
+   "seed_number": 499,
+   "seed": {
+    "known_text": "maybe we should open the door and close the window",
+    "target_text": "vielleicht soitn mir de Tür aufmochn und s'Fenster zuamochn"
+   },
+   "lego_id": "S0499L03",
+   "lego": [
+    {
+     "known_text": "the window",
+     "target_text": "s'Fenster"
+    }
+   ]
+  },
+  {
+   "seed_number": 499,
+   "seed": {
+    "known_text": "maybe we should open the door and close the window",
+    "target_text": "vielleicht soitn mir de Tür aufmochn und s'Fenster zuamochn"
+   },
+   "lego_id": "S0499L03",
+   "lego": [
+    {
+     "known_text": "the window",
+     "target_text": "s'Fenster"
+    }
+   ]
+  },
+  {
+   "seed_number": 499,
+   "seed": {
+    "known_text": "maybe we should open the door and close the window",
+    "target_text": "vielleicht soitn mir de Tür aufmochn und s'Fenster zuamochn"
+   },
+   "lego_id": "S0499L04",
+   "lego": [
+    {
+     "known_text": "to close",
+     "target_text": "zuamochn"
+    }
+   ]
+  },
+  {
+   "seed_number": 499,
+   "seed": {
+    "known_text": "maybe we should open the door and close the window",
+    "target_text": "vielleicht soitn mir de Tür aufmochn und s'Fenster zuamochn"
+   },
+   "lego_id": "S0499L04",
+   "lego": [
+    {
+     "known_text": "to close",
+     "target_text": "zuamochn"
+    }
+   ]
+  },
+  {
+   "seed_number": 500,
+   "seed": {
+    "known_text": "Why don't you want to sit between the two girls?",
+    "target_text": "warum wüst ned zwischen de zwoa Madln sitzn?"
+   },
+   "lego_id": "S0500L02",
+   "lego": [
+    {
+     "known_text": "girls",
+     "target_text": "madln"
+    }
+   ]
+  },
+  {
+   "seed_number": 500,
+   "seed": {
+    "known_text": "Why don't you want to sit between the two girls?",
+    "target_text": "warum wüst ned zwischen de zwoa Madln sitzn?"
+   },
+   "lego_id": "S0500L03",
+   "lego": [
+    {
+     "known_text": "to sit",
+     "target_text": "sitzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 500,
+   "seed": {
+    "known_text": "Why don't you want to sit between the two girls?",
+    "target_text": "warum wüst ned zwischen de zwoa Madln sitzn?"
+   },
+   "lego_id": "S0500L03",
+   "lego": [
+    {
+     "known_text": "to sit",
+     "target_text": "sitzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 500,
+   "seed": {
+    "known_text": "Why don't you want to sit between the two girls?",
+    "target_text": "warum wüst ned zwischen de zwoa Madln sitzn?"
+   },
+   "lego_id": "S0500L03",
+   "lego": [
+    {
+     "known_text": "to sit",
+     "target_text": "sitzn"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "can you all",
+     "target_text": "kennts"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L02",
+   "lego": [
+    {
+     "known_text": "your hands",
+     "target_text": "d'Händ"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "can you all put your hands up?",
+    "target_text": "kennts olle d'Händ aufhebn?"
+   },
+   "lego_id": "S0529L02",
+   "lego": [
+    {
+     "known_text": "your hands",
+     "target_text": "d'Händ"
+    }
+   ]
+  },
+  {
+   "seed_number": 530,
+   "seed": {
+    "known_text": "so I can count them",
+    "target_text": "damit i s' zöhln kann"
+   },
+   "lego_id": "S0530L01",
+   "lego": [
+    {
+     "known_text": "to count",
+     "target_text": "zöhln"
+    }
+   ]
+  },
+  {
+   "seed_number": 530,
+   "seed": {
+    "known_text": "so I can count them",
+    "target_text": "damit i s' zöhln kann"
+   },
+   "lego_id": "S0530L01",
+   "lego": [
+    {
+     "known_text": "to count",
+     "target_text": "zöhln"
+    }
+   ]
+  },
+  {
+   "seed_number": 533,
+   "seed": {
+    "known_text": "she won't listen to every word you say",
+    "target_text": "sie wird ned auf a jeds Wort losn, wost sogst"
+   },
+   "lego_id": "S0533L02",
+   "lego": [
+    {
+     "known_text": "to listen",
+     "target_text": "losn"
+    }
+   ]
+  },
+  {
+   "seed_number": 533,
+   "seed": {
+    "known_text": "she won't listen to every word you say",
+    "target_text": "sie wird ned auf a jeds Wort losn, wost sogst"
+   },
+   "lego_id": "S0533L02",
+   "lego": [
+    {
+     "known_text": "to listen",
+     "target_text": "losn"
+    }
+   ]
+  },
+  {
+   "seed_number": 594,
+   "seed": {
+    "known_text": "I had to share my toys with my sister",
+    "target_text": "i hob meine Spielsochn mit meina Schwesta teiln miassn"
+   },
+   "lego_id": "S0594L01",
+   "lego": [
+    {
+     "known_text": "toys",
+     "target_text": "spielsochn"
+    }
+   ]
+  },
+  {
+   "seed_number": 594,
+   "seed": {
+    "known_text": "I had to share my toys with my sister",
+    "target_text": "i hob meine Spielsochn mit meina Schwesta teiln miassn"
+   },
+   "lego_id": "S0594L02",
+   "lego": [
+    {
+     "known_text": "with my sister",
+     "target_text": "mit meina Schwesta"
+    }
+   ]
+  },
+  {
+   "seed_number": 595,
+   "seed": {
+    "known_text": "I need to lie down in the garden",
+    "target_text": "i muass mi in Gortn hinlegn"
+   },
+   "lego_id": "S0595L01",
+   "lego": [
+    {
+     "known_text": "to lie down",
+     "target_text": "hinlegn"
+    }
+   ]
+  },
+  {
+   "seed_number": 596,
+   "seed": {
+    "known_text": "and I need to close my eyes for a while",
+    "target_text": "und i muass a Zeitl lang meine Augn zuamochn"
+   },
+   "lego_id": "S0596L01",
+   "lego": [
+    {
+     "known_text": "for a while",
+     "target_text": "a Zeitl lang"
+    }
+   ]
+  },
+  {
+   "seed_number": 600,
+   "seed": {
+    "known_text": "I'd have driven if you'd told me how tired you were",
+    "target_text": "i warat gfoahn, wennst ma gsogt hättst, wia miad dassd worst"
+   },
+   "lego_id": "S0600L01",
+   "lego": [
+    {
+     "known_text": "you were",
+     "target_text": "worst"
+    }
+   ]
+  },
+  {
+   "seed_number": 605,
+   "seed": {
+    "known_text": "because we needed help",
+    "target_text": "weil ma Hilfe braucht hobn"
+   },
+   "lego_id": "S0605L01",
+   "lego": [
+    {
+     "known_text": "help",
+     "target_text": "hilfe"
+    }
+   ]
+  },
+  {
+   "seed_number": 605,
+   "seed": {
+    "known_text": "because we needed help",
+    "target_text": "weil ma Hilfe braucht hobn"
+   },
+   "lego_id": "S0605L01",
+   "lego": [
+    {
+     "known_text": "help",
+     "target_text": "hilfe"
+    }
+   ]
+  },
+  {
+   "seed_number": 611,
+   "seed": {
+    "known_text": "I would have been ready to look somewhere else",
+    "target_text": "i warat bereit gwesn, wo anders zum schaun"
+   },
+   "lego_id": "S0611L01",
+   "lego": [
+    {
+     "known_text": "somewhere else",
+     "target_text": "wo anders"
+    }
+   ]
+  },
+  {
+   "seed_number": 613,
+   "seed": {
+    "known_text": "we probably would have bought a house there",
+    "target_text": "mia hättn durt wahrscheinlich a Haus kauft"
+   },
+   "lego_id": "S0613L01",
+   "lego": [
+    {
+     "known_text": "house",
+     "target_text": "haus"
+    }
+   ]
+  },
+  {
+   "seed_number": 614,
+   "seed": {
+    "known_text": "it's near where your family live",
+    "target_text": "des is in da Nähe, wo deine Familie wohnt"
+   },
+   "lego_id": "S0614L01",
+   "lego": [
+    {
+     "known_text": "lives",
+     "target_text": "wohnt"
+    }
+   ]
+  },
+  {
+   "seed_number": 614,
+   "seed": {
+    "known_text": "it's near where your family live",
+    "target_text": "des is in da Nähe, wo deine Familie wohnt"
+   },
+   "lego_id": "S0614L02",
+   "lego": [
+    {
+     "known_text": "close by",
+     "target_text": "in da Nähe"
+    }
+   ]
+  },
+  {
+   "seed_number": 614,
+   "seed": {
+    "known_text": "it's near where your family live",
+    "target_text": "des is in da Nähe, wo deine Familie wohnt"
+   },
+   "lego_id": "S0614L02",
+   "lego": [
+    {
+     "known_text": "close by",
+     "target_text": "in da Nähe"
+    }
+   ]
+  },
+  {
+   "seed_number": 622,
+   "seed": {
+    "known_text": "I knew that the children had broken it",
+    "target_text": "i hob gwusst, dass die Kinda des hin gmocht hobn"
+   },
+   "lego_id": "S0622L01",
+   "lego": [
+    {
+     "known_text": "kids",
+     "target_text": "kinda"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "do you want a cup of coffee or tea?",
+    "target_text": "wüst a Tassn Kaffee oda an Tee?"
+   },
+   "lego_id": "S0623L01",
+   "lego": [
+    {
+     "known_text": "cup",
+     "target_text": "tassn"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "do you want a cup of coffee or tea?",
+    "target_text": "wüst a Tassn Kaffee oda an Tee?"
+   },
+   "lego_id": "S0623L02",
+   "lego": [
+    {
+     "known_text": "tea",
+     "target_text": "tee"
+    }
+   ]
+  },
+  {
+   "seed_number": 623,
+   "seed": {
+    "known_text": "do you want a cup of coffee or tea?",
+    "target_text": "wüst a Tassn Kaffee oda an Tee?"
+   },
+   "lego_id": "S0623L02",
+   "lego": [
+    {
+     "known_text": "tea",
+     "target_text": "tee"
+    }
+   ]
+  },
+  {
+   "seed_number": 625,
+   "seed": {
+    "known_text": "do you want something to drink?",
+    "target_text": "wüst wos zum trinken?"
+   },
+   "lego_id": "S0625L01",
+   "lego": [
+    {
+     "known_text": "to drink",
+     "target_text": "trinken"
+    }
+   ]
+  },
+  {
+   "seed_number": 625,
+   "seed": {
+    "known_text": "do you want something to drink?",
+    "target_text": "wüst wos zum trinken?"
+   },
+   "lego_id": "S0625L01",
+   "lego": [
+    {
+     "known_text": "to drink",
+     "target_text": "trinken"
+    }
+   ]
+  },
+  {
+   "seed_number": 659,
+   "seed": {
+    "known_text": "could you all say that?",
+    "target_text": "kunntats es olle des sogn"
+   },
+   "lego_id": "S0659L01",
+   "lego": [
+    {
+     "known_text": "could you all",
+     "target_text": "kunntats es"
+    }
+   ]
+  }
+ ]
+}

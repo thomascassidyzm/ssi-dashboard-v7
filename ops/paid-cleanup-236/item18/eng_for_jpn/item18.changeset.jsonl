@@ -1,0 +1,439 @@
+{"format":"ssi-changeset/1","id":"eng_for_jpn-item18-cs236","course":"eng_for_jpn","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:34.204Z","ops":438,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0012L04B03","expect":{"known_text":"英語で当てたくありません","target_text":"I wouldn't like to guess in English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0012L04B04","expect":{"known_text":"今当てたくありません","target_text":"I wouldn't like to guess now"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0013L03B04","expect":{"known_text":"あなたは英語をとても上手に話します","target_text":"you speak English very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0014L02B04","expect":{"known_text":"私は一日中英語を話したいです","target_text":"I want to speak English all day"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0018L03B02","expect":{"known_text":"私たちは会いたい","target_text":"we want to meet"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0019L03B01","expect":{"known_text":"私は止めたい","target_text":"I want to stop"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0019L04B01","expect":{"known_text":"私は話すことを止めたい","target_text":"I want to stop talking"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0019L04B02","expect":{"known_text":"私たちは話すことを止めたくない","target_text":"we don't want to stop talking"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0019L04U05","expect":{"known_text":"私たちは今晩話すことを止めたい","target_text":"we want to stop talking this evening"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0026L03B03","expect":{"known_text":"準備ができています","target_text":"I'm ready"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0027L02U04","expect":{"known_text":"答えたいです","target_text":"I want to answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0027L03B05","expect":{"known_text":"時間がかかりすぎています","target_text":"I'm taking too much time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0028L02B04","expect":{"known_text":"できるだけ早くやってほしいです","target_text":"I want you to try as soon as you can"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0032L01U03","expect":{"known_text":"あなたに何か見せたいです","target_text":"I want to show you something"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0032L02B04","expect":{"known_text":"私に見せてほしい","target_text":"I want you to show me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0032L02U07","expect":{"known_text":"私に何か見せてほしいです","target_text":"I want you to show me something"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0034L04U08","expect":{"known_text":"他の人がここにいる時、彼は話したくありません","target_text":"he doesn't want to speak when other people are here"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0038L01B01","expect":{"known_text":"英語を学んでいます","target_text":"I've been learning English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0038L01B02","expect":{"known_text":"話すことを学んでいます","target_text":"I've been learning to speak"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0038L01U04","expect":{"known_text":"何かを学んでいます","target_text":"I've been learning something"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0038L02B02","expect":{"known_text":"約一週間学んでいます","target_text":"I've been learning for about a week"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0039L02B01","expect":{"known_text":"今日は少し疲れています","target_text":"I'm a little tired today"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0039L02B02","expect":{"known_text":"でも少し疲れています","target_text":"but I'm a little tired"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0039L02U02","expect":{"known_text":"今は少し疲れています","target_text":"I'm a little tired now"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0039L03B03","expect":{"known_text":"今朝は少し疲れています","target_text":"I'm a little tired this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0042L01B01","expect":{"known_text":"昨日良く感じ始めていました","target_text":"I was starting to feel better yesterday"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0042L01B03","expect":{"known_text":"今朝良く感じ始めていました","target_text":"I was starting to feel better this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0042L03B03","expect":{"known_text":"昨夜より良く感じ始めていました","target_text":"I was starting to feel better than last night"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0048L01B01","expect":{"known_text":"答えは気にしません","target_text":"I don't care about the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0049L01B03","expect":{"known_text":"私にはこんな感じです","target_text":"It's like this for me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0049L01B04","expect":{"known_text":"こんな感じだと思います","target_text":"I think it's like this"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0049L02B02","expect":{"known_text":"私の言いたいことがわかる","target_text":"you know what I mean"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0051L01B02","expect":{"known_text":"楽しんでいます","target_text":"I enjoy"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0051L05B02","expect":{"known_text":"友達と","target_text":"with my friends"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0052L02B02","expect":{"known_text":"たかった","target_text":"wanted to"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0052L04B02","expect":{"known_text":"手紙","target_text":"a letter"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0052L05B02","expect":{"known_text":"友達に","target_text":"to his friend"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0052L06B02","expect":{"known_text":"先週","target_text":"last week"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0053L03B02","expect":{"known_text":"かばんに","target_text":"in her bag"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0054L04B02","expect":{"known_text":"もう少し","target_text":"a little more"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0055L01B02","expect":{"known_text":"楽しくありません","target_text":"I don't enjoy"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0055L02B02","expect":{"known_text":"起きる","target_text":"waking up"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0055L04B02","expect":{"known_text":"眠れなかった","target_text":"I didn't sleep"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0056L03B02","expect":{"known_text":"いくつかの言葉","target_text":"a few words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0057L01B02","expect":{"known_text":"思い出せません","target_text":"I can't remember"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0059L01U11","expect":{"known_text":"言葉が十分わかると面白いことを知っています","target_text":"you know that it's interesting when you understand enough words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0059L02B02","expect":{"known_text":"やるべきこと","target_text":"what I need to do"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0061L03B02","expect":{"known_text":"言っていただけますか","target_text":"could you say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0061L04B02","expect":{"known_text":"それをもう一度","target_text":"that again"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0062L01B02","expect":{"known_text":"同時に","target_text":"at the same time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L01B03","expect":{"known_text":"確信していますか、気にしませんか","target_text":"are you sure you don't mind?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L01B04","expect":{"known_text":"確信していますか、手伝うことを気にしませんか","target_text":"are you sure you don't mind helping me?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L03B02","expect":{"known_text":"本当に気にしませんか","target_text":"are you sure you don't mind?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L03B05","expect":{"known_text":"本当に気にしませんか、今夜私を手伝うことを","target_text":"are you sure you don't mind helping me tonight?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L03B07","expect":{"known_text":"本当に気にしませんか、明日私を手伝うことを","target_text":"are you sure you don't mind helping me tomorrow?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L04B02","expect":{"known_text":"手伝うこと","target_text":"helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0063L04B05","expect":{"known_text":"本当に、あなたが行かなければならない前に私を手伝っても構いませんか？","target_text":"are you sure you don't mind helping me before you have to go?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0064L03B02","expect":{"known_text":"簡単ではない","target_text":"isn't easy"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0064L04B02","expect":{"known_text":"楽しいです","target_text":"it is fun"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0065L05B02","expect":{"known_text":"重要です","target_text":"it's important"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0065L06B02","expect":{"known_text":"時間を取る","target_text":"to take time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0065L07B02","expect":{"known_text":"自分をテストする","target_text":"to test yourself"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0065L07B06","expect":{"known_text":"できるだけ多く自分をテストすることが重要です","target_text":"it's important to test yourself as often as possible"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0065L07B07","expect":{"known_text":"時間を取って自分をテストすることが重要です","target_text":"it's important to take time to test yourself"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0065L07U14","expect":{"known_text":"他の人と自分をテストしてみることが大切です","target_text":"it's important to try to test yourself with someone else"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0066L02B02","expect":{"known_text":"難しくない","target_text":"not difficult"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0066L02B06","expect":{"known_text":"答えを見つけることは難しくないです","target_text":"it's not difficult to find the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0066L03B02","expect":{"known_text":"答えを見つける","target_text":"to find the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0069L04B02","expect":{"known_text":"若い犬","target_text":"the young dog"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0069L05B02","expect":{"known_text":"午後ずっと","target_text":"all afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0069L06B02","expect":{"known_text":"世話をしたくなかった","target_text":"didn't want to look after"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0070L02U06","expect":{"known_text":"彼はそれがどこにあるか教えたくありませんでした","target_text":"He didn't want to tell me where it was"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0070L04B02","expect":{"known_text":"どこにあったか","target_text":"where it was"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0070L05B02","expect":{"known_text":"教えたくなかった","target_text":"didn't want to tell me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L01B02","expect":{"known_text":"したくありませんでした","target_text":"didn't want to"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L01U08","expect":{"known_text":"彼女はそれがどこにあるか教えたくありませんでした。","target_text":"she didn't want to tell me where it was"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L01U15","expect":{"known_text":"彼女はそれがどこにあるか教えたくありませんでした。","target_text":"she didn't want to tell me where it was"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L01U12","expect":{"known_text":"彼女は今日の午後何も読みたくありませんでした","target_text":"she didn't want to read anything this afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L02U10","expect":{"known_text":"もう少し英語で話させてください","target_text":"let me speak a little more English with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L03B06","expect":{"known_text":"誰にも本当のことを聞かせたくなかった","target_text":"we didn't want to let anyone hear the truth"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L05B06","expect":{"known_text":"誰にも本当のことを聞かせたくなかった","target_text":"we didn't want to let anyone hear the truth"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0071L05U12","expect":{"known_text":"何を言えばいいかわからなかったので、本当のことを言いたくありませんでした","target_text":"I didn't want to tell the truth because I wasn't sure what to say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0072L01B02","expect":{"known_text":"やっている","target_text":"you're doing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0072L01B07","expect":{"known_text":"あなたはとてもよくやっていると思います","target_text":"I think that you're doing very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0072L01U09","expect":{"known_text":"とても上手にやっていると思います。","target_text":"I think that you're doing very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0072L01U13","expect":{"known_text":"とても上手にやっていると思います。","target_text":"I think that you're doing very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0072L01U15","expect":{"known_text":"とても上手にやっていると思います。","target_text":"I think that you're doing very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L01B01","expect":{"known_text":"どうもありがとうございます","target_text":"thank you very much"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L01B02","expect":{"known_text":"どうもありがとうございます","target_text":"thank you very much"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L01B06","expect":{"known_text":"どうもありがとうございますがまだ学ぶことがあります","target_text":"thank you very much but I've got more to learn"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02B02","expect":{"known_text":"もっと学ぶことがあります","target_text":"I've got more to learn"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02B07","expect":{"known_text":"どうもありがとうございますがまだ学ぶことがあります","target_text":"thank you very much but I've got more to learn"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U03","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U04","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U06","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U07","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U09","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U10","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U12","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U13","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0073L02U15","expect":{"known_text":"もっと学ぶことがありますが、あなたとこれをするのを楽しんでいます","target_text":"I've got more to learn but I enjoy doing this with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02B02","expect":{"known_text":"手伝ってくれて","target_text":"for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02B06","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02B07","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02U02","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02U07","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02U08","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02U09","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0074L02U14","expect":{"known_text":"手伝ってくれてどうもありがとうございます","target_text":"thank you very much for helping me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0075L01B02","expect":{"known_text":"ことがありますか","target_text":"have you got?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0079L01B02","expect":{"known_text":"学び始めました","target_text":"did you start to learn?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0079L01B06","expect":{"known_text":"どこで英語を学び始めましたか？","target_text":"where did you start to learn English?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0080L01B02","expect":{"known_text":"いつ準備ができるかわかりません","target_text":"I'm not sure when I'll be ready"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0083L02B02","expect":{"known_text":"あなたの友達について","target_text":"about your friend"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0083L02B03","expect":{"known_text":"あなたの友達についてもっと話してください","target_text":"tell me more about your friend"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0083L03B02","expect":{"known_text":"言ったことに同意します","target_text":"agree with what you said"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0083L03B06","expect":{"known_text":"あなたが今朝言ったことに同意します","target_text":"I agree with what you said this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0084L01B02","expect":{"known_text":"彼が言ったこと","target_text":"what he said"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0085L01B02","expect":{"known_text":"あの人たち","target_text":"those people"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0086L01B02","expect":{"known_text":"残念ながら","target_text":"unfortunately"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0086L02B02","expect":{"known_text":"できませんでした","target_text":"it wasn't possible"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0087L01B06","expect":{"known_text":"彼らは私が知らない人たちです","target_text":"they are people I don't know"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0087L02B02","expect":{"known_text":"私が知らない人たち","target_text":"people I don't know"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0088L01B02","expect":{"known_text":"まだ知らない人","target_text":"people I don't know yet"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0088L02B02","expect":{"known_text":"話す準備ができていません","target_text":"I'm not ready to talk"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0089L01B02","expect":{"known_text":"やった","target_text":"I've done"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0089L03B02","expect":{"known_text":"短い時間で","target_text":"in a short time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0090L01B02","expect":{"known_text":"もっとゆっくり","target_text":"more slowly"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0090L01B06","expect":{"known_text":"もっとゆっくり話してくれたら嬉しいです","target_text":"if you can speak more slowly that would be great"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0090L02B02","expect":{"known_text":"してくれたら嬉しいです","target_text":"if you can that would be great"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0091L01B02","expect":{"known_text":"難しいです","target_text":"it's difficult"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0091L06B02","expect":{"known_text":"間に合うように","target_text":"in time"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0092L01B02","expect":{"known_text":"続けたいです","target_text":"I'd like to keep on"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0092L04B04","expect":{"known_text":"しばらく話す","target_text":"talk for a while"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0092L04U09","expect":{"known_text":"しばらく話し続けることが面白いと思います","target_text":"I think that it's interesting to keep on talking for a while"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0093L01B02","expect":{"known_text":"もう行く時間です","target_text":"it's time to go now"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0093L01U15","expect":{"known_text":"もう行く時間ですが、英語を話すのをやめたくないです","target_text":"It's time to go now but I don't want to stop trying to speak English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0094L02B02","expect":{"known_text":"唯一の","target_text":"the only"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0094L04B02","expect":{"known_text":"うまくいく","target_text":"it will work"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0095L02B06","expect":{"known_text":"もうすぐ帰りたいです","target_text":"I'd like to go home soon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0095L03B02","expect":{"known_text":"次の","target_text":"the next"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0095L04B03","expect":{"known_text":"次のバスで帰る準備はできていますか？","target_text":"are you ready to go home on the next bus?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0095L04B04","expect":{"known_text":"次のバスで帰ります","target_text":"I'm going to go home on the next bus"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0096L02B02","expect":{"known_text":"準備ができていません","target_text":"I'm not ready"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0096L02B06","expect":{"known_text":"まだ知らない人と話す準備ができていません。","target_text":"I'm not ready to talk to people I don't know yet"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0097L02B02","expect":{"known_text":"準備ができています","target_text":"I'm ready"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0098L02B02","expect":{"known_text":"他のこと","target_text":"something else"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0098L04B02","expect":{"known_text":"方がいい","target_text":"should"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0099L01B02","expect":{"known_text":"聞いた方がいいです","target_text":"you should ask"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0099L01B06","expect":{"known_text":"できるだけ早く聞いた方がいいです","target_text":"you should ask as soon as you can"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0099L04B02","expect":{"known_text":"うまくいかない","target_text":"it's not working"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0100L01B02","expect":{"known_text":"心配しなくてもいいです","target_text":"you shouldn't worry"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0100L01B05","expect":{"known_text":"うまくいかないときに心配しなくてもいいです","target_text":"you shouldn't worry when it's not working"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0100L04B02","expect":{"known_text":"似たような","target_text":"similar"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0100L04B07","expect":{"known_text":"似たようなことをすることを心配しなくてもいいです。","target_text":"you shouldn't worry about doing something similar"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0101L01B05","expect":{"known_text":"この言語についてもっと楽しんで知っています","target_text":"I'm enjoying finding out more about this language"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0101L02B02","expect":{"known_text":"この言語について","target_text":"about this language"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0101L02B05","expect":{"known_text":"この言語についてもっと知るのを楽しんでいます。","target_text":"I'm enjoying finding out more about this language"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0102L01B01","expect":{"known_text":"そうではないと言おうとしています","target_text":"we're trying to say that it's not like that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0102L01B02","expect":{"known_text":"そうではないと言おうとしています","target_text":"we're trying to say that it's not like that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0102L01B03","expect":{"known_text":"そうではないと言おうとしているのは知っています","target_text":"I know we're trying to say that it's not like that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0102L01B04","expect":{"known_text":"そうではないと言おうとしていると思います","target_text":"I think that we're trying to say that it's not like that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0102L01B05","expect":{"known_text":"そうではないと言おうとしているかどうか分かりません","target_text":"I'm not sure if we're trying to say that it's not like that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0103L03B01","expect":{"known_text":"もっとたくさんの言葉を聞こうとしているわけではありません","target_text":"we're not trying to hear many more words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0103L03B02","expect":{"known_text":"もっとたくさんの言葉を聞こうとしているわけではありません","target_text":"we're not trying to hear many more words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0103L03B03","expect":{"known_text":"もっとたくさんの言葉を聞こうとしているわけではないのは知っています","target_text":"I know we're not trying to hear many more words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0103L03B04","expect":{"known_text":"もっとたくさんの言葉を聞こうとしているわけではないと思います","target_text":"I think that we're not trying to hear many more words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0104L02B01","expect":{"known_text":"やっていることを変える必要があります","target_text":"We need to change what we're doing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0104L02B02","expect":{"known_text":"やっていることを変える必要があります","target_text":"we need to change what we're doing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0104L02B03","expect":{"known_text":"やっていることを変える必要があると思います","target_text":"I think that we need to change what we're doing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0104L02B04","expect":{"known_text":"やっていることを変える必要があるのは知っています","target_text":"I know we need to change what we're doing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0104L02B05","expect":{"known_text":"やっていることを変える必要があるかどうか分かりません","target_text":"I'm not sure if we need to change what we're doing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L01B02","expect":{"known_text":"だから","target_text":"that is why"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L01B06","expect":{"known_text":"だから彼は答えを知りませんでした","target_text":"that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L02B02","expect":{"known_text":"知りませんでした","target_text":"didn't know"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L02B06","expect":{"known_text":"だから彼は答えを知りませんでした","target_text":"that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L03B01","expect":{"known_text":"だから彼は答えを知りませんでした","target_text":"that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L03B02","expect":{"known_text":"だから彼は答えを知りませんでした","target_text":"that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L03B07","expect":{"known_text":"だから彼は答えを知りませんでした","target_text":"that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L03B03","expect":{"known_text":"だから彼は答えを知らなかったと思います","target_text":"I think that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L03B04","expect":{"known_text":"だから彼は答えを知らなかったのは知っています","target_text":"I know that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0105L03B05","expect":{"known_text":"だから彼は答えを知らなかったかどうか分かりません","target_text":"I'm not sure if that is why he didn't know the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0106L01B03","expect":{"known_text":"幸せを感じる","target_text":"feel happy"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0106L03B02","expect":{"known_text":"一生懸命頑張る","target_text":"work hard"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0108L01B02","expect":{"known_text":"夜中に","target_text":"in the middle of the night"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0109L03B02","expect":{"known_text":"たくさんの新しい言葉","target_text":"a lot of new words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0109L03B03","expect":{"known_text":"たくさんの新しい言葉を覚える必要があります","target_text":"I need to remember a lot of new words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0109L03B05","expect":{"known_text":"たくさんの新しい言葉を見つけると難しいです","target_text":"it's difficult when I find a lot of new words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0109L03B07","expect":{"known_text":"たくさんの新しい言葉を見つけるのは面白いです","target_text":"it's interesting to find a lot of new words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0110L01B02","expect":{"known_text":"私たちは","target_text":"we're"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0110L01B07","expect":{"known_text":"私たちは他の人と話す練習をするつもりです","target_text":"we're going to practise speaking with someone else"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0110L02B02","expect":{"known_text":"リラックスしたい","target_text":"I'd like to relax"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0110L03B02","expect":{"known_text":"終わったら","target_text":"after we finish"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0111L01B02","expect":{"known_text":"新しいことを学ぶと脳が変わります","target_text":"when we learn something new it changes our brain"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0112L01B02","expect":{"known_text":"それはとても面白かったし、予想していませんでした","target_text":"that was very interesting and I wasn't expecting it"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0113L01B02","expect":{"known_text":"なぜあなたが言ったことを思い出せないのですか","target_text":"why can't I remember what you said?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0113L01B07","expect":{"known_text":"あなたが言ったことがとても面白かったのに、なぜ思い出せないのですか","target_text":"that was very interesting so why can't I remember what you said?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0114L01B02","expect":{"known_text":"昨日より今日の方がうまくいっていないように感じます","target_text":"I feel as if I'm doing worse today than yesterday"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0114L01B04","expect":{"known_text":"昨日より今日の方がうまくいっていないように感じますが、続けます","target_text":"I feel as if I'm doing worse today than yesterday but I want to keep on"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0114L01B06","expect":{"known_text":"昨日より今日の方がうまくいっていないように感じますが、難しいですね","target_text":"I feel as if I'm doing worse today than yesterday and it's difficult"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0114L01B07","expect":{"known_text":"昨日よりも今日の方がうまくいっていないように感じますが、頑張ります","target_text":"I feel as if I'm doing worse today than yesterday but I want to try as hard as I can"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0115L01B02","expect":{"known_text":"会話をする準備ができているようには感じません","target_text":"I don't feel as if I'm ready to have a conversation"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0122L03B02","expect":{"known_text":"簡単に感じ始めています","target_text":"it's starting to feel easier"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0122L03B04","expect":{"known_text":"英語を話すことが簡単に感じ始めています","target_text":"it's starting to feel easier to speak English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0122L03B05","expect":{"known_text":"あなたと話すと簡単に感じ始めています","target_text":"it's starting to feel easier when I talk with you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0122L03B06","expect":{"known_text":"昨夜より簡単に感じ始めています","target_text":"it's starting to feel easier than it was last night"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0123L02B02","expect":{"known_text":"いい考えだと思います","target_text":"I think that's a good idea"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0124L02B02","expect":{"known_text":"いい考えだと思いました","target_text":"I thought that was a good idea"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0124L02B08","expect":{"known_text":"彼女がそれを言ったとき、いい考えだと思いました","target_text":"I thought that was a good idea when she said it"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0125L02B02","expect":{"known_text":"あなたの考えはとても良かったと思います","target_text":"I believe that your idea was very good"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0125L02B07","expect":{"known_text":"あなたの考えはとても良かったと思いますし、続けたいです","target_text":"I believe that your idea was very good and I want to keep on"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0126L04B02","expect":{"known_text":"変えています","target_text":"is changing"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0126L05B02","expect":{"known_text":"この勉強は脳の形を変えています","target_text":"this work is changing the shape of my brain"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0126L05B04","expect":{"known_text":"この勉強は脳の形を変えています、今","target_text":"this work is changing the shape of my brain now"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0127L02B02","expect":{"known_text":"会いたかった","target_text":"wanted to see"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0127L03B02","expect":{"known_text":"それはあなたに会いたかった理由ではありません","target_text":"that isn't why I wanted to see you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0128L01B02","expect":{"known_text":"前に知っていた","target_text":"used to know"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0128L01U15","expect":{"known_text":"前に知っていた言葉がたくさんありました","target_text":"I used to know many words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0128L02B02","expect":{"known_text":"似ています","target_text":"like"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0128L03B02","expect":{"known_text":"前に知っていた人に似ています","target_text":"you're like someone I used to know"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0129L02B02","expect":{"known_text":"こんなにうまくやっている","target_text":"doing so well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0129L03B02","expect":{"known_text":"あなたがこんなにうまくやっていてとても嬉しいです","target_text":"I'm so happy that you're doing so well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0130L02B02","expect":{"known_text":"それは驚きでした、彼は私の友達ですから","target_text":"that was a surprise, because he's my friend"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0131L04B02","expect":{"known_text":"ぐるぐる回る","target_text":"going around"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0131L05B02","expect":{"known_text":"私の頭の中に","target_text":"in my head"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0136L01B02","expect":{"known_text":"もちろん","target_text":"of course"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0137L01B02","expect":{"known_text":"より大切","target_text":"more important"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0137L03B02","expect":{"known_text":"完璧である","target_text":"be perfect"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0138L01B02","expect":{"known_text":"ここは〜場所です","target_text":"this was where"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0138L01B05","expect":{"known_text":"ここは私があなたに会いたかった場所です","target_text":"this was where I wanted to meet you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0138L02B02","expect":{"known_text":"私たちに会う","target_text":"meet us"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0138L02B04","expect":{"known_text":"あなたは私たちに会いたいですか","target_text":"do you want to meet us?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0139L01B02","expect":{"known_text":"すみません","target_text":"I'm sorry that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0139L02B02","expect":{"known_text":"出る必要がある","target_text":"need to leave"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0140L01B02","expect":{"known_text":"見えない","target_text":"can't see"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0140L02B02","expect":{"known_text":"あなたが私に見せようとしている","target_text":"you're trying to show me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0140L02B05","expect":{"known_text":"あなたが私に見せようとしているのは何ですか","target_text":"what is it you're trying to show me?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0141L02B02","expect":{"known_text":"大丈夫","target_text":"okay"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0141L02B06","expect":{"known_text":"それで大丈夫ですか","target_text":"is that okay?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0141L03B02","expect":{"known_text":"問題ありません","target_text":"no problem"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0141L03B07","expect":{"known_text":"それは問題ありません","target_text":"that is no problem"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0142L01B05","expect":{"known_text":"とても親切","target_text":"very kind"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0142L01U06","expect":{"known_text":"お手伝いいただきとても親切です","target_text":"you are very kind to help me"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0142L02B03","expect":{"known_text":"とても感謝しています","target_text":"very grateful"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0143L02B02","expect":{"known_text":"話していた","target_text":"were talking"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0143L03B02","expect":{"known_text":"前に","target_text":"earlier"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0143L03B05","expect":{"known_text":"前に","target_text":"earlier"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0144L02B02","expect":{"known_text":"より早く起きました","target_text":"woke earlier than"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0144L02B04","expect":{"known_text":"以前より早く起きました","target_text":"she woke earlier than before"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0150L02B03","expect":{"known_text":"お名前を聞いてもいいですか","target_text":"can I ask your name?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0150L03B02","expect":{"known_text":"〜していただけますか","target_text":"can you?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0151L02B02","expect":{"known_text":"何を言いたいですか","target_text":"what do you want to say?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0152L01B02","expect":{"known_text":"〜したでしょう","target_text":"would have done"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0153L01B02","expect":{"known_text":"〜しなかったでしょう","target_text":"wouldn't have said"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0154L02B03","expect":{"known_text":"土曜日の夜","target_text":"on Saturday night"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0155L01B02","expect":{"known_text":"構いません","target_text":"don't mind"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0155L01B07","expect":{"known_text":"あなたは本当に構いませんか","target_text":"are you sure you don't mind?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0155L02B04","expect":{"known_text":"待っても","target_text":"waiting for"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0155L04B02","expect":{"known_text":"明日の朝","target_text":"tomorrow morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0156L01B03","expect":{"known_text":"レストランに行く","target_text":"go to a restaurant"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0157L03B02","expect":{"known_text":"いること","target_text":"be there"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0157L04B02","expect":{"known_text":"来月","target_text":"next month"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0158L01B02","expect":{"known_text":"話しましょう","target_text":"let's talk"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0158L01B05","expect":{"known_text":"それについて話しましょう","target_text":"let's talk about that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0158L02B02","expect":{"known_text":"何か他のこと","target_text":"something else"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0159L01B02","expect":{"known_text":"言おうとしている","target_text":"trying to say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0159L02B02","expect":{"known_text":"ではありません","target_text":"isn't"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0159L02B06","expect":{"known_text":"それは私が言いたかったことではありません","target_text":"that isn't what I wanted to say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0160L01B02","expect":{"known_text":"この言葉","target_text":"this word"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0160L01B05","expect":{"known_text":"この言葉を英語でどう言いますか","target_text":"how do you say this word in English?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0160L02B02","expect":{"known_text":"どう言いますか","target_text":"how do you say?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L02B02","expect":{"known_text":"日曜日の朝","target_text":"on Sunday morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L02B03","expect":{"known_text":"日曜日の朝にあなたと英語を話したいです","target_text":"I want to speak English with you on Sunday morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L02B05","expect":{"known_text":"日曜日の朝にそこにいますか","target_text":"are you going to be there on Sunday morning?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L02B07","expect":{"known_text":"日曜日の朝にあなたに会えることを願っていました","target_text":"I was hoping to see you on Sunday morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L03B02","expect":{"known_text":"その本を読みたいです","target_text":"I'd like to read that book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L03B05","expect":{"known_text":"本を読むことはいいことです","target_text":"it's a good thing to read a book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L03B06","expect":{"known_text":"その本はとても面白いと思います","target_text":"I think that book is very interesting"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L04B02","expect":{"known_text":"その本","target_text":"that book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L04B03","expect":{"known_text":"その本について話しましょう","target_text":"let's talk about that book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L04B04","expect":{"known_text":"その本についてどう思いますか","target_text":"what do you think about that book?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L04B05","expect":{"known_text":"その本を読みたいです","target_text":"I'd like to read that book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L04B07","expect":{"known_text":"あなたがその本について言ったことを覚えようとしています","target_text":"I'm trying to remember what you said about that book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L05B06","expect":{"known_text":"考えるための新しいことをください","target_text":"give me something new to think about"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L06B07","expect":{"known_text":"後でその本をもらえますか","target_text":"can you give me that book later on?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0161L06U08","expect":{"known_text":"日曜日の朝に読みたいので、その本をもらえますか","target_text":"can you give me that book on sunday morning because I want to read it?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0162L02B02","expect":{"known_text":"それについて","target_text":"about that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0162L02B06","expect":{"known_text":"あなたがそれについて言ったことが分かりません","target_text":"I don't understand what you said about that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0162L03B06","expect":{"known_text":"何をしたいですか","target_text":"what do you want to do?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0162L04B02","expect":{"known_text":"どう思いますか","target_text":"what do you think?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0162L04B03","expect":{"known_text":"それについてどう思いますか","target_text":"what do you think about that?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0162L04B07","expect":{"known_text":"何を考えた方がいいと思いますか","target_text":"what do you think I should consider?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0163L02B02","expect":{"known_text":"面白いと思います","target_text":"I think that it's interesting"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0163L02B04","expect":{"known_text":"十分な言葉を理解したとき面白いと思います","target_text":"I think that it's interesting when you understand enough words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0163L02B05","expect":{"known_text":"バスで行くのが好きなのは面白いと思います","target_text":"I think that it's interesting that you like to go by bus"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0163L02B07","expect":{"known_text":"面白いと思います、どう進んでいるか楽しみです","target_text":"I think that it's interesting and I'm excited about how it's going"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0164L01B02","expect":{"known_text":"面白い本","target_text":"an interesting book"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0165L02B02","expect":{"known_text":"本当かどうかわかりません","target_text":"I'm not sure if it's true"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0166L02B02","expect":{"known_text":"私の名前","target_text":"my name"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0166L05B02","expect":{"known_text":"あまり珍しくありません","target_text":"not very unusual"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0167L02B02","expect":{"known_text":"明日の午後","target_text":"tomorrow afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0167L03B02","expect":{"known_text":"何をする必要がありますか","target_text":"what do you need to do?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0168L03B02","expect":{"known_text":"来て手伝う","target_text":"come and help"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0168L04B02","expect":{"known_text":"来て手伝うことができます","target_text":"I'll be able to come and help"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0169L02B02","expect":{"known_text":"私に何をしてほしいですか","target_text":"what do you want me to do?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0170L02B02","expect":{"known_text":"何が必要か","target_text":"what you need"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0170L04B04","expect":{"known_text":"今日の午後に教えてほしいです","target_text":"I'd like you to tell me this afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0170L04B07","expect":{"known_text":"できるだけ早く教えてほしいです","target_text":"I'd like you to tell me as soon as you can"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0170L05B02","expect":{"known_text":"何が必要か教えてほしいです","target_text":"I'd like you to tell me what you need"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0170L05B05","expect":{"known_text":"来週何が必要か教えてほしいです","target_text":"I'd like you to tell me what you need next week"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0170L05B07","expect":{"known_text":"来月何が必要か教えてほしいです","target_text":"I'd like you to tell me what you need next month"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0171L01B02","expect":{"known_text":"探すのを手伝ってほしいですか","target_text":"do you want me to help you look for it?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0171L01B03","expect":{"known_text":"今探すのを手伝ってほしいですか","target_text":"do you want me to help you look for it now?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0171L01B06","expect":{"known_text":"今夜探すのを手伝ってほしいですか","target_text":"do you want me to help you look for it tonight?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0171L01B07","expect":{"known_text":"もう一度探すのを手伝ってほしいですか","target_text":"do you want me to help you look for it again?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0172L01B02","expect":{"known_text":"それはとても助かります","target_text":"that would be very helpful"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0173L01B02","expect":{"known_text":"一人でできます","target_text":"I can manage on my own"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0173L01B06","expect":{"known_text":"今朝は一人でできます","target_text":"I can manage on my own this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0173L01B07","expect":{"known_text":"今夜は一人でできます","target_text":"I can manage on my own tonight"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0174L01B02","expect":{"known_text":"私が言っていることがわかりますか","target_text":"can you understand what I'm saying?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0174L01B05","expect":{"known_text":"英語で私が言っていることがわかりますか","target_text":"can you understand what I'm saying in English?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0174L01B06","expect":{"known_text":"今日私が言っていることがわかりますか","target_text":"can you understand what I'm saying today?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0174L01B07","expect":{"known_text":"今朝私が言っていることがわかりますか","target_text":"can you understand what I'm saying this morning?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0176L02B02","expect":{"known_text":"手伝えるかどうか","target_text":"if he'll be able to help"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0176L03B02","expect":{"known_text":"彼に聞いてみます","target_text":"I'll ask him"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0176L03B06","expect":{"known_text":"できるだけ早く彼に聞いてみます","target_text":"I'll ask him as soon as I can"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0176L03B07","expect":{"known_text":"今晩彼に聞いてみます","target_text":"I'll ask him this evening"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0177L01B02","expect":{"known_text":"どこに行きたいか聞いてみます","target_text":"I'll ask where she wants to go"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0177L01B06","expect":{"known_text":"今夜どこに行きたいか聞いてみます","target_text":"I'll ask where she wants to go tonight"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0177L01B07","expect":{"known_text":"できるだけ早くどこに行きたいか聞いてみます","target_text":"I'll ask where she wants to go as soon as I can"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0178L01B02","expect":{"known_text":"けど","target_text":"although"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0179L01B02","expect":{"known_text":"日曜日の午後","target_text":"on Sunday afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0179L01B06","expect":{"known_text":"日曜日の午後にあなたに会いたいです","target_text":"I'd like to see you on Sunday afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0179L01B07","expect":{"known_text":"日曜日の午後に会えますか","target_text":"can we meet on Sunday afternoon?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0179L01U14","expect":{"known_text":"日曜日の午後に来てもらえますか","target_text":"can you come on Sunday afternoon?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0180L01B02","expect":{"known_text":"しばらく本を読みたいです","target_text":"I'd like to read my book for a while"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0180L01B03","expect":{"known_text":"今夜はしばらく本を読みたいです","target_text":"I'd like to read my book for a while tonight"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0180L01B04","expect":{"known_text":"今朝はしばらく本を読みたいです","target_text":"I'd like to read my book for a while this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0180L01B07","expect":{"known_text":"しばらく本を読みたいですが、疲れています","target_text":"I'd like to read my book for a while but I'm a little tired"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0181L03B02","expect":{"known_text":"連れて行く","target_text":"take"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0182L01B02","expect":{"known_text":"私の鍵","target_text":"my keys"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0182L01B04","expect":{"known_text":"私の鍵を見ましたか","target_text":"have you seen my keys?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0182L01B07","expect":{"known_text":"私の鍵をどこかで見ましたか","target_text":"have you seen my keys anywhere?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0182L02B02","expect":{"known_text":"見ましたか","target_text":"have you seen"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0182L02B07","expect":{"known_text":"私の鍵をどこかで見ましたか","target_text":"have you seen my keys anywhere?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0182L03B03","expect":{"known_text":"どこかで見ましたか","target_text":"seen it anywhere?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0183L01B02","expect":{"known_text":"いいえ、残念ながら見ていません","target_text":"no I'm afraid I haven't seen them"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L01B04","expect":{"known_text":"はい、さっきオフィスで見ました","target_text":"yes I saw them in the office a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02B02","expect":{"known_text":"さっき","target_text":"a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02B04","expect":{"known_text":"はい、さっきオフィスで見ました","target_text":"yes I saw them in the office a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02B05","expect":{"known_text":"さっきあなたに何か聞こうとしていました","target_text":"I wanted to ask you something a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0184L02B06","expect":{"known_text":"さっきオフィスで彼女を見ました","target_text":"I saw her in the office a while ago"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0186L02B02","expect":{"known_text":"違うこと","target_text":"something different"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0186L02B03","expect":{"known_text":"来週違うことについて話しますか","target_text":"do you want to talk about something different next week?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0186L02B04","expect":{"known_text":"違うことについて話しましょう","target_text":"let's talk about something different"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0186L02B07","expect":{"known_text":"今日違うことについて聞いてもいいですか","target_text":"can I ask you something different today?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0187L01B02","expect":{"known_text":"今のところ満足しています","target_text":"I'm happy so far"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0187L01B04","expect":{"known_text":"今のところどれだけ学んだか嬉しいです","target_text":"I'm happy so far with how much I've learnt already"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0187L01B05","expect":{"known_text":"今のところ大丈夫ですが、もっと学ぶ必要があります","target_text":"I'm happy so far but I know I've got more to learn"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0187L01B06","expect":{"known_text":"今のところ満足していて、とてもうまくいっていると思います","target_text":"I'm happy so far and I think it's going very well"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0187L01B07","expect":{"known_text":"今のところオフィスの仕事に満足しています","target_text":"I'm happy so far with the work in the office"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L01B05","expect":{"known_text":"いくつかの新しい言葉を学びたいです","target_text":"I'd like to learn some new words"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L01B06","expect":{"known_text":"いくつか質問してもいいですか","target_text":"do you mind if I ask some questions?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L02B02","expect":{"known_text":"いくつか質問してもいいですか","target_text":"do you mind if I ask some questions?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L02B04","expect":{"known_text":"離れる前にいくつか質問してもいいですか","target_text":"can I ask you some questions before you leave?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L02B06","expect":{"known_text":"今いくつか質問してもいいですか","target_text":"do you mind if I ask you some questions now?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L03B02","expect":{"known_text":"してもいい","target_text":"do you mind if"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L03B04","expect":{"known_text":"いくつか質問してもいいですか","target_text":"do you mind if I ask some questions?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L03B05","expect":{"known_text":"離れる前に何か聞いてもいいですか","target_text":"do you mind if I ask you something before you leave?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L03B06","expect":{"known_text":"今英語で話してもいいですか","target_text":"do you mind if I speak English now?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0190L03B07","expect":{"known_text":"今日少し早めに出発してもいいですか","target_text":"do you mind if I leave a little earlier today?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0192L02B02","expect":{"known_text":"明日の夜","target_text":"tomorrow night"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0193L01B02","expect":{"known_text":"すみませんが、今日は忙しすぎます","target_text":"I'm sorry but I'm too busy today"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0197L01B02","expect":{"known_text":"息子","target_text":"my son"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0199L01B02","expect":{"known_text":"以前〜していた","target_text":"used to"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0199L01B05","expect":{"known_text":"友人は以前オフィスで働いていました","target_text":"my friend used to work in an office"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0203L02B02","expect":{"known_text":"何をしますか","target_text":"what would you do?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0204L01B02","expect":{"known_text":"準備を手伝う","target_text":"to deal with the arrangements"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0204L02B02","expect":{"known_text":"〜にほしかったです","target_text":"I wanted her to"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0204L02B07","expect":{"known_text":"彼女に来て手伝ってほしかったです","target_text":"I wanted her to come and help"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0205L01B02","expect":{"known_text":"言おうとしていた","target_text":"I was trying to say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0205L02B02","expect":{"known_text":"忘れました","target_text":"I've forgotten"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0206L01B02","expect":{"known_text":"機会を楽しんでいます","target_text":"I enjoy the chance to"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0207L02B02","expect":{"known_text":"やりましたね","target_text":"you've done"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0208L01B02","expect":{"known_text":"どう言うか","target_text":"how to say it"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0208L02B02","expect":{"known_text":"聞きたくありませんでした","target_text":"I didn't want to ask you"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0210L03B02","expect":{"known_text":"話し合う","target_text":"discuss"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0211L01B02","expect":{"known_text":"彼らは〜と言いました","target_text":"they told us that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0211L01B05","expect":{"known_text":"彼らは私たちに説明したくないと言いました","target_text":"they told us that they didn't want to explain"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0213L02U01","expect":{"known_text":"彼らが何を達成しようとしているかわかりません","target_text":"we don't know what they're trying to achieve"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0216L02B01","expect":{"known_text":"友達に何人か会いました","target_text":"I saw a few friends"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0216L02B02","expect":{"known_text":"友達に何人か会いました","target_text":"I saw a few friends"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0217L03B02","expect":{"known_text":"今朝水を一杯か二杯飲みました","target_text":"I had a glass or two of water this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0218L02B03","expect":{"known_text":"あまり何もしませんでした","target_text":"didn't do much"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0218L02B05","expect":{"known_text":"週末はあまり何もしませんでした","target_text":"I didn't do much at the weekend"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0218L02B07","expect":{"known_text":"今朝はあまり何もしませんでした","target_text":"I didn't do much this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0220L01B05","expect":{"known_text":"テレビを少し見ましたか","target_text":"did you watch a bit of television?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0220L01B06","expect":{"known_text":"昨夜テレビを見ましたか","target_text":"did you watch television last night?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0220L02B05","expect":{"known_text":"テレビを少し見ましたか","target_text":"did you watch a bit of television?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0220L02B06","expect":{"known_text":"昨夜テレビを少し見ましたか","target_text":"did you watch a bit of television last night?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0220L02B07","expect":{"known_text":"日曜日にテレビを少し見ましたか","target_text":"did you watch a bit of television on sunday?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0222L01B02","expect":{"known_text":"伝えようとしています","target_text":"trying to tell"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0223L01B02","expect":{"known_text":"聞くつもりです","target_text":"going to ask"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0224L01B02","expect":{"known_text":"始めたばかりです","target_text":"just started"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0231L02B02","expect":{"known_text":"男性を","target_text":"man who"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0232L01B02","expect":{"known_text":"女性を","target_text":"woman who"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L03B02","expect":{"known_text":"若い女性","target_text":"a young woman"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L04B02","expect":{"known_text":"あなたのお姉さん","target_text":"your sister"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0233L05B02","expect":{"known_text":"を知っている","target_text":"who knows"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0241L01U05","expect":{"known_text":"出る前にそれを彼に渡す必要があります","target_text":"I need to give it to him before I leave"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0254L01B02","expect":{"known_text":"今朝からずっと準備ができています","target_text":"I've been ready since this morning"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0261L01B03","expect":{"known_text":"彼は父の古い友達かもしれない","target_text":"he might be an old friend of my father"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0262L01B02","expect":{"known_text":"昨日話していたあの男の人は誰ですか","target_text":"who was that man you were talking to yesterday?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0274L02B02","expect":{"known_text":"出発しなければなりませんか？","target_text":"do you have to leave?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0276L03B02","expect":{"known_text":"いられます","target_text":"I can stay"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0276L03U07","expect":{"known_text":"今日はいられますが、明日は出発しなければなりません","target_text":"I can stay today but I have to leave tomorrow"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0278L03B02","expect":{"known_text":"昨夜全部終わらせなければなりませんでしたか","target_text":"did you have to finish everything last night?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0278L03B06","expect":{"known_text":"今朝終わらせなければなりませんでしたか","target_text":"did you have to finish it this morning?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0280L03B02","expect":{"known_text":"今日だけ話せます","target_text":"I can speak only today"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0280L04B02","expect":{"known_text":"今日これをしなければなりませんでした","target_text":"I had to do this today"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0281L01B02","expect":{"known_text":"はい、始める前にコーヒーを飲み終えても構いませんか","target_text":"yes, do you mind if I finish my coffee before you start?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0283L01B01","expect":{"known_text":"あなたの友達のうち誰が英語を話しますか","target_text":"which of your friends speak English?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0285L01B02","expect":{"known_text":"彼女は英語を話します","target_text":"she speaks English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0288L01B02","expect":{"known_text":"私が知っている人のほとんどはテレビを見るのが好きです","target_text":"most people I know like watching television"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0289L01B02","expect":{"known_text":"今日の午後彼女がそこにいるかどうか気になります","target_text":"I wonder if she's going to be there this afternoon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0289L01B05","expect":{"known_text":"今日の午後彼女がそこにいるかどうか気になります。私の姉の友達を知っていますか？","target_text":"I wonder if she's going to be there this afternoon. do you know my sister's friend?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0289L01B06","expect":{"known_text":"今日の午後彼女がそこにいるかどうか気になります。私の知っているほとんどの人たちはテレビを見るのが好きです","target_text":"I wonder if she's going to be there this afternoon. most people I know like watching television"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0289L01B07","expect":{"known_text":"今日の午後彼女がそこにいるかどうか気になります。英語を話すのが好きな人たちがたくさん来るから","target_text":"I wonder if she's going to be there this afternoon because there are a lot of people who like speaking English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0290L01B02","expect":{"known_text":"彼が答えを知っているかどうか気になります","target_text":"I wonder if he knows the answer"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0290L01B06","expect":{"known_text":"彼が答えを知っているかどうか気になります。私の知っているほとんどの人たちはテレビを見るのが好きです","target_text":"I wonder if he knows the answer. most people I know like watching television"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0291L01B02","expect":{"known_text":"もうすぐもっと上手に話せるようになるといいです","target_text":"I hope I'll be able to speak better soon"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0291L01B06","expect":{"known_text":"もうすぐもっと上手に話せるようになるといいです。私の姉の友達を知っていますか？","target_text":"I hope I'll be able to speak better soon. do you know my sister's friend?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0297L01B02","expect":{"known_text":"英語を話す人をあまり知りません","target_text":"I don't know many people who speak English"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0297L01B04","expect":{"known_text":"英語を話す人をあまり知らないので会いたいです","target_text":"I don't know many people who speak English and I want to meet some"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0298L01B02","expect":{"known_text":"もう言うことは何もありません","target_text":"I've got nothing left to say"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0298L01B04","expect":{"known_text":"それについて言うことは何もありません","target_text":"I've got nothing left to say about that"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0299L01B02","expect":{"known_text":"彼は半分払いたいです","target_text":"he wants to pay half"}}
+{"op":"phrase.delete","phrase_id":"eng_for_jpn:S0299L01U09","expect":{"known_text":"彼は半分払いたいと知っています","target_text":"I know he wants to pay half"}}

@@ -1,0 +1,48 @@
+{
+ "changeset": "eng_for_ara-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 68,
+   "seed": {
+    "known_text": "ماذا تبحث عن؟",
+    "target_text": "What are you looking for?"
+   },
+   "lego_id": "S0068L01",
+   "lego": [
+    {
+     "known_text": "ماذا تبحث عن",
+     "target_text": "what are you looking for"
+    }
+   ]
+  },
+  {
+   "seed_number": 106,
+   "seed": {
+    "known_text": "لا نحتاج أن نشعر بالسعادة، نحتاج فقط أن نعمل بجد.",
+    "target_text": "We don't need to feel happy, we just need to work hard."
+   },
+   "lego_id": "S0106L02",
+   "lego": [
+    {
+     "known_text": "نحتاج فقط أن نعمل بجد",
+     "target_text": "we just need to work hard"
+    }
+   ]
+  },
+  {
+   "seed_number": 108,
+   "seed": {
+    "known_text": "لم نكن نتوقع الاستيقاظ في منتصف الليل.",
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "lego_id": "S0108L01",
+   "lego": [
+    {
+     "known_text": "لم نكن نتوقع الاستيقاظ",
+     "target_text": "we didn't expect to wake up"
+    }
+   ]
+  }
+ ]
+}

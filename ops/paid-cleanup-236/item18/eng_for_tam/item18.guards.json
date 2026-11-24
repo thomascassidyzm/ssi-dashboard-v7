@@ -1,0 +1,524 @@
+{
+ "changeset": "eng_for_tam-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 27,
+   "seed": {
+    "known_text": "நான் பதிலளிக்க அதிக நேரம் எடுப்பதை விரும்பவில்லை.",
+    "target_text": "I don't like taking too much time to answer."
+   },
+   "lego_id": "S0027L04",
+   "lego": [
+    {
+     "known_text": "எடுக்க விரும்பவில்லை",
+     "target_text": "I don't like taking"
+    }
+   ]
+  },
+  {
+   "seed_number": 28,
+   "seed": {
+    "known_text": "நீங்கள் முடிந்தவரை விரைவில் பேசத் தொடங்குவது பயனுள்ளது.",
+    "target_text": "It's useful to start talking as soon as you can."
+   },
+   "lego_id": "S0028L01",
+   "lego": [
+    {
+     "known_text": "பயனுள்ளது",
+     "target_text": "it's useful"
+    }
+   ]
+  },
+  {
+   "seed_number": 61,
+   "seed": {
+    "known_text": "நீங்கள் அதை மீண்டும் கொஞ்சம் மெதுவாக சொல்ல முடியுமா?",
+    "target_text": "Could you say that again a little more slowly?"
+   },
+   "lego_id": "S0061L02",
+   "lego": [
+    {
+     "known_text": "மெதுவாக",
+     "target_text": "slowly"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "நான் ஒரே நேரத்தில் உங்களுக்கு உதவ முடியுமா என்று தெரியவில்லை.",
+    "target_text": "I'm not sure if I can help you at the same time."
+   },
+   "lego_id": "S0062L02",
+   "lego": [
+    {
+     "known_text": "அதே நேரத்தில்",
+     "target_text": "at the same time"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "நான் ஒரே நேரத்தில் உங்களுக்கு உதவ முடியுமா என்று தெரியவில்லை.",
+    "target_text": "I'm not sure if I can help you at the same time."
+   },
+   "lego_id": "S0062L02",
+   "lego": [
+    {
+     "known_text": "அதே நேரத்தில்",
+     "target_text": "at the same time"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "நான் ஒரே நேரத்தில் உங்களுக்கு உதவ முடியுமா என்று தெரியவில்லை.",
+    "target_text": "I'm not sure if I can help you at the same time."
+   },
+   "lego_id": "S0062L03",
+   "lego": [
+    {
+     "known_text": "தெரியவில்லை என்னால் உதவ முடியுமா",
+     "target_text": "I'm not sure if I can help"
+    }
+   ]
+  },
+  {
+   "seed_number": 62,
+   "seed": {
+    "known_text": "நான் ஒரே நேரத்தில் உங்களுக்கு உதவ முடியுமா என்று தெரியவில்லை.",
+    "target_text": "I'm not sure if I can help you at the same time."
+   },
+   "lego_id": "S0062L03",
+   "lego": [
+    {
+     "known_text": "தெரியவில்லை என்னால் உதவ முடியுமா",
+     "target_text": "I'm not sure if I can help"
+    }
+   ]
+  },
+  {
+   "seed_number": 63,
+   "seed": {
+    "known_text": "நீங்கள் என்னுக்கு உதவுவதில் ஆட்சேபனை இல்லை என்று உறுதியா?",
+    "target_text": "Are you sure you don't mind helping me?"
+   },
+   "lego_id": "S0063L01",
+   "lego": [
+    {
+     "known_text": "உதவுவதில்",
+     "target_text": "helping"
+    }
+   ]
+  },
+  {
+   "seed_number": 65,
+   "seed": {
+    "known_text": "உங்களையே சோதிக்க நேரம் எடுப்பது முக்கியம்.",
+    "target_text": "It's important to take time to test yourself."
+   },
+   "lego_id": "S0065L05",
+   "lego": [
+    {
+     "known_text": "முக்கியம் நேரம் எடுக்க",
+     "target_text": "it's important to take time"
+    }
+   ]
+  },
+  {
+   "seed_number": 66,
+   "seed": {
+    "known_text": "பதிலைக் கண்டுபிடிப்பது கஷ்டமில்லை.",
+    "target_text": "It's not difficult to find the answer."
+   },
+   "lego_id": "S0066L03",
+   "lego": [
+    {
+     "known_text": "கஷ்டம் இல்லை",
+     "target_text": "not difficult"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "அவர் மதியம் முழுவதும் இளம் நாயை கவனிக்க விரும்பவில்லை.",
+    "target_text": "He didn't want to look after the young dog all afternoon."
+   },
+   "lego_id": "S0069L03",
+   "lego": [
+    {
+     "known_text": "நாய்",
+     "target_text": "dog"
+    }
+   ]
+  },
+  {
+   "seed_number": 69,
+   "seed": {
+    "known_text": "அவர் மதியம் முழுவதும் இளம் நாயை கவனிக்க விரும்பவில்லை.",
+    "target_text": "He didn't want to look after the young dog all afternoon."
+   },
+   "lego_id": "S0069L05",
+   "lego": [
+    {
+     "known_text": "விரும்பவில்லை கவனிக்க",
+     "target_text": "didn't want to look after"
+    }
+   ]
+  },
+  {
+   "seed_number": 70,
+   "seed": {
+    "known_text": "அது எங்கே இருந்தது என்று என்னிடம் சொல்ல அவள் விரும்பவில்லை.",
+    "target_text": "She didn't want to tell me where it was."
+   },
+   "lego_id": "S0070L02",
+   "lego": [
+    {
+     "known_text": "எங்கே",
+     "target_text": "where"
+    }
+   ]
+  },
+  {
+   "seed_number": 72,
+   "seed": {
+    "known_text": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள் என்று நான் நினைக்கிறேன்.",
+    "target_text": "I think that you're doing very well."
+   },
+   "lego_id": "S0072L02",
+   "lego": [
+    {
+     "known_text": "நீங்கள் மிகவும் நன்றாக செய்கிறீர்கள்",
+     "target_text": "you're doing very well"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "மிக்க நன்றி, ஆனால் என்னிடம் இன்னும் கற்க இருக்கிறது.",
+    "target_text": "Thank you very much, but I've got more to learn."
+   },
+   "lego_id": "S0073L02",
+   "lego": [
+    {
+     "known_text": "என்னிடம் இருக்கிறது",
+     "target_text": "I've got"
+    }
+   ]
+  },
+  {
+   "seed_number": 75,
+   "seed": {
+    "known_text": "உங்களிடம் இன்னும் கற்க இருக்கிறதா?",
+    "target_text": "Have you got more to learn?"
+   },
+   "lego_id": "S0075L01",
+   "lego": [
+    {
+     "known_text": "நீங்கள் இருக்கிறீர்களா",
+     "target_text": "have you got"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "நான் ஏற்கனவே எவ்வளவு கற்றேன் என்று மிகவும் மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target_text": "I'm very happy with how much I've learnt already."
+   },
+   "lego_id": "S0076L03",
+   "lego": [
+    {
+     "known_text": "ஏற்கனவே",
+     "target_text": "already"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "நீங்கள் சொன்னது என்னவென்று புரியவில்லை.",
+    "target_text": "I don't understand what you said."
+   },
+   "lego_id": "S0078L02",
+   "lego": [
+    {
+     "known_text": "புரியவில்லை நீங்கள் சொன்னது",
+     "target_text": "I don't understand what you said"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "நான் உங்களுக்காக காத்திருக்க மாட்டேன். ஏன் இல்லை?",
+    "target_text": "I'm not going to wait for you. Why not?"
+   },
+   "lego_id": "S0082L02",
+   "lego": [
+    {
+     "known_text": "காத்திருக்க மாட்டேன்",
+     "target_text": "not going to wait"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "நான் உங்களுக்காக காத்திருக்க மாட்டேன். ஏன் இல்லை?",
+    "target_text": "I'm not going to wait for you. Why not?"
+   },
+   "lego_id": "S0082L02",
+   "lego": [
+    {
+     "known_text": "காத்திருக்க மாட்டேன்",
+     "target_text": "not going to wait"
+    }
+   ]
+  },
+  {
+   "seed_number": 87,
+   "seed": {
+    "known_text": "அவர்கள் எனக்கு தெரியாத மக்கள்.",
+    "target_text": "They are people I don't know."
+   },
+   "lego_id": "S0087L01",
+   "lego": [
+    {
+     "known_text": "அவர்கள்",
+     "target_text": "they"
+    }
+   ]
+  },
+  {
+   "seed_number": 93,
+   "seed": {
+    "known_text": "இப்போது போக வேண்டிய நேரம்.",
+    "target_text": "It's time to go now."
+   },
+   "lego_id": "S0093L02",
+   "lego": [
+    {
+     "known_text": "போக நேரம்",
+     "target_text": "time to go"
+    }
+   ]
+  },
+  {
+   "seed_number": 94,
+   "seed": {
+    "known_text": "இது வேலை செய்ய ஒரே வழி.",
+    "target_text": "This is the only way it will work."
+   },
+   "lego_id": "S0094L04",
+   "lego": [
+    {
+     "known_text": "ஒரே வழி வேலை செய்யும்",
+     "target_text": "only way it will work"
+    }
+   ]
+  },
+  {
+   "seed_number": 99,
+   "seed": {
+    "known_text": "நீங்கள் ஏன் வேலை செய்யவில்லை என்று உங்களை நீங்களே கேட்டுக்கொள்ள வேண்டும்.",
+    "target_text": "You should ask yourself why it's not working."
+   },
+   "lego_id": "S0099L03",
+   "lego": [
+    {
+     "known_text": "வேலை செய்யவில்லை",
+     "target_text": "not working"
+    }
+   ]
+  },
+  {
+   "seed_number": 115,
+   "seed": {
+    "known_text": "நான் உரையாடல் செய்ய தயாராக இருக்கிறேன் என்று உணரவில்லை.",
+    "target_text": "I don't feel as if I'm ready to have a conversation."
+   },
+   "lego_id": "S0115L02",
+   "lego": [
+    {
+     "known_text": "உரையாடல் செய்ய",
+     "target_text": "to have a conversation"
+    }
+   ]
+  },
+  {
+   "seed_number": 120,
+   "seed": {
+    "known_text": "நீங்கள் பேருந்தில் செல்ல விரும்புகிறீர்கள் என்பது சுவாரஸ்யமானது.",
+    "target_text": "It's interesting that you like to go by bus."
+   },
+   "lego_id": "S0120L02",
+   "lego": [
+    {
+     "known_text": "பேருந்தில் செல்ல விரும்புகிறீர்கள்",
+     "target_text": "like to go by bus"
+    }
+   ]
+  },
+  {
+   "seed_number": 121,
+   "seed": {
+    "known_text": "நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது அசாதாரணமானது.",
+    "target_text": "It's unusual that you don't like to use your car."
+   },
+   "lego_id": "S0121L03",
+   "lego": [
+    {
+     "known_text": "காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "don't use your car"
+    }
+   ]
+  },
+  {
+   "seed_number": 121,
+   "seed": {
+    "known_text": "நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது அசாதாரணமானது.",
+    "target_text": "It's unusual that you don't like to use your car."
+   },
+   "lego_id": "S0121L03",
+   "lego": [
+    {
+     "known_text": "காரை பயன்படுத்த விரும்பவில்லை",
+     "target_text": "don't use your car"
+    }
+   ]
+  },
+  {
+   "seed_number": 121,
+   "seed": {
+    "known_text": "நீங்கள் உங்கள் காரை பயன்படுத்த விரும்பவில்லை என்பது அசாதாரணமானது.",
+    "target_text": "It's unusual that you don't like to use your car."
+   },
+   "lego_id": "S0121L04",
+   "lego": [
+    {
+     "known_text": "அசாதாரணமானது நீங்கள் காரை பயன்படுத்த",
+     "target_text": "unusual that you don't use car"
+    }
+   ]
+  },
+  {
+   "seed_number": 124,
+   "seed": {
+    "known_text": "அது ஒரு நல்ல யோசனை என்று நினைத்தேன்.",
+    "target_text": "I thought that was a good idea."
+   },
+   "lego_id": "S0124L02",
+   "lego": [
+    {
+     "known_text": "நினைத்தேன் நல்ல யோசனை",
+     "target_text": "thought that was a good idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 127,
+   "seed": {
+    "known_text": "அதனால் தான் நான் உங்களை பார்க்க விரும்பினேன் என்று இல்லை.",
+    "target_text": "That isn't why I wanted to see you."
+   },
+   "lego_id": "S0127L02",
+   "lego": [
+    {
+     "known_text": "விரும்பினேன் பார்க்க",
+     "target_text": "wanted to see you"
+    }
+   ]
+  },
+  {
+   "seed_number": 127,
+   "seed": {
+    "known_text": "அதனால் தான் நான் உங்களை பார்க்க விரும்பினேன் என்று இல்லை.",
+    "target_text": "That isn't why I wanted to see you."
+   },
+   "lego_id": "S0127L03",
+   "lego": [
+    {
+     "known_text": "இல்லை ஏன் விரும்பினேன் பார்க்க",
+     "target_text": "isn't why I wanted to see"
+    }
+   ]
+  },
+  {
+   "seed_number": 128,
+   "seed": {
+    "known_text": "நான் முன்பு அறிந்த யாரோ போல நீங்கள் இருக்கிறீர்கள்.",
+    "target_text": "You're like someone I used to know."
+   },
+   "lego_id": "S0128L02",
+   "lego": [
+    {
+     "known_text": "முன்பு அறிந்தேன்",
+     "target_text": "used to know"
+    }
+   ]
+  },
+  {
+   "seed_number": 129,
+   "seed": {
+    "known_text": "நீங்கள் இவ்வளவு நன்றாக செய்கிறீர்கள் என்று நான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்.",
+    "target_text": "I'm so happy that you're doing so well."
+   },
+   "lego_id": "S0129L02",
+   "lego": [
+    {
+     "known_text": "நன்றாக செய்கிறீர்கள்",
+     "target_text": "doing so well"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "அது ஒரு வியப்பு, ஏனென்றால் அவன் என் நண்பன்.",
+    "target_text": "That was a surprise, because he's my friend."
+   },
+   "lego_id": "S0130L01",
+   "lego": [
+    {
+     "known_text": "வியப்பு",
+     "target_text": "surprise"
+    }
+   ]
+  },
+  {
+   "seed_number": 137,
+   "seed": {
+    "known_text": "சரியாக இருப்பதை விட அடிக்கடி பேசுவது மிகவும் முக்கியம்.",
+    "target_text": "It's more important to talk often than to be perfect."
+   },
+   "lego_id": "S0137L05",
+   "lego": [
+    {
+     "known_text": "அதிகமாக முக்கியம் அடிக்கடி பேசு",
+     "target_text": "more important to talk often"
+    }
+   ]
+  },
+  {
+   "seed_number": 149,
+   "seed": {
+    "known_text": "இது மிகவும் கஷ்டமில்லை, அதனால் நீங்கள் விரைவில் முடிப்பீர்கள் என்று நம்புகிறேன்.",
+    "target_text": "This isn't very difficult, so I hope you'll finish soon."
+   },
+   "lego_id": "S0149L05",
+   "lego": [
+    {
+     "known_text": "அதனால் நான் நம்புகிறேன் நீங்கள் முடி விரைவில்",
+     "target_text": "so I hope you'll finish soon"
+    }
+   ]
+  }
+ ]
+}

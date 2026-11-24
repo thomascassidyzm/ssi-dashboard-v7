@@ -1,0 +1,62 @@
+{
+ "changeset": "deu_for_zho-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 68,
+   "seed": {
+    "known_text": "你在找什么？",
+    "target_text": "Wonach suchst du?"
+   },
+   "lego_id": "S0068L02",
+   "lego": [
+    {
+     "known_text": "找什么",
+     "target_text": "wonach"
+    }
+   ]
+  },
+  {
+   "seed_number": 165,
+   "seed": {
+    "known_text": "但是我不确定是不是真的。",
+    "target_text": "Aber ich bin nicht sicher, ob es wahr ist."
+   },
+   "lego_id": "S0165L02",
+   "lego": [
+    {
+     "known_text": "是不是",
+     "target_text": "ob"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "你在找什么？",
+    "target_text": "Wonach suchst du?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "你在找什么",
+     "target_text": "wonach suchst du"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "你在找什么？",
+    "target_text": "Wonach suchst du?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "你在找什么",
+     "target_text": "wonach suchst du"
+    }
+   ]
+  }
+ ]
+}

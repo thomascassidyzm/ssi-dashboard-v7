@@ -1,0 +1,6 @@
+{"format":"ssi-changeset/1","id":"eng_for_por-item18-cs236","course":"eng_for_por","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:34.779Z","ops":5,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_por:S0063L01B02","expect":{"known_text":"não se importa de","target_text":"you don't mind"}}
+{"op":"phrase.delete","phrase_id":"eng_for_por:S0100L02B03","expect":{"known_text":"não se devia preocupar em fazer algo parecido","target_text":"you shouldn't worry about doing something similar"}}
+{"op":"phrase.delete","phrase_id":"eng_for_por:S0120L02B03","expect":{"known_text":"é interessante que goste de ir de autocarro","target_text":"it is interesting that you like going by bus"}}
+{"op":"phrase.delete","phrase_id":"eng_for_por:S0153L03B02","expect":{"known_text":"não teria dito","target_text":"I wouldn't have said it"}}
+{"op":"phrase.delete","phrase_id":"eng_for_por:S0272L01B02","expect":{"known_text":"parece uma ótima ideia","target_text":"sounds like a good idea"}}
