@@ -201,18 +201,24 @@ function plan(rng, A, copy, live) {
     if (!inBand || !ans) { claimLive(); continue; }
     const pre = precheck(g, C, L);
     if (pre.length) { held.push({ lego: g.lego, why: pre.join('; ') }); claimLive(); continue; }
-    const keepTop = new Map(); // id → ko fix or null
-    for (const t of ans.topups || []) if (t.keep && doorById.has(t.id) && !doorById.get(t.id).protected.length) keepTop.set(t.id, t.ko && t.ko !== doorById.get(t.id).known ? t.ko : null);
-    // the model may keep more than needed: trust its order, cap per role at the shortfall
-    const capped = new Map(); const used = { build: 0, use: 0 };
-    for (const [id, fix] of keepTop) { const r = doorById.get(id).role; if (used[r] < g.short[r]) { used[r]++; capped.set(id, fix); } }
-    for (const t of ans.topups || []) if (!t.keep && t.why) refusedTop.push({ lego: g.lego, id: t.id, known: doorById.get(t.id)?.known, target: doorById.get(t.id)?.target, why: t.why });
     const origs = [];
     g.originals.forEach((o, n) => {
       const v = (ans.originals || []).find((x) => +x.n === n + 1) || {};
       if (v.ok === false) { refusedOrig.push({ lego: g.lego, target: o.target, known: v.ko, en: o.known_en, moved: o.moved, from: o.src_pool === 'hc' ? o.src_seed : `old-${o.src_seed}`, why: v.why }); return; }
       origs.push({ ...o, ko: String(v.ko || '').trim() });
     });
+    // top-ups: the judge's keeps (its order), then any refill keeps; capped per role at what the floor still lacks AFTER the
+    // originals it refused (a refused original must not leave a thinner basket than the door rows it replaces)
+    const need = { build: g.floor.build, use: g.floor.use };
+    for (const o of origs) need[o.role]--;
+    for (const d of g.door) if (d.protected.length && !d.protected.some((w) => w.startsWith('same Welsh'))) need[d.role]--;
+    const capped = new Map(); const used = { build: 0, use: 0 };
+    for (const t of [...(ans.topups || []), ...(ans.refill || [])]) {
+      const d = doorById.get(t.id);
+      if (!t.keep || !d || d.protected.length || capped.has(t.id) || used[d.role] >= need[d.role]) continue;
+      used[d.role]++; capped.set(t.id, t.ko && t.ko !== d.known ? t.ko : null);
+    }
+    for (const t of [...(ans.topups || []), ...(ans.refill || [])]) if (!t.keep && t.why && !capped.has(t.id)) refusedTop.push({ lego: g.lego, id: t.id, known: doorById.get(t.id)?.known, target: doorById.get(t.id)?.target, why: t.why });
     finals.set(g.lego, { g, capped, origs });
   }
   // claim the staying door rows of the band first (protected + kept top-ups + door rows equal to an original), then new rows
@@ -307,6 +313,54 @@ function verify(rng, live) {
   return out;
 }
 
+// ── refill: one more judge call per seed for the baskets a plan left under the floor ──
+async function refill(rng) {
+  const { claudeChat } = require('../../services/shared/claude-cli.cjs');
+  const p = loadJson(planFile(rng));
+  const A = loadJson(path.join(EV, 'assign.json'));
+  const byLego = new Map(A.legos.map((g) => [g.lego, g]));
+  const bySeed = new Map();
+  for (const t of p.thin) { const g = byLego.get(t.lego); if (!bySeed.has(g.seed)) bySeed.set(g.seed, []); bySeed.get(g.seed).push({ g, t }); }
+  for (const [s, list] of [...bySeed].sort((a, b) => a[0] - b[0])) {
+    const f = path.join(DIR, 'ko', `${sid(s)}.json`);
+    const k = loadJson(f);
+    const keyOf = (x) => (String(x).match(/S\d{4}L\d{2}/) || [x])[0];
+    const ans = (lego) => Object.entries(k.legos || {}).find(([x]) => keyOf(x) === lego)?.[1] || {};
+    const L = [`SEED ${s}: Korean "${list[0].g.seed_known}" = Welsh "${list[0].g.seed_target}"`];
+    let asked = 0;
+    for (const { g, t } of list) {
+      const a = ans(g.lego);
+      if ((a.refill || []).length) continue; // already refilled
+      const judged = new Map((a.topups || []).map((x) => [x.id, x]));
+      const kept = new Set((a.topups || []).filter((x) => x.keep).map((x) => x.id));
+      const lack = { build: Math.max(0, t.floor.build - t.have.build), use: Math.max(0, t.floor.use - t.have.use) };
+      const cands = g.door.filter((d) => !d.protected.length && !kept.has(d.id) && lack[d.role]);
+      if (!cands.length) continue;
+      asked++;
+      L.push(`\n## LEGO ${g.lego}: ${g.known} = ${g.target}. Still needed after refusals: ${lack.build} BUILD, ${lack.use} USE. Candidates (keep at most that many per role; refuse any that is not good — a thin basket beats a bad phrase):`);
+      for (const d of cands) { const j = judged.get(d.id); L.push(`  ${d.id} [${d.role.toUpperCase()}] ${d.known} = ${d.target}${j && j.why ? `   (earlier note: ${j.why})` : ''}`); }
+    }
+    if (!asked) continue;
+    L.push('\nReturn JSON: {"legos":{"<LEGO id>":{"refill":[{"id":"<candidate id>","keep":true,"ko":"<only if you fixed the Korean>","why":"<one line if refused>"}]}}}');
+    let out = null;
+    for (let tr = 0; tr < 2 && !out; tr++) {
+      try {
+        const raw = await claudeChat(L.join('\n'), { model: 'opus', system: SYSTEM, timeout: 900000, thinkingTokens: 8000 });
+        out = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1));
+      } catch (e) { if (/spent|weekly limit/i.test(e.message)) { console.log('STOP: account spent'); process.exit(4); } }
+    }
+    if (!out) { console.log(`${sid(s)} refill FAILED`); continue; }
+    for (const [x, v] of Object.entries(out.legos || {})) {
+      const lego = keyOf(x);
+      const key = Object.keys(k.legos).find((y) => keyOf(y) === lego) || lego;
+      k.legos[key] = { ...(k.legos[key] || {}), refill: v.refill || [] };
+    }
+    k.refill_at = new Date().toISOString();
+    fs.writeFileSync(f, JSON.stringify(k, null, 1));
+    console.log(`${sid(s)} refill: ${Object.values(out.legos || {}).reduce((n, v) => n + (v.refill || []).filter((r) => r.keep).length, 0)} kept`);
+  }
+}
+
 module.exports = { seedPrompt, containedGlosses, SYSTEM, plan, precheck, contiguous };
 
 if (require.main === module) {
@@ -322,7 +376,8 @@ if (require.main === module) {
       const p = plan(rng, loadJson(path.join(EV, 'assign.json')), loadJson(copyPath || path.join(EV, 'cym_for_kor.json')), loadJson(livePath));
       fs.writeFileSync(planFile(rng), JSON.stringify(p, null, 1));
       console.log(`${rng}: ${p.legos_planned} LEGOs; ${p.inserts.length} inserts, ${p.korean_fixes.length} Korean fixes, ${p.deletes.length} deletes; held ${p.held.length}, originals refused ${p.refused_originals.length}, ZUT refused ${p.zut_refused.length}, thin ${p.thin.length}`);
-    } else if (mode === 'insert-cs') insertCs(args[0]);
+    } else if (mode === 'refill') await refill(args[0]);
+    else if (mode === 'insert-cs') insertCs(args[0]);
     else if (mode === 'delete-cs') deleteCs(args[0]);
     else if (mode === 'verify') verify(args[0], loadJson(args[1]));
     else { console.error('mode: korean <from-to> [conc] | prompt <seed> | plan <from-to> <liveSeeds> [snapshot] | insert-cs | delete-cs | verify'); process.exit(64); }
