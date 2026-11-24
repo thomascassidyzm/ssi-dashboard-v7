@@ -221,7 +221,8 @@ const P = (id) => phrases.value[id] || NONE
 const roundByN = computed(() => new Map(rounds.value.map((r) => [r.n, r])))
 const roundHasHand = (r) => { const l = L(r); return !!(l.lock || l.order || [...r.p, ...r.o, ...r.u].some((id) => P(id).lock)) }
 const handCount = computed(() => Object.values(legos.value).filter((l) => l.lock || l.order).length + Object.values(phrases.value).filter((p) => p.lock).length)
-const listed = computed(() => (onlyHand.value ? rounds.value.filter(roundHasHand) : rounds.value))
+// ?proposed=1 lists only the rounds that hold a pending proposal (cs #178·AL: a link to a batch of drafted proposals).
+const listed = computed(() => (onlyHand.value ? rounds.value.filter(roundHasHand) : route.query.proposed === '1' ? rounds.value.filter((r) => proposals.value.some((p) => p.status === 'pending' && p.lego === r.l)) : rounds.value))
 const pageRounds = computed(() => listed.value.slice(page.value * PAGE, page.value * PAGE + PAGE))
 const pageFrom = computed(() => (listed.value.length ? page.value * PAGE + 1 : 0))
 const pageTo = computed(() => Math.min(listed.value.length, page.value * PAGE + PAGE))
@@ -320,6 +321,7 @@ const PropBox = (props) => {
   return h('div', { class: ['prop', p.status] }, [
     h('div', { class: 'ph' }, [h('b', null, statusLabel(p)), h('small', null, p.status === 'applied' ? `by ${p.appliedBy} · ${fmtWhen(p.appliedAt)}` : `by ${p.proposedBy}`)]),
     ...diffs,
+    p.note ? h('div', { class: 'hint note' }, p.note) : null,
     hint ? h('div', { class: 'hint' }, hint) : null,
     ...(p.status === 'pending' ? proposalWarnings(p).map((w) => h('div', { class: 'hint warn' }, w)) : []),
     p.status === 'applied' && p.locked === false ? h('div', { class: 'hint warn' }, 'Applied before the hand-edit lock was set up: not protected from regeneration.') : null,
