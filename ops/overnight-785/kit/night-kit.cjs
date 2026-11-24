@@ -410,7 +410,9 @@ async function main() {
     const real = fs.existsSync(path.join(OUT, 'audio-real.json')) ? read('audio-real.json') : [];
     const intr = fs.existsSync(path.join(OUT, 'intros-real.json')) ? read('intros-real.json') : [];
     const items = [...real.filter((a) => a.real && a.real.audioId && a.real.source !== 'library').map((a) => ({ id: a.real.audioId, label: `seed ${a.seed} · ${a.role} · ${a.text}` })),
-      ...intr.filter((a) => a.audioId && a.source !== 'library').map((a) => ({ id: a.audioId, label: `${a.legoId} · intro · ${a.text.replace(/<break[^>]*>/g, '').trim()}` }))];
+      ...intr.filter((a) => a.audioId && a.source !== 'library').map((a) => ({ id: a.audioId, label: `${a.legoId} · intro · ${a.text.replace(/<break[^>]*>/g, '').trim()}` })),
+      // the known-slot fills (fillknown mode): every clip linked, library or rendered, since those slots were silent before
+      ...(fs.existsSync(path.join(OUT, 'fill-known.json')) ? read('fill-known.json').rows : []).filter((r) => r.link && r.link.status === 200 && r.render && r.render.audioId).map((r) => ({ id: r.render.audioId, label: `${r.id} · known (was silent) · ${r.text}` }))];
     const clips = [];
     for (const it of items) {
       const f = path.join(dir, `${it.id}.mp3`);
@@ -435,6 +437,43 @@ async function main() {
     if (r.status !== 200) throw new Error(`seeds read ${r.status}: ${t.slice(0, 300)}`);
     fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, t);
     const j = JSON.parse(t); console.log(`read ${COURSE}: ${j.seeds.length} seeds → ${file}`);
+    return;
+  }
+  if (mode === 'fillknown') {
+    // cs #789·AK (orchestrator, 24 Nov, Kai's standing "fill now" casting rule): fill NULL known slots on the phrases whose ids
+    // start with ROWS (csv). Live pre-check: each row, its LEGO and its seed in <file> (a fresh governed read) must equal BASE
+    // (the post-apply read the fill was planned on). One /api/audio/render per text (library-first, no retries; any refusal stops),
+    // then link-clip FILL-ONLY (no replace, no expectCurrent), dry run then apply. Log: out/fill-known.json.
+    const live = load(file), base = load(process.env.BASE);
+    const pre = (process.env.ROWS || '').split(',').filter(Boolean);
+    const rows = [...base.phrases.values()].filter((q) => pre.some((x) => sid(q.id).startsWith(x)) && !q.known_audio_id && q.phrase_role !== 'component');
+    const out = { at: new Date().toISOString(), rows: [], held: [], refused: null, chars: 0 };
+    for (const q of rows) {
+      const id = sid(q.id), m = live.phrases.get(id), lb = base.legos.get(q._lego), ll = live.legos.get(q._lego);
+      const sb = base.seeds.get(lb && lb.seed_number), sl = live.seeds.get(lb && lb.seed_number);
+      const same = m && m.known_text === q.known_text && m.target_text === q.target_text && !m.known_audio_id && ll && lb && ll.known_text === lb.known_text && ll.target_text === lb.target_text && sl && sb && sl.known_text === sb.known_text && sl.target_text === sb.target_text;
+      if (!same) { out.held.push(id); continue; }
+      out.rows.push({ id, text: q.known_text });
+    }
+    if (process.env.APPLY_CONFIRM !== '1') { console.log(`fillknown (dry listing): ${out.rows.length} rows to fill, ${out.held.length} held`, out.rows.map((r) => `${r.id} "${r.text}"`).join('; ')); save('fill-known-dry.json', out); return; }
+    for (const r of out.rows) {
+      if (process.env.STOP_AT && Date.now() > Date.parse(process.env.STOP_AT)) { out.stop = 'STOP_AT'; break; }
+      const a = await post(`${POPTY}/api/audio/render`, renderBody({ role: 'known', text: r.text }, false), CONV);
+      r.render = { status: a.status, source: a.body.source, audioId: a.body.audioId, charsSpent: a.body.charsSpent || 0, code: a.body.code, error: a.status === 200 ? undefined : (a.body.error || '').slice(0, 300) };
+      if (a.status === 200) { addSpend(a.body); out.chars += r.render.charsSpent; }
+      save('fill-known.json', out);
+      if (a.status !== 200 || !a.body.audioId) { out.refused = `${r.id} ${a.status} ${a.body.code || ''}`; break; }
+      const links = [{ phraseId: pid(r.id), role: 'known', audioId: a.body.audioId }];
+      const d = await post(`${POPTY}/api/production/${COURSE}/link-clip`, { links, dryRun: true }, CONV);
+      if (d.status !== 200 || d.body.ok === false) { r.link = { dry: d.status, code: d.body.code, error: JSON.stringify(d.body).slice(0, 300) }; out.refused = `${r.id} link dry ${d.status} ${d.body.code || ''}`; break; }
+      const k = await post(`${POPTY}/api/production/${COURSE}/link-clip`, { links }, CONV);
+      r.link = { status: k.status, ok: k.body.ok, code: k.body.code, error: k.status === 200 ? undefined : JSON.stringify(k.body).slice(0, 300) };
+      save('fill-known.json', out);
+      console.log(r.id, r.render.source, r.render.audioId, r.render.charsSpent, 'link', k.status, k.body.code || '');
+      if (k.status !== 200 || k.body.ok === false) { out.refused = `${r.id} link ${k.status} ${k.body.code || ''}`; break; }
+    }
+    save('fill-known.json', out);
+    console.log(`fillknown: ${out.rows.filter((r) => r.link && r.link.status === 200).length}/${out.rows.length} filled, ${out.held.length} held, ${out.chars} chars, refused: ${out.refused || 'none'}`);
     return;
   }
   const db = load(file);
