@@ -2681,5 +2681,70 @@
    }
   ],
   "ops": 12
+ },
+ {
+  "batch": 1,
+  "status": 200,
+  "event_id": "a5b92df4-5a1b-4dc3-b0c8-4abfe23e82f9",
+  "undo_file": "2026-11-24T01-38-33-267Z-a5b92df4-5a1b-4dc3-b0c8-4abfe23e82f9.json",
+  "undo": [
+   {
+    "op": "seed.update",
+    "seed_number": 26,
+    "set": {
+     "approved_at": "2026-07-02T14:07:22.150Z"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0026L02U01",
+    "set": {
+     "target_text": "gosto de sentir que estou quase pronto para ir",
+     "target1_audio_id": "8b30e7fc-b2b0-4483-86ae-6b9b8baa8b72",
+     "target2_audio_id": "ea522cdc-dc39-4b57-9bfa-bbf5178b975c",
+     "decomposition": [
+      {
+       "known": "I like",
+       "legoId": "S0026L01",
+       "target": "gosto de",
+       "isGhost": false
+      },
+      {
+       "known": "feeling as if I'm nearly ready to go",
+       "legoId": "S0026L02",
+       "target": " sentir que estou quase pronto para ir",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "por_for_eng:S0026L02B02",
+    "set": {
+     "target_text": "gosto de sentir que estou quase pronto para ir",
+     "word_count": 48,
+     "target1_audio_id": "8b30e7fc-b2b0-4483-86ae-6b9b8baa8b72",
+     "target2_audio_id": "ea522cdc-dc39-4b57-9bfa-bbf5178b975c",
+     "decomposition": [
+      {
+       "known": "I like",
+       "legoId": "S0026L01",
+       "target": "gosto de",
+       "isGhost": false
+      },
+      {
+       "known": "feeling as if I'm nearly ready to go",
+       "legoId": "S0026L02",
+       "target": " sentir que estou quase pronto para ir",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ]
+    }
+   }
+  ],
+  "ops": 9
  }
 ]

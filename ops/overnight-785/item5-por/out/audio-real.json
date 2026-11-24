@@ -914,5 +914,28 @@
    "audioId": "8db6afe6-e289-41e8-b74a-586dbba3aeaf",
    "charsSpent": 0
   }
+ },
+ {
+  "role": "target1",
+  "text": "eu gosto de sentir que estou quase pronto para ir",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0026L02B02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0026L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 26,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3cfbbdee-4ef3-47aa-af49-1bd86b26a901",
+   "charsSpent": 0
+  }
  }
 ]
