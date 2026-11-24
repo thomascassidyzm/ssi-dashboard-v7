@@ -1634,7 +1634,7 @@ module.exports = function createRecordistRouter({
       const plan = encouragementLines.planEncouragementSwap(row, { s3Key: clip.s3_key, durationMs: clip.duration_ms ?? null }, recordist)
       out.mode = plan.mode
       const clash = (error) => encouragementLines.isUniqueClash(error)
-        ? `${error.message} — shared_audio's unique key (text_normalized, language, audio_type) still covers the encouragement types; the migration must exempt them before a line can be replaced`
+        ? `${error.message} — shared_audio's unique key (text_normalized, language, audio_type) still counts this line twice; learning-app migration 20261124b_encouragements_fresh_take.sql (partial key + one-transaction swap) must be applied before unchanged words can be re-taken`
         : error.message
       if (plan.mode === 'fill-draft') {
         const { data, error } = await db().from('shared_audio').update(plan.update.set)
@@ -1643,15 +1643,27 @@ module.exports = function createRecordistRouter({
         else if (!data || !data.length) out.errors.push(`fill draft: row ${plan.update.id} was no longer a ${plan.update.whereType} — nothing written`)
         else out.rowId = plan.update.id
       } else {
-        const { error: insErr } = await db().from('shared_audio').insert(plan.insert)
-        if (insErr) {
-          out.errors.push(`insert: ${clash(insErr)}`)
+        // One transaction (job #194·AL): retire + insert together, so no gap, no duplicate, and unchanged words
+        // re-take cleanly. The old two-step runs only while that function is not in the database yet.
+        const { data: swapped, error: rpcErr } = await db().rpc(plan.rpc.fn, plan.rpc.args)
+        if (!rpcErr) {
+          out.via = 'rpc'
+          if (swapped) out.rowId = swapped
+          else out.errors.push(`replace ${plan.retire.id}: it was no longer a live ${plan.retire.whereType} — nothing written`)
+        } else if (!encouragementLines.isMissingSwapFunction(rpcErr)) {
+          out.errors.push(`replace ${plan.retire.id}: ${clash(rpcErr)}`)
         } else {
-          out.rowId = plan.newId
-          const { data, error } = await db().from('shared_audio').update(plan.retire.set)
-            .eq('id', plan.retire.id).eq('audio_type', plan.retire.whereType).select('id')
-          if (error) out.errors.push(`retire ${plan.retire.id}: ${clash(error)} (new row ${plan.newId} is live beside it)`)
-          else if (!data || !data.length) out.errors.push(`retire ${plan.retire.id}: it was no longer a ${plan.retire.whereType} — new row ${plan.newId} is live beside it`)
+          out.via = 'two-step'
+          const { error: insErr } = await db().from('shared_audio').insert(plan.insert)
+          if (insErr) {
+            out.errors.push(`insert: ${clash(insErr)}`)
+          } else {
+            out.rowId = plan.newId
+            const { data, error } = await db().from('shared_audio').update(plan.retire.set)
+              .eq('id', plan.retire.id).eq('audio_type', plan.retire.whereType).select('id')
+            if (error) out.errors.push(`retire ${plan.retire.id}: ${clash(error)} (new row ${plan.newId} is live beside it)`)
+            else if (!data || !data.length) out.errors.push(`retire ${plan.retire.id}: it was no longer a ${plan.retire.whereType} — new row ${plan.newId} is live beside it`)
+          }
         }
       }
     } catch (err) {
