@@ -1,0 +1,347 @@
+{
+ "note": "cs #868: outage slots handed to the surface retry fix (Kai's Watson, 24 Nov). Not re-asked by #868.",
+ "slots": [
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0635L01U07",
+   "role": "known",
+   "text": "હું જેનની બેગ જોઈ શકું છું.",
+   "seed": 635,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0635L01U08",
+   "role": "known",
+   "text": "શું તમે જેનની બેગ જોઈ?",
+   "seed": 635,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0635L01B05",
+   "role": "known",
+   "text": "મને જેનની બેગ પકડવા દો",
+   "seed": 635,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0635L01U09",
+   "role": "known",
+   "text": "જેનની બેગ લગભગ ખોવાઈ ગઈ.",
+   "seed": 635,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0635L02U06",
+   "role": "known",
+   "text": "મને ખાતરી છે કે તે જેનની બેગ છે.",
+   "seed": 635,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0635L02U07",
+   "role": "known",
+   "text": "મને નથી લાગતું કે તે જેનની બેગ છે.",
+   "seed": 635,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_guj",
+   "target": "phrase",
+   "id": "eng_for_guj:S0649L01U10",
+   "role": "known",
+   "text": "હું તૈયાર હોત જો તમે મને કહ્યું હોત",
+   "seed": 649,
+   "why": "NO_ANSWER (render call returned no JSON, 24 Nov ~09:0xZ, surface outage window)"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0381L02B06",
+   "role": "known",
+   "text": "ਬਾਅਦ ਵਿੱਚ ਸਾਡੇ ਪਿੱਛੇ ਆਉਣਾ",
+   "seed": 381,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0382L01U06",
+   "role": "known",
+   "text": "ਕੀ ਤੁਸੀਂ ਪੁੱਛਿਆ ਕਿ ਕੀ ਹੋਣ ਵਾਲਾ ਸੀ?",
+   "seed": 382,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U06",
+   "role": "known",
+   "text": "ਮੈਨੂੰ ਨਹੀਂ ਪਤਾ ਸੀ ਕਿ ਉਹ ਬਾਗ਼ ਵਿੱਚ ਕੀ ਕਰ ਰਹੀ ਸੀ।",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U07",
+   "role": "known",
+   "text": "ਤੁਸੀਂ ਬਾਗ਼ ਵਿੱਚ ਕੀ ਕਰ ਰਹੇ ਸੀ?",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U08",
+   "role": "known",
+   "text": "ਮੈਨੂੰ ਬਾਗ਼ ਵਿੱਚ ਕੰਮ ਕਰਨਾ ਹੈ।",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U09",
+   "role": "known",
+   "text": "ਤੁਹਾਨੂੰ ਬਾਗ਼ ਵਿੱਚ ਉਡੀਕ ਨਹੀਂ ਕਰਨੀ ਚਾਹੀਦੀ।",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U10",
+   "role": "known",
+   "text": "ਬਾਗ਼ ਵਿੱਚ ਹੋਰ ਲੋਕ ਹਨ।",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U11",
+   "role": "known",
+   "text": "ਬਾਗ਼ ਵਿੱਚ ਕੀ ਹੈ?",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U12",
+   "role": "known",
+   "text": "ਆਓ ਬਾਗ਼ ਵਿੱਚ ਗੱਲ ਕਰੀਏ।",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0383L01U13",
+   "role": "known",
+   "text": "ਮੈਂ ਬਾਗ਼ ਵਿੱਚ ਬਹੁਤ ਕੁਝ ਕੀਤਾ ਹੈ।",
+   "seed": 383,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0385L01U06",
+   "role": "known",
+   "text": "ਉਮੀਦ ਹੈ ਤੁਸੀਂ ਉਸ ਨਾਲ ਸਹਿਮਤ ਹੋ।",
+   "seed": 385,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0385L01U07",
+   "role": "known",
+   "text": "ਤੁਹਾਨੂੰ ਉਸ ਨਾਲ ਸਹਿਮਤ ਹੋਣ ਦੀ ਲੋੜ ਨਹੀਂ।",
+   "seed": 385,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0385L01U08",
+   "role": "known",
+   "text": "ਤੁਹਾਨੂੰ ਉਸ ਨਾਲ ਸਹਿਮਤ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।",
+   "seed": 385,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0385L01U09",
+   "role": "known",
+   "text": "ਤੁਸੀਂ ਉਸ ਨਾਲ ਸਹਿਮਤ ਕਿਉਂ ਹੋਏ?",
+   "seed": 385,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0385L01U10",
+   "role": "known",
+   "text": "ਤੁਸੀਂ ਉਸ ਨਾਲ ਸਹਿਮਤ ਕਿਉਂ ਨਹੀਂ ਹੋਏ?",
+   "seed": 385,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0387L01U06",
+   "role": "known",
+   "text": "ਮੈਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਉਹ ਸਹੀ ਸੀ।",
+   "seed": 387,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0387L01U07",
+   "role": "known",
+   "text": "ਉਮੀਦ ਹੈ ਕਿ ਉਹ ਸਹੀ ਸੀ।",
+   "seed": 387,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0387L01U08",
+   "role": "known",
+   "text": "ਮੈਂ ਉਸ ਨਾਲ ਸਹਿਮਤ ਹੋਇਆ ਕਿਉਂਕਿ ਉਹ ਸਹੀ ਸੀ।",
+   "seed": 387,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0387L02U06",
+   "role": "known",
+   "text": "ਮੈਂ ਨਹੀਂ ਸੋਚਦਾ ਸੀ ਕਿ ਉਹ ਸਹੀ ਸੀ, ਇਸ ਲਈ ਮੈਂ ਉਸ ਨਾਲ ਸਹਿਮਤ ਨਹੀਂ ਹੋਇਆ।",
+   "seed": 387,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0390L02B05",
+   "role": "known",
+   "text": "ਦਾਖਲੇ ਦੇ ਨੇੜੇ ਉਡੀਕ ਕਰਨਾ",
+   "seed": 390,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0390L02U06",
+   "role": "known",
+   "text": "ਹੋ ਸਕਦਾ ਹੈ ਉਹ ਦਾਖਲੇ ਦੇ ਨੇੜੇ ਹੋਵੇ।",
+   "seed": 390,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L01U06",
+   "role": "known",
+   "text": "ਉਹ ਬੱਚਾ ਮੈਨੂੰ ਦੱਸੇਗਾ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L01U07",
+   "role": "known",
+   "text": "ਸਾਨੂੰ ਨਹੀਂ ਪਤਾ ਕਿ ਉਹ ਬੱਚਾ ਕਿੱਥੇ ਹੈ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L01U08",
+   "role": "known",
+   "text": "ਮੈਨੂੰ ਉਮੀਦ ਹੈ ਕਿ ਉਹ ਬੱਚਾ ਠੀਕ ਹੈ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L01U09",
+   "role": "known",
+   "text": "ਉਹ ਬੱਚਾ ਕਿੱਥੇ ਹੈ?",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L01U10",
+   "role": "known",
+   "text": "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਉਹ ਬੱਚਾ ਕਿੱਥੇ ਹੈ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L03U06",
+   "role": "known",
+   "text": "ਉਹ ਬੱਚਾ ਡਾਕਖ਼ਾਨੇ ਦੇ ਸਾਹਮਣੇ ਹੋ ਸਕਦਾ ਹੈ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L03U07",
+   "role": "known",
+   "text": "ਜੇ ਤੁਸੀਂ ਡਾਕਖ਼ਾਨੇ ਦੇ ਸਾਹਮਣੇ ਹੋ, ਮੈਨੂੰ ਦੱਸੋ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0392L03U08",
+   "role": "known",
+   "text": "ਡਾਕਖ਼ਾਨੇ ਦੇ ਸਾਹਮਣੇ ਇੱਕ ਰੈਸਤਰਾਂ ਹੈ",
+   "seed": 392,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0490L02U09",
+   "role": "known",
+   "text": "ਇਹ ਚੰਗੀ ਗੱਲ ਹੈ ਕਿ ਤੁਸੀਂ ਮੇਰੇ ਤੇ ਭਰੋਸਾ ਕਰਦੇ ਹੋ।",
+   "seed": 490,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  },
+  {
+   "course": "eng_for_pan",
+   "target": "phrase",
+   "id": "eng_for_pan:S0556L02U06",
+   "role": "known",
+   "text": "ਉਹ ਰਾਤ ਨੂੰ ਦੇਰ ਤੱਕ ਸੰਗੀਤ ਕਿਉਂ ਵਜਾਉਂਦੇ ਹਨ?",
+   "seed": 556,
+   "why": "APPROVAL_CHECK_UNAVAILABLE"
+  }
+ ]
+}
