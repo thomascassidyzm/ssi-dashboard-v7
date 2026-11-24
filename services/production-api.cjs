@@ -8368,7 +8368,7 @@ function courseEditTag(req, ops, apply) {
   return `at ${new Date().toISOString()} by ${who} (${Array.isArray(ops) ? ops.length : 0} op(s), ${apply ? 'apply' : 'dry run'})`
 }
 
-async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {}, onApplied = null, eventDetail = {} }) {
+async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {}, onApplied = null, eventDetail = {}, handEditor = null }) {
   let plans
   try {
     plans = courseEditOps.planOps(ops, courseCode)
@@ -8397,6 +8397,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       apply,
       approval: req.body?.approval || null,
       previewTiles: req.body?.previewTiles === true,
+      handEditor, // only the course editor's router passes this (cs #128·AL)
       eventId: () => req.contentEdit.record({
         scope: {
           seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],

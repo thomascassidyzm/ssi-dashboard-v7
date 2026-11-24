@@ -71,12 +71,23 @@ function buildOps({ courseCode, kind, action, key, live, after, clips }) {
   }
   if (action !== 'edit') throw new Error(`unknown action ${action}`)
   const change = classify({ known: live.known_text, target: live.target_text }, after)
-  if (!change.known && !change.target) throw new Error('nothing changes')
+  // ROMANISATION AND INTRO WORDING (cs #128·AL). The romanisation is display text: no audio moves with it. When the
+  // target changes and no romanisation is sent, a carried one is CLEARED, never left spelling the old words
+  // (shared/roman-sync.cjs; the edit door refuses ROMAN_STALE otherwise). The intro wording (course_legos.intro_text) is
+  // what the spoken introduction should say: the presentation clip stays linked until new audio replaces it.
+  const nul = (v) => (v == null || v === '' ? null : v)
+  change.roman = after.roman !== undefined && nul(after.roman) !== nul(live.target_text_roman) ? 'text-only' : null
+  change.intro = kind === 'lego' && after.intro !== undefined && nul(after.intro) !== nul(live.intro_text) ? 'words' : null
+  if (!change.known && !change.target && !change.roman && !change.intro) throw new Error('nothing changes')
   const set = {}
   if (change.known) set.known_text = after.known
   if (change.target) set.target_text = after.target
+  if (change.roman) set.target_text_roman = nul(after.roman)
+  else if (change.target && nul(live.target_text_roman)) set.target_text_roman = null
+  if (change.intro) set.intro_text = nul(after.intro)
   const rowExpect = { ...expect }
   for (const c of AUDIO_COLS) if (c in live) rowExpect[c] = live[c] ?? null
+  for (const c of ['target_text_roman', 'intro_text']) if (c in live) rowExpect[c] = live[c] ?? null
 
   const relabels = [], relinks = [], plan = []
   for (const side of ['known', 'target']) {
@@ -108,7 +119,7 @@ function buildOps({ courseCode, kind, action, key, live, after, clips }) {
 }
 
 /** True when the change leaves a slot needing NEW audio (the spoken words of some side changed). */
-const needsNewAudio = (change) => !!change && (change.known === 'words' || change.target === 'words')
+const needsNewAudio = (change) => !!change && (change.known === 'words' || change.target === 'words' || change.intro === 'words')
 
 /** The door's refusal codes that mean "the live course is not what was proposed against". */
 const DRIFT_CODES = new Set(['DRIFT', 'NOT_FOUND'])
