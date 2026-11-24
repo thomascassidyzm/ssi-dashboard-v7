@@ -1,0 +1,81 @@
+{
+ "seed": 224,
+ "at": "2026-11-24T18:42:29.760Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0224L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 막 내가 무엇을 했는지 이해하기 시작했어",
+     "ok": true,
+     "why": "Natural North Welsh. newydd ddechrau + verbnoun is used in the sense this course teaches, and the be' dw i 'di gwneud clause fits."
+    },
+    {
+     "n": 2,
+     "ko": "그는 막 웨일스어를 배우기 시작했어 그리고 그는 너와 이야기하는 걸 좋아할 텐데",
+     "ok": true,
+     "why": "Natural and idiomatic. The LEGO is used in the taught sense. 좋아할 텐데 keeps the conditional byddai separate from the future bydd."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0224L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0224L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0224L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0224L01B02",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are already filled by better rows."
+    },
+    {
+     "id": "cym_for_kor:S0224L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0224L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0224L01U05",
+     "keep": true,
+     "ko": "그는 돌아오고 싶어하지 않아 왜냐하면 그는 막 지방 의회에서 일하기 시작했거든"
+    },
+    {
+     "id": "cym_for_kor:S0224L01U01",
+     "keep": false,
+     "why": "Sound, but the USE slots are already filled by richer rows."
+    },
+    {
+     "id": "cym_for_kor:S0224L01U08",
+     "keep": false,
+     "why": "Sound, but the USE slots are already filled by richer rows."
+    },
+    {
+     "id": "cym_for_kor:S0224L01U07",
+     "keep": false,
+     "why": "Sound, but the USE slots are already filled by richer rows."
+    },
+    {
+     "id": "cym_for_kor:S0224L01U02",
+     "keep": false,
+     "why": "Sound, but the USE slots are already filled by richer rows."
+    },
+    {
+     "id": "cym_for_kor:S0224L01U03",
+     "keep": false,
+     "why": "Asking why he has only just started reads oddly, and the Korean gives no clear sign that it is a question."
+    }
+   ]
+  }
+ }
+}

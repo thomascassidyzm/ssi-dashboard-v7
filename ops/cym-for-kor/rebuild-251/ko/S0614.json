@@ -1,0 +1,133 @@
+{
+ "seed": 614,
+ "at": "2026-11-24T19:49:19.459Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0614L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그건 그가 서 있는 곳 가까이에 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "아마 그건 내 할아버지가 싸웠던 곳 가까이에 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 교회가 있는 곳 가까이에 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0614L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L01U06",
+     "keep": false,
+     "why": "기다릴 could be 'mynd i aros' or 'byddi di'n aros', and aros could also mean 'stay', so the Korean has more than one Welsh answer; five better rows already kept"
+    }
+   ]
+  },
+  "S0614L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 네 가족은 저기에 살아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그가 무엇을 말하든 네 가족은 ~에 살아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 네 가족이 사는 곳 가까이에 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "네 가족은 그 지역에 살아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네 가족은 아마 큰길 건너편에 살아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 호텔 가까이에 있는 집을 찾아내고 싶어 왜냐하면 네 가족이 그 지역에 살거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 상관없어 왜냐하면 네 가족이 큰길을 따라 살거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0614L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0614L02U01",
+     "keep": false,
+     "why": "good row, but only 2 were needed and U02 and U05 are cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0614L02U03",
+     "keep": false,
+     "why": "only 2 needed; the Korean doesn't show whether the Welsh has 'y lle' or bare 'le'"
+    },
+    {
+     "id": "cym_for_kor:S0614L02U04",
+     "keep": false,
+     "why": "only 2 needed; the conditional perfect is heavy for a USE row"
+    },
+    {
+     "id": "cym_for_kor:S0614L02U06",
+     "keep": false,
+     "why": "지금 sits differently in the Korean than rŵan in the Welsh, so the Korean is ambiguous; only 2 needed"
+    }
+   ]
+  }
+ }
+}

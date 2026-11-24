@@ -1,0 +1,132 @@
+{
+ "seed": 180,
+ "at": "2026-11-24T18:35:55.479Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0180L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁에 아무것도 읽다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리 읽을 다른 것을 구하는 게 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 네가 이 책을 읽고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 가능한 한 자주 읽고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 가능한 한 자주 읽을 거였어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 오늘 이 책을 읽는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 이 책을 읽고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그 책을 읽고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 내가 읽고 싶었던 그 책을 읽었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 가능한 한 자주 읽는 게 더 좋아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0180L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 내 책을 읽을 시간이 있었어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0180L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0180L03B03",
+     "keep": true,
+     "ko": "너에게 내 책을 보여 주다"
+    },
+    {
+     "id": "cym_for_kor:S0180L03B04",
+     "keep": true,
+     "ko": "너는 내 책에 대해 어떻게 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0180L03B01",
+     "keep": false,
+     "why": "'yn y Gymraeg' with the article is unnatural here; the idiomatic form is 'yn Gymraeg'"
+    },
+    {
+     "id": "cym_for_kor:S0180L03U05",
+     "keep": true,
+     "ko": "나는 나중에 네가 내 책을 읽으면 좋겠어"
+    },
+    {
+     "id": "cym_for_kor:S0180L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0180L03U03",
+     "keep": true,
+     "ko": "너 일요일 오후에 내 책을 읽고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0180L03U06",
+     "keep": true,
+     "ko": "나는 내일 아침에 내 책을 읽을게"
+    },
+    {
+     "id": "cym_for_kor:S0180L03U04",
+     "keep": false,
+     "why": "Sound, but the four needed USE rows are already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0180L03U01",
+     "keep": false,
+     "why": "Grammatical but the meaning is odd ('my book isn't very unusual'), and the USE quota is already filled"
+    }
+   ]
+  }
+ }
+}

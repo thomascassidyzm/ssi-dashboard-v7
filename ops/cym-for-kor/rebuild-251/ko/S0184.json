@@ -1,0 +1,291 @@
+{
+ "seed": 184,
+ "at": "2026-11-24T18:36:46.215Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0184L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 알고 있지 않았어",
+     "ok": false,
+     "why": "do'n i ddim is the imperfect negative of bod, not 'do' meaning yes. It is a different word in the wrong basket."
+    },
+    {
+     "n": 2,
+     "ko": "나는 어떻게 ~하는지 알고 있지 않았어",
+     "ok": false,
+     "why": "do'n i ddim is the imperfect negative, not 'do' (yes). The LEGO does not appear in this line."
+    },
+    {
+     "n": 3,
+     "ko": "나는 그것을 하는 방법을 알고 있지 않았어",
+     "ok": false,
+     "why": "do'n i ddim is the imperfect negative, not 'do' (yes). The LEGO does not appear in this line."
+    },
+    {
+     "n": 4,
+     "ko": "그래, 나는 지난달에 그것을 즐겼어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그래, 나는 그것을 아주 많이 즐겼어, 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "물론 나는 어젯밤에 대답할 수 없었어",
+     "ok": false,
+     "why": "do'n i ddim is the imperfect negative, not 'do' (yes). The LEGO does not appear in this line."
+    },
+    {
+     "n": 7,
+     "ko": "미안해, 하지만 나는 알고 있지 않았어",
+     "ok": false,
+     "why": "do'n i ddim is the imperfect negative, not 'do' (yes). The LEGO does not appear in this line."
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 나는 알고 있지 않았어",
+     "ok": false,
+     "why": "do'n i ddim is the imperfect negative, not 'do' (yes). The LEGO does not appear in this line."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0184L01B03",
+     "keep": true,
+     "ko": "그래, 나는 더 일찍 깼어"
+    },
+    {
+     "id": "cym_for_kor:S0184L01B01",
+     "keep": true,
+     "ko": "그래, 나는 깼어"
+    },
+    {
+     "id": "cym_for_kor:S0184L01B02",
+     "keep": true,
+     "ko": "그래, 그녀가 봤어"
+    },
+    {
+     "id": "cym_for_kor:S0184L01B04",
+     "keep": false,
+     "why": "'ond do wrth gwrs' is a stilted fragment and '하지만 그래 물론' is not natural Korean"
+    },
+    {
+     "id": "cym_for_kor:S0184L01U04",
+     "keep": true,
+     "ko": "그래, 우리는 아까 그것에 대해 이야기하고 있었어"
+    },
+    {
+     "id": "cym_for_kor:S0184L01U01",
+     "keep": true,
+     "ko": "그래, 나는 오늘 아침 더 일찍 깼어"
+    },
+    {
+     "id": "cym_for_kor:S0184L01U02",
+     "keep": true,
+     "ko": "그래, 하지만 나는 시간이 나지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0184L01U03",
+     "keep": false,
+     "why": "Good, but ranked below the three kept. The Korean also needs an explicit 너 (그래, 하지만 너는 왜 알고 싶어?)"
+    },
+    {
+     "id": "cym_for_kor:S0184L01U05",
+     "keep": false,
+     "why": "Good, but ranked below the three kept"
+    },
+    {
+     "id": "cym_for_kor:S0184L01U06",
+     "keep": false,
+     "why": "Good, but ranked below the three kept"
+    }
+   ]
+  },
+  "S0184L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 나는 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 한밤중에 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 그것들을 봤는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "물론 나는 토요일 밤에 펍에서 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 오후에 펍에서 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 어젯밤에 그것들을 봤는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "문제없어, 나는 조금 전에 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 확실해, 왜냐하면 나는 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0184L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L02B04",
+     "keep": false,
+     "why": "Good, but ranked below the one kept"
+    },
+    {
+     "id": "cym_for_kor:S0184L02B02",
+     "keep": false,
+     "why": "Good, but ranked below the one kept"
+    },
+    {
+     "id": "cym_for_kor:S0184L02B03",
+     "keep": false,
+     "why": "Good, but ranked below the one kept"
+    }
+   ]
+  },
+  "S0184L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0184L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03B03",
+     "keep": false,
+     "why": "Not needed: three stronger BUILD rows are kept, and this one is close to B01."
+    },
+    {
+     "id": "cym_for_kor:S0184L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0184L03U02",
+     "keep": true,
+     "ko": "유감이지만 나는 그 사무실에서 그것들을 못 봤어"
+    },
+    {
+     "id": "cym_for_kor:S0184L03U01",
+     "keep": false,
+     "why": "'봤어?' could be wedi gweld or the preterite, and '내 열쇠' does not mark the plural goriadau, so it has more than one Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0184L03U06",
+     "keep": false,
+     "why": "'기다릴 거야' could be mynd i or the bydda i future, so it has more than one Welsh answer. It is also over the count."
+    }
+   ]
+  },
+  "S0184L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 조금 전에 이야기했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 조금 전에 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 조금 전에 시작했지만 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "조금 전에 나는 바꾸고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 조금 전에 이야기했어, 그리고 그다음에 나는 시간이 나지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 조금 전에 그것들을 봤지만 나는 시간이 나지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 조금 전에 도움을 요청하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0184L04U02",
+     "keep": true
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:00:34.554Z"
+}

@@ -1,0 +1,140 @@
+{
+ "seed": 304,
+ "at": "2026-11-24T18:54:48.369Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0304L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 집에서 일하면서 더 많은 시간을 보내면 좋겠어",
+     "ok": false,
+     "why": "This basket teaches 'o adre' (집에서), but this line has bare 'adre' with no 'o'. The Korean 집에서 would lead the learner to 'gweithio o adre', not this Welsh, so it fails ZUT and does not practise the LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "나는 집에서 일하면서 더 많은 시간을 보내고 싶어",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. 집에서 = o adre in this course, so the prompt gives two possible Welsh answers and the LEGO is not practised."
+    },
+    {
+     "n": 3,
+     "ko": "그들은 우리가 집에서 더 많은 시간을 보내길 원해",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o', so this line does not use the basket's LEGO. The only natural Korean is 집에서, which clashes with 'o adre'."
+    },
+    {
+     "n": 4,
+     "ko": "그들은 집에서 일하면서 더 적은 시간을 보내고 싶어해",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. The 집에서 prompt clashes with 'o adre' (ZUT), and the line does not use the LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "우리 딸은 집에서 일하면서 더 적은 시간을 보내고 싶어해",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. The 집에서 prompt clashes with 'o adre' (ZUT), and the line does not use the LEGO."
+    },
+    {
+     "n": 6,
+     "ko": "그들은 그들이 집에서 일하면서 더 적은 시간을 보내고 싶다고 말해",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. The 집에서 prompt clashes with 'o adre' (ZUT), and the line does not use the LEGO."
+    },
+    {
+     "n": 7,
+     "ko": "그들은 우리가 다음 주말에 집에서 일하면서 더 많은 시간을 보내길 원해",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. The 집에서 prompt clashes with 'o adre' (ZUT), and the line does not use the LEGO."
+    },
+    {
+     "n": 8,
+     "ko": "집에서 일하면서 더 많은 시간을 보내는 것",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. The 집에서 prompt clashes with 'o adre' (ZUT), and the line does not use the LEGO."
+    },
+    {
+     "n": 9,
+     "ko": "여러분은 그들이 우리가 집에서 일하면서 더 많은 시간을 보내길 원한다고 들었어요?",
+     "ok": false,
+     "why": "Bare 'adre' with no 'o'. The 집에서 prompt clashes with 'o adre' (ZUT), and the line does not use the LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0304L04U01",
+     "keep": true,
+     "ko": "너는 집에서 일하고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0304L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0304L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0304L04U03",
+     "keep": false,
+     "why": "Fine, but nearly the seed sentence itself, and the three slots are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0304L04U04",
+     "keep": false,
+     "why": "할 거야 could also prompt a different future form (e.g. 'neith o weithio'), so it is not one answer only."
+    },
+    {
+     "id": "cym_for_kor:S0304L04U06",
+     "keep": false,
+     "why": "Grammatical, but the Korean is clunky (repeated 나는, no comma) and the slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0304L04U07",
+     "keep": false,
+     "why": "'Learning Welsh from home' is a weaker, less natural use of 'o adre' than the kept candidates."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0304L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0304L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0304L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0304L04B03",
+     "keep": false,
+     "why": "Grammatical, but 'learning Welsh from home' uses o adre less naturally than the three kept BUILD rows, and the role is full."
+    },
+    {
+     "id": "cym_for_kor:S0304L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0304L04U06",
+     "keep": true,
+     "ko": "나는 집에서 일해야 해, 왜냐하면 나한테 너무 많은 일이 있거든"
+    },
+    {
+     "id": "cym_for_kor:S0304L04U04",
+     "keep": false,
+     "why": "할 거야 could also prompt another future form (e.g. neith o weithio), so the learner has more than one possible answer."
+    },
+    {
+     "id": "cym_for_kor:S0304L04U07",
+     "keep": false,
+     "why": "Uses o adre less naturally than the kept rows, and both USE slots are already filled."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:07:44.672Z"
+}

@@ -1,0 +1,343 @@
+{
+ "seed": 499,
+ "at": "2026-11-24T19:28:13.770Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0499L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 그게 어쩌면 유용할지도 모르니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "어쩌면 우리는 나중에 만날 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "어쩌면 나는 차를 살 여유가 될 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어쩌면 나는 ~하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어쩌면 나는 이야기하고 진실을 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "어쩌면 나는 이야기하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "어쩌면 나는 너와 이야기하고 진실을 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "어쩌면 나는 쇼 끝까지 기다리는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "어쩌면 그녀는 앉아 있지 않아",
+     "ok": false,
+     "why": "Ungrammatical: it needs 'yn' before the verb-noun ('dydy hi ddim yn eistedd')."
+    },
+    {
+     "n": 10,
+     "ko": "어쩌면 지금 동의하자",
+     "ok": false,
+     "why": "'efallai' followed by an imperative 'gadewch i ni' is unnatural Welsh (it would be 'efallai dylen ni gytuno'). The Korean '어쩌면 ~하자' is unnatural too."
+    },
+    {
+     "n": 11,
+     "ko": "어쩌면 나중에 동의하자",
+     "ok": false,
+     "why": "'efallai' followed by an imperative 'gadewch i ni' is unnatural Welsh. The Korean '어쩌면 ~하자' is unnatural too."
+    },
+    {
+     "n": 12,
+     "ko": "어쩌면 네 차를 사용하는 건 특이할지도 몰라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 그게 어쩌면 직장에서 유용할지도 모른다고 믿어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "어쩌면 우리는 다른 나라로 이사하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "어쩌면 우리는 휴식을 위해 멈추는 게 좋겠어, 왜냐하면 그게 가장 아프니까",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0499L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0499L01U03",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U01 is clearer. '어쩌면 … 좋겠어' is a bit awkward, and the course's Korean wording for dylen ni is unconfirmed."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U02",
+     "keep": false,
+     "why": "'그건' could be Welsh 'o' or 'hi', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U04",
+     "keep": false,
+     "why": "'어쩌면 너 … 싶어?' is unnatural Korean. Putting efallai at the end of the question also isn't clear from the Korean."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U05",
+     "keep": false,
+     "why": "'그게' could be Welsh 'o' or 'hi'. The Korean also blurs whether cyfri' means 'matter' or 'count'."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U06",
+     "keep": false,
+     "why": "The Korean reorders words awkwardly, and '물어볼 거야' could be Welsh 'bydda i'n gofyn' or a different future form."
+    },
+    {
+     "id": "cym_for_kor:S0499L01U07",
+     "keep": false,
+     "why": "'피곤했어' doesn't show the pluperfect 'oedd … wedi blino' and could equally be 'roedden nhw wedi blino' or the simple past. '어쩌면 … 했어' also reads oddly."
+    }
+   ]
+  },
+  "S0499L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "문을 열고 다리를 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그리고 도전을 닫다",
+     "ok": false,
+     "why": "'cau her' (close a challenge) has no sensible meaning and is unnatural Welsh."
+    },
+    {
+     "n": 3,
+     "ko": "그리고 저기에 있는 다리를 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그리고 창문을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "문을 열고 창문을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리가 문을 열고 창문을 닫기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 왜 입구를 열고 창문을 닫고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리 앞에 앉고 창문을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 문을 열고 창문을 닫을 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그리고 오늘 저녁 호텔을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "지금 멈추고 입구를 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그리고 문을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "끝내고 주차장을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 앉아서 문을 닫을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그들은 거기에 멈춰서 호텔을 닫고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 오늘 저녁 멈추고 주차장을 닫고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "그들은 어젯밤 끝내고 입구를 닫고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "우리 거기에 멈추고 입구를 닫을 필요가 있어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0499L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 그 창문을 깨려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 나는 그 창문을 깰 수 없을 테니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그녀에게 입구 창문을 열어 달라고 물어볼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 창문을 열어 줄 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 왜 창문 하나를 열 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 왜 창문 하나를 열고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "여러분 함께 창문을 열고 싶어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 일주일 전에 그 창문을 깨고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "미안해, 하지만 우리는 그 창문을 깰 수는 없을 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0499L06U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0499L06U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0499L06U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0499L06U05",
+     "keep": false,
+     "why": "Sound, but the three slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0499L06U03",
+     "keep": false,
+     "why": "Sound but very short; the three slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0499L06U06",
+     "keep": false,
+     "why": "Sound, but the three slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0499L06U07",
+     "keep": false,
+     "why": "Sound, but the three slots are already filled."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:19:13.949Z"
+}

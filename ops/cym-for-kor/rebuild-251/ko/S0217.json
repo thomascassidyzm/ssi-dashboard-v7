@@ -1,0 +1,113 @@
+{
+ "seed": 217,
+ "at": "2026-11-24T18:41:34.345Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0217L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0217L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01B03",
+     "keep": false,
+     "why": "Good row, but only 3 BUILD are needed and B01, B02 and B04 are shorter build steps."
+    },
+    {
+     "id": "cym_for_kor:S0217L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01U05",
+     "keep": true,
+     "ko": "나는 피곤해 왜냐하면 나는 어젯밤에 한두 잔을 마셨거든"
+    },
+    {
+     "id": "cym_for_kor:S0217L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0217L01U07",
+     "keep": false,
+     "why": "Good row, but the 5 USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0217L01U03",
+     "keep": false,
+     "why": "The Korean reads as a run-on, and the 5 USE slots are already filled by stronger rows."
+    }
+   ]
+  },
+  "S0217L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 물 한두 잔이면 행복해",
+     "ok": true,
+     "why": "'dw i'n hapus efo' means 'I'm happy with'. Natural North Welsh."
+    },
+    {
+     "n": 2,
+     "ko": "물이 많이 없었어",
+     "ok": true,
+     "why": "Natural; 'o ddŵr' used in the same sense."
+    },
+    {
+     "n": 3,
+     "ko": "큰 잔으로 물 한 잔",
+     "ok": true,
+     "why": "Natural noun phrase."
+    },
+    {
+     "n": 4,
+     "ko": "나는 토요일 밤에 나갔고 물을 한두 잔 마셨어",
+     "ok": true,
+     "why": "Natural; it extends the seed sentence directly."
+    },
+    {
+     "n": 5,
+     "ko": "나는 친구 몇 명과 나갔고 물을 한두 잔 마셨어",
+     "ok": true,
+     "why": "Natural."
+    },
+    {
+     "n": 6,
+     "ko": "미안해 하지만 물이 많이 없었어",
+     "ok": true,
+     "why": "Natural."
+    },
+    {
+     "n": 7,
+     "ko": "그들은 큰 잔으로 물 한 잔을 원했어",
+     "ok": true,
+     "why": "Natural; 'isio' takes a noun object here, so the Korean says 원했어 because 마시고 싶어했어 would add a verb that isn't in the Welsh."
+    },
+    {
+     "n": 8,
+     "ko": "그건 놀라운 일이었어 왜냐하면 어젯밤에 물이 많이 없었거든",
+     "ok": true,
+     "why": "Natural."
+    }
+   ]
+  }
+ }
+}

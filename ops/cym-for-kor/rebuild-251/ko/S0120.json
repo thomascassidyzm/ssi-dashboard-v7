@@ -1,0 +1,77 @@
+{
+ "seed": 120,
+ "at": "2026-11-24T18:26:35.982Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0120L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "다음 버스로 집에 가다",
+     "ok": true,
+     "why": "ar y bws nesa’ contains ar y bws in the same 'by/on the bus' sense; natural North Welsh"
+    },
+    {
+     "n": 2,
+     "ko": "내가 다음 버스로 집에 갈 거면 나는 지금 끝낼 필요가 있어",
+     "ok": true,
+     "why": "natural North Welsh; ar y bws used in the taught sense"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0120L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0120L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0120L05B04",
+     "keep": false,
+     "why": "good row, but only 2 BUILD rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0120L05B02",
+     "keep": false,
+     "why": "a verbless fragment, and the learner could equally say 'efo fy ffrindiau ar y bws'"
+    },
+    {
+     "id": "cym_for_kor:S0120L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0120L05U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0120L05U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0120L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0120L05U03",
+     "keep": false,
+     "ko": "너 나와 버스로 가고 싶어?",
+     "why": "Korean fixed to a question (the Welsh is a question), but only 4 USE rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0120L05U07",
+     "keep": false,
+     "ko": "너 버스로 집에 갈 준비가 됐어?",
+     "why": "Korean fixed to a question (the Welsh is a question), but only 4 USE rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0120L05U06",
+     "keep": false,
+     "why": "the Korean has no 나는, and '~면 좋겠어' does not clearly point to liciwn i rather than other wish forms"
+    }
+   ]
+  }
+ }
+}

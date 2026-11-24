@@ -1,0 +1,237 @@
+{
+ "seed": 262,
+ "at": "2026-11-24T18:48:54.842Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0262L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "직장에 있던 사람은 누구였어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "펍에 있던 사람은 누구였어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 ~가 누구였는지 몰라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 펍에 있던 사람이 누구였는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 토요일 밤에 펍에 있던 사람이 누구였는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "어젯밤 직장에 있던 사람은 누구였어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "토요일 밤에 펍에 있던 사람은 누구였어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 직장에 있던 사람이 누구였는지 알아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 어젯밤 직장에 있던 사람이 누구였는지 몰라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0262L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0262L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L02B02",
+     "keep": true,
+     "ko": "네 형제와 같이 일하는 그 남자"
+    },
+    {
+     "id": "cym_for_kor:S0262L02B04",
+     "keep": false,
+     "why": "Only 3 BUILD rows were needed, and the other three are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0262L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L02U04",
+     "keep": true,
+     "ko": "너 그 남자를 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0262L02U05",
+     "keep": true,
+     "ko": "나는 네 형제와 같이 일하는 그 남자를 알아"
+    },
+    {
+     "id": "cym_for_kor:S0262L02U03",
+     "keep": true,
+     "ko": "나는 그 남자를 몰라"
+    },
+    {
+     "id": "cym_for_kor:S0262L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L02U02",
+     "keep": false,
+     "why": "The Welsh has no question mark but the Korean is a question, so it could be read either way. It also adds nothing over U01."
+    }
+   ]
+  },
+  "S0262L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0262L03B02",
+     "keep": true,
+     "ko": "네가 이야기하고 있었을 때"
+    },
+    {
+     "id": "cym_for_kor:S0262L03B03",
+     "keep": true,
+     "ko": "네가 나와 이야기하고 있었을 때"
+    },
+    {
+     "id": "cym_for_kor:S0262L03B01",
+     "keep": true,
+     "ko": "네가 무엇에 대해 이야기하고 있었는지"
+    },
+    {
+     "id": "cym_for_kor:S0262L03B04",
+     "keep": false,
+     "why": "Only 3 BUILD rows were needed."
+    },
+    {
+     "id": "cym_for_kor:S0262L03U01",
+     "keep": true,
+     "ko": "나는 어제 네가 무엇에 대해 이야기하고 있었는지 기억할 수 없어"
+    },
+    {
+     "id": "cym_for_kor:S0262L03U03",
+     "keep": true,
+     "ko": "나는 어젯밤 네가 내 어머니와 이야기하고 있었을 때 깼어"
+    },
+    {
+     "id": "cym_for_kor:S0262L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L03U02",
+     "keep": true,
+     "ko": "어제 네가 이야기하고 있었을 때 나는 그게 중요한 거라고 생각했어"
+    },
+    {
+     "id": "cym_for_kor:S0262L03U06",
+     "keep": true,
+     "ko": "네가 그 문제에 대해 이야기하고 있었을 때 나는 끊고 싶지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0262L03U04",
+     "keep": false,
+     "why": "'fedri di ddeud' can be a question or a statement, but the Korean is a statement. That makes it unclear which one is meant."
+    }
+   ]
+  },
+  "S0262L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 그와 상대하고 싶어한다고 생각하지 않았어",
+     "ok": true,
+     "why": "MOVED. The source meant 'deal with it', but 'delio efo fo' = 'deal with him' is just as natural, so it fits the 'with him' sense this course teaches."
+    },
+    {
+     "n": 2,
+     "ko": "오늘 그와 상대하는 거",
+     "ok": true,
+     "why": "MOVED. Natural when read as 'deal with him'."
+    },
+    {
+     "n": 3,
+     "ko": "너는 나중에 그와 상대할 수 있어",
+     "ok": true,
+     "why": "MOVED. Natural when read as 'deal with him'."
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 하지만 나는 혼자서 그와 상대하는 게 좋겠어",
+     "ok": true,
+     "why": "MOVED. Natural when read as 'deal with him'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0262L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L04U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0262L04U05",
+     "keep": false,
+     "why": "Only 4 USE rows were needed."
+    },
+    {
+     "id": "cym_for_kor:S0262L04U03",
+     "keep": false,
+     "why": "Only 4 USE rows were needed. Also, 'o' and 'fo' could be the same man or two different men."
+    },
+    {
+     "id": "cym_for_kor:S0262L04U04",
+     "keep": false,
+     "why": "The meaning is odd: 'that man has just started practising talking with him'."
+    },
+    {
+     "id": "cym_for_kor:S0262L04U06",
+     "keep": false,
+     "why": "Only 4 USE rows were needed, and the sentence is a bit contrived."
+    }
+   ]
+  }
+ }
+}

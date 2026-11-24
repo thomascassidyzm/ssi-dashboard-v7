@@ -1,0 +1,196 @@
+{
+ "seed": 555,
+ "at": "2026-11-24T19:39:40.815Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0555L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 나는 예전에 너무 많이 걱정하곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "펍에 아이디어가 너무 많이 맴돌고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 시간을 너무 많이 들이고 싶어했어",
+     "ok": false,
+     "why": "Here 'cymryd gormod' means 'take too much (stuff)', but this course taught cymryd as 시간을 들이다. The gloss-built Korean means 'take too much time', which a learner would say as 'cymryd gormod o amser'. Wrong sense and not ZUT."
+    },
+    {
+     "n": 4,
+     "ko": "나는 지난 주말에 너무 많이 하고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "지난 주말에 너무 많이",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 너무 많이 말하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "시간을 너무 많이 들이다",
+     "ok": false,
+     "why": "'cymryd gormod' means take too much (stuff), but the course taught cymryd as 시간을 들이다. The Korean would call for 'cymryd gormod o amser'."
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 시간을 너무 많이 들이고 싶어한다고 생각했어",
+     "ok": false,
+     "why": "Same problem: 'cymryd gormod' (take too much) does not match the taught sense of cymryd (시간을 들이다). The Korean points to 'cymryd gormod o amser'."
+    },
+    {
+     "n": 9,
+     "ko": "나는 금요일 밤에 너무 많이 먹으려고 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 시간을 너무 많이 들이지 않는 게 좋겠어",
+     "ok": false,
+     "why": "'well i ti beidio cymryd gormod' means you'd better not take too much (drink or food). The taught sense of cymryd (시간을 들이다) gives a different Welsh answer: 'cymryd gormod o amser'."
+    },
+    {
+     "n": 11,
+     "ko": "오늘 저녁 내 머릿속에 아이디어가 너무 많이 맴돌고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "내 머릿속에 아이디어가 너무 많이 맴돌고 있지만 나는 행복해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0555L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0555L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0555L03U01",
+     "keep": false,
+     "why": "Grammatical, but 열쇠 does not mark number, so it could be y goriad or y goriadau; basket already full with stronger picks"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U02",
+     "keep": false,
+     "why": "Fine, but the basket is already full; the past-tense row is a weaker fit than the present-tense picks"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U04",
+     "keep": false,
+     "why": "Too long and complex for a USE top-up; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U05",
+     "keep": false,
+     "why": "The embedded bod clause adds load the row doesn't need; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0555L03U07",
+     "keep": false,
+     "why": "'Not too tired to help' reads oddly; the basket is already full"
+    }
+   ]
+  },
+  "S0555L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "두 사람은 새것을 가져오러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "새것을 가져오는 건 네 차례야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 새것을 가져오러",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 새것을 가져오러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 새것을 가져오러 갔지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 지금 이 순간 새것을 가져오기가 어려워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 새것을 가져오러 가지 않았어, 왜냐하면 점점 늦어지고 있거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0555L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0555L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0555L04U06",
+     "keep": false,
+     "why": "Sound, but only two top-ups were needed and U01 and U02 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0555L04U03",
+     "keep": false,
+     "why": "Only two top-ups were needed and U01 and U02 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0555L04U04",
+     "keep": false,
+     "why": "Only two top-ups were needed and U01 and U02 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0555L04U05",
+     "keep": false,
+     "why": "Only two top-ups were needed and U01 and U02 are stronger."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:23:50.164Z"
+}

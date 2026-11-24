@@ -1,0 +1,204 @@
+{
+ "seed": 561,
+ "at": "2026-11-24T19:41:08.784Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0561L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 그게 사실인지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그게 내가 하고 싶었던 거야",
+     "ok": false,
+     "why": "No 'ydy o'n' here: 'ydy' is followed by 'beth', and \"o'n\" belongs to \"o'n i\" (I was). The phrase never uses the LEGO 'whether it is'."
+    },
+    {
+     "n": 3,
+     "ko": "~은 그들이 우리 앞에 있지 않다는 거야",
+     "ok": false,
+     "why": "\"o'n\" here is part of \"o'n blaenau ni\" (in front of us), not \"ydy o'n\" (whether it is). Wrong sense of the LEGO."
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 사실인지 확실하지 않지만 내가 그에게 물어볼게",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그가 무엇을 말하든 그건 내 거야",
+     "ok": false,
+     "why": "No 'ydy o'n' here: the line has \"mae o'n\" and 'ydy hwnnw'. The LEGO is not used."
+    },
+    {
+     "n": 6,
+     "ko": "나는 그게 어떤지 알아내고 싶었어",
+     "ok": false,
+     "why": "'sut beth ydy o' has 'ydy o' with no 'yn', meaning 'what it's like'. That is not the LEGO \"ydy o'n\" (whether it is)."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0561L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03U03",
+     "keep": false,
+     "why": "A bare 'wnest ti' statement is odd in Welsh, and the Korean reads as a question. Weaker than the two kept."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U04",
+     "keep": false,
+     "why": "Grammatical, but not needed: only 2 were wanted."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U05",
+     "keep": false,
+     "why": "Not needed; the Korean 틀린지 should also be 틀렸는지."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U06",
+     "keep": false,
+     "why": "After 'do'n i ddim yn gwybod', the past 'os oedd o'n' is more natural than 'os ydy o'n'."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U07",
+     "keep": false,
+     "why": "Very close to the seed and long; not needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0561L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03B01",
+     "keep": false,
+     "why": "Now that 'os' has been taught, 그게 쉬운지 could be answered with 'ydy o'n hawdd' or with 'os ydy o'n hawdd', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0561L03B03",
+     "keep": false,
+     "why": "It is the seed sentence with only the adjective changed, and B02 and B04 give a better spread."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L03U05",
+     "keep": true,
+     "ko": "다음번에 나는 그녀에게 그게 틀렸는지 물어볼 거야"
+    },
+    {
+     "id": "cym_for_kor:S0561L03U03",
+     "keep": false,
+     "why": "A bare 'wnest ti' statement is odd in Welsh, and the Korean reads like a question."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U06",
+     "keep": false,
+     "why": "After 'do'n i ddim yn gwybod', North Welsh normally uses 'os oedd o'n', so the present 'ydy o'n' is unnatural here."
+    },
+    {
+     "id": "cym_for_kor:S0561L03U07",
+     "keep": false,
+     "why": "It is long and almost repeats the seed."
+    }
+   ]
+  },
+  "S0561L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 빠른 차 소리를 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "길에 있는 빠른 차",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 길에서 빠른 차를 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어젯밤의 빠른 차",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 어젯밤 빠른 차 소리를 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 길에서 빠른 차를 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 무서워 왜냐하면 나는 어젯밤 빠른 차 소리를 들었거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0561L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0561L04U03",
+     "keep": false,
+     "why": "Good, but not needed: only 2 were wanted."
+    },
+    {
+     "id": "cym_for_kor:S0561L04U04",
+     "keep": false,
+     "why": "Not needed."
+    },
+    {
+     "id": "cym_for_kor:S0561L04U05",
+     "keep": false,
+     "why": "Not needed."
+    },
+    {
+     "id": "cym_for_kor:S0561L04U06",
+     "keep": false,
+     "why": "The Korean 찾았어 can be read as 'found', but chwilio means 'searched'. Not needed anyway."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:24:48.655Z"
+}

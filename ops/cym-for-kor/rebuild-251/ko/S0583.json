@@ -1,0 +1,130 @@
+{
+ "seed": 583,
+ "at": "2026-11-24T19:44:44.327Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0583L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0583L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01B02",
+     "keep": false,
+     "why": "Correct Welsh, but the three BUILD slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0583L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L01U01",
+     "keep": true,
+     "ko": "나는 그게 어떤 곳인지 상관없어"
+    },
+    {
+     "id": "cym_for_kor:S0583L01U02",
+     "keep": false,
+     "why": "Good, but the five USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0583L01U04",
+     "keep": false,
+     "why": "A direct question followed by 'achos dw i isio symud' is clumsy Welsh, and the Korean is unnatural."
+    }
+   ]
+  },
+  "S0583L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "세계의 이 지역에서 자라다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 이 순간 세계의 이 지역에서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "세계의 이 지역에서 살 곳이 아무 데도 ~",
+     "ok": true,
+     "why": "Natural fragment: nunlla i fyw ('anywhere/nowhere to live') still reads idiomatically with this LEGO in the same sense."
+    },
+    {
+     "n": 4,
+     "ko": "왜 네 가족은 세계의 이 지역에서 살아?",
+     "ok": true,
+     "why": "Natural question that uses the LEGO in its taught sense."
+    },
+    {
+     "n": 5,
+     "ko": "나는 예전에 세계의 이 지역에서 혼자서 살곤 했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0583L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L02U04",
+     "keep": true,
+     "ko": "우리가 이사하기 전에 나는 예전에 세계의 이 지역에서 살곤 했어"
+    },
+    {
+     "id": "cym_for_kor:S0583L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0583L02U07",
+     "keep": false,
+     "why": "Good, but the three USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0583L02U01",
+     "keep": false,
+     "why": "'Sut beth ydy byw' is less idiomatic than the usual North Welsh phrasing, and it competes with the seed's 'sut le'."
+    },
+    {
+     "id": "cym_for_kor:S0583L02U05",
+     "keep": false,
+     "why": "Word order is clumsy: the place phrase sits between the object and 'yn hwyr yn y nos', so the sentence reads oddly."
+    },
+    {
+     "id": "cym_for_kor:S0583L02U06",
+     "keep": false,
+     "why": "Stilted sentence, and 'gwyliau' (holiday or holidays) leaves the Korean prompt open to more than one reading."
+    }
+   ]
+  }
+ }
+}

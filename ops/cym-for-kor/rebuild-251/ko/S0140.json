@@ -1,0 +1,75 @@
+{
+ "seed": 140,
+ "at": "2026-11-24T18:30:04.855Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0140L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 볼 수 없어서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 그 사람들을 볼 수 없어서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 네 차를 볼 수 없어서 미안해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 한밤중에 볼 수 없는 건 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내가 오늘 저녁 그 사람들을 볼 수 없어서 미안해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 하지만 네가 무엇을 하고 있었는지 내가 볼 수 없어서 미안해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 이 단어를 볼 수 없어서 미안해",
+     "ok": true,
+     "why": "Moved original is natural North Welsh and uses the LEGO in this seed's sense (sorry that I can't see X)."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0140L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0140L02B01",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed and B02 is a better fit because it reuses gweld from this seed."
+    },
+    {
+     "id": "cym_for_kor:S0140L02B03",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0140L02B04",
+     "keep": false,
+     "why": "Sound, but only 1 BUILD is needed."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,328 @@
+{
+ "seed": 302,
+ "at": "2026-11-24T18:55:18.947Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0302L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그가 ~ㄹ 수 없을 거라고 말했어",
+     "ok": true,
+     "why": "Natural open fragment: 'na fyddai fo'n medru' means 'that he wouldn't be able to'."
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 자기가 맞다고 말했어",
+     "ok": true,
+     "why": "'bod hi'n iawn' here means 'she was right', not the 아주 sense. 자기가 keeps it from reading as 'it's fine'."
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 이 책을 읽고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 멈추고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 이야기하고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 너와 이야기하고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 ~고 싶다고 말했어",
+     "ok": true,
+     "why": "Open BUILD fragment."
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 어젯밤 나와 이야기하고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 이야기하는 것을 멈추고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그녀는 오늘 그게 좋은 일이라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그녀는 내가 그걸 하는 걸 도와주기에는 너무 바쁘다고 말했어",
+     "ok": true,
+     "why": "Colloquial 'helpu fi wneud o' is acceptable North Welsh."
+    },
+    {
+     "n": 12,
+     "ko": "그녀는 내 형을 알고 지낸다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그녀는 그게 자기가 맞다는 뜻일 수는 없을 거라고 말했어",
+     "ok": true,
+     "why": "'fo' read as 'it'. Grammatical and makes sense."
+    },
+    {
+     "n": 14,
+     "ko": "그녀는 내가 오늘 거의 준비가 됐다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "미안해, 하지만 그녀는 그가 돈을 찾아낼 수 없을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0302L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀가 지난 토요일에 나가고 싶어했다는 걸 몰랐어",
+     "ok": false,
+     "why": "The Welsh has the positive 'bod hi isio', not the LEGO 'bod hi ddim isio', so it never uses this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "나는 그녀가 그 영화를 보고 싶어했다는 걸 몰랐어",
+     "ok": false,
+     "why": "The Welsh has the positive 'bod hi isio', not 'bod hi ddim isio', so it doesn't use this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0302L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02B02",
+     "keep": false,
+     "why": "Good row, but the 1-BUILD limit is reached. Best spare if o1/o2 are dropped."
+    },
+    {
+     "id": "cym_for_kor:S0302L02B03",
+     "keep": false,
+     "why": "Good row, but the 1-BUILD limit is reached. Second spare."
+    },
+    {
+     "id": "cym_for_kor:S0302L02B04",
+     "keep": false,
+     "why": "BUILD limit reached."
+    },
+    {
+     "id": "cym_for_kor:S0302L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02U03",
+     "keep": true,
+     "ko": "나는 그녀가 내 아버지를 기다리고 싶지 않다고 생각했어"
+    },
+    {
+     "id": "cym_for_kor:S0302L02U02",
+     "keep": true,
+     "ko": "너는 그녀가 우리와 같이 오고 싶지 않다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0302L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02U06",
+     "keep": false,
+     "why": "USE limit reached. Its 보다 = gwylio also clashes with 보다 = gweld in U04."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0302L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0302L02B04",
+     "keep": false,
+     "why": "The Welsh and Korean are both sound, but B02 and B03 already fill the two BUILD slots."
+    }
+   ]
+  },
+  "S0302L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 살고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 살고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "~ 사는 건 좋았어",
+     "ok": true,
+     "why": "Subjectless 'oedd yn braf' is a little formal but acceptable as an open fragment."
+    },
+    {
+     "n": 4,
+     "ko": "나는 예전에 ~에 살았었어",
+     "ok": true,
+     "why": "Open fragment."
+    },
+    {
+     "n": 5,
+     "ko": "네가 ~ 살 거라는 데 동의하자",
+     "ok": true,
+     "why": "Grammatical open fragment. 'gadewch i ni' is the fixed 'let's'."
+    },
+    {
+     "n": 6,
+     "ko": "우리는 그냥 살 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 예전에 저기에 살았었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "이렇게 살다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 혼자서 살려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그는 그렇게 살고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 이렇게 살고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 왜 우리와 살고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "서로 함께 사는 게 더 나을 거야",
+     "ok": true,
+     "why": "Natural Welsh: 'efo'i gilydd' means 'together' (them)."
+    },
+    {
+     "n": 14,
+     "ko": "나는 세상의 이 지역에서 살고 싶지 않아",
+     "ok": true,
+     "why": "Idiomatic, and byw is used in the sense the course taught."
+    }
+   ]
+  },
+  "S0302L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 도시에서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "도시에서 일하는 누군가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내년에 도시에서 살다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "도시에서 살다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "도시에서 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 도시에서 살고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 도시에서 살고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 하지만 나는 도시에서 살고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 도시에서 일하는 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:07:32.823Z"
+}

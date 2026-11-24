@@ -1,0 +1,161 @@
+{
+ "seed": 266,
+ "at": "2026-11-24T18:48:53.249Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0266L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그거 꽤 빨리 하는 게 좋았어",
+     "ok": false,
+     "why": "This Welsh does not contain the LEGO. Here o'n is the object 'it' (o) plus adverbial yn ('gwneud o'n eitha' cyflym'), not 'oedd o'n' meaning 'he was'. It is the wrong sense for this basket."
+    },
+    {
+     "n": 2,
+     "ko": "그가 왜 조용했는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 어젯밤 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "응, 그는 직장에서 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 이야기하고 싶다고 느꼈지만 그는 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그녀가 무엇을 하고 있었는지 알아내고 싶었어",
+     "ok": false,
+     "why": "It does not contain 'oedd o'n' (he was). It only has 'oedd hi'n' and 'o'n i', so it does not practise this LEGO."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그게 왜 놀라운 일이었는지 듣고 싶었어",
+     "ok": false,
+     "why": "It does not contain 'oedd o'n' (he was). It only has 'oedd hynna'n' and 'o'n i', so it does not practise this LEGO."
+    },
+    {
+     "n": 8,
+     "ko": "그건 완전 쓰레기였어, 그래서 나는 멈추고 싶었어",
+     "ok": false,
+     "why": "It does not contain 'oedd o'n' (he was). It only has 'oedd hynna'n' and 'o'n i', so it does not practise this LEGO."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0266L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01B01",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 is the better fit and mirrors the LEGO more cleanly."
+    },
+    {
+     "id": "cym_for_kor:S0266L01B03",
+     "keep": false,
+     "why": "This seed glosses 'hen' as 오랜, so '나이 든' changes the gloss wording, and 'old man' could be cued in more than one way."
+    },
+    {
+     "id": "cym_for_kor:S0266L01B04",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 was chosen first."
+    },
+    {
+     "id": "cym_for_kor:S0266L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L01U02",
+     "keep": false,
+     "why": "The Korean is a question but the Welsh is a statement, so it breaks question vs statement; U01, U03 and U04 already fill the 3 USE slots."
+    },
+    {
+     "id": "cym_for_kor:S0266L01U05",
+     "keep": false,
+     "why": "'나와 있을 때' is an unnatural rendering of 'efo fi' and makes the prompt unclear; the USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0266L01U06",
+     "keep": false,
+     "why": "'He was working today' after an apology is semantically odd; the stronger candidates fill the USE slots."
+    }
+   ]
+  },
+  "S0266L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0266L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02B04",
+     "keep": false,
+     "why": "It is fine, but only 3 BUILD rows are needed and the three kept are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0266L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0266L02U02",
+     "keep": false,
+     "why": "'봤어?' could be answered with either 'wnest ti weld' or 'wyt ti wedi gweld', so it has two answers. Also, the 5 USE slots are already full."
+    },
+    {
+     "id": "cym_for_kor:S0266L02U04",
+     "keep": false,
+     "why": "Only 5 USE rows are needed, and '만나기를 원해' reads stiffly next to the kept rows."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:04:40.544Z"
+}

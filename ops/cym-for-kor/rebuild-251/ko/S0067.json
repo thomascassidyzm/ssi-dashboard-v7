@@ -1,0 +1,88 @@
+{
+ "seed": 67,
+ "at": "2026-11-24T18:17:57.896Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0067L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 다른 무언가를 말하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 무언가를 말하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 웨일스어로 이야기하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 언제 배우고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 무엇을 배우고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 언제 시작하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 친구 몇 명과 밖에 나가고 싶어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0067L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0067L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0067L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0067L02U03",
+     "keep": false,
+     "why": "Sound, but the three slots are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0067L02U05",
+     "keep": false,
+     "why": "Sound, but the three slots are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0067L02U06",
+     "keep": false,
+     "why": "'웨일스어로' could be 'yn Gymraeg' or 'yn y Gymraeg', so the prompt has two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0067L02U07",
+     "keep": false,
+     "why": "'cyfarfod fy ffrindiau' has no 'â' after the verb, which is shaky; better ones are kept anyway."
+    }
+   ]
+  }
+ }
+}

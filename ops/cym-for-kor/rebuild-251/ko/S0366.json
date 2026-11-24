@@ -1,0 +1,272 @@
+{
+ "seed": 366,
+ "at": "2026-11-24T19:04:28.404Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0366L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 그가 말한 것을 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 다른 무엇이라도 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그래서 너 네 아버지한테서 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 누구를 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 금요일 밤에 누구를 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 어젯밤에 누구를 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 그녀가 무엇을 말하고 있었는지 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 그가 저기에 있었다는 걸 들었어?",
+     "ok": true,
+     "why": "Natural North Welsh. glywest ti fod... is the reported-hearing sense, which this LEGO teaches."
+    },
+    {
+     "n": 9,
+     "ko": "너 그녀가 괜찮다는 거 들었어?",
+     "ok": true,
+     "why": "Natural Welsh (iawn here means 'all right', not 'very'). glywest ti is used in the taught sense."
+    }
+   ]
+  },
+  "S0366L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 내가 네가 말한 것을 말하기를 원했어",
+     "ok": false,
+     "why": "The LEGO is not in this sentence. oedd o isio i mi + be' ddudest ti never form 'be' oedd o isio' (what he wanted)."
+    },
+    {
+     "n": 2,
+     "ko": "그는 그녀가 어젯밤에 무엇을 하고 있었는지 알아내고 싶어하지 않았어",
+     "ok": false,
+     "why": "The LEGO is not in this sentence. It has be' oedd hi'n gwneud, not be' oedd o isio."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0366L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02B01",
+     "keep": false,
+     "why": "BUILD count is already filled. The candidate is fine, but B04 already practises prynu."
+    },
+    {
+     "id": "cym_for_kor:S0366L02B03",
+     "keep": false,
+     "why": "BUILD count is already filled. This is a weaker fragment."
+    },
+    {
+     "id": "cym_for_kor:S0366L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02U02",
+     "keep": true,
+     "ko": "너 나에게 그가 무엇을 보고 싶어했는지 말해 줄 수 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0366L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02U04",
+     "keep": false,
+     "why": "USE count is already filled. eleni could attach to either verb, so this one is weaker."
+    },
+    {
+     "id": "cym_for_kor:S0366L02U06",
+     "keep": false,
+     "why": "USE count is already filled."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0366L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02B03",
+     "keep": false,
+     "why": "Weaker fragment, and the one BUILD slot goes to B01."
+    },
+    {
+     "id": "cym_for_kor:S0366L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L02U04",
+     "keep": false,
+     "why": "It is unclear which verb eleni goes with, and the one USE slot goes to U06."
+    }
+   ]
+  },
+  "S0366L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 다 자랐어",
+     "ok": false,
+     "why": "Wrong sense. This course taught tyfu as 기르다 (to grow or raise something); tyfu i fyny means 'grow up', which 기르다 cannot express."
+    },
+    {
+     "n": 2,
+     "ko": "우리 딸은 다 자랐어",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' is not the 기르다 sense this course taught."
+    },
+    {
+     "n": 3,
+     "ko": "우리 아들은 지금 다 자랐어",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' is not the 기르다 sense this course taught."
+    },
+    {
+     "n": 4,
+     "ko": "다 자라다",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' conflicts with the gloss 기르다, and the Korean cannot be built from that gloss."
+    },
+    {
+     "n": 5,
+     "ko": "올해 많이 기르다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 기르고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 기르고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그건 자라지 않아",
+     "ok": false,
+     "why": "Here tyfu means 'grow' with no object (the thing itself grows), not the 기르다 sense taught. 기르다 cannot render it."
+    },
+    {
+     "n": 9,
+     "ko": "그들은 다 자라고 싶어해",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' is not the 기르다 sense this course taught."
+    },
+    {
+     "n": 10,
+     "ko": "그들은 아주 빨리 자라",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' is not the 기르다 sense this course taught."
+    },
+    {
+     "n": 11,
+     "ko": "그들은 빨리 자라",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' is not the 기르다 sense this course taught."
+    },
+    {
+     "n": 12,
+     "ko": "나는 다 자라고 싶지 않아",
+     "ok": false,
+     "why": "Wrong sense. 'Grow up' conflicts with the gloss 기르다, and the Korean cannot be built from that gloss."
+    },
+    {
+     "n": 13,
+     "ko": "나는 올해 많이 기르려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그들은 그룹으로서 성장하고 싶어해",
+     "ok": false,
+     "why": "Here tyfu means 'grow (as a group)' with no object, not the 기르다 sense. 기르다 cannot render it."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0366L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0366L03U01",
+     "keep": false,
+     "ko": "너 무언가를 기르고 싶어?",
+     "why": "Good once ko is marked as a question (wyt ti isio is a question), but all four USE slots are filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0366L03U06",
+     "keep": false,
+     "why": "Fine, but all four USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0366L03U07",
+     "keep": false,
+     "why": "After a negative, natural Welsh says dim byd newydd, not rhywbeth newydd. Also the Welsh has bod hi ddim where fod hi ddim would be more natural."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:10:29.228Z"
+}

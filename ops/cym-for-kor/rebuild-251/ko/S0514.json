@@ -1,0 +1,249 @@
+{
+ "seed": 514,
+ "at": "2026-11-24T19:31:59.193Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0514L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0514L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01B02",
+     "keep": false,
+     "why": "Korean 열쇠 does not show number, so the learner could say goriad or goriadau; the three other BUILD candidates are cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0514L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L01U02",
+     "keep": false,
+     "why": "The Korean 찾아냈고 ... 닫았어 also allows 'a wnes i gau'r ffenest' as well as 'a chau'r ffenest', so it has two answers."
+    }
+   ]
+  },
+  "S0514L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 아침 일찍 완벽한 집 하나를 찾아냈어",
+     "ok": true,
+     "why": "하나 marks the indefinite noun, so the learner does not say ffeindio'r. The Welsh is natural."
+    },
+    {
+     "n": 2,
+     "ko": "나는 완벽한 집 하나를 찾아냈어",
+     "ok": true,
+     "why": "하나 tells this apart from 'ffeindio'r tŷ perffaith'."
+    },
+    {
+     "n": 3,
+     "ko": "나는 이 지역에서 완벽한 집 하나를 찾아냈어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "완벽한 집의 열쇠를 받고 있는",
+     "ok": true,
+     "why": "'goriadau tŷ perffaith' is a correct genitive, and cael is used in its 'get' sense."
+    },
+    {
+     "n": 5,
+     "ko": "나는 그들의 완벽한 집을 아직 못 봤어",
+     "ok": true,
+     "why": "eu does not mutate tŷ. 'dw i heb weld' is natural."
+    },
+    {
+     "n": 6,
+     "ko": "나는 완벽한 집 하나를 찾아내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "호텔 가까이에 있는 완벽한 집 하나",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "완벽한 집은 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "완벽한 집을 얻는",
+     "ok": false,
+     "why": "cael means get, not own. The source meaning 'having a perfect house' does not fit 'yn cael tŷ perffaith' on its own, so the sense is unclear."
+    },
+    {
+     "n": 10,
+     "ko": "그들의 완벽한 집",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 완벽한 집을 원하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그들은 작년에 완벽한 집 하나를 찾아내고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그 지역에는 완벽한 집이 없어",
+     "ok": true,
+     "why": "그 is used, not 이, because 이 지역에 is fixed to 'yn yr ardal hon'."
+    },
+    {
+     "n": 14,
+     "ko": "너 사무실 가까이에 있는 완벽한 집 하나를 찾아냈어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그들은 아직 젊을 때 완벽한 집 하나를 찾아내고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0514L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 첫날에 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "이탈리아에서의 첫날에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 첫날에 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 첫날에 안 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 첫날에 아무도 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 첫날에 어딘가에 갔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 첫날에 괜찮을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 첫날에 떠났어",
+     "ok": true,
+     "why": "The Welsh is natural and adael has the right soft mutation after wnaethon nhw."
+    },
+    {
+     "n": 9,
+     "ko": "나는 첫날에 가게를 찾을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0514L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0514L03U02",
+     "keep": false,
+     "why": "Only one USE slot is needed and U01 is a cleaner fit; this one is fine but not kept."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U03",
+     "keep": false,
+     "why": "Not needed; U01 is a better fit."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U04",
+     "keep": false,
+     "why": "Not needed; 정말 for reit is loose, so the Korean is less exact than U01."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U05",
+     "keep": false,
+     "why": "Not needed; 'not intending to lose on the first day' is an odd thing to say."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U06",
+     "keep": false,
+     "why": "Korean 왜냐하면…피곤했어 is clunky, and it is unclear whether the answer should use wedi blino or oedd wedi blino."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U07",
+     "keep": false,
+     "why": "The Korean reorders the clauses and doesn't mark bu bron iddi or achos iddi clearly; too heavy for this slot."
+    },
+    {
+     "id": "cym_for_kor:S0514L03U08",
+     "keep": false,
+     "why": "Not needed; U01 is a better fit."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:20:14.032Z"
+}

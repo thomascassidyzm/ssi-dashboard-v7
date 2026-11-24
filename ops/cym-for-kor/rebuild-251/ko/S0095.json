@@ -1,0 +1,211 @@
+{
+ "seed": 95,
+ "at": "2026-11-24T18:22:28.119Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0095L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 오늘 저녁 나갈 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 갈 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 노력할 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 지금 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 준비가 됐다고 느껴?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0095L01U05",
+     "keep": true,
+     "ko": "너 나랑 이야기할 준비가 됐어?"
+    },
+    {
+     "id": "cym_for_kor:S0095L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0095L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0095L01U01",
+     "keep": false,
+     "why": "Sound, but nearly the same as originals o2 and o4, and the 3 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0095L01U04",
+     "keep": false,
+     "why": "Sound, but nearly the same as original o1, and the 3 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0095L01U02",
+     "keep": false,
+     "why": "Sound, but the 3 USE slots are already filled"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0095L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0095L01U01",
+     "keep": false,
+     "why": "Sound, but it nearly duplicates originals o2 and o4. U02 adds more variety and fills the one USE slot."
+    },
+    {
+     "id": "cym_for_kor:S0095L01U04",
+     "keep": false,
+     "why": "Sound, but it nearly duplicates original o1, and the one USE slot already went to U02."
+    }
+   ]
+  },
+  "S0095L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "집에서 일하는 것에 대해 너 기분이 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 집에서 일하지 않도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 오후에 집에 가다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 저녁에 집에 가다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 집에 가면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 곧 집에 갈 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 집에 가지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 어젯밤에 집에 가려고 하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 집에 가면 좋겠어, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "정말 고마워, 하지만 나는 집에 가면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 집에 갈 거야, 네가 원하면",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0095L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 다음 버스로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 다음 버스로 집에 갈 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 다음 버스로 집에 가면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 다음 버스로 집에 가지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 저녁 다음 버스로 집에 갈 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 다음 버스로 집에 가면 좋겠어, 정말 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 다음 버스로 집에 갈 건지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 다음 버스로 집에 가려고 하고 있었어, 하지만 그것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:34:33.650Z"
+}

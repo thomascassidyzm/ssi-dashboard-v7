@@ -1,0 +1,74 @@
+{
+ "seed": 3,
+ "at": "2026-11-24T18:05:16.235Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0003L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "배우는 방법",
+     "ok": true,
+     "why": "Natural North Welsh 'sut i + VN (mutated)'; same 'how to' sense as taught"
+    },
+    {
+     "n": 2,
+     "ko": "웨일스어로 이야기하는 방법",
+     "ok": true,
+     "why": "Natural and idiomatic; uses sut i in the taught 'how to' sense"
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0003L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0003L01U02",
+     "keep": false,
+     "why": "Grammatical, but only one USE row was needed and U01 is the cleaner, more central sentence."
+    },
+    {
+     "id": "cym_for_kor:S0003L01U03",
+     "keep": false,
+     "why": "'dysgu sut i ddysgu' (learn how to learn) is awkward and less natural; the one slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0003L01U04",
+     "keep": false,
+     "why": "Fine, but longer than needed; the one slot is already filled by U01."
+    },
+    {
+     "id": "cym_for_kor:S0003L01U05",
+     "keep": false,
+     "why": "Long and heavy for seed 3; the one slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0003L01U06",
+     "keep": false,
+     "why": "'learn how to learn Welsh now' is awkward and less natural; the one slot is already filled."
+    }
+   ]
+  },
+  "S0003L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "가능한 한 자주 이야기하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 가능한 한 자주 웨일스어로 이야기하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T18:28:40.654Z"
+}

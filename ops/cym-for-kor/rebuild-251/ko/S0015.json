@@ -1,0 +1,168 @@
+{
+ "seed": 15,
+ "at": "2026-11-24T18:08:02.047Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0015L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그리고 나는 지금 웨일스어로 이야기하려고 노력할 거야",
+     "ok": true,
+     "why": "Natural Welsh. 'a' is used as plain 'and', the same sense as in the seed."
+    },
+    {
+     "n": 2,
+     "ko": "그리고 나는 웨일스어를 배우려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural Welsh. 'a' is used as plain 'and', the same sense as in the seed."
+    },
+    {
+     "n": 3,
+     "ko": "그리고 나는 지금 무언가를 말하고 싶어",
+     "ok": true,
+     "why": "Natural Welsh. 'deud' is given as 말하다 so it stays separate from siarad = 이야기하다."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0015L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L01U05",
+     "keep": true,
+     "ko": "나는 웨일스어로 조금 이야기해 그리고 나는 배우려고 노력하고 있어"
+    },
+    {
+     "id": "cym_for_kor:S0015L01U03",
+     "keep": true,
+     "ko": "너는 웨일스어로 아주 잘 이야기해 그리고 나는 너와 이야기하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0015L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L01U02",
+     "keep": false,
+     "why": "'dw i ddim yn siŵr a fyddwn i ddim yn dyfalu' is muddled Welsh, and the Korean does not match it."
+    },
+    {
+     "id": "cym_for_kor:S0015L01U07",
+     "keep": false,
+     "why": "Count already filled, and 'siarad yn y Gymraeg' is less natural than 'siarad Cymraeg'."
+    }
+   ]
+  },
+  "S0015L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0015L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L02B02",
+     "keep": false,
+     "why": "BUILD count already filled."
+    },
+    {
+     "id": "cym_for_kor:S0015L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L02U04",
+     "keep": true,
+     "ko": "나는 네가 지금 웨일스어로 조금 이야기하기를 원해"
+    },
+    {
+     "id": "cym_for_kor:S0015L02U06",
+     "keep": true,
+     "ko": "나는 네가 웨일스어로 아주 잘 이야기하기를 원해"
+    },
+    {
+     "id": "cym_for_kor:S0015L02U02",
+     "keep": false,
+     "why": "The Korean can also be read as 'I'm not sure if you want…', so it has two possible Welsh answers. Fixing the Korean would make it unnatural."
+    }
+   ]
+  },
+  "S0015L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0015L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L04B04",
+     "keep": false,
+     "why": "BUILD count already filled. It is also the weakest fragment."
+    },
+    {
+     "id": "cym_for_kor:S0015L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L04U01",
+     "keep": true,
+     "ko": "너 나와 웨일스어로 이야기해?"
+    },
+    {
+     "id": "cym_for_kor:S0015L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0015L04U02",
+     "keep": true,
+     "ko": "너는 하루 종일 나와 웨일스어로 이야기해"
+    },
+    {
+     "id": "cym_for_kor:S0015L04U05",
+     "keep": true,
+     "ko": "네가 내일 나와 웨일스어로 이야기하는지 나는 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0015L04U03",
+     "keep": false,
+     "why": "'siarad Cymraeg yn dda iawn efo fi' is semantically odd: 'you speak Welsh very well with me'."
+    },
+    {
+     "id": "cym_for_kor:S0015L04U06",
+     "keep": false,
+     "why": "The present-tense question 'wyt ti'n siarad' does not fit with 'ar ôl i ti orffen'. It reads as unnatural."
+    }
+   ]
+  }
+ }
+}

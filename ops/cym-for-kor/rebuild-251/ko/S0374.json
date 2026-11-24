@@ -1,0 +1,61 @@
+{
+ "seed": 374,
+ "at": "2026-11-24T19:04:53.228Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "cym_for_kor:S0374L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0374L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03B03",
+     "keep": false,
+     "why": "Sound, but not needed: only 3 BUILD rows are wanted and B01, B02 and B04 fill them."
+    },
+    {
+     "id": "cym_for_kor:S0374L03U01",
+     "keep": true,
+     "ko": "너는 그게 아름답다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0374L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0374L03U06",
+     "keep": false,
+     "why": "Sound, but not needed: 5 USE rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0374L03U07",
+     "keep": false,
+     "why": "Not needed, as 5 USE rows are already kept. Its Korean would also need fixing: the seed renders 'do' as 응, not 그래."
+    }
+   ]
+  }
+ }
+}

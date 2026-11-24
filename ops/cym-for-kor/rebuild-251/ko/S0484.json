@@ -1,0 +1,215 @@
+{
+ "seed": 484,
+ "at": "2026-11-24T19:23:45.485Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0484L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "유감이지만 그건 사실이 아니야",
+     "ok": false,
+     "why": "Wrong LEGO sense: here 'fod o' is the 'that it' complement after 'mae arna i ofn'. It does not contain 'mae o i fod yn' (supposed to be), so it doesn't practise this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "유감이지만 그건 문제였어",
+     "ok": false,
+     "why": "Wrong LEGO sense: 'fod o wedi bod' is a 'that' complement. 'mae o i fod yn' (supposed to be) is not in the sentence."
+    },
+    {
+     "n": 3,
+     "ko": "유감이지만 그건 나빴어",
+     "ok": false,
+     "why": "Wrong LEGO sense: 'fod o' is a 'that' complement. The sentence doesn't contain 'mae o i fod yn'."
+    },
+    {
+     "n": 4,
+     "ko": "그가 약해지고 있다고 믿을 이유가 많이 있어",
+     "ok": false,
+     "why": "Wrong LEGO sense: 'fod o'n' is a 'that he is' complement. The sentence doesn't contain 'mae o i fod yn'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0484L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01B03",
+     "keep": false,
+     "why": "Grammatical, but only 2 BUILD top-ups are needed and B01 and B02 are the cleaner frames."
+    },
+    {
+     "id": "cym_for_kor:S0484L01B04",
+     "keep": false,
+     "why": "Grammatical, but only 2 BUILD top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0484L01U01",
+     "keep": true,
+     "ko": "그건 원래 쉬운 거야, 하지만 그건 쉽지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0484L01U04",
+     "keep": true,
+     "ko": "우리는 그 문제를 논의할 필요가 있어, 왜냐하면 그건 원래 아주 중요한 거니까"
+    },
+    {
+     "id": "cym_for_kor:S0484L01U02",
+     "keep": false,
+     "why": "Usable, but weaker: 'supposed to be free but I don't want it' is an odd pairing. U01 and U04 are better."
+    },
+    {
+     "id": "cym_for_kor:S0484L01U03",
+     "keep": false,
+     "why": "Usable, but U01 and U04 are better; only 2 USE top-ups are needed."
+    },
+    {
+     "id": "cym_for_kor:S0484L01U05",
+     "keep": false,
+     "why": "Welsh has 'ydy y ffeithiau' where it should be ''r ffeithiau', and the Korean '사실이야' (is true) doesn't match 'the facts'."
+    },
+    {
+     "id": "cym_for_kor:S0484L01U06",
+     "keep": false,
+     "why": "Grammatical, but only 2 USE top-ups are needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0484L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed, and B04 is the cleaner frame."
+    },
+    {
+     "id": "cym_for_kor:S0484L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0484L01U05",
+     "keep": false,
+     "why": "The Welsh 'ydy y ffeithiau' is ungrammatical (it should be ''r ffeithiau'), and 사실이야 ('is true') doesn't match 'the facts'."
+    }
+   ]
+  },
+  "S0484L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 도전을 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 쉬운 도전을 하고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 도전을 찾아낼 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "인생은 도전이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀가 나와 이야기한 후로 인생은 도전이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "오늘 저녁엔 도전 같은 건 아무것도 없을 거야",
+     "ok": false,
+     "why": "'fyddai dim byd fel her heno' (nothing would be like a challenge tonight) doesn't make clear sense and isn't natural Welsh as a standalone line."
+    },
+    {
+     "n": 7,
+     "ko": "그는 도전을 사랑해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "자선 단체를 위한 도전",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리에게 남은 유일한 도전",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그들은 자선 단체를 위한 도전을 하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그건 도전처럼 느껴지지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너 도전을 하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그는 도전을 하고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그들은 도전이 필요 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "우리 도전이 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 피곤하지만 그건 도전처럼 느껴지지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:18:17.699Z"
+}

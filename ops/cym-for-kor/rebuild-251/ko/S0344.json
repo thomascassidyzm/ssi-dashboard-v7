@@ -1,0 +1,66 @@
+{
+ "seed": 344,
+ "at": "2026-11-24T19:00:39.696Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0344L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0344L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0344L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0344L02B04",
+     "keep": true,
+     "ko": "너는 그가 기꺼이 절반을 낼 거라고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0344L02B03",
+     "keep": false,
+     "ko": "나는 그가 기꺼이 기다릴 거라고 확신해",
+     "why": "Not needed: three BUILD rows are already kept. The Korean has been fixed in case it is wanted later."
+    },
+    {
+     "id": "cym_for_kor:S0344L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0344L02U02",
+     "keep": true,
+     "ko": "나는 그가 기꺼이 너와 일할 거라고 생각하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0344L02U05",
+     "keep": true,
+     "ko": "너는 그가 기꺼이 다른 나라로 이사할 거라고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0344L02U04",
+     "keep": true,
+     "ko": "나는 그가 기꺼이 웨일스어로 이야기할 거라고 확신해"
+    },
+    {
+     "id": "cym_for_kor:S0344L02U07",
+     "keep": true,
+     "ko": "나는 그가 다음 달 기꺼이 우리와 함께 올 거라고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0344L02U03",
+     "keep": false,
+     "why": "Not needed: five USE rows are already kept. It is also long, and in Korean 그가 before a relative clause about 누군가 reads awkwardly."
+    },
+    {
+     "id": "cym_for_kor:S0344L02U06",
+     "keep": false,
+     "why": "The Korean 그는 그가 … 말했어 is unnatural, but natural Korean (그는 자기가 … or dropping 그가) no longer mirrors fod o one-to-one."
+    }
+   ]
+  }
+ }
+}

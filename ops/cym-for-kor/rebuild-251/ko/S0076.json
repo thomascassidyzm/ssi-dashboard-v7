@@ -1,0 +1,189 @@
+{
+ "seed": 76,
+ "at": "2026-11-24T18:19:38.098Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0076L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 이미 한 것에 아주 만족해",
+     "ok": true,
+     "why": "Natural North Welsh. It uses hapus iawn efo in the sense taught: happy with what I've done."
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 한 것에 아주 만족해",
+     "ok": true,
+     "why": "Natural, and the sense is right."
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 배운 것에 아주 만족해",
+     "ok": true,
+     "why": "Natural, and the sense is right."
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 어떻게 했는지에 아주 만족해",
+     "ok": true,
+     "why": "Idiomatic: happy with how I've done."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0076L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0076L01U04",
+     "keep": true,
+     "ko": "나는 내가 그것에 아주 만족하는지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0076L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0076L01U06",
+     "keep": true,
+     "ko": "나는 모든 것에 아주 만족하지만 나는 더 배우고 싶었어"
+    },
+    {
+     "id": "cym_for_kor:S0076L01U02",
+     "keep": false,
+     "why": "Not needed. Four stronger candidates already fill the slots, and here the referent of hynna is vague."
+    },
+    {
+     "id": "cym_for_kor:S0076L01U05",
+     "keep": false,
+     "why": "Not needed. Four stronger candidates already fill the slots."
+    }
+   ]
+  },
+  "S0076L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 이미 얼마나 많이 배웠는지에 만족해",
+     "ok": true,
+     "why": "Natural. faint is used in the taught sense, how much."
+    },
+    {
+     "n": 2,
+     "ko": "내가 얼마나 많이 배웠는지",
+     "ok": true,
+     "why": "Natural fragment for building up the phrase."
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 얼마나 많이 했는지에 대해 아주 기분이 좋아",
+     "ok": true,
+     "why": "Natural: teimlo'n dda iawn am faint."
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 얼마나 많이 배웠는지에 충분히 만족해",
+     "ok": true,
+     "why": "ddigon hapus is idiomatic."
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 얼마나 많이 말할 수 있는지에 아주 만족해",
+     "ok": true,
+     "why": "Natural, and faint is used correctly."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 이미 얼마나 많이 배웠는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 이미 얼마나 많이 배웠는지 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "네가 얼마나 많이 배웠는지 내가 물어봐도 돼?",
+     "ok": true,
+     "why": "Natural: ga i ofyn faint."
+    },
+    {
+     "n": 9,
+     "ko": "너 네가 얼마나 많이 배웠는지 나한테 말해 줄 수 있어?",
+     "ok": true,
+     "why": "Natural North Welsh."
+    }
+   ]
+  },
+  "S0076L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 오늘 이미 얼마나 많이 배웠는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 이미 얼마나 많이 배웠는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 오늘 이미 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워 하지만 나는 이미 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 이미 얼마나 많이 배웠는지 보여주고 싶었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0076L03U04",
+     "keep": true,
+     "ko": "나는 이미 배웠지만 내가 기억할 수 있는지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0076L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0076L03U06",
+     "keep": true,
+     "ko": "나는 웨일스어를 배우고 싶었고 나는 이미 배웠어"
+    },
+    {
+     "id": "cym_for_kor:S0076L03U02",
+     "keep": false,
+     "why": "Awkward word order: yn barod sits before efo fy ffrindiau."
+    },
+    {
+     "id": "cym_for_kor:S0076L03U03",
+     "keep": false,
+     "why": "Bare statement 'ti isio' can be heard as a question; the other candidates are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0076L03U05",
+     "keep": false,
+     "why": "The two clauses don't connect logically, so the sentence reads oddly."
+    }
+   ]
+  }
+ }
+}

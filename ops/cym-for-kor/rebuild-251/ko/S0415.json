@@ -1,0 +1,135 @@
+{
+ "seed": 415,
+ "at": "2026-11-24T19:11:07.649Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0415L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "물론 그건 전혀 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그건 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 오늘 저녁에는 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "상관없어 왜냐하면 그건 다음 주에는 문제가 되지 않을 거니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "물론 그건 토요일 밤에는 문제가 되지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그건 목요일 전에 문제가 되지 않을 거라고 너 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "네가 오늘 저녁 음식을 만들지 않으면 그건 문제가 되지 않을 거야",
+     "ok": true,
+     "why": "Natural Welsh: 'os na wnei di fwyd heno' takes the correct soft mutation on the object, and 'fyddai hynna ddim yn' keeps the sense taught at this seed."
+    },
+    {
+     "n": 8,
+     "ko": "네가 목요일 전에 끝낼 수 있었다면 그건 문제가 되지 않을 거야",
+     "ok": true,
+     "why": "Pairing 'fyddai' with the future-perfect 'os byddi di wedi medru' is colloquial but natural North Welsh, and the LEGO keeps the sense it was taught in."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0415L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0415L01B02",
+     "keep": false,
+     "why": "Grammatical and natural, but only 1 BUILD was needed and B01 is the closer, cleaner fit."
+    },
+    {
+     "id": "cym_for_kor:S0415L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD was needed. Also, 아니 is a weak match for 'na' here, and some learners might say 'na, fyddai…' while others leave out the interjection."
+    },
+    {
+     "id": "cym_for_kor:S0415L01B04",
+     "keep": false,
+     "why": "Only 1 BUILD was needed. B01 is better."
+    }
+   ]
+  },
+  "S0415L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0415L03B01",
+     "keep": true,
+     "ko": "네가 오늘 저녁 나에게 물어본다면"
+    },
+    {
+     "id": "cym_for_kor:S0415L03B04",
+     "keep": true,
+     "ko": "네가 나에게 물어본다면 내가 너를 도울게"
+    },
+    {
+     "id": "cym_for_kor:S0415L03B02",
+     "keep": true,
+     "ko": "네가 이따가 나에게 물어본다면"
+    },
+    {
+     "id": "cym_for_kor:S0415L03B03",
+     "keep": false,
+     "why": "Sound, but the 3 BUILD places are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0415L03U01",
+     "keep": true,
+     "ko": "네가 나에게 물어본다면 그건 문제가 되지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0415L03U02",
+     "keep": true,
+     "ko": "네가 오늘 저녁 나에게 물어본다면 내가 너를 도울게"
+    },
+    {
+     "id": "cym_for_kor:S0415L03U05",
+     "keep": true,
+     "ko": "네가 나에게 물어본다면 괜찮을 거라고 나는 확신해"
+    },
+    {
+     "id": "cym_for_kor:S0415L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0415L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0415L03U04",
+     "keep": false,
+     "why": "'좋을 거야' could be 'byddai'n braf' or 'byddai'n dda', so the Korean has two possible Welsh answers."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:13:19.536Z"
+}

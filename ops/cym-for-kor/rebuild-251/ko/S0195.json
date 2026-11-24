@@ -1,0 +1,193 @@
+{
+ "seed": 195,
+ "at": "2026-11-24T18:37:47.232Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0195L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 돈을 찾아내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 돈을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 지금 돈을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 오늘 돈을 찾아낼 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "고맙지만 괜찮아, 나는 돈을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 저녁 돈을 찾아내야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "응, 그는 돈을 찾아낼 수 없었어",
+     "ok": true,
+     "why": "Natural North Welsh. It uses ffeindio'r pres in the sense this course taught."
+    },
+    {
+     "n": 8,
+     "ko": "나는 돈을 찾아내려고 노력하고 있었어, 하지만 나는 아무도 못 봤어",
+     "ok": true,
+     "why": "Grammatical and idiomatic. It uses ffeindio'r pres in the sense this course taught."
+    }
+   ],
+   "topups": []
+  },
+  "S0195L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0195L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03B02",
+     "keep": false,
+     "why": "Sound, but only 3 BUILD rows are needed and the other three are more natural."
+    },
+    {
+     "id": "cym_for_kor:S0195L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L03U04",
+     "keep": false,
+     "why": "It is odd to ask someone else to tell you what you left yourself, and only 5 USE rows are needed."
+    }
+   ]
+  },
+  "S0195L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "탁자 위에 아니면 그녀의 가방에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "탁자 위에서 돈을 찾아내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 탁자 위에 있는 그의 편지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 탁자 위에서 돈을 찾아내고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 조금 전에 탁자 위에서 그것들을 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 그의 편지를 탁자 위에 놓고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "유감이지만 나는 탁자 위에서 그것들을 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 그것들을 탁자 위에 두고 왔다고 믿어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0195L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0195L04U01",
+     "keep": false,
+     "why": "봤어 could be either 'welaist ti' or 'wyt ti wedi gweld', so the prompt has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U03",
+     "keep": false,
+     "why": "Good, but only 1 USE is needed and U02 is the stronger choice"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U04",
+     "keep": false,
+     "why": "Good, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U05",
+     "keep": false,
+     "why": "Good, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0195L04U06",
+     "keep": false,
+     "why": "The Korean order 사무실에서 탁자 위에 also allows 'yn y swyddfa ar y bwrdd', and 'yn y swyddfa' qualifies the table rather than where the seeing happened"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:00:47.403Z"
+}

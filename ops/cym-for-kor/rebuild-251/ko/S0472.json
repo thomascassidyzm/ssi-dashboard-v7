@@ -1,0 +1,151 @@
+{
+ "seed": 472,
+ "at": "2026-11-24T19:21:05.562Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0472L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 우리가 이미 ~지 않는다는 뜻은 아니야",
+     "ok": false,
+     "why": "In 'nad ydan ni ddim yn barod', 'yn barod' can only be read as 'ready' ('that doesn't mean we're not ready'). To mean 'already' (the taught sense), it would have to follow a verb-noun, as in 'nad ydan ni ddim yn gwybod yn barod'. So the line uses the LEGO in a different sense, and as an open-ended 'already' fragment it is malformed."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0472L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L02B02",
+     "keep": true,
+     "ko": "우리가 웨일스어로 이야기하지 않는다는 것"
+    },
+    {
+     "id": "cym_for_kor:S0472L02B01",
+     "keep": false,
+     "why": "Only 2 BUILD needed; B04 and B02 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0472L02B03",
+     "keep": false,
+     "why": "Only 2 BUILD needed; this is a full clause better suited to USE."
+    },
+    {
+     "id": "cym_for_kor:S0472L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L02U04",
+     "keep": true,
+     "ko": "나는 그들에게 우리가 웨일스어로 이야기하지 않는다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0472L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L02U01",
+     "keep": true,
+     "ko": "너는 우리가 여행하지 않는다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0472L02U06",
+     "keep": false,
+     "why": "Weakest of the six; 'dringo yno' / '거기에 올라가다' is an odd pairing, and only 5 are needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0472L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L02B03",
+     "keep": false,
+     "why": "Only one BUILD slot is left and B01 is the better fragment for it; B03 is a full clause with a reporting verb on top, so it suits USE better than BUILD."
+    }
+   ]
+  },
+  "S0472L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 사실을 몰라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 사실을 설명할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 우리가 이야기하기 전에 사실을 몰랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "사실을 제안하다",
+     "ok": false,
+     "why": "'cynnig' here means 'offer (the facts)', but the course taught it as 제안하다 'propose/suggest'. That is the wrong sense, and '사실을 제안하다' is not natural Korean."
+    },
+    {
+     "n": 5,
+     "ko": "사실들 중 어느 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 사실의 일부를 설명하고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0472L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0472L04U05",
+     "keep": false,
+     "why": "Only 4 needed; the others are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0472L04U04",
+     "keep": false,
+     "why": "Only 4 needed; long reported-speech line, lower priority."
+    },
+    {
+     "id": "cym_for_kor:S0472L04U07",
+     "keep": false,
+     "why": "The Korean leaves out the subject of 'dan ni angen'. Adding 우리는 next to 우리가 makes it read awkwardly, and only 4 are needed."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:17:07.218Z"
+}

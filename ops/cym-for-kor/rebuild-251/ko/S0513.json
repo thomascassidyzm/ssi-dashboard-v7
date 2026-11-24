@@ -1,0 +1,248 @@
+{
+ "seed": 513,
+ "at": "2026-11-24T19:31:42.606Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0513L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "식사 후에 가장 아파",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "가장 아파",
+     "ok": true,
+     "why": "mwyaf is just the full spelling of mwya'. The sense is the same, so it fits here."
+    },
+    {
+     "n": 3,
+     "ko": "내가 열쇠를 옮길 때 가장 아파",
+     "ok": false,
+     "why": "It is odd for moving keys to cause the worst pain. Also, symud is glossed 이사하다 (move house), which gives the wrong sense with keys."
+    },
+    {
+     "n": 4,
+     "ko": "내가 생각할 때 가장 아파",
+     "ok": true,
+     "why": "This is natural North Welsh and uses the LEGO in its taught sense."
+    },
+    {
+     "n": 5,
+     "ko": "내가 움직일 때 가장 아파",
+     "ok": true,
+     "why": "This is natural North Welsh. Here symud means bodily movement, the sense this seed teaches with 움직이다."
+    },
+    {
+     "n": 6,
+     "ko": "~할 때 가장 아파",
+     "ok": true,
+     "why": "This is a valid open-ended BUILD row."
+    },
+    {
+     "n": 7,
+     "ko": "지금 가장 아파",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "왜냐하면 오늘 저녁에 가장 아프거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "하지만 가장 아파",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "반대쪽이 가장 아파",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "하지만 오늘 오후에 가장 아파",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 걸어가고 싶지 않아 왜냐하면 지금 가장 아프거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "식사 후에 가장 아프지만 나는 괜찮을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 앉고 싶었어 왜냐하면 지금 가장 아프거든",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0513L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 머리를 움직일 때 가장 아파",
+     "ok": true,
+     "why": "This is natural North Welsh and uses the LEGO in its taught sense."
+    },
+    {
+     "n": 2,
+     "ko": "머리를 위아래로 움직이다",
+     "ok": true,
+     "why": "This is a natural verbnoun phrase. The sense is right."
+    },
+    {
+     "n": 3,
+     "ko": "나는 머리를 위아래로 움직이고 있어",
+     "ok": true,
+     "why": "This is natural North Welsh."
+    },
+    {
+     "n": 4,
+     "ko": "머리를 위아래로 움직이는 건 아파",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 머리를 위아래로 움직일 수 없을 텐데",
+     "ok": true,
+     "why": "The conditional 'fyswn i ddim yn medru' is natural North Welsh. 텐데 marks it as conditional rather than future."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0513L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0513L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0513L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0513L04U02",
+     "keep": false,
+     "why": "Grammatical, but all three slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0513L04U04",
+     "keep": false,
+     "why": "Grammatical, but all three slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0513L04U06",
+     "keep": false,
+     "why": "It drops the 'y' before bydda, and all three slots are already filled."
+    }
+   ]
+  },
+  "S0513L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 머리를 위아래로 움직일 때",
+     "ok": true,
+     "why": "This is natural North Welsh and uses the LEGO in its taught sense."
+    },
+    {
+     "n": 2,
+     "ko": "내가 머리를 위아래로 움직일 때 아파",
+     "ok": true,
+     "why": "This is natural North Welsh and uses the LEGO in its taught sense."
+    },
+    {
+     "n": 3,
+     "ko": "위아래로 움직이다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 머리를 위아래로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "지금 위아래로 걸어가다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 들판을 위아래로 걸어가고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 저녁에 위아래로 걸어가고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "내가 열쇠를 가져오는 동안 그녀는 위아래로 움직일 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 예전에 그 지역에서 위아래로 걸어가곤 했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0513L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0513L05U03",
+     "keep": false,
+     "why": "Only one slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0513L05U01",
+     "keep": false,
+     "why": "Only one slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0513L05U02",
+     "keep": false,
+     "why": "It almost repeats original o9."
+    },
+    {
+     "id": "cym_for_kor:S0513L05U05",
+     "keep": false,
+     "why": "Only one slot was needed."
+    },
+    {
+     "id": "cym_for_kor:S0513L05U06",
+     "keep": false,
+     "why": "Only one slot was needed. Its Korean is also ambiguous between 'he said he wants' and 'he said he wanted'."
+    }
+   ]
+  }
+ }
+}

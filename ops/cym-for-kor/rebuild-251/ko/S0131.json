@@ -1,0 +1,245 @@
+{
+ "seed": 131,
+ "at": "2026-11-24T18:28:51.846Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0131L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "단어가 너무 많이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 단어가 너무 많이 있거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 친구들이 너무 많이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그 장소 때문에 일이 너무 많아",
+     "ok": false,
+     "why": "Welsh 'mae gen i ormod o waith' does not contain the LEGO 'mae ’na ormod o', so it is not a USE of this LEGO. A Korean prompt built on the gloss 'too many ~ there are' would also pull the learner toward 'mae ’na ormod o waith' (two possible answers)."
+    },
+    {
+     "n": 5,
+     "ko": "나는 모든 것을 기억할 수 없어 왜냐하면 단어가 너무 많이 있거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 느긋하게 쉬면 좋겠지만 펍에 친구들이 너무 많이 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0131L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L01U02",
+     "keep": false,
+     "why": "Good, but the 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U03",
+     "keep": false,
+     "why": "The 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U05",
+     "keep": false,
+     "why": "The Korean reads awkwardly, and the 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U06",
+     "keep": false,
+     "why": "The 2 USE slots are already filled."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0131L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L01U03",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U02 is the better phrase."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U05",
+     "keep": false,
+     "why": "The Korean word order is awkward, and the one open slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L01U06",
+     "keep": false,
+     "why": "Only one USE slot is needed, and U02 is the better phrase."
+    }
+   ]
+  },
+  "S0131L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 맴도는 아이디어들",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 아이디어가 맴도는 것을 즐겨",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 맴도는 너무 많은 아이디어들",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "맴도는 아이디어가 너무 많이 있지만 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 펍에서 아이디어가 맴도는 것을 즐겨",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "한밤중에 맴도는 아이디어가 너무 많이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "맴도는 아이디어가 너무 많이 있고 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정말 고마워 하지만 오늘은 맴도는 아이디어가 너무 많이 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0131L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 혼자 배워 왔어",
+     "ok": false,
+     "why": "'ar fy mhen fy hun' means 'on my own', an idiom that does not contain the LEGO 'yn fy mhen' ('in my head'), so it is the wrong sense for this basket."
+    },
+    {
+     "n": 2,
+     "ko": "정말 고마워 하지만 나는 혼자 끝내고 싶었어",
+     "ok": false,
+     "why": "Same problem: 'ar fy mhen fy hun' ('on my own') is not the LEGO 'yn fy mhen' ('in my head')."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0131L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03B03",
+     "keep": false,
+     "why": "The 2 BUILD slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L03B04",
+     "keep": false,
+     "why": "The 2 BUILD slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03U02",
+     "keep": true,
+     "ko": "내 머릿속에서는 나는 웨일스어로 아주 잘 이야기해"
+    },
+    {
+     "id": "cym_for_kor:S0131L03U04",
+     "keep": false,
+     "why": "'the story in my head' is a weaker phrase, and the 4 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U05",
+     "keep": false,
+     "why": "'아직' could be heard as 'eto' rather than 'hyd yn hyn', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U06",
+     "keep": false,
+     "why": "The Korean '내 머릿속에 무언가가 있어' could also be 'mae ’na rywbeth', so it does not lock 'mae gen i'. It also reads oddly."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0131L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03B04",
+     "keep": false,
+     "why": "'내 머릿속에 좋은 아이디어가 있어' could equally be 'mae ’na syniad da yn fy mhen', so it does not lock 'mae gen i'."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0131L03U05",
+     "keep": false,
+     "why": "'아직' could be either 'eto' or 'hyd yn hyn', so the prompt has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0131L03U06",
+     "keep": false,
+     "why": "'내 머릿속에 무언가가 있어' could be either 'mae ’na rywbeth' or 'mae gen i rywbeth', and the reason clause reads oddly."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:58:15.884Z"
+}

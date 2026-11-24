@@ -1,0 +1,72 @@
+{
+ "seed": 2,
+ "at": "2026-11-24T18:05:22.579Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0002L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어로 이야기하려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural North Welsh. It uses the 'dw i'n trio' + verb-noun sense this LEGO teaches."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0002L01U01",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0002L01U02",
+     "keep": false,
+     "why": "In '나는 지금 …' the learner could put rŵan at the front or the end of the Welsh, so there are two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0002L01U03",
+     "keep": false,
+     "why": "Only one top-up is needed, and this has the same rŵan placement problem."
+    },
+    {
+     "id": "cym_for_kor:S0002L01U04",
+     "keep": false,
+     "why": "Only one top-up is needed. It is long and uses rŵan both ways."
+    },
+    {
+     "id": "cym_for_kor:S0002L01U05",
+     "keep": false,
+     "why": "Only one top-up is needed. It mirrors U02, so 지금 is ambiguous across the pair."
+    },
+    {
+     "id": "cym_for_kor:S0002L01U06",
+     "keep": false,
+     "why": "Only one top-up is needed. It is long, and rŵan could go at the front or the end."
+    }
+   ]
+  },
+  "S0002L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 배우려고 노력하고 있어",
+     "ok": true,
+     "why": "The seed sentence itself. Natural, and dysgu is used in the sense this course taught."
+    },
+    {
+     "n": 2,
+     "ko": "웨일스어를 배우다",
+     "ok": true,
+     "why": "Natural verb-noun phrase. It keeps the sense 'to learn' (not 'to teach')."
+    },
+    {
+     "n": 3,
+     "ko": "나는 지금 웨일스어를 배우려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural North Welsh. It uses dysgu in the 'learn' sense, which fits here."
+    }
+   ]
+  }
+ }
+}

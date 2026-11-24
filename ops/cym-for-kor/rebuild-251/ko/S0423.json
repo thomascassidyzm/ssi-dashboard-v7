@@ -1,0 +1,127 @@
+{
+ "seed": 423,
+ "at": "2026-11-24T19:12:09.703Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0423L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0423L01B01",
+     "keep": true,
+     "ko": "그들은 먹을 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01B02",
+     "keep": true,
+     "ko": "그들은 멈출 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01B03",
+     "keep": true,
+     "ko": "그들은 오늘 저녁 자리를 예약할 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01B04",
+     "keep": false,
+     "ko": "하지만 그들은 머지않아 준비할 필요가 있어?",
+     "why": "sound, but the three BUILD slots are already filled by simpler rows"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U01",
+     "keep": true,
+     "ko": "그들은 오늘 저녁 네 명 자리를 예약할 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U04",
+     "keep": true,
+     "ko": "그들은 다음 모퉁이에서 왼쪽으로 돌 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U05",
+     "keep": true,
+     "ko": "그들은 이따가 무언가를 먹을 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U02",
+     "keep": true,
+     "ko": "나는 그들이 무언가를 먹을 필요가 있는지 몰라"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U03",
+     "keep": true,
+     "ko": "하지만 그들은 계속 조용히 있을 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U06",
+     "keep": false,
+     "why": "sound, but the five USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0423L01U07",
+     "keep": false,
+     "why": "sound, but the five USE slots are already filled"
+    }
+   ]
+  },
+  "S0423L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그렇게 뻔한 질문에 대답하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "웨일스어로 된 그렇게 뻔한 질문",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "일 분 전에 그렇게 뻔한 질문",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그렇게 뻔한 질문을 물어봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 그렇게 뻔한 질문에 대답할 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 그렇게 뻔한 질문에 대답할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "맞아, 나는 어젯밤 그렇게 뻔한 질문을 물어봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 목요일 전에 그렇게 뻔한 질문에 대답할 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 왜 일 분 전에 그렇게 뻔한 질문을 물어봤어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

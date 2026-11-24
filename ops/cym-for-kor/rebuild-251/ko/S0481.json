@@ -1,0 +1,149 @@
+{
+ "seed": 481,
+ "at": "2026-11-24T19:23:07.620Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0481L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0481L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01B04",
+     "keep": false,
+     "why": "BUILD count already met by stronger, simpler candidates"
+    },
+    {
+     "id": "cym_for_kor:S0481L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0481L01U06",
+     "keep": false,
+     "why": "USE count already met; 'ond dw i ddim isio fo' after 'only hope' reads awkwardly"
+    }
+   ]
+  },
+  "S0481L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "주말 전에 우리에게 남은 일",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "~은 그들이 우리에게 남은 게 뭔지 모른다는 거야",
+     "ok": true,
+     "why": "Grammatical fragment continuing 'y broblem ydy...'; sydd ar ôl i ni used in the same sense"
+    },
+    {
+     "n": 3,
+     "ko": "~은 그것들이 우리에게 남은 모든 것이 아니라는 거야",
+     "ok": false,
+     "why": "Ungrammatical: a predicate noun after bod needs yn + soft mutation ('nad ydyn nhw ddim yn bopeth'); bare 'ddim popeth' is wrong"
+    },
+    {
+     "n": 4,
+     "ko": "그건 우리에게 남은 모든 것이 아니야",
+     "ok": false,
+     "why": "Ungrammatical: 'dydy o ddim popeth' is missing predicative yn ('dydy o ddim yn bopeth')"
+    },
+    {
+     "n": 5,
+     "ko": "그건 우리에게 남은 모든 것이 아니야",
+     "ok": false,
+     "why": "Same missing predicative yn as o4 ('dydy hi ddim yn bopeth'), and it would also give the same Korean as o4"
+    },
+    {
+     "n": 6,
+     "ko": "우리에게 남은 건 어느 거야?",
+     "ok": true,
+     "why": "Natural North Welsh question; same sense of the LEGO"
+    },
+    {
+     "n": 7,
+     "ko": "우리에게 남은 모든 것을 팔다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "지금 우리에게 남은",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리에게 남은 모든 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "우리에게 남은 유일한 진짜 희망",
+     "ok": true,
+     "why": "Natural noun phrase that is the seed's own material; same sense"
+    },
+    {
+     "n": 11,
+     "ko": "그들은 우리에게 남은 모든 것을 팔고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 우리에게 남은 모든 것을 잃고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 목요일 전에 우리에게 남은 일을 끝내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그들은 지금 우리에게 남은 모든 것을 팔고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그들은 우리에게 남은 유일한 진짜 희망을 죽이고 싶어하지 않았어",
+     "ok": true,
+     "why": "'lladd gobaith' is idiomatic Welsh; same sense of the LEGO"
+    }
+   ]
+  }
+ }
+}

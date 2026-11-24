@@ -1,0 +1,91 @@
+{
+ "seed": 627,
+ "at": "2026-11-24T19:51:27.925Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0627L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그래서 네 커피가 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 네 커피가 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 네 커피가 준비됐거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "하지만 지금 네 커피가 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 피곤하지만 네 커피가 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "점점 늦어지고 있지만 지금 네 커피가 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "지금 네 커피가 준비됐어 그래서 나는 누울 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 목마르지 않지만 네 커피가 준비됐어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0627L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0627L01U05",
+     "keep": false,
+     "why": "only 1 USE needed; U04 is more natural"
+    },
+    {
+     "id": "cym_for_kor:S0627L01U03",
+     "keep": false,
+     "why": "near-duplicate of original o6 with clauses reversed"
+    },
+    {
+     "id": "cym_for_kor:S0627L01U02",
+     "keep": false,
+     "why": "two clauses joined with no conjunction; the Korean doesn't show that the second is a question"
+    },
+    {
+     "id": "cym_for_kor:S0627L01U01",
+     "keep": false,
+     "why": "'na … rŵan hyn' reads oddly here and 지금 당장 clashes with the 지금 = rŵan gloss"
+    },
+    {
+     "id": "cym_for_kor:S0627L01U06",
+     "keep": false,
+     "why": "the leading 'na' makes the meaning odd; only 1 needed"
+    }
+   ]
+  }
+ }
+}

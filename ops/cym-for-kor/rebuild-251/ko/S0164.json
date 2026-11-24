@@ -1,0 +1,133 @@
+{
+ "seed": 164,
+ "at": "2026-11-24T18:34:01.844Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0164L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 나중에 나에게 그 책을 줘도 돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 너에게 네가 그 책에 대해 무엇을 생각했는지 물어봐도 될까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 그 책에 대해 무엇을 생각했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 이 책을 얼마나 많이 읽고 싶어 하는지 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 차라리 그 책을 읽을래",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 그 책을 가지고 무엇을 할 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 어젯밤에 그 책을 읽었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 그 책에 대해 무엇을 생각했어?",
+     "ok": false,
+     "why": "The Korean would be identical to o3's, but the Welsh differs (beth here, be' in o3). That breaks ZUT. o3 keeps the taught be' form, so drop this one."
+    },
+    {
+     "n": 9,
+     "ko": "나는 이 책을 보여주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 책을 주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "오늘 저녁에 책을 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너 오늘 이 책을 읽고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 이 책을 읽고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 다음 책을 읽으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "너는 이 책을 즐겼어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "너는 그 책을 읽었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "너는 이 책을 즐겼어?",
+     "ok": false,
+     "why": "This is o15 again but without the elision (fwynhau y instead of fwynhau'r). The Korean would be the same with two possible Welsh answers, and the unelided form is less natural spoken North Welsh."
+    },
+    {
+     "n": 18,
+     "ko": "나는 토요일 밤에 책을 주기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "우리는 오늘 저녁에 책을 줘야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "나는 오늘 책을 줄 수 없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

@@ -1,0 +1,154 @@
+{
+ "seed": 396,
+ "at": "2026-11-24T19:07:56.298Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0396L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 서 있는 사람을 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "입구 가까이에 서 있는 사람",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 입구 가까이에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 일어서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너무 가까이 서 있는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "지금 그는 정원에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "왜냐하면 그는 서 있으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그는 저기에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그는 여기에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "서 있는 누구든지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그는 다음 모퉁이에 서 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 그가 어디에 서 있는지 기억할 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 저기에 서 있는 사람을 만나기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 다음 모퉁이에 서 있는 그 남자아이를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 너무 가까이 서 있는 그 사람을 알아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0396L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0396L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04B02",
+     "keep": false,
+     "why": "Only 3 BUILD rows were needed, and this bare 'bod ... i adael' clause is the weakest of the four."
+    },
+    {
+     "id": "cym_for_kor:S0396L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0396L04U02",
+     "keep": false,
+     "why": "It is fine, but the 5 USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0396L04U04",
+     "keep": false,
+     "why": "It is fine, but the 5 USE slots are already filled; it also repeats B02's 'i adael' frame."
+    }
+   ]
+  }
+ }
+}

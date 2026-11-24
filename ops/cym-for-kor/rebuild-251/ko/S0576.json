@@ -1,0 +1,138 @@
+{
+ "seed": 576,
+ "at": "2026-11-24T19:43:28.843Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0576L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 호텔 가까이에서 아팠어",
+     "ok": false,
+     "why": "Here 'mae o' means 'he' (he's been sick). This course teaches the LEGO as 'it has been' (그건 ~했어), so it is used in the wrong sense, and the Korean cannot use the 그건 gloss."
+    },
+    {
+     "n": 2,
+     "ko": "그는 한동안 아팠어",
+     "ok": false,
+     "why": "'mae o wedi bod yn sâl' means 'he's been sick'. The LEGO was taught as 'it has been' (그건), so this is the wrong sense."
+    },
+    {
+     "n": 3,
+     "ko": "그는 둘째 날 이후로 아팠어",
+     "ok": false,
+     "why": "'mae o' here means 'he', not 'it' as the LEGO was taught (그건 ~했어). Wrong sense."
+    },
+    {
+     "n": 4,
+     "ko": "유감이지만 나는 그게 미쳤었다고 생각했을 거야",
+     "ok": false,
+     "why": "The phrase does not contain 'mae o wedi bod yn'. It uses the dependent form 'fod o wedi bod yn', which is a different LEGO (그게 ~였다고), so it doesn't practise this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "그건 긴 시간처럼 느껴지지 않아 왜냐하면 그동안 멋졌거든",
+     "ok": false,
+     "why": "The phrase does not contain 'mae o wedi bod yn'. It has 'mae hi wedi bod yn' (a different LEGO, 그동안 ~였어) and 'dydy o ddim yn'."
+    },
+    {
+     "n": 6,
+     "ko": "그동안 멋졌어 하지만 그건 새해처럼 느껴지지 않아",
+     "ok": false,
+     "why": "The phrase does not contain 'mae o wedi bod yn'. Its 'mae hi wedi bod yn' is a different LEGO."
+    },
+    {
+     "n": 7,
+     "ko": "그동안 멋졌어 하지만 너 지금 이 순간 기분이 어때?",
+     "ok": false,
+     "why": "The phrase does not contain 'mae o wedi bod yn'. Its 'mae hi wedi bod yn' is a different LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0576L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01U06",
+     "keep": false,
+     "why": "Good row, but the quota of 1 USE is already filled. Keep it as the next backup if refused originals open more slots."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U07",
+     "keep": false,
+     "why": "Good row, but the quota of 1 USE is already filled. Keep it as a backup."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U03",
+     "keep": false,
+     "why": "Good row, but the quota of 1 USE is already filled. Keep it as a backup."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U02",
+     "keep": false,
+     "why": "Good row, but the quota of 1 USE is already filled. Keep it as a backup."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U05",
+     "keep": false,
+     "why": "Good row, but the quota of 1 USE is already filled. Keep it as a backup."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U04",
+     "keep": false,
+     "why": "Too close to the seed sentence itself: it only adds 'ond'. Lowest priority."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0576L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01B04",
+     "keep": false,
+     "why": "A good row, but it is almost the same as B03 and the BUILD quota of 3 is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01U02",
+     "keep": true,
+     "ko": "나는 피곤해 왜냐하면 그건 도전이었거든"
+    },
+    {
+     "id": "cym_for_kor:S0576L01U03",
+     "keep": true,
+     "ko": "네 도움 없이 그건 도전이었어"
+    },
+    {
+     "id": "cym_for_kor:S0576L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0576L01U05",
+     "keep": false,
+     "why": "A good row, but the USE quota of 4 is already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0576L01U04",
+     "keep": false,
+     "why": "Too close to the seed sentence: it only adds 'ond'."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:25:36.866Z"
+}

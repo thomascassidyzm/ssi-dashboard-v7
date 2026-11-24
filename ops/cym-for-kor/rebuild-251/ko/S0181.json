@@ -1,0 +1,201 @@
+{
+ "seed": 181,
+ "at": "2026-11-24T18:36:01.787Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0181L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네 차를 가져가야 해",
+     "ok": true,
+     "why": "Korean does not accept 차를 데려가다. 데려가다 is only used for people and animals, so for a car the gloss verb becomes 가져가다. The learner holds no other Welsh for 'take', so the answer is still unique."
+    },
+    {
+     "n": 2,
+     "ko": "하지만 나는 친구를 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "정말 고마워 하지만 나는 일요일 아침에 네 차를 가져가야 해",
+     "ok": true,
+     "why": "Uses 가져가다 for the car, as in o1."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0181L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0181L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0181L02U02",
+     "keep": true,
+     "ko": "나는 거기에 있을 수 없을 거야 왜냐하면 나는 내 친구를 식당에 데려가야 하거든"
+    },
+    {
+     "id": "cym_for_kor:S0181L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0181L02U03",
+     "keep": true,
+     "ko": "갈 시간이야 왜냐하면 나는 내 친구들을 집에 데려가야 하거든"
+    },
+    {
+     "id": "cym_for_kor:S0181L02B01",
+     "keep": false,
+     "why": "Grammatical, but only 1 BUILD top-up was needed and B03 is a better fit."
+    },
+    {
+     "id": "cym_for_kor:S0181L02B02",
+     "keep": false,
+     "why": "Grammatical, but only 1 BUILD top-up was needed."
+    },
+    {
+     "id": "cym_for_kor:S0181L02B04",
+     "keep": false,
+     "why": "Grammatical, but only 1 BUILD top-up was needed."
+    },
+    {
+     "id": "cym_for_kor:S0181L02U05",
+     "keep": false,
+     "why": "Grammatical, but the 4 USE top-ups were already filled."
+    },
+    {
+     "id": "cym_for_kor:S0181L02U06",
+     "keep": false,
+     "why": "Grammatical, but the 4 USE top-ups were already filled."
+    }
+   ]
+  },
+  "S0181L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내 어머니는 ~를 좋아하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네 어머니는 내 어머니를 좋아하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 어머니를 기다리지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 어머니에게 보내는 편지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내 어머니 같은 누군가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내 어머니는 이야기하는 것을 좋아하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내 어머니에게 묻지 말아야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내 어머니에게 물으려고 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내 어머니 같은 누군가를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 예전에 내 어머니에게 보내는 편지를 쓰곤 했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0181L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 의사에게",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "다음 주에 내 어머니를 의사에게",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 어머니를 의사에게",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 누군가를 의사에게 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "하지만 나는 내일 오후에 내 어머니를 의사에게 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "고맙지만 괜찮아 나는 오늘 저녁 내 어머니를 의사에게 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워 하지만 나는 다음 주에 내 어머니를 의사에게 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해 하지만 나는 내 어머니를 의사에게 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내 어머니를 의사에게 데려가야 해 그래서 나는 오늘 저녁 만날 수 없을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

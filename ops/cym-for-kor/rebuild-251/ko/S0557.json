@@ -1,0 +1,360 @@
+{
+ "seed": 557,
+ "at": "2026-11-24T19:40:02.533Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0557L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 멈췄으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "어쩌면 나는 이사했으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 나는 휴식을 위해 멈췄으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "하지만 나는 도망쳤으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "지금 이 순간 나는 도망쳤으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "지금 나는 그 지역에서 살았으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 휴식을 위해 멈췄으면 좋겠어, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "내가 피곤할 때마다 나는 도망쳤으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 그들이 지금 이 순간 정원에서 놀지 않으면 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0557L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그들이 놀지 않으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들이 지금 놀지 않으면 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들이 진흙에서 놀지 않으면 더 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들이 우리를 방문하길 원한다면 그건 문제가 되지 않을 거야",
+     "ok": false,
+     "why": "MOVED phrase does not contain the LEGO 'tasen nhw ddim yn' at all (it uses 'tasen nhw isio'), so it practises nothing in this basket"
+    },
+    {
+     "n": 5,
+     "ko": "그들이 자선 단체를 위해 걸어가길 원한다면 그건 문제가 되지 않을 거야",
+     "ok": false,
+     "why": "MOVED phrase does not contain the LEGO 'tasen nhw ddim yn' (it uses 'tasen nhw isio')"
+    },
+    {
+     "n": 6,
+     "ko": "그들이 운전하길 원한다면 그건 문제가 되지 않을 거야",
+     "ok": false,
+     "why": "MOVED phrase does not contain the LEGO 'tasen nhw ddim yn' (it uses 'tasen nhw isio')"
+    },
+    {
+     "n": 7,
+     "ko": "나는 그들이 밤늦게 음악을 그렇게 크게 틀지 않으면 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0557L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U03",
+     "keep": false,
+     "why": "good, but only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L02U01",
+     "keep": false,
+     "why": "good, but only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L02U06",
+     "keep": false,
+     "why": "good, but only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L02U05",
+     "keep": false,
+     "why": "good, but only 1 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L02U02",
+     "keep": false,
+     "why": "makes odd sense (saying it would be no problem if they did NOT play music)"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0557L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L02U05",
+     "keep": false,
+     "why": "Good, but the 3 slots are already filled by stronger phrases; 'it'd be better if they didn't travel without the car' is a slightly odd thing to say"
+    },
+    {
+     "id": "cym_for_kor:S0557L02U02",
+     "keep": false,
+     "why": "Doesn't make sense: it says it would be no problem if they did NOT play music late at night"
+    }
+   ]
+  },
+  "S0557L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "밤늦게 음악을 틀다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들이 음악을 틀지 않으면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 밤늦게 음악을 틀지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 밤늦게 음악을 틀고 싶지 않아, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 왜 밤늦게 음악을 틀고 싶어해?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0557L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L03B02",
+     "keep": false,
+     "why": "only 1 BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L03B04",
+     "keep": false,
+     "why": "only 1 BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L03U08",
+     "keep": false,
+     "why": "good, but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L03U02",
+     "keep": false,
+     "why": "good, but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L03U06",
+     "keep": false,
+     "why": "good, but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L03U01",
+     "keep": false,
+     "why": "good, but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0557L03U03",
+     "keep": false,
+     "why": "only 2 needed; '-지 말자' could also be heard as 'peidiwn â'"
+    },
+    {
+     "id": "cym_for_kor:S0557L03U04",
+     "keep": false,
+     "why": "nearly the same as original o5"
+    }
+   ]
+  },
+  "S0557L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 가장 큰 것이 얼마나 높은지 물어볼 거야",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high' (height); this LEGO teaches 'mor uchel' as 'so loud'. Wrong sense, and the source phrase is odd"
+    },
+    {
+     "n": 2,
+     "ko": "가장 큰 것은 얼마나 높아?",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high', not the 'so loud' sense taught here"
+    },
+    {
+     "n": 3,
+     "ko": "나는 얼마나 높은지 궁금해",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high', not the 'so loud' sense taught here"
+    },
+    {
+     "n": 4,
+     "ko": "점점 늦어지고 있어, 하지만 그들은 그렇게 큰 음악을 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "아무도 그들이 얼마나 높이 짓고 싶어했는지 확실하지 않았어",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high' (building height), not the 'so loud' sense taught here"
+    },
+    {
+     "n": 6,
+     "ko": "우리는 그들이 얼마나 높이 짓고 싶어하는지 몰라",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high', not the 'so loud' sense taught here"
+    },
+    {
+     "n": 7,
+     "ko": "나는 그들이 얼마나 높이 짓고 싶어하는지 알아내고 싶어",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high', not the 'so loud' sense taught here"
+    },
+    {
+     "n": 8,
+     "ko": "그들은 얼마나 높이 올라가고 싶어했어?",
+     "ok": false,
+     "why": "MOVED 'pa mor uchel' means 'how high' (climbing), not the 'so loud' sense taught here"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0557L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04B02",
+     "keep": false,
+     "why": "A weak adverb-only fragment ('so loud late at night') that is awkward to say in Korean; the 3 BUILD slots are filled by better ones"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0557L04U01",
+     "keep": true,
+     "ko": "그들은 음악을 그렇게 크게 틀고 있지 않았어",
+     "why": "Korean changed: 'doeddan nhw ddim yn' is the ongoing past ('weren't playing'); plain 틀지 않았어 could also be answered with 'naethon nhw ddim chwarae'"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U03",
+     "keep": false,
+     "why": "Almost the same as B04 with 'they' instead of 'you'; adds little, and the 4 USE slots are filled"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U04",
+     "keep": false,
+     "why": "The Korean '나는 피곤해 왜냐하면 …' is awkward; the 4 USE slots are filled by better ones"
+    },
+    {
+     "id": "cym_for_kor:S0557L04U06",
+     "keep": false,
+     "why": "Fine, but the 4 USE slots are filled by better ones"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:24:10.608Z"
+}

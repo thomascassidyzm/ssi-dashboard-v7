@@ -1,0 +1,163 @@
+{
+ "seed": 575,
+ "at": "2026-11-24T19:43:47.428Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0575L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "유감이지만 나는 늦었을 거야",
+     "ok": false,
+     "why": "This row does not contain the LEGO. 'fyswn i wedi bod yn' is a conditional ('I would have been'), not 'mae ... wedi bod yn' ('it has been'), so it practises a different structure."
+    },
+    {
+     "n": 2,
+     "ko": "그가 계속 아팠던 이유는 많아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 한 번 아팠던 적이 있어",
+     "ok": false,
+     "why": "Wrong sense: 'unwaith' makes this a one-off past experience, which clashes with the LEGO as taught, 계속 ~했어 (has been, continuously). The Korean cannot use 계속 here."
+    },
+    {
+     "n": 4,
+     "ko": "그동안 멋졌지만 그들은 기차를 타야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그동안 밖에서 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그동안 그 지역에서 자라는 게 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그동안 세상의 이쪽에서는 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 지금 휴가를 아주 특별하게 느끼고 있어 왜냐하면 그동안 밖에서 멋졌거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0575L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0575L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0575L01B01",
+     "keep": false,
+     "why": "The Welsh and Korean are fine, but it isn't needed: B02 and B03 fill both BUILD slots and add more variety."
+    },
+    {
+     "id": "cym_for_kor:S0575L01B04",
+     "keep": false,
+     "why": "The Welsh is fine (it's been lovely outside), but 밖에서 계속 멋졌어 is unnatural Korean for the weather, and both BUILD slots are already filled."
+    }
+   ]
+  },
+  "S0575L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 이 순간 아주 속상한",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "밤에 아주 속상할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아주 속상할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "밤늦게 아주 속상할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "밖에서 기다리기 아주 속상한",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "기다리는 건 아주 속상할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 혼자서 기다리는 건 아주 속상할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "밤늦게 기다리는 건 아주 속상할 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "아주 속상할 텐데 너는 그렇게 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 아주 속상할 거라고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 아주 속상할 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "기다리는 건 아주 속상하겠지만 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 네 표를 기다리는 게 아주 속상할 거라고 확신해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:25:25.187Z"
+}

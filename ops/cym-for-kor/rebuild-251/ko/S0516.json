@@ -1,0 +1,281 @@
+{
+ "seed": 516,
+ "at": "2026-11-24T19:32:37.579Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0516L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "두 사람은 다리를 가로질러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "두 사람은 사무실에 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "두 사람은 올라왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "두 사람은 돌아왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "두 사람은 내려왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "두 사람은 자기들끼리 왔지만 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "두 사람은 자기들끼리 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "두 사람은 어젯밤에 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 두 사람이 왔다고 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "두 사람은 화요일에 보러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "두 사람은 화요일에 새 것을 가지러 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "두 사람은 왔어, 왜냐하면 그들은 알아내고 싶어했거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "어쩌면 두 사람은 식사 후에 왔을지도 몰라",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0516L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0516L01U03",
+     "keep": false,
+     "why": "only one USE needed; U07 is the stronger one"
+    },
+    {
+     "id": "cym_for_kor:S0516L01U01",
+     "keep": false,
+     "why": "draw rendered as 놀러, which is loose; not needed"
+    },
+    {
+     "id": "cym_for_kor:S0516L01U02",
+     "keep": false,
+     "why": "not needed; the Welsh has no question mark"
+    },
+    {
+     "id": "cym_for_kor:S0516L01U04",
+     "keep": false,
+     "why": "the meaning doesn't hang together (both came but he was ill)"
+    },
+    {
+     "id": "cym_for_kor:S0516L01U05",
+     "keep": false,
+     "why": "strange meaning and not needed"
+    },
+    {
+     "id": "cym_for_kor:S0516L01U06",
+     "keep": false,
+     "why": "not needed"
+    }
+   ]
+  },
+  "S0516L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "두 사람은 각자 혼자 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "두 사람은 각자 혼자 돌아왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그리고 각자 혼자 창문을 닫다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "각자 혼자 도착하는 데",
+     "ok": false,
+     "why": "i gyrraedd was taught as ~에게 전해지는 데 (something reaching someone); here it means the people arriving, a different sense, and the gloss can't express it"
+    },
+    {
+     "n": 5,
+     "ko": "각자 혼자 새해에 이르는 데",
+     "ok": false,
+     "why": "'reach the new year on their own' is unnatural, and i gyrraedd is used outside its taught sense (~에게 전해지는 데)"
+    },
+    {
+     "n": 6,
+     "ko": "두 사람은 각자 혼자 올라왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "하지만 그들은 각자 혼자 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 어제 각자 혼자 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 각자 혼자 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "각자 혼자 정확히 같은 것을 받는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "어젯밤에 각자 혼자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "각자 혼자 살다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그들은 각자 혼자 올라가고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그들은 각자 혼자 자라고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그들은 아직 각자 혼자야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "그들은 각자 혼자 살고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "두 사람은 어젯밤에 각자 혼자 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "그들은 오늘 저녁 각자 혼자 기차를 타야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "그들은 각자 혼자 결정할 수 없을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0516L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0516L02U02",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is taken by U01."
+    },
+    {
+     "id": "cym_for_kor:S0516L02U03",
+     "keep": false,
+     "why": "'그들 파티에' reads as 'their party' rather than 'the party', and the question has no subject particle, so the Korean is unclear."
+    },
+    {
+     "id": "cym_for_kor:S0516L02U04",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is taken by U01."
+    },
+    {
+     "id": "cym_for_kor:S0516L02U05",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is taken by U01."
+    },
+    {
+     "id": "cym_for_kor:S0516L02U06",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is taken by U01."
+    },
+    {
+     "id": "cym_for_kor:S0516L02U07",
+     "keep": false,
+     "why": "Good phrase, but the one USE slot is taken by U01."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:20:22.098Z"
+}

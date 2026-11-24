@@ -1,0 +1,143 @@
+{
+ "seed": 355,
+ "at": "2026-11-24T19:02:43.300Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0355L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0355L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03B03",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots went to shorter rows with the LEGO nearer the edge."
+    },
+    {
+     "id": "cym_for_kor:S0355L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L03U06",
+     "keep": false,
+     "why": "Sound, but all five USE slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0355L03U07",
+     "keep": false,
+     "why": "Strange meaning: enjoying the chance to practise talking with that woman is not a natural thing to say."
+    }
+   ]
+  },
+  "S0355L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 내 형제를 알게 되면",
+     "ok": false,
+     "why": "Wrong sense: here 'ti'n' belongs to 'dod i nabod' (get to know). The phrase never uses 'ti'n nabod' as the relative 'that you know' this LEGO teaches."
+    },
+    {
+     "n": 2,
+     "ko": "네가 내 형제를 알게 되면 그건 훌륭할 거야",
+     "ok": false,
+     "why": "Wrong sense: 'ti'n dod i nabod' means 'get to know', not the relative 'that you know' this LEGO teaches."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0355L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04B03",
+     "keep": false,
+     "why": "Sound, but both BUILD slots are already filled by shorter rows."
+    },
+    {
+     "id": "cym_for_kor:S0355L04B04",
+     "keep": false,
+     "why": "Sound, but both BUILD slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0355L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04U04",
+     "keep": false,
+     "why": "Sound, but the four USE slots are filled, and '너 … 네가' says 'you' twice, which reads clumsily."
+    },
+    {
+     "id": "cym_for_kor:S0355L04U05",
+     "keep": false,
+     "why": "Sound, but the four USE slots are already filled."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0355L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04B04",
+     "keep": false,
+     "why": "Sound, but only one BUILD slot is open and B03 is the shorter, cleaner build."
+    },
+    {
+     "id": "cym_for_kor:S0355L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0355L04U04",
+     "keep": false,
+     "why": "Sound, but only one USE slot is open and '너 … 네가' says 'you' twice, which is clumsy; U05 reads better."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:09:59.206Z"
+}

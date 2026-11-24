@@ -1,0 +1,163 @@
+{
+ "seed": 281,
+ "at": "2026-11-24T18:51:11.840Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0281L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내 커피를 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 내 커피가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 커피를 원하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 내 커피",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내 커피를 찾으려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 내 커피 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 하지만 나는 내 커피가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "네가 내 커피를 만들지 않아도 상관없어",
+     "ok": true,
+     "why": "Moved row is fine: 'gwneud coffi' is idiomatic North Welsh and fy nghoffi keeps its taught meaning, my coffee."
+    },
+    {
+     "n": 9,
+     "ko": "나는 행복해, 왜냐하면 나는 내 커피가 있거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0281L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0281L04U01",
+     "keep": false,
+     "why": "The quota is already filled by U02, and without a question mark 봤어 could be read as a statement, so the Welsh answer isn't certain"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U03",
+     "keep": false,
+     "why": "The quota is already filled; 원하지 않아 for isio is also stiff"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U04",
+     "keep": false,
+     "why": "No question mark, and 'why do you want my coffee' is an odd thing to say"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U05",
+     "keep": false,
+     "why": "The quota is already filled by a stronger candidate"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U06",
+     "keep": false,
+     "why": "It's almost the seed sentence again, and without a question mark the Korean reads as a statement"
+    },
+    {
+     "id": "cym_for_kor:S0281L04U07",
+     "keep": false,
+     "why": "'He wanted my coffee yesterday' is semantically odd"
+    }
+   ]
+  },
+  "S0281L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0281L05B04",
+     "keep": true,
+     "ko": "네가 시작하기 전에 몇 분 기다리기"
+    },
+    {
+     "id": "cym_for_kor:S0281L05B02",
+     "keep": true,
+     "ko": "네가 시작하기 전에 ~하는 게 중요해"
+    },
+    {
+     "id": "cym_for_kor:S0281L05B01",
+     "keep": true,
+     "ko": "네가 시작하기 전에 이야기하기"
+    },
+    {
+     "id": "cym_for_kor:S0281L05B03",
+     "keep": false,
+     "why": "BUILD quota already filled by stronger rows. 'helpu fi' is colloquial, and the standard form is 'fy helpu'."
+    },
+    {
+     "id": "cym_for_kor:S0281L05U01",
+     "keep": true,
+     "ko": "너 네가 시작하기 전에 나랑 이야기하고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0281L05U03",
+     "keep": true,
+     "ko": "우리는 네가 시작하기 전에 이야기해야 해, 왜냐하면 나는 내일 중요한 회의가 있어"
+    },
+    {
+     "id": "cym_for_kor:S0281L05U04",
+     "keep": true,
+     "ko": "네가 시작하기 전에, 너 나한테 뭐가 필요한지 말해 줄 수 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0281L05U05",
+     "keep": true,
+     "ko": "그는 네가 시작하기 전에 내가 너한테 말하기를 원했어"
+    },
+    {
+     "id": "cym_for_kor:S0281L05U02",
+     "keep": true,
+     "ko": "너 네가 시작하기 전에 네 아버지를 기다리고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0281L05U06",
+     "keep": false,
+     "why": "USE quota already filled. The meaning is also odd: I need more time before YOU start."
+    },
+    {
+     "id": "cym_for_kor:S0281L05U07",
+     "keep": false,
+     "why": "USE quota already filled. The Korean '시간을 갖다' does not fit 'cymryd amser' cleanly."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:05:34.311Z"
+}

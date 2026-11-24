@@ -1,0 +1,158 @@
+{
+ "seed": 220,
+ "at": "2026-11-24T18:42:09.623Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0220L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 내가 하려고 하던 것을 시청했어?",
+     "ok": false,
+     "why": "Here wylio means watching what someone is doing, but this course glosses it as 시청 (watching TV or a programme). 시청하다 is wrong for watching a person, so the Korean comes out unnatural."
+    },
+    {
+     "n": 2,
+     "ko": "너 그것을 시청했어?",
+     "ok": false,
+     "why": "Same Korean as o3 (wnest ti wylio fo). Korean cannot mark the gender difference between hi and fo, so one Korean prompt would have two Welsh answers. Keep fo, the usual North Welsh default for 'it'."
+    },
+    {
+     "n": 3,
+     "ko": "너 그것을 시청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 주말에 흥미로운 무언가를 시청했어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0220L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0220L01B02",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B01 is better"
+    },
+    {
+     "id": "cym_for_kor:S0220L01B03",
+     "keep": false,
+     "why": "hynna = 그것 would give the same Korean as wylio fo (o3)"
+    },
+    {
+     "id": "cym_for_kor:S0220L01B04",
+     "keep": false,
+     "why": "hynna = 그것 would give the same Korean as wylio fo (o3)"
+    },
+    {
+     "id": "cym_for_kor:S0220L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0220L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0220L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0220L01U02",
+     "keep": false,
+     "why": "Only 3 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0220L01U03",
+     "keep": false,
+     "why": "Korean is awkward, and only 3 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0220L01U06",
+     "keep": false,
+     "why": "hynna = 그것 would give the same Korean as wylio fo (o3)"
+    },
+    {
+     "id": "cym_for_kor:S0220L01U07",
+     "keep": false,
+     "why": "Korean is awkward, and only 3 USE needed"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0220L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0220L01B03",
+     "keep": false,
+     "why": "In Korean, 그것을 could mean either hynna or fo, so the learner could say wylio fo or wylio hynna. That is two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0220L01B04",
+     "keep": false,
+     "why": "Same problem: 그것을 could mean hynna or fo, so 왜 그것을 시청했어? has two possible Welsh answers (pam wnest ti wylio hynna or pam wnest ti wylio fo)."
+    }
+   ]
+  },
+  "S0220L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 텔레비전을 조금 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 친구 몇 명과 텔레비전을 조금 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 텔레비전을 조금 시청하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 텔레비전을 조금 시청하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 텔레비전을 조금 시청할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 일요일 아침에 텔레비전을 조금 시청하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 일요일 오후에 많이 하지 않았지만 텔레비전을 조금 시청하는 게 좋았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 주말에 텔레비전을 조금 시청할 거였어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:02:29.469Z"
+}

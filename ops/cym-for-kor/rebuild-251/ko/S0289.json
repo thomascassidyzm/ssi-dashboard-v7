@@ -1,0 +1,143 @@
+{
+ "seed": 289,
+ "at": "2026-11-24T18:52:22.596Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0289L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내 어머니가 ~지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그래서 나는 모든 것이 ~지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네 형제가 ~지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "응 나는 모든 것이 탁자 위에 있는지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내 어머니가 오늘 직장에 있는지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 네 자매가 오늘 오후에 펍에 있는지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내 것이 저기에 있는지 궁금해",
+     "ok": true,
+     "why": "Natural North Welsh; sgwn i ydy is used here in the same sense the course taught."
+    },
+    {
+     "n": 8,
+     "ko": "미안해 하지만 나는 내 아들이 오늘 직장에 있는지 궁금해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0289L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "늦어지고 있지만 나는 ~하고 싶어",
+     "ok": false,
+     "why": "Here 'mae hi'n mynd yn hwyr' means 'it's getting late', with impersonal hi and 'mynd yn'. It is not 'hi'n mynd i' (she is going to), so the phrase uses the wrong sense and doesn't contain this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "나는 그녀가 무엇을 말하고 있었는지 설명할 거야",
+     "ok": false,
+     "why": "The phrase contains 'dw i'n mynd i' and 'oedd hi'n deud', not 'hi'n mynd i' = 그녀가 ~ㄹ지. It does not use this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0289L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02B02",
+     "keep": false,
+     "why": "Enough BUILD rows already kept; B01 and B04 are clearer pieces."
+    },
+    {
+     "id": "cym_for_kor:S0289L02B03",
+     "keep": false,
+     "why": "Enough BUILD rows already kept, and the gloss wording for siarad Cymraeg is uncertain."
+    },
+    {
+     "id": "cym_for_kor:S0289L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02U03",
+     "keep": false,
+     "why": "Enough USE rows already kept."
+    },
+    {
+     "id": "cym_for_kor:S0289L02U04",
+     "keep": false,
+     "why": "'helpu ni' without 'ein' is colloquial and less clean than the others. Enough USE rows already kept."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0289L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0289L02B03",
+     "keep": false,
+     "why": "Only one BUILD row is needed, and B02 is better. 웨일스어로 이야기할지 might not match the course's gloss for siarad Cymraeg."
+    },
+    {
+     "id": "cym_for_kor:S0289L02U03",
+     "keep": false,
+     "why": "Only one USE row is needed, and U04 is better. 웨일스어로 이야기할지 might not match the course's gloss for siarad Cymraeg."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:06:18.014Z"
+}

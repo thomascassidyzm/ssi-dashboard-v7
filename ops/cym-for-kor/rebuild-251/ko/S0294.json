@@ -1,0 +1,139 @@
+{
+ "seed": 294,
+ "at": "2026-11-24T18:52:56.036Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0294L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그에게 느긋하게 쉴 충분한 시간을 주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 너라면 나는 그에게 느긋하게 쉴 충분한 시간을 주지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그에게 느긋하게 쉴 충분한 시간을 주지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀에게 충분한 시간을 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀에게 그것을 할 충분한 시간을 주다",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0294L02U02",
+     "keep": true,
+     "ko": "너는 시작할 충분한 시간이 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0294L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0294L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0294L02U04",
+     "keep": false,
+     "why": "Good row, but the three needed are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0294L02U01",
+     "keep": false,
+     "why": "Almost the same as the seed sentence"
+    },
+    {
+     "id": "cym_for_kor:S0294L02U06",
+     "keep": false,
+     "why": "Good row, but the three needed are already filled"
+    }
+   ]
+  },
+  "S0294L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 너에게 전화하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 오늘 저녁 너에게 전화하기로 되어 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 어젯밤 너에게 전화하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리가 멈추기 전에 나는 너에게 전화하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 내일 오후 너에게 전화할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 나는 오늘 저녁 너에게 전화할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그것이 내가 너에게 전화하고 싶었던 이유야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0294L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0294L03B01",
+     "keep": false,
+     "why": "Only one BUILD needed; B02 is the better build step"
+    },
+    {
+     "id": "cym_for_kor:S0294L03B03",
+     "keep": false,
+     "why": "Only one BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0294L03B04",
+     "keep": false,
+     "why": "Only one BUILD needed"
+    }
+   ]
+  }
+ }
+}

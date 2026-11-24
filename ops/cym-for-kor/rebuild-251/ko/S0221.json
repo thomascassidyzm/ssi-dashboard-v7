@@ -1,0 +1,334 @@
+{
+ "seed": 221,
+ "at": "2026-11-24T18:42:22.905Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0221L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 한동안 축구를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 토요일 밤에 축구를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 축구와 텔레비전을 조금 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 다시 축구를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 토요일 오후에 축구를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 축구를 시청했고 나는 물을 한두 잔 마셨어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 피곤해, 왜냐하면 나는 어젯밤 축구를 시청했거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0221L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0221L01U02",
+     "keep": false,
+     "why": "only one USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L01U03",
+     "keep": false,
+     "why": "only one USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L01U05",
+     "keep": false,
+     "why": "only one USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L01U01",
+     "keep": false,
+     "why": "only one USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L01U06",
+     "keep": false,
+     "why": "only one USE needed"
+    }
+   ]
+  },
+  "S0221L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 축구를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 텔레비전으로 축구를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 어젯밤 텔레비전을 조금 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 일요일 오후에 텔레비전으로 무언가를 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그래, 나는 그걸 텔레비전으로 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 어제 그것을 시청했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "지난달 나는 텔레비전을 조금 시청했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0221L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0221L03B03",
+     "keep": false,
+     "why": "only one BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L03B04",
+     "keep": false,
+     "why": "Korean reads as an embedded clause, while the Welsh is a bare question fragment"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0221L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0221L03U03",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE is needed and U05 is the better fit"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U01",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U02",
+     "keep": false,
+     "why": "Good phrase, but only 1 USE is needed"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U04",
+     "keep": false,
+     "why": "Going out and then watching TV reads oddly; the count is also already filled"
+    },
+    {
+     "id": "cym_for_kor:S0221L03U06",
+     "keep": false,
+     "why": "'bach o deledu am dipyn' says 'a bit' twice, which is awkward"
+    }
+   ]
+  },
+  "S0221L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그 영화를 시청하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 영화에 대해 기분이 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 그 영화를 시청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 주말에 그 영화를 시청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그래, 나는 친구 몇 명과 나갔고 나는 그 영화를 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 그 영화에 대해 뭐라고 생각했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 토요일 아침에 그 영화를 시청해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "오늘 저녁에 우리 그 영화를 구하는 게 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그 영화를 보여주고 싶어했던 누군가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그리고 나는 그 영화에 설레",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 그 영화를 시청하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너와 그 영화에 대해 이야기하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "너 오늘 저녁 그 영화를 시청하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너 그 영화를 즐겼어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "너 그 영화를 시청할 기회가 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 내가 그 영화를 얼마나 많이 즐겼는지에 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "너 어젯밤 텔레비전으로 그 영화를 시청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "텔레비전에서 하는 그 영화",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "너 언제 그 영화를 시청하기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "너 다음 영화를 시청하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "너 어젯밤 그 영화를 즐겼어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 22,
+     "ko": "너 텔레비전으로 그 영화를 시청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 23,
+     "ko": "너 어젯밤 그 영화를 시청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 24,
+     "ko": "나는 그 영화를 보여주고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 25,
+     "ko": "나는 오늘 저녁 그 영화에 설레",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T20:02:38.219Z"
+}

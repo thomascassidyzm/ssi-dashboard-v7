@@ -1,0 +1,158 @@
+{
+ "seed": 554,
+ "at": "2026-11-24T19:39:11.421Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0554L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "이 수건은 탁자 위에 있지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 이 수건은 없어지지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "이 수건은 정원에 있기로 되어 있지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "이 수건은 없어지지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "이 수건은 탁자 위에 있기로 되어 있지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "이 수건은 진흙에 있기로 되어 있지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "이 수건은 지금 이 순간 탁자 위에 있지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "이 수건은 없어지지 않았어, 하지만 개가 더럽고 젖어 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "점점 늦어지고 있어, 하지만 이 수건은 위층에 있지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0554L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "점점 말라 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "교회가 말라 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 이 순간 말라 있는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "이 수건은 아직 마르지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "교회는 말라 있기로 되어 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "교회가 지금 이 순간 말라 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그게 말라 있었다고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "교회는 말라 있어, 하지만 개가 더럽고 젖어 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "점점 늦어지고 있어, 하지만 이 수건은 아직 마르지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0554L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0554L02U06",
+     "keep": false,
+     "why": "Only one USE was needed and U05 is the stronger choice; this one is long, and 마른 채로 보관하기로 되어 있어 is heavy for a prompt"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U01",
+     "keep": false,
+     "why": "A church that is dry is an odd thing to say, and 교회가 말라 있다 is not natural Korean (a building would be 건조하다, not 마르다)"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U02",
+     "keep": false,
+     "why": "Same odd church-is-dry idea, and the Korean 말라 있다 for a building is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U03",
+     "keep": false,
+     "why": "Same odd church-is-dry idea, and the Korean 말라 있다 for a building is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0554L02U04",
+     "keep": false,
+     "why": "Same odd church-is-dry idea, and the Korean 말라 있다 for a building is unnatural"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:23:39.786Z"
+}

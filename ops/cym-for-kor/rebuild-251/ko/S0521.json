@@ -1,0 +1,373 @@
+{
+ "seed": 521,
+ "at": "2026-11-24T19:34:23.439Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0521L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 우리가 왜 ~ㄹ 필요가 있었는지 잊어버릴까 봐 두려워",
+     "ok": true,
+     "why": "This is the seed sentence cut off before its verb. The open end is shown with ~."
+    },
+    {
+     "n": 2,
+     "ko": "네가 우리가 왜 이야기할 필요가 있었는지 잊어버릴까 봐",
+     "ok": true,
+     "why": "Natural Welsh with the seed's frame. The LEGO is used in the sense it was taught."
+    },
+    {
+     "n": 3,
+     "ko": "네가 우리가 왜 ~ㄹ 필요가 있었는지 잊어버릴까 봐",
+     "ok": true,
+     "why": "This is the seed fragment with an open end, so it works as a BUILD row."
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 가족 전체를 이사시킬까 봐 두려워",
+     "ok": true,
+     "why": "Grammatical and makes sense: moving a whole family is the fear."
+    },
+    {
+     "n": 5,
+     "ko": "네가 1분 안에 끝낼까 봐",
+     "ok": true,
+     "why": "'mewn munud' is idiomatic Welsh, and the clause is grammatical after the LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0521L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L02U05",
+     "keep": true,
+     "ko": "왜냐하면 나는 네가 희망을 잃을까 봐 걱정되거든"
+    },
+    {
+     "id": "cym_for_kor:S0521L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L02U02",
+     "keep": false,
+     "why": "'aros' could be heard as waiting or as staying, and 그 사무실 ('that office') could add a 'that' the Welsh doesn't have. The meaning is also odd. The other five are stronger."
+    }
+   ]
+  },
+  "S0521L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 그 단어를 잊어버리다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그걸 말하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그걸 말하는 방법을 잊어버렸지만 다시 노력할 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 그걸 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 뭘 원했는지 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 웨일스어로 이야기하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 이야기하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그리고 나는 내가 무엇을 말하고 싶었는지 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 네가 말한 것을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 무엇을 말하고 싶은지 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그녀는 이야기하는 걸 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "하지만 그녀는 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 그녀의 이름을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 잊어버렸어, 그게 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 그 책을 주는 걸 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 내 열쇠를 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "그녀는 모든 것을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "그녀는 우리 친구들을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "그녀는 내 방을 잊어버렸어",
+     "ok": true,
+     "why": "It is grammatical. The meaning is a bit thin, and spoken North Welsh would more often say 'fy stafell i', but it is not wrong."
+    },
+    {
+     "n": 20,
+     "ko": "하지만 나는 내가 말할 필요가 있는 것을 말하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "나는 연습하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 22,
+     "ko": "하지만 나는 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 23,
+     "ko": "나는 이야기하는 연습을 하는 방법을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 24,
+     "ko": "나는 내가 배워 온 것을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 25,
+     "ko": "나는 네가 말한 것을 잊어버렸어",
+     "ok": true,
+     "why": "It has the same Korean as o9. 'dw i 'di' is just the spoken short form of 'dw i wedi', so the learner still has only one answer."
+    },
+    {
+     "n": 26,
+     "ko": "하지만 나는 그걸 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 27,
+     "ko": "나는 몇몇 단어를 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 28,
+     "ko": "그녀는 어젯밤 우리 친구들을 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 29,
+     "ko": "나는 그녀가 모든 것을 잊어버렸다고 생각했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0521L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 왜 ~ㄹ 필요가 있었는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 멈출 필요가 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 우리가 왜 기다릴 필요가 있었는지 잊어버렸어",
+     "ok": true,
+     "why": "Natural Welsh. It uses the LEGO in the sense this course taught."
+    },
+    {
+     "n": 4,
+     "ko": "하지만 우리는 휴식이 필요했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 왜 멈출 필요가 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 어젯밤 휴식이 필요했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그때 우리는 큰 물 한 잔이 필요했어",
+     "ok": true,
+     "why": "Natural, idiomatic Welsh, and it uses the LEGO in the sense taught."
+    },
+    {
+     "n": 8,
+     "ko": "우리는 호텔 가까이에 있는 가게를 찾아낼 필요가 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 휴식이 필요했기 때문에 멈춰야 했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0521L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 왜 여기에 머물 필요가 있었는지",
+     "ok": true,
+     "why": "This is the seed's own clause, so it is natural."
+    },
+    {
+     "n": 2,
+     "ko": "우리는 여기에 머물 필요가 있었어",
+     "ok": true,
+     "why": "Natural Welsh, and it uses the LEGO in the sense taught."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0521L06B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L06U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L06U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L06U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L06U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L06U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0521L06B01",
+     "keep": false,
+     "why": "Only one BUILD was needed. Also, 'heno' means tonight, so the Korean 저녁 ('evening') would be inexact."
+    },
+    {
+     "id": "cym_for_kor:S0521L06B02",
+     "keep": false,
+     "why": "Only one BUILD was needed, and this one is long and awkward for a BUILD row."
+    },
+    {
+     "id": "cym_for_kor:S0521L06B04",
+     "keep": false,
+     "why": "Only one BUILD was needed. B03 is the stronger choice."
+    },
+    {
+     "id": "cym_for_kor:S0521L06U03",
+     "keep": false,
+     "why": "'am ychydig bach hirach' sounds stilted; 'am chydig bach mwy' would be more natural. The Welsh text also has no question mark."
+    },
+    {
+     "id": "cym_for_kor:S0521L06U07",
+     "keep": false,
+     "why": "The quota was already filled with stronger lines. This one is a weaker, conditional fragment."
+    }
+   ]
+  }
+ }
+}

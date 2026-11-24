@@ -1,0 +1,118 @@
+{
+ "seed": 145,
+ "at": "2026-11-24T18:31:07.417Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0145L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0145L02B01",
+     "keep": true,
+     "ko": "너 왜 행복하지 않아?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02B02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02B03",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02B04",
+     "keep": false,
+     "why": "Only 3 BUILD rows are needed and this one just adds rŵan to B01, which also nearly duplicates the seed sentence."
+    },
+    {
+     "id": "cym_for_kor:S0145L02U01",
+     "keep": true,
+     "ko": "너 왜 오늘 아침에 행복하지 않아?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02U03",
+     "keep": true,
+     "ko": "모든 게 괜찮아, 하지만 너 행복하지 않아",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02U02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02U05",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02U04",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0145L02U06",
+     "keep": false,
+     "why": "'hapus efo fi' means 'happy with me', as in pleased with me. '나와 행복하지 않아' is unnatural Korean and suggests 'not happy together with me', so the answer is not certain."
+    }
+   ]
+  },
+  "S0145L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 더 이상 걱정하지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그게 더 이상 작동하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 더 이상 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 하지만 그건 더 이상 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 말한 것을 더 이상 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "왜 그는 더 이상 돌아오고 싶어하지 않아?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 더 이상 너를 기다리지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 더 이상 너를 기다리고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

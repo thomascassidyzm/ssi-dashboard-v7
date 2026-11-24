@@ -1,0 +1,266 @@
+{
+ "seed": 79,
+ "at": "2026-11-24T18:20:09.707Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0079L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 이 순간 나는 피곤해",
+     "ok": false,
+     "why": "No 'pryd' meaning 'when' here: 'bryd' sits inside the fixed phrase 'ar hyn o bryd' as the noun 'time'. Wrong sense for this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 이 순간 기분이 괜찮아",
+     "ok": false,
+     "why": "Only appears through 'ar hyn o bryd' (bryd = time). The LEGO 'pryd' = 언제 is never used."
+    },
+    {
+     "n": 3,
+     "ko": "지금 이 순간 그건 ~처럼 느껴지지 않아",
+     "ok": false,
+     "why": "Only appears through 'ar hyn o bryd' (bryd = time). The LEGO 'pryd' = 언제 is never used."
+    },
+    {
+     "n": 4,
+     "ko": "나는 지금 이 순간 행복해 하지만 ~",
+     "ok": false,
+     "why": "Only appears through 'ar hyn o bryd' (bryd = time). The LEGO 'pryd' = 언제 is never used."
+    },
+    {
+     "n": 5,
+     "ko": "너 언제 시작해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 언제 배우기 시작해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 언제 연습하기 시작해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정말 고마워 하지만 나는 지금 이 순간 피곤해",
+     "ok": false,
+     "why": "Only appears through 'ar hyn o bryd' (bryd = time). The LEGO 'pryd' = 언제 is never used."
+    },
+    {
+     "n": 9,
+     "ko": "정말 고마워 나는 지금 이 순간 기분이 괜찮아",
+     "ok": false,
+     "why": "Only appears through 'ar hyn o bryd' (bryd = time). The LEGO 'pryd' = 언제 is never used."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0079L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L01B01",
+     "keep": false,
+     "why": "Valid but weakest: a bare-infinitive fragment; the three kept BUILD rows give fuller frames"
+    },
+    {
+     "id": "cym_for_kor:S0079L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L01U04",
+     "keep": false,
+     "why": "Good, but over the USE count; U01 and U05 are stronger"
+    },
+    {
+     "id": "cym_for_kor:S0079L01U02",
+     "keep": false,
+     "why": "'pryd dw i'n mynd i' is a less natural question form than 'pryd ydw i'n mynd i', and 될까 drifts from the 'going to' sense"
+    },
+    {
+     "id": "cym_for_kor:S0079L01U03",
+     "keep": false,
+     "why": "'어린 개를 돌보고 싶어' reads stilted; a native speaker would say 강아지"
+    },
+    {
+     "id": "cym_for_kor:S0079L01U06",
+     "keep": false,
+     "why": "Over the count; a yes/no question in 반말 with no question cue reads like a statement"
+    },
+    {
+     "id": "cym_for_kor:S0079L01U07",
+     "keep": false,
+     "why": "Over the count; 만나고 싶어했는지 확실하지 않아 is heavy for this seed"
+    }
+   ]
+  },
+  "S0079L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 노력하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 이야기하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 나아지기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 기억하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 무언가 하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 연습하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 한 달 전에 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 무언가 말하기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 웨일스어 배우기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "네가 배우기 시작했을 때 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너 언제 배우기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너 언제 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "너 언제 나아지기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너 언제 연습하기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 네가 언제 시작했는지 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 네가 언제 배우기 시작했는지 말하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "너 언제 웨일스어 이야기하기 시작했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "너 언제 이야기하는 연습을 하기 시작했어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0079L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0079L02U02",
+     "keep": false,
+     "why": "Only two top-ups needed; U01 and U04 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0079L02U03",
+     "keep": false,
+     "why": "Only two top-ups needed; U01 and U04 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0079L02U05",
+     "keep": false,
+     "why": "Only two top-ups needed; U01 and U04 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0079L02U06",
+     "keep": false,
+     "why": "'ei ffrind' could mean his friend or her friend, and the Korean 그의 doesn't fit naturally; skipped."
+    },
+    {
+     "id": "cym_for_kor:S0079L02U07",
+     "keep": false,
+     "why": "The Korean drops 'amdano' (for it/him), so the prompt doesn't fully match the Welsh."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:33:41.022Z"
+}

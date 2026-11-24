@@ -1,0 +1,71 @@
+{
+ "seed": 361,
+ "at": "2026-11-24T19:02:59.722Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0361L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그는 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 금요일 밤에 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그가 왜 조용했는지 궁금해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 조용했어, 왜냐하면 남은 시간이 많이 없었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 한밤중에 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "하지만 그는 어젯밤 펍에서 조용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 너무 바빴지만 그는 조용했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0361L01B02",
+     "keep": true,
+     "ko": "그는 어젯밤 조용했어"
+    },
+    {
+     "id": "cym_for_kor:S0361L01B01",
+     "keep": false,
+     "why": "Only 1 BUILD needed. B02 is the better fit."
+    },
+    {
+     "id": "cym_for_kor:S0361L01B04",
+     "keep": false,
+     "why": "'왜냐하면 …' standing alone with no main clause sounds awkward in Korean, and only 1 BUILD is needed."
+    }
+   ]
+  }
+ }
+}

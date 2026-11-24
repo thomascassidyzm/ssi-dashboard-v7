@@ -1,0 +1,134 @@
+{
+ "seed": 604,
+ "at": "2026-11-24T19:48:19.503Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0604L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "어젯밤 그녀는 ~겠다고 제안했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 당시에 ~겠다고 제안했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 우리를 방문하겠다고 제안했어, 하지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0604L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L01B02",
+     "keep": false,
+     "why": "In this seed, aros means 머물다 (stay), so 기다리다 (wait) gives a second, conflicting Korean meaning for the same Welsh word"
+    },
+    {
+     "id": "cym_for_kor:S0604L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed and B01 covers it more cleanly"
+    },
+    {
+     "id": "cym_for_kor:S0604L01B04",
+     "keep": false,
+     "why": "Only 1 BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0604L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L01U02",
+     "keep": true,
+     "ko": "아이들이 피곤했어, 그래서 그녀는 우리를 집까지 차로 데려다주겠다고 제안했어"
+    },
+    {
+     "id": "cym_for_kor:S0604L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L01U04",
+     "keep": false,
+     "why": "'Offered to help you without arguing' is an odd thing to say, and 'ond' at the start has nothing before it"
+    },
+    {
+     "id": "cym_for_kor:S0604L01U05",
+     "keep": false,
+     "why": "Uses 'gadael i' with 두다 when this seed glosses it as 해 주다, so the two lessons clash"
+    },
+    {
+     "id": "cym_for_kor:S0604L01U06",
+     "keep": false,
+     "why": "Uses aros as 'wait', but this seed teaches aros as 머물다 (stay)"
+    }
+   ]
+  },
+  "S0604L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0604L02B02",
+     "keep": true,
+     "ko": "우리가 그녀와 함께 머물게 해 주다"
+    },
+    {
+     "id": "cym_for_kor:S0604L02B01",
+     "keep": true,
+     "ko": "우리가 여기에 머물게 해 주다"
+    },
+    {
+     "id": "cym_for_kor:S0604L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L02B04",
+     "keep": false,
+     "why": "'I want to let us stay here' doesn't make sense, because the speaker is giving permission to their own group"
+    },
+    {
+     "id": "cym_for_kor:S0604L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L02U05",
+     "keep": true,
+     "ko": "그녀는 우리가 그녀와 함께 머물게 해 줄 수 있다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0604L02U04",
+     "keep": true,
+     "ko": "그가 당시에 우리가 머물게 해 주고 싶어하지 않았기 때문에 우리는 떠나야 했어"
+    },
+    {
+     "id": "cym_for_kor:S0604L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0604L02U03",
+     "keep": false,
+     "why": "'I couldn't have let us stay here without your help' doesn't make sense, because the speaker is giving permission to their own group"
+    }
+   ]
+  }
+ }
+}

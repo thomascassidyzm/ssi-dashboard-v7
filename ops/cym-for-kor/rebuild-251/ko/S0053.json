@@ -1,0 +1,280 @@
+{
+ "seed": 53,
+ "at": "2026-11-24T18:15:24.728Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0053L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 무언가를 묻고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 나중에 도우러 오고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 지금 확실히 하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 어젯밤 너에게 무언가를 묻고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 어젯밤 웨일스어로 이야기하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 네가 그것에 대해 더 신중하게 생각하기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 오늘 저녁 그 사람들을 만나고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 무엇이 아주 잘 되어 가고 있었는지 알아내고 싶어해",
+     "ok": false,
+     "why": "This uses 'mae hi isio' (present), not the LEGO 'oedd hi isio'. Its 'oedd' belongs to the embedded clause, so the phrase never practises this LEGO."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0053L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L01U06",
+     "keep": false,
+     "why": "Good, but U02 was a better top-up and only 1 USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0053L01U05",
+     "keep": false,
+     "why": "Good, but over the count of 1 USE"
+    },
+    {
+     "id": "cym_for_kor:S0053L01U07",
+     "keep": false,
+     "why": "Over the count; long and repeats oedd hi isio twice"
+    },
+    {
+     "id": "cym_for_kor:S0053L01U03",
+     "keep": false,
+     "why": "Over the count; 'os oedd hi' as an indirect question is weaker than the picked candidate"
+    },
+    {
+     "id": "cym_for_kor:S0053L01U01",
+     "keep": false,
+     "why": "Welsh 'ei ffrind' has no mutation or pronoun to show his or her, so 그의 forces a reading the Welsh leaves open"
+    },
+    {
+     "id": "cym_for_kor:S0053L01U04",
+     "keep": false,
+     "why": "The Korean is a question but the Welsh has no question marking, so the Welsh reads as a statement"
+    }
+   ]
+  },
+  "S0053L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그의 편지를 ~에 넣고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 모든 것을 ~에 넣으려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 ~을 넣고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0053L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L02U06",
+     "keep": false,
+     "why": "It is fine, but only 5 are needed and the other five are stronger."
+    }
+   ]
+  },
+  "S0053L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 그의 편지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 그의 편지를 끝내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그의 편지를 찾으려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 그의 편지를 보여주고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 어젯밤 그의 편지를 끝내고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 왜 그의 편지를 보여주고 싶어하지 않아?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그의 편지를 찾고 싶어, 하지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0053L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0053L03U01",
+     "keep": false,
+     "why": "Only 1 is needed; U02 is the better one."
+    },
+    {
+     "id": "cym_for_kor:S0053L03U03",
+     "keep": false,
+     "why": "Only 1 is needed."
+    },
+    {
+     "id": "cym_for_kor:S0053L03U04",
+     "keep": false,
+     "why": "Only 1 is needed."
+    },
+    {
+     "id": "cym_for_kor:S0053L03U05",
+     "keep": false,
+     "why": "Only 1 is needed."
+    },
+    {
+     "id": "cym_for_kor:S0053L03U06",
+     "keep": false,
+     "why": "Only 1 is needed."
+    },
+    {
+     "id": "cym_for_kor:S0053L03U07",
+     "keep": false,
+     "why": "Only 1 is needed."
+    }
+   ]
+  },
+  "S0053L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 오후 그의 편지를 그녀의 가방에 넣기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 그녀의 가방에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 그의 편지를 그녀의 가방에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 오늘 저녁 그의 편지를 그녀의 가방에 넣을 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 어젯밤 그의 편지를 그녀의 가방에 넣고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그녀의 가방에 물건들을 넣고 싶지 않아, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": "Used 물건들 for pethau: the gloss 일들 (matters or tasks) is unnatural for things put in a bag."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그녀의 가방에 모든 것을 넣고 싶었어, 하지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그녀가 그의 편지를 그녀의 가방에 넣고 싶어했는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:32:11.436Z"
+}

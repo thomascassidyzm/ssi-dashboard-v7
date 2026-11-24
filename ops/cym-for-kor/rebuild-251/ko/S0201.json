@@ -1,0 +1,175 @@
+{
+ "seed": 201,
+ "at": "2026-11-24T18:38:51.933Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0201L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 무엇이 일어나려고 했는지 몰라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "무엇이 일어나려고 했는지 알다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "무엇이 일어나려고 했는지 설명하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 무엇이 바뀌려고 했는지 알고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 무엇이 아주 잘 되어 가고 있었는지 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 무엇이 아주 잘 되어 가고 있었는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 무엇이 바뀌려고 했는지 알고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 일어나려고 했던 것을 바꾸고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 무엇이 도움이 될 거였는지 설명하고 싶었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0201L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "무엇이 일어나고 있었는지 알다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 무엇이 일어나고 있었는지 알고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "무엇이 일어나고 있는지 이해한 후에",
+     "ok": false,
+     "why": "Uses 'beth' where this course teaches 무엇 = be'. From the Korean, both 'beth sy'n digwydd' and 'be' sy'n digwydd' would be correct (ZUT)."
+    },
+    {
+     "n": 4,
+     "ko": "일어나려고 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "무엇이 일어나려고 했는지",
+     "ok": false,
+     "why": "'무엇이 ~려고 했는지' is S0201L03's gloss for 'be' oedd yn mynd i', so this same Korean would expect 'be'', not 'beth'. Same known, different target."
+    },
+    {
+     "n": 6,
+     "ko": "무엇이 일어나고 있었는지 설명하다",
+     "ok": false,
+     "why": "Uses 'beth' where the course glosses 무엇 = be'. The learner would say 'esbonio be' oedd yn digwydd', so there are two answers."
+    },
+    {
+     "n": 7,
+     "ko": "그는 오늘 저녁 무슨 일이 일어날지 추측하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 무엇이 일어나고 있었는지 설명하고 싶어했어",
+     "ok": false,
+     "why": "Same Korean as o9, which has the Welsh 'be'' where this one has 'beth'. Same known, different target. Keep o9."
+    },
+    {
+     "n": 9,
+     "ko": "그들은 무엇이 일어나고 있었는지 설명하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "다음에 무슨 일이 일어날 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 토요일 밤에 무슨 일이 일어날지 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0201L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0201L04U05",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed and U03 is shorter and cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U04",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U01",
+     "keep": false,
+     "why": "들었어 could mean either 'wyt ti wedi clywed' or 'glywaist ti', so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U02",
+     "keep": false,
+     "why": "Only one USE was needed; this one is longer and its reported-speech structure is weaker"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U06",
+     "keep": false,
+     "why": "Only one USE was needed; 유감이지만 is a loose rendering of 'mae arna i ofn'"
+    },
+    {
+     "id": "cym_for_kor:S0201L04U07",
+     "keep": false,
+     "why": "Only one USE was needed; 상관없어 could also be 'dim ots gen i' without 'does', so it is a weaker ZUT fit"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:01:06.089Z"
+}

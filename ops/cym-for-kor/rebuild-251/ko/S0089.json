@@ -1,0 +1,229 @@
+{
+ "seed": 89,
+ "at": "2026-11-24T18:21:18.468Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0089L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 약 한 달 동안 배워 왔다고",
+     "ok": true,
+     "why": "bo’ fi wedi used correctly as a 'that I have…' clause; 'am' here means duration, which is natural Welsh"
+    },
+    {
+     "n": 2,
+     "ko": "내가 시작했다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 시작했다고 말하고 싶은데",
+     "ok": true,
+     "why": "the -은데 softener marks conditional 'I'd like' (liciwn i), which keeps it apart from dw i isio"
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 지금 약 한 달 동안 배워 왔다고 말하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 지금 약 한 달 동안 배워 왔다고 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 약 한 달 동안 배워 왔다고 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 웨일스어를 배워 왔다고 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 시작했다고 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0089L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 내가 벌써 많이 배웠다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 벌써 많이 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 많이 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 기분이 아주 좋아 왜냐하면 내가 많이 배웠으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 벌써 많이 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "벌써 많이",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 많이 하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 많이 하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 오늘 시간을 많이 들일 필요가 있어",
+     "ok": false,
+     "why": "cymryd is taught as 'take (time)' (시간을 들이다), but 'cymryd llawer heddiw' means 'take a lot (of something) today'. That is the wrong sense, and the Welsh is odd without an object; the Korean cannot match the Welsh"
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0089L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0089L04U03",
+     "keep": false,
+     "why": "Good phrase, but only one USE slot is needed and U02 is a closer match to the seed's structure."
+    },
+    {
+     "id": "cym_for_kor:S0089L04U01",
+     "keep": false,
+     "why": "A clause starting with 'wyt ti'n' reads as a question in Welsh, but the Korean is a statement, so the learner is told to say one thing and the Welsh answer is another."
+    },
+    {
+     "id": "cym_for_kor:S0089L04U04",
+     "keep": false,
+     "why": "Long and awkward: 'wedi bod yn dysgu' plus a second clause with 'ond' is heavy for a top-up, and the slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0089L04U05",
+     "keep": false,
+     "why": "Only one USE slot is needed. Also, '사람들과 이야기하고 있었어' for 'siarad efo pobl' is acceptable but weaker than U02."
+    },
+    {
+     "id": "cym_for_kor:S0089L04U06",
+     "keep": false,
+     "why": "Only one USE slot is needed and U02 is the better fit."
+    }
+   ]
+  },
+  "S0089L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 아주 행복해 왜냐하면 내가 짧은 시간에 많이 배웠으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 짧은 시간에 많이 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 행복해 왜냐하면 내가 짧은 시간에 많이 했으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 짧은 시간에 얼마나 많이 했는지에 놀라워",
+     "ok": true,
+     "why": "에 maps 'at', which keeps this apart from o7, the same line without 'at'"
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 짧은 시간에 한 것에 아주 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 짧은 시간에 충분히 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 짧은 시간에 얼마나 많이 했는지 놀라워",
+     "ok": true,
+     "why": "dw i’n synnu faint without 'at' is natural colloquial North Welsh; the Korean has no 에, unlike o4"
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 짧은 시간에 얼마나 많이 했는지에 아주 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "짧은 시간에 많이 배우도록 너를 돕다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 짧은 시간에 얼마나 많이 배웠는지에 아주 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 내가 짧은 시간에 많이 배웠다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 짧은 시간에 많이 배웠어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T18:34:18.514Z"
+}

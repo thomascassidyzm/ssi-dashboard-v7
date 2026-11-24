@@ -1,0 +1,194 @@
+{
+ "seed": 73,
+ "at": "2026-11-24T18:19:07.364Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0073L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "정말 고마워, 하지만 나는 더 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 내가 정말 고맙다고 말하기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "정말 너무 고마워, 하지만 나는 지금 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 나는 내가 할 수 있는 만큼 열심히 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 하지만 왜?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 하지만 나는 지금 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 나는 시간이 조금 더 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 진실이 필요해, 정말 고마워",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0073L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 더 말할 것이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 더 연습할 것이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 중요한 회의가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 뭔가 말할 게 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 뭔가 다른 게 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 뭔가 다른 말할 게 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내일 오후에 중요한 회의가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "지금 이 순간은 이런 거야, 하지만 나는 상관없어",
+     "ok": false,
+     "why": "This line does not contain the LEGO 'mae gen i'. It has 'gen i' only inside the separate idiom 'does dim ots gen i' (I don't care), so it practises nothing from this basket."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0073L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L03U06",
+     "keep": false,
+     "why": "good phrase, but only 1 USE slot was needed; U02 is cleaner and centres the LEGO"
+    },
+    {
+     "id": "cym_for_kor:S0073L03U04",
+     "keep": false,
+     "why": "good phrase, but only 1 USE slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0073L03U01",
+     "keep": false,
+     "why": "only 1 USE slot was needed; also long, and the 찾아낼 to ffeindio mapping is less clean"
+    },
+    {
+     "id": "cym_for_kor:S0073L03U03",
+     "keep": false,
+     "why": "only 1 USE slot was needed; the LEGO sits inside a subordinate clause, which is a weaker USE"
+    },
+    {
+     "id": "cym_for_kor:S0073L03U05",
+     "keep": false,
+     "why": "odd meaning ('but I have too much time' with nothing before it); only 1 USE slot was needed anyway"
+    }
+   ]
+  },
+  "S0073L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 더 배울 것이 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0073L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04B01",
+     "keep": false,
+     "why": "This fragment starts with mutated 'fwy' and nothing before it to cause the mutation. It does not stand well on its own, and the two other BUILD rows are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0073L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0073L04U04",
+     "keep": false,
+     "why": "Only five USE rows are needed, and the five kept are stronger. This one is fine but overlaps U05 ('yn y Gymraeg')."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:33:21.428Z"
+}

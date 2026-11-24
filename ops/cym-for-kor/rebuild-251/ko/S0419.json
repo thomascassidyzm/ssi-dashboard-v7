@@ -1,0 +1,160 @@
+{
+ "seed": 419,
+ "at": "2026-11-24T19:11:48.353Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0419L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그들이 우리가 확실히 하기를 원하는지 몰라",
+     "ok": false,
+     "why": "Here 'os' means 'whether' after 'dan ni ddim yn gwybod', not the conditional 'if' the LEGO teaches. The gloss 만약 ~한다면 cannot carry an indirect question, so the Korean has to leave the gloss wording."
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그들이 우리가 그룹으로 만나는 데 시간을 덜 쓰기를 원하는지 몰라",
+     "ok": false,
+     "why": "Here 'os' means 'whether', not the conditional 'if' the LEGO teaches; the gloss 만약 ~한다면 cannot be used."
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그들이 우리가 시간을 덜 쓰기를 원하는지 몰라",
+     "ok": false,
+     "why": "Here 'os' means 'whether', not the conditional 'if' the LEGO teaches; the gloss 만약 ~한다면 cannot be used."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0419L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01U01",
+     "keep": true,
+     "ko": "만약 그들이 우리가 머물기를 원한다면 우리는 여기에 머물 수 있을 거야"
+    },
+    {
+     "id": "cym_for_kor:S0419L01U05",
+     "keep": true,
+     "ko": "만약 그들이 네가 머물기를 원한다면 나는 그게 괜찮을 거라고 확신해"
+    },
+    {
+     "id": "cym_for_kor:S0419L01U02",
+     "keep": true,
+     "ko": "만약 그들이 우리가 머물기를 원한다면 우리는 자리를 예약할 수 있을 거야"
+    },
+    {
+     "id": "cym_for_kor:S0419L01U04",
+     "keep": false,
+     "ko": "만약 그들이 우리가 먹기를 원한다면 우리는 자리를 예약할 필요가 있어?",
+     "why": "The Welsh starts 'ydan ni angen', a question, but the Korean was a statement. Corrected the Korean, but not needed: five better rows are kept."
+    },
+    {
+     "id": "cym_for_kor:S0419L01U06",
+     "keep": false,
+     "why": "The tenses clash: 'byddai'n braf' (would be nice) next to present-tense 'os ydyn nhw isio' is unnatural Welsh."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0419L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L01B03",
+     "keep": false,
+     "why": "Bare 'symud' means move in general, but 이사하기 fixes 'move house'. The Korean also invites 'symud tŷ', so it does not give one Welsh answer."
+    }
+   ]
+  },
+  "S0419L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그들을 도우면 좋겠어 하지만 우리는 무엇을 해야 할지 알지 못했어",
+     "ok": false,
+     "why": "'licio' here is part of 'bydden ni'n licio' (would like), and 'nhw' is the object of helpu. The row never uses 'licio nhw' as 'like them'."
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그들에게 다른 것을 말하면 좋겠어",
+     "ok": false,
+     "why": "The row has no 'licio nhw' = like them; 'licio' belongs to 'bydden ni'n licio' and 'them' is 'wrthyn nhw'."
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그들에게 도움을 청하면 좋겠어",
+     "ok": false,
+     "why": "The row has no 'licio nhw' = like them; 'licio' belongs to 'bydden ni'n licio' and 'them' is 'iddyn nhw'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0419L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03U01",
+     "keep": true,
+     "ko": "나는 그들을 좋아해 왜냐하면 그들은 지역 사회에 봉사하고 싶어하거든"
+    },
+    {
+     "id": "cym_for_kor:S0419L03U03",
+     "keep": false,
+     "why": "The meaning is odd ('we don't want to like them, but it doesn't matter'), so the line is unnatural as practice."
+    },
+    {
+     "id": "cym_for_kor:S0419L03U07",
+     "keep": false,
+     "why": "A fine row, but not needed: five rows are already kept."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0419L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0419L03B02",
+     "keep": false,
+     "why": "Grammatical, but 'we want to like them' is the weakest of the four semantically, and the basket is already full with three better ones."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:13:34.187Z"
+}

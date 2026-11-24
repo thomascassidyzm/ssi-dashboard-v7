@@ -1,0 +1,241 @@
+{
+ "seed": 112,
+ "at": "2026-11-24T18:25:36.575Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0112L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그건 쉬웠어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그건 유용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그건 재미있었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 그건 유용했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어젯밤에 그건 재미있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그건 좋은 일이었어, 왜냐하면 우리는 바꿔야 하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "응, 나는 그걸 즐겼어, 왜냐하면 그건 재미있었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그게 가능했는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0112L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 너는 그걸 아주 잘 말해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 그걸 아주 잘 말해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그리고 너는 그걸 아주 잘 말해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "응, 나는 그걸 아주 많이 즐겼어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 아주 잘했다고 느껴",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 아주 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 아주 잘했다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 모든 것을 아주 잘했다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "아주 좋았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그녀가 옳았다는 것",
+     "ok": false,
+     "why": "Here iawn means 'right/correct' (bod hi'n iawn = that she was right). That is not the 'very' sense this LEGO teaches as 아주."
+    },
+    {
+     "n": 11,
+     "ko": "너는 무언가를 아주 잘했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 다시 아주 잘하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "너는 다시 아주 잘했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 네가 아주 잘했다고 생각해",
+     "ok": false,
+     "why": "This would need the same Korean as o7 (bo' ti 'di gwneud yn dda iawn), so one prompt has two Welsh answers (wedi vs 'di). That breaks ZUT."
+    },
+    {
+     "n": 15,
+     "ko": "아주 흥미로웠어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0112L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0112L03U01",
+     "keep": false,
+     "why": "good, but only 1 USE needed and U03 is a fuller sentence"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U02",
+     "keep": false,
+     "why": "good, but only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U04",
+     "keep": false,
+     "why": "only 1 USE needed; the 'i ddysgu' after anodd is weaker"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U05",
+     "keep": false,
+     "why": "only 1 USE needed; the Korean '배워 왜냐하면' reads stiffly"
+    },
+    {
+     "id": "cym_for_kor:S0112L03U06",
+     "keep": false,
+     "why": "good, but only 1 USE needed"
+    }
+   ]
+  },
+  "S0112L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 오늘 그걸 예상하고 있지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 나는 그걸 예상하고 있지 않았거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그리고 나는 그걸 예상하고 있지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그걸 예상하고 있지 않았어, 하지만 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 나는 그걸 예상하고 있지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 놀라워, 왜냐하면 나는 그걸 예상하고 있지 않았거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 한밤중에 그걸 예상하고 있지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 왜 내가 그걸 예상하고 있지 않았는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T19:56:52.374Z"
+}

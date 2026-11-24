@@ -1,0 +1,61 @@
+{
+ "seed": 552,
+ "at": "2026-11-24T19:38:51.013Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0552L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 예전에 마을 반대편 끝에 살았었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 마을 반대편 끝에 살고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜 교회가 마을 반대편 끝에 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그건 마을 반대편 끝에 네 가족이 사는 곳 근처야",
+     "ok": true,
+     "why": "The Welsh is natural North Welsh here, and ym mhen arall y pentref keeps the location sense this LEGO teaches."
+    },
+    {
+     "n": 5,
+     "ko": "그래서 그건 마을 반대편 끝에 교회가 있는 곳 근처야",
+     "ok": true,
+     "why": "The Welsh is natural North Welsh here, and ym mhen arall y pentref keeps the location sense this LEGO teaches."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0552L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0552L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0552L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0552L02B04",
+     "keep": false,
+     "why": "Not needed: only 3 BUILD top-ups were wanted and the three stronger candidates fill them. It is grammatical, but longer than a BUILD row should be."
+    }
+   ]
+  }
+ }
+}

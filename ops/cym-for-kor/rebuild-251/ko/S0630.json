@@ -1,0 +1,140 @@
+{
+ "seed": 630,
+ "at": "2026-11-24T19:51:57.273Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0630L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 네가 말한 것을 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This uses the earlier chunk 'ga i ofyn' (may I ask), not 'ga i' = can I have, so it does not practise this LEGO, and its Korean does not use this LEGO's gloss 받을 수 있을까. It belongs in the 'ga i ofyn' basket."
+    },
+    {
+     "n": 2,
+     "ko": "내가 너에게 그 영화에 대해 네가 어떻게 생각했는지 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    },
+    {
+     "n": 3,
+     "ko": "그래서 내가 내 돈을 돌려받을 수 있을까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "제가 차와 함께 드실 우유를 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'. The gloss 내가 ~ 받을 수 있을까 cannot express it."
+    },
+    {
+     "n": 5,
+     "ko": "제가 커피와 함께 드실 우유를 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'."
+    },
+    {
+     "n": 6,
+     "ko": "제가 우유랑 설탕을 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'."
+    },
+    {
+     "n": 7,
+     "ko": "미안하지만 내가 왜인지 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    },
+    {
+     "n": 8,
+     "ko": "제가 드실 무언가를 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl rhywbeth i chi yfed' offers to fetch a drink. It reverses the seed's 'can I have something to drink', and the gloss 받을 수 있을까 would mislead the learner."
+    },
+    {
+     "n": 9,
+     "ko": "제가 커피와 함께 드실 우유랑 설탕을 가져다 드려도 될까요?",
+     "ok": false,
+     "why": "Wrong sense. 'ga i nôl … i chi' is an offer (may I fetch you), not 'can I have'."
+    },
+    {
+     "n": 10,
+     "ko": "내가 나중에 무슨 일이 일어날지 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    },
+    {
+     "n": 11,
+     "ko": "네가 떠나기 전에 내가 질문 몇 개 물어봐도 될까?",
+     "ok": false,
+     "why": "Wrong sense. This is the 'ga i ofyn' (may I ask) chunk, not 'ga i' = can I have."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0630L01B03",
+     "keep": true,
+     "ko": "내가 마실 것 좀 받을 수 있을까"
+    },
+    {
+     "id": "cym_for_kor:S0630L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01B02",
+     "keep": false,
+     "why": "Only 2 BUILD needed; B03 and B01 are stronger, and the bare 'rywbeth' fragment adds little."
+    },
+    {
+     "id": "cym_for_kor:S0630L01B04",
+     "keep": false,
+     "why": "'na ga i de' reads as 'no, may I have tea', an odd and ambiguous opener with no clear meaning as a BUILD line."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0630L01U08",
+     "keep": true,
+     "ko": "제가 도움을 받을 수 있을까요 부탁해요",
+     "why": "'os gwelwch yn dda' is the formal chi form, so the line needs 해요 with 제가 and 부탁해요, as in the seed. 반말 plus 부탁해 broke the register rule."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U03",
+     "keep": true,
+     "ko": "제가 레드 와인 한 병 받을 수 있을까요 부탁해요",
+     "why": "Formal 'os gwelwch yn dda' needs 해요 and 부탁해요, as in the seed, not 반말."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U05",
+     "keep": false,
+     "why": "Only 5 USE needed; 'panad cryf o goffi' is the least idiomatic word order of the set."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U06",
+     "keep": false,
+     "why": "Only 5 USE needed; stronger ones were kept."
+    },
+    {
+     "id": "cym_for_kor:S0630L01U07",
+     "keep": false,
+     "why": "Only 5 USE needed; stronger ones were kept."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:27:59.631Z"
+}

@@ -1,0 +1,113 @@
+{
+ "seed": 227,
+ "at": "2026-11-24T18:42:54.636Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0227L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0227L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01B03",
+     "keep": false,
+     "why": "Sound, but the three BUILD top-ups are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0227L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0227L01U04",
+     "keep": false,
+     "why": "The five USE top-ups are already filled, and the Korean 왜냐하면 … 거야 reads less naturally than the kept rows"
+    }
+   ]
+  },
+  "S0227L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나에게 왜인지 말하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁 나에게 말하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 나에게 말하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 네가 무엇을 말할지 나한테 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 나중에 나에게 말하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "왜 그녀는 나에게 말하고 싶어했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 나에게 왜인지 말하고 싶어했던 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 지금 나에게 말하고 싶지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그는 나에게 답이 무엇인지 말하고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

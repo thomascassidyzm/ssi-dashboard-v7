@@ -1,0 +1,161 @@
+{
+ "seed": 536,
+ "at": "2026-11-24T19:37:01.814Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0536L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 미친 것이 나쁘다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0536L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03B02",
+     "keep": false,
+     "why": "Enough BUILD rows already; this one only swaps in another adjective and adds nothing"
+    },
+    {
+     "id": "cym_for_kor:S0536L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L03U04",
+     "keep": false,
+     "why": "Enough USE rows already; 'cael hi'n anodd i gredu' makes a heavier frame than needed"
+    },
+    {
+     "id": "cym_for_kor:S0536L03U05",
+     "keep": false,
+     "why": "Saying 'being crazy was easy' makes little sense"
+    },
+    {
+     "id": "cym_for_kor:S0536L03U07",
+     "keep": false,
+     "why": "Saying 'I heard being crazy is important' makes little sense"
+    }
+   ]
+  },
+  "S0536L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "미안해, 하지만 나는 지난 금요일 밤에 기다리고 싶지 않았어",
+     "ok": false,
+     "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해). It is not the taught sense 나쁜, so 나쁜 never appears in the Korean."
+    },
+    {
+     "n": 2,
+     "ko": "그게 나빴다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그게 나빴다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "미친 것이 나쁜",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어젯밤에 나쁜",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 갈 시간이야",
+     "ok": false,
+     "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해), not the taught sense 나쁜"
+    },
+    {
+     "n": 7,
+     "ko": "미안해, 하지만 나는 월요일에 바빠",
+     "ok": false,
+     "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해), not the taught sense 나쁜"
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 나는 네가 말한 것을 듣지 못했어",
+     "ok": false,
+     "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해), not the taught sense 나쁜"
+    },
+    {
+     "n": 9,
+     "ko": "미안해, 하지만 나는 네가 말한 것을 잊어버렸어",
+     "ok": false,
+     "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해), not the taught sense 나쁜"
+    },
+    {
+     "n": 10,
+     "ko": "미안해, 하지만 나는 잊어버렸어",
+     "ok": false,
+     "why": "Here ddrwg is only part of the fixed idiom 'mae'n ddrwg gen i' (sorry, glossed 미안해), not the taught sense 나쁜"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0536L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0536L04U06",
+     "keep": true,
+     "ko": "그건 나쁘지 않을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0536L04U02",
+     "keep": false,
+     "why": "'원래 쉬운 게 아니야' does not pin down 'i fod' (supposed to), so it could equally be the answer for 'dydy o ddim yn hawdd'. That gives the prompt two Welsh answers, and no natural Korean wording isolates the 'supposed to' sense."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:22:24.016Z"
+}

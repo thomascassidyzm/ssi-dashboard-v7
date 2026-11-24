@@ -1,0 +1,97 @@
+{
+ "seed": 549,
+ "at": "2026-11-24T19:38:34.181Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0549L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 꼭 ~해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 꼭 멈춰야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 꼭 기차를 타야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 하고 싶지 않아, 하지만 나는 꼭 해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 당장 꼭 열쇠들을 찾아야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해 하지만 나는 오늘 저녁 내 어머니를 데려가야 해",
+     "ok": false,
+     "why": "The Welsh is natural, but it uses the bare 'rhaid i mi' (the old LEGO 'rhaid i mi fynd â') with no 'mae’n'. It never says 'mae’n rhaid i mi', so it can't practise this LEGO in this basket."
+    },
+    {
+     "n": 7,
+     "ko": "미안해 하지만 나는 내일 밤 파티에 내 어머니를 데려가야 해",
+     "ok": false,
+     "why": "The Welsh is natural, but it uses the bare 'rhaid i mi fynd â' with no 'mae’n', so it doesn't contain or practise the LEGO 'mae’n rhaid i mi'."
+    },
+    {
+     "n": 8,
+     "ko": "미안해 하지만 나는 앉아야 해",
+     "ok": false,
+     "why": "It uses the bare 'rhaid i mi' (glossed 나는 ~해야 해, without 꼭), not 'mae’n rhaid i mi'. The Welsh is fine, but it doesn't practise this LEGO."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0549L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0549L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0549L02U03",
+     "keep": true,
+     "ko": "나는 꼭 곧장 집에 가야 해 왜냐하면 점점 늦어지고 있기 때문이야"
+    },
+    {
+     "id": "cym_for_kor:S0549L02U04",
+     "keep": false,
+     "why": "Good phrase, but the three USE slots are already filled by stronger, shorter rows."
+    },
+    {
+     "id": "cym_for_kor:S0549L02U05",
+     "keep": false,
+     "why": "Good phrase, but the three USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0549L02U06",
+     "keep": false,
+     "why": "'y swydd' means a particular job, but the Korean 직업을 reads as a job in general, and the row is weaker than the ones kept."
+    },
+    {
+     "id": "cym_for_kor:S0549L02U07",
+     "keep": false,
+     "why": "Starting with ond and saying 'heb y car' makes it an awkward one-off; the slots are already filled."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:23:20.830Z"
+}

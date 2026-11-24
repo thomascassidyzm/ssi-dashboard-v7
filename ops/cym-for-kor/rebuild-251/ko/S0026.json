@@ -1,0 +1,341 @@
+{
+ "seed": 26,
+ "at": "2026-11-24T18:10:29.279Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0026L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0026L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01B02",
+     "keep": false,
+     "why": "BUILD quota of 3 already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0026L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L01U03",
+     "keep": false,
+     "why": "USE quota filled; 'I want to speak more because I like learning' is the weakest logic of the set"
+    }
+   ]
+  },
+  "S0026L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 아주 좋다고 느껴",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 지금 어떻게 느껴?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 어떻게 느껴?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 ~에 대해 어떻게 느껴?",
+     "ok": true,
+     "why": "open fragment 'sut wyt ti'n teimlo am …' is natural; Korean mirrors the open end"
+    },
+    {
+     "n": 5,
+     "ko": "너는 오늘 어떻게 느껴?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 좋다고 느껴",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 느껴?",
+     "ok": false,
+     "why": "'wyt ti'n teimlo?' standing alone as a complete question has no object or complement; it is not a natural Welsh utterance"
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 괜찮다고 느끼는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0026L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L02U02",
+     "keep": false,
+     "why": "Good phrase, but only one USE is needed and U01 is simpler and closer to the core of the LEGO"
+    },
+    {
+     "id": "cym_for_kor:S0026L02U05",
+     "keep": false,
+     "why": "Only one USE is needed; U01 is the better choice"
+    },
+    {
+     "id": "cym_for_kor:S0026L02U06",
+     "keep": false,
+     "why": "Only one USE is needed; U01 is the better choice"
+    },
+    {
+     "id": "cym_for_kor:S0026L02U07",
+     "keep": false,
+     "why": "Only one USE is needed; U01 is the better choice"
+    },
+    {
+     "id": "cym_for_kor:S0026L02U08",
+     "keep": false,
+     "why": "Only one USE is needed; U01 is the better choice"
+    },
+    {
+     "id": "cym_for_kor:S0026L02U03",
+     "keep": false,
+     "why": "Only one USE is needed; the Korean also drops the meaning of cyn bo hir"
+    },
+    {
+     "id": "cym_for_kor:S0026L02U04",
+     "keep": false,
+     "why": "Only one USE is needed; U01 is the better choice"
+    }
+   ]
+  },
+  "S0026L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 마치 내가 ~인 것처럼 느껴",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0026L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L03B01",
+     "keep": false,
+     "why": "BUILD quota of 2 filled"
+    },
+    {
+     "id": "cym_for_kor:S0026L03B04",
+     "keep": false,
+     "why": "BUILD quota filled; 'I speak as if I'm learning' is the weakest"
+    },
+    {
+     "id": "cym_for_kor:S0026L03U02",
+     "keep": true,
+     "ko": "너는 왜 마치 내가 웨일스어를 하지 않는 것처럼 나와 이야기해?"
+    },
+    {
+     "id": "cym_for_kor:S0026L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L03U01",
+     "keep": true
+    }
+   ]
+  },
+  "S0026L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 거의 준비가 된",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 마치 내가 지금 거의 준비가 된 것처럼 느껴",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "마치 내가 거의 준비가 된 것처럼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "거의 준비가 됐지만 나는 지금 멈추고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0026L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L04U02",
+     "keep": true,
+     "ko": "너는 거의 시작할 준비가 됐어?"
+    },
+    {
+     "id": "cym_for_kor:S0026L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L04U05",
+     "keep": false,
+     "why": "USE quota of 4 filled; Korean '웨일스어를 이야기할' is also awkward"
+    },
+    {
+     "id": "cym_for_kor:S0026L04U06",
+     "keep": false,
+     "why": "USE quota of 4 filled"
+    }
+   ]
+  },
+  "S0026L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 너와 갈 수 있는지",
+     "ok": false,
+     "why": "in 'medra i fynd' the i is the pronoun and fynd is a soft mutation after medra; there is no 'i fynd' (to go) here, so the LEGO is used in the wrong sense"
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 너와 갈 수 있는지 확실하지 않아",
+     "ok": false,
+     "why": "same as o1: 'medra i fynd' = I can go (pronoun i plus mutated mynd), not the infinitive 'i fynd'"
+    },
+    {
+     "n": 3,
+     "ko": "나는 너와 갈 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 지금 갈 준비가 됐어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0026L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L05U02",
+     "keep": true,
+     "ko": "너는 내일 갈 거야?"
+    },
+    {
+     "id": "cym_for_kor:S0026L05U05",
+     "keep": true,
+     "ko": "나는 어떻게 갈지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0026L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L05U06",
+     "keep": false,
+     "why": "USE quota of 4 filled"
+    },
+    {
+     "id": "cym_for_kor:S0026L05U03",
+     "keep": false,
+     "why": "USE quota filled; '너 왜 지금 갈 거야' is an awkward Korean question"
+    },
+    {
+     "id": "cym_for_kor:S0026L05U07",
+     "keep": false,
+     "why": "'learn how to go' is semantically weak"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0026L05B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0026L05B03",
+     "keep": true,
+     "ko": "너 갈 거야?"
+    },
+    {
+     "id": "cym_for_kor:S0026L05B01",
+     "keep": false,
+     "why": "A bare 'mynd i fynd' with no subject is an unnatural fragment, and 갈 거야 also fits dw i'n mynd i fynd, so the answer is not unique"
+    },
+    {
+     "id": "cym_for_kor:S0026L05B04",
+     "keep": false,
+     "why": "The quota is filled by B02 and B03; also 갈 방법 is a stiff Korean fragment for sut i fynd"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:29:56.484Z"
+}

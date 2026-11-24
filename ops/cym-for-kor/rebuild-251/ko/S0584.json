@@ -1,0 +1,118 @@
+{
+ "seed": 584,
+ "at": "2026-11-24T19:44:45.368Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0584L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0584L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03B04",
+     "keep": false,
+     "why": "'보면서' could mean gweld or gwylio, and the seed already uses 보다 for gweld; also only 3 BUILD are needed"
+    },
+    {
+     "id": "cym_for_kor:S0584L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0584L03U04",
+     "keep": false,
+     "why": "good row, but 5 USE are already kept and this one is long and heavy"
+    },
+    {
+     "id": "cym_for_kor:S0584L03U03",
+     "keep": false,
+     "why": "'슬퍼?' points to 'wyt ti'n drist' rather than 'teimlo'n drist', so it has two possible answers; also surplus"
+    }
+   ]
+  },
+  "S0584L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "세계의 이 지역의 산",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "산 사이에 있는 마을",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "산 가까이에서 자라다",
+     "ok": true,
+     "why": "tyfu i fyny means grow up (자라다), not the 기르다 sense"
+    },
+    {
+     "n": 4,
+     "ko": "숲을 지나 산 쪽으로 가는 길",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 산 가까이에서 살고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 아직 산을 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 예전에 산 반대편에서 살곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "산 가까이에서는 그동안 멋졌어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 산 가까이에서 토마토를 기르려고 자주 노력해 봤어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

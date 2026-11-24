@@ -1,0 +1,213 @@
+{
+ "seed": 108,
+ "at": "2026-11-24T18:24:38.846Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0108L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그들이 무엇을 원했는지 알지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 무엇이 일어날지 알지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 설명하는 방법을 알지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 무엇이 일어날지 알지 못했어",
+     "ok": false,
+     "why": "Duplicates o2 (beth vs be'). The same Korean would lead to two written forms, which breaks ZUT."
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워 하지만 우리는 너무 많이 가져가고 싶지 않았어",
+     "ok": false,
+     "why": "Uses 'doeddan ni ddim isio', not 'doeddan ni ddim yn', so the LEGO is missing. Cymryd also means 'take', not the taught sense 'take time'."
+    },
+    {
+     "n": 6,
+     "ko": "그들은 우리와 오고 싶어했어 하지만 그들은 할 수 없었어",
+     "ok": false,
+     "why": "Has 'doeddan nhw ddim yn', not 'doeddan ni ddim yn', so the LEGO is missing."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0108L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U02",
+     "keep": false,
+     "why": "Korean '보지 않았어' is stilted for 'didn't see'. The three stronger ones already fill the quota."
+    },
+    {
+     "id": "cym_for_kor:S0108L01U04",
+     "keep": false,
+     "why": "Korean '알고 지내지 않았으니까' is awkward and the line is long."
+    },
+    {
+     "id": "cym_for_kor:S0108L01U05",
+     "keep": false,
+     "why": "Korean '이해하지 않았어' is unnatural; a native speaker would say 이해하지 못했어."
+    },
+    {
+     "id": "cym_for_kor:S0108L01U07",
+     "keep": false,
+     "why": "Fine, but the quota is already filled by better rows."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0108L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0108L01U05",
+     "keep": false,
+     "why": "In Korean, '이해하지 않았어' sounds like 'we refused to understand'. The natural form '이해하지 못했어' moves away from the ~지 않았어 gloss and could also be read as 'couldn't understand' (gallu), giving two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0108L01U04",
+     "keep": false,
+     "why": "'알고 지내지 않았으니까' is awkward Korean for nabod. With two clauses, the line is too long for a USE row."
+    }
+   ]
+  },
+  "S0108L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 우리가 ~ 보기를 바랐던 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그것이 어디에 있었는지 보기를 바랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 오늘 저녁 그 사람들을 보기를 바랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 좋은 것이기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 상관없기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그게 그렇지 않기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 우리가 모든 것을 제때 끝내기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정말 고마워 그리고 나는 곧 누군가를 만나기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0108L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "한밤중에 나는 ~려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "어젯밤 한밤중에 깨기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 한밤중에 연습할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "한밤중에 깨기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 한밤중에 걱정하지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 한밤중에 멈추고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "한밤중에 나는 그 이야기를 끝내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 한밤중에 그것에 대해 생각하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 한밤중에 멈추고 싶어했어 하지만 나는 끝내고 싶었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:56:22.084Z"
+}

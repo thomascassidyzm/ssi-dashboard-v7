@@ -1,0 +1,267 @@
+{
+ "seed": 121,
+ "at": "2026-11-24T18:27:03.050Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0121L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 오늘은 특이해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그것이 특이한 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 펍에서는 특이하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "지금은 특이해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "특이하지만 유용해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 놀라워, 왜냐하면 특이하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "특이하지만 정말 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "특이해, 왜냐하면 그건 그녀가 말하고 있던 것과 같은 거니까",
+     "ok": true,
+     "why": "Grammatical, natural North Welsh; anarferol used in the taught sense."
+    },
+    {
+     "n": 9,
+     "ko": "오늘 저녁 펍에서는 특이해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0121L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 가고 싶어한다는 걸 몰랐어",
+     "ok": false,
+     "why": "Does not contain the LEGO: this is 'bo' ti isio' (positive), not the negative 'bo' ti ddim yn'. The match only happens because 'ddim yn' appears in 'do'n i ddim yn gwybod'. Wrong sense for this basket."
+    },
+    {
+     "n": 2,
+     "ko": "나는 네가 시작하고 싶어한다는 걸 몰랐어",
+     "ok": false,
+     "why": "Same problem: 'bo' ti isio' is positive; 'ddim yn' belongs to 'do'n i ddim yn gwybod'. It does not practise 'bo' ti ddim yn'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0121L02B01",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0121L02B03",
+     "keep": false,
+     "why": "Good row, but the BUILD quota of 1 is filled (it is the next best if both originals are dropped)."
+    },
+    {
+     "id": "cym_for_kor:S0121L02B04",
+     "keep": false,
+     "why": "Good row, but the BUILD quota is filled."
+    },
+    {
+     "id": "cym_for_kor:S0121L02B02",
+     "keep": false,
+     "why": "Good row, but the BUILD quota is filled."
+    },
+    {
+     "id": "cym_for_kor:S0121L02U01",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0121L02U03",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0121L02U06",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0121L02U05",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0121L02U02",
+     "keep": true,
+     "ko": "너는 네가 그 사람들을 알고 지내지 않는다는 게 확실해?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0121L02U04",
+     "keep": false,
+     "why": "Acceptable row, but the USE quota of 5 is filled; its Korean also repeats 그가, which is clumsy."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0121L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0121L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0121L02B02",
+     "keep": false,
+     "why": "Sound, but only 2 BUILD slots are open and the two complete sentences use the LEGO better than this fragment, whose 기분이 더 낫지 is also a bit stiff."
+    }
+   ]
+  },
+  "S0121L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 네 차를 사용하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "모든 것을 사용하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 ~을 사용하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 ~을 사용하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 모든 것을 사용하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 왜 네 차를 사용하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 오늘 몇몇 단어를 사용하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 모든 것을 동시에 사용할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내가 모든 것을 사용할 필요가 있는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그것이 네가 네 차를 사용하고 싶은 이유가 아니야",
+     "ok": true,
+     "why": "'dim dyna pam …' is natural North Welsh; defnyddio is used in the taught sense."
+    }
+   ]
+  },
+  "S0121L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "~ 네 차를 볼 수 없어",
+     "ok": true,
+     "why": "Natural fragment ('ddim yn medru gweld' + object); dy gar is correctly soft-mutated and used in the taught sense."
+    },
+    {
+     "n": 2,
+     "ko": "오늘 네 차",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네 차가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 하지만 나는 네 차가 필요 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네 차를 사용하는 게 특이해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 오늘 네 차를 사용하고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 한밤중에 네 차를 사용하지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 오늘 저녁 네 차를 사용하고 싶어했어",
+     "ok": true,
+     "why": "'oeddan nhw isio defnyddio dy gar heno' is natural North Welsh and fits this basket."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:57:19.421Z"
+}

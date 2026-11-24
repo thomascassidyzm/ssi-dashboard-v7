@@ -1,0 +1,147 @@
+{
+ "seed": 11,
+ "at": "2026-11-24T18:07:18.549Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0011L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이야기할 수 있으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 설명할 수 있으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 말이 무슨 뜻인지 설명할 수 있으면 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0011L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L01B03",
+     "keep": false,
+     "why": "BUILD count reached; B04 uses already-taught esbonio"
+    },
+    {
+     "id": "cym_for_kor:S0011L01B02",
+     "keep": false,
+     "why": "Wrong mutation: a verb-noun after the verb-noun 'medru' takes no soft mutation, so it should be 'fedru dysgu', not 'fedru ddysgu'"
+    },
+    {
+     "id": "cym_for_kor:S0011L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L01U04",
+     "keep": false,
+     "why": "Wrong mutation: it should be 'fedru deud', not 'fedru ddeud', because a verb-noun after 'medru' is not mutated"
+    }
+   ]
+  },
+  "S0011L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 끝낸 후에 나는 ~ㄹ 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 끝낸 후에 이야기하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 끝낸 후에 나는 내 말이 무슨 뜻인지 설명할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 끝낸 후에 이야기하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 끝낸 후에 설명할 수 있으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 네가 끝낸 후에 이야기할 건지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0011L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L03B02",
+     "keep": false,
+     "why": "BUILD count reached"
+    },
+    {
+     "id": "cym_for_kor:S0011L03B04",
+     "keep": false,
+     "why": "BUILD count reached"
+    },
+    {
+     "id": "cym_for_kor:S0011L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0011L03U03",
+     "keep": false,
+     "why": "USE count reached"
+    },
+    {
+     "id": "cym_for_kor:S0011L03U04",
+     "keep": false,
+     "why": "USE count reached"
+    },
+    {
+     "id": "cym_for_kor:S0011L03U05",
+     "keep": false,
+     "why": "USE count reached"
+    },
+    {
+     "id": "cym_for_kor:S0011L03U06",
+     "keep": false,
+     "why": "USE count reached"
+    }
+   ]
+  }
+ }
+}

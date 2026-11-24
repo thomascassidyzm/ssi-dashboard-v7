@@ -1,0 +1,255 @@
+{
+ "seed": 466,
+ "at": "2026-11-24T19:20:10.749Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0466L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 그녀의 이름이 뭔지 알아내게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 이야기하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 한 번 이야기하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 할 수 있으면 이야기하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "다음번에 내가 이야기하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내가 그녀의 이름이 뭔지 기억하는 걸 연습하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 제안을 찾아내게 해 줘",
+     "ok": false,
+     "why": "Here cynnig is the noun 'an offer', but the course teaches it as the verb 제안하다, so it is used in the wrong sense. 'Let me find an offer' is also odd as a standalone line."
+    },
+    {
+     "n": 8,
+     "ko": "우리가 사야 할 남은 것에 대해 내가 이야기하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내가 멈추게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "내가 설명하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "오늘 저녁에 내가 너한테 전화하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "하지만 내가 알아내게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "내가 앉게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "내가 그 질문에 대답하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "미안해, 하지만 내가 설명하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "내가 문을 열린 채로 잡고 있게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "맞아, 다음 주에 내가 너한테 전화하게 해 줘",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0466L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그걸 던지는 걸 잊어버렸어",
+     "ok": false,
+     "why": "Wrong mutation: taflu is the object of the verbnoun anghofio and should not mutate. It should be 'wnaeth hi anghofio taflu fo', not 'daflu'."
+    },
+    {
+     "n": 2,
+     "ko": "내가 그걸 던지게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 그걸 한 번 던지게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그녀에게 그걸 던져 달라고 물어볼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 너에게 그걸 던져 달라고 물어볼 필요가 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0466L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L02U02",
+     "keep": true,
+     "ko": "너는 가기 전에 그걸 던져야 해?"
+    },
+    {
+     "id": "cym_for_kor:S0466L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L02U04",
+     "keep": false,
+     "why": "Sound, but five better candidates already fill the quota."
+    },
+    {
+     "id": "cym_for_kor:S0466L02U07",
+     "keep": false,
+     "why": "'던지는 게 좋겠어' blurs dylwn i into a suggestion, and the quota is already filled."
+    }
+   ]
+  },
+  "S0466L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 다음번에 그걸 벽 너머로 던질 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "벽 너머로 던지다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그걸 벽 너머로 던지다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 벽 너머로 한 번 물어볼 거야",
+     "ok": false,
+     "why": "'I will ask once over the wall' does not make sense as a sentence. It is a mechanical combination of parts."
+    },
+    {
+     "n": 5,
+     "ko": "다음번에 내가 그걸 벽 너머로 던지게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 다른 걸 벽 너머로 던질 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "호텔 가까이 벽 너머로",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0466L03U01",
+     "keep": true,
+     "ko": "너는 벽 너머로 보고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0466L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0466L03U03",
+     "keep": false,
+     "why": "'We could fall over the wall' with a conditional is a strange thing to say on its own, and the quota is already filled."
+    }
+   ]
+  }
+ }
+}

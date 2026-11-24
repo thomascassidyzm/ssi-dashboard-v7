@@ -1,0 +1,239 @@
+{
+ "seed": 111,
+ "at": "2026-11-24T18:25:12.665Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0111L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 막 우리에게 무언가를 묻기 시작했었어",
+     "ok": false,
+     "why": "In this phrase 'newydd' means 'just' (newydd ddechrau = had just started), not 'new'. 'rhywbeth' and 'newydd' are separate here, so the phrase never uses the LEGO 'rhywbeth newydd' (new thing)."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0111L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04B04",
+     "keep": false,
+     "why": "Sound, but only 2 BUILD were needed and B01 and B03 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0111L04B02",
+     "keep": false,
+     "why": "'i ddysgu' without 'i'w' is weaker as a standalone fragment, and the BUILD count is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0111L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04U04",
+     "keep": false,
+     "why": "Weaker than the five kept; the USE count is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0111L04U05",
+     "keep": false,
+     "why": "'i ddysgu' without 'i'w' is less idiomatic; the USE count is already filled."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0111L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L04B02",
+     "keep": false,
+     "why": "Only one BUILD was needed. B04 is a complete, natural sentence, while 'rhywbeth newydd i ddysgu' is a weaker fragment without 'i'w'."
+    }
+   ]
+  },
+  "S0111L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그것은 아주 잘 되어 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그것은 아주 빨리 가고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 할 수 있는 한 빨리 연습하는 것이 유용해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그것은 어려워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그리고 너와 하면 흥미로워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그리고 그것은 흥미로워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 그것은 유용해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정말 고마워, 너를 돕는 것은 재미있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "응, 나는 준비가 됐어, 왜냐하면 그것은 중요하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 더 연습해야 해, 왜냐하면 그것은 흥미로우니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "하지만 나는 지금 가야 해",
+     "ok": false,
+     "why": "Here 'mae'n' is part of the obligation phrase 'mae'n rhaid i mi' (I must), not 'it is …', so it is the wrong sense. The Korean would also fit 'ond rhaid i mi fynd rŵan', which gives two possible Welsh answers."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0111L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0111L05U03",
+     "keep": false,
+     "why": "Sound, but only one USE was needed and U01 matches the seed's own frame better."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U02",
+     "keep": false,
+     "why": "Sound, but only one USE was needed."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U04",
+     "keep": false,
+     "why": "'mae'n bron yn barod' is awkward: the reduced 'n before 'bron' reads oddly, and 'mae o bron yn barod' is the natural form."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U05",
+     "keep": false,
+     "why": "Only one USE was needed, and the Korean '해 왜냐하면' splice is clumsy."
+    },
+    {
+     "id": "cym_for_kor:S0111L05U06",
+     "keep": false,
+     "why": "Only one USE was needed, and the Korean '좋겠어 왜냐하면' splice is clumsy."
+    }
+   ]
+  },
+  "S0111L07": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리의 뇌를 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 이 순간 우리의 뇌",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 우리의 뇌를 돌보다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 우리의 뇌를 바꿔야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 우리의 뇌를 바꾸려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 우리의 뇌를 돌봐야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 우리의 뇌를 자주 시험해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 우리의 뇌를 바꾸고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "하지만 우리는 지금 우리의 뇌를 돌봐야 해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:56:42.826Z"
+}

@@ -1,0 +1,61 @@
+{
+ "seed": 540,
+ "at": "2026-11-24T19:37:32.029Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0540L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0540L05B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05B04",
+     "keep": false,
+     "why": "BUILD count already met; it is a full sentence, so it is a weaker BUILD row than the others"
+    },
+    {
+     "id": "cym_for_kor:S0540L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05U02",
+     "keep": true,
+     "ko": "나는 차 없이는 살 수 없을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0540L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0540L05U04",
+     "keep": false,
+     "why": "USE count already met; almost the same as B04, so it adds little"
+    },
+    {
+     "id": "cym_for_kor:S0540L05U07",
+     "keep": false,
+     "why": "USE count already met; its Korean word order is awkward"
+    }
+   ]
+  }
+ }
+}

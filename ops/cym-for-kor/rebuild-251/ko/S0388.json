@@ -1,0 +1,159 @@
+{
+ "seed": 388,
+ "at": "2026-11-24T19:06:58.851Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0388L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그 사람이 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 일 분 전에 그 사람을 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "저기에 있는 그 사람",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그 사람을 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "맞아, 나는 그 사람을 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그 사람을 만나고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 저기에 있는 그 사람 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 금요일 밤에 그 사람을 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 그 사람을 아는 젊은 남자를 알아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0388L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 그게 작동할 거라고 생각해?",
+     "ok": false,
+     "why": "This row does not contain the LEGO 'ti’n gweithio' (it has 'ti’n meddwl' and 'o’n gweithio'). Its gweithio also means 'to function', not the 'to work at a job' sense this LEGO teaches."
+    },
+    {
+     "n": 2,
+     "ko": "정말 고마워, 하지만 너 그게 작동할 거라고 생각해?",
+     "ok": false,
+     "why": "Same problem as o1: the LEGO 'ti’n gweithio' is not there, and gweithio is used in the wrong sense ('function')."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0388L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02B02",
+     "keep": false,
+     "why": "Good row, but the BUILD count is already met."
+    },
+    {
+     "id": "cym_for_kor:S0388L02B04",
+     "keep": false,
+     "why": "Good row, but the BUILD count is already met."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02U02",
+     "keep": false,
+     "why": "Good row, but the USE count is already met."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U03",
+     "keep": false,
+     "why": "The Welsh should read 'welest ti’r dyn' ('ti y' is not contracted). The Korean '봤어?' also clashes with 'wyt ti wedi gweld' (o7 of L01), so one prompt would have two answers."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U06",
+     "keep": false,
+     "why": "'wrthaf fi' sounds stilted next to the usual North Welsh 'wrtha i'."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0388L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02B02",
+     "keep": false,
+     "why": "Grammatical and natural, but only one BUILD is needed and B04 is closer to the seed's structure."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0388L02U03",
+     "keep": false,
+     "why": "The Welsh 'welest ti y dyn' should be contracted to 'welest ti'r dyn'. The Korean '봤어?' also fits 'wyt ti wedi gweld', so the prompt has two answers."
+    },
+    {
+     "id": "cym_for_kor:S0388L02U06",
+     "keep": false,
+     "why": "'wrthaf fi' sounds stilted where North Welsh would normally say 'wrtha i'."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:11:53.223Z"
+}

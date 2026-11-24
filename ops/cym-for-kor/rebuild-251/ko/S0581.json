@@ -1,0 +1,185 @@
+{
+ "seed": 581,
+ "at": "2026-11-24T19:44:12.566Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0581L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 무언가를 묻고 싶어할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그가 웨일스어로 얼마나 많이 이야기하고 싶어할지 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그가 그 책을 읽고 싶어할 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 식당에서 네 자매와 이야기하고 싶어할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 그가 무엇을 알고 싶어할지 나에게 말하지 않았다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0581L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L01U02",
+     "keep": false,
+     "why": "not needed: the four rows above fill the USE slots"
+    },
+    {
+     "id": "cym_for_kor:S0581L01U03",
+     "keep": false,
+     "why": "찾아내다 could also mean ffeindio allan, so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0581L01U06",
+     "keep": false,
+     "why": "translating the idiom 'os ti'n gofyn i mi' word for word gives unnatural Korean that does not carry the meaning"
+    }
+   ]
+  },
+  "S0581L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0581L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03B04",
+     "keep": false,
+     "why": "not needed: three BUILD rows are enough"
+    },
+    {
+     "id": "cym_for_kor:S0581L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L03U04",
+     "keep": true,
+     "ko": "나는 조금 더 기다리고 싶지 않아 왜냐하면 나는 피곤하거든"
+    },
+    {
+     "id": "cym_for_kor:S0581L03U06",
+     "keep": false,
+     "why": "the Korean 싶어 왔어 is unnatural for 'dan ni wedi bod isio'"
+    },
+    {
+     "id": "cym_for_kor:S0581L03U07",
+     "keep": false,
+     "why": "'ond ti isio' drops 'wyt', so the line reads as either a statement or a question; the prompt is unclear"
+    }
+   ]
+  },
+  "S0581L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 어떤지 알아내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 그게 어떤지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "밤에 그게 어떤지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 그게 어떤지 들었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 밖에서 그게 어떤지 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 지금 이 순간 그게 어떤지 상상할 수 없을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 반대편에서 그게 어떤지 알아내고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0581L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0581L05U03",
+     "keep": false,
+     "why": "almost the same line as original o5"
+    }
+   ]
+  }
+ }
+}

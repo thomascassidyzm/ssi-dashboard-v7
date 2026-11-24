@@ -1,0 +1,82 @@
+{
+ "seed": 653,
+ "at": "2026-11-24T19:54:16.721Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0653L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "실례지만, 불편하세요? 저는 누울 필요가 있어요",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0653L02B03",
+     "keep": true,
+     "ko": "실례지만, 지금 불편하세요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02B02",
+     "keep": true,
+     "ko": "여러분 지금 불편해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02B01",
+     "keep": false,
+     "why": "Not needed: 2 BUILD rows are already kept, and the bare 'felly' opener is the weakest BUILD candidate"
+    },
+    {
+     "id": "cym_for_kor:S0653L02B04",
+     "keep": false,
+     "why": "'os' can mean 'if' or 'whether', so this open fragment has two possible Korean readings and fails ZUT"
+    },
+    {
+     "id": "cym_for_kor:S0653L02U01",
+     "keep": true,
+     "ko": "실례지만, 제가 여기 앉아 있으면 불편하세요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02U02",
+     "keep": true,
+     "ko": "우리가 지금 가면 여러분 불편해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02U06",
+     "keep": true,
+     "ko": "저는 여러분이 불편한지 물어봤어요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02U05",
+     "keep": true,
+     "ko": "여러분이 불편하면 저는 가고 싶지 않아요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02U03",
+     "keep": true,
+     "ko": "제가 여기서 안 기다리면 여러분 불편해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0653L02U04",
+     "keep": false,
+     "why": "A plural-chi line needs 해요, but 해요 cannot carry 'let's' (-자) without also reading as 'peidiwch mynd allan', so the Korean cannot point to one Welsh answer"
+    },
+    {
+     "id": "cym_for_kor:S0653L02U07",
+     "keep": false,
+     "why": "Sound, but the 5 USE slots are already filled"
+    }
+   ]
+  }
+ }
+}

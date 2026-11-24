@@ -1,0 +1,180 @@
+{
+ "seed": 282,
+ "at": "2026-11-24T18:51:50.103Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0282L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 ~라는 걸 의미하지는 않아",
+     "ok": true,
+     "why": "Natural North Welsh. It is an open fragment ending on golygu, so the Korean keeps the open ~."
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그게 더 낫지는 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그게 ~라는 걸 의미하지는 않아",
+     "ok": true,
+     "why": "Natural Welsh. It is an open fragment and uses the LEGO in its taught sense."
+    },
+    {
+     "n": 4,
+     "ko": "그게 문제가 아니야",
+     "ok": true,
+     "why": "Uses 그게, as the L02 gloss does, to keep it apart from 그건 문제가 아니야, which is the gloss of the LEGO dydy hi ddim yn broblem."
+    },
+    {
+     "n": 5,
+     "ko": "그게 모든 것을 바꾸지는 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "하지만 그게 우리가 알아낼 수 없다는 걸 의미하지는 않아",
+     "ok": true,
+     "why": "Natural and idiomatic. Uses the LEGO in its taught sense."
+    },
+    {
+     "n": 7,
+     "ko": "내 어머니는 그렇게 느끼지 않아",
+     "ok": false,
+     "why": "The Welsh does not contain the LEGO dydy hynna ddim yn. It is dydy fy mam ddim yn … fel hynna, so it practises nothing in this basket."
+    },
+    {
+     "n": 8,
+     "ko": "그게 전혀 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그래, 하지만 그게 우리가 바뀔 수 없다는 걸 의미하지는 않아",
+     "ok": true,
+     "why": "Natural Welsh. Here newid is intransitive (we can't change), so the Korean uses 바뀔."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0282L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0282L02U02",
+     "keep": false,
+     "why": "good phrase, but the one USE slot is already filled by U05"
+    },
+    {
+     "id": "cym_for_kor:S0282L02U01",
+     "keep": false,
+     "why": "good phrase, but the one USE slot is already filled by U05"
+    },
+    {
+     "id": "cym_for_kor:S0282L02U04",
+     "keep": false,
+     "why": "good phrase, but the one USE slot is already filled by U05"
+    },
+    {
+     "id": "cym_for_kor:S0282L02U03",
+     "keep": false,
+     "why": "the Korean 일어나지 않을 거야 could also be answered with 'fydd hynna ddim yn digwydd', so it has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0282L02U06",
+     "keep": false,
+     "why": "long two-clause phrase; the USE slot is already filled with a cleaner one"
+    }
+   ]
+  },
+  "S0282L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그건 지금 이 순간 문제가 아니야",
+     "ok": true,
+     "why": "Follows its own LEGO gloss (hi = 그건). Warning: the seed's Korean 그건 문제가 아니야 is the same string this gloss gives for dydy hi, which is a ZUT clash at course level."
+    },
+    {
+     "n": 2,
+     "ko": "우리가 문제를 찾을 수 없다고",
+     "ok": true,
+     "why": "Natural Welsh in a that-clause, with problem in radical form after ffeindio. The gloss na = 아니 is the wrong sense here."
+    },
+    {
+     "n": 3,
+     "ko": "지금은 문제없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 문제를 원하지 않아",
+     "ok": true,
+     "why": "Isio takes a noun here, so the Korean needs 원하다. The gloss ~고 싶지 않아 cannot take a noun object."
+    },
+    {
+     "n": 5,
+     "ko": "그는 문제를 원하지 않아",
+     "ok": true,
+     "why": "Natural Welsh. Same handling of isio + noun as o4."
+    },
+    {
+     "n": 6,
+     "ko": "같은 문제",
+     "ok": true,
+     "why": "Yr un problem is natural North Welsh."
+    },
+    {
+     "n": 7,
+     "ko": "너는 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "문제가 되기로 되어 있는",
+     "ok": true,
+     "why": "Natural fragment in the sense meant to be. Slightly abstract, but it is the sense the source taught."
+    },
+    {
+     "n": 9,
+     "ko": "그건 전혀 문제가 안 되겠지",
+     "ok": true,
+     "why": "Natural. The conditional fyddai is rendered as -겠지 to keep it apart from fydd."
+    },
+    {
+     "n": 10,
+     "ko": "그래, 물론 그건 문제가 안 되겠지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 그건 문제가 안 될 거라고 확신해",
+     "ok": true,
+     "why": "Natural Welsh. Weak spot: in reported speech, 될 거라고 also fits fydd."
+    },
+    {
+     "n": 12,
+     "ko": "나는 아무것도 문제가 안 될 거라고 확신해",
+     "ok": true,
+     "why": "Natural Welsh. Same weak spot with fydd as o11."
+    },
+    {
+     "n": 13,
+     "ko": "왜냐하면 지금은 아무것도 문제가 안 될 테니까",
+     "ok": true,
+     "why": "Natural and idiomatic."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:05:42.247Z"
+}

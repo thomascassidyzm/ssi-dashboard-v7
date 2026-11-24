@@ -1,0 +1,107 @@
+{
+ "seed": 290,
+ "at": "2026-11-24T18:52:35.733Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0290L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그가 무엇을 말하는지 알지 못해",
+     "ok": false,
+     "why": "The Welsh is natural but does not contain the LEGO 'o’n gwybod' (he knows). 'gwybod' belongs to 'dydy hi ddim yn gwybod' and 'o’n' belongs to 'mae o’n deud', so the phrase practises 'she doesn't know', not 'he knows'."
+    },
+    {
+     "n": 2,
+     "ko": "나는 그때 알고 있었어",
+     "ok": false,
+     "why": "Wrong sense: here 'o’n' is 'oeddwn' (I was), as in 'o’n i’n gwybod', not 'o + yn' (he is). It does not practise 'o’n gwybod' = 'he knows'."
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 나는 그때 알고 있었으니까",
+     "ok": false,
+     "why": "Wrong sense: 'o’n i’n gwybod' means 'I knew' (o’n = I was), not the taught 'o’n gwybod' = 'he knows'."
+    },
+    {
+     "n": 4,
+     "ko": "내가 알았더라면 나는 그걸 다르게 했을 거야",
+     "ok": false,
+     "why": "Wrong sense: 'o’n' here is 'o yn' in 'gwneud o’n wahanol' (do it differently), and 'gwybod' sits in '’swn i wedi gwybod'. The phrase never says 'he knows'."
+    },
+    {
+     "n": 5,
+     "ko": "미안해, 나는 그걸 다르게 했을 거야, 내가 알았더라면",
+     "ok": false,
+     "why": "Wrong sense: 'o’n wahanol' (it, differently) and '’swn i wedi gwybod' (if I had known). Nothing here practises 'o’n gwybod' = 'he knows'."
+    },
+    {
+     "n": 6,
+     "ko": "네가 무엇을 하고 있었는지 내가 알았더라면 나는 그걸 다르게 했을 거야",
+     "ok": false,
+     "why": "Wrong sense: 'o’n' is the object 'it' in 'o’n wahanol', not 'he' + 'yn gwybod'. The LEGO's meaning is not present."
+    },
+    {
+     "n": 7,
+     "ko": "나는 상관없어, 왜냐하면 나는 그때 알고 있었으니까",
+     "ok": false,
+     "why": "Wrong sense: 'o’n i’n gwybod' means 'I knew' (o’n = I was), not 'o’n gwybod' = 'he knows'."
+    },
+    {
+     "n": 8,
+     "ko": "나는 우리가 왜 새것이 필요했는지 알고 있었어",
+     "ok": false,
+     "why": "Wrong sense: 'o’n i’n gwybod' means 'I knew' (o’n = I was), not the taught 'o’n gwybod' = 'he knows'."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0290L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02B04",
+     "keep": false,
+     "why": "Good, but there is no room left: only 3 BUILD slots were needed and B02, B01 and B03 are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0290L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0290L02U05",
+     "keep": true,
+     "ko": "나는 그가 무엇이 일어날 거였는지 아는지 궁금해"
+    },
+    {
+     "id": "cym_for_kor:S0290L02U03",
+     "keep": false,
+     "why": "Not needed after the other five. '웨일스어를 이야기하는지' is also unnatural Korean, and two nested 아는지 clauses are too heavy."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:06:33.986Z"
+}

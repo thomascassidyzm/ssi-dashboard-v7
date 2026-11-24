@@ -1,0 +1,171 @@
+{
+ "seed": 312,
+ "at": "2026-11-24T18:56:10.715Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0312L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0312L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02B04",
+     "keep": false,
+     "why": "sound, but only 3 BUILD top-ups are needed and the other three are simpler"
+    },
+    {
+     "id": "cym_for_kor:S0312L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02U03",
+     "keep": true,
+     "ko": "너는 그녀가 집에서 일할 수 있을 거라고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0312L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L02U02",
+     "keep": false,
+     "why": "sound, but the 5 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0312L02U06",
+     "keep": false,
+     "why": "sound, but the 5 USE slots are already filled; it is also long"
+    }
+   ]
+  },
+  "S0312L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0312L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03B04",
+     "keep": false,
+     "why": "using a table is an odd sense here, and 3 BUILD top-ups are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0312L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0312L03U03",
+     "keep": false,
+     "why": "sound, but the 5 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0312L03U04",
+     "keep": false,
+     "why": "sound, but the 5 USE slots are already filled"
+    }
+   ]
+  },
+  "S0312L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 오늘 오후에 다른 방을 쓸 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁에 다른 방을 쓰다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 다른 방을 쓸 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 다른 방을 쓰고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 다른 방을 쓸 수 없어 왜냐하면 나는 바쁘거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 내일 오후에 다른 방을 쓰고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 어젯밤에 다른 방을 쓸 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 다른 방을 쓰고 싶어하는 젊은 남자를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 주말 전에 다른 방을 쓰기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "seed": 33,
+ "at": "2026-11-24T18:11:42.681Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0033L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0033L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0033L01B02",
+     "keep": true,
+     "ko": "너는 얼마나 오래 ~하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0033L01B03",
+     "keep": true,
+     "ko": "나는 얼마나 오래인지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0033L01B04",
+     "keep": false,
+     "why": "Not needed: three stronger BUILD rows are already kept, and this bare infinitive fragment is the weakest prompt."
+    },
+    {
+     "id": "cym_for_kor:S0033L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0033L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0033L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0033L01U03",
+     "keep": true,
+     "ko": "나는 오늘 저녁 내가 얼마나 오래 이야기할지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0033L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0033L01U06",
+     "keep": false,
+     "why": "Not needed: five USE rows are already kept, and this one has a long, awkward double embedding."
+    }
+   ]
+  },
+  "S0033L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 웨일스어를 이야기하는 걸 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 웨일스어를 이야기하는 방법을 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 그것을 이야기하는 방법을 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 어떻게 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 얼마나 오래 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 그것을 얼마나 오래 배워 왔어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0033L02U02",
+     "keep": true,
+     "ko": "나는 네가 웨일스어를 배워 왔는지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0033L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0033L02U03",
+     "keep": false,
+     "why": "Not needed: two USE rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0033L02U01",
+     "keep": false,
+     "why": "Not needed. It also builds on an odd premise (learning Welsh because you wanted to talk with me)."
+    },
+    {
+     "id": "cym_for_kor:S0033L02U04",
+     "keep": false,
+     "why": "Not needed. 'efo pawb arall' (with everyone else) reads oddly with learning."
+    },
+    {
+     "id": "cym_for_kor:S0033L02U05",
+     "keep": false,
+     "why": "Not needed: two USE rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0033L02U07",
+     "keep": false,
+     "why": "Not needed. 웨일스어로 here could be heard as yn Gymraeg as well as the candidate's yn y Gymraeg."
+    }
+   ]
+  }
+ }
+}

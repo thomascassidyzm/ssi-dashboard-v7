@@ -1,0 +1,185 @@
+{
+ "seed": 385,
+ "at": "2026-11-24T19:06:39.538Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0385L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 왜 동의했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 우리에게 동의했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 일주일 전에 동의했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그리고 그다음에 너 우리에게 동의했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 남은 시간이 많이 없었기 때문에 준비 사항들에 동의했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 지난달에 준비 사항들에 동의했어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0385L01U01",
+     "keep": true,
+     "ko": "너 그가 말한 것에 동의했어?"
+    },
+    {
+     "id": "cym_for_kor:S0385L01U02",
+     "keep": true,
+     "ko": "너 왜 그녀가 말한 것에 동의했어?"
+    },
+    {
+     "id": "cym_for_kor:S0385L01U03",
+     "keep": false,
+     "why": "Agreeing with a friend 'a minute ago' is an odd, unnatural combination; the two kept rows are stronger"
+    },
+    {
+     "id": "cym_for_kor:S0385L01U04",
+     "keep": false,
+     "why": "Fine Welsh, but only 2 USE rows were needed and U01/U02 are stronger"
+    },
+    {
+     "id": "cym_for_kor:S0385L01U05",
+     "keep": false,
+     "why": "Fine Welsh, but only 2 USE rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0385L01U06",
+     "keep": false,
+     "why": "Fine Welsh, but only 2 USE rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0385L01U07",
+     "keep": false,
+     "why": "Fine Welsh, but only 2 USE rows were needed"
+    }
+   ]
+  },
+  "S0385L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 그녀가 너를 도와 모든 것을 처리하게 하고 싶어했어",
+     "ok": false,
+     "why": "The Welsh has no 'efo hi' (it has 'iddi hi' and 'efo popeth'), so it does not practise this LEGO"
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 친구 몇 명과 이야기하고 싶어했어",
+     "ok": false,
+     "why": "The Welsh has no 'efo hi' ('hi' is the subject and 'efo' goes with 'ychydig o ffrindiau'), so it does not practise this LEGO"
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그녀가 너를 도와 모든 것을 처리하게 하고 싶었어",
+     "ok": false,
+     "why": "The Welsh has no 'efo hi' (it has 'iddi hi' and 'efo popeth'), so it does not practise this LEGO"
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 다음 주에 나와 더 많은 시간을 보내고 싶어해",
+     "ok": false,
+     "why": "The Welsh has 'efo fi', not 'efo hi', so it does not practise this LEGO"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0385L02U01",
+     "keep": true,
+     "ko": "나는 그녀와 이야기할 수 없었어"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U02",
+     "keep": true,
+     "ko": "그는 그녀와 일하고 싶다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U04",
+     "keep": true,
+     "ko": "나는 수요일에 그녀와 영화를 보러 갔어"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U03",
+     "keep": true,
+     "ko": "나는 그가 그녀와 이야기하고 싶어했는지 묻지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U05",
+     "keep": false,
+     "why": "'wyt ti' makes this a question but the Korean is a statement (fix would be '너 그녀와 파티에 가고 싶어?'); not needed after the four kept"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U06",
+     "keep": false,
+     "why": "Fine, but four USE rows are already kept"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U07",
+     "keep": false,
+     "why": "Fine but long; four USE rows are already kept"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0385L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0385L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0385L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0385L02B03",
+     "keep": false,
+     "why": "Good phrase, but three BUILD rows are already kept and B01 already uses siarad efo hi"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U05",
+     "keep": true,
+     "ko": "너 그녀와 파티에 가고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U06",
+     "keep": false,
+     "why": "Fine, but only one USE row is needed and U05 is simpler and clearer"
+    },
+    {
+     "id": "cym_for_kor:S0385L02U07",
+     "keep": false,
+     "why": "Long, and only one USE row is needed"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:11:36.819Z"
+}

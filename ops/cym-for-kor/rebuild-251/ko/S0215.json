@@ -1,0 +1,77 @@
+{
+ "seed": 215,
+ "at": "2026-11-24T18:41:06.584Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0215L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그래, 나는 토요일 밤에 친구 몇 명과 나갔어",
+     "ok": true,
+     "why": "The Welsh is natural and uses es i allan in the same sense of going out socially."
+    },
+    {
+     "n": 2,
+     "ko": "그래, 나는 친구 몇 명과 나갔어",
+     "ok": true,
+     "why": "The Welsh is natural and uses es i allan in the same sense."
+    },
+    {
+     "n": 3,
+     "ko": "나는 토요일 밤에 나갔고 나는 친구 몇 명을 봤어",
+     "ok": true,
+     "why": "The Welsh is natural and uses es i allan in the same sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0215L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0215L01B03",
+     "keep": false,
+     "why": "Good, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0215L01B02",
+     "keep": false,
+     "why": "Only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0215L01B04",
+     "keep": false,
+     "why": "Only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0215L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0215L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0215L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0215L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0215L01U05",
+     "keep": false,
+     "why": "잘 자지 않았어 is awkward Korean, and 못 잤어 risks clashing with the gloss for allu. 4 better USE rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0215L01U03",
+     "keep": false,
+     "why": "The meaning doesn't hold together: I went out because they wanted to discuss the problem."
+    }
+   ]
+  }
+ }
+}

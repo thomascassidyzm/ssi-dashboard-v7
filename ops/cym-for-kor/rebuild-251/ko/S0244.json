@@ -1,0 +1,134 @@
+{
+ "seed": 244,
+ "at": "2026-11-24T18:45:40.286Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0244L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 준비가 되지 않았어",
+     "ok": false,
+     "why": "Here 'yn barod' is the predicate 'ready' (she's not ready), not the adverb 'already' that this LEGO teaches."
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 이미 얼마나 많이 배웠는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 이미 배운 것으로 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 내 형제를 기다릴 준비가 됐어?",
+     "ok": false,
+     "why": "Uses 'barod i' meaning 'ready to', not 'yn barod' meaning 'already'. Wrong sense for this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "우리 딸은 갈 준비가 됐어",
+     "ok": false,
+     "why": "'yn barod i fynd' means 'ready to go', not 'already'. Wrong sense."
+    },
+    {
+     "n": 6,
+     "ko": "하지만 너 제때 준비가 될 거야?",
+     "ok": false,
+     "why": "'fyddi di'n barod' means 'will you be ready', not 'already'. Wrong sense."
+    },
+    {
+     "n": 7,
+     "ko": "너는 네가 준비가 될 거라고 생각해?",
+     "ok": false,
+     "why": "'yn barod' here means 'ready', not 'already'. Wrong sense."
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 거의 준비가 됐다고 생각해",
+     "ok": false,
+     "why": "'bron yn barod' means 'nearly ready', not 'already'. Wrong sense."
+    },
+    {
+     "n": 9,
+     "ko": "미안해 하지만 나는 나중에 준비가 될 거야",
+     "ok": false,
+     "why": "'fydda i'n barod' means 'I'll be ready', not 'already'. Wrong sense."
+    },
+    {
+     "n": 10,
+     "ko": "너 내일 오후에 내 어머니를 도울 준비가 될 거야?",
+     "ok": false,
+     "why": "'barod i helpu' means 'ready to help', not 'already'. Wrong sense."
+    },
+    {
+     "n": 11,
+     "ko": "너 준비 사항들을 도와줄 준비가 될 거야?",
+     "ok": false,
+     "why": "'barod i helpu' means 'ready to help', not 'already'. Wrong sense."
+    },
+    {
+     "n": 12,
+     "ko": "그 영화는 이미 끝났었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0244L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04B02",
+     "keep": false,
+     "why": "Almost the same as the seed itself, and only one BUILD is needed; B03 gives more variety"
+    },
+    {
+     "id": "cym_for_kor:S0244L04B04",
+     "keep": false,
+     "why": "Fine, but only one BUILD is needed and B03 was chosen"
+    },
+    {
+     "id": "cym_for_kor:S0244L04B01",
+     "keep": false,
+     "why": "Fragment adds little and only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0244L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0244L04U01",
+     "keep": true,
+     "ko": "너는 이미 최신 아이디어를 들었어?"
+    },
+    {
+     "id": "cym_for_kor:S0244L04U05",
+     "keep": false,
+     "why": "The Korean '왜냐하면 … 배웠어' is clumsy, and four stronger USE rows already fill the quota"
+    },
+    {
+     "id": "cym_for_kor:S0244L04U06",
+     "keep": false,
+     "why": "Bare 'ti wedi' as a statement can be confused with the 'wyt ti wedi' question form, so the answer is not certain; quota already filled"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:03:30.931Z"
+}

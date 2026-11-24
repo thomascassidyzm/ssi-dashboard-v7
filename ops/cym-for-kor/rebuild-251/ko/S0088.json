@@ -1,0 +1,83 @@
+{
+ "seed": 88,
+ "at": "2026-11-24T18:20:49.265Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0088L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 너와 나갈 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 도울 준비가 됐으면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 나는 이미 배웠어",
+     "ok": false,
+     "why": "Here 'yn barod' means 'already' (dysgu'n barod = learnt already), not 'ready to'. That is the wrong sense for the LEGO barod i (~할 준비가 된)."
+    },
+    {
+     "n": 4,
+     "ko": "너는 이야기하는 연습을 할 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 웨일스어로 조금 이야기할 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 지금 웨일스어로 이야기할 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 내가 도울 준비가 된 걸 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 똑같은 걸 할 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0088L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0088L02B01",
+     "keep": false,
+     "why": "Good, but only one BUILD is needed and B02 builds further toward the seed"
+    },
+    {
+     "id": "cym_for_kor:S0088L02B03",
+     "keep": false,
+     "why": "Only one BUILD is needed; also dysgu means both learn and teach, so 배울 is weaker for this course"
+    },
+    {
+     "id": "cym_for_kor:S0088L02B04",
+     "keep": false,
+     "why": "Only one BUILD is needed; B02 is closer to the seed sentence"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:34:10.334Z"
+}

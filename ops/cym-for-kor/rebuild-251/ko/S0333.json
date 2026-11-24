@@ -1,0 +1,163 @@
+{
+ "seed": 333,
+ "at": "2026-11-24T18:59:23.055Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0333L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0333L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02B02",
+     "keep": false,
+     "why": "Grammatical, but the BUILD count was already met with stronger rows. Also, 함께 may go beyond the gloss for efo ni."
+    },
+    {
+     "id": "cym_for_kor:S0333L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L02U05",
+     "keep": true,
+     "ko": "미안하지만 그녀는 파티에 올 수 없다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0333L02U06",
+     "keep": false,
+     "why": "Fine, but the USE count was already met."
+    }
+   ]
+  },
+  "S0333L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0333L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03B04",
+     "keep": false,
+     "why": "보낼 수 있을 거라고 could be y bydd hi'n medru (will) or y byddai (would), so it has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0333L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03U03",
+     "keep": true,
+     "ko": "그는 자기가 네 형제와 많은 시간을 보내고 싶다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0333L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L03U02",
+     "keep": false,
+     "why": "Fine, but the USE count was already met."
+    },
+    {
+     "id": "cym_for_kor:S0333L03U07",
+     "keep": false,
+     "why": "원한다면 could be os ydy hi isio or tasai hi isio, and 있을 텐데 could be the conditional or the future, so the answer is not certain."
+    }
+   ]
+  },
+  "S0333L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0333L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L04B01",
+     "keep": false,
+     "why": "A weak fragment, and the BUILD count was already met."
+    },
+    {
+     "id": "cym_for_kor:S0333L04U01",
+     "keep": true,
+     "ko": "그녀는 그룹과 일하고 싶어하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0333L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0333L04U03",
+     "keep": true,
+     "ko": "그는 자기가 그룹과 이야기할 필요가 있다고 말했어"
+    },
+    {
+     "id": "cym_for_kor:S0333L04U04",
+     "keep": false,
+     "why": "수 있을 거라고 could be y bydd or y byddai, so it has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0333L04U06",
+     "keep": false,
+     "why": "fedrith hi ddim dreulio has an unnatural mutation after ddim; it should be treulio, as in the sibling row S0333L03U01."
+    }
+   ]
+  }
+ }
+}

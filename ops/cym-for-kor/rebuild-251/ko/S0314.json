@@ -1,0 +1,111 @@
+{
+ "seed": 314,
+ "at": "2026-11-24T18:56:24.065Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0314L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그걸 그에게 주려고 노력하고 있어",
+     "ok": false,
+     "why": "Wrong sense for this basket: 'rhoi o iddo fo' means 'give it to him' (its own LEGO, 그걸 그에게 주다), not 'put it' (rhoi fo ar…) as seed 314 teaches; it is also the 'o' variant, not 'fo'."
+    },
+    {
+     "n": 2,
+     "ko": "내가 그걸 그에게 줄 때까지",
+     "ok": false,
+     "why": "Wrong sense: rhoi fo iddo fo is 'give it to him', not the 'put it' sense this LEGO teaches. The Korean can't use the 놓다 gloss here without becoming unnatural."
+    },
+    {
+     "n": 3,
+     "ko": "나는 그걸 그에게 다시 주지 않을 것 같아",
+     "ok": false,
+     "why": "Wrong sense: 'give it to him', not 'put it'. The Korean has to use 주다 rather than the LEGO gloss 놓다."
+    },
+    {
+     "n": 4,
+     "ko": "너 내일 오후에 그걸 그에게 줄 필요가 있어?",
+     "ok": false,
+     "why": "Wrong sense: 'rhoi o iddo fo' means 'give it to him' (a separate LEGO, and the 'o' variant), not the 'put it' sense taught here."
+    },
+    {
+     "n": 5,
+     "ko": "그걸 그녀에게 주다",
+     "ok": false,
+     "why": "Wrong sense: 'rhoi fo iddi hi' means 'give it to her'. 그걸 그녀에게 놓다 would be unnatural Korean, so this row cannot practise the 'put it' sense."
+    },
+    {
+     "n": 6,
+     "ko": "나는 지금 그걸 그에게 주면 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: 'give it to him', not the 'put it' sense this LEGO teaches."
+    },
+    {
+     "n": 7,
+     "ko": "우리는 오늘 그걸 그에게 주고 싶었어",
+     "ok": false,
+     "why": "Wrong sense: 'give it to him', not the 'put it' sense this LEGO teaches."
+    },
+    {
+     "n": 8,
+     "ko": "그에게 시작할 시간을 주다",
+     "ok": false,
+     "why": "Does not contain 'rhoi fo' at all: 'rhoi amser iddo fo' means 'give him time', so it does not practise this LEGO."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0314L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03B03",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are already filled by candidates that lead more directly to the seed."
+    },
+    {
+     "id": "cym_for_kor:S0314L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0314L03U04",
+     "keep": false,
+     "why": "Sound, but over the count of five and adds little that U01 does not already cover."
+    },
+    {
+     "id": "cym_for_kor:S0314L03U05",
+     "keep": false,
+     "why": "'rhoi fo rŵan' with no place after it is an odd thing to say; the stronger candidates fill the count."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:08:14.327Z"
+}

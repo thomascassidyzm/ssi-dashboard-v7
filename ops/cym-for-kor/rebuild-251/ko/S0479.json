@@ -1,0 +1,196 @@
+{
+ "seed": 479,
+ "at": "2026-11-24T19:22:43.358Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0479L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 내가 다음번에 물을 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그게 내가 바꿀 수 있었던 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그게 내가 말할 수 있었던 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그게 내가 원하는 최소한이야",
+     "ok": false,
+     "why": "Duplicates o10 (dyna'r lleia' dw i isio). The only difference is lleiaf vs lleia', so the basket would carry the same Korean prompt twice."
+    },
+    {
+     "n": 5,
+     "ko": "그게 그가 원해 왔던 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그게 내가 기억하고 싶은 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그게 우리에게 남은 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그게 최소한이야, 왜냐하면 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "오늘 저녁에는 그게 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그게 내가 원하는 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그게 그들이 작년에 원했던 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그게 내가 오늘 저녁에 원했던 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그게 내가 원하는 최소한이야, 왜냐하면 나는 걱정되거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "그게 그녀가 주말 전에 원했던 최소한이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그게 우리가 원했던 최소한이야, 하지만 상관없어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0479L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 말할 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 기억할 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 나는 멈출 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 어느 거였는지 기억할 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어젯밤 나는 텔레비전을 볼 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "네가 잠깐 쉬려고 앉을 수 있었다면 괜찮을 거라고 나는 확신해",
+     "ok": false,
+     "why": "The Welsh does not contain the LEGO o'n i'n medru. It uses 'os byddi di wedi medru' (if you'll have been able), so it does not practise 'I could'."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그가 새끼 고양이를 돌볼 수 없었던 게 걱정돼",
+     "ok": false,
+     "why": "The Welsh does not contain the LEGO o'n i'n medru. It has 'nad oedd o'n medru' (third person, negative), so it does not practise 'I could'."
+    },
+    {
+     "n": 8,
+     "ko": "나는 그 여행 가방을 혼자서 들고 갈 수 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내가 얼마나 높이 올라갈 수 있었는지 아무도 확실하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0479L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0479L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0479L02U03",
+     "keep": false,
+     "why": "Good, but only 2 were needed and U02 and U01 are cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0479L02U05",
+     "keep": false,
+     "why": "Good, but only 2 were needed"
+    },
+    {
+     "id": "cym_for_kor:S0479L02U06",
+     "keep": false,
+     "why": "Good, but only 2 were needed"
+    },
+    {
+     "id": "cym_for_kor:S0479L02U04",
+     "keep": false,
+     "why": "The two clauses don't follow from each other, and 피곤했어 is a loose match for wedi blino"
+    },
+    {
+     "id": "cym_for_kor:S0479L02U07",
+     "keep": false,
+     "why": "'yn y gorffennol' tacked on at the end sounds stilted"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:17:43.914Z"
+}

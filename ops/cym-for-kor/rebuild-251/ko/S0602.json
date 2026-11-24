@@ -1,0 +1,149 @@
+{
+ "seed": 602,
+ "at": "2026-11-24T19:47:51.082Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0602L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0602L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02B03",
+     "keep": false,
+     "why": "Only 3 BUILD needed. 'yn y nos' (at night) for a single start time is also weaker than the kept rows."
+    },
+    {
+     "id": "cym_for_kor:S0602L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0602L02U05",
+     "keep": false,
+     "why": "Only 5 USE needed. U06 adds more new material."
+    },
+    {
+     "id": "cym_for_kor:S0602L02U07",
+     "keep": false,
+     "why": "Only 5 USE needed. It is almost the same as BUILD row B02 with ond added."
+    }
+   ]
+  },
+  "S0602L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "애초에 무슨 일이 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 애초에 ~고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "애초에 나는 ~고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "왜 애초에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 애초에 왜 우리를 방문하고 싶어했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "네가 애초에 내게 말했더라면 나는 그것에 대해 더 신중하게 생각했을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 애초에 우리를 방문하고 싶어하지 않았지만 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들이 애초에 왜 우리를 방문하고 싶어했는지 나는 상관없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0602L03U07",
+     "keep": true,
+     "ko": "그들은 애초에 왜 떠났어?"
+    },
+    {
+     "id": "cym_for_kor:S0602L03U01",
+     "keep": false,
+     "why": "Only 1 USE needed. Its Korean also reads as a statement, not a question."
+    },
+    {
+     "id": "cym_for_kor:S0602L03U02",
+     "keep": false,
+     "why": "Without a question mark, 'wyt ti ’di anghofio' could be a question or a statement, and the Korean doesn't settle which."
+    },
+    {
+     "id": "cym_for_kor:S0602L03U03",
+     "keep": false,
+     "why": "In the first place sits oddly on 'had to leave'. The Korean 왜냐하면…피곤했어 is also clumsy."
+    },
+    {
+     "id": "cym_for_kor:S0602L03U04",
+     "keep": false,
+     "why": "'In the first place' with 'she was right' is semantically odd."
+    },
+    {
+     "id": "cym_for_kor:S0602L03U05",
+     "keep": false,
+     "why": "'It isn’t true in the first place' is a marginal use of the phrase."
+    },
+    {
+     "id": "cym_for_kor:S0602L03U06",
+     "keep": false,
+     "why": "Only 1 USE needed. It is long and repeats the seed sentence."
+    }
+   ]
+  }
+ }
+}

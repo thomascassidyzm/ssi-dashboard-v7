@@ -1,0 +1,109 @@
+{
+ "seed": 341,
+ "at": "2026-11-24T19:00:18.261Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0341L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 일주일 전에 무언가를 하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 한 달 전에 배우기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 일주일 전에 연습하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 일주일 전에 무언가를 말하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "다시 도시로",
+     "ok": false,
+     "why": "In this line 'yn ôl' means 'back' (back to the city), not 'ago'. That is the wrong sense for the LEGO ~ 전에 = yn ôl."
+    },
+    {
+     "n": 6,
+     "ko": "너는 일주일 전에 그 영화를 보기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "일주일 전에 나는 네 자매를 보러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "약 한 달 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 나중에 돌아오고 싶었어",
+     "ok": false,
+     "why": "Here 'yn ôl' is part of 'dod yn ôl' (come back), not 'ago'. That is the wrong sense for this LEGO."
+    },
+    {
+     "n": 10,
+     "ko": "나는 우리가 끝낸 후에 펍에서 느긋하게 쉴 거야",
+     "ok": false,
+     "why": "This line has 'ar ôl' (after), not 'yn ôl' (ago). It does not use the LEGO at all."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0341L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0341L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0341L04U03",
+     "keep": false,
+     "why": "Not needed: two stronger USE rows already fill the basket, and 영화를 시청했어 reads stiff where 봤어 would be natural."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U04",
+     "keep": false,
+     "why": "Not needed: the basket is full, and this nested 'wedi brifo ei hun' row is longer than the LEGO needs."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U05",
+     "keep": false,
+     "why": "In the Welsh, 'yn ôl' sits between 'ddudodd o' and the 'fod' clause, so the time phrase is ambiguous and the word order is awkward."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U06",
+     "keep": false,
+     "why": "The Welsh puts the time phrase in the middle of the reported speech, so it is unclear which verb it belongs to. The basket is already full."
+    },
+    {
+     "id": "cym_for_kor:S0341L04U07",
+     "keep": false,
+     "why": "Not needed: the basket is full with simpler rows that copy the seed's pattern."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:09:18.711Z"
+}

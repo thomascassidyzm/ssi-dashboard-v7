@@ -1,0 +1,115 @@
+{
+ "seed": 144,
+ "at": "2026-11-24T18:30:50.967Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0144L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0144L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0144L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0144L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0144L01B04",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0144L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0144L01U03",
+     "keep": true,
+     "ko": "오늘 아침에 내가 깼을 때 나는 기분이 더 나았어"
+    },
+    {
+     "id": "cym_for_kor:S0144L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0144L01U04",
+     "keep": true,
+     "ko": "내가 너를 보고 싶었기 때문에 나는 이렇게 일찍 깼어"
+    },
+    {
+     "id": "cym_for_kor:S0144L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0144L01U06",
+     "keep": false,
+     "why": "Meaning is incoherent: why would I wake when he wanted to go home? Unnatural as a practice sentence"
+    }
+   ]
+  },
+  "S0144L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 오늘 더 일찍 깼어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 왜 더 일찍 깼는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 더 일찍 깼지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "왜냐하면 내가 더 일찍 깼기 때문에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "문제없어, 나는 오늘 더 일찍 깼어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 더 일찍 깼는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그것이 내가 더 일찍 깬 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 더 일찍 깼지만 나는 기분이 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내가 왜 더 일찍 깼는지 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

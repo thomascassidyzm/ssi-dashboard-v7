@@ -1,0 +1,76 @@
+{
+ "seed": 345,
+ "at": "2026-11-24T19:00:35.452Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0345L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그건 준비돼 있으면 안 되는 거야",
+     "ok": false,
+     "why": "Here 'fod' is the 'i fod' (meant to) construction in 'dydy o ddim i fod yn barod'. The Welsh does not contain the LEGO 'fod o ddim yn barod' (that he isn't ready) and uses fod in a different sense, so it does not belong in this basket."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0345L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02B01",
+     "keep": false,
+     "why": "Sound, but it nearly duplicates the seed fragment; the two full-sentence builds are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0345L02B04",
+     "keep": false,
+     "why": "Sound, but not needed: the BUILD count is already met by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0345L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02U06",
+     "keep": true,
+     "ko": "미안하지만 나는 그가 준비가 안 됐다고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0345L02U03",
+     "keep": false,
+     "why": "'i ddechrau hyd yn hyn' at the end of a question is a little awkward, and the USE count is already met."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0345L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0345L02B01",
+     "keep": false,
+     "why": "Almost a copy of the seed fragment; B04 fills the one BUILD slot with new content (mynd, rŵan)."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:09:24.007Z"
+}

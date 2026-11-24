@@ -1,0 +1,113 @@
+{
+ "seed": 409,
+ "at": "2026-11-24T19:10:02.834Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0409L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그것에 대해 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 네 기분이 어떤지 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 덜 흥미진진하지만 나는 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 말한 것은 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "상관없어 왜냐하면 그녀는 네 아버지를 기다리러 갔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "상관없어, 우리가 이사하기 전에 합의하자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "어렵거나 아니면 쉽거나 나는 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그가 무엇을 해야 하는지는 상관없어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0409L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0409L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03B01",
+     "keep": false,
+     "why": "heno may be glossed 오늘 밤, not 오늘 저녁, so the Korean is a risky gloss swap. Not needed: three better BUILD rows were kept."
+    },
+    {
+     "id": "cym_for_kor:S0409L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0409L03U05",
+     "keep": false,
+     "ko": "우리가 무엇을 하든 나는 상관없어 그리고 나는 그게 괜찮을 거라고 확신해",
+     "why": "The original Korean left the subject of bydd o'n iawn unclear (fixed in ko). Refused only because five USE rows were already filled."
+    },
+    {
+     "id": "cym_for_kor:S0409L03U06",
+     "keep": false,
+     "why": "우리가 appears twice in the Korean, which reads clumsily. Five stronger USE rows were already filled."
+    }
+   ]
+  }
+ }
+}

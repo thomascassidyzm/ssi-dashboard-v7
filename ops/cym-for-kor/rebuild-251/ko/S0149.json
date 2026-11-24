@@ -1,0 +1,384 @@
+{
+ "seed": 149,
+ "at": "2026-11-24T18:32:43.789Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0149L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "이건 더 나쁘지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 확실하지 않아 왜냐하면 이건 그런 식이 아니야",
+     "ok": false,
+     "why": "The Welsh has 'dydy hwn ddim fel ’na' with no 'yn', so it practises the earlier LEGO 'dydy hwn ddim' (이건 ~이 아니야), not this one ('dydy hwn ddim yn' + predicate)"
+    },
+    {
+     "n": 3,
+     "ko": "이게 더 나쁘지 않으면 나는 느긋하게 쉬면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워 하지만 이건 최고의 선택이 아니야",
+     "ok": false,
+     "why": "The Welsh has 'dydy hwn ddim y dewis gorau' (a definite noun, no 'yn'), so it practises the earlier LEGO 'dydy hwn ddim', not 'dydy hwn ddim yn'"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0149L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L01B03",
+     "keep": false,
+     "why": "good, but only 2 BUILD were needed"
+    },
+    {
+     "id": "cym_for_kor:S0149L01B04",
+     "keep": false,
+     "why": "good, but only 2 BUILD were needed"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L01U07",
+     "keep": false,
+     "why": "uses 'anodd iawn', which is the next LEGO (L02) and not yet taught at L01"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U06",
+     "keep": false,
+     "why": "fine, but past the count"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U01",
+     "keep": false,
+     "why": "past the count"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U03",
+     "keep": false,
+     "why": "past the count"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U04",
+     "keep": false,
+     "why": "past the count"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0149L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L01U01",
+     "keep": true,
+     "ko": "왜 이건 작동하지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U06",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U03",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0149L01U07",
+     "keep": false,
+     "why": "It uses 'anodd iawn', which is taught in the next LEGO (L02), so the learner doesn't have it yet at L01"
+    }
+   ]
+  },
+  "S0149L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀가 옳다고 믿기 어려워",
+     "ok": false,
+     "why": "'anodd iawn' is not in this Welsh: 'anodd' and 'iawn' are apart, and 'iawn' here means 'right', so the phrase doesn't practise this LEGO"
+    },
+    {
+     "n": 2,
+     "ko": "나는 그게 괜찮을 거라고 확신해 하지만 지금은 어려워",
+     "ok": false,
+     "why": "'anodd iawn' is not in this Welsh: 'iawn' here means 'okay' and 'anodd' stands alone, so the phrase doesn't practise this LEGO"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0149L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02B04",
+     "keep": true,
+     "ko": "이건 아주 어렵지는 않아"
+    },
+    {
+     "id": "cym_for_kor:S0149L02B03",
+     "keep": false,
+     "why": "fine, but past the count"
+    },
+    {
+     "id": "cym_for_kor:S0149L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U03",
+     "keep": false,
+     "why": "fine, but past the count"
+    },
+    {
+     "id": "cym_for_kor:S0149L02U04",
+     "keep": false,
+     "why": "past the count"
+    },
+    {
+     "id": "cym_for_kor:S0149L02U01",
+     "keep": false,
+     "why": "subjectless fragment 'anodd iawn ond…' is weak as a USE phrase"
+    },
+    {
+     "id": "cym_for_kor:S0149L02U07",
+     "keep": false,
+     "why": "past the count"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0149L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0149L02U07",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0149L02U01",
+     "keep": false,
+     "why": "'anodd iawn ond mae'n hwyl' has no subject, so it is a weak fragment for a USE phrase"
+    }
+   ]
+  },
+  "S0149L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그래서 여러분은 어디에서 와요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그래서 우리는 그들을 아주 자주 보지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 피곤해 그래서 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그래서 나는 시간이 조금 더 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그건 문제가 아니야 그래서 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그래서 나는 ~하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 대답할 수 없었어 그래서 미안해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 피곤해 그래서 나는 느긋하게 쉬면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그래서 왜 나는 네가 말한 것을 기억할 수 없어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그래서 그것은 모든 것을 멈추지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그건 문제가 아니야 그래서 너는 걱정하지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0149L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 나는 바꾸기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 나는 나아지기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 만나기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내일 밤에 밖에 나가기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그녀가 옳기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내일 밤에는 그게 괜찮기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 오후에 펍에서 느긋하게 쉬기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해 하지만 나는 그게 작동하기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0149L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "~ 네가 끝낼 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 네가 오늘 끝낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 곧 끝낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 끝내기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 제때 끝낼지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "문제없어 너는 곧 끝낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 내일 밤에 끝내기를 바라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 오늘 끝낼 거야 그래서 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 네가 떠나기 전에 모든 것을 끝내기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:59:07.648Z"
+}

@@ -1,0 +1,178 @@
+{
+ "seed": 82,
+ "at": "2026-11-24T18:20:02.228Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0082L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 너를 기다리는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 너를 기다리지 않을 것 같아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 지금 너를 기다리고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 오늘 너를 기다릴 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 저녁 너를 기다리지 않을 거야, 왜냐하면 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 어젯밤 너를 기다리려고 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 나중에 너를 기다릴 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0082L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0082L02B04",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 is the cleaner build"
+    },
+    {
+     "id": "cym_for_kor:S0082L02B03",
+     "keep": false,
+     "why": "Only 1 BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0082L02B01",
+     "keep": false,
+     "why": "Weak fragment; not needed"
+    }
+   ]
+  },
+  "S0082L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 왜 안 돼?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 왜인지 몰라",
+     "ok": false,
+     "why": "Uses bare 'pam' (why), not the LEGO 'pam ddim' (why not); it does not practise this LEGO"
+    },
+    {
+     "n": 3,
+     "ko": "그는 나에게 왜인지 말하고 싶어하지 않았어",
+     "ok": false,
+     "why": "Uses bare 'pam' (why), not 'pam ddim' (why not); it does not practise this LEGO"
+    },
+    {
+     "n": 4,
+     "ko": "왜 안 돼? 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "왜 우리는 답이 무엇인지 몰라?",
+     "ok": false,
+     "why": "Uses 'pam' as a question word for a negative clause, not the 'pam ddim' (why not) LEGO; wrong sense for this basket"
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 왜 이렇게 행복한지 확실하지 않아",
+     "ok": false,
+     "why": "Uses bare 'pam' (why), not 'pam ddim' (why not); it does not practise this LEGO"
+    },
+    {
+     "n": 7,
+     "ko": "왜 안 돼? 그건 네가 어젯밤에 말한 게 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 오늘 저녁 누군가를 만나고 싶어. 왜 안 돼?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "왜 안 돼? 나는 상관없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0082L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0082L03B01",
+     "keep": false,
+     "why": "Only 1 BUILD is needed, and B04 is better because it also uses 'ond'."
+    },
+    {
+     "id": "cym_for_kor:S0082L03B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed. This one is a bare verb fragment and weaker than B04."
+    },
+    {
+     "id": "cym_for_kor:S0082L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0082L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0082L03U03",
+     "keep": false,
+     "why": "Good, but only 2 USE are needed. U04 and U01 are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0082L03U02",
+     "keep": false,
+     "why": "Only 2 USE are needed. This one is a shorter fragment than the ones kept."
+    },
+    {
+     "id": "cym_for_kor:S0082L03U05",
+     "keep": false,
+     "why": "For 만나다, the learner could say cyfarfod or cwrdd, so the Korean may have two Welsh answers. Only 2 USE are needed anyway."
+    },
+    {
+     "id": "cym_for_kor:S0082L03U06",
+     "keep": false,
+     "why": "Only 2 USE are needed. This one is weaker than the ones kept."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:33:56.710Z"
+}

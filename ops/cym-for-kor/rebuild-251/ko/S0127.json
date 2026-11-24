@@ -1,0 +1,130 @@
+{
+ "seed": 127,
+ "at": "2026-11-24T18:27:48.530Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0127L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 내가 ~하고 싶었던 이유는 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그게 우리가 친구인 이유는 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그게 그가 ~하고 싶어하지 않는 이유는 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그게 내가 네가 말한 것을 기억할 수 없는 이유는 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 시간이 조금 더 필요해 하지만 그게 우리가 멈춰야 하는 이유는 아니야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0127L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L01U04",
+     "keep": true,
+     "ko": "그게 그가 답을 몰랐던 이유는 아니야"
+    },
+    {
+     "id": "cym_for_kor:S0127L01U02",
+     "keep": true,
+     "ko": "그게 내가 그게 좋은 아이디어라고 생각하는 이유는 아니야"
+    },
+    {
+     "id": "cym_for_kor:S0127L01U01",
+     "keep": false,
+     "why": "Valid, but three better ones were already kept."
+    },
+    {
+     "id": "cym_for_kor:S0127L01U03",
+     "keep": false,
+     "why": "Almost the same as original o2, with only ond added."
+    },
+    {
+     "id": "cym_for_kor:S0127L01U05",
+     "keep": false,
+     "why": "Long, and better ones were already kept."
+    },
+    {
+     "id": "cym_for_kor:S0127L01U06",
+     "keep": false,
+     "why": "Valid, but weaker in meaning than the ones kept."
+    }
+   ]
+  },
+  "S0127L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0127L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03B01",
+     "keep": false,
+     "why": "A bare verb-noun fragment, weaker than the three kept."
+    },
+    {
+     "id": "cym_for_kor:S0127L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0127L03U05",
+     "keep": false,
+     "why": "Valid (gyffrous mutation is correct), but five were already kept."
+    },
+    {
+     "id": "cym_for_kor:S0127L03U06",
+     "keep": false,
+     "why": "Valid, but five were already kept."
+    }
+   ]
+  }
+ }
+}

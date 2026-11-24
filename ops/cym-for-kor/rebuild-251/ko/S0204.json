@@ -1,0 +1,270 @@
+{
+ "seed": 204,
+ "at": "2026-11-24T18:39:30.314Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0204L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀가 그것으로 너를 돕기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그녀에게 다른 것을 주고 싶었어",
+     "ok": false,
+     "why": "Here 'iddi hi' means 'to her', the object of rhoi. It is not 'o'n i isio iddi hi' meaning 'I wanted her to', so the phrase does not use the LEGO in the sense this course taught."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0204L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L01B02",
+     "keep": false,
+     "why": "Fine, but only 3 BUILD rows are needed and the others are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0204L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L01U02",
+     "keep": false,
+     "why": "It nearly duplicates the seed and original o1. The quota is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0204L01U03",
+     "keep": false,
+     "why": "The quota is already filled by better rows."
+    },
+    {
+     "id": "cym_for_kor:S0204L01U05",
+     "keep": false,
+     "why": "The two clauses don't connect logically: nobody being sure doesn't follow from wanting her to answer."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0204L01U03",
+     "keep": true,
+     "ko": "그게 내가 그녀가 너와 이야기하기를 원했던 이유는 아니야"
+    },
+    {
+     "id": "cym_for_kor:S0204L01U02",
+     "keep": false,
+     "why": "Almost the same as the seed. U03 fills the one USE slot with more variety."
+    },
+    {
+     "id": "cym_for_kor:S0204L01U05",
+     "keep": false,
+     "why": "The two clauses don't follow from each other: nobody being sure has nothing to do with wanting her to answer."
+    }
+   ]
+  },
+  "S0204L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀가 네가 모든 것을 처리하는 것을 돕기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그것을 처리해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 혼자서 그것을 처리할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 너에게 내가 그것을 처리하도록 도와 달라고 부탁한다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 그것을 처리하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 제때 그것을 처리해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 내일 오후에 그것을 처리할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그것을 처리하려고 했어 하지만 나는 오늘 바빠",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0204L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 준비 사항들을 처리하고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 준비 사항들을 처리하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그녀에게 준비 사항들을 처리할 시간을 주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 너에게 내가 준비 사항들을 처리하도록 도와 달라고 부탁한다면 너는 무엇을 하겠어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리가 이것을 끝낸 후에 준비 사항들을 처리하는 건 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내가 너에게 준비 사항들로 나를 도와 달라고 부탁한다면 너는 뭐라고 말하겠어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 준비 사항들에 만족해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 준비 사항들을 처리해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "준비 사항들을 처리하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "준비 사항들로 나를 도와주는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "준비 사항들을 돕는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "준비 사항들로 너를 돕는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 그녀가 준비 사항들로 너를 돕기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "준비 사항들을 처리하는 방법",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "다음 주에 준비 사항들을 처리하자",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0204L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0204L04U03",
+     "keep": false,
+     "why": "Good, but U04 is cleaner and only one USE slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U02",
+     "keep": false,
+     "why": "The Korean '준비 사항들로 너를 돕기를' is awkward, and the gloss '준비 사항들을' doesn't fit naturally when 너를 is also the object."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U05",
+     "keep": false,
+     "why": "The Korean '준비 사항들로 나를 도와줘서' is awkward, and only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U06",
+     "keep": false,
+     "why": "Long and complex for a top-up. Only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U01",
+     "keep": false,
+     "why": "In 'cytuno efo', efo means 'with' (agree with), not 'help with the arrangements', so the gloss '준비 사항들을' doesn't fit. The Korean needs 에."
+    },
+    {
+     "id": "cym_for_kor:S0204L04U07",
+     "keep": false,
+     "why": "In 'hapus efo', efo means 'happy with', not this sense, so the gloss '준비 사항들을' doesn't fit."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:01:21.047Z"
+}

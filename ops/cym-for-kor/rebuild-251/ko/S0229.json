@@ -1,0 +1,103 @@
+{
+ "seed": 229,
+ "at": "2026-11-24T18:43:01.067Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0229L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "응, 그 여자는 설명할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그 여자는 도우러 올 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그 여자는 도움을 요청할 테니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그 여자는 내일 오후에 도우러 올 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 행복해, 왜냐하면 그 여자는 도우러 올 테니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 그 여자는 네 차를 사용할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그 여자는 네가 떠나기 전에 모든 것을 설명할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "응, 그 여자는 우리가 모든 것을 제때 끝내도록 확실히 할 텐데",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0229L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0229L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0229L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0229L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0229L03B03",
+     "keep": false,
+     "why": "The Korean ends on the bare verb 돕다, which is not a natural phrase, and the Welsh fragment helpu chdi does not match its order or sense."
+    },
+    {
+     "id": "cym_for_kor:S0229L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0229L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0229L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0229L03U03",
+     "keep": true,
+     "ko": "그녀가 할 수 있다면 너는 뭘 하겠어?"
+    },
+    {
+     "id": "cym_for_kor:S0229L03U02",
+     "keep": true
+    }
+   ]
+  }
+ }
+}

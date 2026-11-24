@@ -1,0 +1,175 @@
+{
+ "seed": 173,
+ "at": "2026-11-24T18:35:07.725Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0173L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 고맙지만 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "고맙지만 괜찮아, 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "고맙지만 괜찮아, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 저녁은 고맙지만 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 하지만 나는 상관없어",
+     "ok": true,
+     "why": "This is natural North Welsh. It uses 'does dim ots gen i' in its taught sense, 'I don't mind'."
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 하지만 고맙지만 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 나는 네가 상관없다니 기뻐",
+     "ok": true,
+     "why": "This is natural and idiomatic. 'bod dim ots gen ti' keeps its taught sense, 'that you don't mind'."
+    },
+    {
+     "n": 8,
+     "ko": "고맙지만 괜찮아, 나는 오늘 저녁엔 할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "다른 건? 고맙지만 괜찮아",
+     "ok": true,
+     "why": "This is a natural shop exchange: someone offers 'anything else?' and the reply is a polite 'no thank you'."
+    }
+   ]
+  },
+  "S0173L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0173L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0173L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0173L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0173L03B01",
+     "keep": false,
+     "why": "'yndw' answers a 'bod' question. A yes before 'mi fedra i' should be 'medra(f)', so the line is not idiomatic Welsh."
+    },
+    {
+     "id": "cym_for_kor:S0173L03U01",
+     "keep": true,
+     "ko": "문제없어, 나는 해낼 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0173L03U05",
+     "keep": true,
+     "ko": "모든 게 괜찮아, 나는 해낼 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0173L03U04",
+     "keep": true,
+     "ko": "나는 해낼 수 있어, 하지만 나는 피곤해"
+    },
+    {
+     "id": "cym_for_kor:S0173L03U03",
+     "keep": true,
+     "ko": "정말 고마워, 하지만 나는 지금 해낼 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0173L03U07",
+     "keep": true,
+     "ko": "나는 해낼 수 있어, 하지만 나는 시간이 조금 더 필요해"
+    },
+    {
+     "id": "cym_for_kor:S0173L03U02",
+     "keep": false,
+     "why": "In Korean, '될 거야' blurs 'fydd' with 'fyddai' (will vs would), and the five stronger candidates already fill the role."
+    },
+    {
+     "id": "cym_for_kor:S0173L03U06",
+     "keep": false,
+     "why": "The Korean reverses the clause order. The quota is already filled by stronger candidates."
+    }
+   ]
+  },
+  "S0173L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그리고 혼자서",
+     "ok": true,
+     "why": "This is a natural fragment, and 'ar fy mhen fy hun' keeps the taught sense 'on my own'."
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁 혼자서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "혼자서 해내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 오늘 저녁 혼자서 느긋하게 쉬면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 혼자서 해낼 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그걸 혼자서 고치려고 하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "고맙지만 괜찮아, 나는 혼자서 해낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "왜 나는 혼자서 해낼 수 없어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

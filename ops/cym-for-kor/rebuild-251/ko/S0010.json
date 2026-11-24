@@ -1,0 +1,284 @@
+{
+ "seed": 10,
+ "at": "2026-11-24T18:07:15.404Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0010L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0010L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01B03",
+     "keep": false,
+     "why": "'내 말이 무슨 뜻인지' has no gloss for golygu and could equally prompt be' dw i'n ddeud / be' dw i'n feddwl, so it fails zero uncertainty"
+    },
+    {
+     "id": "cym_for_kor:S0010L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L01U01",
+     "keep": false,
+     "why": "Same golygu ambiguity as B03"
+    },
+    {
+     "id": "cym_for_kor:S0010L01U05",
+     "keep": false,
+     "why": "'How to speak a little Welsh' reads oddly, and '웨일스어를 조금 이야기하는' is unnatural Korean; five better rows already kept"
+    }
+   ]
+  },
+  "S0010L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 확실하지 않으면",
+     "ok": false,
+     "why": "Here os is the conditional 'if' (~면), but this LEGO teaches os as 'whether' (~지), so it uses the LEGO in the wrong sense"
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 ~ㄹ 수 있을지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 ~지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0010L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L02U05",
+     "keep": true,
+     "ko": "나는 내가 오늘 이야기하는 연습을 할 건지 말할 거야"
+    },
+    {
+     "id": "cym_for_kor:S0010L02U01",
+     "keep": true,
+     "ko": "나는 내가 오늘 이야기할 건지 기억하려고 노력하고 있어"
+    },
+    {
+     "id": "cym_for_kor:S0010L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L02U03",
+     "keep": false,
+     "why": "'Trying to remember if I'm speaking with someone else today' (present tense) makes little sense, and it nearly duplicates U01"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0010L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L02B01",
+     "keep": false,
+     "why": "Grammatical, but only one BUILD is needed and B03 is the richer phrase."
+    },
+    {
+     "id": "cym_for_kor:S0010L02B02",
+     "keep": false,
+     "why": "'cofio os dw i'n siarad' (remember whether I'm speaking) makes little sense in Welsh or in Korean."
+    },
+    {
+     "id": "cym_for_kor:S0010L02B04",
+     "keep": false,
+     "why": "'esbonio os dw i'n mynd i siarad' (explain whether I'm going to speak) is an odd thing to say, and its Korean prompt is awkward too."
+    }
+   ]
+  },
+  "S0010L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 ~ㄹ 수 있을지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 배울 수 있을지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어를 배울 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 이야기할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 웨일스어를 이야기하는 연습을 할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 연습할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 이야기하는 연습을 할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 말할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 지금 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 이야기할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 노력하는 방법을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 연습하는 방법을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 이야기하는 연습을 하는 방법을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 단어 하나를 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 웨일스어로 설명할 수 없어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0010L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 문장 전체를 기억할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 문장 전체를 기억할 건지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0010L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L04B03",
+     "keep": false,
+     "why": "It is unclear whether 'yn y Gymraeg' belongs to the sentence or to remembering, so the row is awkward; two better BUILD rows already kept"
+    },
+    {
+     "id": "cym_for_kor:S0010L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0010L04U02",
+     "keep": false,
+     "why": "'Remember the whole sentence with you' is semantically odd"
+    },
+    {
+     "id": "cym_for_kor:S0010L04U06",
+     "keep": false,
+     "why": "Same awkward 'yn y Gymraeg' attachment as B03; quota already filled"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:28:53.037Z"
+}

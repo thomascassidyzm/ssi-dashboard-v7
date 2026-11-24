@@ -1,0 +1,175 @@
+{
+ "seed": 96,
+ "at": "2026-11-24T18:22:19.856Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0096L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "무언가 다른 것보다",
+     "ok": false,
+     "why": "Here 'na' means 'than', but this LEGO teaches 'na' as 'no' (아니). Wrong sense."
+    },
+    {
+     "n": 2,
+     "ko": "무언가보다",
+     "ok": false,
+     "why": "Here 'na' means 'than', but this LEGO teaches 'na' as 'no'. Wrong sense."
+    },
+    {
+     "n": 3,
+     "ko": "내가 기억하려고 노력하고 있는 것보다",
+     "ok": false,
+     "why": "Here 'na' means 'than', but this LEGO teaches 'na' as 'no'. Wrong sense."
+    },
+    {
+     "n": 4,
+     "ko": "그게 ~보다 더 나아",
+     "ok": false,
+     "why": "'well na' means 'better than'. This is the comparative 'na', not 'no'."
+    },
+    {
+     "n": 5,
+     "ko": "그게 오늘보다 더 나아",
+     "ok": false,
+     "why": "This is the comparative 'na' (than), not 'no'."
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 그게 어젯밤보다 더 나아",
+     "ok": false,
+     "why": "This is the comparative 'na' (than), not 'no'."
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워 하지만 단어가 너무 많아",
+     "ok": false,
+     "why": "The only 'na' here is 'na in 'mae 'na' (there is). It is not 'no', so this row does not practise the LEGO."
+    },
+    {
+     "n": 8,
+     "ko": "나는 지금 그게 그렇지 않아서 놀라워",
+     "ok": false,
+     "why": "The only 'na' here is 'na in 'fel 'na' (like that). It is not 'no', so this row does not practise the LEGO."
+    },
+    {
+     "n": 9,
+     "ko": "지금 이 순간 그게 지난달보다 더 나아",
+     "ok": false,
+     "why": "This is the comparative 'na' (than), not 'no'."
+    },
+    {
+     "n": 10,
+     "ko": "지금 그게 일주일 전보다 더 나아",
+     "ok": false,
+     "why": "This is the comparative 'na' (than), not 'no'."
+    }
+   ],
+   "topups": []
+  },
+  "S0096L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 준비가 됐으면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 준비가 됐다고 느껴",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그걸 이미 알아",
+     "ok": false,
+     "why": "Here 'yn barod' means 'already', but this LEGO teaches 'barod' as 'ready' (준비가 된). Wrong sense."
+    },
+    {
+     "n": 4,
+     "ko": "너는 이미 아주 잘 했어",
+     "ok": false,
+     "why": "Here 'yn barod' means 'already', not 'ready'. Wrong sense."
+    },
+    {
+     "n": 5,
+     "ko": "너는 이미 너무 많이 했어",
+     "ok": false,
+     "why": "Here 'yn barod' means 'already', not 'ready'. Wrong sense."
+    },
+    {
+     "n": 6,
+     "ko": "거의 준비가 됐어, 정말 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 거의 준비가 됐는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그건 이미 끝났었어",
+     "ok": false,
+     "why": "Here 'yn barod' means 'already', not 'ready'. Wrong sense."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0096L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0096L03B02",
+     "keep": false,
+     "why": "Good, but only one BUILD is needed and B01 is the cleanest"
+    },
+    {
+     "id": "cym_for_kor:S0096L03B03",
+     "keep": false,
+     "why": "Good fragment, but only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0096L03B04",
+     "keep": false,
+     "why": "Good fragment, but only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0096L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0096L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0096L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0096L03U04",
+     "keep": false,
+     "why": "Welsh is conditional (fyddwn i ddim) but '준비가 안 될 것 같아' also fits the future 'fydda i ddim', so there are two possible answers"
+    },
+    {
+     "id": "cym_for_kor:S0096L03U05",
+     "keep": false,
+     "why": "Good, but it nearly repeats the seed sentence, and three better USE rows are already kept"
+    },
+    {
+     "id": "cym_for_kor:S0096L03U06",
+     "keep": false,
+     "why": "Good, but three USE rows are already kept"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:34:44.412Z"
+}

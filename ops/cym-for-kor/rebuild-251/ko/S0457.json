@@ -1,0 +1,201 @@
+{
+ "seed": 457,
+ "at": "2026-11-24T19:18:00.505Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0457L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "생각하는 게 문제의 일부야",
+     "ok": true,
+     "why": "Fronted-focus 'meddwl ydy rhan o’r broblem' is natural North Welsh. 'rhan o’r broblem' keeps the same sense, 'part of the problem'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0457L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L01B03",
+     "keep": false,
+     "why": "Grammatical, but only 2 BUILD were needed and B01/B02 are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0457L01B04",
+     "keep": false,
+     "why": "Grammatical, but only 2 BUILD were needed and B01/B02 are simpler."
+    },
+    {
+     "id": "cym_for_kor:S0457L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L01U01",
+     "keep": true,
+     "ko": "문제의 일부는 그가 준비가 안 돼 있다는 거야"
+    },
+    {
+     "id": "cym_for_kor:S0457L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L01U02",
+     "keep": false,
+     "why": "Five USE already kept. Using bare 'na' as a contradicting answer to a focus sentence is weaker than 'naci'."
+    }
+   ]
+  },
+  "S0457L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내년에 학생 수를 알아내다",
+     "ok": true,
+     "why": "'nifer y' is the same LEGO as 'nifer yr', just the article form before a consonant. Natural and in the same sense."
+    },
+    {
+     "n": 2,
+     "ko": "나는 학생 수를 알아내고 싶었어, 하지만 아무도 확실하지 않았어",
+     "ok": true,
+     "why": "Natural North Welsh. 'nifer' is used in the sense 'number of'."
+    },
+    {
+     "n": 3,
+     "ko": "그들은 스스로 학생 수를 줄일 수 있어?",
+     "ok": true,
+     "why": "'torri nifer' meaning to cut the number is idiomatic, and 'eu hunain' is fine."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0457L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L02B01",
+     "keep": false,
+     "why": "Only 2 BUILD needed. It is just the bare LEGO."
+    },
+    {
+     "id": "cym_for_kor:S0457L02B04",
+     "keep": false,
+     "why": "Only 2 BUILD needed."
+    },
+    {
+     "id": "cym_for_kor:S0457L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0457L02U01",
+     "keep": false,
+     "why": "Three USE already kept, and this one copies the frame of original o3."
+    },
+    {
+     "id": "cym_for_kor:S0457L02U02",
+     "keep": false,
+     "why": "Three USE already kept."
+    },
+    {
+     "id": "cym_for_kor:S0457L02U06",
+     "keep": false,
+     "why": "Three USE already kept."
+    },
+    {
+     "id": "cym_for_kor:S0457L02U07",
+     "keep": false,
+     "why": "Three USE already kept."
+    },
+    {
+     "id": "cym_for_kor:S0457L02U08",
+     "keep": false,
+     "why": "Three USE already kept."
+    }
+   ]
+  },
+  "S0457L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지역들 중 일부",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지역들 중 일부를 방문하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지역들 중 일부에 서비스를 제공하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "오늘 저녁 지역들 중 일부",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 작년에 지역들 중 일부를 보러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 지역들 중 일부를 방문해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리 지역들 중 일부에 서비스를 제공할 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 오늘 저녁 지역들 중 일부를 방문할 수 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 내년에 지역들 중 일부를 방문하고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "seed": 253,
+ "at": "2026-11-24T18:47:34.249Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0253L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "~ 준비가 될 거였어",
+     "ok": true,
+     "why": "Open-subject fragment ('… oedd yn mynd i fod yn barod'). It is grammatical North Welsh after a fronted subject, and barod means ready, the sense this course teaches."
+    },
+    {
+     "n": 2,
+     "ko": "~ 오늘 준비가 될 거였어",
+     "ok": true,
+     "why": "Same fragment with heddiw added. Natural, and barod means ready."
+    },
+    {
+     "n": 3,
+     "ko": "~ 그게 준비가 되어 있었다고",
+     "ok": true,
+     "why": "'fod o wedi bod yn barod' is natural North Welsh for 'that it had been ready'. Here barod means ready, not 'already', so it fits this LEGO's sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0253L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0253L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0253L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0253L02U02",
+     "keep": true,
+     "ko": "나는 그녀가 제때 준비가 되기를 원했어, 하지만 그녀는 너무 바빴어"
+    },
+    {
+     "id": "cym_for_kor:S0253L02U01",
+     "keep": true,
+     "ko": "네가 떠나기 전에 나는 준비가 될 것 같아"
+    },
+    {
+     "id": "cym_for_kor:S0253L02U06",
+     "keep": false,
+     "why": "Five are already kept and this is the weakest: the request for 'me' to be ready 'yesterday' is odd in meaning."
+    }
+   ]
+  },
+  "S0253L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 나는 짧은 시간에 많이 했거든",
+     "ok": true,
+     "why": "In 'mewn amser byr', mewn means 'within a time span', the sense this course teaches. Natural."
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 짧은 시간에 많이 했다고 느껴",
+     "ok": true,
+     "why": "Natural. mewn here means 'within a time span'."
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 짧은 시간에 아주 잘했다고 느껴",
+     "ok": true,
+     "why": "Natural. mewn here means 'within a time span'."
+    },
+    {
+     "n": 4,
+     "ko": "짧은 시간에 많이 배우는 것",
+     "ok": true,
+     "why": "Natural infinitive fragment. mewn here means 'within a time span'."
+    },
+    {
+     "n": 5,
+     "ko": "너는 짧은 시간에 아주 잘했어",
+     "ok": true,
+     "why": "Natural. mewn here means 'within a time span'."
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 제때 돌아오고 싶어했어",
+     "ok": true,
+     "why": "'mewn pryd' (in time) uses mewn in its time sense. Idiomatic North Welsh."
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 제때 대답할 수 없었어",
+     "ok": true,
+     "why": "Idiomatic North Welsh. mewn has its time sense inside 'mewn pryd'."
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 짧은 시간에 이미 얼마나 많이 배웠는지 놀라워",
+     "ok": true,
+     "why": "Natural North Welsh. mewn here means 'within a time span'."
+    }
+   ]
+  }
+ }
+}

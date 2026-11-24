@@ -1,0 +1,276 @@
+{
+ "seed": 325,
+ "at": "2026-11-24T18:58:37.060Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0325L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0325L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02B02",
+     "keep": false,
+     "why": "Sound, but the 3 BUILD slots are already filled by better rows"
+    },
+    {
+     "id": "cym_for_kor:S0325L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L02U06",
+     "keep": false,
+     "why": "The 5 USE slots are already filled; it also only repeats a BUILD row with credu instead of meddwl"
+    }
+   ]
+  },
+  "S0325L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 나중에 노는 걸 고려하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "다른 것을 고려하려고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀가 이야기할 때까지 기다리는 걸 고려하려고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "고려할 질문",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 노는 걸 고려해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 다음 주에 노는 걸 고려하면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 노는 걸 고려하는 게 좋을지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 고려할 시간을 조금 더 갖고 싶었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0325L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L03U01",
+     "keep": false,
+     "why": "The Korean drops who must consider it, so either bod hi or fod o fits"
+    },
+    {
+     "id": "cym_for_kor:S0325L03U06",
+     "keep": false,
+     "why": "The Korean is wrong: it puts 네가 on the main clause and does not match rhaid i mi ... cyn i ti adael"
+    }
+   ]
+  },
+  "S0325L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그 젊은 여자는 이제 열 살이야",
+     "ok": false,
+     "why": "A ten-year-old is not a dynas ifanc (young woman); the sentence makes no sense"
+    },
+    {
+     "n": 2,
+     "ko": "그 젊은 남자는 열 살이야",
+     "ok": false,
+     "why": "A ten-year-old is not a dyn ifanc (young man); the sentence makes no sense"
+    },
+    {
+     "n": 3,
+     "ko": "우리 딸은 열 살이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "네 친구들 중 열 명",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "이메일 열 통",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 이메일 열 통을 보냈어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그 사람들 중 열 명을 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 이메일 열 통을 원하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 열 개가 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너 왜 이메일 열 통이 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 저기에 있는 사람들 중 열 명을 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그녀는 어젯밤 이메일 열 통을 보냈어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0325L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "문제없어, 한 시간도 안 돼서 가능해",
+     "ok": false,
+     "why": "Wrong sense: the Welsh has 'dim problem' and 'mae'n bosib' as separate words and never uses 'problem bosib' (possible problem)"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0325L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05B04",
+     "keep": false,
+     "why": "The 3 BUILD slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0325L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05U04",
+     "keep": false,
+     "why": "The 4 USE slots are already filled; 그는 그가 is also awkward Korean"
+    },
+    {
+     "id": "cym_for_kor:S0325L05U05",
+     "keep": false,
+     "why": "The 4 USE slots are already filled; 그녀는 그녀가 is also awkward Korean"
+    },
+    {
+     "id": "cym_for_kor:S0325L05U06",
+     "keep": false,
+     "why": "The 4 USE slots are already filled"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0325L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0325L05U05",
+     "keep": false,
+     "why": "Only one USE slot is needed and U06 is the better choice. The Korean is also awkward: 그녀는 그녀가 should be 그녀는 자기가."
+    },
+    {
+     "id": "cym_for_kor:S0325L05U04",
+     "keep": false,
+     "why": "Only one USE slot is needed. The Korean 그는 그가 is awkward, and 'doesn't need to consider a possible problem' is less natural than U06."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:08:51.738Z"
+}

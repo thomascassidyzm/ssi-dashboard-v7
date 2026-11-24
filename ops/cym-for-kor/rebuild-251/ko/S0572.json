@@ -1,0 +1,244 @@
+{
+ "seed": 572,
+ "at": "2026-11-24T19:43:09.713Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0572L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 무슨 일이 있었는지 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 정원에서 무슨 일이 있었는지 물어봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 무슨 일이 있었는지 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어젯밤에 무슨 일이 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그 당시에 무슨 일이 있었어?",
+     "ok": true,
+     "why": "Natural North Welsh. 'ar y pryd' means 'at the time', and 'be’ ddigwyddodd' is used in the sense this course teaches."
+    },
+    {
+     "n": 6,
+     "ko": "아무도 나에게 어젯밤에 무슨 일이 있었는지 말해 주지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "일 분 전에 무슨 일이 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 일주일 전에 무슨 일이 있었는지 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "애초에 무슨 일이 있었는지는 상관없어",
+     "ok": true,
+     "why": "Natural Welsh, and the LEGO is in the right sense. The Korean has no 나는, so it stays distinct from o8, which has 'gen i'."
+    },
+    {
+     "n": 10,
+     "ko": "우리가 지난번에 서로 본 후로 무슨 일이 있었어?",
+     "ok": false,
+     "why": "The Welsh has 'tro diwetha’' with no article. This seed teaches 지난번에 = 'y tro diwetha’', so a learner who hears 지난번에 will say 'ers i ni weld ein gilydd y tro diwetha’'. That gives two possible answers."
+    }
+   ]
+  },
+  "S0572L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지난번에 식당에서",
+     "ok": false,
+     "why": "The Welsh is 'tro diwetha’' with no article, so the row does not contain this LEGO ('y tro diwetha’'). A learner who hears 지난번에 will say 'y tro diwetha’ yn y tŷ bwyta', which does not match the target."
+    },
+    {
+     "n": 2,
+     "ko": "나는 지난번에 식당에서 누군가를 만났어",
+     "ok": false,
+     "why": "No article, same problem as o1. 지난번에 now cues 'y tro diwetha’', so the Korean has two possible Welsh answers."
+    },
+    {
+     "n": 3,
+     "ko": "지난번에 그녀는 나를 따라 버스 쪽으로 갔어",
+     "ok": false,
+     "why": "No article, same problem as o1. The row does not contain the LEGO 'y tro diwetha’'."
+    },
+    {
+     "n": 4,
+     "ko": "어쩌면 지난번에 모든 게 시작됐어",
+     "ok": false,
+     "why": "No article, same problem as o1. The Korean 지난번에 would get 'y tro diwetha’', not the target 'tro diwetha’'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0572L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04B04",
+     "keep": false,
+     "ko": "지난번에 사무실에서",
+     "why": "Fine once the stray 그 is removed, but only 2 BUILD were needed and B01 and B03 are better."
+    },
+    {
+     "id": "cym_for_kor:S0572L04B02",
+     "keep": false,
+     "why": "약속했어 could be 'wnaeth o addo' or 'wnaeth o addewid' (two answers), and 'mi wnaeth o addewid' is a stilted calque."
+    },
+    {
+     "id": "cym_for_kor:S0572L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04U05",
+     "keep": false,
+     "why": "Valid, but only 2 USE were needed."
+    },
+    {
+     "id": "cym_for_kor:S0572L04U04",
+     "keep": false,
+     "why": "Valid, but only 2 USE were needed."
+    },
+    {
+     "id": "cym_for_kor:S0572L04U06",
+     "keep": false,
+     "why": "Valid, but only 2 USE were needed."
+    },
+    {
+     "id": "cym_for_kor:S0572L04U02",
+     "keep": false,
+     "why": "Valid, but only 2 USE were needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0572L04B04",
+     "keep": true,
+     "ko": "지난번에 사무실에서"
+    },
+    {
+     "id": "cym_for_kor:S0572L04B02",
+     "keep": false,
+     "why": "약속했어 has two possible answers (wnaeth o addo / wnaeth o addewid), and 'mi wnaeth o addewid' is a stilted calque."
+    },
+    {
+     "id": "cym_for_kor:S0572L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04U04",
+     "keep": true,
+     "ko": "너 지난번에 그녀에게 동의했어?"
+    },
+    {
+     "id": "cym_for_kor:S0572L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0572L04U02",
+     "keep": false,
+     "why": "The Welsh reads most naturally as the fragment 'the last time they left together', which is the same relative structure as the seed. Also, 자기들끼리 ('among themselves') does not mean efo'i gilydd ('together')."
+    }
+   ]
+  },
+  "S0572L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 자기들끼리 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 어제 자기들끼리 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 어젯밤에 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 그 일들을 각자 혼자 두고 떠났어",
+     "ok": false,
+     "why": "'ar eu pennau eu hunain' could mean the things were left alone or the people left on their own. The sentence is unclear and unnatural, and no Korean using the glosses can make the meaning clear."
+    },
+    {
+     "n": 5,
+     "ko": "그들은 그 일들을 두고 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 왜 그들의 직장을 떠났어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "과거에 그들은 그들이 누구를 봤는지 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 그녀한테 그들이 어젯밤에 누구를 봤는지 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 말하지 않았지만 내가 알아내게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그들은 그들이 얼마나 높이 짓고 싶어했는지 말하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:24:59.817Z"
+}

@@ -1,0 +1,139 @@
+{
+ "seed": 534,
+ "at": "2026-11-24T19:36:31.141Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0534L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "걱정하지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "휴식을 위해 멈추지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 ~지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어쩌면 오늘 저녁에는 결정하지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "희망을 잃지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "오늘 저녁에는 소란을 피우지 말자",
+     "ok": true,
+     "why": "codi twrw means make a fuss, not 모금하다; Korean follows the source English"
+    },
+    {
+     "n": 7,
+     "ko": "걱정하지 말자, 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "어쩌면 회사를 팔지 말자",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "지금 당장 결정하지 말자",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0534L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "세상의 이 지역에서는 끔찍한 날씨",
+     "ok": false,
+     "why": "Doesn't contain the LEGO 'yn y tywydd ofnadwy yma'. It has 'tywydd ofnadwy' plus 'yn y rhan yma o'r byd', so it doesn't practise this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0534L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03B03",
+     "keep": false,
+     "why": "BUILD count already met by B01/B02"
+    },
+    {
+     "id": "cym_for_kor:S0534L03B04",
+     "keep": false,
+     "why": "BUILD count already met"
+    },
+    {
+     "id": "cym_for_kor:S0534L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03U03",
+     "keep": true,
+     "ko": "너 이 끔찍한 날씨에 나가고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0534L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03U07",
+     "keep": false,
+     "why": "USE count already met by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0534L03U06",
+     "keep": false,
+     "why": "USE count already met; long and heavy"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0534L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0534L03B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed and B04 is the better one. B03's Korean also puts 오늘 저녁 before the phrase while the Welsh ends with heno, and heno may have a 오늘 밤 gloss."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:21:53.406Z"
+}

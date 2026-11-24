@@ -1,0 +1,249 @@
+{
+ "seed": 503,
+ "at": "2026-11-24T19:28:55.979Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0503L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 소란 피우는 걸 싫어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 나는 오늘 저녁 소란 피우는 걸 싫어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 나는 소란 피우는 걸 싫어하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "어쩌면 나는 소란 피우는 걸 싫어하는지도 몰라",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 소란 피우는 걸 싫어하지만 내 돈을 돌려받고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 떠나야 했어, 왜냐하면 나는 소란 피우는 걸 싫어하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 소란 피우는 걸 싫어하지만 괜찮을 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 소란 피우는 걸 싫어하지만 그건 사실이 아니야",
+     "ok": false,
+     "why": "The Welsh is grammatical, but the two clauses don't connect: 'I hate making trouble but it isn't true' is a non-sequitur."
+    },
+    {
+     "n": 9,
+     "ko": "나는 알아내고 싶었지만 소란 피우는 걸 싫어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0503L01U02",
+     "keep": true,
+     "ko": "나는 소란 피우는 걸 싫어하지만 나는 질 생각은 없어"
+    },
+    {
+     "id": "cym_for_kor:S0503L01U01",
+     "keep": false,
+     "why": "Only one USE row was needed, and U02 makes more sense. In U01 the 'but' does not connect the two halves logically."
+    },
+    {
+     "id": "cym_for_kor:S0503L01U04",
+     "keep": false,
+     "why": "Only one USE row was needed. The opening 'na' (no) also reads oddly attached to this statement."
+    },
+    {
+     "id": "cym_for_kor:S0503L01U05",
+     "keep": false,
+     "why": "Only one USE row was needed. 'dyna'r unig obaith real' is a weak, unclear continuation here."
+    },
+    {
+     "id": "cym_for_kor:S0503L01U06",
+     "keep": false,
+     "why": "Only one USE row was needed, and U02 is more natural."
+    }
+   ]
+  },
+  "S0503L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 어떻게 내 거를 찾아낼지 걱정하는 거",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내 거를 탁자 위에 놓고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 내 거 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 어머니가 나한테 내가 형이랑 같은 것을 하면 안 된다고 말했어",
+     "ok": false,
+     "why": "The Welsh doesn't contain 'un fi' (only 'yr un peth'), so it doesn't practise this LEGO. Also, brother can be 형, 오빠 or 동생 in Korean, so the prompt is ambiguous."
+    },
+    {
+     "n": 5,
+     "ko": "네 어머니가 나한테 내가 같은 것을 하면 안 된다고 말했어",
+     "ok": false,
+     "why": "The Welsh doesn't contain 'un fi' (only 'yr un peth'), so it doesn't practise this LEGO."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내 거를 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 왜 내 거를 원해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 어젯밤에 내 거 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 내 거를 정원에 두고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "지금 당장 내 거 부탁해요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 소란 피우는 걸 싫어하지만 내 거를 원해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0503L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그건 내 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그건 내 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오른쪽에 있는 그건 내 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그 사람은 네가 웨일스어로 이야기하는 게 필요해?",
+     "ok": false,
+     "why": "Here 'ydy hwnnw' is a question verb with 'hwnnw' as its subject ('does he need'), not the 'that one is X' sentence this LEGO teaches. Wrong sense, and the Korean can't use the 그건 ~야 gloss."
+    },
+    {
+     "n": 5,
+     "ko": "그 사람은 네가 이야기하는 게 필요해?",
+     "ok": false,
+     "why": "Here 'ydy hwnnw' is a question verb with 'hwnnw' as its subject, not the 'that one is X' sentence this LEGO teaches. Wrong sense."
+    },
+    {
+     "n": 6,
+     "ko": "하지만 그건 가장 흥미로운 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그건 완전 쓰레기야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그건 지금 내 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그건 내 거야, 너는 그렇게 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그건 초록색 셔츠를 입은 남자애야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그건 훌륭한 아이디어야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "지금 그건 유일한 진짜 희망이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "그건 저기에 서 있는 사람이야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T20:19:26.638Z"
+}

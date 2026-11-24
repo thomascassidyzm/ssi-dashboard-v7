@@ -1,0 +1,179 @@
+{
+ "seed": 160,
+ "at": "2026-11-24T18:33:28.067Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0160L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "이야기하는 방법",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "무언가를 말하는 방법을 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 어떻게 배우고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 말하고 싶은 걸 말하는 방법",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 웨일스어를 이야기하는 방법을 기억하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 말하고 싶은 걸 말하는 방법을 기억할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 네 웨일스어에 대해 기분이 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 웨일스어를 이야기하는 방법을 배우고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 웨일스어로 무언가를 말하는 방법을 기억하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 말하고 싶은 걸 말하는 방법을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "하지만 너는 어떤 곳을 원해?",
+     "ok": false,
+     "why": "Here 'sut le' means 'what kind of place'. That is sut + noun = 'what kind of', not the 'how' (어떻게) sense this LEGO teaches, so 어떻게 can't sit in the prompt."
+    },
+    {
+     "n": 12,
+     "ko": "너 어떻게 지내?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0160L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0160L01U06",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed and U01 is closer to the seed frame"
+    },
+    {
+     "id": "cym_for_kor:S0160L01U02",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0160L01U05",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0160L01U04",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0160L01U07",
+     "keep": false,
+     "why": "Breaks register: 'gadewch i ni' is the chi form, but 'let's' must be -자 in 반말, so the Korean cannot carry the chi register"
+    },
+    {
+     "id": "cym_for_kor:S0160L01U03",
+     "keep": false,
+     "why": "Breaks register: plural 'dach chi' needs 여러분 in 해요, not 너희 in 반말"
+    }
+   ]
+  },
+  "S0160L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이 단어가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "이 단어를 웨일스어로 듣다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 이 단어를 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "웨일스어로 된 이 단어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 이 단어가 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 왜 이 단어가 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그리고 너는 웨일스어로 된 이 단어에 대해 뭐라고 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 그냥 웨일스어로 된 이 단어가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "문제없어, 우리는 이 단어를 바꿔야 해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:59:40.729Z"
+}

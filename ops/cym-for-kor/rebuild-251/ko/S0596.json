@@ -1,0 +1,122 @@
+{
+ "seed": 596,
+ "at": "2026-11-24T19:46:48.286Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0596L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 눈을 감을 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 눈을 감고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 휴식을 위해 눈을 감고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "지금 이 순간 눈을 감는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 정원에서 눈을 감고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내가 정원에서 눈을 감으면 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 지금 당장 휴식을 위해 눈을 감을 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 지금 이 순간 눈을 감는 게 어려워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 피곤하지만 나는 눈을 감고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0596L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0596L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0596L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0596L04B04",
+     "keep": true,
+     "ko": "정원에서 잠시 앉아 있다"
+    },
+    {
+     "id": "cym_for_kor:S0596L04B03",
+     "keep": false,
+     "why": "Fine, but the three BUILD slots are already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0596L04U01",
+     "keep": true,
+     "ko": "나는 정원에서 잠시 누울 필요가 있어"
+    },
+    {
+     "id": "cym_for_kor:S0596L04U06",
+     "keep": true,
+     "ko": "나는 피곤해, 그래서 나는 잠시 눕고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0596L04U02",
+     "keep": true,
+     "ko": "너는 잠시 멈추고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0596L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0596L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0596L04U07",
+     "keep": false,
+     "why": "Sound, but the five USE slots are already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0596L04U04",
+     "keep": false,
+     "why": "Putting am sbel first is a marked word order and less natural than the plain order; the slots are already filled"
+    }
+   ]
+  }
+ }
+}

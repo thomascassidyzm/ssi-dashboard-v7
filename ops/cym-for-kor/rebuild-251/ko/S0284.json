@@ -1,0 +1,133 @@
+{
+ "seed": 284,
+ "at": "2026-11-24T18:51:41.012Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0284L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0284L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L01B04",
+     "keep": false,
+     "why": "Not needed: the 3 BUILD slots are filled by shorter rows, and its core is repeated in U02."
+    },
+    {
+     "id": "cym_for_kor:S0284L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L01U05",
+     "keep": true,
+     "ko": "너 어제 네가 같이 이야기하고 있던 그 남자를 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0284L01U04",
+     "keep": true,
+     "ko": "너 내 아버지의 오랜 친구 한 명을 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0284L01U02",
+     "keep": false,
+     "why": "This is just B04 with 하지만 added. The other five USE rows are stronger."
+    }
+   ]
+  },
+  "S0284L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 어젯밤 내 자매의 친구를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "일하는 내 자매의 친구",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 자매의 친구는 누구였어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 어젯밤 내 자매의 친구를 만나고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 저녁 내 자매의 친구를 기다릴 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 내 자매의 친구를 아는 누군가를 알아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0284L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0284L02U03",
+     "keep": true,
+     "ko": "내 자매의 친구는 우리와 같이 오고 싶어했어"
+    },
+    {
+     "id": "cym_for_kor:S0284L02U07",
+     "keep": false,
+     "why": "Good row, but both USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0284L02U04",
+     "keep": false,
+     "why": "Its Korean 알고 지내지 않아 changes the gloss 알아. 몰라 would fix that, but both slots are filled."
+    },
+    {
+     "id": "cym_for_kor:S0284L02U01",
+     "keep": false,
+     "why": "Both slots are filled. 소식을 들었어 also strays from a plain gloss of clywed gan."
+    },
+    {
+     "id": "cym_for_kor:S0284L02U05",
+     "keep": false,
+     "why": "Both slots are filled, and the Korean 그는 … 원했어 only loosely matches oedd o isio i ti."
+    },
+    {
+     "id": "cym_for_kor:S0284L02U06",
+     "keep": false,
+     "why": "Two Welsh answers fit 만날래?: fyddet ti'n licio and wyt ti isio, so the prompt is ambiguous."
+    }
+   ]
+  }
+ }
+}

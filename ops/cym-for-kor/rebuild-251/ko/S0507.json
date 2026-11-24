@@ -1,0 +1,173 @@
+{
+ "seed": 507,
+ "at": "2026-11-24T19:30:02.337Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0507L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지난번에 우리가 이야기했을 때",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 오늘 서로 이야기했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 어젯밤에 펍에서 이야기했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 지난번에 서로 이야기했지만 나는 네가 말한 것을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 어젯밤에 서로 이야기했어, 그래서 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리 친구들이 일주일 전에 놀러 왔지만 그들은 누구를 봤는지 말하지 않았어",
+     "ok": false,
+     "why": "Welsh does not contain the LEGO wnaethon ni (only wnaethon nhw); it does not practise this LEGO"
+    },
+    {
+     "n": 7,
+     "ko": "우리는 지난 주말에 웨일스어로 이야기했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 우리가 왜 멈춰야 했는지 말하지 않았어",
+     "ok": false,
+     "why": "Welsh does not contain the LEGO wnaethon ni (wnaethon nhw + oeddan ni); it does not practise this LEGO"
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0507L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0507L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0507L01U05",
+     "keep": false,
+     "why": "Good phrase, but the two USE slots are already filled by stronger rows: U02 reuses the seed verb as a question, U03 adds the negative."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U01",
+     "keep": false,
+     "why": "Sound, but only two slots are needed and U02/U03 give more variety (question, negation)."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U04",
+     "keep": false,
+     "why": "그러면 means 'in that case', while wedyn here means 'then/afterwards' (그 다음에), so the Korean misleads; also surplus to the count."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U06",
+     "keep": false,
+     "why": "Surplus to the count; the pan-clause plus pluperfect is heavy for a USE top-up."
+    },
+    {
+     "id": "cym_for_kor:S0507L01U07",
+     "keep": false,
+     "why": "Surplus to the count, and too long, with the second clause drifting away from the LEGO."
+    }
+   ]
+  },
+  "S0507L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 도시로 이사하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 지금 당장 도시로 이사할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 도시로 이사할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "여러분이 도시로 가기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "도시에 다시 도착하기 위해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "도시로 이사하는 대신에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "오늘 저녁에 도시로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "내년에 나는 도시로 이사했으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 수요일에 도시로 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 작년에 도시로 갔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그 둘은 지난달에 도시로 왔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너 그녀가 나를 도시로 따라왔다는 거 들었어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:19:44.383Z"
+}

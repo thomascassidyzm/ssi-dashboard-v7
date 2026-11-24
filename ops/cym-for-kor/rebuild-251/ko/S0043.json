@@ -1,0 +1,325 @@
+{
+ "seed": 43,
+ "at": "2026-11-24T18:13:44.863Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0043L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 대답할 수 없었어",
+     "ok": true,
+     "why": "'do'n i ddim yn medru' is natural North Welsh for 'couldn't', and it is the same past-negative do'n i ddim yn"
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 왜 대답할 수 없었는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 대답할 수 없었어 하지만 나는 그러고 싶었어",
+     "ok": true,
+     "why": "Natural elliptical 'ond o'n i isio'. The Korean keeps the open end with 그러고 and does not repeat ateb."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0043L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L01B02",
+     "keep": false,
+     "why": "Fine, but only 2 BUILD needed and B01 and B03 are stronger"
+    },
+    {
+     "id": "cym_for_kor:S0043L01B04",
+     "keep": false,
+     "why": "Fine, but only 2 BUILD needed"
+    },
+    {
+     "id": "cym_for_kor:S0043L01U03",
+     "keep": false,
+     "why": "'웨일스어를 이야기하고' is awkward Korean, and only 3 USE are needed"
+    },
+    {
+     "id": "cym_for_kor:S0043L01U05",
+     "keep": false,
+     "why": "Run-on Korean with two clauses and no connective, and it is weaker than the kept ones"
+    },
+    {
+     "id": "cym_for_kor:S0043L01U06",
+     "keep": false,
+     "why": "Run-on Korean with no connective. Asking 'gofyn rhywbeth' reads oddly as a progressive."
+    }
+   ]
+  },
+  "S0043L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 한 달 동안 배우고 싶었어",
+     "ok": false,
+     "why": "Wrong sense: this is duration 'am' (for a month), but the course taught am = ~에 대해 (about). The learner cannot get am from 동안."
+    },
+    {
+     "n": 2,
+     "ko": "나는 한 달 동안 웨일스어로 이야기하는 게 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: 'am fis' is duration, not ~에 대해"
+    },
+    {
+     "n": 3,
+     "ko": "나는 한 달 동안 웨일스어로 이야기할 거야",
+     "ok": false,
+     "why": "Wrong sense: 'am fis' is duration, not ~에 대해"
+    },
+    {
+     "n": 4,
+     "ko": "나는 약 한 달 동안 웨일스어로 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 약 한 달 동안 배워 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 6,
+     "ko": "나는 약 한 달 동안 웨일스어를 배워 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 7,
+     "ko": "나는 한 달 동안 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am fis' is duration, not ~에 대해"
+    },
+    {
+     "n": 8,
+     "ko": "하지만 나는 한 달 동안 웨일스어로 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am fis' is duration, not ~에 대해"
+    },
+    {
+     "n": 9,
+     "ko": "나는 한 달 동안 웨일스어로 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am fis' is duration, not ~에 대해"
+    },
+    {
+     "n": 10,
+     "ko": "내가 약 한 달 동안 연습할 수 있으면",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 11,
+     "ko": "나는 약 한 달 동안 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: duration 'am'. It also has the same Korean as o12, whose Welsh differs (wedi vs 'di)."
+    },
+    {
+     "n": 12,
+     "ko": "나는 약 한 달 동안 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: duration 'am'. It also has the same Korean as o11, whose Welsh differs ('di vs wedi), so the prompt has two answers."
+    },
+    {
+     "n": 13,
+     "ko": "나는 약 한 달 동안 이야기하는 연습을 하는 게 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 14,
+     "ko": "나는 약 한 달 동안 연습하고 싶어",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 15,
+     "ko": "나는 약 한 달 동안 배워 왔어",
+     "ok": false,
+     "why": "Wrong sense: 'am tua mis' is duration, not ~에 대해"
+    },
+    {
+     "n": 16,
+     "ko": "나는 약 한 달 동안 웨일스어로 이야기해 왔어",
+     "ok": false,
+     "why": "Wrong sense: duration 'am'. It also has the same Korean as o4, whose Welsh differs ('di vs wedi)."
+    },
+    {
+     "n": 17,
+     "ko": "나는 한 달 동안 그것에 대해 신중하게 이야기해 왔어",
+     "ok": false,
+     "why": "The 'am' this LEGO stands for is 'am fis' (duration). The 'about' sense here sits only inside the amdano chunk, which is a different LEGO."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0043L03B04",
+     "keep": true,
+     "ko": "어떻게 대답할지에 대해 생각하다"
+    },
+    {
+     "id": "cym_for_kor:S0043L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L03B03",
+     "keep": false,
+     "ko": "어떻게 대답할지에 대해",
+     "why": "Good phrase, but the 3 BUILD slots are already filled and B04 includes this chunk."
+    },
+    {
+     "id": "cym_for_kor:S0043L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L03U06",
+     "keep": true,
+     "ko": "나는 오늘 저녁 어떻게 대답할지에 대해 생각할 거야"
+    },
+    {
+     "id": "cym_for_kor:S0043L03U02",
+     "keep": true,
+     "ko": "너는 무엇에 대해 이야기하고 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0043L03U05",
+     "keep": false,
+     "why": "'am Gymraeg' without the article is unnatural (should be 'am y Gymraeg'), and the past-tense statement 'you wanted to talk with me' is an odd thing to say."
+    }
+   ]
+  },
+  "S0043L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 할 수 있는 한 빨리 대답하기",
+     "ok": true,
+     "why": "Natural Welsh, and it uses ateb as the verb"
+    },
+    {
+     "n": 2,
+     "ko": "오늘 더 잘 대답하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 대답하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 대답하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내가 대답하기 전에 왜인지 물어봐도 돼?",
+     "ok": true,
+     "why": "'cyn i mi ateb' is natural, with ateb as the verb"
+    },
+    {
+     "n": 6,
+     "ko": "나는 대답하기 전에 이걸 끝내면 좋겠어",
+     "ok": true,
+     "why": "Natural Welsh. The Korean avoids -고 싶어 so it does not clash with 'dw i isio'."
+    },
+    {
+     "n": 7,
+     "ko": "그녀는 나중에 대답하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 답을 기억하고 싶지 않았어",
+     "ok": false,
+     "why": "Wrong sense: 'cofio'r ateb' uses ateb as the noun 'the answer', but this LEGO teaches the verb 대답하다"
+    },
+    {
+     "n": 9,
+     "ko": "지금 이 순간 나는 답이 무엇인지 알아내려고 노력하고 있어",
+     "ok": false,
+     "why": "Wrong sense: ateb here is the noun inside the chunk 'be' ydy'r ateb', not the verb 대답하다"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0043L05U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0043L05U03",
+     "keep": false,
+     "why": "Good phrase, but the 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0043L05U01",
+     "keep": false,
+     "why": "Good phrase, but the 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0043L05U06",
+     "keep": false,
+     "why": "Good phrase, but the 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0043L05U07",
+     "keep": false,
+     "why": "Good phrase, but the 2 USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0043L05U05",
+     "keep": false,
+     "why": "Good phrase, but the 2 USE slots are already filled."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:31:10.800Z"
+}

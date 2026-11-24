@@ -1,0 +1,265 @@
+{
+ "seed": 128,
+ "at": "2026-11-24T18:28:17.874Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0128L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "마치 네가 봐야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain the LEGO 'ti fel'. Here 'fel bod angen i ti' means 'as though you need'. The LEGO, as taught, means 'you're like (someone)', so this is the wrong sense."
+    },
+    {
+     "n": 2,
+     "ko": "마치 네가 얻어야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
+    },
+    {
+     "n": 3,
+     "ko": "마치 네가 대답해야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
+    },
+    {
+     "n": 4,
+     "ko": "너는 가기 전에 돕기 위해 무언가를 하고 싶다고 느끼고 있어?",
+     "ok": false,
+     "why": "'teimlo fel' means 'feel like (doing)'. It doesn't contain the LEGO 'ti fel' and is the wrong sense of fel."
+    },
+    {
+     "n": 5,
+     "ko": "마치 네가 다시 이야기해야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
+    },
+    {
+     "n": 6,
+     "ko": "마치 네가 자야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
+    },
+    {
+     "n": 7,
+     "ko": "마치 네가 연습해야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
+    },
+    {
+     "n": 8,
+     "ko": "마치 네가 더 연습해야 하는 것처럼",
+     "ok": false,
+     "why": "Doesn't contain 'ti fel'. 'fel bod' means 'as though', not the taught 'you're like'."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0128L01B02",
+     "keep": true,
+     "ko": "너는 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L01B03",
+     "keep": true,
+     "ko": "너는 오늘 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01B01",
+     "keep": false,
+     "why": "BUILD quota of 3 already filled by stronger rows; 'you're like my friend' is semantically odd"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U01",
+     "keep": true,
+     "ko": "왜 너는 오늘 다른 누군가 같아?"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U02",
+     "keep": true,
+     "ko": "우리가 웨일스어를 할 때 너는 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L01U03",
+     "keep": true,
+     "ko": "너는 펍에서 다른 누군가 같아"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U04",
+     "keep": false,
+     "why": "clunky two-clause sentence; 'disgwyl o' tail reads unnaturally after the comparison"
+    },
+    {
+     "id": "cym_for_kor:S0128L01U06",
+     "keep": false,
+     "why": "'because you're like my friend' is semantically odd in both languages"
+    }
+   ]
+  },
+  "S0128L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 오후에 누군가를 만나다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 어젯밤에 내가 얼마나 많이 배웠는지 아는 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 어젯밤에 네가 얼마나 많이 배웠는지 아는 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 오늘 저녁에 흥미로운 누군가와 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어젯밤에 너와 잘 알고 지내는 누군가",
+     "ok": false,
+     "why": "Unnatural fragment once taken out of its chain. 'rhywun neithiwr sy'n…' leaves 'last night' hanging with no verb, so it means nothing on its own as a USE row."
+    },
+    {
+     "n": 6,
+     "ko": "너와 잘 알고 지내는 누군가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 모두를 이해하는 걸 좋아하는 누군가와 알고 지내",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그가 무엇을 하려고 노력하는지 나에게 말해 준 누군가와 알고 지내",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0128L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0128L02U01",
+     "keep": false,
+     "why": "quota of 1 filled; near-duplicate of U02"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U03",
+     "keep": false,
+     "why": "quota of 1 filled"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U04",
+     "keep": false,
+     "why": "quota of 1 filled"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U05",
+     "keep": false,
+     "why": "quota of 1 filled"
+    },
+    {
+     "id": "cym_for_kor:S0128L02U06",
+     "keep": false,
+     "why": "quota of 1 filled"
+    }
+   ]
+  },
+  "S0128L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 예전에 이야기하곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 예전에 생각하곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 예전에 펍에서 느긋하게 쉬곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 예전에 하던 것처럼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 예전에 걱정하곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 저녁에 내가 예전에 하던 것처럼 느긋하게 쉴 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 예전에 하던 것처럼 느긋하게 쉬면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 예전에 너무 많이 걱정하곤 했지만 지금 나는 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그것이 내가 예전에 펍에서 느긋하게 쉬던 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 예전에 펍에서 친구 몇 명을 만나곤 했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T19:58:02.724Z"
+}

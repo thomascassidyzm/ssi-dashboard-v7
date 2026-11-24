@@ -1,0 +1,342 @@
+{
+ "seed": 400,
+ "at": "2026-11-24T19:09:05.519Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0400L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 심지어 그걸 바꾸고 싶어하지도 않는다는 거",
+     "ok": true,
+     "why": "Natural Welsh. ydan ni … isio sits inside a negative nad-clause, which is still the same form."
+    },
+    {
+     "n": 2,
+     "ko": "그들은 우리가 멈출 필요가 없다는 걸 확실히 하고 싶어해",
+     "ok": false,
+     "why": "The Welsh never says 'ydan ni isio'. Here isio belongs to maen nhw and ydan ni goes with angen, so this phrase does not practise the LEGO."
+    },
+    {
+     "n": 3,
+     "ko": "문제의 일부는 우리가 멈추고 싶어하지 않는다는 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0400L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01B03",
+     "keep": false,
+     "why": "Count already reached with stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0400L01B04",
+     "keep": false,
+     "why": "Count already reached"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01U07",
+     "keep": false,
+     "why": "Count already reached"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U05",
+     "keep": false,
+     "why": "Count already reached. It is also too close to B04's 그녀와."
+    },
+    {
+     "id": "cym_for_kor:S0400L01U08",
+     "keep": false,
+     "why": "보다 could be gweld or gwylio, so the Korean allows two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U01",
+     "keep": false,
+     "why": "The Korean adds 사람 (person), which the Welsh does not have, and the question is awkward"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U03",
+     "keep": false,
+     "why": "paratoi'n fuan as a question with 머지않아 is awkward in both languages"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0400L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L01U01",
+     "keep": false,
+     "why": "The Welsh is fine, but the basket needs only one and U05 is the more natural question"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U03",
+     "keep": false,
+     "why": "Asking 'do we want to prepare soon?' is awkward in both languages"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U07",
+     "keep": false,
+     "why": "텔레비전을 보다 could be gwylio teledu or gweld teledu, so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0400L01U08",
+     "keep": false,
+     "why": "영화를 보다 allows both gweld and gwylio, so the Korean has two possible Welsh answers"
+    }
+   ]
+  },
+  "S0400L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 나중에 무언가 먹을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 먹을 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 아직까지 먹을 걸 충분히 먹었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "아무도 내 아버지와 같은 것을 먹고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그거 먹고 싶지 않아, 정말 아주 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 여전히 먹을 무언가가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내 아버지는 먹을 걸로 같은 것을 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "아무도 그것을 먹고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 먹을 무언가에 대한 준비가 됐어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "먹는 걸 기억하는 것이 중요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "먹기에 너무 많은 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "어떤 사람들은 너무 많이 먹고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "너무 많이 먹는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 지난 주말에 너무 많이 먹고 싶지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 자주 너무 많이 먹고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "그 소녀는 무언가 먹고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "여러분 먹을 걸 충분히 먹었어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "먹을 무언가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "내 아버지는 먹을 무언가를 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "너 이번 주말에 어디에서 먹고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "그들은 막 먹기 시작했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0400L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이따가 너무 많이 먹을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 이따가 그것을 먹을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "맞아, 그건 나중에 문제가 되지 않을 거야",
+     "ok": false,
+     "why": "Uses bare 'nes ymlaen' (나중에), not this LEGO 'yn nes ymlaen'. The only 'yn' is part of 'yn broblem'."
+    },
+    {
+     "n": 4,
+     "ko": "나는 여전히 이따가 너와 거기에 갈 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 여전히 이따가 웨일스어로 무언가 말하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "모두가 이따가 그 영화를 보고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 차라리 그것을 이따가 먹을래",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정말 고마워, 나는 나중에 설명할 거야",
+     "ok": false,
+     "why": "Uses bare 'nes ymlaen' (나중에), not this LEGO 'yn nes ymlaen'"
+    },
+    {
+     "n": 9,
+     "ko": "정말 고마워, 나는 나중에 알아낼 거야",
+     "ok": false,
+     "why": "Uses bare 'nes ymlaen' (나중에), not this LEGO 'yn nes ymlaen'"
+    },
+    {
+     "n": 10,
+     "ko": "정말 고마워, 나는 나중에 모든 것을 쓸 거야",
+     "ok": false,
+     "why": "Uses bare 'nes ymlaen' (나중에), not this LEGO 'yn nes ymlaen'"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0400L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0400L04U02",
+     "keep": false,
+     "why": "Acceptable, but the count is already filled by stronger phrases"
+    },
+    {
+     "id": "cym_for_kor:S0400L04U03",
+     "keep": false,
+     "why": "만날 거라고 could also be the future 'byddai/bydd o'n', so the Korean has two possible Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0400L04U04",
+     "keep": false,
+     "why": "Putting yn nes ymlaen before efo'n plant ni is awkward, and the phrase is long for a USE row"
+    },
+    {
+     "id": "cym_for_kor:S0400L04U07",
+     "keep": false,
+     "why": "Too long and complex for this point (gobeithio plus bydda i'n medru), and the Korean tense of 수 있기를 is loose"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:12:26.358Z"
+}

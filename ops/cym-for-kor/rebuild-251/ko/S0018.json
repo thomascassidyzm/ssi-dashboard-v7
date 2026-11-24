@@ -1,0 +1,321 @@
+{
+ "seed": 18,
+ "at": "2026-11-24T18:08:39.294Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0018L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 돌아오고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 알아내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 나중에 돌아오고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 답이 무엇인지 알아내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "오늘 우리는 답이 무엇인지 설명하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0018L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L01B03",
+     "keep": false,
+     "why": "'siarad yn y Gymraeg' is stiffer than the usual spoken 'siarad Cymraeg', and only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0018L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L01U07",
+     "keep": false,
+     "why": "fine, but 'tipyn bach' has no gloss; the two kept rows are cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0018L01U04",
+     "keep": false,
+     "why": "'esbonio' with no object at the end reads incomplete"
+    },
+    {
+     "id": "cym_for_kor:S0018L01U05",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L01U06",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L01U08",
+     "keep": false,
+     "why": "quota filled"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0018L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L01U08",
+     "keep": false,
+     "why": "Good row, but only one USE slot is needed and U05 is the cleaner and more natural use of dan ni isio."
+    },
+    {
+     "id": "cym_for_kor:S0018L01U06",
+     "keep": false,
+     "why": "Grammatical, but the one USE slot is already filled. It is also longer and leans on the ar ôl i ti construction."
+    },
+    {
+     "id": "cym_for_kor:S0018L01U07",
+     "keep": false,
+     "why": "The one USE slot is already filled, and tipyn bach has no gloss."
+    },
+    {
+     "id": "cym_for_kor:S0018L01U04",
+     "keep": false,
+     "why": "The bare esbonio at the end reads incomplete. The row also packs two clauses about different people, which pulls focus from the LEGO."
+    }
+   ]
+  },
+  "S0018L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0018L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02B04",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L02U04",
+     "keep": false,
+     "why": "quota filled; its Korean also needs the explicit 나는"
+    },
+    {
+     "id": "cym_for_kor:S0018L02U05",
+     "keep": false,
+     "why": "'fyddwn i ddim yn cyfarfod heddiw' is odd without a condition"
+    }
+   ]
+  },
+  "S0018L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 여섯 시에 돌아오고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "여섯 시에 만나다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 우리가 여섯 시에 만나고 싶은지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0018L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L03B01",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L03B02",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L03B03",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L03U02",
+     "keep": false,
+     "why": "'am chwech o'r gloch heddiw' is less natural than heno"
+    },
+    {
+     "id": "cym_for_kor:S0018L03U03",
+     "keep": false,
+     "why": "conditional with no condition reads oddly"
+    },
+    {
+     "id": "cym_for_kor:S0018L03U07",
+     "keep": false,
+     "why": "quota filled"
+    }
+   ]
+  },
+  "S0018L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 네가 끝낸 후에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 오늘 저녁 무슨 일이 일어날지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 여섯 시에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 오늘 저녁 여섯 시에 돌아오고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 오늘 저녁 답을 찾고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 오늘 저녁 누군가를 만나려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 저녁 내가 할 수 있는 만큼 열심히 이야기하는 연습을 할 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0018L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0018L04U02",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L04U03",
+     "keep": false,
+     "why": "conditional with no condition reads oddly"
+    },
+    {
+     "id": "cym_for_kor:S0018L04U04",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L04U05",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L04U06",
+     "keep": false,
+     "why": "quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0018L04U07",
+     "keep": false,
+     "why": "quota filled"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:29:20.278Z"
+}

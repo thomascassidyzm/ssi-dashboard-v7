@@ -1,0 +1,269 @@
+{
+ "seed": 633,
+ "at": "2026-11-24T19:52:59.645Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0633L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내 형은 집에서 일하면서 더 많은 시간을 보내는 걸 좋아할 거야",
+     "ok": true,
+     "why": "byddai + yn licio = would like; natural and in the taught sense. 일하다 used because the gloss 작동하다 is the machine sense, not 'working'"
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그녀는 보여줄 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그녀는 설명할 수 있을 테니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그 여자아이는 너에게 무언가 묻는 걸 좋아할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리가 무언가 던지기 전에는 우리 앞에 아무것도 없을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "지금 도망가는 게 더 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그건 완전히 괜찮지는 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "화요일에 더 좋을 거야, 너 그렇게 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 떠나야 했어 왜냐하면 기다리는 건 아주 속상했을 테니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "내년에 도망가면 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "첫 번째 부분 후에 곧장 집에 가는 게 더 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그건 완전히 괜찮지는 않을 거야, 너 그렇게 생각해?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0633L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 큰 잔을 원해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0633L02B01",
+     "keep": true,
+     "ko": "물 큰 잔으로 한 잔"
+    },
+    {
+     "id": "cym_for_kor:S0633L02B03",
+     "keep": true,
+     "ko": "내가 물 큰 잔으로 한 잔 받을 수 있을까?"
+    },
+    {
+     "id": "cym_for_kor:S0633L02B04",
+     "keep": false,
+     "why": "Fine, but the 2 BUILD slots are already filled by B01 and B03"
+    },
+    {
+     "id": "cym_for_kor:S0633L02B02",
+     "keep": false,
+     "why": "'gwydrad o de' (tea served in a drinking glass) is unnatural Welsh; tea comes in a paned/mwg"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U02",
+     "keep": true,
+     "ko": "너 물 큰 잔으로 한 잔 원해?"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U07",
+     "keep": true,
+     "ko": "나는 물 큰 잔으로 한 잔을 원했어"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U04",
+     "keep": true,
+     "ko": "그녀는 물 큰 잔으로 한 잔이 필요했어"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U05",
+     "keep": true,
+     "ko": "나는 물 큰 잔으로 한 잔이 필요해 왜냐하면 나는 피곤하거든"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U01",
+     "keep": true,
+     "ko": "물 큰 잔으로 한 잔 받을 수 있을까요? 부탁해요"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U03",
+     "keep": false,
+     "why": "'gwydrad mawr o de' (tea in a drinking glass) is unnatural Welsh"
+    },
+    {
+     "id": "cym_for_kor:S0633L02U06",
+     "keep": false,
+     "why": "'gwydrad mawr o de' (tea in a drinking glass) is unnatural Welsh"
+    }
+   ]
+  },
+  "S0633L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 웨일스어를 아주 잘 한다고 말하고 싶어",
+     "ok": false,
+     "why": "Wrong sense: iawn here is 'very' (yn dda iawn), not the taught yn iawn = 괜찮은"
+    },
+    {
+     "n": 2,
+     "ko": "나는 네가 아주 잘 했다고 생각한다고 말하고 싶어",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn dda iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 3,
+     "ko": "그래, 나는 그걸 아주 많이 즐겼어",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn fawr iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 4,
+     "ko": "그것은 아주 천천히 가",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn araf iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 5,
+     "ko": "우리는 지금 우리 아이들을 아주 자주 보지 않아",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn aml iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 6,
+     "ko": "그들은 지금 여전히 완전히 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "다시 완전히 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "완전히 괜찮아 하지만 점점 늦어지고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 그것을 아주 많이 즐겼어",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn fawr iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 10,
+     "ko": "나는 네가 아주 잘 했다고 말하려고 했어",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn dda iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 11,
+     "ko": "그것은 아주 천천히 가, 그렇지?",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn araf iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 12,
+     "ko": "우리는 그 두 남자아이를 아주 자주 보지 않아",
+     "ok": false,
+     "why": "Wrong sense: iawn = 'very' (yn aml iawn), not yn iawn = 괜찮은"
+    },
+    {
+     "n": 13,
+     "ko": "아마 그들은 여전히 완전히 괜찮아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 그게 완전히 괜찮았다고 확신해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0633L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0633L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0633L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0633L04U01",
+     "keep": false,
+     "why": "Sound, but over the count of 3, and its 'bod y plant yn iawn' frame is the same as U05's."
+    },
+    {
+     "id": "cym_for_kor:S0633L04U06",
+     "keep": false,
+     "why": "Sound, but over the count of 3, and it repeats the frame of U05 with a longer tail."
+    },
+    {
+     "id": "cym_for_kor:S0633L04U04",
+     "keep": false,
+     "why": "Mixes byddai with the North Welsh 'set; North Welsh would say basai/fysai fo here, so it reads unnaturally."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:28:09.419Z"
+}

@@ -1,0 +1,205 @@
+{
+ "seed": 358,
+ "at": "2026-11-24T19:03:00.555Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0358L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 네 친구가 ~라고 말했으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네 친구는 어젯밤에 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네 친구는 그가 ~ㄹ 수 없었다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "하지만 네 친구는 그들이 화가 나 있지 않다고 말했어",
+     "ok": true,
+     "why": "Colloquial North Welsh 'nad ydyn nhw ddim yn flin' (flin = angry) is natural here and uses ddudodd dy ffrind in the taught sense."
+    },
+    {
+     "n": 5,
+     "ko": "미안해, 하지만 네 친구는 그가 내일 밤 다섯 경기를 모두 볼 수 없을 거라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 들판 주위를 걸어가고 싶었어, 하지만 네 친구는 그가 그럴 수 없었다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "네 친구는 어젯밤에 그가 들판 주위를 걸어갈 수 없었다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0358L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L01U03",
+     "keep": false,
+     "why": "Only 1 USE needed."
+    },
+    {
+     "id": "cym_for_kor:S0358L01U05",
+     "keep": false,
+     "why": "Only 1 USE needed. 차를 could mean 'a car', but the Welsh says fforddio'r car (the car)."
+    },
+    {
+     "id": "cym_for_kor:S0358L01U02",
+     "keep": false,
+     "why": "The question has no question mark, and the Korean reads like a statement."
+    },
+    {
+     "id": "cym_for_kor:S0358L01U01",
+     "keep": false,
+     "why": "Only 1 USE needed."
+    },
+    {
+     "id": "cym_for_kor:S0358L01U04",
+     "keep": false,
+     "why": "기꺼이 ~돕겠다 is future/volitional, which loosely renders present 'mae o'n hapus i'."
+    },
+    {
+     "id": "cym_for_kor:S0358L01U06",
+     "keep": false,
+     "why": "Only 1 USE needed."
+    },
+    {
+     "id": "cym_for_kor:S0358L01U08",
+     "keep": false,
+     "why": "Only 1 USE needed."
+    }
+   ]
+  },
+  "S0358L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0358L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02B04",
+     "keep": false,
+     "why": "Only 3 BUILD needed. This is a full sentence, so it works less well as a build step."
+    },
+    {
+     "id": "cym_for_kor:S0358L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0358L02U06",
+     "keep": false,
+     "why": "'dw i ddim yn meddwl nad oedd hi'n medru' is an awkward double negative, and the Korean is equally confusing."
+    },
+    {
+     "id": "cym_for_kor:S0358L02U07",
+     "keep": false,
+     "why": "In the Korean, the relative clause could attach to either person, so it is unclear who said it. The phrase is heavy and unnatural."
+    }
+   ]
+  },
+  "S0358L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁에 정상에 도달하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 정상에 도달하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "제때 정상에 도달하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 주말 전에 정상에 도달하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 정상에 도달하려고 노력하고 있어, 너 그렇게 생각해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "맞아, 나는 오늘 오후에 정상에 도달하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "제때 정상에 도달하는 것이 더 중요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "정상에 도달할 시간이 많이 없었어",
+     "ok": true,
+     "why": "Natural North Welsh. Soft-mutated gyrraedd after i is the same verb, and it is used in the taught sense of reaching the summit."
+    },
+    {
+     "n": 9,
+     "ko": "네 친구는 그가 정상에 도달할 수 없었다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

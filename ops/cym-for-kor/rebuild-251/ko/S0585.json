@@ -1,0 +1,151 @@
+{
+ "seed": 585,
+ "at": "2026-11-24T19:44:55.969Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0585L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그리고 입구 안쪽에 있는 창문을 닫다",
+     "ok": false,
+     "why": "The Welsh has no 'o ffenest' (out of the window). Its 'o' belongs to 'o fewn', and 'ffenest' is the window being closed, so it does not use this LEGO in the sense taught here."
+    },
+    {
+     "n": 2,
+     "ko": "그는 혼자 창문을 열고 닫고 싶어해",
+     "ok": false,
+     "why": "There is no 'o ffenest' in this Welsh. It only uses 'ffenest' as the object of agor/cau, so it is the wrong sense for this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0585L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05B01",
+     "keep": false,
+     "why": "Only 1 BUILD is needed and B03 is the stronger one."
+    },
+    {
+     "id": "cym_for_kor:S0585L05B02",
+     "keep": false,
+     "why": "Not needed. The car frame is the better choice, and 'fy ystafell' is stiff next to the course's spoken 'stafell'."
+    },
+    {
+     "id": "cym_for_kor:S0585L05B04",
+     "keep": false,
+     "why": "Not needed. It is long and uses the stiff 'fy ystafell'."
+    },
+    {
+     "id": "cym_for_kor:S0585L05U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05U07",
+     "keep": true,
+     "ko": "내가 지금 차 창문으로 그걸 던지게 해 줘"
+    },
+    {
+     "id": "cym_for_kor:S0585L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05U04",
+     "keep": false,
+     "why": "The Korean is a statement but the Welsh is a question. Any fix like '봤어?' would also fit 'welest ti', so it gives two possible Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0585L05U06",
+     "keep": false,
+     "why": "Five stronger USE rows are already kept."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0585L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0585L05B02",
+     "keep": false,
+     "why": "'fy ystafell' is stiff next to the course's spoken 'stafell', and '내 방' could be answered as either 'fy stafell' or 'fy ystafell', so it has two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0585L05B04",
+     "keep": false,
+     "why": "It uses the same stiff 'fy ystafell', so '내 방' could be either 'stafell' or 'ystafell', and it is long for a BUILD row."
+    }
+   ]
+  },
+  "S0585L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "열쇠를 내 침실 창문으로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "산을 내 침실 창문으로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "밤늦게 내 침실 창문으로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "마을 끝을 내 침실 창문으로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "내 침실 창문으로 보면 큰 세상이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 내 침실 창문으로 산을 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내 침실 창문으로 열쇠를 던질 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 아직 내 침실 창문으로 산을 못 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내가 내 침실 창문으로 열쇠를 던지게 해 줘",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:25:57.069Z"
+}

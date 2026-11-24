@@ -1,0 +1,236 @@
+{
+ "seed": 559,
+ "at": "2026-11-24T19:40:28.409Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0559L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 웨일스어 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너 한 달쯤 배워 왔어?",
+     "ok": true,
+     "why": "Here 'am' means 'for' (a length of time). That is natural Welsh."
+    },
+    {
+     "n": 3,
+     "ko": "너 뭘 하는 걸 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 뭘 배워 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 네가 제일 좋은 걸 했다고 확신해?",
+     "ok": false,
+     "why": "The phrase does not contain the LEGO 'wyt ti ’di'. It has 'wyt ti’n siŵr' and 'bo’ ti ’di' instead, so it cannot be a BUILD row for this LEGO."
+    },
+    {
+     "n": 6,
+     "ko": "너 다시 이야기해 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 그 영화 볼 기회 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 그 영화 볼 시간 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너 우리가 그들이 집에서 시간을 더 보내길 원한다는 얘기 들었어?",
+     "ok": true,
+     "why": "Using 'adre' to mean 'at home' is normal in colloquial North Welsh."
+    },
+    {
+     "n": 10,
+     "ko": "너 얼마나 오래 웨일스어로 이야기해 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너 얼마나 오래 이야기해 왔어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너 좋은 시간 보냈어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "너 받았어?",
+     "ok": false,
+     "why": "'wyt ti ’di cael?' with no object is a fragment from the English course. As a USE row it is not a natural sentence, and no Korean can pin down which meaning of 'cael' is meant."
+    },
+    {
+     "n": 14,
+     "ko": "너 그 책 읽을 기회 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "너 느긋하게 쉴 시간 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "너 충분히 받았어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "너 오늘 저녁 좋은 시간 보냈어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "너 축구 볼 기회 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "너 아이들이 뭘 하고 싶어하는지 들었어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0559L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 그의 자매를 위해 돈을 찾아낼 수 있을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "최신 답을 찾아내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그 남자는 답을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 우리가 돈을 찾아낼 필요가 있다고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그 남자아이를 찾아내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 저녁 돈을 찾아내지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 직장에서 돈을 찾아내고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 하지만 나는 돈을 찾아낼 수 없어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0559L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "숲을 지나는 오솔길을 하나 찾아내다",
+     "ok": true,
+     "why": "Added 하나 so the prompt points to 'ffeindio llwybr' (a path), not 'ffeindio’r llwybr' (the path)."
+    },
+    {
+     "n": 2,
+     "ko": "밤에 숲을 지나는 오솔길",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "호텔 가까이에 있는 숲을 지나는 오솔길",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "숲을 지나는 오솔길이 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "밤에는 숲을 지나는 오솔길이 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 숲을 지나는 오솔길을 하나 찾아낼 수 있어?",
+     "ok": true,
+     "why": "'fedran nhw' is present tense ('can they'), so the Korean uses the present."
+    },
+    {
+     "n": 7,
+     "ko": "나는 숲을 지나는 오솔길을 하나 찾아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 숲을 지나는 오솔길을 하나 찾아내러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리가 멈추기 전에 숲을 지나는 오솔길을 하나 찾아내면 좋을 거야",
+     "ok": true,
+     "why": "'byddai’n braf' is southern or literary Welsh. North Welsh would say 'basai’n braf' or 'sa’n braf'. Worth a look, but it is not broken."
+    }
+   ]
+  }
+ }
+}

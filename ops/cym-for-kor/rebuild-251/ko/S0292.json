@@ -1,0 +1,231 @@
+{
+ "seed": 292,
+ "at": "2026-11-24T18:53:04.856Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0292L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0292L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02B01",
+     "keep": false,
+     "why": "Sound, but three stronger BUILD rows already fill the quota, and B03 contains this one."
+    },
+    {
+     "id": "cym_for_kor:S0292L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L02U01",
+     "keep": true,
+     "ko": "네가 오늘 오후에 텔레비전을 볼 수 있게 될 거야"
+    },
+    {
+     "id": "cym_for_kor:S0292L02U05",
+     "keep": false,
+     "why": "Sound, but five stronger USE rows already fill the quota."
+    },
+    {
+     "id": "cym_for_kor:S0292L02U06",
+     "keep": false,
+     "why": "Sound Welsh, but the Korean 왜냐하면 … 거야 is clumsy and five stronger USE rows already fill the quota."
+    }
+   ]
+  },
+  "S0292L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나중에 돌아오다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "곧 돌아오다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너와 다른 것을 가져오다",
+     "ok": false,
+     "why": "'dod â' means bring, but this LEGO teaches dod as come (오다); the prompt has to say 가져오다, which is a different sense."
+    },
+    {
+     "n": 4,
+     "ko": "너와 무언가를 가져오다",
+     "ok": false,
+     "why": "'dod â' means bring, not come, so it uses the LEGO in a different sense from the one taught."
+    },
+    {
+     "n": 5,
+     "ko": "무언가를 가져오다",
+     "ok": false,
+     "why": "'dod â' means bring, not come, so it uses the LEGO in a different sense from the one taught."
+    },
+    {
+     "n": 6,
+     "ko": "나는 둘 다 온 게 확실해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 돌아오고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "오늘 저녁에 돌아오는 게 가능해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 나중에 돌아올 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "고맙지만 괜찮아, 나는 그녀의 형제를 데려오고 싶지 않아",
+     "ok": false,
+     "why": "'dod â' means bring, not come. Also, brawd has no single Korean word (오빠 or 남동생)."
+    },
+    {
+     "n": 11,
+     "ko": "너 오늘 오후에 그녀의 형제를 데려올 필요가 있어?",
+     "ok": false,
+     "why": "'dod â' means bring, not come. Also, brawd has no single Korean word (오빠 or 남동생)."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0292L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0292L03U01",
+     "keep": true,
+     "ko": "왜 너는 오고 싶지 않아?"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U07",
+     "keep": false,
+     "why": "Good, but the two USE slots are taken by stronger rows; also, 오기를 바라 with no subject could be read as hoping someone else comes"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U04",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U02",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U08",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U05",
+     "keep": false,
+     "why": "Good, but the two USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0292L03U06",
+     "keep": false,
+     "why": "올 거야 has more than one possible Welsh answer: mae o'n mynd i ddod or bydd o'n dod"
+    }
+   ]
+  },
+  "S0292L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 파티에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리와 함께 파티에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 어머니를 파티에 데려가야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리와 함께 파티에 오다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 오늘 저녁 우리와 함께 파티에 오고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 우리와 함께 파티에 오고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 왜 우리와 함께 파티에 오고 싶어해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 자기 형제를 파티에 데려오고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 오랜 친구 몇 명을 파티에 데려오기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:06:45.551Z"
+}

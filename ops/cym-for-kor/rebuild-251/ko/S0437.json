@@ -1,0 +1,366 @@
+{
+ "seed": 437,
+ "at": "2026-11-24T19:15:02.931Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0437L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 모금하고 싶어",
+     "ok": false,
+     "why": "Wrong sense: here codi means 'get up', but this course teaches codi as 모금하다 (raise money)."
+    },
+    {
+     "n": 2,
+     "ko": "나는 네가 지금 모금하고 싶다고 말했다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up' here, not 모금하다."
+    },
+    {
+     "n": 3,
+     "ko": "너는 모금하고 싶었어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up' here, not 모금하다."
+    },
+    {
+     "n": 4,
+     "ko": "너는 모금하고 싶다고 말했어?",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up' here, not 모금하다."
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 아침 일찍 모금하고 싶다고 말했다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense: 'get up early in the morning' does not fit 모금하다."
+    },
+    {
+     "n": 6,
+     "ko": "너는 아침 일찍 모금하고 싶다고 말했어?",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 7,
+     "ko": "너는 아침 일찍 모금하고 싶었어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 8,
+     "ko": "너는 네가 아침 일찍 모금하고 싶다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 9,
+     "ko": "너는 다음 주에 아침 일찍 모금하고 싶다고 말했어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 10,
+     "ko": "너 지금 모금할래?",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 11,
+     "ko": "나는 다음 주에 아침 일찍 모금하고 싶어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 12,
+     "ko": "너 아침 일찍 모금하고 싶은 거 확신해?",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 13,
+     "ko": "내가 너라면 아침 일찍 모금하는 게 더 좋을 거야",
+     "ok": false,
+     "why": "Wrong sense: godi means 'get up', not 모금하다."
+    },
+    {
+     "n": 14,
+     "ko": "내가 내 머리를 위로 모금할 때",
+     "ok": false,
+     "why": "Wrong sense: codi means 'lift (my head)', not 모금하다; the Korean would be nonsense."
+    },
+    {
+     "n": 15,
+     "ko": "내 머리를 위로 모금하기",
+     "ok": false,
+     "why": "Wrong sense: codi means 'lift', not 모금하다."
+    },
+    {
+     "n": 16,
+     "ko": "나는 내 머리를 모금하지 않을 것 같아",
+     "ok": false,
+     "why": "Wrong sense: codi means 'lift', not 모금하다."
+    },
+    {
+     "n": 17,
+     "ko": "그들은 모금하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "그들이 충분한 돈을 모금하고 싶어한다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "충분한 돈을 모금하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "나는 충분한 돈을 모금하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "나는 네가 아침 일찍 모금하고 싶다고 생각했어",
+     "ok": false,
+     "why": "Wrong sense: codi means 'get up', not 모금하다."
+    },
+    {
+     "n": 22,
+     "ko": "우리는 아침 일찍 모금하는 게 좋겠어",
+     "ok": false,
+     "why": "Wrong sense: godi means 'get up', not 모금하다."
+    },
+    {
+     "n": 23,
+     "ko": "그녀는 두 손을 다 들고 싶어했어",
+     "ok": false,
+     "why": "Here codi means 'raise (hands)'. The 모금하다 gloss cannot be used, so no Korean prompt leads to codi."
+    },
+    {
+     "n": 24,
+     "ko": "그들은 올해 충분한 돈을 모금하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 25,
+     "ko": "우리 충분한 돈을 모금할 필요가 있어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0437L02U02",
+     "keep": true,
+     "ko": "그들이 원한다면 그들은 많이 모금할 수 있을 텐데"
+    },
+    {
+     "id": "cym_for_kor:S0437L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0437L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0437L02U03",
+     "keep": false,
+     "ko": "그들은 많이 모금하고 싶어해?",
+     "why": "Good once the missing topic particle is added, but not picked: only 3 USE rows were needed and three stronger rows fill them."
+    },
+    {
+     "id": "cym_for_kor:S0437L02U06",
+     "keep": false,
+     "why": "Fine, but not picked: the 3 USE rows are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0437L02U04",
+     "keep": false,
+     "why": "Saying we don't need to raise enough money is an odd thing to say, and the 3 USE rows are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0437L02U05",
+     "keep": false,
+     "why": "좋을 거야 reads as future 'will be nice' (bydd), not 'would be nice' (byddai), so a learner could give either Welsh answer; the 3 USE rows are already filled anyway."
+    }
+   ]
+  },
+  "S0437L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 가능한 한 많이 배울 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 네가 지난 일요일에 가능한 한 많이 먹을 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 주말에 가능한 한 많이 배울 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "가능한 한 많이 먹기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 가능한 한 많이 할 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 지난 주말에 가능한 한 많이 읽을 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 가능한 한 많이 먹을 거라는 걸 듣지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 가능한 한 많이 먹을 거라고 들었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 우리가 가능한 한 많이 끝내도록 확실히 하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 짧은 시간에 가능한 한 많이 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 다음 주말에 가능한 한 많이 보고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 돕기 위해 가능한 한 많이 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 가능한 한 많은 텔레비전을 보고 싶어",
+     "ok": false,
+     "why": "The Welsh splits the LEGO (cymaint o deledu â phosib). The Korean would also fit 'gwylio teledu cymaint â phosib', so it has two possible answers."
+    },
+    {
+     "n": 14,
+     "ko": "나는 가능한 한 많은 축구를 보고 싶어",
+     "ok": false,
+     "why": "The Welsh splits the LEGO (cymaint o bêl-droed â phosib). The Korean has two possible Welsh answers."
+    },
+    {
+     "n": 15,
+     "ko": "나는 가능한 한 많이 말하려고 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "어떤 사람들은 가능한 한 많이 나가고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "나는 이번 주말에 가능한 한 많이 읽고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0437L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁에 자선 단체를 위해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "자선 단체를 위해 돈을 찾아내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "자선 단체를 위한 충분한 돈",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "화요일에 자선 단체를 위해 걸어가기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 자선 단체를 위해 돈을 찾아낼 수 있을까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 토요일 밤에 자선 단체를 위해 걸어가고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "맞아, 나는 자선 단체를 위해 걸어가고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 자선 단체를 위해 돈을 찾아낼 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내년에 자선 단체를 위해 걸어가면 좋을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T20:15:06.146Z"
+}

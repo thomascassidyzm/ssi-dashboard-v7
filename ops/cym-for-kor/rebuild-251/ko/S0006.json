@@ -1,0 +1,143 @@
+{
+ "seed": 6,
+ "at": "2026-11-24T18:06:15.119Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0006L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어를 이야기하는 방법을 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural North Welsh. In this basket cofio is used in the taught sense, remember. I used 웨일스어를 rather than 웨일스어로 so the prompt does not also allow 'siarad yn y Gymraeg'."
+    },
+    {
+     "n": 2,
+     "ko": "이야기하는 방법을 기억하다",
+     "ok": true,
+     "why": "A natural fragment and the right sense."
+    },
+    {
+     "n": 3,
+     "ko": "기억하는 방법",
+     "ok": true,
+     "why": "The soft mutation after 'i' is correct and the line is natural."
+    },
+    {
+     "n": 4,
+     "ko": "나는 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural, and the core sense of the seed."
+    },
+    {
+     "n": 5,
+     "ko": "나는 기억하려고 노력하고 싶어",
+     "ok": true,
+     "why": "Natural, and the unmutated trio after isio is correct."
+    },
+    {
+     "n": 6,
+     "ko": "나는 기억하려고 노력할 거야",
+     "ok": true,
+     "why": "Natural, and the soft mutation drio after 'mynd i' is correct."
+    },
+    {
+     "n": 7,
+     "ko": "나는 기억하고 싶어",
+     "ok": true,
+     "why": "Natural and the right sense."
+    },
+    {
+     "n": 8,
+     "ko": "나는 기억할 거야",
+     "ok": true,
+     "why": "Natural, and the soft mutation gofio is correct."
+    },
+    {
+     "n": 9,
+     "ko": "나는 다른 무언가를 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural, and cofio has the taught sense here."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0006L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L02U03",
+     "keep": false,
+     "why": "Heavy chain of 'how to practise speaking with someone else', and four stronger candidates already fill the slots."
+    },
+    {
+     "id": "cym_for_kor:S0006L02U06",
+     "keep": false,
+     "why": "'Remember something in Welsh now' is awkward in meaning, and stronger candidates already fill the slots."
+    }
+   ]
+  },
+  "S0006L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "단어 하나를 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "웨일스어로 된 단어 하나",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 된 단어 하나를 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0006L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0006L03U02",
+     "keep": false,
+     "why": "'Learn a word with someone else' is odd in meaning and weak as a practice line."
+    }
+   ]
+  }
+ }
+}

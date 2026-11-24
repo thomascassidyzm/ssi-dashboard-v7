@@ -1,0 +1,229 @@
+{
+ "seed": 134,
+ "at": "2026-11-24T18:29:32.945Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0134L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그건 지금 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그건 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그건 오늘 문제가 아니니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그건 놀라운 일이었어, 하지만 그건 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 하지만 그건 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 확실하지 않아, 하지만 그건 지금 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "내가 지금 볼 수 없다는 건 문제가 아니야",
+     "ok": true,
+     "why": "Natural North Welsh: dummy 'hi' plus a bo' clause. Uses the LEGO in the same sense."
+    },
+    {
+     "n": 8,
+     "ko": "나는 상관없어, 왜냐하면 그건 문제가 아니니까",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0134L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0134L05B01",
+     "keep": true,
+     "ko": "어려운 것을 작업하다",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05B03",
+     "keep": true,
+     "ko": "나는 어려운 것을 작업하고 있어",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05B04",
+     "keep": true,
+     "ko": "여러분은 함께 어려운 것을 작업하고 있어요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05B02",
+     "keep": false,
+     "why": "A bare fragment. Korean 함께 does not signal plural chi in efo'ch gilydd, so the prompt has more than one Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0134L05U05",
+     "keep": true,
+     "ko": "네가 어려운 것을 작업할 때 나는 너를 도울 수 있어",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05U04",
+     "keep": true,
+     "ko": "나는 네가 어려운 것을 작업하고 있다고 생각했어",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05U01",
+     "keep": true,
+     "ko": "너 지금 어려운 것을 작업하고 있어?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05U03",
+     "keep": true,
+     "ko": "나는 오늘 어려운 것을 작업하고 싶지 않아",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05U02",
+     "keep": true,
+     "ko": "나는 어려운 것을 작업하는 걸 즐겨",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L05U06",
+     "keep": false,
+     "why": "Quota already filled. This one is also long and heavy."
+    },
+    {
+     "id": "cym_for_kor:S0134L05U07",
+     "keep": false,
+     "why": "Quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0134L05U08",
+     "keep": false,
+     "why": "Quota already filled"
+    }
+   ]
+  },
+  "S0134L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 우리와 함께 올 수 없었어",
+     "ok": false,
+     "why": "The Welsh has efo ni, not efo nhw, so this phrase never practises the LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "너는 그들과 무엇을 할 거야?",
+     "ok": true,
+     "why": "Natural. efo nhw is used in its taught sense, 'with them'."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0134L06B04",
+     "keep": true,
+     "ko": "우리가 그들과 일할 때",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L06B01",
+     "keep": false,
+     "why": "Quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0134L06B02",
+     "keep": false,
+     "why": "Quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0134L06B03",
+     "keep": false,
+     "why": "Quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0134L06U01",
+     "keep": true,
+     "ko": "나는 그들과 일할 때 기분이 더 나아",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L06U05",
+     "keep": true,
+     "ko": "너 지금 그들과 이야기하고 싶어?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L06U06",
+     "keep": true,
+     "ko": "그는 그들과 이야기하고 싶어하지 않았어",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L06U07",
+     "keep": true,
+     "ko": "나는 그들과 일하는 걸 즐겨",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L06U04",
+     "keep": true,
+     "ko": "나는 아직 그들과 이야기할 준비가 되지 않았어",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0134L06U03",
+     "keep": false,
+     "why": "Quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0134L06U02",
+     "keep": false,
+     "why": "Quota already filled"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0134L06B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0134L06B01",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B02 is the better fit because it uses the seed's own verb gweithio with efo nhw."
+    },
+    {
+     "id": "cym_for_kor:S0134L06B03",
+     "keep": false,
+     "why": "Only 1 BUILD needed. Also, 재미있어 could take another Welsh adjective in place of hwyl, so the answer is less certain than B02."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:58:34.517Z"
+}

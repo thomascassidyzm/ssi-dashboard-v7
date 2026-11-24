@@ -1,0 +1,170 @@
+{
+ "seed": 232,
+ "at": "2026-11-24T18:43:40.584Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0232L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 나이 든 여자에게 보내는 편지를 쓰고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 여기가 나이 든 여자가 ~고 싶어하던 곳이라고 믿어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그 나이 든 여자에 대해 너 기분이 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "웨일스어를 이야기하고 싶어하는 나이 든 여자에 대한 책",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 나이 든 여자처럼 느껴, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0232L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L02U06",
+     "keep": false,
+     "why": "sound, but three stronger USE rows already kept"
+    },
+    {
+     "id": "cym_for_kor:S0232L02U04",
+     "keep": false,
+     "why": "sound, but three stronger USE rows already kept"
+    },
+    {
+     "id": "cym_for_kor:S0232L02U05",
+     "keep": false,
+     "why": "-ㄹ 거야 could be heard as either dw i'n mynd i or bydda i'n, so the Korean has two possible Welsh answers"
+    }
+   ]
+  },
+  "S0232L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0232L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03B04",
+     "keep": false,
+     "why": "BUILD quota already met with stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0232L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0232L03U02",
+     "keep": false,
+     "why": "USE quota already met"
+    }
+   ]
+  },
+  "S0232L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 답을 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "제때 답을 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "답을 기억하고 싶어하는",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 답을 전혀 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그는 충분히 빨리 답을 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해 하지만 나는 답을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 답을 기억하고 싶어하는 젊은 남자를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 제때 답을 기억하기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

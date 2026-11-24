@@ -1,0 +1,276 @@
+{
+ "seed": 235,
+ "at": "2026-11-24T18:44:30.232Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0235L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그녀가 네 어머니를 알고 지낸다고 말한 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그녀가 옳다고 말한 누군가를 만났어",
+     "ok": true,
+     "why": "Here 'iawn' means 'right', not '아주'. It is natural Welsh and uses the LEGO correctly."
+    },
+    {
+     "n": 3,
+     "ko": "나는 어젯밤 중요한 무언가를 말한 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0235L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L02B04",
+     "keep": false,
+     "why": "It is fine, but only 3 BUILD rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0235L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L02U01",
+     "keep": false,
+     "why": "Only 2 USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0235L02U02",
+     "keep": false,
+     "ko": "너 그들이 돕고 싶다고 말한 누군가를 본 적 있어?",
+     "why": "The Welsh is a 'have you seen' question but the Korean read as a statement. The Korean is fixed, but the row is not needed for the count."
+    },
+    {
+     "id": "cym_for_kor:S0235L02U05",
+     "keep": false,
+     "why": "Only 2 USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0235L02U06",
+     "keep": false,
+     "why": "Only 2 USE rows are needed."
+    }
+   ]
+  },
+  "S0235L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그가 너를 돕고 싶어할 가능성이 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "여러분은 그가 지방 의회에서 일하고 싶다고 들었어요?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리 아들은 그가 돕고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 그렇지 않다고 확실히 하고 싶었어",
+     "ok": false,
+     "why": "The Welsh does not contain 'fod o isio'; it has 'fod o ddim fel ’na', so the row does not use this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "그는 그게 그렇지 않다고 보여주고 싶어하지 않아",
+     "ok": false,
+     "why": "The Welsh does not contain 'fod o isio'. 'isio dangos fod o ddim' is a different structure, so the row does not use this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0235L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L03U03",
+     "keep": false,
+     "why": "Only 3 USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0235L03U04",
+     "keep": false,
+     "why": "Only 3 USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0235L03U05",
+     "keep": false,
+     "why": "'네 자매' does not clearly fix a single sister, and only 3 USE rows are needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0235L03U03",
+     "keep": true,
+     "ko": "너는 그가 내일 떠나고 싶다고 확신해?"
+    },
+    {
+     "id": "cym_for_kor:S0235L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0235L03U05",
+     "keep": false,
+     "why": "'네 자매' is unnatural Korean for 'your sister' and could mean several sisters; the gloss gives no clear single Korean word for it"
+    }
+   ]
+  },
+  "S0235L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그는 내가 너한테 말하기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 내가 어젯밤 너한테 말하기를 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 어머니는 내일 아침 너한테 무언가 말하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀가 너한테 자기가 무엇을 원하는지 말하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그녀가 너한테 무엇을 해야 할지 말하기 전에 그녀에게 다른 것을 묻고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀가 너한테 무엇을 해야 할지 말하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그녀가 너한테 말하기 전에 그녀에게 다른 것을 묻고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그녀가 너한테 그것을 하는 방법을 말하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그는 그녀가 너한테 말하기 전에 이것을 끝내고 싶어하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 이것을 끝낼 때까지 너한테 말하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 내가 갈 때까지 너한테 말하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그녀가 너한테 답을 말하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나라면 너한테 다른 것을 말할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나라면 너한테 무언가 말할 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그는 오늘 저녁 너한테 말하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 너한테 무언가 말하고 싶어하는 젊은 남자를 알아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "나는 그녀가 너한테 말하기 전에 그녀에게 무언가 묻고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "나는 그녀가 너한테 말하기 전에 그가 말한 것을 알아내면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "나는 그녀가 너한테 말하기 전에 이것을 끝낼 시간이 더 필요해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:02:58.472Z"
+}

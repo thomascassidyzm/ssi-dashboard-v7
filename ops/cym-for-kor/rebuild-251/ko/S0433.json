@@ -1,0 +1,190 @@
+{
+ "seed": 433,
+ "at": "2026-11-24T19:14:26.705Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0433L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 무엇이 일어나려고 했는지 설명하고 싶어하지 않았어",
+     "ok": false,
+     "why": "Welsh is doeddan nhw ddim isio with no yn, so the LEGO doeddan nhw ddim yn is not in the phrase"
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그들이 무엇을 이루고 싶어했는지 알지 못했어",
+     "ok": false,
+     "why": "Uses doeddan ni ddim yn (we), not doeddan nhw ddim yn (they), so the LEGO is not in the phrase"
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그들한테 도움을 청하는 방법을 알지 못했어",
+     "ok": false,
+     "why": "Uses doeddan ni ddim yn (we), not doeddan nhw ddim yn (they), so the LEGO is not in the phrase"
+    },
+    {
+     "n": 4,
+     "ko": "그들은 알아낼 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "왜냐하면 그들은 할 수 없었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "어젯밤 그들은 할 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "하지만 우리는 그들한테 도움을 청하는 방법을 알지 못했어",
+     "ok": false,
+     "why": "Uses doeddan ni ddim yn (we), not doeddan nhw ddim yn (they), so the LEGO is not in the phrase"
+    },
+    {
+     "n": 8,
+     "ko": "그들은 어디에서도 살 곳을 찾을 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "미안하지만 그들은 오늘 저녁 우리와 함께 올 수 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "심지어 그가 원한다고 해도 그들은 우리를 따라오고 싶어하지 않았어",
+     "ok": false,
+     "why": "doeddan nhw ddim isio has no yn, so the LEGO is not in the phrase; the sentence is also semantically awkward"
+    },
+    {
+     "n": 11,
+     "ko": "그들은 우리를 따라올 수 없었어, 왜냐하면 그녀가 다음 모퉁이에서 돌았거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0433L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L01U01",
+     "keep": false,
+     "why": "그걸 뜻하지 않았어 reads as translationese; a cleaner candidate fills the slot"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U02",
+     "keep": false,
+     "why": "자기들끼리 does not clearly mean efo'i gilydd (서로); the basket is already full with cleaner rows"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U04",
+     "keep": false,
+     "why": "an imperfect with one particular day (ddydd Mawrth) is awkward; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U05",
+     "keep": false,
+     "why": "a weaker choice than the kept rows; the basket is already full"
+    },
+    {
+     "id": "cym_for_kor:S0433L01U07",
+     "keep": false,
+     "why": "good but not needed; the basket is already full"
+    }
+   ]
+  },
+  "S0433L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너와 그 영화에 대해 이야기하는 게 좋았어",
+     "ok": false,
+     "why": "The phrase contains oedd yn but not oedd y ffilm yn, so the LEGO is not in it"
+    },
+    {
+     "n": 2,
+     "ko": "그 영화는 아주 흥미로웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그 영화는 이미 끝났었어",
+     "ok": false,
+     "why": "oedd y ffilm 'na 'di uses 'di rather than yn, so the LEGO oedd y ffilm yn is not in the phrase"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0433L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05U05",
+     "keep": true,
+     "ko": "너 나한테 영화가 좋았는지 말해 줄 수 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0433L05U04",
+     "keep": true,
+     "ko": "아무도 영화가 좋았는지 확실히 알지 못했어"
+    },
+    {
+     "id": "cym_for_kor:S0433L05U02",
+     "keep": false,
+     "why": "Fine, but the five needed are already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0433L05U07",
+     "keep": false,
+     "why": "hardd (beautiful) is an odd word for a film; weakest candidate"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0433L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0433L05B01",
+     "keep": false,
+     "why": "the bare fragment 영화가 좋았는지 matches the LEGO gloss without os, so the learner could say 'oedd y ffilm yn dda' or 'os oedd y ffilm yn dda': two possible answers"
+    },
+    {
+     "id": "cym_for_kor:S0433L05B02",
+     "keep": false,
+     "why": "same problem: a bare ~는지 fragment, so it is unclear whether to say os"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:14:33.753Z"
+}

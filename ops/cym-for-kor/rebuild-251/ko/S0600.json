@@ -1,0 +1,70 @@
+{
+ "seed": 600,
+ "at": "2026-11-24T19:47:27.558Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0600L06": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0600L06B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0600L06B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0600L06B01",
+     "keep": true,
+     "ko": "왜냐하면 너는 피곤했거든"
+    },
+    {
+     "id": "cym_for_kor:S0600L06B02",
+     "keep": false,
+     "why": "Only three BUILD rows are needed, and this is the weakest one: 'yn y nos' gives a generic time and the phrase adds little."
+    },
+    {
+     "id": "cym_for_kor:S0600L06U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0600L06U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0600L06U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0600L06U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0600L06U01",
+     "keep": false,
+     "why": "The Welsh has no question mark and reads as the statement 'you were tired last night', but the Korean is a question. The two do not match."
+    },
+    {
+     "id": "cym_for_kor:S0600L06U06",
+     "keep": false,
+     "why": "'기꺼이 운전했을 거야' could also be answered with 'fyswn i wedi dreifio', so it does not pin down 'fyswn i wedi bod yn hapus i ddreifio'. A Korean that mirrors 'hapus' closely would sound unnatural."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0600L06U01",
+     "keep": true,
+     "ko": "너는 어젯밤에 피곤했어"
+    },
+    {
+     "id": "cym_for_kor:S0600L06U06",
+     "keep": false,
+     "why": "'기꺼이 운전했을 거야' could also be answered 'fyswn i wedi dreifio', so it does not force 'fyswn i wedi bod yn hapus i ddreifio'. A Korean line that mirrors 'hapus' word for word would sound unnatural."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:26:27.963Z"
+}

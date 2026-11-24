@@ -1,0 +1,309 @@
+{
+ "seed": 531,
+ "at": "2026-11-24T19:36:34.572Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0531L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그건 아직 사실이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그건 지금 사실이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아마 그건 사실이 아닐 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 왜 그게 사실이 아닌지 알아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 걱정할 필요가 없어, 그건 사실이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 이기고 싶다고 말했어 하지만 그건 사실이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그게 나빴다는 건 사실이 아니야",
+     "ok": true,
+     "why": "Natural North Welsh; same 'dydy o ddim yn wir + bod-clause' frame as the seed."
+    },
+    {
+     "n": 8,
+     "ko": "그들이 그걸 망가뜨렸다는 건 사실이 아니야",
+     "ok": true,
+     "why": "Natural; same frame as the seed."
+    }
+   ]
+  },
+  "S0531L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "누구나 그 일들을 이길 수 있다는 것",
+     "ok": false,
+     "why": "Here ennill means winning prizes or things, but this course teaches it as 이기다 (beat someone in a contest). Korean '그 일들을 이기다' is unnatural, and the sense does not match the LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "누구나 이길 수 있다는 것",
+     "ok": true,
+     "why": "Natural; same sense as the seed."
+    },
+    {
+     "n": 3,
+     "ko": "누구나 경기를 이길 수 있다는 것",
+     "ok": true,
+     "why": "Natural; this is the seed's own clause."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0531L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02U01",
+     "keep": false,
+     "why": "'웨일스어를 이야기하다' is awkward Korean; five better rows were already kept."
+    },
+    {
+     "id": "cym_for_kor:S0531L02U06",
+     "keep": false,
+     "why": "Quota already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0531L02U07",
+     "keep": false,
+     "why": "Quota already filled by stronger rows."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0531L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L02B02",
+     "keep": false,
+     "ko": "누구나 웨일스어로 이야기할 수 있다는 것",
+     "why": "Good once the Korean is fixed, but only one BUILD is needed and B04 is a stronger complete sentence"
+    },
+    {
+     "id": "cym_for_kor:S0531L02B01",
+     "keep": false,
+     "why": "Acceptable but weak, and only one BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0531L02B03",
+     "keep": false,
+     "why": "Acceptable but weak, and only one BUILD is needed"
+    }
+   ]
+  },
+  "S0531L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 다시는 이길 수 없을 거야",
+     "ok": true,
+     "why": "Natural; same sense of 'win' as the seed."
+    },
+    {
+     "n": 2,
+     "ko": "내가 경기를 이길 거라고 믿는 것은 어려워",
+     "ok": true,
+     "why": "Acceptable colloquial North Welsh; win a game is the seed's sense."
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 이겼어",
+     "ok": true,
+     "why": "Natural; correct sense."
+    },
+    {
+     "n": 4,
+     "ko": "나에게 이길 방법이 있도록",
+     "ok": true,
+     "why": "'fel bydd modd i mi ennill' is idiomatic. The Korean uses 방법 to keep it distinct from medru."
+    },
+    {
+     "n": 5,
+     "ko": "나는 이기지 않을 것 같아",
+     "ok": true,
+     "why": "Natural; correct sense."
+    },
+    {
+     "n": 6,
+     "ko": "그는 그들이 모든 것을 이기게 두고 싶어하지 않았어",
+     "ok": true,
+     "why": "Natural; 'win everything' is a contest sense."
+    },
+    {
+     "n": 7,
+     "ko": "우리는 이길 수는 없을 텐데 하지만 우리는 떨어질 수는 있을 텐데",
+     "ok": true,
+     "why": "Grammatical and uses 'win' in the contest sense."
+    },
+    {
+     "n": 8,
+     "ko": "그들은 다시는 이길 수 없을 거야 하지만 상관없어",
+     "ok": true,
+     "why": "Natural; correct sense."
+    },
+    {
+     "n": 9,
+     "ko": "나는 지고 싶지 않아 왜냐하면 나는 이기면 좋겠거든",
+     "ok": true,
+     "why": "Natural; win versus lose is the correct sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0531L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L03U05",
+     "keep": false,
+     "why": "Quota is 1."
+    },
+    {
+     "id": "cym_for_kor:S0531L03U01",
+     "keep": false,
+     "why": "Quota is 1."
+    },
+    {
+     "id": "cym_for_kor:S0531L03U03",
+     "keep": false,
+     "why": "Quota is 1."
+    },
+    {
+     "id": "cym_for_kor:S0531L03U04",
+     "keep": false,
+     "why": "Quota is 1."
+    },
+    {
+     "id": "cym_for_kor:S0531L03U06",
+     "keep": false,
+     "why": "Quota is 1."
+    },
+    {
+     "id": "cym_for_kor:S0531L03U07",
+     "keep": false,
+     "why": "Quota is 1."
+    },
+    {
+     "id": "cym_for_kor:S0531L03U08",
+     "keep": false,
+     "why": "Quota is 1."
+    }
+   ]
+  },
+  "S0531L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "여러분은 경기에 가기 전에 그것들을 셀 수 있어요?",
+     "ok": true,
+     "why": "Natural; plural chi gyd rendered as 여러분 in 해요."
+    },
+    {
+     "n": 2,
+     "ko": "경기를 이기다",
+     "ok": true,
+     "why": "Natural; this is the seed's own phrase."
+    },
+    {
+     "n": 3,
+     "ko": "경기를 이길 수 있다",
+     "ok": true,
+     "why": "Natural; this is the seed's own phrase."
+    },
+    {
+     "n": 4,
+     "ko": "나는 주말 전에 다섯 경기를 모두 보고 싶지 않았어",
+     "ok": true,
+     "why": "Natural; gêm means a sports game, the same sense."
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 이번에는 다섯 경기를 모두 볼 수 있을 텐데",
+     "ok": true,
+     "why": "Natural; same sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0531L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0531L04U03",
+     "keep": false,
+     "why": "보다 could be either gweld or gwylio, which the course glosses as 보다; two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0531L04U06",
+     "keep": false,
+     "why": "Same 보다 gweld/gwylio ambiguity."
+    },
+    {
+     "id": "cym_for_kor:S0531L04U04",
+     "keep": false,
+     "why": "Quota already filled."
+    },
+    {
+     "id": "cym_for_kor:S0531L04U07",
+     "keep": false,
+     "why": "Quota already filled."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:21:46.481Z"
+}

@@ -1,0 +1,129 @@
+{
+ "seed": 150,
+ "at": "2026-11-24T18:31:51.490Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0150L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 나에게 네가 가기 전에 무엇을 말해야 하는지 말해 줄 수 있어?",
+     "ok": true,
+     "why": "Natural North Welsh. Here fedri di ddeud wrtha i means 'can you tell me', the sense this seed teaches."
+    },
+    {
+     "n": 2,
+     "ko": "너 나에게 우리가 이것을 끝낸 후에 말해 줄 수 있어?",
+     "ok": true,
+     "why": "Natural and grammatical. The LEGO has its taught sense, with ar ôl i ni orffen hyn as the time clause."
+    },
+    {
+     "n": 3,
+     "ko": "너 나에게 우리가 이것을 끝낸 후에 네가 무엇을 원하는지 말해 줄 수 있어?",
+     "ok": true,
+     "why": "Natural North Welsh: be' ti isio is an idiomatic way to say 'what you want'. The Korean uses 원하는지 because the gloss ~고 싶어 cannot take a noun object."
+    },
+    {
+     "n": 4,
+     "ko": "너 나에게 그녀가 무엇을 말하고 있었는지 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "물론이지, 하지만 너 나에게 왜인지 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너 나에게 그것이 사실인지 말해 줄 수 있어?",
+     "ok": true,
+     "why": "Natural North Welsh: os ydy o'n wir is the standard indirect question for 'if it's true'. The LEGO has its taught sense."
+    },
+    {
+     "n": 7,
+     "ko": "네가 떠나기 전에, 너 나에게 네가 무엇을 하고 있었는지 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "미안해, 너 나에게 네가 말한 것을 말해 줄 수 있어?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0150L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "웨일스어로 네 이름이 뭔지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 네 이름이 뭔지 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네 이름이 뭔지 기억하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네 이름이 뭔지 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네 이름이 뭔지 나는 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 나는 네 이름이 뭔지 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 네 이름이 뭔지 기억할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네 이름이 뭔지 알아내고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0150L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0150L02B01",
+     "keep": false,
+     "why": "Only one BUILD is needed, and B04 is the fuller, more natural sentence; this bare verb-noun fragment is weaker."
+    },
+    {
+     "id": "cym_for_kor:S0150L02B02",
+     "keep": false,
+     "why": "'be' ydy dy enw di eto' only works as the direct question 'what's your name again?'. The Korean '네 이름이 뭔지 다시' reads it as an embedded clause, which is not natural Korean and does not match the Welsh."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T19:59:15.846Z"
+}

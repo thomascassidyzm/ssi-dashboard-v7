@@ -1,0 +1,86 @@
+{
+ "seed": 579,
+ "at": "2026-11-24T19:43:44.753Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0579L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 우리는 자주 노력해 봤거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 과거에 자주 노력해 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "아마 우리는 자주 노력해 봤을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 귀 기울이지 않겠지만 우리는 자주 노력해 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그가 무엇을 말하든 우리는 우리 아이들에게 자주 노력해 봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "걱정하지 말자 왜냐하면 우리는 자주 노력해 봤거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 계속하고 싶지 않아 왜냐하면 우리는 자주 노력해 봤거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0579L01U03",
+     "keep": true,
+     "ko": "인생은 쉽지 않지만 우리는 자주 노력해 봤어"
+    },
+    {
+     "id": "cym_for_kor:S0579L01U01",
+     "keep": false,
+     "why": "Only 1 USE needed; U03 is the stronger row."
+    },
+    {
+     "id": "cym_for_kor:S0579L01U02",
+     "keep": false,
+     "why": "Only 1 USE needed; 나는 피곤해 could also be dw i'n flinedig."
+    },
+    {
+     "id": "cym_for_kor:S0579L01U04",
+     "keep": false,
+     "why": "Only 1 USE needed; long and awkward, opening with a dangling 하지만."
+    },
+    {
+     "id": "cym_for_kor:S0579L01U05",
+     "keep": false,
+     "why": "Only 1 USE needed; the two clauses don't follow from each other."
+    },
+    {
+     "id": "cym_for_kor:S0579L01U06",
+     "keep": false,
+     "why": "'Tried because that's the only real hope' doesn't make sense, and 'real' is an English loan in the Welsh."
+    }
+   ]
+  }
+ }
+}

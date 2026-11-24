@@ -1,0 +1,361 @@
+{
+ "seed": 483,
+ "at": "2026-11-24T19:24:05.703Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0483L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "인생은 공짜가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "인생은 휴가까지 기다리지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 인생은 쉽지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "인생은 쉽지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "인생은 휴식이 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "인생은 네가 원하는 걸 하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "지금 당장은 인생이 쉽지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "인생은 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "인생은 원래 문제인 게 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그가 무슨 말을 하든 인생은 원래 문제인 게 아니야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0483L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L01U05",
+     "keep": true,
+     "ko": "나는 지금 여행하고 싶어 왜냐하면 인생은 기다리지 않으니까"
+    },
+    {
+     "id": "cym_for_kor:S0483L01U04",
+     "keep": true,
+     "ko": "인생은 완벽하지 않지만 그건 문제가 아니야"
+    },
+    {
+     "id": "cym_for_kor:S0483L01U03",
+     "keep": false,
+     "why": "Fine, but all four USE slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0483L01U06",
+     "keep": false,
+     "why": "'ddim yn llawer haws' means 'not much easier'; the Korean '훨씬 더 쉽지 않아' doesn't fix that meaning"
+    }
+   ]
+  },
+  "S0483L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 쉽게 기억하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그건 쉬워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 쉬운 무언가처럼 들려",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "쉬운 무언가",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "믿기 쉬운",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 나는 지금 쉽게 기억하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 상관없어 왜냐하면 이 일은 쉬우니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "어렵거나 쉽거나 나는 오늘 끝내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "인생은 쉽지 않지만 지금 동의하자",
+     "ok": false,
+     "why": "'dydy bywyd ddim hawdd' is missing 'yn' (it should be 'ddim yn hawdd'), which clashes with the LEGO this seed teaches. 'gadewch i ni' is also the formal/plural 'let's' in a line that has no addressee."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0483L02U01",
+     "keep": true,
+     "ko": "그건 쉽지 않지만 그게 문제는 아니야"
+    },
+    {
+     "id": "cym_for_kor:S0483L02U07",
+     "keep": false,
+     "why": "Good, but only one slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0483L02U06",
+     "keep": false,
+     "why": "Only one slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0483L02U02",
+     "keep": false,
+     "why": "'fyddai' is conditional ('would'), but '않을 거야' reads as future 'fydd', so there are two possible answers"
+    },
+    {
+     "id": "cym_for_kor:S0483L02U03",
+     "keep": false,
+     "why": "Only one slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0483L02U04",
+     "keep": false,
+     "why": "Only one slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0483L02U05",
+     "keep": false,
+     "why": "Only one slot was needed"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0483L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L02U04",
+     "keep": false,
+     "why": "Good, but only one USE slot is needed; U07 is the stronger phrase."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U06",
+     "keep": false,
+     "why": "Only one slot is needed. Also, 그게 could stand for either 'hynna' or 'o', so the Korean allows two Welsh answers."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U05",
+     "keep": false,
+     "why": "Only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U03",
+     "keep": false,
+     "why": "Only one slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0483L02U02",
+     "keep": false,
+     "why": "'fyddai' means 'would', but 않을 거야 reads as future 'fydd', so the Korean allows two Welsh answers."
+    }
+   ]
+  },
+  "S0483L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0483L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L04B04",
+     "keep": false,
+     "why": "Only three BUILD rows were needed"
+    },
+    {
+     "id": "cym_for_kor:S0483L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L04U04",
+     "keep": true,
+     "ko": "왜 그건 원래 공짜인 게 아니야?"
+    },
+    {
+     "id": "cym_for_kor:S0483L04U03",
+     "keep": false,
+     "why": "'I don't want it because it's not meant to be valuable' doesn't make sense as a sentence"
+    },
+    {
+     "id": "cym_for_kor:S0483L04U05",
+     "keep": false,
+     "why": "The conditional 'tasai' paired with present 'dydy o ddim i fod' is unnatural"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0483L04U03",
+     "keep": false,
+     "why": "'I don't want it because it isn't meant to be valuable' makes no sense as a sentence."
+    },
+    {
+     "id": "cym_for_kor:S0483L04U05",
+     "keep": false,
+     "why": "Hypothetical 'tasai' next to present 'dydy o ddim i fod' is unnatural, and the sentence means little."
+    }
+   ]
+  },
+  "S0483L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "두 번째 절반이 쉬워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "어느 것이 가장 쉬워?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "진지하게, 쉬운 이유가 많이 있어",
+     "ok": false,
+     "why": "'rhesymau hawdd' (easy reasons) is not natural; also 'mae na' should be written 'mae 'na'"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0483L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05U04",
+     "keep": false,
+     "why": "Good, but all five slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0483L05U05",
+     "keep": false,
+     "why": "'fyddai' is conditional ('would'), but '않을 거야' reads as future 'fydd', so there are two possible answers"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0483L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0483L05B02",
+     "keep": false,
+     "why": "Only one BUILD slot is needed; B01 is the cleanest build toward the seed."
+    },
+    {
+     "id": "cym_for_kor:S0483L05B04",
+     "keep": false,
+     "why": "Only one BUILD slot is needed. This fragment is also weaker than B01."
+    },
+    {
+     "id": "cym_for_kor:S0483L05B03",
+     "keep": false,
+     "why": "'fyddai' means 'would', but 않을 거야 reads as future 'fydd'. Also, 그건 here stands for 'hynna', not 'o', so the Korean is ambiguous."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:18:05.800Z"
+}

@@ -1,0 +1,209 @@
+{
+ "seed": 474,
+ "at": "2026-11-24T19:21:46.923Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0474L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0474L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0474L03B01",
+     "keep": true,
+     "ko": "심지어 제안으로도"
+    },
+    {
+     "id": "cym_for_kor:S0474L03B03",
+     "keep": false,
+     "why": "The fragment 'fel cynnig mae hynna'n swnio' cuts off the verb's complement, and the Korean '제안으로 그건 ~ 들려' reads badly."
+    },
+    {
+     "id": "cym_for_kor:S0474L03B04",
+     "keep": false,
+     "why": "'fel cynnig flwyddyn nesa'' ('as an offer next year') is not a meaningful phrase."
+    },
+    {
+     "id": "cym_for_kor:S0474L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0474L03U03",
+     "keep": true,
+     "ko": "제안으로는 그게 훌륭한 아이디어처럼 들려"
+    },
+    {
+     "id": "cym_for_kor:S0474L03U02",
+     "keep": true,
+     "ko": "너는 그걸 제안으로 원해?"
+    },
+    {
+     "id": "cym_for_kor:S0474L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0474L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0474L03U06",
+     "keep": false,
+     "why": "The Korean '되지 않을 거야' fits both 'fydd hynna ddim' and 'fyddai hynna ddim', so it has two possible answers. 'Would' has no clean Korean form here, and five USE rows are kept without it."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0474L03B03",
+     "keep": false,
+     "why": "Putting 'fel cynnig' at the front of 'mae hynna'n swnio' is unnatural Welsh; the normal order is 'mae hynna'n swnio fel cynnig'. The phrase also breaks off with the verb unfinished, and '제안으로 그건 ~ 들려' is not natural Korean."
+    },
+    {
+     "id": "cym_for_kor:S0474L03B04",
+     "keep": false,
+     "why": "'fel cynnig flwyddyn nesa'' ('as an offer next year') means nothing on its own, and '내년에 제안으로' cannot point to a single natural Welsh phrase."
+    }
+   ]
+  },
+  "S0474L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "공짜인 제안으로",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "공짜인 제안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "심지어 공짜로도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "공짜인 무언가를 원하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그걸 공짜로 원하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "공짜인 엽서 몇 장",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그녀한테 내 방 번호를 공짜로 말했어",
+     "ok": false,
+     "why": "Telling someone your room number 'rhad ac am ddim' does not make sense. The phrase means free of charge, and nobody charges for telling information, so the sentence is unidiomatic in this sense."
+    },
+    {
+     "n": 8,
+     "ko": "그건 공짜가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "공짜인 제안을 원하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "공짜인 엽서가 몇 장 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "심지어 공짜인 제안도 고려하기 위해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "휴식을 위한 공짜인 제안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "공짜인 호텔",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "벽 너머로 공짜인 엽서 몇 장",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "오늘 저녁에 공짜인",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 공짜인 책을 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "공짜인 책 부탁해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "나는 그게 공짜일 거라고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "나는 공짜인 제안을 원하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "그들은 다음 주에 공짜인 책을 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "나는 공짜인 제안을 원하지 않아, 왜냐하면 나한테 너무 많은 일이 있거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 22,
+     "ko": "나는 그게 오늘 저녁에 공짜이기를 바라",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T20:17:20.471Z"
+}

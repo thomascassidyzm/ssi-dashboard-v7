@@ -1,0 +1,149 @@
+{
+ "seed": 382,
+ "at": "2026-11-24T19:06:04.084Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0382L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 도움을 요청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 너 도움을 요청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너 왜 물어봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너 수요일에 도움을 요청했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너 몇 살인지 물어봤어?",
+     "ok": true,
+     "why": "Elliptical 'pa mor hen?' after ofyn is acceptable in colloquial North Welsh and uses wnest ti ofyn in the taught sense."
+    },
+    {
+     "n": 6,
+     "ko": "너 어젯밤에 그녀의 이름이 뭔지 물어봤어?",
+     "ok": true,
+     "why": "Natural reported question; wnest ti ofyn used in the taught sense."
+    },
+    {
+     "n": 7,
+     "ko": "너 그가 왜 우리와 함께 오고 싶어하지 않았는지 물어봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 그들이 왜 우리를 따라오고 싶어했는지 물어봤어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0382L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L01B01",
+     "keep": false,
+     "why": "Fine, but only one BUILD was needed and B03 practises the embedded question that seed 382 leads to."
+    },
+    {
+     "id": "cym_for_kor:S0382L01B04",
+     "keep": false,
+     "why": "Only one BUILD was needed; B03 was the stronger pick. 따라오다 could also suggest dod ar ôl, which is less certain than dilyn."
+    }
+   ]
+  },
+  "S0382L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그것이 어디에 있었는지 알아내고 싶어했어",
+     "ok": false,
+     "why": "Here 'lle oedd o' means 'where it was', and there is no 'isio' after it. The phrase never contains the LEGO 'lle oedd o isio' (where he wanted to) and uses o in a different sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0382L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02B02",
+     "keep": false,
+     "why": "BUILD quota filled by better candidates"
+    },
+    {
+     "id": "cym_for_kor:S0382L02B03",
+     "keep": false,
+     "why": "앉다 could be eistedd or eistedd i lawr, so the Korean may have two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0382L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02U02",
+     "keep": true,
+     "ko": "나는 그가 그걸 어디에 두고 싶어하는지 물어보지 않았어"
+    },
+    {
+     "id": "cym_for_kor:S0382L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02U05",
+     "keep": false,
+     "why": "앉다 could be eistedd or eistedd i lawr, so the Korean may have two Welsh answers"
+    },
+    {
+     "id": "cym_for_kor:S0382L02U06",
+     "keep": false,
+     "why": "USE quota filled; near-duplicate of U01"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0382L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0382L02B03",
+     "keep": false,
+     "why": "앉다 could be either eistedd or eistedd i lawr, so the Korean has two possible Welsh answers."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:11:28.823Z"
+}

@@ -1,0 +1,119 @@
+{
+ "seed": 129,
+ "at": "2026-11-24T18:28:16.669Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0129L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그것이 내가 정말 행복한 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 정말 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 나는 정말 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "왜냐하면 나는 오늘 정말 행복하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 나는 정말 행복해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 정말 행복해, 왜냐하면 오늘 그는 나에게 친구니까",
+     "ok": true,
+     "why": "Grammatical North Welsh, and mor hapus is used in the sense this course taught it. 'Friend today' is a slightly odd meaning but still makes sense here."
+    },
+    {
+     "n": 7,
+     "ko": "나는 직장에서 정말 행복해",
+     "ok": true,
+     "why": "Natural, idiomatic North Welsh in this seed."
+    },
+    {
+     "n": 8,
+     "ko": "나는 정말 행복해, 왜냐하면 오늘 저녁 나는 느긋하게 쉴 거니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 정말 행복해, 하지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0129L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0129L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04B04",
+     "keep": false,
+     "why": "Bare unmutated 'medri di' reads as a question ('can you…?'), but the Korean is a statement, so prompt and answer do not match one to one."
+    },
+    {
+     "id": "cym_for_kor:S0129L04U05",
+     "keep": true,
+     "ko": "나는 네가 웨일스어를 그렇게 잘 이야기해서 놀라"
+    },
+    {
+     "id": "cym_for_kor:S0129L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0129L04U03",
+     "keep": false,
+     "why": "Not needed: the 5 USE slots are already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0129L04U04",
+     "keep": false,
+     "why": "Its meaning is odd ('we don't speak so well with people'), and the 5 USE slots are already filled."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "seed": 655,
+ "at": "2026-11-24T19:54:21.139Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0655L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0655L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03B01",
+     "keep": false,
+     "why": "Good, but the 3 BUILD slots are already filled by stronger candidates, and B02 covers the same fragment in a longer form"
+    },
+    {
+     "id": "cym_for_kor:S0655L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0655L03U04",
+     "keep": false,
+     "why": "The 5 USE slots are already filled, and 'wrthaf fi' sounds less natural in colloquial North Welsh than 'wrtha i'"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "seed": 430,
+ "at": "2026-11-24T19:13:17.912Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0430L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "만약 그게 가능했다면",
+     "ok": true,
+     "why": "'os oedd hynna'n bosib' is a natural real-condition clause and uses bosib as 'possible'"
+    },
+    {
+     "n": 2,
+     "ko": "그게 어쩌면 가능할지도 몰라",
+     "ok": true,
+     "why": "'efallai fod o'n bosib' is idiomatic North Welsh, and bosib keeps its taught sense"
+    },
+    {
+     "n": 3,
+     "ko": "그건 가능하다고 나는 들었어",
+     "ok": true,
+     "why": "Natural Welsh with a tag clause; 'glywes i' with mutation would be more usual, but the unmutated form is acceptable"
+    },
+    {
+     "n": 4,
+     "ko": "우리는 네 자매를 보기를 바랐어, 하지만 그건 가능하지 않았어",
+     "ok": true,
+     "why": "Natural Welsh; 'doedd o ddim yn bosib' uses the same sense of possible"
+    },
+    {
+     "n": 5,
+     "ko": "그건 가능하지 않았어, 그래서 우리는 시간을 조금 더 갖고 싶었어",
+     "ok": true,
+     "why": "Grammatical, natural Welsh; bosib keeps the same sense"
+    },
+    {
+     "n": 6,
+     "ko": "어쩌면 모든 것을 제때 끝내는 게 가능할지도 몰라",
+     "ok": true,
+     "why": "Natural Welsh; 'o' is a dummy subject, so the Korean leaves out 그게 to avoid a double subject"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0430L03U03",
+     "keep": true,
+     "ko": "너는 그게 가능하다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0430L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0430L03U07",
+     "keep": false,
+     "why": "Good row, but only 2 are needed and U03 already covers the meddwl-fod-o'n-bosib frame"
+    },
+    {
+     "id": "cym_for_kor:S0430L03U05",
+     "keep": false,
+     "why": "Good row, but it repeats the same frame as U03; not needed"
+    },
+    {
+     "id": "cym_for_kor:S0430L03U04",
+     "keep": false,
+     "why": "Good row, but not needed"
+    },
+    {
+     "id": "cym_for_kor:S0430L03U01",
+     "keep": false,
+     "why": "Almost the same as the seed sentence with only heno added, so it adds little practice"
+    },
+    {
+     "id": "cym_for_kor:S0430L03U06",
+     "keep": false,
+     "why": "The Korean '왜냐하면 나는 너무 많은 일이 있어' is ungrammatical, and the row isn't needed"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "seed": 386,
+ "at": "2026-11-24T19:06:36.018Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0386L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그게 ~였다는 데 동의했어",
+     "ok": true,
+     "why": "After cytuno, 'fod o wedi bod' is natural and correct. It is an open BUILD fragment, so the Korean keeps the open end with ~."
+    },
+    {
+     "n": 2,
+     "ko": "나는 어젯밤에 동의했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그 당시에 동의했어",
+     "ok": true,
+     "why": "'Ar y pryd' is the idiom 'at the time', so the 언제 gloss does not fit here. 그 당시에 follows the source English. The Welsh is natural North Welsh."
+    },
+    {
+     "n": 4,
+     "ko": "그것이 내가 동의한 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "미안해 하지만 나는 지난달에 동의했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 일주일 전에 동의했어 하지만 나는 시간이 나지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "아무도 내가 왜 준비 사항들에 동의했는지 확실하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0386L02U04",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0386L02U02",
+     "keep": false,
+     "why": "It is good, but it repeats the pattern of o5 (mae'n ddrwg gen i ond wnes i gytuno), and only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0386L02U03",
+     "keep": false,
+     "why": "It is fine, but U04 is better. Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0386L02U01",
+     "keep": false,
+     "ko": "응, 나는 일 분 전에 그녀에게 동의했어",
+     "why": "I fixed the Korean so 'do' matches the seed's 응, not 그래. Only one top-up is needed."
+    },
+    {
+     "id": "cym_for_kor:S0386L02U05",
+     "keep": false,
+     "why": "그룹에 동의했어 is unnatural Korean for 'agreed with the group'."
+    },
+    {
+     "id": "cym_for_kor:S0386L02U06",
+     "keep": false,
+     "why": "Only one top-up is needed. Also, the Korean renders 'do' as 그래 when the seed uses 응."
+    }
+   ]
+  }
+ }
+}

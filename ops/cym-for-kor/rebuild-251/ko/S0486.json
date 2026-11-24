@@ -1,0 +1,129 @@
+{
+ "seed": 486,
+ "at": "2026-11-24T19:24:33.644Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0486L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0486L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02B03",
+     "keep": false,
+     "why": "BUILD count already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0486L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L02U02",
+     "keep": false,
+     "why": "USE count already filled"
+    },
+    {
+     "id": "cym_for_kor:S0486L02U04",
+     "keep": false,
+     "why": "USE count already filled"
+    }
+   ]
+  },
+  "S0486L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그건 아름다웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 학교에 걸어가고 싶었어 왜냐하면 오늘 오후에 그건 아름다웠거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 아름다웠어 하지만 우리는 식사 후에 떠나야 했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0486L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L03B02",
+     "keep": false,
+     "why": "BUILD count already filled"
+    },
+    {
+     "id": "cym_for_kor:S0486L03B04",
+     "keep": false,
+     "why": "그건 원래 아름다운 거야 could also be said as mae o'n hardd; the 'i fod' sense is not pinned down"
+    },
+    {
+     "id": "cym_for_kor:S0486L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0486L03U03",
+     "keep": false,
+     "why": "그 책 clashes with 그 영화 = y ffilm, so y llyfr vs y llyfr 'na is ambiguous; count already filled anyway"
+    },
+    {
+     "id": "cym_for_kor:S0486L03U04",
+     "keep": false,
+     "why": "USE count already filled"
+    },
+    {
+     "id": "cym_for_kor:S0486L03U06",
+     "keep": false,
+     "why": "USE count already filled"
+    }
+   ]
+  }
+ }
+}

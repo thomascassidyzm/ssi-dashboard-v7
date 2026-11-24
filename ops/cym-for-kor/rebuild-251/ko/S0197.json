@@ -1,0 +1,117 @@
+{
+ "seed": 197,
+ "at": "2026-11-24T18:37:48.068Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0197L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0197L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01B02",
+     "keep": false,
+     "why": "Sound, but it is the fourth BUILD and only 3 are needed. U01 already covers 'rhy brysur'."
+    },
+    {
+     "id": "cym_for_kor:S0197L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L01U04",
+     "keep": true,
+     "ko": "나는 걱정하지 않아, 왜냐하면 내 아들은 행복하다고 느끼니까"
+    },
+    {
+     "id": "cym_for_kor:S0197L01U02",
+     "keep": false,
+     "why": "Sound, but it is the sixth USE and only 5 are needed. It also repeats 'rhy brysur', which U01 already covers."
+    }
+   ]
+  },
+  "S0197L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리 아들은 선생님으로 일해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 선생님으로 일해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그래서 그는 선생님으로 일해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0197L03U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0197L03U01",
+     "keep": false,
+     "ko": "너 선생님으로 일해?",
+     "why": "'wyt ti'n' is the question form, so the Korean has to be a question (fixed here). Not kept: only 5 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0197L03U03",
+     "keep": false,
+     "ko": "너 다음 주에 선생님으로 일하고 싶어?",
+     "why": "'wyt ti isio' is a question, so the Korean has to be a question (fixed here). Not kept: only 5 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0197L03U02",
+     "keep": false,
+     "why": "Only 5 USE are needed. 'Trio' (try) has no gloss here, so the stronger candidates go first."
+    }
+   ]
+  }
+ }
+}

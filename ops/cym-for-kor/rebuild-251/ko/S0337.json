@@ -1,0 +1,64 @@
+{
+ "seed": 337,
+ "at": "2026-11-24T18:59:42.275Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0337L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 계속 경기할 수 있어?",
+     "ok": true,
+     "why": "Natural North Welsh. 'dal i chwarae' means keep playing, which uses chwarae in the sense taught here."
+    },
+    {
+     "n": 2,
+     "ko": "나는 경기하기로 동의했어",
+     "ok": true,
+     "why": "Natural North Welsh. 'cytuno i chwarae' means agreed to play, the same sense as taught."
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그녀는 경기하러 갔어",
+     "ok": true,
+     "why": "Natural North Welsh. 'wedi mynd i chwarae' means has gone to play, the same sense as taught."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0337L04U01",
+     "keep": true,
+     "ko": "너 그녀가 이번에는 경기할 수 있다고 생각해?",
+     "why": "The Korean needed a question mark because the Welsh is a question. It closely mirrors the seed."
+    },
+    {
+     "id": "cym_for_kor:S0337L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0337L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0337L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0337L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0337L04U07",
+     "keep": false,
+     "why": "The Welsh and Korean are both fine, but 5 USE rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0337L04U05",
+     "keep": false,
+     "why": "'chwarae efo dy ffrind' means playing with a friend for fun, so 경기하다 (playing a match) is the wrong sense. The Korean also lacked a question mark."
+    }
+   ]
+  }
+ }
+}

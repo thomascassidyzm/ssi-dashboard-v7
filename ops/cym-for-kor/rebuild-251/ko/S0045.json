@@ -1,0 +1,276 @@
+{
+ "seed": 45,
+ "at": "2026-11-24T18:14:00.509Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0045L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 멈출 필요가 있는지 확실하지 않아",
+     "ok": false,
+     "why": "Does not contain the LEGO dw i ddim angen; it uses ti angen, so it gives no practice of this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "나는 이야기하는 것을 멈추고 싶지 않아, 하지만 너는 갈 필요가 있어",
+     "ok": false,
+     "why": "Does not contain dw i ddim angen; it uses dw i ddim isio and ti angen instead, so it is the wrong basket for this LEGO."
+    },
+    {
+     "n": 3,
+     "ko": "나는 오늘 이 단어가 필요 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내일 오후에 끝낼 필요가 있는지 확실하지 않아",
+     "ok": false,
+     "why": "Uses the positive dw i angen, not dw i ddim angen, so it does not practise this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0045L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01B02",
+     "keep": false,
+     "why": "Sound, but the single BUILD slot is already filled by B01."
+    },
+    {
+     "id": "cym_for_kor:S0045L01B03",
+     "keep": false,
+     "why": "Sound, but the BUILD slot is already filled, and it is long for a BUILD row."
+    },
+    {
+     "id": "cym_for_kor:S0045L01B04",
+     "keep": false,
+     "why": "Sound, but the BUILD slot is already filled, and it is long for a BUILD row."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01U03",
+     "keep": false,
+     "why": "The USE count is already filled by stronger candidates."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U05",
+     "keep": false,
+     "why": "torri ar draws y stori ('interrupt the story') is an odd collocation."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U06",
+     "keep": false,
+     "why": "The USE count is already filled, and this one is overlong."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U07",
+     "keep": false,
+     "why": "The Korean 이야기할 필요도 아니면 대답할 필요도 없어 is awkward, and the count is already filled."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0045L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01B03",
+     "keep": false,
+     "why": "Both BUILD slots are already filled by shorter rows. This one is sound but long for a BUILD row."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0045L01U05",
+     "keep": false,
+     "why": "'torri ar draws y stori' is an odd collocation, and 그 이야기를 끊다 does not cleanly pin it down."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U06",
+     "keep": false,
+     "why": "Overlong, and '웨일스어를 이야기하다' is unnatural Korean. The USE slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0045L01U07",
+     "keep": false,
+     "why": "'이야기할 필요도 아니면 대답할 필요도 없어' is awkward Korean."
+    }
+   ]
+  },
+  "S0045L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 알 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 알고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 무엇을 알고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 알고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 알고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 언제 멈추고 싶은지 알고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 무언가를 알 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 웨일스어를 이야기하는 방법을 알지 못했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 네가 얼마나 오래 배워 왔는지 알면 좋겠어",
+     "ok": true,
+     "why": "The Korean uses 알면 좋겠어 for liciwn i so the learner cannot answer dw i isio gwybod."
+    },
+    {
+     "n": 10,
+     "ko": "나는 네가 무엇이 필요한지 알고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "하지만 너는 무언가를 알 필요가 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0045L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 모든 것을 기억해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 모든 것이 준비돼 있길 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 오늘 모든 것이 준비돼 있길 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "모든 것을 설명하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 모든 것을 설명할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "지금 모든 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "모든 것을 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 오늘 저녁 모든 것을 보여주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "모든 것이 준비됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 오늘 저녁 모든 것이 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 모든 것에 대답하지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 모든 것을 가져가고 싶지 않아",
+     "ok": true,
+     "why": "Here cymryd means 'take', not the gloss 시간을 들이다, so the Korean follows the source English."
+    },
+    {
+     "n": 13,
+     "ko": "나는 웨일스어로 모든 것을 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:31:31.907Z"
+}

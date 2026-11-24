@@ -1,0 +1,103 @@
+{
+ "seed": 473,
+ "at": "2026-11-24T19:21:20.927Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0473L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그걸 그에게 주고 싶지 않아",
+     "ok": false,
+     "why": "The Welsh is natural, but it never uses the LEGO 'dw i ddim isio fo' (I don't want it). Here isio takes the verbnoun rhoi and fo is the object of rhoi, so this row practises 'don't want to give', not 'don't want it'."
+    },
+    {
+     "n": 2,
+     "ko": "나는 화요일에 그걸 그에게 주고 싶지 않아",
+     "ok": false,
+     "why": "Same problem as o1: the Welsh is natural, but fo belongs to rhoi, so 'dw i ddim isio fo' in the sense 'I don't want it' is not present."
+    },
+    {
+     "n": 3,
+     "ko": "미안해 하지만 나는 그걸 그에게 주고 싶지 않아",
+     "ok": false,
+     "why": "The Welsh is natural, but it is 'dw i ddim isio rhoi o iddo fo', so the LEGO 'dw i ddim isio fo' in the sense 'I don't want it' is not present."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0473L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01B02",
+     "keep": false,
+     "why": "Fine, but only 1 BUILD is needed and B01 is the cleaner build"
+    },
+    {
+     "id": "cym_for_kor:S0473L01B03",
+     "keep": false,
+     "why": "A stand-alone 'achos …' clause is a weak fragment in both languages"
+    },
+    {
+     "id": "cym_for_kor:S0473L01B04",
+     "keep": false,
+     "why": "Fine, but only 1 BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0473L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01U04",
+     "keep": true,
+     "ko": "아니 나는 오늘은 그걸 원하지 않아 왜냐하면 나는 너무 바빠"
+    },
+    {
+     "id": "cym_for_kor:S0473L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01U03",
+     "keep": false,
+     "why": "Fine, but the quota is already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0473L01U02",
+     "keep": false,
+     "why": "'그건 아름다웠어' could be 'oedd o'n hardd' or 'oedd hi'n hardd', and the 'beautiful but I don't want it' pairing is weak"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0473L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01B03",
+     "keep": false,
+     "why": "A clause that starts with achos and stands alone is a weak fragment in both languages, and '왜냐하면 … 원하지 않아' is unnatural Korean without -거든/-기 때문이야."
+    },
+    {
+     "id": "cym_for_kor:S0473L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0473L01U02",
+     "keep": false,
+     "why": "'그건 아름다웠어' could be either 'oedd o'n hardd' or 'oedd hi'n hardd', so the prompt has two possible Welsh answers."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:17:14.957Z"
+}

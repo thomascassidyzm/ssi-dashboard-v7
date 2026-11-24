@@ -1,0 +1,138 @@
+{
+ "seed": 449,
+ "at": "2026-11-24T19:16:39.845Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0449L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 우리에게 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 우리에게 그들이 돕고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그들이 우리에게 말한 것에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그리고 그다음에 그들은 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 그게 좋은 것이라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "하지만 그들은 ~라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 우리가 할 수 없다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 내가 그것들을 아직 못 봤다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 그게 그렇지 않다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그들은 그게 나빴다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그들은 그들이 어젯밤 그것을 부쉈다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그들은 우리에게 네가 그것들을 직장에 두고 왔다고 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0449L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0449L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02B02",
+     "keep": false,
+     "why": "Fine, but the 3 BUILD slots are already filled by stronger full-sentence rows"
+    },
+    {
+     "id": "cym_for_kor:S0449L02U01",
+     "keep": true,
+     "ko": "너는 그들이 거의 준비가 됐다고 생각해?"
+    },
+    {
+     "id": "cym_for_kor:S0449L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0449L02U04",
+     "keep": false,
+     "ko": "그는 그들이 거의 준비가 됐다고 말했지만 그들은 준비가 안 됐어",
+     "why": "Fine with the fixed Korean, but the 5 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0449L02U03",
+     "keep": false,
+     "why": "생각했어 could also be meddylion nhw, so it is not certain to produce oeddan nhw'n meddwl; the USE slots are already filled"
+    }
+   ]
+  }
+ }
+}

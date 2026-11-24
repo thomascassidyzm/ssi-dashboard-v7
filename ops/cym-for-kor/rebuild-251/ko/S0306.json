@@ -1,0 +1,115 @@
+{
+ "seed": 306,
+ "at": "2026-11-24T18:54:58.987Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0306L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0306L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L02B04",
+     "keep": true,
+     "ko": "너 그 젊은 여자를 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0306L02B02",
+     "keep": true,
+     "ko": "그 젊은 여자는 누구였어?"
+    },
+    {
+     "id": "cym_for_kor:S0306L02B03",
+     "keep": false,
+     "why": "Grammatical, but only 3 BUILD rows are needed and B01, B04 and B02 are cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0306L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L02U02",
+     "keep": true,
+     "ko": "너 네 자매를 아는 그 젊은 여자를 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0306L02U06",
+     "keep": false,
+     "why": "Fine, but 5 USE rows are already filled by fuller relative-clause rows"
+    },
+    {
+     "id": "cym_for_kor:S0306L02U03",
+     "keep": false,
+     "why": "Fine, but 5 USE rows are already filled"
+    }
+   ]
+  },
+  "S0306L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 아주 잘 이야기하는 사람들을 만났어",
+     "ok": true,
+     "why": "Natural North Welsh; sy'n siarad is the same relative 'who speak/talk' sense this LEGO teaches"
+    },
+    {
+     "n": 2,
+     "ko": "너무 많이 이야기하는 사람들",
+     "ok": true,
+     "why": "Natural Welsh fragment; same relative sy'n siarad sense"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0306L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L03B02",
+     "keep": false,
+     "why": "Fine, but only 1 BUILD row is needed; B04 mirrors the seed best"
+    },
+    {
+     "id": "cym_for_kor:S0306L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0306L03U04",
+     "keep": false,
+     "why": "Welsh puts neithiwr between the noun and its relative clause, which is awkward; the Korean 어젯밤 could attach to either verb"
+    }
+   ]
+  }
+ }
+}

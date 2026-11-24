@@ -1,0 +1,124 @@
+{
+ "seed": 56,
+ "at": "2026-11-24T18:15:50.876Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0056L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 모든 것을 기억할 수 있도록 이야기하는 연습을 하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 기억할 수 있도록 모든 것을 쓸 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 단어 하나를 기억할 수 있도록",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 기억할 수 있도록 모든 것을 쓸 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 모든 것을 기억할 수 있도록 가능한 한 자주 이야기하는 연습을 하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0056L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0056L01U03",
+     "keep": true,
+     "ko": "너는 내가 기억할 수 있도록 그녀의 이름을 쓸 거야?"
+    },
+    {
+     "id": "cym_for_kor:S0056L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0056L01U01",
+     "keep": false,
+     "why": "Not needed: three stronger candidates already fill the quota."
+    },
+    {
+     "id": "cym_for_kor:S0056L01U02",
+     "keep": false,
+     "why": "'sgwennu' with no object reads oddly, and the Korean 방법 does not match the seed's gloss for sut i ddeud (어떻게 말하는지)."
+    },
+    {
+     "id": "cym_for_kor:S0056L01U06",
+     "keep": false,
+     "why": "The meaning is odd: not needing to write everything 'so I can remember'. Weaker than the ones kept."
+    }
+   ]
+  },
+  "S0056L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁에 몇몇 단어를 쓰다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "몇몇 단어를 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "웨일스어로 몇몇 단어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 웨일스어로 몇몇 단어를 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 몇몇 단어를 연습할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 오늘 저녁에 몇몇 단어를 쓸 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너 웨일스어로 몇몇 단어를 말할 수 있어?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0056L04U01",
+     "keep": true
+    }
+   ]
+  }
+ }
+}

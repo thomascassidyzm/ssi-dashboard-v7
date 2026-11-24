@@ -1,0 +1,113 @@
+{
+ "seed": 257,
+ "at": "2026-11-24T18:47:44.622Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0257L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0257L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01B04",
+     "keep": false,
+     "why": "Not needed: the three BUILD slots are already filled by stronger rows, and the bare 왜냐하면 fragment reads awkwardly."
+    },
+    {
+     "id": "cym_for_kor:S0257L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01U05",
+     "keep": true,
+     "ko": "나는 그 영화를 좋아해 왜냐하면 재미있거든"
+    },
+    {
+     "id": "cym_for_kor:S0257L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L01U03",
+     "keep": false,
+     "why": "The two parts don't connect: 'yes, that's a good idea' doesn't lead into 'I like that film'."
+    },
+    {
+     "id": "cym_for_kor:S0257L01U06",
+     "keep": false,
+     "why": "Not needed: the five USE slots are already filled by stronger rows."
+    }
+   ]
+  },
+  "S0257L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0257L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02B03",
+     "keep": false,
+     "why": "Not needed: the three BUILD slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0257L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0257L02U04",
+     "keep": false,
+     "why": "Two possible answers: 너 그 파란 것 봤어? fits both 'wyt ti wedi gweld' and 'welaist ti', and U05 already uses 봤어 for the past tense."
+    },
+    {
+     "id": "cym_for_kor:S0257L02U06",
+     "keep": false,
+     "why": "Not needed: the five USE slots are already filled, and it overlaps with B03."
+    }
+   ]
+  }
+ }
+}

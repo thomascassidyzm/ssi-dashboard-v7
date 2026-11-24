@@ -1,0 +1,136 @@
+{
+ "seed": 610,
+ "at": "2026-11-24T19:48:53.229Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0610L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 이 일은 유용해",
+     "ok": false,
+     "why": "Wrong sense: here gwaith means the task ('this work'), but the course taught waith as 일자리 (a job). The Korean cannot use 일자리, so the learner never recalls this LEGO."
+    },
+    {
+     "n": 2,
+     "ko": "오늘 직장에서",
+     "ok": false,
+     "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
+    },
+    {
+     "n": 3,
+     "ko": "너는 직장에서 무엇을 하겠어?",
+     "ok": false,
+     "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
+    },
+    {
+     "n": 4,
+     "ko": "나는 너와 직장까지 걸어갈 의향이 있어",
+     "ok": false,
+     "why": "Wrong sense: i'r gwaith means 'to work' (the workplace, 직장), not a job (일자리). It does not practise the LEGO as taught."
+    },
+    {
+     "n": 5,
+     "ko": "나는 가능한 한 빨리 직장에 갈 필요가 있어",
+     "ok": false,
+     "why": "Wrong sense: mynd i'r gwaith means going to the workplace (직장), not a job (일자리). It does not practise the LEGO as taught."
+    },
+    {
+     "n": 6,
+     "ko": "여러분이 직장에 가기 전에",
+     "ok": false,
+     "why": "Wrong sense: i'r gwaith means the workplace (직장), not a job (일자리). It does not practise the LEGO as taught."
+    },
+    {
+     "n": 7,
+     "ko": "직장에 있는 내 딸",
+     "ok": false,
+     "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
+    },
+    {
+     "n": 8,
+     "ko": "나는 직장에서 더 많은 시간을 보내고 싶지 않았어",
+     "ok": false,
+     "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
+    },
+    {
+     "n": 9,
+     "ko": "너는 왜 직장에서 더 많은 시간을 보내고 싶어?",
+     "ok": false,
+     "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
+    },
+    {
+     "n": 10,
+     "ko": "나는 시간이 조금 더 필요해, 왜냐하면 이 일은 특이하거든",
+     "ok": false,
+     "why": "Wrong sense: here gwaith means the task ('this work'), not a job (일자리). It does not practise the LEGO as taught."
+    },
+    {
+     "n": 11,
+     "ko": "나는 느긋하게 쉬고 싶어, 하지만 이 일은 재미있어",
+     "ok": false,
+     "why": "Wrong sense: here gwaith means the task ('this work'), not a job (일자리). It does not practise the LEGO as taught."
+    },
+    {
+     "n": 12,
+     "ko": "하지만 우리는 네가 그것들을 직장에 두고 왔다고 생각하지 않아",
+     "ok": false,
+     "why": "Wrong sense: gwaith here is the workplace, from the held chunk yn y gwaith = 직장에. It does not practise waith = 일자리."
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0610L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04B02",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0610L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0610L04U02",
+     "keep": true,
+     "ko": "너는 일자리를 찾고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0610L04U06",
+     "keep": false,
+     "why": "Sound, but the five USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0610L04U01",
+     "keep": false,
+     "why": "갔어 has two Welsh answers: 'aeth hi i chwilio am waith' (went) and 'mae hi wedi mynd i chwilio am waith' (has gone)"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:26:51.383Z"
+}

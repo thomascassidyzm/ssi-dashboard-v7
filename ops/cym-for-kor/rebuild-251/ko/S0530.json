@@ -1,0 +1,163 @@
+{
+ "seed": 530,
+ "at": "2026-11-24T19:35:42.780Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0530L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 몇몇 단어를 기억할 수 있도록",
+     "ok": true,
+     "why": "This is natural North Welsh, and fel medra i keeps the 'so that I can' sense."
+    },
+    {
+     "n": 2,
+     "ko": "내가 네가 말한 것을 기억할 수 있도록",
+     "ok": true,
+     "why": "This is natural, and the LEGO keeps the same sense."
+    },
+    {
+     "n": 3,
+     "ko": "정말 고마워, 나는 내가 기억할 수 있도록 연습할 거야",
+     "ok": true,
+     "why": "This is natural, and fel medra i is used as a purpose clause."
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 모든 것을 기억할 수 있도록 이야기하는 연습을 해야 해",
+     "ok": true,
+     "why": "This is natural, and the LEGO keeps the same sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0530L01B02",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0530L01B01",
+     "keep": false,
+     "why": "Only 1 BUILD is needed, and B02 is the better pick."
+    },
+    {
+     "id": "cym_for_kor:S0530L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0530L01B04",
+     "keep": false,
+     "why": "This fragment does not make natural Korean."
+    },
+    {
+     "id": "cym_for_kor:S0530L01U04",
+     "keep": true,
+     "ko": "나는 내가 파티에 갈 수 있도록 기차를 타야 해"
+    },
+    {
+     "id": "cym_for_kor:S0530L01U01",
+     "keep": true,
+     "ko": "나는 내가 너를 도울 수 있도록 여기에 머물고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0530L01U03",
+     "keep": true,
+     "ko": "나는 내가 오랜 친구 몇 명을 볼 수 있도록 도시로 이사할 거야"
+    },
+    {
+     "id": "cym_for_kor:S0530L01U02",
+     "keep": false,
+     "why": "It breaks the register rules: plural chi gyd needs 여러분 in 해요 without 모두, which would then clash with 내가. The Welsh is also a question, not a statement."
+    },
+    {
+     "id": "cym_for_kor:S0530L01U05",
+     "keep": false,
+     "why": "Only 3 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0530L01U06",
+     "keep": false,
+     "why": "Only 3 USE are needed."
+    }
+   ]
+  },
+  "S0530L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 열쇠를 가져오는 동안 그것들을 세다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그것들을 세자",
+     "ok": true,
+     "why": "This is natural North Welsh, and eu cyfrif nhw keeps the same sense."
+    },
+    {
+     "n": 3,
+     "ko": "내가 그것들을 셀 수 있도록",
+     "ok": false,
+     "why": "fel bydd modd i mi means the same as this seed's fel medra i, so the only Korean for it is exactly the seed's Korean. Then one Korean prompt has two Welsh answers, which breaks ZUT. Drop it."
+    },
+    {
+     "n": 4,
+     "ko": "그들은 그것들을 세고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그것들을 나중에 세는 게 더 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들이 목요일 전에 그것들을 셀 수 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 우리가 멈추기 전에 그것들을 세야 해",
+     "ok": true,
+     "why": "Mae'n rhaid i mi is natural North Welsh and makes sense here."
+    },
+    {
+     "n": 8,
+     "ko": "하지만 그게 우리가 그것들을 셀 수 없다는 걸 뜻하지는 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0530L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0530L02B03",
+     "keep": false,
+     "why": "A good phrase, but only 1 BUILD is needed and B01 is the stronger, more useful sentence"
+    },
+    {
+     "id": "cym_for_kor:S0530L02B02",
+     "keep": false,
+     "why": "A loose fragment with an infinitive and a trailing time word; the Korean 지금 그것들을 세다 reads unnaturally"
+    },
+    {
+     "id": "cym_for_kor:S0530L02B04",
+     "keep": false,
+     "why": "The Korean -자 has more than one possible Welsh answer (gad i ni / gadewch i ni / awn ni), and gadewch is plural or formal while the line is 반말"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:21:38.181Z"
+}

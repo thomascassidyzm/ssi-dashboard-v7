@@ -1,0 +1,92 @@
+{
+ "seed": 286,
+ "at": "2026-11-24T18:52:00.564Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0286L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그것을 좋아하는 누군가를 알아",
+     "ok": true,
+     "why": "Moved here and still natural: sy’n licio fo is the 'who likes it' relative clause this LEGO teaches."
+    },
+    {
+     "n": 2,
+     "ko": "나는 그것을 아주 많이 좋아하는 누군가를 알아",
+     "ok": true,
+     "why": "Moved here and still natural: licio fo yn fawr iawn (likes it very much) uses the LEGO in the taught sense."
+    },
+    {
+     "n": 3,
+     "ko": "나는 그 책을 좋아하는 누군가를 만났어",
+     "ok": true,
+     "why": "Moved here and still natural: sy’n licio’r llyfr ’na fits the relative-clause sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0286L02B03",
+     "keep": true,
+     "ko": "",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0286L02U06",
+     "keep": true,
+     "ko": "나는 웨일스어 하는 것을 좋아하는 사람들을 만나고 싶어",
+     "why": "Korean changed to the seed's wording for siarad Cymraeg (웨일스어 하는); 웨일스어를 이야기하는 is unnatural Korean."
+    },
+    {
+     "id": "cym_for_kor:S0286L02U05",
+     "keep": true,
+     "ko": "나는 어젯밤 웨일스어 하는 것을 좋아하는 누군가를 만났어",
+     "why": "Korean changed to the seed's wording for siarad Cymraeg."
+    },
+    {
+     "id": "cym_for_kor:S0286L02U02",
+     "keep": true,
+     "ko": "너는 배우는 것을 좋아하는 누군가를 알아?",
+     "why": "Added the explicit 너는 the register rules require."
+    },
+    {
+     "id": "cym_for_kor:S0286L02U04",
+     "keep": true,
+     "ko": "",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0286L02B01",
+     "keep": false,
+     "why": "Sound, but the one BUILD slot went to B03."
+    },
+    {
+     "id": "cym_for_kor:S0286L02B02",
+     "keep": false,
+     "why": "Sound, but almost the seed itself; B03 adds more variety."
+    },
+    {
+     "id": "cym_for_kor:S0286L02B04",
+     "keep": false,
+     "why": "Sound, but the one BUILD slot went to B03."
+    },
+    {
+     "id": "cym_for_kor:S0286L02U01",
+     "keep": false,
+     "why": "Its Korean would need fixing (웨일스어 하는); the four USE slots are filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0286L02U03",
+     "keep": false,
+     "why": "Sound, but the four USE slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0286L02U07",
+     "keep": false,
+     "why": "The Korean 알고 지내 drifts from the 나는 ~를 알아 gloss for nabod; the USE slots are already filled."
+    }
+   ]
+  }
+ }
+}

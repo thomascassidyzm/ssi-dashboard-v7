@@ -1,0 +1,329 @@
+{
+ "seed": 510,
+ "at": "2026-11-24T19:30:58.634Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0510L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 알아내러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 그녀는 가게를 찾아내러 갔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그녀는 도시로 갔어",
+     "ok": false,
+     "why": "Here i'r is the preposition 'to the' plus a noun. It is not the LEGO's sense of going in order to do something, and the LEGO is not actually present."
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 차를 주차하러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 다음 모퉁이에서 멈추러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 휴식을 위해 멈추러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네 아버지를 기다리고 싶지 않아, 왜냐하면 그녀는 알아내러 갔거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 경기하고 싶었어, 하지만 그녀는 입구 가까이에 앉으러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 떠나야 했어, 왜냐하면 그녀는 호텔 가까이에 가게를 찾아내러 갔거든",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0510L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 내 어머니를 찾고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그녀는 문을 찾아봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "밥을 찾다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 그것을 찾아봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "사무실에 도착하는 방법을 찾다",
+     "ok": false,
+     "why": "'chwilio am sut i' is a calque of English. Natural Welsh uses chwilio sut i or ffeindio sut i, without am before a sut clause."
+    },
+    {
+     "n": 6,
+     "ko": "그가 열려 있는 사무실을 찾으려고 노력하는 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 왜 지금 가게를 찾을 거야?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너 고양이를 찾아봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 내 여동생을 찾아보지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 예전에 정원에서 새끼 고양이를 찾곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "우리는 어젯밤 주차장을 찾아야 했어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0510L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 안전한 곳을 찾아봤어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 안전한 곳을 찾고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 예전에 안전한 곳을 찾곤 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "안전한 곳을 찾다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어제 차를 주차할 안전한 곳을 찾다",
+     "ok": false,
+     "why": "A bare verbnoun has no tense, so adding ddoe ('yesterday') makes it unnatural in both Welsh and Korean."
+    },
+    {
+     "n": 6,
+     "ko": "차를 주차할 안전한 곳을 찾다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 안전한 곳을 찾을 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그가 안전한 곳을 찾으려고 노력하는 동안",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "오늘 저녁 안전한 곳을 찾다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "호텔 가까이에 있는 안전한 곳",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너 안전한 곳을 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 오늘 저녁 안전한 곳을 찾고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 지금 안전한 곳을 찾을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너 저기에 있는 안전한 곳을 봤어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "그녀는 그 지역에서 안전한 곳을 찾으러 갔어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "그들은 호텔 가까이에 있는 안전한 곳을 찾고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0510L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 차를 주차하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 저기에 차를 주차할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 차를 주차할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 차를 주차했어",
+     "ok": false,
+     "why": "In 'wnes i barcio'r car', i is the pronoun 'I', not the 'to' in the LEGO 'i barcio'r car'. This is the wrong sense."
+    },
+    {
+     "n": 5,
+     "ko": "내가 차를 주차하게 해 줘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 저기에 차를 주차해야 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 어젯밤 저기에 차를 주차해야 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 오늘 저녁 호텔 가까이에 차를 주차할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "내가 파란 표지판 앞에 차를 주차하게 해 줘",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0510L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0510L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0510L04U04",
+     "keep": false,
+     "why": "Good, but only 2 USE top-ups were needed and U01 and U05 give more variety."
+    },
+    {
+     "id": "cym_for_kor:S0510L04U03",
+     "keep": false,
+     "why": "Good, but only 2 USE top-ups were needed."
+    },
+    {
+     "id": "cym_for_kor:S0510L04U02",
+     "keep": false,
+     "why": "'gynnyn nhw' is a questionable form; North Welsh speech normally has 'gynnon nhw'."
+    },
+    {
+     "id": "cym_for_kor:S0510L04U06",
+     "keep": false,
+     "why": "Only 2 USE top-ups were needed."
+    },
+    {
+     "id": "cym_for_kor:S0510L04U07",
+     "keep": false,
+     "why": "Only 2 USE top-ups were needed."
+    }
+   ]
+  }
+ }
+}

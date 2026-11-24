@@ -1,0 +1,142 @@
+{
+ "seed": 86,
+ "at": "2026-11-24T18:20:38.847Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0086L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그것은 오늘 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그것은 어젯밤 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너를 기다리는 것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "답을 찾아내는 것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 너를 돕고 싶었지만 그것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그것은 오늘 저녁 가능하지 않았지만 정말 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 시간을 조금 더 갖고 싶었지만 그것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0086L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "안타깝게도 나는 할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 확실하지 않아 안타깝게도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 안타깝게도 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "안타깝게도 나는 그의 이름을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워 하지만 안타깝게도 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 너를 기다리고 싶어하지 않았어 안타깝게도",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 너를 기다리고 싶었지만 안타깝게도 그것은 가능하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0086L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0086L02U03",
+     "keep": false,
+     "why": "only 1 USE needed; U01 is cleaner"
+    },
+    {
+     "id": "cym_for_kor:S0086L02U02",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0086L02U04",
+     "keep": false,
+     "why": "'기다리지 않을 거야' could also be answered with 'fydda i ddim yn aros', so the prompt has two possible answers"
+    },
+    {
+     "id": "cym_for_kor:S0086L02U05",
+     "keep": false,
+     "why": "only 1 USE needed; the Korean word order is awkward"
+    },
+    {
+     "id": "cym_for_kor:S0086L02U06",
+     "keep": false,
+     "why": "only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0086L02U07",
+     "keep": false,
+     "why": "only 1 USE needed; too long"
+    }
+   ]
+  }
+ }
+}

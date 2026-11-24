@@ -1,0 +1,123 @@
+{
+ "seed": 351,
+ "at": "2026-11-24T19:01:37.561Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0351L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 남겨지지 않도록 이사할 거야",
+     "ok": false,
+     "why": "Uses the passive 'cael fy ngadael' (get left), not the active 'fy ngadael i' (leave me) this LEGO teaches. The Korean needs 남겨지다, which 나를 두다 can't produce."
+    },
+    {
+     "n": 2,
+     "ko": "나는 남겨지지 않을 것 같아",
+     "ok": false,
+     "why": "Passive 'cael fy ngadael' (get left), not the active 'leave me' sense taught. 나를 두다 can't express it."
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 나를 두고 가는 거",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 나를 두고 가려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나를 혼자 두는 거",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 나를 두고 가고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 남겨지고 싶지 않아",
+     "ok": false,
+     "why": "Passive 'cael fy ngadael' (get left), not the active 'fy ngadael i' (leave me) taught. 나를 두다 can't express it."
+    },
+    {
+     "n": 8,
+     "ko": "나는 혼자 남겨지고 싶었어",
+     "ok": false,
+     "why": "Passive 'cael fy ngadael' (get left), not the active 'leave me' sense taught. The meaning is also odd: wanting to be left alone, put as 'get left'."
+    },
+    {
+     "n": 9,
+     "ko": "너는 나를 혼자 두지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 왜 나를 두고 가고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "그녀는 이번에는 나를 두고 가고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 다시 혼자 남겨지고 싶지 않아",
+     "ok": false,
+     "why": "Passive 'cael fy ngadael' (get left), not the active 'fy ngadael i' (leave me) taught. 나를 두다 can't express it."
+    },
+    {
+     "n": 13,
+     "ko": "그는 주말 전에 나를 두고 갈 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0351L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0351L03U04",
+     "keep": false,
+     "why": "Good phrase, but it is too close to the seed sentence and only one USE slot is needed."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U02",
+     "keep": false,
+     "why": "Grammatical, but the one USE slot is already filled by the better candidate U01."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U06",
+     "keep": false,
+     "why": "Grammatical, but the one USE slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U03",
+     "keep": false,
+     "why": "Past tense oedd o isio with heno reads oddly, and the slot is already filled."
+    },
+    {
+     "id": "cym_for_kor:S0351L03U05",
+     "keep": false,
+     "why": "Colloquial bod hi ddim is fine but less clean, and the slot is already filled."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:09:45.431Z"
+}

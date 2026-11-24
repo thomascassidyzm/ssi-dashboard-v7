@@ -1,0 +1,60 @@
+{
+ "seed": 169,
+ "at": "2026-11-24T18:34:20.593Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0169L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0169L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02B03",
+     "keep": false,
+     "why": "Fine, but not needed: the BUILD quota is filled by stronger rows, and it repeats B02 with only pam added"
+    },
+    {
+     "id": "cym_for_kor:S0169L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0169L02U03",
+     "keep": false,
+     "why": "Not needed: the USE quota is filled, and 오늘 저녁 for heno may clash with the gloss the course teaches (오늘 밤)"
+    },
+    {
+     "id": "cym_for_kor:S0169L02U06",
+     "keep": false,
+     "why": "Fine, but not needed: the USE quota is filled by rows that cover a wider range"
+    }
+   ]
+  }
+ }
+}

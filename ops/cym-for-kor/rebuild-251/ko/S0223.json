@@ -1,0 +1,112 @@
+{
+ "seed": 223,
+ "at": "2026-11-24T18:42:13.669Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0223L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 오늘 그 영화를 볼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "여러분은 그가 무엇을 할 건지 들었어요?",
+     "ok": true,
+     "why": "Plural chi gives 여러분 in 해요. The Welsh is natural and uses the LEGO as a future."
+    },
+    {
+     "n": 3,
+     "ko": "그는 오늘 저녁 너에 대해 물어볼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 무슨 일이 일어날지 알아내려고 노력하고 있어",
+     "ok": false,
+     "why": "The phrase never contains 'mae o'n mynd i'. It has 'mae o'n trio' plus 'sy'n mynd i', so it does not practise this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "그는 곧 무슨 일이 일어날지 설명할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그는 지금 당장 알아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그는 나중에 집에 갈 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0223L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0223L01B01",
+     "keep": false,
+     "why": "Only one BUILD is needed and B03 is stronger. 이야기하다 may not be the gloss this course fixed for siarad."
+    },
+    {
+     "id": "cym_for_kor:S0223L01B02",
+     "keep": false,
+     "why": "Only one BUILD is needed and B03 is stronger. 너를 could also call for 'helpu ti', so the answer is uncertain."
+    },
+    {
+     "id": "cym_for_kor:S0223L01B04",
+     "keep": false,
+     "why": "'왜냐하면 … 거야' standing alone is unnatural Korean. The 'achos' fragment has no main clause."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0223L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0223L01U06",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed and U04 is better."
+    },
+    {
+     "id": "cym_for_kor:S0223L01U07",
+     "keep": false,
+     "why": "Good phrase, but only one USE was needed."
+    },
+    {
+     "id": "cym_for_kor:S0223L01U01",
+     "keep": false,
+     "why": "Only one USE was needed."
+    },
+    {
+     "id": "cym_for_kor:S0223L01U02",
+     "keep": false,
+     "why": "Only one USE was needed."
+    },
+    {
+     "id": "cym_for_kor:S0223L01U03",
+     "keep": false,
+     "why": "Only one USE was needed."
+    },
+    {
+     "id": "cym_for_kor:S0223L01U05",
+     "keep": false,
+     "why": "Only one USE was needed; 시청할 may also not match the gloss for watch."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:02:45.346Z"
+}

@@ -1,0 +1,197 @@
+{
+ "seed": 426,
+ "at": "2026-11-24T19:12:39.922Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0426L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0426L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01B02",
+     "keep": false,
+     "why": "good row; not kept because 3 BUILD rows were already kept"
+    },
+    {
+     "id": "cym_for_kor:S0426L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01U04",
+     "keep": true,
+     "ko": "그들이 오늘 저녁 밥 먹으러 가고 싶어할까?"
+    },
+    {
+     "id": "cym_for_kor:S0426L01U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L01U02",
+     "keep": false,
+     "why": "good row; not kept because 5 USE rows were already kept"
+    },
+    {
+     "id": "cym_for_kor:S0426L01U06",
+     "keep": false,
+     "why": "not kept because 5 USE rows were already kept; the Korean also reads a little stiff"
+    },
+    {
+     "id": "cym_for_kor:S0426L01U07",
+     "keep": false,
+     "why": "the second clause has no subject, so '필요가 있어' could be heard as 나/우리 instead of maen nhw"
+    }
+   ]
+  },
+  "S0426L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그들은 서로 사랑하고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁 서로 사랑하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "서로 사랑하면 좋을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 서로 사랑할 필요가 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 서로 사랑하고 싶어해 하지만 그들은 아직도 싸워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "맞아 그들은 서로 사랑하고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 아직도 싸워 하지만 그들은 서로 사랑하고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0426L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0426L02U05",
+     "keep": false,
+     "why": "not kept because 1 USE row was already kept; it also nearly duplicates original o5"
+    },
+    {
+     "id": "cym_for_kor:S0426L02U04",
+     "keep": false,
+     "why": "not kept because 1 USE row was already kept; the Korean word order is also awkward"
+    },
+    {
+     "id": "cym_for_kor:S0426L02U06",
+     "keep": false,
+     "why": "the Korean '만드는 데' tacked onto the end is unnatural, and 'i greu' is not mirrored cleanly"
+    },
+    {
+     "id": "cym_for_kor:S0426L02U07",
+     "keep": false,
+     "why": "not kept because 1 USE row was already kept; the Korean is also loose"
+    }
+   ]
+  },
+  "S0426L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그들은 불행해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 그들은 오늘 저녁 불행해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 자기들끼리 불행해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 오늘 왜 불행해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들은 왜 자기들끼리 불행해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그들은 불행해 하지만 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "미안해 하지만 그들은 불행해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들은 길을 이끌고 싶어해 하지만 그들은 불행해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그들은 아직도 싸워 왜냐하면 그들은 자기들끼리 불행해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

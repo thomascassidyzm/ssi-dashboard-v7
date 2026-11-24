@@ -1,0 +1,293 @@
+{
+ "seed": 427,
+ "at": "2026-11-24T19:12:54.276Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0427L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그들이 이기게 둘 수는 없을 텐데",
+     "ok": false,
+     "why": "This phrase never contains the LEGO 'fydden nhw ddim yn'. It uses 'fydden ni ddim yn medru' (we couldn't), a different chunk with a different person, so it does not practise this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0427L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01B02",
+     "keep": false,
+     "why": "Only 2 BUILD top-ups needed; B03 and B01 are enough."
+    },
+    {
+     "id": "cym_for_kor:S0427L01B04",
+     "keep": false,
+     "why": "Too long for a BUILD row; the shorter ones are better."
+    },
+    {
+     "id": "cym_for_kor:S0427L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01U06",
+     "keep": false,
+     "why": "Quota of 5 already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0427L01U04",
+     "keep": false,
+     "why": "Weaker sense ('wouldn't move next year'); quota already filled."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0427L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L01B04",
+     "keep": false,
+     "why": "Only one BUILD is needed. B02 is shorter and closer to the LEGO's own frame."
+    }
+   ]
+  },
+  "S0427L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 네가 ~라고 생각하길 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들은 네가 그가 약해지고 있다고 생각하길 원해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 그것에 대해 더 신중하게 생각하는 것",
+     "ok": false,
+     "why": "Here 'meddwl amdano' means 'think about it'. This course taught 'i ti feddwl' as 'think that ~' (gloss 네가 ~라고 생각하는 것). That is the wrong sense, and the gloss cannot render it."
+    },
+    {
+     "n": 4,
+     "ko": "미안해 하지만 나는 네가 그녀가 옳다고 생각하는 걸 원하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 우리가 그 문제를 논의할 필요가 있다고 생각하는 걸 원하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 네가 우리가 그 문제를 논의할 필요가 있다고 생각하길 원했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그들은 네가 목요일 전에 그것에 대해 더 신중하게 생각하길 원해",
+     "ok": false,
+     "why": "Same problem as o3: 'meddwl amdano' means 'think about it', not the taught 'think that ~' sense of this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0427L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L03U03",
+     "keep": false,
+     "why": "Only 1 USE top-up needed."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U01",
+     "keep": false,
+     "why": "Nearly duplicates original o5."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U06",
+     "keep": false,
+     "why": "Nearly duplicates original o4."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U04",
+     "keep": false,
+     "why": "Only 1 USE top-up needed."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U05",
+     "keep": false,
+     "why": "Only 1 USE top-up needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0427L03B02",
+     "keep": true,
+     "ko": "나는 네가 ~라고 생각하는 걸 원하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0427L03B01",
+     "keep": false,
+     "why": "Only one BUILD is needed. B02 is a fuller frame and lets the learner practise the LEGO in a real sentence."
+    },
+    {
+     "id": "cym_for_kor:S0427L03B03",
+     "keep": false,
+     "why": "Only one BUILD is needed, and B02 is shorter."
+    },
+    {
+     "id": "cym_for_kor:S0427L03B04",
+     "keep": false,
+     "why": "The Welsh stops open after feddwl, but the Korean reads as a closed question. B02 already fills the slot."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L03U01",
+     "keep": false,
+     "why": "Nearly duplicates original o5."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U04",
+     "keep": false,
+     "why": "Only one USE is needed. U03 is better because it mirrors the seed's bydden nhw'n licio frame."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U05",
+     "keep": false,
+     "why": "Awkward sequence of tenses: past oedd o isio followed by future y bydd. A Welsh speaker would expect y byddai or y basai."
+    },
+    {
+     "id": "cym_for_kor:S0427L03U06",
+     "keep": false,
+     "why": "Nearly duplicates original o4."
+    }
+   ]
+  },
+  "S0427L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 그들이 지루해한다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그들이 오늘 저녁 지루해한다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들이 지루해한다고 왜냐하면 그들은 불행하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "네가 그들이 지루해한다고 생각하는 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그들이 지루해한다는 걸 의미하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "네 친구는 그들이 지루해한다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그들이 지루해하는 게 걱정돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그들이 지루해하는 건 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 그들이 지루해한다는 걸 의미할 수 있을 텐데",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "그는 그들이 지루해한다는 걸 의미할 수 없었어",
+     "ok": false,
+     "why": "'Doedd o ddim yn medru golygu' says he was unable to mean it, which is unnatural. The intended sense, 'he couldn't have meant', needs 'fedrai o ddim fod wedi golygu'."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0427L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0427L04U02",
+     "keep": false,
+     "why": "Only one USE is needed. U01 is cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0427L04U04",
+     "keep": false,
+     "why": "Only one USE is needed, and this one is long with a clumsy contrast."
+    },
+    {
+     "id": "cym_for_kor:S0427L04U05",
+     "keep": false,
+     "why": "Only one USE is needed, and this one is long."
+    },
+    {
+     "id": "cym_for_kor:S0427L04U06",
+     "keep": false,
+     "why": "Only one USE is needed. U01 is better."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:14:10.784Z"
+}

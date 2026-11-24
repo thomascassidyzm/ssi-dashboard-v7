@@ -1,0 +1,175 @@
+{
+ "seed": 39,
+ "at": "2026-11-24T18:12:41.982Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0039L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 오늘 저녁에 피곤해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 나는 오늘 피곤하거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 피곤하지만 나는 괜찮다고 느껴",
+     "ok": true,
+     "why": "Natural North Welsh; blino used in the tired sense"
+    },
+    {
+     "n": 5,
+     "ko": "갈 시간이야, 왜냐하면 나는 피곤하거든",
+     "ok": true,
+     "why": "Natural and idiomatic here"
+    },
+    {
+     "n": 6,
+     "ko": "나는 피곤하지만 우리는 오늘 저녁에 만날 거야",
+     "ok": true,
+     "why": "Natural; future byddwn ni'n is fine"
+    },
+    {
+     "n": 7,
+     "ko": "나는 피곤하지만 너는 어떻게 느껴?",
+     "ok": true,
+     "why": "Natural; works as a statement followed by a question"
+    },
+    {
+     "n": 8,
+     "ko": "나는 피곤해, 왜냐하면 나는 배워 왔거든",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0039L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어를 조금 배웠어",
+     "ok": true,
+     "why": "Radical tipyn is correct as the direct object of the verbnoun; it is the same word as dipyn bach"
+    },
+    {
+     "n": 2,
+     "ko": "나는 한 달 동안 웨일스어로 조금 이야기해 왔어",
+     "ok": true,
+     "why": "Natural; tipyn bach o Gymraeg is the same 'a little' sense"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0039L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L03B01",
+     "keep": false,
+     "why": "BUILD quota already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0039L03B03",
+     "keep": false,
+     "why": "BUILD quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0039L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L03U02",
+     "keep": true,
+     "ko": "나는 오늘 저녁에 너와 조금 이야기하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0039L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L03U05",
+     "keep": false,
+     "why": "Awkward meaning (unsure whether I can speak 'a little'); Korean is clunky"
+    },
+    {
+     "id": "cym_for_kor:S0039L03U06",
+     "keep": false,
+     "why": "-ㄹ 거야 could also be answered with bydda i; quota already filled"
+    }
+   ]
+  },
+  "S0039L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0039L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04B02",
+     "keep": false,
+     "why": "Weak list fragment; quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0039L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0039L04U03",
+     "keep": false,
+     "why": "Very long and the clause order is reversed in Korean; quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0039L04U05",
+     "keep": false,
+     "why": "Overloaded; quota already filled"
+    }
+   ]
+  }
+ }
+}

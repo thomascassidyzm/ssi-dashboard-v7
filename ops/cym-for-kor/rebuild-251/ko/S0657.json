@@ -1,0 +1,71 @@
+{
+ "seed": 657,
+ "at": "2026-11-24T19:54:35.794Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0657L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0657L02B01",
+     "keep": true,
+     "ko": "여러분 준비됐어요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02B04",
+     "keep": true,
+     "ko": "여러분 무슨 생각을 해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02B02",
+     "keep": true,
+     "ko": "여러분 기다리고 있어요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02B03",
+     "keep": false,
+     "why": "'sut dach chi gyd yn siarad' sounds odd as a question and is weaker than the other three; only 3 BUILD rows are needed"
+    },
+    {
+     "id": "cym_for_kor:S0657L02U01",
+     "keep": true,
+     "ko": "여러분 지금 기분이 어때요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02U04",
+     "keep": true,
+     "ko": "여러분 지금 무슨 생각을 해요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02U03",
+     "keep": true,
+     "ko": "저는 여러분이 준비됐는지 확실하지 않아요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02U02",
+     "keep": true,
+     "ko": "여러분 웨일스어를 아주 잘 이야기해요",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02U06",
+     "keep": true,
+     "ko": "여러분 지금 가요?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0657L02U05",
+     "keep": false,
+     "why": "The Welsh has no question mark, so it could be a question or a statement, and 'esgusodwch fi' with 'chi gyd' is the weakest of the rows; 5 better USE rows are kept"
+    }
+   ]
+  }
+ }
+}

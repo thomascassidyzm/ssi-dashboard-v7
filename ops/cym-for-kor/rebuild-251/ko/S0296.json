@@ -1,0 +1,278 @@
+{
+ "seed": 296,
+ "at": "2026-11-24T18:53:56.716Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0296L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그것이 내가 말하지 않은 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 왜 내가 말하지 않았는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 우리가 끝낸 후에 가고 싶다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그게 내가 말한 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그래, 그게 내가 말한 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그래, 그게 내가 어제 말한 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그녀가 내가 말한 것을 너한테 말하기 전에 이것을 끝내고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 원했던 것을 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내가 하고 싶었던 것을 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 내가 주말에 하고 싶었던 것을 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 그 영화가 끝났다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 영화가 이미 끝났다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 그게 끝났다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "나는 영화가 끝났다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "나는 너한테 그게 끝났다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "나는 어젯밤에 모든 것을 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "나는 네가 말한 것을 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "나는 그게 그렇지 않다고 말하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "나는 내가 원했던 것을 말했어",
+     "ok": false,
+     "why": "Same sentence as o8 except it has 'beth' where o8 has 'be''. Both get the same Korean prompt, so one prompt has two Welsh answers (ZUT clash). Keep o8, which uses the course's colloquial 'be''."
+    },
+    {
+     "n": 20,
+     "ko": "나는 다른 것을 말했어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0296L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0296L01U01",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U04",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U03",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U02",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0296L01U06",
+     "keep": false,
+     "why": "good row, but only one USE was needed"
+    }
+   ]
+  },
+  "S0296L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어로 이야기하는 방법을 기억할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어로 이야기할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 기억하려고 노력할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 무엇을 나아지게 할 필요가 있는지 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 무엇이 필요한지 잊어버렸어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 더 배우기 위한 기회가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 일요일에 축구를 볼 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 다음 주말에 한동안 느긋하게 쉴 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 사무실이 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 이야기하는 연습을 더 할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너는 웨일스어로 추측할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 내가 더 연습할 기회가 필요하다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 내가 이야기하는 연습을 더 할 기회가 필요하다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너는 축구를 볼 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 15,
+     "ko": "내가 할 필요가 있는 다음 일",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "그게 내가 할 필요가 있는 다음 일이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "그게 내가 기억할 필요가 있는 다음 것이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "아무도 그것을 알 필요가 없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ },
+ "refill_at": "2026-11-24T20:07:07.486Z"
+}

@@ -1,0 +1,161 @@
+{
+ "seed": 84,
+ "at": "2026-11-24T18:20:33.955Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0084L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 하고 있던 것에 동의해",
+     "ok": true,
+     "why": "Natural; this is cytuno in its usual sense of agreeing with something."
+    },
+    {
+     "n": 2,
+     "ko": "나는 너에게 동의했어",
+     "ok": true,
+     "why": "Natural past tense with efo chdi; it fits this LEGO."
+    },
+    {
+     "n": 3,
+     "ko": "나는 동의했어",
+     "ok": true,
+     "why": "A short, natural past-tense line."
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 그렇지 않다는 데 동의해",
+     "ok": true,
+     "why": "Natural cytuno + fod clause."
+    },
+    {
+     "n": 5,
+     "ko": "하지만 너는 왜 우리에게 동의했어?",
+     "ok": true,
+     "why": "Natural question; it uses the same sense this LEGO teaches."
+    },
+    {
+     "n": 6,
+     "ko": "너는 어젯밤에 왜 우리에게 동의했어?",
+     "ok": true,
+     "why": "Natural."
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 왜 동의했는지 확실하지 않아",
+     "ok": true,
+     "why": "Natural."
+    },
+    {
+     "n": 8,
+     "ko": "너는 그때 동의했어?",
+     "ok": true,
+     "why": "Natural; 'ar y pryd' means 'at the time'."
+    }
+   ]
+  },
+  "S0084L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그가 말한 것에 대해 너 기분이 어때?",
+     "ok": true,
+     "why": "The Welsh is natural and uses be' ddudodd o as this LEGO teaches it."
+    },
+    {
+     "n": 2,
+     "ko": "그가 어젯밤에 말한 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그가 말한 것을 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그는 네가 말한 것을 이해하려고 노력하고 있다고 말했어",
+     "ok": true,
+     "why": "Natural reported speech; ddudodd is used in the same 'said' sense."
+    },
+    {
+     "n": 5,
+     "ko": "나는 누군가에게 그가 말한 것을 물어보려고 했어",
+     "ok": true,
+     "why": "Natural o'n i'n mynd i + gofyn i rywun."
+    },
+    {
+     "n": 6,
+     "ko": "나는 그가 말한 것을 설명할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그가 말한 것은 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 그가 말한 게 뭔지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0084L06": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0084L06B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0084L06B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0084L06B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0084L06B03",
+     "keep": false,
+     "why": "The grammar is fine, but it is the weakest of the BUILD candidates and the other three fill the quota."
+    },
+    {
+     "id": "cym_for_kor:S0084L06U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0084L06U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0084L06U05",
+     "keep": true,
+     "ko": "왜 너는 내 친구에 대해 이야기하고 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0084L06U02",
+     "keep": true,
+     "ko": "너는 내 친구와 이야기하고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0084L06U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0084L06U04",
+     "keep": false,
+     "why": "Five stronger USE candidates already fill the quota, and pairing a past 'wanted' with heno ('tonight') reads awkwardly."
+    }
+   ]
+  }
+ }
+}

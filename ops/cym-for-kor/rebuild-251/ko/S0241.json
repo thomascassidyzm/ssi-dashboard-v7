@@ -1,0 +1,95 @@
+{
+ "seed": 241,
+ "at": "2026-11-24T18:45:13.042Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0241L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "주말 전에 그걸 그에게 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 그걸 그에게 주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 그걸 그에게 주고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그들은 그에게 너와 축구를 볼 충분한 시간을 주고 싶어했어",
+     "ok": false,
+     "why": "Wrong sense for this basket: the phrase is 'rhoi amser iddo fo' (give him time), not 'rhoi o iddo fo' (give it to him). It never contains the LEGO, so it can't practise it."
+    },
+    {
+     "n": 5,
+     "ko": "그에게 그걸 할 시간을 주다",
+     "ok": false,
+     "why": "Wrong sense: this is 'rhoi amser iddo fo' (give him time). The 'o' at the end belongs to 'wneud o' (do it), not to 'rhoi o iddo fo', so the LEGO is not practised."
+    },
+    {
+     "n": 6,
+     "ko": "내가 너라면 나는 그에게 시간을 조금 더 주지 않을 것 같아",
+     "ok": false,
+     "why": "Wrong sense: this is 'give him (a little more) time'. There is no 'rhoi o iddo fo' (give it to him), so it doesn't practise this LEGO."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그에게 시간을 더 주지 않을 것 같아, 내가 너라면",
+     "ok": false,
+     "why": "Wrong sense: this is 'give him more time'. There is no 'rhoi o iddo fo' (give it to him), so it doesn't practise this LEGO."
+    },
+    {
+     "n": 8,
+     "ko": "그녀는 오늘 저녁 그걸 그에게 주고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0241L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0241L02U05",
+     "keep": false,
+     "why": "Grammatical but it repeats U01's negative third-person frame, and the four slots are already filled with more varied rows"
+    },
+    {
+     "id": "cym_for_kor:S0241L02U06",
+     "keep": false,
+     "why": "Grammatical but it is the same third-person 'isio' frame as U01, and the four slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0241L02U04",
+     "keep": false,
+     "why": "줄 거야 could also mean a plain future (wna i roi / rhoddaf i), so the Korean has more than one Welsh answer"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:03:16.234Z"
+}

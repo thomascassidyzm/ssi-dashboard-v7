@@ -1,0 +1,56 @@
+{
+ "seed": 637,
+ "at": "2026-11-24T19:52:39.650Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0637L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0637L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01B03",
+     "keep": false,
+     "why": "Sound, but only 3 BUILD rows are needed and the other three are more varied"
+    },
+    {
+     "id": "cym_for_kor:S0637L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01U04",
+     "keep": true,
+     "ko": "나는 그녀의 가방이 어디에 있는지 상관없어"
+    },
+    {
+     "id": "cym_for_kor:S0637L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0637L01U05",
+     "keep": false,
+     "why": "Confusing: 'that is Siân's bag, but where is her bag' leaves the hearer unsure who 'she' is, since Siân is the obvious referent; also more than the 5 USE rows needed"
+    }
+   ]
+  }
+ }
+}

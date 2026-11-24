@@ -1,0 +1,73 @@
+{
+ "seed": 656,
+ "at": "2026-11-24T19:54:35.689Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0656L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "여러분과 함께 정원에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 여러분과 함께 앉아 있고 싶어요",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 이 순간 여러분과 함께",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 여러분과 함께 멈추고 싶어요 왜냐하면 나는 피곤하거든요",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0656L01U01",
+     "keep": true,
+     "ko": "나는 여러분과 함께 이야기하고 싶어요"
+    },
+    {
+     "id": "cym_for_kor:S0656L01U07",
+     "keep": true,
+     "ko": "나는 이따가 여러분과 함께 웨일스어로 이야기할 거예요"
+    },
+    {
+     "id": "cym_for_kor:S0656L01U02",
+     "keep": true,
+     "ko": "실례지만 제가 여러분과 함께 앉아도 될까요?"
+    },
+    {
+     "id": "cym_for_kor:S0656L01U03",
+     "keep": true,
+     "ko": "우리는 지금 여러분과 함께 먹고 싶어요"
+    },
+    {
+     "id": "cym_for_kor:S0656L01U04",
+     "keep": false,
+     "why": "Only 4 USE rows are needed, and the four kept are stronger. This one only negates U01."
+    },
+    {
+     "id": "cym_for_kor:S0656L01U05",
+     "keep": false,
+     "why": "It is an achos fragment on its own (a 'because' clause with no main clause), which makes a weak USE row."
+    },
+    {
+     "id": "cym_for_kor:S0656L01U06",
+     "keep": false,
+     "why": "Only 4 USE rows are needed. 'I would have waited with you all' is weaker than the four kept."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "seed": 24,
+ "at": "2026-11-24T18:10:00.764Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0024L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 ~지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 멈추지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내 말이 무슨 뜻인지 설명하지 않을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0024L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L01U03",
+     "keep": false,
+     "why": "Not needed; the five kept are enough, and its Korean flips the clause order and uses 때문에 instead of the gloss 왜냐하면."
+    },
+    {
+     "id": "cym_for_kor:S0024L01U07",
+     "keep": false,
+     "why": "'웨일스어를 이야기하다' is awkward Korean."
+    }
+   ]
+  },
+  "S0024L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 확실하지 않지만 나는 문장 전체를 기억할 수 있으면 좋겠어",
+     "ok": true,
+     "why": "Natural North Welsh; fedru is used in the taught 'be able to' sense."
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어로 대답할 수 있으면 좋겠어",
+     "ok": true,
+     "why": "Natural; fedru is used in the 'be able to' sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0024L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L02B04",
+     "keep": false,
+     "why": "'~ㄹ 수 없을 것 같아' does not point to one Welsh answer: it could be conditional fyddwn i ddim, or dw i ddim yn mynd i fedru / dw i ddim yn meddwl."
+    },
+    {
+     "id": "cym_for_kor:S0024L02U06",
+     "keep": true,
+     "ko": "나는 웨일스어를 배우고 싶어 왜냐하면 나는 너와 이야기할 수 있게 되고 싶거든"
+    },
+    {
+     "id": "cym_for_kor:S0024L02U01",
+     "keep": true,
+     "ko": "너 내일 돌아올 수 있을 거야?",
+     "why": "The Welsh is a question, so the Korean needs a question mark."
+    },
+    {
+     "id": "cym_for_kor:S0024L02U05",
+     "keep": true,
+     "ko": "너는 왜 답이 무엇인지 알아낼 수 있게 되고 싶어?",
+     "why": "The question needs a question mark."
+    },
+    {
+     "id": "cym_for_kor:S0024L02U02",
+     "keep": false,
+     "why": "Not needed; the three kept are enough."
+    },
+    {
+     "id": "cym_for_kor:S0024L02U03",
+     "keep": false,
+     "why": "'~ㄹ 수 없을 것 같아' has more than one possible Welsh answer (conditional fyddwn i or mynd i)."
+    },
+    {
+     "id": "cym_for_kor:S0024L02U04",
+     "keep": false,
+     "why": "'웨일스어로' points to yn y Gymraeg, not siarad Cymraeg. The other wording, '웨일스어를 이야기하다', is awkward Korean."
+    }
+   ]
+  },
+  "S0024L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 쉽게 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 쉽게 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 쉽게 기억할 수 있으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 쉽게 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 쉽게 기억할 수 있으면 좋겠어 왜냐하면 나는 곧 웨일스어로 이야기할 거거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0024L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0024L03U01",
+     "keep": false,
+     "why": "'~지 않을 것 같아' has more than one possible Welsh answer (conditional fyddwn i, mynd i, or a meddwl form)."
+    },
+    {
+     "id": "cym_for_kor:S0024L03U05",
+     "keep": false,
+     "why": "Not needed; its Korean also uses -어서 and reverses the clause order instead of mirroring achos."
+    },
+    {
+     "id": "cym_for_kor:S0024L03U06",
+     "keep": false,
+     "why": "Not needed; the three kept are enough."
+    }
+   ]
+  }
+ }
+}

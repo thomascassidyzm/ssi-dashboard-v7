@@ -1,0 +1,134 @@
+{
+ "seed": 297,
+ "at": "2026-11-24T18:53:34.465Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0297L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0297L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01B04",
+     "keep": false,
+     "why": "BUILD quota already filled by stronger candidates"
+    },
+    {
+     "id": "cym_for_kor:S0297L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L01U07",
+     "keep": false,
+     "why": "USE quota already filled"
+    },
+    {
+     "id": "cym_for_kor:S0297L01U04",
+     "keep": false,
+     "why": "'hyd yn hyn' with a negative reads as 'so far', not 'yet'. 아직 more likely points to 'eto', so the prompt has two possible answers."
+    }
+   ]
+  },
+  "S0297L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 내가 이미 많이 배웠다고 말했어",
+     "ok": false,
+     "why": "Uses bare adverbial 'llawer' (a lot), not 'llawer o' (many). The phrase does not contain this LEGO in the sense taught."
+    },
+    {
+     "n": 2,
+     "ko": "남은 시간이 많이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "어젯밤 남은 시간이 많이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 떠나야 했어 왜냐하면 남은 시간이 많이 없었거든",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "남은 시간이 많이 없었어 몇 분만",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 그 문제를 논의하고 싶었어 하지만 남은 시간이 많이 없었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워 하지만 나는 다음 주에 남은 시간이 많이 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 걱정돼 왜냐하면 많은 일이 없었거든",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0297L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0297L02B04",
+     "keep": false,
+     "why": "Good phrase, but only 1 BUILD was needed and B01 is the cleaner building block"
+    },
+    {
+     "id": "cym_for_kor:S0297L02B03",
+     "keep": false,
+     "why": "Grammatical, but only 1 BUILD was needed"
+    },
+    {
+     "id": "cym_for_kor:S0297L02B02",
+     "keep": false,
+     "why": "Only 1 BUILD was needed, and B01 fits seed 297 more closely"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T20:07:13.879Z"
+}
