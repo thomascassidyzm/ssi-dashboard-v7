@@ -1,0 +1,52 @@
+{
+ "ops": [
+  {
+   "op": "gender.delete",
+   "id": "0b1f0f2d-4ed6-4028-a2ec-25830ab79c47",
+   "expect": {
+    "original_text": "He said that he doesn't need to walk to school.",
+    "expanded_f": "She said that she doesn't need to walk to school."
+   }
+  },
+  {
+   "op": "gender.delete",
+   "id": "8744f82d-7dc3-4e95-acf0-a4172c7beaa5",
+   "expect": {
+    "original_text": "He's been sick since the second day of the holidays.",
+    "expanded_f": "She's been sick since the second day of the holidays."
+   }
+  },
+  {
+   "op": "gender.delete",
+   "id": "e2265aab-8171-4ea0-855f-30a97c95ff3a",
+   "expect": {
+    "original_text": "I don't want to give it to him.",
+    "expanded_f": "I don't want to give it to her."
+   }
+  },
+  {
+   "op": "gender.delete",
+   "id": "6865e603-51b9-49b7-9714-c79f97f9975f",
+   "expect": {
+    "original_text": "She wanted to put his letter in her bag.",
+    "expanded_f": "She wanted to put her letter in her bag."
+   }
+  },
+  {
+   "op": "gender.delete",
+   "id": "33715db6-f039-4c81-8717-1b6d15c64a8a",
+   "expect": {
+    "original_text": "That is why he didn't know the answer.",
+    "expanded_f": "That is why she didn't know the answer."
+   }
+  },
+  {
+   "op": "gender.delete",
+   "id": "efd20b60-e960-4c4d-88ef-565998759afe",
+   "expect": {
+    "original_text": "Yes he felt like talking a lot.",
+    "expanded_f": "Yes she felt like talking a lot."
+   }
+  }
+ ]
+}

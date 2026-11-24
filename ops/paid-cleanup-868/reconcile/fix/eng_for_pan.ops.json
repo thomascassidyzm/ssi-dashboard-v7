@@ -1,0 +1,29 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "eng_for_pan:S0108L03U06",
+   "set": {
+    "target_text": "We didn't expect to wake up in the middle of the night."
+   },
+   "expect": {
+    "known_text": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+    "target_text": "We didn't hope to wake in the middle of the night."
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "eng_for_pan:S0108L03U06",
+   "slot": "target1",
+   "audio_id": "16e5e871-aa38-47fd-9657-058ca0b90036"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "eng_for_pan:S0108L03U06",
+   "slot": "target2",
+   "audio_id": "bda11e17-2519-48e3-82dd-2e6e0e82043e"
+  }
+ ]
+}

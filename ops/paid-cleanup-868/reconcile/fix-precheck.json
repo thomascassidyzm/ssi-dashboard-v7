@@ -1,0 +1,676 @@
+{
+ "at": "2026-11-24T08:02:03.621227Z",
+ "items": [
+  {
+   "course": "eng_for_hin",
+   "id": "eng_for_hin:S0053L04U06",
+   "slot": "target1",
+   "row": {
+    "known": "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+    "target": "She wanted to put his letter in her bag.",
+    "ka": "55fdcef2-0ed1-4a31-8f6f-839bbe32bfbf",
+    "t1": null,
+    "t2": "3fbc0409-fc0d-45c7-9c3e-ee40c2f9aea0"
+   },
+   "seed": {
+    "n": 53,
+    "known": "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+    "target": "She wanted to put his letter in her bag."
+   },
+   "lego": {
+    "id": "S0053L04",
+    "known": "अपने बैग में",
+    "target": "in her bag"
+   },
+   "copy24": {
+    "row": [
+     "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+     "She wanted to put his letter in her bag."
+    ],
+    "lego": [
+     "अपने बैग में",
+     "in her bag"
+    ],
+    "seed": [
+     "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+     "She wanted to put his letter in her bag."
+    ],
+    "slots": [
+     "55fdcef2-0ed1-4a31-8f6f-839bbe32bfbf",
+     null,
+     "3fbc0409-fc0d-45c7-9c3e-ee40c2f9aea0"
+    ]
+   },
+   "live": {
+    "row": [
+     "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+     "She wanted to put his letter in her bag."
+    ],
+    "lego": [
+     "अपने बैग में",
+     "in her bag"
+    ],
+    "seed": [
+     "वह उसकी चिट्ठी अपने बैग में रखना चाहती थी।",
+     "She wanted to put his letter in her bag."
+    ],
+    "slots": [
+     "55fdcef2-0ed1-4a31-8f6f-839bbe32bfbf",
+     null,
+     "3fbc0409-fc0d-45c7-9c3e-ee40c2f9aea0"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_hin",
+   "id": "eng_for_hin:S0105L01U06",
+   "slot": "target1",
+   "row": {
+    "known": "इसीलिए उसे जवाब नहीं पता था।",
+    "target": "That is why he didn't know the answer.",
+    "ka": "713d559c-c9bd-4760-8be8-3c79cc7a9ca8",
+    "t1": null,
+    "t2": "a2976dd4-c240-446a-9f8d-e6a1dc2380db"
+   },
+   "seed": {
+    "n": 105,
+    "known": "इसीलिए उसे जवाब नहीं पता था।",
+    "target": "That is why he didn't know the answer."
+   },
+   "lego": {
+    "id": "S0105L01",
+    "known": "इसीलिए",
+    "target": "that is why"
+   },
+   "copy24": {
+    "row": [
+     "इसीलिए उसे जवाब नहीं पता था।",
+     "That is why he didn't know the answer."
+    ],
+    "lego": [
+     "इसीलिए",
+     "that is why"
+    ],
+    "seed": [
+     "इसीलिए उसे जवाब नहीं पता था।",
+     "That is why he didn't know the answer."
+    ],
+    "slots": [
+     "713d559c-c9bd-4760-8be8-3c79cc7a9ca8",
+     null,
+     "a2976dd4-c240-446a-9f8d-e6a1dc2380db"
+    ]
+   },
+   "live": {
+    "row": [
+     "इसीलिए उसे जवाब नहीं पता था।",
+     "That is why he didn't know the answer."
+    ],
+    "lego": [
+     "इसीलिए",
+     "that is why"
+    ],
+    "seed": [
+     "इसीलिए उसे जवाब नहीं पता था।",
+     "That is why he didn't know the answer."
+    ],
+    "slots": [
+     "713d559c-c9bd-4760-8be8-3c79cc7a9ca8",
+     null,
+     "a2976dd4-c240-446a-9f8d-e6a1dc2380db"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_hin",
+   "id": "eng_for_hin:S0241L02U06",
+   "slot": "target1",
+   "row": {
+    "known": "मैं यह उसे नहीं देना चाहती।",
+    "target": "I don't want to give it to him.",
+    "ka": "ace315a4-40f3-46f9-9e17-3938e58331e9",
+    "t1": null,
+    "t2": "3229fe96-ddd4-4283-a4c0-c405ba74f793"
+   },
+   "seed": {
+    "n": 241,
+    "known": "मैं यह उसे नहीं देना चाहती।",
+    "target": "I don't want to give it to him."
+   },
+   "lego": {
+    "id": "S0241L02",
+    "known": "यह उसे",
+    "target": "it to him"
+   },
+   "copy24": {
+    "row": [
+     "मैं यह उसे नहीं देना चाहती।",
+     "I don't want to give it to him."
+    ],
+    "lego": [
+     "यह उसे",
+     "it to him"
+    ],
+    "seed": [
+     "मैं यह उसे नहीं देना चाहती।",
+     "I don't want to give it to him."
+    ],
+    "slots": [
+     "ace315a4-40f3-46f9-9e17-3938e58331e9",
+     null,
+     "3229fe96-ddd4-4283-a4c0-c405ba74f793"
+    ]
+   },
+   "live": {
+    "row": [
+     "मैं यह उसे नहीं देना चाहती।",
+     "I don't want to give it to him."
+    ],
+    "lego": [
+     "यह उसे",
+     "it to him"
+    ],
+    "seed": [
+     "मैं यह उसे नहीं देना चाहती।",
+     "I don't want to give it to him."
+    ],
+    "slots": [
+     "ace315a4-40f3-46f9-9e17-3938e58331e9",
+     null,
+     "3229fe96-ddd4-4283-a4c0-c405ba74f793"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_hin",
+   "id": "eng_for_hin:S0323L02U06",
+   "slot": "target1",
+   "row": {
+    "known": "उसने कहा कि उसे पैदल स्कूल जाने की ज़रूरत नहीं है।",
+    "target": "He said that he doesn't need to walk to school.",
+    "ka": "c3ede14a-b697-45d3-893d-d3d41c46100e",
+    "t1": null,
+    "t2": "d4fd73da-2f22-4d4d-b5ca-ef85f21da1b4"
+   },
+   "seed": {
+    "n": 323,
+    "known": "उसने कहा कि उसे पैदल स्कूल जाने की ज़रूरत नहीं है।",
+    "target": "He said that he doesn't need to walk to school."
+   },
+   "lego": {
+    "id": "S0323L02",
+    "known": "स्कूल",
+    "target": "to school"
+   },
+   "copy24": {
+    "row": [
+     "उसने कहा कि उसे पैदल स्कूल जाने की ज़रूरत नहीं है।",
+     "He said that he doesn't need to walk to school."
+    ],
+    "lego": [
+     "स्कूल",
+     "to school"
+    ],
+    "seed": [
+     "उसने कहा कि उसे पैदल स्कूल जाने की ज़रूरत नहीं है।",
+     "He said that he doesn't need to walk to school."
+    ],
+    "slots": [
+     "c3ede14a-b697-45d3-893d-d3d41c46100e",
+     null,
+     "d4fd73da-2f22-4d4d-b5ca-ef85f21da1b4"
+    ]
+   },
+   "live": {
+    "row": [
+     "उसने कहा कि उसे पैदल स्कूल जाने की ज़रूरत नहीं है।",
+     "He said that he doesn't need to walk to school."
+    ],
+    "lego": [
+     "स्कूल",
+     "to school"
+    ],
+    "seed": [
+     "उसने कहा कि उसे पैदल स्कूल जाने की ज़रूरत नहीं है।",
+     "He said that he doesn't need to walk to school."
+    ],
+    "slots": [
+     "c3ede14a-b697-45d3-893d-d3d41c46100e",
+     null,
+     "d4fd73da-2f22-4d4d-b5ca-ef85f21da1b4"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_hin",
+   "id": "eng_for_hin:S0363L02U06",
+   "slot": "target1",
+   "row": {
+    "known": "हाँ, उसका बहुत सी बातें करने का मन था।",
+    "target": "Yes he felt like talking a lot.",
+    "ka": "9d0bfef3-a7d2-491f-83a0-e9284d239004",
+    "t1": null,
+    "t2": "648dadd6-d6c6-4765-809b-cd0653aa757b"
+   },
+   "seed": {
+    "n": 363,
+    "known": "हाँ, उसका बहुत सी बातें करने का मन था।",
+    "target": "Yes he felt like talking a lot."
+   },
+   "lego": {
+    "id": "S0363L02",
+    "known": "बहुत",
+    "target": "a lot"
+   },
+   "copy24": {
+    "row": [
+     "हाँ, उसका बहुत सी बातें करने का मन था।",
+     "Yes he felt like talking a lot."
+    ],
+    "lego": [
+     "बहुत",
+     "a lot"
+    ],
+    "seed": [
+     "हाँ, उसका बहुत सी बातें करने का मन था।",
+     "Yes he felt like talking a lot."
+    ],
+    "slots": [
+     "9d0bfef3-a7d2-491f-83a0-e9284d239004",
+     null,
+     "648dadd6-d6c6-4765-809b-cd0653aa757b"
+    ]
+   },
+   "live": {
+    "row": [
+     "हाँ, उसका बहुत सी बातें करने का मन था।",
+     "Yes he felt like talking a lot."
+    ],
+    "lego": [
+     "बहुत",
+     "a lot"
+    ],
+    "seed": [
+     "हाँ, उसका बहुत सी बातें करने का मन था।",
+     "Yes he felt like talking a lot."
+    ],
+    "slots": [
+     "9d0bfef3-a7d2-491f-83a0-e9284d239004",
+     null,
+     "648dadd6-d6c6-4765-809b-cd0653aa757b"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_hin",
+   "id": "eng_for_hin:S0477L03U06",
+   "slot": "target1",
+   "row": {
+    "known": "वह छुट्टियों के दूसरे दिन से बीमार है।",
+    "target": "He's been sick since the second day of the holidays.",
+    "ka": "e07812c1-938b-406f-aa9a-a7a65bd5f462",
+    "t1": null,
+    "t2": "77de8409-d414-4c83-a15f-e3c25baaef21"
+   },
+   "seed": {
+    "n": 477,
+    "known": "वह छुट्टियों के दूसरे दिन से बीमार है।",
+    "target": "He's been sick since the second day of the holidays."
+   },
+   "lego": {
+    "id": "S0477L03",
+    "known": "बीमार",
+    "target": "sick"
+   },
+   "copy24": {
+    "row": [
+     "वह छुट्टियों के दूसरे दिन से बीमार है।",
+     "He's been sick since the second day of the holidays."
+    ],
+    "lego": [
+     "बीमार",
+     "sick"
+    ],
+    "seed": [
+     "वह छुट्टियों के दूसरे दिन से बीमार है।",
+     "He's been sick since the second day of the holidays."
+    ],
+    "slots": [
+     "e07812c1-938b-406f-aa9a-a7a65bd5f462",
+     null,
+     "77de8409-d414-4c83-a15f-e3c25baaef21"
+    ]
+   },
+   "live": {
+    "row": [
+     "वह छुट्टियों के दूसरे दिन से बीमार है।",
+     "He's been sick since the second day of the holidays."
+    ],
+    "lego": [
+     "बीमार",
+     "sick"
+    ],
+    "seed": [
+     "वह छुट्टियों के दूसरे दिन से बीमार है।",
+     "He's been sick since the second day of the holidays."
+    ],
+    "slots": [
+     "e07812c1-938b-406f-aa9a-a7a65bd5f462",
+     null,
+     "77de8409-d414-4c83-a15f-e3c25baaef21"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "fra_for_eng",
+   "id": "fra_for_eng:S0139L04U06",
+   "slot": "target1",
+   "row": {
+    "known": "I'm sorry that I need to leave so early",
+    "target": "Je suis désolé de devoir partir si tôt",
+    "ka": "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+    "t1": null,
+    "t2": "0a4a1509-a9af-4e87-95f2-5c94fab2cfc7"
+   },
+   "seed": {
+    "n": 139,
+    "known": "I'm sorry that I need to leave so early",
+    "target": "Je suis désolé de devoir partir si tôt"
+   },
+   "lego": {
+    "id": "S0139L04",
+    "known": "early",
+    "target": "tôt"
+   },
+   "copy24": {
+    "row": [
+     "I'm sorry that I need to leave so early",
+     "Je suis désolé de devoir partir si tôt"
+    ],
+    "lego": [
+     "early",
+     "tôt"
+    ],
+    "seed": [
+     "I'm sorry that I need to leave so early",
+     "Je suis désolé de devoir partir si tôt"
+    ],
+    "slots": [
+     "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+     null,
+     "0a4a1509-a9af-4e87-95f2-5c94fab2cfc7"
+    ]
+   },
+   "live": {
+    "row": [
+     "I'm sorry that I need to leave so early",
+     "Je suis désolé de devoir partir si tôt"
+    ],
+    "lego": [
+     "early",
+     "tôt"
+    ],
+    "seed": [
+     "I'm sorry that I need to leave so early",
+     "Je suis désolé de devoir partir si tôt"
+    ],
+    "slots": [
+     "ea0d0461-f96d-414a-af44-50b6f46dcca1",
+     null,
+     "0a4a1509-a9af-4e87-95f2-5c94fab2cfc7"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "fra_for_eng",
+   "id": "fra_for_eng:S0140L02U09",
+   "slot": "target1",
+   "row": {
+    "known": "I'm sorry that I can't see what you're trying to show me",
+    "target": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer",
+    "ka": "3999047a-1ed0-418a-9c05-338e0d7a9922",
+    "t1": null,
+    "t2": "370e5214-dfef-4a42-8937-39da3df6310a"
+   },
+   "seed": {
+    "n": 140,
+    "known": "I'm sorry that I can't see what you're trying to show me",
+    "target": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer"
+   },
+   "lego": {
+    "id": "S0140L02",
+    "known": "what you're trying to show me",
+    "target": "ce que tu essaies de me montrer"
+   },
+   "copy24": {
+    "row": [
+     "I'm sorry that I can't see what you're trying to show me",
+     "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer"
+    ],
+    "lego": [
+     "what you're trying to show me",
+     "ce que tu essaies de me montrer"
+    ],
+    "seed": [
+     "I'm sorry that I can't see what you're trying to show me",
+     "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer"
+    ],
+    "slots": [
+     "3999047a-1ed0-418a-9c05-338e0d7a9922",
+     null,
+     "370e5214-dfef-4a42-8937-39da3df6310a"
+    ]
+   },
+   "live": {
+    "row": [
+     "I'm sorry that I can't see what you're trying to show me",
+     "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer"
+    ],
+    "lego": [
+     "what you're trying to show me",
+     "ce que tu essaies de me montrer"
+    ],
+    "seed": [
+     "I'm sorry that I can't see what you're trying to show me",
+     "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer"
+    ],
+    "slots": [
+     "3999047a-1ed0-418a-9c05-338e0d7a9922",
+     null,
+     "370e5214-dfef-4a42-8937-39da3df6310a"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_ben",
+   "id": "eng_for_ben:S0004L03U06",
+   "slot": "target2",
+   "row": {
+    "known": "ইংরেজিতে কিছু কীভাবে বলতে হয়।",
+    "target": "how to say something in English",
+    "ka": "2f6dad69-e980-43e3-ba7a-ceaefadb449a",
+    "t1": "3f05bfc5-9fb0-4e27-9db0-d766a147ac26",
+    "t2": null
+   },
+   "seed": {
+    "n": 4,
+    "known": "ইংরেজিতে কিছু কীভাবে বলতে হয়।",
+    "target": "how to say something in English"
+   },
+   "lego": {
+    "id": "S0004L03",
+    "known": "ইংরেজিতে",
+    "target": "in English"
+   },
+   "copy24": {
+    "row": [
+     "ইংরেজিতে কিছু কীভাবে বলতে হয়।",
+     "how to say something in English"
+    ],
+    "lego": [
+     "ইংরেজিতে",
+     "in English"
+    ],
+    "seed": [
+     "ইংরেজিতে কিছু কীভাবে বলতে হয়।",
+     "how to say something in English"
+    ],
+    "slots": [
+     "2f6dad69-e980-43e3-ba7a-ceaefadb449a",
+     "3f05bfc5-9fb0-4e27-9db0-d766a147ac26",
+     null
+    ]
+   },
+   "live": {
+    "row": [
+     "ইংরেজিতে কিছু কীভাবে বলতে হয়।",
+     "how to say something in English"
+    ],
+    "lego": [
+     "ইংরেজিতে",
+     "in English"
+    ],
+    "seed": [
+     "ইংরেজিতে কিছু কীভাবে বলতে হয়।",
+     "how to say something in English"
+    ],
+    "slots": [
+     "2f6dad69-e980-43e3-ba7a-ceaefadb449a",
+     "3f05bfc5-9fb0-4e27-9db0-d766a147ac26",
+     null
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "eng_for_pan",
+   "id": "eng_for_pan:S0108L03U06",
+   "slot": null,
+   "row": {
+    "known": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+    "target": "We didn't hope to wake in the middle of the night.",
+    "ka": "ef364ef0-84c3-4432-917c-3c31fa40eccf",
+    "t1": "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+    "t2": "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+   },
+   "seed": {
+    "n": 108,
+    "known": "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+    "target": "We didn't expect to wake up in the middle of the night."
+   },
+   "lego": {
+    "id": "S0108L03",
+    "known": "ਅੱਧੀ ਰਾਤ ਨੂੰ",
+    "target": "in the middle of the night"
+   },
+   "copy24": {
+    "row": [
+     "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+     "We didn't hope to wake in the middle of the night."
+    ],
+    "lego": [
+     "ਅੱਧੀ ਰਾਤ ਨੂੰ",
+     "in the middle of the night"
+    ],
+    "seed": [
+     "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+     "We didn't expect to wake up in the middle of the night."
+    ],
+    "slots": [
+     "ef364ef0-84c3-4432-917c-3c31fa40eccf",
+     "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+     "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+    ]
+   },
+   "live": {
+    "row": [
+     "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+     "We didn't hope to wake in the middle of the night."
+    ],
+    "lego": [
+     "ਅੱਧੀ ਰਾਤ ਨੂੰ",
+     "in the middle of the night"
+    ],
+    "seed": [
+     "ਅਸੀਂ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਸੀ ਕਿ ਅਸੀਂ ਅੱਧੀ ਰਾਤ ਨੂੰ ਜਾਗਾਂਗੇ।",
+     "We didn't expect to wake up in the middle of the night."
+    ],
+    "slots": [
+     "ef364ef0-84c3-4432-917c-3c31fa40eccf",
+     "464708ec-30da-42df-a8b8-5edbab7b8cf0",
+     "beee2e4f-4a23-4c6b-a62d-d06036d44a92"
+    ]
+   },
+   "precheck": "ok"
+  },
+  {
+   "course": "spa_mx_for_eng",
+   "id": "spa_mx_for_eng:S0377L03U10",
+   "slot": null,
+   "row": {
+    "known": "did you go anywhere in the world last year?",
+    "target": "¿Fuiste a algún sitio en el mundo el año pasado?",
+    "ka": "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+    "t1": "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+    "t2": "f799ae40-d9cd-4a45-bfc2-e979bf0d8903"
+   },
+   "seed": {
+    "n": 377,
+    "known": "did you go anywhere in the world last year?",
+    "target": "¿Fuiste a algún lado en el mundo el año pasado?"
+   },
+   "lego": {
+    "id": "S0377L03",
+    "known": "world",
+    "target": "mundo"
+   },
+   "copy24": {
+    "row": [
+     "did you go anywhere in the world last year?",
+     "¿Fuiste a algún sitio en el mundo el año pasado?"
+    ],
+    "lego": [
+     "world",
+     "mundo"
+    ],
+    "seed": [
+     "did you go anywhere in the world last year?",
+     "¿Fuiste a algún lado en el mundo el año pasado?"
+    ],
+    "slots": [
+     "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+     "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+     "f799ae40-d9cd-4a45-bfc2-e979bf0d8903"
+    ]
+   },
+   "live": {
+    "row": [
+     "did you go anywhere in the world last year?",
+     "¿Fuiste a algún sitio en el mundo el año pasado?"
+    ],
+    "lego": [
+     "world",
+     "mundo"
+    ],
+    "seed": [
+     "did you go anywhere in the world last year?",
+     "¿Fuiste a algún lado en el mundo el año pasado?"
+    ],
+    "slots": [
+     "1754cbd6-f07c-4216-a353-47ddbe2756a4",
+     "ae2df936-c0a0-4a06-a411-f80ce1b9071e",
+     "f799ae40-d9cd-4a45-bfc2-e979bf0d8903"
+    ]
+   },
+   "precheck": "ok"
+  }
+ ]
+}

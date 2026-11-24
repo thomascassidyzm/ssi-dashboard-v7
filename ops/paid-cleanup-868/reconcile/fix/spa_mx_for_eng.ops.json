@@ -1,0 +1,29 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "spa_mx_for_eng:S0377L03U10",
+   "set": {
+    "target_text": "¿Fuiste a algún lado en el mundo el año pasado?"
+   },
+   "expect": {
+    "known_text": "did you go anywhere in the world last year?",
+    "target_text": "¿Fuiste a algún sitio en el mundo el año pasado?"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "spa_mx_for_eng:S0377L03U10",
+   "slot": "target1",
+   "audio_id": "ca10fc5c-bfb9-4b82-92a3-530b9fb9c5f1"
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "spa_mx_for_eng:S0377L03U10",
+   "slot": "target2",
+   "audio_id": "aa9b531d-2a86-42d7-8744-f9c2f1430627"
+  }
+ ]
+}
