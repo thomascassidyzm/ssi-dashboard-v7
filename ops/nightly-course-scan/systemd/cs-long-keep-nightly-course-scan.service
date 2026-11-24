@@ -1,0 +1,13 @@
+[Unit]
+Description=Nightly read-only course scan for Kai (cs #237·AL): 3 courses a night on the QA copy, then one hand-check worker
+OnFailure=cs-long-keep-nightly-course-scan-fail.service
+
+[Service]
+Type=oneshot
+Slice=cs-workers.slice
+TimeoutStartSec=6h
+Nice=10
+Environment=CS_DB_WORKER=1
+Environment=PATH=/home/tomcassidy/command-surface/ops/db-shims:/usr/local/bin:/usr/bin:/bin
+WorkingDirectory=%h/.cs-long/nightly-course-scan/popty
+ExecStart=/bin/bash -lc 'cd %h/.cs-long/nightly-course-scan/popty && git fetch -q origin main && git merge -q --ff-only origin/main && exec bash ops/nightly-course-scan/night-run.sh'

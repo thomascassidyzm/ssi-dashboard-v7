@@ -1,0 +1,48 @@
+{
+ "changeset": "eng_for_ita-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 27,
+   "seed": {
+    "known_text": "Non mi piace impiegare troppo tempo per rispondere.",
+    "target_text": "I don't like taking too much time to answer."
+   },
+   "lego_id": "S0027L01",
+   "lego": [
+    {
+     "known_text": "non mi piace",
+     "target_text": "I don't like"
+    }
+   ]
+  },
+  {
+   "seed_number": 145,
+   "seed": {
+    "known_text": "Perché non sei più felice?",
+    "target_text": "Why are you not happy any more?"
+   },
+   "lego_id": "S0145L01",
+   "lego": [
+    {
+     "known_text": "non sei più felice",
+     "target_text": "not happy any more"
+    }
+   ]
+  },
+  {
+   "seed_number": 202,
+   "seed": {
+    "known_text": "Nessuno era sicuro di come rispondere alla domanda.",
+    "target_text": "Nobody was sure how to answer the question."
+   },
+   "lego_id": "S0202L02",
+   "lego": [
+    {
+     "known_text": "domanda",
+     "target_text": "question"
+    }
+   ]
+  }
+ ]
+}

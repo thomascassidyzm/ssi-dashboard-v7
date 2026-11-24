@@ -1,0 +1,3156 @@
+{
+ "changeset": "eng_for_kan-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 4,
+   "seed": {
+    "known_text": "ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಏನಾದರೂ ಹೇಗೆ ಹೇಳೋದು",
+    "target_text": "how to say something in English"
+   },
+   "lego_id": "S0004L02",
+   "lego": [
+    {
+     "known_text": "ಏನಾದರೂ",
+     "target_text": "something"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು, ಆದರೆ ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ.",
+    "target_text": "Thank you very much, but I've got more to learn."
+   },
+   "lego_id": "S0073L01",
+   "lego": [
+    {
+     "known_text": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು",
+     "target_text": "thank you very much"
+    }
+   ]
+  },
+  {
+   "seed_number": 73,
+   "seed": {
+    "known_text": "ತುಂಬಾ ಧನ್ಯವಾದಗಳು, ಆದರೆ ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ.",
+    "target_text": "Thank you very much, but I've got more to learn."
+   },
+   "lego_id": "S0073L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆ",
+     "target_text": "I've got more to learn"
+    }
+   ]
+  },
+  {
+   "seed_number": 75,
+   "seed": {
+    "known_text": "ನಿಮಗೆ ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆಯಾ?",
+    "target_text": "Have you got more to learn?"
+   },
+   "lego_id": "S0075L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಇನ್ನೂ ಕಲಿಯೋದು ಇದೆಯಾ",
+     "target_text": "have you got more to learn"
+    }
+   ]
+  },
+  {
+   "seed_number": 76,
+   "seed": {
+    "known_text": "ನಾನು ಈಗಾಗಲೇ ಎಷ್ಟು ಕಲಿತಿದ್ದೇನೆ ಅಂತ ನನಗೆ ತುಂಬಾ ಸಂತೋಷ.",
+    "target_text": "I'm very happy with how much I've learnt already."
+   },
+   "lego_id": "S0076L03",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಸಂತೋಷ",
+     "target_text": "I'm very happy"
+    }
+   ]
+  },
+  {
+   "seed_number": 77,
+   "seed": {
+    "known_text": "ನಾನು ಎಷ್ಟು ಬೇಗ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋಕೆ ಶುರು ಮಾಡ್ತಿದ್ದೇನೆ ಅಂತ ನನಗೆ ಆಶ್ಚರ್ಯ.",
+    "target_text": "I'm surprised at how quickly I'm starting to understand."
+   },
+   "lego_id": "S0077L03",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಆಶ್ಚರ್ಯ",
+     "target_text": "I'm surprised"
+    }
+   ]
+  },
+  {
+   "seed_number": 78,
+   "seed": {
+    "known_text": "ನೀವು ಏನು ಹೇಳಿದ್ರಿ ಅಂತ ನನಗೆ ಅರ್ಥ ಆಗ್ತಿಲ್ಲ.",
+    "target_text": "I don't understand what you said."
+   },
+   "lego_id": "S0078L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಅರ್ಥ ಆಗ್ತಿಲ್ಲ",
+     "target_text": "I don't understand"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "ನಾನು ನಿಮಗೋಸ್ಕರ ಕಾಯಲ್ಲ. ಯಾಕೆ ಇಲ್ಲ?",
+    "target_text": "I'm not going to wait for you. Why not?"
+   },
+   "lego_id": "S0082L01",
+   "lego": [
+    {
+     "known_text": "ನಾನು ನಿಮಗೋಸ್ಕರ ಕಾಯಲ್ಲ",
+     "target_text": "I'm not going to wait for you"
+    }
+   ]
+  },
+  {
+   "seed_number": 82,
+   "seed": {
+    "known_text": "ನಾನು ನಿಮಗೋಸ್ಕರ ಕಾಯಲ್ಲ. ಯಾಕೆ ಇಲ್ಲ?",
+    "target_text": "I'm not going to wait for you. Why not?"
+   },
+   "lego_id": "S0082L02",
+   "lego": [
+    {
+     "known_text": "ಇಲ್ಲ",
+     "target_text": "not"
+    }
+   ]
+  },
+  {
+   "seed_number": 86,
+   "seed": {
+    "known_text": "ದುರದೃಷ್ಟವಶಾತ್, ಅದು ಸಾಧ್ಯ ಆಗಲಿಲ್ಲ.",
+    "target_text": "It wasn't possible, unfortunately."
+   },
+   "lego_id": "S0086L02",
+   "lego": [
+    {
+     "known_text": "ಅದು ಸಾಧ್ಯ ಆಗಲಿಲ್ಲ",
+     "target_text": "it wasn't possible"
+    }
+   ]
+  },
+  {
+   "seed_number": 90,
+   "seed": {
+    "known_text": "ನೀವು ಇನ್ನೂ ನಿಧಾನವಾಗಿ ಮಾತಾಡಿದ್ರೆ ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ.",
+    "target_text": "If you can speak more slowly that would be great."
+   },
+   "lego_id": "S0090L03",
+   "lego": [
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಚೆನ್ನಾಗಿರುತ್ತೆ",
+     "target_text": "that would be great"
+    }
+   ]
+  },
+  {
+   "seed_number": 93,
+   "seed": {
+    "known_text": "ಈಗ ಹೋಗೋ ಸಮಯ ಆಯ್ತು.",
+    "target_text": "It's time to go now."
+   },
+   "lego_id": "S0093L01",
+   "lego": [
+    {
+     "known_text": "ಹೋಗೋ ಸಮಯ ಆಯ್ತು",
+     "target_text": "it's time to go"
+    }
+   ]
+  },
+  {
+   "seed_number": 95,
+   "seed": {
+    "known_text": "ಮುಂದಿನ ಬಸ್ಸಲ್ಲಿ ಮನೆಗೆ ಹೋಗೋಕೆ ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ?",
+    "target_text": "Are you ready to go home on the next bus?"
+   },
+   "lego_id": "S0095L03",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಸಿದ್ಧ ಇದ್ದೀರಾ",
+     "target_text": "are you ready"
+    }
+   ]
+  },
+  {
+   "seed_number": 96,
+   "seed": {
+    "known_text": "ಇಲ್ಲ ನಾನು ಇನ್ನೂ ಸಿದ್ಧ ಇಲ್ಲ, ನನಗೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ಸಮಯ ಬೇಕು.",
+    "target_text": "No I'm not ready yet, I need a little more time."
+   },
+   "lego_id": "S0096L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ಸಮಯ ಬೇಕು",
+     "target_text": "I need a little more time"
+    }
+   ]
+  },
+  {
+   "seed_number": 97,
+   "seed": {
+    "known_text": "ಹೌದು ನೀವು ಬಯಸಿದಾಗಲೇ ಹೋಗೋಕೆ ನಾನು ಸಿದ್ಧ ಇದ್ದೇನೆ.",
+    "target_text": "Yes I'm ready to go as soon as you want."
+   },
+   "lego_id": "S0097L03",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಸಿದ್ಧ ಇದ್ದೇನೆ",
+     "target_text": "I'm ready"
+    }
+   ]
+  },
+  {
+   "seed_number": 100,
+   "seed": {
+    "known_text": "ಇದೇ ತರಹದ್ದನ್ನ ಮಾಡೋ ಬಗ್ಗೆ ನೀವು ಚಿಂತಿಸಬಾರದು.",
+    "target_text": "You shouldn't worry about doing something similar."
+   },
+   "lego_id": "S0100L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಚಿಂತಿಸಬಾರದು",
+     "target_text": "you shouldn't worry"
+    }
+   ]
+  },
+  {
+   "seed_number": 102,
+   "seed": {
+    "known_text": "ಅದು ಹಾಗಲ್ಲ ಅಂತ ಹೇಳೋಕೆ ನಾವು ಪ್ರಯತ್ನಿಸ್ತಿದ್ದೇವೆ.",
+    "target_text": "We're trying to say that it's not like that."
+   },
+   "lego_id": "S0102L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಹಾಗಲ್ಲ",
+     "target_text": "it's not like that"
+    }
+   ]
+  },
+  {
+   "seed_number": 102,
+   "seed": {
+    "known_text": "ಅದು ಹಾಗಲ್ಲ ಅಂತ ಹೇಳೋಕೆ ನಾವು ಪ್ರಯತ್ನಿಸ್ತಿದ್ದೇವೆ.",
+    "target_text": "We're trying to say that it's not like that."
+   },
+   "lego_id": "S0102L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಹಾಗಲ್ಲ",
+     "target_text": "it's not like that"
+    }
+   ]
+  },
+  {
+   "seed_number": 106,
+   "seed": {
+    "known_text": "ನಮಗೆ ಸಂತೋಷವಾಗಿ ಇರಬೇಕಾಗಿಲ್ಲ, ನಾವು ಕಷ್ಟಪಟ್ಟು ಕೆಲಸ ಮಾಡಬೇಕು ಅಷ್ಟೆ.",
+    "target_text": "We don't need to feel happy, we just need to work hard."
+   },
+   "lego_id": "S0106L01",
+   "lego": [
+    {
+     "known_text": "ನಮಗೆ ಸಂತೋಷವಾಗಿ ಇರಬೇಕಾಗಿಲ್ಲ",
+     "target_text": "we don't need to feel happy"
+    }
+   ]
+  },
+  {
+   "seed_number": 110,
+   "seed": {
+    "known_text": "ನಾವು ಸ್ನೇಹಿತರು, ಮತ್ತೆ ಮುಗಿಸಿದ ಮೇಲೆ ನಾನು ವಿಶ್ರಾಂತಿ ತಗೊಳ್ಳಬೇಕು ಅಂತ ಬಯಸ್ತೇನೆ.",
+    "target_text": "We're friends, and after we finish I'd like to relax."
+   },
+   "lego_id": "S0110L01",
+   "lego": [
+    {
+     "known_text": "ನಾವು ಸ್ನೇಹಿತರು",
+     "target_text": "we're friends"
+    }
+   ]
+  },
+  {
+   "seed_number": 112,
+   "seed": {
+    "known_text": "ಅದು ತುಂಬಾ ಆಸಕ್ತಿಕರವಾಗಿತ್ತು, ಮತ್ತೆ ನಾನು ಅದನ್ನ ನಿರೀಕ್ಷಿಸಿರಲಿಲ್ಲ.",
+    "target_text": "That was very interesting, and I wasn't expecting it."
+   },
+   "lego_id": "S0112L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಆಸಕ್ತಿಕರವಾಗಿತ್ತು",
+     "target_text": "that was very interesting"
+    }
+   ]
+  },
+  {
+   "seed_number": 119,
+   "seed": {
+    "known_text": "ನೀವು ಹೊರಡೋ ಮೊದಲು ನಾನು ನಿಮ್ಮನ್ನ ಏನಾದರೂ ಕೇಳಬಹುದಾ?",
+    "target_text": "Can I ask you something before you leave?"
+   },
+   "lego_id": "S0119L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ನಿಮ್ಮನ್ನ ಏನಾದರೂ ಕೇಳಬಹುದಾ",
+     "target_text": "can I ask you something"
+    }
+   ]
+  },
+  {
+   "seed_number": 122,
+   "seed": {
+    "known_text": "ಇದು ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ ಮತ್ತೆ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅನ್ನೋ ಬಗ್ಗೆ ನನಗೆ ಉತ್ಸಾಹ ಇದೆ.",
+    "target_text": "It's starting to feel easier and I'm excited about how it's going."
+   },
+   "lego_id": "S0122L02",
+   "lego": [
+    {
+     "known_text": "ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting"
+    }
+   ]
+  },
+  {
+   "seed_number": 122,
+   "seed": {
+    "known_text": "ಇದು ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ ಮತ್ತೆ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅನ್ನೋ ಬಗ್ಗೆ ನನಗೆ ಉತ್ಸಾಹ ಇದೆ.",
+    "target_text": "It's starting to feel easier and I'm excited about how it's going."
+   },
+   "lego_id": "S0122L02",
+   "lego": [
+    {
+     "known_text": "ಶುರು ಆಗ್ತಿದೆ",
+     "target_text": "it's starting"
+    }
+   ]
+  },
+  {
+   "seed_number": 122,
+   "seed": {
+    "known_text": "ಇದು ಸುಲಭ ಅನಿಸೋಕೆ ಶುರು ಆಗ್ತಿದೆ ಮತ್ತೆ ಇದು ಹೇಗೆ ಸಾಗ್ತಿದೆ ಅನ್ನೋ ಬಗ್ಗೆ ನನಗೆ ಉತ್ಸಾಹ ಇದೆ.",
+    "target_text": "It's starting to feel easier and I'm excited about how it's going."
+   },
+   "lego_id": "S0122L05",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಉತ್ಸಾಹ ಇದೆ",
+     "target_text": "I'm excited"
+    }
+   ]
+  },
+  {
+   "seed_number": 123,
+   "seed": {
+    "known_text": "ಅದು ಒಳ್ಳೆ ಆಲೋಚನೆ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ.",
+    "target_text": "I think that's a good idea."
+   },
+   "lego_id": "S0123L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಒಳ್ಳೆ ಆಲೋಚನೆ",
+     "target_text": "that's a good idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 125,
+   "seed": {
+    "known_text": "ನಿಮ್ಮ ಆಲೋಚನೆ ತುಂಬಾ ಚೆನ್ನಾಗಿತ್ತು ಅಂತ ನಾನು ನಂಬುತ್ತೇನೆ.",
+    "target_text": "I believe that your idea was very good."
+   },
+   "lego_id": "S0125L02",
+   "lego": [
+    {
+     "known_text": "ತುಂಬಾ ಚೆನ್ನಾಗಿತ್ತು",
+     "target_text": "was very good"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು, ಯಾಕಂದ್ರೆ ಅವನು ನನ್ನ ಸ್ನೇಹಿತ.",
+    "target_text": "That was a surprise, because he's my friend."
+   },
+   "lego_id": "S0130L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು",
+     "target_text": "that was a surprise"
+    }
+   ]
+  },
+  {
+   "seed_number": 130,
+   "seed": {
+    "known_text": "ಅದು ಆಶ್ಚರ್ಯ ಆಗಿತ್ತು, ಯಾಕಂದ್ರೆ ಅವನು ನನ್ನ ಸ್ನೇಹಿತ.",
+    "target_text": "That was a surprise, because he's my friend."
+   },
+   "lego_id": "S0130L02",
+   "lego": [
+    {
+     "known_text": "ಅವನು ನನ್ನ ಸ್ನೇಹಿತ",
+     "target_text": "he's my friend"
+    }
+   ]
+  },
+  {
+   "seed_number": 132,
+   "seed": {
+    "known_text": "ಅವಳು ಏನು ಹೇಳ್ತಿದ್ದಳೋ ಅದಕ್ಕಿಂತ ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ.",
+    "target_text": "That's less exciting than what she was saying."
+   },
+   "lego_id": "S0132L03",
+   "lego": [
+    {
+     "known_text": "ಇದು ಕಡಿಮೆ ಉತ್ಸಾಹಕರ",
+     "target_text": "that's less exciting"
+    }
+   ]
+  },
+  {
+   "seed_number": 134,
+   "seed": {
+    "known_text": "ಅವರ ಜೊತೆ ಕಷ್ಟದ ಕೆಲಸದಲ್ಲಿ ತೊಡಗಿದಾಗ ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ.",
+    "target_text": "It's not a problem when you work at something difficult with them."
+   },
+   "lego_id": "S0134L04",
+   "lego": [
+    {
+     "known_text": "ಅದು ಸಮಸ್ಯೆ ಅಲ್ಲ",
+     "target_text": "it's not a problem"
+    }
+   ]
+  },
+  {
+   "seed_number": 135,
+   "seed": {
+    "known_text": "ಅದು ಇಷ್ಟು ಚೆನ್ನಾಗಿದೆ ಅಂತ ನೀವು ಯಾಕೆ ಅಂದುಕೊಳ್ತೀರಿ ಅಂತ ನನಗೆ ಗೊತ್ತಿಲ್ಲ.",
+    "target_text": "I don't know why you think that it's so good."
+   },
+   "lego_id": "S0135L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಇಷ್ಟು ಚೆನ್ನಾಗಿದೆ",
+     "target_text": "it's so good"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "ಖಂಡಿತ ನೀವು ಅವಳನ್ನ ಕೇಳಬಹುದು ಯಾಕಂದ್ರೆ ಅವಳು ನನ್ನ ಸ್ನೇಹಿತೆ.",
+    "target_text": "Of course you can ask her because she's my friend."
+   },
+   "lego_id": "S0136L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಅವಳನ್ನ ಕೇಳಬಹುದು",
+     "target_text": "you can ask her"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "ಖಂಡಿತ ನೀವು ಅವಳನ್ನ ಕೇಳಬಹುದು ಯಾಕಂದ್ರೆ ಅವಳು ನನ್ನ ಸ್ನೇಹಿತೆ.",
+    "target_text": "Of course you can ask her because she's my friend."
+   },
+   "lego_id": "S0136L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಅವಳನ್ನ ಕೇಳಬಹುದು",
+     "target_text": "you can ask her"
+    }
+   ]
+  },
+  {
+   "seed_number": 136,
+   "seed": {
+    "known_text": "ಖಂಡಿತ ನೀವು ಅವಳನ್ನ ಕೇಳಬಹುದು ಯಾಕಂದ್ರೆ ಅವಳು ನನ್ನ ಸ್ನೇಹಿತೆ.",
+    "target_text": "Of course you can ask her because she's my friend."
+   },
+   "lego_id": "S0136L03",
+   "lego": [
+    {
+     "known_text": "ಅವಳು ನನ್ನ ಸ್ನೇಹಿತೆ",
+     "target_text": "she's my friend"
+    }
+   ]
+  },
+  {
+   "seed_number": 140,
+   "seed": {
+    "known_text": "ನೀವು ನನಗೆ ತೋರಿಸೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿರೋದು ನನಗೆ ಕಾಣ್ತಿಲ್ಲ, ಕ್ಷಮಿಸಿ.",
+    "target_text": "I'm sorry that I can't see what you're trying to show me."
+   },
+   "lego_id": "S0140L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "I can't see"
+    }
+   ]
+  },
+  {
+   "seed_number": 142,
+   "seed": {
+    "known_text": "ಇದು ನಿಮ್ಮ ದೊಡ್ಡ ಗುಣ ಮತ್ತೆ ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನಾನು ನಿಮಗೆ ಕೃತಜ್ಞ.",
+    "target_text": "That's very kind of you and I'm grateful to you for helping."
+   },
+   "lego_id": "S0142L01",
+   "lego": [
+    {
+     "known_text": "ಇದು ನಿಮ್ಮ ದೊಡ್ಡ ಗುಣ",
+     "target_text": "that's very kind of you"
+    }
+   ]
+  },
+  {
+   "seed_number": 142,
+   "seed": {
+    "known_text": "ಇದು ನಿಮ್ಮ ದೊಡ್ಡ ಗುಣ ಮತ್ತೆ ಸಹಾಯ ಮಾಡಿದ್ದಕ್ಕೆ ನಾನು ನಿಮಗೆ ಕೃತಜ್ಞ.",
+    "target_text": "That's very kind of you and I'm grateful to you for helping."
+   },
+   "lego_id": "S0142L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ನಿಮಗೆ ಕೃತಜ್ಞ",
+     "target_text": "I'm grateful to you"
+    }
+   ]
+  },
+  {
+   "seed_number": 146,
+   "seed": {
+    "known_text": "ನಾವು ಅದನ್ನ ಸರಿಮಾಡೋಕೆ ಪ್ರಯತ್ನಿಸಿದ ಮೇಲಿಂದ ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ.",
+    "target_text": "Nothing seems to be working since we tried to fix it."
+   },
+   "lego_id": "S0146L03",
+   "lego": [
+    {
+     "known_text": "ಏನೂ ಕೆಲಸ ಮಾಡ್ತಿರೋ ಹಾಗೆ ಕಾಣ್ತಿಲ್ಲ",
+     "target_text": "nothing seems to be working"
+    }
+   ]
+  },
+  {
+   "seed_number": 147,
+   "seed": {
+    "known_text": "ನಾನು ಆತಂಕದಲ್ಲಿ ಇರೋದನ್ನ ನೋಡಿದಾಗ ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು.",
+    "target_text": "She was very kind when she saw me feeling nervous."
+   },
+   "lego_id": "S0147L01",
+   "lego": [
+    {
+     "known_text": "ಅವಳು ತುಂಬಾ ದಯೆ ತೋರಿಸಿದಳು",
+     "target_text": "she was very kind"
+    }
+   ]
+  },
+  {
+   "seed_number": 148,
+   "seed": {
+    "known_text": "ನನಗೆ ಉತ್ತರ ಕೊಡೋಕೆ ಆಗದಿದ್ದಾಗ ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ.",
+    "target_text": "He wasn't very patient when I couldn't answer."
+   },
+   "lego_id": "S0148L01",
+   "lego": [
+    {
+     "known_text": "ಅವನು ತುಂಬಾ ತಾಳ್ಮೆಯಿಂದ ಇರಲಿಲ್ಲ",
+     "target_text": "he wasn't very patient"
+    }
+   ]
+  },
+  {
+   "seed_number": 149,
+   "seed": {
+    "known_text": "ಇದು ತುಂಬಾ ಕಷ್ಟ ಅಲ್ಲ, ಹಾಗಾಗಿ ನೀವು ಬೇಗ ಮುಗಿಸ್ತೀರಿ ಅಂತ ಆಶಿಸ್ತೇನೆ.",
+    "target_text": "This isn't very difficult, so I hope you'll finish soon."
+   },
+   "lego_id": "S0149L01",
+   "lego": [
+    {
+     "known_text": "ಇದು ತುಂಬಾ ಕಷ್ಟ ಅಲ್ಲ",
+     "target_text": "this isn't very difficult"
+    }
+   ]
+  },
+  {
+   "seed_number": 149,
+   "seed": {
+    "known_text": "ಇದು ತುಂಬಾ ಕಷ್ಟ ಅಲ್ಲ, ಹಾಗಾಗಿ ನೀವು ಬೇಗ ಮುಗಿಸ್ತೀರಿ ಅಂತ ಆಶಿಸ್ತೇನೆ.",
+    "target_text": "This isn't very difficult, so I hope you'll finish soon."
+   },
+   "lego_id": "S0149L03",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಬೇಗ ಮುಗಿಸ್ತೀರಿ",
+     "target_text": "you'll finish soon"
+    }
+   ]
+  },
+  {
+   "seed_number": 155,
+   "seed": {
+    "known_text": "ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಕೆಲವು ನಿಮಿಷ ಕಾಯೋದಕ್ಕೆ ನನಗೆ ಬೇಸರ ಇಲ್ಲ.",
+    "target_text": "I don't mind waiting for a few minutes tomorrow morning."
+   },
+   "lego_id": "S0155L03",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind"
+    }
+   ]
+  },
+  {
+   "seed_number": 156,
+   "seed": {
+    "known_text": "ಇವತ್ತು ರಾತ್ರಿ ನಿಮಗೆ ಹೋಟೆಲ್‌ಗೆ ಹೋಗಬೇಕಾ?",
+    "target_text": "Do you want to go to a restaurant tonight?"
+   },
+   "lego_id": "S0156L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಹೋಗಬೇಕಾ",
+     "target_text": "do you want to go"
+    }
+   ]
+  },
+  {
+   "seed_number": 159,
+   "seed": {
+    "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿರೋದು ಅದಲ್ಲ.",
+    "target_text": "That isn't what I'm trying to say."
+   },
+   "lego_id": "S0159L01",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಹೇಳೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿರೋದು ಅದಲ್ಲ",
+     "target_text": "that isn't what I'm trying to say"
+    }
+   ]
+  },
+  {
+   "seed_number": 162,
+   "seed": {
+    "known_text": "ಅದರ ಬಗ್ಗೆ ನೀವು ಏನು ಅಂದುಕೊಳ್ತೀರಿ?",
+    "target_text": "What do you think about that?"
+   },
+   "lego_id": "S0162L01",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಏನು ಅಂದುಕೊಳ್ತೀರಿ",
+     "target_text": "what do you think"
+    }
+   ]
+  },
+  {
+   "seed_number": 163,
+   "seed": {
+    "known_text": "ಅದು ಆಸಕ್ತಿಕರ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ.",
+    "target_text": "I think that it's interesting."
+   },
+   "lego_id": "S0163L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಆಸಕ್ತಿಕರ ಅಂತ ನನಗೆ ಅನಿಸುತ್ತೆ",
+     "target_text": "I think that it's interesting"
+    }
+   ]
+  },
+  {
+   "seed_number": 165,
+   "seed": {
+    "known_text": "ಆದರೆ ಅದು ನಿಜವೋ ಇಲ್ಲವೋ ನನಗೆ ಗೊತ್ತಿಲ್ಲ.",
+    "target_text": "But I'm not sure if it's true."
+   },
+   "lego_id": "S0165L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ನಿಜವೋ ಇಲ್ಲವೋ ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "I'm not sure if it's true"
+    }
+   ]
+  },
+  {
+   "seed_number": 167,
+   "seed": {
+    "known_text": "ನಾಳೆ ಮಧ್ಯಾಹ್ನ ನೀವು ಏನು ಮಾಡಬೇಕು?",
+    "target_text": "What do you need to do tomorrow afternoon?"
+   },
+   "lego_id": "S0167L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡಬೇಕು",
+     "target_text": "what do you need to do"
+    }
+   ]
+  },
+  {
+   "seed_number": 168,
+   "seed": {
+    "known_text": "ಮತ್ತೆ ಆಮೇಲೆ ನಾನು ಬಂದು ಸಹಾಯ ಮಾಡೋಕೆ ಆಗುತ್ತೆ.",
+    "target_text": "And then I'll be able to come and help later on."
+   },
+   "lego_id": "S0168L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಬಂದು ಸಹಾಯ ಮಾಡೋಕೆ ಆಗುತ್ತೆ",
+     "target_text": "I'll be able to come and help"
+    }
+   ]
+  },
+  {
+   "seed_number": 169,
+   "seed": {
+    "known_text": "ನಾನು ಏನು ಮಾಡಬೇಕು ಅಂತ ನಿಮಗೆ ಬೇಕು?",
+    "target_text": "What do you want me to do?"
+   },
+   "lego_id": "S0169L01",
+   "lego": [
+    {
+     "known_text": "ಏನು ನಿಮಗೆ ಬೇಕು",
+     "target_text": "what do you want"
+    }
+   ]
+  },
+  {
+   "seed_number": 172,
+   "seed": {
+    "known_text": "ಹೌದು ಅದು ತುಂಬಾ ಸಹಾಯ ಆಗುತ್ತೆ.",
+    "target_text": "Yes that would be very helpful."
+   },
+   "lego_id": "S0172L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ತುಂಬಾ ಸಹಾಯ ಆಗುತ್ತೆ",
+     "target_text": "that would be very helpful"
+    }
+   ]
+  },
+  {
+   "seed_number": 173,
+   "seed": {
+    "known_text": "ಬೇಡ ಧನ್ಯವಾದ, ನಾನು ನನ್ನಷ್ಟಕ್ಕೆ ನಿಭಾಯಿಸಿಕೊಳ್ತೀನಿ.",
+    "target_text": "No thank you I can manage on my own."
+   },
+   "lego_id": "S0173L01",
+   "lego": [
+    {
+     "known_text": "ಬೇಡ ಧನ್ಯವಾದ",
+     "target_text": "no thank you"
+    }
+   ]
+  },
+  {
+   "seed_number": 173,
+   "seed": {
+    "known_text": "ಬೇಡ ಧನ್ಯವಾದ, ನಾನು ನನ್ನಷ್ಟಕ್ಕೆ ನಿಭಾಯಿಸಿಕೊಳ್ತೀನಿ.",
+    "target_text": "No thank you I can manage on my own."
+   },
+   "lego_id": "S0173L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ನನ್ನಷ್ಟಕ್ಕೆ ನಿಭಾಯಿಸಿಕೊಳ್ತೀನಿ",
+     "target_text": "I can manage on my own"
+    }
+   ]
+  },
+  {
+   "seed_number": 174,
+   "seed": {
+    "known_text": "ನಾನು ಏನು ಹೇಳ್ತಿದ್ದೇನೆ ಅಂತ ನಿಮಗೆ ಅರ್ಥ ಆಗುತ್ತಾ?",
+    "target_text": "Can you understand what I'm saying?"
+   },
+   "lego_id": "S0174L02",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಅರ್ಥ ಆಗುತ್ತಾ",
+     "target_text": "can you understand"
+    }
+   ]
+  },
+  {
+   "seed_number": 175,
+   "seed": {
+    "known_text": "ಭಾನುವಾರ ಬೆಳಿಗ್ಗೆ ನಿಮಗೆ ಏನು ಮಾಡಬೇಕು?",
+    "target_text": "What do you want to do on Sunday morning?"
+   },
+   "lego_id": "S0175L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಏನು ಮಾಡಬೇಕು",
+     "target_text": "what do you want to do"
+    }
+   ]
+  },
+  {
+   "seed_number": 178,
+   "seed": {
+    "known_text": "ನಾನು ನಿಮ್ಮನ್ನ ನೋಡಬೇಕಿತ್ತಾದರೂ, ನನಗೆ ಸಮಯ ಇರಲಿಲ್ಲ.",
+    "target_text": "I didn't have time, although I wanted to see you."
+   },
+   "lego_id": "S0178L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸಮಯ ಇರಲಿಲ್ಲ",
+     "target_text": "I didn't have time"
+    }
+   ]
+  },
+  {
+   "seed_number": 179,
+   "seed": {
+    "known_text": "ಭಾನುವಾರ ಮಧ್ಯಾಹ್ನ ನೀವು ಏನು ಮಾಡ್ತೀರಿ?",
+    "target_text": "What are you going to do on Sunday afternoon?"
+   },
+   "lego_id": "S0179L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಏನು ಮಾಡ್ತೀರಿ",
+     "target_text": "what are you going to do"
+    }
+   ]
+  },
+  {
+   "seed_number": 183,
+   "seed": {
+    "known_text": "ಇಲ್ಲ, ಕ್ಷಮಿಸಿ, ನಾನು ಅವನ್ನ ನೋಡಿಲ್ಲ.",
+    "target_text": "No I'm afraid I haven't seen them."
+   },
+   "lego_id": "S0183L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ನೋಡಿಲ್ಲ",
+     "target_text": "I haven't seen them"
+    }
+   ]
+  },
+  {
+   "seed_number": 184,
+   "seed": {
+    "known_text": "ಹೌದು ಸ್ವಲ್ಪ ಹೊತ್ತಿಗೆ ಮುಂಚೆ ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ.",
+    "target_text": "Yes I saw them in the office a while ago."
+   },
+   "lego_id": "S0184L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಆಫೀಸಲ್ಲಿ ನೋಡಿದೆ",
+     "target_text": "I saw them in the office"
+    }
+   ]
+  },
+  {
+   "seed_number": 187,
+   "seed": {
+    "known_text": "ಇಲ್ಲಿಯವರೆಗೆ ನನಗೆ ಸಂತೋಷ ಇದೆ.",
+    "target_text": "I'm happy so far."
+   },
+   "lego_id": "S0187L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸಂತೋಷ ಇದೆ",
+     "target_text": "I'm happy"
+    }
+   ]
+  },
+  {
+   "seed_number": 188,
+   "seed": {
+    "known_text": "ಹಾಗಾಗಿ ನಾನು ಬದಲಾಗಬೇಕಾಗಿಲ್ಲ.",
+    "target_text": "So I don't need to change."
+   },
+   "lego_id": "S0188L01",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಬದಲಾಗಬೇಕಾಗಿಲ್ಲ",
+     "target_text": "I don't need to change"
+    }
+   ]
+  },
+  {
+   "seed_number": 190,
+   "seed": {
+    "known_text": "ನಾನು ನಿಮಗೆ ಕೆಲವು ಪ್ರಶ್ನೆ ಕೇಳಿದ್ರೆ ನಿಮಗೆ ಬೇಸರವಾ?",
+    "target_text": "Do you mind if I ask you some questions?"
+   },
+   "lego_id": "S0190L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಬೇಸರವಾ",
+     "target_text": "do you mind"
+    }
+   ]
+  },
+  {
+   "seed_number": 191,
+   "seed": {
+    "known_text": "ಇಲ್ಲ ನನಗೆ ಸ್ವಲ್ಪವೂ ಬೇಸರ ಇಲ್ಲ.",
+    "target_text": "No I don't mind at all."
+   },
+   "lego_id": "S0191L01",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸ್ವಲ್ಪವೂ ಬೇಸರ ಇಲ್ಲ",
+     "target_text": "I don't mind at all"
+    }
+   ]
+  },
+  {
+   "seed_number": 192,
+   "seed": {
+    "known_text": "ನಾಳೆ ರಾತ್ರಿ ನನಗೆ ಕೆಲಸ ಇದೆ.",
+    "target_text": "I'm busy tomorrow night."
+   },
+   "lego_id": "S0192L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಕೆಲಸ ಇದೆ",
+     "target_text": "I'm busy"
+    }
+   ]
+  },
+  {
+   "seed_number": 193,
+   "seed": {
+    "known_text": "ಕ್ಷಮಿಸಿ ಆದರೆ ಇವತ್ತು ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ.",
+    "target_text": "I'm sorry but I'm too busy today."
+   },
+   "lego_id": "S0193L01",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ತುಂಬಾ ಕೆಲಸ ಇದೆ",
+     "target_text": "I'm too busy"
+    }
+   ]
+  },
+  {
+   "seed_number": 194,
+   "seed": {
+    "known_text": "ನೀವು ಏನು ಹುಡುಕ್ತಿದ್ದೀರಿ?",
+    "target_text": "What are you looking for?"
+   },
+   "lego_id": "S0194L01",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಏನು ಹುಡುಕ್ತಿದ್ದೀರಿ",
+     "target_text": "what are you looking for"
+    }
+   ]
+  },
+  {
+   "seed_number": 202,
+   "seed": {
+    "known_text": "ಪ್ರಶ್ನೆಗೆ ಹೇಗೆ ಉತ್ತರ ಕೊಡೋದು ಅಂತ ಯಾರಿಗೂ ಖಚಿತ ಇರಲಿಲ್ಲ.",
+    "target_text": "Nobody was sure how to answer the question."
+   },
+   "lego_id": "S0202L01",
+   "lego": [
+    {
+     "known_text": "ಯಾರಿಗೂ ಖಚಿತ ಇರಲಿಲ್ಲ",
+     "target_text": "nobody was sure"
+    }
+   ]
+  },
+  {
+   "seed_number": 211,
+   "seed": {
+    "known_text": "ಅವರಿಗೆ ವಿವರಿಸೋದು ಬೇಕಿರಲಿಲ್ಲ ಅಂತ ಅವರು ನಮಗೆ ಹೇಳಿದ್ರು.",
+    "target_text": "They told us that they didn't want to explain."
+   },
+   "lego_id": "S0211L01",
+   "lego": [
+    {
+     "known_text": "ಅವರಿಗೆ ವಿವರಿಸೋದು ಬೇಕಿರಲಿಲ್ಲ",
+     "target_text": "they didn't want to explain"
+    }
+   ]
+  },
+  {
+   "seed_number": 212,
+   "seed": {
+    "known_text": "ಅವರಿಗೆ ಸಹಾಯ ಕೇಳಬೇಕಿತ್ತು.",
+    "target_text": "They wanted to ask for help."
+   },
+   "lego_id": "S0212L01",
+   "lego": [
+    {
+     "known_text": "ಅವರಿಗೆ ಸಹಾಯ ಕೇಳಬೇಕಿತ್ತು",
+     "target_text": "they wanted to ask for help"
+    }
+   ]
+  },
+  {
+   "seed_number": 213,
+   "seed": {
+    "known_text": "ಅವರು ಏನು ಸಾಧಿಸೋಕೆ ಪ್ರಯತ್ನಿಸ್ತಿದ್ದಾರೆ ಅಂತ ನಮಗೆ ಗೊತ್ತಿಲ್ಲ.",
+    "target_text": "We don't know what they're trying to achieve."
+   },
+   "lego_id": "S0213L02",
+   "lego": [
+    {
+     "known_text": "ನಮಗೆ ಗೊತ್ತಿಲ್ಲ",
+     "target_text": "we don't know"
+    }
+   ]
+  },
+  {
+   "seed_number": 214,
+   "seed": {
+    "known_text": "ವಾರಾಂತ್ಯದಲ್ಲಿ ನಿಮಗೆ ಚೆನ್ನಾಗಿ ಸಮಯ ಕಳೀತಾ?",
+    "target_text": "Did you have a good time at the weekend?"
+   },
+   "lego_id": "S0214L02",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಚೆನ್ನಾಗಿ ಸಮಯ ಕಳೀತಾ",
+     "target_text": "did you have a good time"
+    }
+   ]
+  },
+  {
+   "seed_number": 218,
+   "seed": {
+    "known_text": "ಭಾನುವಾರ ನಾನು ಹೆಚ್ಚೇನೂ ಮಾಡಲಿಲ್ಲ.",
+    "target_text": "I didn't do much on Sunday."
+   },
+   "lego_id": "S0218L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಹೆಚ್ಚೇನೂ ಮಾಡಲಿಲ್ಲ",
+     "target_text": "I didn't do much"
+    }
+   ]
+  },
+  {
+   "seed_number": 223,
+   "seed": {
+    "known_text": "ಅವನು ನಾಳೆ ನಿಮ್ಮನ್ನ ಕೇಳ್ತಾನೆ.",
+    "target_text": "He's going to ask you tomorrow."
+   },
+   "lego_id": "S0223L01",
+   "lego": [
+    {
+     "known_text": "ಅವನು ನಿಮ್ಮನ್ನ ಕೇಳ್ತಾನೆ",
+     "target_text": "he's going to ask you"
+    }
+   ]
+  },
+  {
+   "seed_number": 224,
+   "seed": {
+    "known_text": "ಅವನು ಈಗ ತಾನೆ ಕಲಿಯೋಕೆ ಶುರು ಮಾಡಿದ್ದಾನೆ.",
+    "target_text": "He's just started to learn."
+   },
+   "lego_id": "S0224L01",
+   "lego": [
+    {
+     "known_text": "ಅವನು ಈಗ ತಾನೆ ಕಲಿಯೋಕೆ ಶುರು ಮಾಡಿದ್ದಾನೆ",
+     "target_text": "he's just started to learn"
+    }
+   ]
+  },
+  {
+   "seed_number": 225,
+   "seed": {
+    "known_text": "ಅವನಿಂದ ಆಗ್ತಿದ್ರೆ ಅವನು ನಿಮಗೆ ಉತ್ತರ ಕೊಡ್ತಿದ್ದ.",
+    "target_text": "He would give you an answer if he could."
+   },
+   "lego_id": "S0225L02",
+   "lego": [
+    {
+     "known_text": "ಅವನು ನಿಮಗೆ ಉತ್ತರ ಕೊಡ್ತಿದ್ದ",
+     "target_text": "he would give you an answer"
+    }
+   ]
+  },
+  {
+   "seed_number": 235,
+   "seed": {
+    "known_text": "ಅವನಿಗೆ ನಿಮಗೆ ಏನೋ ಹೇಳಬೇಕಿತ್ತು ಅಂತ ಹೇಳಿದ ಒಬ್ಬರನ್ನ ನಾನು ಭೇಟಿಯಾದೆ.",
+    "target_text": "I met someone who said that he wanted to tell you something."
+   },
+   "lego_id": "S0235L01",
+   "lego": [
+    {
+     "known_text": "ಅವನಿಗೆ ನಿಮಗೆ ಏನೋ ಹೇಳಬೇಕಿತ್ತು",
+     "target_text": "he wanted to tell you something"
+    }
+   ]
+  },
+  {
+   "seed_number": 244,
+   "seed": {
+    "known_text": "ನಾನು ಈಗಾಗಲೇ ತುಂಬಾ ಕಲಿತಿದ್ದೇನೆ",
+    "target_text": "I've learnt a lot already"
+   },
+   "lego_id": "S0244L01",
+   "lego": [
+    {
+     "known_text": "ನಾನು ತುಂಬಾ ಕಲಿತಿದ್ದೇನೆ",
+     "target_text": "I've learnt a lot"
+    }
+   ]
+  },
+  {
+   "seed_number": 246,
+   "seed": {
+    "known_text": "ಅವಳು ನಿಮಗೆ ಸಹಾಯ ಮಾಡಬೇಕು ಅಂತ ನನಗೆ ಬೇಕಿತ್ತು ಆದರೆ ಅವಳಿಗೆ ತುಂಬಾ ಕೆಲಸ ಇತ್ತು.",
+    "target_text": "I wanted her to help you but she was too busy."
+   },
+   "lego_id": "S0246L01",
+   "lego": [
+    {
+     "known_text": "ಅವಳಿಗೆ ತುಂಬಾ ಕೆಲಸ ಇತ್ತು",
+     "target_text": "she was too busy"
+    }
+   ]
+  },
+  {
+   "seed_number": 248,
+   "seed": {
+    "known_text": "ಆ ಸಿನಿಮಾ ಸಂಪೂರ್ಣ ಕಸ ಅಂತ ನಾನು ಅಂದುಕೊಂಡೆ ಮತ್ತೆ ನನಗೆ ನನ್ನ ಹಣ ವಾಪಸ್ ಬೇಕು.",
+    "target_text": "I thought the film was complete rubbish and I want my money back."
+   },
+   "lego_id": "S0248L01",
+   "lego": [
+    {
+     "known_text": "ಆ ಸಿನಿಮಾ ಸಂಪೂರ್ಣ ಕಸ",
+     "target_text": "the film was complete rubbish"
+    }
+   ]
+  },
+  {
+   "seed_number": 248,
+   "seed": {
+    "known_text": "ಆ ಸಿನಿಮಾ ಸಂಪೂರ್ಣ ಕಸ ಅಂತ ನಾನು ಅಂದುಕೊಂಡೆ ಮತ್ತೆ ನನಗೆ ನನ್ನ ಹಣ ವಾಪಸ್ ಬೇಕು.",
+    "target_text": "I thought the film was complete rubbish and I want my money back."
+   },
+   "lego_id": "S0248L02",
+   "lego": [
+    {
+     "known_text": "ಮತ್ತೆ ನನಗೆ ನನ್ನ ಹಣ ವಾಪಸ್ ಬೇಕು",
+     "target_text": "and I want my money back"
+    }
+   ]
+  },
+  {
+   "seed_number": 250,
+   "seed": {
+    "known_text": "ನಾನು ಉತ್ತರ ಕೊಡೋ ಮೊದಲು ನೀವು ನನಗೆ ಬೇರೆ ಏನಾದರೂ ಹೇಳ್ತೀರಾ?",
+    "target_text": "Can you tell me something else before I answer?"
+   },
+   "lego_id": "S0250L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ನನಗೆ ಬೇರೆ ಏನಾದರೂ ಹೇಳ್ತೀರಾ",
+     "target_text": "can you tell me something else"
+    }
+   ]
+  },
+  {
+   "seed_number": 253,
+   "seed": {
+    "known_text": "ನಾನು ಕೆಲವು ನಿಮಿಷದಲ್ಲಿ ಸಿದ್ಧ ಆಗಬೇಕು.",
+    "target_text": "I should be ready in a few minutes."
+   },
+   "lego_id": "S0253L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಸಿದ್ಧ ಆಗಬೇಕು",
+     "target_text": "I should be ready"
+    }
+   ]
+  },
+  {
+   "seed_number": 254,
+   "seed": {
+    "known_text": "ನಾನು ಇವತ್ತು ಬೆಳಿಗ್ಗೆಯಿಂದ ಸಿದ್ಧ ಆಗಿದ್ದೇನೆ.",
+    "target_text": "I've been ready since this morning."
+   },
+   "lego_id": "S0254L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಸಿದ್ಧ ಆಗಿದ್ದೇನೆ",
+     "target_text": "I've been ready"
+    }
+   ]
+  },
+  {
+   "seed_number": 268,
+   "seed": {
+    "known_text": "ಹೌದು ಅವಳು ಕಳೆದ ವಾರ ನನಗೆ ಎರಡು ಇಮೇಲ್ ಕಳಿಸಿದಳು.",
+    "target_text": "Yes she sent me two emails last week."
+   },
+   "lego_id": "S0268L01",
+   "lego": [
+    {
+     "known_text": "ಅವಳು ನನಗೆ ಎರಡು ಇಮೇಲ್ ಕಳಿಸಿದಳು",
+     "target_text": "she sent me two emails"
+    }
+   ]
+  },
+  {
+   "seed_number": 270,
+   "seed": {
+    "known_text": "ಯಾಕಂದ್ರೆ ನಾನು ತಡ ಆಗ್ತೀನಿ ಅಂತ ನನಗೆ ಚಿಂತೆ.",
+    "target_text": "Because I'm worried that I'm going to be late."
+   },
+   "lego_id": "S0270L01",
+   "lego": [
+    {
+     "known_text": "ನಾನು ತಡ ಆಗ್ತೀನಿ",
+     "target_text": "I'm going to be late"
+    }
+   ]
+  },
+  {
+   "seed_number": 272,
+   "seed": {
+    "known_text": "ಹೌದು ಅದು ಒಂದು ಒಳ್ಳೆ ಆಲೋಚನೆ ಅನ್ನಿಸುತ್ತೆ.",
+    "target_text": "Yes that sounds like a great idea."
+   },
+   "lego_id": "S0272L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಒಂದು ಒಳ್ಳೆ ಆಲೋಚನೆ ಅನ್ನಿಸುತ್ತೆ",
+     "target_text": "that sounds like a great idea"
+    }
+   ]
+  },
+  {
+   "seed_number": 279,
+   "seed": {
+    "known_text": "ಹೌದು ಯಾಕಂದ್ರೆ ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ.",
+    "target_text": "Yes because there wasn't much time left."
+   },
+   "lego_id": "S0279L01",
+   "lego": [
+    {
+     "known_text": "ಹೆಚ್ಚು ಸಮಯ ಉಳಿದಿರಲಿಲ್ಲ",
+     "target_text": "there wasn't much time left"
+    }
+   ]
+  },
+  {
+   "seed_number": 294,
+   "seed": {
+    "known_text": "ಇವತ್ತು ರಾತ್ರಿ ನಿಮಗೆ ಕರೆ ಮಾಡೋಕೆ ನನಗೆ ಸಾಕಷ್ಟು ಸಮಯ ಇಲ್ಲ.",
+    "target_text": "I don't have enough time to call you tonight."
+   },
+   "lego_id": "S0294L02",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸಾಕಷ್ಟು ಸಮಯ ಇಲ್ಲ",
+     "target_text": "I don't have enough time"
+    }
+   ]
+  },
+  {
+   "seed_number": 299,
+   "seed": {
+    "known_text": "ಅವನಿಗೆ ಅರ್ಧ ಪಾವತಿಸಬೇಕು.",
+    "target_text": "He wants to pay half."
+   },
+   "lego_id": "S0299L01",
+   "lego": [
+    {
+     "known_text": "ಅವನಿಗೆ ಅರ್ಧ ಪಾವತಿಸಬೇಕು",
+     "target_text": "he wants to pay half"
+    }
+   ]
+  },
+  {
+   "seed_number": 477,
+   "seed": {
+    "known_text": "ಅವನು ರಜೆಯ ಎರಡನೇ ದಿನದಿಂದ ಅನಾರೋಗ್ಯದಿಂದ ಇದ್ದಾನೆ.",
+    "target_text": "He's been sick since the second day of the holidays."
+   },
+   "lego_id": "S0477L02",
+   "lego": [
+    {
+     "known_text": "ಎರಡನೇ ದಿನದಿಂದ",
+     "target_text": "since the second day"
+    }
+   ]
+  },
+  {
+   "seed_number": 485,
+   "seed": {
+    "known_text": "ದೂರ ಹೋಗೋದಕ್ಕಿಂತ ಹೆಚ್ಚು ನನಗೆ ಸಂತೋಷ ಕೊಡೋ ಬೇರೆ ಯಾವುದೂ ಇಲ್ಲ.",
+    "target_text": "Nothing would make me happier than to get away."
+   },
+   "lego_id": "S0485L02",
+   "lego": [
+    {
+     "known_text": "ಹೋಗೋದಕ್ಕಿಂತ",
+     "target_text": "than going"
+    }
+   ]
+  },
+  {
+   "seed_number": 485,
+   "seed": {
+    "known_text": "ದೂರ ಹೋಗೋದಕ್ಕಿಂತ ಹೆಚ್ಚು ನನಗೆ ಸಂತೋಷ ಕೊಡೋ ಬೇರೆ ಯಾವುದೂ ಇಲ್ಲ.",
+    "target_text": "Nothing would make me happier than to get away."
+   },
+   "lego_id": "S0485L04",
+   "lego": [
+    {
+     "known_text": "ಬೇರೆ ಯಾವುದೂ ಇಲ್ಲ",
+     "target_text": "there's nothing else"
+    }
+   ]
+  },
+  {
+   "seed_number": 501,
+   "seed": {
+    "known_text": "ನೀವು ಜಗಳ ಆಡದೆ ಒಟ್ಟಿಗೆ ಆಡ್ತೀರಿ ಅಂತ ನಾನು ನಂಬಬಹುದಾಗಿದ್ರೆ ಎಷ್ಟು ಚೆನ್ನ.",
+    "target_text": "If only I could trust you to play together without arguing."
+   },
+   "lego_id": "S0501L01",
+   "lego": [
+    {
+     "known_text": "ಜಗಳ ಆಡದೆ",
+     "target_text": "without arguing"
+    }
+   ]
+  },
+  {
+   "seed_number": 504,
+   "seed": {
+    "known_text": "ನಾನು ಹುಲ್ಲಿನ ಮೇಲೆ ಓಡಿ ಆಚೆ ಹೋಗ್ತೀನಿ.",
+    "target_text": "I'm going to run across the grass."
+   },
+   "lego_id": "S0504L01",
+   "lego": [
+    {
+     "known_text": "ಹುಲ್ಲಿನ ಮೇಲೆ",
+     "target_text": "the grass"
+    }
+   ]
+  },
+  {
+   "seed_number": 504,
+   "seed": {
+    "known_text": "ನಾನು ಹುಲ್ಲಿನ ಮೇಲೆ ಓಡಿ ಆಚೆ ಹೋಗ್ತೀನಿ.",
+    "target_text": "I'm going to run across the grass."
+   },
+   "lego_id": "S0504L01",
+   "lego": [
+    {
+     "known_text": "ಹುಲ್ಲಿನ ಮೇಲೆ",
+     "target_text": "the grass"
+    }
+   ]
+  },
+  {
+   "seed_number": 507,
+   "seed": {
+    "known_text": "ನಾವು ನಗರಕ್ಕೆ ಸ್ಥಳಾಂತರ ಆದೆವು.",
+    "target_text": "We moved to the city."
+   },
+   "lego_id": "S0507L01",
+   "lego": [
+    {
+     "known_text": "ನಗರಕ್ಕೆ",
+     "target_text": "to the city"
+    }
+   ]
+  },
+  {
+   "seed_number": 507,
+   "seed": {
+    "known_text": "ನಾವು ನಗರಕ್ಕೆ ಸ್ಥಳಾಂತರ ಆದೆವು.",
+    "target_text": "We moved to the city."
+   },
+   "lego_id": "S0507L01",
+   "lego": [
+    {
+     "known_text": "ನಗರಕ್ಕೆ",
+     "target_text": "to the city"
+    }
+   ]
+  },
+  {
+   "seed_number": 507,
+   "seed": {
+    "known_text": "ನಾವು ನಗರಕ್ಕೆ ಸ್ಥಳಾಂತರ ಆದೆವು.",
+    "target_text": "We moved to the city."
+   },
+   "lego_id": "S0507L01",
+   "lego": [
+    {
+     "known_text": "ನಗರಕ್ಕೆ",
+     "target_text": "to the city"
+    }
+   ]
+  },
+  {
+   "seed_number": 509,
+   "seed": {
+    "known_text": "ನೀವು ಒಂದು ಹೊಸ ಹಾಸಿಗೆಗೆ ಹಣ ಕೊಡ್ತಿದ್ದೀರಿ ಅಂತ ನಾನು ಕೇಳಿದೆ.",
+    "target_text": "I heard that you're going to pay for a new bed."
+   },
+   "lego_id": "S0509L01",
+   "lego": [
+    {
+     "known_text": "ಒಂದು ಹೊಸ ಹಾಸಿಗೆಗೆ",
+     "target_text": "for a new bed"
+    }
+   ]
+  },
+  {
+   "seed_number": 509,
+   "seed": {
+    "known_text": "ನೀವು ಒಂದು ಹೊಸ ಹಾಸಿಗೆಗೆ ಹಣ ಕೊಡ್ತಿದ್ದೀರಿ ಅಂತ ನಾನು ಕೇಳಿದೆ.",
+    "target_text": "I heard that you're going to pay for a new bed."
+   },
+   "lego_id": "S0509L01",
+   "lego": [
+    {
+     "known_text": "ಒಂದು ಹೊಸ ಹಾಸಿಗೆಗೆ",
+     "target_text": "for a new bed"
+    }
+   ]
+  },
+  {
+   "seed_number": 510,
+   "seed": {
+    "known_text": "ಕಾರ್ ನಿಲ್ಲಿಸೋಕೆ ಸುರಕ್ಷಿತ ಜಾಗ ಹುಡುಕೋಕೆ ಅವಳು ಹೋಗಿದ್ದಾಳೆ.",
+    "target_text": "She's gone to look for somewhere safe to park the car."
+   },
+   "lego_id": "S0510L01",
+   "lego": [
+    {
+     "known_text": "ಕಾರ್ ನಿಲ್ಲಿಸೋಕೆ",
+     "target_text": "to park the car"
+    }
+   ]
+  },
+  {
+   "seed_number": 510,
+   "seed": {
+    "known_text": "ಕಾರ್ ನಿಲ್ಲಿಸೋಕೆ ಸುರಕ್ಷಿತ ಜಾಗ ಹುಡುಕೋಕೆ ಅವಳು ಹೋಗಿದ್ದಾಳೆ.",
+    "target_text": "She's gone to look for somewhere safe to park the car."
+   },
+   "lego_id": "S0510L01",
+   "lego": [
+    {
+     "known_text": "ಕಾರ್ ನಿಲ್ಲಿಸೋಕೆ",
+     "target_text": "to park the car"
+    }
+   ]
+  },
+  {
+   "seed_number": 511,
+   "seed": {
+    "known_text": "ಆ ಸುದ್ದಿ ಆಫೀಸಲ್ಲಿರೋ ಎಲ್ಲರಿಗೂ ತಲುಪೋಕೆ ಹಲವಾರು ಗಂಟೆ ತಗೊಂಡಿತು.",
+    "target_text": "The news took several hours to reach everyone in the office."
+   },
+   "lego_id": "S0511L01",
+   "lego": [
+    {
+     "known_text": "ಆ ಸುದ್ದಿ",
+     "target_text": "the news"
+    }
+   ]
+  },
+  {
+   "seed_number": 511,
+   "seed": {
+    "known_text": "ಆ ಸುದ್ದಿ ಆಫೀಸಲ್ಲಿರೋ ಎಲ್ಲರಿಗೂ ತಲುಪೋಕೆ ಹಲವಾರು ಗಂಟೆ ತಗೊಂಡಿತು.",
+    "target_text": "The news took several hours to reach everyone in the office."
+   },
+   "lego_id": "S0511L01",
+   "lego": [
+    {
+     "known_text": "ಆ ಸುದ್ದಿ",
+     "target_text": "the news"
+    }
+   ]
+  },
+  {
+   "seed_number": 511,
+   "seed": {
+    "known_text": "ಆ ಸುದ್ದಿ ಆಫೀಸಲ್ಲಿರೋ ಎಲ್ಲರಿಗೂ ತಲುಪೋಕೆ ಹಲವಾರು ಗಂಟೆ ತಗೊಂಡಿತು.",
+    "target_text": "The news took several hours to reach everyone in the office."
+   },
+   "lego_id": "S0511L01",
+   "lego": [
+    {
+     "known_text": "ಆ ಸುದ್ದಿ",
+     "target_text": "the news"
+    }
+   ]
+  },
+  {
+   "seed_number": 512,
+   "seed": {
+    "known_text": "ನಾನು ಬೀಗದ ಕೈ ತಗೊಂಡು ಬರೋವರೆಗೆ ನೀವು ಬಾಗಿಲನ್ನ ತೆಗೆದು ಹಿಡ್ಕೊಂಡಿರ್ತೀರಾ?",
+    "target_text": "Can you hold the door open while I fetch the keys?"
+   },
+   "lego_id": "S0512L01",
+   "lego": [
+    {
+     "known_text": "ಬೀಗದ ಕೈ",
+     "target_text": "the keys"
+    }
+   ]
+  },
+  {
+   "seed_number": 512,
+   "seed": {
+    "known_text": "ನಾನು ಬೀಗದ ಕೈ ತಗೊಂಡು ಬರೋವರೆಗೆ ನೀವು ಬಾಗಿಲನ್ನ ತೆಗೆದು ಹಿಡ್ಕೊಂಡಿರ್ತೀರಾ?",
+    "target_text": "Can you hold the door open while I fetch the keys?"
+   },
+   "lego_id": "S0512L01",
+   "lego": [
+    {
+     "known_text": "ಬೀಗದ ಕೈ",
+     "target_text": "the keys"
+    }
+   ]
+  },
+  {
+   "seed_number": 512,
+   "seed": {
+    "known_text": "ನಾನು ಬೀಗದ ಕೈ ತಗೊಂಡು ಬರೋವರೆಗೆ ನೀವು ಬಾಗಿಲನ್ನ ತೆಗೆದು ಹಿಡ್ಕೊಂಡಿರ್ತೀರಾ?",
+    "target_text": "Can you hold the door open while I fetch the keys?"
+   },
+   "lego_id": "S0512L01",
+   "lego": [
+    {
+     "known_text": "ಬೀಗದ ಕೈ",
+     "target_text": "the keys"
+    }
+   ]
+  },
+  {
+   "seed_number": 513,
+   "seed": {
+    "known_text": "ನಾನು ತಲೆಯನ್ನ ಮೇಲೆ ಕೆಳಗೆ ಆಡಿಸಿದಾಗ ಅದು ಅತಿ ಹೆಚ್ಚು ನೋವಾಗುತ್ತೆ.",
+    "target_text": "It hurts most when I move my head up and down."
+   },
+   "lego_id": "S0513L01",
+   "lego": [
+    {
+     "known_text": "ಮೇಲೆ ಕೆಳಗೆ",
+     "target_text": "up and down"
+    }
+   ]
+  },
+  {
+   "seed_number": 513,
+   "seed": {
+    "known_text": "ನಾನು ತಲೆಯನ್ನ ಮೇಲೆ ಕೆಳಗೆ ಆಡಿಸಿದಾಗ ಅದು ಅತಿ ಹೆಚ್ಚು ನೋವಾಗುತ್ತೆ.",
+    "target_text": "It hurts most when I move my head up and down."
+   },
+   "lego_id": "S0513L01",
+   "lego": [
+    {
+     "known_text": "ಮೇಲೆ ಕೆಳಗೆ",
+     "target_text": "up and down"
+    }
+   ]
+  },
+  {
+   "seed_number": 514,
+   "seed": {
+    "known_text": "ನನಗೆ ಮೊದಲ ದಿನವೇ ಪರಿಪೂರ್ಣ ಮನೆ ಸಿಕ್ತು.",
+    "target_text": "I found the perfect house on the first day."
+   },
+   "lego_id": "S0514L01",
+   "lego": [
+    {
+     "known_text": "ಮೊದಲ ದಿನವೇ",
+     "target_text": "on the first day"
+    }
+   ]
+  },
+  {
+   "seed_number": 514,
+   "seed": {
+    "known_text": "ನನಗೆ ಮೊದಲ ದಿನವೇ ಪರಿಪೂರ್ಣ ಮನೆ ಸಿಕ್ತು.",
+    "target_text": "I found the perfect house on the first day."
+   },
+   "lego_id": "S0514L02",
+   "lego": [
+    {
+     "known_text": "ಪರಿಪೂರ್ಣ ಮನೆ",
+     "target_text": "the perfect house"
+    }
+   ]
+  },
+  {
+   "seed_number": 515,
+   "seed": {
+    "known_text": "ಹೊಸ ವರ್ಷದ ಮೊದಲ ದಿನ.",
+    "target_text": "On the first day of the new year."
+   },
+   "lego_id": "S0515L01",
+   "lego": [
+    {
+     "known_text": "ಹೊಸ ವರ್ಷದ",
+     "target_text": "of the new year"
+    }
+   ]
+  },
+  {
+   "seed_number": 515,
+   "seed": {
+    "known_text": "ಹೊಸ ವರ್ಷದ ಮೊದಲ ದಿನ.",
+    "target_text": "On the first day of the new year."
+   },
+   "lego_id": "S0515L01",
+   "lego": [
+    {
+     "known_text": "ಹೊಸ ವರ್ಷದ",
+     "target_text": "of the new year"
+    }
+   ]
+  },
+  {
+   "seed_number": 516,
+   "seed": {
+    "known_text": "ಅವರಿಬ್ಬರೂ ತಾವಾಗಿಯೇ ಬಂದ್ರು.",
+    "target_text": "They both came on their own."
+   },
+   "lego_id": "S0516L01",
+   "lego": [
+    {
+     "known_text": "ಅವರಿಬ್ಬರೂ",
+     "target_text": "they both"
+    }
+   ]
+  },
+  {
+   "seed_number": 516,
+   "seed": {
+    "known_text": "ಅವರಿಬ್ಬರೂ ತಾವಾಗಿಯೇ ಬಂದ್ರು.",
+    "target_text": "They both came on their own."
+   },
+   "lego_id": "S0516L01",
+   "lego": [
+    {
+     "known_text": "ಅವರಿಬ್ಬರೂ",
+     "target_text": "they both"
+    }
+   ]
+  },
+  {
+   "seed_number": 516,
+   "seed": {
+    "known_text": "ಅವರಿಬ್ಬರೂ ತಾವಾಗಿಯೇ ಬಂದ್ರು.",
+    "target_text": "They both came on their own."
+   },
+   "lego_id": "S0516L01",
+   "lego": [
+    {
+     "known_text": "ಅವರಿಬ್ಬರೂ",
+     "target_text": "they both"
+    }
+   ]
+  },
+  {
+   "seed_number": 518,
+   "seed": {
+    "known_text": "ನನಗೆ ಸರಿಯಾಗಿ ಇದೇ ಸಮಸ್ಯೆ ಇರೋದನ್ನ ನಾನು ಊಹಿಸೋಕೆ ಆಗಲಿಲ್ಲ.",
+    "target_text": "I couldn't imagine myself having exactly the same problem."
+   },
+   "lego_id": "S0518L01",
+   "lego": [
+    {
+     "known_text": "ಸರಿಯಾಗಿ ಇದೇ ಸಮಸ್ಯೆ",
+     "target_text": "exactly the same problem"
+    }
+   ]
+  },
+  {
+   "seed_number": 518,
+   "seed": {
+    "known_text": "ನನಗೆ ಸರಿಯಾಗಿ ಇದೇ ಸಮಸ್ಯೆ ಇರೋದನ್ನ ನಾನು ಊಹಿಸೋಕೆ ಆಗಲಿಲ್ಲ.",
+    "target_text": "I couldn't imagine myself having exactly the same problem."
+   },
+   "lego_id": "S0518L01",
+   "lego": [
+    {
+     "known_text": "ಸರಿಯಾಗಿ ಇದೇ ಸಮಸ್ಯೆ",
+     "target_text": "exactly the same problem"
+    }
+   ]
+  },
+  {
+   "seed_number": 519,
+   "seed": {
+    "known_text": "ನಾನು ಅವರ ಹೊಸ ಮಗುವನ್ನ ಇನ್ನೂ ನೋಡಿಲ್ಲ.",
+    "target_text": "I haven't seen their new baby yet."
+   },
+   "lego_id": "S0519L01",
+   "lego": [
+    {
+     "known_text": "ಅವರ ಹೊಸ ಮಗುವನ್ನ",
+     "target_text": "their new baby"
+    }
+   ]
+  },
+  {
+   "seed_number": 519,
+   "seed": {
+    "known_text": "ನಾನು ಅವರ ಹೊಸ ಮಗುವನ್ನ ಇನ್ನೂ ನೋಡಿಲ್ಲ.",
+    "target_text": "I haven't seen their new baby yet."
+   },
+   "lego_id": "S0519L01",
+   "lego": [
+    {
+     "known_text": "ಅವರ ಹೊಸ ಮಗುವನ್ನ",
+     "target_text": "their new baby"
+    }
+   ]
+  },
+  {
+   "seed_number": 520,
+   "seed": {
+    "known_text": "ಅದು ಇಡೀ ಕುಟುಂಬಕ್ಕೆ ಆಗಿರಬಹುದು.",
+    "target_text": "It might have happened to the whole family."
+   },
+   "lego_id": "S0520L01",
+   "lego": [
+    {
+     "known_text": "ಇಡೀ ಕುಟುಂಬಕ್ಕೆ",
+     "target_text": "to the whole family"
+    }
+   ]
+  },
+  {
+   "seed_number": 520,
+   "seed": {
+    "known_text": "ಅದು ಇಡೀ ಕುಟುಂಬಕ್ಕೆ ಆಗಿರಬಹುದು.",
+    "target_text": "It might have happened to the whole family."
+   },
+   "lego_id": "S0520L01",
+   "lego": [
+    {
+     "known_text": "ಇಡೀ ಕುಟುಂಬಕ್ಕೆ",
+     "target_text": "to the whole family"
+    }
+   ]
+  },
+  {
+   "seed_number": 522,
+   "seed": {
+    "known_text": "ಸತ್ಯ ಹೇಳಿದ್ದು ದಡ್ಡತನ ಆಗಿತ್ತು ಅಂತ ಒಪ್ಪಿಕೊಳ್ಳೋಣ.",
+    "target_text": "Let's agree that it was stupid to tell the truth."
+   },
+   "lego_id": "S0522L01",
+   "lego": [
+    {
+     "known_text": "ಸತ್ಯ ಹೇಳಿದ್ದು",
+     "target_text": "to tell the truth"
+    }
+   ]
+  },
+  {
+   "seed_number": 522,
+   "seed": {
+    "known_text": "ಸತ್ಯ ಹೇಳಿದ್ದು ದಡ್ಡತನ ಆಗಿತ್ತು ಅಂತ ಒಪ್ಪಿಕೊಳ್ಳೋಣ.",
+    "target_text": "Let's agree that it was stupid to tell the truth."
+   },
+   "lego_id": "S0522L01",
+   "lego": [
+    {
+     "known_text": "ಸತ್ಯ ಹೇಳಿದ್ದು",
+     "target_text": "to tell the truth"
+    }
+   ]
+  },
+  {
+   "seed_number": 523,
+   "seed": {
+    "known_text": "ಒಂದು ನೆಪ ಕೊಡೋ ಬದಲು.",
+    "target_text": "Instead of giving an excuse."
+   },
+   "lego_id": "S0523L01",
+   "lego": [
+    {
+     "known_text": "ಒಂದು ನೆಪ",
+     "target_text": "an excuse"
+    }
+   ]
+  },
+  {
+   "seed_number": 523,
+   "seed": {
+    "known_text": "ಒಂದು ನೆಪ ಕೊಡೋ ಬದಲು.",
+    "target_text": "Instead of giving an excuse."
+   },
+   "lego_id": "S0523L01",
+   "lego": [
+    {
+     "known_text": "ಒಂದು ನೆಪ",
+     "target_text": "an excuse"
+    }
+   ]
+  },
+  {
+   "seed_number": 523,
+   "seed": {
+    "known_text": "ಒಂದು ನೆಪ ಕೊಡೋ ಬದಲು.",
+    "target_text": "Instead of giving an excuse."
+   },
+   "lego_id": "S0523L01",
+   "lego": [
+    {
+     "known_text": "ಒಂದು ನೆಪ",
+     "target_text": "an excuse"
+    }
+   ]
+  },
+  {
+   "seed_number": 523,
+   "seed": {
+    "known_text": "ಒಂದು ನೆಪ ಕೊಡೋ ಬದಲು.",
+    "target_text": "Instead of giving an excuse."
+   },
+   "lego_id": "S0523L02",
+   "lego": [
+    {
+     "known_text": "ಕೊಡೋ ಬದಲು",
+     "target_text": "instead of giving"
+    }
+   ]
+  },
+  {
+   "seed_number": 525,
+   "seed": {
+    "known_text": "ನಿಮ್ಮಿಂದ ಮುಗಿಸೋಕೆ ಆಗಿದೆಯಾ ಅಂತ ನೋಡೋಕೆ.",
+    "target_text": "To check if you've been able to finish."
+   },
+   "lego_id": "S0525L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮ್ಮಿಂದ ಮುಗಿಸೋಕೆ ಆಗಿದೆಯಾ",
+     "target_text": "you've been able to finish"
+    }
+   ]
+  },
+  {
+   "seed_number": 525,
+   "seed": {
+    "known_text": "ನಿಮ್ಮಿಂದ ಮುಗಿಸೋಕೆ ಆಗಿದೆಯಾ ಅಂತ ನೋಡೋಕೆ.",
+    "target_text": "To check if you've been able to finish."
+   },
+   "lego_id": "S0525L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮ್ಮಿಂದ ಮುಗಿಸೋಕೆ ಆಗಿದೆಯಾ",
+     "target_text": "you've been able to finish"
+    }
+   ]
+  },
+  {
+   "seed_number": 526,
+   "seed": {
+    "known_text": "ನಿಮ್ಮಿಂದ ಊಹಿಸೋಕೆ ಆಗಲ್ಲ ಅನ್ನೋದನ್ನ ನಂಬೋಕೆ ನನಗೆ ಕಷ್ಟ ಆಗ್ತಿದೆ.",
+    "target_text": "I'm finding it hard to believe that you can't guess."
+   },
+   "lego_id": "S0526L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮ್ಮಿಂದ ಊಹಿಸೋಕೆ ಆಗಲ್ಲ",
+     "target_text": "you can't guess"
+    }
+   ]
+  },
+  {
+   "seed_number": 526,
+   "seed": {
+    "known_text": "ನಿಮ್ಮಿಂದ ಊಹಿಸೋಕೆ ಆಗಲ್ಲ ಅನ್ನೋದನ್ನ ನಂಬೋಕೆ ನನಗೆ ಕಷ್ಟ ಆಗ್ತಿದೆ.",
+    "target_text": "I'm finding it hard to believe that you can't guess."
+   },
+   "lego_id": "S0526L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮ್ಮಿಂದ ಊಹಿಸೋಕೆ ಆಗಲ್ಲ",
+     "target_text": "you can't guess"
+    }
+   ]
+  },
+  {
+   "seed_number": 527,
+   "seed": {
+    "known_text": "ಆ ತಮಾಷೆ ಕಥೆ ನನಗೆ ಯಾರು ಹೇಳಿದ್ರು ಅಂತ ಊಹಿಸಿ.",
+    "target_text": "Guess who told me that funny story."
+   },
+   "lego_id": "S0527L01",
+   "lego": [
+    {
+     "known_text": "ಆ ತಮಾಷೆ ಕಥೆ",
+     "target_text": "that funny story"
+    }
+   ]
+  },
+  {
+   "seed_number": 527,
+   "seed": {
+    "known_text": "ಆ ತಮಾಷೆ ಕಥೆ ನನಗೆ ಯಾರು ಹೇಳಿದ್ರು ಅಂತ ಊಹಿಸಿ.",
+    "target_text": "Guess who told me that funny story."
+   },
+   "lego_id": "S0527L01",
+   "lego": [
+    {
+     "known_text": "ಆ ತಮಾಷೆ ಕಥೆ",
+     "target_text": "that funny story"
+    }
+   ]
+  },
+  {
+   "seed_number": 527,
+   "seed": {
+    "known_text": "ಆ ತಮಾಷೆ ಕಥೆ ನನಗೆ ಯಾರು ಹೇಳಿದ್ರು ಅಂತ ಊಹಿಸಿ.",
+    "target_text": "Guess who told me that funny story."
+   },
+   "lego_id": "S0527L01",
+   "lego": [
+    {
+     "known_text": "ಆ ತಮಾಷೆ ಕಥೆ",
+     "target_text": "that funny story"
+    }
+   ]
+  },
+  {
+   "seed_number": 528,
+   "seed": {
+    "known_text": "ಬಹುಶಃ ನಾನು ಆ ವಸ್ತುಗಳನ್ನ ಬೇರೆ ಕೋಣೆಯಲ್ಲಿ ಇಡಬೇಕು.",
+    "target_text": "I'm probably supposed to keep those things in another room."
+   },
+   "lego_id": "S0528L01",
+   "lego": [
+    {
+     "known_text": "ಆ ವಸ್ತುಗಳನ್ನ",
+     "target_text": "those things"
+    }
+   ]
+  },
+  {
+   "seed_number": 528,
+   "seed": {
+    "known_text": "ಬಹುಶಃ ನಾನು ಆ ವಸ್ತುಗಳನ್ನ ಬೇರೆ ಕೋಣೆಯಲ್ಲಿ ಇಡಬೇಕು.",
+    "target_text": "I'm probably supposed to keep those things in another room."
+   },
+   "lego_id": "S0528L01",
+   "lego": [
+    {
+     "known_text": "ಆ ವಸ್ತುಗಳನ್ನ",
+     "target_text": "those things"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "ನೀವೆಲ್ಲ ನಿಮ್ಮ ಕೈಗಳನ್ನ ಮೇಲೆ ಎತ್ತ್ತೀರಾ?",
+    "target_text": "Can you all put your hands up?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮ್ಮ ಕೈಗಳನ್ನ",
+     "target_text": "your hands"
+    }
+   ]
+  },
+  {
+   "seed_number": 529,
+   "seed": {
+    "known_text": "ನೀವೆಲ್ಲ ನಿಮ್ಮ ಕೈಗಳನ್ನ ಮೇಲೆ ಎತ್ತ್ತೀರಾ?",
+    "target_text": "Can you all put your hands up?"
+   },
+   "lego_id": "S0529L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮ್ಮ ಕೈಗಳನ್ನ",
+     "target_text": "your hands"
+    }
+   ]
+  },
+  {
+   "seed_number": 530,
+   "seed": {
+    "known_text": "ನಾನು ಅವನ್ನ ಎಣಿಸೋಕೆ ಆಗೋ ಹಾಗೆ",
+    "target_text": "So I can count them"
+   },
+   "lego_id": "S0530L01",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಅವನ್ನ ಎಣಿಸೋಕೆ ಆಗೋ ಹಾಗೆ",
+     "target_text": "so I can count them"
+    }
+   ]
+  },
+  {
+   "seed_number": 531,
+   "seed": {
+    "known_text": "ಯಾರು ಬೇಕಾದರೂ ಆಟ ಗೆಲ್ಲಬಹುದು ಅನ್ನೋದು ನಿಜ ಅಲ್ಲ.",
+    "target_text": "It isn't true that anyone can win the game."
+   },
+   "lego_id": "S0531L01",
+   "lego": [
+    {
+     "known_text": "ಯಾರು ಬೇಕಾದರೂ",
+     "target_text": "anyone"
+    }
+   ]
+  },
+  {
+   "seed_number": 531,
+   "seed": {
+    "known_text": "ಯಾರು ಬೇಕಾದರೂ ಆಟ ಗೆಲ್ಲಬಹುದು ಅನ್ನೋದು ನಿಜ ಅಲ್ಲ.",
+    "target_text": "It isn't true that anyone can win the game."
+   },
+   "lego_id": "S0531L01",
+   "lego": [
+    {
+     "known_text": "ಯಾರು ಬೇಕಾದರೂ",
+     "target_text": "anyone"
+    }
+   ]
+  },
+  {
+   "seed_number": 532,
+   "seed": {
+    "known_text": "ಅವರು ಅದೃಷ್ಟವಂತರಾಗಿದ್ರೆ ಮಾತ್ರ.",
+    "target_text": "Unless they're lucky."
+   },
+   "lego_id": "S0532L01",
+   "lego": [
+    {
+     "known_text": "ಅವರು ಅದೃಷ್ಟವಂತರಾಗಿದ್ರೆ ಮಾತ್ರ",
+     "target_text": "unless they're lucky"
+    }
+   ]
+  },
+  {
+   "seed_number": 533,
+   "seed": {
+    "known_text": "ನೀವು ಹೇಳೋ ಪ್ರತಿಯೊಂದು ಪದವನ್ನೂ ಅವಳು ಕೇಳಿಸಿಕೊಳ್ಳಲ್ಲ.",
+    "target_text": "She won't listen to every word you say."
+   },
+   "lego_id": "S0533L01",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಹೇಳೋ",
+     "target_text": "you say"
+    }
+   ]
+  },
+  {
+   "seed_number": 533,
+   "seed": {
+    "known_text": "ನೀವು ಹೇಳೋ ಪ್ರತಿಯೊಂದು ಪದವನ್ನೂ ಅವಳು ಕೇಳಿಸಿಕೊಳ್ಳಲ್ಲ.",
+    "target_text": "She won't listen to every word you say."
+   },
+   "lego_id": "S0533L01",
+   "lego": [
+    {
+     "known_text": "ನೀವು ಹೇಳೋ",
+     "target_text": "you say"
+    }
+   ]
+  },
+  {
+   "seed_number": 533,
+   "seed": {
+    "known_text": "ನೀವು ಹೇಳೋ ಪ್ರತಿಯೊಂದು ಪದವನ್ನೂ ಅವಳು ಕೇಳಿಸಿಕೊಳ್ಳಲ್ಲ.",
+    "target_text": "She won't listen to every word you say."
+   },
+   "lego_id": "S0533L02",
+   "lego": [
+    {
+     "known_text": "ಪ್ರತಿಯೊಂದು ಪದವನ್ನೂ",
+     "target_text": "every word"
+    }
+   ]
+  },
+  {
+   "seed_number": 534,
+   "seed": {
+    "known_text": "ಈ ಭಯಂಕರ ಹವಾಮಾನದಲ್ಲಿ ಹೊರಗೆ ಹೋಗೋದು ಬೇಡ.",
+    "target_text": "Let's not go outside in this dreadful weather."
+   },
+   "lego_id": "S0534L01",
+   "lego": [
+    {
+     "known_text": "ಈ ಭಯಂಕರ ಹವಾಮಾನದಲ್ಲಿ",
+     "target_text": "in this dreadful weather"
+    }
+   ]
+  },
+  {
+   "seed_number": 534,
+   "seed": {
+    "known_text": "ಈ ಭಯಂಕರ ಹವಾಮಾನದಲ್ಲಿ ಹೊರಗೆ ಹೋಗೋದು ಬೇಡ.",
+    "target_text": "Let's not go outside in this dreadful weather."
+   },
+   "lego_id": "S0534L01",
+   "lego": [
+    {
+     "known_text": "ಈ ಭಯಂಕರ ಹವಾಮಾನದಲ್ಲಿ",
+     "target_text": "in this dreadful weather"
+    }
+   ]
+  },
+  {
+   "seed_number": 535,
+   "seed": {
+    "known_text": "ತಾನು ತಪ್ಪು ಕೆಲಸ ಆಯ್ಕೆ ಮಾಡಲ್ಲ ಅಂತ ಅವನು ಮಾತು ಕೊಟ್ಟ.",
+    "target_text": "He made a promise that he wouldn't choose the wrong job."
+   },
+   "lego_id": "S0535L01",
+   "lego": [
+    {
+     "known_text": "ತಪ್ಪು ಕೆಲಸ",
+     "target_text": "the wrong job"
+    }
+   ]
+  },
+  {
+   "seed_number": 535,
+   "seed": {
+    "known_text": "ತಾನು ತಪ್ಪು ಕೆಲಸ ಆಯ್ಕೆ ಮಾಡಲ್ಲ ಅಂತ ಅವನು ಮಾತು ಕೊಟ್ಟ.",
+    "target_text": "He made a promise that he wouldn't choose the wrong job."
+   },
+   "lego_id": "S0535L01",
+   "lego": [
+    {
+     "known_text": "ತಪ್ಪು ಕೆಲಸ",
+     "target_text": "the wrong job"
+    }
+   ]
+  },
+  {
+   "seed_number": 539,
+   "seed": {
+    "known_text": "ಆದರೆ ಹೊತ್ತಾಗ್ತಿದೆ.",
+    "target_text": "But it's getting late."
+   },
+   "lego_id": "S0539L02",
+   "lego": [
+    {
+     "known_text": "ಹೊತ್ತಾಗ್ತಿದೆ",
+     "target_text": "it's getting late"
+    }
+   ]
+  },
+  {
+   "seed_number": 547,
+   "seed": {
+    "known_text": "ಯಾಕಂದ್ರೆ ಅದು ಕೆಸರಲ್ಲಿ ಆಡ್ತಿತ್ತು.",
+    "target_text": "Because he has been playing in the mud."
+   },
+   "lego_id": "S0547L02",
+   "lego": [
+    {
+     "known_text": "ಅದು ಕೆಸರಲ್ಲಿ ಆಡ್ತಿತ್ತು",
+     "target_text": "he has been playing in the mud"
+    }
+   ]
+  },
+  {
+   "seed_number": 551,
+   "seed": {
+    "known_text": "ಚರ್ಚ್ ಕುರೂಪವಾಗಿದೆ.",
+    "target_text": "The church is ugly."
+   },
+   "lego_id": "S0551L02",
+   "lego": [
+    {
+     "known_text": "ಕುರೂಪವಾಗಿದೆ",
+     "target_text": "is ugly"
+    }
+   ]
+  },
+  {
+   "seed_number": 558,
+   "seed": {
+    "known_text": "ರಾತ್ರಿ ತುಂಬಾ ಹೊತ್ತಾಗಿದೆ.",
+    "target_text": "It's so late at night."
+   },
+   "lego_id": "S0558L02",
+   "lego": [
+    {
+     "known_text": "ತುಂಬಾ ಹೊತ್ತಾಗಿದೆ",
+     "target_text": "it's so late"
+    }
+   ]
+  },
+  {
+   "seed_number": 558,
+   "seed": {
+    "known_text": "ರಾತ್ರಿ ತುಂಬಾ ಹೊತ್ತಾಗಿದೆ.",
+    "target_text": "It's so late at night."
+   },
+   "lego_id": "S0558L03",
+   "lego": [
+    {
+     "known_text": "ರಾತ್ರಿ ತುಂಬಾ ಹೊತ್ತಾಗಿದೆ",
+     "target_text": "it's so late at night"
+    }
+   ]
+  },
+  {
+   "seed_number": 558,
+   "seed": {
+    "known_text": "ರಾತ್ರಿ ತುಂಬಾ ಹೊತ್ತಾಗಿದೆ.",
+    "target_text": "It's so late at night."
+   },
+   "lego_id": "S0558L03",
+   "lego": [
+    {
+     "known_text": "ರಾತ್ರಿ ತುಂಬಾ ಹೊತ್ತಾಗಿದೆ",
+     "target_text": "it's so late at night"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "ಕಳೆದ ಸಲ ಅವರು ನಮ್ಮನ್ನ ಭೇಟಿ ಮಾಡಿದಾಗ ಏನಾಯ್ತು ಅಂತ ನೀವು ಮರೆತುಬಿಟ್ರಾ?",
+    "target_text": "Have you forgotten what happened the last time they visited us?"
+   },
+   "lego_id": "S0572L05",
+   "lego": [
+    {
+     "known_text": "ಏನಾಯ್ತು",
+     "target_text": "what happened"
+    }
+   ]
+  },
+  {
+   "seed_number": 572,
+   "seed": {
+    "known_text": "ಕಳೆದ ಸಲ ಅವರು ನಮ್ಮನ್ನ ಭೇಟಿ ಮಾಡಿದಾಗ ಏನಾಯ್ತು ಅಂತ ನೀವು ಮರೆತುಬಿಟ್ರಾ?",
+    "target_text": "Have you forgotten what happened the last time they visited us?"
+   },
+   "lego_id": "S0572L06",
+   "lego": [
+    {
+     "known_text": "ಮರೆತುಬಿಟ್ರಾ",
+     "target_text": "have you forgotten"
+    }
+   ]
+  },
+  {
+   "seed_number": 574,
+   "seed": {
+    "known_text": "ರಜೆಗಳು ಎಲ್ಲರಿಗೂ ತುಂಬಾ ವಿಶೇಷ.",
+    "target_text": "The holidays are very special for everyone."
+   },
+   "lego_id": "S0574L01",
+   "lego": [
+    {
+     "known_text": "ರಜೆಗಳು",
+     "target_text": "the holidays"
+    }
+   ]
+  },
+  {
+   "seed_number": 574,
+   "seed": {
+    "known_text": "ರಜೆಗಳು ಎಲ್ಲರಿಗೂ ತುಂಬಾ ವಿಶೇಷ.",
+    "target_text": "The holidays are very special for everyone."
+   },
+   "lego_id": "S0574L02",
+   "lego": [
+    {
+     "known_text": "ಎಲ್ಲರಿಗೂ",
+     "target_text": "everyone"
+    }
+   ]
+  },
+  {
+   "seed_number": 574,
+   "seed": {
+    "known_text": "ರಜೆಗಳು ಎಲ್ಲರಿಗೂ ತುಂಬಾ ವಿಶೇಷ.",
+    "target_text": "The holidays are very special for everyone."
+   },
+   "lego_id": "S0574L02",
+   "lego": [
+    {
+     "known_text": "ಎಲ್ಲರಿಗೂ",
+     "target_text": "everyone"
+    }
+   ]
+  },
+  {
+   "seed_number": 574,
+   "seed": {
+    "known_text": "ರಜೆಗಳು ಎಲ್ಲರಿಗೂ ತುಂಬಾ ವಿಶೇಷ.",
+    "target_text": "The holidays are very special for everyone."
+   },
+   "lego_id": "S0574L03",
+   "lego": [
+    {
+     "known_text": "ತುಂಬಾ ವಿಶೇಷ",
+     "target_text": "very special"
+    }
+   ]
+  },
+  {
+   "seed_number": 575,
+   "seed": {
+    "known_text": "ಅದು ಬೇಸರ ಮೂಡಿಸಿದೆ.",
+    "target_text": "It's been upsetting."
+   },
+   "lego_id": "S0575L01",
+   "lego": [
+    {
+     "known_text": "ಬೇಸರ",
+     "target_text": "mind"
+    }
+   ]
+  },
+  {
+   "seed_number": 575,
+   "seed": {
+    "known_text": "ಅದು ಬೇಸರ ಮೂಡಿಸಿದೆ.",
+    "target_text": "It's been upsetting."
+   },
+   "lego_id": "S0575L02",
+   "lego": [
+    {
+     "known_text": "ಬೇಸರ ಮೂಡಿಸಿದೆ",
+     "target_text": "has been upsetting"
+    }
+   ]
+  },
+  {
+   "seed_number": 576,
+   "seed": {
+    "known_text": "ಕಾಯೋದು ತುಂಬಾ ಬೇಸರ ಮೂಡಿಸಿದೆ.",
+    "target_text": "It has been very upsetting waiting."
+   },
+   "lego_id": "S0576L01",
+   "lego": [
+    {
+     "known_text": "ಕಾಯೋದು",
+     "target_text": "waiting"
+    }
+   ]
+  },
+  {
+   "seed_number": 576,
+   "seed": {
+    "known_text": "ಕಾಯೋದು ತುಂಬಾ ಬೇಸರ ಮೂಡಿಸಿದೆ.",
+    "target_text": "It has been very upsetting waiting."
+   },
+   "lego_id": "S0576L01",
+   "lego": [
+    {
+     "known_text": "ಕಾಯೋದು",
+     "target_text": "waiting"
+    }
+   ]
+  },
+  {
+   "seed_number": 577,
+   "seed": {
+    "known_text": "ನಾವು ಆಸ್ಪತ್ರೆಯಿಂದ ಸುದ್ದಿಗೆ ಕಾಯ್ತಿದ್ದೇವೆ.",
+    "target_text": "We've been waiting for the news from the hospital."
+   },
+   "lego_id": "S0577L01",
+   "lego": [
+    {
+     "known_text": "ಆಸ್ಪತ್ರೆಯಿಂದ",
+     "target_text": "from the hospital"
+    }
+   ]
+  },
+  {
+   "seed_number": 577,
+   "seed": {
+    "known_text": "ನಾವು ಆಸ್ಪತ್ರೆಯಿಂದ ಸುದ್ದಿಗೆ ಕಾಯ್ತಿದ್ದೇವೆ.",
+    "target_text": "We've been waiting for the news from the hospital."
+   },
+   "lego_id": "S0577L02",
+   "lego": [
+    {
+     "known_text": "ಸುದ್ದಿಗೆ",
+     "target_text": "for the news"
+    }
+   ]
+  },
+  {
+   "seed_number": 578,
+   "seed": {
+    "known_text": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ.",
+    "target_text": "Somewhere warmer."
+   },
+   "lego_id": "S0578L03",
+   "lego": [
+    {
+     "known_text": "ಎಲ್ಲಾದರೂ ಹೆಚ್ಚು ಬೆಚ್ಚಗಿರೋ ಜಾಗ",
+     "target_text": "somewhere warmer"
+    }
+   ]
+  },
+  {
+   "seed_number": 579,
+   "seed": {
+    "known_text": "ನಾವು ಆಗಾಗ ಪ್ರಯತ್ನಿಸಿದ್ದೇವೆ.",
+    "target_text": "We've often tried."
+   },
+   "lego_id": "S0579L03",
+   "lego": [
+    {
+     "known_text": "ಆಗಾಗ ಪ್ರಯತ್ನಿಸಿದ್ದೇವೆ",
+     "target_text": "we've often tried"
+    }
+   ]
+  },
+  {
+   "seed_number": 580,
+   "seed": {
+    "known_text": "ಮಕ್ಕಳನ್ನ ಎಲ್ಲಾದರೂ ಸ್ವಲ್ಪ ಬೆಚ್ಚಗಿರೋ ಜಾಗಕ್ಕೆ ಕರ್ಕೊಂಡು ಹೋಗಬೇಕು ಅಂತ ನಮಗೆ ಆಗಾಗ ಅನಿಸಿದೆ.",
+    "target_text": "We've often wanted to take the children somewhere a little warmer."
+   },
+   "lego_id": "S0580L02",
+   "lego": [
+    {
+     "known_text": "ನಮಗೆ",
+     "target_text": "we"
+    }
+   ]
+  },
+  {
+   "seed_number": 581,
+   "seed": {
+    "known_text": "ಅದು ಹೇಗಿರುತ್ತೆ ಅನ್ನೋ ಬಗ್ಗೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳಬೇಕು ಅಂತ ಅವನು ಬಯಸ್ತಾನೆ.",
+    "target_text": "He'd like to know a little more about what it's like."
+   },
+   "lego_id": "S0581L04",
+   "lego": [
+    {
+     "known_text": "ಬಯಸ್ತಾನೆ",
+     "target_text": "he'd like"
+    }
+   ]
+  },
+  {
+   "seed_number": 582,
+   "seed": {
+    "known_text": "ಇಲ್ಲಿ ಬೆಳೆಯೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to grow up here?"
+   },
+   "lego_id": "S0582L02",
+   "lego": [
+    {
+     "known_text": "ಬೆಳೆಯೋದು ಹೇಗಿರುತ್ತೆ",
+     "target_text": "what's it like to grow up"
+    }
+   ]
+  },
+  {
+   "seed_number": 582,
+   "seed": {
+    "known_text": "ಇಲ್ಲಿ ಬೆಳೆಯೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to grow up here?"
+   },
+   "lego_id": "S0582L02",
+   "lego": [
+    {
+     "known_text": "ಬೆಳೆಯೋದು ಹೇಗಿರುತ್ತೆ",
+     "target_text": "what's it like to grow up"
+    }
+   ]
+  },
+  {
+   "seed_number": 583,
+   "seed": {
+    "known_text": "ಪ್ರಪಂಚದ ಈ ಭಾಗದಲ್ಲಿ ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like in this part of the world?"
+   },
+   "lego_id": "S0583L02",
+   "lego": [
+    {
+     "known_text": "ಭಾಗದಲ್ಲಿ ಹೇಗಿರುತ್ತೆ",
+     "target_text": "what's it like in the part"
+    }
+   ]
+  },
+  {
+   "seed_number": 583,
+   "seed": {
+    "known_text": "ಪ್ರಪಂಚದ ಈ ಭಾಗದಲ್ಲಿ ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like in this part of the world?"
+   },
+   "lego_id": "S0583L02",
+   "lego": [
+    {
+     "known_text": "ಭಾಗದಲ್ಲಿ ಹೇಗಿರುತ್ತೆ",
+     "target_text": "what's it like in the part"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ ಎಚ್ಚರ ಆಗಿ ಬೆಟ್ಟಗಳನ್ನ ನೋಡೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to wake up every morning and see the mountains?"
+   },
+   "lego_id": "S0584L01",
+   "lego": [
+    {
+     "known_text": "ಬೆಳಿಗ್ಗೆ",
+     "target_text": "morning"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ ಎಚ್ಚರ ಆಗಿ ಬೆಟ್ಟಗಳನ್ನ ನೋಡೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to wake up every morning and see the mountains?"
+   },
+   "lego_id": "S0584L02",
+   "lego": [
+    {
+     "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ",
+     "target_text": "every morning"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ ಎಚ್ಚರ ಆಗಿ ಬೆಟ್ಟಗಳನ್ನ ನೋಡೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to wake up every morning and see the mountains?"
+   },
+   "lego_id": "S0584L03",
+   "lego": [
+    {
+     "known_text": "ಎಚ್ಚರ ಆಗಿ",
+     "target_text": "waking up"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ ಎಚ್ಚರ ಆಗಿ ಬೆಟ್ಟಗಳನ್ನ ನೋಡೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to wake up every morning and see the mountains?"
+   },
+   "lego_id": "S0584L03",
+   "lego": [
+    {
+     "known_text": "ಎಚ್ಚರ ಆಗಿ",
+     "target_text": "waking up"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ ಎಚ್ಚರ ಆಗಿ ಬೆಟ್ಟಗಳನ್ನ ನೋಡೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to wake up every morning and see the mountains?"
+   },
+   "lego_id": "S0584L04",
+   "lego": [
+    {
+     "known_text": "ಬೆಟ್ಟಗಳನ್ನ",
+     "target_text": "the mountains"
+    }
+   ]
+  },
+  {
+   "seed_number": 584,
+   "seed": {
+    "known_text": "ಪ್ರತಿ ಬೆಳಿಗ್ಗೆ ಎಚ್ಚರ ಆಗಿ ಬೆಟ್ಟಗಳನ್ನ ನೋಡೋದು ಹೇಗಿರುತ್ತೆ?",
+    "target_text": "What's it like to wake up every morning and see the mountains?"
+   },
+   "lego_id": "S0584L05",
+   "lego": [
+    {
+     "known_text": "ನೋಡೋದು",
+     "target_text": "seeing"
+    }
+   ]
+  },
+  {
+   "seed_number": 585,
+   "seed": {
+    "known_text": "ನನ್ನ ಮಲಗೋ ಕೋಣೆಯ ಕಿಟಕಿಯಿಂದ ನನಗೆ ಬೆಟ್ಟಗಳು ಕಾಣಿಸುತ್ತವೆ.",
+    "target_text": "I can see the mountains out of my bedroom window."
+   },
+   "lego_id": "S0585L02",
+   "lego": [
+    {
+     "known_text": "ಕಿಟಕಿಯಿಂದ",
+     "target_text": "out of the window"
+    }
+   ]
+  },
+  {
+   "seed_number": 585,
+   "seed": {
+    "known_text": "ನನ್ನ ಮಲಗೋ ಕೋಣೆಯ ಕಿಟಕಿಯಿಂದ ನನಗೆ ಬೆಟ್ಟಗಳು ಕಾಣಿಸುತ್ತವೆ.",
+    "target_text": "I can see the mountains out of my bedroom window."
+   },
+   "lego_id": "S0585L04",
+   "lego": [
+    {
+     "known_text": "ಕಾಣಿಸುತ್ತವೆ",
+     "target_text": "can be seen"
+    }
+   ]
+  },
+  {
+   "seed_number": 586,
+   "seed": {
+    "known_text": "ನನಗೆ ಇಪ್ಪತ್ತು ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ ಬೇಕು.",
+    "target_text": "I want twenty boiled eggs."
+   },
+   "lego_id": "S0586L01",
+   "lego": [
+    {
+     "known_text": "ಮೊಟ್ಟೆ",
+     "target_text": "eggs"
+    }
+   ]
+  },
+  {
+   "seed_number": 586,
+   "seed": {
+    "known_text": "ನನಗೆ ಇಪ್ಪತ್ತು ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ ಬೇಕು.",
+    "target_text": "I want twenty boiled eggs."
+   },
+   "lego_id": "S0586L02",
+   "lego": [
+    {
+     "known_text": "ಬೇಯಿಸಿದ",
+     "target_text": "boiled"
+    }
+   ]
+  },
+  {
+   "seed_number": 586,
+   "seed": {
+    "known_text": "ನನಗೆ ಇಪ್ಪತ್ತು ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ ಬೇಕು.",
+    "target_text": "I want twenty boiled eggs."
+   },
+   "lego_id": "S0586L03",
+   "lego": [
+    {
+     "known_text": "ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ",
+     "target_text": "boiled eggs"
+    }
+   ]
+  },
+  {
+   "seed_number": 586,
+   "seed": {
+    "known_text": "ನನಗೆ ಇಪ್ಪತ್ತು ಬೇಯಿಸಿದ ಮೊಟ್ಟೆ ಬೇಕು.",
+    "target_text": "I want twenty boiled eggs."
+   },
+   "lego_id": "S0586L04",
+   "lego": [
+    {
+     "known_text": "ಇಪ್ಪತ್ತು",
+     "target_text": "twenty"
+    }
+   ]
+  },
+  {
+   "seed_number": 588,
+   "seed": {
+    "known_text": "ಹಾಗಾಗಿ ನನಗೆ ದೊಡ್ಡವನಾಗಿ ಮನೆ ಬಿಟ್ಟು ಹೋಗಬೇಕಿತ್ತು.",
+    "target_text": "So I wanted to grow up and leave home."
+   },
+   "lego_id": "S0588L03",
+   "lego": [
+    {
+     "known_text": "ಹೋಗಬೇಕಿತ್ತು",
+     "target_text": "wanted to go"
+    }
+   ]
+  },
+  {
+   "seed_number": 589,
+   "seed": {
+    "known_text": "ತಾನು ಈಗ ತಾನೆ ಕೊನೆಯ ಬಸ್ ನೋಡಿದೆ ಅಂತ ಅವಳು ನನಗೆ ಹೇಳಿದಳು.",
+    "target_text": "She told me she'd just seen the last bus."
+   },
+   "lego_id": "S0589L02",
+   "lego": [
+    {
+     "known_text": "ಕೊನೆಯ",
+     "target_text": "last"
+    }
+   ]
+  },
+  {
+   "seed_number": 589,
+   "seed": {
+    "known_text": "ತಾನು ಈಗ ತಾನೆ ಕೊನೆಯ ಬಸ್ ನೋಡಿದೆ ಅಂತ ಅವಳು ನನಗೆ ಹೇಳಿದಳು.",
+    "target_text": "She told me she'd just seen the last bus."
+   },
+   "lego_id": "S0589L03",
+   "lego": [
+    {
+     "known_text": "ಕೊನೆಯ ಬಸ್",
+     "target_text": "the last bus"
+    }
+   ]
+  },
+  {
+   "seed_number": 589,
+   "seed": {
+    "known_text": "ತಾನು ಈಗ ತಾನೆ ಕೊನೆಯ ಬಸ್ ನೋಡಿದೆ ಅಂತ ಅವಳು ನನಗೆ ಹೇಳಿದಳು.",
+    "target_text": "She told me she'd just seen the last bus."
+   },
+   "lego_id": "S0589L05",
+   "lego": [
+    {
+     "known_text": "ತಾನು ಈಗ ತಾನೆ",
+     "target_text": "she'd just"
+    }
+   ]
+  },
+  {
+   "seed_number": 589,
+   "seed": {
+    "known_text": "ತಾನು ಈಗ ತಾನೆ ಕೊನೆಯ ಬಸ್ ನೋಡಿದೆ ಅಂತ ಅವಳು ನನಗೆ ಹೇಳಿದಳು.",
+    "target_text": "She told me she'd just seen the last bus."
+   },
+   "lego_id": "S0589L05",
+   "lego": [
+    {
+     "known_text": "ತಾನು ಈಗ ತಾನೆ",
+     "target_text": "she'd just"
+    }
+   ]
+  },
+  {
+   "seed_number": 589,
+   "seed": {
+    "known_text": "ತಾನು ಈಗ ತಾನೆ ಕೊನೆಯ ಬಸ್ ನೋಡಿದೆ ಅಂತ ಅವಳು ನನಗೆ ಹೇಳಿದಳು.",
+    "target_text": "She told me she'd just seen the last bus."
+   },
+   "lego_id": "S0589L06",
+   "lego": [
+    {
+     "known_text": "ಅವಳು ನನಗೆ ಹೇಳಿದಳು",
+     "target_text": "she told me"
+    }
+   ]
+  },
+  {
+   "seed_number": 590,
+   "seed": {
+    "known_text": "ಕೊನೆಯ ಬಸ್ ನಿಲ್ದಾಣ ಬಿಟ್ಟು ಹೋಗ್ತಿರೋದನ್ನ ನಾನು ನೋಡಿದೆ.",
+    "target_text": "I saw the last bus leaving the station."
+   },
+   "lego_id": "S0590L01",
+   "lego": [
+    {
+     "known_text": "ನಿಲ್ದಾಣ",
+     "target_text": "the station"
+    }
+   ]
+  },
+  {
+   "seed_number": 591,
+   "seed": {
+    "known_text": "ಅವಳು ನನ್ನ ಹಿಂದೆ ಅಂಗಡಿಗಳ ಕಡೆಗೆ ಬಂದಳು.",
+    "target_text": "She followed me down to the shops."
+   },
+   "lego_id": "S0591L01",
+   "lego": [
+    {
+     "known_text": "ನನ್ನ ಹಿಂದೆ",
+     "target_text": "behind me"
+    }
+   ]
+  },
+  {
+   "seed_number": 591,
+   "seed": {
+    "known_text": "ಅವಳು ನನ್ನ ಹಿಂದೆ ಅಂಗಡಿಗಳ ಕಡೆಗೆ ಬಂದಳು.",
+    "target_text": "She followed me down to the shops."
+   },
+   "lego_id": "S0591L03",
+   "lego": [
+    {
+     "known_text": "ಅಂಗಡಿಗಳ ಕಡೆಗೆ",
+     "target_text": "towards the shops"
+    }
+   ]
+  },
+  {
+   "seed_number": 591,
+   "seed": {
+    "known_text": "ಅವಳು ನನ್ನ ಹಿಂದೆ ಅಂಗಡಿಗಳ ಕಡೆಗೆ ಬಂದಳು.",
+    "target_text": "She followed me down to the shops."
+   },
+   "lego_id": "S0591L04",
+   "lego": [
+    {
+     "known_text": "ಬಂದಳು",
+     "target_text": "she followed"
+    }
+   ]
+  },
+  {
+   "seed_number": 595,
+   "seed": {
+    "known_text": "ನಾನು ತೋಟದಲ್ಲಿ ಮಲಗಬೇಕಾಗಿದೆ.",
+    "target_text": "I need to lie down in the garden."
+   },
+   "lego_id": "S0595L02",
+   "lego": [
+    {
+     "known_text": "ಮಲಗಬೇಕಾಗಿದೆ",
+     "target_text": "need to lie down"
+    }
+   ]
+  },
+  {
+   "seed_number": 596,
+   "seed": {
+    "known_text": "ಮತ್ತೆ ನಾನು ಸ್ವಲ್ಪ ಹೊತ್ತು ನನ್ನ ಕಣ್ಣು ಮುಚ್ಚಬೇಕಾಗಿದೆ.",
+    "target_text": "And I need to close my eyes for a while."
+   },
+   "lego_id": "S0596L03",
+   "lego": [
+    {
+     "known_text": "ಮುಚ್ಚಬೇಕಾಗಿದೆ",
+     "target_text": "need to close"
+    }
+   ]
+  },
+  {
+   "seed_number": 597,
+   "seed": {
+    "known_text": "ಅವನು ಅದರ ಬಗ್ಗೆ ನೂರು ಕಥೆ ಕೇಳಿದ್ದಾನೆ ಅಂತ ನನಗೆ ಸಂಶಯ.",
+    "target_text": "I suspect that he's heard a hundred stories about it."
+   },
+   "lego_id": "S0597L03",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸಂಶಯ",
+     "target_text": "I suspect"
+    }
+   ]
+  },
+  {
+   "seed_number": 597,
+   "seed": {
+    "known_text": "ಅವನು ಅದರ ಬಗ್ಗೆ ನೂರು ಕಥೆ ಕೇಳಿದ್ದಾನೆ ಅಂತ ನನಗೆ ಸಂಶಯ.",
+    "target_text": "I suspect that he's heard a hundred stories about it."
+   },
+   "lego_id": "S0597L03",
+   "lego": [
+    {
+     "known_text": "ನನಗೆ ಸಂಶಯ",
+     "target_text": "I suspect"
+    }
+   ]
+  },
+  {
+   "seed_number": 599,
+   "seed": {
+    "known_text": "ನೀವು ನನಗೆ ಹೇಳಿದ್ದಿದ್ರೆ ನಾನು ಸಂತೋಷದಿಂದ ಕಾರ್ ಓಡಿಸ್ತಿದ್ದೆ.",
+    "target_text": "I'd have been happy to drive if you'd told me."
+   },
+   "lego_id": "S0599L02",
+   "lego": [
+    {
+     "known_text": "ಸಂತೋಷದಿಂದ ಕಾರ್ ಓಡಿಸ್ತಿದ್ದೆ",
+     "target_text": "I'd have been happy to drive"
+    }
+   ]
+  },
+  {
+   "seed_number": 600,
+   "seed": {
+    "known_text": "ನಿಮಗೆ ಎಷ್ಟು ಸುಸ್ತಾಗಿತ್ತು ಅಂತ ನೀವು ನನಗೆ ಹೇಳಿದ್ದಿದ್ರೆ ನಾನು ಕಾರ್ ಓಡಿಸ್ತಿದ್ದೆ.",
+    "target_text": "I'd have driven if you'd told me how tired you were."
+   },
+   "lego_id": "S0600L01",
+   "lego": [
+    {
+     "known_text": "ನಿಮಗೆ ಎಷ್ಟು ಸುಸ್ತಾಗಿತ್ತು ಅಂತ",
+     "target_text": "how tired you were"
+    }
+   ]
+  },
+  {
+   "seed_number": 600,
+   "seed": {
+    "known_text": "ನಿಮಗೆ ಎಷ್ಟು ಸುಸ್ತಾಗಿತ್ತು ಅಂತ ನೀವು ನನಗೆ ಹೇಳಿದ್ದಿದ್ರೆ ನಾನು ಕಾರ್ ಓಡಿಸ್ತಿದ್ದೆ.",
+    "target_text": "I'd have driven if you'd told me how tired you were."
+   },
+   "lego_id": "S0600L02",
+   "lego": [
+    {
+     "known_text": "ನಾನು ಕಾರ್ ಓಡಿಸ್ತಿದ್ದೆ",
+     "target_text": "I'd have driven"
+    }
+   ]
+  },
+  {
+   "seed_number": 602,
+   "seed": {
+    "known_text": "ಅದು ಮೊದಲು ಹೇಗೆ ಶುರು ಆಯ್ತು ಅಂತ.",
+    "target_text": "How it started in the first place."
+   },
+   "lego_id": "S0602L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಮೊದಲು",
+     "target_text": "in the first place"
+    }
+   ]
+  },
+  {
+   "seed_number": 602,
+   "seed": {
+    "known_text": "ಅದು ಮೊದಲು ಹೇಗೆ ಶುರು ಆಯ್ತು ಅಂತ.",
+    "target_text": "How it started in the first place."
+   },
+   "lego_id": "S0602L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಮೊದಲು",
+     "target_text": "in the first place"
+    }
+   ]
+  },
+  {
+   "seed_number": 603,
+   "seed": {
+    "known_text": "ಆ ಸಮಯದಲ್ಲಿ ನಮಗೆ ವಾಸ ಮಾಡೋಕೆ ಎಲ್ಲಿಯೂ ಜಾಗ ಇರಲಿಲ್ಲ.",
+    "target_text": "We didn't have anywhere to live at the time."
+   },
+   "lego_id": "S0603L01",
+   "lego": [
+    {
+     "known_text": "ಆ ಸಮಯದಲ್ಲಿ",
+     "target_text": "at that time"
+    }
+   ]
+  },
+  {
+   "seed_number": 603,
+   "seed": {
+    "known_text": "ಆ ಸಮಯದಲ್ಲಿ ನಮಗೆ ವಾಸ ಮಾಡೋಕೆ ಎಲ್ಲಿಯೂ ಜಾಗ ಇರಲಿಲ್ಲ.",
+    "target_text": "We didn't have anywhere to live at the time."
+   },
+   "lego_id": "S0603L01",
+   "lego": [
+    {
+     "known_text": "ಆ ಸಮಯದಲ್ಲಿ",
+     "target_text": "at that time"
+    }
+   ]
+  },
+  {
+   "seed_number": 610,
+   "seed": {
+    "known_text": "ಅವನು ಕೆಲಸ ಹುಡುಕಬೇಕಾಗಿದೆ.",
+    "target_text": "He needs to look for work."
+   },
+   "lego_id": "S0610L01",
+   "lego": [
+    {
+     "known_text": "ಅವನು ಕೆಲಸ ಹುಡುಕಬೇಕಾಗಿದೆ",
+     "target_text": "he needs to look for work"
+    }
+   ]
+  },
+  {
+   "seed_number": 611,
+   "seed": {
+    "known_text": "ನಾನು ಬೇರೆ ಎಲ್ಲಾದರೂ ಹುಡುಕೋಕೆ ಸಿದ್ಧ ಆಗ್ತಿದ್ದೆ.",
+    "target_text": "I would have been ready to look somewhere else."
+   },
+   "lego_id": "S0611L02",
+   "lego": [
+    {
+     "known_text": "ಹುಡುಕೋಕೆ ಸಿದ್ಧ ಆಗ್ತಿದ್ದೆ",
+     "target_text": "I would have been ready to look"
+    }
+   ]
+  },
+  {
+   "seed_number": 611,
+   "seed": {
+    "known_text": "ನಾನು ಬೇರೆ ಎಲ್ಲಾದರೂ ಹುಡುಕೋಕೆ ಸಿದ್ಧ ಆಗ್ತಿದ್ದೆ.",
+    "target_text": "I would have been ready to look somewhere else."
+   },
+   "lego_id": "S0611L02",
+   "lego": [
+    {
+     "known_text": "ಹುಡುಕೋಕೆ ಸಿದ್ಧ ಆಗ್ತಿದ್ದೆ",
+     "target_text": "I would have been ready to look"
+    }
+   ]
+  },
+  {
+   "seed_number": 613,
+   "seed": {
+    "known_text": "ನಾವು ಬಹುಶಃ ಅಲ್ಲಿ ಒಂದು ಮನೆ ಕೊಂಡುಕೊಳ್ತಿದ್ದೆವು.",
+    "target_text": "We probably would have bought a house there."
+   },
+   "lego_id": "S0613L02",
+   "lego": [
+    {
+     "known_text": "ಅಲ್ಲಿ ಒಂದು ಮನೆ",
+     "target_text": "a house there"
+    }
+   ]
+  },
+  {
+   "seed_number": 614,
+   "seed": {
+    "known_text": "ಅದು ನಿಮ್ಮ ಕುಟುಂಬ ವಾಸ ಮಾಡೋ ಜಾಗದ ಹತ್ರ ಇದೆ.",
+    "target_text": "It's near where your family live."
+   },
+   "lego_id": "S0614L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ನಿಮ್ಮ ಕುಟುಂಬ ವಾಸ ಮಾಡೋ ಜಾಗದ ಹತ್ರ ಇದೆ",
+     "target_text": "it's near where your family live"
+    }
+   ]
+  },
+  {
+   "seed_number": 615,
+   "seed": {
+    "known_text": "ಅದನ್ನ ಹೇಳಿದ್ದಕ್ಕೆ ನೀವು ತುಂಬಾ ಧೈರ್ಯವಂತರು ಅಂತ ನನಗೆ ಅನಿಸ್ತು.",
+    "target_text": "I thought you were very brave to say that."
+   },
+   "lego_id": "S0615L02",
+   "lego": [
+    {
+     "known_text": "ನೀವು ತುಂಬಾ ಧೈರ್ಯವಂತರು ಅಂತ ನನಗೆ ಅನಿಸ್ತು",
+     "target_text": "I thought you were very brave"
+    }
+   ]
+  },
+  {
+   "seed_number": 616,
+   "seed": {
+    "known_text": "ನೀವು ಹಾಗೆ ಅಂದುಕೊಂಡಿದ್ದೀರಿ ಅಂತ ಹೇಳಿದ್ದಕ್ಕೆ ನೀವು ತುಂಬಾ ಧೈರ್ಯವಂತರು.",
+    "target_text": "You were very brave to say you thought that."
+   },
+   "lego_id": "S0616L01",
+   "lego": [
+    {
+     "known_text": "ನೀವು ತುಂಬಾ ಧೈರ್ಯವಂತರು",
+     "target_text": "you were very brave"
+    }
+   ]
+  },
+  {
+   "seed_number": 616,
+   "seed": {
+    "known_text": "ನೀವು ಹಾಗೆ ಅಂದುಕೊಂಡಿದ್ದೀರಿ ಅಂತ ಹೇಳಿದ್ದಕ್ಕೆ ನೀವು ತುಂಬಾ ಧೈರ್ಯವಂತರು.",
+    "target_text": "You were very brave to say you thought that."
+   },
+   "lego_id": "S0616L01",
+   "lego": [
+    {
+     "known_text": "ನೀವು ತುಂಬಾ ಧೈರ್ಯವಂತರು",
+     "target_text": "you were very brave"
+    }
+   ]
+  },
+  {
+   "seed_number": 617,
+   "seed": {
+    "known_text": "ಅದು ಒಂದು ತಪ್ಪು ಅಂತ ನೀವು ಅಂದುಕೊಂಡ್ರಿ.",
+    "target_text": "You thought that it was a mistake."
+   },
+   "lego_id": "S0617L01",
+   "lego": [
+    {
+     "known_text": "ಅದು ಒಂದು ತಪ್ಪು",
+     "target_text": "it was a mistake"
+    }
+   ]
+  },
+  {
+   "seed_number": 617,
+   "seed": {
+    "known_text": "ಅದು ಒಂದು ತಪ್ಪು ಅಂತ ನೀವು ಅಂದುಕೊಂಡ್ರಿ.",
+    "target_text": "You thought that it was a mistake."
+   },
+   "lego_id": "S0617L02",
+   "lego": [
+    {
+     "known_text": "ಅಂತ ನೀವು ಅಂದುಕೊಂಡ್ರಿ",
+     "target_text": "you thought that"
+    }
+   ]
+  },
+  {
+   "seed_number": 617,
+   "seed": {
+    "known_text": "ಅದು ಒಂದು ತಪ್ಪು ಅಂತ ನೀವು ಅಂದುಕೊಂಡ್ರಿ.",
+    "target_text": "You thought that it was a mistake."
+   },
+   "lego_id": "S0617L02",
+   "lego": [
+    {
+     "known_text": "ಅಂತ ನೀವು ಅಂದುಕೊಂಡ್ರಿ",
+     "target_text": "you thought that"
+    }
+   ]
+  },
+  {
+   "seed_number": 619,
+   "seed": {
+    "known_text": "ನಾವು ಒಬ್ಬರನ್ನೊಬ್ಬರು ನೋಡಿ ತುಂಬಾ ಕಾಲ ಆಯ್ತು.",
+    "target_text": "It's a long time since we saw each other."
+   },
+   "lego_id": "S0619L01",
+   "lego": [
+    {
+     "known_text": "ನಾವು ಒಬ್ಬರನ್ನೊಬ್ಬರು ನೋಡಿ",
+     "target_text": "since we saw each other"
+    }
+   ]
+  },
+  {
+   "seed_number": 619,
+   "seed": {
+    "known_text": "ನಾವು ಒಬ್ಬರನ್ನೊಬ್ಬರು ನೋಡಿ ತುಂಬಾ ಕಾಲ ಆಯ್ತು.",
+    "target_text": "It's a long time since we saw each other."
+   },
+   "lego_id": "S0619L01",
+   "lego": [
+    {
+     "known_text": "ನಾವು ಒಬ್ಬರನ್ನೊಬ್ಬರು ನೋಡಿ",
+     "target_text": "since we saw each other"
+    }
+   ]
+  }
+ ]
+}

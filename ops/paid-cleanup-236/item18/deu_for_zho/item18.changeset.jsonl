@@ -1,0 +1,5 @@
+{"format":"ssi-changeset/1","id":"deu_for_zho-item18-cs236","course":"deu_for_zho","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:33.377Z","ops":4,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"deu_for_zho:S0068L02B02","expect":{"known_text":"你在找什么？","target_text":"wonach suchst du?"}}
+{"op":"phrase.delete","phrase_id":"deu_for_zho:S0165L02B03","expect":{"known_text":"是不是很好?","target_text":"Ist es sehr gut?"}}
+{"op":"phrase.delete","phrase_id":"deu_for_zho:S0194L01B01","expect":{"known_text":"你在找什么?","target_text":"wonach suchst du?"}}
+{"op":"phrase.delete","phrase_id":"deu_for_zho:S0194L01B02","expect":{"known_text":"你在这里找什么?","target_text":"wonach suchst du hier?"}}

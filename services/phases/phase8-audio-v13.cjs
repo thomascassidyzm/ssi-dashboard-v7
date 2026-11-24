@@ -6128,13 +6128,31 @@ async function spliceIntroForRoute(req, deps) {
     store: async ({ courseCode, text, legoId, buffer, durationMs, splicedFrom }) => {
       const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
       await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
-      const { data: row, error } = await paidWrite.writeAfterPaid(() => supabase.from('course_audio').upsert({
-        course_code: courseCode, text, text_normalized: normalizeForAudio(text), language: 'eng', role: 'presentation', voice_id: charlotte,
-        lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: null, spliced_from: splicedFrom,
-      }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single(), { log: logger, label: `spliced intro ${courseCode} ${s3Key}` })
+      // VERSIONED, NOT UPSERTED (cs #273·AL, the job #74·AA fix brought to the splice). A RE-splice of an intro this course
+      // already holds — e.g. a piece refused for reuse after a pronunciation override (the Frisian word rule, 24 Nov) — lands
+      // on the existing row. A plain upsert moved s3_key under an unchanged audio_revision, so the learner ref <uuid>.v<rev>
+      // stayed the same and every device that had played the intro kept the old bytes (immutable HTTP cache, IndexedDB).
+      // writeOrSwapClip swaps an existing row through swapClipInPlace: revision + 1, a course_audio_revisions row naming the
+      // old object (kept in S3, the rollback), and a new identity is inserted exactly as before.
+      const cols = { lego_id: legoId, origin: 'tts', duration_ms: durationMs, word_boundaries: null, spliced_from: splicedFrom }
+      const attempt = async () => {
+        try {
+          const out = await writeOrSwapClip({
+            supabase,
+            identity: { course_code: courseCode, text_normalized: normalizeForAudio(text), language: 'eng', role: 'presentation', voice_id: charlotte, text },
+            insertRow: { course_code: courseCode, text, text_normalized: normalizeForAudio(text), language: 'eng', role: 'presentation', voice_id: charlotte, s3_key: s3Key, ...cols },
+            swapPatch: { text, ...cols },
+            newS3Key: s3Key, durationMs,
+            source: 'phase8:splice', acceptedBy: `${req.requestedBy || 'intro-splice'} via /api/audio/render`,
+            reason: 're-spliced intro over an existing clip identity', logger,
+          })
+          return { data: { id: out.audioId, revision: out.revision }, error: null }
+        } catch (e) { return { data: null, error: e } }
+      }
+      const { data: row, error } = await paidWrite.writeAfterPaid(attempt, { log: logger, label: `spliced intro ${courseCode} ${s3Key}` })
       if (error) throw new Error(`course_audio write failed for the spliced intro: ${error.message} (object ${s3Key} is in S3)`)
       await clipIndex.writeThrough(supabase, [{ id: row.id, text, language: 'eng', voice_id: charlotte, s3_key: s3Key, origin: 'tts' }], 'phase8:splice', logger)
-      return { audioId: row.id, s3Key }
+      return { audioId: row.id, s3Key, revision: row.revision ?? null }
     },
   }
   return introSplice.spliceIntro({ text: req.text, course, courseCode: req.courseCode, legoId: req.legoId, dryRun: req.dryRun }, hooks)

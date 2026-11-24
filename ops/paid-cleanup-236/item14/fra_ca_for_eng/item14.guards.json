@@ -1,0 +1,34 @@
+{
+ "changeset": "fra_ca_for_eng-item14-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 643,
+   "seed": {
+    "known_text": "do you want sir?",
+    "target_text": "Voulez-vous monsieur"
+   },
+   "lego_id": "S0643L01",
+   "lego": [
+    {
+     "known_text": "do you all want",
+     "target_text": "voulez-vous"
+    }
+   ]
+  },
+  {
+   "seed_number": 659,
+   "seed": {
+    "known_text": "could you all say that?",
+    "target_text": "Pourriez-vous dire ça vous-autres"
+   },
+   "lego_id": "S0659L02",
+   "lego": [
+    {
+     "known_text": "you guys",
+     "target_text": "vous-autres"
+    }
+   ]
+  }
+ ]
+}

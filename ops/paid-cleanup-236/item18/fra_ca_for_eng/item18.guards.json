@@ -1,0 +1,34 @@
+{
+ "changeset": "fra_ca_for_eng-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 231,
+   "seed": {
+    "known_text": "I know an old man who wanted to ask for help",
+    "target_text": "J'connais un vieil homme qui voulait demander de l'aide"
+   },
+   "lego_id": "S0231L01",
+   "lego": [
+    {
+     "known_text": "an old man",
+     "target_text": "un vieil homme"
+    }
+   ]
+  },
+  {
+   "seed_number": 647,
+   "seed": {
+    "known_text": "you speak it madam",
+    "target_text": "Vous le parlez madame"
+   },
+   "lego_id": "S0647L01",
+   "lego": [
+    {
+     "known_text": "you all speak it",
+     "target_text": "vous le parlez"
+    }
+   ]
+  }
+ ]
+}

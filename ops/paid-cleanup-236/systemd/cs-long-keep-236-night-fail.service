@@ -1,0 +1,6 @@
+[Unit]
+Description=cs #236 night runner backstop: wake the job if the night unit fails or cannot start
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -lc 'node %h/command-surface/tools/cs-wake-send.cjs 4e75a420-e308-4458-a9e7-bab7327312f3 "$(cat %h/.cs-long/236/.tok)" "[236 night] UNIT FAILED at $(date -u +%%FT%%TZ): $(systemctl --user show cs-long-keep-236-night -p Result -p ExecMainStatus --value | tr "\\n" " ") (journalctl --user -u cs-long-keep-236-night)"'

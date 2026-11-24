@@ -1,0 +1,6 @@
+{"format":"ssi-changeset/1","id":"eng_for_guj-item18-cs236","course":"eng_for_guj","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:33.841Z","ops":5,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_guj:S0172L01B02","expect":{"known_text":"હા, તે ઘણું ઉપકારી રહેશે","target_text":"yes, that would be very helpful"}}
+{"op":"phrase.delete","phrase_id":"eng_for_guj:S0182L02B03","expect":{"known_text":"મારી ચાવી અહીં છે","target_text":"my keys are here"}}
+{"op":"phrase.delete","phrase_id":"eng_for_guj:S0492L05B01","expect":{"known_text":"તમને કઈ સૌથી રસપ્રદ લાગે છે?","target_text":"which do you think is the most interesting?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_guj:S0492L05B02","expect":{"known_text":"આજે તમને કઈ સૌથી રસપ્રદ લાગે છે","target_text":"today, which do you think is the most interesting"}}
+{"op":"phrase.delete","phrase_id":"eng_for_guj:S0492L05U04","expect":{"known_text":"ફરી તમને કઈ સૌથી રસપ્રદ લાગે છે?","target_text":"again, which do you think is the most interesting?"}}

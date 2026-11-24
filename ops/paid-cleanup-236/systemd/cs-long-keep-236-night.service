@@ -1,0 +1,12 @@
+[Unit]
+Description=cs #236 night runner (Kai paid-cleanup items 9 back-fill, 18, 16, 14) from a durable checkout
+OnFailure=cs-long-keep-236-night-fail.service
+
+[Service]
+Type=oneshot
+Slice=cs-workers.slice
+TimeoutStartSec=9h
+Nice=10
+Environment=CS_DB_WORKER=1
+Environment=PATH=/home/tomcassidy/command-surface/ops/db-shims:/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash -lc 'cd %h/.cs-long/236/popty && git fetch -q origin main && git merge -q --ff-only origin/main && exec bash ops/paid-cleanup-236/night-run.sh'

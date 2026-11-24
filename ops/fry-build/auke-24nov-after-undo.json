@@ -1,0 +1,517 @@
+{
+ "course_code": "fry_for_eng",
+ "event_id": "637c72df-5d1d-486f-a370-7f38b14d940b",
+ "actor": "kai-180-fry-auke-24nov",
+ "created_at": "2026-11-24T14:43:42.178Z",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"undo_file\":\"2026-11-24T14-43-42-178Z-637c72df-5d1d-486f-a370-7f38b14d940b.json\",\"apply\":true}",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03C01",
+   "set": {
+    "known_text": "when you",
+    "target_text": "astû",
+    "known_audio_id": "877ceb0f-edf2-4233-857a-48dac6ffd4ae"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 11,
+   "set": {
+    "target_text": "Ik wol graach prate astû útpraat bist.",
+    "target1_audio_id": "6073f4c9-437d-4fdc-903d-155a5095b1ca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0177L01U03",
+   "set": {
+    "target_text": "ik sil har freegje astû útpraat bist",
+    "target1_audio_id": "41deac7f-82d9-4b4b-a165-ec9f7c9fb0e5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0174L01U01",
+   "set": {
+    "target_text": "astû útpraat bist, kinstû begripe wat ik sizze woe?",
+    "target1_audio_id": "509bc673-499c-419f-9769-7343f4e9f144"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0167L02B03",
+   "set": {
+    "target_text": "wat moatstû dwaan astû útpraat bist?",
+    "target1_audio_id": "f207b625-4e02-4fd8-91eb-81a95493b91b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03U02",
+   "set": {
+    "target_text": "astû útpraat bist, kinstû my dat boek jaan foar't ik gean moat?",
+    "target1_audio_id": "cc671d49-a7c2-4b11-8335-34a3d23933ca"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0161L03B04",
+   "set": {
+    "target_text": "astû útpraat bist, kinstû my dat boek jaan?",
+    "target1_audio_id": "69e52f9d-b33b-409f-8f6d-316787a5f933"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0158L03U02",
+   "set": {
+    "target_text": "astû útpraat bist, litte wy oer wat oars prate",
+    "target1_audio_id": "5d12bc8a-2d7b-459c-81c1-dc81d98c01a0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0154L02B03",
+   "set": {
+    "target_text": "wêr wolstû moetsje astû útpraat bist?",
+    "target1_audio_id": "0096f513-b0a3-4252-84c8-c4811f2c5b4c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0106L03U04",
+   "set": {
+    "target_text": "wy moatte gewoan hurd wurkje astû útpraat bist",
+    "target1_audio_id": "dbca8fb9-3ca2-4244-9fca-3c42ede7277c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0092L02U03",
+   "set": {
+    "target_text": "wy wolle hjir mei trochgean astû útpraat bist",
+    "target1_audio_id": "f551f4df-3f7e-4cd4-939e-b9a4eac15cdd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0090L02B01",
+   "set": {
+    "target_text": "astû útpraat bist, soe dat noflik wêze",
+    "target1_audio_id": "7faaab83-7aa4-4a49-bd56-3ae836eed17b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0088L02U04",
+   "set": {
+    "target_text": "ik bin klear om te praten astû útpraat bist",
+    "target1_audio_id": "09e4352a-482e-463c-9db9-35c725fea317"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0081L02U05",
+   "set": {
+    "target_text": "astû útpraat bist, wannear wolstû begjinne?",
+    "target1_audio_id": "2e728266-a9b7-4299-a34a-ecb353740e07"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0081L01U04",
+   "set": {
+    "target_text": "wy wolle begjinne astû útpraat bist",
+    "target1_audio_id": "a15efe65-4e9e-4c80-9979-d51b1cb4701e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0075L02U05",
+   "set": {
+    "target_text": "astû útpraat bist, hastû noch mear te learen?",
+    "target1_audio_id": "e1b2af9c-e589-4e4e-af09-adfebf4050ee"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0075L01U03",
+   "set": {
+    "target_text": "astû útpraat bist, hastû it antwurd?",
+    "target1_audio_id": "84a572d6-58bf-48ec-b881-dec93b09a089"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0074L02U06",
+   "set": {
+    "target_text": "silstû my helpe om it te begripen astû útpraat bist?",
+    "target1_audio_id": "cdc9d228-5546-46db-92cc-d53deb07e357"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L01U05",
+   "set": {
+    "target_text": "ik wol it ferhaal graach fertelle astû útpraat bist",
+    "target1_audio_id": "b7cd5e64-1912-4a09-88f4-48cf4e47c3f6"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0067L01U02",
+   "set": {
+    "target_text": "astû útpraat bist, wolstû my wat sjen litte?",
+    "target1_audio_id": "98e7a6a1-637f-41ca-854b-0623a2b4b86c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0063L01U01",
+   "set": {
+    "target_text": "astû útpraat bist, bistû der wis fan datstû my helpe wolst?",
+    "target1_audio_id": "0f4aad65-56ef-469a-8d38-760e4ac074af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0061L01U01",
+   "set": {
+    "target_text": "astû útpraat bist, kinstû my wat sjen litte?",
+    "target1_audio_id": "d3122fde-255d-4aa3-b3f6-9872799fca48"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0059L02U07",
+   "set": {
+    "target_text": "ik sil takommende wike it ferhaal lêze astû útpraat bist",
+    "target1_audio_id": "b73fecd0-d8e3-412c-8696-b5956d63a243"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0051L04U07",
+   "set": {
+    "target_text": "astû útpraat bist sil ik mei myn freonen oefenje",
+    "target1_audio_id": "11a84cb7-1214-4268-a261-ffa6ae2caeb9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L02U02",
+   "set": {
+    "target_text": "ik hoech net te praten astû útpraat bist",
+    "target1_audio_id": "a08bc20e-618e-424d-b695-b87f50d81ecd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0040L02U04",
+   "set": {
+    "target_text": "hoe fielstû dy astû útpraat bist?",
+    "target1_audio_id": "a9f68f80-454b-491b-bc86-0606eb7a61d8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0037L04U04",
+   "set": {
+    "target_text": "astû útpraat bist sil ik besykje der goed oer nei te tinken",
+    "target1_audio_id": "5b5b2853-f510-42f0-8c9b-c5588de4a615"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0030L03U04",
+   "set": {
+    "target_text": "ik sil freegje astû útpraat bist",
+    "target1_audio_id": "18c07271-d671-41b1-8c14-315edc9d1e27"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L04U03",
+   "set": {
+    "target_text": "astû útpraat bist bin ik klear om te antwurdzjen",
+    "target1_audio_id": "d6991c87-5fc5-4bd0-8c4e-5c35bd46f60f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L03U05",
+   "set": {
+    "target_text": "astû útpraat bist doch ik der net graach te lang oer",
+    "target1_audio_id": "62ff3a9f-dbe4-4321-9ec2-7211d9213fea"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L03U08",
+   "set": {
+    "target_text": "astû útpraat bist moat ik gean",
+    "target1_audio_id": "0ee64e47-9e31-4698-bb0e-d23976ab9e16"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L02U05",
+   "set": {
+    "target_text": "astû útpraat bist sil in oar my helpe",
+    "target1_audio_id": "dce0692e-f7dd-4f4a-9756-5c80a08ce2ae"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L02U05",
+   "set": {
+    "target_text": "ik sil it antwurd ûnthâlde astû útpraat bist",
+    "target1_audio_id": "63b704a9-3462-4c3d-a19b-35b7c3c43f2a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L02U04",
+   "set": {
+    "target_text": "ik begjin te praten astû útpraat bist",
+    "target1_audio_id": "6ea1bdcb-312f-4689-8bdd-aee64d1f9ed5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L01U06",
+   "set": {
+    "target_text": "wy wolle inoar aanst moetsje astû útpraat bist",
+    "target1_audio_id": "e046b900-f183-4fe1-a961-131a3c073b13"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L02U05",
+   "set": {
+    "target_text": "astû útpraat bist sil ik minsken moetsje",
+    "target1_audio_id": "fd7636d5-0b38-4ec5-a449-42ee693c6d13"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0021L03U03",
+   "set": {
+    "target_text": "astû útpraat bist, sil ik har namme sizze",
+    "target1_audio_id": "6115a52a-7ee6-47cc-8ef4-1aa1e804e225"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L04U04",
+   "set": {
+    "target_text": "astû útpraat bist sil ik fluch leare",
+    "target1_audio_id": "2631a20a-d01a-4088-a17d-b5bab695c8f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L03U03",
+   "set": {
+    "target_text": "ik wol graach fluch weromkomme astû útpraat bist",
+    "target1_audio_id": "6de64338-9571-4b8c-b19c-6d3d4060dccc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L02U08",
+   "set": {
+    "target_text": "ik sil syn namme sizze astû útpraat bist",
+    "target1_audio_id": "a7427d0b-cb4b-4f11-aaff-fdee38fc01ba"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L03U05",
+   "set": {
+    "target_text": "astû útpraat bist sil ik ophâlde mei praten",
+    "target1_audio_id": "44000743-85e8-4fc7-9277-b2d0c33b77e2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L03U03",
+   "set": {
+    "target_text": "astû útpraat bist, oefenje hy en ik mei inoar yn it Frysk",
+    "target1_audio_id": "591bfe1d-437b-4c61-afa8-543adb31b75e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L02U04",
+   "set": {
+    "target_text": "ik wol eltsenien moetsje astû útpraat bist",
+    "target1_audio_id": "644824ad-2898-4fd4-877c-271c1899c646"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L04U03",
+   "set": {
+    "target_text": "ik sil sizze wat it antwurd is astû útpraat bist",
+    "target1_audio_id": "9af1d48f-9143-42b1-a3ad-a81b3cc2dce9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L03U06",
+   "set": {
+    "target_text": "ik sil it antwurd sizze astû útpraat bist",
+    "target1_audio_id": "e60ce948-87ff-45ec-b77b-8fb2d2cb1a9f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U05",
+   "set": {
+    "target_text": "ik wol graach mei eltsenien prate astû útpraat bist",
+    "target1_audio_id": "3b0b91f5-6046-45ac-a8ad-b92b817824ad"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L03U05",
+   "set": {
+    "target_text": "ik sil letter mei dy prate astû útpraat bist",
+    "target1_audio_id": "6ae76bb6-c554-412c-977d-b28f369f8927"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L02U04",
+   "set": {
+    "target_text": "ik sil weromkomme astû útpraat bist",
+    "target1_audio_id": "cefb5491-6f85-4205-af3d-7bf1e3168a44"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0015L03U04",
+   "set": {
+    "target_text": "dû praatst Frysk mei my astû útpraat bist",
+    "target1_audio_id": "1adea07c-24a0-4faa-a88a-279b9fdb379f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0014L02U04",
+   "set": {
+    "target_text": "astû útpraat bist sil ik de hiele dei oefenje",
+    "target1_audio_id": "94f19429-1665-48da-8c02-eca039bbc234"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L04U03",
+   "set": {
+    "target_text": "astû útpraat bist sil ik sizze wat der moarn bart"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L02U02",
+   "set": {
+    "target_text": "ik wol riede astû útpraat bist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U05",
+   "set": {
+    "target_text": "ik sil safolle mooglik it praten oefenje astû útpraat bist",
+    "target1_audio_id": "cb00ea14-8669-49d7-b636-e3699ee50c6d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U04",
+   "set": {
+    "target_text": "ik sil myn uterste bêst dwaan astû útpraat bist",
+    "target1_audio_id": "527c608e-6675-497d-b8fa-a4bd57df8b7b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U03",
+   "set": {
+    "target_text": "ik kin in bytsje prate astû útpraat bist",
+    "target1_audio_id": "dc29a4a8-ab6e-4854-a83d-b0ff5a29d80d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U02",
+   "set": {
+    "target_text": "ik wol mei in oar it praten oefenje astû útpraat bist",
+    "target1_audio_id": "c0eda81d-02f3-4c55-a92c-405dc264c10f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03U01",
+   "set": {
+    "target_text": "astû útpraat bist sil ik besykje út te lizzen wat ik bedoel",
+    "target1_audio_id": "7214f4eb-e16e-44d8-87ee-ddce47bf88e3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B04",
+   "set": {
+    "target_text": "astû útpraat bist sil ik it besykje",
+    "target1_audio_id": "d1afa35f-1eb2-46d8-a872-03c54cf25e65"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B03",
+   "set": {
+    "target_text": "ik sil oefenje astû útpraat bist",
+    "target1_audio_id": "478e5342-93a1-4963-a296-d68869f85115"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B02",
+   "set": {
+    "target_text": "hjoed astû útpraat bist",
+    "target1_audio_id": "d0d3ef64-d946-45f8-b781-46a0bc2cd28b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0011L03B01",
+   "set": {
+    "target_text": "oefenje astû útpraat bist",
+    "target1_audio_id": "7a1d03f5-b218-40ff-be74-c8ba6b5e5abb"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "8bb58060-8862-4c9e-be44-dacfcc7f462a",
+   "set": {
+    "target_text": "astû útpraat bist",
+    "components": [
+     {
+      "known": "when you",
+      "target": "astû"
+     },
+     {
+      "known": "have finished talking",
+      "target": "útpraat bist"
+     }
+    ],
+    "target1_audio_id": "bd80139b-8738-445c-81e7-2da6b7089211",
+    "presentation_audio_id": "ccb41f5c-ae20-401a-9d00-a5d9b065f751"
+   }
+  }
+ ],
+ "family": "after",
+ "note": "client timed out at 120s; the batch committed server-side; this is Popty's own undo file, copied"
+}

@@ -1,0 +1,34 @@
+{
+ "changeset": "eng_for_fra-item18-cs236",
+ "copy_db": "ssi_copy_20261124t033000z",
+ "guards": [
+  {
+   "seed_number": 68,
+   "seed": {
+    "known_text": "Qu'est-ce que tu cherches ?",
+    "target_text": "What are you looking for?"
+   },
+   "lego_id": "S0068L01",
+   "lego": [
+    {
+     "known_text": "qu'est-ce que tu cherches",
+     "target_text": "what are you looking for"
+    }
+   ]
+  },
+  {
+   "seed_number": 251,
+   "seed": {
+    "known_text": "Je ne veux pas le savoir avant qu'on ait fini.",
+    "target_text": "I don't want to find out until after we finish."
+   },
+   "lego_id": "S0251L02",
+   "lego": [
+    {
+     "known_text": "avant qu'on ait fini",
+     "target_text": "before we finish"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{"format":"ssi-changeset/1","id":"eng_for_mar-item18-cs236","course":"eng_for_mar","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:34.581Z","ops":5,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"eng_for_mar:S0196L02B02","expect":{"known_text":"तुम्ही ऐकली का नवीनतम कल्पना अजून?","target_text":"have you heard the latest idea yet?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_mar:S0392L02B04","expect":{"known_text":"काळे केस असलेलं ते मूल कोण आहे?","target_text":"who is that child with the black hair?"}}
+{"op":"phrase.delete","phrase_id":"eng_for_mar:S0415L02B03","expect":{"known_text":"मला विचाराल तर ती एक समस्या नाही","target_text":"if you ask me it is not a problem"}}
+{"op":"phrase.delete","phrase_id":"eng_for_mar:S0485L04B03","expect":{"known_text":"काहीही मोठं नाही","target_text":"nothing is big"}}
+{"op":"phrase.delete","phrase_id":"eng_for_mar:S0555L01B02","expect":{"known_text":"मी आज खूप थकलोय","target_text":"I'm too tired today"}}

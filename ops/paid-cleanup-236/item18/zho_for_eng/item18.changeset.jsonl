@@ -1,0 +1,8 @@
+{"format":"ssi-changeset/1","id":"zho_for_eng-item18-cs236","course":"zho_for_eng","job":"#236·AL","why":"paid cleanup item 18: the same row twice in one basket; delete the later twin (BUILD+USE: drop the BUILD unless it is the last BUILD). Same clip both sides; 0 audio. Clips are never deleted.","computed_from":"nightly copy ssi_copy_20261124t033000z","created_at":"2026-11-24T17:08:37.482Z","ops":7,"kai_go":"Kai Y 24 Nov (\"Yes, tonight is good for those\"), on the #791·AK plans for items 9/14/16/18"}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0009L01B06","expect":{"known_text":"I can speak Chinese now","target_text":"我现在会说中文"}}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0073L01B01","expect":{"known_text":"thank you very much","target_text":"非常感谢"}}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0076L02B04","expect":{"known_text":"she's already done it","target_text":"她已经做了"}}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0076L03B04","expect":{"known_text":"are you satisfied?","target_text":"你满意吗？"}}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0078L01B04","expect":{"known_text":"is that clear?","target_text":"你明白吗？"}}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0207L01B01","expect":{"known_text":"you've done what you needed to do","target_text":"你已经做了你需要做的事"}}
+{"op":"phrase.delete","phrase_id":"zho_for_eng:S0275L01U08","expect":{"known_text":"can you wait longer","target_text":"你能等更久吗"}}

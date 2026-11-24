@@ -1,0 +1,16 @@
+[
+ {
+  "row": "S0068L01B02",
+  "known": "તમે જવાબ શોધી રહ્યા છો",
+  "target": "are you looking for the answer?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ },
+ {
+  "row": "S0119L01U05",
+  "known": "હું તમને પૂછી શકું કે કેવી રીતે કહેવું",
+  "target": "can I ask you how to say something?",
+  "fix": "the known prompt reads as a statement (no question word, no ?) or says something else: add the question particle (কি/શું/ਕੀ/کیا) and ?, or fix the meaning",
+  "reason": "not a plain add-the-mark fix (rewrite / delete / conditional re-record): judgement"
+ }
+]

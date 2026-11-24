@@ -1,0 +1,23 @@
+[
+ {
+  "row": "S0657L01U02",
+  "known": "she wants to know how you all feel",
+  "target": "elle veut savoir comment vous sentez-vous tous",
+  "fix": "target → \"elle veut savoir comment vous vous sentez tous\"",
+  "reason": "no longer one-sided on the copy"
+ },
+ {
+  "row": "S0657L01U03",
+  "known": "I want to know how you all feel",
+  "target": "je veux savoir comment vous sentez-vous tous",
+  "fix": "target → \"je veux savoir comment vous vous sentez tous\"",
+  "reason": "no longer one-sided on the copy"
+ },
+ {
+  "row": "S0666L01U04",
+  "known": "I'd like to know what you all think",
+  "target": "j'aimerais savoir qu'est-ce que vous pensez tous",
+  "fix": "target → \"j'aimerais savoir ce que vous pensez tous\" (#195 fixed only the English)",
+  "reason": "no longer one-sided on the copy"
+ }
+]

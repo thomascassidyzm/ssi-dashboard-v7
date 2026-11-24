@@ -1,0 +1,526 @@
+{
+ "_readme": "Order of the nightly read-only course scan (cs #237·AL, Kai approved 24 Nov 2026). Three a night from Wed 25 Nov. Derivation: GET :3470/api/estate-map at 24 Nov 17:10Z, released (new_app_status live|beta), minus jpn_for_eng, fry_for_eng, cym_for_kor (fixed this fortnight; Kai). Paid = target language in the app's BIG_10 or Welsh (ssi-learning-app api/_utils/audioAccess.ts). GAP: no read route or committed tool gives learner traffic per course, so within paid/unpaid the order is live before beta, then estate-map order (traffic proxy, not traffic). Progress is NOT kept here: ~/.cs-long/nightly-course-scan/scanned.txt. Welsh (cym_*) is placed after the other paid courses (canon R0.12). The 16 Nov fold-in items are handled on NIGHT 1 whatever their course position (carry Kai's answer forward, else data only).",
+ "not_fold_in": {
+  "fry_for_eng": "16 Nov items seed 126 (wize/manier) and word order after I think/I know (115 rows): fry stays out of the scan; night 1 worker checks Kai's answer first, else reads them as data only, ruling Kai's.",
+  "naltun": "16 Nov: wants to build a variant in Popty - Kai's reply, not a course scan item."
+ },
+ "queue": [
+  {
+   "course": "eng_for_ben",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_guj",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_hin",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_kan",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_mar",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_pan",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_tam",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_tel",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_urd",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "ita_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "kor_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "por_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "spa_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "zho_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "ara_eg_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "ara_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "ara_lb_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "deu_at_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "deu_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "deu_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "deu_for_zho",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_ara",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_deu",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_fra",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_ita",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_kor",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_por",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eng_for_sin",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_spa",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "eng_for_zho",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "fra_ca_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "fra_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668,
+   "fold_in": "16 Nov item: Stuart (old-app \"Error generating audio\") is a person to reply to, Kai's call - not a scan item; carry forward only."
+  },
+  {
+   "course": "fra_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "fra_for_zho",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "ita_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "ita_for_zho",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "kor_for_hin",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "kor_for_tam",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "por_br_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "spa_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "spa_for_zho",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "spa_mx_for_eng",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "zho_for_gle",
+   "paid": true,
+   "status": "beta",
+   "seeds": 5
+  },
+  {
+   "course": "zho_for_hin",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "zho_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "zho_for_tam",
+   "paid": true,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "cym_n_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 300,
+   "fold_in": "16 Nov item: Welsh North listening. A LISTENING judgement: evidence is served clip ids or Kai/Tom by ear on a clip-page.cjs page, never a transcript. Check Kai's answer first (his memory + DIARY); if none, list the clip ids as data only.",
+   "note": "R0.12: Welsh is the template; a check that flags Welsh is more likely a wrong check than a defect. Placed after the other paid courses for that reason (changed from a strict paid-first order; flagged to Kai)."
+  },
+  {
+   "course": "cym_s_for_eng",
+   "paid": true,
+   "status": "live",
+   "seeds": 300,
+   "fold_in": "16 Nov item: Welsh South listening (same rule as North). Also open: seed 117 \"na ddylen i\" is WAITING ON ARAN (d/419449fd) - carry forward, do not re-scan it.",
+   "note": "R0.12: Welsh is the template; a check that flags Welsh is more likely a wrong check than a defect. Placed after the other paid courses for that reason (changed from a strict paid-first order; flagged to Kai)."
+  },
+  {
+   "course": "cym_anthem_for_jpn",
+   "paid": true,
+   "status": "beta",
+   "seeds": 7,
+   "note": "R0.12: Welsh is the template; a check that flags Welsh is more likely a wrong check than a defect. Placed after the other paid courses for that reason (changed from a strict paid-first order; flagged to Kai)."
+  },
+  {
+   "course": "ben_for_eng",
+   "paid": false,
+   "status": "live",
+   "seeds": null
+  },
+  {
+   "course": "fin_for_eng",
+   "paid": false,
+   "status": "live",
+   "seeds": 668
+  },
+  {
+   "course": "glg_for_eng",
+   "paid": false,
+   "status": "live",
+   "seeds": null
+  },
+  {
+   "course": "hrv_for_eng",
+   "paid": false,
+   "status": "live",
+   "seeds": 300
+  },
+  {
+   "course": "afr_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 668
+  },
+  {
+   "course": "bul_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "cat_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "cat_for_spa",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "ces_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": null
+  },
+  {
+   "course": "dan_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "ell_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "est_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eus_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "eus_for_spa",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "fas_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "gle_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "heb_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "hin_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "hun_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": null,
+   "fold_in": "16 Nov item: Hungarian - 158 phrases with no target audio (not re-checked since). The silent-slot family answers it as data; Kai liked the Cartesia female voice in the picker on 19 Nov."
+  },
+  {
+   "course": "hye_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "isl_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "lav_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "lit_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "nep_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "nld_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "nor_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "pol_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "ron_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "rus_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": null
+  },
+  {
+   "course": "srp_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": null
+  },
+  {
+   "course": "swa_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "swe_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "tha_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "tur_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  },
+  {
+   "course": "ukr_for_eng",
+   "paid": false,
+   "status": "beta",
+   "seeds": 300
+  }
+ ]
+}
