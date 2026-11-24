@@ -16,6 +16,8 @@ changeset through `tools/changeset/apply-changeset.cjs` with a guards sidecar ch
 | item | count on copy | plan | chars (max, before library hits) |
 |---|---|---|---|
 | L1 item 5 audio | 250 empty slots: eng_for_tam 136, eng_for_jpn 61, eng_for_sin 46, eng_for_ben 4, eng_for_kan 3; the other 11 courses full | `item5/slots.json` -> fill.cjs by day | 9,344 |
+
+Item 5 FILLED 24 Nov 08:1xZ: 250/250 slots linked (library 32, rendered 218), 8,484 chars, 0 refused; ledgers `item5/*.ledger.jsonl`; listen https://watson-1.tail4968cb.ts.net:10000/d/157e1019 (UNHEARD). Read-back from the 25 Nov copy still owed (`tools/item5-count.cjs` on it should report 0).
 | L2 item 6 kor_for_tam / kor_for_hin | #703's plan still matches the copy: 0 stale; +1 row of the same defect (S0227L03U06) | tam 121 text ops (night changeset with audio.link ops after day renders); hin 28 ops (by day, apply.py) | tam 3,578, hin 890 |
 | L3 item 4 filler | eng_for_sin 201 scan rows: 198 delete, 3 stale (S0111 basket already changed); por_for_eng 205: 203 delete, 2 stale (S0108 changed by C0108); 0 held by P30 | `item4/<course>/r868.changeset.jsonl` (sin built; por rebuilt from the 24 Nov copy, after #785's night) | 0 (deletes) |
 | L4 pan/guj silent | eng_for_pan 616 known + 5 target, eng_for_guj 199 known + 1 target = 821 | `item1-pan-guj/slots.json` -> fill.cjs | 28,694 |
