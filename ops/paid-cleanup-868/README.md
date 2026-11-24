@@ -24,3 +24,7 @@ Item 5 FILLED 24 Nov 08:1xZ: 250/250 slots linked (library 32, rendered 218), 8,
 | L5 item 8 | planning by #877·AK (brief `item8/BRIEF.md`) | `item8/slots.json` | tbd |
 
 `ops/paid-cleanup-item6-703/apply.py` gained `ITEM6_FROM_COPY=1` (prepare from a copy dump instead of a live read).
+
+guj S0559L02U08 (08:30Z outage refusal): one-shot re-ask 24 Nov per Kai's Watson: dryRun accepted, rendered once 34 chars, audio ba25cb4e linked fill-only ev f37cc078 (`item1-pan-guj/slots-eng_for_guj.reask.jsonl`). Day units now run as cs-long-keep-868-day (pan/guj fill then item 8 chain); the non-keep units were stopped by the surface at turn end.
+
+Outage-refused slots (Kai's Watson, 24 Nov, superseding note): APPROVAL_UNVERIFIED slots are handed to the surface retry fix, never re-asked here. guj S0559L02U08 had ALREADY been filled before that note arrived (ba25cb4e, ev f37cc078): the retry job must skip it. Item 4's 249 (#358) were not touched by this job.
