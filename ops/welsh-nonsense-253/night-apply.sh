@@ -8,7 +8,7 @@ cd "$(dirname "$0")/../.." || exit 1
 D=ops/welsh-nonsense-253
 for i in $(seq 1 45); do
   gov=$(curl -s -m 30 http://localhost:3470/health | grep -c '"governed":true')
-  writers=$(pgrep -fc 'node[^ ]* [^ ]*apply-changeset\.cjs' || true)
+  writers=$(ps -C node -o args= | awk '$2 ~ /apply-changeset\.cjs$/' | wc -l)  # real node processes only (worker prompts quote the command)
   echo "$(date -u +%FT%TZ) try $i governed=$gov writers=$writers"
   if [ "$gov" = 1 ] && [ "${writers:-0}" -lt 3 ]; then break; fi
   [ "$i" = 45 ] && { echo "RESULT: HELD — load gate/writer cap never cleared in 90 min (governed=$gov writers=$writers)"; exit 4; }
