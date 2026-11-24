@@ -1,0 +1,6 @@
+[Unit]
+Description=cs #868 guj day run backstop: wake the job if the unit fails or cannot start
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -lc 'node %h/command-surface/tools/cs-wake-send.cjs 1a7af9ed-9077-4f45-9354-1a5218876914 "$(cat %h/.cs-long/868/.tok)" "[868 guj day] UNIT FAILED at $(date -u +%%FT%%TZ) (journalctl --user -u cs-long-keep-868-guj)"'
