@@ -49,19 +49,37 @@ function sinceFor(courseCode) {
  * date proves nothing either way. A row with no voice_id is bound (fails closed).
  * @returns {null | { since: number|null, appliesTo: (row) => boolean }}
  */
+/**
+ * The instant a line's word rules went live (ms): the LATEST since of the listed words the line holds, each word's own
+ * `since` when it has one (Frisian, cs #273·AL), else the language rule's. Per word so that adding a word never marks the
+ * good clips of the words listed before it stale. null when any of them has no readable date.
+ */
+function wordSinceFor(language, text) {
+  const rule = WORD_RULES[languageKey(language)]
+  const hits = wordRulesFor({ language, text })
+  if (!rule || !hits.length) return null
+  let max = 0
+  for (const w of hits) {
+    const t = dateOf(w.since || rule.since)
+    if (t == null) return null
+    max = Math.max(max, t)
+  }
+  return max
+}
+
 function overrideFor(courseCode, text, language) {
   const line = !!courseSpokenFor({ courseCode, text })
   const words = language ? wordRulesFor({ language, text }).length > 0 : false
   if (!line && !words) return null
   if (line) {
     const a = sinceFor(courseCode)
-    const b = words ? dateOf(WORD_RULES[languageKey(language)].since) : null
+    const b = words ? wordSinceFor(language, text) : null
     // Both apply: a clip must postdate both (null if either has no live date — nothing can be proven).
     const since = a == null || (words && b == null) ? null : Math.max(a, b || 0)
     return { since, appliesTo: () => true }
   }
   return {
-    since: dateOf(WORD_RULES[languageKey(language)].since),
+    since: wordSinceFor(language, text),
     appliesTo: (row) => !row.voice_id || /^cartesia/i.test(String(row.voice_id)),
   }
 }

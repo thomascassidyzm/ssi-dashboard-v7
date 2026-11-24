@@ -143,6 +143,11 @@ const WORD_RULES = Object.freeze({
     words: Object.freeze([
       Object.freeze({ word: 'Sarah', say: '<<ˈ|s|ɛ|ɹ|ə>>', reading: 'SAIR-uh, vowel of "hair"' }),
       Object.freeze({ word: 'risotto', say: 'rizz-otto', reading: 'ri-ZOT-oh, vowel of "lot" (respelled: the IPA was ignored)' }),
+      // Frisian — long i, "FREE-zhən", never "FRIZ-ian" (Kai 2026-11-24 ~19:01Z, cs #269·AL pick page d/b1989450: items
+      // B (Tom-006) and F (Charlotte) accepted, both this exact IPA; applied cs #273·AL to every fry_for_eng English cue and
+      // intro). Its OWN `since`: the guard reads a word's since before the rule's, so only Frisian clips made before this
+      // are refused for reuse; Sarah/risotto clips made since 8 Nov stay good. Move only forward, with this entry.
+      Object.freeze({ word: 'Frisian', say: '<<ˈ|f|ɹ|iː|ʒ|ə|n>>', reading: 'FREE-zhən, long i', since: '2026-11-24T19:10:00Z' }),
     ]),
   }),
 })
