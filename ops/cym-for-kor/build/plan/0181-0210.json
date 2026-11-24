@@ -1,0 +1,669 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 181-210: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules (shortest new LEGO where the source leaned on its older seeds or Korean needs a different unit), glosses in 반말; changes listed in \"changed\" (cs #815·AK for #813·AK)",
+ "changed": {
+  "184:do": "do untiled (older seeds); 응 is taken by yndw (172), so past-tense yes = 그래",
+  "184:yn y swyddfa": "yn, y untiled; joined to source swyddfa, Korean 그 사무실에서",
+  "186:rywbeth gwahanol": "gwahanol is taught as 다양한 (60); something different needs 뭔가 색다른 것 as one unit",
+  "187:dw i’n hapus hyd yn hyn": "hyd yn hyn is taught as 아직; so far needs 지금까지는, so one LEGO",
+  "195:wnes i adael": "wnes, i untiled; gadael is taught as 떠나다, left-behind needs 내가 두고 온",
+  "196:wyt ti wedi clywed": "wyt, ti, wedi untiled (older seeds); sister of wyt ti wedi gweld (182)",
+  "196:y syniad diweddara’": "y, syniad untiled; joined to source diweddara’",
+  "197:mae fy mab yn": "mae, yn untiled; yn gweithio is taught as 작동하다 (146) so works-as needs frame + gweithio 일하다",
+  "197:fel athro": "fel untiled; joined to source athro",
+  "198:mae fy merch yn": "as 197",
+  "199:oedd fy ffrind yn arfer": "oedd, yn, arfer untiled; Korean 내 친구는 예전에 ~했어 one unit",
+  "199:mewn swyddfa": "mewn untiled; joined to source swyddfa",
+  "200:bo’ nhw isio": "bo’ untiled; Korean 그들이 ~고 싶다고 one unit",
+  "201:be’ oedd yn mynd i ddigwydd": "Popty counts it over 8 syllables; split into be’ oedd yn mynd i + ddigwydd (#813·AK)",
+  "203:’swn i’n gofyn i ti": "source unit over the 8-syllable cap; helpu fi split out (taught, 25)",
+  "204:o’n i isio iddi hi": "source unit over the 8-syllable cap; helpu chdi split out (taught, 62)",
+  "204:i ddelio": "i untiled; joined to source ddelio",
+  "205:dw i wedi anghofio’r gair": "Popty counts it over 8 syllables; split into dw i wedi + anghofio’r gair (#813·AK)",
+  "206:dw i’n mwynhau’r cyfle i": "i untiled; joined to source unit",
+  "207:oeddat ti angen": "oeddat untiled; Korean 네가 ~할 필요가 있었던 one unit",
+  "208:ddeud o": "o untiled; Korean 그걸 말하다 one unit",
+  "209:yn cyfarfod fel grŵp": "yn untiled; joined to source cyfarfod fel grŵp"
+ },
+ "seeds": {
+  "181": {
+   "legos": [
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "rhaid i mi fynd â",
+     "ko": "나는 ~를 데려가야 해",
+     "type": "A"
+    },
+    {
+     "cy": "fy mam",
+     "ko": "내 어머니",
+     "type": "A"
+    },
+    {
+     "cy": "at y meddyg",
+     "ko": "의사에게",
+     "type": "A"
+    }
+   ]
+  },
+  "182": {
+   "legos": [
+    {
+     "cy": "wyt ti wedi gweld",
+     "ko": "너 ~ 봤어?",
+     "type": "A"
+    },
+    {
+     "cy": "fy ngoriadau i",
+     "ko": "내 열쇠",
+     "type": "A"
+    },
+    {
+     "cy": "yn rhywle",
+     "ko": "어디선가",
+     "type": "A"
+    }
+   ]
+  },
+  "183": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "mae arna i ofn",
+     "ko": "유감이지만",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ fi heb eu gweld nhw",
+     "ko": "내가 그것들을 못 봤다",
+     "type": "A"
+    }
+   ]
+  },
+  "184": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "weles i nhw",
+     "ko": "나는 그것들을 봤어",
+     "type": "A"
+    },
+    {
+     "cy": "yn y swyddfa",
+     "ko": "그 사무실에서",
+     "type": "A"
+    },
+    {
+     "cy": "ychydig yn ôl",
+     "ko": "조금 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "185": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ ti wedi’u gadael nhw",
+     "ko": "네가 그것들을 두고 왔다고",
+     "type": "A"
+    },
+    {
+     "cy": "yn y gwaith",
+     "ko": "직장에",
+     "type": "A"
+    }
+   ]
+  },
+  "186": {
+   "legos": [
+    {
+     "cy": "wyt ti isio",
+     "ko": "너 ~고 싶어?",
+     "type": "A"
+    },
+    {
+     "cy": "siarad",
+     "ko": "이야기하다",
+     "type": "A"
+    },
+    {
+     "cy": "am",
+     "ko": "~에 대해",
+     "type": "A"
+    },
+    {
+     "cy": "rywbeth gwahanol",
+     "ko": "뭔가 색다른 것",
+     "type": "A"
+    },
+    {
+     "cy": "wythnos nesa’",
+     "ko": "다음 주",
+     "type": "A"
+    }
+   ]
+  },
+  "187": {
+   "legos": [
+    {
+     "cy": "dw i’n hapus hyd yn hyn",
+     "ko": "나는 지금까지는 행복해",
+     "type": "A"
+    }
+   ]
+  },
+  "188": {
+   "legos": [
+    {
+     "cy": "felly",
+     "ko": "그래서",
+     "type": "A"
+    },
+    {
+     "cy": "dw i ddim angen",
+     "ko": "나는 ~ㄹ 필요가 없어",
+     "type": "A"
+    },
+    {
+     "cy": "newid",
+     "ko": "바꾸다",
+     "type": "A"
+    }
+   ]
+  },
+  "189": {
+   "legos": [
+    {
+     "cy": "ia mae hynna’n",
+     "ko": "응 그건 ~야",
+     "type": "A"
+    },
+    {
+     "cy": "syniad da",
+     "ko": "좋은 아이디어",
+     "type": "A"
+    }
+   ]
+  },
+  "190": {
+   "legos": [
+    {
+     "cy": "oes ots gen ti os",
+     "ko": "너 ~면 불편해?",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n",
+     "ko": "나는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "gofyn",
+     "ko": "묻다",
+     "type": "A"
+    },
+    {
+     "cy": "ychydig o gwestiynau",
+     "ko": "질문 몇 개",
+     "type": "A"
+    },
+    {
+     "cy": "i ti",
+     "ko": "너에게",
+     "type": "A"
+    }
+   ]
+  },
+  "191": {
+   "legos": [
+    {
+     "cy": "na",
+     "ko": "아니",
+     "type": "A"
+    },
+    {
+     "cy": "does dim ots gen i",
+     "ko": "나는 상관없어",
+     "type": "A"
+    },
+    {
+     "cy": "o gwbl",
+     "ko": "전혀",
+     "type": "A"
+    }
+   ]
+  },
+  "192": {
+   "legos": [
+    {
+     "cy": "dw i’n brysur",
+     "ko": "나는 바빠",
+     "type": "A"
+    },
+    {
+     "cy": "nos ’fory",
+     "ko": "내일 밤",
+     "type": "A"
+    }
+   ]
+  },
+  "193": {
+   "legos": [
+    {
+     "cy": "mae’n ddrwg gen i",
+     "ko": "미안해",
+     "type": "A"
+    },
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n",
+     "ko": "나는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "rhy brysur",
+     "ko": "너무 바쁜",
+     "type": "A"
+    },
+    {
+     "cy": "heddiw",
+     "ko": "오늘",
+     "type": "A"
+    }
+   ]
+  },
+  "194": {
+   "legos": [
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "wyt ti’n",
+     "ko": "너 ~하고 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "chwilio amdano",
+     "ko": "찾다",
+     "type": "A"
+    }
+   ]
+  },
+  "195": {
+   "legos": [
+    {
+     "cy": "dw i’n trio",
+     "ko": "나는 ~려고 노력하고 있어",
+     "type": "A"
+    },
+    {
+     "cy": "ffeindio’r pres",
+     "ko": "돈을 찾아내다",
+     "type": "A"
+    },
+    {
+     "cy": "wnes i adael",
+     "ko": "내가 두고 온",
+     "type": "A"
+    },
+    {
+     "cy": "ar y bwrdd",
+     "ko": "탁자 위에",
+     "type": "A"
+    }
+   ]
+  },
+  "196": {
+   "legos": [
+    {
+     "cy": "wyt ti wedi clywed",
+     "ko": "너 ~ 들었어?",
+     "type": "A"
+    },
+    {
+     "cy": "y syniad diweddara’",
+     "ko": "최신 아이디어",
+     "type": "A"
+    }
+   ]
+  },
+  "197": {
+   "legos": [
+    {
+     "cy": "mae fy mab yn",
+     "ko": "내 아들은 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "gweithio",
+     "ko": "일하다",
+     "type": "A"
+    },
+    {
+     "cy": "fel athro",
+     "ko": "선생님으로",
+     "type": "A"
+    }
+   ]
+  },
+  "198": {
+   "legos": [
+    {
+     "cy": "mae fy merch yn",
+     "ko": "내 딸은 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "gweithio",
+     "ko": "일하다",
+     "type": "A"
+    },
+    {
+     "cy": "i’r cyngor",
+     "ko": "지방 의회에서",
+     "type": "A"
+    }
+   ]
+  },
+  "199": {
+   "legos": [
+    {
+     "cy": "oedd fy ffrind yn arfer",
+     "ko": "내 친구는 예전에 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "gweithio",
+     "ko": "일하다",
+     "type": "A"
+    },
+    {
+     "cy": "mewn swyddfa",
+     "ko": "사무실에서",
+     "type": "A"
+    }
+   ]
+  },
+  "200": {
+   "legos": [
+    {
+     "cy": "maen nhw’n deud",
+     "ko": "그들은 ~라고 말해",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ nhw isio",
+     "ko": "그들이 ~고 싶다고",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud yn siŵr",
+     "ko": "확실히 하다",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ ni’n gorffen",
+     "ko": "우리가 끝내도록",
+     "type": "A"
+    },
+    {
+     "cy": "popeth",
+     "ko": "모든 것",
+     "type": "A"
+    },
+    {
+     "cy": "mewn pryd",
+     "ko": "제때",
+     "type": "A"
+    }
+   ]
+  },
+  "201": {
+   "legos": [
+    {
+     "cy": "oeddan ni isio",
+     "ko": "우리는 ~고 싶었어",
+     "type": "A"
+    },
+    {
+     "cy": "gwybod",
+     "ko": "알다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd yn mynd i",
+     "ko": "무엇이 ~려고 했는지",
+     "type": "A"
+    },
+    {
+     "cy": "ddigwydd",
+     "ko": "일어나다",
+     "type": "A"
+    }
+   ]
+  },
+  "202": {
+   "legos": [
+    {
+     "cy": "doedd neb yn siŵr",
+     "ko": "아무도 확실하지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "sut i",
+     "ko": "~하는 방법",
+     "type": "A"
+    },
+    {
+     "cy": "ateb",
+     "ko": "대답하다",
+     "type": "A"
+    },
+    {
+     "cy": "y cwestiwn",
+     "ko": "그 질문",
+     "type": "A"
+    }
+   ]
+  },
+  "203": {
+   "legos": [
+    {
+     "cy": "be’ fyddet ti’n gwneud",
+     "ko": "너는 무엇을 하겠어?",
+     "type": "A"
+    },
+    {
+     "cy": "’swn i’n gofyn i ti",
+     "ko": "내가 너에게 ~ 부탁한다면",
+     "type": "A"
+    },
+    {
+     "cy": "helpu fi",
+     "ko": "나를 도와주다",
+     "type": "A"
+    }
+   ]
+  },
+  "204": {
+   "legos": [
+    {
+     "cy": "o’n i isio iddi hi",
+     "ko": "나는 그녀가 ~하기를 원했어",
+     "type": "A"
+    },
+    {
+     "cy": "helpu chdi",
+     "ko": "너를 돕다",
+     "type": "A"
+    },
+    {
+     "cy": "i ddelio",
+     "ko": "처리하도록",
+     "type": "A"
+    },
+    {
+     "cy": "efo’r trefniadau",
+     "ko": "준비 사항들을",
+     "type": "A"
+    }
+   ]
+  },
+  "205": {
+   "legos": [
+    {
+     "cy": "dw i wedi",
+     "ko": "나는 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "anghofio’r gair",
+     "ko": "그 단어를 잊어버리다",
+     "type": "A"
+    },
+    {
+     "cy": "o’n i’n trio",
+     "ko": "내가 ~려고 하던",
+     "type": "A"
+    },
+    {
+     "cy": "deud",
+     "ko": "말하다",
+     "type": "A"
+    }
+   ]
+  },
+  "206": {
+   "legos": [
+    {
+     "cy": "dw i’n mwynhau’r cyfle i",
+     "ko": "나는 ~할 기회를 즐겨",
+     "type": "A"
+    },
+    {
+     "cy": "ymarfer siarad",
+     "ko": "이야기하는 연습을 하다",
+     "type": "A"
+    },
+    {
+     "cy": "efo chdi",
+     "ko": "너와",
+     "type": "A"
+    }
+   ]
+  },
+  "207": {
+   "legos": [
+    {
+     "cy": "ti wedi gwneud",
+     "ko": "너는 ~를 했어",
+     "type": "A"
+    },
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "oeddat ti angen",
+     "ko": "네가 ~할 필요가 있었던",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    }
+   ]
+  },
+  "208": {
+   "legos": [
+    {
+     "cy": "do’n i ddim isio",
+     "ko": "나는 ~고 싶지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "gofyn i ti",
+     "ko": "너에게 묻다",
+     "type": "A"
+    },
+    {
+     "cy": "sut i",
+     "ko": "~하는 방법",
+     "type": "A"
+    },
+    {
+     "cy": "ddeud o",
+     "ko": "그걸 말하다",
+     "type": "A"
+    }
+   ]
+  },
+  "209": {
+   "legos": [
+    {
+     "cy": "maen nhw isio",
+     "ko": "그들은 ~고 싶어해",
+     "type": "A"
+    },
+    {
+     "cy": "treulio mwy o amser",
+     "ko": "더 많은 시간을 보내다",
+     "type": "A"
+    },
+    {
+     "cy": "yn cyfarfod fel grŵp",
+     "ko": "그룹으로 만나는 데",
+     "type": "A"
+    }
+   ]
+  },
+  "210": {
+   "legos": [
+    {
+     "cy": "maen nhw’n meddwl",
+     "ko": "그들은 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ ni angen",
+     "ko": "우리가 ~ㄹ 필요가 있다고",
+     "type": "A"
+    },
+    {
+     "cy": "trafod",
+     "ko": "논의하다",
+     "type": "A"
+    },
+    {
+     "cy": "y broblem",
+     "ko": "그 문제",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}

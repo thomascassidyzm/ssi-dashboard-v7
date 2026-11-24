@@ -49,12 +49,17 @@ const UPDATABLE = {
     'known_audio_id', 'target1_audio_id', 'target2_audio_id'],
   course_legos: ['known_text', 'target_text', 'type', 'is_new', 'components', 'status',
     'target_text_roman', 'known_gloss_segments', 'target_lego_id',
-    'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
+    'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id',
+    // The hand-edit lock (database/migrations/20261124_hand_edit_lock.sql, cs #128·AL). Listed so the derived undo of a
+    // fine-tuning edit puts the previous lock state back; the a0_hand_edit_lock trigger holds them for anybody who is
+    // not the fine-tuning editor (runPlans handEditor), whatever this list says.
+    'hand_edited_by', 'hand_edited_at', 'intro_hand_by', 'intro_hand_at', 'phrase_order_hand_by', 'phrase_order_hand_at', 'hand_edit_held'],
   course_practice_phrases: ['known_text', 'target_text', 'phrase_role', 'position', 'introduce',
     'status', 'register', 'difficulty', 'lego_id', 'connected_lego_ids', 'lego_position',
     'target_text_roman', 'metadata', 'known_gloss_segments', 'word_count', 'lego_count',
     'target_syllable_count', 'target_phrase_id', 'decomposition', 'decomposition_course_version', 'frame_mask',
-    'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'],
+    'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id',
+    'hand_edited_by', 'hand_edited_at', 'hand_order', 'hand_edit_held'],   // hand-edit lock, as on course_legos
   // s3_key, clip_id, id and course_code are not metadata: moving them moves the
   // file a slot plays, which is the render route's business, not this door's.
   course_audio: ['text', 'role', 'voice_id', 'origin', 'lego_id', 'language',
@@ -421,7 +426,7 @@ function undoFor(plan, before, after, opName) {
  * @param {() => Promise<string>} [args.eventId]  called once, only when applying; its id is stamped on content rows
  * @returns {Promise<{applied, results, undo_ops, touched}>}
  */
-async function runPlans({ connect, courseCode, plans, apply, eventId, approval = null, previewTiles = false }) {
+async function runPlans({ connect, courseCode, plans, apply, eventId, approval = null, previewTiles = false, handEditor = null }) {
   const trigApproval = triggerApprovalFor(approval); // throws BAD_APPROVAL before any connection is opened
   const client = await connect();
   const results = [];
@@ -440,6 +445,11 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
       await client.query(`SELECT set_config('popty.tom_human_take_approval', $1, true)`, [trigApproval]);
       console.log(`[human-take] approval by ${approverOf(approval)} on edit-batch ${courseCode}: ${approval}`);
     }
+    // THE FINE-TUNING EDITOR DECLARES ITSELF (cs #128·AL). Transaction-local like the grant above: the a0_hand_edit_lock
+    // trigger lets this transaction — and only a transaction that says this — write a hand-locked row, and stamps the
+    // lock on the rows it changes. Only services/course-editor/course-editor-router.cjs passes it, after checking the
+    // caller is a fine-tuning editor (Aran).
+    if (handEditor) await client.query(`SELECT set_config('popty.fine_tune_editor', $1, true)`, [String(handEditor)]);
     const evId = apply && eventId ? await eventId() : null;
     const typesCache = new Map();
     const types = async (t) => { if (!typesCache.has(t)) typesCache.set(t, await columnTypes(client, t)); return typesCache.get(t); };
@@ -475,8 +485,20 @@ async function runPlans({ connect, courseCode, plans, apply, eventId, approval =
         continue;
       }
       if (plan.kind === 'reorder') {
-        const r = await legoReorder.runReorder(client, plan, courseCode, { evId, apply, types,
-          fail: (msg, code) => { throw new EditOpError(plan.index, msg, code); } });
+        // A REORDER MOVES HAND-EDITED ROWS ON PURPOSE (Tom's Watson's impact check #129·AL, verified 2026-11-24): the
+        // a0_hand_edit_lock trigger refuses to move a hand-edited or hand-placed LEGO/phrase unless the transaction names
+        // the path that must. Declared for this op only, and every row it moves logs it (hand_lock_overrides); a no-op
+        // before the lock migration exists. Cleared after, so the batch's other ops never inherit it.
+        await client.query(`SELECT set_config('popty.hand_lock_override', $1, true)`,
+          [`lego.reorder seed ${plan.where.seed_number} (course-edit door${evId ? `, event ${evId}` : ''})`]);
+        let r;
+        try {
+          r = await legoReorder.runReorder(client, plan, courseCode, { evId, apply, types,
+            fail: (msg, code) => { throw new EditOpError(plan.index, msg, code); } });
+        } finally {
+          // A failed statement aborts the transaction; the reset then fails too, harmlessly (it is rolled back anyway).
+          await client.query(`SELECT set_config('popty.hand_lock_override', '', true)`).catch(() => {});
+        }
         touched.legos = true;
         touched.seed_numbers.add(plan.where.seed_number);
         for (const id of r.lego_ids) touched.lego_ids.add(id);

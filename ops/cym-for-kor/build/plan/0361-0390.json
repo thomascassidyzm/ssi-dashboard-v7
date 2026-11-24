@@ -1,0 +1,599 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 361-390: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules (shortest new LEGO where the source leaned on its older seeds or Korean needs a different unit), glosses in 반말; changes listed in \"changed\" (cs #816·AK for #813·AK)",
+ "changed": {
+  "362:naddo": "no-answer to a past question, distinct from na 아니",
+  "362:oedd o’n reit ddistaw": "source reit ddistaw + untiled oedd o’n; Korean 그는 정말 조용했어 one unit",
+  "362:ar ôl i ti adael": "untiled (older seeds); one unit, sister of ar ôl i ti orffen (11)",
+  "363:oedd o’n": "untiled in source split; taught frame (266)",
+  "364:fod o ddim yn licio’r": "fod, o, ddim, yn, licio’r untiled; Korean 그가 ~를 좋아하지 않는다고 one frame",
+  "364:lle ’na": "source y lle ’na, but the seed has licio’r lle ’na; Korean 그곳",
+  "365:be’ ddudodd hi": "source ddudodd hi + untiled be’; one unit, sister of be’ ddudodd o (84)",
+  "366:glywest ti": "Korean 너 ~를 들었어?, since 너 ~ 들었어? is taken by wyt ti wedi clywed (196)",
+  "366:be’ oedd o isio": "be’ joined to taught oedd o isio; Korean embedded question 무엇을 ~고 싶어했는지 one unit",
+  "368:fod o isio": "untiled in source split; taught (235)",
+  "369:weles i": "untiled in source split; taught (216)",
+  "370:o’n i’n nabod": "untiled; Korean relative 내가 알던 one unit",
+  "371:ffilm": "untiled in source split; taught (221)",
+  "372:welest ti": "Korean 너 ~를 봤어?, since 너 ~ 봤어? is taken by wyt ti wedi gweld (182)",
+  "372:be’ oedd hi’n trio": "be’, oedd, hi’n, trio untiled; embedded question one unit",
+  "374:fod o’n hardd": "untiled; Korean 그게 아름답다고 one unit, like fod o’n bwysig (330)",
+  "375:do’n i ddim yn gwybod": "untiled; Korean 몰랐어 one word, sister of dw i ddim yn gwybod (263)",
+  "380:be’ oedd hi isio": "be’ joined to source oedd hi isio; embedded question one unit, like be’ oedd o isio (366)",
+  "381:wnes i ddim gofyn": "source wnes i ddim + untiled gofyn; Korean ~ 묻지 않았어 one frame",
+  "381:os oedd o isio": "source os + untiled oedd o isio; os is taught as ~지 (10), Korean 그가 ~고 싶어하는지 one unit",
+  "382:lle oedd o isio": "untiled; embedded question one unit, like be’ oedd o isio (366)",
+  "382:rhoi fo": "untiled; taught (314)",
+  "383:ddudodd o": "source rhoi alone; taught ddudodd o (301), fod o isio (235), rhoi fo (314)",
+  "384:do’n i ddim yn medru": "untiled; one frame like doedd o ddim yn medru (311)",
+  "384:cytuno efo": "untiled; Korean ~에 동의하다 one unit",
+  "385:efo hi": "efo, hi untiled; sister of efo fo 그와 (262)",
+  "388:ti’n gweithio": "untiled; Korean relative 네가 일하는, like ti’n nabod (355)"
+ },
+ "seeds": {
+  "361": {
+   "legos": [
+    {
+     "cy": "oedd o’n ddistaw",
+     "ko": "그는 조용했어",
+     "type": "A"
+    }
+   ]
+  },
+  "362": {
+   "legos": [
+    {
+     "cy": "naddo",
+     "ko": "아니 안 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "oedd o’n reit ddistaw",
+     "ko": "그는 정말 조용했어",
+     "type": "A"
+    },
+    {
+     "cy": "ar ôl i ti adael",
+     "ko": "네가 떠난 후에",
+     "type": "A"
+    }
+   ]
+  },
+  "363": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "oedd o’n",
+     "ko": "그는 ~였어",
+     "type": "A"
+    },
+    {
+     "cy": "teimlo fel siarad",
+     "ko": "이야기하고 싶은 기분이다",
+     "type": "A"
+    },
+    {
+     "cy": "llawer",
+     "ko": "많이",
+     "type": "A"
+    }
+   ]
+  },
+  "364": {
+   "legos": [
+    {
+     "cy": "clywes i",
+     "ko": "나는 ~라고 들었어",
+     "type": "A"
+    },
+    {
+     "cy": "fod o ddim yn licio’r",
+     "ko": "그가 ~를 좋아하지 않는다고",
+     "type": "A"
+    },
+    {
+     "cy": "lle ’na",
+     "ko": "그곳",
+     "type": "A"
+    }
+   ]
+  },
+  "365": {
+   "legos": [
+    {
+     "cy": "chlywes i ddim",
+     "ko": "나는 ~를 듣지 못했어",
+     "type": "A"
+    },
+    {
+     "cy": "be’ ddudodd hi",
+     "ko": "그녀가 말한 것",
+     "type": "A"
+    },
+    {
+     "cy": "wrtho fo",
+     "ko": "그에게",
+     "type": "A"
+    }
+   ]
+  },
+  "366": {
+   "legos": [
+    {
+     "cy": "glywest ti",
+     "ko": "너 ~를 들었어?",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd o isio",
+     "ko": "그가 무엇을 ~고 싶어했는지",
+     "type": "A"
+    },
+    {
+     "cy": "tyfu",
+     "ko": "기르다",
+     "type": "A"
+    }
+   ]
+  },
+  "367": {
+   "legos": [
+    {
+     "cy": "naddo",
+     "ko": "아니 안 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "ddudodd neb wrthaf fi",
+     "ko": "아무도 나에게 말해 주지 않았어",
+     "type": "A"
+    }
+   ]
+  },
+  "368": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "clywes i",
+     "ko": "나는 ~라고 들었어",
+     "type": "A"
+    },
+    {
+     "cy": "fod o isio",
+     "ko": "그가 ~고 싶다고",
+     "type": "A"
+    },
+    {
+     "cy": "tyfu",
+     "ko": "기르다",
+     "type": "A"
+    },
+    {
+     "cy": "tomatos",
+     "ko": "토마토",
+     "type": "A"
+    }
+   ]
+  },
+  "369": {
+   "legos": [
+    {
+     "cy": "weles i",
+     "ko": "나는 ~를 봤어",
+     "type": "A"
+    },
+    {
+     "cy": "rai ceffylau",
+     "ko": "말 몇 마리",
+     "type": "A"
+    },
+    {
+     "cy": "ar y ffordd",
+     "ko": "길에서",
+     "type": "A"
+    }
+   ]
+  },
+  "370": {
+   "legos": [
+    {
+     "cy": "weles i neb",
+     "ko": "나는 아무도 못 봤어",
+     "type": "A"
+    },
+    {
+     "cy": "o’n i’n nabod",
+     "ko": "내가 알던",
+     "type": "A"
+    }
+   ]
+  },
+  "371": {
+   "legos": [
+    {
+     "cy": "es i i weld",
+     "ko": "나는 ~를 보러 갔어",
+     "type": "A"
+    },
+    {
+     "cy": "ffilm",
+     "ko": "영화",
+     "type": "A"
+    },
+    {
+     "cy": "ddydd Mercher",
+     "ko": "수요일에",
+     "type": "A"
+    }
+   ]
+  },
+  "372": {
+   "legos": [
+    {
+     "cy": "welest ti",
+     "ko": "너 ~를 봤어?",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd hi’n trio",
+     "ko": "그녀가 무엇을 ~려고 노력하고 있었는지",
+     "type": "A"
+    },
+    {
+     "cy": "creu",
+     "ko": "만들어 내다",
+     "type": "A"
+    }
+   ]
+  },
+  "373": {
+   "legos": [
+    {
+     "cy": "oedd o’n hardd",
+     "ko": "그건 아름다웠어",
+     "type": "A"
+    }
+   ]
+  },
+  "374": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "o’n i’n meddwl",
+     "ko": "나는 ~라고 생각했어",
+     "type": "A"
+    },
+    {
+     "cy": "fod o’n hardd",
+     "ko": "그게 아름답다고",
+     "type": "A"
+    },
+    {
+     "cy": "iawn",
+     "ko": "아주",
+     "type": "A"
+    }
+   ]
+  },
+  "375": {
+   "legos": [
+    {
+     "cy": "naddo",
+     "ko": "아니 안 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "do’n i ddim yn gwybod",
+     "ko": "나는 몰랐어",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd hi’n gwneud",
+     "ko": "그녀가 무엇을 하고 있었는지",
+     "type": "A"
+    }
+   ]
+  },
+  "376": {
+   "legos": [
+    {
+     "cy": "es i ddim i nunlla",
+     "ko": "나는 아무 데도 가지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "mis diwetha’",
+     "ko": "지난달",
+     "type": "A"
+    }
+   ]
+  },
+  "377": {
+   "legos": [
+    {
+     "cy": "est ti i rywle",
+     "ko": "너 어딘가에 갔어?",
+     "type": "A"
+    },
+    {
+     "cy": "yn y byd",
+     "ko": "세계에서",
+     "type": "A"
+    },
+    {
+     "cy": "llynedd",
+     "ko": "작년에",
+     "type": "A"
+    }
+   ]
+  },
+  "378": {
+   "legos": [
+    {
+     "cy": "naddo",
+     "ko": "아니 안 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "doedd gen i ddim",
+     "ko": "나는 ~가 없었어",
+     "type": "A"
+    },
+    {
+     "cy": "digon o bres",
+     "ko": "충분한 돈",
+     "type": "A"
+    },
+    {
+     "cy": "ar gyfer gwyliau",
+     "ko": "휴가를 위한",
+     "type": "A"
+    }
+   ]
+  },
+  "379": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "o’n i’n ddigon lwcus",
+     "ko": "나는 ~ 만큼 운이 좋았어",
+     "type": "A"
+    },
+    {
+     "cy": "i deithio i’r Affrig",
+     "ko": "아프리카로 여행할",
+     "type": "A"
+    }
+   ]
+  },
+  "380": {
+   "legos": [
+    {
+     "cy": "wnes i ofyn",
+     "ko": "나는 ~ 물어봤어",
+     "type": "A"
+    },
+    {
+     "cy": "be’ oedd hi isio",
+     "ko": "그녀가 무엇을 ~고 싶어하는지",
+     "type": "A"
+    },
+    {
+     "cy": "cynnwys",
+     "ko": "포함하다",
+     "type": "A"
+    }
+   ]
+  },
+  "381": {
+   "legos": [
+    {
+     "cy": "wnes i ddim gofyn",
+     "ko": "나는 ~ 묻지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "os oedd o isio",
+     "ko": "그가 ~고 싶어하는지",
+     "type": "A"
+    },
+    {
+     "cy": "dilyn ni",
+     "ko": "우리를 따라오다",
+     "type": "A"
+    }
+   ]
+  },
+  "382": {
+   "legos": [
+    {
+     "cy": "wnest ti ofyn",
+     "ko": "너 ~ 물어봤어?",
+     "type": "A"
+    },
+    {
+     "cy": "lle oedd o isio",
+     "ko": "그가 어디에 ~고 싶어하는지",
+     "type": "A"
+    },
+    {
+     "cy": "rhoi fo",
+     "ko": "그걸 놓다",
+     "type": "A"
+    }
+   ]
+  },
+  "383": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "ddudodd o",
+     "ko": "그는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "fod o isio",
+     "ko": "그가 ~고 싶다고",
+     "type": "A"
+    },
+    {
+     "cy": "rhoi fo",
+     "ko": "그걸 놓다",
+     "type": "A"
+    },
+    {
+     "cy": "yn yr ardd",
+     "ko": "정원에",
+     "type": "A"
+    }
+   ]
+  },
+  "384": {
+   "legos": [
+    {
+     "cy": "do’n i ddim yn medru",
+     "ko": "나는 ~ㄹ 수 없었어",
+     "type": "A"
+    },
+    {
+     "cy": "cytuno efo",
+     "ko": "~에 동의하다",
+     "type": "A"
+    },
+    {
+     "cy": "be’ ddudodd o",
+     "ko": "그가 말한 것",
+     "type": "A"
+    },
+    {
+     "cy": "funud yn ôl",
+     "ko": "일 분 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "385": {
+   "legos": [
+    {
+     "cy": "wnest ti gytuno",
+     "ko": "너 동의했어?",
+     "type": "A"
+    },
+    {
+     "cy": "efo hi",
+     "ko": "그녀와",
+     "type": "A"
+    }
+   ]
+  },
+  "386": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "wnes i gytuno",
+     "ko": "나는 동의했어",
+     "type": "A"
+    },
+    {
+     "cy": "efo hi",
+     "ko": "그녀와",
+     "type": "A"
+    }
+   ]
+  },
+  "387": {
+   "legos": [
+    {
+     "cy": "naddo",
+     "ko": "아니 안 그랬어",
+     "type": "A"
+    },
+    {
+     "cy": "do’n i ddim yn meddwl",
+     "ko": "나는 ~라고 생각하지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "bod hi’n iawn",
+     "ko": "그녀가 옳다고",
+     "type": "A"
+    }
+   ]
+  },
+  "388": {
+   "legos": [
+    {
+     "cy": "y person ’na",
+     "ko": "그 사람",
+     "type": "A"
+    },
+    {
+     "cy": "ti’n gweithio",
+     "ko": "네가 일하는",
+     "type": "A"
+    },
+    {
+     "cy": "efo fo",
+     "ko": "그와",
+     "type": "A"
+    }
+   ]
+  },
+  "389": {
+   "legos": [
+    {
+     "cy": "y person ’na",
+     "ko": "그 사람",
+     "type": "A"
+    },
+    {
+     "cy": "draw acw",
+     "ko": "저기에 있는",
+     "type": "A"
+    }
+   ]
+  },
+  "390": {
+   "legos": [
+    {
+     "cy": "yr un sy’n sefyll",
+     "ko": "서 있는 사람",
+     "type": "A"
+    },
+    {
+     "cy": "yn agos at y",
+     "ko": "~ 가까이에",
+     "type": "A"
+    },
+    {
+     "cy": "fynedfa",
+     "ko": "입구",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}

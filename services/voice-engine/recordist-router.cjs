@@ -83,6 +83,7 @@ const videoVoiceovers = require('./video-voiceover-lines.cjs')
 const podEnglish = require('./pod-english-lines.cjs')
 const podTextSwaps = require('./pod-text-swaps.cjs')
 const introSentences = require('./intro-sentence-lines.cjs')
+const encouragementLines = require('./encouragement-lines.cjs')
 const { linkClips } = require('../shared/link-clip.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
@@ -1592,6 +1593,86 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * AN ENCOURAGEMENT (job #104·AL, encouragement-lines.cjs): one of the learner app's spoken encouragements, in this
+   * voice. The line is re-read from shared_audio NOW (following a replaced row to its live successor), so the words
+   * checked against the take are the ones the admin page holds this second. Filed as an English known take through
+   * the same seam as a voiceover; then planEncouragementSwap puts it into shared_audio — a draft filled in place, a live
+   * line replaced (insert first, retire second). Every write error is logged and returned; the take itself is already
+   * safe in course_audio either way, and the line stays on the card as owed until the swap lands.
+   */
+  async function recordEncouragementTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const row = await readEncouragementRow(parsed.rowId)
+    const resolved = encouragementLines.resolveEncouragementLine(row, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: encouragementLines.ENCOURAGEMENT_KIND, metaKind: 'known', role: 'known', text, audioBase64, mimeType, device,
+      afterFiled: (audioId) => swapEncouragementTake({ recordist, raw: parsed.raw, rowId: row.id, audioId }) })
+  }
+
+  /** The shared_audio row a line id names, or the live row that replaced it; null when there is none. */
+  async function readEncouragementRow(rowId) {
+    let id = rowId
+    for (let hop = 0; hop <= encouragementLines.MAX_SUPERSEDE_HOPS; hop += 1) {
+      const { data, error } = await db().from('shared_audio').select('*').eq('id', id).limit(1)
+      if (error) throw new Error(`encouragement lookup failed: ${error.message}`)
+      const row = (data && data[0]) || null
+      if (!row || !row.superseded_by) return row
+      id = row.superseded_by
+    }
+    return null
+  }
+
+  async function swapEncouragementTake({ recordist, raw, rowId, audioId }) {
+    const out = { mode: null, rowId: null, errors: [] }
+    try {
+      const { data: clips, error: clipErr } = await db().from('course_audio').select('id, s3_key, duration_ms').eq('id', audioId).limit(1)
+      if (clipErr) throw new Error(`filed clip read failed: ${clipErr.message}`)
+      const clip = clips && clips[0]
+      if (!clip || !clip.s3_key) throw new Error(`filed clip ${audioId} has no s3_key`)
+      // Re-read the row once more after the upload: the admin page may have changed it while the take was uploading.
+      const row = await readEncouragementRow(rowId)
+      if (!encouragementLines.resolveEncouragementLine(row, recordist)) throw new Error(`line ${raw} is no longer on the card (hidden or removed while recording)`)
+      const plan = encouragementLines.planEncouragementSwap(row, { s3Key: clip.s3_key, durationMs: clip.duration_ms ?? null }, recordist)
+      out.mode = plan.mode
+      const clash = (error) => encouragementLines.isUniqueClash(error)
+        ? `${error.message} — shared_audio's unique key (text_normalized, language, audio_type) still covers the encouragement types; the migration must exempt them before a line can be replaced`
+        : error.message
+      if (plan.mode === 'fill-draft') {
+        const { data, error } = await db().from('shared_audio').update(plan.update.set)
+          .eq('id', plan.update.id).eq('audio_type', plan.update.whereType).select('id')
+        if (error) out.errors.push(`fill draft: ${clash(error)}`)
+        else if (!data || !data.length) out.errors.push(`fill draft: row ${plan.update.id} was no longer a ${plan.update.whereType} — nothing written`)
+        else out.rowId = plan.update.id
+      } else {
+        const { error: insErr } = await db().from('shared_audio').insert(plan.insert)
+        if (insErr) {
+          out.errors.push(`insert: ${clash(insErr)}`)
+        } else {
+          out.rowId = plan.newId
+          const { data, error } = await db().from('shared_audio').update(plan.retire.set)
+            .eq('id', plan.retire.id).eq('audio_type', plan.retire.whereType).select('id')
+          if (error) out.errors.push(`retire ${plan.retire.id}: ${clash(error)} (new row ${plan.newId} is live beside it)`)
+          else if (!data || !data.length) out.errors.push(`retire ${plan.retire.id}: it was no longer a ${plan.retire.whereType} — new row ${plan.newId} is live beside it`)
+        }
+      }
+    } catch (err) {
+      out.errors.push(err.message)
+    }
+    if (out.errors.length) logger.error(`[Recordist] encouragement take ${raw} (clip ${audioId}) filed, but shared_audio was not fully updated: ${out.errors.join('; ')}`)
+    else logger.log(`[Recordist] encouragement take ${raw} → clip ${audioId}, ${out.mode} → shared_audio ${out.rowId}`)
+    return out
+  }
+
+  /** Play back an encouragement: the clip the line's (current) row serves learners. A draft has none. */
+  async function encouragementClipResponse(req, res, recordist, parsed) {
+    const row = await readEncouragementRow(parsed.rowId)
+    if (!encouragementLines.resolveEncouragementLine(row, recordist)) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    if (encouragementLines.isDraft(row)) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+    const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
+    if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url, variant: 'processed' })
+    return res.redirect(302, url)
+  }
+
+  /**
    * AN ENGLISH LEGO (job #255, english-lego-lines.cjs): the English of a new LEGO whose intro is spliced from this
    * voice. Filed as an English known take exactly like an intro piece — it fills no LEGO slot; the splice finds it by
    * voice and words — and, like every take (job #198), fills any EMPTY seed / phrase known slot of the same words.
@@ -1775,6 +1856,7 @@ module.exports = function createRecordistRouter({
     const after = audioId && afterFiled ? await afterFiled(audioId) : null
     return res.json({
       ok: true, audioId, kind, role,
+      ...(after && kind === encouragementLines.ENCOURAGEMENT_KIND ? { encouragement: { mode: after.mode, rowId: after.rowId, errors: after.errors } } : {}),
       ...(after && after.swaps ? { podSwaps: after.swaps } : {}),
       ...(after && kind === introSentences.INTRO_SENTENCE_KIND ? { introLinked: after.linked, introLeftAlone: after.leftAlone } : {}),
       clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(raw)}/clip`,
@@ -2342,6 +2424,11 @@ module.exports = function createRecordistRouter({
       if (voiceoverLine) {
         return await recordVoiceoverTake({ req, res, recordist, parsed: { ...voiceoverLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // An ENCOURAGEMENT (job #104·AL). `encouragement:...` is not a uuid either.
+      const encouragementLine = encouragementLines.parseEncouragementLineId(lineId)
+      if (encouragementLine) {
+        return await recordEncouragementTake({ req, res, recordist, parsed: { ...encouragementLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
       // An INTRODUCTION read whole (job #587). `introsentence:...` is not a uuid either.
       const introSentenceLine = introSentences.parseIntroSentenceLineId(lineId)
       if (introSentenceLine) {
@@ -2617,6 +2704,8 @@ module.exports = function createRecordistRouter({
         if (!resolved) return res.status(404).json({ error: `No line ${req.params.lineId}` })
         return await knownWordsClipResponse(req, res, recordist, resolved.text)
       }
+      const encouragementLine = encouragementLines.parseEncouragementLineId(req.params.lineId)
+      if (encouragementLine) return await encouragementClipResponse(req, res, recordist, { ...encouragementLine, raw: req.params.lineId })
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(req.params.lineId)
       if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
       const podEnglishLine = podEnglish.parsePodEnglishLineId(req.params.lineId)

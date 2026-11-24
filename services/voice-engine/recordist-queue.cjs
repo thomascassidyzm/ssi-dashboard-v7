@@ -127,6 +127,7 @@ const { serviceIdentity } = require('../shared/editor-identity.cjs')
 const podTextSwaps = require('./pod-text-swaps.cjs')
 const wantedPhrases = require('./booth-wanted-phrases.cjs')
 const introSentences = require('./intro-sentence-lines.cjs')
+const encouragementLines = require('./encouragement-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -3291,6 +3292,31 @@ async function fetchIntroSentenceInputs(db, recordist, { fresh = false } = {}) {
 }
 
 /**
+ * THE READ BEHIND THE ENCOURAGEMENTS CARD (job #104·AL; the rule is encouragement-lines.cjs): the learner app's English
+ * `shared_audio` lines, live and draft, straight from the table every player reads — the one source; Popty keeps no list.
+ * Read fresh every time (a few dozen rows), because the admin page edits it and a take replaces rows.
+ * `superseded_by` is filtered in JS, not in the query, so the read still answers before the migration adds the column.
+ * Any failure is an empty card this time (null, so the queue can say it could not count it — booth-home partialKinds
+ * keeps the section listed), logged once per reason, never a booth that will not open.
+ */
+const encouragementReadWarned = new Set()
+async function fetchEncouragementRows(db, recordist) {
+  if (!encouragementLines.hasCard(recordist)) return []
+  try {
+    const { data, error } = await db.from('shared_audio').select('*')
+      .eq('language', encouragementLines.MASTER_LANGUAGE).in('audio_type', encouragementLines.READ_TYPES)
+    if (error) throw new Error(error.message)
+    return (data || []).filter((r) => !r.superseded_by)
+  } catch (err) {
+    if (!encouragementReadWarned.has(err.message)) {
+      encouragementReadWarned.add(err.message)
+      console.warn(`[Recordist] Encouragements card unavailable for ${recordist.voiceId}: ${err.message}`)
+    }
+    return null
+  }
+}
+
+/**
  * ONE ENGLISH TAKE, EVERY POD 1 ENGLISH SLOT OF THE SAME WORDS (job #537). Every EMPTY known slot of the card's pods
  * this voice is cast on whose words are the take's spoken words is pointed at the take — North and South alike, whichever
  * card the take came from (a seed sentence of exactly those words fills the pod too). FILL-ONLY by a conditional write
@@ -3667,12 +3693,17 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   const introSentenceLines = introSentences.introSentenceLinesFor(recordist, await fetchIntroSentenceInputs(db, recordist))
   // One named live practice-phrase slot a reader is asked for by hand (cs #907, booth-wanted-phrases.cjs).
   const wantedLines = await wantedPhraseLinesFor(db, recordist)
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...videoVoiceovers.voiceoverLinesFor(recordist), ...wantedLines, ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
+  // The Encouragements card (job #104·AL, encouragement-lines.cjs): the learner app's spoken encouragements, owed takes.
+  const encouragementRows = await fetchEncouragementRows(db, recordist)
+  const encouragementCardLines = encouragementLines.encouragementLinesFor(recordist, encouragementRows || [])
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...videoVoiceovers.voiceoverLinesFor(recordist), ...encouragementCardLines, ...wantedLines, ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines, ...introSentenceLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
   const recordedKeys = await recordedTextKeys(db, recordist)
   const queue = await finishQueue(db, recordist, mine, language, { includeRecorded, maskRejectedHistory, recordedKeys })
+  // The Encouragements read failed: say so, so the home screen keeps the card listed (booth-home partialKinds).
+  if (encouragementRows === null) queue.encouragementsUnavailable = true
   return withPhraseBatch(db, recordist, queue, { includeRecorded, recordedKeys })
 }
 
@@ -3805,6 +3836,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         coursePlace: line.kind === introSentences.INTRO_SENTENCE_KIND ? (line.coursePlace || null) : null,
         // A video voiceover line (job #572): which step of which video, and how long the take may run. Null elsewhere.
         voiceover: line.kind === 'voiceover' ? (line.voiceover || null) : null,
+        // An Encouragements line (job #104·AL): {set: 'In order'|'Random', n, why, was}. Null elsewhere.
+        encouragement: line.kind === encouragementLines.ENCOURAGEMENT_KIND ? (line.encouragement || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
         // straight off the sentence's own atom_map_fine. On the wire because the
         // booth draws them as the pause marks, and because the aligner gates on

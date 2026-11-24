@@ -1,0 +1,155 @@
+{
+ "seed": 173,
+ "legos": {
+  "2": {
+   "ok": true,
+   "build": [
+    {
+     "known": "고맙지만 괜찮아, 나는 집에 갈 필요가 있어",
+     "target": "dim diolch, dw i angen mynd adre"
+    },
+    {
+     "known": "아니, 고맙지만 괜찮아, 모든 게 괜찮아",
+     "target": "na, dim diolch, mae popeth yn iawn"
+    },
+    {
+     "known": "아니, 고맙지만 괜찮아, 나는 피곤해",
+     "target": "na, dim diolch, dw i wedi blino"
+    }
+   ],
+   "use": [
+    {
+     "known": "너 정말 친절하구나, 하지만 고맙지만 괜찮아",
+     "target": "mae hynna’n garedig iawn ohonot ti, ond dim diolch"
+    },
+    {
+     "known": "나는 너에게 감사해, 하지만 고맙지만 괜찮아",
+     "target": "dw i’n ddiolchgar i ti, ond dim diolch"
+    },
+    {
+     "known": "아니, 고맙지만 괜찮아, 나는 시간이 조금 더 필요해",
+     "target": "na, dim diolch, dw i angen ychydig mwy o amser"
+    },
+    {
+     "known": "고맙지만 괜찮아, 나는 나중에 그걸 찾을 거야",
+     "target": "dim diolch, dw i’n mynd i chwilio amdano fo nes ymlaen"
+    },
+    {
+     "known": "고맙지만 괜찮아, 나는 내일 오후에 거기에 있을 수 없을 거야",
+     "target": "dim diolch, fydda i ddim yn medru bod yno pnawn ’fory"
+    },
+    {
+     "known": "고맙지만 괜찮아, 나는 피곤하고 집에 가고 싶어",
+     "target": "dim diolch, dw i wedi blino a dw i isio mynd adre"
+    }
+   ]
+  },
+  "3": {
+   "ok": true,
+   "build": [
+    {
+     "known": "응 나는 해낼 수 있어",
+     "target": "yndw mi fedra i ymdopi"
+    },
+    {
+     "known": "나는 지금 해낼 수 있어",
+     "target": "mi fedra i ymdopi rŵan"
+    },
+    {
+     "known": "하지만 나는 오늘 저녁 해낼 수 있어",
+     "target": "ond mi fedra i ymdopi heno"
+    },
+    {
+     "known": "물론 나는 내일 아침 해낼 수 있어",
+     "target": "wrth gwrs mi fedra i ymdopi bore ’fory"
+    }
+   ],
+   "use": [
+    {
+     "known": "문제없어 나는 해낼 수 있어",
+     "target": "dim problem mi fedra i ymdopi"
+    },
+    {
+     "known": "나는 해낼 수 있어 하지만 그건 큰 도움이 될 거야",
+     "target": "mi fedra i ymdopi ond fyddai hynna’n help mawr"
+    },
+    {
+     "known": "정말 고마워 하지만 나는 지금 해낼 수 있어",
+     "target": "diolch yn fawr ond mi fedra i ymdopi rŵan"
+    },
+    {
+     "known": "나는 해낼 수 있어 하지만 나는 피곤해",
+     "target": "mi fedra i ymdopi ond dw i wedi blino"
+    },
+    {
+     "known": "모든 게 괜찮아 나는 해낼 수 있어",
+     "target": "mae popeth yn iawn mi fedra i ymdopi"
+    },
+    {
+     "known": "나는 준비가 됐으니까 해낼 수 있어",
+     "target": "mi fedra i ymdopi achos dw i’n barod"
+    },
+    {
+     "known": "나는 해낼 수 있어 하지만 나는 시간이 조금 더 필요해",
+     "target": "mi fedra i ymdopi ond dw i angen ychydig mwy o amser"
+    }
+   ]
+  },
+  "4": {
+   "ok": true,
+   "build": [
+    {
+     "known": "나는 혼자서 배울 수 있어",
+     "target": "medra i ddysgu ar fy mhen fy hun"
+    },
+    {
+     "known": "혼자서 집에 가다",
+     "target": "mynd adre ar fy mhen fy hun"
+    },
+    {
+     "known": "내일 오후 혼자서",
+     "target": "ar fy mhen fy hun pnawn ’fory"
+    },
+    {
+     "known": "나중에 혼자서 그걸 찾다",
+     "target": "chwilio amdano fo ar fy mhen fy hun nes ymlaen"
+    }
+   ],
+   "use": [
+    {
+     "known": "나는 혼자서 집에 갈 거야",
+     "target": "dw i’n mynd i fynd adre ar fy mhen fy hun"
+    },
+    {
+     "known": "너 내가 나중에 혼자서 그걸 찾기를 원해?",
+     "target": "wyt ti isio i mi chwilio amdano fo ar fy mhen fy hun nes ymlaen"
+    },
+    {
+     "known": "나는 혼자서 끝낼 수 없을 거야",
+     "target": "fydda i ddim yn medru gorffen ar fy mhen fy hun"
+    },
+    {
+     "known": "나는 혼자서 갈 수 있을지 확실하지 않아",
+     "target": "dw i ddim yn siŵr os medra i fynd ar fy mhen fy hun"
+    },
+    {
+     "known": "나는 오늘 저녁 혼자서 식당에 가면 좋겠어",
+     "target": "liciwn i fynd i fwyty ar fy mhen fy hun heno"
+    },
+    {
+     "known": "나는 혼자서 그걸 찾았을 거야",
+     "target": "fyswn i wedi chwilio amdano fo ar fy mhen fy hun"
+    },
+    {
+     "known": "나는 내일 오후에 혼자서 끝낼 수 있을 거야",
+     "target": "mi fydda i’n medru gorffen ar fy mhen fy hun pnawn ’fory"
+    },
+    {
+     "known": "나는 혼자서 배우는 것을 즐겨",
+     "target": "dw i’n mwynhau dysgu ar fy mhen fy hun"
+    }
+   ]
+  }
+ },
+ "why": "Door held S0173L02 'dim diolch': BUILD rows 'dim diolch, dim problem' and 'dim diolch, heno' are LEGO + short trailing tag (comma-tag gate), and the retry reason named only recombination. Kept the 2 passing BUILD rows and all 6 USE rows, added 'dim diolch, dw i angen mynd adre' (taught pieces). L3/L4 are the door's own passing sets from the same run, reused so the door is not asked twice. /api/seed/complete validates the whole seed."
+}
