@@ -1,0 +1,251 @@
+{
+ "family": "item1",
+ "event_id": "289f0034-d12f-441e-ac96-54a42cbc36db",
+ "undo_file_on_popty": "2026-11-24T17-00-11-392Z-289f0034-d12f-441e-ac96-54a42cbc36db.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "LEGO:S0064L03",
+  "S0064L03B01",
+  "S0064L03B02",
+  "S0064L03B03",
+  "S0064L03U01",
+  "S0064L03U02",
+  "S0064L03U03",
+  "S0064L03U04",
+  "S0064L03U05",
+  "S0067L02U05",
+  "S0098L01U04",
+  "S0115L02U06",
+  "S0151L02U01",
+  "SEED64"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0064L03C04",
+    "seed_number": 64,
+    "lego_index": 3,
+    "position": 4,
+    "known_text": "to do",
+    "target_text": "om te dwaan",
+    "word_count": 11,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 3
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T19:19:23.556Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "262f4e81-d271-48e0-8cb8-5efe8cc13b1f",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null,
+    "hand_edited_by": null,
+    "hand_edited_at": null,
+    "hand_order": null,
+    "hand_edit_held": null,
+    "hand_lock_overrides": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0064L03C02",
+    "seed_number": 64,
+    "lego_index": 3,
+    "position": 2,
+    "known_text": "indeed",
+    "target_text": "wol",
+    "word_count": 3,
+    "lego_count": 1,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "buildup": "component",
+     "component_index": 1
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T19:19:23.556Z",
+    "target_syllable_count": null,
+    "phrase_role": "component",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": "b656964a-9c1a-4d48-a418-b9e617b83dee",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null,
+    "frame_mask": null,
+    "hand_edited_by": null,
+    "hand_edited_at": null,
+    "hand_order": null,
+    "hand_edit_held": null,
+    "hand_lock_overrides": null
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 64,
+   "set": {
+    "target_text": "Frysk leare is net maklik, mar it is wol moai om te dwaan.",
+    "target1_audio_id": "7d741891-5f56-4b38-847b-b7ac9ef71b3c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0151L02U01",
+   "set": {
+    "target_text": "dat wie net wat ik hope mar it is wol moai om te dwaan",
+    "target1_audio_id": "27b38cf9-2792-4078-beda-22a6e032b6fc"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0115L02U06",
+   "set": {
+    "target_text": "in petear yn it Frysk is net maklik mar it is wol moai om te dwaan",
+    "target1_audio_id": "17f17ed5-24dc-4e03-8c7b-894b933081bf"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0098L01U04",
+   "set": {
+    "target_text": "it is miskien dreech mar it is wol moai om te dwaan",
+    "target1_audio_id": "847cb5e1-0faf-4bca-9fd6-e6055a6b45f7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0067L02U05",
+   "set": {
+    "target_text": "it is wol moai om te dwaan mar wêrom wolstû ophâlde",
+    "target1_audio_id": "1b9ed109-d034-4596-927e-6e38e8840b36"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U05",
+   "set": {
+    "target_text": "Frysk is net maklik, mar it is wol moai om te dwaan",
+    "target1_audio_id": "ca3a9b17-79a9-4db3-acfa-530851a83b1b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U04",
+   "set": {
+    "target_text": "Frysk leare is net maklik, mar it is wol moai om te dwaan",
+    "target1_audio_id": "7d741891-5f56-4b38-847b-b7ac9ef71b3c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U03",
+   "set": {
+    "target_text": "ik wit noch net hoe't ik dat doch mar it is wol moai om te dwaan",
+    "target1_audio_id": "0d23cec3-e4b0-4af2-aaef-f0d593426014"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U02",
+   "set": {
+    "target_text": "ik wit net mear wat ik sizze woe mar it is wol moai om te dwaan",
+    "target1_audio_id": "8a43ef02-70d4-466f-919d-3050f9ea6214"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03U01",
+   "set": {
+    "target_text": "ik hoech net alles te witten mar it is wol moai om te dwaan",
+    "target1_audio_id": "93c23661-0b55-4eeb-9b40-6c1b041d110f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03B03",
+   "set": {
+    "target_text": "it is net maklik, mar it is wol moai om te dwaan",
+    "target1_audio_id": "21a053ba-4235-4393-bc92-7ad301c6a401"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03B02",
+   "set": {
+    "target_text": "mar it is wol moai om te dwaan",
+    "target1_audio_id": "208a8a60-a90d-41a5-b22c-6d2207bc40e5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0064L03B01",
+   "set": {
+    "target_text": "it is wol moai om te dwaan mar ik bin in bytsje wurch",
+    "target1_audio_id": "99b64f31-cc4c-42a9-8cc4-826a5acbbfeb"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "492731a3-e4b1-4583-b6a8-e8de6b7b9004",
+   "set": {
+    "target_text": "it is wol moai om te dwaan",
+    "components": [
+     {
+      "known": "it is",
+      "target": "it is"
+     },
+     {
+      "known": "indeed",
+      "target": "wol"
+     },
+     {
+      "known": "nice",
+      "target": "moai"
+     },
+     {
+      "known": "to do",
+      "target": "om te dwaan"
+     }
+    ],
+    "target1_audio_id": "6a124059-6c4e-41d5-ba76-9d4ef6d9c687",
+    "presentation_audio_id": "653ac84a-4d9c-4c9c-a6ae-e4b8c4103302"
+   }
+  }
+ ]
+}
