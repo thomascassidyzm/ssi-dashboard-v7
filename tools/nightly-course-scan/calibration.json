@@ -1,0 +1,13 @@
+{
+ "_readme": "Known positives for the nightly course scan (cs #237·AL, 24 Nov 2026). analyse.cjs --calibrate (via scan.cjs --calibrate) fails unless every one fires on the nightly QA copy. Each was READ BY HAND on the 24 Nov 03:30Z copy (ssi_copy_20261124t033000z). A positive that a later fix removes from the course will start failing: that is the fix working, so replace it with a live one and note the swap here. Recall measured at calibration is in recall_note.",
+ "positives": [
+  {"family": "untaught_target", "course": "cym_sv2_for_eng", "id": "S0201L01B01", "match": "nag@S279", "why": "brief's named positive: Welsh 'nag' used before seed 279 teaches it (5 such rows fire); running order counts the seed's own LEGOs up to the phrase's own (Kai, Welsh S117, 24 Nov)"},
+  {"family": "untaught_known", "course": "spa_for_eng", "id": "S0577L01U03", "match": "frustrating@never", "why": "English 'frustrating' in a prompt, no LEGO ever glosses it (hand-read)"},
+  {"family": "gloss_absent", "course": "jpn_for_eng", "id": "S0452L01U04", "match": "say", "why": "#225·AL census class a-EN (d/0fc0fa6f): English does not say what the Japanese says. recall_note: 79 of the census's 307 a-EN rows fire here; the と話して/から rows the English misses are caught as garble_tail"},
+  {"family": "gloss_absent", "course": "spa_for_eng", "id": "S0117L03B08", "match": "talked", "why": "LEGO glossed 'we talked', row says 'we spoke': the gloss the learner was given is not the prompt they hear (hand-read)"},
+  {"family": "garble_tail", "course": "jpn_for_eng", "match": "と話してた", "why": "#225·AL census (d/0fc0fa6f): generator bolted 〜と話してた onto ~278 rows across ~261 LEGOs; also fires on ことがある, the census's other a-DEL family"},
+  {"family": "lego_absent_absent", "course": "por_br_for_eng", "id": "S0074L01B01", "why": "LEGO 'obrigado por', row target is just 'por' (hand-read): P17, the row is a fragment of its LEGO"},
+  {"family": "lego_absent_absent", "course": "por_br_for_eng", "id": "S0117L01U03", "why": "LEGO 'eu estou definitivamente', row drops 'eu' (P17 whole LEGO; was 'near' before the short-word fix — calibrated)"},
+  {"family": "empty_audio", "course": "por_br_for_eng", "id": "S0251L02B01", "why": "known slot null on a played row; por_br's 18 Nov rows are the known silent block (memory: item 4, 10,170 slots)"}
+ ]
+}
