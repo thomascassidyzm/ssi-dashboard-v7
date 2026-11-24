@@ -2561,10 +2561,4739 @@
   ],
   "seed": 145,
   "real": {
-   "status": 503,
-   "charsSpent": 0,
-   "code": "GENDER_PREP_MISSING",
-   "error": "gender prep for \"não estou mais contente\" could not be made (the expansion model failed) — not rendered in the unprepared form; try again later"
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8e398cbd-f669-448b-8fa3-72be9c850ab5",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não estou mais contente",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "be7c7448-d284-4465-a399-26e1aca8d6da",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não está mais",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a9234684-2f7b-4334-b3a6-9dc4ef1a5aa0",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não está mais",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "109ca550-237f-4486-bd68-1c13ae876860",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele não é mais simpático",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f82c4032-fb35-4e1d-9e2a-1200f4589b17",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele não é mais simpático",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a182602b-a726-4cab-a98f-dd940122cc34",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acho que ele não é mais simpático",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1e8383ca-9df7-4242-ac28-40f1a662b56f",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acho que ele não é mais simpático",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8ea42bfc-4453-416b-836d-68d5cf2208d9",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não sei mais isso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d852c64-49b4-4d04-ae36-87752fe04dba",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não sei mais isso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "482f0b1a-93b3-481d-871c-2c84a0122673",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target1",
+  "text": "não estou mais pensando nisso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a728b7a3-595d-4de0-9ab3-0a5f83337860",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "não estou mais pensando nisso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ac52e007-2f02-42ea-97d6-6ac7db593b53",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acho que você não está mais tentando",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "99a3264d-22c6-4322-bf3f-5e26a827da03",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acho que você não está mais tentando",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0c2b3db5-37cf-4061-bd38-c58e521cbfe3",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "known",
+  "text": "what is it that you're looking for?",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 194,
+    "slot": "known"
+   }
+  ],
+  "seed": 194,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6208c61f-60e7-493e-97ad-8c49d25b7085",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "known",
+  "text": "the",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0195L01",
+    "slot": "known"
+   }
+  ],
+  "seed": 195,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "6880b83e-35dc-4c11-94c1-942e23c609b3",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "que consegue se lembrar",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0232L02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e7433b85-db83-44d6-b6b7-3737fe07a13e",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "que consegue se lembrar",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0232L02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4daab943-a93f-47ca-9020-3cc02a3ffda5",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "um jovem que consegue se lembrar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8722b3aa-1a33-42ff-b932-0199d4d15d81",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "um jovem que consegue se lembrar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3b9b9d9a-5031-422a-9218-ec9a3be554c6",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "o homem que consegue se lembrar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8157b10b-6cc6-4ef7-901c-2ab9a7d01537",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "o homem que consegue se lembrar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "058720fd-155f-42ae-892d-543ce9518c3b",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "um senhor idoso que consegue se lembrar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d40afa3a-3ab7-4f2a-8fbf-55c2dff20564",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "um senhor idoso que consegue se lembrar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "88ed81f1-7419-49ad-9151-168a41ddfcc4",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "um senhor idoso que consegue se lembrar da resposta",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0b85cc66-e20b-4632-bc06-14985f77569e",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target2",
+  "text": "um senhor idoso que consegue se lembrar da resposta",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0232L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 232,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7342152a-a809-492e-9583-d3b0f32386ac",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu queria que ela te ajudasse mas ela estava ocupada demais",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 246,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0246L03U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "170fb0fd-bb05-4d89-ab34-40c631ac5026",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu queria que ela te ajudasse mas ela estava ocupada demais",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 246,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0246L03U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "81e0c4f6-e31f-44fa-b5c9-af038e8d0427",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela estava ocupada demais",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0246L03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bcbe458a-df1d-465b-a236-022732e627f7",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela estava ocupada demais",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0246L03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5137ca11-0005-479c-aca5-36d79a5f083a",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela estava ocupada demais para falar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "17a0d59d-ed74-48fe-b677-7558d37f8496",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela estava ocupada demais para falar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f0a7da03-ce1d-48a7-9192-d35c84993b7a",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela estava ocupada demais para ajudar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ad03338b-2344-4887-9328-7b518686e0e1",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela estava ocupada demais para ajudar",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8f2d6f9b-38cc-4f06-abbf-e7e99f684c9b",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela estava ocupada demais esta manhã",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6cfd60ca-cce7-4b4f-89ba-f8c4bd48c152",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela estava ocupada demais esta manhã",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "79d3b313-a03f-48a6-a4de-13724bf0b42b",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sei que ela estava ocupada demais",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3d3e529e-6b91-4eb6-8054-3f6861f4f3c3",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sei que ela estava ocupada demais",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0246L03U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 246,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "94370c19-a9d4-4aad-afdb-9781edc3673e",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "known",
+  "text": "friend",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0284L02",
+    "slot": "known"
+   }
+  ],
+  "seed": 284,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "f83b740d-85dc-4491-84cc-cbe6fd0475f5",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0295L01",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0295L01B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1db887d2-236f-4dff-aed7-65fa48a82838",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0295L01",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0295L01B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "982107e8-307f-4afb-9773-ae24f261c0a3",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0295L01",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0295L01B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4531b140-cdd7-49eb-8711-c64ba8cd1fc0",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse isso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dfe85996-8a98-40eb-bdfd-077ae98bc8dd",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse isso",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a8f0cc89-b9f2-4565-bf44-c281bb56dae0",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say that",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "8a5445de-f2a5-47de-9434-fc31375955de",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse mais",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f95b97c3-f772-445a-97fb-c59bf8b1ca88",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse mais",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b682f99b-d308-4597-9c56-e84b7d10fda5",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say more",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0520535c-770b-4791-b540-e3b9eaaf617a",
+   "charsSpent": 17
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse não",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6d3058f0-e830-4b53-8803-1fe293c5414b",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse não",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "165f6f11-f6e5-43b9-813d-61a417b2fc73",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say no",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3a8ee1ec-7b47-4417-aecf-18e0673c9882",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse que quero",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1676038f-e040-40a9-b218-941da0cd46c1",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse que quero",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "26d07613-2363-4f82-a07f-89058c229631",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say I want to",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "eb5c3411-4ffc-41c2-b7d8-76a5e85abc50",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse que posso vir",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7204c584-0ddb-48a0-82cd-a029d6f17c36",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse que posso vir",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e8ea4641-8658-465a-9a65-6ab78e7ec736",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say I can come",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3af77444-01df-4a97-84bb-fd9e004c11f8",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse sim",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b5e6a64d-45d2-4037-9ec7-b255f360a50e",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse sim",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3344e6cf-d9a1-4dd3-b05e-341c7cadf2bf",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say yes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d9dce7c-647d-4e48-8e62-29d86b3b5853",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu não disse que não sei",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b15bec18-64c0-4786-9cc4-8005bfc3fe1f",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu não disse que não sei",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "57316d2f-db63-419d-9bf9-eaa709bbb1d2",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "known",
+  "text": "I didn't say I don't know",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0295L01U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 295,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a68fcf16-99ef-4790-b829-3e2748861b15",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele não conseguia acreditar nos três fatos mais importantes",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 311,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0311L04U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8cffae61-717b-4401-acbd-75b2314cc50c",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele não conseguia acreditar nos três fatos mais importantes",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 311,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0311L04U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3bb50391-917e-4f05-a20b-6fe76d69e99b",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "três fatos",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0311L03",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0311L03B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9285c896-bdb4-4869-8e58-659427736979",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "três fatos",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0311L03",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0311L03B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8fb53a71-9b66-4a1f-9b33-c9ff2da3bc42",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a6f36ffd-17ef-4cff-bafb-ccf80dbe2f75",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6525724b-9936-494f-8526-e4528d426d44",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1bfe8fc6-82bb-4742-97e0-c83b0197e20e",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fe29b31f-2426-46f0-8485-a5ce771b6fe1",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele homem não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4cf5bb6a-0f82-433e-a81c-7313c848a8e3",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele homem não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fd90a715-bec8-40ea-9c86-1dca08354435",
+   "charsSpent": 51
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele quer escrever uma história sobre três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a5b83720-f088-4285-8d2c-739fafc9a5e5",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele quer escrever uma história sobre três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "88762218-0355-4a89-9169-3b2245932a3f",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele jovem quer acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "82c59cf9-e474-4613-9ebc-4af55d17066c",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele jovem quer acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "99d0896f-c996-48af-bcad-ba41f1085446",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3ff417f9-084f-4a28-b98e-db14cabfc27d",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c978a38b-039f-49b1-a418-7af6bf76ef5c",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu acho que ele não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "33108c63-a664-4144-95e9-82620a736e2f",
+   "charsSpent": 54
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu acho que ele não conseguia acreditar nos três fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L03U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "70d95dfe-fdb1-41f8-8c04-640692e81ef7",
+   "charsSpent": 54
+  }
+ },
+ {
+  "role": "target1",
+  "text": "fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2c06d341-6d54-4ee1-ae71-78a722878980",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c432757f-00c3-4193-b9e7-979a6d651018",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "321fa7b7-5705-4b47-9814-89195e1ea92d",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fd39be6e-3046-40da-afbc-6dbcf434c28c",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela não conseguia acreditar nos três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1a5e12da-c4c1-468c-a416-41bb3158c02e",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela não conseguia acreditar nos três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b88ffdc9-e54c-47b3-8032-c3731d8579b9",
+   "charsSpent": 59
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele quer escrever uma história sobre três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7d4385d9-020e-4411-92b9-223f95bf1140",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele quer escrever uma história sobre três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f92e0c7f-2c05-4e68-bb74-f33b6a4ae1a9",
+   "charsSpent": 64
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele homem não conseguia acreditar nos três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "69887f3c-07d3-4e57-a69f-223316ccf246",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele homem não conseguia acreditar nos três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a403aba4-e030-401b-92d7-049ac241f659",
+   "charsSpent": 68
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele jovem quer escrever sobre três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1fbf2066-9c1b-40e0-9781-72597ba1c0bc",
+   "charsSpent": 60
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele jovem quer escrever sobre três fatos mais importantes",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0311L04U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 311,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9d239c5e-c23d-4428-a4ef-9c152c9d22ed",
+   "charsSpent": 60
+  }
+ },
+ {
+  "role": "target1",
+  "text": "cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "397a2543-9594-4c0e-802e-65545a220e67",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ea98e7b1-6c44-4561-8b74-77e5d249064d",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target1",
+  "text": "acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8f69d0ba-7cad-4d9b-b51d-02ea3de21cf5",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3c6d03c5-e45a-46d7-b322-95a4f98c08ac",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele homem não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "67c25bd8-e93f-442d-8776-7f08b380bdbb",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele homem não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "32d34d96-b620-4595-bf78-cfbbc952e6b3",
+   "charsSpent": 52
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu acho que ele não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "af802145-fd75-4800-93f9-32f8d7fbb08d",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu acho que ele não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cb093db1-c03b-488f-99b7-35a2a8348e73",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b0283836-1d0d-4b99-b59e-efc51f2ed702",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c79bf44a-0876-43ab-9186-647a29c2a3cf",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela disse que não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "44633638-8ab7-460f-9529-73538515e342",
+   "charsSpent": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela disse que não conseguia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a9287d93-2fdf-4f03-94a5-00c6067b9d59",
+   "charsSpent": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu conheço cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bc9999aa-dab5-49b1-884e-fae42b70078e",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu conheço cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0313L01U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 313,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "28ca6ce2-38dd-4ef9-8d7c-c9461b9d1159",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "known",
+  "text": "to put it",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0314L01",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0314L01B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "01960f43-39ac-4d2d-a35f-6d038f70f2b6",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "she could put it",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "4ce45a08-880b-4d6b-9b51-2237ba7b2cec",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "he could put it",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01B03",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "adc6ebaf-3dbc-4d9e-990e-bffc8c402f3b",
+   "charsSpent": 15
+  }
+ },
+ {
+  "role": "known",
+  "text": "he could put it on the table",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01U02",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d3cd279a-c10f-4543-a115-882a7b81d4b0",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think that she could put it on the table",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01U01",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "933793d5-8cf0-4fba-a679-bac54c9f9240",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "known",
+  "text": "that man could put it",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a7352b90-a99a-4c6b-a9b7-46c37524762b",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "known",
+  "text": "that young woman could put it on the table",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01U04",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0f7e797d-816e-472c-97e4-44373c8a263a",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "known",
+  "text": "I think he could put it on the table",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0314L01U03",
+    "slot": "known"
+   }
+  ],
+  "seed": 314,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "41c40d0c-4290-4df5-9a2e-d20b0c01c3ad",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "desta vez ela não podia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0318L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 318,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b6cc7059-d2f0-4526-85d1-197fdddddd0d",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "target2",
+  "text": "desta vez ela não podia acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0318L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 318,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a975750b-6188-4437-ac3e-23d31eb4ed5a",
+   "charsSpent": 49
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele não precisa acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0320L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 320,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c812ae29-4c33-4dcf-9125-b9377cdf85e0",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele não precisa acreditar nos cinco fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0320L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 320,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "370c533e-cccc-4734-a61b-1987243b607f",
+   "charsSpent": 41
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu conheço dez fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0325L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 325,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f90bda2b-5b79-416d-93cc-2032007b6b3d",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu conheço dez fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0325L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 325,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1e529a92-cf58-49a5-b2f6-49f8e2205f63",
+   "charsSpent": 20
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela precisava falar com aquela mulher que você conhece?",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 355,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0355L01B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3c48e52d-1e91-4c4f-af8a-0753e770d5b2",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela precisava falar com aquela mulher que você conhece?",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 355,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0355L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "95adcbf7-38e6-4ed2-9395-26dde2177d89",
+   "charsSpent": 55
+  }
+ },
+ {
+  "role": "target1",
+  "text": "que você conhece",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0355L01",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0355L01B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6747873c-5b26-4271-b7e3-e14849608cde",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "que você conhece",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0355L01",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0355L01B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "12fd1f69-c39f-4aca-9979-d4e82465acbe",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela mulher que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a2be540a-89b6-4584-b90e-05f38e65339b",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela mulher que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8570deda-1ac6-4950-afe6-c8bbea715057",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela precisava falar com aquele homem que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fa6c9568-2926-4efd-88c7-2ad73d393816",
+   "charsSpent": 53
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela precisava falar com aquele homem que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "49e82e50-d8bd-432e-9a17-1de59f8b6cd3",
+   "charsSpent": 53
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele precisava falar com aquela mulher que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "108c5b9b-28f4-4290-bdfc-9d1cddba5504",
+   "charsSpent": 54
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele precisava falar com aquela mulher que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2c4aef3d-fd43-414e-823c-432ce7b782ce",
+   "charsSpent": 54
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele homem que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "bfcd8fe7-2d04-4c26-be96-48e976c81480",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele homem que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dcd86ee3-72e3-4f3a-bb37-09fb7f16fd6f",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela estudante que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6031f8da-3006-4d5d-90ae-43bf7bf39ec1",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela estudante que você conhece",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d4fe5e8-754c-4a0c-8dfd-1681decc378b",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele precisava falar com aquela estudante que você conhece?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "02e1f13a-5f62-4213-b14b-c73688b3a47d",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele precisava falar com aquela estudante que você conhece?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0355L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 355,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "52ba42f0-fe8f-4469-a62a-866cd5004030",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que ele queria cultivar?",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 366,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0366L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8b68617d-1948-4d43-9780-5df03d31bac4",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que ele queria cultivar?",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 366,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0366L02U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7063cd97-0563-4f76-aa3b-22a2fb1b9e09",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0366L01",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0366L01B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1b1d18b6-9b64-4f20-93b9-6bb06d28f345",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0366L01",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0366L01B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dde652f3-111e-4a3a-995c-8182c93c3e8d",
+   "charsSpent": 10
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que ela ia cultivar?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d9f03cb0-4d22-4597-a066-6af3dd55c070",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que ela ia cultivar?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f12d6603-db8c-4988-8809-8e0468784bea",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu isso?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c1a7d199-fcb0-4b66-a2b2-d002f70a8568",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu isso?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c3b38562-4ae2-434b-9c5c-8258e8438086",
+   "charsSpent": 16
+  }
+ },
+ {
+  "role": "known",
+  "text": "did you hear that?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01B02",
+    "slot": "known"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "cb926dbb-723a-4dcd-b98b-a3651f8e0675",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que estava acontecendo?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1bf12a4b-d0b8-4438-8f2e-64c07728fa79",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que estava acontecendo?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "515afc9a-7732-474d-a29c-0495fbe98f4c",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que ela lhe disse?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a95b2395-6c20-407f-9a34-88bfc296c5c4",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que ela lhe disse?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "700cfd42-af3c-4f7a-8de0-1ffc63249208",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu que ele esteve calado?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "21de4fc9-777b-4d85-8a62-07b7c0e95429",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu que ele esteve calado?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "df834196-b08f-40d2-9e0c-aaf2ea31dae9",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu a história?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6c213c1f-04ea-4638-90ac-431a121c8f9e",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu a história?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "633dbb98-ca00-41cf-95f4-a86d71bc79b7",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu aquela mulher?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a1df6b75-3a54-40c8-9926-036c58c0e5db",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu aquela mulher?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cfbf9cd5-3fa4-43c0-a609-83ea23c08d02",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu que está preocupada?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b7e7476f-4065-460f-a3a7-be9651d6c0bc",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu que está preocupada?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0366L01U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 366,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f09ee8c4-7e4e-4661-9a76-590e67e9a3cf",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu sobre a estrada?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L03U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4a6a4e7d-8574-4f98-9ef2-ed9e7898f4fa",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu sobre a estrada?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L03U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0b5df383-f064-4dc5-881e-d8f45be04db3",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "vários fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5d9e9647-7a32-4be0-a33e-7b0896c4097e",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target2",
+  "text": "vários fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "651b76b1-7768-4a5d-b389-ce1f746b39e7",
+   "charsSpent": 12
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu ouvi sobre vários fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0a665100-71be-4d36-a788-69db0915d3ed",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu ouvi sobre vários fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "29463ccc-0dfc-459a-afa8-198f02c617c8",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu sobre vários fatos?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "462b94ea-dad7-4466-899a-7f1d56286c9b",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu sobre vários fatos?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4ef292e0-7b79-4144-8838-567638b4eeb1",
+   "charsSpent": 30
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu conheço vários fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "40aaf40e-6cff-4d08-a573-5bb1322ccd3e",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu conheço vários fatos",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0ff38677-41a0-4d48-96ac-1b075b0612e8",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu sobre vários cavalos?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "78766730-e018-4eb7-83f1-b0c33cff6fb7",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu sobre vários cavalos?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0369L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 369,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "aa55578b-4036-4034-ba3d-b56f3fbe7e06",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que aconteceu na quarta-feira?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0371L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 371,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "64076e9a-0f6b-42b4-886c-6636003d09a4",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que aconteceu na quarta-feira?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0371L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 371,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "dea0357a-9086-475d-8977-14944a4b6050",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que ela estava tentando criar?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0372L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 372,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8d6ccc06-9314-4ff6-8ea6-312c1e6efed1",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que ela estava tentando criar?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0372L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 372,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2379eb08-7d14-460e-9917-b74aa2a5daf0",
+   "charsSpent": 43
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu que era bonito?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0373L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 373,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b529c1fa-c04f-4917-84fc-102ef94ff3fa",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu que era bonito?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0373L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 373,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "55c8be5d-d918-4221-82ec-ef0e0f8fa01c",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu o que aconteceu no ano passado?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0377L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 377,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7328cce9-95db-4d0f-8e9e-7bef2d375cdc",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu o que aconteceu no ano passado?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0377L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 377,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "68207814-6cba-417e-9273-f4fcbee6e59e",
+   "charsSpent": 42
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 388,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0388L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e279e17a-69ab-4b18-b2d2-7a1c932df6ed",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 388,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0388L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "affb8ae5-f6b0-417d-a3f4-2749dafd90a2",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "com quem você trabalha",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0388L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0388L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "defb7ed0-c83e-4f5a-ac8e-e2a11ac3dedb",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "com quem você trabalha",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0388L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0388L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d2c6a1bd-65f6-4f8c-be22-5c24da7e337f",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu conheço aquela pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4badf8b5-73f4-4539-a4f7-759bcddd6ac4",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu conheço aquela pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "3fc0a072-577d-4a77-93a2-750ace4f53ef",
+   "charsSpent": 47
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela mulher com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4c5cc18f-d620-4dd0-bd9e-a66cab99b5a6",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela mulher com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "deebbfa0-588e-4e8b-a8d2-5d8de26b557e",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "quero conhecer a pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "716de37b-2742-4932-b43e-9536c0cc0632",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "target2",
+  "text": "quero conhecer a pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "96707f83-ba59-4e0e-b401-2a2ee3d70272",
+   "charsSpent": 46
+  }
+ },
+ {
+  "role": "known",
+  "text": "I want to meet the person you work with",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U05",
+    "slot": "known"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "964b59ab-f202-4673-abe2-0bb251800eac",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu acho que aquele homem é a pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9f66f8d7-1cb2-4b55-9397-4147c05e1f0f",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu acho que aquele homem é a pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cd65d3cb-686a-4c49-8e6f-39af778ce290",
+   "charsSpent": 58
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele homem com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f739640c-f362-40d7-9a56-7818d0d95e1a",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele homem com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a75aedcd-880a-451a-b3e6-cd0fef607054",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela estudante com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ca403059-6bd6-49b1-aa84-07dfcf51584d",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela estudante com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "460a46fe-4ca8-41bd-aded-b4aeed73c4a1",
+   "charsSpent": 39
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ajude a pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U06",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d0d8cc05-1acc-427b-b015-c03f6406940f",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ajude a pessoa com quem você trabalha",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U06",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b43eb363-73e7-4e48-bc3a-0c014d72c1c0",
+   "charsSpent": 37
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a pessoa com quem você trabalha gosta de falar português",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U07",
+    "slot": "target1"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d0e16e13-c7a2-411a-ab38-d75e94a80531",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a pessoa com quem você trabalha gosta de falar português",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0388L02U07",
+    "slot": "target2"
+   }
+  ],
+  "seed": 388,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a286e849-740b-4a9e-b5b1-944d46624756",
+   "charsSpent": 56
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele rapaz com a camisa verde",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 393,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0393L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "489e781f-3175-4a58-adc5-3a94d34966fd",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele rapaz com a camisa verde",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 393,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0393L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "76ba7490-0bed-4958-9c41-7d87dcb4c2b8",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a camisa verde",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0393L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0393L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2d3aa069-ccd2-4e82-925b-163417b374d0",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a camisa verde",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0393L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0393L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e3784a22-0efe-4bf2-a1c2-1d68a2a0fb5a",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela criança com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cb114db8-7e68-44e4-8758-bad0642c1589",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela criança com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b1330d78-ab74-44f0-aa8f-55d444009dd8",
+   "charsSpent": 33
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela pessoa com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "31924140-1009-4cb4-8f71-572857c59ae7",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela pessoa com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c7b317a8-99ff-44a6-aa9a-8f55c57e1dc0",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquele homem com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "7f968e56-d19f-4db8-a3c9-afaa8e78107a",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquele homem com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c0fe1f85-88be-4842-a336-a9b96d9a78fb",
+   "charsSpent": 31
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela pessoa ali com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "fb5f738b-2f9c-4559-a759-c0096ae9bfdd",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela pessoa ali com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "494555f5-d6ea-4020-ad35-787b8f6f7f53",
+   "charsSpent": 36
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela mulher com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "31b85249-5d21-4eba-985a-dbe546c95363",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela mulher com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "675a8e62-b064-4059-9e92-a0e22eca4f72",
+   "charsSpent": 32
+  }
+ },
+ {
+  "role": "target1",
+  "text": "aquela estudante com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "5655aba3-5c2e-4137-b73c-d52e694f0335",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target2",
+  "text": "aquela estudante com a camisa verde",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0393L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 393,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "77921988-974d-4fa7-a402-f707ff45a680",
+   "charsSpent": 35
+  }
+ },
+ {
+  "role": "target1",
+  "text": "você ouviu um bom exemplo?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0407L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 407,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1bb87638-629b-4ba8-a376-fc15882f7452",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "target2",
+  "text": "você ouviu um bom exemplo?",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0407L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 407,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "856611e8-87db-40b2-964b-b215563822d6",
+   "charsSpent": 26
+  }
+ },
+ {
+  "role": "known",
+  "text": "we moved",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0507L01",
+    "slot": "known"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0507L01B01",
+    "slot": "known"
+   }
+  ],
+  "seed": 507,
+  "real": {
+   "status": 200,
+   "source": "library",
+   "audioId": "fd154da2-b887-4642-b276-7e2e98fce1ec",
+   "charsSpent": 0
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a senhora fala",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 647,
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0647L02U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "60d19ed5-5bf8-44b3-88d6-dbe1828c6685",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a senhora fala",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 647,
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0647L02U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b927a82f-4591-47e9-80db-dbd47f5515ff",
+   "charsSpent": 14
+  }
+ },
+ {
+  "role": "target1",
+  "text": "fala",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0647L02",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0647L02B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "59f9ea5d-90b4-4ca6-a4ae-a7e2fdeab332",
+   "charsSpent": 4
+  }
+ },
+ {
+  "role": "target2",
+  "text": "fala",
+  "where": [
+   {
+    "kind": "lego",
+    "id": "S0647L02",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0647L02B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d6bf9209-d617-4b82-ba49-c0b45f5d5fef",
+   "charsSpent": 4
+  }
+ },
+ {
+  "role": "target1",
+  "text": "o senhor fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02B04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c5eb9f9b-20be-4f05-af3d-4b1e3b4be429",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target2",
+  "text": "o senhor fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02B04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "53aeb967-bd8e-495b-b775-49df1386793e",
+   "charsSpent": 13
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele fala muito bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "47e65114-1887-4545-bac0-4ccfcb929da1",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele fala muito bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "1f67875b-c457-443b-9681-b27db579cc27",
+   "charsSpent": 18
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4a015d3f-db72-49dc-b9de-93ecd24174c8",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "2ec1017d-39fa-4f25-92d6-80163e99dc5a",
+   "charsSpent": 8
+  }
+ },
+ {
+  "role": "target1",
+  "text": "a senhora fala muito bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8cfd2223-cdc7-4ce2-998f-c2c47d756e2c",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "a senhora fala muito bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "cfc953a7-f814-42a9-9680-3a24ed1cbb11",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele disse que a senhora fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "4b69a7e5-46da-47bb-9215-60584910c502",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele disse que a senhora fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f00cc220-9ade-4234-b132-39fcfd870134",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele acha que a senhora fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ea120f2e-ad20-445f-a6b6-53069b2dff53",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele acha que a senhora fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "c499ffe7-3a46-4fd5-8c58-83741cb4ee0a",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela acha que a senhora fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "17c6fd44-b51b-47dd-9421-87bf12ed9bc8",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela acha que a senhora fala",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0647L02U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 647,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "f42184fe-2224-453b-8115-045c8f09cb8f",
+   "charsSpent": 27
+  }
+ },
+ {
+  "role": "target1",
+  "text": "vocês falam",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 662,
+    "slot": "target1"
+   },
+   {
+    "kind": "lego",
+    "id": "S0662L01",
+    "slot": "target1"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0662L01B01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "73bfd76c-0423-4b51-ba44-2b0390d92e40",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target2",
+  "text": "vocês falam",
+  "where": [
+   {
+    "kind": "seed",
+    "id": 662,
+    "slot": "target2"
+   },
+   {
+    "kind": "lego",
+    "id": "S0662L01",
+    "slot": "target2"
+   },
+   {
+    "kind": "phrase",
+    "id": "S0662L01B01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a87c7ca9-789c-443c-9b17-47db66f88e61",
+   "charsSpent": 11
+  }
+ },
+ {
+  "role": "target1",
+  "text": "vocês falam muito bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01B02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a9dbaef0-3ece-4615-a922-6bcbd7d8eb9b",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "target2",
+  "text": "vocês falam muito bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01B02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "6168fbad-c3c7-45ae-85c5-f01ea2756454",
+   "charsSpent": 21
+  }
+ },
+ {
+  "role": "target1",
+  "text": "eu sei que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01B04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a73b3c97-56d7-4a43-baf4-c291d3b2cef4",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target2",
+  "text": "eu sei que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01B04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "ad350d32-940a-4384-b386-e14936578d60",
+   "charsSpent": 22
+  }
+ },
+ {
+  "role": "target1",
+  "text": "vocês falam melhor do que eu",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01B03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "beaced73-a9f4-44bf-ae25-ba73f4b0da2a",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target2",
+  "text": "vocês falam melhor do que eu",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "9c3f45ce-705d-4826-b6ff-46e1014eb783",
+   "charsSpent": 28
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele acha que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U05",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a5bedfe0-7676-48f1-9c18-f5270ba117a1",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele acha que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U05",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "a677f688-e953-4271-998a-8e7b1880631b",
+   "charsSpent": 24
+  }
+ },
+ {
+  "role": "target1",
+  "text": "sabemos que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U02",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "42044c45-b0a0-489f-ae7a-f0102e4df8a6",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target2",
+  "text": "sabemos que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U02",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "aa4872cd-05fa-413e-a330-465aaa2bfe58",
+   "charsSpent": 23
+  }
+ },
+ {
+  "role": "target1",
+  "text": "é verdade que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U01",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "8dddbd60-e5d2-43fa-8dd9-018a8cad011a",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "é verdade que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U01",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "b9228aba-614f-478f-b142-64a6e61808cf",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ele disse que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U03",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "0116a5d8-7a83-4a5b-9ad0-46ce99944b3b",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ele disse que vocês falam",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "13020968-b3df-46e5-b6b2-046d7026eeb6",
+   "charsSpent": 25
+  }
+ },
+ {
+  "role": "target1",
+  "text": "ela disse que vocês falam bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U04",
+    "slot": "target1"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "e2ef5235-b295-413a-89ba-08fb3fb084ce",
+   "charsSpent": 29
+  }
+ },
+ {
+  "role": "target2",
+  "text": "ela disse que vocês falam bem",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0662L01U04",
+    "slot": "target2"
+   }
+  ],
+  "seed": 662,
+  "real": {
+   "status": 200,
+   "source": "rendered",
+   "audioId": "d334bc4c-bc36-457e-9d6d-bbc3c4e2a22e",
+   "charsSpent": 29
   }
  }
 ]

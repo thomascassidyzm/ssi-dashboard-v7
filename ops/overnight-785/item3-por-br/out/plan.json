@@ -1,1545 +1,6 @@
 {
  "phr": [
   {
-   "id": "S0007L03U06",
-   "op": "update",
-   "lego": "S0007L03",
-   "known": "I want to try as hard as I can today",
-   "target": "eu quero tentar o máximo que puder hoje",
-   "decomposition": [
-    {
-     "legoId": "S0001L01",
-     "target": "eu quero",
-     "known": "I want",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0007L01",
-     "target": " tentar",
-     "known": "to try",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0007L02",
-     "target": " o máximo que puder",
-     "known": "as hard as I can",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0007L03",
-     "target": " hoje",
-     "known": "today",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I want to try as hard as I can today",
-    "target": "eu quero tentar com toda a força que puder hoje"
-   }
-  },
-  {
-   "id": "S0041L03B01",
-   "op": "delete",
-   "lego": "S0041L03",
-   "before": {
-    "known": "to feel a certain way",
-    "target": "me sentir"
-   }
-  },
-  {
-   "id": "S0058L02B03",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "when you understand something",
-   "target": "quando você entende algo",
-   "decomposition": [
-    {
-     "legoId": "S0058L02",
-     "target": "quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0004L02",
-     "target": " algo",
-     "known": "something",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when you notice something",
-    "target": "quando você nota algo"
-   }
-  },
-  {
-   "id": "S0058L02B09",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "when you understand what I wanted to say",
-   "target": "quando você entende o que queria dizer",
-   "decomposition": [
-    {
-     "legoId": "S0058L02",
-     "target": "quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0057L02",
-     "target": " o que queria dizer",
-     "known": "what I wanted to say",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when you notice what I wanted to say",
-    "target": "quando você nota o que queria dizer"
-   }
-  },
-  {
-   "id": "S0058L02B06",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's interesting when you understand something",
-   "target": "é interessante quando você entende algo",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0004L02",
-     "target": " algo",
-     "known": "something",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you notice something",
-    "target": "é interessante quando você nota algo"
-   }
-  },
-  {
-   "id": "S0058L02B07",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "when you understand what I mean",
-   "target": "quando você entende o que quero dizer",
-   "decomposition": [
-    {
-     "legoId": "S0058L02",
-     "target": "quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0008L02",
-     "target": " o que quero dizer",
-     "known": "what I mean",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when you notice what I mean",
-    "target": "quando você nota o que quero dizer"
-   }
-  },
-  {
-   "id": "S0058L02B01",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "when you understand",
-   "target": "quando você entende",
-   "decomposition": [
-    {
-     "legoId": "S0058L02",
-     "target": "quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when you notice",
-    "target": "quando você nota"
-   }
-  },
-  {
-   "id": "S0058L02B02",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's interesting when you understand",
-   "target": "é interessante quando você entende",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you notice",
-    "target": "é interessante quando você nota"
-   }
-  },
-  {
-   "id": "S0058L02B08",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's not interesting when you understand",
-   "target": "não é interessante quando você entende",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "não",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0058L01",
-     "target": " é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's not interesting when you notice",
-    "target": "não é interessante quando você nota"
-   }
-  },
-  {
-   "id": "S0058L02B05",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's useful when you understand",
-   "target": "é útil quando você entende",
-   "decomposition": [
-    {
-     "legoId": "S0028L01",
-     "target": "é útil",
-     "known": "it's useful to",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's useful when you notice",
-    "target": "é útil quando você nota"
-   }
-  },
-  {
-   "id": "S0058L02B04",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's a good thing when you understand",
-   "target": "é bom quando você entende",
-   "decomposition": [
-    {
-     "legoId": "S0047L02",
-     "target": "é bom",
-     "known": "it's a good thing to",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's a good thing when you notice",
-    "target": "é bom quando você nota"
-   }
-  },
-  {
-   "id": "S0058L02U05",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "when you understand something it's interesting",
-   "target": "quando você entende algo é interessante",
-   "decomposition": [
-    {
-     "legoId": "S0058L02",
-     "target": "quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0004L02",
-     "target": " algo",
-     "known": "something",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L01",
-     "target": " é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when you notice something it's interesting",
-    "target": "quando você nota algo é interessante"
-   }
-  },
-  {
-   "id": "S0058L02U01",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's useful when you understand what I mean",
-   "target": "é útil quando você entende o que quero dizer",
-   "decomposition": [
-    {
-     "legoId": "S0028L01",
-     "target": "é útil",
-     "known": "it's useful to",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0008L02",
-     "target": " o que quero dizer",
-     "known": "what I mean",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's useful when you notice what I mean",
-    "target": "é útil quando você nota o que quero dizer"
-   }
-  },
-  {
-   "id": "S0058L02U04",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's interesting when you understand everything",
-   "target": "é interessante quando você entende tudo",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0045L02",
-     "target": " tudo",
-     "known": "everything",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you notice everything",
-    "target": "é interessante quando você nota tudo"
-   }
-  },
-  {
-   "id": "S0058L02U03",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's a good thing when you understand what I wanted to say",
-   "target": "é bom quando você entende o que queria dizer",
-   "decomposition": [
-    {
-     "legoId": "S0047L02",
-     "target": "é bom",
-     "known": "it's a good thing to",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0057L02",
-     "target": " o que queria dizer",
-     "known": "what I wanted to say",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's a good thing when you notice what I wanted to say",
-    "target": "é bom quando você nota o que queria dizer"
-   }
-  },
-  {
-   "id": "S0058L02U02",
-   "op": "update",
-   "lego": "S0058L02",
-   "known": "it's interesting when you understand interesting things",
-   "target": "é interessante quando você entende coisas interessantes",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0051L02",
-     "target": " coisas",
-     "known": "things",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0051L03",
-     "target": " interessantes",
-     "known": "interesting",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you notice interesting things",
-    "target": "é interessante quando você nota coisas interessantes"
-   }
-  },
-  {
-   "id": "S0058L03B03",
-   "op": "update",
-   "lego": "S0058L03",
-   "known": "when you understand enough words",
-   "target": "quando você entende palavras suficientes",
-   "decomposition": [
-    {
-     "legoId": "S0058L02",
-     "target": "quando você entende",
-     "known": "when you understand",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L03",
-     "target": " palavras suficientes",
-     "known": "enough words",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "when you notice enough words",
-    "target": "quando você percebe palavras suficientes"
-   }
-  },
-  {
-   "id": "S0058L03B02",
-   "op": "update",
-   "lego": "S0058L03",
-   "known": "you understand enough words",
-   "target": "você entende palavras suficientes",
-   "decomposition": [
-    {
-     "legoId": "S0049L02",
-     "target": "você entende",
-     "known": "you understand",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L03",
-     "target": " palavras suficientes",
-     "known": "enough words",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "you notice enough words",
-    "target": "você percebe palavras suficientes"
-   }
-  },
-  {
-   "id": "S0058L03B04",
-   "op": "update",
-   "lego": "S0058L03",
-   "known": "it's interesting when you understand enough words",
-   "target": "é interessante quando você entende palavras suficientes",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L03",
-     "target": " palavras suficientes",
-     "known": "enough words",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you notice enough words",
-    "target": "é interessante quando você percebe palavras suficientes"
-   }
-  },
-  {
-   "id": "S0058L03U03",
-   "op": "update",
-   "lego": "S0058L03",
-   "known": "it's interesting when you understand enough words in Portuguese",
-   "target": "é interessante quando você entende palavras suficientes em português",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L03",
-     "target": " palavras suficientes",
-     "known": "enough words",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0004L03",
-     "target": " em português",
-     "known": "in Portuguese",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you notice enough words in Portuguese",
-    "target": "é interessante quando você percebe palavras suficientes em português"
-   }
-  },
-  {
-   "id": "S0058L03U06",
-   "op": "update",
-   "lego": "S0058L03",
-   "known": "it's interesting when you understand enough words",
-   "target": "é interessante quando você entende palavras suficientes",
-   "decomposition": [
-    {
-     "legoId": "S0058L01",
-     "target": "é interessante",
-     "known": "it's interesting",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L02",
-     "target": " quando você entende",
-     "known": "when you understand",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0058L03",
-     "target": " palavras suficientes",
-     "known": "enough words",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's interesting when you understand enough words",
-    "target": "é interessante quando você percebe palavras suficientes"
-   }
-  },
-  {
-   "id": "S0069L04U04",
-   "op": "update",
-   "lego": "S0069L04",
-   "known": "it's difficult to take time to test yourself all afternoon",
-   "target": "é difícil dedicar tempo para se testar a tarde toda",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "é",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0066L01",
-     "target": " difícil",
-     "known": "difficult",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0065L02",
-     "target": " dedicar tempo",
-     "known": "to take time",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0065L03",
-     "target": " para se testar",
-     "known": "to test yourself",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0069L04",
-     "target": " a tarde toda",
-     "known": "all afternoon",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it's difficult to take time to test yourself all afternoon",
-    "target": "é difícil dedicar tempo a se testar a tarde toda"
-   }
-  },
-  {
-   "id": "S0070L03B03",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "where was it?",
-   "target": "onde era?",
-   "decomposition": [
-    {
-     "legoId": "S0070L03",
-     "target": "onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": "?",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "where was she?",
-    "target": "onde estava ela?"
-   }
-  },
-  {
-   "id": "S0070L03B01",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "where it was",
-   "target": "onde era",
-   "decomposition": [
-    {
-     "legoId": "S0070L03",
-     "target": "onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "where it was",
-    "target": "onde estava"
-   }
-  },
-  {
-   "id": "S0070L03B02",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "she wanted to tell me where it was",
-   "target": "ela queria me dizer onde era",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "ela",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0030L01",
-     "target": " queria",
-     "known": "I wanted to",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " me",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0004L01",
-     "target": " dizer",
-     "known": "to say",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0070L03",
-     "target": " onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "she wanted to tell me where it was",
-    "target": "ela queria me dizer onde estava"
-   }
-  },
-  {
-   "id": "S0070L03U03",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "she wanted to know where it was",
-   "target": "ela queria saber onde era",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "ela",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0030L01",
-     "target": " queria",
-     "known": "I wanted to",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0045L01",
-     "target": " saber",
-     "known": "to know things",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0070L03",
-     "target": " onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "she didn't want to tell me where you were",
-    "target": "ela não queria me dizer onde você estava"
-   }
-  },
-  {
-   "id": "S0070L03U05",
-   "op": "delete",
-   "lego": "S0070L03",
-   "before": {
-    "known": "where were you before?",
-    "target": "onde você estava antes?"
-   }
-  },
-  {
-   "id": "S0070L03U02",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "I don't know where it was",
-   "target": "não sei onde era",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "não",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0059L01",
-     "target": " sei",
-     "known": "I know",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0070L03",
-     "target": " onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "where were you?",
-    "target": "onde você estava?"
-   }
-  },
-  {
-   "id": "S0070L03U06",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "I think I know where it was",
-   "target": "acho que sei onde era",
-   "decomposition": [
-    {
-     "legoId": "S0047L01",
-     "target": "acho que",
-     "known": "I think that",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0059L01",
-     "target": " sei",
-     "known": "I know",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0070L03",
-     "target": " onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "she wanted to know where you were",
-    "target": "ela queria saber onde você estava"
-   }
-  },
-  {
-   "id": "S0070L03U04",
-   "op": "update",
-   "lego": "S0070L03",
-   "known": "do you know where it was?",
-   "target": "você sabe onde era?",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "você",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " sabe",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0070L03",
-     "target": " onde era",
-     "known": "where it was",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": "?",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I don't know where you were",
-    "target": "não sei onde você estava"
-   }
-  },
-  {
-   "id": "S0079L01B01",
-   "op": "delete",
-   "lego": "S0079L01",
-   "before": {
-    "known": "started",
-    "target": "começou"
-   }
-  },
-  {
-   "id": "S0079L01U04",
-   "op": "update",
-   "lego": "S0079L01",
-   "known": "you started to learn yesterday",
-   "target": "você começou a aprender ontem",
-   "decomposition": [
-    {
-     "legoId": "S0079L01",
-     "target": "você começou",
-     "known": "you started",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " a",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0002L01",
-     "target": " aprender",
-     "known": "to learn",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0030L03",
-     "target": " ontem",
-     "known": "yesterday",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "she started to learn yesterday",
-    "target": "ela começou a aprender ontem"
-   }
-  },
-  {
-   "id": "S0079L01U05",
-   "op": "update",
-   "lego": "S0079L01",
-   "known": "you started to speak Portuguese quickly",
-   "target": "você começou a falar português rapidamente",
-   "decomposition": [
-    {
-     "legoId": "S0079L01",
-     "target": "você começou",
-     "known": "you started",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " a",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0001L02",
-     "target": " falar",
-     "known": "to speak",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0001L03",
-     "target": " português",
-     "known": "Portuguese",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0020L03",
-     "target": " rapidamente",
-     "known": "quickly",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "he started to speak Portuguese quickly",
-    "target": "ele começou a falar português rapidamente"
-   }
-  },
-  {
-   "id": "S0079L01U06",
-   "op": "delete",
-   "lego": "S0079L01",
-   "before": {
-    "known": "when did it all start?",
-    "target": "quando tudo começou?"
-   }
-  },
-  {
-   "id": "S0079L01U08",
-   "op": "update",
-   "lego": "S0079L01",
-   "known": "you started to write a letter last week",
-   "target": "você começou a escrever uma carta na semana passada",
-   "decomposition": [
-    {
-     "legoId": "S0079L01",
-     "target": "você começou",
-     "known": "you started",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " a",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0052L01",
-     "target": " escrever",
-     "known": "to write",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0052L02",
-     "target": " uma carta",
-     "known": "a letter",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0052L04",
-     "target": " na semana passada",
-     "known": "last week",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "she started to write a letter last week",
-    "target": "ela começou a escrever uma carta na semana passada"
-   }
-  },
-  {
-   "id": "S0079L01U07",
-   "op": "update",
-   "lego": "S0079L01",
-   "known": "you started yesterday and it's not easy",
-   "target": "você começou ontem e não é fácil",
-   "decomposition": [
-    {
-     "legoId": "S0079L01",
-     "target": "você começou",
-     "known": "you started",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0030L03",
-     "target": " ontem",
-     "known": "yesterday",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0015L01",
-     "target": " e",
-     "known": "and",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " não",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0064L01",
-     "target": " é fácil",
-     "known": "it's easy",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it started yesterday and it's not easy",
-    "target": "começou ontem e não é fácil"
-   }
-  },
-  {
-   "id": "S0079L01U10",
-   "op": "update",
-   "lego": "S0079L01",
-   "known": "you started well but now it's difficult",
-   "target": "você começou bem mas agora é difícil",
-   "decomposition": [
-    {
-     "legoId": "S0079L01",
-     "target": "você começou",
-     "known": "you started",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " bem",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0019L01",
-     "target": " mas",
-     "known": "but",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0001L05",
-     "target": " agora",
-     "known": "now",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " é",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0066L01",
-     "target": " difícil",
-     "known": "difficult",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it started well but now it's difficult",
-    "target": "começou bem mas agora é difícil"
-   }
-  },
-  {
-   "id": "S0079L01U09",
-   "op": "update",
-   "lego": "S0079L01",
-   "known": "you started to do something interesting",
-   "target": "você começou a fazer algo interessante",
-   "decomposition": [
-    {
-     "legoId": "S0079L01",
-     "target": "você começou",
-     "known": "you started",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " a",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0051L01",
-     "target": " fazer",
-     "known": "to do",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0004L02",
-     "target": " algo",
-     "known": "something",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " interessante",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "he started to do something interesting",
-    "target": "ele começou a fazer algo interessante"
-   }
-  },
-  {
-   "id": "S0112L01U09",
-   "op": "update",
-   "lego": "S0112L01",
-   "known": "that was very interesting, and I wasn't expecting it",
-   "target": "isso foi muito interessante, e eu não estava esperando",
-   "decomposition": [
-    {
-     "legoId": "S0112L01",
-     "target": "isso foi",
-     "known": "that was",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " muito",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " interessante,",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0015L01",
-     "target": " e",
-     "known": "and",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " eu",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " não",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " estava",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0112L02",
-     "target": " esperando",
-     "known": "expecting",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "that was very interesting, and I wasn't expecting it",
-    "target": "isso foi muito interessante, e eu não estava à espera"
-   }
-  },
-  {
-   "id": "S0112L02U05",
-   "op": "update",
-   "lego": "S0112L02",
-   "known": "he was expecting to speak with you",
-   "target": "ele estava esperando falar com você",
-   "decomposition": [
-    {
-     "legoId": "S0069L01",
-     "target": "ele",
-     "known": "he",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " estava",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0112L02",
-     "target": " esperando",
-     "known": "expecting",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0001L02",
-     "target": " falar",
-     "known": "to speak",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0001L04",
-     "target": " com você",
-     "known": "with you",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "he was expecting to speak with you",
-    "target": "ele estava à espera de falar com você"
-   }
-  },
-  {
-   "id": "S0112L02U03",
-   "op": "update",
-   "lego": "S0112L02",
-   "known": "I was expecting to speak with you",
-   "target": "estava esperando falar com você",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "estava",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0112L02",
-     "target": " esperando",
-     "known": "expecting",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0001L02",
-     "target": " falar",
-     "known": "to speak",
-     "isGhost": false
-    },
-    {
-     "legoId": "S0001L04",
-     "target": " com você",
-     "known": "with you",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I was expecting to speak with you",
-    "target": "estava à espera de falar com você"
-   }
-  },
-  {
-   "id": "S0112L02U06",
-   "op": "update",
-   "lego": "S0112L02",
-   "known": "I wasn't expecting to see you here",
-   "target": "não estava esperando te ver aqui",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "não",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " estava",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0112L02",
-     "target": " esperando",
-     "known": "expecting",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": "S0054L03",
-     "target": " te",
-     "known": "to you",
-     "isGhost": false
-    },
-    {
-     "legoId": null,
-     "target": " ver",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " aqui",
-     "known": "",
-     "isGhost": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "I wasn't expecting to see you here",
-    "target": "não estava à espera de te ver aqui"
-   }
-  },
-  {
-   "id": "S0112L02U04",
-   "op": "update",
-   "lego": "S0112L02",
-   "known": "she wasn't expecting to see that",
-   "target": "ela não estava esperando ver isso",
-   "decomposition": [
-    {
-     "legoId": null,
-     "target": "ela",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " não",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": null,
-     "target": " estava",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0112L02",
-     "target": " esperando",
-     "known": "expecting",
-     "isGhost": false,
-     "isSalient": true
-    },
-    {
-     "legoId": null,
-     "target": " ver",
-     "known": "",
-     "isGhost": true
-    },
-    {
-     "legoId": "S0061L03",
-     "target": " isso",
-     "known": "that",
-     "isGhost": false
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "she wasn't expecting to see that",
-    "target": "ela não estava à espera de ver isso"
-   }
-  },
-  {
-   "id": "S0122L03U07",
-   "op": "delete",
-   "lego": "S0122L03",
-   "before": {
-    "known": "it's starting to feel easier and I'm excited about how it's going",
-    "target": "Está começando a parecer mais fácil e estou entusiasmado com o progresso"
-   }
-  },
-  {
-   "id": "S0127L01B01",
-   "op": "update",
-   "lego": "S0127L01",
-   "known": "that was why",
-   "target": "foi por isso que",
-   "decomposition": [
-    {
-     "legoId": "S0127L01",
-     "target": "foi por isso que",
-     "known": "that was why",
-     "isGhost": false,
-     "isSalient": true
-    }
-   ],
-   "decKind": "exact",
-   "before": {
-    "known": "it was why",
-    "target": "foi por isso que"
-   }
-  },
-  {
-   "id": "S0128L01U02",
-   "op": "delete",
-   "lego": "S0128L01",
-   "before": {
-    "known": "I want to find someone who speaks Portuguese well",
-    "target": "eu quero encontrar alguém que fala português bem"
-   }
-  },
-  {
-   "id": "S0128L01U04",
-   "op": "delete",
-   "lego": "S0128L01",
-   "before": {
-    "known": "I know there is someone who can help me",
-    "target": "eu sei que há alguém que pode me ajudar"
-   }
-  },
-  {
-   "id": "S0128L01U01",
-   "op": "delete",
-   "lego": "S0128L01",
-   "before": {
-    "known": "I need someone to help me with this",
-    "target": "preciso de alguém para me ajudar com isso"
-   }
-  },
-  {
-   "id": "S0128L01U03",
-   "op": "delete",
-   "lego": "S0128L01",
-   "before": {
-    "known": "I would like to talk to someone about this",
-    "target": "eu gostaria de falar com alguém sobre isso"
-   }
-  },
-  {
-   "id": "S0137L03U05",
-   "op": "delete",
-   "lego": "S0137L03",
-   "before": {
-    "known": "it's more important to talk many times than to be perfect",
-    "target": "é mais importante falar muitas vezes do que ser perfeito"
-   }
-  },
-  {
-   "id": "S0141L01B03",
-   "op": "delete",
-   "lego": "S0141L01",
-   "before": {
-    "known": "without problem",
-    "target": "sem problema"
-   }
-  },
-  {
    "id": "S0145L01B04",
    "op": "update",
    "lego": "S0145L01",
@@ -3961,15 +2422,6 @@
    }
   },
   {
-   "id": "S0331L02U06",
-   "op": "delete",
-   "lego": "S0331L02",
-   "before": {
-    "known": "she can't provide all the answers",
-    "target": "ela não consegue dar todas as respostas"
-   }
-  },
-  {
    "id": "S0355L01B03",
    "op": "update",
    "lego": "S0355L01",
@@ -5134,15 +3586,6 @@
    }
   },
   {
-   "id": "S0385L01U05",
-   "op": "delete",
-   "lego": "S0385L01",
-   "before": {
-    "known": "no, you didn't agree with her",
-    "target": "não, você não concordou com ela"
-   }
-  },
-  {
    "id": "S0388L02B02",
    "op": "update",
    "lego": "S0388L02",
@@ -5842,15 +4285,6 @@
    }
   },
   {
-   "id": "S0433L03U06",
-   "op": "delete",
-   "lego": "S0433L03",
-   "before": {
-    "known": "they couldn't find out when the film started",
-    "target": "eles não conseguiram descobrir quando o filme começava"
-   }
-  },
-  {
    "id": "S0507L02U01",
    "op": "delete",
    "lego": "S0507L02",
@@ -5878,15 +4312,6 @@
    "before": {
     "known": "we then moved",
     "target": "nos mudamos"
-   }
-  },
-  {
-   "id": "S0620L02U06",
-   "op": "delete",
-   "lego": "S0620L02",
-   "before": {
-    "known": "it's a very long time since we last saw each other",
-    "target": "já passou muito tempo desde a última vez que nos vimos"
    }
   },
   {
@@ -6472,13 +4897,13 @@
    }
   },
   {
-   "id": "S0141L02B01",
+   "id": "S0141L02B02",
    "op": "insert",
    "lego": "S0141L02",
    "role": "build",
    "known": "no problem",
    "target": "sem problema",
-   "position": 1,
+   "position": 5,
    "decomposition": [
     {
      "legoId": "S0141L02",
@@ -6491,13 +4916,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0141L02U01",
+   "id": "S0141L02U02",
    "op": "insert",
    "lego": "S0141L02",
    "role": "use",
    "known": "no problem, everything is okay",
    "target": "sem problema, está tudo bem",
-   "position": 2,
+   "position": 6,
    "decomposition": [
     {
      "legoId": "S0141L02",
@@ -6534,13 +4959,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L01B01",
+   "id": "S0128L01B03",
    "op": "insert",
    "lego": "S0128L01",
    "role": "build",
    "known": "you're like",
    "target": "você é como",
-   "position": 5,
+   "position": 11,
    "decomposition": [
     {
      "legoId": "S0128L01",
@@ -6553,13 +4978,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L01B02",
+   "id": "S0128L01B04",
    "op": "insert",
    "lego": "S0128L01",
    "role": "build",
    "known": "you're like me",
    "target": "você é como eu",
-   "position": 6,
+   "position": 12,
    "decomposition": [
     {
      "legoId": "S0128L01",
@@ -6578,13 +5003,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L01U05",
+   "id": "S0128L01U07",
    "op": "insert",
    "lego": "S0128L01",
    "role": "use",
    "known": "you're like him",
    "target": "você é como ele",
-   "position": 7,
+   "position": 13,
    "decomposition": [
     {
      "legoId": "S0128L01",
@@ -6603,13 +5028,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L01U06",
+   "id": "S0128L01U08",
    "op": "insert",
    "lego": "S0128L01",
    "role": "use",
    "known": "I think you're like me",
    "target": "acho que você é como eu",
-   "position": 8,
+   "position": 14,
    "decomposition": [
     {
      "legoId": "S0047L01",
@@ -6634,13 +5059,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L02B01",
+   "id": "S0128L02B02",
    "op": "insert",
    "lego": "S0128L02",
    "role": "build",
    "known": "someone I used to know",
    "target": "alguém que eu conhecia",
-   "position": 1,
+   "position": 7,
    "decomposition": [
     {
      "legoId": "S0128L02",
@@ -6653,13 +5078,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L02U01",
+   "id": "S0128L02U03",
    "op": "insert",
    "lego": "S0128L02",
    "role": "use",
    "known": "you're like someone I used to know",
    "target": "você é como alguém que eu conhecia",
-   "position": 2,
+   "position": 8,
    "decomposition": [
     {
      "legoId": "S0128L01",
@@ -6678,13 +5103,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0128L02U02",
+   "id": "S0128L02U04",
    "op": "insert",
    "lego": "S0128L02",
    "role": "use",
    "known": "she's like someone I used to know",
    "target": "ela é como alguém que eu conhecia",
-   "position": 3,
+   "position": 9,
    "decomposition": [
     {
      "legoId": null,
@@ -6715,13 +5140,13 @@
    "decKind": "exact"
   },
   {
-   "id": "S0127L02U07",
+   "id": "S0127L02U08",
    "op": "insert",
    "lego": "S0127L02",
    "role": "use",
    "known": "that wasn't why I wanted to see you",
    "target": "não foi por isso que eu queria te ver",
-   "position": 11,
+   "position": 12,
    "decomposition": [
     {
      "legoId": null,
@@ -6759,23 +5184,6 @@
   }
  ],
  "notes": [
-  "untiled S0058L02B08 [S0058L02] \"não é interessante quando você entende\": não",
-  "untiled S0069L04U04 [S0069L04] \"é difícil dedicar tempo para se testar a tarde toda\": é",
-  "untiled S0070L03B02 [S0070L03] \"ela queria me dizer onde era\": ela | me",
-  "untiled S0070L03U03 [S0070L03] \"ela queria saber onde era\": ela",
-  "untiled S0070L03U02 [S0070L03] \"não sei onde era\": não",
-  "untiled S0070L03U04 [S0070L03] \"você sabe onde era?\": você | sabe",
-  "untiled S0079L01U04 [S0079L01] \"você começou a aprender ontem\": a",
-  "untiled S0079L01U05 [S0079L01] \"você começou a falar português rapidamente\": a",
-  "untiled S0079L01U08 [S0079L01] \"você começou a escrever uma carta na semana passada\": a",
-  "untiled S0079L01U07 [S0079L01] \"você começou ontem e não é fácil\": não",
-  "untiled S0079L01U10 [S0079L01] \"você começou bem mas agora é difícil\": bem | é",
-  "untiled S0079L01U09 [S0079L01] \"você começou a fazer algo interessante\": a | interessante",
-  "untiled S0112L01U09 [S0112L01] \"isso foi muito interessante, e eu não estava esperando\": muito | interessante, | eu | não | estava",
-  "untiled S0112L02U05 [S0112L02] \"ele estava esperando falar com você\": estava",
-  "untiled S0112L02U03 [S0112L02] \"estava esperando falar com você\": estava",
-  "untiled S0112L02U06 [S0112L02] \"não estava esperando te ver aqui\": não | estava | ver | aqui",
-  "untiled S0112L02U04 [S0112L02] \"ela não estava esperando ver isso\": ela | não | estava | ver",
   "P17 S0145L01B04: \"não estou mais grato\" does not contain S0145L01 \"não mais\"",
   "untiled S0145L01B04 [S0145L01] \"não estou mais grato\": estou",
   "P17 S0145L01B03: \"não estou mais contente\" does not contain S0145L01 \"não mais\"",
@@ -6868,48 +5276,41 @@
   "untiled S0662L01B03 [S0662L01] \"vocês falam melhor do que eu\": eu",
   "untiled S0662L01U02 [S0662L01] \"sabemos que vocês falam\": sabemos",
   "untiled S0662L01U04 [S0662L01] \"ela disse que vocês falam bem\": bem",
-  "untiled S0141L02U01 [S0141L02] \"sem problema, está tudo bem\": está | bem",
-  "untiled S0128L01B02 [S0128L01] \"você é como eu\": eu",
-  "untiled S0128L01U06 [S0128L01] \"acho que você é como eu\": eu",
-  "untiled S0128L02U02 [S0128L02] \"ela é como alguém que eu conhecia\": ela | é",
-  "untiled S0127L02U07 [S0127L02] \"não foi por isso que eu queria te ver\": não | eu"
+  "untiled S0141L02U02 [S0141L02] \"sem problema, está tudo bem\": está | bem",
+  "untiled S0128L01B04 [S0128L01] \"você é como eu\": eu",
+  "untiled S0128L01U08 [S0128L01] \"acho que você é como eu\": eu",
+  "untiled S0128L02U04 [S0128L02] \"ela é como alguém que eu conhecia\": ela | é",
+  "untiled S0127L02U08 [S0127L02] \"não foi por isso que eu queria te ver\": não | eu"
  ],
- "problems": [],
+ "problems": [
+  "insert S0141L02: already exists",
+  "insert S0128L02: already exists",
+  "phrase S0385L01U05 not in the course",
+  "phrase S0041L03B01 not in the course",
+  "phrase S0141L01B03 not in the course",
+  "phrase S0079L01B01 not in the course",
+  "phrase S0079L01U06 not in the course",
+  "phrase S0070L03U05 not in the course",
+  "phrase S0128L01U01 not in the course",
+  "phrase S0128L01U02 not in the course",
+  "phrase S0128L01U03 not in the course",
+  "phrase S0128L01U04 not in the course",
+  "phrase S0137L03U05 not in the course",
+  "phrase S0433L03U06 not in the course",
+  "phrase S0620L02U06 not in the course",
+  "phrase S0331L02U06 not in the course",
+  "phrase S0122L03U07 not in the course"
+ ],
  "outside": [
-  "S0084L02U06 [S0084L02] names S0079L01: my friend started to learn Portuguese | meu amigo começou a aprender português",
-  "S0133L02U02 [S0133L02] names S0128L01: you get to know someone when you work together | você fica conhecendo alguém quando trabalha em conjunto",
-  "S0133L02U04 [S0133L02] names S0128L01: I know someone who was saying you work together | conheço alguém que estava dizendo que você trabalha em conjunto",
-  "S0133L02U03 [S0133L02] names S0128L01: you get to know someone very well when you work together | você fica conhecendo alguém muito bem quando trabalha em conjunto",
-  "S0133L01B03 [S0133L01] names S0128L01: get to know someone | fica conhecendo alguém",
-  "S0133L01U04 [S0133L01] names S0128L01: you get to know someone when you're trying | você fica conhecendo alguém quando está tentando",
-  "S0133L01U02 [S0133L01] names S0128L01: you get to know someone very well here | você fica conhecendo alguém muito bem aqui",
-  "S0134L03U06 [S0134L03] names S0128L01: you work with someone who is exciting | você trabalha com alguém que é empolgante",
-  "S0234L03U05 [S0234L03] names S0128L01: I met someone who works with your brother | conheci alguém que trabalha com o seu irmão",
-  "S0234L04U01 [S0234L04] names S0128L01: I met someone last night who works with your brother | conheci alguém ontem à noite que trabalha com o seu irmão",
-  "S0234L01U05 [S0234L01] names S0128L01: I met someone last night | conheci alguém ontem à noite",
-  "S0234L01U01 [S0234L01] names S0128L01: I met someone yesterday | conheci alguém ontem",
-  "S0234L01U03 [S0234L01] names S0128L01: I met someone who wanted to help | conheci alguém que queria ajudar",
-  "S0235L01U04 [S0235L01] names S0128L01: someone who said that he wanted to know | alguém que disse que queria saber",
-  "S0235L01U01 [S0235L01] names S0128L01: I met someone who said that he wanted to tell you something | conheci alguém que disse que queria te dizer algo",
-  "S0236L01U01 [S0236L01] names S0128L01: I know someone who said that she was going to try to help | conheço alguém que disse que ia tentar ajudar",
+  "S0058L03B03 [S0058L03] names S0058L02: when you understand enough words | quando você entende palavras suficientes",
+  "S0058L03B04 [S0058L03] names S0058L02: it's interesting when you understand enough words | é interessante quando você entende palavras suficientes",
+  "S0058L03U03 [S0058L03] names S0058L02: it's interesting when you understand enough words in Portuguese | é interessante quando você entende palavras suficientes em português",
+  "S0058L03U06 [S0058L03] names S0058L02: it's interesting when you understand enough words | é interessante quando você entende palavras suficientes",
+  "S0105L02U02 [S0105L02] names S0070L03: he didn't know where it was | ele não sabia onde era",
   "S0296L01U05 [S0296L01] names S0295L01: I said that I needed a little more time | disse que precisava de um pouco mais de tempo",
   "S0296L01U04 [S0296L01] names S0295L01: I said I needed more time | disse que precisava de mais tempo"
  ],
  "zut": [
-  {
-   "known": "it's starting to feel easier and i'm excited about the progress",
-   "rows": [
-    "seed 122=Estácomeçandoaparecermaisfácileestouentusiasmadocomoprogresso",
-    "S0122L04U04=estácomeçandoaparecermaisfácileestouentusiasmadocomoprogresso"
-   ]
-  },
-  {
-   "known": "to feel",
-   "rows": [
-    "S0026L02=sentir",
-    "S0041L03=mesentir"
-   ]
-  },
   {
    "known": "the",
    "rows": [
@@ -6931,7 +5332,6 @@
   127,
   128,
   132,
-  137,
   141,
   145,
   194,
@@ -6956,7 +5356,6 @@
   372,
   373,
   377,
-  385,
   388,
   393,
   407,
@@ -6968,52 +5367,6 @@
   662
  ],
  "asks": [
-  {
-   "role": "target1",
-   "text": "eu quero tentar o máximo que puder hoje",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 7,
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0007L03U06",
-     "slot": "target1"
-    }
-   ],
-   "seed": 7
-  },
-  {
-   "role": "target2",
-   "text": "eu quero tentar o máximo que puder hoje",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 7,
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0007L03U06",
-     "slot": "target2"
-    }
-   ],
-   "seed": 7
-  },
-  {
-   "role": "known",
-   "text": "to feel",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0041L03",
-     "slot": "known"
-    }
-   ],
-   "seed": 41
-  },
   {
    "role": "presentation",
    "text": "The Portuguese for: 'to feel', as in — 'I'm starting to feel tired', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
@@ -7028,1437 +5381,11 @@
   },
   {
    "role": "target1",
-   "text": "é interessante quando você entende palavras suficientes",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 58,
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L03B04",
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L03U06",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é interessante quando você entende palavras suficientes",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 58,
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L03B04",
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L03U06",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "quando você entende",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0058L02",
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L02B01",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "quando você entende",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0058L02",
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L02B01",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "when you understand",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0058L02",
-     "slot": "known"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0058L02B01",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'when you understand', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0058L02",
-     "slot": "presentation"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "quando você entende algo",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "quando você entende algo",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "when you understand something",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B03",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "quando você entende o que queria dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B09",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "quando você entende o que queria dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B09",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "when you understand what I wanted to say",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B09",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é interessante quando você entende algo",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B06",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é interessante quando você entende algo",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B06",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's interesting when you understand something",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B06",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "quando você entende o que quero dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B07",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "quando você entende o que quero dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B07",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "when you understand what I mean",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B07",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é interessante quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B02",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é interessante quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B02",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's interesting when you understand",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B02",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "não é interessante quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B08",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "não é interessante quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B08",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's not interesting when you understand",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B08",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é útil quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B05",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é útil quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B05",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's useful when you understand",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B05",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é bom quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é bom quando você entende",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's a good thing when you understand",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02B04",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "quando você entende algo é interessante",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U05",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "quando você entende algo é interessante",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U05",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "when you understand something it's interesting",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U05",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é útil quando você entende o que quero dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U01",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é útil quando você entende o que quero dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U01",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's useful when you understand what I mean",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U01",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é interessante quando você entende tudo",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é interessante quando você entende tudo",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's interesting when you understand everything",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U04",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é bom quando você entende o que queria dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é bom quando você entende o que queria dizer",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's a good thing when you understand what I wanted to say",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U03",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é interessante quando você entende coisas interessantes",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U02",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é interessante quando você entende coisas interessantes",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U02",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's interesting when you understand interesting things",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L02U02",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "quando você entende palavras suficientes",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "quando você entende palavras suficientes",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "when you understand enough words",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B03",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "você entende palavras suficientes",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B02",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "você entende palavras suficientes",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B02",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "you understand enough words",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B02",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's interesting when you understand enough words",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03B04",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é interessante quando você entende palavras suficientes em português",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03U03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target2",
-   "text": "é interessante quando você entende palavras suficientes em português",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03U03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "known",
-   "text": "it's interesting when you understand enough words in Portuguese",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0058L03U03",
-     "slot": "known"
-    }
-   ],
-   "seed": 58
-  },
-  {
-   "role": "target1",
-   "text": "é difícil dedicar tempo para se testar a tarde toda",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0069L04U04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 69
-  },
-  {
-   "role": "target2",
-   "text": "é difícil dedicar tempo para se testar a tarde toda",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0069L04U04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 69
-  },
-  {
-   "role": "known",
-   "text": "it was",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0070L02",
-     "slot": "known"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'it was', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0070L02",
-     "slot": "presentation"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "onde era",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0070L03",
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0070L03B01",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "onde era",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0070L03",
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0070L03B01",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "onde era?",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03B03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "onde era?",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03B03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "known",
-   "text": "where was it?",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03B03",
-     "slot": "known"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "ela queria me dizer onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03B02",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "ela queria me dizer onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03B02",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "ela queria saber onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "ela queria saber onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "known",
-   "text": "she wanted to know where it was",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U03",
-     "slot": "known"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "não sei onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U02",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "não sei onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U02",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "known",
-   "text": "I don't know where it was",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U02",
-     "slot": "known"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "acho que sei onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U06",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "acho que sei onde era",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U06",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "known",
-   "text": "I think I know where it was",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U06",
-     "slot": "known"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "você sabe onde era?",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target2",
-   "text": "você sabe onde era?",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "known",
-   "text": "do you know where it was?",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0070L03U04",
-     "slot": "known"
-    }
-   ],
-   "seed": 70
-  },
-  {
-   "role": "target1",
-   "text": "você começou",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0079L01",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0079L01",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0079L01",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'you started', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0079L01",
-     "slot": "presentation"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "você começou a aprender ontem",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou a aprender ontem",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started to learn yesterday",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U04",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "você começou a falar português rapidamente",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U05",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou a falar português rapidamente",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U05",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started to speak Portuguese quickly",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U05",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "você começou a escrever uma carta na semana passada",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U08",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou a escrever uma carta na semana passada",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U08",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started to write a letter last week",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U08",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "você começou ontem e não é fácil",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U07",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou ontem e não é fácil",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U07",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started yesterday and it's not easy",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U07",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "você começou bem mas agora é difícil",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U10",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou bem mas agora é difícil",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U10",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started well but now it's difficult",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U10",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "você começou a fazer algo interessante",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U09",
-     "slot": "target1"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target2",
-   "text": "você começou a fazer algo interessante",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U09",
-     "slot": "target2"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "known",
-   "text": "you started to do something interesting",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0079L01U09",
-     "slot": "known"
-    }
-   ],
-   "seed": 79
-  },
-  {
-   "role": "target1",
-   "text": "isso foi muito interessante, e eu não estava esperando",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 112,
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0112L01U09",
-     "slot": "target1"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target2",
-   "text": "isso foi muito interessante, e eu não estava esperando",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 112,
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0112L01U09",
-     "slot": "target2"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target1",
-   "text": "ele estava esperando falar com você",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U05",
-     "slot": "target1"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target2",
-   "text": "ele estava esperando falar com você",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U05",
-     "slot": "target2"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target1",
-   "text": "estava esperando falar com você",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U03",
-     "slot": "target1"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target2",
-   "text": "estava esperando falar com você",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U03",
-     "slot": "target2"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target1",
-   "text": "não estava esperando te ver aqui",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U06",
-     "slot": "target1"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target2",
-   "text": "não estava esperando te ver aqui",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U06",
-     "slot": "target2"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target1",
-   "text": "ela não estava esperando ver isso",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U04",
-     "slot": "target1"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "target2",
-   "text": "ela não estava esperando ver isso",
-   "where": [
-    {
-     "kind": "phrase",
-     "id": "S0112L02U04",
-     "slot": "target2"
-    }
-   ],
-   "seed": 112
-  },
-  {
-   "role": "known",
-   "text": "that wasn't why I wanted to see you",
-   "where": [
-    {
-     "kind": "seed",
-     "id": 127,
-     "slot": "known"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0127L02U07",
-     "slot": "known"
-    }
-   ],
-   "seed": 127
-  },
-  {
-   "role": "known",
-   "text": "that was why",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0127L01",
-     "slot": "known"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0127L01B01",
-     "slot": "known"
-    }
-   ],
-   "seed": 127
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'that was why', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0127L01",
-     "slot": "presentation"
-    }
-   ],
-   "seed": 127
-  },
-  {
-   "role": "target1",
    "text": "você é como",
    "where": [
     {
-     "kind": "lego",
-     "id": "S0128L01",
-     "slot": "target1"
-    },
-    {
      "kind": "phrase",
-     "id": "S0128L01B01",
+     "id": "S0128L01B03",
      "slot": "target1"
     }
    ],
@@ -8469,13 +5396,8 @@
    "text": "você é como",
    "where": [
     {
-     "kind": "lego",
-     "id": "S0128L01",
-     "slot": "target2"
-    },
-    {
      "kind": "phrase",
-     "id": "S0128L01B01",
+     "id": "S0128L01B03",
      "slot": "target2"
     }
    ],
@@ -8486,89 +5408,9 @@
    "text": "you're like",
    "where": [
     {
-     "kind": "lego",
-     "id": "S0128L01",
-     "slot": "known"
-    },
-    {
      "kind": "phrase",
-     "id": "S0128L01B01",
+     "id": "S0128L01B03",
      "slot": "known"
-    }
-   ],
-   "seed": 128
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'you're like', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0128L01",
-     "slot": "presentation"
-    }
-   ],
-   "seed": 128
-  },
-  {
-   "role": "target1",
-   "text": "alguém que eu conhecia",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0128L02",
-     "slot": "target1"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0128L02B01",
-     "slot": "target1"
-    }
-   ],
-   "seed": 128
-  },
-  {
-   "role": "target2",
-   "text": "alguém que eu conhecia",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0128L02",
-     "slot": "target2"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0128L02B01",
-     "slot": "target2"
-    }
-   ],
-   "seed": 128
-  },
-  {
-   "role": "known",
-   "text": "someone I used to know",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0128L02",
-     "slot": "known"
-    },
-    {
-     "kind": "phrase",
-     "id": "S0128L02B01",
-     "slot": "known"
-    }
-   ],
-   "seed": 128
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'someone I used to know', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0128L02",
-     "slot": "presentation"
     }
    ],
    "seed": 128
@@ -8579,7 +5421,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01B02",
+     "id": "S0128L01B04",
      "slot": "target1"
     }
    ],
@@ -8591,7 +5433,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01B02",
+     "id": "S0128L01B04",
      "slot": "target2"
     }
    ],
@@ -8603,7 +5445,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01B02",
+     "id": "S0128L01B04",
      "slot": "known"
     }
    ],
@@ -8615,7 +5457,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01U05",
+     "id": "S0128L01U07",
      "slot": "target1"
     }
    ],
@@ -8627,7 +5469,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01U05",
+     "id": "S0128L01U07",
      "slot": "target2"
     }
    ],
@@ -8639,7 +5481,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01U05",
+     "id": "S0128L01U07",
      "slot": "known"
     }
    ],
@@ -8651,7 +5493,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01U06",
+     "id": "S0128L01U08",
      "slot": "target1"
     }
    ],
@@ -8663,7 +5505,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01U06",
+     "id": "S0128L01U08",
      "slot": "target2"
     }
    ],
@@ -8675,7 +5517,43 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L01U06",
+     "id": "S0128L01U08",
+     "slot": "known"
+    }
+   ],
+   "seed": 128
+  },
+  {
+   "role": "target1",
+   "text": "alguém que eu conhecia",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0128L02B02",
+     "slot": "target1"
+    }
+   ],
+   "seed": 128
+  },
+  {
+   "role": "target2",
+   "text": "alguém que eu conhecia",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0128L02B02",
+     "slot": "target2"
+    }
+   ],
+   "seed": 128
+  },
+  {
+   "role": "known",
+   "text": "someone I used to know",
+   "where": [
+    {
+     "kind": "phrase",
+     "id": "S0128L02B02",
      "slot": "known"
     }
    ],
@@ -8687,7 +5565,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L02U02",
+     "id": "S0128L02U04",
      "slot": "target1"
     }
    ],
@@ -8699,7 +5577,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L02U02",
+     "id": "S0128L02U04",
      "slot": "target2"
     }
    ],
@@ -8711,7 +5589,7 @@
    "where": [
     {
      "kind": "phrase",
-     "id": "S0128L02U02",
+     "id": "S0128L02U04",
      "slot": "known"
     }
    ],
@@ -8722,13 +5600,8 @@
    "text": "sem problema",
    "where": [
     {
-     "kind": "lego",
-     "id": "S0141L02",
-     "slot": "target1"
-    },
-    {
      "kind": "phrase",
-     "id": "S0141L02B01",
+     "id": "S0141L02B02",
      "slot": "target1"
     }
    ],
@@ -8739,13 +5612,8 @@
    "text": "sem problema",
    "where": [
     {
-     "kind": "lego",
-     "id": "S0141L02",
-     "slot": "target2"
-    },
-    {
      "kind": "phrase",
-     "id": "S0141L02B01",
+     "id": "S0141L02B02",
      "slot": "target2"
     }
    ],
@@ -8756,26 +5624,9 @@
    "text": "no problem",
    "where": [
     {
-     "kind": "lego",
-     "id": "S0141L02",
-     "slot": "known"
-    },
-    {
      "kind": "phrase",
-     "id": "S0141L02B01",
+     "id": "S0141L02B02",
      "slot": "known"
-    }
-   ],
-   "seed": 141
-  },
-  {
-   "role": "presentation",
-   "text": "The Portuguese for: 'no problem', is: <break time=\"300ms\"/> <break time=\"10ms\"/>",
-   "where": [
-    {
-     "kind": "lego",
-     "id": "S0141L02",
-     "slot": "presentation"
     }
    ],
    "seed": 141

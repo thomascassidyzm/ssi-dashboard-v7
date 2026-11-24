@@ -1,7 +1,7 @@
 {
- "at": "2026-11-23T22:00:24.425Z",
+ "at": "2026-11-24T00:30:31.825Z",
  "copy": "/home/tomcassidy/ssi-evidence/ssi-dashboard-v7/ops/overnight-785/por_br_for_eng.snap.json",
- "live": "/home/tomcassidy/ssi-evidence/ssi-dashboard-v7/ops/overnight-785/live-por_br_for_eng-1.json",
+ "live": "/home/tomcassidy/ssi-evidence/ssi-dashboard-v7/ops/overnight-785/live-por_br_for_eng-p2a.json",
  "touched": [
   7,
   41,
@@ -51,6 +51,167 @@
   647,
   662
  ],
- "heldSeeds": [],
- "why": {}
+ "heldSeeds": [
+  7,
+  41,
+  58,
+  65,
+  69,
+  70,
+  79,
+  112,
+  122,
+  127,
+  128,
+  132,
+  137,
+  141,
+  215,
+  331,
+  385,
+  433,
+  517,
+  620
+ ],
+ "why": {
+  "7": [
+   "seed text \"I want to try as hard as I can today | eu quero tentar o máximo que puder hoje\"",
+   "S0007L02 has 9 rows live vs 7 on the copy",
+   "S0007L03U06 live \"I want to try as hard as I can today | eu quero tentar o máximo que puder hoje\""
+  ],
+  "41": [
+   "S0041L03 known_text live=\"to feel\"",
+   "S0041L03 has 16 rows live vs 17 on the copy",
+   "S0041L03B01 missing live"
+  ],
+  "58": [
+   "seed text \"it's interesting when you understand enough words | é interessante quando você entende palavras suficientes\"",
+   "S0058L02 known_text live=\"when you understand\"",
+   "S0058L02 target_text live=\"quando você entende\"",
+   "S0058L02C02 live \"you understand | você entende\"",
+   "S0058L02B01 live \"when you understand | quando você entende\"",
+   "S0058L02B02 live \"it's interesting when you understand | é interessante quando você entende\"",
+   "S0058L02B03 live \"when you understand something | quando você entende algo\"",
+   "S0058L02B04 live \"it's a good thing when you understand | é bom quando você entende\"",
+   "S0058L02B05 live \"it's useful when you understand | é útil quando você entende\"",
+   "S0058L02B06 live \"it's interesting when you understand something | é interessante quando você entende algo\"",
+   "S0058L02B07 live \"when you understand what I mean | quando você entende o que quero dizer\"",
+   "S0058L02B08 live \"it's not interesting when you understand | não é interessante quando você entende\"",
+   "S0058L02B09 live \"when you understand what I wanted to say | quando você entende o que queria dizer\"",
+   "S0058L02U01 live \"it's useful when you understand what I mean | é útil quando você entende o que quero dizer\"",
+   "S0058L02U02 live \"it's interesting when you understand interesting things | é interessante quando você entende coisas interessantes\"",
+   "S0058L02U03 live \"it's a good thing when you understand what I wanted to say | é bom quando você entende o que queria dizer\"",
+   "S0058L02U04 live \"it's interesting when you understand everything | é interessante quando você entende tudo\"",
+   "S0058L02U05 live \"when you understand something it's interesting | quando você entende algo é interessante\"",
+   "S0058L03B02 live \"you understand enough words | você entende palavras suficientes\"",
+   "S0058L03B03 live \"when you understand enough words | quando você entende palavras suficientes\"",
+   "S0058L03B04 live \"it's interesting when you understand enough words | é interessante quando você entende palavras suficientes\"",
+   "S0058L03U03 live \"it's interesting when you understand enough words in Portuguese | é interessante quando você entende palavras suficientes em português\"",
+   "S0058L03U06 live \"it's interesting when you understand enough words | é interessante quando você entende palavras suficientes\""
+  ],
+  "65": [
+   "seed text \"it's important to take time to test yourself | é importante dedicar tempo para se testar\"",
+   "S0065L03C01 live \"to | para\""
+  ],
+  "69": [
+   "seed text \"he didn't want to look after the young dog all afternoon | ele não queria tomar conta do cachorro jovem a tarde toda\"",
+   "S0069L04U04 live \"it's difficult to take time to test yourself all afternoon | é difícil dedicar tempo para se testar a tarde toda\""
+  ],
+  "70": [
+   "S0070L02 known_text live=\"it was\"",
+   "S0070L03 target_text live=\"onde era\"",
+   "S0070L03 has 9 rows live vs 10 on the copy",
+   "S0070L03C02 live \"it was | era\"",
+   "S0070L03B01 live \"where it was | onde era\"",
+   "S0070L03B02 live \"she wanted to tell me where it was | ela queria me dizer onde era\"",
+   "S0070L03B03 live \"where was it? | onde era?\"",
+   "S0070L03U02 live \"I don't know where it was | não sei onde era\"",
+   "S0070L03U03 live \"she wanted to know where it was | ela queria saber onde era\"",
+   "S0070L03U04 live \"do you know where it was? | você sabe onde era?\"",
+   "S0070L03U05 missing live",
+   "S0070L03U06 live \"I think I know where it was | acho que sei onde era\""
+  ],
+  "79": [
+   "S0079L01 known_text live=\"you started\"",
+   "S0079L01 target_text live=\"você começou\"",
+   "S0079L01 type live=\"M\"",
+   "S0079L01B01 missing live",
+   "S0079L01U04 live \"you started to learn yesterday | você começou a aprender ontem\"",
+   "S0079L01U05 live \"you started to speak Portuguese quickly | você começou a falar português rapidamente\"",
+   "S0079L01U06 missing live",
+   "S0079L01U07 live \"you started yesterday and it's not easy | você começou ontem e não é fácil\"",
+   "S0079L01U08 live \"you started to write a letter last week | você começou a escrever uma carta na semana passada\"",
+   "S0079L01U09 live \"you started to do something interesting | você começou a fazer algo interessante\"",
+   "S0079L01U10 live \"you started well but now it's difficult | você começou bem mas agora é difícil\""
+  ],
+  "112": [
+   "seed text \"that was very interesting, and I wasn't expecting it | isso foi muito interessante, e eu não estava esperando\"",
+   "S0112L02 has 6 rows live vs 5 on the copy",
+   "S0112L02U03 live \"I was expecting to speak with you | estava esperando falar com você\"",
+   "S0112L02U04 live \"she wasn't expecting to see that | ela não estava esperando ver isso\"",
+   "S0112L02U05 live \"he was expecting to speak with you | ele estava esperando falar com você\"",
+   "S0112L02U06 live \"I wasn't expecting to see you here | não estava esperando te ver aqui\"",
+   "S0112L01U09 live \"that was very interesting, and I wasn't expecting it | isso foi muito interessante, e eu não estava esperando\""
+  ],
+  "122": [
+   "seed text \"it's starting to feel easier and I'm excited about the progress | Está começando a parecer mais fácil e estou entusiasmado com o progresso\"",
+   "S0122L03 has 7 rows live vs 8 on the copy",
+   "S0122L03U07 missing live"
+  ],
+  "127": [
+   "seed text \"that wasn't why I wanted to see you | não foi por isso que eu queria te ver\"",
+   "S0127L01 known_text live=\"that was why\"",
+   "S0127L01B01 live \"that was why | foi por isso que\"",
+   "S0127L02 has 10 rows live vs 9 on the copy"
+  ],
+  "128": [
+   "S0128L01 known_text live=\"you're like\"",
+   "S0128L01 target_text live=\"você é como\"",
+   "S0128L01 type live=\"M\"",
+   "S0128L02 already exists live",
+   "S0128L01 has 6 rows live vs 4 on the copy",
+   "S0128L01U01 missing live",
+   "S0128L01U02 missing live",
+   "S0128L01U03 missing live",
+   "S0128L01U04 missing live"
+  ],
+  "132": [
+   "seed text \"that's less exciting than what she was saying | isso é menos empolgante do que o que ela estava dizendo\""
+  ],
+  "137": [
+   "S0137L03 has 9 rows live vs 10 on the copy",
+   "S0137L03U05 missing live"
+  ],
+  "141": [
+   "seed text \"no problem, everything is okay | sem problema, está tudo bem\"",
+   "S0141L02 already exists live",
+   "S0141L01 has 6 rows live vs 7 on the copy",
+   "S0141L01B03 missing live"
+  ],
+  "215": [
+   "S0215L02 known_text live=\"Saturday\""
+  ],
+  "331": [
+   "seed text \"she can't give all the answers | ela não consegue dar todas as respostas\"",
+   "S0331L02 has 11 rows live vs 12 on the copy",
+   "S0331L02U06 missing live"
+  ],
+  "385": [
+   "S0385L01 has 8 rows live vs 9 on the copy",
+   "S0385L01U05 missing live"
+  ],
+  "433": [
+   "seed text \"they couldn't find out when the film was starting | eles não conseguiram descobrir quando o filme começava\"",
+   "S0433L03 has 12 rows live vs 13 on the copy",
+   "S0433L03U06 missing live"
+  ],
+  "517": [
+   "seed text \"but they left together | mas saíram juntos\""
+  ],
+  "620": [
+   "seed text \"it's a very long time since the last time we saw each other | já passou muito tempo desde a última vez que nos vimos\"",
+   "S0620L02 has 9 rows live vs 10 on the copy",
+   "S0620L02U06 missing live"
+  ]
+ }
 }

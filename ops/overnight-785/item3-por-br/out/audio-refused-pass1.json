@@ -1,0 +1,20 @@
+[
+ {
+  "role": "target2",
+  "text": "não estou mais contente",
+  "where": [
+   {
+    "kind": "phrase",
+    "id": "S0145L01B03",
+    "slot": "target2"
+   }
+  ],
+  "seed": 145,
+  "real": {
+   "status": 503,
+   "charsSpent": 0,
+   "code": "GENDER_PREP_MISSING",
+   "error": "gender prep for \"não estou mais contente\" could not be made (the expansion model failed) — not rendered in the unprepared form; try again later"
+  }
+ }
+]
