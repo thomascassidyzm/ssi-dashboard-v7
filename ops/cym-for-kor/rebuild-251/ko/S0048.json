@@ -1,0 +1,93 @@
+{
+ "seed": 48,
+ "at": "2026-11-24T18:14:14.090Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0048L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "하지만 나는 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 나는 지금 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 무슨 일이 일어날지 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그게 아니어도 상관없어",
+     "ok": true,
+     "why": "Natural elliptical North Welsh: 'I don't care if it isn't'. Uses os + dydy hi ddim correctly in the 'does dim ots' sense."
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 어젯밤에 뭘 하고 있었는지 상관없어",
+     "ok": true,
+     "why": "Idiomatic North Welsh (oeddat ti). The 'does dim ots gen i' + indirect question fits naturally here."
+    },
+    {
+     "n": 7,
+     "ko": "나는 지금 이 순간 그건 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 피곤해, 하지만 난 상관없어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0048L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0048L01U02",
+     "keep": false,
+     "why": "Sound, but only 1 USE is needed and U04 is cleaner; the Korean '나아지고 싶어' may not match the gloss for gwella."
+    },
+    {
+     "id": "cym_for_kor:S0048L01U01",
+     "keep": false,
+     "why": "'yn y Gymraeg' is less natural than 'yn Gymraeg', and the Korean '웨일스어로' could point to either form, so the answer is not unique."
+    },
+    {
+     "id": "cym_for_kor:S0048L01U06",
+     "keep": false,
+     "why": "Only 1 needed. The Korean '돌아오는지' does not fix the tense, so present 'wyt ti'n dod' and future 'fyddi di'n dod' could both fit."
+    },
+    {
+     "id": "cym_for_kor:S0048L01U03",
+     "keep": false,
+     "why": "Only 1 needed. This one strings three clauses together and is overlong for a USE row."
+    },
+    {
+     "id": "cym_for_kor:S0048L01U05",
+     "keep": false,
+     "why": "'...a does dim ots gen i' does not follow on from the first clause naturally, and the Korean reads awkwardly."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:31:51.031Z"
+}

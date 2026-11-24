@@ -1,0 +1,256 @@
+{
+ "seed": 69,
+ "at": "2026-11-24T18:18:32.202Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0069L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 그는 ~고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 대답하고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그는 시간을 너무 많이 들이고 싶어하지 않았으니까",
+     "ok": true,
+     "why": "Uses the 시간을 들이다 gloss for cymryd. A learner could add 'o amser' to the Welsh, so watch this one."
+    },
+    {
+     "n": 4,
+     "ko": "그는 나중에 돌아오고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "왜 그는 끝내고 싶어하지 않았어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 멈추고 싶었어 하지만 그는 그러고 싶어하지 않았어",
+     "ok": true,
+     "why": "그러고 stands for the Welsh ellipsis after isio."
+    },
+    {
+     "n": 7,
+     "ko": "나는 그가 만나고 싶어하지 않았는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그는 오늘 오후 아무것도 읽고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0069L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 ~를 돌볼 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그는 ~를 돌보고 싶어하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 저녁 네 차를 돌보다",
+     "ok": true,
+     "why": "Natural Welsh, and edrych ar ôl keeps its 'look after' sense here."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0069L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L02U02",
+     "keep": false,
+     "why": "Two possible answers: 어렵지 않아 could be dydy hi ddim or dydy o ddim yn anodd."
+    },
+    {
+     "id": "cym_for_kor:S0069L02U07",
+     "keep": false,
+     "why": "'yn beth da i edrych' is awkward with the i, and the five slots are already filled."
+    }
+   ]
+  },
+  "S0069L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 저녁 어린 개를 보여주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "어린 개를 돌보다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 어린 개를 돌보고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "왜 너는 어린 개를 돌보고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 오늘 저녁 어린 개를 돌보고 싶었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0069L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L03B02",
+     "keep": false,
+     "why": "Good row, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03B03",
+     "keep": false,
+     "why": "Only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03B04",
+     "keep": false,
+     "why": "Only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L03U03",
+     "keep": false,
+     "why": "Only 2 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03U04",
+     "keep": false,
+     "why": "It is a question but the Korean has no question mark, and only 2 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03U05",
+     "keep": false,
+     "why": "Only 2 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03U06",
+     "keep": false,
+     "why": "Only 2 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0069L03U07",
+     "keep": false,
+     "why": "Only 2 USE are needed."
+    }
+   ]
+  },
+  "S0069L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0069L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L04B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L04B04",
+     "keep": false,
+     "why": "The Korean does not show amdano (for him/it), so the learner cannot know to say it."
+    },
+    {
+     "id": "cym_for_kor:S0069L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L04U02",
+     "keep": true,
+     "ko": "너 오후 내내 나를 돕고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0069L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L04U06",
+     "keep": true,
+     "ko": "그는 오후 내내 그의 친구에게 편지를 쓰고 싶어했어"
+    },
+    {
+     "id": "cym_for_kor:S0069L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0069L04U03",
+     "keep": false,
+     "why": "In 배워 왔어 the 'wedi bod yn' form is hard to pin down, and the five slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0069L04U05",
+     "keep": false,
+     "why": "The five slots are already filled."
+    }
+   ]
+  }
+ }
+}

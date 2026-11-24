@@ -1,0 +1,187 @@
+{
+ "seed": 29,
+ "at": "2026-11-24T18:10:54.850Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0029L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이야기하기를 기대하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 오늘 저녁을 기대하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 가능한 한 자주 이야기하기를 기대하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 멈추고 싶지 않아 왜냐하면 나는 이야기하기를 기대하고 있으니까",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0029L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0029L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0029L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0029L01U01",
+     "keep": true,
+     "ko": "나는 이야기하는 연습을 하기를 기대하고 있어 왜냐하면 그건 유용하니까"
+    },
+    {
+     "id": "cym_for_kor:S0029L01B01",
+     "keep": false,
+     "why": "'웨일스어를 이야기하기' is awkward Korean, and '웨일스어로 이야기하기' would collide with siarad yn y Gymraeg; B02 is stronger anyway"
+    },
+    {
+     "id": "cym_for_kor:S0029L01B03",
+     "keep": false,
+     "why": "Fine, but only 1 BUILD is needed and B02 was chosen first"
+    },
+    {
+     "id": "cym_for_kor:S0029L01B04",
+     "keep": false,
+     "why": "Fine, but only 1 BUILD is needed"
+    },
+    {
+     "id": "cym_for_kor:S0029L01U02",
+     "keep": false,
+     "why": "'웨일스어를 이야기하기' is awkward Korean (siarad Cymraeg)"
+    },
+    {
+     "id": "cym_for_kor:S0029L01U05",
+     "keep": false,
+     "why": "Long and clunky; already have 3 stronger USE rows"
+    },
+    {
+     "id": "cym_for_kor:S0029L01U06",
+     "keep": false,
+     "why": "Already have 3 stronger USE rows"
+    },
+    {
+     "id": "cym_for_kor:S0029L01U07",
+     "keep": false,
+     "why": "'웨일스어를 이야기하기' is awkward Korean (siarad Cymraeg)"
+    }
+   ]
+  },
+  "S0029L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 웨일스어로 무언가를 말하는 게 좋겠어",
+     "ok": false,
+     "why": "This is 'well i mi' (I'd better), not the adverb 'yn well' (better). It never contains the LEGO, so it is the wrong sense for this basket"
+    },
+    {
+     "n": 2,
+     "ko": "나는 더 잘 이야기하는 연습을 할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "더 잘 이야기하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "지금 더 잘",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 지금 웨일스어로 무언가를 말하려고 노력하는 게 좋겠어",
+     "ok": false,
+     "why": "'well i mi drio' means I'd better try. That is not 'yn well', and the LEGO is absent, so it is the wrong sense"
+    },
+    {
+     "n": 6,
+     "ko": "나는 웨일스어로 다른 무언가를 말하려고 노력하는 게 좋겠어",
+     "ok": false,
+     "why": "'well i mi' means I'd better. That is not the adverb 'yn well', and the LEGO is absent, so it is the wrong sense"
+    },
+    {
+     "n": 7,
+     "ko": "나는 더 잘 대답하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 지금 더 잘 대답할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그녀는 더 잘 이야기하고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0029L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0029L03U01",
+     "keep": true,
+     "ko": "너는 웨일스어를 더 잘 이야기할 거야?",
+     "why": "In North Welsh, a line opening with 'wyt ti'n' is a question (the statement would be 'ti'n'), so the Korean must be a question too"
+    },
+    {
+     "id": "cym_for_kor:S0029L03U06",
+     "keep": false,
+     "why": "Good Welsh, but 'liciwn i' has no gloss here, so ~하면 좋겠어 could also lead to 'baswn i'n licio' or 'dw i isio'; two kept rows already fill the need"
+    },
+    {
+     "id": "cym_for_kor:S0029L03U03",
+     "keep": false,
+     "why": "Fine, but weaker than the two kept rows and not needed"
+    },
+    {
+     "id": "cym_for_kor:S0029L03U04",
+     "keep": false,
+     "why": "Long phrase that is awkward to say, and 'yn well' is not the point of it; not needed"
+    },
+    {
+     "id": "cym_for_kor:S0029L03U05",
+     "keep": false,
+     "why": "Fine, but not needed"
+    },
+    {
+     "id": "cym_for_kor:S0029L03U07",
+     "keep": false,
+     "why": "Fine, but not needed"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:30:25.387Z"
+}

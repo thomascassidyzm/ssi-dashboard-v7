@@ -1,0 +1,124 @@
+{
+ "seed": 8,
+ "at": "2026-11-24T18:06:27.664Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0008L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "무언가를 설명하다",
+     "ok": true,
+     "why": "MOVED: 'esbonio rhywbeth' is natural North Welsh and uses esbonio as 'explain', the sense taught here"
+    },
+    {
+     "n": 2,
+     "ko": "나는 설명하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "웨일스어로 설명하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 오늘 설명할 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0008L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L03U04",
+     "keep": false,
+     "why": "Sound, but 'remember how to explain a word' is the weakest sense and the five slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0008L03U07",
+     "keep": false,
+     "why": "Korean renders siarad as 이야기하다; with no gloss fixing siarad, the learner could also say deud, so the answer is not certain"
+    }
+   ]
+  },
+  "S0008L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 내 말이 무슨 뜻인지 설명하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내 말이 무슨 뜻인지 설명하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "웨일스어로 내 말이 무슨 뜻인지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내 말이 무슨 뜻인지 설명할 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0008L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0008L04U03",
+     "keep": false,
+     "why": "Sound, but the four slots are already filled with stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0008L04U06",
+     "keep": false,
+     "why": "Sound, but the four slots are already filled"
+    }
+   ]
+  }
+ }
+}

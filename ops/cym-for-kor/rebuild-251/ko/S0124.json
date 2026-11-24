@@ -1,0 +1,67 @@
+{
+ "seed": 124,
+ "at": "2026-11-24T18:27:26.351Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0124L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 그것에 대해 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 어젯밤에 그녀가 옳다고 생각했어",
+     "ok": true,
+     "why": "Natural Welsh. Here iawn means 'right', not the 'very' sense in its gloss, which is still correct usage."
+    },
+    {
+     "n": 3,
+     "ko": "응, 그게 어제 내가 생각했던 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그게 네가 말했다고 내가 생각했던 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 네가 아주 잘하고 있다고 생각한다고 말하려고 노력하고 있었어",
+     "ok": false,
+     "why": "The Welsh is natural, but it never uses the LEGO o’n i’n meddwl. It has o’n i’n trio and a separate bo’ fi’n meddwl, so it does not practise this LEGO as a USE row."
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 아주 잘했다고 생각한다고 말하려고 노력하고 있었어",
+     "ok": false,
+     "why": "The LEGO o’n i’n meddwl does not appear, only o’n i’n trio plus bo’ fi’n meddwl. Also, o7 is the same sentence with ’di in place of wedi, so one Korean prompt would match two Welsh answers."
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 아주 잘했다고 생각한다고 말하려고 노력하고 있었어",
+     "ok": false,
+     "why": "The LEGO o’n i’n meddwl does not appear. This is also the same sentence as o6 (’di vs wedi), so the two rows break ZUT."
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 나가고 싶다고 말했다고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그게 어젯밤에 내가 생각했던 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

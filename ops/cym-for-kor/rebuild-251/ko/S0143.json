@@ -1,0 +1,270 @@
+{
+ "seed": 143,
+ "at": "2026-11-24T18:30:58.554Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0143L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "정말 고마워 그건 네가 말한 것과 같은 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그건 그가 말한 것과 같은 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "물론 그건 네 아이디어와 같은 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 그게 왜 네 아이디어와 같은 건지 설명할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 왜인지 기억할 수 없어 하지만 그건 그가 말한 것과 같은 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 멈추고 싶지 않아 왜냐하면 그건 네가 하고 있던 것과 같은 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그가 말한 것을 듣고 싶었어 왜냐하면 그건 네 아이디어와 같은 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0143L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0143L01U01",
+     "keep": false,
+     "why": "good row, but only one USE top-up is needed and U02 reads better"
+    },
+    {
+     "id": "cym_for_kor:S0143L01U03",
+     "keep": false,
+     "why": "나는 놀라워 is unnatural Korean"
+    },
+    {
+     "id": "cym_for_kor:S0143L01U04",
+     "keep": false,
+     "why": "그건 is repeated twice in the Korean, which reads clumsily"
+    },
+    {
+     "id": "cym_for_kor:S0143L01U05",
+     "keep": false,
+     "why": "이해하지 않아 is unnatural; only one top-up is needed"
+    },
+    {
+     "id": "cym_for_kor:S0143L01U06",
+     "keep": false,
+     "why": "the Welsh has no question mark, so it is unclear whether it is a statement or a question"
+    },
+    {
+     "id": "cym_for_kor:S0143L01U07",
+     "keep": false,
+     "why": "그것과 같은 거야 for â hynna is vague and weak"
+    }
+   ]
+  },
+  "S0143L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 그때 이야기하고 있었어",
+     "ok": true,
+     "why": "ar y pryd = at the time; natural North Welsh, and the LEGO is used in its taught sense"
+    },
+    {
+     "n": 2,
+     "ko": "우리는 서로 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 어젯밤 모든 것에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": "natural, and the LEGO is used in its taught sense"
+    },
+    {
+     "n": 4,
+     "ko": "우리는 어젯밤 일어나고 있던 일에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": "natural, and the LEGO is used in its taught sense"
+    },
+    {
+     "n": 5,
+     "ko": "우리는 더 나은 길을 찾는 방법에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": "natural, and the LEGO is used in its taught sense"
+    },
+    {
+     "n": 6,
+     "ko": "우리는 어젯밤 그것에 대해 이야기하고 있었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 어젯밤 펍에서 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 우리의 뇌를 바꾸기를 바랐어",
+     "ok": true,
+     "why": "grammatical, and oeddan ni'n + gobeithio is the same imperfect-tense LEGO"
+    }
+   ]
+  },
+  "S0143L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 오후 우리는 그것에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그것에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 우리는 약 한 달 동안 그것에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0143L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0143L04B01",
+     "keep": false,
+     "why": "not needed; B02 is a cleaner BUILD"
+    },
+    {
+     "id": "cym_for_kor:S0143L04B03",
+     "keep": false,
+     "why": "not needed"
+    },
+    {
+     "id": "cym_for_kor:S0143L04B04",
+     "keep": false,
+     "why": "not needed"
+    },
+    {
+     "id": "cym_for_kor:S0143L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0143L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0143L04U02",
+     "keep": true,
+     "ko": "너는 그것에 대해 이야기하고 싶어?"
+    },
+    {
+     "id": "cym_for_kor:S0143L04U06",
+     "keep": true,
+     "ko": "우리가 그것에 대해 이야기할 때 나는 기분이 더 나아져"
+    },
+    {
+     "id": "cym_for_kor:S0143L04U04",
+     "keep": false,
+     "why": "the Korean word order does not follow the Welsh (미안해 comes last); count already met"
+    },
+    {
+     "id": "cym_for_kor:S0143L04U05",
+     "keep": false,
+     "why": "the Korean comparison is awkward; count already met"
+    },
+    {
+     "id": "cym_for_kor:S0143L04U07",
+     "keep": false,
+     "why": "~하는 게 좋겠어 does not clearly mark dylet; count already met"
+    }
+   ]
+  },
+  "S0143L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 아까 이야기하고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 아까 말한 것",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 아까 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 아까 말한 것에 동의해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 그가 아까 말한 것을 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 피곤해 왜냐하면 나는 아까 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 아까 네가 하고 있던 것을 보기를 바랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 아까 말한 것을 기억할 수 없어 하지만 그건 문제가 아니야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,151 @@
+{
+ "seed": 9,
+ "at": "2026-11-24T18:06:53.006Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0009L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어로 이야기할 거야",
+     "ok": true,
+     "why": "Natural Welsh. dw i'n is used as the present-tense frame of mynd i, which fits this LEGO's sense."
+    },
+    {
+     "n": 2,
+     "ko": "나는 ~라고 말할 거야",
+     "ok": true,
+     "why": "Natural Welsh. The phrase is open-ended, so the Korean keeps the open end with ~."
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 이야기하는 방법을 배울 거야",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 4,
+     "ko": "나는 연습할 거야",
+     "ok": true,
+     "why": "Natural Welsh."
+    },
+    {
+     "n": 5,
+     "ko": "나는 다른 무언가를 말할 거야",
+     "ok": true,
+     "why": "Natural Welsh."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0009L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L01U01",
+     "keep": false,
+     "why": "Fine, but four better candidates already fill the slots."
+    },
+    {
+     "id": "cym_for_kor:S0009L01U05",
+     "keep": false,
+     "why": "ZUT clash: '웨일스어로 이야기해' is also the prompt for 'siarad Cymraeg', so it has two possible Welsh answers. 'siarad yn y Gymraeg' is also less idiomatic."
+    },
+    {
+     "id": "cym_for_kor:S0009L01U06",
+     "keep": false,
+     "why": "ZUT clash: the Korean could equally be answered with 'ymarfer siarad Cymraeg efo chdi'. The word order 'efo chdi yn y Gymraeg' is also clumsy."
+    }
+   ]
+  },
+  "S0009L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "웨일스어로 조금 이야기하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "지금 웨일스어를 조금",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 오늘 웨일스어로 조금 이야기하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0009L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L03B01",
+     "keep": false,
+     "why": "One BUILD was needed and B02 fills it."
+    },
+    {
+     "id": "cym_for_kor:S0009L03B03",
+     "keep": false,
+     "why": "One BUILD was needed and B02 fills it."
+    },
+    {
+     "id": "cym_for_kor:S0009L03B04",
+     "keep": false,
+     "why": "One BUILD was needed and B02 fills it."
+    },
+    {
+     "id": "cym_for_kor:S0009L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0009L03U02",
+     "keep": true,
+     "ko": "나는 너와 웨일스어로 조금 이야기하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0009L03U04",
+     "keep": true,
+     "ko": "나는 다른 사람과 웨일스어로 조금 이야기하는 연습을 할 거야"
+    },
+    {
+     "id": "cym_for_kor:S0009L03U03",
+     "keep": false,
+     "why": "'Trying to remember a little Welsh' is an odd thing to say."
+    },
+    {
+     "id": "cym_for_kor:S0009L03U05",
+     "keep": false,
+     "why": "Saying a little Welsh 'as often as possible' is a clumsy meaning, and the four slots are already filled."
+    },
+    {
+     "id": "cym_for_kor:S0009L03U07",
+     "keep": false,
+     "why": "Fine, but four better candidates already fill the slots."
+    }
+   ]
+  }
+ }
+}

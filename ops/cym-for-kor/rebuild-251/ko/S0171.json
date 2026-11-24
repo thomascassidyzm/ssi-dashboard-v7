@@ -1,0 +1,62 @@
+{
+ "seed": 171,
+ "at": "2026-11-24T18:34:36.779Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0171L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0171L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03B01",
+     "keep": false,
+     "why": "Not needed: the three BUILD slots are already filled by stronger rows."
+    },
+    {
+     "id": "cym_for_kor:S0171L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03U02",
+     "keep": true,
+     "ko": "나는 지금 그걸 찾을 수 없어 왜냐하면 나는 피곤하거든",
+     "why": "Rewrote the Korean so it follows the Welsh clause order (main clause, then achos) and the learner is not led to put achos first."
+    },
+    {
+     "id": "cym_for_kor:S0171L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0171L03U05",
+     "keep": false,
+     "why": "Not needed: the five USE slots are filled. Its Korean 찾아 주면 also hints at a favour (helpu) that the Welsh does not contain."
+    },
+    {
+     "id": "cym_for_kor:S0171L03U06",
+     "keep": false,
+     "why": "Not needed: the five USE slots are filled. Its Korean -자 also does not settle gadewch i ni against gad i ni."
+    }
+   ]
+  }
+ }
+}

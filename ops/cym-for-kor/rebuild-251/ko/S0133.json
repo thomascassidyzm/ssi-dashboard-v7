@@ -1,0 +1,233 @@
+{
+ "seed": 133,
+ "at": "2026-11-24T18:29:01.115Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0133L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그녀는 네가 ~를 알게 된다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 누군가를 알게 돼",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 네가 ~를 알게 된다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 네가 웨일스어를 조금 하는 사람들을 알게 된다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그것이 네가 펍에서 친구 몇 명을 알게 되는 이유야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0133L01U01",
+     "keep": true,
+     "ko": "너는 언제 누군가를 아주 잘 알게 돼?"
+    },
+    {
+     "id": "cym_for_kor:S0133L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L01U02",
+     "keep": true,
+     "ko": "재미있어, 왜냐하면 너는 새로운 사람들을 알게 되니까"
+    },
+    {
+     "id": "cym_for_kor:S0133L01U05",
+     "keep": false,
+     "why": "not needed; the three kept rows fill the quota"
+    },
+    {
+     "id": "cym_for_kor:S0133L01U04",
+     "keep": false,
+     "why": "not needed; the three kept rows fill the quota"
+    },
+    {
+     "id": "cym_for_kor:S0133L01U06",
+     "keep": false,
+     "why": "not needed; the three kept rows fill the quota"
+    }
+   ]
+  },
+  "S0133L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0133L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L05B04",
+     "keep": true,
+     "ko": "너희는 왜 걱정해?"
+    },
+    {
+     "id": "cym_for_kor:S0133L05B02",
+     "keep": false,
+     "why": "nabod next to the seed's 'dod i nabod' (알게 돼) blurs the two; 알고 지내 is not the taught gloss"
+    },
+    {
+     "id": "cym_for_kor:S0133L05U02",
+     "keep": true,
+     "ko": "너희는 왜 웨일스어를 배우고 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0133L05U01",
+     "keep": true,
+     "ko": "너희가 나랑 이야기할 때 나는 너무 행복해"
+    },
+    {
+     "id": "cym_for_kor:S0133L05U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L05U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L05U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0133L05U05",
+     "keep": false,
+     "why": "not needed; the five kept rows fill the quota"
+    }
+   ]
+  },
+  "S0133L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 그게 작동할 거야",
+     "ok": false,
+     "why": "'fydd o'n gweithio' means 'it will work' as in function (작동하다), not the labour sense 일하다 this LEGO teaches"
+    },
+    {
+     "n": 2,
+     "ko": "왜냐하면 나는 그게 작동할 거라고 확신해",
+     "ok": false,
+     "why": "gweithio here means 'function', not the 'work at a job' sense this LEGO teaches"
+    },
+    {
+     "n": 3,
+     "ko": "너는 열심히 일해야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그녀는 자기가 일한다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그게 작동할 거야, 하지만 나는 피곤해",
+     "ok": false,
+     "why": "gweithio here means 'function', not the 'work at a job' sense this LEGO teaches"
+    },
+    {
+     "n": 6,
+     "ko": "이것이 그게 지금 작동할 유일한 방법이야",
+     "ok": false,
+     "why": "gweithio here means 'function', not the 'work at a job' sense this LEGO teaches"
+    },
+    {
+     "n": 7,
+     "ko": "너는 멈추지 않는 게 좋겠어, 왜냐하면 그게 작동할 거니까",
+     "ok": false,
+     "why": "gweithio here means 'function', not the 'work at a job' sense this LEGO teaches"
+    },
+    {
+     "n": 8,
+     "ko": "나는 열심히 일하고 싶은지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0133L07": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "함께 이야기하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "함께 놀기 위해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 너희는 함께 일하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너희는 오늘 함께 일해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그것이 너희가 함께 일하는 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그게 너희가 함께 일하는 이유는 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 행복해, 왜냐하면 너희가 지금 함께 일하니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너희는 오늘 펍에서 함께 일해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너희는 왜 한밤중에 함께 일해?",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

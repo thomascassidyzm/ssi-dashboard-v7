@@ -1,0 +1,171 @@
+{
+ "seed": 4,
+ "at": "2026-11-24T18:05:41.008Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0004L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 말하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 말하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "말하는 방법",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0004L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L02U05",
+     "keep": false,
+     "why": "'trio deud mor aml â phosib' needs an object or siarad; bare deud 'as often as possible' is unnatural Welsh"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0004L02U05",
+     "keep": false,
+     "why": "Here 'deud' has no object, so 'trio deud mor aml â phosib' reads as 'trying to say as often as possible'. That is unnatural Welsh: speaking often is 'siarad', and 'deud' needs an object such as rhywbeth."
+    }
+   ]
+  },
+  "S0004L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "무언가를 말하는 방법",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "무언가를 말하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "무언가를 말하려고 노력하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 지금 무언가를 말하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0004L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L03U04",
+     "keep": false,
+     "why": "'trying to learn something as often as possible' makes little sense"
+    }
+   ]
+  },
+  "S0004L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "웨일스어로 무언가를 말하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어로 무언가를 말하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 무언가를 말하려고 노력하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 지금 웨일스어로 무언가를 말하려고 노력하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0004L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0004L04U04",
+     "keep": false,
+     "why": "surplus and the weakest: 'learn in Welsh as often as possible' is semantically awkward"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:28:44.855Z"
+}

@@ -1,0 +1,149 @@
+{
+ "seed": 13,
+ "at": "2026-11-24T18:07:49.982Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0013L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 웨일스어를 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 오늘 웨일스어를 조금 해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0013L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L01B02",
+     "keep": false,
+     "why": "BUILD quota filled; near-duplicate of original o2 without heddiw"
+    },
+    {
+     "id": "cym_for_kor:S0013L01B03",
+     "keep": false,
+     "why": "BUILD quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0013L01U01",
+     "keep": true,
+     "ko": "나는 네가 웨일스어를 하는지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0013L01U04",
+     "keep": true,
+     "ko": "나는 네가 다른 사람과 웨일스어를 하는지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0013L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L01U05",
+     "keep": false,
+     "why": "Korean 네가 ~하면 나는 ... allows either Welsh clause order (os-clause first, as in U03, or last); not ZUT-safe"
+    },
+    {
+     "id": "cym_for_kor:S0013L01U06",
+     "keep": false,
+     "why": "USE quota filled"
+    }
+   ]
+  },
+  "S0013L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 지금 웨일스어를 아주 잘해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어를 아주 잘 이야기했으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "웨일스어를 아주 잘 이야기하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 아주 잘해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0013L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L03B02",
+     "keep": false,
+     "why": "'yn dda iawn 'fory' is a meaningless fragment; 내일 아주 잘 is not a natural Korean prompt"
+    },
+    {
+     "id": "cym_for_kor:S0013L03B03",
+     "keep": false,
+     "why": "BUILD quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0013L03B04",
+     "keep": false,
+     "why": "BUILD quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0013L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0013L03U03",
+     "keep": true,
+     "ko": "나는 내가 문장 전체를 아주 잘 기억할 수 있을지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0013L03U01",
+     "keep": false,
+     "why": "odd meaning (conditional 'I wouldn't speak Welsh very well tomorrow'), and 않을 것 같아 reads as a guess, not as fyddwn i ddim"
+    },
+    {
+     "id": "cym_for_kor:S0013L03U04",
+     "keep": false,
+     "why": "USE quota filled"
+    },
+    {
+     "id": "cym_for_kor:S0013L03U06",
+     "keep": false,
+     "why": "unnatural meaning: 'I speak very well with you today'"
+    }
+   ]
+  }
+ }
+}

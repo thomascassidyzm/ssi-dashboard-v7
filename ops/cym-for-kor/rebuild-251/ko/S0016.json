@@ -1,0 +1,361 @@
+{
+ "seed": 16,
+ "at": "2026-11-24T18:08:45.200Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0016L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0016L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01B03",
+     "keep": false,
+     "why": "BUILD count already met by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0016L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L01U02",
+     "keep": true,
+     "ko": "나는 웨일스어로 이야기하고 싶고 그는 배우고 싶어해"
+    },
+    {
+     "id": "cym_for_kor:S0016L01U06",
+     "keep": false,
+     "why": "USE count already met"
+    }
+   ]
+  },
+  "S0016L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어를 배우고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어로 이야기하는 걸 배우고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 배우고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 연습하는 걸 배우고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 연습하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 이야기하는 연습을 하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 오늘 설명하고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0016L02U03",
+     "keep": true,
+     "ko": "나는 네가 오늘 나와 이야기하고 싶어하는지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0016L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L02U01",
+     "keep": false,
+     "why": "USE count already met; long and clumsy"
+    },
+    {
+     "id": "cym_for_kor:S0016L02U02",
+     "keep": false,
+     "why": "'웨일스어로 이야기하다' could be either siarad Cymraeg or siarad yn y Gymraeg, so two answers are possible"
+    },
+    {
+     "id": "cym_for_kor:S0016L02U06",
+     "keep": false,
+     "why": "USE count already met"
+    },
+    {
+     "id": "cym_for_kor:S0016L02U07",
+     "keep": false,
+     "why": "USE count already met"
+    }
+   ]
+  },
+  "S0016L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 돌아오려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 돌아오고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0016L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L03B01",
+     "keep": false,
+     "why": "the Korean dictionary-form fragment is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0016L03B02",
+     "keep": false,
+     "why": "the Korean dictionary-form fragment is unnatural"
+    },
+    {
+     "id": "cym_for_kor:S0016L03B04",
+     "keep": false,
+     "why": "BUILD count already met"
+    },
+    {
+     "id": "cym_for_kor:S0016L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L03U03",
+     "keep": true,
+     "ko": "나는 내가 내일 돌아올 수 있을지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0016L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L03U02",
+     "keep": false,
+     "why": "'돌아오지 않을 것 같아' means 'I don't think I'll come back' and does not pin down the conditional fyddwn i ddim"
+    },
+    {
+     "id": "cym_for_kor:S0016L03U07",
+     "keep": false,
+     "why": "USE count already met"
+    }
+   ]
+  },
+  "S0016L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0016L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L05B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L05B02",
+     "keep": false,
+     "why": "the Korean is unnatural, and the natural form '다른 모든 사람들과 나' clashes with efo pawb arall"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U01",
+     "keep": true,
+     "ko": "너는 다른 모든 사람들과 웨일스어로 이야기해?"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U03",
+     "keep": true,
+     "ko": "나는 지금 다른 모든 사람들과 웨일스어로 이야기할 수 있으면 좋겠어"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U04",
+     "keep": true,
+     "ko": "나는 내가 다른 모든 사람들과 이야기할 수 있을지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U05",
+     "keep": true,
+     "ko": "나는 내일 하루 종일 다른 모든 사람들과 웨일스어로 이야기할 거야"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U02",
+     "keep": false,
+     "why": "'않을 것 같아' does not pin down the conditional fyddwn i ddim"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U06",
+     "keep": false,
+     "why": "siarad yn y Gymraeg and siarad Cymraeg would both answer '웨일스어로 이야기하다'"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0016L05U02",
+     "keep": false,
+     "why": "'않을 것 같아' and 'tomorrow' don't pin down the conditional 'fyddwn i ddim'; the learner could also say 'fydda i ddim' or 'dw i ddim yn meddwl'"
+    },
+    {
+     "id": "cym_for_kor:S0016L05U06",
+     "keep": false,
+     "why": "'siarad yn y Gymraeg' is a stiffer form than 'siarad Cymraeg', and the Korean '웨일스어로 이야기하다' has both as answers"
+    }
+   ]
+  },
+  "S0016L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 나중에 말하고 싶은 것을 기억하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 나중에 너와 이야기할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나중에 무슨 일이 일어날지 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나중에",
+     "ok": false,
+     "why": "the Korean prompt '나중에' is identical to the LEGO's own prompt but asks for a different Welsh form (yn nes ymlaen vs nes ymlaen), which breaks ZUT"
+    },
+    {
+     "n": 5,
+     "ko": "나는 나중에 돌아오고 싶지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0016L06U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L06U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0016L06U06",
+     "keep": true,
+     "ko": "나는 나중에 내 말이 무슨 뜻인지 설명할 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U01",
+     "keep": false,
+     "why": "the Korean '후에 나중에' is redundant and the subject is missing; USE count already met"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U02",
+     "keep": false,
+     "why": "USE count already met"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U03",
+     "keep": false,
+     "why": "present continuous with nes ymlaen reads oddly, and the Korean is missing its question marker"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U05",
+     "keep": false,
+     "why": "USE count already met"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0016L06U05",
+     "keep": true,
+     "ko": "나는 네가 나중에 나와 웨일스어를 하기를 원해"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U02",
+     "keep": false,
+     "why": "Sound, but only one more USE row was needed and U05 was the better choice; the Korean also drops 나는"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U01",
+     "keep": false,
+     "why": "The Korean repeats itself ('후에 나중에'), has no subject, and doesn't pin down 'dw i'n mynd i'"
+    },
+    {
+     "id": "cym_for_kor:S0016L06U03",
+     "keep": false,
+     "why": "Present continuous with 'nes ymlaen' reads oddly, and the Korean drops the question marker, so statement or question is unclear"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:29:05.265Z"
+}

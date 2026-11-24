@@ -1,0 +1,123 @@
+{
+ "seed": 151,
+ "at": "2026-11-24T18:32:06.766Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0151L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 그녀가 원했던 게 아니었다면",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그건 내가 듣고 싶었던 게 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그건 그가 말한 게 아니었으니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 하지만 그건 내가 원했던 게 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 하지만 그건 내가 일어날 거라고 생각했던 일이 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그건 내가 일어날 거라고 생각했던 일이 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "그게 네가 말한 게 아니었다면 미안해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "그건 그녀가 일어날 거라고 말했던 일이 아니었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0151L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 오늘 일어날 거라고 생각했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁에 일어날 거라고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그는 다음 주에 일어날 거라고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "그건 네가 일어날 거라고 말했던 일이 아니었어, 하지만 그건 문제가 아니야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 놀라워, 왜냐하면 그건 그가 일어날 거라고 말했던 일이 아니었으니까",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0151L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0151L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0151L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0151L04U03",
+     "keep": false,
+     "why": "Kept only three because that is the number needed; this one is fine but ranked lower"
+    },
+    {
+     "id": "cym_for_kor:S0151L04U05",
+     "keep": false,
+     "why": "Kept only three because that is the number needed; the order of the clauses in the Korean is clumsier than the ones kept"
+    },
+    {
+     "id": "cym_for_kor:S0151L04U02",
+     "keep": false,
+     "why": "The present-tense question '너는 일어날 거라고 생각해?' would naturally take 'bydd' in Welsh, not 'fyddai', so the learner could give either answer"
+    }
+   ]
+  }
+ }
+}

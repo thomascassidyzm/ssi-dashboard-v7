@@ -1,0 +1,157 @@
+{
+ "seed": 47,
+ "at": "2026-11-24T18:14:27.376Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0047L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 생각하는 것을 말하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 너와 웨일스어로 이야기하고 싶을 거라고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 생각하는 것을 말할 수 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 왜 그게 좋은 일이라고 생각하고 있었는지 기억하려고 노력하고 있어",
+     "ok": false,
+     "why": "Doesn't contain the LEGO 'dw i'n meddwl'. It uses o'n i'n meddwl (past) and dw i'n trio, so it gives no practice of this LEGO."
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 그것에 대해 신중하게 생각하고 있었는지 확실하지 않아",
+     "ok": false,
+     "why": "Doesn't contain the LEGO 'dw i'n meddwl'. It uses o'n i'n meddwl (past), so it gives no practice of this LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0047L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L02U01",
+     "keep": true,
+     "ko": "나는 네가 웨일스어로 아주 잘 이야기할 수 있다고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0047L02U06",
+     "keep": true,
+     "ko": "나는 너와 이야기하고 싶어, 왜냐하면 나는 네가 나를 도와줄 수 있다고 생각하기 때문이야"
+    },
+    {
+     "id": "cym_for_kor:S0047L02U04",
+     "keep": false,
+     "why": "Valid, but only 3 are needed and the other three are stronger."
+    },
+    {
+     "id": "cym_for_kor:S0047L02U02",
+     "keep": false,
+     "why": "The Korean also fits 'dw i'n meddwl dw i ddim angen gwybod popeth' (meddwl first rather than tagged at the end), so it has two answers."
+    },
+    {
+     "id": "cym_for_kor:S0047L02U05",
+     "keep": false,
+     "why": "The Korean ~지 않을 것 같다고 생각해 is clumsy and doesn't separate conditional fyddwn i from future fydda i, so it has two answers."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0047L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L02U02",
+     "keep": false,
+     "why": "The Welsh puts 'dw i'n meddwl' at the end as a tag, and Korean ~다고 생각해 cannot show that. 'dw i'n meddwl dw i ddim angen gwybod popeth' fits the same Korean, so there are two answers."
+    },
+    {
+     "id": "cym_for_kor:S0047L02U05",
+     "keep": false,
+     "why": "Korean cannot cleanly separate conditional 'fyddwn i' from future 'fydda i'. ~지 않을 것 같다고 생각해 is clumsy and still fits both. Fixing it would need added content such as 나라면, so the clash remains."
+    }
+   ]
+  },
+  "S0047L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 나는 그게 좋은 일인지 확실하지 않기 때문이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 이 순간 그게 좋은 일인지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0047L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L03B02",
+     "keep": false,
+     "why": "Valid, but only 2 BUILD are needed."
+    },
+    {
+     "id": "cym_for_kor:S0047L03B04",
+     "keep": false,
+     "why": "Valid, but only 2 BUILD are needed, and 'knowing it is good to answer' is a weaker sense."
+    },
+    {
+     "id": "cym_for_kor:S0047L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0047L03U06",
+     "keep": false,
+     "why": "Almost the same as the seed sentence; only 4 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0047L03U05",
+     "keep": false,
+     "why": "Swapping in gwybod gives an odd meaning, and only 4 USE are needed."
+    },
+    {
+     "id": "cym_for_kor:S0047L03U04",
+     "keep": false,
+     "why": "끊는 것 alone doesn't mean 'interrupting' (torri ar draws needs 말을 끊다), so the prompt is unclear."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:31:40.735Z"
+}

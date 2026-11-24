@@ -1,0 +1,141 @@
+{
+ "seed": 77,
+ "at": "2026-11-24T18:19:38.428Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0077L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 벌써 배운 것에 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 내가 얼마나 많이 배웠는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 얼마나 많이 했는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 어떻게 느끼는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 얼마나 많이 말할 수 있는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 지금 내가 말하는 방법을 얼마나 많이 아는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 네가 얼마나 빨리 배웠는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "왜 안 돼? 나는 놀라워",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0077L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 얼마나 빨리 ~는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 얼마나 빨리 시작했는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 얼마나 빨리 배웠는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 얼마나 빨리 ~는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "정말 고마워, 나는 내가 얼마나 빨리 시작했는지 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "그녀는 네가 얼마나 빨리 배웠는지 알아내고 싶어해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0077L02U04",
+     "keep": true,
+     "ko": "너는 네가 얼마나 빨리 배우고 있는지 알아?"
+    },
+    {
+     "id": "cym_for_kor:S0077L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0077L02U03",
+     "keep": true,
+     "ko": "나는 내가 얼마나 빨리 배우고 있는지 몰라"
+    },
+    {
+     "id": "cym_for_kor:S0077L02U07",
+     "keep": false,
+     "why": "not needed; three stronger candidates already kept"
+    },
+    {
+     "id": "cym_for_kor:S0077L02U05",
+     "keep": false,
+     "why": "not needed; three stronger candidates already kept"
+    },
+    {
+     "id": "cym_for_kor:S0077L02U06",
+     "keep": false,
+     "why": "not needed; three stronger candidates already kept"
+    },
+    {
+     "id": "cym_for_kor:S0077L02U02",
+     "keep": false,
+     "why": "만족해 does not match hapus (happy), so the Korean is unclear"
+    },
+    {
+     "id": "cym_for_kor:S0077L02U08",
+     "keep": false,
+     "why": "missing soft mutation after am: should be 'am ba mor gyflym'"
+    }
+   ]
+  }
+ }
+}

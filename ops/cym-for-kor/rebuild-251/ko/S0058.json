@@ -1,0 +1,286 @@
+{
+ "seed": 58,
+ "at": "2026-11-24T18:16:36.545Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0058L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 멈추고 싶지 않아 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어로 이야기하고 싶어 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어를 배우고 싶어 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "이야기하다 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "웨일스어로 이야기하다 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 가고 싶어 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 웨일스어를 배우기 시작했어 왜냐하면 흥미로워서",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0058L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L01U02",
+     "keep": false,
+     "why": "Almost the same as o3 and o7; only one top-up was needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L01U01",
+     "keep": false,
+     "why": "A weaker fragment; only one top-up was needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L01U04",
+     "keep": false,
+     "why": "Only one top-up was needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L01U05",
+     "keep": false,
+     "why": "Only one top-up was needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L01U06",
+     "keep": false,
+     "why": "Starts with 하지만 and no context; only one top-up was needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L01U07",
+     "keep": false,
+     "why": "Only one top-up was needed"
+    }
+   ]
+  },
+  "S0058L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 무언가를 이해할 필요가 있어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 이해하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 이해하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 네가 무엇을 원하는지 이해하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 나아지는 방법을 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 그것을 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 무엇을 원하는지 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 연습하는 방법을 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 웨일스어로 이야기하는 연습을 하는 방법을 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너는 이해하고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "하지만 나는 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 내가 어떻게 너를 도울 수 있는지 이해하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0058L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L04U01",
+     "keep": false,
+     "why": "The Korean 내 말 drifts from 'what I mean'; better candidates were available"
+    },
+    {
+     "id": "cym_for_kor:S0058L04U02",
+     "keep": false,
+     "why": "Only two were needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L04U04",
+     "keep": false,
+     "why": "Only two were needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L04U05",
+     "keep": false,
+     "why": "Only two were needed"
+    },
+    {
+     "id": "cym_for_kor:S0058L04U07",
+     "keep": false,
+     "why": "'I was understanding everything last night' is an odd thing to say"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0058L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L04U02",
+     "keep": false,
+     "why": "Only one USE was needed. Also, 이해 안 돼 drifts from the gloss 이해하다, and the natural fixes would read as 'can't understand', which is a different Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0058L04U05",
+     "keep": false,
+     "why": "Only one USE was needed, and U04 mirrors the seed frame more closely."
+    },
+    {
+     "id": "cym_for_kor:S0058L04U01",
+     "keep": false,
+     "why": "내 말 drifts from 'what I mean' (be' dw i'n ei olygu), so the Korean does not fix the Welsh."
+    },
+    {
+     "id": "cym_for_kor:S0058L04U07",
+     "keep": false,
+     "why": "'I was understanding everything last night' is an unnatural thing to say."
+    }
+   ]
+  },
+  "S0058L05": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0058L05B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L05B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L05B04",
+     "keep": true,
+     "ko": "나는 충분한 단어를 배우고 싶었어"
+    },
+    {
+     "id": "cym_for_kor:S0058L05B02",
+     "keep": false,
+     "why": "Only three were needed; the Korean for 'yn y Gymraeg' is awkward"
+    },
+    {
+     "id": "cym_for_kor:S0058L05U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0058L05U04",
+     "keep": true,
+     "ko": "나는 웨일스어로 이야기할 때 충분한 단어가 기억나지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0058L05U02",
+     "keep": true,
+     "ko": "너는 충분한 단어를 배우고 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0058L05U06",
+     "keep": true,
+     "ko": "나는 이야기해야 하기 전에 충분한 단어를 알 필요가 있어"
+    },
+    {
+     "id": "cym_for_kor:S0058L05U05",
+     "keep": true,
+     "ko": "나는 충분한 단어를 배우고 싶었어 왜냐하면 나는 너와 이야기하고 싶어서"
+    },
+    {
+     "id": "cym_for_kor:S0058L05U03",
+     "keep": false,
+     "why": "Only five were needed; the Korean for 'yn y Gymraeg' is awkward"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:32:36.321Z"
+}

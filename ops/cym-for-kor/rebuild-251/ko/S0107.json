@@ -1,0 +1,192 @@
+{
+ "seed": 107,
+ "at": "2026-11-24T18:24:29.139Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0107L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리가 일어나기를 바랐던",
+     "ok": true,
+     "why": "A relative-clause fragment taken from 'dim hynna oeddan ni’n gobeithio fyddai’n digwydd'. It is natural North Welsh and uses gobeithio in the 'hope' sense."
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그녀가 무엇을 말하고 있었는지 듣기를 바랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 우리가 어젯밤에 일어나기를 바랐던 게 아니었어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0107L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0107L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0107L01B02",
+     "keep": false,
+     "why": "Fine, but only 2 BUILD rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0107L01B04",
+     "keep": false,
+     "why": "Fine, but only 2 BUILD rows are needed. The other two give a cleaner build."
+    },
+    {
+     "id": "cym_for_kor:S0107L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0107L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0107L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0107L01U05",
+     "keep": false,
+     "why": "Fine, but only 3 USE rows are needed."
+    },
+    {
+     "id": "cym_for_kor:S0107L01U02",
+     "keep": false,
+     "why": "Only 3 USE rows are needed. Also, 행복하다고 느끼기를 could be answered with bod ti'n hapus or with teimlo."
+    },
+    {
+     "id": "cym_for_kor:S0107L01U03",
+     "keep": false,
+     "why": "그게 그렇지 않기를 does not point clearly to 'fod o ddim fel ’na', so the learner could give more than one Welsh answer."
+    },
+    {
+     "id": "cym_for_kor:S0107L01U07",
+     "keep": false,
+     "why": "Too long. Only 3 USE rows are needed."
+    }
+   ]
+  },
+  "S0107L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 지금 그들을 아주 자주 보지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 그들을 보지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "우리는 그들을 아주 자주 보지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "~ 네가 무엇을 하고 있었는지 볼 수 없어",
+     "ok": true,
+     "why": "A subjectless fragment, marked with an open ~ at the start. The Welsh is natural and uses gweld as 'see'."
+    },
+    {
+     "n": 5,
+     "ko": "우리는 네가 무엇을 하고 있었는지 보기를 바랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 네가 얼마나 많이 배웠는지 보기를 바랐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 그 사람들을 볼 수 없다는 게 놀라워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 돌아오고 싶었어 왜냐하면 우리는 그 사람들을 보기를 바랐기 때문이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 내가 볼 수 없어서 걱정해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0107L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "네가 어젯밤에 무엇을 하고 있었는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 오늘 오후에 무엇을 하고 있었는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "네가 무엇을 하고 있었는지 알아내기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "아무도 네가 무엇을 하고 있었는지 확신하지 못했어",
+     "ok": true,
+     "why": "Natural North Welsh that uses the LEGO as taught."
+    },
+    {
+     "n": 5,
+     "ko": "그녀는 네가 여섯 시에 무엇을 하고 있었는지 알아내고 싶어해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "네가 오늘 저녁에 무엇을 하고 있었는지 내가 물어봐도 돼?",
+     "ok": true,
+     "why": "Here heno means 'earlier this evening', so it works with the past continuous. The Welsh is natural."
+    },
+    {
+     "n": 7,
+     "ko": "그것이 내가 네가 무엇을 하고 있었는지 알아내고 싶었던 이유야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 그냥 네가 무엇을 하고 있었는지 알아낼 필요가 있어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

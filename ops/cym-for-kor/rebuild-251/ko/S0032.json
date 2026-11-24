@@ -1,0 +1,165 @@
+{
+ "seed": 32,
+ "at": "2026-11-24T18:11:38.036Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0032L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 보여주려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내 말이 무슨 뜻인지 보여주다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 내 말이 무슨 뜻인지 보여주려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0032L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0032L02B03",
+     "keep": false,
+     "why": "Only 1 BUILD needed; B01 is the closer mirror of the seed."
+    },
+    {
+     "id": "cym_for_kor:S0032L02B02",
+     "keep": false,
+     "why": "Only 1 BUILD needed."
+    },
+    {
+     "id": "cym_for_kor:S0032L02B04",
+     "keep": false,
+     "why": "Only 1 BUILD needed. The Korean statement could also be read as a question."
+    },
+    {
+     "id": "cym_for_kor:S0032L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0032L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0032L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0032L02U07",
+     "keep": true,
+     "ko": "나는 내일 너에게 무언가를 보여줄 수 있을지 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0032L02U03",
+     "keep": false,
+     "why": "A negative with rhywbeth ('don't want to show you something') is unnatural. Welsh would use dim byd."
+    },
+    {
+     "id": "cym_for_kor:S0032L02U05",
+     "keep": false,
+     "why": "Not needed. 곧 sits awkwardly with 싶어해, so the scope is unclear."
+    },
+    {
+     "id": "cym_for_kor:S0032L02U06",
+     "keep": false,
+     "why": "Not needed. 'Because it's useful' has no clear referent, so the line is weak."
+    }
+   ]
+  },
+  "S0032L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어로 이야기하는 방법을 기억하려고 노력하는 게 좋겠어",
+     "ok": true,
+     "why": "'well i mi' is natural North Welsh. Here i mi is the same dative 'for me'."
+    },
+    {
+     "n": 2,
+     "ko": "나는 기억하려고 노력하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그리고 나는 지금 웨일스어로 무언가를 말하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 더 연습하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나에게 무언가를",
+     "ok": true,
+     "why": "Same sense as the seed's 'dangos rhywbeth i mi'."
+    },
+    {
+     "n": 6,
+     "ko": "나는 지금 문장 전체를 기억하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 지금 웨일스어로 이야기하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 지금 웨일스어로 이야기하려고 노력하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 지금 무언가를 말하려고 노력하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 너와 웨일스어로 이야기하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "나는 지금 가는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "하지만 나는 지금 가는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 지금 설명하는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

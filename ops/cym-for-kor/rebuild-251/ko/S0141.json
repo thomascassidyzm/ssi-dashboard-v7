@@ -1,0 +1,115 @@
+{
+ "seed": 141,
+ "at": "2026-11-24T18:30:21.458Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0141L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 오늘은 문제없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "문제없어 나는 ~할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 문제없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "문제없어 정말 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "문제없어 나는 나중에 너를 도울 수 있을 거야",
+     "ok": true,
+     "why": "Natural North Welsh; dim problem is used in the same sense as in this course."
+    },
+    {
+     "n": 6,
+     "ko": "물론 문제없어 왜냐하면 그는 내 친구니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "하지만 문제없어 나는 너를 돕고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "문제없어 나는 너를 기다릴 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0141L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0141L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0141L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0141L02B03",
+     "keep": true,
+     "ko": "왜냐하면 모든 게 괜찮으니까"
+    },
+    {
+     "id": "cym_for_kor:S0141L02B04",
+     "keep": false,
+     "why": "Not needed: three better BUILD rows fill the quota, and this one ends on a dangling ond."
+    },
+    {
+     "id": "cym_for_kor:S0141L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0141L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0141L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0141L02U01",
+     "keep": true,
+     "ko": "모든 게 괜찮아 왜냐하면 그녀는 내 친구니까"
+    },
+    {
+     "id": "cym_for_kor:S0141L02U04",
+     "keep": true,
+     "ko": "너는 걱정하지 않는 게 좋겠어 왜냐하면 모든 게 괜찮으니까"
+    },
+    {
+     "id": "cym_for_kor:S0141L02U03",
+     "keep": false,
+     "why": "Not needed: the quota is full and this nearly repeats B02 and U01."
+    },
+    {
+     "id": "cym_for_kor:S0141L02U07",
+     "keep": false,
+     "why": "Not needed: the quota is full and this long sentence is the weakest of the rows."
+    }
+   ]
+  }
+ }
+}

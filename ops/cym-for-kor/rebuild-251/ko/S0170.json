@@ -1,0 +1,197 @@
+{
+ "seed": 170,
+ "at": "2026-11-24T18:34:53.095Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0170L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0170L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01B02",
+     "keep": false,
+     "why": "Fine, but not needed: the 3 BUILD slots are already filled by stronger rows"
+    },
+    {
+     "id": "cym_for_kor:S0170L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0170L01U07",
+     "keep": true,
+     "ko": "나는 네가 그거에 대해 걱정하는 것을 멈춰 주면 좋겠어"
+    },
+    {
+     "id": "cym_for_kor:S0170L01U02",
+     "keep": false,
+     "why": "Fine, but not needed: 5 USE slots already filled"
+    },
+    {
+     "id": "cym_for_kor:S0170L01U06",
+     "keep": false,
+     "why": "Fine, but not needed: 5 USE slots already filled"
+    }
+   ]
+  },
+  "S0170L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그것을 아주 잘 이야기하기 위해 네가 무엇을 할 필요가 있는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 무엇을 할 필요가 있는지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "너는 네가 무엇을 할 필요가 있는지 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "너는 멈출 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "너는 이야기할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 웨일스어로 무언가를 말할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 웨일스어를 배울 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "너는 이야기하는 연습을 할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "너는 네가 무언가를 할 필요가 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "너는 네가 다시 무언가를 할 필요가 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "너는 네가 연습할 필요가 있다고 말했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "너는 네가 연습할 필요가 있다는 것을 배웠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "네가 무언가를 얻을 필요가",
+     "ok": false,
+     "why": "Uses the 'angen i ti' construction, not the LEGO 'ti angen'. It doesn't contain this LEGO, and on its own it is an incomplete fragment."
+    },
+    {
+     "n": 14,
+     "ko": "네가 ~할 필요는 없어",
+     "ok": false,
+     "why": "'does dim angen i ti' is a different construction. It doesn't use the LEGO 'ti angen' in the sense this course taught it."
+    },
+    {
+     "n": 15,
+     "ko": "너는 지금 추측할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 16,
+     "ko": "너는 ~을 들일 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 17,
+     "ko": "너는 네가 할 수 있는 한 빨리 돌아올 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 18,
+     "ko": "너는 흥미로운 무언가를 할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 19,
+     "ko": "너는 오늘 이 책을 보여줄 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 20,
+     "ko": "너는 웨일스어를 이야기할 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 21,
+     "ko": "나는 네가 흥미로운 무언가를 할 필요가 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 22,
+     "ko": "너는 네가 이야기하는 연습을 할 필요가 있다는 것을 배웠어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

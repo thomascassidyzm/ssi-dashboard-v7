@@ -1,0 +1,61 @@
+{
+ "seed": 135,
+ "at": "2026-11-24T18:29:06.443Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0135L06": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0135L06B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06B02",
+     "keep": false,
+     "why": "Valid, but the three BUILD slots are already filled by stronger full clauses. This bare fragment is a weaker build."
+    },
+    {
+     "id": "cym_for_kor:S0135L06U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06U06",
+     "keep": true,
+     "ko": "나는 네가 그게 그렇게 좋다고 생각한다는 게 놀라워"
+    },
+    {
+     "id": "cym_for_kor:S0135L06U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0135L06U04",
+     "keep": false,
+     "why": "Fine, but the five USE slots are already filled. Its pairing of 'so good' with 'it doesn't work' is weaker than U03."
+    },
+    {
+     "id": "cym_for_kor:S0135L06U05",
+     "keep": false,
+     "why": "The meaning is odd: 'I thought it was so good because that was surprising' gives a reason that doesn't make sense, so it isn't a natural sentence."
+    }
+   ]
+  }
+ }
+}

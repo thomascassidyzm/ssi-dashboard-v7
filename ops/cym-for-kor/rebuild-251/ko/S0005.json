@@ -1,0 +1,244 @@
+{
+ "seed": 5,
+ "at": "2026-11-24T18:05:49.282Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0005L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 배울 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 노력할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 이야기할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 웨일스어를 배우려고 노력할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 이야기하려고 노력할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 웨일스어로 무언가 말하려고 노력할 거야",
+     "ok": true,
+     "why": "Natural future-with-try; sits correctly under dw i'n mynd i here."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0005L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L01U04",
+     "keep": false,
+     "why": "good but only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0005L01U01",
+     "keep": false,
+     "why": "near-duplicate of BUILD o1 plus object; only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0005L01U06",
+     "keep": false,
+     "why": "only 2 needed"
+    },
+    {
+     "id": "cym_for_kor:S0005L01U02",
+     "keep": false,
+     "why": "너와/웨일스어로 order leaves efo chdi vs yn y Gymraeg placement open"
+    }
+   ]
+  },
+  "S0005L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이야기하는 연습을 할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 이야기하는 연습을 하려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 이야기하는 연습을 하려고 노력하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "이야기하는 연습을 하려고 노력하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 이야기하는 연습을 하고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 웨일스어를 이야기하는 연습을 할 거야",
+     "ok": true,
+     "why": "ymarfer siarad Cymraeg is natural; 웨일스어를 (not 웨일스어로) keeps it apart from yn y Gymraeg"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0005L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L02U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L02U03",
+     "keep": false,
+     "why": "learn how to practise speaking is semantically odd"
+    }
+   ]
+  },
+  "S0005L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0005L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03B02",
+     "keep": false,
+     "why": "only 3 needed"
+    },
+    {
+     "id": "cym_for_kor:S0005L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L03U01",
+     "keep": false,
+     "why": "only 5 needed"
+    },
+    {
+     "id": "cym_for_kor:S0005L03U04",
+     "keep": false,
+     "why": "only 5 needed"
+    }
+   ]
+  },
+  "S0005L04": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0005L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04B01",
+     "keep": false,
+     "why": "rhywun arall rŵan is a meaningless fragment"
+    },
+    {
+     "id": "cym_for_kor:S0005L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0005L04U03",
+     "keep": false,
+     "why": "only 5 needed"
+    }
+   ]
+  }
+ }
+}

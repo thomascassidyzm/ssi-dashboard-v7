@@ -1,0 +1,155 @@
+{
+ "seed": 94,
+ "at": "2026-11-24T18:22:02.963Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0094L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "왜냐하면 이것이 유일한 방법이니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "이것이 지금 유일한 방법이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 이것이 유일한 방법이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "지금 이 순간 이것이 유일한 방법이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 이것이 유일한 방법인지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "이것이 유일한 방법이야, 하지만 나는 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 하지만 이것이 유일한 방법이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 놀라워, 하지만 지금 이것이 유일한 방법이야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 멈추고 싶지 않아, 왜냐하면 이것이 유일한 방법이니까",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0094L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그게 작동할지",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "그게 제때 작동할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "왜냐하면 그게 충분히 빨리 작동할 테니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 그게 지금 작동할 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 확실하지 않아, 그게 제때 작동할 거라고",
+     "ok": true,
+     "why": "No os in the Welsh, so the Korean avoids the ~지 ending, which is os's gloss."
+    },
+    {
+     "n": 6,
+     "ko": "나는 그게 작동할지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "정말 고마워, 나는 그게 작동할 게 확실해",
+     "ok": true,
+     "why": "MOVED: 'dw i'n siŵr fydd o'n gweithio' is natural North Welsh and uses fydd o'n gweithio in the sense this course teaches."
+    },
+    {
+     "n": 8,
+     "ko": "나는 행복해, 왜냐하면 그게 지금 작동할 테니까",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0094L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0094L02U06",
+     "keep": false,
+     "why": "Sound, but only one USE row is needed; U01 is the cleaner, more natural one."
+    },
+    {
+     "id": "cym_for_kor:S0094L02U07",
+     "keep": false,
+     "why": "Sound, but only one USE row is needed."
+    },
+    {
+     "id": "cym_for_kor:S0094L02U03",
+     "keep": false,
+     "why": "Only one USE row is needed, and 제때 for 'mewn pryd' makes a stiff prompt."
+    },
+    {
+     "id": "cym_for_kor:S0094L02U04",
+     "keep": false,
+     "why": "Only one USE row is needed, and the Welsh has the main clause first while the Korean puts the condition first, which weakens the mirror."
+    },
+    {
+     "id": "cym_for_kor:S0094L02U05",
+     "keep": false,
+     "why": "The Korean reads as a statement, not a question, and 확신해 replaces the course's 확실한 gloss for siŵr."
+    },
+    {
+     "id": "cym_for_kor:S0094L02U02",
+     "keep": false,
+     "why": "'It will work for a while' is an odd thing to say, and only one USE row is needed."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:34:29.235Z"
+}

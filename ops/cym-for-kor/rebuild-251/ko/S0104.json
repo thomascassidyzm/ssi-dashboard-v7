@@ -1,0 +1,206 @@
+{
+ "seed": 104,
+ "at": "2026-11-24T18:23:52.759Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0104L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0104L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01B04",
+     "keep": false,
+     "why": "Already have 3 BUILD rows. It also has no gloss fixing siarad (이야기하다 or 말하다), so the Korean could lead to more than one answer."
+    },
+    {
+     "id": "cym_for_kor:S0104L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0104L01U04",
+     "keep": false,
+     "why": "Already have 5 USE rows. If used, it needs a question mark: 왜 우리는 이것을 다시 들을 필요가 있어?"
+    },
+    {
+     "id": "cym_for_kor:S0104L01U05",
+     "keep": false,
+     "why": "Already have 5 USE rows. It is weaker: be' with angen alone reads as 'what we need', which is close to the B02 pattern."
+    }
+   ]
+  },
+  "S0104L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "무엇이 바뀔 예정이었는지 알기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 무엇이 바뀔 예정이었는지 알 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "무엇이 바뀔 예정이었는지 기억하기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "일어날 예정이었던 것을 바꾸기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 바꾸려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "지금 모든 것을 바꾸기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 바꾸고 싶지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 바꿀 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "그것은 바뀌지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "모든 것을 바꾸기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 11,
+     "ko": "무언가를 바꾸기",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "그들은 바꾸고 싶어했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 13,
+     "ko": "나는 일들을 바꾸면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 14,
+     "ko": "너는 모든 것을 바꾸지 않는 게 좋겠어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0104L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 우리가 할 것에 대해 뭐라고 생각했어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "너는 우리가 할 것에 대해 뭐라고 생각했어?",
+     "ok": false,
+     "why": "Duplicates o1 with beth in place of be'. The same Korean would have two Welsh answers, which breaks ZUT."
+    },
+    {
+     "n": 3,
+     "ko": "우리가 할 것에 대해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "하지만 우리는 지금 친구야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리가 할 것에 대해 너 기분이 어때?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "정말 고마워, 하지만 우리는 친구야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 우리가 할 것에 대해 읽었어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 행복해, 왜냐하면 우리는 지금 친구니까",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "우리는 친구야, 하지만 나는 확실하지 않아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

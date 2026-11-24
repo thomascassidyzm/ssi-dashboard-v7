@@ -1,0 +1,110 @@
+{
+ "seed": 63,
+ "at": "2026-11-24T18:17:11.957Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0063L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너 확신해? 왜 안 돼?",
+     "ok": true,
+     "why": "Pam ddim? is a natural reply after wyt ti'n siŵr?, and the LEGO keeps its 'are you sure' sense here."
+    },
+    {
+     "n": 2,
+     "ko": "너 지금 확신해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 너에게 네가 확신하는지 물어봐도 돼?",
+     "ok": true,
+     "why": "Ga i ofyn i ti os wyt ti'n siŵr is idiomatic North Welsh and uses the LEGO in the same sense."
+    },
+    {
+     "n": 4,
+     "ko": "너 내가 피곤해도 상관없다고 확신해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "하지만 너는 네가 준비됐다고 확신해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 네가 모든 것을 했다고 확신해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "너는 네가 그걸 벌써 배웠다고 확신해?",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0063L01U01",
+     "keep": true
+    }
+   ]
+  },
+  "S0063L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 네가 상관없다고 확신해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "네가 실수하는 게 상관없다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 피곤해도 네가 상관없다고",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0063L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0063L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0063L02U05",
+     "keep": true,
+     "ko": "나는 네가 나와 웨일스어로 이야기하는 게 상관없다고 알고 있어"
+    },
+    {
+     "id": "cym_for_kor:S0063L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0063L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0063L02U03",
+     "keep": false,
+     "why": "'dim ots gen ti am wneud camgymeriadau' is unnatural: before a verbnoun the natural form is 'dim ots gen ti wneud', with no 'am'."
+    }
+   ]
+  }
+ }
+}

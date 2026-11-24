@@ -1,0 +1,79 @@
+{
+ "seed": 1,
+ "at": "2026-11-24T18:05:15.700Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0001L01": {
+   "originals": [],
+   "topups": []
+  },
+  "S0001L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이야기하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0001L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "웨일스어로 이야기하다",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0001L03U01",
+     "keep": true
+    }
+   ]
+  },
+  "S0001L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너와 이야기하다",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0001L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0001L04U02",
+     "keep": false,
+     "why": "Only one USE is needed, and U01 is the cleaner choice: this one is the seed sentence with rŵan dropped."
+    }
+   ]
+  },
+  "S0001L05": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 지금 웨일스어로 이야기하고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0001L05B01",
+     "keep": true
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:28:32.218Z"
+}

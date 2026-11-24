@@ -1,0 +1,152 @@
+{
+ "seed": 66,
+ "at": "2026-11-24T18:17:41.327Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0066L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0066L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0066L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0066L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0066L01B03",
+     "keep": false,
+     "why": "surplus: the three kept BUILD rows teach the ~는 frame better than this one"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U07",
+     "keep": true,
+     "ko": "나는 웨일스어를 배우는 것을 좋아해, 왜냐하면 어렵지 않으니까"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U06",
+     "keep": true,
+     "ko": "왜냐하면 너와 함께 웨일스어를 배우는 것은 어렵지 않으니까"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U01",
+     "keep": true,
+     "ko": "어떻게 대답해야 하는지 아는 것은 어렵지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U02",
+     "keep": true,
+     "ko": "하지만 그거를 이해하는 것은 어렵지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U05",
+     "keep": true,
+     "ko": "나에게는 단어를 기억하는 것이 어렵지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U03",
+     "keep": false,
+     "why": "surplus; also 시간을 가질 필요가 is a loose rendering of cymryd amser"
+    },
+    {
+     "id": "cym_for_kor:S0066L01U04",
+     "keep": false,
+     "why": "surplus; mixing mae'n with dydy hi in one line is a weaker model row"
+    }
+   ]
+  },
+  "S0066L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 답을 찾아내다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 지금 답을 찾아내려고 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 답을 찾아낼 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 다음 주에 답을 찾아낼 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 동시에 답을 찾아내고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 네가 할 수 있는 한 빨리 답을 찾아낼 필요가 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 충분히 빨리 답을 찾아내지 않을 거야",
+     "ok": true,
+     "why": "natural North Welsh; ffeindio'r ateb is used in its taught sense and yn ddigon cyflym is already known from the earlier chunk"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0066L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0066L02U01",
+     "keep": false,
+     "why": "surplus; only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0066L02U03",
+     "keep": false,
+     "why": "surplus; only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0066L02U04",
+     "keep": false,
+     "why": "surplus; only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0066L02U05",
+     "keep": false,
+     "why": "surplus; dydy hi ddim isio also sits close to this seed's dydy hi ddim yn anodd frame"
+    },
+    {
+     "id": "cym_for_kor:S0066L02U06",
+     "keep": false,
+     "why": "surplus; nearly duplicates original o5"
+    },
+    {
+     "id": "cym_for_kor:S0066L02U07",
+     "keep": false,
+     "why": "surplus; only 1 USE needed"
+    },
+    {
+     "id": "cym_for_kor:S0066L02U08",
+     "keep": false,
+     "why": "surplus; long, and yn y Gymraeg is less idiomatic than yn Gymraeg"
+    }
+   ]
+  }
+ }
+}

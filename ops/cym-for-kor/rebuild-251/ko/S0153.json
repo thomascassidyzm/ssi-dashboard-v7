@@ -1,0 +1,137 @@
+{
+ "seed": 153,
+ "at": "2026-11-24T18:32:31.836Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0153L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 나는 그걸 말하지 않았을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 그걸 그렇게 말하지 않았을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "물론 나는 그걸 웨일스어로 말하지 않았을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 오늘 내가 그걸 했을지 확실하지 않아",
+     "ok": false,
+     "why": "The Welsh is natural, but it uses the positive 'fyswn i wedi', not this LEGO 'fyswn i ddim wedi', so as a USE row it never practises the LEGO in this basket."
+    },
+    {
+     "n": 5,
+     "ko": "나는 그걸 웨일스어로 그렇게 말하지 않았을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 나는 그걸 이렇게 일찍 말하지 않았을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 어젯밤 펍에서 그걸 말하지 않았을 거야",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0153L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L01U05",
+     "keep": false,
+     "why": "Good row, but not kept: only one USE top-up was needed."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U01",
+     "keep": false,
+     "why": "Not kept: only one USE top-up was needed."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U03",
+     "keep": false,
+     "why": "Not kept: only one USE top-up was needed."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U04",
+     "keep": false,
+     "why": "Long clause that mixes two tenses; not needed."
+    },
+    {
+     "id": "cym_for_kor:S0153L01U06",
+     "keep": false,
+     "why": "Not kept: only one USE top-up was needed."
+    }
+   ]
+  },
+  "S0153L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0153L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03B02",
+     "keep": false,
+     "why": "Only differs from B01 by adding 'eto'; three BUILD rows already kept."
+    },
+    {
+     "id": "cym_for_kor:S0153L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0153L03U05",
+     "keep": false,
+     "why": "Five USE rows already kept."
+    },
+    {
+     "id": "cym_for_kor:S0153L03U07",
+     "keep": false,
+     "why": "'dw i'n gobeithio esbonio' with no subject on the second verb is a weaker phrase; five USE rows already kept."
+    }
+   ]
+  }
+ }
+}

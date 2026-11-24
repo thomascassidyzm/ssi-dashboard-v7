@@ -1,0 +1,112 @@
+{
+ "seed": 123,
+ "at": "2026-11-24T18:27:18.052Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0123L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0123L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02B02",
+     "keep": false,
+     "why": "Fine, but not needed: the 3 BUILD slots are filled by stronger full-clause rows"
+    },
+    {
+     "id": "cym_for_kor:S0123L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0123L02U05",
+     "keep": false,
+     "why": "Fine, but not needed: the 5 USE slots are already filled"
+    },
+    {
+     "id": "cym_for_kor:S0123L02U07",
+     "keep": false,
+     "why": "Not needed: the 5 USE slots are filled. If used later, the Korean should end with 생각하니까"
+    }
+   ]
+  },
+  "S0123L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "우리는 지금 그냥 좋은 아이디어가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 좋은 아이디어가 필요해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그건 좋은 아이디어였어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "좋은 아이디어, 정말 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 좋은 아이디어를 듣고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "네가 하고 싶으면, 그건 좋은 아이디어일 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "지금은 그게 좋은 아이디어처럼 느껴지지 않아",
+     "ok": true,
+     "why": "Moved row: natural North Welsh, and syniad da keeps the sense this course taught"
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 떠나기 전에 좋은 아이디어가 필요해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

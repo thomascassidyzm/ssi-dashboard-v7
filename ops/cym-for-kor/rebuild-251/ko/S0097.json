@@ -1,0 +1,147 @@
+{
+ "seed": 97,
+ "at": "2026-11-24T18:22:30.670Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0097L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "응, 나는 지금 멈출 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "응, 나는 지금 준비가 됐어, 고마워",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "응, 나는 지금 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "응, 나는 다시 노력할 준비가 됐어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "응, 나는 지금 이야기할 준비가 됐어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0097L01B02",
+     "keep": true,
+     "ko": "응, 나는 갈 준비가 됐어"
+    },
+    {
+     "id": "cym_for_kor:S0097L01B04",
+     "keep": true,
+     "ko": "응, 나는 집에 갈 준비가 됐어"
+    },
+    {
+     "id": "cym_for_kor:S0097L01B03",
+     "keep": true,
+     "ko": "하지만 응, 나는 준비가 됐어"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0097L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0097L01U03",
+     "keep": false,
+     "why": "Good phrase, but only one USE slot was needed and U01 is simpler and closer to the seed"
+    },
+    {
+     "id": "cym_for_kor:S0097L01U02",
+     "keep": false,
+     "why": "Only one USE slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0097L01U05",
+     "keep": false,
+     "why": "Only one USE slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0097L01U07",
+     "keep": false,
+     "why": "Only one USE slot was needed"
+    },
+    {
+     "id": "cym_for_kor:S0097L01U04",
+     "keep": false,
+     "why": "'achos mae'n amser mynd' after a yes-answer reads awkwardly, and the Korean '왜냐하면 갈 시간이야' is clunky"
+    },
+    {
+     "id": "cym_for_kor:S0097L01U06",
+     "keep": false,
+     "why": "Opening a yes-answer with 'ond yndw' / '하지만 응' sounds odd with no context"
+    }
+   ]
+  },
+  "S0097L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0097L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0097L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0097L03B04",
+     "keep": true,
+     "ko": "오늘 저녁에 네가 원하면 바로 너와 이야기하다"
+    },
+    {
+     "id": "cym_for_kor:S0097L03B02",
+     "keep": false,
+     "why": "'dw i'n barod cyn gynted â ti isio' is odd in meaning (present 'I am ready' tied to a future 'as soon as you want'), and 준비가 돼 could also be read as 'fydda i'n barod'"
+    },
+    {
+     "id": "cym_for_kor:S0097L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0097L03U01",
+     "keep": true,
+     "ko": "나는 네가 원하면 바로 집에 갈 준비가 될 거야"
+    },
+    {
+     "id": "cym_for_kor:S0097L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0097L03U05",
+     "keep": true,
+     "ko": "나는 오늘 저녁에 네가 원하면 바로 너를 도울 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0097L03U02",
+     "keep": true,
+     "ko": "너는 네가 원하면 바로 나와 이야기할 수 있어"
+    },
+    {
+     "id": "cym_for_kor:S0097L03U06",
+     "keep": false,
+     "why": "Doesn't make sense: 'are you going to help me as soon as you want?' asks the listener about their own wish, and the Korean '너 네가' is awkward"
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:34:51.906Z"
+}

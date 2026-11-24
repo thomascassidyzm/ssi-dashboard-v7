@@ -1,0 +1,68 @@
+{
+ "seed": 163,
+ "at": "2026-11-24T18:33:44.327Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0163L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 네가 그게 흥미로울 거라고 말했다고 생각했어",
+     "ok": false,
+     "why": "This Welsh does not contain the LEGO 'fod o’n ddiddorol'. It uses 'bod hi’n mynd i fod yn ddiddorol', where 'fod' is the infinitive 'to be' and not the 'that it is' complementiser this LEGO teaches, so it practises a different structure."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0163L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02B02",
+     "keep": false,
+     "why": "Valid, but B04 and B03 fill the 2 BUILD slots and practise the LEGO in the seed's own 'meddwl' frame."
+    },
+    {
+     "id": "cym_for_kor:S0163L02B01",
+     "keep": false,
+     "why": "Valid fragment, but not needed once 2 BUILD slots are filled, and it is the weakest because it adds nothing beyond 'iawn'."
+    },
+    {
+     "id": "cym_for_kor:S0163L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0163L02U05",
+     "keep": false,
+     "why": "Grammatical, but not needed. The Korean puts the 'because' clause first, which is less faithful to the Welsh order than the five kept."
+    },
+    {
+     "id": "cym_for_kor:S0163L02U07",
+     "keep": false,
+     "why": "Long and loosely joined with 'a'; the Korean reads awkwardly and the 5 USE slots are already filled."
+    }
+   ]
+  }
+ }
+}

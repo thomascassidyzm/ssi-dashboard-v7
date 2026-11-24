@@ -1,0 +1,228 @@
+{
+ "seed": 118,
+ "at": "2026-11-24T18:26:32.051Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0118L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 기분이 더 나아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "나는 오늘 기분이 괜찮고 나는 분명히 어젯밤보다 더 나아",
+     "ok": false,
+     "why": "The Welsh never contains the LEGO 'teimlo’n well'. It has 'teimlo’n iawn' and a separate 'yn well', so in this basket it does not practise the LEGO."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0118L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L02B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L02B02",
+     "keep": false,
+     "why": "The quota is already met by stronger full-clause builds. This one is a bare infinitive fragment."
+    },
+    {
+     "id": "cym_for_kor:S0118L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L02U02",
+     "keep": true,
+     "ko": "너는 지금 기분이 더 나아?"
+    },
+    {
+     "id": "cym_for_kor:S0118L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L02U04",
+     "keep": false,
+     "why": "The quota is met. It is grammatical, but the other three are cleaner."
+    },
+    {
+     "id": "cym_for_kor:S0118L02U05",
+     "keep": false,
+     "why": "The quota is met, and 'feel better because we're friends' reads oddly."
+    },
+    {
+     "id": "cym_for_kor:S0118L02U06",
+     "keep": false,
+     "why": "The quota is met."
+    },
+    {
+     "id": "cym_for_kor:S0118L02U07",
+     "keep": false,
+     "why": "The quota is met."
+    }
+   ]
+  },
+  "S0118L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0118L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03B03",
+     "keep": false,
+     "why": "The quota is met, and this one nearly duplicates B01."
+    },
+    {
+     "id": "cym_for_kor:S0118L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03U04",
+     "keep": true,
+     "ko": "나는 네가 내가 이야기하고 있었던 것보다 웨일스어로 더 잘 이야기한다고 생각해"
+    },
+    {
+     "id": "cym_for_kor:S0118L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0118L03U03",
+     "keep": false,
+     "why": "The meaning is odd: asking 'are you speaking better than I was speaking'. The quota is filled by stronger rows."
+    }
+   ]
+  },
+  "S0118L06": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "하지만 우리는 ~고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 무엇이 일어날 건지에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "하지만 그건 우리가 원했던 게 아니었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "정말 고마워, 우리는 너를 돕고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "우리는 바꾸고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "어젯밤 우리는 느긋하게 쉬고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "우리는 무엇이 일어날 건지에 대해 이야기하고 있었어",
+     "ok": false,
+     "why": "This is the same sentence as o2 with 'beth' where o2 has 'be’'. One Korean prompt would then have two Welsh answers in the same basket, which breaks ZUT."
+    },
+    {
+     "n": 8,
+     "ko": "우리는 어젯밤에 더 나은 길을 찾는 방법에 대해 이야기하고 있었어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0118L07": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 펍에서 느긋하게 쉬면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "오늘 저녁에 펍에서",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "여섯 시에 펍에서 만나다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 어젯밤 펍에서 누군가를 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "어젯밤 펍에서 우리는 많이 이야기했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 왜 펍에서 느긋하게 쉬고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "오늘 펍에 친구들이 너무 많아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 네가 펍에서 누군가와 알고 지내게 된다고 생각해",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "seed": 166,
+ "at": "2026-11-24T18:34:08.955Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0166L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 내 이름을 바꾸다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "웨일스어로 내 이름",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내 이름 그리고 네 이름",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내 이름을 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내 이름을 바꾸지 않을 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "너는 지금 내 이름이 필요해?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 웨일스어로 내 이름을 쓰고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내 이름을 바꾸고 싶었어, 하지만 나는 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "문제없어, 나는 지금 내 이름을 쓸 거야",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0166L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0166L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0166L03B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0166L03B03",
+     "keep": false,
+     "why": "The Welsh fragment 'ond ddim yn ...' has no subject, and the Korean '하지만 아주 특이하지 않은' is unnatural Korean that doesn't clearly point to that fragment."
+    },
+    {
+     "id": "cym_for_kor:S0166L03B04",
+     "keep": false,
+     "why": "The Welsh starts with no subject and no 'dydy'. A learner given '아주 특이하지 않지만 흥미로워' would reasonably say 'dydy o ddim yn anarferol iawn ond mae'n ddiddorol', so there are two possible answers."
+    },
+    {
+     "id": "cym_for_kor:S0166L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0166L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0166L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0166L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0166L03U07",
+     "keep": true,
+     "ko": "나는 상관없어, 왜냐하면 그건 아주 특이하지 않으니까"
+    },
+    {
+     "id": "cym_for_kor:S0166L03U03",
+     "keep": false,
+     "why": "Five stronger USE rows are already kept. 그게 (o) and 그건 (hynna) are too easy to mix up across neighbouring rows."
+    },
+    {
+     "id": "cym_for_kor:S0166L03U05",
+     "keep": false,
+     "why": "The Korean has no subject, so it could be 'dydy o' or 'dydy hynna'. Elsewhere this course uses 그건 for hynna, so the answer is not unique."
+    }
+   ]
+  }
+ }
+}

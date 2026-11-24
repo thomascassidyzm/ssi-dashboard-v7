@@ -1,0 +1,186 @@
+{
+ "seed": 38,
+ "at": "2026-11-24T18:12:49.271Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0038L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 한 달 동안 배워 왔어",
+     "ok": true,
+     "why": "Natural North Welsh. It uses the perfect-progressive in the sense this LEGO teaches."
+    },
+    {
+     "n": 2,
+     "ko": "나는 한 달 동안 이야기하는 것을 배워 왔어",
+     "ok": true,
+     "why": "dysgu siarad means 'learning to speak'. Natural and idiomatic."
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 이야기하는 것을 배워 왔어",
+     "ok": true,
+     "why": "Natural. Same sense as the LEGO."
+    },
+    {
+     "n": 4,
+     "ko": "나는 한 달 동안 내가 할 수 있는 만큼 열심히 배워 왔어",
+     "ok": true,
+     "why": "Natural word order, with the adverbial before am fis."
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 얼마나 빨리 배워 왔는지 알아냈으면 좋겠어",
+     "ok": true,
+     "why": "Natural embedded clause after pa mor gyflym. The Korean says liciwn i as ~했으면 좋겠어 so it does not clash with dw i isio (~하고 싶어)."
+    },
+    {
+     "n": 6,
+     "ko": "나는 내가 얼마나 빨리 배워 왔는지 확실하지 않아",
+     "ok": true,
+     "why": "Natural. Correct sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0038L01U04",
+     "keep": true,
+     "ko": "나는 웨일스어를 아주 잘 하지 않지만 내가 할 수 있는 만큼 열심히 배워 왔어",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0038L01U05",
+     "keep": true,
+     "ko": "나는 지금 웨일스어를 조금 할 수 있어 왜냐하면 나는 배워 왔으니까",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0038L01U02",
+     "keep": false,
+     "why": "Valid, but only 2 USE top-ups are needed and U04 and U05 use the LEGO in fuller contexts."
+    },
+    {
+     "id": "cym_for_kor:S0038L01U01",
+     "keep": false,
+     "why": "'오늘 오후에 ~배워 왔어' sounds awkward in Korean as a perfect-progressive."
+    },
+    {
+     "id": "cym_for_kor:S0038L01U03",
+     "keep": false,
+     "why": "Valid, but not needed. Fewer is fine."
+    },
+    {
+     "id": "cym_for_kor:S0038L01U06",
+     "keep": false,
+     "why": "Valid, but not needed."
+    },
+    {
+     "id": "cym_for_kor:S0038L01U07",
+     "keep": false,
+     "why": "The meaning is muddled: a question about tonight whose reason is the speaker's own learning reads oddly."
+    }
+   ]
+  },
+  "S0038L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 일주일 정도 배워 왔어",
+     "ok": true,
+     "why": "Natural North Welsh with the contracted ’di. It matches the seed."
+    },
+    {
+     "n": 2,
+     "ko": "나는 일주일 정도 연습할 거야",
+     "ok": true,
+     "why": "Natural. am tua wythnos is used in the duration sense this LEGO teaches."
+    },
+    {
+     "n": 3,
+     "ko": "너는 일주일 정도 배워 왔어",
+     "ok": true,
+     "why": "Natural ti ’di bod yn. Correct sense."
+    },
+    {
+     "n": 4,
+     "ko": "나는 일주일 정도 이야기하는 연습을 할 거야",
+     "ok": true,
+     "why": "Natural. Correct sense."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0038L02B01",
+     "keep": true,
+     "ko": "일주일 정도 배우다",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0038L02U01",
+     "keep": true,
+     "ko": "너는 일주일 정도 웨일스어를 배워 왔어?",
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0038L02U05",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0038L02U06",
+     "keep": true,
+     "why": ""
+    },
+    {
+     "id": "cym_for_kor:S0038L02B04",
+     "keep": false,
+     "why": "Valid, but only 1 BUILD is needed."
+    },
+    {
+     "id": "cym_for_kor:S0038L02B02",
+     "keep": false,
+     "why": "Not needed."
+    },
+    {
+     "id": "cym_for_kor:S0038L02B03",
+     "keep": false,
+     "why": "'나와 일주일 정도' is a fragment that sounds awkward in Korean."
+    },
+    {
+     "id": "cym_for_kor:S0038L02U02",
+     "keep": false,
+     "why": "Valid, but not needed."
+    },
+    {
+     "id": "cym_for_kor:S0038L02U03",
+     "keep": false,
+     "why": "Valid, but not needed. Its Korean also lacks the explicit 나는."
+    },
+    {
+     "id": "cym_for_kor:S0038L02U04",
+     "keep": false,
+     "why": "Valid, but not needed."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0038L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0038L02B02",
+     "keep": false,
+     "why": "Grammatical, but only 1 BUILD is needed and B04 is the stronger phrase."
+    },
+    {
+     "id": "cym_for_kor:S0038L02B03",
+     "keep": false,
+     "why": "'나와 일주일 정도' is an awkward fragment in Korean. It could mean 'with me' or 'and me', so the learner can't tell which Welsh to say."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:30:51.834Z"
+}

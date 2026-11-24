@@ -1,0 +1,198 @@
+{
+ "seed": 7,
+ "at": "2026-11-24T18:06:51.290Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0007L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 이야기하려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural Welsh. Trio is used in the sense this course teaches (try/strive)."
+    },
+    {
+     "n": 2,
+     "ko": "나는 웨일스어를 배우려고 노력하고 싶어",
+     "ok": true,
+     "why": "Natural Welsh. Fits this basket."
+    },
+    {
+     "n": 3,
+     "ko": "노력하는 방법",
+     "ok": true,
+     "why": "Natural fragment. The soft mutation after i (drio) is correct."
+    },
+    {
+     "n": 4,
+     "ko": "나는 노력하고 싶어",
+     "ok": true,
+     "why": "Natural Welsh. It is a direct sub-chunk of the seed."
+    },
+    {
+     "n": 5,
+     "ko": "나는 웨일스어를 이야기하려고 노력하고 싶어",
+     "ok": true,
+     "why": "Natural Welsh. 웨일스어를 marks siarad Cymraeg, as opposed to yn y Gymraeg (웨일스어로)."
+    },
+    {
+     "n": 6,
+     "ko": "나는 연습하려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural Welsh. Same sense of trio."
+    },
+    {
+     "n": 7,
+     "ko": "연습하려고 노력하다",
+     "ok": true,
+     "why": "Natural fragment."
+    },
+    {
+     "n": 8,
+     "ko": "나는 웨일스어를 이야기하는 방법을 배우려고 노력하고 있어",
+     "ok": true,
+     "why": "Natural Welsh. Fits as a USE phrase."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0007L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L02U05",
+     "keep": false,
+     "why": "Sound, but only 4 are needed and the 4 kept give more variety."
+    },
+    {
+     "id": "cym_for_kor:S0007L02U02",
+     "keep": false,
+     "why": "Sound, but too thin for a USE phrase. The 4 slots are already filled with stronger ones."
+    }
+   ]
+  },
+  "S0007L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 할 수 있는 만큼 열심히 노력하고 있어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 할 수 있는 만큼 열심히 연습하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "지금 내가 할 수 있는 만큼 열심히",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0007L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L03U02",
+     "keep": true,
+     "ko": "나는 내가 할 수 있는 만큼 열심히 웨일스어를 배우고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0007L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L03U06",
+     "keep": false,
+     "why": "Almost the seed sentence again (rŵan in place of heddiw). The 5 kept add more variety."
+    }
+   ]
+  },
+  "S0007L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "오늘 내가 할 수 있는 만큼 열심히",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0007L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04B01",
+     "keep": false,
+     "why": "Sound, but only 2 BUILD are needed and B03 and B04 are fuller."
+    },
+    {
+     "id": "cym_for_kor:S0007L04B02",
+     "keep": false,
+     "why": "A floating adverbial fragment with no verb. Weak as a BUILD chunk."
+    },
+    {
+     "id": "cym_for_kor:S0007L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0007L04U02",
+     "keep": false,
+     "why": "The word order siarad heddiw efo chdi yn y Gymraeg is clunky. Natural Welsh would say siarad Cymraeg efo chdi heddiw."
+    },
+    {
+     "id": "cym_for_kor:S0007L04U07",
+     "keep": false,
+     "why": "Sound, but only 5 are needed. The five kept give better variety."
+    }
+   ]
+  }
+ }
+}

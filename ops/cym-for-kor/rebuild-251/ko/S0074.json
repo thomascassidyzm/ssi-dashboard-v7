@@ -1,0 +1,137 @@
+{
+ "seed": 74,
+ "at": "2026-11-24T18:19:09.527Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0074L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "정말 고마워 나는 지금 실수하는 것에 대해 걱정하지 않아",
+     "ok": false,
+     "why": "Here 'am' belongs to 'poeni am' (worry about), not to 'diolch yn fawr am'. 'diolch yn fawr' is a standalone thank-you, so the LEGO 'thank you for' is not used in the sense taught."
+    },
+    {
+     "n": 2,
+     "ko": "정말 고마워 하지만 너는 그녀가 말하고 있던 것에 대해 뭐라고 생각해?",
+     "ok": false,
+     "why": "Here 'am' belongs to 'meddwl am' (think about). 'diolch yn fawr' stands alone, so the line does not use 'diolch yn fawr am' (thank you for) in the sense taught."
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0074L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L01B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L01B04",
+     "keep": false,
+     "why": "'edrych ar ôl' is left without an object after 'am', so the Welsh fragment is unnatural. The Korean has no object either."
+    },
+    {
+     "id": "cym_for_kor:S0074L01U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L01U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L01U02",
+     "keep": true,
+     "ko": "그게 어디에 있었는지 나에게 말해줘서 정말 고마워"
+    },
+    {
+     "id": "cym_for_kor:S0074L01U04",
+     "keep": false,
+     "why": "Fine, but three stronger rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0074L01U05",
+     "keep": false,
+     "why": "Fine, but three stronger rows are already kept."
+    },
+    {
+     "id": "cym_for_kor:S0074L01U06",
+     "keep": false,
+     "why": "'yn y Gymraeg' is less natural here than 'yn Gymraeg', and enough rows are already kept."
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0074L01U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L01U04",
+     "keep": true,
+     "ko": "나를 도와줘서 정말 고마워, 하지만 나는 더 배울 것이 있어"
+    },
+    {
+     "id": "cym_for_kor:S0074L01U06",
+     "keep": false,
+     "why": "Saying 'siarad efo fi yn y Gymraeg' is less natural than 'yn Gymraeg', and the two USE slots are already filled by stronger rows."
+    }
+   ]
+  },
+  "S0074L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0074L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L03B04",
+     "keep": true,
+     "ko": "너는 내가 이해하도록 도와줄 거야?"
+    },
+    {
+     "id": "cym_for_kor:S0074L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L03B02",
+     "keep": false,
+     "why": "Three BUILD rows are already kept. The Korean also uses 돕다 where the other rows use 도와주다."
+    },
+    {
+     "id": "cym_for_kor:S0074L03U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L03U03",
+     "keep": true,
+     "ko": "내가 네가 모든 것을 이해하도록 도와줄 수 있을지 나는 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0074L03U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0074L03U05",
+     "keep": false,
+     "why": "The Korean stacks two subjects (나는 네가 내가 …), which reads awkwardly, and five stronger rows are already kept."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:33:28.227Z"
+}

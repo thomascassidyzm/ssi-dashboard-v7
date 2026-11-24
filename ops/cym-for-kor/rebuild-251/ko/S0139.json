@@ -1,0 +1,253 @@
+{
+ "seed": 139,
+ "at": "2026-11-24T18:30:18.780Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0139L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "미안해, 내가 물어봐도 될까?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "미안해, 내가 ~ㄹ 필요가 있으면 너 신경 쓰여?",
+     "ok": true,
+     "why": "Open-ended BUILD fragment; 'oes ots gen ti os dw i angen …' is natural North Welsh"
+    },
+    {
+     "n": 3,
+     "ko": "미안해, 하지만 나는 이해하지 않았어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "미안해, 하지만 ~",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "미안해, 하지만 나는 기억할 수 없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 이런 거야",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "미안해, 하지만 나는 어렵지 않아",
+     "ok": true,
+     "why": "Using 'anodd' for a person (difficult) is acceptable Welsh"
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0139L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0139L01B02",
+     "keep": false,
+     "why": "Good, but only 1 BUILD was needed"
+    },
+    {
+     "id": "cym_for_kor:S0139L01B03",
+     "keep": false,
+     "why": "Only 1 BUILD was needed; the fragment is weaker than B04"
+    }
+   ]
+  },
+  "S0139L02": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 내가 훨씬 더 많이 연습할 필요가 있다고 느껴",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 무언가가 필요하다고",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 내가 ~ㄹ 필요가 있다고 확신해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 내가 나아질 필요가 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 내가 지금 갈 필요가 있다고 생각해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "내가 나아질 필요가 있다고 말하는 것을 멈추다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 내가 시간이 조금 더 필요하다고 확신해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0139L02U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0139L02U02",
+     "keep": false,
+     "why": "Only 1 USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0139L02U05",
+     "keep": false,
+     "why": "Only 1 USE was needed; nearly the same as original o7"
+    },
+    {
+     "id": "cym_for_kor:S0139L02U04",
+     "keep": false,
+     "why": "Only 1 USE was needed"
+    },
+    {
+     "id": "cym_for_kor:S0139L02U03",
+     "keep": false,
+     "why": "The Korean '놀라워' reads as 'it's surprising', not 'I'm surprised' (dw i'n synnu)"
+    },
+    {
+     "id": "cym_for_kor:S0139L02U06",
+     "keep": false,
+     "why": "'achos bo' fi angen' is acceptable, but the Korean 왜냐하면…해서 doubles the 'because'; only 1 USE was needed anyway"
+    }
+   ]
+  },
+  "S0139L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "그는 아무에게도 네가 말한 것을 듣게 하고 싶어하지 않았어",
+     "ok": false,
+     "why": "Here gadael means 'let/allow' (gadael i neb glywed), not the 'leave' (떠나다) sense this LEGO teaches"
+    },
+    {
+     "n": 2,
+     "ko": "하지만 그들은 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "그들은 동시에 떠났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "우리는 떠나야 했어, 하지만 상관없어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "그 당시에 우리는 떠나야 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "미안해, 하지만 우리는 어젯밤 떠나야 했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 그들이 왜 떠났는지 물었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "우리는 네가 떠나기 전에 이 단어를 바꿔야 해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  },
+  "S0139L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "이렇게 일찍 깨다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "우리는 이렇게 일찍 만나고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "오늘 이렇게 일찍",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 이렇게 일찍 깨는 것을 즐겨",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "물론 우리는 이렇게 일찍 만나고 싶어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "우리는 오늘 저녁 이렇게 일찍 멈춰야 해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "이렇게 일찍 만나는 게 특이해",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "내가 이렇게 일찍 멈출 필요가 있어서 미안해",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": []
+  }
+ }
+}

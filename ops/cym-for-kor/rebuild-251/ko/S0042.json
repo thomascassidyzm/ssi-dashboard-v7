@@ -1,0 +1,190 @@
+{
+ "seed": 42,
+ "at": "2026-11-24T18:13:22.851Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0042L01": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "내가 왜 ~라고 생각하고 있었는지",
+     "ok": true,
+     "why": "Natural as an embedded clause; same sense of o'n i'n (imperfect 'I was')"
+    },
+    {
+     "n": 2,
+     "ko": "내가 왜 ~라고 생각하고 있었는지 기억하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 웨일스어로 무언가를 말하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 기억하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 무언가를 말하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 이야기하는 것을 멈추려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "나는 가능한 한 자주 이야기할 거였어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 내가 말하고 싶은 것을 기억하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 9,
+     "ko": "나는 무언가를 말하는 방법을 기억하려고 노력하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 10,
+     "ko": "나는 오늘 저녁에 이야기하고 있었어",
+     "ok": true,
+     "why": "Natural as 'I was talking earlier this evening'"
+    },
+    {
+     "n": 11,
+     "ko": "나는 멈출 거였어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 12,
+     "ko": "나는 너와 이야기할 거였어",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  },
+  "S0042L03": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0042L03B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0042L03B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0042L03B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0042L03B02",
+     "keep": false,
+     "why": "Grammatical, but only three BUILD rows are needed and B01 already covers the same pattern"
+    },
+    {
+     "id": "cym_for_kor:S0042L03U01",
+     "keep": true,
+     "ko": "너는 어제보다 기분이 나아?"
+    },
+    {
+     "id": "cym_for_kor:S0042L03U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0042L03U03",
+     "keep": true,
+     "ko": "나는 어제보다 기분이 나아, 하지만 나는 피곤해"
+    },
+    {
+     "id": "cym_for_kor:S0042L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0042L03U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0042L03U02",
+     "keep": false,
+     "why": "Fine, but five USE rows are already kept"
+    },
+    {
+     "id": "cym_for_kor:S0042L03U06",
+     "keep": false,
+     "why": "Fine, but five USE rows are already kept"
+    }
+   ]
+  },
+  "S0042L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "너는 어젯밤에 나가고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "어젯밤보다 나은",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "나는 어젯밤에 그것에 대해 생각하고 있었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "나는 어젯밤에 그 사람들을 만났어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "나는 어젯밤에 나가고 싶었어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 네가 어젯밤에 이야기하고 싶었는지 확실하지 않아",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 7,
+     "ko": "어젯밤에 나는 무슨 일이 일어날지 추측하기 시작했어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 8,
+     "ko": "나는 피곤해, 하지만 그건 어젯밤보다 나아",
+     "ok": true,
+     "why": ""
+    }
+   ]
+  }
+ }
+}

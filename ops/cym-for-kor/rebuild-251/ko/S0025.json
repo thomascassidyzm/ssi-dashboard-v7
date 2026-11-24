@@ -1,0 +1,275 @@
+{
+ "seed": 25,
+ "at": "2026-11-24T18:10:03.083Z",
+ "job": "#251·AL",
+ "model": "opus",
+ "legos": {
+  "S0025L01": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0025L01B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01B03",
+     "keep": false,
+     "why": "Grammatical, but only 3 BUILD are needed; the others are stronger"
+    },
+    {
+     "id": "cym_for_kor:S0025L01U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01U08",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01U04",
+     "keep": true,
+     "ko": "네가 돌아올 건지 나는 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0025L01U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L01U01",
+     "keep": false,
+     "why": "Only 5 USE are needed; the five kept are better"
+    },
+    {
+     "id": "cym_for_kor:S0025L01U03",
+     "keep": false,
+     "why": "Only 5 USE are needed; the five kept are better"
+    },
+    {
+     "id": "cym_for_kor:S0025L01U05",
+     "keep": false,
+     "why": "Awkward contrast sentence; only 5 USE are needed"
+    }
+   ]
+  },
+  "S0025L02": {
+   "originals": [],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0025L02B01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02B03",
+     "keep": false,
+     "why": "Bare mutated 'fedru' with no trigger is not a natural stand-alone Welsh fragment"
+    },
+    {
+     "id": "cym_for_kor:S0025L02U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02U05",
+     "keep": true,
+     "ko": "네가 나를 도와주고 싶은지 나는 확실하지 않아"
+    },
+    {
+     "id": "cym_for_kor:S0025L02U06",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02U04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L02U01",
+     "keep": false,
+     "why": "Only 5 USE are needed; the five kept are better"
+    }
+   ]
+  },
+  "S0025L03": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "지금 내가 설명해야 하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 2,
+     "ko": "내가 이야기해야 하기 전에 연습하다",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 3,
+     "ko": "내가 멈춰야 하기 전에",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 4,
+     "ko": "내가 멈춰야 하기 전에 나는 답이 무엇인지 알아내고 싶어",
+     "ok": true,
+     "why": ""
+    }
+   ],
+   "topups": [
+    {
+     "id": "cym_for_kor:S0025L03U05",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L03U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L03U01",
+     "keep": true,
+     "ko": "오늘 저녁 내가 웨일스어를 해야 하기 전에 나는 너와 이야기하는 연습을 하고 싶어"
+    },
+    {
+     "id": "cym_for_kor:S0025L03U02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L03U04",
+     "keep": false,
+     "why": "Wrong mutation: after gorfod the verb is unmutated, so it should be 'orfod dod', not 'orfod ddod'"
+    },
+    {
+     "id": "cym_for_kor:S0025L03U06",
+     "keep": false,
+     "why": "Wrong mutation: it should be 'orfod dechrau', not 'orfod ddechrau'"
+    }
+   ]
+  },
+  "S0025L04": {
+   "originals": [
+    {
+     "n": 1,
+     "ko": "나는 웨일스어로 무언가를 말할 거야",
+     "ok": false,
+     "why": "Here mynd only appears inside the future marker 'dw i'n mynd i', not as the LEGO's taught sense 가다 (go)"
+    },
+    {
+     "n": 2,
+     "ko": "나는 무언가를 말하려고 노력할 거야",
+     "ok": false,
+     "why": "Here mynd is the future 'going to', not 가다 (go)"
+    },
+    {
+     "n": 3,
+     "ko": "나는 지금 웨일스어를 할 거야",
+     "ok": false,
+     "why": "Here mynd is the future 'going to', not 가다 (go)"
+    },
+    {
+     "n": 4,
+     "ko": "너는 왜 오늘 저녁 나가고 싶어?",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 5,
+     "ko": "네가 가기 전에 나는 무언가를 알아냈으면 좋겠어",
+     "ok": true,
+     "why": ""
+    },
+    {
+     "n": 6,
+     "ko": "나는 오늘 저녁 그의 이름을 빨리 알아낼 거야",
+     "ok": false,
+     "why": "Here mynd is the future 'going to', not 가다 (go)"
+    },
+    {
+     "n": 7,
+     "ko": "나는 왜 멈추고 싶지 않은지 설명할 거야",
+     "ok": false,
+     "why": "Here mynd is the future 'going to', not 가다 (go)"
+    },
+    {
+     "n": 8,
+     "ko": "나는 내 말이 무슨 뜻인지 설명할 거야. 왜 안 돼?",
+     "ok": false,
+     "why": "Here mynd is the future 'going to', not 가다 (go)"
+    }
+   ],
+   "refill": [
+    {
+     "id": "cym_for_kor:S0025L04B02",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L04B03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L04B04",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L04B01",
+     "keep": false,
+     "why": "Sound, but the three BUILD slots are full. B02–B04 are longer frames and teach more."
+    },
+    {
+     "id": "cym_for_kor:S0025L04U01",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L04U03",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L04U07",
+     "keep": true
+    },
+    {
+     "id": "cym_for_kor:S0025L04U06",
+     "keep": false,
+     "why": "Sound, but the three USE slots are full. The three kept are clearer."
+    },
+    {
+     "id": "cym_for_kor:S0025L04U02",
+     "keep": false,
+     "why": "The three USE slots are full. Also, 나와 is a weaker match for efo fi than 나랑 같이."
+    },
+    {
+     "id": "cym_for_kor:S0025L04U04",
+     "keep": false,
+     "why": "The three USE slots are full. Also, the Korean word order (왜냐하면 in the middle, then -거든) sounds stilted."
+    },
+    {
+     "id": "cym_for_kor:S0025L04U05",
+     "keep": false,
+     "why": "The three USE slots are full. Also, it is long and heavy for a top-up."
+    }
+   ]
+  }
+ },
+ "refill_at": "2026-11-24T18:29:44.403Z"
+}
