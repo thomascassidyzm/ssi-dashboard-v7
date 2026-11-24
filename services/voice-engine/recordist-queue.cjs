@@ -2793,6 +2793,24 @@ function invalidatePhrasePlan(db) {
 }
 
 /**
+ * A PHRASE TAKE LANDED: let the plan go stale within a minute, not at once (Catrin, 2026-11-24, cs #216).
+ * Marking it stale on EVERY take (invalidatePhrasePlan) rebuilt the whole plan — both Welsh sandboxes'
+ * phrases, LEGOs and every slot's clip voice, ~1,000 reads — behind almost every take: production logged
+ * ~3,500 booth statements a minute while she read phrases against ~300-1,000 with nobody recording, on a
+ * database already slow, and her Next batch queue build had to compete with it. A take changes no line's
+ * words and no batch's cut; whether a line is recorded is read fresh from the reader's own takes on every
+ * request (phraseLineRecorded's recordedKeys), and a phrase link is fill-empty only, so a plan up to a
+ * minute old links and counts exactly as a fresh one. Edits still use invalidatePhrasePlan (at once).
+ */
+const PHRASE_PLAN_AFTER_TAKE_MS = 60_000
+function phraseTakeLanded(db, now = Date.now()) {
+  const e = PHRASE_PLANS.get(db)
+  if (!e) return
+  e.at = Math.min(e.at, now - PHRASE_PLAN_TTL_MS + PHRASE_PLAN_AFTER_TAKE_MS)
+  e.memo = null
+}
+
+/**
  * A COMMITTED COURSE EDIT (edit / edit-batch) changed the words of some lines: forget the
  * phrase plan outright — not merely stale, so the next read waits for the new words rather than
  * being served the old ones once more — and every language's cached lines, which in turn drops
@@ -2954,7 +2972,7 @@ async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger =
     if (error) { logger.error(`[Recordist] phrase link failed for ${c.phraseId}: ${error.message}`); continue }
     for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code, ...(c.standIn ? { replaced: c.standIn } : {}) })
   }
-  invalidatePhrasePlan(db)
+  phraseTakeLanded(db)
   return out
 }
 
@@ -2986,7 +3004,7 @@ async function linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logg
       for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code, ...(c.standIn ? { replaced: c.standIn } : {}) })
     }
   }
-  if (out.linked.length) invalidatePhrasePlan(db)
+  if (out.linked.length) phraseTakeLanded(db)
   return out
 }
 
