@@ -1,0 +1,6 @@
+[Unit]
+Description=Nightly course scan backstop (cs #237·AL): tell Kai's room when the night unit fails or cannot start
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -lc 'M="[nightly course scan] UNIT FAILED at $(date -u +%%FT%%TZ): $(systemctl --user show cs-long-keep-nightly-course-scan -p Result -p ExecMainStatus --value | tr "\\n" " ") — log %h/.cs-long/nightly-course-scan/night-$(date -u +%%Y%%m%%d).log, journalctl --user -u cs-long-keep-nightly-course-scan"; if [ -f %h/.cs-long/nightly-course-scan/popty/ops/nightly-course-scan/dispatch.cjs ]; then node %h/.cs-long/nightly-course-scan/popty/ops/nightly-course-scan/dispatch.cjs notice "$M"; else node %h/command-surface/tools/cs-wake-send.cjs 78276ec4-3d92-4870-b145-de7d178ce00e "$(cat %h/.cs-long/nightly-course-scan/.tok)" "$M (durable checkout MISSING)"; fi'
