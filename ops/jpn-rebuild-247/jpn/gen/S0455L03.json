@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 455,
+  "lego_index": 3,
+  "known": "wasn't ok",
+  "target": "いけなかった"
+ },
+ "at": "2026-11-24T17:39:55.567Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 177,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "build",
+   "known_text": "what wasn't ok",
+   "target_text": "何がいけなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "build",
+   "known_text": "because it wasn't ok",
+   "target_text": "いけなかったから",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "build",
+   "known_text": "it truly wasn't ok",
+   "target_text": "本当にいけなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "build",
+   "known_text": "it might not have been ok",
+   "target_text": "いけなかったかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "i wonder what wasn't ok",
+   "target_text": "何がいけなかったか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "i heard that it wasn't ok",
+   "target_text": "いけなかったって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "i went home because it wasn't ok",
+   "target_text": "いけなかったから帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "i didn't think that it wasn't ok",
+   "target_text": "いけなかったとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if it wasn't ok",
+   "target_text": "いけなかったかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "what wasn't ok last night",
+   "target_text": "昨夜何がいけなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "wasn't ok",
+   "lego_target": "いけなかった",
+   "phrase_role": "use",
+   "known_text": "it truly might not have been ok",
+   "target_text": "本当にいけなかったかもしれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

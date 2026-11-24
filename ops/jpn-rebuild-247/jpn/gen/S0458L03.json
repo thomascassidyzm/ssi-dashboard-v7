@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 458,
+  "lego_index": 3,
+  "known": "easy",
+  "target": "簡単"
+ },
+ "at": "2026-11-24T17:44:14.611Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 174,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"easy\" initially, medially AND finally.",
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "build",
+   "known_text": "quite easy",
+   "target_text": "結構簡単",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "build",
+   "known_text": "I thought it was easy",
+   "target_text": "簡単だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "build",
+   "known_text": "it might be easy",
+   "target_text": "簡単かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "build",
+   "known_text": "this time it seemed easy",
+   "target_text": "今回簡単そうだった",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "back then I thought it was quite easy",
+   "target_text": "その時は結構簡単だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "I didn't think it was easy",
+   "target_text": "簡単とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "I heard that it might be easy",
+   "target_text": "簡単かもしれないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "I'm not sure if it's easy",
+   "target_text": "簡単かどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "I'll ask if it's quite easy",
+   "target_text": "結構簡単か聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "from now on it might be easy",
+   "target_text": "これから簡単かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 458,
+   "lego_index": 3,
+   "lego_known": "easy",
+   "lego_target": "簡単",
+   "phrase_role": "use",
+   "known_text": "last night it seemed easy",
+   "target_text": "昨夜簡単そうだった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

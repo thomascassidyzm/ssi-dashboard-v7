@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 456,
+  "lego_index": 3,
+  "known": "not high",
+  "target": "高くない"
+ },
+ "at": "2026-11-24T17:39:37.027Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 159,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "build",
+   "known_text": "it might not be high",
+   "target_text": "高くないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "build",
+   "known_text": "the efficiency isn't high",
+   "target_text": "効率高くない",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "build",
+   "known_text": "the reason it's not high",
+   "target_text": "高くない理由",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "build",
+   "known_text": "this time the possibility isn't high",
+   "target_text": "今回可能性高くない",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "use",
+   "known_text": "i heard that the possibility isn't high",
+   "target_text": "可能性高くないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "use",
+   "known_text": "i wonder if the efficiency isn't high this time",
+   "target_text": "今回効率高くないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "use",
+   "known_text": "i wanted to know the reason it's not high",
+   "target_text": "高くない理由知りたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "use",
+   "known_text": "so far the possibility isn't high, is it",
+   "target_text": "今のところ可能性高くないんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "use",
+   "known_text": "the efficiency might not be high",
+   "target_text": "効率高くないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 3,
+   "lego_known": "not high",
+   "lego_target": "高くない",
+   "phrase_role": "use",
+   "known_text": "i heard it's not high this time",
+   "target_text": "今回高くないって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

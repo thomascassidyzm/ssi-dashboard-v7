@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 460,
+  "lego_index": 3,
+  "known": "shop",
+  "target": "店"
+ },
+ "at": "2026-11-24T17:47:38.533Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 186,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"I didn't think that my son worked for the shop\" (unknown gloss \"worked\"); \"I wanted to collect donations for the shop\" (unknown gloss \"donations\")",
+  "USE \"I didn't think that my son worked for the shop\" → \"息子店で働いてるとは思わなかった\": popty:knownSide [{\"known\":\"I didn't think that my son worked for the shop\",\"target\":\"息子店で働いてるとは思わなかった\",\"problem\":\"unknown gloss \\\"worked\\\"\"}]",
+  "USE \"I wanted to collect donations for the shop\" → \"店のために寄付集めたかった\": popty:knownSide [{\"known\":\"I wanted to collect donations for the shop\",\"target\":\"店のために寄付集めたかった\",\"problem\":\"unknown gloss \\\"donations\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

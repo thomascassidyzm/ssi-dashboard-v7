@@ -1,0 +1,155 @@
+{
+ "lego": {
+  "seed_number": 463,
+  "lego_index": 2,
+  "known": "room number",
+  "target": "部屋番号"
+ },
+ "at": "2026-11-24T17:55:09.026Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 123,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.38 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "build",
+   "known_text": "can write the room number",
+   "target_text": "部屋番号書ける",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "build",
+   "known_text": "the same room number",
+   "target_text": "同じ部屋番号",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "build",
+   "known_text": "wanted to send the room number",
+   "target_text": "部屋番号送りたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "build",
+   "known_text": "have to find out the new room number",
+   "target_text": "新しい部屋番号調べないと",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "i heard the room number last night",
+   "target_text": "昨夜部屋番号聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "will you tell me the new room number",
+   "target_text": "新しい部屋番号教えてくれる",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "i didn't think that it was the same room number",
+   "target_text": "同じ部屋番号とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "i wonder if the room number is the same",
+   "target_text": "部屋番号同じか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "i don't remember the room number",
+   "target_text": "部屋番号覚えてない",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "it might be the room number",
+   "target_text": "部屋番号かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "i thought it was the room number",
+   "target_text": "部屋番号だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "i want you to ask the room number",
+   "target_text": "部屋番号聞いてほしい",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "room number",
+   "lego_target": "部屋番号",
+   "phrase_role": "use",
+   "known_text": "you didn't say the room number",
+   "target_text": "部屋番号言わなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

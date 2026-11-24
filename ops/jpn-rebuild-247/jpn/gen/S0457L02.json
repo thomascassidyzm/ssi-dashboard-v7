@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 457,
+  "lego_index": 2,
+  "known": "area",
+  "target": "分野"
+ },
+ "at": "2026-11-24T17:41:20.500Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 129,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"I like new areas\" (unknown gloss \"areas\")",
+  "USE \"I like new areas\" → \"新しい分野好き\": popty:knownSide [{\"known\":\"I like new areas\",\"target\":\"新しい分野好き\",\"problem\":\"unknown gloss \\\"areas\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}
