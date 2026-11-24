@@ -216,6 +216,10 @@ async function main() {
       if (how === 'render' && spent + t.text.length > maxChars) { console.log(`STOP: --max-chars ${maxChars} reached`); break; }
       const body = { courseCode: course, role: 'known', text: t.text, voiceId: t.voiceId, purpose: PURPOSE, approval: APPROVAL, dryRun: how !== 'render' };
       const r = await post('/api/audio/render', body, { 'x-cs-conv': process.env.CS_CONV_TOKEN || '' });
+      // cs #152: Popty down/restarting (no answer, or a bare gateway 502/503/504) is not a refusal: stop, leave the rest unasked.
+      if (require('../../services/shared/popty-try-later.cjs').isTryLater({ error: r.status === 0, status: r.status, body: r.body.code ? r.body : null })) {
+        console.log(`TRY LATER: Popty gave no answer (${r.status} ${r.body.error || ''}) — "${t.text.slice(0, 40)}" and the rest left unasked`); break;
+      }
       fs.appendFileSync(LOG, JSON.stringify({ text: t.text, voiceId: t.voiceId, status: r.status, body: r.body }) + '\n');
       if (r.status !== 200 || !r.body.ok) {
         console.log(`REFUSED ${r.status} ${r.body.code || ''} ${String(r.body.error || '').slice(0, 200)} — "${t.text.slice(0, 40)}"`);

@@ -26,8 +26,8 @@
  * render with no retries, and writes the clip back to course_audio and clip_index.
  * Exit 0 = clip exists (source: library|rendered), 2 = refused/failed (the reason
  * is printed; do NOT retry — a refusal is the answer), 1 = bad usage,
- * 3 = TRY LATER: the approval could not be checked because the Command Surface was down (APPROVAL_CHECK_UNAVAILABLE) for the
- * whole back-off; nothing was rendered, leave the slot unanswered and ask again next run.
+ * 3 = TRY LATER: no answer for the whole back-off — Popty down/restarting (POPTY_UNAVAILABLE) or the Command Surface down
+ * (APPROVAL_CHECK_UNAVAILABLE); nothing was rendered, leave the slot unanswered and ask again next run.
  *
  *   --approval kai:YYYY-MM-DD:<reason> (or tom:…): a re-record / EXISTS_IN_LANGUAGE grant. The route verifies it came from the
  *        seat it names (#116·AI): this tool sends CS_CONV_TOKEN (the surface session's own token, already in its env) as x-cs-conv.
@@ -48,30 +48,17 @@ const missing = ['courseCode', 'role', ...(body.role === 'welcome' ? [] : ['text
 if (missing.length) { console.error(`usage: render.cjs --course C --role R --text T --purpose P [--voice V] [--lang L] [--lego ID] [--dry-run] [--replace AUDIO_ID [--spoken TEXT]]\nmissing: ${missing.join(', ')}`); process.exit(1) }
 const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 ;(async () => {
-  // TRY-LATER IS NOT A REFUSAL (cs #43·AL): APPROVAL_CHECK_UNAVAILABLE means the Command Surface was down when the route
-  // tried to check --approval, and nothing was rendered. Back off and ask again (30s, 60s, 120s, then every 240s) for up to
-  // RENDER_APPROVAL_WAIT_SEC (default 900). Still down after that → exit 3 "try later": the caller must leave the slot
-  // UNANSWERED, never log it as refused. Every other answer, refusals included, is printed once and is final.
-  const waitBudget = Number(process.env.RENDER_APPROVAL_WAIT_SEC || 900) * 1000
-  const started = Date.now()
-  for (let attempt = 0; ; attempt++) {
-    const res = await fetch(`${base}/api/audio/render`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-agent-id': process.env.AGENT_ID || process.env.USER || 'unknown-agent', ...require('../../services/shared/approval-origin.cjs').approvalHeaders(body) },
-      body: JSON.stringify(body),
-    })
-    const out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-    if (out.code === 'APPROVAL_CHECK_UNAVAILABLE') {
-      const waitMs = Math.max(Number(out.retryAfterSec || 0) * 1000, Math.min(30000 * 2 ** attempt, 240000))
-      if (Date.now() - started + waitMs <= waitBudget) {
-        console.error(`approval check unavailable (surface down); asking again in ${Math.round(waitMs / 1000)}s`)
-        await new Promise(r => setTimeout(r, waitMs))
-        continue
-      }
-      console.log(JSON.stringify({ ...out, tryLater: true }, null, 2))
-      process.exit(3)
-    }
-    console.log(JSON.stringify(out, null, 2))
-    process.exit(res.ok && out.ok ? 0 : 2)
-  }
+  // TRY-LATER IS NOT A REFUSAL (cs #43·AL surface outage; cs #152 Popty itself down or restarting): no answer arrived — the
+  // fetch threw, a gateway 502/503/504 came back with no verdict, or APPROVAL_CHECK_UNAVAILABLE — so back off and ask again
+  // (30s, 60s, 120s, then every 240s) for up to RENDER_APPROVAL_WAIT_SEC (default 900). A re-ask is safe: the route is
+  // library-first, so a render that finished before the answer was lost comes back free as that same clip. Still no answer
+  // after the budget → print {code: POPTY_UNAVAILABLE|APPROVAL_CHECK_UNAVAILABLE, tryLater:true} and exit 3: the caller must
+  // leave the slot UNANSWERED, never log it as refused. Every real answer, refusals included, is printed once and is final.
+  const { postUntilAnswered } = require('../../services/shared/popty-try-later.cjs')
+  const r = await postUntilAnswered(`${base}/api/audio/render`, {
+    headers: { 'x-agent-id': process.env.AGENT_ID || process.env.USER || 'unknown-agent', ...require('../../services/shared/approval-origin.cjs').approvalHeaders(body) },
+    body, budgetMs: Number(process.env.RENDER_APPROVAL_WAIT_SEC || 900) * 1000,
+  })
+  console.log(JSON.stringify(r.body, null, 2))
+  process.exit(r.tryLater ? 3 : r.status >= 200 && r.status < 300 && r.body.ok ? 0 : 2)
 })().catch(e => { console.error(`Popty unreachable at ${base}: ${e.message}`); process.exit(2) })
