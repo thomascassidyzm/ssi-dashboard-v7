@@ -1,0 +1,726 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 481-510: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules, glosses in 반말; changes in \"changed\" (cs #828·AK for #813·AK)",
+ "changed": {
+  "481:dyna’r unig obaith real": "source obaith real + untiled dyna’r, unig; one unit like dyna’r ffordd orau (408)",
+  "482:ydy": "untiled; copula frame",
+  "483:dydy bywyd ddim yn": "source dydy bywyd ddim + untiled yn",
+  "483:dydy o ddim i fod yn": "source i fod + untiled dydy o ddim, yn; one frame",
+  "484:mae o i fod yn": "mae o is 그는 (16) and yn untiled; it-frame, positive sister of dydy o ddim i fod yn (483)",
+  "485:fyddai dim byd yn": "source fyddai dim byd + untiled yn",
+  "485:na dianc": "source dianc; na alone is 아니 (96), so one unit like na ddoe (114)",
+  "486:bod dy lygaid di’n": "bod, dy, lygaid untiled; frame like bod dy syniad di (125)",
+  "486:hardd": "untiled",
+  "487:mae o o dan": "mae o is 그는 (16); it-frame like mae o wrth ymyl (467)",
+  "487:y bont": "source bont + untiled y",
+  "488:mae o ar ochr arall": "mae o is 그는 (16); it-frame like mae o wrth ymyl (467)",
+  "490:wedyn": "untiled",
+  "490:fydda i byth yn": "source fydda i byth + untiled yn",
+  "490:ymddiried": "source ymddiried yn neb; Korean 아무도 needs the negation, so verb and 아무도 apart",
+  "492:ydy’r un mwya’ diddorol": "source un mwya’ diddorol + untiled ydy’r; Korean 가장 흥미롭다고 one unit",
+  "493:beth ddaw nesa’": "source beth + ddaw nesa’; 무엇 is taken by be’ (17), so one unit",
+  "494:beth sy’n digwydd": "source beth + sy’n digwydd; 무엇 is taken by be’ (17), so one unit",
+  "494:rhan gynta’r sioe": "untiled",
+  "497:gael ychydig o gwsg": "source gael + ychydig o + gwsg; Korean 잠을 좀 자다 one unit",
+  "498:o fewn y": "source o fewn + y fynedfa; 입구 is taught as fynedfa (390), so y joins o fewn (~ 안에 is taken by mewn, 253)",
+  "500:eistedd": "앉다 is taken by eistedd i lawr (303)",
+  "501:i chwarae efo’ch gilydd": "i untiled and chwarae taught as 경기하다 (sport); 함께 놀다 one unit",
+  "504:y gwellt": "source gwellt + untiled y",
+  "505:cael fy ngadael ar ôl": "source cael fy ngadael + ar ôl (after); Korean 뒤에 남겨지다 one unit",
+  "507:wnaethon ni": "untiled; shortest frame",
+  "508:does dim pwynt": "source does dim + pwynt; Korean ~하는 건 소용없어 one frame",
+  "509:clywes i": "source clywes i bo’ ti’n mynd i; taught clywes i (364) + shorter frame",
+  "510:i barcio’r car": "source barcio’r car + untiled i"
+ },
+ "seeds": {
+  "481": {
+   "legos": [
+    {
+     "cy": "dyna’r unig obaith real",
+     "ko": "그게 유일한 진짜 희망이야",
+     "type": "A"
+    },
+    {
+     "cy": "sydd ar ôl i ni",
+     "ko": "우리에게 남은",
+     "type": "A"
+    }
+   ]
+  },
+  "482": {
+   "legos": [
+    {
+     "cy": "yr unig obaith real",
+     "ko": "유일한 진짜 희망",
+     "type": "A"
+    },
+    {
+     "cy": "ydy",
+     "ko": "~은 ~이야",
+     "type": "A"
+    },
+    {
+     "cy": "nad ydyn nhw ddim",
+     "ko": "그들이 ~지 않다는 것",
+     "type": "A"
+    },
+    {
+     "cy": "o ddifri’",
+     "ko": "진지한",
+     "type": "A"
+    }
+   ]
+  },
+  "483": {
+   "legos": [
+    {
+     "cy": "dydy bywyd ddim yn",
+     "ko": "인생은 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "hawdd",
+     "ko": "쉬운",
+     "type": "A"
+    },
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "dydy o ddim i fod yn",
+     "ko": "그건 원래 ~인 게 아니야",
+     "type": "A"
+    },
+    {
+     "cy": "hawdd",
+     "ko": "쉬운",
+     "type": "A"
+    }
+   ]
+  },
+  "484": {
+   "legos": [
+    {
+     "cy": "mae o i fod yn",
+     "ko": "그건 원래 ~인 거야",
+     "type": "A"
+    },
+    {
+     "cy": "her",
+     "ko": "도전",
+     "type": "A"
+    }
+   ]
+  },
+  "485": {
+   "legos": [
+    {
+     "cy": "fyddai dim byd yn",
+     "ko": "아무것도 ~지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud fi’n hapusach",
+     "ko": "나를 더 행복하게 하다",
+     "type": "A"
+    },
+    {
+     "cy": "na dianc",
+     "ko": "도망치는 것보다",
+     "type": "A"
+    }
+   ]
+  },
+  "486": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "bod dy lygaid di’n",
+     "ko": "네 눈이 ~다고",
+     "type": "A"
+    },
+    {
+     "cy": "hardd",
+     "ko": "아름다운",
+     "type": "A"
+    }
+   ]
+  },
+  "487": {
+   "legos": [
+    {
+     "cy": "mae o o dan",
+     "ko": "그건 ~ 아래에 있어",
+     "type": "A"
+    },
+    {
+     "cy": "y bont",
+     "ko": "다리",
+     "type": "A"
+    }
+   ]
+  },
+  "488": {
+   "legos": [
+    {
+     "cy": "mae o ar ochr arall",
+     "ko": "그건 ~의 반대편에 있어",
+     "type": "A"
+    },
+    {
+     "cy": "y llinell felen yna",
+     "ko": "그 노란 선",
+     "type": "A"
+    }
+   ]
+  },
+  "489": {
+   "legos": [
+    {
+     "cy": "os na wnei di",
+     "ko": "네가 ~를 만들어 주지 않으면",
+     "type": "A"
+    },
+    {
+     "cy": "banad cryf o goffi",
+     "ko": "진한 커피 한 잔",
+     "type": "A"
+    },
+    {
+     "cy": "i mi",
+     "ko": "나에게",
+     "type": "A"
+    },
+    {
+     "cy": "rŵan hyn",
+     "ko": "지금 당장",
+     "type": "A"
+    }
+   ]
+  },
+  "490": {
+   "legos": [
+    {
+     "cy": "wedyn",
+     "ko": "그러면",
+     "type": "A"
+    },
+    {
+     "cy": "fydda i byth yn",
+     "ko": "나는 절대 ~지 않을 거야",
+     "type": "A"
+    },
+    {
+     "cy": "ymddiried",
+     "ko": "신뢰하다",
+     "type": "A"
+    },
+    {
+     "cy": "yn neb",
+     "ko": "아무도",
+     "type": "A"
+    },
+    {
+     "cy": "byth eto",
+     "ko": "다시는",
+     "type": "A"
+    }
+   ]
+  },
+  "491": {
+   "legos": [
+    {
+     "cy": "dw i’n caru’r ffordd",
+     "ko": "나는 ~ 방법을 사랑해",
+     "type": "A"
+    },
+    {
+     "cy": "ti’n",
+     "ko": "너는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "trio",
+     "ko": "노력하다",
+     "type": "A"
+    },
+    {
+     "cy": "helpu",
+     "ko": "돕다",
+     "type": "A"
+    }
+   ]
+  },
+  "492": {
+   "legos": [
+    {
+     "cy": "pa un",
+     "ko": "어느 것",
+     "type": "A"
+    },
+    {
+     "cy": "o’r llefydd yna",
+     "ko": "그 장소들 중에",
+     "type": "A"
+    },
+    {
+     "cy": "wyt ti’n meddwl",
+     "ko": "너 ~라고 생각해?",
+     "type": "A"
+    },
+    {
+     "cy": "ydy’r un mwya’ diddorol",
+     "ko": "가장 흥미롭다고",
+     "type": "A"
+    }
+   ]
+  },
+  "493": {
+   "legos": [
+    {
+     "cy": "beth ddaw nesa’",
+     "ko": "다음에 무엇이 올 거야?",
+     "type": "A"
+    }
+   ]
+  },
+  "494": {
+   "legos": [
+    {
+     "cy": "beth sy’n digwydd",
+     "ko": "무슨 일이 일어나?",
+     "type": "A"
+    },
+    {
+     "cy": "ar ôl",
+     "ko": "~ 후에",
+     "type": "A"
+    },
+    {
+     "cy": "rhan gynta’r sioe",
+     "ko": "쇼의 첫 부분",
+     "type": "A"
+    }
+   ]
+  },
+  "495": {
+   "legos": [
+    {
+     "cy": "pan",
+     "ko": "~할 때",
+     "type": "A"
+    },
+    {
+     "cy": "fydd hi’n cyfri’",
+     "ko": "그게 중요할 거야",
+     "type": "A"
+    }
+   ]
+  },
+  "496": {
+   "legos": [
+    {
+     "cy": "dw i ddim yn bwriadu",
+     "ko": "나는 ~ㄹ 생각이 없어",
+     "type": "A"
+    },
+    {
+     "cy": "colli",
+     "ko": "지다",
+     "type": "A"
+    },
+    {
+     "cy": "pan fydd hi wirioneddol",
+     "ko": "그게 정말 ~ㄹ 때",
+     "type": "A"
+    },
+    {
+     "cy": "yn cyfri’",
+     "ko": "중요하다",
+     "type": "A"
+    }
+   ]
+  },
+  "497": {
+   "legos": [
+    {
+     "cy": "mae hynna’n swnio",
+     "ko": "그건 ~ 들려",
+     "type": "A"
+    },
+    {
+     "cy": "fel bod angen i ti",
+     "ko": "네가 ~ㄹ 필요가 있는 것처럼",
+     "type": "A"
+    },
+    {
+     "cy": "gael ychydig o gwsg",
+     "ko": "잠을 좀 자다",
+     "type": "A"
+    }
+   ]
+  },
+  "498": {
+   "legos": [
+    {
+     "cy": "mae o’n sefyll",
+     "ko": "그는 서 있어",
+     "type": "A"
+    },
+    {
+     "cy": "ar ei ben ei hun",
+     "ko": "혼자",
+     "type": "A"
+    },
+    {
+     "cy": "draw acw",
+     "ko": "저기에 있는",
+     "type": "A"
+    },
+    {
+     "cy": "o fewn y",
+     "ko": "~ 안쪽에",
+     "type": "A"
+    },
+    {
+     "cy": "fynedfa",
+     "ko": "입구",
+     "type": "A"
+    }
+   ]
+  },
+  "499": {
+   "legos": [
+    {
+     "cy": "efallai",
+     "ko": "어쩌면",
+     "type": "A"
+    },
+    {
+     "cy": "dylen ni",
+     "ko": "우리는 ~하는 게 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "agor",
+     "ko": "열다",
+     "type": "A"
+    },
+    {
+     "cy": "y drws",
+     "ko": "문",
+     "type": "A"
+    },
+    {
+     "cy": "a chau’r",
+     "ko": "그리고 ~를 닫다",
+     "type": "A"
+    },
+    {
+     "cy": "ffenest",
+     "ko": "창문",
+     "type": "A"
+    }
+   ]
+  },
+  "500": {
+   "legos": [
+    {
+     "cy": "pam",
+     "ko": "왜",
+     "type": "A"
+    },
+    {
+     "cy": "dwyt ti ddim isio",
+     "ko": "너 ~고 싶지 않아?",
+     "type": "A"
+    },
+    {
+     "cy": "eistedd",
+     "ko": "앉아 있다",
+     "type": "A"
+    },
+    {
+     "cy": "rhwng",
+     "ko": "~ 사이에",
+     "type": "A"
+    },
+    {
+     "cy": "y ddwy hogan",
+     "ko": "두 여자아이",
+     "type": "A"
+    }
+   ]
+  },
+  "501": {
+   "legos": [
+    {
+     "cy": "taswn i ond yn medru",
+     "ko": "내가 ~ㄹ 수만 있다면",
+     "type": "A"
+    },
+    {
+     "cy": "ymddiried ynddoch chi",
+     "ko": "너희를 신뢰하다",
+     "type": "A"
+    },
+    {
+     "cy": "i chwarae efo’ch gilydd",
+     "ko": "함께 놀다",
+     "type": "A"
+    },
+    {
+     "cy": "heb ddadlau",
+     "ko": "다투지 않고",
+     "type": "A"
+    }
+   ]
+  },
+  "502": {
+   "legos": [
+    {
+     "cy": "bu bron iddi",
+     "ko": "그녀는 ~ㄹ 뻔했어",
+     "type": "A"
+    },
+    {
+     "cy": "fynd ar goll",
+     "ko": "길을 잃다",
+     "type": "A"
+    },
+    {
+     "cy": "achos iddi droi",
+     "ko": "그녀가 돌았기 때문에",
+     "type": "A"
+    },
+    {
+     "cy": "i’r chwith",
+     "ko": "왼쪽으로",
+     "type": "A"
+    },
+    {
+     "cy": "yn hytrach nag",
+     "ko": "~ 대신",
+     "type": "A"
+    },
+    {
+     "cy": "i’r dde",
+     "ko": "오른쪽으로",
+     "type": "A"
+    }
+   ]
+  },
+  "503": {
+   "legos": [
+    {
+     "cy": "dw i’n casáu codi twrw",
+     "ko": "나는 소란 피우는 걸 싫어해",
+     "type": "A"
+    },
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "un fi",
+     "ko": "내 거",
+     "type": "A"
+    },
+    {
+     "cy": "ydy hwnnw",
+     "ko": "그건 ~야",
+     "type": "A"
+    }
+   ]
+  },
+  "504": {
+   "legos": [
+    {
+     "cy": "dw i’n mynd i",
+     "ko": "나는 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "redeg",
+     "ko": "달리다",
+     "type": "A"
+    },
+    {
+     "cy": "ar draws",
+     "ko": "~를 가로질러",
+     "type": "A"
+    },
+    {
+     "cy": "y gwellt",
+     "ko": "잔디",
+     "type": "A"
+    }
+   ]
+  },
+  "505": {
+   "legos": [
+    {
+     "cy": "fel na fydda i’n",
+     "ko": "내가 ~지 않도록",
+     "type": "A"
+    },
+    {
+     "cy": "cael fy ngadael ar ôl",
+     "ko": "뒤에 남겨지다",
+     "type": "A"
+    }
+   ]
+  },
+  "506": {
+   "legos": [
+    {
+     "cy": "o’n i’n arfer",
+     "ko": "내가 예전에 ~하던",
+     "type": "A"
+    },
+    {
+     "cy": "byw",
+     "ko": "살다",
+     "type": "A"
+    },
+    {
+     "cy": "yn yr ardal hon",
+     "ko": "이 지역에",
+     "type": "A"
+    },
+    {
+     "cy": "flynyddoedd",
+     "ko": "몇 년",
+     "type": "A"
+    },
+    {
+     "cy": "yn ôl",
+     "ko": "~ 전에",
+     "type": "A"
+    },
+    {
+     "cy": "cyn i ni",
+     "ko": "우리가 ~하기 전에",
+     "type": "A"
+    },
+    {
+     "cy": "symud",
+     "ko": "이사하다",
+     "type": "A"
+    }
+   ]
+  },
+  "507": {
+   "legos": [
+    {
+     "cy": "wnaethon ni",
+     "ko": "우리는 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "symud",
+     "ko": "이사하다",
+     "type": "A"
+    },
+    {
+     "cy": "i’r ddinas",
+     "ko": "도시로",
+     "type": "A"
+    }
+   ]
+  },
+  "508": {
+   "legos": [
+    {
+     "cy": "does dim pwynt",
+     "ko": "~하는 건 소용없어",
+     "type": "A"
+    },
+    {
+     "cy": "poeni",
+     "ko": "걱정하다",
+     "type": "A"
+    },
+    {
+     "cy": "am",
+     "ko": "~에 대해",
+     "type": "A"
+    },
+    {
+     "cy": "sut",
+     "ko": "어떻게",
+     "type": "A"
+    },
+    {
+     "cy": "ti’n mynd i",
+     "ko": "네가 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "dalu",
+     "ko": "내다",
+     "type": "A"
+    }
+   ]
+  },
+  "509": {
+   "legos": [
+    {
+     "cy": "clywes i",
+     "ko": "나는 ~라고 들었어",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ ti’n mynd i",
+     "ko": "네가 ~ㄹ 거라고",
+     "type": "A"
+    },
+    {
+     "cy": "dalu",
+     "ko": "내다",
+     "type": "A"
+    },
+    {
+     "cy": "am",
+     "ko": "~에 대해",
+     "type": "A"
+    },
+    {
+     "cy": "wely newydd",
+     "ko": "새 침대",
+     "type": "A"
+    }
+   ]
+  },
+  "510": {
+   "legos": [
+    {
+     "cy": "mae hi wedi mynd i",
+     "ko": "그녀는 ~러 갔어",
+     "type": "A"
+    },
+    {
+     "cy": "chwilio am",
+     "ko": "~를 찾다",
+     "type": "A"
+    },
+    {
+     "cy": "rywle diogel",
+     "ko": "안전한 곳",
+     "type": "A"
+    },
+    {
+     "cy": "i barcio’r car",
+     "ko": "차를 주차할",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}

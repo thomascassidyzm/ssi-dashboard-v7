@@ -1,0 +1,657 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 241-270: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules (shortest new LEGO where the source leaned on its older seeds or Korean needs a different unit), glosses in 반말; changes listed in \"changed\" (cs #816·AK for #813·AK)",
+ "changed": {
+  "242:rhoi mwy o amser": "rhoi is taught as 넣다 (53) and o amser untiled; Korean 시간을 더 주다 one unit, sister of rhoi ychydig mwy o amser (54)",
+  "242:iddi hi": "iddi, hi untiled (older seeds)",
+  "243:ofyn am": "ofyn is taught as 묻다 and am as ~에 대해; ask for is 요청하다 in Korean, one unit",
+  "243:i fwyta": "i untiled; Korean 먹을 것으로 one unit, like i fynd 갈 (26)",
+  "244:dw i wedi": "weave-dropped seed; source-old splits; dw i wedi is the shortest perfect frame",
+  "245:dw i’n hapus efo": "efo joined to source dw i’n hapus; Korean ~에 만족해 is one frame, sister of dw i’n hapus iawn efo (76)",
+  "245:dw i wedi": "dw, i, wedi untiled; taught frame (244)",
+  "246:o’n i isio iddi hi": "iddi hi untiled; taught frame (204)",
+  "247:bod y llyfr ’na’n": "bod, y, ’na’n untiled; Korean 그 책이 ~라고 one unit, like bod hynna’n (123)",
+  "248:bod y ffilm yn": "bod, y, yn untiled; Korean 영화가 ~라고 one unit",
+  "249:dw i isio i ti": "source dw i isio + untiled i ti; Korean 네가 ~하기를 원해 one frame, sister of oedd o isio i ti (238)",
+  "249:cyn i ti fynd": "cyn untiled; Korean 네가 가기 전에 one unit, sister of cyn i ti adael (119)",
+  "250:fedri di ddeud": "ddeud untiled in source split; taught frame (61)",
+  "252:i ddechrau": "i untiled; Korean 시작할 one unit, like i fynd 갈 (26)",
+  "253:fod yn barod": "fod untiled; yn barod alone is 이미 (244), so be ready is one unit 준비가 되다",
+  "253:mewn": "mewn untiled (older seeds)",
+  "254:bod yn barod": "source split ers + bore leaned on older seeds; taught LEGOs dw i wedi (244), bod yn barod (253), bore ’ma (39)",
+  "255:i adael": "i untiled; Korean 떠날 one unit, like i fynd 갈 (26)",
+  "257:dw i’n licio’r": "licio’r untiled as a word; Korean 나는 ~를 좋아해, distinct from dw i’n licio 나는 ~는 것을 좋아해 (26)",
+  "257:peth glas ’na": "peth, ’na untiled; Korean 그 파란 것 one unit",
+  "258:be’ ydy’r": "ydy’r untiled; Korean ~는 뭐야? one frame",
+  "262:y dyn ’na": "y, dyn, ’na untiled (older seeds)",
+  "262:oeddat ti’n siarad": "oeddat untiled; Korean 네가 이야기하고 있던 one unit",
+  "262:efo fo": "fo untiled; sister of efo nhw 그들과 (134)",
+  "263:dw i ddim yn gwybod": "source dw i ddim + untiled yn gwybod; Korean 몰라 one word, sister of dan ni ddim yn gwybod (213)",
+  "266:oedd o’n": "oedd, o’n untiled (older seeds)",
+  "266:hen ffrind i": "hen, i untiled; Korean ~의 오랜 친구 one unit",
+  "267:wyt ti wedi": "wyt, ti, wedi untiled (older seeds); shortest perfect question frame",
+  "269:dwyt ti ddim isio": "dwyt, ti, ddim, isio untiled (older seeds); one frame like dw i ddim isio (19)",
+  "270:bo’ fi’n mynd i": "bo’, fi’n, mynd, i untiled; sister of bod hi’n mynd i 그녀가 ~ㄹ 거라고 (236)"
+ },
+ "seeds": {
+  "241": {
+   "legos": [
+    {
+     "cy": "dw i ddim isio",
+     "ko": "나는 ~고 싶지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "rhoi o iddo fo",
+     "ko": "그걸 그에게 주다",
+     "type": "A"
+    }
+   ]
+  },
+  "242": {
+   "legos": [
+    {
+     "cy": "dw i isio",
+     "ko": "나는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "rhoi mwy o amser",
+     "ko": "시간을 더 주다",
+     "type": "A"
+    },
+    {
+     "cy": "iddi hi",
+     "ko": "그녀에게",
+     "type": "A"
+    }
+   ]
+  },
+  "243": {
+   "legos": [
+    {
+     "cy": "dw i’n mynd i",
+     "ko": "나는 ~ㄹ 거야",
+     "type": "A"
+    },
+    {
+     "cy": "ofyn am",
+     "ko": "~를 요청하다",
+     "type": "A"
+    },
+    {
+     "cy": "yr un peth",
+     "ko": "같은 것",
+     "type": "A"
+    },
+    {
+     "cy": "i fwyta",
+     "ko": "먹을 것으로",
+     "type": "A"
+    }
+   ]
+  },
+  "244": {
+   "legos": [
+    {
+     "cy": "dw i wedi",
+     "ko": "나는 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "dysgu",
+     "ko": "배우다",
+     "type": "A"
+    },
+    {
+     "cy": "llawer",
+     "ko": "많이",
+     "type": "A"
+    },
+    {
+     "cy": "yn barod",
+     "ko": "이미",
+     "type": "A"
+    }
+   ]
+  },
+  "245": {
+   "legos": [
+    {
+     "cy": "dw i’n hapus efo",
+     "ko": "나는 ~에 만족해",
+     "type": "A"
+    },
+    {
+     "cy": "faint",
+     "ko": "얼마나 많이",
+     "type": "A"
+    },
+    {
+     "cy": "dw i wedi",
+     "ko": "나는 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    },
+    {
+     "cy": "mewn amser byr",
+     "ko": "짧은 시간에",
+     "type": "A"
+    }
+   ]
+  },
+  "246": {
+   "legos": [
+    {
+     "cy": "o’n i isio iddi hi",
+     "ko": "나는 그녀가 ~하기를 원했어",
+     "type": "A"
+    },
+    {
+     "cy": "helpu chdi",
+     "ko": "너를 돕다",
+     "type": "A"
+    },
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "oedd hi’n rhy brysur",
+     "ko": "그녀는 너무 바빴어",
+     "type": "A"
+    }
+   ]
+  },
+  "247": {
+   "legos": [
+    {
+     "cy": "o’n i’n meddwl",
+     "ko": "나는 ~라고 생각했어",
+     "type": "A"
+    },
+    {
+     "cy": "bod y llyfr ’na’n",
+     "ko": "그 책이 ~라고",
+     "type": "A"
+    },
+    {
+     "cy": "eitha’ da",
+     "ko": "꽤 좋다",
+     "type": "A"
+    }
+   ]
+  },
+  "248": {
+   "legos": [
+    {
+     "cy": "o’n i’n meddwl",
+     "ko": "나는 ~라고 생각했어",
+     "type": "A"
+    },
+    {
+     "cy": "bod y ffilm yn",
+     "ko": "영화가 ~라고",
+     "type": "A"
+    },
+    {
+     "cy": "sothach llwyr",
+     "ko": "완전 쓰레기",
+     "type": "A"
+    },
+    {
+     "cy": "a",
+     "ko": "그리고",
+     "type": "A"
+    },
+    {
+     "cy": "dw i isio",
+     "ko": "나는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "fy mhres yn ôl",
+     "ko": "내 돈을 돌려받다",
+     "type": "A"
+    }
+   ]
+  },
+  "249": {
+   "legos": [
+    {
+     "cy": "dw i isio i ti",
+     "ko": "나는 네가 ~하기를 원해",
+     "type": "A"
+    },
+    {
+     "cy": "helpu fi",
+     "ko": "나를 도와주다",
+     "type": "A"
+    },
+    {
+     "cy": "cyn i ti fynd",
+     "ko": "네가 가기 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "250": {
+   "legos": [
+    {
+     "cy": "fedri di ddeud",
+     "ko": "너 ~ 말해 줄 수 있어?",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth arall",
+     "ko": "다른 것",
+     "type": "A"
+    },
+    {
+     "cy": "wrthyn nhw",
+     "ko": "그들에게",
+     "type": "A"
+    },
+    {
+     "cy": "cyn i mi ateb",
+     "ko": "내가 대답하기 전에",
+     "type": "A"
+    }
+   ]
+  },
+  "251": {
+   "legos": [
+    {
+     "cy": "dw i ddim isio",
+     "ko": "나는 ~고 싶지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "ffeindio allan",
+     "ko": "알아내다",
+     "type": "A"
+    },
+    {
+     "cy": "tan",
+     "ko": "~까지",
+     "type": "A"
+    },
+    {
+     "cy": "ar ôl i ni orffen",
+     "ko": "우리가 끝낸 후에",
+     "type": "A"
+    }
+   ]
+  },
+  "252": {
+   "legos": [
+    {
+     "cy": "pryd",
+     "ko": "언제",
+     "type": "A"
+    },
+    {
+     "cy": "fyddi di’n barod",
+     "ko": "너 준비가 될 거야?",
+     "type": "A"
+    },
+    {
+     "cy": "i ddechrau",
+     "ko": "시작할",
+     "type": "A"
+    }
+   ]
+  },
+  "253": {
+   "legos": [
+    {
+     "cy": "dylwn i",
+     "ko": "나는 ~하는 게 좋겠어",
+     "type": "A"
+    },
+    {
+     "cy": "fod yn barod",
+     "ko": "준비가 되다",
+     "type": "A"
+    },
+    {
+     "cy": "mewn",
+     "ko": "~ 안에",
+     "type": "A"
+    },
+    {
+     "cy": "ychydig funudau",
+     "ko": "몇 분",
+     "type": "A"
+    }
+   ]
+  },
+  "254": {
+   "legos": [
+    {
+     "cy": "dw i wedi",
+     "ko": "나는 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "bod yn barod",
+     "ko": "준비가 되다",
+     "type": "A"
+    },
+    {
+     "cy": "ers",
+     "ko": "~한 후로",
+     "type": "A"
+    },
+    {
+     "cy": "bore ’ma",
+     "ko": "오늘 아침",
+     "type": "A"
+    }
+   ]
+  },
+  "255": {
+   "legos": [
+    {
+     "cy": "pryd",
+     "ko": "언제",
+     "type": "A"
+    },
+    {
+     "cy": "wyt ti’n meddwl",
+     "ko": "너 ~라고 생각해?",
+     "type": "A"
+    },
+    {
+     "cy": "fyddi di’n barod",
+     "ko": "너 준비가 될 거야?",
+     "type": "A"
+    },
+    {
+     "cy": "i adael",
+     "ko": "떠날",
+     "type": "A"
+    }
+   ]
+  },
+  "256": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "bydda i’n barod",
+     "ko": "나는 준비가 될 거야",
+     "type": "A"
+    },
+    {
+     "cy": "mewn llai nag awr",
+     "ko": "한 시간도 안 돼서",
+     "type": "A"
+    }
+   ]
+  },
+  "257": {
+   "legos": [
+    {
+     "cy": "dw i’n licio’r",
+     "ko": "나는 ~를 좋아해",
+     "type": "A"
+    },
+    {
+     "cy": "peth glas ’na",
+     "ko": "그 파란 것",
+     "type": "A"
+    }
+   ]
+  },
+  "258": {
+   "legos": [
+    {
+     "cy": "be’ ydy’r",
+     "ko": "~는 뭐야?",
+     "type": "A"
+    },
+    {
+     "cy": "peth glas ’na",
+     "ko": "그 파란 것",
+     "type": "A"
+    },
+    {
+     "cy": "draw acw",
+     "ko": "저기에 있는",
+     "type": "A"
+    }
+   ]
+  },
+  "259": {
+   "legos": [
+    {
+     "cy": "syniad",
+     "ko": "아이디어",
+     "type": "A"
+    }
+   ]
+  },
+  "260": {
+   "legos": [
+    {
+     "cy": "sgen i ddim",
+     "ko": "나는 ~가 없어",
+     "type": "A"
+    },
+    {
+     "cy": "syniad",
+     "ko": "아이디어",
+     "type": "A"
+    },
+    {
+     "cy": "o gwbl",
+     "ko": "전혀",
+     "type": "A"
+    }
+   ]
+  },
+  "261": {
+   "legos": [
+    {
+     "cy": "dw i’n meddwl",
+     "ko": "나는 ~라고 생각해",
+     "type": "A"
+    },
+    {
+     "cy": "efallai fod o’n",
+     "ko": "그게 어쩌면 ~일지도 모른다고",
+     "type": "A"
+    },
+    {
+     "cy": "rhywbeth pwysig",
+     "ko": "중요한 것",
+     "type": "A"
+    }
+   ]
+  },
+  "262": {
+   "legos": [
+    {
+     "cy": "pwy oedd",
+     "ko": "~는 누구였어?",
+     "type": "A"
+    },
+    {
+     "cy": "y dyn ’na",
+     "ko": "그 남자",
+     "type": "A"
+    },
+    {
+     "cy": "oeddat ti’n siarad",
+     "ko": "네가 이야기하고 있던",
+     "type": "A"
+    },
+    {
+     "cy": "efo fo",
+     "ko": "그와",
+     "type": "A"
+    },
+    {
+     "cy": "ddoe",
+     "ko": "어제",
+     "type": "A"
+    }
+   ]
+  },
+  "263": {
+   "legos": [
+    {
+     "cy": "dw i ddim yn gwybod",
+     "ko": "나는 몰라",
+     "type": "A"
+    },
+    {
+     "cy": "pwy ti’n ei olygu",
+     "ko": "네가 누구를 뜻하는지",
+     "type": "A"
+    }
+   ]
+  },
+  "264": {
+   "legos": [
+    {
+     "cy": "hen ddyn",
+     "ko": "나이 든 남자",
+     "type": "A"
+    }
+   ]
+  },
+  "265": {
+   "legos": [
+    {
+     "cy": "ffrind",
+     "ko": "친구",
+     "type": "A"
+    }
+   ]
+  },
+  "266": {
+   "legos": [
+    {
+     "cy": "oedd o’n",
+     "ko": "그는 ~였어",
+     "type": "A"
+    },
+    {
+     "cy": "hen ffrind i",
+     "ko": "~의 오랜 친구",
+     "type": "A"
+    },
+    {
+     "cy": "fy nhad",
+     "ko": "내 아버지",
+     "type": "A"
+    }
+   ]
+  },
+  "267": {
+   "legos": [
+    {
+     "cy": "wyt ti wedi",
+     "ko": "너 ~했어?",
+     "type": "A"
+    },
+    {
+     "cy": "clywed gan",
+     "ko": "~에게서 소식을 듣다",
+     "type": "A"
+    },
+    {
+     "cy": "dy ffrind",
+     "ko": "네 친구",
+     "type": "A"
+    }
+   ]
+  },
+  "268": {
+   "legos": [
+    {
+     "cy": "do",
+     "ko": "그래",
+     "type": "A"
+    },
+    {
+     "cy": "wnaeth hi yrru",
+     "ko": "그녀는 ~를 보냈어",
+     "type": "A"
+    },
+    {
+     "cy": "dau e-bost",
+     "ko": "이메일 두 통",
+     "type": "A"
+    },
+    {
+     "cy": "i mi",
+     "ko": "나에게",
+     "type": "A"
+    },
+    {
+     "cy": "wythnos diwetha’",
+     "ko": "지난주",
+     "type": "A"
+    }
+   ]
+  },
+  "269": {
+   "legos": [
+    {
+     "cy": "pam",
+     "ko": "왜",
+     "type": "A"
+    },
+    {
+     "cy": "dwyt ti ddim isio",
+     "ko": "너 ~고 싶지 않아?",
+     "type": "A"
+    },
+    {
+     "cy": "aros am",
+     "ko": "~를 기다리다",
+     "type": "A"
+    },
+    {
+     "cy": "dy dad",
+     "ko": "네 아버지",
+     "type": "A"
+    }
+   ]
+  },
+  "270": {
+   "legos": [
+    {
+     "cy": "achos",
+     "ko": "왜냐하면",
+     "type": "A"
+    },
+    {
+     "cy": "dw i’n poeni",
+     "ko": "나는 걱정돼",
+     "type": "A"
+    },
+    {
+     "cy": "bo’ fi’n mynd i",
+     "ko": "내가 ~ㄹ 거라고",
+     "type": "A"
+    },
+    {
+     "cy": "fod yn hwyr",
+     "ko": "늦다",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}

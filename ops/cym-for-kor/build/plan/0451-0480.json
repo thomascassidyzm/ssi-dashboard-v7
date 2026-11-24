@@ -1,0 +1,678 @@
+{
+ "about": "cym_for_kor LEGO plan, seeds 451-480: source cym_nv2_for_eng splits kept where they work, calibration d/2259576a rules, glosses in 반말; changes in \"changed\" (cs #828·AK for #813·AK)",
+ "changed": {
+  "454:daeth ein ffrindiau ni": "source daeth ein ffrindiau ni draw is 10 syllables over the cap; split off draw",
+  "454:draw": "split from the source LEGO for the syllable cap",
+  "454:tua chwech o’r gloch": "tua, chwech, o’r, gloch untiled; Korean 여섯 시쯤 one unit, like am chwech o’r gloch (18)",
+  "455:oedd y plant wedi blino": "y, plant, wedi untiled and oedd alone is 응 그랬어 (279); one clause",
+  "456:efallai bod o": "efallai, bod, o untiled (older seeds); shortest frame",
+  "456:dydy o ddim yn": "o, ddim, yn untiled; one frame like doedd o ddim yn (105)",
+  "457:rhan o’r broblem ydy": "source rhan o’r + broblem + untiled ydy; Korean 문제의 일부는 ~야 one frame",
+  "457:nifer yr": "nifer, yr untiled; shortest frame, like nifer y myfyrwyr (434)",
+  "458:oedd o i gyd yn": "o, i, gyd, yn untiled and oedd alone is 응 그랬어 (279); one frame",
+  "459:doedd o ddim": "untiled; shortest frame, distinct from doedd o ddim yn (105)",
+  "464:ddudes i": "source ddudes i rif fy ystafell wrthi is over 8 syllables; taught ddudes i (296) + rhif fy ystafell (463) + wrthi + wrthi (그녀에게 is taken by iddi hi, 242, so 그녀한테)",
+  "464:wnaeth hi anghofio fo": "source wnaeth hi anghofio + untiled fo; one unit",
+  "466:daflu fo": "source daflu + untiled fo; Korean 그걸 던지다 one unit, like ddeud o (208)",
+  "466:dros y wal": "source dros + wal with y untiled; one unit",
+  "472:nad ydan ni ddim yn": "source nad ydan ni ddim + untiled yn",
+  "472:y ffeithiau": "source ffeithiau + untiled y",
+  "473:dw i ddim isio fo": "fo untiled; one unit, 나는 ~고 싶지 않아 (dw i ddim isio) needs a verb",
+  "474:fel cynnig": "fel untiled and cynnig is taught as the verb 제안하다 (327); noun unit",
+  "475:aros": "untiled (older seeds)",
+  "479:dyna’r lleia’": "source lleia’ + untiled dyna’r; one unit like dyna’r ffordd orau (408)",
+  "480:beth bynnag": "source beth bynnag mae o’n ddeud is 9 syllables over the cap; split"
+ },
+ "seeds": {
+  "451": {
+   "legos": [
+    {
+     "cy": "ddudon nhw",
+     "ko": "그들은 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "oeddan nhw isio",
+     "ko": "그들은 ~고 싶어했어",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    }
+   ]
+  },
+  "452": {
+   "legos": [
+    {
+     "cy": "wnaethon nhw ddim deud",
+     "ko": "그들은 ~라고 말하지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "be’",
+     "ko": "무엇",
+     "type": "A"
+    },
+    {
+     "cy": "oeddan nhw isio",
+     "ko": "그들은 ~고 싶어했어",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    }
+   ]
+  },
+  "453": {
+   "legos": [
+    {
+     "cy": "ddudon nhw",
+     "ko": "그들은 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "pwy welon nhw",
+     "ko": "그들이 누구를 봤는지",
+     "type": "A"
+    },
+    {
+     "cy": "neithiwr",
+     "ko": "어젯밤",
+     "type": "A"
+    }
+   ]
+  },
+  "454": {
+   "legos": [
+    {
+     "cy": "daeth ein ffrindiau ni",
+     "ko": "우리 친구들이 왔어",
+     "type": "A"
+    },
+    {
+     "cy": "draw",
+     "ko": "놀러",
+     "type": "A"
+    },
+    {
+     "cy": "tua chwech o’r gloch",
+     "ko": "여섯 시쯤",
+     "type": "A"
+    }
+   ]
+  },
+  "455": {
+   "legos": [
+    {
+     "cy": "oedd rhaid i ni adael",
+     "ko": "우리는 떠나야 했어",
+     "type": "A"
+    },
+    {
+     "cy": "achos",
+     "ko": "왜냐하면",
+     "type": "A"
+    },
+    {
+     "cy": "oedd y plant wedi blino",
+     "ko": "아이들이 피곤했어",
+     "type": "A"
+    }
+   ]
+  },
+  "456": {
+   "legos": [
+    {
+     "cy": "efallai bod o",
+     "ko": "그가 ~ㄹ지도 몰라",
+     "type": "A"
+    },
+    {
+     "cy": "yno",
+     "ko": "거기에",
+     "type": "A"
+    },
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "dydy o ddim yn",
+     "ko": "그건 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "debygol iawn",
+     "ko": "가능성이 아주 높은",
+     "type": "A"
+    }
+   ]
+  },
+  "457": {
+   "legos": [
+    {
+     "cy": "rhan o’r broblem ydy",
+     "ko": "문제의 일부는 ~야",
+     "type": "A"
+    },
+    {
+     "cy": "nifer yr",
+     "ko": "~의 수",
+     "type": "A"
+    },
+    {
+     "cy": "ardaloedd",
+     "ko": "지역들",
+     "type": "A"
+    },
+    {
+     "cy": "gwahanol",
+     "ko": "다양한",
+     "type": "A"
+    }
+   ]
+  },
+  "458": {
+   "legos": [
+    {
+     "cy": "oedd o i gyd yn",
+     "ko": "그건 모두 ~했어",
+     "type": "A"
+    },
+    {
+     "cy": "llawer haws",
+     "ko": "훨씬 더 쉬운",
+     "type": "A"
+    },
+    {
+     "cy": "yn y gorffennol",
+     "ko": "과거에",
+     "type": "A"
+    }
+   ]
+  },
+  "459": {
+   "legos": [
+    {
+     "cy": "doedd o ddim",
+     "ko": "그건 ~에 있지 않았어",
+     "type": "A"
+    },
+    {
+     "cy": "o flaen yr arwydd glas",
+     "ko": "파란 표지판 앞",
+     "type": "A"
+    }
+   ]
+  },
+  "460": {
+   "legos": [
+    {
+     "cy": "dw i isio",
+     "ko": "나는 ~고 싶어",
+     "type": "A"
+    },
+    {
+     "cy": "ffeindio",
+     "ko": "찾아내다",
+     "type": "A"
+    },
+    {
+     "cy": "siop",
+     "ko": "가게",
+     "type": "A"
+    },
+    {
+     "cy": "yn agos at y",
+     "ko": "~ 가까이에",
+     "type": "A"
+    },
+    {
+     "cy": "gwesty",
+     "ko": "호텔",
+     "type": "A"
+    }
+   ]
+  },
+  "461": {
+   "legos": [
+    {
+     "cy": "siop",
+     "ko": "가게",
+     "type": "A"
+    },
+    {
+     "cy": "lle",
+     "ko": "어디",
+     "type": "A"
+    },
+    {
+     "cy": "medra i",
+     "ko": "나는 ~ㄹ 수 있어",
+     "type": "A"
+    },
+    {
+     "cy": "brynu",
+     "ko": "사다",
+     "type": "A"
+    },
+    {
+     "cy": "ychydig o gardiau post",
+     "ko": "엽서 몇 장",
+     "type": "A"
+    }
+   ]
+  },
+  "462": {
+   "legos": [
+    {
+     "cy": "wnaeth fy nhaid ymladd",
+     "ko": "내 할아버지는 싸웠어",
+     "type": "A"
+    },
+    {
+     "cy": "yn yr Eidal",
+     "ko": "이탈리아에서",
+     "type": "A"
+    },
+    {
+     "cy": "yn ystod y rhyfel",
+     "ko": "전쟁 중에",
+     "type": "A"
+    }
+   ]
+  },
+  "463": {
+   "legos": [
+    {
+     "cy": "rhif fy ystafell",
+     "ko": "내 방 번호",
+     "type": "A"
+    }
+   ]
+  },
+  "464": {
+   "legos": [
+    {
+     "cy": "ddudes i",
+     "ko": "나는 ~라고 말했어",
+     "type": "A"
+    },
+    {
+     "cy": "rif fy ystafell",
+     "ko": "내 방 번호",
+     "type": "A"
+    },
+    {
+     "cy": "wrthi",
+     "ko": "그녀한테",
+     "type": "A"
+    },
+    {
+     "cy": "unwaith",
+     "ko": "한 번",
+     "type": "A"
+    },
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "wnaeth hi anghofio fo",
+     "ko": "그녀는 그걸 잊어버렸어",
+     "type": "A"
+    }
+   ]
+  },
+  "465": {
+   "legos": [
+    {
+     "cy": "tro nesa’",
+     "ko": "다음번에",
+     "type": "A"
+    },
+    {
+     "cy": "bydda i’n gofyn iddi",
+     "ko": "나는 그녀에게 물어볼 거야",
+     "type": "A"
+    },
+    {
+     "cy": "beth ydy ei henw hi",
+     "ko": "그녀의 이름이 뭔지",
+     "type": "A"
+    }
+   ]
+  },
+  "466": {
+   "legos": [
+    {
+     "cy": "gad i mi",
+     "ko": "내가 ~하게 해 줘",
+     "type": "A"
+    },
+    {
+     "cy": "daflu fo",
+     "ko": "그걸 던지다",
+     "type": "A"
+    },
+    {
+     "cy": "dros y wal",
+     "ko": "벽 너머로",
+     "type": "A"
+    }
+   ]
+  },
+  "467": {
+   "legos": [
+    {
+     "cy": "mae o wrth ymyl",
+     "ko": "그건 ~ 옆에 있어",
+     "type": "A"
+    },
+    {
+     "cy": "y maes parcio",
+     "ko": "주차장",
+     "type": "A"
+    }
+   ]
+  },
+  "468": {
+   "legos": [
+    {
+     "cy": "mae’n fyd mawr",
+     "ko": "큰 세상이야",
+     "type": "A"
+    }
+   ]
+  },
+  "469": {
+   "legos": [
+    {
+     "cy": "ond",
+     "ko": "하지만",
+     "type": "A"
+    },
+    {
+     "cy": "dydy hynna ddim yn",
+     "ko": "그게 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "golygu",
+     "ko": "뜻하다",
+     "type": "A"
+    },
+    {
+     "cy": "na fedrwn ni",
+     "ko": "우리가 ~ㄹ 수 없다고",
+     "type": "A"
+    },
+    {
+     "cy": "ei newid",
+     "ko": "그걸 바꾸다",
+     "type": "A"
+    }
+   ]
+  },
+  "470": {
+   "legos": [
+    {
+     "cy": "pa mor uchel",
+     "ko": "얼마나 높이",
+     "type": "A"
+    },
+    {
+     "cy": "wyt ti isio",
+     "ko": "너 ~고 싶어?",
+     "type": "A"
+    },
+    {
+     "cy": "dringo",
+     "ko": "올라가다",
+     "type": "A"
+    },
+    {
+     "cy": "cyn i ni",
+     "ko": "우리가 ~하기 전에",
+     "type": "A"
+    },
+    {
+     "cy": "stopio",
+     "ko": "멈추다",
+     "type": "A"
+    }
+   ]
+  },
+  "471": {
+   "legos": [
+    {
+     "cy": "wyt ti isio",
+     "ko": "너 ~고 싶어?",
+     "type": "A"
+    },
+    {
+     "cy": "stopio",
+     "ko": "멈추다",
+     "type": "A"
+    },
+    {
+     "cy": "am saib",
+     "ko": "휴식을 위해",
+     "type": "A"
+    }
+   ]
+  },
+  "472": {
+   "legos": [
+    {
+     "cy": "rhan o’r broblem ydy",
+     "ko": "문제의 일부는 ~야",
+     "type": "A"
+    },
+    {
+     "cy": "nad ydan ni ddim yn",
+     "ko": "우리가 ~지 않는다는 것",
+     "type": "A"
+    },
+    {
+     "cy": "gwybod",
+     "ko": "알다",
+     "type": "A"
+    },
+    {
+     "cy": "y ffeithiau",
+     "ko": "사실",
+     "type": "A"
+    }
+   ]
+  },
+  "473": {
+   "legos": [
+    {
+     "cy": "dw i ddim isio fo",
+     "ko": "나는 그걸 원하지 않아",
+     "type": "A"
+    }
+   ]
+  },
+  "474": {
+   "legos": [
+    {
+     "cy": "dw i ddim isio fo",
+     "ko": "나는 그걸 원하지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "hyd yn oed",
+     "ko": "심지어",
+     "type": "A"
+    },
+    {
+     "cy": "fel cynnig",
+     "ko": "제안으로",
+     "type": "A"
+    },
+    {
+     "cy": "rhad ac am ddim",
+     "ko": "공짜인",
+     "type": "A"
+    }
+   ]
+  },
+  "475": {
+   "legos": [
+    {
+     "cy": "mae ’na lawer o resymau",
+     "ko": "이유가 많이 있어",
+     "type": "A"
+    },
+    {
+     "cy": "i ystyried",
+     "ko": "~하는 것을 고려할",
+     "type": "A"
+    },
+    {
+     "cy": "aros",
+     "ko": "기다리다",
+     "type": "A"
+    }
+   ]
+  },
+  "476": {
+   "legos": [
+    {
+     "cy": "dw i’n",
+     "ko": "나는 ~해",
+     "type": "A"
+    },
+    {
+     "cy": "aros",
+     "ko": "기다리다",
+     "type": "A"
+    },
+    {
+     "cy": "tan",
+     "ko": "~까지",
+     "type": "A"
+    },
+    {
+     "cy": "ddiwedd",
+     "ko": "끝",
+     "type": "A"
+    },
+    {
+     "cy": "yr ail hanner",
+     "ko": "후반전",
+     "type": "A"
+    }
+   ]
+  },
+  "477": {
+   "legos": [
+    {
+     "cy": "mae o",
+     "ko": "그는",
+     "type": "A"
+    },
+    {
+     "cy": "wedi bod",
+     "ko": "~였다",
+     "type": "A"
+    },
+    {
+     "cy": "yn sâl",
+     "ko": "아픈",
+     "type": "A"
+    },
+    {
+     "cy": "ers",
+     "ko": "~한 후로",
+     "type": "A"
+    },
+    {
+     "cy": "ail ddiwrnod",
+     "ko": "둘째 날",
+     "type": "A"
+    },
+    {
+     "cy": "y gwyliau",
+     "ko": "휴가",
+     "type": "A"
+    }
+   ]
+  },
+  "478": {
+   "legos": [
+    {
+     "cy": "mae ganddi",
+     "ko": "그녀는 ~를 가지고 있어",
+     "type": "A"
+    },
+    {
+     "cy": "galon mor garedig",
+     "ko": "정말 친절한 마음",
+     "type": "A"
+    }
+   ]
+  },
+  "479": {
+   "legos": [
+    {
+     "cy": "dyna’r lleia’",
+     "ko": "그게 최소한이야",
+     "type": "A"
+    },
+    {
+     "cy": "o’n i’n medru",
+     "ko": "나는 ~ㄹ 수 있었어",
+     "type": "A"
+    },
+    {
+     "cy": "gwneud",
+     "ko": "하다",
+     "type": "A"
+    }
+   ]
+  },
+  "480": {
+   "legos": [
+    {
+     "cy": "beth bynnag",
+     "ko": "무엇이든",
+     "type": "A"
+    },
+    {
+     "cy": "mae o’n ddeud",
+     "ko": "그가 말하다",
+     "type": "A"
+    },
+    {
+     "cy": "dydy o ddim yn",
+     "ko": "그건 ~지 않아",
+     "type": "A"
+    },
+    {
+     "cy": "bell o’n blaenau ni",
+     "ko": "우리 앞에 멀리",
+     "type": "A"
+    },
+    {
+     "cy": "rŵan",
+     "ko": "지금",
+     "type": "A"
+    }
+   ]
+  }
+ }
+}

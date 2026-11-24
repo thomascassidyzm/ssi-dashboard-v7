@@ -1,0 +1,4 @@
+{"ops":[{"op":"phrase.update","phrase_id":"cym_for_kor:S0296L03B01",
+ "expect":{"known_text":"내가 필요하다고","target_text":"bo’ fi angen"},
+ "set":{"known_text":"내가 ~이 필요하다고"}}],
+ "why":"Open BUILD frame 'bo’ fi angen' (that I need ~) is a legitimate source shape (cym_nv2_for_eng 'maen nhw’n meddwl bo’ ni angen' = 'they think that we need'), but its prompt '내가 필요하다고' reads 'that I am needed' and does not mirror the open slot. Known side now marks the slot with ~, as the course's LEGO glosses do. Welsh unchanged."}
