@@ -28,12 +28,12 @@ if (!file || !CAP) { console.error('usage: fill.cjs <slots.json> --cap <chars> [
 const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT|APPROVAL_UNVERIFIED/i; // APPROVAL_UNVERIFIED is a real refusal now
 // cs #43·AL: APPROVAL_CHECK_UNAVAILABLE (surface down past render.cjs's back-off) is not logged: slot stays unanswered, run stops.
 // An old-route outage record (APPROVAL_UNVERIFIED "could not be reached") counts as unanswered and is asked again.
-const { isOutageRefusal } = require('../../../services/shared/approval-origin.cjs');
+const { isUnansweredRecord, postUntilAnswered } = require('../../../services/shared/popty-try-later.cjs'); // cs #152: also NO_ANSWER / POPTY_UNAVAILABLE
 const ledger = file.replace(/\.json$/, '') + '.ledger.jsonl';
 const recs = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
 const key = (s) => `${s.course}|${s.target}|${s.id}|${s.role}`;
 const lastRec = new Map(recs.map((r) => [r.key, r]));
-const answered = new Set([...lastRec].filter(([, r]) => !isOutageRefusal(r)).map(([k]) => k));
+const answered = new Set([...lastRec].filter(([, r]) => !isUnansweredRecord(r)).map(([k]) => k));
 const isCartesia = (v) => !v || !/^azure|^eleven|^google|^human|^xai/i.test(String(v));
 let spent = recs.filter((r) => r.ok && isCartesia(r.voiceId)).reduce((a, r) => a + (Number(r.charsSpent) || 0), 0);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -66,15 +66,17 @@ async function gate() {
     if (APPROVAL && process.env.CS_CONV_TOKEN) args.push('--approval', APPROVAL);
     let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
     let r; try { r = JSON.parse(out); } catch { r = null; }
-    if (r && r.code === 'APPROVAL_CHECK_UNAVAILABLE') { bump('try_later'); stop = 'try later: Command Surface down past render.cjs back-off'; break; }
+    if (r && (r.tryLater || r.code === 'APPROVAL_CHECK_UNAVAILABLE')) { bump('try_later'); stop = `try later (${r.code}): Popty or the Command Surface down past render.cjs back-off`; break; }
     if (!r || !(r.ok || r.code)) { bump('no_answer'); console.log(k, 'NO_ANSWER:', String(out).slice(0, 200)); continue; }
     const rec = { at: new Date().toISOString(), key: k, ...s, ok: !!r.ok, source: r.source, code: r.code, audioId: r.audioId,
       voiceId: r.voiceId || r.voice || null, charsSpent: r.charsSpent || 0, error: r.error && String(r.error).slice(0, 400) };
     if (r.ok && r.audioId) {
       const link = { role: s.role, audioId: r.audioId, ...(s.target === 'lego' ? { legoId: s.id } : { phraseId: s.id }) };
-      const lr = await fetch(`http://localhost:3470/api/production/${s.course}/link-clip`, { method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify({ links: [link] }) });
-      const l = await lr.json().catch(() => ({}));
+      // cs #152: Popty restarting between render and link -> back off and re-ask; still down -> slot left unanswered (the
+      // re-render next run is a free library hit), never logged as a failed link.
+      const lr = await postUntilAnswered(`http://localhost:3470/api/production/${s.course}/link-clip`, { headers: { 'x-agent-id': AGENT }, body: { links: [link] } });
+      if (lr.tryLater) { bump('try_later'); stop = 'try later: Popty down past the link-clip back-off'; break; }
+      const l = lr.body || {};
       const one = (l.results && l.results[0]) || l;
       rec.link = { status: lr.status, ok: !!(l.ok && one.ok !== false), code: one.code || l.code, error: (one.error || l.error) && String(one.error || l.error).slice(0, 300) };
       rec.voiceId = rec.voiceId || one.voiceId || null;

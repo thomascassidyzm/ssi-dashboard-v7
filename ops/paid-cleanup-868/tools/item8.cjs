@@ -31,9 +31,14 @@ const MALE = { eng_for_pan: 'cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56', eng
 const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT|APPROVAL_UNVERIFIED/i;
 if (!course || !CAP || !process.env.CS_CONV_TOKEN) { console.error('usage: CS_CONV_TOKEN=… item8.cjs <course> --cap N'); process.exit(2); }
 const ledger = path.join(DIR, `ledger-${course}.jsonl`);
-const recs = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
-const done = new Set(recs.map((r) => r.key));
-let spent = recs.reduce((a, r) => a + (Number(r.charsSpent) || 0), 0);
+const readL = (f) => (fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : []);
+// + re-asks made by hand after an outage (cs #152: item8/reask-cs152.jsonl), so a resumed run never re-asks a take already linked
+const recs = [...readL(ledger), ...fs.readdirSync(DIR).filter((f) => /^reask-.*\.jsonl$/.test(f)).flatMap((f) => readL(path.join(DIR, f))).filter((r) => r.course === course)];
+// cs #152: a NO_ANSWER / try-later record (Popty restarting mid-call, 24 Nov 12:31/12:35Z) is no verdict: the take is asked again.
+const { isUnansweredRecord, postUntilAnswered } = require('../../../services/shared/popty-try-later.cjs');
+const lastRec = new Map(recs.map((r) => [r.key, r]));
+const done = new Set([...lastRec].filter(([, r]) => !isUnansweredRecord(r)).map(([k]) => k));
+let spent = recs.filter((r) => !isUnansweredRecord(r)).reduce((a, r) => a + (Number(r.charsSpent) || 0), 0);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function gate() {
   for (let i = 0; i < 60; i++) {
@@ -46,7 +51,8 @@ async function gate() {
 function render(args) {
   let out; try { out = execFileSync('node', [path.join(ROOT, 'tools/audio/render.cjs'), ...args, '--purpose', PURPOSE, '--job', '#868', '--approval', APPROVAL],
     { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
-  try { return JSON.parse(out); } catch { return { ok: false, code: 'NO_ANSWER', error: String(out).slice(0, 300) }; }
+  try { const r = JSON.parse(out); if (r && (r.ok || r.code)) return r; } catch {}
+  return { ok: false, code: 'NO_ANSWER', tryLater: true, error: String(out).slice(0, 300) };
 }
 const slotRef = (s) => (s.target === 'seed' ? { seedNumber: Number(s.id) } : s.target === 'lego' ? { legoId: s.id } : { phraseId: s.id });
 (async () => {
@@ -64,6 +70,9 @@ const slotRef = (s) => (s.target === 'seed' ? { seedNumber: Number(s.id) } : s.t
     if (!(await gate())) { stop = 'load gate red 30 min'; break; }
     const r = known ? render(['--course', course, '--role', 'known', '--text', s0.text])
       : render(['--course', course, '--role', s0.role, '--text', s0.text, '--replace', s0.current_audio_id]);
+    // cs #152: no answer (Popty down past render.cjs's back-off) -> nothing logged, run stops with exit 1 so item8b-resume.sh
+    // waits for /health and resumes from this take.
+    if (r.tryLater) { stop = `TRY LATER: ${r.code} ${String(r.error || '').slice(0, 160)}`; bump('try_later'); break; }
     const rec = { at: new Date().toISOString(), key, course, kind: known ? '8B' : '8A', text: s0.text, speak: s0.speak, slots: slots.map((s) => `${s.target}:${s.id}`),
       ok: !!r.ok, source: r.source, code: r.code, audioId: r.audioId, voiceId: r.voiceId || null, spoken: r.spoken || r.renderText || null,
       charsSpent: r.charsSpent || 0, error: r.error && String(r.error).slice(0, 300) };
@@ -72,12 +81,13 @@ const slotRef = (s) => (s.target === 'seed' ? { seedNumber: Number(s.id) } : s.t
       rec.links = [];
       for (const s of slots) {
         const link = { ...slotRef(s), role: 'known', audioId: r.audioId, replace: true, expectCurrent: s.current_audio_id };
-        const lr = await fetch(`http://localhost:3470/api/production/${course}/link-clip`, { method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify({ links: [link] }) });
-        const l = await lr.json().catch(() => ({})); const one = (l.results && l.results[0]) || l;
+        const lr = await postUntilAnswered(`http://localhost:3470/api/production/${course}/link-clip`, { headers: { 'x-agent-id': AGENT }, body: { links: [link] } });
+        const l = lr.body || {}; const one = (l.results && l.results[0]) || l;
+        if (lr.tryLater) { stop = 'TRY LATER: Popty down past the link-clip back-off'; break; }
         rec.links.push({ slot: `${s.target}:${s.id}`, ok: !!(l.ok && one.ok !== false), code: one.code || l.code, error: (one.error || l.error) && String(one.error || l.error).slice(0, 200) });
       }
     }
+    if (stop) break; // link never answered: the take is not logged; next run re-asks (a free library hit) and links
     fs.appendFileSync(ledger, JSON.stringify(rec) + '\n'); done.add(key); n++;
     spent += Number(rec.charsSpent) || 0;
     bump(r.ok ? `${r.source}${rec.links ? `_links_ok_${rec.links.filter((x) => x.ok).length}/${rec.links.length}` : ''}` : `refused_${r.code}`);
@@ -86,5 +96,5 @@ const slotRef = (s) => (s.target === 'seed' ? { seedNumber: Number(s.id) } : s.t
   }
   const left = [...groups.keys()].filter((k) => !done.has(k)).length;
   console.log(`item8 ${course}: ${groups.size} takes (${all.length} slots) ${JSON.stringify(tally)}; spent ${spent}/${CAP}; ${left} left${stop ? `; ${stop}` : ''}`);
-  process.exit(stop && /STOPPED/.test(stop) ? 3 : 0);
+  process.exit(stop && /STOPPED/.test(stop) ? 3 : stop && /TRY LATER/.test(stop) ? 1 : 0);
 })();

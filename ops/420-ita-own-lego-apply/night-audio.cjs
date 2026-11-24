@@ -51,6 +51,7 @@ async function link(s, audioId) {
     await up();
     let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
     let r; try { r = JSON.parse(out); } catch { r = null; }
+    if (r && r.tryLater) r = null; // cs #152: render.cjs's try-later answer (Popty or the surface down past its back-off) is no answer: not logged, sent next run.
     if (!r || !(r.ok || r.code)) { bump('no_answer'); console.log(s.key, 'NO_ANSWER: not logged, sent next run'); continue; }
     const rec = { at: new Date().toISOString(), key: s.key, id: s.id, role: s.role, text: s.text, dry: DRY, ok: !!r.ok, source: r.source, code: r.code,
       audioId: r.audioId, voiceId: r.voiceId || r.voice || null, charsSpent: r.charsSpent || 0, wouldSpend: r.wouldSpendChars, error: r.error && String(r.error).slice(0, 400) };

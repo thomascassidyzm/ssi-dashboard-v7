@@ -35,7 +35,7 @@ const APPROVAL = 'kai:2026-11-18:paid-cleanup item 4 filler rows, Kai approved i
 const PURPOSE = 'cs #358 paid cleanup item 4 (filler/template practice rows re-said or back-filled), Kai approved 18 Nov';
 const SPEND = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/paid-cleanup-item4/cartesia-spend.json');
 const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT/i; // never matches APPROVAL_CHECK_UNAVAILABLE (handled above)
-const { isOutageRefusal } = require('../../../services/shared/approval-origin.cjs');
+const { isUnansweredRecord, postUntilAnswered } = require('../../../services/shared/popty-try-later.cjs'); // cs #152: also NO_ANSWER / POPTY_UNAVAILABLE
 const OUTAGE_REASK = process.argv.includes('--outage-reask');
 const courses = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const readLog = (f) => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : [];
@@ -72,7 +72,7 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
   queue.sort((a, b) => a.seed - b.seed || a.course.localeCompare(b.course) || a.key.localeCompare(b.key));
   // last record per slot decides: an outage refusal is no answer
   const last = new Map(); for (const r of allRecs()) last.set(`${r.course}|${r.key}`, r);
-  const outage = new Set([...last].filter(([, r]) => isOutageRefusal(r)).map(([k]) => k));
+  const outage = new Set([...last].filter(([, r]) => isUnansweredRecord(r)).map(([k]) => k));
   const answered = new Set([...last.keys()].filter((k) => !outage.has(k)));
   if (OUTAGE_REASK) { const keep = queue.filter((s) => outage.has(`${s.course}|${s.key}`)); queue.length = 0; queue.push(...keep); }
   let spent = writeSpend();
@@ -87,17 +87,18 @@ const up = async (c) => { for (let i = 0; i < 60; i++) { try { const r = await f
     await up(s.course);
     let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: AGENT } }); } catch (e) { out = String(e.stdout || ''); }
     let r; try { r = JSON.parse(out); } catch { r = null; }
-    if (r && r.code === 'APPROVAL_CHECK_UNAVAILABLE') { bump('try_later'); stop = 'Command Surface down past render.cjs back-off: slot left unanswered, asked next run'; break; }
+    if (r && (r.tryLater || r.code === 'APPROVAL_CHECK_UNAVAILABLE')) { bump('try_later'); stop = `${r.code}: Popty or the Command Surface down past render.cjs back-off: slot left unanswered, asked next run`; break; }
     if (!r || !(r.ok || r.code)) { bump('no_answer'); console.log(s.course, s.key, 'NO_ANSWER (not logged; asked again next run):', String(out).slice(0, 200)); continue; }
     const rec = { at: new Date().toISOString(), course: s.course, key: s.key, id: s.id, role: s.role, text: s.text, from: s.from, seed: s.seed,
       ok: !!r.ok, source: r.source, code: r.code, audioId: r.audioId, voiceId: r.voiceId || r.voice || null, charsSpent: r.charsSpent || 0,
       error: r.error && String(r.error).slice(0, 400) };
     if (r.ok && r.audioId) {
       await up(s.course);
-      const lr = await fetch(`http://localhost:3470/api/production/${s.course}/link-clip`, { method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
-        body: JSON.stringify({ links: [{ phraseId: s.phraseId || s.id, role: s.role, audioId: r.audioId }] }) });
-      const l = await lr.json().catch(() => ({}));
+      // cs #152: Popty restarting between render and link -> back off and re-ask; still down -> slot left unanswered.
+      const lr = await postUntilAnswered(`http://localhost:3470/api/production/${s.course}/link-clip`, { headers: { 'x-agent-id': AGENT },
+        body: { links: [{ phraseId: s.phraseId || s.id, role: s.role, audioId: r.audioId }] } });
+      if (lr.tryLater) { bump('try_later'); stop = 'Popty down past the link-clip back-off: slot left unanswered, asked next run'; break; }
+      const l = lr.body || {};
       const one = (l.results && l.results[0]) || l;
       rec.link = { status: lr.status, ok: !!(l.ok && one.ok !== false), code: one.code || l.code, error: (one.error || l.error) && String(one.error || l.error).slice(0, 300) };
       rec.voiceId = rec.voiceId || one.voiceId || null;

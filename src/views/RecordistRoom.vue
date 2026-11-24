@@ -1122,6 +1122,9 @@ const SECTION_ORDER = [
   // two takes, his English take of the LEGO and the Welsh — read once each, for both courses.
   // A VIDEO'S NARRATION (job #572, video-voiceover-lines.cjs): one line per step of the video, each timed.
   { key: 'voiceover', heading: 'Video voiceover', blurb: 'The voiceover for a short video, one line per step. Under each line is roughly how long it should take, and the most it can run.' },
+  // THE LEARNER APP'S ENCOURAGEMENTS (Aran, 2026-11-24, job #104·AL, encouragement-lines.cjs): the lines edited on the
+  // learner app's /admin/encouragements, read here in his English voice. That page is the one source; this card is its queue.
+  { key: 'encouragement', heading: 'Encouragements', blurb: 'The spoken encouragements learners hear in the app: the in-order lines first, then the random ones. Learners keep the old recording until your take lands.' },
   // POD 1 ENGLISH (job #537): the English side of the Pod 1 conversations, North and South on one card.
   // POD 1 NEW WORDS (job #551): pod lines whose words are changing; the pod takes the new words with this take.
   { key: 'podswap', heading: 'POD 1 · NEW WORDS', blurb: 'Pod 1 lines with new words. The pod keeps the old words and recording until you record these, then changes, North and South at once.' },
@@ -1366,6 +1369,13 @@ function kindWordsFor(l) {
   if (l.kind === 'voiceover' && l.voiceover) {
     const v = l.voiceover
     return v.aimSec ? `${v.video} · ${v.label} · about ${v.aimSec} s, no more than ${v.fitSec} s` : `${v.video} · ${v.label}`
+  }
+  // AN ENCOURAGEMENT (job #104·AL): which set, where in the order, and why it is asked for, e.g.
+  // "In order · 3 · new words - replaces "Well done"" or "Random · fresh take".
+  if (l.kind === 'encouragement' && l.encouragement) {
+    const e = l.encouragement
+    const head = [e.set, e.n ? String(e.n) : null, e.why].filter(Boolean).join(' · ')
+    return `${head}${e.was ? ` - replaces "${e.was}"` : ''}`
   }
   if (l.kind === 'podknown') return `Pod 1 English${l.speaker ? ` · ${l.speaker}` : ''} - North and South`
   if (l.kind === 'podswap') return `Pod 1 new words${l.speaker ? ` · ${l.speaker}` : ''}${l.replacesText ? ` - replaces "${l.replacesText}"` : ''}`
@@ -3097,6 +3107,14 @@ function describeTrack(t) {
       what: 'The voiceover for a short video, one line per step. Read each at a relaxed, friendly pace; under each line is roughly how long it should take, and the most it can run before it spills into the next step.',
     }
   }
+  // THE LEARNER APP'S ENCOURAGEMENTS (job #104·AL): one card, read whole, from the learner app's admin page.
+  if (t.kind === 'encouragement') {
+    return {
+      short: 'Encouragements', cls: 'k-other',
+      title: 'Encouragements',
+      what: 'The spoken encouragements learners hear in the app, as edited on the learner app\'s Encouragements page. The in-order lines come first, in the order learners hear them, then the random ones. Read each at a warm, natural pace. Learners keep hearing the old recording until your take lands.',
+    }
+  }
   // THE INTRODUCTIONS (job #587): the whole intro sentence read in one take. A card PER COURSE, North and South
   // separately (Aran, 2026-11-02); an intro both share is on both cards, and one take fills both.
   if (t.kind === 'introsentence') {
@@ -3333,7 +3351,8 @@ const batchHeader = computed(() => {
   if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
   // Pod 1 English spans North and South, so no one course's words head it (job #537).
-  const parts = [t.kind === 'podknown' || t.kind === 'podswap' || t.kind === 'voiceover' ? null : courseWordsFor(t.courseCode), t.short]
+  // Encouragements (job #104·AL) are filed under a course only for the upload seam; no course's words head them.
+  const parts = [t.kind === 'podknown' || t.kind === 'podswap' || t.kind === 'voiceover' || t.kind === 'encouragement' ? null : courseWordsFor(t.courseCode), t.short]
   // WHICH LANGUAGE, in so many words (job #392): with Welsh and English one tab apart, the header
   // says it, unless the course words already begin with it ("English for New Welsh — North").
   const h = homeSummary.value

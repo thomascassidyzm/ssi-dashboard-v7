@@ -109,6 +109,7 @@ if (rest.includes('--fix')) (async () => {
       await upAgain();
       let out; try { out = execFileSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: 'cs-778-item9' } }); } catch (e) { out = String(e.stdout || ''); }
       try { r = JSON.parse(out); } catch { r = null; }
+      if (r && r.tryLater) r = null; // cs #152: render.cjs's try-later answer (Popty or the surface down past its back-off) is no answer: not logged, sent next run.
       if (r && (r.ok || r.code)) break;
       r = r || { ok: false, code: 'NO_ANSWER', error: 'Popty did not answer (restart)' };
     }

@@ -116,7 +116,7 @@ async function post(url, body, headers, ms) {
       audioId: j.audioId, voiceId: j.voiceId || null, charsSpent: Number(j.charsSpent) || 0, wouldSpend: j.wouldSpendChars, cartesia: cartesiaSlot(s.role),
       error: j.ok ? undefined : String(j.error || '').slice(0, 300) };
     if (!DRY && j.ok && j.source === 'rendered' && !(rec.charsSpent > 0)) rec.charsSpent = [...s.text].length; // never under-count a paid render
-    const timedOut = r.http === 0 || r.http === 503 || r.http === 504;
+    const timedOut = r.http === 0 || r.http === 502 || r.http === 503 || r.http === 504; // cs #152: 502 = Popty restarting behind the proxy
     if (timedOut) { timeouts++; bump('timeout'); console.log(s.key, 'timeout/no answer: not logged, sent on the next run'); if (timeouts >= 5) { stop = '5 timeouts in a row'; break; } continue; }
     timeouts = 0;
     if (!DRY && j.ok && j.audioId) {

@@ -1,545 +1,701 @@
 <template>
-  <div class="ce">
-    <header class="top" ref="topEl">
+  <div class="ft">
+    <header class="top">
       <div class="bar">
-        <h1>Course editor</h1>
+        <h1>Fine-tuning</h1>
+        <span class="who" :class="{ view: !canEdit }">{{ canEdit ? '🔒 Aran only' : '👁 View only' }}</span>
         <select class="pick" :value="course || ''" aria-label="Course" @change="pick($event.target.value)">
-          <option value="" disabled>Choose a course…</option>
+          <option value="" disabled>Course…</option>
           <option v-for="c in COURSES" :key="c.code" :value="c.code">{{ c.label }}</option>
         </select>
       </div>
-      <div v-if="course" class="bar">
-        <button class="pill" :class="{ on: only === 'changes' }" @click="setOnly('changes')">✎ Changes <b>{{ pendingCount }}</b></button>
-        <button class="pill" :class="{ on: only === 'flags' }" @click="setOnly('flags')">⚑ Flagged <b>{{ flaggedCount }}</b></button>
-        <button v-if="pendingCount" class="pill apply" :disabled="busyAll" @click="applyAll">{{ busyAll ? 'Applying…' : `Apply all (${pendingCount})` }}</button>
-        <span class="count">{{ total }} lines</span>
+      <div v-if="course && !loading && !loadError" class="bar">
+        <button class="pill" :class="{ on: onlyHand }" @click="toggleHand">✎ Hand-edited <b>{{ handCount }}</b></button>
+        <span class="count">{{ rounds.length }} intro items<span v-if="readAt" :title="'Changes made outside this page show within 15 minutes'"> · read {{ fmtWhen(readAt) }}</span></span>
       </div>
+      <p v-if="course && !loading && !lockReady" class="lockwarn">
+        The hand-edit lock is not set up yet (its database change is waiting for Tom's go). Text edits still apply, but are
+        not yet protected from regeneration; drag order, copy and add open once it is.
+      </p>
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
     </header>
 
-    <!-- The course picker: the editor opens on a course chosen here (Korean only for now — the server refuses the rest). -->
     <div v-if="!course" class="picker">
-      <p class="note">Pick a course. Changes you make are <b>proposed</b> first; nothing touches the course until an admin taps <b>Apply</b>.</p>
       <button v-for="c in COURSES" :key="c.code" class="pickbtn" @click="pick(c.code)">{{ c.label }} <small>{{ c.code }}</small></button>
     </div>
+    <p v-else-if="loading" class="note">Loading {{ course }}…</p>
+    <p v-else-if="loadError" class="msg bad">{{ loadError }}</p>
 
-    <template v-else>
-      <p v-if="loading" class="note">Loading {{ course }}…</p>
-      <p v-else-if="loadError" class="msg bad">{{ loadError }}</p>
-      <p v-else-if="!shown.length" class="note">{{ only === 'changes' ? 'No changes proposed or applied.' : only === 'flags' ? 'Nothing flagged.' : 'No lines.' }}</p>
-
-      <!-- Windowed: only the rows near the viewport are in the DOM; the spacers stand in for the rest. -->
-      <div class="list" ref="listEl">
-        <div :style="{ height: padTop + 'px' }"></div>
-        <div v-for="r in rendered" :key="r.k" class="row" :class="rowClass(r.it)" :data-k="r.k">
-          <span class="stripe" :class="{ white: r.belt === 0 }" :style="{ background: BELTS[r.belt].color }"></span>
-          <div class="line">
-            <span class="num">{{ r.it.t === 'l' ? 'LEGO' : r.it.ghost ? '–' : r.it.n }}</span>
-            <div class="text">
-              <div class="tx" @click="openRow(r.it)">{{ cur(r.it).tx }}<button v-if="!r.it.ghost" class="flag" :class="{ on: flagOf(r.it).flagged }"
-                :aria-label="(flagOf(r.it).flagged ? 'Unflag ' : 'Flag ') + r.it.id" @click.stop="flip(r.it)">{{ flagOf(r.it).flagged ? '⚑' : '⚐' }}</button></div>
-              <div class="kn" @click="openRow(r.it)">{{ cur(r.it).kn || '— no English —' }}</div>
-              <div v-if="needsAudio(r.it) && !r.it.ghost" class="audio-need">🔇 needs new audio<span v-if="missingOf(r.it).length"> ({{ missingOf(r.it).join(', ') }})</span>
-                <button v-if="audioMode === 'tts'" class="mini" @click="renderAsk(r.it)">Make new audio</button>
-                <span v-else> — on the booth's Re-record card</span>
-              </div>
-              <div v-if="renderState[keyOf(r.it)]" class="render">
-                <span>{{ renderState[keyOf(r.it)].text }}</span>
-                <button v-if="renderState[keyOf(r.it)].canConfirm" class="mini go" @click="renderConfirm(r.it)">{{ renderState[keyOf(r.it)].lib ? 'Link it' : 'Confirm render' }}</button>
-              </div>
-
-              <!-- Editing: propose, never write. -->
-              <div v-if="editing[keyOf(r.it)]" class="edit">
-                <label>{{ targetLabel }}<textarea v-model="editing[keyOf(r.it)].tx" rows="2" lang="ko"></textarea></label>
-                <label>English<textarea v-model="editing[keyOf(r.it)].kn" rows="2"></textarea></label>
-                <div class="btns">
-                  <button class="mini go" :disabled="busy[keyOf(r.it)]" @click="propose(r.it, 'edit')">Propose change</button>
-                  <button class="mini warn" :disabled="busy[keyOf(r.it)]" @click="propose(r.it, 'remove')">Propose removal</button>
-                  <button class="mini" @click="closeRow(r.it)">Cancel</button>
-                </div>
-                <input class="noteinp" type="text" :value="flagOf(r.it).note" maxlength="1000" placeholder="Flag note (optional)"
-                       @input="onNote(r.it, $event.target.value)" @blur="saveNow(r.it)" />
-              </div>
-              <div v-else-if="flagOf(r.it).note" class="flagnote">⚑ {{ flagOf(r.it).note }}</div>
-
-              <!-- A proposal: before → after, and the explicit admin step that makes it real. -->
-              <div v-if="propOf(r.it)" class="prop" :class="propOf(r.it).status">
-                <div class="ph">
-                  <b>{{ statusLabel(propOf(r.it)) }}</b>
-                  <small>{{ propOf(r.it).status === 'applied' ? `by ${propOf(r.it).appliedBy}` : `by ${propOf(r.it).proposedBy}` }}</small>
-                </div>
-                <template v-if="propOf(r.it).action === 'remove'"><div class="diff"><s>{{ propOf(r.it).before.target }}</s> — remove this line</div></template>
-                <template v-else>
-                  <div v-if="propOf(r.it).after.target !== propOf(r.it).before.target" class="diff"><s>{{ propOf(r.it).before.target }}</s> → <ins>{{ propOf(r.it).after.target }}</ins></div>
-                  <div v-if="propOf(r.it).after.known !== propOf(r.it).before.known" class="diff en"><s>{{ propOf(r.it).before.known }}</s> → <ins>{{ propOf(r.it).after.known }}</ins></div>
-                  <div class="hint">{{ audioHint(propOf(r.it)) }}</div>
-                </template>
-                <p v-if="propOf(r.it).error" class="msg bad">{{ propOf(r.it).error }}</p>
-                <div class="btns">
-                  <template v-if="propOf(r.it).status === 'pending'">
-                    <button class="mini go" :disabled="busy[keyOf(r.it)]" @click="apply(r.it)">Apply</button>
-                    <button class="mini" :disabled="busy[keyOf(r.it)]" @click="discard(r.it)">Discard</button>
-                  </template>
-                  <template v-else-if="propOf(r.it).status === 'applied'">
-                    <button class="mini warn" :disabled="busy[keyOf(r.it)]" @click="undo(r.it)">↶ Undo</button>
-                  </template>
-                  <template v-else>
-                    <button class="mini" :disabled="busy[keyOf(r.it)]" @click="discard(r.it)">Discard</button>
-                  </template>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div :style="{ height: padBottom + 'px' }"></div>
+    <!-- ============================== THE LIST: intro items, 20 to a page ============================== -->
+    <section v-else-if="!open">
+      <div class="pager">
+        <span class="pg">{{ pageFrom }}–{{ pageTo }} of {{ listed.length }}</span>
+        <button class="mini" :disabled="page === 0" @click="setPage(page - 1)">‹ Prev</button>
+        <button class="mini" :disabled="pageTo >= listed.length" @click="setPage(page + 1)">Next ›</button>
+        <form class="jump" @submit.prevent="jump"><input v-model="jumpTo" inputmode="numeric" placeholder="Round #" aria-label="Go to round" /><button class="mini">Go</button></form>
       </div>
-    </template>
+      <p v-if="!listed.length" class="note">{{ onlyHand ? 'Nothing hand-edited yet.' : 'No intro items.' }}</p>
+      <button v-for="r in pageRounds" :key="r.n" class="item" :class="{ hand: roundHasHand(r) }" @click="openRound(r.n)">
+        <span class="n">{{ r.n }}</span>
+        <span class="body">
+          <span class="words big">
+            <span class="ko" lang="ko">{{ L(r).tx }}</span><span v-if="L(r).ro" class="ro">{{ L(r).ro }}</span><span class="en">{{ L(r).kn }}</span>
+          </span>
+          <span class="sub">{{ r.p.length }} practice · {{ r.r.length }} revisit<span v-if="roundHasHand(r)" class="tag hand">✎ Hand-edited</span><span v-if="L(r).m" class="tag mute">🔇 audio</span></span>
+        </span>
+        <span class="chev">›</span>
+      </button>
+      <div v-if="listed.length > PAGE" class="pager">
+        <button class="mini" :disabled="page === 0" @click="setPage(page - 1)">‹ Prev</button>
+        <button class="mini" :disabled="pageTo >= listed.length" @click="setPage(page + 1)">Next ›</button>
+      </div>
+    </section>
+
+    <!-- ============================== ONE ROUND ============================== -->
+    <section v-else class="round">
+      <div class="crumb">
+        <button class="back" @click="closeRound">‹ Intro items</button>
+        <span>·</span><b>Round {{ open.n }}</b><small>{{ open.l }}</small>
+        <span class="step">
+          <button class="mini" :disabled="open.n <= 1" @click="openRound(open.n - 1)">‹</button>
+          <button class="mini" :disabled="!roundByN.get(open.n + 1)" @click="openRound(open.n + 1)">›</button>
+        </span>
+      </div>
+
+      <!-- INTRO ITEM -->
+      <h2>Intro item</h2>
+      <div class="row lego" :class="{ hand: !!lego.lock }">
+        <div class="main">
+          <div class="words big"><span class="lab">LEGO</span><span class="ko" lang="ko">{{ lego.tx }}</span><span v-if="lego.ro" class="ro">{{ lego.ro }}</span><span class="en">{{ lego.kn }}</span></div>
+          <div class="intro">
+            <div class="introlab">Full introduction</div>
+            <div v-if="introText" class="introtext">{{ introText }}</div>
+            <div v-else class="introtext none">{{ lego.clip === null ? 'No spoken introduction is linked to this item.' : 'The introduction clip carries no text.' }}</div>
+            <div v-if="lego.introHand" class="tags"><span class="tag hand">✎ Intro wording hand-set · {{ fmtWhen(lego.introHand.at) }}</span></div>
+            <PropBox :p="propIntro" />
+          </div>
+          <LineTags :line="lego" />
+          <AudioNeed v-if="lego.m" kind="lego" :id="open.l" :line="lego" />
+          <EditForm v-if="editing[`lego:${open.l}`]" :k="`lego:${open.l}`" kind="lego" :id="open.l" />
+          <PropBox :p="propFor('lego', open.l)" />
+        </div>
+        <button v-if="canEdit" class="ic" aria-label="Edit intro item" @click="startEdit('lego', open.l, lego)">✎</button>
+      </div>
+
+      <h2>Debut <small>the intro item on its own, played once</small></h2>
+      <div class="row quiet"><div class="main"><div class="words"><span class="dash">–</span><span class="ko" lang="ko">{{ lego.tx }}</span><span v-if="lego.ro" class="ro">{{ lego.ro }}</span><span class="en">{{ lego.kn }}</span></div></div></div>
+
+      <!-- PRACTICE -->
+      <h2>Practice phrases <span class="cnt">{{ practice.length }}</span><small v-if="canEdit && lockReady">drag ⠿ to reorder · B = BUILD, U = USE; BUILD always plays first</small></h2>
+      <p v-if="open && floorWarning(open)" class="hint warn floorw">{{ floorWarning(open) }}</p>
+      <div v-if="lego.order" class="ordertag">✎ Order hand-set · overrides seed rules</div>
+      <PropBox v-if="propOrder" :p="propOrder" />
+      <div class="dlist" ref="dlist">
+        <div v-for="(id, i) in practice" :key="id" class="row" :data-id="id"
+             :class="{ hand: !!P(id).lock, dragging: drag && drag.id === id }">
+          <button v-if="canEdit && lockReady" class="handle" aria-label="Drag to reorder" @pointerdown="dragStart($event, id)">⠿</button>
+          <span class="num">{{ i + 1 }}<span class="role" :title="P(id).role === 'use' ? 'USE phrase' : 'BUILD phrase'">{{ P(id).role === 'use' ? 'U' : 'B' }}</span></span>
+          <div class="main">
+            <div class="words"><span class="ko" lang="ko">{{ P(id).tx }}</span><span v-if="P(id).ro" class="ro">{{ P(id).ro }}</span><span class="en">{{ P(id).kn }}</span></div>
+            <LineTags :line="P(id)" :prop="newLineProp(id)" />
+            <AudioNeed v-if="P(id).m" kind="phrase" :id="id" :line="P(id)" />
+            <EditForm v-if="editing[`phrase:${id}`]" :k="`phrase:${id}`" kind="phrase" :id="id" />
+            <PropBox :p="propFor('phrase', id) || newLineProp(id)" />
+          </div>
+          <span v-if="canEdit" class="acts">
+            <button v-if="lockReady" class="ic" aria-label="Copy" title="Copy" @click="copy(id)">⧉</button>
+            <button class="ic" aria-label="Edit" @click="startEdit('phrase', id, P(id))">✎</button>
+          </span>
+        </div>
+      </div>
+      <PropBox v-for="p in pendingNew" :key="p.id" :p="p" />
+      <div v-if="canEdit && lockReady">
+        <div v-if="adding" class="addform">
+          <div class="addlab">New practice phrase</div>
+          <label>Korean<input v-model="adding.target" lang="ko" placeholder="Korean…" /></label>
+          <label>Romanisation<input v-model="adding.roman" placeholder="romanisation (optional)" /></label>
+          <label>English<input v-model="adding.known" placeholder="English…" /></label>
+          <div class="btns">
+            <button class="mini go" :disabled="busy.add" @click="proposeAdd">Propose</button>
+            <button class="mini" @click="adding = null">Cancel</button>
+          </div>
+          <p class="hint">Added at the end of the practice phrases; drag to place it. Hand-edited from the start. Needs new audio.</p>
+        </div>
+        <button v-else class="addbtn" @click="adding = { target: '', roman: '', known: '' }">＋ Add practice phrase</button>
+      </div>
+
+      <!-- REVISITS (read-only here: a revisit is the same line as in its own round) -->
+      <h2>Revisits <span class="cnt">{{ open.r.length + open.s.length }}</span></h2>
+      <p v-if="!open.r.length && !open.s.length" class="note sm">None in this round.</p>
+      <div v-for="([id, from], i) in open.r" :key="'r' + i" class="row revisit">
+        <span class="num">{{ i + 1 }}</span>
+        <div class="main">
+          <div class="words"><span class="ko" lang="ko">{{ P(id).tx }}</span><span v-if="P(id).ro" class="ro">{{ P(id).ro }}</span><span class="en">{{ P(id).kn }}</span></div>
+          <div class="revtag"><span class="tag amber">↺ Revisit · from round {{ from }}</span><button class="link" @click="openRound(from)">edit it in round {{ from }} ›</button></div>
+        </div>
+      </div>
+      <div v-for="([seed, from], i) in open.s" :key="'s' + i" class="row revisit">
+        <span class="num">{{ open.r.length + i + 1 }}</span>
+        <div class="main"><div class="words"><span class="en">The whole sentence of seed {{ seed }}</span></div>
+          <div class="revtag"><span class="tag amber">↺ Seed revisit · from round {{ from }}</span></div></div>
+      </div>
+
+      <!-- ROUND-OFF -->
+      <h2 class="grey">Round-off <small>played at the end of the round</small></h2>
+      <div v-for="(id, i) in open.o" :key="'o' + i" class="row roundoff" :class="{ hand: !!P(id).lock }">
+        <span class="num">{{ i + 1 }}</span>
+        <div class="main">
+          <div class="words"><span class="ko" lang="ko">{{ P(id).tx }}</span><span v-if="P(id).ro" class="ro">{{ P(id).ro }}</span><span class="en">{{ P(id).kn }}</span></div>
+          <LineTags :line="P(id)" />
+          <AudioNeed v-if="P(id).m" kind="phrase" :id="id" :line="P(id)" />
+          <EditForm v-if="editing[`phrase:${id}`]" :k="`phrase:${id}`" kind="phrase" :id="id" />
+          <PropBox :p="propFor('phrase', id)" />
+        </div>
+        <span v-if="canEdit" class="acts"><button class="ic" aria-label="Edit" @click="startEdit('phrase', id, P(id))">✎</button></span>
+      </div>
+
+      <!-- NOT HEARD: this round's lines past the 7 practice places -->
+      <template v-if="open.u.length">
+        <h2 class="grey">Not heard in this round <span class="cnt">{{ open.u.length }}</span><small>past the 7 practice places</small></h2>
+        <div v-for="id in open.u" :key="'u' + id" class="row roundoff" :class="{ hand: !!P(id).lock }">
+          <span class="num">–</span>
+          <div class="main">
+            <div class="words"><span class="ko" lang="ko">{{ P(id).tx }}</span><span v-if="P(id).ro" class="ro">{{ P(id).ro }}</span><span class="en">{{ P(id).kn }}</span></div>
+            <LineTags :line="P(id)" :prop="newLineProp(id)" />
+            <EditForm v-if="editing[`phrase:${id}`]" :k="`phrase:${id}`" kind="phrase" :id="id" />
+            <PropBox :p="propFor('phrase', id) || newLineProp(id)" />
+          </div>
+          <span v-if="canEdit" class="acts"><button class="ic" aria-label="Edit" @click="startEdit('phrase', id, P(id))">✎</button></span>
+        </div>
+      </template>
+    </section>
   </div>
 </template>
 
 <script setup>
-// Course editor (job #116·AK). Aran, 2026-11-21: "In the Popty, I want to be able to go into a course (Korean, for
-// example) and make changes to the introduction items and to the practice phrases." His two proof pages (LegoProof.vue,
-// PhraseProof.vue) made into one editor: the course in running order, each new LEGO followed by its practice phrases,
-// belt stripe, windowed rows, light mode, phone first. A tap opens a line; a change is PROPOSED (stored, nothing in the
-// course moves) and becomes real only on an admin's Apply, which goes through Popty's course-edit door with an undo.
-// Server: services/course-editor/course-editor-router.cjs.
-import { ref, reactive, computed, shallowRef, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
+// FINE-TUNING (job #128·AL, from the approved mockup #106·AL; extends the course editor of job #116·AK).
+// Aran, 2026-11-24: his hand edits ALWAYS take priority over seed-derived generation. This page shows the course as the
+// learner hears it — intro items in round order, 20 to a page; a round opens to its intro item (with the words of its
+// spoken introduction), the debut, the practice phrases (drag to reorder, copy, add), the revisits from earlier rounds
+// (read-only, "edit it in round N") and the round-off. Every change is PROPOSED first and becomes real only on Apply,
+// with Undo — the editor's own semantics. Only Aran may change anything (the server says so too); light mode always.
+// Desktop: Hangul · romanisation · English on one line (Aran: "could all be on one line"); a phone stacks them.
+// Server: services/course-editor/course-editor-router.cjs (+ round-view.cjs, which mirrors the player's round shape).
+import { ref, reactive, computed, shallowRef, h, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiBaseUrl } from '../../services/api'
-import { BELTS, beltIndex, prefixTops, rowAt, windowRange } from './phraseProofWindow.js'
 
-// The courses the server allows (EDITOR_COURSES in the router). Korean only for now (Aran, 2026-11-21).
-const COURSES = [{ code: 'kor_for_eng', label: 'Korean', target: 'Korean' }]
+const COURSES = [{ code: 'kor_for_eng', label: 'Korean' }]
+const PAGE = 20
 const route = useRoute()
 const router = useRouter()
 const course = ref(COURSES.some((c) => c.code === route.params.courseCode) ? route.params.courseCode : null)
-const targetLabel = computed(() => COURSES.find((c) => c.code === course.value)?.target || 'Target')
-const items = shallowRef([])
-const total = ref(0)
+const rounds = shallowRef([])
+const legos = shallowRef({})
+const phrases = shallowRef({})
+const proposals = shallowRef([])
 const audioMode = ref('tts')
-const usesT2 = ref(false)
+const lockReady = ref(false)
+const readAt = ref('')
+const canEdit = ref(false)
 const loading = ref(false)
 const loadError = ref('')
-const only = ref('')
-const flags = reactive({})       // key -> { flagged, note }
-const proposals = reactive({})       // key -> latest proposal for that line
-const rows = reactive({})        // key -> { tx, kn, m } once a line changed under us (apply / undo)
+const onlyHand = ref(false)
+const page = ref(0)
+const jumpTo = ref('')
 const editing = reactive({})
 const busy = reactive({})
 const renderState = reactive({})
-const busyAll = ref(false)
+const adding = ref(null)
 const msg = ref('')
 const msgBad = ref(false)
-const listEl = ref(null)
-const topEl = ref(null)
+const dlist = ref(null)
+const localOrder = ref(null)   // the practice order while a drag is in progress / just dropped
+const drag = ref(null)
 
 const base = (code) => `${getApiBaseUrl()}/api/production/${code}/course-editor`
-const keyOf = (it) => `${it.t}:${it.id}`
-const kindOf = (it) => (it.t === 'l' ? 'lego' : 'phrase')
-const NOFLAG = Object.freeze({ flagged: false, note: '' })
-const flagOf = (it) => flags[keyOf(it)] || NOFLAG
-const propOf = (it) => proposals[keyOf(it)]
-const cur = (it) => rows[keyOf(it)] || it
-const missingOf = (it) => cur(it).m || []
-const needsAudio = (it) => missingOf(it).length > 0 || (propOf(it)?.status === 'applied' && propOf(it)?.needsAudio)
-const pendingCount = computed(() => Object.values(proposals).filter((p) => p.status === 'pending').length)
-const flaggedCount = computed(() => Object.values(flags).filter((f) => f.flagged).length)
-const shown = computed(() => {
-  if (only.value === 'changes') return items.value.filter((it) => proposals[keyOf(it)])
-  if (only.value === 'flags') return items.value.filter((it) => flags[keyOf(it)]?.flagged)
-  return items.value
-})
-function rowClass(it) {
-  const p = propOf(it)
-  return { ghost: !!it.ghost, lego: it.t === 'l', flagged: flagOf(it).flagged, pending: p?.status === 'pending', applied: p?.status === 'applied', removed: p?.status === 'applied' && p.action === 'remove' }
-}
-// The server's spokenForm (services/course-editor/course-editor-ops.cjs), mirrored for the hint only — Apply decides on
-// the server. Apostrophes/hyphens INSIDE a word join it ("don't" = "dont"); every other mark separates words.
-const spoken = (s) => String(s || '').toLowerCase().replace(/(?<=[\p{L}\p{N}])['‘’ʼ\-‐‑]+(?=[\p{L}\p{N}])/gu, '')
-  .replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
-const same = (a, b) => spoken(a) === spoken(b)
+const say = (t, bad = false) => { msg.value = t; msgBad.value = bad }
+const NONE = Object.freeze({ tx: '', kn: '', ro: '' })
+const L = (r) => legos.value[r.l] || NONE
+const P = (id) => phrases.value[id] || NONE
+const roundByN = computed(() => new Map(rounds.value.map((r) => [r.n, r])))
+const roundHasHand = (r) => { const l = L(r); return !!(l.lock || l.order || [...r.p, ...r.o, ...r.u].some((id) => P(id).lock)) }
+const handCount = computed(() => Object.values(legos.value).filter((l) => l.lock || l.order).length + Object.values(phrases.value).filter((p) => p.lock).length)
+const listed = computed(() => (onlyHand.value ? rounds.value.filter(roundHasHand) : rounds.value))
+const pageRounds = computed(() => listed.value.slice(page.value * PAGE, page.value * PAGE + PAGE))
+const pageFrom = computed(() => (listed.value.length ? page.value * PAGE + 1 : 0))
+const pageTo = computed(() => Math.min(listed.value.length, page.value * PAGE + PAGE))
+const open = computed(() => { const n = Number(route.query.round); return n ? roundByN.value.get(n) || null : null })
+const lego = computed(() => (open.value ? L(open.value) : NONE))
+// The intro clip's text is the TTS script, SSML and all ("…, is: <break time="300ms"/>"): shown readable, pauses marked.
+const readable = (s) => String(s || '').replace(/<break[^>]*\/?>/g, ' ‹pause› ').replace(/<[^>]+>/g, '').replace(/(\s*‹pause›\s*)+/g, ' ‹pause› ').replace(/\s+/g, ' ').trim()
+// The words of the spoken introduction have ONE home, the presentation clip itself (course-editor-router.cjs clipTexts).
+const introText = computed(() => readable(lego.value.clip))
+const practice = computed(() => localOrder.value || (open.value ? open.value.p : []))
 
-/**
- * GHOST ROWS (Astra #120·AK, fix #121·AK). An applied removal has no live row any more, so after a reload its Undo had
- * nowhere to show and the removal became unreversible from the page. Each applied removal whose line is gone is put back
- * into the list as a struck-through ghost at its old place: a phrase under its LEGO, among that LEGO's phrases by id; a
- * LEGO among its seed's LEGOs by id (its phrases went with it and come back with its Undo). A line whose LEGO or seed is
- * gone too goes at the end — never dropped.
- */
-function withGhosts(list, props) {
-  const out = list.slice()
-  const have = new Set(out.map(keyOf))
-  for (const p of props) {
-    if (p.status !== 'applied' || p.action !== 'remove') continue
-    const t = p.kind === 'lego' ? 'l' : 'p'
-    if (have.has(`${t}:${p.key}`)) continue
-    const ghost = Object.freeze({ t, id: p.key, n: 0, tx: p.before.target, kn: p.before.known || '', m: null, ghost: true })
-    let at = -1
-    if (t === 'p') {
-      const legoId = p.key.match(/^S\d+L\d+/)?.[0]
-      const li = out.findIndex((it) => it.t === 'l' && it.id === legoId)
-      if (li >= 0) {
-        at = li + 1
-        while (at < out.length && out[at].t === 'p' && out[at].id < p.key) at++
-      }
-    } else {
-      const seed = p.key.match(/^S\d+/)[0]
-      let last = -1
-      for (let i = 0; i < out.length; i++) {
-        if (out[i].t !== 'l' || !out[i].id.startsWith(seed + 'L')) continue
-        if (out[i].id > p.key) { at = i; break }
-        last = i
-      }
-      if (at < 0 && last >= 0) { at = last + 1; while (at < out.length && out[at].t === 'p') at++ }
-    }
-    if (at < 0) at = out.length
-    out.splice(at, 0, Object.freeze({ ...ghost, n: at > 0 ? out[at - 1].n : 1 }))
-    have.add(`${t}:${p.key}`)
-  }
+// ---- proposals: which one belongs to which line ---------------------------------------------------------------------
+const live = (p) => p.status !== 'undone'
+const lineOf = (p) => p.line || p.key
+function propFor(kind, id) {
+  let out = null
+  for (const p of proposals.value) if (live(p) && p.kind === kind && (p.action === 'edit' || p.action === 'remove') && lineOf(p) === id) out = p
   return out
 }
-function say(text, bad = false) { msg.value = text; msgBad.value = bad }
+const propIntro = computed(() => open.value && proposals.value.filter((p) => live(p) && p.action === 'intro' && lineOf(p) === open.value.l).pop())
+const propOrder = computed(() => open.value && proposals.value.filter((p) => live(p) && p.action === 'order' && lineOf(p) === open.value.l).pop())
+// An applied add/copy shows its Undo on the line it made; a pending one is listed under the practice phrases.
+const newLineProp = (id) => proposals.value.find((p) => live(p) && p.status === 'applied' && p.newId === id) || null
+const pendingNew = computed(() => (open.value ? proposals.value.filter((p) => live(p) && p.status !== 'applied' && (p.action === 'add' || p.action === 'copy') && p.lego === open.value.l) : []))
+
+// ---- the small pieces of a row (render functions: one file, no new components) -------------------------------------
+const fmtWhen = (t) => { try { return new Date(t).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) } catch { return '' } }
+const LineTags = (props) => {
+  const l = props.line, kids = []
+  if (l.lock) kids.push(h('span', { class: 'tag hand' }, props.prop && props.prop.action === 'copy' ? '⧉ Copy · hand-edited · overrides seed rules' : '✎ Hand-edited · overrides seed rules'))
+  if (l.f && l.f.flagged) kids.push(h('span', { class: 'tag flag' }, '⚑ flagged' + (l.f.note ? ` — ${l.f.note}` : '')))
+  if (l.held) kids.push(h('div', { class: 'held' }, `On ${fmtWhen(l.held.at)} a regeneration tried to change this line; your version was kept.`))
+  return kids.length ? h('div', { class: 'tags' }, kids) : null
+}
+LineTags.props = ['line', 'prop']
+const AudioNeed = (props) => h('div', { class: 'audio-need' }, [
+  `🔇 needs new audio (${props.line.m.join(', ')})`,
+  audioMode.value === 'tts' && canEdit.value ? h('button', { class: 'mini', onClick: () => renderAsk(props.kind, props.id, props.line.m.find((s) => s !== 'known') || props.line.m[0]) }, 'Make new audio') : (audioMode.value === 'tts' ? null : ' — on the booth\'s Re-record card'),
+  ...['known', 'target1', 'target2'].map((role) => {
+    const st = renderState[`${props.kind}:${props.id}:${role}`]
+    return st ? h('span', { class: 'render' }, [st.text, st.canConfirm ? h('button', { class: 'mini go', onClick: () => renderConfirm(props.kind, props.id, role) }, st.lib ? 'Link it' : 'Confirm render') : null]) : null
+  }),
+])
+AudioNeed.props = ['kind', 'id', 'line']
+const EditForm = (props) => {
+  const e = editing[props.k]
+  if (!e) return null
+  const field = (label, keyName, attrs = {}) => h('label', null, [label, h(attrs.area ? 'textarea' : 'input', { value: e[keyName], rows: attrs.area ? 3 : undefined, lang: attrs.lang, onInput: (ev) => { e[keyName] = ev.target.value } })])
+  const romanStale = e.tx.trim() !== e.orig.tx && e.ro === e.orig.ro && e.orig.ro
+  return h('div', { class: 'edit' }, [
+    field('Korean', 'tx', { lang: 'ko' }),
+    field('Romanisation', 'ro'),
+    romanStale ? h('div', { class: 'hint warn' }, 'The Korean changed but the romanisation did not: unless you change it, it will be cleared.') : null,
+    field('English', 'kn'),
+    props.kind === 'lego' && audioMode.value === 'tts' ? field('Full introduction (what the spoken intro says; ‹pause› marks a pause)', 'intro', { area: true }) : null,
+    ...editWarnings(props.kind, props.id, e).map((w) => h('div', { class: 'hint warn' }, w)),
+    h('div', { class: 'btns' }, [
+      h('button', { class: 'mini go', disabled: !!busy[props.k], onClick: () => proposeEdit(props.kind, props.id) }, 'Propose change'),
+      props.kind === 'phrase' ? h('button', { class: 'mini warn', disabled: !!busy[props.k], onClick: () => proposeRemove(props.id) }, 'Propose removal') : null,
+      h('button', { class: 'mini', onClick: () => { delete editing[props.k] } }, 'Cancel'),
+    ]),
+  ])
+}
+EditForm.props = ['k', 'kind', 'id']
 function statusLabel(p) {
-  return { pending: 'Proposed — not applied', applied: p.action === 'remove' ? 'Removed (applied)' : 'Applied ✓', stale: 'Stale — the live line changed', failed: 'Failed' }[p.status] || p.status
+  const what = { order: 'New order', add: 'New phrase', copy: 'Copy', remove: 'Remove this line', intro: 'New intro wording' }[p.action]
+  if (p.status === 'pending') return `${what || 'Proposed'} — not applied yet`
+  if (p.status === 'applied') return 'Applied'
+  if (p.status === 'stale') return 'Stale — the live line changed'
+  return p.status
 }
-function audioHint(p) {
-  if (p.status === 'applied') {
-    if (!p.needsAudio) return 'Same spoken words: the recording was kept.'
-    return audioMode.value === 'tts' ? (p.audioQueued ? 'Words changed: new audio queued for the next audio pass.' : 'Words changed: needs new audio.') : 'Words changed: on the booth\'s Re-record card.'
+const PropBox = (props) => {
+  const p = props.p
+  if (!p) return null
+  const diffs = []
+  if (p.action === 'edit' && p.after) {
+    for (const [k, cls] of [['target', ''], ['roman', 'ro'], ['known', 'en'], ['intro', 'intro']]) {
+      if (p.after[k] === undefined || (p.after[k] ?? '') === (p.before[k] ?? '')) continue
+      diffs.push(h('div', { class: `diff ${cls}` }, [h('s', null, p.before[k] || '—'), ' → ', h('ins', null, p.after[k] || '(cleared)')]))
+    }
+  } else if (p.action === 'add' || p.action === 'copy') {
+    diffs.push(h('div', { class: 'diff' }, [h('ins', null, p.after.target), p.after.roman ? ` · ${p.after.roman}` : '', ' · ', h('span', { class: 'en' }, p.after.known)]))
+  } else if (p.action === 'order') {
+    diffs.push(h('div', { class: 'hint' }, `Practice order: ${p.after.order.length} phrases in the order you set.`))
+  } else if (p.action === 'intro') {
+    diffs.push(h('div', { class: 'diff intro' }, [h('s', null, p.before.intro || '—'), ' → ', h('ins', null, p.after.intro)]))
   }
-  return same(p.before.target, p.after.target) && same(p.before.known, p.after.known)
-    ? 'Capitals/punctuation only: on Apply the recording is kept.'
-    : 'Spoken words change: on Apply this line will need new audio.'
+  const hint = p.action === 'intro'
+    ? (p.status === 'applied'
+      ? `New intro clip linked (${p.newClip && p.newClip.source === 'library' ? 'found in the library, no cost' : `rendered${p.newClip && p.newClip.charsSpent ? `, ${p.newClip.charsSpent} characters` : ''}`}). The old clip is kept: Undo links it back.`
+      : 'Apply makes a new intro clip of these words (the cost is shown first). The old clip is kept.')
+    : p.status === 'applied'
+    ? (p.needsAudio ? (audioMode.value === 'tts' ? (p.audioQueued ? 'New audio queued for the next audio pass.' : 'Needs new audio.') : 'On the booth\'s Re-record card.') : (p.action === 'edit' ? 'Same spoken words: the recording was kept.' : ''))
+    : (p.action === 'edit' ? (sameWords(p) ? 'Capitals/punctuation only: the recording is kept.' : 'Spoken words change: this line will need new audio.') : '')
+  const k = `prop:${p.id}`
+  return h('div', { class: ['prop', p.status] }, [
+    h('div', { class: 'ph' }, [h('b', null, statusLabel(p)), h('small', null, p.status === 'applied' ? `by ${p.appliedBy} · ${fmtWhen(p.appliedAt)}` : `by ${p.proposedBy}`)]),
+    ...diffs,
+    hint ? h('div', { class: 'hint' }, hint) : null,
+    ...(p.status === 'pending' ? proposalWarnings(p).map((w) => h('div', { class: 'hint warn' }, w)) : []),
+    p.status === 'applied' && p.locked === false ? h('div', { class: 'hint warn' }, 'Applied before the hand-edit lock was set up: not protected from regeneration.') : null,
+    p.error ? h('p', { class: 'msg bad' }, p.error) : null,
+    canEdit.value ? h('div', { class: 'btns' }, p.status === 'pending'
+      ? [h('button', { class: 'mini go', disabled: !!busy[k], onClick: () => act(p, 'apply') }, 'Apply'), h('button', { class: 'mini', disabled: !!busy[k], onClick: () => act(p, 'discard') }, 'Discard')]
+      : p.status === 'applied'
+        ? [h('button', { class: 'mini warn', disabled: !!busy[k], onClick: () => act(p, 'undo') }, '↶ Undo')]
+        : [h('button', { class: 'mini', disabled: !!busy[k], onClick: () => act(p, 'discard') }, 'Discard')]) : null,
+  ])
+}
+PropBox.props = ['p']
+// The server's spokenForm (course-editor-ops.cjs), mirrored for the hint only — Apply decides on the server.
+const spoken = (s) => String(s || '').toLowerCase().replace(/(?<=[\p{L}\p{N}])['‘’ʼ\-‐‑]+(?=[\p{L}\p{N}])/gu, '').replace(/[\p{P}\p{S}]+/gu, ' ').replace(/\s+/g, ' ').trim()
+const sameWords = (p) => spoken(p.before.target) === spoken(p.after.target) && spoken(p.before.known) === spoken(p.after.known)
+
+// ---- warnings (Tom's Watson's impact check #129·AL, verified 2026-11-24): they WARN and never block Aran's edit -------
+// The phrase floor is the course builder's (phraseFloor, sent per LEGO as `floor`): S1L1 none, S1–S3 one of each, from
+// S4 three BUILD + five USE. "Taught" is a word-level check against the intro items and phrases of rounds up to this one:
+// Korean particles make it approximate, so it says "may", and it is for BUILD phrases only (BUILD uses taught words only).
+const roundRows = (r) => [...new Set([...r.p, ...r.o, ...r.u])]
+function floorWarning(r, removing) {
+  const f = L(r).floor
+  if (!f) return null
+  const rows = roundRows(r).filter((id) => id !== removing)
+  const b = rows.filter((id) => P(id).role !== 'use').length, u = rows.filter((id) => P(id).role === 'use').length
+  const short = [b < f.minBuild ? `${b} BUILD (floor ${f.minBuild})` : null, u < f.minUse ? `${u} USE (floor ${f.minUse})` : null].filter(Boolean)
+  return short.length ? `This round would have ${short.join(' and ')} — below the course builder's floor.` : null
+}
+const tokens = (s) => String(s || '').replace(/[\p{P}\p{S}]+/gu, ' ').split(/\s+/).filter(Boolean)
+let taughtCache = { n: 0, set: null, src: null }
+function taughtBy(n) {
+  if (taughtCache.n === n && taughtCache.src === rounds.value && taughtCache.set) return taughtCache.set
+  const set = new Set()
+  for (const r of rounds.value) {
+    if (r.n > n) continue
+    for (const w of tokens(L(r).tx)) set.add(w)
+    if (r.n < n) for (const id of [...r.p, ...r.o]) for (const w of tokens(P(id).tx)) set.add(w)
+  }
+  taughtCache = { n, set, src: rounds.value }
+  return set
+}
+function untaught(target, r) {
+  if (!r) return []
+  const taught = taughtBy(r.n)
+  return [...new Set(tokens(target).filter((w) => !taught.has(w)))]
+}
+const roundOfLego = (legoId) => rounds.value.find((r) => r.l === legoId) || null
+function vocabWarning(target, role, r) {
+  if (role === 'use' || !r) return null
+  const odd = untaught(target, r)
+  return odd.length ? `BUILD phrases use taught words only — these may not be taught by round ${r.n}: ${odd.join(', ')}` : null
+}
+function editWarnings(kind, id, e) {
+  if (kind !== 'phrase' || !open.value || e.tx.trim() === e.orig.tx) return []
+  return [vocabWarning(e.tx.trim(), P(id).role, open.value)].filter(Boolean)
+}
+function proposalWarnings(p) {
+  const r = roundOfLego(p.lego || (p.kind === 'lego' ? lineOf(p) : null))
+  if (!r) return []
+  if (p.action === 'remove' && p.kind === 'phrase') return [floorWarning(r, lineOf(p))].filter(Boolean)
+  if (p.action === 'add') return [vocabWarning(p.after.target, 'build', r)].filter(Boolean)
+  if (p.action === 'edit' && p.kind === 'phrase' && p.after.target !== p.before.target) return [vocabWarning(p.after.target, P(lineOf(p)).role, r)].filter(Boolean)
+  return []
 }
 
-// ---- windowing (as PhraseProof.vue) --------------------------------------------------------------------------------
-const measured = new Map()
-const measureTick = ref(0)
-const width = ref(360)
-const viewTop = ref(0)
-const viewH = ref(800)
-const OVERSCAN = 700
-function estimate(it) {
-  const textW = Math.max(120, width.value - 60)
-  const lines = (s, px) => Math.max(1, Math.ceil(((s || '').length * px + 26) / textW))
-  return 6 + lines(it.tx, 15) * 23 + lines(it.kn, 8) * 19 + (it.m ? 24 : 0)
-}
-const tops = computed(() => {
-  void measureTick.value
-  const list = shown.value
-  const h = new Float64Array(list.length)
-  for (let i = 0; i < list.length; i++) h[i] = measured.get(keyOf(list[i])) ?? estimate(list[i])
-  return prefixTops(h)
-})
-const range = computed(() => windowRange(tops.value, viewTop.value, viewTop.value + viewH.value, OVERSCAN))
-const padTop = computed(() => tops.value[range.value[0]] || 0)
-const padBottom = computed(() => tops.value[tops.value.length - 1] - (tops.value[range.value[1]] || 0))
-const rendered = computed(() => {
-  const list = shown.value
-  const [a, b] = range.value
-  const out = []
-  for (let i = a; i < b; i++) out.push({ it: list[i], k: keyOf(list[i]), belt: beltIndex(list[i].n, total.value) })
-  return out
-})
-const listTop = () => (listEl.value ? listEl.value.getBoundingClientRect().top + window.scrollY : 0)
-function readView() { viewTop.value = window.scrollY - listTop(); viewH.value = window.innerHeight }
-let ro = null
-let pendingMeasure = false
-function onResized(entries) {
-  let changed = false
-  const anchorBefore = rowAt(tops.value, viewTop.value)
-  const oldTop = tops.value[anchorBefore]
-  for (const e of entries) {
-    const k = e.target.dataset.k
-    if (!k) continue
-    const box = e.borderBoxSize && e.borderBoxSize[0]
-    const h = Math.round((box ? box.blockSize : e.target.getBoundingClientRect().height) * 10) / 10
-    if (h > 0 && measured.get(k) !== h) { measured.set(k, h); changed = true }
-  }
-  if (!changed || pendingMeasure) { if (changed) measureTick.value++; return }
-  pendingMeasure = true
-  measureTick.value++
-  nextTick(() => {
-    pendingMeasure = false
-    const delta = tops.value[anchorBefore] - oldTop
-    if (delta && viewTop.value > 0) window.scrollBy(0, delta)
-    readView()
-  })
-}
-function observeRows() {
-  if (!ro || !listEl.value) return
-  ro.disconnect()
-  for (const el of listEl.value.querySelectorAll('.row')) ro.observe(el)
-}
-watch(rendered, () => nextTick(observeRows))
-let raf = 0
-function onScroll() { if (!raf) raf = requestAnimationFrame(() => { raf = 0; readView(); rememberPlace() }) }
-function onWindowResize() {
-  const w = listEl.value ? listEl.value.clientWidth : 360
-  if (Math.abs(w - width.value) > 1) { width.value = w; measured.clear(); measureTick.value++ }
-  readView()
-}
-const placeKey = (code) => `courseEditor:place:${code}`
-const navbarH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-navbar-height')) || 0
-const coveredTop = () => navbarH() + (topEl.value?.offsetHeight || 0)
-let placeTimer = 0
-function rememberPlace() {
-  if (only.value || loading.value || !shown.value.length) return
-  clearTimeout(placeTimer)
-  const code = course.value
-  placeTimer = setTimeout(() => {
-    const it = shown.value[rowAt(tops.value, viewTop.value + coveredTop())]
-    try { if (it && course.value === code) localStorage.setItem(placeKey(code), keyOf(it)) } catch { /* private mode */ }
-  }, 400)
-}
-async function restorePlace() {
-  let k = null
-  try { k = localStorage.getItem(placeKey(course.value)) } catch { /* ignore */ }
-  const i = k ? shown.value.findIndex((it) => keyOf(it) === k) : -1
-  await nextTick()
-  window.scrollTo(0, i > 0 ? listTop() + tops.value[i] - coveredTop() : 0)
-  readView()
-}
-
-// ---- loading -------------------------------------------------------------------------------------------------------
+// ---- loading & navigation -----------------------------------------------------------------------------------------
 let loadGen = 0
-const clear = (o) => { for (const k of Object.keys(o)) delete o[k] }
 async function load() {
   const gen = ++loadGen
   const code = course.value
-  loading.value = true; loadError.value = ''; items.value = []; total.value = 0
-  for (const o of [flags, proposals, rows, editing, busy, renderState]) clear(o)
-  measured.clear()
+  loading.value = !rounds.value.length; loadError.value = ''
   try {
     const r = await fetch(base(code) + '/')
     const body = await r.json().catch(() => ({}))
     if (gen !== loadGen) return
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    for (const it of body.items) if (it.f) flags[keyOf(it)] = { ...it.f }
-    for (const p of body.proposals || []) proposals[`${p.kind === 'lego' ? 'l' : 'p'}:${p.key}`] = p
+    rounds.value = Object.freeze(body.rounds || [])
+    legos.value = Object.freeze(body.legos || {})
+    phrases.value = Object.freeze(body.phrases || {})
+    proposals.value = body.proposals || []
     audioMode.value = body.audioMode || 'tts'
-    usesT2.value = !!body.usesTarget2
-    total.value = body.total
-    items.value = Object.freeze(withGhosts(body.items.map((it) => Object.freeze({ t: it.t, id: it.id, n: it.n, tx: it.tx, kn: it.kn, m: it.m || null })), body.proposals || []))
+    lockReady.value = !!body.lockReady
+    readAt.value = body.readAt || ''
+    canEdit.value = !!body.canEdit
+    localOrder.value = null
   } catch (e) {
     if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
   } finally { if (gen === loadGen) loading.value = false }
-  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace() }
 }
 function pick(code) {
   if (!code || code === course.value) return
   course.value = code
+  rounds.value = []
   router.replace({ name: 'LiveCourseEditor', params: { courseCode: code } })
-  only.value = ''
   load()
 }
-function setOnly(v) {
-  only.value = only.value === v ? '' : v
-  nextTick(() => { if (only.value) window.scrollTo(0, 0); else restorePlace() })
+function setPage(n) { page.value = Math.max(0, n); window.scrollTo(0, 0) }
+function toggleHand() { onlyHand.value = !onlyHand.value; page.value = 0 }
+function openRound(n) {
+  if (!roundByN.value.get(n)) return say(`There is no round ${n}.`, true)
+  for (const k of Object.keys(editing)) delete editing[k]
+  adding.value = null; localOrder.value = null
+  router.push({ query: { ...route.query, round: String(n) } })
+  window.scrollTo(0, 0)
 }
+function closeRound() {
+  const n = open.value ? open.value.n : 1
+  const q = { ...route.query }; delete q.round
+  router.push({ query: q })
+  const i = listed.value.findIndex((r) => r.n === n)
+  page.value = Math.max(0, Math.floor((i < 0 ? 0 : i) / PAGE))
+}
+function jump() { const n = Number(jumpTo.value); if (n) openRound(n); jumpTo.value = '' }
+watch(() => route.query.round, () => { msg.value = '' })
 
-// ---- editing → proposals -------------------------------------------------------------------------------------------
+// ---- proposing ----------------------------------------------------------------------------------------------------
 async function call(method, path, body) {
   const r = await fetch(base(course.value) + path, { method, headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined })
-  const out = await r.json().catch(() => ({}))
-  return { ok: r.ok, status: r.status, body: out }
+  return { ok: r.ok, status: r.status, body: await r.json().catch(() => ({})) }
 }
-function openRow(it) {
-  if (it.ghost) return // a removed line: nothing to edit until its Undo brings it back
-  const k = keyOf(it)
+function startEdit(kind, id, line) {
+  const k = `${kind}:${id}`
   if (editing[k]) return
-  editing[k] = { tx: cur(it).tx, kn: cur(it).kn }
+  const orig = { tx: line.tx, kn: line.kn || '', ro: line.ro || '', intro: kind === 'lego' ? readable(line.clip) : '' }
+  editing[k] = { ...orig, orig }
 }
-function closeRow(it) { delete editing[keyOf(it)] }
-async function propose(it, action) {
-  const k = keyOf(it)
-  const e = editing[k]
-  const body = { kind: kindOf(it), id: it.id, action }
-  if (action === 'edit') {
-    if (e.tx.trim() !== cur(it).tx) body.target = e.tx
-    if (e.kn.trim() !== cur(it).kn) body.known = e.kn
-    if (body.target == null && body.known == null) return say('Nothing changed on that line.', true)
-  }
+async function propose(k, body, okText) {
   busy[k] = true
   try {
     const r = await call('POST', '/proposals', body)
     if (!r.ok) throw new Error(r.body.error || `HTTP ${r.status}`)
-    proposals[k] = r.body.proposal
-    delete editing[k]
-    say(`${it.id}: proposed — nothing in the course has changed yet. Tap Apply to make it real.`)
-  } catch (err) { say(`${it.id}: not proposed — ${err.message}`, true) } finally { delete busy[k] }
-}
-async function discard(it) {
-  const k = keyOf(it)
-  busy[k] = true
-  try {
-    const r = await call('DELETE', `/proposals/${proposals[k].id}`)
-    if (!r.ok) throw new Error(r.body.error || `HTTP ${r.status}`)
-    delete proposals[k]
-    say(`${it.id}: discarded.`)
-  } catch (err) { say(`${it.id}: ${err.message}`, true) } finally { delete busy[k] }
-}
-function takeRow(it, row) {
-  if (!row) return
-  const missing = ['known', 'target1', ...(usesT2.value ? ['target2'] : [])].filter((s) => !row.audio[s])
-  rows[keyOf(it)] = { tx: row.tx, kn: row.kn, m: missing.length ? missing : null }
-}
-async function apply(it) {
-  const k = keyOf(it)
-  busy[k] = true
-  try {
-    const r = await call('POST', `/proposals/${proposals[k].id}/apply`)
-    if (r.body.proposal) proposals[k] = r.body.proposal
-    if (!r.ok) throw new Error(r.body.error || `HTTP ${r.status}`)
-    takeRow(it, r.body.row)
-    say(`${it.id}: applied. ↶ Undo is on the line.`)
+    proposals.value = [...proposals.value.filter((p) => p.id !== r.body.proposal.id && !(p.status === 'pending' && p.kind === r.body.proposal.kind && p.key === r.body.proposal.key)), r.body.proposal]
+    say(okText || 'Proposed — nothing in the course has changed yet. Tap Apply to make it real.')
     return true
-  } catch (err) { say(`${it.id}: not applied — ${err.message}`, true); return false } finally { delete busy[k] }
+  } catch (e) { say(`Not proposed — ${e.message}`, true); return false } finally { delete busy[k] }
 }
-async function applyAll() {
-  const list = items.value.filter((it) => proposals[keyOf(it)]?.status === 'pending')
-  if (!list.length || !confirm(`Apply ${list.length} change(s) to the live course?`)) return
-  busyAll.value = true
-  let done = 0
-  for (const it of list) if (await apply(it)) done++
-  busyAll.value = false
-  say(`Applied ${done} of ${list.length}.${done < list.length ? ' The rest are marked on their lines.' : ''}`, done < list.length)
+async function proposeEdit(kind, id) {
+  const k = `${kind}:${id}`
+  const e = editing[k]
+  const body = { kind, id, action: 'edit' }
+  const tx = e.tx.trim(), kn = e.kn.trim(), ro = e.ro.trim()
+  if (tx !== e.orig.tx) body.target = tx
+  if (kn !== e.orig.kn) body.known = kn
+  if (ro !== e.orig.ro) body.roman = ro
+  else if (body.target != null && e.orig.ro) body.roman = ''   // the old romanisation would spell the old words
+  // The intro wording is its own proposal (its Apply makes a new intro clip), proposed alongside any text change.
+  const introChanged = kind === 'lego' && readable(e.intro) !== readable(e.orig.intro)
+  const textChanged = body.target != null || body.known != null || body.roman != null
+  if (!textChanged && !introChanged) return say('Nothing changed.', true)
+  let ok = true
+  if (textChanged) ok = await propose(k, body)
+  if (ok && introChanged) ok = await propose(k, { kind, id, action: 'edit', intro: readable(e.intro) },
+    textChanged ? 'Both proposed — apply the words first, then the intro.' : 'Intro wording proposed — Apply shows the cost of its new audio first.')
+  if (ok) delete editing[k]
 }
-async function undo(it) {
-  const k = keyOf(it)
+async function proposeRemove(id) { if (await propose(`phrase:${id}`, { kind: 'phrase', id, action: 'remove' })) delete editing[`phrase:${id}`] }
+function copy(id) { propose(`copy:${id}`, { kind: 'phrase', id, action: 'copy' }, 'Copy proposed — Apply adds it as a new line (an exact copy plays once per round until you edit it).') }
+async function proposeAdd() {
+  const a = adding.value
+  if (!a.target.trim() || !a.known.trim()) return say('A new phrase needs Korean and English.', true)
+  if (await propose('add', { kind: 'round', id: open.value.l, action: 'add', target: a.target, known: a.known, roman: a.roman })) adding.value = null
+}
+async function act(p, what) {
+  const k = `prop:${p.id}`
+  if (what === 'apply' && !confirm('Apply this change to the live course?')) return
   busy[k] = true
   try {
-    const r = await call('POST', `/proposals/${proposals[k].id}/undo`)
-    if (!r.ok) throw new Error(r.body.error || `HTTP ${r.status}`)
-    delete proposals[k]
-    if (r.body.row) takeRow(it, r.body.row)
-    say(`${it.id}: undone — the line is back as it was.`)
-    if (it.ghost) load() // the line is live again: re-read it in its real place
-  } catch (err) { say(`${it.id}: not undone — ${err.message}`, true) } finally { delete busy[k] }
+    let r = what === 'discard' ? await call('DELETE', `/proposals/${p.id}`) : await call('POST', `/proposals/${p.id}/${what}`)
+    // A NEW INTRO WORDING's Apply is a dry run first: the audio route says whether the library has it or what it costs.
+    if (r.ok && what === 'apply' && r.body.needsConfirm) {
+      const d = r.body.render || {}
+      const cost = d.source === 'library' ? 'The library already has a clip of these words: no cost.'
+        : `This renders a new intro clip: ${d.wouldSpendChars == null ? 'an unknown number of' : Number(d.wouldSpendChars).toLocaleString()} characters.`
+      if (!confirm(`${cost}\n\nMake the new intro and link it? The old clip is kept, and Undo links it back.`)) return say('Not applied — nothing changed.')
+      r = await call('POST', `/proposals/${p.id}/apply`, { confirm: true })
+    }
+    if (!r.ok) {
+      if (r.body.proposal) proposals.value = proposals.value.map((x) => (x.id === p.id ? r.body.proposal : x))
+      throw new Error(r.body.error || `HTTP ${r.status}`)
+    }
+    say(what === 'apply' ? 'Applied. ↶ Undo is on the line.' : what === 'undo' ? 'Undone — back as it was.' : 'Discarded.')
+    if (what === 'discard') proposals.value = proposals.value.filter((x) => x.id !== p.id)
+    else await load()   // the round itself may have changed shape: read it again as the player would play it
+  } catch (e) { say(`${what} failed — ${e.message}`, true) } finally { delete busy[k] }
 }
 
+// ---- drag to reorder (pointer events: works with a finger and a mouse) ----------------------------------------------
+function dragStart(ev, id) {
+  ev.preventDefault()
+  localOrder.value = [...practice.value]
+  drag.value = { id, pointer: ev.pointerId }
+  window.addEventListener('pointermove', dragMove)
+  window.addEventListener('pointerup', dragEnd, { once: true })
+  window.addEventListener('pointercancel', dragEnd, { once: true })
+}
+function dragMove(ev) {
+  if (!drag.value || !dlist.value) return
+  const rows = [...dlist.value.querySelectorAll('.row[data-id]')]
+  const order = localOrder.value
+  const from = order.indexOf(drag.value.id)
+  let to = rows.findIndex((el) => { const b = el.getBoundingClientRect(); return ev.clientY < b.top + b.height / 2 })
+  if (to < 0) to = rows.length - 1
+  else if (to > from) to -= 1
+  // BUILD before USE, always (the player keeps them apart): a phrase moves only among phrases of its own kind.
+  const role = (id) => (P(id).role === 'use' ? 'use' : 'build')
+  const mine = order.map((id, i) => (role(id) === role(drag.value.id) ? i : -1)).filter((i) => i >= 0)
+  to = Math.min(Math.max(to, mine[0]), mine[mine.length - 1])
+  if (to !== from && to >= 0) { const next = order.slice(); next.splice(from, 1); next.splice(to, 0, drag.value.id); localOrder.value = next }
+  if (ev.clientY < 60) window.scrollBy(0, -12); else if (ev.clientY > window.innerHeight - 60) window.scrollBy(0, 12)
+}
+async function dragEnd() {
+  window.removeEventListener('pointermove', dragMove)
+  const moved = localOrder.value && open.value && localOrder.value.join() !== open.value.p.join()
+  drag.value = null
+  if (!moved) { localOrder.value = null; return }
+  const ok = await propose(`order:${open.value.l}`, { kind: 'round', id: open.value.l, action: 'order', order: localOrder.value },
+    'New order proposed — Apply makes the player use it for this round (practice phrases only; BUILD stays before USE).')
+  if (!ok) localOrder.value = null
+}
+onBeforeUnmount(() => window.removeEventListener('pointermove', dragMove))
+
 // ---- make new audio: a dry run first (library + cost), a second tap renders ----------------------------------------
-const roleFor = (it) => missingOf(it).find((s) => s !== 'known') || missingOf(it)[0] || 'target1'
-async function renderAsk(it) {
-  const k = keyOf(it)
-  const role = roleFor(it)
+async function renderAsk(kind, id, role) {
+  const k = `${kind}:${id}:${role}`
   renderState[k] = { text: `Checking ${role}…` }
-  const r = await call('POST', '/render', { kind: kindOf(it), id: it.id, role })
+  const r = await call('POST', '/render', { kind, id, role })
   const b = r.body
   if (!r.ok || b.ok === false) { renderState[k] = { text: `Refused: ${b.code || r.status} — ${b.error || ''}` }; return }
-  // A dry run answers wouldSpendChars (charsSpent is always 0 on a dry run — shared/audio-render-entry.cjs). A library hit
-  // costs nothing but is not linked yet: its confirm tap links it into this line's slot.
   const lib = b.source === 'library'
   const n = b.wouldSpendChars ?? b.chars
-  renderState[k] = { role, lib, canConfirm: true,
-    text: lib ? `${role}: found in the library (no cost) — tap to link it to this line.` : `${role}: would render ${n == null ? 'an unknown number of' : Number(n).toLocaleString()} characters.` }
+  renderState[k] = { lib, canConfirm: true, text: lib ? `${role}: found in the library (no cost).` : `${role}: would render ${n == null ? 'an unknown number of' : Number(n).toLocaleString()} characters.` }
 }
-async function renderConfirm(it) {
-  const k = keyOf(it)
-  const role = renderState[k]?.role || roleFor(it)
+async function renderConfirm(kind, id, role) {
+  const k = `${kind}:${id}:${role}`
   const lib = renderState[k]?.lib
-  if (!confirm(lib ? `Link the library ${role} clip to ${it.id}? No cost.` : `Render new ${role} audio for ${it.id}? This spends TTS characters.`)) return
+  if (!confirm(lib ? `Link the library ${role} clip to ${id}? No cost.` : `Render new ${role} audio for ${id}? This spends TTS characters.`)) return
   renderState[k] = { text: lib ? 'Linking…' : 'Rendering…' }
-  const r = await call('POST', '/render', { kind: kindOf(it), id: it.id, role, confirm: true })
+  const r = await call('POST', '/render', { kind, id, role, confirm: true })
   const b = r.body
   if (!r.ok || b.ok === false) { renderState[k] = { text: `Refused: ${b.code || r.status} — ${b.error || ''}` }; return }
   const linked = b.slotLinked === true || b.slotLinked === 'already'
-  renderState[k] = { text: linked ? `Done: ${b.source}, linked to this line's ${role}.` : `${b.source} ${b.audioId || ''} — NOT linked: ${b.slotNote || 'no clip id came back'}` }
-  if (linked) { const m = missingOf(it).filter((s) => s !== role); rows[k] = { ...cur(it), m: m.length ? m : null } }
+  renderState[k] = { text: linked ? `Done: ${b.source}, linked.` : `${b.source} ${b.audioId || ''} — not linked: ${b.slotNote || 'no clip id came back'}` }
+  if (linked) load()
 }
 
-// ---- flags (the proof pages' tables, unchanged) ---------------------------------------------------------------------
-const timers = {}
-async function saveFlag(code, it, f) {
-  const r = await fetch(base(code) + '/flag', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind: kindOf(it), id: it.id, flagged: f.flagged, note: f.note }) })
-  if (!r.ok) { const b = await r.json().catch(() => ({})); say(`${it.id}: flag not saved — ${b.error || r.status}`, true) }
-}
-const current = (it) => flags[keyOf(it)] || (flags[keyOf(it)] = { flagged: false, note: '' })
-function flip(it) { const f = current(it); f.flagged = !f.flagged; saveFlag(course.value, it, { ...f }) }
-function onNote(it, v) {
-  const f = current(it); f.note = v
-  const k = keyOf(it), code = course.value
-  clearTimeout(timers[k])
-  timers[k] = setTimeout(() => { delete timers[k]; saveFlag(code, it, { ...f }) }, 700)
-}
-function saveNow(it) { const k = keyOf(it); if (!timers[k]) return; clearTimeout(timers[k]); delete timers[k]; saveFlag(course.value, it, { ...current(it) }) }
-
-onMounted(() => {
-  if (typeof ResizeObserver !== 'undefined') ro = new ResizeObserver(onResized)
-  window.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener('resize', onWindowResize)
-  if (course.value) load()
-})
-onBeforeUnmount(() => {
-  ro?.disconnect()
-  window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('resize', onWindowResize)
-})
+if (course.value) load()
 </script>
 
 <style scoped>
-/* Own light palette, as the proof pages: dark ink on white whatever Popty's theme (Aran uses light mode). */
-.ce {
-  --ink: #0b1220; --muted: #475569; --line: #cbd5e1; --en: #1e40af; --amber: #b45309; --good: #047857; --bad: #b91c1c;
-  max-width: 760px; min-height: 100vh; margin: 0 auto; padding: 0 0.5rem 5rem; background: #fff; color: var(--ink); color-scheme: light;
+/* Light always (Aran uses light mode): dark ink on white whatever Popty's theme. */
+.ft {
+  --ink: #0b1220; --muted: #475569; --line: #cbd5e1; --en: #1e40af; --violet: #6d28d9; --amber: #b45309; --good: #047857; --bad: #b91c1c;
+  max-width: 980px; min-height: 100vh; margin: 0 auto; padding: 0 0.5rem 5rem; background: #fff; color: var(--ink); color-scheme: light;
 }
-/* Under Popty's sticky navbar (job #562): top 0 would slide this header beneath it. */
-.top { position: sticky; top: var(--app-navbar-height, 0px); z-index: 5; background: #fff; padding: 0.5rem 0.25rem 0.35rem; border-bottom: 1px solid var(--line); }
-.bar { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin: 0.2rem 0; }
-h1 { font-size: 1.15rem; margin: 0; flex: 1; }
+.top { background: #fff; padding: 0.5rem 0.25rem 0.35rem; border-bottom: 1px solid var(--line); }
+.bar { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.2rem 0; }
+h1 { font-size: 1.35rem; margin: 0; flex: 1; }
 button { font: inherit; color: inherit; cursor: pointer; }
+.who { font-size: 0.82rem; font-weight: 700; color: #7c2d12; background: #ffedd5; border: 1px solid #fdba74; border-radius: 999px; padding: 0.2rem 0.65rem; }
+.who.view { color: var(--muted); background: #f1f5f9; border-color: var(--line); }
 .pick { font: inherit; font-size: 16px; padding: 0.3rem 0.5rem; min-height: 38px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
-.pill { background: #f1f5f9; border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.7rem; min-height: 36px; font-size: 0.82rem; white-space: nowrap; color: var(--ink); }
+.pill { background: #f1f5f9; border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; min-height: 36px; font-size: 0.85rem; color: var(--ink); }
 .pill.on { background: #f59e0b; border-color: transparent; color: #111; }
-.pill.apply { background: #047857; color: #fff; border-color: transparent; }
-.pill:disabled { opacity: 0.6; }
-.count { font-size: 0.8rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
-.msg { font-size: 0.85rem; color: var(--good); margin: 0.25rem 0 0; }
-.msg.bad { color: var(--bad); }
+.count { font-size: 0.85rem; color: var(--muted); margin-left: auto; }
+.lockwarn { font-size: 0.8rem; color: #7c2d12; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 0.35rem 0.55rem; margin: 0.3rem 0 0; }
 .note { color: var(--muted); padding: 1rem 0.25rem; }
-.picker { padding: 0.5rem 0.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
-.pickbtn { text-align: left; font-size: 1.1rem; padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: #f8fafc; color: var(--ink); }
+.note.sm { padding: 0.2rem 0.5rem; font-size: 0.85rem; }
+.picker { padding: 0.75rem 0.25rem; }
+.pickbtn { width: 100%; text-align: left; font-size: 1.1rem; padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: #f8fafc; color: var(--ink); }
 .pickbtn small { color: var(--muted); margin-left: 0.4rem; font-size: 0.8rem; }
 
-.list { overflow-anchor: none; }
-.row { position: relative; padding: 4px 0 4px 11px; border-top: 1px solid #eef2f6; }
-.row.lego { background: #f1f5f9; border-top: 1px solid #94a3b8; }
-.row.flagged { background: #fff7e6; }
-.row.pending { box-shadow: inset 3px 0 0 #1d4ed8; }
-.row.removed .tx, .row.removed .kn { text-decoration: line-through; color: #94a3b8; }
-.stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
-.stripe.white { box-shadow: inset 1px 0 #94a3b8, inset -1px 0 #94a3b8; }
-.line { display: flex; align-items: baseline; gap: 0.35rem; }
-.num { flex: none; width: 2.4rem; text-align: right; font-size: 0.66rem; color: var(--muted); font-variant-numeric: tabular-nums; }
-.row.lego .num { font-weight: 700; color: #334155; }
-.text { flex: 1; min-width: 0; }
-.tx { font-size: 17px; line-height: 23px; overflow-wrap: anywhere; cursor: pointer; }
-.row.lego .tx { font-weight: 600; }
-.kn { font-size: 0.88rem; line-height: 19px; color: var(--en); cursor: pointer; overflow-wrap: anywhere; }
-.flag { position: relative; display: inline-block; margin-left: 0.3rem; padding: 0 0.15rem; border: 0; background: transparent; font-size: 15px; line-height: 22px; vertical-align: top; color: #94a3b8; }
-.flag::after { content: ''; position: absolute; inset: -9px -14px; }
-.flag.on { color: var(--amber); }
-.audio-need { font-size: 0.78rem; color: var(--bad); margin-top: 2px; display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
-.render { font-size: 0.78rem; color: var(--muted); display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
-.edit { margin: 6px 0; display: flex; flex-direction: column; gap: 0.35rem; }
-.edit label { font-size: 0.72rem; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
-.edit textarea { font: inherit; font-size: 16px; line-height: 1.3; color: var(--ink); background: #fff; border: 1px solid #64748b; border-radius: 8px; padding: 0.35rem 0.5rem; resize: vertical; }
-.btns { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 4px; }
-.mini { font-size: 0.82rem; padding: 0.3rem 0.75rem; min-height: 34px; border-radius: 8px; border: 1px solid var(--line); background: #f8fafc; color: var(--ink); }
-.mini.go { background: #1d4ed8; color: #fff; border-color: transparent; }
-.mini.warn { background: #fff; color: var(--bad); border-color: #fca5a5; }
-.mini:disabled { opacity: 0.55; }
-.noteinp { font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1px solid #94a3b8; border-radius: 6px; padding: 0.25rem 0.45rem; }
-.flagnote { font-size: 0.78rem; color: var(--amber); }
-.prop { margin: 6px 0 4px; padding: 0.4rem 0.5rem; border-radius: 8px; border: 1px solid #93c5fd; background: #eff6ff; font-size: 0.86rem; }
-.prop.applied { border-color: #86efac; background: #f0fdf4; }
-.prop.stale, .prop.failed { border-color: #fca5a5; background: #fef2f2; }
-.ph { display: flex; gap: 0.4rem; align-items: baseline; flex-wrap: wrap; }
-.ph small { color: var(--muted); }
-.diff { overflow-wrap: anywhere; margin-top: 2px; }
-.diff.en { color: var(--en); }
-.diff s { color: #b91c1c; }
-.diff ins { color: #047857; text-decoration: none; font-weight: 600; }
-.hint { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+.pager { display: flex; gap: 0.4rem; align-items: center; justify-content: flex-end; padding: 0.6rem 0.2rem; flex-wrap: wrap; }
+.pg { color: var(--muted); font-size: 0.9rem; margin-right: auto; }
+.jump { display: flex; gap: 0.3rem; }
+.jump input { width: 5.5rem; font: inherit; font-size: 16px; padding: 0.2rem 0.4rem; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #fff; }
+
+/* The words of a line: stacked on a phone, ONE line on a desktop (Hangul · romanisation · English). */
+.words { display: flex; flex-direction: column; min-width: 0; }
+.words .ko { font-size: 19px; line-height: 1.3; overflow-wrap: anywhere; }
+.words .ro { font-size: 0.9rem; color: var(--muted); overflow-wrap: anywhere; }
+.words .en { font-size: 0.98rem; color: var(--en); overflow-wrap: anywhere; }
+.words.big .ko { font-size: 22px; }
+.words .lab { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; color: #334155; }
+.words .dash { display: none; }
+@media (min-width: 760px) {
+  .words { flex-direction: row; align-items: baseline; flex-wrap: wrap; column-gap: 0.55rem; }
+  .words .ro::before, .words .en::before { content: '·'; color: #94a3b8; margin-right: 0.55rem; }
+  .words .lab + .ko::before { content: none; }
+}
+
+.item { display: flex; align-items: center; gap: 0.6rem; width: 100%; text-align: left; padding: 0.55rem 0.5rem 0.55rem 0.4rem; border: 0; border-left: 4px solid #cbd5e1; border-bottom: 1px solid #e2e8f0; background: #f8fafc; color: var(--ink); }
+.item:hover { background: #f1f5f9; }
+.item.hand { border-left-color: #7c3aed; background: #faf5ff; }
+.item .n { flex: none; width: 2.6rem; text-align: right; font-weight: 700; color: #334155; font-variant-numeric: tabular-nums; }
+.item .body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.item .sub { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+.item .chev { color: #94a3b8; font-size: 1.4rem; }
+
+.crumb { display: flex; gap: 0.45rem; align-items: baseline; padding: 0.6rem 0.2rem 0.2rem; flex-wrap: wrap; }
+.crumb b { font-size: 1.2rem; }
+.crumb small { color: var(--muted); }
+.back, .link { border: 0; background: none; color: #1d4ed8; padding: 0; font-size: 1rem; }
+.link { font-size: 0.85rem; }
+.step { margin-left: auto; display: flex; gap: 0.3rem; }
+h2 { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 1.1rem 0.2rem 0.35rem; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+h2 small { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+h2 .cnt { font-weight: 400; color: var(--muted); }
+h2.grey { color: #64748b; }
+
+.row { position: relative; display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.5rem 0.45rem; border-left: 4px solid #cbd5e1; border-bottom: 1px solid #eef2f6; background: #fff; }
+.row.lego { background: #f1f5f9; }
+.row.hand { border-left-color: #7c3aed; background: #faf5ff; }
+.row.quiet { border-left-color: #e2e8f0; }
+.row.revisit { border-left-color: #f59e0b; background: #fffbeb; }
+.row.roundoff { background: #f8fafc; opacity: 0.85; }
+.row.roundoff.hand { opacity: 1; }
+.row.dragging { box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18); z-index: 2; background: #eef2ff; }
+.main { flex: 1; min-width: 0; }
+.num { flex: none; width: 1.4rem; text-align: right; font-size: 0.8rem; color: var(--muted); padding-top: 4px; font-variant-numeric: tabular-nums; }
+.handle { flex: none; border: 0; background: none; font-size: 1.35rem; line-height: 1; color: #94a3b8; padding: 2px 2px; cursor: grab; touch-action: none; }
+.acts { display: flex; gap: 0.35rem; flex: none; }
+.ic { flex: none; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 10px; background: #f8fafc; font-size: 1.05rem; color: #1e3a8a; }
+
+.intro { margin-top: 0.45rem; border: 1px solid var(--line); border-radius: 10px; padding: 0.45rem 0.6rem; background: #fff; }
+.introlab { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #334155; }
+.introtext { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 2px; }
+.introtext.none { color: var(--muted); font-style: italic; }
+.num .role { display: block; font-size: 0.62rem; font-weight: 800; color: #64748b; letter-spacing: 0.04em; }
+.floorw { margin: 0 0.3rem 0.3rem; font-size: 0.82rem; color: var(--amber); }
+.introold { font-size: 0.82rem; color: var(--amber); margin-top: 0.3rem; display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+
+.ordertag { display: inline-block; margin: 0 0.2rem 0.35rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; color: var(--violet); background: #f3e8ff; border: 1px solid #c4b5fd; border-radius: 999px; padding: 0.12rem 0.65rem; text-transform: uppercase; }
+.revtag { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; margin-top: 0.25rem; }
+
+.addform { margin: 0.45rem 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.addform { border: 1px solid #c4b5fd; background: #faf5ff; border-radius: 12px; padding: 0.6rem 0.7rem; margin: 0.5rem 0; }
+.addlab { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.addform label { font-size: 0.78rem; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.addform input { font: inherit; font-size: 16px; line-height: 1.35; color: var(--ink); background: #fff; border: 1px solid #64748b; border-radius: 8px; padding: 0.35rem 0.5rem; }
+.addbtn { width: 100%; margin: 0.5rem 0; padding: 0.7rem; border: 1.5px dashed #94a3b8; border-radius: 12px; background: #fff; font-size: 1rem; color: var(--ink); }
+</style>
+
+<style>
+/* Rows' small parts are drawn by render functions in <script setup>, whose inner elements carry no scope id: their
+   rules live here, unscoped but fenced under .ft. */
+.ft .msg { font-size: 0.85rem; color: var(--good); margin: 0.3rem 0 0; }
+.ft .msg.bad { color: var(--bad); }
+.ft .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.3rem; }
+.ft .tag { display: inline-block; font-size: 0.76rem; font-weight: 700; border-radius: 999px; padding: 0.08rem 0.55rem; }
+.ft .tag.hand { color: var(--violet); background: #f3e8ff; border: 1px solid #c4b5fd; }
+.ft .tag.amber { color: #92400e; background: #fde68a; }
+.ft .tag.flag { color: var(--amber); background: #fff7ed; border: 1px solid #fed7aa; }
+.ft .tag.mute { color: var(--bad); font-weight: 600; }
+.ft .held { font-size: 0.78rem; color: #6d28d9; }
+.ft .audio-need { font-size: 0.8rem; color: var(--bad); margin-top: 3px; display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.ft .render { font-size: 0.8rem; color: var(--muted); display: inline-flex; gap: 0.35rem; align-items: center; flex-wrap: wrap; }
+.ft .edit { margin: 0.45rem 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.ft .edit label { font-size: 0.78rem; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.ft .edit input, .ft .edit textarea { font: inherit; font-size: 16px; line-height: 1.35; color: var(--ink); background: #fff; border: 1px solid #64748b; border-radius: 8px; padding: 0.35rem 0.5rem; }
+.ft .btns { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 4px; }
+.ft .mini { font-size: 0.85rem; padding: 0.3rem 0.75rem; min-height: 34px; border-radius: 8px; border: 1px solid var(--line); background: #f8fafc; color: var(--ink); }
+.ft .mini.go { background: #1d4ed8; color: #fff; border-color: transparent; }
+.ft .mini.warn { background: #fff; color: var(--bad); border-color: #fca5a5; }
+.ft .mini:disabled { opacity: 0.55; }
+.ft .hint { font-size: 0.78rem; color: var(--muted); }
+.ft .hint.warn { color: var(--amber); }
+.ft .prop { margin: 0.4rem 0 0.2rem; padding: 0.45rem 0.6rem; border-radius: 10px; border: 1px solid #93c5fd; background: #eff6ff; font-size: 0.88rem; }
+.ft .prop.applied { border-color: #86efac; background: #f0fdf4; }
+.ft .prop.stale, .ft .prop.failed { border-color: #fca5a5; background: #fef2f2; }
+.ft .ph { display: flex; gap: 0.45rem; align-items: baseline; flex-wrap: wrap; }
+.ft .ph small { color: var(--muted); }
+.ft .diff { overflow-wrap: anywhere; margin-top: 2px; }
+.ft .diff.en, .ft .diff .en { color: var(--en); }
+.ft .diff.ro { color: var(--muted); }
+.ft .diff.intro { font-size: 0.84rem; }
+.ft .diff s { color: #b91c1c; }
+.ft .diff ins { color: #047857; text-decoration: none; font-weight: 600; }
 </style>

@@ -1,5 +1,6 @@
 /**
  * Encouragement Service
+ * NOTE (2026-11-24, job #104·AL): the learner app's /admin/encouragements (shared_audio) is now the single source of the spoken encouragements, not this file's canonical JSON.
  *
  * Handles generation and management of encouragement audio samples.
  * Encouragements are motivational messages in the source language that
