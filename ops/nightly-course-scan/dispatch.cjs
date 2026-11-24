@@ -41,8 +41,8 @@ async function main() {
     const dir = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/ops/nightly-course-scan', st.db)
     const Q = JSON.parse(fs.readFileSync(path.join(__dirname, 'queue.json'), 'utf8'))
     const fold = courses.map((c) => Q.queue.find((q) => q.course === c)).filter((q) => q && (q.fold_in || q.note)).map((q) => `- ${q.course}: ${[q.fold_in, q.note].filter(Boolean).join(' ')}`)
-    const first = !fs.existsSync(path.join(D, 'scanned.txt')) || !fs.readFileSync(path.join(D, 'scanned.txt'), 'utf8').trim()
-    const night1 = first ? ['', 'NIGHT 1 ONLY — the 16 Nov items, whatever their queue position. For each: first look for Kai\'s answer (his memory ~/.cs-colleague-memory/kai, DIARY.md, and anything newer than 24 Nov 17:00Z); if he answered, carry it forward and do not re-check; if not, check it as DATA ONLY and leave the ruling to him:',
+    const first = !fs.existsSync(path.join(D, 'fold-16nov.done')) // the worker that handles the 16 Nov items touches it
+    const night1 = first ? ['', 'NIGHT 1 ONLY — the 16 Nov items, whatever their queue position. For each: first look for Kai\'s answer (his memory ~/.cs-colleague-memory/kai, DIARY.md, and anything newer than 24 Nov 17:00Z); if he answered, carry it forward and do not re-check; if not, check it as DATA ONLY and leave the ruling to him. When all are handled, run: touch ~/.cs-long/nightly-course-scan/fold-16nov.done',
       ...Object.entries(Q.not_fold_in).map(([k, v]) => `- ${k}: ${v}`),
       ...Q.queue.filter((q) => q.fold_in && !courses.includes(q.course)).map((q) => `- ${q.course}: ${q.fold_in}`)] : []
     const brief = fs.readFileSync(path.join(__dirname, 'worker-brief.md'), 'utf8')
