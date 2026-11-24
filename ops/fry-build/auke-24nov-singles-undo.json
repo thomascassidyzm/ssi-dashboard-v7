@@ -1,0 +1,48 @@
+{
+ "family": "singles",
+ "event_id": "77ccad86-d6f7-4a4e-b098-39b3dd6f19d6",
+ "undo_file_on_popty": "2026-11-24T15-07-06-586Z-77ccad86-d6f7-4a4e-b098-39b3dd6f19d6.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0022L03B02",
+  "S0042L01U01",
+  "S0135L02U02",
+  "S0285L01U03"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0285L01U03",
+   "set": {
+    "target_text": "sy hawwe ús ferteld sy praat Frysk",
+    "target1_audio_id": "aa389d86-4fca-416f-8dd4-2ae4672c70e5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0135L02U02",
+   "set": {
+    "target_text": "ik begryp net wêrom'tstû tinkst dat ik it minder doch as juster",
+    "target1_audio_id": "531774c4-c167-4424-9e2f-4cb648aeebbb"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0042L01U01",
+   "set": {
+    "target_text": "dû woest justerjûn my wat sjen litte",
+    "target1_audio_id": "50f982b6-a5cc-4c92-ab3b-73bcf3147730"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L03B02",
+   "set": {
+    "known_text": "I'm trying because I want to meet people",
+    "target_text": "ik besykje om't ik minsken moetsje wol",
+    "known_audio_id": "cd114856-a2d5-4394-aef7-a2ca97aac287",
+    "target1_audio_id": "0aa34588-e347-447b-8944-859d99d15b5e"
+   }
+  }
+ ]
+}

@@ -62,7 +62,7 @@ def post(ops, apply):
     if apply: body['apply'] = True
     req = urllib.request.Request(BASE + '/edit-batch', data=json.dumps(body).encode(), headers=HDR, method='POST')
     try:
-        return json.load(urllib.request.urlopen(req, timeout=120))
+        return json.load(urllib.request.urlopen(req, timeout=900))
     except urllib.error.HTTPError as e:
         sys.exit(f'REFUSED {e.code}: {e.read().decode()[:2000]}')
 

@@ -1,0 +1,384 @@
+{
+ "family": "oars",
+ "event_id": "33f3a5ba-1ac1-47b4-bbf4-d6f35134e2e2",
+ "undo_file_on_popty": "2026-11-24T15-00-16-538Z-33f3a5ba-1ac1-47b4-bbf4-d6f35134e2e2.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "LEGO:S0016L04",
+  "S0016L04B01",
+  "S0016L04B02",
+  "S0016L04B03",
+  "S0016L04B04",
+  "S0016L04U01",
+  "S0016L04U02",
+  "S0016L04U03",
+  "S0016L04U04",
+  "S0016L04U06",
+  "S0016L04U07",
+  "S0018L01U01",
+  "S0018L02B01",
+  "S0018L02U02",
+  "S0018L05U01",
+  "S0019L01U02",
+  "S0020L01U06",
+  "S0021L02U03",
+  "S0023L01U01",
+  "S0023L02U05",
+  "S0025L03U03",
+  "S0028L01U03",
+  "S0029L02U02",
+  "S0033L02U06",
+  "S0035L02U08",
+  "S0051L01U03",
+  "S0082L01U04",
+  "S0088L02B04",
+  "S0110L01B01",
+  "S0110L01U02",
+  "S0156L01U07",
+  "S0156L02U05",
+  "S0167L01U06",
+  "S0168L02B03",
+  "S0168L03U01",
+  "S0237L01B03",
+  "S0237L01U02",
+  "SEED16"
+ ],
+ "undo_ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 16,
+   "set": {
+    "target_text": "Hy wol letter mei eltsenien weromkomme.",
+    "target1_audio_id": "e18b64d4-cbc4-4f0d-ae79-92d42899433b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0237L01U02",
+   "set": {
+    "target_text": "wolstû foar it wykein mei eltsenien weromkomme?",
+    "target1_audio_id": "4b7784c6-2050-4a86-bbc8-2642c09302f1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0237L01B03",
+   "set": {
+    "target_text": "foar it wykein mei eltsenien weromkomme",
+    "target1_audio_id": "941a4677-0006-4999-973e-3cc489dea409"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0168L03U01",
+   "set": {
+    "target_text": "en dan sil ik letter mei eltsenien weromkomme",
+    "target1_audio_id": "67a38bb0-a39c-4e50-90dc-af6d295866c3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0168L02B03",
+   "set": {
+    "target_text": "mei eltsenien komme en helpe kinne",
+    "target1_audio_id": "eccfff48-51c9-4c7c-a237-13f7972a883c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0167L01U06",
+   "set": {
+    "target_text": "hy wol moarntemiddei mei eltsenien weromkomme",
+    "target1_audio_id": "e809ef54-4ebe-4249-9387-81655d97c05b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0156L02U05",
+   "set": {
+    "target_text": "sy wol mei eltsenien nei in restaurant gean",
+    "target1_audio_id": "0b3ca5d2-2418-447c-88c6-d9f807bdfd0c"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0156L01U07",
+   "set": {
+    "target_text": "hy wol mei eltsenien nei in restaurant gean",
+    "target1_audio_id": "00676148-c1be-4c3f-a851-4f0f26db277f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0110L01U02",
+   "set": {
+    "target_text": "ik ken dy minsken net mar wy binne freonen mei eltsenien",
+    "target1_audio_id": "3e088190-a093-4067-a0c4-10dc84081857"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0110L01B01",
+   "set": {
+    "target_text": "wy binne freonen mei eltsenien",
+    "target1_audio_id": "9149233b-b67f-417b-a412-8628f9703fb4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0088L02B04",
+   "set": {
+    "target_text": "sy is hast klear om te praten mei eltsenien",
+    "target1_audio_id": "5f68b176-8561-4db6-aaef-cff6d6f0bf27"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0082L01U04",
+   "set": {
+    "target_text": "sy woe mei eltsenien op dy wachtsje",
+    "target1_audio_id": "a3dee01a-2b8d-47e5-8c87-59e530af32a9"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0051L01U03",
+   "set": {
+    "target_text": "it sit sa, ik hâld derfan om mei eltsenien te praten",
+    "target1_audio_id": "6deac714-ec0a-4467-8cfe-2e5f64f28af5"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0035L02U08",
+   "set": {
+    "target_text": "wy wolle moarn mei eltsenien lêze",
+    "target1_audio_id": "991d218b-dd9c-49ea-8c97-61afc25d7b63"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0033L02U06",
+   "set": {
+    "target_text": "hoe lang learstû al Frysk mei eltsenien?",
+    "target1_audio_id": "3edbf03e-a3c0-4e4b-ac62-8fc2e6ad9f53"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0029L02U02",
+   "set": {
+    "target_text": "wy wolle inoar fan 'e jûn moetsje en ik sjoch dernei út om mei eltsenien te praten",
+    "target1_audio_id": "9e3330dd-2430-475e-a7cd-6a33b16d5950"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0028L01U03",
+   "set": {
+    "target_text": "hy wol letter weromkomme en it is nuttich om mei eltsenien te praten",
+    "target1_audio_id": "480e1ff0-da25-4fc4-9b93-328fd1f5f2d1"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0025L03U03",
+   "set": {
+    "target_text": "sy wol fan 'e jûn mei eltsenien gean",
+    "target1_audio_id": "ff83f420-bddc-4451-87c1-48d62882bdaa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L02U05",
+   "set": {
+    "target_text": "ik begjin moarn mei eltsenien",
+    "target1_audio_id": "52d5dfcf-f02d-446c-b307-0fb04d3131b8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L01U01",
+   "set": {
+    "target_text": "hy wol aanst mei eltsenien weromkomme",
+    "target1_audio_id": "cad971eb-8198-4fbb-83f5-f730a7f5d74b"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0021L02U03",
+   "set": {
+    "target_text": "learstû moarn Frysk mei eltsenien?",
+    "target1_audio_id": "26c1e147-d074-4e6a-939a-759debb380dd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L01U06",
+   "set": {
+    "target_text": "dû wolst mei eltsenien Frysk prate",
+    "target1_audio_id": "153e7ec9-f1bb-4422-9598-015f171bdda7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L01U02",
+   "set": {
+    "target_text": "hy wol letter weromkomme mar net mei eltsenien",
+    "target1_audio_id": "b2d3c98e-1186-4ac0-bc11-adecb6effa23"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L05U01",
+   "set": {
+    "target_text": "hy wol om seis oere mei eltsenien prate",
+    "target1_audio_id": "c002c77c-b762-4bec-a85d-4f30584d38c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L02U04",
+   "set": {
+    "target_text": "ik wol eltsenien moetsje nei'tstû útpraat bist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L02U02",
+   "set": {
+    "target_text": "ik sil moarn eltsenien moetsje",
+    "target1_audio_id": "55985748-2098-4c22-adb4-08f7e0a9b233"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L02B01",
+   "set": {
+    "target_text": "eltsenien moetsje",
+    "target1_audio_id": "6e71d1ab-4543-4f7d-9378-cf494dc71515"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L01U01",
+   "set": {
+    "target_text": "wy wolle de hiele dei mei eltsenien Frysk prate",
+    "target1_audio_id": "84f872fd-2676-4d33-806b-7251c3d06b28"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U07",
+   "set": {
+    "target_text": "ik praat de hiele dei mei eltsenien Frysk",
+    "target1_audio_id": "6c4ec1ec-3abd-40e0-a4a2-26c7da8b0ca7"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U06",
+   "set": {
+    "target_text": "ik wol safolle mooglik mei eltsenien oefenje",
+    "target1_audio_id": "df20f059-125b-4e2d-8746-05266c4c2bd4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U05",
+   "set": {
+    "target_text": "ik wol graach mei eltsenien prate nei'tstû útpraat bist"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U04",
+   "set": {
+    "target_text": "ik soe net graach mei eltsenien prate wolle",
+    "target1_audio_id": "07e40975-9bed-4565-9fd0-f74c124f7712"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U03",
+   "set": {
+    "target_text": "ik bin der net wis fan oft ik mei eltsenien prate kin",
+    "target1_audio_id": "03f23f3a-f987-4c46-8ce1-57024420c3fa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U02",
+   "set": {
+    "target_text": "praatstû Frysk mei eltsenien?",
+    "target1_audio_id": "9d6b7e01-d6b8-439b-88db-9fed535d4f95"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04U01",
+   "set": {
+    "target_text": "ik wol mei eltsenien Frysk prate",
+    "target1_audio_id": "5c6f4004-fb00-4eea-ae93-d470a9e2d4a4"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04C02",
+   "set": {
+    "target_text": "eltsenien"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04B04",
+   "set": {
+    "target_text": "ik kin mei eltsenien oefenje",
+    "target1_audio_id": "56695b3b-70ca-4173-8f69-7946361b9c80"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04B03",
+   "set": {
+    "target_text": "ik sil mei eltsenien prate",
+    "target1_audio_id": "f5c6665b-40e6-434b-8c0b-f164afb1e79e"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04B02",
+   "set": {
+    "target_text": "hjoed mei eltsenien oefenje",
+    "target1_audio_id": "89488cab-4247-4a7f-a978-723fbdc26547"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0016L04B01",
+   "set": {
+    "target_text": "mei eltsenien prate",
+    "target1_audio_id": "a871f6a3-6805-4286-8c8d-2972078cb941"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cb3ac045-57f2-4223-aa3a-5a2ae3818954",
+   "set": {
+    "target_text": "mei eltsenien",
+    "components": [
+     {
+      "known": "with",
+      "target": "mei"
+     },
+     {
+      "known": "everyone else",
+      "target": "eltsenien"
+     }
+    ],
+    "target1_audio_id": "6aeeb80a-fef3-4c4b-82e4-364ebf16f90d",
+    "presentation_audio_id": "ee29b79e-4d53-442f-87a3-cc6dd9ec431a"
+   }
+  }
+ ]
+}

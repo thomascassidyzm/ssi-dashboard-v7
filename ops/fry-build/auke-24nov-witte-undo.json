@@ -1,0 +1,214 @@
+{
+ "family": "witte",
+ "event_id": "90c63813-2574-4eb4-a6dd-c4bb17bfd607",
+ "undo_file_on_popty": "2026-11-24T15-06-25-428Z-90c63813-2574-4eb4-a6dd-c4bb17bfd607.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0035L03U06",
+  "S0060L01U03",
+  "S0045L03B03",
+  "S0017L02B03",
+  "S0017L02B04",
+  "S0017L02U05",
+  "S0018L01B02",
+  "S0019L02B04",
+  "S0020L01B03",
+  "S0070L02U03",
+  "S0201L01B03",
+  "S0211L01B03"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0581L02U01",
+   "set": {
+    "known_text": "they didn't say what they wanted to do and he'd like to know",
+    "target_text": "sy seine net wat se dwaan woene en hy woe graach witte",
+    "known_audio_id": "8d01542d-ef59-4923-9f9e-c23b8e2eee35"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0464L03B03",
+   "set": {
+    "known_text": "he wanted to know, but she didn't know it any more",
+    "target_text": "hy woe witte, mar se wist it net mear",
+    "known_audio_id": "2477ad05-58cc-4310-a690-1b63e85e4678"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0404L03B03",
+   "set": {
+    "known_text": "he wanted to know before Thursday",
+    "target_text": "hy woe foar tongersdei witte",
+    "known_audio_id": "73e579a5-d023-4a19-8d58-c27b802ff001"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0389L01U06",
+   "set": {
+    "known_text": "that person over there didn't want to know",
+    "target_text": "dy persoan dêre woe net witte",
+    "known_audio_id": "a7536679-dbd9-4d49-b6bf-78d867f8e7c0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0380L01U03",
+   "set": {
+    "known_text": "I asked what was going to happen and she didn't want to know",
+    "target_text": "ik frege wat der barre soe en sy woe net witte",
+    "known_audio_id": "dd9577af-a4cf-40a0-a3c4-36c055d261ac"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0348L01U02",
+   "set": {
+    "known_text": "she didn't want to know and I didn't want to ask you",
+    "target_text": "sy woe net witte en ik woe dy net freegje",
+    "known_audio_id": "b30a6220-c92b-4c45-ac79-ba114e7ffd03"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0348L01U01",
+   "set": {
+    "known_text": "we wanted to know what was going to happen and she didn't want to know",
+    "target_text": "wy woene witte wat der barre soe en sy woe net witte",
+    "known_audio_id": "d456f976-732e-4cda-a221-ae4286082493"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0347L02U01",
+   "set": {
+    "known_text": "he wanted to know and he's going to ask you",
+    "target_text": "hy woe witte en hy sil dy freegje",
+    "known_audio_id": "479b1af2-1f3c-4084-80bc-5c5718cd3f2d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0211L01B03",
+   "set": {
+    "known_text": "we wanted to know and they told us",
+    "target_text": "wy woene witte en sy hawwe ús ferteld",
+    "known_audio_id": "c44eefbc-90ae-49eb-9d97-b28560c8b9fa",
+    "target1_audio_id": "0c426548-4f83-4369-8e1c-83e35aef5318"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0201L01B03",
+   "set": {
+    "known_text": "it's difficult but we wanted to know",
+    "target_text": "it is dreech mar wy woene witte",
+    "known_audio_id": "b3a5ae83-a661-4cf3-9f99-b4cbbb60e958",
+    "target1_audio_id": "69c6e25d-cb12-4b43-9384-0385c48aa238"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0070L02U03",
+   "set": {
+    "known_text": "I wanted to know but she didn't want to tell me why",
+    "target_text": "ik woe witte mar sy woe my net fertelle wêrom",
+    "known_audio_id": "af879133-f0c2-4b30-987e-f00a28bdcd87",
+    "target1_audio_id": "c108b53c-11f2-495d-8a0d-a1f1de169c29"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0020L01B03",
+   "set": {
+    "known_text": "and you want to know",
+    "target_text": "en dû wolst witte",
+    "known_audio_id": "74720f73-2f03-4971-a889-6b98a4fcac5a",
+    "target1_audio_id": "2f67473e-c223-4a5b-a8d5-b19b3913be2a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0019L02B04",
+   "set": {
+    "known_text": "she wants to know and I don't want to",
+    "target_text": "sy wol witte en ik wol net",
+    "known_audio_id": "fc1f4f48-fe6f-485f-9bcc-4fb17b360677",
+    "target1_audio_id": "98f8dc75-20e2-4bde-b623-8c327ab3afe3"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0018L01B02",
+   "set": {
+    "known_text": "and we want to know",
+    "target_text": "en wy wolle witte",
+    "known_audio_id": "fe866ecf-8bcc-4b10-8fc7-64a247a627ae",
+    "target1_audio_id": "33e75ca7-fd1b-4611-83c8-97fba36b1b7f"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L02U05",
+   "set": {
+    "known_text": "I'm not sure if I still know the whole sentence and she wants to know",
+    "target_text": "ik bin der net wis fan oft ik de hiele sin noch wit en sy wol witte",
+    "known_audio_id": "d27fd323-1445-4795-a2b8-afb63c18f4a8",
+    "target1_audio_id": "6a75212a-022c-46db-8d72-9a5b519dc277"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L02B04",
+   "set": {
+    "known_text": "I'm not sure and she wants to know",
+    "target_text": "ik bin der net wis fan en sy wol witte",
+    "known_audio_id": "6176cc81-fdd1-406e-a6e2-84b464792aa3",
+    "target1_audio_id": "f0dce7cf-dc05-4f09-a540-afab772295c2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0017L02B03",
+   "set": {
+    "known_text": "I'm trying it and she wants to know",
+    "target_text": "ik besykje it en sy wol witte",
+    "known_audio_id": "0c935c3b-432a-4e51-8706-8932e5b1f7de",
+    "target1_audio_id": "6d05ab6e-277a-4ce0-aa87-bf1065f95c14"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0045L03B03",
+   "set": {
+    "known_text": "I don't need to know everything but I want to know",
+    "target_text": "ik hoech net alles te witten mar ik wol witte",
+    "known_audio_id": "59385899-e538-4b01-bbb1-5ccc4a131c0e",
+    "target1_audio_id": "615c103c-df8e-48d3-b8b4-363e9d60b046"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0060L01U03",
+   "set": {
+    "known_text": "she wants to know but I don't know it yet",
+    "target_text": "sy wol witte mar ik wit it noch net",
+    "known_audio_id": "06caa1ba-1b54-436e-95e6-3b9930dd41ba",
+    "target1_audio_id": "2fb39764-7768-4ba1-958d-2e0453caa2aa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0035L03U06",
+   "set": {
+    "known_text": "she wants to know but I'm going to say nothing",
+    "target_text": "sy wol witte mar ik sil neat sizze",
+    "known_audio_id": "c280799c-c57b-4779-97ef-4b21b333dc36",
+    "target1_audio_id": "3617ea2e-fcde-4f41-86b4-5c45c2723982"
+   }
+  }
+ ]
+}
