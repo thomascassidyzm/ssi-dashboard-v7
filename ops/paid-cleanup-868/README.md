@@ -25,4 +25,4 @@ Item 5 FILLED 24 Nov 08:1xZ: 250/250 slots linked (library 32, rendered 218), 8,
 
 `ops/paid-cleanup-item6-703/apply.py` gained `ITEM6_FROM_COPY=1` (prepare from a copy dump instead of a live read).
 
-OWED after the pan/guj fill (Kai's Watson, 24 Nov): guj S0559L02U08 known was refused APPROVAL_UNVERIFIED in the 08:30Z surface restart (an outage, not a guard verdict). Send it ONCE to /api/audio/render with dryRun:true; if accepted, one real ask with the live pre-check; if refused, record the reason. No retry loop.
+guj S0559L02U08 (08:30Z outage refusal): one-shot re-ask 24 Nov per Kai's Watson: dryRun accepted, rendered once 34 chars, audio ba25cb4e linked fill-only ev f37cc078 (`item1-pan-guj/slots-eng_for_guj.reask.jsonl`). Day units now run as cs-long-keep-868-day (pan/guj fill then item 8 chain); the non-keep units were stopped by the surface at turn end.
