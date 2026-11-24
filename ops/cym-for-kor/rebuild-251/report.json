@@ -1,0 +1,4524 @@
+{
+ "counts": {
+  "originals_reused": 9645,
+  "originals_on_v2_route": 9137,
+  "originals_voiced_both": 8102,
+  "door_topups_kept": 3594,
+  "door_protected_kept": 75,
+  "originals_not_on_v2_route": 508,
+  "originals_missing_Catrin": 1526,
+  "originals_missing_Aran": 323,
+  "extra_Catrin_from_originals": 3,
+  "extra_Aran_from_originals": 1,
+  "new_welsh_written": 0,
+  "EXTRAS_Catrin": 3672,
+  "EXTRAS_Aran": 3670,
+  "course_played_total": 13314,
+  "v2_played_total": 12867
+ },
+ "held_legos": 0,
+ "not_on_v2_route": [
+  {
+   "lego": "S0008L03",
+   "welsh": "esbonio rhywbeth",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0010L03",
+   "welsh": "medra i siarad",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0016L06",
+   "welsh": "medra i siarad efo chdi yn nes ymlaen",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0017L02",
+   "welsh": "ffeindio allan be’ ti isio",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0025L04",
+   "welsh": "liciwn i ffeindio rhywbeth allan cyn i ti fynd",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0027L05",
+   "welsh": "liciwn i ffeindio rhywbeth allan cyn i mi ateb",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0030L04",
+   "welsh": "dw i isio gofyn rhywbeth i ti",
+   "source_seed": 214,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0034L01",
+   "welsh": "dydy o ddim isio helpu chdi",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0037L02",
+   "welsh": "o’n i’n meddwl i ti ddeud",
+   "source_seed": 209,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0037L02",
+   "welsh": "o’n i’n meddwl i ti ddeud rhywbeth",
+   "source_seed": 209,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0037L02",
+   "welsh": "o’n i’n meddwl i ti ddeud rhywbeth arall",
+   "source_seed": 209,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0037L02",
+   "welsh": "o’n i isio gofyn i ti be’ oeddat ti’n meddwl",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0040L02",
+   "welsh": "dydy o ddim isio siarad ar hyn o bryd",
+   "source_seed": 253,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0040L02",
+   "welsh": "dw i’n trio cofio ar hyn o bryd",
+   "source_seed": 253,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0042L04",
+   "welsh": "oeddat ti isio mynd allan neithiwr",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0045L03",
+   "welsh": "dw i’n cofio popeth",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0045L03",
+   "welsh": "dw i isio popeth yn barod",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0045L03",
+   "welsh": "dw i isio popeth yn barod heddiw",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0045L03",
+   "welsh": "esbonio popeth",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0045L03",
+   "welsh": "mae popeth yn barod",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0046L03",
+   "welsh": "poeni am sut ti’n mynd i",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0050L03",
+   "welsh": "tan i mi orffen",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0050L03",
+   "welsh": "liciwn i orffen hyn cyn i ti fynd",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0051L02",
+   "welsh": "ffeindio allan be’ i wneud",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0051L02",
+   "welsh": "dw i angen ffeindio allan be’ ti ’di gwneud",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0051L02",
+   "welsh": "ffeindio allan be’ ti ’di gwneud",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0051L02",
+   "welsh": "ti ’di gwneud rhywbeth da heddiw",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0051L02",
+   "welsh": "ti ’di gwneud yn dda",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0051L02",
+   "welsh": "ffeindio allan sut i wneud o",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0054L01",
+   "welsh": "oeddan ni isio deud rhywbeth",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0057L05",
+   "welsh": "ga i ofyn i ti be’ oeddat ti’n meddwl?",
+   "source_seed": 211,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0059L08",
+   "welsh": "ga i ofyn rhywbeth i ti wythnos nesa’?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0059L08",
+   "welsh": "dydy o ddim isio siarad efo fi tan wythnos nesa’",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0060L06",
+   "welsh": "ti ’di gwneud rhywbeth gwahanol",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0060L07",
+   "welsh": "fedra i ddim cofio sut i ddeud be’ dw i angen hyd yn hyn",
+   "source_seed": 214,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0070L02",
+   "welsh": "fedri di ddeud wrtha i be’ ti’n meddwl cyn i mi ateb hynna?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0070L02",
+   "welsh": "fedri di ddeud wrtha i be’ ti isio?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0070L02",
+   "welsh": "fedri di ddeud wrtha i be’ ti isio gwneud?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0079L02",
+   "welsh": "dw i’n gwybod pryd wnest ti ddechrau",
+   "source_seed": 214,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0087L04",
+   "welsh": "ydyn nhw’n hapus?",
+   "source_seed": 141,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0087L04",
+   "welsh": "ydyn nhw’n barod?",
+   "source_seed": 141,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0087L04",
+   "welsh": "ydyn nhw’n ddiddorol?",
+   "source_seed": 141,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0087L04",
+   "welsh": "ydyn nhw isio gwneud yn siŵr bo’ ni’n gorffen heddiw?",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0091L05",
+   "welsh": "gwneud yn siŵr bo’ ni’n gorffen mewn pryd",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0091L05",
+   "welsh": "bo’ ni’n gorffen mewn pryd",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0091L05",
+   "welsh": "wnes i ddim dallt mewn pryd",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0098L01",
+   "welsh": "dylwn i wneud o rŵan",
+   "source_seed": 203,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0098L01",
+   "welsh": "dylwn i wneud o",
+   "source_seed": 203,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0098L01",
+   "welsh": "be’ ti’n meddwl y dylwn i wneud i helpu?",
+   "source_seed": 203,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0098L01",
+   "welsh": "beth wyt ti’n meddwl y dylwn i wneud?",
+   "source_seed": 203,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0098L03",
+   "welsh": "ffeindio rhywbeth arall",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0098L03",
+   "welsh": "fedri di ddeud rhywbeth arall wrtha i?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0103L01",
+   "welsh": "dan ni ddim yn gwybod sut i wneud o",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0104L02",
+   "welsh": "gwybod be’ oedd yn mynd i newid",
+   "source_seed": 181,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0104L02",
+   "welsh": "dan ni angen gwybod be’ oedd yn mynd i newid",
+   "source_seed": 181,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0104L02",
+   "welsh": "cofio be’ oedd yn mynd i newid",
+   "source_seed": 181,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0104L02",
+   "welsh": "newid popeth",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0104L02",
+   "welsh": "newid rhywbeth",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0112L03",
+   "welsh": "dw i’n meddwl bo’ ti ’di gwneud yn dda iawn",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0112L03",
+   "welsh": "dw i’n meddwl bo’ ti ’di gwneud popeth yn dda iawn",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0118L06",
+   "welsh": "oeddan ni’n siarad am be’ oedd yn mynd i ddigwydd",
+   "source_seed": 189,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0118L06",
+   "welsh": "oeddan ni isio newid",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0124L01",
+   "welsh": "o’n i’n meddwl i ti ddeud bo’ ti isio mynd allan",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0124L01",
+   "welsh": "dyna be’ o’n i’n meddwl neithiwr",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0138L05",
+   "welsh": "gwneud yn siŵr bod ni’n gorffen popeth",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0138L05",
+   "welsh": "bo’ ni’n gorffen popeth yn gyflym",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0138L05",
+   "welsh": "gwneud yn siŵr bo’ ni’n gorffen",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0138L05",
+   "welsh": "bo’ ni angen cofio",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0138L05",
+   "welsh": "bo’ ni angen gwella",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0142L06",
+   "welsh": "o’n i isio iddi hi helpu chdi ar ôl i ni orffen hyn",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0143L03",
+   "welsh": "oeddan ni’n siarad am bopeth neithiwr",
+   "source_seed": 189,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0149L03",
+   "welsh": "felly o le dach chi’n dod?",
+   "source_seed": 160,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0150L01",
+   "welsh": "fedri di ddeud wrtha i be’ i ddeud cyn i ti fynd?",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0150L01",
+   "welsh": "fedri di ddeud wrtha i ar ôl i ni orffen hyn?",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0157L03",
+   "welsh": "bo’ ni’n gorffen popeth mis nesa’",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0157L03",
+   "welsh": "bo’ ni’n gorffen mis nesa’",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0162L01",
+   "welsh": "o’n i isio gofyn i ti be’ oeddat ti’n meddwl am y llyfr ’na oeddan ni’n siarad amdano fo",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0164L01",
+   "welsh": "ga i ofyn i ti be’ oeddat ti’n meddwl am y llyfr ’na?",
+   "source_seed": 211,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0180L02",
+   "welsh": "beth am i ni gael rhywbeth arall i ddarllen?",
+   "source_seed": 231,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0186L04",
+   "welsh": "ddudest ti bo’ ti’n meddwl rhywbeth gwahanol",
+   "source_seed": 211,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0198L03",
+   "welsh": "gweithio i’r cyngor",
+   "source_seed": 166,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0198L03",
+   "welsh": "dw i’n cofio pan oeddan nhw newydd ddechrau gweithio i’r cyngor",
+   "source_seed": 166,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0198L03",
+   "welsh": "dw i ddim isio gweithio i’r cyngor",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0198L03",
+   "welsh": "mae o’n gweithio i’r cyngor",
+   "source_seed": 166,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "maen nhw’n deud bod nhw isio",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "maen nhw’n deud bod nhw isio gwneud yn siŵr bo’ ni’n gorffen",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "maen nhw’n deud bod nhw isio gwneud yn siŵr bo’ ni’n gorffen popeth",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "maen nhw’n deud bo’ nhw isio i ni wneud yn siŵr bo’ ni’n gorffen mewn pryd",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "esbonio beth maen nhw’n deud",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "esbonio beth maen nhw’n deud bo’ nhw isio",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L01",
+   "welsh": "maen nhw’n deud rhywbeth",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L02",
+   "welsh": "maen nhw’n deud bod nhw isio gwneud yn siŵr bo’ ni’n gorffen popeth yn gyflym iawn",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L03",
+   "welsh": "gwneud yn siŵr bod ni’n gorffen popeth yn gyflym",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L03",
+   "welsh": "gwneud yn siŵr bod ni’n gorffen popeth bnawn dydd Sadwrn",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L03",
+   "welsh": "maen nhw’n meddwl bo’ ni angen gwneud yn siŵr",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0200L04",
+   "welsh": "bo’ ni’n gorffen yn gyflym",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0201L03",
+   "welsh": "esbonio be’ oedd yn mynd i ddigwydd",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0201L03",
+   "welsh": "maen nhw isio gwybod be’ oedd yn mynd i newid",
+   "source_seed": 181,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0201L03",
+   "welsh": "o’n i isio gwybod be’ oedd yn mynd i newid",
+   "source_seed": 181,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0203L01",
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti fynd allan efo fi heno?",
+   "source_seed": 231,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0203L01",
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti fynd allan nos Sadwrn?",
+   "source_seed": 231,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0203L01",
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn?",
+   "source_seed": 231,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0203L02",
+   "welsh": "be’ fyddet ti’n deud ’swn i’n gofyn i ti fynd efo fi?",
+   "source_seed": 231,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0203L02",
+   "welsh": "beth fyddet ti’n deud ’swn i’n gofyn i ti helpu fi ar ôl i ni orffen hyn?",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0204L04",
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti helpu fi ddelio efo’r trefniadau?",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0204L04",
+   "welsh": "beth am i ni ddelio efo’r trefniadau ar ôl i ni orffen hyn?",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0204L04",
+   "welsh": "helpu fi efo’r trefniadau",
+   "source_seed": 234,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0204L04",
+   "welsh": "helpu efo’r trefniadau",
+   "source_seed": 234,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0204L04",
+   "welsh": "helpu chdi efo’r trefniadau",
+   "source_seed": 234,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0208L02",
+   "welsh": "’swn i’n gofyn i ti helpu fi efo’r trefniadau",
+   "source_seed": 234,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "maen nhw’n deud beth maen nhw isio",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "maen nhw’n deud bo’ nhw isio gwneud yn siŵr bo’ ni’n gorffen mewn pryd",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "maen nhw isio merch",
+   "source_seed": 168,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "maen nhw isio siarad efo rhywun",
+   "source_seed": 168,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "maen nhw isio gweithio i’r cyngor",
+   "source_seed": 168,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "maen nhw isio mab",
+   "source_seed": 168,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "be’ maen nhw isio gwneud nesa’?",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "be’ maen nhw isio newid rŵan?",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "be’ maen nhw isio newid?",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "esbonio beth maen nhw isio",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L01",
+   "welsh": "ffeindio beth maen nhw isio",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L02",
+   "welsh": "wyt ti isio treulio mwy o amser yn gweithio adre?",
+   "source_seed": 170,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L02",
+   "welsh": "maen nhw’n deud bo’ nhw isio treulio mwy o amser",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L02",
+   "welsh": "maen nhw’n deud bo’ nhw isio treulio mwy o amser yn gweithio adre",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L03",
+   "welsh": "oeddan nhw newydd ddechrau treulio amser yn cyfarfod fel grŵp",
+   "source_seed": 170,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L03",
+   "welsh": "treulio amser yn cyfarfod fel grŵp",
+   "source_seed": 170,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L03",
+   "welsh": "maen nhw’n deud bo’ nhw isio treulio mwy o amser yn cyfarfod fel grŵp",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0209L03",
+   "welsh": "maen nhw isio treulio mwy o amser yn cyfarfod fel grŵp",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L01",
+   "welsh": "maen nhw’n meddwl yn aml",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L01",
+   "welsh": "maen nhw’n meddwl heddiw",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L01",
+   "welsh": "maen nhw’n meddwl yn fwy aml",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L01",
+   "welsh": "maen nhw’n meddwl bo’ ni angen gofyn rhywbeth i chi",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L02",
+   "welsh": "bo’ ni angen cofio pan oeddan nhw’n ifanc",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L02",
+   "welsh": "maen nhw’n meddwl bo’ ni angen gweithio i’r cyngor",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L03",
+   "welsh": "bo’ ni angen trafod popeth",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L03",
+   "welsh": "maen nhw’n meddwl bo’ ni angen trafod popeth yn fwy aml",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L03",
+   "welsh": "bo’ ni angen trafod popeth yn fwy aml",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L03",
+   "welsh": "trafod popeth",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0210L03",
+   "welsh": "trafod popeth yn fwy aml",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0211L01",
+   "welsh": "ddudon nhw wrthon ni bo’ nhw isio gofyn am help",
+   "source_seed": 187,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0212L01",
+   "welsh": "ffeindio allan be’ oeddan nhw isio",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L01",
+   "welsh": "dan ni ddim yn gwybod beth maen nhw isio",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "maen nhw isio cyflawni rhywbeth",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "be’ maen nhw isio cyflawni?",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "dan ni angen cyflawni",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "maen nhw’n deud bo’ nhw isio cyflawni",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "dan ni ddim yn gwybod beth dan ni angen cyflawni",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "oeddan ni’n siarad am beth maen nhw’n trio cyflawni",
+   "source_seed": 189,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0213L04",
+   "welsh": "maen nhw’n deud bo’ nhw isio cyflawni rhywbeth",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0214L02",
+   "welsh": "be’ maen nhw isio gwneud ar y penwythnos?",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0214L02",
+   "welsh": "maen nhw’n meddwl bo’ ni angen trafod popeth ar y penwythnos",
+   "source_seed": 174,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0214L02",
+   "welsh": "dan ni ddim yn gwybod beth maen nhw isio cyflawni ar y penwythnos",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0214L02",
+   "welsh": "dylwn i wneud rhywbeth gwahanol ar y penwythnos",
+   "source_seed": 203,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0221L04",
+   "welsh": "beth am i ni gael y ffilm ’na heno?",
+   "source_seed": 234,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0228L02",
+   "welsh": "dw i newydd ddechrau poeni",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0235L06",
+   "welsh": "liciwn i ffeindio allan be’ ddudodd o cyn iddi ddeud wrthot ti",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0242L02",
+   "welsh": "tan i mi roi mwy o amser iddo fo",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0242L03",
+   "welsh": "dw i’n mynd i roi rhywbeth iddi hi ar ôl i ni orffen hyn",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "oedd yn eitha’ da",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "oeddat ti’n meddwl fod o’n eitha’ da",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "ddudest ti bo’ ti’n meddwl fod o’n eitha’ da",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "ddudest ti bo’ hi’n eitha’ da",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "o’n i’n meddwl i ti ddeud fod o’n eitha’ da",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "o’n i’n meddwl fod o’n eitha’ da",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "o’n i isio deud fod o’n eitha’ da",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0247L03",
+   "welsh": "o’n i’n meddwl bo’ hi’n eitha’ da",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L03",
+   "welsh": "achos bod hi’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L03",
+   "welsh": "oedd yn sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L03",
+   "welsh": "ddudest ti fod o’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L03",
+   "welsh": "ddudest ti bo’ ti’n meddwl fod o’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L03",
+   "welsh": "o’n i’n meddwl fod o’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L03",
+   "welsh": "o’n i’n meddwl i ti ddeud fod o’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L06",
+   "welsh": "felly dw i isio fy mhres yn ôl",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L06",
+   "welsh": "dw i isio fy mhres yn ôl achos bod hi’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L06",
+   "welsh": "ga i fy mhres yn ôl?",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L06",
+   "welsh": "dw i ddim yn mynd i ofyn os ga i fy mhres yn ôl",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0248L06",
+   "welsh": "oedd yn sothach llwyr, felly ga i fy mhres yn ôl?",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0249L03",
+   "welsh": "fedri di ddeud wrtha i be’ ti isio gwneud cyn i ti fynd?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0249L03",
+   "welsh": "fedri di ddeud wrtha i be’ dylwn i wneud cyn i ti fynd?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0249L03",
+   "welsh": "fedri di ddeud rhywbeth wrtha i cyn i ti fynd?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0249L03",
+   "welsh": "fyddet ti’n licio siarad cyn i ti fynd?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0250L04",
+   "welsh": "dw i angen ffeindio allan be’ ti ’di gwneud cyn i mi ateb",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0250L04",
+   "welsh": "cyn i mi ateb hynna",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0250L04",
+   "welsh": "cyn i mi ateb dy gwestiwn di",
+   "source_seed": 252,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0250L04",
+   "welsh": "dw i isio meddwl cyn i mi ateb dy gwestiwn di",
+   "source_seed": 252,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0251L03",
+   "welsh": "tan i ni orffen",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0251L03",
+   "welsh": "aros tan iddi siarad",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0251L04",
+   "welsh": "ar ôl i ni orffen hyn",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0251L04",
+   "welsh": "fyddwn i ddim yn gwneud hynna ar ôl i ni orffen, ’swn i chdi",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0255L02",
+   "welsh": "wyt ti’n meddwl y dylwn i wneud o?",
+   "source_seed": 203,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0271L01",
+   "welsh": "fyddet ti’n licio mynd allan?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0271L01",
+   "welsh": "fyddet ti’n licio siarad amdano fo?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0271L01",
+   "welsh": "fyddet ti’n licio ffeindio ffordd well?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0271L01",
+   "welsh": "fyddet ti’n licio deud beth oeddat ti’n meddwl?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0277L04",
+   "welsh": "o’n i’n meddwl i chi ddeud bo’ chi isio mynd allan yn gynnar yn y bore",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0283L02",
+   "welsh": "wnes i gyfarfod dynas ifanc ddoe sy’n gweithio efo fy mrawd",
+   "source_seed": 189,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0296L01",
+   "welsh": "dw i isio gorffen hyn cyn iddi hi ddeud wrthot ti be’ ddudes i",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0296L01",
+   "welsh": "ddudes i be’ o’n i isio",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0296L01",
+   "welsh": "ddudes i be’ o’n i isio gwneud",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0296L01",
+   "welsh": "ddudes i be’ o’n i isio gwneud ar y penwythnos",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0296L01",
+   "welsh": "ddudes i rywbeth arall",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0299L03",
+   "welsh": "ti’n mynd i dalu",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0299L03",
+   "welsh": "sut ti’n mynd i dalu",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0299L03",
+   "welsh": "poeni am sut ti’n mynd i dalu",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0299L03",
+   "welsh": "does dim angen i ti dalu",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0299L03",
+   "welsh": "angen i ti dalu",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0316L04",
+   "welsh": "bnawn dydd Llun",
+   "source_seed": 223,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0316L04",
+   "welsh": "fore dydd Llun",
+   "source_seed": 223,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0316L04",
+   "welsh": "tan ddydd Llun",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0316L04",
+   "welsh": "ti’n gwybod bo’ fi isio mynd efo chdi ddydd Llun",
+   "source_seed": 223,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0319L02",
+   "welsh": "does dim angen i ti symud",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0319L02",
+   "welsh": "sut ti’n mynd i symud i’r ddinas",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0320L02",
+   "welsh": "lle medra i brynu?",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0320L02",
+   "welsh": "medra i brynu",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0320L02",
+   "welsh": "medra i brynu fo",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0320L02",
+   "welsh": "lle medra i brynu rhywbeth?",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0322L02",
+   "welsh": "ddudodd hi bod hi angen gofyn rhywbeth i chi heddiw",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0323L03",
+   "welsh": "dw i isio cerdded i’r gwaith efo chdi ddydd Llun",
+   "source_seed": 223,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0323L04",
+   "welsh": "mynd i’r ysgol",
+   "source_seed": 218,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0323L04",
+   "welsh": "ti’n cerdded i’r ysgol",
+   "source_seed": 218,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0323L04",
+   "welsh": "dw i’n hapus i gerdded i’r ysgol efo chdi fore dydd Llun",
+   "source_seed": 223,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0323L04",
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti fynd i’r ysgol bore ’fory?",
+   "source_seed": 231,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0325L03",
+   "welsh": "i ystyried rhywbeth arall",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0325L03",
+   "welsh": "i ystyried aros tan iddi siarad",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0327L03",
+   "welsh": "na beth o’n i’n medru cynnig",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0336L03",
+   "welsh": "mae o angen i ti agor rhywbeth arall",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0336L04",
+   "welsh": "cynnig agor y drws rŵan hyn",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0336L04",
+   "welsh": "agor y drws",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0336L04",
+   "welsh": "efallai dylwn i agor y drws",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0336L04",
+   "welsh": "ddylwn i ddim agor y drws",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0347L03",
+   "welsh": "ddudon nhw wrthon ni bo’ nhw isio esbonio be’ oedd yn digwydd",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0349L02",
+   "welsh": "mynd allan ar y penwythnos",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0349L03",
+   "welsh": "wyt ti’n meddwl y dylwn i fynd allan nos Wener?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0365L01",
+   "welsh": "mae’n ddrwg gen i, chlywes i ddim mewn pryd",
+   "source_seed": 173,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "be’ fyddet ti’n deud ’swn i’n gofyn i ti fynd allan ddydd Mercher?",
+   "source_seed": 243,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "be’ fyddet ti’n gwneud ’swn i’n gofyn i ti fynd allan ddydd Mercher?",
+   "source_seed": 243,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "beth am i ni gael rhywbeth i fwyta ddydd Mercher?",
+   "source_seed": 243,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "fedri di ddeud wrtha i be’ oeddat ti’n meddwl am y ffilm ’na ddydd Mercher?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "tan ddydd Mercher",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "dydy o ddim isio mynd allan ddydd Mercher",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "’swn i’n gofyn i ti fynd allan ddydd Mercher",
+   "source_seed": 243,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "liciwn i orffen hyn ddydd Mercher",
+   "source_seed": 246,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0371L03",
+   "welsh": "fyddwn i ddim yn rhoi fo iddo fo ddydd Mercher, ’swn i chdi",
+   "source_seed": 248,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0372L01",
+   "welsh": "welest ti’r ffilm ’na ar y penwythnos?",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0390L02",
+   "welsh": "yn agos at y lle",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0400L01",
+   "welsh": "rhan o’r broblem ydy nad ydan ni ddim isio stopio",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": [
+    "Catrin",
+    "Aran"
+   ]
+  },
+  {
+   "lego": "S0401L02",
+   "welsh": "ddudodd o y byddai’n well iddi drio siarad bach yn arafach",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "dylen ni esbonio",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "dylen ni ffeindio ffordd well i wneud o",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "dylen ni esbonio be’ oedd yn digwydd",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "dylen ni wneud rhywbeth",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "dylen ni ffeindio ffordd well",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "wyt ti’n meddwl y dylen ni aros?",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0403L01",
+   "welsh": "dylen ni agor",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "dylen nhw newid rhywbeth",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "dylen nhw newid popeth",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "dylen nhw newid o rŵan",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "dylen nhw drio cyflawni rhywbeth",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "wyt ti’n meddwl y dylen nhw ofyn am help?",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "wyt ti’n meddwl y dylen nhw aros?",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0408L01",
+   "welsh": "wyt ti’n meddwl y dylen ni?",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0411L01",
+   "welsh": "bydden ni’n licio gwybod beth oeddan nhw isio",
+   "source_seed": 187,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0411L01",
+   "welsh": "bydden ni’n licio gofyn rhywbeth i chi",
+   "source_seed": 187,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0411L01",
+   "welsh": "bydden ni’n licio gofyn am help",
+   "source_seed": 187,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0411L01",
+   "welsh": "bydden ni’n licio helpu, ond dan ni ddim yn gwybod beth maen nhw isio gwneud",
+   "source_seed": 187,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0417L01",
+   "welsh": "dan ni ddim yn gwybod os ydyn nhw isio treulio mwy o amser yn gweithio adre",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0417L01",
+   "welsh": "dan ni ddim yn gwybod os ydyn nhw isio treulio mwy o amser",
+   "source_seed": 176,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0422L01",
+   "welsh": "dw i isio gofyn cwestiwn",
+   "source_seed": 252,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0422L01",
+   "welsh": "dw i isio gofyn cwestiwn ddydd Mercher",
+   "source_seed": 252,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0422L01",
+   "welsh": "dydy o ddim isio gofyn cwestiwn ddydd Iau",
+   "source_seed": 252,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "’swn i’n gofyn i ti fynd allan ddydd Mawrth?",
+   "source_seed": 232,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "fyddwn i ddim yn gwneud hynna ddydd Mawrth ’swn i chdi",
+   "source_seed": 232,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "be’ fyddet ti’n deud ddydd Mawrth?",
+   "source_seed": 232,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "beth am i ni gael y ffilm ’na ddydd Mawrth?",
+   "source_seed": 232,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "be’ fyddet ti’n gwneud ddydd Mawrth?",
+   "source_seed": 232,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "be’ fyddet ti’n deud ’swn i’n gofyn i ti helpu fi efo’r trefniadau ddydd Mawrth?",
+   "source_seed": 234,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0428L03",
+   "welsh": "oedd hi’n rhy brysur i helpu fi ddydd Mawrth",
+   "source_seed": 247,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0429L03",
+   "welsh": "dylen ni ofyn iddyn nhw am help",
+   "source_seed": 202,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0429L03",
+   "welsh": "dan ni isio iddyn nhw dreulio mwy o amser adre wythnos nesa’",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0429L03",
+   "welsh": "dan ni isio iddyn nhw dreulio mwy o amser adre",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0431L05",
+   "welsh": "dw i angen mynd i’r gwaith yn fuan",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0437L03",
+   "welsh": "maen nhw isio gwneud yn siŵr bo’ ni’n gorffen cymaint â phosib",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0438L01",
+   "welsh": "doeddan nhw ddim isio gweithio i’r cyngor",
+   "source_seed": 184,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "oeddan ni isio cofio be’ oedd yn mynd i newid",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "dw i’n cofio pan oeddan nhw newydd ddechrau yn yr ysgol fel tasai hi ddoe",
+   "source_seed": 168,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "oeddan nhw newydd ddechrau treulio mwy o amser yn yr ysgol",
+   "source_seed": 169,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "oeddan ni isio cofio rhai ni",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "oeddan ni isio helpu rhai ni",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "oeddan ni isio rhai ni",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0444L01",
+   "welsh": "oeddan ni isio newid rhai ni",
+   "source_seed": 182,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0449L01",
+   "welsh": "oeddan ni’n siarad am beth ddudon nhw wrthon ni",
+   "source_seed": 189,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L02",
+   "welsh": "ffeindio rhywbeth",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L02",
+   "welsh": "ffeindio fy mab",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L02",
+   "welsh": "medra i ffeindio fo",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L02",
+   "welsh": "oeddan ni i gyd yn meddwl bo’ nhw isio ffeindio’n plant",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L02",
+   "welsh": "oeddan ni i gyd yn meddwl bo’ nhw isio ffeindio rhywbeth",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "yn agos at y siop",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dw i angen ffeindio siop yn agos at y lle",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dw i isio ffeindio siop yn agos at y lle",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "siop yn agos at y lle",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "ffeindio siop yn agos at y lle",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "medra i brynu siop",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dw i angen siop",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dan ni ddim yn gweld siop",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dw i isio ffeindio siop heno",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dw i isio ffeindio siop heddiw",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dw i isio ffeindio siop",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "o dan y siop",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dylen ni agor siop",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "efallai dylen ni agor siop",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L03",
+   "welsh": "dylen ni agor siop a deud y gwir",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "medra i ffeindio gwesty",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "medra i brynu gwesty",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "dw i isio ffeindio siop yn agos at y gwesty",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "gwesty yn agos at y siop",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "siop yn agos at y gwesty",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "ffeindio siop yn agos at y gwesty",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "cyn i ni brynu gwesty",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "o’n i’n medru cynnig gwesty iddi",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0460L05",
+   "welsh": "o dan y gwesty",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0461L05",
+   "welsh": "dw i angen ychydig o gardiau post",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0461L05",
+   "welsh": "medra i brynu ychydig o gardiau post",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0461L05",
+   "welsh": "dydy o ddim isio ychydig o gardiau post",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0461L05",
+   "welsh": "dw i ddim isio ychydig o gardiau post",
+   "source_seed": 258,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0461L05",
+   "welsh": "ychydig o gardiau post rŵan hyn",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0464L04",
+   "welsh": "bydda i’n gofyn iddi ei newid unwaith",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0465L03",
+   "welsh": "wnaeth hi anghofio beth ydy ei henw hi",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0466L03",
+   "welsh": "medra i daflu rhywbeth arall dros y wal",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0466L03",
+   "welsh": "dros y wal yn agos at y gwesty",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0469L05",
+   "welsh": "sydd ar ôl i ni ei newid",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0469L05",
+   "welsh": "dw i’n hapus nad ydan ni ddim angen ei newid",
+   "source_seed": 472,
+   "source_pool": "hc",
+   "needs": [
+    "Catrin"
+   ]
+  },
+  {
+   "lego": "S0470L01",
+   "welsh": "bydda i’n gofyn pa mor uchel",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L01",
+   "welsh": "pa mor uchel wyt ti angen?",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L01",
+   "welsh": "pa mor uchel wyt ti isio?",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L01",
+   "welsh": "pa mor uchel ydy wal y gwesty?",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L03",
+   "welsh": "dydy o ddim isio dringo",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L03",
+   "welsh": "pa mor uchel wyt ti angen dringo?",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L03",
+   "welsh": "dringo dros y wal",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L03",
+   "welsh": "cyn i ni stopio dringo",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L03",
+   "welsh": "hyd yn oed cyn i ni stopio dringo dros y wal",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L04",
+   "welsh": "cyn i ni siarad",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0470L04",
+   "welsh": "cyn i ni siarad efo chdi",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0471L03",
+   "welsh": "cyn i ni stopio am saib",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0471L03",
+   "welsh": "stopio am saib cyn i ni ei newid",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0471L03",
+   "welsh": "stopio am saib",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0471L03",
+   "welsh": "dringo cyn i ni stopio am saib",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0471L03",
+   "welsh": "tro nesa’ dw i isio stopio am saib",
+   "source_seed": 263,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0472L04",
+   "welsh": "maen nhw isio esbonio rhan o’r ffeithiau",
+   "source_seed": 472,
+   "source_pool": "hc",
+   "needs": [
+    "Catrin"
+   ]
+  },
+  {
+   "lego": "S0474L04",
+   "welsh": "isio cynnig rhad ac am ddim",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0474L04",
+   "welsh": "mae na ychydig o gardiau post rhad ac am ddim",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0474L04",
+   "welsh": "i ystyried cynnig rhad ac am ddim hyd yn oed",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0474L04",
+   "welsh": "cynnig rhad ac am ddim am saib",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0474L04",
+   "welsh": "gwesty rhad ac am ddim",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0474L04",
+   "welsh": "ychydig o gardiau post rhad ac am ddim dros y wal",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L01",
+   "welsh": "mae na lawer o resymau ar hyn o bryd",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L01",
+   "welsh": "mae na lawer o resymau na fedrwn ni daflu fo",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L01",
+   "welsh": "mae na lawer o resymau wnaeth hi anghofio cynnig",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L01",
+   "welsh": "mae na lawer o resymau nad ydan ni ddim yn gwybod",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L01",
+   "welsh": "mae na lawer o resymau",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L01",
+   "welsh": "mae na lawer o resymau i ystyried",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L02",
+   "welsh": "i ystyried rhywbeth",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L02",
+   "welsh": "i ystyried sut wnaeth hi anghofio",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L02",
+   "welsh": "fyddai dim byd i ystyried",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L02",
+   "welsh": "lawer o resymau i ystyried aros tan iddi siarad",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0475L02",
+   "welsh": "lawer o resymau i ystyried",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L04",
+   "welsh": "aros tan ddiwedd y llyfr hwn",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L04",
+   "welsh": "aros tan ddiwedd y ffilm ’na",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L04",
+   "welsh": "aros tan ddiwedd y pêl-droed",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L04",
+   "welsh": "aros tan ddiwedd",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L05",
+   "welsh": "tan i mi orffen yr ail hanner",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L05",
+   "welsh": "ddiwedd yr ail hanner",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0476L05",
+   "welsh": "aros tan ddiwedd yr ail hanner",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0477L03",
+   "welsh": "ydy nad ydyn nhw ddim yn sâl",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0477L05",
+   "welsh": "o’n i’n medru aros tan ail ddiwrnod y gwyliau",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0479L01",
+   "welsh": "dyna’r lleiaf sydd ar ôl i ni",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0480L02",
+   "welsh": "ydy nad ydyn nhw ddim beth mae o’n deud",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0481L02",
+   "welsh": "ydy nad ydyn nhw ddim yn gwybod beth sydd ar ôl i ni",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "yr unig obaith real sydd ar ôl i ni ydy",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "mae ganddi’r unig obaith real sydd ar ôl i ni",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "dydy o ddim yr unig obaith real sydd ar ôl i ni",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "dw i’n trio cofio’r unig obaith real",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "yr ail hanner ydy’r unig obaith real",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "yr unig obaith real o’n blaenau ni",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "y gwyliau ydy’r unig obaith real",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "cofio’r unig obaith real",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "yr unig obaith real ydy",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L01",
+   "welsh": "wnaeth hi anghofio’r unig obaith real",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L02",
+   "welsh": "pa mor hen ydy’r plant?",
+   "source_seed": 141,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L02",
+   "welsh": "pa mor hen ydy’ch plant chi?",
+   "source_seed": 141,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L02",
+   "welsh": "pa mor hen ydy’ch plant chi rŵan?",
+   "source_seed": 141,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L02",
+   "welsh": "ydy nad ydyn nhw ddim yn bell",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L03",
+   "welsh": "ydy nad ydyn nhw ddim",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L04",
+   "welsh": "dw i ddim isio o ddifri’",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L04",
+   "welsh": "o ddifri’ ddudes i rif fy ystafell wrthi",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L04",
+   "welsh": "dydy o ddim o ddifri’",
+   "source_seed": 269,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0482L04",
+   "welsh": "mae o o ddifri’ am y gwyliau am lawer o resymau",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0483L01",
+   "welsh": "dydy bywyd ddim yn hawdd rŵan hyn",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0485L02",
+   "welsh": "mae o wedi bod yn gwneud fi’n hapusach",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0485L02",
+   "welsh": "dydy hi ddim yn gwneud fi’n hapusach",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0485L02",
+   "welsh": "fyddai dim byd yn gwneud fi’n hapusach",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0485L02",
+   "welsh": "mae o’n gwneud fi’n hapusach",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0485L02",
+   "welsh": "yn gwneud fi’n hapusach na siarad Cymraeg",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0485L02",
+   "welsh": "yn gwneud fi’n hapusach na siarad",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "o dan y bont",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "bydda i’n gofyn o dan y bont",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "dianc o dan y bont",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "medra i daflu fo o dan y bont os na wnei di",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "os na wnei di ffeindio fo o dan y bont",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "efallai dylen ni agor siop o dan y bont",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0487L02",
+   "welsh": "does dim angen i ti redeg ar draws y bont",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L01",
+   "welsh": "mae o ar ochr arall y bont",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L01",
+   "welsh": "mae o ar ochr arall y bont o’n blaenau ni",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L01",
+   "welsh": "mae o ar ochr arall y siop",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L02",
+   "welsh": "y llinell felen yna ar ochr arall y bont",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L02",
+   "welsh": "ar ochr arall y llinell felen yna",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L02",
+   "welsh": "yn agos at y llinell felen yna",
+   "source_seed": 273,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0488L02",
+   "welsh": "y llinell felen yna rŵan hyn",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L02",
+   "welsh": "fydda i byth yn caru’r llinell felen yna byth eto",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L02",
+   "welsh": "fydda i byth yn caru byth eto",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L02",
+   "welsh": "fydda i byth yn barod i ystyried",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L02",
+   "welsh": "fydda i byth isio dianc yn bell",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L05",
+   "welsh": "dydy hi ddim isio siarad efo chdi byth eto",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L05",
+   "welsh": "dydy o ddim i fod o dan y bont byth eto",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0490L05",
+   "welsh": "dw i ddim isio gwylio’r llygaid blin yma byth eto",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0494L02",
+   "welsh": "ar ôl i ni orffen, dw i’n mynd i ymlacio am dipyn",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0494L02",
+   "welsh": "stopio am saib ar ôl i ni orffen",
+   "source_seed": 266,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0496L01",
+   "welsh": "dw i ddim yn bwriadu gwylio",
+   "source_seed": 278,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0496L01",
+   "welsh": "dw i ddim yn bwriadu gofyn i ti beth sy’n digwydd",
+   "source_seed": 278,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0496L01",
+   "welsh": "dw i ddim yn bwriadu colli",
+   "source_seed": 278,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0496L01",
+   "welsh": "dw i ddim yn bwriadu colli byth eto",
+   "source_seed": 278,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0496L04",
+   "welsh": "yn cyfri’ rŵan hyn",
+   "source_seed": 278,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0496L04",
+   "welsh": "mae o isio gofyn i ti os ydy’r un mwyaf yn cyfri’",
+   "source_seed": 278,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0498L02",
+   "welsh": "agor y drws ar ei ben ei hun",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L01",
+   "welsh": "efallai dylwn i",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L01",
+   "welsh": "efallai dylwn i siarad a deud y gwir",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L01",
+   "welsh": "efallai dylwn i siarad",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L01",
+   "welsh": "efallai dylwn i siarad efo chdi a deud y gwir",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L01",
+   "welsh": "efallai dylwn i aros tan ddiwedd y sioe",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L05",
+   "welsh": "agor y drws a chau’r bont",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L05",
+   "welsh": "a chau’r bont draw acw",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L05",
+   "welsh": "a chau’r ffenest",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L05",
+   "welsh": "agor y drws a chau’r ffenest",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L05",
+   "welsh": "cyn i ni agor y drws a chau’r ffenest",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0499L06",
+   "welsh": "bydda i’n gofyn iddi agor ffenest y fynedfa",
+   "source_seed": 281,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0500L05",
+   "welsh": "ffeindio’r ddwy hogan",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0503L03",
+   "welsh": "poeni am sut ti’n mynd i ffeindio un fi",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0507L03",
+   "welsh": "does dim angen i ti symud i’r ddinas rŵan hyn",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0507L03",
+   "welsh": "does dim angen i ti symud i’r ddinas",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni am symud",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni am sut mae hynna’n swnio",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni am beth sy’n digwydd",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni am redeg",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt symud yn ôl i’r ddinas",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt byw yn yr ardal hon",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt bwyta gwellt",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt symud i’r ddinas",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni am sut ti’n mynd i siarad",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L01",
+   "welsh": "does dim pwynt poeni am sut ti’n mynd i dalu",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L05",
+   "welsh": "sut ti’n mynd i",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0508L05",
+   "welsh": "ti’n mynd i gael rhywbeth arall",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0509L05",
+   "welsh": "am wely newydd",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0509L05",
+   "welsh": "ti’n mynd i dalu am wely newydd",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0509L05",
+   "welsh": "does dim angen i ti dalu am wely newydd",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0509L05",
+   "welsh": "dw i angen meddwl am wely newydd",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0509L05",
+   "welsh": "does neb isio i mi dalu am wely newydd",
+   "source_seed": 288,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0519L01",
+   "welsh": "dw i heb weld y teulu cyfan efo’i gilydd",
+   "source_seed": 297,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0519L01",
+   "welsh": "dw i heb weld y teulu cyfan",
+   "source_seed": 297,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0520L03",
+   "welsh": "am beth allai fod wedi digwydd i’r teulu cyfan",
+   "source_seed": 297,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0520L03",
+   "welsh": "beth allai fod wedi digwydd i’r teulu cyfan",
+   "source_seed": 297,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0538L02",
+   "welsh": "maen nhw’n edrych fel plant",
+   "source_seed": 140,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0538L02",
+   "welsh": "maen nhw’n edrych fel eich plant chi",
+   "source_seed": 140,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0538L02",
+   "welsh": "maen nhw’n edrych fel",
+   "source_seed": 140,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0559L01",
+   "welsh": "wyt ti ’di clywed bod ni isio iddyn nhw dreulio mwy o amser adre?",
+   "source_seed": 209,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0559L02",
+   "welsh": "ffeindio’r hogyn",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0567L03",
+   "welsh": "oeddan nhw newydd ddechrau treulio mwy o amser",
+   "source_seed": 169,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0567L03",
+   "welsh": "dw i isio treulio llai o amser yn gweithio",
+   "source_seed": 179,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0567L03",
+   "welsh": "treulio mwy o amser yn cyfarfod fel grŵp",
+   "source_seed": 170,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0567L03",
+   "welsh": "wyt ti isio treulio amser yn gweithio adre?",
+   "source_seed": 170,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0567L03",
+   "welsh": "mae’r hogyn isio treulio amser yn gweithio adre",
+   "source_seed": 171,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0581L01",
+   "welsh": "ddudes i bo’ ti ddim ’di deud wrtha i beth byddai fo’n licio gwybod",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0589L02",
+   "welsh": "mae gen i ffrind sydd isio deud wrthaf fi be’ i wneud",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0589L02",
+   "welsh": "fyddet ti’n licio deud wrthaf fi?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0589L02",
+   "welsh": "fyddet ti’n licio deud wrthaf fi be’ i wneud?",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0589L02",
+   "welsh": "wnaeth hi ddim deud wrthaf fi beth oedd hi isio gwybod",
+   "source_seed": 251,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0601L01",
+   "welsh": "oeddan ni’n siarad am be’ oedd yn digwydd yn y tŷ bwyta",
+   "source_seed": 189,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0601L01",
+   "welsh": "oeddan ni’n siarad am rai ni",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0605L03",
+   "welsh": "oeddan ni i gyd yn meddwl bo’ nhw isio gofyn am help",
+   "source_seed": 190,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0617L01",
+   "welsh": "oeddat ti’n meddwl bo’ fi isio mynd allan",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0617L01",
+   "welsh": "o’n i isio gofyn i ti be’ oeddat ti’n meddwl am y ffilm ’na",
+   "source_seed": 212,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0617L01",
+   "welsh": "oeddat ti’n meddwl fod o’n sothach llwyr",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0621L03",
+   "welsh": "byddwn i’n deud wrthi hi ’set ti’n medru dod efo ni",
+   "source_seed": 257,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0621L03",
+   "welsh": "byddwn i’n deud wrthi hi ’set ti’n medru helpu",
+   "source_seed": 257,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "os na wnei di banad o goffi rŵan hyn",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "os na wnei di banad o goffi i mi rŵan hyn",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "gest ti banad o goffi ddoe?",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "mae na banad o goffi i mi ar ochr arall y gwesty",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "do, ges i banad o goffi",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "gest ti banad o goffi?",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "os na wnei di banad o goffi i mi",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "os na wnei di banad o goffi rŵan hyn fydda i byth",
+   "source_seed": 274,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0623L02",
+   "welsh": "ga i nôl panad o de neu goffi i chi cyn i mi ateb hynna?",
+   "source_seed": 244,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0625L03",
+   "welsh": "beth am i ni gael rhywbeth arall i yfed mor fuan â phosib?",
+   "source_seed": 238,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0628L02",
+   "welsh": "o’n i’n meddwl i ti ddeud bo’ ti isio panad o de",
+   "source_seed": 209,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0630L01",
+   "welsh": "felly ga i fy mhres yn ôl?",
+   "source_seed": 239,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0633L01",
+   "welsh": "fyddai dim byd o’n blaenau ni cyn i ni daflu rhywbeth",
+   "source_seed": 272,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0643L02",
+   "welsh": "dach chi isio llefrith efo’ch te?",
+   "source_seed": 207,
+   "source_pool": "old",
+   "needs": []
+  },
+  {
+   "lego": "S0643L02",
+   "welsh": "dach chi isio llefrith efo’ch coffi?",
+   "source_seed": 207,
+   "source_pool": "old",
+   "needs": []
+  }
+ ],
+ "sample": [
+  {
+   "seed": 18,
+   "lego": "S0018L02",
+   "lego_ko": "만나다",
+   "lego_cy": "cyfarfod",
+   "id": "cym_for_kor:S0018L02B01",
+   "role": "build",
+   "ko": "너와 만나다",
+   "cy": "cyfarfod efo chdi",
+   "ko_fixed": false
+  },
+  {
+   "seed": 50,
+   "lego": "S0050L04",
+   "lego_ko": "가능한 한 빨리",
+   "lego_cy": "mor gyflym â phosib",
+   "id": "cym_for_kor:S0050L04U04",
+   "role": "use",
+   "ko": "나는 어젯밤 가능한 한 빨리 끝내고 싶었어",
+   "cy": "o’n i isio gorffen mor gyflym â phosib neithiwr",
+   "ko_fixed": false
+  },
+  {
+   "seed": 77,
+   "lego": "S0077L02",
+   "lego_ko": "얼마나 빨리",
+   "lego_cy": "pa mor gyflym",
+   "id": "cym_for_kor:S0077L02U03",
+   "role": "use",
+   "ko": "나는 내가 얼마나 빨리 배우고 있는지 몰라",
+   "cy": "dw i ddim yn gwybod pa mor gyflym dw i’n dysgu",
+   "ko_fixed": true
+  },
+  {
+   "seed": 120,
+   "lego": "S0120L05",
+   "lego_ko": "버스로",
+   "lego_cy": "ar y bws",
+   "id": "cym_for_kor:S0120L05B03",
+   "role": "build",
+   "ko": "오늘 버스로 가다",
+   "cy": "mynd ar y bws heddiw",
+   "ko_fixed": false
+  },
+  {
+   "seed": 149,
+   "lego": "S0149L01",
+   "lego_ko": "이건 ~지 않아",
+   "lego_cy": "dydy hwn ddim yn",
+   "id": "cym_for_kor:S0149L01U01",
+   "role": "use",
+   "ko": "왜 이건 작동하지 않아?",
+   "cy": "pam dydy hwn ddim yn gweithio",
+   "ko_fixed": true
+  },
+  {
+   "seed": 184,
+   "lego": "S0184L01",
+   "lego_ko": "그래",
+   "lego_cy": "do",
+   "id": "cym_for_kor:S0184L01U02",
+   "role": "use",
+   "ko": "그래, 하지만 나는 시간이 나지 않았어",
+   "cy": "do ond ches i ddim amser",
+   "ko_fixed": true
+  },
+  {
+   "seed": 222,
+   "lego": "S0222L01",
+   "lego_ko": "그는 ~려고 노력하고 있어",
+   "lego_cy": "mae o’n trio",
+   "id": "cym_for_kor:S0222L01B04",
+   "role": "build",
+   "ko": "그는 왜 설명하려고 노력하고 있어?",
+   "cy": "pam mae o’n trio esbonio",
+   "ko_fixed": true
+  },
+  {
+   "seed": 249,
+   "lego": "S0249L03",
+   "lego_ko": "네가 가기 전에",
+   "lego_cy": "cyn i ti fynd",
+   "id": "cym_for_kor:S0249L03U03",
+   "role": "use",
+   "ko": "너는 네가 가기 전에 내가 너를 도와주기를 원해?",
+   "cy": "wyt ti isio i mi helpu chdi cyn i ti fynd",
+   "ko_fixed": true
+  },
+  {
+   "seed": 284,
+   "lego": "S0284L02",
+   "lego_ko": "내 자매의 친구",
+   "lego_cy": "ffrind fy chwaer",
+   "id": "cym_for_kor:S0284L02U02",
+   "role": "use",
+   "ko": "나는 내 자매의 친구를 기다려야 했어",
+   "cy": "oedd rhaid i mi aros am ffrind fy chwaer",
+   "ko_fixed": false
+  },
+  {
+   "seed": 319,
+   "lego": "S0319L01",
+   "lego_ko": "그녀는 ~ㄹ 필요가 있어",
+   "lego_cy": "mae hi angen",
+   "id": "cym_for_kor:S0319L01B02",
+   "role": "build",
+   "ko": "그녀는 네 친구와 이야기할 필요가 있어",
+   "cy": "mae hi angen siarad efo dy ffrind",
+   "ko_fixed": false
+  },
+  {
+   "seed": 352,
+   "lego": "S0352L03",
+   "lego_ko": "그는 할 수 없을 텐데",
+   "lego_cy": "fyddai fo ddim yn medru",
+   "id": "cym_for_kor:S0352L03U03",
+   "role": "use",
+   "ko": "그는 오늘 저녁 파티에 올 수 없을 텐데",
+   "cy": "fyddai fo ddim yn medru dod i’r parti heno",
+   "ko_fixed": false
+  },
+  {
+   "seed": 382,
+   "lego": "S0382L02",
+   "lego_ko": "그가 어디에 ~고 싶어하는지",
+   "lego_cy": "lle oedd o isio",
+   "id": "cym_for_kor:S0382L02U07",
+   "role": "use",
+   "ko": "네가 떠난 후에 나는 그가 어디에 가고 싶어하는지 물어봤어",
+   "cy": "wnes i ofyn lle oedd o isio mynd ar ôl i ti adael",
+   "ko_fixed": false
+  },
+  {
+   "seed": 421,
+   "lego": "S0421L02",
+   "lego_ko": "그들은 ~를 알아",
+   "lego_cy": "maen nhw’n gwybod",
+   "id": "cym_for_kor:S0421L02B02",
+   "role": "build",
+   "ko": "그들은 답을 알아",
+   "cy": "maen nhw’n gwybod yr ateb",
+   "ko_fixed": false
+  },
+  {
+   "seed": 454,
+   "lego": "S0454L02",
+   "lego_ko": "놀러",
+   "lego_cy": "draw",
+   "id": "cym_for_kor:S0454L02U06",
+   "role": "use",
+   "ko": "그들은 내일 놀러 올 거야",
+   "cy": "byddan nhw’n dod draw ’fory",
+   "ko_fixed": false
+  },
+  {
+   "seed": 485,
+   "lego": "S0485L03",
+   "lego_ko": "도망치는 것보다",
+   "lego_cy": "na dianc",
+   "id": "cym_for_kor:S0485L03U05",
+   "role": "use",
+   "ko": "나는 그게 어쩌면 도망치는 것보다 훨씬 더 쉬울지도 모른다고 생각해",
+   "cy": "dw i’n meddwl efallai fod o’n llawer haws na dianc",
+   "ko_fixed": false
+  },
+  {
+   "seed": 521,
+   "lego": "S0521L06",
+   "lego_ko": "여기에 머물다",
+   "lego_cy": "aros yn fan hyn",
+   "id": "cym_for_kor:S0521L06B03",
+   "role": "build",
+   "ko": "나는 여기에 머물고 싶어",
+   "cy": "dw i isio aros yn fan hyn",
+   "ko_fixed": false
+  },
+  {
+   "seed": 553,
+   "lego": "S0553L02",
+   "lego_ko": "작은 교회가 ~다고",
+   "lego_cy": "bod yr eglwys fach",
+   "id": "cym_for_kor:S0553L02U05",
+   "role": "use",
+   "ko": "나는 작은 교회가 아름답다고 생각했어",
+   "cy": "o’n i’n meddwl bod yr eglwys fach yn hardd",
+   "ko_fixed": false
+  },
+  {
+   "seed": 583,
+   "lego": "S0583L01",
+   "lego_ko": "그건 어떤 곳이야?",
+   "lego_cy": "sut le ydy o",
+   "id": "cym_for_kor:S0583L01U05",
+   "role": "use",
+   "ko": "나는 그녀에게 그게 어떤 곳인지 물어볼 거야",
+   "cy": "bydda i’n gofyn iddi sut le ydy o",
+   "ko_fixed": false
+  },
+  {
+   "seed": 616,
+   "lego": "S0616L01",
+   "lego_ko": "너는 아주 용감했어",
+   "lego_cy": "oeddat ti’n ddewr iawn",
+   "id": "cym_for_kor:S0616L01B02",
+   "role": "build",
+   "ko": "왜냐하면 너는 아주 용감했으니까",
+   "cy": "achos oeddat ti’n ddewr iawn",
+   "ko_fixed": true
+  },
+  {
+   "seed": 655,
+   "lego": "S0655L03",
+   "lego_ko": "너희가 ~하고 있다고",
+   "lego_cy": "bo’ chi’n",
+   "id": "cym_for_kor:S0655L03U05",
+   "role": "use",
+   "ko": "그들은 너희가 가고 있다고 생각했어",
+   "cy": "oeddan nhw’n meddwl bo’ chi’n mynd",
+   "ko_fixed": false
+  }
+ ],
+ "thin": [
+  {
+   "lego": "S0001L02",
+   "have": {
+    "build": 1,
+    "use": 0
+   },
+   "floor": {
+    "build": 1,
+    "use": 1
+   }
+  },
+  {
+   "lego": "S0001L04",
+   "have": {
+    "build": 1,
+    "use": 0
+   },
+   "floor": {
+    "build": 1,
+    "use": 1
+   }
+  },
+  {
+   "lego": "S0001L05",
+   "have": {
+    "build": 0,
+    "use": 2
+   },
+   "floor": {
+    "build": 1,
+    "use": 1
+   }
+  },
+  {
+   "lego": "S0003L01",
+   "have": {
+    "build": 2,
+    "use": 0
+   },
+   "floor": {
+    "build": 1,
+    "use": 1
+   }
+  },
+  {
+   "lego": "S0004L02",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0016L05",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0017L03",
+   "have": {
+    "build": 2,
+    "use": 6
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0018L01",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0019L03",
+   "have": {
+    "build": 8,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0027L04",
+   "have": {
+    "build": 2,
+    "use": 2
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0038L02",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0047L02",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0048L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0051L01",
+   "have": {
+    "build": 7,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0051L04",
+   "have": {
+    "build": 11,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0058L04",
+   "have": {
+    "build": 10,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0061L04",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0071L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0087L04",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0094L02",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0095L01",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0097L01",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0104L02",
+   "have": {
+    "build": 10,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0139L01",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0150L02",
+   "have": {
+    "build": 2,
+    "use": 6
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0162L01",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0166L03",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0172L02",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0184L02",
+   "have": {
+    "build": 2,
+    "use": 6
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0195L04",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0204L04",
+   "have": {
+    "build": 11,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0207L01",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0212L02",
+   "have": {
+    "build": 2,
+    "use": 6
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0218L01",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0220L01",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0221L03",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0263L02",
+   "have": {
+    "build": 4,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0281L04",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0352L02",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0387L02",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0402L01",
+   "have": {
+    "build": 1,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0412L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0415L01",
+   "have": {
+    "build": 2,
+    "use": 6
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0417L01",
+   "have": {
+    "build": 2,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0435L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0439L02",
+   "have": {
+    "build": 2,
+    "use": 7
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0453L02",
+   "have": {
+    "build": 6,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0461L05",
+   "have": {
+    "build": 15,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0474L03",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0478L01",
+   "have": {
+    "build": 10,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0478L02",
+   "have": {
+    "build": 7,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0483L04",
+   "have": {
+    "build": 3,
+    "use": 3
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0501L03",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0511L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0511L04",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0514L03",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0516L02",
+   "have": {
+    "build": 13,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0518L01",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0544L01",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0550L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0554L02",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0585L05",
+   "have": {
+    "build": 2,
+    "use": 5
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0597L01",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0611L02",
+   "have": {
+    "build": 3,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  },
+  {
+   "lego": "S0617L02",
+   "have": {
+    "build": 5,
+    "use": 4
+   },
+   "floor": {
+    "build": 3,
+    "use": 5
+   }
+  }
+ ]
+}
