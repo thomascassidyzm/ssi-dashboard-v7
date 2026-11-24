@@ -1,0 +1,1041 @@
+{
+ "seed": 599,
+ "why": "Door held S0599L02 'yn hapus i' (HELD_FOR_REVIEW): attempt 2's only failure was ZUT — BUILD row '기꺼이 돕다 → yn hapus i helpu' collides with S0448's existing '기꺼이 돕다 → hapus i helpu'. Dropped that one row (ZUT kept as a hard rejection); 3 BUILD rows and all 7 USE rows of the door's own set remain, so nothing new is written and no USE row moved (P18). L1/L3/L4 are the door's passing sets from the same run. /api/seed/complete validates the whole seed. (cs #109, 24 Nov)",
+ "legos": {
+  "1": {
+   "ok": true,
+   "build": [
+    {
+     "known": "나는 거기에 있었을 거야",
+     "target": "fyswn i wedi bod yno",
+     "tiles": [
+      {
+       "known": "나는 ~였을 거야",
+       "target": "fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "거기에",
+       "target": " yno",
+       "legoId": "S0456L02"
+      }
+     ]
+    },
+    {
+     "known": "나는 정원에 있었을 거야",
+     "target": "fyswn i wedi bod yn yr ardd",
+     "tiles": [
+      {
+       "known": "나는 ~였을 거야",
+       "target": "fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "정원에",
+       "target": " yn yr ardd",
+       "legoId": "S0595L03"
+      }
+     ]
+    },
+    {
+     "known": "나는 내 자매와 있었을 거야",
+     "target": "fyswn i wedi bod efo fy chwaer",
+     "tiles": [
+      {
+       "known": "나는 ~였을 거야",
+       "target": "fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "~와",
+       "target": " efo",
+       "legoId": "S0594L04"
+      },
+      {
+       "known": "내 자매",
+       "target": " fy chwaer",
+       "legoId": "S0594L05"
+      }
+     ]
+    },
+    {
+     "known": "왜냐하면 나는 아팠을 거야",
+     "target": "achos fyswn i wedi bod yn sâl",
+     "tiles": [
+      {
+       "known": "왜냐하면",
+       "target": "achos",
+       "legoId": "S0549L01"
+      },
+      {
+       "known": "나는 ~였을 거야",
+       "target": " fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "아픈",
+       "target": " yn sâl",
+       "legoId": "S0477L03"
+      }
+     ]
+    }
+   ],
+   "use": [
+    {
+     "known": "나는 거기에 잠시 있었을 거야",
+     "target": "fyswn i wedi bod yno am sbel",
+     "tiles": [
+      {
+       "known": "나는 ~였을 거야",
+       "target": "fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "거기에",
+       "target": " yno",
+       "legoId": "S0456L02"
+      },
+      {
+       "known": "잠시",
+       "target": " am sbel",
+       "legoId": "S0596L04"
+      }
+     ]
+    },
+    {
+     "known": "하지만 나는 혼자서 있었을 거야",
+     "target": "ond fyswn i wedi bod ar fy mhen fy hun",
+     "tiles": [
+      {
+       "known": "하지만",
+       "target": "ond",
+       "legoId": "S0539L01"
+      },
+      {
+       "known": "나는 ~였을 거야",
+       "target": " fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "혼자서",
+       "target": " ar fy mhen fy hun",
+       "legoId": "S0351L04"
+      }
+     ]
+    },
+    {
+     "known": "나는 내가 어리석었을 거라고 생각해",
+     "target": "dw i’n meddwl fyswn i wedi bod yn ddwl",
+     "tiles": [
+      {
+       "known": "나는 ~라고 생각해",
+       "target": "dw i’n meddwl",
+       "legoId": "S0553L01"
+      },
+      {
+       "known": "나는 ~였을 거야",
+       "target": " fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "어리석은",
+       "target": " yn ddwl",
+       "legoId": "S0522L04"
+      }
+     ]
+    },
+    {
+     "known": "어쩌면 나는 정원에 내 자매와 있었을 거야",
+     "target": "efallai fyswn i wedi bod yn yr ardd efo fy chwaer",
+     "tiles": [
+      {
+       "known": "어쩌면",
+       "target": "efallai",
+       "legoId": "S0499L01"
+      },
+      {
+       "known": "나는 ~였을 거야",
+       "target": " fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "정원에",
+       "target": " yn yr ardd",
+       "legoId": "S0595L03"
+      },
+      {
+       "known": "~와",
+       "target": " efo",
+       "legoId": "S0594L04"
+      },
+      {
+       "known": "내 자매",
+       "target": " fy chwaer",
+       "legoId": "S0594L05"
+      }
+     ]
+    },
+    {
+     "known": "그러면 나는 밤에 아팠을 거야",
+     "target": "wedyn fyswn i wedi bod yn sâl yn y nos",
+     "tiles": [
+      {
+       "known": "그러면",
+       "target": "wedyn",
+       "legoId": "S0490L01"
+      },
+      {
+       "known": "나는 ~였을 거야",
+       "target": " fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "아픈",
+       "target": " yn sâl",
+       "legoId": "S0477L03"
+      },
+      {
+       "known": "밤에",
+       "target": " yn y nos",
+       "legoId": "S0558L02"
+      }
+     ]
+    },
+    {
+     "known": "나는 그 사무실에서 그녀와 있었을 거야",
+     "target": "fyswn i wedi bod efo hi yn y swyddfa",
+     "tiles": [
+      {
+       "known": "나는 ~였을 거야",
+       "target": "fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "그녀와",
+       "target": " efo hi",
+       "legoId": "S0386L03"
+      },
+      {
+       "known": "그 사무실에서",
+       "target": " yn y swyddfa",
+       "legoId": "S0511L06"
+      }
+     ]
+    },
+    {
+     "known": "네 도움 없이 나는 혼자서 있었을 거야",
+     "target": "heb dy help di fyswn i wedi bod ar fy mhen fy hun",
+     "tiles": [
+      {
+       "known": "네 도움 없이",
+       "target": "heb dy help di",
+       "legoId": "S0564L02"
+      },
+      {
+       "known": "나는 ~였을 거야",
+       "target": " fyswn i wedi bod",
+       "legoId": "S0599L01"
+      },
+      {
+       "known": "혼자서",
+       "target": " ar fy mhen fy hun",
+       "legoId": "S0351L04"
+      }
+     ]
+    }
+   ]
+  },
+  "3": {
+   "ok": true,
+   "build": [
+    {
+     "known": "밤에 운전하다",
+     "target": "ddreifio yn y nos",
+     "tiles": [
+      {
+       "known": "운전하다",
+       "target": "ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "밤에",
+       "target": " yn y nos",
+       "legoId": "S0558L02"
+      }
+     ]
+    },
+    {
+     "known": "나는 운전해야 했어",
+     "target": "oedd rhaid i mi ddreifio",
+     "tiles": [
+      {
+       "known": "나는 ~해야 했어",
+       "target": "oedd rhaid i mi",
+       "legoId": "S0594L01"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      }
+     ]
+    },
+    {
+     "known": "나는 꼭 도시로 운전해야 해",
+     "target": "mae’n rhaid i mi ddreifio i’r ddinas",
+     "tiles": [
+      {
+       "known": "나는 꼭 ~해야 해",
+       "target": "mae’n rhaid i mi",
+       "legoId": "S0549L02"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "도시로",
+       "target": " i’r ddinas",
+       "legoId": "S0507L03"
+      }
+     ]
+    },
+    {
+     "known": "그들은 해변으로 운전해서 내려갔어",
+     "target": "wnaethon nhw ddreifio i lawr i’r traeth",
+     "tiles": [
+      {
+       "known": "그들은 ~했어",
+       "target": "wnaethon nhw",
+       "legoId": "S0572L05"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "아래로",
+       "target": " i lawr",
+       "legoId": "S0560L02"
+      },
+      {
+       "known": "해변으로",
+       "target": " i’r traeth",
+       "legoId": "S0560L03"
+      }
+     ]
+    }
+   ],
+   "use": [
+    {
+     "known": "정말 늦었지만 나는 꼭 운전해야 해",
+     "target": "mae hi mor hwyr ond mae’n rhaid i mi ddreifio",
+     "tiles": [
+      {
+       "known": "정말 늦었어",
+       "target": "mae hi mor hwyr",
+       "legoId": "S0558L01"
+      },
+      {
+       "known": "하지만",
+       "target": " ond",
+       "legoId": "S0539L01"
+      },
+      {
+       "known": "나는 꼭 ~해야 해",
+       "target": " mae’n rhaid i mi",
+       "legoId": "S0549L02"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      }
+     ]
+    },
+    {
+     "known": "나는 운전해야 했어 왜냐하면 마지막 버스가 정류장을 떠나는 걸 봤거든",
+     "target": "oedd rhaid i mi ddreifio achos weles i’r bws ola’ yn gadael yr orsaf",
+     "tiles": [
+      {
+       "known": "나는 ~해야 했어",
+       "target": "oedd rhaid i mi",
+       "legoId": "S0594L01"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "왜냐하면",
+       "target": " achos",
+       "legoId": "S0549L01"
+      },
+      {
+       "known": "나는 마지막 버스를 봤어",
+       "target": " weles i’r bws ola’",
+       "legoId": "S0590L01"
+      },
+      {
+       "known": "정류장을 떠나는",
+       "target": " yn gadael yr orsaf",
+       "legoId": "S0590L02"
+      }
+     ]
+    },
+    {
+     "known": "아무리 다퉈도 나는 여전히 운전해야 했어",
+     "target": "faint bynnag o’n i’n dadlau oedd dal rhaid i mi ddreifio",
+     "tiles": [
+      {
+       "known": "아무리 ~해도",
+       "target": "faint bynnag",
+       "legoId": "S0593L01"
+      },
+      {
+       "known": "나는 ~하고 있었어",
+       "target": " o’n i’n",
+       "legoId": "S0593L02"
+      },
+      {
+       "known": "다투다",
+       "target": " dadlau",
+       "legoId": "S0593L03"
+      },
+      {
+       "known": "나는 여전히 ~해야 했어",
+       "target": " oedd dal rhaid i mi",
+       "legoId": "S0593L04"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      }
+     ]
+    },
+    {
+     "known": "나는 그가 밤에 기꺼이 운전할 거라고 생각하지 않아",
+     "target": "dw i ddim yn meddwl fod o’n hapus i ddreifio yn y nos",
+     "tiles": [
+      {
+       "known": "나는 ~라고 생각하지 않아",
+       "target": "dw i ddim yn meddwl",
+       "legoId": "S0336L01"
+      },
+      {
+       "known": "그가 기꺼이 ~겠다고",
+       "target": " fod o’n hapus i",
+       "legoId": "S0344L02"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "밤에",
+       "target": " yn y nos",
+       "legoId": "S0558L02"
+      }
+     ]
+    },
+    {
+     "known": "너는 그가 기꺼이 도시로 운전할 거라고 생각해?",
+     "target": "wyt ti’n meddwl fod o’n hapus i ddreifio i’r ddinas?",
+     "tiles": [
+      {
+       "known": "너 ~라고 생각해?",
+       "target": "wyt ti’n meddwl",
+       "legoId": "S0337L01"
+      },
+      {
+       "known": "그가 기꺼이 ~겠다고",
+       "target": " fod o’n hapus i",
+       "legoId": "S0344L02"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "도시로",
+       "target": " i’r ddinas?",
+       "legoId": "S0507L03"
+      }
+     ]
+    },
+    {
+     "known": "그건 네가 운전할 필요가 있는 것처럼 들려",
+     "target": "mae hynna’n swnio fel bod angen i ti ddreifio",
+     "tiles": [
+      {
+       "known": "그건 ~ 들려",
+       "target": "mae hynna’n swnio",
+       "legoId": "S0497L01"
+      },
+      {
+       "known": "네가 ~ㄹ 필요가 있는 것처럼",
+       "target": " fel bod angen i ti",
+       "legoId": "S0497L02"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      }
+     ]
+    },
+    {
+     "known": "우리는 내 자매와 해변으로 운전해서 갔어",
+     "target": "wnaethon ni ddreifio i’r traeth efo fy chwaer",
+     "tiles": [
+      {
+       "known": "우리는 ~했어",
+       "target": "wnaethon ni",
+       "legoId": "S0507L01"
+      },
+      {
+       "known": "운전하다",
+       "target": " ddreifio",
+       "legoId": "S0599L03"
+      },
+      {
+       "known": "해변으로",
+       "target": " i’r traeth",
+       "legoId": "S0560L03"
+      },
+      {
+       "known": "~와",
+       "target": " efo",
+       "legoId": "S0594L04"
+      },
+      {
+       "known": "내 자매",
+       "target": " fy chwaer",
+       "legoId": "S0594L05"
+      }
+     ]
+    }
+   ]
+  },
+  "4": {
+   "ok": true,
+   "build": [
+    {
+     "known": "네가 내게 말했더라면",
+     "target": "’set ti wedi deud wrthaf fi",
+     "tiles": [
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": "’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      }
+     ]
+    },
+    {
+     "known": "네가 진실을 말했더라면",
+     "target": "’set ti wedi deud y gwir",
+     "tiles": [
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": "’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "진실",
+       "target": " y gwir",
+       "legoId": "S0522L06"
+      }
+     ]
+    },
+    {
+     "known": "네가 그들이 무엇을 하고 있었는지 내게 말했더라면",
+     "target": "’set ti wedi deud wrthaf fi be’ oeddan nhw’n gwneud",
+     "tiles": [
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": "’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      },
+      {
+       "known": "그들이 무엇을 하고 있었는지",
+       "target": " be’ oeddan nhw’n gwneud",
+       "legoId": "S0598L04"
+      }
+     ]
+    },
+    {
+     "known": "네가 내게 말했더라면 나는 생각했을 거야",
+     "target": "fyswn i wedi meddwl ’set ti wedi deud wrthaf fi",
+     "tiles": [
+      {
+       "known": "나는 ~ 생각했을 거야",
+       "target": "fyswn i wedi meddwl",
+       "legoId": "S0566L01"
+      },
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": " ’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      }
+     ]
+    }
+   ],
+   "use": [
+    {
+     "known": "네가 내게 말했더라면 나는 그것에 대해 더 신중하게 생각했을 거야",
+     "target": "fyswn i wedi meddwl amdano fo’n fwy gofalus ’set ti wedi deud wrthaf fi",
+     "tiles": [
+      {
+       "known": "나는 ~ 생각했을 거야",
+       "target": "fyswn i wedi meddwl",
+       "legoId": "S0566L01"
+      },
+      {
+       "known": "그것에 대해 더 신중하게",
+       "target": " amdano fo’n fwy gofalus",
+       "legoId": "S0565L02"
+      },
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": " ’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      }
+     ]
+    },
+    {
+     "known": "네가 그녀한테 진실을 말했더라면 더 좋을 거야",
+     "target": "byddai’n well ’set ti wedi deud y gwir wrthi",
+     "tiles": [
+      {
+       "known": "~는 게 더 좋을 거야",
+       "target": "byddai’n well",
+       "legoId": "S0401L02"
+      },
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": " ’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "진실",
+       "target": " y gwir",
+       "legoId": "S0522L06"
+      },
+      {
+       "known": "그녀한테",
+       "target": " wrthi",
+       "legoId": "S0464L03"
+      }
+     ]
+    },
+    {
+     "known": "네가 내게 말했더라면 나는 무엇을 생각했을까",
+     "target": "be’ fyswn i wedi meddwl ’set ti wedi deud wrthaf fi",
+     "tiles": [
+      {
+       "known": "무엇",
+       "target": "be’",
+       "legoId": "S0452L02"
+      },
+      {
+       "known": "나는 ~ 생각했을 거야",
+       "target": " fyswn i wedi meddwl",
+       "legoId": "S0566L01"
+      },
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": " ’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      }
+     ]
+    },
+    {
+     "known": "네가 내게 진실을 말했더라면 나는 더 오래 버틸 수 없었을 거야",
+     "target": "fyswn i ddim wedi medru dal ati’n hirach ’set ti wedi deud y gwir wrthaf fi",
+     "tiles": [
+      {
+       "known": "나는 ~ㄹ 수 없었을 거야",
+       "target": "fyswn i ddim wedi medru",
+       "legoId": "S0564L01"
+      },
+      {
+       "known": "더 오래 버티다",
+       "target": " dal ati’n hirach",
+       "legoId": "S0563L02"
+      },
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": " ’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "진실",
+       "target": " y gwir",
+       "legoId": "S0522L06"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      }
+     ]
+    },
+    {
+     "known": "네가 그에게 지난번에 무슨 일이 있었는지 말했더라면 더 좋을 거야",
+     "target": "byddai’n well ’set ti wedi deud wrtho fo be’ ddigwyddodd y tro diwetha’",
+     "tiles": [
+      {
+       "known": "~는 게 더 좋을 거야",
+       "target": "byddai’n well",
+       "legoId": "S0401L02"
+      },
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": " ’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "그에게",
+       "target": " wrtho fo",
+       "legoId": "S0365L03"
+      },
+      {
+       "known": "무슨 일이 있었는지",
+       "target": " be’ ddigwyddodd",
+       "legoId": "S0572L03"
+      },
+      {
+       "known": "지난번에",
+       "target": " y tro diwetha’",
+       "legoId": "S0572L04"
+      }
+     ]
+    },
+    {
+     "known": "네가 그게 어려울 거라고 내게 말했더라면 나는 그것에 대해 더 신중하게 생각했을 거야",
+     "target": "’set ti wedi deud wrthaf fi y byddai fo’n anodd fyswn i wedi meddwl amdano fo’n fwy gofalus",
+     "tiles": [
+      {
+       "known": "네가 ~ 말했더라면",
+       "target": "’set ti wedi deud",
+       "legoId": "S0599L04"
+      },
+      {
+       "known": "내게",
+       "target": " wrthaf fi",
+       "legoId": "S0589L02"
+      },
+      {
+       "known": "그게 어려울 거라고",
+       "target": " y byddai fo’n anodd",
+       "legoId": "S0544L02"
+      },
+      {
+       "known": "나는 ~ 생각했을 거야",
+       "target": " fyswn i wedi meddwl",
+       "legoId": "S0566L01"
+      },
+      {
+       "known": "그것에 대해 더 신중하게",
+       "target": " amdano fo’n fwy gofalus",
+       "legoId": "S0565L02"
+      }
+     ]
+    }
+   ]
+  },
+  "2": {
+   "ok": true,
+   "build": [
+    {
+     "known": "기꺼이 여기에 머물다",
+     "target": "yn hapus i aros yn fan hyn",
+     "tiles": [
+      {
+       "known": "기꺼이 ~하다",
+       "target": "yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "여기에 머물다",
+       "target": " aros yn fan hyn",
+       "legoId": "S0521L06"
+      }
+     ]
+    },
+    {
+     "known": "그는 기꺼이 기다려 왔어",
+     "target": "mae o wedi bod yn hapus i aros",
+     "tiles": [
+      {
+       "known": "그는",
+       "target": "mae o",
+       "legoId": "S0547L02"
+      },
+      {
+       "known": "~였다",
+       "target": " wedi bod",
+       "legoId": "S0547L03"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "기다리다",
+       "target": " aros",
+       "legoId": "S0476L02"
+      }
+     ]
+    },
+    {
+     "known": "그는 기꺼이 나누려 하지 않았어",
+     "target": "doedd o ddim yn hapus i rannu",
+     "tiles": [
+      {
+       "known": "그건 ~에 있지 않았어",
+       "target": "doedd o ddim",
+       "legoId": "S0459L01"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "나누다",
+       "target": " rannu",
+       "legoId": "S0594L02"
+      }
+     ]
+    }
+   ],
+   "use": [
+    {
+     "known": "그는 기꺼이 우리를 방문해 왔어",
+     "target": "mae o wedi bod yn hapus i ymweld â ni",
+     "tiles": [
+      {
+       "known": "그는",
+       "target": "mae o",
+       "legoId": "S0547L02"
+      },
+      {
+       "known": "~였다",
+       "target": " wedi bod",
+       "legoId": "S0547L03"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "우리를 방문하다",
+       "target": " ymweld â ni",
+       "legoId": "S0572L06"
+      }
+     ]
+    },
+    {
+     "known": "그는 내 자매와 기꺼이 나누려 하지 않았어",
+     "target": "doedd o ddim yn hapus i rannu efo fy chwaer",
+     "tiles": [
+      {
+       "known": "그건 ~에 있지 않았어",
+       "target": "doedd o ddim",
+       "legoId": "S0459L01"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "나누다",
+       "target": " rannu",
+       "legoId": "S0594L02"
+      },
+      {
+       "known": "~와",
+       "target": " efo",
+       "legoId": "S0594L04"
+      },
+      {
+       "known": "내 자매",
+       "target": " fy chwaer",
+       "legoId": "S0594L05"
+      }
+     ]
+    },
+    {
+     "known": "나는 그가 기꺼이 너를 도와 왔다고 생각해",
+     "target": "dw i’n meddwl fod o wedi bod yn hapus i helpu chdi",
+     "tiles": [
+      {
+       "known": "나는 ~라고 생각해",
+       "target": "dw i’n meddwl",
+       "legoId": "S0553L01"
+      },
+      {
+       "known": "그게 ~였다고",
+       "target": " fod o wedi bod",
+       "legoId": "S0522L03"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "너를 돕다",
+       "target": " helpu chdi",
+       "legoId": "S0344L03"
+      }
+     ]
+    },
+    {
+     "known": "너는 그가 기꺼이 기다려 왔다고 생각해?",
+     "target": "wyt ti’n meddwl fod o wedi bod yn hapus i aros",
+     "tiles": [
+      {
+       "known": "너 ~라고 생각해?",
+       "target": "wyt ti’n meddwl",
+       "legoId": "S0492L03"
+      },
+      {
+       "known": "그게 ~였다고",
+       "target": " fod o wedi bod",
+       "legoId": "S0522L03"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "기다리다",
+       "target": " aros",
+       "legoId": "S0476L02"
+      }
+     ]
+    },
+    {
+     "known": "그는 병원에서 오는 소식을 기꺼이 기다려 왔어",
+     "target": "mae o wedi bod yn hapus i aros am y newyddion o’r ysbyty",
+     "tiles": [
+      {
+       "known": "그는",
+       "target": "mae o",
+       "legoId": "S0547L02"
+      },
+      {
+       "known": "~였다",
+       "target": " wedi bod",
+       "legoId": "S0547L03"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "~를 기다리다",
+       "target": " aros am",
+       "legoId": "S0577L02"
+      },
+      {
+       "known": "소식",
+       "target": " y newyddion",
+       "legoId": "S0577L03"
+      },
+      {
+       "known": "병원에서 오는",
+       "target": " o’r ysbyty",
+       "legoId": "S0577L04"
+      }
+     ]
+    },
+    {
+     "known": "그는 기꺼이 열쇠를 가져오려 하지 않았어",
+     "target": "doedd o ddim yn hapus i nôl y goriadau",
+     "tiles": [
+      {
+       "known": "그건 ~에 있지 않았어",
+       "target": "doedd o ddim",
+       "legoId": "S0459L01"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "열쇠를 가져오다",
+       "target": " nôl y goriadau",
+       "legoId": "S0512L05"
+      }
+     ]
+    },
+    {
+     "known": "하지만 그는 기꺼이 돕지 않았어",
+     "target": "ond doedd o ddim yn hapus i helpu",
+     "tiles": [
+      {
+       "known": "하지만",
+       "target": "ond",
+       "legoId": "S0539L01"
+      },
+      {
+       "known": "그건 ~에 있지 않았어",
+       "target": " doedd o ddim",
+       "legoId": "S0459L01"
+      },
+      {
+       "known": "기꺼이 ~하다",
+       "target": " yn hapus i",
+       "legoId": "S0599L02"
+      },
+      {
+       "known": "돕다",
+       "target": " helpu",
+       "legoId": "S0491L04"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
