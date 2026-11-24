@@ -1,0 +1,12 @@
+cs #251·AL — cym_for_kor practice baskets rebuilt to option D (#248 re-cost d/88008158; Kai 24 Nov 17:55Z).
+Tool: tools/course-optimization/cym-for-kor-rebuild-251.cjs (header says what and why). Assignment: assign.py (pure, offline).
+Runs from the durable checkout ~/.cs-long/251/popty on branch cs/251-run; data commits land there.
+
+REGENERATES FOR FREE (offline, from the snapshots in ~/ssi-evidence/ssi-dashboard-v7/ops/cym-for-kor/rebuild-251/):
+  match.json   node ops/cym-for-kor/reuse/match.cjs cym_for_kor.json cym_nv2_for_eng.json match.json
+  recost.json  python3 ops/cym-for-kor/reuse/recost.py match.json cym_nv2_for_eng.json
+  assign.json  python3 ops/cym-for-kor/rebuild-251/assign.py match.json cym_for_kor.json cym_nv2_for_eng.json assign.json
+  check.json, plan-*.json, *.changeset.jsonl  (tool modes; the .applied.jsonl ledgers are the record of what landed)
+NOT REGENERABLE FOR FREE (model-written, Claude capacity):
+  ko/S####.json  per seed: Korean prompts for the placed originals, verdicts on moved originals, the top-up picks
+Snapshots, live dumps and logs: ~/ssi-evidence/ssi-dashboard-v7/ops/cym-for-kor/rebuild-251/ (not committed).
