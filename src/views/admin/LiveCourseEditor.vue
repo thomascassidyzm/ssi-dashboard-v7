@@ -11,7 +11,7 @@
       </div>
       <div v-if="course && !loading && !loadError" class="bar">
         <button class="pill" :class="{ on: onlyHand }" @click="toggleHand">✎ Hand-edited <b>{{ handCount }}</b></button>
-        <span class="count">{{ rounds.length }} intro items</span>
+        <span class="count">{{ rounds.length }} intro items<span v-if="readAt" :title="'Changes made outside this page show within 15 minutes'"> · read {{ fmtWhen(readAt) }}</span></span>
       </div>
       <p v-if="course && !loading && !lockReady" class="lockwarn">
         The hand-edit lock is not set up yet (its database change is waiting for Tom's go). Text edits still apply, but are
@@ -196,6 +196,7 @@ const phrases = shallowRef({})
 const proposals = shallowRef([])
 const audioMode = ref('tts')
 const lockReady = ref(false)
+const readAt = ref('')
 const canEdit = ref(false)
 const loading = ref(false)
 const loadError = ref('')
@@ -402,6 +403,7 @@ async function load() {
     proposals.value = body.proposals || []
     audioMode.value = body.audioMode || 'tts'
     lockReady.value = !!body.lockReady
+    readAt.value = body.readAt || ''
     canEdit.value = !!body.canEdit
     localOrder.value = null
   } catch (e) {

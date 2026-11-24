@@ -310,6 +310,102 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
   const view = (r) => r && ({ tx: r.target_text, kn: r.known_text || '', ro: r.target_text_roman || '', lock: lockOf(r), audio: Object.fromEntries(AUDIO_COLS.map((c) => [c.replace('_audio_id', ''), r[c] || null])) })
 
   /**
+   * THE COURSE READ, KEPT IN THIS PROCESS (Aran's room, 2026-11-24: the read "timed out (>280s)… fix it or page it").
+   * A whole-course read of kor_for_eng is ~1,300 LEGOs, ~12,000 phrases, the round map, two flag tables and 1,300
+   * intro clips: 70 s from cold on a busy database, 174 s and a 500 on the next try (2026-11-24), and it was paid on
+   * every page load. Now it is read once per API process and kept: a page load is served from memory, an
+   * apply/undo/flag here re-reads ONLY the round it touched (refreshLego: three small keyed reads), and after
+   * READ_TTL_MS the next load is served what is held while a fresh read runs behind it — so a change made outside this
+   * editor shows within READ_TTL_MS (the page says when the course was read). Only one read per course runs at a time.
+   * The round shape itself (buildRounds) is recomputed per request: it is pure and takes milliseconds.
+   */
+  const READ_TTL_MS = 15 * 60 * 1000
+  const courseCache = new Map()   // courseCode -> { raw, at, building }
+  const legoSelect = (ready) => `lego_id,seed_number,lego_index,is_new,known_text,target_text,target_text_roman,known_audio_id,target1_audio_id,target2_audio_id,presentation_audio_id${ready ? ',' + LEGO_LOCK_COLS : ''}`
+  const phraseSelect = (ready) => `id,seed_number,lego_index,position,phrase_role,target_text,known_text,target_text_roman,known_audio_id,target1_audio_id,target2_audio_id${ready ? ',' + PHRASE_LOCK_COLS : ''}`
+
+  async function readCourse(courseCode) {
+    const t0 = Date.now()
+    const ready = await lockReady()
+    const [order, roundMap, legos, legoFlags, phraseFlags] = await Promise.all([
+      allRows((a, b) => db().from('course_running_order').select('seed_number,position')
+        .eq('course_code', courseCode).order('seed_number').range(a, b)),
+      allRows((a, b) => db().from('course_round_index').select('round_index,lego_id')
+        .eq('course_code', courseCode).order('round_index').range(a, b)).catch((e) => { log.warn(`[course-editor] round map unreadable, using running order: ${e.message}`); return [] }),
+      allRows((a, b) => db().from('course_legos').select(legoSelect(ready))
+        .eq('course_code', courseCode).order('seed_number').order('lego_index').range(a, b)),
+      allRows((a, b) => db().from('lego_proof_flags').select('lego_id,flagged,note')
+        .eq('course_code', courseCode).order('lego_id').range(a, b)),
+      allRows((a, b) => db().from('phrase_proof_flags').select('phrase_id,flagged,note')
+        .eq('course_code', courseCode).order('phrase_id').range(a, b)),
+    ])
+    const maxSeed = legos.reduce((m, l) => Math.max(m, l.seed_number), 0)
+    // Chunked by seed range: one OFFSET-paged query over a whole course hits the 8 s statement timeout (job #562).
+    const [phrases, clipText] = await Promise.all([
+      phrasesBySeedChunks((lo, hi) => (a, b) => db().from('course_practice_phrases').select(phraseSelect(ready))
+        .eq('course_code', courseCode).gte('seed_number', lo).lt('seed_number', hi).in('phrase_role', PLAYED_ROLES)
+        .order('seed_number').order('lego_index').order('position').range(a, b), maxSeed),
+      // The words of each spoken introduction: the presentation clip's own text (course_audio.text) — their one home.
+      clipTexts(legos.map((l) => l.presentation_audio_id)),
+    ])
+    log.info(`[course-editor] ${courseCode}: read ${legos.length} LEGOs, ${phrases.length} phrases, ${clipText.size} intro clips in ${Date.now() - t0} ms`)
+    return { ready, order, roundMap, legos, legoFlags, phraseFlags, phrases, clipText }
+  }
+  function refreshAll(courseCode) {
+    const c = courseCache.get(courseCode) || {}
+    courseCache.set(courseCode, c)
+    if (!c.building) {
+      c.building = readCourse(courseCode).then(
+        (raw) => { c.raw = raw; c.at = Date.now(); c.building = null; return raw },
+        (e) => { c.building = null; throw e })
+    }
+    return c.building
+  }
+  // Warm it once, a minute and a half after the API starts (it restarts on every deploy), so Aran's first page load after
+  // a restart is not the cold read. One read per editor course; a failure just leaves the first page load to read.
+  if (!process.env.VITEST) {
+    const warm = setTimeout(() => {
+      for (const code of EDITOR_COURSES) refreshAll(code).catch((e) => log.warn(`[course-editor] warm read ${code}: ${e.message}`))
+    }, 90 * 1000)
+    if (warm.unref) warm.unref()
+  }
+  async function courseRaw(courseCode) {
+    const c = courseCache.get(courseCode)
+    // The lock being set up adds columns the held read lacks: read again, once, and wait for it.
+    if (c && c.raw && c.raw.ready === await lockReady()) {
+      if (Date.now() - c.at > READ_TTL_MS && !c.building) refreshAll(courseCode).catch((e) => log.warn(`[course-editor] background read ${courseCode}: ${e.message}`))
+      return c
+    }
+    await refreshAll(courseCode)
+    return courseCache.get(courseCode)
+  }
+  /** After a change here: re-read the one LEGO and its phrases (and its intro clip's words) into the held read. */
+  async function refreshLego(courseCode, legoId) {
+    const c = courseCache.get(courseCode)
+    if (!c || !c.raw || !legoId) return
+    try {
+      const raw = c.raw
+      const { data: lego, error } = await db().from('course_legos').select(legoSelect(raw.ready)).eq('course_code', courseCode).eq('lego_id', legoId).maybeSingle()
+      if (error) throw new Error(error.message)
+      const old = raw.legos.find((l) => l.lego_id === legoId)
+      const slot = lego || old
+      if (!slot) return
+      const { data: rows, error: pe } = await db().from('course_practice_phrases').select(phraseSelect(raw.ready))
+        .eq('course_code', courseCode).eq('seed_number', slot.seed_number).eq('lego_index', slot.lego_index).in('phrase_role', PLAYED_ROLES).order('position')
+      if (pe) throw new Error(pe.message)
+      if (lego && lego.presentation_audio_id && !raw.clipText.has(lego.presentation_audio_id)) {
+        for (const [id, t] of await clipTexts([lego.presentation_audio_id])) raw.clipText.set(id, t)
+      }
+      raw.legos = lego ? (old ? raw.legos.map((l) => (l.lego_id === legoId ? lego : l)) : [...raw.legos, lego]) : raw.legos.filter((l) => l.lego_id !== legoId)
+      raw.phrases = [...raw.phrases.filter((p) => !(p.seed_number === slot.seed_number && p.lego_index === slot.lego_index)), ...(rows || [])]
+    } catch (e) {
+      // Never leave a page showing a change that did not happen, or hiding one that did: read it all again.
+      log.warn(`[course-editor] refresh ${courseCode} ${legoId} failed (${e.message}) — the next page load re-reads the course`)
+      courseCache.delete(courseCode)
+    }
+  }
+
+  /**
    * THE ROUND VIEW (cs #128·AL): every intro item in learner order (course_round_index — the round map the player walks),
    * each with what its round plays — practice, revisits, round-off — worked out by round-view.cjs exactly as /cycles
    * builds it, plus the words of its spoken introduction. Lines are sent once, keyed by id; rounds refer to them.
@@ -317,29 +413,11 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
   router.get('/', async (req, res) => {
     try {
       const { courseCode } = req.params
-      const ready = await lockReady()
-      const [order, roundMapRaw, legos, legoFlags, phraseFlags] = await Promise.all([
-        allRows((a, b) => db().from('course_running_order').select('seed_number,position')
-          .eq('course_code', courseCode).order('seed_number').range(a, b)),
-        allRows((a, b) => db().from('course_round_index').select('round_index,lego_id')
-          .eq('course_code', courseCode).order('round_index').range(a, b)).catch((e) => { log.warn(`[course-editor] round map unreadable, using running order: ${e.message}`); return [] }),
-        allRows((a, b) => db().from('course_legos').select(`lego_id,seed_number,lego_index,is_new,known_text,target_text,target_text_roman,known_audio_id,target1_audio_id,target2_audio_id,presentation_audio_id${ready ? ',' + LEGO_LOCK_COLS : ''}`)
-          .eq('course_code', courseCode).order('seed_number').order('lego_index').range(a, b)),
-        allRows((a, b) => db().from('lego_proof_flags').select('lego_id,flagged,note')
-          .eq('course_code', courseCode).order('lego_id').range(a, b)),
-        allRows((a, b) => db().from('phrase_proof_flags').select('phrase_id,flagged,note')
-          .eq('course_code', courseCode).order('phrase_id').range(a, b)),
-      ])
-      const maxSeed = legos.reduce((m, l) => Math.max(m, l.seed_number), 0)
-      // Chunked by seed range: one OFFSET-paged query over a whole course hits the 8 s statement timeout (job #562).
-      const phrases = await phrasesBySeedChunks((lo, hi) => (a, b) => db().from('course_practice_phrases')
-        .select(`id,seed_number,lego_index,position,phrase_role,target_text,known_text,target_text_roman,known_audio_id,target1_audio_id,target2_audio_id${ready ? ',' + PHRASE_LOCK_COLS : ''}`)
-        .eq('course_code', courseCode).gte('seed_number', lo).lt('seed_number', hi).in('phrase_role', PLAYED_ROLES)
-        .order('seed_number').order('lego_index').order('position').range(a, b), maxSeed)
-
+      const held = await courseRaw(courseCode)
+      const { ready, order, legos, legoFlags, phraseFlags, phrases, clipText } = held.raw
+      let roundMap = held.raw.roundMap
       const legoById = new Map(legos.map((l) => [l.lego_id, l]))
       // No round map row (a course the view has not been refreshed for): fall back to running order, new LEGOs only.
-      let roundMap = roundMapRaw
       if (!roundMap.length) {
         const { items } = buildEditorList(courseCode, legos, [], order, [], [])
         roundMap = items.filter((it) => it.t === 'l').map((it, i) => ({ round_index: i + 1, lego_id: it.id }))
@@ -350,11 +428,8 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         if (!byKey.has(k)) byKey.set(k, [])
         byKey.get(k).push(p)
       }
+      for (const list of byKey.values()) list.sort((a, b) => a.position - b.position)
       const rounds = buildRounds(roundMap, legoById, byKey)
-
-      // The words of each spoken introduction: the presentation clip's own text (course_audio.text). Until now nothing in
-      // the editor read it, which is why Aran could not see it anywhere (cs #128·AL).
-      const clipText = await clipTexts(rounds.map((r) => legoById.get(r.legoId).presentation_audio_id))
       const introWords = { items: rounds.length, withWords: 0, noClip: 0, clipWithoutText: 0 }
 
       const usesT2 = legos.some((l) => l.target2_audio_id) || phrases.some((p) => p.target2_audio_id)
@@ -398,6 +473,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         usesTarget2: usesT2,
         lockReady: ready,
         introWords,
+        readAt: new Date(held.at || Date.now()).toISOString(),
         canEdit: isFineTuner(req),
         rounds: outRounds, legos: outLegos, phrases: outPhrases,
         proposals: proposals.list(courseCode).filter((p) => p.status !== 'undone'),
@@ -423,6 +499,12 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const { data, error: ue } = await db().from(lego ? 'lego_proof_flags' : 'phrase_proof_flags')
         .upsert(row, { onConflict: lego ? 'course_code,lego_id' : 'course_code,phrase_id' }).select('flagged,note').single()
       if (ue) throw new Error(ue.message)
+      // The held course read keeps its flags in step (the rest of the line did not change).
+      const held = courseCache.get(courseCode)
+      if (held && held.raw) {
+        const k = lego ? 'legoFlags' : 'phraseFlags', idCol = lego ? 'lego_id' : 'phrase_id'
+        held.raw[k] = [...held.raw[k].filter((f) => f[idCol] !== row[idCol]), { [idCol]: row[idCol], ...data }]
+      }
       res.json({ ok: true, flag: data })
     } catch (e) {
       log.error(`[course-editor] flag ${req.params.courseCode}: ${e.message}`)
@@ -528,6 +610,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     if (!cur) { cur = { ...rec }; list.push(cur); log.warn(`[course-editor] ${courseCode}: proposal ${rec.id} vanished mid-apply — re-filed so its Undo survives`) }
     return Object.assign(cur, patch)
   })
+  const legoOfRec = (rec) => rec.lego || (rec.kind === 'phrase' ? String(rec.line || rec.key).match(/^S\d+L\d+/)?.[0] : rec.line || rec.key)
   const findProposal = (courseCode, pid) => proposals.list(courseCode).find((x) => x.id === pid)
   const patchProposal = (courseCode, pid, patch) => proposals.mutate(courseCode, (list) => {
     const rec = list.find((x) => x.id === pid)
@@ -581,6 +664,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       newClip: { id: made.audioId, source: made.source || null, charsSpent: made.charsSpent ?? 0 }, oldClip, error: null,
     })
     log.info(`[course-editor] ${courseCode}: intro of ${line} now clip ${made.audioId} (was ${oldClip}) by ${req.editorWho}, event ${body.event_id}`)
+    await refreshLego(courseCode, line)
     return res.json({ ok: true, proposal: p })
   }
 
@@ -691,6 +775,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
         audioQueued: queued ? !!queued.queued || !!queued.touched : false, audioRefused: queued && queued.refused ? queued.reason : null, error: null,
       })
       log.info(`[course-editor] ${courseCode}: applied ${pid} (${rec.action} ${rec.kind} ${rec.key}) by ${req.editorWho}, event ${body.event_id}`)
+      await refreshLego(courseCode, legoOfRec(rec))
       res.json({ ok: true, proposal: p, row: view(after) })
     } catch (e) {
       log.error(`[course-editor] apply ${courseCode} ${pid}: ${e.message}`)
@@ -723,6 +808,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const p = await patchProposal(courseCode, pid, { status: 'undone', undoneBy: req.editorWho, undoneAt: new Date().toISOString(), undoEventId: body.event_id || null })
       const row = (rec.action === 'remove' && rec.kind === 'lego') || rec.kind === 'round' || rec.action === 'copy' ? null : await liveRow(courseCode, rec.kind, line).catch(() => null)
       log.info(`[course-editor] ${courseCode}: undid ${pid} by ${req.editorWho}, event ${body.event_id}`)
+      await refreshLego(courseCode, legoOfRec(rec))
       res.json({ ok: true, proposal: p, row: view(row) })
     } catch (e) {
       log.error(`[course-editor] undo ${courseCode} ${pid}: ${e.message}`)
