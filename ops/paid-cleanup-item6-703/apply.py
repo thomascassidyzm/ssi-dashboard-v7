@@ -17,15 +17,19 @@ import json, os, re, subprocess, sys, urllib.request, urllib.error
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 BASE = 'http://localhost:3470'
-AGENT = 'cs-703-item6-wrong-target-form'
-JOB = '#703·AI'
+AGENT = os.environ.get('ITEM6_AGENT', 'cs-703-item6-wrong-target-form')   # cs #868 resumes as kai-868
+JOB = os.environ.get('ITEM6_JOB', '#703·AI')
+APPROVAL = os.environ.get('ITEM6_APPROVAL')   # cs #868: Kai's re-record grant, verified by x-cs-conv (env CS_CONV_TOKEN, never argv)
 PURPOSE = 'paid-course cleanup item 6, wrong target-language form (Kai approved 18 Nov) cs #703·AI'
 SCR = os.environ.get('ITEM6_DATA') or os.environ['CS_SCRATCH']
 SPELL_ONLY = {('fra_for_eng', 'S0469L01B02'), ('fra_for_eng', 'S0555L04B02'), ('por_for_eng', 'S0434L05B01')}  # S0453L02B01 became a delete after review #723
 
 def call(method, url, body=None, timeout=600):
     data = json.dumps(body, ensure_ascii=False).encode() if body is not None else None
-    req = urllib.request.Request(url, data=data, method=method, headers={'Content-Type': 'application/json', 'x-agent-id': AGENT})
+    h = {'Content-Type': 'application/json', 'x-agent-id': AGENT}
+    if APPROVAL and os.environ.get('CS_CONV_TOKEN') and body is not None and url.endswith('/api/audio/render'):
+        body = {**body, 'approval': APPROVAL}; data = json.dumps(body, ensure_ascii=False).encode(); h['x-cs-conv'] = os.environ['CS_CONV_TOKEN']
+    req = urllib.request.Request(url, data=data, method=method, headers=h)
     try:
         r = urllib.request.urlopen(req, timeout=timeout); return r.status, json.load(r)
     except urllib.error.HTTPError as h:
@@ -155,6 +159,9 @@ def batch(c, mode):
         for role, aid in (olds.get(rid) or {}).items():
             if aid and role != 'known':
                 ops.append({'op': 'audio.link', 'target': 'phrase', 'phrase_id': f'{c}:{rid}', 'slot': role, 'audio_id': aid, 'allow_text_mismatch': True})
+    if mode == 'file':   # cs #868: write text + audio.link ops for a night changeset instead of posting them
+        json.dump({'ops': ops}, open(f'{adir(c)}/batch.ops.json', 'w'), ensure_ascii=False, indent=1)
+        print(c, 'wrote', len(ops), 'ops to', f'{adir(c)}/batch.ops.json'); return
     body = {'ops': ops, 'apply': mode == 'apply'}
     st, res = call('POST', f'{BASE}/api/production/{c}/edit-batch', body)
     json.dump({'status': st, 'request': body, **res}, open(f'{adir(c)}/batch-{mode}.json', 'w'), ensure_ascii=False, indent=1)
