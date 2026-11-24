@@ -1,0 +1,111 @@
+{
+ "lego": {
+  "seed_number": 454,
+  "lego_index": 1,
+  "known": "six o'clock",
+  "target": "六時"
+ },
+ "at": "2026-11-04T18:46:12.745Z",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 79,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "build",
+   "known_text": "six o'clock tomorrow",
+   "target_text": "明日六時",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "build",
+   "known_text": "six o'clock last night",
+   "target_text": "昨夜六時",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "build",
+   "known_text": "i thought it was six o'clock",
+   "target_text": "六時だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "build",
+   "known_text": "is it okay to wait until six o'clock",
+   "target_text": "六時まで待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait until six o'clock tomorrow",
+   "target_text": "明日六時まで待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "use",
+   "known_text": "i heard it was six o'clock tomorrow",
+   "target_text": "明日六時って聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was six o'clock",
+   "target_text": "六時とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if it's six o'clock",
+   "target_text": "六時かどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 454,
+   "lego_index": 1,
+   "lego_known": "six o'clock",
+   "lego_target": "六時",
+   "phrase_role": "use",
+   "known_text": "it might be six o'clock tomorrow",
+   "target_text": "明日六時かもしれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
