@@ -1,0 +1,65 @@
+{
+ "note": "cs #868 item 8B leftovers, 24 Nov. READ_FAILED = clip rendered, link answer timed out: link state unknown until the 25 Nov copy.",
+ "slots": [
+  {
+   "course": "eng_for_pan",
+   "slots": [
+    "phrase:eng_for_pan:S0029L01U03"
+   ],
+   "text": "ਮੈਂ ਉਤਸੁਕਤਾ ਨਾਲ ਉਡੀਕ ਕਰ ਰਿਹਾ ਹਾਂ ਗੱਲਾਂ ਕਰਨਾ ਹੋਰ",
+   "code": "VOICE_MISMATCH",
+   "audioId": "23a0f0b3-8f26-41c7-a6b2-1368525640f4",
+   "route": "HELD: genuine refusal (no male known voice resolvable for this slot), not retried"
+  },
+  {
+   "course": "eng_for_pan",
+   "slots": [
+    "phrase:eng_for_pan:S0059L01U04"
+   ],
+   "text": "ਮੈਂ ਜਾਣਦਾ ਹਾਂ ਕਿਵੇਂ ਅੰਗਰੇਜ਼ੀ ਸਿੱਖਣਾ ਹੈ",
+   "code": "NO_ANSWER",
+   "audioId": null,
+   "route": "handed to the surface retry fix (outage/timeout, not a verdict); not re-asked by #868"
+  },
+  {
+   "course": "eng_for_pan",
+   "slots": [
+    "phrase:eng_for_pan:S0080L01B03"
+   ],
+   "text": "ਮੈਂ ਯਾਦ ਕਰਨਾ ਹੋਵਾਂਗਾ",
+   "code": "NO_ANSWER",
+   "audioId": null,
+   "route": "handed to the surface retry fix (outage/timeout, not a verdict); not re-asked by #868"
+  },
+  {
+   "course": "eng_for_pan",
+   "slots": [
+    "phrase:eng_for_pan:S0155L04U04"
+   ],
+   "text": "ਕੱਲ੍ਹ ਸਵੇਰੇ ਮੈਂ ਕੁਝ ਮਿੰਟ ਉਡੀਕ ਕਰਦਾ ਹਾਂ",
+   "code": "READ_FAILED",
+   "audioId": "1ce30d6d-ab4a-480b-ac52-5565f9f69b73",
+   "route": "handed to the surface retry fix (outage/timeout, not a verdict); not re-asked by #868"
+  },
+  {
+   "course": "eng_for_pan",
+   "slots": [
+    "phrase:eng_for_pan:S0159L02U06"
+   ],
+   "text": "ਮੈਂ ਕਹਿਣਾ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਸਭ ਠੀਕ ਹੈ",
+   "code": "RENDER_FAILED",
+   "audioId": null,
+   "route": "handed to the surface retry fix (outage/timeout, not a verdict); not re-asked by #868"
+  },
+  {
+   "course": "eng_for_pan",
+   "slots": [
+    "phrase:eng_for_pan:S0343L01U01"
+   ],
+   "text": "ਮੈਂ ਆਰਥਿਕਤਾ ਬਾਰੇ ਜਾਣਨਾ ਚਾਹੁੰਦਾ ਹਾਂ",
+   "code": "READ_FAILED",
+   "audioId": "e3e876cf-f503-4e43-be99-b9692466fff5",
+   "route": "handed to the surface retry fix (outage/timeout, not a verdict); not re-asked by #868"
+  }
+ ]
+}
