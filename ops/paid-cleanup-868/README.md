@@ -30,3 +30,5 @@ guj S0559L02U08 (08:30Z outage refusal): one-shot re-ask 24 Nov per Kai's Watson
 Outage-refused slots (Kai's Watson, 24 Nov, superseding note): APPROVAL_UNVERIFIED slots are handed to the surface retry fix, never re-asked here. guj S0559L02U08 had ALREADY been filled before that note arrived (ba25cb4e, ev f37cc078): the retry job must skip it. Item 4's 249 (#358) were not touched by this job.
 
 L4 pan/guj FILLED 24 Nov 09:2xZ: eng_for_pan 590/621 linked (587 rendered, 3 library), eng_for_guj 193/200 (incl. the one-shot S0559L02U08); 27,362 Cartesia chars (pan 20,818, guj 6,544). 38 outage slots (pan 31 APPROVAL_CHECK_UNAVAILABLE, guj 7 no answer) handed to the surface retry fix: `item1-pan-guj/handed-to-surface-retry.json`. Listen (language-free) https://watson-1.tail4968cb.ts.net:10000/d/c343c001 UNHEARD. Read-back from the 25 Nov copy owed.
+
+L5 item 8 spa_mx_for_eng DONE 24 Nov: 286 clips re-recorded in place with the female form (329 slots), 11,097 chars, 0 refused; listen https://watson-1.tail4968cb.ts.net:10000/d/03437f7a UNHEARD (no ear sample before applying). Chain continues fra_ca, por_br, ara, pan, urd, guj until 21:30Z.
