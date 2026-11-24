@@ -3,7 +3,7 @@
 // Same two calls as item 4's night-audio (#358): node tools/audio/render.cjs (POST /api/audio/render: library first, spend guard,
 // ONE render, no retries) then POST /api/production/jpn_for_eng/link-clip FILL-ONLY (never `replace`; a slot the text-change
 // trigger already re-pointed to a same-voice clip, or someone else filled, is left alone and logged). Evidence = the audioId.
-// Slots: the known side of every op the rewords/addend ledgers mark "applied" (ops/paid-cleanup-item9/tools/ledger-state.cjs),
+// Slots: the known side of every op the probe/rewords/addend ledgers mark "applied" (ops/paid-cleanup-item9/tools/ledger-state.cjs),
 // in seed order. Japanese (target1/target2) is never asked for: the census changes only English.
 // Refusals are the answer: logged verbatim, never retried; a spend/quota/stop refusal (402, CAP, QUOTA, STOP, NOT_IN_CHAIN,
 // BUDGET) stops the whole run. Cap: 20,000 charsSpent (the census sums 16,697 en_chars). Runs only in the UK night window.
@@ -23,7 +23,7 @@ const CAP = 20000
 const AGENT = process.env.AGENT_ID || 'kai-234-jpn-open-end'
 const PURPOSE = 'cs #225 open-end census apply'
 const STOP_RE = /402|CAP|QUOTA|STOP|NOT_IN_CHAIN|BUDGET|LIMIT/i
-const FILES = ['rewords', 'addend'].map((k) => path.join(__dirname, `${k}.changeset.jsonl`))
+const FILES = ['probe', 'rewords', 'addend'].map((k) => path.join(__dirname, `${k}.changeset.jsonl`))
 const LOG = path.join(__dirname, 'audio.jsonl')
 const PRICE = process.argv.includes('--price')
 const seedOf = (id) => Number(String(id).replace(/^.*:/, '').slice(1, 5))
