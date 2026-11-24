@@ -28,7 +28,7 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const { execFileSync, execSync } = require('child_process')
-const { CLAUDE_CONFIG_DIR } = require('./shared/claude-config.cjs')
+const { claudeEnv } = require('./shared/claude-config.cjs')
 
 function loadEnv(p) {
   if (!fs.existsSync(p)) return
@@ -134,7 +134,7 @@ async function generateDraft(opts = {}) {
   delete childEnv.ANTHROPIC_API_KEY      // never bill — use the Max subscription
   delete childEnv.ANTHROPIC_AUTH_TOKEN
   delete childEnv.CLAUDECODE             // required for nested claude --print calls
-  childEnv.CLAUDE_CONFIG_DIR = CLAUDE_CONFIG_DIR  // pin the claude@ account
+  Object.assign(childEnv, claudeEnv(childEnv))  // cs #27: the allocator-rated account, not a claude@ pin
 
   let raw
   try {

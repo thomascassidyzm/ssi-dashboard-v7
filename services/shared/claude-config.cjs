@@ -154,7 +154,7 @@ function paceResumeAt(g, now = Date.now()) {
 }
 
 // Pure: choose one candidate given the gauge and the steers. Exported for the test.
-function pickAccount(cands, { usage = {}, steer = {}, now = Date.now() } = {}) {
+function pickAccount(cands, { usage = {}, steer = {}, rating = {}, ratingDefault = DEFAULT_RATING, now = Date.now() } = {}) {
   if (!cands.length) return null
   const g = (c) => usage[c.email] || usage[Object.keys(usage).find((k) => k.toLowerCase() === c.email)] || null
   const pct = (c) => weeklyPct(g(c))
@@ -167,10 +167,15 @@ function pickAccount(cands, { usage = {}, steer = {}, now = Date.now() } = {}) {
   const narrow = (set, pred) => { const k = set.filter(pred); return k.length ? k : set }
   let pool = narrow(known, (c) => pct(c) < WEEKLY_FULL_PCT)
   pool = narrow(pool, (c) => steer[c.email] !== 'avoid')
-  pool = narrow(pool, (c) => underPace(g(c), now))
+  // Tom's rating band first, then soonest weekly reset (drain what resets first), then most headroom — the
+  // surface allocator's order (cs #27). With no ratings passed every account ties and the old order stands.
+  const rate = (c) => (rating[c.email] ?? ratingDefault)
+  const reset = (c) => { const t = Date.parse(g(c) && g(c).weekly_all_resets_at); return Number.isFinite(t) ? t : Infinity }
   const head = (c) => 100 - pct(c)
   return [...pool].sort((a, b) =>
-    head(b) - head(a)
+    rate(b) - rate(a)
+    || reset(a) - reset(b)
+    || head(b) - head(a)
     || (b.email === DEFAULT_EMAIL) - (a.email === DEFAULT_EMAIL))[0]
 }
 
@@ -203,7 +208,55 @@ function readUsage() {
   } catch { return {} }
 }
 
-function liveCandidates() { return candidates().filter((c) => readToken(c.file)) }
+/*
+ * ALL SIX, BY TOM'S RATINGS (cs #27, 2026-11-24, r-2026-11-24-every-person-tom-kai-aran-deborah: "Yes, Dom too. Let's
+ * keep it simple"; supersedes r-2026-11-04 "Popty uses claude@ and kai-gmail directly"). Popty's nested CLIs float
+ * across every Claude account whose token this process can read — the surface's own account dirs below, plus any
+ * <config dir>/tokens and tokens-overspill entries — and rank them the way the surface allocator does: Tom's
+ * 10/7/4/1 rating first (command-surface ops/account-routing.json account_preferences), soonest weekly reset inside a
+ * band; an account Tom switched OFF there takes nothing. The 23 Nov symptom: claude@ and kai-gmail rated 4 yet near
+ * 50% of their week, because every Popty spawn landed on them alone.
+ */
+const ACCOUNTS_DIR = process.env.SSI_CLAUDE_ACCOUNTS_DIR || path.join(os.homedir(), '.cs-accounts')
+const SURFACE_ACCOUNT_DIRS = {
+  'claude@saysomethingin.com': 'account-3', 'kai.claude@saysomethingin.com': 'kai-gmail',
+  'tomcassidy@mac.com': 'account-1', 'thomas.cassidy@gmail.com': 'account-2',
+  'tom.cassidy@hey.com': 'account-4', 'thomas.cassidy@icloud.com': 'account-5',
+}
+const ROUTING_FILE = process.env.SSI_CLAUDE_ROUTING_FILE ||
+  path.join(os.homedir(), 'command-surface', 'ops', 'account-routing.json')
+const DEFAULT_RATING = 7
+function readRouting() {
+  try {
+    const r = JSON.parse(fs.readFileSync(ROUTING_FILE, 'utf8'))
+    const off = new Set((Array.isArray(r.off) ? r.off : []).map((e) => String(e).toLowerCase()))
+    const dflt = Number(r.limits && r.limits.default_rating) || DEFAULT_RATING
+    const rating = {}
+    for (const [k, v] of Object.entries(r.account_preferences || {})) {
+      const n = Number(v && v.rating)
+      rating[k.toLowerCase()] = Number.isFinite(n) ? n : ({ hammer: 10, normal: 7, avoid: 1 })[v && v.steer] || dflt
+    }
+    return { off, rating, dflt }
+  } catch { return { off: new Set(), rating: {}, dflt: DEFAULT_RATING } }
+}
+function allCandidates() {
+  const seen = new Map()
+  for (const c of [...candidates(), ...candidates(OVERSPILL_DIR),
+    ...Object.entries(SURFACE_ACCOUNT_DIRS).map(([email, dir]) => ({ email, file: path.join(ACCOUNTS_DIR, dir, '.cs-oauth-token') }))]) {
+    if (!seen.has(c.email) && readToken(c.file)) seen.set(c.email, c)
+  }
+  return [...seen.values()]
+}
+function pickOpts() {
+  const r = readRouting()
+  return { usage: readUsage(), steer: steers(), rating: r.rating, ratingDefault: r.dflt }
+}
+function liveCandidates() {
+  const all = allCandidates()
+  const { off } = readRouting()
+  const on = all.filter((c) => !off.has(c.email))
+  return on.length ? on : all
+}
 
 /**
  * The account a spawn bills: { email, file }. `exclude` (emails) drops accounts a caller knows
@@ -216,16 +269,8 @@ function pickSpawnAccount({ exclude = [], overspill = false } = {}) {
   const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
   const all = liveCandidates()
   const kept = all.filter((c) => !ex.has(c.email))
-  const opts = { usage: readUsage(), steer: steers() }
-  if (overspill) {
-    const usable = kept.filter((c) => { const p = weeklyPct(opts.usage[c.email]); return p === null || p < WEEKLY_FULL_PCT })
-    const spill = usable.length ? [] : candidates(OVERSPILL_DIR).filter((c) => readToken(c.file) && !ex.has(c.email))
-    if (spill.length) {
-      const c = pickAccount(spill, opts)
-      if (c) return { email: c.email, file: c.file, overspill: true }
-    }
-  }
-  const c = pickAccount(kept.length ? kept : all, opts)
+  // `overspill` is still accepted and no longer needed: every readable account is in the ordinary set (cs #27).
+  const c = pickAccount(kept.length ? kept : all, pickOpts())
   return c ? { email: c.email, file: c.file } : { email: null, file: OAUTH_TOKEN_FILE }
 }
 
@@ -235,10 +280,9 @@ function bulkPace() {
 }
 
 /**
- * Another SSi account worth switching to right now, or null: not excluded, has a token, and
- * its week is not already full by the surface's gauge (unknown gauge counts as usable). Only
- * the accounts in <config dir>/tokens are ever considered — on watson-1 those are claude@ and
- * kai-gmail, the SSi pool; Tom's personal accounts are never in that dir.
+ * Another Claude account worth switching to right now, or null: not excluded, has a token, and
+ * its week is not already full by the surface's gauge (unknown gauge counts as usable). Any of
+ * the six readable accounts (cs #27, all six by Tom's ratings).
  */
 function alternativeAccount({ exclude = [] } = {}) {
   const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
@@ -248,7 +292,7 @@ function alternativeAccount({ exclude = [] } = {}) {
     return pct === null || pct < WEEKLY_FULL_PCT
   })
   if (!ok.length) return null
-  const c = pickAccount(ok, { usage, steer: steers() })
+  const c = pickAccount(ok, { ...pickOpts(), usage })
   return c ? c.email : null
 }
 
