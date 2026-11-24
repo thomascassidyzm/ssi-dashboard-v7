@@ -20,7 +20,15 @@
 //   check                     offline: Korean ZUT over the whole post-swap course (P16: same Korean → two Welsh is
 //                             refused), Kai's register rulings (no 해요/저 in 반말 lines …), every original's Welsh
 //                             re-checked for P17 containment → ops/…/check.json
-// Later modes (plan with live pre-check, changesets, verify) are added as the bands reach them.
+//   plan <from-to> <liveSeeds> [copy]  per LEGO: final basket = accepted originals (+ already-present door rows equal to
+//                             one) + kept top-ups + protected door rows; inserts / Korean fixes / deletes. LIVE PRE-CHECK
+//                             (Kai 19 Nov): the LEGO, its seed and every door row must read the same live as in the snapshot
+//                             or the whole LEGO is HELD and listed. Course-wide Korean ZUT (P16, K2): a new Korean prompt that
+//                             already maps to a different Welsh anywhere is refused. → ops/…/plan-<from-to>.json
+//   insert-cs <from-to>       plan → <from-to>.insert.changeset.jsonl (phrase.insert + phrase.update of Korean fixes)
+//   delete-cs <from-to>       insert ledger → <from-to>.delete.changeset.jsonl: a LEGO's door rows go only when every insert
+//                             of that LEGO landed (make-before-break, as #247); expect{} on every delete
+//   verify <from-to> <liveSeeds>  every planned insert live, every planned delete gone, floor shortfalls listed
 // This tool writes NOTHING to any database; live writes go only through tools/changeset/apply-changeset.cjs.
 const fs = require('fs');
 const path = require('path');
@@ -139,7 +147,158 @@ async function korean(rng, conc, assignPath, korPath) {
   await Promise.all(Array.from({ length: conc }, worker));
 }
 
-module.exports = { seedPrompt, containedGlosses, SYSTEM };
+// ── plan ──
+const nk = (t) => String(t || '').replace(/[’‘`´]/g, "'").toLowerCase().replace(/[^\p{L}\p{N}' ]/gu, ' ').replace(/\s+/g, ' ').trim();
+const lidOf = (id) => String(id).match(/S\d{4}L\d{2}/)[0];
+function liveIndex(live) {
+  const seed = new Map(), lego = new Map(), phrase = new Map();
+  for (const s of live.seeds) { seed.set(s.seed_number, s); for (const l of s.legos || []) { lego.set(lidOf(`S${String(s.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}`), l); for (const p of l.basket_phrases || []) phrase.set(p.id, p); } }
+  return { seed, lego, phrase };
+}
+/** [] when snapshot and live agree on this LEGO, its seed and its rows. Pure. */
+function precheck(g, C, L) {
+  const why = [];
+  const cl = C.lego.get(g.lego), ll = L.lego.get(g.lego);
+  if (!ll) return ['LEGO not live'];
+  if (ll.known_text !== cl.known_text || ll.target_text !== cl.target_text || !!ll.is_new !== !!cl.is_new) why.push('LEGO changed live');
+  const cs = C.seed.get(g.seed), ls = L.seed.get(g.seed);
+  if (!ls || cs.known_text !== ls.known_text || cs.target_text !== ls.target_text) why.push(`seed ${g.seed} changed live`);
+  const cRows = (cl.basket_phrases || []), lRows = (ll.basket_phrases || []);
+  for (const p of cRows) { const q = L.phrase.get(p.id); if (!q) why.push(`${p.id} gone live`); else if (q.known_text !== p.known_text || q.target_text !== p.target_text || q.target1_audio_id || q.target2_audio_id || q.known_audio_id || q.hand_edited_at) why.push(`${p.id} changed live`); }
+  const extra = lRows.filter((p) => !cRows.some((q) => q.id === p.id));
+  if (extra.length) why.push(`${extra.length} row(s) live the snapshot lacks (${extra.slice(0, 3).map((p) => p.id).join(', ')})`);
+  return why;
+}
+function plan(rng, A, copy, live) {
+  const [a, b] = range(rng);
+  const { planInsert } = require('../../services/shared/phrase-v4-door.cjs');
+  const C = liveIndex(copy), L = liveIndex(live);
+  const all = A.legos;
+  const ko = (s) => { const f = path.join(DIR, 'ko', `${sid(s)}.json`); return fs.existsSync(f) ? loadJson(f) : null; };
+  // course-wide Korean→Welsh map of everything that STAYS (outside the band: the snapshot as it is, or its plan if planned
+  // already; inside: built below). Seeds first.
+  const byK = new Map();
+  const claim = (k, t, who) => { if (!k) return; if (!byK.has(k)) byK.set(k, new Map()); byK.get(k).set(t, who); };
+  for (const sd of copy.seeds) claim(nk(sd.known_text), nk(sd.target_text), `seed ${sd.seed_number}`);
+  const finals = new Map(); // lego → {keepDoor:[{id,known,target}], originals:[...], fixes:[...], deletes:[...]}
+  const held = [], refusedOrig = [], refusedTop = [], thin = [];
+  for (const g of all) {
+    const inBand = g.seed >= a && g.seed <= b;
+    const kf = ko(g.seed);
+    const ans = kf && kf.legos && kf.legos[g.lego];
+    const doorById = new Map(g.door.map((d) => [d.id, d]));
+    // outside the band, not written yet, or held: whatever is LIVE stays (earlier bands' applied rows included)
+    const claimLive = () => { for (const p of (L.lego.get(g.lego) || {}).basket_phrases || []) if (p.phrase_role !== 'component') claim(nk(p.known_text), nk(p.target_text), p.id); };
+    if (!inBand || !ans) { claimLive(); continue; }
+    const pre = precheck(g, C, L);
+    if (pre.length) { held.push({ lego: g.lego, why: pre.join('; ') }); claimLive(); continue; }
+    const keepTop = new Map(); // id → ko fix or null
+    for (const t of ans.topups || []) if (t.keep && doorById.has(t.id) && !doorById.get(t.id).protected.length) keepTop.set(t.id, t.ko && t.ko !== doorById.get(t.id).known ? t.ko : null);
+    // the model may keep more than needed: trust its order, cap per role at the shortfall
+    const capped = new Map(); const used = { build: 0, use: 0 };
+    for (const [id, fix] of keepTop) { const r = doorById.get(id).role; if (used[r] < g.short[r]) { used[r]++; capped.set(id, fix); } }
+    for (const t of ans.topups || []) if (!t.keep && t.why) refusedTop.push({ lego: g.lego, id: t.id, known: doorById.get(t.id)?.known, target: doorById.get(t.id)?.target, why: t.why });
+    const origs = [];
+    g.originals.forEach((o, n) => {
+      const v = (ans.originals || []).find((x) => +x.n === n + 1) || {};
+      if (v.ok === false) { refusedOrig.push({ lego: g.lego, target: o.target, known: v.ko, en: o.known_en, moved: o.moved, from: o.src_pool === 'hc' ? o.src_seed : `old-${o.src_seed}`, why: v.why }); return; }
+      origs.push({ ...o, ko: String(v.ko || '').trim() });
+    });
+    finals.set(g.lego, { g, capped, origs });
+  }
+  // claim the staying door rows of the band first (protected + kept top-ups + door rows equal to an original), then new rows
+  const inserts = [], fixes = [], deletes = [], zut = [];
+  for (const [lego, F] of finals) {
+    const { g, capped } = F;
+    const origK = new Set(F.origs.map((o) => o.k));
+    for (const d of g.door) {
+      const stays = d.protected.length || capped.has(d.id) || origK.has(d.k);
+      if (stays) claim(nk(capped.get(d.id) || d.known), nk(d.target), d.id);
+    }
+  }
+  const staged = [];
+  for (const [lego, F] of finals) {
+    const { g, capped } = F;
+    const origK = new Set(F.origs.map((o) => o.k));
+    for (const [id, fix] of capped) if (fix) fixes.push({ id, lego, from: doorById(g, id).known, to: fix, target: doorById(g, id).target });
+    for (const o of F.origs) {
+      if (o.already_door_row) continue; // the door row with this Welsh stays and carries it
+      const k = nk(o.ko), t = nk(o.target);
+      if (!k) { zut.push({ lego, target: o.target, why: 'no Korean written' }); continue; }
+      const clash = [...(byK.get(k) || new Map()).entries()].find(([tt]) => tt !== t);
+      if (clash) { zut.push({ lego, known: o.ko, target: o.target, why: `ZUT: same Korean is "${clash[0]}" at ${clash[1]}` }); continue; }
+      claim(k, t, lego);
+      staged.push({ seed_number: g.seed, lego_index: g.idx, lego_target: g.target, phrase_role: o.role, known_text: o.ko, target_text: o.target, _o: o });
+    }
+    for (const d of g.door) {
+      const stays = d.protected.length || capped.has(d.id) || origK.has(d.k);
+      if (!stays) deletes.push({ id: d.id, seed_number: g.seed, lego_index: g.idx, known_text: d.known, target_text: d.target });
+    }
+  }
+  const existing = [];
+  for (const [lego] of finals) { const l = L.lego.get(lego); for (const p of l.basket_phrases || []) existing.push(p); }
+  const { rows, skipped } = planInsert(COURSE, staged.map(({ _o, ...x }) => x), existing);
+  const srcOf = new Map(staged.map((x) => [`${x.seed_number}:${x.lego_index}|${nk(x.known_text)}|${nk(x.target_text)}`, x._o]));
+  for (const r of rows) {
+    const o = srcOf.get(`${r.seed_number}:${r.lego_index}|${nk(r.known_text)}|${nk(r.target_text)}`);
+    r.metadata = { format: 'build_use', pipeline: 'option-d-reuse', job: '251', source_course: 'cym_nv2_for_eng', source_phrase_id: o.src_id, source_known_en: o.known_en };
+    r.target_text_roman = null;
+  }
+  // floor after the swap
+  for (const [lego, F] of finals) {
+    const { g, capped } = F;
+    const have = { build: 0, use: 0 };
+    const origK = new Set(F.origs.map((o) => o.k));
+    for (const d of g.door) if (d.protected.length || capped.has(d.id) || origK.has(d.k)) have[d.role]++;
+    for (const r of rows) if (r.seed_number === g.seed && r.lego_index === g.idx) have[r.phrase_role]++;
+    if (have.build < g.floor.build || have.use < g.floor.use) thin.push({ lego, have, floor: g.floor });
+  }
+  return { course: COURSE, range: rng, job: '#251·AL', legos_planned: finals.size, inserts: rows, skipped_same_pair: skipped.length, korean_fixes: fixes, deletes,
+    held, refused_originals: refusedOrig, refused_topups: refusedTop, zut_refused: zut, thin };
+}
+const doorById = (g, id) => g.door.find((d) => d.id === id);
+
+function planFile(rng) { return path.join(DIR, `plan-${rng}.json`); }
+const insFile = (rng) => path.join(DIR, `${rng}.insert.changeset.jsonl`);
+const delFile = (rng) => path.join(DIR, `${rng}.delete.changeset.jsonl`);
+const KAI_GO = 'kai:2026-11-24T17:55Z "Happy with that - go for it, carefully" (option D, #248 d/88008158)';
+function insertCs(rng) {
+  const cs = require('../../services/shared/changeset.cjs');
+  const p = loadJson(planFile(rng));
+  const ops = [];
+  for (const r of p.inserts) ops.push(cs.op('phrase.insert', { row: r }));
+  for (const f of p.korean_fixes) ops.push(cs.op('phrase.update', { phrase_id: f.id, set: { known_text: f.to }, expect: { known_text: f.from, target_text: f.target } }));
+  cs.write(insFile(rng), { id: `${COURSE}-cs251-${rng}-insert`, course: COURSE, job: '#251·AL', kai_go: KAI_GO,
+    why: `option-D baskets ${rng}: original Welsh phrases with Korean prompts, plus Korean fixes on kept top-ups (door rows go in the delete changeset, built from this ledger)`,
+    source: `plan-${rng}.json` }, ops);
+  console.log(`${rng}: insert changeset ${ops.length} ops (${p.inserts.length} inserts, ${p.korean_fixes.length} Korean fixes)`);
+}
+function deleteCs(rng) {
+  const cs = require('../../services/shared/changeset.cjs');
+  const { loadLedger } = require('../changeset/apply-changeset.cjs');
+  const p = loadJson(planFile(rng));
+  const { ops: insOps } = cs.read(insFile(rng));
+  const fate = loadLedger(`${insFile(rng)}.applied.jsonl`);
+  const bad = new Set();
+  insOps.forEach((o, i) => { if (!['applied', 'already'].includes(fate.get(i))) bad.add(lidOf(o.op === 'phrase.insert' ? o.row.id : o.phrase_id)); });
+  const ops = [];
+  for (const d of p.deletes) if (!bad.has(lidOf(d.id))) ops.push(cs.op('phrase.delete', { phrase_id: d.id, expect: { seed_number: d.seed_number, lego_index: d.lego_index, known_text: d.known_text, target_text: d.target_text } }));
+  cs.write(delFile(rng), { id: `${COURSE}-cs251-${rng}-delete`, course: COURSE, job: '#251·AL', kai_go: KAI_GO,
+    why: `option-D baskets ${rng}: door-generated rows replaced by originals (only LEGOs whose inserts all landed; ${bad.size} LEGOs keep their door rows)`,
+    source: `${path.basename(insFile(rng))}.applied.jsonl + plan-${rng}.json` }, ops);
+  console.log(`${rng}: delete changeset ${ops.length} ops; ${bad.size} LEGOs kept whole (${[...bad].join(' ')})`);
+}
+function verify(rng, live) {
+  const p = loadJson(planFile(rng));
+  const L = liveIndex(live);
+  const out = { range: rng, planned_inserts: p.inserts.length, inserts_missing: p.inserts.filter((r) => !L.phrase.has(r.id)).length,
+    planned_deletes: p.deletes.length, deletes_left: p.deletes.filter((d) => L.phrase.has(d.id)).length,
+    fixes_not_live: p.korean_fixes.filter((f) => (L.phrase.get(f.id) || {}).known_text !== f.to).length };
+  console.log(JSON.stringify(out));
+  return out;
+}
+
+module.exports = { seedPrompt, containedGlosses, SYSTEM, plan, precheck, contiguous };
 
 if (require.main === module) {
   const [mode, ...args] = process.argv.slice(2);
@@ -149,6 +308,14 @@ if (require.main === module) {
       const A = loadJson(path.join(EV, 'assign.json'));
       const taught = taughtIndex(loadJson(path.join(EV, 'cym_for_kor.json')));
       console.log(seedPrompt(+args[0], A.legos.filter((g) => g.seed === +args[0]), taught, contiguous));
-    } else { console.error('mode: korean <from-to> [conc] | prompt <seed>'); process.exit(64); }
+    } else if (mode === 'plan') {
+      const [rng, livePath, copyPath] = args;
+      const p = plan(rng, loadJson(path.join(EV, 'assign.json')), loadJson(copyPath || path.join(EV, 'cym_for_kor.json')), loadJson(livePath));
+      fs.writeFileSync(planFile(rng), JSON.stringify(p, null, 1));
+      console.log(`${rng}: ${p.legos_planned} LEGOs; ${p.inserts.length} inserts, ${p.korean_fixes.length} Korean fixes, ${p.deletes.length} deletes; held ${p.held.length}, originals refused ${p.refused_originals.length}, ZUT refused ${p.zut_refused.length}, thin ${p.thin.length}`);
+    } else if (mode === 'insert-cs') insertCs(args[0]);
+    else if (mode === 'delete-cs') deleteCs(args[0]);
+    else if (mode === 'verify') verify(args[0], loadJson(args[1]));
+    else { console.error('mode: korean <from-to> [conc] | prompt <seed> | plan <from-to> <liveSeeds> [snapshot] | insert-cs | delete-cs | verify'); process.exit(64); }
   })().catch((e) => { console.error(e); process.exit(1); });
 }

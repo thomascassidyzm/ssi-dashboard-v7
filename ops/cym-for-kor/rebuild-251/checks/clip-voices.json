@@ -1,0 +1,46 @@
+{
+ "source": "tools/audio/clip-voices.cjs on nightly QA copy ssi_copy_20261124t033000z, 19,116 clip ids; 1,616 newer than the copy",
+ "clips_by_voice": {
+  "human_aran_cym_n": 6873,
+  "legacy_import": 6751,
+  "human_catrinlliar_cym_n": 3876
+ },
+ "missing": 1616,
+ "originals_target1": {
+  "legacy_human": 3374,
+  "catrin_booth": 3876,
+  "none": 1723,
+  "newer_than_copy": 1616,
+  "legacy_tts": 2
+ },
+ "originals_target2": {
+  "legacy_human": 3373,
+  "aran_booth": 6873,
+  "legacy_tts": 2,
+  "none": 343
+ },
+ "originals_pairs": {
+  "catrin_booth+aran_booth": 3859,
+  "legacy_human+legacy_human": 3373,
+  "newer_than_copy+aran_booth": 1616,
+  "none+aran_booth": 1397,
+  "none+none": 326,
+  "catrin_booth+none": 17,
+  "legacy_tts+legacy_tts": 2,
+  "legacy_human+aran_booth": 1
+ },
+ "tts_originals": [
+  {
+   "lego": "S0079L02",
+   "target": "wnest ti ddechrau mis yn ôl?",
+   "t1": "b26b2d7d-9eaf-4684-8703-c6d00982efda",
+   "t2": "e2f8f835-ad29-4ccc-943c-96d7d69a56ab"
+  },
+  {
+   "lego": "S0617L01",
+   "target": "beth oeddat ti’n meddwl?",
+   "t1": "5919a6e5-9d26-477e-bb12-93fd94ba35d8",
+   "t2": "2db912f9-c659-46cc-92ce-e995747e32e1"
+  }
+ ]
+}
