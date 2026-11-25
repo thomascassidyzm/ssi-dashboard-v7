@@ -42,7 +42,7 @@ gate() { # 0 = go; 1 = the night window closed (only once this night has started
   done
 }
 liveread() { local f="$EV/live-$1.json"; for t in 1 2 3 4; do curl -s -m 300 "http://localhost:3470/api/production/bre_for_fra/seeds" -o "$f"; [ "$(stat -c%s "$f" 2>/dev/null || echo 0)" -gt 1000000 ] && { echo "$f"; return 0; }; sleep 60; done; return 1; }
-commitrun() { git add ops/bre-rebuild-374/cs/*.applied.jsonl ops/bre-rebuild-374/cs/*.undone.* ops/bre-rebuild-374/drift.jsonl ops/bre-rebuild-374/verify-*.json 2>/dev/null
+commitrun() { local g; for g in ops/bre-rebuild-374/cs/*.applied.jsonl ops/bre-rebuild-374/cs/*.undone.* ops/bre-rebuild-374/drift.jsonl ops/bre-rebuild-374/verify-*.json; do [ -e "$g" ] && git add "$g"; done  # one add per path: a glob that matches nothing made the old single add fail and nothing got committed (25 Nov)
   git commit -q -m "bre-rebuild-374 (cs #374·AL): night run — $1" && git push -q origin HEAD:$RUN_BRANCH || true; }
 undo_seed() { # $1 seed, $2.. undo files
   local n=$1; shift; local u
