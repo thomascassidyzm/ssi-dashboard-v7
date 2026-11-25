@@ -51,6 +51,7 @@ for R in "${BANDS[@]}"; do
       wake "WAKE: cs251 chain: window closed before band $R; resumes next night 22:25Z"; exit 0; fi
   fi
   echo "$(date -u +%FT%TZ) chain: band $R"
+  : > "$EV/${DRY:+dryrun-}chain-last-$R.txt"  # empty the last band message
   bash "$DIR/night-band.sh" "$R"; rc=$?
   msg=$(cat "$EV/${DRY:+dryrun-}chain-last-$R.txt" 2>/dev/null)
   if [ -n "$DRY" ]; then echo "DRY: band $R exit $rc. ${msg}"; echo "DRY: next band would be the one after $R, once verify-$R reads back clean"; exit $rc; fi
