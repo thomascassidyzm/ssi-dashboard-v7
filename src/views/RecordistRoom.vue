@@ -3088,7 +3088,7 @@ function takePreload(key) {
   preloaded = null // used once: a second open of the same batch reads it as it always did
   if (!entry || entry.key !== key) return null
   const takenWords = new Set(takenLog.filter(t => t.at >= entry.at - TAKEN_LOOKBACK_MS).map(t => t.words))
-  if (!preloadUsable(entry, { url: key, takenWords })) return null
+  if (!preloadUsable(entry, { key, takenWords })) return null
   // A line of it whose take is still on this device, not yet on the server: read it fresh instead.
   if (entry.data.lines.some(l => queue.isUnsent(l.id))) return null
   return entry

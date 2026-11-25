@@ -35,11 +35,11 @@ export function wordsKey(text) {
 }
 
 /**
- * May this preload be shown for `url` now? `takenWords` are the wordsKey()s of every take this
+ * May this preload be shown for the batch `key` names now? `takenWords` are the wordsKey()s of every take this
  * device made since the preload was asked for (rule 2).
  */
-export function preloadUsable(entry, { url, takenWords = new Set(), now = Date.now(), maxAgeMs = PRELOAD_MAX_AGE_MS }) {
-  if (!entry || !entry.data || entry.url !== url || entry.dropped) return false
+export function preloadUsable(entry, { key, takenWords = new Set(), now = Date.now(), maxAgeMs = PRELOAD_MAX_AGE_MS }) {
+  if (!entry || !entry.data || entry.key !== key || entry.dropped) return false
   if (!(now - entry.at < maxAgeMs)) return false
   const lines = Array.isArray(entry.data.lines) ? entry.data.lines : null
   if (!lines) return false
