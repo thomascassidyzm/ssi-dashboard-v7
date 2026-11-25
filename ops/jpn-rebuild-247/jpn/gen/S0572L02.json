@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 572,
+  "lego_index": 2,
+  "known": "have you forgotten?",
+  "target": "忘れた"
+ },
+ "at": "2026-11-25T18:25:06.199Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 145,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"have you forgotten?\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "build",
+   "known_text": "have you forgotten the ticket?",
+   "target_text": "チケット忘れた",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "build",
+   "known_text": "you might have forgotten",
+   "target_text": "忘れたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "build",
+   "known_text": "i wonder if you've forgotten",
+   "target_text": "忘れたか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "build",
+   "known_text": "have you forgotten the reason?",
+   "target_text": "理由忘れた",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "use",
+   "known_text": "have you forgotten what happened last night?",
+   "target_text": "昨夜何が起きたか忘れた",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "use",
+   "known_text": "you might have forgotten the room number",
+   "target_text": "部屋番号忘れたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "use",
+   "known_text": "i wonder if you've forgotten the payment",
+   "target_text": "支払い忘れたか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "use",
+   "known_text": "i heard that you'd forgotten the ticket",
+   "target_text": "チケット忘れたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "use",
+   "known_text": "i didn't think that you'd forgotten the promise",
+   "target_text": "約束忘れたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 572,
+   "lego_index": 2,
+   "lego_known": "have you forgotten?",
+   "lego_target": "忘れた",
+   "phrase_role": "use",
+   "known_text": "have you forgotten what happened a week ago?",
+   "target_text": "一週間前何が起きたか忘れた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

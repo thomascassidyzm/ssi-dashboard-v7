@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 573,
+  "lego_index": 1,
+  "known": "holidays",
+  "target": "休み"
+ },
+ "at": "2026-11-25T18:25:10.670Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors"
+ ],
+ "attempts": 2,
+ "secs": 140,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: 1 duplicate phrase(s) within this LEGO: \"休み無駄にしてる\"",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [],
+ "keep": false
+}

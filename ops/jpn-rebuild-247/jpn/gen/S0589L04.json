@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 589,
+  "lego_index": 4,
+  "known": "saw it and told me",
+  "target": "を見たって言った"
+ },
+ "at": "2026-11-25T17:52:38.855Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 179,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"saw it and told me\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "build",
+   "known_text": "told me they'd seen the last bus",
+   "target_text": "最後のバスを見たって言った",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "build",
+   "known_text": "the girl who told me she'd seen the dog",
+   "target_text": "犬を見たって言った女の子",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "build",
+   "known_text": "because they'd seen it and told me I went home",
+   "target_text": "を見たって言ったから帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "build",
+   "known_text": "when both of them told me they'd seen the mountains",
+   "target_text": "二人とも山を見たって言ったとき",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "use",
+   "known_text": "last night both of them told me they'd seen the last bus",
+   "target_text": "昨夜二人とも最後のバスを見たって言った",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "use",
+   "known_text": "I went home because they told me they'd seen the baby",
+   "target_text": "赤ちゃんを見たって言ったから帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "use",
+   "known_text": "they told me they'd seen the mountains from the bedroom window",
+   "target_text": "寝室の窓から山を見たって言った",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "use",
+   "known_text": "when both of them told me they'd seen the horse I couldn't believe it",
+   "target_text": "二人とも馬を見たって言ったとき信じられなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 589,
+   "lego_index": 4,
+   "lego_known": "saw it and told me",
+   "lego_target": "を見たって言った",
+   "phrase_role": "use",
+   "known_text": "they told me they'd seen the church many times",
+   "target_text": "何度も教会を見たって言った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

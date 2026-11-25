@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 557,
+  "lego_index": 4,
+  "known": "I wish",
+  "target": "いいのに"
+ },
+ "at": "2026-11-25T14:31:54.202Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 149,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"i wish i could collect donations as much as possible\" (unknown gloss \"donations\")",
+  "USE \"i wish i could collect donations as much as possible\" → \"できるだけ寄付集められたらいいのに\": popty:knownSide [{\"known\":\"i wish i could collect donations as much as possible\",\"target\":\"できるだけ寄付集められたらいいのに\",\"problem\":\"unknown gloss \\\"donations\\\"\"}]",
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 585,
+  "lego_index": 1,
+  "known": "bedroom",
+  "target": "寝室"
+ },
+ "at": "2026-11-25T17:42:57.631Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"a room bigger than the bedroom\" (unknown gloss \"bigger\")",
+  "BUILD \"a room bigger than the bedroom\" → \"寝室より大きい部屋\": popty:knownSide [{\"known\":\"a room bigger than the bedroom\",\"target\":\"寝室より大きい部屋\",\"problem\":\"unknown gloss \\\"bigger\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

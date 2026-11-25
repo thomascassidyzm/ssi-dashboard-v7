@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 558,
+  "lego_index": 1,
+  "known": "it's late at night",
+  "target": "夜遅い"
+ },
+ "at": "2026-11-25T14:32:15.410Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 167,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"it's late at night\" initially, medially AND finally.",
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "build",
+   "known_text": "it might be late at night",
+   "target_text": "夜遅いかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "build",
+   "known_text": "isn't it late at night",
+   "target_text": "夜遅いんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "build",
+   "known_text": "even if i go home, it's late at night",
+   "target_text": "帰っても夜遅い",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "build",
+   "known_text": "i used to think it was late at night",
+   "target_text": "夜遅いと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "use",
+   "known_text": "both of them didn't think it was late at night",
+   "target_text": "二人とも夜遅いとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "use",
+   "known_text": "whatever he says, it's late at night",
+   "target_text": "彼が何を言っても夜遅い",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "use",
+   "known_text": "let's stop because even if we go home it's late at night",
+   "target_text": "帰っても夜遅いからやめよう",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "use",
+   "known_text": "we have to be quiet because it's late at night",
+   "target_text": "夜遅いから静かにしなきゃいけない",
+   "pad": []
+  },
+  {
+   "seed_number": 558,
+   "lego_index": 1,
+   "lego_known": "it's late at night",
+   "lego_target": "夜遅い",
+   "phrase_role": "use",
+   "known_text": "it's better to go straight home because it's late at night",
+   "target_text": "夜遅いからまっすぐ帰ったほうがいい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

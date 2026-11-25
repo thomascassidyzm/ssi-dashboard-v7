@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 598,
+  "lego_index": 2,
+  "known": "he's heard a thousand times",
+  "target": "千回は聞いた"
+ },
+ "at": "2026-11-25T18:06:00.461Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 247,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "build",
+   "known_text": "surely he's heard a thousand times",
+   "target_text": "きっと千回は聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "build",
+   "known_text": "he's heard a thousand times this year",
+   "target_text": "今年千回は聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "build",
+   "known_text": "last month he heard a thousand times",
+   "target_text": "先月千回は聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "build",
+   "known_text": "I was told he'd heard a thousand times",
+   "target_text": "千回は聞いたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "use",
+   "known_text": "I used to think he'd heard a thousand times",
+   "target_text": "千回は聞いたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "use",
+   "known_text": "I didn't think he'd heard a thousand times",
+   "target_text": "千回は聞いたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "use",
+   "known_text": "I wonder if he's heard a thousand times",
+   "target_text": "千回は聞いたか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "use",
+   "known_text": "I was told he'd heard a thousand times last year",
+   "target_text": "去年千回は聞いたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "use",
+   "known_text": "I heard that in the old days he'd heard a thousand times",
+   "target_text": "昔は千回は聞いたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 598,
+   "lego_index": 2,
+   "lego_known": "he's heard a thousand times",
+   "lego_target": "千回は聞いた",
+   "phrase_role": "use",
+   "known_text": "I used to think he'd surely heard a thousand times",
+   "target_text": "きっと千回は聞いたと思ってた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 576,
+  "lego_index": 1,
+  "known": "waiting is",
+  "target": "待つのは"
+ },
+ "at": "2026-11-25T18:29:47.305Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "build",
+   "known_text": "waiting was hard",
+   "target_text": "待つのはつらかった",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "build",
+   "known_text": "waiting outdoors is sad",
+   "target_text": "外で待つのは悲しい",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "build",
+   "known_text": "waiting late at night is scary",
+   "target_text": "夜遅く待つのは怖い",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "build",
+   "known_text": "waiting on your own is not easy",
+   "target_text": "一人で待つのは簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "use",
+   "known_text": "i think waiting outdoors is okay",
+   "target_text": "外で待つのは大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "use",
+   "known_text": "waiting on your own is scary because it's late at night",
+   "target_text": "夜遅いから一人で待つのは怖い",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "use",
+   "known_text": "waiting late at night might be a waste",
+   "target_text": "夜遅く待つのは無駄かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "use",
+   "known_text": "i can't think that waiting is a waste",
+   "target_text": "待つのは無駄だとは思えない",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "use",
+   "known_text": "waiting is not easy for everyone",
+   "target_text": "待つのはみんなにとって簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 576,
+   "lego_index": 1,
+   "lego_known": "waiting is",
+   "lego_target": "待つのは",
+   "phrase_role": "use",
+   "known_text": "i hate waiting late at night",
+   "target_text": "夜遅く待つのは嫌",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

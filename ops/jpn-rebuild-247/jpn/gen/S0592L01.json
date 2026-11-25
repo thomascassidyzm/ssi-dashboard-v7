@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 592,
+  "lego_index": 1,
+  "known": "main road",
+  "target": "大通り"
+ },
+ "at": "2026-11-25T17:54:42.739Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 124,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "build",
+   "known_text": "the main road can be seen",
+   "target_text": "大通りが見える",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "build",
+   "known_text": "I'm walking towards the main road",
+   "target_text": "大通りのほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "build",
+   "known_text": "if it had been the main road",
+   "target_text": "大通りだったら",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "build",
+   "known_text": "every morning the main road can be seen",
+   "target_text": "毎朝大通りが見える",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "the main road can be seen from the bedroom window",
+   "target_text": "寝室の窓から大通りが見える",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "I was told it was the main road",
+   "target_text": "大通りって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "late at night I'm walking towards the main road",
+   "target_text": "夜遅く大通りのほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "I want to live near the main road",
+   "target_text": "大通りの近くに住みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "saw the main road and told me",
+   "target_text": "大通りを見たって言った",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "if it had been the main road I would have thought more",
+   "target_text": "大通りだったらもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 1,
+   "lego_known": "main road",
+   "lego_target": "大通り",
+   "phrase_role": "use",
+   "known_text": "you don't need to stand near the main road",
+   "target_text": "大通りの近くに立たなくていい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

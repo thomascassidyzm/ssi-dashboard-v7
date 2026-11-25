@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 557,
+  "lego_index": 3,
+  "known": "if only they wouldn't play",
+  "target": "かけなければ"
+ },
+ "at": "2026-11-25T14:31:50.730Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 150,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "build",
+   "known_text": "if only they wouldn't play music",
+   "target_text": "音楽かけなければ",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "build",
+   "known_text": "if only they wouldn't play it so much",
+   "target_text": "あんなにかけなければ",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "build",
+   "known_text": "if only they wouldn't play it at loud volume",
+   "target_text": "大きな音でかけなければ",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "build",
+   "known_text": "if only they wouldn't play it late at night",
+   "target_text": "夜遅くかけなければ",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "I used to think if only they wouldn't play it so much",
+   "target_text": "あんなにかけなければと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "in the old days I used to think if only they wouldn't play music late at night",
+   "target_text": "昔は夜遅く音楽かけなければと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "if only they wouldn't play such weird music at loud volume",
+   "target_text": "大きな音でそんな変な音楽かけなければ",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "if only they wouldn't play it at loud volume late at night it won't be a problem",
+   "target_text": "夜遅く大きな音でかけなければ問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "if only they wouldn't play such terrible music late at night",
+   "target_text": "夜遅くそんなひどい音楽かけなければ",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "if only they wouldn't play it at night it won't be a problem",
+   "target_text": "夜かけなければ問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 557,
+   "lego_index": 3,
+   "lego_known": "if only they wouldn't play",
+   "lego_target": "かけなければ",
+   "phrase_role": "use",
+   "known_text": "I used to think if only they wouldn't play it at loud volume",
+   "target_text": "大きな音でかけなければと思ってた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 599,
+  "lego_index": 1,
+  "known": "if you'd told me",
+  "target": "言ってくれてたら"
+ },
+ "at": "2026-11-25T18:07:38.802Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 170,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"if you'd told me\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "build",
+   "known_text": "if you'd told me properly",
+   "target_text": "ちゃんと言ってくれてたら",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "build",
+   "known_text": "if you'd told me last night",
+   "target_text": "昨夜言ってくれてたら",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "build",
+   "known_text": "if you'd told me i'd have gone home",
+   "target_text": "言ってくれてたら帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "build",
+   "known_text": "if you'd told me once i'd have made a promise",
+   "target_text": "一度言ってくれてたら約束した",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "use",
+   "known_text": "if you'd told me properly i wouldn't have gone anywhere",
+   "target_text": "ちゃんと言ってくれてたらどこにも行かなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "use",
+   "known_text": "if you'd told me last night i'd have thought about it more",
+   "target_text": "昨夜言ってくれてたらもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "use",
+   "known_text": "if you'd told me i'd have wanted to take them there",
+   "target_text": "言ってくれてたら連れて行きたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "use",
+   "known_text": "if you'd told me once i'd have gone home without the car",
+   "target_text": "一度言ってくれてたら車なしで帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "use",
+   "known_text": "if you'd told me last night i'd have been able to go",
+   "target_text": "昨夜言ってくれてたら行けた",
+   "pad": []
+  },
+  {
+   "seed_number": 599,
+   "lego_index": 1,
+   "lego_known": "if you'd told me",
+   "lego_target": "言ってくれてたら",
+   "phrase_role": "use",
+   "known_text": "if you'd told me i'd have gone to look for it",
+   "target_text": "言ってくれてたら探しに行った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

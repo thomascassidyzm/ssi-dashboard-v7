@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 569,
+  "lego_index": 3,
+  "known": "have you decided?",
+  "target": "決めた"
+ },
+ "at": "2026-11-25T18:20:56.574Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 136,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"have you decided?\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "build",
+   "known_text": "have you decided on the hotel?",
+   "target_text": "ホテル決めた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "build",
+   "known_text": "you might have decided",
+   "target_text": "決めたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "build",
+   "known_text": "I heard that you had decided",
+   "target_text": "決めたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "build",
+   "known_text": "have you decided on the next one?",
+   "target_text": "次決めた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "use",
+   "known_text": "have you decided how much you are willing to pay?",
+   "target_text": "いくら払えるか決めた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "use",
+   "known_text": "I thought you had decided on the job",
+   "target_text": "仕事決めたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "use",
+   "known_text": "they might have decided on the room number",
+   "target_text": "彼ら部屋番号決めたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "use",
+   "known_text": "I heard that you had decided on a table for four people",
+   "target_text": "四人テーブル決めたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "use",
+   "known_text": "have you decided on the minimum number of people?",
+   "target_text": "最低人数決めた",
+   "pad": []
+  },
+  {
+   "seed_number": 569,
+   "lego_index": 3,
+   "lego_known": "have you decided?",
+   "lego_target": "決めた",
+   "phrase_role": "use",
+   "known_text": "they decided on the house last year",
+   "target_text": "彼ら去年家決めた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

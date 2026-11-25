@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 564,
+  "lego_index": 1,
+  "known": "aid",
+  "target": "助け"
+ },
+ "at": "2026-11-25T14:43:57.414Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 212,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"they gave an excuse instead of aid\" (unknown gloss \"gave\")",
+  "USE \"they gave an excuse instead of aid\" → \"彼らは助けの代わりに言い訳した\": popty:knownSide [{\"known\":\"they gave an excuse instead of aid\",\"target\":\"彼らは助けの代わりに言い訳した\",\"problem\":\"unknown gloss \\\"gave\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

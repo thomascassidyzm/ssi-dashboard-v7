@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 559,
+  "lego_index": 2,
+  "known": "pass through",
+  "target": "通る"
+ },
+ "at": "2026-11-25T14:34:28.667Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 154,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"the dog that passes through\" (unknown gloss \"passes\"); \"i haven't seen the dog that passes through the garden\" (unknown gloss \"passes\"); \"i wonder if the dog passes through the village\" (unknown gloss \"passes\")",
+  "BUILD \"the dog that passes through\" → \"通る犬\": popty:knownSide [{\"known\":\"the dog that passes through\",\"target\":\"通る犬\",\"problem\":\"unknown gloss \\\"passes\\\"\"}]",
+  "USE \"i haven't seen the dog that passes through the garden\" → \"庭通る犬見てない\": popty:knownSide [{\"known\":\"i haven't seen the dog that passes through the garden\",\"target\":\"庭通る犬見てない\",\"problem\":\"unknown gloss \\\"passes\\\"\"}]",
+  "USE \"i wonder if the dog passes through the village\" → \"犬村通るか気になる\": popty:knownSide [{\"known\":\"i wonder if the dog passes through the village\",\"target\":\"犬村通るか気になる\",\"problem\":\"unknown gloss \\\"passes\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 561,
+  "lego_index": 2,
+  "known": "even a car",
+  "target": "車でも"
+ },
+ "at": "2026-11-25T14:37:42.929Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 174,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"even a car goes down to the beach\" (unknown gloss \"goes\")",
+  "BUILD \"even a car goes down to the beach\" → \"車でも浜まで下りる\": popty:knownSide [{\"known\":\"even a car goes down to the beach\",\"target\":\"車でも浜まで下りる\",\"problem\":\"unknown gloss \\\"goes\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

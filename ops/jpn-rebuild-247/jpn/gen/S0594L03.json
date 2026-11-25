@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 594,
+  "lego_index": 3,
+  "known": "shared toys with sister",
+  "target": "妹とおもちゃを分けた"
+ },
+ "at": "2026-11-25T17:59:59.847Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 173,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"after sharing my toys with my sister\" (unknown gloss \"sharing\"); \"after sharing my toys with my sister without arguing\" (unknown gloss \"sharing\")",
+  "BUILD \"after sharing my toys with my sister\" → \"妹とおもちゃを分けたあと\": popty:knownSide [{\"known\":\"after sharing my toys with my sister\",\"target\":\"妹とおもちゃを分けたあと\",\"problem\":\"unknown gloss \\\"sharing\\\"\"}]",
+  "BUILD \"after sharing my toys with my sister without arguing\" → \"ケンカせずに妹とおもちゃを分けたあと\": popty:knownSide [{\"known\":\"after sharing my toys with my sister without arguing\",\"target\":\"ケンカせずに妹とおもちゃを分けたあと\",\"problem\":\"unknown gloss \\\"sharing\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"shared toys with sister\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

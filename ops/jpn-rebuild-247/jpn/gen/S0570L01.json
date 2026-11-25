@@ -1,0 +1,132 @@
+{
+ "lego": {
+  "seed_number": 570,
+  "lego_index": 1,
+  "known": "ticket",
+  "target": "チケット"
+ },
+ "at": "2026-11-25T18:20:10.711Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 77,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "build",
+   "known_text": "can buy a ticket",
+   "target_text": "チケット買える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "build",
+   "known_text": "how much is the ticket",
+   "target_text": "チケットいくら",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "build",
+   "known_text": "have you decided on the ticket",
+   "target_text": "チケット決めた",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "build",
+   "known_text": "can i use this ticket",
+   "target_text": "このチケット使える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i want to find a free ticket",
+   "target_text": "無料チケット探したい",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i couldn't buy a new ticket",
+   "target_text": "新しいチケット買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i have to check the ticket",
+   "target_text": "チケット確認しなきゃいけない",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i think the ticket is okay",
+   "target_text": "チケット大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i'll pay the ticket cost next time",
+   "target_text": "次にチケット代払う",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i don't want to lose the ticket",
+   "target_text": "チケット失いたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 1,
+   "lego_known": "ticket",
+   "lego_target": "チケット",
+   "phrase_role": "use",
+   "known_text": "i'm going to go and fetch the ticket",
+   "target_text": "チケット取りに行く",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

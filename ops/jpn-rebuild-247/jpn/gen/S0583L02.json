@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 583,
+  "lego_index": 2,
+  "known": "what's it like in this area?",
+  "target": "この辺はどんな感じ"
+ },
+ "at": "2026-11-25T17:40:54.230Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 140,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.27 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 39. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "build",
+   "known_text": "late at night, what's it like in this area?",
+   "target_text": "夜遅くこの辺はどんな感じ",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "build",
+   "known_text": "I wonder what it's like in this area",
+   "target_text": "この辺はどんな感じか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "build",
+   "known_text": "for everyone, what's it like in this area?",
+   "target_text": "みんなにとってこの辺はどんな感じ",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "build",
+   "known_text": "in the old days, what was it like in this area?",
+   "target_text": "昔はこの辺はどんな感じ",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "I wonder what it'll be like in this area next time we meet",
+   "target_text": "次に会うときこの辺はどんな感じか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "I wonder what this area was like in the old days",
+   "target_text": "昔はこの辺はどんな感じか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "what's it like in this area on friday night?",
+   "target_text": "金曜夜この辺はどんな感じ",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "I wonder what it's like in this area in the morning",
+   "target_text": "朝この辺はどんな感じか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "what's it like in this area this afternoon?",
+   "target_text": "今日の午後この辺はどんな感じ",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "I wonder what it's like in this area for everyone",
+   "target_text": "みんなにとってこの辺はどんな感じか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 583,
+   "lego_index": 2,
+   "lego_known": "what's it like in this area?",
+   "lego_target": "この辺はどんな感じ",
+   "phrase_role": "use",
+   "known_text": "next year, what will it be like in this area?",
+   "target_text": "来年この辺はどんな感じ",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 596,
+  "lego_index": 2,
+  "known": "want to close eyes for a while",
+  "target": "少し目を閉じたい"
+ },
+ "at": "2026-11-25T18:00:42.598Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 127,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"want to close eyes for a while\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "build",
+   "known_text": "late at night i want to close my eyes for a while",
+   "target_text": "夜遅く少し目を閉じたい",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "build",
+   "known_text": "i heard that she wants to close her eyes for a while",
+   "target_text": "少し目を閉じたいって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "build",
+   "known_text": "i want to close my eyes for a while on my own",
+   "target_text": "一人で少し目を閉じたい",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "build",
+   "known_text": "i wonder if he wants to close his eyes outdoors for a while",
+   "target_text": "外で少し目を閉じたいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "use",
+   "known_text": "i want to lie down because i want to close my eyes for a while",
+   "target_text": "少し目を閉じたいから横になりたい",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "use",
+   "known_text": "i didn't think he wanted to close his eyes for a while every morning",
+   "target_text": "毎朝少し目を閉じたいとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "use",
+   "known_text": "i was told she wanted to close her eyes for a while late at night",
+   "target_text": "夜遅く少し目を閉じたいって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "use",
+   "known_text": "i wonder if he wants to close his eyes for a while",
+   "target_text": "少し目を閉じたいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "use",
+   "known_text": "i want to close my eyes for a while because i was tired",
+   "target_text": "疲れてたから少し目を閉じたい",
+   "pad": []
+  },
+  {
+   "seed_number": 596,
+   "lego_index": 2,
+   "lego_known": "want to close eyes for a while",
+   "lego_target": "少し目を閉じたい",
+   "phrase_role": "use",
+   "known_text": "i heard that she wants to close her eyes for a while on her own",
+   "target_text": "一人で少し目を閉じたいって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

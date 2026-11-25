@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 566,
+  "lego_index": 3,
+  "known": "would have thought more",
+  "target": "もっと考えた"
+ },
+ "at": "2026-11-25T18:12:07.794Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 169,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "build",
+   "known_text": "both of them would have thought more",
+   "target_text": "二人とももっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "build",
+   "known_text": "I'd have thought more on my own",
+   "target_text": "一人でもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "build",
+   "known_text": "I might have thought more",
+   "target_text": "もっと考えたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "build",
+   "known_text": "if it had been the wrong choice I'd have thought more",
+   "target_text": "間違った選択だったらもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "use",
+   "known_text": "if it had been my choice I might have thought more",
+   "target_text": "自分の選択だったらもっと考えたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "use",
+   "known_text": "I heard that both of them would have thought more",
+   "target_text": "二人とももっと考えたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "use",
+   "known_text": "I would have thought more so as not to be left behind",
+   "target_text": "置いていかれないようにもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "use",
+   "known_text": "in the old days I would have thought more on my own",
+   "target_text": "昔は一人でもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 566,
+   "lego_index": 3,
+   "lego_known": "would have thought more",
+   "lego_target": "もっと考えた",
+   "phrase_role": "use",
+   "known_text": "if it had been a big problem both of them would have thought more",
+   "target_text": "大きい問題だったら二人とももっと考えた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

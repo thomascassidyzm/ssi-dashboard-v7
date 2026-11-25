@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 580,
+  "lego_index": 2,
+  "known": "take along",
+  "target": "連れて行く"
+ },
+ "at": "2026-11-25T17:37:14.982Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 887,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"take along\" initially, medially AND finally.",
+  "NEIGH 0.09 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.09 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "build",
+   "known_text": "take the children along",
+   "target_text": "子ども連れて行く",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "build",
+   "known_text": "might take along",
+   "target_text": "連れて行くかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "build",
+   "known_text": "take the dog to the beach",
+   "target_text": "犬浜まで連れて行く",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "build",
+   "known_text": "should take the baby along",
+   "target_text": "赤ちゃん連れて行くべきだ",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "i'm not planning to take the dog along",
+   "target_text": "犬連れて行くつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "next time i might take both of them along",
+   "target_text": "次に二人とも連れて行くかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "i didn't think he'd take the children to the beach",
+   "target_text": "子ども浜まで連れて行くとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "if it had been my choice i'd take the children there",
+   "target_text": "自分の選択だったら子どもそこに連れて行く",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "there's no need to take the baby along",
+   "target_text": "赤ちゃん連れて行く必要ない",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "you should take the children there safely",
+   "target_text": "子どもそこに安全に連れて行くべきだ",
+   "pad": []
+  },
+  {
+   "seed_number": 580,
+   "lego_index": 2,
+   "lego_known": "take along",
+   "lego_target": "連れて行く",
+   "phrase_role": "use",
+   "known_text": "it seems better to take both of them along on my own",
+   "target_text": "一人で二人とも連れて行くほうがよさそう",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

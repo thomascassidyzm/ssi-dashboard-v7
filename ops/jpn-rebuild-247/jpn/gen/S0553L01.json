@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 553,
+  "lego_index": 1,
+  "known": "small",
+  "target": "小さな"
+ },
+ "at": "2026-11-25T14:22:29.980Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 142,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"small churches\" (unknown gloss \"churches\"); \"small dogs have to be quiet\" (unknown gloss \"dogs\")",
+  "BUILD \"small churches\" → \"小さな教会\": popty:knownSide [{\"known\":\"small churches\",\"target\":\"小さな教会\",\"problem\":\"unknown gloss \\\"churches\\\"\"}]",
+  "USE \"small dogs have to be quiet\" → \"小さな犬静かにしなきゃいけない\": popty:knownSide [{\"known\":\"small dogs have to be quiet\",\"target\":\"小さな犬静かにしなきゃいけない\",\"problem\":\"unknown gloss \\\"dogs\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

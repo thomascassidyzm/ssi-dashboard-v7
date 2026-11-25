@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 555,
+  "lego_index": 2,
+  "known": "go to fetch",
+  "target": "取りに行く"
+ },
+ "at": "2026-11-25T14:26:07.276Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 167,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"it's pointless to go to fetch it\" (unknown gloss \"pointless\")",
+  "USE \"it's pointless to go to fetch it\" → \"取りに行く意味がない\": popty:knownSide [{\"known\":\"it's pointless to go to fetch it\",\"target\":\"取りに行く意味がない\",\"problem\":\"unknown gloss \\\"pointless\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 574,
+  "lego_index": 2,
+  "known": "the holidays are very special for everyone",
+  "target": "休みはみんなにとって特別"
+ },
+ "at": "2026-11-25T18:27:10.242Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 120,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"the holidays are very special for everyone\" initially, medially AND finally.",
+  "NEIGH 0.17 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "build",
+   "known_text": "the holidays might be very special for everyone",
+   "target_text": "休みはみんなにとって特別かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "build",
+   "known_text": "said the holidays are very special for everyone",
+   "target_text": "休みはみんなにとって特別だって言ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "build",
+   "known_text": "if the holidays had been very special for everyone",
+   "target_text": "休みはみんなにとって特別だったら",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "build",
+   "known_text": "the holidays weren't very special for everyone",
+   "target_text": "休みはみんなにとって特別じゃなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "use",
+   "known_text": "this year the holidays might be very special for everyone",
+   "target_text": "今年休みはみんなにとって特別かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "use",
+   "known_text": "in the old days they said the holidays were very special for everyone",
+   "target_text": "昔は休みはみんなにとって特別だって言ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "use",
+   "known_text": "I can't think the holidays are very special for everyone",
+   "target_text": "休みはみんなにとって特別だとは思えない",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "use",
+   "known_text": "I wonder if the holidays will be very special for everyone next year",
+   "target_text": "来年休みはみんなにとって特別か気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 574,
+   "lego_index": 2,
+   "lego_known": "the holidays are very special for everyone",
+   "lego_target": "休みはみんなにとって特別",
+   "phrase_role": "use",
+   "known_text": "last year the holidays weren't very special for everyone",
+   "target_text": "去年休みはみんなにとって特別じゃなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

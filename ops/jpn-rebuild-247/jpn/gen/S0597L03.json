@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 597,
+  "lego_index": 3,
+  "known": "think that he heard",
+  "target": "聞いたと思う"
+ },
+ "at": "2026-11-25T18:04:57.412Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 225,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"think that he heard\" initially, medially AND finally.",
+  "NEIGH 0.14 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "build",
+   "known_text": "think that he surely heard it",
+   "target_text": "きっと聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "build",
+   "known_text": "think that he heard it last night",
+   "target_text": "昨夜聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "build",
+   "known_text": "think that he heard something",
+   "target_text": "何か聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "build",
+   "known_text": "think that he's heard it a hundred times",
+   "target_text": "百回は聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "do you think he heard it properly",
+   "target_text": "ちゃんと聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "i think he heard it on his own",
+   "target_text": "一人で聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "i think he heard it from the bedroom window last night",
+   "target_text": "昨夜寝室の窓から聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "i think he has heard it many times",
+   "target_text": "何度も聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "do you think he heard something last night",
+   "target_text": "昨夜何か聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "i think he luckily heard it once",
+   "target_text": "運よく一度聞いたと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 597,
+   "lego_index": 3,
+   "lego_known": "think that he heard",
+   "lego_target": "聞いたと思う",
+   "phrase_role": "use",
+   "known_text": "i think he heard it outdoors every morning in the old days",
+   "target_text": "昔は毎朝外で聞いたと思う",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

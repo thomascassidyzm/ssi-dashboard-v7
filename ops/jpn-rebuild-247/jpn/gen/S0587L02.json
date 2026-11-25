@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 587,
+  "lego_index": 2,
+  "known": "was told it was eggs",
+  "target": "卵って言われてた"
+ },
+ "at": "2026-11-25T17:48:37.541Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 153,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"was told it was eggs\" initially, medially AND finally.",
+  "NEIGH 0.11 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.11 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "build",
+   "known_text": "in the old days I was told it was eggs",
+   "target_text": "昔は卵って言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "build",
+   "known_text": "I was told many times it was eggs",
+   "target_text": "何度も卵って言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "build",
+   "known_text": "last year I was told it was eggs",
+   "target_text": "去年卵って言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "build",
+   "known_text": "the supper that I was told was eggs",
+   "target_text": "卵って言われてた夕食",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "use",
+   "known_text": "I got angry because I was told it was eggs",
+   "target_text": "卵って言われてたから怒った",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "use",
+   "known_text": "I was told by the whole family that it was eggs",
+   "target_text": "家族全員に卵って言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "use",
+   "known_text": "I used to think I was told every morning it was eggs",
+   "target_text": "毎朝卵って言われてたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "use",
+   "known_text": "I heard that both of them were told it was eggs",
+   "target_text": "二人とも卵って言われてたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 587,
+   "lego_index": 2,
+   "lego_known": "was told it was eggs",
+   "lego_target": "卵って言われてた",
+   "phrase_role": "use",
+   "known_text": "last year I got angry because I was told many times it was eggs",
+   "target_text": "去年何度も卵って言われてたから怒った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

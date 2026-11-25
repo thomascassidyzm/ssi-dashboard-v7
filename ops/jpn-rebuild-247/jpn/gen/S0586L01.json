@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 586,
+  "lego_index": 1,
+  "known": "boiled egg",
+  "target": "ゆで卵"
+ },
+ "at": "2026-11-25T17:45:50.850Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 173,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "build",
+   "known_text": "boiled eggs every morning",
+   "target_text": "毎朝ゆで卵",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "build",
+   "known_text": "the boiled egg i found",
+   "target_text": "見つけたゆで卵",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "build",
+   "known_text": "can buy ten boiled eggs",
+   "target_text": "ゆで卵十個買える",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "build",
+   "known_text": "want to eat a small boiled egg",
+   "target_text": "小さなゆで卵食べたい",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "next time we meet i'll take boiled eggs",
+   "target_text": "次に会うときゆで卵持っていく",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "how much can you pay for boiled eggs?",
+   "target_text": "ゆで卵いくら払える",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "last night i couldn't buy boiled eggs",
+   "target_text": "昨夜ゆで卵買えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "i think boiled eggs are okay",
+   "target_text": "ゆで卵大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "i want to eat boiled eggs on my own",
+   "target_text": "一人でゆで卵食べたい",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "i won't choose boiled eggs",
+   "target_text": "ゆで卵選ばない",
+   "pad": []
+  },
+  {
+   "seed_number": 586,
+   "lego_index": 1,
+   "lego_known": "boiled egg",
+   "lego_target": "ゆで卵",
+   "phrase_role": "use",
+   "known_text": "i've found a perfect boiled egg",
+   "target_text": "完璧なゆで卵見つけた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

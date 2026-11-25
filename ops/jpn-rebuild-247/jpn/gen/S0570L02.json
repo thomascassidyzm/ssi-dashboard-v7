@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 570,
+  "lego_index": 2,
+  "known": "how much can you pay",
+  "target": "いくら払える"
+ },
+ "at": "2026-11-25T18:22:41.034Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 150,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "build",
+   "known_text": "i wonder how much you can pay",
+   "target_text": "いくら払えるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "build",
+   "known_text": "how much can you pay for the ticket?",
+   "target_text": "チケットいくら払える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "build",
+   "known_text": "how much can you pay on your own?",
+   "target_text": "一人でいくら払える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "build",
+   "known_text": "how much can you pay next year?",
+   "target_text": "来年いくら払える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "use",
+   "known_text": "i wonder how much you can pay for the ticket",
+   "target_text": "チケットいくら払えるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "use",
+   "known_text": "i wonder how much both of them can pay",
+   "target_text": "二人ともいくら払えるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "use",
+   "known_text": "i wonder how much you can pay on your own next year",
+   "target_text": "来年一人でいくら払えるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "use",
+   "known_text": "next time we meet, how much can you pay?",
+   "target_text": "次に会うときいくら払える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "use",
+   "known_text": "if it had been your own choice, how much could you pay?",
+   "target_text": "自分の選択だったらいくら払える",
+   "pad": []
+  },
+  {
+   "seed_number": 570,
+   "lego_index": 2,
+   "lego_known": "how much can you pay",
+   "lego_target": "いくら払える",
+   "phrase_role": "use",
+   "known_text": "how much can you pay for the hotel this year?",
+   "target_text": "今年ホテル代いくら払える",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

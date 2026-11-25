@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 577,
+  "lego_index": 2,
+  "known": "contact from the hospital",
+  "target": "病院からの連絡"
+ },
+ "at": "2026-11-25T18:30:49.239Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 133,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.17 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "build",
+   "known_text": "haven't seen the contact from the hospital",
+   "target_text": "病院からの連絡見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "build",
+   "known_text": "is it okay to wait for the contact from the hospital?",
+   "target_text": "病院からの連絡待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "build",
+   "known_text": "said it was the contact from the hospital",
+   "target_text": "病院からの連絡だって言ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "build",
+   "known_text": "don't want to show the contact from the hospital",
+   "target_text": "病院からの連絡見せたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "use",
+   "known_text": "it's not easy to wait for the contact from the hospital",
+   "target_text": "病院からの連絡待つのは簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "use",
+   "known_text": "there's no point waiting for the contact from the hospital",
+   "target_text": "病院からの連絡待つのは意味がない",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "use",
+   "known_text": "i can't think it's the contact from the hospital",
+   "target_text": "病院からの連絡だとは思えない",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "use",
+   "known_text": "if it had been the contact from the hospital i would have thought more",
+   "target_text": "病院からの連絡だったらもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 577,
+   "lego_index": 2,
+   "lego_known": "contact from the hospital",
+   "lego_target": "病院からの連絡",
+   "phrase_role": "use",
+   "known_text": "i couldn't believe the contact from the hospital",
+   "target_text": "病院からの連絡信じられなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

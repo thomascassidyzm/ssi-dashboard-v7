@@ -1,0 +1,144 @@
+{
+ "lego": {
+  "seed_number": 592,
+  "lego_index": 2,
+  "known": "along",
+  "target": "大通りを通って"
+ },
+ "at": "2026-11-25T17:55:50.959Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 139,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"along\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "build",
+   "known_text": "run along the main road",
+   "target_text": "大通りを通って走る",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "build",
+   "known_text": "walk along the main road to the beach",
+   "target_text": "大通りを通って浜まで歩く",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "build",
+   "known_text": "on my own along the main road",
+   "target_text": "一人で大通りを通って",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "build",
+   "known_text": "every morning along the main road",
+   "target_text": "毎朝大通りを通って",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "i just want to get there safely along the main road",
+   "target_text": "安全に大通りを通って着きたいだけ",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "i can drive home along the main road",
+   "target_text": "大通りを通って家まで運転できる",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "late at night i went home along the main road",
+   "target_text": "夜遅く大通りを通って帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "it's better to go straight home along the main road",
+   "target_text": "大通りを通ってまっすぐ帰ったほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "i was able to go to the beach along the main road",
+   "target_text": "浜まで大通りを通って行けた",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "i have to go home along the main road on my own",
+   "target_text": "一人で大通りを通って帰らなきゃ",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "even if i go home along the main road it's late at night",
+   "target_text": "大通りを通って帰っても夜遅い",
+   "pad": []
+  },
+  {
+   "seed_number": 592,
+   "lego_index": 2,
+   "lego_known": "along",
+   "lego_target": "大通りを通って",
+   "phrase_role": "use",
+   "known_text": "both of them followed me along the main road",
+   "target_text": "二人とも大通りを通ってついて来た",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

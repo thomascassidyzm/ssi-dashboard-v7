@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 552,
+  "lego_index": 1,
+  "known": "the other side",
+  "target": "反対側の"
+ },
+ "at": "2026-11-25T14:22:04.675Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 215,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "build",
+   "known_text": "the ugly church on the other side",
+   "target_text": "反対側の醜い教会",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "build",
+   "known_text": "the church on the other side of the village",
+   "target_text": "村の反対側の教会",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "build",
+   "known_text": "the house on the other side that I used to live in",
+   "target_text": "住んでた反対側の家",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "build",
+   "known_text": "the new hotel on the other side",
+   "target_text": "反対側の新しいホテル",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "I don't want to show the room on the other side",
+   "target_text": "反対側の部屋見せたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "it might be the car park on the other side",
+   "target_text": "反対側の駐車場かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "I used to think the church on the other side was ugly",
+   "target_text": "反対側の教会醜いと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "tomorrow I want to find the entrance on the other side",
+   "target_text": "明日反対側の入り口探したい",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "we can use the garden on the other side",
+   "target_text": "反対側の庭使える",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "luckily I found the shop on the other side",
+   "target_text": "運よく反対側の店見つけた",
+   "pad": []
+  },
+  {
+   "seed_number": 552,
+   "lego_index": 1,
+   "lego_known": "the other side",
+   "lego_target": "反対側の",
+   "phrase_role": "use",
+   "known_text": "whatever he says I won't choose the hotel on the other side",
+   "target_text": "彼が何を言っても反対側のホテル選ばない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
