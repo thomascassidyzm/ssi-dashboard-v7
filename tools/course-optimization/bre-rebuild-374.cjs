@@ -119,6 +119,10 @@ function check({ warn = false, legosOnly = false } = {}) {
 
 function checkOnce(seeds, held, base, { V, PS, LC }, legosOnly = false) {
   const prior = new Set(), heldOwn = new Set();
+  // Known side is a controlled language too (canon §4). No pair contract gates fra-known courses, so this WARNS: a
+  // French word in a prompt that no taught LEGO / component gloss has said yet.
+  const priorKnown = new Set();
+  const ktoks = (s) => norm(s).replace(/\b([djlmnst]|qu)'/g, '$1e ').split(' ').filter(Boolean);
   const legoZut = new Map(), phraseZut = new Map(); const out = []; const dropped = [];
   const tot = { seeds: 0, legos: 0, new_legos: 0, build: 0, use: 0, hard: 0, warn: 0, zut_vs_held_old: 0 };
   // Held seeds keep their OLD live rows: those enter the ZUT maps (a clash with them is reported, not fixed here).
@@ -150,6 +154,7 @@ function checkOnce(seeds, held, base, { V, PS, LC }, legosOnly = false) {
       for (const w of norm(l.known).replace(/\b([djlmnst]|qu)'/g, '$1e ').split(' ')) if (!seedK.has(w)) lr.warn.push(`L26 known word not in seed: ${w}`);
       const own = [l.target, ...l.components.map((c) => c.target)];
       const vocab = new Set([...prior, ...own]);
+      for (const t of [l.known, ...l.components.map((c) => c.known)]) for (const w of ktoks(t)) priorKnown.add(w);
       // vocabulary; a phrase valid only with a held seed's LEGOs is dropped, not failed
       const keep = (list) => list.filter((p) => {
         const v1 = quietly(() => V.checkVocabViolations([p], vocab, C, { seedNumber: s.n }));
@@ -167,6 +172,7 @@ function checkOnce(seeds, held, base, { V, PS, LC }, legosOnly = false) {
       });
       l.buildKept = legosOnly ? [] : keep(l.build); l.useKept = legosOnly ? [] : keep(l.use);
       const rows = [...l.buildKept, ...l.useKept];
+      for (const p of rows) { const un = [...new Set(ktoks(p.known).filter((w) => !priorKnown.has(w)))]; if (un.length) { lr.warn.push(`KNOWN-SIDE untaught French in "${p.known}": ${un.join(', ')}`); tot.known_side = (tot.known_side || 0) + 1; } }
       // length ratio, as seed-complete.cjs 3b (known vs target characters, > 2.5 refuses)
       for (const p of rows) { const a = (p.known || '').length, b = (p.target || '').length; if (a && b && Math.max(a, b) / Math.min(a, b) > 2.5) lr.hard.push(`LENGTH RATIO ${(Math.max(a, b) / Math.min(a, b)).toFixed(1)}: "${p.known}" / "${p.target}"`); }
       lr.build = l.buildKept.length; lr.use = l.useKept.length;

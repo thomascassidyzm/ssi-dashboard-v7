@@ -7,8 +7,9 @@
   "build": 247,
   "use": 392,
   "hard": 0,
-  "warn": 10,
-  "zut_vs_held_old": 10
+  "warn": 16,
+  "zut_vs_held_old": 10,
+  "known_side": 6
  },
  "held": {
   "20": {
@@ -1331,7 +1332,9 @@
      "known": "apprendre",
      "is_new": true,
      "hard": [],
-     "warn": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"je veux apprendre le breton avec toi\": le"
+     ],
      "syllables": 2,
      "build": 1,
      "use": 2
@@ -1459,7 +1462,9 @@
      "known": "avec quelqu'un d'autre",
      "is_new": true,
      "hard": [],
-     "warn": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"je veux apprendre le breton avec quelqu'un d'autre maintenant\": le"
+     ],
      "syllables": 6,
      "build": 3,
      "use": 5
@@ -2202,7 +2207,10 @@
      "known": "tu vas",
      "is_new": true,
      "hard": [],
-     "warn": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"tu vas t'entraîner ce soir\": te",
+      "KNOWN-SIDE untaught French in \"tu vas pouvoir te souvenir\": te"
+     ],
      "syllables": 5,
      "build": 3,
      "use": 5
@@ -2308,7 +2316,9 @@
      "known": "presque prêt",
      "is_new": true,
      "hard": [],
-     "warn": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"elle veut se sentir presque prête\": prête"
+     ],
      "syllables": 3,
      "build": 3,
      "use": 5
@@ -2397,7 +2407,9 @@
      "known": "c'est utile",
      "is_new": true,
      "hard": [],
-     "warn": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"c'est utile de prendre du temps pour répondre\": du"
+     ],
      "syllables": 3,
      "build": 3,
      "use": 4,
