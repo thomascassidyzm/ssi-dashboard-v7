@@ -35,9 +35,9 @@ c247() { pgrep -f '^node .*apply-changeset.cjs.*kai-247' >/dev/null && echo 1 ||
 governed() { curl -s -m 10 http://localhost:3470/health | grep -q '"governed":true'; }
 gate() {
   while :; do
-    if ! night; then [ "${STARTED:-0}" = 1 ] && return 1; [ -n "${DRY_RUN:-}" ] && { echo "DRY gate: outside 22:00-07:00 UK — the night run would wait for the window"; return 0; }; sleep 60; continue; fi
+    if ! night; then [ -n "${DRY_RUN:-}" ] && { echo "DRY gate: outside 22:00-07:00 UK by day (chained: the band would stop as window-closed)"; return 0; }; [ "${STARTED:-0}" = 1 ] && return 1; sleep 60; continue; fi
     STARTED=1
-    if governed && [ "$(others)" -lt 3 ] && [ "$(c247)" = 0 ]; then return 0; fi
+    if governed && [ "$(others)" -lt 3 ] && [ "$(c247)" = 0 ]; then [ -n "${DRY_RUN:-}" ] && echo "DRY gate: would PASS (governed=y other_writers=$(others) cs247_apply=0)"; return 0; fi
     [ -n "${DRY_RUN:-}" ] && { echo "DRY gate: would WAIT (governed=$(governed && echo y || echo n) other_writers=$(others) cs247_apply=$(c247))"; return 0; }
     echo "$(date -u +%FT%TZ) gate: governed=$(governed && echo y || echo n) other_writers=$(others) cs247_apply=$(c247) — waiting"; sleep 120
   done
