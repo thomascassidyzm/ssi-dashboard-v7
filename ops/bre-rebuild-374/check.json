@@ -1,15 +1,15 @@
 {
  "checker": "services/course-builder/lib pure functions (as POST /api/seed/complete), offline; ZUT in memory over 1-300 new rows + held seeds' old live rows",
  "totals": {
-  "seeds": 291,
-  "legos": 637,
-  "new_legos": 637,
-  "build": 872,
-  "use": 1518,
-  "hard": 507,
-  "warn": 15,
-  "zut_vs_held_old": 3,
-  "known_side": 9
+  "seeds": 290,
+  "legos": 636,
+  "new_legos": 636,
+  "build": 1886,
+  "use": 3330,
+  "hard": 0,
+  "warn": 71,
+  "zut_vs_held_old": 4,
+  "known_side": 64
  },
  "held": {
   "20": {
@@ -47,6 +47,10 @@
   "242": {
    "call": "à elle",
    "why": "'lui donner … à elle' → dezhi: the à elle marking itself"
+  },
+  "244": {
+   "call": "ZUT vs live S0076L03",
+   "why": "seed sentence 'Desket em eus kalz dija.' | 'J'ai déjà beaucoup appris.' clashes with the live, already-applied S0076L03 build phrase 'kalz am eus desket dija' (same French); the fix (reword the seed-76 row or the 244 French) touches a live seed or a seed pair, so it is held for Kai, not forced (cs #447·AL)"
   }
  },
  "dropped": [
@@ -189,345 +193,8 @@
   "S0030L01 USE: need 5+, got 4",
   "S0087L01 USE: need 5+, got 3 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
   "S0094L02 USE: need 5+, got 4",
-  "S0121L01 BUILD: need 3+, got 0",
-  "S0121L02 BUILD: need 3+, got 0",
-  "S0121L03 BUILD: need 3+, got 0",
-  "S0122L01 BUILD: need 3+, got 0",
-  "S0122L02 BUILD: need 3+, got 0",
-  "S0122L03 BUILD: need 3+, got 0",
-  "S0122L04 BUILD: need 3+, got 0",
-  "S0122L05 BUILD: need 3+, got 0",
-  "S0123L01 BUILD: need 3+, got 0",
-  "S0124L01 BUILD: need 3+, got 0",
-  "S0125L01 BUILD: need 3+, got 0",
-  "S0125L02 BUILD: need 3+, got 0",
-  "S0126L01 BUILD: need 3+, got 0",
-  "S0126L02 BUILD: need 3+, got 0",
-  "S0127L01 BUILD: need 3+, got 0",
-  "S0127L02 BUILD: need 3+, got 0",
-  "S0127L03 BUILD: need 3+, got 0",
-  "S0128L01 BUILD: need 3+, got 0",
-  "S0128L02 BUILD: need 3+, got 0",
-  "S0129L01 BUILD: need 3+, got 0",
-  "S0129L02 BUILD: need 3+, got 0",
-  "S0130L01 BUILD: need 3+, got 0",
-  "S0130L02 BUILD: need 3+, got 0",
-  "S0131L01 BUILD: need 3+, got 0",
-  "S0131L02 BUILD: need 3+, got 0",
-  "S0131L03 BUILD: need 3+, got 0",
-  "S0132L01 BUILD: need 3+, got 0",
-  "S0132L02 BUILD: need 3+, got 0",
-  "S0133L01 BUILD: need 3+, got 0",
-  "S0133L02 BUILD: need 3+, got 0",
-  "S0133L03 BUILD: need 3+, got 0",
-  "S0134L01 BUILD: need 3+, got 0",
-  "S0134L02 BUILD: need 3+, got 0",
-  "S0134L03 BUILD: need 3+, got 0",
-  "S0134L04 BUILD: need 3+, got 0",
-  "S0135L01 BUILD: need 3+, got 0",
-  "S0135L02 BUILD: need 3+, got 0",
-  "S0137L01 BUILD: need 3+, got 0",
-  "S0137L02 BUILD: need 3+, got 0",
-  "S0138L01 BUILD: need 3+, got 0",
-  "S0138L02 BUILD: need 3+, got 0",
-  "S0138L03 BUILD: need 3+, got 0",
-  "S0139L01 BUILD: need 3+, got 0",
-  "S0139L02 BUILD: need 3+, got 0",
-  "S0139L03 BUILD: need 3+, got 0",
-  "S0140L01 BUILD: need 3+, got 0",
-  "S0140L02 BUILD: need 3+, got 0",
-  "S0140L03 BUILD: need 3+, got 0",
-  "S0141L01 BUILD: need 3+, got 0",
-  "S0141L02 BUILD: need 3+, got 0",
-  "S0142L01 BUILD: need 3+, got 0",
-  "S0142L02 BUILD: need 3+, got 0",
-  "S0143L01 BUILD: need 3+, got 0",
-  "S0143L02 BUILD: need 3+, got 0",
-  "S0144L01 BUILD: need 3+, got 0",
-  "S0144L02 BUILD: need 3+, got 0",
-  "S0145L01 BUILD: need 3+, got 0",
-  "S0146L01 BUILD: need 3+, got 0",
-  "S0146L02 BUILD: need 3+, got 0",
-  "S0146L03 BUILD: need 3+, got 0",
-  "S0146L04 BUILD: need 3+, got 0",
-  "S0147L01 BUILD: need 3+, got 0",
-  "S0147L02 BUILD: need 3+, got 0",
-  "S0147L03 BUILD: need 3+, got 0",
-  "S0148L01 BUILD: need 3+, got 0",
-  "S0148L02 BUILD: need 3+, got 0",
-  "S0149L01 BUILD: need 3+, got 0",
-  "S0149L02 BUILD: need 3+, got 0",
-  "S0149L03 BUILD: need 3+, got 0",
-  "S0150L01 BUILD: need 3+, got 0",
-  "S0150L02 BUILD: need 3+, got 0",
-  "S0151L01 BUILD: need 3+, got 0",
-  "S0152L01 BUILD: need 3+, got 0",
-  "S0152L02 BUILD: need 3+, got 0",
-  "S0152L03 BUILD: need 3+, got 0",
-  "S0152L04 BUILD: need 3+, got 0",
-  "S0153L01 BUILD: need 3+, got 0",
-  "S0153L02 BUILD: need 3+, got 0",
-  "S0154L01 BUILD: need 3+, got 0",
-  "S0154L02 BUILD: need 3+, got 0",
-  "S0155L01 BUILD: need 3+, got 0",
-  "S0155L02 BUILD: need 3+, got 0",
-  "S0155L03 BUILD: need 3+, got 0",
-  "S0155L04 BUILD: need 3+, got 0",
-  "S0156L01 BUILD: need 3+, got 0",
-  "S0156L02 BUILD: need 3+, got 0",
-  "S0157L01 BUILD: need 3+, got 0",
-  "S0157L02 BUILD: need 3+, got 0",
-  "S0157L03 BUILD: need 3+, got 0",
-  "S0158L01 BUILD: need 3+, got 0",
-  "S0159L01 BUILD: need 3+, got 0",
-  "S0160L01 BUILD: need 3+, got 0",
-  "S0160L02 BUILD: need 3+, got 0",
-  "S0161L01 BUILD: need 3+, got 0",
-  "S0161L02 BUILD: need 3+, got 0",
-  "S0161L03 BUILD: need 3+, got 0",
-  "S0161L04 BUILD: need 3+, got 0",
-  "S0162L01 BUILD: need 3+, got 0",
-  "S0162L02 BUILD: need 3+, got 0",
-  "S0163L01 BUILD: need 3+, got 0",
-  "S0164L01 BUILD: need 3+, got 0",
-  "S0165L01 BUILD: need 3+, got 0",
-  "S0166L01 BUILD: need 3+, got 0",
-  "S0166L02 BUILD: need 3+, got 0",
-  "S0167L01 BUILD: need 3+, got 0",
-  "S0167L02 BUILD: need 3+, got 0",
-  "S0168L01 BUILD: need 3+, got 0",
-  "S0168L02 BUILD: need 3+, got 0",
-  "S0168L03 BUILD: need 3+, got 0",
-  "S0169L01 BUILD: need 3+, got 0",
-  "S0169L02 BUILD: need 3+, got 0",
-  "S0170L01 BUILD: need 3+, got 0",
-  "S0170L02 BUILD: need 3+, got 0",
-  "S0171L01 BUILD: need 3+, got 0",
-  "S0171L02 BUILD: need 3+, got 0",
-  "S0172L01 BUILD: need 3+, got 0",
-  "S0173L01 BUILD: need 3+, got 0",
-  "S0173L02 BUILD: need 3+, got 0",
-  "S0173L03 BUILD: need 3+, got 0",
-  "S0174L01 BUILD: need 3+, got 0",
-  "S0174L02 BUILD: need 3+, got 0",
-  "S0175L01 BUILD: need 3+, got 0",
-  "S0178L01 BUILD: need 3+, got 0",
-  "S0178L02 BUILD: need 3+, got 0",
-  "S0179L01 BUILD: need 3+, got 0",
-  "S0179L02 BUILD: need 3+, got 0",
-  "S0180L01 BUILD: need 3+, got 0",
-  "S0181L01 BUILD: need 3+, got 0",
-  "S0181L02 BUILD: need 3+, got 0",
-  "S0181L03 BUILD: need 3+, got 0",
-  "S0182L01 BUILD: need 3+, got 0",
-  "S0182L02 BUILD: need 3+, got 0",
-  "S0182L03 BUILD: need 3+, got 0",
-  "S0183L01 BUILD: need 3+, got 0",
-  "S0183L02 BUILD: need 3+, got 0",
-  "S0184L01 BUILD: need 3+, got 0",
-  "S0184L02 BUILD: need 3+, got 0",
-  "S0184L03 BUILD: need 3+, got 0",
-  "S0185L01 BUILD: need 3+, got 0",
-  "S0185L02 BUILD: need 3+, got 0",
-  "S0186L01 BUILD: need 3+, got 0",
-  "S0187L01 BUILD: need 3+, got 0",
-  "S0187L02 BUILD: need 3+, got 0",
-  "S0188L01 BUILD: need 3+, got 0",
-  "S0189L01 BUILD: need 3+, got 0",
-  "S0190L01 BUILD: need 3+, got 0",
-  "S0190L02 BUILD: need 3+, got 0",
-  "S0190L03 BUILD: need 3+, got 0",
-  "S0191L01 BUILD: need 3+, got 0",
-  "S0192L01 BUILD: need 3+, got 0",
-  "S0192L02 BUILD: need 3+, got 0",
-  "S0193L01 BUILD: need 3+, got 0",
-  "S0194L01 BUILD: need 3+, got 0",
-  "S0195L01 BUILD: need 3+, got 0",
-  "S0195L02 BUILD: need 3+, got 0",
-  "S0195L03 BUILD: need 3+, got 0",
-  "S0196L01 BUILD: need 3+, got 0",
-  "S0196L02 BUILD: need 3+, got 0",
-  "S0197L01 BUILD: need 3+, got 0",
-  "S0197L02 BUILD: need 3+, got 0",
-  "S0198L01 BUILD: need 3+, got 0",
-  "S0198L02 BUILD: need 3+, got 0",
-  "S0199L01 BUILD: need 3+, got 0",
-  "S0199L02 BUILD: need 3+, got 0",
-  "S0200L01 BUILD: need 3+, got 0",
-  "S0200L02 BUILD: need 3+, got 0",
-  "S0200L03 BUILD: need 3+, got 0",
-  "S0200L04 BUILD: need 3+, got 0",
-  "S0201L01 BUILD: need 3+, got 0",
-  "S0201L02 BUILD: need 3+, got 0",
-  "S0202L01 BUILD: need 3+, got 0",
-  "S0202L02 BUILD: need 3+, got 0",
-  "S0203L01 BUILD: need 3+, got 0",
-  "S0203L02 BUILD: need 3+, got 0",
-  "S0204L01 BUILD: need 3+, got 0",
-  "S0204L02 BUILD: need 3+, got 0",
-  "S0204L03 BUILD: need 3+, got 0",
-  "S0205L01 BUILD: need 3+, got 0",
-  "S0205L02 BUILD: need 3+, got 0",
-  "S0206L01 BUILD: need 3+, got 0",
-  "S0207L01 BUILD: need 3+, got 0",
-  "S0207L02 BUILD: need 3+, got 0",
-  "S0208L01 BUILD: need 3+, got 0",
-  "S0208L02 BUILD: need 3+, got 0",
-  "S0209L01 BUILD: need 3+, got 0",
-  "S0209L02 BUILD: need 3+, got 0",
-  "S0209L03 BUILD: need 3+, got 0",
-  "S0209L04 BUILD: need 3+, got 0",
-  "S0210L01 BUILD: need 3+, got 0",
-  "S0210L02 BUILD: need 3+, got 0",
-  "S0210L03 BUILD: need 3+, got 0",
-  "S0210L04 BUILD: need 3+, got 0",
-  "S0211L01 BUILD: need 3+, got 0",
-  "S0211L02 BUILD: need 3+, got 0",
-  "S0212L01 BUILD: need 3+, got 0",
-  "S0212L02 BUILD: need 3+, got 0",
-  "S0213L01 BUILD: need 3+, got 0",
-  "S0213L02 BUILD: need 3+, got 0",
-  "S0213L03 BUILD: need 3+, got 0",
-  "S0214L01 BUILD: need 3+, got 0",
-  "S0214L02 BUILD: need 3+, got 0",
-  "S0215L01 BUILD: need 3+, got 0",
-  "S0216L01 BUILD: need 3+, got 0",
-  "S0216L02 BUILD: need 3+, got 0",
-  "S0217L01 BUILD: need 3+, got 0",
-  "S0217L02 BUILD: need 3+, got 0",
-  "S0218L01 BUILD: need 3+, got 0",
-  "S0219L01 BUILD: need 3+, got 0",
-  "S0220L01 BUILD: need 3+, got 0",
-  "S0220L02 BUILD: need 3+, got 0",
-  "S0221L01 BUILD: need 3+, got 0",
-  "S0221L02 BUILD: need 3+, got 0",
-  "S0221L03 BUILD: need 3+, got 0",
-  "S0222L01 BUILD: need 3+, got 0",
-  "S0222L02 BUILD: need 3+, got 0",
-  "S0223L01 BUILD: need 3+, got 0",
-  "S0224L01 BUILD: need 3+, got 0",
-  "S0225L01 BUILD: need 3+, got 0",
-  "S0225L02 BUILD: need 3+, got 0",
-  "S0225L03 BUILD: need 3+, got 0",
-  "S0226L01 BUILD: need 3+, got 0",
-  "S0227L01 BUILD: need 3+, got 0",
-  "S0228L01 BUILD: need 3+, got 0",
-  "S0228L02 BUILD: need 3+, got 0",
-  "S0229L01 BUILD: need 3+, got 0",
-  "S0229L02 BUILD: need 3+, got 0",
-  "S0230L01 BUILD: need 3+, got 0",
-  "S0230L02 BUILD: need 3+, got 0",
-  "S0230L03 BUILD: need 3+, got 0",
-  "S0231L01 BUILD: need 3+, got 0",
-  "S0232L01 BUILD: need 3+, got 0",
-  "S0232L02 BUILD: need 3+, got 0",
-  "S0233L01 BUILD: need 3+, got 0",
-  "S0233L02 BUILD: need 3+, got 0",
-  "S0234L01 BUILD: need 3+, got 0",
-  "S0234L02 BUILD: need 3+, got 0",
-  "S0235L01 BUILD: need 3+, got 0",
-  "S0235L02 BUILD: need 3+, got 0",
-  "S0235L03 BUILD: need 3+, got 0",
-  "S0236L01 BUILD: need 3+, got 0",
-  "S0236L02 BUILD: need 3+, got 0",
-  "S0237L01 BUILD: need 3+, got 0",
-  "S0237L02 BUILD: need 3+, got 0",
-  "S0238L01 BUILD: need 3+, got 0",
-  "S0239L01 BUILD: need 3+, got 0",
-  "S0240L01 BUILD: need 3+, got 0",
-  "S0243L01 BUILD: need 3+, got 0",
-  "S0243L02 BUILD: need 3+, got 0",
-  "S0243L03 BUILD: need 3+, got 0",
-  "S0244L01 BUILD: need 3+, got 0",
-  "S0245L01 BUILD: need 3+, got 0",
-  "S0246L01 BUILD: need 3+, got 0",
-  "S0247L01 BUILD: need 3+, got 0",
-  "S0248L01 BUILD: need 3+, got 0",
-  "S0248L02 BUILD: need 3+, got 0",
-  "S0248L03 BUILD: need 3+, got 0",
-  "S0249L01 BUILD: need 3+, got 0",
-  "S0250L01 BUILD: need 3+, got 0",
-  "S0251L01 BUILD: need 3+, got 0",
-  "S0252L01 BUILD: need 3+, got 0",
-  "S0252L02 BUILD: need 3+, got 0",
-  "S0253L01 BUILD: need 3+, got 0",
-  "S0253L02 BUILD: need 3+, got 0",
-  "S0254L01 BUILD: need 3+, got 0",
-  "S0255L01 BUILD: need 3+, got 0",
-  "S0255L02 BUILD: need 3+, got 0",
-  "S0256L01 BUILD: need 3+, got 0",
-  "S0256L02 BUILD: need 3+, got 0",
-  "S0257L01 BUILD: need 3+, got 0",
-  "S0258L01 BUILD: need 3+, got 0",
-  "S0259L01 BUILD: need 3+, got 0",
-  "S0260L01 BUILD: need 3+, got 0",
-  "S0261L01 BUILD: need 3+, got 0",
-  "S0261L02 BUILD: need 3+, got 0",
-  "S0262L01 BUILD: need 3+, got 0",
-  "S0262L02 BUILD: need 3+, got 0",
-  "S0263L01 BUILD: need 3+, got 0",
-  "S0264L01 BUILD: need 3+, got 0",
-  "S0265L01 BUILD: need 3+, got 0",
-  "S0266L01 BUILD: need 3+, got 0",
-  "S0266L02 BUILD: need 3+, got 0",
-  "S0267L01 BUILD: need 3+, got 0",
-  "S0267L02 BUILD: need 3+, got 0",
-  "S0268L01 BUILD: need 3+, got 0",
-  "S0268L02 BUILD: need 3+, got 0",
-  "S0268L03 BUILD: need 3+, got 0",
-  "S0269L01 BUILD: need 3+, got 0",
-  "S0269L02 BUILD: need 3+, got 0",
-  "S0270L01 BUILD: need 3+, got 0",
-  "S0270L02 BUILD: need 3+, got 0",
-  "S0271L01 BUILD: need 3+, got 0",
-  "S0271L02 BUILD: need 3+, got 0",
-  "S0272L01 BUILD: need 3+, got 0",
-  "S0272L02 BUILD: need 3+, got 0",
-  "S0273L01 BUILD: need 3+, got 0",
-  "S0274L01 BUILD: need 3+, got 0",
-  "S0274L02 BUILD: need 3+, got 0",
-  "S0275L01 BUILD: need 3+, got 0",
-  "S0276L01 BUILD: need 3+, got 0",
-  "S0277L01 BUILD: need 3+, got 0",
-  "S0277L02 BUILD: need 3+, got 0",
-  "S0278L01 BUILD: need 3+, got 0",
-  "S0278L02 BUILD: need 3+, got 0",
-  "S0279L01 BUILD: need 3+, got 0",
-  "S0279L02 BUILD: need 3+, got 0",
-  "S0280L01 BUILD: need 3+, got 0",
-  "S0280L02 BUILD: need 3+, got 0",
-  "S0281L01 BUILD: need 3+, got 0",
-  "S0281L02 BUILD: need 3+, got 0",
-  "S0282L01 BUILD: need 3+, got 0",
-  "S0283L01 BUILD: need 3+, got 0",
-  "S0284L01 BUILD: need 3+, got 0",
-  "S0284L02 BUILD: need 3+, got 0",
-  "S0285L01 BUILD: need 3+, got 0",
-  "S0286L01 BUILD: need 3+, got 0",
-  "S0287L01 BUILD: need 3+, got 0",
-  "S0287L02 BUILD: need 3+, got 0",
-  "S0288L01 BUILD: need 3+, got 0",
-  "S0288L02 BUILD: need 3+, got 0",
-  "S0289L01 BUILD: need 3+, got 0",
-  "S0289L02 BUILD: need 3+, got 0",
-  "S0290L01 BUILD: need 3+, got 0",
-  "S0291L01 BUILD: need 3+, got 0",
-  "S0291L02 BUILD: need 3+, got 0",
-  "S0292L01 BUILD: need 3+, got 0",
-  "S0292L02 BUILD: need 3+, got 0",
-  "S0293L01 BUILD: need 3+, got 0",
-  "S0293L02 BUILD: need 3+, got 0",
-  "S0294L01 BUILD: need 3+, got 0",
-  "S0294L02 BUILD: need 3+, got 0",
-  "S0295L01 BUILD: need 3+, got 0",
-  "S0295L02 BUILD: need 3+, got 0",
-  "S0296L01 BUILD: need 3+, got 0",
-  "S0296L02 BUILD: need 3+, got 0",
-  "S0297L01 BUILD: need 3+, got 0",
-  "S0298L01 BUILD: need 3+, got 0",
-  "S0298L02 BUILD: need 3+, got 0",
-  "S0299L01 BUILD: need 3+, got 0",
-  "S0300L01 BUILD: need 3+, got 0"
+  "S0122L04 USE: need 5+, got 0",
+  "S0201L01 USE: need 5+, got 4"
  ],
  "seeds": [
   {
@@ -3327,7 +2994,9 @@
      "known": "j'ai déjà appris",
      "is_new": true,
      "hard": [],
-     "warn": [],
+     "warn": [
+      "ZUT vs held old phrase bre_for_fra:S0244L01B02 (held, old): \"j'ai déjà beaucoup appris\" → \"kalz am eus desket dija\" / \"desket am eus kalz dija\""
+     ],
      "syllables": 5,
      "build": 3,
      "use": 6
@@ -4894,9 +4563,7 @@
    "seed": 121,
    "target": "Divoas eo ne blij ket dit implijout da garr.",
    "known": "C'est inhabituel que tu n'aimes pas utiliser ta voiture.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -4904,42 +4571,33 @@
      "target": "divoas eo",
      "known": "c'est inhabituel",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0121L02",
      "target": "ne blij ket dit",
      "known": "que tu n'aimes pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0121L03",
      "target": "implijout da garr",
      "known": "utiliser ta voiture",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -4947,9 +4605,7 @@
    "seed": 122,
    "target": "Kregiñ a ra an traoù da seblantout aesoc'h, hag entanet on gant an doare ma'z a an traoù war-raok.",
    "known": "Ça commence à sembler plus facile et je suis enthousiaste par rapport à comment ça avance.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -4957,70 +4613,56 @@
      "target": "kregiñ a ra an traoù",
      "known": "ça commence",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0122L02",
      "target": "da seblantout aesoc'h",
      "known": "à sembler plus facile",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0122L03",
      "target": "hag entanet on",
      "known": "et je suis enthousiaste",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0122L04",
      "target": "gant an doare",
      "known": "par rapport à comment",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
+     "build": 3,
      "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "floor": "USE: need 5+, got 0"
     },
     {
      "id": "S0122L05",
      "target": "ma'z a an traoù war-raok",
      "known": "ça avance",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5028,9 +4670,7 @@
    "seed": 123,
    "target": "Soñjal a ran ez eo ur mennozh mat.",
    "known": "Je pense que c'est une bonne idée.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5038,14 +4678,11 @@
      "target": "ur mennozh mat",
      "known": "une bonne idée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 7
     }
    ]
   },
@@ -5053,9 +4690,7 @@
    "seed": 124,
    "target": "Soñjal a raen e oa ur mennozh mat.",
    "known": "Je pensais que c'était une bonne idée.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5063,14 +4698,11 @@
      "target": "soñjal a raen",
      "known": "je pensais que",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5078,9 +4710,7 @@
    "seed": 125,
    "target": "Krediñ a ran e oa mat-tre da vennozh.",
    "known": "Je crois que ton idée était très bonne.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5088,28 +4718,22 @@
      "target": "krediñ a ran",
      "known": "je crois que",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0125L02",
      "target": "e oa mat-tre da vennozh",
      "known": "ton idée était très bonne",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5117,9 +4741,7 @@
    "seed": 126,
    "target": "Al labour-mañ a gemm stumm ma empenn.",
    "known": "Ce travail change la forme de mon cerveau.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5127,28 +4749,22 @@
      "target": "al labour-mañ",
      "known": "ce travail",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     },
     {
      "id": "S0126L02",
      "target": "a gemm stumm ma empenn",
      "known": "change la forme de mon cerveau",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5156,9 +4772,7 @@
    "seed": 127,
    "target": "N'eo ket abalamour da se e felle din gwelout ac'hanout.",
    "known": "Ce n'est pas pour ça que je voulais te voir.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5166,42 +4780,33 @@
      "target": "abalamour da se",
      "known": "pour ça",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0127L02",
      "target": "e felle din",
      "known": "que je voulais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0127L03",
      "target": "gwelout ac'hanout",
      "known": "te voir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -5209,9 +4814,7 @@
    "seed": 128,
    "target": "Heñvel out ouzh unan bennak a anavezen.",
    "known": "Tu ressembles à quelqu'un que je connaissais.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5219,28 +4822,22 @@
      "target": "heñvel out ouzh",
      "known": "tu ressembles à",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0128L02",
      "target": "a anavezen",
      "known": "que je connaissais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5248,9 +4845,7 @@
    "seed": 129,
    "target": "Ken laouen on emaout oc'h ober ken mat.",
    "known": "Je suis tellement content que tu t'en sortes si bien.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5258,28 +4853,22 @@
      "target": "ken laouen on",
      "known": "je suis tellement content",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0129L02",
      "target": "emaout oc'h ober ken mat",
      "known": "que tu t'en sortes si bien",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5287,9 +4876,7 @@
    "seed": 130,
    "target": "Ur souezhadenn e oa, peogwir eo ma mignon.",
    "known": "C'était une surprise, parce qu'il est mon ami.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5297,28 +4884,22 @@
      "target": "ur souezhadenn e oa",
      "known": "c'était une surprise",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0130L02",
      "target": "peogwir eo ma mignon",
      "known": "parce qu'il est mon ami",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5326,9 +4907,7 @@
    "seed": 131,
    "target": "Re a vennozhioù a zo o treiñ em fenn.",
    "known": "Il y a trop d'idées qui tournent dans ma tête.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5336,42 +4915,33 @@
      "target": "re a vennozhioù",
      "known": "trop d'idées",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0131L02",
      "target": "a zo o treiñ",
      "known": "qui tournent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0131L03",
      "target": "em fenn",
      "known": "dans ma tête",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5379,9 +4949,7 @@
    "seed": 132,
    "target": "N'eo ket ken dedennus hag ar pezh a lavare.",
    "known": "Ce n'est pas aussi excitant que ce qu'elle disait.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5389,28 +4957,22 @@
      "target": "n'eo ket ken dedennus",
      "known": "ce n'est pas aussi excitant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0132L02",
      "target": "hag ar pezh a lavare",
      "known": "que ce qu'elle disait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5418,9 +4980,7 @@
    "seed": 133,
    "target": "Dont a reer da anavezout mat unan bennak pa labourer asambles.",
    "known": "On apprend à bien connaître quelqu'un quand on travaille ensemble.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5428,42 +4988,33 @@
      "target": "dont a reer da",
      "known": "on apprend à",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0133L02",
      "target": "anavezout mat",
      "known": "bien connaître",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0133L03",
      "target": "pa labourer asambles",
      "known": "quand on travaille ensemble",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5471,9 +5022,7 @@
    "seed": 134,
    "target": "N'eo ket ur gudenn pa labourez war un dra bennak diaes ganto.",
    "known": "Ce n'est pas un problème quand tu travailles sur quelque chose de difficile avec eux.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5481,56 +5030,44 @@
      "target": "n'eo ket ur gudenn",
      "known": "ce n'est pas un problème",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0134L02",
      "target": "pa labourez war",
      "known": "quand tu travailles sur",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0134L03",
      "target": "un dra bennak diaes",
      "known": "quelque chose de difficile",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0134L04",
      "target": "ganto",
      "known": "avec eux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 1,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5538,9 +5075,7 @@
    "seed": 135,
    "target": "N'ouzon ket perak e soñjez ez eo ken mat.",
    "known": "Je ne sais pas pourquoi tu penses que c'est si bien.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5548,28 +5083,22 @@
      "target": "perak e soñjez",
      "known": "pourquoi tu penses",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0135L02",
      "target": "ez eo ken mat",
      "known": "que c'est si bien",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5577,9 +5106,7 @@
    "seed": 137,
    "target": "Pouezusoc'h eo komz alies eget bezañ peurvat.",
    "known": "C'est plus important de parler souvent que d'être parfait.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5587,28 +5114,22 @@
      "target": "pouezusoc'h eo",
      "known": "c'est plus important",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0137L02",
      "target": "eget bezañ peurvat",
      "known": "que d'être parfait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5616,9 +5137,7 @@
    "seed": 138,
    "target": "Amañ eo e felle d'am mignon en em gavout ganeomp.",
    "known": "C'est ici que mon ami voulait nous retrouver.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5626,44 +5145,35 @@
      "target": "amañ eo",
      "known": "c'est ici",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0138L02",
      "target": "e felle d'am mignon",
      "known": "que mon ami voulait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0138L03",
      "target": "ganeomp",
      "known": "avec nous",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [
       "L26 known word not in seed: avec"
      ],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -5671,9 +5181,7 @@
    "seed": 139,
    "target": "Keuz am eus ma rankan mont kuit ken abred.",
    "known": "Je suis désolé de devoir partir si tôt.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5681,42 +5189,33 @@
      "target": "keuz am eus",
      "known": "je suis désolé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0139L02",
      "target": "ma rankan",
      "known": "de devoir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0139L03",
      "target": "ken abred",
      "known": "si tôt",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5724,9 +5223,7 @@
    "seed": 140,
    "target": "Keuz am eus ma ne c'hallan ket gwelout ar pezh emaout o klask diskouez din.",
    "known": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5734,42 +5231,33 @@
      "target": "ma ne c'hallan ket gwelout",
      "known": "de ne pas pouvoir voir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0140L02",
      "target": "ar pezh emaout o klask",
      "known": "ce que tu essaies de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0140L03",
      "target": "diskouez din",
      "known": "me montrer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5777,9 +5265,7 @@
    "seed": 141,
    "target": "N'eus kudenn ebet. Mat eo pep tra.",
    "known": "Pas de problème. Tout va bien.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5787,28 +5273,22 @@
      "target": "n'eus kudenn ebet",
      "known": "pas de problème",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0141L02",
      "target": "mat eo pep tra",
      "known": "tout va bien",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5816,9 +5296,7 @@
    "seed": 142,
    "target": "Hegarat-tre out, ha trugarekaat a ran ac'hanout evit sikour ac'hanon.",
    "known": "C'est très gentil de ta part et je te suis reconnaissant de m'avoir aidé.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5826,28 +5304,22 @@
      "target": "hegarat-tre out",
      "known": "c'est très gentil de ta part",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0142L02",
      "target": "trugarekaat a ran",
      "known": "je suis reconnaissant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5855,9 +5327,7 @@
    "seed": 143,
    "target": "Ar memes tra eo hag ar pezh a gomzemp anezhañ a-raok.",
    "known": "C'est la même chose dont nous parlions tout à l'heure.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5865,28 +5335,22 @@
      "target": "ar memes tra eo",
      "known": "c'est la même chose",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0143L02",
      "target": "a gomzemp anezhañ",
      "known": "dont nous parlions",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5894,9 +5358,7 @@
    "seed": 144,
    "target": "Dihunet on abretoc'h eget ma felle din ar mintin-mañ.",
    "known": "Je me suis réveillé plus tôt que je ne voulais ce matin.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5904,28 +5366,22 @@
      "target": "dihunet on",
      "known": "je me suis réveillé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0144L02",
      "target": "abretoc'h eget ma felle din",
      "known": "plus tôt que je ne voulais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -5933,9 +5389,7 @@
    "seed": 145,
    "target": "Perak n'out ket laouen ken ?",
    "known": "Pourquoi tu n'es plus heureux ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5943,14 +5397,11 @@
      "target": "n'out ket laouen ken",
      "known": "tu n'es plus heureux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -5958,9 +5409,7 @@
    "seed": 146,
    "target": "Netra ne seblant mont en-dro abaoe m'hon eus klasket dresañ anezhañ.",
    "known": "Rien ne semble marcher depuis qu'on a essayé de le réparer.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -5968,56 +5417,44 @@
      "target": "netra ne seblant",
      "known": "rien ne semble",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0146L02",
      "target": "mont en-dro",
      "known": "marcher",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0146L03",
      "target": "abaoe m'hon eus klasket",
      "known": "depuis qu'on a essayé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0146L04",
      "target": "dresañ anezhañ",
      "known": "de le réparer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6025,9 +5462,7 @@
    "seed": 147,
    "target": "Hegarat-tre eo bet p'he deus gwelet ac'hanon nec'het.",
    "known": "Elle a été très gentille quand elle m'a vu stressé.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6035,42 +5470,33 @@
      "target": "hegarat-tre eo bet",
      "known": "elle a été très gentille",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0147L02",
      "target": "p'he deus gwelet ac'hanon",
      "known": "quand elle m'a vu",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0147L03",
      "target": "nec'het",
      "known": "stressé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6078,9 +5504,7 @@
    "seed": 148,
    "target": "Ne oa ket habask-tre pa ne c'hallen ket respont.",
    "known": "Il n'était pas très patient quand je ne pouvais pas répondre.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6088,28 +5512,22 @@
      "target": "ne oa ket habask-tre",
      "known": "il n'était pas très patient",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0148L02",
      "target": "pa ne c'hallen ket",
      "known": "quand je ne pouvais pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6117,9 +5535,7 @@
    "seed": 149,
    "target": "N'eo ket diaes-tre, setu spi am eus ec'h echui a-benn nebeut.",
    "known": "Ce n'est pas très difficile, donc j'espère que tu finiras bientôt.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6127,42 +5543,33 @@
      "target": "n'eo ket diaes-tre",
      "known": "ce n'est pas très difficile",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0149L02",
      "target": "setu spi am eus",
      "known": "donc j'espère",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0149L03",
      "target": "ec'h echui",
      "known": "que tu finiras",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6170,9 +5577,7 @@
    "seed": 150,
    "target": "Gallout a rit lavarout din petra eo hoc'h anv ?",
    "known": "Pouvez-vous me dire comment vous vous appelez ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6180,28 +5585,22 @@
      "target": "gallout a rit",
      "known": "pouvez-vous",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0150L02",
      "target": "petra eo hoc'h anv",
      "known": "comment vous vous appelez",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6209,9 +5608,7 @@
    "seed": 151,
    "target": "Ne oa ket an dra-se ar pezh am boa spi da gaout.",
    "known": "Ce n'était pas ce que j'espérais.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6219,14 +5616,11 @@
      "target": "ar pezh am boa spi da gaout",
      "known": "ce que j'espérais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 8,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6234,9 +5628,7 @@
    "seed": 152,
    "target": "Graet em bije anezhañ en un doare all ma'm bije gouezet ar pezh a felle dit.",
    "known": "Je l'aurais fait différemment si j'avais su ce que tu voulais.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6244,56 +5636,44 @@
      "target": "graet em bije anezhañ",
      "known": "je l'aurais fait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0152L02",
      "target": "en un doare all",
      "known": "différemment",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0152L03",
      "target": "ma'm bije gouezet",
      "known": "si j'avais su",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0152L04",
      "target": "ar pezh a felle dit",
      "known": "ce que tu voulais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6301,9 +5681,7 @@
    "seed": 153,
    "target": "N'em bije ket lavaret anezhañ er memes doare rik.",
    "known": "Je ne l'aurais pas dit exactement de la même façon.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6311,28 +5689,22 @@
      "target": "n'em bije ket lavaret",
      "known": "je ne l'aurais pas dit",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0153L02",
      "target": "er memes doare rik",
      "known": "exactement de la même façon",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6340,9 +5712,7 @@
    "seed": 154,
    "target": "Pelec'h e fell dit en em gavout disadorn da noz ?",
    "known": "Où tu veux te retrouver samedi soir ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6350,28 +5720,22 @@
      "target": "pelec'h e fell dit",
      "known": "où tu veux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0154L02",
      "target": "disadorn da noz",
      "known": "samedi soir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6379,9 +5743,7 @@
    "seed": 155,
    "target": "N'eo ket diaes din gortoz e-pad un nebeud munutennoù warc'hoazh vintin.",
    "known": "Ça ne me dérange pas d'attendre quelques minutes demain matin.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6389,56 +5751,44 @@
      "target": "n'eo ket diaes din",
      "known": "ça ne me dérange pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0155L02",
      "target": "gortoz",
      "known": "attendre",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0155L03",
      "target": "munutennoù",
      "known": "minutes",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0155L04",
      "target": "warc'hoazh vintin",
      "known": "demain matin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6446,9 +5796,7 @@
    "seed": 156,
    "target": "Fellout a ra dit mont d'ar preti fenoz ?",
    "known": "Tu veux aller au restaurant ce soir ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6456,30 +5804,24 @@
      "target": "fellout a ra dit",
      "known": "tu veux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [
       "ZUT vs held old LEGO S0020L01 (held, old) \"c'hoant ac'hanout\""
      ],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0156L02",
      "target": "mont d'ar preti",
      "known": "aller au restaurant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6487,9 +5829,7 @@
    "seed": 157,
    "target": "Ne c'hallin ket bezañ aze ar miz a zeu.",
    "known": "Je ne pourrai pas être là le mois prochain.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6497,42 +5837,33 @@
      "target": "ne c'hallin ket",
      "known": "je ne pourrai pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0157L02",
      "target": "bezañ aze",
      "known": "être là",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0157L03",
      "target": "ar miz a zeu",
      "known": "le mois prochain",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6540,9 +5871,7 @@
    "seed": 158,
    "target": "Komzomp eus un dra all.",
    "known": "Parlons d'autre chose.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6550,14 +5879,11 @@
      "target": "komzomp",
      "known": "parlons",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6565,9 +5891,7 @@
    "seed": 159,
    "target": "N'eo ket an dra-se ar pezh emaon o klask lavarout.",
    "known": "Ce n'est pas ce que j'essaie de dire.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6575,14 +5899,11 @@
      "target": "ar pezh emaon o klask",
      "known": "ce que j'essaie de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6590,9 +5911,7 @@
    "seed": 160,
    "target": "Penaos e lavarez ar ger-mañ e brezhoneg ?",
    "known": "Comment tu dis ce mot en breton ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6600,28 +5919,22 @@
      "target": "penaos e lavarez",
      "known": "comment tu dis",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0160L02",
      "target": "ar ger-mañ",
      "known": "ce mot",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6629,9 +5942,7 @@
    "seed": 161,
    "target": "Gallout a rez reiñ din al levr-se disul vintin ?",
    "known": "Tu peux me donner ce livre dimanche matin ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6639,56 +5950,44 @@
      "target": "gallout a rez",
      "known": "tu peux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0161L02",
      "target": "reiñ din",
      "known": "me donner",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0161L03",
      "target": "al levr-se",
      "known": "ce livre",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0161L04",
      "target": "disul vintin",
      "known": "dimanche matin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6696,9 +5995,7 @@
    "seed": 162,
    "target": "Petra a soñjez diwar-benn an dra-se ?",
    "known": "Qu'est-ce que tu penses de ça ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6706,28 +6003,22 @@
      "target": "petra a soñjez",
      "known": "qu'est-ce que tu penses",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0162L02",
      "target": "diwar-benn an dra-se",
      "known": "de ça",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6735,9 +6026,7 @@
    "seed": 163,
    "target": "Soñjal a ran ez eo dedennus.",
    "known": "Je pense que c'est intéressant.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6745,14 +6034,11 @@
      "target": "ez eo dedennus",
      "known": "que c'est intéressant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6768,14 +6054,11 @@
      "target": "ul levr dedennus",
      "known": "un livre intéressant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6783,9 +6066,7 @@
    "seed": 165,
    "target": "Met n'on ket sur hag-eñ eo gwir.",
    "known": "Mais je ne suis pas sûr si c'est vrai.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6793,14 +6074,11 @@
      "target": "hag-eñ eo gwir",
      "known": "si c'est vrai",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6808,9 +6086,7 @@
    "seed": 166,
    "target": "N'eo ket divoas-tre ma anv.",
    "known": "Mon prénom n'est pas très inhabituel.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6818,28 +6094,22 @@
      "target": "n'eo ket divoas-tre",
      "known": "n'est pas très inhabituel",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0166L02",
      "target": "ma anv",
      "known": "mon prénom",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -6847,9 +6117,7 @@
    "seed": 167,
    "target": "Petra ac'h eus ezhomm d'ober warc'hoazh d'an endervezh ?",
    "known": "Qu'est-ce que tu as besoin de faire demain après-midi ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6857,28 +6125,22 @@
      "target": "petra ac'h eus ezhomm",
      "known": "qu'est-ce que tu as besoin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0167L02",
      "target": "warc'hoazh d'an endervezh",
      "known": "demain après-midi",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6886,9 +6148,7 @@
    "seed": 168,
    "target": "Ha neuze e c'hallin dont da sikour diwezhatoc'h.",
    "known": "Et ensuite je pourrai venir aider plus tard.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6896,42 +6156,33 @@
      "target": "ha neuze",
      "known": "et ensuite",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0168L02",
      "target": "e c'hallin",
      "known": "je pourrai",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0168L03",
      "target": "dont da sikour",
      "known": "venir aider",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6939,9 +6190,7 @@
    "seed": 169,
    "target": "Petra a fell dit e rafen ?",
    "known": "Qu'est-ce que tu veux que je fasse ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6949,28 +6198,22 @@
      "target": "petra a fell dit",
      "known": "qu'est-ce que tu veux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0169L02",
      "target": "e rafen",
      "known": "que je fasse",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -6978,9 +6221,7 @@
    "seed": 170,
    "target": "Plijout a rafe din e lavarfes din ar pezh ac'h eus ezhomm.",
    "known": "J'aimerais que tu me dises ce dont tu as besoin.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -6988,28 +6229,22 @@
      "target": "e lavarfes din",
      "known": "que tu me dises",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0170L02",
      "target": "ar pezh ac'h eus ezhomm",
      "known": "ce dont tu as besoin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7017,9 +6252,7 @@
    "seed": 171,
    "target": "Fellout a ra dit e sikourfen ac'hanout da glask anezhañ ?",
    "known": "Tu veux que je t'aide à le chercher ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7027,28 +6260,22 @@
      "target": "e sikourfen ac'hanout",
      "known": "que je t'aide",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0171L02",
      "target": "da glask anezhañ",
      "known": "à le chercher",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7056,9 +6283,7 @@
    "seed": 172,
    "target": "Ya, talvoudus-tre e vefe.",
    "known": "Oui ce serait très utile.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7066,14 +6291,11 @@
      "target": "talvoudus-tre e vefe",
      "known": "ce serait très utile",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7081,9 +6303,7 @@
    "seed": 173,
    "target": "Nann trugarez, gallout a ran en em zibab ma-unan.",
    "known": "Non merci, je peux me débrouiller tout seul.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7091,42 +6311,33 @@
      "target": "nann trugarez",
      "known": "non merci",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0173L02",
      "target": "gallout a ran",
      "known": "je peux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0173L03",
      "target": "en em zibab ma-unan",
      "known": "me débrouiller tout seul",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7134,9 +6345,7 @@
    "seed": 174,
    "target": "Kompren a rez ar pezh a lavaran ?",
    "known": "Tu comprends ce que je dis ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7144,28 +6353,22 @@
      "target": "kompren a rez",
      "known": "tu comprends",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0174L02",
      "target": "ar pezh a lavaran",
      "known": "ce que je dis",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7173,9 +6376,7 @@
    "seed": 175,
    "target": "Petra a fell dit ober disul vintin ?",
    "known": "Qu'est-ce que tu veux faire dimanche matin ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7183,14 +6384,11 @@
      "target": "petra a fell dit ober",
      "known": "qu'est-ce que tu veux faire",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7198,9 +6396,7 @@
    "seed": 178,
    "target": "N'em boa ket amzer, daoust ma felle din gwelout ac'hanout.",
    "known": "Je n'avais pas le temps, même si je voulais te voir.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7208,28 +6404,22 @@
      "target": "n'em boa ket amzer",
      "known": "je n'avais pas le temps",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0178L02",
      "target": "daoust ma felle din",
      "known": "même si je voulais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7237,9 +6427,7 @@
    "seed": 179,
    "target": "Petra emaout o vont d'ober disul d'an endervezh ?",
    "known": "Qu'est-ce que tu vas faire dimanche après-midi ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7247,28 +6435,22 @@
      "target": "petra emaout o vont d'ober",
      "known": "qu'est-ce que tu vas faire",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0179L02",
      "target": "disul d'an endervezh",
      "known": "dimanche après-midi",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7276,9 +6458,7 @@
    "seed": 180,
    "target": "Plijout a rafe din lenn ma levr e-pad ur pennad.",
    "known": "J'aimerais lire mon livre pendant un moment.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7286,14 +6466,11 @@
      "target": "lenn ma levr",
      "known": "lire mon livre",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7301,9 +6478,7 @@
    "seed": 181,
    "target": "Met rankout a ran kas ma mamm d'ar mezeg.",
    "known": "Mais je dois emmener ma mère chez le médecin.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7311,42 +6486,33 @@
      "target": "rankout a ran",
      "known": "je dois",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0181L02",
      "target": "kas ma mamm",
      "known": "emmener ma mère",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0181L03",
      "target": "d'ar mezeg",
      "known": "chez le médecin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7354,9 +6520,7 @@
    "seed": 182,
    "target": "Gwelet ac'h eus ma alc'hwezioù en ul lec'h bennak ?",
    "known": "Tu as vu mes clés quelque part ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7364,42 +6528,33 @@
      "target": "gwelet ac'h eus",
      "known": "tu as vu",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0182L02",
      "target": "ma alc'hwezioù",
      "known": "mes clés",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0182L03",
      "target": "en ul lec'h bennak",
      "known": "quelque part",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7407,9 +6562,7 @@
    "seed": 183,
    "target": "Nann, aon am eus n'em eus ket gwelet anezho.",
    "known": "Non, je crains de ne pas les avoir vus.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7417,28 +6570,22 @@
      "target": "aon am eus",
      "known": "je crains",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0183L02",
      "target": "n'em eus ket gwelet anezho",
      "known": "de ne pas les avoir vus",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7446,9 +6593,7 @@
    "seed": 184,
    "target": "Ya, gwelet em eus anezho er burev ur pennad zo.",
    "known": "Oui, je les ai vus dans le bureau il y a un moment.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7456,42 +6601,33 @@
      "target": "gwelet em eus anezho",
      "known": "je les ai vus",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0184L02",
      "target": "er burev",
      "known": "dans le bureau",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0184L03",
      "target": "ur pennad zo",
      "known": "il y a un moment",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7499,9 +6635,7 @@
    "seed": 185,
    "target": "Soñjal a ran ec'h eus lezet anezho el labour.",
    "known": "Je pense que tu les as laissés au travail.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7509,28 +6643,22 @@
      "target": "ec'h eus lezet anezho",
      "known": "tu les as laissés",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0185L02",
      "target": "el labour",
      "known": "au travail",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7538,9 +6666,7 @@
    "seed": 186,
    "target": "Fellout a ra dit komz eus un dra bennak disheñvel ar sizhun a zeu ?",
    "known": "Tu veux parler de quelque chose de différent la semaine prochaine ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7548,14 +6674,11 @@
      "target": "un dra bennak disheñvel",
      "known": "quelque chose de différent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7563,9 +6686,7 @@
    "seed": 187,
    "target": "Laouen on evit ar mare.",
    "known": "Je suis content pour l'instant.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7573,28 +6694,22 @@
      "target": "laouen on",
      "known": "je suis content",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0187L02",
      "target": "evit ar mare",
      "known": "pour l'instant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7602,9 +6717,7 @@
    "seed": 188,
    "target": "Setu n'em eus ket ezhomm da gemmañ.",
    "known": "Donc je n'ai pas besoin de changer.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7612,14 +6725,11 @@
      "target": "da gemmañ",
      "known": "de changer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7627,9 +6737,7 @@
    "seed": 189,
    "target": "Ya, ur mennozh mat eo.",
    "known": "Oui c'est une bonne idée.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7637,14 +6745,11 @@
      "target": "ur mennozh mat eo",
      "known": "c'est une bonne idée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7652,9 +6757,7 @@
    "seed": 190,
    "target": "Diaes eo dit ma c'houlennan un nebeud goulennoù diganit ?",
    "known": "Ça ne te dérange pas si je te pose quelques questions ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7662,42 +6765,46 @@
      "target": "diaes eo dit ma",
      "known": "ça ne te dérange pas si",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0190L02",
      "target": "c'houlennan",
      "known": "je te pose",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"si je te demande\": demande",
+      "KNOWN-SIDE untaught French in \"si je te demande quelque chose\": demande",
+      "KNOWN-SIDE untaught French in \"si je te demande de m'aider\": demande",
+      "KNOWN-SIDE untaught French in \"ça ne te dérange pas si je te demande quelque chose ?\": demande",
+      "KNOWN-SIDE untaught French in \"ça ne te dérange pas si je te demande de m'aider ?\": demande",
+      "KNOWN-SIDE untaught French in \"ça ne te dérange pas si je te demande ton prénom ?\": demande",
+      "KNOWN-SIDE untaught French in \"ça ne te dérange pas si je te demande de dire ça encore ?\": demande",
+      "KNOWN-SIDE untaught French in \"ça ne te dérange pas si je te demande comment dire ce mot ?\": demande"
      ],
-     "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0190L03",
      "target": "un nebeud goulennoù",
      "known": "quelques questions",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"poser quelques questions\": poser",
+      "KNOWN-SIDE untaught French in \"je veux te poser quelques questions\": poser",
+      "KNOWN-SIDE untaught French in \"je peux te poser quelques questions ?\": poser"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7705,9 +6812,7 @@
    "seed": 191,
    "target": "Nann, n'eo ket diaes din tamm ebet.",
    "known": "Non, ça ne me dérange pas du tout.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7715,14 +6820,11 @@
      "target": "tamm ebet",
      "known": "du tout",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7730,9 +6832,7 @@
    "seed": 192,
    "target": "Ac'hubet on warc'hoazh da noz.",
    "known": "Je suis occupé demain soir.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7740,28 +6840,22 @@
      "target": "ac'hubet on",
      "known": "je suis occupé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0192L02",
      "target": "warc'hoazh da noz",
      "known": "demain soir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7769,9 +6863,7 @@
    "seed": 193,
    "target": "Keuz am eus, met re ac'hubet on hiziv.",
    "known": "Je suis désolé mais je suis trop occupé aujourd'hui.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7779,14 +6871,11 @@
      "target": "re ac'hubet on",
      "known": "je suis trop occupé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7794,9 +6883,7 @@
    "seed": 194,
    "target": "Petra emaout o klask ?",
    "known": "Qu'est-ce que tu cherches ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7804,14 +6891,11 @@
      "target": "emaout o klask",
      "known": "tu cherches",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7819,9 +6903,7 @@
    "seed": 195,
    "target": "Emaon o klask kavout an arc'hant am eus lezet war an daol.",
    "known": "J'essaie de trouver l'argent que j'ai laissé sur la table.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7829,42 +6911,33 @@
      "target": "an arc'hant",
      "known": "l'argent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0195L02",
      "target": "am eus lezet",
      "known": "que j'ai laissé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0195L03",
      "target": "war an daol",
      "known": "sur la table",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7872,9 +6945,7 @@
    "seed": 196,
    "target": "Klevet ac'h eus ar mennozh diwezhañ ?",
    "known": "As-tu entendu la dernière idée ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7882,28 +6953,22 @@
      "target": "klevet ac'h eus",
      "known": "as-tu entendu",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0196L02",
      "target": "ar mennozh diwezhañ",
      "known": "la dernière idée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7911,9 +6976,7 @@
    "seed": 197,
    "target": "Ma mab a labour evel kelenner.",
    "known": "Mon fils travaille comme enseignant.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7921,28 +6984,22 @@
      "target": "ma mab a labour",
      "known": "mon fils travaille",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0197L02",
      "target": "evel kelenner",
      "known": "comme enseignant",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -7950,9 +7007,7 @@
    "seed": 198,
    "target": "Ma merc'h a labour evit an ti-kêr.",
    "known": "Ma fille travaille pour la mairie.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7960,28 +7015,22 @@
      "target": "ma merc'h a labour",
      "known": "ma fille travaille",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0198L02",
      "target": "evit an ti-kêr",
      "known": "pour la mairie",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -7989,9 +7038,7 @@
    "seed": 199,
    "target": "Ma mignon a laboure en ur burev.",
    "known": "Mon ami travaillait dans un bureau.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -7999,28 +7046,22 @@
      "target": "ma mignon a laboure",
      "known": "mon ami travaillait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0199L02",
      "target": "en ur burev",
      "known": "dans un bureau",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -8028,9 +7069,7 @@
    "seed": 200,
    "target": "Lavarout a reont e fell dezho bezañ sur ec'h echuimp pep tra e koulz.",
    "known": "Ils disent qu'ils veulent s'assurer que nous finissions tout à temps.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8038,56 +7077,44 @@
      "target": "lavarout a reont",
      "known": "ils disent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0200L02",
      "target": "e fell dezho",
      "known": "qu'ils veulent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0200L03",
      "target": "bezañ sur",
      "known": "s'assurer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0200L04",
      "target": "ec'h echuimp pep tra",
      "known": "que nous finissions tout",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -8095,9 +7122,7 @@
    "seed": 201,
    "target": "Fellout a rae deomp gouzout ar pezh a oa o vont da c'hoarvezout.",
    "known": "Nous voulions savoir ce qui allait se passer.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8105,28 +7130,23 @@
      "target": "ar pezh a oa o vont",
      "known": "ce qui allait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
     },
     {
      "id": "S0201L02",
      "target": "da c'hoarvezout",
      "known": "se passer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -8134,9 +7154,7 @@
    "seed": 202,
    "target": "Den ebet ne oa sur penaos respont d'ar goulenn.",
    "known": "Personne n'était sûr de comment répondre à la question.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8144,28 +7162,22 @@
      "target": "den ebet ne oa sur",
      "known": "personne n'était sûr",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0202L02",
      "target": "d'ar goulenn",
      "known": "à la question",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -8173,9 +7185,7 @@
    "seed": 203,
    "target": "Petra a rafes ma c'houlennfen diganit sikour ac'hanon ?",
    "known": "Qu'est-ce que tu ferais si je te demandais de m'aider ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8183,28 +7193,22 @@
      "target": "petra a rafes",
      "known": "qu'est-ce que tu ferais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0203L02",
      "target": "ma c'houlennfen diganit",
      "known": "si je te demandais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8212,9 +7216,7 @@
    "seed": 204,
    "target": "Fellout a rae din e sikourfe ac'hanout d'ober war-dro an aozadurioù.",
    "known": "Je voulais qu'elle t'aide à gérer les arrangements.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8222,42 +7224,33 @@
      "target": "e sikourfe ac'hanout",
      "known": "qu'elle t'aide",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0204L02",
      "target": "d'ober war-dro",
      "known": "à gérer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0204L03",
      "target": "an aozadurioù",
      "known": "les arrangements",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8265,9 +7258,7 @@
    "seed": 205,
    "target": "Ankounac'haet em eus ar ger a oan o klask lavarout.",
    "known": "J'ai oublié le mot que j'essayais de dire.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8275,28 +7266,22 @@
      "target": "ankounac'haet em eus",
      "known": "j'ai oublié",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0205L02",
      "target": "ar ger a oan o klask",
      "known": "le mot que j'essayais de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8304,9 +7289,7 @@
    "seed": 206,
    "target": "Plijout a ra din an tu da bleustriñ war ar gomz ganit.",
    "known": "J'apprécie l'occasion de m'entraîner à parler avec toi.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8314,14 +7297,13 @@
      "target": "an tu da bleustriñ",
      "known": "l'occasion de m'entraîner",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"J'apprécie l'occasion de m'entraîner à parler avec toi.\": apprécie"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8329,9 +7311,7 @@
    "seed": 207,
    "target": "Graet ac'h eus ar pezh az poa ezhomm d'ober.",
    "known": "Tu as fait ce que tu avais besoin de faire.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8339,28 +7319,22 @@
      "target": "graet ac'h eus",
      "known": "tu as fait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0207L02",
      "target": "ar pezh az poa ezhomm",
      "known": "ce que tu avais besoin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8368,9 +7342,7 @@
    "seed": 208,
    "target": "Ne felle ket din goulenn diganit penaos lavarout anezhañ.",
    "known": "Je ne voulais pas te demander comment le dire.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8378,28 +7350,22 @@
      "target": "ne felle ket din",
      "known": "je ne voulais pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0208L02",
      "target": "penaos lavarout anezhañ",
      "known": "comment le dire",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8407,9 +7373,7 @@
    "seed": 209,
    "target": "Fellout a ra dezho tremen muioc'h a amzer oc'h en em gavout evel ur strollad.",
    "known": "Ils veulent passer plus de temps à se retrouver en groupe.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8417,56 +7381,44 @@
      "target": "fellout a ra dezho",
      "known": "ils veulent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0209L02",
      "target": "tremen",
      "known": "passer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0209L03",
      "target": "oc'h en em gavout",
      "known": "à se retrouver",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0209L04",
      "target": "evel ur strollad",
      "known": "en groupe",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8474,9 +7426,7 @@
    "seed": 210,
    "target": "Soñjal a reont hon eus ezhomm da gaozeal diwar-benn ar gudenn.",
    "known": "Ils pensent que nous avons besoin de discuter du problème.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8484,56 +7434,44 @@
      "target": "soñjal a reont",
      "known": "ils pensent que",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0210L02",
      "target": "hon eus ezhomm",
      "known": "nous avons besoin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0210L03",
      "target": "da gaozeal",
      "known": "de discuter",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0210L04",
      "target": "diwar-benn ar gudenn",
      "known": "du problème",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -8541,9 +7479,7 @@
    "seed": 211,
    "target": "Lavaret o deus deomp ne felle ket dezho displegañ.",
    "known": "Ils nous ont dit qu'ils ne voulaient pas expliquer.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8551,28 +7487,22 @@
      "target": "lavaret o deus deomp",
      "known": "ils nous ont dit",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0211L02",
      "target": "ne felle ket dezho",
      "known": "qu'ils ne voulaient pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8580,9 +7510,7 @@
    "seed": 212,
    "target": "Fellout a rae dezho goulenn sikour.",
    "known": "Ils voulaient demander de l'aide.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8590,28 +7518,22 @@
      "target": "fellout a rae dezho",
      "known": "ils voulaient",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0212L02",
      "target": "goulenn sikour",
      "known": "demander de l'aide",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8619,9 +7541,7 @@
    "seed": 213,
    "target": "N'ouzomp ket ar pezh emaint o klask tizhout.",
    "known": "Nous ne savons pas ce qu'ils essaient d'accomplir.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8629,42 +7549,33 @@
      "target": "n'ouzomp ket",
      "known": "nous ne savons pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0213L02",
      "target": "ar pezh emaint o klask",
      "known": "ce qu'ils essaient",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0213L03",
      "target": "tizhout",
      "known": "accomplir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8672,9 +7583,7 @@
    "seed": 214,
    "target": "Ur mare mat ac'h eus bet e-pad an dibenn-sizhun ?",
    "known": "Tu as passé un bon moment ce week-end ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8682,28 +7591,22 @@
      "target": "ur mare mat ac'h eus bet",
      "known": "tu as passé un bon moment",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0214L02",
      "target": "e-pad an dibenn-sizhun",
      "known": "ce week-end",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8711,9 +7614,7 @@
    "seed": 215,
    "target": "Aet on er-maez disadorn da noz.",
    "known": "Je suis sorti samedi soir.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8721,14 +7622,11 @@
      "target": "aet on er-maez",
      "known": "je suis sorti",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8736,9 +7634,7 @@
    "seed": 216,
    "target": "Gwelet em eus un nebeud mignoned.",
    "known": "J'ai vu quelques amis.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8746,28 +7642,22 @@
      "target": "gwelet em eus",
      "known": "j'ai vu",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0216L02",
      "target": "un nebeud mignoned",
      "known": "quelques amis",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8775,9 +7665,7 @@
    "seed": 217,
    "target": "Evet em eus ur werennad dour pe ziv.",
    "known": "J'ai bu un ou deux verres d'eau.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8785,28 +7673,22 @@
      "target": "evet em eus",
      "known": "j'ai bu",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0217L02",
      "target": "ur werennad dour pe ziv",
      "known": "un ou deux verres d'eau",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8814,9 +7696,7 @@
    "seed": 218,
    "target": "N'em eus ket graet kalz a dra disul.",
    "known": "Je n'ai pas fait grand-chose dimanche.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8824,14 +7704,11 @@
      "target": "n'em eus ket graet kalz a dra",
      "known": "je n'ai pas fait grand-chose",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 8,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8839,9 +7716,7 @@
    "seed": 219,
    "target": "Mat e oa diskuizhañ e-pad ur pennad.",
    "known": "C'était bien de se détendre un moment.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8849,14 +7724,11 @@
      "target": "mat e oa",
      "known": "c'était bien",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8864,9 +7736,7 @@
    "seed": 220,
    "target": "Sellet ac'h eus un tamm ouzh ar skinwel ?",
    "known": "Tu as regardé un peu la télévision ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8874,28 +7744,29 @@
      "target": "sellet ac'h eus",
      "known": "tu as regardé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0220L02",
      "target": "ouzh ar skinwel",
      "known": "la télévision",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"regarder la télévision\": regarder",
+      "KNOWN-SIDE untaught French in \"regarder la télévision ce soir\": regarder",
+      "KNOWN-SIDE untaught French in \"je veux regarder la télévision ce soir\": regarder",
+      "KNOWN-SIDE untaught French in \"je n'aime pas regarder la télévision\": regarder",
+      "KNOWN-SIDE untaught French in \"j'aime regarder la télévision avec mon fils\": regarder",
+      "KNOWN-SIDE untaught French in \"je vais regarder la télévision pendant un moment\": regarder"
      ],
-     "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8903,9 +7774,7 @@
    "seed": 221,
    "target": "Sellet em eus ouzh ar mell-droad ha neuze em eus sellet ouzh ur film.",
    "known": "J'ai regardé le foot et ensuite j'ai regardé un film.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8913,42 +7782,44 @@
      "target": "sellet em eus",
      "known": "j'ai regardé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0221L02",
      "target": "ouzh ar mell-droad",
      "known": "le foot",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"regarder le foot\": regarder",
+      "KNOWN-SIDE untaught French in \"je veux regarder le foot ce soir\": regarder",
+      "KNOWN-SIDE untaught French in \"j'aime regarder le foot au pub\": regarder",
+      "KNOWN-SIDE untaught French in \"je n'aime pas regarder le foot\": regarder"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0221L03",
      "target": "ouzh ur film",
      "known": "un film",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"regarder un film\": regarder",
+      "KNOWN-SIDE untaught French in \"regarder un film ce soir\": regarder",
+      "KNOWN-SIDE untaught French in \"je veux regarder un film avec ma fille\": regarder",
+      "KNOWN-SIDE untaught French in \"j'aimerais regarder un film avec toi\": regarder",
+      "KNOWN-SIDE untaught French in \"je vais regarder un film en breton\": regarder"
      ],
-     "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8956,9 +7827,7 @@
    "seed": 222,
    "target": "Emañ o klask lavarout din ar pezh a fell dezhañ.",
    "known": "Il essaie de me dire ce qu'il veut.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -8966,28 +7835,22 @@
      "target": "emañ o klask",
      "known": "il essaie de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0222L02",
      "target": "ar pezh a fell dezhañ",
      "known": "ce qu'il veut",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -8995,9 +7858,7 @@
    "seed": 223,
    "target": "Emañ o vont da c'houlenn diganit warc'hoazh.",
    "known": "Il va te demander demain.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9005,14 +7866,11 @@
      "target": "emañ o vont da c'houlenn",
      "known": "il va demander",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9020,9 +7878,7 @@
    "seed": 224,
    "target": "Emañ o paouez kregiñ da zeskiñ.",
    "known": "Il vient juste de commencer à apprendre.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9030,14 +7886,11 @@
      "target": "emañ o paouez",
      "known": "il vient juste de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9045,9 +7898,7 @@
    "seed": 225,
    "target": "Reiñ a rafe ur respont dit ma c'hallfe.",
    "known": "Il te donnerait une réponse s'il pouvait.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9055,42 +7906,33 @@
      "target": "reiñ a rafe",
      "known": "il donnerait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0225L02",
      "target": "ur respont",
      "known": "une réponse",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0225L03",
      "target": "ma c'hallfe",
      "known": "s'il pouvait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9098,9 +7940,7 @@
    "seed": 226,
    "target": "Emañ an den o klask sikour ac'hanon.",
    "known": "L'homme essaie de m'aider.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9108,14 +7948,11 @@
      "target": "emañ an den o klask",
      "known": "l'homme essaie de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9123,9 +7960,7 @@
    "seed": 227,
    "target": "Emañ an den-se o vont da lavarout din un dra bennak nevez.",
    "known": "Cet homme va me dire quelque chose de nouveau.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9133,14 +7968,11 @@
      "target": "emañ an den-se o vont da",
      "known": "cet homme va",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9148,9 +7980,7 @@
    "seed": 228,
    "target": "An den-se a zo o paouez kregiñ da bleustriñ war ar gomz.",
    "known": "Cet homme vient juste de commencer à s'entraîner à parler.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9158,28 +7988,22 @@
      "target": "an den-se a zo o paouez",
      "known": "cet homme vient juste de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0228L02",
      "target": "kregiñ da bleustriñ",
      "known": "commencer à s'entraîner",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9187,9 +8011,7 @@
    "seed": 229,
    "target": "Ar vaouez-se a sikourfe ac'hanout ma c'hallfe.",
    "known": "Cette femme t'aiderait si elle pouvait.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9197,28 +8019,22 @@
      "target": "ar vaouez-se",
      "known": "cette femme",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0229L02",
      "target": "a sikourfe ac'hanout",
      "known": "t'aiderait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9226,9 +8042,7 @@
    "seed": 230,
    "target": "Anavezout a ran un den yaouank a fell dezhañ labourat ganit.",
    "known": "Je connais un jeune homme qui veut travailler avec toi.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9236,42 +8050,33 @@
      "target": "anavezout a ran",
      "known": "je connais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0230L02",
      "target": "un den yaouank",
      "known": "un jeune homme",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0230L03",
      "target": "a fell dezhañ",
      "known": "qui veut",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9279,9 +8084,7 @@
    "seed": 231,
    "target": "Anavezout a ran un den kozh a felle dezhañ goulenn sikour.",
    "known": "Je connais un vieil homme qui voulait demander de l'aide.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9289,14 +8092,11 @@
      "target": "un den kozh a felle dezhañ",
      "known": "un vieil homme qui voulait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9304,9 +8104,7 @@
    "seed": 232,
    "target": "Anavezout a ran ur vaouez gozh a c'hall kaout soñj eus ar respont.",
    "known": "Je connais une vieille femme qui peut se souvenir de la réponse.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9314,28 +8112,22 @@
      "target": "ur vaouez gozh",
      "known": "une vieille femme",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0232L02",
      "target": "a c'hall",
      "known": "qui peut",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9343,9 +8135,7 @@
    "seed": 233,
    "target": "Anavezout a ran ur vaouez yaouank a anavez da c'hoar.",
    "known": "Je connais une jeune femme qui connaît ta sœur.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9353,28 +8143,22 @@
      "target": "ur vaouez yaouank",
      "known": "une jeune femme",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0233L02",
      "target": "a anavez da c'hoar",
      "known": "qui connaît ta sœur",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9382,9 +8166,7 @@
    "seed": 234,
    "target": "Kejet em eus gant unan bennak dec'h da noz a labour gant da vreur.",
    "known": "J'ai rencontré quelqu'un hier soir qui travaille avec ton frère.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9392,28 +8174,22 @@
      "target": "kejet em eus gant",
      "known": "j'ai rencontré",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0234L02",
      "target": "a labour gant da vreur",
      "known": "qui travaille avec ton frère",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9421,9 +8197,7 @@
    "seed": 235,
    "target": "Kejet em eus gant unan bennak en deus lavaret e felle dezhañ lavarout dit un dra bennak.",
    "known": "J'ai rencontré quelqu'un qui a dit qu'il voulait te dire quelque chose.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9431,42 +8205,33 @@
      "target": "en deus lavaret",
      "known": "qui a dit",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0235L02",
      "target": "e felle dezhañ",
      "known": "qu'il voulait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0235L03",
      "target": "lavarout dit",
      "known": "te dire",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9474,9 +8239,7 @@
    "seed": 236,
    "target": "Anavezout a ran unan bennak he deus lavaret e oa o vont da glask sikour.",
    "known": "Je connais quelqu'un qui a dit qu'elle allait essayer d'aider.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9484,28 +8247,22 @@
      "target": "he deus lavaret e oa o vont",
      "known": "qui a dit qu'elle allait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 8,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0236L02",
      "target": "da glask sikour",
      "known": "essayer d'aider",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9513,9 +8270,7 @@
    "seed": 237,
    "target": "Fellout a rae dezhañ e lavarfen dit a-raok an dibenn-sizhun.",
    "known": "Il voulait que je te dise avant le week-end.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9523,28 +8278,22 @@
      "target": "e lavarfen dit",
      "known": "que je te dise",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0237L02",
      "target": "a-raok an dibenn-sizhun",
      "known": "avant le week-end",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9552,9 +8301,7 @@
    "seed": 238,
    "target": "Fellout a rae dezhañ e lavarfes din dec'h.",
    "known": "Il voulait que tu me dises hier.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9562,16 +8309,13 @@
      "target": "fellout a rae dezhañ",
      "known": "il voulait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [
       "ZUT vs held old LEGO S0052L01 (held, old) \"c'hoant en deus bet\""
      ],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9579,9 +8323,7 @@
    "seed": 239,
    "target": "Plijout a ra d'am mamm lenn.",
    "known": "Ma mère aime lire.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9589,14 +8331,11 @@
      "target": "plijout a ra d'am mamm",
      "known": "ma mère aime",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9604,9 +8343,7 @@
    "seed": 240,
    "target": "Ne blij ket d'am zad paouez da gomz.",
    "known": "Mon père n'aime pas arrêter de parler.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9614,14 +8351,11 @@
      "target": "ne blij ket d'am zad",
      "known": "mon père n'aime pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9629,9 +8363,7 @@
    "seed": 243,
    "target": "Emaon o vont da c'houlenn ar memes tra da zebriñ.",
    "known": "Je vais demander la même chose à manger.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9639,65 +8371,33 @@
      "target": "emaon o vont da c'houlenn",
      "known": "je vais demander",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0243L02",
      "target": "ar memes tra",
      "known": "la même chose",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     },
     {
      "id": "S0243L03",
      "target": "da zebriñ",
      "known": "à manger",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
-    }
-   ]
-  },
-  {
-   "seed": 244,
-   "target": "Desket em eus kalz dija.",
-   "known": "J'ai déjà beaucoup appris.",
-   "hard": [],
-   "warn": [],
-   "legos": [
-    {
-     "id": "S0244L01",
-     "target": "desket em eus kalz dija",
-     "known": "j'ai déjà beaucoup appris",
-     "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
-     "warn": [],
-     "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9705,9 +8405,7 @@
    "seed": 245,
    "target": "Laouen on gant kement am eus graet e berr amzer.",
    "known": "Je suis content de tout ce que j'ai fait en peu de temps.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9715,14 +8413,11 @@
      "target": "am eus graet",
      "known": "j'ai fait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9730,9 +8425,7 @@
    "seed": 246,
    "target": "Fellout a rae din e sikourfe ac'hanout met re ac'hubet e oa.",
    "known": "Je voulais qu'elle t'aide mais elle était trop occupée.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9740,14 +8433,11 @@
      "target": "re ac'hubet e oa",
      "known": "elle était trop occupée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9755,9 +8445,7 @@
    "seed": 247,
    "target": "Soñjal a raen e oa al levr-se mat a-walc'h.",
    "known": "Je pensais que ce livre était assez bien.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9765,14 +8453,11 @@
      "target": "mat a-walc'h",
      "known": "assez bien",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9780,9 +8465,7 @@
    "seed": 248,
    "target": "Soñjal a raen e oa ar film fall da vat, ha fellout a ra din kaout ma arc'hant en-dro.",
    "known": "Je pensais que le film était vraiment nul et je veux récupérer mon argent.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9790,42 +8473,33 @@
      "target": "ar film",
      "known": "le film",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0248L02",
      "target": "fall da vat",
      "known": "vraiment nul",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0248L03",
      "target": "kaout ma arc'hant en-dro",
      "known": "récupérer mon argent",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9833,9 +8507,7 @@
    "seed": 249,
    "target": "Fellout a ra din e sikourfes ac'hanon a-raok ma'z i kuit.",
    "known": "Je veux que tu m'aides avant que tu partes.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9843,14 +8515,11 @@
      "target": "e sikourfes ac'hanon",
      "known": "que tu m'aides",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9858,9 +8527,7 @@
    "seed": 250,
    "target": "Gallout a rez lavarout din un dra all a-raok ma respontin ?",
    "known": "Tu peux me dire autre chose avant que je réponde ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9868,14 +8535,11 @@
      "target": "a-raok ma respontin",
      "known": "avant que je réponde",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9883,9 +8547,7 @@
    "seed": 251,
    "target": "Ne fell ket din gouzout a-raok m'hor bo echuet.",
    "known": "Je ne veux pas savoir avant qu'on ait fini.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9893,14 +8555,11 @@
      "target": "a-raok m'hor bo echuet",
      "known": "avant qu'on ait fini",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9908,9 +8567,7 @@
    "seed": 252,
    "target": "Pegoulz e vi prest da gregiñ ?",
    "known": "Quand tu seras prêt à commencer ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9918,28 +8575,22 @@
      "target": "pegoulz e vi prest",
      "known": "quand tu seras prêt",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0252L02",
      "target": "da gregiñ",
      "known": "à commencer",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9947,9 +8598,7 @@
    "seed": 253,
    "target": "Me a zlefe bezañ prest a-benn un nebeud munutennoù.",
    "known": "Je devrais être prêt dans quelques minutes.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9957,28 +8606,22 @@
      "target": "bezañ prest",
      "known": "être prêt",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0253L02",
      "target": "a-benn un nebeud munutennoù",
      "known": "dans quelques minutes",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -9986,9 +8629,7 @@
    "seed": 254,
    "target": "Prest on abaoe ar mintin-mañ.",
    "known": "Je suis prêt depuis ce matin.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -9996,14 +8637,11 @@
      "target": "abaoe ar mintin-mañ",
      "known": "depuis ce matin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10011,9 +8649,7 @@
    "seed": 255,
    "target": "Pegoulz e soñjez e vi prest da vont kuit ?",
    "known": "Quand tu penses que tu seras prêt à partir ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10021,28 +8657,22 @@
      "target": "pegoulz e soñjez",
      "known": "quand tu penses",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0255L02",
      "target": "e vi prest",
      "known": "que tu seras prêt",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10050,9 +8680,7 @@
    "seed": 256,
    "target": "Soñjal a ran e vin prest a-benn nebeutoc'h eget un eur.",
    "known": "Je pense que je serai prêt en moins d'une heure.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10060,28 +8688,22 @@
      "target": "e vin prest",
      "known": "que je serai prêt",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0256L02",
      "target": "a-benn nebeutoc'h eget un eur",
      "known": "en moins d'une heure",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 8,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     }
    ]
   },
@@ -10089,9 +8711,7 @@
    "seed": 257,
    "target": "Plijout a ra din an dra c'hlas-se.",
    "known": "J'aime bien ce truc bleu.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10099,14 +8719,11 @@
      "target": "an dra c'hlas-se",
      "known": "ce truc bleu",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10114,9 +8731,7 @@
    "seed": 258,
    "target": "Petra eo an dra c'hlas-se du-hont ?",
    "known": "C'est quoi ce truc bleu là-bas ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10124,14 +8739,11 @@
      "target": "du-hont",
      "known": "là-bas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10147,14 +8759,16 @@
      "target": "ur mennozh",
      "known": "une idée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"une idée intéressante\": intéressante",
+      "KNOWN-SIDE untaught French in \"une nouvelle idée\": nouvelle",
+      "KNOWN-SIDE untaught French in \"tu as une nouvelle idée\": nouvelle",
+      "KNOWN-SIDE untaught French in \"c'est une idée intéressante\": intéressante"
      ],
-     "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10170,14 +8784,11 @@
      "target": "n'em eus mennozh ebet",
      "known": "je n'en ai pas la moindre idée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10185,9 +8796,7 @@
    "seed": 261,
    "target": "Soñjal a ran e c'hallfe bezañ un dra bennak pouezus.",
    "known": "Je pense que c'est peut-être quelque chose d'important.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10195,28 +8804,22 @@
      "target": "e c'hallfe bezañ",
      "known": "c'est peut-être",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0261L02",
      "target": "un dra bennak pouezus",
      "known": "quelque chose d'important",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10224,9 +8827,7 @@
    "seed": 262,
    "target": "Piv eo an den-se a oas o komz gantañ dec'h ?",
    "known": "C'est qui cet homme avec qui tu parlais hier ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10234,28 +8835,22 @@
      "target": "piv eo an den-se",
      "known": "c'est qui cet homme",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0262L02",
      "target": "a oas o komz gantañ",
      "known": "avec qui tu parlais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10263,9 +8858,7 @@
    "seed": 263,
    "target": "N'ouzon ket eus piv e komzez.",
    "known": "Je ne sais pas de qui tu parles.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10273,14 +8866,11 @@
      "target": "eus piv e komzez",
      "known": "de qui tu parles",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10296,14 +8886,11 @@
      "target": "un den kozh",
      "known": "un vieil homme",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10319,14 +8906,14 @@
      "target": "ur mignon",
      "known": "un ami",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"un nouvel ami\": nouvel",
+      "KNOWN-SIDE untaught French in \"j'ai un nouvel ami\": nouvel"
      ],
-     "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10334,9 +8921,7 @@
    "seed": 266,
    "target": "Ur mignon kozh d'am zad e oa.",
    "known": "Il était un vieil ami de mon père.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10344,28 +8929,22 @@
      "target": "ur mignon kozh",
      "known": "un vieil ami",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0266L02",
      "target": "d'am zad",
      "known": "de mon père",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10373,9 +8952,7 @@
    "seed": 267,
    "target": "Keloù ac'h eus bet digant da vignon ?",
    "known": "Tu as eu des nouvelles de ton ami ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10383,28 +8960,22 @@
      "target": "keloù ac'h eus bet",
      "known": "tu as eu des nouvelles",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0267L02",
      "target": "digant da vignon",
      "known": "de ton ami",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10412,9 +8983,7 @@
    "seed": 268,
    "target": "Ya, kaset he deus din daou bostel ar sizhun dremenet.",
    "known": "Oui elle m'a envoyé deux emails la semaine dernière.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10422,42 +8991,33 @@
      "target": "kaset he deus din",
      "known": "elle m'a envoyé",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0268L02",
      "target": "daou bostel",
      "known": "deux emails",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0268L03",
      "target": "ar sizhun dremenet",
      "known": "la semaine dernière",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10465,9 +9025,7 @@
    "seed": 269,
    "target": "Perak ne fell ket dit gortoz da dad ?",
    "known": "Pourquoi tu ne veux pas attendre ton père ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10475,28 +9033,24 @@
      "target": "ne fell ket dit",
      "known": "tu ne veux pas",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"tu ne veux pas regarder la télévision\": regarder"
      ],
-     "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0269L02",
      "target": "gortoz da dad",
      "known": "attendre ton père",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10504,9 +9058,7 @@
    "seed": 270,
    "target": "Peogwir em eus aon da vezañ diwezhat.",
    "known": "Parce que j'ai peur d'être en retard.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10514,28 +9066,22 @@
      "target": "em eus aon",
      "known": "j'ai peur",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0270L02",
      "target": "da vezañ diwezhat",
      "known": "d'être en retard",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10543,9 +9089,7 @@
    "seed": 271,
    "target": "Plijout a rafe dit dont ganeomp ar miz a zeu ?",
    "known": "Tu voudrais venir avec nous le mois prochain ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10553,28 +9097,24 @@
      "target": "plijout a rafe dit",
      "known": "tu voudrais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"tu voudrais regarder un film ce soir\": regarder"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0271L02",
      "target": "dont ganeomp",
      "known": "venir avec nous",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10582,9 +9122,7 @@
    "seed": 272,
    "target": "Ya, seblantout a ra bezañ ur mennozh mat-tre.",
    "known": "Oui ça semble être une très bonne idée.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10592,28 +9130,22 @@
      "target": "seblantout a ra",
      "known": "ça semble",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0272L02",
      "target": "bezañ ur mennozh mat-tre",
      "known": "être une très bonne idée",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10621,9 +9153,7 @@
    "seed": 273,
    "target": "Nann, siwazh, re a labour am eus.",
    "known": "Non malheureusement j'ai trop de travail.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10631,14 +9161,11 @@
      "target": "re a labour am eus",
      "known": "j'ai trop de travail",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10646,9 +9173,7 @@
    "seed": 274,
    "target": "Rankout a rez mont kuit a-benn un nebeud devezhioù ?",
    "known": "Tu dois partir dans quelques jours ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10656,28 +9181,22 @@
      "target": "rankout a rez",
      "known": "tu dois",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0274L02",
      "target": "a-benn un nebeud devezhioù",
      "known": "dans quelques jours",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10693,14 +9212,11 @@
      "target": "pelloc'h",
      "known": "plus longtemps",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10708,9 +9224,7 @@
    "seed": 276,
    "target": "Nann, gallout a ran chom amañ un tamm pelloc'h.",
    "known": "Non je peux rester ici un peu plus longtemps.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10718,14 +9232,11 @@
      "target": "chom amañ",
      "known": "rester ici",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10733,9 +9244,7 @@
    "seed": 277,
    "target": "Ya, un emvod pouezus am eus e deroù ar sizhun a zeu.",
    "known": "Oui j'ai une réunion importante en début de semaine prochaine.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10743,28 +9252,22 @@
      "target": "un emvod pouezus am eus",
      "known": "j'ai une réunion importante",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0277L02",
      "target": "e deroù",
      "known": "en début de",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10772,9 +9275,7 @@
    "seed": 278,
    "target": "Rankout a raes echuiñ pep tra dec'h da noz ?",
    "known": "Tu devais finir tout hier soir ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10782,28 +9283,22 @@
      "target": "rankout a raes",
      "known": "tu devais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0278L02",
      "target": "echuiñ pep tra",
      "known": "finir tout",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10811,9 +9306,7 @@
    "seed": 279,
    "target": "Ya, peogwir ne chome ket kalz a amzer ken.",
    "known": "Oui parce qu'il ne restait plus beaucoup de temps.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10821,28 +9314,22 @@
      "target": "ne chome ket",
      "known": "il ne restait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0279L02",
      "target": "kalz a amzer",
      "known": "beaucoup de temps",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10850,9 +9337,7 @@
    "seed": 280,
    "target": "Nann, ne ranken ober nemet al labour pouezusañ.",
    "known": "Non je devais seulement faire le travail le plus important.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10860,28 +9345,22 @@
      "target": "ne ranken ober nemet",
      "known": "je devais seulement faire",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0280L02",
      "target": "al labour pouezusañ",
      "known": "le travail le plus important",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10889,9 +9368,7 @@
    "seed": 281,
    "target": "Diaes eo dit ma echuan ma c'hafe a-raok ma krogi ?",
    "known": "Ça ne te dérange pas si je finis mon café avant que tu commences ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10899,28 +9376,22 @@
      "target": "echuan ma c'hafe",
      "known": "je finis mon café",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0281L02",
      "target": "a-raok ma krogi",
      "known": "avant que tu commences",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10928,9 +9399,7 @@
    "seed": 282,
    "target": "Nann, n'eo ket ur gudenn.",
    "known": "Non ça ne pose pas de problème.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10938,14 +9407,13 @@
      "target": "n'eo ket ur gudenn",
      "known": "ça ne pose pas de problème",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"ça ne pose pas de problème, nous pouvons finir demain\": pouvons"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10953,9 +9421,7 @@
    "seed": 283,
    "target": "Pere eus da vignoned a gomz brezhoneg ?",
    "known": "Lesquels de tes amis parlent breton ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10963,14 +9429,16 @@
      "target": "pere eus da vignoned",
      "known": "lesquels de tes amis",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"lesquels de tes amis travaillent ici\": travaillent",
+      "KNOWN-SIDE untaught French in \"lesquels de tes amis connaissent ta sœur\": connaissent",
+      "KNOWN-SIDE untaught French in \"lesquels de tes amis travaillent avec ton frère\": travaillent",
+      "KNOWN-SIDE untaught French in \"lesquels de tes amis connaissent cet homme\": connaissent"
      ],
-     "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -10978,9 +9446,7 @@
    "seed": 284,
    "target": "Anavezout a rez mignonez ma c'hoar ?",
    "known": "Tu connais l'amie de ma sœur ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -10988,28 +9454,22 @@
      "target": "anavezout a rez",
      "known": "tu connais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0284L02",
      "target": "mignonez ma c'hoar",
      "known": "l'amie de ma sœur",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11017,9 +9477,7 @@
    "seed": 285,
    "target": "Komz a ra brezhoneg.",
    "known": "Elle parle breton.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11027,14 +9485,11 @@
      "target": "komz a ra",
      "known": "elle parle",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11042,9 +9497,7 @@
    "seed": 286,
    "target": "Tud a blij dezho komz brezhoneg.",
    "known": "Des gens qui aiment parler breton.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11052,14 +9505,13 @@
      "target": "tud a blij dezho",
      "known": "des gens qui aiment",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"des gens qui aiment regarder le foot\": regarder"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11067,9 +9519,7 @@
    "seed": 287,
    "target": "Pet den a anavezez a blij dezho sellet ouzh ar skinwel ?",
    "known": "Combien de personnes tu connais qui aiment regarder la télévision ?",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11077,28 +9527,29 @@
      "target": "pet den a anavezez",
      "known": "combien de personnes tu connais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"combien de personnes tu connais qui travaillent ici\": travaillent",
+      "KNOWN-SIDE untaught French in \"combien de personnes tu connais qui travaillent avec ton frère\": travaillent",
+      "KNOWN-SIDE untaught French in \"combien de personnes tu connais qui peuvent m'aider\": peuvent"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0287L02",
      "target": "a blij dezho",
      "known": "qui aiment",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"Combien de personnes tu connais qui aiment regarder la télévision ?\": regarder",
+      "KNOWN-SIDE untaught French in \"mes amis aiment regarder le foot\": regarder"
      ],
-     "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11106,9 +9557,7 @@
    "seed": 288,
    "target": "An darn vuiañ eus an dud a anavezan a blij dezho sellet ouzh ar skinwel.",
    "known": "La plupart des gens que je connais aiment regarder la télévision.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11116,28 +9565,28 @@
      "target": "an darn vuiañ eus an dud",
      "known": "la plupart des gens",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"la plupart des gens au pub connaissent mon père\": connaissent",
+      "KNOWN-SIDE untaught French in \"la plupart des gens aiment regarder le foot\": regarder"
      ],
-     "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0288L02",
      "target": "a anavezan",
      "known": "que je connais",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"La plupart des gens que je connais aiment regarder la télévision.\": regarder",
+      "KNOWN-SIDE untaught French in \"la plupart des gens que je connais travaillent ici\": travaillent"
      ],
-     "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11145,9 +9594,7 @@
    "seed": 289,
    "target": "En em c'houlenn a ran hag-eñ emañ o vont da vezañ aze an endervezh-mañ.",
    "known": "Je me demande si elle va être là cet après-midi.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11155,28 +9602,26 @@
      "target": "en em c'houlenn a ran",
      "known": "je me demande",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0289L02",
      "target": "emañ o vont da vezañ",
      "known": "elle va être",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"elle va être contente\": contente",
+      "KNOWN-SIDE untaught French in \"elle va être prête bientôt\": prête",
+      "KNOWN-SIDE untaught French in \"elle va être très contente\": contente"
      ],
-     "warn": [],
      "syllables": 6,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11184,9 +9629,7 @@
    "seed": 290,
    "target": "En em c'houlenn a ran hag-eñ e oar ar respont.",
    "known": "Je me demande s'il sait la réponse.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11194,14 +9637,11 @@
      "target": "hag-eñ e oar",
      "known": "s'il sait",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11209,9 +9649,7 @@
    "seed": 291,
    "target": "Spi am eus da c'hallout komz gwelloc'h a-benn nebeut.",
    "known": "J'espère pouvoir parler mieux bientôt.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11219,28 +9657,22 @@
      "target": "spi am eus",
      "known": "j'espère",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0291L02",
      "target": "komz gwelloc'h",
      "known": "parler mieux",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11248,9 +9680,7 @@
    "seed": 292,
    "target": "Spi am eus e c'halli dont d'ar fest.",
    "known": "J'espère que tu pourras venir à la fête.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11258,28 +9688,22 @@
      "target": "e c'halli dont",
      "known": "que tu pourras venir",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0292L02",
      "target": "d'ar fest",
      "known": "à la fête",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 2,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11287,9 +9711,7 @@
    "seed": 293,
    "target": "Rankout a ran gouzout pelec'h emañ o vont d'en em gavout ganin.",
    "known": "Je dois découvrir où il va me retrouver.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11297,28 +9719,22 @@
      "target": "gouzout pelec'h",
      "known": "découvrir où",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0293L02",
      "target": "d'en em gavout ganin",
      "known": "me retrouver",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11326,9 +9742,7 @@
    "seed": 294,
    "target": "N'em eus ket a-walc'h a amzer evit pellgomz dit fenoz.",
    "known": "Je n'ai pas assez de temps pour t'appeler ce soir.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11336,28 +9750,22 @@
      "target": "n'em eus ket a-walc'h a amzer",
      "known": "je n'ai pas assez de temps",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 7,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0294L02",
      "target": "evit pellgomz dit",
      "known": "pour t'appeler",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11365,9 +9773,7 @@
    "seed": 295,
    "target": "N'em eus ket lavaret e felle din echuiñ en un devezh.",
    "known": "Je n'ai pas dit que je voulais finir en un jour.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11375,28 +9781,22 @@
      "target": "n'em eus ket lavaret",
      "known": "je n'ai pas dit",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0295L02",
      "target": "en un devezh",
      "known": "en un jour",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11404,9 +9804,7 @@
    "seed": 296,
    "target": "Lavaret em eus em boa ezhomm un tamm muioc'h a amzer.",
    "known": "J'ai dit que j'avais besoin d'un peu plus de temps.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11414,28 +9812,22 @@
      "target": "lavaret em eus",
      "known": "j'ai dit",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0296L02",
      "target": "em boa ezhomm",
      "known": "j'avais besoin",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11443,9 +9835,7 @@
    "seed": 297,
    "target": "N'anavezan ket kalz a dud a gomz brezhoneg.",
    "known": "Je ne connais pas beaucoup de gens qui parlent breton.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11453,14 +9843,11 @@
      "target": "kalz a dud",
      "known": "beaucoup de gens",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11468,9 +9855,7 @@
    "seed": 298,
    "target": "N'em eus netra ken da lavarout.",
    "known": "Je n'ai plus rien à dire.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11478,28 +9863,22 @@
      "target": "n'em eus netra ken",
      "known": "je n'ai plus rien",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 5
     },
     {
      "id": "S0298L02",
      "target": "da lavarout",
      "known": "à dire",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 3,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11507,9 +9886,7 @@
    "seed": 299,
    "target": "Fellout a ra dezhañ paeañ an hanter.",
    "known": "Il veut payer la moitié.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11517,14 +9894,11 @@
      "target": "paeañ an hanter",
      "known": "payer la moitié",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
-     ],
+     "hard": [],
      "warn": [],
      "syllables": 4,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   },
@@ -11532,9 +9906,7 @@
    "seed": 300,
    "target": "Ne fell ket dezhi seblantout dihegar.",
    "known": "Elle ne veut pas sembler peu aimable.",
-   "hard": [
-    "P26: the seed sentence is not a USE row under a new LEGO of this seed"
-   ],
+   "hard": [],
    "warn": [],
    "legos": [
     {
@@ -11542,14 +9914,14 @@
      "target": "seblantout dihegar",
      "known": "sembler peu aimable",
      "is_new": true,
-     "hard": [
-      "BUILD RECOMBINATION: []"
+     "hard": [],
+     "warn": [
+      "KNOWN-SIDE untaught French in \"nous ne voulons pas sembler peu aimables\": aimables",
+      "KNOWN-SIDE untaught French in \"ils ne veulent pas sembler peu aimables avec les gens\": aimables"
      ],
-     "warn": [],
      "syllables": 5,
-     "build": 0,
-     "use": 0,
-     "floor": "BUILD: need 3+, got 0"
+     "build": 3,
+     "use": 6
     }
    ]
   }
