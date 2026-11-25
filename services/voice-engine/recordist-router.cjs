@@ -693,6 +693,23 @@ module.exports = function createRecordistRouter({
 
   router.get('/voice/:voiceId', async (req, res) => {
     try {
+      // A BACKGROUND PRELOAD OF THE NEXT BATCH (cs #299, Catrin: Done then Next batch waited 17.3 s,
+      // over a minute under load). The booth asks for the batch after the one on screen with
+      // ?preload=1 while she reads, and shows it the moment she presses Next batch. Answered ONLY
+      // from this voice's fresh cached build (the one the batch on screen was just cut from) and
+      // only for a plain home-screen batch; anything else is 204 and the booth reads as it always
+      // has. So a preload never starts a build, never counts an arrival, and never adds a read to
+      // a database the artist is recording against. Correctness is the booth's reconcile: what it
+      // shows from a preload is read again, fresh, as soon as it is on screen.
+      const preload = req.query.preload === '1'
+      let preloaded = null
+      if (preload) {
+        const q = req.query
+        const plainBatch = (q.includeRecorded === '1' || q.includeRecorded === 'true') && typeof q.track === 'string' && q.track.trim() &&
+          q.track.trim() !== boothRerecord.RERECORD_TRACK && !q.maxSeed && !q.course && !q.pod && !q.step && !q.also
+        preloaded = plainBatch ? boothQueue.peekFresh(req.params.voiceId) : null
+        if (!preloaded) return res.status(204).end()
+      }
       const pack = await resolveAnyPack(req.params.voiceId)
       if (pack) return await packQueueResponse(req, res, pack)
       const recordist = await recordistOr404(req, res)
@@ -709,8 +726,10 @@ module.exports = function createRecordistRouter({
       // handed a stale recorded flag. Any other shape of read builds its own.
       const homeBatchRead = includeRecorded && quarryMaxSeed === undefined && typeof req.query.track === 'string' &&
         !(typeof req.query.course === 'string' && req.query.course.trim()) && !(typeof req.query.pod === 'string' && req.query.pod.trim())
-      const cachedHome = homeBatchRead ? await homeQueueFor(req.params.voiceId) : null
-      const builtQueue = cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId
+      const cachedHome = preloaded || (homeBatchRead ? await homeQueueFor(req.params.voiceId) : null)
+      const fromCache = !!(cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId)
+      if (preload && !fromCache) return res.status(204).end() // never a build behind a preload
+      const builtQueue = fromCache
         ? cachedHome.value.queue
         : await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
       // AN ACTOR WITH A CONTROLLED QUEUE (Kai and Aran, 2026-10-16, job #247): every read of this
@@ -725,7 +744,8 @@ module.exports = function createRecordistRouter({
       // ONE IDENTITY, TWO DOORS: the arrival is resolved as the email login
       // would be and counted the same way (casting-rights.boothArrival).
       // Refused = this voice is not cast on the course the link names.
-      const arrival = await castingRights.boothArrival({
+      // A preload is not an arrival: she is already here, and the batch she opens is counted by its reconcile read.
+      const arrival = preload ? { refused: [] } : await castingRights.boothArrival({
         db: db(), recordist, courseCodes: scoped ? [scoped] : queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
       })
       if (scoped && arrival.refused.length) {
