@@ -1,0 +1,28 @@
+{
+ "current": {
+  "bre_grammar": 12,
+  "wrong_side": 2,
+  "garble_punct": 104
+ },
+ "current_bre_grammar_hits": [
+  "Ar hent nemetañ eo evit ma funktionno.",
+  "Dedennus-tre eo bet, hag n'emaon ket bet o c'hortoz se.",
+  "Kregiñ a ra hañval aesoc'h hag laouen emaon eus penaos emañ o vont.",
+  "Amañ eo e fell da ma mignon emgavout ganimp.",
+  "Kaer-tre eo diouzh ac'hanout hag trugarez am eus dezhañ skoazell ganin.",
+  "Ha sellet oc'h eus un tamm ouzh an skinwel ?",
+  "Plijout a ra da ma mamm lenn.",
+  "N'eo ket plijout da ma zad paouez komz.",
+  "Soñjal a rin e oa ar film fall a-bezh hag c'hoant am eus ma arc'hant en-dro.",
+  "Ur mignon kozh eo bet da ma zad.",
+  "Pegement a dud a anavezout a blij dezho sellet ouzh an skinwel ?",
+  "Ar muiañ a dud a anavezañ o deus plijadur gant sellet ouzh an skinwel."
+ ],
+ "proposed": {
+  "bre_grammar": 0,
+  "wrong_side": 0,
+  "garble_punct": 104
+ },
+ "proposed_bre_grammar_hits": null,
+ "method": "tools/nightly-course-scan/analyse.cjs run unchanged (commit 05519c0e4) over a synthetic dump: each seed pair as one LEGO with one use row. Only the text detectors mean anything in that shape (bre_grammar, wrong_side, garble_*); thin_debut, silent_*, lego_syll_* are artefacts of the shape and are not reported. garble_punct is the French space before ? and ! (the #342 scan removed all such hits as false)."
+}
