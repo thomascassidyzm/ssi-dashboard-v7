@@ -1,0 +1,17 @@
+{
+  "course_code": "jpn_for_eng",
+  "event_id": "66b1111b-1b38-4ca9-9cb9-7b93d7b06bc1",
+  "actor": "kai-346-jpn-open-end",
+  "created_at": "2026-11-25T13:01:38.010Z",
+  "how_to_undo": "POST /api/production/jpn_for_eng/edit-batch {\"undo_file\":\"2026-11-25T13-01-38-010Z-66b1111b-1b38-4ca9-9cb9-7b93d7b06bc1.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0244L01B04",
+      "set": {
+        "known_text": "have already learnt a lot from you",
+        "known_audio_id": "c47ca28b-9367-4a2b-bf1f-c8bd4fb5caf2"
+      }
+    }
+  ]
+}
