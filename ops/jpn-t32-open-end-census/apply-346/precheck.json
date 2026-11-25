@@ -1,0 +1,35 @@
+{
+ "at": "2026-11-25T12:57:14.886Z",
+ "live": "live-pre.json",
+ "counts": {
+  "deletes": {
+   "in_changeset": 501,
+   "excluded_451_668": 488,
+   "ready": 13,
+   "held": 0
+  },
+  "rewords": {
+   "in_changeset": 305,
+   "excluded_451_668": 294,
+   "ready": 11,
+   "held": 0
+  },
+  "addend": {
+   "in_changeset": 233,
+   "excluded_451_668": 218,
+   "ready": 14,
+   "held": 1
+  }
+ },
+ "held": [
+  {
+   "kind": "addend",
+   "phrase_id": "jpn_for_eng:S0399L02B03",
+   "english_now": "because don't want to lose",
+   "japanese": "失いたくないから",
+   "english_new": "because I don't want to lose",
+   "reason": "audio: render dry run refused EXISTS_IN_LANGUAGE (already recorded in eng by ara_eg_for_eng known, voice cartesia_71a7ad14…, clip 1b24df1f-0d3d-4279-9d6f-4edf6e190734; jpn_for_eng cast is cartesia_d293d509…; link-clip refuses another voice). Applying the reword would leave the row silent, so the text change is held for a Kai re-record grant or voice ruling."
+  }
+ ],
+ "excluded": {}
+}

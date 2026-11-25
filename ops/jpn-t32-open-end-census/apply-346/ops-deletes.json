@@ -1,0 +1,132 @@
+[
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0396L01B02",
+  "expect": {
+   "seed_number": 396,
+   "lego_index": 1,
+   "known_text": "ready",
+   "target_text": "準備があるから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0412L01B02",
+  "expect": {
+   "seed_number": 412,
+   "lego_index": 1,
+   "known_text": "because of everything",
+   "target_text": "全部があるから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0414L03B02",
+  "expect": {
+   "seed_number": 414,
+   "lego_index": 3,
+   "known_text": "please give wine",
+   "target_text": "ワインをくださいから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0414L03B03",
+  "expect": {
+   "seed_number": 414,
+   "lego_index": 3,
+   "known_text": "please give some",
+   "target_text": "もくださいから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0416L03B01",
+  "expect": {
+   "seed_number": 416,
+   "lego_index": 3,
+   "known_text": "apparently",
+   "target_text": "らしいから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0426L01B01",
+  "expect": {
+   "seed_number": 426,
+   "lego_index": 1,
+   "known_text": "happy",
+   "target_text": "幸せがあるから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0436L01B01",
+  "expect": {
+   "seed_number": 436,
+   "lego_index": 1,
+   "known_text": "the minimum",
+   "target_text": "最低があるから"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0386L01B03",
+  "expect": {
+   "seed_number": 386,
+   "lego_index": 1,
+   "known_text": "yes, agreed about it",
+   "target_text": "うん、同意したことがある"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0416L03B03",
+  "expect": {
+   "seed_number": 416,
+   "lego_index": 3,
+   "known_text": "it seems like",
+   "target_text": "らしいことがある"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0434L03B03",
+  "expect": {
+   "seed_number": 434,
+   "lego_index": 3,
+   "known_text": "could reduce the number",
+   "target_text": "数を減らせることがある"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0439L01B02",
+  "expect": {
+   "seed_number": 439,
+   "lego_index": 1,
+   "known_text": "there's a thing about not wanting to die",
+   "target_text": "死にたくないことがある"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0440L01B02",
+  "expect": {
+   "seed_number": 440,
+   "lego_index": 1,
+   "known_text": "young and doing something",
+   "target_text": "若いことがある"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "jpn_for_eng:S0444L02B02",
+  "expect": {
+   "seed_number": 444,
+   "lego_index": 2,
+   "known_text": "thought something",
+   "target_text": "思ったことがある"
+  }
+ }
+]
