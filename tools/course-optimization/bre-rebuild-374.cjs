@@ -28,7 +28,8 @@
 //
 // Modes:
 //   baseline <copyDump.json>               → ops/bre-rebuild-374/baseline-1-300.json (what the plan is applied against)
-//   check [--warn]                         → ops/bre-rebuild-374/check.json (+ holds-auto.json, dropped list)
+//   check [--warn] [--legos-only]          → ops/bre-rebuild-374/check.json (held incl. cascade, dropped, below floor);
+//                                            --legos-only: tiling, syllables, LEGO ZUT, L26 only → check-legos.json
 //   cs <from-to>                           → ops/bre-rebuild-374/cs/S####.changeset.jsonl, one per non-held seed
 //   precheck <from-to> <liveSeeds.json>    → seed numbers whose live rows still equal the baseline (stdout, one per line);
 //                                            drift → ops/bre-rebuild-374/drift.jsonl
@@ -91,7 +92,7 @@ function loadHolds() { return fs.existsSync(holdsFile()) ? readJ(holdsFile()) : 
 function baseline() { return readJ(path.join(DIR, 'baseline-1-300.json')); }
 
 // ── check ──
-function check({ warn = false } = {}) {
+function check({ warn = false, legosOnly = false } = {}) {
   const { V, PS, LC } = libs;
   const { pairs, seeds } = parse();
   const manual = loadHolds();
@@ -101,12 +102,12 @@ function check({ warn = false } = {}) {
   let out, tot, dropped;
   for (let pass = 0; pass < 20; pass++) {
     const before = held.size;
-    ({ out, tot, dropped } = checkOnce(seeds, held, base, { V, PS, LC }));
+    ({ out, tot, dropped } = checkOnce(seeds, held, base, { V, PS, LC }, legosOnly));
     if (held.size === before) break;
   }
   const below = out.flatMap((r) => r.legos.filter((l) => l.floor).map((l) => `${l.id} ${l.floor}`));
   const res = { checker: 'services/course-builder/lib pure functions (as POST /api/seed/complete), offline; ZUT in memory over 1-300 new rows + held seeds\' old live rows', totals: tot, held: Object.fromEntries([...held].sort((a, b) => a[0] - b[0])), dropped, below_floor: below, seeds: out };
-  fs.writeFileSync(path.join(DIR, 'check.json'), JSON.stringify(res, null, 1));
+  fs.writeFileSync(path.join(DIR, legosOnly ? 'check-legos.json' : 'check.json'), JSON.stringify(res, null, 1));
   console.log(JSON.stringify(tot));
   console.log(`held ${held.size}: ${[...held.keys()].sort((a, b) => a - b).join(' ')}`);
   console.log(`dropped (need a held seed) ${dropped.length}; below floor ${below.length}`);
@@ -114,7 +115,7 @@ function check({ warn = false } = {}) {
   return res;
 }
 
-function checkOnce(seeds, held, base, { V, PS, LC }) {
+function checkOnce(seeds, held, base, { V, PS, LC }, legosOnly = false) {
   const prior = new Set(), heldOwn = new Set();
   const legoZut = new Map(), phraseZut = new Map(); const out = []; const dropped = [];
   const tot = { seeds: 0, legos: 0, new_legos: 0, build: 0, use: 0, hard: 0, warn: 0, zut_vs_held_old: 0 };
@@ -162,10 +163,12 @@ function checkOnce(seeds, held, base, { V, PS, LC }) {
         for (const v of bad1) lr.hard.push(`VOCAB: "${v.phrase}" untaught: ${JSON.stringify(v.unknown)}`);
         return true;
       });
-      l.buildKept = keep(l.build); l.useKept = keep(l.use);
+      l.buildKept = legosOnly ? [] : keep(l.build); l.useKept = legosOnly ? [] : keep(l.use);
       const rows = [...l.buildKept, ...l.useKept];
+      // length ratio, as seed-complete.cjs 3b (known vs target characters, > 2.5 refuses)
+      for (const p of rows) { const a = (p.known || '').length, b = (p.target || '').length; if (a && b && Math.max(a, b) / Math.min(a, b) > 2.5) lr.hard.push(`LENGTH RATIO ${(Math.max(a, b) / Math.min(a, b)).toFixed(1)}: "${p.known}" / "${p.target}"`); }
       lr.build = l.buildKept.length; lr.use = l.useKept.length;
-      if (l.is_new) {
+      if (l.is_new && !legosOnly) {
         const bu = PS.checkBuildUsePhrases({ ...l, build: l.buildKept, use: l.useKept }, C, s.n);
         if (!bu.valid) { if (/need \d/.test(bu.error)) lr.floor = bu.error; else lr.hard.push(bu.error); }
         const rc = quietly(() => V.checkBuildRecombination({ ...l, build: l.buildKept, use: l.useKept }, C, s.n, prior));
@@ -179,6 +182,10 @@ function checkOnce(seeds, held, base, { V, PS, LC }) {
           if (h && h.t !== norm(p.target)) { if (h.old) { lr.warn.push(`ZUT vs held old phrase ${h.id}: "${p.known}" → "${p.target}" / "${h.t}"`); tot.zut_vs_held_old++; } else lr.hard.push(`ZUT (phrase): "${p.known}" → "${p.target}" and ${h.id} "${h.t}"`); } else if (!h) phraseZut.set(pk, { t: norm(p.target), id: l.id });
         }
         tot.new_legos++; tot.build += l.buildKept.length; tot.use += l.useKept.length;
+      } else if (l.is_new) {
+        const k = norm(l.known), hit = legoZut.get(k);
+        if (hit && hit.t !== norm(l.target)) { if (hit.old) { lr.warn.push(`ZUT vs held old LEGO ${hit.id} "${hit.t}"`); tot.zut_vs_held_old++; } else lr.hard.push(`ZUT (LEGO): "${l.known}" is also ${hit.id} "${hit.t}"`); } else if (!hit) legoZut.set(k, { t: norm(l.target), id: l.id });
+        tot.new_legos++;
       } else if (rows.length) lr.warn.push('P25: phrases under a not-new LEGO are never played');
       for (const t of own) prior.add(t); // earlier siblings count, as in the route (a cascade hold re-runs the pass from scratch)
       res.legos.push(lr);
@@ -186,7 +193,7 @@ function checkOnce(seeds, held, base, { V, PS, LC }) {
     if (cascade) { held.set(s.n, { call: 'cascade', why: cascade }); continue; }
     tot.legos += s.legos.length;
     const said = s.legos.some((l) => l.is_new && l.useKept.some((p) => norm(p.target) === norm(s.target) && norm(p.known) === norm(s.known)));
-    if (!said) res.hard.push('P26: the seed sentence is not a USE row under a new LEGO of this seed');
+    if (!said && !legosOnly) res.hard.push('P26: the seed sentence is not a USE row under a new LEGO of this seed');
     if (!s.legos.some((l) => l.is_new)) res.hard.push('P25: no new LEGO, the seed would never play');
     tot.seeds++; tot.hard += res.hard.length + res.legos.reduce((a, l) => a + l.hard.length, 0); tot.warn += res.legos.reduce((a, l) => a + l.warn.length, 0);
     out.push(res);
@@ -328,7 +335,7 @@ if (require.main === module) {
   const [mode, ...rest] = process.argv.slice(2);
   try {
     if (mode === 'baseline') mkBaseline(rest[0]);
-    else if (mode === 'check') { const r = check({ warn: rest.includes('--warn') }); process.exit(r.totals.hard ? 1 : 0); }
+    else if (mode === 'check') { const r = check({ warn: rest.includes('--warn'), legosOnly: rest.includes('--legos-only') }); process.exit(r.totals.hard ? 1 : 0); }
     else if (mode === 'cs') buildCs(rest[0]);
     else if (mode === 'precheck') precheck(rest[0], rest[1]);
     else if (mode === 'verify') process.exit(verify(rest[0], rest[1]));
