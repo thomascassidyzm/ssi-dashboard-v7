@@ -1,0 +1,34 @@
+{
+ "course": "kor_for_eng",
+ "seed": 1,
+ "enrolled": 26,
+ "atOrBeyondSeed": 0,
+ "cursorsInSeed": [
+  {
+   "lego": "S0001L01",
+   "n": 9
+  },
+  {
+   "lego": "S0001L02",
+   "n": 1
+  }
+ ],
+ "ceilingsInSeed": [
+  {
+   "lego": "S0001L01",
+   "n": 3
+  },
+  {
+   "lego": "S0001L02",
+   "n": 1
+  }
+ ],
+ "cursorAndCeilingBothInSeed": [
+  {
+   "cursor": "S0001L01",
+   "ceiling": "S0001L01",
+   "n": 3
+  }
+ ],
+ "legoProgressRows": []
+}

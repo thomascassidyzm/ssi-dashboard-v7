@@ -1,0 +1,9 @@
+[Unit]
+Description=One-shot BIG/NOT BIG judge of the three Italian scan tables (cs #387·AL), Thu 26 Nov 2026 09:00 UTC
+
+[Timer]
+OnCalendar=2026-11-26 09:00:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target
