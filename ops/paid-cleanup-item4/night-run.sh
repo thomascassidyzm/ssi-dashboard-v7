@@ -31,7 +31,8 @@ echo "main=$(git rev-parse --short HEAD)"
 [ -f "$DIR/night-run.sh" ] || { echo "not merged yet"; exit 0; }
 curl -s -m 20 http://localhost:3470/health | grep -q '"governed":true' || { say "[item4 night] skipped tonight: Popty /health does not report governed:true (log $LOG)"; exit 0; }
 
-writers() { systemctl --user list-units --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
+# Services only: an armed .timer shows as "active (waiting)" but writes nothing; counting timers skipped the whole 24-25 Nov night (cs #358).
+writers() { systemctl --user list-units --type=service --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
   | grep -E 'a2c|item|apply|night|tiles|relink|render|fill' | grep -v 'item4-358' | wc -l; }
 while [ "$(writers)" -ge 2 ]; do
   if late; then say "[item4 night] skipped tonight: $(writers) other DB writers still running at $(ukh)h UK (log $LOG)"; exit 0; fi
