@@ -107,30 +107,39 @@ async function sleepUntilPace(body, who) {
 }
 // UNPACED (cs #338·AL, Kai 25 Nov: "if it is a Popty self-cap, raise it for this build only and say by how much"):
 // with --unpaced the gen calls carry "unpaced": true, so the v4 door skips its weekly pace (#412·AD) for THIS tool only;
-// PACE_SLACK_PCT and every other bulk caller are untouched. The bound: before each LEGO, if any SSi account (the
-// door's own candidates) reads >= UNPACED_CEILING_PCT on the weekly gauge, or the gauge is unreadable, the call goes
-// paced as before — so this run can never take an account past 90% on its own say-so. Pure over (cands, usage).
-const UNPACED_CEILING_PCT = 90;
-function unpacedAllowed(cands, usage, weeklyPct) {
-  if (!cands.length) return { ok: false, why: 'no SSi account tokens' };
-  const read = cands.map((x) => ({ email: x.email, pct: weeklyPct(usage[x.email]) }));
-  const bad = read.filter((r) => r.pct === null || r.pct >= UNPACED_CEILING_PCT);
-  return bad.length ? { ok: false, why: bad.map((r) => `${r.email} ${r.pct === null ? 'unknown' : r.pct + '%'}`).join('; ') } : { ok: true, why: read.map((r) => `${r.email} ${r.pct}%`).join('; ') };
+// PACE_SLACK_PCT and every other bulk caller are untouched.
+// THE ACCOUNT GATE (always on, paced or not; Kai 25 Nov 12:33Z: "treat claude@ as FULL once it reaches ~85% of its
+// weekly pool (leave the rest for Aran's own web use) and continue on kai-gmail"). The door cannot be pinned to an
+// account: it spawns on claude-config pickAccount over the shared weekly gauge. So before each LEGO this tool runs the
+// same pickAccount over the same gauge, and sends the call only when the account the door will pick is under ITS
+// ceiling (claude@ 85%, any other SSi account 90%); otherwise it waits and asks again. Unreadable gauge = wait. Pure.
+const ACCOUNT_CEILING_PCT = { 'claude@saysomethingin.com': 85 };
+const DEFAULT_CEILING_PCT = 90;
+const ceilingFor = (email) => ACCOUNT_CEILING_PCT[email] ?? DEFAULT_CEILING_PCT;
+function accountGate(cands, usage, cc) {
+  if (!cands.length) return { ok: false, why: 'no SSi accounts on the gauge' };
+  const read = cands.map((x) => `${x.email} ${cc.weeklyPct(usage[x.email]) ?? '?'}%/${ceilingFor(x.email)}%`).join('; ');
+  if (cands.some((x) => cc.weeklyPct(usage[x.email]) === null)) return { ok: false, why: `gauge unreadable: ${read}` };
+  const pick = cc.pickAccount(cands, { usage });
+  const pct = cc.weeklyPct(usage[pick.email]);
+  return pct < ceilingFor(pick.email)
+    ? { ok: true, pick: pick.email, why: `door picks ${pick.email}; ${read}` }
+    : { ok: false, pick: pick.email, why: `door would pick ${pick.email} at ${pct}% (ceiling ${ceilingFor(pick.email)}%); ${read}` };
 }
-function unpacedNow() {
+function accountGateNow() {
   const cc = require('../../services/shared/claude-config.cjs');
   const usage = cc.readUsage();
   // The door's token dir (/var/lib/popty/claude) is readable only by the popty user, so from an agent shell the SSi
   // accounts are the company addresses on the same gauge the door reads (the two its WEEKLY_PACE answer names).
   let cands = cc.liveCandidates();
   if (!cands.length) cands = Object.keys(usage).filter((e) => /@saysomethingin\.com$/.test(e)).map((email) => ({ email }));
-  return unpacedAllowed(cands, usage, cc.weeklyPct);
+  return accountGate(cands, usage, cc);
 }
 async function gen(c, rng, dumpPath, conc, unpaced = false) {
   const [a, b] = range(rng);
   const dump = loadJson(dumpPath);
   const todo = newLegos(dump, a, b).filter((l) => { const g = readGen(c, l.seed_number, l.lego_index); return !genCurrent(g, l) || (process.env.RETRY_BLOCKED === '1' && !g.keep); });
-  console.log(`${c} ${rng}: ${todo.length} LEGOs to generate (conc ${conc}${unpaced ? `, unpaced under ${UNPACED_CEILING_PCT}% per account` : ''})`);
+  console.log(`${c} ${rng}: ${todo.length} LEGOs to generate (conc ${conc}${unpaced ? ', unpaced' : ''}; account gate claude@ ${ceilingFor('claude@saysomethingin.com')}%, others ${DEFAULT_CEILING_PCT}%)`);
   let i = 0, lastGuard = null;
   const worker = async () => {
     while (i < todo.length) {
@@ -138,12 +147,11 @@ async function gen(c, rng, dumpPath, conc, unpaced = false) {
       const t0 = Date.now();
       let r;
       for (let tries = 0; tries < 3; tries++) {
-        let un = false;
-        if (unpaced) {
-          const g = unpacedNow(); un = g.ok;
-          if (String(g.ok) !== lastGuard) { lastGuard = String(g.ok); console.log(`${lid(l.seed_number, l.lego_index)} ${g.ok ? 'UNPACED' : 'PACED (90% guard)'} — ${g.why}`); }
-        }
-        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index), ...(un ? { unpaced: true } : {}) }, 1800000);
+        const g = accountGateNow();
+        const tag = `${g.ok}|${g.pick}`;
+        if (tag !== lastGuard) { lastGuard = tag; console.log(`${lid(l.seed_number, l.lego_index)} ${g.ok ? (unpaced ? 'UNPACED' : 'PACED') : 'ACCOUNT HOLD — waiting 20 min'} — ${g.why}`); }
+        if (!g.ok) { await new Promise((ok) => setTimeout(ok, 20 * 60e3)); tries--; continue; }
+        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index), ...(unpaced ? { unpaced: true } : {}) }, 1800000);
         // 429 WEEKLY_PACE (#412·AD): both SSi accounts ahead of their share of the week — sleep, ask again, spend nothing.
         if (r.status === 429 && (r.body || {}).code === 'WEEKLY_PACE') { await sleepUntilPace(r.body, lid(l.seed_number, l.lego_index)); tries--; continue; }
         if (r.status !== 0) break;
@@ -421,7 +429,7 @@ function verify(c, rng, live) {
   return out;
 }
 
-module.exports = { padReasons, plan, precheckLego, upperI, existingClip, genCurrent, unpacedAllowed, UNPACED_CEILING_PCT };
+module.exports = { padReasons, plan, precheckLego, upperI, existingClip, genCurrent, accountGate, ceilingFor };
 
 if (require.main === module) {
   const argv = process.argv.slice(2);
