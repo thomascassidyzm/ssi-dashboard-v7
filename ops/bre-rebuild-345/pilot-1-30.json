@@ -3328,5 +3328,2181 @@
   "notes": [
    "Shared by all four. French cannot say his or her with 'son'; here it is his ('e anv'). English, Welsh and Cornish mark it anyway."
   ]
+ },
+ {
+  "n": 21,
+  "known": "Pourquoi tu apprends son prénom à elle ?",
+  "target": "Perak emaout o teskiñ hec'h anv ?",
+  "legos": [
+   {
+    "id": "S0021L01",
+    "idx": 1,
+    "target": "emaout o teskiñ",
+    "known": "tu apprends",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "emaout",
+      "known": "tu es"
+     },
+     {
+      "target": "o teskiñ",
+      "known": "en train d'apprendre"
+     }
+    ],
+    "build": [
+     {
+      "target": "emaout o teskiñ brezhoneg",
+      "known": "tu apprends le breton"
+     },
+     {
+      "target": "emaout o teskiñ buan",
+      "known": "tu apprends rapidement"
+     },
+     {
+      "target": "emaout o teskiñ e anv",
+      "known": "tu apprends son prénom"
+     }
+    ],
+    "use": [
+     {
+      "target": "emaout o teskiñ brezhoneg buan",
+      "known": "tu apprends le breton rapidement",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o teskiñ un tamm brezhoneg",
+      "known": "tu apprends un peu de breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o teskiñ brezhoneg ganin",
+      "known": "tu apprends le breton avec moi",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o teskiñ un dra bennak hiziv",
+      "known": "tu apprends quelque chose aujourd'hui",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o teskiñ brezhoneg mat-tre",
+      "known": "tu apprends très bien le breton",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0021L02",
+    "idx": 2,
+    "target": "perak",
+    "known": "pourquoi",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "perak emaout o teskiñ",
+      "known": "pourquoi tu apprends"
+     },
+     {
+      "target": "perak emaout o teskiñ brezhoneg",
+      "known": "pourquoi tu apprends le breton"
+     },
+     {
+      "target": "perak emaout o teskiñ e anv",
+      "known": "pourquoi tu apprends son prénom"
+     }
+    ],
+    "use": [
+     {
+      "target": "perak emaout o teskiñ brezhoneg bremañ",
+      "known": "pourquoi tu apprends le breton maintenant",
+      "seed_sentence": false
+     },
+     {
+      "target": "perak emaout o teskiñ e anv buan",
+      "known": "pourquoi tu apprends son prénom rapidement",
+      "seed_sentence": false
+     },
+     {
+      "target": "perak emaout o teskiñ un dra bennak fenoz",
+      "known": "pourquoi tu apprends quelque chose ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "perak emaout o teskiñ brezhoneg ganin",
+      "known": "pourquoi tu apprends le breton avec moi",
+      "seed_sentence": false
+     },
+     {
+      "target": "perak emaout o teskiñ brezhoneg gant unan bennak all",
+      "known": "pourquoi tu apprends le breton avec quelqu'un d'autre",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0021L03",
+    "idx": 3,
+    "target": "hec'h anv",
+    "known": "son prénom à elle",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "hec'h",
+      "known": "son à elle"
+     },
+     {
+      "target": "anv",
+      "known": "prénom"
+     }
+    ],
+    "build": [
+     {
+      "target": "gouzout hec'h anv",
+      "known": "savoir son prénom à elle"
+     },
+     {
+      "target": "deskiñ hec'h anv",
+      "known": "apprendre son prénom à elle"
+     },
+     {
+      "target": "emaout o teskiñ hec'h anv",
+      "known": "tu apprends son prénom à elle"
+     }
+    ],
+    "use": [
+     {
+      "target": "Perak emaout o teskiñ hec'h anv ?",
+      "known": "Pourquoi tu apprends son prénom à elle ?",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a ra din gouzout hec'h anv",
+      "known": "je veux savoir son prénom à elle",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dit deskiñ hec'h anv buan",
+      "known": "tu veux apprendre son prénom à elle rapidement",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o klask kaout soñj eus hec'h anv",
+      "known": "j'essaie de me souvenir de son prénom à elle",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din lavarout hec'h anv",
+      "known": "je ne veux pas dire son prénom à elle",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "French needs 'à elle' to ask for 'hec'h anv'; English, Welsh and Cornish say her / ei henw and need nothing. Same three Breton LEGOs for all."
+  ]
+ },
+ {
+  "n": 22,
+  "known": "Parce que je veux rencontrer des gens qui parlent breton.",
+  "target": "Peogwir e fell din kejañ gant tud a gomz brezhoneg.",
+  "legos": [
+   {
+    "id": "S0022L01",
+    "idx": 1,
+    "target": "peogwir e fell din",
+    "known": "parce que je veux",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "peogwir",
+      "known": "parce que"
+     },
+     {
+      "target": "e fell din",
+      "known": "me plaît"
+     }
+    ],
+    "build": [
+     {
+      "target": "peogwir e fell din komz",
+      "known": "parce que je veux parler"
+     },
+     {
+      "target": "peogwir e fell din deskiñ",
+      "known": "parce que je veux apprendre"
+     },
+     {
+      "target": "peogwir e fell din gouzout",
+      "known": "parce que je veux savoir"
+     }
+    ],
+    "use": [
+     {
+      "target": "emaon o klask peogwir e fell din deskiñ",
+      "known": "j'essaie parce que je veux apprendre",
+      "seed_sentence": false
+     },
+     {
+      "target": "komz a ran brezhoneg peogwir e fell din deskiñ buan",
+      "known": "je parle breton parce que je veux apprendre rapidement",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da bleustriñ peogwir e fell din komz mat-tre",
+      "known": "je vais m'entraîner parce que je veux parler très bien",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din dont en-dro peogwir e fell din komz ganit",
+      "known": "je veux revenir parce que je veux parler avec toi",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o klask kaout soñj peogwir e fell din gouzout ar respont",
+      "known": "j'essaie de me souvenir parce que je veux savoir la réponse",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0022L02",
+    "idx": 2,
+    "target": "kejañ gant",
+    "known": "rencontrer",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "kejañ",
+      "known": "rencontrer"
+     },
+     {
+      "target": "gant",
+      "known": "avec"
+     }
+    ],
+    "build": [
+     {
+      "target": "kejañ gant an holl",
+      "known": "rencontrer tout le monde"
+     },
+     {
+      "target": "fellout a ra din kejañ gant an holl",
+      "known": "je veux rencontrer tout le monde"
+     },
+     {
+      "target": "kejañ gant unan bennak all",
+      "known": "rencontrer quelqu'un d'autre"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra dezhañ kejañ gant an holl",
+      "known": "il veut rencontrer tout le monde",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din kejañ gant unan bennak all",
+      "known": "j'aimerais rencontrer quelqu'un d'autre",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra deomp kejañ gant an holl fenoz",
+      "known": "nous voulons rencontrer tout le monde ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din kejañ gant unan bennak all",
+      "known": "je ne veux pas rencontrer quelqu'un d'autre",
+      "seed_sentence": false
+     },
+     {
+      "target": "peogwir e fell din kejañ gant an holl",
+      "known": "parce que je veux rencontrer tout le monde",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0022L03",
+    "idx": 3,
+    "target": "tud",
+    "known": "des gens",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "kejañ gant tud",
+      "known": "rencontrer des gens"
+     },
+     {
+      "target": "komz gant tud",
+      "known": "parler avec des gens"
+     },
+     {
+      "target": "fellout a ra din kejañ gant tud",
+      "known": "je veux rencontrer des gens"
+     }
+    ],
+    "use": [
+     {
+      "target": "plijout a rafe din kejañ gant tud warc'hoazh",
+      "known": "j'aimerais rencontrer des gens demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhi kejañ gant tud fenoz",
+      "known": "elle veut rencontrer des gens ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "peogwir e fell din komz gant tud",
+      "known": "parce que je veux parler avec des gens",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra deomp kejañ gant tud alies",
+      "known": "nous voulons rencontrer des gens souvent",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o klask komz brezhoneg gant tud",
+      "known": "j'essaie de parler breton avec des gens",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0022L04",
+    "idx": 4,
+    "target": "a gomz",
+    "known": "qui parlent",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "a",
+      "known": "qui"
+     },
+     {
+      "target": "gomz",
+      "known": "parle"
+     }
+    ],
+    "build": [
+     {
+      "target": "tud a gomz",
+      "known": "des gens qui parlent"
+     },
+     {
+      "target": "tud a gomz brezhoneg",
+      "known": "des gens qui parlent breton"
+     },
+     {
+      "target": "kejañ gant tud a gomz brezhoneg",
+      "known": "rencontrer des gens qui parlent breton"
+     }
+    ],
+    "use": [
+     {
+      "target": "Peogwir e fell din kejañ gant tud a gomz brezhoneg.",
+      "known": "Parce que je veux rencontrer des gens qui parlent breton.",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a ra din kejañ gant tud a gomz brezhoneg",
+      "known": "je veux rencontrer des gens qui parlent breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din komz gant tud a gomz brezhoneg",
+      "known": "j'aimerais parler avec des gens qui parlent breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhañ kejañ gant tud a gomz brezhoneg mat-tre",
+      "known": "il veut rencontrer des gens qui parlent très bien le breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra deomp komz gant tud a gomz brezhoneg alies",
+      "known": "nous voulons parler avec des gens qui parlent breton souvent",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four. Welsh and Cornish could take 'tud a gomz brezhoneg' whole (pobl sy'n siarad)."
+  ]
+ },
+ {
+  "n": 23,
+  "known": "Je vais bientôt commencer à parler plus.",
+  "target": "Emaon o vont da gregiñ da gomz muioc'h a-benn nebeut.",
+  "legos": [
+   {
+    "id": "S0023L01",
+    "idx": 1,
+    "target": "emaon o vont da gregiñ",
+    "known": "je vais commencer",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "emaon o vont",
+      "known": "je vais"
+     },
+     {
+      "target": "da",
+      "known": "à"
+     },
+     {
+      "target": "gregiñ",
+      "known": "commencer"
+     }
+    ],
+    "build": [
+     {
+      "target": "emaon o vont da gregiñ da gomz",
+      "known": "je vais commencer à parler"
+     },
+     {
+      "target": "emaon o vont da gregiñ warc'hoazh",
+      "known": "je vais commencer demain"
+     },
+     {
+      "target": "emaon o vont da gregiñ fenoz",
+      "known": "je vais commencer ce soir"
+     }
+    ],
+    "use": [
+     {
+      "target": "emaon o vont da gregiñ da gomz brezhoneg",
+      "known": "je vais commencer à parler breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da gregiñ da gomz ganit",
+      "known": "je vais commencer à parler avec toi",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da gregiñ da gomz gant tud",
+      "known": "je vais commencer à parler avec des gens",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da gregiñ diwezhatoc'h",
+      "known": "je vais commencer plus tard",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da gregiñ da gomz brezhoneg warc'hoazh",
+      "known": "je vais commencer à parler breton demain",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0023L02",
+    "idx": 2,
+    "target": "muioc'h",
+    "known": "plus",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "komz muioc'h",
+      "known": "parler plus"
+     },
+     {
+      "target": "fellout a ra din komz muioc'h",
+      "known": "je veux parler plus"
+     },
+     {
+      "target": "emaon o vont da gregiñ da gomz muioc'h",
+      "known": "je vais commencer à parler plus"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra din deskiñ muioc'h",
+      "known": "je veux apprendre plus",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din gouzout muioc'h",
+      "known": "j'aimerais savoir plus",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dit komz muioc'h",
+      "known": "tu veux parler plus",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da bleustriñ muioc'h warc'hoazh",
+      "known": "je vais m'entraîner plus demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din komz brezhoneg muioc'h",
+      "known": "je veux parler breton plus",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0023L03",
+    "idx": 3,
+    "target": "a-benn nebeut",
+    "known": "bientôt",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "a-benn",
+      "known": "d'ici"
+     },
+     {
+      "target": "nebeut",
+      "known": "peu"
+     }
+    ],
+    "build": [
+     {
+      "target": "dont en-dro a-benn nebeut",
+      "known": "revenir bientôt"
+     },
+     {
+      "target": "emaon o vont da gregiñ a-benn nebeut",
+      "known": "je vais bientôt commencer"
+     },
+     {
+      "target": "fellout a ra din komz ganit a-benn nebeut",
+      "known": "je veux bientôt parler avec toi"
+     }
+    ],
+    "use": [
+     {
+      "target": "Emaon o vont da gregiñ da gomz muioc'h a-benn nebeut.",
+      "known": "Je vais bientôt commencer à parler plus.",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a ra dezhañ dont en-dro a-benn nebeut",
+      "known": "il veut bientôt revenir",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra deomp en em gavout a-benn nebeut",
+      "known": "nous voulons bientôt nous retrouver",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da bleustriñ a-benn nebeut",
+      "known": "je vais bientôt m'entraîner",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din kejañ gant tud a-benn nebeut",
+      "known": "j'aimerais bientôt rencontrer des gens",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four. Each 'emaon o vont da + verb' chunk carries its own mutated verb, because the checker counts mutated forms as new words (see the principle call)."
+  ]
+ },
+ {
+  "n": 24,
+  "known": "Je ne vais pas pouvoir me souvenir facilement.",
+  "target": "N'emaon ket o vont da c'hallout kaout soñj aes.",
+  "legos": [
+   {
+    "id": "S0024L01",
+    "idx": 1,
+    "target": "n'emaon ket o vont",
+    "known": "je ne vais pas",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "n'emaon ket",
+      "known": "je ne suis pas"
+     },
+     {
+      "target": "o vont",
+      "known": "en train d'aller"
+     }
+    ],
+    "build": [
+     {
+      "target": "n'emaon ket o vont da glask",
+      "known": "je ne vais pas essayer"
+     },
+     {
+      "target": "n'emaon ket o vont da gomz",
+      "known": "je ne vais pas parler"
+     },
+     {
+      "target": "n'emaon ket o vont da gregiñ",
+      "known": "je ne vais pas commencer"
+     }
+    ],
+    "use": [
+     {
+      "target": "n'emaon ket o vont da bleustriñ fenoz",
+      "known": "je ne vais pas m'entraîner ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da gomz brezhoneg warc'hoazh",
+      "known": "je ne vais pas parler breton demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da glask divinout",
+      "known": "je ne vais pas essayer de deviner",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da gregiñ a-benn nebeut",
+      "known": "je ne vais pas bientôt commencer",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da gomz gant an holl",
+      "known": "je ne vais pas parler avec tout le monde",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0024L02",
+    "idx": 2,
+    "target": "da c'hallout kaout soñj",
+    "known": "pouvoir me souvenir",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "da",
+      "known": "à"
+     },
+     {
+      "target": "c'hallout",
+      "known": "pouvoir"
+     },
+     {
+      "target": "kaout soñj",
+      "known": "me souvenir"
+     }
+    ],
+    "build": [
+     {
+      "target": "n'emaon ket o vont da c'hallout kaout soñj",
+      "known": "je ne vais pas pouvoir me souvenir"
+     },
+     {
+      "target": "emaon o vont da c'hallout kaout soñj",
+      "known": "je vais pouvoir me souvenir"
+     },
+     {
+      "target": "n'emaon ket o vont da c'hallout kaout soñj eus ur ger",
+      "known": "je ne vais pas pouvoir me souvenir d'un mot"
+     }
+    ],
+    "use": [
+     {
+      "target": "emaon o vont da c'hallout kaout soñj a-benn nebeut",
+      "known": "je vais bientôt pouvoir me souvenir",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da c'hallout kaout soñj eus ar frazenn a-bezh",
+      "known": "je ne vais pas pouvoir me souvenir de toute la phrase",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da c'hallout kaout soñj eus e anv",
+      "known": "je vais pouvoir me souvenir de son prénom",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da c'hallout kaout soñj warc'hoazh",
+      "known": "je ne vais pas pouvoir me souvenir demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'emaon ket o vont da c'hallout kaout soñj eus hec'h anv",
+      "known": "je ne vais pas pouvoir me souvenir de son prénom à elle",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0024L03",
+    "idx": 3,
+    "target": "aes",
+    "known": "facilement",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "deskiñ aes",
+      "known": "apprendre facilement"
+     },
+     {
+      "target": "komz aes",
+      "known": "parler facilement"
+     },
+     {
+      "target": "kaout soñj aes",
+      "known": "me souvenir facilement"
+     }
+    ],
+    "use": [
+     {
+      "target": "N'emaon ket o vont da c'hallout kaout soñj aes.",
+      "known": "Je ne vais pas pouvoir me souvenir facilement.",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a ra din komz brezhoneg aes",
+      "known": "je veux parler breton facilement",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o teskiñ aes",
+      "known": "tu apprends facilement",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din gallout komz aes",
+      "known": "j'aimerais pouvoir parler facilement",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da c'hallout kaout soñj eus hec'h anv aes",
+      "known": "je vais pouvoir me souvenir de son prénom à elle facilement",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "French and English share all three. Welsh and Cornish could take 'n'emaon ket o vont da c'hallout' as one chunk."
+  ]
+ },
+ {
+  "n": 25,
+  "known": "Tu vas m'aider avant que je doive partir ?",
+  "target": "Emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit ?",
+  "legos": [
+   {
+    "id": "S0025L01",
+    "idx": 1,
+    "target": "emaout o vont da",
+    "known": "tu vas",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "emaout",
+      "known": "tu es"
+     },
+     {
+      "target": "o vont",
+      "known": "en train d'aller"
+     },
+     {
+      "target": "da",
+      "known": "à"
+     }
+    ],
+    "build": [
+     {
+      "target": "emaout o vont da glask",
+      "known": "tu vas essayer"
+     },
+     {
+      "target": "emaout o vont da gregiñ",
+      "known": "tu vas commencer"
+     },
+     {
+      "target": "emaout o vont da gomz",
+      "known": "tu vas parler"
+     }
+    ],
+    "use": [
+     {
+      "target": "emaout o vont da gomz brezhoneg ganin",
+      "known": "tu vas parler breton avec moi",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da glask warc'hoazh",
+      "known": "tu vas essayer demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da gregiñ a-benn nebeut",
+      "known": "tu vas bientôt commencer",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da bleustriñ fenoz",
+      "known": "tu vas t'entraîner ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da c'hallout kaout soñj",
+      "known": "tu vas pouvoir te souvenir",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0025L02",
+    "idx": 2,
+    "target": "sikour ac'hanon",
+    "known": "m'aider",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "sikour",
+      "known": "aider"
+     },
+     {
+      "target": "ac'hanon",
+      "known": "moi"
+     }
+    ],
+    "build": [
+     {
+      "target": "emaout o vont da sikour ac'hanon",
+      "known": "tu vas m'aider"
+     },
+     {
+      "target": "fellout a ra dit sikour ac'hanon",
+      "known": "tu veux m'aider"
+     },
+     {
+      "target": "fellout a ra dezhañ sikour ac'hanon",
+      "known": "il veut m'aider"
+     }
+    ],
+    "use": [
+     {
+      "target": "emaout o vont da sikour ac'hanon warc'hoazh",
+      "known": "tu vas m'aider demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhi sikour ac'hanon fenoz",
+      "known": "elle veut m'aider ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da sikour ac'hanon a-benn nebeut",
+      "known": "tu vas bientôt m'aider",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dit sikour ac'hanon bremañ",
+      "known": "tu veux m'aider maintenant",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da sikour ac'hanon diwezhatoc'h",
+      "known": "tu vas m'aider plus tard",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0025L03",
+    "idx": 3,
+    "target": "mont kuit",
+    "known": "partir",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "mont",
+      "known": "aller"
+     },
+     {
+      "target": "kuit",
+      "known": "parti"
+     }
+    ],
+    "build": [
+     {
+      "target": "fellout a ra din mont kuit",
+      "known": "je veux partir"
+     },
+     {
+      "target": "ne fell ket din mont kuit",
+      "known": "je ne veux pas partir"
+     },
+     {
+      "target": "fellout a ra dezhañ mont kuit",
+      "known": "il veut partir"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra dezhi mont kuit fenoz",
+      "known": "elle veut partir ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din mont kuit bremañ",
+      "known": "je ne veux pas partir maintenant",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra deomp mont kuit a-benn nebeut",
+      "known": "nous voulons bientôt partir",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din mont kuit diwezhatoc'h",
+      "known": "j'aimerais partir plus tard",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dit mont kuit buan",
+      "known": "tu veux partir rapidement",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0025L04",
+    "idx": 4,
+    "target": "a-raok ma rankin",
+    "known": "avant que je doive",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "a-raok ma",
+      "known": "avant que"
+     },
+     {
+      "target": "rankin",
+      "known": "je devrai"
+     }
+    ],
+    "build": [
+     {
+      "target": "a-raok ma rankin mont kuit",
+      "known": "avant que je doive partir"
+     },
+     {
+      "target": "komz ganit a-raok ma rankin mont kuit",
+      "known": "parler avec toi avant que je doive partir"
+     },
+     {
+      "target": "a-raok ma rankin paouez da gomz",
+      "known": "avant que je doive arrêter de parler"
+     }
+    ],
+    "use": [
+     {
+      "target": "Emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit ?",
+      "known": "Tu vas m'aider avant que je doive partir ?",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a ra din komz ganit a-raok ma rankin mont kuit",
+      "known": "je veux parler avec toi avant que je doive partir",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit fenoz",
+      "known": "tu vas m'aider avant que je doive partir ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din kejañ gant an holl a-raok ma rankin mont kuit",
+      "known": "j'aimerais rencontrer tout le monde avant que je doive partir",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din gouzout ar respont a-raok ma rankin mont kuit",
+      "known": "je veux savoir la réponse avant que je doive partir",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four. 'sikour ac'hanon' (help me) is one chunk in every pairing; 'a-raok ma rankin' likewise."
+  ]
+ },
+ {
+  "n": 26,
+  "known": "J'aime me sentir comme si j'étais presque prêt à partir.",
+  "target": "Plijout a ra din en em santout evel pa vefen kazi prest da vont kuit.",
+  "legos": [
+   {
+    "id": "S0026L01",
+    "idx": 1,
+    "target": "plijout a ra din",
+    "known": "j'aime",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "plijout",
+      "known": "plaire"
+     },
+     {
+      "target": "a ra",
+      "known": "fait"
+     },
+     {
+      "target": "din",
+      "known": "à moi"
+     }
+    ],
+    "build": [
+     {
+      "target": "plijout a ra din komz brezhoneg",
+      "known": "j'aime parler breton"
+     },
+     {
+      "target": "plijout a ra din deskiñ",
+      "known": "j'aime apprendre"
+     },
+     {
+      "target": "plijout a ra din kejañ gant tud",
+      "known": "j'aime rencontrer des gens"
+     }
+    ],
+    "use": [
+     {
+      "target": "plijout a ra din komz ganit",
+      "known": "j'aime parler avec toi",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din deskiñ brezhoneg gant an holl",
+      "known": "j'aime apprendre le breton avec tout le monde",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din komz gant tud a gomz brezhoneg",
+      "known": "j'aime parler avec des gens qui parlent breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din dont en-dro alies",
+      "known": "j'aime revenir souvent",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din gouzout muioc'h",
+      "known": "j'aime savoir plus",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0026L02",
+    "idx": 2,
+    "target": "prest",
+    "known": "prêt",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "n'on ket prest",
+      "known": "je ne suis pas prêt"
+     },
+     {
+      "target": "n'on ket prest bremañ",
+      "known": "je ne suis pas prêt maintenant"
+     },
+     {
+      "target": "n'on ket prest da gomz",
+      "known": "je ne suis pas prêt à parler"
+     }
+    ],
+    "use": [
+     {
+      "target": "n'on ket prest fenoz",
+      "known": "je ne suis pas prêt ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest met fellout a ra din klask",
+      "known": "je ne suis pas prêt mais je veux essayer",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest peogwir e fell din deskiñ muioc'h",
+      "known": "je ne suis pas prêt parce que je veux apprendre plus",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest da gregiñ",
+      "known": "je ne suis pas prêt à commencer",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest da gomz brezhoneg gant an holl",
+      "known": "je ne suis pas prêt à parler breton avec tout le monde",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0026L03",
+    "idx": 3,
+    "target": "da vont kuit",
+    "known": "à partir",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "da",
+      "known": "à"
+     },
+     {
+      "target": "vont kuit",
+      "known": "partir"
+     }
+    ],
+    "build": [
+     {
+      "target": "prest da vont kuit",
+      "known": "prêt à partir"
+     },
+     {
+      "target": "n'on ket prest da vont kuit",
+      "known": "je ne suis pas prêt à partir"
+     },
+     {
+      "target": "n'on ket prest da vont kuit bremañ",
+      "known": "je ne suis pas prêt à partir maintenant"
+     }
+    ],
+    "use": [
+     {
+      "target": "n'on ket prest da vont kuit fenoz",
+      "known": "je ne suis pas prêt à partir ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest da vont kuit warc'hoazh",
+      "known": "je ne suis pas prêt à partir demain",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest da vont kuit hiziv",
+      "known": "je ne suis pas prêt à partir aujourd'hui",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest da vont kuit ganit",
+      "known": "je ne suis pas prêt à partir avec toi",
+      "seed_sentence": false
+     },
+     {
+      "target": "n'on ket prest da vont kuit buan",
+      "known": "je ne suis pas prêt à partir rapidement",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0026L04",
+    "idx": 4,
+    "target": "en em santout",
+    "known": "me sentir",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "en em",
+      "known": "se"
+     },
+     {
+      "target": "santout",
+      "known": "sentir"
+     }
+    ],
+    "build": [
+     {
+      "target": "plijout a ra din en em santout prest",
+      "known": "j'aime me sentir prêt"
+     },
+     {
+      "target": "fellout a ra din en em santout prest",
+      "known": "je veux me sentir prêt"
+     },
+     {
+      "target": "en em santout prest da vont kuit",
+      "known": "me sentir prêt à partir"
+     }
+    ],
+    "use": [
+     {
+      "target": "plijout a rafe din en em santout prest",
+      "known": "j'aimerais me sentir prêt",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din en em santout prest a-raok ma rankin mont kuit",
+      "known": "je veux me sentir prêt avant que je doive partir",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din en em santout prest da gomz",
+      "known": "j'aime me sentir prêt à parler",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhañ en em santout prest",
+      "known": "il veut se sentir prêt",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din en em santout prest da vont kuit",
+      "known": "j'aime me sentir prêt à partir",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0026L05",
+    "idx": 5,
+    "target": "kazi prest",
+    "known": "presque prêt",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "kazi",
+      "known": "presque"
+     },
+     {
+      "target": "prest",
+      "known": "prêt"
+     }
+    ],
+    "build": [
+     {
+      "target": "en em santout kazi prest",
+      "known": "me sentir presque prêt"
+     },
+     {
+      "target": "plijout a ra din en em santout kazi prest",
+      "known": "j'aime me sentir presque prêt"
+     },
+     {
+      "target": "kazi prest da vont kuit",
+      "known": "presque prêt à partir"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra din en em santout kazi prest",
+      "known": "je veux me sentir presque prêt",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din en em santout kazi prest da gomz",
+      "known": "j'aime me sentir presque prêt à parler",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din en em santout kazi prest da vont kuit",
+      "known": "j'aimerais me sentir presque prêt à partir",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhi en em santout kazi prest",
+      "known": "elle veut se sentir presque prête",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din en em santout kazi prest da gregiñ",
+      "known": "j'aime me sentir presque prêt à commencer",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0026L06",
+    "idx": 6,
+    "target": "evel pa vefen",
+    "known": "comme si j'étais",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "evel pa",
+      "known": "comme si"
+     },
+     {
+      "target": "vefen",
+      "known": "je serais"
+     }
+    ],
+    "build": [
+     {
+      "target": "evel pa vefen prest",
+      "known": "comme si j'étais prêt"
+     },
+     {
+      "target": "en em santout evel pa vefen prest",
+      "known": "me sentir comme si j'étais prêt"
+     },
+     {
+      "target": "plijout a ra din en em santout evel pa vefen prest",
+      "known": "j'aime me sentir comme si j'étais prêt"
+     }
+    ],
+    "use": [
+     {
+      "target": "Plijout a ra din en em santout evel pa vefen kazi prest da vont kuit.",
+      "known": "J'aime me sentir comme si j'étais presque prêt à partir.",
+      "seed_sentence": true
+     },
+     {
+      "target": "plijout a ra din komz evel pa vefen prest",
+      "known": "j'aime parler comme si j'étais prêt",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din en em santout evel pa vefen kazi prest",
+      "known": "je veux me sentir comme si j'étais presque prêt",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a ra din en em santout evel pa vefen prest da gomz",
+      "known": "j'aime me sentir comme si j'étais prêt à parler",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din komz evel pa vefen sur",
+      "known": "je ne veux pas parler comme si j'étais sûr",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "The longest pilot seed: six LEGOs, in build-up order (prêt, then à partir, then se sentir, then the 'comme si' frame). English takes the same six. Welsh and Cornish could take 'prest da vont kuit' whole."
+  ]
+ },
+ {
+  "n": 27,
+  "known": "Je n'aime pas prendre trop de temps pour répondre.",
+  "target": "Ne blij ket din kemer re a amzer evit respont.",
+  "legos": [
+   {
+    "id": "S0027L01",
+    "idx": 1,
+    "target": "ne blij ket din",
+    "known": "je n'aime pas",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "ne blij ket",
+      "known": "ne plaît pas"
+     },
+     {
+      "target": "din",
+      "known": "à moi"
+     }
+    ],
+    "build": [
+     {
+      "target": "ne blij ket din komz buan",
+      "known": "je n'aime pas parler rapidement"
+     },
+     {
+      "target": "ne blij ket din mont kuit",
+      "known": "je n'aime pas partir"
+     },
+     {
+      "target": "ne blij ket din divinout",
+      "known": "je n'aime pas deviner"
+     }
+    ],
+    "use": [
+     {
+      "target": "ne blij ket din paouez da gomz",
+      "known": "je n'aime pas arrêter de parler",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din komz gant an holl",
+      "known": "je n'aime pas parler avec tout le monde",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din en em santout evel pa vefen prest",
+      "known": "je n'aime pas me sentir comme si j'étais prêt",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din dont en-dro fenoz",
+      "known": "je n'aime pas revenir ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din mont kuit buan",
+      "known": "je n'aime pas partir rapidement",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0027L02",
+    "idx": 2,
+    "target": "re a amzer",
+    "known": "trop de temps",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "re a",
+      "known": "trop de"
+     },
+     {
+      "target": "amzer",
+      "known": "temps"
+     }
+    ],
+    "build": [
+     {
+      "target": "kaout re a amzer",
+      "known": "avoir trop de temps"
+     },
+     {
+      "target": "ne blij ket din kaout re a amzer",
+      "known": "je n'aime pas avoir trop de temps"
+     },
+     {
+      "target": "ne fell ket din kaout re a amzer",
+      "known": "je ne veux pas avoir trop de temps"
+     }
+    ],
+    "use": [
+     {
+      "target": "ne blijfe ket din kaout re a amzer",
+      "known": "je n'aimerais pas avoir trop de temps",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din kaout re a amzer hiziv",
+      "known": "je ne veux pas avoir trop de temps aujourd'hui",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din kaout re a amzer fenoz",
+      "known": "je n'aime pas avoir trop de temps ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din kaout re a amzer",
+      "known": "j'aimerais avoir trop de temps",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhañ kaout re a amzer",
+      "known": "il veut avoir trop de temps",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0027L03",
+    "idx": 3,
+    "target": "kemer",
+    "known": "prendre",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "kemer re a amzer",
+      "known": "prendre trop de temps"
+     },
+     {
+      "target": "ne blij ket din kemer re a amzer",
+      "known": "je n'aime pas prendre trop de temps"
+     },
+     {
+      "target": "ne fell ket din kemer re a amzer",
+      "known": "je ne veux pas prendre trop de temps"
+     }
+    ],
+    "use": [
+     {
+      "target": "ne blijfe ket din kemer re a amzer",
+      "known": "je n'aimerais pas prendre trop de temps",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din kemer re a amzer fenoz",
+      "known": "je ne veux pas prendre trop de temps ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din kemer re a amzer a-raok ma rankin mont kuit",
+      "known": "je n'aime pas prendre trop de temps avant que je doive partir",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dit kemer re a amzer",
+      "known": "tu veux prendre trop de temps",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne blij ket din kemer re a amzer hiziv",
+      "known": "je n'aime pas prendre trop de temps aujourd'hui",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0027L04",
+    "idx": 4,
+    "target": "evit respont",
+    "known": "pour répondre",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "evit",
+      "known": "pour"
+     },
+     {
+      "target": "respont",
+      "known": "répondre"
+     }
+    ],
+    "build": [
+     {
+      "target": "kemer re a amzer evit respont",
+      "known": "prendre trop de temps pour répondre"
+     },
+     {
+      "target": "ne fell ket din kemer re a amzer evit respont",
+      "known": "je ne veux pas prendre trop de temps pour répondre"
+     },
+     {
+      "target": "komz a ran brezhoneg evit respont",
+      "known": "je parle breton pour répondre"
+     }
+    ],
+    "use": [
+     {
+      "target": "Ne blij ket din kemer re a amzer evit respont.",
+      "known": "Je n'aime pas prendre trop de temps pour répondre.",
+      "seed_sentence": true
+     },
+     {
+      "target": "ne blijfe ket din kemer re a amzer evit respont",
+      "known": "je n'aimerais pas prendre trop de temps pour répondre",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o klask kaout soñj eus ur ger evit respont",
+      "known": "j'essaie de me souvenir d'un mot pour répondre",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din gouzout muioc'h evit respont",
+      "known": "je veux savoir plus pour répondre",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da bleustriñ evit respont buan",
+      "known": "je vais m'entraîner pour répondre rapidement",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four ('re a amzer' = trop de temps / too much time / gormod o amser)."
+  ]
+ },
+ {
+  "n": 28,
+  "known": "C'est utile de commencer à parler dès que tu peux.",
+  "target": "Talvoudus eo kregiñ da gomz kerkent ha ma c'hallez.",
+  "legos": [
+   {
+    "id": "S0028L01",
+    "idx": 1,
+    "target": "talvoudus eo",
+    "known": "c'est utile",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "talvoudus",
+      "known": "utile"
+     },
+     {
+      "target": "eo",
+      "known": "est"
+     }
+    ],
+    "build": [
+     {
+      "target": "talvoudus eo komz brezhoneg",
+      "known": "c'est utile de parler breton"
+     },
+     {
+      "target": "talvoudus eo deskiñ",
+      "known": "c'est utile d'apprendre"
+     },
+     {
+      "target": "talvoudus eo gouzout ar respont",
+      "known": "c'est utile de savoir la réponse"
+     }
+    ],
+    "use": [
+     {
+      "target": "talvoudus eo komz gant tud a gomz brezhoneg",
+      "known": "c'est utile de parler avec des gens qui parlent breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo kejañ gant tud",
+      "known": "c'est utile de rencontrer des gens",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo kemer amzer evit respont",
+      "known": "c'est utile de prendre du temps pour répondre",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo komz brezhoneg an devezh a-bezh",
+      "known": "c'est utile de parler breton toute la journée",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo gallout komz buan",
+      "known": "c'est utile de pouvoir parler rapidement",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0028L02",
+    "idx": 2,
+    "target": "kregiñ da gomz",
+    "known": "commencer à parler",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "kregiñ",
+      "known": "commencer"
+     },
+     {
+      "target": "da gomz",
+      "known": "à parler"
+     }
+    ],
+    "build": [
+     {
+      "target": "talvoudus eo kregiñ da gomz",
+      "known": "c'est utile de commencer à parler"
+     },
+     {
+      "target": "fellout a ra din kregiñ da gomz",
+      "known": "je veux commencer à parler"
+     },
+     {
+      "target": "plijout a rafe din kregiñ da gomz",
+      "known": "j'aimerais commencer à parler"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra dit kregiñ da gomz brezhoneg",
+      "known": "tu veux commencer à parler breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din kregiñ da gomz bremañ",
+      "known": "je ne veux pas commencer à parler maintenant",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo kregiñ da gomz buan",
+      "known": "c'est utile de commencer à parler rapidement",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhi kregiñ da gomz ganin",
+      "known": "elle veut commencer à parler avec moi",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din kregiñ da gomz brezhoneg gant tud",
+      "known": "j'aimerais commencer à parler breton avec des gens",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0028L03",
+    "idx": 3,
+    "target": "kerkent ha ma c'hallez",
+    "known": "dès que tu peux",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "kerkent ha ma",
+      "known": "dès que"
+     },
+     {
+      "target": "c'hallez",
+      "known": "tu peux"
+     }
+    ],
+    "build": [
+     {
+      "target": "dont en-dro kerkent ha ma c'hallez",
+      "known": "revenir dès que tu peux"
+     },
+     {
+      "target": "kregiñ da gomz kerkent ha ma c'hallez",
+      "known": "commencer à parler dès que tu peux"
+     },
+     {
+      "target": "talvoudus eo komz kerkent ha ma c'hallez",
+      "known": "c'est utile de parler dès que tu peux"
+     }
+    ],
+    "use": [
+     {
+      "target": "Talvoudus eo kregiñ da gomz kerkent ha ma c'hallez.",
+      "known": "C'est utile de commencer à parler dès que tu peux.",
+      "seed_sentence": true
+     },
+     {
+      "target": "talvoudus eo deskiñ kerkent ha ma c'hallez",
+      "known": "c'est utile d'apprendre dès que tu peux",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra din e komzfes ganin kerkent ha ma c'hallez",
+      "known": "je veux que tu parles avec moi dès que tu peux",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo kejañ gant tud kerkent ha ma c'hallez",
+      "known": "c'est utile de rencontrer des gens dès que tu peux",
+      "seed_sentence": false
+     },
+     {
+      "target": "talvoudus eo mont kuit kerkent ha ma c'hallez",
+      "known": "c'est utile de partir dès que tu peux",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four. 'kerkent ha ma c'hallez' stays whole everywhere (as soon as you can)."
+  ]
+ },
+ {
+  "n": 29,
+  "known": "J'ai hâte de parler mieux dès que possible.",
+  "target": "Mall eo ganin komz gwelloc'h kerkent ha ma c'haller.",
+  "legos": [
+   {
+    "id": "S0029L01",
+    "idx": 1,
+    "target": "mall eo ganin",
+    "known": "j'ai hâte",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "mall",
+      "known": "hâte"
+     },
+     {
+      "target": "eo",
+      "known": "est"
+     },
+     {
+      "target": "ganin",
+      "known": "avec moi"
+     }
+    ],
+    "build": [
+     {
+      "target": "mall eo ganin komz brezhoneg",
+      "known": "j'ai hâte de parler breton"
+     },
+     {
+      "target": "mall eo ganin kregiñ da gomz",
+      "known": "j'ai hâte de commencer à parler"
+     },
+     {
+      "target": "mall eo ganin mont kuit",
+      "known": "j'ai hâte de partir"
+     }
+    ],
+    "use": [
+     {
+      "target": "mall eo ganin kejañ gant tud a gomz brezhoneg",
+      "known": "j'ai hâte de rencontrer des gens qui parlent breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "mall eo ganin dont en-dro",
+      "known": "j'ai hâte de revenir",
+      "seed_sentence": false
+     },
+     {
+      "target": "mall eo ganin gouzout ar respont",
+      "known": "j'ai hâte de savoir la réponse",
+      "seed_sentence": false
+     },
+     {
+      "target": "mall eo ganin komz ganit fenoz",
+      "known": "j'ai hâte de parler avec toi ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "mall eo ganin deskiñ muioc'h",
+      "known": "j'ai hâte d'apprendre plus",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0029L02",
+    "idx": 2,
+    "target": "gwelloc'h",
+    "known": "mieux",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "komz gwelloc'h",
+      "known": "parler mieux"
+     },
+     {
+      "target": "fellout a ra din komz gwelloc'h",
+      "known": "je veux parler mieux"
+     },
+     {
+      "target": "mall eo ganin komz gwelloc'h",
+      "known": "j'ai hâte de parler mieux"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra din komz brezhoneg gwelloc'h",
+      "known": "je veux parler mieux le breton",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaout o teskiñ gwelloc'h",
+      "known": "tu apprends mieux",
+      "seed_sentence": false
+     },
+     {
+      "target": "plijout a rafe din gallout komz gwelloc'h",
+      "known": "j'aimerais pouvoir parler mieux",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dit komz gwelloc'h",
+      "known": "tu veux parler mieux",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o klask displegañ gwelloc'h",
+      "known": "j'essaie d'expliquer mieux",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0029L03",
+    "idx": 3,
+    "target": "kerkent ha ma c'haller",
+    "known": "dès que possible",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "kerkent ha ma",
+      "known": "dès que"
+     },
+     {
+      "target": "c'haller",
+      "known": "on peut"
+     }
+    ],
+    "build": [
+     {
+      "target": "dont en-dro kerkent ha ma c'haller",
+      "known": "revenir dès que possible"
+     },
+     {
+      "target": "mont kuit kerkent ha ma c'haller",
+      "known": "partir dès que possible"
+     },
+     {
+      "target": "fellout a ra din kregiñ da gomz kerkent ha ma c'haller",
+      "known": "je veux commencer à parler dès que possible"
+     }
+    ],
+    "use": [
+     {
+      "target": "Mall eo ganin komz gwelloc'h kerkent ha ma c'haller.",
+      "known": "J'ai hâte de parler mieux dès que possible.",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a ra deomp en em gavout kerkent ha ma c'haller",
+      "known": "nous voulons nous retrouver dès que possible",
+      "seed_sentence": false
+     },
+     {
+      "target": "emaon o vont da gregiñ kerkent ha ma c'haller",
+      "known": "je vais commencer dès que possible",
+      "seed_sentence": false
+     },
+     {
+      "target": "mall eo ganin mont kuit kerkent ha ma c'haller",
+      "known": "j'ai hâte de partir dès que possible",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhañ dont en-dro kerkent ha ma c'haller",
+      "known": "il veut revenir dès que possible",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four. 'mall eo ganin' replaces the old course's 'c'hoant am eus' for 'j'ai hâte' (Deborah's first finding)."
+  ]
+ },
+ {
+  "n": 30,
+  "known": "Je voulais te demander quelque chose hier.",
+  "target": "Fellout a rae din goulenn un dra bennak diganit dec'h.",
+  "legos": [
+   {
+    "id": "S0030L01",
+    "idx": 1,
+    "target": "fellout a rae din",
+    "known": "je voulais",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "fellout",
+      "known": "vouloir"
+     },
+     {
+      "target": "a rae",
+      "known": "faisait"
+     },
+     {
+      "target": "din",
+      "known": "à moi"
+     }
+    ],
+    "build": [
+     {
+      "target": "fellout a rae din komz",
+      "known": "je voulais parler"
+     },
+     {
+      "target": "fellout a rae din mont kuit",
+      "known": "je voulais partir"
+     },
+     {
+      "target": "fellout a rae din gouzout",
+      "known": "je voulais savoir"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a rae din komz ganit",
+      "known": "je voulais parler avec toi",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din kejañ gant tud",
+      "known": "je voulais rencontrer des gens",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din kregiñ da gomz",
+      "known": "je voulais commencer à parler",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din gouzout ar respont",
+      "known": "je voulais savoir la réponse",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din dont en-dro buan",
+      "known": "je voulais revenir rapidement",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0030L02",
+    "idx": 2,
+    "target": "goulenn diganit",
+    "known": "te demander",
+    "type": "M",
+    "is_new": true,
+    "components": [
+     {
+      "target": "goulenn",
+      "known": "demander"
+     },
+     {
+      "target": "diganit",
+      "known": "de toi"
+     }
+    ],
+    "build": [
+     {
+      "target": "fellout a rae din goulenn diganit",
+      "known": "je voulais te demander"
+     },
+     {
+      "target": "fellout a ra din goulenn un dra bennak diganit",
+      "known": "je veux te demander quelque chose"
+     },
+     {
+      "target": "plijout a rafe din goulenn un dra bennak diganit",
+      "known": "j'aimerais te demander quelque chose"
+     }
+    ],
+    "use": [
+     {
+      "target": "fellout a ra dezhañ goulenn un dra bennak diganit",
+      "known": "il veut te demander quelque chose",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din goulenn un dra bennak diganit",
+      "known": "je voulais te demander quelque chose",
+      "seed_sentence": false
+     },
+     {
+      "target": "mall eo ganin goulenn un dra bennak diganit",
+      "known": "j'ai hâte de te demander quelque chose",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a ra dezhi goulenn un dra bennak diganit fenoz",
+      "known": "elle veut te demander quelque chose ce soir",
+      "seed_sentence": false
+     },
+     {
+      "target": "ne fell ket din goulenn un dra bennak diganit bremañ",
+      "known": "je ne veux pas te demander quelque chose maintenant",
+      "seed_sentence": false
+     }
+    ]
+   },
+   {
+    "id": "S0030L03",
+    "idx": 3,
+    "target": "dec'h",
+    "known": "hier",
+    "type": "A",
+    "is_new": true,
+    "components": [],
+    "build": [
+     {
+      "target": "fellout a rae din komz ganit dec'h",
+      "known": "je voulais parler avec toi hier"
+     },
+     {
+      "target": "fellout a rae din mont kuit dec'h",
+      "known": "je voulais partir hier"
+     },
+     {
+      "target": "fellout a rae din dont en-dro dec'h",
+      "known": "je voulais revenir hier"
+     }
+    ],
+    "use": [
+     {
+      "target": "Fellout a rae din goulenn un dra bennak diganit dec'h.",
+      "known": "Je voulais te demander quelque chose hier.",
+      "seed_sentence": true
+     },
+     {
+      "target": "fellout a rae din kejañ gant tud dec'h",
+      "known": "je voulais rencontrer des gens hier",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din kregiñ dec'h",
+      "known": "je voulais commencer hier",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din sikour dec'h",
+      "known": "je voulais aider hier",
+      "seed_sentence": false
+     },
+     {
+      "target": "fellout a rae din komz brezhoneg ganit dec'h",
+      "known": "je voulais parler breton avec toi hier",
+      "seed_sentence": false
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "Shared by all four. 'goulenn … diganit' is taught as one LEGO and split by its object in the sentence, which the canon allows (K49)."
+  ]
  }
 ]

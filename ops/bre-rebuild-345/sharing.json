@@ -1,0 +1,44 @@
+{
+ "method": "Unit = a Breton LEGO text or a Breton phrase text (what an artist records once). fra is the baseline. eng: a LEGO or phrase is shared unless its seed's Breton follows the French against the English seed (list ENG_DIVERGE, read by hand over all 300 proposals); 'if the English prompt moves' counts those as shared too. cym/cor: a LEGO is shared unless a Welsh/Cornish course would take a bigger chunk there (table BIGGER, judged per pilot seed); a phrase under a replaced LEGO is shared in place if it contains the bigger chunk, otherwise it keeps its Breton text but needs a new home LEGO. All eng/cym/cor figures are judgement: no such course exists.",
+ "pilot": {
+  "legos": 96,
+  "phrases": 707,
+  "fra": {
+   "lego_share": 1.0,
+   "phrase_share": 1.0
+  },
+  "eng": {
+   "lego_share_if_english_prompt_moves": 1.0,
+   "phrase_share_if_english_prompt_moves": 1.0,
+   "lego_share_if_english_seed_kept": 0.854,
+   "phrase_share_if_english_seed_kept": 0.842,
+   "diverging_pilot_seeds": [
+    12,
+    16,
+    26
+   ]
+  },
+  "cym": {
+   "lego_share": 0.875,
+   "legos_replaced_by_bigger_chunks": 12,
+   "phrase_text_share": 1.0,
+   "phrases_shared_in_place": 671,
+   "phrases_needing_a_new_home_lego": 36,
+   "phrase_share_in_place": 0.949
+  },
+  "cor": "same figures as cym: no evidence separates them; Cornish is the closer relative, so if anything it shares more"
+ },
+ "extrapolated_1_300": {
+  "basis": "pilot rates applied to the whole course; the old course has 596 new LEGOs over 300 seeds and the pilot runs 3.2 LEGOs a seed against its 2.6 for seeds 1-100, so the rebuilt course is projected at about 650 to 750 LEGOs and 5,000 to 5,600 phrases",
+  "eng": {
+   "seeds_where_breton_follows_french_against_english": 17,
+   "share_if_english_seed_kept": 0.943,
+   "share_if_english_prompt_moves": 1.0
+  },
+  "cym_cor": {
+   "lego_share": 0.875,
+   "phrase_share_in_place": 0.949,
+   "phrase_text_share": 1.0
+  }
+ }
+}

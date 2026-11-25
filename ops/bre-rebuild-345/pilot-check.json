@@ -1,11 +1,11 @@
 {
  "checker": "services/course-builder/lib pure functions, offline; ZUT in memory over the pilot",
  "totals": {
-  "seeds": 20,
-  "legos": 60,
-  "new_legos": 60,
-  "build": 159,
-  "use": 260,
+  "seeds": 30,
+  "legos": 96,
+  "new_legos": 96,
+  "build": 267,
+  "use": 440,
   "hard": 0,
   "warn": 0
  },
@@ -845,6 +845,492 @@
      "id": "S0020L03",
      "target": "buan",
      "known": "rapidement",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    }
+   ]
+  },
+  {
+   "seed": 21,
+   "target": "Perak emaout o teskiñ hec'h anv ?",
+   "known": "Pourquoi tu apprends son prénom à elle ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0021L01",
+     "target": "emaout o teskiñ",
+     "known": "tu apprends",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0021L02",
+     "target": "perak",
+     "known": "pourquoi",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0021L03",
+     "target": "hec'h anv",
+     "known": "son prénom à elle",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 22,
+   "target": "Peogwir e fell din kejañ gant tud a gomz brezhoneg.",
+   "known": "Parce que je veux rencontrer des gens qui parlent breton.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0022L01",
+     "target": "peogwir e fell din",
+     "known": "parce que je veux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0022L02",
+     "target": "kejañ gant",
+     "known": "rencontrer",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0022L03",
+     "target": "tud",
+     "known": "des gens",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0022L04",
+     "target": "a gomz",
+     "known": "qui parlent",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 23,
+   "target": "Emaon o vont da gregiñ da gomz muioc'h a-benn nebeut.",
+   "known": "Je vais bientôt commencer à parler plus.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0023L01",
+     "target": "emaon o vont da gregiñ",
+     "known": "je vais commencer",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    },
+    {
+     "id": "S0023L02",
+     "target": "muioc'h",
+     "known": "plus",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    },
+    {
+     "id": "S0023L03",
+     "target": "a-benn nebeut",
+     "known": "bientôt",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    }
+   ]
+  },
+  {
+   "seed": 24,
+   "target": "N'emaon ket o vont da c'hallout kaout soñj aes.",
+   "known": "Je ne vais pas pouvoir me souvenir facilement.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0024L01",
+     "target": "n'emaon ket o vont",
+     "known": "je ne vais pas",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0024L02",
+     "target": "da c'hallout kaout soñj",
+     "known": "pouvoir me souvenir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    },
+    {
+     "id": "S0024L03",
+     "target": "aes",
+     "known": "facilement",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    }
+   ]
+  },
+  {
+   "seed": 25,
+   "target": "Emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit ?",
+   "known": "Tu vas m'aider avant que je doive partir ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0025L01",
+     "target": "emaout o vont da",
+     "known": "tu vas",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0025L02",
+     "target": "sikour ac'hanon",
+     "known": "m'aider",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0025L03",
+     "target": "mont kuit",
+     "known": "partir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0025L04",
+     "target": "a-raok ma rankin",
+     "known": "avant que je doive",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    }
+   ]
+  },
+  {
+   "seed": 26,
+   "target": "Plijout a ra din en em santout evel pa vefen kazi prest da vont kuit.",
+   "known": "J'aime me sentir comme si j'étais presque prêt à partir.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0026L01",
+     "target": "plijout a ra din",
+     "known": "j'aime",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0026L02",
+     "target": "prest",
+     "known": "prêt",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0026L03",
+     "target": "da vont kuit",
+     "known": "à partir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0026L04",
+     "target": "en em santout",
+     "known": "me sentir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0026L05",
+     "target": "kazi prest",
+     "known": "presque prêt",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0026L06",
+     "target": "evel pa vefen",
+     "known": "comme si j'étais",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    }
+   ]
+  },
+  {
+   "seed": 27,
+   "target": "Ne blij ket din kemer re a amzer evit respont.",
+   "known": "Je n'aime pas prendre trop de temps pour répondre.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0027L01",
+     "target": "ne blij ket din",
+     "known": "je n'aime pas",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0027L02",
+     "target": "re a amzer",
+     "known": "trop de temps",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0027L03",
+     "target": "kemer",
+     "known": "prendre",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0027L04",
+     "target": "evit respont",
+     "known": "pour répondre",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    }
+   ]
+  },
+  {
+   "seed": 28,
+   "target": "Talvoudus eo kregiñ da gomz kerkent ha ma c'hallez.",
+   "known": "C'est utile de commencer à parler dès que tu peux.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0028L01",
+     "target": "talvoudus eo",
+     "known": "c'est utile",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0028L02",
+     "target": "kregiñ da gomz",
+     "known": "commencer à parler",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0028L03",
+     "target": "kerkent ha ma c'hallez",
+     "known": "dès que tu peux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "target": "Mall eo ganin komz gwelloc'h kerkent ha ma c'haller.",
+   "known": "J'ai hâte de parler mieux dès que possible.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0029L01",
+     "target": "mall eo ganin",
+     "known": "j'ai hâte",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0029L02",
+     "target": "gwelloc'h",
+     "known": "mieux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    },
+    {
+     "id": "S0029L03",
+     "target": "kerkent ha ma c'haller",
+     "known": "dès que possible",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    }
+   ]
+  },
+  {
+   "seed": 30,
+   "target": "Fellout a rae din goulenn un dra bennak diganit dec'h.",
+   "known": "Je voulais te demander quelque chose hier.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0030L01",
+     "target": "fellout a rae din",
+     "known": "je voulais",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0030L02",
+     "target": "goulenn diganit",
+     "known": "te demander",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0030L03",
+     "target": "dec'h",
+     "known": "hier",
      "is_new": true,
      "build": 3,
      "use": 5,
