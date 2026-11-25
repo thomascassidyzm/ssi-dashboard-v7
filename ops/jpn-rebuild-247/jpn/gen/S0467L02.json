@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 467,
+  "lego_index": 2,
+  "known": "car park",
+  "target": "駐車場"
+ },
+ "at": "2026-11-25T10:22:49.372Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 132,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"car park\" initially, medially AND finally.",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "build",
+   "known_text": "a new car park",
+   "target_text": "新しい駐車場",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "build",
+   "known_text": "near the car park",
+   "target_text": "駐車場の近くに",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "build",
+   "known_text": "it wasn't the same car park",
+   "target_text": "同じ駐車場じゃなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "build",
+   "known_text": "tomorrow I want to find the car park",
+   "target_text": "明日駐車場探したい",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "use",
+   "known_text": "i thought it was the car park",
+   "target_text": "駐車場だと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was the car park",
+   "target_text": "駐車場とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "use",
+   "known_text": "it might be a new car park",
+   "target_text": "新しい駐車場かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "use",
+   "known_text": "i'm walking towards the car park",
+   "target_text": "駐車場のほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "use",
+   "known_text": "i can put it near the car park",
+   "target_text": "駐車場の近くに置ける",
+   "pad": []
+  },
+  {
+   "seed_number": 467,
+   "lego_index": 2,
+   "lego_known": "car park",
+   "lego_target": "駐車場",
+   "phrase_role": "use",
+   "known_text": "i'll ask if it's the same car park",
+   "target_text": "同じ駐車場か聞いてみる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

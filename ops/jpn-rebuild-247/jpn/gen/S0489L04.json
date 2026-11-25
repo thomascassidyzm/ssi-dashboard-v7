@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 489,
+  "lego_index": 4,
+  "known": "if didn't do for me",
+  "target": "くれなかったら"
+ },
+ "at": "2026-11-25T12:06:40.330Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 170,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if didn't do for me\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "build",
+   "known_text": "if you don't let me drive",
+   "target_text": "運転させてくれなかったら",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "build",
+   "known_text": "if you don't let me throw",
+   "target_text": "投げさせてくれなかったら",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "build",
+   "known_text": "if you don't make coffee for me",
+   "target_text": "コーヒー作ってくれなかったら",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "build",
+   "known_text": "if you don't make it for me i can't do it",
+   "target_text": "作ってくれなかったら無理",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "if they don't let me park i'm going to be late",
+   "target_text": "駐車させてくれなかったら遅れそう",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "if they don't let me drive i'll have to go home",
+   "target_text": "運転させてくれなかったら帰らなきゃ",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "what do i do if they don't let me throw",
+   "target_text": "投げさせてくれなかったら何する",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "if you don't make me coffee i won't be able to go",
+   "target_text": "コーヒー作ってくれなかったら行けない",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "if they don't let me park it won't be a problem",
+   "target_text": "駐車させてくれなかったら問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "if you don't make me a strong coffee i might be angry",
+   "target_text": "濃いコーヒー作ってくれなかったら怒ってるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 4,
+   "lego_known": "if didn't do for me",
+   "lego_target": "くれなかったら",
+   "phrase_role": "use",
+   "known_text": "if they don't let me throw i think it's okay",
+   "target_text": "投げさせてくれなかったら大丈夫だと思う",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

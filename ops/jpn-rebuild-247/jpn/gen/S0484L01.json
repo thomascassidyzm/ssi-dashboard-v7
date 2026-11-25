@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 484,
+  "lego_index": 1,
+  "known": "not supposed to be",
+  "target": "はずじゃない"
+ },
+ "at": "2026-11-25T11:34:05.344Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 184,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "not supposed to be busy",
+   "target_text": "忙しいはずじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "life is not supposed to be terrible",
+   "target_text": "人生ひどいはずじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "I'll ask if it's not supposed to be big",
+   "target_text": "大きいはずじゃないか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "build",
+   "known_text": "I heard that it's not supposed to be new",
+   "target_text": "新しいはずじゃないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "I want to take a break because tuesday isn't supposed to be busy",
+   "target_text": "火曜忙しいはずじゃないから休憩したい",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "I wonder if the hotel isn't supposed to be new",
+   "target_text": "ホテル新しいはずじゃないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "I heard that the meal isn't supposed to be terrible",
+   "target_text": "食事ひどいはずじゃないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "that woman you know isn't supposed to be busy",
+   "target_text": "知ってるあの女性忙しいはずじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 484,
+   "lego_index": 1,
+   "lego_known": "not supposed to be",
+   "lego_target": "はずじゃない",
+   "phrase_role": "use",
+   "known_text": "my son isn't supposed to be busy this year",
+   "target_text": "息子今年忙しいはずじゃない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

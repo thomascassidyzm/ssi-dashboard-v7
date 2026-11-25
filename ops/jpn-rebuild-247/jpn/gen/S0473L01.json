@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 473,
+  "lego_index": 1,
+  "known": "don't need",
+  "target": "いらない"
+ },
+ "at": "2026-11-25T10:28:10.946Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 155,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"i heard that they don't need postcards\" (unknown gloss \"postcards\")",
+  "USE \"i heard that they don't need postcards\" → \"彼らはがきいらないって聞いた\": popty:knownSide [{\"known\":\"i heard that they don't need postcards\",\"target\":\"彼らはがきいらないって聞いた\",\"problem\":\"unknown gloss \\\"postcards\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

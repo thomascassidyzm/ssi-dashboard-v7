@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 494,
+  "lego_index": 3,
+  "known": "happen",
+  "target": "起きる"
+ },
+ "at": "2026-11-25T12:13:11.024Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors"
+ ],
+ "attempts": 2,
+ "secs": 144,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: 1 duplicate phrase(s) within this LEGO: \"起きるはずじゃない\""
+ ],
+ "rows": [],
+ "keep": false
+}

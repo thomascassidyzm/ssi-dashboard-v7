@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 482,
+  "lego_index": 2,
+  "known": "not serious",
+  "target": "本気じゃない"
+ },
+ "at": "2026-11-25T11:31:01.152Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 147,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"college students might not be serious\" (unknown gloss \"students\")",
+  "USE \"college students might not be serious\" → \"学生本気じゃないかもしれない\": popty:knownSide [{\"known\":\"college students might not be serious\",\"target\":\"学生本気じゃないかもしれない\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not serious\" initially, medially AND finally.",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

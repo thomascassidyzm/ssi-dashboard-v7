@@ -1,0 +1,146 @@
+{
+ "lego": {
+  "seed_number": 490,
+  "lego_index": 3,
+  "known": "not trust",
+  "target": "信じない"
+ },
+ "at": "2026-11-25T12:09:10.525Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 150,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not trust\" initially, medially AND finally.",
+  "NEIGH 0.08 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.08 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "build",
+   "known_text": "might not trust",
+   "target_text": "信じないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "build",
+   "known_text": "the reason i don't trust",
+   "target_text": "信じない理由",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "build",
+   "known_text": "never trust again",
+   "target_text": "二度と信じない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "build",
+   "known_text": "from now on i won't trust",
+   "target_text": "これから信じない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "i might never trust again",
+   "target_text": "二度と信じないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "i heard that they don't trust",
+   "target_text": "彼ら信じないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "i'm never going to trust again",
+   "target_text": "二度と信じないつもり",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "i didn't think you wouldn't trust me",
+   "target_text": "信じないとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "i wonder if he won't trust me",
+   "target_text": "信じないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "i trust nothing but the facts",
+   "target_text": "事実しか信じない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "he isn't serious so i don't trust him",
+   "target_text": "本気じゃないから信じない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 3,
+   "lego_known": "not trust",
+   "lego_target": "信じない",
+   "phrase_role": "use",
+   "known_text": "whatever he says i don't trust him",
+   "target_text": "彼が何を言っても信じない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

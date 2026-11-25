@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 475,
+  "lego_index": 3,
+  "known": "lots",
+  "target": "たくさん"
+ },
+ "at": "2026-11-25T10:30:33.674Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 160,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"this year i can buy lots of books\" (unknown gloss \"books\")",
+  "USE \"this year i can buy lots of books\" → \"今年本たくさん買える\": popty:knownSide [{\"known\":\"this year i can buy lots of books\",\"target\":\"今年本たくさん買える\",\"problem\":\"unknown gloss \\\"books\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

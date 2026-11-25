@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 486,
+  "lego_index": 4,
+  "known": "think",
+  "target": "思う"
+ },
+ "at": "2026-11-25T12:02:46.345Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 250,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"it might be easier than you think\" (unknown gloss \"easier\"); \"i wonder if it's easier than you think\" (unknown gloss \"easier\")",
+  "USE \"it might be easier than you think\" → \"思うより簡単かもしれない\": popty:knownSide [{\"known\":\"it might be easier than you think\",\"target\":\"思うより簡単かもしれない\",\"problem\":\"unknown gloss \\\"easier\\\"\"}]",
+  "USE \"i wonder if it's easier than you think\" → \"思うより簡単か気になる\": popty:knownSide [{\"known\":\"i wonder if it's easier than you think\",\"target\":\"思うより簡単か気になる\",\"problem\":\"unknown gloss \\\"easier\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"think\" initially, medially AND finally.",
+  "NEIGH 0.17 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

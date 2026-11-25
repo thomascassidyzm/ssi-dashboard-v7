@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 495,
+  "lego_index": 1,
+  "known": "time",
+  "target": "とき"
+ },
+ "at": "2026-11-25T12:14:16.106Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 173,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "build",
+   "known_text": "the time i was young",
+   "target_text": "若いとき",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "build",
+   "known_text": "the time i was tired",
+   "target_text": "疲れてたとき",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "build",
+   "known_text": "the time you're bored",
+   "target_text": "退屈してるとき",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "build",
+   "known_text": "at such a time",
+   "target_text": "そんなとき",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "what do you do at such a time",
+   "target_text": "そんなとき何する",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "it's better to go straight home at such a time",
+   "target_text": "そんなときまっすぐ帰ったほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "i think it's okay at such a time",
+   "target_text": "そんなとき大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "at the time i was young i wanted to see friends",
+   "target_text": "若いとき友だちに会いたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "at the time i was tired i couldn't do it",
+   "target_text": "疲れてたときできなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "at the time you're feeling sick you don't need to stand",
+   "target_text": "具合が悪いとき立たなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 495,
+   "lego_index": 1,
+   "lego_known": "time",
+   "lego_target": "とき",
+   "phrase_role": "use",
+   "known_text": "at the time i was busy i didn't want to decide",
+   "target_text": "忙しかったとき決めたくなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

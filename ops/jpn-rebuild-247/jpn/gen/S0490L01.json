@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 490,
+  "lego_index": 1,
+  "known": "never again",
+  "target": "二度と"
+ },
+ "at": "2026-11-25T12:06:49.406Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 141,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"never again\" initially, medially AND finally.",
+  "NEIGH 0.14 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "build",
+   "known_text": "never go home again",
+   "target_text": "二度と帰らない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "build",
+   "known_text": "from now on never again",
+   "target_text": "これから二度と",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "build",
+   "known_text": "if i could get away never again",
+   "target_text": "逃げられたら二度と",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "build",
+   "known_text": "can never change it again",
+   "target_text": "二度と変えられない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "i might never be able to go again",
+   "target_text": "二度と行けないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "more than anything i never want to lose it again",
+   "target_text": "何より二度と失いたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "if i could get away i would never go home again",
+   "target_text": "逃げられたら二度と帰らない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "because i was tired i never want to climb again",
+   "target_text": "疲れてたから二度と登りたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "from now on i will never ride it again",
+   "target_text": "これから二度と乗らない",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "i didn't think that i would never want to see you again",
+   "target_text": "二度と会いたくないとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 490,
+   "lego_index": 1,
+   "lego_known": "never again",
+   "lego_target": "二度と",
+   "phrase_role": "use",
+   "known_text": "i heard that it will never be a problem again",
+   "target_text": "二度と問題にならないって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

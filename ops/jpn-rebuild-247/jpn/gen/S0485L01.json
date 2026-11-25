@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 485,
+  "lego_index": 1,
+  "known": "glad",
+  "target": "嬉しい"
+ },
+ "at": "2026-11-25T11:34:58.268Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 218,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "build",
+   "known_text": "might be glad",
+   "target_text": "嬉しいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "build",
+   "known_text": "not supposed to be glad",
+   "target_text": "嬉しいはずじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "build",
+   "known_text": "they're very glad",
+   "target_text": "彼らとても嬉しい",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "build",
+   "known_text": "truly glad",
+   "target_text": "本当に嬉しい",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "i'm glad because they came",
+   "target_text": "彼ら来たから嬉しい",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if they're glad",
+   "target_text": "彼ら嬉しいかどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "i wonder if they're glad",
+   "target_text": "彼ら嬉しいか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "if i asked, they might be glad",
+   "target_text": "頼んだら彼ら嬉しいかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "i didn't think i'd be glad",
+   "target_text": "嬉しいとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "it feels like i'm truly glad",
+   "target_text": "本当に嬉しい気がする",
+   "pad": []
+  },
+  {
+   "seed_number": 485,
+   "lego_index": 1,
+   "lego_known": "glad",
+   "lego_target": "嬉しい",
+   "phrase_role": "use",
+   "known_text": "after we finish, i'll be very glad",
+   "target_text": "終わったらとても嬉しい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

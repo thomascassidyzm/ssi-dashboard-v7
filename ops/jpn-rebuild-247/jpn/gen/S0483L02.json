@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 483,
+  "lego_index": 2,
+  "known": "not easy",
+  "target": "簡単じゃない"
+ },
+ "at": "2026-11-25T11:32:00.909Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 176,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "build",
+   "known_text": "truly not easy",
+   "target_text": "本当に簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "build",
+   "known_text": "a problem that isn't easy",
+   "target_text": "簡単じゃない問題",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "build",
+   "known_text": "it might not be easy",
+   "target_text": "簡単じゃないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "build",
+   "known_text": "that idea isn't easy",
+   "target_text": "そのアイデアは簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "it's not easy because i'm feeling sick",
+   "target_text": "具合が悪いから簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "even if you want to do it it's not easy",
+   "target_text": "やりたくても簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "i couldn't do it because it's not easy",
+   "target_text": "簡単じゃないからできなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "isn't it truly not easy",
+   "target_text": "本当に簡単じゃないんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "i heard it's a world that isn't easy",
+   "target_text": "簡単じゃない世界って聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "i didn't expect that idea not to be easy",
+   "target_text": "そのアイデアは簡単じゃないとは思ってなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 483,
+   "lego_index": 2,
+   "lego_known": "not easy",
+   "lego_target": "簡単じゃない",
+   "phrase_role": "use",
+   "known_text": "it's not easy until everybody is ready",
+   "target_text": "みんなが準備できるまで簡単じゃない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

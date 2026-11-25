@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 472,
+  "lego_index": 3,
+  "known": "not aware of",
+  "target": "知らない"
+ },
+ "at": "2026-11-25T10:27:53.665Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 139,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"the college students aren't aware of the start time, isn't it?\" (unknown gloss \"students\")",
+  "USE \"the college students aren't aware of the start time, isn't it?\" → \"学生開始時間知らないんじゃない\": popty:knownSide [{\"known\":\"the college students aren't aware of the start time, isn't it?\",\"target\":\"学生開始時間知らないんじゃない\",\"problem\":\"unknown gloss \\\"students\\\"\"}]",
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

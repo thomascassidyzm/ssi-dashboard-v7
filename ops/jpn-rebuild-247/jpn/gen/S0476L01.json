@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 476,
+  "lego_index": 1,
+  "known": "end",
+  "target": "終わり"
+ },
+ "at": "2026-11-25T10:30:41.599Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 151,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "build",
+   "known_text": "near the end",
+   "target_text": "終わりの近くに",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "build",
+   "known_text": "the same end",
+   "target_text": "同じ終わり",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "build",
+   "known_text": "towards the end",
+   "target_text": "終わりのほうに",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "build",
+   "known_text": "walking towards the end",
+   "target_text": "終わりのほうに歩いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "it might be the end tomorrow",
+   "target_text": "明日終わりかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait until the end",
+   "target_text": "終わりまで待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "I truly thought it was the end",
+   "target_text": "本当に終わりだと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "I wonder if it's the end",
+   "target_text": "終わりか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "I didn't think it was the same end",
+   "target_text": "同じ終わりとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "I'm standing near the end",
+   "target_text": "終わりの近くに立ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 476,
+   "lego_index": 1,
+   "lego_known": "end",
+   "lego_target": "終わり",
+   "phrase_role": "use",
+   "known_text": "last year I thought it was the end",
+   "target_text": "去年終わりだと思った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

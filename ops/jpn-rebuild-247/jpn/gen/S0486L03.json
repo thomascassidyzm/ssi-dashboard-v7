@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 486,
+  "lego_index": 3,
+  "known": "pretty",
+  "target": "きれいだ"
+ },
+ "at": "2026-11-25T12:00:27.865Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 179,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"pretty\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "build",
+   "known_text": "it's very pretty",
+   "target_text": "とてもきれいだ",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "build",
+   "known_text": "because it's pretty",
+   "target_text": "きれいだから",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "build",
+   "known_text": "i heard it's pretty",
+   "target_text": "きれいだって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "build",
+   "known_text": "i didn't think it was pretty",
+   "target_text": "きれいだとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "use",
+   "known_text": "i want to go because it's pretty",
+   "target_text": "きれいだから行きたい",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was very pretty",
+   "target_text": "とてもきれいだとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "use",
+   "known_text": "i heard it's quite pretty",
+   "target_text": "結構きれいだって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "use",
+   "known_text": "i can't change it because it's quite pretty",
+   "target_text": "結構きれいだから変えられない",
+   "pad": []
+  },
+  {
+   "seed_number": 486,
+   "lego_index": 3,
+   "lego_known": "pretty",
+   "lego_target": "きれいだ",
+   "phrase_role": "use",
+   "known_text": "i don't want to lose it because it's truly pretty",
+   "target_text": "本当にきれいだから失いたくない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
