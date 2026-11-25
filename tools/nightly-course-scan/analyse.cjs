@@ -32,6 +32,7 @@ const CATEGORY = {
   garble_tail: '3 garbled generator line', garble_doubled: '3 garbled generator line', garble_punct: '3 garbled generator line',
   garble_script: '3 garbled generator line', same_both: '3 garbled generator line', tag_phrase: '3 garbled generator line',
   empty_audio: '4 silent slot', silent_lego: '4 silent slot',
+  wrong_side: '3 wrong-language text (Breton/French on the wrong side)', zut_lego: '6 ZUT (one known, two targets)', zut_use: '6 ZUT (one known, two targets)', dup_rows: '3 duplicate row in one basket',
   lego_absent_absent: '5 LEGO not in its own phrase', lego_absent_near: '5 LEGO not in its own phrase (inflected / near form)',
 }
 const SAMPLE = 20
@@ -70,7 +71,7 @@ function analyse(dumpF) {
   const kit = JSON.parse(fs.readFileSync(kitF, 'utf8'))
   const mine = DET.run(D)
   const hits = { ...mine.hits }
-  for (const k of ['empty_audio', 'qmark_mismatch', 'same_both', 'tag_phrase']) if (kit.hits[k]) hits[k] = kit.hits[k]
+  for (const k of ['empty_audio', 'qmark_mismatch', 'same_both', 'tag_phrase', 'zut_lego', 'zut_use', 'dup_rows']) if (kit.hits[k]) hits[k] = kit.hits[k]
   for (const k of Object.keys(kit.hits)) if (k.startsWith('lex:')) { hits[k] = kit.hits[k]; CATEGORY[k] = '2 English does not say what the target says (lexical pattern)' }
   const out = { course, copy_db: st.db, copy_built: st.built, scanned_at: new Date().toISOString(), coverage: kit.coverage, notes: mine.notes,
     counts: Object.fromEntries(Object.entries(hits).map(([k, v]) => [k, v.length])), hits }
