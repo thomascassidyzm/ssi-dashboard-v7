@@ -15,7 +15,7 @@
 # The conversation token is read from $TOKF (mode 600), never from argv.
 set -u
 DIR="$(cd "$(dirname "$0")" && pwd)"; ROOT="$(cd "$DIR/../.." && pwd)"; cd "$ROOT"
-CONV=${CS_WAKE_CONV:-618db2a2-8ea3-4013-81c3-096075215a94}
+CONV=${CS_WAKE_CONV:-defde49e-c66d-4479-a7ec-c260a97127e1}   # cs #447·AL took the job over 25 Nov 22:50Z
 TOKF=${CS_WAKE_TOKFILE:-$HOME/.cs-long/374/.tok}
 AGENT=kai-374
 T=tools/course-optimization/bre-rebuild-374.cjs
@@ -78,9 +78,19 @@ while :; do
   if POST=$(liveread "post-$STAMP"); then V=$(node $T verify 1-300 "$POST" 2>>"$LOG"); [ -n "$V" ] || V="verify printed nothing (see $LOG)"; else V="post live read failed; not verified"; fi
   say "$V"
   commitrun "applied $applied, set aside $held; $V"
-  TODO=0; for n in $(node $T planned 2>/dev/null); do [ "$(node $T ledger "$n" 2>/dev/null)" = complete ] || grep -q "\"seed\":$n," ops/bre-rebuild-374/drift.jsonl 2>/dev/null || TODO=$((TODO+1)); done
-  AUTH=$(node -e "const c=require('./ops/bre-rebuild-374/check.json');console.log(Object.values(c.held).filter(h=>h.call==='not authored').length)" 2>/dev/null || echo '?')
-  if [ "$TODO" = 0 ] && [ "$AUTH" = 0 ]; then wake "WAKE: cs374 bre DONE — applied $applied tonight, set aside $held. $V"; exit 0; fi
-  wake "WAKE: cs374 bre night $STAMP: applied $applied seeds, set aside $held, still to apply $TODO (not yet authored: $AUTH)${closed:+; window closed}. $V"
+  # TODO = every seed 1-300 that is not held (holds.json), not complete in its ledger and not set aside in drift.jsonl,
+  # WHETHER OR NOT A CHANGESET EXISTS YET (cs #447·AL, 25 Nov): the old count walked only `planned`, so a night with
+  # baskets for 121-300 still unwritten read "nothing written" as "nothing left" and the runner exited DONE.
+  HELDS=" $(node -e "console.log(Object.keys(require('./ops/bre-rebuild-374/holds.json')).join(' '))" 2>/dev/null) "
+  TODO=0; NOCS=0; for n in $(seq 1 300); do
+    case "$HELDS" in *" $n "*) continue ;; esac
+    grep -q "\"seed\":$n," ops/bre-rebuild-374/drift.jsonl 2>/dev/null && continue
+    st=$(node $T ledger "$n" 2>/dev/null); [ "$st" = complete ] && continue
+    TODO=$((TODO+1)); [ "$st" = nocs ] && NOCS=$((NOCS+1))
+  done
+  [ "$HELDS" = "  " ] && TODO="?"   # holds.json unreadable: never claim DONE
+  AUTH="$NOCS no changeset yet"
+  if [ "$TODO" = 0 ]; then wake "WAKE: cs374 bre DONE — applied $applied tonight, set aside $held. $V"; exit 0; fi
+  wake "WAKE: cs374 bre night $STAMP: applied $applied seeds, set aside $held, still to apply $TODO ($AUTH)${closed:+; window closed}. $V"
   while night; do sleep 600; done   # wait out this window; the gate holds until the next one
 done
