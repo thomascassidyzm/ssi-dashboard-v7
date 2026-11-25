@@ -32,6 +32,7 @@ const { buildOps, needsNewAudio, isDrift, AUDIO_COLS } = require('./course-edito
 const { createProposalStore } = require('./proposal-store.cjs')
 const { buildRounds } = require('./round-view.cjs')
 const { phraseFloor } = require('../course-builder/lib/phrase-structure.cjs')
+const { checkTiling } = require('../course-builder/lib/validation.cjs')
 
 const EDITOR_COURSES = ['kor_for_eng']
 const PLAYED_ROLES = ['build', 'use']
@@ -128,6 +129,27 @@ function proposalNote(body) {
 function proposalInput(body) {
   const kind = body && body.kind
   const clean = (v, max) => String(v).replace(/\s+/g, ' ').trim().slice(0, max + 1)
+  // A SEED SENTENCE change (cs #337·AL). Never on its own: it names the pending LEGO/phrase proposals it must land
+  // with (`with`), and Apply on any of them lands all of them in ONE transaction — see applyGroup.
+  if (kind === 'seed') {
+    const n = Number(body.id)
+    if (!Number.isInteger(n) || n < 1) return { error: 'a seed is named by its number' }
+    if (body.action !== 'edit') return { error: 'a seed change is an edit' }
+    const out = { kind, id: String(n), action: 'edit' }
+    for (const side of ['known', 'target']) {
+      const v = clean(body[side] ?? '', TEXT_MAX)
+      if (!v) return { error: `${side} text is needed for a seed sentence` }
+      if (v.length > TEXT_MAX) return { error: `${side} text is over ${TEXT_MAX} characters` }
+      out[side] = v
+    }
+    if (body.roman != null) out.roman = clean(body.roman, TEXT_MAX)
+    const withIds = Array.isArray(body.with) ? [...new Set(body.with.map(String))] : []
+    if (!withIds.length || withIds.length > 40) return { error: 'a seed change names the pending proposals it must apply with (with: [proposal ids])' }
+    if (!LEGO_ID.test(String(body.lego || ''))) return { error: 'lego: the round (a LEGO id) the seed change is shown under' }
+    out.with = withIds
+    out.lego = String(body.lego)
+    return { p: out }
+  }
   // A ROUND change: its practice order (drag) or a new practice phrase (add). The round is its LEGO.
   if (kind === 'round') {
     const id = String(body.id || '')
@@ -538,6 +560,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       if (error) return res.status(400).json({ error })
       const { note, error: noteError } = proposalNote(req.body)
       if (noteError) return res.status(400).json({ error: noteError })
+      if (p.kind === 'seed') return await proposeSeed(req, res, { courseCode, p, note, proposedBy })
       const ready = await lockReady()
       // Order and copy only exist with the lock: without it they could be overwritten unseen. (An intro edit, like a text
       // edit, lands without it — unprotected, and the page says so.)
@@ -687,6 +710,136 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     return res.json({ ok: true, proposal: p })
   }
 
+  /**
+   * A SEED SENTENCE CHANGE AND THE CHANGES IT CANNOT LAND WITHOUT (cs #337·AL, Aran's 'Y' of 2026-11-24 on Korean
+   * draft 2). Seed 3 "how to speak as often as possible" becomes "how to speak often": its sentence, the removal of the
+   * LEGO 가능한 한 자주 and every pre-seed-50 line built on that LEGO must land TOGETHER — the sentence alone leaves a LEGO
+   * teaching words the seed no longer says, the removal alone leaves a piece of the seed no LEGO covers (canon S3).
+   *
+   * So a seed proposal is the HEAD of a group: it names its members (pending LEGO/phrase edits or removals, `with`) and
+   * each member carries `group` = the head's id. Apply on the head or on ANY member lands the whole group in ONE edit-door
+   * transaction (seed.update + every member's ops) with ONE derived Undo, kept on the head; a member can never be applied
+   * alone, and if its head has gone (discarded) it refuses rather than land half the change.
+   *
+   * COVERAGE IS CHECKED WHEN PROPOSED, the course builder's way: checkTiling (course-builder/lib/validation.cjs, the
+   * /api/seed/complete gate) over the seed's LEGOs as the group would leave them, plus every LEGO of an earlier seed.
+   * A sentence that does not tile is refused, not stored.
+   *
+   * A group that deletes a LEGO is STRUCTURAL: on a released course the edit door asks for Tom's words ("tom_go") on the
+   * Apply and on the Undo (course-edit-ops.cjs structuralGate). The page asks for them when the door answers
+   * TOM_GO_REQUIRED and sends them in the body; nothing here invents or stores a go.
+   */
+  async function proposeSeed(req, res, { courseCode, p, note, proposedBy }) {
+    const n = Number(p.id)
+    const { data: seed, error } = await db().from('course_seeds').select('seed_number,known_text,target_text,target_text_roman')
+      .eq('course_code', courseCode).eq('seed_number', n).maybeSingle()
+    if (error) throw new Error(error.message)
+    if (!seed) return res.status(404).json({ error: `seed ${n} is not in ${courseCode}` })
+    const before = { known: seed.known_text || '', target: seed.target_text, roman: seed.target_text_roman || '' }
+    const after = { known: p.known, target: p.target, roman: p.roman ?? '' }
+    if (after.known === before.known && after.target === before.target) return res.status(400).json({ error: 'that is the sentence it already has' })
+    const list = proposals.list(courseCode)
+    const members = p.with.map((id) => list.find((x) => x.id === id))
+    const bad = p.with.filter((id, i) => { const m = members[i]; return !m || m.status !== 'pending' || !['lego', 'phrase'].includes(m.kind) || !['edit', 'remove'].includes(m.action) })
+    if (bad.length) return res.status(400).json({ error: `every member must be a pending LEGO/phrase edit or removal: ${bad.join(', ')}` })
+    // Coverage as the group leaves the seed: its LEGOs minus the removed, with edited words; earlier seeds' LEGOs count.
+    const removed = new Set(members.filter((m) => m.kind === 'lego' && m.action === 'remove').map((m) => m.line || m.key))
+    const edited = new Map(members.filter((m) => m.kind === 'lego' && m.action === 'edit').map((m) => [m.line || m.key, m.after.target]))
+    const own = await allRows((a, b) => db().from('course_legos').select('lego_id,target_text,type,components')
+      .eq('course_code', courseCode).eq('seed_number', n).order('lego_index').range(a, b))
+    const earlier = await allRows((a, b) => db().from('course_legos').select('lego_id,target_text')
+      .eq('course_code', courseCode).lt('seed_number', n).order('seed_number').order('lego_index').range(a, b))
+    const legosLeft = own.filter((l) => !removed.has(l.lego_id)).map((l) => ({ target: edited.get(l.lego_id) ?? l.target_text, type: l.type,
+      components: (Array.isArray(l.components) ? l.components : []).map((c) => ({ target: c && (c.target ?? c.target_text) })).filter((c) => c.target) }))
+    const tiling = checkTiling(after.target, legosLeft, courseCode, earlier.map((l) => l.target_text), { seedNumber: n })
+    if (!tiling.valid) return res.status(400).json({ error: `the new sentence is not covered by the LEGOs the change leaves: ${tiling.message}`, code: 'TILING' })
+    const saved = await proposals.mutate(courseCode, (all) => {
+      if (p.with.some((id) => inflight.has(id))) return { busy: true }
+      for (let i = all.length - 1; i >= 0; i--) if (all[i].kind === 'seed' && all[i].key === `seed:${n}` && ['pending', 'stale', 'failed'].includes(all[i].status)) all.splice(i, 1)
+      const rec = { id: proposals.newId(), kind: 'seed', key: `seed:${n}`, line: String(n), lego: p.lego, action: 'edit', before, after, with: p.with,
+        tiling: { valid: true, legos: legosLeft.map((l) => l.target) }, ...(note ? { note } : {}), proposedBy, proposedAt: new Date().toISOString(), status: 'pending' }
+      for (const m of all) if (p.with.includes(m.id)) m.group = rec.id
+      all.push(rec)
+      return rec
+    })
+    if (saved.busy) return res.status(409).json({ error: 'a member is being applied or undone — wait a moment and reload', code: 'IN_PROGRESS' })
+    log.info(`[course-editor] ${courseCode}: proposed seed ${n} sentence with ${p.with.length} linked change(s) by ${proposedBy}`)
+    return res.json({ ok: true, proposal: saved })
+  }
+
+  /** Apply a seed group (head = the seed proposal) in one transaction. Called with the clicked proposal already claimed. */
+  async function applyGroup(req, res, { courseCode, rec }) {
+    const all = proposals.list(courseCode)
+    const head = rec.kind === 'seed' ? rec : all.find((x) => x.id === rec.group)
+    const refuse = (status, error, code) => { req.contentEdit?.wroteNothing(); return res.status(status).json({ error, ...(code ? { code } : {}) }) }
+    if (!head || head.status !== 'pending') return refuse(409, `this change lands only together with seed ${head ? head.line : '?'}'s sentence change, which is ${head ? head.status : 'gone'} — nothing applied`, 'GROUP_INCOMPLETE')
+    const members = head.with.map((id) => all.find((x) => x.id === id))
+    const missing = head.with.filter((id, i) => !members[i] || members[i].status !== 'pending' || members[i].group !== head.id)
+    if (missing.length) return refuse(409, `seed ${head.line}'s change lands with ${head.with.length} others and ${missing.length} of them are no longer pending (${missing.join(', ')}) — nothing applied`, 'GROUP_INCOMPLETE')
+    const ids = [head.id, ...head.with].filter((id) => id !== rec.id)
+    if (ids.some((id) => inflight.has(id))) return refuse(409, 'part of this group is already being applied or undone — wait a moment and reload', 'IN_PROGRESS')
+    ids.forEach((id) => inflight.add(id))
+    try {
+      const ready = await lockReady()
+      const n = Number(head.line)
+      const { data: seed, error } = await db().from('course_seeds').select('seed_number,known_text,target_text,target_text_roman')
+        .eq('course_code', courseCode).eq('seed_number', n).maybeSingle()
+      if (error) throw new Error(error.message)
+      const stale = async (who, why, now) => {
+        req.contentEdit?.wroteNothing()
+        const p = await patchProposal(courseCode, who.id, { status: 'stale', error: why, live: now })
+        if (who.id !== head.id) await patchProposal(courseCode, head.id, { error: `${who.line || who.key}: ${why} — nothing in the group was applied` })
+        return res.status(409).json({ error: `${who.line || who.key}: ${why} — nothing in the group was applied`, code: 'STALE', proposal: p })
+      }
+      if (!seed) return stale(head, 'the seed is gone from the course', null)
+      if ((seed.known_text || '') !== head.before.known || seed.target_text !== head.before.target) return stale(head, 'the live seed sentence changed since this was proposed', { known: seed.known_text, target: seed.target_text })
+      const set = { known_text: head.after.known, target_text: head.after.target }
+      if (nul(head.after.roman) !== nul(seed.target_text_roman)) set.target_text_roman = nul(head.after.roman)
+      const ops = [{ op: 'seed.update', seed_number: n, set, expect: { known_text: seed.known_text, target_text: seed.target_text } }]
+      const audioRows = [`seed:${n}`], plan = [], changes = {}
+      for (const m of members) {
+        const line = m.line || m.key
+        const live = await liveRow(courseCode, m.kind, line)
+        if (!live) return stale(m, 'the line is gone from the course', null)
+        const now = { known: live.known_text || '', target: live.target_text, roman: live.target_text_roman || '' }
+        if (now.known !== m.before.known || now.target !== m.before.target || ('roman' in m.before && nul(now.roman) !== nul(m.before.roman))) return stale(m, 'the live line changed since this was proposed', now)
+        const key = m.kind === 'phrase' ? fullPhraseId(courseCode, line) : line
+        const clips = m.action === 'edit' ? await clipsFor(courseCode, m.kind, line, live) : new Map()
+        const built = buildOps({ courseCode, kind: m.kind, action: m.action, key, live, after: m.after, clips })
+        ops.push(...built.ops)
+        changes[m.id] = built.change
+        for (const pl of built.plan) plan.push({ ...pl, target: m.kind, key: m.kind === 'lego' ? { lego_id: line } : { phrase_id: key } })
+        if (m.action === 'edit' && needsNewAudio(built.change)) audioRows.push(key)
+      }
+      let queued = null
+      const { status, body } = await captureEdit(runCourseEdit, req, ops, {
+        apply: true,
+        handEditor: ready ? req.editorWho : null,
+        onApplied: async () => {
+          queued = await queueAudioPass(getDb(), { courseCode, reason: `course editor: seed ${n} sentence and its linked changes`, requestedBy: req.editorWho,
+            metadata: { rows: audioRows }, append: true, metadataKey: 'course_editor' })
+        },
+      })
+      if (status !== 200 || !body.applied) {
+        const drift = isDrift(body)
+        const p = await patchProposal(courseCode, head.id, { status: drift ? 'stale' : 'pending', error: body.error || `HTTP ${status}`, errorCode: body.code || null })
+        return res.status(status === 200 ? 500 : status).json({ error: body.error, code: drift ? 'STALE' : body.code, proposal: rec.id === head.id ? p : findProposal(courseCode, rec.id) })
+      }
+      const at = new Date().toISOString()
+      const p = await applyLanded(courseCode, head, {
+        status: 'applied', appliedBy: req.editorWho, appliedAt: at, eventId: body.event_id || null, undoOps: body.undo_ops, undoFile: body.undo_file || null,
+        change: { seed: 'words' }, plan, needsAudio: true, locked: ready, error: null,
+        audioQueued: queued ? !!queued.queued || !!queued.touched : false, audioRefused: queued && queued.refused ? queued.reason : null,
+      })
+      await proposals.mutate(courseCode, (list) => {
+        for (const m of list) if (head.with.includes(m.id)) Object.assign(m, { status: 'applied', appliedVia: head.id, appliedBy: req.editorWho, appliedAt: at, eventId: body.event_id || null, change: changes[m.id] || null, needsAudio: audioRows.includes(m.kind === 'phrase' ? fullPhraseId(courseCode, m.line || m.key) : m.line), locked: ready, error: null })
+      })
+      log.info(`[course-editor] ${courseCode}: applied seed ${n} group ${head.id} (${ops.length} ops) by ${req.editorWho}, event ${body.event_id}`)
+      for (const l of new Set([head.lego, ...members.map(legoOfRec)].filter(Boolean))) await refreshLego(courseCode, l)
+      return res.json({ ok: true, proposal: rec.id === head.id ? p : findProposal(courseCode, rec.id) })
+    } finally { ids.forEach((id) => inflight.delete(id)) }
+  }
+
   // APPLY: the one place a proposal touches the course. Content write — the content gate has already resolved who.
   router.post('/proposals/:pid/apply', express.json({ limit: '4kb' }), async (req, res) => {
     const { courseCode, pid } = req.params
@@ -696,6 +849,7 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       const rec = findProposal(courseCode, pid)
       if (!rec) { req.contentEdit?.wroteNothing(); return res.status(404).json({ error: 'no such proposal' }) }
       if (rec.status !== 'pending') { req.contentEdit?.wroteNothing(); return res.status(409).json({ error: `this change is ${rec.status}, not pending` }) }
+      if (rec.kind === 'seed' || rec.group) return await applyGroup(req, res, { courseCode, rec })
       const ready = await lockReady()
       const line = rec.line || rec.key
       const isNewKind = rec.kind === 'round' || rec.action === 'copy'
@@ -807,9 +961,17 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
     const { courseCode, pid } = req.params
     if (!writer(req, res)) return
     if (!claim(req, res, pid)) return
+    let groupIds = []
     try {
-      const rec = findProposal(courseCode, pid)
+      let rec = findProposal(courseCode, pid)
+      // A member of a seed group is undone with its group: the one Undo lives on the head (applyGroup).
+      if (rec && rec.status === 'applied' && rec.appliedVia) rec = findProposal(courseCode, rec.appliedVia)
       if (!rec || rec.status !== 'applied' || !Array.isArray(rec.undoOps)) { req.contentEdit?.wroteNothing(); return res.status(409).json({ error: 'nothing to undo' }) }
+      if (rec.kind === 'seed') {
+        groupIds = [rec.id, ...(rec.with || [])].filter((id) => id !== pid)
+        if (groupIds.some((id) => inflight.has(id))) { groupIds = []; req.contentEdit?.wroteNothing(); return res.status(409).json({ error: 'part of this group is already being applied or undone — wait a moment and reload', code: 'IN_PROGRESS' }) }
+        groupIds.forEach((id) => inflight.add(id))
+      }
       const line = rec.line || rec.key
       // RELABEL UNDO ORDER (live check, cs #121·AK). The door's undo is the apply reversed: row text back FIRST, clip label
       // after — so the null_*_audio_on_text_change trigger saw the kept clip still labelled with the NEW text, judged it
@@ -817,22 +979,28 @@ function createCourseEditorRouter({ getDb, requireAdmin, isLoopbackDirect, runCo
       // then every slot the apply kept (rec.plan, relabel or relink) is linked straight back to its clip.
       const isClip = (o) => o.op === 'audio.update'
       const key = rec.kind === 'lego' ? { lego_id: line } : { phrase_id: fullPhraseId(courseCode, line) }
-      const relinkKept = (rec.plan || []).map((pl) => ({ op: 'audio.link', target: rec.kind, ...key, slot: pl.slot, audio_id: pl.audio_id, allow_text_mismatch: true }))
+      const relinkKept = (rec.plan || []).map((pl) => ({ op: 'audio.link', ...(pl.target ? { target: pl.target, ...pl.key } : { target: rec.kind, ...key }), slot: pl.slot, audio_id: pl.audio_id, allow_text_mismatch: true }))
       const ops = [...rec.undoOps.filter(isClip), ...rec.undoOps.filter((o) => !isClip(o)), ...relinkKept]
       // An Undo is the fine-tuning editor too: it may delete the line it added and put the old lock state back.
       const ready = await lockReady()
       // (An edit applied before the lock existed is undone as before, so the Undo does not lock a line it never locked.)
       const { status, body } = await captureEdit(runCourseEdit, req, ops, { apply: true, handEditor: ready && rec.locked !== false && rec.locked !== undefined ? req.editorWho : null })
       if (status !== 200 || !body.applied) return res.status(status === 200 ? 500 : status).json({ error: body.error, code: body.code })
-      const p = await patchProposal(courseCode, pid, { status: 'undone', undoneBy: req.editorWho, undoneAt: new Date().toISOString(), undoEventId: body.event_id || null })
-      const row = (rec.action === 'remove' && rec.kind === 'lego') || rec.kind === 'round' || rec.action === 'copy' ? null : await liveRow(courseCode, rec.kind, line).catch(() => null)
+      const undone = { status: 'undone', undoneBy: req.editorWho, undoneAt: new Date().toISOString(), undoEventId: body.event_id || null }
+      let p = await patchProposal(courseCode, rec.id, undone)
+      if (rec.kind === 'seed') {
+        await proposals.mutate(courseCode, (list) => { for (const m of list) if ((rec.with || []).includes(m.id) && m.appliedVia === rec.id) Object.assign(m, undone) })
+        for (const m of (rec.with || []).map((id) => findProposal(courseCode, id)).filter(Boolean)) await refreshLego(courseCode, legoOfRec(m))
+        if (pid !== rec.id) p = findProposal(courseCode, pid)
+      }
+      const row = (rec.action === 'remove' && rec.kind === 'lego') || rec.kind === 'round' || rec.kind === 'seed' || rec.action === 'copy' ? null : await liveRow(courseCode, rec.kind, line).catch(() => null)
       log.info(`[course-editor] ${courseCode}: undid ${pid} by ${req.editorWho}, event ${body.event_id}`)
       await refreshLego(courseCode, legoOfRec(rec))
       res.json({ ok: true, proposal: p, row: view(row) })
     } catch (e) {
       log.error(`[course-editor] undo ${courseCode} ${pid}: ${e.message}`)
       res.status(500).json({ error: e.message })
-    } finally { inflight.delete(pid) }
+    } finally { inflight.delete(pid); groupIds.forEach((id) => inflight.delete(id)) }
   })
 
   // MAKE NEW AUDIO: Popty's one audio route, a dry run (library first, cost shown) unless confirm:true. A refusal is the
