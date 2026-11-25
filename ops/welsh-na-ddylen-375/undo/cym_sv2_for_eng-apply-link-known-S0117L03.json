@@ -1,0 +1,64 @@
+{
+ "request": {
+  "ops": [
+   {
+    "op": "audio.link",
+    "target": "lego",
+    "lego_id": "S0117L03",
+    "slot": "known",
+    "audio_id": "463735e5-97c1-4af5-a8dc-a2785f0781f0"
+   }
+  ]
+ },
+ "response": {
+  "ok": true,
+  "dryRun": false,
+  "applied": true,
+  "event_id": "c0cccde0-d152-4acf-bf51-e6115d4ee017",
+  "results": [
+   {
+    "index": 0,
+    "op": "audio.link",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "lego_id": "S0117L03"
+    },
+    "before": {
+     "id": "a35800e3-8996-486e-a29e-4d01224046b5",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_audio_id": null,
+     "known_text": "that I shouldn\u2019t",
+     "target_text": "na ddylen i",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "a35800e3-8996-486e-a29e-4d01224046b5",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_audio_id": "463735e5-97c1-4af5-a8dc-a2785f0781f0",
+     "known_text": "that I shouldn\u2019t",
+     "target_text": "na ddylen i",
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "presentation_audio_id": null
+    },
+    "changed": true
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "lego.update",
+    "id": "a35800e3-8996-486e-a29e-4d01224046b5",
+    "set": {
+     "known_audio_id": null
+    }
+   }
+  ],
+  "undo_file": "2026-11-25T14-40-50-444Z-c0cccde0-d152-4acf-bf51-e6115d4ee017.json"
+ }
+}
