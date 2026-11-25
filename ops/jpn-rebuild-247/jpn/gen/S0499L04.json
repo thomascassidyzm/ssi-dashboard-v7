@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 499,
+  "lego_index": 4,
+  "known": "let's close",
+  "target": "閉めよう"
+ },
+ "at": "2026-11-25T12:40:57.378Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 167,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "build",
+   "known_text": "let's close the window",
+   "target_text": "窓閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "build",
+   "known_text": "let's close the suitcase properly",
+   "target_text": "スーツケースちゃんと閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "build",
+   "known_text": "let's close and then let's stay quiet",
+   "target_text": "閉めよう、それから静かにしていよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "build",
+   "known_text": "let's close the car park tomorrow",
+   "target_text": "明日駐車場閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "let's close the door because they slept",
+   "target_text": "ドア閉めよう、彼ら眠ったから",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "we can't open the door but let's close the window",
+   "target_text": "ドア開けられない、でも窓閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "let's close the door until everybody is ready",
+   "target_text": "みんなが準備できるまでドア閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "I'm not planning to wait, let's close the shop",
+   "target_text": "待つつもりはない、店閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "let's close the shop around six o'clock",
+   "target_text": "六時ごろ店閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "more than anything, let's close the window",
+   "target_text": "何より窓閉めよう",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 4,
+   "lego_known": "let's close",
+   "lego_target": "閉めよう",
+   "phrase_role": "use",
+   "known_text": "let's close the window and then let's stay quiet",
+   "target_text": "窓閉めよう、それから静かにしていよう",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

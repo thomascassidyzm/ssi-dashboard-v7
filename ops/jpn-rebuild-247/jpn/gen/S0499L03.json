@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 499,
+  "lego_index": 3,
+  "known": "open",
+  "target": "開けて"
+ },
+ "at": "2026-11-25T12:39:50.068Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 153,
+ "floorsOnly": false,
+ "lastReasons": [
+  "BUILD \"open the window\" → \"窓開けて\": ZUT whole course: \"open the window\" is \"窓を開けてと言ってた\" at seed 499",
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}
