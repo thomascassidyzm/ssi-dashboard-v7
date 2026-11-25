@@ -18,4 +18,6 @@ State that is NOT in git (durable dir `~/.cs-long/nightly-course-scan/`): `popty
 from), `scanned.txt` (courses with a published table — the queue pointer), `published.tsv` (date, course, url), `night-*.log`,
 `.tok` (0600). Candidate output per course: `~/ssi-evidence/ssi-dashboard-v7/ops/nightly-course-scan/<copy-db>/`.
 
+PAUSED AFTER ITALIAN (cs #387·AL, Kai 25 Nov): from 26 Nov the runner exits 0 and scans nothing unless `~/.cs-long/nightly-course-scan/CONTINUE` exists. Resume: `touch` it; pause again: `rm` it. The one-shot judge (`cs-long-keep-nightly-scan-judge.timer`, Thu 26 Nov 09:00 UTC, brief `judge-brief.md`) creates it only if the three Italian tables turn up something BIG.
+
 Stop it: `systemctl --user disable --now cs-long-keep-nightly-course-scan.timer`. Re-scan a course: delete its line from scanned.txt.

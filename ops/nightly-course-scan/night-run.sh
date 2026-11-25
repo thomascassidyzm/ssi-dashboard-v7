@@ -30,6 +30,12 @@ gate_ok() {
 }
 
 [ "$(date -u +%Y%m%d)" -lt 20261125 ] && { echo "before the first night (Wed 25 Nov): nothing to do"; exit 0; }
+# PAUSED AFTER ITALIAN (cs #387·AL, Kai 25 Nov: "If the italian scans don't turn up enough stuff, don't blindly run through
+# everything else"). From 26 Nov the runner scans nothing unless $D/CONTINUE exists; the Thu 26 Nov 09:00Z judge
+# (cs-long-keep-nightly-scan-judge) touches it if the three Italian tables are BIG. Exit 0, no notice: a paused night is not a
+# failure and nobody is nagged. The gate is only checked here at the top, so the 25 Nov run that is still waiting for the
+# night writers after midnight UTC finishes. Resume: touch $D/CONTINUE. Pause again: rm $D/CONTINUE.
+[ "$(date -u +%Y%m%d)" -ge 20261126 ] && [ ! -e "$D/CONTINUE" ] && { echo "paused after Italian per Kai 25 Nov; touch $D/CONTINUE to resume"; exit 0; }
 COURSES=$(node tools/nightly-course-scan/scan.cjs --next 3) || exit 1
 if [ -z "$COURSES" ]; then
   notice "[nightly course scan] the queue is finished: every course in ops/nightly-course-scan/queue.json has a published table. Timer disabled."
