@@ -22,9 +22,10 @@ wake() { node ~/command-surface/tools/cs-wake-send.cjs "$CONV" "$(cat ~/.cs-long
 ukh() { TZ=Europe/London date +%H | sed 's/^0//'; }
 night() { local h; h=$(ukh); [ "$h" -ge 22 ] || [ "$h" -lt 7 ]; }
 others() { local n p
-  n=$(systemctl --user list-units --state=active --no-legend --plain 'cs-long-keep-*' | awk '{print $1}' | grep -cE 'item4|868-8b|868-night|236-night|247-(jpn|kor)-[0-9]|247-.*night|247-.*band')
-  p=$(pgrep -f 'apply-changeset.cjs' | wc -l); [ "$p" -gt "$n" ] && n=$p; echo $n; }
-c247() { pgrep -f 'apply-changeset.cjs.*kai-247' >/dev/null && echo 1 || echo 0; }
+  # SERVICES only: the other jobs' .timer units are 'active' all day and are not writers (24 Nov night lost to that)
+  n=$(systemctl --user list-units --type=service --state=active --no-legend --plain 'cs-long-keep-*' | awk '{print $1}' | grep -cE 'item4|868-8b|868-night|868-guj|236-night|247-(jpn|kor)-[0-9]|247-.*night|247-.*band')
+  p=$(pgrep -f '^node .*apply-changeset.cjs' | wc -l); [ "$p" -gt "$n" ] && n=$p; echo $n; }
+c247() { pgrep -f '^node .*apply-changeset.cjs.*kai-247' >/dev/null && echo 1 || echo 0; }
 governed() { curl -s -m 10 http://localhost:3470/health | grep -q '"governed":true'; }
 gate() {
   while :; do
