@@ -43,7 +43,8 @@ gate() {
   done
 }
 LP="$EV/${DRY_RUN:+dryrun-}live-$R" # dry run never overwrites the night's live dumps
-liveread() { for t in 1 2 3 4; do curl -s -m 300 -H "x-agent-id: $AGENT" "http://localhost:3470/api/production/cym_for_kor/seeds?status=all" -o "$LP-$1.json"; [ "$(stat -c%s "$LP-$1.json")" -gt 1000000 ] && return 0; sleep 60; done; return 1; }
+liveread() { [ -n "${DRY_RUN:-}" ] && [ -n "$(find "$LP-$1.json" -mmin -120 -size +1000k 2>/dev/null)" ] && { echo "DRY: reusing $LP-$1.json (<2h old)"; return 0; }
+  for t in 1 2 3 4; do curl -s -m 300 -H "x-agent-id: $AGENT" "http://localhost:3470/api/production/cym_for_kor/seeds?status=all" -o "$LP-$1.json"; [ "$(stat -c%s "$LP-$1.json")" -gt 1000000 ] && return 0; sleep 60; done; return 1; }
 commitband() { [ -n "${DRY_RUN:-}" ] && return 0; git add "$DIR/plan-$R.json" "$DIR"/$R.*.changeset.jsonl* 2>/dev/null
   git commit -q -m "cym-for-kor rebuild-251 (cs #251·AL): $R night run — $1" && git push -q origin HEAD:cs/251-run || true; }
 applycs() { # $1 = insert|delete
@@ -63,7 +64,7 @@ if [ ! -f "$DIR/$R.insert.changeset.jsonl.applied.jsonl" ]; then
   gate || { wake "WAKE: cs251 $R window closed before the plan step; nothing written"; closed; }
   rm -f "$DIR/plan-$R.json"
   liveread pre || { wake "WAKE: cs251 $R live read failed; nothing written"; exit 1; }
-  node $T plan "$R" "$EV/live-$R-pre.json" 2>&1 | grep -v language-code || true
+  node $T plan "$R" "$LP-pre.json" 2>&1 | grep -v language-code || true
   [ -f "$DIR/plan-$R.json" ] || { wake "WAKE: cs251 $R plan STOPPED (see journal); nothing written"; exit 1; }
   node $T insert-cs "$R" 2>&1 | grep -v language-code
 fi
