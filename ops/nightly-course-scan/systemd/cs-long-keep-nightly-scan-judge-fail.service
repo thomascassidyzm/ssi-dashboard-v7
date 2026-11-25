@@ -1,0 +1,6 @@
+[Unit]
+Description=Nightly scan judge backstop (cs #387·AL): tell Kai's 25 Nov room when the Thursday judge could not be dispatched
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -lc 'M="[nightly course scan] the Thursday BIG/NOT BIG judge was NOT dispatched (unit failed at $(date -u +%%FT%%TZ)); the scan stays paused. journalctl --user -u cs-long-keep-nightly-scan-judge"; F=%h/.cs-long/nightly-course-scan/popty/ops/nightly-course-scan/dispatch.cjs; if [ -f "$F" ]; then node "$F" judge-notice "$M"; else node %h/command-surface/tools/cs-wake-send.cjs 78276ec4-3d92-4870-b145-de7d178ce00e "$(cat %h/.cs-long/nightly-course-scan/.tok)" "$M (durable checkout MISSING)"; fi'

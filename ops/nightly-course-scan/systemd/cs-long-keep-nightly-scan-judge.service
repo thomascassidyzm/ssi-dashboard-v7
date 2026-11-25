@@ -1,0 +1,10 @@
+[Unit]
+Description=Dispatch the Thursday BIG/NOT BIG judge of the Italian scan tables into Kai's 25 Nov room (cs #387·AL)
+OnFailure=cs-long-keep-nightly-scan-judge-fail.service
+
+[Service]
+Type=oneshot
+Slice=cs-workers.slice
+TimeoutStartSec=20min
+WorkingDirectory=%h/.cs-long/nightly-course-scan/popty
+ExecStart=/bin/bash -lc 'cd %h/.cs-long/nightly-course-scan/popty && git fetch -q origin main && git merge -q --ff-only origin/main; exec node ops/nightly-course-scan/dispatch.cjs judge'

@@ -9,7 +9,8 @@ Each morning Kai gets one hand-checked table per course in his room and rules Y/
 | `night-run.sh` | the runner the timer fires: gates (night writers done, <=2 other DB jobs, load gate, box load, copy fresh), `scan.cjs` on the next 3, dispatches the hand-check worker | — |
 | `dispatch.cjs` | the runner's door to the surface: the night worker (parent Kai's room) and skip/failure notices; token from a 0600 file | — |
 | `worker-brief.md` | the night worker's brief (template) | — |
-| `systemd/` | the three units, installed as links in ~/.config/systemd/user | — |
+| `systemd/` | the night units + the one-shot judge units (cs #387·AL), installed as links in ~/.config/systemd/user | — |
+| `judge-brief.md` | the Thu 26 Nov BIG/NOT BIG judge brief `dispatch.cjs judge` sends (cs #387·AL) | — |
 
 The scanner itself is `tools/nightly-course-scan/` (scan.cjs = the one DB step, a dump through the #447 kit's copy-read.cjs;
 analyse.cjs + detectors.cjs = no database; calibration.json = each detector's known positive; `scan.cjs --calibrate`).
