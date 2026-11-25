@@ -246,12 +246,14 @@ function rowsFor(s, dropSet) {
 function intended() {
   const { pairs, seeds } = parse();
   const chk = readJ(path.join(DIR, 'check.json'));
-  if (chk.totals.hard) throw new Error(`check.json has ${chk.totals.hard} hard failure(s); fix before building changesets`);
-  const held = new Set(Object.keys(chk.held).map(Number));
+  // Only seeds with 0 hard failures are planned; bands still being authored (no baskets yet → P26) are simply not in
+  // the plan. buildCs refuses a range that holds any failing seed, so nothing failing ever becomes a changeset.
+  const failing = new Set(chk.seeds.filter((r) => r.hard.length || r.legos.some((l) => l.hard.length)).map((r) => r.seed));
+  const held = new Set([...Object.keys(chk.held).map(Number), ...failing]);
   const dropSet = new Set(chk.dropped.map((d) => `${d.lego}|${d.target}`));
   const plan = new Map();
   for (const s of seeds.values()) if (!held.has(s.n)) plan.set(s.n, { s, pair: pairs[s.n], ...rowsFor(s, dropSet) });
-  return { plan, held: chk.held, pairs };
+  return { plan, held: chk.held, failing, pairs };
 }
 
 // ── baseline: the copy rows of seeds 1-300 the changesets expect ──
@@ -282,7 +284,9 @@ const sig = (b) => JSON.stringify({ k: b.known, t: b.target, l: b.legos.map((l) 
 
 // ── changesets ──
 function buildCs(r) {
-  const [a, b] = range(r); const { plan } = intended(); const base = baseline();
+  const [a, b] = range(r); const { plan, failing } = intended(); const base = baseline();
+  const bad = [...failing].filter((n) => n <= b);
+  if (bad.length) throw new Error(`seeds ${bad.join(',')} (≤ ${b}) still have hard failures in check.json; fix them before building changesets up to ${b}`);
   const cs = require(path.join(ROOT, 'services', 'shared', 'changeset.cjs'));
   fs.mkdirSync(path.join(DIR, 'cs'), { recursive: true });
   let files = 0, ops = 0, max = 0;
