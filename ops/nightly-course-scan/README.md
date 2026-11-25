@@ -5,7 +5,7 @@ Each morning Kai gets one hand-checked table per course in his room and rules Y/
 
 | file | what | regenerates? |
 |---|---|---|
-| `queue.json` | the ORDER (85 courses: estate-map released, minus jpn_for_eng/fry_for_eng/cym_for_kor; paid first, Welsh after the other paid courses per R0.12; live before beta as a traffic proxy — no traffic route exists) + the 16 Nov fold-in items | by hand only |
+| `queue.json` | the ORDER (82 queued + 3 kor targets and jpn_for_eng under `parked`, which scan.cjs ignores; reordered 25 Nov cs #381·AL: big targets ita, spa, fra, deu, ara, zho first, then remaining paid, then Welsh, then non-paid; kor/jpn targets parked until fully built) + the 16 Nov fold-in items | by hand only |
 | `night-run.sh` | the runner the timer fires: gates (night writers done, <=2 other DB jobs, load gate, box load, copy fresh), `scan.cjs` on the next 3, dispatches the hand-check worker | — |
 | `dispatch.cjs` | the runner's door to the surface: the night worker (parent Kai's room) and skip/failure notices; token from a 0600 file | — |
 | `worker-brief.md` | the night worker's brief (template) | — |
