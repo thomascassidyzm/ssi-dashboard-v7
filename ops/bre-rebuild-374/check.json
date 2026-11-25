@@ -1,0 +1,2518 @@
+{
+ "checker": "services/course-builder/lib pure functions (as POST /api/seed/complete), offline; ZUT in memory over 1-300 new rows + held seeds' old live rows",
+ "totals": {
+  "seeds": 28,
+  "legos": 90,
+  "new_legos": 90,
+  "build": 247,
+  "use": 392,
+  "hard": 0,
+  "warn": 10,
+  "zut_vs_held_old": 10
+ },
+ "held": {
+  "20": {
+   "call": "à elle",
+   "why": "French 'son prénom' rendered masculine e anv by the unruled default (son/sa → masculine when no subject owns it)"
+  },
+  "21": {
+   "call": "à elle",
+   "why": "'son prénom à elle' → hec'h anv: the à elle marking itself"
+  },
+  "31": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "32": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "33": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "34": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "35": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "36": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "37": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "38": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "39": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "40": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "41": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "42": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "43": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "44": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "45": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "46": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "47": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "48": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "49": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "50": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "51": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "52": {
+   "call": "à elle",
+   "why": "'son ami' → d'e vignon by the unruled possessor-is-the-subject convention"
+  },
+  "53": {
+   "call": "à elle",
+   "why": "'sa lettre … son sac' → he lizher / he sac'h by the unruled possessor-is-the-subject convention"
+  },
+  "54": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "55": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "56": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "57": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "58": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "59": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "60": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "61": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "62": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "63": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "64": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "65": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "66": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "67": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "68": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "69": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "70": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "71": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "72": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "73": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "74": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "75": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "76": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "77": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "78": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "79": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "80": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "81": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "82": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "83": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "84": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "85": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "86": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "87": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "88": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "89": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "90": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "91": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "92": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "93": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "94": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "95": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "96": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "97": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "98": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "99": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "100": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "101": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "102": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "103": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "104": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "105": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "106": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "107": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "108": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "109": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "110": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "111": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "112": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "113": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "114": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "115": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "116": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "117": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "118": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "119": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "120": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "121": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "122": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "123": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "124": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "125": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "126": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "127": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "128": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "129": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "130": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "131": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "132": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "133": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "134": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "135": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "136": {
+   "call": "à elle",
+   "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"
+  },
+  "137": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "138": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "139": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "140": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "141": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "142": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "143": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "144": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "145": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "146": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "147": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "148": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "149": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "150": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "151": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "152": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "153": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "154": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "155": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "156": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "157": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "158": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "159": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "160": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "161": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "162": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "163": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "164": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "165": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "166": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "167": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "168": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "169": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "170": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "171": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "172": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "173": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "174": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "175": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "176": {
+   "call": "à elle",
+   "why": "'lui demander' → digantañ, gender taken from the sentence's own il (part of the unruled convention)"
+  },
+  "177": {
+   "call": "à elle",
+   "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"
+  },
+  "178": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "179": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "180": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "181": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "182": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "183": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "184": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "185": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "186": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "187": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "188": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "189": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "190": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "191": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "192": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "193": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "194": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "195": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "196": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "197": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "198": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "199": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "200": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "201": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "202": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "203": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "204": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "205": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "206": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "207": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "208": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "209": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "210": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "211": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "212": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "213": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "214": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "215": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "216": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "217": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "218": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "219": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "220": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "221": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "222": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "223": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "224": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "225": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "226": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "227": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "228": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "229": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "230": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "231": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "232": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "233": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "234": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "235": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "236": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "237": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "238": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "239": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "240": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "241": {
+   "call": "à elle",
+   "why": "'le lui donner' → dezhañ by the unruled masculine default"
+  },
+  "242": {
+   "call": "à elle",
+   "why": "'lui donner … à elle' → dezhi: the à elle marking itself"
+  },
+  "243": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "244": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "245": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "246": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "247": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "248": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "249": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "250": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "251": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "252": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "253": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "254": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "255": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "256": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "257": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "258": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "259": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "260": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "261": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "262": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "263": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "264": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "265": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "266": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "267": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "268": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "269": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "270": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "271": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "272": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "273": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "274": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "275": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "276": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "277": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "278": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "279": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "280": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "281": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "282": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "283": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "284": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "285": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "286": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "287": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "288": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "289": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "290": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "291": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "292": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "293": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "294": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "295": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "296": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "297": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "298": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "299": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  },
+  "300": {
+   "call": "not authored",
+   "why": "no decomposition authored yet"
+  }
+ },
+ "dropped": [
+  {
+   "lego": "S0022L01",
+   "target": "komz a ran brezhoneg peogwir e fell din deskiñ buan",
+   "known": "je parle breton parce que je veux apprendre rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0023L02",
+   "target": "fellout a ra dit komz muioc'h",
+   "known": "tu veux parler plus",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0024L02",
+   "target": "emaon o vont da c'hallout kaout soñj eus e anv",
+   "known": "je vais pouvoir me souvenir de son prénom",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0024L02",
+   "target": "n'emaon ket o vont da c'hallout kaout soñj eus hec'h anv",
+   "known": "je ne vais pas pouvoir me souvenir de son prénom à elle",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0024L03",
+   "target": "emaout o teskiñ aes",
+   "known": "tu apprends facilement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0024L03",
+   "target": "emaon o vont da c'hallout kaout soñj eus hec'h anv aes",
+   "known": "je vais pouvoir me souvenir de son prénom à elle facilement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0025L02",
+   "target": "fellout a ra dit sikour ac'hanon",
+   "known": "tu veux m'aider",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0025L02",
+   "target": "fellout a ra dit sikour ac'hanon bremañ",
+   "known": "tu veux m'aider maintenant",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0025L03",
+   "target": "fellout a ra dit mont kuit buan",
+   "known": "tu veux partir rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0026L03",
+   "target": "n'on ket prest da vont kuit buan",
+   "known": "je ne suis pas prêt à partir rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0027L01",
+   "target": "ne blij ket din komz buan",
+   "known": "je n'aime pas parler rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0027L01",
+   "target": "ne blij ket din mont kuit buan",
+   "known": "je n'aime pas partir rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0027L03",
+   "target": "fellout a ra dit kemer re a amzer",
+   "known": "tu veux prendre trop de temps",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0027L04",
+   "target": "emaon o vont da bleustriñ evit respont buan",
+   "known": "je vais m'entraîner pour répondre rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0028L01",
+   "target": "talvoudus eo gallout komz buan",
+   "known": "c'est utile de pouvoir parler rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0028L02",
+   "target": "fellout a ra dit kregiñ da gomz brezhoneg",
+   "known": "tu veux commencer à parler breton",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0028L02",
+   "target": "talvoudus eo kregiñ da gomz buan",
+   "known": "c'est utile de commencer à parler rapidement",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0029L02",
+   "target": "emaout o teskiñ gwelloc'h",
+   "known": "tu apprends mieux",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0029L02",
+   "target": "fellout a ra dit komz gwelloc'h",
+   "known": "tu veux parler mieux",
+   "why": "needs a LEGO of a held seed"
+  },
+  {
+   "lego": "S0030L01",
+   "target": "fellout a rae din dont en-dro buan",
+   "known": "je voulais revenir rapidement",
+   "why": "needs a LEGO of a held seed"
+  }
+ ],
+ "below_floor": [
+  "S0001L02 USE: need 1+, got 0",
+  "S0022L01 USE: need 5+, got 4",
+  "S0023L02 USE: need 5+, got 4",
+  "S0024L02 USE: need 5+, got 3",
+  "S0024L03 USE: need 5+, got 3",
+  "S0025L02 BUILD: need 3+, got 2",
+  "S0025L03 USE: need 5+, got 4",
+  "S0026L03 USE: need 5+, got 4",
+  "S0027L01 BUILD: need 3+, got 2",
+  "S0027L03 USE: need 5+, got 4",
+  "S0027L04 USE: need 5+, got 4",
+  "S0028L01 USE: need 5+, got 4",
+  "S0028L02 USE: need 5+, got 3",
+  "S0029L02 USE: need 5+, got 3",
+  "S0030L01 USE: need 5+, got 4"
+ ],
+ "seeds": [
+  {
+   "seed": 1,
+   "target": "Fellout a ra din komz brezhoneg ganit bremañ.",
+   "known": "Je veux parler breton avec toi maintenant.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0001L01",
+     "target": "fellout a ra din",
+     "known": "je veux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0001L02",
+     "target": "komz",
+     "known": "parler",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 1,
+     "use": 0,
+     "floor": "USE: need 1+, got 0"
+    },
+    {
+     "id": "S0001L03",
+     "target": "brezhoneg",
+     "known": "breton",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old phrase bre_for_fra:S0286L03B01 (held, old): \"parler breton\" → \"komz brezhoneg\" / \"gant komz brezhoneg\""
+     ],
+     "syllables": 3,
+     "build": 1,
+     "use": 1
+    },
+    {
+     "id": "S0001L04",
+     "target": "ganit",
+     "known": "avec toi",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 1,
+     "use": 1
+    },
+    {
+     "id": "S0001L05",
+     "target": "bremañ",
+     "known": "maintenant",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 1,
+     "use": 1
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "target": "Emaon o klask deskiñ.",
+   "known": "J'essaie d'apprendre.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0002L01",
+     "target": "emaon o klask",
+     "known": "j'essaie de",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 1,
+     "use": 1
+    },
+    {
+     "id": "S0002L02",
+     "target": "deskiñ",
+     "known": "apprendre",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 1,
+     "use": 2
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "target": "penaos komz ken alies ha ma c'haller.",
+   "known": "comment parler aussi souvent que possible.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0003L01",
+     "target": "penaos komz",
+     "known": "comment parler",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 1,
+     "use": 1
+    },
+    {
+     "id": "S0003L02",
+     "target": "alies",
+     "known": "souvent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 1,
+     "use": 1
+    },
+    {
+     "id": "S0003L03",
+     "target": "ken alies ha ma c'haller",
+     "known": "aussi souvent que possible",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 1,
+     "use": 2
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "target": "penaos lavarout un dra bennak e brezhoneg",
+   "known": "comment dire quelque chose en breton",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0004L01",
+     "target": "un dra bennak",
+     "known": "quelque chose",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0004L02",
+     "target": "lavarout",
+     "known": "dire",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old phrase bre_for_fra:S0057L01B03 (held, old): \"comment dire quelque chose\" → \"penaos lavarout un dra bennak\" / \"penaos lavaret un dra bennak\""
+     ],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0004L03",
+     "target": "e brezhoneg",
+     "known": "en breton",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "target": "Emaon o vont da bleustriñ war ar gomz gant unan bennak all.",
+   "known": "Je vais m'entraîner à parler avec quelqu'un d'autre.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0005L01",
+     "target": "emaon o vont da bleustriñ",
+     "known": "je vais m'entraîner",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0005L02",
+     "target": "war ar gomz",
+     "known": "à parler",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0005L03",
+     "target": "gant unan bennak all",
+     "known": "avec quelqu'un d'autre",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 6,
+   "target": "Emaon o klask kaout soñj eus ur ger.",
+   "known": "J'essaie de me souvenir d'un mot.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0006L01",
+     "target": "kaout soñj",
+     "known": "me souvenir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0006L02",
+     "target": "eus ur ger",
+     "known": "d'un mot",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "target": "Fellout a ra din klask gwellañ ma c'hallan hiziv.",
+   "known": "Je veux essayer de mon mieux aujourd'hui.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0007L01",
+     "target": "klask",
+     "known": "essayer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0007L02",
+     "target": "gwellañ ma c'hallan",
+     "known": "de mon mieux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0007L03",
+     "target": "hiziv",
+     "known": "aujourd'hui",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "target": "Emaon o vont da glask displegañ ar pezh a fell din lavarout.",
+   "known": "Je vais essayer d'expliquer ce que je veux dire.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0008L01",
+     "target": "emaon o vont da glask",
+     "known": "je vais essayer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0008L02",
+     "target": "displegañ",
+     "known": "expliquer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0008L03",
+     "target": "ar pezh a fell din",
+     "known": "ce que je veux",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old LEGO S0057L02 (held, old) \"petra a fell din\"",
+      "ZUT vs held old phrase bre_for_fra:S0057L02B02 (held, old): \"ce que je veux dire\" → \"ar pezh a fell din lavarout\" / \"petra a fell din lavaret\""
+     ],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "target": "Komz a ran un tamm brezhoneg bremañ.",
+   "known": "Je parle un peu breton maintenant.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0009L01",
+     "target": "komz a ran",
+     "known": "je parle",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0009L02",
+     "target": "un tamm",
+     "known": "un peu",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "target": "N'on ket sur hag-eñ e c'hallan kaout soñj eus ar frazenn a-bezh.",
+   "known": "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0010L01",
+     "target": "n'on ket sur",
+     "known": "je ne suis pas sûr",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0010L02",
+     "target": "hag-eñ e c'hallan",
+     "known": "si je peux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0010L03",
+     "target": "eus ar frazenn a-bezh",
+     "known": "de toute la phrase",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "target": "Plijout a rafe din gallout komz goude ma echui.",
+   "known": "J'aimerais pouvoir parler après que tu aies fini.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0011L01",
+     "target": "plijout a rafe din",
+     "known": "j'aimerais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0011L02",
+     "target": "gallout",
+     "known": "pouvoir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0011L03",
+     "target": "goude ma echui",
+     "known": "après que tu aies fini",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "target": "Ne blijfe ket din divinout ar pezh a c'hoarvezo warc'hoazh.",
+   "known": "Je n'aimerais pas deviner ce qui se passera demain.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0012L01",
+     "target": "ne blijfe ket din",
+     "known": "je n'aimerais pas",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0012L02",
+     "target": "divinout",
+     "known": "deviner",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0012L03",
+     "target": "warc'hoazh",
+     "known": "demain",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0012L04",
+     "target": "ar pezh a c'hoarvezo",
+     "known": "ce qui se passera",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 13,
+   "target": "Komz a rez brezhoneg mat-tre.",
+   "known": "Tu parles très bien le breton.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0013L01",
+     "target": "komz a rez",
+     "known": "tu parles",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0013L02",
+     "target": "mat-tre",
+     "known": "très bien",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 14,
+   "target": "Komz a rez brezhoneg an devezh a-bezh ?",
+   "known": "Tu parles breton toute la journée ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0014L01",
+     "target": "an devezh a-bezh",
+     "known": "toute la journée",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "target": "Ha fellout a ra din e komzfes brezhoneg ganin warc'hoazh.",
+   "known": "Et je veux que tu parles breton avec moi demain.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0015L01",
+     "target": "ha fellout a ra din",
+     "known": "et je veux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0015L02",
+     "target": "e komzfes",
+     "known": "que tu parles",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0015L03",
+     "target": "ganin",
+     "known": "avec moi",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "target": "Fellout a ra dezhañ dont en-dro gant an holl diwezhatoc'h.",
+   "known": "Il veut revenir avec tout le monde plus tard.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0016L01",
+     "target": "fellout a ra dezhañ",
+     "known": "il veut",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0016L02",
+     "target": "dont en-dro",
+     "known": "revenir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0016L03",
+     "target": "gant an holl",
+     "known": "avec tout le monde",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0016L04",
+     "target": "diwezhatoc'h",
+     "known": "plus tard",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 17,
+   "target": "Fellout a ra dezhi gouzout petra eo ar respont.",
+   "known": "Elle veut savoir quelle est la réponse.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0017L01",
+     "target": "fellout a ra dezhi",
+     "known": "elle veut",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0017L02",
+     "target": "gouzout",
+     "known": "savoir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0017L03",
+     "target": "ar respont",
+     "known": "la réponse",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0017L04",
+     "target": "petra eo",
+     "known": "quelle est",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 18,
+   "target": "Fellout a ra deomp en em gavout da c'hwec'h eur fenoz.",
+   "known": "Nous voulons nous retrouver à six heures ce soir.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0018L01",
+     "target": "fellout a ra deomp",
+     "known": "nous voulons",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0018L02",
+     "target": "en em gavout",
+     "known": "nous retrouver",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0018L03",
+     "target": "da c'hwec'h eur",
+     "known": "à six heures",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0018L04",
+     "target": "fenoz",
+     "known": "ce soir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 19,
+   "target": "Met ne fell ket din paouez da gomz.",
+   "known": "Mais je ne veux pas arrêter de parler.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0019L01",
+     "target": "ne fell ket din",
+     "known": "je ne veux pas",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0019L02",
+     "target": "met",
+     "known": "mais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0019L03",
+     "target": "paouez da gomz",
+     "known": "arrêter de parler",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 22,
+   "target": "Peogwir e fell din kejañ gant tud a gomz brezhoneg.",
+   "known": "Parce que je veux rencontrer des gens qui parlent breton.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0022L01",
+     "target": "peogwir e fell din",
+     "known": "parce que je veux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0022L02",
+     "target": "kejañ gant",
+     "known": "rencontrer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0022L03",
+     "target": "tud",
+     "known": "des gens",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old phrase bre_for_fra:S0088L02B01 (held, old): \"parler avec des gens\" → \"komz gant tud\" / \"da gomz gant tud\""
+     ],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0022L04",
+     "target": "a gomz",
+     "known": "qui parlent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 23,
+   "target": "Emaon o vont da gregiñ da gomz muioc'h a-benn nebeut.",
+   "known": "Je vais bientôt commencer à parler plus.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0023L01",
+     "target": "emaon o vont da gregiñ",
+     "known": "je vais commencer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0023L02",
+     "target": "muioc'h",
+     "known": "plus",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0023L03",
+     "target": "a-benn nebeut",
+     "known": "bientôt",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 24,
+   "target": "N'emaon ket o vont da c'hallout kaout soñj aes.",
+   "known": "Je ne vais pas pouvoir me souvenir facilement.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0024L01",
+     "target": "n'emaon ket o vont",
+     "known": "je ne vais pas",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0024L02",
+     "target": "da c'hallout kaout soñj",
+     "known": "pouvoir me souvenir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 3,
+     "floor": "USE: need 5+, got 3"
+    },
+    {
+     "id": "S0024L03",
+     "target": "aes",
+     "known": "facilement",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 3,
+     "floor": "USE: need 5+, got 3"
+    }
+   ]
+  },
+  {
+   "seed": 25,
+   "target": "Emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit ?",
+   "known": "Tu vas m'aider avant que je doive partir ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0025L01",
+     "target": "emaout o vont da",
+     "known": "tu vas",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0025L02",
+     "target": "sikour ac'hanon",
+     "known": "m'aider",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old LEGO S0249L01 (held, old) \"da skoazell ganin\""
+     ],
+     "syllables": 4,
+     "build": 2,
+     "use": 4,
+     "floor": "BUILD: need 3+, got 2"
+    },
+    {
+     "id": "S0025L03",
+     "target": "mont kuit",
+     "known": "partir",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old LEGO S0274L02 (held, old) \"kuitaat\"",
+      "ZUT vs held old phrase bre_for_fra:S0274L02B03 (held, old): \"je ne veux pas partir\" → \"ne fell ket din mont kuit\" / \"n'am eus ket c'hoant kuitaat\"",
+      "ZUT vs held old phrase bre_for_fra:S0274L02B01 (held, old): \"il veut partir\" → \"fellout a ra dezhañ mont kuit\" / \"c'hoant en deus kuitaat\""
+     ],
+     "syllables": 3,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0025L04",
+     "target": "a-raok ma rankin",
+     "known": "avant que je doive",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 26,
+   "target": "Plijout a ra din en em santout evel pa vefen kazi prest da vont kuit.",
+   "known": "J'aime me sentir comme si j'étais presque prêt à partir.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0026L01",
+     "target": "plijout a ra din",
+     "known": "j'aime",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0026L02",
+     "target": "prest",
+     "known": "prêt",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0026L03",
+     "target": "da vont kuit",
+     "known": "à partir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0026L04",
+     "target": "en em santout",
+     "known": "me sentir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0026L05",
+     "target": "kazi prest",
+     "known": "presque prêt",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0026L06",
+     "target": "evel pa vefen",
+     "known": "comme si j'étais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 27,
+   "target": "Ne blij ket din kemer re a amzer evit respont.",
+   "known": "Je n'aime pas prendre trop de temps pour répondre.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0027L01",
+     "target": "ne blij ket din",
+     "known": "je n'aime pas",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 2,
+     "use": 4,
+     "floor": "BUILD: need 3+, got 2"
+    },
+    {
+     "id": "S0027L02",
+     "target": "re a amzer",
+     "known": "trop de temps",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0027L03",
+     "target": "kemer",
+     "known": "prendre",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old phrase bre_for_fra:S0065L02U04 (held, old): \"je n'aime pas prendre trop de temps\" → \"ne blij ket din kemer re a amzer\" / \"n'am eus ket plijout gant kemer re a amzer\""
+     ],
+     "syllables": 1,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0027L04",
+     "target": "evit respont",
+     "known": "pour répondre",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    }
+   ]
+  },
+  {
+   "seed": 28,
+   "target": "Talvoudus eo kregiñ da gomz kerkent ha ma c'hallez.",
+   "known": "C'est utile de commencer à parler dès que tu peux.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0028L01",
+     "target": "talvoudus eo",
+     "known": "c'est utile",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0028L02",
+     "target": "kregiñ da gomz",
+     "known": "commencer à parler",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 3,
+     "floor": "USE: need 5+, got 3"
+    },
+    {
+     "id": "S0028L03",
+     "target": "kerkent ha ma c'hallez",
+     "known": "dès que tu peux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 29,
+   "target": "Mall eo ganin komz gwelloc'h kerkent ha ma c'haller.",
+   "known": "J'ai hâte de parler mieux dès que possible.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0029L01",
+     "target": "mall eo ganin",
+     "known": "j'ai hâte",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0029L02",
+     "target": "gwelloc'h",
+     "known": "mieux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 3,
+     "use": 3,
+     "floor": "USE: need 5+, got 3"
+    },
+    {
+     "id": "S0029L03",
+     "target": "kerkent ha ma c'haller",
+     "known": "dès que possible",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  },
+  {
+   "seed": 30,
+   "target": "Fellout a rae din goulenn un dra bennak diganit dec'h.",
+   "known": "Je voulais te demander quelque chose hier.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0030L01",
+     "target": "fellout a rae din",
+     "known": "je voulais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 3,
+     "use": 4,
+     "floor": "USE: need 5+, got 4"
+    },
+    {
+     "id": "S0030L02",
+     "target": "goulenn diganit",
+     "known": "te demander",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 3,
+     "use": 5
+    },
+    {
+     "id": "S0030L03",
+     "target": "dec'h",
+     "known": "hier",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "build": 3,
+     "use": 5
+    }
+   ]
+  }
+ ]
+}
