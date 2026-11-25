@@ -10,7 +10,9 @@ for r in pick:
     urllib.request.urlretrieve(url, dest)
     clips.append({'label': f"{course} · {r['kind']} · was: {r['text'][:70]} → now: {r.get('spoken') or r['speak']} · {r['audioId'][:8]}", 'file': os.path.abspath(dest)})
 chars = sum(r.get('charsSpent') or 0 for r in R)
-json.dump({'title': f'Item 8 gender re-records, {course} (cs #868, 24 Nov): sample, UNHEARD',
-           'intro': f'{len(R)} clips where a female voice read a male form, re-recorded with the female form ({chars:,} chars). No ear sample was taken before applying. Check: a female voice, saying the female form, no cut-offs. UNHEARD.',
+B = any(r.get('kind') == '8B' for r in R)
+INTRO = (f'{len(R)} new takes in the course\'s MALE cast voice, linked in place of female-voice clips that read a male form ({chars:,} chars). No ear sample was taken before applying. Language-free check: a male voice, no cut-offs, no glitches. UNHEARD.' if B else
+         f'{len(R)} clips where a female voice read a male form, re-recorded with the female form ({chars:,} chars). No ear sample was taken before applying. Check: a female voice, saying the female form, no cut-offs. UNHEARD.')
+json.dump({'title': f'Item 8 gender re-records, {course} (cs #868, 24 Nov): sample, UNHEARD', 'intro': INTRO,
            'clips': clips}, open(spec, 'w'), ensure_ascii=False, indent=1)
 print(len(clips), 'clips')
