@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 506,
+  "lego_index": 1,
+  "known": "long ago",
+  "target": "昔"
+ },
+ "at": "2026-11-25T12:58:58.476Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 159,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"they were quarrelling long ago\" (unknown gloss \"quarrelling\")",
+  "BUILD \"they were quarrelling long ago\" → \"彼ら昔ケンカしてた\": popty:knownSide [{\"known\":\"they were quarrelling long ago\",\"target\":\"彼ら昔ケンカしてた\",\"problem\":\"unknown gloss \\\"quarrelling\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

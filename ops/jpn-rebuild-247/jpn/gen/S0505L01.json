@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 505,
+  "lego_index": 1,
+  "known": "not be left behind",
+  "target": "置いていかれない"
+ },
+ "at": "2026-11-25T12:58:02.203Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not be left behind\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "build",
+   "known_text": "a method for not being left behind",
+   "target_text": "置いていかれない方法",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "build",
+   "known_text": "children who aren't left behind",
+   "target_text": "置いていかれない子ども",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "build",
+   "known_text": "never be left behind again",
+   "target_text": "二度と置いていかれない",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "build",
+   "known_text": "might never be left behind again",
+   "target_text": "二度と置いていかれないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "use",
+   "known_text": "I want to make sure I'm never left behind again",
+   "target_text": "二度と置いていかれないようにしたい",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "use",
+   "known_text": "this time we might not be left behind",
+   "target_text": "今回置いていかれないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "use",
+   "known_text": "it seems better not to get left behind",
+   "target_text": "置いていかれないほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "use",
+   "known_text": "I didn't think I wouldn't be left behind",
+   "target_text": "置いていかれないとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "use",
+   "known_text": "I heard that we won't be left behind",
+   "target_text": "置いていかれないって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 505,
+   "lego_index": 1,
+   "lego_known": "not be left behind",
+   "lego_target": "置いていかれない",
+   "phrase_role": "use",
+   "known_text": "from now on I won't be left behind",
+   "target_text": "これから置いていかれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 504,
+  "lego_index": 1,
+  "known": "grass",
+  "target": "草"
+ },
+ "at": "2026-11-25T12:56:19.833Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 296,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "build",
+   "known_text": "yellow grass",
+   "target_text": "黄色い草",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "build",
+   "known_text": "grass near the door",
+   "target_text": "ドアの近くに草",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "build",
+   "known_text": "towards the grass",
+   "target_text": "草のほうに",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "build",
+   "known_text": "grass near the yellow line",
+   "target_text": "黄色い線の近くに草",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "I don't want to sit near the grass tomorrow",
+   "target_text": "明日草の近くに座りたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "I'm going to run towards the grass tomorrow",
+   "target_text": "明日草のほうに走る",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "it seems better to stand near the grass",
+   "target_text": "草の近くに立つほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "I'm not planning to run towards the grass",
+   "target_text": "草のほうに走るつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "I want to sit down near the grass",
+   "target_text": "草の近くに座りたい",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "if I could get away I'd run towards the grass",
+   "target_text": "逃げられたら草のほうに走る",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 1,
+   "lego_known": "grass",
+   "lego_target": "草",
+   "phrase_role": "use",
+   "known_text": "I'm walking towards the yellow grass",
+   "target_text": "黄色い草のほうに歩いてる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

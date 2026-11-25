@@ -1,0 +1,132 @@
+{
+ "lego": {
+  "seed_number": 512,
+  "lego_index": 3,
+  "known": "during",
+  "target": "間"
+ },
+ "at": "2026-11-25T13:14:48.071Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 252,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "build",
+   "known_text": "during the wait",
+   "target_text": "待つ間",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "build",
+   "known_text": "standing during the wait",
+   "target_text": "待つ間立ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "build",
+   "known_text": "during the run I was tired",
+   "target_text": "走る間疲れてた",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "build",
+   "known_text": "I was tired during the walk",
+   "target_text": "歩く間疲れてた",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "I want to sit down during the wait",
+   "target_text": "待つ間座りたい",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "I don't want to sit during the walk tomorrow",
+   "target_text": "明日歩く間座りたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "it seems better to stand during the wait",
+   "target_text": "待つ間立つほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "during the wait the girl slept",
+   "target_text": "待つ間女の子眠った",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "they are working together during the move",
+   "target_text": "彼ら引っ越す間一緒に働いてる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "you can use the room during the wait",
+   "target_text": "待つ間部屋使える",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 3,
+   "lego_known": "during",
+   "lego_target": "間",
+   "phrase_role": "use",
+   "known_text": "I'm not planning to sit down during the run",
+   "target_text": "走る間座るつもりはない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

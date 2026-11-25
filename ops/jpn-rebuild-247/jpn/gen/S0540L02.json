@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 540,
+  "lego_index": 2,
+  "known": "even if go home",
+  "target": "帰っても"
+ },
+ "at": "2026-11-25T14:05:42.245Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 117,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"even if go home\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "build",
+   "known_text": "even if I go home on my own",
+   "target_text": "一人で帰っても",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "build",
+   "known_text": "even if you go home safely",
+   "target_text": "安全に帰っても",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "build",
+   "known_text": "I think it's okay even if you go home",
+   "target_text": "帰っても大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "build",
+   "known_text": "there's no point even if I go home",
+   "target_text": "帰っても意味がない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "use",
+   "known_text": "I think it's okay even if you go home without the car",
+   "target_text": "車なしで帰っても大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "use",
+   "known_text": "it doesn't matter even if both of them go home",
+   "target_text": "二人とも帰っても関係ない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "use",
+   "known_text": "there's no point even if I go home on my own",
+   "target_text": "一人で帰っても意味がない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "use",
+   "known_text": "I can't change it even if I go home",
+   "target_text": "帰っても変えられない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "use",
+   "known_text": "it won't be a problem even if you go home safely",
+   "target_text": "安全に帰っても問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 2,
+   "lego_known": "even if go home",
+   "lego_target": "帰っても",
+   "phrase_role": "use",
+   "known_text": "you should check even if you go home",
+   "target_text": "帰っても確認するべきだ",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

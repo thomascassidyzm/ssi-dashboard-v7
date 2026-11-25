@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 511,
+  "lego_index": 4,
+  "known": "several hours",
+  "target": "数時間"
+ },
+ "at": "2026-11-25T13:10:05.082Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 120,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"several hours\" initially, medially AND finally.",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "build",
+   "known_text": "last night for several hours",
+   "target_text": "昨夜数時間",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "build",
+   "known_text": "wait several hours",
+   "target_text": "数時間待つ",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "build",
+   "known_text": "run for several hours",
+   "target_text": "数時間走る",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "build",
+   "known_text": "it might be several hours",
+   "target_text": "数時間かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "use",
+   "known_text": "last night I slept for several hours",
+   "target_text": "昨夜数時間眠った",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "use",
+   "known_text": "tomorrow I want to take a break for several hours",
+   "target_text": "明日数時間休憩したい",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "use",
+   "known_text": "is it okay to wait several hours",
+   "target_text": "数時間待っていい",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "use",
+   "known_text": "I don't want to sit for several hours",
+   "target_text": "数時間座りたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "use",
+   "known_text": "let's stay quiet for several hours",
+   "target_text": "数時間静かにしていよう",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 4,
+   "lego_known": "several hours",
+   "lego_target": "数時間",
+   "phrase_role": "use",
+   "known_text": "I needed to wait several hours",
+   "target_text": "数時間待つ必要があった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

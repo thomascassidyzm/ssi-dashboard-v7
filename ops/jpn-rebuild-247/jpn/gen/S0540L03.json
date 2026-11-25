@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 540,
+  "lego_index": 3,
+  "known": "don't mind",
+  "target": "気にしない"
+ },
+ "at": "2026-11-25T14:07:42.928Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 177,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"don't mind\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "build",
+   "known_text": "even if you go home I don't mind",
+   "target_text": "帰っても気にしない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "build",
+   "known_text": "so as not to mind",
+   "target_text": "気にしないように",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "build",
+   "known_text": "both of them don't mind",
+   "target_text": "二人とも気にしない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "build",
+   "known_text": "I wonder if she doesn't mind",
+   "target_text": "気にしないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "use",
+   "known_text": "she might not mind if you go home without the car",
+   "target_text": "車なしで帰っても気にしないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "use",
+   "known_text": "I used to think both of them didn't mind",
+   "target_text": "二人とも気にしないと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "use",
+   "known_text": "it seems better not to mind whatever he says",
+   "target_text": "彼が何を言っても気にしないほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "use",
+   "known_text": "she surely won't mind so I think it's okay",
+   "target_text": "きっと気にしないから大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "use",
+   "known_text": "I wonder if she doesn't mind if you go home on your own",
+   "target_text": "一人で帰っても気にしないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 540,
+   "lego_index": 3,
+   "lego_known": "don't mind",
+   "lego_target": "気にしない",
+   "phrase_role": "use",
+   "known_text": "it won't be a problem because both of them don't mind",
+   "target_text": "二人とも気にしないから問題にならない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

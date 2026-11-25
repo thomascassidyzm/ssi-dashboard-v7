@@ -1,0 +1,24 @@
+{
+ "lego": {
+  "seed_number": 529,
+  "lego_index": 1,
+  "known": "hand",
+  "target": "手"
+ },
+ "at": "2026-11-25T13:44:29.879Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"which hand hurts?\": too short to be a complete sentence",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,112 @@
+{
+ "lego": {
+  "seed_number": 512,
+  "lego_index": 2,
+  "known": "fetch",
+  "target": "取る"
+ },
+ "at": "2026-11-25T13:12:58.492Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 173,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "build",
+   "known_text": "I might fetch",
+   "target_text": "取るかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "build",
+   "known_text": "I needed to fetch",
+   "target_text": "取る必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "build",
+   "known_text": "I'll fetch the suitcase later",
+   "target_text": "あとでスーツケース取る",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "build",
+   "known_text": "I'm not planning to fetch",
+   "target_text": "取るつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "use",
+   "known_text": "we needed to fetch the suitcase",
+   "target_text": "スーツケース取る必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "use",
+   "known_text": "the girl might fetch the coffee later",
+   "target_text": "女の子あとでコーヒー取るかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "use",
+   "known_text": "whatever he says I'm not planning to fetch",
+   "target_text": "彼が何を言っても取るつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "use",
+   "known_text": "it seems better to fetch the postcard later",
+   "target_text": "あとではがき取るほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 2,
+   "lego_known": "fetch",
+   "lego_target": "取る",
+   "phrase_role": "use",
+   "known_text": "I heard that they'll fetch the money tomorrow",
+   "target_text": "彼ら明日お金取るって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 533,
+  "lego_index": 1,
+  "known": "not all of it",
+  "target": "全部は"
+ },
+ "at": "2026-11-25T13:50:09.268Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 148,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not all of it\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "build",
+   "known_text": "can't guess all of it",
+   "target_text": "全部は当てられない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "build",
+   "known_text": "haven't seen all of it",
+   "target_text": "全部は見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "build",
+   "known_text": "on my own, not all of it",
+   "target_text": "一人で全部は",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "build",
+   "known_text": "to the whole family, not all of it",
+   "target_text": "家族全員に全部は",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "use",
+   "known_text": "I can't do all of it in four minutes",
+   "target_text": "四分で全部は無理",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "use",
+   "known_text": "I didn't tell the whole family all of it",
+   "target_text": "家族全員に全部は言わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "use",
+   "known_text": "I might not be able to do all of it",
+   "target_text": "全部は無理かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "use",
+   "known_text": "I don't want to find out all of it",
+   "target_text": "全部は知りたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "use",
+   "known_text": "both of them haven't seen all of it",
+   "target_text": "二人とも全部は見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 1,
+   "lego_known": "not all of it",
+   "lego_target": "全部は",
+   "phrase_role": "use",
+   "known_text": "I can't do all of it on my own",
+   "target_text": "一人で全部は無理",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

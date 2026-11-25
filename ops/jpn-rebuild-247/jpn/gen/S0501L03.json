@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 501,
+  "lego_index": 3,
+  "known": "if do for me",
+  "target": "くれたら"
+ },
+ "at": "2026-11-25T12:45:30.650Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 168,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if do for me\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "build",
+   "known_text": "if you'd make coffee for me",
+   "target_text": "コーヒー作ってくれたら",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "build",
+   "known_text": "if you'd make coffee for me I'd be ready",
+   "target_text": "コーヒー作ってくれたら準備できる",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "build",
+   "known_text": "if you'd let me drive",
+   "target_text": "運転させてくれたら",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "build",
+   "known_text": "if you'd let me park it won't be a problem",
+   "target_text": "駐車させてくれたら問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "use",
+   "known_text": "if you'd make me strong coffee I could drive home",
+   "target_text": "濃いコーヒー作ってくれたら家まで運転できる",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "use",
+   "known_text": "i think it's okay if you'd let me make the reservation",
+   "target_text": "予約させてくれたら大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "use",
+   "known_text": "if you'd let me drive without arguing I'd be able to continue",
+   "target_text": "ケンカせずに運転させてくれたら続けられる",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "use",
+   "known_text": "if you'd let me throw once",
+   "target_text": "一度投げさせてくれたら",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 3,
+   "lego_known": "if do for me",
+   "lego_target": "くれたら",
+   "phrase_role": "use",
+   "known_text": "if you'd make coffee for me I'd want to take a break",
+   "target_text": "コーヒー作ってくれたら休憩したい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

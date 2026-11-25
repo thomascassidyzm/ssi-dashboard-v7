@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 526,
+  "lego_index": 2,
+  "known": "can't believe",
+  "target": "信じられない"
+ },
+ "at": "2026-11-25T13:40:35.295Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "bareLego"
+ ],
+ "attempts": 2,
+ "secs": 144,
+ "floorsOnly": false,
+ "lastReasons": [
+  "bareLego: 1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing",
+  "BUILD \"can't believe\" → \"信じられない\": popty:bareLego {\"pass\":false,\"dropped\":1,\"detail\":\"1 bare BUILD + 0 bare USE row(s) are copies of the LEGO itself and teach nothing\"}; ZUT whole course: \"can't believe\" is \"信じられないから\" at seed 526",
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

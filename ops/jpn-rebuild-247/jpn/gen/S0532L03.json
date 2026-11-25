@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 532,
+  "lego_index": 3,
+  "known": "but it's another matter",
+  "target": "別だけど"
+ },
+ "at": "2026-11-25T13:50:43.406Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 194,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"but it's another matter\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "build",
+   "known_text": "if you want to climb, it's another matter, but",
+   "target_text": "登りたければ別だけど",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "build",
+   "known_text": "if I could get away, it's another matter, but",
+   "target_text": "逃げられたら別だけど",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "build",
+   "known_text": "it's another matter, but it's scary",
+   "target_text": "別だけど怖い",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "build",
+   "known_text": "it's another matter, but I can't believe it",
+   "target_text": "別だけど信じられない",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "use",
+   "known_text": "if I could get away, it's another matter, but I can't do it",
+   "target_text": "逃げられたら別だけど無理",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "use",
+   "known_text": "if you want to be liked, it's another matter, but there's no point",
+   "target_text": "好かれたければ別だけど意味がない",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "use",
+   "known_text": "if you want to climb, it's another matter, but it might not be easy",
+   "target_text": "登りたければ別だけど簡単じゃないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "use",
+   "known_text": "it's another matter, but I'm not planning to lose",
+   "target_text": "別だけど負けるつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "use",
+   "known_text": "it's another matter, but I think it's okay",
+   "target_text": "別だけど大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 3,
+   "lego_known": "but it's another matter",
+   "lego_target": "別だけど",
+   "phrase_role": "use",
+   "known_text": "it's another matter, but more than anything it's scary",
+   "target_text": "別だけど何より怖い",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

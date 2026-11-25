@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 537,
+  "lego_index": 1,
+  "known": "was wrong",
+  "target": "間違ってた"
+ },
+ "at": "2026-11-25T14:01:49.700Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "build",
+   "known_text": "the room number was wrong",
+   "target_text": "部屋番号間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "build",
+   "known_text": "the start time was wrong",
+   "target_text": "開始時間間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "build",
+   "known_text": "in the old days i was wrong",
+   "target_text": "昔は間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "build",
+   "known_text": "the blue sign was wrong",
+   "target_text": "青い標識間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "i didn't think that i was wrong",
+   "target_text": "間違ってたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "let's stop because i was wrong",
+   "target_text": "間違ってたからやめよう",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "i wonder if i was wrong",
+   "target_text": "間違ってたか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "i used to think the sign was wrong",
+   "target_text": "標識間違ってたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "i was wrong last night",
+   "target_text": "昨夜間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "i heard that the start time was wrong",
+   "target_text": "開始時間間違ってたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 537,
+   "lego_index": 1,
+   "lego_known": "was wrong",
+   "lego_target": "間違ってた",
+   "phrase_role": "use",
+   "known_text": "both of them might have been wrong",
+   "target_text": "二人とも間違ってたかもしれない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

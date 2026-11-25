@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 525,
+  "lego_index": 2,
+  "known": "in order to",
+  "target": "ため"
+ },
+ "at": "2026-11-25T13:39:32.300Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 171,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"waiting in order to check seems better\" (unknown gloss \"waiting\"); \"there's no point paying in order to park\" (unknown gloss \"paying\")",
+  "USE \"waiting in order to check seems better\" → \"確認するため待つほうがよさそう\": popty:knownSide [{\"known\":\"waiting in order to check seems better\",\"target\":\"確認するため待つほうがよさそう\",\"problem\":\"unknown gloss \\\"waiting\\\"\"}]",
+  "USE \"there's no point paying in order to park\" → \"停めるため払う意味がない\": popty:knownSide [{\"known\":\"there's no point paying in order to park\",\"target\":\"停めるため払う意味がない\",\"problem\":\"unknown gloss \\\"paying\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 521,
+  "lego_index": 1,
+  "known": "being here",
+  "target": "ここにいる"
+ },
+ "at": "2026-11-25T13:30:40.325Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 148,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "build",
+   "known_text": "being here for several hours",
+   "target_text": "数時間ここにいる",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "build",
+   "known_text": "being here on one's own",
+   "target_text": "一人でここにいる",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "build",
+   "known_text": "might be here",
+   "target_text": "ここにいるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "build",
+   "known_text": "being here tomorrow",
+   "target_text": "明日ここにいる",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "it seems better to be here for several hours",
+   "target_text": "数時間ここにいるほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "both of them needed to be here",
+   "target_text": "二人ともここにいる必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "i'm not planning to be here next year",
+   "target_text": "来年ここにいるつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "they might be here tomorrow",
+   "target_text": "彼ら明日ここにいるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "while i was still here i found a perfect house",
+   "target_text": "ここにいるうちに完璧な家見つけた",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "there's no point being here on one's own",
+   "target_text": "一人でここにいる意味がない",
+   "pad": []
+  },
+  {
+   "seed_number": 521,
+   "lego_index": 1,
+   "lego_known": "being here",
+   "lego_target": "ここにいる",
+   "phrase_role": "use",
+   "known_text": "you're not supposed to be here on the first day",
+   "target_text": "初日にここにいるはずじゃない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

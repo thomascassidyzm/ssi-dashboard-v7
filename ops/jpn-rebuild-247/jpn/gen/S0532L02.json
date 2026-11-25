@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 532,
+  "lego_index": 2,
+  "known": "if good",
+  "target": "良ければ"
+ },
+ "at": "2026-11-25T13:49:53.312Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 190,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if good\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "build",
+   "known_text": "if this bed is good",
+   "target_text": "このベッド良ければ",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "build",
+   "known_text": "if this coffee is good",
+   "target_text": "このコーヒー良ければ",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "build",
+   "known_text": "if it's good i'll pay",
+   "target_text": "良ければ払う",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "build",
+   "known_text": "if it's good i'll put it",
+   "target_text": "良ければ置く",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "use",
+   "known_text": "if this hotel is good we should make a reservation",
+   "target_text": "このホテル良ければ予約すべき",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "use",
+   "known_text": "if this room is good it won't be a problem",
+   "target_text": "この部屋良ければ問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "use",
+   "known_text": "if luck is good i think it's okay",
+   "target_text": "運良ければ大丈夫だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "use",
+   "known_text": "if luck is good we can win",
+   "target_text": "運良ければ勝てる",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "use",
+   "known_text": "if this city is good i want to live",
+   "target_text": "この街良ければ住みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 532,
+   "lego_index": 2,
+   "lego_known": "if good",
+   "lego_target": "良ければ",
+   "phrase_role": "use",
+   "known_text": "if it's good i'll pay tomorrow",
+   "target_text": "良ければ明日払う",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

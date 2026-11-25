@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 545,
+  "lego_index": 3,
+  "known": "one's turn",
+  "target": "番"
+ },
+ "at": "2026-11-25T14:12:12.393Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 132,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"one's turn\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "build",
+   "known_text": "your turn to pay",
+   "target_text": "払う番",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "build",
+   "known_text": "your turn to run",
+   "target_text": "走る番",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "build",
+   "known_text": "my turn to check",
+   "target_text": "確認する番",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "build",
+   "known_text": "your turn to wait",
+   "target_text": "待つ番",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "use",
+   "known_text": "I wonder if it's my turn",
+   "target_text": "番か気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "use",
+   "known_text": "it might be my turn",
+   "target_text": "番かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "use",
+   "known_text": "she said it was your turn to call back",
+   "target_text": "かけ直す番だって言ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "use",
+   "known_text": "tomorrow it's your turn to park",
+   "target_text": "明日停める番",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 3,
+   "lego_known": "one's turn",
+   "lego_target": "番",
+   "phrase_role": "use",
+   "known_text": "is it my turn to read",
+   "target_text": "読む番",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

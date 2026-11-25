@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 546,
+  "lego_index": 2,
+  "known": "is dirty",
+  "target": "汚れて"
+ },
+ "at": "2026-11-25T14:14:31.926Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 151,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"is dirty\" initially, medially AND finally.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "build",
+   "known_text": "the hand is dirty and",
+   "target_text": "手汚れて",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "build",
+   "known_text": "it's dirty and terrible",
+   "target_text": "汚れてひどい",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "build",
+   "known_text": "it's dirty and it hurts",
+   "target_text": "汚れて痛い",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "build",
+   "known_text": "the dog is dirty and getting weak",
+   "target_text": "犬汚れて弱ってきてる",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "the window is so dirty i can't believe it",
+   "target_text": "窓汚れて信じられない",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "the clothes are dirty so i don't want to show them",
+   "target_text": "服汚れて見せたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "the baby is dirty and might be feeling sick",
+   "target_text": "赤ちゃん汚れて具合が悪いかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "i used to think the room was dirty and terrible",
+   "target_text": "部屋汚れてひどいと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "in the old days the house was dirty and terrible",
+   "target_text": "昔は家汚れてひどかった",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "the shirt is dirty so i won't choose it",
+   "target_text": "シャツ汚れて選ばない",
+   "pad": []
+  },
+  {
+   "seed_number": 546,
+   "lego_index": 2,
+   "lego_known": "is dirty",
+   "lego_target": "汚れて",
+   "phrase_role": "use",
+   "known_text": "the room is dirty so let's check it",
+   "target_text": "部屋汚れて確認しよう",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

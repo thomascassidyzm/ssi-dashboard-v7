@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 513,
+  "lego_index": 3,
+  "known": "hurts",
+  "target": "痛い"
+ },
+ "at": "2026-11-25T13:17:05.393Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 137,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "build",
+   "known_text": "because it hurts",
+   "target_text": "痛いから",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "build",
+   "known_text": "it hurts badly",
+   "target_text": "ひどく痛い",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "build",
+   "known_text": "it hurts more than anything",
+   "target_text": "何より痛い",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "build",
+   "known_text": "i heard that it hurts",
+   "target_text": "痛いって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "i want to sit down because it hurts",
+   "target_text": "痛いから座りたい",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "i don't want to climb because it hurts",
+   "target_text": "痛いから登りたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "i don't need to walk because it hurts",
+   "target_text": "痛いから歩かなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "it hurts badly because i'm injured",
+   "target_text": "ケガしてるからひどく痛い",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "i can't do it because it hurts",
+   "target_text": "痛いから無理",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "i heard that it hurts more than anything",
+   "target_text": "何より痛いって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 513,
+   "lego_index": 3,
+   "lego_known": "hurts",
+   "lego_target": "痛い",
+   "phrase_role": "use",
+   "known_text": "it hurts quite badly",
+   "target_text": "結構ひどく痛い",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 512,
+  "lego_index": 5,
+  "known": "hold open for me",
+  "target": "押さえてくれる"
+ },
+ "at": "2026-11-25T13:14:05.928Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 162,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"hold open for me\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "build",
+   "known_text": "hold the door open for me",
+   "target_text": "ドア押さえてくれる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "build",
+   "known_text": "you might hold it open for me",
+   "target_text": "押さえてくれるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "build",
+   "known_text": "will you hold the window open for me",
+   "target_text": "窓押さえてくれる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "build",
+   "known_text": "because you hold it open for me",
+   "target_text": "押さえてくれるから",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "use",
+   "known_text": "i didn't think you'd hold the door open for me",
+   "target_text": "ドア押さえてくれるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "use",
+   "known_text": "i'll ask if they'll hold it open for me",
+   "target_text": "押さえてくれるか聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "use",
+   "known_text": "you might hold the door open for me tomorrow",
+   "target_text": "明日ドア押さえてくれるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "use",
+   "known_text": "until everybody is ready will you hold it open for me",
+   "target_text": "みんなが準備できるまで押さえてくれる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "use",
+   "known_text": "because you hold the door open for me i can carry the suitcase",
+   "target_text": "ドア押さえてくれるからスーツケース運べる",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 5,
+   "lego_known": "hold open for me",
+   "lego_target": "押さえてくれる",
+   "phrase_role": "use",
+   "known_text": "i wonder if they'll hold the window open for me",
+   "target_text": "窓押さえてくれるか気になる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

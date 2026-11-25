@@ -1,0 +1,142 @@
+{
+ "lego": {
+  "seed_number": 508,
+  "lego_index": 1,
+  "known": "payment",
+  "target": "支払い"
+ },
+ "at": "2026-11-25T13:03:41.311Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 103,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "build",
+   "known_text": "which payment method",
+   "target_text": "どの支払い方法",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "build",
+   "known_text": "the payment isn't easy",
+   "target_text": "支払い、簡単じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "build",
+   "known_text": "the payment might be free",
+   "target_text": "支払い、無料かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "build",
+   "known_text": "more than anything the payment",
+   "target_text": "何より支払い",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "i can't change the payment method",
+   "target_text": "支払い方法、変えられない",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "i want to find a payment method",
+   "target_text": "支払い方法、探したい",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "can i use this payment method",
+   "target_text": "この支払い方法、使える",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "i'll ask if the payment is free",
+   "target_text": "支払い、無料か聞いてみる",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "i'm not sure if the payment is next month",
+   "target_text": "支払い、来月かどうか分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "this time the payment won't be a problem",
+   "target_text": "今回、支払い、問題にならない",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "i didn't think the payment was easy",
+   "target_text": "支払い、簡単とは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 508,
+   "lego_index": 1,
+   "lego_known": "payment",
+   "lego_target": "支払い",
+   "phrase_role": "use",
+   "known_text": "the payment doesn't matter",
+   "target_text": "支払い、関係ない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

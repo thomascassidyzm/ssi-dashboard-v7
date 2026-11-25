@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 522,
+  "lego_index": 1,
+  "known": "was stupid",
+  "target": "バカだった"
+ },
+ "at": "2026-11-25T13:33:19.076Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 159,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"wasn't it stupid\": too short to be a complete sentence",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

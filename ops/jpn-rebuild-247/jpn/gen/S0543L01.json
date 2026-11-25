@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 543,
+  "lego_index": 1,
+  "known": "was right",
+  "target": "正しかった"
+ },
+ "at": "2026-11-25T14:10:31.449Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 169,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"was right\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "build",
+   "known_text": "both of them were right",
+   "target_text": "二人とも正しかった",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "build",
+   "known_text": "it might have been right",
+   "target_text": "正しかったかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "build",
+   "known_text": "this time it was right",
+   "target_text": "今回正しかった",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "build",
+   "known_text": "i heard it was right",
+   "target_text": "正しかったって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "use",
+   "known_text": "i didn't think both of them were right",
+   "target_text": "二人とも正しかったとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "use",
+   "known_text": "in the old days i used to think it was right",
+   "target_text": "昔は正しかったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "use",
+   "known_text": "it might have been right last year",
+   "target_text": "去年正しかったかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "use",
+   "known_text": "wasn't it surely right",
+   "target_text": "きっと正しかったんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "use",
+   "known_text": "i made a promise because both of them were right",
+   "target_text": "二人とも正しかったから約束した",
+   "pad": []
+  },
+  {
+   "seed_number": 543,
+   "lego_index": 1,
+   "lego_known": "was right",
+   "lego_target": "正しかった",
+   "phrase_role": "use",
+   "known_text": "this time i didn't think it was right",
+   "target_text": "今回正しかったとは思わなかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

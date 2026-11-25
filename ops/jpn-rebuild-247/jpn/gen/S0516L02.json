@@ -1,0 +1,146 @@
+{
+ "lego": {
+  "seed_number": 516,
+  "lego_index": 2,
+  "known": "on one's own",
+  "target": "一人で"
+ },
+ "at": "2026-11-25T13:27:12.365Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 326,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"on one's own\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "build",
+   "known_text": "was able to go on his own",
+   "target_text": "一人で行けた",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "build",
+   "known_text": "can drive home on her own",
+   "target_text": "一人で家まで運転できる",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "build",
+   "known_text": "has to go home on her own",
+   "target_text": "一人で帰らなきゃ",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "build",
+   "known_text": "went on his own last night",
+   "target_text": "昨夜一人で行った",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "my daughter might be able to come on her own",
+   "target_text": "娘一人で来られるかも",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "my son can carry the suitcase on his own",
+   "target_text": "息子一人でスーツケース運べる",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "how far was my son able to go on his own",
+   "target_text": "息子一人でどこまで行けた",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "I didn't think my daughter could drive home on her own",
+   "target_text": "娘一人で家まで運転できるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "it's better for my son to go straight home on his own",
+   "target_text": "息子一人でまっすぐ帰ったほうがいい",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "my daughter will wait on her own until everybody is ready",
+   "target_text": "みんなが準備できるまで娘一人で待つ",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "my daughter doesn't want to live on her own",
+   "target_text": "娘一人で住みたくない",
+   "pad": []
+  },
+  {
+   "seed_number": 516,
+   "lego_index": 2,
+   "lego_known": "on one's own",
+   "lego_target": "一人で",
+   "phrase_role": "use",
+   "known_text": "my son moved on his own last year",
+   "target_text": "去年息子一人で引っ越した",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 536,
+  "lego_index": 3,
+  "known": "used to think",
+  "target": "と思ってた"
+ },
+ "at": "2026-11-25T14:00:45.885Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 166,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"used to think\" initially, medially AND finally.",
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "build",
+   "known_text": "I used to think it was scary",
+   "target_text": "怖いと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "build",
+   "known_text": "in the old days I used to think I could win",
+   "target_text": "昔は勝てると思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "build",
+   "known_text": "the job I used to think was terrible",
+   "target_text": "ひどいと思ってた仕事",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "build",
+   "known_text": "the house I used to think was big",
+   "target_text": "大きいと思ってた家",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I haven't seen the film I used to think was scary",
+   "target_text": "怖いと思ってた映画見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I won't choose the job I used to think was terrible",
+   "target_text": "ひどいと思ってた仕事選ばない",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I used to think it wasn't easy",
+   "target_text": "簡単じゃないと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I used to think I couldn't change it",
+   "target_text": "変えられないと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I used to think it might be terrible",
+   "target_text": "ひどいかもしれないと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I used to think I should pay",
+   "target_text": "払うべきだと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 3,
+   "lego_known": "used to think",
+   "lego_target": "と思ってた",
+   "phrase_role": "use",
+   "known_text": "I used to think it was better to go straight home",
+   "target_text": "まっすぐ帰ったほうがいいと思ってた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

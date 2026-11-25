@@ -1,0 +1,132 @@
+{
+ "lego": {
+  "seed_number": 510,
+  "lego_index": 2,
+  "known": "park",
+  "target": "停める"
+ },
+ "at": "2026-11-25T13:05:53.551Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 70,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "build",
+   "known_text": "park safely",
+   "target_text": "安全に停める",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "build",
+   "known_text": "park near the bridge",
+   "target_text": "橋の近くに停める",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "build",
+   "known_text": "not planning to park",
+   "target_text": "停めるつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "build",
+   "known_text": "might park safely",
+   "target_text": "安全に停めるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "i might park near the post office",
+   "target_text": "郵便局の近くに停めるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "i needed to park near the entrance",
+   "target_text": "入り口の近くに停める必要があった",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "i didn't need to park near the bridge",
+   "target_text": "橋の近くに停める必要なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "it seems better to park near the shop",
+   "target_text": "店の近くに停めるほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "i wonder if she'll park safely",
+   "target_text": "安全に停めるか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "i didn't think she'd park safely near the hotel",
+   "target_text": "ホテルの近くに安全に停めるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "park",
+   "lego_target": "停める",
+   "phrase_role": "use",
+   "known_text": "whatever he says, i'm not planning to park near the hotel",
+   "target_text": "彼が何を言ってもホテルの近くに停めるつもりはない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

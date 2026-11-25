@@ -1,0 +1,122 @@
+{
+ "lego": {
+  "seed_number": 511,
+  "lego_index": 1,
+  "known": "news",
+  "target": "ニュース"
+ },
+ "at": "2026-11-25T13:08:05.352Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 132,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "build",
+   "known_text": "I don't trust the recent news",
+   "target_text": "最近のニュース信じない",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "build",
+   "known_text": "I didn't see the news last night",
+   "target_text": "昨夜ニュース見なかった",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "build",
+   "known_text": "she likes to read the news",
+   "target_text": "ニュース読むのが好き",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "build",
+   "known_text": "I haven't seen the news since this morning",
+   "target_text": "朝からニュース見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "use",
+   "known_text": "I couldn't believe the news",
+   "target_text": "ニュース信じられなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "use",
+   "known_text": "I didn't want to know the news",
+   "target_text": "ニュース知りたくなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "use",
+   "known_text": "last night I wanted to convey the news",
+   "target_text": "昨夜ニュース伝えたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "use",
+   "known_text": "I don't understand the recent news at all",
+   "target_text": "最近のニュース全然分からない",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "use",
+   "known_text": "it seems better not to trust the news",
+   "target_text": "ニュース信じないほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 511,
+   "lego_index": 1,
+   "lego_known": "news",
+   "lego_target": "ニュース",
+   "phrase_role": "use",
+   "known_text": "that's the news you didn't tell me",
+   "target_text": "それは教えてくれなかったニュース",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 529,
+  "lego_index": 2,
+  "known": "raise",
+  "target": "上げて"
+ },
+ "at": "2026-11-25T13:44:46.193Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 176,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "build",
+   "known_text": "raise your hand",
+   "target_text": "手上げて",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "build",
+   "known_text": "if you raise both hands for me",
+   "target_text": "両手上げてくれたら",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "build",
+   "known_text": "if you raise your hand for me",
+   "target_text": "手上げてくれたら",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "build",
+   "known_text": "if you raise your hand properly for me",
+   "target_text": "手ちゃんと上げてくれたら",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "use",
+   "known_text": "if you don't raise both hands for me i can't guess",
+   "target_text": "両手上げてくれなかったら当てられない",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "use",
+   "known_text": "both of them are standing near the entrance with hands raised",
+   "target_text": "二人とも入り口の近くに手上げて立ってる",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "use",
+   "known_text": "raise both hands in four minutes",
+   "target_text": "四分で両手上げて",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "use",
+   "known_text": "raise your hand properly because i can't guess",
+   "target_text": "当てられないから手ちゃんと上げて",
+   "pad": []
+  },
+  {
+   "seed_number": 529,
+   "lego_index": 2,
+   "lego_known": "raise",
+   "lego_target": "上げて",
+   "phrase_role": "use",
+   "known_text": "i found the girl who is standing with both hands raised",
+   "target_text": "両手上げて立ってる女の子見つけた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 534,
+  "lego_index": 2,
+  "known": "weather",
+  "target": "天気で"
+ },
+ "at": "2026-11-25T13:53:34.110Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 171,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "build",
+   "known_text": "in this terrible weather",
+   "target_text": "このひどい天気で",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "build",
+   "known_text": "can drive home in this weather",
+   "target_text": "この天気で家まで運転できる",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "build",
+   "known_text": "to run in terrible weather",
+   "target_text": "ひどい天気で走る",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "build",
+   "known_text": "went home because of the weather",
+   "target_text": "天気で帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "we might lose in this weather",
+   "target_text": "この天気で負けるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "will you be able to come in this weather",
+   "target_text": "この天気で来られる",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "you don't need to walk in this weather",
+   "target_text": "この天気で歩かなくていい",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "I didn't think we could win in this weather",
+   "target_text": "この天気で勝てるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "in this terrible weather it seems better to go straight home",
+   "target_text": "このひどい天気でまっすぐ帰ったほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "I almost got lost because of the weather",
+   "target_text": "天気で迷いそうになった",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 2,
+   "lego_known": "weather",
+   "lego_target": "天気で",
+   "phrase_role": "use",
+   "known_text": "both of them went home because of the weather",
+   "target_text": "二人とも天気で帰った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

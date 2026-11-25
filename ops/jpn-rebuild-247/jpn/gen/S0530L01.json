@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 530,
+  "lego_index": 1,
+  "known": "to count",
+  "target": "数える"
+ },
+ "at": "2026-11-25T13:45:36.681Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 137,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"they might count the room numbers\" (unknown gloss \"numbers\")",
+  "USE \"they might count the room numbers\" → \"彼ら部屋番号数えるかもしれない\": popty:knownSide [{\"known\":\"they might count the room numbers\",\"target\":\"彼ら部屋番号数えるかもしれない\",\"problem\":\"unknown gloss \\\"numbers\\\"\"}]",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [],
+ "keep": false
+}

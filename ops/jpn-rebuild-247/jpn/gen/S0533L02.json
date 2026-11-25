@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 533,
+  "lego_index": 2,
+  "known": "won't listen",
+  "target": "聞かない"
+ },
+ "at": "2026-11-25T13:52:06.425Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 133,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "build",
+   "known_text": "they won't listen",
+   "target_text": "彼ら聞かない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "build",
+   "known_text": "won't ever listen again",
+   "target_text": "二度と聞かない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "build",
+   "known_text": "might not listen",
+   "target_text": "聞かないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "build",
+   "known_text": "won't listen to all of it",
+   "target_text": "全部は聞かない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "use",
+   "known_text": "whatever he says i won't listen",
+   "target_text": "彼が何を言っても聞かない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "use",
+   "known_text": "there's no point because they won't listen",
+   "target_text": "彼ら聞かないから意味がない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "use",
+   "known_text": "they might not listen to all of it",
+   "target_text": "彼ら全部は聞かないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "use",
+   "known_text": "whatever you say i'll never listen again",
+   "target_text": "何を言っても二度と聞かない",
+   "pad": []
+  },
+  {
+   "seed_number": 533,
+   "lego_index": 2,
+   "lego_known": "won't listen",
+   "lego_target": "聞かない",
+   "phrase_role": "use",
+   "known_text": "both of them won't listen",
+   "target_text": "二人とも聞かない",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

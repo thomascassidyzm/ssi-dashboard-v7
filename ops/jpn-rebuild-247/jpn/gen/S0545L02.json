@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 545,
+  "lego_index": 2,
+  "known": "take and go",
+  "target": "持っていく"
+ },
+ "at": "2026-11-25T14:12:00.683Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 183,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"take and go\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "build",
+   "known_text": "take the clothes",
+   "target_text": "服持っていく",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "build",
+   "known_text": "might take the suitcase",
+   "target_text": "スーツケース持っていくかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "build",
+   "known_text": "the clothes i'll take",
+   "target_text": "持っていく服",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "build",
+   "known_text": "should take the wine",
+   "target_text": "ワイン持っていくべきだ",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "i wonder which clothes we'll take",
+   "target_text": "どの服持っていくか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "both of them might take the coffee",
+   "target_text": "二人ともコーヒー持っていくかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "i found the clothes i'll take",
+   "target_text": "持っていく服見つけた",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "which wine will you take?",
+   "target_text": "どのワイン持っていく",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "i'm not planning to take the suitcase",
+   "target_text": "スーツケース持っていくつもりはない",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "it seems better to take the wine safely",
+   "target_text": "ワイン安全に持っていくほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 2,
+   "lego_known": "take and go",
+   "lego_target": "持っていく",
+   "phrase_role": "use",
+   "known_text": "you should take the clothes on the first day",
+   "target_text": "初日に服持っていくべきだ",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 508,
+  "lego_index": 3,
+  "known": "no point",
+  "target": "意味がない"
+ },
+ "at": "2026-11-25T13:04:43.876Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 142,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 3 phrase(s) use English the learner has not been given. \"there's no point selling\" (unknown gloss \"selling\"); \"because there's no point waiting\" (unknown gloss \"waiting\"); \"i heard that there's no point running\" (unknown gloss \"running\")",
+  "BUILD \"there's no point selling\" → \"売る意味がない\": popty:knownSide [{\"known\":\"there's no point selling\",\"target\":\"売る意味がない\",\"problem\":\"unknown gloss \\\"selling\\\"\"}]",
+  "BUILD \"because there's no point waiting\" → \"待つ意味がないから\": popty:knownSide [{\"known\":\"because there's no point waiting\",\"target\":\"待つ意味がないから\",\"problem\":\"unknown gloss \\\"waiting\\\"\"}]",
+  "USE \"i heard that there's no point running\" → \"走る意味がないって聞いた\": popty:knownSide [{\"known\":\"i heard that there's no point running\",\"target\":\"走る意味がないって聞いた\",\"problem\":\"unknown gloss \\\"running\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

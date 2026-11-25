@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 524,
+  "lego_index": 1,
+  "known": "three",
+  "target": "三"
+ },
+ "at": "2026-11-25T13:36:39.169Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 140,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"three\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "build",
+   "known_text": "more than three",
+   "target_text": "三より",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "build",
+   "known_text": "room number three",
+   "target_text": "部屋番号三",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "build",
+   "known_text": "minimum three",
+   "target_text": "最低三",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "build",
+   "known_text": "nothing but three",
+   "target_text": "三しか",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "use",
+   "known_text": "it might be three",
+   "target_text": "三かもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "use",
+   "known_text": "I haven't seen room number three",
+   "target_text": "部屋番号三見てない",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "use",
+   "known_text": "I want to find room number three",
+   "target_text": "部屋番号三探したい",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "use",
+   "known_text": "let me throw three",
+   "target_text": "三投げさせて",
+   "pad": []
+  },
+  {
+   "seed_number": 524,
+   "lego_index": 1,
+   "lego_known": "three",
+   "lego_target": "三",
+   "phrase_role": "use",
+   "known_text": "I found room number three",
+   "target_text": "部屋番号三見つけた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

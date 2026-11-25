@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 538,
+  "lego_index": 1,
+  "known": "don't care",
+  "target": "気にしてない"
+ },
+ "at": "2026-11-25T14:02:24.793Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 167,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"don't care\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "build",
+   "known_text": "might not care",
+   "target_text": "気にしてないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "build",
+   "known_text": "both of them don't care",
+   "target_text": "二人とも気にしてない",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "build",
+   "known_text": "they don't care",
+   "target_text": "彼ら気にしてない",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "build",
+   "known_text": "appear not to care",
+   "target_text": "気にしてないように見せる",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "use",
+   "known_text": "they might not care",
+   "target_text": "彼ら気にしてないかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "use",
+   "known_text": "i used to think you didn't care",
+   "target_text": "気にしてないと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "use",
+   "known_text": "i wonder which of them doesn't care",
+   "target_text": "誰が気にしてないか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "use",
+   "known_text": "both of them appear not to care",
+   "target_text": "二人とも気にしてないように見せる",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "use",
+   "known_text": "it seems better to appear not to care",
+   "target_text": "気にしてないように見せるほうがよさそう",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "don't care",
+   "lego_target": "気にしてない",
+   "phrase_role": "use",
+   "known_text": "i used to think both of them didn't care",
+   "target_text": "二人とも気にしてないと思ってた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
