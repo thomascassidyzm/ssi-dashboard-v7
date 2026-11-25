@@ -11,18 +11,21 @@
 #   4. delete changeset built from the insert ledger (make-before-break) → --check → apply
 #   5. live read → verify → commit the band's ops files → wake the job
 # Re-running resumes: plan/audio are library-first and idempotent, the applier skips ledgered ops.
-# The conversation token is read from ~/.cs-long/247/.tok (600), never from argv.
+# The conversation token is read from $CS_WAKE_TOKFILE (default ~/.cs-long/247/.tok, 600), never from argv.
+# A finished band leaves $C/$R.done (the chain runner's signal that the band is applied, not just a window closing).
 set -u
 C=$1; R=$2
 DIR="$(cd "$(dirname "$0")" && pwd)"; ROOT="$(cd "$DIR/../.." && pwd)"; cd "$ROOT"
-CONV=2ff16996-027f-4e22-a132-813fead29575
-AGENT=kai-247
+# Wake target, token file and editor id are overridable so a successor job (cs #338·AL) is woken instead of #247.
+CONV=${CS_WAKE_CONV:-2ff16996-027f-4e22-a132-813fead29575}
+TOKF=${CS_WAKE_TOKFILE:-$HOME/.cs-long/247/.tok}
+AGENT=${CS_AGENT:-kai-247}
 T=tools/course-optimization/jpn-kor-rebuild-247.cjs
 CODE=${C}_for_eng
 WRITERS="cs-long-keep-236-night cs-long-keep-868-8b cs-long-keep-868-night cs-long-keep-item4-358"
 EV="$HOME/ssi-evidence/ssi-dashboard-v7/ops/jpn-rebuild-247"; mkdir -p "$EV"
 CS="$DIR/$C"
-wake() { node ~/command-surface/tools/cs-wake-send.cjs "$CONV" "$(cat ~/.cs-long/247/.tok)" "$1" >/dev/null 2>&1 && echo "WAKE SENT: $1" || echo "WAKE FAILED: $1"; }
+wake() { node ~/command-surface/tools/cs-wake-send.cjs "$CONV" "$(cat "$TOKF")" "$1" >/dev/null 2>&1 && echo "WAKE SENT: $1" || echo "WAKE FAILED: $1"; }
 ukh() { TZ=Europe/London date +%H | sed 's/^0//'; }
 night() { local h; h=$(ukh); [ "$h" -ge 22 ] || [ "$h" -lt 7 ]; }
 others() { local n=0; for u in $WRITERS; do systemctl --user is-active -q "$u" && n=$((n+1)); done
@@ -69,6 +72,7 @@ node $T delete-cs $C $R || { wake "WAKE: cs247 $C $R delete-cs failed"; exit 1; 
 applycs delete
 liveread post
 V=$(node $T verify $C $R "$EV/$C-live-$R-post.json")
+echo "$(date -u +%FT%TZ) $V" > "$CS/$R.done"; git add "$CS/$R.done"
 commitband "applied; $V"
 node tools/course-optimization/queue-audio-pass.cjs $CODE --reason "cs #247 rebuild $R (audio already linked; pass checks the band)" >/dev/null 2>&1 || true
 wake "WAKE: cs247 $C $R DONE. $(tail -1 "$CS/audio-runs.jsonl") verify: $V"
