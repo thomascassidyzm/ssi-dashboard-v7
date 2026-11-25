@@ -30,7 +30,9 @@ ukh() { TZ=Europe/London date +%H | sed 's/^0//'; }
 night() { local h; h=$(ukh); [ "$h" -ge 22 ] || [ "$h" -lt 7 ]; }
 others() { local n=0 u p; for u in $WRITERS; do systemctl --user is-active -q "$u" && n=$((n+1)); done
   p=$(pgrep -f 'apply-changeset.cjs' | wc -l); [ "$p" -gt "$n" ] && n=$p; echo $n; }
-governed() { curl -s -m 10 http://localhost:3470/health | grep -q '"governed":true'; }
+# governed:true stays true while the DB load gate is RED, so the gate also needs level green (parent room, 25 Nov 15:03Z:
+# pause between seeds while red, resume only when green).
+governed() { local h; h=$(curl -s -m 10 http://localhost:3470/health); echo "$h" | grep -q '"governed":true' && echo "$h" | grep -q '"level":"green"'; }
 gate() { # 0 = go; 1 = the night window closed (only once this night has started)
   while :; do
     if ! night; then [ "${STARTED:-0}" = 1 ] && return 1; sleep 300; continue; fi
