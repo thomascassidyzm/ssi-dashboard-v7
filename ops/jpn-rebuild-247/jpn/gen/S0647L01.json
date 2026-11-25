@@ -1,0 +1,122 @@
+{
+ "lego": {
+  "seed_number": 647,
+  "lego_index": 1,
+  "known": "speech",
+  "target": "お話し"
+ },
+ "at": "2026-11-25T19:20:18.586Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 80,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "build",
+   "known_text": "jane's speech",
+   "target_text": "ジェーンのお話し",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "build",
+   "known_text": "the speech is very long",
+   "target_text": "お話しすごく長い",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "build",
+   "known_text": "the speech was necessary",
+   "target_text": "お話しが必要だった",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "build",
+   "known_text": "I heard the speech last night",
+   "target_text": "昨夜お話し聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "use",
+   "known_text": "i think it's jane's speech",
+   "target_text": "ジェーンのお話しだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "use",
+   "known_text": "i couldn't hear jane's speech",
+   "target_text": "ジェーンのお話し聞こえなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "use",
+   "known_text": "could you please give a speech one more time",
+   "target_text": "もう一度お話しいただけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "use",
+   "known_text": "i was told it was jane's speech",
+   "target_text": "ジェーンのお話しって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "use",
+   "known_text": "i heard it was jane's speech",
+   "target_text": "ジェーンのお話しって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 1,
+   "lego_known": "speech",
+   "lego_target": "お話し",
+   "phrase_role": "use",
+   "known_text": "he's heard jane's speech a thousand times",
+   "target_text": "ジェーンのお話し千回は聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

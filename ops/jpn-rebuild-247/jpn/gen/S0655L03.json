@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 655,
+  "lego_index": 3,
+  "known": "are doing",
+  "target": "おられます"
+ },
+ "at": "2026-11-25T19:29:17.898Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"are doing\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "build",
+   "known_text": "you're getting weak",
+   "target_text": "弱っておられます",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "build",
+   "known_text": "you've bought it, madam",
+   "target_text": "買っておられます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "build",
+   "known_text": "you're doing well on your own",
+   "target_text": "一人でよくやっておられます",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "build",
+   "known_text": "you're doing well every morning",
+   "target_text": "毎朝よくやっておられます",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "use",
+   "known_text": "both of them are doing well, teacher",
+   "target_text": "二人ともよくやっておられます、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "use",
+   "known_text": "you're doing well every morning, madam",
+   "target_text": "毎朝よくやっておられます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "use",
+   "known_text": "since we last met you've been doing well, teacher",
+   "target_text": "最後に会ってから、よくやっておられます、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "use",
+   "known_text": "you've been doing well on your own, madam",
+   "target_text": "一人でよくやっておられます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "use",
+   "known_text": "both of them are getting weak, madam",
+   "target_text": "二人とも弱っておられます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 655,
+   "lego_index": 3,
+   "lego_known": "are doing",
+   "lego_target": "おられます",
+   "phrase_role": "use",
+   "known_text": "you're making it on your own, teacher",
+   "target_text": "一人で作っておられます、先生",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

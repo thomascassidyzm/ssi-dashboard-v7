@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 653,
+  "lego_index": 1,
+  "known": "would you mind?",
+  "target": "お気になりませんか"
+ },
+ "at": "2026-11-25T19:26:07.931Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 113,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.22 < 0.34: your matrix clauses collapse to 2 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"would you mind?\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "build",
+   "known_text": "would you mind, madam?",
+   "target_text": "お気になりませんか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "build",
+   "known_text": "would you mind waiting?",
+   "target_text": "待つのはお気になりませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "build",
+   "known_text": "would you mind if i go home?",
+   "target_text": "帰ってもお気になりませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "build",
+   "known_text": "would you mind waiting, teacher?",
+   "target_text": "待つのはお気になりませんか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "use",
+   "known_text": "would you mind waiting until everybody is ready?",
+   "target_text": "みんなが準備できるまで待つのはお気になりませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "use",
+   "known_text": "would you mind if i went home without the car?",
+   "target_text": "車なしで帰ってもお気になりませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "use",
+   "known_text": "would you mind seeing the mountains every morning?",
+   "target_text": "毎朝山を見るのはお気になりませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "use",
+   "known_text": "would you mind watching children play outdoors?",
+   "target_text": "子どもが遊ぶのを外で見るのはお気になりませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 653,
+   "lego_index": 1,
+   "lego_known": "would you mind?",
+   "lego_target": "お気になりませんか",
+   "phrase_role": "use",
+   "known_text": "would you mind waiting one more time, madam?",
+   "target_text": "もう一度待つのはお気になりませんか、奥様",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

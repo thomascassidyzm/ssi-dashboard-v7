@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 629,
+  "lego_index": 2,
+  "known": "without sugar",
+  "target": "砂糖なし"
+ },
+ "at": "2026-11-25T19:04:50.868Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 152,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"without sugar\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "build",
+   "known_text": "with milk and without sugar",
+   "target_text": "ミルク入りで砂糖なし",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "build",
+   "known_text": "I heard it was without sugar",
+   "target_text": "砂糖なしって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "build",
+   "known_text": "I was told it was without sugar",
+   "target_text": "砂糖なしって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "build",
+   "known_text": "in the first place without sugar",
+   "target_text": "最初は砂糖なし",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "use",
+   "known_text": "did you know it was without sugar",
+   "target_text": "砂糖なしって知ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "use",
+   "known_text": "in the old days I used to think it was without sugar",
+   "target_text": "昔は砂糖なしと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "use",
+   "known_text": "in the first place I thought it was without sugar",
+   "target_text": "最初は砂糖なしと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "use",
+   "known_text": "that time I heard it was with milk and without sugar",
+   "target_text": "その時ミルク入りで砂糖なしって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "use",
+   "known_text": "I can't do it without sugar",
+   "target_text": "砂糖なしでは無理",
+   "pad": []
+  },
+  {
+   "seed_number": 629,
+   "lego_index": 2,
+   "lego_known": "without sugar",
+   "lego_target": "砂糖なし",
+   "phrase_role": "use",
+   "known_text": "I was told it was with milk and without sugar",
+   "target_text": "ミルク入りで砂糖なしって言われてた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

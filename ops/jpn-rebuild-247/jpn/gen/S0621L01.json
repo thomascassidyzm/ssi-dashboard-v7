@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 621,
+  "lego_index": 1,
+  "known": "is broken",
+  "target": "壊れてる"
+ },
+ "at": "2026-11-25T18:56:37.773Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 132,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "build",
+   "known_text": "the window that is broken",
+   "target_text": "壊れてる窓",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "build",
+   "known_text": "the toy is broken",
+   "target_text": "おもちゃ壊れてる",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "build",
+   "known_text": "I heard that the suitcase is broken",
+   "target_text": "スーツケース壊れてるって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "build",
+   "known_text": "the door is broken, isn't it",
+   "target_text": "ドア壊れてるんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "use",
+   "known_text": "I was told the new bed was broken",
+   "target_text": "新しいベッド壊れてるって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "use",
+   "known_text": "I didn't think that the window was broken",
+   "target_text": "窓壊れてるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "use",
+   "known_text": "I can't open the broken door",
+   "target_text": "壊れてるドア開けられない",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "use",
+   "known_text": "I used to think the bus was broken",
+   "target_text": "バス壊れてると思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "use",
+   "known_text": "it's been broken since we last met",
+   "target_text": "最後に会ってから壊れてる",
+   "pad": []
+  },
+  {
+   "seed_number": 621,
+   "lego_index": 1,
+   "lego_known": "is broken",
+   "lego_target": "壊れてる",
+   "phrase_role": "use",
+   "known_text": "is the television broken",
+   "target_text": "テレビ壊れてる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

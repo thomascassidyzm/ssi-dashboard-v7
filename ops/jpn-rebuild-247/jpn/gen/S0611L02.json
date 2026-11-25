@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 611,
+  "lego_index": 2,
+  "known": "was prepared",
+  "target": "準備はできてた"
+ },
+ "at": "2026-11-25T18:45:19.831Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 160,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "build",
+   "known_text": "i used to think i was prepared",
+   "target_text": "準備はできてたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "build",
+   "known_text": "were you prepared to share?",
+   "target_text": "分ける準備はできてた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "build",
+   "known_text": "i was told i was prepared",
+   "target_text": "準備はできてたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "build",
+   "known_text": "how much were you prepared to pay?",
+   "target_text": "いくら払う準備はできてた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "use",
+   "known_text": "i'd have been prepared if you'd told me",
+   "target_text": "言ってくれてたら準備はできてた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "use",
+   "known_text": "i used to think i was prepared to look for work",
+   "target_text": "仕事を探す準備はできてたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "use",
+   "known_text": "i was told both of them were prepared to move house",
+   "target_text": "二人とも引っ越す準備はできてたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "use",
+   "known_text": "i didn't think both of them were prepared to go home",
+   "target_text": "二人とも帰る準備はできてたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "use",
+   "known_text": "were you prepared to take them there?",
+   "target_text": "連れて行く準備はできてた",
+   "pad": []
+  },
+  {
+   "seed_number": 611,
+   "lego_index": 2,
+   "lego_known": "was prepared",
+   "lego_target": "準備はできてた",
+   "phrase_role": "use",
+   "known_text": "at that time i was prepared to go down to the beach",
+   "target_text": "その時浜まで下りる準備はできてた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

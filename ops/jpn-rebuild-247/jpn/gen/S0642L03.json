@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 642,
+  "lego_index": 3,
+  "known": "as for your feeling",
+  "target": "ご気分は"
+ },
+ "at": "2026-11-25T19:15:51.764Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 160,
+ "floorsOnly": false,
+ "lastReasons": [
+  "BUILD \"as for your feeling surely\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"as for your feeling\" initially, medially AND finally.",
+  "NEIGH 0.11 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.11 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

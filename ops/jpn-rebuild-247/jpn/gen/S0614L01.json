@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 614,
+  "lego_index": 1,
+  "known": "family is living",
+  "target": "家族が住んでる"
+ },
+ "at": "2026-11-25T18:48:14.910Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 179,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "build",
+   "known_text": "the city that the family is living in",
+   "target_text": "家族が住んでる街",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "build",
+   "known_text": "the family is living there",
+   "target_text": "そこに家族が住んでる",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "build",
+   "known_text": "near where the family is living",
+   "target_text": "家族が住んでる近く",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "build",
+   "known_text": "the family is living quietly",
+   "target_text": "静かに家族が住んでる",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "use",
+   "known_text": "isn't the family living in a city?",
+   "target_text": "都会に家族が住んでるんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "use",
+   "known_text": "I was told that the family was living there",
+   "target_text": "そこに家族が住んでるって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "use",
+   "known_text": "I used to think the family was living safely",
+   "target_text": "安全に家族が住んでると思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "use",
+   "known_text": "the mountains can be seen from the window of the room that the family is living in",
+   "target_text": "家族が住んでる部屋の窓から山が見える",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "use",
+   "known_text": "if you'd told me that the family was living near the station I'd have driven",
+   "target_text": "駅の近くに家族が住んでるって言ってくれてたら運転したのに",
+   "pad": []
+  },
+  {
+   "seed_number": 614,
+   "lego_index": 1,
+   "lego_known": "family is living",
+   "lego_target": "家族が住んでる",
+   "phrase_role": "use",
+   "known_text": "I heard that the family is living quietly",
+   "target_text": "静かに家族が住んでるって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

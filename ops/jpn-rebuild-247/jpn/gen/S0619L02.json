@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 619,
+  "lego_index": 2,
+  "known": "time is long",
+  "target": "時間が長い"
+ },
+ "at": "2026-11-25T18:54:25.437Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 139,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.14 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "build",
+   "known_text": "I thought that the time is long",
+   "target_text": "時間が長いと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "build",
+   "known_text": "the time we haven't met is long",
+   "target_text": "会ってない時間が長い",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "build",
+   "known_text": "the time is long for everyone",
+   "target_text": "みんなにとって時間が長い",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "build",
+   "known_text": "in the old days I used to think the time was long",
+   "target_text": "昔は時間が長いと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "I didn't think that the time we haven't met was long",
+   "target_text": "会ってない時間が長いとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "I was told that the time is long for everyone",
+   "target_text": "みんなにとって時間が長いって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "I heard that the time is long",
+   "target_text": "時間が長いって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "I heard that the time they haven't met is long",
+   "target_text": "会ってない時間が長いって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "I thought that the time was long for everyone",
+   "target_text": "みんなにとって時間が長いと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "I didn't think that the time was long",
+   "target_text": "時間が長いとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 619,
+   "lego_index": 2,
+   "lego_known": "time is long",
+   "lego_target": "時間が長い",
+   "phrase_role": "use",
+   "known_text": "in the old days I used to think the time we hadn't met was long",
+   "target_text": "昔は会ってない時間が長いと思ってた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 647,
+  "lego_index": 2,
+  "known": "can do, isn't it",
+  "target": "できますね"
+ },
+ "at": "2026-11-25T19:21:39.719Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 126,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"can do, isn't it\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "build",
+   "known_text": "you can speak, can't you",
+   "target_text": "お話しできますね",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "build",
+   "known_text": "you can do it, can't you, madam",
+   "target_text": "できますね、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "build",
+   "known_text": "you can speak, can't you, madam",
+   "target_text": "お話しできますね、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "build",
+   "known_text": "both of them can do it, can't they",
+   "target_text": "二人ともできますね",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "while you're still young you can do it, can't you",
+   "target_text": "若いうちにできますね",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "even if you go home you can do it, can't you",
+   "target_text": "帰ってもできますね",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "you can do it next time, can't you",
+   "target_text": "次にできますね",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "even a car can do it, can't it",
+   "target_text": "車でもできますね",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "you can make a reservation, can't you, madam",
+   "target_text": "予約できますね、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "you can drive safely, can't you, jane",
+   "target_text": "安全に運転できますね、ジェーン",
+   "pad": []
+  },
+  {
+   "seed_number": 647,
+   "lego_index": 2,
+   "lego_known": "can do, isn't it",
+   "lego_target": "できますね",
+   "phrase_role": "use",
+   "known_text": "you can do it on your own, can't you",
+   "target_text": "一人でできますね",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

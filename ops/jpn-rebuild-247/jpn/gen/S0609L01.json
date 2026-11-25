@@ -1,0 +1,134 @@
+{
+ "lego": {
+  "seed_number": 609,
+  "lego_index": 1,
+  "known": "was the thing to do",
+  "target": "ことだった"
+ },
+ "at": "2026-11-25T18:43:53.299Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 160,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "build",
+   "known_text": "going home was the thing to do",
+   "target_text": "帰ることだった",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "build",
+   "known_text": "leaving the station was the thing to do",
+   "target_text": "駅を出ることだった",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "build",
+   "known_text": "going home without the car was the thing to do",
+   "target_text": "車なしで帰ることだった",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "build",
+   "known_text": "going straight home was the thing to do",
+   "target_text": "まっすぐ帰ることだった",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "i used to think that going home was the thing to do",
+   "target_text": "帰ることだったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "i didn't think that leaving the station was the thing to do",
+   "target_text": "駅を出ることだったとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "i heard that going straight home was the thing to do",
+   "target_text": "まっすぐ帰ることだったって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "i was told that going home without the car was the thing to do",
+   "target_text": "車なしで帰ることだったって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "going home was the thing to do in the old days",
+   "target_text": "昔は帰ることだった",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "if you'd told me that going home was the thing to do i'd have driven",
+   "target_text": "帰ることだったって言ってくれてたら運転したのに",
+   "pad": []
+  },
+  {
+   "seed_number": 609,
+   "lego_index": 1,
+   "lego_known": "was the thing to do",
+   "lego_target": "ことだった",
+   "phrase_role": "use",
+   "known_text": "leaving the station was the thing to do in the first place",
+   "target_text": "最初は駅を出ることだった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

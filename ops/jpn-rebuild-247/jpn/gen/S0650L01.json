@@ -1,0 +1,122 @@
+{
+ "lego": {
+  "seed_number": 650,
+  "lego_index": 1,
+  "known": "go out?",
+  "target": "出かけますか"
+ },
+ "at": "2026-11-25T19:23:27.793Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 80,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "go out on your own?",
+   "target_text": "一人で出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "go out every morning?",
+   "target_text": "毎朝出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "go out without the car?",
+   "target_text": "車なしで出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "go out one more time late at night?",
+   "target_text": "夜遅くもう一度出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out one more time?",
+   "target_text": "もう一度出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out late at night?",
+   "target_text": "夜遅く出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "i couldn't say \"are you going out?\"",
+   "target_text": "出かけますかって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "i couldn't say \"are you going out late at night?\"",
+   "target_text": "夜遅く出かけますかって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out on your own without the car?",
+   "target_text": "一人で車なしで出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 650,
+   "lego_index": 1,
+   "lego_known": "go out?",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "do you go out on your own every morning?",
+   "target_text": "毎朝一人で出かけますか",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 630,
+  "lego_index": 2,
+  "known": "can I get",
+  "target": "もらえる"
+ },
+ "at": "2026-11-25T19:06:04.149Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 117,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "build",
+   "known_text": "can I get some tea?",
+   "target_text": "お茶もらえる",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "build",
+   "known_text": "can I get it with milk?",
+   "target_text": "ミルク入りでもらえる",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "build",
+   "known_text": "how much can I get?",
+   "target_text": "いくらもらえる",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "build",
+   "known_text": "I heard I can get it",
+   "target_text": "もらえるって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "use",
+   "known_text": "can I get coffee and tea?",
+   "target_text": "コーヒーとお茶もらえる",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "use",
+   "known_text": "can I get it next time we meet?",
+   "target_text": "次に会うときもらえる",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "use",
+   "known_text": "I heard that you can get a ticket",
+   "target_text": "チケットもらえるって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "use",
+   "known_text": "I didn't think I could get a towel",
+   "target_text": "タオルもらえるとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "use",
+   "known_text": "did you know that you can get one bottle of red wine?",
+   "target_text": "赤ワイン一本もらえるって知ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 630,
+   "lego_index": 2,
+   "lego_known": "can I get",
+   "lego_target": "もらえる",
+   "phrase_role": "use",
+   "known_text": "I thought I could get twenty boiled eggs",
+   "target_text": "ゆで卵二十個もらえると思った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

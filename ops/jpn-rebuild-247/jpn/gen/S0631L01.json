@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 631,
+  "lego_index": 1,
+  "known": "what is good",
+  "target": "何がいい"
+ },
+ "at": "2026-11-25T19:07:36.447Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 166,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "build",
+   "known_text": "what did you think was good",
+   "target_text": "何がいいと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "build",
+   "known_text": "you knew what was good",
+   "target_text": "何がいいって知ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "build",
+   "known_text": "what is good this time",
+   "target_text": "今回何がいい",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "build",
+   "known_text": "I couldn't say what is good",
+   "target_text": "何がいいって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "use",
+   "known_text": "I couldn't say what is good for the whole family",
+   "target_text": "家族全員に何がいいって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "use",
+   "known_text": "what did you think was good next time we meet",
+   "target_text": "次に会うとき何がいいと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "use",
+   "known_text": "what were you told was good for everyone",
+   "target_text": "みんなにとって何がいいって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "use",
+   "known_text": "what did you think was good for everyone",
+   "target_text": "みんなにとって何がいいと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 631,
+   "lego_index": 1,
+   "lego_known": "what is good",
+   "lego_target": "何がいい",
+   "phrase_role": "use",
+   "known_text": "what is good next year",
+   "target_text": "来年何がいい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

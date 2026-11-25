@@ -1,0 +1,127 @@
+{
+ "lego": {
+  "seed_number": 665,
+  "lego_index": 1,
+  "known": "go out",
+  "target": "出かけますか"
+ },
+ "at": "2026-11-25T19:38:01.322Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 122,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 41. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"go out\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "are you going out, teacher?",
+   "target_text": "出かけますか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "are you going out late at night?",
+   "target_text": "夜遅く出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "are both of them going out?",
+   "target_text": "二人とも出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "build",
+   "known_text": "are you going out every morning, jane?",
+   "target_text": "毎朝出かけますか、ジェーン",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out on your own at that time?",
+   "target_text": "その時一人で出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out without the car, madam?",
+   "target_text": "車なしで出かけますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out? what will you do?",
+   "target_text": "出かけますか、どうしますか",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out one more time, teacher?",
+   "target_text": "もう一度出かけますか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out to the beach?",
+   "target_text": "浜まで出かけますか",
+   "pad": []
+  },
+  {
+   "seed_number": 665,
+   "lego_index": 1,
+   "lego_known": "go out",
+   "lego_target": "出かけますか",
+   "phrase_role": "use",
+   "known_text": "are you going out? is it necessary?",
+   "target_text": "出かけますか、必要ですか",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

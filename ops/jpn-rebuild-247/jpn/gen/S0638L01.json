@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 638,
+  "lego_index": 1,
+  "known": "is thinking",
+  "target": "考えてる"
+ },
+ "at": "2026-11-25T19:11:55.715Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 137,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"is thinking\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "build",
+   "known_text": "is thinking properly",
+   "target_text": "ちゃんと考えてる",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "build",
+   "known_text": "is thinking late at night",
+   "target_text": "夜遅く考えてる",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "build",
+   "known_text": "they might be thinking",
+   "target_text": "彼ら考えてるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "build",
+   "known_text": "knew that i was thinking",
+   "target_text": "考えてるって知ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "use",
+   "known_text": "i couldn't say that i was thinking",
+   "target_text": "考えてるって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "use",
+   "known_text": "they might be thinking about what is now",
+   "target_text": "彼ら今のことを考えてるかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "use",
+   "known_text": "i knew that they were thinking properly",
+   "target_text": "彼らちゃんと考えてるって知ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "use",
+   "known_text": "i've been thinking since we last met",
+   "target_text": "最後に会ってから考えてる",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "use",
+   "known_text": "i was told they were thinking late at night",
+   "target_text": "彼ら夜遅く考えてるって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 638,
+   "lego_index": 1,
+   "lego_known": "is thinking",
+   "lego_target": "考えてる",
+   "phrase_role": "use",
+   "known_text": "they're thinking about it without arguing",
+   "target_text": "彼らケンカせずに考えてる",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

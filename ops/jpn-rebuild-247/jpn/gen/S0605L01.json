@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 605,
+  "lego_index": 1,
+  "known": "because it was necessary",
+  "target": "が必要だったから"
+ },
+ "at": "2026-11-25T18:38:48.500Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 197,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"because it was necessary\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "build",
+   "known_text": "because patience was necessary",
+   "target_text": "我慢が必要だったから",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "build",
+   "known_text": "because a ticket was necessary",
+   "target_text": "チケットが必要だったから",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "build",
+   "known_text": "went home because a towel was necessary",
+   "target_text": "タオルが必要だったから帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "build",
+   "known_text": "moved because a garden was necessary",
+   "target_text": "庭が必要だったから引っ越した",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "use",
+   "known_text": "last month we didn't go anywhere because money was necessary",
+   "target_text": "先月お金が必要だったからどこにも行かなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "use",
+   "known_text": "I used to think he moved because a big room was necessary",
+   "target_text": "大きい部屋が必要だったから引っ越したと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "use",
+   "known_text": "we were told it was because aid was necessary",
+   "target_text": "助けが必要だったからって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "use",
+   "known_text": "we couldn't go because a ticket was necessary",
+   "target_text": "チケットが必要だったから行けなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "use",
+   "known_text": "I wanted to leave home because a job was necessary",
+   "target_text": "仕事が必要だったから家を出たかった",
+   "pad": []
+  },
+  {
+   "seed_number": 605,
+   "lego_index": 1,
+   "lego_known": "because it was necessary",
+   "lego_target": "が必要だったから",
+   "phrase_role": "use",
+   "known_text": "both of them got angry because a reservation was necessary",
+   "target_text": "予約が必要だったから二人とも怒った",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

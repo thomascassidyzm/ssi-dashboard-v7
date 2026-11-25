@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 617,
+  "lego_index": 1,
+  "known": "thought it was a mistake",
+  "target": "間違いだと思ってた"
+ },
+ "at": "2026-11-25T18:50:33.005Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 138,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "build",
+   "known_text": "you thought it was a mistake that time",
+   "target_text": "その時間違いだと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "build",
+   "known_text": "both of them thought it was a mistake",
+   "target_text": "二人とも間違いだと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "build",
+   "known_text": "in the old days you thought it was a mistake",
+   "target_text": "昔は間違いだと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "build",
+   "known_text": "I was told you thought it was a mistake",
+   "target_text": "間違いだと思ってたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "use",
+   "known_text": "I was told both of them thought it was a mistake in the first place",
+   "target_text": "二人とも最初は間違いだと思ってたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "use",
+   "known_text": "if you'd told me that you thought it was a mistake",
+   "target_text": "間違いだと思ってたって言ってくれてたら",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "use",
+   "known_text": "did both of them think it was a mistake that time",
+   "target_text": "二人ともその時間違いだと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "use",
+   "known_text": "last year both of them thought it was a mistake",
+   "target_text": "去年二人とも間違いだと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 617,
+   "lego_index": 1,
+   "lego_known": "thought it was a mistake",
+   "lego_target": "間違いだと思ってた",
+   "phrase_role": "use",
+   "known_text": "I heard that in the first place you thought it was a mistake",
+   "target_text": "最初は間違いだと思ってたって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

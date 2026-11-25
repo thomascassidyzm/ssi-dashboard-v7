@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 659,
+  "lego_index": 2,
+  "known": "please say",
+  "target": "言ってください"
+ },
+ "at": "2026-11-25T19:33:52.441Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 143,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"please say\" initially, medially AND finally.",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "build",
+   "known_text": "when we meet please say it",
+   "target_text": "会うとき言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "build",
+   "known_text": "with you all please say it",
+   "target_text": "ご一緒に言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "build",
+   "known_text": "in order to check please say it",
+   "target_text": "確認するため言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "build",
+   "known_text": "i was told please say it",
+   "target_text": "言ってくださいって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "use",
+   "known_text": "next time we meet please say it properly",
+   "target_text": "次に会うときちゃんと言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "use",
+   "known_text": "when we meet please say it one more time",
+   "target_text": "会うときもう一度言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "use",
+   "known_text": "i was told please say it quietly",
+   "target_text": "静かに言ってくださいって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "use",
+   "known_text": "in order to check please say it one more time",
+   "target_text": "確認するためもう一度言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "use",
+   "known_text": "with you all please say it one more time",
+   "target_text": "ご一緒にもう一度言ってください",
+   "pad": []
+  },
+  {
+   "seed_number": 659,
+   "lego_index": 2,
+   "lego_known": "please say",
+   "lego_target": "言ってください",
+   "phrase_role": "use",
+   "known_text": "i was told please say it later",
+   "target_text": "あとで言ってくださいって言われてた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

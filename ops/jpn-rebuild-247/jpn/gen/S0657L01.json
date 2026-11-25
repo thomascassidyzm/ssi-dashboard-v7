@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 657,
+  "lego_index": 1,
+  "known": "everyone",
+  "target": "皆さん"
+ },
+ "at": "2026-11-25T19:31:29.751Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 138,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"is everyone ready?\": too short to be a complete sentence",
+  "USE \"is everyone ready?\" → \"皆さんご準備はよろしいですか\": ZUT whole course: \"is everyone ready?\" is \"皆さんはいいですかから\" at seed 664",
+  "USE \"is everyone going out?\" → \"皆さん出かけますか\": ZUT whole course: \"is everyone going out?\" is \"皆さんは出かけますか\" at seed 665",
+  "USE \"what would everyone like?\" → \"皆さん何がいい\": ZUT whole course: \"what would everyone like?\" is \"皆さんはどうしますかから\" at seed 658"
+ ],
+ "rows": [],
+ "keep": false
+}

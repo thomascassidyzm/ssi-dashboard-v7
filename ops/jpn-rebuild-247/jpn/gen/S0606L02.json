@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 606,
+  "lego_index": 2,
+  "known": "if had known",
+  "target": "知ってたら"
+ },
+ "at": "2026-11-25T18:41:14.845Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 167,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if had known\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "build",
+   "known_text": "if I'd known I'd have driven",
+   "target_text": "知ってたら運転したのに",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "build",
+   "known_text": "if I'd known what happened",
+   "target_text": "何が起きたか知ってたら",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "build",
+   "known_text": "if I'd known at that time",
+   "target_text": "その時知ってたら",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "build",
+   "known_text": "if I'd known what was happening I'd have been able to go",
+   "target_text": "何が起きてたか知ってたら行けた",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "use",
+   "known_text": "if I'd known at that time I'd have driven",
+   "target_text": "その時知ってたら運転したのに",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "use",
+   "known_text": "if I'd known what happened I'd have got angry",
+   "target_text": "何が起きたか知ってたら怒った",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "use",
+   "known_text": "if I'd known then what I know now I'd have thought more",
+   "target_text": "今のことを知ってたらもっと考えた",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "use",
+   "known_text": "if I'd known I'd have wanted to see friends",
+   "target_text": "知ってたら友だちに会いたかった",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "use",
+   "known_text": "if I'd known how much you were willing to pay I'd have tried",
+   "target_text": "いくら払えるか知ってたら試した",
+   "pad": []
+  },
+  {
+   "seed_number": 606,
+   "lego_index": 2,
+   "lego_known": "if had known",
+   "lego_target": "知ってたら",
+   "phrase_role": "use",
+   "known_text": "if you'd known you'd have been able to go",
+   "target_text": "知ってたら行けた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

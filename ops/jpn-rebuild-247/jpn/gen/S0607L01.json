@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 607,
+  "lego_index": 1,
+  "known": "was doing things",
+  "target": "ことをしてた"
+ },
+ "at": "2026-11-25T18:41:12.949Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 154,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "build",
+   "known_text": "was doing things wrong",
+   "target_text": "間違ったことをしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "build",
+   "known_text": "that time i was doing scary things",
+   "target_text": "その時怖いことをしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "build",
+   "known_text": "was doing the same things many times",
+   "target_text": "何度も同じことをしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "build",
+   "known_text": "was told i was doing weird things",
+   "target_text": "変なことをしてたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "use",
+   "known_text": "i didn't think that i was doing terrible things",
+   "target_text": "ひどいことをしてたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "use",
+   "known_text": "both of them were doing the same things",
+   "target_text": "二人とも同じことをしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "use",
+   "known_text": "i used to think i was doing correct things",
+   "target_text": "正しいことをしてたと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "use",
+   "known_text": "in the old days i was doing weird things on my own late at night",
+   "target_text": "昔は一人で夜遅く変なことをしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "use",
+   "known_text": "in the first place i was doing small things",
+   "target_text": "最初は小さなことをしてた",
+   "pad": []
+  },
+  {
+   "seed_number": 607,
+   "lego_index": 1,
+   "lego_known": "was doing things",
+   "lego_target": "ことをしてた",
+   "phrase_role": "use",
+   "known_text": "i heard that i was doing things wrong",
+   "target_text": "間違ったことをしてたって聞いた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

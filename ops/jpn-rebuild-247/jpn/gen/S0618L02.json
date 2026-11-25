@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 618,
+  "lego_index": 2,
+  "known": "doesn't feel",
+  "target": "感じない"
+ },
+ "at": "2026-11-25T18:53:35.168Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 4 phrase(s) use English the learner has not been given. \"it doesn't feel safe\" (unknown gloss \"safe\"); \"i was told it doesn't feel safe outdoors\" (unknown gloss \"safe\"); \"late at night it doesn't feel safe\" (unknown gloss \"safe\"); \"even in a car it doesn't feel safe\" (unknown gloss \"safe\")",
+  "BUILD \"it doesn't feel safe\" → \"安全に感じない\": popty:knownSide [{\"known\":\"it doesn't feel safe\",\"target\":\"安全に感じない\",\"problem\":\"unknown gloss \\\"safe\\\"\"}]",
+  "USE \"i was told it doesn't feel safe outdoors\" → \"外で安全に感じないって言われてた\": popty:knownSide [{\"known\":\"i was told it doesn't feel safe outdoors\",\"target\":\"外で安全に感じないって言われてた\",\"problem\":\"unknown gloss \\\"safe\\\"\"}]",
+  "USE \"late at night it doesn't feel safe\" → \"夜遅く安全に感じない\": popty:knownSide [{\"known\":\"late at night it doesn't feel safe\",\"target\":\"夜遅く安全に感じない\",\"problem\":\"unknown gloss \\\"safe\\\"\"}]",
+  "USE \"even in a car it doesn't feel safe\" → \"車でも安全に感じない\": popty:knownSide [{\"known\":\"even in a car it doesn't feel safe\",\"target\":\"車でも安全に感じない\",\"problem\":\"unknown gloss \\\"safe\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

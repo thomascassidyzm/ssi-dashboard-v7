@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 645,
+  "lego_index": 2,
+  "known": "can do",
+  "target": "できます"
+ },
+ "at": "2026-11-25T19:19:33.383Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 115,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"can do\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "build",
+   "known_text": "i can do it, madam",
+   "target_text": "できます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "build",
+   "known_text": "i can make a reservation",
+   "target_text": "予約できます",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "build",
+   "known_text": "i can check it, teacher",
+   "target_text": "確認できます、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "build",
+   "known_text": "i can drive at night",
+   "target_text": "夜運転できます",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "use",
+   "known_text": "i can help you, madam",
+   "target_text": "お手伝いできます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "use",
+   "known_text": "i was told i can drive",
+   "target_text": "運転できますって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "use",
+   "known_text": "i can check it one more time",
+   "target_text": "もう一度確認できます",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "use",
+   "known_text": "i can help as much as possible, teacher",
+   "target_text": "できるだけお手伝いできます、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "use",
+   "known_text": "i can imagine it, madam",
+   "target_text": "想像できます、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 645,
+   "lego_index": 2,
+   "lego_known": "can do",
+   "lego_target": "できます",
+   "phrase_role": "use",
+   "known_text": "i can drive late at night, teacher",
+   "target_text": "夜遅く運転できます、先生",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

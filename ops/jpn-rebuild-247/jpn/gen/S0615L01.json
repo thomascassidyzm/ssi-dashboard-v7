@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 615,
+  "lego_index": 1,
+  "known": "the act of saying that",
+  "target": "そう言ったのは"
+ },
+ "at": "2026-11-25T18:47:37.520Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 138,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"the act of saying that\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "build",
+   "known_text": "saying that at that time",
+   "target_text": "その時そう言ったのは",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "build",
+   "known_text": "saying that last night",
+   "target_text": "昨夜そう言ったのは",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "build",
+   "known_text": "saying that was hard",
+   "target_text": "そう言ったのはつらかった",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "build",
+   "known_text": "saying that to the whole family was wrong",
+   "target_text": "家族全員にそう言ったのは間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "it was hard to say that at that time",
+   "target_text": "その時そう言ったのはつらかった",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "i didn't think saying that was correct",
+   "target_text": "そう言ったのは正しいとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "i was told that saying that was wrong",
+   "target_text": "そう言ったのは間違ってたって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "saying that last night was wrong",
+   "target_text": "昨夜そう言ったのは間違ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "i can't think saying that is stupid",
+   "target_text": "そう言ったのはバカだとは思えない",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "i used to think saying that was right",
+   "target_text": "そう言ったのは正しかったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 615,
+   "lego_index": 1,
+   "lego_known": "the act of saying that",
+   "lego_target": "そう言ったのは",
+   "phrase_role": "use",
+   "known_text": "saying that to the whole family was right",
+   "target_text": "家族全員にそう言ったのは正しかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

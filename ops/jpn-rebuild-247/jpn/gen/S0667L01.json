@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 667,
+  "lego_index": 1,
+  "known": "don't mind",
+  "target": "気にしませんか"
+ },
+ "at": "2026-11-25T19:40:19.227Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 150,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"don't mind\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "build",
+   "known_text": "you don't mind, teacher?",
+   "target_text": "気にしませんか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "build",
+   "known_text": "you don't mind waiting?",
+   "target_text": "待つのは気にしませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "build",
+   "known_text": "you don't mind waiting, madam?",
+   "target_text": "待つのは気にしませんか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "build",
+   "known_text": "you don't mind watching outdoors?",
+   "target_text": "外で見るのは気にしませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "use",
+   "known_text": "you don't mind waiting on your own, teacher?",
+   "target_text": "一人で待つのは気にしませんか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "use",
+   "known_text": "you don't mind waiting next time we meet?",
+   "target_text": "次に会うとき待つのは気にしませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "use",
+   "known_text": "you don't mind that I said that, madam?",
+   "target_text": "そう言ったのは気にしませんか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "use",
+   "known_text": "you don't mind watching the children play outdoors?",
+   "target_text": "子どもが遊ぶのを外で見るのは気にしませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "use",
+   "known_text": "you don't mind waiting late at night?",
+   "target_text": "夜遅く待つのは気にしませんか",
+   "pad": []
+  },
+  {
+   "seed_number": 667,
+   "lego_index": 1,
+   "lego_known": "don't mind",
+   "lego_target": "気にしませんか",
+   "phrase_role": "use",
+   "known_text": "you don't mind, madam? what will you do?",
+   "target_text": "気にしませんか、奥様。どうしますか",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

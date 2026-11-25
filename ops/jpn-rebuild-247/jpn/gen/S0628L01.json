@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 628,
+  "lego_index": 1,
+  "known": "tea, like it?",
+  "target": "お茶、好き"
+ },
+ "at": "2026-11-25T19:04:07.023Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors"
+ ],
+ "attempts": 2,
+ "secs": 148,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: 2 duplicate phrase(s) within this LEGO: \"二人ともお茶、好き\", \"お茶、好きって言われてた\"",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"tea, like it?\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

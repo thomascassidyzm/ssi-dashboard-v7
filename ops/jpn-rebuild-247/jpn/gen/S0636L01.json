@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 636,
+  "lego_index": 1,
+  "known": "I think it is",
+  "target": "だと思う"
+ },
+ "at": "2026-11-25T19:10:24.689Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 168,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "build",
+   "known_text": "I think it is a mistake",
+   "target_text": "間違いだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "build",
+   "known_text": "I think it is the station",
+   "target_text": "駅だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "build",
+   "known_text": "I think that one over there is a toy",
+   "target_text": "あれはおもちゃだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "build",
+   "known_text": "a hotel I think is special",
+   "target_text": "特別だと思うホテル",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "use",
+   "known_text": "I couldn't say that I think it is jane's bag",
+   "target_text": "ジェーンのバッグだと思うって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "use",
+   "known_text": "a job I think is easy",
+   "target_text": "簡単だと思う仕事",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "use",
+   "known_text": "I think waiting is a waste",
+   "target_text": "待つのは無駄だと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "use",
+   "known_text": "I think seeing the mountains every morning is happiness",
+   "target_text": "毎朝山を見るのは幸せだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "use",
+   "known_text": "I think that one over there is the last bus",
+   "target_text": "あれは最後のバスだと思う",
+   "pad": []
+  },
+  {
+   "seed_number": 636,
+   "lego_index": 1,
+   "lego_known": "I think it is",
+   "lego_target": "だと思う",
+   "phrase_role": "use",
+   "known_text": "I think it is the dog that played in the mud",
+   "target_text": "泥で遊んだ犬だと思う",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,122 @@
+{
+ "lego": {
+  "seed_number": 666,
+  "lego_index": 1,
+  "known": "think",
+  "target": "思います"
+ },
+ "at": "2026-11-25T19:40:02.610Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 187,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "build",
+   "known_text": "i strongly think",
+   "target_text": "強く思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "build",
+   "known_text": "every morning i think",
+   "target_text": "毎朝思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "build",
+   "known_text": "i think about what is now",
+   "target_text": "今のことを思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "build",
+   "known_text": "more than anything i think",
+   "target_text": "何より思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "use",
+   "known_text": "every morning i think about what is now",
+   "target_text": "毎朝今のことを思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "use",
+   "known_text": "next time we meet i will think about what is now",
+   "target_text": "次に会うとき今のことを思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "use",
+   "known_text": "more than anything i think about what is now",
+   "target_text": "何より今のことを思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "use",
+   "known_text": "i strongly think about what is now",
+   "target_text": "今のことを強く思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "use",
+   "known_text": "from now on i am going to think about what is now",
+   "target_text": "これから今のことを思います",
+   "pad": []
+  },
+  {
+   "seed_number": 666,
+   "lego_index": 1,
+   "lego_known": "think",
+   "lego_target": "思います",
+   "phrase_role": "use",
+   "known_text": "many times i think about what is now",
+   "target_text": "何度も今のことを思います",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 661,
+  "lego_index": 1,
+  "known": "are doing",
+  "target": "されています"
+ },
+ "at": "2026-11-25T19:35:59.623Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 184,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "build",
+   "known_text": "are doing it properly",
+   "target_text": "ちゃんとされています",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "build",
+   "known_text": "are doing it every morning",
+   "target_text": "毎朝されています",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "build",
+   "known_text": "are doing it, teacher",
+   "target_text": "されています、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "build",
+   "known_text": "are doing it while you're still young",
+   "target_text": "若いうちにされています",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "use",
+   "known_text": "you are doing it as much as possible",
+   "target_text": "できるだけされています",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "use",
+   "known_text": "you are doing it outdoors, is that alright?",
+   "target_text": "外でされています、よろしいですか",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "use",
+   "known_text": "you are doing it every morning, is it necessary?",
+   "target_text": "毎朝されています、必要ですか",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "use",
+   "known_text": "you are doing it late at night",
+   "target_text": "夜遅くされています",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "use",
+   "known_text": "you are doing it without the car, madam",
+   "target_text": "車なしでされています、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 661,
+   "lego_index": 1,
+   "lego_known": "are doing",
+   "lego_target": "されています",
+   "phrase_role": "use",
+   "known_text": "you are doing it on your own, what will you do?",
+   "target_text": "一人でされています、どうしますか",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

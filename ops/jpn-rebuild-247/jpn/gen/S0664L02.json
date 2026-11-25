@@ -1,0 +1,127 @@
+{
+ "lego": {
+  "seed_number": 664,
+  "lego_index": 2,
+  "known": "is it OK?",
+  "target": "はいいですか"
+ },
+ "at": "2026-11-25T19:37:49.537Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 111,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 41. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"is it OK?\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "build",
+   "known_text": "is the chair ok?",
+   "target_text": "椅子はいいですか",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "build",
+   "known_text": "is the red one ok, madam?",
+   "target_text": "赤いやつはいいですか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "build",
+   "known_text": "is the large water ok?",
+   "target_text": "大きな水はいいですか",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "build",
+   "known_text": "couldn't say is the bag ok",
+   "target_text": "バッグはいいですかって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "use",
+   "known_text": "is tuesday ok, teacher?",
+   "target_text": "火曜はいいですか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "use",
+   "known_text": "I couldn't say is the room number ok",
+   "target_text": "部屋番号はいいですかって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "use",
+   "known_text": "I was told is the tea ok",
+   "target_text": "お茶はいいですかって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "use",
+   "known_text": "is the hotel ok, madam?",
+   "target_text": "ホテルはいいですか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "use",
+   "known_text": "is the minimum number of people ok, teacher?",
+   "target_text": "最低人数はいいですか、先生",
+   "pad": []
+  },
+  {
+   "seed_number": 664,
+   "lego_index": 2,
+   "lego_known": "is it OK?",
+   "lego_target": "はいいですか",
+   "phrase_role": "use",
+   "known_text": "is the start time ok?",
+   "target_text": "開始時間はいいですか",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

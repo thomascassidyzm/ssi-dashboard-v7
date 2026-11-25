@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 616,
+  "lego_index": 2,
+  "known": "said that you thought",
+  "target": "と思ったと言ったのは"
+ },
+ "at": "2026-11-25T18:50:39.514Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 165,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "build",
+   "known_text": "said that you thought you were wrong",
+   "target_text": "間違ってたと思ったと言ったのは",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "build",
+   "known_text": "said that you thought it was hard",
+   "target_text": "つらかったと思ったと言ったのは",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "build",
+   "known_text": "you had courage when you said that you thought it was impossible",
+   "target_text": "無理だと思ったと言ったのは勇気があった",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "build",
+   "known_text": "it was right that you said that you thought you were stupid",
+   "target_text": "バカだったと思ったと言ったのは正しかった",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "use",
+   "known_text": "it was stupid that you said that you thought you were right",
+   "target_text": "正しかったと思ったと言ったのはバカだった",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was right that you said that you thought you were wrong",
+   "target_text": "間違ってたと思ったと言ったのは正しいとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "use",
+   "known_text": "it's not important that you said that you thought it was hard",
+   "target_text": "つらかったと思ったと言ったのは大事じゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "use",
+   "known_text": "i used to think it was stupid that you said that you thought it was impossible",
+   "target_text": "無理だと思ったと言ったのはバカだったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "use",
+   "known_text": "it was the most sensible thing to do that you said that you thought there was a need to look for work",
+   "target_text": "仕事を探す必要があると思ったと言ったのは一番賢いことだった",
+   "pad": []
+  },
+  {
+   "seed_number": 616,
+   "lego_index": 2,
+   "lego_known": "said that you thought",
+   "lego_target": "と思ったと言ったのは",
+   "phrase_role": "use",
+   "known_text": "it was hard for everyone that you said that you thought you wanted to leave home",
+   "target_text": "家を出たかったと思ったと言ったのはみんなにとってつらかった",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

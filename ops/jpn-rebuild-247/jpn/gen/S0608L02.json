@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 608,
+  "lego_index": 2,
+  "known": "was the way of doing",
+  "target": "やり方だった"
+ },
+ "at": "2026-11-25T18:42:39.398Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 144,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"was the way of doing\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "build",
+   "known_text": "at that time it was the wrong way of doing it",
+   "target_text": "その時間違ったやり方だった",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "build",
+   "known_text": "i used to think it was the way of doing it",
+   "target_text": "やり方だったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "build",
+   "known_text": "i was told it was the same way of doing it",
+   "target_text": "同じやり方だったって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "build",
+   "known_text": "i used to think it was a weird way of doing it",
+   "target_text": "変なやり方だったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was the correct way of doing it",
+   "target_text": "正しいやり方だったとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "use",
+   "known_text": "in the old days i used to think it was the perfect way of doing it",
+   "target_text": "昔は完璧なやり方だったと思ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "use",
+   "known_text": "for everyone it was the most sensible way of doing it",
+   "target_text": "みんなにとって一番賢いやり方だった",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "use",
+   "known_text": "i didn't think it was the way of doing it",
+   "target_text": "やり方だったとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "use",
+   "known_text": "i was told it was the way of doing it",
+   "target_text": "やり方だったって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 608,
+   "lego_index": 2,
+   "lego_known": "was the way of doing",
+   "lego_target": "やり方だった",
+   "phrase_role": "use",
+   "known_text": "at that time i was told it was a terrible way of doing it",
+   "target_text": "その時ひどいやり方だったって言われてた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

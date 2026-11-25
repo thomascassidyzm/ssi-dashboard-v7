@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 625,
+  "lego_index": 1,
+  "known": "want to drink",
+  "target": "飲みたい"
+ },
+ "at": "2026-11-25T19:01:38.945Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 142,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "build",
+   "known_text": "want to drink coffee",
+   "target_text": "コーヒー飲みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "build",
+   "known_text": "want to drink late at night",
+   "target_text": "夜遅く飲みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "build",
+   "known_text": "knew you wanted to drink",
+   "target_text": "飲みたいって知ってた",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "build",
+   "known_text": "if you'd told me that you wanted to drink",
+   "target_text": "飲みたいって言ってくれてたら",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "use",
+   "known_text": "i was told you wanted to drink coffee outdoors",
+   "target_text": "外でコーヒー飲みたいって言われてた",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "use",
+   "known_text": "i couldn't say that i wanted to drink wine",
+   "target_text": "ワイン飲みたいって言えなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "use",
+   "known_text": "i thought you wanted to drink coffee and tea",
+   "target_text": "コーヒーとお茶飲みたいと思った",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "use",
+   "known_text": "i want to drink strong coffee every morning",
+   "target_text": "濃いコーヒー毎朝飲みたい",
+   "pad": []
+  },
+  {
+   "seed_number": 625,
+   "lego_index": 1,
+   "lego_known": "want to drink",
+   "lego_target": "飲みたい",
+   "phrase_role": "use",
+   "known_text": "when we meet next time i want to drink red wine",
+   "target_text": "次に会うとき赤ワイン飲みたい",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

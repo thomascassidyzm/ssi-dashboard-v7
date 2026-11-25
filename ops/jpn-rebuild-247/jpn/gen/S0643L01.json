@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 643,
+  "lego_index": 1,
+  "known": "what would you like?",
+  "target": "なさいますか"
+ },
+ "at": "2026-11-25T19:16:53.682Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 140,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again."
+ ],
+ "rows": [
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "build",
+   "known_text": "what would you like, madam",
+   "target_text": "なさいますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "build",
+   "known_text": "coffee and tea, what would you like",
+   "target_text": "コーヒーとお茶、なさいますか",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "build",
+   "known_text": "next time, what would you like",
+   "target_text": "次に、なさいますか",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "build",
+   "known_text": "with milk, what would you like",
+   "target_text": "ミルク入りで、なさいますか",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "use",
+   "known_text": "next time we meet, what would you like, madam",
+   "target_text": "次に会うとき、なさいますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "use",
+   "known_text": "next time, what would you like, madam",
+   "target_text": "次に、なさいますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "use",
+   "known_text": "I'll accompany you, what would you like, madam",
+   "target_text": "ご一緒します、なさいますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "use",
+   "known_text": "coffee and tea, what would you like, madam",
+   "target_text": "コーヒーとお茶、なさいますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "use",
+   "known_text": "supper, what would you like, madam",
+   "target_text": "夕食、なさいますか、奥様",
+   "pad": []
+  },
+  {
+   "seed_number": 643,
+   "lego_index": 1,
+   "lego_known": "what would you like?",
+   "lego_target": "なさいますか",
+   "phrase_role": "use",
+   "known_text": "without sugar, what would you like, madam",
+   "target_text": "砂糖なし、なさいますか、奥様",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
