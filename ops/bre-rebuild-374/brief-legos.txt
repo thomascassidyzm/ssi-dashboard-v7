@@ -1,0 +1,29 @@
+Cut the LEGOs (no baskets yet) for bre_for_fra (Breton for French speakers) seeds 31-300, for job #374·AL, which applies Kai's approved rebuild (Kai, 25 Nov 14:24Z: "2. Yes"). You are one worker; your parent folds your report. Basket phrases are written AFTER you, by other workers, from your LEGO files, so your files are the spine of the course: one mind cutting all 270 seeds so the chunking and ZUT stay consistent.
+
+PURPOSE: these LEGO lines become live course_legos rows (through changesets my job applies at night; you write nothing to any database). A Breton human reader records them later. PRICE: one Opus session, a few hours at most; 0 audio; no tests (tests are OFF estate-wide), no typecheck, no builds, no previews.
+
+SETUP
+1. Your checkout is off origin/main. FIRST: git fetch origin cs/374-apply-bre-for-fra-rebuild-seeds--2 && git merge --no-edit origin/cs/374-apply-bre-for-fra-rebuild-seeds--2 (it carries the tool and data you need). Commit on your own branch and push it; do NOT merge to main — I merge it.
+2. Scratch goes in $CS_SCRATCH, never /tmp.
+
+READ FIRST (in this order)
+- course-methodology-canon.md at the repo root: sections 1 (seed), 2 (LEGO) and 4 (known side vs target side) IN FULL. Section 4's known-side rules matter: the French side is a controlled language too. (Section 3 is for the basket workers; skim it.)
+- ops/bre-rebuild-345/pilot-1.txt, pilot-2.txt, pilot-3.txt: the checked pilot for seeds 1-30, the house style you continue. Note how each "emaon o vont da + verb" chunk carries its own mutated verb, and how components gloss each part.
+- The 300 decided seed pairs: ops/bre-rebuild-345/pairs-1-300.json (fields proposed_breton, proposed_french, note). The plan https://watson-1.tail4968cb.ts.net/d/6759942d gives the decisions held course-wide (vouloir = fellout a ra din / ne fell ket din / e fell dit; aimer = plijout; j'aimerais = plijout a rafe din; devoir = rankout; avoir besoin = kaout ezhomm; je vais + verb = emaon o vont da; a state takes "on" not "emaon"; ce que = ar pezh; etc.). DO NOT change any seed pair: the 300 pairs are decided. If a pair truly cannot be cut (e.g. a LEGO over the syllable cap with no clean split), list it in your report; do not edit it.
+- tools/course-optimization/bre-rebuild-374.cjs (its header): the checker you run.
+
+WHAT TO WRITE: ops/bre-rebuild-374/author/S031-075.txt, S076-120.txt, S121-165.txt, S166-210.txt, S211-255.txt, S256-300.txt, in the pilot's line format, LEGO lines only (plus N notes):
+  @ 31
+  N <optional note>
+  L <breton> | <french> | A
+  L <breton chunk> | <french chunk> | M | part=gloss; part=gloss
+  L- <breton> | <french> | A      (a NOT-new LEGO: only if the seed must re-list an already-taught chunk; normally do not list prior chunks at all, because tiling counts everything taught earlier)
+Each seed lists only its NEW LEGOs, in teaching order; every seed needs at least one new LEGO; the seed's Breton must tile from its LEGOs plus everything taught in earlier seeds. The checker counts a mutated form as a DIFFERENT word (komz and gomz are two words; Kai has not ruled on changing that), so cut so that each mutated form is taught inside a chunk, as the pilot did. LEGO words must be words the seed itself says, on both sides (L26). LEGO targets max 8 syllables. One French LEGO known text maps to exactly one Breton target across the whole course (ZUT); if a French chunk recurs with a different Breton, upchunk or differentiate the French chunk. Prefer natural chunks a learner can reuse. LEGO lines: lowercase, no final punctuation.
+
+HELD SEEDS (Kai has not ruled the French "à elle" / possessor convention): seeds 20, 21, 52, 53, 136, 176, 177, 241, 242 are listed in ops/bre-rebuild-374/holds.json. The checker SKIPS held seeds, so their LEGOs are NOT taught: a later seed that needs a word those seeds would have taught (e.g. "fellout a ra dit" tu veux, "buan" rapidement, "emaout o teskiñ", "perak" — all from held seeds 20/21) must teach it itself as a new LEGO. Still author LEGO lines for 52, 53, 136, 176, 177, 241, 242 (ready for when Kai rules), but no other seed may depend on them. Do not edit holds.json.
+
+CHECK: node tools/course-optimization/bre-rebuild-374.cjs check --legos-only   (writes ops/bre-rebuild-374/check-legos.json). Target: 0 HARD lines (TILING, SYLLABLES, ZUT (LEGO), NON-EXAMPLE TEXT, M-LEGO with no components). Warnings: "ZUT vs held old" (a clash with a held seed's old live rows) is expected and fine; fix "L26 … not in seed" warnings where they are real. Work in bands of ~45 seeds and run the check after each band; commit and push after each band (git add only your author file and check-legos.json).
+
+RULES: no database access of any kind and no API writes; no audio; do not touch seeds 1-30 or the pilot files; do not change the tool (if the checker is wrong, say so in your report). Breton quality: best effort with sources (ARBRES https://arbres.iker.cnrs.fr, Wiktionnaire); no native-speaker holds and no question lists (Kai's standing rule).
+
+REPORT (one paragraph): seeds cut, LEGO count, hard failures (must be 0), any pair you could not cut and why, branch name and last sha. No other files.

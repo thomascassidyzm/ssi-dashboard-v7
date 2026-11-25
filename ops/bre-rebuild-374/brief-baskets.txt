@@ -1,0 +1,28 @@
+Write the practice baskets (BUILD and USE phrases) for bre_for_fra (Breton for French speakers) seeds __FROM__-__TO__, for job #374·AL, which applies Kai's approved rebuild of seeds 1-300 (Kai, 25 Nov 14:24Z: "2. Yes"). The LEGOs are already cut (job #378·AL); you add the phrase lines under them. Five sibling workers do the other bands in parallel; your parent folds your report.
+
+PURPOSE: your lines become live course_practice_phrases rows (through changesets my job applies at night; you write nothing to any database). A Breton human reader records them later, and a French-speaking learner says them. PRICE: one Opus session, about two hours; 0 audio; no tests (tests are OFF estate-wide), no typecheck, no builds, no previews.
+
+SETUP
+1. Your checkout is off origin/main. FIRST: git fetch origin cs/374-apply-bre-for-fra-rebuild-seeds--2 && git merge --no-edit origin/cs/374-apply-bre-for-fra-rebuild-seeds--2 (it carries the tool, the pilot and the LEGO files). Commit on your own branch and push it; do NOT merge to main — I merge it.
+2. Scratch goes in $CS_SCRATCH, never /tmp.
+
+READ FIRST
+- course-methodology-canon.md at the repo root: section 3 (practice phrases: BUILD and USE) and section 4 (known side vs target side) IN FULL. The French side is a controlled language too: a French prompt uses only French the learner has already been given.
+- ops/bre-rebuild-345/pilot-1.txt, pilot-2.txt, pilot-3.txt: the checked pilot for seeds 1-30, the house style you continue (B lines, U lines, and the U* line that is the seed sentence itself).
+- Your file: ops/bre-rebuild-374/author/__FILE__ (LEGO lines for your seeds; earlier files in that folder hold the LEGOs of earlier seeds — everything taught before your seeds is fair vocabulary).
+- ops/bre-rebuild-345/pairs-1-300.json (proposed_breton / proposed_french) and the plan https://watson-1.tail4968cb.ts.net/d/6759942d for the course-wide decisions (vouloir = fellout a ra din …, aimer = plijout, je vais + verb = emaon o vont da, a state takes "on", tu forms for tu, vous for vous, questions carry no opening "ha" unless the French says "est-ce que").
+- tools/course-optimization/bre-rebuild-374.cjs (header): the checker.
+
+WHAT TO WRITE: under each L line of YOUR seeds in __FILE__, add
+  B <breton> | <french>     BUILD phrases: the new LEGO plugged into already-taught vocabulary
+  U <breton> | <french>     USE phrases: fuller sentences using the LEGO
+  U* <Seed Breton exactly as proposed_breton> | <Seed French exactly as proposed_french>   — exactly once per seed, under a new LEGO (normally the last), with the seed's own capital and punctuation
+Do not change any L line, any seed pair, or any other worker's seeds. Floor per new LEGO from seed 4 on: at least 3 B and 5 U. Every phrase must contain its whole LEGO; no bare LEGO as a phrase; no Breton word or chunk the learner has not been taught (earlier seeds' LEGOs and components, earlier LEGOs of the same seed, this LEGO) — the checker counts a mutated form as a DIFFERENT word (komz ≠ gomz; Kai has not ruled to change that), so a mutated form is usable only if it was taught inside a chunk. One French prompt maps to one Breton answer everywhere (ZUT). Known and target lengths within 2.5x. Natural, sayable sentences only: Kai's rule is "thin baskets over bad phrases" — if the taught vocabulary will not make a good sentence, write fewer and leave the basket thin rather than pad it.
+
+HELD SEEDS: 20, 21, 52, 53, 136, 176, 177, 241, 242 (ops/bre-rebuild-374/holds.json, Kai's unruled "à elle" call). The checker skips them, so their LEGOs are NOT taught: never use a word only they teach. If one of them is in your band, still write its basket (ready for when Kai rules), but it will not be checked or applied. Also avoid French "son/sa/ses/lui" prompts whose Breton needs a his/her choice (e anv / hec'h anv, dezhañ / dezhi): that is exactly the unruled call — use another sentence instead.
+
+CHECK: node tools/course-optimization/bre-rebuild-374.cjs check --warn   (it checks every seed in the folder; seeds of other bands that have no baskets yet show P26/floor failures — ignore those, they are not yours). For YOUR seeds the target is 0 HARD lines (TILING, VOCAB, P17, BARE LEGO, ZUT, LENGTH RATIO, BUILD RECOMBINATION, P26). "below floor" is allowed only where the vocabulary genuinely cannot make more good sentences — list each one in your report with the reason. Fix every "KNOWN-SIDE untaught French" warning on your seeds unless it is a function word (le, la, de, du, te, se …) the French grammar forces. "ZUT vs held old" warnings are expected (clashes with held seeds' old live rows) and fine. Commit and push after every ~15 seeds (git add only your author file).
+
+RULES: no database access of any kind and no API writes; no audio; do not change the tool or the LEGO lines (if a LEGO makes a good basket impossible, say so in the report). Breton quality: best effort with sources (ARBRES https://arbres.iker.cnrs.fr, Wiktionnaire); no native-speaker holds, no question lists (Kai's standing rule).
+
+REPORT (one paragraph): seeds done, B/U counts, hard failures on your seeds (must be 0), below-floor baskets with reasons, any LEGO you think is wrong, branch name and last sha.
