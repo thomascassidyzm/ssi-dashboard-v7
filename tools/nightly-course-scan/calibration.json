@@ -106,6 +106,44 @@
    "course": "bre_for_fra",
    "id": "S0298L01B01",
    "why": "cs #342·AL: LEGO 'un dra ebet ken', all 7 basket rows drop 'ken' (also Deborah's 8 Sept list)"
+  },
+  {
+   "family": "open_end_unmirrored",
+   "course": "bre_for_fra",
+   "id": "S0286L01B01",
+   "match": "gant",
+   "why": "cs #342·AL, P7: BUILD target ends open ('o deus plijadur gant') but the prompt 'qui aiment' does not mirror the open end (hand-read; 2-3 of 14 hits real)"
+  },
+  {
+   "family": "form_drift",
+   "course": "bre_for_fra",
+   "id": "S0004L03U02",
+   "match": "S0001L01",
+   "why": "cs #342·AL, P28: 'je veux parler' taught as 'c'hoant am eus da gomz', this row says 'c'hoant am eus komz' (10 of 12 read real)"
+  },
+  {
+   "family": "use_frame_repeat",
+   "course": "bre_for_fra",
+   "id": "S0014L01U02",
+   "why": "cs #342·AL, P9: two USE rows differing only aujourd'hui/demain (hiziv/warc'hoazh)"
+  },
+  {
+   "family": "bare_function_lego",
+   "course": "bre_for_fra",
+   "id": "S0044L01",
+   "why": "cs #342·AL, L6: bare 'ou | pe' A-LEGO (and a ZUT pair with 'où | pelec'h')"
+  },
+  {
+   "family": "greedy_intro",
+   "course": "bre_for_fra",
+   "match": "gudenn",
+   "why": "cs #342·AL, L13: 'gudenn' first met inside M-LEGO S0134L01 with no component, taught alone only at S0210L03"
+  },
+  {
+   "family": "component_not_in_lego",
+   "course": "bre_for_fra",
+   "id": "S0283L02C01",
+   "why": "cs #342·AL, L23: component tile carries a leaked working note 'da | amis → vignoned'"
   }
  ],
  "uncalibrated": [
@@ -113,6 +151,21 @@
    "family": "garble_script",
    "course": "bre_for_fra",
    "why": "cs #342·AL: Latin/Latin extension (non-Latin letter on either side). NO real positive exists: the Aug S0089L03 case was an AUDIO link (a zho_for_jpn clip of 短 on the LEGO's known slot), never text, and is unlinked on the 25 Nov copy and live. Only a planted row fires it; per Kai's rule it stays UNCALIBRATED until a real one is found."
+  },
+  {
+   "family": "basket_order",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL, P3/P4: 0 hits in both Breton courses, no positive anywhere known"
+  },
+  {
+   "family": "open_end_use",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL, P7 HARD: 0 hits in both Breton courses after calibration of the open-end word lists"
+  },
+  {
+   "family": "thin_debut",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL, P10/P30 at the builder's phraseFloor: 0 hits; the only raw hits (S0001L01/L02) were L18 / floor-exempt"
   }
  ]
 }

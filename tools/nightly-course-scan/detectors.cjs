@@ -53,6 +53,25 @@
  *                   a LEGO word is simply not there (the strong class). Welsh soft mutation is not a miss.
  *  silent_lego      a NEW LEGO with no audio on any slot (the dump only carries a lego_debut row when a slot is set).
  *                   Null slots on played rows are detect.cjs's empty_audio.
+ *
+ * METHODOLOGY FAMILIES (cs #342·AL, Kai's 25 Nov 12:36Z amendment: "methodology as well as grammar"). Each names its
+ * canon rule (course-methodology-canon.md). Generic unless marked; the open-end word lists exist for Breton targets and
+ * French/English knowns only, and the family is NOT RUN elsewhere.
+ *  open_end_unmirrored  P7: an open-ended BUILD (target ends on a conjunction/preposition/particle) is LEGIT; the defect is
+ *                   a prompt that does not mirror the open end (one side open, the other closed). Never auto-drop.
+ *  open_end_use     P7 HARD: a USE phrase whose target AND prompt end open — a fragment replayed cold.
+ *  basket_order     P3/P4: a USE row positioned before a BUILD row in the same basket (BUILD plugs in first).
+ *  use_frame_repeat P9 HARD: two USE rows in one basket with the same length that differ in exactly one word on both
+ *                   sides — the frame held constant, a single slot swapped.
+ *  thin_debut       P10/P30 (SOFT, reported): a NEW LEGO below the builder's own phraseFloor (phrase-structure.cjs).
+ *                   An EMPTY debut is detect.cjs's debut_no_practice — and S0001L01 there is L18, not a defect.
+ *  bare_function_lego L6 (SOFT): a NEW single-word LEGO whose known is a bare pronoun/article/preposition/conjunction.
+ *  greedy_intro     L13: a word first met inside a NEW multi-word LEGO with no component of its own, and taught as its
+ *                   own single-word LEGO only later.
+ *  component_not_in_lego  L23/L11: a component tile whose target is not a substring of its LEGO's target (Breton
+ *                   mutation and inflected prepositions tolerated: gant + it = ganit).
+ *  form_drift       P28 HARD: after a multi-word LEGO debuts with known K, a played row whose prompt contains K but whose
+ *                   target does not contain that LEGO's target (mutation tolerated on Breton).
  * Calibrations (each detector's known positive) live in calibration.json beside this file.
  */
 const path = require('path')
@@ -60,6 +79,7 @@ const R = path.resolve(__dirname, '../..')
 const { normalizeForContainment } = require(R + '/services/course-builder/lib/text-normalization.cjs')
 const { phraseContainsLego } = require(R + '/services/course-builder/lib/separable-verbs.cjs')
 const { isChinese } = require(R + '/services/course-builder/lib/language-config.cjs')
+const { phraseFloor } = require(R + '/services/course-builder/lib/phrase-structure.cjs')
 
 const SPACELESS_EXTRA = new Set(['tha', 'lao', 'mya', 'khm'])
 const toks = (t) => (String(t || '').toLowerCase().normalize('NFC').replace(/[ً-ْ]/g, '').replace(/[’‘]/g, "'")
@@ -348,6 +368,65 @@ function run(D) {
     }
   }
 
+
+  // ── METHODOLOGY (cs #342·AL) ──
+  const OPEN_T = { bre: new Set("da ha hag met abalamour evit gant ma pa war ouzh eget".split(' ')) }
+  // Calibrated 25 Nov on bre_for_fra: 'eus' (am eus, the perfect auxiliary) and French 'de'/'à' (an infinitive marker Breton
+  // does not have: j'essaie de | klask a ran) made every one of the first 12 hits false, so they are not open-end words.
+  const _unused = { }
+  const OPEN_K = { fra: new Set("que qu pour avec et mais parce si quand le la les une des du sur dans".split(' ')),
+    eng: new Set("to and but because if when the a an of with for in on that".split(' ')) }
+  const lastTok = (t) => { const w = toks(t); return w.length ? w[w.length - 1] : '' }
+  const brK = (w) => (tlang === 'bre' ? bretonRadicals(w) : new Set([w]))
+  const wordsIn = (needle, hay) => { const H = toks(hay); return toks(needle).every((w) => H.some((x) => x === w || [...brK(x)].some((k) => brK(w).has(k)))) }
+  if (OPEN_T[tlang] && OPEN_K[known]) {
+    for (const { p } of rows) {
+      const tOpen = OPEN_T[tlang].has(lastTok(p.target)) && toks(p.target).length > 1, kOpen = OPEN_K[known].has(lastTok(p.known)) || /\b(qu|l|d)['’]$/.test(String(p.known).trim())
+      if (tOpen !== kOpen) add('open_end_unmirrored', { id: short(p.id), type: p.type, open: tOpen ? 'target' : 'known', known: p.known, target: p.target })
+      else if (tOpen && p.type === 'use') add('open_end_use', { id: short(p.id), known: p.known, target: p.target })
+    }
+  } else notes.push(`open_end_* NOT RUN: no open-end word list for ${tlang} targets / ${known} knowns`)
+  const nk = (t) => toks(t).join(' ')
+  const firstWord = new Map(), legoWord = new Map()
+  for (const s of seeds) for (const l of s.legos) {
+    const ph = l.phrases, bi = ph.filter((p) => p.type === 'build'), us = ph.filter((p) => p.type === 'use')
+    if (l.is_new) {
+      const lastBuild = Math.max(-1, ...bi.map((p) => p.pos)), firstUse = Math.min(Infinity, ...us.map((p) => p.pos))
+      if (firstUse < lastBuild) add('basket_order', { id: l.id, known: l.known, target: l.target, first_use: firstUse, last_build: lastBuild })
+      const fl = phraseFloor(s.n, l.idx) // the builder's own ramp (P30): S1L1 none, S1-S3 one of each, S4+ 3 BUILD + 5 USE
+      if (bi.length < fl.minBuild || us.length < fl.minUse) add('thin_debut', { id: l.id, builds: bi.length, uses: us.length, floor: fl, known: l.known, target: l.target })
+      for (let i = 0; i < us.length; i++) for (let j = i + 1; j < us.length; j++) {
+        const a = us[i], b = us[j], ta = toks(a.target), tb = toks(b.target), ka = toks(a.known), kb = toks(b.known)
+        const diff = (x, y) => x.length === y.length ? x.filter((w, k) => w !== y[k]).length : 99
+        if (diff(ta, tb) === 1 && diff(ka, kb) <= 2) { add('use_frame_repeat', { id: short(a.id), twin: short(b.id), lego: l.id, known: a.known + ' || ' + b.known, target: a.target + ' || ' + b.target }); break }
+      }
+      const tw0 = toks(l.target)
+      if (tw0.length === 1 && OPEN_K[known] && toks(l.known).length === 1 && (OPEN_K[known].has(toks(l.known)[0]) || /^(je|tu|il|elle|nous|vous|ils|elles|moi|toi|lui|eux|i|you|he|she|we|they|it|me|him|her|us|them|ou|or|où)$/.test(toks(l.known)[0])))
+        add('bare_function_lego', { id: l.id, known: l.known, target: l.target })
+      const comps = ph.filter((p) => p.type === 'component')
+      for (const c of comps) {
+        const lt = normalizeForContainment(l.target).replace(/\s/g, ''), ct = normalizeForContainment(c.target).replace(/\s/g, '')
+        const ok = ct && (lt.includes(ct) || [...brK(toks(c.target)[0] || '')].some((k) => lt.includes(normalizeForContainment(c.target.replace(toks(c.target)[0], k)).replace(/\s/g, ''))))
+        if (!ok) add('component_not_in_lego', { id: short(c.id), lego: l.id, lego_target: l.target, known: c.known, target: c.target })
+      }
+      const compWords = new Set(comps.flatMap((c) => toks(c.target)))
+      if (tw0.length > 1) for (const w of tw0) if (!firstWord.has(w)) firstWord.set(w, { lego: l.id, seed: s.n, comp: compWords.has(w) })
+      if (tw0.length === 1 && !legoWord.has(tw0[0])) legoWord.set(tw0[0], { lego: l.id, seed: s.n })
+    }
+  }
+  for (const [w, f] of firstWord) { const a = legoWord.get(w); if (a && !f.comp && a.seed > f.seed && w.length > 2) add('greedy_intro', { word: w, m_lego: f.lego, a_lego: a.lego }) }
+  {
+    const multi = []
+    for (const s of seeds) for (const l of s.legos) if (l.is_new && toks(l.known).length >= 2 && !/[\/()]/.test(l.known)) multi.push({ l, at: rk(s.n, l.idx), K: ' ' + nk(l.known) + ' ' })
+    for (const { p, l, s } of rows) {
+      const here = rk(s.n, l.idx), pk = ' ' + nk(p.known) + ' '
+      const own = ' ' + nk(l.known) + ' '
+      // the row's own LEGO says something bigger that contains K ("to try" inside "to try hard"): its own form wins
+      // a longer taught prompt that the row carries correctly covers every shorter one inside it ("to try" in "to try hard")
+      const covered = multi.filter((m) => m.at <= here && pk.includes(m.K) && wordsIn(m.l.target, p.target)).map((m) => m.K)
+      for (const m of multi) if (m.at < here && pk.includes(m.K) && !(own.includes(m.K) && own !== m.K) && !covered.some((K) => K !== m.K && K.includes(m.K)) && !wordsIn(m.l.target, p.target)) { add('form_drift', { id: short(p.id), taught: m.l.id, taught_known: m.l.known, taught_target: m.l.target, known: p.known, target: p.target }); break }
+    }
+  }
   // ── silent_lego ──
   for (const s of seeds) for (const l of s.legos) if (l.is_new && !l.phrases.some((p) => p.type === 'lego_debut')) add('silent_lego', { id: l.id, known: l.known, target: l.target })
 
