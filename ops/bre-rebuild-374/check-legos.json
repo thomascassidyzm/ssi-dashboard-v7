@@ -1,9 +1,9 @@
 {
  "checker": "services/course-builder/lib pure functions (as POST /api/seed/complete), offline; ZUT in memory over 1-300 new rows + held seeds' old live rows",
  "totals": {
-  "seeds": 160,
-  "legos": 400,
-  "new_legos": 400,
+  "seeds": 203,
+  "legos": 490,
+  "new_legos": 490,
   "build": 0,
   "use": 0,
   "hard": 0,
@@ -31,46 +31,6 @@
    "call": "à elle",
    "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"
   },
-  "166": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "167": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "168": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "169": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "170": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "171": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "172": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "173": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "174": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "175": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
   "176": {
    "call": "à elle",
    "why": "'lui demander' → digantañ, gender taken from the sentence's own il (part of the unruled convention)"
@@ -78,138 +38,6 @@
   "177": {
    "call": "à elle",
    "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"
-  },
-  "178": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "179": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "180": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "181": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "182": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "183": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "184": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "185": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "186": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "187": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "188": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "189": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "190": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "191": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "192": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "193": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "194": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "195": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "196": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "197": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "198": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "199": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "200": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "201": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "202": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "203": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "204": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "205": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "206": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "207": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "208": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "209": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
-  },
-  "210": {
-   "call": "not authored",
-   "why": "no decomposition authored yet"
   },
   "211": {
    "call": "not authored",
@@ -3033,9 +2861,7 @@
      "known": "qu'est-ce que tu cherches",
      "is_new": true,
      "hard": [],
-     "warn": [
-      "ZUT vs held old LEGO S0194L01 (held, old) \"petra e klask out\""
-     ],
+     "warn": [],
      "syllables": 6,
      "build": 0,
      "use": 0
@@ -6430,6 +6256,1385 @@
      "hard": [],
      "warn": [],
      "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 166,
+   "target": "N'eo ket divoas-tre ma anv.",
+   "known": "Mon prénom n'est pas très inhabituel.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0166L01",
+     "target": "n'eo ket divoas-tre",
+     "known": "n'est pas très inhabituel",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0166L02",
+     "target": "ma anv",
+     "known": "mon prénom",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 167,
+   "target": "Petra ac'h eus ezhomm d'ober warc'hoazh d'an endervezh ?",
+   "known": "Qu'est-ce que tu as besoin de faire demain après-midi ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0167L01",
+     "target": "petra ac'h eus ezhomm",
+     "known": "qu'est-ce que tu as besoin",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0167L02",
+     "target": "warc'hoazh d'an endervezh",
+     "known": "demain après-midi",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 168,
+   "target": "Ha neuze e c'hallin dont da sikour diwezhatoc'h.",
+   "known": "Et ensuite je pourrai venir aider plus tard.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0168L01",
+     "target": "ha neuze",
+     "known": "et ensuite",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0168L02",
+     "target": "e c'hallin",
+     "known": "je pourrai",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0168L03",
+     "target": "dont da sikour",
+     "known": "venir aider",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 169,
+   "target": "Petra a fell dit e rafen ?",
+   "known": "Qu'est-ce que tu veux que je fasse ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0169L01",
+     "target": "petra a fell dit",
+     "known": "qu'est-ce que tu veux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0169L02",
+     "target": "e rafen",
+     "known": "que je fasse",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 170,
+   "target": "Plijout a rafe din e lavarfes din ar pezh ac'h eus ezhomm.",
+   "known": "J'aimerais que tu me dises ce dont tu as besoin.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0170L01",
+     "target": "e lavarfes din",
+     "known": "que tu me dises",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0170L02",
+     "target": "ar pezh ac'h eus ezhomm",
+     "known": "ce dont tu as besoin",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 171,
+   "target": "Fellout a ra dit e sikourfen ac'hanout da glask anezhañ ?",
+   "known": "Tu veux que je t'aide à le chercher ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0171L01",
+     "target": "e sikourfen ac'hanout",
+     "known": "que je t'aide",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0171L02",
+     "target": "da glask anezhañ",
+     "known": "à le chercher",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 172,
+   "target": "Ya, talvoudus-tre e vefe.",
+   "known": "Oui ce serait très utile.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0172L01",
+     "target": "talvoudus-tre e vefe",
+     "known": "ce serait très utile",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 173,
+   "target": "Nann trugarez, gallout a ran en em zibab ma-unan.",
+   "known": "Non merci, je peux me débrouiller tout seul.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0173L01",
+     "target": "nann trugarez",
+     "known": "non merci",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0173L02",
+     "target": "gallout a ran",
+     "known": "je peux",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0173L03",
+     "target": "en em zibab ma-unan",
+     "known": "me débrouiller tout seul",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 174,
+   "target": "Kompren a rez ar pezh a lavaran ?",
+   "known": "Tu comprends ce que je dis ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0174L01",
+     "target": "kompren a rez",
+     "known": "tu comprends",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0174L02",
+     "target": "ar pezh a lavaran",
+     "known": "ce que je dis",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 175,
+   "target": "Petra a fell dit ober disul vintin ?",
+   "known": "Qu'est-ce que tu veux faire dimanche matin ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0175L01",
+     "target": "petra a fell dit ober",
+     "known": "qu'est-ce que tu veux faire",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 178,
+   "target": "N'em boa ket amzer, daoust ma felle din gwelout ac'hanout.",
+   "known": "Je n'avais pas le temps, même si je voulais te voir.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0178L01",
+     "target": "n'em boa ket amzer",
+     "known": "je n'avais pas le temps",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0178L02",
+     "target": "daoust ma felle din",
+     "known": "même si je voulais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 179,
+   "target": "Petra emaout o vont d'ober disul d'an endervezh ?",
+   "known": "Qu'est-ce que tu vas faire dimanche après-midi ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0179L01",
+     "target": "petra emaout o vont d'ober",
+     "known": "qu'est-ce que tu vas faire",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0179L02",
+     "target": "disul d'an endervezh",
+     "known": "dimanche après-midi",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 180,
+   "target": "Plijout a rafe din lenn ma levr e-pad ur pennad.",
+   "known": "J'aimerais lire mon livre pendant un moment.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0180L01",
+     "target": "lenn ma levr",
+     "known": "lire mon livre",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 181,
+   "target": "Met rankout a ran kas ma mamm d'ar mezeg.",
+   "known": "Mais je dois emmener ma mère chez le médecin.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0181L01",
+     "target": "rankout a ran",
+     "known": "je dois",
+     "is_new": true,
+     "hard": [],
+     "warn": [
+      "ZUT vs held old LEGO S0293L01 (held, old) \"ret eo din\""
+     ],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0181L02",
+     "target": "kas ma mamm",
+     "known": "emmener ma mère",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0181L03",
+     "target": "d'ar mezeg",
+     "known": "chez le médecin",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 182,
+   "target": "Gwelet ac'h eus ma alc'hwezioù en ul lec'h bennak ?",
+   "known": "Tu as vu mes clés quelque part ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0182L01",
+     "target": "gwelet ac'h eus",
+     "known": "tu as vu",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0182L02",
+     "target": "ma alc'hwezioù",
+     "known": "mes clés",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0182L03",
+     "target": "en ul lec'h bennak",
+     "known": "quelque part",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 183,
+   "target": "Nann, aon am eus n'em eus ket gwelet anezho.",
+   "known": "Non, je crains de ne pas les avoir vus.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0183L01",
+     "target": "aon am eus",
+     "known": "je crains",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0183L02",
+     "target": "n'em eus ket gwelet anezho",
+     "known": "de ne pas les avoir vus",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 184,
+   "target": "Ya, gwelet em eus anezho er burev ur pennad zo.",
+   "known": "Oui, je les ai vus dans le bureau il y a un moment.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0184L01",
+     "target": "gwelet em eus anezho",
+     "known": "je les ai vus",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0184L02",
+     "target": "er burev",
+     "known": "dans le bureau",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0184L03",
+     "target": "ur pennad zo",
+     "known": "il y a un moment",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 185,
+   "target": "Soñjal a ran ec'h eus lezet anezho el labour.",
+   "known": "Je pense que tu les as laissés au travail.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0185L01",
+     "target": "ec'h eus lezet anezho",
+     "known": "tu les as laissés",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0185L02",
+     "target": "el labour",
+     "known": "au travail",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 186,
+   "target": "Fellout a ra dit komz eus un dra bennak disheñvel ar sizhun a zeu ?",
+   "known": "Tu veux parler de quelque chose de différent la semaine prochaine ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0186L01",
+     "target": "un dra bennak disheñvel",
+     "known": "quelque chose de différent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 187,
+   "target": "Laouen on evit ar mare.",
+   "known": "Je suis content pour l'instant.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0187L01",
+     "target": "laouen on",
+     "known": "je suis content",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0187L02",
+     "target": "evit ar mare",
+     "known": "pour l'instant",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 188,
+   "target": "Setu n'em eus ket ezhomm da gemmañ.",
+   "known": "Donc je n'ai pas besoin de changer.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0188L01",
+     "target": "da gemmañ",
+     "known": "de changer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 189,
+   "target": "Ya, ur mennozh mat eo.",
+   "known": "Oui c'est une bonne idée.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0189L01",
+     "target": "ur mennozh mat eo",
+     "known": "c'est une bonne idée",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 190,
+   "target": "Diaes eo dit ma c'houlennan un nebeud goulennoù diganit ?",
+   "known": "Ça ne te dérange pas si je te pose quelques questions ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0190L01",
+     "target": "diaes eo dit ma",
+     "known": "ça ne te dérange pas si",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0190L02",
+     "target": "c'houlennan",
+     "known": "je te pose",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0190L03",
+     "target": "un nebeud goulennoù",
+     "known": "quelques questions",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 191,
+   "target": "Nann, n'eo ket diaes din tamm ebet.",
+   "known": "Non, ça ne me dérange pas du tout.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0191L01",
+     "target": "tamm ebet",
+     "known": "du tout",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 192,
+   "target": "Ac'hubet on warc'hoazh da noz.",
+   "known": "Je suis occupé demain soir.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0192L01",
+     "target": "ac'hubet on",
+     "known": "je suis occupé",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0192L02",
+     "target": "warc'hoazh da noz",
+     "known": "demain soir",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 193,
+   "target": "Keuz am eus, met re ac'hubet on hiziv.",
+   "known": "Je suis désolé mais je suis trop occupé aujourd'hui.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0193L01",
+     "target": "re ac'hubet on",
+     "known": "je suis trop occupé",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 194,
+   "target": "Petra emaout o klask ?",
+   "known": "Qu'est-ce que tu cherches ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0194L01",
+     "target": "emaout o klask",
+     "known": "tu cherches",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 195,
+   "target": "Emaon o klask kavout an arc'hant am eus lezet war an daol.",
+   "known": "J'essaie de trouver l'argent que j'ai laissé sur la table.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0195L01",
+     "target": "an arc'hant",
+     "known": "l'argent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0195L02",
+     "target": "am eus lezet",
+     "known": "que j'ai laissé",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0195L03",
+     "target": "war an daol",
+     "known": "sur la table",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 196,
+   "target": "Klevet ac'h eus ar mennozh diwezhañ ?",
+   "known": "As-tu entendu la dernière idée ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0196L01",
+     "target": "klevet ac'h eus",
+     "known": "as-tu entendu",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0196L02",
+     "target": "ar mennozh diwezhañ",
+     "known": "la dernière idée",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 197,
+   "target": "Ma mab a labour evel kelenner.",
+   "known": "Mon fils travaille comme enseignant.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0197L01",
+     "target": "ma mab a labour",
+     "known": "mon fils travaille",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0197L02",
+     "target": "evel kelenner",
+     "known": "comme enseignant",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 198,
+   "target": "Ma merc'h a labour evit an ti-kêr.",
+   "known": "Ma fille travaille pour la mairie.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0198L01",
+     "target": "ma merc'h a labour",
+     "known": "ma fille travaille",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0198L02",
+     "target": "evit an ti-kêr",
+     "known": "pour la mairie",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 199,
+   "target": "Ma mignon a laboure en ur burev.",
+   "known": "Mon ami travaillait dans un bureau.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0199L01",
+     "target": "ma mignon a laboure",
+     "known": "mon ami travaillait",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0199L02",
+     "target": "en ur burev",
+     "known": "dans un bureau",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 200,
+   "target": "Lavarout a reont e fell dezho bezañ sur ec'h echuimp pep tra e koulz.",
+   "known": "Ils disent qu'ils veulent s'assurer que nous finissions tout à temps.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0200L01",
+     "target": "lavarout a reont",
+     "known": "ils disent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0200L02",
+     "target": "e fell dezho",
+     "known": "qu'ils veulent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0200L03",
+     "target": "bezañ sur",
+     "known": "s'assurer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0200L04",
+     "target": "ec'h echuimp pep tra",
+     "known": "que nous finissions tout",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 201,
+   "target": "Fellout a rae deomp gouzout ar pezh a oa o vont da c'hoarvezout.",
+   "known": "Nous voulions savoir ce qui allait se passer.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0201L01",
+     "target": "ar pezh a oa o vont",
+     "known": "ce qui allait",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0201L02",
+     "target": "da c'hoarvezout",
+     "known": "se passer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 202,
+   "target": "Den ebet ne oa sur penaos respont d'ar goulenn.",
+   "known": "Personne n'était sûr de comment répondre à la question.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0202L01",
+     "target": "den ebet ne oa sur",
+     "known": "personne n'était sûr",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0202L02",
+     "target": "d'ar goulenn",
+     "known": "à la question",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 203,
+   "target": "Petra a rafes ma c'houlennfen diganit sikour ac'hanon ?",
+   "known": "Qu'est-ce que tu ferais si je te demandais de m'aider ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0203L01",
+     "target": "petra a rafes",
+     "known": "qu'est-ce que tu ferais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0203L02",
+     "target": "ma c'houlennfen diganit",
+     "known": "si je te demandais",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 204,
+   "target": "Fellout a rae din e sikourfe ac'hanout d'ober war-dro an aozadurioù.",
+   "known": "Je voulais qu'elle t'aide à gérer les arrangements.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0204L01",
+     "target": "e sikourfe ac'hanout",
+     "known": "qu'elle t'aide",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0204L02",
+     "target": "d'ober war-dro",
+     "known": "à gérer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0204L03",
+     "target": "an aozadurioù",
+     "known": "les arrangements",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 205,
+   "target": "Ankounac'haet em eus ar ger a oan o klask lavarout.",
+   "known": "J'ai oublié le mot que j'essayais de dire.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0205L01",
+     "target": "ankounac'haet em eus",
+     "known": "j'ai oublié",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0205L02",
+     "target": "ar ger a oan o klask",
+     "known": "le mot que j'essayais de",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 206,
+   "target": "Plijout a ra din an tu da bleustriñ war ar gomz ganit.",
+   "known": "J'apprécie l'occasion de m'entraîner à parler avec toi.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0206L01",
+     "target": "an tu da bleustriñ",
+     "known": "l'occasion de m'entraîner",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 207,
+   "target": "Graet ac'h eus ar pezh az poa ezhomm d'ober.",
+   "known": "Tu as fait ce que tu avais besoin de faire.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0207L01",
+     "target": "graet ac'h eus",
+     "known": "tu as fait",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0207L02",
+     "target": "ar pezh az poa ezhomm",
+     "known": "ce que tu avais besoin",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 6,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 208,
+   "target": "Ne felle ket din goulenn diganit penaos lavarout anezhañ.",
+   "known": "Je ne voulais pas te demander comment le dire.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0208L01",
+     "target": "ne felle ket din",
+     "known": "je ne voulais pas",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0208L02",
+     "target": "penaos lavarout anezhañ",
+     "known": "comment le dire",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 7,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 209,
+   "target": "Fellout a ra dezho tremen muioc'h a amzer oc'h en em gavout evel ur strollad.",
+   "known": "Ils veulent passer plus de temps à se retrouver en groupe.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0209L01",
+     "target": "fellout a ra dezho",
+     "known": "ils veulent",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0209L02",
+     "target": "tremen",
+     "known": "passer",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 2,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0209L03",
+     "target": "oc'h en em gavout",
+     "known": "à se retrouver",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0209L04",
+     "target": "evel ur strollad",
+     "known": "en groupe",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
+     "build": 0,
+     "use": 0
+    }
+   ]
+  },
+  {
+   "seed": 210,
+   "target": "Soñjal a reont hon eus ezhomm da gaozeal diwar-benn ar gudenn.",
+   "known": "Ils pensent que nous avons besoin de discuter du problème.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0210L01",
+     "target": "soñjal a reont",
+     "known": "ils pensent que",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0210L02",
+     "target": "hon eus ezhomm",
+     "known": "nous avons besoin",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 4,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0210L03",
+     "target": "da gaozeal",
+     "known": "de discuter",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 3,
+     "build": 0,
+     "use": 0
+    },
+    {
+     "id": "S0210L04",
+     "target": "diwar-benn ar gudenn",
+     "known": "du problème",
+     "is_new": true,
+     "hard": [],
+     "warn": [],
+     "syllables": 5,
      "build": 0,
      "use": 0
     }
