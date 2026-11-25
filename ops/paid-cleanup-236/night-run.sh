@@ -25,7 +25,8 @@ curl -s -m 20 http://localhost:3470/health | grep -q '"governed":true' || { say 
 
 # Start gate: #234·AL (jpn apply) was STOOD DOWN for 24 Nov (Kai's Watson, 17:2xZ), so no wait on it; the writer cap
 # and the load gate below are the only gates.
-writers() { systemctl --user list-units --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
+# Services only: a waiting .timer is "active" all day and is not a writer (24 Nov night: three timers held the cap shut).
+writers() { systemctl --user list-units --type=service --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
   | grep -E 'a2c|item|apply|night|tiles|relink|render|fill|record|8b' | grep -v -E '236|cohort' | wc -l; }
 waitw() { while [ "$(writers)" -ge 2 ]; do late && return 1; echo "$(date -u +%T) $(writers) other writers; waiting"; sleep 180; done; return 0; }
 green() { for _ in $(seq 1 40); do curl -s -m 20 http://localhost:3470/health | grep -q '"level":"green"' && return 0; echo "$(date -u +%T) gate not green"; sleep 30; done; return 1; }
