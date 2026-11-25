@@ -28,7 +28,7 @@ say() { echo "$(date -u +%FT%TZ) $*" | tee -a "$LOG"; }
 wake() { node ~/command-surface/tools/cs-wake-send.cjs "$CONV" "$(cat "$TOKF")" "$1" >/dev/null 2>&1 && say "WAKE SENT: $1" || say "WAKE FAILED: $1"; }
 ukh() { TZ=Europe/London date +%H | sed 's/^0//'; }
 night() { local h; h=$(ukh); [ "$h" -ge 22 ] || [ "$h" -lt 7 ]; }
-others() { local n=0 u p; for u in $WRITERS; do systemctl --user is-active -q "$u" && n=$((n+1)); done
+others() { local n=0 u p; for u in $WRITERS; do case "$(systemctl --user is-active "$u" 2>/dev/null)" in active|activating|reloading) n=$((n+1)) ;; esac; done  # a running oneshot (236-night, item4-358) shows "activating", not "active" (cs #447·AL)
   p=$(pgrep -f 'apply-changeset.cjs' | wc -l); [ "$p" -gt "$n" ] && n=$p; echo $n; }
 # governed:true stays true while the DB load gate is RED, so the gate also needs level green (parent room, 25 Nov 15:03Z:
 # pause between seeds while red, resume only when green).
