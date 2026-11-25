@@ -82,6 +82,19 @@ function createBoothQueueCache({ freshMs = FRESH_MS, staleMs = STALE_MS, maxEntr
     return { value, fresh: true, ageMs: 0 }
   }
 
+  /**
+   * THE FRESH ENTRY, OR NULL — NEVER A BUILD (cs #299, the booth's background preload of the
+   * next batch). A preload must cost the database nothing: it is answered from the build the
+   * batch on screen was just served from, or not at all, so it can never double the load while
+   * an artist records on a slow database. Same freshness rule as get() without allowStale.
+   */
+  function peekFresh(key) {
+    const hit = entries.get(key)
+    const t = now()
+    if (hit && hit.value && !hit.building && t - hit.at < freshMs) return { value: hit.value, fresh: true, ageMs: t - hit.at }
+    return null
+  }
+
   /** Drop every entry for this voice id (any spelling it was asked or resolved under). */
   function invalidateVoice(voiceId) {
     for (const [key, e] of [...entries]) if (key === voiceId || e.voiceIds.includes(voiceId)) entries.delete(key)
@@ -92,7 +105,7 @@ function createBoothQueueCache({ freshMs = FRESH_MS, staleMs = STALE_MS, maxEntr
     for (const [key, e] of [...entries]) if (!language || !e.language || e.language === language) entries.delete(key)
   }
 
-  return { get, invalidateVoice, invalidateLanguage, size: () => entries.size }
+  return { get, peekFresh, invalidateVoice, invalidateLanguage, size: () => entries.size }
 }
 
 module.exports = { createBoothQueueCache, FRESH_MS, STALE_MS }

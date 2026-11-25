@@ -1,0 +1,46 @@
+{
+ "family": "oft-it-kin",
+ "event_id": "a8094080-9b65-4abc-91f9-98d50902706a",
+ "undo_file_on_popty": "2026-11-24T19-12-06-630Z-a8094080-9b65-4abc-91f9-98d50902706a.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked_or_dropped": [
+  "S0010L02B01",
+  "S0010L02B03",
+  "S0010L02B04",
+  "S0168L02U07"
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0168L02U07",
+   "set": {
+    "target_text": "ik bin der net wis fan oft ik komme en helpe kinne sil",
+    "target1_audio_id": "4625738a-3b61-45f9-b220-72d53a02a53d"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L02B04",
+   "set": {
+    "target_text": "ik wol hjoed oefenje, ik bin der net wis fan oft in oar kin",
+    "target1_audio_id": "531d9055-8cdf-4559-93c5-ea9598c1e024"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L02B03",
+   "set": {
+    "target_text": "ik besykje te learen, ik bin der net wis fan oft ik kin",
+    "target1_audio_id": "32eb50d8-3fa2-4ffa-bec4-08d668088dc2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0010L02B01",
+   "set": {
+    "target_text": "ik bin der net wis fan oft ik kin",
+    "target1_audio_id": "ffa037aa-7bf2-47c4-b6d0-eaa1050afcc4"
+   }
+  }
+ ]
+}

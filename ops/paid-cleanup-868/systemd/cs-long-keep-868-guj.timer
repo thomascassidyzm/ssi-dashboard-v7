@@ -1,0 +1,9 @@
+[Unit]
+Description=cs #868 item 8B guj day run, 25 Nov 08:00 UTC (once)
+
+[Timer]
+OnCalendar=2026-11-25 08:00:00 UTC
+Persistent=false
+
+[Install]
+WantedBy=timers.target
