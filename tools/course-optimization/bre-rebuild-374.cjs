@@ -33,6 +33,8 @@
 //   cs <from-to>                           → ops/bre-rebuild-374/cs/S####.changeset.jsonl, one per non-held seed
 //   precheck <from-to> <liveSeeds.json>    → seed numbers whose live rows still equal the baseline (stdout, one per line);
 //                                            drift → ops/bre-rebuild-374/drift.jsonl
+//   ledger <n>                             none | complete | incomplete (window closed mid-seed) | partial <undo files>
+//   planned                                the seed numbers the current check.json plans to apply
 //   verify <from-to> <liveSeeds.json>      applied seeds = intended rows; held/drift seeds = baseline; prints a summary
 // liveSeeds.json = GET http://localhost:3470/api/production/bre_for_fra/seeds
 const fs = require('fs');
@@ -331,6 +333,21 @@ function verify(r, liveFile) {
   return res.mixed.length ? 2 : 0;
 }
 
+// The applier's ledger for one seed: none | complete | partial <undo files of the applied batches>. A partial seed is
+// undone by the runner (its undo files posted back) so a seed is never left half-rebuilt.
+function ledger(n) {
+  const f = path.join(DIR, 'cs', `${sid(n)}.changeset.jsonl`);
+  if (!fs.existsSync(f)) return 'nocs';
+  const total = fs.readFileSync(f, 'utf8').split('\n').filter((l) => l.trim()).length - 1;
+  const lf = f + '.applied.jsonl'; if (!fs.existsSync(lf)) return 'none';
+  const st = new Map(); const undo = [];
+  for (const l of fs.readFileSync(lf, 'utf8').split('\n')) { if (!l.trim()) continue; const e = JSON.parse(l); for (const i of e.ops || []) st.set(i, e.status); if (e.status === 'applied' && e.undo_file) undo.push(e.undo_file); }
+  const good = [...st.values()].filter((v) => v === 'applied' || v === 'already').length;
+  if (st.size === total && good === total) return 'complete';
+  if (st.size < total && [...st.values()].every((v) => v === 'applied' || v === 'already')) return `incomplete ${undo.join(' ')}`.trim();
+  return `partial ${undo.join(' ')}`.trim();
+}
+
 if (require.main === module) {
   const [mode, ...rest] = process.argv.slice(2);
   try {
@@ -338,6 +355,8 @@ if (require.main === module) {
     else if (mode === 'check') { const r = check({ warn: rest.includes('--warn'), legosOnly: rest.includes('--legos-only') }); process.exit(r.totals.hard ? 1 : 0); }
     else if (mode === 'cs') buildCs(rest[0]);
     else if (mode === 'precheck') precheck(rest[0], rest[1]);
+    else if (mode === 'ledger') console.log(ledger(Number(rest[0])));
+    else if (mode === 'planned') { const { plan } = intended(); console.log([...plan.keys()].sort((x, y) => x - y).join('\n')); }
     else if (mode === 'verify') process.exit(verify(rest[0], rest[1]));
     else { console.error('modes: baseline <dump> | check [--warn] | cs <from-to> | precheck <from-to> <live> | verify <from-to> <live>'); process.exit(64); }
   } catch (e) { console.error(`bre-rebuild-374: ${e.message}`); process.exit(1); }
