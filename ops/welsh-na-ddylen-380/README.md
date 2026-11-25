@@ -10,3 +10,7 @@ Checked from code (no live queue read succeeded: GET /api/recording/voice/<id>/s
 - (b) cut candidates: NOT done. The only cut door is POST /api/production/:course/ingest-cut (services/shared/ingest-cut.cjs). Its default dry run stores and returns NO audio (provenance only), so nothing to review by ear; its real run stores the cut AND links it into the named slot (S0117L03 target slots are empty, so fill-only would link at once) and files a cut of a human take as origin 'tts'. That breaks "link nothing yet" and the human-voice-only rule. Cut points (seconds) would also need word timings of Dan's human takes, which this job may not get by transcription. A review page needs a no-link, store-only (or returned-bytes) mode: a gap for a new tool/route, not built.
 - (c) seed 117 stays held; nothing edited.
 - nv2/Eleri: no nv2 seed uses S0117L03 (per Kai), so nothing for the North reader.
+
+## Decision (2026-11-25)
+
+A for S0117L03 (cym_sv2 "na ddylen i"): Dan records it in the booth via the ordinary sv2-legos list. Seed 117 stays held.
