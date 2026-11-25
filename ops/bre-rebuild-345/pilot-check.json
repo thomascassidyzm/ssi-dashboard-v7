@@ -1,0 +1,858 @@
+{
+ "checker": "services/course-builder/lib pure functions, offline; ZUT in memory over the pilot",
+ "totals": {
+  "seeds": 20,
+  "legos": 60,
+  "new_legos": 60,
+  "build": 159,
+  "use": 260,
+  "hard": 0,
+  "warn": 0
+ },
+ "below_floor": [
+  "S0001L02 USE: need 1+, got 0"
+ ],
+ "seeds": [
+  {
+   "seed": 1,
+   "target": "Fellout a ra din komz brezhoneg ganit bremañ.",
+   "known": "Je veux parler breton avec toi maintenant.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0001L01",
+     "target": "fellout a ra din",
+     "known": "je veux",
+     "is_new": true,
+     "build": 0,
+     "use": 0,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0001L02",
+     "target": "komz",
+     "known": "parler",
+     "is_new": true,
+     "build": 1,
+     "use": 0,
+     "hard": [],
+     "warn": [],
+     "syllables": 1,
+     "floor": "USE: need 1+, got 0"
+    },
+    {
+     "id": "S0001L03",
+     "target": "brezhoneg",
+     "known": "breton",
+     "is_new": true,
+     "build": 1,
+     "use": 1,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0001L04",
+     "target": "ganit",
+     "known": "avec toi",
+     "is_new": true,
+     "build": 1,
+     "use": 1,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0001L05",
+     "target": "bremañ",
+     "known": "maintenant",
+     "is_new": true,
+     "build": 1,
+     "use": 1,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 2,
+   "target": "Emaon o klask deskiñ.",
+   "known": "J'essaie d'apprendre.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0002L01",
+     "target": "emaon o klask",
+     "known": "j'essaie de",
+     "is_new": true,
+     "build": 1,
+     "use": 1,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0002L02",
+     "target": "deskiñ",
+     "known": "apprendre",
+     "is_new": true,
+     "build": 1,
+     "use": 2,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 3,
+   "target": "penaos komz ken alies ha ma c'haller.",
+   "known": "comment parler aussi souvent que possible.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0003L01",
+     "target": "penaos komz",
+     "known": "comment parler",
+     "is_new": true,
+     "build": 1,
+     "use": 1,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0003L02",
+     "target": "alies",
+     "known": "souvent",
+     "is_new": true,
+     "build": 1,
+     "use": 1,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0003L03",
+     "target": "ken alies ha ma c'haller",
+     "known": "aussi souvent que possible",
+     "is_new": true,
+     "build": 1,
+     "use": 2,
+     "hard": [],
+     "warn": [],
+     "syllables": 7
+    }
+   ]
+  },
+  {
+   "seed": 4,
+   "target": "penaos lavarout un dra bennak e brezhoneg",
+   "known": "comment dire quelque chose en breton",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0004L01",
+     "target": "un dra bennak",
+     "known": "quelque chose",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0004L02",
+     "target": "lavarout",
+     "known": "dire",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    },
+    {
+     "id": "S0004L03",
+     "target": "e brezhoneg",
+     "known": "en breton",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    }
+   ]
+  },
+  {
+   "seed": 5,
+   "target": "Emaon o vont da bleustriñ war ar gomz gant unan bennak all.",
+   "known": "Je vais m'entraîner à parler avec quelqu'un d'autre.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0005L01",
+     "target": "emaon o vont da bleustriñ",
+     "known": "je vais m'entraîner",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 7
+    },
+    {
+     "id": "S0005L02",
+     "target": "war ar gomz",
+     "known": "à parler",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0005L03",
+     "target": "gant unan bennak all",
+     "known": "avec quelqu'un d'autre",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    }
+   ]
+  },
+  {
+   "seed": 6,
+   "target": "Emaon o klask kaout soñj eus ur ger.",
+   "known": "J'essaie de me souvenir d'un mot.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0006L01",
+     "target": "kaout soñj",
+     "known": "me souvenir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0006L02",
+     "target": "eus ur ger",
+     "known": "d'un mot",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    }
+   ]
+  },
+  {
+   "seed": 7,
+   "target": "Fellout a ra din klask gwellañ ma c'hallan hiziv.",
+   "known": "Je veux essayer de mon mieux aujourd'hui.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0007L01",
+     "target": "klask",
+     "known": "essayer",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0007L02",
+     "target": "gwellañ ma c'hallan",
+     "known": "de mon mieux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0007L03",
+     "target": "hiziv",
+     "known": "aujourd'hui",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    }
+   ]
+  },
+  {
+   "seed": 8,
+   "target": "Emaon o vont da glask displegañ ar pezh a fell din lavarout.",
+   "known": "Je vais essayer d'expliquer ce que je veux dire.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0008L01",
+     "target": "emaon o vont da glask",
+     "known": "je vais essayer",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    },
+    {
+     "id": "S0008L02",
+     "target": "displegañ",
+     "known": "expliquer",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0008L03",
+     "target": "ar pezh a fell din",
+     "known": "ce que je veux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    }
+   ]
+  },
+  {
+   "seed": 9,
+   "target": "Komz a ran un tamm brezhoneg bremañ.",
+   "known": "Je parle un peu breton maintenant.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0009L01",
+     "target": "komz a ran",
+     "known": "je parle",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0009L02",
+     "target": "un tamm",
+     "known": "un peu",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 10,
+   "target": "N'on ket sur hag-eñ e c'hallan kaout soñj eus ar frazenn a-bezh.",
+   "known": "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0010L01",
+     "target": "n'on ket sur",
+     "known": "je ne suis pas sûr",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0010L02",
+     "target": "hag-eñ e c'hallan",
+     "known": "si je peux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0010L03",
+     "target": "eus ar frazenn a-bezh",
+     "known": "de toute la phrase",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 6
+    }
+   ]
+  },
+  {
+   "seed": 11,
+   "target": "Plijout a rafe din gallout komz goude ma echui.",
+   "known": "J'aimerais pouvoir parler après que tu aies fini.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0011L01",
+     "target": "plijout a rafe din",
+     "known": "j'aimerais",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0011L02",
+     "target": "gallout",
+     "known": "pouvoir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    },
+    {
+     "id": "S0011L03",
+     "target": "goude ma echui",
+     "known": "après que tu aies fini",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "target": "Ne blijfe ket din divinout ar pezh a c'hoarvezo warc'hoazh.",
+   "known": "Je n'aimerais pas deviner ce qui se passera demain.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0012L01",
+     "target": "ne blijfe ket din",
+     "known": "je n'aimerais pas",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0012L02",
+     "target": "divinout",
+     "known": "deviner",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    },
+    {
+     "id": "S0012L03",
+     "target": "warc'hoazh",
+     "known": "demain",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0012L04",
+     "target": "ar pezh a c'hoarvezo",
+     "known": "ce qui se passera",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    }
+   ]
+  },
+  {
+   "seed": 13,
+   "target": "Komz a rez brezhoneg mat-tre.",
+   "known": "Tu parles très bien le breton.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0013L01",
+     "target": "komz a rez",
+     "known": "tu parles",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0013L02",
+     "target": "mat-tre",
+     "known": "très bien",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 14,
+   "target": "Komz a rez brezhoneg an devezh a-bezh ?",
+   "known": "Tu parles breton toute la journée ?",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0014L01",
+     "target": "an devezh a-bezh",
+     "known": "toute la journée",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    }
+   ]
+  },
+  {
+   "seed": 15,
+   "target": "Ha fellout a ra din e komzfes brezhoneg ganin warc'hoazh.",
+   "known": "Et je veux que tu parles breton avec moi demain.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0015L01",
+     "target": "ha fellout a ra din",
+     "known": "et je veux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0015L02",
+     "target": "e komzfes",
+     "known": "que tu parles",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0015L03",
+     "target": "ganin",
+     "known": "avec moi",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    }
+   ]
+  },
+  {
+   "seed": 16,
+   "target": "Fellout a ra dezhañ dont en-dro gant an holl diwezhatoc'h.",
+   "known": "Il veut revenir avec tout le monde plus tard.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0016L01",
+     "target": "fellout a ra dezhañ",
+     "known": "il veut",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0016L02",
+     "target": "dont en-dro",
+     "known": "revenir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0016L03",
+     "target": "gant an holl",
+     "known": "avec tout le monde",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0016L04",
+     "target": "diwezhatoc'h",
+     "known": "plus tard",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    }
+   ]
+  },
+  {
+   "seed": 17,
+   "target": "Fellout a ra dezhi gouzout petra eo ar respont.",
+   "known": "Elle veut savoir quelle est la réponse.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0017L01",
+     "target": "fellout a ra dezhi",
+     "known": "elle veut",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0017L02",
+     "target": "gouzout",
+     "known": "savoir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    },
+    {
+     "id": "S0017L03",
+     "target": "ar respont",
+     "known": "la réponse",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0017L04",
+     "target": "petra eo",
+     "known": "quelle est",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 2
+    }
+   ]
+  },
+  {
+   "seed": 18,
+   "target": "Fellout a ra deomp en em gavout da c'hwec'h eur fenoz.",
+   "known": "Nous voulons nous retrouver à six heures ce soir.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0018L01",
+     "target": "fellout a ra deomp",
+     "known": "nous voulons",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0018L02",
+     "target": "en em gavout",
+     "known": "nous retrouver",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 3
+    },
+    {
+     "id": "S0018L03",
+     "target": "da c'hwec'h eur",
+     "known": "à six heures",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0018L04",
+     "target": "fenoz",
+     "known": "ce soir",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    }
+   ]
+  },
+  {
+   "seed": 19,
+   "target": "Met ne fell ket din paouez da gomz.",
+   "known": "Mais je ne veux pas arrêter de parler.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0019L01",
+     "target": "ne fell ket din",
+     "known": "je ne veux pas",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    },
+    {
+     "id": "S0019L02",
+     "target": "met",
+     "known": "mais",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0019L03",
+     "target": "paouez da gomz",
+     "known": "arrêter de parler",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 4
+    }
+   ]
+  },
+  {
+   "seed": 20,
+   "target": "Fellout a ra dit deskiñ e anv buan.",
+   "known": "Tu veux apprendre son prénom rapidement.",
+   "hard": [],
+   "warn": [],
+   "legos": [
+    {
+     "id": "S0020L01",
+     "target": "fellout a ra dit",
+     "known": "tu veux",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 5
+    },
+    {
+     "id": "S0020L02",
+     "target": "e anv",
+     "known": "son prénom",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    },
+    {
+     "id": "S0020L03",
+     "target": "buan",
+     "known": "rapidement",
+     "is_new": true,
+     "build": 3,
+     "use": 5,
+     "hard": [],
+     "warn": [],
+     "syllables": 1
+    }
+   ]
+  }
+ ]
+}

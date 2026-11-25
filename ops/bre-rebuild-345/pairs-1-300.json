@@ -196,22 +196,23 @@
   "current_breton": "N'ouzon ket ma c'hallin soñjal eus ar frazenn a-bezh.",
   "current_french": "Je ne suis pas sûr de pouvoir me souvenir de toute la phrase.",
   "proposed_breton": "N'on ket sur hag-eñ e c'hallan kaout soñj eus ar frazenn a-bezh.",
-  "proposed_french": "Je ne suis pas sûr de pouvoir me souvenir de toute la phrase.",
+  "proposed_french": "Je ne suis pas sûr si je peux me souvenir de toute la phrase.",
   "breton_changed": true,
-  "french_changed": false,
+  "french_changed": true,
   "english_seed": "I'm not sure if I can remember the whole sentence",
   "bre_for_eng_breton": "n'on ket sur hag-eñ e c'hallan kaout soñj eus ar frazenn a-bezh",
   "same_as_bre_for_eng": true,
   "fault_tags": [
    "meaning mismatch",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "French changed"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Hag-e%C3%B1",
    "https://arbres.iker.cnrs.fr/index.php?title=So%C3%B1j",
    "https://arbres.iker.cnrs.fr/index.php?title=Beza%C3%B1"
   ],
-  "note": "old Breton said 'I don't know if'; sûr = sur"
+  "note": "old Breton said 'I don't know if'; sûr = sur; French follows the Breton and seed 165 ('pas sûr si')"
  },
  {
   "seed": 11,
@@ -239,26 +240,26 @@
   "seed": 12,
   "current_breton": "N'am eus ket c'hoant soñjal petra a vo warc'hoazh.",
   "current_french": "Je n'aimerais pas deviner ce qui va se passer demain.",
-  "proposed_breton": "Ne blijfe ket din divinout ar pezh a zo o vont da c'hoarvezout warc'hoazh.",
-  "proposed_french": "Je n'aimerais pas deviner ce qui va se passer demain.",
+  "proposed_breton": "Ne blijfe ket din divinout ar pezh a c'hoarvezo warc'hoazh.",
+  "proposed_french": "Je n'aimerais pas deviner ce qui se passera demain.",
   "breton_changed": true,
-  "french_changed": false,
+  "french_changed": true,
   "english_seed": "I wouldn't like to guess what's going to happen tomorrow",
   "bre_for_eng_breton": "ne blijfe ket din divinout ar pezh a zo o vont da c'hoarvezout warc'hoazh",
-  "same_as_bre_for_eng": true,
+  "same_as_bre_for_eng": false,
   "fault_tags": [
    "meaning mismatch",
    "bre_for_eng phrasing adopted",
+   "French changed",
    "never-said today"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Plijout",
    "https://arbres.iker.cnrs.fr/index.php?title=Ar_pezh",
-   "https://arbres.iker.cnrs.fr/index.php?title=Futur_proche",
    "https://fr.wiktionary.org/wiki/divinout",
    "https://fr.wiktionary.org/wiki/c%27hoarvezout"
   ],
-  "note": "old Breton said 'I don't want to think what will be'"
+  "note": "old Breton said 'I don't want to think what will be'; future on both sides: the 'va se passer' shape is 9 syllables in Breton, over the LEGO cap, before its verb has been taught (pilot finding)"
  },
  {
   "seed": 13,
@@ -281,20 +282,21 @@
   "seed": 14,
   "current_breton": "Ha komz a rez brezhoneg an devezh a-bezh ?",
   "current_french": "Tu parles breton toute la journée ?",
-  "proposed_breton": "Ha komz a rez brezhoneg an devezh a-bezh ?",
+  "proposed_breton": "Komz a rez brezhoneg an devezh a-bezh ?",
   "proposed_french": "Tu parles breton toute la journée ?",
-  "breton_changed": false,
+  "breton_changed": true,
   "french_changed": false,
   "english_seed": "do you speak Breton all day?",
   "bre_for_eng_breton": "komz a rez brezhoneg an devezh a-bezh?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
-   "unchanged"
+   "unchanged",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "kept; yes/no questions open with ha(g) throughout"
+  "note": "kept; yes/no questions open with ha(g) throughout; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 15,
@@ -430,7 +432,7 @@
   "current_breton": "Perak e teskes he anv ?",
   "current_french": "Pourquoi est-ce que tu apprends son prénom ?",
   "proposed_breton": "Perak emaout o teskiñ hec'h anv ?",
-  "proposed_french": "Pourquoi est-ce que tu apprends son prénom à elle ?",
+  "proposed_french": "Pourquoi tu apprends son prénom à elle ?",
   "breton_changed": true,
   "french_changed": true,
   "english_seed": "Why are you learning her name?",
@@ -446,7 +448,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=Ema%C3%B1",
    "https://arbres.iker.cnrs.fr/index.php?title=Pronom_possessif"
   ],
-  "note": "French 'son prénom' cannot say his or her; Breton must (e anv / hec'h anv). 'à elle' marks the feminine. 'e teskes' was not a present form"
+  "note": "French 'son prénom' cannot say his or her; Breton must (e anv / hec'h anv). 'à elle' marks the feminine. 'e teskes' was not a present form; 'est-ce que' dropped, as in seeds 67 and 81"
  },
  {
   "seed": 22,
@@ -521,7 +523,7 @@
   "seed": 25,
   "current_breton": "Skoazell a roit din a-raok ma vo ret din mont ?",
   "current_french": "Tu vas m'aider avant que je doive partir ?",
-  "proposed_breton": "Hag emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit ?",
+  "proposed_breton": "Emaout o vont da sikour ac'hanon a-raok ma rankin mont kuit ?",
   "proposed_french": "Tu vas m'aider avant que je doive partir ?",
   "breton_changed": true,
   "french_changed": false,
@@ -531,16 +533,18 @@
   "fault_tags": [
    "Breton grammar",
    "meaning mismatch",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Futur_proche",
    "https://arbres.iker.cnrs.fr/index.php?title=Sikour",
    "https://arbres.iker.cnrs.fr/index.php?title=A-raok",
    "https://arbres.iker.cnrs.fr/index.php?title=Rankout",
-   "https://arbres.iker.cnrs.fr/index.php?title=Kuit"
+   "https://arbres.iker.cnrs.fr/index.php?title=Kuit",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "'skoazell a roit din' was vous and not a future; partir = mont kuit everywhere"
+  "note": "'skoazell a roit din' was vous and not a future; partir = mont kuit everywhere; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 26,
@@ -680,22 +684,23 @@
   "seed": 32,
   "current_breton": "C'hoant ac'hanout bet diskouez ur dra bennak din ?",
   "current_french": "Tu voulais me montrer quelque chose ?",
-  "proposed_breton": "Ha fellout a rae dit diskouez un dra bennak din ?",
+  "proposed_breton": "Fellout a rae dit diskouez un dra bennak din ?",
   "proposed_french": "Tu voulais me montrer quelque chose ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "did you want to show me something?",
   "bre_for_eng_breton": "fellout a rae dit diskouez un dra bennak din?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "vouloir decision",
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Fellout",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 33,
@@ -1307,7 +1312,7 @@
   "seed": 61,
   "current_breton": "Ha c'hallit lavaret se en-dro un tamm gwelloc'h ?",
   "current_french": "Pourrais-tu dire ça encore un peu plus lentement ?",
-  "proposed_breton": "Ha gallout a rafes lavarout an dra-se adarre un tamm goustatoc'h ?",
+  "proposed_breton": "Gallout a rafes lavarout an dra-se adarre un tamm goustatoc'h ?",
   "proposed_french": "Pourrais-tu dire ça encore un peu plus lentement ?",
   "breton_changed": true,
   "french_changed": false,
@@ -1317,42 +1322,44 @@
   "fault_tags": [
    "Breton grammar",
    "meaning mismatch",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Gallout",
    "https://arbres.iker.cnrs.fr/index.php?title=Conditionnel",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "'c'hallit' was vous and present; gwelloc'h = better, not more slowly"
+  "note": "'c'hallit' was vous and present; gwelloc'h = better, not more slowly; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 62,
   "current_breton": "N'ouzon ket ma c'hallin skoazell dit en ur wech.",
   "current_french": "Je ne suis pas sûr de pouvoir t'aider en même temps.",
   "proposed_breton": "N'on ket sur hag-eñ e c'hallan sikour ac'hanout war un dro.",
-  "proposed_french": "Je ne suis pas sûr de pouvoir t'aider en même temps.",
+  "proposed_french": "Je ne suis pas sûr si je peux t'aider en même temps.",
   "breton_changed": true,
-  "french_changed": false,
+  "french_changed": true,
   "english_seed": "I'm not sure if I can help you at the same time",
   "bre_for_eng_breton": "n'on ket sur hag-eñ e c'hallan sikour ac'hanout war un dro",
   "same_as_bre_for_eng": true,
   "fault_tags": [
    "meaning mismatch",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "French changed"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Hag-e%C3%B1",
    "https://arbres.iker.cnrs.fr/index.php?title=Sikour",
    "https://arbres.iker.cnrs.fr/index.php?title=Gallout"
   ],
-  "note": ""
+  "note": "French follows the Breton and seed 165 ('pas sûr si')"
  },
  {
   "seed": 63,
   "current_breton": "Sur out n'eo ket dommaj dit skoazell ganin ?",
   "current_french": "Tu es sûr que ça ne te dérange pas de m'aider ?",
-  "proposed_breton": "Ha sur out n'eo ket diaes dit sikour ac'hanon ?",
+  "proposed_breton": "Sur out n'eo ket diaes dit sikour ac'hanon ?",
   "proposed_french": "Tu es sûr que ça ne te dérange pas de m'aider ?",
   "breton_changed": true,
   "french_changed": false,
@@ -1361,14 +1368,15 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "foreign or non-Breton word",
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Diaes",
    "https://arbres.iker.cnrs.fr/index.php?title=Sikour",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "dommaj is French; déranger = bezañ diaes da in all five seeds that use it"
+  "note": "dommaj is French; déranger = bezañ diaes da in all five seeds that use it; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 64,
@@ -1598,7 +1606,7 @@
   "seed": 75,
   "current_breton": "Ha kalz a zo c'hoazh dezhañ da zeskiñ ?",
   "current_french": "Tu as encore beaucoup à apprendre ?",
-  "proposed_breton": "Ha kalz ac'h eus c'hoazh da zeskiñ ?",
+  "proposed_breton": "Kalz ac'h eus c'hoazh da zeskiñ ?",
   "proposed_french": "Tu as encore beaucoup à apprendre ?",
   "breton_changed": true,
   "french_changed": false,
@@ -1608,13 +1616,14 @@
   "fault_tags": [
    "meaning mismatch",
    "Breton grammar",
+   "ZUT",
    "never-said today"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Kaout",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "old Breton said 'has he' (dezhañ)"
+  "note": "old Breton said 'has he' (dezhañ); no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 76,
@@ -2023,23 +2032,24 @@
   "seed": 95,
   "current_breton": "Prest out da zont en-dro d'ar ger gant an otobus da zeu ?",
   "current_french": "Tu es prêt à rentrer à la maison avec le prochain bus ?",
-  "proposed_breton": "Ha prest out da vont d'ar gêr gant ar bus a zeu ?",
+  "proposed_breton": "Prest out da vont d'ar gêr gant ar bus a zeu ?",
   "proposed_french": "Tu es prêt à rentrer à la maison avec le prochain bus ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "are you ready to go home on the next bus?",
   "bre_for_eng_breton": "prest out da vont d'ar gêr gant ar bus a zeu?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "meaning mismatch",
    "bre_for_eng phrasing adopted",
+   "ZUT",
    "never-said today"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://arbres.iker.cnrs.fr/index.php?title=Beza%C3%B1"
   ],
-  "note": "old Breton said 'come back'; otobus → bus"
+  "note": "old Breton said 'come back'; otobus → bus; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 96,
@@ -2560,7 +2570,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=A-raok",
    "https://arbres.iker.cnrs.fr/index.php?title=Kuit"
   ],
-  "note": "'ma teet' is not a 2sg form"
+  "note": "'ma teet' is not a 2sg form; the one seed whose French says 'est-ce que': it keeps ha"
  },
  {
   "seed": 120,
@@ -3220,7 +3230,7 @@
   "seed": 150,
   "current_breton": "Ha c'hallit lavaret din petra eo hoc'h anv ?",
   "current_french": "Pouvez-vous me dire comment vous vous appelez ?",
-  "proposed_breton": "Ha gallout a rit lavarout din petra eo hoc'h anv ?",
+  "proposed_breton": "Gallout a rit lavarout din petra eo hoc'h anv ?",
   "proposed_french": "Pouvez-vous me dire comment vous vous appelez ?",
   "breton_changed": true,
   "french_changed": false,
@@ -3228,14 +3238,15 @@
   "bre_for_eng_breton": "gallout a rez lavarout din petra eo da anv?",
   "same_as_bre_for_eng": false,
   "fault_tags": [
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Gallout",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://arbres.iker.cnrs.fr/index.php?title=Lavarout"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 151,
@@ -3353,7 +3364,7 @@
   "seed": 156,
   "current_breton": "C'hoant ac'hanout mont d'ar restaorant fenoz ?",
   "current_french": "Tu veux aller au restaurant ce soir ?",
-  "proposed_breton": "Ha fellout a ra dit mont d'ar preti fenoz ?",
+  "proposed_breton": "Fellout a ra dit mont d'ar preti fenoz ?",
   "proposed_french": "Tu veux aller au restaurant ce soir ?",
   "breton_changed": true,
   "french_changed": false,
@@ -3362,7 +3373,8 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "vouloir decision",
-   "Deborah item"
+   "Deborah item",
+   "ZUT"
   ],
   "sources": [
    "https://watson-1.tail4968cb.ts.net:10000/d/47e66cfc",
@@ -3370,7 +3382,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://fr.wiktionary.org/wiki/preti"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 157,
@@ -3458,7 +3470,7 @@
   "seed": 161,
   "current_breton": "Ha c'hallit reiñ din al levr-se d'ar Sul mintin ?",
   "current_french": "Tu peux me donner ce livre dimanche matin ?",
-  "proposed_breton": "Ha gallout a rez reiñ din al levr-se disul vintin ?",
+  "proposed_breton": "Gallout a rez reiñ din al levr-se disul vintin ?",
   "proposed_french": "Tu peux me donner ce livre dimanche matin ?",
   "breton_changed": true,
   "french_changed": false,
@@ -3466,7 +3478,8 @@
   "bre_for_eng_breton": "gallout a rez reiñ din al levr-se da veure Sul?",
   "same_as_bre_for_eng": false,
   "fault_tags": [
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Gallout",
@@ -3474,7 +3487,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=Jours_de_la_semaine",
    "https://fr.wiktionary.org/wiki/disul"
   ],
-  "note": "vous form for tu"
+  "note": "vous form for tu; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 162,
@@ -3666,7 +3679,7 @@
   "seed": 171,
   "current_breton": "C'hoant ac'hanout me da skoazell ac'hanout e glask ?",
   "current_french": "Tu veux que je t'aide à le chercher ?",
-  "proposed_breton": "Ha fellout a ra dit e sikourfen ac'hanout da glask anezhañ ?",
+  "proposed_breton": "Fellout a ra dit e sikourfen ac'hanout da glask anezhañ ?",
   "proposed_french": "Tu veux que je t'aide à le chercher ?",
   "breton_changed": true,
   "french_changed": false,
@@ -3676,15 +3689,17 @@
   "fault_tags": [
    "vouloir decision",
    "Breton grammar",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Fellout",
    "https://arbres.iker.cnrs.fr/index.php?title=Conditionnel",
    "https://arbres.iker.cnrs.fr/index.php?title=Sikour",
-   "https://arbres.iker.cnrs.fr/index.php?title=Anezha%C3%B1"
+   "https://arbres.iker.cnrs.fr/index.php?title=Anezha%C3%B1",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 172,
@@ -3731,7 +3746,7 @@
   "seed": 174,
   "current_breton": "Ha komprenanout petra a lavaranout ?",
   "current_french": "Tu comprends ce que je dis ?",
-  "proposed_breton": "Ha kompren a rez ar pezh a lavaran ?",
+  "proposed_breton": "Kompren a rez ar pezh a lavaran ?",
   "proposed_french": "Tu comprends ce que je dis ?",
   "breton_changed": true,
   "french_changed": false,
@@ -3739,14 +3754,15 @@
   "bre_for_eng_breton": "gallout a rez kompren ar pezh a lavaran?",
   "same_as_bre_for_eng": false,
   "fault_tags": [
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://arbres.iker.cnrs.fr/index.php?title=Ar_pezh",
    "https://arbres.iker.cnrs.fr/index.php?title=Lavarout"
   ],
-  "note": "'komprenanout … lavaranout' are not forms"
+  "note": "'komprenanout … lavaranout' are not forms; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 175,
@@ -3910,7 +3926,7 @@
   "seed": 182,
   "current_breton": "Gwelet ac'hoc'h eus ma alc'hwioù e-lec'h bennak ?",
   "current_french": "Tu as vu mes clés quelque part ?",
-  "proposed_breton": "Ha gwelet ac'h eus ma alc'hwezioù en ul lec'h bennak ?",
+  "proposed_breton": "Gwelet ac'h eus ma alc'hwezioù en ul lec'h bennak ?",
   "proposed_french": "Tu as vu mes clés quelque part ?",
   "breton_changed": true,
   "french_changed": false,
@@ -3919,7 +3935,8 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "Breton grammar",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Kaout",
@@ -3927,7 +3944,7 @@
    "https://fr.wiktionary.org/wiki/alc%27hwez",
    "https://arbres.iker.cnrs.fr/index.php?title=Bennak"
   ],
-  "note": "vous form for tu"
+  "note": "vous form for tu; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 183,
@@ -3997,7 +4014,7 @@
   "seed": 186,
   "current_breton": "C'hoant ac'hanout kaozeal eus un dra all ar sizhun a zeu ?",
   "current_french": "Tu veux parler de quelque chose de différent la semaine prochaine ?",
-  "proposed_breton": "Ha fellout a ra dit komz eus un dra bennak disheñvel ar sizhun a zeu ?",
+  "proposed_breton": "Fellout a ra dit komz eus un dra bennak disheñvel ar sizhun a zeu ?",
   "proposed_french": "Tu veux parler de quelque chose de différent la semaine prochaine ?",
   "breton_changed": true,
   "french_changed": false,
@@ -4007,7 +4024,8 @@
   "fault_tags": [
    "vouloir decision",
    "Deborah item",
-   "one word per meaning"
+   "one word per meaning",
+   "ZUT"
   ],
   "sources": [
    "https://watson-1.tail4968cb.ts.net:10000/d/47e66cfc",
@@ -4016,7 +4034,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=Bennak",
    "https://fr.wiktionary.org/wiki/dishe%C3%B1vel"
   ],
-  "note": "Deborah §4 (komz / kaozeal)"
+  "note": "Deborah §4 (komz / kaozeal); no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 187,
@@ -4085,7 +4103,7 @@
   "seed": 190,
   "current_breton": "Ha dommaj eo dit ma c'houlennan nebeut a goulenn dioutit ?",
   "current_french": "Ça ne te dérange pas si je te pose quelques questions ?",
-  "proposed_breton": "Ha diaes eo dit ma c'houlennan un nebeud goulennoù diganit ?",
+  "proposed_breton": "Diaes eo dit ma c'houlennan un nebeud goulennoù diganit ?",
   "proposed_french": "Ça ne te dérange pas si je te pose quelques questions ?",
   "breton_changed": true,
   "french_changed": false,
@@ -4094,14 +4112,16 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "foreign or non-Breton word",
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Diaes",
    "https://arbres.iker.cnrs.fr/index.php?title=Goulenn",
-   "https://arbres.iker.cnrs.fr/index.php?title=Digant"
+   "https://arbres.iker.cnrs.fr/index.php?title=Digant",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "dommaj is French; 'nebeut a goulenn' not Breton"
+  "note": "dommaj is French; 'nebeut a goulenn' not Breton; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 191,
@@ -4211,24 +4231,25 @@
   "seed": 196,
   "current_breton": "Ha klevedet oc'h eus ar soñj diwezhañ ?",
   "current_french": "As-tu entendu la dernière idée ?",
-  "proposed_breton": "Ha klevet ac'h eus ar mennozh diwezhañ ?",
+  "proposed_breton": "Klevet ac'h eus ar mennozh diwezhañ ?",
   "proposed_french": "As-tu entendu la dernière idée ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "have you heard the latest idea?",
   "bre_for_eng_breton": "klevet ac'h eus ar mennozh diwezhañ?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "Breton grammar",
    "one word per meaning",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Kaout",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://fr.wiktionary.org/wiki/mennozh"
   ],
-  "note": "'klevedet oc'h eus' not a form, and vous"
+  "note": "'klevedet oc'h eus' not a form, and vous; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 197,
@@ -4609,26 +4630,28 @@
   "seed": 214,
   "current_breton": "Kaer eo bet ac'hanout ar fin de sizhun ?",
   "current_french": "Tu as passé un bon moment ce week-end ?",
-  "proposed_breton": "Hag ur mare mat ac'h eus bet e-pad an dibenn-sizhun ?",
+  "proposed_breton": "Ur mare mat ac'h eus bet e-pad an dibenn-sizhun ?",
   "proposed_french": "Tu as passé un bon moment ce week-end ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "did you have a good time at the weekend?",
   "bre_for_eng_breton": "ur mare mat ac'h eus bet e-pad an dibenn-sizhun?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "foreign or non-Breton word",
    "Breton grammar",
    "Deborah item",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://watson-1.tail4968cb.ts.net:10000/d/47e66cfc",
    "https://fr.glosbe.com/fr/br/week-end",
    "https://fr.wiktionary.org/wiki/dibenn-sizhun",
-   "https://arbres.iker.cnrs.fr/index.php?title=Kaout"
+   "https://arbres.iker.cnrs.fr/index.php?title=Kaout",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "fin de sizhun (Deborah §2; scan: 45 rows)"
+  "note": "fin de sizhun (Deborah §2; scan: 45 rows); no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 215,
@@ -4740,7 +4763,7 @@
   "seed": 220,
   "current_breton": "Ha sellet oc'h eus un tamm ouzh an skinwel ?",
   "current_french": "Tu as regardé un peu la télévision ?",
-  "proposed_breton": "Ha sellet ac'h eus un tamm ouzh ar skinwel ?",
+  "proposed_breton": "Sellet ac'h eus un tamm ouzh ar skinwel ?",
   "proposed_french": "Tu as regardé un peu la télévision ?",
   "breton_changed": true,
   "french_changed": false,
@@ -4749,16 +4772,18 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "Breton grammar",
-   "Deborah item"
+   "Deborah item",
+   "ZUT"
   ],
   "sources": [
    "https://watson-1.tail4968cb.ts.net:10000/d/47e66cfc",
    "https://arbres.iker.cnrs.fr/index.php?title=Article_d%C3%A9fini",
    "https://arbres.iker.cnrs.fr/index.php?title=Skinwel",
    "https://fr.glosbe.com/fr/br/t%C3%A9l%C3%A9vision",
-   "https://arbres.iker.cnrs.fr/index.php?title=Kaout"
+   "https://arbres.iker.cnrs.fr/index.php?title=Kaout",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "'an skinwel' (scan: 21 rows); vous form for tu"
+  "note": "'an skinwel' (scan: 21 rows); vous form for tu; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 221,
@@ -5413,7 +5438,7 @@
   "seed": 250,
   "current_breton": "Ha c'hallit lavaret din ur dra bennak all a-raok ma respontañ ?",
   "current_french": "Tu peux me dire autre chose avant que je réponde ?",
-  "proposed_breton": "Ha gallout a rez lavarout din un dra all a-raok ma respontin ?",
+  "proposed_breton": "Gallout a rez lavarout din un dra all a-raok ma respontin ?",
   "proposed_french": "Tu peux me dire autre chose avant que je réponde ?",
   "breton_changed": true,
   "french_changed": false,
@@ -5422,7 +5447,8 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "Breton grammar",
-   "Deborah item"
+   "Deborah item",
+   "ZUT"
   ],
   "sources": [
    "https://watson-1.tail4968cb.ts.net:10000/d/47e66cfc",
@@ -5430,7 +5456,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://arbres.iker.cnrs.fr/index.php?title=A-raok"
   ],
-  "note": "'ma respontañ' (Deborah §8)"
+  "note": "'ma respontañ' (Deborah §8); no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 251,
@@ -5767,22 +5793,24 @@
   "seed": 267,
   "current_breton": "Ha klevet oc'h eus eus da vignon ?",
   "current_french": "Tu as eu des nouvelles de ton ami ?",
-  "proposed_breton": "Ha keloù ac'h eus bet digant da vignon ?",
+  "proposed_breton": "Keloù ac'h eus bet digant da vignon ?",
   "proposed_french": "Tu as eu des nouvelles de ton ami ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "have you heard from your friend?",
   "bre_for_eng_breton": "keloù ac'h eus bet digant da vignon?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "Breton grammar",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://fr.wiktionary.org/wiki/kelo%C3%B9",
-   "https://arbres.iker.cnrs.fr/index.php?title=Digant"
+   "https://arbres.iker.cnrs.fr/index.php?title=Digant",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "'klevet oc'h eus eus' (scan, doubled word and vous)"
+  "note": "'klevet oc'h eus eus' (scan, doubled word and vous); no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 268,
@@ -5854,17 +5882,18 @@
   "seed": 271,
   "current_breton": "C'hoant ac'hanout dont ganimp ar miz a zeu ?",
   "current_french": "Tu voudrais venir avec nous le mois prochain ?",
-  "proposed_breton": "Ha plijout a rafe dit dont ganeomp ar miz a zeu ?",
+  "proposed_breton": "Plijout a rafe dit dont ganeomp ar miz a zeu ?",
   "proposed_french": "Tu voudrais venir avec nous le mois prochain ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "would you like to come with us next month?",
   "bre_for_eng_breton": "plijout a rafe dit dont ganeomp ar miz a zeu?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "vouloir decision",
    "Breton grammar",
    "Deborah item",
+   "ZUT",
    "never played today"
   ],
   "sources": [
@@ -5873,7 +5902,7 @@
    "https://arbres.iker.cnrs.fr/index.php?title=Conditionnel",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "never played today; 'ganimp' for ganeomp"
+  "note": "never played today; 'ganimp' for ganeomp; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 272,
@@ -5922,23 +5951,25 @@
   "seed": 274,
   "current_breton": "Ha ret eo dit kuitaat en nebeut a zeizioù ?",
   "current_french": "Tu dois partir dans quelques jours ?",
-  "proposed_breton": "Ha rankout a rez mont kuit a-benn un nebeud devezhioù ?",
+  "proposed_breton": "Rankout a rez mont kuit a-benn un nebeud devezhioù ?",
   "proposed_french": "Tu dois partir dans quelques jours ?",
   "breton_changed": true,
   "french_changed": false,
   "english_seed": "do you have to leave in a few days?",
   "bre_for_eng_breton": "rankout a rez mont kuit a-benn un nebeud devezhioù?",
-  "same_as_bre_for_eng": false,
+  "same_as_bre_for_eng": true,
   "fault_tags": [
    "Breton grammar",
-   "bre_for_eng phrasing adopted"
+   "bre_for_eng phrasing adopted",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Rankout",
    "https://arbres.iker.cnrs.fr/index.php?title=Kuit",
-   "https://arbres.iker.cnrs.fr/index.php?title=A-benn"
+   "https://arbres.iker.cnrs.fr/index.php?title=A-benn",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 275,
@@ -6002,7 +6033,7 @@
   "seed": 278,
   "current_breton": "Ha ret eo bet dit echuiñ pep tra dec'h noz ?",
   "current_french": "Tu devais finir tout hier soir ?",
-  "proposed_breton": "Ha rankout a raes echuiñ pep tra dec'h da noz ?",
+  "proposed_breton": "Rankout a raes echuiñ pep tra dec'h da noz ?",
   "proposed_french": "Tu devais finir tout hier soir ?",
   "breton_changed": true,
   "french_changed": false,
@@ -6011,13 +6042,14 @@
   "same_as_bre_for_eng": false,
   "fault_tags": [
    "Breton grammar",
+   "ZUT",
    "never-said today"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Rankout",
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 279,
@@ -6066,7 +6098,7 @@
   "seed": 281,
   "current_breton": "Ha dommaj eo dit ma echuañ ma c'hafe a-raok ma gregiout ?",
   "current_french": "Ça ne te dérange pas si je finis mon café avant que tu commences ?",
-  "proposed_breton": "Ha diaes eo dit ma echuan ma c'hafe a-raok ma krogi ?",
+  "proposed_breton": "Diaes eo dit ma echuan ma c'hafe a-raok ma krogi ?",
   "proposed_french": "Ça ne te dérange pas si je finis mon café avant que tu commences ?",
   "breton_changed": true,
   "french_changed": false,
@@ -6076,14 +6108,16 @@
   "fault_tags": [
    "foreign or non-Breton word",
    "Breton grammar",
+   "ZUT",
    "never-said today"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Diaes",
    "https://arbres.iker.cnrs.fr/index.php?title=A-raok",
-   "https://arbres.iker.cnrs.fr/index.php?title=Kregi%C3%B1"
+   "https://arbres.iker.cnrs.fr/index.php?title=Kregi%C3%B1",
+   "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29"
   ],
-  "note": "'ma gregiout' not a form; future of kregiñ is krogi"
+  "note": "'ma gregiout' not a form; future of kregiñ is krogi; no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 282,
@@ -6128,21 +6162,22 @@
   "seed": 284,
   "current_breton": "Anavezout a rez mignonez ma c'hoar ?",
   "current_french": "Tu connais l'amie de ma sœur ?",
-  "proposed_breton": "Hag anavezout a rez mignonez ma c'hoar ?",
+  "proposed_breton": "Anavezout a rez mignonez ma c'hoar ?",
   "proposed_french": "Tu connais l'amie de ma sœur ?",
-  "breton_changed": true,
+  "breton_changed": false,
   "french_changed": false,
   "english_seed": "do you know my sister's friend?",
   "bre_for_eng_breton": "anavezout a rez mignon ma c'hoar?",
   "same_as_bre_for_eng": false,
   "fault_tags": [
-   "Breton grammar"
+   "Breton grammar",
+   "ZUT"
   ],
   "sources": [
    "https://arbres.iker.cnrs.fr/index.php?title=Ha%28g%29",
    "https://arbres.iker.cnrs.fr/index.php?title=Anavezout"
   ],
-  "note": ""
+  "note": "no opening ha: ha(g) is kept for French 'est-ce que' only, so statement and question keep one Breton each"
  },
  {
   "seed": 285,
