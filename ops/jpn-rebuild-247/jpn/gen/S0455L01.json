@@ -1,0 +1,144 @@
+{
+ "lego": {
+  "seed_number": 455,
+  "lego_index": 1,
+  "known": "was tired",
+  "target": "疲れてた"
+ },
+ "at": "2026-11-04T18:50:08.222Z",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 3,
+ "secs": 238,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.29 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.42 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "build",
+   "known_text": "i might have been tired",
+   "target_text": "疲れてたかもしれない",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "build",
+   "known_text": "i went home because i was tired",
+   "target_text": "疲れてたから帰った",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "build",
+   "known_text": "they were tired last night",
+   "target_text": "彼ら昨夜疲れてた",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "build",
+   "known_text": "a week ago my son was tired",
+   "target_text": "一週間前息子疲れてた",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "i heard that the children were tired",
+   "target_text": "子ども疲れてたって聞いた",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "i didn't think that my father was tired",
+   "target_text": "父疲れてたとは思わなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "weren't you tired since morning",
+   "target_text": "朝から疲れてたんじゃない",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "i wonder if that woman was tired",
+   "target_text": "あの女性疲れてたか気になる",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "the student was tired because he was busy",
+   "target_text": "生徒忙しかったから疲れてた",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "last month i didn't go anywhere because i was tired",
+   "target_text": "先月疲れてたからどこにも行かなかった",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "the children might have been tired since morning",
+   "target_text": "子ども朝から疲れてたかも",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 1,
+   "lego_known": "was tired",
+   "lego_target": "疲れてた",
+   "phrase_role": "use",
+   "known_text": "last night my mother was truly tired",
+   "target_text": "昨夜母本当に疲れてた",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

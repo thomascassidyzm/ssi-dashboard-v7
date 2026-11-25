@@ -18,7 +18,7 @@ ukh() { TZ=Europe/London date +%-H; }
 late() { local h; h=$(ukh); [ "$h" -ge 5 ] && [ "$h" -lt 22 ]; }
 echo "=== start $(date -u +%FT%TZ)"; cd "$W" || { say "[868 night] FAILED: checkout missing"; exit 1; }
 curl -s -m 20 http://localhost:3470/health | grep -q '"governed":true' || { say "[868 night] skipped: Popty /health not governed:true (log $LOG)"; exit 0; }
-writers() { systemctl --user list-units --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
+writers() { systemctl --user list-units --type=service --state=running --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
   | grep -E 'a2c|item|apply|night|tiles|relink|render|fill' | grep -v '868' | wc -l; }
 while [ "$(writers)" -ge 2 ]; do late && { say "[868 night] skipped: $(writers) other DB writers still running at $(ukh)h UK (log $LOG)"; exit 0; }; echo "$(date -u +%T) $(writers) other writers; waiting"; sleep 300; done
 

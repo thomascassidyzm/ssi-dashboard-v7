@@ -1,0 +1,8 @@
+{"job": "cs #274", "event_id": "a8094080-9b65-4abc-91f9-98d50902706a",
+ "readback": "apply script re-read live: 4/4 rows carry new target text; known text + known_audio_id unchanged on all 4; target1_audio_id NULL on all 4 (old takes not re-linked)",
+ "booth": {"voice": "human_info_fry", "rerecord_total_before": 146, "rerecord_total_after": 150, "fresh": true,
+  "lines": ["phrase:fry_for_eng:S0010L02B01:target1 text_changed", "phrase:fry_for_eng:S0010L02B03:target1 text_changed",
+            "phrase:fry_for_eng:S0010L02B04:target1 text_changed", "phrase:fry_for_eng:S0168L02U07:target1 text_changed"]},
+ "old_takes_unlinked": {"S0010L02B01": "ffa037aa-7bf2-47c4-b6d0-eaa1050afcc4", "S0010L02B03": "32eb50d8-3fa2-4ffa-bec4-08d668088dc2",
+  "S0010L02B04": "531d9055-8cdf-4559-93c5-ea9598c1e024", "S0168L02U07": "4625738a-3b61-45f9-b220-72d53a02a53d"},
+ "tts_chars": 0}

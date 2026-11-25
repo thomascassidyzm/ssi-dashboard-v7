@@ -1,0 +1,10 @@
+[Unit]
+Description=cs #868 item 8B eng_for_guj day run (durable checkout)
+OnFailure=cs-long-keep-868-guj-fail.service
+
+[Service]
+Type=oneshot
+Slice=cs-workers.slice
+TimeoutStartSec=14h
+Nice=10
+ExecStart=/bin/bash -lc 'cd %h/.cs-long/868/popty && git fetch -q origin main && git merge -q --ff-only origin/main && exec bash ops/paid-cleanup-868/systemd/item8-guj-day.sh'
