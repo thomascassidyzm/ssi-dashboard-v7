@@ -1,11 +1,42 @@
 {
- "20": {"call": "à elle", "why": "French 'son prénom' rendered masculine e anv by the unruled default (son/sa → masculine when no subject owns it)"},
- "21": {"call": "à elle", "why": "'son prénom à elle' → hec'h anv: the à elle marking itself"},
- "52": {"call": "à elle", "why": "'son ami' → d'e vignon by the unruled possessor-is-the-subject convention"},
- "53": {"call": "à elle", "why": "'sa lettre … son sac' → he lizher / he sac'h by the unruled possessor-is-the-subject convention"},
- "136": {"call": "à elle", "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"},
- "176": {"call": "à elle", "why": "'lui demander' → digantañ, gender taken from the sentence's own il (part of the unruled convention)"},
- "177": {"call": "à elle", "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"},
- "241": {"call": "à elle", "why": "'le lui donner' → dezhañ by the unruled masculine default"},
- "242": {"call": "à elle", "why": "'lui donner … à elle' → dezhi: the à elle marking itself"}
+ "20": {
+  "call": "à elle",
+  "why": "French 'son prénom' rendered masculine e anv by the unruled default (son/sa → masculine when no subject owns it)"
+ },
+ "21": {
+  "call": "à elle",
+  "why": "'son prénom à elle' → hec'h anv: the à elle marking itself"
+ },
+ "52": {
+  "call": "à elle",
+  "why": "'son ami' → d'e vignon by the unruled possessor-is-the-subject convention"
+ },
+ "53": {
+  "call": "à elle",
+  "why": "'sa lettre … son sac' → he lizher / he sac'h by the unruled possessor-is-the-subject convention"
+ },
+ "136": {
+  "call": "à elle",
+  "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"
+ },
+ "176": {
+  "call": "à elle",
+  "why": "'lui demander' → digantañ, gender taken from the sentence's own il (part of the unruled convention)"
+ },
+ "177": {
+  "call": "à elle",
+  "why": "'lui demander' → diganti, gender taken from the sentence's own elle (part of the unruled convention)"
+ },
+ "241": {
+  "call": "à elle",
+  "why": "'le lui donner' → dezhañ by the unruled masculine default"
+ },
+ "242": {
+  "call": "à elle",
+  "why": "'lui donner … à elle' → dezhi: the à elle marking itself"
+ },
+ "244": {
+  "call": "ZUT vs live S0076L03",
+  "why": "seed sentence 'Desket em eus kalz dija.' | 'J'ai déjà beaucoup appris.' clashes with the live, already-applied S0076L03 build phrase 'kalz am eus desket dija' (same French); the fix (reword the seed-76 row or the 244 French) touches a live seed or a seed pair, so it is held for Kai, not forced (cs #447·AL)"
+ }
 }
