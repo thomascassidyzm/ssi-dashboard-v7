@@ -8,7 +8,7 @@
 # unit); ledgers <file>.applied.jsonl / .audio.jsonl / .verify.json live beside each changeset there. Unit failure wakes
 # the job (OnFailure). Kai's live pre-check (precheck-guards.cjs: seed + LEGO text; the applier's expect covers the row)
 # before every file; mismatch = drift in the ledger, held, never forced. Governed applier, 25 ops per transaction.
-#   Writer cap: at most 2 OTHER DB writers active (Kai's cap of 3 after the 18 Nov hold); /health gate green per file.
+#   Writer cap: at most 2 OTHER DB writers active (wait while 3+ run) (Kai's cap of 3 after the 18 Nov hold); /health gate green per file.
 #   Gives up for the night at 05:30 UK; the next night resumes from the ledgers. Token from a 0600 file, never argv.
 set -u
 W=${W236:-$HOME/.cs-long/236/popty}
@@ -28,7 +28,7 @@ curl -s -m 20 http://localhost:3470/health | grep -q '"governed":true' || { say 
 # Services only: a waiting .timer is "active" all day and is not a writer (24 Nov night: three timers held the cap shut).
 writers() { systemctl --user list-units --type=service --state=active --no-legend --plain 'cs-long-*' 2>/dev/null | awk '{print $1}' \
   | grep -E 'a2c|item|apply|night|tiles|relink|render|fill|record|8b' | grep -v -E '236|cohort' | wc -l; }
-waitw() { while [ "$(writers)" -ge 2 ]; do late && return 1; echo "$(date -u +%T) $(writers) other writers; waiting"; sleep 180; done; return 0; }
+waitw() { while [ "$(writers)" -ge 3 ]; do late && return 1; echo "$(date -u +%T) $(writers) other writers; waiting"; sleep 180; done; return 0; }
 green() { for _ in $(seq 1 40); do curl -s -m 20 http://localhost:3470/health | grep -q '"level":"green"' && return 0; echo "$(date -u +%T) gate not green"; sleep 30; done; return 1; }
 state() { node $P/ledger-state.cjs "$1"; }
 report=""; stop=""
