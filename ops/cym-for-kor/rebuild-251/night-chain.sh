@@ -22,7 +22,7 @@ export CHAIN=1 STARTED=1 CS251_CONV CS251_TOK   # STARTED=1: the band's gate ret
 wake() { if [ -n "$DRY" ]; then echo "DRY WAKE (not sent): $1"; return; fi
   node ~/command-surface/tools/cs-wake-send.cjs "$CONV" "$(cat "$TOK")" "$1" >/dev/null 2>&1 && echo "WAKE SENT: $1" || echo "WAKE FAILED: $1"; }
 disarm() { [ -n "$DRY" ] && { echo "DRY: would disarm $TIMER"; return; }; systemctl --user stop "$TIMER" 2>/dev/null; echo "disarmed $TIMER"; }
-stopchain() { [ -z "$DRY" ] && echo "$(date -u +%FT%TZ) $1" > "$EV/chain.STOPPED"; wake "WAKE: cs251 chain STOPPED — $1. Timer disarmed; nothing further runs until a human clears $EV/chain.STOPPED."; disarm; exit 1; }
+stopchain() { [ -z "$DRY" ] && echo "$(date -u +%FT%TZ) $1" > "$EV/chain.STOPPED"; wake "WAKE: cs251 chain STOPPED — $1. Timer disarmed; nothing further runs until a human clears $EV/chain.STOPPED."; disarm; exit 0; }  # exit 0: already woke; OnFailure is for real crashes
 ukh() { TZ=Europe/London date +%H | sed 's/^0//'; }
 night() { local h; h=$(ukh); [ "$h" -ge 22 ] || [ "$h" -lt 7 ]; }
 jq_() { jq -r "$1" "$2" 2>/dev/null; }
