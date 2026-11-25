@@ -305,4 +305,4 @@ function claudeConfigExport(opts) {
   return claudeSpawnSetup(opts).exportCmd
 }
 
-module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeSpawnEnv, claudeConfigExport, claudeSpawnSetup, pickSpawnAccount, alternativeAccount, pickAccount, pacedNow, bulkPace, weeklyPct, weeklyShare, candidates, PACE_SLACK_PCT, WEEKLY_FULL_PCT, BG_WAIT_CEILING_MS }
+module.exports = { readUsage, liveCandidates, CLAUDE_CONFIG_DIR, claudeEnv, claudeSpawnEnv, claudeConfigExport, claudeSpawnSetup, pickSpawnAccount, alternativeAccount, pickAccount, pacedNow, bulkPace, weeklyPct, weeklyShare, candidates, PACE_SLACK_PCT, WEEKLY_FULL_PCT, BG_WAIT_CEILING_MS }

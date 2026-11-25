@@ -30,7 +30,7 @@
 //     which records the content-edit event; this tool itself writes nothing to the DB.
 //
 // Modes (course = jpn|kor):
-//   gen    <c> <from-to> <copyDump> [conc]            phrase-v4 door per new LEGO → ops/jpn-rebuild-247/<c>/gen/S####L##.json
+//   gen    <c> <from-to> <copyDump> [conc] [--unpaced] phrase-v4 door per new LEGO → ops/jpn-rebuild-247/<c>/gen/S####L##.json
 //   read   <c> <from-to> <copyDump>                   old → new per LEGO, markdown for the cross-family reader → stdout
 //   plan   <c> <from-to> <copyDump> <liveSeeds>       → ops/…/<c>/plan-<from-to>.json (refusals, ZUT, live pre-check)
 //   audio  <c> <from-to> [--real]                     local estimate; --real with RENDER_CONFIRM=1 renders, library first
@@ -105,19 +105,45 @@ async function sleepUntilPace(body, who) {
   console.log(`${who} WEEKLY_PACE — sleeping ${Math.round(ms / 60e3)} min until ${new Date(Date.now() + ms).toISOString()} (${body.error || ''})`);
   await new Promise((ok) => setTimeout(ok, ms));
 }
-async function gen(c, rng, dumpPath, conc) {
+// UNPACED (cs #338·AL, Kai 25 Nov: "if it is a Popty self-cap, raise it for this build only and say by how much"):
+// with --unpaced the gen calls carry "unpaced": true, so the v4 door skips its weekly pace (#412·AD) for THIS tool only;
+// PACE_SLACK_PCT and every other bulk caller are untouched. The bound: before each LEGO, if any SSi account (the
+// door's own candidates) reads >= UNPACED_CEILING_PCT on the weekly gauge, or the gauge is unreadable, the call goes
+// paced as before — so this run can never take an account past 90% on its own say-so. Pure over (cands, usage).
+const UNPACED_CEILING_PCT = 90;
+function unpacedAllowed(cands, usage, weeklyPct) {
+  if (!cands.length) return { ok: false, why: 'no SSi account tokens' };
+  const read = cands.map((x) => ({ email: x.email, pct: weeklyPct(usage[x.email]) }));
+  const bad = read.filter((r) => r.pct === null || r.pct >= UNPACED_CEILING_PCT);
+  return bad.length ? { ok: false, why: bad.map((r) => `${r.email} ${r.pct === null ? 'unknown' : r.pct + '%'}`).join('; ') } : { ok: true, why: read.map((r) => `${r.email} ${r.pct}%`).join('; ') };
+}
+function unpacedNow() {
+  const cc = require('../../services/shared/claude-config.cjs');
+  const usage = cc.readUsage();
+  // The door's token dir (/var/lib/popty/claude) is readable only by the popty user, so from an agent shell the SSi
+  // accounts are the company addresses on the same gauge the door reads (the two its WEEKLY_PACE answer names).
+  let cands = cc.liveCandidates();
+  if (!cands.length) cands = Object.keys(usage).filter((e) => /@saysomethingin\.com$/.test(e)).map((email) => ({ email }));
+  return unpacedAllowed(cands, usage, cc.weeklyPct);
+}
+async function gen(c, rng, dumpPath, conc, unpaced = false) {
   const [a, b] = range(rng);
   const dump = loadJson(dumpPath);
   const todo = newLegos(dump, a, b).filter((l) => { const g = readGen(c, l.seed_number, l.lego_index); return !genCurrent(g, l) || (process.env.RETRY_BLOCKED === '1' && !g.keep); });
-  console.log(`${c} ${rng}: ${todo.length} LEGOs to generate (conc ${conc})`);
-  let i = 0;
+  console.log(`${c} ${rng}: ${todo.length} LEGOs to generate (conc ${conc}${unpaced ? `, unpaced under ${UNPACED_CEILING_PCT}% per account` : ''})`);
+  let i = 0, lastGuard = null;
   const worker = async () => {
     while (i < todo.length) {
       const l = todo[i++];
       const t0 = Date.now();
       let r;
       for (let tries = 0; tries < 3; tries++) {
-        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index) }, 1800000);
+        let un = false;
+        if (unpaced) {
+          const g = unpacedNow(); un = g.ok;
+          if (String(g.ok) !== lastGuard) { lastGuard = String(g.ok); console.log(`${lid(l.seed_number, l.lego_index)} ${g.ok ? 'UNPACED' : 'PACED (90% guard)'} — ${g.why}`); }
+        }
+        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index), ...(un ? { unpaced: true } : {}) }, 1800000);
         // 429 WEEKLY_PACE (#412·AD): both SSi accounts ahead of their share of the week — sleep, ask again, spend nothing.
         if (r.status === 429 && (r.body || {}).code === 'WEEKLY_PACE') { await sleepUntilPace(r.body, lid(l.seed_number, l.lego_index)); tries--; continue; }
         if (r.status !== 0) break;
@@ -395,13 +421,15 @@ function verify(c, rng, live) {
   return out;
 }
 
-module.exports = { padReasons, plan, precheckLego, upperI, existingClip, genCurrent };
+module.exports = { padReasons, plan, precheckLego, upperI, existingClip, genCurrent, unpacedAllowed, UNPACED_CEILING_PCT };
 
 if (require.main === module) {
-  const [mode, c, rng, x, y] = process.argv.slice(2);
+  const argv = process.argv.slice(2);
+  const unpacedFlag = argv.includes('--unpaced');
+  const [mode, c, rng, x, y] = argv.filter((a) => a !== '--unpaced');
   if (!COURSE[c]) { console.error('course must be jpn|kor'); process.exit(64); }
   (async () => {
-    if (mode === 'gen') await gen(c, rng, x, Number(y) || 2);
+    if (mode === 'gen') await gen(c, rng, x, Number(y) || 2, unpacedFlag);
     else if (mode === 'read') read(c, rng, x);
     else if (mode === 'plan') {
       if (!x || !y) throw new Error('plan <c> <range> <copyDump> <liveSeeds>');
