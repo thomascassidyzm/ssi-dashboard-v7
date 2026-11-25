@@ -698,8 +698,8 @@ module.exports = function createRecordistRouter({
       // ?preload=1 while she reads, and shows it the moment she presses Next batch. Answered ONLY
       // from this voice's fresh cached build (the one the batch on screen was just cut from) and
       // only for a plain home-screen batch; anything else is 204 and the booth reads as it always
-      // has. So a preload never starts a build, never counts an arrival, and never adds a read to
-      // a database the artist is recording against. Correctness is the booth's reconcile: what it
+      // has. So a preload never starts a build, never counts an arrival, and reads nothing from the
+      // database (recordist and setup row come off the cached build too, below). Correctness is the booth's reconcile: what it
       // shows from a preload is read again, fresh, as soon as it is on screen.
       const preload = req.query.preload === '1'
       let preloaded = null
@@ -710,9 +710,14 @@ module.exports = function createRecordistRouter({
         preloaded = plainBatch ? boothQueue.peekFresh(req.params.voiceId) : null
         if (!preloaded) return res.status(204).end()
       }
-      const pack = await resolveAnyPack(req.params.voiceId)
+      // A PRELOAD READS NOTHING (cs #306, correcting #299's claim, which held for the queue build
+      // but not for the two small reads around it): the recordist and the setup row are the ones
+      // the cached build was made with, at most FRESH_MS (60 s) old, the same ones the batch on
+      // screen was just served with. Anything that read could have changed since is read again by
+      // the booth's reconcile the moment the batch is shown.
+      const pack = preloaded ? null : await resolveAnyPack(req.params.voiceId)
       if (pack) return await packQueueResponse(req, res, pack)
-      const recordist = await recordistOr404(req, res)
+      const recordist = preloaded ? preloaded.value.recordist : await recordistOr404(req, res)
       if (!recordist) return
       const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
       // HOW MUCH OF THE COURSE the minimal set covers. Tom asked for the burden
@@ -806,7 +811,7 @@ module.exports = function createRecordistRouter({
       const narrowed = Boolean(scoped || podScope || stepAsked || trackScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
-      const setupRow = await loadSetupRow(recordist.voiceId)
+      const setupRow = preloaded ? (preloaded.value.setupRow || null) : await loadSetupRow(recordist.voiceId)
       // WHERE A FINISHED POD LINK GOES NEXT (Kai, 2026-10-16, job #189): the next pod in queue
       // order where this voice still has lines owed, skipping staged-draft and archived pods
       // (booth-next-pod.cjs says why held pods are NOT skipped). Only on a pod link, reading only
