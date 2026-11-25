@@ -1,0 +1,121 @@
+{
+  "course_code": "jpn_for_eng",
+  "event_id": "b89b6843-5b04-4912-b003-d4a55b232ab0",
+  "actor": "kai-346-jpn-open-end",
+  "created_at": "2026-11-25T13:04:20.080Z",
+  "how_to_undo": "POST /api/production/jpn_for_eng/edit-batch {\"undo_file\":\"2026-11-25T13-04-20-080Z-b89b6843-5b04-4912-b003-d4a55b232ab0.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0450L03B02",
+      "set": {
+        "known_text": "not getting on the train",
+        "known_audio_id": "417ce00e-67c9-4336-98de-94dbc0aeebe3"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0444L02B01",
+      "set": {
+        "known_text": "thought about it",
+        "known_audio_id": "cdaf4592-25f8-4854-935d-8dad3565ffba"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0439L01B01",
+      "set": {
+        "known_text": "not wanting to die",
+        "known_audio_id": "f74d4d02-beb2-46aa-bb93-00da39c87067"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0434L03B02",
+      "set": {
+        "known_text": "can reduce",
+        "known_audio_id": "cf56aa11-a4a0-4412-96ec-e17150f520a7"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0431L03B02",
+      "set": {
+        "known_text": "not ready yet",
+        "known_audio_id": "ea482563-8acc-42ba-9e48-dd5e3b160c37"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0416L04B02",
+      "set": {
+        "known_text": "because want to stand",
+        "known_audio_id": "9070f7db-b088-4bf7-9c4f-103465139a26"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0410L02B02",
+      "set": {
+        "known_text": "because of a fight",
+        "known_audio_id": "2dd3f85d-d407-4794-87c7-02ced9d69d71"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0399L02B02",
+      "set": {
+        "known_text": "don't want to lose hope",
+        "known_audio_id": "7490659c-2979-40f7-9fc0-2250d7668b95"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0391L01B02",
+      "set": {
+        "known_text": "walking towards the bus now",
+        "known_audio_id": "00299208-853f-450a-a4cb-a2811d0cc27c"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0387L02B05",
+      "set": {
+        "known_text": "didn't think she was right because",
+        "known_audio_id": "2eaee458-8726-4fd2-ab97-f47ab0d8b463"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0386L01B02",
+      "set": {
+        "known_text": "yes, agreed",
+        "known_audio_id": "88cd2cdd-8386-4dc7-a1d1-ccb35637ee72"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0304L02B07",
+      "set": {
+        "known_text": "doesn't want to work because",
+        "known_audio_id": "5b1e5526-e028-4c6d-a64b-7afda37f89a1"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0246L01B03",
+      "set": {
+        "known_text": "was too busy",
+        "known_audio_id": "0f76763e-0eaa-468a-a2c6-df9c63406628"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0236L01B02",
+      "set": {
+        "known_text": "try to help you",
+        "known_audio_id": "02577cf8-eef5-4e5d-948e-8ca1a1ea7d7c"
+      }
+    }
+  ]
+}

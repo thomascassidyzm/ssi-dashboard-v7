@@ -792,6 +792,7 @@ import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, k
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
+import { wordsKey, preloadUsable, freshTicks, backgroundAnswerApplies, claimPreload } from './recordist/next-batch-preload.js'
 import { loadFailureMessage } from './recordist/load-failure-message.js'
 import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
@@ -1958,6 +1959,8 @@ async function saveEdit(lineId, text, side = editingSide.value) {
     )
     const data = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(data.error || 'That did not save. Try again.')
+    // EDITS ALWAYS WIN (cs #306): no background read that set out before this save may land after it.
+    invalidateBackgroundReads({ rereadPending: true })
     if (known) {
       // THE CRIB CHANGED; HIS TAKE DID NOT. Nothing about recorded-ness moves:
       // the known take (somebody else's voice, or a machine's) is set aside by
@@ -2369,6 +2372,7 @@ function commit(target, blob, hadSpeech, advance = null) {
   // was still double-counting a re-read.
   const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
   queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel(), advance })
+  noteTakeForPreload(line) // a preloaded next batch with these words is read fresh instead (cs #299)
   rememberLocalTake(line.id, blob)
   doneIds.value.add(line.id)
   doneIds.value = new Set(doneIds.value)
@@ -2822,6 +2826,7 @@ async function rerecordAllMine() {
     })
     const body = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(body.error || `Could not start over (${res.status})`)
+    invalidateBackgroundReads()
     // Lines uploaded in this tab are no longer recorded: clear the screen's
     // saved set so Start does not skip them.
     queue.reset()
@@ -2918,6 +2923,7 @@ async function submitSetup() {
     })
     const body = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(body.error || `Could not submit (${res.status})`)
+    invalidateBackgroundReads()
     await load()
   } catch (err) {
     setupError.value = (err && err.message) || 'Could not submit — try again.'
@@ -2936,7 +2942,7 @@ let lastQueueRead = 0
 async function load({ quiet = false } = {}) {
   const gen = ++loadGen
   const was = phase.value
-  const movedOn = () => gen !== loadGen || phase.value !== was
+  const movedOn = () => !backgroundAnswerApplies(gen, loadGen) || phase.value !== was
   if (!quiet) {
     phase.value = 'loading'
     loadError.value = null
@@ -2976,8 +2982,12 @@ async function load({ quiet = false } = {}) {
     }
     // Time-limited (20s, one retry): a hung request must not strand the reader
     // on "Getting your lines…". The body is read inside the timed window.
-    const { res, data: body } = await fetchWithTimeoutRetry(
-      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${stepParam}${batchParam}`, props.voiceId),
+    const readUrl = withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${stepParam}${batchParam}`, props.voiceId)
+    // THE NEXT BATCH, ALREADY READ (cs #299): a preload of exactly this batch is shown at once,
+    // and the batch is then read again, fresh, behind it (reconcilePreloaded).
+    const pre = !quiet && b && !seedParam && !courseParam && !podParam && !stepParam ? takePreload(preloadKey(b.track, b.batch)) : null
+    const { res, data: body } = pre ? { res: { ok: true, status: 200 }, data: pre.data } : await fetchWithTimeoutRetry(
+      readUrl,
       { headers: {} },
       r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
@@ -2989,39 +2999,9 @@ async function load({ quiet = false } = {}) {
       throw new Error(body.error || `This link is for a course you are not cast on (${courseScope}).`)
     }
     if (!res.ok) throw new Error(loadFailureMessage(res, body))
-    const data = body
-    voice.value = data
-    // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
-    // are single sentences, so stopping on a silence is right for them and the
-    // default stays on. A recording PACK is paragraphs — the 25-second cloning
-    // sample has four sentence pauses in it, and advancing on the first one
-    // would file a third of a take and call it done. The reader can still turn
-    // it back on with the checkbox; this only decides where it starts.
-    if (data.autoAdvance === false) autoAdvance.value = false
-    // Read back from the SERVER's answer, never assumed from what we asked for:
-    // the ceiling is clamped there, and a screen that reports the number it
-    // requested rather than the one it got is the kind of quiet lie this booth
-    // has been bitten by before.
-    quarry.value = data.quarry || null
-    phrases.value = data.phrases || null
-    if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
-    // WORK OF HIS THAT HAS NO WORDS YET. Straight off the wire and never
-    // derived from `lines`: these are precisely the lines that are NOT in
-    // `lines`, and the whole failure this closes is that they were nowhere at
-    // all — 168 untranslated Senedd lines, absent from his queue and from
-    // every number on his page, which he read as work gone missing and was
-    // twice told was not there.
-    notReady.value = Array.isArray(data.notReady) ? data.notReady : []
-    // LINES HE READ THAT SOMEBODY ELSE NOW OWNS. Also straight off the wire and
-    // for the same reason: they are precisely the lines that are NOT in
-    // `lines`, because his queue only carries what he is cast for today.
-    handedOn.value = Array.isArray(data.handedOn) ? data.handedOn : []
-    lines.value = Array.isArray(data.lines) ? data.lines : []
-    // ...and never a line whose take is still going up from this device: that is not a miss.
-    if (b && b.track === RERECORD_TRACK) lines.value = lines.value.filter(l => !queue.isUnsent(l.id))
-    // The re-record batch names its didn't-match lines itself (job #842); the poll keeps them current.
+    applyQueueAnswer(body, b)
     lastQueueRead = Date.now()
-    if (quiet) return
+    if (quiet) { schedulePreload(); return }
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
     // here and starts going up before he reads a word.
@@ -3037,12 +3017,163 @@ async function load({ quiet = false } = {}) {
     // THE CURSOR SURVIVES A RELOAD: the line he was on when he last left this batch.
     pinnedId.value = loadCursor(props.voiceId, cursorScope())
     phase.value = 'ready'
+    if (pre) reconcilePreloaded(gen, readUrl, b)
+    else schedulePreload()
   } catch (err) {
     if (quiet) return
     loadSlow.value = err instanceof LoadTimeoutError
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
   }
+}
+
+// One queue answer onto the screen: the lines and their counts, nothing of his session.
+function applyQueueAnswer(data, b) {
+  voice.value = data
+  // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
+  // are single sentences, so stopping on a silence is right for them and the
+  // default stays on. A recording PACK is paragraphs — the 25-second cloning
+  // sample has four sentence pauses in it, and advancing on the first one
+  // would file a third of a take and call it done. The reader can still turn
+  // it back on with the checkbox; this only decides where it starts.
+  if (data.autoAdvance === false) autoAdvance.value = false
+  // Read back from the SERVER's answer, never assumed from what we asked for:
+  // the ceiling is clamped there, and a screen that reports the number it
+  // requested rather than the one it got is the kind of quiet lie this booth
+  // has been bitten by before.
+  quarry.value = data.quarry || null
+  phrases.value = data.phrases || null
+  if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
+  // WORK OF HIS THAT HAS NO WORDS YET. Straight off the wire and never
+  // derived from `lines`: these are precisely the lines that are NOT in
+  // `lines`, and the whole failure this closes is that they were nowhere at
+  // all — 168 untranslated Senedd lines, absent from his queue and from
+  // every number on his page, which he read as work gone missing and was
+  // twice told was not there.
+  notReady.value = Array.isArray(data.notReady) ? data.notReady : []
+  // LINES HE READ THAT SOMEBODY ELSE NOW OWNS. Also straight off the wire and
+  // for the same reason: they are precisely the lines that are NOT in
+  // `lines`, because his queue only carries what he is cast for today.
+  handedOn.value = Array.isArray(data.handedOn) ? data.handedOn : []
+  lines.value = Array.isArray(data.lines) ? data.lines : []
+  // ...and never a line whose take is still going up from this device: that is not a miss.
+  if (b && b.track === RERECORD_TRACK) lines.value = lines.value.filter(l => !queue.isUnsent(l.id))
+  // The re-record batch names its didn't-match lines itself (job #842); the poll keeps them current.
+}
+
+// ── THE NEXT BATCH, READ IN THE BACKGROUND (cs #299, Aran's yes, 2026-11-25) ─────────────────
+// Rules and why: recordist/next-batch-preload.js. In short: one request, just after a batch
+// loads, answered by the server only from the cached build this batch came from (204 otherwise,
+// at no cost); shown only for its own address, never when a take since then shares a line's
+// words, never after an edit; and always read again, fresh, the moment it is shown.
+let preloaded = null // { key, data, at, dropped }
+let preloadCtrl = null
+const preloadAsked = new Set() // batch keys a preload was ever sent for on this page: once each (claimPreload)
+let pendingReconcile = null // { gen, url, b } while a preloaded batch's fresh read is outstanding
+let preloadTimer = null
+const takenLog = [] // { at, words } for every take this page made, for preloadUsable's rule 2
+const TAKEN_LOOKBACK_MS = 30 * 60 * 1000
+const preloadKey = (track, batch) => `${props.voiceId}|${track}|${batch}`
+function dropPreload() {
+  clearTimeout(preloadTimer)
+  preloadTimer = null
+  if (preloadCtrl) { try { preloadCtrl.abort() } catch { /* already done */ } }
+  preloadCtrl = null
+  preloaded = null
+}
+// EDITS ALWAYS WIN (cs #306): an edit, Re-record all or a setup submit advances the read generation,
+// so every background read already on its way (a reconcile, a quiet re-read, its retries) is dropped
+// when it lands (backgroundAnswerApplies). After an edit the batch's outstanding reconcile is asked
+// again, now, so the fresh answer it was owed still comes, read after the edit.
+function invalidateBackgroundReads({ rereadPending = false } = {}) {
+  dropPreload()
+  // Only a reconcile of the batch still on screen: one left over from a batch he has since left is not re-asked.
+  const pending = pendingReconcile && backgroundAnswerApplies(pendingReconcile.gen, loadGen) ? pendingReconcile : null
+  pendingReconcile = null
+  const gen = ++loadGen
+  if (rereadPending && pending) reconcilePreloaded(gen, pending.url, pending.b)
+}
+function noteTakeForPreload(line) {
+  const now = Date.now()
+  takenLog.push({ at: now, words: wordsKey(line.text) })
+  while (takenLog.length && now - takenLog[0].at > 2 * TAKEN_LOOKBACK_MS) takenLog.shift()
+}
+function takePreload(key) {
+  const entry = preloaded
+  preloaded = null // used once: a second open of the same batch reads it as it always did
+  if (!entry || entry.key !== key) return null
+  const takenWords = new Set(takenLog.filter(t => t.at >= entry.at - TAKEN_LOOKBACK_MS).map(t => t.words))
+  if (!preloadUsable(entry, { key, takenWords })) return null
+  // A line of it whose take is still on this device, not yet on the server: read it fresh instead.
+  if (entry.data.lines.some(l => queue.isUnsent(l.id))) return null
+  return entry
+}
+function schedulePreload() {
+  clearTimeout(preloadTimer)
+  preloadTimer = setTimeout(startPreload, 1500)
+}
+async function startPreload() {
+  preloadTimer = null
+  const b = batchScope.value
+  const nb = nextBatch.value
+  if (!b || isDoorLink() || maxSeed.value || voice.value.pack || voice.value.setupCheck) return
+  if (!nb || nb.track.key === RERECORD_TRACK) return
+  const key = preloadKey(nb.track.key, nb.batch.n)
+  if (preloadCtrl) return // one at a time
+  // ONCE PER BATCH (cs #306): marked before it goes out and kept on a 204, a failure or an abort.
+  if (!claimPreload(preloadAsked, key)) return
+  const at = Date.now()
+  const ctrl = new AbortController()
+  preloadCtrl = ctrl
+  const timer = setTimeout(() => ctrl.abort(), 20000)
+  try {
+    const url = withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1&track=${encodeURIComponent(nb.track.key)}&batch=${nb.batch.n}&preload=1`, props.voiceId)
+    const res = await fetch(url, { headers: {}, signal: ctrl.signal, priority: 'low' })
+    if (preloadCtrl !== ctrl || res.status !== 200) return // 204: nothing cached to answer from
+    const data = await res.json()
+    if (preloadCtrl !== ctrl || !data || !Array.isArray(data.lines)) return
+    // The server echoes the batch it cut: anything else is not this preload.
+    if (data.track !== nb.track.key || Number(data.batch) !== Number(nb.batch.n)) return
+    preloaded = { key, data, at }
+  } catch { /* a preload that fails is simply not there */ } finally {
+    clearTimeout(timer)
+    if (preloadCtrl === ctrl) preloadCtrl = null
+  }
+}
+
+// A BATCH SHOWN FROM A PRELOAD IS READ AGAIN AT ONCE, fresh (next-batch-preload.js rule 4). Until
+// he starts, the fresh answer replaces it outright; once he has started, it only adds ticks to the
+// same lines in the same order, so nothing he is reading moves under him.
+async function reconcilePreloaded(gen, url, b, attempt = 0) {
+  if (!backgroundAnswerApplies(gen, loadGen)) return
+  pendingReconcile = { gen, url, b }
+  let res, data
+  try {
+    ;({ res, data } = await fetchWithTimeoutRetry(url, { headers: {} }, r => (r.ok ? r.json() : null)))
+  } catch { res = null }
+  // He has moved to another batch, the batch was read again anyway, or an edit (or Re-record all,
+  // or a setup submit) landed while this was out: it set out before, so it is dropped (cs #306).
+  if (!backgroundAnswerApplies(gen, loadGen)) return
+  if (!res || !res.ok || !data || !Array.isArray(data.lines)) {
+    if (attempt < 2) setTimeout(() => { reconcilePreloaded(gen, url, b, attempt + 1) }, 10000)
+    else pendingReconcile = null
+    return
+  }
+  pendingReconcile = null
+  lastQueueRead = Date.now()
+  const untouched = phase.value === 'ready' && sessionIds.value.length === 0 && !editingId.value && !busy.value
+  if (untouched) { applyQueueAnswer(data, b); schedulePreload(); return }
+  const ticks = freshTicks(lines.value, data.lines)
+  if (ticks && ticks.length) {
+    for (const t of ticks) {
+      const l = lines.value[t.index]
+      l.recorded = true
+      if (t.clipUrl) l.clipUrl = t.clipUrl
+    }
+    lines.value = [...lines.value]
+    if (typeof voice.value.recorded === 'number') voice.value = { ...voice.value, recorded: voice.value.recorded + ticks.length, remaining: Math.max(0, (voice.value.remaining || 0) - ticks.length) }
+  }
+  schedulePreload()
 }
 
 // ── THE HOME SCREEN (Aran, 2026-10-14, job #347) ────────────────────────────
@@ -3369,6 +3500,12 @@ const batchHeader = computed(() => {
 // Aran 2026-10-16, job #203). Opening it leaves the upload queue running: takes live in the
 // device's take store, not in this screen.
 const nextBatch = computed(() => nextBatchAfter(homeTracks.value, batchScope.value, unticked.value))
+// THE PRELOAD (cs #299, see reconcilePreloaded): the address of the next batch moves when the home counts come in: try again (free when cold).
+watch(() => (nextBatch.value ? `${nextBatch.value.track.key}#${nextBatch.value.batch.n}` : ''), (k) => {
+  if (k && batchScope.value && (phase.value === 'ready' || phase.value === 'recording' || phase.value === 'done')) schedulePreload()
+})
+watch(() => props.voiceId, () => { dropPreload(); pendingReconcile = null; preloadAsked.clear(); takenLog.length = 0 })
+onBeforeUnmount(dropPreload)
 // Said only once the home counts are in and name this batch's section: a summary still loading is not "nothing left".
 const nothingLeftAnywhere = computed(() => !!scopedTrack.value && !nextBatch.value)
 const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&

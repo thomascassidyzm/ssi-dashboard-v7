@@ -32,6 +32,8 @@ const CATEGORY = {
   garble_tail: '3 garbled generator line', garble_doubled: '3 garbled generator line', garble_punct: '3 garbled generator line',
   garble_script: '3 garbled generator line', same_both: '3 garbled generator line', tag_phrase: '3 garbled generator line',
   empty_audio: '4 silent slot', silent_lego: '4 silent slot',
+  open_end_unmirrored: 'M P7 open end not mirrored', open_end_use: 'M P7 fragment as USE', basket_order: 'M P3/P4 basket order', use_frame_repeat: 'M P9 USE frame repeated', thin_debut: 'M P10 thin debut', bare_function_lego: 'M L6 bare function-word LEGO', greedy_intro: 'M L13 greedy introduction', component_not_in_lego: 'M L23 component not in its LEGO', form_drift: 'M P28 taught form not used', lego_syll_7_8: 'M L3 LEGO size 7-8 syllables', lego_syll_over8: 'M L3 LEGO over 8 syllables', debut_no_practice: 'M P30 debut without practice', seed_not_played: 'M P26 seed sentence not played', notnew_untaught: 'M P25/L17 not-new LEGO never taught', lego_not_in_seed_target: 'M L26 LEGO not in its seed (target)', lego_not_in_seed_known: 'M L26 LEGO not in its seed (known)', tag_lego: 'M K11/K42 tag in LEGO',
+  wrong_side: '3 wrong-language text (Breton/French on the wrong side)', zut_lego: '6 ZUT (one known, two targets)', zut_use: '6 ZUT (one known, two targets)', dup_rows: '3 duplicate row in one basket',
   lego_absent_absent: '5 LEGO not in its own phrase', lego_absent_near: '5 LEGO not in its own phrase (inflected / near form)',
 }
 const SAMPLE = 20
@@ -70,7 +72,7 @@ function analyse(dumpF) {
   const kit = JSON.parse(fs.readFileSync(kitF, 'utf8'))
   const mine = DET.run(D)
   const hits = { ...mine.hits }
-  for (const k of ['empty_audio', 'qmark_mismatch', 'same_both', 'tag_phrase']) if (kit.hits[k]) hits[k] = kit.hits[k]
+  for (const k of ['empty_audio', 'qmark_mismatch', 'same_both', 'tag_phrase', 'zut_lego', 'zut_use', 'dup_rows', 'lego_syll_7_8', 'lego_syll_over8', 'debut_no_practice', 'seed_not_played', 'notnew_untaught', 'lego_not_in_seed_target', 'lego_not_in_seed_known', 'tag_lego']) if (kit.hits[k]) hits[k] = kit.hits[k]
   for (const k of Object.keys(kit.hits)) if (k.startsWith('lex:')) { hits[k] = kit.hits[k]; CATEGORY[k] = '2 English does not say what the target says (lexical pattern)' }
   const out = { course, copy_db: st.db, copy_built: st.built, scanned_at: new Date().toISOString(), coverage: kit.coverage, notes: mine.notes,
     counts: Object.fromEntries(Object.entries(hits).map(([k, v]) => [k, v.length])), hits }

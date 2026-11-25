@@ -1,0 +1,779 @@
+{
+ "request": {
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0236L01B02",
+    "set": {
+     "known_text": "because I'll try to help you"
+    },
+    "expect": {
+     "seed_number": 236,
+     "lego_index": 1,
+     "known_text": "try to help you",
+     "target_text": "手伝ってみるから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0246L01B03",
+    "set": {
+     "known_text": "because I was too busy"
+    },
+    "expect": {
+     "seed_number": 246,
+     "lego_index": 1,
+     "known_text": "was too busy",
+     "target_text": "忙しかったから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0304L02B07",
+    "set": {
+     "known_text": "because she doesn't want to work"
+    },
+    "expect": {
+     "seed_number": 304,
+     "lego_index": 2,
+     "known_text": "doesn't want to work because",
+     "target_text": "働きたくないから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0386L01B02",
+    "set": {
+     "known_text": "yes, because I agreed"
+    },
+    "expect": {
+     "seed_number": 386,
+     "lego_index": 1,
+     "known_text": "yes, agreed",
+     "target_text": "うん、同意したから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0387L02B05",
+    "set": {
+     "known_text": "because I didn't think she was right"
+    },
+    "expect": {
+     "seed_number": 387,
+     "lego_index": 2,
+     "known_text": "didn't think she was right because",
+     "target_text": "正しいとは思わなかったから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0391L01B02",
+    "set": {
+     "known_text": "because I'm walking towards the bus now"
+    },
+    "expect": {
+     "seed_number": 391,
+     "lego_index": 1,
+     "known_text": "walking towards the bus now",
+     "target_text": "バスのほうに歩いてるから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0399L02B02",
+    "set": {
+     "known_text": "because I don't want to lose hope"
+    },
+    "expect": {
+     "seed_number": 399,
+     "lego_index": 2,
+     "known_text": "don't want to lose hope",
+     "target_text": "希望を失いたくないから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0410L02B02",
+    "set": {
+     "known_text": "because there's a fight"
+    },
+    "expect": {
+     "seed_number": 410,
+     "lego_index": 2,
+     "known_text": "because of a fight",
+     "target_text": "ケンカがあるから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0416L04B02",
+    "set": {
+     "known_text": "because I want to stand"
+    },
+    "expect": {
+     "seed_number": 416,
+     "lego_index": 4,
+     "known_text": "because want to stand",
+     "target_text": "立ちたいから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0431L03B02",
+    "set": {
+     "known_text": "because I'm not ready yet"
+    },
+    "expect": {
+     "seed_number": 431,
+     "lego_index": 3,
+     "known_text": "not ready yet",
+     "target_text": "まだ準備できてないから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0434L03B02",
+    "set": {
+     "known_text": "because I can reduce it"
+    },
+    "expect": {
+     "seed_number": 434,
+     "lego_index": 3,
+     "known_text": "can reduce",
+     "target_text": "減らせるから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0439L01B01",
+    "set": {
+     "known_text": "because I don't want to die"
+    },
+    "expect": {
+     "seed_number": 439,
+     "lego_index": 1,
+     "known_text": "not wanting to die",
+     "target_text": "死にたくないから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0444L02B01",
+    "set": {
+     "known_text": "because I thought so"
+    },
+    "expect": {
+     "seed_number": 444,
+     "lego_index": 2,
+     "known_text": "thought about it",
+     "target_text": "思ったから"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0450L03B02",
+    "set": {
+     "known_text": "because she doesn't get on the train"
+    },
+    "expect": {
+     "seed_number": 450,
+     "lego_index": 3,
+     "known_text": "not getting on the train",
+     "target_text": "電車に乗らないから"
+    }
+   }
+  ],
+  "apply": true,
+  "changeset": {
+   "id": "jpn_for_eng-cs346-addend",
+   "batch": 1
+  }
+ },
+ "status": 200,
+ "response": {
+  "ok": true,
+  "dryRun": false,
+  "applied": true,
+  "event_id": "b89b6843-5b04-4912-b003-d4a55b232ab0",
+  "results": [
+   {
+    "index": 0,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0236L01B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0236L01B02",
+     "seed_number": 236,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "try to help you",
+     "target_text": "手伝ってみるから",
+     "known_audio_id": "02577cf8-eef5-4e5d-948e-8ca1a1ea7d7c",
+     "target1_audio_id": "f9204391-2ad3-492b-9886-331ce1ea0780",
+     "target2_audio_id": "005cddae-f466-45e1-8a3d-d2f1f5fcc049",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0236L01B02",
+     "seed_number": 236,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "because I'll try to help you",
+     "target_text": "手伝ってみるから",
+     "known_audio_id": null,
+     "target1_audio_id": "f9204391-2ad3-492b-9886-331ce1ea0780",
+     "target2_audio_id": "005cddae-f466-45e1-8a3d-d2f1f5fcc049",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 1,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0246L01B03"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0246L01B03",
+     "seed_number": 246,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "was too busy",
+     "target_text": "忙しかったから",
+     "known_audio_id": "0f76763e-0eaa-468a-a2c6-df9c63406628",
+     "target1_audio_id": "d1418e30-ab59-4657-b631-e6abe56ec4eb",
+     "target2_audio_id": "3f636be5-7430-4b03-894e-8ee3a827547e",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0246L01B03",
+     "seed_number": 246,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "because I was too busy",
+     "target_text": "忙しかったから",
+     "known_audio_id": null,
+     "target1_audio_id": "d1418e30-ab59-4657-b631-e6abe56ec4eb",
+     "target2_audio_id": "3f636be5-7430-4b03-894e-8ee3a827547e",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 2,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0304L02B07"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0304L02B07",
+     "seed_number": 304,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "doesn't want to work because",
+     "target_text": "働きたくないから",
+     "known_audio_id": "5b1e5526-e028-4c6d-a64b-7afda37f89a1",
+     "target1_audio_id": "a961126c-fe50-44a4-8dfd-a54d5a460ecf",
+     "target2_audio_id": "9fbfe9e5-2306-4670-89bf-635f823bd3f2",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0304L02B07",
+     "seed_number": 304,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "because she doesn't want to work",
+     "target_text": "働きたくないから",
+     "known_audio_id": null,
+     "target1_audio_id": "a961126c-fe50-44a4-8dfd-a54d5a460ecf",
+     "target2_audio_id": "9fbfe9e5-2306-4670-89bf-635f823bd3f2",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 3,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0386L01B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0386L01B02",
+     "seed_number": 386,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "yes, agreed",
+     "target_text": "うん、同意したから",
+     "known_audio_id": "88cd2cdd-8386-4dc7-a1d1-ccb35637ee72",
+     "target1_audio_id": "7c648170-379f-454c-8e02-b26e4ee372e0",
+     "target2_audio_id": "f0d3bde3-d813-409c-b996-4eaaeaf45bd5",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0386L01B02",
+     "seed_number": 386,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "yes, because I agreed",
+     "target_text": "うん、同意したから",
+     "known_audio_id": null,
+     "target1_audio_id": "7c648170-379f-454c-8e02-b26e4ee372e0",
+     "target2_audio_id": "f0d3bde3-d813-409c-b996-4eaaeaf45bd5",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 4,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0387L02B05"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0387L02B05",
+     "seed_number": 387,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "didn't think she was right because",
+     "target_text": "正しいとは思わなかったから",
+     "known_audio_id": "2eaee458-8726-4fd2-ab97-f47ab0d8b463",
+     "target1_audio_id": "59fabcc8-10fc-43e7-9bd4-779d58c57040",
+     "target2_audio_id": "a6a642dd-95e1-4773-9813-4086996300f1",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0387L02B05",
+     "seed_number": 387,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "because I didn't think she was right",
+     "target_text": "正しいとは思わなかったから",
+     "known_audio_id": null,
+     "target1_audio_id": "59fabcc8-10fc-43e7-9bd4-779d58c57040",
+     "target2_audio_id": "a6a642dd-95e1-4773-9813-4086996300f1",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 5,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0391L01B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0391L01B02",
+     "seed_number": 391,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "walking towards the bus now",
+     "target_text": "バスのほうに歩いてるから",
+     "known_audio_id": "00299208-853f-450a-a4cb-a2811d0cc27c",
+     "target1_audio_id": "dd812e31-a270-47b2-a673-505279bf62d2",
+     "target2_audio_id": "32aed16b-1e6f-46cc-a199-e22b05f8c9b4",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0391L01B02",
+     "seed_number": 391,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "because I'm walking towards the bus now",
+     "target_text": "バスのほうに歩いてるから",
+     "known_audio_id": null,
+     "target1_audio_id": "dd812e31-a270-47b2-a673-505279bf62d2",
+     "target2_audio_id": "32aed16b-1e6f-46cc-a199-e22b05f8c9b4",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 6,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0399L02B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0399L02B02",
+     "seed_number": 399,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "don't want to lose hope",
+     "target_text": "希望を失いたくないから",
+     "known_audio_id": "7490659c-2979-40f7-9fc0-2250d7668b95",
+     "target1_audio_id": "c1f9e7c3-d61d-4d20-8118-963a75c643f1",
+     "target2_audio_id": "6a158c77-e323-4749-aa12-f0f3a109e830",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0399L02B02",
+     "seed_number": 399,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "because I don't want to lose hope",
+     "target_text": "希望を失いたくないから",
+     "known_audio_id": null,
+     "target1_audio_id": "c1f9e7c3-d61d-4d20-8118-963a75c643f1",
+     "target2_audio_id": "6a158c77-e323-4749-aa12-f0f3a109e830",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 7,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0410L02B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0410L02B02",
+     "seed_number": 410,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "because of a fight",
+     "target_text": "ケンカがあるから",
+     "known_audio_id": "2dd3f85d-d407-4794-87c7-02ced9d69d71",
+     "target1_audio_id": "3f9cb479-56ed-4e16-b975-1cebd34371ca",
+     "target2_audio_id": "489ccbb8-7ec4-4a35-ab41-53ee0a2e26fa",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0410L02B02",
+     "seed_number": 410,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "because there's a fight",
+     "target_text": "ケンカがあるから",
+     "known_audio_id": null,
+     "target1_audio_id": "3f9cb479-56ed-4e16-b975-1cebd34371ca",
+     "target2_audio_id": "489ccbb8-7ec4-4a35-ab41-53ee0a2e26fa",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 8,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0416L04B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0416L04B02",
+     "seed_number": 416,
+     "lego_index": 4,
+     "lego_id": null,
+     "known_text": "because want to stand",
+     "target_text": "立ちたいから",
+     "known_audio_id": "9070f7db-b088-4bf7-9c4f-103465139a26",
+     "target1_audio_id": "fefc7da4-9146-4c1c-a829-4e332ac92732",
+     "target2_audio_id": "cf343822-b5ca-4479-a203-c7d9860e1cbf",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0416L04B02",
+     "seed_number": 416,
+     "lego_index": 4,
+     "lego_id": null,
+     "known_text": "because I want to stand",
+     "target_text": "立ちたいから",
+     "known_audio_id": null,
+     "target1_audio_id": "fefc7da4-9146-4c1c-a829-4e332ac92732",
+     "target2_audio_id": "cf343822-b5ca-4479-a203-c7d9860e1cbf",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 9,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0431L03B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0431L03B02",
+     "seed_number": 431,
+     "lego_index": 3,
+     "lego_id": null,
+     "known_text": "not ready yet",
+     "target_text": "まだ準備できてないから",
+     "known_audio_id": "ea482563-8acc-42ba-9e48-dd5e3b160c37",
+     "target1_audio_id": "31eb0895-38aa-4cee-b327-4a7021104795",
+     "target2_audio_id": "436c6be8-689e-4abf-9acd-aa4ada47590c",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0431L03B02",
+     "seed_number": 431,
+     "lego_index": 3,
+     "lego_id": null,
+     "known_text": "because I'm not ready yet",
+     "target_text": "まだ準備できてないから",
+     "known_audio_id": null,
+     "target1_audio_id": "31eb0895-38aa-4cee-b327-4a7021104795",
+     "target2_audio_id": "436c6be8-689e-4abf-9acd-aa4ada47590c",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 10,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0434L03B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0434L03B02",
+     "seed_number": 434,
+     "lego_index": 3,
+     "lego_id": null,
+     "known_text": "can reduce",
+     "target_text": "減らせるから",
+     "known_audio_id": "cf56aa11-a4a0-4412-96ec-e17150f520a7",
+     "target1_audio_id": "78abac6f-eda5-4216-adb6-697050c99971",
+     "target2_audio_id": "01d1c241-83e3-48fe-b749-d8ca6e2df501",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0434L03B02",
+     "seed_number": 434,
+     "lego_index": 3,
+     "lego_id": null,
+     "known_text": "because I can reduce it",
+     "target_text": "減らせるから",
+     "known_audio_id": null,
+     "target1_audio_id": "78abac6f-eda5-4216-adb6-697050c99971",
+     "target2_audio_id": "01d1c241-83e3-48fe-b749-d8ca6e2df501",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 11,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0439L01B01"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0439L01B01",
+     "seed_number": 439,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "not wanting to die",
+     "target_text": "死にたくないから",
+     "known_audio_id": "f74d4d02-beb2-46aa-bb93-00da39c87067",
+     "target1_audio_id": "fcfa6865-d07e-4290-8238-c43e14629c8b",
+     "target2_audio_id": "811ae2f9-2cf1-41e6-87bb-70e0c550fb61",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0439L01B01",
+     "seed_number": 439,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "because I don't want to die",
+     "target_text": "死にたくないから",
+     "known_audio_id": null,
+     "target1_audio_id": "fcfa6865-d07e-4290-8238-c43e14629c8b",
+     "target2_audio_id": "811ae2f9-2cf1-41e6-87bb-70e0c550fb61",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 12,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0444L02B01"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0444L02B01",
+     "seed_number": 444,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "thought about it",
+     "target_text": "思ったから",
+     "known_audio_id": "cdaf4592-25f8-4854-935d-8dad3565ffba",
+     "target1_audio_id": "e38a640a-0e22-490e-9120-f80c731fca62",
+     "target2_audio_id": "e16b3a76-ca0b-47cc-9595-726813417057",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0444L02B01",
+     "seed_number": 444,
+     "lego_index": 2,
+     "lego_id": null,
+     "known_text": "because I thought so",
+     "target_text": "思ったから",
+     "known_audio_id": null,
+     "target1_audio_id": "e38a640a-0e22-490e-9120-f80c731fca62",
+     "target2_audio_id": "e16b3a76-ca0b-47cc-9595-726813417057",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 13,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0450L03B02"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0450L03B02",
+     "seed_number": 450,
+     "lego_index": 3,
+     "lego_id": null,
+     "known_text": "not getting on the train",
+     "target_text": "電車に乗らないから",
+     "known_audio_id": "417ce00e-67c9-4336-98de-94dbc0aeebe3",
+     "target1_audio_id": "55f75989-4a95-4622-899d-a6802ac0096a",
+     "target2_audio_id": "c33beb91-500f-472c-819b-fe016f3b3c11",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0450L03B02",
+     "seed_number": 450,
+     "lego_index": 3,
+     "lego_id": null,
+     "known_text": "because she doesn't get on the train",
+     "target_text": "電車に乗らないから",
+     "known_audio_id": null,
+     "target1_audio_id": "55f75989-4a95-4622-899d-a6802ac0096a",
+     "target2_audio_id": "c33beb91-500f-472c-819b-fe016f3b3c11",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0450L03B02",
+    "set": {
+     "known_text": "not getting on the train",
+     "known_audio_id": "417ce00e-67c9-4336-98de-94dbc0aeebe3"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0444L02B01",
+    "set": {
+     "known_text": "thought about it",
+     "known_audio_id": "cdaf4592-25f8-4854-935d-8dad3565ffba"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0439L01B01",
+    "set": {
+     "known_text": "not wanting to die",
+     "known_audio_id": "f74d4d02-beb2-46aa-bb93-00da39c87067"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0434L03B02",
+    "set": {
+     "known_text": "can reduce",
+     "known_audio_id": "cf56aa11-a4a0-4412-96ec-e17150f520a7"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0431L03B02",
+    "set": {
+     "known_text": "not ready yet",
+     "known_audio_id": "ea482563-8acc-42ba-9e48-dd5e3b160c37"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0416L04B02",
+    "set": {
+     "known_text": "because want to stand",
+     "known_audio_id": "9070f7db-b088-4bf7-9c4f-103465139a26"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0410L02B02",
+    "set": {
+     "known_text": "because of a fight",
+     "known_audio_id": "2dd3f85d-d407-4794-87c7-02ced9d69d71"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0399L02B02",
+    "set": {
+     "known_text": "don't want to lose hope",
+     "known_audio_id": "7490659c-2979-40f7-9fc0-2250d7668b95"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0391L01B02",
+    "set": {
+     "known_text": "walking towards the bus now",
+     "known_audio_id": "00299208-853f-450a-a4cb-a2811d0cc27c"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0387L02B05",
+    "set": {
+     "known_text": "didn't think she was right because",
+     "known_audio_id": "2eaee458-8726-4fd2-ab97-f47ab0d8b463"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0386L01B02",
+    "set": {
+     "known_text": "yes, agreed",
+     "known_audio_id": "88cd2cdd-8386-4dc7-a1d1-ccb35637ee72"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0304L02B07",
+    "set": {
+     "known_text": "doesn't want to work because",
+     "known_audio_id": "5b1e5526-e028-4c6d-a64b-7afda37f89a1"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0246L01B03",
+    "set": {
+     "known_text": "was too busy",
+     "known_audio_id": "0f76763e-0eaa-468a-a2c6-df9c63406628"
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0236L01B02",
+    "set": {
+     "known_text": "try to help you",
+     "known_audio_id": "02577cf8-eef5-4e5d-948e-8ca1a1ea7d7c"
+    }
+   }
+  ],
+  "undo_file": "2026-11-25T13-04-20-080Z-b89b6843-5b04-4912-b003-d4a55b232ab0.json"
+ }
+}

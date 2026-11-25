@@ -23,6 +23,8 @@
  * OWNER RULING (Tom 2026-07-27): bre_for_fra (Breton) is also HUMAN-VOICED
  * ONLY — Azure has no Breton voice, same policy as the cym_* courses. Its
  * pending audio_pass_request was dismissed the same day.
+ * bre_for_eng (Breton for English speakers) is shut the same way, by the same
+ * explicit entry (cs #344, 2026-11-25): Breton is human-voice-only, never TTS.
  *
  * OWNER RULING (Tom 2026-08-13), stated as a hard rule, not a one-off: Welsh is
  * PERMANENTLY EXCLUDED FROM EVERY TTS RENDER QUEUE. Aran's and Catrin's
@@ -78,6 +80,7 @@ const HUMAN_VOICE_COURSES = new Set([
   'cym_n_for_eng',
   'cym_s_for_eng',
   'bre_for_fra',
+  'bre_for_eng',
   'pdc_for_eng',
 ]);
 

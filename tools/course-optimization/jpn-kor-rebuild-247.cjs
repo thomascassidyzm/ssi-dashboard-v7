@@ -30,7 +30,7 @@
 //     which records the content-edit event; this tool itself writes nothing to the DB.
 //
 // Modes (course = jpn|kor):
-//   gen    <c> <from-to> <copyDump> [conc]            phrase-v4 door per new LEGO → ops/jpn-rebuild-247/<c>/gen/S####L##.json
+//   gen    <c> <from-to> <copyDump> [conc] [--unpaced] phrase-v4 door per new LEGO → ops/jpn-rebuild-247/<c>/gen/S####L##.json
 //   read   <c> <from-to> <copyDump>                   old → new per LEGO, markdown for the cross-family reader → stdout
 //   plan   <c> <from-to> <copyDump> <liveSeeds>       → ops/…/<c>/plan-<from-to>.json (refusals, ZUT, live pre-check)
 //   audio  <c> <from-to> [--real]                     local estimate; --real with RENDER_CONFIRM=1 renders, library first
@@ -105,19 +105,53 @@ async function sleepUntilPace(body, who) {
   console.log(`${who} WEEKLY_PACE — sleeping ${Math.round(ms / 60e3)} min until ${new Date(Date.now() + ms).toISOString()} (${body.error || ''})`);
   await new Promise((ok) => setTimeout(ok, ms));
 }
-async function gen(c, rng, dumpPath, conc) {
+// UNPACED (cs #338·AL, Kai 25 Nov: "if it is a Popty self-cap, raise it for this build only and say by how much"):
+// with --unpaced the gen calls carry "unpaced": true, so the v4 door skips its weekly pace (#412·AD) for THIS tool only;
+// PACE_SLACK_PCT and every other bulk caller are untouched.
+// THE ACCOUNT GATE (always on, paced or not; Kai 25 Nov 12:33Z: "treat claude@ as FULL once it reaches ~85% of its
+// weekly pool (leave the rest for Aran's own web use) and continue on kai-gmail"). The door cannot be pinned to an
+// account: it spawns on claude-config pickAccount over the shared weekly gauge. So before each LEGO this tool runs the
+// same pickAccount over the same gauge, and sends the call only when the account the door will pick is under ITS
+// ceiling (claude@ 85%, any other SSi account 90%); otherwise it waits and asks again. Unreadable gauge = wait. Pure.
+const ACCOUNT_CEILING_PCT = { 'claude@saysomethingin.com': 85 };
+const DEFAULT_CEILING_PCT = 90;
+const ceilingFor = (email) => ACCOUNT_CEILING_PCT[email] ?? DEFAULT_CEILING_PCT;
+function accountGate(cands, usage, cc) {
+  if (!cands.length) return { ok: false, why: 'no SSi accounts on the gauge' };
+  const read = cands.map((x) => `${x.email} ${cc.weeklyPct(usage[x.email]) ?? '?'}%/${ceilingFor(x.email)}%`).join('; ');
+  if (cands.some((x) => cc.weeklyPct(usage[x.email]) === null)) return { ok: false, why: `gauge unreadable: ${read}` };
+  const pick = cc.pickAccount(cands, { usage });
+  const pct = cc.weeklyPct(usage[pick.email]);
+  return pct < ceilingFor(pick.email)
+    ? { ok: true, pick: pick.email, why: `door picks ${pick.email}; ${read}` }
+    : { ok: false, pick: pick.email, why: `door would pick ${pick.email} at ${pct}% (ceiling ${ceilingFor(pick.email)}%); ${read}` };
+}
+function accountGateNow() {
+  const cc = require('../../services/shared/claude-config.cjs');
+  const usage = cc.readUsage();
+  // The door's token dir (/var/lib/popty/claude) is readable only by the popty user, so from an agent shell the SSi
+  // accounts are the company addresses on the same gauge the door reads (the two its WEEKLY_PACE answer names).
+  let cands = cc.liveCandidates();
+  if (!cands.length) cands = Object.keys(usage).filter((e) => /@saysomethingin\.com$/.test(e)).map((email) => ({ email }));
+  return accountGate(cands, usage, cc);
+}
+async function gen(c, rng, dumpPath, conc, unpaced = false) {
   const [a, b] = range(rng);
   const dump = loadJson(dumpPath);
   const todo = newLegos(dump, a, b).filter((l) => { const g = readGen(c, l.seed_number, l.lego_index); return !genCurrent(g, l) || (process.env.RETRY_BLOCKED === '1' && !g.keep); });
-  console.log(`${c} ${rng}: ${todo.length} LEGOs to generate (conc ${conc})`);
-  let i = 0;
+  console.log(`${c} ${rng}: ${todo.length} LEGOs to generate (conc ${conc}${unpaced ? ', unpaced' : ''}; account gate claude@ ${ceilingFor('claude@saysomethingin.com')}%, others ${DEFAULT_CEILING_PCT}%)`);
+  let i = 0, lastGuard = null;
   const worker = async () => {
     while (i < todo.length) {
       const l = todo[i++];
       const t0 = Date.now();
       let r;
       for (let tries = 0; tries < 3; tries++) {
-        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index) }, 1800000);
+        const g = accountGateNow();
+        const tag = `${g.ok}|${g.pick}`;
+        if (tag !== lastGuard) { lastGuard = tag; console.log(`${lid(l.seed_number, l.lego_index)} ${g.ok ? (unpaced ? 'UNPACED' : 'PACED') : 'ACCOUNT HOLD — waiting 20 min'} — ${g.why}`); }
+        if (!g.ok) { await new Promise((ok) => setTimeout(ok, 20 * 60e3)); tries--; continue; }
+        r = await post(`${BUILDER}/api/phrases/v4/generate/${COURSE[c]}`, { seed: l.seed_number, lego: Number(l.lego_index), ...(unpaced ? { unpaced: true } : {}) }, 1800000);
         // 429 WEEKLY_PACE (#412·AD): both SSi accounts ahead of their share of the week — sleep, ask again, spend nothing.
         if (r.status === 429 && (r.body || {}).code === 'WEEKLY_PACE') { await sleepUntilPace(r.body, lid(l.seed_number, l.lego_index)); tries--; continue; }
         if (r.status !== 0) break;
@@ -395,13 +429,15 @@ function verify(c, rng, live) {
   return out;
 }
 
-module.exports = { padReasons, plan, precheckLego, upperI, existingClip, genCurrent };
+module.exports = { padReasons, plan, precheckLego, upperI, existingClip, genCurrent, accountGate, ceilingFor };
 
 if (require.main === module) {
-  const [mode, c, rng, x, y] = process.argv.slice(2);
+  const argv = process.argv.slice(2);
+  const unpacedFlag = argv.includes('--unpaced');
+  const [mode, c, rng, x, y] = argv.filter((a) => a !== '--unpaced');
   if (!COURSE[c]) { console.error('course must be jpn|kor'); process.exit(64); }
   (async () => {
-    if (mode === 'gen') await gen(c, rng, x, Number(y) || 2);
+    if (mode === 'gen') await gen(c, rng, x, Number(y) || 2, unpacedFlag);
     else if (mode === 'read') read(c, rng, x);
     else if (mode === 'plan') {
       if (!x || !y) throw new Error('plan <c> <range> <copyDump> <liveSeeds>');
