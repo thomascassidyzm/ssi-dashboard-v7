@@ -182,7 +182,10 @@ function checkOnce(seeds, held, base, { V, PS, LC }, legosOnly = false) {
         const rc = quietly(() => V.checkBuildRecombination({ ...l, build: l.buildKept, use: l.useKept }, C, s.n, prior));
         if (!rc.valid) lr.hard.push('BUILD RECOMBINATION: ' + JSON.stringify(rc.rejects || rc).slice(0, 200));
         const nL = norm(l.target);
-        for (const p of rows) { if (norm(p.target) === nL) lr.hard.push('BARE LEGO as a phrase'); const pt = ' ' + norm(p.target) + ' '; if (!nL.split(' ').every((w) => pt.includes(' ' + w + ' '))) lr.hard.push(`P17: "${p.target}" lacks its LEGO`); }
+        // A LEGO that IS the whole seed sentence (seed 68 "Petra emaout o klask ?"): its U* row is bare, the route drops
+        // it (partitionBareLegoPhrases) and the learner says the seed at the LEGO's debut — so that one row is not a fault.
+        const wholeSeed = nL === norm(s.target) && norm(l.known) === norm(s.known);
+        for (const p of rows) { if (norm(p.target) === nL && !(wholeSeed && p.seed_sentence)) lr.hard.push('BARE LEGO as a phrase'); const pt = ' ' + norm(p.target) + ' '; if (!nL.split(' ').every((w) => pt.includes(' ' + w + ' '))) lr.hard.push(`P17: "${p.target}" lacks its LEGO`); }
         const k = norm(l.known), hit = legoZut.get(k);
         if (hit && hit.t !== norm(l.target)) { if (hit.old) { lr.warn.push(`ZUT vs held old LEGO ${hit.id} "${hit.t}"`); tot.zut_vs_held_old++; } else lr.hard.push(`ZUT (LEGO): "${l.known}" is also ${hit.id} "${hit.t}"`); } else if (!hit) legoZut.set(k, { t: norm(l.target), id: l.id });
         for (const p of rows) {
@@ -200,7 +203,8 @@ function checkOnce(seeds, held, base, { V, PS, LC }, legosOnly = false) {
     }
     if (cascade) { held.set(s.n, { call: 'cascade', why: cascade }); continue; }
     tot.legos += s.legos.length;
-    const said = s.legos.some((l) => l.is_new && l.useKept.some((p) => norm(p.target) === norm(s.target) && norm(p.known) === norm(s.known)));
+    const said = s.legos.some((l) => l.is_new && (l.useKept.some((p) => norm(p.target) === norm(s.target) && norm(p.known) === norm(s.known))
+      || (norm(l.target) === norm(s.target) && norm(l.known) === norm(s.known)))); // whole-seed LEGO: said at its debut
     if (!said && !legosOnly) res.hard.push('P26: the seed sentence is not a USE row under a new LEGO of this seed');
     if (!s.legos.some((l) => l.is_new)) res.hard.push('P25: no new LEGO, the seed would never play');
     tot.seeds++; tot.hard += res.hard.length + res.legos.reduce((a, l) => a + l.hard.length, 0); tot.warn += res.legos.reduce((a, l) => a + l.warn.length, 0);
