@@ -1,4 +1,4 @@
-# cs #537: git pushes no longer create popty.app deployments (Vercel createDeployments=disabled); this builds the newest
+# cs #537: git pushes no longer create popty.app deployments (vercel.json git.deploymentEnabled.main=false); this builds the newest
 # [release]/[hotfix] commit on main through the API, once. Install alongside popty-weekly-release:
 #   cp ops/systemd/popty-prod-deploy.{service,timer} ~/.config/systemd/user/ && systemctl --user daemon-reload &&
 #   systemctl --user enable --now popty-prod-deploy.timer

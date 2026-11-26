@@ -5,7 +5,8 @@
 // WHY. The cs #948 ignore step already refused every main push that was not [release]/[hotfix], but Vercel still CREATED
 // a deployment for each push, cloned the repo and ran the ignore command: 250 of 264 production deployments in the 7 days
 // to 26 Nov were those CANCELED skips, and Vercel bills a canceled ignore-step deployment as a build. So git pushes no
-// longer create deployments at all (project setting gitProviderOptions.createDeployments = "disabled"), and this script,
+// longer create deployments at all (vercel.json git.deploymentEnabled.main = false — NOT the project setting
+// gitProviderOptions.createDeployments, which only governs GitHub deployment records), and this script,
 // on a 10-minute timer, builds the newest [release]/[hotfix] commit on main through the API — once. Bursts batch for free:
 // five [hotfix] pushes inside one tick are ONE build of the newest of them (it contains the rest).
 //
